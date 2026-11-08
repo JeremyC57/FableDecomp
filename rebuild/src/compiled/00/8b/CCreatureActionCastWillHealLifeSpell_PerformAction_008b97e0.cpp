@@ -8,6 +8,7 @@
 // the new component is kept in ebp, an AI-state owner (thing byte +0x10 == 1) gets the cast level, the target is a named copy of the
 // action's +0x2c pointer, and the component's target pointer is assigned through an inline by-value operator= when the target is alive.
 // Layout: Level at retail +0x114 (PDB +0x12c).
+#include "fable_compiler.h"
 class CTCParamsBase;
 class CTCBase;
 
@@ -34,7 +35,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     unsigned char _pad44[0x91 - 0x44];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }

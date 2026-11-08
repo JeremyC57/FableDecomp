@@ -12,6 +12,7 @@
 // named local (the `mov [esp+14h],0D3h` slot; comparing against the constant parameter keeps the
 // immediate compare) -- end or a larger key -> the end entry. The out pointer is what leaves the
 // component in eax before the pushes. Same shape as the landed GetInterface rows.
+#include "fable_compiler.h"
 class CAIBrain;
 class CAIStateGroupBase;
 
@@ -28,7 +29,7 @@ class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    __forceinline bool GetInterface(long type, CTCIdleScheduler** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCIdleScheduler** out)
     {
         if (m_presentBits[type / 32] & (1 << (type % 32))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

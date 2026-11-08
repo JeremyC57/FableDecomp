@@ -2,6 +2,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0x0091E4B0,273 bytes. Callees MoveToPos97EC00,SetInLimbo4C8CF0,DoNothing97E200,
 // GetPWorld8FCFC0,GetAllRegionNodes91E660,GetPWorldSeed8FCFD0,GFROR13497890,GetPosition4C73D0,Terminate8FCF40.
+#include "fable_compiler.h"
 #define CAIStateGroup_MinionLeaveRegion CAIStateGroup_MinionLeaveRegionLayout
 #include "engine/CAIStateGroup_MinionLeaveRegion.h"
 #undef CAIStateGroup_MinionLeaveRegion
@@ -66,7 +67,7 @@ struct CAIStateGroup_MinionLeaveRegion_Adapter : CAIStateGroup_MinionLeaveRegion
  C3DVector& ExitPosition() { return *(C3DVector*)&ExitPoint_X; }
  long AIAction_MoveToPos(long,C3DVector,bool*,long,bool,bool,CThing*,bool,float);
  long AIAction_DoNothing();  unsigned long* GetPWorldSeed(); void Update();
- __forceinline void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=&GetWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
+ FABLE_FORCEINLINE void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=&GetWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
 };
 void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {
  bool reached;

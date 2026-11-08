@@ -12,6 +12,7 @@
 //   linear insert (`next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last = val;`)
 //   inline (__forceinline); STLport's pair declares its own copy constructor.  /Gr TU written as explicit __fastcall.
 // Label: catalog "_Copy_impl<CNavigationPosition*,CNavigationPosition*>" is propagated.
+#include "fable_compiler.h"
 enum EReactionSpeechType { REACTION_SPEECH_TYPE_NONE = -1, REACTION_SPEECH_TYPE_0 = 0 };
 
 namespace std {
@@ -31,7 +32,7 @@ public:
 
 namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     _RandomAccessIter __next = __last;
     --__next;

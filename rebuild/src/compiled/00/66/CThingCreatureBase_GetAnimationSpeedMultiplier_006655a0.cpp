@@ -14,6 +14,7 @@
 // Layout: retail CThing interface bitset +0x20 / map +0x44, dead flag +0x91 bit 0; retail CThingCreatureBase current
 //   action +0x100 (PDB view 0x10 larger). Action: +0x20 / +0x24 longs, +0x61 finished byte. World +0x68 bullet time
 //   (+0x4 dword, +0xc byte).
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -38,7 +39,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 dead
-    template<class T> __forceinline bool GetInterface(T** out, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -12,6 +12,7 @@
 // Shape: the landed 0x005C12A1 template: count = size() (`idiv` by 12), WriteLong, then the inline traits transfer per element
 //   (three WriteLongs in member order); the zero-initialised traits is never read and folds away; the loop index becomes a
 //   byte offset (ebp) and a down-counter. The size TU keeps the three-call traits transfer out of line unless __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -50,7 +51,7 @@ public:
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CBrainUpdateZone> {
     CBrainUpdateZone DefaultVal;
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBrainUpdateZone* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBrainUpdateZone* value) const
     {
         stream.WriteSLONG(value->Distance);
         stream.WriteSLONG(value->UpdateFrequency);

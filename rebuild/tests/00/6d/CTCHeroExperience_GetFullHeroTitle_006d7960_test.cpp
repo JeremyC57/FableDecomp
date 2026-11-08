@@ -1,4 +1,5 @@
 // 006d7960 behaviour test: CTCHeroExperience::GetFullHeroTitle (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -39,8 +40,8 @@ public:
 template<class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -52,7 +53,7 @@ public:
     T* Object;
     CCountedPointer() : Object(0) {}
     CCountedPointer(const CCountedPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }   // test model: refcounted copy (VC7.1 /Od does not elide the return copy)
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Object) {
             Object->Release();
@@ -149,8 +150,8 @@ class CThing {
 public:
     unsigned long PresentBits[9];
     CInterfaceMap Interfaces;
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &Interfaces;

@@ -7,6 +7,7 @@
 // Callees: GetPItem 0x00A01B50, IS_THING_ALIVE 0x0040DCE0 (__fastcall), std::bitset::test 0x00410DE0, LowerBound 0x0040F020, CThing::GetPos 0x004C73D0,
 //   CTCBase::GetWorldMap 0x00686D30, CWorldMap::GetHeightZBelowPos 0x0063E480, CCharString ctor/dtor, CThingObject::Create 0x00703210 (__fastcall),
 //   CTCTrapBase::SetThingAsImmune 0x0078839A / ManualTrigger 0x00788388, MakeSummonedCreaturesImmuneToTrap 0x0080F240 (__fastcall), base OnCollision 0x007BF510
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -32,7 +33,7 @@ public:
     unsigned char _pad6d[0x90 - 0x6d];
     signed char Team;                                   // +0x90
     const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

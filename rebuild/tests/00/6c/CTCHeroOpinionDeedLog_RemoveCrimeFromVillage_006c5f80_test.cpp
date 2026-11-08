@@ -1,4 +1,5 @@
 // Behaviour test for 006c5f80: body copied from src/006c5f80.cpp (CTCHeroOpinionDeedLog::RemoveCrimeFromVillage), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,7 +17,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

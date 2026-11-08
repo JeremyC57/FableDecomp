@@ -8,6 +8,7 @@
 // __security_check_cookie @ 0x00BFE9F9.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); the
 // `__forceinline AddGameEvent(long type)` helper reproduces retail's shared `xor al,al` zero stores.
+#include "fable_compiler.h"
 class CInputEvent {
 public:
     long GetControllerIndex() const;               // 0x00A03B70 (`mov eax,[ecx]`)
@@ -26,7 +27,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    __forceinline void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
+    FABLE_FORCEINLINE void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
 };
 class CPlayer {
 public:

@@ -2,6 +2,7 @@
 // Flags: /Gr
 // Leaf: ?Unlock@CNavSwitchableLeafNode@@AAEXPBVCNavRegion@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #include <stdint.h>
 #endif
@@ -38,8 +39,8 @@ public:
 template<class T,int N> class CSmallVector {
 public:
  T* Start; signed char Size;
- __forceinline const T* begin() const {return Start;}
- __forceinline const T* end() const {return Start+Size;}
+ FABLE_FORCEINLINE const T* begin() const {return Start;}
+ FABLE_FORCEINLINE const T* end() const {return Start+Size;}
 };
 class CNavRegion;
 // Layout: real RTTI base CANavQuadTreeNode+0, PRegion+16, Neighbours+20,

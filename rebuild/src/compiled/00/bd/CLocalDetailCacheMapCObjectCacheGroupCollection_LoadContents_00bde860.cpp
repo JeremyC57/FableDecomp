@@ -22,6 +22,7 @@
 // Layout (Ego_r.pdb, retail offsets confirmed by the body): CObjectCacheGroupCollection ObjectTypeCollections +0x20,
 //   Map +0x24, FileBlockPos +0x28, FileBlockSize +0x2c, OffsetIntoFileBlock +0x30, Loading bit 1 of +0x36;
 //   CObjectTypeCollection (retail 0x18): Type +4, Primitives +8, Next +0xc, Map +0x10, RenderUpdateNeeded +0x14.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
@@ -38,8 +39,8 @@ public:
     unsigned long        SourceChunkStreamPos;               // +0x10
     long                 SourceChunkBytesRemaining;          // +0x14
     void SetPositionAssumeWithinSourceChunk(unsigned long position);    // 0x00993C10
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -55,7 +56,7 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };
@@ -64,7 +65,7 @@ public:
     const unsigned char* StreamSource;                       // +0x18
     CMemoryDataInputStream(const unsigned char* data, long size);   // 0x00994930
     virtual ~CMemoryDataInputStream();                               // 0x00993B10
-    __forceinline const unsigned char* GetDataAndSkip(long bytes)
+    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long bytes)
     {
         if (bytes <= 0)
             return 0;
@@ -90,7 +91,7 @@ struct CTemporaryBuffer {                                    // 0x18 bytes
     long                    MemoryHandle;                    // +0x0c
     CScratchBuffer*         ScratchBuffer;                   // +0x10
     long                    AllocateType;                    // +0x14
-    __forceinline unsigned char* GetData() const { return Data; }
+    FABLE_FORCEINLINE unsigned char* GetData() const { return Data; }
 };
 class CMovableResource;
 class CMovableResourceMemoryPool { public:

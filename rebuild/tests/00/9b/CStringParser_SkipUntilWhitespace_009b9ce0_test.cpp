@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,8 +18,8 @@ extern "C" int __cdecl isspace(int);
 // Its class key is not needed: use the header's documented byte storage directly.
 class CStringParser:public CStringParserFields {
 protected:
- __forceinline bool CalcInQuotes(bool state,const char*first,const char*last)const {for(;first!=last;++first)if(*first=='"'||*first=='\'')state=!state;return state;}
- __forceinline void MoveStringPos(unsigned long count){if(count){*reinterpret_cast<bool*>(CursorPos)=CalcInQuotes(*reinterpret_cast<bool*>(CursorPos),(const char*)String+*reinterpret_cast<unsigned long*>(CursorPos+4),(const char*)String+*reinterpret_cast<unsigned long*>(CursorPos+4)+count);*reinterpret_cast<unsigned long*>(CursorPos+4)+=count;}}
+ FABLE_FORCEINLINE bool CalcInQuotes(bool state,const char*first,const char*last)const {for(;first!=last;++first)if(*first=='"'||*first=='\'')state=!state;return state;}
+ FABLE_FORCEINLINE void MoveStringPos(unsigned long count){if(count){*reinterpret_cast<bool*>(CursorPos)=CalcInQuotes(*reinterpret_cast<bool*>(CursorPos),(const char*)String+*reinterpret_cast<unsigned long*>(CursorPos+4),(const char*)String+*reinterpret_cast<unsigned long*>(CursorPos+4)+count);*reinterpret_cast<unsigned long*>(CursorPos+4)+=count;}}
 public:long SkipUntilWhitespace();
 };
 long CStringParser::SkipUntilWhitespace(){char*p=(char*)String+*reinterpret_cast<unsigned long*>(CursorPos+4);while(!isspace((unsigned char)*p)&&*p)++p;unsigned long oldPos=*reinterpret_cast<unsigned long*>(CursorPos+4);unsigned long endPos=p-(char*)String;MoveStringPos(endPos-oldPos);return endPos-oldPos;}

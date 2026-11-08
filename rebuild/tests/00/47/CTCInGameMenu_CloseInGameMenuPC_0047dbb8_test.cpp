@@ -1,5 +1,6 @@
 // Behaviour test for 0047dbb8: src/0047dbb8.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCInGameMenu::CloseInGameMenuPC(bool)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -31,15 +32,15 @@ double __fastcall GFGetTime();                       // 0x009E1BC0
 
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CUISound;
 struct CUIIconsDef : CDefBase {
@@ -49,7 +50,7 @@ struct CUIIconsDef : CDefBase {
 struct CIconsDefPointer {                            // CDefPointer<const NUISystem::CUIIconsDef>
     CUIIconsDef* Object;
     CIconsDefPointer() {}
-    __forceinline ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CUIIconsDef* operator->() const { return Object; }
 };
 

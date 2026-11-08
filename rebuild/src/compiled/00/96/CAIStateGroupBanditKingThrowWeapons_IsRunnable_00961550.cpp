@@ -10,6 +10,7 @@
 // (both out of line in this TU), CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: the boss component kept in esi (named local from the lookup); `d = dx*dx; d += dy*dy;` gives retail's X-term-first x87
 // order (a single sum puts the Y term first); the pointer is a named local (a temporary reuses the ctor's eax); `> R` gives `test ah,41h ; jne`.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CThing { public:
@@ -63,13 +64,13 @@ struct CThingWithTCs
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::value_type* FindEntry(long type)
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

@@ -7,6 +7,7 @@
 // Shape: MIN / MAX are the engine's argument-repeating macros (the MAX is evaluated again inside MIN's chosen branch) around an inline
 //   Sqr; the colour sum is built through by-value CRGBFloatColour operators (right operand first); Clamp must be __forceinline
 //   (a plain inline member stays a call).
+#include "fable_compiler.h"
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 inline float Sqr(float x) { return x * x; }
@@ -18,7 +19,7 @@ class CRGBFloatColour { public:
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
     CRGBFloatColour operator*(float f) const { return CRGBFloatColour(R * f, G * f, B * f, A * f); }
     CRGBFloatColour operator+(const CRGBFloatColour& c) const { return CRGBFloatColour(R + c.R, G + c.G, B + c.B, A + c.A); }
-    __forceinline void Clamp()
+    FABLE_FORCEINLINE void Clamp()
     {
         if (R < 0.0f) R = 0.0f; else if (R > 1.0f) R = 1.0f;
         if (G < 0.0f) G = 0.0f; else if (G > 1.0f) G = 1.0f;

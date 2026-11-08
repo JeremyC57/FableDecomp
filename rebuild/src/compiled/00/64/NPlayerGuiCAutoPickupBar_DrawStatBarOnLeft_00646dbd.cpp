@@ -13,6 +13,7 @@
 //   CInventoryItemDef Graphic +0x25 (packed); CMainGameComponent::Get() 0x013B86A0 (+0x24 state, paused byte +0xa4).
 // Shape: the countdowns as the landed CMultiStatBar::DrawStatBarOnLeft 0x00646C44 (`t -= frameTime / period`, tested <= 0),
 //   the paused test repeated per statement; the defs held by CDefPointer locals.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -36,8 +37,8 @@ class CInventoryItemDef : public CIVCountedPointeeBase { public:
 #pragma pack(pop)
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->IVRefCount == 0)
             Object->Delete();

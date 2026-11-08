@@ -1,4 +1,5 @@
 // Behaviour test for 007bb150: body copied from src/007bb150.cpp (CTCTrespasser::SeeIfAnyOccupantsKnowAboutDeed), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -17,7 +18,7 @@ public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

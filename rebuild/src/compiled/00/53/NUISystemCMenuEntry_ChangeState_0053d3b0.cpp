@@ -3,6 +3,7 @@
 // CChangingStateComponent::ChangeState52CF40; nativeMenuVT124662C slots51 SetParent52F330,108 LoadAndReturnDef530EC0,
 // 131 ExecuteActions5309B0,144 OnUnhovered53D970. PDB signatures donor5A8EF0,5AA830,5AAFF0,5B6CF0.
 // Native CUIDef::PCStyle221 versus donor255; CHoverable::WasHovered160 versus donor190; action pointers1A8/1B4 vs1D8/1E4.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -15,7 +16,7 @@ namespace NUISystem {
 class CUIDef:public CIVCountedPointeeBase { public:
  unsigned char DefinitionData[0x221-8];bool PCStyle;
  typedef void(CUIDef::*DeleteMethod)()const;
- __forceinline void ReleaseReference()const {CUIDef*p=const_cast<CUIDef*>(this);--p->IVRefCount;if(static_cast<long>(p->IVRefCount)==0)(this->*static_cast<DeleteMethod*>(__vftable)[1])();}
+ FABLE_FORCEINLINE void ReleaseReference()const {CUIDef*p=const_cast<CUIDef*>(this);--p->IVRefCount;if(static_cast<long>(p->IVRefCount)==0)(this->*static_cast<DeleteMethod*>(__vftable)[1])();}
 };
 struct DefinitionPointer {
  const CUIDef*Object;
@@ -31,7 +32,7 @@ struct ActionList;
 class CComponent { public:
  void*VTable;unsigned char ComponentData[0xb0-4];ChildArray Children;
  typedef void(CComponent::*ParentMethod)(CComponent*);
- __forceinline void SetParent(CComponent*p){(this->*static_cast<ParentMethod*>(VTable)[51])(p);}
+ FABLE_FORCEINLINE void SetParent(CComponent*p){(this->*static_cast<ParentMethod*>(VTable)[51])(p);}
 };
 class CMenuEntry:public CComponent { public:
  unsigned char StateComponentData[0x160-0xbc];bool WasHovered;unsigned char MenuData[0x1a8-0x161];

@@ -17,6 +17,7 @@
 //   Tried: this body (RTM and QFE-4035 compilers, same 75 bytes), and ~CWideString() { UnassignString(); --count; }
 //   with UnassignString in the TU. The leftover is register allocation only: the same `add eax,N` address formation
 //   appears in the PGuiDef thunk 0x01228B70 (parked), so it is likely one inline-expansion artefact of these thunks.
+#include "fable_compiler.h"
 #include <stddef.h>                                        // wchar_t
 
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14 (import thunk)
@@ -40,13 +41,13 @@ private:
     CWideStringData* storage_;
 };
 
-static __forceinline long DecrementOwners(long* owners)
+static FABLE_FORCEINLINE long DecrementOwners(long* owners)
 {
     long count = --*owners;
     return count;
 }
 
-static __forceinline void FreeData(CWideStringData* data)
+static FABLE_FORCEINLINE void FreeData(CWideStringData* data)
 {
     if (data != 0)
     {

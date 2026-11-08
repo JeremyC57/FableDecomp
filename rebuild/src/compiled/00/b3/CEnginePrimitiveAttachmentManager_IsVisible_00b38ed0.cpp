@@ -12,6 +12,7 @@
 // Shape: the loop-invariant `maxDistance - radius` is hoisted into the dead `sphere` argument slot; the distance is
 //   (camera - centre), the frustum test the same inline camera helper as CEngineInternalPrimitiveRepeatedZSprite::
 //   IsInsideFrustum 0x00BAA4E0 (radius by value into the dead `cameras` slot, one `||` near/far condition, planes 2, 3, 0, 1).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 #define CEnginePrimitiveAttachmentManager CEnginePrimitiveAttachmentManagerLayout
@@ -38,14 +39,14 @@ struct CEngineCameraDesc {                         // Ego_r.pdb, 0x6c bytes (CEn
     float     ZBufferEnd;                          // +0x64
     bool      StateValid;                          // +0x68
 };
-static __forceinline const CEngineCameraDesc& Desc(const CEngineCamera& c) { return *(const CEngineCameraDesc*)c.CameraDesc; }
-static __forceinline const C3DVector& CameraPosition(const CEngineCamera& c) { return Desc(c).WorldPosition; }
-static __forceinline float NearZ(const CEngineCamera& c) { return Desc(c).NearZPlane; }
-static __forceinline float FarZ(const CEngineCamera& c) { return Desc(c).FarZPlane; }
-static __forceinline const C3DVector& LookVector(const CEngineCamera& c) { return *(const C3DVector*)&c.LookVector_X; }
-static __forceinline const CPlane& FrustrumPlane(const CEngineCamera& c, int i) { return ((const CPlane*)c.FrustrumPlanes)[i]; }
+static FABLE_FORCEINLINE const CEngineCameraDesc& Desc(const CEngineCamera& c) { return *(const CEngineCameraDesc*)c.CameraDesc; }
+static FABLE_FORCEINLINE const C3DVector& CameraPosition(const CEngineCamera& c) { return Desc(c).WorldPosition; }
+static FABLE_FORCEINLINE float NearZ(const CEngineCamera& c) { return Desc(c).NearZPlane; }
+static FABLE_FORCEINLINE float FarZ(const CEngineCamera& c) { return Desc(c).FarZPlane; }
+static FABLE_FORCEINLINE const C3DVector& LookVector(const CEngineCamera& c) { return *(const C3DVector*)&c.LookVector_X; }
+static FABLE_FORCEINLINE const CPlane& FrustrumPlane(const CEngineCamera& c, int i) { return ((const CPlane*)c.FrustrumPlanes)[i]; }
 
-static __forceinline bool IsSphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
+static FABLE_FORCEINLINE bool IsSphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
 {
     C3DVector d = centre - CameraPosition(camera);
     float z = d.Dot(LookVector(camera));

@@ -12,6 +12,7 @@
 //   const shape over the real engine/CVectorMap.h (key copied into a local, explicit LowerBound / end() test), and `event.Pos = pos`
 //   is assigned straight after the time stamp: then VC7.1 puts the 0x49 key temporary in the dead `pos` slot ([esp+0x78]) as
 //   retail does (pos copied after the radii: the dead `def` slot, 2 diff lines; the old HasInterface + GetConstInterface form: 14).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
@@ -48,7 +49,7 @@ class CThing : public CBaseObject { public:
     std::bitset<274> UsingComponents;                   // +0x20
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc) const
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc) const
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;
@@ -88,7 +89,7 @@ struct SMessageNode {
 };
 struct CMessageList {                                   // STLport list<CMessageEvent>: the sentinel pointer only
     SMessageNode* m_pHead;
-    __forceinline void push_front(const CMessageEvent& value)
+    FABLE_FORCEINLINE void push_front(const CMessageEvent& value)
     {
         SMessageNode* position = m_pHead->m_pNext;
         SMessageNode* node = (SMessageNode*)malloc(sizeof(SMessageNode));

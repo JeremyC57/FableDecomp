@@ -20,6 +20,7 @@
 // Layout: real CClass prefix (engine/CClass.h); CThing interface bits +0x20, interface map +0x44, type flags +0x6c, state byte
 //   +0x91 are retail offsets (the shared CThing header is the Ego_r layout, 0x10 off from +0x6c on); CThingSearchTools is the
 //   shared header layout renamed under a #define so the class can declare its member templates (header declares none).
+#include "fable_compiler.h"
 #include <new>
 #include <stdlib.h>
 #include "engine/CClass.h"
@@ -66,8 +67,8 @@ public:
     unsigned char   Pad70[0x21];
     unsigned char   StateBits;                          // +0x91
     bool IsIncludedInThingScans() const { unsigned char f = StateBits; unsigned char nf = ~f; if ((f & 4) && (f & 8) && (nf & 1) && !(f & 0x20)) return true; return false; }
-    __forceinline unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (HasTC(type)) {
             long key = type;
@@ -109,7 +110,7 @@ class CThingFilter_CombatOverlappingSphere {
 public:
     C3DVector SpherePos;
     float     Radius;
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const CTCHitLocations* hitLocations;
         if (thing.GetInterface(&hitLocations, 0x7f)) {
@@ -132,7 +133,7 @@ public:
     const F2* PF2;
     const F3* PF3;
     const F4* PF4;
-    template <class T> __forceinline bool operator()(const T& thing) const
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const
     {
         return (*PF1)(thing) && (*PF2)(thing) && (*PF3)(thing) && (*PF4)(thing);
     }

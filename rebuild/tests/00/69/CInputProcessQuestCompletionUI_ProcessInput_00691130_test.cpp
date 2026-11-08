@@ -1,5 +1,6 @@
 // Behaviour test for 00691130: final.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent&, CProcessedInput&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -74,7 +75,7 @@ struct CTCMap {                                    // the thing's component map 
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind);   // 0x0040F020
-    __forceinline CTCQuestCompletionUI* Find(long kind)
+    FABLE_FORCEINLINE CTCQuestCompletionUI* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -84,8 +85,8 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCQuestCompletionUI* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCQuestCompletionUI* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CPlayer {
 public:

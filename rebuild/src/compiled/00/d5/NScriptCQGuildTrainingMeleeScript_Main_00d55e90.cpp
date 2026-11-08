@@ -18,6 +18,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -60,7 +61,7 @@ inline void CScriptThing::SetFriendsWithEverythingFlag(bool on) { if (PImp.Data)
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
@@ -73,7 +74,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 struct CMovieImpPointer {
     void* Data;
     void* Info;
-    __forceinline CMovieImpPointer() : Data(0), Info(0) {}
+    FABLE_FORCEINLINE CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4

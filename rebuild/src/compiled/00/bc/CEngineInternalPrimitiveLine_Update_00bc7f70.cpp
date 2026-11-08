@@ -12,6 +12,7 @@
 // Shape: the C3DVector members are whole POD assignments (`lea` of both ends); the base Alpha is copied from the stored
 // colour's alpha byte; the frame pointer is `Get(i) ? Get(i)->m_pFrame : 0` over the inline bounds-checked bank getter (the
 // second getter folds to `sbb ; and`), called even when null; both getters must be `__forceinline` (else GetFrame stays out of line).
+#include "fable_compiler.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
 
 #include "engine/C3DVector.h"
@@ -57,8 +58,8 @@ template <class T> struct CRetailVector {
 struct CGraphicBank {
     unsigned char               _pad[0x1e0];
     CRetailVector<SBankGraphic> m_records;         // +0x1e0
-    __forceinline SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
-    __forceinline CGraphicInfoFrame* GetFrame(unsigned long index) { return Get(index) ? Get(index)->m_pFrame : 0; }
+    FABLE_FORCEINLINE SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
+    FABLE_FORCEINLINE CGraphicInfoFrame* GetFrame(unsigned long index) { return Get(index) ? Get(index)->m_pFrame : 0; }
 };
 
 struct CEngineGlobal_01436e98 {

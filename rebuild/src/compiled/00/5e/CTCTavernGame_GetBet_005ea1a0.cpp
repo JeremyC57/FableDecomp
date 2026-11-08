@@ -11,6 +11,7 @@
 // knows the def pointer does not escape and keeps it in edi for the release); `GetText(def->Bet) + IntToWideString(BaseBet)`
 // is one expression, so the right operand (the inlined IntToWideString body: format into a local, copy out, destroy) is
 // built first and the GetText temporary gets its own frame word; both temporaries die before the def is released.
+#include "fable_compiler.h"
 #include <stddef.h>
 class CWideString {
 public:
@@ -21,7 +22,7 @@ public:
     void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-__forceinline CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
+FABLE_FORCEINLINE CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
 {
     CWideString text;
     text.Sprintf(L"%d", value);

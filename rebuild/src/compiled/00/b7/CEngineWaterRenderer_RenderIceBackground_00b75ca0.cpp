@@ -15,6 +15,7 @@
 // CTexture (engine/CTexture.h) holds the device texture at +0.
 // Shape: the bump constant is `scale * 0.5f` (0x0122F59C is the 0.5f literal; an extern float swaps the fld/fmul).
 
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
@@ -66,7 +67,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
@@ -283,7 +284,7 @@ public:
     void RealiseRenderState();                     // 0x00A058C0
     void DrawCurrentBuffersAsIndexedTris(unsigned long minVertexIndex, unsigned long vertexCount,
                                          unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60
-    __forceinline void SetTexture(long stage, const CTexture* texture)
+    FABLE_FORCEINLINE void SetTexture(long stage, const CTexture* texture)
     {
         void* deviceTexture = texture ? texture->PD3DTexture : 0;
         if (m_attachedTextures[stage] != deviceTexture) {
@@ -293,7 +294,7 @@ public:
         if (m_activeTextureStageCount < stage + 1)
             m_activeTextureStageCount = stage + 1;
     }
-    __forceinline void SetIndices(const CIndexBufferView* indices)
+    FABLE_FORCEINLINE void SetIndices(const CIndexBufferView* indices)
     {
         m_pCurrentIndices = indices;
         if (indices)
@@ -301,7 +302,7 @@ public:
         else
             m_pDevice->SetIndices(0);
     }
-    __forceinline void SetStreamSource(const CVertexBufferView* vertices)
+    FABLE_FORCEINLINE void SetStreamSource(const CVertexBufferView* vertices)
     {
         if (vertices)
             m_pDevice->SetStreamSource(0, vertices->PVertexBuffer, 0, vertices->Stride);
@@ -335,7 +336,7 @@ public:
 };
 extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCore* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCore* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

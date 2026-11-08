@@ -1,5 +1,6 @@
 // Behaviour test for 00663260: src/00663260.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CThingCreatureBase::GetCombatAnimationSet() const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,7 +17,7 @@ static int fails = 0;
 // virtual call; a release written in the pointer re-reads the frame slot or splits the decrement); the CDefPointer temporary is zero-initialised in the `push ecx` slot, the member address is computed before the
 // inline release (`lea esi,[ecx+34h]` above the null test) and returned after it (Ego_r.pdb
 // `?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ`: a const reference).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefVirtual {                            // the definition's vptr
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero

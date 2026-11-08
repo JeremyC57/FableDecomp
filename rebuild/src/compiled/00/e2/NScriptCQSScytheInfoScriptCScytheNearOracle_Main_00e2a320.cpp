@@ -19,6 +19,7 @@
 //   and the main loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }` so the loop exit keeps its own ~CTimer copy.
 // Naming wave 35: identity reg 00e29bcc "ScytheNearOracle" in 00e29b20; Alloc 00e2a020; vtable 012e23b8 slot 1; PDB ?Main@CScytheNearOracle@CQS_ScytheInfoScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CScytheNearOracle::Main (wave3/labels_alloc.tsv); PDB ?Main@CScytheNearOracle@CQS_ScytheInfoScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CScytheNearOracle@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQS_ScytheInfoScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -66,7 +67,7 @@ enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 struct CResourcePImp {                                  // the handles' counted implementation pointer
     void* Data;
@@ -100,10 +101,10 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
-__forceinline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+FABLE_FORCEINLINE CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 struct CCutsceneCastMap {

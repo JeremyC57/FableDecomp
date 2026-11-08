@@ -7,6 +7,7 @@
 // destructor AND the counted pointer's destructor `__forceinline`, plus a `new CPhysicsMeshInfo`
 // factory so the TU emits the vtable (and with it the deleting destructor). The flag test is
 // scheduled before the base vtable store.
+#include "fable_compiler.h"
 class CMeshDataBank;
 
 struct CMeshData_a2b740 {                          // CPhysicsMeshInfo::CMeshData
@@ -18,7 +19,7 @@ struct CMeshData_a2b740 {                          // CPhysicsMeshInfo::CMeshDat
 template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* object = m_pObject;
         if (object) {
@@ -33,13 +34,13 @@ class CMeshDataBankEntry { public:                        // vtable 0x0129CD28
     CMeshDataBank* Bank;                           // +0x04
     unsigned long  Index;                          // +0x08
     CMeshDataBankEntry() : Bank(0), Index(0) { }
-    __forceinline virtual ~CMeshDataBankEntry() { }
+    FABLE_FORCEINLINE virtual ~CMeshDataBankEntry() { }
 };
 
 class CPhysicsMeshInfo : public CMeshDataBankEntry { public:     // vtable 0x0129CD50
     CIVCountedPointer<CMeshData_a2b740> MeshData;  // +0x0c
     CPhysicsMeshInfo() { }
-    __forceinline virtual ~CPhysicsMeshInfo() { }
+    FABLE_FORCEINLINE virtual ~CPhysicsMeshInfo() { }
 };
 
 // The allocation that pulls CPhysicsMeshInfo's vtable (and its `??_G`) into this translation unit.

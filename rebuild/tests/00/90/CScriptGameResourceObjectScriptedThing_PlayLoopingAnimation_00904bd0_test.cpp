@@ -1,6 +1,7 @@
 // Behaviour test for 00904bd0: src/00904bd0.cpp copied verbatim; the scripted thing, its scripted-control component and
 // the looping play-animation action stubbed so the live gate, the optional clear (plus FinishCurrentAction for creatures) and
 // the queued action's arguments and increasing priority are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -42,7 +43,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

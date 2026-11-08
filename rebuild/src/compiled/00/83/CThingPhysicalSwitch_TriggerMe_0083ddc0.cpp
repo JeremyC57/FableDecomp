@@ -17,6 +17,7 @@
 //   same-TU noinline stand-in (gives the short `dec [edi+4] ; jne` release). The sound pair is a named local built from
 //   the second PeekDefinition before the call (a temporary pair moves the CSoundInit stores above the call), and
 //   CSoundInit assigns PlaybackType in its ctor body (retail stores it after OverrideID).
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 struct CEventBase { virtual void v00(); };
@@ -109,13 +110,13 @@ class CThing { public:
     unsigned short m_defGlobalIndex;                    // +0x8c
     unsigned short _pad8e;
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -129,7 +130,7 @@ class CThingPhysicalSwitch : public CThing { public:
     unsigned char _pad90[0xd0 - 0x90];
     bool          Triggered;                            // +0xd0
     const CThingPhysicalSwitchDef& PeekDefinition() const;   // 0x0083D900
-    __forceinline const CThingPhysicalSwitchDef& PeekDefinitionInline() const
+    FABLE_FORCEINLINE const CThingPhysicalSwitchDef& PeekDefinitionInline() const
     {
         CDefPointer<CThingPhysicalSwitchDef> def;
         GetDefinitionManager()->GetDef(m_defGlobalIndex, def);

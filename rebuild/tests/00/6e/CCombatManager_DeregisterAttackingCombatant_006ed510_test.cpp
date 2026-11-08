@@ -2,6 +2,7 @@
 // bodies for the out-of-line callees (map find/erase, intelligent pointer, string building, components) that record
 // what the body does. Scenarios: melee and ranged pattern bumps, both attacker-count branches, the non-combatant cleanup
 // (live and dead weapon item, unsheathe flag) and the stealth reset; every string temporary must be released.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -88,20 +89,20 @@ class CThing { public:
     long             m_defNameIndex;               // test: the def name
     CDefString GetDefName() const { CDefString name; name.m_index = m_defNameIndex; return name; }
     unsigned __int64 GetUID() const { return UniqueID; }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetConstInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -114,7 +115,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -273,12 +274,12 @@ struct CCombatantMap {
     void erase(const unsigned __int64& key) { ++g_combatantErases; g_erasedCombatantKey = key; }
 };
 
-__forceinline void TraceDeregister(CCharString attackerName, const CCharString& attackedName, const CCombatantInfo& attackedInfo)
+FABLE_FORCEINLINE void TraceDeregister(CCharString attackerName, const CCharString& attackedName, const CCombatantInfo& attackedInfo)
 {
     CombatTrace("Deregistering combatant " + attackerName + " was attacking " + attackedName + " (who has " +
                 GFIntToCharString(attackedInfo.DefenderInfo.Attackers.size() - 1) + " things still attacking)");
 }
-__forceinline void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
+FABLE_FORCEINLINE void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
 {
     TraceDeregister(g_DefStringTable.GetString(attacker->GetDefName()), attackedName, attackedInfo);
 }

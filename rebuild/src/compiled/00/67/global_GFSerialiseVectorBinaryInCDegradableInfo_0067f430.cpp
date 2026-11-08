@@ -19,6 +19,7 @@
 // Shape: the landed 0x00466BEB / 0x00672530 template: the inline 4-byte Read of the count, STLport's one-argument
 //   resize forwarding `resize(n, T())` (the temporary's implicit ctor zeroes EngineGraphic only), then
 //   traits.TransferBinaryIn(&stream, &out[i]) with the index strength-reduced to a byte offset and a down-counter.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -27,7 +28,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -92,7 +93,7 @@ __declspec(noinline) void CPersistTraits<CDegradableInfo>::TransferBinaryIn(CMem
     stream->Read(&value->BlocksNavigation, 1);
 }
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

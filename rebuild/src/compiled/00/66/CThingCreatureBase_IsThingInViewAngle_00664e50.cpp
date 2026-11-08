@@ -16,6 +16,7 @@
 //   store is dropped but the slot stays, which puts the facing vector at +0x14. The CTCLook lookup happens before the
 //   useLookAngle test (no null check); `if (...) return true; return false;` merges with the dead-thing early return at
 //   the end. Helpers must be __forceinline (plain inline leaves NormaliseAngle / GetAngleXY out of line).
+#include "fable_compiler.h"
 extern "C" double __cdecl fabs(double);
 extern "C" double __cdecl fmod(double, double);
 extern "C" double __cdecl atan2(double, double);
@@ -27,9 +28,9 @@ public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-__forceinline float NormaliseAngle(float angle)
+FABLE_FORCEINLINE float NormaliseAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod(angle, 1.0);
@@ -38,8 +39,8 @@ __forceinline float NormaliseAngle(float angle)
     }
     return angle;
 }
-__forceinline float GetAngleXY(float x, float y) { return NormaliseAngle((float)atan2(x, y) * 0.15915494f); }
-__forceinline float AngleDifference(float a, float b)
+FABLE_FORCEINLINE float GetAngleXY(float x, float y) { return NormaliseAngle((float)atan2(x, y) * 0.15915494f); }
+FABLE_FORCEINLINE float AngleDifference(float a, float b)
 {
     float difference = (float)fabs(NormaliseAngle(a) - NormaliseAngle(b));
     if (difference > 0.5f)

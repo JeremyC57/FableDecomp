@@ -1,5 +1,6 @@
 // Behaviour test for 0095a490: final.cpp copied verbatim, the callees stubbed and the inverse-square-root table filled
 // below so the directions, the dot test and the XY distance are observable. CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -29,7 +30,7 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // retail (PDB +0x54: the STLport vector Things at +0x40 is 12 bytes, not 16).
 #include <math.h>
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -42,8 +43,8 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float GetXYMagnitude() const { return (float)sqrt(X * X + Y * Y); }
-    __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
+    FABLE_FORCEINLINE C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
+    FABLE_FORCEINLINE void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }

@@ -10,10 +10,11 @@
 //   and its iterator's operator--() @ 0x004AA220 (own COMDATs, declared only).
 // Shape: STLport 4.6 _tree.c verbatim; the begin() branch inserts with `_M_insert(y, y, v)`, the other with
 //   `_M_insert(x, y, v)`; pair and iterator have user constructors (hidden-pointer return, iterator copied in place).
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

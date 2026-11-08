@@ -1,4 +1,5 @@
 // Behaviour test for 0066bd00: the source copied verbatim (function body and its same-TU stand-in), the remaining declared callees stubbed so calls and arguments are observable
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -44,13 +45,13 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     _Vector_base() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~_Vector_base() { if (_M_start != 0) _Alloc().deallocate(_M_start, _M_end_of_storage - _M_start); }
+    FABLE_FORCEINLINE ~_Vector_base() { if (_M_start != 0) _Alloc().deallocate(_M_start, _M_end_of_storage - _M_start); }
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     typedef _Tp* iterator;
     vector() { }
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
 };

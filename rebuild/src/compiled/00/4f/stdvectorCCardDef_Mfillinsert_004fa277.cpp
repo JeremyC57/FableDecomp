@@ -11,6 +11,7 @@
 //   CardName +0x3C + CardVal +0x40.
 // Shape: the 0x004F9DF8 model with POD members: the copy constructor and operator= inline memberwise, the implicit
 //   destructor a direct ~CParentDefClassBase call (no vtable store).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -72,8 +73,8 @@ public:
     long CardName;                                   // +0x3c
     long CardVal;                                    // +0x40
     virtual void v00();
-    __forceinline CCardDef(const CCardDef& o) : CParentDefClassBase(o), CardName(o.CardName), CardVal(o.CardVal) { }
-    __forceinline CCardDef& operator=(const CCardDef& o)
+    FABLE_FORCEINLINE CCardDef(const CCardDef& o) : CParentDefClassBase(o), CardName(o.CardName), CardVal(o.CardVal) { }
+    FABLE_FORCEINLINE CCardDef& operator=(const CCardDef& o)
     {
         CParentDefClassBase::operator=(o);
         CardName = o.CardName;
@@ -86,7 +87,7 @@ namespace std {
 template <class _T1, class _T2> void __fastcall _Construct(_T1* __p, const _T2& __val);           // 0x004EC08A
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -103,7 +104,7 @@ _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first,
                                                     _BidirectionalIter2 __result, const __false_type&);  // 0x004FA3E3
 
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for ( ; __first != __last; ++__first)
         *__first = __val;

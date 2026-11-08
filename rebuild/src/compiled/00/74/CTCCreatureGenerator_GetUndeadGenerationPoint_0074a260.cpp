@@ -13,6 +13,7 @@
 // Constants: 1.5f 0x0125AADC, 0.01f 0x01230A5C, 2^32 0x0122DCB4, 0.2f 0x012305A0, 1.0f 0x0122DED8, 0.5f 0x0122F59C.
 // Layout: CTCCreatureGenerator GenParams.GenerationRadius +0x28, PExclusionArea +0xa4 (retail; PDB +0x38 / +0xc0);
 // CThing bitset +0x20, map +0x44, PhysicsTC +0x60.
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -61,8 +62,8 @@ class CThing { public:
     unsigned char   _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
     const C3DVector& GetPos() const;                    // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTCConst(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTCConst(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

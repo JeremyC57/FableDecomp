@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -386,7 +387,7 @@ class CBase { public:
 };
 extern void* g_RotateAroundVTable[]; //0125C674; RTTI CRotateAround
 extern void* g_OrbitGameVTable[]; //0125C6DC; RTTI COrbitGame
-struct CRotateAround:CBase {float StringLengthXY,HeightOffset,XAxis[3],YAxis[3],Theta;__forceinline CRotateAround(CGameCameraManager* m,const CCameraModeDefPointer& d):CBase(m,d){VTable=g_RotateAroundVTable;}};
+struct CRotateAround:CBase {float StringLengthXY,HeightOffset,XAxis[3],YAxis[3],Theta;FABLE_FORCEINLINE CRotateAround(CGameCameraManager* m,const CCameraModeDefPointer& d):CBase(m,d){VTable=g_RotateAroundVTable;}};
 struct COrbitGame:CBase {float OrbitState[6];COrbitGame(CGameCameraManager* m,const CCameraModeDefPointer& d):CBase(m,d){VTable=g_OrbitGameVTable;}};
 }
 struct CCountedCameraMode {NCameraModes::CBase* Data;void* Info;CCountedCameraMode(NCameraModes::CBase*);}; //0056C880; native owned parameter consumed by697E20

@@ -17,6 +17,7 @@
 // above the caller in the same TU; CMainGameComponent::Get() is read first through an inline accessor (ebx before the
 // argument chain); the vector's start is loaded into a local each pass so the size test and the element read share it.
 // Layout: retail CHeroAbilityDef quick-access item +0x98; CTCInventory quick-access slots vector<long> +0x148.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -43,7 +44,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -76,7 +77,7 @@ class CHeroAbilityDef { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
@@ -97,7 +98,7 @@ public:
 private: public:
     CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
 };
-__forceinline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
+FABLE_FORCEINLINE CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
 struct SAbilityEntry {                               // std::pair<long, CDefPointer<const CHeroAbilityDef> >

@@ -3,6 +3,7 @@
 // Leaf: InsertGrow
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Layout: element stride28 derived from retail pointer division and allocation; concrete identity uncertain except cited caller.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
@@ -36,7 +37,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_006f3f00* first,Elemen
  for(;first!=last;++first)first->~Element_006f3f00();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_006f3f00<T>::InsertGrow(T* position,const T& value,const Tag_006f3f00&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

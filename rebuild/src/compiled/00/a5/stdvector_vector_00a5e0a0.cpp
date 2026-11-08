@@ -8,6 +8,7 @@
 // Shape: the landed 0x00708830 verbatim with this row's element: `_Vector_base(__x.size(), a)` then `_M_finish =
 //   __uninitialized_copy(x._M_start, x._M_finish, _M_start, __false_type())` -- STLport's default type traits call a user class
 //   non-POD, so the copy is the null-tested placement loop, not memmove; `__forceinline` on __uninitialized_copy keeps it inline.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 enum EVertexStreamDataType { };                          // Ego_r.pdb (enumerators not needed)
@@ -35,7 +36,7 @@ public:
 };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

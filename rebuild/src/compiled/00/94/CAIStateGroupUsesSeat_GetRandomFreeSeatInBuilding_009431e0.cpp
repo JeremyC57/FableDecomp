@@ -12,6 +12,7 @@
 // random step `seed = ROR13(seed * 0x24a1 + 0x24df)` and `count ? r % count : 0`.
 // No engine header for this class; the seat std::list is embedded at +0x8 of the building component (head +0xc).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -58,8 +59,8 @@ struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 by
 
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)

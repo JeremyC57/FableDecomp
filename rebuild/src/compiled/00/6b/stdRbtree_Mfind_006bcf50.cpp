@@ -13,10 +13,11 @@
 //   pointer +0, node count +4, comparator +8.
 // Value: pair<const CCharString, C2DVector> (_Select1st); only the key is read, the mapped type
 //   only names the instantiation.
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

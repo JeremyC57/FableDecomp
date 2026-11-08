@@ -22,6 +22,7 @@
 // Layout: engine/CCreatureAction_BriarRoseShotFarOutof.h puts PShot at the PDB's +0x12c; retail CCombatActionBase is 0x114
 //   bytes (landed ctor 0x008C39A0 stores PShot's vtable at +0x114), so `this` is modelled locally with PShot at +0x114.
 //   CWeaponDef +0xa0 = Shot index, CThingShotDef +0x60 = TC name string index and +0x7c = thing def index (retail offsets).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 
@@ -140,7 +141,7 @@ class CThing { public:
     const C3DVector& GetPos() const;              // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params);   // 0x004C9D60
 };
-__forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
+FABLE_FORCEINLINE bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
 {
     CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
     return appearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -152,7 +153,7 @@ class CThingObject;
 class CThingObject { public:
     static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
-__forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
     return ((CThing*)CThingObject::Create(defIndex, *(&position), creature->PlayerNumber, 0, 0, name));
 }

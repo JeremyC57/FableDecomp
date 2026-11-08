@@ -3,6 +3,7 @@
 // +0x104; 8 = CRedefinerList), CList::AreThereAnyDeletions (slot 169, +0x2A4), CList::ScrollUntilChild (slot 173, +0x2B4),
 // CObserver::ObserveEvent (observer slot 3 on this+4). Parent is re-read after the GetType call and null-tested again: the
 // downcast is a named pointer local tested on its own. Name: Ego_r.pdb ?OnHovered@CMenuEntry@NUISystem@@MAEXXZ.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -18,7 +19,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

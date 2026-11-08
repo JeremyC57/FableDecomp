@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -443,7 +444,7 @@ FABLE_STATIC_ASSERT(sizeof(CPhysicsMethods)==sizeof(CTCPhysicsBase));
 class CThing { public:
  unsigned char _nativeBeforePhysics[0x60];
  CPhysicsMethods* PPhysics;
- __forceinline CPhysicsMethods* GetPhysics() const {return PPhysics;}
+ FABLE_FORCEINLINE CPhysicsMethods* GetPhysics() const {return PPhysics;}
 };
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //00A01C10

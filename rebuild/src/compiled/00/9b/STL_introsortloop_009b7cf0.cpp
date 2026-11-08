@@ -10,6 +10,7 @@
 //   __partial_sort @ 0x009B6A40.
 // Shape: STLport _algo.c __introsort_loop with partial_sort and __median inlined (__median's nested if/else returns pick
 //   first / middle / last - 1); `last - first > 16` compiles to `and eax,-4 ; cmp eax,40h`.
+#include "fable_compiler.h"
 class CWideString {
 public:
     CWideString(const CWideString& other);              // 0x0099B720
@@ -27,7 +28,7 @@ template <class _Tp> struct less {
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _Tp, class _Compare>
-__forceinline const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
+FABLE_FORCEINLINE const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {
     if (__comp(__a, __b))
         if (__comp(__b, __c))

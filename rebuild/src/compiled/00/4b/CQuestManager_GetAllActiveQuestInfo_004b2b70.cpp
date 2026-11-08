@@ -13,6 +13,7 @@
 // first argument's word as the stale value); STLport push_back with a placement copy under VC's null test and a
 // `__false_type` tag with a user ctor; the key, the tag and the def-name temporary all reuse the dead argument
 // slots; `this` is parked in the entry frame word for the head re-read.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);             // 0x0099EC30
@@ -72,7 +73,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const
+    FABLE_FORCEINLINE CTCBase* Find(long type) const
     {
         const CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -86,8 +87,8 @@ class CThing { public:
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
     CTCMap        Components;                          // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
     CDefString GetDefName() const;                     // 0x004C7CC0
 };
 class CTCQuestCard { public:                                  // TC type 0x6c (Ego_r.pdb)

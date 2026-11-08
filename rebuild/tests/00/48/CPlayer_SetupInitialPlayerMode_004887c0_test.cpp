@@ -1,5 +1,6 @@
 // Behaviour test for 004887c0: src/004887c0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CPlayer::SetupInitialPlayerMode()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,7 +37,7 @@ struct CTCMap {
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const unsigned long& type);   // 0x0040F020
-    __forceinline CTCBase* Find(long type)
+    FABLE_FORCEINLINE CTCBase* Find(long type)
     {
         CTCEntry* it = LowerBound((unsigned long)type);
         if (it == _M_finish || type < it->Type)
@@ -49,9 +50,9 @@ class CThing { public:
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
     CTCMap        Components;                          // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) { return Components.Find(type); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
             *ppOut = (T*)GetTC(type);

@@ -11,6 +11,7 @@
 // 0x006B8310. Literals 0x0126CFB0, 0x0126BC64, 0x0126CF9C, 0x0122D70E (""); CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout: Ego_r.pdb CTCAssassinRush less 4 past the 12-byte vector (PDef +0x14, AssassinTrail +0x18,
 // AssassinDisplacementTrail +0x20, SpellLevel +0x8c, RadialBlurFadeKey +0x98); retail def blur block +0x44..+0x64.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -73,7 +74,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
     const C3DVector& GetPos() const;               // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -86,7 +87,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

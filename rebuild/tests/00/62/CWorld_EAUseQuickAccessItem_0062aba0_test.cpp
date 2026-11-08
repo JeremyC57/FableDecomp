@@ -1,5 +1,6 @@
 // Behaviour test for 0062aba0: final.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CWorld::EAUseQuickAccessItem(const CGameEvent*)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -38,7 +39,7 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline long ReadLong() { long value; Read(4, &value); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(4, &value); return value; }
 };
 class CGameEvent { public:
     long          Type;                            // +0x00
@@ -118,7 +119,7 @@ class CThingCreatureBase { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;
@@ -127,7 +128,7 @@ class CThingCreatureBase { public:
             it = map->last;
         return (T*)it->component;
     }
-    template<class T> __forceinline T* GetTC2(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC2(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;

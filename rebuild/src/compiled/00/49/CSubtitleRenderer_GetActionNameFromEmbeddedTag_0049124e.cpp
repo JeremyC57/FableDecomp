@@ -9,6 +9,7 @@
 //   GetAssignedInputForMovementAction 0x00408D90 (GAME_ACTION 0x3c), GetActionName 0x00446720.
 // Shape: CCharString::StartsWith / EndsWith (FableWin ?StartsWith@CCharString@@QBE_NABV1@@Z, ?EndsWith@...) are inline;
 //   the suffix temporary is built before the converted tag (argument first) and destroyed after it.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int n);   // 0x00BFEAF8
@@ -27,13 +28,13 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
-    __forceinline const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }   // "" = 0x0129AAF4
-    __forceinline long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
-    __forceinline bool StartsWith(const CCharString& prefix) const
+    FABLE_FORCEINLINE const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }   // "" = 0x0129AAF4
+    FABLE_FORCEINLINE long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
+    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const
     {
         return strncmp(GetPString(), prefix.GetPString(), prefix.Length()) ? false : true;
     }
-    __forceinline bool EndsWith(const CCharString& suffix) const
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
     {
         long offset = Length() - suffix.Length();
         if (offset >= 0)

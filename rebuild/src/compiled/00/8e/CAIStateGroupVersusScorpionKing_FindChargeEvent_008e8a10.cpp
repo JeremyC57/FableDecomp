@@ -10,6 +10,7 @@
 // that chain returns false (`xor al,al` arm placed first), every failed link jumps to the shared `mov al,1`
 // tail. The manifest name is kept; the body is a "target may be charged" predicate. `this` is the PDB header
 // layout (unused here).
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_VersusScorpionKing.h"
 
 class CTCBase;
@@ -32,7 +33,7 @@ class CThing { public:
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

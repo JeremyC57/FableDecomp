@@ -7,6 +7,7 @@
 // GiveHeroGold 0x00435000.
 // Shape: the key shares the dead argument slot (the argument lives in ebx); the presence test is the raw bitset word
 // AND mask in the `if` (a bool-returning `!= 0` helper gives `shr ; test al,1`); the entry pick is one ternary.
+#include "fable_compiler.h"
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -21,7 +22,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                            // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_statusFlags;                           // +0x91 (bit 0: dead)
-    __forceinline CTCBase* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

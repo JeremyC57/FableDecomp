@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -2173,7 +2174,7 @@ public:
         if(bits[(unsigned)type>>5]&(1UL<<((unsigned)type&31)))return true;
         return false;
     }
-    template<class T>__forceinline bool GetTC(T**out) {
+    template<class T>FABLE_FORCEINLINE bool GetTC(T**out) {
         const unsigned long*bits=reinterpret_cast<const unsigned long*>(reinterpret_cast<const CThingLayout*>(this)->UsingComponents);
         if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))) {
             ETCInterfaceType type=T::StatGetInterfaceType();
@@ -4814,7 +4815,7 @@ public:
 private:unsigned char unobservedVillageState[TEST_TAIL(sizeof(CTCVillageLayout)-sizeof(CTCBase))];
 };
 class CTCVillageMember:public CTCBase {
-public:static __forceinline ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x23;}
+public:static FABLE_FORCEINLINE ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x23;}
     CTCVillage*GetPVillage()const;
 };
 class CAIStateGroup_MinionGuardFollowPlayer:public CAIStateGroupBase {

@@ -11,6 +11,7 @@
 // the faction component (TC 0x49) goes through the const LowerBound copy.
 // Layout: retail CThing interface bitset +0x20, CVectorMap +0x44; CThingAICreature's last-attacker intelligent pointer +0xF4
 // (descriptive); the world's message event manager +0x60; the faction component (TC 0x49) keeps its faction at +0x18.
+#include "fable_compiler.h"
 class C3DVector;
 class CFaction;
 class CTCBase;
@@ -83,8 +84,8 @@ class CThing { public:
     unsigned long UsingComponents[9];                   // +0x20
     CInterfaceMap Components;                           // +0x44
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
@@ -93,7 +94,7 @@ class CThing { public:
             it = map->last;
         return (T*)it->second;
     }
-    template <class T> __forceinline const T* GetConstTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetConstTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

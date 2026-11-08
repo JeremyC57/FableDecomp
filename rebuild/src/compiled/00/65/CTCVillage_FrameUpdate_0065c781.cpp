@@ -6,6 +6,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -47,7 +48,7 @@ public:
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -103,7 +104,7 @@ struct CGroupEntryRef {                         // CDefPointer-like counted poin
         virtual void Destroy();
     };
     struct CEntry : CEntryBase, CRefCounted {
-        __forceinline void ReleaseTemporary()
+        FABLE_FORCEINLINE void ReleaseTemporary()
         {
             DecRef();
             if (GetRefCount() == 0)
@@ -115,7 +116,7 @@ struct CGroupEntryRef {                         // CDefPointer-like counted poin
         CCharString SoundName;                  // +0x24
     };
     CEntry* Object;
-    __forceinline ~CGroupEntryRef()
+    FABLE_FORCEINLINE ~CGroupEntryRef()
     {
         if (Object)
             Object->ReleaseTemporary();

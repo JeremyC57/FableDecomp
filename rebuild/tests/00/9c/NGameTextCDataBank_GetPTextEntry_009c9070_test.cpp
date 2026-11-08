@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stddef.h>
 // BEGIN exact source snapshot SHA256 51ad231dbec1d44ed08139169bd9983a05f9f62cc945921f0c9f7e4b385822e5
@@ -30,7 +31,7 @@ class CResource { public:
     virtual void Delete() const { delete const_cast<CResource*>(this); }
     void ListRemove();                        // 0x009FBFB0
     void ListInsert(CResource*, CResource*);  // 0x009FBF90
-    __forceinline void SetAsMRU();
+    FABLE_FORCEINLINE void SetAsMRU();
 };
 class CResourceList { public:
     void* VTable;                              // +0
@@ -52,7 +53,7 @@ FABLE_STATIC_ASSERT(offsetof(CResourceList,CurrentFrame)==0x2c);
 FABLE_STATIC_ASSERT(offsetof(CResourceList,UnloadedThisFrame)==0x38);
 FABLE_STATIC_ASSERT(sizeof(CResourcePdb)==sizeof(CResource));
 FABLE_STATIC_ASSERT(sizeof(CResourceListPdb)==sizeof(CResourceList));
-__forceinline void CResource::SetAsMRU()
+FABLE_FORCEINLINE void CResource::SetAsMRU()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();

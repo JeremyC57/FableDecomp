@@ -11,6 +11,7 @@
 // Shape: the list is modelled as STLport (by-value iterator with a copy ctor, push_back -> insert(end(), x) -> create_node)
 //   so the callee-saved pushes stay at entry; insert reads position->Prev into a local before linking; the attached
 //   primitive is a named pointer local, so `this` for Attach is loaded before the argument pushes.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size); // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
@@ -42,7 +43,7 @@ public:
     }
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -51,7 +52,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEnginePersistentPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -74,18 +75,18 @@ public:
     virtual void Release();
     CIVCountedPointer Data;                        // +0x04
     CEnginePrimitiveHandle() {}
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline void Set(CEnginePersistentPrimitiveBase* object)
+    FABLE_FORCEINLINE void Set(CEnginePersistentPrimitiveBase* object)
     {
         Clear();
         Data.Object = object;
     }
-    __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
+    FABLE_FORCEINLINE CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
     {
         Clear();
         Data = other.Data;

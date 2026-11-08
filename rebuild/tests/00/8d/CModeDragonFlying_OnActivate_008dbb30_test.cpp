@@ -1,6 +1,7 @@
 // Behaviour test for NCreatureMode::CModeDragonFlying::OnActivate (0x008DBB30): model and body verbatim from final.cpp
 // with the out-of-line callees stubbed; checks the suspend call for a player creature only, the flag clear, the
 // un-willable call, the leg length, the speed/acceleration priming, the animation priming and the clamped playback rate.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 #ifndef _MSC_VER
@@ -29,7 +30,7 @@ class CThing { public:
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -99,7 +100,7 @@ struct CModeDragonFlying : CModeBase {
     void OnActivate();
 };
 
-__forceinline float Distance(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE float Distance(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;
     float dy = a.Y - b.Y;

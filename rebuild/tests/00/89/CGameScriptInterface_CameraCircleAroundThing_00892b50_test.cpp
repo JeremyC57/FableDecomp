@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class C3DVector { public:
     float X, Y, Z;
@@ -37,7 +38,7 @@ public:
     T*              Object;
     CCPPointerInfo* Info;
     static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
-    __forceinline CCountedPointer(T* object) : Object(object)
+    FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
             Info = new CCPPointerInfo(DeleteObject, Object);

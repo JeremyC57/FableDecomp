@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -1223,8 +1224,8 @@ struct ThingNative {
  void SuspendAI(bool,void*); //833A10, actual CThingAICreature donor53A870, native suspenders1CC/AISuspended1C8bit1
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0xc];EmitterMethods*Emitter;void*PositionInterface;unsigned char Unrecovered64[8];unsigned long TypeFlags;NativeDefinition*Definition;unsigned char Unrecovered74[0x18];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){int key=type;ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;return p->Component;}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){int key=type;ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;return p->Component;}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 
 struct WeaponMethods:CTCWeapon{long GetWeaponClass()const;}; //5DA7F0, def+2C (PDB Class), not propagated CCategory label
@@ -1255,7 +1256,7 @@ struct BaseIntelligentPointer {
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
- __forceinline IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
+ FABLE_FORCEINLINE IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
  IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(p.GetPItem());return*this;}
 };

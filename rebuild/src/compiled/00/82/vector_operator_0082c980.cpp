@@ -12,6 +12,7 @@
 //   the tag of the uninitialized copy is homed on the dead `x` argument slot. Same-TU noinline stand-ins for the two
 //   callees (only operator= is graded); explicit instantiation of operator=. Lever: `__copy` / `__copy_ptrs` are
 //   `__forceinline` -- plain `inline` leaves the __false_type copy as a cdecl call (206v222).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);           // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -37,7 +38,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __f
 }
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -49,7 +50,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

@@ -1,5 +1,6 @@
 // Behaviour test for 0080ca20: src/0080ca20.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCDExplosion::GiveDamageToThing(CThingGameObject& thing)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -93,8 +94,8 @@ public:
     unsigned long ThingTypeFlags;                   // +0x6C
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     const C3DVector& GetPosition() const;           // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &Interfaces;

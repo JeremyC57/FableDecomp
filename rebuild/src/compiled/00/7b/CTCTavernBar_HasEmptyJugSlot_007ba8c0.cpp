@@ -11,6 +11,7 @@
 //   pointer, +0x10 filled flag (descriptive names; landed 0x0084A180 has the +0x10 byte); strings 0x0126DCC0/0x0126DCD4 + "_0".
 // Shape: GetEmptyJugSlot's body over function-local pos/rh/pointIndex (C3DVector and CRightHandedSet without constructors)
 //   and a register slot counter; on success the claimed point is handed straight back through OnActionUse.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
@@ -58,7 +59,7 @@ class CTCTavernBar { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CJugVector Jugs;                                // +0x0c (PDB +0x0c; retail vector 12 bytes)
-    __forceinline CIntelligentPointer<CThingObject> GetJug(long index) const
+    FABLE_FORCEINLINE CIntelligentPointer<CThingObject> GetJug(long index) const
     {
         if ((unsigned long)index >= Jugs.size())
             return CIntelligentPointer<CThingObject>(0);

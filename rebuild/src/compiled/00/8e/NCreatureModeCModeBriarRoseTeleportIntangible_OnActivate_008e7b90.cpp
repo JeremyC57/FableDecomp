@@ -17,6 +17,7 @@
 //   released at the end; GetSubDef has a same-TU stand-in body (out pointer does not escape, so the holder lives in ebx); the
 //   six channel transitions run only for a positive count, through an inline CGlobalComponents::GetEnvironment() (the getter call
 //   then precedes the argument pushes).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -91,7 +92,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;                // +0x44
     unsigned char  _pad54[0x1c];
     CDefClassBase* PDef;                        // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -12,6 +12,7 @@
 // Shape: same GetSubDef stand-in and helper-name reference binding as AddParticles (0x0071C7C0); the emitter is held as a const
 //        CThing* and IS_THING_ALIVE takes an explicit (CThing*) cast so the temporary is stored before the call; the list item
 //        is a named local pushed by reference.
+#include "fable_compiler.h"
 #include <math.h>
 #include <stdlib.h>
 class CCharString {
@@ -48,7 +49,7 @@ struct CIntelligentPointerList {
     };
     _Node* _M_node;
     void push_back(const CIntelligentPointer<CThing>& item);   // 0x004BA4E0
-    __forceinline _Node* erase(_Node* node)
+    FABLE_FORCEINLINE _Node* erase(_Node* node)
     {
         _Node* next = node->_M_next;
         _Node* prev = node->_M_prev;
@@ -68,8 +69,8 @@ public:
 template<class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -92,8 +93,8 @@ template<class T> struct vector {
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~vector()
+    FABLE_FORCEINLINE vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE ~vector()
     {
         if (_M_start)
             free(_M_start);
@@ -123,7 +124,7 @@ public:
     const CThingDef* PDef;                              // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                              // +0x91
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
     const C3DVector& GetPos() const;               // 0x004C73D0
     bool GetTCDriver(CTCDParticleEmitter** out);        // 0x004ACB50
 };

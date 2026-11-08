@@ -18,6 +18,7 @@
 // body that never stores it: CListPointer ShareData/Release, the screen map operator[] (key read by value),
 // GetProfileNames and ~vector<CWideString> (stand-in bodies below). With them declared only: 540v546 (frame 0x44,
 // index loop reloading the names vector), 546v546 with the names stand-ins alone (key in its own word).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
@@ -74,11 +75,11 @@ namespace NUISystem { class CList; }
 struct CListPointer {
     NUISystem::CList* Data;
     CCPPointerInfo*   Info;
-    __forceinline CListPointer(const CCountedPointer<NUISystem::CComponent>& other) : Data(0), Info(0)
+    FABLE_FORCEINLINE CListPointer(const CCountedPointer<NUISystem::CComponent>& other) : Data(0), Info(0)
     {
         ShareData((NUISystem::CList*)other.Data, other.Info);
     }
-    __forceinline ~CListPointer() { Release(); }
+    FABLE_FORCEINLINE ~CListPointer() { Release(); }
     void ShareData(NUISystem::CList* data, CCPPointerInfo* info);
     void Release();
     NUISystem::CList* operator->() const { return Data; }

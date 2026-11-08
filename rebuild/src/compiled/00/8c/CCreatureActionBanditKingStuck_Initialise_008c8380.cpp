@@ -18,6 +18,7 @@
 //   the created thing goes through a CIntelligentPointer<CThing> temporary assigned with GetPItem/SetPItem, built
 //   straight from the CreateSpecialEffect call (a named `created` local puts the temporary over the effect word);
 //   CalcAndLookup / GetSubDef have same-TU out-only stand-ins, LowerBound a same-TU body, GetInterface the ternary pick.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
@@ -84,7 +85,7 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

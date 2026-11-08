@@ -9,6 +9,7 @@
 // Shape: the component is kept in a local (edi) because it is used twice; no CanSee test here.
 // The engine header flattens the base, so the class is modelled locally; the pointer member is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -29,7 +30,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -43,7 +44,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline const CInterfaceMap::value_type* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE const CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -95,8 +96,8 @@ private:
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }

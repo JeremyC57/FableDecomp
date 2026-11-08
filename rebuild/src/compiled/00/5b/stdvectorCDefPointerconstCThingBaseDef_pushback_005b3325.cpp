@@ -16,6 +16,7 @@
 // edx,edx`), the inline CDefPointer copy constructor stores the object before its own null test and add-refs the def's count
 // at +4 (`inc dword ptr [eax+4]`); the empty __false_type temporary is homed in the dead high byte of x's slot ([ebp+0Bh]).
 // STLport's inline _Construct must be `__forceinline` in this size TU (plain `inline` is called out of line: 55 v 56).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 class CThingBaseDef;                                 // the element's pointee (only named here; a class in Ego_r.pdb)
@@ -40,7 +41,7 @@ class _STLP_alloc_proxy : public MaybeReboundAlloc {
 public:
     Value _M_data;
 };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class T, class Alloc = allocator<T> >
 class vector {
 public:

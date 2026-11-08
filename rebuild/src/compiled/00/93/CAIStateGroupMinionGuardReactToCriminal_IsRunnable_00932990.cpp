@@ -15,6 +15,7 @@
 // operator= names the item before SetPItem, which keeps the &PHero lea after the temporary's GetPItem call.
 // Layout: Ego_r.pdb CAIStateGroup_MinionGuardReactToCriminal (PHero +0x14); the engine header flattens the base, so the
 // model is local. CTCVillage::PCriminalHandler +0xdc as in the landed 0x009331E0.
+#include "fable_compiler.h"
 #include <string.h>
 
 class CTCBase;
@@ -30,11 +31,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -45,7 +46,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -87,7 +88,7 @@ class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                             // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

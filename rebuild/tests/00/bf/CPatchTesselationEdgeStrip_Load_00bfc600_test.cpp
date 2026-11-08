@@ -1,6 +1,7 @@
 // Behaviour test for 00bfc600: final.cpp copied verbatim (32-bit `long`, `__int64`, calling-convention keywords and the
 // CRT memcpy name under g++; build with `g++ -w -fpermissive`); the stream's slow path and the four LoadVerts
 // instantiations are stubbed to record their order and to fail on demand. CPatchTesselationEdgeStrip::Load
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -39,8 +40,8 @@ class CMemoryDataInputStream { public:
     long m_10;
     long m_remaining;                      // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -54,13 +55,13 @@ class CMemoryDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned short ReadUShort()
+    FABLE_FORCEINLINE unsigned short ReadUShort()
     {
         unsigned short value;
         Read(&value, sizeof(value));
         return value;
     }
-    __forceinline bool ReadBool()
+    FABLE_FORCEINLINE bool ReadBool()
     {
         unsigned char value;
         Read(&value, sizeof(value));

@@ -19,6 +19,7 @@
 //   (ability match && (empty name || (IS_THING_ALIVE(performer) && performer's script name == name))) so the by-value
 //   CScriptThing temporary exists only on the last arm (destruction flag in the first frame word, result in bl); the
 //   performer passed to IS_THING_ALIVE is bound through its const-reference parameter (a frame temporary).
+#include "fable_compiler.h"
 #include <string.h>
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
@@ -56,7 +57,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -65,7 +66,7 @@ class CCharString { public:
         }
         return PStringData->Data == text;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -99,7 +100,7 @@ struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char Metadata[0x41]; unsigned char LifeFlags;
     CScriptThing GetScriptThing() const;                // 0x004C7E50
-    __forceinline CTCEntityEvents* GetEvents()
+    FABLE_FORCEINLINE CTCEntityEvents* GetEvents()
     {
 
         ComponentMap* map = &Components;
@@ -122,8 +123,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
 struct EventBase {
     virtual ~EventBase();

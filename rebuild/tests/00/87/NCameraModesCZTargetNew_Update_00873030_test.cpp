@@ -1,4 +1,5 @@
 // Behaviour test for retail 0x00873030: candidate source embedded verbatim, then stubs and a main.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -66,8 +67,8 @@ class CThing { public:
     unsigned char _pad68[0x29];
     unsigned char Dead : 1;                             // +0x91 bit 0
     const CTCGraphicAppearance* GetGraphicAppearance() const { return PGraphicAppearance; }
-    __forceinline unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
-    template<long TYPE> __forceinline CTCBase* GetTC() const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
+    template<long TYPE> FABLE_FORCEINLINE CTCBase* GetTC() const
     {
         long type = TYPE;
         const CInterfaceMap* map = &Interfaces;

@@ -8,6 +8,7 @@
 // Layout: retail CThing (16 bytes narrower than the PDB view): UsingComponents bitset<274> +0x20, Components CVectorMap
 //          {vector +0x44, Compare +0x50, Dirty +0x51}, UpdateComponentsList +0x54, PTCDriver +0x5C, PhysicsTC +0x60,
 //          PTCGraphicAppearance +0x64, AddingTCsPermitted bit 6 of +0x93 (PDB +0xa3).
+#include "fable_compiler.h"
 extern "C" int  __cdecl puts(const char* text);         // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();                      // 0x00BFEAEC
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
@@ -67,7 +68,7 @@ extern CTCRemovalList g_TCRemovalList;                  // 0x013B8A24
 
 struct CTCBitset {                                      // std::bitset<274>
     unsigned long m_words[9];
-    __forceinline bool test(unsigned long position) const
+    FABLE_FORCEINLINE bool test(unsigned long position) const
     {
         if (position >= 274) {
             puts("bitset");
@@ -97,7 +98,7 @@ struct CTCEntryVector {
     STCEntry* _M_finish;
     STCEntry* _M_end_of_storage;
     void _M_insert_overflow(STCEntry* pos, const STCEntry& x, const __false_type& tag, unsigned long fill_len, bool atend);   // 0x004CCCE0
-    __forceinline void push_back(const STCEntry& x)
+    FABLE_FORCEINLINE void push_back(const STCEntry& x)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) STCEntry(x);
@@ -132,7 +133,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
         return it;
     }
     STCEntry* end() const { return Data._M_finish; }
-    __forceinline void Add(long key, CTCBase* value) { Data.push_back(STCEntry(key, value)); Dirty = true; }
+    FABLE_FORCEINLINE void Add(long key, CTCBase* value) { Data.push_back(STCEntry(key, value)); Dirty = true; }
     void Resort()
     {
         sort(Data._M_start, Data._M_finish, Compare);

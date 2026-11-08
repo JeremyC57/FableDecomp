@@ -7,6 +7,7 @@
 //   LevelScriptName +0x1c, MapUID +0x20, Used +0x24, Placed +0x25, LoadedOnPlayerProximity +0x28, IsSea +0x40.
 // Shape: each scalar goes through an inlined read helper whose local is homed in the dead stream-argument slot; the
 //   64-bit UID is the 8-byte frame local, and VC7.1 duplicates the epilogue into each exit of that last read.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -26,8 +27,8 @@ public:
     long                 SourceChunkStreamPos;
     long                 m_remaining;       // +0x14
     CCharString ReadPresizedString();                                  // 0x00996390
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -41,9 +42,9 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline bool ReadBool() { unsigned char v; Read(&v, sizeof(v)); return v != 0; }
-    __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
-    __forceinline unsigned __int64 ReadULong64() { unsigned __int64 v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char v; Read(&v, sizeof(v)); return v != 0; }
+    FABLE_FORCEINLINE long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE unsigned __int64 ReadULong64() { unsigned __int64 v; Read(&v, sizeof(v)); return v; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

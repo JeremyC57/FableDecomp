@@ -8,6 +8,7 @@
 //   GetArmourResponseDamageAttributeDamageMultiplier 0x008687A0, GetArmourResponseAugmentationDamageMultiplier 0x00868A80,
 //   GetArmourWeightsFromThing 0x00868E50); the only one taking just a const CThing& and returning a float (__fastcall,
 //   plain `ret`); its caller CHitParameters::SetAsModifiedByArmour 0x00869020 scales the damage by it. Body unchanged.
+#include "fable_compiler.h"
 namespace Row00868b40 {
 struct Component;struct Scale{float Get(Component*);};
 struct Def {virtual void Dummy()=0;virtual void Release()=0;int refs;char gap[0xb4];float high,low;Scale scale;};
@@ -18,7 +19,7 @@ struct Map{Entry*first,*last,*limit;__declspec(noinline) Entry*LowerBound(const 
 }
 using namespace Row00868b40;
 class CThing{public:char pad[0x2c];unsigned flags;unsigned flags2;char gap[0x10];Map map;
- template<int Key> __forceinline Component*Get()const{const Map*m=&map;int key=Key;Entry*p=m->LowerBound(key);Entry*end=m->last;return (p==end||Key<p->key?end:p)->component;}
+ template<int Key> FABLE_FORCEINLINE Component*Get()const{const Map*m=&map;int key=Key;Entry*p=m->LowerBound(key);Entry*end=m->last;return (p==end||Key<p->key?end:p)->component;}
 };
 namespace {
 float __fastcall GetToughnessDamageReductionFactorForThing(const CThing& thing){float value=1.0f;if(thing.flags&0x100){Component*c=thing.Get<0x68>();Def*d=c->def;if(d)++d->refs;float scale=d->scale.Get(c);const float low=d->low;value=(d->high-low)*scale+low;if(--d->refs==0)d->Release();}

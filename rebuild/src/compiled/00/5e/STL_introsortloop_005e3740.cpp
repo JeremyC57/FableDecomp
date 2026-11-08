@@ -12,9 +12,10 @@
 //   is `and eax,-4 ; cmp eax,40h`, the decremented budget is stored back to its argument slot, and the comparator push
 //   shared by the partition and the partial_sort calls is hoisted above the depth test.
 // Label correction: catalogued as `std_sort_QuicksortIntrosort`; the body is STLport `__introsort_loop`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

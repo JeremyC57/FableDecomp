@@ -1,5 +1,6 @@
 // Behaviour test for 0x00A22530 (source body copied from src/00a22530.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,7 +39,7 @@ static unsigned long long ra_tsc = 1000000;
 extern float g_ArcCosTable[1026];       // 0x013CB530: acos(k*2/1025 - 1), k = 0..1024
 
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)

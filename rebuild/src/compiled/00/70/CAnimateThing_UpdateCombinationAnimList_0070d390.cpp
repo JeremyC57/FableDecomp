@@ -15,6 +15,7 @@
 //          GetValue through float locals (`last + (current - last)`: Last kept on the x87 stack across the test's compare),
 //          the fade-in sum through a named value local (`value + ChangeAlphaBy`, else VC reassociates), the clamp
 //          `if (a < 0) a = 0; else if (a > 1) a = 1;`.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
 extern const float DELTA_NOTIONAL_ZERO;                            // 0x0129BA3C
@@ -99,7 +100,7 @@ public:
     void UpdateCombinationAnimList(CAnimSetList& anims, const CAnimSetUpdateInfo& info);
 };
 
-__forceinline bool FadeOutCombinationAnim(CAnimSet& set)
+FABLE_FORCEINLINE bool FadeOutCombinationAnim(CAnimSet& set)
 {
     if (set.ChangeAlphaBy > DELTA_NOTIONAL_ZERO) {
         CTransitionBlendAlpha& alpha = set.InternalAlphas[0];
@@ -113,7 +114,7 @@ __forceinline bool FadeOutCombinationAnim(CAnimSet& set)
     }
     return false;
 }
-__forceinline void FadeInCombinationAnim(CAnimSet& set)
+FABLE_FORCEINLINE void FadeInCombinationAnim(CAnimSet& set)
 {
     if (!set.Finished && set.ChangeAlphaBy > DELTA_NOTIONAL_ZERO) {
         CTransitionBlendAlpha& alpha = set.InternalAlphas[0];

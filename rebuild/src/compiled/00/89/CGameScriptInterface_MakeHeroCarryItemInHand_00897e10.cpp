@@ -12,6 +12,7 @@
 //   pointer straight into ecx; an `it = last` reassignment joined it in eax); the store components use the GetTCIfPresent form (left unset when absent: retail reads the dead lookup-key
 //   word); the key is homed in the dead itemDefName argument slot; `this` is saved in a frame word.
 // Layout: CThing UsingComponents +0x20, component map +0x44, dead flags +0x91 bit 0 (landed CloseDoor 0x00895DE0 model).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:                   // CBasicString<char>, 13 bytes
@@ -29,7 +30,7 @@ class CCharStringData { public:                    // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;           // +0x00
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;
@@ -50,21 +51,21 @@ class CThing { public:
     unsigned char         m_dead : 1;               // +0x91 bit 0
     unsigned char         m_91_1 : 7;
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;
         CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
         return ((CTCBase_Retail*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
-    __forceinline CTCBase_Retail* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(long interfaceType)
     {
         CTCBase_Retail* tc;                         // deliberately unset when absent (retail reads a dead slot)
         if (HasInterface(interfaceType))
             tc = GetInterface(interfaceType);
         return tc;
     }
-    template<class T> __forceinline bool GetInterfaceOut(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceOut(T** ppOut, long interfaceType)
     {
         if (HasInterface(interfaceType)) {
             *ppOut = (T*)GetInterface(interfaceType);
@@ -88,7 +89,7 @@ struct CTCInventoryStore {
     virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46();
     virtual CThing* FindItemOfType(long defIndex);   // slot 47 (+0xBC)
 };
-__forceinline CThing* FindItemInStore(CThing* thing, long interfaceType, long defIndex)
+FABLE_FORCEINLINE CThing* FindItemInStore(CThing* thing, long interfaceType, long defIndex)
 {
     CTCInventoryStore* store;                       // deliberately unset when absent (retail reads a dead slot)
     if (thing->HasInterface(interfaceType))

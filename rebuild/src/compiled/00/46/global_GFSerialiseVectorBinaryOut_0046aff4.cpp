@@ -11,6 +11,7 @@
 //   pointer: `#pragma optimize("s", on)`.
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; CAtmosBankEntry/CDefString are local (no engine header);
 //   the vector is STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -46,7 +47,7 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CAtmosBankEntry> {
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CAtmosBankEntry* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CAtmosBankEntry* value) const
     {
         stream.WriteULONG(value->ID);
         value->Filename.TransferBinaryOut(stream);

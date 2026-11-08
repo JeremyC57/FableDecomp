@@ -15,6 +15,7 @@
 // (COMDAT-folded) by every vector of pointers -- five callers (0x0047740C, 0x0067BCA8, 0x0067BF98, 0x0067C308,
 // 0x006B5D05).
 // Leaf: ??0?$vector
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -30,7 +31,7 @@ public:
 
 void** __fastcall __uninitialized_copy(void* const* __first, void* const* __last, void** __result,
                                        const __true_type&);                                 // 0x0045EFE5
-__forceinline void** uninitialized_copy(void* const* __first, void* const* __last, void** __result)
+FABLE_FORCEINLINE void** uninitialized_copy(void* const* __first, void* const* __last, void** __result)
 {
     return __uninitialized_copy(__first, __last, __result, __true_type());
 }

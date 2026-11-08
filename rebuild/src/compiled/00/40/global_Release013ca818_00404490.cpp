@@ -12,6 +12,7 @@
 // Matching: Reset(0) is __forceinline so the "adopt new object" half folds away for a null argument;
 // the block pointer is re-read after the decrement; delete @ 0x00BFE9BC. One of 25 bodies of this shape.
 // Count block shared by all pointers to one object.
+#include "fable_compiler.h"
 struct SCountBlock {
     long m_references;                       // how many pointers share the object
     void (__fastcall* m_pfnDestroy)(void*);  // deletes the object on the last release
@@ -21,7 +22,7 @@ struct SCountBlock {
 struct CCountedPointerStatic {
     void* m_pObject;                         // the installer
     SCountBlock* m_pCount;                   // its count block
-    __forceinline void Reset(void* object)
+    FABLE_FORCEINLINE void Reset(void* object)
     {
         if (m_pCount) {
             --m_pCount->m_references;

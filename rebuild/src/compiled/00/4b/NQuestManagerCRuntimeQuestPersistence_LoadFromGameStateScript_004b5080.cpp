@@ -10,6 +10,7 @@
 // Layout: as the landed sibling NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript 0x00CB8440 and the
 //   landed SetQuestScriptPersistScript 0x004B4E30 (PersistScripts +0, MasterDataPersistScripts +0x10; each CVectorMap =
 //   12-byte STLport vector + Compare +0xc + Dirty +0xd; element pair<CCharString, CPersistInfo> 12 bytes).
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
@@ -58,13 +59,13 @@ struct CRuntimeQuestPersistence {
         CCharString QuestName;                     // +0x00
         CCharString PersistScript;                 // +0x04
         CPersistInfo() { }
-        __forceinline CPersistInfo(const CPersistInfo& other) : QuestName(other.QuestName), PersistScript(other.PersistScript) { }
+        FABLE_FORCEINLINE CPersistInfo(const CPersistInfo& other) : QuestName(other.QuestName), PersistScript(other.PersistScript) { }
     };
     struct SPair {                                 // pair<CCharString, CPersistInfo>, 12 bytes
         CCharString  first;                        // +0x00
         CPersistInfo second;                       // +0x04
-        __forceinline SPair(const CCharString& key, const CPersistInfo& value) : first(key), second(value) { }
-        __forceinline SPair(const SPair& other) : first(other.first), second(other.second) { }
+        FABLE_FORCEINLINE SPair(const CCharString& key, const CPersistInfo& value) : first(key), second(value) { }
+        FABLE_FORCEINLINE SPair(const SPair& other) : first(other.first), second(other.second) { }
     };
     struct CKeyPairCompareLess { };
     struct CPersistMap {

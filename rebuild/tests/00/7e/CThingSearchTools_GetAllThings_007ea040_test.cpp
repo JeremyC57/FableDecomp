@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -77,7 +78,7 @@ template <class A, class B, class C, class D, class E> class CFilter_Bind5 { pub
     const C& Third;
     const D& Fourth;
     const E& Fifth;
-    template <class T> __forceinline bool operator()(const T& thing) const
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const
     { return First(thing) && Second(thing) && Third(thing) && Fourth(thing) && Fifth(thing); }
 };
 template <class A> class CFilter_Not { public:               // the negated filter, held by reference

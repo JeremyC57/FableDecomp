@@ -2,6 +2,7 @@
 // Leaf: Update
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00917130.
+#include "fable_compiler.h"
 #include <stdlib.h>
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -20,7 +21,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
 extern CCharString g_CCharString_013bb674;      // "OBJECT_KNOTHOLE_LOG_MOVEABLE"
@@ -45,7 +46,7 @@ template <class T> struct vector {              // STLport vector<T> (retail 12 
         } else
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
-    __forceinline void push_back_inline(const T& x)   // the same STLport body, expanded at the second site
+    FABLE_FORCEINLINE void push_back_inline(const T& x)   // the same STLport body, expanded at the second site
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish) *_M_finish = x;

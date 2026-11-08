@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -67,7 +68,7 @@ struct CAIStateGroup_MinionLeaveRegion_Adapter : CAIStateGroup_MinionLeaveRegion
  C3DVector& ExitPosition() { return *(C3DVector*)&ExitPoint_X; }
  long AIAction_MoveToPos(long,C3DVector,bool*,long,bool,bool,CThing*,bool,float);
  long AIAction_DoNothing(); CWorld* GetPWorld(); unsigned long* GetPWorldSeed(); void Terminate(); void Update();
- __forceinline void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=GetPWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
+ FABLE_FORCEINLINE void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=GetPWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
 };
 void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {
  bool reached;

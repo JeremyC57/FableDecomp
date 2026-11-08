@@ -14,6 +14,7 @@
 // Shape: the combat manager is reached by naming the GetPWorld() CALL result and chaining the member in the call expression
 //   (`CWorld* world = GetPWorld(); world->PCombatManager->Deregister...`, retail `mov ecx,[eax+4Ch]`), and the trap vector's
 //   operator[] is STLport's `*(begin() + i)` (retail `mov eax,[edi+1Ch] ; lea ecx,[eax+ebp]`; `First[i]` folds to add).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -30,11 +31,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -48,7 +49,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -98,8 +99,8 @@ struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 by
 
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)

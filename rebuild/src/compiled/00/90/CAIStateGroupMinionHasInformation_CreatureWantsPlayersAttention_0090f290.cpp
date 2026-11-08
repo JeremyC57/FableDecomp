@@ -14,6 +14,7 @@
 // lookup through the pointer-returning FindTC form (the component is loaded straight into ecx for the final
 // call: `mov ecx,[eax+4]`, where the out-parameter form leaves it in eax); the last call's result is returned directly. Layout local (engine header flattens the base).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -39,7 +40,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -136,7 +137,7 @@ struct CThingB {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
     // the pointer-returning lookup: the component lands straight in ecx for the call that follows
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMapB* map = &m_interfaces;

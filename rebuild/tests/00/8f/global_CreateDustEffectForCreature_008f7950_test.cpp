@@ -1,9 +1,10 @@
 // 008f7950 CreateDustEffectForCreature (catalog; bsim NCombatActionHelpers::CreateDustEffectForCreature(CThingCreatureBase&,const CWorldMap&,const CGameDefinitionManager&,const C3DVector&,vector<CThing*>*); model kept in NDust008f7950)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: CreateDustEffectForCreature
+#include "fable_compiler.h"
 #include <stdlib.h>
 namespace NDust008f7950 {
-struct C3DVector {float x,y,z;__forceinline C3DVector& operator=(const C3DVector&v){x=v.x;y=v.y;z=v.z;return *this;}};extern bool Enabled;struct CThingCreatureBase;struct SVectorParam {unsigned hash;C3DVector v;};
+struct C3DVector {float x,y,z;FABLE_FORCEINLINE C3DVector& operator=(const C3DVector&v){x=v.x;y=v.y;z=v.z;return *this;}};extern bool Enabled;struct CThingCreatureBase;struct SVectorParam {unsigned hash;C3DVector v;};
 struct CVectorParamVector {SVectorParam* first;SVectorParam* last;SVectorParam* end;bool order,dirty;char pad[2];void push_back(const SVectorParam&);};
 // Layout: 6e24d0 installs vptr and initializes two16-byte Values at+4/+20; dirty bytes+17/+33.
 struct Base {Base();virtual ~Base();};

@@ -1,6 +1,7 @@
 // CIsFreeHopscotchBoard::operator()(CThing* thing) -- true for a thing whose virtual slot 48 flags carry bit 15 and whose +0x24 flags carry bit 13, when its user-action-point component (kind 0x2d, the component map at +0x44) reports the point free (0x007FEBF0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941BE0, length 96 bytes.
 // Shape: `shr eax,0Fh ; test al,1`, `test ah,20h`, the key temporary in the dead argument slot, the lower-bound tail with the end entry read, `ret 4`.
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -13,7 +14,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)

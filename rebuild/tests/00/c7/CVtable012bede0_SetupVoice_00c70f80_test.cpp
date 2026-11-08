@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
 #define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
 #endif
@@ -31,7 +32,7 @@ struct SUnprovenImpulse52{short Values[25];unsigned short Delay;};
 #define __forceinline inline
 #include <math.h>
 #endif
-static __forceinline unsigned long RoundGain(float value){
+static FABLE_FORCEINLINE unsigned long RoundGain(float value){
 #ifdef _MSC_VER
 return (unsigned long)FtoL(value);
 #else

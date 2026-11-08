@@ -10,6 +10,7 @@
 //   +0x64/+0x70/+0x7c vector<CEnginePrimitiveHandle>, +0x88 a POD vector (STLport 12-byte vectors).
 // Shape: STLport `~vector()` = by-value `_Destroy(first, last)` (bounds cached) + `if (start) free(start)`; the handle's
 //   inline destructor is `Clear()` (the 0x00AF70D0 form) then the counted pointer's own release and the base call.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
 class CEnginePrimitiveHandle;
@@ -31,7 +32,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -40,7 +41,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
@@ -52,16 +53,16 @@ public:
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -70,7 +71,7 @@ template <class T> struct CRetailVector {          // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CRetailVector()
+    FABLE_FORCEINLINE ~CRetailVector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)
@@ -81,7 +82,7 @@ struct CRetailPODVector {
     void* _M_start;
     void* _M_finish;
     void* _M_end_of_storage;
-    __forceinline ~CRetailPODVector()
+    FABLE_FORCEINLINE ~CRetailPODVector()
     {
         if (_M_start)
             free(_M_start);

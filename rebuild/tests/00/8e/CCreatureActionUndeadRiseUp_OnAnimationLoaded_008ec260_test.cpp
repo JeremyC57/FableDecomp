@@ -1,5 +1,6 @@
 // Behaviour test for 008ec260: src/008ec260.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CCreatureAction_UndeadRiseUp::OnAnimationLoaded()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -52,7 +53,7 @@ template <class T> class CDefPointer { public:      // the out-slot GetSubDef fi
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

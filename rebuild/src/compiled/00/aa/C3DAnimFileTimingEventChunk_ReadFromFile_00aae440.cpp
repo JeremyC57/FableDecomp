@@ -9,6 +9,7 @@
 // inline ReadFLOAT() returning a local (homed in the same dead slot); the copy into a scalar local is a
 // dword move forwarded to the member store. Read/ReadFLOAT must be __forceinline (plain inline stays out of
 // line), and the stream/loader are `class` so the mangled leaf (AAVCDataInputStream) matches the catalog.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -32,7 +33,7 @@ public:
     const unsigned char* m_pData;          // +0x0C current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -46,7 +47,7 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline float ReadFLOAT()
+    FABLE_FORCEINLINE float ReadFLOAT()
     {
         float value;
         Read(&value, 4);

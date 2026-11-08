@@ -12,6 +12,7 @@
 // (key kept in ebx), the shifting `*last = *next` as `movsd` x3, then `*last = val`. The size-optimised frame form
 // (`push ebp ; mov ebp,esp ... leave`, unaligned entry, loop test reached by `jmp`) is `optimize("y", off)` +
 // `optimize("s", on)` (GOTCHAS: frame body that still uses esi/edi freely).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CSoundPair { public:                             // 8 bytes
@@ -35,7 +36,7 @@ class CKeyPairCompareLess { public:
 
 namespace std {
 template <class RandomAccessIter, class T, class Compare>
-__forceinline void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp)
 {
     RandomAccessIter next = last;
     --next;

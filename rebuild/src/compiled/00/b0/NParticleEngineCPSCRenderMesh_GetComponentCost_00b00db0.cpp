@@ -22,6 +22,7 @@
 // Shape: the larger render size is selected by reference (`lea eax`) and held as three scalars (a C3DVector copy takes three
 //   frame words); the area is particleCount * (r*r*pi) (spelled r*r*pi*count VC7.1 moves the constant last and reorders the
 //   render-cost sum).
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/CCountedPointer.h"
 #define C3DMeshInfo C3DMeshInfoLayout
@@ -138,7 +139,7 @@ class CPSCRenderMesh : public CPSCBase { public:
 
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     long i = decimals;
@@ -149,7 +150,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
     return GFFloatToLongNear(scaled) / scale;
 }
 
-static __forceinline float QuantiseRenderSize(unsigned long bits)
+static FABLE_FORCEINLINE float QuantiseRenderSize(unsigned long bits)
 {
     float unit = (float)bits * (1.0f / 2047.0f);
     return RoundToDecimals(unit * 20.0f, 2);

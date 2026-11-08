@@ -14,6 +14,7 @@
 //   NAMED uninitialised local; _Destroy / __destroy / __uninitialized_copy are `__forceinline` (the size TU out-lines them).
 //   Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Model: no engine header for CCardDef (Ego_r.pdb gives 72 bytes, retail 0x44); local polymorphic model.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
@@ -37,14 +38,14 @@ template <class T> struct __type_traits {
 template <class T> CCardDef* __fastcall __copy_ptrs(const T* first, const T* last, T* result, const __false_type&);   // 0x004EC03F
 template <class T> void __fastcall __destroy_aux(T* first, T* last, const __false_type&);                                // 0x004DA636
 template <class T> void __fastcall _Construct(T* p, const T& val);                                                         // 0x004EC08A
-template <class T> __forceinline void __destroy(T* first, T* last, T*)
+template <class T> FABLE_FORCEINLINE void __destroy(T* first, T* last, T*)
 {
     typedef typename __type_traits<T>::has_trivial_destructor _Trivial_destructor;
     _Trivial_destructor tag;
     __destroy_aux(first, last, tag);
 }
-template <class T> __forceinline void _Destroy(T* first, T* last) { __destroy(first, last, (T*)0); }
-template <class T> __forceinline T* __uninitialized_copy(const T* first, const T* last, T* result, const __false_type&)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last) { __destroy(first, last, (T*)0); }
+template <class T> FABLE_FORCEINLINE T* __uninitialized_copy(const T* first, const T* last, T* result, const __false_type&)
 {
     T* cur = result;
     for (; first != last; ++first, ++cur)

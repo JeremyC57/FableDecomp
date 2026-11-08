@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -1052,8 +1053,8 @@ struct ThingNative {
  void InitialiseMovementSpeeds(); //6A9A00 valid only runtime player-type2
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0x3c];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){int key=type;ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;return p->Component;}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){int key=type;ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;return p->Component;}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 struct WeaponMethods:CTCWeapon {const CCharString& GetAnimationGroupName()const;}; //005DABE0, returned def-string at weapondef+34 or shared13BAF5C
 struct MeshBankMethods:CMeshDataBank {const C3DAnimationInfo& GetAnimationInfo(long)const;}; //00A242C0, bank pointer array+380 indexed by entry BankIndex
@@ -1061,12 +1062,12 @@ extern long GameFramesPerSecond; //01375550 native15
 extern char EmptyNarrowString[]; //0129AAF4
 unsigned long __fastcall CalculateCRC(unsigned long,const void*,unsigned long); //004014A0
 struct StringAccess {
- static __forceinline CCharStringData* Data(const CCharString&s){CCharStringData*p;memcpy(&p,&s,sizeof p);return p;}
+ static FABLE_FORCEINLINE CCharStringData* Data(const CCharString&s){CCharStringData*p;memcpy(&p,&s,sizeof p);return p;}
 }; //read actual string representation using memcpy, preserving host alias rules
 struct AnimationGroupFilter {
  void*VTable;CCharString Group;unsigned long CRC;
  void SetAndHash(const CCharString&); //0073DFF0
- __forceinline void SetLiteral(const char*name){CCharString text(name,-1);Group=text;CCharStringData*p=StringAccess::Data(text);unsigned long length;const char*data;if(!p){length=0;data=EmptyNarrowString;}else{length=p->unknown04;data=p->text;}CRC=CalculateCRC(0,data,length);}
+ FABLE_FORCEINLINE void SetLiteral(const char*name){CCharString text(name,-1);Group=text;CCharStringData*p=StringAccess::Data(text);unsigned long length;const char*data;if(!p){length=0;data=EmptyNarrowString;}else{length=p->unknown04;data=p->text;}CRC=CalculateCRC(0,data,length);}
 };
 struct AnimEntryLite{long BankIndex,DelayTime,TransitionTime,AnimFlags;}; //PDB native16
 struct CountedAnimEntry{AnimEntryLite*Data;void*Info;};

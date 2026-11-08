@@ -7,6 +7,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -29,7 +30,7 @@ class CThing { public:
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     const C3DVector& GetPos() const;             // 0x004C73D0
     void RemoveTC(ETCInterfaceType interfaceType);                // 0x004C9840
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

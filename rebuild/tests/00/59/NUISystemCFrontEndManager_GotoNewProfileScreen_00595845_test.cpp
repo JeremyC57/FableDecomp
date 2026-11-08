@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class CCharString { public: void* PStringData; };
 class CWideString { public: void* PStringData; };
@@ -42,7 +43,7 @@ template <class T> class CDefPointer {
 public:
     T* Object;
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->DecRef();

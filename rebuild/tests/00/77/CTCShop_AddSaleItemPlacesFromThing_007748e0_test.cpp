@@ -1,5 +1,6 @@
 // Test for 0x007748E0 CTCShop::AddSaleItemPlacesFromThing: a shop thing owning a dead thing and a stall whose graphic
 // appearance answers four of the twenty dummy-object names; checks recursion, the name sequence and the collected places.
+#include "fable_compiler.h"
 #include <string.h>
 
 #include <stdlib.h>
@@ -231,8 +232,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44 Components
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

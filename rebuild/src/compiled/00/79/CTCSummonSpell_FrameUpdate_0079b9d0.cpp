@@ -6,6 +6,7 @@
 // Callees: owner frame vslot 70 (+0x118), CThing::GetPos 0x004C73D0, CTCSummonSpell::CreateMinion 0x0079ACC0, GetPItem 0x00A01B50,
 //   LowerBound 0x0040F020, CCharString ctor/dtor, CTCEnemy::SetFaction 0x0076C810, __ftol2, CTCGraphicAppearance::SetAlpha 0x004BFAC0,
 //   CTCCarrying::CollectCarrySlots 0x006A2220, free 0x00BFEA14, CThing::RemoveTC 0x004C9840
+#include "fable_compiler.h"
 extern "C" void free(void* p);
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -49,7 +50,7 @@ public:
     unsigned char Dead : 1;                             // +0x91 bit0
     const C3DVector& GetPos() const;               // 0x004C73D0
     void RemoveTC(ETCInterfaceType type);                           // 0x004C9840
-    template<class T> __forceinline void GetInterface(long interfaceType, T** out)
+    template<class T> FABLE_FORCEINLINE void GetInterface(long interfaceType, T** out)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(interfaceType);

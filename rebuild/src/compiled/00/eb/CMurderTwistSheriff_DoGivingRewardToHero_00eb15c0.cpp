@@ -16,6 +16,7 @@
 //   "TEXT_QST_B07_SHERIFF_ASSASSIN_KILLED_HERO_SUSSED" 0x012EFE44.
 // Shape: the movie object is the landed CMeetSisterMessenger::Main 0x00E292C0 destructor-less view: retail expands its
 //   destructor at the first block's in-loop exit and both normal ends and calls the out-of-line copy elsewhere.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -40,7 +41,7 @@ struct CBaseObjectDtor {                                // destructor-only view 
     virtual ~CBaseObjectDtor();                         // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CMovieImpPointer {
     void* Data;
@@ -50,9 +51,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

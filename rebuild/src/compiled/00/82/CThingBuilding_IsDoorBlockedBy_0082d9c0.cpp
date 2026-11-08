@@ -13,14 +13,15 @@
 // Shape: out-parameter GetInterface lookups (component kept in esi, then spilled to the dead key word); the occupant is
 //   re-fetched through GetPItem for every use; `a || b || c` over the state bools in retail's order; the distance test is
 //   the inline smaller-than with the radius squared folded.
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
+    FABLE_FORCEINLINE float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-__forceinline bool GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE bool GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)
 {
     return (a - b).GetLengthSquared() < distance * distance;
 }

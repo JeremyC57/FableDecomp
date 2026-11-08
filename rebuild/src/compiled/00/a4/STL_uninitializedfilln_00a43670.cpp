@@ -10,6 +10,7 @@
 // Shape: /Gr STLport TU (`__fastcall` template: first in ecx -> eax, n in edx -> esi counted down, &x on the stack); the
 //   inner helper must be `__forceinline` (GOTCHAS: 3-argument uninitialized_fill_n front ends, 0x00440180 / 0x007688B0);
 //   `__n > 0` on the unsigned count is the `jbe` entry test; placement-new null test; CIVCountedPointer's user copy ctor.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
 namespace std {
@@ -41,7 +42,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

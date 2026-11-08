@@ -8,6 +8,7 @@
 // vtable either (its out-of-line copy @ 0x004DA967 has none) -- it only runs the CDefPointer member's inline release:
 // the def pointer is read into a local (ecx) so `dec [ecx+4] ; jne ; call [eax+4]` reuses it, and the clear sits inside
 // the non-null arm. The derived destructor is non-virtual here so the TU emits only `??1`.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -28,7 +29,7 @@ struct CDefPointee {                           // counted def: count at +4, slot
 
 struct CDefPointer {                           // CDefPointer<T const>
     CDefPointee* m_pDef;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         CDefPointee* def = m_pDef;
         if (def) {

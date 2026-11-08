@@ -1,4 +1,5 @@
 // Behaviour test for 0x004BCF50 (source body copied from src/004bcf50.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -23,8 +24,8 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline CIVCountedPointer() : Object(0) {}
-    __forceinline CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) {}
+    FABLE_FORCEINLINE CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->RefCount;

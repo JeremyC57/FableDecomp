@@ -15,6 +15,7 @@
 //   reversed). Element access is *(begin() + i): the start pointer is read before the CreateEffect call, the index added after.
 // Layout: Ego_r.pdb CCS_OakValeRevisitedScript - 0x14 (retail CScriptBase is 0x40): FirePoint +0x48, Fires +0x54,
 //   OakValeFlag +0x60 (map<CCharString,bool>), v1..v7 handles +0x78.. (GSI +0x40, Owner +0x44).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -60,7 +61,7 @@ class CScriptThing : public CBase { public:                          // vtable 0
     CScriptThing();                                    // 0x006E7B40
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // inline here (out-of-line copy 0x008AB980)
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // inline here (out-of-line copy 0x008AB980)
 };
 namespace std {
 template <class T> class allocator;

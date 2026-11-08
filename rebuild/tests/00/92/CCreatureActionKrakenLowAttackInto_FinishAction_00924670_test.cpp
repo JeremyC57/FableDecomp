@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -60,8 +61,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _padb0[0x114 - 0xb0];
     ~CCombatActionBase();                       // 0x0062E900
     int m_kind; long m_arg;           // test-only record
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
-    __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
         return PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1);
     }

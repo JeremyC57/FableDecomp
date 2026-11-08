@@ -16,6 +16,7 @@
 // Label: the catalog's ETCInterface_CalculateRatio is this method.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
@@ -58,7 +59,7 @@ __declspec(noinline) CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long*
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
-    template<class T> __forceinline bool GetInterface(T** out, long kind) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             long key = kind; CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(&key);
             if (it == map->last || kind < it->type) it = map->last;

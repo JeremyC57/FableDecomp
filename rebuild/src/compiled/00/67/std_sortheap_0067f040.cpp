@@ -13,6 +13,7 @@
 // (`imul 92492493h`), and `last--` folds into the byte count kept in ebx.
 // Label correction: catalog `_Sort_heap<CDegradableInfo*,CDegradableDef::CIsHealth1GTHealth2>` is the Ego_r
 // (Dinkumware) spelling; retail is STLport sort_heap.
+#include "fable_compiler.h"
 namespace N0067f040 {
 struct CEngineGraphic {                                   // 14 bytes (+2 pad)
     unsigned long BankIndex;                              // +0x0
@@ -37,18 +38,18 @@ template <class _Tp> inline int* __distance_type(const _Tp*) { return (int*)0; }
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x0067E8F0
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result, _Tp __val, _Compare __comp, _Distance*)
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result, _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;
     __adjust_heap(__first, _Distance(0), _Distance(__last - __first), __val, __comp);
 }
 template <class _RandomAccessIterator, class _Tp, class _Compare>
-__forceinline void __pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last, _Tp*, _Compare __comp)
+FABLE_FORCEINLINE void __pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last, _Tp*, _Compare __comp)
 {
     __pop_heap(__first, __last - 1, __last - 1, _Tp(*(__last - 1)), __comp, __distance_type(__first));
 }
 template <class _RandomAccessIterator, class _Compare>
-__forceinline void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
+FABLE_FORCEINLINE void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
     __pop_heap_aux(__first, __last, __value_type(__first), __comp);
 }

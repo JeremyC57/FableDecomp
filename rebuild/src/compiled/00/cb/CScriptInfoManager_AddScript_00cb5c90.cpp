@@ -15,6 +15,7 @@
 // (a plain inline member stays an out-of-line call: 148v228). With _M_insert_overflow declaration-only VC7.1 homes the
 // __false_type temporary in the dead `info` slot (`lea edx,[esp+30h]`); retail homes it on the live by-value `section`
 // slot (`lea edx,[esp+34h]`), which the same-TU noinline stand-in body below (never reading the tag) reproduces.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -123,7 +124,7 @@ class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                       // +0x0c
     bool Dirty;                                         // +0x0d
-    __forceinline void Add(const K& key, const V& value)
+    FABLE_FORCEINLINE void Add(const K& key, const V& value)
     {
         this->push_back(std::pair<K, V>(key, value));
         Dirty = true;

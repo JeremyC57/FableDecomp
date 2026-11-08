@@ -17,6 +17,7 @@
 // `mov ecx,[esi+68h]` precedes the out address); IS_THING_ALIVE must be `__forceinline` here; the anim timer is converted
 // once into a float local and the rescale is written `max * (t / released)` (VC7.1 keeps `fdiv ; fimul`; `t / released *
 // max` is reassociated into `fild max ; fdiv ; fmul`).
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
@@ -37,8 +38,8 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
     void RemoveTC(ETCInterfaceType type);                           // 0x004C9840
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -46,7 +47,7 @@ class CThing { public:
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -88,7 +89,7 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())

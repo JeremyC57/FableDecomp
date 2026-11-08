@@ -14,9 +14,10 @@
 // Shape: the landed 0x008DB460 body plus FastInvSqrt (0x008C2550 model); the inverse length is a NAMED float local scaled in
 //   through a `const float&` helper, so it is stored and re-read from memory (fstp/fxch/fmul [m]); VC7.1 folds the constant dot
 //   product X*0 + Y*-1 + Z*0 into (X+Z)*0 - Y*1.
+#include "fable_compiler.h"
 #include <math.h>
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -34,8 +35,8 @@ class C3DVector { public:
     float GetLength2D() const { return sqrtf(X * X + Y * Y); }
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
 };
-__forceinline C3DVector ScaleRef(const C3DVector& v, const float& s) { return C3DVector(v.X * s, v.Y * s, v.Z * s); }
-__forceinline C3DVector Normalise(const C3DVector& v) { return ScaleRef(v, FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z)); }
+FABLE_FORCEINLINE C3DVector ScaleRef(const C3DVector& v, const float& s) { return C3DVector(v.X * s, v.Y * s, v.Z * s); }
+FABLE_FORCEINLINE C3DVector Normalise(const C3DVector& v) { return ScaleRef(v, FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z)); }
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); 
     virtual void MoveTo(const C3DVector& position);   // slot 30 (+0x78)

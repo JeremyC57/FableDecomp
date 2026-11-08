@@ -22,6 +22,7 @@
 // Shape: the sound def pointer is declared first (zeroed up front, null-tested release at the end, `dec [ecx+4]`); the
 //   crowd interface comes through the const GetTC (end kept unless a match is found), the sound player through the
 //   non-const one; each name is a block-scoped named CCharString.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -42,13 +43,13 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
-    __forceinline SEntry* Find(long interfaceType)
+    FABLE_FORCEINLINE SEntry* Find(long interfaceType)
     {
         long type = interfaceType;
         SEntry* it = LowerBound(&type);
         return (it != last && !(interfaceType < it->type)) ? it : last;
     }
-    __forceinline const SEntry* Find(long interfaceType) const
+    FABLE_FORCEINLINE const SEntry* Find(long interfaceType) const
     {
         long type = interfaceType;
         const SEntry* it = LowerBound(&type);
@@ -133,7 +134,7 @@ template <class T> class CDefPointer {
 public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -164,8 +165,8 @@ class CThing { public:
     unsigned char  _pad4c[0x70 - 0x4c];
     CDefPointer<const CDefClassBase> PBaseDef;          // +0x70 CDefPointer<const CThingBaseDef>
     bool HasTC(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetTC(long type) { return (T*)m_interfaces.Find(type)->component; }
-    template <class T> __forceinline T* GetTC(long type) const { return (T*)m_interfaces.Find(type)->component; }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) { return (T*)m_interfaces.Find(type)->component; }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const { return (T*)m_interfaces.Find(type)->component; }
 };
 class CWorld {
 public:

@@ -11,6 +11,7 @@
 // on both returns (VC drops the null test after the dereference); GetSubDef<CJackDragonDef> is compiled in this
 // TU above the caller under auto_inline(off) so the def pointer stays register-held; `sqrt(len2) < HoverRange`.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -35,7 +36,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

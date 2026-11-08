@@ -1,5 +1,6 @@
 // Behaviour test for 0069a8b0: src/0069a8b0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCCombat::AddMeleeFlourishAbility()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -20,7 +21,7 @@ static int fails = 0;
 // (+0x48 of the camera set def) and the definition manager (World +0x10) are read before the
 // zeroed CDefPointer local is declared, so VC sinks its zero store below the pushes; the local's
 // inline destructor releases after the flag store (no null store).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CPlayer { public:
     void RemoveMode(long mode);                     // 0x00634190
 };

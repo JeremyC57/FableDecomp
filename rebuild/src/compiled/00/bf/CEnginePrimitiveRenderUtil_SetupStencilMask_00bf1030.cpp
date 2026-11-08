@@ -6,6 +6,7 @@
 //   SetState(state, value, core), core LAST. States: +0x2b88, +0x2bd8, +0x2bc4, +0x2c14, +0x2bec.
 // Mesh effect: CEngineMeshEffectOutlineBase (Ego_r.pdb) keeps StencilBit at +0x18; the pass op lives in the dead `pass`
 //   argument slot, as retail.
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -38,7 +39,7 @@ extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 extern unsigned long g_renderStateDefault_01396e34;    // 0x01396E34
 extern unsigned long g_renderStateDefault_01396f40;    // 0x01396F40
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

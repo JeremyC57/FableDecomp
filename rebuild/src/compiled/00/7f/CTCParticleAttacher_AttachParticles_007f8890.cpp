@@ -18,6 +18,7 @@
 //   is a named local (loaded before the DummyObject test); attachType is `1; if (oriented) attachType = 9;`; the
 //   intelligent-pointer temporary is a named block local; the helper loop is `if (count > 0) for (i = 0; i != count; ++i)`
 //   (entry jle, loop jne).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:
@@ -112,7 +113,7 @@ public:
     unsigned char         _pad74[0x91 - 0x74];
     unsigned char         m_flags91;                   // +0x91 bit 0 dead
     const C3DVector& GetPos() const;              // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

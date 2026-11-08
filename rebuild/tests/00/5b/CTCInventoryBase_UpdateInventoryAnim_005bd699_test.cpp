@@ -3,6 +3,7 @@
 // (2) each axis step is gain / (fps * seconds) (Y uses a gain of 1) and the set is rotated about X, Y, Z by the negated
 // steps in that order; (3) the current angles advance by the steps and wrap past 1.0; (4) the def reference count is
 // balanced (three temporary copies, each released) and the def is destroyed only when the count reaches zero.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -31,7 +32,7 @@ class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { g_destroyCalls++; }
     long m_count;
-    __forceinline void ReleaseReference() { if (--m_count == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseReference() { if (--m_count == 0) Destroy(); }
 };
 
 class CInventoryDef : public CDefPointeeBase { public:
@@ -44,8 +45,8 @@ class CInventoryDef : public CDefPointeeBase { public:
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->ReleaseReference();
@@ -70,7 +71,7 @@ struct CTCInventoryBase {
     float InventoryAnimYRotationAngleGain;
     float InventoryAnimZRotationAngleGain;
 
-    __forceinline CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void UpdateInventoryAnimXAxis() { g_xAxisCalls++; InventoryAnimCurrentXRotationAngle += 0.0f; }
     void UpdateInventoryAnimZAxis() { g_zAxisCalls++; }
     void UpdateInventoryAnim();

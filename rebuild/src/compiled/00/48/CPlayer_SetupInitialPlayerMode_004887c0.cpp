@@ -13,6 +13,7 @@
 // STLport vector<CThing*> (zeros through ebx) with the count cached before the loop; GetAllThings has a same-TU stand-in
 // that reads and rewrites the vector words by value, so the vector does not escape (start kept in edi, zero stores live); the spirit is the uninitialised
 // `T* tc; if (HasTC) tc = GetTC;` local (stale value = the search key's frame word).
+#include "fable_compiler.h"
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
@@ -29,7 +30,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-    __forceinline CTCBase* Find(long type)
+    FABLE_FORCEINLINE CTCBase* Find(long type)
     {
         CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -43,9 +44,9 @@ class CThing { public:
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
     CTCMap        Components;                          // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) { return Components.Find(type); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
             *ppOut = (T*)GetTC(type);

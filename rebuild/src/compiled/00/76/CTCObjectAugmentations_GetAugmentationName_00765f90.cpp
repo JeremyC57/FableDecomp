@@ -21,6 +21,7 @@
 //   dereferenced) and the thing def release (null-tested).
 // Layout: CAugmentationDef Name (text index) +0x28 (as the landed 0x00766140 model); def reference count +4, release
 //   slot 1; CGroupEntry: vptr, IVRefCount +4 (second base), Delete slot 1.
+#include "fable_compiler.h"
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);       // 0x0099B720
@@ -104,11 +105,11 @@ struct CIVCountedPointeeVirtual {
 };
 struct CIVRefCounted {                           // second base: the count at +4 behind the vptr
     mutable unsigned long IVRefCount;
-    __forceinline void DecRef() const { --IVRefCount; }
-    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+    FABLE_FORCEINLINE void DecRef() const { --IVRefCount; }
+    FABLE_FORCEINLINE unsigned long GetRefCount() const { return IVRefCount; }
 };
 class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
-    __forceinline void ReleaseTemporary() const
+    FABLE_FORCEINLINE void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)

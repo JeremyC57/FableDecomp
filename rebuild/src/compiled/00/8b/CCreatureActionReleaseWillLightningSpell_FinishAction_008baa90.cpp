@@ -15,6 +15,7 @@
 // Shape: the sibling FinishWillForceSpell / ReleaseWillEnflameSpell bodies (0x008BA140 / 0x008BA6B0) with the animation block first;
 //   the CAnimateThing is a named reference local (chained in one expression, `push 1` lands before the GetAnimation call).
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -157,7 +158,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -169,7 +170,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

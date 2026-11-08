@@ -27,6 +27,7 @@
 //        the push and gives the plain `dec eax ; mov [ecx+4],eax` release.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
@@ -95,7 +96,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad_0x54[0x1c];
     CDefClassBase* PDef;                        // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -108,7 +109,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceDirect(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceDirect(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

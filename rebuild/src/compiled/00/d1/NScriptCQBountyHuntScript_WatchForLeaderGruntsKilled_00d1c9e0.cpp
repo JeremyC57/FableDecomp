@@ -12,6 +12,7 @@
 //   copy at every site, so the destruction is written per exit (a __forceinline copy of the STLport ~vector body at the
 //   return, the out-of-line ~vector at the end, written in both arms of the final terminating test so VC7.1 tail-merges
 //   the call and hoists its `lea ecx` above the branch), as in the landed twin.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -44,7 +45,7 @@ public:                     // STLport vector (retail 12 bytes), malloc_alloc st
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     void Destroy();                                    // ~vector, out of line: 0x008AC970
-    __forceinline void DestroyInline()                 // the same body, expanded once (VC's inline-once band)
+    FABLE_FORCEINLINE void DestroyInline()                 // the same body, expanded once (VC's inline-once band)
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

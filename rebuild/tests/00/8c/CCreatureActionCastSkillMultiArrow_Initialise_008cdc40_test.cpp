@@ -7,6 +7,7 @@
 // presence bit 0x88 (dword +0x30, bit 8) of a freshly fetched owner; the final lookup is an inline
 // std::lower_bound over the {type, component} vector at +0x44/+0x48 (8-byte entries) whose result is unused (the loop keeps it).
 // Layout: Level at retail +0x114 (PDB +0x12c); thing byte +0x10 = state (1: AI controlled).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCParamsBase;
 
@@ -30,16 +31,16 @@ class CThing { public:
     STCEntry*     m_tcFirst;                    // +0x44
     STCEntry*     m_tcLast;                     // +0x48
     CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline bool LacksTC(long interfaceType) const
+    FABLE_FORCEINLINE bool LacksTC(long interfaceType) const
     {
         if (HasTC(interfaceType)) return false;
         return true;
     }
-    __forceinline STCEntry* LowerBoundTC(long interfaceType)
+    FABLE_FORCEINLINE STCEntry* LowerBoundTC(long interfaceType)
     {
         STCEntry* first = m_tcFirst;
         long count = m_tcLast - m_tcFirst;

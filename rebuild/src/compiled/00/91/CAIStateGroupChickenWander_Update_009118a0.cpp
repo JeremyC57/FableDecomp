@@ -14,6 +14,7 @@
 //          destructors.
 // Layout: CAIStateGroupBase per engine/CAIStateGroupBase.h (PBrain +4); the creature's bitset +0x20, interface map +0x44.
 //          No engine header exists for CAIStateGroup_ChickenWander.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CThingCreatureBase;
@@ -35,7 +36,7 @@ class CThing : public CThingPhysical { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {

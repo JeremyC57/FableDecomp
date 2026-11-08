@@ -14,6 +14,7 @@
 // members in reverse order: the array buffer freed when non-null, then the handle's inline destructor (its vtable, the last-handle
 // notification when the primitive's count is 1, `operator=(0)` = release + a second unconditional zero store, then the counted pointer's release
 // re-reading the pointer, then the out-of-line root destructor), and the root destructor as a tail jump.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -31,7 +32,7 @@ class CEngineInternalPrimitiveBase { public:        // the referenced primitive:
 struct CIVCountedPointer {                   // the counted primitive pointer (as the landed handle ??_G 0x0041C500)
     CEngineInternalPrimitiveBase* Object;
     long GetRefCount() const { return Object ? Object->m_handleCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CEngineInternalPrimitiveBase* object = Object;
         if (object) {
@@ -40,7 +41,7 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
     {
         Release();
         Object = object;
@@ -48,19 +49,19 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
             ++object->m_handleCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass {   // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                  // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 #include "engine/C3DVector.h"

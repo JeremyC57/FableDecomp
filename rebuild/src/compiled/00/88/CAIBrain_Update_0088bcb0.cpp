@@ -12,6 +12,7 @@
 //   `distance` argument slot with the top-level output flag (retail frame is one word).
 // Fix (sweep 3): the callee 0x0088C840 is the landed CBrainOutput::operator= (no CBrainOutput::Merge exists in Ego_r /
 //   FableWin); the three `output.Merge(Output)` calls are the assignment `output = Output`. Same bytes.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -82,7 +83,7 @@ class CAIBrain { public:
     void InitCreaturePosition();                        // 0x0088BBB0
     CAIStateGroupBase* FindNextStateGroupToUse(long priority);    // 0x0088B870
     bool Update(long distance, CBrainOutput& output);
-    __forceinline bool IsFrameDue(unsigned long period) const
+    FABLE_FORCEINLINE bool IsFrameDue(unsigned long period) const
     {
         unsigned __int64 offset = Creature->UpdateOffset;
         return (offset + (unsigned long)Component->GetCurrentWorldFrame()) % period == 0;

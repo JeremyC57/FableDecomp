@@ -9,6 +9,7 @@
 // Size TU (the while loop enters at its bottom test); the functor is `__forceinline` (the size TU calls it otherwise).
 // Label correction: catalog "RBTree_FindNode_Iterator" is a guess.
 // Leaf: ??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCWideString@@_N@std@@@1@ABVCWideString@@@Z
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CWideString {
@@ -19,7 +20,7 @@ public:
 
 namespace std {
 template <class _Tp> struct less {
-    __forceinline bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
+    FABLE_FORCEINLINE bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 
 template <class _T1, class _T2> struct pair {

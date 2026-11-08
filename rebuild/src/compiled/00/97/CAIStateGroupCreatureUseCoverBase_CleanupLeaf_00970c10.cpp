@@ -7,6 +7,7 @@
 // (an inline clear() member -- written in the caller it swaps ebx/edi), CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10.
 // Shape: the component pointer is deliberately unset when the interface is absent (retail calls through the dead
 // key slot `mov eax,[esp+8]`), so the lookup is `T* tc; if (HasTC(k)) tc = GetTC(k); tc->SetUser(0);`.
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -43,13 +44,13 @@ class CThing
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::value_type* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -64,7 +65,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
@@ -100,7 +101,7 @@ struct CCoverList                                   // vector<CIntelligentPointe
     void clear() { erase(first, last); }
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {

@@ -11,6 +11,7 @@
 //   the engine header carries the donor 16), Maps (CArray<CMapInfo>, 0x48-byte records, PMap +0x10) +0x20; the node
 //   value pair<const CCharString, long> sits at +0x10, so the map number is node +0x14.
 // Shape: the name reference lives in edi for both calls, the map's address in ebx (`find` then `!= end()`).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 
 class CCharString {
@@ -78,7 +79,7 @@ public:
 };
 typedef _Rb_global<bool> _Rb_global_inst;
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
 template <class V> struct _Rb_tree_iterator {
     _Rb_tree_node_base* _M_node;
@@ -102,7 +103,7 @@ private:
 public:
     iterator end() { return iterator(_M_header._M_data); }
     template <class _KT> iterator find(const _KT& k) { return iterator(_M_find(k)); }
-    static __forceinline void deallocate(_Node* p, unsigned int) { if (p != 0) free(p); }
+    static FABLE_FORCEINLINE void deallocate(_Node* p, unsigned int) { if (p != 0) free(p); }
     void erase(iterator position)
     {
         _Node* y = (_Node*)_Rb_global_inst::_Rebalance_for_erase(position._M_node, _M_header._M_data->_M_parent,

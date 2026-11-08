@@ -10,6 +10,7 @@
 // converting temporary built by the out-of-line pointer ctor. The engine header for this class is all padding
 // (only PTarget +0x14 named), so the shared local AI state-group model is used.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -31,7 +32,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -45,7 +46,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline const CInterfaceMap::value_type* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE const CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -57,7 +58,7 @@ class CThing { public:
         return sel;
     }
     // the same lookups through a const CThing (the const LowerBound instantiation)
-    template<class T> __forceinline bool GetInterfaceConst(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceConst(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -70,7 +71,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline const CInterfaceMap::value_type* FindEntryConst(long interfaceType) const
+    FABLE_FORCEINLINE const CInterfaceMap::value_type* FindEntryConst(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -118,8 +119,8 @@ struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 by
 
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointerCtor {

@@ -13,6 +13,7 @@
 //   budget expands it at the first site only, calling 0x004365B0 at the other six. The component pick is GOTCHAS'
 //   one-ternary `((it == last || type < it->kind) ? last : it)->m_pTC` (the if/assign form copies the inlined
 //   LowerBound's result into eax instead of reusing esi).
+#include "fable_compiler.h"
 class CTCBase;
 
 struct STCEntry {
@@ -48,7 +49,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;

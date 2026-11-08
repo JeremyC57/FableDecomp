@@ -1,6 +1,7 @@
 // NGameText::CDataBank::GetPGroupEntry -- load/materialise a group and retain it.
 // Leaf: GetPGroupEntry
 // Retail009C8890,247 bytes. Native Entries1E0 vs donor254; two native3C resource lists at168/1A4.
+#include "fable_compiler.h"
 #define CDataBank CDataBankLegacy
 #define CIVCountedPointer CIVCountedPointerLegacy
 #include "fable_game_text_bank.h"
@@ -33,7 +34,7 @@ class CResourceList { public:
  void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
  bool MakeFreeSpace(unsigned long); //009FC4F0
 };
-__forceinline void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
+FABLE_FORCEINLINE void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
 template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
 template<class T>class CIVCountedPointer { public:
  T* Object;
@@ -63,7 +64,7 @@ class CDataBank : public CBankFileAsync { public:
  void FlushAsyncUpdates()const; //009D68B0: invokes009D6730 then009D5A90
  void QueueGroupLoad(unsigned long)const; //009C8220 out-of-line BeginLoadingGroup; manifest text label incorrect
  CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long,bool)const;
- __forceinline void BeginLoadingGroup(unsigned long n)const{if(GetEntryDataType(n)==1&&Entries[n])Entries[n]->BeginLoading(n,const_cast<CDataBank*>(this));}
+ FABLE_FORCEINLINE void BeginLoadingGroup(unsigned long n)const{if(GetEntryDataType(n)==1&&Entries[n])Entries[n]->BeginLoading(n,const_cast<CDataBank*>(this));}
 };
 CIVCountedPointer<const CGroupEntry> CDataBank::GetPGroupEntry(unsigned long n,bool allowPending)const {
  if(GetEntryDataType(n)==1){

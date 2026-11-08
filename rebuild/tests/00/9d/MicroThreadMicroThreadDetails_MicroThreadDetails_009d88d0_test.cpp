@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stddef.h>
 #include <new>
@@ -13,12 +14,12 @@ static int frees,bad;static void* expected;static void tracked_free(void* p){++f
 namespace std {
 template<class T>class allocator{};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A {public:V _M_data;};
-template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(){_M_start=0;_M_finish=0;_M_end_of_storage._M_data=0;}__forceinline ~_Vector_base(){if(_M_start)tracked_free(_M_start);}};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {public:__forceinline ~vector(){for(T* p=this->_M_start;p!=this->_M_finish;++p)p->~T();}};
+template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(){_M_start=0;_M_finish=0;_M_end_of_storage._M_data=0;}FABLE_FORCEINLINE ~_Vector_base(){if(_M_start)tracked_free(_M_start);}};
+template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {public:FABLE_FORCEINLINE ~vector(){for(T* p=this->_M_start;p!=this->_M_finish;++p)p->~T();}};
 }
 template<class T>class CArray {public:std::vector<T> Data;};
 // Layout: no active micro-thread header; bool Dead+4 and saved-stack vector+8, confirmed by original stack-size method.
-namespace MicroThread {class MicroThreadInfo {public:virtual void MarkAsDead();virtual unsigned int MicroThreadStackSize()const;virtual __forceinline ~MicroThreadInfo(){}bool Dead;};class MicroThreadDetails:public MicroThreadInfo {public:std::vector<unsigned char> Stack;}; }
+namespace MicroThread {class MicroThreadInfo {public:virtual void MarkAsDead();virtual unsigned int MicroThreadStackSize()const;virtual FABLE_FORCEINLINE ~MicroThreadInfo(){}bool Dead;};class MicroThreadDetails:public MicroThreadInfo {public:std::vector<unsigned char> Stack;}; }
 
 void DestroyCandidate(MicroThread::MicroThreadDetails* p){p->MicroThreadDetails::~MicroThreadDetails();}
 

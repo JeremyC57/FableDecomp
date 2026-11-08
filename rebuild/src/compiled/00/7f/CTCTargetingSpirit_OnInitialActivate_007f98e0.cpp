@@ -10,6 +10,7 @@
 // _Rb_tree: header node pointer first; the value of a node at +0x14 after the 16-byte node links and the key).
 // Shape: the def pointer local is zeroed and filled by GetSubDef, read once into a named pointer (ebx) and released by hand at the end;
 // `it._M_node != map._M_header` compared directly; the float is a ternary stored once.
+#include "fable_compiler.h"
 class CThing;
 struct CRbNode {
     long     _M_color;
@@ -28,7 +29,7 @@ struct CDistanceMap {                           // std::map<long, float>
     long     _M_node_count;                     // +0x04
     iterator find(const long& key) const;       // 0x007F9830
 };
-static __forceinline float FindDistance(const CDistanceMap& map, long key)
+static FABLE_FORCEINLINE float FindDistance(const CDistanceMap& map, long key)
 {
     CDistanceMap::iterator it = map.find(key);
     return it._M_node != map._M_header ? it._M_node->second : 0.0f;

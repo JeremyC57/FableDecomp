@@ -16,6 +16,7 @@
 // Shape: the animation name is passed as const char* (its temporary shares the def pointer's frame word); same-TU
 //   noinline GetSubDef / GetEffectFromString stand-ins; the def references are counted temporaries inside the &&
 //   chains (the second chain's flags live in ebx: 2 = def temporary, 4 = name temporary).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -97,13 +98,13 @@ public:
     unsigned char  m_flags91;                                // +0x91 bit 0: dead
     const C3DVector& GetPos() const;                    // 0x004C73D0
     void Kill(bool immediately);                             // 0x004C9B80
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

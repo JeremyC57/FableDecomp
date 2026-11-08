@@ -1,4 +1,5 @@
 // test for 0x00BCF2E0 CEngineInternalPrimitiveAnimatedMesh::SetupMesh -- LOD choice, forced LOD, per-frame caching, GetMesh failure
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -63,7 +64,7 @@ static CEnginePrimitiveRenderer g_renderer;
 CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData = &g_renderer;
 CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e80 = &g_renderer;
 class CEnginePrimitiveManagerMeshBase { public:
-    static __forceinline unsigned long __fastcall GetAppropriateLOD(const C3DMeshInfo* meshInfo, float distance, float radius, float errorTolerance)
+    static FABLE_FORCEINLINE unsigned long __fastcall GetAppropriateLOD(const C3DMeshInfo* meshInfo, float distance, float radius, float errorTolerance)
     {
         float distanceToSurface = distance - radius > 0.0001f ? distance - radius : 0.0001f;
         errorTolerance *= distanceToSurface / (radius * g_pPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted);

@@ -14,11 +14,12 @@
 // Shape: the direction to FacePos is a C3DVector built from the differences and normalised with the inline fast
 //   Normalise (landed CTCBattleCharge::UpdateDirectionOverride 0x007A7000 model, squares summed Z, Y, X); the dot
 //   products sum Z first; the facing angle is atan2(X, Y) in turns wrapped by the landed WrapAngle.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fmod, atan2)
 extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -29,7 +30,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 #define FABLE_RETAIL_C3DVECTOR
 #include "engine/C3DVector.h"
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

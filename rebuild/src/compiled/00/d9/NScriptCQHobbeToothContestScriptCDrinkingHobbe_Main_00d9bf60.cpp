@@ -16,6 +16,7 @@
 // CScriptThing results need the CScriptThing destructor declared on the class itself.
 // Naming wave 35: identity reg 00d9a42c "DrinkingHobbe" in 00d9a190; Alloc 00d9be30; vtable 012d6b10 slot 1; PDB ?Main@CDrinkingHobbe@CQ_HobbeToothContestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CDrinkingHobbe::Main (wave3/labels_alloc.tsv); PDB ?Main@CDrinkingHobbe@CQ_HobbeToothContestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDrinkingHobbe@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HobbeToothContestScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 class CCharString;
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
@@ -26,7 +27,7 @@ class CCPPointerInfo;
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }

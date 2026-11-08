@@ -9,6 +9,7 @@
 //   because the engine header models its vptr as a plain void* and this body makes a virtual call.
 // Shape: the inlined Read keeps the count in eax on the fast path; the count (an inline ReadULong returning by value) and the allocation handle both live in
 //   the dead `stream` argument slot; `Size > 0` gives the unsigned `jbe`.
+#include "fable_compiler.h"
 #include "engine/CContainmentVolume.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -24,8 +25,8 @@ class CDataInputStream { public:
     void*         CurrentSourcePtr;                                // +0x0c
     unsigned long SourceChunkStreamPos;                            // +0x10
     long          SourceChunkBytesRemaining;                       // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void ReadInline(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void ReadInline(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -39,7 +40,7 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong()
+    FABLE_FORCEINLINE unsigned long ReadULong()
     {
         unsigned long value;
         ReadInline(&value, 4);

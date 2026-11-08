@@ -1,5 +1,6 @@
 // Behaviour test for 004bc340: src/004bc340.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. NGraphicAppearance::CTCGraphicAppearance::RefreshPrimitivePos(CPrimitive* primitive, const C3DPositionInterpolator& position, const C3DOrientationInterpolator& orientation)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -23,9 +24,9 @@ public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    FABLE_FORCEINLINE C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
@@ -48,7 +49,7 @@ public:
     void* __vfptr;                                  // +0x00
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10
-    __forceinline C3DVector GetPosition(float t) const { return StartPosition + (EndPosition - StartPosition) * t; }
+    FABLE_FORCEINLINE C3DVector GetPosition(float t) const { return StartPosition + (EndPosition - StartPosition) * t; }
 };
 
 class C3DOrientationInterpolator {
@@ -56,7 +57,7 @@ public:
     void* __vfptr;                                  // +0x00
     CRightHandedSet StartOrientation;               // +0x04
     CRightHandedSet EndOrientation;                 // +0x1C
-    __forceinline CRightHandedSet GetOrientation(float t) const { return StartOrientation.Interpolate(EndOrientation, t); }
+    FABLE_FORCEINLINE CRightHandedSet GetOrientation(float t) const { return StartOrientation.Interpolate(EndOrientation, t); }
 };
 
 class CEnginePrimitiveHandle;

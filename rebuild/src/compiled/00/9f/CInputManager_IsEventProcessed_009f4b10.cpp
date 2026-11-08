@@ -11,6 +11,7 @@
 //   device number (`stored != event`), then switches on the device type: the per-type compares are written
 //   `event.X() == stored.X()` as `if (...) return true; return false;` statements (a `return a == b` materialises
 //   sete), and `case 3: return true;` shares one `dec eax ; je` with the default.
+#include "fable_compiler.h"
 enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 enum EInputKey { };   // Ego_r.pdb enum (values unused here)
@@ -31,7 +32,7 @@ public:
 };
 // Two events describe the same input: same type and device number, and per device type the same joystick button (for
 // the button kinds 0x13..0x15), the same character (char kinds 0x0f/0x10) or key, any mouse event; else no match.
-__forceinline bool IsSameInput(const CInputEvent& stored, const CInputEvent& event)
+FABLE_FORCEINLINE bool IsSameInput(const CInputEvent& stored, const CInputEvent& event)
 {
     if (stored.GetType() != event.GetType())
         return false;

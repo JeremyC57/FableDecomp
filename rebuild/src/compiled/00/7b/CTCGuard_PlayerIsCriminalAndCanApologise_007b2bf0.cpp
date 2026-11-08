@@ -10,6 +10,7 @@
 // interface 0x23) is clear, so retail reads the `push ecx` frame word on that path; the result goes straight to the getter.
 // The three tests share one `xor al,al` exit (nested ifs ending in one `return false`).
 // Layout: CTCBase ParentThing +0x04; CThing component bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -19,7 +20,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* tc;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

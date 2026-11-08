@@ -13,6 +13,7 @@
 //   unset out pointer, the key and the empty bone name sharing the dead argument slot); both liveness tests are the inline
 //   IS_THING_ALIVE (two GetPItem calls); the new pointer is assigned through a CIntelligentPointer<CThing> temporary (inline
 //   converting ctor = base ctor + vtable + SetPItem, inline operator= = SetPItem(other.GetPItem()), out-of-line base dtor).
+#include "fable_compiler.h"
 class CTCBase;
 class C3DVector;
 #define FABLE_RETAIL_CCHARSTRING
@@ -25,7 +26,7 @@ CThing* __fastcall Create(const CCharString& defName, const C3DVector& position,
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
-__forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
+FABLE_FORCEINLINE CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
     CTCDParticleEmitter* emitter;
     thing->GetTC(TCI_PARTICLE_EMITTER, &emitter);                    // TC_PARTICLE_EMITTER

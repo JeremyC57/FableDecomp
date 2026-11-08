@@ -16,6 +16,7 @@
 // Inlines: CEnginePrimitiveHandle::~CEnginePrimitiveHandle (vptr store, Clear(): `if (Data.GetRefCount() == 1)
 //   Data->NotifyReleased(*this); Data.Reset(0);`, then the CIVCountedPointer member dtor), as the landed handle ??_G 0x0041C500.
 // Shape: the implicit dtor is emitted through a qualified explicit call in a one-line helper (chunk 562 device).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CIVCountedPointeeBase { public:
@@ -27,7 +28,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;                          // +0x00
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
     T* operator->() const { return (T*)Object; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -36,14 +37,14 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle;
@@ -59,13 +60,13 @@ public:
 
 class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data->NotifyReleased(*this);
         Data.Reset(0);
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 class CBaseObjectPointer;

@@ -15,6 +15,7 @@
 // Layout: retail CTCFollowed Followers +0x0C, AIFollowers +0x10 (STLport lists); retail CThing ThingClass +0x10 (1 = AI
 //         creature), Dead +0x91 bit 0, LevelPersistent +0x92 bit 4; retail CThingAICreature HomeBuilding +0x168,
 //         WorkBuilding +0x170 (PDB +0x190/+0x198).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CThingAICreature;
@@ -62,7 +63,7 @@ public:
     CBaseIntelligentPointer WorkBuilding;           // +0x170
 };
 
-__forceinline bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPItem per pointer here
+FABLE_FORCEINLINE bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPItem per pointer here
 {
     CThing* thing = ((CThing*)p.GetPItem());
     if (thing && !thing->Dead)

@@ -17,6 +17,7 @@
 //   for the filter and the functor member; the last wait calls IsAlive through a reference so it stays virtual).
 // Naming wave 35: identity reg 00da38f8 "CorneredGuard" in 00da34b0; Alloc 00da5c90; vtable 012d7580 slot 1; PDB ?Main@CCorneredGuard@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CCorneredGuard::Main (wave3/labels_alloc.tsv); PDB ?Main@CCorneredGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CCorneredGuard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_MinionClifftopChaseScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -26,14 +27,14 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 #include "engine/CCountedPointer.h"
 class CScriptThing;
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
     CCPPointerInfo* Info;
-    __forceinline CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    FABLE_FORCEINLINE CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -63,7 +64,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     CCPPointerImp PImp;                                // +0x04
     CScriptThing();                                    // 0x006E7B40
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    __forceinline CScriptThing(CScriptThing& other) : PImp(other.PImp) { }   // the inline copy of a non-const thing
+    FABLE_FORCEINLINE CScriptThing(CScriptThing& other) : PImp(other.PImp) { }   // the inline copy of a non-const thing
 };
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 struct CScriptThingView {
@@ -113,7 +114,7 @@ template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48
     void (T::*Func)(P1);                               // +0x34
     T* PClass;                                         // +0x38
     P1 Par1;                                           // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), const P1 par1)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), const P1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
 };

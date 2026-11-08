@@ -1,4 +1,5 @@
 // Behaviour test for 008a7d60: body copied from src/008a7d60.cpp (CGameScriptInterface::GetThingWithScriptName), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -93,7 +94,7 @@ class CGameScriptInterface { public:
     CPlayerManager_Retail*      PlayerManager;
     CThingSearchTools*          ThingSearchTools;
     virtual CScriptThing GetThingWithScriptName(const CCharString& scriptName) const;
-    __forceinline void FindThingsWithScriptName(CCharString name, vector<CThing_Retail*>& things) const
+    FABLE_FORCEINLINE void FindThingsWithScriptName(CCharString name, vector<CThing_Retail*>& things) const
     {
         World->Things->FindThingsWithScriptName(name, things);
     }

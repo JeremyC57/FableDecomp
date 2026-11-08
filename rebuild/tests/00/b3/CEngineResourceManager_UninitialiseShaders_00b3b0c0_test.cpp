@@ -1,4 +1,5 @@
 // CEngineResourceManagerNative::UninitialiseShaders -- unbind stream/index/textures, close the populated vertex shader resources and their banks. Retail00b3b0c0 complete189bytes+3int3. Shared CEngineResourceManager/CShaderDataBank differ materially: donor bank1a8/resourcesc versus nativebank128/resources8, nativeVShaderBanks960/resources29c0 versusdonora94/38f4. Localnativeview required. Shared CRenderManagerCore direct exact fields. COM slots65 SetTexture,100 SetStreamSource,104 SetIndices; no virtual COM destructor. ResourceCloseShaderBank00a5d750; bankClose virtualslot5=00a62110 genuine inheriteddtor slot0.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __stdcall
@@ -128,7 +129,7 @@ struct CEngineResourceManagerNative {
  void UninitialiseShaders();
 };
 extern CRenderManagerCore* g_pRenderManagerCore; //01436e18
-static __forceinline void UnbindBuffersAndTextures(CRenderManagerCore* core)
+static FABLE_FORCEINLINE void UnbindBuffersAndTextures(CRenderManagerCore* core)
 {
  IDirect3DDevice9*& device=core->PD3DDevice;
  device->SetStreamSource(0,0,0,0);

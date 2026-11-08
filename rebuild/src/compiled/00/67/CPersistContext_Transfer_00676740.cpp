@@ -22,6 +22,7 @@
 //   comes first in the source (retail lays out default, case 3, case 2). The default value's destructor is inlined at each
 //   exit: the lane VC7.1 keeps the implicit (or plain inline) ~CRandomAppearanceMorph out of line (a `call` per exit), so
 //   it is declared and then defined `__forceinline` after the explicit specializations of the two out-of-line callees.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
 class CDataOutputStream;
@@ -62,7 +63,7 @@ void __fastcall __destroy_aux<CArray<CRandomAppearanceMorph::CBodyPartMesh>*>(CA
 template <> vector<CRandomAppearanceMorph::CTextureMorphMap, allocator<CRandomAppearanceMorph::CTextureMorphMap> >::~vector();   // 0x006753B0
 }
 
-__forceinline CRandomAppearanceMorph::~CRandomAppearanceMorph() { }
+FABLE_FORCEINLINE CRandomAppearanceMorph::~CRandomAppearanceMorph() { }
 
 class CPersistContext {
 public:

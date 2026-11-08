@@ -10,6 +10,7 @@
 // (+0x34..), 8 bytes higher (the PDB's 16-byte containers in the super chunk base), so a local model is used.
 // Leaf: ReadFromFile@C3DAnimFileMovementVectorChunk
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -24,8 +25,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -39,7 +40,7 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

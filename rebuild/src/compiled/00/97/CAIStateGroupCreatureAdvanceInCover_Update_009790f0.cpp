@@ -18,6 +18,7 @@
 //          __forceinline, and the creature comes through an inline GetCreature() accessor.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (pack(1): enemy +0x14, PCoverThing +0x1F, CoverList +0x28) behind
 //          engine/CAIStateGroupBase.h.
+#include "fable_compiler.h"
 #define CAIStateGroup_CreatureUseCoverBase CAIStateGroup_CreatureUseCoverBaseLayout
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #undef CAIStateGroup_CreatureUseCoverBase
@@ -48,7 +49,7 @@ class C2DVector { public:
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())
@@ -56,7 +57,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-__forceinline bool IS_THING_ALIVE(CThing* const& thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* const& thing)
 {
     if (thing != 0) {
         if (!thing->IsDead())

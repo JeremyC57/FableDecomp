@@ -17,6 +17,7 @@
 //   pointer: `optimize("y", off)` + `("s", on)`.
 // Model: engine/CMemoryDataInputStream.h + a methods-only reader adapter; CExplosionRing is the PDB's 16-byte record (no
 //   engine header); the vector is STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -27,7 +28,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -59,19 +60,19 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     void resize(size_type __new_size, const _Tp& __x);      // 0x004EB41F
-    __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
+    FABLE_FORCEINLINE void resize(size_type __new_size) { resize(__new_size, _Tp()); }
     _Tp* begin() { return _M_start; }
     _Tp& operator[](size_type __n) { return *(begin() + __n); }
 };
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CExplosionRing> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CExplosionRing* value) const
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CExplosionRing* value) const
     {
         value->TransferBinaryIn(stream);
     }
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

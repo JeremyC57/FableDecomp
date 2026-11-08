@@ -3,6 +3,7 @@
 // Identity: proven; own RTTI secondary vtable0x0126CB60 slot2 and PDB GetMeshesUsed(vector<CMeshInfo>&)const; secondary this+12 -> ParentThing-relative-8; MainGraphic retail+0x44, BankIndex+0 and RenderSizeX+8.
 // Layout: engine/CTCBase.h flattens the vptr into void* and supplies no constructor/destructor/accessor API. The local actual polymorphic chain is needed for target constructor/vtable/MI behavior; ParentThing+4 and flags+8 agree with that header and PDB. For nonvirtual queries only these inherited data offsets are used.
 // Layout: no target header, and GraphicAppearance/CThing headers are quarantined. Real MI supplies the secondary receiver convention; minimal named MainGraphic view reconciles two maps/two lists from donor+92 to retail+68. Actual CMeshInfo bitfield PrimaryMesh=true preserves the retail OR into the otherwise uninitialized flag byte. Genuine same-TU vector overflow, as verified N0230x7091A0.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -30,7 +31,7 @@ struct __false_type { __false_type() {} };
 template<class T> class allocator { public: T* allocate(unsigned int n) { return n?(T*)malloc(n*sizeof(T)):0; } void deallocate(T* p,unsigned int) { if(p) free(p); } };
 template<class V,class T,class Alloc> class _STLP_alloc_proxy:public Alloc { public: V _M_data; };
 template<class T> inline const T& max(const T& a,const T& b) { return a<b?b:a; }
-template<class T,class V> __forceinline void _Construct(T* p,const V& value) { new(p) T(value); }
+template<class T,class V> FABLE_FORCEINLINE void _Construct(T* p,const V& value) { new(p) T(value); }
 template<class Input,class Output> NOINLINE Output __fastcall __uninitialized_copy(Input first,Input last,Output result,const __false_type&) { Output current=result; for(;first!=last;++first,++current) _Construct(&*current,*first); return current; }
 template<class Iter,class Size,class T> NOINLINE Iter __fastcall __uninitialized_fill_n(Iter first,Size count,const T& value,const __false_type&) { for(;count>0;--count,++first) _Construct(&*first,value); return first; }
 template<class T,class Alloc=allocator<T> > class vector { public: typedef unsigned int size_type; typedef T* pointer; T* _M_start; T* _M_finish; _STLP_alloc_proxy<T*,T,Alloc> _M_end_of_storage;

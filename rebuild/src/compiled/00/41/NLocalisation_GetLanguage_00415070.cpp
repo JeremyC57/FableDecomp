@@ -14,6 +14,7 @@
 //   form hoists the push above the branch), and the final fall-through re-reads the global.
 // Probe order and codes are retail's: English 9, French 0x0C, Japanese 0x11, German 7, Korean 0x12, Chinese 4,
 //   Spanish 0x0A, Italian 0x10 (descriptive enumerator names; the PDB enum is not in the name sets).
+#include "fable_compiler.h"
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -43,7 +44,7 @@ enum ELanguageCode {
     LANGUAGE_KOREAN   = 0x12
 };
 
-static __forceinline bool LanguageBankExists(const char* bank)
+static FABLE_FORCEINLINE bool LanguageBankExists(const char* bank)
 {
     CCharString name(bank);
     return g_BankFileManager.BankExists(name);

@@ -1,5 +1,6 @@
 // Behaviour test for 007713c0: src/007713c0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCOpinionSource::SetupFromDef(long defIndex)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -25,7 +26,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     mutable long m_refCount;                            // +0x04
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -36,7 +37,7 @@ template <class T> struct CDefSlot {                    // the plain out slot Ge
 };
 template <class T> struct CDefHolder {                  // owns the handed-over reference
     T* Object;
-    __forceinline ~CDefHolder() { ReleaseDef(Object); }
+    FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -136,7 +137,7 @@ class CTCOpinionSource { public:
     bool          ReactNonstopFlag;                     // +0x77
     CCountedPointer<COpinionSet> POpinionProduced;      // +0x78
     const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
-    __forceinline void CopyFromDef(const COpinionSourceDef* def)
+    FABLE_FORCEINLINE void CopyFromDef(const COpinionSourceDef* def)
     {
         *POpinionProduced.Object = def->OpinionProduced;
         ReactToSelfPermitted = def->ReactToSelfPermitted;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
@@ -14,9 +15,9 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
-    __forceinline ~CIVCountedPointer() { ReleaseRef(); }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { ReleaseRef(); }
 };
 class CBaseClass {                                 // vtable 0x01231710
 public:
@@ -25,7 +26,7 @@ public:
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

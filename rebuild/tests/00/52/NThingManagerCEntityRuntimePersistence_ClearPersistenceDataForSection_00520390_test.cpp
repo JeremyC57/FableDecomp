@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __cdecl
 #define __fastcall
@@ -27,7 +28,7 @@ template<class T>class FABLE_MS_BITFIELDS CBasicString {public:T*PData;unsigned 
 class CCharStringData {public:CBasicString<char>Data;long NoRefs;};
 #pragma pack(pop)
 extern const unsigned long CUnprovenGlobal_0129a168[256];
-class CCharString {public:CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const char*);long GetLength()const{if(!PStringData)return 0;return PStringData->Data.GetLength();}operator const char*()const{if(!PStringData)return "";return PStringData->Data.PData;}__forceinline unsigned long GetCRC()const{unsigned long length=GetLength();const char*data=*this;unsigned long crc=0;if(!length)return 0;for(unsigned long i=0;i<length;++i)crc=CUnprovenGlobal_0129a168[static_cast<unsigned char>(data[i])^(crc&255)]^(crc>>8);return crc;}};
+class CCharString {public:CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const char*);long GetLength()const{if(!PStringData)return 0;return PStringData->Data.GetLength();}operator const char*()const{if(!PStringData)return "";return PStringData->Data.PData;}FABLE_FORCEINLINE unsigned long GetCRC()const{unsigned long length=GetLength();const char*data=*this;unsigned long crc=0;if(!length)return 0;for(unsigned long i=0;i<length;++i)crc=CUnprovenGlobal_0129a168[static_cast<unsigned char>(data[i])^(crc&255)]^(crc>>8);return crc;}};
 class CWideString {public:CWideStringData*PStringData;CWideString();CWideString(const CWideString&);~CWideString();const CWideString&operator=(const CWideString&);};
 #ifdef _MSC_VER
 typedef unsigned __int64 ThingIdentifier;

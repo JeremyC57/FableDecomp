@@ -10,6 +10,7 @@
 // null test), then the base destructor as a sibling tail jump. PDB layout: Mesh
 // CIVCountedPointer<const CPhysicsMesh> +4, PositionMatrix +8, Scale +0x38, OO_Scale +0x3C (modelled
 // locally: polymorphic class, no engine header).
+#include "fable_compiler.h"
 class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
@@ -18,7 +19,7 @@ class CPhysicsMesh { public:
 
 template <class T> class CIVCountedPointer { public:
     T* m_pObject;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* object = m_pObject;
         if (object) {

@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CMATRIX4X4_H
 #define FABLE_ENGINE_CMATRIX4X4_H
+#include "fable_compiler.h"
 // CMatrix4x4: one retail model (new 2026-11-03 from Codex pass 13; its FABLE_RETAIL_SHADER_LIGHTING part folded in). Ego_r TPI
 // 0xA231: the 16 named float entries E11..E44 overlap the public Data[4][4] (0x40 bytes). CShaderRenderManager::Initialise
 // 0x0098ACF0 stores four diagonal ones and twelve off-diagonal zeroes per matrix (?SetIdentity@CMatrix4x4@@QAEXXZ, inline);
@@ -14,7 +15,7 @@ public:
         float Data[4][4];
     };
     float SetInverseOfUniformScaleRotationTranslation(const CMatrix4x4&);
-    __forceinline void TransformTransposedAssumeW(const C4DVector& src,C4DVector& dest,float w) const {
+    FABLE_FORCEINLINE void TransformTransposedAssumeW(const C4DVector& src,C4DVector& dest,float w) const {
         C4DVector vect=src;
         dest.X=E11*vect.X+E12*vect.Y+E13*vect.Z+E14*w;
         dest.Y=E21*vect.X+E22*vect.Y+E23*vect.Z+E24*w;
@@ -34,7 +35,7 @@ public:
     // arm the GF_SSE_MATRIX_MULTIPLY kernel (operands re-read from the parameter slots), the x87 arm the row loop. Expanded in
     // place by CParticleProgram::ClingToMesh 0x00AE1320 / SetupSimulation 0x00AE29D0 and CShaderRenderManager::
     // UpdateObjectSpaceTextureTransform 0x00989230 / UpdateLocalisedSphereMapping 0x00988E80.
-    __forceinline void AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b);
+    FABLE_FORCEINLINE void AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b);
 #endif
     void SetIdentity() {
         E11=1.0f; E22=1.0f; E33=1.0f; E44=1.0f;

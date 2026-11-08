@@ -6,6 +6,7 @@
 //   in ecx), _Deque_base::_M_destroy_nodes 0x007B3B50, free 0x00BFEA14.
 // Shape (family K007, representative 0x004427D0): STLport 4.6 `~deque() { _Destroy(_M_start, _M_finish); }` with the inline
 //   ~_Deque_base (the landed 0x0048CAF0 body).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 class CUnprovenElement_007b4d60 { public: unsigned char _data[4]; };   // element unproven
 namespace std {
@@ -39,7 +40,7 @@ template <class _Tp, class _Alloc> class _Deque_base {      // STLport 4.6 _dequ
 public:
     typedef _Deque_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
     static unsigned int buffer_size() { return (unsigned int)_Deque_iterator_base<_Tp>::__buffer_size; }
-    __forceinline ~_Deque_base();
+    FABLE_FORCEINLINE ~_Deque_base();
 protected:
     void _M_destroy_nodes(_Tp** __nstart, _Tp** __nfinish);   // 0x007B3B50
     iterator _M_start;                                      // +0x00
@@ -49,7 +50,7 @@ protected:
 };
 
 template <class _Tp, class _Alloc>
-__forceinline _Deque_base<_Tp, _Alloc>::~_Deque_base()
+FABLE_FORCEINLINE _Deque_base<_Tp, _Alloc>::~_Deque_base()
 {
     if (_M_map._M_data) {
         _M_destroy_nodes(_M_start._M_node, _M_finish._M_node + 1);
@@ -61,7 +62,7 @@ template <class _Tp> struct __type_traits { typedef __false_type has_trivial_des
 template <class _ForwardIterator>
 void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x007B4680
 template <class _Tp, class _ForwardIterator>
-__forceinline void _Destroy_range(_ForwardIterator __first, _ForwardIterator __last, _Tp*)   // STLport _Destroy(first, last): iterators by value
+FABLE_FORCEINLINE void _Destroy_range(_ForwardIterator __first, _ForwardIterator __last, _Tp*)   // STLport _Destroy(first, last): iterators by value
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(__first, __last, _Trivial_destructor());

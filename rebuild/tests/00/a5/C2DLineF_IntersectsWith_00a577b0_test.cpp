@@ -1,12 +1,13 @@
 // 00a577b0 C2DLineF::IntersectsWith
 // Flags: /O2 /Oy /W3
 // Leaf: IntersectsWith
+#include "fable_compiler.h"
 namespace X_00a577b0 {
 // Layout: PDB C2DLineF Point1+0/Point2+8; C2DBoxF TLX0,TLY4,BRX8,BRY12; no active headers.
-struct C2DVector{float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){}__forceinline C2DVector operator-(const C2DVector&o)const{return C2DVector(X-o.X,Y-o.Y);}
-__forceinline float Dot(const C2DVector&o)const{return X*o.X+Y*o.Y;}};
+struct C2DVector{float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){}FABLE_FORCEINLINE C2DVector operator-(const C2DVector&o)const{return C2DVector(X-o.X,Y-o.Y);}
+FABLE_FORCEINLINE float Dot(const C2DVector&o)const{return X*o.X+Y*o.Y;}};
 struct C2DBoxF{float TLX,TLY,BRX,BRY;};
-struct C2DLineF{C2DVector Point1,Point2;C2DLineF(){}C2DLineF(float x1,float y1,float x2,float y2):Point1(x1,y1),Point2(x2,y2){}__forceinline C2DVector GetNormal()const{C2DVector d=Point2-Point1;return C2DVector(-d.Y,d.X);}
+struct C2DLineF{C2DVector Point1,Point2;C2DLineF(){}C2DLineF(float x1,float y1,float x2,float y2):Point1(x1,y1),Point2(x2,y2){}FABLE_FORCEINLINE C2DVector GetNormal()const{C2DVector d=Point2-Point1;return C2DVector(-d.Y,d.X);}
 bool OnLeft(const C2DVector&)const;bool IntersectsWith(const C2DBoxF&)const;};
 bool C2DLineF::OnLeft(const C2DVector&p)const{C2DVector normal=GetNormal();C2DVector relative=p-Point1;return normal.Dot(relative)>0.0f;}
 bool C2DLineF::IntersectsWith(const C2DBoxF&b)const{

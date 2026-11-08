@@ -1,4 +1,5 @@
 // behaviour test for 0x006AC390 CThingPlayerCreature::IsExpressionAvailable (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CThingPlayerCreature::IsExpressionAvailable(const CCharString& expressionName) -- true when the named CExpressionDef exists, the creature has an inventory (interface 0x11) and the inventory holds at least one of the expression's DummyObject item
@@ -55,7 +56,7 @@ struct CInterfaceMap {                                // CVectorMap<ETCInterface
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const unsigned long& type);    // 0x004365B0
-    __forceinline CTCBase* Find(long type)            // inline map find: end() when the key is absent
+    FABLE_FORCEINLINE CTCBase* Find(long type)            // inline map find: end() when the key is absent
     {
         SEntry* it = LowerBound((unsigned long)type);
         return ((it == last || type < it->type) ? last : it)->component;
@@ -86,15 +87,15 @@ class CThing { public:
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
     CDefinitionManager* GetDefinitionManager() const; // 0x004C7990
-    __forceinline unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetInterface(long type) { return m_interfaces.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetInterface(long type) { return m_interfaces.Find(type); }
 };
 
 class CThingPlayerCreature : public CThing { public:
     bool IsExpressionAvailable(const CCharString& expressionName);
 };
 
-__forceinline long CountOfType(CTCInventoryBase* inventory, long defIndex) { return inventory->GetNumberOfItemsOfTypeInInventory(defIndex); }
+FABLE_FORCEINLINE long CountOfType(CTCInventoryBase* inventory, long defIndex) { return inventory->GetNumberOfItemsOfTypeInInventory(defIndex); }
 
 bool CThingPlayerCreature::IsExpressionAvailable(const CCharString& expressionName)
 {

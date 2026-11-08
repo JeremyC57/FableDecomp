@@ -16,6 +16,7 @@
 // temporary bound to a helper's reference parameter, read through the returned pointer; dx / dy / the summed radius as
 // named floats; the squared distance accumulated in two statements); the Bind2 returns its `&&` whole (`mov eax,1` /
 // `xor eax,eax`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CTCPhysicsBase
@@ -35,7 +36,7 @@ public:
     float     Radius;                                        // +0x0C
     // the landed 0x0063EF50 operator() structure: the position temporary is bound to the helper's reference parameter
     // (read through the returned pointer) and the squared distance accumulates in two statements (dx squared first).
-    __forceinline bool Overlaps(const C3DVector& pos, const CTCPhysicsBase* physics) const
+    FABLE_FORCEINLINE bool Overlaps(const C3DVector& pos, const CTCPhysicsBase* physics) const
     {
         float dx = pos.X - SpherePos.X;
         float dy = pos.Y - SpherePos.Y;
@@ -46,7 +47,7 @@ public:
             return true;
         return false;
     }
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const const CTCPhysicsBase* physics = thing.GetPhysicsTC();
         if (physics)

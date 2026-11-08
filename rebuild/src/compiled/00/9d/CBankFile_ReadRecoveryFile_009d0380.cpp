@@ -16,6 +16,7 @@
 // Shape: the body is one `if (PathExists)` with the failure return after it (retail places that block last); the signature and
 //   validation checks sit in their own blocks so the two trailing words reuse the signature's frame slot and the dead
 //   validation argument slot, as retail.
+#include "fable_compiler.h"
 extern "C" int __cdecl memcmp(const void*, const void*, unsigned int);
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcmp, memcpy)
@@ -53,8 +54,8 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {

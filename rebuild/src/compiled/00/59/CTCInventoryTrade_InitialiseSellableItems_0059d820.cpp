@@ -20,6 +20,7 @@
 //   escapes (GetAllItems is not a TU-mate here), so its start and size are re-read every pass.
 // Layout: retail CTCInventoryTrade (Ego_r.pdb order, release containers): CategoryCount +0x160, ItemSellCount +0x164,
 //   ItemSellUniqueCount +0x16C, CategoryIdent +0x170; NInventory::CItem 8 bytes (def index, count) as 0x005BF77D.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -36,7 +37,7 @@ public:
     std::bitset<274> present;                                  // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) const { return present.test(type); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

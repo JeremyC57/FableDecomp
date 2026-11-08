@@ -11,6 +11,7 @@
 // lane hoist the dec above the fmul (405v405, one swap). The X/Z steps (gain numerator read through `this`) order the same way
 // under both spellings.
 // Layout: CTCInventoryBase retail = PDB minus 0x14 at the tail: RH sets +0xcc/+0xe4, angles +0xfc..+0x110, gains +0x114..+0x11c.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -35,7 +36,7 @@ class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
-    __forceinline void ReleaseReference() { if (--m_count == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseReference() { if (--m_count == 0) Destroy(); }
 };
 
 class CInventoryDef : public CDefPointeeBase { public:
@@ -47,8 +48,8 @@ class CInventoryDef : public CDefPointeeBase { public:
 
 template<class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->ReleaseReference();
@@ -72,7 +73,7 @@ struct CTCInventoryBase {
     float InventoryAnimYRotationAngleGain;      // +0x118
     float InventoryAnimZRotationAngleGain;      // +0x11c
 
-    __forceinline CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void UpdateInventoryAnimXAxis();            // 0x005BCEA4
     void UpdateInventoryAnimZAxis();            // 0x005BCEF8
     void UpdateInventoryAnim();

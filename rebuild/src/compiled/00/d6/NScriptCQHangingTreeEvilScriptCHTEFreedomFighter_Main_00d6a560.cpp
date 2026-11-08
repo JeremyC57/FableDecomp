@@ -26,6 +26,7 @@
 // Shape: the guard is a reference bound to the GetNearestWithScriptName temporary (retail calls IsAlive through the vptr: a
 //   by-value local is devirtualized); the trailing terminate check of the guard block sits in both arms of its if/else (one call,
 //   the else arm jumping to it with ecx preloaded); GetPos / GetTime are __forceinline (retail expands both at both sites).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -41,9 +42,9 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST = 0, SCRIPT_AI_PRIORITY_LOW =
                          SCRIPT_AI_PRIORITY_HIGH = 3, SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
-__forceinline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool FABLE_FASTCALL IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 

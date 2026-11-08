@@ -1,6 +1,7 @@
 // 00ea2e80 behavior fixture. The exact production Main body is pasted below.
 // Dependency doubles record registration, allocation failure, and call order.
 // Native layout and symbol identity are checked separately on the production object.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -100,7 +101,7 @@ public:
     TAllocFunc ClassAllocFunc;
     bool ClassAllocValid;
     unsigned long Flags;
-    __forceinline CEntityScriptBinding(const CCharString& name,T* parent,TAllocFunc alloc,unsigned long flags)
+    FABLE_FORCEINLINE CEntityScriptBinding(const CCharString& name,T* parent,TAllocFunc alloc,unsigned long flags)
         :EntityScriptName(name),PParentScript(parent),ClassAllocFunc(alloc),ClassAllocValid(true),Flags(flags) {}
     static void* operator new(size_t n) throw() {
         unsigned bit=1u<<allocation_index++;
@@ -136,7 +137,7 @@ void CScriptBase::AddEntityScriptBinding(CEntityScriptBindingBase* p) {
 template<class T> class CSpawnedFunc:public CSpawnedFuncBase {
 public:
     void (T::*Func)();T* PClass;
-    __forceinline CSpawnedFunc(const CCharString& name,unsigned long id,T* pclass,void (T::*func)())
+    FABLE_FORCEINLINE CSpawnedFunc(const CCharString& name,unsigned long id,T* pclass,void (T::*func)())
         :CSpawnedFuncBase(name,id),Func(func),PClass(pclass) {}
     static void* operator new(size_t n) throw() {
         unsigned bit=1u<<allocation_index++;return (failure_mask&bit)?0:malloc(n);

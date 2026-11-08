@@ -11,6 +11,7 @@
 //   LIVE `first` argument slot (`first` is re-read from it for the return), which VC7.1 only does when the
 //   tag-taking __destroy_aux has a visible body that never touches the tag: hence the same-TU noinline stand-in. With a
 //   plain `inline` the operator=-calling __copy loop stays out of line (a `__cdecl` call), so it is `__forceinline`.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // stand-in body only
 
 class C2DLineF;
@@ -33,7 +34,7 @@ public:
 };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

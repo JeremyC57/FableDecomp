@@ -15,6 +15,7 @@
 // Layout: CTCMultiStrike as Ego_r.pdb (landed FrameUpdate 0x007CCE20); retail CHitParameters is 8 bytes below Ego_r after
 //   its 12-byte map/vector: Position +0x02, Direction +0x0E, PHitLocation +0x48, PWeapon +0x58; the multi-strike def's
 //   DelayTimeSecs vector at +0x6C (retail).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CBaseObject;
@@ -130,13 +131,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -144,7 +145,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -152,7 +153,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

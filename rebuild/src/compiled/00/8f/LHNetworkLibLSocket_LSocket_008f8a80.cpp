@@ -1,6 +1,7 @@
 // 008f8a80 LHNetworkLib::LSocket::LSocket
 // Leaf: ??0LSocket@LHNetworkLib@@QAE@XZ
 // Flags: /GS
+#include "fable_compiler.h"
 #include "rebuild_abi.h"
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
@@ -150,7 +151,7 @@ private:
 
 } // namespace LHNetworkLib
 
-__forceinline bool LHNetworkLib::LSocket::InitWS()
+FABLE_FORCEINLINE bool LHNetworkLib::LSocket::InitWS()
 {
     if (GlobalList.size() == 0) {
         WSADATA wsaData;

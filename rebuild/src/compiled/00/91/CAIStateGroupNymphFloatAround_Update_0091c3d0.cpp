@@ -16,6 +16,7 @@
 // FlyingAround +0x40, CanAttack +0x58, ReadyToAttack +0x59, HasBeenInLimbo +0x5b, PTarget +0x68. Retail CThing physics body +0x60.
 // Shape: the shared `push 0` serves both the StartFlyingAround argument and the action's wait flag; a planar direction with Z = 0
 // normalised by the landed 0x007A6E20 inline Normalise, then a CRightHandedSet (Up 0,0,1; Forward) by reference.
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
@@ -24,7 +25,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
     float GetLengthSquared2D() const { return X * X + Y * Y; }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;
@@ -63,8 +64,8 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
-    __forceinline CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 #pragma pack(push, 1)
 class CTCNymph { public:

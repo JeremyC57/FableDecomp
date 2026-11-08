@@ -13,6 +13,7 @@
 // through eax). This is a size-optimised TU (`#pragma optimize("s", on)`: the speed form colours this /
 // source / destination as esi/edi/ebx and copies through edx+eax), where the record's memberwise copy
 // constructor must be `__forceinline` (an implicit or plain inline one is called out of line under /Os).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 struct SMarkerTree {                               // STLport _Rb_tree: 12 bytes
     void*         _M_header;
@@ -25,7 +26,7 @@ struct SMarkerSet {
     SMarkerTree m_tree;                            // +0x00
     long        m_first;                           // +0x0c
     long        m_second;                          // +0x10
-    __forceinline SMarkerSet(const SMarkerSet& other) : m_tree(other.m_tree), m_first(other.m_first), m_second(other.m_second) { }
+    FABLE_FORCEINLINE SMarkerSet(const SMarkerSet& other) : m_tree(other.m_tree), m_first(other.m_first), m_second(other.m_second) { }
 };
 
 namespace std {

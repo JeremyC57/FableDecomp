@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -4547,7 +4548,7 @@ class CThing:public CThingFields{public:
  bool IsDead()const{return (CreatedBySerialisation[0]&1)!=0;}
  CTCPhysicsBase*GetPhysicsTC(){return PhysicsTC;}
  NGraphicAppearance::CTCGraphicAppearance*GetTCGraphicAppearance(){return reinterpret_cast<NGraphicAppearance::CTCGraphicAppearance*>(PTCGraphicAppearance);}
- template<class T>__forceinline bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31))){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);*out=reinterpret_cast<T*>((it==map.end()||kind<it->first?map.end():it)->second);return true;}return false;}
+ template<class T>FABLE_FORCEINLINE bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31))){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);*out=reinterpret_cast<T*>((it==map.end()||kind<it->first?map.end():it)->second);return true;}return false;}
 };
 class CThingPhysical:public CThing{};class CThingGameObject:public CThingPhysical{};class CThingCreatureBase:public CThingGameObject{};
 class CThingObject:public CThingGameObject{public:static CThingObject*__fastcall Create(long,const C3DVector&,long,const CRightHandedSet*,unsigned long,const CCharString&);};

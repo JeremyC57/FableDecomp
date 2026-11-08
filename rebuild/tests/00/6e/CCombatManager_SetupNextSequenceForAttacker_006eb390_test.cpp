@@ -6,6 +6,7 @@
 // marks the last attacker and applies the block response, a break-into-melee sequence that stops when the response
 // ends the attack, and one without a combat component that marks and speaks. The def reference and every intelligent
 // pointer temporary must be balanced.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -94,15 +95,15 @@ class CThing : public CBaseObject { public:
     unsigned char Flags91;                                // +0x91 bit 0: dead
     unsigned __int64 GetUID() const { return UniqueID; }
     CDefPointer<CCreatureDef> GetDef() const { return Def; }
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetConstTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetConstTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -9,10 +9,11 @@
 // Identity: Ego_r.pdb / FableWin.pdb ?SetFromAxisAngle@CQuaternion@@QAEXABVC3DVector@@M@Z.
 // Inlined: GFFastSin 0x00A147E0 / GFFastCos 0x00A14840 (FableWin ?GFFastSin@@YIMM@Z / ?GFFastCos@@YIMM@Z, the landed bodies) on angle * 0.5.
 // Globals: g_CosTable 0x013CD550 (landed spelling); 0.5f 0x0122F59C, 1024.0f 0x01230010, 1.0f 0x0122DED8.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 #include "engine/GFFloatToLongNear.h"
 extern float g_CosTable[1025];          // 0x013CD550: cos(2*pi*k/1024), k = 0..1024
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);
@@ -20,7 +21,7 @@ __forceinline float __fastcall GFFastSin(float angle)
     i = (i - 256) & 0x3ff;
     return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
 }
-__forceinline float __fastcall GFFastCos(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastCos(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);

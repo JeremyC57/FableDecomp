@@ -3,6 +3,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: Own erase00b83d30/reserve00b83970 use the exact CParticleSimulation counted-pointer helpers.
 // Layout: original pointer wrapper is8bytes; STLport vector is12bytes.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -20,7 +21,7 @@ template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_da
 template<class T,class A=allocator<T> >class vector {
 public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;
     unsigned int size()const{return (unsigned int)(_M_finish-_M_start);}
-    __forceinline T* erase(T* first,T* last){T* result=__copy(last,_M_finish,first,random_access_iterator_tag(),(int*)0);__destroy_aux(result,_M_finish,__false_type());_M_finish=result;return first;}
+    FABLE_FORCEINLINE T* erase(T* first,T* last){T* result=__copy(last,_M_finish,first,random_access_iterator_tag(),(int*)0);__destroy_aux(result,_M_finish,__false_type());_M_finish=result;return first;}
     void resize(unsigned int n,const T& value){if(n<size())erase(_M_start+n,_M_finish);else _M_fill_insert(_M_finish,n-size(),value);}
 protected:void _M_fill_insert(T*,unsigned int,const T&);
 };

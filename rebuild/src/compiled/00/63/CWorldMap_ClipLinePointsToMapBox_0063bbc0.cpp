@@ -7,8 +7,9 @@
 //   CPlane::GetIntersectionWithLine(const C3DVector&, const C3DVector&, C3DVector*) const 0x00A422C0; fast inverse-sqrt
 //   table 0x013CE558 (3.0f 0x0122DED4, 0.5f 0x0122F59C).
 // Layout: C2DBoxI {TLX, TLY, BRX, BRY}; CPlane {Normal, Distance} (landed 0x00A422C0).
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |

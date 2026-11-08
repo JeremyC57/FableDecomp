@@ -14,6 +14,7 @@
 // Naming wave 28 (family c697): the checksum file is CChecksumCacheFile (chunk 697: ~CChecksumCacheFile 0x00A60CE0, Ego_r
 //   0x00C00700 after Close; ctor 0x00A60C90 ??0CChecksumCacheFile@@QAE@J@Z and Open 0x00A60D40 as the landed binders). Was a
 //   separate CChecksumFile class (??0 / ??1 / ?Open@CChecksumFile@@).
+#include "fable_compiler.h"
 #include <new>
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 void* GrowArrayStorage(unsigned long bytes);
@@ -75,7 +76,7 @@ struct CFileChecksumMap {                               // CVectorMap<CCharStrin
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     CFileChecksum& operator[](unsigned long n) { return *(_M_start + n); }
     void InsertGrow(CFileChecksum* where, const CFileChecksum& value, const SScalarTag& tag, unsigned long count, bool atEnd);   // 0x009B71B0
-    __forceinline void push_back(const CFileChecksum& value)
+    FABLE_FORCEINLINE void push_back(const CFileChecksum& value)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CFileChecksum(value);
@@ -84,7 +85,7 @@ struct CFileChecksumMap {                               // CVectorMap<CCharStrin
         else
             InsertGrow(_M_finish, value, SScalarTag(), 1, true);
     }
-    __forceinline void Add(const CCharString& key, const unsigned long& value)
+    FABLE_FORCEINLINE void Add(const CCharString& key, const unsigned long& value)
     {
         push_back(CFileChecksum(key, value));
         NeedsSort = true;

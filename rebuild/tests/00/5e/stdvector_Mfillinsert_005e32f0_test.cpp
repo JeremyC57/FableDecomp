@@ -1,5 +1,6 @@
 // Behaviour test for 0x005E32F0: std::vector::_M_fill_insert(pair<unsigned long, CAnimationEntry>* position, unsigned int n, const pair& x) -- STLport insert of n copies of a CRC-keyed animation entry: slide the tail inside the spare capacity, or grow through _M_insert_overflow
 // A copy of the source model and logic (compiled separately from src/005e32f0.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -26,7 +27,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {
@@ -69,7 +70,7 @@ template <class _T1, class _T2> struct pair {              // STLport 4.6 pair: 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>
@@ -104,13 +105,13 @@ __declspec(noinline) void __fastcall fill(_ForwardIter __first, _ForwardIter __l
 #pragma auto_inline(on)
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }
 
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

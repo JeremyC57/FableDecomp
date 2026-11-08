@@ -7,6 +7,7 @@
 // Shape: the landed K100 _M_insert_overflow model (0x0046B30C / 0x0046AECC) with a 12-byte pair whose explicit copy
 //   constructor gives three dword moves per null-checked placement copy; max() by reference picks the slot
 //   (`lea eax,[n] / lea eax,[old]`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
@@ -27,16 +28,16 @@ template <class _T1, class _T2> struct pair {
     _T2 second;
     pair(const pair& __o) : first(__o.first), second(__o.second) { }   // STLport 4.x's explicit copy constructor
 };
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-template <class T> __forceinline T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class T> FABLE_FORCEINLINE T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
 {
     T* cur = result;
     for (; first != last; ++first, ++cur)
         _Construct(cur, *first);
     return cur;
 }
-template <class T> __forceinline T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
+template <class T> FABLE_FORCEINLINE T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
 {
     T* cur = first;
     for (; n > 0; --n, ++cur)
@@ -45,8 +46,8 @@ template <class T> __forceinline T* __uninitialized_fill_n(T* first, unsigned in
 }
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
 public:
@@ -64,13 +65,13 @@ public:
     typedef unsigned int size_type;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
     public:
     protected:
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;

@@ -10,6 +10,7 @@
 // Shape: the UNCHECKED out-parameter lookup in an inline accessor (the absent arm reads the uninitialised out pointer = the
 // shared key word); the component stays in esi for both the call and the HeadTrackTarget store, so both arms duplicate the tail.
 // Layout: CTCKraken retail HeadTrackTarget +0x51 (Ego_r.pdb +0x61: the two std::list members are 4 bytes smaller each in retail).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -35,7 +36,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.Get()->GetTC(TCI_KRAKEN, &kraken);

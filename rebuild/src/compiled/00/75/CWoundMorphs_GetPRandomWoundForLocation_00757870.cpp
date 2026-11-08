@@ -15,11 +15,12 @@
 //   the result is a local initialised to 0 BEFORE the dirty test (retail's `xor ebp,ebp` at the top and the separate
 //   `mov eax,ebp` exit; an early `return 0` gives `xor eax,eax`); the picked entry is LowerBound + r and the result
 //   (`lea ecx,[eax+4]`, the entry's second member) is formed BEFORE the index (the distance from the first entry).
+#include "fable_compiler.h"
 enum EBodyLocation { BODY_LOCATION_NONE = 0 };
 
 long __fastcall GFROR13(unsigned long);       // 0x00497890 (rotate right by 13)
 
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

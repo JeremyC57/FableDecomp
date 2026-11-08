@@ -14,6 +14,7 @@
 //   DrawFromViewport +0x188, LayerIndependant +0x1dc, BastardChild +0x1f8, UseRelativeZoom/Position +0x208/+0x209, ShapeChildren +0x214).
 // Shape: map::insert inline over an out-of-line insert_unique (same-TU body below) (hint built in a register, copied into the arg slot); STLport
 //   vector operator[] as *(begin() + n) gives retail's ecx reuse in the child loop; a named CUIState local (a temporary copies through eax).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 namespace std {
 template <class T1, class T2> struct pair {
@@ -96,8 +97,8 @@ namespace NUISystem {
 struct C2DVector { float X, Y; };
 struct CRGBColour {                                         // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
 };
 class CUIStateDef { public: unsigned char _data[0x7c]; };          // retail 0x7c bytes (Ego_r.pdb 0x84)
 class CUIState { public:                                           // 0x24 bytes

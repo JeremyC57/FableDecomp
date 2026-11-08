@@ -1,5 +1,6 @@
 // Behaviour test for 0x0065FBE1 HasBuildingAsHomeOrWork::operator(): true when the creature is alive and either its
 // home building or (failing that) its work building is the held building; false for a dead creature.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -13,7 +14,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                         // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CThing { public:
     unsigned char _pad_0x00[0x168];

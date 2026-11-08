@@ -1,4 +1,5 @@
 // Behaviour test for 009b0170: body copied from src/009b0170.cpp (CParentDefClassBase::RemoveSubDef), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -30,7 +31,7 @@ struct CSubDefInfoMap {
     bool                Dirty;
     CSubDefPair* LowerBound(const unsigned long* key) { ++g_lower; CSubDefPair* p = Data.m_first; while (p != Data.m_last && p->first < *key) ++p; return p; }
     CSubDefPair* UpperBound(const unsigned long* key) { ++g_upper; CSubDefPair* p = Data.m_first; while (p != Data.m_last && p->first <= *key) ++p; return p; }
-    __forceinline void Remove(unsigned long key)
+    FABLE_FORCEINLINE void Remove(unsigned long key)
     {
         CSubDefPair* first = LowerBound(&key);
         CSubDefPair* last = Data.m_last;

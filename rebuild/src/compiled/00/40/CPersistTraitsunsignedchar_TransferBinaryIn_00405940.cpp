@@ -8,6 +8,7 @@
 // each range-check exit gets its own `mov reg8,[value] ; mov [out],reg8` return tail.
 // The stream uses engine/CMemoryDataInputStream.h with an inline Read (the header's `position` is long; the sum is
 // taken unsigned, matching retail's zero high dword: xor eax,eax, not cdq).
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -16,8 +17,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)((unsigned long)position + size);
         if (!IsValidPosition(newPosition))

@@ -4,6 +4,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
+#include "fable_compiler.h"
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -37,7 +38,7 @@ class CClass:public CBaseObject {private:unsigned char unobservedClassState[size
 enum ETCInterfaceType{};class CTCBase;
 #include "engine/CVectorMap.h"
 class CThing:public CClass {
-public:template<class T>__forceinline bool GetTC(T**out){
+public:template<class T>FABLE_FORCEINLINE bool GetTC(T**out){
  unsigned long*bits=reinterpret_cast<unsigned long*>(reinterpret_cast<CThingLayout*>(this)->UsingComponents);
  if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))){ETCInterfaceType type=T::StatGetInterfaceType();CVectorMap<ETCInterfaceType,CTCBase*>&map=*reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>*>(reinterpret_cast<CThingLayout*>(this)->Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(type);if(it==map.end()||T::StatGetInterfaceType()<it->first)it=map.end();*out=static_cast<T*>(it->second);return true;}return false;
  }

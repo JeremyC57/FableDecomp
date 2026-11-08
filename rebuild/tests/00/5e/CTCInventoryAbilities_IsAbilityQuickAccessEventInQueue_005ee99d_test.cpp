@@ -1,5 +1,6 @@
 // Behaviour test for 005ee99d: src/005ee99d.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility ability)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -38,7 +39,7 @@ class CThing { public:
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -71,7 +72,7 @@ class CHeroAbilityDef { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
@@ -88,7 +89,7 @@ class CMainGameComponent { public:
     CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
 };
 extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
-__forceinline CMainGameComponent* GetMainGameComponent() { return g_pMainGameComponent; }
+FABLE_FORCEINLINE CMainGameComponent* GetMainGameComponent() { return g_pMainGameComponent; }
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
 struct SAbilityEntry {                               // std::pair<long, CDefPointer<const CHeroAbilityDef> >

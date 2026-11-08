@@ -20,6 +20,7 @@
 //   destructor in bl).
 // Layout: Ego_r.pdb CTCMultiArrow with the retail 12-byte vector (as the landed siblings 0x007CC230 / 0x007CC060):
 //   PDef +0x0C, CreateAmmoEffectCount +0x24, AmmoEffects +0x30.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CThing;
 class CBaseObject;
@@ -94,7 +95,7 @@ public:
     unsigned char m_flags91;                           // +0x91 bit 0: dead
     const C3DVector& GetPos() const;              // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -127,7 +128,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

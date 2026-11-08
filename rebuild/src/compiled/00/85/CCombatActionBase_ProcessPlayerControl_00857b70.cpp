@@ -4,6 +4,7 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail0x00857B70,314 bytes. Shared genuine virtual prefix and intelligent-pointer layout from00859D80.
 // Component48 is CTCCombat, ResetComboChainPos0x00733210 writes native combo sentinels at+C/+10.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CCombatActionBase CCombatActionBase_PDB
 #include "engine/_quarantine/CCombatActionBase.h"
@@ -30,7 +31,7 @@ struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* 
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeRelativeAcceleration[0x174];C3DVector RelativeMovementAcceleration;
     float GetCurrentRelativeMovementAngleXY()const; //0x006A9640
-    __forceinline bool GetInterface(CCombatComponent** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CCombatComponent** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
             if(p==map->Last || type<p->Type)p=map->Last;*out=p->Component;return true;}return false;
     }

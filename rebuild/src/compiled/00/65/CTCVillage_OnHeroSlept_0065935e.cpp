@@ -13,6 +13,7 @@
 //   (descriptive).
 // Shape: three walks re-reading end() through the spilled `this`; the second and third test the person fetched up
 //   front, then fetch it again for the call.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -36,7 +37,7 @@ public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

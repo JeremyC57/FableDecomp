@@ -11,6 +11,7 @@
 //   intrusive (count +4, release through vtable slot 1).
 // Shape: the 0x68 component's def is a by-value CDefPointer temporary inside an `&&` (its destruction flag is the frame
 //   word zeroed on entry); the flourish flag is a bool initialised false at the top and set in the hit arm.
+#include "fable_compiler.h"
 struct CEventBase {
     virtual void v00();
     long Data;                                               // +4
@@ -42,8 +43,8 @@ class CWeaponDef : public CDefBase { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
     bool IsValid() const { return Object != 0; }
 };
@@ -61,11 +62,11 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    __forceinline CTCBase* FindTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -74,7 +75,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             *ppOut = (T*)FindTC(interfaceType);

@@ -9,6 +9,7 @@
 // CCombatActionBase sizeof 0x114 so the layout is modelled locally.
 // Shape: `cmp byte ptr [eax],0 ; jne false` on the event's Legacy byte (+0, Ego_r.pdb: a legacy event has no
 // helper point name), nested ifs, `mov al,1` / `xor al,al`.
+#include "fable_compiler.h"
 struct CStrikeEvent {
     bool Legacy;                                // +0x00
     bool PrimaryLegacy;                         // +0x01
@@ -58,7 +59,7 @@ class CCombatActionBase { public:
     unsigned char _pad20[0xbc - 0x20];          // +0x20
     CStrikeEventList StrikeEvents;              // +0xbc
     unsigned char _padc4[0x114 - 0xc4];         // +0xc4
-    __forceinline CStrikeEvent* GetPActiveStrikeEvent() const     // inlined helper: the for_each result is a temporary read through its returned pointer
+    FABLE_FORCEINLINE CStrikeEvent* GetPActiveStrikeEvent() const     // inlined helper: the for_each result is a temporary read through its returned pointer
     {
         return for_each(StrikeEvents.begin(), StrikeEvents.end(),
                         CGetActiveStrikeEventThatIsFirstToFinish(FramesRunning)).m_pFirstToFinish;

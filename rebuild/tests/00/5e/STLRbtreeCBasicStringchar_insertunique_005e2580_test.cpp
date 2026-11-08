@@ -2,17 +2,18 @@
 // Flags: /Gr
 // Leaf: ?insert_unique@_Rb_tree@FableTree_005e2580@@QAE?AU?$pair@U_Rb_tree_iterator@FableTree_005e2580@@_N@2@ABQAU?$CBasicString@D@2@@Z
 // Layout: tree Header+0; node parent+4/left+8/right+12/value+16; iterator one pointer, pair<iterator,bool>8 bytes.
+#include "fable_compiler.h"
 namespace FableTree_005e2580 {
 template<class C> struct CBasicString {C* Data;bool operator<(const CBasicString&)const;};
 template<class C> __declspec(noinline) bool CBasicString<C>::operator<(const CBasicString& p)const{const C* a=Data;const C* b=p.Data;while(*a && *a==*b){++a;++b;}return *a<*b;}
-template<class T> struct CComparePointer {__forceinline bool operator()(const T* a,const T* b)const{bool result;if(b==a)result=false;else if(!a)result=true;else if(!b)result=false;else result=*a<*b;return result;}};
+template<class T> struct CComparePointer {FABLE_FORCEINLINE bool operator()(const T* a,const T* b)const{bool result;if(b==a)result=false;else if(!a)result=true;else if(!b)result=false;else result=*a<*b;return result;}};
 struct _Rb_tree_node {int Color;_Rb_tree_node* Parent;_Rb_tree_node* Left;_Rb_tree_node* Right;CBasicString<char>* Value;};
 struct _Rb_tree_iterator {
  _Rb_tree_node* Node;
  _Rb_tree_iterator(){} _Rb_tree_iterator(_Rb_tree_node* n):Node(n){}
  void _M_decrement();
 };
-template<class A,class B> struct pair {A first;B second;__forceinline pair(const A&a,const B&b):first(a),second(b){}};
+template<class A,class B> struct pair {A first;B second;FABLE_FORCEINLINE pair(const A&a,const B&b):first(a),second(b){}};
 struct _Rb_tree {
  _Rb_tree_node* Header;
  CComparePointer<CBasicString<char> > Compare;

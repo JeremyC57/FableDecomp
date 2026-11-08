@@ -2,6 +2,7 @@
 // Retail 0x0054DC30, 134 bytes (vtable 0x01249554 slot 143). Callees: LoadAndReturnDef (slot 108), ChangeState (slot 48,
 // +0xC0), CObserver::ObserveEvent (observer vtable slot 3, +0xC on this+4: retail adjusts esi once and reuses it).
 // Name from Ego_r.pdb: ?OnHovered@CFrontEndButton@NUISystem@@MAEXXZ.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -17,7 +18,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

@@ -14,6 +14,7 @@
 // Shape: the landed 0x005C2AD8 template with STLport's inline one-argument resize (`resize(n, T())`, the bool() temporary
 //   in [ebp-1]); retail gives the never-initialised traits object no frame word of its own: it shares [ebp-0Ch] with the
 //   homed `out` argument.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -24,7 +25,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -48,7 +49,7 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     void resize(size_type __new_size, const _Tp& __x);                  // 0x00467686 for bool
-    __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
+    FABLE_FORCEINLINE void resize(size_type __new_size) { resize(__new_size, _Tp()); }
     _Tp* begin() { return _M_start; }
     _Tp& operator[](size_type __n) { return *(begin() + __n); }
 };
@@ -67,7 +68,7 @@ __declspec(noinline) void CPersistTraits<bool>::TransferBinaryIn(CMemoryDataInpu
     stream->Read(out, sizeof(bool));
 }
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

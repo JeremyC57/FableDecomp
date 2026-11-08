@@ -14,6 +14,7 @@
 //   cosine table 0x013CD550 of the inlined GFFastCos / GFFastSin.
 // Shape: result.Z = random(2) - 1 (written straight into the result local), r = sqrt(1 - Z*Z), then the C2DVector::GetRandomUnitVector body (cos and sin of one random
 //   turn fraction, scaled by 1024 once per inline) times r; X kept in a frame word, Y stored straight from st(0).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 
@@ -24,7 +25,7 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place
 #include "engine/GFFloatToLongNear.h"
 
-__forceinline float __fastcall GFFastCos(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastCos(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);
@@ -33,7 +34,7 @@ __forceinline float __fastcall GFFastCos(float angle)
     return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
 }
 
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -362,8 +363,8 @@ struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThrea
 struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct QuestManagerNative{unsigned char State[0x88];ActiveQuest* PQuestCurrentlyRunning;};
 extern QuestManagerNative* QuestManager; //013B89FC
-__forceinline long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
-__forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 // Event classes have no generated headers. PDB CEventBase is vptr+WorldFrame;
 // event virtual slot0 is its deleting destructor, slot1 GetType (retail VTs audited).
 struct EventBase{virtual ~EventBase();virtual int GetType()const=0;long WorldFrame;};
@@ -372,7 +373,7 @@ struct MoneyEvent:EventBase{unsigned char ThingGivingItem[8];long Amount;};
 struct AbilityEvent:EventBase{int Ability;bool Aggressive;};
 struct EventNode{EventNode*Next;EventNode*Previous;EventBase*Data;void*Info;};
 struct EventList{EventNode*Head;};
-__forceinline EventList& Events(CTCEntityEvents*tc){return *reinterpret_cast<EventList*>(tc->Events);}
+FABLE_FORCEINLINE EventList& Events(CTCEntityEvents*tc){return *reinterpret_cast<EventList*>(tc->Events);}
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgPerformedSpecialAbility(int ability)const;};
 bool CGameScriptThingMethods::MsgPerformedSpecialAbility(int ability)const{
  const PointerView*p=reinterpret_cast<const PointerView*>(PThing);if(p->GetPItem()&&!(p->GetPItem()->LifeFlags&1)){

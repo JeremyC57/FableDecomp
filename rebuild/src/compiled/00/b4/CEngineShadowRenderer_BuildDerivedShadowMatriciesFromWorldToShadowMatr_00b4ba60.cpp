@@ -6,12 +6,13 @@
 //   `x * 2` is `fadd st,st`, `x * 1` folds to a copy and `x + w * -1` becomes `x - w * 1`.
 // Layout: engine/CEngineShadowRenderer.h; SceneData (CShadowRendererSceneData, PDB) holds WorldToShadowBufferMatrix +0x0c,
 //   WorldToShadowBufferMatrixHomogenousScreenSpace +0x4c and WorldToShadowBufferMatrixTextureSpace +0x8c.
+#include "fable_compiler.h"
 #include "engine/CEngineShadowRenderer.h"
 
 #include "engine/C3DVector.h"
 class CMatrix4x4 { public:
     float M[4][4];
-    __forceinline void Scale(const C3DVector& s)
+    FABLE_FORCEINLINE void Scale(const C3DVector& s)
     {
         for (int i = 0; i < 4; ++i) {
             M[i][0] *= s.X;
@@ -19,7 +20,7 @@ class CMatrix4x4 { public:
             M[i][2] *= s.Z;
         }
     }
-    __forceinline void Translate(const C3DVector& t)
+    FABLE_FORCEINLINE void Translate(const C3DVector& t)
     {
         for (int i = 0; i < 4; ++i) {
             M[i][0] += M[i][3] * t.X;

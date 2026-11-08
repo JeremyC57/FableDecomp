@@ -16,6 +16,7 @@
 //   initialisers store in declaration order) plus a __forceinline user copy ctor; string literals convert into a CCharString temporary before the pushes.
 // Naming wave 35: identity Anniversary wave 2026-11-04 (high): vtable 0x012F55F8 slot 2; Anniversary RTTI NScript::CExpression_WaitScript (string-literal match, validated 257/258); PDB name set has the Main member of NScript::CExpression_WaitScript; slot layout from named TLC siblings; function referenced by this vtable only (2026-11-04_anniversary/labels_high.tsv); PDB ?Main@CExpression_WaitScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CExpression_WaitScript@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
@@ -24,8 +25,8 @@ class CCharString { public:
 
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
 #define FABLE_RETAIL_NSCRIPT

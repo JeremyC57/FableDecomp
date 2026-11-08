@@ -1,4 +1,5 @@
 // Behaviour test for 0094e6b0: the model below is a copy of src/0094e6b0.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <math.h>
@@ -28,7 +29,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -67,8 +68,8 @@ struct CBaseIntelligentPointerCtor {
     ~CBaseIntelligentPointerCtor() { ++g_dtors; }
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 static CThing* g_enemy = 0;
 struct CTCEnemySource {

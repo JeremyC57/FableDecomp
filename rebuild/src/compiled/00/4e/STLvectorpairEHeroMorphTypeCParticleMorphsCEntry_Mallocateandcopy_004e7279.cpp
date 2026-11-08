@@ -10,6 +10,7 @@
 // Shape: the 0x004E6088 model (STLport `_M_allocate_and_copy`, `allocate(n)` = `n != 0 ? malloc(n * 40) : 0`, the
 //   `__false_type` copy loop, `__forceinline` helpers under `optimize("s")`); the element copy is STLport pair's
 //   memberwise copy constructor: the key dword, then the 36-byte CEntry by its implicit copy (`rep movsd` x9).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -42,14 +43,14 @@ struct CParticleMorphEntry {                    // CParticleMorphs::CEntry (Ego_
 template <class T1, class T2> struct pair {     // STLport pair: memberwise copy constructor
     T1 first;
     T2 second;
-    __forceinline pair(const pair& p) : first(p.first), second(p.second) { }
+    FABLE_FORCEINLINE pair(const pair& p) : first(p.first), second(p.second) { }
 };
 typedef pair<EHeroMorphType, CParticleMorphEntry> SParticleMorphPair;   // 40 bytes
 
-template <class T> __forceinline void _Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void _Construct(T* p, const T& value) { new (p) T(value); }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -59,7 +60,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 
 template <class T> struct allocator {           // STLport allocator<T>: empty
     allocator() { }
-    __forceinline T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
 template <class T> struct _STLP_alloc_proxy : allocator<T> {

@@ -24,9 +24,10 @@
 //   direct-return PeekTC; the target's opinion
 //   source through an out-pointer lookup (`mov eax,[eax+4] ; mov ecx,eax`); the opinion-of-hero pointer assigned under a
 //   second HasTC(0x4F) into an otherwise unset local (absent: the dead target slot is read). Lookups are __forceinline.
+#include "fable_compiler.h"
 class CThingAICreature;
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 class CCreatureDef {
 public:
@@ -116,13 +117,13 @@ public:
     unsigned char _pad54[0x1c];
     CDefPointer<const CThingBaseDef> PBaseDef;              // +0x70
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CTCBase* PeekTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* PeekTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -130,7 +131,7 @@ public:
         const CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    template <class T> __forceinline bool PeekTC(long type, const T** out) const    // out-pointer form
+    template <class T> FABLE_FORCEINLINE bool PeekTC(long type, const T** out) const    // out-pointer form
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

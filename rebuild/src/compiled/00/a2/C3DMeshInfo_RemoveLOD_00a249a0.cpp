@@ -7,6 +7,7 @@
 // Shape: the intrusive pointer's inline `= 0` (release, clear, store) and `= other` (skip when equal, release, clear, store,
 // add-ref with no null test: the LOD was dereferenced already); a local copy of the LOD keeps it alive across the reset.
 // Leaf: RemoveLOD@C3DMeshInfo
+#include "fable_compiler.h"
 class C3DMeshLODInfo { public:
     virtual void Destroy(int flags);
     virtual void Delete();                          // slot 1 (+4)
@@ -23,7 +24,7 @@ template<class T> class CIVCountedPointer { public:
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject) { if (m_pObject) m_pObject->AddRef(); }
     ~CIVCountedPointer() { if (m_pObject) m_pObject->Release(); }
     T* operator->() const { return m_pObject; }
-    __forceinline CIVCountedPointer& operator=(T* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(T* object)
     {
         if (m_pObject) {
             m_pObject->Release();
@@ -32,7 +33,7 @@ template<class T> class CIVCountedPointer { public:
         m_pObject = object;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         if (m_pObject != other.m_pObject) {
             if (m_pObject) {

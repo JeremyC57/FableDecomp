@@ -25,6 +25,7 @@
 //   CTextEntry> entry = bank->GetPTextEntry(textId, true); return entry.Object ? entry.Object->GetText() : missing;` -- the
 //   conditional's temporary carries a construction flag (bl) and lives in the dead textId slot; the entry's release is the
 //   landed CTCInventoryBase::GetInventoryText 0x005BD273 ReleaseTemporary. Speed TU.
+#include "fable_compiler.h"
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 class CWideString {
 public:
@@ -54,7 +55,7 @@ public:
 template <class T> class CIVCountedPointer {             // 4 bytes
 public:
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object)
             Object->ReleaseTemporary();

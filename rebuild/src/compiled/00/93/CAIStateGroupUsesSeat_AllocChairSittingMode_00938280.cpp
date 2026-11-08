@@ -9,6 +9,7 @@
 //   0x009381B0 (Ego_r.pdb ctor manglings; catalog names).
 // Shape: one result pointer zeroed up front and returned once; the supervised case is the else arm (`if (!supervised) switch
 //   (GFRandom(6, seed)) {...} else mode = new CModeSitChair`); the jump table maps 0-2 chair, 3-4 bored, 5 sleeping.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -34,7 +35,7 @@
 #include "engine/CAIBrain.h"
 
 long __fastcall GFROR13(unsigned long value);                       // 0x00497890 ?GFROR13@@YIJK@Z
-__forceinline unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)   // ?GFRandom@@YIKKPAK@Z (inline in retail)
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)   // ?GFRandom@@YIKKPAK@Z (inline in retail)
 {
     *seed = *seed * 0x24A1 + 0x24DF;
     *seed = GFROR13(*seed);

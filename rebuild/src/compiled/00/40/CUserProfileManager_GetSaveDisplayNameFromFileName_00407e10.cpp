@@ -11,6 +11,7 @@
 //   addressed on the stack); the manual-save test is a named bool over five conditional temporaries (ebx flags
 //   1..0x10); the prefix test is CCharString's inline StartsWith (strncmp over the prefix length); the inline wide ==
 //   reads both starts first and compares the two signed lengths.
+#include "fable_compiler.h"
 struct StringRep { char* data; long len; };
 extern char g_EmptyCharString[1];                       // 0x0129AAF4
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
@@ -29,7 +30,7 @@ class CCharString { public:
             return g_EmptyCharString;
         return rep->data;
     }
-    __forceinline bool StartsWith(const CCharString& prefix) const { return strncmp(*this, prefix, prefix.GetLength()) == 0; }
+    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { return strncmp(*this, prefix, prefix.GetLength()) == 0; }
 };
 namespace std {
 template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
@@ -50,7 +51,7 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
     bool Contains(const CWideString& text) const;       // 0x0099AF20
     CCharString ToCharString() const;            // 0x0099B2C0
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

@@ -11,6 +11,7 @@
 // Shape: `return !_M_pred(x);` over the inline `PeekTC(&trigger); return trigger->Activated;` with the out result
 //   ignored: the key temporary, the out local and the dead argument slot are one frame word, so a thing without the
 //   component reads the never-written local (`mov eax,[esp+4]` on the absent arm, as GOTCHAS 24l's GetInterface rule).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -26,7 +27,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;

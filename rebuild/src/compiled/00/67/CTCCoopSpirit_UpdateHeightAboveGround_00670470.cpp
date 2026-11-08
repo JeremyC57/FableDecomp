@@ -20,6 +20,7 @@
 //   take the x87 registers (direction fild'ed right after the sign branch and popped at scope end, e compared against the
 //   dword 1.0f), so VC7.1 homes diff with `fst` before the compare and re-reads it for the square; intrinsic exp (fldl2e /
 //   f2xm1 / fscale); the acceleration is a C3DVector(0, 0, z) temporary. No pragma.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(exp)
 #include "engine/C3DVector.h"
@@ -38,15 +39,15 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
     {
         CTCBase* tc;                                        // deliberately unset when absent (retail reads a dead slot)
         if (HasTC(interfaceType))

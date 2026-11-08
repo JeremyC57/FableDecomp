@@ -3,6 +3,7 @@
 // callees stubbed. Checks the wait for a freed soul, the DG_SOUL_TRAPPED effect at Me's position and XY angle, its
 // re-creation whenever it dies (the old effect released, the new one held), termination at every test, and that every
 // effect is released on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -39,7 +40,7 @@ class CScriptThing { public:
     CCountedPointer<CScriptThingImp> PImp;
     C3DVector Pos;
     CScriptThing() { Pos.X = 1.0f; Pos.Y = 2.0f; Pos.Z = 3.0f; }
-    __forceinline ~CScriptThing() {}
+    FABLE_FORCEINLINE ~CScriptThing() {}
     const C3DVector& GetPos() const { return Pos; }
     float GetAngleXY() const { return 0.5f; }
     bool IsAlive() const { return PImp.Data && g_frames < PImp.Data->DiesAt; }

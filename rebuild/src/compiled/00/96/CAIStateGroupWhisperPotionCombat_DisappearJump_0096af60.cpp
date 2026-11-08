@@ -4,6 +4,7 @@
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096AF60; SW2 sweep (advisor/0096af60/probe/n3.cpp).
+#include "fable_compiler.h"
 class CThingCreatureBase;
 #include "engine/C3DVector.h"
 struct CThingGraphic {
@@ -130,7 +131,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 };
 class CCreatureAction_WhisperJumpIntoSky : public CCombatActionBase { public:   // vtable 0x012969E4
     virtual void v00();
-    __forceinline CCreatureAction_WhisperJumpIntoSky(CThingCreatureBase* creature, CThing* target)
+    FABLE_FORCEINLINE CCreatureAction_WhisperJumpIntoSky(CThingCreatureBase* creature, CThing* target)
         : CCombatActionBase(creature, target, 0x96, CSoundPair()) { SetCombatAnimation("JUMP_INTO_SKY"); }
 };
 struct CCreatureAction_WhisperLand : CCombatActionBase {   // ctor 0x008CCBD0
@@ -180,7 +181,7 @@ struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
     bool JumpIntoSky();
 };
 
-__forceinline bool CAIStateGroup_WhisperPotionCombat::JumpIntoSky()
+FABLE_FORCEINLINE bool CAIStateGroup_WhisperPotionCombat::JumpIntoSky()
 {
     long result;
     do {

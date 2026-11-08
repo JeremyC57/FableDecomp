@@ -8,6 +8,7 @@
 // buffer (Data[0x20] + three zeroed words) is filled from the event and one bool read from it.
 // Shape: the event pointer is dead after GetData, so VC7.1 homes the read flag in the event's argument slot
 // (`lea ecx,[esp+38h] ; push ecx`) and compares it with true (`mov al,[esp+38h] ; cmp al,1 ; sete dl`) before the byte store.
+#include "fable_compiler.h"
 struct CMemoryBuffer {
     unsigned char Data[0x20];                      // +0x00
     long          Length;                          // +0x20
@@ -15,7 +16,7 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline bool ReadBool() { bool value; Read(1, &value); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { bool value; Read(1, &value); return value; }
 };
 class CGameEvent {                                 // PDB class (mangled V)
 public:

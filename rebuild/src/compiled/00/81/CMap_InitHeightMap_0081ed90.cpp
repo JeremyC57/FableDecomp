@@ -6,6 +6,7 @@
 //   HeightMapSizeX +0x1d14, HeightMapSizeY +0x1d18; CHeightMapInit (PDB) SizeX, SizeY, WorldSeed as a 12-byte frame local.
 // Shape: the init record is filled before `new` (its three stores interleave with the size push); scoped_ptr::reset stores the new pointer
 //   and then deletes the old one (`delete` of a polymorphic object = null test + virtual scalar deleting destructor).
+#include "fable_compiler.h"
 class CWorld;
 class C2DCoordI { public:
     long X, Y;
@@ -41,7 +42,7 @@ class CHeightMap { public:                                // retail layout (PDB 
     long                           SizeXIncludingExtraCells;   // +0x20c
     long                           SizeYIncludingExtraCells;   // +0x210
     CHeightMap(CWorld* world, CMap* map, const CHeightMapInit& init);   // 0x008F63C0
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 template <class T> struct scoped_ptr {
     T* ptr;

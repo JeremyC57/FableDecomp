@@ -20,6 +20,7 @@
 //          is a temporary copied from it); GetPFirstThing gets a same-TU noinline stand-in that does not let the out
 //          pointer's address escape -- with an external declaration VC loads the arena pointer into edi before the name
 //          destructor and the IP base ctor (and the frame grows by 4), retail reloads it after.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -36,7 +37,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x60];
     long Health;                                // +0xb4 (float bits copied)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

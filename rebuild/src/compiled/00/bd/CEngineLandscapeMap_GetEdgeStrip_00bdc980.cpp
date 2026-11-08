@@ -11,6 +11,7 @@
 // Shape: the self call on the neighbour's landscape is a tail call VC turns into a loop (`jmp` to the top with the new this);
 //   the grid lookup is an inline PeekMap (cell index by `>> 5`, a short map index > 0 selects MapList[index]); the switch
 //   groups sides 0/1 (walk along y) and 2/3 (walk along x).
+#include "fable_compiler.h"
 class CPatchTesselationEdgeStrip;
 enum LANDSCAPE_EDGE_STRIP_SIDE { EDGE_SIDE_0, EDGE_SIDE_1, EDGE_SIDE_2, EDGE_SIDE_3 };
 
@@ -36,7 +37,7 @@ class CEngineWorldMap { public:
     long                MapOffsetX;                // +0x18
     long                MapOffsetY;                // +0x1c
     CArray<CEngineMap*> MapList;                   // +0x20
-    __forceinline CEngineMap* PeekMap(long x, long y)
+    FABLE_FORCEINLINE CEngineMap* PeekMap(long x, long y)
     {
         long cellX = x - MapOffsetX;
         long cellY = y - MapOffsetY;

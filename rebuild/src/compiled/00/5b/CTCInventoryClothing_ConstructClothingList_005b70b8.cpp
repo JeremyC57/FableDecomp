@@ -6,6 +6,7 @@
 //   sub-list prompts / title live in the non-empty block, so the empty path skips their destructors.
 // Layout: engine/CTCInventoryClothing.h is the Ego_r.pdb layout and no data member is read here, so `this` is a method-only
 //   local model; CAction 0x10 (thing-param list<long> at +0x08), CActionParamLong 0x0C (vtable 0x012366F4, type 3).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CCharString { public:
     void* PStringData;
@@ -28,7 +29,7 @@ template<class T> class CCountedPointer { public:
     ~CCountedPointer();
     void Reset(T* object);
     void ShareData(T* object, CCPPointerInfo* count);   // 0x00429460 for CText
-    template<class U> __forceinline CCountedPointer& operator=(const CCountedPointer<U>& other)
+    template<class U> FABLE_FORCEINLINE CCountedPointer& operator=(const CCountedPointer<U>& other)
     {
         ShareData((T*)other.m_pObject, other.m_pCount);
         return *this;

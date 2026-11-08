@@ -16,6 +16,7 @@
 //   helpers (_Destroy, __destroy, __uninitialized_copy) must be `__forceinline` or they are emitted out of line (__cdecl). Frame-pointer size TU:
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 48h ; pop edi ; idiv edi`, `leave`).
 // Model: the element is engine/CShopItemDef.h (only its 0x48 size matters here: every element operation is out of line).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CShopItemDef.h"
@@ -30,14 +31,14 @@ template <class T> struct __type_traits {
 template <class T> CShopItemDef* __fastcall __copy_ptrs(const T* first, const T* last, T* result, const __false_type&);   // 0x004E9BDA
 template <class T> void __fastcall __destroy_aux(T* first, T* last, const __false_type&);                                // 0x004DA5BD
 template <class T> void __fastcall _Construct(T* p, const T& val);                                                         // 0x004E9C39
-template <class T> __forceinline void __destroy(T* first, T* last, T*)
+template <class T> FABLE_FORCEINLINE void __destroy(T* first, T* last, T*)
 {
     typedef typename __type_traits<T>::has_trivial_destructor _Trivial_destructor;
     _Trivial_destructor tag;
     __destroy_aux(first, last, tag);
 }
-template <class T> __forceinline void _Destroy(T* first, T* last) { __destroy(first, last, (T*)0); }
-template <class T> __forceinline T* __uninitialized_copy(const T* first, const T* last, T* result, const __false_type&)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last) { __destroy(first, last, (T*)0); }
+template <class T> FABLE_FORCEINLINE T* __uninitialized_copy(const T* first, const T* last, T* result, const __false_type&)
 {
     T* cur = result;
     for (; first != last; ++first, ++cur)

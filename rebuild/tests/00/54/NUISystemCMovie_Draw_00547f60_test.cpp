@@ -1,5 +1,6 @@
 // Behaviour test for 00547f60 NUISystem::CMovie::Draw: the source verbatim, every callee stubbed, and the drawn sprite
 // (box, layer, texture, colour, angles), the add path and the handle clear observed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -78,7 +79,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -92,7 +93,7 @@ class CEnginePrimitiveHandle {                     // vtable 0x0122F598
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

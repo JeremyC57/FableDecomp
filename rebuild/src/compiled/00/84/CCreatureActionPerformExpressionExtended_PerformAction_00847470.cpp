@@ -12,6 +12,7 @@
 //   const CDefPointer<const CExpressionDef>&, long, long) 0x0084B010, CTCEntityEvents::AddEvent(NEntityEvents::CEventBase*) 0x008113C0.
 // Layout: engine/CCreatureAction_PerformExpressionExtended.h (retail): PExpressionDef +0xA8, PPerformToThing +0xAC, FrameCount +0xBC.
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -154,7 +155,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -166,7 +167,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

@@ -9,6 +9,7 @@
 // Shape: the data/size idiom of the landed CSimVoice::TransferBinaryOut 0x006808C0 and 0x004EA26B: data =
 //   `size() > 0 ? first : (void*)this` (unsigned `ja`), byte count size() * sizeof; both accessors __forceinline, the
 //   second size() shared by both arguments. Size-optimised TU: #pragma optimize("s", on) (`push 18h ; pop ecx`, `lea ; shl` for the *24).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDataOutputStream { public:
     virtual void v00();
@@ -26,8 +27,8 @@ struct CPODVector_0046fe8a {                  // STLport vector, 12 bytes
     SPODElement_0046fe8a* _M_start;
     SPODElement_0046fe8a* _M_finish;
     SPODElement_0046fe8a* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    __forceinline const SPODElement_0046fe8a* data() const { return size() > 0 ? _M_start : (const SPODElement_0046fe8a*)this; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    FABLE_FORCEINLINE const SPODElement_0046fe8a* data() const { return size() > 0 ? _M_start : (const SPODElement_0046fe8a*)this; }
     void TransferBinaryOut(CDataOutputStream* stream) const;
 };
 

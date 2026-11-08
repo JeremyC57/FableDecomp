@@ -17,6 +17,7 @@
 //   +0x5e4, FC_RingTimeOut +0x5e8, FC_RingRadius +0x61c, FC_InsideRingMessageDelay +0x620.
 // Naming wave 35: identity reg 00e82271 "FisticuffsClubRing" in 00e82220; Alloc 00e82870; vtable 012eb02c slot 1; PDB ?Main@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CFisticuffsClubRing::Main (wave3/labels_alloc.tsv); PDB ?Main@CFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CFisticuffsClubRing@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CTimer;
 class CCharString { public:
@@ -43,7 +44,7 @@ class CScriptThing : public CBase { public:                           // vtable 
 #include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -78,8 +79,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 class CScriptDef { public:
     unsigned char _pad0[0x5e4];
     float FC_OutsideRingRange;                          // +0x5e4

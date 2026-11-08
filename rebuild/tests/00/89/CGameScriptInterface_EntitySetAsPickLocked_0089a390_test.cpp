@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class C3DVector {
 public:
@@ -26,7 +27,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;

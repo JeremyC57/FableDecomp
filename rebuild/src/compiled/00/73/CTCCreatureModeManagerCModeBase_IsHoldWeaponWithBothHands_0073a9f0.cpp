@@ -12,6 +12,7 @@
 //   thing interface bitset +0x20 (0x46 = bit 6 of +0x28, 0x48 = bit 8 of +0x28), interface map +0x44, dead bit 0 of +0x91.
 // Shape: HasTC then a separate GetTC (one bit test per component); the def-index string is the literal "CARRY_SLOT_BOTH_HANDS"
 //   (0x01268748) as a temporary CCharString argument; the result is an explicit `if (...) return true;`.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -39,13 +40,13 @@ class CThing { public:
     unsigned char  _pad54[0x3d];
     unsigned char  m_lifeFlags;            // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_lifeFlags & 1) != 0; }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -6,11 +6,12 @@
 // The pair parameter is projected as a pointer to two vector elements, permitting defined overlap with matrix columns;
 // pointer/reference identity is not recoverable from this ABI. Both are one stack address.
 // Leaf: TransformVectorPair
+#include "fable_compiler.h"
 #include "rebuild_abi.h"
 struct NativeVector3 {float X,Y,Z;NativeVector3(){}NativeVector3(const NativeVector3& v):X(v.X),Y(v.Y),Z(v.Z){}};
 struct NativeVectorPair {NativeVector3 First,Second;};
 struct NativeMatrix3x3 {NativeVector3 Columns[3];
- __forceinline void Transform(NativeVector3& v)const{float x=v.X,y=v.Y,z=v.Z;v.X=Columns[0].X*x+Columns[1].X*y+Columns[2].X*z;v.Y=Columns[0].Y*x+Columns[1].Y*y+Columns[2].Y*z;v.Z=Columns[0].Z*x+Columns[1].Z*y+Columns[2].Z*z;}
+ FABLE_FORCEINLINE void Transform(NativeVector3& v)const{float x=v.X,y=v.Y,z=v.Z;v.X=Columns[0].X*x+Columns[1].X*y+Columns[2].X*z;v.Y=Columns[0].Y*x+Columns[1].Y*y+Columns[2].Y*z;v.Z=Columns[0].Z*x+Columns[1].Z*y+Columns[2].Z*z;}
  void TransformVectorPair(NativeVector3*)const;
 };
 FABLE_STATIC_ASSERT(sizeof(NativeVector3)==12);

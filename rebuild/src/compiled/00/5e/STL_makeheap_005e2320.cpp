@@ -10,6 +10,7 @@
 //   is the /20 reciprocal multiply, the element is addressed through a strength-reduced pointer at its +0x0c
 //   (`lea esi,[ebp+eax*4+0Ch]`, stepped by -0x14) and copied into the argument area by the pair's copy ctor.
 // Label correction: catalogued as `STL_BuildHeap_Pair20Byte`; the body is STLport `__make_heap`.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -23,7 +24,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

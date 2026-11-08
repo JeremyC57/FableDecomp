@@ -1,4 +1,5 @@
 // Behaviour test for 0x0082DB00 (copy of the model + stand-in callee bodies).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -102,7 +103,7 @@ class CThing { public:
     const CPlayerManager* GetPlayerManager() const;  // 0x004C79F0
     CPlayerManager* GetPlayerManager();              // 0x004C7A00
     const C3DVector& GetPosition() const;            // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;
@@ -115,7 +116,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(const T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;

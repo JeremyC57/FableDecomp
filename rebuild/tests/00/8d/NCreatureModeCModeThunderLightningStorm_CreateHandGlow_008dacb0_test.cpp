@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NCreatureMode::CModeThunderLightningStorm::CreateHandGlow() -- spawn Thunder's LIGHTNING_HAND_EFFECT at his position, keep it in the mode's hand-glow pointer and attach its particle emitter to his WEAPON_FOCUS_01 bone
@@ -95,7 +96,7 @@ class CThing { public:
     unsigned char  _pad4c[0x45];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

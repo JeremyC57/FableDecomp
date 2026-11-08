@@ -26,13 +26,14 @@
 //   is taken into a local before GetSubDef (else &def is pushed before the GetPThing call); the mode manager comes from
 //   an inline accessor returning an unset local over the ternary GetTC (the out-pointer GetInterface form leaves the
 //   pointer in eax and adds `mov ecx,eax`).
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
@@ -101,7 +102,7 @@ public:
     CInterfaceMap  m_interfaces;                        // +0x44
     unsigned char  _pad54[0x1c];
     CDefClassBase* m_pDef;                              // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -114,7 +115,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
@@ -184,7 +185,7 @@ public:
 class CActionPickUpGenericBox : public CActionBase {
 public:
     virtual void Update();
-    __forceinline CTCCreatureModeManager* GetModeManager() const
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager() const
     {
         CTCCreatureModeManager* modes;
         CThing* thing = PTCScript->ParentThing;

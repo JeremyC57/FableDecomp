@@ -9,6 +9,7 @@
 // shares the 8-byte frame with the lookup key; its inline operator= is SetPItem(GetPItem()).
 // The leaf test's result is returned directly (bool in al). PTargetThing sits at +0x14 (first member after
 // the 0x14-byte CAIStateGroupBase); engine header is byte-flattened so a local model is used.
+#include "fable_compiler.h"
 class CThingCreatureBase;
 class CThing;
 
@@ -54,13 +55,13 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -75,7 +76,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

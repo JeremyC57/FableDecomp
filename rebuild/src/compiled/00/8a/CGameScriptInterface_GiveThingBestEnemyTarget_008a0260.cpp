@@ -10,6 +10,7 @@
 // Shape: a same-TU LowerBound stand-in packs the key, literal and class-name result into the dead argument slots as retail;
 //   if/else SetScriptTargetOverride calls; the class-name compare is the landed IsActionRunning 0x00712D70 operator== (nested SameText), its bool in bl
 //   across the two string dtors; the previous target is a frame word zeroed before the first GetThing.
+#include "fable_compiler.h"
 struct CThing_Retail;
 class CCharStringData { public:
     char*         PData;                    // +0x00
@@ -30,7 +31,7 @@ public:
 class CCharString : public CBasicString<char> { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const CCharString& other) const     // the landed IsActionRunning 0x00712D70 form
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const     // the landed IsActionRunning 0x00712D70 form
     {
         if (PStringData == other.PStringData)
             return true;
@@ -82,7 +83,7 @@ struct CThing_Retail {
     unsigned char         _pad4c[0x20];
     unsigned char         m_flags;                  // +0x6c (bit 3 = creature)
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap_Retail* map = &m_interfaces;

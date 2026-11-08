@@ -18,6 +18,7 @@
 // Layout (retail): as 0x006381A0 -- ThingMaps +0x08, ActiveThingMaps +0x14, ActiveGameMaps +0x20 (STLport set<long>:
 //   header node pointer first; node left +8, right +0xc, value +0x10), Dimensions.X +0x30; the world map's game-map
 //   records (0x48 bytes, area box first) at +0x20.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __declspec(x)
@@ -118,7 +119,7 @@ struct CLongSet {                                       // STLport set<long>
         iterator first, second;
         iterator_pair(const iterator& a, const iterator& b) : first(a), second(b) {}
     };
-    __forceinline iterator lower_bound(const long& key)
+    FABLE_FORCEINLINE iterator lower_bound(const long& key)
     {
         _Node* y = _M_header;
         _Node* x = _M_header->_M_parent;
@@ -126,7 +127,7 @@ struct CLongSet {                                       // STLport set<long>
             if (!(x->_M_value < key)) { y = x; x = x->_M_left; } else x = x->_M_right;
         return iterator(y);
     }
-    __forceinline iterator upper_bound(const long& key)
+    FABLE_FORCEINLINE iterator upper_bound(const long& key)
     {
         _Node* y = _M_header;
         _Node* x = _M_header->_M_parent;
@@ -134,11 +135,11 @@ struct CLongSet {                                       // STLport set<long>
             if (key < x->_M_value) { y = x; x = x->_M_left; } else x = x->_M_right;
         return iterator(y);
     }
-    __forceinline iterator_pair equal_range(const long& key)
+    FABLE_FORCEINLINE iterator_pair equal_range(const long& key)
     {
         return iterator_pair(lower_bound(key), upper_bound(key));
     }
-    __forceinline void erase(const long& key)
+    FABLE_FORCEINLINE void erase(const long& key)
     {
         iterator_pair range = equal_range(key);
         erase(range.first, range.second);

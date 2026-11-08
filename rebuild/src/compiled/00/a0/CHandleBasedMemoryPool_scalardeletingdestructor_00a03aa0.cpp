@@ -12,6 +12,7 @@
 // struct) as a polymorphic CBase-derived class.
 // Shape: the destructor body calls Uninitialise, then the members die in reverse order: the string, then
 // the CArray's inline destructor (`if (data) free(data)`), then the base.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CCharString { public:
@@ -42,7 +43,7 @@ class CHandleBasedMemoryPool : public CBaseClassNonCopyable { public:           
     unsigned char    CriticalSection[0x18];        // +0x44c
     void Uninitialise();                           // 0x00A02190
     CHandleBasedMemoryPool() { }
-    __forceinline virtual ~CHandleBasedMemoryPool() { Uninitialise(); }
+    FABLE_FORCEINLINE virtual ~CHandleBasedMemoryPool() { Uninitialise(); }
 };
 
 CHandleBasedMemoryPool* Create_CHandleBasedMemoryPool()

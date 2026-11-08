@@ -15,6 +15,7 @@
 // and a new-expression whose constructor argument is a second temporary (flag bit 1, dtor out of line 0x004AA840) --
 // VC7.1 makes that inline/out-of-line split by itself. GetInterface is the plain bitset test (`test ecx,ecx ; jns`
 // for type 0x1F); the HasTC `const unsigned char&` form of MoveToAndPickUpGenericBox gives `shr/and/mov` here.
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -37,7 +38,7 @@ class CThing_Retail { public:
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

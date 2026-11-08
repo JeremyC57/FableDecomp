@@ -1,4 +1,5 @@
 // Behaviour test for 00582944: body copied from src/00582944.cpp (CTCInventory::OnCreate), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,8 +17,8 @@ struct CInventorySubDef : CRefCounted {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 template <class T> struct CRawDefPointer {
@@ -37,7 +38,7 @@ bool CThingDef::GetSubDef(CRawDefPointer<CInventorySubDef>* out) const
 class CThing { public:
     unsigned char           _pad_0x00[0x70];
     CDefPointer<CThingDef>  PDef;
-    __forceinline CDefPointer<CThingDef> GetDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CThingDef> GetDef() const { return PDef; }
 };
 struct CScreenBase { virtual void v00() {} };
 static CScreenBase* g_registered = 0; static const char* g_log[8]; static int g_logN = 0;

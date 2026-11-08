@@ -14,6 +14,7 @@
 // released inline afterwards (block {refs, __fastcall destroy, object}, freed with operator delete). `this` is spilled to the
 // frame across the block (register pressure).
 // Layout: the owner (CIntelligentPointer<CThingCreatureBase>) at +8, the target at +0xa8 (retail CCreatureActionBase is 0xa8).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -86,7 +87,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThing> PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    __forceinline CTCCreatureModeManager* GetModeManager() const
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager() const
     {
         CTCCreatureModeManager* modeManager;
         PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);

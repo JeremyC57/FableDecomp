@@ -12,6 +12,7 @@
 // Layout: Ego_r CCreatureAction_PutDownThingAtTable::Mode (EMode, +0xB4 Ego_r, +0xA8 retail); CThing::PhysicsTC +0x60, Dead +0x91.
 // Shape: both component lookups are unchecked (retail reads the stale out-pointer slot on the miss path).
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -154,7 +155,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -166,7 +167,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

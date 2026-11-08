@@ -1,5 +1,6 @@
 // Behaviour test for 00977b10: src/00977b10.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CAIStateGroup_Guildmaster::FindAndStoreBodyguards()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -50,7 +51,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -64,7 +65,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

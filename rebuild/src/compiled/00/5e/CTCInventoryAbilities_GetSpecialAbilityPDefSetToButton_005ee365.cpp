@@ -12,6 +12,7 @@
 //   the found arm returns GetAbilityPDef's result straight into the hidden result (no copy), the empty arm a default
 //   CDefPointer.
 // Label correction: catalogued as `CTCInventoryAbilities_FindAbility`; the PDB name is GetSpecialAbilityPDefSetToButton.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -48,7 +49,7 @@ template <class K, class V, class C> class CVectorMap { public:   // STLport vec
     bool          Dirty;                                   // +0x0D
     const value_type* end() const { return m_last; }
     const value_type* LowerBound(const K& key) const;      // 0x005F7F89
-    __forceinline const value_type* Find(const K& key) const
+    FABLE_FORCEINLINE const value_type* Find(const K& key) const
     {
         const value_type* it = LowerBound(key);
         return (it == end() || key < it->first) ? end() : it;

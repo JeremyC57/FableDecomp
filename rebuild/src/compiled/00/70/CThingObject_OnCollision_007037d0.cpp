@@ -13,6 +13,7 @@
 // Shape: the component is preloaded with zero (`T* tc = 0; if (HasTC) tc = GetTC;`, the lookup key homed in the dead
 // `normal` slot) and the ternary entry pick; the sub-def is a zeroed CDefPointer homed in the dead `other` slot and
 // released through the short DecRefToZero form.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 #include "engine/C3DVector.h"
@@ -42,7 +43,7 @@ struct CDebrisDef : CDefObject {
     unsigned char _pad08[0x34 - 0x08];
     long          DebrisThingDef;                              // +0x34
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
@@ -130,14 +131,14 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)(type));
         return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

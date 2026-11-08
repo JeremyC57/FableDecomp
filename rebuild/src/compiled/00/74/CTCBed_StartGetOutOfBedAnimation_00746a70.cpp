@@ -9,6 +9,7 @@
 // for CTCAnimationComplex, type 0x5A), CTCAnimationComplex::GetAnimation @ 0x0070B460, CAnimateThing::SetMainAnim @ 0x0070D580.
 // Layout = Ego_r.pdb CTCBed (24 bytes): Empty +0x0C, GettingIn +0x0D, GettingOut +0x0E, Animating +0x0F, PDef +0x14.
 // Shape: as StartGetInBedAnimation (HasTC + one-ternary GetTC into an unset local); the key and the never-initialised out pointer share the dead `animation` slot.
+#include "fable_compiler.h"
 struct CTCBaseInterface;
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -64,7 +65,7 @@ public:
     bool    Animating;                          // +0x0f
     long    BedSleepAnim;                       // +0x10
     const CBedDef* PDef;                        // +0x14 CDefPointer<CBedDef const> object word
-    __forceinline CTCAnimationComplex* GetAnimationComplex() const
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;
         if (ParentThing->HasTC(TCI_ANIMATION))

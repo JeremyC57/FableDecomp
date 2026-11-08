@@ -23,6 +23,7 @@
 //         DamageFalloffWithRadius +0x38, CauseFireEffectOnHitCreatures +0x65 (PDB +0x69, ExplosionRings 12 bytes in
 //         retail). Retail CThing: interface bitset +0x20 (TC 0x89 = CTCBurntEffect: word +0x30 bit 9), map +0x44,
 //         ThingTypeFlags +0x6C (bit 3 tested here).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCParamsBase;
 class CBaseObject;
@@ -79,8 +80,8 @@ public:
     unsigned long ThingTypeFlags;                   // +0x6C
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     const C3DVector& GetPos() const;           // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &Interfaces;

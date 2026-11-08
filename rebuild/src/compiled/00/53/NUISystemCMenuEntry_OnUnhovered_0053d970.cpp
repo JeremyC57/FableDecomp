@@ -3,6 +3,7 @@
 // (observer slot 4, +0x10 on this+4), free 0x00BFEA14 (MSVCR71 import) for the list node. The hovered list at 0x013B8AD4 is a
 // head-node list with no size member (same shape as the landed menu stack model in 0x0053DDD0): find(this) then erase.
 // Name: Ego_r.pdb ?OnUnhovered@CMenuEntry@NUISystem@@MAEXXZ.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -18,7 +19,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {
@@ -133,8 +134,8 @@ namespace NUISystem {
 struct CHoveredList {
  struct Node { Node* Next; Node* Prev; CComponent* Object; };
  Node* Head;
- __forceinline Node* find(CComponent* p) const { Node* n = Head->Next; while (n != Head && n->Object != p) n = n->Next; return n; }
- __forceinline void erase(Node* p) { if (p != Head) { Node* next = p->Next; Node* prev = p->Prev; prev->Next = next; next->Prev = prev; free(p); } }
+ FABLE_FORCEINLINE Node* find(CComponent* p) const { Node* n = Head->Next; while (n != Head && n->Object != p) n = n->Next; return n; }
+ FABLE_FORCEINLINE void erase(Node* p) { if (p != Head) { Node* next = p->Next; Node* prev = p->Prev; prev->Next = next; next->Prev = prev; free(p); } }
 };
 extern CHoveredList HoveredComponents_013b8ad4;   // 0x013B8AD4
 void CMenuEntry::OnUnhovered()

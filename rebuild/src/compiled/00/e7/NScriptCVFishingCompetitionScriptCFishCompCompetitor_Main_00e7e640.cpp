@@ -13,6 +13,7 @@
 //   +0x54, DoneIntro +0x60, PrizeNumber +0x64, SizeComment (vector<long>) +0x74), PMasterData +0x18.
 // Naming wave 35: identity reg 00e7e4af "FishCompCompetitor" in 00e7e370; Alloc 00e7e570; vtable 012ea5a0 slot 1; PDB ?Main@CFishCompCompetitor@CV_FishingCompetitionScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CFishCompCompetitor::Main (wave3/labels_alloc.tsv); PDB ?Main@CFishCompCompetitor@CV_FishingCompetitionScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CFishCompCompetitor@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_FishingCompetitionScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -71,7 +72,7 @@ class CScriptThing : public CBaseClass { public:                           // vt
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -99,13 +100,13 @@ struct CMovieStorage { void* Words[4]; };              // raw frame storage of o
 inline void* operator new(unsigned int, void* where) { return where; }   // placement form: the handle is destroyed by hand
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBase*>(this)->CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase();
     }
-    __forceinline void Destroy()
+    FABLE_FORCEINLINE void Destroy()
     {
         reinterpret_cast<CScriptGameResourceObjectMovieFull*>(this)->CScriptGameResourceObjectMovieFull::~CScriptGameResourceObjectMovieFull();
     }

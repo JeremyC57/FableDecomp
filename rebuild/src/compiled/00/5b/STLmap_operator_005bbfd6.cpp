@@ -10,6 +10,7 @@
 // Shape: the landed map<NUISystem::CComponent*, long>::operator[] 0x0042D1B7 template (STLport 4.x, optimize("s", on))
 //   with the handle model of 0x00485D30 (same `(Object ? Object->RefCount : 0) == 1` uniqueness test, `__forceinline`
 //   ctor/dtor in this /Os TU).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CEnginePrimitiveHandle;
@@ -21,9 +22,9 @@ public:
     virtual void v002();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle); // slot 3 (+0x0C)
     long RefCount;                                                   // +0x04
-    __forceinline void DecRef() { --RefCount; }
-    __forceinline long GetRefCount() const { return RefCount; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void DecRef() { --RefCount; }
+    FABLE_FORCEINLINE long GetRefCount() const { return RefCount; }
+    FABLE_FORCEINLINE void Release()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -34,10 +35,10 @@ public:
 class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
-    __forceinline CIVCountedPointer() : Object(0) { }
-    __forceinline CEnginePersistentPrimitiveBase* operator->() const { return Object; }
-    __forceinline long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { }
+    FABLE_FORCEINLINE CEnginePersistentPrimitiveBase* operator->() const { return Object; }
+    FABLE_FORCEINLINE long GetRefCount() const { return Object ? Object->RefCount : 0; }
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object)
             Object->Release();
@@ -51,9 +52,9 @@ class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline CEnginePrimitiveHandle() { }
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& x);   // (inside the out-of-line pair ctor)
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data->OnLastHandleReleased(this);

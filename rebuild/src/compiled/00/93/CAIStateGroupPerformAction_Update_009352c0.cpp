@@ -15,6 +15,7 @@
 // retail (PDB 0x130).
 // Shape: both lookups use the out-parameter GetInterface with the HasTC byte bound to a `const unsigned char&`; the
 // perception lookup goes through a const creature (const LowerBound); the misses read the never-written slots.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -27,7 +28,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {
@@ -38,7 +39,7 @@ class CThing { public:
         }
         return present != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {
@@ -52,7 +53,7 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public: };
 class CThingPlayerCreature : public CThingCreatureBase { };
-__forceinline bool IsAlive(const CThing* thing)
+FABLE_FORCEINLINE bool IsAlive(const CThing* thing)
 {
     if (thing != 0 && !(thing->m_flags91 & 1))
         return true;
@@ -81,11 +82,11 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {      // vtable 0x0123E7D8
     virtual void v00();
-    __forceinline CIntelligentPointerCreature(CThingCreatureBase* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerCreature(CThingCreatureBase* item) { SetPItem(item); }
 };
 class CCreatureActionBase { public:
     virtual void v00();

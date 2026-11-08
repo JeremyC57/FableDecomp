@@ -7,6 +7,7 @@
 // landed 0x0064A450 model): the arguments evaluate right to left, so the bytes load A, B, G, R (B spilled to the frame)
 // and store R, G, B, A. The `new (p)` null test is the placement-new check.
 // Shape: frame pointer + one spill slot = size TU with /Oy off: #pragma optimize("y", off) + ("s", on).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -14,8 +15,8 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
 namespace std {

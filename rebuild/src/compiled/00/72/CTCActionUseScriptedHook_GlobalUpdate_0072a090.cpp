@@ -25,6 +25,7 @@
 //   store (it fixed the camera-point vcall loading the component straight into ecx), the inline template
 //   CTCCameraPointDefinitionBase::GetPointType<CTCCameraPointTrack> (its out-of-line COMDAT sits at 0x0072A430) and the engine
 //   CCountedPointer (mode Data kept in esi across SetPCameraPoint). The prior's three register residues all came from stand-ins.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -64,7 +65,7 @@ public:
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual long GetCameraPointType() const;            // slot 28 (+0x70)
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return (ETCInterfaceType)0x3f; }
-    template <class T> __forceinline bool GetPointType(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetPointType(T** out)
     {
         if (GetCameraPointType() == T::POINT_TYPE_ID) {
             *out = static_cast<T*>(this);

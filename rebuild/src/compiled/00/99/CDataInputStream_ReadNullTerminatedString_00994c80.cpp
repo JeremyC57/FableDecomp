@@ -9,6 +9,7 @@
 // uninitialised local (an out-of-range read leaves it as it was) passed by value as a whole dword; the string is a named
 // local copied into the hidden result at the end (no NRVO) and then destroyed. CCharString is modelled locally because
 // fable_string.h inlines the copy constructor that retail calls.
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -24,8 +25,8 @@ public:
 };
 
 struct CDataInputStreamReader : CDataInputStream {   // the engine layout plus the retail member functions
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))

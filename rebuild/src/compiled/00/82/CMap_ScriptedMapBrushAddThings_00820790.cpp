@@ -1,5 +1,6 @@
 // CMap::ScriptedMapBrushAddThings(const CScriptedMapBrush&) -- mark listed existing things activated.
 // Native00820790 length161. Original PDB map/brush/thing method identities; typed native world/worldmap PMFs, no synthetic virtual padding.
+#include "fable_compiler.h"
 #define CMap CMapDonor
 #define CThing CThingDonor
 #define CWorld CWorldDonor
@@ -42,14 +43,14 @@ class CThingManager { public:CThing* GetPThingWithUID(ThingUID);}; //0051ED80 ac
 class C2DCoordI { public:long X,Y;};
 class CWorldMap { public:
  void* VTable;typedef long(CWorldMap::*MapNumberMethod)(const C2DCoordI&)const;
- __forceinline long GetMapNumberAt(const C2DCoordI& p)const{return(this->*static_cast<MapNumberMethod*>(VTable)[17])(p);}
+ FABLE_FORCEINLINE long GetMapNumberAt(const C2DCoordI& p)const{return(this->*static_cast<MapNumberMethod*>(VTable)[17])(p);}
 };
 class CWorld { public:
  void* VTable;
  typedef CThingManager&(CWorld::*ThingManagerMethod)();
  typedef const CWorldMap&(CWorld::*WorldMapMethod)()const;
- __forceinline CThingManager& GetThingManager(){return(this->*static_cast<ThingManagerMethod*>(VTable)[3])();}
- __forceinline const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
+ FABLE_FORCEINLINE CThingManager& GetThingManager(){return(this->*static_cast<ThingManagerMethod*>(VTable)[3])();}
+ FABLE_FORCEINLINE const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
 };
 class CMap { public:
  unsigned char NativeMapPrefix[0x20];CWorld* World;

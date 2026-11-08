@@ -16,6 +16,7 @@
 //   __uninitialized_copy, inline placement _Construct with its null test), and here the range _Destroy inlined as well
 //   (`__forceinline` _Destroy(first, last) / __destroy / __destroy_aux over the inline `p->~T()`); _M_allocate_and_copy and
 //   _M_clear are declarations.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 // Layout: the retail polymorphic def-class chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, 0x28 bytes, vtable 0x01230BCC).
@@ -50,7 +51,7 @@ public:
 };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -61,7 +62,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
@@ -70,20 +71,20 @@ inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp>
 inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for (; __first != __last; ++__first)
         _Destroy(&*__first);
 }
 template <class _ForwardIterator, class _Tp>
-__forceinline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
+FABLE_FORCEINLINE void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
 {
     __destroy_aux(__first, __last, __false_type());
 }
 template <class _Tp>
-__forceinline void _Destroy(_Tp* __first, _Tp* __last) { __destroy(__first, __last, (_Tp*)0); }
+FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last) { __destroy(__first, __last, (_Tp*)0); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

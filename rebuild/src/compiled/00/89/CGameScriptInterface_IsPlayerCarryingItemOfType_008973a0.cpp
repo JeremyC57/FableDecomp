@@ -17,6 +17,7 @@
 // expressions (`return item != 0;`, `return item && ...;`); the CDefString result lands in the dead `defName`
 // argument slot; the CCharString `== ""` is open-coded in the caller (strcmp intrinsic on the null block, else the
 // CBasicString compare) with `goto empty`; GetTC(k)->F() puts the component straight into ecx.
+#include "fable_compiler.h"
 #include <string.h>
 
 #pragma pack(push, 1)
@@ -35,7 +36,7 @@ class CCharStringData { public:
 class CCharString {
 public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;
@@ -69,7 +70,7 @@ class CThing { public:
     unsigned char m_91_1 : 7;
     CDefString GetDefName() const;        // 0x004C7CC0
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

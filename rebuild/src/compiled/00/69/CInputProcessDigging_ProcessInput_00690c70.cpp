@@ -11,6 +11,7 @@
 //   thing's component bitset +0x20 (kind 0xc6 = byte +0x38 bit 6).
 // Shape: one `&&` test chain sharing the cookie-check exit; the event built in the frame (the /GS cookie above it), the
 //   two zero bytes from one `xor al,al`, AddLong / AddUBYTE homing their by-value argument in the dead `event` slot.
+#include "fable_compiler.h"
 class CInputEvent;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
@@ -29,7 +30,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    __forceinline void AddGameEvent(long type, long data, unsigned char flag)
+    FABLE_FORCEINLINE void AddGameEvent(long type, long data, unsigned char flag)
     {
         CGameEvent gameEvent(type);
         gameEvent.AddLong(data);

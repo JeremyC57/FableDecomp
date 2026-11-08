@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CCreatureAction_HeroLoadRangedWeapon::PerformAction() -- when the ranged weapon lives and is analogue-loading, create one
@@ -78,13 +79,13 @@ public:
     unsigned char _pad4c[0x90 - 0x4c];
     char          PlayerNumber;                       // +0x90
     const C3DVector& GetPosition() const;             // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -100,7 +101,7 @@ class CThingObject : public CThing {};
 class CRightHandedSet;
 CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                            unsigned long flags, const CCharString& name);   // 0x00703210
-__forceinline CThingObject* CreateThingObject(long defIndex, const CThing* owner, const CThing* at, const CCharString& name)
+FABLE_FORCEINLINE CThingObject* CreateThingObject(long defIndex, const CThing* owner, const CThing* at, const CCharString& name)
 {
     return CreateThingObject(defIndex, &at->GetPosition(), owner->PlayerNumber, 0, 0, name);
 }
@@ -122,7 +123,7 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                     // out of line (CThingObject: 0x0065E133)
-    __forceinline CIntelligentPointer& operator=(T* item)
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(T* item)
     {
         CIntelligentPointer pointer(item);
         CThing* p = pointer.GetPItem();

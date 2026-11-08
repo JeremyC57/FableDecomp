@@ -13,6 +13,7 @@
 //   (plain-inline dtor, CBaseClass ctor/dtor out of line).
 // Naming wave 35: identity reg 00e5d667 "HenchmanRegionExitComment" in 00e5d4f0; Alloc 00e5f800; vtable 012e7100 slot 1; PDB ?Main@CHenchmanRegionExitComment@CV_BodyGuardScript@NScript@@; refs=1; was under-qualified CHenchmanRegionExitComment::Main (wave3/labels_alloc.tsv); PDB ?Main@CHenchmanRegionExitComment@CV_BodyGuardScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHenchmanRegionExitComment@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
@@ -43,7 +44,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive();
 };

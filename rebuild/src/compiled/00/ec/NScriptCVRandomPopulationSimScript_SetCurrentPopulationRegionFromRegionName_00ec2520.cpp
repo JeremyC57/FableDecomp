@@ -12,13 +12,14 @@
 // Layout (retail = Ego_r.pdb - 0x14): CurrentPopulationRegion +0x5c (CLevelScriptBase Game +0x40).
 // Shape: if / else-if chain of `||` comparisons (the landed 0x00F088E0 inline CCharString::operator== model, with Compare
 //   defined in the TU under auto_inline(off) so it stays a call); the last `else` is a bare terminating test.
+#include "fable_compiler.h"
 #include <string.h>
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     T*            PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -47,7 +48,7 @@ template <> long __fastcall CBasicString<char>::Compare(const char* a, const cha
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

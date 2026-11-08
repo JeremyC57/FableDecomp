@@ -12,6 +12,7 @@
 //   inlined destructors store no vtable in retail).
 // Header debt: CDrawBase / the draw class are modelled here (no engine/ header carries their destructor chain); the
 //   novtable is a model of the missing destructor vptr stores, not of the classes' constructors.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                    // 0x00BFE9BC
 class CEnginePrimitiveHandle {                            // 8 bytes: vptr, handle
@@ -27,21 +28,21 @@ public:
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } void deallocate(_Tp* p, unsigned int) { free(p); } };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
-template <class _Tp> __forceinline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> __forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _ForwardIterator> FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 {
     for (; __first != __last; ++__first) _Destroy(&*__first);
 }
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
-    __forceinline ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
+    FABLE_FORCEINLINE ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
     _Tp* _M_start;
     _Tp* _M_finish;
     _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 template <class _Tp, class _Alloc> class _List_base {
 public:
@@ -50,7 +51,7 @@ public:
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
 public:
-    __forceinline ~list() { }
+    FABLE_FORCEINLINE ~list() { }
 };
 }
 class CPlayerGui;
@@ -62,7 +63,7 @@ namespace NPlayerGui {
 class __declspec(novtable) CDrawBase {
 public:
     virtual void VirtualSlot00();
-    __forceinline ~CDrawBase() { }
+    FABLE_FORCEINLINE ~CDrawBase() { }
     CPlayerGui* PlayerGui;                                // +0x04
     CPlayerManager* PlayerManager;                        // +0x08
     CWorld* World;                                        // +0x0c
@@ -73,7 +74,7 @@ public:
 };
 class __declspec(novtable) CDrawNPCName : public CDrawBase {
 public:
-    __forceinline ~CDrawNPCName() { }
+    FABLE_FORCEINLINE ~CDrawNPCName() { }
     CWideString Name;                                     // +0x28 (Ego_r.pdb)
 };
 }

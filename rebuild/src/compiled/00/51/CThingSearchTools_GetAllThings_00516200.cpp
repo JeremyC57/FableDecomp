@@ -11,6 +11,7 @@
 // Shape: the landed GetAllThings 0x004ACD70 (list result) with a by-reference Bind3; the OverlappingArea filter as in
 //   0x00516830 (the inline-asm ceil, the area copy grown by the radius, the centre tested inside); the navigation test
 //   calls the same thing slot on both arms of the physics-obstacle test.
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
@@ -124,7 +125,7 @@ public:
 class CThingFilter_OverlappingArea {
 public:
     const C2DBoxI* Area;                              // +0x00
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const CTCPhysicsBase* physics = thing.PhysicsTC;
         if (!physics)
@@ -152,7 +153,7 @@ struct CThingVirtuals {
 };
 class CThingFilter_HasNavigationInformation {
 public:
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const CTCPhysicsBase* physics = thing.PhysicsTC;
         const CThingVirtuals& v = *(const CThingVirtuals*)&thing;
@@ -170,7 +171,7 @@ template <class A, class B, class C> class CFilter_Bind3 { public:   // the thre
     const A& First;
     const B& Second;
     const C& Third;
-    template <class T> __forceinline bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {

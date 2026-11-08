@@ -7,16 +7,17 @@
 // and FlourishParticles shrinks too), the layout landed IsMeleeWeapon documents.
 // Layout: Ego_r.pdb CTCWeapon WeaponDef +0x0c.
 // Shape: /O2 (`mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax`, result held in bl), as sibling 0x005DA7D0.
+#include "fable_compiler.h"
 class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CWeaponDef : public CDefPointeeBase { public:

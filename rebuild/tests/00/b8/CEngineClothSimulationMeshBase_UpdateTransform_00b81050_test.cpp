@@ -1,4 +1,5 @@
 // 00b81050 behaviour test: CEngineClothSimulationMeshBase::UpdateTransform (match.cpp body, host-modelled)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 static int g_fail = 0;
@@ -9,7 +10,7 @@ class CMatrix3x4 { public:
     float E21, E22, E23;
     float E31, E32, E33;
     float E41, E42, E43;
-    __forceinline void GetInverseRotation(CMatrix3x4& out) const
+    FABLE_FORCEINLINE void GetInverseRotation(CMatrix3x4& out) const
     {
         float det = E11 * (E22 * E33 - E23 * E32) + E21 * (E32 * E13 - E33 * E12) + E31 * (E23 * E12 - E22 * E13);
         float inv = 1.0f / det;

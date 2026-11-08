@@ -17,6 +17,7 @@
 //   up front; X lands in the push-ecx slot, Y in the dead `extents` slot, Z in edi. `if (no_levels != 1) no_levels = 1;`
 //   gives retail's `cmp ebx,1 ; je ; mov ebx,1`; the device is read as `PDisplayManager.Data->D3DDevice` (operator-> adds `add eax,60h`). Sizeof() (Ego_r `?Sizeof@CVolumeTexture@@QBEKXZ`) is the landed
 //   InitialiseFromPreallocatedVolumeTexture's inline size body.
+#include "fable_compiler.h"
 struct IDirect3DDevice9;
 struct IDirect3DVolumeTexture9;
 #include "engine/CCountedPointer.h"
@@ -73,7 +74,7 @@ public:
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 extern unsigned long g_VolumeTextureMemoryBytes;        // 0x013D28E0
 
-__forceinline unsigned long __fastcall GFGetTopBit(unsigned long value)
+FABLE_FORCEINLINE unsigned long __fastcall GFGetTopBit(unsigned long value)
 {
     if (value == 0)
         return (unsigned long)-1;
@@ -87,7 +88,7 @@ __forceinline unsigned long __fastcall GFGetTopBit(unsigned long value)
     r += ((long)((1 << (r + 1)) - value) >> 31) & 1;
     return r;
 }
-__forceinline unsigned long __fastcall GFGetNextPowerOfTwo(unsigned long value)
+FABLE_FORCEINLINE unsigned long __fastcall GFGetNextPowerOfTwo(unsigned long value)
 {
     if (value == 0)
         return 0;

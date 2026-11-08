@@ -12,6 +12,7 @@
 //   ::erase 0x00B7FD70): `for (n = last - first; n > 0; --n) *result++ = *first++;` (signed `jle`, the source folded into
 //   an offset from the destination), then the __false_type destroy loop. Local def base: engine/CDefClassBase.h is a
 //   0x25-byte pack(1) flat layout (vptr as data), unusable as a polymorphic base.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString {
@@ -40,7 +41,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -52,13 +53,13 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
 template <class _Tp>
-__forceinline _Tp* copy(const _Tp* __first, const _Tp* __last, _Tp* __result)
+FABLE_FORCEINLINE _Tp* copy(const _Tp* __first, const _Tp* __last, _Tp* __result)
 {
     return __copy_ptrs(__first, __last, __result, __false_type());
 }

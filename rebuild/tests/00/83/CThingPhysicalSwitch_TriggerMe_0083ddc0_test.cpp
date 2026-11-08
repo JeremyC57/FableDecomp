@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -120,13 +121,13 @@ class CThing { public:
     unsigned short m_defGlobalIndex;                    // +0x8c
     unsigned short _pad8e;
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -140,7 +141,7 @@ class CThingPhysicalSwitch : public CThing { public:
     unsigned char _pad90[0xd0 - 0x90];
     bool          Triggered;                            // +0xd0
     const CThingPhysicalSwitchDef& PeekDefinition() const;   // 0x0083D900
-    __forceinline const CThingPhysicalSwitchDef& PeekDefinitionInline() const
+    FABLE_FORCEINLINE const CThingPhysicalSwitchDef& PeekDefinitionInline() const
     {
         CDefPointer<CThingPhysicalSwitchDef> def;
         GetDefinitionManager()->GetDef(m_defGlobalIndex, def);

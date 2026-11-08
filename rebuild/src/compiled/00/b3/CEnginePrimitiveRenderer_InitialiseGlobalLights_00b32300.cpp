@@ -8,6 +8,7 @@
 //   touched are +0x2a70, +0x2a5c (value: the global @ 0x01396FF4) and +0x2a48 (value 1).
 // Shape: the manager-side `__forceinline SetState(state, value)` of EnableFog; the colours are CRGBColour temporaries (B,G,R,A
 //   bytes, ctor stores R,G,B,A -> +2,+1,+0,+3), the second argument's built first.
+#include "fable_compiler.h"
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CRGBColour { public:                                // B,G,R,A bytes over a packed 32-bit colour
@@ -44,7 +45,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 
     void SetGlobalLightColours(const CRGBColour& first, const CRGBColour& second);   // 0x00A0AA10
 
-    __forceinline void SetState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value)
     {
         if (state.m_value != value) {
             if ((m_captureMask & state.m_captureMask) == 0) {

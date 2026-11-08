@@ -1,5 +1,6 @@
 // Behaviour test for 0082def0: src/0082def0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CThingBuilding::IsUnlocked() const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -87,7 +88,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                          // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;
@@ -100,7 +101,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(const T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;

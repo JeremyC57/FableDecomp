@@ -15,6 +15,7 @@
 // busy` (flag in bl, zero in ebp). Each key is a named local (built before the argument pushes; the reply key in its own
 // block so it dies before `count > 0`). The allocator has a user ctor (an empty aggregate default arg stores a byte);
 // "" is the `data == 0 ? "" : data->str` form (constant loaded before the branch); strlen is the /Oi intrinsic.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
@@ -80,7 +81,7 @@ class CTCHeroOnlineScoreboard { public:
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
     ENetworkSuccess UploadPlayerScores();
-    __forceinline bool OpenUploadRequest(const CCharString& scores)
+    FABLE_FORCEINLINE bool OpenUploadRequest(const CCharString& scores)
     {
         LHString request(scores.c_str());
         CCharString key("THIS-ISMY-VALI-DCDK-EYOH-YESI-TISM", -1);

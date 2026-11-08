@@ -1,6 +1,7 @@
 // Behaviour test for 0x0079EAA0 CTCPhysicalShieldSpell::FinalCleanup: clears this spell's mesh effect from the
 // caster's graphic appearance (0x5B) when present, clears Pausable, and stops the looping sound through the caster's
 // sound player (0x10) when present.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -36,7 +37,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                      // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                          // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -74,7 +75,7 @@ public:
     bool          Paused;                                // +0x45
     bool          CutSceneCancelled;                     // +0x46
 
-    __forceinline void StopSound(unsigned long sound)    // out of line at 0x0079DDB0
+    FABLE_FORCEINLINE void StopSound(unsigned long sound)    // out of line at 0x0079DDB0
     {
         CTCSoundPlayer* player;
         if (ParentThing->GetInterface(&player, 0x10))

@@ -5,6 +5,7 @@
 //   WriteFloat 0x00993EE0.
 // Model: engine/CDataOutputStream.h + writer adapter; local CUIMiniMapMarker (no engine header).
 // Shape: speed TU; the marker traits' TransferBinaryOut is inline: Region, the name length, the name, Position.X/Y, GraphicIndex, Angle.
+#include "fable_compiler.h"
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
 #undef CDataOutputStream
@@ -58,7 +59,7 @@ template <class T> struct CPersistTraits {
     CPersistTraits() : DefaultVal() { }
     void TransferBinaryOut(CDataOutputStreamWriter& stream, const T* value) const;
 };
-template <> __forceinline void CPersistTraits<CUIMiniMapMarker>::TransferBinaryOut(CDataOutputStreamWriter& stream, const CUIMiniMapMarker* value) const
+template <> FABLE_FORCEINLINE void CPersistTraits<CUIMiniMapMarker>::TransferBinaryOut(CDataOutputStreamWriter& stream, const CUIMiniMapMarker* value) const
 {
     stream.WriteLong(value->Region);
     stream.WriteLong(value->DefNameLength);

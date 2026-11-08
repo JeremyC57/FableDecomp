@@ -20,6 +20,7 @@
 //   under `#pragma inline_depth(0)`.
 //   The loop is `for(;;) { if (IsActiveThreadTerminating()) return; ...; Game->NewScriptFrame(); }` with the killed and
 //   died-alive exits written as `break` to the function end: that gives retail's rotated loop and shared cleanup tail.
+#include "fable_compiler.h"
 #include <string.h>
 class CCharString;
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
@@ -27,7 +28,7 @@ template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -43,7 +44,7 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -61,8 +62,8 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(other), PImp(other.PImp) {}
-    __forceinline virtual ~CScriptThing() {}            // 0x004AA840 where it stays out of line
-    __forceinline virtual const CCharString& GetName() const   // slot 1 (+0x04) 0x004AA8B0
+    FABLE_FORCEINLINE virtual ~CScriptThing() {}            // 0x004AA840 where it stays out of line
+    FABLE_FORCEINLINE virtual const CCharString& GetName() const   // slot 1 (+0x04) 0x004AA8B0
     {
         if (!PImp.Data)
             return NullString;
@@ -91,7 +92,7 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
     {
         return PImp.Data == 0 || PImp.Data->IsNull();
     }
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
     static CCharString NullString;                      // 0x0143E8EC
 };

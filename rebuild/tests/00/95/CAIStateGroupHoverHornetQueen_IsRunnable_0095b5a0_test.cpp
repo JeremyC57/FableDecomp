@@ -1,4 +1,5 @@
 // Behaviour test for 0095b5a0: the model below is a copy of src/0095b5a0.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,7 +25,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

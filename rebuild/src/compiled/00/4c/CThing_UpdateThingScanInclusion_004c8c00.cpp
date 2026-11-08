@@ -11,6 +11,7 @@
 //        else placed + physics + query false -> OnDie() (the `else if` re-tests the +0x50 bit 0 flag on the fall-through).
 // Layout: retail CThing = Ego_r.pdb - 0x10 (bitset +0x20, interface map +0x44, PhysicsTC +0x60); CTCMapwho flag byte +0x50
 //         bit 0 (descriptive name InMapwho).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -36,7 +37,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

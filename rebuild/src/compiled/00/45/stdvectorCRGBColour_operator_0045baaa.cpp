@@ -11,6 +11,7 @@
 // with the out-of-line `_Construct`. CRGBColour has a user copy ctor (so it is not POD for the type traits) and the
 // implicit assignment (one dword move).
 // Shape: frame pointer, locals homed in the dead argument slot = size TU with /Oy off: #pragma optimize("y", off) + ("s", on).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,7 +27,7 @@ struct __false_type { };
 template <class T1, class T2> void __fastcall _Construct(T1* p, const T2& value);   // 0x0045BB8F
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {
@@ -38,7 +39,7 @@ __forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, O
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

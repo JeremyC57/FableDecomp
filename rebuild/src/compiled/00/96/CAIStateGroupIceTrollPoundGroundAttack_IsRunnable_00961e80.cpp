@@ -14,6 +14,7 @@
 // reuses its eax `this`, retail re-forms `lea ecx,[esp+8]`) assigned through a __forceinline operator=; the lookup
 // is the ternary GetInterfaceT so the component loads straight into ecx for the virtual call.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -38,7 +39,7 @@ class CThing { public:
     }
     // the same lookup with the end/hit choice written as one ternary (VC7.1 then loads the component straight
     // into the register its first use wants)
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -49,7 +50,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -192,7 +193,7 @@ bool __fastcall IsThingInRangeOfPound(CThing* creature, CThing* target);        
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(CThing* item);                    // 0x004A96F0
-    __forceinline CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 struct CAIStateGroup_IceTrollPoundGroundAttack : CAIStateGroupBase {

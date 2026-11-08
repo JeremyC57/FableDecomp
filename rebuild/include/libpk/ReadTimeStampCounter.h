@@ -16,6 +16,7 @@
 //   `__asm` statement runs to the end of its source line (anything after it on that line is read as assembler).
 #ifndef FABLE_LIBPK_READTIMESTAMPCOUNTER_H
 #define FABLE_LIBPK_READTIMESTAMPCOUNTER_H
+#include "fable_compiler.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
 #include "engine/GFGetCycleCount.h"
@@ -36,7 +37,7 @@ using fable_portable::ReadTimeStampCounter;
     __asm rdtsc \
     __asm mov dword ptr counter, eax \
     __asm mov dword ptr counter+4, edx
-__forceinline unsigned __int64 ReadTimeStampCounter()
+FABLE_FORCEINLINE unsigned __int64 ReadTimeStampCounter()
 {
     unsigned __int64 counter;
     LIBPK_READ_TIME_STAMP_COUNTER(counter);

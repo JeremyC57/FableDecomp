@@ -2,6 +2,7 @@
 // Checks the alive filter over Me, the BanditTeamCrateDrop lookup, that a near crate not carried by the hero removes
 // the artefact (count decremented, master flag set, RemoveThing(Me, false, true)), near-and-carried / far frames only track
 // wasNear, termination at the near and far checks, and that the crate and filter copies are released on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -32,7 +33,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
     bool IsBeingCarriedBy(const CCharString& name) const
     {
         if (strcmp(name.Text, "SCRIPT_NAME_HERO") != 0 || Id != 1) g_badName = true;

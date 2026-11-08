@@ -14,6 +14,7 @@
 //   0x00A385A0 (FableWin.pdb / Ego_r.pdb ?AddSymbolDirty@CCRCSymbolMap@@QAEXABVCCharString@@J@Z), CCRCSymbolMap::Error 0x00A381D0 (member varargs, `this` on the stack) with the global file name 0x013D27E8.
 // Layout: CStringParser retail 0x28 bytes (the landed ParseBuffer 0x00A38E50 model; the engine header carries the
 //   12-byte PDB list): the error line is the dword at +0x24. CPersistContext per Ego_r.pdb (0x2c bytes).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 #pragma pack(push, 1)
@@ -39,7 +40,7 @@ class CCharString { public:
     const CCharString& operator=(const char* text);          // 0x0099EFE0
     bool operator!=(const char* text) const;           // 0x0099E960
     bool operator!=(const CCharString& other) const;   // 0x0099E900
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

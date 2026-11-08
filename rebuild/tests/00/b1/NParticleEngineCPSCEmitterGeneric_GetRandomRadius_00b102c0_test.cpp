@@ -1,10 +1,11 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <math.h>
 static unsigned long g_seedSeen; static float g_rangeSeen;
 float __fastcall GFFloatRandom(float range, unsigned long* seed) { g_seedSeen = *seed; g_rangeSeen = range; return 0.25f; }
 struct CPSCEmitterGeneric { unsigned char _pad00[0x38]; unsigned long m_packedRadius; float GetRandomRadius(unsigned long* seed) const; };
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     for (long i = decimals; i; --i) scale *= 10.0f;

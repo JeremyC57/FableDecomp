@@ -2,6 +2,7 @@
 // Checks that a creature holding an unloaded missile weapon queues Reload, Aim and Fire (Fire aimed at the target),
 // a loaded one Aim and Fire only, a dead target / no inventory / non-missile weapon queue nothing, and every queued
 // counted-pointer temporary is released (each action destroyed once).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -71,7 +72,7 @@ class CThing { public:
     CInterfaceMap       Components;
     unsigned char       _pad4c[0x91 - 0x4c];
     unsigned char       Flags91;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

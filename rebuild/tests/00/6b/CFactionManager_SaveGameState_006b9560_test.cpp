@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -151,7 +152,7 @@ class CPersistContext { public:
  void Transfer(const char*,long&,const long&);
  void TransferFaction(const char*,CFaction&);
 };
-struct CountedFaction { CFaction* Data; void* Info; __forceinline CFaction& operator*() const { return *Data; } };
+struct CountedFaction { CFaction* Data; void* Info; FABLE_FORCEINLINE CFaction& operator*() const { return *Data; } };
 struct FactionEntry { unsigned long Key; CountedFaction Faction; };
 class CFactionManager { public:
  FactionEntry *Start,*Finish,*EndOfStorage;

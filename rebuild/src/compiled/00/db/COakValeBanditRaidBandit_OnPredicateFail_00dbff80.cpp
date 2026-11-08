@@ -13,6 +13,7 @@
 //   the raid script (retail): RaidOver +0x48, BanditKilled +0x61, BanditInRange +0x62, Bandit (CScriptThing) +0x64.
 // Shape: the CScriptThing assignment is the inline CCountedPointer operator= (source words read first); the name string
 //   is the implicit conversion temporary built before the nested GetHero call.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -26,7 +27,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 bool __fastcall IsDistanceFromThingToPositionUnder(const CScriptThing& thing, const C3DVector& position, float distance);   // 0x00CBE4B7
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

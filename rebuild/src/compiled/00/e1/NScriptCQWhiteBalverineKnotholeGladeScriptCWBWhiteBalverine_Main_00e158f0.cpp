@@ -1,5 +1,6 @@
 // NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Main() -- the white balverine: at stages 2 and 4 it must be hit 10 times (a quest counter), then runs to its escape point, howls, jumps into the grass and vanishes (stage 3 / 5); at stage 6 five hits, then it runs for WB_RunPoint2 and fades out once off screen or arrived (stage 7).
 // Leaf: ?Main@CWB_WhiteBalverine@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -22,8 +23,8 @@ extern CGameScriptInterfaceBase* pDSTGame;
 __declspec(noinline) inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 __declspec(noinline) inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #pragma auto_inline(on)
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing):Thing(thing) {}

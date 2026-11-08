@@ -20,6 +20,7 @@
 //   the hero-name temporaries of the wait test are one `||`/`&&` chain (construction flags in ebx).
 // Naming wave 35: identity Anniversary wave 2026-11-04 (high): vtable 0x012F42B0 slot 1; Anniversary RTTI NScript::CV_TravellingHeroesScript::CTH_SnowTroll (string-literal match, validated 257/258); PDB name set has the Main member of NScript::CV_TravellingHeroesScript::CTH_SnowTroll; slot layout from named TLC siblings; function referenced by this vtable only (2026-11-04_anniversary/labels_high.tsv); PDB ?Main@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -35,7 +36,7 @@ struct CScriptThingImpl;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.

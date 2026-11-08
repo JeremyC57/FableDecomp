@@ -14,6 +14,7 @@
 // the tail through placement-new copy construction (null test). The tag must be a NAMED local: the
 // `__false_type()` temporary is zero-filled (`stosb`), retail passes the uninitialised dead `__x` slot.
 // The copy helpers are __forceinline (the size TU would emit them out of line).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <new>
 
@@ -31,7 +32,7 @@ struct __false_type {};
 void __fastcall __destroy_aux(COpinionDeedReactionDef* __first, COpinionDeedReactionDef* __last, const __false_type&);   // 0x00450AEA
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                                  _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -43,7 +44,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
 {
     _ForwardIter __cur = __result;
     for ( ; __first != __last; ++__first, ++__cur)
@@ -51,7 +52,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 
-__forceinline void _Destroy(COpinionDeedReactionDef* __first, COpinionDeedReactionDef* __last)
+FABLE_FORCEINLINE void _Destroy(COpinionDeedReactionDef* __first, COpinionDeedReactionDef* __last)
 {
     __false_type __tag;
     __destroy_aux(__first, __last, __tag);

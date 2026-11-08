@@ -9,6 +9,7 @@
 // Shape: the landed CMurderTwistSheriff::DoRemindingHeroToKillSheriff 0x00EB15C0 (movie object, cached `game` pointer).
 // Layout (retail = Ego_r.pdb - 0x14): ParentClass +0x14; CQ_RansomVictimScript HitEvilBrotherAndProtection +0x58,
 //   seh_Brother +0x9c.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -33,7 +34,7 @@ struct CBaseObjectDtor {                                // destructor-only view 
     virtual ~CBaseObjectDtor();                         // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CMovieImpPointer {
     void* Data;
@@ -43,9 +44,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

@@ -1,5 +1,6 @@
 // Behaviour test for 007887be: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCTrapBase::UpdateTriggerOnProximity() -- proximity trigger: is any trigger thing inside the trap def's trigger radius; a triggered opening trap with nobody near resets, an untriggered trap triggers when somebody newly comes near
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -12,7 +13,7 @@
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
-    __forceinline C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
+    FABLE_FORCEINLINE C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
 class CThing { public:

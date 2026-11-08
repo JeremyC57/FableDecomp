@@ -19,13 +19,14 @@
 // Decapitate +0x1b, Blockable +0x1c, ShotBuildupTime +0x2c: the bools pack the vectors to 2-byte offsets); retail CThing
 // interface bitset +0x20 (0x77 = word +0x2c bit 23), CVectorMap +0x44, PhysicsTC +0x60, dead flag +0x91 bit 0; the shot
 // component's owner pointer +0x28, its def +0x38 (damage attribute +0x94), build-up time +0x48; the physics positions +0x0c/+0x18.
+#include "fable_compiler.h"
 #include <math.h>
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 }
@@ -84,7 +85,7 @@ class CThing : public CBaseObject { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Dead;                         // +0x91 bit 0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc)
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc)
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;

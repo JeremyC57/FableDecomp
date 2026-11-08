@@ -11,17 +11,18 @@
 // Layout: Ego_r.pdb CTCInventoryBase PDef (CDefPointer<const CInventoryDef>) at +0x70; retail +0x68 (8 bytes lower,
 // two 12-byte STLport containers before it). Local model: no engine/ header for CTCInventoryBase.
 // Opt: size TU (ebp frame, in-place `dec dword ptr [ecx+4]`, the float result spilled across the release call).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     mutable unsigned long IVRefCount;                    // +0x04
-    __forceinline void Release() const { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() const { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CInventoryDef : public CDefPointeeBase { public:

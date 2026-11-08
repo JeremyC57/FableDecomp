@@ -11,6 +11,7 @@
 // GetInterface template routes it through eax); the creature is re-read from PBrain for every use; the
 // interface-0x93 test is the inline raw bitset probe (`test dword ptr [eax+30h],80000h ; jne false`).
 // Model: local (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h is a flattened base blob).
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 class CThingAICreature;
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* FindInterface(long interfaceType)    // the lookup half: component straight from the entry
+    FABLE_FORCEINLINE CTCBase* FindInterface(long interfaceType)    // the lookup half: component straight from the entry
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -11,13 +11,14 @@
 //   0x0042AAB3 / 0x00429950 sources) so VC7.1 sees the compare writes no memory and keeps the header pointer in a register across it
 //   (declared-only compare: 153v166 on the J045 representative); the _Rb_global step functions (0x004292C0 / 0x004294E2) are defined in
 //   the TU as STLport's template statics are, for the same reason (declared-only steps: 449v456 on this family's representative).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
 template <class C> class CBasicString {
 public:
     C* PData;                                              // +0x00
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const C* b = other.PData;
         const C* a = PData;
@@ -37,7 +38,7 @@ public:
 class CCharString {                                        // 4 bytes (Ego_r)
 public:
     CBasicString<char>* PData;                             // +0x0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

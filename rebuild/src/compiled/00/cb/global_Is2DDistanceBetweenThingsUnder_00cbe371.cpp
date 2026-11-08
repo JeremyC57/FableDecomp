@@ -10,6 +10,7 @@
 // Callees: CScriptThing slots 75 IsAlive (+0x12C), 6 GetPos (+0x18).
 // Shape: both positions go through a __forceinline C2DVector(const C3DVector&) (the first one is copied to the frame,
 //   hence `push ebp ; mov ebp,esp`), then the squared 2D length against `distance * distance`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CCharString {
 public:
@@ -19,10 +20,10 @@ public:
 class C2DVector {
 public:
     float X, Y;
-    __forceinline C2DVector(float x, float y) : X(x), Y(y) { }
-    __forceinline C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
-    __forceinline C2DVector operator-(const C2DVector& v) const { return C2DVector(X - v.X, Y - v.Y); }
-    __forceinline float GetLengthSquared() const { return X * X + Y * Y; }
+    FABLE_FORCEINLINE C2DVector(float x, float y) : X(x), Y(y) { }
+    FABLE_FORCEINLINE C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
+    FABLE_FORCEINLINE C2DVector operator-(const C2DVector& v) const { return C2DVector(X - v.X, Y - v.Y); }
+    FABLE_FORCEINLINE float GetLengthSquared() const { return X * X + Y * Y; }
 };
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

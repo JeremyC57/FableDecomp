@@ -16,10 +16,11 @@
 //   re-read in the loop (65 v 67).
 // Label correction: the catalog's `_Tree<_Tmap_traits<CCharString,...>>::_Ubound` is the Dinkumware name; retail is the
 //   STLport tree (node layout above).
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

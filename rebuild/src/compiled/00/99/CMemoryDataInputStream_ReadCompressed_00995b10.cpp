@@ -8,6 +8,7 @@
 // Shape: the landed CDataInputStream::ReadCompressed 0x00995FB0 with its scratch vector replaced by an inline
 //   GetDataAndSkip(n): read the position, range-check the new one, seek within the chunk (the landed
 //   SetPositionAssumeWithinSourceChunk 0x00993C10 body, two separate deltas) and return StreamSource + old position, or 0.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC
@@ -29,8 +30,8 @@ public:
     long                 SourceChunkBytesRemaining;          // +0x14
     const unsigned char* StreamSource;                       // +0x18
 
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -46,15 +47,15 @@ public:
         else
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
-    __forceinline short ReadShort() { short value; Read(&value, sizeof(value)); return value; }
-    __forceinline void SetPositionAssumeWithinSourceChunk(unsigned long position)
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE short ReadShort() { short value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE void SetPositionAssumeWithinSourceChunk(unsigned long position)
     {
         CurrentSourcePtr += position - StreamPos;
         SourceChunkBytesRemaining += StreamPos - position;
         StreamPos = position;
     }
-    __forceinline const unsigned char* GetDataAndSkip(long bytes)
+    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long bytes)
     {
         unsigned long position = GetPosition();
         __int64 newPosition = (__int64)(position + bytes);

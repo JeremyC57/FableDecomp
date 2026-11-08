@@ -14,6 +14,7 @@
 //   (key in the first frame word); the live emitter is fetched into a named local before the string expression (a chained
 //   `GetPItem()->Name.ToUpper()` pushes the ToUpper result slot first and forms the member with `add`); the sound name is a named local in its own block, so it shares the key's frame word,
 //   and the ToUpper temporary takes the second word.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString {
 public:
@@ -67,7 +68,7 @@ public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad54[0x8];
     CTCDParticleEmitter* PTCDriver;                         // +0x5C
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -13,6 +13,7 @@
 //   by-value pushes (retail), reloading `last` instead.  With only a declaration the slot counts as escaped: comp is
 //   re-read before every push and `last` takes ebp (108 v 104 bytes).
 // Label: catalog "std_partial_sort_heap" (propagated); STLport spelling __partial_sort.
+#include "fable_compiler.h"
 struct CRefCounted {                           // reference count base at +4 of a def (landed 0x00512410 model)
     long Count;
     void DecRef() { --Count; }
@@ -24,11 +25,11 @@ struct CBuildingSimDefinition {
     CRefCounted Ref;                           // +0x04
     unsigned char _pad08[0x44 - 0x08];
     long HouseSize;                            // +0x44
-    __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
 class CThingBuilding {

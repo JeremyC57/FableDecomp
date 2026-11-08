@@ -27,6 +27,7 @@
 //   again after the call, as the landed CV_AmbushScamScript::ResetRandomSpeechTime 0x00E1FEB0. pGlobalScriptDef is a
 //   CDefPointer<const CScriptDef> in Ego_r.pdb (dynamic initializer + atexit destructor); modelled as the plain pointer
 //   (its first word) like the landed rows, since the operator-> form evaluates both def reads before rand().
+#include "fable_compiler.h"
 #include <string.h>
 #include <stdlib.h>
 template <class T> class CBasicString {
@@ -35,7 +36,7 @@ public:
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -51,7 +52,7 @@ public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -69,8 +70,8 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CLevelScriptBase.h"
 #include "engine/CGameScriptInterfaceBase.h"
 
-__forceinline CScriptThing::~CScriptThing() { }         // out of line 0x004AA840; inline here
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other)   // out of line 0x008AB980; inline here
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() { }         // out of line 0x004AA840; inline here
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other)   // out of line 0x008AB980; inline here
 {
     PImp = other.PImp;
     return *this;

@@ -3,6 +3,7 @@
 // retail uses the first three words (12-byte STLport vector). No trailing
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
 // Local helper/global names carrying addresses remain descriptive pending PDB proof.
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 #include "engine/CTCMapwho.h"
 #include "engine/CTCBase.h"
@@ -10,7 +11,7 @@
 #include <new>
 struct FalseType {FalseType(){}};
 extern "C" void* __cdecl memmove(void*,const void*,size_t); // 0x00bfeae6
-__forceinline void* CopyTrivial(const void* first,const void* last,void* result) {
+FABLE_FORCEINLINE void* CopyTrivial(const void* first,const void* last,void* result) {
  return last==first ? result : (char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
 }
 template<class T> struct RetailVector {
@@ -19,18 +20,18 @@ template<class T> struct RetailVector {
   T* Ptr;
   explicit iterator(T* p):Ptr(p){}
   iterator(const iterator& other):Ptr(other.Ptr){}
-  __forceinline T& operator*()const{return *Ptr;}
-  __forceinline iterator& operator++(){++Ptr;return *this;}
-  __forceinline bool operator!=(const iterator& other)const{return Ptr!=other.Ptr;}
-  __forceinline iterator& operator+=(int n){Ptr+=n;return *this;}
-  __forceinline iterator operator+(int n)const{iterator r(*this);r+=n;return r;}
+  FABLE_FORCEINLINE T& operator*()const{return *Ptr;}
+  FABLE_FORCEINLINE iterator& operator++(){++Ptr;return *this;}
+  FABLE_FORCEINLINE bool operator!=(const iterator& other)const{return Ptr!=other.Ptr;}
+  FABLE_FORCEINLINE iterator& operator+=(int n){Ptr+=n;return *this;}
+  FABLE_FORCEINLINE iterator operator+(int n)const{iterator r(*this);r+=n;return r;}
  };
- __forceinline iterator begin()const{return iterator(Start);}
- __forceinline iterator end()const{return iterator(Finish);}
- __forceinline T& operator[](unsigned int n)const{return Start[n];}
+ FABLE_FORCEINLINE iterator begin()const{return iterator(Start);}
+ FABLE_FORCEINLINE iterator end()const{return iterator(Finish);}
+ FABLE_FORCEINLINE T& operator[](unsigned int n)const{return Start[n];}
  void _M_insert_overflow(T*,const T&,const FalseType&,unsigned int,bool); // 0x0049c370 for CThing*
- __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
- __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
+ FABLE_FORCEINLINE void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
+ FABLE_FORCEINLINE void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
 struct CTCDriverBaseCalls {
  virtual void Slot0();
@@ -65,17 +66,17 @@ struct CTCDriverBaseCalls {
 };
 class CThing { public:
  unsigned char BeforeDriver[0x5c];CTCDriverBaseCalls* PTCDriver;unsigned char BeforeType[0x6c-0x60];unsigned long ThingTypeFlags;
- __forceinline bool HasDriverType(long type)const{CTCDriverBaseCalls* driver=PTCDriver;return driver && driver->IsDriverType(type);}
+ FABLE_FORCEINLINE bool HasDriverType(long type)const{CTCDriverBaseCalls* driver=PTCDriver;return driver && driver->IsDriverType(type);}
  enum {ThingTypeMask=0};
 };
-template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
+template<class T> FABLE_FORCEINLINE bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
 // Same-TU non-inlined STLport overflow model. Only GetAllTCDsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 struct ThingVector:RetailVector<const CThing*> {
  void _M_insert_overflow(const CThing**,const CThing* const&,const FalseType&,unsigned int,bool); // 0x0049c370
- __forceinline void push_back(const CThing* const& value){if(Finish!=End){new(Finish)const CThing*(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
+ FABLE_FORCEINLINE void push_back(const CThing* const& value){if(Finish!=End){new(Finish)const CThing*(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
 };
 #pragma auto_inline(off)
 void ThingVector::_M_insert_overflow(const CThing** position,const CThing* const& value,const FalseType&,unsigned int count,bool atEnd){
@@ -96,8 +97,8 @@ class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
- __forceinline long Width()const{return BRX-TLX;}
- __forceinline long Height()const{return BRY-TLY;}
+ FABLE_FORCEINLINE long Width()const{return BRX-TLX;}
+ FABLE_FORCEINLINE long Height()const{return BRY-TLY;}
 };
 struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious;CThingMapCell* PCell;};
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
@@ -108,7 +109,7 @@ class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
- __forceinline CThingMapCell& GetCell(unsigned char layer,unsigned long x,unsigned long y) {
+ FABLE_FORCEINLINE CThingMapCell& GetCell(unsigned char layer,unsigned long x,unsigned long y) {
   const CMapwhoLevelInfo& info=MapwhoLevelInfo[layer];
   return Cells[layer][y*info.Extents.X+x];
  }
@@ -129,7 +130,7 @@ struct CThingSearchTools_Calls {
  mutable RetailVector<NThingMap::CThingMap*> AreaMaps;
  void GetAllThingMapsInArea(const C2DBoxI&,RetailVector<NThingMap::CThingMap*>&)const;
  C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap&,const C2DBoxI&)const;
- __forceinline C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&,long layer,const C2DBoxI& box)const {
+ FABLE_FORCEINLINE C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&,long layer,const C2DBoxI& box)const {
   long shift=LayerInfo_0137dad8[layer].ScaleShift;
   C2DBoxI out;out.TLX=box.TLX>>shift;out.TLY=box.TLY>>shift;
   out.BRX=((box.BRX-1)>>shift)+1;out.BRY=((box.BRY-1)>>shift)+1;return out;

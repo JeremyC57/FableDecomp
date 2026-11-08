@@ -8,6 +8,7 @@
 //   +0x64; the 0xED driver's ignore list (vector<CIntelligentPointer<CThing>>) at +0x2c.
 // Shape: the dummy lookup goes through an inline CThing wrapper (so the name temporary and GetPItem run before the six
 //   pushes); operator* / operator- are the constructor forms.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
@@ -40,7 +41,7 @@ public:
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
     }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

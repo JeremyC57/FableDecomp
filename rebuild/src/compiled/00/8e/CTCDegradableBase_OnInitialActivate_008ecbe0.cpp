@@ -18,6 +18,7 @@
 // memory is pushed as `xor ecx,ecx ; mov cl` (a long parameter gives movzx); the component comes from the out-parameter GetInterface (`mov eax,[eax+4]` ... `mov ecx,eax`).
 // Layout (supersedes any local-model note above): engine/CThingPhysical.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CThingPhysical CThingPhysicalDonor
 #include "engine/CThingPhysical.h"
 #undef CThingPhysical
@@ -32,7 +33,7 @@ class CThing { public:
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

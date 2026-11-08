@@ -1,6 +1,7 @@
 // CFrontEndManager::Update(float dt) -- per-frame front-end update: unpause the file installer two seconds after a pause, pop the virtual-keyboard screen once it finishes, act on a finished profile-name entry (load an existing profile, create a new one, or go to the profile screen), update every screen component, and retire finished fade / message / load-game components
 // Leaf: ?Update@CFrontEndManager
 // Layout: local view (engine/CFrontEndManager.h declares no methods); members +0x1c..+0xd9 descriptive from the retail accesses.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public:
@@ -80,11 +81,11 @@ struct CFadeComponent : CComponentBase, CComponentSecondBase { };
 struct CRefVirtual { virtual void v00(); virtual void Destroy(); };
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CRefBase : CRefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CScreenDef : CRefBase {
     unsigned char _pad08[0x194];
@@ -93,7 +94,7 @@ struct CScreenDef : CRefBase {
 };
 struct CDefPointer {
     CScreenDef* m_p;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p)
             m_p->ReleaseTemporary();

@@ -15,6 +15,7 @@
 // fine adds `def->CrimeFineAmount * Crimes[crime]` (def fetched first through `operator->`), the expiry frame is a statement of
 // its own (its def temporary is released before the frame query) and framesLeft takes the Dinkumware `Max` with the
 // remaining frames (a frame temporary passed by const reference).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -38,8 +39,8 @@ public:
     unsigned char _pad00[0x20];
     std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool HasTC(long type) { return present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE bool HasTC(long type) { return present.test(type); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -64,7 +65,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     long KnowledgeLifeInSeconds;                            // +0x3c
     unsigned char _pad40[0x74 - 0x40];
     long CrimeFineAmount;                                   // +0x74 (PDB +0x88)
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -74,7 +75,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

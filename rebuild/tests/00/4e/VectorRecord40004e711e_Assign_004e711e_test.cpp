@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,18 +13,18 @@ struct Payload_004e711e {unsigned word[9];};
 struct Record40_004e711e {
  unsigned first; Payload_004e711e payload;
  Record40_004e711e() {}
- __forceinline Record40_004e711e(const Record40_004e711e& other):first(other.first),payload(other.payload) {}
+ FABLE_FORCEINLINE Record40_004e711e(const Record40_004e711e& other):first(other.first),payload(other.payload) {}
 };
 template<class T> class Vector {
 public:
  T *begin_, *end_, *limit_;
  T* AllocateCopy(unsigned n,const T* first,const T* last);
  void Dispose();
- static __forceinline T* Copy(const T* first,const T* last,T* result) {
+ static FABLE_FORCEINLINE T* Copy(const T* first,const T* last,T* result) {
   for(ptrdiff_t n=last-first;n>0;--n,++first,++result) *result=*first;
   return result;
  }
- static __forceinline T* Construct(const T* first,const T* last,T* result) {
+ static FABLE_FORCEINLINE T* Construct(const T* first,const T* last,T* result) {
   T* current=result;
   for(;first!=last;++first,++current) if(current) new(current) T(*first);
   return current;

@@ -9,6 +9,7 @@
 // (`IsUnique` through operator->, `Data = 0` = release + a second zero store, both `__forceinline`); the inner clear() is STLport
 // `erase(begin(), end())` whose `__copy_trivial(last, finish, first)` compares finish with itself (`cmp eax,eax`) and calls memmove with a zero
 // count, then stores the new finish in both arms.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
 class CEnginePrimitiveHandle;
@@ -32,7 +33,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -47,7 +48,7 @@ class CEnginePrimitiveHandle {
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

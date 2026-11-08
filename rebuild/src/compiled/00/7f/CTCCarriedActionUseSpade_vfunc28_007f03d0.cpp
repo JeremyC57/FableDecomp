@@ -14,6 +14,7 @@
 // Shape: the name is a named local in the dig block; the action is a temporary passed by address straight from the ctor's eax
 // (GOTCHAS chunk 160), destroyed member by member with no vtable stores (the action class is `__declspec(novtable)`, the
 // intelligent pointer has no user dtor); the 0x1a component is loaded straight into ecx (HasTC + one-ternary GetTC).
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -47,7 +48,7 @@ class CThingCreatureBase { public:
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

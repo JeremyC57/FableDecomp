@@ -9,6 +9,7 @@
 // branch: byte word 1 bit 3 -> `test byte ptr [eax+24h],8`; key in the `push ecx` slot; end-or-larger
 // -> the end entry; out-pointer form); the component stays in esi for both helper calls and the
 // village's byte at +0xbc is cleared.
+#include "fable_compiler.h"
 struct CTCVillager;
 
 class CTCVillage { public:
@@ -29,7 +30,7 @@ class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline bool GetInterface(long type, CTCVillager** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCVillager** out)
     {
         if (m_presentBits[type / 32] & (1 << (type % 32))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

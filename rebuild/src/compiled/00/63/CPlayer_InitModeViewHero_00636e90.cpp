@@ -15,6 +15,7 @@
 // pointer is not initialised; the mode's constructor is __forceinline inside the new-expression.
 // Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CPlayerGui CPlayerGuiDonor
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
@@ -98,7 +99,7 @@ namespace NCameraModes {
         unsigned char _body[0xd0 - 4];
     };
     struct CMoveOnCylinder : CBase {                   // vtable 0x0125A064
-        __forceinline CMoveOnCylinder(CGameCameraManager* manager, const CDefPointer<const CCameraModeDef>& def) : CBase(manager, def) { }
+        FABLE_FORCEINLINE CMoveOnCylinder(CGameCameraManager* manager, const CDefPointer<const CCameraModeDef>& def) : CBase(manager, def) { }
         virtual ~CMoveOnCylinder();
     };
 }

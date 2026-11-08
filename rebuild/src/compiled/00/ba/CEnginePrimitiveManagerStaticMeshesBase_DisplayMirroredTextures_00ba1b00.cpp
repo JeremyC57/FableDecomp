@@ -26,6 +26,7 @@
 //   opt-ins (hdr/): CEnginePrimitiveRendererSharedData members, the CEnginePrimitiveManagerStaticMeshesBase declaration, the
 //   CEnginePrimitiveRenderUtil::SetTextureFactor declaration. C3DPrimitive2 / CEngineSubPrimitiveStaticMesh have no header (local
 //   models of the two members read).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CRGBFLOATCOLOUR
 #define FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
 #define FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR
@@ -70,13 +71,13 @@ public:
     unsigned char Alpha;                                    // +0x08
 };
 
-__forceinline bool CShaderRenderManager::GetPixelShadersEnabled() const { return PixelShadersEnabled; }
-__forceinline void CRenderStateManager::SetTextureFactor(unsigned long factor) { SetRenderState(factor, DeviceState.TextureFactor); }
-__forceinline void CShaderRenderManager::SelectVertexBuffer(CVertexBufferWin32& vertexBuffer)
+FABLE_FORCEINLINE bool CShaderRenderManager::GetPixelShadersEnabled() const { return PixelShadersEnabled; }
+FABLE_FORCEINLINE void CRenderStateManager::SetTextureFactor(unsigned long factor) { SetRenderState(factor, DeviceState.TextureFactor); }
+FABLE_FORCEINLINE void CShaderRenderManager::SelectVertexBuffer(CVertexBufferWin32& vertexBuffer)
 {
     D3DDevice->SetStreamSource(0, vertexBuffer.PVertexBuffer, 0, vertexBuffer.Stride);
 }
-__forceinline void CShaderRenderManager::DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
+FABLE_FORCEINLINE void CShaderRenderManager::DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
                                                             unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
 {
     D3DDevice->SetIndices(indexBuffer.PD3DIndexBuffer);
@@ -85,7 +86,7 @@ __forceinline void CShaderRenderManager::DrawBuffersIndexed(unsigned long minVer
     RenderManager->RealiseRenderState();
     D3DDevice->DrawIndexedPrimitive(primitiveType, 0, minVertexIndex, numVertices, startIndex, primitiveCount);
 }
-__forceinline void CShaderRenderManager::DrawBuffersIndexed(const CTexture** textures, unsigned long textureCount, CVertexBufferWin32& vertexBuffer,
+FABLE_FORCEINLINE void CShaderRenderManager::DrawBuffersIndexed(const CTexture** textures, unsigned long textureCount, CVertexBufferWin32& vertexBuffer,
                                                             unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
                                                             unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
 {
@@ -94,7 +95,7 @@ __forceinline void CShaderRenderManager::DrawBuffersIndexed(const CTexture** tex
         RenderManager->AttachTextureToStage(i, textures[i]);
     DrawBuffersIndexed(minVertexIndex, numVertices, indexBuffer, startIndex, primitiveCount, primitiveType);
 }
-__forceinline void CRenderManagerCore::FlushRender()
+FABLE_FORCEINLINE void CRenderManagerCore::FlushRender()
 {
     SelectVertexBuffer(0, 0);
     PD3DDevice->SetIndices(0);
@@ -106,7 +107,7 @@ __forceinline void CRenderManagerCore::FlushRender()
     }
     TextureStagesInUse = 0;
 }
-__forceinline void __fastcall CEnginePrimitiveRenderUtil::SetTextureFactor(const CRGBFloatColour& colour)
+FABLE_FORCEINLINE void __fastcall CEnginePrimitiveRenderUtil::SetTextureFactor(const CRGBFloatColour& colour)
 {
     if (NEngineInternal::GPShaderRenderManager->GetPixelShadersEnabled())
         NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(2, C4DVector(colour.R, colour.G, colour.B, colour.A));

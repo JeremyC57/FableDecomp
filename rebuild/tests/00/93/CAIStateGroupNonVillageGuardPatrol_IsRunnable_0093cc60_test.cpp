@@ -1,5 +1,6 @@
 // Behaviour test for 0093cc60: src/0093cc60.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CAIStateGroup_NonVillageGuardPatrol::IsRunnable()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -71,8 +72,8 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerTrackNode : CBaseIntelligentPointer {   // CIntelligentPointer<CThingTrackNode>, vtable 0x0125A894
     virtual void v00();
-    __forceinline CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
-    __forceinline CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

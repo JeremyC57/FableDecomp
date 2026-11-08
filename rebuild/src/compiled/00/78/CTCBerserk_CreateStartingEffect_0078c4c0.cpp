@@ -15,6 +15,7 @@
 // the effect id are zeroed together at entry; the sub-def is a CDefPointer with an inline releasing dtor that VC7.1 keeps in
 // ebp thanks to the GetSubDef stand-in (`dec [ebp+4] ; jne`); found and effect lookups are nested ifs; the effect name is a temporary in the dead out
 // slot; StartUpEffect is assigned from an intelligent-pointer temporary; the emitter is the out-parameter GetInterface.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
@@ -34,7 +35,7 @@ class CThing { public:
     unsigned char m_flags;                              // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

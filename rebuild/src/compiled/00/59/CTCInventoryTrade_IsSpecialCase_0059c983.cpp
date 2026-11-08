@@ -11,6 +11,7 @@
 // slots (zeroed from the esi zero register, short-form release) filled by same-TU out-only stand-ins of GetDef and
 // GetSubDef, so VC7.1 keeps the fetched defs in edi/ecx; one `&&` test, and every dtor forced inline so the true and false
 // exits each get their own release chain.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 struct CRefCounted {                                 // the count sits at +4 behind the vptr
@@ -23,7 +24,7 @@ struct CDefVirtual {
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -32,7 +33,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
 };
 template <class T> class CDefPointer { public:              // a counted def reference returned by value
     T* m_p;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p)
             m_p->ReleaseTemporary();
@@ -40,7 +41,7 @@ template <class T> class CDefPointer { public:              // a counted def ref
 };
 template <class T> struct CClearingDefPointer {      // the same, clearing its word after the release
     T* m_p;
-    __forceinline ~CClearingDefPointer()
+    FABLE_FORCEINLINE ~CClearingDefPointer()
     {
         if (m_p) {
             m_p->ReleaseTemporary();
@@ -51,7 +52,7 @@ template <class T> struct CClearingDefPointer {      // the same, clearing its w
 template <class T> struct CDefSlot {                 // an owning out slot for GetDef / GetSubDef
     T* m_p;
     CDefSlot() : m_p(0) { }
-    __forceinline ~CDefSlot()
+    FABLE_FORCEINLINE ~CDefSlot()
     {
         if (m_p && --m_p->m_count == 0)
             m_p->Destroy();

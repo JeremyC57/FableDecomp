@@ -8,7 +8,8 @@
 // CTCSoundPlayer::AnimCriteriaClipDistance (short) +0x1c; the sub-def's clip distance is a short at +0x50.
 // Shape: a null-initialised local CDefPointer filled by GetSubDef, read when it succeeds, released at the end
 // (one null test, `dec [ecx+4]` in place).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CSoundPlayerDef;
 
 struct CDefPointee {

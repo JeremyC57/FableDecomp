@@ -7,6 +7,7 @@
 // Element: std::pair<long, CIntelligentPointer<CThing> > (the manifest label; 12 bytes = the key + the 8-byte
 // vtable/item pointer). The implicit operator= copies the key, then PThing = other as SetPItem(other.GetPItem())
 // (CBaseIntelligentPointer @ 0x00A01B50 / 0x00A01B90, modelled as the landed 0x0080AA60).
+#include "fable_compiler.h"
 class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
@@ -18,7 +19,7 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 class CThing;

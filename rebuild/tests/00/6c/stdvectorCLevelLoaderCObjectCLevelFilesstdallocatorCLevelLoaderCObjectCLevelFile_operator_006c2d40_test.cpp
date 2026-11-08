@@ -1,6 +1,7 @@
 // 006c2d40 std::vector<CLevelLoader::CObject::CLevelFiles>::operator=
 // Flags: /O2 /Oy /W3
 // Leaf: ??4?$vector@UCLevelFiles@@@std@@
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 class CCPPointerInfo{ public:unsigned RefCount;void(__cdecl*DeleteFunc)(void*);void*Data;};
@@ -22,9 +23,9 @@ struct __false_type{__false_type(){}};
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall uninitialized_copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&){while(a!=b){if(c)new(c)CLevelFiles(*a);++a;++c;}return c;}
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&,int){while(a!=b)*c++=*a++;return c;}
 __declspec(noinline) void __fastcall _Destroy(CLevelFiles*a,CLevelFiles*b){while(a!=b)(a++)->~CLevelFiles();}
-template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;void _M_clear();__forceinline T*_M_allocate_and_copy(unsigned,T*,T*);vector&operator=(const vector&);};
+template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;void _M_clear();FABLE_FORCEINLINE T*_M_allocate_and_copy(unsigned,T*,T*);vector&operator=(const vector&);};
 template<class T>__declspec(noinline)void vector<T>::_M_clear(){_Destroy(_M_start,_M_finish);free(_M_start);}
-template<class T>__forceinline T*vector<T>::_M_allocate_and_copy(unsigned n,T*a,T*b){T*fresh=n?(T*)malloc(n*sizeof(T)):0;uninitialized_copy(a,b,fresh,__false_type());return fresh;}
+template<class T>FABLE_FORCEINLINE T*vector<T>::_M_allocate_and_copy(unsigned n,T*a,T*b){T*fresh=n?(T*)malloc(n*sizeof(T)):0;uninitialized_copy(a,b,fresh,__false_type());return fresh;}
 template<class T>vector<T>&vector<T>::operator=(const vector&rhs){
  if(&rhs!=this){
   const unsigned count=rhs._M_finish-rhs._M_start;

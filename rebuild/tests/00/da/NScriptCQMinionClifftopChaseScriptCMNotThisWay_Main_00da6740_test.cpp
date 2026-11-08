@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -349,7 +350,7 @@ virtual bool IsAlive() const; //slot75 0x004AB130
 virtual bool IsDead() const; //slot76 0x004AA890
 virtual bool IsNull() const; //slot77 0x004AB150
 virtual bool IsEqualTo(const CScriptThing&) const; //slot78 0x004AA8A0
- __forceinline virtual ~CScriptThing(){
+ FABLE_FORCEINLINE virtual ~CScriptThing(){
  if(PImp_Info){--PImp_Info->References;if(PImp_Info->References==0){PImp_Info->Delete(PImp_Info->Data);::operator delete(PImp_Info);}}
  PImp_Data=0;PImp_Info=0;
 }

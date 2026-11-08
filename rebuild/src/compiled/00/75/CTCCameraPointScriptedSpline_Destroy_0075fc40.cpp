@@ -1,6 +1,7 @@
 // 0075fc40 CTCCameraPointScriptedSpline::Destroy
 // Flags: /O2 /Oy
 // Leaf: ?CTCCameraPointScriptedSpline_Destroy@@YIXPAVCTCCameraPointScriptedSpline@@@Z
+#include "fable_compiler.h"
 class CTCBase {
 public:
     virtual ~CTCBase();   // 0x00686830
@@ -9,7 +10,7 @@ class CTCCameraPointScriptedSpline;
 #include <stdlib.h>
 // Layout: retail tree+c0/count+c4, object at+9c, pointer+98, counted pairs60/78/80/88/90, vector68/6c. Donor container widths differ.
 struct Info{int count;void (__fastcall *destroy)(void*);void* data;};
-struct Counted{void* data;Info* info;__forceinline void Release(){if(info){--info->count;if(info->count==0){info->destroy(info->data);delete info;}}data=0;info=0;}};
+struct Counted{void* data;Info* info;FABLE_FORCEINLINE void Release(){if(info){--info->count;if(info->count==0){info->destroy(info->data);delete info;}}data=0;info=0;}};
 struct Node{unsigned color;Node* parent;Node* left;Node* right;};struct Tree{Node* head;unsigned count;void Erase(Node*);};
 class CCharString {public:char* data;~CCharString();};void __fastcall Clear98(void*);
 void __fastcall CTCCameraPointScriptedSpline_Destroy(CTCCameraPointScriptedSpline* self){

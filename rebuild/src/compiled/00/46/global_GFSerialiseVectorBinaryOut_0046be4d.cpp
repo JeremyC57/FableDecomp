@@ -12,6 +12,7 @@
 // Model: engine/CDataOutputStream.h is data-only (its vptr is a `void*`), so the writer is a local polymorphic view with the
 //   PDB's virtual slots (destructor, SetPosition, GetPosition, Close, Write) over the same {vptr, NewLine} layout;
 //   CReverbEnvironmentEntry is local (no engine header); the vector is STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CCharStringData;
@@ -40,7 +41,7 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CReverbEnvironmentEntry> {
-    __forceinline void TransferBinaryOut(CDataOutputStream& stream, const CReverbEnvironmentEntry* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStream& stream, const CReverbEnvironmentEntry* value) const
     {
         stream.Write(value, sizeof(CReverbEnvironmentEntry));
     }

@@ -14,6 +14,7 @@
 //   (CQ_OrchardFarmRaidScript: master data +0x44 with a flag at +0x109, a remaining-artefact count at +0x48).
 // Naming wave 35: identity reg 00dcc888 "Artefact" in 00dcc770; Alloc 00dcdb80; vtable 012db348 slot 1; PDB ?Main@CArtefact@CQ_OrchardFarmRaidScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CArtefact::Main (wave3/labels_alloc.tsv); PDB ?Main@CArtefact@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -28,7 +29,7 @@ void operator delete(void* p);                         // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

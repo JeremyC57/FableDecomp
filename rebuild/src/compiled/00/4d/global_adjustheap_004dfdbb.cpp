@@ -12,6 +12,7 @@
 // destructor (Name at value+0xc, then the key).  `ret 0x18` = bottom, the element, the comparator.
 // Shape: SGI `__adjust_heap` (`2 * (secondChild + 1)`); the key compare is CCharString::operator<
 // inline (same payload -> false, null this -> true, null other -> false, else payload compare).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CThing;
@@ -27,7 +28,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -55,7 +56,7 @@ typedef pair<CCharString, CRegisteredTCInfo> TEntry;
 
 template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
-    __forceinline bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<CCharString, CRegisteredTCInfo> TCompare;
 

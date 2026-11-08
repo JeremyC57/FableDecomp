@@ -10,6 +10,7 @@
 // Shape: the landed 0x0044FADC model: each read is the inlined CMemoryDataInputStream::Read into a local of the member's
 //          type inside a __forceinline template helper (homed in the dead `stream` argument slot [ebp+8]; `this` parked
 //          in [ebp-4]).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -25,7 +26,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -41,7 +42,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
-template <class T> __forceinline void TransferIn(CMemoryDataInputStream& stream, T& out)
+template <class T> FABLE_FORCEINLINE void TransferIn(CMemoryDataInputStream& stream, T& out)
 {
     T value;
     stream.Read(&value, sizeof(value));

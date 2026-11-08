@@ -23,6 +23,7 @@
 //   `for (;;) { if (terminating) return; ... NewScriptFrame(); }` so every inline exit shares one expansion.
 // Naming wave 35: identity reg 00ddafd7 "PrisonRacer" in 00ddae40; Alloc 00ddc3e0; vtable 012dca2c slot 1; PDB ?Main@CPrisonRacer@CQ_PrisonRaceScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CPrisonRacer::Main (wave3/labels_alloc.tsv); PDB ?Main@CPrisonRacer@CQ_PrisonRaceScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CPrisonRacer@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_PrisonRaceScript moved into NScript); same bytes. Also: callee 0x00DDCF50 respelled MakeRacerComment (PDB ?MakeRacerComment@...; catalog label; was MakePrisonerComment).
+#include "fable_compiler.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -94,7 +95,7 @@ using std::vector;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_NONE };
 struct CCountedVoidPointer { void* Data; void* Info; CCountedVoidPointer() : Data(0), Info(0) { } };
@@ -128,8 +129,8 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 namespace NScript {
 class CQ_PrisonRaceScript {
 public:

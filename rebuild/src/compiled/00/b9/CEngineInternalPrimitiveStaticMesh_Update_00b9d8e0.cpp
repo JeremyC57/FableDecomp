@@ -12,6 +12,7 @@
 // Shape: the engine record is reached through an inline accessor (`mov ecx,[0x01436E98]` before the argument load); the chained
 // store is written `ShadowMeshInfo = MeshInfo = ...` (MeshInfo stored first); the counted copy keeps the old pointer in a local with
 // the release on the pointee; the scale is re-read from the member as the matrix argument.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 class CRGBColour { public: unsigned char B, G, R, A; };
@@ -33,7 +34,7 @@ public:
 class CIVCountedPointer {                          // CIVCountedPointer<CEngineMeshEffect>
 public:
     CEngineMeshEffect* Object;
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEngineMeshEffect* old = Object;
         if (old != other.Object) {

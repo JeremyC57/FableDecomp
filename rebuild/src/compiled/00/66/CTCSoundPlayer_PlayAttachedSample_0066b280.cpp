@@ -19,6 +19,7 @@
 //   the divide), then the bank as a named reference (the getter runs before the pushes; in the argument
 //   list it is called after them).
 // No pragma.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_MOREACCESS
@@ -70,8 +71,8 @@ long __fastcall GFROR13(unsigned long);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
 public:
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
-    __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
 class CGameSubsystem {
 public:

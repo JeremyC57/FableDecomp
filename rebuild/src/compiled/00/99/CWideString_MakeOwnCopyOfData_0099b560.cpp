@@ -10,6 +10,7 @@
 // argument slot to reuse, the iterator tag temporary takes the high byte of the `push ecx` frame word
 // (`lea ecx,[esp+0Fh]`); the text pointer is read before the allocation (edi) and the clone is published after
 // UnassignString even when the allocation failed.
+#include "fable_compiler.h"
 struct forward_iterator_tag {
     forward_iterator_tag() { }
 };
@@ -36,7 +37,7 @@ struct CBasicStringW : _String_base_w {       // STLport basic_string<wchar_t>, 
     }
     void _M_range_initialize(const unsigned short* first, const unsigned short* last,
                              const forward_iterator_tag& tag);   // 0x0099C670
-    __forceinline CBasicStringW(const unsigned short* s, const allocator_w& a = allocator_w()) : _String_base_w(a)
+    FABLE_FORCEINLINE CBasicStringW(const unsigned short* s, const allocator_w& a = allocator_w()) : _String_base_w(a)
     {
         _M_range_initialize(s, s + length(s), forward_iterator_tag());
     }
@@ -44,7 +45,7 @@ struct CBasicStringW : _String_base_w {       // STLport basic_string<wchar_t>, 
 class CWideStringData { public:                      // 16 bytes
     CBasicStringW Data;                       // +0x00
     long          NoRefs;                     // +0x0c
-    __forceinline CWideStringData(const unsigned short* text) : Data(text), NoRefs(1) { }
+    FABLE_FORCEINLINE CWideStringData(const unsigned short* text) : Data(text), NoRefs(1) { }
 };
 
 class CWideString {

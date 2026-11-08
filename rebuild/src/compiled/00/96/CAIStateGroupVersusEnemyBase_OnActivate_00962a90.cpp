@@ -12,6 +12,7 @@
 // the creature (named local, ebx -- read before the GetPWorld call) and the target item are
 // registered with `true`. The combat manager is a second named local (esi) so it is fetched before
 // the right-to-left argument pushes (as a bare object expression it would be evaluated after them).
+#include "fable_compiler.h"
 #include "engine/CThing.h"
 
 class CThingAICreature { public:
@@ -31,7 +32,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
     CThing* GetPItem();                         // 0x00A01B50
-    __forceinline bool IsAlive()
+    FABLE_FORCEINLINE bool IsAlive()
     {
         if (GetPItem() != 0) {
             if (!GetPItem()->IsDead())

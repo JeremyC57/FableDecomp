@@ -6,6 +6,7 @@
 // Flags: /GS
 // Shape: one CPlayer* local holds both GetPlayer results (the mode test, then the hero lookup), which gives retail's
 //   callee-saved assignment (event in ebp, creature in edi).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -18,8 +19,8 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline unsigned short ReadUShort() { unsigned short value; Read(2, &value); return value; }
-    __forceinline float ReadFloat() { float value; Read(4, &value); return value; }
+    FABLE_FORCEINLINE unsigned short ReadUShort() { unsigned short value; Read(2, &value); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(4, &value); return value; }
 };
 class CGameEvent {
 public:

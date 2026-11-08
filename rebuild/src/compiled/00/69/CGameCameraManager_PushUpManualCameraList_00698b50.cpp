@@ -8,6 +8,7 @@
 //   STLport 4.6's pointer iterator that is "iterator const& first = CameraList.begin(); if (CameraListIndex == first)"; comparing
 //   begin() directly folds it into the memory operand (216v218, ChatGPT pass 10).
 // Flags:
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointer.h"
 #define CGameCameraManager CGameCameraManagerLayout
@@ -35,7 +36,7 @@ template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{pub
 namespace {void __fastcall PlayCameraSoundThroughObservedThing(const CThing*,const CCameraManagerDef&,const CCharString&);}
 // Layout: all storage comes from supplied CGameCameraManager; original private PreparePendingMode restored.
 class CGameCameraManager:public CGameCameraManagerLayout{void PreparePendingMode(CDefPointer<const CCameraModeDef>);public:void PushUpManualCameraList();
- __forceinline void PlayCameraSoundThroughObservedThing(const CCharString&sound)const{
+ FABLE_FORCEINLINE void PlayCameraSoundThroughObservedThing(const CCharString&sound)const{
  ::PlayCameraSoundThroughObservedThing(
  reinterpret_cast<const CThing*>(reinterpret_cast<const CBaseIntelligentPointer*>(PObservedThing)->GetPItem()),
  *reinterpret_cast<const CCameraManagerDef*>(reinterpret_cast<const CDefPointer<const CCameraManagerDef>*>(&PDef_Object)->InternalGetObject()),sound);

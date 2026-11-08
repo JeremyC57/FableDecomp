@@ -13,6 +13,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -33,7 +34,7 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 // Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
 
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -47,7 +48,7 @@ public:                     // STLport vector (retail 12 bytes), malloc_alloc st
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

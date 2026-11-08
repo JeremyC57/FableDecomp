@@ -1,5 +1,6 @@
 // behaviour test of std::vector<std::pair<long, CCharString> >::~vector() 0x004E34B2: the elements are destroyed through the out-of-line
 // __destroy_aux (0x004DD782, modelled here) and the storage freed; an empty vector frees nothing. Self-contained (the lane links the test alone).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 static int g_destroyed = 0, g_freed = 0; static void* g_freedBlock = 0; static void* g_first = 0; static void* g_last = 0;
@@ -36,12 +37,12 @@ void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last,
 template <class _ForwardIterator>
 inline void __destroy_aux(_ForwardIterator, _ForwardIterator, const __true_type&) { }
 template <class _ForwardIterator, class _Tp>
-__forceinline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
+FABLE_FORCEINLINE void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(__first, __last, _Trivial_destructor());
 }
-template <class _Tp> __forceinline void _Destroy(_Tp* __first, _Tp* __last) { __destroy(__first, __last, __first); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last) { __destroy(__first, __last, __first); }
 template <class _Tp, class _Alloc>
 class _Vector_base { public:
     _Tp* _M_start;

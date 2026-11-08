@@ -12,6 +12,7 @@
 // Shape: the profile strings come through by-value getters (retail copies each into a temporary); the size TU only
 // inlines them as __forceinline.
 // Opt: size TU with frame pointer (`push ebp / mov ebp,esp`, `leave`, unaligned entry).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CWideStringData;
@@ -39,11 +40,11 @@ public:
     long          ScoreBoardProxyPort;                   // +0x11c
     long          ScoreBoardServerPort;                  // +0x120
     static CUserProfileManager& __fastcall Get();        // 0x0040D2A0
-    __forceinline CWideString GetScoreBoardUserName() const { return ScoreBoardUserName; }
-    __forceinline CWideString GetScoreBoardPassword() const { return ScoreBoardPassword; }
-    __forceinline CWideString GetScoreBoardProxyIp() const { return ScoreBoardProxyIp; }
-    __forceinline long GetScoreBoardProxyPort() const { return ScoreBoardProxyPort; }
-    __forceinline long GetScoreBoardServerPort() const { return ScoreBoardServerPort; }
+    FABLE_FORCEINLINE CWideString GetScoreBoardUserName() const { return ScoreBoardUserName; }
+    FABLE_FORCEINLINE CWideString GetScoreBoardPassword() const { return ScoreBoardPassword; }
+    FABLE_FORCEINLINE CWideString GetScoreBoardProxyIp() const { return ScoreBoardProxyIp; }
+    FABLE_FORCEINLINE long GetScoreBoardProxyPort() const { return ScoreBoardProxyPort; }
+    FABLE_FORCEINLINE long GetScoreBoardServerPort() const { return ScoreBoardServerPort; }
 };
 namespace NUISystem {
 class CFrontEndManager {

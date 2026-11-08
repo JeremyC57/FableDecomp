@@ -18,6 +18,7 @@
 // retail CTCHeroStats (PDB -8): MaxStamina +0x5c, ExtraMaxHealth +0x8c, ExtraMaxStamina +0x90; CThingPhysical MaxHealth +0xb0.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
@@ -81,15 +82,15 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long type) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

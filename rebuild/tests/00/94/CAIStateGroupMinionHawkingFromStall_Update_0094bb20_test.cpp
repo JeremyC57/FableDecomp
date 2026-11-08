@@ -1,4 +1,5 @@
 // behaviour test for 0x0094BB20 CAIStateGroup_MinionHawkingFromStall::Update (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CAIStateGroup_MinionHawkingFromStall::Update() -- walk to the stall (1.5m), shout the shop's hawking speech at it and pick up a new customer; schedule the next hawk 75..149 frames ahead and terminate
@@ -66,7 +67,7 @@ class CThing { public:
         unsigned long word = m_presentBits[interfaceType >> 5];
         return ((word >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -104,8 +105,8 @@ struct CBaseIntelligentPointer {
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 class CThingCreatureBase;
 class CAIBrain { public:

@@ -16,6 +16,7 @@
 //   +0x98, m_bPlayedSound +0xd8, m_OnhitEveryFrame +0xdc, m_CombatMultiplierTimer +0xe0.
 // Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
 //   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 class CTCBase;
 class CCharString { public:
@@ -48,7 +49,7 @@ public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
@@ -57,7 +58,7 @@ public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -70,7 +71,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTCConst(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

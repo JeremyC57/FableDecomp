@@ -1,6 +1,7 @@
 // Behaviour test for 00915080: src/00915080.cpp copied verbatim; a creature whose movement component, offset source
 // and distance measure are stubbed so the "moved too far relative to the distance measure" test and the 1-in-100
 // random roll on the world seed are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -40,7 +41,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

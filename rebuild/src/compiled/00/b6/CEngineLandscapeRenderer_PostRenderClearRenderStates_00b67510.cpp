@@ -17,6 +17,7 @@
 //   bodies are reconstructed from this function (null arguments fold every buffer/texture lookup away).
 // IDirect3DDevice9 (d3d9.h, DirectX 9.0) -- the COM interface in its SDK slot order; only the slots this TU calls carry
 // parameter lists, the others keep their SDK names with no arguments (never called here).
+#include "fable_compiler.h"
 struct IDirect3DBaseTexture9;
 struct IDirect3DVertexBuffer9;
 struct IDirect3DIndexBuffer9;
@@ -148,21 +149,21 @@ class CTexture { public:
 
 class CRenderManagerCore : public CRenderManagerCoreLayout {
 public:
-    __forceinline void SelectIndexBuffer(CIndexBuffer* buffer, unsigned long baseVertexIndex)
+    FABLE_FORCEINLINE void SelectIndexBuffer(CIndexBuffer* buffer, unsigned long baseVertexIndex)
     {
         PSelectedIndexBuffer = buffer;
         PD3DDevice->SetIndices(buffer ? buffer->GetD3DIndexBuffer() : 0);
     }
-    __forceinline void SelectVertexBuffer(unsigned long stream, CVertexBufferWin32* buffer)
+    FABLE_FORCEINLINE void SelectVertexBuffer(unsigned long stream, CVertexBufferWin32* buffer)
     {
         PD3DDevice->SetStreamSource(stream, buffer ? buffer->GetD3DVertexBuffer() : 0, 0, buffer ? buffer->GetStride() : 0);
     }
-    __forceinline void AttachTextureToStage(long stage, const CTexture* texture)
+    FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
     {
         AttachD3DTextureToStage(stage, texture ? texture->GetD3DTexture() : 0);
     }
 private:
-    __forceinline void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
+    FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
     {
         if (CurrentlySelectedTextures[stage] != texture) {
             CurrentlySelectedTextures[stage] = texture;
@@ -188,14 +189,14 @@ public:
     {
         return *reinterpret_cast<CEnginePrimitiveThemeChannelDesc*>(&CurrentThemeChannel_ChannelIndex0);
     }
-    __forceinline void SetEnableFadedShadowFactor(bool enable)
+    FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
     {
         if (FadedShadowDiffuseFactorEnabled != enable) {
             FadedShadowDiffuseFactorEnabled = enable;
             StateUpdateFlags |= 1;
         }
     }
-    __forceinline void SetCurrentEnvironmentThemeChannel(const CEnginePrimitiveThemeChannelDesc& channel)
+    FABLE_FORCEINLINE void SetCurrentEnvironmentThemeChannel(const CEnginePrimitiveThemeChannelDesc& channel)
     {
         if (CurrentThemeChannel_ChannelIndex0 != channel.ChannelIndex0 || CurrentThemeChannel_ChannelIndex1 != channel.ChannelIndex1
             || CurrentThemeChannel_ChannelBlendFactor != channel.ChannelBlendFactor) {
@@ -207,14 +208,14 @@ public:
             StateUpdateFlags |= 0xf;
         }
     }
-    __forceinline void SetSelfIlluminationAmbient(long percentage)
+    FABLE_FORCEINLINE void SetSelfIlluminationAmbient(long percentage)
     {
         if (SelfIlluminationAmbientPercentage != percentage) {
             SelfIlluminationAmbientPercentage = percentage;
             StateUpdateFlags |= 2;
         }
     }
-    __forceinline void RestoreDefaultPrimitiveParameters()
+    FABLE_FORCEINLINE void RestoreDefaultPrimitiveParameters()
     {
         SetEnableFadedShadowFactor(false);
         SetCurrentEnvironmentThemeChannel(CEnginePrimitiveThemeChannelDesc(0, 0, 0));

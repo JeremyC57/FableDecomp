@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 // ---- source under test (pasted) ----
 // NCreatureMode::CModeThunderLightningStorm::OnDeactivate, retail 0x008DF680.
@@ -27,7 +28,7 @@ template<class T> struct CVector {
     T* begin() const { return _First; }
     T* end() const { return _Last; }
     unsigned long size() const { return (unsigned long)(_Last - _First); }
-    static __forceinline T* CopyPtrs(T* first, T* last, T* result) {
+    static FABLE_FORCEINLINE T* CopyPtrs(T* first, T* last, T* result) {
         for (long n = (long)(last - first); n > 0; --n) {
             *result = *first;
             ++first;
@@ -35,17 +36,17 @@ template<class T> struct CVector {
         }
         return result;
     }
-    static __forceinline void Destroy(T* first, T* last) {
+    static FABLE_FORCEINLINE void Destroy(T* first, T* last) {
         for (; first != last; ++first)
             ((CBaseIntelligentPointer*)first)->~CBaseIntelligentPointer();
     }
-    __forceinline T* erase(T* first, T* last) {
+    FABLE_FORCEINLINE T* erase(T* first, T* last) {
         T* i = CopyPtrs(last, _Last, first);
         Destroy(i, _Last);
         _Last = i;
         return first;
     }
-    __forceinline void clear() { erase(_First, _Last); }
+    FABLE_FORCEINLINE void clear() { erase(_First, _Last); }
 };
 struct CTCMap {
     struct Entry { long Type; void* Component; };
@@ -62,7 +63,7 @@ class CThing : public CBaseObject { public:
     void Kill(bool); // 0x004C9B80
     unsigned long HasTC(long type) const
     { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCSoundPlayer* GetTC(long interfaceType) {
+    FABLE_FORCEINLINE CTCSoundPlayer* GetTC(long interfaceType) {
         CTCMap::Entry* first=Interfaces.First;
         CTCMap::Entry* last=Interfaces.Last;
         long len=(long)(last-first);

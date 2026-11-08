@@ -9,6 +9,7 @@
 // [esi+8],0` and the root/rightmost stores are tail-merged; the count is `inc dword ptr [edi+4]`.
 // Label correction: catalog "CMemoryAllocatorVariableSize_InsertNode" is propagated; the key compare is CWideString's.
 // Leaf: ?_M_insert@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$less@VCWideString@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@_N@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCWideString@@_N@2@0@Z
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -20,7 +21,7 @@ public:
 
 namespace std {
 template <class _Tp> struct less {
-    __forceinline bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
+    FABLE_FORCEINLINE bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 
 template <class _T1, class _T2> struct pair {

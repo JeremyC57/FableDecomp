@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1346,11 +1347,11 @@ template<class K,class V,class Compare>typename CVectorMap<K,V,Compare>::const_i
  return first;
 }
 #pragma auto_inline(on)
-template<class T>__forceinline bool CThing::GetTC(ETCInterfaceType t,T**out)
+template<class T>FABLE_FORCEINLINE bool CThing::GetTC(ETCInterfaceType t,T**out)
 {
  if(HasTC(t)){const ETCInterfaceType key=t;const CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<const CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);*out=reinterpret_cast<T*>(map.Find(key)->second);return true;}return false;
 }
-template<>__forceinline bool CThing::GetTC<CTCQuestCard>(CTCQuestCard**out){return GetTC(static_cast<ETCInterfaceType>(0x6c),out);}
+template<>FABLE_FORCEINLINE bool CThing::GetTC<CTCQuestCard>(CTCQuestCard**out){return GetTC(static_cast<ETCInterfaceType>(0x6c),out);}
 template<class T>class CTBaseSingletonNoDefaultAlloc {public:static void SetTest(T*p){PClass.Data=p;PClass.Info=0;}static T&__fastcall Get(){return *PClass;}private:static CCountedPointer<T>PClass;};
 class CPlayerGui:public CPlayerGuiFields {public:void UpdateMiniMapMarkers(bool);};
 void CQuestManager::RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString&scriptName,bool available)

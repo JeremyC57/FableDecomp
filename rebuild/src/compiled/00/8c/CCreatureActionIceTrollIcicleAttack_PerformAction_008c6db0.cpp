@@ -24,6 +24,7 @@
 //   CTCDExplosiveTrail::AddThingToIgnore(CThing&) 0x00810970 (Ego_r 0x0080B430; landed as the descriptive
 //   CUnprovenDriverOwner_00810970::AppendTrackedThing -> NAME_FIXES.tsv), __ftol2.
 // Globals: g_framesPerSecond 0x01375550 (long), DELTA_NOTIONAL_ZERO 0x0129BA3C (1e-4f; no PDB name).
+#include "fable_compiler.h"
 class CBaseObject { public: virtual void v00(); };
 #include "fable_string.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -139,8 +140,8 @@ class CBaseIntelligentPointer { public:
     CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline T* operator->() const { return (T*)GetPItem(); }
-    __forceinline operator T*() const { return (T*)GetPItem(); }
+    FABLE_FORCEINLINE T* operator->() const { return (T*)GetPItem(); }
+    FABLE_FORCEINLINE operator T*() const { return (T*)GetPItem(); }
 };
 template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing)
 {

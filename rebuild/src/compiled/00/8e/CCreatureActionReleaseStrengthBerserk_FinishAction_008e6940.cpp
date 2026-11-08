@@ -1,6 +1,7 @@
 // CCreatureAction_ReleaseStrengthBerserk::FinishAction -- unlock abilities and transfer living dependents to combat block exemptions.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008E6940,291bytes. Native component167 is CTCSpecialAbilities (type getter72D9F0), not CTCBerserk.
+#include "fable_compiler.h"
 #define CCreatureAction_ReleaseStrengthBerserk CCreatureAction_ReleaseStrengthBerserkPdb
 #include "engine/CCreatureAction_ReleaseStrengthBerserk.h"
 #undef CCreatureAction_ReleaseStrengthBerserk
@@ -72,7 +73,7 @@ class CThing:public CBaseObject { public:
     unsigned char DeadFlags;
     const C3DVector& GetPos() const; //004C73D0
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;

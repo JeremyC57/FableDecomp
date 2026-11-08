@@ -1,4 +1,5 @@
 // Behaviour test for 0082d870: body copied from src/0082d870.cpp (CThingBuilding::UsesHighDetailQuadTree), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -49,7 +50,7 @@ class CThingBuilding { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
-    __forceinline const CThingBuildingDef* GetBuildingDef()
+    FABLE_FORCEINLINE const CThingBuildingDef* GetBuildingDef()
     {
         CDefPointer<CThingBuildingDef> def;
         GetDefinitionManager()->GetDef(DefGlobalIndex, &def);

@@ -10,6 +10,7 @@
 //   memberwise operator- (X, Y, Z order) into a named vector and a named squared distance; the far test is written
 //   `!(d < 100)` first so both `dest = startPos` copies survive; GetCreature() is written twice in the HOWL action so the
 //   implicit CCharString temporaries are built before the creature load.
+#include "fable_compiler.h"
 class CTCBase;
 class C3DVector { public:
     float X, Y, Z;
@@ -70,7 +71,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline void GetInterfaceR(T** ppOut, long interfaceType, bool& has)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceR(T** ppOut, long interfaceType, bool& has)
     {
         has = TestTC(interfaceType);
         if (has) {

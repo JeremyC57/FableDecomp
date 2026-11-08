@@ -11,6 +11,7 @@
 //   inline for `b = tmp` (four dword stores, then the counted pointer's self test / release + zero store / adopt), and
 //   tmp's destructor releases without a zero store.
 // Label correction: catalogued as `swap<CAnimationEntry>`; the element is pair<unsigned long, CAnimationEntry>.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -24,7 +25,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

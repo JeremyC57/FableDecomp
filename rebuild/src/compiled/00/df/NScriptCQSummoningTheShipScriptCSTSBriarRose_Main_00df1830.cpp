@@ -2,6 +2,7 @@
 // Leaf: ?Main@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@EAEXXZ
 // Grade: RELOCATION_MATCH(2139v2139) -- genuine timer helper needs stronger expansion under newest Owner conditional preference.
 // Annotation: Original keyword unproven; ordinary inline attempts33-41 retained.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -15,7 +16,7 @@ float FABLE_FASTCALL GetDistanceBetweenThings(const CScriptThing&,const CScriptT
 extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline bool CTimer::operator==(long time) const { return GetTime()==time; }
 inline CScriptThing::CScriptThing() {}

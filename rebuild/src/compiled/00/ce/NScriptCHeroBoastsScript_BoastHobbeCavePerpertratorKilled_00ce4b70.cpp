@@ -2,6 +2,7 @@
 // Identity (naming wave 11): Ego_r.pdb member order (seven retail functions between BoastUseNoHealthPotions 0x00CE4600 and BoastBreakSiegeNoAssistance 0x00CE5050, fifth = HobbeCavePerpertratorKilled) + the master flag the body tests.
 // Native 00ce4b70; callee00CB7940 termination query and99EAE0 by-value string destructor.
 // Leaf: ?BoastHobbeCavePerpertratorKilled@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
 #define FABLE_RETAIL_NSCRIPT
@@ -28,11 +29,11 @@ namespace NScript {
 struct CHeroBoastsScript : public CScriptBase {  // IsActiveThreadTerminating 0x00CB7940 is CScriptBase's (active thread+2C, terminating byte+5)
  GameMethods* Game; SunnyvaleMasterData* MasterScriptData;
  void BoastHobbeCavePerpertratorKilled(CCharString quest);
- __forceinline bool Failed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[29].QuestMessage)(q);}
- __forceinline bool Completed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[28].QuestMessage)(q);}
- __forceinline void Frame(){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[7].NewScriptFrame)();}
- __forceinline void Success(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[306].SetBoast)(id,q);}
- __forceinline void Failure(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[305].SetBoast)(id,q);}
+ FABLE_FORCEINLINE bool Failed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[29].QuestMessage)(q);}
+ FABLE_FORCEINLINE bool Completed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[28].QuestMessage)(q);}
+ FABLE_FORCEINLINE void Frame(){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[7].NewScriptFrame)();}
+ FABLE_FORCEINLINE void Success(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[306].SetBoast)(id,q);}
+ FABLE_FORCEINLINE void Failure(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[305].SetBoast)(id,q);}
 };
 }   // namespace NScript
 using NScript::CHeroBoastsScript;

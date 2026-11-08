@@ -21,6 +21,7 @@
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; Ego_r.pdb CRingFighter ParentClass +0x14; parent
 //   CV_FisticuffsClubScript (PDB - 0x14) TylerInFight +0x54, TimeOut +0x56, RingCleared +0x57, RoundStarted +0x58,
 //   EverybodyAttack +0x8c, CheerNumber +0xac, BooNumber +0xb0.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -41,7 +42,7 @@ void operator delete(void* p);                          // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 #include "engine/CPredicateBase.h"                    // NScript::CPredicateBase, vtable 0x012C2FF4
 namespace NScript {
 class CIsThingAlive : public CPredicateBase { public:               // vtable 0x012C32F0

@@ -11,6 +11,7 @@
 // Layout: retail CTCInventory (engine/CTCInventory.h, STLport 4.6 12-byte vectors): ContextSensitiveItems begin +0x154, the slot item
 //   arrays' begin words +0x1E4 / +0x1F0; CContextSensitiveItemDef +0x28 item type, +0x34 slot; retail CThing bitset
 //   +0x20, interface map +0x44, def index +0x8C (unsigned short).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -35,7 +36,7 @@ public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad4c[0x8c - 0x4c];
     unsigned short DefIndex;                                // +0x8C
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
@@ -64,7 +65,7 @@ class CDefClassBase { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();

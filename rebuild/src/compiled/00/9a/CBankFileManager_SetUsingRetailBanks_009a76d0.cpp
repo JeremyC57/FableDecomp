@@ -2,6 +2,7 @@
 // Leaf: ?SetUsingRetailBanks@CBankFileManager@@QAEX_N@Z
 // Identity: Own sole direct caller00402875 uses global013ca79c, actual CBankFileManager identity/RTTI and PDB SetUsingRetailBanks(bool), UsingRetailBanks+20 after map12/list4. Prior physics-navigator label rejected.
 // Layout: original class keys, actual bases and typed STLport containers/counting handles. CManager header renamed to restore actual inheritance/types; enum value spellings unspecified. Bank owner declaration is a prefix through UsingRetailBanks only. Unused virtual slots explicitly descriptive.
+#include "fable_compiler.h"
 #include <stddef.h>
 #ifndef _MSC_VER
 #define __fastcall
@@ -28,7 +29,7 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 namespace std{
 template<class T>struct less{};template<class T>struct _Select1st{};

@@ -11,6 +11,7 @@
 // Layout: CPlayer (Ego_r.pdb) PHeroLogBook +0xf8 (CCountedPointer data); CUserProfileManager GivenTutorialCategories retail
 //   +0x8c (PDB +0x98, 12-byte retail vectors); the def's tutorial text-key vector at retail +0x91c (PDB TutorialText +0x980).
 // Shape: CCharString::EndsWith is an inline member (length difference, then the strcmp intrinsic on the tail).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 class CCharStringData { public: const char* PData; long Length; };
@@ -30,7 +31,7 @@ class CCharString { public:
     CWideString ToWideString() const;                       // 0x0099E480
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
-    __forceinline bool EndsWith(const CCharString& suffix) const
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
     {
         long start = GetLength() - suffix.GetLength();
         if (start >= 0)

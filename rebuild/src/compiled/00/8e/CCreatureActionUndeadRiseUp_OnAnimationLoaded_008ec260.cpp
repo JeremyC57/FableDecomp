@@ -13,6 +13,7 @@
 // condition in a frame byte. GetEffectFromString is a same-TU noinline stand-in (retry B's lever, FIXES.md) whose body
 // only writes the effect type. VC7.1 then knows the effect-type word's address does not escape the call, which gives
 // retail's registers (`this` in edi, &PCreature in esi) and keeps `push 0` ahead of the GetPItem/GetPos calls.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharString { public:
@@ -46,7 +47,7 @@ template <class T> class CDefPointer { public:      // the out-slot GetSubDef fi
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

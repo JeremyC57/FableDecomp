@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NPlayerGui::CDrawMeleeActionButtonEffects::Update() -- pick the hero's current melee ability def (the flourish ability when a flourish is valid, else the base ability when the combat component says so), restart the flash timers when it changes, clear the effects when there is none, and count the timers down
@@ -54,7 +55,7 @@ struct CDefVirtual {
     virtual void Destroy();                        // slot 1
 };
 class CAbilityDef : public CDefVirtual, public CRefCounted { public:
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();
@@ -63,7 +64,7 @@ class CAbilityDef : public CDefVirtual, public CRefCounted { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();
@@ -78,7 +79,7 @@ template <class T> class CDefPointer { public:
             Object = object;
         }
     }
-    __forceinline void Assign(T* object)
+    FABLE_FORCEINLINE void Assign(T* object)
     {
         if (Object != object) {
             if (Object) {
@@ -96,7 +97,7 @@ class CThing { public:
     mutable CPresenceBits m_present;               // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (m_present.test(type)) {
             long key = type;

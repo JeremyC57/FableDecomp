@@ -10,6 +10,7 @@
 // with both bounds read once (esi/edi), `~_Vector_base` frees the storage behind a null test, the base
 // destructor is called non-virtually and the deleting tail tests bit 0 of the flags. The destructor is
 // `__forceinline` so its body lands in the `??_G`.
+#include "fable_compiler.h"
 #include <stdlib.h>
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
@@ -30,12 +31,12 @@ struct CRetailVector_ContainerItem {                        // STLport vector<pa
     SContainerItem* Finish;
     SContainerItem* EndOfStorage;
     CRetailVector_ContainerItem() : Start(0), Finish(0), EndOfStorage(0) { }
-    static __forceinline void Destroy(SContainerItem* first, SContainerItem* last)   // STLport _Destroy
+    static FABLE_FORCEINLINE void Destroy(SContainerItem* first, SContainerItem* last)   // STLport _Destroy
     {
         for (; first != last; ++first)
             first->~SContainerItem();
     }
-    __forceinline ~CRetailVector_ContainerItem()
+    FABLE_FORCEINLINE ~CRetailVector_ContainerItem()
     {
         Destroy(Start, Finish);
         if (Start)
@@ -56,7 +57,7 @@ class CTCBase { public:                                            // 0xc bytes;
 class CTCContainer { public:                                       // vtable 0x012693AC (owned by the CTCBase part)
     CTCBase                     Base;                       // +0x00
     CRetailVector_ContainerItem ContainerItems;             // +0x0c
-    __forceinline ~CTCContainer() { }
+    FABLE_FORCEINLINE ~CTCContainer() { }
 };
 
 void DestroyContainer(CTCContainer* container)

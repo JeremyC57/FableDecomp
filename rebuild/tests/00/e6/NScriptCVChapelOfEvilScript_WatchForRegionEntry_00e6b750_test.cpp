@@ -1,6 +1,7 @@
 // Behaviour test for 0x00E6B750 (RST): model plus the body verbatim from final.cpp, callees stubbed.
 // Checks that only a DarkwoodChapel region load teleports the acolytes (with the local thing), other loads and
 // idle frames do not, the frame-per-poll wait, termination in the hit block, and that the local thing is released on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -39,7 +40,7 @@ class CScriptThing { public:
     int Id;
     CScriptThing() : Id(0) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
 };
 static const char* g_loads[16];          // region loaded at frame f (0 = none)
 static int g_teleports = 0;

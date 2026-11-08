@@ -15,6 +15,7 @@
 //   __uninitialized_fill_n` inline (`__forceinline`; plain `inline` leaves a cdecl call), the tail copy out of line
 //   (VC7.1 inlines only the first of the two identical calls of the `__fastcall` inline template -- without
 //   `__fastcall` the out-of-line call is cdecl), the trivial _Destroy folded away, `if (p) free(p)`, then _M_set.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
@@ -58,7 +59,7 @@ inline _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIt
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00472BDD std::vector<NSpeechGainManager::CDialogueLayerDef>::erase(first, last): the tail is
 // assigned down over first, the leftover elements are destroyed in place, finish is pulled back and first returned.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -22,7 +23,7 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {
@@ -33,7 +34,7 @@ __forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, O
     return result;
 }
 template <class InputIter, class OutputIter>
-__forceinline OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&)
+FABLE_FORCEINLINE OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&)
 {
     return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
 }
@@ -44,13 +45,13 @@ __declspec(noinline) void __fastcall __destroy_aux(ForwardIter first, ForwardIte
         (&*first)->NSpeechGainManager::CDialogueLayerDef::~CDialogueLayerDef();
 }
 template <class ForwardIter, class T>
-__forceinline void __destroy(ForwardIter first, ForwardIter last, T*)
+FABLE_FORCEINLINE void __destroy(ForwardIter first, ForwardIter last, T*)
 {
     __destroy_aux(first, last, __false_type());
 }
-template <class T> __forceinline T* __value_type(const T*) { return (T*)0; }
+template <class T> FABLE_FORCEINLINE T* __value_type(const T*) { return (T*)0; }
 template <class ForwardIter>
-__forceinline void _Destroy(ForwardIter first, ForwardIter last)
+FABLE_FORCEINLINE void _Destroy(ForwardIter first, ForwardIter last)
 {
     __destroy(first, last, __value_type(first));
 }

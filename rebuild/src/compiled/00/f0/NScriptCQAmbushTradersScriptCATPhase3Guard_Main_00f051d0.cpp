@@ -15,6 +15,7 @@
 // Shape: C3DVector carries a user memberwise copy ctor (retail copies the by-value wander centre word by word, load/store interleaved).
 // Naming wave 35: identity reg 00f02709 "AT_Phase3Guard" in 00f024c0; Alloc 00f050e0; vtable 012f7e68 slot 1; PDB ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Phase3Guard::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Phase3Guard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -50,7 +51,7 @@ public:
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing();                                   // 0x004AA840
     virtual void t1(); virtual void t2(); virtual void t3(); virtual void t4(); virtual void t5();
-    virtual __forceinline const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
+    virtual FABLE_FORCEINLINE const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
     virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14();
     virtual void t15(); virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20(); virtual void t21(); virtual void t22();
     virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27(); virtual void t28(); virtual void t29(); virtual void t30();
@@ -66,7 +67,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
 class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+    FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     ~CIsThingAlive();                                  // 0x00E241B0
 };

@@ -1,9 +1,10 @@
 // 00e54990 NScript::CV_BookCollectingScript::Init
 // Flags: /O2 /Oy /W3
 // Leaf: Init
+#include "fable_compiler.h"
 namespace X_00e54990{
 struct CCharStringData;struct CCharString{CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString&operator=(const CCharString&);};
-namespace std{template<class T>struct vector{T*Start,*Finish,*Storage;vector&operator=(const vector&);void resize(unsigned,const T&);__forceinline void resize(unsigned n){resize(n,T());}};}
+namespace std{template<class T>struct vector{T*Start,*Finish,*Storage;vector&operator=(const vector&);void resize(unsigned,const T&);FABLE_FORCEINLINE void resize(unsigned n){resize(n,T());}};}
 // Layout: retail CConversation is92: ten prefix words, Lines40 and four12-byte string vectors44/56/68/80. PDB gives original member names, donor vector size16.
 struct CConversation{unsigned Prefix[10];long Lines;std::vector<CCharString>Speaker,Dialogue,Animation,AnimLoop;};
 // Layout: retail ScriptDef BookReactions4c8, BookDefNames4d4, BooksNumberTotal4ec, from this function. No active header exists.

@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer::PostRenderLayer -- reset current layer, normalize-normals tracked state, lights/world transform, then saved shader enable flags. Retail00b32230 complete207bytes+1int3. Shared renderer/state/lighting headers; donor leaves renderer saved layer+78 and shaderflags+260/+261 opaque. DeviceState NormalizeNormals at+230 (manager2a48), nativeCStateInfo20bytes and statecapture8bytes. CalleesB44D50/B32100/988110/988190/987FE0/9880E0.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 class CEnginePrimitiveRenderer { public:unsigned char _pad_0x78[sizeof(long)];unsigned char _pad_0x260[4];};
@@ -23,7 +24,7 @@ struct CEngineLightingManager_Methods:CEngineLightingManager {void DisablePointL
 extern CRenderStateManager* g_pRenderStateManager_01436e18; //01436e18
 extern CShaderRenderManager* g_pShaderRenderManager; //01436e14
 extern CEngineLightingManager_Methods* g_pLightingManager; //01436e9c
-static __forceinline void ClearNormalizeNormals()
+static FABLE_FORCEINLINE void ClearNormalizeNormals()
 {
  CRenderStateManager* manager=g_pRenderStateManager_01436e18;
  CStateInfo& state=reinterpret_cast<CDeviceStateNormalizeView*>(manager->DeviceState)->NormalizeNormals;

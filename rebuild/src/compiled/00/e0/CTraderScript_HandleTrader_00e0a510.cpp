@@ -13,6 +13,7 @@
 //   pGlobalScriptDef 0x0143E90C (+0xdf4 / +0xdf8).
 // Layout (retail bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, +0x1c mode, +0x20
 //   state, +0x2c timer index, +0x30 health bar id; parent flag +0x5a.
+#include "fable_compiler.h"
 #include <string.h>
 namespace NScript { class CPredicateBase; }
 class CCharStringData { public:
@@ -24,7 +25,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;

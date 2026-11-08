@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -34,8 +35,8 @@ struct CMemoryDataInputStreamBase {
         for (long i = 0; i < size; ++i) buffer[i] = (unsigned char)(0xA0 + i);
         position += size;
     }
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -61,8 +62,8 @@ class CMemoryDataInputStream : public CMemoryDataInputStreamBase { public:
     CCharString ReadString() { ++stringReads; CCharString s; std::strcpy(s.m_text, "Sword"); return s; }
 };
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
-__forceinline void TransferBinaryInElement(CMemoryDataInputStream* stream, CCharString* out) { *out = stream->ReadString(); }
-__forceinline void TransferBinaryInElement(CMemoryDataInputStream* stream, LONG32* out)
+FABLE_FORCEINLINE void TransferBinaryInElement(CMemoryDataInputStream* stream, CCharString* out) { *out = stream->ReadString(); }
+FABLE_FORCEINLINE void TransferBinaryInElement(CMemoryDataInputStream* stream, LONG32* out)
 {
     LONG32 value;
     stream->Read(&value, sizeof(value));

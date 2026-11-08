@@ -4,6 +4,7 @@
 // null test), CancelSelection 0x00557BD0, IgnoreEvent (observer slot 4, tail-jumped with the argument slot rewritten to 0x19).
 // Jump table: byte index table 00 01 02 02 02 01 00 over {case 0/6, case 1/5, default}.
 // Name: Ego_r.pdb ?ChangeState@CKeyRedefiner@NUISystem@@UAEXK@Z.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -20,7 +21,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 };
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 // CRGBColour stores B,G,R,A; its ctor assigns R, G, B, A (landed 0x00557A10).
@@ -147,20 +148,20 @@ class CClickable : public CChangingStateComponent, public CHoverableBase { publi
 struct CGameActionList {
  struct node { node* next; node* prev; long value; };
  node* head;
- __forceinline void clear()
+ FABLE_FORCEINLINE void clear()
  {
   node* cur = head->next;
   while (cur != head) { node* tmp = cur; cur = cur->next; free(tmp); }
   head->next = head;
   head->prev = head;
  }
- __forceinline node* create_node(const long& value)
+ FABLE_FORCEINLINE node* create_node(const long& value)
  {
   node* tmp = (node*)malloc(sizeof(node));
   new (&tmp->value) long(value);
   return tmp;
  }
- __forceinline void insert(node* pos, const long& value)
+ FABLE_FORCEINLINE void insert(node* pos, const long& value)
  {
   node* tmp = create_node(value);
   node* prev = pos->prev;
@@ -169,7 +170,7 @@ struct CGameActionList {
   prev->next = tmp;
   pos->prev = tmp;
  }
- __forceinline void push_back(const long& value) { insert(head, value); }
+ FABLE_FORCEINLINE void push_back(const long& value) { insert(head, value); }
 };
 class CKeyRedefiner : public CClickable { public:   // vtables 0x0124ADBC / 0x0124AD98 / 0x0124AD90
  CText* PActionText;                  // +0x194

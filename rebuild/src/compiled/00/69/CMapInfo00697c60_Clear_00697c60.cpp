@@ -1,6 +1,7 @@
 // CMapInfo_00697c60::Clear() -- when the counted file pointer at +0xdc holds an object: the owner's slot at +0xd4 is assigned the pointer (CCountedPointer<CDiskFileWin32>::operator= @ 0x0069C380), then the +0xdc pointer is released (count block at +0xe0: references decremented, destroyed through the block's function and freed at zero) and cleared; the two bytes +0xe8 / +0xe9 are cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00697C60, length 96 bytes.
 // Callees: 0x0069C380 (counted-pointer assignment), operator delete @ 0x00BFE9BC. The chunk label (CMapInfo::Clear) is propagated; the layout does not match CMapInfo. Shape: `this` in edi, the pointer's address in esi, one zero register (ebx), `ret`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CDiskFileWin32;
 struct SCountBlock_00697c60 {                      // the shared count block of a CCountedPointer
@@ -12,7 +13,7 @@ struct CCountedPointer_CDiskFileWin32 {            // {object, count block}
     CDiskFileWin32*       m_pObject;               // +0x00
     SCountBlock_00697c60* m_pCount;                // +0x04
     CCountedPointer_CDiskFileWin32& operator=(const CCountedPointer_CDiskFileWin32& other);   // 0x0069C380
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (m_pCount) {
             --m_pCount->m_references;

@@ -10,6 +10,7 @@
 //   __adjust_heap(first, parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the
 //   value is copy-constructed in its argument slot (base ctor, vtable store, SetPItem(GetPItem())); `first + parent`
 //   is strength-reduced to a pointer stepping down by 8.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -23,7 +24,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
 };
 
 namespace {

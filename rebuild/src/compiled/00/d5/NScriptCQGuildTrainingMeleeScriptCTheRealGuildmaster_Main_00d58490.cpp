@@ -17,6 +17,7 @@
 //   (first ~CScriptThing temporary, first movie / STB / CTimer special members expanded, later ones called) are VC7.1's own inline
 //   budget with plain-inline definitions: a row-local inline ~CScriptThing reproduces it. The two end healths are named locals (the
 //   order retail loads GUI_MeleeGrades before the x87 score).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -57,8 +58,8 @@ void FABLE_FASTCALL AddLogbookTutorialEntryPC(const CCharString&);   // 0x00CBEA
 inline CScriptThing::~CScriptThing() { }
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #define GM_T if (IsActiveThreadTerminating()) return _Fail_Val.Return()
 #define GM_START_SCRIPTING(thing, seh) \
     if (seh.IsValid()) seh.Release(); \

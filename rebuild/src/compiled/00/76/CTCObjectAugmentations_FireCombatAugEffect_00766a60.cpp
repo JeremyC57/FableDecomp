@@ -10,6 +10,7 @@
 // Layout (local model, as the landed ctor 0x007673C0): AttackParticleEffects +0x44, CurrentRunningAugEffect +0x50,
 // InStrikeAction +0x64; AttackParticleAndEndPoints 0x18 (PDB) with ParticleEffect +0x10; fields before it descriptive
 // (start/end dummy names +0x00/+0x04, particle type +0x08, periodic frames +0x0c, the argument order of AttemptToStartParticle).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 
@@ -40,15 +41,15 @@ template <class T> struct vector {                      // STLport vector: _Vect
     T* begin() { return _M_start; }
     T* end() { return _M_finish; }
     T& operator[](unsigned long n) { return *(begin() + n); }
-    __forceinline void clear() { erase(_M_start, _M_finish); }
-    __forceinline T* erase(T* first, T* last)
+    FABLE_FORCEINLINE void clear() { erase(_M_start, _M_finish); }
+    FABLE_FORCEINLINE T* erase(T* first, T* last)
     {
         T* i = Copy(last, _M_finish, first);
         Destroy(i, _M_finish);
         _M_finish = i;
         return first;
     }
-    static __forceinline T* Copy(T* first, T* last, T* result)
+    static FABLE_FORCEINLINE T* Copy(T* first, T* last, T* result)
     {
         for (long n = last - first; n > 0; --n) {
             *result = *first;
@@ -57,7 +58,7 @@ template <class T> struct vector {                      // STLport vector: _Vect
         }
         return result;
     }
-    static __forceinline void Destroy(T* first, T* last)
+    static FABLE_FORCEINLINE void Destroy(T* first, T* last)
     {
         for (; first != last; ++first)
             first->~T();

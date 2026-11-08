@@ -15,6 +15,7 @@
 //   0x0125A998, "ST_SPRINT" 0x0125D138, "DEFAULT" 0x01230554, 0.0f 0x0122DEDC.
 // Layout: Ego_r.pdb CModeStandBase (engine/CModeStandBase.h): MaxRunSpeed +0x28, MaxJogSpeed +0x2c, MaxWalkSpeed +0x30,
 //   counted-pointer animations +0x38..+0x64 (engine/CCountedPointer.h); the class is modelled locally because engine/CModeStandBase.h flattens the CCountedPointer members.
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
 class CCharString { public:
@@ -44,7 +45,7 @@ class CThingCreatureBase { public:
     unsigned char _pad11[0x0f];
     unsigned long UsingComponents[9];                  // +0x20
     CInterfaceMap Components;                          // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

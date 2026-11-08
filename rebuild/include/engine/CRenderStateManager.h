@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CRENDERSTATEMANAGER_H
 #define FABLE_ENGINE_CRENDERSTATEMANAGER_H
+#include "fable_compiler.h"
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER
 // Retail branch: one model (merged 2026-11-03 from chunk 723b/723c, the water / sprite render passes, and Codex pass 13, row
 // 0x009DA9F0 CRenderManager2D::Render2DDrawList; Codex's FABLE_RETAIL_RENDER2D_TYPES model and its FABLE_RETAIL_RENDERSTATE_EXPAND_SET
@@ -139,7 +140,7 @@ public:
     void RestoreCaptureBlock();                                          // 0x00A05840 ?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ
     // ?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z: push the bookmark marker and open a new bookmark bit (the block
     // argument is not stored in retail: 0x00B70230 writes only StateStack[n].State).
-    __forceinline void StartCaptureBlock(void* block)
+    FABLE_FORCEINLINE void StartCaptureBlock(void* block)
     {
         StateStack[StateStackSize++].State = &BookmarkDummyState;
         CurrentBookmarkMask <<= 1;
@@ -147,60 +148,60 @@ public:
 
     // Public state setters (Ego_r.pdb / FableWin.pdb spellings and parameter types), inline in retail. A bool setter passes
     // `enable ? 1 : 0` (0x009DA9F0 SetZBufferEnable(zbuffer): `xor ecx,ecx ; test dl,dl ; setne cl`, not movzx).
-    __forceinline void SetPolyCullMode(POLY_CULL_MODE mode) { SetRenderState(D3DPolyCullModeTable[mode], DeviceState.PolyCullMode); }
-    __forceinline void SetPolyFillMode(POLY_FILL_MODE mode) { SetRenderState(D3DPolyFillModeTable[mode], DeviceState.PolyFillMode); }
-    __forceinline void SetPolyShadeMode(POLY_SHADE_MODE mode) { SetRenderState(D3DPolyShadeModeTable[mode], DeviceState.PolyShadeMode); }
-    __forceinline void SetZBufferWriteEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferWriteEnable); }
-    __forceinline void SetZBufferEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferEnable); }
-    __forceinline void SetZBufferTestFunc(ZBUFFER_FUNC func) { SetRenderState(D3DZBufferFuncModeTable[func], DeviceState.ZBufferFunc); }
-    __forceinline void SetAlphaBlendEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaBlendEnable); }
-    __forceinline void SetSourceAlphaBlendMode(ALPHA_BLEND_MODE mode) { SetRenderState(D3DAlphaBlendModeTable[mode], DeviceState.SourceAlphaBlendMode); }
-    __forceinline void SetDestAlphaBlendMode(ALPHA_BLEND_MODE mode) { SetRenderState(D3DAlphaBlendModeTable[mode], DeviceState.DestAlphaBlendMode); }
-    __forceinline void SetAlphaTestEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaTestEnable); }
-    __forceinline void SetAlphaTestFunc(ALPHA_TEST_FUNC func) { SetRenderState(D3DAlphaFuncModeTable[func], DeviceState.AlphaTestFunc); }
-    __forceinline void SetAlphaRef(unsigned long ref) { SetRenderState(ref, DeviceState.AlphaRef); }
-    __forceinline void SetBlendOp(BLEND_OP op) { SetRenderState(D3DBlendOpModeTable[op], DeviceState.BlendOpMode); }
-    __forceinline void SetFogEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.FogEnable); }
-    __forceinline void SetSpecularEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.SpecularEnable); }
-    __forceinline void SetClippingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ClippingEnable); }
-    __forceinline void SetTextureFilterModeMin(long stage, TEXTURE_FILTER_MODE mode) { SetRenderState(D3DTextureFilterModeTable[mode], DeviceState.TextureFilterModeMin[stage]); }
-    __forceinline void SetTextureFilterModeMag(long stage, TEXTURE_FILTER_MODE mode) { SetRenderState(D3DTextureFilterModeTable[mode], DeviceState.TextureFilterModeMag[stage]); }
-    __forceinline void SetTextureMipMapMode(long stage, TEXTURE_MIPMAP_MODE mode) { SetRenderState(D3DTextureMipMapModeTable[mode], DeviceState.TextureMipMapMode[stage]); }
-    __forceinline void SetTextureUVModeU(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeU[stage]); }
-    __forceinline void SetTextureUVModeV(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeV[stage]); }
-    __forceinline void SetTextureUVModeW(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeW[stage]); }
-    __forceinline void SetTextureCoordIndex(long stage, long index) { SetRenderState(index, DeviceState.TextureCoordIndex[stage]); }
+    FABLE_FORCEINLINE void SetPolyCullMode(POLY_CULL_MODE mode) { SetRenderState(D3DPolyCullModeTable[mode], DeviceState.PolyCullMode); }
+    FABLE_FORCEINLINE void SetPolyFillMode(POLY_FILL_MODE mode) { SetRenderState(D3DPolyFillModeTable[mode], DeviceState.PolyFillMode); }
+    FABLE_FORCEINLINE void SetPolyShadeMode(POLY_SHADE_MODE mode) { SetRenderState(D3DPolyShadeModeTable[mode], DeviceState.PolyShadeMode); }
+    FABLE_FORCEINLINE void SetZBufferWriteEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferWriteEnable); }
+    FABLE_FORCEINLINE void SetZBufferEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ZBufferEnable); }
+    FABLE_FORCEINLINE void SetZBufferTestFunc(ZBUFFER_FUNC func) { SetRenderState(D3DZBufferFuncModeTable[func], DeviceState.ZBufferFunc); }
+    FABLE_FORCEINLINE void SetAlphaBlendEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaBlendEnable); }
+    FABLE_FORCEINLINE void SetSourceAlphaBlendMode(ALPHA_BLEND_MODE mode) { SetRenderState(D3DAlphaBlendModeTable[mode], DeviceState.SourceAlphaBlendMode); }
+    FABLE_FORCEINLINE void SetDestAlphaBlendMode(ALPHA_BLEND_MODE mode) { SetRenderState(D3DAlphaBlendModeTable[mode], DeviceState.DestAlphaBlendMode); }
+    FABLE_FORCEINLINE void SetAlphaTestEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.AlphaTestEnable); }
+    FABLE_FORCEINLINE void SetAlphaTestFunc(ALPHA_TEST_FUNC func) { SetRenderState(D3DAlphaFuncModeTable[func], DeviceState.AlphaTestFunc); }
+    FABLE_FORCEINLINE void SetAlphaRef(unsigned long ref) { SetRenderState(ref, DeviceState.AlphaRef); }
+    FABLE_FORCEINLINE void SetBlendOp(BLEND_OP op) { SetRenderState(D3DBlendOpModeTable[op], DeviceState.BlendOpMode); }
+    FABLE_FORCEINLINE void SetFogEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.FogEnable); }
+    FABLE_FORCEINLINE void SetSpecularEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.SpecularEnable); }
+    FABLE_FORCEINLINE void SetClippingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.ClippingEnable); }
+    FABLE_FORCEINLINE void SetTextureFilterModeMin(long stage, TEXTURE_FILTER_MODE mode) { SetRenderState(D3DTextureFilterModeTable[mode], DeviceState.TextureFilterModeMin[stage]); }
+    FABLE_FORCEINLINE void SetTextureFilterModeMag(long stage, TEXTURE_FILTER_MODE mode) { SetRenderState(D3DTextureFilterModeTable[mode], DeviceState.TextureFilterModeMag[stage]); }
+    FABLE_FORCEINLINE void SetTextureMipMapMode(long stage, TEXTURE_MIPMAP_MODE mode) { SetRenderState(D3DTextureMipMapModeTable[mode], DeviceState.TextureMipMapMode[stage]); }
+    FABLE_FORCEINLINE void SetTextureUVModeU(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeU[stage]); }
+    FABLE_FORCEINLINE void SetTextureUVModeV(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeV[stage]); }
+    FABLE_FORCEINLINE void SetTextureUVModeW(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeW[stage]); }
+    FABLE_FORCEINLINE void SetTextureCoordIndex(long stage, long index) { SetRenderState(index, DeviceState.TextureCoordIndex[stage]); }
     // Texture stage colour / alpha operation and argument setters (?SetTextureOperation@CRenderStateManager@@QAEXJW4TEXTURE_OP_MODE@@@Z,
     // ?SetTextureArgument1@CRenderStateManager@@QAEXJW4TEXTURE_ARG_MODE@@@Z, ...): FableWin.pdb has the out-of-line debug copies, Ego_r.pdb
     // none (inline in release); the CEngineStateBlock* Apply bodies 0x00B573A0.. expand them through D3DTextureOperationModeTable
     // 0x01396E70 / D3DTextureArgumentModeTable 0x01396EE8.
-    __forceinline void SetTextureOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureOperation[stage]); }
-    __forceinline void SetTextureAlphaOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureAlphaOperation[stage]); }
-    __forceinline void SetTextureArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument1[stage]); }
-    __forceinline void SetTextureArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument2[stage]); }
-    __forceinline void SetTextureAlphaArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument1[stage]); }
-    __forceinline void SetTextureAlphaArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument2[stage]); }
+    FABLE_FORCEINLINE void SetTextureOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureOperation[stage]); }
+    FABLE_FORCEINLINE void SetTextureAlphaOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureAlphaOperation[stage]); }
+    FABLE_FORCEINLINE void SetTextureArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument1[stage]); }
+    FABLE_FORCEINLINE void SetTextureArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument2[stage]); }
+    FABLE_FORCEINLINE void SetTextureAlphaArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument1[stage]); }
+    FABLE_FORCEINLINE void SetTextureAlphaArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument2[stage]); }
     // More public setters with no out-of-line copy in Ego_r.pdb (FableWin.pdb has the debug bodies), expanded by
     // CEngine::SetDefaultRenderStates 0x00B24850: fog colour / range (a float's bits are the D3D value: retail spills the constant
     // to a stack slot and reloads it as a dword, 0x00B24E7E), dither, lighting, anisotropy and the texture transform flags
     // (D3DTextureTransformModeTable 0x01396FCC).
-    __forceinline void SetFogColour(unsigned long colour) { SetRenderState(colour, DeviceState.FogColour); }
-    __forceinline void SetFogStart(float start) { SetRenderState(*(unsigned long*)&start, DeviceState.FogStart); }
-    __forceinline void SetFogEnd(float end) { SetRenderState(*(unsigned long*)&end, DeviceState.FogEnd); }
-    __forceinline void SetDitherEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.DitherEnable); }
-    __forceinline void SetLightingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.LightingEnable); }
-    __forceinline void SetTextureMaxAnisotropy(long stage, long anisotropy) { SetRenderState(anisotropy, DeviceState.TextureMaxAnisotropy[stage]); }
-    __forceinline void SetTextureTransformMode(long stage, TEXTURE_TRANSFORM_MODE mode) { SetRenderState(D3DTextureTransformModeTable[mode], DeviceState.TextureTransformMode[stage]); }
+    FABLE_FORCEINLINE void SetFogColour(unsigned long colour) { SetRenderState(colour, DeviceState.FogColour); }
+    FABLE_FORCEINLINE void SetFogStart(float start) { SetRenderState(*(unsigned long*)&start, DeviceState.FogStart); }
+    FABLE_FORCEINLINE void SetFogEnd(float end) { SetRenderState(*(unsigned long*)&end, DeviceState.FogEnd); }
+    FABLE_FORCEINLINE void SetDitherEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.DitherEnable); }
+    FABLE_FORCEINLINE void SetLightingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.LightingEnable); }
+    FABLE_FORCEINLINE void SetTextureMaxAnisotropy(long stage, long anisotropy) { SetRenderState(anisotropy, DeviceState.TextureMaxAnisotropy[stage]); }
+    FABLE_FORCEINLINE void SetTextureTransformMode(long stage, TEXTURE_TRANSFORM_MODE mode) { SetRenderState(D3DTextureTransformModeTable[mode], DeviceState.TextureTransformMode[stage]); }
     // ?SetTextureMipmapLODBias@CRenderStateManager@@QAEXJM@Z: the float's bits are the D3D value (0x00B705DE: the bias is copied
     // to a stack slot and reloaded as a dword).
-    __forceinline void SetTextureMipmapLODBias(long stage, float bias) { SetRenderState(*(unsigned long*)&bias, DeviceState.TextureMipmapLODBias[stage]); }
+    FABLE_FORCEINLINE void SetTextureMipmapLODBias(long stage, float bias) { SetRenderState(*(unsigned long*)&bias, DeviceState.TextureMipmapLODBias[stage]); }
 
     // The rest of the PDB interface (out of line).
 #ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_COLOURWRITE4
     // Chunk 773 (row 0x00F38A10 CSurfaceCompositor::SetBlendMode): ?SetColourWriteEnable@CRenderStateManager@@QAEX_N000@Z is in
     // FableWin.pdb only (debug copy); Ego_r.pdb and retail Fable.exe have no out-of-line copy, and 0x00F38F71 expands it with the
     // folded D3DRS_COLORWRITEENABLE mask 7 (red | green | blue) straight into SetRenderState on ColourWriteEnable (+0x28).
-    __forceinline void SetColourWriteEnable(bool red, bool green, bool blue, bool alpha)
+    FABLE_FORCEINLINE void SetColourWriteEnable(bool red, bool green, bool blue, bool alpha)
     {
         SetRenderState((red ? 1 : 0) | (green ? 2 : 0) | (blue ? 4 : 0) | (alpha ? 8 : 0), DeviceState.ColourWriteEnable);
     }
@@ -235,10 +236,10 @@ public:
     // no out-of-line copy in retail Fable.exe: both rows expand them into SetRenderState on StencilEnable +0x370 (0x00B5AB01, value 1),
     // StencilFunc +0x3C0 (0x00B5AB6D, D3DStencilFuncModeTable 0x01396E18 [STENCIL_FUNC_EQUAL] = D3DCMP_EQUAL), StencilMask +0x3E8
     // (0x00B5ABDA, immediate 2) and StencilRef +0x3D4 (0x00B5AC46, immediate 0). The default branch keeps the declarations.
-    __forceinline void SetStencilEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.StencilEnable); }
-    __forceinline void SetStencilFunc(STENCIL_FUNC func) { SetRenderState(D3DStencilFuncModeTable[func], DeviceState.StencilFunc); }
-    __forceinline void SetStencilRef(unsigned long ref) { SetRenderState(ref, DeviceState.StencilRef); }
-    __forceinline void SetStencilMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilMask); }
+    FABLE_FORCEINLINE void SetStencilEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.StencilEnable); }
+    FABLE_FORCEINLINE void SetStencilFunc(STENCIL_FUNC func) { SetRenderState(D3DStencilFuncModeTable[func], DeviceState.StencilFunc); }
+    FABLE_FORCEINLINE void SetStencilRef(unsigned long ref) { SetRenderState(ref, DeviceState.StencilRef); }
+    FABLE_FORCEINLINE void SetStencilMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilMask); }
     void SetStencilOpFail(STENCIL_OP_MODE);
     void SetStencilOpZFail(STENCIL_OP_MODE);
     void SetStencilOpPass(STENCIL_OP_MODE);
@@ -289,7 +290,7 @@ private:
     static _D3DRENDERSTATETYPE D3DTextureCoordWrapStageTable[8];
     // ?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z: skip an unchanged value; otherwise bookmark the old value once per
     // capture block (the state's mask bit), store the new one and queue the state for RealiseRenderState.
-    __forceinline void SetRenderState(unsigned long value, CStateInfo& state)
+    FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
     {
         if (state.DesiredState != value) {
             if ((state.BookmarkMask & CurrentBookmarkMask) == 0) {
@@ -303,7 +304,7 @@ private:
         }
     }
     // ?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z
-    __forceinline void AddStateToUpdateList(CStateInfo& state)
+    FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state)
     {
         if (!state.DirtyListFlag) {
             state.DirtyListFlag = true;

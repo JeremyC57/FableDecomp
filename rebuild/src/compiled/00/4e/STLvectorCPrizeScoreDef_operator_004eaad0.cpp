@@ -1,6 +1,7 @@
 // 004eaad0 std::vector<CPrizeScoreDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
 // Leaf: ??4?$vector@UCPrizeScoreDef@X_004eaad0@@@X_004eaad0@@QAEAAU01@ABU01@@Z
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <string.h>
 #include <new>
@@ -14,13 +15,13 @@ namespace X_004eaad0 {
 struct CSubDefClassBase {virtual ~CSubDefClassBase();char baseData[33];CSubDefClassBase();CSubDefClassBase(const CSubDefClassBase&);CSubDefClassBase& operator=(const CSubDefClassBase&);};
 
 #pragma pack(pop)
-struct CPrizeScoreDef:CSubDefClassBase {float Score;int Mult;CPrizeScoreDef();__forceinline CPrizeScoreDef(const CPrizeScoreDef& x):CSubDefClassBase(x),Score(x.Score),Mult(x.Mult){} };
+struct CPrizeScoreDef:CSubDefClassBase {float Score;int Mult;CPrizeScoreDef();FABLE_FORCEINLINE CPrizeScoreDef(const CPrizeScoreDef& x):CSubDefClassBase(x),Score(x.Score),Mult(x.Mult){} };
 struct __false_type {};
 CPrizeScoreDef* __fastcall copy(CPrizeScoreDef* f,CPrizeScoreDef* e,CPrizeScoreDef* o,const __false_type&);
 template<class Tag>__declspec(noinline) void __fastcall destroy(CPrizeScoreDef* f,CPrizeScoreDef* e,const Tag&){for(;f!=e;++f)f->~CPrizeScoreDef();}
 __declspec(noinline) void __fastcall construct(CPrizeScoreDef* out,const CPrizeScoreDef& x);
-__forceinline CPrizeScoreDef* uninitialized_copy(CPrizeScoreDef* f,CPrizeScoreDef* o,CPrizeScoreDef* e){for(;f!=e;++f,++o)construct(o,*f);return o;}
-template<class T> __forceinline void _UninitializedCopy(T* out,T* first,T* last){while(first!=last){construct(out,*first);++first;++out;}}
+FABLE_FORCEINLINE CPrizeScoreDef* uninitialized_copy(CPrizeScoreDef* f,CPrizeScoreDef* o,CPrizeScoreDef* e){for(;f!=e;++f,++o)construct(o,*f);return o;}
+template<class T> FABLE_FORCEINLINE void _UninitializedCopy(T* out,T* first,T* last){while(first!=last){construct(out,*first);++first;++out;}}
 template<class T> struct vector {
  T *first,*last,*limit;
  T* _M_allocate_and_copy(unsigned,T*,T*);

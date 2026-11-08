@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB6A50, length 64 bytes.
 // Leaf: ??_GCKeyboardDX@@UAEPAXI@Z
 // Callees: the device's COM slots (no null test), ~CKeyboard @ 0x00A66990 (labelled "CBase_Destructor_Helper"), operator delete @ 0x00BFE9BC. Vtable slot 0. Shape: the device load before the vtable store, `this` in esi, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct IDirectInputDevice8_Retail {              // COM: __stdcall methods, `this` pushed
     virtual long __stdcall QueryInterface(void* iid, void** out);   // slot 0
@@ -21,7 +22,7 @@ class CKeyboard { public:                                 // retail layout 0x341
 struct CKeyboardDX : CKeyboard {                   // vtable 0x0129EA60
     IDirectInputDevice8_Retail* DKeyboard;         // +0x3418
     unsigned char               KeyStates[0x100];  // +0x341c
-    __forceinline virtual ~CKeyboardDX()
+    FABLE_FORCEINLINE virtual ~CKeyboardDX()
     {
         DKeyboard->Unacquire();
         DKeyboard->Release();

@@ -21,6 +21,7 @@
 //   swapped jump table -- check the $L case-label offsets; default 0 skips the `< 0` test); `weapon_def < 0 || !HasTC(0x46)` in ONE condition (two separate ifs put the shared
 //   `return false` epilogue after the in-hand compare instead of at the end); `<= 0` for the `jg`; each animation name is a
 //   named CCharString in its own block (built before the `push 0`, so no tail merge of the two STANDARD_UNSHEATHE reports).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;                                      // +0x00
@@ -94,13 +95,13 @@ public:
     bool Dead : 1;                                          // +0x91 bit 0
 
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CTCBase* PeekTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* PeekTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

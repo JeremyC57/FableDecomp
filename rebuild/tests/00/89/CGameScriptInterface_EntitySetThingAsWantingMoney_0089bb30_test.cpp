@@ -1,5 +1,6 @@
 // Behaviour test for 0089bb30: src/0089bb30.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CGameScriptInterface::EntitySetThingAsWantingMoney(const CScriptThing& thing, long amount) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,14 +27,14 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
     STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
             it = m_pLast;
         return it->m_pTC;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -65,10 +66,10 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-__forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -96,21 +97,21 @@ struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
-__forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
     if (thing->HasTC(kind))
         tc = GetTC(thing, kind);
     return tc;
 }
-__forceinline CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;
     if (thing->HasTC(kind))
         tc = GetTCConst(thing, kind);
     return tc;
 }
-template <class T> __forceinline bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
+template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
 {
     if (thing->HasTC(kind)) {
         *out = (T*)GetTC(thing, kind);
@@ -124,7 +125,7 @@ class CCharString { public:                               // fable_string.h layo
     ~CCharString();                                // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-__forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
+FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
 {
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;

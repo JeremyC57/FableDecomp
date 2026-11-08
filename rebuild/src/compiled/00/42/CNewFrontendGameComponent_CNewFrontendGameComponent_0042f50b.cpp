@@ -14,6 +14,7 @@
 //   store inside the null test); the trivially destructible vector frees its storage inline; the base's inline destructor
 //   stores its two vtables and tail-jumps to ~CBase. The size TU inlines the def release and the base destructor only when they
 //   are `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 class CBaseClassNonCopyable {
@@ -25,7 +26,7 @@ struct CGameComponentInterface {
 };
 class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
-    virtual __forceinline ~CGameComponent() { }
+    virtual FABLE_FORCEINLINE ~CGameComponent() { }
 };
 #include "engine/CCountedPointer.h"
 class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
@@ -37,7 +38,7 @@ class CFrontEndDef { public:
 };
 struct CDefPointer_CFrontEndDef {
     CFrontEndDef* Data;
-    __forceinline ~CDefPointer_CFrontEndDef()
+    FABLE_FORCEINLINE ~CDefPointer_CFrontEndDef()
     {
         CFrontEndDef* def = Data;
         if (def) {
@@ -68,7 +69,7 @@ struct CDateAndTimeVector {                                // STLport vector<CDa
     CDateAndTime* _M_start;
     CDateAndTime* _M_finish;
     CDateAndTime* _M_end_of_storage;
-    __forceinline ~CDateAndTimeVector()
+    FABLE_FORCEINLINE ~CDateAndTimeVector()
     {
         if (_M_start)
             free(_M_start);

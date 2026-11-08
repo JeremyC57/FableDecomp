@@ -13,6 +13,7 @@
 //   `__uninitialized_copy(first, last, result, __false_type())` with _Construct's placement null test and the pair's copy
 //   inline (three dword moves); the copy helper needs __forceinline (plain inline stays a call); speed TU.
 // Label: catalog "Vector_AllocateTriplets" (descriptive).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -40,7 +41,7 @@ public:
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

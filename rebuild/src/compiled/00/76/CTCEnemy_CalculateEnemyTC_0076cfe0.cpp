@@ -17,6 +17,7 @@
 //   0x9F CTCTurncoat, 0xBC CTCFollowed.
 // Shape: HasTC / PeekTC are __forceinline (VC7.1 keeps the later ones out of line, which spills the result bool off bl) over
 //   a same-TU noinline LowerBound body; `proxied` is one bool returned at the single exit.
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -41,8 +42,8 @@ public:
     TCMap              Components;                      // +0x44
     unsigned char      _pad54[0x91 - 0x54];
     unsigned char      Dead : 1;                        // +0x91 bit 0
-    __forceinline bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
-    template <class T> __forceinline const T* PeekTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
+    template <class T> FABLE_FORCEINLINE const T* PeekTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const TCMap* map = &Components;

@@ -15,6 +15,7 @@
 //   destructors (CIndexBuffer own vtable + release + CMovableResource vtable; the vertex buffer's uninitialise + out-of-line
 //   base; each shader's null-tested `dec ; jne ; call [vt]` release; each CArray's virtual element destructor loop with
 //   `last` in ebx, then `free(start)` behind a null test), and the root destructor is tail-jumped.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
 class CBaseClassNonCopyable {
@@ -40,7 +41,7 @@ class CShaderBase { public:                               // vtable 0x0129A030
 };
 class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
-    __forceinline virtual ~CPixelShader()
+    FABLE_FORCEINLINE virtual ~CPixelShader()
     {
         CPixelShaderData* data = Data;
         if (data) {
@@ -51,7 +52,7 @@ class CPixelShader : public CShaderBase { public:                // vtable 0x012
 };
 class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
-    __forceinline virtual ~CVertexShader()
+    FABLE_FORCEINLINE virtual ~CVertexShader()
     {
         CVertexShaderData* data = Data;
         if (data) {
@@ -61,7 +62,7 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
     }
 };
 
-template <class T> __forceinline void DestroyRange(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void DestroyRange(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -72,7 +73,7 @@ template <class T> __forceinline void DestroyRange(T* first, T* last)
 class CVertexBufferWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0129BA20, 0x34 bytes
     unsigned char _body[0x30];
     void Uninitialise();                           // 0x00A63200
-    __forceinline virtual ~CVertexBufferWin32() { Uninitialise(); }
+    FABLE_FORCEINLINE virtual ~CVertexBufferWin32() { Uninitialise(); }
 };
 
 class CMovableResource { public:                          // vtable 0x0129B860
@@ -86,7 +87,7 @@ class CIndexBuffer : public CMovableResource { public:           // vtable 0x012
     long                   PrimitiveType;          // +0x0c
     void*                  PAllocatedBuffer;       // +0x10
     void Uninitialise();                           // 0x00AC1EE0
-    __forceinline virtual ~CIndexBuffer() { Uninitialise(); }
+    FABLE_FORCEINLINE virtual ~CIndexBuffer() { Uninitialise(); }
 };
 
 class CEnginePrimitiveManagerParticleSpriteGroup : public CBaseClassNonCopyable { public:

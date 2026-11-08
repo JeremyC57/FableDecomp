@@ -17,6 +17,7 @@
 // word and the compare); each case tests `IsButtonHeld("...") ? false : true` on an implicit CCharString conversion
 // temporary (re-addressed with `lea`) and VC7.1 cross-jumps the identical tails (the 8-bit `neg/sbb/inc`, the string
 // dtor, the flag clear); case 4 is laid out first.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -48,7 +49,7 @@ class CThing { public:                                          // retail CThing
     unsigned char _pad00[0x20];
     std::bitset<274>     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long type) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) const
     {
         if (UsingComponents.test(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

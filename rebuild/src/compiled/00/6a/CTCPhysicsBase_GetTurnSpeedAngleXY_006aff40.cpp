@@ -19,6 +19,7 @@
 // Tried: an inline WrapTurns(float) over `atan2(float,float) * K` with named results (225v212), the second
 //   wrap as the direct return operand (225v212), a multi-return helper (227v212), and this landed
 //   __forceinline GetBearingInTurns form (225v212): the FIRST bearing always matches byte for byte.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
@@ -31,7 +32,7 @@ public:
 };
 
 // Bearing of a direction in turns, wrapped into [0, 1) (the landed 0x008F4D60 helper; name descriptive).
-static __forceinline float GetBearingInTurns(float x, float y)
+static FABLE_FORCEINLINE float GetBearingInTurns(float x, float y)
 {
     float turns = (float)atan2((double)x, (double)y) * 0.15915494f;     // 1/(2pi) 0x01237F08
     if (turns < 0.0f || turns >= 1.0f) {

@@ -1,4 +1,5 @@
 // Behaviour test for 00e6e050: the model below is a copy of src/00e6e050.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -20,7 +21,7 @@ class CScriptBase { public:
 };
 bool CScriptBase::IsActiveThreadTerminating() { ++g_termCalls; return g_terminating != 0; }
 
-__forceinline bool NameContains(const CCharString& name, const char* text)
+FABLE_FORCEINLINE bool NameContains(const CCharString& name, const char* text)
 {
     CCharString pattern(text, -1);
     return strstr(name.GetPString(), pattern.GetPString()) ? true : false;

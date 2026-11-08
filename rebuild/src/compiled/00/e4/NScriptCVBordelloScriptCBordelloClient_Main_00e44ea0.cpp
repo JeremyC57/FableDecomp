@@ -6,6 +6,7 @@
 //   ClientID / SexChance / NextLine (+0x1c..+0x28) are the ones the landed Init writes.
 // Shape: the landed CBordelloGuard::Main 0x00E40420 opening; the parent's IsHeroDressedAsLady 0x00E3E320 / PlayCutscene 0x00E3E720 /
 //   seh_Whore (+0xa4) / csargs (+0xb4); CTimer ctor/dtor/GetTime expand where VC7.1's inline budget allows, operator= is forced (one site).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -38,7 +39,7 @@ inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(th
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #define T IsActiveThreadTerminating()
 #define NSF Game->NewScriptFrame()

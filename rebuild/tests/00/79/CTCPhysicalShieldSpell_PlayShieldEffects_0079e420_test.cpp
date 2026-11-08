@@ -6,6 +6,7 @@
 // Shape: the appearance comes from the out-parameter GetInterface whose entry pick is one end/hit ternary
 //   (`*out = (it == last || k < it->type ? last : it)->component`): the component loads straight into ecx before the
 //   argument pushes and the bool goes through eax. The if-form pick (or a HasTC test + GetTC) loads it after the pushes.
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +18,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

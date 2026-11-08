@@ -15,6 +15,7 @@
 //   carrying test is the byte presence test, the weapon test the dword `unsigned long` HasTC (`mov ecx,[eax+28h] ;
 //   test ch,1`); both GetTC lookups are the one-ternary returned form (component straight into ecx) and share the
 //   string temporary's frame slot for their key.
+#include "fable_compiler.h"
 class CTCBase;
 
 class CCharStringData { public:
@@ -40,7 +41,7 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     CCharString   Group;                       // +4
     unsigned long GroupCRC;                    // +8
     void SetGroup(const CCharString& group);   // 0x0073DFF0
-    __forceinline void SetGroupInline(const CCharString& group)   // the same body, expanded at this site
+    FABLE_FORCEINLINE void SetGroupInline(const CCharString& group)   // the same body, expanded at this site
     {
         Group = group;
         GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
@@ -56,11 +57,11 @@ class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;               // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

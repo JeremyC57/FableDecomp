@@ -13,6 +13,7 @@
 //   re-read for the final compare.
 // Name: Ego_r.pdb `?GetPCriteriaString@CSoundMap@@QBEPBVCDefString@@ABVCCharString@@@Z`; catalog "SoundMap_FindByCRC"
 //   is descriptive.
+#include "fable_compiler.h"
 class CCRC {
 public:
     static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
@@ -56,7 +57,7 @@ public:
     C           Compare;                                    // +0x0c (empty, padded)
     const_iterator end() const { return Last; }
     const_iterator LowerBound(const K& key) const;          // 0x0069C740
-    __forceinline const_iterator Find(const K& key) const
+    FABLE_FORCEINLINE const_iterator Find(const K& key) const
     {
         const_iterator it = LowerBound(key);
         if (it == end() || Compare(key, *it))

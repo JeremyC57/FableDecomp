@@ -12,6 +12,7 @@
 // Layout: CTCBase ParentThing +0x04 (engine/CTCBase.h names); retail CThing UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0.
 // Model: CTCBase is modelled locally (as the landed 0x0065AC0E does) because engine/CTCBase.h carries no member functions and
 //   GetPlayerManager is a protected CTCBase member; the inline parent accessor's spelling is unproven (inline, no symbol).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { TC_REGION_FOLLOWER = 0x7a, TC_FOLLOWED = 0xbc };
 template <class K, class V> class CVectorMap { public:
@@ -19,7 +20,7 @@ template <class K, class V> class CVectorMap { public:
     value_type* _M_start;
     value_type* _M_finish;
     value_type* LowerBound(const K& key);       // 0x0040F020
-    __forceinline V Find(long type)
+    FABLE_FORCEINLINE V Find(long type)
     {
         value_type* it = LowerBound((K)type);
         if (it == _M_finish || type < it->first)
@@ -34,7 +35,7 @@ public:
     CVectorMap<ETCInterfaceType, CTCBase*> Components;   // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                     // +0x91 bit 0
-    template<class T> __forceinline bool GetTC(T** out, long type)
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** out, long type)
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             *out = (T*)Components.Find(type);

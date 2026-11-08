@@ -13,6 +13,7 @@
 // iterator lives in the frame) then `for (; it != end(); it++)` with the postfix increment's _M_increment inlined; a
 // later entry wins only on a strictly greater priority (`jle`); the result is the counted copy of best->PEffect
 // (null test + `inc [p+4]`).
+#include "fable_compiler.h"
 class CEngineMeshEffect {
 public:
     virtual void v000();
@@ -22,8 +23,8 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline CIVCountedPointer() : Object(0) {}
-    __forceinline CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) {}
+    FABLE_FORCEINLINE CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->RefCount;

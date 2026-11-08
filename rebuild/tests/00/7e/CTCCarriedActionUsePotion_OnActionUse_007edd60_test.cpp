@@ -1,5 +1,6 @@
 // Behaviour test for 007edd60: src/007edd60.cpp copied verbatim; OnActionUse runs the base use hook, applies the potion's
 // bonus-item sub-def to the user's hero stats (interface 4) when both exist, kills the potion thing, releases the sub-def.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -70,7 +71,7 @@ class CThing { public:
     CInterfaceMap    m_interfaces;                          // +0x44
     unsigned char    _pad4c[0x70 - 0x4c];
     CDefPointeeBase* PDef_Object;                           // +0x70 CDefPointer<const CThingDef>::Object
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

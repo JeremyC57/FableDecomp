@@ -15,6 +15,7 @@
 // (`morality > 0.33 && cost < -eps`, `morality < 0.66 && cost > eps`; `-eps` is `fld ; fchs` of the extern
 // epsilon) give retail's block order and the merged `max - 1` tail (one `||` condition inverts the first block).
 // Layout: CTCBase ParentThing +0x04; the thing's interface bitset +0x20, map +0x44.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -30,7 +31,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -43,7 +44,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         T* component = 0;
         GetInterface(&component, wanted);

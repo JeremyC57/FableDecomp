@@ -1,5 +1,6 @@
 // Behaviour test for 00a52450: src/00a52450.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. C3DKeyframe::ToMatrix(CMatrix3x4& m, bool applyScaling) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,7 +30,7 @@ class CMatrix3x4 { public:
 };
 class CQuaternion { public:
     float X, Y, Z, W;
-    __forceinline void ToMatrix(CMatrix3x4& m, const C3DVector& pos) const
+    FABLE_FORCEINLINE void ToMatrix(CMatrix3x4& m, const C3DVector& pos) const
     {
         float x = X, y = Y, z = Z, w = W;
         float n = w * w + z * z + y * y + x * x;

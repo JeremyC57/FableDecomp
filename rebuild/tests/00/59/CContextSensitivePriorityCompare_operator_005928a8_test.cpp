@@ -1,9 +1,10 @@
+#include "fable_compiler.h"
 #include <cstdio>
 struct CContextItem_Retail { unsigned char _pad[0x2c]; long m_priority; };
 struct SContextEntry_Retail { long m_id; CContextItem_Retail* m_pItem; };
 long __fastcall GetContextSensitivePriority_00581bde(long id) { return id * 10; }
 class CContextSensitivePriorityCompare { public:
-    static __forceinline long GetPriority(const SContextEntry_Retail& entry)
+    static FABLE_FORCEINLINE long GetPriority(const SContextEntry_Retail& entry)
     {
         if (entry.m_pItem)
             return entry.m_pItem->m_priority;

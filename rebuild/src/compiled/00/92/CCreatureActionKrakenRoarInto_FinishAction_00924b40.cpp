@@ -8,6 +8,7 @@
 // @ 0x00925920 (FableWin.pdb ??0...@QAE@AAVCThingCreatureBase@@J@Z), CThingCreatureBase::SetCurrentAction @ 0x006644F0,
 // ~CCombatActionBase @ 0x0062E900.
 // Shape: the 0x118-byte roar loop temporary sits at the frame base; the owner for the call's `this` is fetched first (edi).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -30,7 +31,7 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8 (Eg
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0xa8 - 0x10];
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.Get()); }
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.Get()); }
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     CIntelligentPointer<CThing> PTarget;            // +0xa8 CIntelligentPointer<CThing>

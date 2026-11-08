@@ -12,6 +12,7 @@
 // (CAbilityTrackDef, 0x50 bytes: ExperienceStat +0x3C, Abilities +0x40); CAbilityTrackLevelDef 0x48 bytes, ExperienceCost +0x3C.
 // Shape: the stat loop runs 0..5 (strength-reduced: track pointer += 0x50, level pointer += 4); the next-level cost is
 // `level < Abilities.size() - 1 ? Abilities[level + 1].ExperienceCost : -1` (unsigned `jae`, /72 by magic multiply).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -21,7 +22,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -17,6 +17,7 @@
 // Shape: the chest comes from the out-parameter GetInterface (left unset when absent: retail then reads the shared key
 // slot); the action is a temporary inside the SetCurrentAction call; the deed log (0x51) and hero stats (4) are HasTC +
 // GetTC lookups sharing the map pointer and the key slot.
+#include "fable_compiler.h"
 class CTCBase;
 class CFaction;
 class CThingAICreature;
@@ -40,15 +41,15 @@ private: public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                        // +0x20
     CInterfaceMap m_interfaces;                            // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

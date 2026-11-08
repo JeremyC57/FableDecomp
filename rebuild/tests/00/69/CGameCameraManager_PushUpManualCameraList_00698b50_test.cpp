@@ -3,6 +3,7 @@
 // Unused layout tails and interfaces are reduced. Flattened byte fields are
 // represented by pointers to actual constructed objects. Native offsets remain
 // separate evidence; this fixture does not assert native parity.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,7 +33,7 @@ namespace{void __fastcall PlayCameraSoundThroughObservedThing(const CThing*thing
 class CGameCameraManager{public:bool BlockModeChange,UsingCameraManually;void*PObservedThing;NCameraModes::CScriptModuleBase*PPendingScriptModule_Data,*PCurrentScriptModule_Data;void*CameraList;void*CameraListIndex;CDefPointeeBase*&PDef_Object;CGameCameraManager(CDefPointer<const CCameraManagerDef>&d):PDef_Object(d.Object){}
 void PreparePendingMode(CDefPointer<const CCameraModeDef>mode){CHECK(this==expectedManager&&mode.Object==expectedDef);if(mode.Object)CHECK(mode.Object->RefCount==3);++prepares;}
 void PushUpManualCameraList();
-__forceinline void PlayCameraSoundThroughObservedThing(const CCharString&sound)const{
+FABLE_FORCEINLINE void PlayCameraSoundThroughObservedThing(const CCharString&sound)const{
  ::PlayCameraSoundThroughObservedThing(reinterpret_cast<const CThing*>(reinterpret_cast<const CBaseIntelligentPointer*>(PObservedThing)->GetPItem()),*reinterpret_cast<const CCameraManagerDef*>(reinterpret_cast<const CDefPointer<const CCameraManagerDef>*>(&PDef_Object)->InternalGetObject()),sound);
 }
 };

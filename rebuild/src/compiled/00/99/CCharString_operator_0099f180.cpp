@@ -10,6 +10,7 @@
 // Shape: with data, unshare and append the character once; without, `return *this = c;` through an inline copy of
 // operator=(char) (its unassign folds away on the null arm); inlining puts the {c, 0} buffer in the dead argument
 // slot, which a buffer written directly in this body does not get.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     char*         PData;                        // +0x00
@@ -33,7 +34,7 @@ public:
     protected: void UnassignString(); public:                      // 0x0099E9B0
     const CCharString& operator+=(char c);
     // inline copy of operator=(char) 0x0099F040 for the empty-string arm (the null test of the unassign folds away)
-    __forceinline const CCharString& operator=(char c)
+    FABLE_FORCEINLINE const CCharString& operator=(char c)
     {
         char text[2];
         text[0] = c;

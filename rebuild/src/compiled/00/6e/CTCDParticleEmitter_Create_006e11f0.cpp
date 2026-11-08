@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: Create
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members data->Data, info->Info are the header CCountedPointer's (same offsets).
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <string.h>
 #include "engine/CTCPhysicsBase.h"
@@ -12,7 +13,7 @@
 void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete[](void*);
 namespace X_006e11f0 {
-struct C3DVector {float X,Y,Z;__forceinline C3DVector(){}__forceinline C3DVector(const C3DVector&a):X(a.X),Y(a.Y),Z(a.Z){}};struct CRightHandedSet {C3DVector Up,Forward;__forceinline CRightHandedSet(){}__forceinline CRightHandedSet(const CRightHandedSet&a):Up(a.Up),Forward(a.Forward){}};extern CRightHandedSet DefaultAxes;
+struct C3DVector {float X,Y,Z;FABLE_FORCEINLINE C3DVector(){}FABLE_FORCEINLINE C3DVector(const C3DVector&a):X(a.X),Y(a.Y),Z(a.Z){}};struct CRightHandedSet {C3DVector Up,Forward;FABLE_FORCEINLINE CRightHandedSet(){}FABLE_FORCEINLINE CRightHandedSet(const CRightHandedSet&a):Up(a.Up),Forward(a.Forward){}};extern CRightHandedSet DefaultAxes;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CBaseClassNonCopyable:CBaseClass {__declspec(noinline) CBaseClassNonCopyable();__declspec(noinline) virtual ~CBaseClassNonCopyable();};
 struct CTCParamsPhysicsBase:CBaseClassNonCopyable {C3DVector position;CRightHandedSet axes;__declspec(noinline) CTCParamsPhysicsBase(const C3DVector& p,const CRightHandedSet& a):position(p),axes(a){}};

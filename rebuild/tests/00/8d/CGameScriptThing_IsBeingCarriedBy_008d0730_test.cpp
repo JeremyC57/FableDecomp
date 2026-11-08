@@ -1,5 +1,6 @@
 // Behaviour test for 008d0730: src/008d0730.cpp copied verbatim; a script thing is "carried by" a name when its live thing
 // holds a carryable component (kind 0x47) with a carrying component and the name is empty or equals the carrier's script name.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -40,7 +41,7 @@ class CCharStringData { public:
 class CCharString {
 public:
     CCharStringData* PStringData;                  // +0x00
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -49,13 +50,13 @@ public:
         }
         return PStringData->Data == text;
     }
-    __forceinline bool SameText(const CCharString& other) const
+    FABLE_FORCEINLINE bool SameText(const CCharString& other) const
     {
         if (PStringData->Data.StringLength != other.PStringData->Data.StringLength)
             return false;
         return Compare_00411570(PStringData->Data.PData, other.PStringData->Data.PData) == 0;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -75,7 +76,7 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -93,7 +94,7 @@ struct CThingRetail {
     unsigned char  _pad78[0x91 - 0x78];
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline bool HasTC(long kind) const
+    FABLE_FORCEINLINE bool HasTC(long kind) const
     {
         if (m_tcMask[kind >> 5] & (1UL << (kind & 31)))
             return true;

@@ -13,6 +13,7 @@
 //   set, then the key destroyed at the end of the statement), the map then re-sorted out of line.
 // Retail layout: the name-pair map CVectorMap at +0x54 (12-byte vector, comparator +0x60, Dirty +0x61), as AddBank's model.
 // Fix (chunk 755): the sample id read into a named local before the bank call gives retail's edx/eax register choice in the Add.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -53,7 +54,7 @@ public:
     std::vector<value_type> Data;                           // +0x00
     C                        Comp;                          // +0x0C (empty comparator)
     bool                     Dirty;                         // +0x0D
-    __forceinline void Add(const K& key, const V& value)
+    FABLE_FORCEINLINE void Add(const K& key, const V& value)
     {
         Data.push_back(value_type(key, value));
         Dirty = true;

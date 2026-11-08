@@ -13,6 +13,7 @@
 // (0x00967650) models it.
 // Shape: the workplace is reached through an inline `GetCreature()` getter and a cast to the creature view (retail
 // `lea ecx,[eax+170h]`; the direct member chain gives `add ecx,170h`); one nested `if` with a single `return false`.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -37,7 +38,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntellige
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

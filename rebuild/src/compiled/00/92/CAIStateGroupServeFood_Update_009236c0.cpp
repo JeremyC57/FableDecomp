@@ -19,13 +19,14 @@
 // Shape: the bit-24 presence test reads the bitset word into a named local and shifts it (the masked / unnamed forms narrow to
 // `mov cl,byte [eax+37h]`; the landed 0x0094BB20 TestTC form), bound to a `const bool&` (frame byte at +0x17); the action temporaries' generated destructors run inline (member intelligent pointer, then ~CCreatureActionBase);
 // a `break` out of the state-2 block skips the notification but still destroys the food pointer.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -103,7 +104,7 @@ class CThing { public:
         unsigned long word = m_presentBits[interfaceType >> 5];
         return ((word >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const bool& present = HasTC(interfaceType);
         if (present) {
@@ -114,7 +115,7 @@ class CThing { public:
         }
         return present;
     }
-    template<class T> __forceinline bool FindInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool FindInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -133,7 +134,7 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject> (vtable 0x0125A858)
     virtual void v00();
-    __forceinline CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThingObject& pointer);   // 0x0078B2A0
 class CTCCarrying { public:                            // interface 0x46

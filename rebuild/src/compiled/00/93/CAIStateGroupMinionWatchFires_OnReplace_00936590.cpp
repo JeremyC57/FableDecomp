@@ -7,6 +7,7 @@
 // of the bitset dword at +0x38), CTCIdleScheduler::ChooseNewIdle @ 0x00801A50.
 // The lookup's bool is tested, so the miss path falls to the epilogue; the component pointer is read straight
 // from the lookup result into ecx. Frame: one `push ecx` for the key temporary.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -30,7 +31,7 @@ class CThing { public:
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

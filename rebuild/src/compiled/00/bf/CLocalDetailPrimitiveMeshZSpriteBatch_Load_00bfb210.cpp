@@ -14,6 +14,7 @@
 //   64-bit size as `if (valid) return Alloc(...); return 0;` (valid path falls through); the manager is read once into a
 //   named local used by both allocations; the scale goes through a local homed in the dead
 //   stream-argument slot.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -24,8 +25,8 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;                   // +0x0c
     unsigned long        SourceChunkStreamPos;               // +0x10
     long                 SourceChunkBytesRemaining;          // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -41,8 +42,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    template <class T> __forceinline void Read(T& value) { Read(&value, sizeof(T)); }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    template <class T> FABLE_FORCEINLINE void Read(T& value) { Read(&value, sizeof(T)); }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };
@@ -64,7 +65,7 @@ struct CObjectEntry { long m_words[4]; };                            // 0x10
 class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long bytes, void* owner);                     // 0x00BD9AF0
     template <class T> T* AllocArrayOfObjects(long count, void* owner);   // 0x00BFBC80 (T = CObject)
-    template <class T> __forceinline T* AllocArray(long count, void* owner)
+    template <class T> FABLE_FORCEINLINE T* AllocArray(long count, void* owner)
     {
         __int64 bytes = (__int64)count * sizeof(T);
         if (CDataInputStream::IsValidPosition(bytes))

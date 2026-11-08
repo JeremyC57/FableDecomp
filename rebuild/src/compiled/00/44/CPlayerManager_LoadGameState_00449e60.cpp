@@ -12,6 +12,7 @@
 // Shape: the main-player lookup is GetPlayer's body (count cached before the loop) as a __forceinline helper (chunk 225 precedent: the expanded
 // sites through an inline helper, the rest through the out-of-line function); the found case leaves the loop for an
 // out-of-band `mov ecx,[edi+ecx*4] ; jmp` block; the UID default is a zero __int64 temporary.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
@@ -55,7 +56,7 @@ class CPlayerManager { public:
     long             MainPlayer;                       // +0x1c
     bool IsPlayerAssociatedWithJoystickDeviceNumber(long device);   // 0x004499E0
     CPlayer* GetPlayer(long id);                       // 0x004498C0
-    __forceinline CPlayer* FindPlayer(long id)         // GetPlayer's body, expanded inline
+    FABLE_FORCEINLINE CPlayer* FindPlayer(long id)         // GetPlayer's body, expanded inline
     {
         long count = Players.size();
         for (long i = 0; i < count; ++i)

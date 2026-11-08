@@ -15,6 +15,7 @@
 //   hidden pointer, homed in the dead index slot and re-read at every use; on a def, `*out = def` is the typed pointer's
 //   inlined converting assignment (release the old def, store, addref) and the temporary's destructor releases through
 //   the ref-count base's two inline accessors. Frame pointer and size optimisation from the TU's pragmas (the assignment is forced inline).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -63,7 +64,7 @@ public:
 template <class T> class CDefPointer {
 public:
     T* m_p;
-    __forceinline CDefPointer& operator=(const CDefPointer<const CDefClassBase>& other)   // forced: the size TU would call it out of line
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer<const CDefClassBase>& other)   // forced: the size TU would call it out of line
     {
         if (m_p != other.m_p) {
             if (m_p) {

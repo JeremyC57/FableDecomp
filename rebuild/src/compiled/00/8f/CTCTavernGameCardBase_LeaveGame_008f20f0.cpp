@@ -16,6 +16,7 @@
 //        the camera-manager out pointer is uninitialised (as ShoveHaPenny's LeaveGame 0x007CF460); the effect vector's
 //        operator[] goes through an iterator OBJECT (`*(begin() + i)`), which gives the Kill call's
 //        `mov eax,[first] ; lea ecx,[off+eax]` element address (landed AddNewCustomer 0x00798D90 idiom).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* source, unsigned int count);   // 0x00BFEAE6
 void __cdecl operator delete(void* p);                                                    // 0x00BFE9BC
 
@@ -39,7 +40,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-template <class T> __forceinline T* CopyRange(T* first, T* last, T* result)   // STLport __copy (random access)
+template <class T> FABLE_FORCEINLINE T* CopyRange(T* first, T* last, T* result)   // STLport __copy (random access)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;
@@ -48,7 +49,7 @@ template <class T> __forceinline T* CopyRange(T* first, T* last, T* result)   //
     }
     return result;
 }
-template <class T> __forceinline void DestroyRange(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void DestroyRange(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -68,7 +69,7 @@ struct CEffectVector {                          // STLport vector<CIntelligentPo
     };
     iterator begin() { return iterator(_M_start); }
     T& operator[](unsigned long i) { return *(begin() + i); }
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         T* i = CopyRange(_M_finish, _M_finish, _M_start);
         DestroyRange(i, _M_finish);

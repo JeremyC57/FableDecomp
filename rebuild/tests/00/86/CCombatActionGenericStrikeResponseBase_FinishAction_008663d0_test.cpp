@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -898,7 +899,7 @@ struct Creature {
  unsigned char _beforeHealth[0x22];float Health;long CanComeBetweenCameraAndObservedThing;unsigned char PhysicalFlags;
  float GetDazedHealthThreshold()const; //00662090
  bool SetCurrentAction(const CCreatureActionBase&); //006644F0
- __forceinline bool GetInterface(CTCCreatureModeManager** out,long type)const {if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;const InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;*out=p->Component;return true;}return false;}
+ FABLE_FORCEINLINE bool GetInterface(CTCCreatureModeManager** out,long type)const {if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;const InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;*out=p->Component;return true;}return false;}
 };
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50

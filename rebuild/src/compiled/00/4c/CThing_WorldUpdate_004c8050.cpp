@@ -18,6 +18,7 @@
 //   list::remove stand-in (the component stays in ebp across it) and from the interface map through the inline find
 //   (key copy in the shared frame word, the type in ebx), a forward scan over equal keys and STLport vector::erase
 //   (`copy(pos + 1, finish, pos)`, --finish); the same-TU LowerBound stand-in shares the key word with the component.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 class CThing;
@@ -114,7 +115,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
             it = last;
         return it;
     }
-    static __forceinline SEntry* copy(SEntry* first, SEntry* lastIt, SEntry* result)
+    static FABLE_FORCEINLINE SEntry* copy(SEntry* first, SEntry* lastIt, SEntry* result)
     {
         for (int n = int(lastIt - first); n > 0; --n) {
             *result = *first;
@@ -123,7 +124,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
         }
         return result;
     }
-    __forceinline SEntry* erase(SEntry* position)
+    FABLE_FORCEINLINE SEntry* erase(SEntry* position)
     {
         if (position + 1 != last)
             copy(position + 1, last, position);

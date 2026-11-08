@@ -8,6 +8,7 @@
 //   through ebx/ebp, the destination strength-reduced as result - first + cur); `this` is never read and the new
 //   block (not the advanced pointer) is returned in eax. `__uninitialized_copy` is `__forceinline` (plain inline leaves it
 //   out of line here, a separate COMDAT call).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);       // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
@@ -23,7 +24,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for ( ; __first != __last; ++__first, ++__cur)

@@ -11,6 +11,7 @@
 // accessor returning the item (`lea ecx,[eax+170h]`; direct member access or a pointer-returning accessor
 // gives `mov ecx ; add ecx`).
 // Model: local (no engine header for this class).
+#include "fable_compiler.h"
 class CTCBase;
 class CThingBuilding;
 
@@ -42,7 +43,7 @@ class CThingAICreature { public:
     unsigned char _pad9[0x11c];
     CIntelligentPointer<CThingBuilding> PWorkBuilding;      // +0x170 CIntelligentPointer<CThingBuilding>
     CThingBuilding* GetWorkBuilding() { return PWorkBuilding.GetPItem(); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

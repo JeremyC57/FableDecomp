@@ -10,6 +10,7 @@
 // Layout: Morph (CEngineInternalPrimitiveMorphInfo) +0x128 (PDB +0x12c less the map's 4 bytes); the rest as 0x00BD92E0.
 // Shape: as CEngineInternalPrimitiveAnimatedMesh's own constructor 0x00BD92E0 (same TU model) through its inline (type, flags)
 // constructor; the derived vtable store and the out-of-line member constructor follow.
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -132,7 +133,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00();
     CEngineInternalPrimitiveAnimatedMesh();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x40];                          // decal / composite-surface vector maps, hidden material set and array

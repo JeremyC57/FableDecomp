@@ -7,6 +7,7 @@
 //   integer register. The last read's four exits each get their own epilogue.
 // Layout: Ego_r.pdb CGlyph (0x18): Left +0, Top +4, Right +8, Bottom +0xc, Offset +0x10, Width +0x12, Advance +0x14.
 //   Local stream model: engine/CDataInputStream.h is data-only and cannot carry the inline Read.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 class CDataInputStream { public:
@@ -16,8 +17,8 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {

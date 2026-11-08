@@ -9,7 +9,8 @@
 // the permanent flag and its reference count both loaded before the branch; the found arm reads the area before both releases.
 // Layout: retail Tattoos +0x1c (12-byte vector of CDefPointer<const CThingBaseDef>); the tattoo sub-def: permanent flag +0x3d,
 // covered area +0x40 (descriptive names).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1

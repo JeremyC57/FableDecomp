@@ -11,6 +11,7 @@
 // only when it moved. The loop stays UNROTATED (`cmp [eax+ecx*4],edx ; jle ; dec ecx ; jmp` behind an aligned head)
 // because its condition is a __forceinline helper with early returns (`IsAbove`); a plain `levels[index] > max`
 // condition is rotated into a strength-reduced do-while.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 struct CLongVector {                               // STLport vector<long> (12 bytes in retail)
     long* _M_start;
@@ -20,7 +21,7 @@ struct CLongVector {                               // STLport vector<long> (12 b
     ~CLongVector() { if (_M_start) free(_M_start); }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     long& operator[](unsigned long n) { return *(_M_start + n); }
-    __forceinline bool IsAbove(unsigned long n, long limit) { if (*(_M_start + n) > limit) return true; return false; }
+    FABLE_FORCEINLINE bool IsAbove(unsigned long n, long limit) { if (*(_M_start + n) > limit) return true; return false; }
 };
 class CDisplayManager { public:
     void GetSupportedAntialiasingLevels(CLongVector& levels);   // 0x009C05C0

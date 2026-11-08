@@ -16,6 +16,7 @@
 // Shape: the landed sibling CGhostGrannyDaughterInLaw::Main 0x00E8BEF0 and the cast-map cutscene of COakValeBanditRaidBandit::Main
 //   0x00DC1770. CTimer::operator= and GetTime must be __forceinline (the long-Main rule of GOTCHAS chunk 781 / 797): with plain inline
 //   VC7.1 calls operator= out of line, and the GS_INTRO loop body is then laid out inline instead of after the epilogue as retail does.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -49,8 +50,8 @@ extern CGameScriptInterfaceBase* pDSTGame;
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600

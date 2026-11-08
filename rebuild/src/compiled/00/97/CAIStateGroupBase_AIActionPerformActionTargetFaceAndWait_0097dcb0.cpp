@@ -12,6 +12,7 @@
 //   PAction +0x20, LookAtThing +0x40); brain creature +0x18, creature CurrentAction +0x100 (landed 0x0097DB70).
 // Shape: natural code; the CBrainOutput ctor is plain inline and VC7.1 itself calls it out of line for the first output
 //   and inlines it for the per-tick look output; the counted-pointer assignment from Clone() is the out-of-line operator=.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
@@ -57,7 +58,7 @@ struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject;
     SCountBlock*         m_pCount;
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -67,14 +68,14 @@ struct CCountedPointer_CCreatureActionBase {
             }
         }
     }
-    __forceinline void Reset(CCreatureActionBase* object)
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
     {
         Release();
         m_pCount = 0;
         m_pObject = object;
     }
     CCountedPointer_CCreatureActionBase& operator=(CCreatureActionBase* object);   // 0x00668D90
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         Release();
         m_pObject = 0;
@@ -96,13 +97,13 @@ class CBrainOutput { public:
     C3DVector                           MoveToPos;        // +0x28
     C3DVector                           LookAtPos;        // +0x34
     CIntelligentPointerConstThing       LookAtThing;      // +0x40
-    __forceinline void SetAsLookAtThing(const CThing* thing, long lookFlags)
+    FABLE_FORCEINLINE void SetAsLookAtThing(const CThing* thing, long lookFlags)
     {
         Types |= 4;
         LookAtThing = CIntelligentPointerConstThing(thing);
         LookFlags = lookFlags;
     }
-    __forceinline void SetAsPerformAction(const CCreatureActionBase* action)
+    FABLE_FORCEINLINE void SetAsPerformAction(const CCreatureActionBase* action)
     {
         Types |= 8;
         PAction = action->Clone();

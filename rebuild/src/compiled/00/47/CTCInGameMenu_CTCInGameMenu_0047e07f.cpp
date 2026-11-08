@@ -16,6 +16,7 @@
 // the components are cleared through an inline `clear() { erase(begin(), end()); }` (end() read through the vector
 // pointer in edi; a direct `erase(begin(), end())` re-reads it through `this`); the POD vector dtors are
 // `__forceinline` `if (start) free(start)`; the CDefPointer dtor zeroes inside its null test.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -24,7 +25,7 @@ template <class T> struct CPODVector {             // STLport vector of a trivia
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CPODVector()
+    FABLE_FORCEINLINE ~CPODVector()
     {
         if (_M_start)
             free(_M_start);
@@ -70,7 +71,7 @@ class CInventoryDef { public:
 };
 struct CDefPointer {                               // CDefPointer<CInventoryDef const>
     CInventoryDef* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

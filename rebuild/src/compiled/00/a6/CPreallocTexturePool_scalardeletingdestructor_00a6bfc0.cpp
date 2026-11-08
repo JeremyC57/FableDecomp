@@ -17,6 +17,7 @@
 //   vector's STLport destructor -- `_Destroy(_M_start, _M_finish)` down to an out-of-line `__destroy_aux(first, last,
 //   __false_type())` whose tag temporary is homed in the LIVE flags slot (`lea eax,[esp+8]`) -- then _Vector_base's
 //   `if (_M_start) free(_M_start)` (start re-read after the call), and the base destructor out of line.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A (only for the emitting helper below)
@@ -74,7 +75,7 @@ __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _Fo
 #pragma auto_inline(on)
 
 template <class _Tp>
-__forceinline void _Destroy(_Tp* __first, _Tp* __last)
+FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last)
 {
     __destroy_aux(__first, __last, __false_type());
 }
@@ -82,7 +83,7 @@ __forceinline void _Destroy(_Tp* __first, _Tp* __last)
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
     _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    __forceinline ~_Vector_base()
+    FABLE_FORCEINLINE ~_Vector_base()
     {
         if (_M_start != 0)
             free(_M_start);
@@ -95,7 +96,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     explicit vector(const _Alloc& __a = _Alloc()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 
 }

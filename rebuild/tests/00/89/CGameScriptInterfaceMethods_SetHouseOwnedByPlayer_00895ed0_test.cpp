@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -1010,7 +1011,7 @@ struct PlayerManagerMethods:CPlayerManager{PlayerMethods* GetMainPlayer();}; //0
 struct HeroStatsRetail{unsigned char BeforeCounts[0xe0];long NumberOfShopsOwned,NumberOfHousesOwned;};
 struct BuyableHouseMethods:CTCBuyableHouse{void SetOwnedByPlayer(bool);void SetRented(bool);}; //006C17B0,006C1150
 // Real CThing component lookup; result is deliberately unspecified when HasTC is false, as in native.
-template<int Key,class T> __forceinline T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
+template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetHouseOwnedByPlayer(const ScriptMethods&,bool,bool)const;};
 void CGameScriptInterfaceMethods::SetHouseOwnedByPlayer(const ScriptMethods& script,bool owned,bool rented)const{
  CThingNative* thing=script.GetPThing();if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[6]&0x200000)){

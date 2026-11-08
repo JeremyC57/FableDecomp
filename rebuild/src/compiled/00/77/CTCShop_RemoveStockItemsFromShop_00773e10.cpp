@@ -10,6 +10,7 @@
 // Shape: HasTC then the one-ternary GetTC into a named owner (kept in ebp); the stock def out pointer is zeroed through the
 // zero register and released only on the alive path (its scope is the inner block); the thing's def is fetched into a local
 // before the out pointer is pushed.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 struct CDefBase {
@@ -51,8 +52,8 @@ class CThing { public:
     CDefClassBase* PDef;                                // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

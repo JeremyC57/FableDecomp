@@ -14,6 +14,7 @@
 // Completion 0 is the first CTCQuestCompletionUI::CompletionType value (name not recovered). CThing as 0x00899E90.
 // Shape: /O2 (16-aligned entry); HasTC then the unchecked pointer-form lookup; CCharString::operator== must be
 // __forceinline (plain inline is called out of line here).
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
@@ -22,7 +23,7 @@ long __fastcall Compare(const char* a, const char* b);   // 0x00411570
 class CCharString {
 public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -46,7 +47,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC()
+    template <class T> FABLE_FORCEINLINE T* GetTC()
     {
         ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
         CInterfaceMap* map = &Components;

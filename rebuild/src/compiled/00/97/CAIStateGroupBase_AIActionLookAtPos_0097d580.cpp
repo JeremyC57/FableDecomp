@@ -16,6 +16,7 @@
 // Layout: CBrainOutput per Ego_r.pdb / the landed 0x00835620 (Types +0, LookFlags +4, PAction +0x20, LookAtPos +0x34,
 //          LookAtThing +0x40); CNavigationInput's Proximity/Speed are floats, so their zero stores are immediates while
 //          MovementType uses the zero register. The base follows engine/CAIStateGroupBase.h (PBrain +4).
+#include "fable_compiler.h"
 class CThing;
 #include "engine/C3DVector.h"
 
@@ -34,7 +35,7 @@ struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject;
     SCountBlock*         m_pCount;
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -44,13 +45,13 @@ struct CCountedPointer_CCreatureActionBase {
             }
         }
     }
-    __forceinline void Reset(CCreatureActionBase* object)
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
     {
         Release();
         m_pCount = 0;
         m_pObject = object;
     }
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         Release();
         m_pObject = 0;
@@ -74,7 +75,7 @@ class CBrainOutput { public:
     C3DVector                           MoveToPos;        // +0x28
     C3DVector                           LookAtPos;        // +0x34
     CIntelligentPointer<const CThing>                 LookAtThing;      // +0x40
-    __forceinline CBrainOutput() : NavigationInput(), PAction(), LookAtThing()
+    FABLE_FORCEINLINE CBrainOutput() : NavigationInput(), PAction(), LookAtThing()
     {
         Types = 0;
         LookFlags = 0;

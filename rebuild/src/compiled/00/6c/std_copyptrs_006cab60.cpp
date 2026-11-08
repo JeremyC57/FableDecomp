@@ -6,6 +6,7 @@
 // Shape (family M106, representative 0x00511FF0): the landed 0x006E1C10 model -- STLport 4.6 `__copy_ptrs(first, last,
 //   result, const __false_type&)` = `__copy(first, last, result, random_access_iterator_tag(), (ptrdiff_t*)0)` with __copy
 //   `__forceinline` (VC7.1 keeps it out of line under plain `inline`); the implicit assignment is four dword moves.
+#include "fable_compiler.h"
 enum ECompositeBlendType { COMPOSITE_BLEND_TYPE_NONE = 0 };
 class CRGBColour {                                       // Ego_r.pdb: a 4-byte anonymous union, modelled by its dword
 public:
@@ -22,7 +23,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

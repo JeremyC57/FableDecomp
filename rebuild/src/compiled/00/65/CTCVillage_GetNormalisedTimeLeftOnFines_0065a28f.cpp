@@ -25,6 +25,7 @@
 //   go through a manager getter whose result is discarded (static members reached through `GetX()->`); the time left is
 //   `knowledge - GetWorld()->GetFramesSince(FramePlayerLastSeenByGuard)` (an inline static, so the getter call precedes
 //   the field load); the effects def is a named local released after the comparison.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -39,7 +40,7 @@ class CThing { public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -88,7 +89,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
 class COpinionDeedEffectsDef : public CDefBase { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -98,7 +99,7 @@ class COpinionDeedEffectsDef : public CDefBase { public:
 class CRegionDef : public CDefBase { public:
     unsigned char _pad_0x08[0x95];
     bool HasFines;                              // +0x9d (descriptive)
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();
@@ -111,7 +112,7 @@ template <class T> class CDefPointer { public:
         if (Object)
             ++Object->m_count;
     }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

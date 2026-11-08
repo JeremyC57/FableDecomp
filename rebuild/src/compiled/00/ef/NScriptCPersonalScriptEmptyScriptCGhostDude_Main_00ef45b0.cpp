@@ -10,6 +10,7 @@
 // Layout: Ego_r.pdb CGhostDude: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Naming wave 35: identity reg 00ef0544 "GhostDude" in 00ef0090; Alloc 00ef44d0; vtable 012f64a4 slot 1; PDB ?Main@CGhostDude@CPersonalScript_EmptyScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGhostDude::Main (wave3/labels_alloc.tsv); PDB ?Main@CGhostDude@CPersonalScript_EmptyScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGhostDude@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -41,7 +42,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive();                                  // 0x00E241B0 (out of line in this module)
 };

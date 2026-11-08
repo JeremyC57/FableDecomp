@@ -2,6 +2,7 @@
 // Leaf: ?OnPersist@CV_ChickenKickingScript@NScript@@UAEXAAVCPersistContext@@@Z
 // Identity: original PDB member signatures and unique persist field names; own vtable012e7318 slot4, constructed at00e62830. Field strings and typed helper callsites independently identify this owner; donor addresses not used.
 // Layout: original field types after typed72-byte level-script base or20-byte entity base; PC owner size144. Shared handle headers aliased for true original bases. CPersistContext is an API-only projection, no storage used.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -28,7 +29,7 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

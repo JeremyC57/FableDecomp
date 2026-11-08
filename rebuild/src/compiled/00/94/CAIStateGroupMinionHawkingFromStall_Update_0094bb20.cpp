@@ -15,6 +15,7 @@
 //          destructor releases without a null test after Terminate; the speech id is read once into a dead slot.
 // Layout: no engine header for this class; modelled locally like the landed OnReplace 0x0094BAD0 (next hawk frame
 //          +0x14, PStall +0x18); the sub-def's +0x2c speech id is descriptive.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -61,7 +62,7 @@ class CThing { public:
         unsigned long word = m_presentBits[interfaceType >> 5];
         return ((word >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -100,8 +101,8 @@ struct CBaseIntelligentPointer {
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 class CThingCreatureBase;
 class CAIBrain { public:

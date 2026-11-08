@@ -1,5 +1,6 @@
 // Behaviour test for 008c6b20: final.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CCreatureAction_TrollGroundPound::PerformAction()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -106,7 +107,7 @@ public:
     char           PlayerNumber;                      // +0x90
     CDefClassBase* GetDef() const { return Def; }
     const C3DVector& GetPosition() const;             // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -119,7 +120,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetDriver(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetDriver(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             *ppOut = (T*)PTCDriver;
@@ -131,7 +132,7 @@ public:
 class CRightHandedSet;
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                      unsigned long flags, const CCharString& name);   // 0x00703210
-__forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
     return CreateThingObject(defIndex, &position, creature->PlayerNumber, 0, 0, name);
 }

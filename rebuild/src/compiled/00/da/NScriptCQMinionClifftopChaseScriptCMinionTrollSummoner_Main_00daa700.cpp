@@ -24,6 +24,7 @@
 //   (0x44-byte frame; without the block the movie gets a slot of its own, 0x50).
 // Naming wave 35: identity reg 00da3962 "MinionTrollSummoner" in 00da34b0; Alloc 00da5da0; vtable 012d759c slot 1; PDB ?Main@CMinionTrollSummoner@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMinionTrollSummoner::Main (wave3/labels_alloc.tsv); PDB ?Main@CMinionTrollSummoner@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMinionTrollSummoner@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -62,7 +63,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
 class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;                                // +0x04 (copied inline, destroyed out of line)
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+    FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     virtual ~CIsThingAlive();
 };

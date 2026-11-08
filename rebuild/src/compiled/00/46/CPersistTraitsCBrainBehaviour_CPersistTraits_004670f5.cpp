@@ -13,6 +13,7 @@
 // the size TU leaves plain inline constructors out of line, so the element constructors are __forceinline.
 // Fixed (rename1, 2026-10-24): CBrainBehaviour is a `class` (the Ego_r name ??0?$CPersistTraits@VCBrainBehaviour@@@@QAE@XZ
 //   mangles V); it was declared `struct`, which produced ...@UCBrainBehaviour@@... Bytes unchanged.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -25,7 +26,7 @@ class CCharString { public:
 class CDefString {
 public:
     long Index;                                        // +0x0 table index
-    __forceinline CDefString(const CCharString& name) { SetString(name); }
+    FABLE_FORCEINLINE CDefString(const CCharString& name) { SetString(name); }
     void SetString(const CCharString& name);           // 0x009D5060
 };
 
@@ -34,7 +35,7 @@ public:
     CDefString Name;                                   // +0x0
     long       Priority;                               // +0x4
     long       ScriptAIPriority;                       // +0x8
-    __forceinline CBrainBehaviour(const CCharString& name) : Name(name), Priority(0), ScriptAIPriority(0) { }
+    FABLE_FORCEINLINE CBrainBehaviour(const CCharString& name) : Name(name), Priority(0), ScriptAIPriority(0) { }
 };
 
 template <class T> struct CPersistTraits;

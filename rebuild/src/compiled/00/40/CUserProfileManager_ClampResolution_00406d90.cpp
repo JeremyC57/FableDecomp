@@ -8,6 +8,7 @@
 // local and is stored back only when the loop ran. Elements are reached as `*(begin() + n)` (STLport operator[]).
 // The while condition is a __forceinline member with early returns (IsModeWiderThan): that keeps the loop UNROTATED
 // (`cmp ; jle ; dec ; sub ; jmp` back) like retail; a plain `DisplayModes[index].Dimensions.X > maxWidth` gets rotated.
+#include "fable_compiler.h"
 class C2DExtentsI { public:
     long X;
     long Y;
@@ -33,7 +34,7 @@ class CUserProfileManager { public:
     unsigned char _pad00[0x80];
     CRetailVector<CDisplayModeDesc> DisplayModes;   // +0x80
     void ClampResolution(unsigned long* resolution, long maxWidth);
-    __forceinline bool IsModeWiderThan(unsigned long index, long width) { if (DisplayModes[index].Dimensions.X > width) return true; return false; }
+    FABLE_FORCEINLINE bool IsModeWiderThan(unsigned long index, long width) { if (DisplayModes[index].Dimensions.X > width) return true; return false; }
 };
 
 void CUserProfileManager::ClampResolution(unsigned long* resolution, long maxWidth)

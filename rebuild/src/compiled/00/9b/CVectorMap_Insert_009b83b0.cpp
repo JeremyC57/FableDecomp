@@ -11,6 +11,7 @@
 //   ~CCharString @ 0x0099EAE0 (the temporary).
 // Shape: `push_back(pair<K, V>(key, value)); Dirty = true;` with STLport push_back __forceinline (plain inline stays a call);
 //   the Dirty store lands after the temporary's destructor on both paths.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CCharString {
@@ -46,7 +47,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     typedef __false_type _IsPODType;
-    __forceinline void push_back(const _Tp& __x)
+    FABLE_FORCEINLINE void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
             _Construct(this->_M_finish, __x);

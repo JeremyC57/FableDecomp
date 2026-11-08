@@ -11,6 +11,7 @@
 //   shared dead frame word); the RemoveMode call is tail-duplicated after the second lookup.
 // Layout: CCreatureActionBase (retail 0xa8 bytes) with PCreature at +8; nothing else of the class is touched. The
 //   interface-0x36 component is modelled only by the byte it clears (CTCSneaking is a descriptive name).
+#include "fable_compiler.h"
 class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template <class T> __forceinline void GetInterface(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
+    template <class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

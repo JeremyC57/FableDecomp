@@ -16,6 +16,7 @@
 //   `ignoreFrustum` slot) and the centre difference as a frame C3DVector; the near/far test is ONE `||` condition (two
 //   separate ifs put the near-plane failure inline instead of retail's shared `fstp st(0)` exit); the planes are tested in
 //   retail's order 2, 3, 0, 1; the fade distance needs a user constructor so it is returned through the hidden pointer.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 #include "engine/CEngineInternalPrimitiveRepeatedZSprite.h"
@@ -50,14 +51,14 @@ struct CEngineCameraDesc {                         // Ego_r.pdb, 0x6c bytes (CEn
     float     ZBufferEnd;                          // +0x64
     bool      StateValid;                          // +0x68
 };
-static __forceinline const CEngineCameraDesc& Desc(const CEngineCamera& c) { return *(const CEngineCameraDesc*)c.CameraDesc; }
-static __forceinline const C3DVector& CameraPosition(const CEngineCamera& c) { return Desc(c).WorldPosition; }
-static __forceinline float NearZ(const CEngineCamera& c) { return Desc(c).NearZPlane; }
-static __forceinline float FarZ(const CEngineCamera& c) { return Desc(c).FarZPlane; }
-static __forceinline const C3DVector& LookVector(const CEngineCamera& c) { return *(const C3DVector*)&c.LookVector_X; }
-static __forceinline const CPlane& FrustrumPlane(const CEngineCamera& c, int i) { return ((const CPlane*)c.FrustrumPlanes)[i]; }
+static FABLE_FORCEINLINE const CEngineCameraDesc& Desc(const CEngineCamera& c) { return *(const CEngineCameraDesc*)c.CameraDesc; }
+static FABLE_FORCEINLINE const C3DVector& CameraPosition(const CEngineCamera& c) { return Desc(c).WorldPosition; }
+static FABLE_FORCEINLINE float NearZ(const CEngineCamera& c) { return Desc(c).NearZPlane; }
+static FABLE_FORCEINLINE float FarZ(const CEngineCamera& c) { return Desc(c).FarZPlane; }
+static FABLE_FORCEINLINE const C3DVector& LookVector(const CEngineCamera& c) { return *(const C3DVector*)&c.LookVector_X; }
+static FABLE_FORCEINLINE const CPlane& FrustrumPlane(const CEngineCamera& c, int i) { return ((const CPlane*)c.FrustrumPlanes)[i]; }
 
-static __forceinline bool IsSphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
+static FABLE_FORCEINLINE bool IsSphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
 {
     C3DVector d = centre - CameraPosition(camera);
     float z = d.Dot(LookVector(camera));
@@ -73,8 +74,8 @@ struct CEngineInternalPrimitiveRepeatedZSprite_Methods : CEngineInternalPrimitiv
     CEngineFadeDistance GetTransitionFade() const; // 0x00BAA460
 };
 
-static __forceinline const C3DBoundingSphere& Sphere(const CEngineInternalPrimitiveRepeatedZSprite* self) { return *(const C3DBoundingSphere*)self->BoundingSphere; }
-static __forceinline float FadeFar(const CEngineInternalPrimitiveRepeatedZSprite* self) { return *(const float*)&self->_pad_0x18; }
+static FABLE_FORCEINLINE const C3DBoundingSphere& Sphere(const CEngineInternalPrimitiveRepeatedZSprite* self) { return *(const C3DBoundingSphere*)self->BoundingSphere; }
+static FABLE_FORCEINLINE float FadeFar(const CEngineInternalPrimitiveRepeatedZSprite* self) { return *(const float*)&self->_pad_0x18; }
 
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedZSprite* self, int, const CEngineCamera& camera, bool ignoreFrustum)
 {

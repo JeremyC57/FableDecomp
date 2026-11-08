@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_C2DVECTOR_H
 #define FABLE_ENGINE_C2DVECTOR_H
+#include "fable_compiler.h"
 // Ego_r original class 0x9ebe: public float X+0,Y+4, sizeof8.
 // Native CTCPhysicsBase::GetOffsetVector slot28 at006b13d0 writes both words.
 // Retail opt-in (Codex pass11): original lib_coord.hpp100..103,314..322;
@@ -61,7 +62,7 @@ public:
     // low-frequency switch cases of CSlider::ProcessEvent where VC7.1 calls a plain-inline copy out of line; the five retail
     // out-of-line copies (0x0052E3D0, 0x0054A4A0, 0x006CB570, 0x00704D30, 0x00A88C50) have no caller at all (no call/jmp/jcc
     // or address reference in Fable.exe), while a plain-inline copy would be called from such sites.
-    __forceinline bool operator==(const C2DVector& vector) const
+    FABLE_FORCEINLINE bool operator==(const C2DVector& vector) const
     {
         return fabs(X-vector.X)<=DELTA_NOTIONAL_ZERO && fabs(Y-vector.Y)<=DELTA_NOTIONAL_ZERO;
     }

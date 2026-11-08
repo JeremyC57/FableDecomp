@@ -1,5 +1,6 @@
 // Behaviour test for 008954a0: src/008954a0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CGameScriptInterface::EntityFollowThing(const CScriptThing& follower, const CScriptThing& target, float distance, bool keepUp) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -40,7 +41,7 @@ public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -69,7 +70,7 @@ class CExpressionDef { public:
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefPointerExpressionDef {
     CExpressionDef* Object;
     CDefPointerExpressionDef() : Object(0) {}

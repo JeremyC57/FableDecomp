@@ -10,6 +10,7 @@
 // read into ecx and STLport's resize(n, x) runs inline on traits.DefaultVal: size `(finish - start) >> 3`, the shrink
 // arm passes `start + n` and the cached finish, the grow arm reloads finish and passes (finish, n - size, &x); each arm
 // destroys the traits string and returns on its own (`ret 4`).
+#include "fable_compiler.h"
 class CPersistContext;
 class CStringParser;
 
@@ -40,7 +41,7 @@ public:
     _Tp* erase(_Tp* first, _Tp* last);                                    // 0x006D44F0
     void _M_fill_insert(_Tp* position, unsigned int n, const _Tp& x);     // 0x006D4850
     void insert(_Tp* position, unsigned int n, const _Tp& x) { _M_fill_insert(position, n, x); }
-    __forceinline void resize(unsigned int newSize, const _Tp& x)
+    FABLE_FORCEINLINE void resize(unsigned int newSize, const _Tp& x)
     {
         if (newSize < size())
             erase(begin() + newSize, end());

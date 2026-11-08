@@ -8,13 +8,14 @@
 // spills two of the channel bytes (one to its single local slot, one into the dead high byte of the
 // argument slot at [ebp+0Bh]) while still using ebx freely: an `optimize("y", off)` + `optimize("s", on)`
 // translation unit, as the other NUISystem/engine data-description files.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
 class CRGBColour { public:                                             // the union's channel view: D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }   // forced: the size optimiser would call it out of line
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }   // forced: the size optimiser would call it out of line
 };
 
 class CCompositeBlendDesc { public:

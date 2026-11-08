@@ -2,6 +2,7 @@
 // Leaf: ?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z
 // Recovered PDB identity egor31452/debug 0x00B17AB0. The old authored assembly
 // bootstrap remains untouched; this is the independent pure C++03 candidate.
+#include "fable_compiler.h"
 #define CResource CResourcePdb
 #include "engine/CResource.h"
 #undef CResource
@@ -32,7 +33,7 @@ public:
 private:
     void ListInsert(CResource*a0, CResource*a1);  // 0x009FBF90
 public:
-    __forceinline void SetAsMRU();
+    FABLE_FORCEINLINE void SetAsMRU();
 };
 class CResourceList { public:
     void* VTable;                              // +0
@@ -54,7 +55,7 @@ FABLE_STATIC_ASSERT(offsetof(CResourceList,CurrentFrame)==0x2c);
 FABLE_STATIC_ASSERT(offsetof(CResourceList,UnloadedThisFrame)==0x38);
 FABLE_STATIC_ASSERT(sizeof(CResourcePdb)==sizeof(CResource));
 FABLE_STATIC_ASSERT(sizeof(CResourceListPdb)==sizeof(CResourceList));
-__forceinline void CResource::SetAsMRU()
+FABLE_FORCEINLINE void CResource::SetAsMRU()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();

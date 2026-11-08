@@ -23,6 +23,7 @@
 //   no base chain), so the class chain is a local retail model (header debt, NOTES.md); CAIBrain from engine/CAIBrain.h
 //   (Creature +0x18); CThing: UsingComponents bitset<274> +0x20, Components CVectorMap +0x44, Dead bit 0 of +0x91 (retail
 //   STLport offsets, as the landed BuyFromSeller model). CCreatureAction_UseObject is 0xE0 bytes in retail (PUsedThing +0xA8).
+#include "fable_compiler.h"
 #include "engine/CAIBrain.h"
 #include "engine/CBaseClass.h"
 #include "engine/CTCBase.h"                            // vptr +0, ParentThing +4 (flat generated header)
@@ -33,11 +34,11 @@ template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
 };
-template <class _Tp> class allocator { public: __forceinline allocator() { } };
+template <class _Tp> class allocator { public: FABLE_FORCEINLINE allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
 public:
     _Value _M_data;
-    __forceinline _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
+    FABLE_FORCEINLINE _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
 };
 template <class _Tp, class _Alloc> class vector {
 public:
@@ -45,20 +46,20 @@ public:
     _Tp* _M_start;
     _Tp* _M_finish;
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    __forceinline iterator begin() { return this->_M_start; }
-    __forceinline iterator end() { return this->_M_finish; }
+    FABLE_FORCEINLINE iterator begin() { return this->_M_start; }
+    FABLE_FORCEINLINE iterator end() { return this->_M_finish; }
 };
 template <size_t _Nw> struct _Base_bitset {
     typedef unsigned long _WordT;
     _WordT _M_w[_Nw];
-    __forceinline static size_t _S_whichword(size_t __pos) { return __pos / 32; }
-    __forceinline static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
-    __forceinline _WordT _M_getword(size_t __pos) const { return _M_w[_S_whichword(__pos)]; }
+    FABLE_FORCEINLINE static size_t _S_whichword(size_t __pos) { return __pos / 32; }
+    FABLE_FORCEINLINE static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
+    FABLE_FORCEINLINE _WordT _M_getword(size_t __pos) const { return _M_w[_S_whichword(__pos)]; }
 };
 template <size_t _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
 public:
-    __forceinline bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
-    __forceinline bool _Unchecked_test(size_t __pos) const { return (this->_M_getword(__pos) & this->_S_maskbit(__pos)) != 0; }
+    FABLE_FORCEINLINE bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
+    FABLE_FORCEINLINE bool _Unchecked_test(size_t __pos) const { return (this->_M_getword(__pos) & this->_S_maskbit(__pos)) != 0; }
 };
 
 }   // namespace std
@@ -107,8 +108,8 @@ public:
     signed char        PlayerNumber;                    // +0x90
     unsigned char      Dead : 1;                        // +0x91
     bool IsDead() const { return Dead; }                // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    __forceinline bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
-    template <class T> __forceinline bool GetTC(T** out)
+    FABLE_FORCEINLINE bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         bool has = HasTC((ETCInterfaceType)T::INTERFACE_TYPE);
         if (has) {
@@ -179,7 +180,7 @@ public:
     bool              Enabled;                          // +0x12
     void Terminate();                                   // 0x008FCF40
 protected:
-    __forceinline CThingAICreature& GetCreature() const { return *PBrain->Creature; }
+    FABLE_FORCEINLINE CThingAICreature& GetCreature() const { return *PBrain->Creature; }
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& arrived, EMovementType movement,
         bool a, bool b, const CThing* thing, bool c, float d);   // 0x0097EC00
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait);   // 0x0097DB70
@@ -187,7 +188,7 @@ protected:
 
 template <class TBase> class CAIStateGroup_WorkBase : public TBase {
 protected:
-    __forceinline bool IsInWorkHours() const
+    FABLE_FORCEINLINE bool IsInWorkHours() const
     {
         CTCVillageMember* member;
         if (this->GetCreature().GetTC(&member)) {

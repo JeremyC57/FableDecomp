@@ -1,6 +1,7 @@
 // Behaviour test for 00903d60: src/00903d60.cpp copied verbatim; the scripted thing, the target script thing, the
 // scripted-control component and the fire action stubbed so the live/alive/targetable gates and the queued
 // fire-projectile action (aimed at the target thing) are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -41,7 +42,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

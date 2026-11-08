@@ -7,8 +7,9 @@
 // ~CBaseIntelligentPointer @ 0x00A01C10 (x5), CTCBase::~CTCBase @ 0x00686830 (tail jump).
 // Shape: reverse member order with the RETAIL offsets: the STLport lists are 4 bytes (PDB 12), so PBeamWeaponEffect sits at
 // +0x34 and Tentacles at +0x44 (PDB +0x3c / +0x4c); the CDefPointer release of PKrakenDef (+0x0c) is inlined last.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
-#define FORCEINLINE __forceinline
+#define FORCEINLINE FABLE_FORCEINLINE
 
 class CThing;
 

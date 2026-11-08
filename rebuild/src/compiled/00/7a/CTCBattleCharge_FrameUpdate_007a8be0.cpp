@@ -19,6 +19,7 @@
 //   CTCBattleCharge 0xA8.
 // Layout: Ego_r.pdb CTCBattleCharge (PDB less 4 after the 12-byte PeopleHit vector, as the landed CTCBattleCharge rows);
 //   CThing Type +0x10, UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0. No engine header for CTCBattleCharge.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
@@ -47,7 +48,7 @@ class CThing { public:                                      // partial view, ret
     bool IsDead() const { return Dead; }
     CPlayer& GetPlayer();                                   // 0x004C7A30
     void RemoveTC(ETCInterfaceType type);                   // 0x004C9840
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (UsingComponents[T::INTERFACE_TYPE]) {
             TCMap* map = &Components;

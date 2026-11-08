@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __cdecl
 #define __fastcall
@@ -1008,7 +1009,7 @@ protected:
 public:
 #endif
 #ifdef FABLE_RETAIL_QUEST_COMPLETION
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     void push_back(const _Tp& x) {
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {
@@ -1734,14 +1735,14 @@ public:
     bool IsAlive() const { return !Dead; }
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
 #ifdef FABLE_RETAIL_TYPED_GETTC
-    template<class T> __forceinline bool GetTC(T** result) {
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** result) {
         if(HasTC(T::StatGetInterfaceType())) {
             *result=GFDebugPDynamicCast(Components.Find(T::StatGetInterfaceType())->second,(T*)0);
             return true;
         }
         return false;
     }
-    template<class T> __forceinline bool PeekTC(T** result) const {
+    template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const {
         if(HasTC(T::StatGetInterfaceType())) {
             *result=GFDebugPDynamicCast(static_cast<const CTCBase*>(Components.Find(T::StatGetInterfaceType())->second),(T*)0);
             return true;
@@ -1752,15 +1753,15 @@ public:
 #ifdef FABLE_RETAIL_TYPED_GETTCDRIVER
     
     
-    template<class T> __forceinline bool GetTCDriver(T** result) {
+    template<class T> FABLE_FORCEINLINE bool GetTCDriver(T** result) {
         const bool& present=HasTC(T::StatGetInterfaceType());
         if(present) *result=GFDebugPDynamicCast(&GetTC(T::StatGetInterfaceType()),(T*)0);
         return present;
     }
 #endif
 #ifdef FABLE_RETAIL_FORCE_GETTC
-    __forceinline CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
-    __forceinline const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
+    FABLE_FORCEINLINE const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
 #else
     CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
     const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }

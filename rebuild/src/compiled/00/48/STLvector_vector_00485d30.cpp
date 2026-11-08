@@ -16,6 +16,7 @@
 //   the counted-pointer helpers need `__forceinline` (plain inline: all out of line, 61v135), and the uniqueness test
 //   reads the count through a null-tested ternary (`(Object ? Object->RefCount : 0) == 1`: the `xor eax,eax` arm, only
 //   here and in 0x005BBFD6 in retail), unlike the `Object != 0 && RefCount == 1` of 0x00BBDCB0.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
@@ -30,9 +31,9 @@ public:
     virtual void v002();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle); // slot 3 (+0x0C)
     long RefCount;                                                   // +0x04
-    __forceinline void DecRef() { --RefCount; }
-    __forceinline long GetRefCount() const { return RefCount; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void DecRef() { --RefCount; }
+    FABLE_FORCEINLINE long GetRefCount() const { return RefCount; }
+    FABLE_FORCEINLINE void Release()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -43,10 +44,10 @@ public:
 class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
-    __forceinline CIVCountedPointer() : Object(0) { }
-    __forceinline CEnginePersistentPrimitiveBase* operator->() const { return Object; }
-    __forceinline long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { }
+    FABLE_FORCEINLINE CEnginePersistentPrimitiveBase* operator->() const { return Object; }
+    FABLE_FORCEINLINE long GetRefCount() const { return Object ? Object->RefCount : 0; }
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object)
             Object->Release();
@@ -60,9 +61,9 @@ class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline CEnginePrimitiveHandle() { }
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& x);   // inline in retail's 0x0043F6C0
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data->OnLastHandleReleased(this);
@@ -75,14 +76,14 @@ struct __false_type { __false_type() { } };
 
 template <class _Tp> class allocator {
 public:
-    __forceinline allocator() { }
+    FABLE_FORCEINLINE allocator() { }
 };
 
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&);   // 0x0043F6C0
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }

@@ -13,6 +13,7 @@
 //          key's home); the 0x114-byte action temporary fills the rest of the 0x118 frame.
 // Layout: engine/CAIStateGroup_HoverHornetQueenTakeDamage.h (bIsRangeAttack +0x1d, RangeAttackCount +0x20,
 //          FrameOfLastHit +0x24); PTarget (intelligent pointer) at +0x14 as in the landed IsRunnable 0x0095AA60.
+#include "fable_compiler.h"
 #define CAIStateGroup_HoverHornetQueenTakeDamage CAIStateGroup_HoverHornetQueenTakeDamageLayout
 #include "engine/CAIStateGroup_HoverHornetQueenTakeDamage.h"
 #undef CAIStateGroup_HoverHornetQueenTakeDamage
@@ -48,7 +49,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     CCombatManager* GetCombatManager();         // 0x00661ED0
     bool IsCombatant();                         // 0x00662410
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -2,6 +2,7 @@
 // Grade: pending owner naming preflight; historical exact grade2 preserved
 // Leaf: ?StartScreenFadeOut@CDisplayEngine@@QAEXMMVCRGBColour@@M@Z
 // Flags:
+#include "fable_compiler.h"
 #define CDisplayEngine CDisplayEngineFields
 #include "engine/CDisplayEngine.h"
 #undef CDisplayEngine
@@ -13,7 +14,7 @@ class CRGBColour { public:
  CRGBColour(){}
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}
  CRGBColour(const CRGBColour&c){Initialise(c.Components.R,c.Components.G,c.Components.B,c.Components.A);}
- __forceinline void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
+ FABLE_FORCEINLINE void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
  {Components.R=r;Components.G=g;Components.B=b;Components.A=a;}
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

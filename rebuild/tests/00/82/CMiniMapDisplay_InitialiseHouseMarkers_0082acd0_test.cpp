@@ -1,4 +1,5 @@
 // Behaviour test for 0082acd0: body copied from src/0082acd0.cpp (CMiniMapDisplay::InitialiseHouseMarkers), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -34,7 +35,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         return (const T*)m_interfaces.Find(interfaceType);
     }

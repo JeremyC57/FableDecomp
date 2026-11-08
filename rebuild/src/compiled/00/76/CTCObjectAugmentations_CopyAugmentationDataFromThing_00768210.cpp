@@ -20,6 +20,7 @@
 //   erase(begin(), end()) (`__copy_ptrs(last, finish, first)` then `_Destroy(i, finish)`); the tag-taking helpers carry
 //   same-TU `__declspec(noinline)` bodies that never read their tags, so VC7.1 homes the interface key, every tag and
 //   the discarded inserter on the dead `thing` slot.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CTCBase;
@@ -42,7 +43,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template <class T> __forceinline bool PeekTC(const T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

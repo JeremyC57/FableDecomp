@@ -16,6 +16,7 @@
 // Layout: engine/CShopItemDef.h (PDB: Type +0x28, Item +0x2C..+0x48, sizeof 0x48); modelled locally because the generated
 // header is a flat byte-packed POD that cannot express the base assignment. CDefClassBase is 0x25 bytes, pack 1.
 // Label correction: the catalog's `_Copy_impl<std::pair<unsigned long,C3DDummyObject>*,...>` is propagated.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -39,7 +40,7 @@ class CShopItemDef : public CDefClassBase { public:                // vtable 0x0
     long      Type;                                  // +0x28
     CShopItem Item;                                  // +0x2c
     virtual void v00();
-    __forceinline CShopItemDef& operator=(const CShopItemDef& o)
+    FABLE_FORCEINLINE CShopItemDef& operator=(const CShopItemDef& o)
     {
         CDefClassBase::operator=(o);
         Type = o.Type;
@@ -51,7 +52,7 @@ class CShopItemDef : public CDefClassBase { public:                // vtable 0x0
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-__forceinline CShopItemDef* __fastcall __copy(const CShopItemDef* first, const CShopItemDef* last, CShopItemDef* result, const random_access_iterator_tag&, int*)
+FABLE_FORCEINLINE CShopItemDef* __fastcall __copy(const CShopItemDef* first, const CShopItemDef* last, CShopItemDef* result, const random_access_iterator_tag&, int*)
 {
     for (int n = int(last - first); n > 0; --n) {
         *result = *first;

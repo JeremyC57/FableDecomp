@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -58,7 +59,7 @@ typedef unsigned int PlacementSize;
 #endif
 inline void* operator new(PlacementSize,void* p){return p;}
 class CIVCountedPointeeBase{public:CIVCountedPointeeBase():IVRefCount(1){}virtual ~CIVCountedPointeeBase(){}virtual void Delete()const;mutable unsigned long IVRefCount;void AddRef()const{++IVRefCount;}long GetRefCount()const{return (long)IVRefCount;}long Release()const{long result=(long)--IVRefCount;if(result==0)Delete();return result;}};
-template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase* Object;CIVCountedPointer():Object(0){}CIVCountedPointer(const CIVCountedPointer& other):Object(other.Object){if(Object)Object->AddRef();}__forceinline ~CIVCountedPointer(){if(Object){Object->Release();Object=0;}}CIVCountedPointer& operator=(const CIVCountedPointer& other){if(Object!=other.Object){if(Object){Object->Release();Object=0;}Object=other.Object;if(Object)Object->AddRef();}return *this;}T* operator->()const{return (T*)Object;}};
+template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase* Object;CIVCountedPointer():Object(0){}CIVCountedPointer(const CIVCountedPointer& other):Object(other.Object){if(Object)Object->AddRef();}FABLE_FORCEINLINE ~CIVCountedPointer(){if(Object){Object->Release();Object=0;}}CIVCountedPointer& operator=(const CIVCountedPointer& other){if(Object!=other.Object){if(Object){Object->Release();Object=0;}Object=other.Object;if(Object)Object->AddRef();}return *this;}T* operator->()const{return (T*)Object;}};
 class C3DAnimationStateBase:public CIVCountedPointeeBase{};class C3DAnimationTransitionState:public C3DAnimationStateBase{public:CIVCountedPointer<C3DAnimationStateBase> StartState,EndState;float Progress;C3DAnimationTransitionState(const CIVCountedPointer<C3DAnimationStateBase>&,const CIVCountedPointer<C3DAnimationStateBase>&,float);void SetStartState(const CIVCountedPointer<C3DAnimationStateBase>&);};void C3DAnimationTransitionState::SetStartState(const CIVCountedPointer<C3DAnimationStateBase>& value){StartState=value;}
 static int deleted=0;void CIVCountedPointeeBase::Delete()const{++deleted;}class TestPointee:public CIVCountedPointeeBase{public:TestPointee(long n){IVRefCount=(unsigned long)n;}};
 C3DAnimationTransitionState::C3DAnimationTransitionState(const CIVCountedPointer<C3DAnimationStateBase>& first,const CIVCountedPointer<C3DAnimationStateBase>& second,float progress):StartState(first),EndState(second),Progress(progress){}

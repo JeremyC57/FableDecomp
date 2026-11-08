@@ -15,6 +15,7 @@
 //   +0x81 MissionFailed (the usual quest-script base delta 0x14).
 // Shape: generated script code; the distance range is read once into a long local (fild each frame); the hit test's
 //   CCharString temporaries are conditional (flag word in ebx).
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
@@ -118,7 +119,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

@@ -16,6 +16,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
     char*         PData;
     unsigned long StringLength;
@@ -46,7 +47,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
     bool operator!=(const CCharString& other) const;    // 0x0099E900
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

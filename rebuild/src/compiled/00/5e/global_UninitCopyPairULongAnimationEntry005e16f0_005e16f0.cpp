@@ -11,6 +11,7 @@
 // constructor: the key, BankIndex, the two CDefStrings, then the counted pointer's copy (`p = o.p ; if (p) ++p->count`,
 // `test ebx,ebx ; mov [edi+4],ebx ; je ; inc [ebx+4]`). The result (eax throughout) is returned.
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CIVCountedPointeeBase { public:
@@ -20,7 +21,7 @@ class CIVCountedPointeeBase { public:
 };
 template<class T> class CIVCountedPointer { public:    // intrusive counted pointer (4 bytes)
     T* m_pObject;
-    __forceinline CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
+    FABLE_FORCEINLINE CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
     {
         if (m_pObject)
             ++m_pObject->m_refCount;

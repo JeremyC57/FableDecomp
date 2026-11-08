@@ -13,6 +13,7 @@
 //   duplicated epilogue); both exits goto one shared attack tail. An if-return + for(;;) form compiles to a rotated aware test.
 // Naming wave 35: identity reg 00e0ee87 "HornetDrone" in 00e0ea40; Alloc 00e11cd0; vtable 012e0518 slot 1; PDB ?Main@CHornetDrone@CQ_WaspBossScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces NScript::CQ_WizardBattleScript::CSummoner1::Main: PDB has no such member (wave3/labels_alloc.tsv); PDB ?Main@CHornetDrone@CQ_WaspBossScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSummoner1@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); class CSummoner1 renamed CHornetDrone); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
@@ -116,7 +117,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

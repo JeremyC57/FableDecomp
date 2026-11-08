@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -235,11 +236,11 @@ struct CHeroBoastsScript {
  unsigned char ScriptBaseState[0x40]; GameMethods* Game; SunnyvaleMasterData* MasterScriptData;
  bool IsActiveThreadTerminating()const; //00CB7940: active thread+2C, thread terminating byte+5
  void BoastBountyHuntDecapitation(CCharString quest);
- __forceinline bool Failed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[29].QuestMessage)(q);}
- __forceinline bool Completed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[28].QuestMessage)(q);}
- __forceinline void Frame(){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[7].NewScriptFrame)();}
- __forceinline void Success(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[306].SetBoast)(id,q);}
- __forceinline void Failure(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[305].SetBoast)(id,q);}
+ FABLE_FORCEINLINE bool Failed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[29].QuestMessage)(q);}
+ FABLE_FORCEINLINE bool Completed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[28].QuestMessage)(q);}
+ FABLE_FORCEINLINE void Frame(){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[7].NewScriptFrame)();}
+ FABLE_FORCEINLINE void Success(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[306].SetBoast)(id,q);}
+ FABLE_FORCEINLINE void Failure(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[305].SetBoast)(id,q);}
 };
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4);
 FABLE_STATIC_ASSERT(offsetof(CHeroBoastsScript,Game)==0x40);

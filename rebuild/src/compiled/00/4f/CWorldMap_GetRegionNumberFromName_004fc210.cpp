@@ -13,6 +13,7 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // CRegion (retail 0x58 bytes; PDB 100 with 16-byte vectors): +0x00 Maps (vector<long>), +0x0C VisMaps, +0x18 Name
 // (PDB +0x20), +0x1C DisplayName, +0x20 RegionDefName, ...
+#include "fable_compiler.h"
 template <class T> struct CRetailVector {
     T* Start;                                   // +0x00
     T* Finish;                                  // +0x04
@@ -47,7 +48,7 @@ long __fastcall CompareText(const char* a, const char* b)   // 0x00411570
 }
 #pragma auto_inline(on)
 
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.PStringData;
     CCharStringData* b = sb.PStringData;

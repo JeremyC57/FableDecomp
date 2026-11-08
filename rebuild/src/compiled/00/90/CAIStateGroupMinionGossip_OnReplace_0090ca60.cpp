@@ -13,6 +13,7 @@
 // bound filter passed by const reference); both components used unconditionally (miss arms read the key slot);
 // the gossip target cleared through a CIntelligentPointer temporary of null.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CWorld;
 
@@ -40,7 +41,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -54,7 +55,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -66,7 +67,7 @@ class CThing { public:
         return sel;
     }
     // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceV(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

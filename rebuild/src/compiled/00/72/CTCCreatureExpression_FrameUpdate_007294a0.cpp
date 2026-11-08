@@ -14,12 +14,13 @@
 // band): the lane does not reproduce that choice for a plain inline member, so the last site goes through a __forceinline
 // copy of the landed body (SetExpressionInline). The id is a named local read before the frame call; the camera through an
 // inline accessor; the dot product accumulates Z, Y, X in statements; the morality weights are named float locals.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CExpressionState {
     long          AnimIndex;                        // +0x00
     float         MaxWeight;                        // +0x04
@@ -99,7 +100,7 @@ class CThing { public:
     unsigned char  _pad64[0x70 - 0x64];
     CDefClassBase* PDef_Object;                     // +0x70
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
@@ -151,7 +152,7 @@ class CTCCreatureExpression : public CTCBase { public:
     void FrameUpdate();
 };
 
-__forceinline void CTCCreatureExpression::SetExpressionInline(long expressionType, float maxWeight)
+FABLE_FORCEINLINE void CTCCreatureExpression::SetExpressionInline(long expressionType, float maxWeight)
 {
     if (expressionType == 0 && !ExpressionStates.empty())
     {

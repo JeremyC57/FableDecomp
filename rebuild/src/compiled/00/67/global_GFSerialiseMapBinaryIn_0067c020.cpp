@@ -13,6 +13,7 @@
 //   CPersistTraits<long>::TransferBinaryIn (fast path straight into the loop register); the loop builds a value-initialised
 //   pair each pass (two zero stores after the first argument pushes) and calls the out-of-line element traits on empty
 //   traits temporaries that VC7.1 homes on the pair's own first word (`lea ecx,[esp+10h]`), which needs the stand-ins below.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -26,8 +27,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* chunkBase;                         // +0x0C
     long                 chunkPosition;                     // +0x10
     long                 chunkLength;                       // +0x14
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(position + size);
         if (!IsValidPosition(newPosition))
@@ -89,7 +90,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const;
 };
 
-template <> __forceinline void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) const
+template <> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) const
 {
     long value;
     stream.Read(&value, sizeof(value));

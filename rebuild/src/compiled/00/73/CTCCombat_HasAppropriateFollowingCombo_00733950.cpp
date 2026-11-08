@@ -14,6 +14,7 @@
 // ComboChainID inside that block (the for_each result temporary then shares the frame with the
 // 12-byte predicate), -777 and a missing chain both giving the shared `xor eax,eax`; the predicate
 // {combo, chain pos, max stage} is a temporary passed by reference.
+#include "fable_compiler.h"
 class CAnimComponentCombatComboChain { public:
     void*         m_pVtable;               // +0x00
     unsigned long IVRefCount;              // +0x04
@@ -31,7 +32,7 @@ class CAnimationEntry { public:
     void GetComponent(CAnimComponentCombatComboChain** out) const;   // 0x00738980
 };
 
-__forceinline CAnimComponentCombatComboChain* GetComboChain(const CAnimationEntry* entry)
+FABLE_FORCEINLINE CAnimComponentCombatComboChain* GetComboChain(const CAnimationEntry* entry)
 {
     CAnimComponentCombatComboChain* combo;
     entry->GetComponent(&combo);

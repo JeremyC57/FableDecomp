@@ -11,6 +11,7 @@
 // base CTCInventoryBase is 0x130 bytes and the containers are 12 bytes, so a local view carries the PDB names at:
 // CBase vptr +0x130, ClothingMenuEntries +0x134, CurrentClothingSelected +0x140, MorphPrimitiveHandles +0x14C,
 // PMannequin +0x158, UseMannequin +0x15C, LoadedFromSaveGame +0x15D, ClothingItemMap +0x160, ClothingList +0x16C.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);                    // 0x00BFEA14
 #include "engine/CThing.h"
@@ -20,7 +21,7 @@ struct CClothingMenuEntryVector {                             // vector<pair<ECl
     SClothingMenuEntry* _M_start;
     SClothingMenuEntry* _M_finish;
     SClothingMenuEntry* _M_end_of_storage;
-    __forceinline ~CClothingMenuEntryVector()
+    FABLE_FORCEINLINE ~CClothingMenuEntryVector()
     {
         if (_M_start)
             free(_M_start);

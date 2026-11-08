@@ -9,14 +9,15 @@
 // CDataInputStream: engine/CDataInputStream.h (StreamPos +4, CurrentSourcePtr +0x0c, SourceChunkBytesRemaining +0x14).
 // Shape: four inlined ReadLong()s of the landed ReadPixelFormat (0x00994670) family; the helper's frame word lives in the dead
 // argument slot (no frame of its own); the stream sub-object is addressed once (`add edi,0Ch`) through a named pointer.
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {         // the engine layout plus the retail member functions
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -32,7 +33,7 @@ struct CDataInputStreamReader : CDataInputStream {         // the engine layout 
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, 4);

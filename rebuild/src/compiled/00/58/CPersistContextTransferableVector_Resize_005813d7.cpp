@@ -9,6 +9,7 @@
 // Pragma: `#pragma optimize("y", off)` + `#pragma optimize("s", on)`.
 // Shape: `TransVector->resize(size)`; under /Os VC7.1 would call the one-argument resize out of line, so the STLport
 //   forwarder is `__forceinline` (retail inlines it: the CHeroMarriageInfo() stores are in this body).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CHeroMarriageInfo {
@@ -41,7 +42,7 @@ class vector : protected _Vector_base<_Tp, _Alloc> {
 public:
     typedef unsigned int size_type;
     void resize(size_type __new_size, const _Tp& __x);                    // out of line (0x005811F1)
-    __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
+    FABLE_FORCEINLINE void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 }
 

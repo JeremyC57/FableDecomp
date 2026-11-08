@@ -13,6 +13,7 @@
 // Shape: the def copy is add-ref'd around GetSubDef and released; the effect sub-def is released by hand at the end. The
 // effect-type long is declared before the sub-def slot, and GetEffectFromString gets a same-TU stand-in body (writes only the
 // `long&`), so VC7.1 knows the word does not escape and stores its zero first, after the def's null test, as retail.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharString { public:
@@ -21,7 +22,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -103,7 +104,7 @@ class CBaseObject;
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing() { }
-    __forceinline CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 

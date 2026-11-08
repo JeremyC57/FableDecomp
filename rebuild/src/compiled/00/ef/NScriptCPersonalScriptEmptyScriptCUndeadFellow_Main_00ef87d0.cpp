@@ -34,6 +34,7 @@
 //   `#pragma inline_depth(0)` (same symbol, same body as the primary). The returns after the scripting wait are wrapped
 //   in inline_depth(0) so their dtors stay out of line (LookAtMe1). Predicate dtors are user-declared virtual (they reset
 //   the vtable), the CPredicate_And ctors out of line (retail calls them).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void operator delete(void* block);                      // 0x00BFE9BC
 class CCharStringData;
@@ -51,7 +52,7 @@ class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01
 public:
     CCountedPointer<CScriptThingImp> PImp;              // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline CScriptThing(CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }   // inline copy of a non-const thing
+    FABLE_FORCEINLINE CScriptThing(CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }   // inline copy of a non-const thing
     virtual ~CScriptThing() { }                         // out-of-line copy 0x004AA840
 };
 class CBaseObjectPointer;
@@ -125,7 +126,7 @@ public:
 };
 }   // namespace NScript
 #pragma inline_depth(0)
-template <> __forceinline CSpawnedFunc1<NScript::CPersonalScript_EmptyScript, CScriptThing>::CSpawnedFunc1(
+template <> FABLE_FORCEINLINE CSpawnedFunc1<NScript::CPersonalScript_EmptyScript, CScriptThing>::CSpawnedFunc1(
     const CCharString& name, unsigned long id, NScript::CPersonalScript_EmptyScript* pclass,
     void (NScript::CPersonalScript_EmptyScript::*func)(CScriptThing), const CScriptThing par1)
     : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1)

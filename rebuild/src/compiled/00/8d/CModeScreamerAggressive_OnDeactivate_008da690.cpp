@@ -2,6 +2,7 @@
 // Leaf: OnDeactivate
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Native008DA690 length258. Pointer template evidence same as Drained; Combat donor ReadyForMelee90 ->retail80 after3 vector and1map shrink.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -30,8 +31,8 @@ class CThing { public:
 struct ThingNative {
  void* VTable;unsigned char BaseData[0x1c];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0x3c];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 
 struct WeaponMethods:CTCWeapon{long GetWeaponClass()const;}; //5DA7F0, def+2C (PDB Class), not propagated CCategory label

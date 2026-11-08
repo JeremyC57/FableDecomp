@@ -2,6 +2,7 @@
 // buffer, one bool is read, and the player named by the event's (signed) Player byte gets free-camera mode 0x13
 // added (with false) when the flag is true, or removed otherwise. Checks both arms, the player-number sign extension,
 // the buffer's initial state and the 1-byte read.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_fail = 0;
@@ -14,7 +15,7 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline bool ReadBool() { bool value; Read(1, &value); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { bool value; Read(1, &value); return value; }
 };
 class CGameEvent { public:
     long          Type;                            // +0x00

@@ -27,6 +27,7 @@
 //   CDefPointeeBase.h -> CResource.h, and engine/CDefPointer.h); CAppearanceDef as the landed 0x0042B0A2 declares it, with
 //   its LightingChannel; CDefinitionManager is engine/CDefinitionManager.h through the define pattern, adding the
 //   protected GetPDefFromGlobalIndex overload the header lacks (as the landed GetSubDef<T> rows declare it).
+#include "fable_compiler.h"
 class CThing;
 class CTCBase { public:
     virtual void OnCreate();                                // slot 4 (+0x10); the other slots are not called here
@@ -82,7 +83,7 @@ class CThing { public:
     unsigned char  _pad54[0x1c];
     CThingBaseDef* PBaseDef;                                // +0x70 CDefPointer<CThingBaseDef const>::Object
     CThingBaseDef* GetBaseDef() const { return PBaseDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

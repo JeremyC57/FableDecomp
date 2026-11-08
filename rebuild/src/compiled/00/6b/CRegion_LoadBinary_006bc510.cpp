@@ -8,6 +8,7 @@
 // Layout: Ego_r.pdb CRegion with 12-byte retail vectors/maps: Maps +0x00, VisMaps +0x0c, Name +0x18, DisplayName +0x1c,
 //   RegionDefName +0x20, PDef +0x24, MiniMapGraphic +0x28, MiniMapScale +0x2c, MiniMapOffset +0x30,
 //   MiniMapRegionExitTextOffsets +0x38, WorldMapOffset +0x44, NameGraphicOffset +0x4c, flags +0x54..+0x56.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -30,8 +31,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     long m_remaining;                      // +0x14
     CCharString ReadPresizedString();                                  // 0x00996390
     void Read(C2DVector* vector);                                      // 0x00995030
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -45,19 +46,19 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, sizeof(value));
         return value;
     }
-    __forceinline float ReadFloat()
+    FABLE_FORCEINLINE float ReadFloat()
     {
         float value;
         Read(&value, sizeof(value));
         return value;
     }
-    __forceinline bool ReadBool()
+    FABLE_FORCEINLINE bool ReadBool()
     {
         unsigned char value;
         Read(&value, sizeof(value));
@@ -122,7 +123,7 @@ class CRegion { public:
     bool                 AppearOnWorldMap;          // +0x54
     bool                 CreatureGenerationEnabled; // +0x55
     bool                 SoundThemesEnabled;        // +0x56
-    __forceinline void SetRegionDefName(const CCharString& name)
+    FABLE_FORCEINLINE void SetRegionDefName(const CCharString& name)
     {
         RegionDefName = name;
         long index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(RegionDefName);

@@ -9,6 +9,7 @@
 //   word +0x24 bit 19, TC 0xac = word +0x34 bit 12), interface map +0x44; CTCOwnedEntity POwner +0xd (odd offset).
 // Shape: nested ifs with one `return false` at the end (the exits laid out last), the unowned case `return true`, and
 //   the owner (a named local) compared and returned directly (`xor edx,edx ; sete dl ; mov al,dl`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -40,7 +41,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

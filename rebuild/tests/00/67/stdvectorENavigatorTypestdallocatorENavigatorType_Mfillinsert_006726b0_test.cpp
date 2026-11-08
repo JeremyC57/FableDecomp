@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -17,10 +18,10 @@ struct __true_type {};struct __false_type {};
 template<class T>struct __type_traits {typedef __true_type this_dummy_member_must_be_first;typedef __false_type has_trivial_default_constructor,has_trivial_copy_constructor,has_trivial_assignment_operator,has_trivial_destructor,is_POD_type;};
 struct input_iterator_tag {};struct output_iterator_tag {};struct forward_iterator_tag:public input_iterator_tag {};struct bidirectional_iterator_tag:public forward_iterator_tag {};struct random_access_iterator_tag:public bidirectional_iterator_tag {};
 
-template <class _T1, class _T2> __forceinline void __fastcall _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void __fastcall _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -29,7 +30,7 @@ __forceinline _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _
 }
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __fastcall __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
+FABLE_FORCEINLINE _BidirectionalIter __fastcall __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
                                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -37,16 +38,16 @@ __forceinline _BidirectionalIter __fastcall __copy_backward(_RandomAccessIter __
     return __result;
 }
 
-template<class _InputIter,class _OutputIter>__forceinline _OutputIter __fastcall __copy_backward_ptrs(_InputIter first,_InputIter last,_OutputIter result,const __false_type&){return __copy_backward(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);}
+template<class _InputIter,class _OutputIter>FABLE_FORCEINLINE _OutputIter __fastcall __copy_backward_ptrs(_InputIter first,_InputIter last,_OutputIter result,const __false_type&){return __copy_backward(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);}
 
 template <class _ForwardIter, class _Tp>
-__forceinline void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;
 }
 
-template<class F,class N,class T>__forceinline F __fastcall __uninitialized_fill_n(F first,N n,const T&x,const __false_type&){F cur=first;for(;n>0;--n,++cur)_Construct(&*cur,x);return cur;}
+template<class F,class N,class T>FABLE_FORCEINLINE F __fastcall __uninitialized_fill_n(F first,N n,const T&x,const __false_type&){F cur=first;for(;n>0;--n,++cur)_Construct(&*cur,x);return cur;}
 #pragma auto_inline(off)
 template<class F,class N,class T>__declspec(noinline) F __fastcall uninitialized_fill_n(F first,N n,const T&x);
 #pragma auto_inline(on)

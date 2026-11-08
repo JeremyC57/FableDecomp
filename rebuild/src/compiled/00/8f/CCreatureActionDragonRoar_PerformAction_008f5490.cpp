@@ -15,6 +15,7 @@
 //   offset is added in place (operator+=) and C3DVector needs its user copy ctor or the Y add keeps t.Y on the x87 stack.
 // Layout: local model -- retail CThing PTCDriver +0x5C, PhysicsTC +0x60, PTCGraphicAppearance +0x64 (PDB +0x6C/+0x70/
 //   +0x74, as in the landed CTCUnholyPower::OnCreate and CActionEventExplosion::Dispatch); the action's PCreature +0x08.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 class CThing;
@@ -70,8 +71,8 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64
     const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-    __forceinline CTCGraphicAppearance* GetGraphicAppearance() const { return PTCGraphicAppearance; }
+    FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
+    FABLE_FORCEINLINE CTCGraphicAppearance* GetGraphicAppearance() const { return PTCGraphicAppearance; }
     CTCDriverBase* GetDriver() const
     {
         CTCDriverBase* driver = 0;

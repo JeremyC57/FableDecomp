@@ -12,6 +12,7 @@
 // __unguarded_linear_insert(last, val, comp);` with copy_backward -> __copy_backward_aux -> __copy_backward_ptrs
 // (__false_type) inlined down to the random-access __copy_backward.
 // Label: the manifest's "CPersistInfo_InsertionSortStep_0086fa00" is a descriptive auto label.
+#include "fable_compiler.h"
 class CLongMapValue8                                 // 8 bytes of POD (descriptive)
 {
 public:
@@ -55,13 +56,13 @@ __declspec(noinline) void __fastcall __unguarded_linear_insert(_RandomAccessIter
 #pragma auto_inline()
 
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
 template <class _Tp>
-__forceinline _Tp* copy_backward(_Tp* __first, _Tp* __last, _Tp* __result)
+FABLE_FORCEINLINE _Tp* copy_backward(_Tp* __first, _Tp* __last, _Tp* __result)
 {
     return __copy_backward_ptrs(__first, __last, __result, __false_type());
 }

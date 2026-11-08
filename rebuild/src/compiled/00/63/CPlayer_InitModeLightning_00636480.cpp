@@ -10,6 +10,7 @@
 // through the lane's CPlayer carrier; CThing interface bitset +0x20, interface map +0x44.
 // Shape: the sibling InitModeZTarget 0x006355D0 body (same TU); the targeting component goes through the out-parameter
 // GetInterface (one ternary entry pick), whose key temporary reuses the dead `mode` argument slot.
+#include "fable_compiler.h"
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
 #undef CPlayer
@@ -31,8 +32,8 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -41,7 +42,7 @@ class CThing { public:
             it = map->end();
         return (T*)it->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -52,7 +53,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline const T* GetConstTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetConstTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

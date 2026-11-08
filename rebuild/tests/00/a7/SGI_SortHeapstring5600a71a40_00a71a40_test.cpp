@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 c4593a94d8e26b17a0fa12b1a67e242842b74cbd042ce8927bf20949c41616b4
@@ -27,7 +28,7 @@ template<class T,class C> __declspec(noinline) void AdjustHeap(T* first,int hole
  if(second==length){first[hole]=first[second-1];hole=second-1;}
  PushHeap(first,hole,top,value,comp);
 }
-template<class T,class C> __forceinline void PopHeap(T* first,T* last,T* dest,T value,C comp) {
+template<class T,class C> FABLE_FORCEINLINE void PopHeap(T* first,T* last,T* dest,T value,C comp) {
  *dest=*first;AdjustHeap(first,0,int(last-first),value,comp);
 }
 template<class T,class C> void SortHeap(T* first,T* last,C comp) {

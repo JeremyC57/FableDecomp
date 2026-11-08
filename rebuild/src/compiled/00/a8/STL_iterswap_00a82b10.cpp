@@ -13,6 +13,7 @@
 //   operator=, destructor and range insert need same-TU noinline bodies: only then does VC7.1 treat tmp as
 //   uncaptured -- the dead proxy zero store before the malloc disappears and the key's low word stays in ebp across
 //   the calls (declaration-only: 144 v 138).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }   // placement new (null test on the target)
@@ -185,7 +186,7 @@ namespace std {
 template <class _Tp> inline _Tp* __value_type_of(_Tp*) { return (_Tp*)0; }
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
-__forceinline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
+FABLE_FORCEINLINE void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {
     _Tp __tmp = *__a;
     *__a = *__b;

@@ -1,6 +1,7 @@
 // CModeBerserk::FrameUpdate -- select berserk animation group, restart changed mode, then update base frame.
 // Leaf: FrameUpdate
 // Native008D9530 length278. Genuine mode slots5/6 from VT1267F00=8621A0/8D6830; typed PMF table retains native4/full-host width.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -25,8 +26,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct ThingNative {
  void* VTable;unsigned char BaseData[0x1c];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0x3c];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 
 struct WeaponMethods:CTCWeapon{long GetWeaponClass()const;}; //5DA7F0, def+2C (PDB Class), not propagated CCategory label

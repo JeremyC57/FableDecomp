@@ -13,6 +13,7 @@
 //   first) / 2), *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }`
 //   -- the comparator is loaded once (ebp) and pushed before the depth test; the pivot is copy-constructed in its
 //   argument slot from the median's reference (parked in the dead comparator slot across the base constructor).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -26,7 +27,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
 };
 typedef CIntelligentPointer<CThing> ThingPointer;
 

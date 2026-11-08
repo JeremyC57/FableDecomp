@@ -11,6 +11,7 @@
 // Shape: with room left, placement new under VC's null test copies the pair through its copy constructor, which must be
 //   `__forceinline` (the landed row found the implicit and a plain inline one both emitted out of line here); then finish
 //   is re-read and advanced by 24. The overflow path gets the empty __false_type temporary homed in the dead `x` slot.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -51,7 +52,7 @@ struct pair {
     _T1 first;
     _T2 second;
     pair(const _T1& a, const _T2& b) : first(a), second(b) {}
-    __forceinline pair(const pair& o) : first(o.first), second(o.second) {}
+    FABLE_FORCEINLINE pair(const pair& o) : first(o.first), second(o.second) {}
 };
 
 template <class _Tp, class _Alloc = allocator<_Tp> >

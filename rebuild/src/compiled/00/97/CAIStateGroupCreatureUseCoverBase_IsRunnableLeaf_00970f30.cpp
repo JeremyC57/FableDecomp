@@ -6,6 +6,7 @@
 // Model: the landed sibling RefreshCoverList 0x009710D0 (same TU). Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (retail
 //   STLport 4.6: 12-byte CoverList): FailedToFindCover +0x34, FailedTime +0x38, FailedToFindCoverAt +0x3c; PBrain +4.
 // Shape: C3DVector offset (operator-, Z dead) keeps retail frame slots; positive !empty() block puts the failure path last.
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
@@ -26,13 +27,13 @@ public:
 inline long CWorld::GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
 struct CIntelligentPointerBaseRetail {virtual ~CIntelligentPointerBaseRetail();void* Data; CIntelligentPointerBaseRetail(); CThingRetail* GetPItem()const;void SetPItem(CThingRetail*);}; //A01B10,A01B50,A01B90,A01C10
 struct CIntelligentPointerRetail:CIntelligentPointerBaseRetail {
- __forceinline CIntelligentPointerRetail(CThingRetail* p){SetPItem(p);}
- __forceinline CIntelligentPointerRetail(const CIntelligentPointerRetail& p){SetPItem(p.GetPItem());}
+ FABLE_FORCEINLINE CIntelligentPointerRetail(CThingRetail* p){SetPItem(p);}
+ FABLE_FORCEINLINE CIntelligentPointerRetail(const CIntelligentPointerRetail& p){SetPItem(p.GetPItem());}
 };
 struct CAllocatorTag {CAllocatorTag(){}};
 struct CHandleVector {CIntelligentPointerRetail* first;CIntelligentPointerRetail* last;CIntelligentPointerRetail* capacity;
  void InsertOverflow(CIntelligentPointerRetail*,const CIntelligentPointerRetail&,const CAllocatorTag&,unsigned long,bool); //004AC940
- __forceinline void push_back(const CIntelligentPointerRetail& p){if(last!=capacity){if(last)new(last)CIntelligentPointerRetail(p);++last;}else InsertOverflow(last,p,CAllocatorTag(),1,true);}
+ FABLE_FORCEINLINE void push_back(const CIntelligentPointerRetail& p){if(last!=capacity){if(last)new(last)CIntelligentPointerRetail(p);++last;}else InsertOverflow(last,p,CAllocatorTag(),1,true);}
 };
 struct CThingVector {CThingRetail** first;CThingRetail** last;CThingRetail** capacity;
  CThingVector():first(0),last(0),capacity(0){}
@@ -48,11 +49,11 @@ class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens th
 };
 struct UseCoverMethods : public CAIStateGroupBase, CAIStateGroup_CreatureUseCoverBase {
  bool IsRunnableLeaf();
- __forceinline CThingRetail* GetCreature(){return (*(CAIBrainRetail**)_pad_0x04)->Creature;}
- __forceinline CHandleVector& Covers(){return *(CHandleVector*)CoverList;}
- __forceinline bool& RetailFailedToFindCover(){return FailedToFindCover;}
- __forceinline long& RetailFailedTime(){return FailedTime;}
- __forceinline C3DVector& RetailFailedToFindCoverAt(){return *(C3DVector*)&FailedToFindCoverAt_X;}
+ FABLE_FORCEINLINE CThingRetail* GetCreature(){return (*(CAIBrainRetail**)_pad_0x04)->Creature;}
+ FABLE_FORCEINLINE CHandleVector& Covers(){return *(CHandleVector*)CoverList;}
+ FABLE_FORCEINLINE bool& RetailFailedToFindCover(){return FailedToFindCover;}
+ FABLE_FORCEINLINE long& RetailFailedTime(){return FailedTime;}
+ FABLE_FORCEINLINE C3DVector& RetailFailedToFindCoverAt(){return *(C3DVector*)&FailedToFindCoverAt_X;}
 };
 bool UseCoverMethods::IsRunnableLeaf(){
  if(RetailFailedToFindCover()){

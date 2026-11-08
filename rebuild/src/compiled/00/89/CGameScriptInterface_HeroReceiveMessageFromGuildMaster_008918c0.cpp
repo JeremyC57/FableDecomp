@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008918C0, length 87 bytes.
 // Callees: CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the symbol id lookup @ 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` unused), the game UI call @ 0x00437800 (the label is propagated). Shape: the interface in esi, the profile setting chosen in al through a two-way branch, the id call before the flag and text are pushed, `ret 10h`.
 // Leaf: HeroReceiveMessageFromGuildMaster
+#include "fable_compiler.h"
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -46,7 +47,7 @@ struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
     void AssignHomeBuilding(CThing_Retail* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
     void SetNewBrain(CDefPointer_Retail brain);     // 0x00833010 (CThingAICreature::SetNewBrain, the counted def pointer by value)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

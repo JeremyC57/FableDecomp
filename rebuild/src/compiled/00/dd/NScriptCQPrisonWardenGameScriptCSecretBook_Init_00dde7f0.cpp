@@ -15,13 +15,14 @@
 //   BookType +0x1c.
 // Shape: an if / else-if chain, each test on a fresh GetDataString() temporary destroyed before the branch (the result
 //   kept in bl); the landed CQ_TraderConflictGoodScript::UpdateLiveEnemies 0x00DFC320 operator== form.
+#include "fable_compiler.h"
 #include <string.h>
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     T*            PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -35,7 +36,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

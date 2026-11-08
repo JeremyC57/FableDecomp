@@ -10,6 +10,7 @@
 //   zero fill, freed behind ~_Vector_base's null test, second buffer first), the block size a const-ref operand of
 //   STLport `min`, and the intrinsic memcmp (`repe cmpsb`) on each block. With two buffers VC7.1 stops inlining the
 //   vector(n) / _Vector_base(n) constructors, so both are `__forceinline` (retail inlines them).
+#include "fable_compiler.h"
 #include <string.h>
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -34,7 +35,7 @@ public:
     T* _M_start;                                        // +0x00
     T* _M_finish;                                       // +0x04
     _STLP_alloc_proxy<T, A> _M_end_of_storage;          // +0x08
-    __forceinline _Vector_base(unsigned int n, const A& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
+    FABLE_FORCEINLINE _Vector_base(unsigned int n, const A& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
     {
         _M_start = _M_end_of_storage.allocate(n);
         _M_finish = _M_start;
@@ -48,7 +49,7 @@ public:
 };
 template <class T, class A = allocator<T> > class vector : public _Vector_base<T, A> {
 public:
-    __forceinline explicit vector(unsigned int n) : _Vector_base<T, A>(n, A())
+    FABLE_FORCEINLINE explicit vector(unsigned int n) : _Vector_base<T, A>(n, A())
     {
         memset(this->_M_start, 0, n * sizeof(T));      // uninitialized_fill_n(_M_start, n, T()) for a byte type
         this->_M_finish = this->_M_start + n;

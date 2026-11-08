@@ -15,6 +15,7 @@
 //   lookups as the landed siblings; same shape as the chunk-319 sibling
 //   CInputProcessInventoryMapScreen::ProcessInput 0x0068AE30 plus the three busy tests; CInputProcessQuestCompletionUI::ProcessInput 0x00691130 and
 //   CTCInventoryBase::AddCloseInventoryEvent 0x005BC527.
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 struct CMousePosition {
     float X, Y;
@@ -93,7 +94,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCInventoryMap* Find(long kind)
+    FABLE_FORCEINLINE CTCInventoryMap* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCInventoryMap*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -104,8 +105,8 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCInventoryMap* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCInventoryMap* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {

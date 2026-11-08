@@ -11,6 +11,7 @@
 // Shape: the HasTC test wraps the body (the false exit laid out last); GetTC inline; the squared distance is the plain inline `X*X + Y*Y + Z*Z` on an inline operator- delta
 //   kept on the x87 stack; the range is the Dinkumware reference `min(radius, ListenersHearingRange)` (`Right < Left ?
 //   Right : Left`, the radius copied into the dead argument slot so its address can be selected).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 template<class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }
 
@@ -34,7 +35,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

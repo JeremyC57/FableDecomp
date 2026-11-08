@@ -11,6 +11,7 @@
 // Shape: STLport `__copy_ptrs(first, last, result, __false_type) { return __copy(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0); }` with the counted `__copy` inlined (`for (n = last - first; n > 0;
 //   --n) { *result = *first; ++first; ++result; }`, the source walking as `edi + esi`). Size TU (`dec ebx ; jne`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 enum EAttackHistoryType { EAttackHistoryType_Force32 = 0x7fffffff };
@@ -48,7 +49,7 @@ public:
 };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {
@@ -71,7 +72,7 @@ class CAttackHistoryCombo {                         // Ego_r.pdb (retail 0x10 by
 public:
     std::vector<std::pair<EAttackHistoryType, EDamageAttribute> > AttackCombo;   // +0x00
     float Multiplier;                                                           // +0x0C
-    __forceinline CAttackHistoryCombo& operator=(const CAttackHistoryCombo& other)
+    FABLE_FORCEINLINE CAttackHistoryCombo& operator=(const CAttackHistoryCombo& other)
     {
         AttackCombo = other.AttackCombo;
         Multiplier = other.Multiplier;

@@ -10,6 +10,7 @@
 //   script runner (0x013D2838) exists.
 // Shape: a same-TU LowerBound stand-in lets the lookup key share the dead flag slot (chunk 242 idiom); the class-name compare keeps its bool in bl across the two string dtors; the result string lives in the dead
 //   container slot and the literal in the dead flag slot; the add-to-inventory arm returns the callee's bool directly.
+#include "fable_compiler.h"
 class CCharStringData { public:
     char*         PData;                    // +0x00
     unsigned long StringLength;             // +0x04
@@ -29,7 +30,7 @@ public:
 class CCharString : public CBasicString<char> { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const CCharString& other) const     // the landed IsActionRunning 0x00712D70 form
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const     // the landed IsActionRunning 0x00712D70 form
     {
         if (PStringData == other.PStringData)
             return true;
@@ -80,7 +81,7 @@ struct CThing_Retail {
     unsigned char         m_dead : 1;               // +0x91 bit 0
     unsigned char         m_91_1 : 7;
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap_Retail* map = &m_interfaces;

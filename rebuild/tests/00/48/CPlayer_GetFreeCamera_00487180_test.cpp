@@ -3,6 +3,7 @@
 // and GetHorizontalFOV stubbed so the arguments are observable, the reciprocal-square-root table filled from the real
 // formula. Checks the lerp at t = 0, 1 and 0.25, that forward/up come back unit length in the lerped direction, and that
 // the FOV of the current free camera and a zero zoom reach the constructor.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 #ifndef _MSC_VER
@@ -18,7 +19,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float lengthSquared = X * X + (Y * Y + Z * Z);
         unsigned long bits = *(unsigned long*)&lengthSquared;

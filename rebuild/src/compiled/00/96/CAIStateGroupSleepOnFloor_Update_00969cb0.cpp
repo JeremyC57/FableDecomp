@@ -15,6 +15,7 @@
 // Layout: local stand-ins; CAIStateGroupBase +0x4 PBrain, +0x14 PSleepPoint (IP, 8 bytes), +0x1c Asleep (retail
 //         disassembly). The mode strings are passed as const char* and converted implicitly (an explicit
 //         CCharString temporary pushes each address right after its ctor instead of after both).
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -28,7 +29,7 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 struct CTCOccupiable {                          // interface 0xac

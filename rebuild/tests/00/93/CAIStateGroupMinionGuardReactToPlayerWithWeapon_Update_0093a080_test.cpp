@@ -2,6 +2,7 @@
 // every callee stubbed; exercises the dead/unarmed exits, the look-at abort, the admonishing watch loop, the warning
 // path (message, four-second watch with the follow move, the just-warning return, the criminal declaration) and the
 // in-loop death/disarm terminations.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -44,7 +45,7 @@ void CBaseIntelligentPointer::SetPItem(const CThing* item) { m_pItem = (CThing*)
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer() { }
-    template<class U> __forceinline CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
+    template<class U> FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
@@ -52,7 +53,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(const CBaseIntelligentPointer& other);
 };
 CIntelligentPointerThing::CIntelligentPointerThing(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-__forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
+FABLE_FORCEINLINE bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
 class CMessageEventManager { public:
     void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
                     float range, float radius, long data);
@@ -97,7 +98,7 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     bool CheckForOtherGuardsNewWarning();
     void RemoveMyWarningMessage();
     bool IsPlayerCarryingWeapon();
-    __forceinline bool IsWithinWarningTime()
+    FABLE_FORCEINLINE bool IsWithinWarningTime()
     {
         CWorld* world = GetPThingWorld();
         long framesPerSecond = g_FramesPerSecond;

@@ -2,6 +2,7 @@
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +4.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0078B6B0,268bytes. Actual header fields projected from donorB4 to nativeA8 base.
+#include "fable_compiler.h"
 #define CCreatureAction_HeroLoadRangedWeapon CCreatureAction_HeroLoadRangedWeaponPdb
 #include "engine/CCreatureAction_HeroLoadRangedWeapon.h"
 #undef CCreatureAction_HeroLoadRangedWeapon
@@ -64,7 +65,7 @@ class CThing:public CBaseObject { public:
     unsigned char DeadFlags;
     void SetInLimbo(bool); //004C8CF0
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;

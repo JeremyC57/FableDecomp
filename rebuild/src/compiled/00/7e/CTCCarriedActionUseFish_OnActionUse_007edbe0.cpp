@@ -13,6 +13,7 @@
 // Shape: the wall-mount arm returns on its own; the 0xB0-byte action temporary (CCreatureActionBase 0xA8 + an intelligent
 // pointer) is passed by reference straight from the ctor and destroyed inline (novtable leaf); the bonus def is read from its out
 // pointer right after GetSubDef (ebx) and released by hand at the end.
+#include "fable_compiler.h"
 struct CTCBaseInterface;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 class CTCBase;
@@ -56,7 +57,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

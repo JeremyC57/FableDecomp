@@ -7,6 +7,7 @@
 // Tried: an inline Release() member (load/dec/store of the count), the hand `if (--def->RefCount == 0)` (this source: `dec [eax+4]` then a
 //   re-read), a copied register local for the def (worse), a CDefPointer object with an unchecked release destructor (same frame).
 // next: lane gap: multi-local homing into a dead argument slot.
+#include "fable_compiler.h"
 class CWorld;
 class C2DCoordI { public:
     long X, Y;
@@ -42,7 +43,7 @@ class CHeightMap { public:                                // retail layout (PDB 
     long                           SizeXIncludingExtraCells;   // +0x20c
     long                           SizeYIncludingExtraCells;   // +0x210
     CHeightMap(CWorld* world, CMap* map, const CHeightMapInit& init);   // 0x008F63C0
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 template <class T> struct scoped_ptr {
     T* ptr;

@@ -4,6 +4,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
+#include "fable_compiler.h"
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -81,7 +82,7 @@ class CThing:public CClass{
  unsigned char unreadThing[0x91-0x54];bool Dead:1;unsigned char unreadFlags:7;
  unsigned char unreadTail[sizeof(CThingLayout)-0x92];
 public:bool IsDead()const{return Dead;}
- template<class T>__forceinline bool GetTC(T**p){
+ template<class T>FABLE_FORCEINLINE bool GetTC(T**p){
   ETCInterfaceType t=T::StatGetInterfaceType();
   if((UsingComponents._M_w[t>>5]&(1UL<<(t&31)))!=0){ETCInterfaceType key=T::StatGetInterfaceType();*p=static_cast<T*>(Components.Find(key)->second);return true;}
   return false;

@@ -14,6 +14,7 @@
 //   named members E11..E44 VC7.1 hoists the six integer stores (E34 = pos.Z, the 0,0,0 last row, E44 = 1.0f) up to
 //   just after the E11 store; through the returned float& it keeps them in source order after E33, as retail does
 //   (the matching lever after 4 named-member grades: chained zeros, reversed zero order, named pos local).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix4x4 { public:
@@ -25,7 +26,7 @@ class CMatrix4x4 { public:
 };
 class CQuaternion { public:
     float X, Y, Z, W;
-    __forceinline void ToMatrix(CMatrix4x4& m, const C3DVector& pos) const
+    FABLE_FORCEINLINE void ToMatrix(CMatrix4x4& m, const C3DVector& pos) const
     {
         float x = X, y = Y, z = Z, w = W;
         float n = w * w + z * z + y * y + x * x;

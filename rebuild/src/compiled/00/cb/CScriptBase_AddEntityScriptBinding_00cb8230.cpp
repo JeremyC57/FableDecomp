@@ -15,6 +15,7 @@
 // destroyed with the re-read `--count; if (count == 0)` release and both words cleared) and Dirty = true -- as in the
 // landed C3DAnimFile::AddNamedChunk (Add must be __forceinline, else VC emits it out of line); the local counted
 // pointer's release keeps the block in esi.
+#include "fable_compiler.h"
 #include <stddef.h>
 void* __cdecl operator new(size_t size);            // 0x00BFEA1A
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
@@ -75,7 +76,7 @@ struct CBindingMap {                                // CVectorMap<CCharString, C
     CBindingVector m_vector;                        // +0x00
     unsigned char  m_compare;                       // +0x0c (empty comparator)
     bool           Dirty;                           // +0x0d
-    __forceinline void Add(const CCharString& name, const CCountedPointer<CEntityScriptBindingBase>& binding)
+    FABLE_FORCEINLINE void Add(const CCharString& name, const CCountedPointer<CEntityScriptBindingBase>& binding)
     {
         m_vector.push_back(SBindingEntry(name, binding));
         Dirty = true;

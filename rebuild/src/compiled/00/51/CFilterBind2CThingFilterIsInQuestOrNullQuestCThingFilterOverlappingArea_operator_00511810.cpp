@@ -13,6 +13,7 @@
 //   by four `(long)` casts, the centre's two casts tested against the box).
 // Retail-asm: 0x0051185D..0x00511877 `fld [ebp-10h] ; fadd [ebp-0Ch] ; fistp dword ptr [ebp-4] ; fild [ebp-4] ; fsub [ebp-8] ; fstp [ebp-14h] ; mov eax,[ebp-10h] ; cmp eax,[ebp-14h] ; jne ; dec dword ptr [ebp-4]` -- the engine's inline-assembly ceiling helper expanded in place (a bare dword fistp, the bit compare and the memory decrement in one 10-instruction block; VC7.1 emits no bare dword fistp from C++), as in the landed 0x0050EF30.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #include "engine/C3DVector.h"
 class C2DBoxI {
@@ -44,7 +45,7 @@ public:
 };
 class CThingFilter_OverlappingArea {
 public:
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         if (thing.GetPhysicsTC()) {
             float radius;

@@ -1,4 +1,5 @@
 // test for 0x005C0E81 CPersistTraits<NInventory::CItem>::TransferOut -- text save of an item with and without per-item data
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -70,7 +71,7 @@ template <class T> class CPersistTraits;
 template <> class CPersistTraits<long> {
 public:
     long DefaultVal;
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const long& value)
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const long& value)
     {
         long copy = value;
         CPersistTraitsSLONG::TransferOut(context, out, copy);
@@ -79,7 +80,7 @@ public:
 template <> class CPersistTraits<bool> {
 public:
     bool DefaultVal;
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const bool& value)
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const bool& value)
     {
         if (value)
             out += "TRUE";

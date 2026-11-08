@@ -16,6 +16,7 @@
 //   stores; member copies of the vectors store temporaries first), passed through a named physics-TC local (the TC
 //   load and the `lea` of the set land above the stores, the vtable load below them; a temporary argument sinks the
 //   TC load under the stores, a temporary with the named TC hoists the vtable load and the push above them).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
@@ -56,7 +57,7 @@ class CThingCreatureBase { public:
     unsigned char   _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;

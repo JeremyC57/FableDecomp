@@ -15,6 +15,7 @@
 // Shape: one `while (!IsActiveThreadTerminating())` loop (rotated by VC7.1), an if / else-if chain on OpinionCurrent, every
 //   script statement guarded by its own terminate check (the sibling WatchForInsideTavern 0x00E9CB20 style); the CTimer
 //   operators are `__forceinline` after engine/CTimer.h.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -29,8 +30,8 @@ public:
 #include "engine/CGameScriptInterface.h"
 
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 class CScriptDef {
 public:

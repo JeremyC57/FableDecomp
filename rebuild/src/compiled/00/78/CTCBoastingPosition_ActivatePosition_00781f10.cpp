@@ -14,6 +14,7 @@
 // BoastOn +0x2C, HeroInsideRadius +0x2D, PParticleEffect +0x2E (unaligned: the intelligent pointer is declared packed).
 // Shape: the effect name is a named local in its own block (destroyed after the intelligent-pointer temporary); the pointer
 // assignment reads the temporary's item before forming the member address; the parent thing is re-read for each call.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -39,7 +40,7 @@ public:
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
     void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

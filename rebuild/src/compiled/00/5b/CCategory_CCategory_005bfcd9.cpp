@@ -16,6 +16,7 @@
 // member (no scoped reference); `PAssociatedThing = (CThing*)0` builds the 8-byte conversion temporary in
 // the frame (an IMPLICIT conversion: its address is re-formed with `lea` after the constructor, an explicit
 // temporary reuses the constructor's eax), assigns it out of line and runs its inline destructor's out-of-line base part.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -30,12 +31,12 @@ struct CInventoryCategoryDef_Retail {         // the def behind the retail CDefP
 class CDefPointer {                           // CDefPointer<const CInventoryCategoryDef>
 public:
     CInventoryCategoryDef_Retail* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->m_refCount;
     }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             if (--Object->m_refCount == 0)

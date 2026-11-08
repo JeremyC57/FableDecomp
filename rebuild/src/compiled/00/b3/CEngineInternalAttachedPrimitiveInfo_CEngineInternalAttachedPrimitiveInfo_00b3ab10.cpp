@@ -19,6 +19,7 @@
 //   The implicit ??1 is emitted the way retail's TU emits it: the PDB default constructor defined here emits the vtable,
 //   its ??_G and the out-of-line implicit destructor (chunk 664 lesson); retail's own constructor is inline at its use site.
 //   Slot 3's name (NotifyReleased) is the landed spelling, not PDB-attested (descriptive; see NOTES.md).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0)
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -36,7 +37,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointer() : Object(0) { }
     T* operator->() const { return static_cast<T*>(Object); }
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -45,26 +46,26 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
     CEnginePrimitiveHandle() { }
     unsigned long GetReferenceCount() const { return Data.GetRefCount(); }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (GetReferenceCount() == 1)
             Data->NotifyReleased(*this);
         Data.Reset(0);
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 class CEngineInternalAttachedPrimitiveInfo : public CBaseClass { public:   // vtable 0x012A1AB8, 12 bytes

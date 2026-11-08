@@ -19,6 +19,7 @@
 //   early return to the wrong epilogue copy).
 // Naming wave 35: identity reg 00da3754 "MagicBarrierGraveyard" in 00da34b0; Alloc 00da53a0; vtable 012d7510 slot 1; PDB ?Main@CMagicBarrierGraveyard@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMagicBarrierGraveyard::Main (wave3/labels_alloc.tsv); PDB ?Main@CMagicBarrierGraveyard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -34,7 +35,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

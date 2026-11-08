@@ -13,6 +13,7 @@
 //   the short-tail path (uninitialized_fill_n of the overhang, copy the tail after it, fill the old tail); both fill calls
 //   tail-merge before x_copy's out-of-line destructor. The helpers are same-TU noinline bodies (auto_inline off), so VC7.1
 //   keeps the empty tags and the spilled `old_finish - n` / `n - elems_after` words in the frame as retail does.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
@@ -116,7 +117,7 @@ public:
 
 namespace std {
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 // Same-TU stand-ins for the landed helpers, kept out of line.
 #pragma auto_inline(off)
@@ -155,7 +156,7 @@ __declspec(noinline) _ForwardIter __fastcall uninitialized_fill_n(_ForwardIter _
 #pragma auto_inline(on)
 
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

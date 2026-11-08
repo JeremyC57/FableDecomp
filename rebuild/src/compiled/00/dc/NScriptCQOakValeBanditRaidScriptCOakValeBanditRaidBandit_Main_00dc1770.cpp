@@ -1,5 +1,6 @@
 // NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit::Main() -- detect the hero or followers, close the gate and chase until recalled.
 // Leaf: ?Main@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -20,7 +21,7 @@
 #include "engine/TRetVoid.h"
 // Row-local inline body (engine/CScriptThing.h declares ??8CScriptThing@@QBE_NABV0@@Z, out of line at 0x008AAE20; this TU expands it,
 // the header's documented convention for CScriptThing's mixed inlining; Codex pass 13 FABLE_RETAIL_CSCRIPTTHING_EQUAL).
-__forceinline bool CScriptThing::operator==(const CScriptThing& other) const { return PImp->IsEqualTo(*other.PImp); }
+FABLE_FORCEINLINE bool CScriptThing::operator==(const CScriptThing& other) const { return PImp->IsEqualTo(*other.PImp); }
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 enum EHeroAbility { HERO_ABILITY_HEAL_LIFE_SPELL=14 };
 enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_DEFAULT=0, CUTSCENE_BEHAVIOUR_PAUSED=1, CUTSCENE_BEHAVIOUR_NOT_PAUSED=2 };

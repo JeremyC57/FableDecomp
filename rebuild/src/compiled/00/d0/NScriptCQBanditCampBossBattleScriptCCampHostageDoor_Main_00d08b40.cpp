@@ -5,6 +5,7 @@
 // Shape: the watch loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... Game->NewScriptFrame(); }`
 //   (GOTCHAS b18 companion shape): its inlined-dtor return becomes a duplicated epilogue and the pre-guard early
 //   return targets the final epilogue after the out-of-line ~CScriptThing, as retail (prior's if/do-while hit the first).
+#include "fable_compiler.h"
 #include <new>
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -17,10 +18,10 @@
 #include "engine/CParentDefClassBase.h"
 class CCharStringData;
 class CCharString{protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
-__forceinline CScriptThing::~CScriptThing(){}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing(){}
 inline bool CScriptThing::IsAlive()const{return PImp.Get()&&PImp->IsAlive();}
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing&thing):Thing(thing){}
-__forceinline NScript::CIsThingAlive::~CIsThingAlive(){
+FABLE_FORCEINLINE NScript::CIsThingAlive::~CIsThingAlive(){
 #pragma inline_depth(0)
 }
 #pragma inline_depth(255)

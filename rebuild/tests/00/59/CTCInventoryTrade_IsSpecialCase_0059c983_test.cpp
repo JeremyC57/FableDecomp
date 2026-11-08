@@ -1,5 +1,6 @@
 // Behaviour test for 0059c983: src/0059c983.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCInventoryTrade::IsSpecialCase(long itemType)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -30,7 +31,7 @@ struct CDefVirtual {
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -39,7 +40,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
 };
 template <class T> class CDefPointer { public:              // a counted def reference returned by value
     T* m_p;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p)
             m_p->ReleaseTemporary();
@@ -47,7 +48,7 @@ template <class T> class CDefPointer { public:              // a counted def ref
 };
 template <class T> struct CClearingDefPointer {      // the same, clearing its word after the release
     T* m_p;
-    __forceinline ~CClearingDefPointer()
+    FABLE_FORCEINLINE ~CClearingDefPointer()
     {
         if (m_p) {
             m_p->ReleaseTemporary();
@@ -58,7 +59,7 @@ template <class T> struct CClearingDefPointer {      // the same, clearing its w
 template <class T> struct CDefSlot {                 // an owning out slot for GetDef / GetSubDef
     T* m_p;
     CDefSlot() : m_p(0) { }
-    __forceinline ~CDefSlot()
+    FABLE_FORCEINLINE ~CDefSlot()
     {
         if (m_p && --m_p->m_count == 0)
             m_p->Destroy();

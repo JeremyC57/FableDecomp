@@ -5,6 +5,7 @@
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (/Os TU, frame pointers); explicit instantiation emits the member as
 //   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_longkey_ins005f915d::insert).
 // Leaf: ?insert_unique@?$_Rb_tree@UCUnprovenKey_005f8c1f@@UCUnprovenValue_005f8c1f@@UCUnprovenKeyOfValue_005f8c1f@@U?$less@UCUnprovenKey_005f8c1f@@@std@@V?$allocator@UCUnprovenValue_005f8c1f@@@5@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@UCUnprovenValue_005f8c1f@@U?$_Nonconst_traits@UCUnprovenValue_005f8c1f@@@std@@@std@@_N@2@ABUCUnprovenValue_005f8c1f@@@Z
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
@@ -52,7 +53,7 @@ template <class _Tp> struct _Identity {
 template <class _Pair> struct _Select1st {
     const typename _Pair::first_type& operator()(const _Pair& __x) const { return __x.first; }
 };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last) { for (; __first != __last; ++__first) _Destroy(&*__first); }
 struct input_iterator_tag { };
@@ -210,7 +211,7 @@ protected:
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
-    __forceinline _Link_type _M_clone_node(_Link_type __x)
+    FABLE_FORCEINLINE _Link_type _M_clone_node(_Link_type __x)
     {
         _Link_type __tmp = _M_create_node(__x->_M_value_field);
         __tmp->_M_color = __x->_M_color;

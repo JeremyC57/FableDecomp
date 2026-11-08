@@ -13,6 +13,7 @@
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, CutsceneFinished +0x4C (Ego_r +0x60).
 // Shape: the low-health test reads pGlobalScriptDef into edi BEFORE the GetHealth call: a named `def` local re-read at the
 //   end of the loop body (the FisticuffsChallenge 0x00E86E60 form); reading the def inside the compare spills the fild.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -26,7 +27,7 @@ class CCharString { public:
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }

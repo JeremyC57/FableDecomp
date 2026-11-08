@@ -13,6 +13,7 @@
 //   the AllocateResource call sit in ONE __forceinline AllocateChecked wrapper tested by a single `if`: VC7.1 then lays
 //   the shared `return false` block as the fall-through of the AllocateResource test (`jne success`) with the size guard
 //   jumping forward to it; two separate `if (...) return false;` statements keep the first copy and jump back to it.
+#include "fable_compiler.h"
 #include "engine/CContainmentVolume.h"
 
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
@@ -35,14 +36,14 @@ class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, void* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
 };
 
-static __forceinline bool IsValidSize(__int64 size) { return size >= 0 && size <= 0x7fffffff; }
-static __forceinline bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner);
+static FABLE_FORCEINLINE bool IsValidSize(__int64 size) { return size >= 0 && size <= 0x7fffffff; }
+static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner);
 
 struct CContainmentVolume_Methods : CContainmentVolume {
     bool Initialise(const CPlane* planes, unsigned long count, CMovableResourceMemoryPool* pool);
 };
 
-static __forceinline bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner)
+static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner)
 {
     if (!IsValidSize((__int64)bytes))
         return false;

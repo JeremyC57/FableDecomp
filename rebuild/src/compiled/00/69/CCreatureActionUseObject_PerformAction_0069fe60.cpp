@@ -14,6 +14,7 @@
 // Shape: the event is {vptr, long 0, CIntelligentPointer<CThing>} with an inline ctor (the OpenChest 0x008448E0 model); &PCreature is
 // spilled across the new/ctor block; the `new` null test selects 0 for AddEvent; the absent-events arm still evaluates a
 // PUsedThing.GetPItem() whose result is dropped (a compiled-out assertion on the used thing); the scripted-hook branch returns early.
+#include "fable_compiler.h"
 class C3DVector;
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -26,7 +27,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 struct __declspec(novtable) CEventBase {
     virtual void v00();

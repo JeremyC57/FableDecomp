@@ -11,6 +11,7 @@
 //   (no __type_traits specialisation for the class) -> `_Destroy(&*first)` = `p->~T()`: the virtual destructor through
 //   vtable slot 0 with the 0 (no delete) flag; the loop tests first != last before the first call. The size-optimised TU
 //   keeps the inline helpers out of line unless they are __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CEngineLocalDetailObjectDef {                         // retail 0x88 bytes, polymorphic
@@ -25,23 +26,23 @@ struct __false_type { __false_type() { } };
 template <class _Tp> struct __type_traits {
     typedef __false_type has_trivial_destructor;
 };
-template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
+template <class _Tp> FABLE_FORCEINLINE _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _Tp>
-__forceinline void _Destroy(_Tp* __pointer)
+FABLE_FORCEINLINE void _Destroy(_Tp* __pointer)
 {
     __pointer->~_Tp();
 }
 
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for ( ; __first != __last; ++__first)
         _Destroy(&*__first);
 }
 
 template <class _ForwardIterator, class _Tp>
-__forceinline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
+FABLE_FORCEINLINE void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(__first, __last, _Trivial_destructor());

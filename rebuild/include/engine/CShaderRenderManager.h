@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CSHADERRENDERMANAGER_H
 #define FABLE_ENGINE_CSHADERRENDERMANAGER_H
+#include "fable_compiler.h"
 // CShaderRenderManager: one retail model (new 2026-11-03; merged from chunk 723b/723c (the water / sprite render passes) and
 // Codex pass 13 (rows 0x00989CB0 UpdateObjectSpaceLighting, 0x0098ACF0 Initialise, 0x009DA9F0 CRenderManager2D::Render2DDrawList);
 // Codex's per-feature FABLE_RETAIL_SHADER_LIGHTING / FABLE_RETAIL_RENDER2D_TYPES variants are folded in, the class has no macro).
@@ -148,19 +149,19 @@ public:
 
     // ?SetPixelShaderConstant@CShaderRenderManager@@QAEXKABVC4DVector@@@Z (inline): copy the value into the constant table and mark
     // the pixel constants dirty (update flag 2).
-    __forceinline void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
+    FABLE_FORCEINLINE void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
         *(PSConstTable.begin() + index) = value;
         UpdateFlags |= 2;
     }
     // ?SetBoneMatrixCount@CShaderRenderManager@@QAEXJ@Z (inline): size the bone-matrix table (STLport vector::resize, out of line).
-    __forceinline void SetBoneMatrixCount(long count)
+    FABLE_FORCEINLINE void SetBoneMatrixCount(long count)
     {
         BoneMatrices.resize(count, CPreTransposedBoneMatrix());
     }
     // ?PrepareForRender@CShaderRenderManager@@QAEXK@Z (inline; the landed 0x00B77E20 / 0x00B76BC0 / 0x00B7C510 expansions and
     // CRenderManager2D::Render2DDrawList 0x009DA9F0): flush every dirty piece of shader state the vertex format `flags` uses.
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetAsCArray(),

@@ -23,6 +23,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -51,7 +52,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -69,7 +70,7 @@ struct CScriptThingImpl;
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
-    __forceinline ~CScriptThing() {}                    // out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() {}                    // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 public:
     virtual CCharString GetDataString() const;   // 0x004AA900

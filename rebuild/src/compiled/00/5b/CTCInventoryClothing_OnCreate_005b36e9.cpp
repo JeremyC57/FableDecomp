@@ -23,6 +23,7 @@
 // release is `dec [ecx+4] ; jne`. Same-TU stand-ins for both reproduce that.
 // Layout (retail): NHeroInformationScreens::CBase secondary base +0x130; the clothing def's inventory-def index +0x7C;
 // CTCInventoryItem flag +0x20.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -71,7 +72,7 @@ class CThing { public:
     unsigned char _pad64[0x70 - 0x64];
     CDefPointer<CDefClassBase> PDef;            // +0x70
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

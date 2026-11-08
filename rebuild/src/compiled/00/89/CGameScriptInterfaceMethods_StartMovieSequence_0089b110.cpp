@@ -1,6 +1,7 @@
 // CGameScriptInterface::StartMovieSequence -- enter movie state and return an owning movie resource
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail0089B110,248 bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
 #define CPlayer CPlayerPdb
@@ -27,7 +28,7 @@ public:
     void AllowUIToOpen(bool);   // 0x0056A930
 };
 struct BoastMethods:CTCBoastUI{}; //0056A930
-__forceinline BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>(((void*)(it==end||it->first>232?end:it)->second));}return result;}
+FABLE_FORCEINLINE BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>(((void*)(it==end||it->first>232?end:it)->second));}return result;}
 struct MovieTransitionState{unsigned char Prefix[0xf4];bool Busy;};extern MovieTransitionState* g_MovieTransitionState; //013B8790
 extern long g_MovieCameraID; //01380C34
 extern long g_MovieState; //013BAD00

@@ -14,6 +14,7 @@
 //   (!(first < last)) return first; iter_swap(first, last); ++first; }` with the coin-flip predicate inlined (the
 //   landed 0x00805FE0 form: `seed = ROR13(seed * 0x24A1 + 0x24DF); if (seed & 1) return false; return true;`);
 //   iter_swap is STLport's swap through a frame temporary (copy ctor, two SetPItem assignments, base destructor).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -50,8 +51,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         SetPItem(p.GetPItem());
         return *this;

@@ -9,6 +9,7 @@
 //   and GFFastSin 0x00A147E0 inlined (cosine table 0x013CD550).
 // Shape: the random turn fraction is scaled by 1024 once (shared by both inlines), X = cos lookup (no shift), Y = sin
 //   lookup (-256), X kept in ecx until the end, Y stored straight from st(0).
+#include "fable_compiler.h"
 extern float g_CosTable[1025];          // 0x013CD550: cos(2*pi*k/1024), k = 0..1024
 
 float __fastcall GFFloatRandom(float max, unsigned long* seed);    // 0x004978A0
@@ -16,7 +17,7 @@ float __fastcall GFFloatRandom(float max, unsigned long* seed);    // 0x004978A0
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
 #include "engine/GFFloatToLongNear.h"
 
-__forceinline float __fastcall GFFastCos(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastCos(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);
@@ -25,7 +26,7 @@ __forceinline float __fastcall GFFastCos(float angle)
     return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
 }
 
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);

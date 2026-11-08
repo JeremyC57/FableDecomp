@@ -18,6 +18,7 @@
 //   ternary entry pick with its own null test.
 // Tried: out-parameter GetInterface for the contents, an implicit CCharString conversion temporary instead of the named
 //   block local, the contents through a `__forceinline` accessor: the 0x21 key never shares the name's word.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -31,20 +32,20 @@ public:
     unsigned short DefIndex;                    // +0x8c global definition index
     unsigned char  _pad8e[0x91 - 0x8e];
     unsigned char  m_stateFlags;                // +0x91 (bit 0: dead)
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

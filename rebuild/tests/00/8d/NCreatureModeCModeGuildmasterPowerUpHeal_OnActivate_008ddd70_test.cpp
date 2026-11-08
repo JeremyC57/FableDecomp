@@ -1,5 +1,6 @@
 // Behaviour test for 008ddd70: the source verbatim (CRT free wrapped, MSVC keywords defined away under g++), every declared callee
 // stubbed so the bodyguard search, the per-bodyguard HEAL effect and the one-time CTCHealLife add are observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -41,7 +42,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1

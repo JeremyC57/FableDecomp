@@ -1,5 +1,6 @@
 // Behaviour test for 008579d0: src/008579d0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CCombatActionBase::UpdateActionRunningTime
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -58,7 +59,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    template <class T> __forceinline void GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -96,7 +97,7 @@ class CBulletTimeManager { public:
     long m_active;                                  // +0x04
     unsigned char _pad8[4];
     bool m_slowing;                                 // +0x0c
-    __forceinline bool IsRunning() const { return m_slowing || m_active != 0; }
+    FABLE_FORCEINLINE bool IsRunning() const { return m_slowing || m_active != 0; }
     bool IsTimeForFullUpdate();                     // 0x004C6060
     void SetBulletTimeSlowdownMultiplier(long frames, class CCombatActionBase* source, float multiplier);   // 0x004C6170
 };

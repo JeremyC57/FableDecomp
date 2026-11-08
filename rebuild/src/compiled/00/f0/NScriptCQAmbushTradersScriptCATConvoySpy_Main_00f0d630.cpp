@@ -16,6 +16,7 @@
 //   pGlobalScriptDef AmbushTradersQuestSuccessReward +0x9fc, AmbushTradersQuestSuccessBonus +0xa00.
 // Shape: generated entity script (CAT_ConvoyMember 0x00F0CAA0 / CAT_BanditAlly 0x00F063B0 models): function-scope locals (the
 //   expression name, the teleport record, an unused CScriptThing, seh_me), a T-check before every statement, `for (;;)` main loop.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
@@ -66,8 +67,8 @@ extern "C" int __cdecl rand();
 bool FABLE_FASTCALL IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 extern CGameScriptInterfaceBase* pDSTGame;
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map();
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map();

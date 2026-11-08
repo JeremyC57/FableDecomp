@@ -1,5 +1,6 @@
 // Behaviour test for 004387f0 (CPlayerGui::RenderUpdateGuiTimers): GUI timer at 0.5/0.5, seven stat bars at the def's times,
 // quest-info timer unless in mode 1, secondary fade with a forced mode 2 when flagged; the def is loaded once.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -29,7 +30,7 @@ class CDefinitionManager { public:
 };
 static CDefinitionManager s_mgr;
 class CGameDefinitionManager { public: static CDefinitionManager& __fastcall Get() { return s_mgr; } };
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

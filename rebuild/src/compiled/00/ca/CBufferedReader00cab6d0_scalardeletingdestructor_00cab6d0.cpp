@@ -4,6 +4,7 @@
 // Callees: FreeBuffer(void*) @ 0x00CB1F20 (on `this`; manifest "CBankFileAsyncData::FreeBuffer"), operator delete @ 0x00BFE9BC when bit 0 of the flag is set.
 // Vtable 0x012BF6E0 is not in rtti-vtables.tsv; the chunk label "CEngineComponent::`scalar_deleting_destructor'" is propagated. Shape: the buffer pointer is
 // loaded and tested around the vtable store; the destructor is `__forceinline` so its body lands inside the `??_G`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
 struct CBufferedReader_00cab6d0 {                  // vtable 0x012BF6E0
@@ -11,7 +12,7 @@ struct CBufferedReader_00cab6d0 {                  // vtable 0x012BF6E0
     unsigned char _pad04[0x38];
     void*         m_pBuffer;                       // +0x3c
     void FreeBuffer(void* buffer);                 // 0x00CB1F20
-    __forceinline virtual ~CBufferedReader_00cab6d0()
+    FABLE_FORCEINLINE virtual ~CBufferedReader_00cab6d0()
     {
         if (m_pBuffer != 0)
             FreeBuffer(m_pBuffer);

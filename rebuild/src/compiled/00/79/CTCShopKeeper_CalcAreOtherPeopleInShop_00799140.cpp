@@ -13,6 +13,7 @@
 //   the constant type), which lets the village pointer's spill share the key's frame word (sub esp,0xc); the building test
 //   is an inline IsThingAlive (keeps retail's second inline `return false` exit); the villager is a named local before
 //   its home-building read (`lea ecx,[eax+0x170]` instead of mov/add).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CBaseObject;
 class CThing;
@@ -33,7 +34,7 @@ class CThing { public:
     unsigned char Dead : 1;                         // +0x91 bit 0
     unsigned char _pad92[0x170 - 0x92];
     CBaseIntelligentPointer HomeBuilding;           // +0x170
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -51,7 +52,7 @@ class CThingBuilding : public CThing { public:
     bool IsPointInside(const C3DVector& pos) const;       // 0x0082D000
     bool IsDoorBlockedBy(CThing* thing);            // 0x0082D9C0
 };
-__forceinline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
+FABLE_FORCEINLINE bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
 struct CVillagerNode { CVillagerNode* _M_next; CVillagerNode* _M_prev; CBaseIntelligentPointer Villager; };
 class CTCVillage { public:
     unsigned char _pad00[0x2c];

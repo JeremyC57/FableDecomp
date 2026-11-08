@@ -1,5 +1,6 @@
 // Behaviour test for 006dd1c0: final.cpp copied verbatim minus its same-TU stand-in bodies (replaced by functional stubs
 // below), the out-of-line callees stubbed so the clear/count/key/value/insert sequence is observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -46,7 +47,7 @@ class CMemoryDataInputStream { public:
     long SourceChunkStreamPos;
     long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -75,7 +76,7 @@ struct CStatTree {                                  // CHeroStatIncreaseData's m
     SNode* m_header;
     unsigned int m_count;
     SLess m_compare;
-    __forceinline CStatTree()
+    FABLE_FORCEINLINE CStatTree()
     {
         m_header = 0;
         m_header = (SNode*)malloc(0x18);
@@ -87,7 +88,7 @@ struct CStatTree {                                  // CHeroStatIncreaseData's m
     }
     CStatTree(const CStatTree& other);              // 0x004F9960
     void Erase(SNode* node);                        // 0x004DA252
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         if (m_count != 0) {
             Erase(m_header->m_parent);
@@ -97,7 +98,7 @@ struct CStatTree {                                  // CHeroStatIncreaseData's m
             m_count = 0;
         }
     }
-    __forceinline ~CStatTree()
+    FABLE_FORCEINLINE ~CStatTree()
     {
         clear();
         if (m_header)
@@ -138,7 +139,7 @@ struct CStatMapTree {                               // map<EDamageAttribute, CHe
     SLess m_compare;
     void Erase(SNode* node);                        // 0x004E6E43
     SPairIB InsertUnique(const SStatPair& value);   // 0x006DCE90
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         if (m_count != 0) {
             Erase(m_header->m_parent);
@@ -150,7 +151,7 @@ struct CStatMapTree {                               // map<EDamageAttribute, CHe
     }
 };
 
-__forceinline void ReadCount(CMemoryDataInputStream* stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStream* stream, long* out)
 {
     long value;
     stream->Read(&value, 4);

@@ -8,6 +8,7 @@
 // ZSpriteEntries +0x3C, ObjectCount +0x40, ZSpriteHandle +0x48 (engine headers carry the donor layout, renderer +0xF58 vs retail +0x6B0).
 // Shape: Objects and ObjectCount are read into locals (the Objects load is scheduled above the vtable store); the manager local is kept in
 // the frame word across the object loop; the object array is destroyed by an
+#include "fable_compiler.h"
 #include "engine/CEnginePrimitiveRenderer.h"
 #define CMovableResource CMovableResourceDonor
 #include "engine/CMovableResource.h"
@@ -29,7 +30,7 @@ class CIVCountedPointeeBase { public:
  unsigned long IVRefCount;
  void DecRef(){--IVRefCount;}
  long GetRefCount()const{return IVRefCount;}
- __forceinline void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
+ FABLE_FORCEINLINE void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
 };
 class CEnginePersistentPrimitiveBase : public CIVCountedPointeeBase { public:
  long Type;
@@ -44,15 +45,15 @@ struct CIVPrimitivePointer {
 
  unsigned long GetRefCount()const{return Object?Object->GetRefCount():0;}
  CEnginePersistentPrimitiveBase*operator->()const{return Object;}
- __forceinline void Clear() { if(Object) { Object->RemoveReference(); Object=0; } }
- __forceinline ~CIVPrimitivePointer() { Clear(); }
- __forceinline CIVPrimitivePointer& operator=(const CIVPrimitivePointer& r) { if(Object!=r.Object) { Clear(); Object=r.Object; if(Object) ++Object->IVRefCount; } return *this; }
+ FABLE_FORCEINLINE void Clear() { if(Object) { Object->RemoveReference(); Object=0; } }
+ FABLE_FORCEINLINE ~CIVPrimitivePointer() { Clear(); }
+ FABLE_FORCEINLINE CIVPrimitivePointer& operator=(const CIVPrimitivePointer& r) { if(Object!=r.Object) { Clear(); Object=r.Object; if(Object) ++Object->IVRefCount; } return *this; }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:
  CIVPrimitivePointer Data;
- __forceinline void Clear() { if(Data.GetRefCount()==1) Data->NotifyReleased(*this); Data.Clear(); Data.Object=0; }
- __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& r) { Clear(); Data=r.Data; return *this; }
- __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+ FABLE_FORCEINLINE void Clear() { if(Data.GetRefCount()==1) Data->NotifyReleased(*this); Data.Clear(); Data.Object=0; }
+ FABLE_FORCEINLINE CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& r) { Clear(); Data=r.Data; return *this; }
+ FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 }; // actual vtable 0x0122F598
 class CMovableResource { public:
  virtual ~CMovableResource() {} // 0x0129B860

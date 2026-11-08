@@ -14,6 +14,7 @@
 // Shape: `if (creature->GetPHome())` then a second GetPHome() for the interface fetch (retail calls it twice); the
 //   list is walked through const iterators (find_if is the _Const_traits instantiation); the empty predicate is copied
 //   trivially (retail pushes the dword of its slot, shared with the LowerBound key and the hidden result).
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -41,7 +42,7 @@ class CThing { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                   // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

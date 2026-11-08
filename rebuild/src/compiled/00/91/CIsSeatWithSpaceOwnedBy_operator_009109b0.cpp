@@ -14,6 +14,7 @@
 //   arm's compare jumps into the unowned arm's `jne`. The owner is read through a direct component-map Find (the mask was
 //   already tested as ownedBit; the out-parameter GetInterface form pops edi early and compares from memory); the
 //   free-point test returns through its own `mov al,1` exit.
+#include "fable_compiler.h"
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -29,7 +30,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -70,9 +71,9 @@ public:
     unsigned char  _bits91 : 4;
     unsigned char  InLimbo : 1;                    // +0x91 bit 5
     unsigned char  _bits91b : 2;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CThing* GetOwnerOf(const CThing* thing)
+FABLE_FORCEINLINE CThing* GetOwnerOf(const CThing* thing)
 {
     CTCOwnedEntity* owned = (CTCOwnedEntity*)thing->m_tcs.Find(0x33);
     return (CThing*)owned->POwner.GetPItem();

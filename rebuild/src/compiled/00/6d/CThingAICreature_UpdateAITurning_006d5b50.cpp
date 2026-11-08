@@ -4,6 +4,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Callees: GetPItem 0xA01B50, 0x661E80 (byte-identical to the landed CText::GetAlignment; here a CThingAICreature flag query), CTCGraphicAppearance 0x4C10E0 / 0x4C1060(1.0f) (by-value C3DVector),
 //   CThing::GetPos 0x4C73D0, LowerBound 0x40F020, CTCLook::LookAtPos 0x753E90.
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -11,7 +12,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-__forceinline float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y * v.Y + v.X * v.X; }
+FABLE_FORCEINLINE float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y * v.Y + v.X * v.X; }
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -32,8 +33,8 @@ class CThing { public:
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                                 // +0x91
     const C3DVector& GetPos() const;                   // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_tcs;

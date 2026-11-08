@@ -13,6 +13,7 @@
 // the two compares and the two null stores from one zero register (`xor edi,edi`), where the same
 // body inlined into the scalar deleting destructor @ 0x006D61B0 uses immediates.
 
+#include "fable_compiler.h"
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     void* m_pItem;                              // +0x04
@@ -34,7 +35,7 @@ struct SCountBlock {                            // the shared count block of a C
 struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CCreatureActionBase()   // forced: VC7.1 would call it out of line
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()   // forced: VC7.1 would call it out of line
     {
         if (m_pCount) {
             --m_pCount->m_references;

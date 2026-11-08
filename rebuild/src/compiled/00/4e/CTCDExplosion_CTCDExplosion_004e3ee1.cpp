@@ -8,8 +8,9 @@
 // ::~vector @ 0x004E1B08, CTCBase::~CTCBase @ 0x00686830 (tail jump).
 // Shape: reverse member order with the RETAIL offsets (12-byte vectors, PDB 16): SpecifiedThingsToHit +0x6c, ImmuneThings
 // +0x60, HitThings +0x54, Emitters +0x40, then the inlined CDefPointer release of PExplosionDef (+0x38).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
-#define FORCEINLINE __forceinline
+#define FORCEINLINE FABLE_FORCEINLINE
 
 class CThing;
 

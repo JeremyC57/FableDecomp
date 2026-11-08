@@ -10,6 +10,7 @@
 //   pointer's self test / release + zero store / adopt + count bump), result returned in eax on both paths.
 // Label correction: catalogued as `_Copy_backward<CDefPointer<CThingBaseDef const>*,...>` (propagated); the body is a
 //   forward STLport `__copy` over the 8-byte anim-component pair.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -25,7 +26,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

@@ -1,5 +1,6 @@
 // Behaviour test for 009a7f80: src/009a7f80.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CBankFileManager::FindContainedBank(const CCharString& name, SBankEntryInfo* outInfo, CCountedPointer<CBankFile>* outBank)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -31,7 +32,7 @@ struct SCountBlock {                                       // CCPPointerInfo: co
     void (__fastcall* m_pfnDestroy)(void*);                // +4
     void* m_pObject;                                       // +8
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 template <class T> class CCountedPointer { public:                // {object, count block}
     T*           Data;                                     // +0

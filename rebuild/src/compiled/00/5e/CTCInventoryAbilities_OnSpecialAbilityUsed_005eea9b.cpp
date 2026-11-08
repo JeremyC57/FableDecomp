@@ -4,6 +4,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
@@ -23,7 +24,7 @@ class CThing { public:
     std::bitset<274>  m_present;                                  // +0x20
     CInterfaceMap  m_interfaces;                               // +0x44
     const C3DVector& GetPos() const;                      // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -34,7 +35,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -45,7 +46,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceFound(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceFound(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -73,8 +74,8 @@ class CHeroAbilityDef : public CDefPointeeBase { public:
 };
 template<class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 struct SAbilityEntry { long first; CDefPointer<const CHeroAbilityDef> second; };

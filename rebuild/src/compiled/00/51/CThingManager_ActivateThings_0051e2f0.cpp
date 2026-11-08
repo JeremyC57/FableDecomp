@@ -11,13 +11,14 @@
 // Layout (retail): CThing ThingType byte +0x10, Dead bit 0 of +0x91, InitialisationStage bits 0..2 of +0x94 (Ego_r.pdb
 //   +0xa1/+0xa4, CThing 0x10 lower); CThingManager +0x24 the main game component (Ego_r.pdb Component +0x28 -- the
 //   base part is 4 smaller in retail; unproven), whose bool at +0x101 holds the hero back.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
-__forceinline void ShowProgress(const char* message)
+FABLE_FORCEINLINE void ShowProgress(const char* message)
 {
     CCharString text(message);
     NProgressDisplay::DisplayProgress(text, -1.0f, false, false);

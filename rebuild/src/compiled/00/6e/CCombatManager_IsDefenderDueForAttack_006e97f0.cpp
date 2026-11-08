@@ -18,6 +18,7 @@
 // Layout: the retail CCombatantInfo of the landed rows (0x006E86A0, 0x006E9E40): Parent +0, CurrentSequence +0x24,
 // CombatSequences +0x28, DefenderInfo.Attackers {header +0x34, count +0x38}, PAttackPattern +0x64,
 // AttackPatternIndex +0x68; CAttackPatternDef::AttackPattern +0x3c; CCombatManager::Combatants +0x10.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     ~CCharString();                                // 0x0099EAE0
@@ -133,7 +134,7 @@ class CCombatManager { public:
     unsigned char _sequences[0xc];                 // +0x04 RegisteredCombatSequences
     CRetailRbMap_UID_CombatantInfo Combatants;     // +0x10
     const CCombatantInfo& GetCombatantInfo(unsigned __int64 uid) const { return Combatants.find(uid)->value; }
-    __forceinline bool IsAnotherAttackerAttacking(const CCombatantInfo& info) const
+    FABLE_FORCEINLINE bool IsAnotherAttackerAttacking(const CCombatantInfo& info) const
     {
         if (info.Attackers.size() > 1) {
             for (CAttackerIterator it = info.Attackers.begin(); it != info.Attackers.end(); ++it) {

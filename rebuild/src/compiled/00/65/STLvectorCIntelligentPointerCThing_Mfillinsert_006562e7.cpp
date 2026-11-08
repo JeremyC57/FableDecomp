@@ -16,6 +16,7 @@
 //   live `position` slot (`lea [ebp+0Bh]`) -- that needs same-TU noinline bodies of the three tag-taking helpers (with them
 //   declaration-only the __false_type tags move to the `n` slot and the parked values to the `x` slot); `__n -
 //   __elems_after` and `__old_finish - __n` are parked in the dead `n` slot.
+#include "fable_compiler.h"
 class CBaseObject;
 class CThing;
 
@@ -84,12 +85,12 @@ template <class _ForwardIter, class _Tp>
 void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val);   // 0x0065572D
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result, const __false_type&)
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }

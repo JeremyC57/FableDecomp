@@ -11,6 +11,7 @@
 //   its implicit copy runs CIntelligentPointer's copy constructor (base ctor, vtable store, Get/SetPItem) then the
 //   flag byte (`mov al,[edi+8] ; mov [esi+8],al`).
 // Shape: /Gr TU (__fastcall: first ecx, n edx); the loop head is 16-byte aligned (the `nop`).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() { } };
 namespace FableFill_006a3180 {
@@ -26,7 +27,7 @@ struct CBaseIntelligentPointer {                        // 8 bytes: vtable + ite
 };
 template <class T>
 struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C for CIntelligentPointer<CThing>
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 struct CThingGraphicArgPasser {                         // 9 bytes (byte-packed)
     CIntelligentPointer<CThing> thing;                  // +0x00

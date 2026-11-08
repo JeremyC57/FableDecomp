@@ -1,5 +1,6 @@
 // Behaviour test for 0x00C6B8C0 (source body copied from src/00c6b8c0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
 #define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
 #endif
@@ -42,7 +43,7 @@ static unsigned long long ra_tsc = 1000000;
 //   float local (`fstp [esp+14h]`, reloaded by both state updates); the clamp is signed (`jle` / `jge`).
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)
@@ -50,7 +51,7 @@ __forceinline long FloatToLong(float value)
 }
 // truncation toward zero on top of the rounding helper: round(x - 0.5) is floor(x), negatives step back up by one
 // (retail: `fsub [0.5f] ; fstp [slot] ; fld [slot] ; fistp dword [tmp] ; test ; jge ; inc`)
-__forceinline long FloatToLongTruncate(float value)
+FABLE_FORCEINLINE long FloatToLongTruncate(float value)
 {
     long result = FloatToLong(value - 0.5f);
     if (result < 0)

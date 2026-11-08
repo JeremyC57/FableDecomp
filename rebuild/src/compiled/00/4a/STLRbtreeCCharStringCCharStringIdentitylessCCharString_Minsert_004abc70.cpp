@@ -17,13 +17,14 @@
 //   right arm out first. CCharString::operator< and the CBasicString<char>::operator< body as the landed tree lookups
 //   (0x007ACD30): equal data pointers -> false, null left -> true, null right -> false, else the data compare.
 // Label correction: catalogued as `StdSet_InsertNode` (right idea); STLport `_Rb_tree::_M_insert` of set<CCharString>.
+#include "fable_compiler.h"
 #include <stdlib.h>                                 // malloc @ 0x00BFEA0E
 #include <new>
 
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

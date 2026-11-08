@@ -9,6 +9,7 @@
 // pointer at +0x10; CTCPhysicsBase Moving bit at +0x3c bit 0 (PDB).
 // Shape: the component test (out-parameter __forceinline GetInterface: `mov eax,[eax+4] ; mov ecx,[eax+10h]`) is a bool local computed first (bl, `mov bl,1 ; jmp` / `xor bl,bl`); the result is a single
 // `||` return (int materialised); the bit-7 HasTC test compiles to `test al,al ; jns`.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -31,7 +32,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long kind) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long kind) const
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(kind);

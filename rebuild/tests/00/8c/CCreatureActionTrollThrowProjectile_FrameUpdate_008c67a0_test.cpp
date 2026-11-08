@@ -10,6 +10,7 @@
 // the absent path skipping the test; the shot is fetched into a named local before the alpha argument is pushed; its "being deleted" byte is bit 0 of thing +0x91.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
+#include "fable_compiler.h"
 class CTCBase;
 class CTCCarrying;
 class CThing;
@@ -33,7 +34,7 @@ class CThing { public:
     CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  m_deleteFlags;               // +0x91 bit 0: being deleted
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

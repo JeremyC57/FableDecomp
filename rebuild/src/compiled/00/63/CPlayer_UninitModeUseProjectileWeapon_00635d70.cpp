@@ -18,6 +18,7 @@
 // Shape: the landed sibling CPlayer::UninitModeFirstPersonTargeting 0x00635B30: the mode manager zero-initialised and
 //   filled by the inline out-parameter GetTC (the end / hit ternary), the camera manager out pointer zero-initialised in
 //   its frame word and the getter's bool guarding the push.
+#include "fable_compiler.h"
 #include <stddef.h>
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
@@ -42,7 +43,7 @@ class CThingPlayerCreature { public:                        // partial view (ret
     CInterfaceMap Components;                               // +0x44
     unsigned char _pad54[0x3d];
     unsigned char StateFlags;                               // +0x91 (bit 0: Dead)
-    template <class T> __forceinline bool GetTC(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

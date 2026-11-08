@@ -10,6 +10,7 @@
 //   whose element destructor runs through the out-of-line __destroy_aux 0x006FB8A0 (landed: pair<unsigned long,
 //   CSmallVector<NAnimationEvents::CEvent,32> >) before the storage is freed. Members destroy in reverse order.
 // Callees: __destroy_aux 0x006FB8A0, free 0x00BFEA14, ~CSymbolMap 0x006FD040, operator delete 0x00BFE9BC.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);                       // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 
@@ -34,7 +35,7 @@ public:
     _Tp* _M_start;                                         // +0x00
     _Tp* _M_finish;                                        // +0x04
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    __forceinline ~_Vector_base()
+    FABLE_FORCEINLINE ~_Vector_base()
     {
         if (_M_start != 0)
             _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
@@ -43,7 +44,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : public _Vector_base<_Tp, _Alloc> {
 public:
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 template <class _T1, class _T2> struct pair {
     _T1 first;

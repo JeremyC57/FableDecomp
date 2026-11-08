@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 struct CRetailTree_erase004aba70 {
@@ -6,18 +7,18 @@ struct CRetailTree_erase004aba70 {
 };
 struct CRetailVector_char {
     char* first; char* finish;
-    static __forceinline char* CopyTrivial(const char* copyFirst, const char* copyLast, char* result)
+    static FABLE_FORCEINLINE char* CopyTrivial(const char* copyFirst, const char* copyLast, char* result)
     {
         return (copyLast == copyFirst) ? result
              : static_cast<char*>(std::memmove(result, copyFirst, copyLast - copyFirst)) + (copyLast - copyFirst);
     }
-    __forceinline char* erase(char* eraseFirst, char* eraseLast)
+    FABLE_FORCEINLINE char* erase(char* eraseFirst, char* eraseLast)
     {
         char* i = CopyTrivial(eraseLast, finish, eraseFirst);
         finish = i;
         return eraseFirst;
     }
-    __forceinline void clear() { erase(first, finish); }
+    FABLE_FORCEINLINE void clear() { erase(first, finish); }
 };
 struct CKeyedBuffer_00bebe90 {
     unsigned char _pad[0x20]; CRetailTree_erase004aba70 m_keys; unsigned char _pad28[4]; CRetailVector_char m_buffer;

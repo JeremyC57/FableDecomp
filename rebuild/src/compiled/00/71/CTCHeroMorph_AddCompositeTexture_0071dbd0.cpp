@@ -12,6 +12,7 @@
 // map's push_back is inlined and the map is flagged dirty after every insert.
 // Layout: retail CVectorMap = 12-byte STLport vector + Compare (+0x0c) + Dirty (+0x0d); CTextureMorphEntry (20 bytes) = MorphType,
 // TextureLayer, ReplacingTextureIndex, BankIndex, BlendType; CHeroMorphDef TextureMorphs at +0x28; CThing PDef +0x70.
+#include "fable_compiler.h"
 #include <new>
 #include <stdlib.h>
 
@@ -33,9 +34,9 @@ template <class T> class CDefPointer { public:
 
 class CRGBColour { public:                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;                   // +0x00
@@ -122,7 +123,7 @@ struct CTextureLayerMap {                               // CVectorMap<long, CTex
     bool               Dirty;                           // +0x0d
     void _M_insert_overflow(CTextureLayerPair* pos, const CTextureLayerPair& x, const __false_type& tag,
                             unsigned long fillLength, bool atEnd);   // 0x00721060
-    __forceinline void push_back(const CTextureLayerPair& x)
+    FABLE_FORCEINLINE void push_back(const CTextureLayerPair& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
@@ -131,7 +132,7 @@ struct CTextureLayerMap {                               // CVectorMap<long, CTex
         } else
             _M_insert_overflow(_M_finish, x, __false_type(), 1UL, true);
     }
-    __forceinline void Add(const long& key, const CTextureLayer& value)
+    FABLE_FORCEINLINE void Add(const long& key, const CTextureLayer& value)
     {
         push_back(CTextureLayerPair(key, value));
         Dirty = true;

@@ -17,6 +17,7 @@
 //   +0x51), PMasterData +0x18, SummonerIndex +0x1c.
 // Naming wave 35: identity reg 00df144f "SummonerAttacker" in 00df13a0; Alloc 00df21f0; vtable 012de274 slot 1; PDB ?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSummonerAttacker::Main (wave3/labels_alloc.tsv); PDB ?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -32,7 +33,7 @@ struct CScriptThingImpl;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
+FABLE_FORCEINLINE CScriptThing::CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
 inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }   // a virtual call (not devirtualised)
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
@@ -55,7 +56,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68)
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
-    __forceinline CScriptGameResourceObjectScriptedThingBase() : PImpData(0), PImpInfo(0) { }
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase() : PImpData(0), PImpInfo(0) { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770

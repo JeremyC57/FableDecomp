@@ -1,6 +1,7 @@
 // CAIStateGroup_JackOfBladesStage2::OnActivate() -- register the target and switch the three hit-location enabled states.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00972490 length254. Shared headers retain opaque group fields24(target) and30(state).
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackOfBladesStage2.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
@@ -27,16 +28,16 @@ struct JackPointer{}; //00a01b50
 struct HitLocation{void SetEnabled(bool);}; //00816390
 struct HitLocations{HitLocation* GetHitLocation(const CCharString&);}; //00815820
 struct JackEntry{long type;HitLocations* value;};
-struct JackTable{JackEntry* begin;JackEntry* end;JackEntry* FindEntry(const long&); __forceinline HitLocations* Lookup(){long key=127;JackEntry* entry=FindEntry(key);if(entry==end)entry=end;else if(entry->type>127)entry=end;return entry->value;}}; //0040f020
+struct JackTable{JackEntry* begin;JackEntry* end;JackEntry* FindEntry(const long&); FABLE_FORCEINLINE HitLocations* Lookup(){long key=127;JackEntry* entry=FindEntry(key);if(entry==end)entry=end;else if(entry->type>127)entry=end;return entry->value;}}; //0040f020
 struct JackThing{char prefix[0x2c];unsigned long mask;char gap[0x14];JackTable components;
-__forceinline void GetInterface(HitLocations** output){if(mask&0x80000000)*output=components.Lookup();}
+FABLE_FORCEINLINE void GetInterface(HitLocations** output){if(mask&0x80000000)*output=components.Lookup();}
 };
 class CWorld;
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct JackMethods : public CAIStateGroupBase, CAIStateGroup_JackOfBladesStage2 {
-__forceinline JackThing* Creature(){return (JackThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
+FABLE_FORCEINLINE JackThing* Creature(){return (JackThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
 void OnActivate();
 };
 void JackMethods::OnActivate(){

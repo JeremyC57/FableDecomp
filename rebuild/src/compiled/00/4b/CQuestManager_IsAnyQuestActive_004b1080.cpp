@@ -10,6 +10,7 @@
 // 141): VC7.1 loads that local's frame word (shared with the find key) into esi once before the loop; the definition
 // is a scoped counted-pointer copy whose count moves through inline AddRef()/DecRef() members (`inc/dec [ecx+4]` in
 // memory; open-coded ++/-- go through a register), released on both paths; `QuestNumber <= -1` gives `cmp -1 ; jle`.
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -22,7 +23,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation; key by address)
-    __forceinline CTCBase_Retail* Find(long kind) const               // the inlined map `find`: end entry when absent
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const               // the inlined map `find`: end entry when absent
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -39,9 +40,9 @@ class CBaseObject { public:
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(const CBaseObject* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(const CBaseObject* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CQuestCardDef { public:                             // intrusively counted (vptr, count +4)
     virtual void v00();
     virtual void Release();                        // slot 1 (+4)
@@ -69,7 +70,7 @@ struct CCardNode {                                 // STLport list node
     CCardNode*                 prev;
     CBaseIntelligentPointer value;              // +0x08
 };
-__forceinline CTCQuestCard* GetQuestCard(CBaseObject* thing)
+FABLE_FORCEINLINE CTCQuestCard* GetQuestCard(CBaseObject* thing)
 {
     CTCQuestCard* tc;
     if (thing->HasTC(0x6c))

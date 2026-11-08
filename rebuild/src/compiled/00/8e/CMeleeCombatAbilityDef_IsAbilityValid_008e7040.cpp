@@ -13,6 +13,7 @@
 //   (base 0x0122FFCC).
 // Layout: Ego_r.pdb CMeleeCombatAbilityDef less 4 from Flourish on: FlourishAnimName +0x40, Flourish +0x48,
 //   ValidWeaponClasses +0x50 (12-byte vector), StatsNeeded +0x68, ComboMultiplierLowerBound +0x74, UpperBound +0x78.
+#include "fable_compiler.h"
 #pragma optimize("t", on)
 #pragma optimize("y", on)
 void StandInSink(void* p, unsigned long n);
@@ -26,7 +27,7 @@ struct CTCMap {
 };
 struct CTCBitset {
     unsigned long _M_w[9];
-    __forceinline bool test(long bit) const { return (_M_w[bit >> 5] & (1UL << (bit & 31))) != 0; }
+    FABLE_FORCEINLINE bool test(long bit) const { return (_M_w[bit >> 5] & (1UL << (bit & 31))) != 0; }
 };
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -34,7 +35,7 @@ class CThing { public:
     CTCMap        Components;                            // +0x44
     unsigned char _pad50[0x6c - 0x50];
     unsigned long Flags6c;                               // +0x6c
-    template<class T> __forceinline bool GetInterface(T** out, long type) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) const
     {
         if (UsingComponents.test(type)) {
             unsigned long key = type;

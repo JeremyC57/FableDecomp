@@ -13,6 +13,7 @@
 // +0x6C, SelectedCategoryIndex +0x70, SerialisedItems +0x78, SerialisedSelectedItems +0x80, MenuDisplayListItem +0x94,
 // MenuDisplayListCategory +0xA0, ConfiscatedItems +0xAC; NInventory::CItem 20 bytes, count at +0.
 // Leaf: ?Copy@CTCInventoryBase
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,7 +27,7 @@ class CDefPointeeBase { public:
 class CInventoryDef : public CDefPointeeBase { public:};
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
             if (Object) {

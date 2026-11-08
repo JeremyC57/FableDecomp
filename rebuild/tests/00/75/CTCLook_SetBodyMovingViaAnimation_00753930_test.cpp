@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CTCLook::SetBodyMovingViaAnimation() -- while the creature plays a turning animation set (type 7) whose first anim is loaded, turn the body by the current turning anim's rotation over this frame's slice of the animation
@@ -106,7 +107,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;                       // +0x44
     unsigned char  _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;                         // +0x60
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -117,7 +118,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* component;
         GetInterface(&component, interfaceType);

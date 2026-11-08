@@ -10,6 +10,7 @@
 // 0x01237F1C / 0x0123E7D8) and destroyed by this callee after the call; the CCharString accessors are inline null-safe
 // reads of the string data {chars, length}; GetString is `s = ""; if (data) s = data->Chars;` (retail preloads the
 // shared "" 0x0129AAF4 into edx -- the ?: forms branch both ways).
+#include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
 
@@ -28,7 +29,7 @@ template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer
 { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 
 class CCharStringData

@@ -3,6 +3,7 @@
 // Callees: the inlined CEnginePrimitiveHandle::operator= (out-of-line copy @ 0x0043F9B0): the primitive's slots 3 and 1.
 // Layout: retail group offsets (iterator CArray at +0x4C, 8-byte entries: used byte + list node; node value = handle at +8), see
 // 0x00BBC310 and the landed GetChildPrimitive @ 0x00BBC430 (same range test, first pointer re-read, `cmp byte ptr [eax],0`).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -24,7 +25,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -33,7 +34,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEnginePersistentPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -53,13 +54,13 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
+    FABLE_FORCEINLINE CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
     {
         Clear();
         Data = other.Data;

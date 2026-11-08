@@ -1,5 +1,6 @@
 // Behaviour test for 006c0160: src/006c0160.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCBuyableHouse::GetCurrentCollectableRentValue() const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -58,20 +59,20 @@ public:
     unsigned short DefIndex;                    // +0x8c global definition index
     unsigned char  _pad8e[0x91 - 0x8e];
     unsigned char  m_stateFlags;                // +0x91 (bit 0: dead)
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

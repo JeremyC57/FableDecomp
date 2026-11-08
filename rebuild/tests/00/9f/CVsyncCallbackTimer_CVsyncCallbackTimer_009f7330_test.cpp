@@ -1,5 +1,6 @@
 // Behaviour test for 0x009F7330 CVsyncCallbackTimer::~CVsyncCallbackTimer (links the source object): ClearAllQueries first,
 // then PendingQueories (+0x08), then FreeQueoryObjects (+0x04), each clearing its nodes before freeing its head.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -8,7 +9,7 @@ struct IDirect3DDevice9;
 struct CPendingQueryList {
     void* _M_node;
     void clear();
-    __forceinline ~CPendingQueryList() { clear(); void* head = _M_node; if (head != 0) free(head); }
+    FABLE_FORCEINLINE ~CPendingQueryList() { clear(); void* head = _M_node; if (head != 0) free(head); }
 };
 int main();
 class CVsyncCallbackTimer {

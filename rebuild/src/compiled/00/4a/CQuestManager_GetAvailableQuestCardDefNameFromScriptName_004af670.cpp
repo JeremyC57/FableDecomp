@@ -9,6 +9,7 @@
 // local declared before the loop is scheduled above the test; a read inside the loop is re-done per iteration);
 // the node's name on the left of the compare (`cmp eax,esi`), `neg ; sbb ; inc` for `Compare == 0`;
 // the found exit returns `&node->DefName` (`lea eax,[edi+8]`).
+#include "fable_compiler.h"
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
@@ -16,7 +17,7 @@ class CCharString { public:
     CCharStringData* PStringData;
 };
 
-__forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
+FABLE_FORCEINLINE bool SameText(const CCharStringData* a, const CCharStringData* b)
 {
     if (a == b)
         return true;

@@ -7,6 +7,7 @@
 // Callees: GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall: seed in ecx, the float on the stack), _CIpow @ 0x00BFEB40 (x2).
 // Globals: 4294967296.0f @ 0x0122DCB4, 1/1023 @ 0x0129EF84, 10.0f @ 0x01237F0C, 5.0f @ 0x012462A8, 1.0f @ 0x0122DED8, 2.0 @ 0x01244480.
 // Shape: the same inline quantiser as CalcIsFinishedGeneratingParticles (unsigned-to-float, power-of-ten loop, inline-asm
+#include "fable_compiler.h"
 float __fastcall GFFloatRandom(float range, unsigned long* seed);  // 0x004978A0 (seed in ecx, the float on the stack)
 extern "C" double __cdecl pow(double x, double y);
 #pragma intrinsic(pow)
@@ -19,7 +20,7 @@ struct CPSCEmitterGeneric {
 
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     for (long i = decimals; i; --i)

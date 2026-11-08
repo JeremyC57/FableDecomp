@@ -12,6 +12,7 @@
 // Body: STLport 4.6 `pointer __i = __copy_ptrs(__last, _M_finish, __first, _TrivialAss()); _Destroy(__i, _M_finish);
 //   _M_finish = __i; return __first;` -- /Os keeps __copy only under __forceinline (offset-register loop, count in the dead
 //   `last` slot) and leaves __destroy_aux out of line; the tags have user constructors (no zero-store).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -38,7 +39,7 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
 };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -49,7 +50,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }
@@ -62,7 +63,7 @@ __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _Fo
         _Destroy(&*__first);
 }
 #pragma auto_inline(on)
-template <class _Tp> __forceinline void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : protected _Vector_base<_Tp, _Alloc> {
 public:

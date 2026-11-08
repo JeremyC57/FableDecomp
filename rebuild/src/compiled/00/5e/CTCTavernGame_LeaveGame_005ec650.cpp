@@ -27,6 +27,7 @@
 //        manager are named locals read before the argument pushes (ebp, and the spilled `push ecx` word); the unchecked
 //        GetInterface (end/hit choice as one ternary, so the component lands in ecx) and the stats out pointer each sit
 //        in their own `{}` block so they share that single frame word.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
@@ -50,7 +51,7 @@ class CThing { public:
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -10,6 +10,7 @@
 // 0x009B58B0): val is the frame temporary, copy_backward of
 // a class range is __copy_backward's counted `*--result = *--last` loop of operator= calls (n spilled to the frame), the
 // else arm rebuilds val in __unguarded_linear_insert's argument area.
+#include "fable_compiler.h"
 class CWideString {
 public:
     void* PStringData;                                  // +0x00
@@ -47,7 +48,7 @@ template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x009B1870
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     if (__comp(__val, *__first)) {
         copy_backward(__first, __last, __last + 1);

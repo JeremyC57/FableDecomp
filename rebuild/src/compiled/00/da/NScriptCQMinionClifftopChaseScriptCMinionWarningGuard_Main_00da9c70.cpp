@@ -25,6 +25,7 @@
 //   and the hero handle's ctor stays out of line by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 35: identity reg 00da3628 "MinionWarningGuard" in 00da34b0; Alloc 00da4920; vtable 012d7458 slot 1; PDB ?Main@CMinionWarningGuard@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMinionWarningGuard::Main (wave3/labels_alloc.tsv); PDB ?Main@CMinionWarningGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMinionWarningGuard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_MinionClifftopChaseScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -34,7 +35,7 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
@@ -42,7 +43,7 @@ class CRGBColour { public:
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
     CCPPointerInfo* Info;
-    __forceinline CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    FABLE_FORCEINLINE CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)

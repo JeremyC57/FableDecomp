@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@ typedef unsigned int PlacementSize;
 #endif
 inline void* operator new(PlacementSize,void* p) { return p; }
 enum EHeroMorphType { MORPH_TYPE_NONE }; enum ECompositeBlendType { COMPOSITE_BLEND_NONE }; class CTextureMorphEntry { public: EHeroMorphType MorphType; long TextureLayer,ReplacingTextureIndex,BankIndex; ECompositeBlendType Blend; };
-namespace std { struct __false_type { __false_type() {} }; template<class T,class V> __forceinline void _Construct(T* p,const V& value) { new(p) T(value); } template<class Iter,class Size,class T> Iter __fastcall __uninitialized_fill_n(Iter first,Size count,const T& value,const __false_type&) { Iter current=first; for(;count>0;--count,++current) _Construct(&*current,value); return current; } }
+namespace std { struct __false_type { __false_type() {} }; template<class T,class V> FABLE_FORCEINLINE void _Construct(T* p,const V& value) { new(p) T(value); } template<class Iter,class Size,class T> Iter __fastcall __uninitialized_fill_n(Iter first,Size count,const T& value,const __false_type&) { Iter current=first; for(;count>0;--count,++current) _Construct(&*current,value); return current; } }
 
 typedef CTextureMorphEntry Element;
 template Element* __fastcall std::__uninitialized_fill_n<Element*,unsigned int,Element>(Element*,unsigned int,const Element&,const std::__false_type&);

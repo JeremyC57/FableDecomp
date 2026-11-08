@@ -11,6 +11,7 @@
 //   0x00BFD0B0 (GetData() is begin or the array itself when empty; the destructor frees the block). The vertex pointer and
 //   count are read into named locals before the decompress call (direct member arguments compute GetData first and swap
 //   the begin/end registers).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -22,8 +23,8 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         if (size <= 0)
             return;
@@ -38,7 +39,7 @@ class CDataInputStream { public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline long ReadSLONG() { long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE long ReadSLONG() { long value; Read(&value, 4); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };

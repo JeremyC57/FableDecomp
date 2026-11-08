@@ -22,6 +22,7 @@
 //   stand-in model swapped them); the anim name is a named local in its own block, the NextFilter CDefString is copied out
 //   of a block holding the component pointer (frame 8: the pointer shares the slot of the decap pointer and the string
 //   temporary), CDefString::GetString returns a named local (build, copy, destroy: no NRVO).
+#include "fable_compiler.h"
 #define UNPROVEN_SLOT(n) virtual void UnprovenSlot##n();
 class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 class CCharStringData { public:
@@ -75,7 +76,7 @@ public:
     unsigned char _pad04[0x20 - 4];
     unsigned long UsingComponents[9];                 // +0x20
     CInterfaceMap Components;                         // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         long type = T::StatGetInterfaceType();
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
@@ -120,7 +121,7 @@ class CAnimFilterOfGroup { public:
     virtual void v00();
     CCharString Group;                                // +4
     unsigned long GroupCRC;                           // +8
-    __forceinline CAnimFilterOfGroup(const CCharString& group)
+    FABLE_FORCEINLINE CAnimFilterOfGroup(const CCharString& group)
         : Group()
     {
         Group = group;
@@ -153,7 +154,7 @@ class CModeKnockedDown : public CTCCreatureModeManager::CModeBase {
 public:
     CAnimFilterOfGroup Filter;                        // +0x1c
     virtual void v00();
-    __forceinline CModeKnockedDown(CThing& thing, const CCharString& group) : CTCCreatureModeManager::CModeBase(thing), Filter(group) {}
+    FABLE_FORCEINLINE CModeKnockedDown(CThing& thing, const CCharString& group) : CTCCreatureModeManager::CModeBase(thing), Filter(group) {}
 };
 }
 class CAnimComponentFollowingOnAnimFilter { public:

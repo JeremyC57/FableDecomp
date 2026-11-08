@@ -12,6 +12,7 @@
 // Tried: holder in the arm (this=edi), the manager in a local (fixes the GetWorld order), a raw pointer + hand release, a
 //   `__forceinline CopyFromDef(def)` helper (this=esi, as retail). Next: move the holder into the helper (one register for the
 //   def) and read CMainGameComponent::Get() into a local before the GetDef pushes; the loop as `def->ReactionFlags[i]` on a local copy.
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 struct CDefVirtual {
     virtual void v00();
@@ -20,7 +21,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     mutable long m_refCount;                            // +0x04
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -31,7 +32,7 @@ template <class T> struct CDefSlot {                    // the plain out slot Ge
 };
 template <class T> struct CDefHolder {                  // owns the handed-over reference
     T* Object;
-    __forceinline ~CDefHolder() { ReleaseDef(Object); }
+    FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -141,7 +142,7 @@ class CTCOpinionSource : public CTCBase { public:
     bool          UnknownThreatSource;                  // +0x76
     bool          ReactNonstopFlag;                     // +0x77
     CCountedPointer<COpinionSet> POpinionProduced;      // +0x78
-    __forceinline void CopyFromDef(const COpinionSourceDef* def)
+    FABLE_FORCEINLINE void CopyFromDef(const COpinionSourceDef* def)
     {
         *POpinionProduced.Object = def->OpinionProduced;
         ReactToSelfPermitted = def->ReactToSelfPermitted;

@@ -13,6 +13,7 @@
 // Layout: local projection with the retail packing of the PDB order (CamTools 0x20 bytes, one-word STLport lists):
 //   CurrentMode +0x98, SingleCut +0xb0, AngleChange +0xbc, PCurrentScriptModule +0xd4, PPendingScriptModule +0xdc,
 //   EarthQuakes +0xec, MinWorldHeight +0xf8.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 struct CBasicStringChar {
     char*         PData;
@@ -141,7 +142,7 @@ class CGameCameraManager { public:
     void RefreshMode();                                  // 0x0069A2A0
     void ResetCamera();
 };
-template <class T, long TYPE> __forceinline T* GetComponent(CThing* thing)
+template <class T, long TYPE> FABLE_FORCEINLINE T* GetComponent(CThing* thing)
 {
     T* result;
     if (thing->UsingComponents[TYPE >> 5] & (1u << (TYPE & 31))) {

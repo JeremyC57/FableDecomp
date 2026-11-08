@@ -14,6 +14,7 @@
 //   Max +0x194, Value +0x1A4, Move +0x1AC, OldValue +0x1AD, StartValue +0x1B5 (pack(1)), Actions +0x1C0, PreviousValue
 //   +0x1E0, PAcceptButton +0x1E8; CComponent byte +0x87 (descriptive Selectable). Bases as the landed
 //   CScrollingViewport::ChangeState 0x0053EBF0 (primary +0, CObserver +4, interface +0x18).
+#include "fable_compiler.h"
 #include <math.h>
 class C2DVector { public: float X, Y; };
 class CRGBColour { public:
@@ -81,7 +82,7 @@ class CAction { public:
     virtual void v00();
     CSliderTargetRef* PTarget;                           // +0x04
 };
-static __forceinline bool Differs(const C2DVector& a, const C2DVector& b)
+static FABLE_FORCEINLINE bool Differs(const C2DVector& a, const C2DVector& b)
 {
     return !(fabs(a.X - b.X) <= 0.0001f) || !(fabs(a.Y - b.Y) <= 0.0001f);
 }

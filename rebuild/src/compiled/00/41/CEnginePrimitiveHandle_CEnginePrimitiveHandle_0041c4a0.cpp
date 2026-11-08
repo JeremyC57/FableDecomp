@@ -10,6 +10,7 @@
 // Layout: Ego_r.pdb CEnginePrimitiveHandle (8 bytes): vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +0x04,
 // as the landed CPSCDecalRenderer::~CPSCDecalRenderer 0x00B1FFC0 model of the same inline destructor.
 // Shape: /O2 (16-aligned entry).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
 public:
@@ -25,15 +26,15 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
-    __forceinline ~CIVCountedPointer() { ReleaseRef(); }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { ReleaseRef(); }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

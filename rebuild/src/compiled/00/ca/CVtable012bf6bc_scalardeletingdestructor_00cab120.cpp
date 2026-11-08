@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAB120, length 43 bytes.
 // Leaf: ??_GCVtable_012bf6bc@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x012BF6BC) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct IReleasable_00cab120 {                     // COM-style: __stdcall slots with `this` pushed
     virtual void __stdcall v000(); virtual void __stdcall v001();
@@ -18,7 +19,7 @@ struct CReleasingRoot_00cab120 {
 struct CVtable_012bf6bc : CReleasingRoot_00cab120 {              // vtable 0x012BF6BC
     long              m_4;
     COwner_00cab120*  m_pOwner;                    // +0x08
-    __forceinline virtual ~CVtable_012bf6bc()
+    FABLE_FORCEINLINE virtual ~CVtable_012bf6bc()
     {
         m_pOwner->m_interface.Release();
     }

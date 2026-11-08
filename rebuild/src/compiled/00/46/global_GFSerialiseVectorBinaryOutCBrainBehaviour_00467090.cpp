@@ -13,6 +13,7 @@
 //   size() (`idiv` by 12), WriteLong, then the inline traits transfer per element: the name writes its table position
 //   (CDefString::TransferBinaryOut inline) and the two priorities follow. The traits keeps its 12-byte frame slot (its
 //   constructor takes its address); the byte offset and the down-counter live in [ebp-4] / [ebp-8].
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
@@ -31,7 +32,7 @@ struct CDataOutputStreamWriter : CDataOutputStream {
 class CDefString {
 public:
     long TablePos;                                          // +0x00
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream) const { stream.WriteSLONG(TablePos); }
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream) const { stream.WriteSLONG(TablePos); }
 };
 
 class CBrainBehaviour {                                    // 12 bytes
@@ -58,7 +59,7 @@ template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CBrainBehaviour> {
     CBrainBehaviour DefaultVal;
     CPersistTraits();                                       // 0x004670F5
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBrainBehaviour* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBrainBehaviour* value) const
     {
         value->Name.TransferBinaryOut(stream);
         stream.WriteSLONG(value->Priority);

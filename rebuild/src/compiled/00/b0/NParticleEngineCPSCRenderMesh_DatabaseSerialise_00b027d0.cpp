@@ -15,6 +15,7 @@
 //   GetSymbolSLONG declarations; default path unchanged).
 // Retail-asm: 0x00B032BD `fistp dword ptr [esp+20h]` (and 34 more: GFRoundFloatNear and the pack step) -- GFFloatToLongNear, shared
 //   helper engine/GFFloatToLongNear.h; VC7.1 emits no bare dword fistp from C++.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CSYMBOLMAP
 #define FABLE_RETAIL_CRGBCOLOUR
@@ -32,17 +33,17 @@ inline float __fastcall GFRoundFloatNear(float value, long numDecimalPlaces)
         scale *= 10.0f;
     return (float)GFFloatToLongNear(value * scale) / scale;
 }
-static __forceinline float UnpackParam(unsigned long packed, float steps, float minValue, float maxValue)
+static FABLE_FORCEINLINE float UnpackParam(unsigned long packed, float steps, float minValue, float maxValue)
 {
     float unit = (float)packed * (1.0f / steps);
     return GFRoundFloatNear(unit * (maxValue - minValue) + minValue, 2);
 }
-static __forceinline unsigned long PackParam(float value, float minValue, float maxValue, float steps)
+static FABLE_FORCEINLINE unsigned long PackParam(float value, float minValue, float maxValue, float steps)
 {
     float normalised = (GFRoundFloatNear(value, 2) - minValue) * (1.0f / (maxValue - minValue));
     return GFFloatToLongNear(normalised * steps);
 }
-static __forceinline void TransferParam(CPersistContext& context, const char* name, float& value, float defaultValue)
+static FABLE_FORCEINLINE void TransferParam(CPersistContext& context, const char* name, float& value, float defaultValue)
 {
     context.Transfer(name, value, defaultValue);
 }

@@ -14,6 +14,7 @@
 //        test skips the constructor; the by-value def copy for the constructor is built on the stack (`push ecx ; mov [esp],edi`)
 //        with its add-ref, the manager getters evaluated after it; the parameter's own copy is released at the end.
 // Layout: CThing presence bits +0x20, Components +0x44; PBrain +0x1A8 (Ego_r.pdb +0x1D8, 0x30 lower in retail).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCIdleScheduler { public:                            // interface type 0xD3
     void OnNewBrain_008018b0();                      // 0x008018B0 (manifest label propagated)
@@ -63,7 +64,7 @@ class CThingAICreature { public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad54[0x154];
     CBrainPointer PBrain;                            // +0x1a8
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

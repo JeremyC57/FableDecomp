@@ -11,6 +11,7 @@
 // Shape: STLport 4.x `erase(iterator)` verbatim: `y = _Rebalance_for_erase(pos._M_node, root, leftmost, rightmost);
 // _Destroy(&y->_M_value_field); deallocate(y); --_M_node_count;` -- the value's implicit destructor runs the counted
 // pointer's `if (p) { p->Release(); p = 0; }`, deallocate is a null-tested free.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 
 class CCountedObject {
@@ -18,7 +19,7 @@ public:
     virtual void v000();
     virtual void Destroy();                                 // slot 1 (+0x04)
     long RefCount;                                          // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--RefCount == 0)
             Destroy();
@@ -28,7 +29,7 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
@@ -58,12 +59,12 @@ template <class _Dummy> struct _Rb_global {
                                                             _Rb_tree_node_base*& leftmost, _Rb_tree_node_base*& rightmost);   // 0x0042A34E
 };
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
 struct _Rb_tree_iterator {
     _Rb_tree_node_base* _M_node;
-    __forceinline _Rb_tree_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
-    __forceinline _Rb_tree_iterator(const _Rb_tree_iterator& x) : _M_node(x._M_node) {}
+    FABLE_FORCEINLINE _Rb_tree_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
+    FABLE_FORCEINLINE _Rb_tree_iterator(const _Rb_tree_iterator& x) : _M_node(x._M_node) {}
 };
 
 template <class K, class V> class _Rb_tree {

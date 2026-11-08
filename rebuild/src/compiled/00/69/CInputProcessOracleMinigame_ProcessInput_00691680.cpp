@@ -12,6 +12,7 @@
 //   CInputProcessBetting 0x00691560; CGameEvent (Ego_r.pdb, 40 bytes) as in the landed 0x0068E8F0.
 // Shape: the same press/fishing-style event arm as CInputProcessFishing::ProcessInput 0x00690B20; SetHandled closes every
 //   pressed path, including the no-match one.
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -48,7 +49,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCOracleMinigame* Find(long kind)
+    FABLE_FORCEINLINE CTCOracleMinigame* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCOracleMinigame*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -59,8 +60,8 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCOracleMinigame* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCOracleMinigame* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {

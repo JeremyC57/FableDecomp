@@ -10,6 +10,7 @@
 //   4-byte frame word, parent = (len - 2) / 2, the by-value `_Tp(*(first + parent))` built in the argument area with
 //   pair's member-wise copy constructor; the parent pointer walks down 12 bytes per step.
 //   Frame pointer: `optimize("y", off)` + `optimize("s", on)` as the module's other landed bodies.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -23,7 +24,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 

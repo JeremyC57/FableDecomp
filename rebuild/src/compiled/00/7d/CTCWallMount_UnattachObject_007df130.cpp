@@ -19,6 +19,7 @@
 //   (`T* p; if (thing->GetInterface(&p, 9)) p->X = v;` -- the landed 0x007504E0 shape: the component lands in eax, the
 //   HasTC/GetTC spelling colours it ecx and rotates the hero lookup's key lea); the hero is tested null / dead through
 //   one fetch; `Trophy = 0` goes through the inline operator= with a converting temporary, after the result is fetched.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 class CBaseObject;
@@ -35,15 +36,15 @@ public:
     unsigned char   _pad_0x54[0x3d];
     unsigned char   m_flags91;                  // +0x91 bit 0: dead
     unsigned char   m_flags92;                  // +0x92
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

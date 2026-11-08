@@ -12,6 +12,7 @@
 //   ReadWithSrcChunkOverflow into the dead stream slot); a CArray<char> (STLport vector) of length + 1 zero bytes (allocate,
 //   inline memset through STLport uninitialized_fill_n, whose begin copy is spilled over the rep stos and gives the end); its `size ? first : (char*)this` GetData feeds the virtual read and the
 //   string; the CGameTimeManager::Load (0x006BBBA0) parser / context pair. Speed-optimised (default) TU, no frame pointer.
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl memcpy(void* dest, const void* src, size_t bytes);
 extern "C" void* __cdecl memset(void* dest, int value, size_t bytes);
@@ -66,8 +67,8 @@ public:
     const unsigned char* chunkBase;                                   // +0x0C
     long                 chunkPosition;                               // +0x10
     long                 chunkLength;                                 // +0x14
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(position + size);
         if (!IsValidPosition(newPosition))
@@ -84,7 +85,7 @@ public:
 };
 
 // STLport's char fill_n (memset), returning first + n from its own copy of the start pointer.
-template <class T> __forceinline T* uninitialized_fill_n(T* first, size_t n, const T& x)
+template <class T> FABLE_FORCEINLINE T* uninitialized_fill_n(T* first, size_t n, const T& x)
 {
     memset(first, x, n);
     return first + n;
@@ -109,7 +110,7 @@ public:
 
 // The inline CPersistTraits<long>::TransferBinaryIn: the read goes through its own local (homed in the dead stream slot on
 // the slow path), then the caller's long is assigned, so the caller's copy can live in a register.
-__forceinline void TransferBinaryInLong(CMemoryDataInputStream& stream, long* out)
+FABLE_FORCEINLINE void TransferBinaryInLong(CMemoryDataInputStream& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

@@ -13,6 +13,7 @@
 // Inlines: C3DBoundingBox::CalcShortestDistanceToPointSquared and C3DBoundingBox::GetCenter (PDB names; engine/C3DBoundingBox.h
 //   FABLE_RETAIL_C3DBOUNDINGBOX branch), C3DVector::GetSquaredMagnitude (engine/C3DVector.h).
 // Shape: the grid walk is GetLightsInSphere's (0x00B45FB0); here the flag store goes through link->Light (retail reloads it).
+#include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 #pragma optimize("y", off)
 #define CEngineLightingManager CEngineLightingManagerLayout
@@ -25,7 +26,7 @@ extern bool g_SSEAvailable;                             // 0x013D2880
 #include "engine/C3DBoundingBox.h"
 
 // the engine's C3DBoundingBox::CalcShortestDistanceToPointSquared (Ego_r QBEMABVC3DVector@@@Z), expanded in place
-__forceinline float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
+FABLE_FORCEINLINE float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
 {
     if (g_SSEAvailable) {
         float result;

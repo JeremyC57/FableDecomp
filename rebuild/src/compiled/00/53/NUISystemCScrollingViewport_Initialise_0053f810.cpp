@@ -14,6 +14,7 @@
 //   the last child is read as `Children[Children.size() - 1]` (start in edx, the element straight into ecx); the dummy's
 //   name is an implicit const char* -> CCharString conversion, so the temporary is built before `false` is pushed (an explicit
 //   CCharString(...) temporary pushes `false` first; a named local in a block drops the clears and the ebx zero register).
+#include "fable_compiler.h"
 #include <stddef.h>
 namespace NUISystem {
 struct SCountBlock {
@@ -51,7 +52,7 @@ template<class T> struct CRetailVector {   // STLport vector: 12 bytes
     T* _M_finish;
     T* _M_end_of_storage;
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);   // 0x005359D0
-    __forceinline void push_back(const T& x)
+    FABLE_FORCEINLINE void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)

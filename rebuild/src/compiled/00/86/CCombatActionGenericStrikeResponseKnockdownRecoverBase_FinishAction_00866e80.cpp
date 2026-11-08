@@ -17,6 +17,7 @@
 //          (straight into ecx before the hidden-pointer push); the 2D length is `X*X + Y*Y` (Y squared first) against
 //          the squared constant; the degenerate arm assigns a C3DVector(1, 0, 0) temporary; the orientation pair is
 //          built in one temporary (up (0,0,1) as immediates, forward copied).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -46,7 +47,7 @@ class CThing { public:
     unsigned char _pad54[0xc];
     CPhysicsBody* m_pBody;                  // +0x60
     CPhysicsBody* GetBody() const { return m_pBody; }
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

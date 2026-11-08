@@ -8,6 +8,7 @@
 // WSAGetLastError (WSOCK32 #111), _itoa 0x00BFED34 into a char buffer (frame 0x34 bytes below the cookie).
 // Shape: the report string and the converted error number are built and dropped (the release logging macro keeps only
 // their side effects); every return has its own cookie-check epilogue.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                                // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int size);  // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);                                         // 0x00BFEA14
@@ -24,7 +25,7 @@ struct CNetErrorString {                           // STLport basic_string<char>
     {
         return last == first ? result : (char*)memmove(result, first, last - first) + (last - first);
     }
-    __forceinline CNetErrorString(const char* text)
+    FABLE_FORCEINLINE CNetErrorString(const char* text)
     {
         unsigned int n = strlen(text);
         m_start = (char*)malloc(n + 1);
@@ -33,7 +34,7 @@ struct CNetErrorString {                           // STLport basic_string<char>
         m_finish = CopyTrivial(text, text + n, m_start);
         *m_finish = 0;
     }
-    __forceinline ~CNetErrorString()
+    FABLE_FORCEINLINE ~CNetErrorString()
     {
         if (m_start)
             free(m_start);

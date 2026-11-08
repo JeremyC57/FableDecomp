@@ -16,6 +16,7 @@
 // iterator-category tag to the out-of-line __find_if, which gives retail's order (last/first loaded, tag pushed, then the
 // predicate's uninitialised dword copied) and the shared tag/predicate frame slots. Empty classes with user constructors: a
 // value-initialised `T()` of a ctor-less empty class adds a zero byte store.
+#include "fable_compiler.h"
 class CThing;
 
 class CWorld { public:
@@ -32,11 +33,11 @@ CThing** __fastcall FindIfActivated(CThing** first, CThing** last, CIsTriggerAct
                                     const CRandomAccessIteratorTag& tag);      // 0x007F7C10
 
 inline CRandomAccessIteratorTag IteratorCategory(CThing** const&) { return CRandomAccessIteratorTag(); }
-__forceinline CThing** find_if(CThing** first, CThing** last, CNotTriggerActivated pred)
+FABLE_FORCEINLINE CThing** find_if(CThing** first, CThing** last, CNotTriggerActivated pred)
 {
     return FindIfNotActivated(first, last, pred, IteratorCategory(first));
 }
-__forceinline CThing** find_if(CThing** first, CThing** last, CIsTriggerActivated pred)
+FABLE_FORCEINLINE CThing** find_if(CThing** first, CThing** last, CIsTriggerActivated pred)
 {
     return FindIfActivated(first, last, pred, IteratorCategory(first));
 }

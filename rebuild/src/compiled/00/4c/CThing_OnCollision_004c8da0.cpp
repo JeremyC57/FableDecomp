@@ -11,6 +11,7 @@
 // Shape: the phase compare before the prologue; the presence bits for 0xA9/0xA8 both live in bitset word 5 (+0x34,
 //        tested through ah: bits 9 and 8); each lookup is the inlined GetInterface (lower bound on the key word, end
 //        when absent); Dead is bit 0 of the +0x91 flag byte; the other thing is kept in ebp for both calls.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -36,7 +37,7 @@ private: public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                          // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

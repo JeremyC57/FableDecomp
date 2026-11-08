@@ -11,6 +11,7 @@
 // Layout (retail): as the sibling, plus Triggered +0xdc (Ego_r.pdb +0xf4, CThingPhysical 0x18 lower).
 // Shape: the early `if (Triggered) return;` keeps the ebx/ebp/edi pushes below the test; the loop does not stop after
 //   a trigger (every hero inside in that frame queues an event).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class C2DVector { public:
@@ -20,7 +21,7 @@ class C2DVector { public:
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
-    __forceinline bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
+    FABLE_FORCEINLINE bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 
 struct CEventBase { virtual void v00(); };
@@ -57,13 +58,13 @@ class CThing { public:
     unsigned char  Dead : 1;                            // +0x91 bit 0
     const CPlayerManager* GetPlayerManager() const;     // 0x004C79F0
     CPlayerManager* GetPlayerManager();                 // 0x004C7A00
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

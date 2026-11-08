@@ -18,6 +18,7 @@
 // `[esi+0Ch]`/`[esi+10h]` only when the counted pointer is its own member class with an inline copy ctor (copying Data/Info directly in CScriptThing's ctor reads through `edi` = &Me).
 // Naming wave 35: identity reg 00d7cc57 "DyingVillager" in 00d7c890; Alloc 00d7f380; vtable 012d3f44 slot 1; PDB ?Main@CDyingVillager@CQ_HeroSoulsArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CDyingVillager::Main (wave3/labels_alloc.tsv); PDB ?Main@CDyingVillager@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDyingVillager@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class CBaseClass { public:                                     // vtable 0x01231710
  virtual void v00();
@@ -46,7 +47,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

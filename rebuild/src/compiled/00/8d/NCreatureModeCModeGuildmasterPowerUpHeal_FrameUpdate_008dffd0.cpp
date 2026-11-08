@@ -12,6 +12,7 @@
 // Layout: Ego_r.pdb CModeGuildmasterPowerUpHeal: CModeStandBase 0x68, Filter +0x68, Timer +0x74.
 // Shape: the decremented timer is a named local (kept in ebx across the lookup call); the CTCBoss lookup result is not
 //   tested (the absent path joins with the never-written out variable); `||` short-circuits the helper count.
+#include "fable_compiler.h"
 class CCreatureActionBase;
 class CTCBase;
 
@@ -23,7 +24,7 @@ class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

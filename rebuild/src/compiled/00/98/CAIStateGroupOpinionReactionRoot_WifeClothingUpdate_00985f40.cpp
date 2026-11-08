@@ -13,6 +13,7 @@
 // Shape: the category out value shares the lookup key's frame word; a NAMED CCharString line destroyed on both returns.
 // Engine header names for the state group; the header flattens the base, so the class is modelled locally.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld { public:
@@ -63,8 +64,8 @@ struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 by
 
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 extern CCharString g_WifeAppearanceLinePrefix[];    // 0x013BAB40 (indexed by EWifeAppearanceCategories)

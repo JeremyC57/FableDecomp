@@ -13,11 +13,12 @@
 //   range : 0;`): through the by-value pointer the seed is loaded once and the rotated value reused (the same body on
 //   the member re-reads Seed after every store, 124v113). The register
 //   arguments are homed in the 8-byte frame (first and last re-read from it in the loop). No pragma.
+#include "fable_compiler.h"
 class CThing;
 long __fastcall GFROR13(unsigned long);       // 0x00497890
 
 // The landed GFRandom (0x005472A0 model): the seed pointer is a by-value parameter, so the rotated value stays in eax.
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

@@ -10,13 +10,14 @@
 // Render core 0x01436E18: tracked states +0x2ee4/+0x2f84 (0x01396DD0), +0x2868 (ZBuffer), +0x2854 (0), +0x28b8 (1),
 //   +0x28cc (0), +0x2944 (0) through the landed Diffuse-only `SetState(state, value, core)` (core last).
 // Sprite: CEngineInternalPrimitiveSprite (landed 0x00BAD670 model) keeps ZBuffer as bit 6 of the +0x84 bitfield byte.
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -45,7 +46,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     unsigned char        _pad2f98[0x3a24 - 0x2f98];
     unsigned char        m_captureBlockMarker[4];  // +0x3A24
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -60,7 +61,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
@@ -70,7 +71,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);
@@ -78,7 +79,7 @@ __forceinline void CTrackedRenderState::Set(unsigned long value)
 
 extern unsigned long g_renderStateDefault_01396dd0;    // 0x01396DD0
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {
@@ -96,7 +97,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
     }
 }
 // the constant-valued sets: the capture mask read into a local (retail ORs into the state-mask register here)
-static __forceinline void SetStateConst(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetStateConst(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         unsigned long mask = core->m_captureMask;
@@ -114,7 +115,7 @@ static __forceinline void SetStateConst(CTrackedRenderState& state, unsigned lon
         }
     }
 }
-static __forceinline void SetStateV(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetStateV(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {
@@ -139,16 +140,16 @@ struct CShaderLayoutState {                             // the static shader man
 extern CShaderLayoutState g_ShaderRenderManager;        // 0x013BC470
 struct CShaderLayoutSaver {                             // selects a vertex constant layout, restores the previous one on exit
     long m_layout;
-    __forceinline CShaderLayoutSaver(long layout)
+    FABLE_FORCEINLINE CShaderLayoutSaver(long layout)
     {
         m_layout = g_ShaderRenderManager.CurrentVSConstantLayoutIndex;
         g_ShaderRenderManager.SetVertexShaderConstantLayout(layout);
     }
-    __forceinline ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
+    FABLE_FORCEINLINE ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
 };
 struct CRenderStateCaptureBlock {
-    __forceinline CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
-    __forceinline ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
+    FABLE_FORCEINLINE CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
+    FABLE_FORCEINLINE ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
 };
 
 class CShaderRenderManager {

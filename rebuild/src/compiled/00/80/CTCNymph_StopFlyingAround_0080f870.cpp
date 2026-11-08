@@ -15,6 +15,7 @@
 //   POldEffect +0x49 (byte-aligned CIntelligentPointer<CThing>), BeenHit +0x5D, FadeCounter +0x60, TotalFadeTime +0x64;
 //   CNymphDef FadeInTime +0x48 (Ego_r.pdb); CThing PhysicsBody +0x60, GraphicAppearance +0x64, PDef +0x70, flags +0x91/+0xBC.
 // Shape: IsAlive is __forceinline -- its fourth use is otherwise left out of line as a bool call.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CCharStringData;
@@ -90,7 +91,7 @@ class CThing { public:
     unsigned char FlagsBC;                                  // +0xbc
     void Kill(bool removeNow);                              // 0x004C9B80
     bool GetDummyObject(const CCharString& name, C3DVector* position, class CRightHandedSet* orientation);
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
@@ -153,7 +154,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem(item);
         return *this;
     }
-    __forceinline bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
+    FABLE_FORCEINLINE bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }

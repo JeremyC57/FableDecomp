@@ -3,6 +3,7 @@
 //449970 GetMainPlayer,487DC0 GetPControlledCreature,40F020 LowerBound,99B6B0/99B510 wide ctor/dtor,
 //99EBF0/99EAE0 narrow ctor/dtor,5E4740 CTCQuestCompletionUI::Activate.
 // Interface slots394(88E980 IsHeroControlledByPlayer) and7(6E7410 NewScriptFrame) are audited real slots.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
 #define CPlayer CPlayerPdb
@@ -21,7 +22,7 @@ typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned long UsingComponents[9];ComponentMap Components;
- __forceinline bool GetQuestCompletionUI(CTCQuestCompletionUIMethods** out){if(UsingComponents[7]&0x10000000){ETCInterfaceType key = (ETCInterfaceType)(252);ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;*out=static_cast<CTCQuestCompletionUIMethods*>(((void*)(it==end||it->first>252?end:it)->second));return true;}return false;}
+ FABLE_FORCEINLINE bool GetQuestCompletionUI(CTCQuestCompletionUIMethods** out){if(UsingComponents[7]&0x10000000){ETCInterfaceType key = (ETCInterfaceType)(252);ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;*out=static_cast<CTCQuestCompletionUIMethods*>(((void*)(it==end||it->first>252?end:it)->second));return true;}return false;}
 };
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0

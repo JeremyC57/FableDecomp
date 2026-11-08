@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -248,8 +249,8 @@ struct ByteVector : ByteVectorBase {
 };
 struct CDataInputStreamReader : CDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char*,long); // 00993CA0
-    static __forceinline bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
-    __forceinline void Read(void* dest,long n) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dest,long n) {
         if(n>0) {
             __int64 newPosition=(__int64)(StreamPos+n);
             if(!IsValidPosition(newPosition)) return;

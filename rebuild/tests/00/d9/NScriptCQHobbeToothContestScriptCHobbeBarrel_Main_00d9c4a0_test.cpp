@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -270,9 +271,9 @@ union ThingSlot { void* Address; bool (ScriptThing::*MsgIsHitBy)(const CCharStri
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4);
 FABLE_STATIC_ASSERT(sizeof(ThingSlot)==4);
 #endif
-__forceinline bool ScriptThing::MsgIsHitBy(const CCharString& name) const { return (this->*static_cast<const ThingSlot*>(__vftable)[21].MsgIsHitBy)(name); }
+FABLE_FORCEINLINE bool ScriptThing::MsgIsHitBy(const CCharString& name) const { return (this->*static_cast<const ThingSlot*>(__vftable)[21].MsgIsHitBy)(name); }
 struct ScriptGame : ::CGameScriptInterface {
-    __forceinline void WaitForNextFrame() const { (this->*static_cast<GameSlot*>(__vftable)[7].Wait)(); }
+    FABLE_FORCEINLINE void WaitForNextFrame() const { (this->*static_cast<GameSlot*>(__vftable)[7].Wait)(); }
 };
 class CQ_HobbeToothContestScript { public:
     unsigned char BaseAndQuestFields[0x5a];

@@ -10,6 +10,7 @@
 // IS_THING_ALIVE inlined, the masked HasTC word (`test ch,1`) and the const weapon lookup; FireQueued is set before
 // the loaded test, the fire is the last call.
 // Layout: engine/CTCHeroRangedAttacks.h offsets (FireQueued +0x16); local model because the header flattens CTCBase.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -26,7 +27,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -39,7 +40,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* FindTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

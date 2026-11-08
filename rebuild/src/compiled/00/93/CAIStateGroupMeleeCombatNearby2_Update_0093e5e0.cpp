@@ -15,6 +15,7 @@
 //          enemy, the stop flag, IsStillRunnable and combat at its head.
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h is flattened (vptr spelled as a data member) and this function makes
 //          virtual calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -25,7 +26,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -47,7 +48,7 @@ void __fastcall RemoveMovementBlockingModes(CThing* thing);   // 0x0085F600
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

@@ -6,6 +6,7 @@
 // Callees: the primitive's virtual slots 3 OnLastHandleReleased (+0xc) and 1 Destroy (+4).
 // Shape: Clear() = `if (Data.IsUnique()) Data->OnLastHandleReleased(this); Data = 0;` (release with the zero store inside the
 //   null test, then the second unconditional zero store), then `Data = p` = the same release followed by the store of p.
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -27,7 +28,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -36,7 +37,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(CEnginePersistentPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEnginePersistentPrimitiveBase* object)
     {
         if (Object) {
             Object->Release();
@@ -51,7 +52,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

@@ -23,6 +23,7 @@
 // Shape: the world is a named local and the last-attacked frame is read into a local after it (retail loads it into
 //   edi between PeekWorld and the static GetWorldFrame); the action is a temporary destroyed before the pointer reset;
 //   the CIntelligentPointer converting ctor and operator= are `__forceinline` (VC keeps them out of line otherwise).
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 
@@ -39,8 +40,8 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
@@ -82,13 +83,13 @@ private: public:
     unsigned char  _pad64[0x91 - 0x64];
     unsigned char  Dead : 1;                            // +0x91 bit 0
     const CWorld* PeekWorld() const;                    // 0x004C7AB0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

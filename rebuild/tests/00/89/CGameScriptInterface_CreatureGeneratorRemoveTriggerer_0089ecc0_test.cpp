@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #if !defined(_MSC_VER)
 #  define __fastcall
@@ -19,7 +20,7 @@ struct MapT {
     Node* first;
     Node* end;
     Node* find(const unsigned long& key);    // the map lower bound (0x0040F020), key by address
-    __forceinline BObj* Find(long kind)   // the inlined map find: end when the key is absent
+    FABLE_FORCEINLINE BObj* Find(long kind)   // the inlined map find: end when the key is absent
     {
         Node* it = find((unsigned long)kind);
         if (it == end || kind < it->key)
@@ -33,7 +34,7 @@ struct AObj {
     unsigned char pad2[0x1c];
     MapT map44;           // at +0x44
 };
-template <class T> __forceinline bool GetTCOut(AObj* thing, long kind, T** out)
+template <class T> FABLE_FORCEINLINE bool GetTCOut(AObj* thing, long kind, T** out)
 {
     if (thing->field24 & 0x20000000) {
         *out = (T*)thing->map44.Find(kind);

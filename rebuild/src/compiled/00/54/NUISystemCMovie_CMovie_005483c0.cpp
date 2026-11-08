@@ -19,6 +19,7 @@
 // Shape: user body `Handle.Clear(); if (PParentViewport) PParentViewport->ClearHandle(); if (PlayingMovie == this) { if (Playing)
 //   g_pVideoSys->Close(); PlayingMovie = 0; FreeTextures(); delete g_pVideoSys; g_pVideoSys = 0; }`, then the implicit member
 //   dtors in reverse order (CXMVPlaybackInfo has none, ~CWideString, the inline ~CEnginePrimitiveHandle) and the base dtor.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
 #include "engine/CCountedPointer.h"
@@ -41,7 +42,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     T* operator->() const { return static_cast<T*>(Object); }
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -50,25 +51,25 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
     unsigned long GetReferenceCount() const { return Data.GetRefCount(); }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (GetReferenceCount() == 1)
             Data->NotifyReleased(*this);
         Data.Reset(0);
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 

@@ -7,8 +7,9 @@
 //   0.5f @ 0x0122F59C, 1/3 @ 0x0125A4DC, -90.0f @ 0x012B7B60, 1/6 @ 0x0125D640; the byte table @
 //   0x012B9610 (31 columns). Called from 0x00C6BECB. The catalog name "Audio_GetFrequencyTableEntry" is descriptive.
 // libpk's inline-assembly truncation helper: round-to-nearest of (x - 0.5) by a bare fistp, corrected to truncation for negatives
+#include "fable_compiler.h"
 #include "libpk/FtoL.h"
-__forceinline long FloatToLongTrunc(float value)
+FABLE_FORCEINLINE long FloatToLongTrunc(float value)
 {
     long result;
     value = value - 0.5f;

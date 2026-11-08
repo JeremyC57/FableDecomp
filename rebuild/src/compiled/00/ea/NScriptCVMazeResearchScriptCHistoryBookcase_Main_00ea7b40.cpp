@@ -14,6 +14,7 @@
 //   (quest-script base 0x14 smaller).
 // Shape: generated script code (no predicate in this Main); `!Me.MsgIsUsedBy(...)` materialises the negation (`neg/sbb/inc`)
 //   before the name's destructor.
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 #define FABLE_RETAIL_NSCRIPT
@@ -103,7 +104,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

@@ -7,19 +7,20 @@
 //   The manifest's "CTCWeapon::GetAnimationSpeedValue" is an ICF-style propagation.
 // Shape (family M153, representative 0x005BD427): the landed 0x005BD404 body -- `CDefPointer<const CInventoryDef> def(PDef);
 //   return def->ContinuedCategoryMovementRepeatDelay;` (null-tested add-ref, unchecked release, the float spilled across the release). `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {
 public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     mutable unsigned long IVRefCount;                    // +0x04
-    __forceinline void Release() const { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() const { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer {
 public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CInventoryDef : public CDefPointeeBase {

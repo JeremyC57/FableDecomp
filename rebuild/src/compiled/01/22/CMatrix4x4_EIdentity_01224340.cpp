@@ -10,13 +10,14 @@
 // Shape: VC7.1 unrolls the inner row loop (four `(i == j) ? 1 : 0` selects through x87 loads, each `fstp` indexed by the
 //   column) and keeps the column loop; the EMatrix34Init constructor argument is a descriptive enumerator. SetIdentity and
 //   the constructor must both be `__forceinline`: VC7.1 does not inline a plain inline function holding a loop.
+#include "fable_compiler.h"
 enum EMatrix34Init { MATRIX34_INIT_IDENTITY };
 
 class CMatrix4x4 {
 public:
     float M[4][4];                                        // +0x00
-    __forceinline CMatrix4x4(EMatrix34Init) { SetIdentity(); }
-    __forceinline void SetIdentity()
+    FABLE_FORCEINLINE CMatrix4x4(EMatrix34Init) { SetIdentity(); }
+    FABLE_FORCEINLINE void SetIdentity()
     {
         for (long j = 0; j < 4; ++j)
             for (long i = 0; i < 4; ++i)

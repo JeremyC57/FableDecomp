@@ -5,6 +5,7 @@
 // A block size other than 8 fails; otherwise the inlined CMemoryDataInputStream::Read(this, 8) copies the first two
 // longs (the same inline Read as the landed 0x007AD7F0 family: 64-bit [0, 0x7FFFFFFF] position check, memcpy from
 // the chunk pointer +0xC, remaining +0x14, position +4) and the block reports success either way.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -18,8 +19,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0x0C current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -246,7 +247,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const=0; virtual CPredicateBase* Clone() const=0; virtual ~CPredicateBase(){} };
 class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const; virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(); //00E241B0 out of line
 };
@@ -259,11 +260,11 @@ union ThingSlot { void* Address; unsigned char(ThingCalls::*MsgIsUsedBy)(const C
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4); FABLE_STATIC_ASSERT(sizeof(ThingSlot)==4);
 #endif
 struct GameCalls:CGameScriptInterface {
- __forceinline void NewScriptFrame(){(this->*reinterpret_cast<GameSlot*>(__vftable)[7].NewScriptFrame)();}
+ FABLE_FORCEINLINE void NewScriptFrame(){(this->*reinterpret_cast<GameSlot*>(__vftable)[7].NewScriptFrame)();}
 };
 struct ThingCalls:CScriptThing {
- __forceinline bool NotUsedByHero() const { CCharString name("SCRIPT_NAME_HERO",-1); return MsgIsUsedBy(name) ? false : true; }
- __forceinline unsigned char MsgIsUsedBy(const CCharString& name)const {return(this->*reinterpret_cast<const ThingSlot*>(__vftable)[20].MsgIsUsedBy)(name);}
+ FABLE_FORCEINLINE bool NotUsedByHero() const { CCharString name("SCRIPT_NAME_HERO",-1); return MsgIsUsedBy(name) ? false : true; }
+ FABLE_FORCEINLINE unsigned char MsgIsUsedBy(const CCharString& name)const {return(this->*reinterpret_cast<const ThingSlot*>(__vftable)[20].MsgIsUsedBy)(name);}
 };
 struct CPersonalScript_EmptyScript { unsigned char Unknown[0x48]; bool GoalChestFinished; };
 struct CGoalChest {

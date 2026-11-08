@@ -10,6 +10,7 @@
 //   prev->next = tmp, end->prev = tmp; the iterator's user copy constructor (as the landed list push_back 0x004BA420)
 //   fixes the sentinel's register, and the intelligent pointer's copy goes through its typed
 //   GetPItem/SetPItem wrappers (the landed back_insert_iterator 0x006C1E70 model); speed TU.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 class CBaseObject;
@@ -36,28 +37,28 @@ struct _List_node_base {
 template <class _Tp> struct _List_node : public _List_node_base {
     _Tp _M_data;                                          // +0x8
 };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> class allocator { public:
-    __forceinline _Tp* allocate(unsigned int __n) { return static_cast<_Tp*>(malloc(__n * sizeof(_Tp))); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return static_cast<_Tp*>(malloc(__n * sizeof(_Tp))); }
 };
 template <class _Tp> struct _List_iterator {
     _List_node_base* _M_node;
-    __forceinline _List_iterator(_List_node_base* __x) : _M_node(__x) { }
-    __forceinline _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
+    FABLE_FORCEINLINE _List_iterator(_List_node_base* __x) : _M_node(__x) { }
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list {
 public:
     typedef _List_node<_Tp> _Node;
     typedef _List_iterator<_Tp> iterator;
     struct : allocator<_Node> { _List_node_base* _M_data; } _M_node;   // _STLP_alloc_proxy: the sentinel
-    __forceinline iterator end() { return iterator(_M_node._M_data); }
-    __forceinline _Node* _M_create_node(const _Tp& __x)
+    FABLE_FORCEINLINE iterator end() { return iterator(_M_node._M_data); }
+    FABLE_FORCEINLINE _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = _M_node.allocate(1);
         _Construct(&__p->_M_data, __x);
         return __p;
     }
-    __forceinline iterator insert(iterator __position, const _Tp& __x)
+    FABLE_FORCEINLINE iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);
         _List_node_base* __n = __position._M_node;

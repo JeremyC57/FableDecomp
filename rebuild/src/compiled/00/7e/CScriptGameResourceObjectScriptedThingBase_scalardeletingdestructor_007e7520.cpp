@@ -17,6 +17,7 @@
 // the FIRST MEMBER of a non-polymorphic class with a `__forceinline` destructor and a `delete` helper (VC7.1 emits `??_G` for it);
 // the members are destroyed in reverse order -- PImp (the `__forceinline` counted-pointer release), then the base's inline
 // virtual destructor (its vtable store and the out-of-line root destructor).
+#include "fable_compiler.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"   // PDB layout: vptr, root word, PImp at +8 (0x10 bytes)
 
 void __cdecl operator delete(void* block);     // 0x00BFE9BC
@@ -28,13 +29,13 @@ void __cdecl operator delete(void* block);     // 0x00BFE9BC
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBase() {}
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBase() {}
 };
 
 struct CScriptGameResourceObjectScriptedThingBaseRetail {   // retail: derives from CScriptGameResourceObjectBase (vtable 0x0127094C)
     CScriptGameResourceObjectBase  m_base;     // +0x00 vptr + root
     CCountedPointer<CScriptGameResourceObjectScriptedThingBaseRetail> PImp;   // +0x08
-    __forceinline ~CScriptGameResourceObjectScriptedThingBaseRetail() {}
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectScriptedThingBaseRetail() {}
 };
 
 FABLE_STATIC_ASSERT(sizeof(CScriptGameResourceObjectScriptedThingBaseRetail) == sizeof(CScriptGameResourceObjectScriptedThingBase));

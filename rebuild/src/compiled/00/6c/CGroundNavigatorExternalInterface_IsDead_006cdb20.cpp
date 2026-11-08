@@ -4,6 +4,7 @@
 // Callees: none. Shape: the inline "alive" test (`creature && !dead`) materialised as `mov al,1` / `xor al,al` and then negated through `sete cl ; mov al,cl` on each path:
 // the function is the negation of an inline IsAlive helper.
 // Model: the engine header for the interface (vptr, Creature at +4, Radius at +8); the creature, its physics body (+0x60) and its component map are local models (engine/CThingCreatureBase.h has no names at these offsets).
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long            m_kind;
@@ -67,7 +68,7 @@ class CThingCreatureBase { public:                        // the retail creature
     unsigned char         _pad74[0x1d];
     unsigned char         m_dead : 1;              // +0x91 bit 0
     unsigned char         m_91_1 : 7;
-    template<class T> __forceinline void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;
@@ -78,7 +79,7 @@ class CThingCreatureBase { public:                        // the retail creature
             *ppOut = (T*)it->m_pTC;
         }
     }
-    template<class T> __forceinline void GetInterface(T** ppOut, long kind) const
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long kind) const
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;
@@ -93,7 +94,7 @@ class CThingCreatureBase { public:                        // the retail creature
 #include "engine/CGroundNavigatorExternalInterface.h"
 
 struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
-    __forceinline unsigned char IsAlive() const { return Creature != 0 && !Creature->m_dead; }   // `mov al,1` / `xor al,al`: a byte, not a bool
+    FABLE_FORCEINLINE unsigned char IsAlive() const { return Creature != 0 && !Creature->m_dead; }   // `mov al,1` / `xor al,al`: a byte, not a bool
     bool IsDead() const;
 };
 

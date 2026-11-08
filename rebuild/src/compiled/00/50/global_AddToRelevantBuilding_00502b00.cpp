@@ -17,6 +17,7 @@
 //   shared break block); the assignment tail sits at function scope after `if (chosen == 0) return;` -- inside an
 //   `if` block VC7.1 packs its def pointer into the dead `buildings` argument slot (frame 0x1C) instead of retail's own
 //   word (+0x24, frame 0x20); vector::erase is STLport's `__copy_trivial` (memmove) with `end() != position + 1`.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
@@ -24,7 +25,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 inline void* operator new(unsigned int, void* p) { return p; }
 
 long __fastcall GFROR13(unsigned long value);                       // 0x00497890
-__forceinline unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)   // 0x004CDAE0 (inline here)
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)   // 0x004CDAE0 (inline here)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);
@@ -55,13 +56,13 @@ public:
     long Property;                                  // +0x3C
     long WorkSpaces;                                // +0x40
     long LiveSpaces;                                // +0x44
-    __forceinline void ReleaseTemporary() const { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() const { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 
 template <class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
 

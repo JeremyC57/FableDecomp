@@ -1,4 +1,5 @@
 // Behaviour test for 0x00832E60: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -87,8 +88,8 @@ class CThing { public:
     CInterfaceMap Components;                           // +0x44
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990
     CWorld* PeekWorld();                                // 0x004C7AA0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;
@@ -97,7 +98,7 @@ class CThing { public:
             it = map->last;
         return (T*)it->component;
     }
-    template <class T> __forceinline const T* GetConstTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetConstTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;

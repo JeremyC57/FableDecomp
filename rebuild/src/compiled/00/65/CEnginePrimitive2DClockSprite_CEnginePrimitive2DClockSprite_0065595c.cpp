@@ -1,4 +1,5 @@
 // CEnginePrimitive2DClockSprite::CEnginePrimitive2DClockSprite -- initializes 2D geometry, two bank/frame colors, angles, blend state and unaligned UVs; retail 0065595c 194 bytes. Callee 004371a0 copies two C2DVectors into C2DBoxF; its propagated CRightHandedSet label describes a different layout. No wrapper, C2DBoxF, or CRGBColour header exists; internal renderer header is a distinct 0x94 object.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C2DVector { public: float X,Y; };
@@ -6,8 +7,8 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF(const C2DVector*,const C2
 class CRGBColour { public:
  unsigned char B,G,R,A;
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Set(r,g,b,a); }
- __forceinline void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
- __forceinline CRGBColour(const CRGBColour& o) { Set(o.R,o.G,o.B,o.A); }
+ FABLE_FORCEINLINE void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+ FABLE_FORCEINLINE CRGBColour(const CRGBColour& o) { Set(o.R,o.G,o.B,o.A); }
 };
 class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){} };
 class CEnginePrimitive { public:

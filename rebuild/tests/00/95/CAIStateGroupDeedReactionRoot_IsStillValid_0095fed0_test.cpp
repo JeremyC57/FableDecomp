@@ -1,4 +1,5 @@
 // 0095fed0 behaviour test: CAIStateGroup_DeedReactionRoot::IsStillValid (control flow + counted-pointer release of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -12,13 +13,13 @@ static CTCCreatureOpinionOfHero* g_opinion;
 class CThing { public:
     unsigned char m_flags91;
     bool hasReactions;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (interfaceType == 0x51 && hasReactions) { *ppOut = (T*)g_reactions; return true; }
         if (interfaceType == 0x4f) { *ppOut = (T*)g_opinion; return true; }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (interfaceType == 0x51 && hasReactions) { *ppOut = (T*)g_reactions; return true; }
         return false;

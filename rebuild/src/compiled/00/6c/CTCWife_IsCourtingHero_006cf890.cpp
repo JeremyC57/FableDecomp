@@ -6,6 +6,7 @@
 //        inline GetTC that re-tests the bit and returns an unset local on the absent path (`mov eax,[esp+4]`); the flag
 //        byte is the component's +0x340 (descriptive name).
 // Layout: CTCWife ParentThing +0x04; retail CThing bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -19,7 +20,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     unsigned char _pad92[0x1c9 - 0x92];
     unsigned char Flags1C9;                     // +0x1c9 (CThingCreatureBase flag byte; bit 3 tested, descriptive)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -48,13 +49,13 @@ class CTCCreatureOpinionOfHero { public:
     unsigned char _pad_0x000[0x340];
     bool CourtingHero;                           // +0x340 (descriptive)
 };
-__forceinline bool HasTC(CThing* thing, long type)
+FABLE_FORCEINLINE bool HasTC(CThing* thing, long type)
 {
     if (thing->m_presentBits[type >> 5] & (1UL << (type & 31)))
         return true;
     return false;
 }
-template <class T> __forceinline T* GetTC(CThing* thing, long type)
+template <class T> FABLE_FORCEINLINE T* GetTC(CThing* thing, long type)
 {
     T* tc;
     thing->GetInterface(&tc, type);

@@ -11,6 +11,7 @@
 // `("s", on)`).
 // Shape: both def pointers are zeroed frame words (`and [ebp-4],0`); `CDefPtr sub; ...; return sub;` copies out with the
 // merged `inc ; dec ; jne` (VC7.1 has no NRVO); the base def is read once into esi and released by hand after the copy.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CItem.h"
@@ -23,13 +24,13 @@ class CInventoryItemDef : public CIVCountedPointeeBase { public:
 };
 struct CInventoryItemDefPointer {                  // CDefPointer<CInventoryItemDef const>
     CInventoryItemDef* Object;
-    __forceinline CInventoryItemDefPointer() : Object(0) {}
-    __forceinline CInventoryItemDefPointer(const CInventoryItemDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CInventoryItemDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE CInventoryItemDefPointer(const CInventoryItemDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline ~CInventoryItemDefPointer()
+    FABLE_FORCEINLINE ~CInventoryItemDefPointer()
     {
         if (Object && --Object->IVRefCount == 0)
             Object->Delete();
@@ -53,8 +54,8 @@ __declspec(noinline) void CDefClassBase::GetSubDef(CInventoryItemDefPointer& out
 #pragma auto_inline(on)
 struct CDefClassBasePointer {                      // CDefPointer<CDefClassBase const>
     CDefClassBase* Object;
-    __forceinline CDefClassBasePointer() : Object(0) {}
-    __forceinline ~CDefClassBasePointer()
+    FABLE_FORCEINLINE CDefClassBasePointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefClassBasePointer()
     {
         CDefClassBase* def = Object;
         if (def && --def->IVRefCount == 0)

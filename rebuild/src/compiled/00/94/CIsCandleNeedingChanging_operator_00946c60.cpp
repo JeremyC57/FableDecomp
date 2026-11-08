@@ -11,6 +11,7 @@
 // Same model as the landed CIsFreeHopscotchBoard (0x00941BE0) / CThingFilter_HasFreeActionPoint (0x006A8B40) / 0x00938BF0.
 // Shape: one `&&` chain with a single trailing `return false;` and a __forceinline IsCandle(candle, thing) helper (the flags read
 // twice through the helper's pointer in esi): early returns make VC shrink-wrap esi; a plain inline helper is not inlined.
+#include "fable_compiler.h"
 class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
@@ -32,7 +33,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                      // +0x91
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -45,7 +46,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterfaceConst(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -91,7 +92,7 @@ public:
     CAIStateGroup_LightHomeCandle* m_pStateGroup;  // +0x00
     bool operator()(const CIntelligentPointer<CThing>& thing) const;
     // a candle: state-flag bit 8, or bit 9 together with interface 0x27 (the flags read twice through one pointer)
-    static __forceinline bool IsCandle(CThing* candle, const CIntelligentPointer<CThing>& thing)
+    static FABLE_FORCEINLINE bool IsCandle(CThing* candle, const CIntelligentPointer<CThing>& thing)
     {
         return ((unsigned char)(candle->GetStateFlags() >> 8) & 1)
             || (((unsigned char)(candle->GetStateFlags() >> 9) & 1) && thing.GetPItem()->HasTC(0x27));

@@ -1,6 +1,7 @@
 // Behaviour test for 0x0046B0D6 CPersistTraits<pair<CDefIndex,CDefString> >::TransferBinaryIn: the CDefIndex through the
 // inlined CMemoryDataInputStream::Read (straight from the current chunk when 4 bytes remain, through the overflow
 // reader otherwise, not at all when position + 4 leaves [0, 0x7FFFFFFF]), then the def string through its own reader.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,7 +25,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     {
         ++g_overflows; std::memcpy(buffer, &g_overflowValue, size); position += size;
     }
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)

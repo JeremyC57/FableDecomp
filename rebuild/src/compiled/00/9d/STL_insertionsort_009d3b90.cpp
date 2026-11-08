@@ -14,6 +14,7 @@
 // first element read into ebp up front); unsigned `<` (`jae`); copy_backward of a scalar element is STLport's
 // __copy_trivial_backward over void*, counted in BYTES (`n = (char*)last - (char*)first ; if (n > 0) memmove((char*)
 // result - n, first, n)` -- an element count adds `sar eax,2 ; shl eax,2`); `*first = val` re-reads `first`.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
 #include "engine/CArray.h"
@@ -60,18 +61,18 @@ struct CompareDataOffset {                         // CBankFile::CompareDataOffs
 
 void __fastcall __unguarded_linear_insert(unsigned long* last, unsigned long value, CompareDataOffset comp);   // 0x009D2FC0
 
-__forceinline void* __copy_trivial_backward(const void* first, const void* last, void* result)
+FABLE_FORCEINLINE void* __copy_trivial_backward(const void* first, const void* last, void* result)
 {
     const int num = (const char*)last - (const char*)first;   // STLport counts the trivial copy in bytes
     return (num > 0) ? memmove((char*)result - num, first, num) : result;
 }
 
-__forceinline unsigned long* copy_backward(unsigned long* first, unsigned long* last, unsigned long* result)
+FABLE_FORCEINLINE unsigned long* copy_backward(unsigned long* first, unsigned long* last, unsigned long* result)
 {
     return (unsigned long*)__copy_trivial_backward(first, last, result);
 }
 
-__forceinline void __linear_insert(unsigned long* first, unsigned long* last, unsigned long value, CompareDataOffset comp)
+FABLE_FORCEINLINE void __linear_insert(unsigned long* first, unsigned long* last, unsigned long value, CompareDataOffset comp)
 {
     if (comp(value, *first)) {
         copy_backward(first, last, last + 1);

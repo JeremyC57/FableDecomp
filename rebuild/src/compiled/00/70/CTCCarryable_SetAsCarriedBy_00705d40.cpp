@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CDefPointer.h"
@@ -134,9 +135,9 @@ class CThing:public CThingFields{public:const C3DVector&GetPos()const;void SetCu
  const CThingBaseDef&PeekBaseDef()const{return *reinterpret_cast<const CThingBaseDef*>(PBaseDef_Object);}
  CTCPhysicsBase*GetPhysicsTC(){return PhysicsTC;}
  NGraphicAppearance::CTCGraphicAppearance*GetTCGraphicAppearance(){return reinterpret_cast<NGraphicAppearance::CTCGraphicAppearance*>(PTCGraphicAppearance);}
- __forceinline bool HasTC(ETCInterfaceType kind)const{if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31)))return true;return false;}
- template<class T>__forceinline bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(HasTC(kind)){*out=static_cast<T*>(&GetTC(kind));return true;}return false;}
- __forceinline CTCBase&GetTC(ETCInterfaceType kind){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);return *((it==map.end()||kind<it->first)?map.end():it)->second;}
+ FABLE_FORCEINLINE bool HasTC(ETCInterfaceType kind)const{if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31)))return true;return false;}
+ template<class T>FABLE_FORCEINLINE bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(HasTC(kind)){*out=static_cast<T*>(&GetTC(kind));return true;}return false;}
+ FABLE_FORCEINLINE CTCBase&GetTC(ETCInterfaceType kind){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);return *((it==map.end()||kind<it->first)?map.end():it)->second;}
 };
 class CTCWeaponTrail:public CTCBase{public:void ClearAllWeaponTrails();};
 class CTCVolumeContainmentTracker:public CTCBase{public:static ETCInterfaceType __fastcall StatGetInterfaceType(){return static_cast<ETCInterfaceType>(0x75);}void OnThingCarried(CThing&);};

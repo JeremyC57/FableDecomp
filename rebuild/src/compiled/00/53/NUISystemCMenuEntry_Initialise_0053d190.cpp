@@ -3,6 +3,7 @@
 // CDefPointer released inline), CClickable::Initialise 0x0055AC90, CChangingStateComponent::Initialise 0x0052C730.
 // Same body as CFrontEndButton::Initialise 0x0054DB50. Name: Ego_r.pdb ?Initialise@CMenuEntry@NUISystem@@UAEXXZ
 // (source order RemoveChild, OnLeftClicked, OnRightUnclicked, AddChild, AddChildDynamically, Initialise, ProcessEvent).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -18,7 +19,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

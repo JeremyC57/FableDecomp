@@ -20,6 +20,7 @@
 // Constants: 10.0f 0x01237F0C, 1.0f 0x0122DED8, 0.0f 0x0122DEDC, -1.0f 0x0122DEE0, 0.1f 0x0122EE58, 0.5f 0x0122F59C, 255.0f 0x01230014,
 //   15.0f 0x0124E640, 0.05f 0x0125A15C, 127.0f 0x0125A160, 1/30 0x012856DC, 2047.0f 0x01288BE4, 1023.0f 0x0129EF90, 4095.0f 0x0129F668,
 //   16383.0f 0x0129F66C, 1/99.9 0x0129F670 (read from the binary).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0
 
 class CRGBColour { public:
@@ -35,7 +36,7 @@ public:
 };
 
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     long i = decimals;
@@ -46,7 +47,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
     return GFFloatToLongNear(scaled) / scale;
 }
 // the database parameter packing: round to two decimals, map [min, max] onto [0, steps]
-static __forceinline unsigned long PackParam(float value, float min, float max, float steps)
+static FABLE_FORCEINLINE unsigned long PackParam(float value, float min, float max, float steps)
 {
     float normalised = (RoundToDecimals(value, 2) - min) * (1.0f / (max - min));
     return GFFloatToLongNear(normalised * steps);

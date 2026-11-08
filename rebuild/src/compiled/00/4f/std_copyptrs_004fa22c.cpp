@@ -8,6 +8,7 @@
 // Shape (family K124, representative 0x004EABE5): STLport 4.6 `__copy_ptrs(..., const __false_type&)` -> `__copy(first, last, result,
 //   random_access_iterator_tag(), (int*)0)` (__forceinline); frame/size TU (`push 30h ; pop esi ; idiv esi`, the count in the
 //   result slot).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #pragma pack(push, 1)
@@ -22,7 +23,7 @@ public:
     long CardName;                                       // +0x3C
     long CardVal;                                        // +0x40
     // the implicit memberwise assignment, written out: size mode would otherwise emit it out of line
-    __forceinline CCardDef& operator=(const CCardDef& other)
+    FABLE_FORCEINLINE CCardDef& operator=(const CCardDef& other)
     {
         CParentDefClassBase::operator=(other);
         CardName = other.CardName;
@@ -34,7 +35,7 @@ namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

@@ -12,6 +12,7 @@
 // Shape: STLport `swap(T& a, T& b) { T tmp = a; a = b; b = tmp; }` in a size TU, where the pair's copy constructor,
 //   assignment and destructor stay calls. ~CDefPointer is `__forceinline` (its release sits inside the out-of-line ~pair
 //   0x005930F3): with a plain inline def-pointer destructor VC7.1 inlines ~pair here and calls ~CDefPointer on +4.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {
 public:
@@ -25,7 +26,7 @@ class CDefPointer {
 public:
     T* Object;                                          // +0x00
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++((CDefPointeeBase*)Object)->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) { if (--((CDefPointeeBase*)Object)->IVRefCount == 0) ((CDefPointeeBase*)Object)->Delete(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--((CDefPointeeBase*)Object)->IVRefCount == 0) ((CDefPointeeBase*)Object)->Delete(); Object = 0; } }
     CDefPointer& operator=(const CDefPointer& p)
     {
         if (Object != p.Object) {

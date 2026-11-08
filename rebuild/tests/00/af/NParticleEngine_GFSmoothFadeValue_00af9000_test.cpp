@@ -1,8 +1,9 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <math.h>
 namespace NParticleEngine { float __fastcall GFSmoothFadeValue(float t); }
 float g_CosTable[1025];
-__forceinline long FloatToLong(float value) { long result;
+FABLE_FORCEINLINE long FloatToLong(float value) { long result;
     __asm fld value
     __asm fistp result
     return result;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -30,7 +31,7 @@ class CCombatAbilityData { public:
 class CCombatAbilityProjectileAttackData : public CCombatAbilityData { public:
     bool AbleToStrafeAndShoot;          // +0x18
     long ShotAccuracyPercentage;        // +0x1c
-    __forceinline CCombatAbilityProjectileAttackData& operator=(const CCombatAbilityProjectileAttackData& other)
+    FABLE_FORCEINLINE CCombatAbilityProjectileAttackData& operator=(const CCombatAbilityProjectileAttackData& other)
     {
         CCombatAbilityData::operator=(other);
         AbleToStrafeAndShoot = other.AbleToStrafeAndShoot;

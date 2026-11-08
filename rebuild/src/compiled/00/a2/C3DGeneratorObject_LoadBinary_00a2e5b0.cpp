@@ -10,6 +10,7 @@
 // Layout: PDB (struct_layouts_egor.tsv) C3DGeneratorObject is 0x40 bytes: 0x34 unnamed bytes, ObjectName +0x34,
 //          BankIndex +0x38, UseLocalOrigin +0x3C. The unnamed block is a 3x4 matrix (+0x00, 48 bytes, rep movsd 12)
 //          and a ulong read from the stream (+0x30). No engine header exists for the class.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -39,8 +40,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -54,8 +55,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
 class C3DGeneratorObject { public:

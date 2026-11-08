@@ -15,6 +15,7 @@
 //   length squared compared against epsilon squared; the axes are stored through the implicit operator= and the inline
 //   (Y, -X, 0) perpendicular; `PTargetedThing = target` builds a CIntelligentPointer temporary (base ctor, vtable store,
 //   SetPItem) and assigns it through `SetPItem(other.GetPItem())`.
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -57,8 +58,8 @@ class CThing { public:
     unsigned char _pad50[0x41];
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
-    template<long TYPE> __forceinline CTCBase* GetTC() const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
+    template<long TYPE> FABLE_FORCEINLINE CTCBase* GetTC() const
     {
         ETCInterfaceType type = (ETCInterfaceType)(TYPE);
         const CInterfaceMap* map = &Interfaces;

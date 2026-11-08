@@ -18,6 +18,7 @@
 // once and released on both exits; the dot is compared with the double cos (a (float) cast adds an fxch pair).
 // Layout: CThing interface bitset +0x20 and map +0x44 (landed GetInterface model), dead bit +0x91, PBaseDef +0x70
 // (landed 0x006E3780); the sub-def's override angle +0xcc (descriptive name).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(cos)
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
@@ -93,7 +94,7 @@ class CThing { public:
     unsigned char _pad74[0x1d];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     const C3DVector& GetPos() const;   // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

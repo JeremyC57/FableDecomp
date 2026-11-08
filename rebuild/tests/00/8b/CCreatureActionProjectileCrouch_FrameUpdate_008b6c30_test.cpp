@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -21,7 +22,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 #pragma intrinsic(fmod, atan2)
 extern unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -34,14 +35,14 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
+    FABLE_FORCEINLINE C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
+    FABLE_FORCEINLINE void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
     float Dot(const C3DVector& o) const { return Z * o.Z + Y * o.Y + X * o.X; }
     void RotateAboutZ(float turns);                         // 0x00A14040
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

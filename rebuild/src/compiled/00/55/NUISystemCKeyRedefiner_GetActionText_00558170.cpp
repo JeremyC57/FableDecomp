@@ -24,6 +24,7 @@
 //   temporary takes the addressed (`lea`) slot and each case keeps its own slots (an explicit CCharString temporary
 //   swaps the tag and result slots; named locals share one slot set across the cases). Every movement case returns
 //   straight away.
+#include "fable_compiler.h"
 typedef unsigned short wchar_t;                                                       // VC7.1 without /Zc:wchar_t
 extern "C" int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);                    // 0x00BFE94C
 
@@ -49,7 +50,7 @@ public:
     unsigned int size() const { return _M_finish - _M_start; }
     const wchar_t* data() const { return _M_start; }
 };
-__forceinline bool operator==(const wstring& s, const wchar_t* text)
+FABLE_FORCEINLINE bool operator==(const wstring& s, const wchar_t* text)
 {
     unsigned int n = char_traits<wchar_t>::length(text);
     return s.size() == n && char_traits<wchar_t>::compare(s.data(), text, n) == 0;
@@ -63,7 +64,7 @@ public:
     const CWideString& operator=(const CWideString& other);                                  // 0x0099B7D0
     const CWideString& operator=(const wchar_t* text);                                       // 0x0099B800
     const CWideString& operator+=(const CWideString& other);                                 // 0x0099B8D0
-    __forceinline bool operator==(const wchar_t* text) const
+    FABLE_FORCEINLINE bool operator==(const wchar_t* text) const
     {
         if (PStringData == 0)
             return wcscmp(L"", text) == 0;

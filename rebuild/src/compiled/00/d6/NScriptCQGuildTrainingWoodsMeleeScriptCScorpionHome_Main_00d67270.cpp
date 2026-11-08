@@ -16,6 +16,7 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there, and CScorpionHome is nested in it as Ego_r.pdb spells it
 //   (?Main@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@EAEXXZ, a private virtual; FableWin ?OnPredicateFail@/?GetParentScript@ the same) (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 #define VEC_DTOR
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
@@ -111,7 +112,7 @@ public:
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 #ifndef VEC_DTOR
-#define VEC_DTOR __forceinline
+#define VEC_DTOR FABLE_FORCEINLINE
 #endif
     VEC_DTOR ~vector()
     {
@@ -133,7 +134,7 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 class CTimer { public:
     long Index;
     CTimer(long time) { Index = pDSTGame->RegisterTimer(); pDSTGame->SetTimer(Index, time); }
-    __forceinline ~CTimer() { pDSTGame->DeregisterTimer(Index); }   // 0x00CD4470
+    FABLE_FORCEINLINE ~CTimer() { pDSTGame->DeregisterTimer(Index); }   // 0x00CD4470
     void Set(long time) { pDSTGame->SetTimer(Index, time); }
     long Get() const { return pDSTGame->GetTimer(Index); }
 };

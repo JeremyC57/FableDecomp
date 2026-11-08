@@ -7,6 +7,7 @@
 // Layout: primitive = CEngineInternalPrimitiveBase (IVRefCount +4, RenderLayerMask +0x30, Enable bit 0 / NonPersistent bit 1
 // of +0x34); scene fields as the RenderLayerCells model 0x00B93F40 (grid layer mask +0x1c, the two loose lists +0x20/+0x24)
 // plus the three counters +0x38 (grid), +0x3c (persistent), +0x40 (non-persistent) -- descriptive names.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 class C2DVector {
@@ -20,10 +21,10 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    __forceinline float Length2D() const { return (float)sqrt(X * X + Y * Y); }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
+    FABLE_FORCEINLINE float Length2D() const { return (float)sqrt(X * X + Y * Y); }
 };
 class C3DBoundingBox { public:
     C3DVector Min, Max;

@@ -13,6 +13,7 @@
 // temporaries share the dead high byte of the position slot ([ebp+0Bh]): same-TU `auto_inline(off)` noinline template
 // bodies of the tag-taking helpers with the tag parameter unnamed (GOTCHAS empty-tag rule).
 // Opt: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -28,7 +29,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>
@@ -63,7 +64,7 @@ __declspec(noinline) void __fastcall fill(_ForwardIter __first, _ForwardIter __l
 #pragma auto_inline(on)
 
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

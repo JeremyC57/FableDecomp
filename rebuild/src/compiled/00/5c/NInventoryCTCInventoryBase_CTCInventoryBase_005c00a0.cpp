@@ -11,6 +11,7 @@
 // only as `__forceinline`; the CDefPointer dtor calls the def's inline Release() inside its null test.
 // Layout: PDB CTCInventoryBase with 12-byte retail vectors: Components +0xC, Categories +0x20, PDef +0x68, SerialisedItems
 // +0x78, SerialisedSelectedItems +0x80, MenuDisplayListItem +0x94, MenuDisplayListCategory +0xA0, ConfiscatedItems +0xAC.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -19,7 +20,7 @@ template <class T> struct CPODVector {             // STLport vector of a trivia
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CPODVector()
+    FABLE_FORCEINLINE ~CPODVector()
     {
         if (_M_start)
             free(_M_start);
@@ -55,7 +56,7 @@ class CInventoryDef { public:
 };
 struct CDefPointer {                               // CDefPointer<CInventoryDef const>
     CInventoryDef* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

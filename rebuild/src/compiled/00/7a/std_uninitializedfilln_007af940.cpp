@@ -11,6 +11,7 @@
 //   this TU (callers 0x007AF9BA / 0x007AFDB0 / 0x007AFED4 store vtable 0x0123E7E0 in their inline copies).
 // Element: CIntelligentPointer<T> copy constructor = base ctor, vtable store, other.GetPItem(), SetPItem.
 // Shape: /Gr TU; the loop head is 16-byte aligned (the `nop`).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() { } };
 class CThingAICreature;
@@ -26,7 +27,7 @@ public:
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0123E7E0 for CIntelligentPointer<CThingAICreature>
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); }
 };
 namespace std {
 template <class _ForwardIter, class _Size, class _Tp>

@@ -8,6 +8,7 @@
 // mask at +0x20 (kind 0x6a = word 3 bit 10, `test ch,4` on +0x2c) and map at +0x44 (the chunk-141 model).
 // Shape: `if (uid > 0)` on the unsigned 64-bit id (`ja`/`jbe` pair); the component comes from the inline accessor that
 // leaves its result UNSET when the mask bit is clear (chunk 141), so the absent path reads a dead stack word.
+#include "fable_compiler.h"
 struct CTCBase_Retail {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -24,7 +25,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -36,9 +37,9 @@ struct CThing_Retail {
     unsigned long  m_tcMask[8];                             // +0x20
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                                   // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;                                     // deliberately unset when the component is absent
     if (thing->HasTC(kind))

@@ -14,6 +14,7 @@
 // Layout: C3DPositionInterpolator (Ego_r.pdb): StartPosition +0x04, EndPosition +0x10; C3DOrientationInterpolator:
 //         StartOrientation +0x04, EndOrientation +0x1C; CPrimitive::PrimitiveHandle +0x04; CEnginePrimitivePosition
 //         {WorldPos, RightHandedSet} (36 bytes).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CRightHandedSet {
@@ -35,7 +36,7 @@ public:
     void* __vfptr;                                  // +0x00
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10
-    __forceinline C3DVector GetPosition(float t) const { return StartPosition + (EndPosition - StartPosition) * t; }
+    FABLE_FORCEINLINE C3DVector GetPosition(float t) const { return StartPosition + (EndPosition - StartPosition) * t; }
 };
 
 class C3DOrientationInterpolator {
@@ -43,7 +44,7 @@ public:
     void* __vfptr;                                  // +0x00
     CRightHandedSet StartOrientation;               // +0x04
     CRightHandedSet EndOrientation;                 // +0x1C
-    __forceinline CRightHandedSet GetOrientation(float t) const { return StartOrientation.Interpolate(EndOrientation, t); }
+    FABLE_FORCEINLINE CRightHandedSet GetOrientation(float t) const { return StartOrientation.Interpolate(EndOrientation, t); }
 };
 
 class CEnginePrimitiveHandle;

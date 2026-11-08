@@ -14,6 +14,7 @@
 //   of storage in memory, placement copy with its null test, `add [edi+4],4`; the overflow arm's empty tag homed in the
 //   dead `result` slot) and the tree iterator's _M_increment inlined (right subtree's leftmost, else climb while a right
 //   child, then the header guard); the empty range returns `result` straight from its slot.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
 class CCharString {
@@ -150,7 +151,7 @@ struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
 };
 
 template <class _InputIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputIter __result, const input_iterator_tag&, _Distance*)
+FABLE_FORCEINLINE _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputIter __result, const input_iterator_tag&, _Distance*)
 {
     for ( ; __first != __last; ++__result, ++__first)
         *__result = *__first;
@@ -158,7 +159,7 @@ __forceinline _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputI
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_aux(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_aux(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, input_iterator_tag(), (int*)0);
 }

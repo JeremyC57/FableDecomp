@@ -1,6 +1,7 @@
+#include "fable_compiler.h"
 #include "candidates/landscape_patch_update_foreground_compiled.h"
 
-static __forceinline float ClampForegroundCoordinate(float value, float minimum, float maximum)
+static FABLE_FORCEINLINE float ClampForegroundCoordinate(float value, float minimum, float maximum)
 {
     if (value < minimum)
         return minimum;

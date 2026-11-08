@@ -6,6 +6,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -34,7 +35,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceC(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceC(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -95,7 +96,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vptr 0x01238C6C
     virtual void v00();
-    explicit __forceinline CIntelligentPointerCreature(CThing* thing) { SetPItem((CBaseObject*)thing); }
+    explicit FABLE_FORCEINLINE CIntelligentPointerCreature(CThing* thing) { SetPItem((CBaseObject*)thing); }
 };
 template <class T> class CIntelligentPointer;
 template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
@@ -130,7 +131,7 @@ struct CAIStateGroup_SummonerLightningAttack : CAIStateGroupBase {
     const CSummonerDef* PDef;                   // +0x1c CDefPointer<const CSummonerDef>
     long NextFrameForPreemptiveUse;             // +0x20
     CThing* GetCreature() const { return PBrain->PCreature; }
-    __forceinline bool IsTargetable(CTCLightningTarget* target)
+    FABLE_FORCEINLINE bool IsTargetable(CTCLightningTarget* target)
     {
         CTCLightningTarget::SMatch out;
         return target->CanBeTargeted(&out, GetCreature());

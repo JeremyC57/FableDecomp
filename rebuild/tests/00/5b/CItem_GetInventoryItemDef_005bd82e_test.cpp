@@ -1,4 +1,5 @@
 // Behaviour test for 005bd82e: body copied from src/005bd82e.cpp (CItem::GetInventoryItemDef), callees stubbed; CItem modelled locally.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -13,13 +14,13 @@ class CIVCountedPointeeBase { public:
 class CInventoryItemDef : public CIVCountedPointeeBase { public: };
 struct CInventoryItemDefPointer {
     CInventoryItemDef* Object;
-    __forceinline CInventoryItemDefPointer() : Object(0) {}
-    __forceinline CInventoryItemDefPointer(const CInventoryItemDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CInventoryItemDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE CInventoryItemDefPointer(const CInventoryItemDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline ~CInventoryItemDefPointer()
+    FABLE_FORCEINLINE ~CInventoryItemDefPointer()
     {
         if (Object && --Object->IVRefCount == 0)
             Object->Delete();
@@ -37,8 +38,8 @@ void CDefClassBase::GetSubDef(CInventoryItemDefPointer& out)
 }
 struct CDefClassBasePointer {
     CDefClassBase* Object;
-    __forceinline CDefClassBasePointer() : Object(0) {}
-    __forceinline ~CDefClassBasePointer()
+    FABLE_FORCEINLINE CDefClassBasePointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefClassBasePointer()
     {
         CDefClassBase* def = Object;
         if (def && --def->IVRefCount == 0)

@@ -16,12 +16,13 @@
 //          expression (VC7.1 sums Z first).
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04), the hero
 //          intelligent pointer at +0x14.
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    __forceinline SEntry* LowerBound(const long* type)        // STLport lower_bound over the 8-byte entries (inlined in this TU)
+    FABLE_FORCEINLINE SEntry* LowerBound(const long* type)        // STLport lower_bound over the 8-byte entries (inlined in this TU)
     {
         SEntry* it = first;
         int len = int(last - first);
@@ -46,7 +47,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -81,9 +82,9 @@ struct CBaseIntelligentPointer {
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

@@ -1,6 +1,7 @@
 // 00c41c40 Row00c41c40::CameraConstants::Apply
 // Flags: /O2 /Oy /W3 
 // Leaf: Apply
+#include "fable_compiler.h"
 namespace Row00c41c40 {
 struct Vec {float x,y,z; Vec(){} Vec(const Vec&v):x(v.x),y(v.y),z(v.z){} };
 struct Input { Vec a,b,c; unsigned i,j;float k,l,m,n,o,p;unsigned q,r;};
@@ -8,12 +9,12 @@ struct Input { Vec a,b,c; unsigned i,j;float k,l,m,n,o,p;unsigned q,r;};
 struct CameraConstants {
  char pad[0x158]; Vec a,b,c; float n,l,m,o,p; unsigned i,j; float k; unsigned q,r;char gap[0x34];unsigned dirty;
  void SetA(const Vec&);void SetB(const Vec&);void SetC(const Vec&);
- __forceinline void Set_n(float value){if(n!=value){n=value;dirty|=0x40000;}}
- __forceinline void Set_l(float value){if(l!=value){l=value;dirty|=0x40000;}}
- __forceinline void Set_m(float value){if(m!=value){m=value;dirty|=0x40000;}}
- __forceinline void Set_k(float value){if(k!=value){k=value;dirty|=0x200000;}}
- __forceinline void Set_o(float value){if(o!=value){o=value;dirty|=0x40000;}}
- __forceinline void Set_p(float value){if(p!=value){p=value;dirty|=0x10000;}}
+ FABLE_FORCEINLINE void Set_n(float value){if(n!=value){n=value;dirty|=0x40000;}}
+ FABLE_FORCEINLINE void Set_l(float value){if(l!=value){l=value;dirty|=0x40000;}}
+ FABLE_FORCEINLINE void Set_m(float value){if(m!=value){m=value;dirty|=0x40000;}}
+ FABLE_FORCEINLINE void Set_k(float value){if(k!=value){k=value;dirty|=0x200000;}}
+ FABLE_FORCEINLINE void Set_o(float value){if(o!=value){o=value;dirty|=0x40000;}}
+ FABLE_FORCEINLINE void Set_p(float value){if(p!=value){p=value;dirty|=0x10000;}}
  void Apply(const Input*);
 };
 

@@ -10,6 +10,7 @@
 // Layout: Ego_r.pdb CTCSmokeGenerator with the retail 12-byte vector: GenerationDistance +0x0c, GenerationPositions +0x10,
 //   PositionsCreated +0x1c; CGenerationPos {C3DVector, CIntelligentPointer<CThing>} 0x14 bytes; CThing TC bitset +0x20
 //   (0x5b = +0x28 bit 27), interface map +0x44, def class +0x70; the smoke def's distance +0x28.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_data;
@@ -77,7 +78,7 @@ public:
     CInterfaceMap Interfaces;                           // +0x44
     unsigned char _pad54[0x1c];
     CDefClassBase* DefClass;                            // +0x70
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

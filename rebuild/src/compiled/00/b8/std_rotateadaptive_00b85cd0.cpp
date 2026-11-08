@@ -12,6 +12,7 @@
 // Callees: __rotate 0x00B85660.
 // Shape: copy / copy_backward and their __copy_ptrs / __copy chains need `__forceinline` (plain `inline` leaves all six
 //   calls out of line in this large body: 151v320).
+#include "fable_compiler.h"
 class CEngineSubPrimitiveBase;
 
 class CEngineSubPrimitiveRenderer {
@@ -31,7 +32,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() {} };
 struct __false_type { __false_type() {} };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -42,18 +43,18 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter copy(_InputIter __first, _InputIter __last, _OutputIter __result)
+FABLE_FORCEINLINE _OutputIter copy(_InputIter __first, _InputIter __last, _OutputIter __result)
 {
     return __copy_ptrs(__first, __last, __result, __false_type());
 }
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                           _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -61,13 +62,13 @@ __forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _Ran
     return __result;
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                 _BidirectionalIter2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                          _BidirectionalIter2 __result)
 {
     return __copy_backward_ptrs(__first, __last, __result, __false_type());

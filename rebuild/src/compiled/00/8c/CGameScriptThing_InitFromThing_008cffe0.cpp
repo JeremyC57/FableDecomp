@@ -2,6 +2,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Actual headers retained; native CThing differs from quarantined donor (nine component words, twelve-byte containers).
+#include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCPhysicsBase.h"
 #include "engine/_quarantine/CThing.h"
@@ -17,7 +18,7 @@ struct IntelligentInfo{CBaseObject* Object;long References;};
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct IntelligentPointer:CBaseIntelligentPointer{IntelligentPointer(){}explicit IntelligentPointer(CBaseObject* thing){SetPItem(thing);}IntelligentPointer& operator=(const IntelligentPointer& other){SetPItem(other.GetPItem());return *this;}}; //nativeVT1238C6C only deleting destructor004A9710
-__forceinline float PhysicsAngle(const IntelligentPointer& pointer){return pointer.GetPItem()->GetPhysicsTC()->GetAngleXY();}
+FABLE_FORCEINLINE float PhysicsAngle(const IntelligentPointer& pointer){return pointer.GetPItem()->GetPhysicsTC()->GetAngleXY();}
 // Typed native projection permits actual intelligent-pointer/string members on either host ABI; offsets asserted against actual header.
 struct GameScriptThingNative{void* VTable;unsigned char Prefix[8];IntelligentPointer PThing;long ScriptCounter;unsigned __int64 ThingUID;CCharString Name,DataString;Vector3 Pos,HomePos;float AngleXY;CWorld* World;void InitFromThing(const CBaseObject&);};
 FABLE_STATIC_ASSERT(sizeof(GameScriptThingNative)==sizeof(CGameScriptThing));

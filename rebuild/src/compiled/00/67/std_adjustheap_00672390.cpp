@@ -13,6 +13,7 @@
 //   `jge`.  The retail TU is /Gr; the convention is written as an explicit __fastcall.
 // Label: catalog "_Adjust_heap<ENavigatorType*,int,ENavigatorType>" is the Ego_r (Dinkumware) spelling; retail STL is
 //   STLport, so the symbol is __adjust_heap.
+#include "fable_compiler.h"
 enum ENavigatorType { NAVIGATOR_TYPE_NONE = -1, NAVIGATOR_TYPE_0 = 0 };
 
 namespace std {
@@ -21,7 +22,7 @@ template <class _Tp> struct less {
 };
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
-__forceinline void __push_heap(_RandomAccessIterator first, _Distance holeIndex, _Distance topIndex, _Tp value,
+FABLE_FORCEINLINE void __push_heap(_RandomAccessIterator first, _Distance holeIndex, _Distance topIndex, _Tp value,
                         _Compare comp)
 {
     _Distance parent = (holeIndex - 1) / 2;

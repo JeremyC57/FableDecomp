@@ -3,6 +3,7 @@
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Layout: local model -- the method overrides the CEngineComponent base at +0x268 (this arrives adjusted, the body works on
 //   this-0x268); full-object fields: light-index mode +0x78, flags +0xbd/+0xbe, the scene vector at +0x338 (retail STLport 12 bytes).
+#include "fable_compiler.h"
 struct CTrackedRenderState;
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;
@@ -24,7 +25,7 @@ struct CRenderManagerCoreView : public CRenderStateManager {
     unsigned long        m_captureMask;            // +0x2814
     unsigned char        _pad2818[0x3a24 - 0x2818];
     unsigned char        m_captureBlockMarker[4];  // +0x3A24
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;

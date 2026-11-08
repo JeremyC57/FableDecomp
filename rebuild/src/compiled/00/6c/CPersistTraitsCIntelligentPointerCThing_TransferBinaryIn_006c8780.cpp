@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: TransferBinaryIn
 // Layout: shared CDataInputStream/CDefinitionManager; CThing flags+0x3c,interfaces+0x44; serialisation component ThingUID+0x10 from retail.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 #include <stdlib.h>
 #include <string.h>
@@ -13,14 +14,14 @@ extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 #pragma intrinsic(memcpy)
 struct CMemoryDataInputStreamAdapter: ::CMemoryDataInputStream {
  void ReadWithSrcChunkOverflow(unsigned char*,int);
- __forceinline void Read(void* out,int size) {
+ FABLE_FORCEINLINE void Read(void* out,int size) {
   __int64 next=(__int64)(unsigned)(position+size);
   if(next<0 || next>0x7fffffff) return;
   if(chunkLength>=size) {memcpy(out,(const void*)chunkBase,size);chunkBase+=size;chunkLength-=size;position+=size;}
   else ReadWithSrcChunkOverflow((unsigned char*)out,size);
  }
- __forceinline unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
- __forceinline unsigned __int64 ReadUID(){unsigned __int64 value;Read(&value,8);return value;}
+ FABLE_FORCEINLINE unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
+ FABLE_FORCEINLINE unsigned __int64 ReadUID(){unsigned __int64 value;Read(&value,8);return value;}
 };
 
 
@@ -38,13 +39,13 @@ struct CTCThingUIDDummyForSerialisation {unsigned int Words[4];unsigned __int64 
 struct Entry {int Type;CTCThingUIDDummyForSerialisation* Value;};
 struct Components {Entry* Start;Entry* Finish;Entry* End;__declspec(noinline) Entry* LowerBound(const int* key){Entry*a=Start;unsigned n=Finish-Start;while(n){unsigned half=n/2;Entry*m=a+half;if(m->Type<*key){a=m+1;n-=half+1;}else n=half;}return a;}};
 struct CThing {unsigned char Padding[0x2c];unsigned int NoneTypeFlags;unsigned char Padding30[12];unsigned int Flags;unsigned int Pad40;Components Interfaces;bool Activate();};
-struct C3DVector{float x,y,z;__forceinline C3DVector(float a,float b,float c):x(a),y(b),z(c){}};
+struct C3DVector{float x,y,z;FABLE_FORCEINLINE C3DVector(float a,float b,float c):x(a),y(b),z(c){}};
 int GetMapNumberForPosition(const C3DVector&);
 CThing* __fastcall CreateThingFromDef(unsigned int,int,int,bool);
 struct CTCDNone{__declspec(noinline) static CThing* __fastcall Create(unsigned int index,const C3DVector&p,bool ignoreMap){int map=ignoreMap?0:GetMapNumberForPosition(p);CThing*thing=CreateThingFromDef(index,4,map,true);if(thing&&(thing->NoneTypeFlags&1)&&thing->Activate())return thing;return 0;}};
 struct CBaseObjectPointer{void*Object;unsigned Refs;};
-struct CBaseIntelligentPointer {CBaseObjectPointer*Link;__declspec(noinline) CBaseIntelligentPointer():Link(0){}__declspec(noinline) virtual ~CBaseIntelligentPointer(){Release();}__forceinline void Release(){if(Link){if(!--Link->Refs&&!Link->Object)delete Link;Link=0;}}__declspec(noinline) void* GetPItem()const{if(!Link)return 0;if(Link->Object)return Link->Object;CBaseIntelligentPointer*self=const_cast<CBaseIntelligentPointer*>(this);self->Release();return 0;}__declspec(noinline) void SetPItem(void*p){if(Link&&Link->Object==p&&p)return;Release();if(p){CBaseObjectPointer*&node=*(CBaseObjectPointer**)((char*)p+4);if(!node){node=new CBaseObjectPointer;node->Object=p;node->Refs=0;}Link=node;++node->Refs;}}};
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {__forceinline CIntelligentPointer(){}__forceinline CIntelligentPointer(T* p){SetPItem(p);}};
+struct CBaseIntelligentPointer {CBaseObjectPointer*Link;__declspec(noinline) CBaseIntelligentPointer():Link(0){}__declspec(noinline) virtual ~CBaseIntelligentPointer(){Release();}FABLE_FORCEINLINE void Release(){if(Link){if(!--Link->Refs&&!Link->Object)delete Link;Link=0;}}__declspec(noinline) void* GetPItem()const{if(!Link)return 0;if(Link->Object)return Link->Object;CBaseIntelligentPointer*self=const_cast<CBaseIntelligentPointer*>(this);self->Release();return 0;}__declspec(noinline) void SetPItem(void*p){if(Link&&Link->Object==p&&p)return;Release();if(p){CBaseObjectPointer*&node=*(CBaseObjectPointer**)((char*)p+4);if(!node){node=new CBaseObjectPointer;node->Object=p;node->Refs=0;}Link=node;++node->Refs;}}};
+template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {FABLE_FORCEINLINE CIntelligentPointer(){}FABLE_FORCEINLINE CIntelligentPointer(T* p){SetPItem(p);}};
 template<class T>struct CPersistTraits {T DefaultVal;void TransferBinaryIn(CMemoryDataInputStreamAdapter&,T&);};
 template<class T>void CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStreamAdapter& in,T& out){
  unsigned __int64 uid=in.ReadUID();

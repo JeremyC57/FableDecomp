@@ -14,6 +14,7 @@
 // (`test ecx,ecx ; je ; dec [ecx+4] ; jne ; call [vt+4]`) closes the block. Release / destructor are `__forceinline`.
 // Layout: retail CTCHeroStats sits 8 bytes below the PDB here: TrainingStatus +0x114 (PDB +0x11C); retail
 // CThing::PBaseDef +0x70 (PDB +0x80: the component map, update list and serialisation string are smaller in retail).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -23,13 +24,13 @@ class CHeroDef { public:
     long          RefCount;                    // +0x04 CDefPointeeBase
     unsigned char _pad_0x08[0x24];
     long          DefaultHeroTrainingStatus;   // +0x2C EHeroTrainingStatus
-    __forceinline void Release() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
 };
 
 struct CHeroDefPointer {                       // CDefPointer<const CHeroDef>
     CHeroDef* Object;
-    __forceinline CHeroDefPointer() : Object(0) {}
-    __forceinline ~CHeroDefPointer()
+    FABLE_FORCEINLINE CHeroDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CHeroDefPointer()
     {
         if (Object)
             Object->Release();

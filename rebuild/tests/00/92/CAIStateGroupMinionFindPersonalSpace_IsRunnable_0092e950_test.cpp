@@ -1,5 +1,6 @@
 // Behaviour test for 0092e950: src/0092e950.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CAIStateGroup_MinionFindPersonalSpace::IsRunnable()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -52,7 +53,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -66,7 +67,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -78,7 +79,7 @@ class CThing { public:
         return sel;
     }
     // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceV(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

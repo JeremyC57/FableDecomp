@@ -7,6 +7,7 @@
 // the empty-name test is the landed CCharString::operator== inline (0x0099E960 family); the custom-name branch falls through, the
 // default branch builds the scoped named literal string.
 // Layout: as the landed sibling constructor 0x008BB670 (PDB header + 0x18 = retail offsets).
+#include "fable_compiler.h"
 #include <string.h>
 // Retry 10: the `== ""` test is split by hand (strcmp on a null block, the block compare otherwise) with the arms joined by
 // goto, as the landed 0x0048F7C0; the default name is an implicit CCharString conversion (homed in a dead argument slot).
@@ -28,7 +29,7 @@ public:
     CCharStringData* PStringData;               // +0x00
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,7 +45,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString();
     ~CCharString();
-    __forceinline bool operator==(const char* text) const {
+    FABLE_FORCEINLINE bool operator==(const char* text) const {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0) return true;
             return false;

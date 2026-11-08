@@ -10,6 +10,7 @@
 // Shape: the intelligent pointer argument is built in the argument area through an inline converting copy ctor
 // from PTargetThing (base ctor, vtable store, then GetPItem -- a T* ctor evaluates GetPItem first); a one-byte option
 // temporary is passed by reference; the animation name is a named local built before the creature is read.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 
@@ -28,12 +29,12 @@ template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer
 { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }   // converting copy
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }   // converting copy
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {

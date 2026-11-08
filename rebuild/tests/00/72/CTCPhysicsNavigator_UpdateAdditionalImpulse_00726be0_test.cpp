@@ -1,5 +1,6 @@
 // Behaviour test for 00726be0: src/00726be0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCPhysicsNavigator::UpdateAdditionalImpulse()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -169,7 +170,7 @@ class CApplyAdditionalImpulseIfInCombatAndTooClose { public:   // 0x18 bytes
     float               Radius;                     // +0x0c
     CTCPhysicsBase*     Owner;                      // +0x10
     CThingCreatureBase* OwnerCreature;              // +0x14
-    __forceinline CApplyAdditionalImpulseIfInCombatAndTooClose(const C3DVector& position, float radius, CTCPhysicsBase* owner)
+    FABLE_FORCEINLINE CApplyAdditionalImpulseIfInCombatAndTooClose(const C3DVector& position, float radius, CTCPhysicsBase* owner)
         : Position(position), Radius(radius), Owner(owner),
           OwnerCreature((CThingCreatureBase*)owner->ParentThing) { }
 };

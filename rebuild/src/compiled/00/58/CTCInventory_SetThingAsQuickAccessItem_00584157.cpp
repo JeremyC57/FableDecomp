@@ -13,6 +13,7 @@
 // with its own null test before the tutorial call; the store `QuickAccessItems[slot] = item` re-reads begin.
 // Layout: retail CTCInventory quick-access vector<long> {first, last, end} at +0x148 (PDB +0x168; engine/
 // CTCInventory.h carries the 16-byte PDB containers, so `this` is a local model).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -29,7 +30,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) { return m_present.test(wanted); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;

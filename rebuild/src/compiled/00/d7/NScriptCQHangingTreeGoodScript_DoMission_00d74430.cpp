@@ -16,6 +16,7 @@
 //   PartySpawnPoint assignment expands CScriptThing::operator= but calls ~CScriptThing; the in-loop one expands both. Plain `inline` and
 //   the implicit operator= leave the top-level site a call to ??4CScriptThing (0x008AB980 exists out of line): this row needs the
 //   `__forceinline` TU definition (owner 2026-11-01 rule: recorded). ~CScriptThing stays plain inline.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -30,7 +31,7 @@
 #include "engine/CQ_HangingTreeGoodScript.h"
 #include "engine/fable_script_distance.h"
 inline CScriptThing::~CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 long FABLE_FASTCALL GFCharStringToInt(const CCharString&);                                                      // 0x0099E7F0
 bool FABLE_FASTCALL AreAllThingsInVectorDead(const std::vector<CScriptThing,std::allocator<CScriptThing> >&);  // 0x00CBED00
 void NScript::CQ_HangingTreeGoodScript::DoMission()

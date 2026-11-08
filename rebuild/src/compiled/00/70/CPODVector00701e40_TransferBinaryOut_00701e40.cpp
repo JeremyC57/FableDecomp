@@ -10,6 +10,7 @@
 //   `size() > 0 ? first : (void*)this` (unsigned `ja`), byte count size() * sizeof; both accessors __forceinline, the
 //   second size() shared by both arguments. Speed-optimised (default) TU (`sar 2` / `shl 2`).
 
+#include "fable_compiler.h"
 class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
@@ -26,8 +27,8 @@ struct CPODVector_00701e40 {                  // STLport vector, 12 bytes
     SPODElement_00701e40* _M_start;
     SPODElement_00701e40* _M_finish;
     SPODElement_00701e40* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    __forceinline const SPODElement_00701e40* data() const { return size() > 0 ? _M_start : (const SPODElement_00701e40*)this; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    FABLE_FORCEINLINE const SPODElement_00701e40* data() const { return size() > 0 ? _M_start : (const SPODElement_00701e40*)this; }
     void TransferBinaryOut(CDataOutputStream* stream) const;
 };
 

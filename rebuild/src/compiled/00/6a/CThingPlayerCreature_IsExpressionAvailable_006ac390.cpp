@@ -13,6 +13,7 @@
 // (edi) for every read and the release, so `out.Object` is copied into a small holder whose dtor releases it;
 // the found flag, the presence test and the inventory count form one `&&` chain; on the success path the def
 // has been dereferenced, so VC drops the dtor's null test there (`dec [edi+4] ; jne`), the fail path keeps it.
+#include "fable_compiler.h"
 class CCharString { public: void* PStringData; };
 
 class CExpressionDef { public:
@@ -55,7 +56,7 @@ struct CInterfaceMap {                                // CVectorMap<ETCInterface
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const unsigned long& type);    // 0x004365B0
-    __forceinline CTCBase* Find(long type)            // inline map find: end() when the key is absent
+    FABLE_FORCEINLINE CTCBase* Find(long type)            // inline map find: end() when the key is absent
     {
         SEntry* it = LowerBound((unsigned long)type);
         return ((it == last || type < it->type) ? last : it)->component;
@@ -85,8 +86,8 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
-    __forceinline unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetInterface(long type) { return m_interfaces.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetInterface(long type) { return m_interfaces.Find(type); }
 public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 };
@@ -95,7 +96,7 @@ class CThingPlayerCreature : public CThing { public:
     bool IsExpressionAvailable(const CCharString& expressionName);
 };
 
-__forceinline long CountOfType(CTCInventoryBase* inventory, long defIndex) { return inventory->GetNumberOfItemsOfTypeInInventory(defIndex); }
+FABLE_FORCEINLINE long CountOfType(CTCInventoryBase* inventory, long defIndex) { return inventory->GetNumberOfItemsOfTypeInInventory(defIndex); }
 
 bool CThingPlayerCreature::IsExpressionAvailable(const CCharString& expressionName)
 {

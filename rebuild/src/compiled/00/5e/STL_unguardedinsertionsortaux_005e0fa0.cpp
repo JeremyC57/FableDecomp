@@ -8,6 +8,7 @@
 //   copy constructor builds the by-value element in the argument area (`sub esp,8 ; mov ecx,esp`: the key, then the
 //   pointee with its count bumped behind a null test); the comparator, loaded once into edi, is pushed first.
 // Label correction: catalogued as `_Copy_impl<CComplexNumber*,CComplexNumber*>` (propagated).
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -23,7 +24,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

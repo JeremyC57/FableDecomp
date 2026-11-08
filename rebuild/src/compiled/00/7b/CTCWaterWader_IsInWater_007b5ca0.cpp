@@ -14,6 +14,7 @@
 //   value held in ebx, pushed and popped inside that branch; it loads between GetWorld and the virtual call); the squared length
 //   is `X*X + (Y*Y + Z*Z)` (retail's Z2,Y2,X2 order); the mode object goes through an inline getter (straight into ecx); the
 //   inlined component lookup takes `map = &m_tcs` first; the ground height is a named float local (`fld [ebp] ; fsub st(1)`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -44,8 +45,8 @@ class CThing { public:
     CTCMap         m_tcs;                                   // +0x44
     unsigned char  _pad50[0x64 - 0x50];
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase* GetTC(long kind) const
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const
     {
         const CTCMap* map = &m_tcs;
         const STCEntry* it = map->LowerBound((ETCInterfaceType)kind);
@@ -91,7 +92,7 @@ protected:
 };
 struct CTCWaterWader : CTCBase {
     void IsInWater(bool& inWater, bool& deep, float& waterHeight) const;
-    __forceinline float GetDistanceSquaredFromReferencePoint() const
+    FABLE_FORCEINLINE float GetDistanceSquaredFromReferencePoint() const
     {
         CWorld* world = (&GetWorld());
         const CThing* parent = ParentThing;

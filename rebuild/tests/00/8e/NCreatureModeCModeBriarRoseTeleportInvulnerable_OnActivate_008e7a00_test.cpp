@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnActivate() -- Briar Rose charges a teleport: set the 1.25 s frame count, suspend a player creature's animation, advance the boss phase when ready, and spawn the TELEPORT_CHARGE effect at her position, keeping it in the mode's effect pointer
@@ -108,7 +109,7 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char  _pad74[0x1d];
     unsigned char  m_flags91;                   // +0x91
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

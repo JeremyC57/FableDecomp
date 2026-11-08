@@ -11,6 +11,7 @@
 // register seeded from the argument word before the walk), the definition held by a scoped counted copy whose
 // AddRef/DecRef run in memory, one null test shared by the copy, the `&&` guard and the release; `FeatIndex <= -1`
 // gives `cmp -1 ; jg`; the early `return true` duplicates the release before the `mov al,1` exit.
+#include "fable_compiler.h"
 class CCharString { public:
     class CCharStringData* PStringData;
     bool operator!=(const char* text) const;             // 0x0099E960
@@ -31,7 +32,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
+    FABLE_FORCEINLINE CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
     {
         const CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -45,8 +46,8 @@ class CThing { public:                                          // retail CThing
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
     CTCMap        Components;                            // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
 
 class CQuestCardDef { public:                                   // intrusively counted definition (vptr, count +4)
@@ -81,7 +82,7 @@ class CTCQuestCard { public:                                    // TC type 0x6c 
     long                 RenownReward;                   // +0x30
     bool IsVignette() const;                             // 0x007022E0 (PDef->IsVignette)
 };
-__forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
+FABLE_FORCEINLINE CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
 {
     CTCQuestCard* tc;
     if (thing->HasTC(0x6c))

@@ -13,6 +13,7 @@
 // the base destructor runs out of line. The `new` factory (inline constructor) pulls the vtable and
 // the deleting destructor into the TU.
 
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 namespace NUISystem {
@@ -58,7 +59,7 @@ class CSwappingStateComponent : public CChangingStateComponent { public:        
     float                LastSwapTime;                                    // +0x168
     unsigned long        Seed;                                            // +0x16c
     CSwappingStateComponent(long owner) : CChangingStateComponent(owner), LastSwapTime(0.0f), Seed(0) {}
-    __forceinline virtual ~CSwappingStateComponent() {}
+    FABLE_FORCEINLINE virtual ~CSwappingStateComponent() {}
     virtual void va00();
     virtual void vb00();
 };

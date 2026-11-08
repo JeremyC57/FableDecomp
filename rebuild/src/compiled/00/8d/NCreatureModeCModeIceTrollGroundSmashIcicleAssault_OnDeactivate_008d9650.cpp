@@ -14,6 +14,7 @@
 // Shape: begin() is taken once into a local (ebp) and the loop runs `while (icicle != end()) { ...; erase(icicle); }`; the
 // trap out pointer is declared outside the loop (a GetInterface miss leaves the previous value, as retail's ebx);
 // IS_THING_ALIVE as landed 0x008C92C0; erase as the landed STLport vector::erase 0x0084F570.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -33,7 +34,7 @@ class CThing : public CThingAICreature { public:
     CInterfaceMap   m_interfaces;          // +0x44
     unsigned char   _pad54[0x3d];
     unsigned char   m_flags91;             // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

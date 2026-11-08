@@ -4,6 +4,7 @@
 // Corrected interface: actual CObservable has eleven original virtuals and a nonvirtual destructor; CManager adds its virtual destructor at slot11 before SetKeyPressed12. Manager vtable01230134/base01230044 and original PDB signatures prove this.
 // Identity: Own CManager vtable01230134 slot12 and original PDB SetKeyPressed(wchar_t), member KeyPressed+192. RTTI proves CObservable direct base, original lists4 and maps12 explain donor drift.
 // Layout: original class keys, actual bases and typed STLport containers/counting handles. CManager header renamed to restore actual inheritance/types; enum value spellings unspecified. Bank owner declaration is a prefix through UsingRetailBanks only. Unused virtual slots explicitly descriptive.
+#include "fable_compiler.h"
 #define CManager CManager_HeaderLayout
 #include "engine/CManager.h"
 #undef CManager
@@ -32,7 +33,7 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 namespace std{
 template<class T>struct less{};template<class T>struct _Select1st{};

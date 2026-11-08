@@ -15,6 +15,7 @@
 //   RepeatedMeshDrawDistanceFactor +0x88; the landed 0x00BAA4E0 binding), g_SSEAvailable 0x013D2880 (landed 0x00BF7DF0), 0.0f @0x0122DEDC.
 // Layout: engine/CEngineInternalPrimitiveRepeatedStaticMesh.h (BoundingBox +0x58; the base's CEngineFadeDistance
 //   MaxDrawDistance word +0x18), engine/CEngineCamera.h (CameraDesc +0x14: WorldPosition at camera +0x54; FrustrumPlanes +0x1c0).
+#include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
@@ -27,7 +28,7 @@ class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
     C3DVector MaxCoord;                                 // +0x0c
-    __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
         if (g_SSEAvailable) {
             float result;
@@ -53,7 +54,7 @@ public:
         float dz = point.Z - closest.Z;
         return dz * dz + d.X * d.X + d.Y * d.Y;
     }
-    __forceinline float CalcShortestDistanceToPoint(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPoint(const C3DVector& point) const
     {
         return (float)sqrt(CalcShortestDistanceToPointSquared(point));
     }
@@ -69,10 +70,10 @@ struct CEnginePrimitiveRendererSharedData {        // Ego_r.pdb (only the draw-d
 };
 extern CEnginePrimitiveRendererSharedData* g_pEnginePrimitiveRendererSharedData;   // 0x01436E80
 
-static __forceinline const C3DBoundingBox& Box(const CEngineInternalPrimitiveRepeatedStaticMesh* self) { return *(const C3DBoundingBox*)self->BoundingBox; }
-static __forceinline float MaxDrawDistance(const CEngineInternalPrimitiveRepeatedStaticMesh* self) { return *(const float*)self->_pad_0x18; }
-static __forceinline const C3DVector& CameraPosition(const CEngineCamera& c) { return *(const C3DVector*)(c.CameraDesc + 0x40); }
-static __forceinline const CPlane* Planes(const CEngineCamera& c) { return (const CPlane*)c.FrustrumPlanes; }
+static FABLE_FORCEINLINE const C3DBoundingBox& Box(const CEngineInternalPrimitiveRepeatedStaticMesh* self) { return *(const C3DBoundingBox*)self->BoundingBox; }
+static FABLE_FORCEINLINE float MaxDrawDistance(const CEngineInternalPrimitiveRepeatedStaticMesh* self) { return *(const float*)self->_pad_0x18; }
+static FABLE_FORCEINLINE const C3DVector& CameraPosition(const CEngineCamera& c) { return *(const C3DVector*)(c.CameraDesc + 0x40); }
+static FABLE_FORCEINLINE const CPlane* Planes(const CEngineCamera& c) { return (const CPlane*)c.FrustrumPlanes; }
 
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedStaticMesh* self, int /*edx*/, const CEngineCamera& camera, bool ignoreFrustum)
 {

@@ -6,6 +6,7 @@
 // 0x004365B0, IsActionPointFree @ 0x007FEBF0, vector<CThing*>::push_back(const T&) @ 0x0074FAE0.
 // Tried: seat in an inner scope, seat at function scope after early returns, an inline (then __forceinline) Consider(CThing* seat)
 // helper with a by-value parameter -- all give the same 163-byte body.
+#include "fable_compiler.h"
 class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
@@ -38,7 +39,7 @@ public:
     unsigned char _pad50[0x41];
     unsigned char m_flags91;                      // +0x91
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -51,7 +52,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterfaceConst(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

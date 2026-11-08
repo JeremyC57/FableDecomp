@@ -2,6 +2,7 @@
 // Flags:
 // Leaf: ?OnSetInLimbo@CTCParticleAttachmentTracker@@UAEX_N@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+#include "fable_compiler.h"
 #define CTCBase Pass9TCBaseFields
 #include "engine/CTCBase.h"
 #undef CTCBase
@@ -20,10 +21,10 @@ class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCop
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CClass:public CBaseObject{unsigned char pass9_unread_class[12];};
 // Layout: header/RTTI true ancestry; donor Dead bit161 maps toretail145.
-class CThing:public CClass{unsigned char pass9_unread_thing[125];public:unsigned char Dead:1;__forceinline bool IsDead()const{return Dead!=0;}void SetInLimbo(bool);};
+class CThing:public CClass{unsigned char pass9_unread_thing[125];public:unsigned char Dead:1;FABLE_FORCEINLINE bool IsDead()const{return Dead!=0;}void SetInLimbo(bool);};
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-template<class T>__forceinline bool __fastcall IS_THING_ALIVE(const T&p){return p.operator->()!=0&&!p->IsDead();}
+template<class T>FABLE_FORCEINLINE bool __fastcall IS_THING_ALIVE(const T&p){return p.operator->()!=0&&!p->IsDead();}
 namespace std{
 template<class T>class allocator{};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};

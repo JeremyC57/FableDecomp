@@ -4,6 +4,7 @@
 // Layout: Ego_r.pdb CStaticBlock (0x20): the 12-byte CBaseBlock base, texture fix-ups and pointers, MaterialIndex +0x1c.
 // Shape: the landed TransferBinaryIn family (0x007AD7F0): a `value` local homed in the dead stream-argument slot, the
 //        inlined CMemoryDataInputStream::Read with its 64-bit position range check (each exit duplicates the member store).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 class CDataInputStream { friend class CMemoryDataInputStream;
@@ -16,8 +17,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

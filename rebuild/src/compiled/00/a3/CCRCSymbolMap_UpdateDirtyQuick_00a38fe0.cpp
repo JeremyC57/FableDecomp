@@ -2,6 +2,7 @@
 // Leaf: ?UpdateDirtyQuick@CCRCSymbolMap@@QBEXXZ
 // Identity: PDB original UpdateDirtyQuick()const; adjacent UpdateDirty00a38fb0 also trims through00a39a00, this quick form only sorts. SLONGMap+4 pair<ulong,long>, own RTTI129cf84 original base chain. Sort009b8520.
 // Layout: original polymorphic bases and STLport containers; no active owner header. CVectorMap Data12, empty Compare byte+12, Dirty+13.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -27,6 +28,6 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 class CCRCSymbolMap:public CBaseClassNonCopyable{public:mutable CVectorMap<unsigned long,long> SLONGMap;void UpdateDirtyQuick()const;};
 void CCRCSymbolMap::UpdateDirtyQuick()const{SLONGMap.Sort();}

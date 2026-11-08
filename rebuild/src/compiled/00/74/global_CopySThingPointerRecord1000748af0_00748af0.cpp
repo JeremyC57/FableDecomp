@@ -13,6 +13,7 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on the stack.
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated (CTargetPoint is 28
 // bytes); the 16-byte element is not named by any landed relative -- descriptive member names.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -26,8 +27,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 struct SWordPair08 {                             // 8 bytes, POD: copied by the implicit assignment as a nested record

@@ -14,6 +14,7 @@
 // CDefPointer released with DecRefToZero. Same-TU auto_inline(off) stand-ins for LowerBound, GetDef<T> (the landed
 // GetDef 0x0083B000 shape) and the event ctor (reads the def only) tell VC7.1 the def never escapes, so the release
 // keeps it in ecx (`dec [ecx+4] ; jne`) instead of reloading it -- all three are needed.
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -34,7 +35,7 @@ class CThing_Retail { public:
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -87,7 +88,7 @@ class CTCScriptedControl { public:                        // interface 0x1f comp
     bool TerminateActionByName(const CCharString& name);   // 0x00712CE0
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CExpressionDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1

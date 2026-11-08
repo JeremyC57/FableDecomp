@@ -1,4 +1,5 @@
 // behaviour test for 0x005BD1B3
+#include "fable_compiler.h"
 #include <stdio.h>
 static int g_deletes = 0;
 enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE };
@@ -6,12 +7,12 @@ class CDefPointeeBase { public:
     virtual ~CDefPointeeBase() {}
     virtual void Delete() const { ++g_deletes; }
     unsigned long IVRefCount;                            // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CInventoryCategoryDef : public CDefPointeeBase { public:

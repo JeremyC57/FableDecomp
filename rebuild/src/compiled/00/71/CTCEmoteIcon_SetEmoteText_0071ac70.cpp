@@ -10,6 +10,7 @@
 //        pointer once into eax instead of the retail `cmp [esi+2Ch],ebx` + reload). The empty branch pushes 0.0f as 0.
 // Layout: Ego_r.pdb CTCEmoteIcon (matches retail): EmoteText +0x10, EmoteScale +0x18, EmoteType +0x1C, EmotePriority +0x20,
 //         PrimitiveHandle +0x28 (CBaseClass vptr + counted Data at +0x2C).
+#include "fable_compiler.h"
 #include <stddef.h>                                 // wchar_t (unsigned short under the era defaults)
 class CEnginePrimitiveHandle;
 
@@ -35,15 +36,15 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
 };
 class CEnginePrimitiveHandle {                      // vtable 0x0122F598 (CBaseClass), 8 bytes
 public:
     virtual void v000();
     CIVCountedPointer Data;                         // +0x04
     bool IsValid() const { return Data.Object != 0; }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

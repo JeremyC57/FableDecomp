@@ -19,6 +19,7 @@
 // Shape: the counted-pointer destructor must have its body in the TU (`noinline`): with only a declaration VC7.1 swaps the two
 //   frame slots of the allocator's result temporary and the named copy and does not keep the copy's Data/Info in ebp/ebx for
 //   the later ShareData pushes. Both CActiveEntityScript constructors are `__forceinline` (a plain inline one stays a call).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 class CCharString {
@@ -36,7 +37,7 @@ public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* data);                           // 0x00CE10B0 (T = CActiveEntityScriptBase)
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
     __declspec(noinline) ~CCountedPointer()            // 0x00CE1000
     {
         if (Info) {
@@ -48,7 +49,7 @@ public:
         Data = 0;
         Info = 0;
     }
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
+    FABLE_FORCEINLINE CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
     void ShareData(T* data, CCPPointerInfo* info);      // 0x00CE1040 (T = CEntityScriptBase)
     T* operator->() const { return Data; }
 };

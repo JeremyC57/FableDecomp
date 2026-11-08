@@ -1,5 +1,6 @@
 // Behaviour test for 00729410: src/00729410.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCCreatureExpression::SetExpression(long expressionType, float maxWeight)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -18,7 +19,7 @@ static int fails = 0;
 // Shape: the type-0 block uses the front node as a pointer local (AnimIndex == 0 -> MaxWeight = 1.0f,
 // else Primary = false); the sub-def out pointer starts null; its object is read once (ebp) and released
 // at the end without a null test.
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CExpressionState {
     long          AnimIndex;                        // +0x00
     float         MaxWeight;                        // +0x04

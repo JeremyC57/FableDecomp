@@ -9,6 +9,7 @@
 //   RegionName +0x38 (CDefString id).
 // Shape: the inline `RegionName == ""` (a null block compares "" with the literal through an inlined strcmp: `repe cmpsb`);
 //   the def name is a named local copied into the result (no NRVO) and then destroyed.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
@@ -28,7 +29,7 @@ public:
     CCharStringData* PStringData;               // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

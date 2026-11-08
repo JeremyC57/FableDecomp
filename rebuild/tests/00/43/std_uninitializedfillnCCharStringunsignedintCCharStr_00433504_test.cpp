@@ -1,4 +1,5 @@
 // test for 00433504 uninitialized_fill_n<CCharString*>
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <new>
 class CCharString {
@@ -10,7 +11,7 @@ namespace std {
 struct __false_type {};
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)

@@ -20,6 +20,7 @@
 //   timer read is an inline accessor on the +0x100 timer sub-object.
 // Naming wave 35: identity reg 00f0fff3 "ArenaEnemy" in 00f0fb70; Alloc 00f1a810; vtable 012f9c50 slot 1; PDB ?Main@CArenaEnemy@CQ_ArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CArenaEnemy::Main (wave3/labels_alloc.tsv); PDB ?Main@CArenaEnemy@CQ_ArenaScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CArenaEnemy@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
 class CCharStringData { public:
     char* m_pData;                                     // +0x00
@@ -64,7 +65,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
 class CIsThingConscious : public CPredicateBase { public:            // vtable 0x012C2FE8
     CScriptThing Thing;
-    __forceinline CIsThingConscious(const CScriptThing& t) : Thing(t) { }
+    FABLE_FORCEINLINE CIsThingConscious(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     ~CIsThingConscious();                              // 0x00EF7AB0
 };

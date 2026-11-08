@@ -13,6 +13,7 @@
 //   CScriptThing::IsAlive 0x004AB130 (called at the last two sites, expanded over PImp at the first two);
 //   CGameScriptInterfaceBase slots 7 NewScriptFrame, 12 IsRegionLoaded, 64 PostAddScriptedEntities, 72 GetThingWithScriptName,
 //   108 RemoveThing, 281 DeactivateQuestLater, 374 FadeScreenIn, 567 SetRegionExitAsActive.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
@@ -40,7 +41,7 @@ FABLE_BTLI_ENTITY(CBowerstoneIntroGuardToPosh)    // Alloc 0x00D24330
 }
 
 inline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 
 void NScript::CQ_BowerstoneTownLifeIntroScript::Main()

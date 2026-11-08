@@ -11,6 +11,7 @@
 // integer copy of RecentMaxValue only come from the helper boundary; the two frame-timeout tests are a __forceinline helper that reads the
 // frames-per-second global into a local BEFORE the frame call (retail homes it in the dead `value` slot) and takes the start frame by
 // const reference (re-read after the call).
+#include "fable_compiler.h"
 #include <math.h>
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C
 class CMainGameComponent {
@@ -23,7 +24,7 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                        // 0x0049D870
-__forceinline bool FramesExceed(const unsigned long& since, float seconds)
+FABLE_FORCEINLINE bool FramesExceed(const unsigned long& since, float seconds)
 {
     long fps = CMainGameComponent::GetConstantFPS();
     return (float)(CWorld::GetFrame() - since) > (float)fps * seconds;

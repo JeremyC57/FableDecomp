@@ -13,6 +13,7 @@
 // (PBrain +4, brain PCreature +0x18, creature PMother +0x180, dead bit +0x91 bit 0), as in the landed 0x0090EE20.
 // Shape: the move result is a function-scope long initialised to 3 before the loop (retail keeps it in ebp and tests it
 // after the inner Terminate); the 8-byte held pointer forces the `and esp,-8` frame.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject { public:
     virtual ~CBaseObject();
@@ -49,11 +50,11 @@ class CThingPlayerCreature : public CThing { };
 class CMessageEvent : public CBaseObject { public: };
 struct CIntelligentPointerMessage : CBaseIntelligentPointer {    // CIntelligentPointer<CMessageEvent>, vtable 0x0128B0C0
     virtual void v00();
-    __forceinline CIntelligentPointerMessage(CMessageEvent* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerMessage(CMessageEvent* item) { SetPItem(item); }
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer { // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(const_cast<CThing*>(item)); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(const_cast<CThing*>(item)); }
 };
 class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x180 - 0x94];

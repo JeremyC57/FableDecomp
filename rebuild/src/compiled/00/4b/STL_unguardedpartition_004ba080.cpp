@@ -11,11 +11,12 @@
 // Shape: STLport 4.6 `__unguarded_partition`: the pivot key is re-read from its argument slot at every outer pass, the
 //   pivot's implicit destructor (PersistScript, QuestName, first) runs before the return. /Gr TU: the templates are
 //   `__fastcall`. The landed 0x00429950 body sits above under `auto_inline(off)` as the extra rule asks.
+#include "fable_compiler.h"
 #pragma auto_inline(off)
 template <class T> class CBasicString {
 public:
     T* m_pData;                                             // +0x0
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

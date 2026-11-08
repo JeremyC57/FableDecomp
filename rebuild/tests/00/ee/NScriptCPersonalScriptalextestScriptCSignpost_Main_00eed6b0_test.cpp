@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -245,10 +246,10 @@ struct CIsThingAlive {
  CAliveScriptThing Thing;CIsThingAlive(const CScriptThing& thing):Thing(thing){}
 };
 struct CExitWardensOffice {void* Vtable;CGameScriptInterface* Script;CScriptThing Thing;void SetPredicate(const CIsThingAlive&);bool IsActiveThreadTerminating()const;void Main();}; //F35B10/F35B30
-__forceinline bool WardenUsed(const CScriptThing& thing,const CCharString& name){typedef bool(CScriptThing::*F)(const CCharString&)const;return (thing.*static_cast<const F*>(thing.__vftable)[20])(name);}
-__forceinline void WardenFrame(CGameScriptInterface* s){typedef void(CGameScriptInterface::*F)()const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+7,sizeof(f));(s->*f)();}
-__forceinline void WardenInfo(CGameScriptInterface* s,const CCharString& name){typedef void(CGameScriptInterface::*F)(const CCharString&)const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+115,sizeof(f));(s->*f)(name);}
-__forceinline bool WardenClicked(CGameScriptInterface* s){typedef bool(CGameScriptInterface::*F)()const;return (s->*static_cast<const F*>(s->__vftable)[40])();}
+FABLE_FORCEINLINE bool WardenUsed(const CScriptThing& thing,const CCharString& name){typedef bool(CScriptThing::*F)(const CCharString&)const;return (thing.*static_cast<const F*>(thing.__vftable)[20])(name);}
+FABLE_FORCEINLINE void WardenFrame(CGameScriptInterface* s){typedef void(CGameScriptInterface::*F)()const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+7,sizeof(f));(s->*f)();}
+FABLE_FORCEINLINE void WardenInfo(CGameScriptInterface* s,const CCharString& name){typedef void(CGameScriptInterface::*F)(const CCharString&)const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+115,sizeof(f));(s->*f)(name);}
+FABLE_FORCEINLINE bool WardenClicked(CGameScriptInterface* s){typedef bool(CGameScriptInterface::*F)()const;return (s->*static_cast<const F*>(s->__vftable)[40])();}
 #ifdef _MSC_VER
 typedef char Alive16[sizeof(CIsThingAlive)==16?1:-1];
 typedef char Thing8[offsetof(CExitWardensOffice,Thing)==8?1:-1];

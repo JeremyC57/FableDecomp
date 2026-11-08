@@ -8,13 +8,14 @@
 // Shape: STLport 4.x `erase(first, last) { pointer i = __copy_ptrs(last, _M_finish, first, _TrivialAss()); _Destroy(i, _M_finish);
 //   _M_finish = i; return first; }` with __copy_ptrs/__copy inlined (the counted, strength-reduced `rep movsd` loop of the
 //   out-of-line twin 0x009F63B0) and the destroy walk inlined (`mov ecx,esi ; call` per element, end cached in edi).
+#include "fable_compiler.h"
 namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {
@@ -26,14 +27,14 @@ __forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, O
 }
 
 template <class InputIter, class OutputIter>
-__forceinline OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&)
+FABLE_FORCEINLINE OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&)
 {
     return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
 }
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
-template <class ForwardIter> __forceinline void _Destroy(ForwardIter first, ForwardIter last)
+template <class ForwardIter> FABLE_FORCEINLINE void _Destroy(ForwardIter first, ForwardIter last)
 {
     for (; first != last; ++first)
         _Destroy(&*first);

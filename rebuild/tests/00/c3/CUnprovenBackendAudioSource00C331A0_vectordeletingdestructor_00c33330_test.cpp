@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <new>
 #ifndef _MSC_VER
@@ -10,7 +11,7 @@ class CUnprovenCountedPooledNode_00C3C590:public CPooledNode{public:unsigned int
 struct CUnprovenAudioDescriptor28{unsigned int Format,Channels,Rate,Bytes,Unproven10,Unproven14;void* Data;};
 class CUnprovenAudioSource:public CUnprovenCountedPooledNode_00C3C590{public:CUnprovenAudioDescriptor28 Descriptor;unsigned int Flags;CUnprovenAudioSource();virtual ~CUnprovenAudioSource();virtual void Cleanup();virtual int Load(const CUnprovenAudioDescriptor28*);virtual int Read(void*);};
 struct CUnprovenAudioBackendToken16{unsigned int Handle,Unproven04,Flags,Unproven0C;};
-class CUnprovenBackendAudioSource_00C331A0:public CUnprovenAudioSource{public:CUnprovenAudioBackendToken16 BackendToken;CUnprovenBackendAudioSource_00C331A0();virtual ~CUnprovenBackendAudioSource_00C331A0();virtual void Cleanup();virtual int Load(const CUnprovenAudioDescriptor28*);static __forceinline void operator delete(void* p){FreeBlock_00c3c370(p);}static __forceinline void operator delete[](void* p){FreeBlock_00c3c370(p);}};
+class CUnprovenBackendAudioSource_00C331A0:public CUnprovenAudioSource{public:CUnprovenAudioBackendToken16 BackendToken;CUnprovenBackendAudioSource_00C331A0();virtual ~CUnprovenBackendAudioSource_00C331A0();virtual void Cleanup();virtual int Load(const CUnprovenAudioDescriptor28*);static FABLE_FORCEINLINE void operator delete(void* p){FreeBlock_00c3c370(p);}static FABLE_FORCEINLINE void operator delete[](void* p){FreeBlock_00c3c370(p);}};
 #ifdef _MSC_VER
 typedef char ExactDescriptor[sizeof(CUnprovenAudioDescriptor28)==28?1:-1];typedef char ExactSource[sizeof(CUnprovenAudioSource)==48?1:-1];typedef char ExactBackendSource[sizeof(CUnprovenBackendAudioSource_00C331A0)==64?1:-1];
 #endif

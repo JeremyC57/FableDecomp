@@ -1,6 +1,7 @@
 // CGameScriptInterface::SetQuestCardObjective -- update objective and play the hero log-entry cue
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail00896A30,294 bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
 #define CPlayer CPlayerPdb
@@ -29,7 +30,7 @@ class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
 };
 struct SoundPlayerMethods:CTCBase{}; //0066BD00 returns sound handle, forwards to internal0066B120
-__forceinline void PlayLogCue(SoundPlayerMethods* sound){CCharString cue("LOG_ENTRY",-1);((CTCSoundPlayer*)sound)->PlayAttachedCriteria(cue, false, true, false, -1);}
+FABLE_FORCEINLINE void PlayLogCue(SoundPlayerMethods* sound){CCharString cue("LOG_ENTRY",-1);((CTCSoundPlayer*)sound)->PlayAttachedCriteria(cue, false, true, false, -1);}
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 IS_THING_ALIVE<CThingPlayerCreature*>
 {
     return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91

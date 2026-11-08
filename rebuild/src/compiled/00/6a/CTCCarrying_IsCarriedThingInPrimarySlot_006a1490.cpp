@@ -10,7 +10,8 @@
 // (the end re-read every pass, `return m_pLast` on a miss); the def out pointer is homed in the dead `thing` slot and released
 // by a CDefPointer dtor calling the def's own inline Release() with no null test (`mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax
 // ; jne`, GOTCHAS chunk 172); the flag survives the release in bl and both results share the earlier `return false` tail.
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CThing;
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -33,7 +34,7 @@ struct CCarrySlotMap {                                  // retail CVectorMap<lon
     SCarrySlotEntry* m_pFirst;
     SCarrySlotEntry* m_pLast;
     SCarrySlotEntry* m_pEnd;
-    __forceinline SCarrySlotEntry* FindValue(const CBaseIntelligentPointer& value)
+    FABLE_FORCEINLINE SCarrySlotEntry* FindValue(const CBaseIntelligentPointer& value)
     {
         for (SCarrySlotEntry* it = m_pFirst; it != m_pLast; ++it)
             if (((CThing*)it->second.GetPItem()) == ((CThing*)value.GetPItem()))
@@ -47,12 +48,12 @@ class CCarrySlotDef { public:
     long m_refCount;                                    // +0x04
     unsigned char _pad08[0x30 - 0x08];
     bool PrimarySlot;                                   // +0x30
-    __forceinline void Release() { if (DecRefToZero(m_refCount)) Destroy(); }
+    FABLE_FORCEINLINE void Release() { if (DecRefToZero(m_refCount)) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CDefinitionManager { public:

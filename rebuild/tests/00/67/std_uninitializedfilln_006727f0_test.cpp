@@ -1,5 +1,6 @@
 // Behaviour test for 0x006727F0 std::uninitialized_fill_n<ENavigatorType*, unsigned int, ENavigatorType>: n copies of x
 // are constructed from first on, the slots after them are untouched, and the result is first + n.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <new>
 #ifndef _MSC_VER
@@ -15,7 +16,7 @@ struct __false_type { };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

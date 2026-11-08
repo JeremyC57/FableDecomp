@@ -3,12 +3,13 @@
 // Callees: operator delete @ 0x00BFE9BC when bit 0 of the flag is set. Vtable 0x012A2544 = CEngineComponent (rtti-vtables.tsv). Shape: the back-pointer at +4
 // is loaded and tested around this class's vtable store (scheduling); `*m_ppSlot = 0` is an immediate store. PDB CEngineComponent is 12 bytes (vptr + two
 // words); the destructor is `__forceinline` so its body lands inside the `??_G`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
 class CEngineComponent { public:                          // vtable 0x012A2544
     CEngineComponent** m_ppRegisteredSlot;         // +0x04 the engine's slot holding this component, or null
     long               m_id;                       // +0x08
-    __forceinline virtual ~CEngineComponent()
+    FABLE_FORCEINLINE virtual ~CEngineComponent()
     {
         if (m_ppRegisteredSlot != 0)
             *m_ppRegisteredSlot = 0;

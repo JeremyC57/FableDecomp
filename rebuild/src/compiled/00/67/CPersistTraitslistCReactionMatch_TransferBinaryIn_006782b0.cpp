@@ -13,6 +13,7 @@
 //   type read into the dead stream slot, an inline factory switch (`new` + default constructor: vtable, ReactionType 0,
 //   the null tests merged), the virtual read, then STLport's inline push_back (malloc'd 12-byte node, null-checked
 //   placement copy at +8, linked before the header). No frame pointer.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -29,8 +30,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -108,7 +109,7 @@ public:
     virtual void TransferBinaryOut(class CDataOutputStream& stream) const;
 };
 
-__forceinline CReactionMatch* CReactionMatch::CreateFromType(EReactionMatchType type)
+FABLE_FORCEINLINE CReactionMatch* CReactionMatch::CreateFromType(EReactionMatchType type)
 {
     switch (type) {
     case REACTION_MATCH_SECONDARY_AXIS_MR_SHIFTED:
@@ -169,7 +170,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream& stream, long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream& stream, long* value)
     {
         long number;
         static_cast<CMemoryDataInputStreamReader&>(stream).Read(&number, sizeof(number));
@@ -177,7 +178,7 @@ template <> struct CPersistTraits<long> {
     }
 };
 template <> struct CPersistTraits<EReactionMatchType> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream& stream, EReactionMatchType* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream& stream, EReactionMatchType* value)
     {
         EReactionMatchType number;
         static_cast<CMemoryDataInputStreamReader&>(stream).Read(&number, sizeof(number));

@@ -12,6 +12,7 @@
 //   stream, &out[i])` with the index in edi. The traits object (8-byte DefaultVal, never written) shares its frame
 //   word with the dead count slot (8-byte frame, not 12): VC7.1 only proves that when TransferBinaryIn's real body
 //   (the landed 0x007B42D0, which never touches `this`) is in the TU as a `__declspec(noinline)` member.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -20,8 +21,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -57,7 +58,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStreamReader* stream, long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader* stream, long* value)
     {
         long number;
         stream->Read(&number, sizeof(number));
@@ -76,7 +77,7 @@ void CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn(CMemoryDataInputStr
     longTraits.TransferBinaryIn(stream, &value->Type);
 }
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

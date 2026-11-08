@@ -14,6 +14,7 @@
 //   CPrizeScoreDef's implicit operator= is spelled out and __forceinline (base operator= out of line, then Score, then Mult),
 //   as is __copy_backward (the size TU would out-line both). Frame-pointer size TU: `optimize("y", off)` + `("s", on)`.
 // Model: no engine header for CPrizeScoreDef; CDefClassBase as in the landed 0x004E9BDA (0x25 bytes, pack 1).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -29,7 +30,7 @@ public:
     float Score;                                     // +0x28
     long  Mult;                                      // +0x2c
     virtual void v00();
-    __forceinline CPrizeScoreDef& operator=(const CPrizeScoreDef& o)
+    FABLE_FORCEINLINE CPrizeScoreDef& operator=(const CPrizeScoreDef& o)
     {
         CDefClassBase::operator=(o);
         Score = o.Score;
@@ -41,7 +42,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter first, _RandomAccessIter last, _BidirectionalIter result,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter first, _RandomAccessIter last, _BidirectionalIter result,
                                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance n = last - first; n > 0; --n)

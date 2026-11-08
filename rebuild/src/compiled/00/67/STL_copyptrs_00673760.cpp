@@ -13,6 +13,7 @@
 //   reciprocal), the source strength-reduced to `(first - result) + result`; __copy is `__forceinline` (plain `inline`
 //   leaves it an out-of-line `__cdecl` call). /Gr algorithm TU (`__fastcall`: first in
 //   ecx, last in edx, result and the tag reference on the stack).
+#include "fable_compiler.h"
 struct SRecord44 {
     unsigned long Words[11];                               // 0x2C bytes, copied as a block
 };
@@ -25,7 +26,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
         *__result = *__first;

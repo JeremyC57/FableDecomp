@@ -5,6 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082DB00, `ret 8`.
 // Layout: CThing presence bits +0x20, Components +0x44, Dead +0x91 bit 0; door-list component keeps its list at +0x0C;
 //         CTCDoor +0x0C owner-lock word (descriptive).
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -97,7 +98,7 @@ protected:                                           // Ego_r.pdb CThing protect
     CPlayerManager& GetPlayerManager();              // 0x004C7A00
 public:
     const C3DVector& GetPos() const;            // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;
@@ -110,7 +111,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(const T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;

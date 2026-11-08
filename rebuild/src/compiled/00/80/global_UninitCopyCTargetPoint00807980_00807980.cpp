@@ -14,6 +14,7 @@
 // __forceinline (VC7.1 otherwise calls an out-of-line copy). The advanced result (ebx) is returned.
 // Label: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` names the element correctly (the body is STLport
 // __uninitialized_copy, not Dinkumware _Copy_impl); byte-identical to this chunk's 0x00806C00 (a separate COMDAT copy).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CThing;
@@ -29,8 +30,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"
@@ -41,7 +42,7 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
 };

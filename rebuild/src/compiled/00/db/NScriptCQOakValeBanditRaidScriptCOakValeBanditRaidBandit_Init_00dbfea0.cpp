@@ -14,6 +14,7 @@
 //   nested in the OpenDoor call (the outer vtable fetched first).
 // Naming wave 35: identity reg 00dbf633 "OakValeBanditRaidBandit" in 00dbf2d0; Alloc 00dbfdd0; vtable 012d9f64 slot 2; PDB ?Init@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified COakValeBanditRaidBandit::Init (wave3/labels_alloc.tsv); PDB ?Init@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@COakValeBanditRaidBandit@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
     void* m_pData;
@@ -27,7 +28,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

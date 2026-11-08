@@ -12,6 +12,7 @@
 // UNCHECKED inline accessors (the absent path reads the lookup key's frame word), the def pointer and its release as the
 // landed 0x008CB620 model; each hit location is fetched into a named local (its name temporary dies first) and then set.
 // Layout: CTCWillPower (interface 0xce) flag byte +0x18 (descriptive, as landed 0x009098E0's component).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -20,7 +21,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -33,7 +34,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* component;
         GetInterface(&component, interfaceType);

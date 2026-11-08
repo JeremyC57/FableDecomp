@@ -13,6 +13,7 @@
 // is read before the world frame call and both integers go through the frame for `fild`; the compare is `elapsed > fps * delay`
 // (`fcompp ; test ah,5 ; jp` to the false tail); the kraken pointer is fetched once more, unused, before the frame maths. The body is
 // one nested condition with a single `return false`, so the five failure edges share the one tail after the prologue's pushes.
+#include "fable_compiler.h"
 extern "C" int  __cdecl puts(const char* text);    // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 struct CPresenceBits {                             // std::bitset<274>
@@ -36,7 +37,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad_0x54[0x3d];
     unsigned char Dead : 1;                          // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (UsingComponents.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

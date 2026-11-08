@@ -1,6 +1,7 @@
 // CTCAIScratchpad::AddGossipFactions(CCharString name,CCharString value) -- Append a gossip value in its category.
 // Leaf: ?AddGossipFactions@CTCAIScratchpad@@SIXVCCharString@@0@Z
 // Identity: FableWin static fastcall two-string overload; own static map013bae5c and string-vector overflow00433530.
+#include "fable_compiler.h"
 #include <new>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -34,7 +35,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport vector, 12 bytes
 public:
     __declspec(noinline) void _M_insert_overflow(_Tp* pos,const _Tp& value,const __false_type&,unsigned int count,bool atEnd){unsigned int oldSize=(unsigned int)(_M_finish-_M_start);unsigned int length=oldSize+(oldSize<count?count:oldSize);_Tp* start=length?(_Tp*)malloc(length*sizeof(_Tp)):0;_Tp* current=start;for(_Tp* p=_M_start;p!=pos;++p,++current)new(current)_Tp(*p);for(unsigned int i=0;i<count;++i,++current)new(current)_Tp(value);if(!atEnd){for(_Tp* p=pos;p!=_M_finish;++p,++current)new(current)_Tp(*p);}for(_Tp* p=_M_start;p!=_M_finish;++p)p->~_Tp();if(_M_start)free(_M_start);_M_start=start;_M_finish=current;_M_end_of_storage._M_data=start+length;}
-    __forceinline void push_back(const _Tp& value){if(_M_finish!=_M_end_of_storage._M_data){new(_M_finish) _Tp(value);++_M_finish;}else _M_insert_overflow(_M_finish,value,__false_type(),1,true);}
+    FABLE_FORCEINLINE void push_back(const _Tp& value){if(_M_finish!=_M_end_of_storage._M_data){new(_M_finish) _Tp(value);++_M_finish;}else _M_insert_overflow(_M_finish,value,__false_type(),1,true);}
     _Tp& operator[](long n) {return _M_start[n];}
     _Tp* _M_start;                                       // +0x00
     _Tp* _M_finish;                                      // +0x04

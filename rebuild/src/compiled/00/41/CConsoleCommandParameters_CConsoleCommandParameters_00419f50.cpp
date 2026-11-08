@@ -7,6 +7,7 @@
 //   __x.get_allocator()) { _M_finish = __uninitialized_copy(__x._M_start, __x._M_finish, _M_start, _IsPODType()); }`
 //   with the __false_type copy inlined (the element has no __type_traits specialisation): placement-new null test per element.
 //   For the CConsoleCommandParameters member copy the vector constructor is __forceinline (VC7.1 otherwise calls it).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -54,7 +55,7 @@ public:
     typedef _Alloc allocator_type;
     allocator_type get_allocator() const { return allocator_type(); }
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
-    __forceinline vector(const vector& __x) : _Vector_base<_Tp, _Alloc>(__x.size(), __x.get_allocator())
+    FABLE_FORCEINLINE vector(const vector& __x) : _Vector_base<_Tp, _Alloc>(__x.size(), __x.get_allocator())
     {
         this->_M_finish = __uninitialized_copy((const_pointer)__x._M_start, (const_pointer)__x._M_finish, this->_M_start,
                                                __false_type());

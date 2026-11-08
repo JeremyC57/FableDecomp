@@ -2,6 +2,7 @@
 // Leaf: CreateStaticSliderBidirectional
 // Retail: Fable.exe @ 0x0042819A, 762 bytes, `ret 0Ch`; /Os + optimize("y", off) TU (as the landed CreateLevelSlider 0x00427DC9).
 // Layout: SComponentState / CStateMap / CComponent slots from the landed CreateLevelSlider model.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -32,7 +33,7 @@ class CRGBFloatColour { public:
 class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
-    __forceinline CRGBColour(const CRGBFloatColour& c)
+    FABLE_FORCEINLINE CRGBColour(const CRGBFloatColour& c)
     {
         R = (unsigned char)(long)(c.R * 255.0f);
         G = (unsigned char)(long)(c.G * 255.0f);

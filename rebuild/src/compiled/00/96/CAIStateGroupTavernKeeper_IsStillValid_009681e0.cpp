@@ -7,13 +7,14 @@
 // Shape: `IsAlive(PPub) && IsAlive(PBar)` -- the int-typed `&&` materialises `mov eax,1` /
 // `xor eax,eax` (full register), each pointer's address is formed once into esi and reused for
 // both GetPItem calls. The base is modelled locally (the generated header has no vtable).
+#include "fable_compiler.h"
 #include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
     CThing* GetPItem();                         // 0x00A01B50
-    __forceinline bool IsAlive()
+    FABLE_FORCEINLINE bool IsAlive()
     {
         if (GetPItem() != 0) {
             if (!GetPItem()->IsDead())

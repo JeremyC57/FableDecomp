@@ -17,6 +17,7 @@
 // Shape: `if (--count == 0) Get().UnloadSection(handle);` (`dec dword ptr ; jne`), then a signed clamp
 // `if (count < 0) count = 0;` re-reading the count (`jge` over an immediate store).
 
+#include "fable_compiler.h"
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -41,7 +42,7 @@ private:
 
 template <class T> class CTBaseSingleton {
 public:
-    static __forceinline T& __fastcall Get()
+    static FABLE_FORCEINLINE T& __fastcall Get()
     {
         if (Instance.IsNull())
             Instance.Reset(new T);

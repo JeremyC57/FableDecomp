@@ -17,6 +17,7 @@
 //   before the third GetPItem's Kill(false), then `pointer = CIntelligentPointer<CThing>(found)`: the temporary reuses
 //   the key's frame word, which VC7.1 allows only with LowerBound's body visible (GOTCHAS: same-TU auto_inline(off)
 //   stand-in).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -36,7 +37,7 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     void Kill(bool immediately);                        // 0x004C9B80
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

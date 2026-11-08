@@ -13,6 +13,7 @@
 // into the `??_G` (plain inline leaves a `call ??1`); the `new CBaseObject` factory pulls the vtable and the
 // deleting destructor into the translation unit.
 // Leaf: ??_GCBaseObject@@MAEPAXI@Z
+#include "fable_compiler.h"
 class CBaseObject;
 
 struct CBaseObjectPointer {
@@ -31,7 +32,7 @@ public:
     friend CBaseObject* MakeBaseObject();
 protected:                                         // Ego_r.pdb: ??0CBaseObject@@IAE@XZ, ??1CBaseObject@@MAE@XZ
     CBaseObject() : IntelligentPointer(0) {}
-    __forceinline virtual ~CBaseObject()
+    FABLE_FORCEINLINE virtual ~CBaseObject()
     {
         if (IntelligentPointer) {
             IntelligentPointer->object = 0;

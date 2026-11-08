@@ -11,6 +11,7 @@
 //   +0x18, GivenObject +0x1c, TimesMadeLaugh +0x20, seh_me +0x24.
 // Shape: the landed CQ_WaspBossScript::WaspIntro 0x00E12F20 model; both local maps (cast, then arguments) are destroyed
 //   inline, and the $ITEM value converts from the CDefString inside the assignment (key temporary destroyed first).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CCharString { public:
@@ -39,7 +40,7 @@ inline CScriptThing::~CScriptThing() {}
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;
     // implicit destructor; out of line: 0x007E74D0
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {                                                   // out of line: 0x008ABD10
         CBaseObject::operator=(other);
         PImp = other.PImp;
@@ -52,7 +53,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
     node*         head;
     unsigned long size;
     unsigned char compare;
-    __forceinline CCutsceneCastMap()
+    FABLE_FORCEINLINE CCutsceneCastMap()
         : head(0)
     {
         head = (node*)malloc(sizeof(node));
@@ -62,7 +63,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
         head->left   = head;
         head->right  = head;
     }
-    __forceinline ~CCutsceneCastMap()                   // inline here (out of line elsewhere: 0x00CDBFB0)
+    FABLE_FORCEINLINE ~CCutsceneCastMap()                   // inline here (out of line elsewhere: 0x00CDBFB0)
     {
         if (size) {
             Erase(head->parent);
@@ -83,7 +84,7 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
     node*         head;
     unsigned long size;
     unsigned char compare;
-    __forceinline CCutsceneArgMap()
+    FABLE_FORCEINLINE CCutsceneArgMap()
         : head(0)
     {
         head = (node*)malloc(sizeof(node));
@@ -93,7 +94,7 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
         head->left   = head;
         head->right  = head;
     }
-    __forceinline ~CCutsceneArgMap()
+    FABLE_FORCEINLINE ~CCutsceneArgMap()
     {
         if (size) {
             Erase(head->parent);

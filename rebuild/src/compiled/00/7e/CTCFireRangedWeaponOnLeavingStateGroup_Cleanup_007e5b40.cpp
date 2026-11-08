@@ -11,6 +11,7 @@
 // Shape: `GetCombatManager()->DeregisterCombatant(&creature)` pushes the argument before the getter call; the
 //   out-parameter PeekTC template inlined with the map in a named local (`add esi,44h`, `last` re-read through it).
 //   No CThingAICreature engine header exists: local model of the thing base (bitset +0x20, map +0x44).
+#include "fable_compiler.h"
 class CTCBase;
 class CCombatManager;
 class CThingCreatureBase;
@@ -28,7 +29,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool PeekTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool PeekTC(T** out)
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             CTCMap* map = &m_tcs;

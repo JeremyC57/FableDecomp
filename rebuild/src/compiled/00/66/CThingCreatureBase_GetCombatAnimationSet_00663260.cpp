@@ -9,7 +9,8 @@
 // virtual call; a release written in the pointer re-reads the frame slot or splits the decrement); the CDefPointer temporary is zero-initialised in the `push ecx` slot, the member address is computed before the
 // inline release (`lea esi,[ecx+34h]` above the null test) and returned after it (Ego_r.pdb
 // `?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ`: a const reference).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefVirtual {                            // the definition's vptr
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero

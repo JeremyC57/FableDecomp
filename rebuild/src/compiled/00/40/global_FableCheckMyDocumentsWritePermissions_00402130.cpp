@@ -15,6 +15,7 @@
 // the if/return form keeps both arms' bool in bl (a ternary widens the && arm to `mov ebx,1`), and both inline levels need
 // __forceinline.  The three failure arms (CreateFileW INVALID_HANDLE_VALUE, _wfopen null, DeleteFileW false) each assign the
 // RESTRICTED key; VC7.1 tail-merges them.  The error key's CRC is the inline CCRC::CalcFromString.
+#include "fable_compiler.h"
 #include <stddef.h>
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 struct _iobuf;
@@ -46,7 +47,7 @@ struct CBasicStringW {                                  // STLport basic_string<
     unsigned long size() const { return _M_finish - _M_start; }
     const wchar16* data() const { return _M_start; }
 };
-__forceinline bool operator==(const CBasicStringW& s, const wchar16* text)
+FABLE_FORCEINLINE bool operator==(const CBasicStringW& s, const wchar16* text)
 {
     unsigned long n = char_traits_w::length(text);
     return s.size() == n && char_traits_w::compare(s.data(), text, n) == 0;
@@ -61,7 +62,7 @@ public:
     ~CWideString();                                     // 0x0099B510
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
     const wchar16* GetAsCharArray() const;              // 0x0099AF10
-    __forceinline bool operator==(const wchar16* text) const
+    FABLE_FORCEINLINE bool operator==(const wchar16* text) const
     {
         if (PStringData == 0)
             return wcscmp(text, (const wchar16*)L"") == 0;

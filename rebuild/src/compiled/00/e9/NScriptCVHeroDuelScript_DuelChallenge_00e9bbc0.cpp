@@ -14,6 +14,7 @@
 // Shape: the per-exit-site dtor gap of chunk 583 is beaten here by an in-body `#pragma inline_depth(0)` around the return after
 //   the StartScriptingEntity wait (landed 0x00D55E90 pattern): that exit calls ~ScriptedThingBase 0x007E74D0 out of line while
 //   the earlier exit expands it.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
@@ -47,7 +48,7 @@ public:
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
 public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;

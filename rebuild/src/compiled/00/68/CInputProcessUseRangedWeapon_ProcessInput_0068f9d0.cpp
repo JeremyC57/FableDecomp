@@ -14,6 +14,7 @@
 //   test is the out-parameter form inside one && chain. The carrying component is a NAMED local: that lets the two lookup-key
 //   temporaries share one stack slot (first half: the 4-byte frame word; second half: the dead `event` slot) -- chaining
 //   `GetConstInterface(0x46)->GetThingInPrimarySlot()` gives each key its own slot (8-byte frame).
+#include "fable_compiler.h"
 class CInputEvent;
 class CProcessedInput;
 class CTCBase;
@@ -29,7 +30,7 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                       // +0x91 bit 0: dead
     CPlayer& GetPlayer();                          // 0x004C7A30
-    template<class T> __forceinline T* GetConstInterface(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetConstInterface(long interfaceType) const
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -40,7 +41,7 @@ public:
         }
         return result;
     }
-    template<class T> __forceinline T* GetInterface(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetInterface(long interfaceType)
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -51,7 +52,7 @@ public:
         }
         return result;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

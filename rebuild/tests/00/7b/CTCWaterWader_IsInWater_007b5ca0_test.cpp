@@ -1,4 +1,5 @@
 // Behaviour test for 0x007B5CA0: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -57,8 +58,8 @@ class CThing { public:
     CTCMap         m_tcs;                                   // +0x44
     unsigned char  _pad50[0x64 - 0x50];
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase* GetTC(long kind) const
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const
     {
         const CTCMap* map = &m_tcs;
         STCEntry* it = map->LowerBound((unsigned long)kind);
@@ -103,7 +104,7 @@ class CTCBase { public:
 };
 struct CTCWaterWader : CTCBase {
     void IsInWater(bool& inWater, bool& deep, float& waterHeight) const;
-    __forceinline float GetDistanceSquaredFromReferencePoint() const
+    FABLE_FORCEINLINE float GetDistanceSquaredFromReferencePoint() const
     {
         CWorld* world = GetWorld_00686a70();
         const CThing* parent = ParentThing;

@@ -1,4 +1,5 @@
 // Behaviour test for 00b94d30: src/00b94d30.cpp copied verbatim, out-of-line callees stubbed below.
+#include "fable_compiler.h"
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
@@ -25,10 +26,10 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    __forceinline float Length2D() const { return (float)sqrt(X * X + Y * Y); }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
+    FABLE_FORCEINLINE float Length2D() const { return (float)sqrt(X * X + Y * Y); }
 };
 class C3DBoundingBox { public:
     C3DVector Min, Max;

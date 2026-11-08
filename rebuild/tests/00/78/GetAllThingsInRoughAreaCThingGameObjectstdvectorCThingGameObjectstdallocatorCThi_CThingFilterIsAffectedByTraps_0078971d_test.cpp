@@ -4,6 +4,7 @@
 // retail uses the first three words (12-byte STLport vector). No trailing
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
 // Local helper/global names carrying addresses remain descriptive pending PDB proof.
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 #include "engine/CTCMapwho.h"
 #include "engine/CTCBase.h"
@@ -11,7 +12,7 @@
 #include <new>
 struct FalseType {FalseType(){}};
 extern "C" void* __cdecl memmove(void*,const void*,size_t); // 0x00bfeae6
-__forceinline void* CopyTrivial(const void* first,const void* last,void* result) {
+FABLE_FORCEINLINE void* CopyTrivial(const void* first,const void* last,void* result) {
  return last==first ? result : (char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
 }
 template<class T> struct RetailVector {
@@ -20,25 +21,25 @@ template<class T> struct RetailVector {
   T* Ptr;
   explicit iterator(T* p):Ptr(p){}
   iterator(const iterator& other):Ptr(other.Ptr){}
-  __forceinline T& operator*()const{return *Ptr;}
-  __forceinline iterator& operator++(){++Ptr;return *this;}
-  __forceinline bool operator!=(const iterator& other)const{return Ptr!=other.Ptr;}
-  __forceinline iterator& operator+=(int n){Ptr+=n;return *this;}
-  __forceinline iterator operator+(int n)const{iterator r(*this);r+=n;return r;}
+  FABLE_FORCEINLINE T& operator*()const{return *Ptr;}
+  FABLE_FORCEINLINE iterator& operator++(){++Ptr;return *this;}
+  FABLE_FORCEINLINE bool operator!=(const iterator& other)const{return Ptr!=other.Ptr;}
+  FABLE_FORCEINLINE iterator& operator+=(int n){Ptr+=n;return *this;}
+  FABLE_FORCEINLINE iterator operator+(int n)const{iterator r(*this);r+=n;return r;}
  };
- __forceinline iterator begin()const{return iterator(Start);}
- __forceinline iterator end()const{return iterator(Finish);}
- __forceinline T& operator[](unsigned int n)const{return Start[n];}
+ FABLE_FORCEINLINE iterator begin()const{return iterator(Start);}
+ FABLE_FORCEINLINE iterator end()const{return iterator(Finish);}
+ FABLE_FORCEINLINE T& operator[](unsigned int n)const{return Start[n];}
  void _M_insert_overflow(T*,const T&,const FalseType&,unsigned int,bool); // 0x0049c370 for CThing*
- __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
+ FABLE_FORCEINLINE void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  T* erase(T*,T*); // 0x00436a80 for AreaMaps
- __forceinline void clear(){erase(Start,Finish);}
+ FABLE_FORCEINLINE void clear(){erase(Start,Finish);}
 };
 class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
-template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
+template<class T> FABLE_FORCEINLINE bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
 class CThingGameObject;
 // Same-TU non-inlined STLport overflow model. Only GetAllThingsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
@@ -70,8 +71,8 @@ class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
- __forceinline long Width()const{return BRX-TLX;}
- __forceinline long Height()const{return BRY-TLY;}
+ FABLE_FORCEINLINE long Width()const{return BRX-TLX;}
+ FABLE_FORCEINLINE long Height()const{return BRY-TLY;}
 };
 struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious;CThingMapCell* PCell;};
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
@@ -93,11 +94,11 @@ namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
 namespace NCreatureMode {bool __fastcall IsAbleToBeAttacked(const CThing&);} // 0x0085fb30
 class CThingFilter_IsNotList { public:void* NotList;void* NotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
-struct CThingFilter_IsAbleToBeAttacked {__forceinline bool operator()(const CThing& p)const{return NCreatureMode::IsAbleToBeAttacked(p);}};
+struct CThingFilter_IsAbleToBeAttacked {FABLE_FORCEINLINE bool operator()(const CThing& p)const{return NCreatureMode::IsAbleToBeAttacked(p);}};
 class CThingFilter_HasTC { public:long Type;bool operator()(const CThing&)const;}; // 0x006a80a0
 struct CThingFilter_IsAffectedByTraps {bool operator()(const CThing&)const;}; // 0x007892ea
 struct Filters {CThingFilter_IsNotList* F0;CThingFilter_IsAbleToBeAttacked* F1;CThingFilter_HasTC* F2;CThingFilter_IsAffectedByTraps* F3;
- __forceinline bool operator()(const CThingGameObject& p)const{return (*F0)(p)&&(*F1)(p)&&!(*F2)(p)&&(*F3)(p);}
+ FABLE_FORCEINLINE bool operator()(const CThingGameObject& p)const{return (*F0)(p)&&(*F1)(p)&&!(*F2)(p)&&(*F3)(p);}
 };
 struct CThingSearchTools_Calls {
  CWorldMap* WorldMap;

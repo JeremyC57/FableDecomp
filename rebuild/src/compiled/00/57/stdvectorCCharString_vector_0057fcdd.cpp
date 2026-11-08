@@ -16,6 +16,7 @@
 //   the two callees that never touch them; the fill gets the default string's address from the constructor's eax.
 //   Under "s" VC7.1 declines to inline the `uninitialized_fill_n` forwarder, so it is `__forceinline` (4 grades:
 //   speed caches n in edi; declaration-only callees home the empty temporaries in fresh locals).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
@@ -61,7 +62,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter
 #pragma auto_inline(on)
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }

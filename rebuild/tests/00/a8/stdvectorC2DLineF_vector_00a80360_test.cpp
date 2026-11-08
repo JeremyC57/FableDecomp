@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -36,7 +37,7 @@ public:
     T* _M_finish;
     _STLP_alloc_proxy<T*, A> _M_end_of_storage;
 };
-template <class T> __forceinline T* uninitialized_fill_n(T* first, unsigned int n, const T& x)
+template <class T> FABLE_FORCEINLINE T* uninitialized_fill_n(T* first, unsigned int n, const T& x)
 {
     T* cur = first;
     for ( ; n > 0; --n, ++cur)

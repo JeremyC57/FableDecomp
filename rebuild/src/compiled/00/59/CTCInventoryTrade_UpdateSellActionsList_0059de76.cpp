@@ -13,6 +13,7 @@
 // Shape: the lookup key and the action's list share [ebp-4] (block-scoped key in the inline lookup, the action at
 // [ebp-8] in the loop), `this` and the target component share [ebp-0Ch]. Frame-pointer size TU: `optimize("y", off)` +
 // `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -122,7 +123,7 @@ class CThing { public:
     std::bitset<274>  m_present;                            // +0x20
     unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long kind)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)
     {
         if (m_present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind);

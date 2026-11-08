@@ -11,6 +11,7 @@
 //   count drops to zero (`dec [ecx+4] ; jne ; call [eax+4]`), clear, copy, add-ref (`inc dword ptr [eax+4]`).
 // Layout: CDefPointer = one pointer to a CDefPointeeBase (vptr +0, reference count +4), as the landed pair copy
 //   constructor 0x005F8578 of this TU.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CDefPointeeBase { public:                    // counted def object: vptr, reference count at +4
@@ -24,7 +25,7 @@ class CHeroAbilityDef : public CDefPointeeBase { public: };
 
 template <class T> class CDefPointer { public:
     T* Object;                              // +0x00
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
             if (Object) {

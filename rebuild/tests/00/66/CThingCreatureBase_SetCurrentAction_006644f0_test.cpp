@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -90,7 +91,7 @@ class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
-    __forceinline bool GetInterface(long type, CTCBase** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

@@ -12,6 +12,7 @@
 //   creature), dead bit +0x91.
 // Shape: nested tests with every exit on the shared `xor al,al`; the lookup keys and the implicit component-name temporary
 //   share one frame word.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;
@@ -41,15 +42,15 @@ public:
     unsigned long ThingTypeFlags;                       // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

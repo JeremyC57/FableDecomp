@@ -30,6 +30,7 @@
 // Shape: the closing `if (IsActiveThreadTerminating()) return;` after the loop is retail's `call; (no test)` at 0x00E9D6D8;
 //   the in-tavern timer is `if (!onScreen && !timerStarted) {..start..} else if (timerStarted && onScreen) {..stop..}` then
 //   `if (timerStarted && timer.GetTime() == 0)` (VC threads the false arms straight to the loop head).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -57,7 +58,7 @@ template <> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointe
 inline CScriptThing::~CScriptThing() { }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern const float g_fZero;                                  // 0x0122DEDC (0.0f)

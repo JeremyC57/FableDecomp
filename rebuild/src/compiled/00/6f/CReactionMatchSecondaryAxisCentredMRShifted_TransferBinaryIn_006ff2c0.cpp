@@ -9,6 +9,7 @@
 // (64-bit position range check, chunk fast path, overflow reader); the inlined locals share the dead
 // stream-argument slot (two named locals in the body take a second frame word, push ecx). The last read's fast path is tail-duplicated.
 // Leaf: TransferBinaryIn@CReactionMatch_SecondaryAxisCentredMRShifted
+#include "fable_compiler.h"
 #include "engine/CReactionMatch_SecondaryAxisCentredMRShifted.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -24,8 +25,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -39,8 +40,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline void ReadValue(float& out) { float value; Read(&value, sizeof(value)); out = value; }
-    __forceinline void ReadValue(long& out) { long value; Read(&value, sizeof(value)); out = value; }
+    FABLE_FORCEINLINE void ReadValue(float& out) { float value; Read(&value, sizeof(value)); out = value; }
+    FABLE_FORCEINLINE void ReadValue(long& out) { long value; Read(&value, sizeof(value)); out = value; }
 };
 
 struct CReactionMatch_TransferBinaryIn {

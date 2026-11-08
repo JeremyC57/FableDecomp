@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -521,10 +522,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 struct IntelligentInfo{CThingNative* Object;long References;};
 struct PointerView{void*VTable;IntelligentInfo* Info;CThingNative* GetPItem()const;}; //00A01B50
 struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
-struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;__forceinline long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990
+struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;FABLE_FORCEINLINE long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990
 // PDB CTCSummonableCreature HasBeenSummoned+10; no generated class header exists.
-struct SummonableCreature:CTCBase{unsigned long SummonState;bool HasBeenSummoned;__forceinline bool GetHasBeenSummoned()const{return HasBeenSummoned;}};
-static __forceinline bool PeekSummon(CThingNative*thing,const SummonableCreature**out){if(thing->UsingComponents[5]&1){long key=160;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;*out=static_cast<const SummonableCreature*>((it==end||it->Type>160?end:it)->Component);return true;}return false;}
+struct SummonableCreature:CTCBase{unsigned long SummonState;bool HasBeenSummoned;FABLE_FORCEINLINE bool GetHasBeenSummoned()const{return HasBeenSummoned;}};
+static FABLE_FORCEINLINE bool PeekSummon(CThingNative*thing,const SummonableCreature**out){if(thing->UsingComponents[5]&1){long key=160;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;*out=static_cast<const SummonableCreature*>((it==end||it->Type>160?end:it)->Component);return true;}return false;}
 struct CGameScriptThingMethods:CGameScriptThing{bool IsSummonedCreature()const;};
 bool CGameScriptThingMethods::IsSummonedCreature()const{
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);

@@ -8,6 +8,7 @@
 // through the CEnginePrimitiveHandle model of the landed CTCEmoteIcon::FrameUpdate 0x0071AF30.
 // Shape: the handle's inline Release (`if (Data.IsUnique()) Data->OnLastHandleReleased(this); Data = 0;`, the
 // CIVCountedPointer `operator=(0)` = release + a second unconditional zero store) on a handle reference held in esi.
+#include "fable_compiler.h"
 #include "engine/CTCStockItem.h"
 
 class CEnginePrimitiveHandle;
@@ -31,7 +32,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -46,7 +47,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

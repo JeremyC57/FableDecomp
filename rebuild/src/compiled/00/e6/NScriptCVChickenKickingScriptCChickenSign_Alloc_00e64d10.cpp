@@ -5,6 +5,7 @@
 //   local model
 // Identity: proven own named binding registration00e62b4d ->factory00e64d10 ->original constructor00e64d90 and exact PDB owner/Alloc/constructor prototypes. Public CCountedPointer<CEntityScriptBase>(T*) and static fastcall DeleteData(void*) are PDB-proven; own controlblock stores callback00cdee00, which consumes ECX and deletes through entity virtual dtor.
 // Layout: actual entity20 Game/Me prefix +original parent/master fields and typed own members, PCsize40. True counted pointer8 and controlblock12 RefCount/fastcallDeleteFunc/Data; no invented constructor/helper signatures for controlblock. Source directly initializes original fields before assigning Info. Non-POD default/copy/dtor declarations preserve native class-return hidden result ABI; genuine original virtual Entity destructor and correct out-of-line constructor target. Parent typed level72/script64 prefix retained, unused parent suffix explicitly omitted. Shared handle headers aliased.
+#include "fable_compiler.h"
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -34,7 +35,7 @@ template<class Iter,class Compare>void __fastcall sort(Iter first,Iter last,Comp
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};

@@ -9,6 +9,7 @@
 // index +0x58, flags +0x60; inline Clear and the mask helper); the slot is filled by an inline Attach (release the old object,
 // store the new one without an add-ref -- the creator's reference is adopted); the Enable bit is computed before the manager
 // test (`shr 5 ; not ; and 1`); `this` is parked in the `push ecx` slot.
+#include "fable_compiler.h"
 #include "engine/CEnginePrimitiveTypeInfo.h"
 class CEnginePrimitiveHandle;
 
@@ -41,7 +42,7 @@ public:
     CEngineInternalPrimitiveBase* Object;
     CEngineInternalPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void Attach(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE void Attach(CEngineInternalPrimitiveBase* object)
     {
         if (Object) {
             Object->Release();
@@ -49,7 +50,7 @@ public:
         }
         Object = object;
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -58,7 +59,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEngineInternalPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -78,7 +79,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

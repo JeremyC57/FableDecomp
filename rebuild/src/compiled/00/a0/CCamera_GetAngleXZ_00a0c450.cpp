@@ -15,6 +15,7 @@
 //   (`fld st(2) ; fmulp st(1)`) and consume it for Y (`fmulp st(1)`), and the `* 1.0f` length products fold away. The open-coded
 //   products (and a named double cos) multiplied in place and popped cos(pitch) afterwards (the parked residue, 2026-10-24..31).
 //   The dot product is z, y, x with z kept in st(0).
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl acos(double x);
@@ -31,7 +32,7 @@ public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     const float Dot(const C3DVector& other) const { return Z * other.Z + Y * other.Y + X * other.X; }
-    __forceinline const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
+    FABLE_FORCEINLINE const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
     {
         float cosYZ = (float)cos(angleYZ * TWO_PI);
         X = (float)(sin(angleXY * TWO_PI) * (cosYZ * length));
@@ -47,7 +48,7 @@ public:
     C3DVector Forward;                              // +0x0C
 };
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod(angle, 1.0);
@@ -68,11 +69,11 @@ public:
     float           VerticalFOV;                    // +0x30
     float           Zoom;                           // +0x34
 
-    __forceinline float GetAngleXY() const                 // out of line @ 0x00A0C380
+    FABLE_FORCEINLINE float GetAngleXY() const                 // out of line @ 0x00A0C380
     {
         return WrapAngle((float)atan2(RHSet.Forward.X, RHSet.Forward.Y) * 0.15915494f);
     }
-    __forceinline float GetAngleYZ() const                 // out of line @ 0x00A0C3E0
+    FABLE_FORCEINLINE float GetAngleYZ() const                 // out of line @ 0x00A0C3E0
     {
         float length = (float)sqrt(RHSet.Forward.X * RHSet.Forward.X + RHSet.Forward.Y * RHSet.Forward.Y);
         return WrapAngle((float)atan2(RHSet.Forward.Z, length) * 0.15915494f);

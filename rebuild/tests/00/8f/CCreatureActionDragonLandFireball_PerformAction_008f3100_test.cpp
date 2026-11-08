@@ -1,6 +1,7 @@
 // Behaviour test for 0x008F3100 CCreatureAction_DragonLandFireball::PerformAction: runs the reconstructed body over stubbed
 // callees; checks the def lookups, the dummy lookup, the Create arguments, PShot, the AddTC name, every Init argument and the
 // def releases (both on the created path and when Create returns null).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -107,7 +108,7 @@ class CThing { public:
         std::strcpy(g_tcName, name.m_text); g_tcInit = init && params == 0; return m_tc;
     }
 };
-__forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
+FABLE_FORCEINLINE bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
 {
     CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
     return appearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -128,7 +129,7 @@ CThing* Create(long defIndex, const C3DVector* position, long player, const CRig
     if (orientation != 0 || flags != 0) return 0;
     return g_created;
 }
-__forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
     return Create(defIndex, &position, creature->PlayerNumber, 0, 0, name);
 }

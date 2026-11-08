@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -254,7 +255,7 @@ struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp
 struct ScriptMethods:CBaseClass{
  CountedScriptImp PImp;
  ScriptMethods(){}
- __forceinline ScriptMethods(const CScriptThing& other):CBaseClass(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
+ FABLE_FORCEINLINE ScriptMethods(const CScriptThing& other):CBaseClass(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
  ScriptMethods(const ScriptMethods& other):CBaseClass(),PImp(other.PImp){}
  virtual ~ScriptMethods(){} //native inline vptr reset, counted release, CBaseClass dtor99A2E0
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0

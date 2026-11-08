@@ -1,6 +1,7 @@
 // Behaviour test for 00582a16: src/00582a16.cpp copied verbatim; the expression-def lookup (through the same-TU GetDef
 // body), the inventory count and the player's input queue stubbed so the def/dummy-object/button gates and the def
 // reference counting are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -95,7 +96,7 @@ class CTCInventory { public:
 
     CDefinitionManager* GetDefinitionManager() const;    // 0x006869D0 (CTCBase)
     long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08 (CTCInventoryBase)
-    __forceinline bool IsActionButtonHeld(long action)
+    FABLE_FORCEINLINE bool IsActionButtonHeld(long action)
     {
         CThing* thing = ParentThing;
         CGamePlayerInterface* input = thing->GetPlayer()->PGamePlayerInterface;

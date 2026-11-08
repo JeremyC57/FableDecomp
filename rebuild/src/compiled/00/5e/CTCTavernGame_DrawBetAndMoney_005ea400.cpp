@@ -10,6 +10,7 @@
 // Shape: the landed CTCBetting::DrawPreparePrimitivesForRendering (0x007E5680) form -- a zeroed CDefPointer released by its
 // inline null-tested destructor, each box one call with a C2DVector temporary of `coordinate x screen size`; the money box
 // is an if/else of two full calls (tail-merged) and a same-TU stand-in GetSubDef body keeps the def pointer in ebx.
+#include "fable_compiler.h"
 #include <stddef.h>
 class C2DVector { public:
     float X, Y;
@@ -52,7 +53,7 @@ class CTavernGameDef { public:
     long          RefCount;
     unsigned char _pad08[0x10c - 0x08];
     long          ThirdBoxWidth;                // +0x10c
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--RefCount == 0)
             Destroy();
@@ -61,7 +62,7 @@ class CTavernGameDef { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->Release();

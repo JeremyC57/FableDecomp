@@ -13,6 +13,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -44,7 +45,7 @@ public:
     virtual void s71(); virtual void s72(); virtual void s73(); virtual void s74();
     virtual bool IsAlive() const;                        // slot 75 (+0x12c) 0x004AB130
     const C3DVector& GetPosition() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }
-    __forceinline CScriptThing& operator=(const CScriptThing& other)
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other)
     {
         PImp = other.PImp;
         return *this;

@@ -18,6 +18,7 @@
 // Layout: engine/CAIStateGroupBase.h and engine/CAIBrain.h through the layout-rename include (the generated headers
 //   flatten the base, so CAIStateGroupBase's members cannot be reached on engine/CAIStateGroup_OpinionReactionRoot.h);
 //   the OpinionReactionRoot members up to ThingReactingTo +0x6B are copied from that header (pack(1)).
+#include "fable_compiler.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
@@ -78,7 +79,7 @@ class CThing { public:
     std::bitset<274> UsingComponents;                       // +0x20
     CVectorMap<ETCInterfaceType, CTCBase*> Components;      // +0x44
     const C3DVector& GetPos() const;                        // 0x004C73D0
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         bool has = UsingComponents.test(T::StatGetInterfaceType());
         if (has) {

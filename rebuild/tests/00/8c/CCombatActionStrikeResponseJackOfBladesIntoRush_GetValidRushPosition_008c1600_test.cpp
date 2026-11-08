@@ -5,6 +5,7 @@
 // phase start with 21) and their erases, the random candidate order (seed * 0x24a1 + 0x24df, rotated right 13, modulo the
 // remaining count), the navigation test from Jack's position with tolerance 0, the erase of rejected candidates, the copy of
 // the accepted one into *out, and the final storage free and def release.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -199,7 +200,7 @@ class CThing { public:
     }
     const C3DVector& GetPosition() const { ++const_cast<CThing*>(this)->PositionCalls; return Position; }
     CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

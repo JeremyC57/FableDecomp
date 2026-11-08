@@ -10,6 +10,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9C2E0, length 494 bytes (`ret 4`), ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@@Z.
 // Layout: Ego_r.pdb CShadowClipVolume (ClipPlanes[8] +0, ClipPlaneCount +0x80, BoundingSphere +0x84, ClipToSphere +0x94);
 // SSE-available flag 0x013D2880 (landed 0x00BF7DF0 g_SSEAvailable); 0.0f 0x0122DEDC.
+#include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
@@ -19,7 +20,7 @@ class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
     C3DVector MaxCoord;                                 // +0x0c
-    __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
         if (g_SSEAvailable) {
             float result;
@@ -48,7 +49,7 @@ public:
         sum += d.Y * d.Y;
         return sum;
     }
-    __forceinline float CalcShortestDistanceToPoint(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPoint(const C3DVector& point) const
     {
         return (float)sqrt(CalcShortestDistanceToPointSquared(point));
     }

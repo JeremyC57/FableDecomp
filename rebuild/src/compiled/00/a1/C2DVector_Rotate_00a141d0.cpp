@@ -5,10 +5,11 @@
 // Shape: GetAngle = WrapAngle(atan2(X, Y) / 2pi) (both forced inline: a plain inline GetAngle stays a call),
 //   length = sqrt(X*X + Y*Y), then X = sin(angle*2pi)*len, Y = cos(angle*2pi)*len with 2pi as the double
 //   6.2831854820251465 (the float 2pi widened).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, sqrt, fmod, sin, cos)
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -21,7 +22,7 @@ __forceinline float WrapAngle(float angle)
 class C2DVector {
 public:
     float X, Y;
-    __forceinline float GetAngle() const { return WrapAngle((float)atan2(X, Y) * 0.15915494f); }
+    FABLE_FORCEINLINE float GetAngle() const { return WrapAngle((float)atan2(X, Y) * 0.15915494f); }
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }
     void Rotate(float angle);
 };

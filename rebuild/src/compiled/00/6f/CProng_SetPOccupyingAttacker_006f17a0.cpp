@@ -6,6 +6,7 @@
 // Shape: two copies of the landed SetPTarget temporary-pointer shape (0x007A7150): a null item, then the attacker.
 // Shape: the helper names the temporary's GetPItem() CALL result (`occupier = pointer.GetPItem(); POccupier.SetPItem(occupier);`),
 //   which keeps `add esi,14h` (this of SetPItem) after the GetPItem call as retail; the inline expression form hoists it.
+#include "fable_compiler.h"
 class CBaseObject;
 
 struct CBaseIntelligentPointer {
@@ -36,7 +37,7 @@ struct CProng {
     unsigned char           _pad0d[3];
     long                    ProngBlockageTimer;             // +0x10
     CBaseIntelligentPointer POccupier;                      // +0x14 CIntelligentPointer<CThingCreatureBase>
-    __forceinline void SetPOccupierItem(CBaseObject* item)  // the landed SetPTarget shape: a temporary pointer set to the
+    FABLE_FORCEINLINE void SetPOccupierItem(CBaseObject* item)  // the landed SetPTarget shape: a temporary pointer set to the
     {                                                       // item, read back into the member, destroyed
         CIntelligentPointer pointer;
         pointer.SetPItem(item);

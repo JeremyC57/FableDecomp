@@ -12,6 +12,7 @@
 //   Was: SetPredicate declared on the entity class (?SetPredicate@CQueenHornet@@...).
 // Naming wave 35: identity reg 00e0ee1e "QueenHornet" in 00e0ea40; Alloc 00e11ad0; vtable 012e04fc slot 1; PDB ?Main@CQueenHornet@CQ_WaspBossScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012e04fc::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CQueenHornet@CQ_WaspBossScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CVtable012E04FC@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); class CVtable012E04FC renamed CQueenHornet); same bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
 #define FABLE_RETAIL_NSCRIPT
@@ -20,7 +21,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){} //inline native vptr reset then Thing destructor4AA840
 };
@@ -42,7 +43,7 @@ extern const unsigned char ResourceVTable[]; //0127094C
 // It is not the distinct CBaseIntelligentPointer constructor 00A01B10.
 struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  void InitializeCBaseObject(); //0099A380, this points to flattened base at offset0
- __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
+ FABLE_FORCEINLINE ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  ~ScriptResource(); //007E74D0
 };
 struct GameCalls;

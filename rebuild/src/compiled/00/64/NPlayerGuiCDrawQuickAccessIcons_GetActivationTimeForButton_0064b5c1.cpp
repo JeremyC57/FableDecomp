@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::GetActivationTimeForButton(long button) -- the activation time of the item in a quick-access slot of the living hero's inventory (2.0 for the special button -2, 0 when there is no hero or no item)
@@ -27,7 +28,7 @@ class CThing { public:
     std::bitset<274> m_present;                       // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -81,7 +82,7 @@ struct CDefPointer {
 class CTCInventory { public:
     CDefPointer GetQuickAccessItemDef(long slot);  // 0x00581DDB
 };
-__forceinline CTCInventory* GetInventory(const CThing* thing)
+FABLE_FORCEINLINE CTCInventory* GetInventory(const CThing* thing)
 {
     CTCInventory* inventory;
     if (thing->HasInterface(0x11))

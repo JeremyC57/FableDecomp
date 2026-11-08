@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -36,7 +37,7 @@ static void BuildInvSqrtTable()
 }
 
 class CTCBase;
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned int bits = *(unsigned int*)&lengthSquared;
     unsigned int estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -51,9 +52,9 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     void operator-=(const C3DVector& o) { X -= o.X; Y -= o.Y; Z -= o.Z; }
     C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-    __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
+    FABLE_FORCEINLINE C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
     float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
-    __forceinline void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
+    FABLE_FORCEINLINE void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
 };
 
 class CCharString { public:
@@ -116,7 +117,7 @@ class CThing { public:
     unsigned char   _pad4c[0x91 - 0x4c];
     unsigned char   m_flags91;
     const C3DVector& GetPosition() const;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -162,7 +163,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;
 };
 CThingCreatureBase* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }

@@ -11,6 +11,7 @@
 // Layout: CTCBase ParentThing +4; CThing bitset +0x20, map +0x44, dead flag +0x91; the 0x1A component's armed pointer +0x10.
 // Shape: the whole body sits in `if (!IsPrimarySlotFree()) { ... return thing; } return 0;` (an early `return 0` is laid
 // out first); HasTC + ternary GetTC lookups sharing one key slot; `this` is homed in the frame for the final RemoveThing.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -21,15 +22,15 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags;                              // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline T* GetTCConst(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTCConst(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

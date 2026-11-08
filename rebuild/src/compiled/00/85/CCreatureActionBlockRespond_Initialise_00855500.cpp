@@ -10,13 +10,14 @@
 //   body in the TU (noinline) lets the GetInterface keys and out variables share frame words (frame 0x30).
 // Layout: retail UseHitPos +0x124 / HitPos +0x125 / FaceTargetAtStart +0x131 (Ego_r.pdb +0x13c..+0x149), so the generated
 //   engine header does not fit.
+#include "fable_compiler.h"
 #include <math.h>
 #include <stdlib.h>
 #pragma intrinsic(cos)
 extern unsigned long GFastOneOverSqrtTable[128];       // 0x013CE558
 
 class CTCBase;
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -31,9 +32,9 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     void operator-=(const C3DVector& o) { X -= o.X; Y -= o.Y; Z -= o.Z; }
     C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-    __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
+    FABLE_FORCEINLINE C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
     float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
-    __forceinline void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
+    FABLE_FORCEINLINE void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
 };
 
 #define FABLE_RETAIL_CCHARSTRING
@@ -67,7 +68,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
     return p.Get() && !p.Get()->IsDead();
 }

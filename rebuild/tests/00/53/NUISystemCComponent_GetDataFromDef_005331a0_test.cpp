@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -131,8 +132,8 @@ namespace NUISystem {
 struct C2DVector { float X, Y; };
 struct CRGBColour {                                         // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
     CRGBColour() { }                                        // test only: lets the stub CUIState(const CUIStateDef&) build one
 };
 class CUIStateDef { public: unsigned char _data[0x7c]; };          // retail 0x7c bytes (Ego_r.pdb 0x84)

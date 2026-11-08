@@ -7,6 +7,7 @@
 // Layout: Ego_r.pdb CProng (0x1c): Blocked +0, Prong +1, ProngBlockageTimer +0x10, POccupier +0x14.
 // Shape: the occupier release is the landed SetPTarget temporary-pointer shape (0x007A7150) with a null item; the
 // occupier's dead bit is tested through a second GetPItem.
+#include "fable_compiler.h"
 class CBaseObject;
 
 struct CBaseIntelligentPointer {
@@ -42,7 +43,7 @@ struct CProng {
     unsigned char           _pad0d[3];
     long                    ProngBlockageTimer;             // +0x10
     CBaseIntelligentPointer POccupier;                      // +0x14 CIntelligentPointer<CThingCreatureBase>
-    __forceinline void SetPOccupierItem(CBaseObject* item)  // the landed SetPTarget shape: a temporary pointer set to the
+    FABLE_FORCEINLINE void SetPOccupierItem(CBaseObject* item)  // the landed SetPTarget shape: a temporary pointer set to the
     {                                                       // item, read back into the member, destroyed
         CIntelligentPointer pointer;
         pointer.SetPItem(item);

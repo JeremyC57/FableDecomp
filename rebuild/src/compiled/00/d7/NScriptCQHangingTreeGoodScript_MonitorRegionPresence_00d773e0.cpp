@@ -14,6 +14,7 @@
 //   PartyReadyToTransition +0x53, CurrentLevel +0x98, ReasonForFailing +0x9c, AreasSpawnedIn +0xc4.
 // Shape: CCharString == as the landed CV_ChapelOfEvilScript::WatchForRegionEntry 0x00E6B750 (CBasicString<char> data,
 //   Compare); STLport push_back inline (the overflow path out of line).
+#include "fable_compiler.h"
 template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
     char*         PData;
     unsigned long StringLength;
@@ -43,7 +44,7 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

@@ -1,5 +1,6 @@
 // Behaviour test for 005b3c95: src/005b3c95.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryClothing::OnItemAdded(long item, bool assignQuickAccess, bool silent)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -85,7 +86,7 @@ class CThing { public:
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;

@@ -1,6 +1,7 @@
 // Behaviour test for 004b1590: src/004b1590.cpp copied verbatim; the card thing, its quest-card component, the lists
 // and the GUI stubbed so the objective clear, the card gates (alive, component, activatable, feat activated) and the
 // activation side effects (pushed, limbo, persisted, available type removed, flag, GUI refresh) are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -44,8 +45,8 @@ class CThing { public:                                          // retail CThing
     unsigned char _pad50[0x91 - 0x50];
     unsigned char Dead : 1;                              // +0x91 bit 0 (PDB +0xa1)
     unsigned char _91_1 : 7;
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         CTCMap* map = &Components;
         long key = type;

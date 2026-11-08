@@ -1,6 +1,7 @@
 // BEGIN exact source snapshot SHA256 c5cc018963295687633f28e186024ab20cec3469650b61185a6bb12fbc222292
 //00551bc0 NUISystem::CTable::ConstructVerticalLine.
 // Layout: generated CTable donor's debug containers contract; retail Children+b0, column lookup+168.
+#include "fable_compiler.h"
 #include "engine/CTable.h"
 #include <new>
 #include <stdlib.h>
@@ -26,9 +27,9 @@ State& StateMap::operator[](const unsigned long& key){StateIterator i(LowerBound
 struct Component;
 void __fastcall DestroyComponent(void*); //00428b10
 struct Info {long References;void (__fastcall* Destroy)(void*);void* Object;Info(void* p):References(1),Destroy(DestroyComponent),Object(p){}};
-struct Pointer {Component* Object;Info* Count;Pointer():Object(0),Count(0){}__forceinline Pointer(Component* p):Object(p){Count=p?new Info(p):0;}Pointer(const Pointer& p):Object(p.Object),Count(p.Count){if(Count)++Count->References;}__forceinline ~Pointer(){if(Count&&--Count->References==0){Count->Destroy(Count->Object);::operator delete(Count);}Object=0;Count=0;}void Adopt(Component* p){Object=p;Count=p?new Info(p):0;}Component* operator->()const{return Object;}};
+struct Pointer {Component* Object;Info* Count;Pointer():Object(0),Count(0){}FABLE_FORCEINLINE Pointer(Component* p):Object(p){Count=p?new Info(p):0;}Pointer(const Pointer& p):Object(p.Object),Count(p.Count){if(Count)++Count->References;}FABLE_FORCEINLINE ~Pointer(){if(Count&&--Count->References==0){Count->Destroy(Count->Object);::operator delete(Count);}Object=0;Count=0;}void Adopt(Component* p){Object=p;Count=p?new Info(p):0;}Component* operator->()const{return Object;}};
 struct Tag {Tag(){}};
-struct ChildrenVector {Pointer* First;Pointer* Last;Pointer* Limit;void Grow(Pointer*,const Pointer&,const Tag&,unsigned long,bool);__forceinline void push_back(const Pointer& p){if(Last!=Limit){new(Last)Pointer(p);++Last;}else Grow(Last,p,Tag(),1,true);}};
+struct ChildrenVector {Pointer* First;Pointer* Last;Pointer* Limit;void Grow(Pointer*,const Pointer&,const Tag&,unsigned long,bool);FABLE_FORCEINLINE void push_back(const Pointer& p){if(Last!=Limit){new(Last)Pointer(p);++Last;}else Grow(Last,p,Tag(),1,true);}};
 // Retail5359d0: nontrivial counted-pointer vector reallocation. It copies values,
 // destroys old entries and frees old storage; the incoming value address does not escape.
 #pragma auto_inline(off)

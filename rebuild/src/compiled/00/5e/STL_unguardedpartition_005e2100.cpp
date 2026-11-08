@@ -8,6 +8,7 @@
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }` -- the pivot key in ebx (`jae`/`jb` =
 //   unsigned CRC compare), rotated loops, and the by-value pivot's counted pointer released before the return.
 // Label correction: catalogued as `QuickSort_Partition_20Byte`; the body is STLport `__unguarded_partition`.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -21,7 +22,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

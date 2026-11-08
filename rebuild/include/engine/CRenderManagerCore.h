@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CRENDERMANAGERCORE_H
 #define FABLE_ENGINE_CRENDERMANAGERCORE_H
+#include "fable_compiler.h"
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE
 // Retail branch (one model, 2026-11-03: movie row 0x006286F0; typed own members and the inline device helpers from chunk 723b,
 // the water render passes; the out-of-line interface Codex pass 13 row 0x009DA9F0 needs; Codex's FABLE_RETAIL_RENDER2D_TYPES model
@@ -85,7 +86,7 @@ public:
     // The expanded form is the per-TU opt-in FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS (the expanded-here / called-there
     // split, as FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE); without it the TU sees the declaration and calls the copy.
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
-    __forceinline void AttachTextureToStage(long stage, const CTexture* texture)
+    FABLE_FORCEINLINE void AttachTextureToStage(long stage, const CTexture* texture)
     {
         AttachD3DTextureToStage(stage, texture ? (IDirect3DBaseTexture9*)texture->PD3DTexture : 0);
     }
@@ -94,7 +95,7 @@ public:
 #endif
     void AttachVolumeTextureToStage(long stage, const CVolumeTexture* texture);   // ?AttachVolumeTextureToStage@CRenderManagerCore@@QAEXJPBVCVolumeTexture@@@Z
     // ?SelectVertexBuffer@CRenderManagerCore@@QAEXKPAVCVertexBufferWin32@@@Z
-    __forceinline void SelectVertexBuffer(unsigned long stream, CVertexBufferWin32* buffer)
+    FABLE_FORCEINLINE void SelectVertexBuffer(unsigned long stream, CVertexBufferWin32* buffer)
     {
         if (buffer)
             PD3DDevice->SetStreamSource(stream, buffer->PVertexBuffer, 0, buffer->Stride);
@@ -102,7 +103,7 @@ public:
             PD3DDevice->SetStreamSource(stream, 0, 0, 0);
     }
     // ?SelectIndexBuffer@CRenderManagerCore@@QAEXPAVCIndexBuffer@@K@Z
-    __forceinline void SelectIndexBuffer(CIndexBuffer* buffer, unsigned long baseVertexIndex)
+    FABLE_FORCEINLINE void SelectIndexBuffer(CIndexBuffer* buffer, unsigned long baseVertexIndex)
     {
         PSelectedIndexBuffer = buffer;
         if (buffer)
@@ -120,7 +121,7 @@ public:
 private:
     // ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z: device call only on a change; the
     // stage-in-use high-water mark always.
-    __forceinline void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
+    FABLE_FORCEINLINE void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
     {
         if (CurrentlySelectedTextures[stage] != texture) {
             CurrentlySelectedTextures[stage] = texture;

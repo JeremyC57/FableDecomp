@@ -16,6 +16,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CTCBase;
@@ -28,7 +29,7 @@ struct CTCMap {                                    // the thing's component map 
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind);   // 0x0040F020 (same-TU stand-in below)
-    __forceinline CTCBase* Find(long kind)
+    FABLE_FORCEINLINE CTCBase* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -63,10 +64,10 @@ class CThing { public:
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 
-template <class T> __forceinline bool GetTCOut(CThing* thing, long kind, T** out)   // out-parameter lookup: the component stays in eax
+template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing* thing, long kind, T** out)   // out-parameter lookup: the component stays in eax
 {
     if (thing->HasTC(kind)) {
         *out = (T*)thing->m_tcs.Find(kind);

@@ -19,10 +19,11 @@
 // 0x00589C55: OldObjectRHSet +0x190, OldRotationAngle +0x1A8, CurrentObjectRHSet +0x1AC, CurrentRotationAngle +0x1C4,
 // QuickAccessFlashState +0x1CE, QuickAccessFlashTimer +0x1D0; CTCInventoryBase PDef +0x68; CInventoryDef
 // NumberOfSecondsForObjectRotation +0x1DC (PDB +0x1F8), MainQuickAccessItemFlashTime +0xA30 (PDB +0xA5C).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 #include "engine/C3DVector.h"
 
 class CMainGameComponent {

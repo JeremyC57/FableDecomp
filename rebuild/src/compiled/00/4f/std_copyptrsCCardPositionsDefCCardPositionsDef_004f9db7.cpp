@@ -11,6 +11,7 @@
 // Shape: STLport `__copy_ptrs(first, last, result, __false_type) { return __copy(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0); }` with the counted `__copy` inlined (the source walking as
 //   `edi + esi`); 0x48 is not a power of two, so the count is an `idiv`. Size TU (`dec ebx ; jne`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class C2DVector {
@@ -46,7 +47,7 @@ public:
 };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {
@@ -74,7 +75,7 @@ OutputIter __fastcall __copy_ptrs(InputIter first, InputIter last, OutputIter re
 class CCardPositionsDef : public CParentDefClassBase {   // Ego_r.pdb, retail sizeof 0x48
 public:
     std::vector<C2DVector> Offset;                  // +0x3C
-    __forceinline CCardPositionsDef& operator=(const CCardPositionsDef& other)
+    FABLE_FORCEINLINE CCardPositionsDef& operator=(const CCardPositionsDef& other)
     {
         CParentDefClassBase::operator=(other);
         Offset = other.Offset;

@@ -14,6 +14,7 @@
 //   +0x4C, CanTurnBody +0x50, PosToLookAt +0x68, TimeToStopLooking +0xB4, OneFrameDelay +0xB8. No engine header for CTCLook.
 // Shape: the stop-looking reset and the interface-8 head state are written out inline (retail inlines those two state
 //   setters and the first look-timer update; the later ones are calls).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 struct CTCBaseComponent;
 class CTCBase;
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned long m_presentBits[9];                        // +0x20
     CInterfaceMap m_interfaces;                            // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long wanted)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
@@ -34,7 +35,7 @@ class CThing { public:
             it = map->end();
         return (T*)((CTCBaseComponent*)it->second);
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

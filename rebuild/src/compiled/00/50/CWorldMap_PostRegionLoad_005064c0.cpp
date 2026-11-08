@@ -15,6 +15,7 @@
 // Shape: the same-TU noinline bodies of GetAllThings and _M_insert_overflow (real retail callees, STLport 4.6 / the CThing
 //   search template) let VC7.1 see the list and the vectors do not escape, so it keeps their pointers in registers and
 //   hoists the push_back constants as retail does; the STLport _List_base ctor builds the header in a local first.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);
@@ -176,7 +177,7 @@ public:
     {
         return IncludeInThingScans && Activated && !Dead && !InLimbo;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!(UsingComponents[T::InterfaceType / 32] & (1UL << (T::InterfaceType % 32))))
             return false;

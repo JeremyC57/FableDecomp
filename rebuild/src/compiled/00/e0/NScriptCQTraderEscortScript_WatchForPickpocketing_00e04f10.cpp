@@ -17,6 +17,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -53,7 +54,7 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointerScriptThing PImp;                    // +0x04
     CScriptThing() {}
-    virtual __forceinline ~CScriptThing() {}            // slot 0; out of line: 0x004AA840
+    virtual FABLE_FORCEINLINE ~CScriptThing() {}            // slot 0; out of line: 0x004AA840
     virtual void v001();    virtual void v002();    virtual void v003();    virtual void v004();    virtual void v005();    virtual void v006();    virtual void v007();    virtual void v008();
     virtual void v009();    virtual void v010();    virtual void v011();    virtual void v012();    virtual void v013();    virtual void v014();    virtual void v015();    virtual void v016();
     virtual void v017();

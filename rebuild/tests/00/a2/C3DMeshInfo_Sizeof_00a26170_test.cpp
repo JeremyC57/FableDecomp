@@ -10,6 +10,7 @@
 // Layout: engine/C3DMeshInfo.h (MeshData +0x0c, LODDataSizes +0x50, 0x60 bytes), engine/C3DMeshLODInfo.h (Mesh +0x1c,
 // FileData +0x24, 0x34 bytes); Ego_r.pdb C3DMeshInfo::CMeshData: LODMeshes[4] +8, MeshStats +0x18, MeshID +0x1c.
 // Leaf: Sizeof@C3DMeshInfo_Methods
+#include "fable_compiler.h"
 #include "engine/C3DMeshInfo.h"
 #include "engine/C3DMeshLODInfo.h"
 
@@ -45,7 +46,7 @@ struct CMeshData {                                 // C3DMeshInfo::CMeshData (Eg
 struct C3DMeshInfo_Methods : C3DMeshInfo {
     const CMeshData* GetMeshData() const { return (const CMeshData*)MeshData_Object; }
     unsigned long Sizeof() const;
-    __forceinline bool HasLOD(unsigned long lod) const
+    FABLE_FORCEINLINE bool HasLOD(unsigned long lod) const
     {
         if (lod < 4 && LODDataSizes[lod]) return true;
         return false;

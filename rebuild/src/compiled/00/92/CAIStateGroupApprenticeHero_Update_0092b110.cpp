@@ -21,6 +21,7 @@
 // Layout: engine/CAIStateGroup_ApprenticeHero.h flattens the CAIStateGroupBase vptr to a void* member, which cannot carry
 //   the virtual PracticeSkills call, so the class is modelled locally (PBrain +0x04, NextFramePractice +0x14 as in the
 //   header); CThing as in the landed 0x008337B0 (bitset +0x20, interface map +0x44).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -39,7 +40,7 @@ class CThing { public:
     {
         return (((const unsigned char*)UsingComponents)[interfaceType >> 3] & (1 << (interfaceType & 7))) != 0;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;

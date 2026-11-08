@@ -7,6 +7,7 @@
 //   theme-size-Z sibling and the manifest label is wrong.
 // Callees: _ftol 0x00BFEA70, CWorldMap::GetGroundSizeZAt(const C3DVector&) 0x0063A390, GetThemeMinCameraSizeZOffsetAt(const C2DCoordI&) 0x0063A7E0 inlined.
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets).
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 
@@ -130,10 +131,10 @@ public:
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const; // 0x004FC3C0
     C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const; // 0x004FC2A0
     float GetGroundSizeZAt(const C3DVector& pos) const;               // 0x0063A390
-    __forceinline float GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const;   // 0x0063A7E0 (inlined here)
+    FABLE_FORCEINLINE float GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const;   // 0x0063A7E0 (inlined here)
     float GetHighestThemeSizeZInArea(const C3DVector& tl, const C3DVector& br) const;
 };
-__forceinline float CWorldMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const
+FABLE_FORCEINLINE float CWorldMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const
 {
     if (IsPosInMap(pos))
     {

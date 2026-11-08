@@ -20,6 +20,7 @@
 //          (built before the pushes, `lea`-addressed); the created thing's alive test is `p && !(p->flags & 1)`.
 // Layout: Ego_r.pdb CActionEventAddObject (32 bytes): CActionEventBase {vptr, Finished +4, ActivationFrame +8, PThing +0xc,
 //          PCameraManager +0x10}, Object +0x14, Hand +0x18, DestroyOnExit +0x1c.
+#include "fable_compiler.h"
 class CTCBase;
 class CCreatureActionBase;
 class CGameCameraManager;
@@ -77,13 +78,13 @@ struct CActionEventAddObject {
     CCharString Object;                         // +0x14
     CCharString Hand;                           // +0x18
     bool DestroyOnExit;                         // +0x1c
-    __forceinline void CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
+    FABLE_FORCEINLINE void CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
         CRightHandedSet& orientation, long slot);
     virtual void Dispatch(const CCreatureActionBase& action);
 };
 
 // Resolve the object def, create it for the player at the creature's position and hand it over.
-__forceinline void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
+FABLE_FORCEINLINE void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
     CRightHandedSet& orientation, long slot)
 {
     long objectDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Object);

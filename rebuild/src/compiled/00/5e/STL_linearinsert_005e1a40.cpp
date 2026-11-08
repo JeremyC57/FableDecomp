@@ -9,9 +9,10 @@
 // Shape: STLport `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else
 //   __unguarded_linear_insert(last, val, comp);` -- the by-value val's destructor is duplicated into both exits.
 // Label correction: catalogued as `SortedList_Insert_CCharString`; the body is STLport `__linear_insert`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

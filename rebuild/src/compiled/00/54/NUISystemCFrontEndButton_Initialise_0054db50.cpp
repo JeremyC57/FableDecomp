@@ -4,6 +4,7 @@
 // CChangingStateComponent::Initialise 0x0052C730. Shape: the PCStyle byte is read into bl before the temporary
 // definition pointer is released; VC duplicates the `LastEventTime = CurrentTime` tail into both arms.
 // Name from Ego_r.pdb: ?Initialise@CFrontEndButton@NUISystem@@UAEXXZ (source order OnRightUnclicked, Initialise, ProcessEvent).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -19,7 +20,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

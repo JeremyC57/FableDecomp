@@ -13,6 +13,7 @@
 //   VC's construction flags (ebx bits 1 and 2); the found flag lives in a frame byte. The sub-def out word is a plain
 //   struct zeroed at the top of a block (it shares the GENERATE_DROP string's word); an inline helper calls GetSubDef and
 //   copies the out word into `effects`, and the effects def is released by hand from that copy at the end.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
@@ -20,7 +21,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef {
 public:
     bool GetEffectFromString(CCharString const&a0, long&a1) const;   // 0x00669D30 (Ego_r.pdb ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z)
@@ -84,7 +85,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -129,7 +130,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     virtual void Initialise();                                // 0x00857520
 };
 struct SEffectsOut { CSpecialEffectsDef* Object; };
-__forceinline bool GetSubDefRaw(CDefClassBase* def, SEffectsOut* out, CSpecialEffectsDef*& result)
+FABLE_FORCEINLINE bool GetSubDefRaw(CDefClassBase* def, SEffectsOut* out, CSpecialEffectsDef*& result)
 {
     bool found = def->GetSubDef((CDefPointer<CSpecialEffectsDef>*)out);
     result = out->Object;

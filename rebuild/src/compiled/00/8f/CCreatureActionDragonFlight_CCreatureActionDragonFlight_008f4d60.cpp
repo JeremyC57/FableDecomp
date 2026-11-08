@@ -11,6 +11,7 @@
 // CThing::GetPos 0x004C73D0, CRT fmod 0x00BFEB28.
 // Vtable 0x01288544. Layout: retail CCombatActionBase is 0x114 bytes (PDB 0x12c), so FaceTarget +0x114 and
 // TurnRate +0x118 (PDB +0x12c/+0x130), as in the landed sibling ctor 0x008F4D00; CThing PhysicsTC +0x60.
+#include "fable_compiler.h"
 #include <math.h>
 #include "fable_string.h"
 #include "engine/C3DVector.h"
@@ -37,7 +38,7 @@ public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 // Bearing of a direction in turns, wrapped into [0, 1).
-static __forceinline float GetBearingInTurns(float x, float y)
+static FABLE_FORCEINLINE float GetBearingInTurns(float x, float y)
 {
     float turns = (float)atan2((double)x, (double)y) * 0.15915494f;
     if (turns < 0.0f || turns >= 1.0f) {
@@ -48,7 +49,7 @@ static __forceinline float GetBearingInTurns(float x, float y)
     return turns;
 }
 // Wrap a turn difference into [-0.5, 0.5).
-static __forceinline float WrapTurnDifference(float turns)
+static FABLE_FORCEINLINE float WrapTurnDifference(float turns)
 {
     if (turns < -0.5f)
         return (float)fmod((double)(turns - 0.5f), 1.0) + 0.5f;

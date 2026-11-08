@@ -9,6 +9,7 @@
 // Shape: the search is an inline Find that RETURNS the stop node (`while (it != end && it->uid != uid)`), so the caller's `== end`
 //   compare is emitted after both loop exits (`cmp eax,ecx`, the end node kept in ecx); push_back = insert(end(), x) with the iterator
 //   a 4-byte class with a user copy constructor built in its argument slot (`push ecx ; mov eax,esp ; mov [eax],ecx`).
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
@@ -35,7 +36,7 @@ struct CParamList {
     SParamNode* _M_node;
     SParamIterator insert(SParamIterator pos, const SThingActionParam& x);   // 0x004B99E0
     void push_back(const SThingActionParam& x) { insert(SParamIterator(_M_node), x); }
-    __forceinline SParamNode* Find(long thingUID)
+    FABLE_FORCEINLINE SParamNode* Find(long thingUID)
     {
         SParamNode* end = _M_node;
         SParamNode* it = end->_M_next;

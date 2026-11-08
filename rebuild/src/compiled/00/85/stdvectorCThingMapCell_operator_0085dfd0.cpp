@@ -14,6 +14,7 @@
 //   cell's destructor is trivial), else copies size() cells and constructs the rest through `__uninitialized_copy`.
 // Shape: the type-traits tag is a named `__false_type` local (homed in the dead argument slot, no store); the value-
 //   initialised temporary `__false_type()` adds a `mov byte ptr [esp+1Ch],0` before the call.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);
 
 namespace NThingMap {
@@ -32,7 +33,7 @@ template <class InputIter, class ForwardIter>
 ForwardIter __fastcall __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&);   // 0x0085D820
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {

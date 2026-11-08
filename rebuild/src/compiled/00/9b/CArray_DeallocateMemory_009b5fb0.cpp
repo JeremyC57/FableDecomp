@@ -11,6 +11,7 @@
 //   constructor, so its type traits are __false_type and copy() takes the element-wise loop rather than memmove).
 // Shape: the landed CArray<SElement12>::DeallocateMemory 0x009D3D90 model with __copy inlined (`__forceinline`): the counted
 //   `for (n = last - first; n > 0; --n)` loop over end()..end() gives retail's `sar 3 ; test ; jle` and the `dec esi` loop.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
 struct __true_type { __true_type() {} };
@@ -29,7 +30,7 @@ template <class _T1, class _T2> struct pair {
     pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) {}
 };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

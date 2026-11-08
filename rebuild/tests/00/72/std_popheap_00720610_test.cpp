@@ -1,5 +1,6 @@
 // Behaviour test for 00720610: src/00720610.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. std::__pop_heap(pair<EHeroMorphType, CTextureMorphEntry>* first, ..., pair value, CKeyPairCompareLess comp, int*)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,8 +27,8 @@ enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;              // +0x00

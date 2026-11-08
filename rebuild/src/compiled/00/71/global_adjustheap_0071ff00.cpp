@@ -12,12 +12,13 @@
 // (two words inline, the blend description through its out-of-line copy ctor).
 // Shape: SGI `__adjust_heap` (`secondChild = 2 * (secondChild + 1)`; the bottom case uses
 // `secondChild - 1`); the compare is the signed key `jge`.
+#include "fable_compiler.h"
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;              // +0x00

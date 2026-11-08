@@ -12,6 +12,7 @@
 // Shape: the inline out-parameter GetInterface(T** ppOut, long type) template of the landed 0x007504E0 / 0x007B2CF0 family
 // writes straight through the caller's pointer; the key 4 lives in the `push ecx` frame slot. Here the template must be
 // `__forceinline`: with its bool result unused VC7.1 keeps it out of line (50v92).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCHeroStats;
 
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags;                   // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

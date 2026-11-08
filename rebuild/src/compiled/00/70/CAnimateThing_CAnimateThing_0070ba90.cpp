@@ -17,6 +17,7 @@
 // Shape: no user code; C3DAnimationBlendState's dtor is implicit (no vptr store), its CIVCountedPointer member releases with
 //   the pointer read once into a local (`dec [ecx+4] ; jne`, Object = 0), then ~CBaseClass. Retail destroys each blend state
 //   through `lea edi,[esi+x]` with ebx = 0 for the null stores.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 namespace std {
@@ -70,7 +71,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     T* operator->() const { return static_cast<T*>(Object); }
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -79,14 +80,14 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class C3DAnimationBlendState : public CBaseClass { public:   // vtable + shared data pointer, 8 bytes
     class CSharedData : public CIVCountedPointeeBase { public:

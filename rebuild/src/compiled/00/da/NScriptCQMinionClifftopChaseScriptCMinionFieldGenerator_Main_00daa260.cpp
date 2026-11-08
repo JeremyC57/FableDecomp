@@ -17,6 +17,7 @@
 //   GetThingWithScriptName temporary reuses its slot).
 // Naming wave 35: identity reg 00da388e "MinionFieldGenerator" in 00da34b0; Alloc 00da5b40; vtable 012d7564 slot 1; PDB ?Main@CMinionFieldGenerator@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMinionFieldGenerator::Main (wave3/labels_alloc.tsv); PDB ?Main@CMinionFieldGenerator@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMinionFieldGenerator@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -42,7 +43,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -76,7 +77,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
 class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;                                // +0x04 (copied inline, destroyed out of line)
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+    FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     virtual ~CIsThingAlive();
 };
@@ -89,7 +90,7 @@ inline CIsThingAlive::~CIsThingAlive() { }
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes

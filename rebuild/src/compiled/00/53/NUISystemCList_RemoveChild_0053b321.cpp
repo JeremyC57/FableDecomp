@@ -22,6 +22,7 @@
 //   compares a fresh end() (else VC keeps &finish, not &vector, in ebx); the arrows are cached in locals; the down count
 //   reads a named def pointer (in the dead `index` slot) so the release follows the call; `if (restore) ...(0); else
 //   ...(6);` keeps the push 0 / push 6 branches (a ?: becomes sbb/and/add).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define V1(n) virtual void n();
@@ -34,15 +35,15 @@
 
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void d00();
     virtual void Destroy();                          // slot 1 (+0x04)
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CListDef : CDefBase {
     unsigned char _pad08[0x13c - 0x08];
@@ -52,7 +53,7 @@ struct CListDef : CDefBase {
 };
 struct CListDefPointer {
     CListDef* Object;
-    __forceinline ~CListDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CListDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CListDef* operator->() const { return Object; }
 };
 class CCPPointerInfo;

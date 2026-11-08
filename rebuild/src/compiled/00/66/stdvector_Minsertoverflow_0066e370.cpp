@@ -16,6 +16,7 @@
 //   through a `__forceinline` twin of __uninitialized_copy, the tail calls the declared out-of-line instance.
 //   C3DVector's memberwise user copy constructor (as the landed 0x0066DDF0) moves each float through one register;
 //   the implicit copy routes the source/destination through esi/ebx (291 v 270).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 inline void* operator new(unsigned int, void* __p) throw() { return __p; }
@@ -25,13 +26,13 @@ inline void* operator new(unsigned int, void* __p) throw() { return __p; }
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&);   // 0x0066DDF0 (landed)
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy_head(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy_head(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -39,7 +40,7 @@ __forceinline _ForwardIter __uninitialized_copy_head(_InputIter __first, _InputI
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

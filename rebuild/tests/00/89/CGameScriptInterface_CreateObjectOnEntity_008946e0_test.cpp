@@ -1,4 +1,5 @@
 // Behaviour test for 008946e0: body copied from src/008946e0.cpp (CGameScriptInterface::CreateObjectOnEntity), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -46,7 +47,7 @@ class CScriptThing : public CBaseClass { public:
     virtual bool IsAlive() const { return g_alive; }
     CScriptThing& operator=(const CScriptThing& other) { ++g_assigns; CCountedScriptImp copy(other.PImp); PImp.~CCountedScriptImp(); PImp.Data = copy.Data; PImp.Info = copy.Info; if (PImp.Info) ++PImp.Info->RefCount; return *this; }
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 static int g_defDestroyed = 0;
 class CThingObjectDef { public:
     virtual void v00() {}

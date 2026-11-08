@@ -1,5 +1,6 @@
 // Behaviour test for 007ceb00: src/007ceb00.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCElectrocutedEffect::CTCElectrocutedEffect(CThing* thing)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -158,7 +159,7 @@ public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

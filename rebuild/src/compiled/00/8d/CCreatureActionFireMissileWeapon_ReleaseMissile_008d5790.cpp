@@ -3,6 +3,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008D5790,316bytes; parameters CThing** missile,CThing** weapon,long* shot preserve incoming outputs on skipped branches.
+#include "fable_compiler.h"
 #define CCreatureAction_FireMissileWeapon CCreatureAction_FireMissileWeaponPdb
 #include "engine/CCreatureAction_FireMissileWeapon.h"
 #undef CCreatureAction_FireMissileWeapon
@@ -54,7 +55,7 @@ class CThing:public CBaseObject { public:
     unsigned char DeadFlags;
     void SetInLimbo(bool); //004C8CF0
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;
@@ -181,7 +182,7 @@ struct __declspec(novtable) CCreatureActionBase {
 struct NativeCountedDef {
  struct VTable;const VTable* VPtr;unsigned long IVRefCount;
  void DeletingDestructor(unsigned long);void Delete()const;
- __forceinline void Release(){if(!--IVRefCount)(this->*GetDelete())();}
+ FABLE_FORCEINLINE void Release(){if(!--IVRefCount)(this->*GetDelete())();}
  typedef void(NativeCountedDef::*DeleteMethod)()const;
  DeleteMethod GetDelete()const;
 };
@@ -190,7 +191,7 @@ inline NativeCountedDef::DeleteMethod NativeCountedDef::GetDelete()const{return 
 template<class T>struct DefPointer {
  T* Object;DefPointer():Object(0){} explicit DefPointer(T* p):Object(p){if(p)++p->IVRefCount;}
  DefPointer(const DefPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
- __forceinline void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
+ FABLE_FORCEINLINE void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
  ~DefPointer(){T* p=Object;if(p)p->Release();}
  T* operator->()const{return Object;}
 };

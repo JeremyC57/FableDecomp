@@ -15,6 +15,7 @@
 // Layout (retail; Ego_r.pdb names, 0x14 below the PDB): InventoryAnimCurrentRHSet +0xCC, InventoryAnimLastRHSet +0xE4,
 // InventoryAnimCurrentX/LastX/CurrentY/LastY/CurrentZ/LastZ RotationAngle +0xFC..+0x110,
 // InventoryAnimThingDefIndex +0x124, RHSetInvItemDefIndex +0x128.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 #include "engine/C3DVector.h"
@@ -43,7 +44,7 @@ class CTCInventoryBase { public:
     unsigned char _pad_0x114[0x124 - 0x114];
     long InventoryAnimThingDefIndex;               // +0x124
     long RHSetInvItemDefIndex;                     // +0x128
-    __forceinline void ResetRHSets(const CRightHandedSet& start)
+    FABLE_FORCEINLINE void ResetRHSets(const CRightHandedSet& start)
     {
         InventoryAnimLastRHSet = start;
         InventoryAnimCurrentRHSet = start;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,10 +16,10 @@ extern "C" __declspec(dllimport) void __stdcall DebugBreak();
 #pragma auto_inline(off)
 CDebugBreak::CDebugBreak(){DebugBreak();}
 #pragma auto_inline(on)
-static __forceinline void Check(bool ok,const char* text){if(!ok){if(AssertHook_0143bb2c)AssertHook_0143bb2c(text);CDebugBreak token;}}
+static FABLE_FORCEINLINE void Check(bool ok,const char* text){if(!ok){if(AssertHook_0143bb2c)AssertHook_0143bb2c(text);CDebugBreak token;}}
 class CCharString { public:
  char* data;
- __forceinline StringData* GetData()const{Check(data!=0,"m_pchData != NULL\n");return (StringData*)data-1;}
+ FABLE_FORCEINLINE StringData* GetData()const{Check(data!=0,"m_pchData != NULL\n");return (StringData*)data-1;}
  StringData* GetDataOutOfLine();
  void Release(); void AssignCopy(int,const char*); void CopyBeforeWrite();void Alloc(int);void ConcatCopy(int,const char*,int,const char*);
  CCharString& Assign(const CCharString&);

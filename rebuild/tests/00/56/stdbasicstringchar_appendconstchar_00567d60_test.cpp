@@ -1,6 +1,7 @@
 // Behaviour test for 00567d60: src/00567d60.cpp copied verbatim; malloc/memmove/free are the CRT's and the noreturn length-error
 // thrower is stubbed to throw, so the in-place copy, both growth sizes (max picks the old size or the count), the empty range
 // and both length checks are observable. std::basic_string<char>::append<const char*>(const char*, const char*, const forward_iterator_tag&)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __declspec(x)
 #define __forceinline inline
@@ -42,7 +43,7 @@ template <class _Iter> inline int distance(const _Iter& __first, const _Iter& __
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-__forceinline void* __ucopy_trivial(const void* __first, const void* __last, void* __result)
+FABLE_FORCEINLINE void* __ucopy_trivial(const void* __first, const void* __last, void* __result)
 {
     return (__last == __first) ? __result :
         ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first))) +

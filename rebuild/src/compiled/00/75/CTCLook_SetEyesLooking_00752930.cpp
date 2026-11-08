@@ -12,6 +12,7 @@
 // assign the two eye angles (the YZ AngleDifference call is shared) and one ChangeEyeAngles call follows.
 // Layout (retail, local model as the landed CTCLook sources): ParentThing +0x04, PParentCreature +0x10, RecoveryAngleToLookAt
 // XY/YZ +0x1c/+0x20, HeadAngleRelToBody XY/YZ +0x2c/+0x30, CachedHeadPos +0xa1 (packed, PDB +0xa5). No engine header.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fmod, fabs)
 
@@ -22,7 +23,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    __forceinline bool operator!=(const C3DVector& o) const;
+    FABLE_FORCEINLINE bool operator!=(const C3DVector& o) const;
 };
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -46,7 +47,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
     }
     return false;
 }
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -62,7 +63,7 @@ float __stdcall AngleDifference(float a, float b);                              
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
-__forceinline bool C3DVector::operator!=(const C3DVector& o) const
+FABLE_FORCEINLINE bool C3DVector::operator!=(const C3DVector& o) const
 {
     return (float)fabs(X - o.X) > DELTA_NOTIONAL_ZERO || (float)fabs(Y - o.Y) > DELTA_NOTIONAL_ZERO ||
            (float)fabs(Z - o.Z) > DELTA_NOTIONAL_ZERO;
@@ -83,7 +84,7 @@ class CTCLook { public:
     unsigned char       _pad34[0xa0 - 0x34];
     bool                TargetAcquired;         // +0xa0 (PDB +0xa4)
     C3DVector           CachedHeadPos;          // +0xa1 (PDB +0xa5)
-    __forceinline C3DVector GetHeadPos() const
+    FABLE_FORCEINLINE C3DVector GetHeadPos() const
     {
         if (g_bQueryCreatureHeadPos)
             return PParentCreature->GetHeadPos(false);

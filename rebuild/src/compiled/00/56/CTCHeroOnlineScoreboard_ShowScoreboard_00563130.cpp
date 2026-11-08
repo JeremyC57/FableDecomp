@@ -19,6 +19,7 @@
 // CUserProfileManager's signed-in user name +0x110 and password +0x114 (CWideString).
 // Shape: GetSignedInUserName/GetSignedInPassword are inline by-value CCharString getters, compared to "" with the
 // inline CCharString==; the `||` gives the conditional-temporary flags word.
+#include "fable_compiler.h"
 #include <new>
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
@@ -40,7 +41,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -263,7 +264,7 @@ class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  UsingComponents[9];                  // +0x20
     CInterfaceMap  Interfaces;                          // +0x44
-    template<class T> __forceinline T* GetTC(long id)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long id)
     {
         ETCInterfaceType key = (ETCInterfaceType)(id);
         CInterfaceMap* m = &Interfaces;

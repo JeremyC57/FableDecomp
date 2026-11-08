@@ -12,6 +12,7 @@
 //   (FABLE_RETAIL_CPERSISTTRAITS) built after CheckCRC, its TransferBinaryIn inline (`value = stream.ReadNullTerminatedString()`,
 //   the landed three-argument Transfer<CCharString> 0x004109A0 form), and each case arm `return`s (with `break` VC7.1 swaps the
 //   traits' frame slot and the read temporary's).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 #define FABLE_RETAIL_CPERSISTCONTEXT
@@ -25,7 +26,7 @@
 #include "engine/CPersistContext.h"
 #include "engine/CPersistTraits.h"
 
-template <> __forceinline void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStream& stream, CCharString& value)
+template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStream& stream, CCharString& value)
 {
     value = stream.ReadNullTerminatedString();
 }

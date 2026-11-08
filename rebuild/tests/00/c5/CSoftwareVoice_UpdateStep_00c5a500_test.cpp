@@ -1,5 +1,6 @@
 // Behaviour test for 0x00C5A500 (source body copied from src/00c5a500.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
 #define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
 #endif
@@ -42,14 +43,14 @@ static unsigned long long ra_tsc = 1000000;
 // both rates are unsigned conversions (`fild ; jge ; fadd 2^32`); `< 0.01f` is `fcom ; test ah,5 ; jp`; the
 // unfolded `+ 0.5f - 0.5f` precedes the ROUND; the cap stores first then re-stores 0xF000 (`cmp ; mov ; jbe`).
 // the inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)
     return result;
 }
 // truncation toward zero on top of it: round(x - 0.5) is floor(x), negatives step back up by one
-__forceinline long FloatToLongTruncate(float value)
+FABLE_FORCEINLINE long FloatToLongTruncate(float value)
 {
     long result = FloatToLong(value - 0.5f);
     if (result < 0)

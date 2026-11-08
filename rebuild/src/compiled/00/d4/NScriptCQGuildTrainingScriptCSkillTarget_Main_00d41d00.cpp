@@ -13,6 +13,7 @@
 //   12-byte steps) and the Y product is spilled while X is forwarded; operator* there gives the right frame but drops the
 //   (float)i lifetime (fxch / fmul mem). The hit-score ladder is "damage<0.25 / <0.5 / <0.75 / else" (fcomp; test ah,5),
 //   the static-mode test "damage>0.5 -> break" (test ah,0x41; je), and i=0 precedes EntitySetTargetable(Me,false).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -40,9 +41,9 @@ extern CDefPointer<const CScriptDef> pGlobalScriptDef;
 extern "C" int __cdecl rand();
 template<> CCountedPointer<CScriptThing>& CCountedPointer<CScriptThing>::operator=(const CCountedPointer<CScriptThing>&);
 inline CScriptThing::CScriptThing() { }
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 void NScript::CQ_GuildTrainingScript::CSkillTarget::Main()
 {
     float angle=Me.GetAngleXY();

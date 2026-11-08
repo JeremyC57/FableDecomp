@@ -13,6 +13,7 @@
 // creature argument is pushed before the village call (object expression evaluated after the argument).
 // No engine-header member names beyond the padding; local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 struct CTCVillager;
 class CTCVillage;
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -72,7 +73,7 @@ class CTCVillage { public:
 };
 
 // inline villager accessor: the out-parameter lookup plus the village check on the hit path
-__forceinline CTCVillager* GetVillagerTC(CThing* creature)
+FABLE_FORCEINLINE CTCVillager* GetVillagerTC(CThing* creature)
 {
     CTCVillager* villager;
     if (creature->GetInterface(&villager, 0x23))

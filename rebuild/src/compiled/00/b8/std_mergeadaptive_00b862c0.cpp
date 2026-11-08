@@ -14,6 +14,7 @@
 //   loop) must be `__forceinline`: with plain `inline` VC7.1 leaves both copy() calls out of line in this body (338v389),
 //   as in the landed __rotate_adaptive 0x00B85CD0. advance / distance / lower_bound / upper_bound are plain inline
 //   forwarders. Explicit instantiation emits the template.
+#include "fable_compiler.h"
 class CEngineSubPrimitiveBase;
 
 class CEngineSubPrimitiveRenderer {
@@ -82,7 +83,7 @@ inline int distance(const _InputIter& __first, const _InputIter& __last)
 }
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -93,12 +94,12 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter copy(_InputIter __first, _InputIter __last, _OutputIter __result)
+FABLE_FORCEINLINE _OutputIter copy(_InputIter __first, _InputIter __last, _OutputIter __result)
 {
     return __copy_ptrs(__first, __last, __result, __false_type());
 }

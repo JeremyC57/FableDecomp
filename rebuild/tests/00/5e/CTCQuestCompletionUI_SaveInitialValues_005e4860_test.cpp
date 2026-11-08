@@ -1,5 +1,6 @@
 // Behaviour test for 0x005E4860: CTCQuestCompletionUI::SaveInitialValues(const CCharString& questName) -- when the named quest's active card has a def index, remember the hero's renown, gold and experience at the quest start under that index
 // A copy of the source model and logic (compiled separately from src/005e4860.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -30,7 +31,7 @@ public:
     CInterfaceMap  m_interfaces;                       // +0x44
     unsigned char  _pad4c[0x8c - 0x4c];
     unsigned short DefGlobalIndex;                     // +0x8c
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -41,13 +42,13 @@ public:
         }
         return false;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

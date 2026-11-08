@@ -15,6 +15,7 @@
 // (the type constant 0x30 is held in ebx); both getters are called on the CTCCombat component; the chosen def is a CDefPointer local
 // filled from each getter's full-expression temporary through an AddRef copy; CDefPointer release and assignment clear the pointer
 // only inside the non-null arm (`if (p) { p->Release(); p = 0; }`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -58,7 +59,7 @@ struct CDefVirtual {
     virtual void Destroy();                        // slot 1
 };
 class CAbilityDef : public CDefVirtual, public CRefCounted { public:
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();
@@ -67,7 +68,7 @@ class CAbilityDef : public CDefVirtual, public CRefCounted { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();
@@ -82,7 +83,7 @@ template <class T> class CDefPointer { public:
             Object = object;
         }
     }
-    __forceinline void Assign(T* object)
+    FABLE_FORCEINLINE void Assign(T* object)
     {
         if (Object != object) {
             if (Object) {
@@ -100,7 +101,7 @@ class CThing { public:
     mutable std::bitset<274> m_present;               // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (m_present.test(type)) {
             long key = type;

@@ -19,6 +19,7 @@
 // Shape: the GetServingPoint out-pointer (`food`) is block-scoped at each call: VC7.1 then gives it the frame word above
 //   the 0xB8 lookup key (retail esp+0x14 key / esp+0x20 out), a function-scope local swaps the two words. The same-TU
 //   LowerBound lets the 0x21 key share its word with the owner spill (frame 0xc).
+#include "fable_compiler.h"
 enum ETCInterfaceType { TC_THING_OWNER = 0x21, TC_TAVERN_TABLE = 0xb8, TC_TAVERN_GAME = 0xcf };
 enum ESex { SEX_NONE = 0, SEX_MALE = 1, SEX_FEMALE = 2 };   // as landed 0x008330D0
 enum ECreatureType { CREATURE_TYPE_2 = 2 };              // enumerator name descriptive (unproven)
@@ -80,18 +81,18 @@ public:
     unsigned char InLimbo : 1;                            // +0x91 bit 5
     unsigned char KillLocked : 1;
     unsigned char CreatedBySerialisation : 1;
-    __forceinline unsigned long HasTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE unsigned long HasTC(ETCInterfaceType type) const
     {
         return UsingComponents[type >> 5] & (1UL << (type & 31));
     }
-    template <class T> __forceinline T* GetTC(ETCInterfaceType interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(ETCInterfaceType interfaceType)
     {
         ETCInterfaceType type = interfaceType;
         CVectorMap<ETCInterfaceType, CTCBase*>* map = &Components;
         CVectorMap<ETCInterfaceType, CTCBase*>::value_type* it = map->LowerBound(type);
         return (T*)((it == map->_M_finish || interfaceType < it->first) ? map->_M_finish : it)->second;
     }
-    template <class T> __forceinline bool GetTC(T** ppOut, ETCInterfaceType interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** ppOut, ETCInterfaceType interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = interfaceType;

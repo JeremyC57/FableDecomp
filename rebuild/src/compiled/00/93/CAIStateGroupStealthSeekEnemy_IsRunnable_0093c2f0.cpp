@@ -19,6 +19,7 @@
 //   overlay the dead key slot (sub esp,8); the creature for AreThingsEnemies through the inline
 //   CAIStateGroupBase::GetCreature() accessor and the other three reads straight through PBrain->Creature (this mix sets
 //   retail's scratch rotation edx/eax/ecx); `PEnemy = const_cast<CThing*>(target)` is an implicit-conversion temporary.
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
@@ -101,7 +102,7 @@ class CThing { public:
     unsigned char _bits91 : 7;
     unsigned char _pad92[0x6];
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template <class T> __forceinline bool PeekTC(T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(T** out) const
     {
         if (HasTC(T::StatGetInterfaceType())) {
             ETCInterfaceType type = T::StatGetInterfaceType();

@@ -9,6 +9,7 @@
 // Layout: Ego_r.pdb CParticleEmitter minus 0x0c (landed constructor 0x00AF0380): ParticleSystems +0x08, UpdateParameters
 //   +0x14, PrimitiveGroupHandle +0x38, flag word +0x40, flag bytes +0x44/+0x45, PositionInterpolator +0x94 (StartPosition
 //   +0x98), Transform +0xb0, BSphere +0x144, DistanceToCam +0x154.
+#include "fable_compiler.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -25,7 +26,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
     CMatrix3x4() {}
-    __forceinline void SetInverse(const CMatrix3x4& m)
+    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m)
     {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;

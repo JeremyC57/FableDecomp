@@ -1,5 +1,6 @@
 // Behaviour test for 0x0079D2D0 CTCBulletTime::FinalCleanup: clears Pausable, removes this power's multiplier from
 // the caster's haste component (0x8C) when present, and clears the interface-0x46 component's flag when present.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -35,7 +36,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                      // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                          // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

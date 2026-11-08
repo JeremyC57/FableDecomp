@@ -14,6 +14,7 @@
 // is bit 0 of +0x50 (as the landed CModeDragonFlying::OnDeactivate).
 // Shape: the component is fetched into a local before the map test; the orientation is built from an inline cross product
 // with a (Y, -X, 0) side vector (the zero product kept as `fmul 0.0f`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
@@ -58,8 +59,8 @@ class CThingCreatureBase { public:
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char _pad64[0xb4 - 0x64];
     float Health;                                       // +0xb4 (CThingPhysical)
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

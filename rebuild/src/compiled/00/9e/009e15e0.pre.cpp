@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y",off)
 #include "rebuild_abi.h"
 
@@ -37,7 +38,7 @@ struct CQuickDrawTriInfoVectorView
     CQuickDrawTriInfoEraseView* end04;
     CQuickDrawTriInfoEraseView* capacity08;
 
-    __forceinline void Destroy(
+    FABLE_FORCEINLINE void Destroy(
         CQuickDrawTriInfoEraseView* first,
         CQuickDrawTriInfoEraseView* last)
     {

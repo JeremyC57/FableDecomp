@@ -6,6 +6,7 @@
 // its three 12-byte array members are released last-to-first, then CDefPointeeBase's empty inline destructor
 // stores its vtable right before the `jmp` to the root destructor (same model as the landed 0x0044F81A).
 // The "CPatchTesselationEdgeStrip" dtor label is propagated over byte-identical def destructors.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
@@ -14,7 +15,7 @@ struct CHeapArray {                                 // 12-byte array record: dat
     void* m_pData;
     long  m_size;
     long  m_capacity;
-    __forceinline ~CHeapArray() { if (m_pData != 0) free(m_pData); }
+    FABLE_FORCEINLINE ~CHeapArray() { if (m_pData != 0) free(m_pData); }
 };
 
 class CResource { public:

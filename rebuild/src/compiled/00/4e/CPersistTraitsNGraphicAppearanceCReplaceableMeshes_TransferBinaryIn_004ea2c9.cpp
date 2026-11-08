@@ -9,6 +9,7 @@
 //   `size() > 0 ? first : (void*)&vector`, `if (bytes > 0)` Read(data, bytes); the inline Read tests
 //   `size <= remaining` (`cmp edx,[ebx+14h] ; jg`) and copies with the intrinsic memcpy (rep movsd / rep movsb).
 //   Size-optimised TU: #pragma optimize("s", on) (ebp frame).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -16,8 +17,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -47,8 +48,8 @@ template<class T> class CArray { public:   // STLport vector, 12 bytes in retail
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    __forceinline T* data() { return size() > 0 ? _M_start : (T*)this; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    FABLE_FORCEINLINE T* data() { return size() > 0 ? _M_start : (T*)this; }
     void resize(unsigned long count);                   // 0x004EA398
 };
 

@@ -6,14 +6,15 @@
 // Shape (family M049, representative 0x00466255): STLport `__tmp = _M_header.allocate(1); _Construct(&__tmp->_M_value_field,
 //   __x); return __tmp;` -- allocate/_Construct `__forceinline`; STLport's explicit pair copy constructor copies the key
 //   dword, then calls V's copy constructor at +4.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int);
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 namespace std {
-template <class _Tp> class allocator { public: allocator() { } __forceinline _Tp* allocate(unsigned int __n) { return (_Tp*)malloc(__n * sizeof(_Tp)); } };
+template <class _Tp> class allocator { public: allocator() { } FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return (_Tp*)malloc(__n * sizeof(_Tp)); } };
 template <class _Tp> struct less { };
 template <class _T1, class _T2> struct pair {
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
     _T1 first;
     _T2 second;
 };
@@ -25,7 +26,7 @@ public:
 };
 namespace std {
 template <class _Pair> struct _Select1st { };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 struct _Rb_tree_node_base {
     bool _M_color;
     _Rb_tree_node_base* _M_parent;

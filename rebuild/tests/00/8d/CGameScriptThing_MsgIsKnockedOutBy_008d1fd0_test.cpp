@@ -3,6 +3,7 @@
 // a "knocked out" event (type 8) with WorldFrame in (last, current] matches an empty name, or a name equal to the live
 // originator's script name; other types, frames, names and absent originators do not; and every by-value
 // CScriptThing from GetScriptThing is released.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -46,8 +47,8 @@ struct ScriptBaseNative { CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { ScriptBaseNative* Script; };
 struct QuestManagerNative { ActiveQuest* PQuestCurrentlyRunning; };
 static QuestManagerNative* QuestManager;
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
 struct EventBase {
     long Type;

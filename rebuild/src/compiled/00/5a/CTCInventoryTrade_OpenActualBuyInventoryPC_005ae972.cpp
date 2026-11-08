@@ -9,6 +9,7 @@
 // sharing the `mov ecx,ebx`.
 // Layout: retail CTCInventoryTrade PTop_Level_List +0x220 (engine/CTCInventoryTrade.h at the retail STLport 4.6 offsets,
 //   as the landed constructor 0x0059EB0C: PMouse_Pointer +0x21c, PTop_Level_List +0x220, PCurrentOpenTradeMenu +0x224).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -29,7 +30,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
     ~CCharString();                             // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;

@@ -8,6 +8,7 @@
 // Shape (family K096, representative 0x004616D6): the landed GFSerialiseMapBinaryIn 0x0067C110 in a frame/size TU (the 0x00469381
 //   recipe): clear() called, the value-initialised pair as `and [k],0 ; fldz ; fstp [v]`, the empty function-scope traits
 //   objects homed on the spilled map pointer's slot; CMemoryDataInputStream from engine/CMemoryDataInputStream.h.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -17,8 +18,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -57,7 +58,7 @@ template <class T> struct CPersistTraits {
     CPersistTraits() { }
     void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const;
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

@@ -13,6 +13,7 @@
 // `out.Object` and the body through the holder `def`: two base variables, so VC7.1 re-reads [esi+34h] for the push (retail)
 // instead of CSE-ing the test's load. The key name is a block-scoped named local (RVO into the frame slot, passed to
 // operator= by its address) -- an unnamed temporary passes GetString's returned eax.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
@@ -93,7 +94,7 @@ public:
 
 class CTCChest : public CTCContainerRewardHero { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    __forceinline CChestDef* GetChestDef(bool& found) const
+    FABLE_FORCEINLINE CChestDef* GetChestDef(bool& found) const
     {
         CDefClassBase* thingDef = ParentThing->PDef;
         CDefPointer<CChestDef> out;

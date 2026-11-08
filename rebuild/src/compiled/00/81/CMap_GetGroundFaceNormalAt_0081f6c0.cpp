@@ -14,8 +14,9 @@
 //   test is written dy > dx so both arms start with the same (long)localPos.Y, which VC7.1 hoists above the parity
 //   compare; the cross product is a named local normalised in place (member Normalise) and returned by copy (user copy
 //   ctor), as retail keeps it in the frame.
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -25,7 +26,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 }
 #define FABLE_RETAIL_C3DVECTOR
 #include "engine/C3DVector.h"
-__forceinline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
 }
@@ -49,7 +50,7 @@ class CHeightMap { public:
     unsigned char                  _MapUpdateAreas[0x1e8];
     long                           SizeX;          // +0x204
     long                           SizeY;          // +0x208
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) const { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) const { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 class CMap { public:
     unsigned char _pad000[0x1a7c];

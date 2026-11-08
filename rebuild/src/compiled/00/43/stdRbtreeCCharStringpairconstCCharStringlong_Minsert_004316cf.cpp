@@ -12,6 +12,7 @@
 // inlined: same data block -> false, null left -> true, null right -> false, else Compare(chars, chars) < 0 (`setl al`).
 // Layout: STLport _Rb_tree_node (color +0, parent +4, left +8, right +0xc, value +0x10); tree {header +0, node count +4};
 // CCharString is one CCharStringData* whose block starts with the C string (the landed 0x0099E900 model).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharStringData { public:
@@ -22,7 +23,7 @@ long __fastcall Compare(const char* a, const char* b);  // 0x00411570
 class CCharString {
 public:
     CCharStringData* PStringData;
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         bool result;
         if (other.PStringData == PStringData)
@@ -44,11 +45,11 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 template <class T> struct less {
-    __forceinline bool operator()(const T& x, const T& y) const { return x < y; }
+    FABLE_FORCEINLINE bool operator()(const T& x, const T& y) const { return x < y; }
 };
 template <class T> class allocator {};
 template <class V> struct _Select1st {
-    __forceinline const typename V::first_type& operator()(const V& x) const { return x.first; }
+    FABLE_FORCEINLINE const typename V::first_type& operator()(const V& x) const { return x.first; }
 };
 struct _Rb_tree_node_base {
     bool                _M_color;                        // +0x00

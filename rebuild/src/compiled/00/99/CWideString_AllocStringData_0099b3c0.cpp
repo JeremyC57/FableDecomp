@@ -14,6 +14,7 @@
 // tag temporary is homed in the dead `text` argument slot (`lea edx,[esp+0Ch]`); traits::length is the open-coded
 // word scan. The two arms tail-merge into one call and the `NoRefs = 1` store; the `?:` form gives retail's block
 // order (the if/return form places the (text, length) arm last and jumps back).
+#include "fable_compiler.h"
 struct forward_iterator_tag {
     forward_iterator_tag() { }
 };
@@ -40,11 +41,11 @@ struct CBasicStringW : _String_base_w {       // STLport basic_string<wchar_t>, 
     }
     void _M_range_initialize(const unsigned short* first, const unsigned short* last,
                              const forward_iterator_tag& tag);   // 0x0099C670
-    __forceinline CBasicStringW(const unsigned short* s, const allocator_w& a = allocator_w()) : _String_base_w(a)
+    FABLE_FORCEINLINE CBasicStringW(const unsigned short* s, const allocator_w& a = allocator_w()) : _String_base_w(a)
     {
         _M_range_initialize(s, s + length(s), forward_iterator_tag());
     }
-    __forceinline CBasicStringW(const unsigned short* s, unsigned long n, const allocator_w& a = allocator_w()) : _String_base_w(a)
+    FABLE_FORCEINLINE CBasicStringW(const unsigned short* s, unsigned long n, const allocator_w& a = allocator_w()) : _String_base_w(a)
     {
         _M_range_initialize(s, s + n, forward_iterator_tag());
     }
@@ -52,8 +53,8 @@ struct CBasicStringW : _String_base_w {       // STLport basic_string<wchar_t>, 
 class CWideStringData { public:                      // 16 bytes
     CBasicStringW Data;                       // +0x00
     long          NoRefs;                     // +0x0c
-    __forceinline CWideStringData(const unsigned short* text) : Data(text), NoRefs(1) { }
-    __forceinline CWideStringData(const unsigned short* text, unsigned long n) : Data(text, n), NoRefs(1) { }
+    FABLE_FORCEINLINE CWideStringData(const unsigned short* text) : Data(text), NoRefs(1) { }
+    FABLE_FORCEINLINE CWideStringData(const unsigned short* text, unsigned long n) : Data(text, n), NoRefs(1) { }
 };
 
 class CWideString {

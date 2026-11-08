@@ -7,10 +7,11 @@
 // Shape (as 0x00C43000): the record's operator== is `__forceinline`, each `fld [value] ; fld [storage] ; fucompp ;
 //   test ah,44h ; jp` loads the right operand first; the copies are the implicit record assignment; the clear arm keeps
 //   the flag OR in a register with the zero store between.
+#include "fable_compiler.h"
 struct SFourFloatParams_00c43230 {           // 0x14 bytes: four floats and a word (compared as an integer)
     float m_a, m_b, m_c, m_d;
     long  m_e;
-    __forceinline bool operator==(const SFourFloatParams_00c43230& other) const
+    FABLE_FORCEINLINE bool operator==(const SFourFloatParams_00c43230& other) const
     {
         return m_a == other.m_a && m_b == other.m_b && m_c == other.m_c && m_d == other.m_d && m_e == other.m_e;
     }

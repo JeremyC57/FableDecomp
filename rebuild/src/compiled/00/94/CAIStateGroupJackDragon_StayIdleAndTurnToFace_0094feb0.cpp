@@ -2,6 +2,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0094feb0 length311. Shared JackDragon/Base/Brain headers; narrow thing view exposes retail physics60 and dead91.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackDragon.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
@@ -104,8 +105,8 @@ class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens th
 };
 struct DragonMethods : public CAIStateGroupBase, CAIStateGroup_JackDragon {
 void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
-__forceinline CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
-__forceinline CDragonPointer& Enemy(){return *(CDragonPointer*)PEnemy;}
+FABLE_FORCEINLINE CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
+FABLE_FORCEINLINE CDragonPointer& Enemy(){return *(CDragonPointer*)PEnemy;}
 void StayIdleAndTurnToFace(float,const C3DVector&);
 };
 void DragonMethods::StayIdleAndTurnToFace(float duration,const C3DVector& facing){

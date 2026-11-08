@@ -5,6 +5,7 @@
 // The sibling of the drain-loop destructors landed at 0x00C3AC40 / 0x00C3B1D0 with an item type
 // whose implicit destructor is non-trivial (so `delete item` is null-checked and inlines the
 // member destructor). The manifest label is propagated; the classes are named by address.
+#include "fable_compiler.h"
 class CString { public:
     unsigned char _body[4];
     ~CString();                   // 0x00C0BA40
@@ -22,8 +23,8 @@ struct CContainerBase_00c30940 {           // vtable 0x012B1AB0
     virtual void v09(); virtual void v10();
     virtual CItem_00c30940* Next();        // slot 11
     long m_count;                          // +4
-    __forceinline CItem_00c30940* NextItem() { return Next(); }          // keeps the call virtual inside the destructor
-    __forceinline void RemoveItem(CItem_00c30940* item) { Remove(item); }
+    FABLE_FORCEINLINE CItem_00c30940* NextItem() { return Next(); }          // keeps the call virtual inside the destructor
+    FABLE_FORCEINLINE void RemoveItem(CItem_00c30940* item) { Remove(item); }
     ~CContainerBase_00c30940() { }
 };
 

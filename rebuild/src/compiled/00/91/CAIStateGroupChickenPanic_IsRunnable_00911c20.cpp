@@ -17,6 +17,7 @@
 //          the short `dec [esi+4] ; jne` release and the bool lives in a mid-function `push ebx`; the creature is a named
 //          local before SetAttackedByCreature. Two same-TU stand-in bodies (const LowerBound 0x004365B0 and GetEvent
 //          0x008AF0A0, both seen by retail's LTCG) tell VC7.1 the key and the hit pointer do not escape.
+#include "fable_compiler.h"
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -107,7 +108,7 @@ class CThing : public CThingPhysical { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
@@ -119,7 +120,7 @@ class CThing : public CThingPhysical { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {

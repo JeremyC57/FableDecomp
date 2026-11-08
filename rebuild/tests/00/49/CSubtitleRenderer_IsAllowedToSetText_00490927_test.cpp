@@ -1,4 +1,5 @@
 // CSubtitleRenderer::IsAllowedToSetText(bool force) -- subtitles may be set only while the game is running, not over a blocking front-end state (unless forced), outside the world's special mode, with no hero-information screen up, and while the living hero has neither of two components (0xFC, 0xC6) in their active state
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: IsAllowedToSetText
@@ -34,7 +35,7 @@ class CThing { public:
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type)
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -43,7 +44,7 @@ class CThing { public:
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
-template <class T> __forceinline bool IsComponentActive(CThing* thing, long type)
+template <class T> FABLE_FORCEINLINE bool IsComponentActive(CThing* thing, long type)
 {
     if (thing->HasInterface(type)) {
         T* component = thing->GetInterfaceUnchecked<T>(type);

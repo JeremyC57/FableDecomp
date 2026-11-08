@@ -14,6 +14,7 @@
 // Shape: the landed siblings 0x00924670 / 0x00924A90 (two-fetch alive test, each arm builds its temporary at the frame
 //   base inside the SetCurrentAction call; the charge loop fetches its target into a local first, as retail's fetch order
 //   shows); the hurt test is the FrameUpdate one (phase first, then `health < StartHealth`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -84,12 +85,12 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     CIntelligentPointer<CThing> PTarget;            // +0xa8 CIntelligentPointer<CThing>
     unsigned char           _padb0[0x114 - 0xb0];
     virtual ~CCombatActionBase();                       // 0x0062E900
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
-    __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
         return PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1);
     }
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.GetPItem()->GetInterface(&kraken, 0xe2);

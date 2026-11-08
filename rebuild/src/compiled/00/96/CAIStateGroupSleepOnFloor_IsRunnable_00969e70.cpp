@@ -16,6 +16,7 @@
 //   rough-area body is visible in this TU (FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY, noinline; retail compiles 0x00969FB0 right
 //   after this function), so VC7.1 knows the result vector is not captured: its start stays in ebx and the zero in edi across the
 //   later calls. The random index is the inline GFRandom (Ego_r.pdb ?GFRandom@@YIKKPAK@Z, landed 0x009104D0 model).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -62,7 +63,7 @@ class CTCMapwho;                                                    // engine/CT
 #include "stlport/fable_containers.h"
 
 long __fastcall GFROR13(unsigned long value);                       // 0x00497890 ?GFROR13@@YIJK@Z
-__forceinline unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24A1 + 0x24DF;
     *seed = GFROR13(*seed);

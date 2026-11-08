@@ -15,6 +15,7 @@
 // member's address (`lea esi,[ecx+2Ch]`).
 // Local base model, not engine/CIVCountedPointeeBase.h: the generated header flattens the vptr into a plain
 // `void* __vftable`, which cannot make the slot-1 virtual destroy call the release runs.
+#include "fable_compiler.h"
 class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -24,7 +25,7 @@ class CIVCountedPointeeBase { public:
 template <class T>
 class CIVCountedPointer { public:
     T* Object;                                  // +0x00
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* object = Object;
         if (object) {

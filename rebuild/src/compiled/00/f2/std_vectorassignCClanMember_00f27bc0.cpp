@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: ??4
 // Layout: PDB42943-42983 HeroSoulsWaveDef60/debug ->56/retail, padded CDefClassBase37->40, NumWaveCreatures40, vector44; nested CreatureDef52 has two CCharString wrappers40/44 and count48. f27d10 _M_clear writes no vector fields; f27d50 allocation also leaves receiver unchanged.
+#include "fable_compiler.h"
 #include <new>
 #include "engine/CDefClassBase.h"
 extern "C" void* __cdecl malloc(unsigned int);
@@ -31,7 +32,7 @@ template<class T>struct vector {
 template<class T>__declspec(noinline) T* vector<T>::_M_allocate_and_copy(unsigned int n,T* first,T* last){T* allocation=n?(T*)malloc(n*sizeof(T)):0;T* out=allocation;for(;first!=last;++first,++out)_Construct(out,first);return allocation;}
 template<class T>__declspec(noinline) void vector<T>::_M_clear(){T* first=_M_start;T* last=_M_finish;for(;first!=last;++first)first->~T();T* allocation=_M_start;if(allocation)free(allocation);}
 #pragma auto_inline(on)
-template<class T> __forceinline void _Destroy(T* first,T* last){for(;first!=last;++first)first->~T();}
+template<class T> FABLE_FORCEINLINE void _Destroy(T* first,T* last){for(;first!=last;++first)first->~T();}
 template<class T>vector<T>& vector<T>::operator=(const vector& other){
  if(&other!=this){
   const unsigned int n=other._M_finish-other._M_start;

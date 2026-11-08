@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __stdcall
@@ -14,7 +15,7 @@ class CShaderBase { public: virtual ~CShaderBase() { ++g_baseDtor; } };
 class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader(CVertexShaderData* d) : Data(d) { }
-    __forceinline virtual ~CVertexShader() { CVertexShaderData* data = Data; if (data) { if (--data->m_refCount == 0) delete data; } }
+    FABLE_FORCEINLINE virtual ~CVertexShader() { CVertexShaderData* data = Data; if (data) { if (--data->m_refCount == 0) delete data; } }
 };
 int main()
 {

@@ -17,6 +17,7 @@
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08), the attacker pointer +0x114; CTCBoss
 //   GenericCounter +0x10 / currentBossPhase +0x18 (Ego_r.pdb); CMazeBattleDef TutorialNumGetHits retail +0x50 (PDB +0x54,
 //   compared as a long).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 class CTCBase;
@@ -77,8 +78,8 @@ class CThing { public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetSubDef(T& out) const { return PBaseDef->GetSubDef(out); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetSubDef(T& out) const { return PBaseDef->GetSubDef(out); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

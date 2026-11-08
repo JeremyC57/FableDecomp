@@ -2,6 +2,7 @@
 // Retail: Fable.exe @ 0x00566180, 55 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CWideString copy ctor @ 0x0099B720 (x2), CCharString copy ctor @ 0x0099EC30.
 // Leaf: _Construct
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N00566180 {
 struct CCharString {
@@ -18,7 +19,7 @@ struct CClanInfo {                               // CTCHeroOnlineScoreboard::CCl
     CWideString Description;                     // +0x08
     CCharString HomePageURL;                     // +0x0C
     int         NumMembers;                      // +0x10
-    __forceinline CClanInfo(const CClanInfo& o)   // the implicit copy, spelled out so VC7.1 inlines it into _Construct
+    FABLE_FORCEINLINE CClanInfo(const CClanInfo& o)   // the implicit copy, spelled out so VC7.1 inlines it into _Construct
         : Name(o.Name), ClanID(o.ClanID), Description(o.Description), HomePageURL(o.HomePageURL), NumMembers(o.NumMembers) { }
 };
 

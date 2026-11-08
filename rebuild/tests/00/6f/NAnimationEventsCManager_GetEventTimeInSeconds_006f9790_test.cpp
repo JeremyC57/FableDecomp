@@ -1,5 +1,6 @@
 // Behaviour test for 006f9790: src/006f9790.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. NAnimationEvents::CManager::GetEventTimeInSeconds(long animation, long event)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,7 +27,7 @@ struct SCountBlock {
 struct CCountedPointer_C3DAnimationStats {
     const C3DAnimationStats* m_pObject;
     SCountBlock*             m_pCount;
-    __forceinline ~CCountedPointer_C3DAnimationStats()
+    FABLE_FORCEINLINE ~CCountedPointer_C3DAnimationStats()
     {
         if (m_pCount) {
             --m_pCount->m_references;

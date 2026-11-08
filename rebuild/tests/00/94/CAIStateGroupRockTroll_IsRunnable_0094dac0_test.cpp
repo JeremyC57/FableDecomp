@@ -1,4 +1,5 @@
 // Behaviour test for 0094dac0: the model below is a copy of src/0094dac0.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cmath>
@@ -27,7 +28,7 @@ class CThing { public:
     unsigned char m_flags91;
     unsigned char m_flags92;
     C3DVector m_pos;
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

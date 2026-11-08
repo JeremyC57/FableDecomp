@@ -8,6 +8,7 @@
 // at +0x70: null-checked AddRef `inc [esi+4]`), GetSubDef runs on the pointee with `&PDef`, and
 // the temporary's destructor releases it (`dec [esi+4] ; jne`, virtual Delete at zero; the null
 // store is elided before the return). The two reference arguments are unused (`ret 8`).
+#include "fable_compiler.h"
 class CAIBrain;
 class CThingAICreature;
 class CSummonerDef;
@@ -21,12 +22,12 @@ class CDefPointeeBase { public:
 template <class T>
 class CDefPointer { public:
     CDefPointeeBase* Object;                    // +0x00
-    __forceinline CDefPointer(CDefPointeeBase* object) : Object(object)
+    FABLE_FORCEINLINE CDefPointer(CDefPointeeBase* object) : Object(object)
     {
         if (Object != 0)
             ++Object->m_refCount;
     }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object != 0) {
             if (--Object->m_refCount == 0)

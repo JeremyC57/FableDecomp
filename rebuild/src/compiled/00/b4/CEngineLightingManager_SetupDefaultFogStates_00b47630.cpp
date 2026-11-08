@@ -13,6 +13,7 @@
 //   (`SetState(state, value, mgr)`): VC7.1 emits the live-range copies in parameter order, so retail's
 //   `mov ecx,esi ; mov edi,edx` (manager copy before the value copy) needs the manager parameter to follow the value. The
 //   thiscall member form (EnableFog's) and a `(mgr, state, value)` static put the value copy first (2 swapped movs).
+#include "fable_compiler.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
@@ -38,7 +39,7 @@ class CMatrix3x4 { public:
         m[0] = a; m[1] = b; m[2] = c; m[3] = d; m[4] = e; m[5] = f;
         m[6] = g; m[7] = h; m[8] = i; m[9] = j; m[10] = k; m[11] = l;
     }
-    __forceinline void PreMultiply(const CMatrix3x4& l)
+    FABLE_FORCEINLINE void PreMultiply(const CMatrix3x4& l)
     {
         CMatrix3x4 a(*this);
         m[0] = a.m[3] * l.m[1] + a.m[6] * l.m[2] + a.m[0] * l.m[0];
@@ -86,7 +87,7 @@ class CRenderStateManager { public:
     CTrackedRenderState  m_fogVertexMode;          // +0x29a8
     CTrackedRenderState  m_fogTableMode;           // +0x29bc
 
-    static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderStateManager* mgr)
+    static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderStateManager* mgr)
 {
         if (state.m_value != value) {
             if ((mgr->m_captureMask & state.m_captureMask) == 0) {

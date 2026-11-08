@@ -15,6 +15,7 @@
 //   bool byte, the packed vector's three words (through a second +9-biased destination register), the timer, then the
 //   intelligent pointer's copy (base ctor, vtable store, SetPItem(x.GetPItem())).
 // Label: the catalog's `fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>` is a propagated label.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 class CBaseObject;
@@ -30,7 +31,7 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:      // vtable 0x0123E7D8 for CThingCreatureBase
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 #pragma pack(push, 1)

@@ -12,6 +12,7 @@
 //   PDB gives CPersistTraits<CWeaponTrailGraphicSet> an 8-byte DefaultVal, whose -1/-1 default construction retail lacks).
 //   The loop pair is value-initialised each pass (key 0, the set's ctor -1/-1: `and ; or ; or`), the map pointer is
 //   spilled for the insert, and the insert result shares the count's dead frame word.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -27,8 +28,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* chunkBase;                         // +0x0C
     long                 chunkPosition;                     // +0x10
     long                 chunkLength;                       // +0x14
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(position + size);
         if (!IsValidPosition(newPosition))
@@ -82,7 +83,7 @@ template <> struct CPersistTraits<CWeaponTrailGraphicSet> {
     void TransferBinaryIn(CMemoryDataInputStream& stream, CWeaponTrailGraphicSet* out) const;   // 0x004E9021
 };
 
-template <> __forceinline void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) const
+template <> FABLE_FORCEINLINE void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& stream, long* out) const
 {
     long value;
     stream.Read(&value, sizeof(value));

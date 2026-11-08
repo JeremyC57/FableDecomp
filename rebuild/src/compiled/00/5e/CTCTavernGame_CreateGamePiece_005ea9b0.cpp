@@ -14,6 +14,7 @@
 // byte at +0x59.
 // Shape: each lookup is the `T* p; GetInterface(type, &p);` out-parameter form whose miss path reads the never-written
 // local (it shares the dead defIndex argument slot with the key and the string temporaries).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -82,7 +83,7 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
     template <class T>
-    __forceinline void GetInterface(long type, T** out)
+    FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

@@ -26,6 +26,7 @@
 // Shape: the five marker handles, the unused scripted-thing handle and the surprise balverine live for the whole function
 //   (their inline destructors are the hot first-loop exit, the out-of-line chain every other exit); the murderer balverine is
 //   bound to a const reference (retail calls IsAlive through its vptr).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -40,7 +41,7 @@
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
-__forceinline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
 namespace NScript {
 class CV_KnotholeGladeGatesScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:

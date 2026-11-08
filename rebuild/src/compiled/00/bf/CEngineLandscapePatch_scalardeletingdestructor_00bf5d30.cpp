@@ -12,6 +12,7 @@
 // Both destructors must be `__forceinline` (GOTCHAS 24i): a plain inline counted-pointer destructor stays out of line, and a
 // plain inline virtual destructor makes `??_G` collapse to `call ??1 ; FreeVirtual`.
 
+#include "fable_compiler.h"
 class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
@@ -30,7 +31,7 @@ struct SCountBlock {                               // the counted pointer's shar
 struct CCountedResourcePointer {
     void*        m_pObject;                        // +0x00
     SCountBlock* m_pBlock;                         // +0x04
-    __forceinline ~CCountedResourcePointer()
+    FABLE_FORCEINLINE ~CCountedResourcePointer()
     {
         if (m_pBlock) {
             --m_pBlock->m_count;
@@ -52,7 +53,7 @@ class CEngineLandscapePatch : public CMovableResource { public:  // vtable 0x012
     unsigned char           _pad04[0x3c];          // +0x04 .. +0x40
     CCountedResourcePointer m_resource;            // +0x40
     void Clear();                                  // 0x00BF38F0
-    __forceinline virtual ~CEngineLandscapePatch() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEngineLandscapePatch() { Clear(); }
     static void operator delete(void* block) { g_pEngine_01436ea8->m_pLandscapeMemory->FreeVirtual(block); }
 };
 

@@ -11,6 +11,7 @@
 //   GetFurthestWithDefName 0x0089AA70 (whose model this reuses verbatim).
 // Shape: the best distance is a `long` starting at -1 (`best == -1 || distance < best`); `found` is set inside the enabled branch
 //   after the distance test; the literal goes straight to the const CCharString& parameter.
+#include "fable_compiler.h"
 extern "C" void free(void* p);                           // 0x00BFEA14
 void operator delete(void* p);                           // 0x00BFE9BC
 class CCharString { public:
@@ -30,7 +31,7 @@ inline CScriptThing::CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing::~CScriptThing() { }
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->GetPos(); }
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -43,7 +44,7 @@ public:                       // STLport vector (retail 12 bytes)
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

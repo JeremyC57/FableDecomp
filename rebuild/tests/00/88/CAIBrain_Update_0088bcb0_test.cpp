@@ -1,4 +1,5 @@
 // Behaviour test for CAIBrain::Update @ 0x0088BCB0: update period gating, pending group switch, output copy.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifdef _MSC_VER
 typedef unsigned __int64 u64;
@@ -63,7 +64,7 @@ class CAIBrain { public:
     void InitCreaturePosition() { ++inits; }
     CAIStateGroupBase* FindNextStateGroupToUse(long priority) { return (candidate && (priority < 0 || candidate->Priority > priority)) ? candidate : 0; }
     void SuspendableProcess() { ++processes; if (produceOutput) { OutputValid = true; Output.value = 42; } }
-    __forceinline bool IsFrameDue(unsigned long period) const
+    FABLE_FORCEINLINE bool IsFrameDue(unsigned long period) const
     {
         u64 offset = Creature->UpdateOffset;
         return (offset + Component->GetWorldFrame()) % period == 0;

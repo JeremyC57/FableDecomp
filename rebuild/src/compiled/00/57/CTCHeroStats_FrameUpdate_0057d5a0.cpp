@@ -24,6 +24,7 @@
 // Layout: retail CTCHeroStats sits below the PDB (engine/CTCHeroStats.h): Fatness +0x38 (PDB +0x40), Stamina +0x58,
 // MaxStamina +0x5C, FramesUntilStaminaRefills +0x60, FramesUntilHealthRefills +0x64, ScriptOverridePreventStaminaRefill
 // +0x68, FramesUntilFatnessReduces +0x6C, FramesLeftForSpeedMultiplier +0x94 (PDB +0x9C), RegionTime +0x124 (PDB +0x130).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -53,7 +54,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -66,7 +67,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool PeekInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool PeekInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

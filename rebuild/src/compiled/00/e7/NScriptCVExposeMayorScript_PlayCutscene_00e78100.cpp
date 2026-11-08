@@ -17,6 +17,7 @@
 // Shape: the landed CV_SickChildScript::PlayCutscene 0x00ECE460 body (csargs, hero, "$ARG1", cast) on the landed
 //   CQ_FireHeartScript::PlayCutscene 0x00D39330 shared-header model, with the CQ_AwakeningTheOracleScript 0x00CFF9A0
 //   `if (fade) { movie; pause; run } else run` split.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -38,7 +39,7 @@ template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer
 #include "stlport/fable_map.h"
 #include "engine/CV_ExposeMayorScript.h"
 #include "engine/fable_script_cutscene.h"
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 
 void NScript::CV_ExposeMayorScript::PlayCutscene(CCharString name, bool fade, CCharString arg)
 {

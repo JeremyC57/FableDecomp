@@ -13,6 +13,7 @@
 // Shape: the landed sibling EACloseHeroCentreDoor (0x0062C300): the inline PeekTC with an unset component when the
 //   thing lacks the interface (VC reuses the door-type frame word on that path), both lookup keys in the dead `event`
 //   slot; the inventory test is a nested `if` (esi pushed only on that path); door type then UID read in payload order.
+#include "fable_compiler.h"
 struct CMemoryBuffer {
     unsigned char Data[0x20];                      // +0x00
     long          Length;                          // +0x20
@@ -48,7 +49,7 @@ class CThing { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
@@ -57,7 +58,7 @@ class CThing { public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
@@ -66,14 +67,14 @@ class CThing { public:
             it = map->end();
         return (const T*)it->second;
     }
-    template<class T> __forceinline const T* PeekTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* PeekTC(long interfaceType) const
     {
         const T* component;
         if (HasTC(interfaceType))
             component = GetTC<T>(interfaceType);
         return component;
     }
-    template<class T> __forceinline T* PeekTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long interfaceType)
     {
         T* component;
         if (HasTC(interfaceType))

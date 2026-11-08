@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CTHING_H
 #define FABLE_ENGINE_CTHING_H
+#include "fable_compiler.h"
 // Original CThing hierarchy and members from Ego_r TPI 0xbbaf; native
 // AutoPlace/OnHit confirm PhysicsTC+60, PBaseDef+70, Dead+91; ABI size98.
 #ifndef FABLE_RETAIL_CCLASS
@@ -186,7 +187,7 @@ public:
     // `[esi+48h]`); the end-or-greater choice is the conditional expression, not an `if` re-assignment (0x004BFB40 loads the
     // component straight into ecx for the next call, `mov ecx,[eax+4]`; the if form goes through eax, 276 v 272 bytes). Gate
     // results over the first 140 migrated rows: the if form 106 passing, this form 115, a superset.
-    template<class T> __forceinline bool GetTC(ETCInterfaceType id,T** ptc) {
+    template<class T> FABLE_FORCEINLINE bool GetTC(ETCInterfaceType id,T** ptc) {
         if(HasTC(id)) {
             ETCInterfaceType type=id;
             CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >* map=&Components;
@@ -196,7 +197,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id,T** ptc) const {
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id,T** ptc) const {
         if(HasTC(id)) {
             ETCInterfaceType type=id;
             const CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >* map=&Components;
@@ -206,24 +207,24 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetTC(T** result) { return GetTC(T::StatGetInterfaceType(),result); }
-    template<class T> __forceinline bool PeekTC(T** result) const { return PeekTC(T::StatGetInterfaceType(),result); }
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** result) { return GetTC(T::StatGetInterfaceType(),result); }
+    template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const { return PeekTC(T::StatGetInterfaceType(),result); }
 #else
-    template<class T> __forceinline bool GetTC(T** result) {
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** result) {
         if(HasTC(T::StatGetInterfaceType())) {
             *result=GFDebugPDynamicCast(Components.Find(T::StatGetInterfaceType())->second,(T*)0);
             return true;
         }
         return false;
     }
-    template<class T> __forceinline bool PeekTC(T** result) const {
+    template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const {
         if(HasTC(T::StatGetInterfaceType())) {
             *result=GFDebugPDynamicCast(static_cast<const CTCBase*>(Components.Find(T::StatGetInterfaceType())->second),(T*)0);
             return true;
         }
         return false;
     }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id,T** ptc) const {
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id,T** ptc) const {
         if(HasTC(id)) {
             const CTCBase& base=GetTC(id);
             *ptc=GFDebugPDynamicCast(&base,(T*)0);
@@ -236,8 +237,8 @@ public:
     // Retail (chunk 732, row 0x006AA2E0): GetTC(ETCInterfaceType) is __forceinline like GetTC<T> / PeekTC<T> (owner decision
     // 2026-11-01: no Ego_r.pdb copy, no out-of-line copy in Fable.exe; FableWin.pdb ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
     // is the debug copy). Plain inline is called out of line in the large CThingPlayerCreature draw pass (814 v 1080 bytes).
-    __forceinline CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
-    __forceinline const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
+    FABLE_FORCEINLINE const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
 #else
     CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
     const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
@@ -371,7 +372,7 @@ public:
     // ??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z (inline in retail: the interface bit test, then
     // PTCDriver +0x5C read straight off the thing). __forceinline like GetTC<T> / PeekTC<T> (owner decision 2026-11-01). The driver
     // class must be complete (derived from CTCDriverBase) where it is instantiated.
-    template<class T> __forceinline bool PeekTCDriver(T** result) const {
+    template<class T> FABLE_FORCEINLINE bool PeekTCDriver(T** result) const {
         if(HasTC(T::StatGetInterfaceType())) {
             *result=static_cast<T*>(PTCDriver);
             return true;
@@ -403,7 +404,7 @@ public:
     // ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z (the non-const twin of PeekTC(id, ptc); __forceinline like it).
     void AddAndCopyTC(const CTCBase& other,bool flag);
 #ifndef FABLE_RETAIL_CTHING_GETTC_EXPANDED
-    template<class T> __forceinline bool GetTC(ETCInterfaceType id,T** ptc) {
+    template<class T> FABLE_FORCEINLINE bool GetTC(ETCInterfaceType id,T** ptc) {
         if(HasTC(id)) {
             CTCBase& base=GetTC(id);
             *ptc=GFDebugPDynamicCast(&base,(T*)0);

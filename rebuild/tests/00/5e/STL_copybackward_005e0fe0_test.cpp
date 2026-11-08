@@ -1,5 +1,6 @@
 // Behaviour test of std::copy_backward(CCharString* first, CCharString* last, CCharString* result) (retail 0x005E0FE0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -14,7 +15,7 @@ class CCharString { public:
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-__forceinline CCharString* __copy_backward(CCharString* first, CCharString* last, CCharString* result,
+FABLE_FORCEINLINE CCharString* __copy_backward(CCharString* first, CCharString* last, CCharString* result,
                                     const random_access_iterator_tag&, int*)
 {
     for (int n = last - first; n > 0; --n)

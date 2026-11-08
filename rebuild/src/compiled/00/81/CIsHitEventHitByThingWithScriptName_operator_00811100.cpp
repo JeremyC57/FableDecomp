@@ -8,6 +8,7 @@
 // the strcmp intrinsic over the pooled literal) and CScriptBase::OnRegionLoaded 0x00CB7B00 (`== CCharString`: same
 // block, or both present, equal lengths and Compare == 0). The hit event's +8 record holds the attacker as an
 // intelligent pointer at +0x50; the retail CThing keeps ScriptName at +0x74 and the dead bit at +0x91 (PDB +0x84 / +0xa1).
+#include "fable_compiler.h"
 #include <string.h>
 // Retry 10: the `== ""` test split by hand (strcmp on a null block / the block compare) with both "true" exits joined by
 // goto into one label, the attacker test in its own block, and the hit record read into a local before GetAttacker().
@@ -22,13 +23,13 @@ long __fastcall CompareStrings(const char* a, const char* b);   // 0x00411570
 class CCharString {
 public:
     CBasicString<char>* PStringData;                 // +0x00 (the shared block starts with its CBasicString)
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;
         return *PStringData == text;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         CBasicString<char>* a = PStringData;
         CBasicString<char>* b = other.PStringData;

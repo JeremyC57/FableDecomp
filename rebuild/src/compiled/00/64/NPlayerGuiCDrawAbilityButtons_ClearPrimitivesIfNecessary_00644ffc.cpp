@@ -10,6 +10,7 @@
 // == 1 -> slot 3, then assignment from a default-constructed counted pointer: release through a local copy with its own zero
 // store, then the unconditional zero store), here in a /Os TU WITHOUT a frame pointer (`optimize("s",on)` only): the shared zero
 // lives in ebx, each handle's address in esi, the for_each result in the `push ecx` word.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CEnginePrimitiveHandle;
 
@@ -23,9 +24,9 @@ struct CEnginePrimitiveBase {                      // counted primitive: vptr, t
 
 struct CIVCountedPointer_Primitive {
     CEnginePrimitiveBase* m_p;
-    __forceinline CIVCountedPointer_Primitive() : m_p(0) { }
-    __forceinline long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE CIVCountedPointer_Primitive() : m_p(0) { }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
+    FABLE_FORCEINLINE void Release()
     {
         CEnginePrimitiveBase* object = m_p;
         if (object) {
@@ -34,7 +35,7 @@ struct CIVCountedPointer_Primitive {
             m_p = 0;
         }
     }
-    __forceinline CIVCountedPointer_Primitive& operator=(const CIVCountedPointer_Primitive& other)
+    FABLE_FORCEINLINE CIVCountedPointer_Primitive& operator=(const CIVCountedPointer_Primitive& other)
     {
         Release();
         m_p = other.m_p;
@@ -50,7 +51,7 @@ struct CBase {
 
 class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;              // +4
-    __forceinline void Clear()                     // 0x0041BE70 out of line (inlined here: size TU needs __forceinline)
+    FABLE_FORCEINLINE void Clear()                     // 0x0041BE70 out of line (inlined here: size TU needs __forceinline)
     {
         if (Data.GetRefCount() == 1)
             Data.m_p->OnLastHandleCleared(this);

@@ -14,6 +14,7 @@
 //   (the landed 0x00849380 GetCheckedInterface); both keys are homed in the dead `thing` argument slot. AddToInventory
 //   gets (inventory, false, true, 0, false, flag); the two Kill(false) calls are written in both else arms (the shrink-wrapped
 //   prologue: ebx and esi are pushed only on the item path).
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 
@@ -36,7 +37,7 @@ public:
         }
         return (m_presentBits[position >> 5] & (1UL << (position & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -49,7 +50,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetCheckedInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetCheckedInterface(T** ppOut, long interfaceType)
     {
         if (TestComponent(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

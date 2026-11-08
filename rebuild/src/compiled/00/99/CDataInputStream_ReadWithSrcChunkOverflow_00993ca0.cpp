@@ -16,6 +16,7 @@
 // arithmetic and the zero-register high word; the unbuffered branch caches StreamPos in a local before the virtual call
 // (retail loads [ebx+4] before `call [edx+28h]`). Probes: v/rc/a..n.
 // Opt: /O2 (16-aligned entry).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -40,9 +41,9 @@ protected:
     unsigned long SourceChunkStreamPos;                      // +0x10
     long SourceChunkBytesRemaining;                          // +0x14
 
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
 public:
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;

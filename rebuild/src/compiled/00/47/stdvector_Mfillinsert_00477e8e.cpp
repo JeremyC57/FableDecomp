@@ -11,6 +11,7 @@
 //   (novtable record) leaves only the base destructor call.
 // Header debt: the record is modelled by its retail size (0x88) with its copy constructor, assignment and destructor
 //   (no generated engine header; Ego_r.pdb layout is 4 bytes larger, retail CParentDefClassBase is 0x3C).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
@@ -28,16 +29,16 @@ public:
     virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CEngineLocalDetailObjectDef@@UAEKXZ
     CEngineLocalDetailObjectDef(const CEngineLocalDetailObjectDef& other);                 // 0x0047756C
     CEngineLocalDetailObjectDef& operator=(const CEngineLocalDetailObjectDef& other);      // 0x00477964
-    __forceinline virtual ~CEngineLocalDetailObjectDef() { }
+    FABLE_FORCEINLINE virtual ~CEngineLocalDetailObjectDef() { }
     unsigned long _members[(0x88 - 0x3c) / 4];
 };
 namespace std {
 struct __false_type { };
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -45,19 +46,19 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
-__forceinline _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result, _Distance*)
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
         *--__result = *--__last;
     return __result;
 }
 template <class _BI1, class _BI2>
-__forceinline _BI2 __copy_backward_ptrs(_BI1 __first, _BI1 __last, _BI2 __result, const __false_type&)
+FABLE_FORCEINLINE _BI2 __copy_backward_ptrs(_BI1 __first, _BI1 __last, _BI2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, (int*)0);
 }
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

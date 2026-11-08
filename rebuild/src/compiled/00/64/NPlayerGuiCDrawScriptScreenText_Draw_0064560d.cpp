@@ -10,6 +10,7 @@
 // Shape: /Os via optimize("y",off)+("s",on); the inline CCharString== is __forceinline (else it is called out of line under /Os); the
 //   second loop walks an iterator object with a user copy ctor (retail keeps the node in the frame) and reads a `SScriptLine&` local;
 //   the pen advance builds a C2DVector delta first (retail's step.Y*n temp).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -42,7 +43,7 @@ class CCharStringData { public:
 class CCharString {
 public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

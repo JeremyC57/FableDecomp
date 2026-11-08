@@ -1,5 +1,6 @@
 // Behaviour test for 00703150: src/00703150.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CThingObject::PeekPMaterial() const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -15,7 +16,7 @@ static int fails = 0;
 // Shape: returned by value through the hidden pointer; the hit arm builds a zeroed CDefPointer local, fills it through GetDef
 // and returns it by copy (VC7.1 has no NRVO: the copy ctor's add-ref and the local's release merge into
 // `inc ; mov eax,edx ; dec eax`), the miss arm returns a default-constructed (null) pointer.
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;               // slot 1

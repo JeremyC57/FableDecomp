@@ -13,6 +13,7 @@
 // both exits release the title sub-def through the pointee's inline Release().
 // Layout: ParentThing +0x04, Categories +0x20 (12-byte elements view: first/last); retail CThing PDef +0x70, def index
 // word +0x8C.
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -66,7 +67,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
@@ -79,7 +80,7 @@ template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();
@@ -128,7 +129,7 @@ class CThing { public:
     CDefPointer<CDefClassBase> PDef;                 // +0x70
     unsigned char _pad_0x74[0x8c - 0x74];
     unsigned short DefIndex;                         // +0x8c
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -141,7 +142,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
             long type = wanted;

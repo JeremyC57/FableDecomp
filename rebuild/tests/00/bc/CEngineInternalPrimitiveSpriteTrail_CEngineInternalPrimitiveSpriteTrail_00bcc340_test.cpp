@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stddef.h>
 #include <new>
@@ -98,12 +99,12 @@ public:
 namespace std {
 template<class T>class allocator{};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A {public:V _M_data;};
-template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(){_M_start=0;_M_finish=0;_M_end_of_storage._M_data=0;}__forceinline ~_Vector_base(){if(_M_start)tracked_free(_M_start);}};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {public:__forceinline ~vector(){for(T* p=this->_M_start;p!=this->_M_finish;++p)p->~T();}};
+template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(){_M_start=0;_M_finish=0;_M_end_of_storage._M_data=0;}FABLE_FORCEINLINE ~_Vector_base(){if(_M_start)tracked_free(_M_start);}};
+template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {public:FABLE_FORCEINLINE ~vector(){for(T* p=this->_M_start;p!=this->_M_finish;++p)p->~T();}};
 }
 template<class T>class CArray {public:std::vector<T> Data;};
 // Layout: shared base headers describe flattened vptrs; genuine polymorphic hierarchy is required for compiler-generated destruction. Original base fields and offsets retained; no target base reconstruction claim.
-class CIVCountedPointeeBase {public:virtual __forceinline ~CIVCountedPointeeBase(){}virtual void Delete()const;unsigned long IVRefCount;};
+class CIVCountedPointeeBase {public:virtual FABLE_FORCEINLINE ~CIVCountedPointeeBase(){}virtual void Delete()const;unsigned long IVRefCount;};
 class CEnginePersistentPrimitiveBase:public CIVCountedPointeeBase {public:long Type;};
 class CEngineSceneGridCell;
 class CEngineInternalPrimitiveBase:public CEnginePersistentPrimitiveBase {public:

@@ -11,6 +11,7 @@
 // Layout: PDB CTCBoastingCrowdControl: Active +0xC, HeroCrowdThings +0x10 (STLport map: header pointer, count), node value at
 // +0x10 (key) / +0x18 (CIntelligentPointer<CThing>); retail CThing UniqueID +0x18, bitset +0x20 (0x74 = bit 20 of +0x2C),
 // interface map +0x44, Dead = bit 0 of +0x91.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -25,7 +26,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     unsigned __int64 GetUID() const { return UniqueID; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -1,5 +1,6 @@
 // Behaviour test for 0x005BC3ED (source body copied from src/005bc3ed.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -40,7 +41,7 @@ static unsigned long long ra_tsc = 1000000;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // the engine's inline-assembly ROUND helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long ROUND(float value)
+FABLE_FORCEINLINE long ROUND(float value)
 {
     long result;
     RA_FISTP(value, result)

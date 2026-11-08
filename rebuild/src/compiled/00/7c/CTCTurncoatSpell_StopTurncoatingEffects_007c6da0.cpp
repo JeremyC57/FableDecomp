@@ -13,6 +13,7 @@
 //         landed FinalCleanup model): LoopingSound +0x50, TurncoatingEffectOnMe +0x74, TurncoatingEffectOnTarget +0x7c.
 // Shape: the out-parameter GetInterface in an `if` (presence test straight on the bitset word, `test dword ptr [eax+20h]`)
 //        with the sound stop and the `LoopingSound = 0` clear as its body; two IS_THING_ALIVE blocks on &member in esi.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

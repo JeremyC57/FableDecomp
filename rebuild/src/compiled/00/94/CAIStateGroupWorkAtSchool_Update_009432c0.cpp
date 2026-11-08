@@ -15,6 +15,7 @@
 // names are scoped named CCharStrings with the appearance read into a local after the ctor; the coin flip is
 // `long side = r & 1; bool b = side == 1;` (cmp/sete); MoveAndFace is written in each arm (the common arg-push prefix is
 // hoisted by VC7.1) and GFRandom is called inside each talk arm (hoisted too); the look speed is 0.0027777f (0x3B360A13).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -39,7 +40,7 @@ class CThing { public:
     unsigned char _pad54[0x10];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         bool found = (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) != 0;
         if (found) {

@@ -10,6 +10,7 @@
 // word; an iterator reassigned in the loop needs a second word for the hidden-pointer result); the `while` keeps its
 // test at the top; the imports are
 // dllimport (Enter cached in ebp, Leave in ebx inside the found arm).
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);    // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);    // IAT 0x0143FE10
 extern "C" __declspec(dllimport) int __stdcall SetEvent(void* event);                   // IAT 0x0143FDE0
@@ -52,7 +53,7 @@ class CThreadedFileManager { public:
     void* Event;                                   // +0x164
     void SetObjectPriority(unsigned long uid, long priority);   // 0x0098EFF0
     void WaitForObjectToFinish(unsigned long uid);
-    __forceinline bool IsObjectUnfinished(const unsigned long& uid)
+    FABLE_FORCEINLINE bool IsObjectUnfinished(const unsigned long& uid)
     {
         CObjectIterator it = Objects.find(uid);
         return it != Objects.end() && it->second->LoadingStatus != 4;

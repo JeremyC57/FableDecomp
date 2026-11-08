@@ -23,8 +23,9 @@
 //   calls. GetSubDef goes through an inline CThing wrapper so the creature is fetched before &def is pushed; the incremented
 //   count is a named local (without it esi/edi swap); Normalise(delta) before delta.Get2DLength() with `const float&` scaling
 //   gives retail's x87 order (cached dx2/dy2, sqrt last). The CDefPointer null test is dropped by the GetSubDef stand-in.
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -38,11 +39,11 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline float Get2DLength() const { return (float)sqrt(X * X + Y * Y); }
+    FABLE_FORCEINLINE float Get2DLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-__forceinline C3DVector operator*(const C3DVector& v, const float& s) { return C3DVector(v.X * s, v.Y * s, v.Z * s); }
-__forceinline C3DVector Normalise(const C3DVector& v) { return v * FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z); }
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE C3DVector operator*(const C3DVector& v, const float& s) { return C3DVector(v.X * s, v.Y * s, v.Z * s); }
+FABLE_FORCEINLINE C3DVector Normalise(const C3DVector& v) { return v * FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z); }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
 class CCharString { public:
     void* m_pData;
@@ -101,8 +102,8 @@ class CThing { public:
     unsigned char _pad54[0x1c];
     CDefClassBase* PDef;                               // +0x70
     const C3DVector& GetPos() const;              // 0x004C73D0
-    __forceinline bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const { return PDef->GetSubDef(out); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    FABLE_FORCEINLINE bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const { return PDef->GetSubDef(out); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

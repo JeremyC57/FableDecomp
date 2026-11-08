@@ -16,6 +16,7 @@
 // Layout: retail CBankFile as the landed 0x009CC210 (RuntimeData +0x20, UpdateData +0x2c, PackedDataType +0x58);
 //   Ego_r.pdb CBankFileEntryUpdateData (InfoSize +4, InfoBuffer +8, RequiresUpdate +0x14) and CDataInputStream (0x18; the
 //   engine header has no member functions, so the class is local: header debt).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int count);
@@ -83,8 +84,8 @@ public:
     void*         CurrentSourcePtr;                        // +0x0c
     unsigned long SourceChunkStreamPos;                    // +0x10
     long          SourceChunkBytesRemaining;               // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;

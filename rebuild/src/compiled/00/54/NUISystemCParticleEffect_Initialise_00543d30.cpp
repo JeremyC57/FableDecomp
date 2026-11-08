@@ -13,6 +13,7 @@
 // for its depth, with the default axes (Up (0,0,1), Forward (0,1,0)); callers start it only when the state's
 // info exists, wants an effect and none is running. The manager getter is called after the arguments are pushed (VC
 // evaluates the object expression of a member call last), the axes are built between the pushes.
+#include "fable_compiler.h"
 class C2DVector { public: float X, Y; };
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:                           // PDB: Up then Forward; the default set is Z up, Y forward
@@ -236,7 +237,7 @@ class CParticleEffect : public CChangingStateComponent {   // vtable 0x0124735C
 public:
     CParticleEmitter* Emitter;                     // +0x15c
     long              EffectIndex;                 // +0x160
-    __forceinline void CreateEmitter()
+    FABLE_FORCEINLINE void CreateEmitter()
     {
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,
                       CManager::GetInstance()->GetLayer(Depth), true, CRightHandedSet());

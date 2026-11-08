@@ -8,6 +8,7 @@
 // Body: `_Destroy(_M_start, _M_finish)` = `__destroy_aux(first, last, __false_type())` (0x004DA5BD; the tag lives in the
 // high byte of the pushed ecx slot, `lea eax,[esp+7]`), then the malloc allocator's deallocate: free(_M_start) when non-null.
 // Shape: `_Destroy` is __forceinline here; as a plain inline the size TU keeps it as an out-of-line two-argument call.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
@@ -23,7 +24,7 @@ struct __false_type { __false_type() { } };
 template <class _ForwardIterator>
 void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x004DA5BD
 
-template <class _Tp> __forceinline void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
 
 template <class _Tp> class allocator {
 public:

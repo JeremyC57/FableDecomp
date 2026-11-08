@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,7 +21,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 

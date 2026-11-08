@@ -16,6 +16,7 @@
 //   NextTimeToSpawnGuards +0x64.
 // Naming wave 35: identity reg 00df6060 "TC_GuardSpawnPoint" in 00df6010; Alloc 00df7b20; vtable 012de894 slot 1; PDB ?Main@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTC_GuardSpawnPoint::Main (wave3/labels_alloc.tsv); PDB ?Main@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CTC_GuardSpawnPoint@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_TraderConflictEvilScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 #include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -27,7 +28,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

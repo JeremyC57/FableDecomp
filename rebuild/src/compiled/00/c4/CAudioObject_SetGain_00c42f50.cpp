@@ -10,6 +10,7 @@
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared libpk/FtoL.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Shape otherwise: `fld gain ; fld [ecx+18h] ; fucompp ; test ah,44h ; jnp` = `m_gain != gain`; the float copied as a
 //   dword; `0.0f` loaded from the pool before the reload of the argument; the clamp `cmp eax,-10000 ; jge`.
+#include "fable_compiler.h"
 #include "libpk/FtoL.h"
 extern "C" double __cdecl log10(double);
 #pragma intrinsic(log10)
@@ -24,7 +25,7 @@ public:
 };
 
 // libpk's linear-to-millibel conversion (out-of-line copy 0x00C40F50); the asm makes VC expand it only as __forceinline
-__forceinline long AmplitudeToMillibels(float amplitude)
+FABLE_FORCEINLINE long AmplitudeToMillibels(float amplitude)
 {
     if (amplitude != 0.0f) {
         long result = FtoL((float)log10(amplitude) * 2000.0f);

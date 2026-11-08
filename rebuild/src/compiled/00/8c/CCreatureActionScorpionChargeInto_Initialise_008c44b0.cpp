@@ -9,6 +9,7 @@
 // Shape: GetSubDef<CAICreatureWillPowerIndicatorDef> (0x008C5A50) sits in this TU, so it has a same-TU noinline stand-in
 //   (the def pointer's address does not escape: VC keeps it in edi and the release has no null test); operator* is the
 //   constructor form with the scale on the left, operator+ the constructor form (Z, Y, X computed, then stored).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -63,7 +64,7 @@ class CThing { public:
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     CDefClassBase* GetDef() const { return Def; }
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

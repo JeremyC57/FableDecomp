@@ -8,6 +8,7 @@
 // Prototype: FableWin.pdb ?FindFlightPathCurvePoint@CAIStateGroup_JackDragon@@AAEXABVC3DVector@@00AAV2@@Z.
 // Shape: three differences built as member operators (x, y, z order), the mean scaled by 0.5f, the landed fast Normalise,
 // then centre + dir * (|end - start| * 0.5f + |dir|) in one expression (a separate scale statement reorders the two lengths).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -25,7 +26,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

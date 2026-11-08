@@ -20,6 +20,7 @@
 // Shape: the landing wait is `bool landed; while (!landed)` with an if / else-if setting the flag (a while(true)+break rotates the loop);
 //   the foul / hero copies use the implicit operator= so all three floats are stored; the angle dot is a running sum Z, Y, X; acos * INV_
 //   TWO_PI and * 0.5f stay separate statements (a literal product folds into one constant); ++sector is its own statement.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/EHeroAbility.h"
 #include "engine/EScriptingStateGroups.h"
@@ -55,7 +56,7 @@ float __fastcall GetDistanceBetweenThingAndPosition(const CScriptThing& thing, c
 static const float TWO_PI = 6.2831855f;
 static const float INV_TWO_PI = 0.15915494f;
 inline CScriptThing::~CScriptThing() { }
-__forceinline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
 template <> std::vector<CScriptThing, std::allocator<CScriptThing> >::~vector();   // 0x008AC970
 
 namespace NScript {

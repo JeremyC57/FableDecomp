@@ -15,6 +15,7 @@
 //   (GOTCHAS 24l: same-TU auto_inline(off) + noinline stand-in below). The virtual destructor and both vector
 //   destructors must be `__forceinline` or ??_G calls them out of line; the out-of-line constructor stand-in only
 //   anchors the vtable (and with it this ??_G) in the TU.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
@@ -55,20 +56,20 @@ public:
     _Tp* _M_finish;                                     // +0x04
     _Tp* _M_end_of_storage;                             // +0x08
     _Vector_base() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~_Vector_base() { if (_M_start != 0) free(_M_start); }
+    FABLE_FORCEINLINE ~_Vector_base() { if (_M_start != 0) free(_M_start); }
 };
 
 template <class _Tp>
 class vector : public _Vector_base<_Tp> {
 public:
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 }
 
 class CCombatSequenceBase {                             // vtable 0x01278FEC
 public:
     CCombatSequenceBase();
-    virtual __forceinline ~CCombatSequenceBase() { }
+    virtual FABLE_FORCEINLINE ~CCombatSequenceBase() { }
     virtual void PureSlot1() = 0;                       // _purecall in the retail vtable
     virtual void PureSlot2() = 0;                       // _purecall in the retail vtable
 

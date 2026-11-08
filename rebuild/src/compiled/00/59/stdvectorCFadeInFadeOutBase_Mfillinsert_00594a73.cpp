@@ -18,6 +18,7 @@
 // Model: a local CFadeInFadeOutBase (the engine header's layout) because the header cannot declare the out-of-line
 // copy constructor.
 // Shape: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -71,7 +72,7 @@ void __fastcall fill(CFadeInFadeOutBase* __first, CFadeInFadeOutBase* __last, co
 }
 #pragma auto_inline(on)
 
-__forceinline CFadeInFadeOutBase* __copy_backward_ptrs(CFadeInFadeOutBase* __first, CFadeInFadeOutBase* __last,
+FABLE_FORCEINLINE CFadeInFadeOutBase* __copy_backward_ptrs(CFadeInFadeOutBase* __first, CFadeInFadeOutBase* __last,
                                                       CFadeInFadeOutBase* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);

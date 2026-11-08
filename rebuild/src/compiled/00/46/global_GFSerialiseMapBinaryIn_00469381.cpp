@@ -9,6 +9,7 @@
 // Model: CMemoryDataInputStream from engine/CMemoryDataInputStream.h with a methods-only reader adapter (the inline Read:
 //   64-bit range check, memcpy from the chunk, else ReadWithSrcChunkOverflow 0x00993CA0).
 // Shape: the pair default constructor is out of line in retail (declared, not defined); the count read is an inline ReadCount.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -19,8 +20,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -72,7 +73,7 @@ template <class T> struct CPersistTraits {
 template <> struct CPersistTraits<CBlendedParticleEffectSet> {
     void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CBlendedParticleEffectSet* out) const { out->TransferBinaryIn(stream); }
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

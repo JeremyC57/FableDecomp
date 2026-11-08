@@ -1,6 +1,7 @@
 // 00466281 std::vector<NSpeechGainManager::CDialogueLayerDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
 // Leaf: ??4?$vector@UCDialogueLayerDef@NSpeechGainManager@@@std@@QAEAAU01@ABU01@@Z
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 namespace NSpeechGainManager {
@@ -10,9 +11,9 @@ class CDialogueLayerDef { public:unsigned data[15];CDialogueLayerDef();CDialogue
 namespace std {
 struct __false_type{__false_type(){}};
 template<class Tag> __declspec(noinline) void __fastcall _Destroy(NSpeechGainManager::CDialogueLayerDef*a,NSpeechGainManager::CDialogueLayerDef*b,const Tag&){while(a!=b){a->~CDialogueLayerDef();++a;}}
-template<class T>__forceinline T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
-template<class T>__forceinline void _Construct(T*p,const T&v){if(p)new(p)T(v);}
-template<class T>__forceinline void _UninitializedCopy(T*out,T*first,T*last){while(first!=last){_Construct(out,*first++);++out;}}
+template<class T>FABLE_FORCEINLINE T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
+template<class T>FABLE_FORCEINLINE void _Construct(T*p,const T&v){if(p)new(p)T(v);}
+template<class T>FABLE_FORCEINLINE void _UninitializedCopy(T*out,T*first,T*last){while(first!=last){_Construct(out,*first++);++out;}}
 template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;
  T*_M_allocate_and_copy(unsigned,T*,T*);void _M_clear();vector&operator=(const vector&);
 };

@@ -8,6 +8,7 @@
 //   RunningTimeSeconds +0x40; CThing interface bitset +0x20, map +0x44, PTCDriver +0x5c, def +0x70, flags +0x91.
 // Shape: the landed 0x008C4B80 model (counted def reference, same-TU GetSubDef / GetEffectFromString / LowerBound stand-ins,
 //   explicit release inside if (effects)).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -80,13 +81,13 @@ public:
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     float GetAnimDuration(long animation);            // 0x006627F0 (CThingCreatureBase)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

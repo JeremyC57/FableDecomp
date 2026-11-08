@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -101,7 +102,7 @@ class CScriptThing : public CBaseClass { public:
     CCountedPointer PImp;                               // +0x04 Data, +0x08 Info
     CScriptThing() {}
     CScriptThing(const CScriptThing& o) : CBaseClass() { PImp = o.PImp; }
-    __forceinline ~CScriptThing() {}                    // out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() {}                    // out-of-line copy 0x004AA840
     const CScriptThingImp* Imp() const { return (const CScriptThingImp*)PImp.Data; }
 };
 inline bool operator==(const CScriptThing& a, const CScriptThing& b)

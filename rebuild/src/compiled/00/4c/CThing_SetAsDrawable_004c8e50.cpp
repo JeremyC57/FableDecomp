@@ -16,6 +16,7 @@
 //   `if (GetInterface(&tc, t)) tc->SetAsDrawable(drawable)` per interface -- the out-parameter lookup leaves the component
 //   in eax (`mov eax,[eax+4] ; push ebx ; mov ecx,eax`; a pointer-returning GetTC loads straight into ecx, GOTCHAS wave
 //   24k); the same-TU LowerBound stand-in lets VC7.1 put every key in the argument's slot (the argument lives in ebx).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -44,7 +45,7 @@ public:
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;        // +0x92 bit 0
     unsigned char Drawable : 1;                             // +0x92 bit 1
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -14,6 +14,7 @@
 // Strings: 0x0127AC80 "SWORD_SWING", 0x01267B28 "CROUCH" (read from the retail image).
 // Layout: Ego_r TurnToFaceTarget +300 / FacePos +301 of 316 -> retail +0x114 / +0x115 (C3DVector has alignment 1).
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -157,7 +158,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -169,7 +170,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

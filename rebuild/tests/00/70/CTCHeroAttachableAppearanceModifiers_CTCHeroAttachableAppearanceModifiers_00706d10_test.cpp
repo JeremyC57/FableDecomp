@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -108,14 +109,14 @@ struct CModifierListVector {                           // vector<vector<CModifie
     CModifierEntryList*     _M_start;
     CModifierEntryList*     _M_finish;
     SModifierListAllocProxy _M_end_of_storage;
-    static __forceinline CModifierEntryList* uninitialized_fill_n(CModifierEntryList* first, unsigned long n, const CModifierEntryList& value)
+    static FABLE_FORCEINLINE CModifierEntryList* uninitialized_fill_n(CModifierEntryList* first, unsigned long n, const CModifierEntryList& value)
     {
         CModifierEntryList* cur = first;
         for (; n > 0; --n, ++cur)
             new (cur) CModifierEntryList(value);
         return cur;
     }
-    __forceinline explicit CModifierListVector(unsigned long n)
+    FABLE_FORCEINLINE explicit CModifierListVector(unsigned long n)
         : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = (CModifierEntryList*)malloc(n * sizeof(CModifierEntryList));

@@ -1,5 +1,6 @@
 // Behaviour test for 006cdd50: src/006cdd50.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CGroundNavigatorExternalInterface::~CGroundNavigatorExternalInterface()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,7 +30,7 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind);   // 0x0040F020 (the key by address)
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -42,8 +43,8 @@ class CThingCreatureBase { public:
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool GetInterface(T** out, long kind)   // the out-parameter lookup: the component stays in eax
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)   // the out-parameter lookup: the component stays in eax
     {
         if (HasTC(kind)) {
             *out = (T*)m_tcs.Find(kind);
@@ -86,7 +87,7 @@ struct CObstaclesList {                            // STLport list<CNavigatorObs
     }
 };
 extern CObstaclesList g_registeredObstacles;       // 0x013D2834 (the obstacle records of every live ground navigator)
-__forceinline _List_iterator Find(_List_iterator first, _List_iterator last, CNavigatorObstacles* const& value)   // std::find over the list
+FABLE_FORCEINLINE _List_iterator Find(_List_iterator first, _List_iterator last, CNavigatorObstacles* const& value)   // std::find over the list
 {
     while (first != last && *first != value)
         ++first;
@@ -99,7 +100,7 @@ class CNavigatorExternalInterface { public:               // vtable 0x01241D74
 class CGroundNavigatorExternalInterface : public CNavigatorExternalInterface { public:   // vtable 0x0125EC9C
     CThingCreatureBase* Creature;                  // +0x04
     float               Radius;                    // +0x08
-    __forceinline CNavigatorObstacles* GetPNavigatorObstacles()   // inline twin of 0x006CD7B0
+    FABLE_FORCEINLINE CNavigatorObstacles* GetPNavigatorObstacles()   // inline twin of 0x006CD7B0
     {
         CTCCreatureNavigation_Retail* navigation;
         if (Creature->GetInterface(&navigation, 7))

@@ -1,5 +1,6 @@
 // Behaviour test for 00ad8c30: src/00ad8c30.cpp copied verbatim (the map find body is the source's own same-TU body).
 // CVertexGroupBlock::IsSubsetOf
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -65,7 +66,7 @@ struct CGroupArray {                               // CArray<unsigned long> (ret
 class CVertexGroupBlock { public:                         // retail 0x14 bytes (PDB 32: debug containers)
     CGroupArray      Groups;                       // +0x00
     CGroupToIndexMap GroupToIndexMap;              // +0x0c
-    __forceinline bool HasGroup(unsigned long group) const
+    FABLE_FORCEINLINE bool HasGroup(unsigned long group) const
     {
         SGroupMapIterator it = GroupToIndexMap.find(group);
         return it.Node != GroupToIndexMap.Header;

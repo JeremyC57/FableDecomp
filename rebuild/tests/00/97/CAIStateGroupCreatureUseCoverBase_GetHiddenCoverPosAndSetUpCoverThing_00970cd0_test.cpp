@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -28,7 +29,7 @@ struct CInterfaceMap {struct Entry{long type;void* component;};Entry* first;Entr
 struct CThingRetail {
  unsigned char inherited[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char beforeDeath[0x91-0x4c];unsigned char deathFlags;
- __forceinline bool GetOccupiable(CTCOccupiableMethods** out) {
+ FABLE_FORCEINLINE bool GetOccupiable(CTCOccupiableMethods** out) {
   if(UsingComponents[5]&0x1000) {
    long key=172;CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(&key);
    if(it==map->last || 172<it->type)it=map->last;
@@ -37,9 +38,9 @@ struct CThingRetail {
  }
 };
 struct UseCoverMethods : CAIStateGroup_CreatureUseCoverBase {
- __forceinline CIntelligentPointerRetail& Enemy(){return *(CIntelligentPointerRetail*)_pad_0x14;}
- __forceinline CIntelligentPointerRetail& Cover(){return *(CIntelligentPointerRetail*)PCoverThing;}
- __forceinline CIntelligentVector& Candidates(){return *(CIntelligentVector*)CoverList;}
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Enemy(){return *(CIntelligentPointerRetail*)_pad_0x14;}
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Cover(){return *(CIntelligentPointerRetail*)PCoverThing;}
+ FABLE_FORCEINLINE CIntelligentVector& Candidates(){return *(CIntelligentVector*)CoverList;}
  bool GetHiddenCoverPos(C3DVector&,CThingRetail*); //00970930
  void ClearCover(); //00970B60
  bool GetHiddenCoverPosAndSetUpCoverThing(C3DVector&);

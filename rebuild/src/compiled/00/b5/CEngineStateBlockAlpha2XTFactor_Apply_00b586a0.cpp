@@ -8,6 +8,7 @@
 //   other way round (`or esi,eax`); a copy of SetState that reads the core mask into a local first reproduces it at exactly
 //   these three sites (swept over 31 subsets; spelling-level commutative-order artefact, not proof of the original helper).
 // States in retail order: +0x291c<-0x01396F78, +0x2930<-0x01396F7C, +0x28b8<-1, +0x3204<-0x01396E80, +0x32a4<-0x01396E7C, +0x3344<-0x01396EF0, +0x33e4<-0x01396EEC, +0x3484<-0x01396EF0, +0x3524<-0x01396EEC, +0x3218<-0x01396E7C, +0x32b8<-0x01396E7C, +0x3358<-0x01396EE8, +0x33f8<-0x01396EF4, +0x3498<-0x01396EE8, +0x3538<-0x01396EF4, +0x322c<-0x01396E70, +0x32cc<-0x01396E70
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -64,7 +65,7 @@ extern unsigned long g_renderStateDefault_01396ef4;    // 0x01396EF4
 extern unsigned long g_renderStateDefault_01396f78;    // 0x01396F78
 extern unsigned long g_renderStateDefault_01396f7c;    // 0x01396F7C
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {
@@ -81,7 +82,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
         }
     }
 }
-static __forceinline void SetStateMaskLocal(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetStateMaskLocal(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         unsigned long mask = core->m_captureMask;

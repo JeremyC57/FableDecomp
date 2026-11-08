@@ -12,6 +12,7 @@
 // Shape: no vtable store of the class itself (`__declspec(novtable)` in this TU) and the scripted-thing class has an implicit destructor,
 // so the only store is CScriptGameResourceObjectBase's (0x0126008C, an inline empty destructor) right before ~CBaseObject; the def is
 // released through a local copy (`dec [ecx+4] ; jne`); the counted block holds {count, destroy member pointer, object}.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 void operator delete(void* p);                  // 0x00BFE9BC
 class CThing;
@@ -22,7 +23,7 @@ class CFireheartMinigameDef { public:
 };
 template<class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             T* object = Object;
@@ -44,7 +45,7 @@ class CEnginePrimitiveHandle { public:                 // 8 bytes, virtual destr
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
-template <class T> __forceinline void _Destroy(T* first, T* last)   // STLport: bounds by value
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)   // STLport: bounds by value
 {
     for (; first != last; ++first)
         first->~T();
@@ -53,7 +54,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CRetailVector()
+    FABLE_FORCEINLINE ~CRetailVector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CModeDragonFireBeam::StartBeamEffect() -- once: find the dragon's mouth dummy, look up the BEAM_ATTACK effect in the owner's special-effects def, create it at the mouth into PBeamWeaponEffect and attach its particle emitter to the mouth dummy; mark the beam active
@@ -116,7 +117,7 @@ public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

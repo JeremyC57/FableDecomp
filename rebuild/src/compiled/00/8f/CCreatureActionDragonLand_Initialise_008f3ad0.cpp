@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008F3AD0 length300. Physics slot31 ResetPosition006B01D0 const-vector reference; slot70
 // GetFacingVector723C00 native hidden-buffer ABI ECXthis/EAXbuffer/ret4. Real header + field-free adapter.
+#include "fable_compiler.h"
 #define CCreatureAction_DragonLand CCreatureAction_DragonLand_PDB
 #include "engine/CCreatureAction_DragonLand.h"
 #undef CCreatureAction_DragonLand
@@ -42,7 +43,7 @@ class CThingAICreature { public:
 class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
- __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
+ FABLE_FORCEINLINE CPhysicsMethods* GetPhysics()const{return PPhysics;}
  const C3DVector& GetPos() const; //004C73D0
 };
 class CBaseObject;

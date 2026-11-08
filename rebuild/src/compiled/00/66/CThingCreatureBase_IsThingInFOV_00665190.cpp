@@ -11,6 +11,7 @@
 // Shape: the two defaults are float locals stored as immediates and overwritten from the component; the delta is
 //   `GetPos() - thing->GetPos()` through an inline C3DVector operator- (thing's position fetched first) and
 //   its squared length the plain inline `X*X + Y*Y + Z*Z`; `lenSq <= r*r` tail-calls the angle test (`test ah,1 ; jne` to the false exit), else false.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CTCBase;
@@ -29,7 +30,7 @@ public:
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

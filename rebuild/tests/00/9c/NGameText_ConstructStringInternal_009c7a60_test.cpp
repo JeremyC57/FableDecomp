@@ -1,6 +1,7 @@
 // 009c7a60 NGameText::ConstructStringInternal
 // Flags: /O2 /Oy /W3 /GS
 // Leaf: ConstructStringInternal
+#include "fable_compiler.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <wchar.h>
@@ -19,7 +20,7 @@ __declspec(noinline) bool CWideString::Contains(const CWideString&rhs)const{cons
 __declspec(noinline) CWideString __fastcall operator+(const unsigned short*left,const CWideString&right){CWideString result(left);result+=right;return result;}
 void __fastcall FormatNumber_AddThousandsSeparators(int,unsigned short*);
 extern const unsigned short FormatNumber[],Prefix[];
-__forceinline CWideString FormatIndex(int index){CWideString n;n.Format(FormatNumber,index);return n;}
+FABLE_FORCEINLINE CWideString FormatIndex(int index){CWideString n;n.Format(FormatNumber,index);return n;}
 bool __cdecl ConstructStringInternal(CWideString&output,int first,...){bool result=true;int index=1;va_list args;va_start(args,first);int number=first;while(number!=-1){CWideString key=Prefix+FormatIndex(index);if(!output.Contains(key)){result=false;break;}unsigned short buffer[32];FormatNumber_AddThousandsSeparators(number,buffer);output.Replace(key,CWideString(buffer));number=va_arg(args,int);++index;}va_end(args);return result;}
 
 }

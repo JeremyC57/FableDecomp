@@ -1,5 +1,6 @@
 // Behaviour test for 0x004670F5 CPersistTraits<CBrainBehaviour>::CPersistTraits(): the default behaviour's Name is set
 // from an empty string (SetString sees ""), Priority and ScriptAIPriority are zero, and the "" temporary is destroyed.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -15,7 +16,7 @@ class CCharString { public:
 class CDefString {
 public:
     long Index;
-    __forceinline CDefString(const CCharString& name) { SetString(name); }
+    FABLE_FORCEINLINE CDefString(const CCharString& name) { SetString(name); }
     void SetString(const CCharString& name) { ++g_sets; g_setText = name.Text; Index = 77; }
 };
 
@@ -23,7 +24,7 @@ class CBrainBehaviour { public:
     CDefString Name;
     long       Priority;
     long       ScriptAIPriority;
-    __forceinline CBrainBehaviour(const CCharString& name) : Name(name), Priority(0), ScriptAIPriority(0) { }
+    FABLE_FORCEINLINE CBrainBehaviour(const CCharString& name) : Name(name), Priority(0), ScriptAIPriority(0) { }
 };
 
 template <class T> struct CPersistTraits;

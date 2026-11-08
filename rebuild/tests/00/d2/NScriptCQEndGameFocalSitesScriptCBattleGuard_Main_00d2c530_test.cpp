@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -305,7 +306,7 @@ class C3DVector;
 struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();}; //004ABE90/004AA840 genuine copy/release, field-free native projection
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
+class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
 }
 class CBaseObject { public:CBaseObject();virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
 class CCPPointerInfo;
@@ -313,7 +314,7 @@ enum EScriptEntityMoveType { ScriptMoveDefault=0 };enum ETextGroupSelectionMetho
 class CScriptGameResourceObjectBase:public CBaseObject{ public:virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8
 class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase { public:
  CScriptGameResourceObjectScriptedThingBase* PImp_Data;CCPPointerInfo* PImp_Info;
- __forceinline CScriptGameResourceObjectScriptedThingBase():PImp_Data(0),PImp_Info(0){}
+ FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase():PImp_Data(0),PImp_Info(0){}
  virtual ~CScriptGameResourceObjectScriptedThingBase(); //007E74D0 ordinary shared resource cleanup
  virtual void Validate()const; //1 7E72C0
  virtual void SummonerLightningOrbAttackTarget(const CScriptThing&); //2 7E72D0
@@ -352,9 +353,9 @@ union GameSlot{void* Address;void(GameScriptCalls::*NewScriptFrame)()const;CScri
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4);
 #endif
 struct GameScriptCalls:CGameScriptInterface {
- __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameSlot*>(__vftable)[7].NewScriptFrame)();}
- __forceinline CScriptThing& GetHero(){return(this->*reinterpret_cast<GameSlot*>(__vftable)[70].GetHero)();}
- __forceinline void EntitySetInFaction(const CScriptThing& t,const CCharString& f)const{(this->*reinterpret_cast<GameSlot*>(__vftable)[601].EntitySetInFaction)(t,f);}
+ FABLE_FORCEINLINE void NewScriptFrame()const{(this->*reinterpret_cast<GameSlot*>(__vftable)[7].NewScriptFrame)();}
+ FABLE_FORCEINLINE CScriptThing& GetHero(){return(this->*reinterpret_cast<GameSlot*>(__vftable)[70].GetHero)();}
+ FABLE_FORCEINLINE void EntitySetInFaction(const CScriptThing& t,const CCharString& f)const{(this->*reinterpret_cast<GameSlot*>(__vftable)[601].EntitySetInFaction)(t,f);}
 }; //7=6E7410,70=891CA0,601=89C190
 extern "C" int rand(); //00BFEB16
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing&,const CScriptThing&,float); //00CBE2FF

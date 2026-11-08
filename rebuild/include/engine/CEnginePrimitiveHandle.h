@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CENGINEPRIMITIVEHANDLE_H
 #define FABLE_ENGINE_CENGINEPRIMITIVEHANDLE_H
+#include "fable_compiler.h"
 // Retail declaration (Codex pass 11): Ego_r TPI0xb241, public CBaseClass
 // +0 and private CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4,
 // sizeof8; native global objects at013baf44/013baf4c and vtable0122f598.
@@ -12,7 +13,7 @@ public:
 #if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_DTOR)
     // Nested opt-in (chunk 763, row 0x00441EE0): retail's inline destructor is Clear() then the member's own release
     // (0x0041C500 ??_G: notify at count 1, Reset(0), then ~CIVCountedPointer releases again).
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 #else
     virtual ~CEnginePrimitiveHandle() {
         if (!Data.IsNull() && Data->GetRefCount() == 1) Data->NotifyReleased(*this);

@@ -11,6 +11,7 @@
 // Shape: the events component is a named local re-read from the frame for the end() test each pass (`cmp ebx,[eax+0Ch]`); the world
 // frame is read once into the frame; the subject is kept in edi and copied into the find key and the insert pair; `this` is spilled
 // to [ebp-8] for the tree address.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
@@ -49,7 +50,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;

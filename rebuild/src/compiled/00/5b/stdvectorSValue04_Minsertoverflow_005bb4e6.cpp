@@ -16,6 +16,7 @@
 // the __false_type temporaries sit in the high byte of the atend slot (`lea eax,[ebp+1Bh]`); fill_n, _Construct, _M_clear
 // (trivial _Destroy + `if (p) free(p)`) and _M_set are inline. Model follows the landed vector<CCategory> twin 0x005C2C65.
 // Element: a 4-byte class-type value (STLport's traits send class types down the __false_type path); type not established.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
@@ -36,8 +37,8 @@ __declspec(noinline) SValue04* __fastcall __uninitialized_copy(const SValue04* f
         new ((void*)cur) SValue04(*first);
     return cur;
 }
-template <class T> __forceinline const T& Max(const T& a, const T& b) { return a < b ? b : a; }   // STLport (max)
-template <class T> __forceinline T* __uninitialized_fill_n(T* first, unsigned long n, const T& x, const __false_type&)
+template <class T> FABLE_FORCEINLINE const T& Max(const T& a, const T& b) { return a < b ? b : a; }   // STLport (max)
+template <class T> FABLE_FORCEINLINE T* __uninitialized_fill_n(T* first, unsigned long n, const T& x, const __false_type&)
 {
     T* cur = first;
     for (; n > 0; --n, ++cur)
@@ -48,14 +49,14 @@ struct SValue04Vector {                                   // STLport vector<SVal
     SValue04* _M_start;
     SValue04* _M_finish;
     SValue04* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    static __forceinline SValue04* allocate(unsigned long n) { return n != 0 ? (SValue04*)malloc(n * sizeof(SValue04)) : 0; }
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    static FABLE_FORCEINLINE SValue04* allocate(unsigned long n) { return n != 0 ? (SValue04*)malloc(n * sizeof(SValue04)) : 0; }
+    FABLE_FORCEINLINE void _M_clear()
     {
         if (_M_start)
             free(_M_start);
     }
-    __forceinline void _M_set(SValue04* start, SValue04* finish, SValue04* endOfStorage)
+    FABLE_FORCEINLINE void _M_set(SValue04* start, SValue04* finish, SValue04* endOfStorage)
     {
         _M_start = start;
         _M_finish = finish;

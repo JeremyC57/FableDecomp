@@ -11,6 +11,7 @@
 //   `__adjust_heap(first, 0, middle - first, val, comp)`), sort_heap and pop_heap inlined (`__forceinline` under "s");
 //   the loop's compare caches the candidate key in the frame for the by-value `_Tp(*i)` copy; sort_heap keeps `middle`
 //   in the dead `last` argument slot. Frame pointer: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -24,7 +25,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 
@@ -34,8 +35,8 @@ public:
 };
 
 namespace std {
-template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }     // _STLP_VALUE_TYPE for pointers
-template <class _Tp> __forceinline int* __distance_type(const _Tp*) { return (int*)0; }  // _STLP_DISTANCE_TYPE for pointers
+template <class _Tp> FABLE_FORCEINLINE _Tp* __value_type(const _Tp*) { return (_Tp*)0; }     // _STLP_VALUE_TYPE for pointers
+template <class _Tp> FABLE_FORCEINLINE int* __distance_type(const _Tp*) { return (int*)0; }  // _STLP_DISTANCE_TYPE for pointers
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
@@ -47,13 +48,13 @@ template <class _RandomAccessIterator, class _Tp, class _Compare>
 void __fastcall __pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last, _Tp*, _Compare __comp);   // 0x00471150
 
 template <class _RandomAccessIterator, class _Compare>
-__forceinline void make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
+FABLE_FORCEINLINE void make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
     __make_heap(__first, __last, __comp, __value_type(__first), __distance_type(__first));
 }
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;
@@ -61,13 +62,13 @@ __forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterat
 }
 
 template <class _RandomAccessIterator, class _Compare>
-__forceinline void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
+FABLE_FORCEINLINE void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
     __pop_heap_aux(__first, __last, __value_type(__first), __comp);
 }
 
 template <class _RandomAccessIterator, class _Compare>
-__forceinline void sort_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
+FABLE_FORCEINLINE void sort_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
     while (__last - __first > 1)
         pop_heap(__first, __last--, __comp);

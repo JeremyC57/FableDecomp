@@ -11,6 +11,7 @@
 // `mov esi,[esp+10h]`; reading the temporary's member uses the returned eax); the release is written by hand on the
 // pointer local through an inline guard after the text copy (`dec [esi+4] ; jne ; call [vtable+4]`): a destructor on the
 // counted-pointer object re-reads the slot at every use.
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
@@ -45,8 +46,8 @@ template <class T> class CIVCountedPointer { public:   // CIVCountedPointer<cons
 };
 struct CEntryReference {                            // holds the reference taken by GetPGroupEntry until the text is copied
     const CTextEntry* m_pEntry;
-    __forceinline CEntryReference(const CTextEntry* entry) : m_pEntry(entry) { }
-    __forceinline ~CEntryReference()
+    FABLE_FORCEINLINE CEntryReference(const CTextEntry* entry) : m_pEntry(entry) { }
+    FABLE_FORCEINLINE ~CEntryReference()
     {
         if (--m_pEntry->m_refCount == 0)
             m_pEntry->Destroy();

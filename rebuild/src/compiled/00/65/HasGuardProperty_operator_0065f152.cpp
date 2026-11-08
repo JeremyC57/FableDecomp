@@ -8,6 +8,7 @@
 // Model: the slot-48 query as in the landed CThingFilter_AICreatureHasProperty (0x006A75D0, `GetAIProperty`); the
 // intelligent pointer is a local model (vptr + item, 8 bytes) with the out-of-line base destructor.
 // Shape: the compare is taken into bl (`sete bl`) before the argument's destructor runs, then returned.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThingAICreature { public:
     virtual void v000();
@@ -27,7 +28,7 @@ struct CBaseIntelligentPointer {
     void* GetPItem() const;                           // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
 struct HasGuardProperty {

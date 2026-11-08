@@ -2,6 +2,7 @@
 // Flags:
 // Leaf: ??0CEnvironmentSpellEffectInterface@@QAE@PAVCEnvironment@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -10,7 +11,7 @@ class CEnvironment;
 #include "engine/C3DVector.h"
 #pragma pack(pop)
 class CRGBFloatColour{public:float R,G,B,A;CRGBFloatColour(){}
- __forceinline void Initialise(float r,float g,float b,float a){R=r;G=g;B=b;A=a;}
+ FABLE_FORCEINLINE void Initialise(float r,float g,float b,float a){R=r;G=g;B=b;A=a;}
 };
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION{};
 // Layout: no engine header for this class. Donor offsets8952..8980 and native
@@ -20,8 +21,8 @@ class CEnvironmentSpellEffectInterface{public:
  struct CRadialBlurParams{CRGBFloatColour ThresholdColour,IntensityColour;float Length,Fade,Range,Twist;CRadialBlurParams(){}};
  struct CRadialBlurPositionParams{C3DVector AreaCenter,BlurCenter;ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION AreaTrackPos,BlurTrackPos;CRadialBlurPositionParams(){}};
  struct CScreenFilterParams{float Alpha,Saturation,Contrast,Brightness;CRGBFloatColour Tint;
-  __forceinline CScreenFilterParams(){SetToDefault();}
-  __forceinline void SetToDefault(){Alpha=Contrast=Brightness=0.0f;Saturation=1.0f;Tint.Initialise(1.0f,1.0f,1.0f,1.0f);}
+  FABLE_FORCEINLINE CScreenFilterParams(){SetToDefault();}
+  FABLE_FORCEINLINE void SetToDefault(){Alpha=Contrast=Brightness=0.0f;Saturation=1.0f;Tint.Initialise(1.0f,1.0f,1.0f,1.0f);}
  };
  CEnvironment*Environment;CRadialBlurParams RadialBlurParams;CRadialBlurPositionParams RadialBlurPositionParams;
  unsigned char DisplacementParams[16];CScreenFilterParams ScreenFilterParams;

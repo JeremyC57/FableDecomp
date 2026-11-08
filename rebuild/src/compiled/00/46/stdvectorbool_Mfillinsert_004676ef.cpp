@@ -19,6 +19,7 @@
 //   by-value return: zero-stored then copied in place (`stosb ; mov al,[ebp+0Fh] ; mov [ebp+0Fh],al`); the
 //   _M_insert_overflow tag is the plain `_IsPODType()` temporary (zero-stored only).
 // Model: STLport's three vector words; `_IsPOD<T>` is STLport's type_traits helper (`static _Type _Answer()`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);   // 0x00BFEAE6
@@ -29,7 +30,7 @@ struct __true_type { };
 
 template <class _Tp> struct _IsPOD {
     typedef __true_type _Type;
-    static __forceinline _Type _Answer() { return _Type(); }
+    static FABLE_FORCEINLINE _Type _Answer() { return _Type(); }
 };
 
 // STLport 4.6 `__uninitialized_copy(_InputIter, _InputIter, _ForwardIter, const __true_type&)`; called here with `pointer`
@@ -39,36 +40,36 @@ template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                              const __true_type&);                                              // 0x0046780E
 
-__forceinline void* __copy_trivial_backward(const void* __first, const void* __last, void* __result)
+FABLE_FORCEINLINE void* __copy_trivial_backward(const void* __first, const void* __last, void* __result)
 {
     const int _Num = (const char*)__last - (const char*)__first;
     return (_Num > 0) ? memmove((char*)__result - _Num, __first, _Num) : __result;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __true_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __true_type&)
 {
     return (_Tp*)__copy_trivial_backward(__first, __last, __result);
 }
 
-template <class _Tp> __forceinline void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
+template <class _Tp> FABLE_FORCEINLINE void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;
 }
 
-template <class _Tp> __forceinline _Tp* fill_n(_Tp* __first, unsigned int __n, const _Tp& __val)
+template <class _Tp> FABLE_FORCEINLINE _Tp* fill_n(_Tp* __first, unsigned int __n, const _Tp& __val)
 {
     for (; __n > 0; --__n, ++__first)
         *__first = __val;
     return __first;
 }
 
-template <class _Tp> __forceinline _Tp* __uninitialized_fill_n(_Tp* __first, unsigned int __n, const _Tp& __x, const __true_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __uninitialized_fill_n(_Tp* __first, unsigned int __n, const _Tp& __x, const __true_type&)
 {
     return fill_n(__first, __n, __x);
 }
 
-template <class _Tp> __forceinline _Tp* uninitialized_fill_n(_Tp* __first, unsigned int __n, const _Tp& __x)
+template <class _Tp> FABLE_FORCEINLINE _Tp* uninitialized_fill_n(_Tp* __first, unsigned int __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __true_type());
 }

@@ -13,6 +13,7 @@
 // Shape: the const-thing pointer is a named local in its own block (an unnamed temporary lets VC use the ctor's eax
 //          `this` and tail-merge the two latch exits); GetInterface uses a separate `long type` key local.
 // Layout: Ego_r.pdb CAIStateGroup_Thunder (pack 1): PArenaCentre +0x14, bIsRangeAttack +0x1c, PTargetThing +0x1d, HitCount +0x28.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -77,7 +78,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x1c];
     CDefClassBase* m_pDef;                      // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

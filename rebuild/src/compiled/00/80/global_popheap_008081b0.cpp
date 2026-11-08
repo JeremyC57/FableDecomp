@@ -14,13 +14,14 @@
 // "s" pass-through push). The element copy for __adjust_heap is built in the argument area by the inlined user copy
 // constructor (base constructor, vtable store, SetPItem(other.GetPItem())); the assignment and the copy constructor must be
 // __forceinline. The by-value `value` parameter is destroyed by this callee at the end (`lea ecx,[esp+14h] ; call ~`).
+#include "fable_compiler.h"
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 struct CDoNotUseBinaryPredicate { };
 void __fastcall __adjust_heap(CIntelligentPointerThing* first, long holeIndex, long len,

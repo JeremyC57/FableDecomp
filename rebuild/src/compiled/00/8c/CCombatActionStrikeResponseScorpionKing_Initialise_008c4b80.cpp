@@ -12,6 +12,7 @@
 // Shape: GetSubDef and GetEffectFromString are same-TU noinline stand-in bodies that write only their out slots, so the
 //          def slot and effectType do not escape: the frame packs into two words (the facing spill and effectType share one,
 //          the "EYE_GET_HIT" temporary reuses the def slot word, "EMITTER_EYE" reuses effectType's).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -96,7 +97,7 @@ public:
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     CPhysicsBody* GetBody() const { return m_pBody; }
     const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

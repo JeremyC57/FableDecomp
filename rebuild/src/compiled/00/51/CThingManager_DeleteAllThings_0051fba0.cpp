@@ -9,6 +9,7 @@
 // (CCharString) at retail +0x58, the dead flag bit 0 of +0x91 (as IS_THING_ALIVE tests it).
 // Shape: the hero is a named local tested for null and the dead bit; the list walk keeps the node in edi and re-reads the
 // sentinel each pass; the walk's alive test is an inline `m_dead ? false : true` (`not al ; test al,1`), the hero's a plain `!m_dead`.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* source, unsigned int count);   // 0x00BFEAE6
 inline void* CopyTrivial(const void* first, const void* last, void* result)
 {
@@ -23,7 +24,7 @@ class CCharString { public:
     CCharStringData* m_pStringData;
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.m_pStringData;
     CCharStringData* b = sb.m_pStringData;

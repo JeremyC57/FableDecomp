@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -1063,7 +1064,7 @@ struct CDefPointeeNative {void* VTable;long References;};
 union DefReleaseSlot {void* Native;void(CDefPointeeNative::*Release)();};
 struct CThingObjectDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0x68];CEngineGraphic Graphic;};
 struct CThingCreatureDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0xf8];CEngineGraphic Graphic;};
-__forceinline void ReleaseDef(CDefPointeeNative* p){if(--p->References==0)(p->*reinterpret_cast<DefReleaseSlot*>(p->VTable)[1].Release)();}
+FABLE_FORCEINLINE void ReleaseDef(CDefPointeeNative* p){if(--p->References==0)(p->*reinterpret_cast<DefReleaseSlot*>(p->VTable)[1].Release)();}
 template<class T>class CDefPointer { public:T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
 struct CDefinitionManagerMethods:CDefinitionManager {CDefPointer<CDefPointeeNative> GetPDefByName(const CCharString&);bool GetObjectDef(const CCharString&,CDefPointer<CThingObjectDefNative>&);bool GetCreatureDef(const CCharString&,CDefPointer<CThingCreatureDefNative>&);};
 class CGameDefinitionManager : public CDefinitionManagerMethods { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ

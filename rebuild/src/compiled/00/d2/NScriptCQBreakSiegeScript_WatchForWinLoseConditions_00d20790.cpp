@@ -14,6 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 class CCharString { public:
     void* PStringData;
@@ -35,7 +36,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~CScriptThingVector()
+    FABLE_FORCEINLINE ~CScriptThingVector()
     {
         Destroy(_M_start, _M_finish);
         if (_M_start)

@@ -4,6 +4,7 @@
 // Shape: MoveStringPos is the inline cursor advance (quote state first, then the position). The entry test goes through the inline
 // IsAtEndOfText (re-indexes String[StringPos], CSE-d with GetCurrent's pointer): retail `lea edi,[eax+ecx] ; cmp byte ptr [edi],0`.
 // IsAtEndOfText is an inline stand-in (no out-of-line copy; same as 0x009BA4A0).
+#include "fable_compiler.h"
 extern "C" int __cdecl isspace(int c);   // 0x00BFEDBE (CRT)
 extern "C" int __cdecl isdigit(int c);   // 0x00BFEDA6 (CRT)
 extern "C" int __cdecl isalpha(int c);   // 0x00BFEDB8 (CRT)
@@ -43,7 +44,7 @@ class CStringParser { public:
     bool IsAtEndOfText() const { return String[CursorPos.StringPos] == 0; }
 protected:
     bool CalcInQuotes(bool inQuotes, const char* from, const char* to) const;   // 0x009B9570
-    __forceinline void MoveStringPos(unsigned long n)
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n)
     {
         if (n) {
             unsigned long pos = CursorPos.StringPos;

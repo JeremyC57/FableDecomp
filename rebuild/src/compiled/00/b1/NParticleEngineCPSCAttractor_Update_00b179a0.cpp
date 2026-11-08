@@ -19,6 +19,7 @@
 //   the found map entry or from the GetCurrentPosition result through one merged three-dword copy; the attractor force is
 //   homed in the dead params slot; the falloff exponent is `(FallOff - 5)` or `FallOff * 0.2f` (int to float through the
 //   dead distance slot) and the distance ratio fabs(radius - distance) / radius goes through `pow`.
+#include "fable_compiler.h"
 extern "C" double __cdecl pow(double x, double y);     // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
@@ -49,7 +50,7 @@ public:
 
     const_iterator end() const { return Data.end(); }
     const_iterator LowerBound(const K& key) const;          // 0x00B05890
-    __forceinline const_iterator Find(const K& key) const
+    FABLE_FORCEINLINE const_iterator Find(const K& key) const
     {
         const_iterator it = LowerBound(key);
         const_iterator last = end();

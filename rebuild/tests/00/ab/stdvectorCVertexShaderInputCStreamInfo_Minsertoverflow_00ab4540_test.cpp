@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 e74559c4863860ae3a60e11eddab15d85b5915c4f1fe99213c57fe9fa6e4a165
@@ -14,9 +15,9 @@ class CBaseClass{public:virtual ~CBaseClass();};
 template<class T>class CArray{ public:T* start;T* finish;T* end;CArray():start(0),finish(0),end(0){}CArray(const CArray&);~CArray(){if(start)free(start);}};
 class CVertexStreamFormat:public CBaseClass{
  public:class CDataElement{ public:unsigned int Register;int DataType;};CArray<CDataElement> DataElements;
- CVertexStreamFormat(){}__forceinline CVertexStreamFormat(const CVertexStreamFormat&o):DataElements(o.DataElements){}virtual ~CVertexStreamFormat(){}
+ CVertexStreamFormat(){}FABLE_FORCEINLINE CVertexStreamFormat(const CVertexStreamFormat&o):DataElements(o.DataElements){}virtual ~CVertexStreamFormat(){}
 };
-class CVertexShaderInput{ public:class CStreamInfo{ public:unsigned int StreamIndex;CVertexStreamFormat StreamFormat;CStreamInfo(){}__forceinline CStreamInfo(const CStreamInfo&o):StreamIndex(o.StreamIndex),StreamFormat(o.StreamFormat){}};};
+class CVertexShaderInput{ public:class CStreamInfo{ public:unsigned int StreamIndex;CVertexStreamFormat StreamFormat;CStreamInfo(){}FABLE_FORCEINLINE CStreamInfo(const CStreamInfo&o):StreamIndex(o.StreamIndex),StreamFormat(o.StreamFormat){}};};
 typedef CVertexShaderInput::CStreamInfo Element_00ab4540;
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct Vector_00ab4540 {
@@ -38,7 +39,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_00ab4540* first,Elemen
  for(;first!=last;++first)first->~Element_00ab4540();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_00ab4540<T>::InsertGrow(T* position,const T& value,const Tag_00ab4540&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

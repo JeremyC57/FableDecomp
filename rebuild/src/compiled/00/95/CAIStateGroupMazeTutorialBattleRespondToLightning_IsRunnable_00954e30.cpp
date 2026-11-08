@@ -1,6 +1,7 @@
 // CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable() -- choose a living lightning target outside boss phase2 and save hit time.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00954e30 length262. Shared group/base/brain headers; native component map44,dead91.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
@@ -18,7 +19,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct MazePointerBase{virtual ~MazePointerBase();MazeThing* item;MazePointerBase();}; //00a01c10,00a01b10,00a01b50,00a01b90
-struct MazePointer:MazePointerBase{__forceinline MazePointer(MazeThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}__forceinline MazePointer& operator=(const MazePointer& p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem())));return *this;}}; //derived scalar destructor004a9710,vtable01238c6c
+struct MazePointer:MazePointerBase{FABLE_FORCEINLINE MazePointer(MazeThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}FABLE_FORCEINLINE MazePointer& operator=(const MazePointer& p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem())));return *this;}}; //derived scalar destructor004a9710,vtable01238c6c
 struct MazeBoss{long GetPhase();}; //007aed10
 struct MazeCombat{virtual ~MazeCombat();
 virtual void slot1();
@@ -53,19 +54,19 @@ virtual MazeThing* GetTarget(); //slot29
 };
 struct MazeEntry{long key;void* value;};
 struct MazeTable{MazeEntry* begin;MazeEntry* end;MazeEntry* Find(const long&);MazeEntry* FindConst(const long&); //0040f020,004365b0
- template<int Key> __forceinline void* Lookup(){long key=Key;MazeEntry* p=Find(key);if(p==end)p=end;else if(p->key>Key)p=end;return p->value;}
- template<int Key> __forceinline void* LookupConst(){long key=Key;MazeEntry* p=FindConst(key);return (p==end || p->key>Key ? end:p)->value;}
+ template<int Key> FABLE_FORCEINLINE void* Lookup(){long key=Key;MazeEntry* p=Find(key);if(p==end)p=end;else if(p->key>Key)p=end;return p->value;}
+ template<int Key> FABLE_FORCEINLINE void* LookupConst(){long key=Key;MazeEntry* p=FindConst(key);return (p==end || p->key>Key ? end:p)->value;}
 };
 struct MazeThing{char base[0x20];unsigned long masks[9];MazeTable table;char beforeDead[0x45];unsigned char dead;
-__forceinline void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
-__forceinline void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
+FABLE_FORCEINLINE void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
+FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
 };
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct LightningMethods : public CAIStateGroupBase, CAIStateGroup_MazeTutorialBattleRespondToLightning {
-__forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
+FABLE_FORCEINLINE MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
 bool HasBeenHitByLightning(); //00954c60
 bool IsRunnable();};
 bool LightningMethods::IsRunnable(){

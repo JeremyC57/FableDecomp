@@ -19,6 +19,7 @@
 // CCharString conversion. Same-TU noinline stand-ins (GetDecryptedDocument, ~vector<std::string>,
 // ReplaceDoubleApostrophes, operator!=, and std::string's range init with the allocator parameter unnamed, which lets the
 // allocator temporary share the busy flag's byte) keep the locals from escaping as in retail.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);
 extern "C" unsigned int __cdecl strlen(const char* text);
 extern "C" int __cdecl strcmp(const char* a, const char* b);
@@ -126,7 +127,7 @@ public:
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
     CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
-    __forceinline bool OpenRequest(const CCharString& request)
+    FABLE_FORCEINLINE bool OpenRequest(const CCharString& request)
     {
         LHString text(request.c_str());
         CCharString key("THIS-ISMY-VALI-DCDK-EYOH-YESI-TISM", -1);

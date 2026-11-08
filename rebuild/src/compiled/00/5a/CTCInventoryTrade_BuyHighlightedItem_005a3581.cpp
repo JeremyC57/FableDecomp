@@ -7,6 +7,7 @@
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
@@ -27,7 +28,7 @@ public:
     std::bitset<274> present;                                  // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) const { return present.test(type); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

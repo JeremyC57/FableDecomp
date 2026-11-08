@@ -6,6 +6,7 @@
 // Shape: the product is held in a `double` local and returned as `(float)seconds`: VC7.1 then stores it into the dead
 //   `animation` argument slot (`fst [esp+18h]`) before popping edi/esi; a float local or the product returned directly
 //   pops first.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class C3DAnimationStats { public:
     unsigned char _pad[0xc];
@@ -19,7 +20,7 @@ struct SCountBlock {
 struct CCountedPointer_C3DAnimationStats {
     const C3DAnimationStats* m_pObject;
     SCountBlock*             m_pCount;
-    __forceinline ~CCountedPointer_C3DAnimationStats()
+    FABLE_FORCEINLINE ~CCountedPointer_C3DAnimationStats()
     {
         if (m_pCount) {
             --m_pCount->m_references;

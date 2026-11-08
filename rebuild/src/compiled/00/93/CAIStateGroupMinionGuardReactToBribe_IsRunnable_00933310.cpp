@@ -16,6 +16,7 @@
 //          IS_THING_ALIVE is inline, the second the out-of-line template.
 // Layout: engine/CAIStateGroup_MinionGuardReactToBribe.h (PHero +0x14, FrameLastReactedToReceiveing +0x1c,
 //          HasRecievedBribe +0x20); PBrain is the first dword at +0x04; the 0xb4 component's +0x10 / +0x40 are descriptive.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_MinionGuardReactToBribe.h"
 
 class CTCBase;
@@ -51,10 +52,10 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerHero : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
-    __forceinline CIntelligentPointerHero(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointerHero& operator=(const CIntelligentPointerHero& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerHero(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerHero& operator=(const CIntelligentPointerHero& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

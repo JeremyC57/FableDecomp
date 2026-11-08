@@ -9,6 +9,7 @@
 // @ 0x0099A2D0 (x5), malloc @ 0x00BFEA0E (the cache map's header node).
 // Layout and shape: as CEngineInternalPrimitiveAnimatedMesh's own constructor 0x00BD92E0 (same TU model), here through its
 // inline (type, flags) constructor.
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -131,7 +132,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00();
     CEngineInternalPrimitiveAnimatedMesh();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct CEngineInternalPrimitiveAnimatedMeshFromFile : CEngineInternalPrimitiveAnimatedMesh {   // vtable 0x012A7B74
     virtual void v00();

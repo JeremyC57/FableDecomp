@@ -20,6 +20,7 @@
 // direct insert alike.
 // Model: MirroredCriminalStatus has the Ego_r.pdb layout (0x44 bytes, as the landed ctor 0x0057A5DD models it).
 // Shape: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -34,7 +35,7 @@ public:
     CBasicString<char>* PData;                           // +0x00
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

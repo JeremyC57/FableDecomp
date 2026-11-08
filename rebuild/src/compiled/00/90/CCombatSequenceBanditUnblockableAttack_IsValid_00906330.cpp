@@ -6,6 +6,7 @@
 // The CThing component-table model is the landed GetInterface shape. The target is the base's +0x20
 // (retail layout, see 0x008B0AB0). The found path returns the callee's bool through `? true : false`
 // (the false branch re-uses al, the true branch shares the `mov al,1` tail); an `||` form widens to eax.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -18,13 +19,13 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline bool HasInterface(long interfaceType) const   // the bitset test alone
+    FABLE_FORCEINLINE bool HasInterface(long interfaceType) const   // the bitset test alone
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)   // forced: two lookups in one body exceed the inliner budget
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)   // forced: two lookups in one body exceed the inliner budget
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

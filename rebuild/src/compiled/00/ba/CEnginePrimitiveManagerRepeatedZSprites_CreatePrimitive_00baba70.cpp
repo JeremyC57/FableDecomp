@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerRepeatedZSprites::CreatePrimitive -- allocate repeated Z sprite, adopt into temporary handle, update/register, return counted handle copy; retail00baba70 224bytes. Calls new00bfea1a,base00b8ff00,handlebase0099a2d0/dtor0099a2e0,update00baa780,register00bacdd0. Native polymorphic views complement actual flat shared headers; native primitive size94, count+4,Type+8,OcclusionInfo+48,bounds+64.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CEnginePrimitiveManagerRepeatedZSprites.h"
 #else
@@ -71,13 +72,13 @@ struct CPrimitiveCountedPointerNative {
  CEngineInternalPrimitiveNative* Object;
  CPrimitiveCountedPointerNative(CEngineInternalPrimitiveNative* p):Object(p){}
  CPrimitiveCountedPointerNative(const CPrimitiveCountedPointerNative& o):Object(o.Object){if(Object)++Object->IVRefCount;}
- __forceinline ~CPrimitiveCountedPointerNative(){if(Object){CEngineInternalPrimitiveNative* p=Object;if(!p->RemoveReference())p->Destroy();}Object=0;}
+ FABLE_FORCEINLINE ~CPrimitiveCountedPointerNative(){if(Object){CEngineInternalPrimitiveNative* p=Object;if(!p->RemoveReference())p->Destroy();}Object=0;}
 };
 struct CEnginePrimitiveHandleNative:CBaseClass {
  CPrimitiveCountedPointerNative Data;
  CEnginePrimitiveHandleNative(CEngineInternalPrimitiveNative* p):Data(p){}
  CEnginePrimitiveHandleNative(const CEnginePrimitiveHandleNative& o):CBaseClass(o),Data(o.Data){}
- __forceinline virtual ~CEnginePrimitiveHandleNative(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->OnLastHandleReleased(this);}
+ FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandleNative(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->OnLastHandleReleased(this);}
 };
 struct CRepeatedSpriteDescription;
 struct CEnginePrimitiveManagerRepeatedZSpritesMethods:CEnginePrimitiveManagerRepeatedZSprites {

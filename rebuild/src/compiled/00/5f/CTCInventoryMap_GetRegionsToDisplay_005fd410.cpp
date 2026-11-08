@@ -21,6 +21,7 @@
 //   offsets (UsingComponents bitset +0x20, Components CVectorMap +0x44, CurrentMapNumber +0x8E); the quest-manager singleton
 //   is CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (Ego_r dynamic initializer) at 0x013B89FC with ActiveQuestCards +0x5C
 //   (engine/CQuestManager.h, flattened there as bytes).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -258,14 +259,14 @@ public:
     CVectorMap<ETCInterfaceType, CTCBase*> Components;   // +0x44
     unsigned char _pad54[0x8e - 0x54];
     short CurrentMapNumber;                              // +0x8E
-    __forceinline unsigned long HasTC(ETCInterfaceType type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE unsigned long HasTC(ETCInterfaceType type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(ETCInterfaceType type) const
     {
         const std::pair<ETCInterfaceType, CTCBase*>* end = Components.end();
         const std::pair<ETCInterfaceType, CTCBase*>* it = Components.LowerBound(type);
         return (it == end || type < it->first ? end : it)->second;
     }
-    template <class T> __forceinline T* PeekTC(ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE T* PeekTC(ETCInterfaceType type) const
     {
         T* out;
         if (HasTC(type))

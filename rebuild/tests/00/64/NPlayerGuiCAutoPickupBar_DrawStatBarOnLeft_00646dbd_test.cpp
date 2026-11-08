@@ -1,5 +1,6 @@
 // Behaviour test for 00646dbd: src/00646dbd.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // NPlayerGui::CAutoPickupBar::DrawStatBarOnLeft(...)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -42,8 +43,8 @@ class CInventoryItemDef : public CIVCountedPointeeBase { public:
 #pragma pack(pop)
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->IVRefCount == 0)
             Object->Delete();

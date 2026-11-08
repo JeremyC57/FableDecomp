@@ -1,4 +1,5 @@
 // Behaviour test for CEngineInternalPrimitive2DAnimatedMesh() (0x00BD94E0): type 0x25 / flags 0x80000000 base, the animated-mesh parts, a zeroed bounding sphere.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __declspec(x)
@@ -130,7 +131,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CCache Cache;                                       // +0xd4
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00() { }
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct C2DVectorF { float X, Y; C2DVectorF() { } };
 class C2DBoxF { public: C2DVectorF TopLeft, BottomRight; C2DBoxF() { } };
@@ -146,7 +147,7 @@ class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAn
     C3DBoundingSphere ObjectBoundingSphere;
     virtual void v00() { }
     CEngineInternalPrimitive2DAnimatedMesh();
-    __forceinline CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
 };
 
 CEngineInternalPrimitive2DAnimatedMesh::CEngineInternalPrimitive2DAnimatedMesh()

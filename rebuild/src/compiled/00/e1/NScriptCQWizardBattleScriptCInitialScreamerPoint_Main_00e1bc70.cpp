@@ -17,6 +17,7 @@
 //   NumberOfScreamersAlive PDB +0x68 / retail +0x54 (the quest-script base delta 0x14).
 // Shape: generated script code; the (never started) handle and the spawned screamer are destructor-less views: the handle
 //   is destroyed inline at the two distance-wait exits and out of line elsewhere; the screamer always out of line.
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 void operator delete(void* p);                      // 0x00BFE9BC (MSVCR71)
@@ -107,7 +108,7 @@ struct CScriptThingImpl {
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 struct CScriptThingInline : CBaseClass {                // the same object, destroyed by the inline body
  CCountedPointer<CScriptThingImpl> PImp;
- __forceinline ~CScriptThingInline() { }
+ FABLE_FORCEINLINE ~CScriptThingInline() { }
 };
 struct CScriptThingLocal {                              // a by-value CScriptThing result held without an implicit destructor
  void* vptr;
@@ -115,13 +116,13 @@ struct CScriptThingLocal {                              // a by-value CScriptThi
  CCPPointerInfo* Info;
  const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
  void Destroy() { reinterpret_cast<CScriptThing*>(this)->CScriptThing::~CScriptThing(); }
- __forceinline void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
+ FABLE_FORCEINLINE void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
 };
 #include "engine/CGameScriptInterface.h"
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }
@@ -1006,12 +1007,12 @@ struct CBaseObjectDtor {                               // the same root, as its 
  virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
- __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+ FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
  struct Words {                                     // CCountedPointer<void> {Data, Info}, released by hand
   void* Data; CCPPointerInfo* Info;
-  __forceinline void Release()
+  FABLE_FORCEINLINE void Release()
   {
    if (Info) {
     --Info->RefCount;
@@ -1028,7 +1029,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  void Release();                                    // 0x00CD2770
  void MoveToThing(const CScriptThing& thing, float distance, long moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
  void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
- __forceinline void DestroyInline()
+ FABLE_FORCEINLINE void DestroyInline()
  {
   PImp.Release(); PImp.Data = 0; PImp.Info = 0;
   reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

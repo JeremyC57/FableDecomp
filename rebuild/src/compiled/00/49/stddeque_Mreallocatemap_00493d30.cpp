@@ -7,6 +7,7 @@
 // Shape (family M070, representative 0x00493D30): STLport 4.6 _deque.c `_M_reallocate_map`; frame-pointer size TU
 //   (`optimize("y", off)` + `("s", on)`): new_map_size / new_map in the two frame words, `(max)` by reference (the
 //   `lea edx,[ebp+8]` select), the map allocator's allocate/deallocate and `_M_set_node` inline.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
@@ -21,12 +22,12 @@ public:
 namespace std {
 void* __fastcall __copy_trivial(const void* __first, const void* __last, void* __result);            // 0x00405BA0
 void* __fastcall __copy_trivial_backward(const void* __first, const void* __last, void* __result);   // 0x00405BC0
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 template <class _Tp> class allocator {
 public:
     allocator() { }
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc {
@@ -40,7 +41,7 @@ template <class _Tp> struct _Deque_iterator_base {
     _Tp* _M_first;
     _Tp* _M_last;
     _Map_pointer _M_node;
-    __forceinline void _M_set_node(_Map_pointer __new_node)
+    FABLE_FORCEINLINE void _M_set_node(_Map_pointer __new_node)
     {
         _M_last = (_M_first = *(_M_node = __new_node)) + int(__buffer_size);
     }

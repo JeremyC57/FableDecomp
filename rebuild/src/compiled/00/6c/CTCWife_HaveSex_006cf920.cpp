@@ -23,6 +23,7 @@
 //   (an external LowerBound costs a 4-byte frame slot); the stats component is the `T* p = 0` preload then
 //   `if (HasTC) p = GetTC` and is null-tested; the scoreboard pointer is declared uninitialised (retail reads the shared
 //   key slot on a miss).
+#include "fable_compiler.h"
 class CTCBase;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);     // 0x009F1760
@@ -74,7 +75,7 @@ class CThing { public:
     float         MaxHealth;                                // +0xb0 (descriptive)
     bool IsDead() const { return (m_flags & 1) != 0; }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

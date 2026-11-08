@@ -14,6 +14,7 @@
 // `PSeat = seat` through the temporary in the 8-byte frame. PSeat is +0x14 (CAIStateGroup_UsesSeat's pointer;
 // the engine header flattens the base, so the layout is local).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -86,8 +87,8 @@ struct CBaseIntelligentPointerCtor {            // the full CBaseIntelligentPoin
 // 0x00902045 shape): base constructor, the derived vtable store, SetPItem on the temporary, GetPItem from it,
 // SetPItem on the member, destructor.
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 class CTCTavern { public:                              // interface type 0xAB
@@ -96,7 +97,7 @@ class CTCTavern { public:                              // interface type 0xAB
 
 struct CThingF : CThing {
     // the pointer-returning lookup
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

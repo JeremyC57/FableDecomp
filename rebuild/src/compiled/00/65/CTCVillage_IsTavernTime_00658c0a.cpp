@@ -8,6 +8,7 @@
 // Shape (family M179, representative 0x00658B6B): `return IsTimeBetween(GetDef()->TavernStartTimes, GetDef()->TavernDuration);`
 //   -- two by-value CDefPointer temporaries (the duration's first: arguments right to left), released in reverse; the
 //   dereferenced one's release needs no null test. `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {
 public:
@@ -18,8 +19,8 @@ public:
 template <class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Delete(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Delete(); }
     T* operator->() const { return Object; }
 };
 namespace std {
@@ -36,7 +37,7 @@ class CTCVillage {
 public:
     unsigned char _pad00[0x94];
     CDefPointer<const CVillageDef> PDef;                  // +0x94
-    __forceinline CDefPointer<const CVillageDef> GetDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<const CVillageDef> GetDef() const { return PDef; }
     bool IsTimeBetween(const std::vector<long>& startTimes, long duration) const;   // 0x00658620
     bool IsTavernTime() const;
 };

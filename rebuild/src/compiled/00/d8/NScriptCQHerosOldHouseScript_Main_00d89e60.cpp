@@ -20,6 +20,7 @@
 //   shared by the nested GetActiveQuestName call); an explicit CWideString(L"") loads Game first and reshuffles registers
 //   through the whole body (80 differing lines). The `!questFailed && IsRegionLoaded("OakBay") && WifeAttacked` test is
 //   materialised into a byte because its CCharString temporary is conditional (flag bit 0x10).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -58,7 +59,7 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     TAllocFunc      ClassAllocFunc;                     // +0x10
     bool            ClassAllocValid;                    // +0x14
     unsigned long   Flags;                              // +0x18
-    __forceinline CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
+    FABLE_FORCEINLINE CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
         : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) {}
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };

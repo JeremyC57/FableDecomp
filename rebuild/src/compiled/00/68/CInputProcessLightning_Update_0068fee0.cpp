@@ -11,6 +11,7 @@
 // flattens it).
 // Shape: the dead-bit mask 1 and the zero of the null test are reused (`cl`, `dl`) for the event's Valid / EndPos /
 // Replacement bytes.
+#include "fable_compiler.h"
 class CInputEvent;
 struct CMemoryBuffer {
 };
@@ -33,7 +34,7 @@ struct CThing_Retail {
     unsigned char  _pad40[0x51];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class CThingPlayerCreature : public CThing_Retail { };
 class CPlayer {

@@ -6,12 +6,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6C000, 240 bytes, __fastcall (this = the filter in ecx), `ret 8`. Constants:
 //   0.0005f @ 0x01264AF0, 2*pi/44100 @ 0x012BED78, 1.0f @ 0x0122DED8, 32768.0f @ 0x0129EF98, 0.5f @ 0x0122F59C;
 //   log2(10) = 0x40549A78 as an immediate. The catalog name "Audio_ComputeDecibelsToLinear" is descriptive.
+#include "fable_compiler.h"
 #include "libpk/Pow10.h"
 #include "libpk/FtoL.h"
 #include <math.h>
 #pragma intrinsic(cos, sqrt)
 // libpk's inline-assembly 10^x helper (0x00C53B10 is its standalone copy), expanded in place
-__forceinline float Pow10(float x)
+FABLE_FORCEINLINE float Pow10(float x)
 {
     float scale;
     float result;
@@ -22,7 +23,7 @@ __forceinline float Pow10(float x)
     return result;
 }
 // libpk's inline-assembly truncation helper: round-to-nearest of (x - 0.5) by a bare fistp, corrected to truncation for negatives
-__forceinline long FloatToLongTrunc(float value)
+FABLE_FORCEINLINE long FloatToLongTrunc(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

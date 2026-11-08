@@ -8,15 +8,16 @@
 // CameraView +0x14); CTCScriptedControl::CActionBase::PTCScript +4, CActionTalkBase::PTargetThing +0x0c (CScriptThing,
 // retail polymorphic model) and ParentIsDemonDoor read at +0x8d (Ego_r.pdb places it at +0x91: TLC layout is 4 bytes shorter
 // before it). CTCBase::ParentThing +4; CThing PhysicsTC +0x60, PTCGraphicAppearance +0x64.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    __forceinline C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
+    FABLE_FORCEINLINE C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
     float GetMagnitudeAndNormalise();                   // 0x00A14480
 };
 #include "engine/CBaseClass.h"

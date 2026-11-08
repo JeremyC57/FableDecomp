@@ -17,6 +17,7 @@
 // Shape: STLport 4.6 __adjust_heap verbatim; the by-value value is copy-constructed in its outgoing slot (key, vptr
 //   0x012A8154, counted-pointer copy) and destroyed after the call. The counted pointer's members are __forceinline (VC
 //   otherwise keeps them out of line in this TU).
+#include "fable_compiler.h"
 #include <new>
 
 // CBaseClass: the polymorphic engine root (out-of-line virtual destructor 0x0099A2E0, vtable 0x01231710).
@@ -44,7 +45,7 @@ typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 

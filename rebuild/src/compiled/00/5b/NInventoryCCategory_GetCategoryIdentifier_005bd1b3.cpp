@@ -6,18 +6,19 @@
 // 12 bytes, not 16), CInventoryCategoryDef CategoryIdentifier at +0x50 (Ego_r.pdb +0x54; the retail CDefPointeeBase
 // prefix is 4 bytes smaller, as in landed 0x008C4680), so both are modelled locally.
 // Opt: size TU (`dec dword ptr [ecx+4]` in place).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_NONE };
 class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CInventoryCategoryDef : public CDefPointeeBase { public:

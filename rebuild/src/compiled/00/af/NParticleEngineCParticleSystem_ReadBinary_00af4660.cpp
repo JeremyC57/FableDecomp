@@ -16,6 +16,7 @@
 // Shape: the flags, the count and the instance name go through __forceinline ReadUByte/ReadULong helpers whose own
 //   locals share the dead `in` argument slot with the name temporary (the count is forwarded into edi on the fast
 //   path, the instance name copied into its named local); only the separator byte is a named local of its own.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 class CCharStringData;
@@ -34,8 +35,8 @@ class CDataInputStream { public:
     unsigned long SourceChunkStreamPos;                                // +0x10
     long SourceChunkBytesRemaining;                                    // +0x14
     C3DVector Read3DVector();                                          // 0x009950F0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))
@@ -48,8 +49,8 @@ class CDataInputStream { public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

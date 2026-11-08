@@ -19,6 +19,7 @@
 //   (retail CDefinitionManager branch); the CMemoryDataInputStream / CDataInputStream::ReadString, CCountedPointer and
 //   NInventory::CItem / CPerItemData models are row-local as in the landed same-TU siblings 0x005C2AD8 / 0x00614AF0
 //   (engine/CItem.h flattens the counted pointer; the retail CDataInputStream branch has no ReadString; see NOTES.md).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
@@ -46,8 +47,8 @@ class CMemoryDataInputStream : public CDataInputStream, public CMemoryDataInputS
 {
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -61,7 +62,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    template <class T> __forceinline T ReadType() { T v; Read(&v, sizeof(T)); return v; }
+    template <class T> FABLE_FORCEINLINE T ReadType() { T v; Read(&v, sizeof(T)); return v; }
 };
 namespace std {
 template <class T> class vector {

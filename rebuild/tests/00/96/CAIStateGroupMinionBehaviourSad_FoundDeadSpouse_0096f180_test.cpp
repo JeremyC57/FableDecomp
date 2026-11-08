@@ -1,6 +1,7 @@
 // Behaviour test for CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse (0x0096F180): model and body verbatim from
 // final.cpp with the out-of-line callees stubbed; checks the 10x10 box, the filter creature, the out pointer and
 // that PDeadSpouse is set only on a hit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define _snprintf snprintf
@@ -57,8 +58,8 @@ struct CBaseIntelligentPointerCtor {
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     CIntelligentPointerThing() {}
-    __forceinline CIntelligentPointerThing(CThing* const& item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* const& item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 class C3DVector { public: float X, Y, Z; };

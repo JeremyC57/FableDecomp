@@ -8,6 +8,7 @@
 // second read's fast path forwards straight into the member and its exits duplicate the return tails.
 // Layout: rebuild/include/engine/CAnimComponentCombatComboChain.h (ComboStage +0x08, ComboID +0x0c); the method is
 // declared on a local view of the header's layout.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -23,8 +24,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -40,7 +41,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
-__forceinline void TransferLongIn(CMemoryDataInputStream* stream, long* out)   // CPersistTraits<long>::TransferBinaryIn
+FABLE_FORCEINLINE void TransferLongIn(CMemoryDataInputStream* stream, long* out)   // CPersistTraits<long>::TransferBinaryIn
 {
     long value;
     stream->Read(&value, sizeof(value));

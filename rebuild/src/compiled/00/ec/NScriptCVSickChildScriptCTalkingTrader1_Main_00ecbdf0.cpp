@@ -13,6 +13,7 @@
 //   0x0099EFB0 / 0x0099EFE0 / operator const char* 0x0099E4C0, GFIntToCharString 0x0099F830, operator+ 0x0099F690, IsDistanceBetween-
 //   ThingsUnder 0x00CBE2FF, ~CTimer 0x00CD4470 (pDSTGame 0x0143E8F8 Register/Get/Set/DeregisterTimer inline).
 // Data: engine/CV_SickChildScript.h GotFishingSpotMushroom +0x69 (ParentClass +0x14); TimesTalkedTo +0x1c, TimesHit +0x20.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR
 #define FABLE_RETAIL_NSCRIPT
@@ -34,8 +35,8 @@ enum EHeroAbility { HERO_ABILITY_NULL=0, HERO_ABILITY_FORCE_PUSH=1, HERO_ABILITY
 extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}
 
 void NScript::CV_SickChildScript::CTalkingTrader1::Main()

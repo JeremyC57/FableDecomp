@@ -8,6 +8,7 @@
 //   operator+(const char*, const CCharString&) 0x0099F690, CCharString::ToConstChar 0x0099E4C0, ~CCharString 0x0099EAE0, free 0x00BFEA14.
 // Layout: Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo +0x0c, Route +0x20 (12-byte STLport vector of
 //   9-byte pair<C2DVector, unsigned char> steps -- retail divides by 9); CThing region index short +0x8e, Dead bit +0x91.
+#include "fable_compiler.h"
 #include <stdlib.h>
 class C2DVector { public: float X; float Y; C2DVector(float x, float y) : X(x), Y(y) {} };
 #include "engine/C3DVector.h"
@@ -66,7 +67,7 @@ class CTCPreCalculatedNavigationRoute : public CTCBase { public:
 };
 
 template <class T>
-__forceinline void SaveValue(CPersistContext* context, const char* name, T& value, const T& defaultValue)
+FABLE_FORCEINLINE void SaveValue(CPersistContext* context, const char* name, T& value, const T& defaultValue)
 {
     context->Transfer(name, value, defaultValue);
 }

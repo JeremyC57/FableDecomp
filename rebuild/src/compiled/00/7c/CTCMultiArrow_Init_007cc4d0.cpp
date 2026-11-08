@@ -17,6 +17,7 @@
 // Layout: CTCMultiArrow as Ego_r.pdb (landed siblings): PDef +0x0C, NumberOfShots +0x10, NumberInVolley +0x14, NumOfVolleys
 //   +0x18, SpellLevel +0x1C, CreateAmmoEffectCount/Delay/Timer +0x24/+0x28/+0x2C. CSpecialAbilitiesMultiArrowDef is 4 bytes
 //   below Ego_r in retail: NumberOfShots[4] +0x3C, NumberInVolley[4] +0x4C, AmmoEffectCreationDelaySecs +0x5C, CastSound +0x60.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 
@@ -149,13 +150,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -163,7 +164,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -171,7 +172,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -184,7 +185,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

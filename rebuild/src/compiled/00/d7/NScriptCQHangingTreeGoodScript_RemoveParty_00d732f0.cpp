@@ -16,6 +16,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -52,8 +53,8 @@ class C3DVector;
 class CRightHandedSet;
 class CRGBColour { public:                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
@@ -67,7 +68,7 @@ struct CBaseObjectDtor {                                // destructor-only view 
     virtual ~CBaseObjectDtor();                         // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CMovieImpPointer {
     void* Data;
@@ -77,9 +78,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

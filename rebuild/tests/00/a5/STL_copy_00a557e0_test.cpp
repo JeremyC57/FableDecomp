@@ -1,4 +1,5 @@
 // Behaviour test for 0x00A557E0 (source body copied from src/00a557e0.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -147,7 +148,7 @@ struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
 };
 
 template <class _InputIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputIter __result, const input_iterator_tag&, _Distance*)
+FABLE_FORCEINLINE _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputIter __result, const input_iterator_tag&, _Distance*)
 {
     for ( ; __first != __last; ++__result, ++__first)
         *__result = *__first;
@@ -155,7 +156,7 @@ __forceinline _OutputIter __copy(_InputIter __first, _InputIter __last, _OutputI
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_aux(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_aux(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, input_iterator_tag(), (int*)0);
 }

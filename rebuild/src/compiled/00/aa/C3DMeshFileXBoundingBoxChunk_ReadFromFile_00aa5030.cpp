@@ -8,6 +8,7 @@
 // Layout: Center +0x10/+0x14/+0x18, Diagonal +0x1C/+0x20/+0x24 behind the 0x10 CChunkedFileChunk base
 // (PDB header engine/C3DMeshFileXBoundingBoxChunk.h); stream fields from engine/CDataInputStream.h.
 // Leaf: ReadFromFile@C3DMeshFileXBoundingBoxChunkMethods
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileXBoundingBoxChunk.h"
@@ -16,8 +17,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 
 class CChunkedFileLoader;
 struct CInputStreamAccess : CDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -31,7 +32,7 @@ struct CInputStreamAccess : CDataInputStream {
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
 struct C3DMeshFileXBoundingBoxChunkMethods : C3DMeshFileXBoundingBoxChunk {

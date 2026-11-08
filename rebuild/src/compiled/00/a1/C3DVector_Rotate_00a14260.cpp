@@ -13,10 +13,11 @@
 //   1.0 (double) 0x01237F00, (double)2pi 0x0124F2B8.
 // Shape: RotateXY's (0x00A14040) with both angles: GetAngleXY() + angleXY and GetAngleYZ() + angleYZ, each sum
 //   wrapped again (XY first), then InitialiseFromAngles(xy, yz, GetMagnitude()), all inline.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, sqrt, fmod, sin, cos)
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -31,10 +32,10 @@ static const float TWO_PI = 6.2831855f;
 class C3DVector {
 public:
     float X, Y, Z;
-    __forceinline float GetAngleXY() const { return WrapAngle((float)atan2(X, Y) * 0.15915494f); }
-    __forceinline float GetAngleYZ() const { return WrapAngle((float)atan2(Z, sqrt(Y * Y + X * X)) * 0.15915494f); }
-    __forceinline float GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    __forceinline const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
+    FABLE_FORCEINLINE float GetAngleXY() const { return WrapAngle((float)atan2(X, Y) * 0.15915494f); }
+    FABLE_FORCEINLINE float GetAngleYZ() const { return WrapAngle((float)atan2(Z, sqrt(Y * Y + X * X)) * 0.15915494f); }
+    FABLE_FORCEINLINE float GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
+    FABLE_FORCEINLINE const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
     {
         float cosYZ = (float)cos(angleYZ * (double)TWO_PI);
         X = (float)(sin(angleXY * (double)TWO_PI) * (cosYZ * length));

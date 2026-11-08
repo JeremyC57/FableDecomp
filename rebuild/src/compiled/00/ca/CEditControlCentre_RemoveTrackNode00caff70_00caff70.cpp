@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAFF70, oracle length 194 bytes. Built under /EHsc.
 // Retail bytes:  ... mov edi,ecx ; lea ebp,[edi+8] ; push ebp ; mov [esp+1Ch],ebp ; call [__imp_EnterCriticalSection] ; mov ebx,[esp+2Ch] ; mov eax,[ebx+30h] ; xor ecx,ecx ; cmp eax,ecx ; mov [esp+24h],ecx ; mov [esp+14h],ecx ; lea esi,[edi+38h] ; jne pick ; lea esi,[edi+20h] ; pick: mov eax,[esi] ; cmp eax,ecx ; mov [esp+10h],eax ; je fail ; loop: push eax ; mov ecx,esi ; call GetAt ; cmp eax,ebx ; je found ; lea eax,[esp+10h] ; push eax ; mov ecx,esi ; call GetNext ; mov eax,[esp+10h] ; test eax,eax ; jne loop ; mov esi,80040216h ; jmp out ; found: mov eax,[esp+10h] ; test eax,eax ; jne remove ; fail: mov esi,80040216h ; jmp out ; remove: push eax ; mov ecx,esi ; call RemoveAt ; mov ecx,[ebx+0Ch] ; lea eax,[ebx+0Ch] ; push eax ; call [ecx+8] ; mov ecx,edi ; call Refresh ; mov esi,[esp+14h] ; out: push ebp ; call [__imp_LeaveCriticalSection] ; ... ret 4
 // The manifest label is propagated; the classes are named by address.
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);
 
@@ -34,7 +35,7 @@ struct CNodeList_00caff70 {                // 0x18-byte position list
     void* GetAt(void* position);           // 0x00CB13A0
     void* GetNext(void*& position);        // 0x00CB1380
     void RemoveAt(void* position);         // 0x00CB13F0
-    __forceinline void* Find(void* data, void*& position)
+    FABLE_FORCEINLINE void* Find(void* data, void*& position)
     {
         for (position = GetHeadPosition(); position; GetNext(position))
             if (GetAt(position) == data)

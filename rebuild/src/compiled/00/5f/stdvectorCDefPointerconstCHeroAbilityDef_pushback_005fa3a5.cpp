@@ -9,6 +9,7 @@
 // Shape: frame pointer kept in a size TU (`#pragma optimize("y", off)` + `("s", on)`); `this` stays in ecx (no call on the
 //   fast path); the inline CDefPointer copy constructor stores the pointer before its null test and add-refs with
 //   `inc dword ptr [eax+4]`; the `__false_type` temporary is homed in the high byte of x's slot (`lea eax,[ebp+0Bh]`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -25,7 +26,7 @@ class CHeroAbilityDef : public CDefPointeeBase { public: };
 template <class T> class CDefPointer {
 public:
     T* Object;                                       // +0x00
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->m_refCount;
@@ -39,7 +40,7 @@ namespace std {
 
 struct __false_type { __false_type() { } };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> struct allocator { };
 

@@ -17,6 +17,7 @@
 //   read keeps it in ecx and loads the flags into edx).
 // Layout: engine/CTCBuyableHouse.h (PDef +0x0c, IsScripted +0x10, OwnedByPlayer +0x11, WifeLivingHere +0x38);
 //   CBuyableHouseDef IsBuyable +0x25, IsBuyableWithoutSignpost +0x49 (retail); CTCVillageMember interface 0x23.
+#include "fable_compiler.h"
 class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
@@ -65,13 +66,13 @@ public:
     unsigned long  m_flags34;                   // +0x34 (bit 11 passed to IsHouseBeingUsed)
     unsigned char  _pad38[0x44 - 0x38];
     CInterfaceMap  m_interfaces;                // +0x44
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -97,7 +98,7 @@ public:
     unsigned char _pad12[0x38 - 0x12];
     CBaseIntelligentPointer WifeLivingHere;     // +0x38
     bool IsHouseBeingUsed(bool flag) const;     // 0x006BFB10
-    __forceinline bool IsInUseFlagSet() const    // the thing through a named local: its register dies at the flags load
+    FABLE_FORCEINLINE bool IsInUseFlagSet() const    // the thing through a named local: its register dies at the flags load
     {
         CThingBuilding* thing = ParentThing;
         return ((thing->m_flags34 >> 11) & 1) != 0;

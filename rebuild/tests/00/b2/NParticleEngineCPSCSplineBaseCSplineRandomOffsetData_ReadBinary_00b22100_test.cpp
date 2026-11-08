@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -26,8 +27,8 @@ class CDataInputStream { public:
     long m_remaining;                      // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { std::memcpy(buffer, m_pData, size); m_pData += size; m_position += size; }
     C3DVector Read3DVector() { C3DVector v; Read(&v.X, 4); Read(&v.Y, 4); Read(&v.Z, 4); return v; }
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -41,8 +42,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned int ReadULong() { unsigned int value; Read(&value, sizeof(value)); return value; }
-    __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE unsigned int ReadULong() { unsigned int value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
 template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
@@ -54,7 +55,7 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
     T& operator[](unsigned int n) { return *(begin() + n); }
     CArray& operator=(const CArray& other) { _M_finish = _M_start; for (T* p = other._M_start; p != other._M_finish; ++p) *_M_finish++ = *p; return *this; }
     void resize(unsigned int newSize, const C3DVector& value = C3DVector()) { while ((unsigned int)(_M_finish - _M_start) < newSize) *_M_finish++ = value; _M_finish = _M_start + newSize; }
-    static __forceinline T* copy(T* first, T* last, T* result)
+    static FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
     {
         for (long n = last - first; n > 0; --n) {
             *result = *first;
@@ -63,13 +64,13 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
         }
         return result;
     }
-    __forceinline T* erase(T* first, T* last)
+    FABLE_FORCEINLINE T* erase(T* first, T* last)
     {
         T* i = copy(last, _M_finish, first);
         _M_finish = i;
         return first;
     }
-    __forceinline void clear() { erase(begin(), end()); }
+    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
 };
 
 class CCardinalSpline { public:

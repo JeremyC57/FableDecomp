@@ -15,6 +15,7 @@
 //   noinline bodies of GetSubDef and _M_insert_overflow remain codegen stand-ins (see Tried).
 // Tried: holder-released def (speed), the same under optimize("s") (everything out of line, frame pointer).
 //   Next: lane gap: one dead parameter slot shared by the push_back value and its tag (GOTCHAS chunks 203-204).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 struct CDefVirtual {
     virtual void v00();
@@ -31,7 +32,7 @@ template <class T> class CDefPointer { public:
 };
 template <class T> struct CDefHolder {                  // owns the reference GetSubDef handed over
     T* Object;
-    __forceinline ~CDefHolder()
+    FABLE_FORCEINLINE ~CDefHolder()
     {
         if (Object && --Object->m_refCount == 0)
             Object->Destroy();

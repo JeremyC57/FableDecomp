@@ -1,5 +1,6 @@
 // Behaviour test for 005ee3b3: src/005ee3b3.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryAbilities::GetMiscThingsDef()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -43,9 +44,9 @@ struct CDefBase {                           // counted game definition: vtable +
 template <class T>
 class CDefPointer { public:
     T* m_pDef;
-    __forceinline CDefPointer() : m_pDef(0) { }
-    __forceinline CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
-    __forceinline ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
+    FABLE_FORCEINLINE CDefPointer() : m_pDef(0) { }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
 };
 
 struct CUIMiscThingsDef : CDefBase { };

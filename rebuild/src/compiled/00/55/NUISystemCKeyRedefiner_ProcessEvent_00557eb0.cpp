@@ -13,6 +13,7 @@
 // Shape: the key code stays in edx across CanRedefineAction because its body (landed 0x00557960) is defined above under
 //   `#pragma auto_inline(off)`, so VC7.1 knows it leaves edx alone; CancelSelection is called out of line for key 1 and
 //   its body is inlined after Redefine (the forceinline EndSelection twin).
+#include "fable_compiler.h"
 namespace NUISystem {
 enum EEvent { EVENT_KEY = 0x21 };
 struct C2DVector {
@@ -67,7 +68,7 @@ public:
     void Redefine(const CActionInputControl& control, bool notify);   // 0x00557D20
     void UpdateKeyText();                          // 0x00557A10
     virtual void ProcessEvent(EEvent event);
-    __forceinline void EndSelection()              // the body of CancelSelection, inlined at the end of a redefinition
+    FABLE_FORCEINLINE void EndSelection()              // the body of CancelSelection, inlined at the end of a redefinition
     {
         if (s_pSelected == this) {
             s_pSelected = 0;

@@ -8,6 +8,7 @@
 // Shape: the owner's lookup is the entry-returning HasTC + FindEntry form (`mov ecx,[eax+4]`), the target's the out-parameter
 // GetInterface form (`mov eax,[eax+4]` then `mov ecx,eax`) as the last term of a short-circuit chain (GOTCHAS).
 // Target: the CCombatActionBase target pointer at +0xa8; thing flag byte +0x91 bit 0 = dead, byte +0x10 = thing state.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -28,11 +29,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -45,7 +46,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

@@ -14,6 +14,7 @@
 //          elapsed frames are stored into that dead slot for the fild; the def holder is released by hand.
 // Layout: engine/CAIStateGroup_MazeTutorialBattleUseShield.h (FrameOfLastShield +0x20); the target intelligent pointer
 //          at +0x14 as in the landed sibling 0x00954B50; PBrain is the first dword at +0x04.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_MazeTutorialBattleUseShield.h"
 
 class CTCBase;
@@ -60,7 +61,7 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char _pad2[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -71,7 +72,7 @@ class CThing { public:
             *ppOut = (T*)it->second;
         }
     }
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -115,7 +116,7 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }

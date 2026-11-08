@@ -12,6 +12,7 @@
 //   else ReadWithSrcChunkOverflow) into a local in the same dead slot, copied to out->second with one return tail per exit.
 // The stream is modelled locally: the generated engine header carries the vptr as a plain `void*` member, which cannot
 // express the virtual string read; the data members match it (+4 position, +0xC chunk pointer, +0x14 chunk remaining).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -34,8 +35,8 @@ public:
     const unsigned char* chunkBase;                                   // +0x0C
     long                 chunkPosition;                               // +0x10
     long                 chunkLength;                                 // +0x14
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(position + size);
         if (!IsValidPosition(newPosition))
@@ -63,12 +64,12 @@ template <class T> struct CPersistTraits {
 };
 
 // The element reads (no element-traits objects: retail builds no CCharString DefaultVal for the string element).
-__forceinline void TransferBinaryInElement(CMemoryDataInputStream* stream, CCharString* out)
+FABLE_FORCEINLINE void TransferBinaryInElement(CMemoryDataInputStream* stream, CCharString* out)
 {
     *out = stream->ReadString();
 }
 
-__forceinline void TransferBinaryInElement(CMemoryDataInputStream* stream, long* out)
+FABLE_FORCEINLINE void TransferBinaryInElement(CMemoryDataInputStream* stream, long* out)
 {
     long value;
     stream->Read(&value, sizeof(value));

@@ -16,6 +16,7 @@
 // Shape: the derived action ctor is an inline (forced) wrapper over the out-of-line base ctor so the vptr store is
 //         visible and the virtual Clone folds to [vtable+0x2c]; the action lives in its own block (destroyed before
 //         SetBrainOutput); CBrainOutput's dtor is inline (forced) -- implicit, it was emitted out of line here.
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -37,7 +38,7 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
 
 public:
@@ -76,7 +77,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 };
 struct CCreatureAction_ScreamerIntoAggressive : CCombatActionBase {   // vtable 0x01296F14, sizeof 0x114
     virtual void* Clone() const;                    // 0x0096E510
-    __forceinline CCreatureAction_ScreamerIntoAggressive(CThingCreatureBase* creature, CThing* target)
+    FABLE_FORCEINLINE CCreatureAction_ScreamerIntoAggressive(CThingCreatureBase* creature, CThing* target)
         : CCombatActionBase(creature, target, 0x96, CSoundPair()) { }
 };
 struct CCountBlock { long Count; void (__fastcall* Destroy)(void* object); void* Object; };
@@ -104,7 +105,7 @@ class CBrainOutput { public:                               // 0x48 bytes
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;                // +0x40
     CBrainOutput();                                 // 0x00835620
-    __forceinline ~CBrainOutput() { }
+    FABLE_FORCEINLINE ~CBrainOutput() { }
 };
 struct CThingCreature : CThing {
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210

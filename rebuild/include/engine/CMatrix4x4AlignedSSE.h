@@ -20,6 +20,7 @@
 // Portable twin (FABLE_PORTABLE): plain C++ in fable_portable; tests in tests/portable/test_CMatrix4x4AlignedSSE.cpp.
 #ifndef FABLE_ENGINE_CMATRIX4X4ALIGNEDSSE_H
 #define FABLE_ENGINE_CMATRIX4X4ALIGNEDSSE_H
+#include "fable_compiler.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
 namespace fable_portable
@@ -184,7 +185,7 @@ namespace fable_portable
 #if defined(FABLE_RETAIL_CMATRIX4X4) && defined(FABLE_ENGINE_CMATRIX4X4_H) && !defined(FABLE_CMATRIX4X4_ALIGNEDSETMULTIPLY_DEFINED)
 #define FABLE_CMATRIX4X4_ALIGNEDSETMULTIPLY_DEFINED
 extern bool g_SSEAvailable;                                              // 0x013D2880 ?g_SSEAvailable@@3_NA
-__forceinline void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b)
+FABLE_FORCEINLINE void CMatrix4x4::AlignedSetMultiply(const CMatrix4x4& a, const CMatrix4x4& b)
 {
     if (g_SSEAvailable) {
         const CMatrix4x4* pa = &a;

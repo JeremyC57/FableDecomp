@@ -6,6 +6,7 @@
 //   (__fastcall; the empty tag temporary homed in the dead n slot, `lea eax,[ebp+0Bh]`).
 // Shape (family K095, representative 0x0045F008): the landed STLport `_M_allocate_and_copy` (0x00AD04E0) in a frame/size TU
 //   (`optimize("y", off)` + `("s", on)`) with the copy out of line.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
@@ -17,7 +18,7 @@ template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 template <class T> class allocator {
 public:
     allocator() { }
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }   // size TU: forced inline
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }   // size TU: forced inline
 };
 template <class V, class T, class A> class _STLP_alloc_proxy : public A {
 public:

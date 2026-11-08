@@ -21,6 +21,7 @@
 //   GetSubDef writes only its out slot (the def holder then lives in the dead `dest` slot, is not reloaded, and the
 //   holder's null test folds away after the StackType load), and _M_insert_overflow never touches its `const
 //   __false_type&` tag (homed in the live `first` slot, `lea ecx,[esp+28h]`). Neither stand-in is graded.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) throw() { return where; }
 
@@ -37,8 +38,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A860 for CThingMarker
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     T* operator->() const { return (T*)GetPItem(); }
 };
 
@@ -121,7 +122,7 @@ public:
     unsigned char  _pad50[0x70 - 0x50];
     CDefClassBase* PBaseDef;                     // +0x70 (CDefPointer<const CThingBaseDef>::Data)
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;
@@ -145,7 +146,7 @@ class IsCrateStackOfType {
 public:
     long Type;                                   // +0x0
     explicit IsCrateStackOfType(long type) : Type(type) { }
-    __forceinline bool operator()(CIntelligentPointer<CThingMarker> marker) const
+    FABLE_FORCEINLINE bool operator()(CIntelligentPointer<CThingMarker> marker) const
     {
         const CTCCrateStack* stack;
         if (marker->PeekTC(&stack)) {

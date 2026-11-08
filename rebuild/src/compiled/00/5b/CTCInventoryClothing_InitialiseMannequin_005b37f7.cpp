@@ -2,6 +2,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x23] removed re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -35,7 +36,7 @@ template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* p) : Object(p) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 class CAppearanceDef : public CDefPointeeBase { public:
@@ -126,14 +127,14 @@ class CThing { public:
     void AddAndCopyTC(CTCBase* tc, bool activate);             // 0x004C9F60
     CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
     bool HasTC(long type) { return m_present.test(type); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -144,7 +145,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceFound(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceFound(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -155,7 +156,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTCFound(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTCFound(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
@@ -171,8 +172,8 @@ class CInventoryDef : public CDefPointeeBase { public:
 };
 template <class T> struct CDefPointerCopy {
     T* Object;
-    __forceinline CDefPointerCopy(T* p) : Object(p) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointerCopy() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointerCopy(T* p) : Object(p) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointerCopy() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 // Layout: retail CTCInventoryClothing (12-byte containers): ParentThing +0x04, the inventory def +0x68, PMannequin +0x158.
@@ -183,8 +184,8 @@ class CTCInventoryClothing { public:
     CInventoryDef* PInventoryDef;                              // +0x68 (CDefPointer)
     unsigned char _pad6c[0x158 - 0x6c];
     CThing* PMannequin;                                        // +0x158
-    __forceinline CDefPointerCopy<CInventoryDef> GetInventoryDef() const { return CDefPointerCopy<CInventoryDef>(PInventoryDef); }
-    __forceinline CThing* GetParentThing() const { return ParentThing; }
+    FABLE_FORCEINLINE CDefPointerCopy<CInventoryDef> GetInventoryDef() const { return CDefPointerCopy<CInventoryDef>(PInventoryDef); }
+    FABLE_FORCEINLINE CThing* GetParentThing() const { return ParentThing; }
     void InitialiseMannequin();
 };
 void CTCInventoryClothing::InitialiseMannequin()

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -560,7 +561,7 @@ struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];
     unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeDefinition[0x24];
     CThingCreatureDef* PThingCreatureDef;unsigned char _beforeMovement[0x14c];C3DVector RelativeMovementAcceleration;
-    __forceinline bool GetInterface(CTCCreatureModeManager** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CTCCreatureModeManager** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){
             long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
             if(p==map->Last || type<p->Type)p=map->Last;

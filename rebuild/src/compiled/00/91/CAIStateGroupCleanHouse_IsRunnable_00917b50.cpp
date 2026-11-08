@@ -9,6 +9,7 @@
 // +0x20 tested as a branch (`test dword ptr [eax+38h],80000h`), then the sorted map's lower bound
 // with the key copied to a frame slot (`push ecx`) and compared as an immediate. If a scheduler
 // exists and does not prefer this idle, the group is not runnable; otherwise the base decides.
+#include "fable_compiler.h"
 class CAIStateGroupBase;
 
 class CTCIdleScheduler { public:
@@ -24,7 +25,7 @@ class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    __forceinline bool GetInterface(long type, CTCIdleScheduler** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCIdleScheduler** out)
     {
         if (m_presentBits[type / 32] & (1 << (type % 32))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

@@ -9,6 +9,7 @@
 // temporary / play-parameter block {1,1,0,1,1,0,0,-1}) except the sound pair is the call's first argument (evaluated last, the
 // string temporary still built first and destroyed after the play call); the parameter block is assigned in its ctor body with
 // Handle before Priority (an init list in declaration order schedules the -1 store after the second 1 store).; the base Initialise is a qualified (direct) call after the block.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -59,7 +60,7 @@ class CThingCreatureBase { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

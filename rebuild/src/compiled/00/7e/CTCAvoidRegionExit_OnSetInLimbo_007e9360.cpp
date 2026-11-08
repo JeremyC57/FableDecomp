@@ -16,6 +16,7 @@
 // there (`mov [esp+1Ch],eax`, `lea ecx,[esp+14h]`), so the frame holds only the 8-byte pair.
 // Fix (retry 10): equal_range has its same-TU body (lower/upper bound walks; with only the declaration the second
 // iterator was loaded late).
+#include "fable_compiler.h"
 class CThing;
 
 struct SExitWeightNode;                                     // map node: colour, parent, left, right, key +0x10, weight +0x14
@@ -95,7 +96,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
 class CTCAvoidRegionExit : public CTCBase_Calls { public:
     unsigned char _body[0x20 - 0x0c];                       // EntranceMarker, ExitMarker, NextFrameCheck
     void UpdateMaxExitWeight();                             // 0x007E9250
-    __forceinline void RemoveFromExitWeights()
+    FABLE_FORCEINLINE void RemoveFromExitWeights()
     {
         SExitWeightRange range = g_AvoidRegionExitWeights.EqualRange(GetParentThing());
         g_AvoidRegionExitWeights.Erase(range.first, range.second);

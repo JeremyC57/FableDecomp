@@ -12,6 +12,7 @@
 // `PPerson = person` through the temporary in the 8-byte frame, explicit `return true` / `return false`
 // (`mov al,1` / `xor al,al`). No engine header for this class; PPerson is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -83,8 +84,8 @@ struct CBaseIntelligentPointerCtor {            // the full CBaseIntelligentPoin
 // 0x00902045 shape): base constructor, the derived vtable store, SetPItem on the temporary, GetPItem from it,
 // SetPItem on the member, destructor.
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 struct CThingCreatureState {

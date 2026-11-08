@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __declspec(x)
@@ -63,7 +64,7 @@ class CThing { public:
     unsigned char  m_statusFlags;           // +0x91 (bit 0: dead)
     const C3DVector& GetPosition() const;   // 0x004C73D0
     CPlayerManager* GetPlayerManager_004c79f0();     // 0x004C79F0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

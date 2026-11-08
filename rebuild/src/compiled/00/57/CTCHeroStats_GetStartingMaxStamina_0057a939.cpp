@@ -14,6 +14,7 @@
 // Layout: retail CHeroStatsDef sits 0x2C below the PDB at this vector (smaller definition head, 12-byte vectors):
 // MaxStaminaPointsPerMagicPowerLevel's first pointer +0x114 (PDB +0x134).
 
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CHeroStatsDef { public:
@@ -22,18 +23,18 @@ class CHeroStatsDef { public:
     long          RefCount;                    // +0x04 CDefPointeeBase
     unsigned char _pad_0x08[0x10C];
     long*         MaxStaminaPointsPerMagicPowerLevel;   // +0x114 vector<long>::_First (PDB +0x134)
-    __forceinline void AddRef() { ++RefCount; }
-    __forceinline void Release() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void AddRef() { ++RefCount; }
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
 };
 
 struct CHeroStatsDefPointer {                  // CDefPointer<const CHeroStatsDef>
     CHeroStatsDef* Object;
-    __forceinline CHeroStatsDefPointer(const CHeroStatsDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CHeroStatsDefPointer(const CHeroStatsDefPointer& other) : Object(other.Object)
     {
         if (Object)
             Object->AddRef();
     }
-    __forceinline ~CHeroStatsDefPointer() { Object->Release(); }
+    FABLE_FORCEINLINE ~CHeroStatsDefPointer() { Object->Release(); }
     CHeroStatsDef* operator->() const { return Object; }
 };
 

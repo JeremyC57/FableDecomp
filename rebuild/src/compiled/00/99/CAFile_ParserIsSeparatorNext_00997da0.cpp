@@ -8,6 +8,7 @@
 // Shape: CCharString::operator==(char) is the __forceinline null-test-positive form from the landed
 // CCharString::operator!= @ 0x0099E520 ({c, 0} built on the stack, intrinsic strcmp, `== 0 ? true : false`).
 // Twin: CAFile::ParserReadPastSeparator @ 0x00997E90 (same body over CStringParser::ReadNextItem @ 0x009BA080).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 
@@ -26,7 +27,7 @@ public:
     CCharString();                            // 0x0099E4B0
     ~CCharString();                           // 0x0099EAE0
 
-    __forceinline bool operator==(char character) const
+    FABLE_FORCEINLINE bool operator==(char character) const
     {
         if (PStringData != 0) {
             char text[2];

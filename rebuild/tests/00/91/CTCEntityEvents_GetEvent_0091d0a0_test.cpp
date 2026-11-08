@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <new>
 // Test ABI: opaque list storage is one native pointer,4bytes on VC7.1.
@@ -35,7 +36,7 @@ public:
 void __cdecl operator delete(void*);
 // Layout: original counted block RefCount+0, DeleteFunc+4, Data+8; wrapper Data+0,Info+4. No active shared headers exist.
 class CCPPointerInfo {public:long RefCount;void (__fastcall* DeleteFunc)(void*);void* Data;};
-template<class T>class CCountedPointer {public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){} __forceinline CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;} __forceinline ~CCountedPointer(){if(Info && --Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}} T* operator->()const{return Data;}};
+template<class T>class CCountedPointer {public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){} FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;} FABLE_FORCEINLINE ~CCountedPointer(){if(Info && --Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}} T* operator->()const{return Data;}};
 namespace NEntityEvents {
 enum EEventType {EVENT_EXPRESSION_PERFORMED_TO=3,EVENT_APOLOGY_RECEIVED=4,EVENT_HIT_THING=29};
 // Layout: original CEventBase virtual destructor slot0/GetType slot1,WorldFrame+4. Unused event-specific data does not enter this lookup.

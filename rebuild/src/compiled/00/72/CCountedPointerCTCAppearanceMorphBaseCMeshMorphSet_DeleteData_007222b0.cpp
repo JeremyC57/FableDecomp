@@ -10,6 +10,7 @@
 //   MeshParts +0 (16-byte retail parts: MeshIndex + CEngineTextureMorphSet), CEngineTextureMorphSet
 //   OriginalMeshTextureMorphs +0xC (its out-of-line destructor 0x005BC0D3). Members destroy in reverse order.
 // Callees: ~CEngineTextureMorphSet 0x005BC0D3, __destroy_aux 0x00722130, free 0x00BFEA14, operator delete 0x00BFE9BC.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);                       // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 
@@ -34,7 +35,7 @@ public:
     _Tp* _M_start;                                         // +0x00
     _Tp* _M_finish;                                        // +0x04
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    __forceinline ~_Vector_base()
+    FABLE_FORCEINLINE ~_Vector_base()
     {
         if (_M_start != 0)
             _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
@@ -43,7 +44,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : public _Vector_base<_Tp, _Alloc> {
 public:
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 }
 

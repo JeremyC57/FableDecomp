@@ -1,6 +1,7 @@
 // Behaviour test for 009d61f0: final.cpp copied verbatim (the dllimport declaration made plain, Sleep renamed by macro to
 // keep clear of kernel32), the declared callees stubbed below so calls and arguments are observable.
 // CBankFileAsyncData::~CBankFileAsyncData()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -61,7 +62,7 @@ void __cdecl GFEnterAllocatorLock();               // 0x009F2000
 void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;          // 0x013CAA90
 extern bool              g_bDestroyAllocatorWhenEmpty_013caa94; // 0x013CAA94
-__forceinline void GFFreeFromGlobalAllocator(void* block)
+FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
 {
     GFEnterAllocatorLock();
     if (block && g_pGlobalAllocator_013caa90) {

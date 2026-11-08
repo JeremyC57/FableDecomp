@@ -1,4 +1,5 @@
 // behaviour test for 0x0090F1C0 CAIStateGroup_MinionReactToAlert::Update (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CAIStateGroup_MinionReactToAlert::Update() -- follow the current alert: terminate when there is none, else remember its id and, when the alerted-about thing is what the creature's perceive component is tracking, mark the creature as indirectly aware of it.
@@ -42,7 +43,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

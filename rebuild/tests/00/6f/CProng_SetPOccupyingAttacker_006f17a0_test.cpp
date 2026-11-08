@@ -1,4 +1,5 @@
 // Behaviour test for 006f17a0: the model below is a copy of src/006f17a0.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0;
@@ -27,7 +28,7 @@ struct CProng {
     unsigned char           _pad0d[3];
     long                    ProngBlockageTimer;
     CBaseIntelligentPointer POccupier;
-    __forceinline void SetPOccupierItem(CBaseObject* item)
+    FABLE_FORCEINLINE void SetPOccupierItem(CBaseObject* item)
     {
         CIntelligentPointer pointer;
         pointer.SetPItem(item);

@@ -13,6 +13,7 @@
 //   _M_insert_overflow 0x00728D10, vector<CEngineTextureMorph>::~vector() 0x005BC0D3.
 // Model: this chunk's 0x006D4850 (landed twin 0x0049B5A0 recipe), STLport 4.6 _M_fill_insert verbatim with the out-of-line
 //   helpers as same-TU noinline bodies (they need the element's implicit operator=, hence vector::operator= 0x00728830).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
@@ -101,7 +102,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __f
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for ( ; __n > 0; --__n, ++__cur)

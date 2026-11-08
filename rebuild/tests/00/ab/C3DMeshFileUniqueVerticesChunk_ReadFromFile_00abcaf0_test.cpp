@@ -1,5 +1,6 @@
 // Behaviour test for 00abc980: src/00abc980.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. C3DMeshFileSmoothingGroupsChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -32,8 +33,8 @@ class CDataInputStream { public:
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -47,7 +48,7 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
 struct __true_type { __true_type() {} };

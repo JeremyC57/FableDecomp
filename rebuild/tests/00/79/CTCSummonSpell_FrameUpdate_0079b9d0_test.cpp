@@ -1,4 +1,5 @@
 // Behaviour test for CTCSummonSpell::FrameUpdate (0x0079b9d0): pending create spawns at position+offset, live minion gets the hero faction and fades in with its carried things, dead/missing minion removes TC 0x91.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -40,7 +41,7 @@ public:
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
     void RemoveTC(long type) { g_removed = type; }
-    template<class T> __forceinline void GetInterface(long interfaceType, T** out)
+    template<class T> FABLE_FORCEINLINE void GetInterface(long interfaceType, T** out)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long key = interfaceType;

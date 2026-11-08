@@ -9,6 +9,7 @@
 // calls an out-of-line `??1CTCActionUseBase` from inside the forced inline. `__declspec(novtable)` on CTCActionUseBase keeps
 // that explicit destructor from storing 0x0123F09C (retail has no such store; the class's real destructor is implicit,
 // see 0x004DA967). The inline constructor + `new` factory pull the vtable, and with it `??_G`, into the TU.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -32,7 +33,7 @@ struct CDefPointee {                           // counted def: count at +4, slot
 struct CDefPointer {                           // CDefPointer<T const>
     CDefPointee* m_pDef;
     CDefPointer() : m_pDef(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         CDefPointee* def = m_pDef;
         if (def) {
@@ -65,7 +66,7 @@ struct __declspec(novtable) CTCActionUseBase : CTCBase {   // vtable 0x0123F09C 
     CDefPointer PActionUseDef;                 // +0x0c
     bool        Usable;                        // +0x10
     CTCActionUseBase(CThing& owner) : CTCBase(owner), Usable(true) { }
-    __forceinline ~CTCActionUseBase() { }
+    FABLE_FORCEINLINE ~CTCActionUseBase() { }
 };
 
 struct CTCActionUseBuyOrSteal : CTCActionUseBase {   // vtable 0x0126679C
@@ -73,7 +74,7 @@ struct CTCActionUseBuyOrSteal : CTCActionUseBase {   // vtable 0x0126679C
     bool WaitingForConfirmation;               // +0x1c
     CTCActionUseBuyOrSteal(CThing& owner)      // 0x0072A630, inline here so the vtable is emitted
         : CTCActionUseBase(owner), PPerformer(0), WaitingForConfirmation(false) { AddToGlobalTCs(); }
-    __forceinline virtual ~CTCActionUseBuyOrSteal() { RemoveFromGlobalTCs(); }
+    FABLE_FORCEINLINE virtual ~CTCActionUseBuyOrSteal() { RemoveFromGlobalTCs(); }
 };
 
 CTCActionUseBuyOrSteal* Create_CTCActionUseBuyOrSteal(CThing& owner)

@@ -1,4 +1,5 @@
 // Behaviour test for 00726340: src/00726340.cpp copied verbatim, out-of-line callees stubbed below.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cmath>
@@ -25,7 +26,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector& operator*=(float s) { X = s * X; Y = s * Y; Z = s * Z; return *this; }
+    FABLE_FORCEINLINE C3DVector& operator*=(float s) { X = s * X; Y = s * Y; Z = s * Z; return *this; }
     float GetXYLengthSquared() const { float s = X * X; s += Y * Y; return s; }
     void RotateAboutZ(float turns);             // 0x00A14040
 };
@@ -63,11 +64,11 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

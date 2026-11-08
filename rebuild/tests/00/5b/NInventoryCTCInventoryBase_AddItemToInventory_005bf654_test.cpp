@@ -1,5 +1,6 @@
 // Behaviour test for 005bf654: src/005bf654.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. NInventory::CTCInventoryBase::AddItemToInventory(CThing* item, bool silent, bool fromShop, long price, bool noTutorials)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -69,7 +70,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
@@ -82,7 +83,7 @@ template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();
@@ -131,7 +132,7 @@ class CThing { public:
     CDefPointer<CDefClassBase> PDef;                 // +0x70
     unsigned char _pad_0x74[0x8c - 0x74];
     unsigned short DefIndex;                         // +0x8c
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -144,7 +145,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
             long type = wanted;

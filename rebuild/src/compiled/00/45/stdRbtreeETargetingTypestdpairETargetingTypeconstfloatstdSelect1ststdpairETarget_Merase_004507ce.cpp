@@ -6,6 +6,7 @@
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (/Os TU); explicit instantiation emits the member as
 //   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray).
 // Leaf: ?_M_erase@?$_Rb_tree@W4ETargetingType@@U?$pair@$$CBW4ETargetingType@@M@std@@U?$_Select1st@U?$pair@$$CBW4ETargetingType@@M@std@@@3@U?$less@W4ETargetingType@@@3@V?$allocator@U?$pair@$$CBW4ETargetingType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ETargetingType@@M@std@@@2@@Z
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
@@ -206,7 +207,7 @@ protected:
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
-    __forceinline _Link_type _M_clone_node(_Link_type __x)
+    FABLE_FORCEINLINE _Link_type _M_clone_node(_Link_type __x)
     {
         _Link_type __tmp = _M_create_node(__x->_M_value_field);
         __tmp->_M_color = __x->_M_color;

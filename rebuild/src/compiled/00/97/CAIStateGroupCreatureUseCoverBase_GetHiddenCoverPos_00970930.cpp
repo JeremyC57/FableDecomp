@@ -12,6 +12,7 @@
 //          inline operator*(float) keeps its parameter live: fld z / fmul st(1) / fstp st(0)).
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (enemy CIntelligentPointer at +0x14); the cover's +0x60 pointee's
 //          +0x34 float is its radius (descriptive).
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 
 #include "engine/C3DVector.h"
@@ -33,7 +34,7 @@ class CThing { public:
     unsigned char _pad2[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -61,7 +62,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

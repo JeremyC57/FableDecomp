@@ -1,5 +1,6 @@
 // Behaviour test for 0x00A13EB0 (source body copied from src/00a13eb0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -41,14 +42,14 @@ extern float g_CosTable[1025];          // 0x013CD550: cos(2*pi*k/1024), k = 0..
 float __fastcall GFFloatRandom(float max, unsigned long* seed);    // 0x004978A0
 
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)
     return result;
 }
 
-__forceinline float __fastcall GFFastCos(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastCos(float angle)
 {
     angle = angle * 1024.0f;
     long i = FloatToLong(angle - 0.5f);
@@ -57,7 +58,7 @@ __forceinline float __fastcall GFFastCos(float angle)
     return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
 }
 
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = FloatToLong(angle - 0.5f);

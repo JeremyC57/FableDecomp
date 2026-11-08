@@ -12,6 +12,7 @@
 // Shape: STLport 4.x `vector::operator=` with a non-trivial element: the copy loops call the element operator=, the surplus
 //          goes through `_Destroy(__i, _M_finish)` -> `__destroy_aux(..., __false_type)` with a NAMED tag local (homed in the
 //          dead `__x` slot), the tail through placement-new copy construction (null test); the helpers are __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <new>
 
@@ -29,7 +30,7 @@ struct __false_type {};
 void __fastcall __destroy_aux(CEnvironmentThemeDef* __first, CEnvironmentThemeDef* __last, const __false_type&);   // 0x00450B1B
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                                  _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -41,7 +42,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
 {
     _ForwardIter __cur = __result;
     for ( ; __first != __last; ++__first, ++__cur)
@@ -49,7 +50,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 
-__forceinline void _Destroy(CEnvironmentThemeDef* __first, CEnvironmentThemeDef* __last)
+FABLE_FORCEINLINE void _Destroy(CEnvironmentThemeDef* __first, CEnvironmentThemeDef* __last)
 {
     __false_type __tag;
     __destroy_aux(__first, __last, __tag);

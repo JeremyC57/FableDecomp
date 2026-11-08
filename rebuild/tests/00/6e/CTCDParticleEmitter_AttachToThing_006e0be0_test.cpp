@@ -1,5 +1,6 @@
 // Behaviour test for 006e0be0: src/006e0be0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCDParticleEmitter::AttachToThing(CThing& thing, long flags, const CCharString& posName, long posIndex, float offset)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -101,7 +102,7 @@ class CThing { public:
     unsigned char _pad4c[0x70 - 0x4c];
     CDefClassBase* PDef;                                    // +0x70
     bool IsAffectedByBulletTime() const;                    // 0x004C9920
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -115,7 +116,7 @@ class CThing { public:
         return false;
     }
     // The same lookup with the one-ternary entry pick (retail loads the component straight into ecx at the sound call).
-    template <class T> __forceinline bool GetTC(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -1,4 +1,5 @@
 // 00854b90 behavior fixture for the TRUE 566-byte extent body (ChatGPT pass 10 fixture; body identical to extent/00854b90.cpp; agent680).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1998,7 +1999,7 @@ template<class A,class B>struct pair{A first;B second;pair(){}pair(const A&a,con
 template<class T>class allocator{public:allocator()throw(){}allocator(const allocator&)throw(){}template<class U>allocator(const allocator<U>&)throw(){}~allocator()throw(){}};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;_STLP_alloc_proxy(const A&a,V p):A(a),_M_data(p){}};
 template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;public:_Vector_base(const A&a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){}~_Vector_base(){if(_M_start)free(_M_start);}};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:__forceinline explicit vector(const A&a=A()):_Vector_base<T,A>(a){}T*begin(){return this->_M_start;}T*end(){return this->_M_finish;}protected:void _M_insert_overflow(T*,const T&,const __false_type&,unsigned int,bool);public:__forceinline void push_back(const T&x){if(this->_M_finish!=this->_M_end_of_storage._M_data){new(this->_M_finish)T(x);++this->_M_finish;}else{__false_type tag;_M_insert_overflow(this->_M_finish,x,tag,1,true);}}};
+template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:FABLE_FORCEINLINE explicit vector(const A&a=A()):_Vector_base<T,A>(a){}T*begin(){return this->_M_start;}T*end(){return this->_M_finish;}protected:void _M_insert_overflow(T*,const T&,const __false_type&,unsigned int,bool);public:FABLE_FORCEINLINE void push_back(const T&x){if(this->_M_finish!=this->_M_end_of_storage._M_data){new(this->_M_finish)T(x);++this->_M_finish;}else{__false_type tag;_M_insert_overflow(this->_M_finish,x,tag,1,true);}}};
 }
 
 namespace std{
@@ -2016,13 +2017,13 @@ template<class T,class A>__declspec(noinline)void vector<T,A>::_M_insert_overflo
 }
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{};
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{private:C Compare;bool Dirty;public:__forceinline CVectorMap():Dirty(false){}std::pair<K,V>*LowerBound(const K&);__forceinline void Insert(const std::pair<K,V>&value){this->push_back(value);Dirty=true;}};
+template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{private:C Compare;bool Dirty;public:FABLE_FORCEINLINE CVectorMap():Dirty(false){}std::pair<K,V>*LowerBound(const K&);FABLE_FORCEINLINE void Insert(const std::pair<K,V>&value){this->push_back(value);Dirty=true;}};
 enum ETCInterfaceType{};
-template<class T>__forceinline bool CThing::GetTC(T**out){ETCInterfaceType type=T::StatGetInterfaceType();CThingFields*fields=reinterpret_cast<CThingFields*>(this);if(reinterpret_cast<unsigned long*>(fields->UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(fields->Components);std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=reinterpret_cast<T*>(i->second);return true;}return false;}
+template<class T>FABLE_FORCEINLINE bool CThing::GetTC(T**out){ETCInterfaceType type=T::StatGetInterfaceType();CThingFields*fields=reinterpret_cast<CThingFields*>(this);if(reinterpret_cast<unsigned long*>(fields->UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(fields->Components);std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=reinterpret_cast<T*>(i->second);return true;}return false;}
 namespace NParticleEngine{
 template<class K,class V>class CParticleUpdateParamCallback;
 template<class K,class V>class CParticleUpdateParamDesc:public CBaseClass{private:CParticleUpdateParamCallback<K,V>*Callback;V Index;};
-template<class K,class V>class CParticleUpdateParameters:public CBaseClass{public:template<class T>class CParticleUpdateCCompareVector:public CKeyPairCompareLess<T,C3DVector>{};template<class T>class CParticleUpdateCCompareParamDesc:public CKeyPairCompareLess<T,CParticleUpdateParamDesc<K,V> >{};typedef CVectorMap<K,C3DVector,CParticleUpdateCCompareVector<K> >TVectorParams;typedef CVectorMap<K,CParticleUpdateParamDesc<K,V>,CParticleUpdateCCompareParamDesc<K> >TUpdateParams;TVectorParams VectorParams;TUpdateParams UpdateParams;__forceinline CParticleUpdateParameters(){}virtual~CParticleUpdateParameters();void Update();};
+template<class K,class V>class CParticleUpdateParameters:public CBaseClass{public:template<class T>class CParticleUpdateCCompareVector:public CKeyPairCompareLess<T,C3DVector>{};template<class T>class CParticleUpdateCCompareParamDesc:public CKeyPairCompareLess<T,CParticleUpdateParamDesc<K,V> >{};typedef CVectorMap<K,C3DVector,CParticleUpdateCCompareVector<K> >TVectorParams;typedef CVectorMap<K,CParticleUpdateParamDesc<K,V>,CParticleUpdateCCompareParamDesc<K> >TUpdateParams;TVectorParams VectorParams;TUpdateParams UpdateParams;FABLE_FORCEINLINE CParticleUpdateParameters(){}virtual~CParticleUpdateParameters();void Update();};
 }
 class CTCDParticleEmitter{public:static ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x4b;}void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>&);};
 #define CTCCoopSpirit CTCCoopSpiritFields

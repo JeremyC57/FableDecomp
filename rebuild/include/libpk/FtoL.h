@@ -18,6 +18,7 @@
 //   rebuild/tests/portable/test_FtoL.cpp.
 #ifndef FABLE_LIBPK_FTOL_H
 #define FABLE_LIBPK_FTOL_H
+#include "fable_compiler.h"
 #include "fable_x87_twins.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
@@ -40,7 +41,7 @@ using fable_portable::FtoL;
     __asm fld value \
     __asm fistp result
 #ifndef FABLE_LIBPK_FTOL_MACRO_ONLY
-__forceinline long __cdecl FtoL(float f)
+FABLE_FORCEINLINE long __cdecl FtoL(float f)
 {
     long result;
     __asm fld f

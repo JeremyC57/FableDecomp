@@ -16,6 +16,7 @@
 //   pointer; C2DExtentsI needs its declared memberwise copy constructor (without it the element copy loops take extra
 //   pointer registers and the set iterator spills); max() takes the addresses of
 //   the old size and fill_len, which VC7.1 homes in the dead `modes` / `minSize.X` argument slots.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                          // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -58,7 +59,7 @@ template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __va
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -126,7 +127,7 @@ public:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
     public:
-    __forceinline void push_back(const _Tp& __x)
+    FABLE_FORCEINLINE void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
             _Construct(this->_M_finish, __x);
@@ -138,7 +139,7 @@ public:
 };
 
 template <class _Tp, class _Alloc>
-__forceinline void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,
+FABLE_FORCEINLINE void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,
                                              size_type __fill_len, bool __atend)
 {
     const size_type __old_size = size();

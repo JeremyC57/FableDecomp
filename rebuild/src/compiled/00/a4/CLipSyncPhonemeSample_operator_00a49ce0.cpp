@@ -1,6 +1,7 @@
 // CLipSyncPhonemeSample::operator=(const CLipSyncPhonemeSample& other) -- the name (+0, CCharString::operator= @ 0x0099EFB0) and the dword at +4 copied, then the counted pointer at +8/+0xc assigned: when the count blocks differ the old block is released (references decremented, object destroyed and block freed at zero), the new object and block stored and the new block's references incremented
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A49CE0, length 96 bytes.
 // Callees: CCharString::operator= @ 0x0099EFB0, operator delete @ 0x00BFE9BC. Shape: the source in edi (its object loaded into edi between the block compare and its branch: both source fields are read into locals before the `if`), the new block in ebx, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CPhonemeData_00a49ce0;
 struct SCountBlock_00a49ce0 {                           // the shared count block of a CCountedPointer
@@ -11,7 +12,7 @@ struct SCountBlock_00a49ce0 {                           // the shared count bloc
 struct CCountedPointer_00a49ce0 {                       // {object, count block}
     CPhonemeData_00a49ce0*           m_pObject;                    // +0x00
     SCountBlock_00a49ce0* m_pCount;                     // +0x04
-    __forceinline ~CCountedPointer_00a49ce0()
+    FABLE_FORCEINLINE ~CCountedPointer_00a49ce0()
     {
         if (m_pCount) {
             --m_pCount->m_references;

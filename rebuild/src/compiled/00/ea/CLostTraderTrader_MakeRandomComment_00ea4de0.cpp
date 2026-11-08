@@ -11,6 +11,7 @@
 //   "_BROTHER" 0x012EDE74, "_BANTER" 0x012EDFD4.
 // Layout: entity-script base {vptr, Game +4, Me +8}; the comment counter at +0x28 (descriptive).
 // Shape: switch jump table (5 cases + default).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -27,7 +28,7 @@ struct CScriptThingImpl;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

@@ -21,6 +21,7 @@
 // Model: the landed NScript::CV_IntroductionToTrophiesScript::Main 0x00E9C4B0 (binding / CSpawnedFunc / SpawnFunction).
 // Shape: each new-expression's name string is a conditional temporary with its own ebx flag bit; the region name of
 //   SpawnFunction is built after the new-expression; the SetQuestCardObjective strings are built right to left.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -72,7 +73,7 @@ public:
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 namespace NScript {
 class CQS_GuardianTrophyDealerInfoScript : public CScriptBase {

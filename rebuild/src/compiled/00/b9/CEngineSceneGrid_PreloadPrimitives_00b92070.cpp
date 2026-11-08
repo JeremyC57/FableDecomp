@@ -12,6 +12,7 @@
 //   0x00B930A0.
 // Shape: `inside` is declared at function scope with the box and distance (block-scoped, it takes the dead volume argument
 //   slot that retail gives the outer child-loop counter); the sphere is one local cleared member by member per primitive.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
@@ -30,7 +31,7 @@ class CShadowClipVolume { public:
     long              ClipPlaneCount;              // +0x80
     C3DBoundingSphere BoundingSphere;              // +0x84
     bool              ClipToSphere;                // +0x94
-    __forceinline bool IsSphereInside(const C3DBoundingSphere& sphere) const
+    FABLE_FORCEINLINE bool IsSphereInside(const C3DBoundingSphere& sphere) const
     {
         if (ClipToSphere) {
             float dx = sphere.Center.X - BoundingSphere.Center.X;

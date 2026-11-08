@@ -2,6 +2,7 @@
 // Leaf: ?GetGraphicFrameHeight@CGraphicDataBank@@UBEKKK@Z
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own CGraphicDataBank vtable129c8cc slot22 and PDB exact const virtual overload. GraphicList+480 size44; header FrameHeight read. Out-of-range access has retail non-null precondition and is not converted to a zero result.
+#include "fable_compiler.h"
 #define CBankFile CBankFile_HeaderLayout
 #include "engine/CBankFile.h"
 #undef CBankFile
@@ -70,7 +71,7 @@ class CGraphicInfo {public:CGraphicHeader Header;ETextureType TextureType;CGraph
 #include "engine/CArray.h"
 class CGraphicDataBank:public CBankFileAsync,public CResourceBank {public:
  CArray<CGraphicInfo> GraphicList;
- __forceinline const CGraphicInfo* GetGraphicInfo(unsigned long index)const{return index<GraphicList.size()?&GraphicList[index]:0;}
+ FABLE_FORCEINLINE const CGraphicInfo* GetGraphicInfo(unsigned long index)const{return index<GraphicList.size()?&GraphicList[index]:0;}
  virtual unsigned long GetNoFramesInGraphic(unsigned long)const;
  virtual unsigned long GetGraphicFrameWidth(unsigned long,unsigned long)const;
  virtual unsigned long GetGraphicFrameHeight(unsigned long,unsigned long)const;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@ typedef unsigned int PlacementSize;
 #endif
 inline void* operator new(PlacementSize,void* p) { return p; }
 struct CPreTransposedBoneMatrix { float Data[3][4]; };
-namespace std { struct __false_type { __false_type() {} }; template<class T,class V> __forceinline void _Construct(T* p,const V& value) { new(p) T(value); } template<class Input,class Output> Output __fastcall __uninitialized_copy(Input first,Input last,Output result,const __false_type&) { Output current=result; for(;first!=last;++first,++current) _Construct(&*current,*first); return current; } }
+namespace std { struct __false_type { __false_type() {} }; template<class T,class V> FABLE_FORCEINLINE void _Construct(T* p,const V& value) { new(p) T(value); } template<class Input,class Output> Output __fastcall __uninitialized_copy(Input first,Input last,Output result,const __false_type&) { Output current=result; for(;first!=last;++first,++current) _Construct(&*current,*first); return current; } }
 
 typedef CPreTransposedBoneMatrix Element;
 template Element* __fastcall std::__uninitialized_copy<Element*,Element*>(Element*,Element*,Element*,const std::__false_type&);

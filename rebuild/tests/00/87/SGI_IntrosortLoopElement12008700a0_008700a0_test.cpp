@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 33b036deab132a209f5e73dd29c23d03f4baa0f474246d41a32e3070330d6b6c
@@ -7,7 +8,7 @@
 // Layout: retail element stride12; compare object4 bytes; introsort threshold16, depth argument and dummy type pointer.
 struct Element_008700a0{int key,a,b;Element_008700a0(){}Element_008700a0(const Element_008700a0& p):key(p.key),a(p.a),b(p.b){}};
 struct Compare_008700a0{int state;bool operator()(const Element_008700a0&a,const Element_008700a0&b)const{return a.key<b.key;}};
-template<class T,class C> __forceinline const T& Median(const T&a,const T&b,const T&c,C comp){
+template<class T,class C> FABLE_FORCEINLINE const T& Median(const T&a,const T&b,const T&c,C comp){
  if(comp(a,b)){if(comp(b,c))return b;else if(comp(a,c))return c;else return a;}
  else if(comp(a,c))return a;else if(comp(b,c))return c;else return b;
 }

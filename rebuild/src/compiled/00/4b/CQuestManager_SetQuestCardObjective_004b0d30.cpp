@@ -12,6 +12,7 @@
 // under a construction flag (cleared at entry in the `push ecx` word); the lookup key and the temporary both land in
 // the dead `scriptName` argument slot; HasTC + the end/hit Find inline (the landed 0x004B0C80 CThing model); nested
 // ifs with one trailing `return false` keep ebp/esi/edi pushed at entry and the false exit last.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
@@ -31,7 +32,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-    __forceinline CTCBase* Find(long type)             // the inlined map find: the end entry when absent
+    FABLE_FORCEINLINE CTCBase* Find(long type)             // the inlined map find: the end entry when absent
     {
         CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -48,8 +49,8 @@ class CThing { public:
     CTCMap        Components;                          // +0x44
     unsigned char _pad50[0x41];
     unsigned char Dead : 1;                            // +0x91 bit 0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) { return Components.Find(type); }
 };
 
 class CTCQuestCard { public:                                  // TC type 0x6c (Ego_r.pdb)

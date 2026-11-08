@@ -1,5 +1,6 @@
 // Behaviour test for 006e1620 CTCDParticleEmitter::FrameUpdate: final.cpp body verbatim; the engine calls are stubs
 // recording their arguments.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -112,7 +113,7 @@ class CThing { public:
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Flags91;                                   // +0x91 bit 0 dead, bit 5 hidden
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -186,7 +187,7 @@ class CTCDParticleEmitter { public:
     bool IsParticleCreationDisabled();                       // 0x006E0DF0
     void SetParticleCreationDisabled(bool disabled);         // 0x006E0690
     void UpdateEmitterCameraAttachment(bool interpolate);    // 0x006E0230
-    __forceinline void SetPositionFrom(C3DVector position)
+    FABLE_FORCEINLINE void SetPositionFrom(C3DVector position)
     {
         NParticleEngine::CParticleEmitter* emitter = PEmitter.GetPItem();
         emitter->SetPosition(C3DPositionInterpolator(position, position));

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -35,17 +36,17 @@ struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {
     C3DBoundingSphere BSphere;
     unsigned char rest[0xac-0x6c];
     virtual void v00() {};
-    __forceinline CEngineInternalPrimitiveParticleGroup(long t,unsigned long f):CEngineInternalPrimitiveBase(t,f) { /* BSphere inline constructor initializes four float components (PDB C3DVector Center + float Radius). */ }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleGroup(long t,unsigned long f):CEngineInternalPrimitiveBase(t,f) { /* BSphere inline constructor initializes four float components (PDB C3DVector Center + float Radius). */ }
 };
 struct CEngineInternalPrimitiveParticleMeshGroup : CEngineInternalPrimitiveParticleGroup {
     unsigned char derivedRetailTail[0x3c];
     virtual void v00() {};
-    __forceinline CEngineInternalPrimitiveParticleMeshGroup():CEngineInternalPrimitiveParticleGroup(0x1c,0x88000){}
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleMeshGroup():CEngineInternalPrimitiveParticleGroup(0x1c,0x88000){}
 };
 struct CEngineInternalPrimitiveParticleMesh : CEngineInternalPrimitiveBase {
     unsigned char meshTail[0x40];
     virtual void v00() {};
-    __forceinline CEngineInternalPrimitiveParticleMesh():CEngineInternalPrimitiveBase(0x17,0x8000){}
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleMesh():CEngineInternalPrimitiveBase(0x17,0x8000){}
 };
 struct CEnginePrimitiveManagerParticleMeshGroup_Methods : CEnginePrimitiveManagerParticleMeshGroup { CEngineInternalPrimitiveBase* CreateInternalPrimitive(long); };
 CEngineInternalPrimitiveBase* CEnginePrimitiveManagerParticleMeshGroup_Methods::CreateInternalPrimitive(long type)

@@ -16,6 +16,7 @@
 //   if/assign form or a returned pointer routes it through eax. The chosen name is a named local copy (homed in the
 //   dead event-argument slot) so its address is pushed after the copy ctor; a temporary pushes the ctor's eax instead.
 //   ~vector must be __forceinline for the inline element-destroy loop + `if (_M_start) free(_M_start)`.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
 class CWideString {
@@ -63,7 +64,7 @@ class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     typedef _Alloc allocator_type;
     explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     _Tp& operator[](unsigned int __n) { return *(this->_M_start + __n); }
 };
 }
@@ -76,7 +77,7 @@ public:
     long          WritePos;                            // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);       // 0x009F18F0
-    __forceinline long ReadLong() { long value; Read(4, &value); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(4, &value); return value; }
 };
 class CGameEvent {
 public:
@@ -121,7 +122,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

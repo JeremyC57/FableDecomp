@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -475,7 +476,7 @@ struct CQuake {CQuakeVector Position,Axis;int Frame;float Amplitude,Duration,Fre
 void __fastcall ConstructQuake(CQuake*,const CQuake&); //69C860 allocator helper nativeECXdest,EDXvalue
 struct CQuakePodTag {CQuakePodTag(){}};
 struct CQuakeArray {CQuake* Begin;CQuake* End;CQuake* Capacity;void Insert(CQuake*,const CQuake&,const CQuakePodTag&,unsigned,bool);
- __forceinline void Push(const CQuake& quake){if(End!=Capacity){ConstructQuake(End,quake);++End;}else Insert(End,quake,CQuakePodTag(),1,true);}
+ FABLE_FORCEINLINE void Push(const CQuake& quake){if(End!=Capacity){ConstructQuake(End,quake);++End;}else Insert(End,quake,CQuakePodTag(),1,true);}
 }; //69D300
 class CGameCameraManager { public:
  unsigned char Prefix[0x10];CQuakeVector CameraAxis,CameraUp;unsigned char CameraTail[0x4c];CQuakeWorld* World;

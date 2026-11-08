@@ -11,6 +11,7 @@
 //   `auto_inline(off)` + noinline stand-in. VC7.1 then knows the compare writes no memory, keeps pivot.first's block
 //   pointer in esi across the scans (re-read only after iter_swap) and drops the ebp frame the opaque call forced
 //   (parked 110v113 -> match). __forceinline comparator + CCharString::operator< as in the size TU.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 template <class T> class CBasicString {
 public:
@@ -41,7 +42,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -91,7 +92,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TEntry;
 template TEntry* __fastcall std::__unguarded_partition(TEntry*, TEntry*, TEntry, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>);

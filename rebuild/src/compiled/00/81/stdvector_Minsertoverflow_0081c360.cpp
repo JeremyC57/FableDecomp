@@ -9,6 +9,7 @@
 // Shape: STLport 4.6 `_M_insert_overflow` verbatim, with the element's implicit (bitwise) copy: both
 //   __uninitialized_copy loops and the __uninitialized_fill_n loop inline (`__forceinline`; each placement copy is a
 //   null test + `rep movsd`), `(max)` by reference, the trivial _Destroy folded away, `if (p) free(p)`, then _M_set.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
@@ -47,7 +48,7 @@ template <class _ForwardIterator>
 inline void _Destroy(_ForwardIterator, _ForwardIterator) { }     // trivially destructible element: no loop
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last,
                                        _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -57,7 +58,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
                                                  const __false_type&)
 {
     _ForwardIter __cur = __first;

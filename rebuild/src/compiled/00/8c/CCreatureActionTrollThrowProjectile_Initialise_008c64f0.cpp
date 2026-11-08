@@ -17,6 +17,7 @@
 // Layout: action +0x08 PCreature, +0x74 combat TC pointer, +0x114 PProjectile, +0x12c long flag (retail bytes);
 //   creature +0x70 def, +0x90 player (signed char), +0x64 graphic appearance TC.
 // Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+#include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 using NGraphicAppearance::CTCGraphicAppearance;
 class CCharString { public:
@@ -127,7 +128,7 @@ public:
     unsigned char         _pad74[0x90 - 0x74];
     signed char           Player;                            // +0x90
     const C3DVector& GetPos() const;    // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

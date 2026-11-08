@@ -9,6 +9,7 @@
 // CThing is a local retail-layout model; the filters and comparators are local models (Ego_r.pdb members),
 // called out of line with the thing by reference; the CFilter_BindN / CFilter_Not hold their filters by reference.
 // Shape: the template body of the landed siblings (0x00936950 GetPBestLeafThing, GetPBestThing re-reading `*it`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CThingSearchTools.h"
@@ -28,7 +29,7 @@ class CThing { public:
 
 // The type test: the mask is copied into a local first, so VC7.1 folds `x & 0` for CThing late
 // and keeps retail's `xor al,al ; jne` (a constant enum operand folds the whole test away).
-template <class T> __forceinline bool IsThingOfType(const CThing* thing)
+template <class T> FABLE_FORCEINLINE bool IsThingOfType(const CThing* thing)
 {
     unsigned long mask = T::ThingTypeMask;
     return (thing->ThingTypeFlags & mask) == mask;
@@ -39,13 +40,13 @@ struct CThingList {
     SNode* m_pHead;
     struct iterator {
         SNode* m_pNode;
-        __forceinline iterator(SNode* node) : m_pNode(node) {}
-        __forceinline CThing* operator*() const { return m_pNode->m_value; }
-        __forceinline iterator& operator++() { m_pNode = m_pNode->m_pNext; return *this; }
-        __forceinline bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; }
+        FABLE_FORCEINLINE iterator(SNode* node) : m_pNode(node) {}
+        FABLE_FORCEINLINE CThing* operator*() const { return m_pNode->m_value; }
+        FABLE_FORCEINLINE iterator& operator++() { m_pNode = m_pNode->m_pNext; return *this; }
+        FABLE_FORCEINLINE bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; }
     };
-    __forceinline iterator begin() { return iterator(m_pHead->m_pNext); }
-    __forceinline iterator end() { return iterator(m_pHead); }
+    FABLE_FORCEINLINE iterator begin() { return iterator(m_pHead->m_pNext); }
+    FABLE_FORCEINLINE iterator end() { return iterator(m_pHead); }
 };
 
 #include "engine/C3DVector.h"

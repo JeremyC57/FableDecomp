@@ -1,5 +1,6 @@
 // Behaviour test for std::list<pair<CWideString,long> >::push_back (0x005D86B2): forwards to insert(end(), x) with the
 // caller's element reference. The source is copied verbatim; insert is a recording stub.
+#include "fable_compiler.h"
 #include <stdio.h>
 static const void* g_x = 0; static const void* g_pos = 0; static int g_calls = 0;
 // ---- source (verbatim) ----
@@ -26,7 +27,7 @@ struct _List_node_base;
 template <class _Tp> struct _List_iterator {
     _List_node_base* _M_node;
     _List_iterator(_List_node_base* __x) : _M_node(__x) { }
-    __forceinline _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
 };
 
 template <class _Tp, class _Alloc = allocator<_Tp> > class list {

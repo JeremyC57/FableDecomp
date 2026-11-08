@@ -15,6 +15,7 @@
 //   0x0099B720 / dtor 0x0099B510, wcscmp 0x00BFE94C. Strings: L"" 0x0122D70C, L"*" 0x0122DE6C.
 // Layout: CUserProfileManager ProfileName +0x08 (Ego_r.pdb); find handle 8 bytes, find data 0x20C (as the landed
 //   CFrontendGameComponent::GetWorldNames 0x00495890); CDateAndTime 7 longs (as 0x00829D90).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <new>
 void StandInSink(void* p, unsigned int n);
@@ -30,7 +31,7 @@ class CWideString { public:
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
     bool operator!=(const CWideString& other) const;   // 0x0099B0F0
-    __forceinline bool IsEmpty() const
+    FABLE_FORCEINLINE bool IsEmpty() const
     {
         if (PStringData == 0) {
             if (wcscmp(L"", L"") == 0)

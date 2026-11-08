@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00739EE0, length 46 bytes.
 // Leaf: ??_GCModeBase@CTCCreatureModeManager@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x012673CC) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CCharString { public:
     void* m_pStringData;
@@ -19,7 +20,7 @@ class CModeBase : public CModeBaseRoot_00739ee0 { public:              // vtable
     long            ParentThing;                           // +0x04
     CAnimFilterBase m_filter;                      // +0x08
     CCharString     m_name;                        // +0x0c
-    __forceinline virtual ~CModeBase() { }
+    FABLE_FORCEINLINE virtual ~CModeBase() { }
 };
 
 }

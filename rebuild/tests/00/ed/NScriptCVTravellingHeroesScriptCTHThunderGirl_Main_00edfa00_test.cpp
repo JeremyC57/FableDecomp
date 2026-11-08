@@ -1,5 +1,6 @@
 // Behaviour test for 0x00EDFA00 NScript::CV_TravellingHeroesScript::CTH_ThunderGirl::Main: the source model is copied
 // verbatim (filler virtual slots given empty bodies) and every callee is a recording stub driven by a frame counter.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -95,7 +96,7 @@ struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
 };
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 struct CResourcePImp {                                 // the handles' counted implementation pointer
     void* Data;

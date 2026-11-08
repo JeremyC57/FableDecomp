@@ -8,6 +8,7 @@
 //   reached through reference helpers so MsgIsTalkedToBy / IsAlive stay virtual; the two cut-scene blocks share a tail.
 // Naming wave 35: identity reg 00d1d236 "KG_ChiefBreakSiege" in 00d1d100; Alloc 00d1dde0; vtable 012caf00 slot 1; PDB ?Main@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CKG_ChiefBreakSiege::Main (wave3/labels_alloc.tsv); PDB ?Main@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CKG_ChiefBreakSiege@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -51,7 +52,7 @@ public:
     virtual void s64(); virtual void s65(); virtual void s66(); virtual void s67(); virtual void s68(); virtual void s69();
     virtual void s70(); virtual void s71(); virtual void s72(); virtual void s73(); virtual void s74();
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
-    __forceinline const C3DVector& PosOrZero() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+    FABLE_FORCEINLINE const C3DVector& PosOrZero() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
@@ -66,7 +67,7 @@ struct CBaseObjectDtor {                                // destructor-only view 
     virtual ~CBaseObjectDtor();                         // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CHandlePImp {
     void*           Data;
@@ -79,7 +80,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }    // out of line 0x007E72A0
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;
@@ -99,9 +100,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

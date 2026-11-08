@@ -2,6 +2,7 @@
 // Flags: /Gr
 // Leaf: ??4?$vector@UCCompositeBlendDesc@FableAssign_006cade0@@@FableAssign_006cade0@@QAEAAU01@ABU01@@Z
 // Layout: vector3 pointer words; oracle element stride16; trivial destruction, separately bound copy helpers.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
@@ -14,8 +15,8 @@ template<class T> struct vector {
  T* start;T* finish;T* end;
  unsigned int size()const{return finish-start;}
  unsigned int capacity()const{return end-start;}
- __forceinline T* _M_allocate_and_copy(unsigned int n,const T* first,const T* last){T* p=n?(T*)malloc(n*sizeof(T)):0;__uninitialized_copy(first,last,p,__false_type());return p;}
- __forceinline void _M_clear(){if(start)free(start);}
+ FABLE_FORCEINLINE T* _M_allocate_and_copy(unsigned int n,const T* first,const T* last){T* p=n?(T*)malloc(n*sizeof(T)):0;__uninitialized_copy(first,last,p,__false_type());return p;}
+ FABLE_FORCEINLINE void _M_clear(){if(start)free(start);}
  vector& operator=(const vector& x);
 };
 template<class T> vector<T>& vector<T>::operator=(const vector<T>& x){

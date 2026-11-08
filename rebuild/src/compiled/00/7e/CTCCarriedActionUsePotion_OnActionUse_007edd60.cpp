@@ -15,6 +15,7 @@
 // a local first (`mov eax,[edi+4] ; mov ecx,[eax+70h]`); the hero stats come from the out-parameter GetInterface
 // (bitset test, LowerBound, end/hit choice, `*out = component`: the component goes through eax into ecx); the pointer's
 // release has a null test and no null store (the object is in ebx).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -61,7 +62,7 @@ class CThing { public:
     CInterfaceMap    m_interfaces;                          // +0x44
     unsigned char    _pad54[0x1c];
     CDefPointeeBase* PDef_Object;                           // +0x70 CDefPointer<const CThingDef>::Object
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

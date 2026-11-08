@@ -13,6 +13,7 @@
 // DefaultCombatAbilities +0x11C, ProjectileWeaponFirstPersonModeMaxFOVValues +0x128, HeavyWeapons +0x13C.
 // Shape: as the landed def dtors (0x0045784B, 0x0047747C): empty body, `__forceinline` POD-vector dtors, out-of-line map
 // dtors; no vtable store of its own (`__declspec(novtable)` on the derived def, as 0x0047747C).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
@@ -24,7 +25,7 @@ template <class T> struct CPODVector {             // retail std::vector<T> (12 
     T* m_first;
     T* m_last;
     T* m_end;
-    __forceinline ~CPODVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~CPODVector() { if (m_first) free(m_first); }
 };
 class CFloatRange { public: float Min, Max; };
 class CHeroAbilityStatWeight { public:                    // map<EHeroTrainableStatType, float> (STLport, 12 bytes)

@@ -20,6 +20,7 @@
 //   component's longest chicken kick at +0x110; the game's player manager at +0x1c, the player's hero pointer at +0x34.
 // Shape: both components come from the out-parameter GetInterface whose result is not tested (an absent component leaves the
 //   pointer unset); the distance is the planar sqrt(dx*dx + dy*dy) from the throw start.
+#include "fable_compiler.h"
 #include <math.h>
 
 class CTCBase;
@@ -75,7 +76,7 @@ private: public:
     CBrain*         Brain;                  // +0x70
     unsigned char   _pad74[0x1d];
     unsigned char   m_dead : 1;             // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

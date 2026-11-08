@@ -1,6 +1,7 @@
 // CAIStateGroup_IceTrollIcicleAssault::Update() -- mark the target in danger, wait for current actions and perform the icicle assault before terminating.
 // Retail009627c0 length260. Shared group/Base/Brain layout. CThing component map44 differs donor48.
 // Action retail114 uses real combat-base virtual destructor; generated Into donor size12c differs native114.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_IceTrollIcicleAssault.h"
 #include "engine/CAIStateGroupBase.h"
@@ -17,15 +18,15 @@ struct CStealth {void SetAsInDanger(CIceThing*,long);}; //00747b80
 struct CIceMap{struct Entry{long type;void* component;};Entry* first;Entry* last;Entry* LowerBound(const long*);}; //0040f020
 struct CIceThing {char prefix[0x20];unsigned long components[9];CIceMap map;char beforeDead[0x45];unsigned char dead;
 bool IsPerformingAnyAction(); //006622a0
-__forceinline bool GetStealth(CStealth** out){if(components[1]&0x400000){long key=54;CIceMap* m=&map;CIceMap::Entry* it=m->LowerBound(&key);if(it==m->last||54<it->type)it=m->last;*out=(CStealth*)it->component;return true;}return false;}
+FABLE_FORCEINLINE bool GetStealth(CStealth** out){if(components[1]&0x400000){long key=54;CIceMap* m=&map;CIceMap::Entry* it=m->LowerBound(&key);if(it==m->last||54<it->type)it=m->last;*out=(CStealth*)it->component;return true;}return false;}
 };
 struct CIcePointer {CIceThing* GetPItem()const;}; //00a01b50, methods view over opaque shared PTarget
 struct CIceCombatAction {virtual ~CIceCombatAction();char state[0x110];}; //0062e900
 struct CIceTrollIcicleAssaultIntoNative:CIceCombatAction{CIceTrollIcicleAssaultIntoNative(CIceThing*,CIceThing*);}; //00962990
 struct IceAssaultMethods:CAIStateGroup_IceTrollIcicleAssault {
-__forceinline CIcePointer& Target(){return *(CIcePointer*)PTarget;}
-__forceinline CIceThing* Creature(){return (CIceThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
-__forceinline bool TargetAlive(){if(Target().GetPItem())if(!(Target().GetPItem()->dead&1))return true;return false;}
+FABLE_FORCEINLINE CIcePointer& Target(){return *(CIcePointer*)PTarget;}
+FABLE_FORCEINLINE CIceThing* Creature(){return (CIceThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
+FABLE_FORCEINLINE bool TargetAlive(){if(Target().GetPItem())if(!(Target().GetPItem()->dead&1))return true;return false;}
 void Terminate();long AIAction_DoNothing();long AIAction_CombatPerformActionAndWait(CIceCombatAction*,bool); //008fcf40,0097e200,0097da40
 void Update();
 };

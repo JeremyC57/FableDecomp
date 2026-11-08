@@ -12,6 +12,7 @@
 //          loaded into esi once before the loop; the six-state switch is a jump table whose default loops again.
 // Layout: the generated engine/CAIStateGroup_JackDragon.h is packed (#pragma pack(1)) and misplaces every member after
 //          +0x64, so the class is modelled locally like the landed JackDragon rows (PEnemy +0x14, CurrentState +0x5c).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -42,7 +43,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -64,7 +65,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

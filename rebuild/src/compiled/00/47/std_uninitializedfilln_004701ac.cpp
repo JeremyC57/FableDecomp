@@ -4,6 +4,7 @@
 // Identity (proven): its only caller is the _M_fill_insert 0x0047005B of the vector that CPersistContext::Transfer(CAppearanceModifierGraphics&) 0x0046FE40 reads through its TransferBinaryIn 0x0046FEE9 (Ego_r.pdb CAppearanceModifierGraphics: CArray<CAppearanceModifierGraphics::CEntry> at +0; 24-byte elements).
 // Shape (family M055, representative 0x0046AEAA): STLport `return __uninitialized_fill_n(__first, __n, __x, __false_type());`
 //   with the loop `for (; __n > 0; --__n, ++__cur) _Construct(&*__cur, __x);` inline (`__forceinline`); unsigned n gives `jbe`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 class CAppearanceModifierGraphics {
@@ -12,9 +13,9 @@ public:
 };
 namespace std {
 struct __false_type { __false_type() { } };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

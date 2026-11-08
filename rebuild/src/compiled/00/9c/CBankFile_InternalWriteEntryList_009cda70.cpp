@@ -10,6 +10,7 @@
 // Layout: the landed retail CBankFile model (0x009D1320 / 0x009CCCD0): Symbols +0x08, Checksums +0x14, RuntimeData +0x20,
 //   UpdateData +0x2c, PackedDataOffset +0x38, PackedDataSize +0x48, PackedDataType +0x58; FileInformationSize +0xa4 and
 //   FileSize +0xa8 (Ego_r.pdb +0xb4 / +0xb8 less the four 4-byte-short CArrays); CBankFileEntryUpdateData as 0x009D1320.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -35,7 +36,7 @@ struct CByteVector {                                   // CArray<char> (STLport 
     char* _M_start;
     char* _M_finish;
     char* _M_end_of_storage;
-    __forceinline CByteVector(unsigned long n, char value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
+    FABLE_FORCEINLINE CByteVector(unsigned long n, char value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = n != 0 ? (char*)malloc(n) : 0;
         _M_end_of_storage = _M_start + n;

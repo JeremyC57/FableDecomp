@@ -2,6 +2,7 @@
 // STUPID, BROTHER, BANTER in order; later calls pick rand() % 5 (checked against the CRT sequence after srand) and pin
 // the counter at 6; each comment opens a conversation for Me (false, false), adds the hero, and adds the line spoken
 // by Me to the hero; a terminating thread past the sixth comment does nothing.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,7 +60,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
 class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {}

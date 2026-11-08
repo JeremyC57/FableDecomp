@@ -18,6 +18,7 @@
 //          PMasterData +0x18. CScriptThing per the landed script model (CBaseClass + CCountedPointer, 12 bytes).
 // Naming wave 35: identity reg 00e2b0de "AS_Ambusher" in 00e2b090; Alloc 00e2bb60; vtable 012e2834 slot 1; PDB ?Main@CAS_Ambusher@CV_AmbushScamScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAS_Ambusher::Main (wave3/labels_alloc.tsv); PDB ?Main@CAS_Ambusher@CV_AmbushScamScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAS_Ambusher@@UAEXXZ`; this source now defines the PDB member (outer stand-in CV_AmbushScamScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
@@ -74,7 +75,7 @@ public:
     CScriptThing Me;                                     // +0x08
     CV_AmbushScamScript* ParentClass;                    // +0x14
     CQ_SunnyvaleMasterData* PMasterData;                 // +0x18
-    __forceinline void RunAmbush();
+    FABLE_FORCEINLINE void RunAmbush();
 private:
     virtual void Main();                          // PDB ?Main@CAS_Ambusher@CV_AmbushScamScript@NScript@@EAEXXZ
 };
@@ -82,7 +83,7 @@ private:
 typedef NScript::CV_AmbushScamScript::CAS_Ambusher CAS_Ambusher;    // global spelling used below
 
 // Target the hero, wait for it to come near, shout, then idle until the script ends.
-__forceinline void CAS_Ambusher::RunAmbush()
+FABLE_FORCEINLINE void CAS_Ambusher::RunAmbush()
 {
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->AS_AmbushDistance)) {

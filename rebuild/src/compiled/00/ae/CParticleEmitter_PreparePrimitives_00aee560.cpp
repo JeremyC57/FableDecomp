@@ -8,6 +8,7 @@
 // Layout: as the Initialise row 0x00AEE240 (Ego_r.pdb CParticleEmitter minus 0x0c); CParticleSystem Visible is bit 5 of
 //   +0x50; CEnginePrimitivePrepareInfo engine +0x34 (landed 0x00AEB2D0). CEnginePrimitiveParticleGroup2D (0x4c bytes):
 //   type 0x20, layer +0x0c, screen displacement +0x10, z read +0x11, transform +0x14, position +0x44.
+#include "fable_compiler.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -25,7 +26,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
     CMatrix3x4() {}
-    __forceinline void SetInverse(const CMatrix3x4& m)
+    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m)
     {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;

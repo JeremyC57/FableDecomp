@@ -17,6 +17,7 @@
 // template (miss path reads the never-written slot); the creature half is a SECOND `if (!QuitOut)` block after the
 // first (nested inside it, VC sinks the esi push below the entry); the creature's lookup goes through a const thing, so it reaches the
 // const LowerBound; the world is taken into a local before the last call so it is fetched ahead of the pushes. The lookup key and the `performed` flag share the single `push ecx` frame word.
+#include "fable_compiler.h"
 class CTCBase;
 class CCombatActionBase;
 
@@ -32,7 +33,7 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -45,7 +46,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

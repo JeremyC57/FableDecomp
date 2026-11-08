@@ -17,6 +17,7 @@
 // that retail has not). The FirstRenderFrame store sits before the addref in source: retail schedules it between the null test and
 // its branch. The constant 1 lives in ebx (`xor ebx,ebx ; inc ebx`) and feeds every true/1 store; the 8-byte interval descriptor is
 // copied as two dwords; the empty test on Categories is begin() != end(). pack(4) keeps the double from padding the vptr.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 double __fastcall GFGetTime();                   // 0x009E1BC0
 class CDefPointeeBase { public:
@@ -28,13 +29,13 @@ class CInventoryDef : public CDefPointeeBase { public: };
 template <class T> class CDefPointer { public:          // intrusive counted definition pointer (4 bytes)
     T* Object;
 };
-template <class T> __forceinline T* AddRef(T* object)
+template <class T> FABLE_FORCEINLINE T* AddRef(T* object)
 {
     if (object)
         ++object->m_refCount;
     return object;
 }
-template <class T> __forceinline void Release(T* object)
+template <class T> FABLE_FORCEINLINE void Release(T* object)
 {
     if (object && --object->m_refCount == 0)
         object->Destroy();

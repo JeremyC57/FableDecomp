@@ -14,6 +14,7 @@
 // Shape: the landed 0x007565E0 sibling with a bool value: the pair's value is zeroed after the key's default construction, the
 //   value reader has a same-TU read-only stand-in (with a declared-only reader VC keeps the count and the traits object in
 //   frame words of their own: 0x28 frame), the inserted pair is a copy built in the insert call.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 namespace X_007adbf0 {
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
@@ -21,14 +22,14 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 // CDataInputStream::ReadWithSrcChunkOverflow at 0x00993CA0 is inherited through this method-only bridge.
 struct CMemoryDataInputStreamAdapter : ::CMemoryDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char*, int);   // 0x00993CA0
-    __forceinline void Read(void* out, int size)
+    FABLE_FORCEINLINE void Read(void* out, int size)
     {
         __int64 next = (__int64)(unsigned)(position + size);
         if (next < 0 || next > 0x7fffffff) return;
         if (chunkLength >= size) { memcpy(out, (const void*)chunkBase, size); chunkBase += size; chunkLength -= size; position += size; }
         else ReadWithSrcChunkOverflow((unsigned char*)out, size);
     }
-    __forceinline unsigned int ReadWord() { unsigned int v; Read(&v, 4); return v; }
+    FABLE_FORCEINLINE unsigned int ReadWord() { unsigned int v; Read(&v, 4); return v; }
 };
 
 } // (hoisted to global scope: naming wave 9)

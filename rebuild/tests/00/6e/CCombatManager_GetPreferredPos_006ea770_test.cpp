@@ -1,5 +1,6 @@
 // Behaviour test for 006ea770: final.cpp copied verbatim, every declared callee stubbed below so arguments are observable.
 // CCombatManager::GetPreferredPos(const CThingCreatureBase&) const
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -83,7 +84,7 @@ class CThing { public:
     unsigned char m_flags6c;                          // +0x6c
     unsigned __int64 GetUID() const { return UniqueID; }
     const C3DVector& GetPosition() const;             // 0x004C73D0
-    template<class T> __forceinline T* GetTCIfPresent(long type) const
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long type) const
     {
         T* component = 0;
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {

@@ -16,11 +16,12 @@
 // out-parameter cross product (forward x up), which keeps retail's x87 operand order; the rotation is stored column-wise.
 // Layout (supersedes any local-model note above): engine/CEngineCamera.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CEngineCamera CEngineCameraDonor
 #include "engine/CEngineCamera.h"
 #undef CEngineCamera
 #include "engine/C3DVector.h"
-__forceinline void CrossProduct(C3DVector& r, const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE void CrossProduct(C3DVector& r, const C3DVector& a, const C3DVector& b)
 {
     r.X = a.Y * b.Z - a.Z * b.Y;
     r.Y = a.Z * b.X - a.X * b.Z;

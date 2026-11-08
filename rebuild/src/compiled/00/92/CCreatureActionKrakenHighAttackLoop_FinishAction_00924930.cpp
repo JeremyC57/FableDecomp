@@ -16,6 +16,7 @@
 //   (Interrupt +0x114, LoopNum +0x118); CKrakenDef HighStrikeAttackLoops +0x44; CTCKraken HeadTrackTarget +0x51 (PDB +0x61).
 // Shape: the loop limit is read into a local before the alive test; the target is fetched into a local before the
 //   SetCurrentAction call (retail's fetch order), as the twin 0x00924720.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -63,12 +64,12 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     CBaseIntelligentPointer PTarget;            // +0xa8 CIntelligentPointer<CThing>
     unsigned char           _padb0[0x114 - 0xb0];
     ~CCombatActionBase();                       // 0x0062E900
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
-    __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
         return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead();
     }
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.GetPItem()->GetTC(TCI_KRAKEN, &kraken);

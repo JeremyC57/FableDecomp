@@ -11,6 +11,7 @@
 //   intrinsic's helper), operator delete 0x00BFE9BC and ~CBaseClass 0x0099A2E0 (the five expanded ~CScriptThing);
 //   CGameScriptInterfaceBase slots 64 PostAddScriptedEntities, 72 GetThingWithScriptName; CScriptThing slot 6 GetPos expanded
 //   (NullCoord 0x0143E8E0); C3DVector::GetAngleXY expanded (atan2 / (2 pi), wrapped into [0, 1)).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
@@ -44,7 +45,7 @@ inline CScriptThing::~CScriptThing() { }
 inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 inline float __fastcall GFArcTan(double opposite, double adjacent)
 { return (float)atan2(opposite, adjacent) / (2.0f * 3.14159265358979323846f); }
-__forceinline float __fastcall GET_ROUNDED_ANGLE(float angle)
+FABLE_FORCEINLINE float __fastcall GET_ROUNDED_ANGLE(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod(angle, 1.0f);
@@ -52,7 +53,7 @@ __forceinline float __fastcall GET_ROUNDED_ANGLE(float angle)
     }
     return angle;
 }
-__forceinline float C3DVector::GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X, Y)); }
+FABLE_FORCEINLINE float C3DVector::GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X, Y)); }
 
 void NScript::CV_StatueMasterScript::Main()
 {

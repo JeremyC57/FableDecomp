@@ -11,6 +11,7 @@
 // end is written by hand on the same pointer local (null test, `dec [p+4] ; jne`, virtual slot 1). The temporary
 // CCategory (0x2C bytes) occupies [ebp-30h].
 // Layout: retail CTCInventoryBase Categories {first,last,end} at +0x20.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
@@ -23,17 +24,17 @@ class CInventoryCategoryDef { public:
 struct CDefPointer {                                              // CDefPointer<const CInventoryCategoryDef>
     CInventoryCategoryDef* Object;
     CDefPointer() : Object(0) {}
-    __forceinline CDefPointer(CInventoryCategoryDef* object) : Object(object)
+    FABLE_FORCEINLINE CDefPointer(CInventoryCategoryDef* object) : Object(object)
     {
         if (object)
             ++object->RefCount;
     }
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->RefCount;
     }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             if (--Object->RefCount == 0)

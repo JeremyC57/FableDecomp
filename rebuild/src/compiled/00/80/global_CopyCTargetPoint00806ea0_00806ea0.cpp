@@ -13,6 +13,7 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on the stack.
 // Label: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` names the element correctly; byte-identical to 0x00806E10 (a second
 // copy of the same instantiation in another object; this link does not fold identical COMDATs).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -26,8 +27,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"
@@ -38,7 +39,7 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;

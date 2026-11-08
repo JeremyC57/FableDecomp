@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -42,7 +43,7 @@ struct CAnimComponentVectorMap {
         if (p==Last || key<p->Key) p=Last;
         return p;
     }
-    __forceinline void Add(long key,CAnimComponentBase* component) {
+    FABLE_FORCEINLINE void Add(long key,CAnimComponentBase* component) {
         ++component->IVRefCount;
         CAnimComponentEntry value={key,component};
         if (Last!=Limit) {

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -418,7 +419,7 @@ struct InterfaceEntry {long Type;CTCEntityEventsCalls* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* key);}; //0040F020
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];unsigned long PresentBits[9];InterfaceMap Interfaces;
-    __forceinline bool GetInterface(CTCEntityEventsCalls** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CTCEntityEventsCalls** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
             if(p==map->Last || type<p->Type)p=map->Last;*out=p->Component;return true;}return false;
     }

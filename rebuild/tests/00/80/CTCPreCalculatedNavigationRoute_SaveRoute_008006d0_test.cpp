@@ -1,5 +1,6 @@
 // Behaviour test for 008006d0: final.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext*)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -68,7 +69,7 @@ class CTCPreCalculatedNavigationRoute : public CTCBase { public:
 };
 
 template <class T>
-__forceinline void SaveValue(CPersistContext* context, const char* name, T& value, const T& defaultValue)
+FABLE_FORCEINLINE void SaveValue(CPersistContext* context, const char* name, T& value, const T& defaultValue)
 {
     context->Transfer(name, value, defaultValue);
 }

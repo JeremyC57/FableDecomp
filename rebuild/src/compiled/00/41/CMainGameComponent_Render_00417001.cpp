@@ -16,6 +16,7 @@
 // Shape: the clamp constants are scoped per arm; the interpolate goes through an inline helper (retail keeps the game
 //   time on the x87 stack); the second bullet-time call uses an inline getter; the render duration is assigned BEFORE
 //   the counter updates (VC7.1 sinks the fsub past them, as in ForceRender).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CASoundBank;
@@ -151,7 +152,7 @@ public:
     double GetGameTimeOfNextPresentCompletion();  // 0x004166E2
     void ForceRender(long frames);                // 0x004164E0
     void Render();
-    __forceinline double GetServerFrameInterpolate(double gameTime) { return gameTime / (1.0f / CMainGameComponent::GetConstantFPS()) - CurrentServerFrame; }
+    FABLE_FORCEINLINE double GetServerFrameInterpolate(double gameTime) { return gameTime / (1.0f / CMainGameComponent::GetConstantFPS()) - CurrentServerFrame; }
     virtual ~CMainGameComponent();
     virtual void v00();
 };

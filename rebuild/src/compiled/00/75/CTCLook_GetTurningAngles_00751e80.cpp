@@ -14,13 +14,14 @@
 // Layout (retail CTCLook, PDB offsets below the vector): ParentThing +0x04, PParentCreature +0x10, RecoveryAngleToLookAtXY
 // +0x1c, BodyTurnState +0x4c (bit flags 2 / 8 tested), LookFlags +0x64 (bit 6), PosToLookAt +0x68, DirectionToLookIn +0x74;
 // CThingCreatureBase dead bit +0x91, current action +0x100; CTCPhysicsBase Position +0x0c. No engine header for CTCLook.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod, fabs)
 
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) (1e-4f)
 class C3DVector { public:
     float X, Y, Z;
-    __forceinline bool operator!=(const C3DVector& o) const
+    FABLE_FORCEINLINE bool operator!=(const C3DVector& o) const
     {
         return (float)fabs(X - o.X) > DELTA_NOTIONAL_ZERO || (float)fabs(Y - o.Y) > DELTA_NOTIONAL_ZERO ||
                (float)fabs(Z - o.Z) > DELTA_NOTIONAL_ZERO;
@@ -65,7 +66,7 @@ float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& t
 float __fastcall GFGetSignedAngleDifference(float a, float b);                        // 0x00A441E0 (Ego_r.pdb ?GFGetSignedAngleDifference@@YIMMM@Z)
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) (1e-4f)
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

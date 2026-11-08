@@ -11,6 +11,7 @@
 // Shape: a switch on the type; the in-class push_back is inlined at its first call(s) (types 4 and 5, cross-jumped into one
 //   tail) and called out of line for the default; the water pointer is a named local (its address is the push_back
 //   argument); the type-8 record {box, mesh} is built in the frame and passed by reference.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() { } };
 
@@ -25,7 +26,7 @@ template <class T> struct CRetailVector {              // STLport vector (12 byt
     T* _M_end_of_storage;
     void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fill, bool atEnd);
     void push_back(const T& x);                       // 0x00BF5EA0 (the out-of-line copy)
-    __forceinline void push_back_inline(const T& x)   // the same body, inlined at the first two call sites
+    FABLE_FORCEINLINE void push_back_inline(const T& x)   // the same body, inlined at the first two call sites
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) T(x);
@@ -63,7 +64,7 @@ class C3DBoundingBox { public: C3DVector Min, Max; };
 struct SBoxedWaterPatch {                              // 28 bytes
     C3DBoundingBox   Box;
     CWaterPatchMesh* Mesh;
-    __forceinline SBoxedWaterPatch(const C3DBoundingBox& box, CWaterPatchMesh* mesh) : Box(box), Mesh(mesh) { }
+    FABLE_FORCEINLINE SBoxedWaterPatch(const C3DBoundingBox& box, CWaterPatchMesh* mesh) : Box(box), Mesh(mesh) { }
 };
 struct CBoxedWaterPatchVector {
     SBoxedWaterPatch* _M_start;

@@ -10,6 +10,7 @@
 // Shape: the block ctor body stores BlockSize = size + 0x10 first and passes that member to AllocateAligned (ecx reused), OwnsData last; the counted base's count store precedes the vtable store (its inline ctor), the base vptr store is dead and dropped.
 // Leaf: CreateNewMemoryBlock
 // Shared model for the CSimpleMemoryPool rows (Ego_r.pdb layouts; the engine header's Root is opaque, so a local model is used).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);                     // 0x00BFEA1A
 void __cdecl operator delete(void* block);                         // 0x00BFE9BC
 class CMemoryAllocator {
@@ -72,7 +73,7 @@ class CSimpleMemoryPool { public:
     {
         AddFreeArea((CArea*)block->BlockData, block->BlockSize - 0x10);
     }
-    __forceinline void DeleteBlocks()
+    FABLE_FORCEINLINE void DeleteBlocks()
     {
         CMemoryBlock* block = FirstMemoryBlock;
         if (block) {

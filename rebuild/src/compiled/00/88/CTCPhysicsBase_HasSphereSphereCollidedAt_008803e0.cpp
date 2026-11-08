@@ -11,6 +11,7 @@
 // Layout: Ego_r.pdb CTCPhysicsBase (Position +0x0c, Radius +0x34) and CPhysicsCollideResponse (CollidePos +0x00,
 // CollideNormal +0x0c, Friction +0x18); engine/CTCPhysicsBase.h flattens the vectors into floats, so the class is modelled
 // locally with C3DVector members (as in the landed sibling 0x008802B0).
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
@@ -19,7 +20,7 @@ class C3DVector { public:
     float Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

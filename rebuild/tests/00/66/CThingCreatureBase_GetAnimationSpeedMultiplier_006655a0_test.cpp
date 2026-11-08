@@ -1,4 +1,5 @@
 // Behaviour test for 0x006655A0 (copy of the model + stand-in callee bodies).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -50,7 +51,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;                      // +0x91 bit 0 dead
-    template<class T> __forceinline bool GetInterface(T** out, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

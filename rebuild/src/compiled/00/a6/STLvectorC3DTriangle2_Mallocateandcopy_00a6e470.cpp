@@ -11,6 +11,7 @@
 //   destination to `first + (result - first)` (esi) with the placement-new null test, the 6-byte POD copied as a
 //   dword + word block (`mov bx,[ebx+4]`), and the block (not the advanced cursor) is returned. __uninitialized_copy
 //   must be `__forceinline` (plain inline leaves the loop as a cdecl call).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* p) throw() { return p; }   // placement new (null-tested result)
 
@@ -40,7 +41,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

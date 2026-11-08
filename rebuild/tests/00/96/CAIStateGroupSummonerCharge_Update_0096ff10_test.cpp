@@ -1,6 +1,7 @@
 // Behaviour test for CAIStateGroup_SummonerCharge::Update (0x0096FF10): model and body verbatim, every callee stubbed;
 // exercises the dead-target exit, the stealth notification, the failed SetCurrentAction, every charge-loop outcome
 // (action finished, action code changed, target in reach, target dies, DoNothing interrupt) and both charge-out-of ctors.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -34,7 +35,7 @@ class CThing { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

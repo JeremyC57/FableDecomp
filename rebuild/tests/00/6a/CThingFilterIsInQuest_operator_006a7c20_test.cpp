@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -8,7 +9,7 @@ class CCharString;
 template<class T> class CBasicString { public: T* PData; unsigned long StringLength; protected: static long __fastcall Compare(const T*,const T*); friend class CCharString; };
 class CCharStringData { public: CBasicString<char> Data; };
 class CCharString { public: CCharStringData* PStringData;
-__forceinline bool operator==(const CCharString& other) const {
+FABLE_FORCEINLINE bool operator==(const CCharString& other) const {
  if(PStringData==other.PStringData) return true;
  if(PStringData && other.PStringData && PStringData->Data.StringLength==other.PStringData->Data.StringLength)
   return CBasicString<char>::Compare(PStringData->Data.PData,other.PStringData->Data.PData)==0;

@@ -7,11 +7,12 @@
 // Shape: the element count is a named local computed before the generator step (`imul 2AAAAAABh ; sar 1` = /12 before
 // `seed = GFROR13(seed * 0x24A1 + 0x24DF)`), then the landed 0x008EE720 generator `n ? r % n : 0` (unsigned `div`); the hit arm is the
 // `if (first != last) { ... }` body so the `return 0` sits at the end.
+#include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long value);      // 0x00497890
 struct CRandomGenerator {
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
-    __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
 class CThing;
 struct CIntelligentPointer_CThing {                // 8 bytes: vptr + item

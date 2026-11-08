@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 // StaticInitialization::Initialize_LOCAL_HEAP_CEngineLightingManager__LightElementLink() -- Initialize the fixed lighting object heap.
 // Leaf: _$E1
@@ -23,7 +24,7 @@ public:
     CObjectEntry* FreeList;
     CObjectAllocatorBlockEntry StartBlock;
     bool AllowHeapToGrow;
-    __forceinline CDynamicObjectHeap(bool allowHeapToGrow) {
+    FABLE_FORCEINLINE CDynamicObjectHeap(bool allowHeapToGrow) {
         AllowHeapToGrow=allowHeapToGrow;
         FreeList=0;
         StartBlock.NextEntry=0;

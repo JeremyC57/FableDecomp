@@ -4,6 +4,7 @@
 // CWorld virtual slot 13 (PeekWorldMap, +0x34), CWorldMap::GetRegionNumberFromName @ 0x004FC210, CWorld virtual slot 12 (GetWorldMap, +0x30), the region record getter @ 0x004FB490.
 // Leaf: SetCreatureGeneratorsEnabled
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 #include <string.h>
 // Retry 10: the `== ""` test is split by hand (strcmp on a null block, the block compare otherwise) with the arms joined by
 // goto, as the landed 0x0048F7C0; the default name is an implicit CCharString conversion (homed in a dead argument slot).
@@ -110,7 +111,7 @@ struct CThing_Retail {
     void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
     void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
     void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -8,6 +8,7 @@
 // Layout: PDB CTCEffectOnDie (36 bytes): StartedNonRecoverableFadeout +0x0c, Effect +0x10, Timer +0x14,
 // FadeOutTimer +0x18, DeathSoundCriteria (CCharString) +0x1c, Pausable +0x20, Paused +0x21.
 // Shape: own vtable store (scheduled after the member `lea`), the string destructor, the base destructor.
+#include "fable_compiler.h"
 class CThing;
 
 class CCharString { public:
@@ -34,7 +35,7 @@ class CTCEffectOnDie : public CTCBase { public:                  // vtable 0x012
     bool        Pausable;                          // +0x20
     bool        Paused;                            // +0x21
     CTCEffectOnDie(CThing& owner) : CTCBase(owner) { }
-    __forceinline virtual ~CTCEffectOnDie() { }
+    FABLE_FORCEINLINE virtual ~CTCEffectOnDie() { }
 };
 
 CTCEffectOnDie* Create_CTCEffectOnDie(CThing& owner)

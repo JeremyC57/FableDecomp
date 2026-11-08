@@ -15,6 +15,7 @@
 //   in-body inline_depth(0). A `while (!IsActiveThreadTerminating())` loop places the shared tail at the first exit.
 // Naming wave 35: identity reg 00f028a7 "AT_Sentry" in 00f024c0; Alloc 00f04510; vtable 012f7e30 slot 1; PDB ?Main@CAT_Sentry@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Sentry::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Sentry@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -42,8 +43,8 @@ template <class T> class CCountedPointer { public:
     T*           Data;
     CCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) { }
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Info) {
             --Info->References;
@@ -58,7 +59,7 @@ template <class T> class CCountedPointer { public:
 };
 class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
-    __forceinline CBaseClass() { }
+    FABLE_FORCEINLINE CBaseClass() { }
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
 protected:
@@ -67,7 +68,7 @@ public:
     virtual void t1(); virtual void t2();
     virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
     virtual void t4(); virtual void t5();
-    virtual __forceinline const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
+    virtual FABLE_FORCEINLINE const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
     virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14();
     virtual void t15(); virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20(); virtual void t21(); virtual void t22();
     virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27(); virtual void t28(); virtual void t29(); virtual void t30();
@@ -80,8 +81,8 @@ public:
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
     CCountedPointer<CScriptThingImp> PImp;             // +0x04
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
-    __forceinline CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
-    __forceinline ~CScriptThing() { }                  // out of line 0x004AA840
+    FABLE_FORCEINLINE CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
+    FABLE_FORCEINLINE ~CScriptThing() { }                  // out of line 0x004AA840
 };
 class CBaseObject { public:                                   // vtable 0x0129A7D8
     void* m_pIntelligentPointer;
@@ -91,7 +92,7 @@ protected:
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes

@@ -11,6 +11,7 @@
 //   the row landed). Literals "m_pchData != NULL\n", "stringSrc.GetData() != _NullString\n".
 // Layout: the object is one char pointer; the 12-byte CStringData header (nRefs, nDataLength, nAllocLength) precedes the characters.
 // Flags: /O2 /Oy
+#include "fable_compiler.h"
 #include <stddef.h>
 struct CStringData { long nRefs; int nDataLength, nAllocLength; };
 extern CStringData* _NullString;                    // 0x0139C8FC
@@ -27,7 +28,7 @@ extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long*);
 class CString {
 public:
     char* m_pchData;
-    __forceinline CStringData* GetData() const
+    FABLE_FORCEINLINE CStringData* GetData() const
     {
         LIB_ASSERT(m_pchData != NULL)
         return ((CStringData*)m_pchData) - 1;

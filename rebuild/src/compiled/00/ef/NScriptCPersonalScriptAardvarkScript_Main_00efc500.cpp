@@ -16,6 +16,7 @@
 //   destructors only at the return inside the StartScriptingEntity wait loop and calls the out-of-line copies elsewhere, so
 //   both are destructor-less views destroyed by hand; the movie is destroyed inline except at the late terminate exit
 //   (0x006E7B80).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,7 +31,7 @@ struct CScriptThingImpl;
 #include "engine/CScriptThing.h"
 struct CScriptThingInline : CBaseClass {               // the same object, destroyed by the inline body
     CCountedPointer<CScriptThingImpl> PImp;
-    __forceinline ~CScriptThingInline() { }
+    FABLE_FORCEINLINE ~CScriptThingInline() { }
 };
 struct CScriptThingLocal {                             // a by-value CScriptThing result held without an implicit destructor
     void* vptr;
@@ -38,7 +39,7 @@ struct CScriptThingLocal {                             // a by-value CScriptThin
     CCPPointerInfo* Info;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
     void Destroy() { reinterpret_cast<CScriptThing*>(this)->CScriptThing::~CScriptThing(); }
-    __forceinline void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
+    FABLE_FORCEINLINE void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
 };
 class CBaseObject { public:                                   // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
@@ -52,13 +53,13 @@ struct CBaseObjectDtor {                               // destructor-only view o
     virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 enum ETextGroupSelectionMethod;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     struct Words {                                     // CCountedPointer<void> {Data, Info}, released by hand
         void* Data; CCPPointerInfo* Info;
-        __forceinline void Release()
+        FABLE_FORCEINLINE void Release()
         {
             if (Info) {
                 --Info->RefCount;
@@ -74,7 +75,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     void Release();                                    // 0x00CD2770
     virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
     void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         PImp.Release(); PImp.Data = 0; PImp.Info = 0;
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();
@@ -91,9 +92,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                               // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

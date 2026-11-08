@@ -10,6 +10,7 @@
 // Shape: the owner is a const thing (const LowerBound copy) read through the out-parameter GetInterface (`mov eax,[eax+4] ; lea esi`);
 // the second lookup is a `__forceinline` GetTC (plain inline is emitted out of line); `CTCShop* shop = 0; if (HasTC) shop = GetTC;` gives the preloaded
 // `xor edi,edi`; the intelligent pointer is a reference local (`lea esi,[eax+0Dh]`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -25,7 +26,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -34,7 +35,7 @@ public:
             it = map->end();
         return it->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

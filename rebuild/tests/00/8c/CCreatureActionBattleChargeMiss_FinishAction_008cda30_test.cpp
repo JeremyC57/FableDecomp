@@ -3,6 +3,7 @@
 // unsheathe action and SetCurrentAction) that record what the body does. Scenarios: everything present (ability lock
 // released, both feet effects re-attached, the removed item re-equipped), nothing alive (null and dead pointers, no 0xA7
 // component), and single-foot cases; every string and action temporary must be released.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -72,7 +73,7 @@ class CThing { public:
     CInterfaceMap Components;
     unsigned char Flags91;
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

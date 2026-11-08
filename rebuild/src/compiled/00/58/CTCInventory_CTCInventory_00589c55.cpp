@@ -1,5 +1,6 @@
 // CTCInventory::~CTCInventory() -- drop the cached defs and close the PC inventory screen, then destroy the members in reverse order and both bases
 // Leaf: ??1CTCInventory
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00589C55, length 219 bytes. Called only by the deleting destructor 0x00594CD2
 // (slot 0 of CTCInventory's vtable 0x01250DE4); the catalog label "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip"
@@ -22,7 +23,7 @@ template<class T> struct CPODVector {              // STLport vector of a trivia
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CPODVector()
+    FABLE_FORCEINLINE ~CPODVector()
     {
         if (_M_start)
             free(_M_start);

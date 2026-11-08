@@ -1,4 +1,5 @@
 // Behaviour test for 00543d30: body copied from src/00543d30.cpp (CParticleEffect), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_baseInit = 0, g_baseChange = 0, g_creates = 0, g_layerCalls = 0, g_setCalls = 0; static long g_baseState = -1, g_layerDepth = -1, g_createEffect = -1;
@@ -34,7 +35,7 @@ public:
 class CParticleEffect : public CChangingStateComponent {
 public:
     CParticleEmitter* Emitter; long EffectIndex;
-    __forceinline void CreateEmitter()
+    FABLE_FORCEINLINE void CreateEmitter()
     {
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,
                       CFrontEndManager::GetInstance()->GetLayer(Depth), true, CRightHandedSet());

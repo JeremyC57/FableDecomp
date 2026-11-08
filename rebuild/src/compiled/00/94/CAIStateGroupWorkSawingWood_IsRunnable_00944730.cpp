@@ -8,6 +8,7 @@
 //          @ 0x00A01B90, list<CIntelligentPointer<CThing>> copy @ 0x00618DA0 / destructor @ 0x004B96F0 (out of line here),
 //          CThing::GetProperties (slot 48), IsActionPointFree @ 0x007FEBF0, CThing::GetPos @ 0x004C73D0 (x2).
 // Layout / shape: the landed sibling CAIStateGroup_WorkHammerAnvil::IsRunnable 0x00944E80 (PSawHorse at +0x15 as PAnvil).
+#include "fable_compiler.h"
 class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 struct CInterfaceMap {
@@ -69,7 +70,7 @@ class CThing { public:
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
     virtual unsigned long GetProperties();      // slot 48 (+0xc0)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -82,7 +83,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

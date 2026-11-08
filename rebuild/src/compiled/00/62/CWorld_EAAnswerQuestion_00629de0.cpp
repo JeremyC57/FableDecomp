@@ -22,6 +22,7 @@
 //   `mov eax,1` serves both the CSoundInit stores and the `answer == 1` compare.
 // Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CSubtitleRenderer CSubtitleRendererDonor
 #include "engine/CSubtitleRenderer.h"
 #undef CSubtitleRenderer
@@ -88,7 +89,7 @@ public:
     long          WritePos;                            // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);       // 0x009F18F0
-    __forceinline long ReadLong() { long value; Read(4, &value); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(4, &value); return value; }
 };
 class CGameEvent {
 public:

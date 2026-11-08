@@ -8,6 +8,7 @@
 // The temporary CTCParamsPhysicsBase's compiler-generated destructor tail-calls 0x0099A300 =
 //   ??1CBaseClassNonCopyable@@MAE@XZ (FINDINGS "Family pass 2": the binding ??1CBaseClass@@UAE@XZ -> 0x0099A300 was wrong):
 //   RTTI of vtable 0x0125C818 gives CTCParamsPhysicsBase : CTCParamsBase : CBaseClassNonCopyable : CBaseClass.
+#include "fable_compiler.h"
 #include <new>
 #include "engine/C3DVector.h"
 class CRightHandedSet {public:float x,y,z,a,b,c;CRightHandedSet():x(0),y(0),z(1),a(0),b(1),c(0){}};
@@ -38,7 +39,7 @@ virtual void v15()=0;
 virtual int Get(const C3DVector&)=0;};struct Global {char pad[40];Defs* defs;};extern Global* global;
 }
 using namespace NFactory008385b0;
-class CThing {public:virtual ~CThing();char pad[32];unsigned flags;char gap[28];Map map;char gap2[16];Physics* physics;__forceinline Map& GetComponents(){return map;}CThing(unsigned long);protected:static void* __fastcall operator new(unsigned int,bool);public:bool DoActivationSequence();char tail[52];protected:
+class CThing {public:virtual ~CThing();char pad[32];unsigned flags;char gap[28];Map map;char gap2[16];Physics* physics;FABLE_FORCEINLINE Map& GetComponents(){return map;}CThing(unsigned long);protected:static void* __fastcall operator new(unsigned int,bool);public:bool DoActivationSequence();char tail[52];protected:
     bool ConstructFromParams(long, long, long, bool);   // 0x004CA010
 };
 class CThingNoise:public CThing {public:CThingNoise():CThing(14){}virtual ~CThingNoise();static CThingNoise* __fastcall Create(long,const C3DVector&,float);};

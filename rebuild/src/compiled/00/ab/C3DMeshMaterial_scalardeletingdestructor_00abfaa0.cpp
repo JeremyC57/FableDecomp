@@ -9,6 +9,7 @@
 // the +8 CCharString), then the out-of-line base destructor. The destructor is `__forceinline`
 // (and the shared pointer's destructor) so the `??_G` inlines them, and the class has an inline constructor plus a `new` factory so the
 // vtable (and the `??_G`) are emitted in the TU. The shared block's release lives on the block.
+#include "fable_compiler.h"
 struct SSharedBlock {
     virtual void v00();
     virtual void Destroy();                // slot 1: called when the count reaches zero
@@ -18,7 +19,7 @@ struct SSharedBlock {
 struct CSharedPointer {
     SSharedBlock* m_pBlock;
     CSharedPointer() : m_pBlock(0) { }
-    __forceinline ~CSharedPointer()
+    FABLE_FORCEINLINE ~CSharedPointer()
     {
         if (m_pBlock) {
             m_pBlock->Release();
@@ -38,7 +39,7 @@ class C3DMeshMaterial : public CBaseClass { public:
     unsigned char  _pad0c[0x20];           // +0x0c (plain material parameters)
     CSharedPointer m_pTexture;             // +0x2c
     C3DMeshMaterial() { }
-    __forceinline virtual ~C3DMeshMaterial() { }
+    FABLE_FORCEINLINE virtual ~C3DMeshMaterial() { }
 };
 
 C3DMeshMaterial* NewC3DMeshMaterial()

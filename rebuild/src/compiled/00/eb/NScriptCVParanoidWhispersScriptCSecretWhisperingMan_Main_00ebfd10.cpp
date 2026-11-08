@@ -1,5 +1,6 @@
 // NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::Main() -- coordinate whispered clues, suspicion and hostility.
 // Leaf: ?Main@CSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@EAEXXZ
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -16,9 +17,9 @@ enum EScriptEntityMoveType { ENTITY_MOVE_WALK=0, ENTITY_MOVE_RUN=1, ENTITY_MOVE_
 extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer() { TimerIndex=pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-__forceinline bool CTimer::operator==(long time) const { return GetTime()==time; }
+FABLE_FORCEINLINE bool CTimer::operator==(long time) const { return GetTime()==time; }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}
 inline CScriptThing::~CScriptThing() {}
 bool FABLE_FASTCALL IsDistanceFromThingToPositionOver(const CScriptThing&,const C3DVector&,float);

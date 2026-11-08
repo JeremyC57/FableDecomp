@@ -20,6 +20,7 @@
 //   Var +0xa60.
 // Shape: generated entity script (the CAT_ConvoyMember 0x00F0CAA0 model): a T-check before every statement, WAIT_UNTIL loops,
 //   `for (;;) { ...; NewScriptFrame(); T-return; }` main loop; the expression name is a function-scope CCharString.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
@@ -65,8 +66,8 @@ extern "C" int __cdecl rand();
 bool FABLE_FASTCALL IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 extern CGameScriptInterfaceBase* pDSTGame;
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}
 // The body of CBasicString<char>::Compare 0x00411570 (the landed 0x00411570 loop; chunk 807 lesson): same-TU and not inlined, as in

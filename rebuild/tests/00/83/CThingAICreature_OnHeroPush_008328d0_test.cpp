@@ -1,5 +1,6 @@
 // Behaviour test for 008328d0: src/008328d0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CThingAICreature::OnHeroPush(CThing* pusher, float distance, const C3DVector& direction)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -60,13 +61,13 @@ class CThing { public:
     CInterfaceMap    m_interfaces;                   // +0x44
     unsigned char    _pad4c[0x91 - 0x4c];
     unsigned char    Dead : 1;                       // +0x91 bit 0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;

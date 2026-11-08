@@ -2,6 +2,7 @@
 // Checks that EXPRESSION_FOLLOW at the buddy flags ExpressionDetectedFollow and BuddyHelped, EXPRESSION_WAIT flags
 // ExpressionDetectedWait, other expressions flag nothing, termination at the loop test and at both re-tests, and the
 // release of the by-value buddy on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -23,7 +24,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
     bool MsgExpressionPerformedTo(CCharString& expression) const
     {
         ++g_queries;

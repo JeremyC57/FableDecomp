@@ -1,4 +1,5 @@
 // test for 0x00B41E50 CEngineMap::OpenRetailStaticMap -- seek sequence, info block use, counted-pointer hand-over, open state
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,8 +25,8 @@ template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base { _Valu
 template <class _Value, class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Value _M_data; };
 template <class _Value> struct _Rb_tree_const_iterator {
     _Rb_tree_node_base* _M_node;
-    __forceinline _Rb_tree_const_iterator(_Rb_tree_node_base* __x) : _M_node(__x) { }
-    __forceinline const _Value* operator->() const { return &((_Rb_tree_node<_Value>*)_M_node)->_M_value_field; }
+    FABLE_FORCEINLINE _Rb_tree_const_iterator(_Rb_tree_node_base* __x) : _M_node(__x) { }
+    FABLE_FORCEINLINE const _Value* operator->() const { return &((_Rb_tree_node<_Value>*)_M_node)->_M_value_field; }
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 class _Rb_tree {
@@ -35,7 +36,7 @@ public:
     _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_header;
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
-    __forceinline const_iterator find(const _Key& __x) const { return const_iterator(_M_find(__x)); }
+    FABLE_FORCEINLINE const_iterator find(const _Key& __x) const { return const_iterator(_M_find(__x)); }
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;   // 0x0042B467
 };
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
@@ -45,7 +46,7 @@ public:
     typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::const_iterator const_iterator;
     _Rep_type _M_t;
-    __forceinline const_iterator find(const _Key& __x) const { return _M_t.find(__x); }
+    FABLE_FORCEINLINE const_iterator find(const _Key& __x) const { return _M_t.find(__x); }
 };
 
 }

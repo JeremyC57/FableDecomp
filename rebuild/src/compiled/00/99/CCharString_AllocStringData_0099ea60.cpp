@@ -10,6 +10,7 @@
 // constructor (0x009A05E0: bitfield read/modify/write, immediate zero stores, AssignFromData; `__forceinline` on it and
 // on the block constructor, else VC keeps the block constructor out of line) while the text-only
 // constructor stays out of line; NoRefs = 1 is stored after the base constructor in both arms.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 struct CBasicStringChar {                     // CBasicString<char>, 13 bytes
     char*         PData;                      // +0x00
@@ -18,7 +19,7 @@ struct CBasicStringChar {                     // CBasicString<char>, 13 bytes
     unsigned long m_reserved    : 1;          // +0x08 bit 31 (not initialised here)
     unsigned char UseFastExtend : 1;          // +0x0c bit 0
     CBasicStringChar(const char* text);       // 0x009A0590
-    __forceinline CBasicStringChar(const char* text, unsigned long length)
+    FABLE_FORCEINLINE CBasicStringChar(const char* text, unsigned long length)
         : PData(0), StringLength(0), DataLength(0), UseFastExtend(1)
     {
         AssignFromData(text, length);
@@ -29,7 +30,7 @@ class CCharStringData { public:                      // 17 bytes
     CBasicStringChar Data;                    // +0x00
     long             NoRefs;                  // +0x0d
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }
-    __forceinline CCharStringData(const char* text, unsigned long length) : Data(text, length), NoRefs(1) { }
+    FABLE_FORCEINLINE CCharStringData(const char* text, unsigned long length) : Data(text, length), NoRefs(1) { }
 };
 #pragma pack(pop)
 

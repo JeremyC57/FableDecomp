@@ -1,4 +1,5 @@
 // Behaviour test for 0091f050: body copied from src/0091f050.cpp (CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,7 +17,7 @@ class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* FindInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* FindInterface(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

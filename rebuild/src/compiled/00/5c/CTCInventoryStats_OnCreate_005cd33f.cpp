@@ -22,9 +22,10 @@
 // Layout: CThing PDef +0x70; CCreatureDef StatsScreenInventory retail +0x90 (PDB +0xA0); retail CTCInventoryBase 0x130 bytes
 // with CBase at +0x130; CTCInventoryStats CreaturesKilled +0x134 (12-byte map), pMannequin +0x140, UseMannequin +0x144,
 // lastCategoryIdx +0x148, pTCHeroExperience +0x14c, pTCHeroStats +0x150 (PDB minus 0x18).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -101,7 +102,7 @@ class CThing { public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad54[0x1c];
     CDefPointer<CDefClassBase> PDef;            // +0x70
-    template <class T> __forceinline void GetInterface(long typeId, T** out) const
+    template <class T> FABLE_FORCEINLINE void GetInterface(long typeId, T** out) const
     {
         if (UsingComponents.test(typeId)) {
             ETCInterfaceType type = (ETCInterfaceType)(typeId);

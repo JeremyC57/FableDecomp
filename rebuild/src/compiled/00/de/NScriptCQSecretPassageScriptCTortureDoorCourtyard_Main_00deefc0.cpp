@@ -3,6 +3,7 @@
 // Native00DEEFC0,260 bytes. PDB nestedowner Main00E2C4F0; native RegisterMain00DECA10 binds TortureDoorCourtyard atDECE4C toAllocDEEF00, which installs vtable12DDED0 MainDEEFC0.
 // Naming wave 35: identity reg 00dece4c "TortureDoorCourtyard" in 00decad0; Alloc 00deef00; vtable 012dded0 slot 1; PDB ?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012dded0::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (base CEntityScriptBase made polymorphic); nested class fixed in place); same bytes.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -20,13 +21,13 @@ FABLE_STATIC_ASSERT(sizeof(ScriptThingSlot)==4);
 FABLE_STATIC_ASSERT(sizeof(GameScriptSlot)==4);
 #endif
 struct ScriptThingCalls:CScriptThing {
- __forceinline bool MsgIsUsedBy(const CCharString& user)const{return(this->*reinterpret_cast<ScriptThingSlot*>(__vftable)[20].MsgIsUsedBy)(user);}
+ FABLE_FORCEINLINE bool MsgIsUsedBy(const CCharString& user)const{return(this->*reinterpret_cast<ScriptThingSlot*>(__vftable)[20].MsgIsUsedBy)(user);}
 }; //nativeCScriptThing01238C8C slot20=004AAB10, PDB UBE_NABVCCharString
 struct GameScriptCalls:CGameScriptInterface {
- __forceinline void EntitySetAsLocked(const CScriptThing& thing,bool locked)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[518].EntitySetAsLocked)(thing,locked);}
- __forceinline void DisplayGameInfo(const CCharString& text)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[115].DisplayGameInfo)(text);}
- __forceinline bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
- __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
+ FABLE_FORCEINLINE void EntitySetAsLocked(const CScriptThing& thing,bool locked)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[518].EntitySetAsLocked)(thing,locked);}
+ FABLE_FORCEINLINE void DisplayGameInfo(const CCharString& text)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[115].DisplayGameInfo)(text);}
+ FABLE_FORCEINLINE bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
+ FABLE_FORCEINLINE void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
 }; //nativeCGSI01260F0C:818=89DC10,1CC=8929D0,A0=894370,1C=6E7410 audited native/PDB signatures.
 class CEntityScriptBase { public:virtual ~CEntityScriptBase();   // retail slot 0 (was the vptr placeholder: the stand-in is polymorphic, as retail)
 GameScriptCalls* Game;ScriptThingCalls Me;

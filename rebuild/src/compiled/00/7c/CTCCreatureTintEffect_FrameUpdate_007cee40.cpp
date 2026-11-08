@@ -7,6 +7,7 @@
 // CThing::RemoveTC(long) @ 0x004C9840 (0x8b = CTCCreatureTintEffect). Constants: 1.0f @ 0x0122DED8, 255.0f @ 0x01230014.
 // Layout: as the landed Reset 0x007CEDE0 / ctor 0x007CF110 (CurTime +0x10, FadeInTime +0x14, StartFadeOut +0x18,
 // FadeOutTimeStart +0x1c, FadeOutTime +0x20, TintList +0x24 12-byte vector, Color[4] +0x30).
+#include "fable_compiler.h"
 class CRGBColour { public:
     unsigned char B;                                    // +0
     unsigned char G;                                    // +1
@@ -47,7 +48,7 @@ class CTCCreatureTintEffect { public:
     void FrameUpdate();
 };
 
-__forceinline void CTCCreatureTintEffect::SetTint(CThing* parent, float amount)
+FABLE_FORCEINLINE void CTCCreatureTintEffect::SetTint(CThing* parent, float amount)
 {
     float white = (float)(long)((1.0f - amount) * 255.0f);
     CRGBColour colour;

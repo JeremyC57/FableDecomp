@@ -10,6 +10,7 @@
 //   STLport 4.6's _vector.h: IAE). The binding `?_M_insert_overflow@?$CArray@VCTVertexSeaBackground@@...` is a wrong
 //   spelling (NAME_FIXES). Manifest label "Vector_PushBack_CActiveFile_3Floats" is wrong.
 // Callees: malloc 0x00BFEA0E (MSVCR71 import thunk), std::vector<CTVertexSeaBackground>::_M_clear 0x00B80550 (out of line).
+#include "fable_compiler.h"
 #include <stdlib.h>
 
 class CTVertexSeaBackground {                      // 12 bytes (Ego_r.pdb: float X, Y, Z), implicit copy
@@ -36,7 +37,7 @@ public:
 };
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class Input, class Forward>
-__forceinline Forward __uninitialized_copy(Input first, Input last, Forward result, const __false_type&)
+FABLE_FORCEINLINE Forward __uninitialized_copy(Input first, Input last, Forward result, const __false_type&)
 {
     Forward current = result;
     for (; first != last; ++first, ++current)
@@ -44,7 +45,7 @@ __forceinline Forward __uninitialized_copy(Input first, Input last, Forward resu
     return current;
 }
 template <class Forward, class Size, class T>
-__forceinline Forward __uninitialized_fill_n(Forward first, Size count, const T& value, const __false_type&)
+FABLE_FORCEINLINE Forward __uninitialized_fill_n(Forward first, Size count, const T& value, const __false_type&)
 {
     Forward current = first;
     for (; count > 0; --count, ++current)

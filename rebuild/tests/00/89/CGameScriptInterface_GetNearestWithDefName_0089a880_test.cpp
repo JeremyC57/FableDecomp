@@ -3,6 +3,7 @@
 // XY only) to `from` is returned, `from` itself is skipped, Z is ignored; (3) a single thing is returned even when it IS
 // `from` (the size() > 1 guard never updates the start candidate); (4) a handle without an implementation measures from
 // the zero vector; (5) every copied handle releases its reference block and the vector storage is freed.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <new>
@@ -73,7 +74,7 @@ static CScriptThing MakeHandle(CThingImp* imp)
     return h;
 }
 
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -83,7 +84,7 @@ template <class T> struct vector {
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

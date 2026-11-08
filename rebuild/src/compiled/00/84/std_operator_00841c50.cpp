@@ -9,6 +9,7 @@
 //   append<char*> 0x00567400 (landed; same-TU `__declspec(noinline)` stand-ins), _M_range_initialize 0x00567D00 (the return
 //   copy), free 0x00BFEA14, puts 0x00BFEAF2 / abort 0x00BFEAEC (the inlined length error, ending `jmp abort`).
 // Shape: as 0x00569690 / 0x00841B70.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strlen)
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
@@ -83,7 +84,7 @@ public:
     typedef unsigned int size_type;
     struct _Reserve_t { };
 
-    __forceinline basic_string(_Reserve_t, unsigned int __n, const allocator_type& __a = allocator_type())
+    FABLE_FORCEINLINE basic_string(_Reserve_t, unsigned int __n, const allocator_type& __a = allocator_type())
         : _String_base(__a, __n + 1)
     {
         _M_terminate_string();

@@ -14,6 +14,7 @@
 //          +0x2c (string assign, one-test CRC over the temporary); the counted pointer is the landed `Object(object)`,
 //          `if/else` block form (new re-reading Object), passed by value to the action ctor.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04).
+#include "fable_compiler.h"
 class CCharStringData { public: const char* Chars; long Length; };
 class CCharString { public:
     CCharStringData* PStringData;
@@ -77,7 +78,7 @@ class CAnimFilterOfGroup { public:                     // vtable 0x01267568
 class CAIStateGroupBase;
 struct CModeSitListen : CModeSitBase {          // 0x38 bytes
     CAnimFilterOfGroup Filter;                  // +0x2c
-    __forceinline CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim);
+    FABLE_FORCEINLINE CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim);
     virtual void v00();
 };
 void __fastcall DeleteSitMode(void* object);   // 0x008AA810

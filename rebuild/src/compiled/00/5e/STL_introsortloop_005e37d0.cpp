@@ -11,6 +11,7 @@
 //   here __median is INLINED (the three keys in ecx/edx/ebp, the nested-if selection of first/middle/last-1 into eax),
 //   and the pair's explicit copy constructor builds the pivot from the selected entry in the argument area.
 // Label correction: catalogued as `std_sort_IntrosortPartition8Byte`; the body is STLport `__introsort_loop`.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -26,7 +27,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

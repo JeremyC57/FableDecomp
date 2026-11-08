@@ -8,6 +8,7 @@
 // Shape: one `push ecx` frame word shared by the lookup key and the noise-name string; the string is a scoped named local (its address is
 // re-derived with `lea` for the argument, GOTCHAS); esi is pushed only around the lookup. &PCreature rides in edi.
 // No engine header for this class; modelled locally (retail CCreatureActionBase is 0xa8 bytes).
+#include "fable_compiler.h"
 #include "fable_string.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -19,7 +20,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;             // +0x44
     void SheatheAllWeapons();               // 0x006647F0 (CThingCreatureBase)
     void MakeNoise(const CCharString& noise);   // 0x00662110 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -11,6 +11,7 @@
 //   before the `lea ; push` of their addresses (unnamed temporaries bound to the reference parameters push the
 //   constructor's eax instead), destroyed in reverse, and the result is returned through the copy constructor into the hidden slot (VC7.1 has no NRVO) before
 //   the local is destroyed. The wide literals are the 2-character pool strings 0x0122DE58..0x0122DE7C.
+#include "fable_compiler.h"
 class CWideString {
 public:
     CWideString(const unsigned short* text);                                  // 0x0099B6B0
@@ -21,7 +22,7 @@ private:
     void* m_pData;
 };
 
-static __forceinline void ReplaceWithUnderscore(CWideString& text, const unsigned short* character)
+static FABLE_FORCEINLINE void ReplaceWithUnderscore(CWideString& text, const unsigned short* character)
 {
     CWideString replacement(L"_");
     CWideString search(character);

@@ -7,6 +7,7 @@
 //   the renderer's debug sphere 0x00B8D040 (an empty `ret 0x10` in retail) on 0x01436E5C, RestoreCaptureBlock 0x00A05840.
 // Layout: engine/CEngineSkyRenderer.h; CEngineCameraDesc / CEngineCamera / CEngineLightingManager members from the PDB
 //   (struct_layouts_egor.tsv): CameraDesc at camera +0x14, SunVector at lighting manager +0x18.
+#include "fable_compiler.h"
 #include "engine/CEngineSkyRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -59,7 +60,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -88,7 +89,7 @@ struct CRenderManagerCoreView : public CRenderStateManager {                    
     unsigned char        _pad2a20[0x3a24 - 0x2a20];
     unsigned char        m_captureBlockMarker[4];  // +0x3A24
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -103,7 +104,7 @@ struct CRenderManagerCoreView : public CRenderStateManager {                    
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
@@ -114,14 +115,14 @@ struct CRenderManagerCoreView : public CRenderStateManager {                    
 extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);
 }
 
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value)
         core->ChangeState(state, value);

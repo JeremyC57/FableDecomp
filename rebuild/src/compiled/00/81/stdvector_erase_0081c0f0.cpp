@@ -7,6 +7,7 @@
 // Callees: none (the forward __copy is inline: a division by 0x24 (multiply by 0x38E38E39), then one `rep movsd` of
 //   9 dwords per element; _Destroy's loop over the trivially-destroyed tail folds away).
 // Shape: STLport 4.6 _vector.h `erase(first, last)` over J092's helpers with __copy_ptrs / __copy `__forceinline` (plain inline: VC7.1 keeps __copy out of line).
+#include "fable_compiler.h"
 enum EHeroMorphType { };                                  // Ego_r.pdb (enumerators not needed)
 enum EMeshLocationPoint { };
 class CDefString {                                         // 4 bytes (Ego_r.pdb)
@@ -36,7 +37,7 @@ struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
 struct random_access_iterator_tag : public bidirectional_iterator_tag { };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)   // inline in retail (agent951 G040's device)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -47,7 +48,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

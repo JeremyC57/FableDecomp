@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -886,7 +887,7 @@ class CThing:public CBaseObject { public:
     unsigned char LaterState[0x1d];
     unsigned char DeadFlags;
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             long type=key;
             CInterfaceMap* map=&Components;

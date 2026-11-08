@@ -13,6 +13,7 @@
 //        CSoundInit is default-constructed (1.0, 1.0, 0, 1, 1, 0, 0, -1) with GainFaderBits set to 0x8010.
 // Layout: engine/CTCDoor.h (its +0x04 `m4` is CTCBase::ParentThing); retail CThing PBaseDef.Object +0x70 (PDB +0x80);
 //         CEntitySoundDef::SoundMap +0x28 (PDB).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #include "engine/CTCDoor.h"
 
@@ -117,13 +118,13 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad54[0x1c];
     CBaseDefPointer PBaseDef;                       // +0x70 CDefPointer<const CThingBaseDef>
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

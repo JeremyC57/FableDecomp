@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -132,7 +133,7 @@ class CAction { public:
     virtual void v00() {}
     CSliderTargetRef* PTarget;                           // +0x04
 };
-static __forceinline bool Differs(const C2DVector& a, const C2DVector& b)
+static FABLE_FORCEINLINE bool Differs(const C2DVector& a, const C2DVector& b)
 {
     return !(fabs(a.X - b.X) <= 0.0001f) || !(fabs(a.Y - b.Y) <= 0.0001f);
 }

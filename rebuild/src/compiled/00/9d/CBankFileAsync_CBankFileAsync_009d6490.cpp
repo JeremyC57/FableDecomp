@@ -12,6 +12,7 @@
 //   Sleep 0x0143FE1C, CLoadingMemoryFailureHandler::RemoveBank 0x009D5A30, DeleteCriticalSection 0x0143FDE4,
 //   list<CCountedPointer<CBankFileAsyncData>>::clear 0x009D7DB0, set<CBankFileAsyncData*>::_M_erase 0x009D7430,
 //   operator delete 0x00BFE9BC, CBankFile::~CBankFile 0x009CE180 (manifest "NHeroInformationScreens::CBase::~CBase").
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 struct CRITICAL_SECTION_Fable {                    // Win32 RTL_CRITICAL_SECTION, 24 bytes (dword aligned)
@@ -49,14 +50,14 @@ struct CPointerSet {                               // set<CBankFileAsyncData*> (
     void _M_erase(SRbTreeNode* node);              // 0x009D7430
     unsigned long size() const { return m_nodeCount; }
     SRbTreeNode* begin() const { return m_pHeader->m_pLeft; }
-    __forceinline void erase(SRbTreeNode* position)
+    FABLE_FORCEINLINE void erase(SRbTreeNode* position)
     {
         SRbTreeNode* y = RebalanceForErase(position, m_pHeader->m_pParent, m_pHeader->m_pLeft, m_pHeader->m_pRight);
         if (y)
             free(y);
         --m_nodeCount;
     }
-    __forceinline ~CPointerSet()
+    FABLE_FORCEINLINE ~CPointerSet()
     {
         if (m_nodeCount != 0) {
             _M_erase(m_pHeader->m_pParent);
@@ -73,7 +74,7 @@ struct SListNode;
 struct CDisposalList {                             // list<CCountedPointer<CBankFileAsyncData>> (STLport, 4 bytes)
     SListNode* m_pNode;
     void clear();                                  // 0x009D7DB0
-    __forceinline ~CDisposalList()
+    FABLE_FORCEINLINE ~CDisposalList()
     {
         clear();
         if (m_pNode)

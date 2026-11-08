@@ -21,6 +21,7 @@
 // Shape: frame-pointer size TU (`push 51h ; pop edi` key, `and [ebp-8],0` construction flags); the refusal test is a named
 //        bool over `!(def->CrimeSeverity & 8) || age > limit` -- the effects-def temporary gets the construction flag
 //        bit and its conditional destructor, the bool its frame byte; the deed log is assigned only when present.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -34,7 +35,7 @@ class CThing { public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -82,7 +83,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     long KnowledgeLifeInSeconds;                // +0x3c
     unsigned char _pad_0x40[0x3c];
     long CrimeSeverity;                         // +0x7c (ECrimeSeverity)
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -91,7 +92,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

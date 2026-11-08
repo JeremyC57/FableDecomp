@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cassert>
 #include <string>
@@ -36,8 +37,8 @@ CGameScriptInterfaceBase* pDSTGame;
 #endif
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer(){pDSTGame->DeregisterTimer(TimerIndex);}
-__forceinline CTimer& CTimer::operator=(long n) { pDSTGame->SetTimer(TimerIndex,n); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long n) { pDSTGame->SetTimer(TimerIndex,n); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline bool CTimer::operator<=(long n) const { return GetTime()<=n; }
 
 namespace NScript {class CQ_SunnyvaleMasterData{public:bool WillTrainingStarted;long WillScore;CQ_SunnyvaleMasterData():WillTrainingStarted(false),WillScore(0){}};

@@ -14,6 +14,7 @@
 // Opt: size TU with frame pointer (`push ebp / mov ebp,esp`, `leave`, unaligned entry). Retail inlines make_pair and the
 // pair ctor (copy ctor straight into the frame pair, `valid` kept in bl). Under the size pragma VC7.1 calls both out of line,
 // so they are __forceinline here. Plain inline gives 109v108, and the speed TU gives 116v108.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CWideString {
@@ -29,10 +30,10 @@ template <class T> struct less {
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;
-    __forceinline pair(const T1& a, const T2& b) : first(a), second(b) {}
+    FABLE_FORCEINLINE pair(const T1& a, const T2& b) : first(a), second(b) {}
     template <class U1, class U2> pair(const pair<U1, U2>& p);   // 0x00485125 for <CWideString,bool> -> <const CWideString,bool>
 };
-template <class T1, class T2> __forceinline pair<T1, T2> make_pair(const T1& a, const T2& b) { return pair<T1, T2>(a, b); }
+template <class T1, class T2> FABLE_FORCEINLINE pair<T1, T2> make_pair(const T1& a, const T2& b) { return pair<T1, T2>(a, b); }
 struct _Rb_tree_node_base {
     bool                _M_color;
     _Rb_tree_node_base* _M_parent;

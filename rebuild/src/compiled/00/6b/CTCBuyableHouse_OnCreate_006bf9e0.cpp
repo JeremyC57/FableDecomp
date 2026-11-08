@@ -17,6 +17,7 @@
 // Retail layout: engine/CTCBuyableHouse.h (PDef +0x0c, IsScripted +0x10, MaxDressLevel +0x20); CBuyableHouseDef (retail
 //   12-byte vectors, PDB offsets less 0x04 past the first vector): IsBuyable +0x25, Price +0x28, IsScripted +0x48,
 //   IsBuyableWithoutSignpost +0x49; CTCBuildingContents (0x21) VC6 list head +0x0c.
+#include "fable_compiler.h"
 class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
@@ -82,13 +83,13 @@ public:
     unsigned char  _pad8e[0x91 - 0x8e];
     unsigned char  m_stateFlags;                // +0x91 (bit 0: dead)
     void SetAsGameStatePersisted(bool persisted);   // 0x004C7880
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

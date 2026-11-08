@@ -13,6 +13,7 @@
 // Shape: generated script code (`if (IsActiveThreadTerminating()) return;` after every statement). CTimer keeps INLINE ctor/dtor
 //   bodies: VC7.1 calls their out-of-line copies here yet, seeing the bodies, caches TimerIndex in ebp across the loop (a
 //   declared-only ctor forces a reload; a named index local loads via eax). SetTime/GetTime are __forceinline.
+#include "fable_compiler.h"
 class CCharString;
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
@@ -23,7 +24,7 @@ class CCPPointerInfo;
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }
@@ -912,8 +913,8 @@ extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
 inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 struct CQ_HobbeCaveScript {
  unsigned char BaseState[0x60];
  bool KingGruntedOrders;                            // +0x60 (PDB +0x74)

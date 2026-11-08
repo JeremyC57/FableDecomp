@@ -11,6 +11,7 @@
 //   0x013B86F8, the text language 0x013B86C0 (descriptive names).
 // Shape: the target's text bank is a named local taken before the first narrator call (retail keeps it in edi, pushed at
 //   entry, and reuses it for the "_1_5" retry); each call re-fetches the bank handle by value.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:
@@ -114,7 +115,7 @@ private: public:
 };
 extern CCharString g_DebugNarrator;                      // 0x013B86F8
 extern long g_TextLanguage;                              // 0x013B86C0
-template <class T, long TYPE> __forceinline T* GetComponent(const CThing* thing)
+template <class T, long TYPE> FABLE_FORCEINLINE T* GetComponent(const CThing* thing)
 {
     const ComponentMap* map = &thing->Components;
     const ComponentEntry* it = map->LowerBound((ETCInterfaceType)TYPE);

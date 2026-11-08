@@ -15,6 +15,7 @@
 //   chunk 805 lever, as the landed 0x00D52E90 / 0x00D8F040 / 0x00D7D8D0) does that; with the implicit or a plain-inline operator=
 //   VC7.1 calls ??4CScriptThing in arms 2 and 3. The vector dtor is left inline (expanded at the loop end, called at the exit pad as
 //   retail); a declared-only ~vector specialization moved the CS_OutroBegin exit tail.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -33,7 +34,7 @@
 float FABLE_FASTCALL GetSquaredDistanceBetweenThings(const CScriptThing&, const CScriptThing&);   // 0x00CBE583
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 void NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe::Main()
 {

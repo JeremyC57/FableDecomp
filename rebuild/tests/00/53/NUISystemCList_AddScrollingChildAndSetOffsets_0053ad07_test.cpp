@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -59,7 +60,7 @@ struct CComponentDef : CDefVirtual, CRefCounted {
 #pragma pack(pop)
 template <class T> struct CDefPointer {
     T* Data;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Data) {
             Data->ReleaseTemporary();

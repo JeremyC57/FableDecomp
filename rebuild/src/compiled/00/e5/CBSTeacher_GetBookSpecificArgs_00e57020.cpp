@@ -8,6 +8,7 @@
 //   CGameScriptInterface slots 178 GetHeroScariness, 179 GetHeroAttractiveness.
 // Layout: Ego_r.pdb CBS_Teacher (68 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData
 //   +0x18 (CQ_SunnyvaleMasterData: PostSavePosition +4, BanditCampTwinbladeKilled +0x3a, TeddySolution +0x54).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 namespace NScript { class CPredicateBase; }
@@ -36,7 +37,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator=(const char* text);          // 0x0099EFE0
     const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

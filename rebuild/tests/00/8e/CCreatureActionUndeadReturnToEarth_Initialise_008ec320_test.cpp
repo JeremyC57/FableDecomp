@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -26,7 +27,7 @@ template <class T> class CDefPointer { public:      // the out-slot GetSubDef fi
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

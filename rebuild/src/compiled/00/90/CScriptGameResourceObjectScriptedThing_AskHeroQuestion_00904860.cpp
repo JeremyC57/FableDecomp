@@ -12,6 +12,7 @@
 // lookup runs off that register: `mov eax,[esi+20h]`, `add esi,44h`), then the unchecked GetInterface whose
 // key and miss read share the dead first-argument slot; the second text pointer of the action is null.
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -32,7 +33,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

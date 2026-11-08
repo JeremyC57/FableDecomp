@@ -16,6 +16,7 @@
 //   path sets it only on success (all failures then share the one return-0 epilogue, ebp pushed in the prologue); the
 //   filter is a temporary passed by const reference (PDB `QBE_NABVCThingFilter_HasTC@@`), so its slot is free again for
 //   the later GetTC keys (a named filter costs a third frame slot); the list head is cached in a local (ebx).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCVillage;
 
@@ -30,14 +31,14 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

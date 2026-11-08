@@ -5,6 +5,7 @@
 // Layout (PDB CMemoryAllocator): NoAllocators +0x410.
 // Shape: the region offset is taken as an UNSIGNED long before the shift (`shr`, a pointer difference gives `sar`); the ID is an
 //   inline returning `unsigned char` (`movzx eax,al` before the compare).
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
 extern unsigned char g_allocatorLock[24];   // 0x013CAA70
@@ -24,7 +25,7 @@ struct CAllocatorInfo {
     CMemoryAllocatorBase* PAllocator;
 };
 extern CAllocatorInfo g_AllocatorInfo[];   // 0x01396868
-__forceinline unsigned char GetAllocatorID(void* block)
+FABLE_FORCEINLINE unsigned char GetAllocatorID(void* block)
 {
     if ((unsigned char*)block >= g_pRegionStart && (unsigned char*)block < g_pRegionEnd)
         return (unsigned char)((unsigned long)((unsigned char*)block - g_pRegionStart) >> 24);

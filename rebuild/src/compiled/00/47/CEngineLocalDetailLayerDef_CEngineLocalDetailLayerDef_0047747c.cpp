@@ -13,6 +13,7 @@
 //   store of its own (`__declspec(novtable)`, as the landed model).  The two vector members keep the landed stand-in
 //   shapes (the STLport ~vector / ~_Vector_base split that leaves one storage release out of line is not modelled
 //   here); the range destroy now binds the renamed std::_Destroy symbol.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
@@ -28,7 +29,7 @@ struct CObjectDefVector {                        // retail std::vector<CEngineLo
     CEngineLocalDetailObjectDef* _M_finish;
     CEngineLocalDetailObjectDef* _M_end_of_storage;
     void ReleaseStorage();                       // 0x004774AB
-    __forceinline ~CObjectDefVector() { std::_Destroy(_M_start, _M_finish); ReleaseStorage(); }
+    FABLE_FORCEINLINE ~CObjectDefVector() { std::_Destroy(_M_start, _M_finish); ReleaseStorage(); }
 };
 
 struct CFloatVector {                            // retail std::vector<float> (12 bytes)

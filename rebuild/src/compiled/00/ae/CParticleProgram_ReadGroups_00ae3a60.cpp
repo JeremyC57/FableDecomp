@@ -13,6 +13,7 @@
 // Layout: retail CArray<T> is an STLport vector (12 bytes); C3DGroup2 {long BoneIndex; CArray<C3DVertexBlend2>} 16 bytes.
 // Shape: the inline stream Read of the landed ReadVectorArray 0x00AE1730 (64-bit range check, memcpy fast path, private
 //   overflow call); the count loop is a down-counter like WriteGroups.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
@@ -21,8 +22,8 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 #include "engine/CDataInputStream.h"
 class CDataInputReader : public CDataInputStream {         // inline Read helper (no extra state)
 public:
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -36,9 +37,9 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    template <class T> __forceinline T ReadType() { T value; Read(&value, sizeof(T)); return value; }   // PDB ReadType<T>
-    __forceinline unsigned long ReadULONG() { return ReadType<unsigned long>(); }                       // PDB ReadULONG
-    __forceinline long ReadSLONG() { return ReadType<long>(); }                                         // PDB ReadSLONG
+    template <class T> FABLE_FORCEINLINE T ReadType() { T value; Read(&value, sizeof(T)); return value; }   // PDB ReadType<T>
+    FABLE_FORCEINLINE unsigned long ReadULONG() { return ReadType<unsigned long>(); }                       // PDB ReadULONG
+    FABLE_FORCEINLINE long ReadSLONG() { return ReadType<long>(); }                                         // PDB ReadSLONG
 };
 
 #include "engine/CArray.h"

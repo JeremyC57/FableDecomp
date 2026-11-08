@@ -1,6 +1,7 @@
 // Behaviour test for 0x00D97170 (RST): model plus the body verbatim from final.cpp, callees stubbed.
 // Checks that the first hit that lowers James's health clears the quest flag once (a hit without damage does not),
 // a kill fails the mission, termination in the hit block, and that the by-value James is released on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -33,7 +34,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
     bool MsgIsKilledBy(const CCharString& k) const { if (strcmp(k.Text, "") != 0) g_badName = true; return g_frames >= g_killedAt; }
     bool MsgIsHitBy(const CCharString& a) const
     {

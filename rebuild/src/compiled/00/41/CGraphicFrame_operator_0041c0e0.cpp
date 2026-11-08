@@ -9,6 +9,7 @@
 // Layout: engine/CGraphicFrame.h has FrameData as an opaque CGraphicFrameData*; the data's inline destructor chain needs
 // the local model of the landed siblings (0x0041C150, 0x00B2EEC0).
 // Leaf: ??4CGraphicFrame
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct SCountBlock {
     long  m_references;                            // +0x00
@@ -18,7 +19,7 @@ struct SCountBlock {
 struct CCountedPointer_CTexture {                  // 8 bytes: the object and its count block
     void*        m_pObject;                        // +0x00
     SCountBlock* m_pCount;                         // +0x04
-    __forceinline ~CCountedPointer_CTexture()
+    FABLE_FORCEINLINE ~CCountedPointer_CTexture()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -38,7 +39,7 @@ class CGraphicFrameData { public:                         // the shared frame da
     unsigned char            _pad10[0xa];
     unsigned char            m_flags;              // +0x1a (bit 4 = IsInitialised)
     void Uninitialise();                           // 0x009FCBA0
-    __forceinline ~CGraphicFrameData()
+    FABLE_FORCEINLINE ~CGraphicFrameData()
     {
         if (m_flags & 0x10)
             Uninitialise();

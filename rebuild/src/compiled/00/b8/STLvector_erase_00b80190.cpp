@@ -15,6 +15,7 @@
 //   `for (n = last - first; n > 0; --n) *result++ = *first++;` (signed `jle`, the count homed in the dead `first`
 //   argument slot, the source folded into an offset from the destination); each implicit 12-byte assignment is three
 //   dword moves; the trivial _Destroy is empty.
+#include "fable_compiler.h"
 class CTVertexSeaBackground {                           // 12 bytes (Ego_r.pdb lists no members)
 public:
     unsigned long Data[3];                              // +0x00 (member names unknown)
@@ -30,7 +31,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -42,13 +43,13 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
 template <class _Tp>
-__forceinline _Tp* copy(const _Tp* __first, const _Tp* __last, _Tp* __result)
+FABLE_FORCEINLINE _Tp* copy(const _Tp* __first, const _Tp* __last, _Tp* __result)
 {
     return __copy_ptrs(__first, __last, __result, __false_type());
 }

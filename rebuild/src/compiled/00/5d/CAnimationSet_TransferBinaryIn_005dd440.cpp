@@ -8,6 +8,7 @@
 // Layout: Ego_r.pdb CAnimationSet (36 bytes PDB, 32 retail: the CVectorMap's STLport vector is 12 bytes, so DefaultFlags
 //         +0x10, DefaultTransitionTime +0x14, DefaultDelay +0x18, DefaultGroup +0x1c); CAnimationEntry {BankIndex, AnimName,
 //         GroupName, Components} 16 bytes (CDefString default -1, CIVCountedPointer default 0, BankIndex uninitialised).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -21,8 +22,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;             // +0x10
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -37,14 +38,14 @@ class CMemoryDataInputStream : public CDataInputStream { public:
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-template <class T> __forceinline void PersistTransferBinaryIn(CMemoryDataInputStream* stream, T* out)
+template <class T> FABLE_FORCEINLINE void PersistTransferBinaryIn(CMemoryDataInputStream* stream, T* out)
 {
     T value;
     stream->Read(&value, sizeof(value));
     *out = value;
 }
 
-template <class T> __forceinline T PersistRead(CMemoryDataInputStream* stream)
+template <class T> FABLE_FORCEINLINE T PersistRead(CMemoryDataInputStream* stream)
 {
     T value;
     stream->Read(&value, sizeof(value));
@@ -64,7 +65,7 @@ class CAnimComponentMap { public:
 struct CIVCountedPointerAnimComponentMap {
     CAnimComponentMap* P;
     CIVCountedPointerAnimComponentMap() : P(0) { }
-    __forceinline ~CIVCountedPointerAnimComponentMap()
+    FABLE_FORCEINLINE ~CIVCountedPointerAnimComponentMap()
     {
         CAnimComponentMap* p = P;
         if (p) {

@@ -1,5 +1,6 @@
 // Self-contained behavioral fixture. The target body below is unchanged.
 // Unused interfaces/layouts reduced; original native dispatch/offsets audited separately.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,11 +16,11 @@ static int positionCalls,facingCalls,subdefCalls,effectCalls,creates,stringCtors
 extern unsigned long GFastOneOverSqrtTable[128];
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
-__forceinline float __fastcall GFFastOneOverSqrt(float value){unsigned int bits;memcpy(&bits,&value,4);unsigned int estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r;memcpy(&r,&estimate,4);return (3.0f-r*r*value)*r*0.5f;}
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned int bits;memcpy(&bits,&value,4);unsigned int estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r;memcpy(&r,&estimate,4);return (3.0f-r*r*value)*r*0.5f;}
 class C3DVector{public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}
-__forceinline const C3DVector&operator*=(float scale){X*=scale;Y*=scale;Z*=scale;return *this;}
-__forceinline C3DVector&Normalise(){float factor=GFFastOneOverSqrt(X*X+Y*Y+Z*Z);X*=factor;Y*=factor;Z*=factor;return *this;}
-__forceinline const float Dot(const C3DVector&b)const{float r=Y*b.Y;r+=Z*b.Z;r+=X*b.X;return r;}
+FABLE_FORCEINLINE const C3DVector&operator*=(float scale){X*=scale;Y*=scale;Z*=scale;return *this;}
+FABLE_FORCEINLINE C3DVector&Normalise(){float factor=GFFastOneOverSqrt(X*X+Y*Y+Z*Z);X*=factor;Y*=factor;Z*=factor;return *this;}
+FABLE_FORCEINLINE const float Dot(const C3DVector&b)const{float r=Y*b.Y;r+=Z*b.Z;r+=X*b.X;return r;}
 };class CRightHandedSet{protected:C3DVector Up,Forward;};
 
 unsigned long GFastOneOverSqrtTable[128]={106,103,100,98,95,92,90,87,85,83,80,78,76,74,72,70,68,66,64,62,60,58,56,54,52,51,49,47,46,44,42,41,39,38,36,35,33,32,31,29,28,26,25,24,22,21,20,19,17,16,15,14,13,12,10,9,8,7,6,5,4,3,2,1,255,252,248,244,240,237,233,230,226,223,220,217,214,211,208,205,202,199,196,193,191,188,185,183,180,178,176,173,171,168,166,164,162,160,158,155,153,151,149,147,145,143,142,140,138,136,134,133,131,129,127,126,124,122,121,119,118,116,115,113,112,110,109,107};

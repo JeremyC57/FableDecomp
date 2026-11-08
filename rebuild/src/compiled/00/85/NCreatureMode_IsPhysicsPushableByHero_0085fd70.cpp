@@ -13,6 +13,7 @@
 //   non-const 0x0040F020. Interface 0x31 = CTCCreatureModeManager (GetCurrentMode 0x0073A6E0, IsModeActive 0x0073A8A0,
 //   RemoveMode 0x0073ABA0; the manifest labels "CPixelShader::CountReferences" / "CPlayer::HasMode" are propagated twins).
 //   A mode's vtable slot 1 (+4) returns its NCreatureMode::EMode number (read from each CMode*::vfunc_1 body).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -84,22 +85,22 @@ public:
     unsigned char   _pad92[0xbc - 0x92];
     unsigned char   PhysicalFlags;                      // +0xBC (CThingPhysical)
     unsigned char   _padbd[0xc0 - 0xbd];
-    __forceinline unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CTCInterfaceMap* map = &m_tcs;
         const CTCInterfaceEntry* it = map->LowerBound(key);
         return (it == map->last || type < it->first ? map->last : it)->second;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CTCInterfaceMap* map = &m_tcs;
         const CTCInterfaceEntry* it = map->LowerBound(key);
         return (it == map->last || type < it->first ? map->last : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (HasTC(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -111,7 +112,7 @@ public:
         return false;
     }
     CPlayer& GetPlayer();                               // 0x004C7A10
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -122,8 +123,8 @@ public:
         }
         return false;
     }
-    __forceinline const CTCCreatureModeManager* GetModeManager() const { return (const CTCCreatureModeManager*)GetTC(0x31); }
-    __forceinline CTCCreatureModeManager* GetModeManager() { return (CTCCreatureModeManager*)GetTC(0x31); }
+    FABLE_FORCEINLINE const CTCCreatureModeManager* GetModeManager() const { return (const CTCCreatureModeManager*)GetTC(0x31); }
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager() { return (CTCCreatureModeManager*)GetTC(0x31); }
 };
 class CThingCreatureBase : public CThing {
 public:

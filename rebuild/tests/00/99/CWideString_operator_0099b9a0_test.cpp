@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -25,7 +26,7 @@ struct CWideBasicString {
     size_t capacity() const { return (_M_end_of_storage - _M_start) - 1; }
     __declspec(noreturn) void _M_throw_length_error() const;   // 0x0099C550
     void reserve(size_t n);                        // 0x0099C990
-    __forceinline CWideBasicString& append(size_t n, wchar_t c)
+    FABLE_FORCEINLINE CWideBasicString& append(size_t n, wchar_t c)
     {
         wchar_t fill = c;
         size_t count = n;

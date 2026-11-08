@@ -3,6 +3,7 @@
 //   pre-loop test into the loop test, so the health loop exit jumps straight to retail's single bottom test (0x00D7C2A5 jmp 0x00D7C2AF); `while (!T) NSF;` duplicated the test at the head (chunk 798 park, 12 attempts)
 // Leaf: ?Main@CHeroThunder@CQ_HeroSoulsThunderScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D7B510, 3524 bytes. Identity: CHeroThunder vtable slot .rdata 0x012D3664 -> ?Main@CHeroThunder@CQ_HeroSoulsThunderScript@NScript@@EAEXXZ (Ego_r.pdb + FableWin.pdb). Layout: engine/CQ_HeroSoulsThunderScript.h (new; CHeroThunder 0x1C nested).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
 #define FABLE_RETAIL_NSCRIPT
@@ -33,8 +34,8 @@ CCharString FABLE_FASTCALL GFIntToCharString(long value);                // 0x00
 template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();   // 0x006E7AB0
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
 inline NScript::CIsThingAlive::~CIsThingAlive() {}
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 void NScript::CQ_HeroSoulsThunderScript::CHeroThunder::Main()
 {

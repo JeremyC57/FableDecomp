@@ -13,6 +13,7 @@
 // C3DPrimitive2::SetupVertexBuffer (PVertexBuffer +4, Stride unsigned char +0x10). CRenderManagerCore keeps its
 // device at +0x3cf0; the camera world position is at +0x54 (landed decal RenderPrimitive model). The
 // CShaderRenderManager view is the landed RenderRainBox model (retail layout, UpdateFlags +0x3d8).
+#include "fable_compiler.h"
 #include "engine/CWaterPatchMesh.h"
 
 #include "engine/C3DVector.h"
@@ -53,7 +54,7 @@ class CShaderRenderManager {
 public:
     void SetWorldTransform(const CMatrix3x4& transform);   // 0x009881F0
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

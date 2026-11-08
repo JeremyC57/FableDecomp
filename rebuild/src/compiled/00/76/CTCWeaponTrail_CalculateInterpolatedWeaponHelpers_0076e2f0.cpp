@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH (retry wave 2 sec2): the retail const CVectorMap::LowerBound body (0x004365B0) in the TU as a same-TU noinline callee -- VC7.1 then keeps the parent in eax as retail (was DIFFER(421v421), parent in ebp). Respelled to the PDB: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound, the private const leaf taking C3DVector& (Ego_r ABEXJMAAVC3DVector@@0@Z), NGraphicAppearance::CTCGraphicAppearance, CTCCarryable::GetCarriedPositionInfo / C3DMeshObject::GetHelperPointPositionStatic const reference forms, engine/CBaseClass.h.
 // Leaf: ?CalculateInterpolatedWeaponHelpers@CTCWeaponTrail@@ABEXJMAAVC3DVector@@0@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 long __fastcall Compare(const char* a, const char* b);      // 0x00411570
 #pragma pack(push, 1)
 struct CBasicStringChar {
@@ -9,7 +10,7 @@ struct CBasicStringChar {
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
-    __forceinline bool operator==(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE bool operator==(const CBasicStringChar& other) const
     {
         if (StringLength != other.StringLength)
             return false;
@@ -21,7 +22,7 @@ class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 class CCharString { public:
     CCharStringData* PStringData;
 };
-__forceinline bool operator==(const CCharString& a, const CCharString& b)
+FABLE_FORCEINLINE bool operator==(const CCharString& a, const CCharString& b)
 {
     if (a.PStringData == b.PStringData)
         return true;
@@ -96,7 +97,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad50[0x64 - 0x50];
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -107,8 +108,8 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

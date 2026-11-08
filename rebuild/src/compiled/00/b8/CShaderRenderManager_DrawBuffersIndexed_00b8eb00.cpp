@@ -14,6 +14,7 @@
 //   (the overload __forceinline: plain in-class inline leaves it a call here); the overload's by-value copies of indexBuffer and primitiveType are loaded at the inline call, before SetIndices; the
 //   device is re-read from `this` for every call; the -1 default is resolved after SetIndices;
 //   DrawIndexedPrimitive(type, 0, minVertexIndex, numVertices, startIndex, primitiveCount).
+#include "fable_compiler.h"
 #include "engine/CIndexBuffer.h"
 
 #define COM_SLOT(n) virtual void __stdcall slot##n()
@@ -71,7 +72,7 @@ public:
     {
         D3DDevice->SetStreamSource(0, vertexBuffer.PVertexBuffer, 0, vertexBuffer.Stride);
     }
-    __forceinline void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
+    FABLE_FORCEINLINE void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
                                           unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
     {
         D3DDevice->SetIndices(indexBuffer.PD3DIndexBuffer);

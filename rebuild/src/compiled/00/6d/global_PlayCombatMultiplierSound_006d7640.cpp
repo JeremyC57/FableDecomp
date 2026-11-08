@@ -15,6 +15,7 @@
 // multiplier, sound)) player->PlayAttachedCriteria(sound, true, false, false, -1); }` -- the lookup key (inside
 // GetInterface's own `if`) and the string (inside the caller's) are sibling scopes, so they share the one frame word;
 // with HasTC + an unconditional GetTC the string gets a second word (123 bytes).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -141,7 +142,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

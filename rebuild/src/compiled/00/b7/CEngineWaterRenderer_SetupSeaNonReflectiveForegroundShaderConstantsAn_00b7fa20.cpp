@@ -12,6 +12,7 @@
 // Layout: as SetupBackgroundShaderConstantsAndFog 0x00B7F0F0 (Settings +0x280 in retail; WaterBumpFactor +0x5c0); Settings members from the PDB
 //   CEngineWaterSettings: EnableSwell +0x0e, EnableFresnel +0x13, FresnelFactor +0x18, SwellFactor +0x1c, ShoreSwellFactor
 //   +0x20, Colour +0x28, BumpMatFactor +0x5c, ColourToReflectionFactor +0x84, RefOffset +0x88, OtherSeaShaderVars +0x254.
+#include "fable_compiler.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
@@ -57,7 +58,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

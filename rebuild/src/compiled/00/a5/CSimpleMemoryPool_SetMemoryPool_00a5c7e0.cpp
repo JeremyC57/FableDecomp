@@ -10,6 +10,7 @@
 // Shape: the non-owning block ctor puts BlockData in the initialiser list (stored before the count/vptr) and BlockSize, NextBlock, OwnsData in the body (retail store order); new's null result falls into the unconditional AddFreeArea.
 // Leaf: SetMemoryPool
 // Shared model for the CSimpleMemoryPool rows (Ego_r.pdb layouts; the engine header's Root is opaque, so a local model is used).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);                     // 0x00BFEA1A
 void __cdecl operator delete(void* block);                         // 0x00BFE9BC
 void* __fastcall AllocateAligned(unsigned long size, unsigned long alignment);   // 0x009F2BE0
@@ -69,7 +70,7 @@ class CSimpleMemoryPool { public:
     {
         AddFreeArea((CArea*)block->BlockData, block->BlockSize - 0x10);
     }
-    __forceinline void DeleteBlocks()
+    FABLE_FORCEINLINE void DeleteBlocks()
     {
         CMemoryBlock* block = FirstMemoryBlock;
         if (block) {

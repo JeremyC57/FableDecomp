@@ -1,6 +1,7 @@
 // 0087bf40 behavior fixture for the TRUE 295-byte extent body (extent/0087bf40.cpp pasted unchanged; agent680).
 // Selected target and same-type handle assignment pasted unchanged. Real object lifetimes.
 // Reduced unused interfaces and checked external methods do not prove native dispatch ABI.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 #ifndef _MSC_VER
@@ -18,7 +19,7 @@ class CCameraModeDef:public CDefPointeeBase{};
 static CDefPointeeBase*deleteTrigger=0;static void (*deleteAction)()=0;
 void CDefPointeeBase::Delete(){Check(refs==0&&!deleted);++deleted;++deleteCalls;if(this==deleteTrigger&&deleteAction){void(*f)()=deleteAction;deleteAction=0;f();}}
 template<class T>class CDefPointer{public:CDefPointeeBase*Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer&o):Object(o.Object){if(Object)Object->AddRef();}~CDefPointer(){Release();}void Release(){if(Object){CDefPointeeBase*object=Object;if(object->Release()==0)object->Delete();Object=0;}}CDefPointer&operator=(const CDefPointer&);};
-template<> __forceinline CDefPointer<const CCameraModeDef>&CDefPointer<const CCameraModeDef>::operator=(const CDefPointer<const CCameraModeDef>&other){if(Object!=other.Object){Release();Object=other.Object;if(Object)Object->AddRef();}return *this;}
+template<> FABLE_FORCEINLINE CDefPointer<const CCameraModeDef>&CDefPointer<const CCameraModeDef>::operator=(const CDefPointer<const CCameraModeDef>&other){if(Object!=other.Object){Release();Object=other.Object;if(Object)Object->AddRef();}return *this;}
 
 namespace NCameraModes{class CBase;}
 class CGameCameraManager{public:NCameraModes::CBase*Current;CGameCameraManager():Current(0){}NCameraModes::CBase*GetCameraMode(){return Current;}};

@@ -14,6 +14,7 @@
 //   GetHeadPos @ 0x00661B40, CThingObject::Create @ 0x00703210 (__fastcall).
 // Layout: same local models as the landed CCreatureAction_Undress::PerformAction (0x00846410); thing +0x60 physics TC,
 //   +0x8c def index (word).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
@@ -129,7 +130,7 @@ public:
     unsigned short DefIndex;                                 // +0x8c
     C3DVector GetHeadPos(bool world);                        // 0x00661B40
     void Kill(bool removeNow);                               // 0x004C9B80
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -140,7 +141,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

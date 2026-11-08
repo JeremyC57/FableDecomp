@@ -1,4 +1,5 @@
 // Behaviour test for 0x00536b4f: the candidate source below is embedded verbatim, followed by stand-ins for its callees
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -59,7 +60,7 @@ struct CUIDef : CDefVirtual, CRefCounted {
 #pragma pack(pop)
 template <class T> struct CDefPointer {
     T* Data;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Data) {
             const_cast<CUIDef*>(Data)->ReleaseTemporary();

@@ -1,6 +1,7 @@
 // 00713510 NTCScriptedControl::CActionPerformExpression::Update, PDB00727660.
 // Layout: shared script header flattens virtual methods; restore its12byte polymorphic view.
 // PerformExpression PDBd4 size / def+b4 is retailc8 / def+a8, base shrinks0xc.
+#include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 #include "engine/CCreatureAction_PerformExpression.h"
@@ -9,7 +10,7 @@ struct Creature {bool SetCurrentAction(const ActionBase&);bool IsPerformingAnyAc
 struct RefCount {long References;void DecRef(){--References;}long GetRefCount()const{return References;}};
 struct DefVirtual {virtual void Slot0()=0;virtual void Delete()=0;};
 struct DefObject:DefVirtual,RefCount {void Release(){DecRef();if(GetRefCount()==0)Delete();}};
-struct DefPointer {DefObject* Object;DefPointer():Object(0){}__forceinline ~DefPointer(){if(Object){Object->Release();Object=0;}}};
+struct DefPointer {DefObject* Object;DefPointer():Object(0){}FABLE_FORCEINLINE ~DefPointer(){if(Object){Object->Release();Object=0;}}};
 struct IntelligentPointer {unsigned char Data[8];~IntelligentPointer();}; //00a01c10
 struct DefinitionManager {bool GetDef(const CCharString&,DefPointer*);}; //00593666 typedtemplate GetDef
 class CGameDefinitionManager : public DefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
@@ -95,7 +96,7 @@ virtual bool IsResolved()const;
 void* Data;void* Info;};
 namespace Retail {
 struct PerformExpression:ActionBase {DefPointer Expression;IntelligentPointer Target;unsigned char Tail[0xc8-0xb4];
- __forceinline ~PerformExpression(){}
+ FABLE_FORCEINLINE ~PerformExpression(){}
  PerformExpression(Creature&,Thing*,const DefPointer&,long,long,long,long); //008430b0
 };
 }

@@ -3,6 +3,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -39,7 +40,7 @@ private: public:
     unsigned char _pad00[0x14];
     CDataBank* TextBank;                                // +0x14
 };
-__forceinline CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
+FABLE_FORCEINLINE CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
 
 struct SNode {
     long color; SNode* parent; SNode* left; SNode* right;
@@ -49,9 +50,9 @@ struct SNode {
 SNode* __cdecl Successor(SNode* node);                  // 0x004292C0
 struct CPrerequisiteMap {                               // STLport map<EQuestCardPrerequisite,long> (12 bytes in retail)
     SNode* header; long count; long compare;
-    __forceinline SNode* begin() const { return header->left; }
-    __forceinline SNode* end() const { return header; }
-    __forceinline bool empty() const { return count == 0; }
+    FABLE_FORCEINLINE SNode* begin() const { return header->left; }
+    FABLE_FORCEINLINE SNode* end() const { return header; }
+    FABLE_FORCEINLINE bool empty() const { return count == 0; }
 };
 class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
 class CQuestCardDef : public CDefPointeeBase { public:
@@ -60,15 +61,15 @@ class CQuestCardDef : public CDefPointeeBase { public:
 };
 template<class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(T* p) : Object(p) { if (Object) ++((CDefPointeeBase*)Object)->RefCount; }
-    __forceinline ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
-    __forceinline T* operator->() const { return Object; }
+    FABLE_FORCEINLINE CDefPointer(T* p) : Object(p) { if (Object) ++((CDefPointeeBase*)Object)->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
+    FABLE_FORCEINLINE T* operator->() const { return Object; }
 };
-__forceinline CDefPointer<const CQuestCardDef> GetDef(const CTCQuestCard* card) { return CDefPointer<const CQuestCardDef>((const CQuestCardDef*)card->PDef_Object); }
+FABLE_FORCEINLINE CDefPointer<const CQuestCardDef> GetDef(const CTCQuestCard* card) { return CDefPointer<const CQuestCardDef>((const CQuestCardDef*)card->PDef_Object); }
 class CTCHeroStats { public:
     unsigned char _pad00[0x70];
     long RenownLevel;                                   // +0x70
-    __forceinline long GetRenownLevel() const { return RenownLevel; }
+    FABLE_FORCEINLINE long GetRenownLevel() const { return RenownLevel; }
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -89,7 +90,7 @@ template <unsigned int _Nb> class bitset { public:
 }
 class CThing { public:
     unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
-    template<class T> __forceinline bool GetInterface(T** out, long kind) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);
             *out = (T*)((void*)(it == map->last || kind < it->first ? map->last : it)->second);

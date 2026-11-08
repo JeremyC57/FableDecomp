@@ -13,6 +13,7 @@
 //   separate ctor-built vector, so the box right edge is `fld size.X ; fadd pos.X` (VC7.1 loads the single-definition
 //   operand first) and size reuses extent's dead slot; the colour copy ctor assigns R, G, B, A in the body; the two engine
 //   adds have distinct names (same-name virtual overloads swap their vtable slots).
+#include "fable_compiler.h"
 struct CRITICAL_SECTION_18 { unsigned char _body[0x18]; };
 extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObjectEx(void* handle, unsigned long ms, int alertable);   // IAT 0x0143FE08
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION_18* cs);   // IAT 0x0143FE0C
@@ -63,7 +64,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -77,7 +78,7 @@ class CEnginePrimitiveHandle {                     // vtable 0x0122F598
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

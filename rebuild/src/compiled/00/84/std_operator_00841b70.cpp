@@ -11,6 +11,7 @@
 //   (the inlined length error; the row ends `jmp abort` -- no int3 after it inside the row).
 // Shape: as 0x00569690: `__forceinline` _Reserve_t constructor, no NRVO (copy + free), the tag temporaries homed in the
 //   dead `s` argument slot.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strlen)
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
@@ -85,7 +86,7 @@ public:
     typedef unsigned int size_type;
     struct _Reserve_t { };
 
-    __forceinline basic_string(_Reserve_t, unsigned int __n, const allocator_type& __a = allocator_type())
+    FABLE_FORCEINLINE basic_string(_Reserve_t, unsigned int __n, const allocator_type& __a = allocator_type())
         : _String_base(__a, __n + 1)
     {
         _M_terminate_string();

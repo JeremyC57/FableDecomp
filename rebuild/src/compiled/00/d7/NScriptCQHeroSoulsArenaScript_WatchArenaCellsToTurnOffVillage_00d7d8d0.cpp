@@ -7,6 +7,7 @@
 // Layout: actual typed script ancestry and original counted handle model; inherited Game64; inactive owned trailing quest state unaccessed. Shared headers retained as evidence, unused virtual slots descriptive.
 // Headers: retail NScript models (engine/CScriptThing.h, CGameScriptInterfaceBase.h, CLevelScriptBase.h,
 //   CCountedPointer.h, CBaseClass.h); the CScriptThing ctor/dtor/operator= are inline here (retail inlines them).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -17,9 +18,9 @@ public:
 #include "engine/CBaseClass.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-__forceinline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing::~CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing::CScriptThing() { }
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() { }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 #include "engine/CGameScriptInterfaceBase.h"
 class CPersistContext;
 #include "engine/CLevelScriptBase.h"

@@ -9,6 +9,7 @@
 // Shape: STLport 4.6 `__unguarded_partition` with `iter_swap` (the SGI `__iter_swap(a, b, value_type)`) inlined: the
 //   pivot key is kept in edi and the 8-byte swap runs through registers; the shared `++first` heads the rotated loop.
 //   "s" alone: no frame pointer (the 12-byte twin's `optimize("y", off)` would add one).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CDefString {                                          // Ego_r.pdb, 4 bytes (a class: mangled V)
@@ -20,7 +21,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 
@@ -31,15 +32,15 @@ public:
 
 namespace std {
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
-__forceinline void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
+FABLE_FORCEINLINE void __iter_swap(_ForwardIter1 __a, _ForwardIter2 __b, _Tp*)
 {
     _Tp __tmp = *__a;
     *__a = *__b;
     *__b = __tmp;
 }
-template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }   // _STLP_VALUE_TYPE for pointers
+template <class _Tp> FABLE_FORCEINLINE _Tp* __value_type(const _Tp*) { return (_Tp*)0; }   // _STLP_VALUE_TYPE for pointers
 template <class _ForwardIter1, class _ForwardIter2>
-__forceinline void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2)
+FABLE_FORCEINLINE void iter_swap(_ForwardIter1 __i1, _ForwardIter2 __i2)
 {
     __iter_swap(__i1, __i2, __value_type(__i1));
 }

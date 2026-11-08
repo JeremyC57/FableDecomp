@@ -4,13 +4,14 @@
 // Flags: /O2 /Oy /W3
 // Leaf: ?GetCurrentPositionLocal@CPSCBase@NParticleEngine@@QBE?AVC3DVector@@ABV?$CParticleUpdateParameters@KK@2@ABKM_NK@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CMatrix3x4 { public:float m[12];};
 // ABI: 0x00af3080 dereferences second stack argument as a key; 0x00af2c50 receives its address.
 namespace NParticleEngine {
 template<class A,class B> class CParticleUpdateParameters { public: bool GetUpdateParam(C3DVector&,const unsigned long&,float,bool,unsigned long)const;};
 // Layout: retail owner +4, owner flags +0x50, fallback virtual slot30.
-class CParticleSystem { public:char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&)const;__forceinline C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.X,y=q.Y;q.X=mat.m[6]*q.Z+mat.m[3]*q.Y+mat.m[0]*q.X+mat.m[9];q.Y=mat.m[7]*q.Z+mat.m[4]*q.Y+mat.m[1]*x+mat.m[10];q.Z=mat.m[8]*q.Z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.X,q.Y,q.Z);}};
+class CParticleSystem { public:char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&)const;FABLE_FORCEINLINE C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.X,y=q.Y;q.X=mat.m[6]*q.Z+mat.m[3]*q.Y+mat.m[0]*q.X+mat.m[9];q.Y=mat.m[7]*q.Z+mat.m[4]*q.Y+mat.m[1]*x+mat.m[10];q.Z=mat.m[8]*q.Z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.X,q.Y,q.Z);}};
 class CPSCBase { public:
 virtual void v0()=0;
 virtual void v1()=0;

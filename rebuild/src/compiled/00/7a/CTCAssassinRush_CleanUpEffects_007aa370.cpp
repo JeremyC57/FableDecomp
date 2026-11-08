@@ -18,6 +18,7 @@
 //   begin();`) and copies from `last.p` to `_M_finish`: the finish load then defines the copy-source variable (esi) and the
 //   `finish - last` count is a copy of it (`mov esi,[ebx+68h] ; mov edi,[ebx+64h] ; mov eax,esi ; sub eax,esi`); through
 //   erase(begin(), end()) the load is the count temp and the variable its copy (`mov eax,.. ; mov esi,eax ; sub eax,eax`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -48,7 +49,7 @@ public:
         if (m_pGraphicAppearance)
             m_pGraphicAppearance->SetAlpha(alpha);
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -88,7 +89,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-template <class T> __forceinline T* copy(T* first, T* last, T* result)
+template <class T> FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;
@@ -97,7 +98,7 @@ template <class T> __forceinline T* copy(T* first, T* last, T* result)
     }
     return result;
 }
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -114,14 +115,14 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* end_ptr() { return _M_finish; }
     iterator begin() { return iterator(_M_start); }
     iterator end() { return iterator(_M_finish); }
-    __forceinline iterator erase(iterator first, iterator last)
+    FABLE_FORCEINLINE iterator erase(iterator first, iterator last)
     {
         T* i = copy(last.p, _M_finish, first.p);
         _Destroy(i, _M_finish);
         _M_finish = i;
         return first;
     }
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         iterator last = end();
         iterator first = begin();

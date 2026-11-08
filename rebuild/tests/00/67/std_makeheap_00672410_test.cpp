@@ -1,5 +1,6 @@
 // Behaviour test for 0x00672410 std::make_heap<ENavigatorType*, less<ENavigatorType> >: build a max-heap in place;
 // the callee __adjust_heap (0x00672390) is modelled with its landed body.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -46,7 +47,7 @@ template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
-__forceinline void __make_heap(_RandomAccessIterator first, _RandomAccessIterator last, _Compare comp, _Tp*, _Distance*)
+FABLE_FORCEINLINE void __make_heap(_RandomAccessIterator first, _RandomAccessIterator last, _Compare comp, _Tp*, _Distance*)
 {
     if (last - first < 2) return;
     _Distance len = last - first;

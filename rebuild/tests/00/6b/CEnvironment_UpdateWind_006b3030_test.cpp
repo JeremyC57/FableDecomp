@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +15,7 @@
 extern unsigned long GFastOneOverSqrtTable[128];
 float __fastcall GFFloatRandom(float,unsigned long*);
 template<class T,class L,class H>inline void __fastcall GFLimit(T&value,const L&lo,const H&hi){if(value<lo)value=lo;else if(value>hi)value=hi;}
-__forceinline float __fastcall GFFastOneOverSqrt(float value){unsigned int bits;memcpy(&bits,&value,4);unsigned int estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r;memcpy(&r,&estimate,4);return (3.0f-r*r*value)*r*0.5f;}
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned int bits;memcpy(&bits,&value,4);unsigned int estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r;memcpy(&r,&estimate,4);return (3.0f-r*r*value)*r*0.5f;}
 class C3DVector {public:
     float X;
     float Y;
@@ -25,9 +26,9 @@ class C3DVector {public:
     const C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     const C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
     void Rotate(float zAngle, float xAngle);      // 0x00A14260
-    __forceinline float GetSquaredMagnitude()const{const float x=X;const float y=Y;const float z=Z;float result=z*z;result+=y*y;result+=x*x;return result;}
-    __forceinline const C3DVector&operator*=(float value){X*=value;Y*=value;Z*=value;return *this;}
-    __forceinline C3DVector&Normalise(){float r=GFFastOneOverSqrt(GetSquaredMagnitude());X*=r;Y*=r;Z*=r;return *this;}
+    FABLE_FORCEINLINE float GetSquaredMagnitude()const{const float x=X;const float y=Y;const float z=Z;float result=z*z;result+=y*y;result+=x*x;return result;}
+    FABLE_FORCEINLINE const C3DVector&operator*=(float value){X*=value;Y*=value;Z*=value;return *this;}
+    FABLE_FORCEINLINE C3DVector&Normalise(){float r=GFFastOneOverSqrt(GetSquaredMagnitude());X*=r;Y*=r;Z*=r;return *this;}
 };
 
 

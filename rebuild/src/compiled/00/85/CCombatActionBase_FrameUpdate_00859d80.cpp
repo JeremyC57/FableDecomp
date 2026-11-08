@@ -1,6 +1,7 @@
 // CCombatActionBase::FrameUpdate() -- update facing/strikes, post a miss event, advance and handle interruption transition
 // Retail0x00859D80,314 bytes. Actual headers retained as PDB references; native action offsets follow ctor00857F30.
 // Virtual prefix0..27 comes from retail vtable01259E44; no placeholder slots. Pointer record is real intelligent-pointer family.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CCombatActionBase CCombatActionBase_PDB
 #include "engine/_quarantine/CCombatActionBase.h"
@@ -26,7 +27,7 @@ struct InterfaceEntry {long Type;CTCEntityEventsCalls* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* key);}; //0040F020
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];unsigned long PresentBits[9];InterfaceMap Interfaces;
-    __forceinline bool GetInterface(CTCEntityEventsCalls** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CTCEntityEventsCalls** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
             if(p==map->Last || type<p->Type)p=map->Last;*out=p->Component;return true;}return false;
     }

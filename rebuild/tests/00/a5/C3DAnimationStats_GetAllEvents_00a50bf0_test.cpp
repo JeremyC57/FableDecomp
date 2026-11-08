@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,16 +47,16 @@ template<class T,class A>struct _Rb_tree_base{_STLP_alloc_proxy<_Rb_tree_node<T>
 template<class K,class V,class Key,class Compare,class A>class _Rb_tree:public _Rb_tree_base<V,A>{public:
  unsigned int _M_node_count;Compare _M_key_compare;
  typedef _Rb_tree_iterator<V,_Const_traits<V> >const_iterator;
- __forceinline const_iterator begin()const{return const_iterator(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_left));}
- __forceinline const_iterator end()const{return const_iterator(this->_M_header._M_data);}
- __forceinline unsigned int size()const{return _M_node_count;}
+ FABLE_FORCEINLINE const_iterator begin()const{return const_iterator(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_left));}
+ FABLE_FORCEINLINE const_iterator end()const{return const_iterator(this->_M_header._M_data);}
+ FABLE_FORCEINLINE unsigned int size()const{return _M_node_count;}
 };
 template<class K,class T,class C=less<K>,class A=allocator<pair<const K,T> > >class multimap{public:
  typedef pair<const K,T>value_type;typedef _Rb_tree<K,value_type,_Select1st<value_type>,C,A>_Rep_type;
  _Rep_type _M_t;
- __forceinline typename _Rep_type::const_iterator begin()const{return _M_t.begin();}
- __forceinline typename _Rep_type::const_iterator end()const{return _M_t.end();}
- __forceinline unsigned int size()const{return _M_t.size();}
+ FABLE_FORCEINLINE typename _Rep_type::const_iterator begin()const{return _M_t.begin();}
+ FABLE_FORCEINLINE typename _Rep_type::const_iterator end()const{return _M_t.end();}
+ FABLE_FORCEINLINE unsigned int size()const{return _M_t.size();}
 };
 template<class T,class A>class _Vector_base{public:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};
 template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:typedef T value_type;void reserve(unsigned int);void push_back(const T&);};
@@ -64,9 +65,9 @@ template<class C>class back_insert_iterator:public iterator<output_iterator_tag,
  back_insert_iterator&operator=(const typename C::value_type&v){container->push_back(v);return *this;}
  back_insert_iterator&operator*(){return *this;}back_insert_iterator&operator++(){return *this;}
 };
-template<class C>__forceinline back_insert_iterator<C>back_inserter(C&x){return back_insert_iterator<C>(x);}
+template<class C>FABLE_FORCEINLINE back_insert_iterator<C>back_inserter(C&x){return back_insert_iterator<C>(x);}
 template<class I,class O,class D>__declspec(noinline) O __fastcall __copy(I first,I last,O out,const input_iterator_tag&,D*){for(;first!=last;++first,++out)*out=*first;return out;}
-template<class I,class O>__forceinline O copy(I first,I last,O out){return __copy(first,last,out,bidirectional_iterator_tag(),static_cast<int*>(0));}
+template<class I,class O>FABLE_FORCEINLINE O copy(I first,I last,O out){return __copy(first,last,out,bidirectional_iterator_tag(),static_cast<int*>(0));}
 }
 // Layout: RTTI CBaseObject8; AnimType8, Duration12, booleans16/17,
 // original packed MovementVector18..29, then TimingEvents32 (retail12bytes).

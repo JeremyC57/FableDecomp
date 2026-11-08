@@ -1,6 +1,7 @@
 // Behaviour test for 00858cc0: src/00858cc0.cpp copied verbatim; the creature/target things, the carrying component,
 // the combat-type def and the action plumbing stubbed so the base call, the alive gates, the held-weapon gate, the
 // state/blocked-response test and the recoil action (finish, then a STRIKE_RECOIL interrupted attack) are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -33,7 +34,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                  // +0x44
     unsigned char _pad50[0x91 - 0x50];
     unsigned char m_flags91;                     // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

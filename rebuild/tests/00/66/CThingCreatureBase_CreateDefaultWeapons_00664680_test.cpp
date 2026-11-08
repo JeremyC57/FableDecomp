@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -57,13 +58,13 @@ class CThing { public:
     unsigned char  _bits92b : 3;
     const C3DVector& GetPosition() const;               // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -71,7 +72,7 @@ class CThing { public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    __forceinline const CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

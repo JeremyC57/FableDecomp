@@ -3,6 +3,7 @@
 // Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c), the symbol id lookup @ 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` unused), CGameUI::GetMiniMapDisplay @ 0x00437CE0 (label propagated) on the singleton @ 0x013B8790, CMiniMapDisplay::SetMarkerGraphic @ 0x0082A340. Shape: the script thing in esi, the interface in edi reused for the id (`jle` on it), the thing fetched into a local before the id is pushed, `ret 8`.
 // Leaf: MiniMapSetMarkerGraphic
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "fable_compiler.h"
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -47,7 +48,7 @@ struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
     void AssignHomeBuilding(CThing_Retail* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
     void SetNewBrain(CDefPointer_Retail brain);     // 0x00833010 (CThingAICreature::SetNewBrain, the counted def pointer by value)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

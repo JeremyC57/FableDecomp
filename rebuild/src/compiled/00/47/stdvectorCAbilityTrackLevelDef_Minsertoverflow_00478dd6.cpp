@@ -12,6 +12,7 @@
 // `("s", on)`), the inline STLport helpers `__forceinline`.
 // Label: the catalog's "CAbilityTrackLevelDef_vector_Reallocate" (caller 0x00478DCB, the push_back/insert path).
 // Leaf: _M_insert_overflow
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -27,15 +28,15 @@ namespace std {
 
 struct __false_type { __false_type() { } };
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val)
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val)
 {
     new (__p) _T1(__val);
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -45,7 +46,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
                                                   const __false_type&)
 {
     _ForwardIter __cur = __first;
@@ -58,7 +59,7 @@ template <class _Tp> class allocator {
 public:
     allocator() { }
     allocator(const allocator&) { }
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -76,7 +77,7 @@ public:
 
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     void _M_clear();                                                            // 0x00478A02
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         _M_start = __s;
         _M_finish = __f;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -28,7 +29,7 @@ struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *firs
 class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
-    template<class T> __forceinline bool GetInterface(T** out,long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long type) {
         bool present=(bits[type>>5]>>(type&31))&1;
         if(present) {
             long key=type; CInterfaceMap* map=&interfaces; CInterfaceMap::Entry* it=map->LowerBound(&key);

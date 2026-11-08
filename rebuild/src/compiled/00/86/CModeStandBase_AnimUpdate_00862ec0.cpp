@@ -16,13 +16,14 @@
 // Shape: the planar speed is sqrt(X*X + Y*Y); the walk branch tests `GetMaxJoggingSpeed(GetPos() + GetVelocity()) >= speed`
 //   (member operator+ on the position: the argument call runs first and VC loads the velocity operand first); the random
 //   step is the inlined generator `seed = GFROR13(seed * 0x24A1 + 0x24DF)` taken `% 3`.
+#include "fable_compiler.h"
 #include <math.h>
 
 long __fastcall GFROR13(unsigned long value);     // 0x00497890
 
 struct CRandomGenerator {
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
 };
 
 #include "engine/C3DVector.h"

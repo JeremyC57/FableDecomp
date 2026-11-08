@@ -13,6 +13,7 @@
 //   NumShotsThisRound +0x68; CTrapDef SecondsBetweenShots +0x60 (PDB +0x64: def bodies sit 4 bytes low).
 // Shape: the name string and the ability pointer each live in their own block (one shared [ebp-4] frame word); in the size TU
 //   the ability pointer's release (`dec [eax] ; cmp [eax],0`) inlines only with `__forceinline` on its destructor and helpers.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C3DVector;
@@ -32,15 +33,15 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 };
 struct CRefCounted {                                   // second base of the def: the count at +4
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                            // slot 1
 };
 class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -50,7 +51,7 @@ class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p) {
             m_p->ReleaseTemporary();

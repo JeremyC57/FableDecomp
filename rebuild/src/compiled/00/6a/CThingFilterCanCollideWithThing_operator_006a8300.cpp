@@ -9,6 +9,7 @@
 //   +0x60, interface bitset +0x20 (TC 0x4d: word +0x28 bit 13), CVectorMap +0x44; CTCBase ParentThing +0x04.
 // Shape: the agent160 GetTC form with the key in the dead thing-argument slot (no frame); the owner thing taken
 //   through the filter's physics component each time.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -38,7 +39,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

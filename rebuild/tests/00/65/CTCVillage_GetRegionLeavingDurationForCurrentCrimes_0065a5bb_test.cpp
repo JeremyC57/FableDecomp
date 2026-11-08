@@ -1,5 +1,6 @@
 // Behaviour test for 0065a5bb: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCVillage::GetRegionLeavingDurationForCurrentCrimes() -- the longest knowledge life, in frames, of the hero's deeds recorded as crimes against this village (0 when there is no hero)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -62,7 +63,7 @@ struct CDefVirtual {
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -71,7 +72,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

@@ -13,6 +13,7 @@
 // Shape: STLport `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first))
 //   __pop_heap(first, middle, i, _Tp(*i), comp, (int*)0); sort_heap(first, middle, comp);` -- the comparator runs
 //   inline on the by-value parameter; every by-value comparator copy is memberwise.
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
@@ -35,7 +36,7 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                     // +0x91 bit 0
     const C3DVector& GetPos() const;                             // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -50,7 +51,7 @@ public:
     }
 };
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);         // 0x0076D2F0
-__forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
 
 class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00

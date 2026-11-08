@@ -10,6 +10,7 @@
 // CScriptedMapBrush = PDB - 0x10: GameArea +0x38, BrushName +0x48, CreationTimeSeconds +0x4C. No engine header for CMap.
 // Shape: the creation time is a named float parked in the dead `name` argument slot across the GetBrushName call; the update area is a
 // stack temporary pushed with the inline STLport push_back (placement copy, else _M_insert_overflow with the __false_type tag).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
@@ -28,7 +29,7 @@ struct CScriptedMapBrushUpdateArea {            // 8 bytes
     float       Timer;
     CCharString Name;
     CScriptedMapBrushUpdateArea(float timer, const CCharString& name) : Timer(timer), Name(name) { }
-    __forceinline CScriptedMapBrushUpdateArea(const CScriptedMapBrushUpdateArea& o) : Timer(o.Timer), Name(o.Name) { }
+    FABLE_FORCEINLINE CScriptedMapBrushUpdateArea(const CScriptedMapBrushUpdateArea& o) : Timer(o.Timer), Name(o.Name) { }
 };
 struct __false_type { __false_type() { } };
 inline void* operator new(unsigned int, void* where) { return where; }

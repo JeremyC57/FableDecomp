@@ -15,6 +15,7 @@
 // 0x0097DF60 model (Types +0, LookFlags +4, NavigationInput +8, PAction +0x20, MoveToPos +0x28, LookAtThing +0x40).
 // Shape: in this TU the interface map's lower_bound is inline (no 0x0040F020 call); the CTCLook GetTC runs the loop on its result iterator initialised from the member AFTER the length (the first pointer is read once into eax and copied to esi, `it = last` reuses esi), the type-7 lookup goes through the by-value LowerBound helper (no copy); the CBrainOutput constructor is out
 // of line and its destructor inline; the arrival test is `status == 0 || |offset|^2 > eps^2`.
+#include "fable_compiler.h"
 class CThing;
 class C3DVector { public:
     float X, Y, Z;
@@ -98,7 +99,7 @@ class CThingCreatureBase : public CThingPhysical { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionVirtuals* CurrentAction;     // +0x100
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long count = m_interfaces.last - m_interfaces.first;
         CInterfaceMap::SEntry* it = m_interfaces.first;

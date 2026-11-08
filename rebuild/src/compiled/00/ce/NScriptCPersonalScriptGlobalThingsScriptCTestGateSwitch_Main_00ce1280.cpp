@@ -14,6 +14,7 @@
 //   PMasterData +0x18, GatesOpen +0x1c. Model types as the landed CCOE_Victim::Main 0x00E6B400.
 // Naming wave 35: identity reg 00cde728 "TestGateSwitch" in 00cde420; Alloc 00cdf930; vtable 012c33e0 slot 1; PDB ?Main@CTestGateSwitch@CPersonalScript_GlobalThingsScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTestGateSwitch::Main (wave3/labels_alloc.tsv); PDB ?Main@CTestGateSwitch@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -37,7 +38,7 @@ public:                     // STLport vector (retail 12 bytes), malloc_alloc st
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()                            // inline here (out-of-line COMDAT copy 0x008AC970)
+    FABLE_FORCEINLINE ~vector()                            // inline here (out-of-line COMDAT copy 0x008AC970)
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

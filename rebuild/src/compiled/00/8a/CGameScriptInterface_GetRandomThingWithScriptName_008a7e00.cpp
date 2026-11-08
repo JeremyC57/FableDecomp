@@ -4,6 +4,7 @@
 // Naming wave 29 (family gws): the seed comes from the const ?GetWorldSeed@CWorld@@QBEPAKXZ 0x0049D810 (Ego_r.pdb / FableWin.pdb;
 //   engine/CWorld.h). Was the invented WorldMethods::GetPRandomSeed (QAEPAKXZ).
 // Retail008A7E00,190bytes;005ED860 query uses native006A7E30 HasScriptName;0049D810 seed;00497890 fastcall GFROR13;004C7E50 GetScriptThing;00BFEA14 free.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -143,6 +144,6 @@ void ThingSearchMethods::GetAllWithScriptName(const HasScriptName& filter,ThingV
 #pragma auto_inline(on)
  //005ED860
 long __fastcall GFROR13(unsigned long); //00497890
-__forceinline unsigned long RandomIndex(unsigned long* seed,unsigned long count){*seed=*seed*9377+9439;*seed=GFROR13(*seed);return count?*seed%count:0;}
+FABLE_FORCEINLINE unsigned long RandomIndex(unsigned long* seed,unsigned long count){*seed=*seed*9377+9439;*seed=GFROR13(*seed);return count?*seed%count:0;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods GetRandomThingWithScriptName(const CCharString&)const;};
 ScriptMethods CGameScriptInterfaceMethods::GetRandomThingWithScriptName(const CCharString& name)const{ThingVector things;reinterpret_cast<ThingSearchMethods*>(World->PThingSearchTools_ptr)->GetAllWithScriptName(HasScriptName(name),things);if(things.Start==things.Finish)return ScriptMethods();unsigned long count=things.Finish-things.Start;return things.Start[RandomIndex(World->GetWorldSeed(),count)]->GetScriptThing();}

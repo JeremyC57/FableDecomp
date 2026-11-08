@@ -6,6 +6,7 @@
 // the component's flags setter @ 0x007EA270 (`mov [this+0Ch],arg`; the manifest "CObservable::AddExclusiveObserver" label is propagated).
 // Shape: one `push ecx` frame for the lookup key; the flag is cleared as a conditional toggle (`test al,4 ; je ; xor eax,4`): retail did not fold it to `and`,
 // so the source is the toggle-if-set form, not `& ~4`.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -14,7 +15,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

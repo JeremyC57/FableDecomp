@@ -11,6 +11,7 @@
 // Read stores the widened `newPosition` back, `add eax,4 ; xor ecx,ecx` then `mov [ebx+4],eax`), each scalar through
 // an inline CPersistTraits<T>::TransferBinaryIn(stream, &member) whose local is homed in the dead stream-argument slot
 // [ebp+8]. EBP frame + size TU (`#pragma optimize("y", off)` + `("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -24,7 +25,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -70,7 +71,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
     {
         long number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));
@@ -78,7 +79,7 @@ template <> struct CPersistTraits<long> {
     }
 };
 template <> struct CPersistTraits<float> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
     {
         float number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));

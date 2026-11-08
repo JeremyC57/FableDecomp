@@ -10,6 +10,7 @@
 // the `&&` string temporary; the effects sub-def is a zeroed out slot released by hand (null-tested) after the spawn. GetSubDef and
 // GetEffectFromString get same-TU stand-in bodies that write only the out slot / the `long&`, so VC7.1 knows neither address
 // escapes; that orders the zero stores of the effect-type word and the out slot as in retail.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -39,7 +40,7 @@ template <class T> struct CDefPointerSlot {      // the out-slot GetSubDef fills
     T* m_p;
     CDefPointerSlot() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

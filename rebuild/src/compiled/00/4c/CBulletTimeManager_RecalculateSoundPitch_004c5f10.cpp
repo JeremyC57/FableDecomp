@@ -14,6 +14,7 @@
 // is updated by an integer copy (`if (p < pitch) pitch = p`). `++it` is the STLport 4.x form `_M_node =
 // _Rb_global<bool>::_M_increment(_M_node)` (static, by value, inlined): the walk runs in eax and is copied back to esi
 // after the end test; an in-place member `_M_increment` (no copy) gives 127 bytes against retail 138.
+#include "fable_compiler.h"
 class CSoundSystem {
 public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -47,7 +48,7 @@ template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
 };
 
 template <class _Dummy> struct _Rb_global {
-    static __forceinline _Rb_tree_node_base* _M_increment(_Rb_tree_node_base* _M_node)
+    static FABLE_FORCEINLINE _Rb_tree_node_base* _M_increment(_Rb_tree_node_base* _M_node)
     {
         if (_M_node->_M_right != 0) {
             _M_node = _M_node->_M_right;
@@ -69,15 +70,15 @@ template <class _Dummy> struct _Rb_global {
 
 struct _Rb_tree_base_iterator {
     _Rb_tree_node_base* _M_node;
-    __forceinline _Rb_tree_base_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
-    __forceinline void _M_increment() { _M_node = _Rb_global<bool>::_M_increment(_M_node); }
+    FABLE_FORCEINLINE _Rb_tree_base_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
+    FABLE_FORCEINLINE void _M_increment() { _M_node = _Rb_global<bool>::_M_increment(_M_node); }
 };
 
 template <class V> struct _Rb_tree_iterator : _Rb_tree_base_iterator {
-    __forceinline _Rb_tree_iterator(_Rb_tree_node_base* x) : _Rb_tree_base_iterator(x) {}
-    __forceinline _Rb_tree_iterator& operator++() { _M_increment(); return *this; }
-    __forceinline V* operator->() const { return &static_cast<_Rb_tree_node<V>*>(_M_node)->_M_value_field; }
-    __forceinline bool operator!=(const _Rb_tree_iterator& x) const { return _M_node != x._M_node; }
+    FABLE_FORCEINLINE _Rb_tree_iterator(_Rb_tree_node_base* x) : _Rb_tree_base_iterator(x) {}
+    FABLE_FORCEINLINE _Rb_tree_iterator& operator++() { _M_increment(); return *this; }
+    FABLE_FORCEINLINE V* operator->() const { return &static_cast<_Rb_tree_node<V>*>(_M_node)->_M_value_field; }
+    FABLE_FORCEINLINE bool operator!=(const _Rb_tree_iterator& x) const { return _M_node != x._M_node; }
 };
 
 template <class K, class T> class map {
@@ -87,8 +88,8 @@ public:
     _Rb_tree_node_base* _M_header;                      // +0x00 (_STLP_alloc_proxy::_M_data)
     unsigned int        _M_node_count;                  // +0x04
     unsigned int        _M_key_compare;                 // +0x08
-    __forceinline iterator begin() { return iterator(_M_header->_M_left); }
-    __forceinline iterator end() { return iterator(_M_header); }
+    FABLE_FORCEINLINE iterator begin() { return iterator(_M_header->_M_left); }
+    FABLE_FORCEINLINE iterator end() { return iterator(_M_header); }
 };
 }
 

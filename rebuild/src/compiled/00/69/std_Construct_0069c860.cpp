@@ -3,6 +3,7 @@
 // Callees: none (inline trivial copy).
 // Leaf: _Construct
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N0069c860 {
 #include "engine/C3DVector.h"
@@ -15,7 +16,7 @@ struct CQuake {                                  // CGameCameraManager::CQuake (
     float     Frequency;                         // +0x24
     float     Phase;                             // +0x28
     bool      Global;                            // +0x2C
-    __forceinline CQuake(const CQuake& o)        // the implicit memberwise copy, spelled out so VC7.1 inlines it into _Construct
+    FABLE_FORCEINLINE CQuake(const CQuake& o)        // the implicit memberwise copy, spelled out so VC7.1 inlines it into _Construct
         : Position(o.Position), Axis(o.Axis), Frame(o.Frame), Amplitude(o.Amplitude), Duration(o.Duration),
           Frequency(o.Frequency), Phase(o.Phase), Global(o.Global) { }
 };

@@ -17,6 +17,7 @@
 // PParticleEmitter +0x20 (CIntelligentPointer<CThing>); CTCBase ParentThing +0x04; retail CThing def object +0x70.
 // The def pointer is read once into edi after GetSubDef and released by hand (`dec [edi+4] ; jne ; call [vtbl+4]`).
 
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CHighlightItemDef { public:
@@ -36,10 +37,10 @@ template <class T> class CDefPointer { public:
     CDefPointer() {}
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CThingDef {
     bool GetSubDefRaw(CDefPointer<const CHighlightItemDef>* out) const;   // 0x0077D080
-    __forceinline bool GetSubDef(CDefPointer<const CHighlightItemDef>* out) const { out->Object = 0; return GetSubDefRaw(out); }
+    FABLE_FORCEINLINE bool GetSubDef(CDefPointer<const CHighlightItemDef>* out) const { out->Object = 0; return GetSubDefRaw(out); }
 };
 void* FindDef_CThingDef_GetSubDefRaw_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def

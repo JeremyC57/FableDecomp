@@ -11,6 +11,7 @@
 // Leaf: RespawnHero
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
@@ -23,7 +24,7 @@ class CGameEvent : public CMemoryBuffer { public:
     bool          Valid;                          // +0x26
     bool          Replacement;                    // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
-    __forceinline void AddBOOL(bool value) { Copy(1, &value); }   // __forceinline + bool: the by-value copy is homed in the caller's dead bool slot
+    FABLE_FORCEINLINE void AddBOOL(bool value) { Copy(1, &value); }   // __forceinline + bool: the by-value copy is homed in the caller's dead bool slot
 };
 
 class CMainGameComponent {

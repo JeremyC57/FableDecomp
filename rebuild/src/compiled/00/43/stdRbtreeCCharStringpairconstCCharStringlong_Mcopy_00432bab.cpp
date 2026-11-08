@@ -11,6 +11,7 @@
 // and `p` in the dead p-argument slot [ebp+0xC]; in 0x0042CB90 the clone is the out-of-line 0x0042BE11. In this size TU the
 // clone needs __forceinline.
 // Layout: STLport _Rb_tree_node (color +0, parent +4, left +8, right +0xc, value +0x10); CCharString is one pointer.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharStringData;
@@ -47,7 +48,7 @@ public:
 protected:
     _Link_type _M_create_node(const V& x);               // 0x00431773
 protected:
-    __forceinline _Link_type _M_clone_node(_Link_type x)
+    FABLE_FORCEINLINE _Link_type _M_clone_node(_Link_type x)
     {
         _Link_type tmp = _M_create_node(x->_M_value_field);
         _S_color(tmp) = _S_color(x);

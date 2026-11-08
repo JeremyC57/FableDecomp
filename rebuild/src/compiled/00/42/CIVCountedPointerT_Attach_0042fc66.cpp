@@ -5,12 +5,13 @@
 // pointer as arguments, this is a thiscall on the pointer object itself. Body: `if (Object) { Object->Release(); Object = 0; }`
 // (IVRefCount +4, slot 1 on zero) then `Object = p` with no add-ref. The name Attach is behavioural (no Ego_r.pdb match).
 // Opt: size TU (`and dword ptr [esi],0`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                           // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) DeleteThis(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
 namespace N3DPrimitive { class CTriangleList : public CIVCountedPointeeBase { }; }
 template <class T> class CIVCountedPointer {

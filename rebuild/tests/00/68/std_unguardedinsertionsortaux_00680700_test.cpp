@@ -1,6 +1,7 @@
 // Behaviour test for 0x00680700 std::__unguarded_insertion_sort_aux<pair<EReactionSpeechType, long>*, ...,
 // CKeyPairCompareLess<EReactionSpeechType, long> >: behind a smaller-key guard, [first, last) ends up sorted by speech
 // type (signed), entries moved whole, equal keys in their original order.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -27,7 +28,7 @@ public:
 
 namespace nav {
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     _RandomAccessIter __next = __last;
     --__next;

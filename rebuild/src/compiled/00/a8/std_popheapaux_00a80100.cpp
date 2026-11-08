@@ -11,6 +11,7 @@
 // Shape: STLport verbatim -- `__pop_heap(first, last - 1, last - 1, _Tp(*(last - 1)), comp, (int*)0)` with __pop_heap
 //   __forceinline: the last entry's key dwords and byte are loaded first, `*result = *first` copies the four dwords
 //   (implicit assignment), then the explicit pair copy ctor builds the value in the argument area.
+#include "fable_compiler.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -33,7 +34,7 @@ template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compar
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x00A7F0F0
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

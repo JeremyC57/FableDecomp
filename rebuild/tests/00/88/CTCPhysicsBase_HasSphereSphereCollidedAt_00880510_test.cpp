@@ -3,6 +3,7 @@
 // observable, the reciprocal-square-root table filled from the real formula. Checks the no-contact path (false, the
 // response untouched) and the contact path: the contact point is `to` moved back along the unit from->to direction
 // by both radii, then dropped by this sphere's radius.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 #ifndef _MSC_VER
@@ -10,7 +11,7 @@
 #endif
 unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558 (filled in main)
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -26,7 +27,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
+    FABLE_FORCEINLINE void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
 };
 
 class CPhysicsCollideResponse { public:

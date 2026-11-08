@@ -9,6 +9,7 @@
 // out of line; the `test byte ptr [esp+8],1` free tail is the scalar deleting destructor.
 // Layout as the constructor: {vptr, shader +4, declaration +8, handle +0xc, refcount +0x10}; engine header
 // CVertexShader.h only describes the owner, so the data class is modelled here.
+#include "fable_compiler.h"
 struct IUnknownRetail {
     virtual long __stdcall QueryInterface(void* iid, void** out);
     virtual unsigned long __stdcall AddRef();
@@ -25,7 +26,7 @@ struct CVertexShaderData : CBaseClassNonCopyable {            // vtable 0x0129DA
     IUnknownRetail* m_pDeclaration;           // +0x08
     long            m_handle;                 // +0x0c
     long            m_refCount;               // +0x10
-    __forceinline virtual ~CVertexShaderData() // __forceinline keeps the releases in the ??_G body (else it collapses to `call ??1`)
+    FABLE_FORCEINLINE virtual ~CVertexShaderData() // __forceinline keeps the releases in the ??_G body (else it collapses to `call ??1`)
     {
         if (m_pDeclaration)
             m_pDeclaration->Release();

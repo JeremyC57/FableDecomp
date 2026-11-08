@@ -20,6 +20,7 @@
 //   _M_pop_front_aux 0x00493C25 binds it. These rows had modelled a non-nested CSetTextInfo and flat stand-in
 //   deques, so they bound `??1CSetTextInfo@@QAE@XZ`, `??0CSetTextInfo@@QAE@ABU0@@Z` and
 //   `?InitPrimitiveSlot@@YIXPAX@Z` for the same retail functions.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stdlib.h>                                     // malloc @ 0x00BFEA0E, free @ 0x00BFEA14
 #include <new>
@@ -51,7 +52,7 @@ namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
     void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -147,7 +148,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){} //inline native vptr reset then Thing destructor4AA840
 };
@@ -211,7 +212,7 @@ extern const unsigned char ResourceVTable[]; //0127094C
 // It is not the distinct CBaseIntelligentPointer constructor 00A01B10.
 struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  void InitializeCBaseObject(); //0099A380, this points to flattened base at offset0
- __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
+ FABLE_FORCEINLINE ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  ~ScriptResource(); //007E74D0
  bool IsScripting(); //00CD23B9
  void Release(); //00CD2770

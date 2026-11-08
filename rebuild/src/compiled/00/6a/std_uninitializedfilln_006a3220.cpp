@@ -11,6 +11,7 @@
 //   then CIntelligentPointer's copy constructor: base ctor, vtable store, SetPItem(other.GetPItem())) -- the landed
 //   __uninitialized_copy 0x006A31D0 model, including the second destination pointer for the pointer member.
 // Shape: /Gr TU (__fastcall: first ecx, n edx).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() { } };
 namespace FableFill_006a3220 {
@@ -25,7 +26,7 @@ struct CBaseIntelligentPointer {                        // 8 bytes: vtable + ite
 };
 template <class T>
 struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C for CIntelligentPointer<CThing>
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 template <class T1, class T2>
 struct pair {                                           // STLport pair: explicit memberwise copy constructor

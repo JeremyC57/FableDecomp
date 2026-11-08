@@ -1,4 +1,5 @@
 #pragma once
+#include "fable_compiler.h"
 
 #include "rebuild_abi.h"
 #include "fable_string.h"
@@ -80,7 +81,7 @@ struct CProgressDisplay
     void CalculateNextTextTag();
     CDataBank* GetPTextBank() const;
 
-    __forceinline static void* operator new(unsigned int size)
+    FABLE_FORCEINLINE static void* operator new(unsigned int size)
     {
         return FableOperatorNew(size);
     }
@@ -135,7 +136,7 @@ struct CCountedProgressDisplay
 
     CCountedProgressDisplay(CProgressDisplay* value);
 
-    __forceinline ~CCountedProgressDisplay()
+    FABLE_FORCEINLINE ~CCountedProgressDisplay()
     {
         if (reference != 0)
         {

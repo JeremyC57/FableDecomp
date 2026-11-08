@@ -8,6 +8,7 @@
 // Parent native PlayedGuildMasterCS+49 and GuardInWoodsCount+50 corroborate donor5D/64 (base shrunk14).
 // Naming wave 35: identity reg 00d84eff "GuardInWoods" in 00d84d60; Alloc 00d86390; vtable 012d4bb8 slot 1; PDB ?Main@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardInWoods::Main (wave3/labels_alloc.tsv); PDB ?Main@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGuardInWoods@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HeroSoulsGuildmasterScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 struct ScriptThingCopy:CScriptThing { ScriptThingCopy(const CScriptThing&); ~ScriptThingCopy(); };
@@ -15,7 +16,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

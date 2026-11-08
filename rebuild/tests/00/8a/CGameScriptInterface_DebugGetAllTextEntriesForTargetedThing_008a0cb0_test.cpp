@@ -1,5 +1,6 @@
 // Behaviour test for 008a0cb0: src/008a0cb0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(set<CCharString>& entries) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -103,7 +104,7 @@ class CMainGameComponent { public:
 extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 extern CCharString g_DebugNarrator;                      // 0x013B86F8
 extern long g_TextLanguage;                              // 0x013B86C0
-template <class T, long TYPE> __forceinline T* GetComponent(const CThing* thing)
+template <class T, long TYPE> FABLE_FORCEINLINE T* GetComponent(const CThing* thing)
 {
     const ComponentMap* map = &thing->Components;
     const ComponentEntry* it = map->LowerBound(TYPE);

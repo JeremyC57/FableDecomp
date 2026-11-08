@@ -8,6 +8,7 @@
 // component's pointer member at +4).
 // Shape: `GetInterface(...) && IS_THING_ALIVE(pSchool)` -- the `&&` of two bools returns through
 // a full register (`mov eax,1` / `xor eax,eax`) with both misses sharing the false tail. Frame: one `push ecx`.
+#include "fable_compiler.h"
 class CTCVillage;
 class CTCVillageMember {
 public:
@@ -36,7 +37,7 @@ class CThing { public:
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

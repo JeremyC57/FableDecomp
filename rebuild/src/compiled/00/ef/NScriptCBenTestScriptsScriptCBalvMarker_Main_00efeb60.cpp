@@ -16,6 +16,7 @@
 //   views and every exit destroys them by hand: __forceinline bodies at the first return, the out-of-line calls elsewhere.
 // Naming wave 35: identity reg 00efe5c6 "BalvMarker" in 00efe4b0; Alloc 00efea80; vtable 012f6f4c slot 1; PDB ?Main@CBalvMarker@CBenTestScriptsScript@NScript@@; refs=1; was under-qualified CBalvMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CBalvMarker@CBenTestScriptsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBalvMarker@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -32,7 +33,7 @@ class CCPPointerInfo { public:                                // CCountedPointer
 template <class T> class CCountedPointer { public:                          // CCountedPointer<T> {Data, Info}
     void*           Data;
     CCPPointerInfo* Info;
-    __forceinline void ReleaseInline()                 // ~CCountedPointer body
+    FABLE_FORCEINLINE void ReleaseInline()                 // ~CCountedPointer body
     {
         if (Info) {
             --Info->RefCount;
@@ -53,14 +54,14 @@ template <class T> class CCountedPointer { public:                          // C
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct CScriptThingInline : CBaseClass {                    // the same object, destroyed by the inline body
     CCountedPointer<CScriptThing> PImp;
-    __forceinline ~CScriptThingInline() { PImp.ReleaseInline(); }
+    FABLE_FORCEINLINE ~CScriptThingInline() { PImp.ReleaseInline(); }
 };
 struct CScriptThingLocal {                             // a by-value CScriptThing result held without an implicit destructor
     void*                vptr;
     CCountedPointer<CScriptThing> PImp;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
     void Destroy() { reinterpret_cast<CScriptThing*>(this)->CScriptThing::~CScriptThing(); }
-    __forceinline void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
+    FABLE_FORCEINLINE void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -76,7 +77,7 @@ struct CBaseObjectDtor {                               // the same root, as its 
     virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointer<CScriptThing> PImp;                         // +0x08
@@ -88,7 +89,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void s020(); virtual void s021(); virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025();
     virtual bool IsPerformingScriptTask() const;       // slot 26 (+0x68)
     void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
-    __forceinline void DestroyInline()                 // the compiler-generated destructor: member release, then the base
+    FABLE_FORCEINLINE void DestroyInline()                 // the compiler-generated destructor: member release, then the base
     {
         PImp.ReleaseInline();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

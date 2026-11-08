@@ -17,6 +17,7 @@
 //   sit 12 bytes lower (PEmitter at the odd offset +0xb5; the landed FinishAction 0x00845850).
 // Shape: GetSubDef / GetEffectFromString get same-TU stand-in bodies; operator= names the item before SetPItem (this+0xb5 loads late); the && chain carries the by-value def copy and the
 //   name temporary (conditional destruction flags 1/2); the sub def pointer lives to the end of the function.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
@@ -110,7 +111,7 @@ class CThing { public:
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -132,7 +133,7 @@ class CBaseObject;
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentThingPointer() : CBaseIntelligentPointer() { }
-    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 class CCreatureActionBase {
@@ -150,7 +151,7 @@ public:
     bool                     PostedDeed;        // +0xb4
     CIntelligentThingPointer PEmitter;          // +0xb5 (packed)
     virtual void PerformAction();
-    __forceinline CTCTrophy* GetTrophy() const
+    FABLE_FORCEINLINE CTCTrophy* GetTrophy() const
     {
         CTCTrophy* trophy;
         ((CThing*)PTrophyBeingShown.GetPItem())->GetInterface(&trophy, 0x39);

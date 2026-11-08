@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -926,7 +927,7 @@ struct CCameraScript {void* Vtable;bool IsFinished()const{typedef bool(CCameraSc
 struct CCameraScriptPointer {CCameraScript* Data;CCameraModeOwner* Info;};
 struct CCameraComponentEntry {int Key;CTCHeroRangedAttacks* Component;};
 struct CCameraComponentMap {CCameraComponentEntry* Begin;CCameraComponentEntry* End;CCameraComponentEntry* Capacity;CCameraComponentEntry* LowerBound(const int&)const;
- __forceinline CTCHeroRangedAttacks* Find()const{int key=0x81;CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->Key)p=End;return p->Component;}};
+ FABLE_FORCEINLINE CTCHeroRangedAttacks* Find()const{int key=0x81;CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->Key)p=End;return p->Component;}};
 class CThing { public:unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
 struct CCameraRangedMethods:CTCHeroRangedAttacks {float GetProjectileWeaponFirstPersonTargetingModeZoomFOV()const;}; //789CC0
 struct CCameraObservedPointer {void* Vtable;void* Info;const CThing* GetPItem()const;}; //A01B50

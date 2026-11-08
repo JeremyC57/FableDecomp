@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTavernGameShoveHaPennyDef::`scalar deleting destructor'(unsigned int) -- destroy the member at +0x1a4 out of line, the CAIStateGroup_HoverWanderAroundThing member at +0 destroyed out of line, then the flag-tested operator delete
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2D89.
@@ -18,7 +19,7 @@ struct CAIStateGroup_HoverWanderAroundThing {                                  /
 struct CHoverWanderAroundThingGroup_004e2d89 {                                   // non-polymorphic: the polymorphic CAIStateGroup_HoverWanderAroundThing is its FIRST MEMBER, not a base (no vtable store, members destroyed in reverse order)
     CAIStateGroup_HoverWanderAroundThing m_base;                                 // +0x00
     CMember_004df9ef m_member;                            // +0x1a4
-    __forceinline ~CHoverWanderAroundThingGroup_004e2d89() { }   // forced: the size-optimised TU would otherwise emit it out of line
+    FABLE_FORCEINLINE ~CHoverWanderAroundThingGroup_004e2d89() { }   // forced: the size-optimised TU would otherwise emit it out of line
 };
 
 // The delete-expression that makes the compiler emit the (non-virtual) scalar deleting destructor.

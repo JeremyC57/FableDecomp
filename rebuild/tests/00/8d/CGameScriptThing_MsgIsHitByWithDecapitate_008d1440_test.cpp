@@ -1,6 +1,7 @@
 // Behaviour test for 008d1440: src/008d1440.cpp copied verbatim; a live thing with an entity-events component (0x42)
 // answers true when either event search (hit-by, then the second kind) finds an event from the named attacker within
 // the running quest script's frame window; the filter carries the name copy, a false decapitate flag and the frames.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -61,8 +62,8 @@ struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PAct
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
 struct QuestManagerNative { unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
 extern QuestManagerNative* g_pQuestManager;             // 0x013B89FC
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 struct CEventHitBy;                                     // NEntityEvents::CEventHitBy
 struct CIsEventCreatedAfter { long Frame; CIsEventCreatedAfter(long f) : Frame(f) {} };
 struct CIsEventCreatedBeforeOrOn { long Frame; CIsEventCreatedBeforeOrOn(long f) : Frame(f) {} };
@@ -90,13 +91,13 @@ struct CTCEntityEventsNative {
     bool GetEvent(CEventHitBy** out, const CDecapitateFilter& filter) const;      // 0x008D4B50
     bool GetEvent(CEventKilledBy** out, const CDecapitateFilter& filter) const;   // 0x008D4C10
 };
-template <class E> __forceinline bool HasEvent(const CTCEntityEventsNative* events, const CDecapitateFilter& filter)
+template <class E> FABLE_FORCEINLINE bool HasEvent(const CTCEntityEventsNative* events, const CDecapitateFilter& filter)
 {
     E* event;
     return events->GetEvent(&event, filter);
 }
 
-template <class E> __forceinline bool HasEventFor(const CTCEntityEventsNative* events, const CCharString& name, const CEventFilter_HitWithDecapitate& decapitate, long current, long last)
+template <class E> FABLE_FORCEINLINE bool HasEventFor(const CTCEntityEventsNative* events, const CCharString& name, const CEventFilter_HitWithDecapitate& decapitate, long current, long last)
 {
     E* event;
     return events->GetEvent(&event, CDecapitateFilter(CIsHitEventHitByThingWithScriptName(name),

@@ -1,4 +1,5 @@
 // CHitLocationDef::operator=(const CHitLocationDef&) -- memberwise copy: CParentDefClassBase part, the shared physical-primitive counted pointer, armour, the five hit-response actions, effects, flags and priority; returns *this
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00461ACD, length 143 bytes.
 // Pragma: #pragma optimize("s", on) -- the def module is size-optimised (every copy goes through eax/al).
@@ -26,7 +27,7 @@ struct CPhysicalPrimitivePointer {      // CCountedPointer<NHitLocations::CPhysi
     CPhysicalPrimitiveBase* Data;
     CCPPointerInfo*         Info;
     void ShareData(CPhysicalPrimitiveBase* data, CCPPointerInfo* info);   // 0x00461B5C
-    __forceinline CPhysicalPrimitivePointer& operator=(const CPhysicalPrimitivePointer& other)
+    FABLE_FORCEINLINE CPhysicalPrimitivePointer& operator=(const CPhysicalPrimitivePointer& other)
     {
         ShareData(other.Data, other.Info);
         return *this;
@@ -35,7 +36,7 @@ struct CPhysicalPrimitivePointer {      // CCountedPointer<NHitLocations::CPhysi
 
 class CPhysicalPrimitiveInit { public:         // 8 bytes
     CPhysicalPrimitivePointer PPrimitive;
-    __forceinline CPhysicalPrimitiveInit& operator=(const CPhysicalPrimitiveInit& other)
+    FABLE_FORCEINLINE CPhysicalPrimitiveInit& operator=(const CPhysicalPrimitiveInit& other)
     {
         PPrimitive = other.PPrimitive;
         return *this;

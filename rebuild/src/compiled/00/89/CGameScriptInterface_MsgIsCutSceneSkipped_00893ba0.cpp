@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00893BA0, length 81 bytes.
 // Callees: the two frame getters @ 0x006E7510 / 0x006E7530 (both labelled GetMaxWorldFrameForMessages), CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, CanBeSeenOrHeard>> @ 0x008ABED0 (the bound filter by const reference). Shape: 0x14-byte frame: the type filter at +8, the frame filter at +0xc..+0x10, the Bind2 pair of pointers at +0x14..+0x18; `neg ; sbb ; neg` for the non-null result, `ret`.
 // Leaf: MsgIsCutSceneSkipped
+#include "fable_compiler.h"
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -46,7 +47,7 @@ struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
     void AssignHomeBuilding(CThing_Retail* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
     void SetNewBrain(CDefPointer_Retail brain);     // 0x00833010 (CThingAICreature::SetNewBrain, the counted def pointer by value)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

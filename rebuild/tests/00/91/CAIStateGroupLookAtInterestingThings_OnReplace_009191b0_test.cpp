@@ -1,5 +1,6 @@
 // Behaviour test for 009191b0: src/009191b0.cpp copied verbatim; the world seed, GFROR13, the frame clock and the idle
 // scheduler stubbed so the scheduled frame (now + (seed % 120 + 240) * fps) and the guarded ChooseNewIdle are observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -37,7 +38,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

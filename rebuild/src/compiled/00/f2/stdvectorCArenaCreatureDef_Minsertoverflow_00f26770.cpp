@@ -7,6 +7,7 @@
 // Shape (family L023): STLport 4.6 vector.c verbatim (the landed 0x0051C470 text, family L003) with every helper expanded:
 //   __uninitialized_copy / __uninitialized_fill_n __forceinline (plain `inline` leaves the tail copy out of line) and the
 //   inline __destroy_aux loop of `p->~T()` virtual calls.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -15,7 +16,7 @@ struct __false_type { __false_type() { } };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -23,7 +24,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

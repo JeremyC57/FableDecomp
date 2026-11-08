@@ -1,6 +1,7 @@
 // CAIStateGroup_KidHurtSelfRunToMother::Cleanup() -- remove added sad mode and the mother's matching child event.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00915190 length245. Shared group/brain headers; native thing mask24/28, table44, dead91,parent180.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_KidHurtSelfRunToMother.h"
 #include "engine/CAIStateGroupBase.h"
@@ -16,20 +17,20 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct KidEvent{char base[8];CBaseIntelligentPointer child;};
 struct KidEventType{unsigned long type;KidEventType(unsigned long t):type(t){}};
-struct KidEvents{bool GetEvent(KidEvent**,const KidEventType&);void RemoveEvent(KidEvent*); __forceinline KidEvent* FindChild(){KidEvent* event=0;GetEvent(&event,KidEventType(24));return event;}}; //00915760,008112d0
+struct KidEvents{bool GetEvent(KidEvent**,const KidEventType&);void RemoveEvent(KidEvent*); FABLE_FORCEINLINE KidEvent* FindChild(){KidEvent* event=0;GetEvent(&event,KidEventType(24));return event;}}; //00915760,008112d0
 class CTCCreatureModeManager{ public:public:
     void RemoveMode(unsigned long);   // 0x0073ABA0
 }; //0073aba0
 struct KidEntry{long key;void* value;};
 struct KidTable{KidEntry* begin;KidEntry* end;KidEntry* FindEntry(const long&); //0040f020
- template<int Key> __forceinline void* Lookup(){long key=Key;KidEntry* p=FindEntry(key);if(p==end)p=end;else if(p->key>Key)p=end;return p->value;}
+ template<int Key> FABLE_FORCEINLINE void* Lookup(){long key=Key;KidEntry* p=FindEntry(key);if(p==end)p=end;else if(p->key>Key)p=end;return p->value;}
 };
 class CBaseObject{ public:char beforeMask[0x24];unsigned long modesMask,eventsMask;char beforeTable[0x18];KidTable table;char beforeDead[0x45];unsigned char dead;char beforeParent[0xee];CBaseIntelligentPointer parent;
-__forceinline void GetModes(CTCCreatureModeManager** p){if(modesMask&0x20000)*p=(CTCCreatureModeManager*)table.Lookup<49>();}
-__forceinline void GetEvents(KidEvents** p){if(eventsMask&4)*p=(KidEvents*)table.Lookup<66>();}
+FABLE_FORCEINLINE void GetModes(CTCCreatureModeManager** p){if(modesMask&0x20000)*p=(CTCCreatureModeManager*)table.Lookup<49>();}
+FABLE_FORCEINLINE void GetEvents(KidEvents** p){if(eventsMask&4)*p=(KidEvents*)table.Lookup<66>();}
 };
 struct KidCleanup:CAIStateGroup_KidHurtSelfRunToMother{
-__forceinline CBaseObject* Creature(){return (CBaseObject*)((CAIStateGroupBase*)this)->PBrain->Creature;}
+FABLE_FORCEINLINE CBaseObject* Creature(){return (CBaseObject*)((CAIStateGroupBase*)this)->PBrain->Creature;}
 void Cleanup();};
 void KidCleanup::Cleanup(){
 if(AddedSadMode){CTCCreatureModeManager* modes;Creature()->GetModes(&modes);modes->RemoveMode(20);}

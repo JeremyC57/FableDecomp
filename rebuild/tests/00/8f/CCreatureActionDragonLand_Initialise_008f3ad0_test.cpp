@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -581,7 +582,7 @@ struct CInterfaceMap {struct Entry {long Type;void* Component;};Entry* First;Ent
 class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
- __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
+ FABLE_FORCEINLINE CPhysicsMethods* GetPhysics()const{return PPhysics;}
  const C3DVector& GetPosition() const; //004C73D0
  void SetSuspendAnimation(bool,const void*); //00833A10, requester keyed suspension
 };

@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::Main() -- the wronged wife: until she learns of the affair she complains when hit, talks to the hero (and, once the hero has discovered the infidelity, asks him whether her husband cheats), and now and then asks the hero where her husband is; told yes, she runs to her husband and argues with him, still reacting to hits and talk, and nags him through conversations.
 // Leaf: ?Main@CNOVI_AffairWife@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -25,8 +26,8 @@ template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748
 extern "C" int __cdecl rand();
 extern CGameScriptInterfaceBase* pDSTGame;
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& thing_a, const CScriptThing& thing_b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing):Thing(thing) {}

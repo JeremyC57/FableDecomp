@@ -1,4 +1,5 @@
 // test for 00431773 _M_create_node
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <new>
@@ -14,7 +15,7 @@ template <class T1, class T2> struct pair {
     typedef T1 first_type;
     T1 first;
     T2 second;
-    __forceinline pair(const pair& p) : first(p.first), second(p.second) {}
+    FABLE_FORCEINLINE pair(const pair& p) : first(p.first), second(p.second) {}
 };
 template <class T> struct less {
     bool operator()(const T& x, const T& y) const { return x < y; }
@@ -23,7 +24,7 @@ template <class T> class allocator {};
 template <class V> struct _Select1st {
     const typename V::first_type& operator()(const V& x) const { return x.first; }
 };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 struct _Rb_tree_node_base {
     bool                _M_color;                        // +0x00
     _Rb_tree_node_base* _M_parent;                       // +0x04

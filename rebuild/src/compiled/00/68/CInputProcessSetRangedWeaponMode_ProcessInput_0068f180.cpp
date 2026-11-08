@@ -12,6 +12,7 @@
 //   fetch; the out-parameter lookup leaves the component in eax), then the live-hero test and the event built by a
 //   `__forceinline AddGameEvent(long type)` helper on CProcessedInput (the &event push precedes the input reload; the
 //   Valid 1 shares cl with the dead-bit mask test).
+#include "fable_compiler.h"
 class CInputEvent;
 struct CMemoryBuffer {
 };
@@ -27,7 +28,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    __forceinline void AddGameEvent(long type)
+    FABLE_FORCEINLINE void AddGameEvent(long type)
     {
         CGameEvent gameEvent(type);
         AddGameEvent(gameEvent);
@@ -45,7 +46,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -66,13 +67,13 @@ class CThing { public:
     unsigned char  _pad50[0x91 - 0x50];
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline bool HasTC(long kind) const
+    FABLE_FORCEINLINE bool HasTC(long kind) const
     {
         if (m_tcMask[kind >> 5] & (1UL << (kind & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** out, long kind) const   // the out-parameter lookup
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const   // the out-parameter lookup
     {
         if (HasTC(kind)) {
             *out = (T*)m_tcs.Find(kind);

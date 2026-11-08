@@ -12,6 +12,7 @@
 // Shape: the checked out-parameter GetInterface keeps the component in eax for the byte store; the helper result is negated as
 // `found ? false : true` (8-bit neg/sbb/inc in bl, kept across the string destructor); the fallback position is a
 // named temporary filled member by member (x, y copied, z raised by 1.7) and assigned with the implicit operator=.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -40,7 +41,7 @@ public:
     unsigned char _pad54[0x10];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

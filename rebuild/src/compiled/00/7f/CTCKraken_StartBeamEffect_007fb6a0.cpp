@@ -17,6 +17,7 @@
 // the bool in [esp+0Fh]); the new effect is assigned through a CIntelligentPointer temporary whose operator= names the item
 // in a local (an inline `SetPItem(other.GetPItem())` schedules the `lea esi,[edi+34h]` before GetPItem); then IS_THING_ALIVE
 // (IsDead() member form) and the out-parameter GetInterface.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
@@ -98,7 +99,7 @@ public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

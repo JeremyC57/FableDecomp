@@ -10,6 +10,7 @@
 // with null-def temporaries (dtor folded away) while its size is not a multiple of the row width (the bound re-read
 // every pass), then assigned back.
 // Layout (retail; Ego_r.pdb names): ParentThing +0x04, ReceivedAbilityOrder vector<EHeroAbility> +0x154.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -34,7 +35,7 @@ template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other);
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

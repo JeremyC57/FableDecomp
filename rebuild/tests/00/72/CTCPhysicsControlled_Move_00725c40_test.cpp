@@ -1,4 +1,5 @@
 // Behaviour test for CTCPhysicsControlled::Move (0x00725c40): teleport branch, physics branch call order, margin choice, impulse cleared.
+#include "fable_compiler.h"
 #include <math.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -33,7 +34,7 @@ class CThing {
 public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                // +0x20
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
 #define V4(n) virtual void v##n##a() { } virtual void v##n##b() { } virtual void v##n##c() { } virtual void v##n##d() { }
 struct CTCPhysicsControlled {

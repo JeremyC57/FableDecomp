@@ -23,6 +23,7 @@
 //   +0xc / +0xd.
 // Shape: the first def read is an inline PeekDefinition (the CDefPointer temporary released before the float load);
 //   GetDef and GetTCDriver get same-TU noinline stand-ins that only write their out slot.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -124,13 +125,13 @@ public:
     CTCBase* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     void Kill(bool immediately);                        // 0x004C9B80
     bool GetTCDriver(CTCDParticleEmitter** out);        // 0x004ACB50 (GetTCDriver<CTCDParticleEmitter>)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -138,7 +139,7 @@ public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline const CTCBase* GetConstTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetConstTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

@@ -14,6 +14,7 @@
 //   vector<_Tp, allocator<_Tp> > over _Vector_base / _STLP_alloc_proxy, so its helpers bind the family's symbols:
 //   _M_clear 0x00477BFC, _Destroy<CEngineLocalDetailObjectDef*> 0x004774B9 (as erase 0x00477E36 binds it) and the
 //   out-of-line member template _M_allocate_and_copy<const CEngineLocalDetailObjectDef*> 0x00477C18.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -39,13 +40,13 @@ struct random_access_iterator_tag { };
 template <class _ForwardIterator>
 void __fastcall _Destroy(_ForwardIterator __first, _ForwardIterator __last);             // 0x004774B9
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val)
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val)
 {
     new (__p) _T1(__val);
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -55,7 +56,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -67,7 +68,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

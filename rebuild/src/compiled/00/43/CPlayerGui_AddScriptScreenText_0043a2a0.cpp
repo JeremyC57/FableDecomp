@@ -22,6 +22,7 @@
 // Model: local -- engine/CPlayerGui.h and CWorld.h exist, but the generated header is data-only (pack(1), no member functions,
 // no virtuals: the vptr and counted pointers are flattened into raw words); this body is a CPlayerGui member function and calls
 // CWorld::GetFrame, so both are local (ScriptScreenText +0x324).
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 class CWideString {
@@ -80,13 +81,13 @@ template <class T> class list {                          // STLport 4.x: the sen
 public:
     typedef _List_node<T> _Node;
     _Node* _M_node;
-    __forceinline _Node* _M_create_node(const T& x)
+    FABLE_FORCEINLINE _Node* _M_create_node(const T& x)
     {
         _Node* p = (_Node*)malloc(sizeof(_Node));
         new (&p->_M_data) T(x);
         return p;
     }
-    __forceinline _List_node_base* insert(_List_node_base* position, const T& x)
+    FABLE_FORCEINLINE _List_node_base* insert(_List_node_base* position, const T& x)
     {
         _Node* tmp = _M_create_node(x);
         _List_node_base* n = position;
@@ -97,8 +98,8 @@ public:
         n->_M_prev = tmp;
         return tmp;
     }
-    __forceinline _List_node_base* end() { return _M_node; }
-    __forceinline void push_back(const T& x) { insert(end(), x); }
+    FABLE_FORCEINLINE _List_node_base* end() { return _M_node; }
+    FABLE_FORCEINLINE void push_back(const T& x) { insert(end(), x); }
 };
 }
 class CPlayerGui {

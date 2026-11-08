@@ -10,6 +10,7 @@
 // Shape: the twin of GetBet 0x005EA1A0: a zeroed CDefPointer filled by GetSubDef (same-TU stand-in body that writes only the
 // out slot, so the def stays in edi for the release), the amount (`CurrentMoney`, less BaseBet in state 4) in a local, and
 // `GetText(def->PlayersMoney) + IntToWideString(money)` as one expression (right operand first, own frame word per temporary).
+#include "fable_compiler.h"
 #include <stddef.h>
 class CWideString {
 public:
@@ -20,7 +21,7 @@ public:
     void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-__forceinline CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
+FABLE_FORCEINLINE CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
 {
     CWideString text;
     text.Sprintf(L"%d", value);

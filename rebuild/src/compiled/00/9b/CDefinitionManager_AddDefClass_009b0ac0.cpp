@@ -16,6 +16,7 @@
 // re-tested; CCharString's GetString/GetLength are written null-first (`p == 0 ? x : p->...`); CDefClassInfo assigns Create then Name in
 // its ctor body (an init-list Create is stored before the vector zeroes).
 // Leaf: AddDefClass
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 class CCharStringData { public: char* Data; long Length; };
 class CCharString { public:
@@ -66,12 +67,12 @@ struct CDefClassInfoMap {
     CKeyPairCompareLess Comp;                          // +0x0c
     bool Unsorted;                                     // +0x0d
     void push_back(const SDefClassInfoPair& value);    // 0x009B9170
-    __forceinline void Add(unsigned long key, const CDefClassInfo& value)
+    FABLE_FORCEINLINE void Add(unsigned long key, const CDefClassInfo& value)
     {
         push_back(SDefClassInfoPair(key, value));
         Unsorted = true;
     }
-    __forceinline void Sort()
+    FABLE_FORCEINLINE void Sort()
     {
         if (Unsorted) {
             SortDefClassInfo(_M_start, _M_finish, Comp);

@@ -12,6 +12,7 @@
 //   tag (an uninitialised, ctor-less `__false_type isPOD;`) no longer escapes, so both inlined push_backs share one
 //   byte slot (`lea eax,[esp+1Fh]`) and the strings / def pointer / vector take retail's slots 0x10..0x20 (frame 0x158,
 //   not 0x160); with CalcAndLookup visible the `effect = 0` store sinks next to the def-pointer zero as retail's.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CTCParamsBase;
@@ -20,7 +21,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1

@@ -1,5 +1,6 @@
 // Behaviour test for 007e5ff0: src/007e5ff0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCOracleMinigame::GetTextWithNarrator(unsigned long textId)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -55,7 +56,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

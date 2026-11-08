@@ -7,6 +7,7 @@
 //   deque::push_back of 8-byte elements).
 // Shape: the empty tag temporaries have user constructors (no zero byte store) and the random_access_iterator_tag
 //   is homed in the dead `result` argument slot.
+#include "fable_compiler.h"
 struct SPair8 { long first; long second; };      // the 8-byte element
 struct deque_SPair8;                             // std::deque<SPair8>
 
@@ -21,7 +22,7 @@ struct back_insert_iterator_deque {              // std::back_insert_iterator<de
 back_insert_iterator_deque __fastcall __copy(const SPair8* __first, const SPair8* __last, back_insert_iterator_deque __result,
                                              const random_access_iterator_tag&, long*);   // 0x007B5400
 
-__forceinline back_insert_iterator_deque __fastcall __copy_aux(const SPair8* __first, const SPair8* __last, back_insert_iterator_deque __result,
+FABLE_FORCEINLINE back_insert_iterator_deque __fastcall __copy_aux(const SPair8* __first, const SPair8* __last, back_insert_iterator_deque __result,
                                                         const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (long*)0);

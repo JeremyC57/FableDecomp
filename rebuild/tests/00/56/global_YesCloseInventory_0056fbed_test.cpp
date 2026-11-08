@@ -1,5 +1,6 @@
 // Behaviour test for 0x0056FBED YesCloseInventory: when the main player's character is alive, its experience
 // inventory component (interface 0x16) has CloseInventoryInternal(true) called; a dead or missing hero does nothing.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -41,7 +42,7 @@ public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char DeadFlags;                         // +0x91 (bit 0: dead; retail)
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;

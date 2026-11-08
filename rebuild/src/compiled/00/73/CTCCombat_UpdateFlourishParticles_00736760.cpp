@@ -9,6 +9,7 @@
 // Layout: engine/CTCCombat.h is the PDB view; retail CurFlourishTimer is +0x84 and FlourishParticles (a 12-byte
 // STLport vector of 8-byte CIntelligentPointer<CThing>) +0x88, 0x10 below the PDB (+0x94/+0x98). CThing Dead
 // is bit 0 of +0x91, the interface bitset +0x20 (0x46 = +0x28 bit 6, 0x48 = +0x28 bit 8), the map +0x44.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };
@@ -33,7 +34,7 @@ public:
     unsigned char Dead : 1;                         // +0x91 bit 0
     bool IsDead() const { return Dead; }                // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
     void Kill(bool b);                              // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -58,7 +59,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-template <class T> __forceinline bool __fastcall IS_THING_ALIVE(const T& p)   // Ego_r ??$IS_THING_ALIVE@V?$CIntelligentPointer@...@@@@YI_NABV...@Z
+template <class T> FABLE_FORCEINLINE bool __fastcall IS_THING_ALIVE(const T& p)   // Ego_r ??$IS_THING_ALIVE@V?$CIntelligentPointer@...@@@@YI_NABV...@Z
 {
     return p.GetPItem() && !p.GetPItem()->IsDead();
 }
@@ -93,7 +94,7 @@ private:
     void AttemptToStartParticle(CThing* weapon);    // 0x00735FD0
     void UpdateFlourishParticles();
 public:
-    __forceinline void KillFlourishParticles()
+    FABLE_FORCEINLINE void KillFlourishParticles()
     {
         CurFlourishTimer = 0;
         for (int i = 0; i < FlourishParticles.size(); ++i) {

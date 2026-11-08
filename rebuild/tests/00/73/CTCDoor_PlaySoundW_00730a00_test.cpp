@@ -1,5 +1,6 @@
 // Behaviour test for 00730a00: src/00730a00.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCDoor::PlaySoundW(const CCharString& soundName)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -222,13 +223,13 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x70 - 0x4c];
     CBaseDefPointer PBaseDef;                       // +0x70 CDefPointer<const CThingBaseDef>
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

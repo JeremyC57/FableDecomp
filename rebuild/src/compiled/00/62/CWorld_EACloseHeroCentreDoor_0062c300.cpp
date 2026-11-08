@@ -12,6 +12,7 @@
 // interface map +0x44, Dead +0x91 bit 0.
 // Shape: retail does not check HasTC before calling the component: the inline PeekTC returns an unset local when the
 // thing lacks the component (VC reads the dead UID frame word on that path); the lookup key uses the dead `event` slot.
+#include "fable_compiler.h"
 struct CMemoryBuffer {
     unsigned char Data[0x20];                      // +0x00
     long          Length;                          // +0x20
@@ -47,7 +48,7 @@ class CThing { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
@@ -56,7 +57,7 @@ class CThing { public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline T* PeekTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long interfaceType)
     {
         T* component;
         if (HasTC(interfaceType))

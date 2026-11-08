@@ -1,5 +1,6 @@
 // Behaviour test for 00922750: src/00922750.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CAIStateGroup_Drunk::TalkToSelfUpdate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -46,7 +47,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

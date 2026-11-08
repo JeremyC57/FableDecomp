@@ -8,6 +8,7 @@
 //   CIVCountedPointeeBase (vptr, IVRefCount = 1) holding four CCharStrings; its generated destructor runs only the
 //   member destructors (the base vptr store is dead), and the base vptr store in its constructor is dead too.
 // Layout: C3DMeshMaterial per Ego_r.pdb (MaterialIndex +4 .. DegenerateTriangles +0x2b). Local model: no engine header.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -33,8 +34,8 @@ class CMemoryDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;             // +0x10
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void ReadInline(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void ReadInline(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -48,10 +49,10 @@ class CMemoryDataInputStream { public:
         else
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline bool ReadBool() { unsigned char value; ReadInline(&value, sizeof(value)); return value != 0; }
-    __forceinline unsigned long ReadULong() { unsigned long value; ReadInline(&value, sizeof(value)); return value; }
-    __forceinline float ReadFloat() { float value; ReadInline(&value, sizeof(value)); return value; }
-    __forceinline unsigned short ReadUShort() { unsigned short value; ReadInline(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; ReadInline(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; ReadInline(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; ReadInline(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned short ReadUShort() { unsigned short value; ReadInline(&value, sizeof(value)); return value; }
 };
 
 

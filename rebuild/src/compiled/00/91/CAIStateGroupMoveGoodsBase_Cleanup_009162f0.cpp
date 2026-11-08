@@ -16,6 +16,7 @@
 // a miss (VC threads the 0 straight past the null test). The physics component is read through an inline const getter
 // (keeps `push 1` after the object expression); the CTCSolidToThing name is a named CCharString in the else block
 // (built before the AddTC pushes, sharing the key slot: frame = one `push ecx`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -39,7 +40,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -52,7 +53,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* p;
         if (GetInterface(&p, interfaceType))

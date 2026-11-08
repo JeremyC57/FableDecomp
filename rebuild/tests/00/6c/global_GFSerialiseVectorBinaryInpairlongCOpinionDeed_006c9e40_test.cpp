@@ -1,6 +1,7 @@
 // Behaviour test for 0x006C9E40 GFSerialiseVectorBinaryIn<pair<long, COpinionDeed*> > (source body copied; the 32-bit
 // `long` written as int for the x64 g++ build; resize and the overflow path stubbed): read the count, resize, then read
 // each element's handle and deed pointer in place.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -25,8 +26,8 @@ static int g_overflow = 0, g_resize = 0;
 
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char* buffer, int size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, int size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, int size)
     {
         __int64 newPosition = (__int64)(unsigned int)(position + size);
         if (!IsValidPosition(newPosition))
@@ -93,7 +94,7 @@ template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {
     }
 };
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
 {
     int value;
     stream.Read(&value, sizeof(value));

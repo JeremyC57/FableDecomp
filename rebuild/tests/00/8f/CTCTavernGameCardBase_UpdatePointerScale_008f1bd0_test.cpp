@@ -11,6 +11,7 @@
 //        against the integer constant held in edx (also the 1.0f store); each arm stores and joins the shared
 //        `fstp PointerScale`; the graphic-appearance component comes from the out-parameter GetInterface(T**, type)
 //        template (the 0x007504E0 shape), which leaves it in eax above the scale push (`mov eax,[eax+4] ; push ecx ; mov ecx,eax`).
+#include "fable_compiler.h"
 class CTCBase;
 
 namespace NGraphicAppearance {
@@ -29,7 +30,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

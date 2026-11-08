@@ -2,6 +2,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail0x0093C4E0,275bytes. GetPItemA01B50;IsStopping8FD010;GetPerceivedThing7446A0;
 // LowerBound4365B0;IsThingAttackable7F6170;AreThingsEnemies76D2F0;IsWillingToAttackTarget8648A0.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_StealthSeekEnemy.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCPerceiveThing.h"
@@ -15,7 +16,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
-    template<class T> __forceinline bool GetInterface(T** out,long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long type) {
         if(bits[type>>5]&(1UL<<(type&31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; const CInterfaceMap::Entry* it=map->LowerBound(key);
             if(it==map->last || it->first>type) it=map->last;
@@ -35,8 +36,8 @@ bool __fastcall IsWillingToAttackTarget(CThing*,CThing*);
 struct CAIStateGroup_StealthSeekEnemy_Adapter : CAIStateGroup_StealthSeekEnemy {
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  CBaseIntelligentPointer& Enemy() { return *(CBaseIntelligentPointer*)PEnemy; }
- __forceinline bool AreEnemies() { CThing* c=(CThing*)Brain()->Creature; return AreThingsEnemies(((CThing*)Enemy().GetPItem()),c); }
- __forceinline bool WillAttack() { CThing* c=(CThing*)Brain()->Creature; return IsWillingToAttackTarget(c,((CThing*)Enemy().GetPItem())); }
+ FABLE_FORCEINLINE bool AreEnemies() { CThing* c=(CThing*)Brain()->Creature; return AreThingsEnemies(((CThing*)Enemy().GetPItem()),c); }
+ FABLE_FORCEINLINE bool WillAttack() { CThing* c=(CThing*)Brain()->Creature; return IsWillingToAttackTarget(c,((CThing*)Enemy().GetPItem())); }
  bool IsStopping(); bool IsStillRunnable(CTCPerceiveThingMethods*);
 };
 bool CAIStateGroup_StealthSeekEnemy_Adapter::IsStillRunnable(CTCPerceiveThingMethods* perception) {

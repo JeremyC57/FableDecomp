@@ -8,6 +8,7 @@
 // Shape (family K103, representative 0x00478C79): the landed vector<CMultiStaticMeshEntryDef>::_M_fill_insert 0x004EDFDC with
 //   every copy helper inline; x_copy's destructor is the out-of-line ~COpinionDeedReactionDef 0x0047955B. The element is modelled on a packed 0x39-byte CParentDefClassBase
 //   (virtual destructor 0x00430300) with its own bytes opaque.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -46,10 +47,10 @@ public:
 };
 
 template <class _T1, class _T2>
-__forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -67,7 +68,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { };
 struct random_access_iterator_tag : public bidirectional_iterator_tag { };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                                  _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -76,14 +77,14 @@ __forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _Ran
 }
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                        _BidirectionalIter2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for ( ; __first != __last; ++__first)
         *__first = __val;

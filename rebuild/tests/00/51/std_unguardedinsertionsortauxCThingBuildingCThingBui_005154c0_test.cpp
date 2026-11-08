@@ -1,5 +1,6 @@
 // Behaviour test for 0x005154C0 std::__unguarded_insertion_sort_aux<CThingBuilding**, CThingBuilding*, CIsHouseLargerThan>:
 // insert every building of [first, last) backwards (no lower bound test) so the range ends sorted largest house first.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __fastcall
@@ -17,11 +18,11 @@ struct CBuildingSimDefinition {
     CRefCounted Ref;                               // +0x04
     unsigned char _pad08[0x44 - 0x08];
     long HouseSize;                                // +0x44
-    __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
 class CThingBuilding {

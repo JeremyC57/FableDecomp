@@ -11,6 +11,7 @@
 // engine/CCreatureAction_CastBattleCharge.h has Override +0x12c, Dir +0x12d, Distance +0x13c, Level +0x140,
 // IsZTargetting +0x144 (PDB); retail is PDB - 0x18 (+0x114/+0x115/+0x124/+0x128/+0x12c), as in the landed CastAssassinRush.
 // The component's fields (distance +0x3c, level +0x40, target pointer +0x44) are descriptive.
+#include "fable_compiler.h"
 #include <string.h>
 class CTCParamsBase;
 class CBaseObject;
@@ -23,8 +24,8 @@ class CThing;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };

@@ -23,6 +23,7 @@
 //   (0 / false, the same base call and SetCombatAnimation as 0x00860150); the clone goes through an inline CBrainOutput
 //   helper taking `const CCreatureActionBase&` (a call on the named local itself is devirtualised by VC7.1, retail keeps
 //   the slot-11 virtual call).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -39,13 +40,13 @@ public:
     unsigned long m_presentBits[9];                         // +0x20 UsingComponents bitset
     CInterfaceMap m_interfaces;                             // +0x44 Components
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CTCBase* PeekTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* PeekTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -92,7 +93,7 @@ public:
     bool Flag;                                              // +0x118
     CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim, long sit_mode_type,
                                      bool flag);            // 0x00860150
-    __forceinline CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim)
+    FABLE_FORCEINLINE CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim)
         : CCombatActionBase(creature, 0x32, CSoundPair()), SitModeType(0), Flag(false)
     {
         SetCombatAnimation(anim);

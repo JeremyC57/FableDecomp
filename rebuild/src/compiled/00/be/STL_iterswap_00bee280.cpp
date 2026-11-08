@@ -8,6 +8,7 @@
 // STLport's iter_swap (caller: __unguarded_partition @ 0x00BEEC60, this chunk). Element: see 0x00BEE320.
 // Shape: STLport 4.6 iter_swap with __iter_swap inline (`__forceinline`: VC7.1 keeps it out of line otherwise): `T tmp =
 // *a; *a = *b; *b = tmp;`.
+#include "fable_compiler.h"
 #include <new>
 #include <stddef.h>
 
@@ -103,7 +104,7 @@ typedef CKeyPairCompareLess<CDecalKey, CEngineTextureDecal> CDecalEntryLess;
 
 namespace std {
 template <class ForwardIter1, class ForwardIter2, class T>
-__forceinline void __iter_swap(ForwardIter1 a, ForwardIter2 b, T*)
+FABLE_FORCEINLINE void __iter_swap(ForwardIter1 a, ForwardIter2 b, T*)
 {
     T tmp = *a;
     *a = *b;

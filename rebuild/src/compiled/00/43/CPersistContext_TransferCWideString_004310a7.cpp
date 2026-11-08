@@ -13,6 +13,7 @@
 //   CheckCRC; its TransferBinaryIn for CWideString is inline (`value = stream.ReadNullTerminatedWString()`, as in the landed
 //   three-argument Transfer<CWideString> 0x00410AC0). Each case arm `return`s: with `break` VC7.1 swaps the two frame slots
 //   (traits at [ebp-8], the read temporary at [ebp-4]); with `return` the traits keep [ebp-4] like retail.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 #define FABLE_RETAIL_CPERSISTCONTEXT
@@ -26,7 +27,7 @@
 #include "engine/CPersistContext.h"
 #include "engine/CPersistTraits.h"
 
-template <> __forceinline void CPersistTraits<CWideString>::TransferBinaryIn(CMemoryDataInputStream& stream, CWideString& value)
+template <> FABLE_FORCEINLINE void CPersistTraits<CWideString>::TransferBinaryIn(CMemoryDataInputStream& stream, CWideString& value)
 {
     value = stream.ReadNullTerminatedWString();
 }

@@ -17,6 +17,7 @@
 // Layout: retail CTCInGameMenu (12-byte containers; engine/CTCInGameMenu.h carries PDB offsets): InGameMenuOpen
 // +0x0C, Components +0x58, CurStartPauseTime +0x68, AccumulativePausedTime +0x70, PVideoOptionsNotAcceptedDialog
 // +0xB0, PVideoOptionsChangedDialog +0xB4; CUIIconsDef's sound entry at +0x1A8 is not identified.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -24,15 +25,15 @@ double __fastcall GFGetTime();                       // 0x009E1BC0
 
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CUISound;
 struct CUIIconsDef : CDefBase {
@@ -42,7 +43,7 @@ struct CUIIconsDef : CDefBase {
 struct CIconsDefPointer {                            // CDefPointer<const NUISystem::CUIIconsDef>
     CUIIconsDef* Object;
     CIconsDefPointer() {}
-    __forceinline ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CUIIconsDef* operator->() const { return Object; }
 };
 

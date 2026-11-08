@@ -17,6 +17,7 @@
 // CTCPhysicsBase (vtable 0x0125D2C4): slot 42 (+0xA8) a flag query (base 0x006B1100 returns false, CTCPhysicsStandard
 // 0x00724BC0 returns bit 4 of +0x85), slot 93 (+0x174) GetPhysicsMeshInfo (the landed 0x006B0850 notes). CPhysicsMeshObject
 // (Ego_r.pdb, 0x40 bytes: vptr, Mesh +4, PositionMatrix +8, Scale +0x38, OO_Scale +0x3C) is modelled opaque.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CThingPhysicsMeshInfo;
@@ -57,7 +58,7 @@ public:
 
 // The mesh half of the test as a __forceinline helper: the mesh object is a named local built before the point is pushed
 // and destroyed at the helper's end (no conditional-destruction flag, as a temporary inside the `&&` would need).
-__forceinline bool MeshBoundsContainPoint(const CTCPhysicsBase* tc, const C3DVector& pos)
+FABLE_FORCEINLINE bool MeshBoundsContainPoint(const CTCPhysicsBase* tc, const C3DVector& pos)
 {
     if (tc->GetPhysicsMeshInfo() == 0)
         return false;
@@ -70,7 +71,7 @@ class CThingFilter_BlockerBoundsContainPoint
 public:
     const void*      Owner;                                                          // +0x00 (not read)
     const C3DVector* Pos;                                                            // +0x04
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         CTCPhysicsBase* physics = thing.PhysicsTC;
         bool blocks = (physics && physics->IsFlag42()) ? thing.CanBlockNavigatingCreature() : thing.CanBlockNavigatingCreature();

@@ -35,6 +35,7 @@
 //   The save loop takes a non-escaping copy (`iterator entry = it;`) so the node stays in esi across the TransferOut calls.
 //   0x00756350 is the private const _Rb_tree::_M_find (one push, link* returned in eax and compared with the header), which the
 //   inline map::find wraps as iterator(_M_find(k)); find itself would return the iterator through a hidden pointer.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -62,7 +63,7 @@ public:
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator+=(const char* text);   // 0x0099F100
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

@@ -1,6 +1,7 @@
 // 008f7bd0 CreateFootEffectForCreature (catalog; bsim NCombatActionHelpers::CreateFootEffectForCreature(CThingCreatureBase&,long,const CWorldMap&,const CGameDefinitionManager&,const C3DVector&,vector<CThing*>*); model kept in NFoot008f7bd0)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: CreateFootEffectForCreature
+#include "fable_compiler.h"
 #include <new>
 #include <stdlib.h>
 namespace NFoot008f7bd0 {
@@ -13,21 +14,21 @@ struct CCharString {CCharStringData* data;CCharString():data(0){}__declspec(noin
 extern CCharString LeftFoot,RightFoot;
 template<class T> struct vector {
  T *first,*last,*end;
- __forceinline vector():first(0),last(0),end(0){}
+ FABLE_FORCEINLINE vector():first(0),last(0),end(0){}
  __declspec(noinline) ~vector(){for(T* i=first;i!=last;++i)i->~T();free(first);}
  template<class U> __declspec(noinline) void _M_insert_overflow(T* pos,const T& value,const U&,int count,int skipTail){unsigned n=first?last-first:0;unsigned cap=n+(n<(unsigned)count?(unsigned)count:n);T* fresh=(T*)malloc(cap*sizeof(T));T* out=fresh;T* i;for(i=first;i!=pos;++i)new(out++)T(*i);for(int k=0;k<count;++k)new(out++)T(value);if(!skipTail)for(i=pos;i!=last;++i)new(out++)T(*i);for(i=first;i!=last;++i)i->~T();free(first);first=fresh;last=out;end=fresh+cap;}
- __forceinline void push_back(const T& value){if(last!=end){if(last)new(last)T(value);++last;}else _M_insert_overflow(last,value,Tag(),1,1);}
+ FABLE_FORCEINLINE void push_back(const T& value){if(last!=end){if(last)new(last)T(value);++last;}else _M_insert_overflow(last,value,Tag(),1,1);}
 };
 struct CBaseClass {__declspec(noinline) CBaseClass();__declspec(noinline) virtual ~CBaseClass();};
 CBaseClass::CBaseClass(){} CBaseClass::~CBaseClass(){}
 struct OtherRecord {unsigned hash;CBaseClass value;float x,y;};
-template<class T> struct Values:vector<T> {bool order,dirty;__forceinline Values():vector<T>(),dirty(false){}__forceinline ~Values(){}};
-struct CParticleUpdateParameters:CBaseClass {Values<SVectorParam> values;Values<OtherRecord> other;__forceinline CParticleUpdateParameters():CBaseClass(),values(),other(){}__declspec(noinline) virtual ~CParticleUpdateParameters();};
+template<class T> struct Values:vector<T> {bool order,dirty;FABLE_FORCEINLINE Values():vector<T>(),dirty(false){}FABLE_FORCEINLINE ~Values(){}};
+struct CParticleUpdateParameters:CBaseClass {Values<SVectorParam> values;Values<OtherRecord> other;FABLE_FORCEINLINE CParticleUpdateParameters():CBaseClass(),values(),other(){}__declspec(noinline) virtual ~CParticleUpdateParameters();};
 CParticleUpdateParameters::~CParticleUpdateParameters(){}
 struct CThing;struct CTCDParticleEmitter {void AttachToThing(CThingCreatureBase*,int,const CCharString&,int,int);void SetEmitterUpdateParameters(const CParticleUpdateParameters&);static CThing* __fastcall Create(long,const C3DVector&,bool);};
 struct CThing {char pad[40];unsigned flags;char gap[48];CTCDParticleEmitter* extra;};
 struct CThingCreatureBase {const C3DVector& GetPosition()const;};
-struct CThingVector {CThing **first,**last,**end;template<class U> __declspec(noinline) void _M_insert_overflow(CThing** pos,CThing*const& value,const U&,int count,int skipTail){unsigned n=first?last-first:0;unsigned cap=n+(n<(unsigned)count?(unsigned)count:n);CThing** fresh=(CThing**)malloc(cap*sizeof(CThing*));CThing** out=fresh;CThing** i;for(i=first;i!=pos;++i)*out++=*i;for(int k=0;k<count;++k)*out++=value;if(!skipTail)for(i=pos;i!=last;++i)*out++=*i;free(first);first=fresh;last=out;end=fresh+cap;}__forceinline void push_back(CThing*const& e){if(last!=end){if(last)new(last)CThing*(e);++last;}else _M_insert_overflow(last,e,Tag(),1,1);}};
+struct CThingVector {CThing **first,**last,**end;template<class U> __declspec(noinline) void _M_insert_overflow(CThing** pos,CThing*const& value,const U&,int count,int skipTail){unsigned n=first?last-first:0;unsigned cap=n+(n<(unsigned)count?(unsigned)count:n);CThing** fresh=(CThing**)malloc(cap*sizeof(CThing*));CThing** out=fresh;CThing** i;for(i=first;i!=pos;++i)*out++=*i;for(int k=0;k<count;++k)*out++=value;if(!skipTail)for(i=pos;i!=last;++i)*out++=*i;free(first);first=fresh;last=out;end=fresh+cap;}FABLE_FORCEINLINE void push_back(CThing*const& e){if(last!=end){if(last)new(last)CThing*(e);++last;}else _M_insert_overflow(last,e,Tag(),1,1);}};
 __declspec(noinline) bool __fastcall GetBones(CThingCreatureBase*,vector<CCharString>& names){names.push_back(LeftFoot);names.push_back(RightFoot);return true;}
 struct CCRC{static unsigned __fastcall Calc(unsigned,const char*,int);};
 // Layout: GetBones8f78e0 appends two owned Strings via99ec30; vector dtor414ea0 calls99eae0 then free.

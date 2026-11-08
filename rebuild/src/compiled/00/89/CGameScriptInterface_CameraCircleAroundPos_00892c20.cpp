@@ -9,6 +9,7 @@
 // Layout: Ego_r.pdb CScriptModuleDolly (0x68): PosAround +0x4c, DollyVector +0x58, TimeFor360Turn +0x64.
 // Shape: /O2 (16-aligned entry); __forceinline CCountedPointer(T*) handing Object to the info block; C3DVector user copy
 // ctor (direct-offset member copies).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 namespace NCameraModes {
 class CScriptModuleBase {
@@ -37,7 +38,7 @@ public:
     T*              Object;
     CCPPointerInfo* Info;
     static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
-    __forceinline CCountedPointer(T* object) : Object(object)
+    FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
             Info = new CCPPointerInfo(DeleteObject, Object);

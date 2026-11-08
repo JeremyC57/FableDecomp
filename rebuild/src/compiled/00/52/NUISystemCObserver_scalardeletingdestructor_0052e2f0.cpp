@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052E2F0, length 39 bytes.
 // Leaf: ??_GCObserver@NUISystem@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x01246020) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CMember_0052e1e0 {
     unsigned char _body[4];
@@ -13,7 +14,7 @@ struct CObserverBase_0052e2f0 {
 namespace NUISystem {
 class CObserver : public CObserverBase_0052e2f0 { public:              // vtable 0x01246020
     CMember_0052e1e0 m_member4;                    // +0x04
-    __forceinline virtual ~CObserver() { }
+    FABLE_FORCEINLINE virtual ~CObserver() { }
 };
 
 }

@@ -20,6 +20,7 @@
 // Shape: the stress test's arguments evaluate right to left (seed first, then the search tools into edx); the movement
 //   vector and the camera distance follow the landed player / bullet-time bodies; the weapon trail comes through the
 //   plain entry pick (component loaded straight into ecx).
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -68,7 +69,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

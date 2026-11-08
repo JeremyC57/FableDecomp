@@ -7,6 +7,7 @@
 // _M_end_of_storage = _M_start + n. Catalog label Vector_AllocateUints is descriptive only.
 // Layout: STLport _Vector_base {_M_start +0, _M_finish +4, _STLP_alloc_proxy _M_end_of_storage +8} (12 bytes).
 // Opt: size TU (unaligned entry, `pop ecx` after the cdecl malloc); allocate() is __forceinline -- plain inline stays a call.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stdlib.h>
 namespace NHeroInformationScreens { class CBase; }
@@ -14,7 +15,7 @@ namespace std {
 template <class T> class allocator {
 public:
     allocator() {}
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
 template <class V, class A> struct _STLP_alloc_proxy : public A {
     V _M_data;

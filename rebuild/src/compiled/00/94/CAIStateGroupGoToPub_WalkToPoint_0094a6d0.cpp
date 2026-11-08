@@ -9,6 +9,7 @@
 // Globals: none (0.01f look tolerance is an immediate).
 // Layout: engine/CAIStateGroupBase.h (PBrain +4) + Ego_r.pdb CAIStateGroup_GoToPub PPub +0x14, PBar +0x1C
 //          (CIntelligentPointer); CRightHandedSet Up +0, Forward +0xC.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroupBase.h"
 
 class CThing;
@@ -40,7 +41,7 @@ class CThing : public CThingPhysical { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

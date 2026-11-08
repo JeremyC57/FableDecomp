@@ -2,6 +2,7 @@
 // Flags: /O1 /Oy-
 // Leaf: Assign
 // Layout: retail 0046ed15 reads vector pointers at +0,+4,+8; signed pointer differences divide by 80. Element identity follows the constructor vtable and PDB; donor layout differs.
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <new>
 // Layout: quarantined donor definition differs from retail; retail element size 80 from idiv and constructor increments.
@@ -23,7 +24,7 @@ public:
  T* AllocateCopy(unsigned n,const T* first,const T* last);
  void Dispose();
  static T* __fastcall Copy(const T* first,const T* last,T* result,const EmptyTag& tag=EmptyTag());
- static __forceinline T* Construct(const T* first,const T* last,T* result) {
+ static FABLE_FORCEINLINE T* Construct(const T* first,const T* last,T* result) {
   T* current=result;
   for(;first!=last;++first,++current) if(current) new(current) T(*first);
   return current;

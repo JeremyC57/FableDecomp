@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -58,7 +59,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.GetPItem()->GetInterface(&kraken, 0xe2);

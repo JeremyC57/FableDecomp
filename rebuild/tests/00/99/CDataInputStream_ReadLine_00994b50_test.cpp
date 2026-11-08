@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -205,8 +206,8 @@ class CDataInputStream : public CDataStream { public:
     unsigned long SourceChunkStreamPos;
     long SourceChunkBytesRemaining;
     void ReadWithSrcChunkOverflow(unsigned char*,long); //00993CA0
-    static __forceinline bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
-    __forceinline void Read(void* dest,long n) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dest,long n) {
         __int64 newPosition=(__int64)(StreamPos+n);
         if(!IsValidPosition(newPosition)) return;
         if(SourceChunkBytesRemaining>=n) {
@@ -216,7 +217,7 @@ class CDataInputStream : public CDataStream { public:
             StreamPos+=n;
         } else ReadWithSrcChunkOverflow((unsigned char*)dest,n);
     }
-    __forceinline char ReadChar() { char value; Read(&value,1); return value; }
+    FABLE_FORCEINLINE char ReadChar() { char value; Read(&value,1); return value; }
     CStringReadResult ReadLine();
 };
 CStringReadResult CDataInputStream::ReadLine() {

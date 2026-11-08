@@ -15,6 +15,7 @@
 //   EAChargeQuickAccessItem 0x00629B10 (engine/ headers carry the PDB's 16-byte containers): CThing interface bitset
 //   +0x20, interface map +0x44, Dead +0x91 bit 0, CThingCreatureBase PCurrentAction +0x100 (PDB +0x11C); CPlayer
 //   PlayerInterface +0xC; CWorld DefinitionManager +0x10.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -27,7 +28,7 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline long ReadLong() { long value; Read(4, &value); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(4, &value); return value; }
 };
 class CGameEvent { public:
     long          Type;                            // +0x00
@@ -107,7 +108,7 @@ class CThingCreatureBase { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;
@@ -116,7 +117,7 @@ class CThingCreatureBase { public:
             it = map->last;
         return (T*)it->component;
     }
-    template<class T> __forceinline T* GetTC2(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC2(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;

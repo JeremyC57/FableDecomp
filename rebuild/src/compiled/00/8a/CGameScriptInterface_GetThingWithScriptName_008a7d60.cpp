@@ -10,6 +10,7 @@
 // Leaf: GetThingWithScriptName
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
+#include "fable_compiler.h"
 class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
@@ -98,7 +99,7 @@ class CGameScriptInterface { public:
     CPlayerManager_Retail*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual CScriptThing GetThingWithScriptName(const CCharString& scriptName) const;
-    __forceinline void FindThingsWithScriptName(CCharString name, vector<CThing_Retail*>& things) const
+    FABLE_FORCEINLINE void FindThingsWithScriptName(CCharString name, vector<CThing_Retail*>& things) const
     {
         World->Things->FindThingsWithScriptName(name, things);
     }

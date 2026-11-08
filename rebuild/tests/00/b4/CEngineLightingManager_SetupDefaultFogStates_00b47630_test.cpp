@@ -1,5 +1,6 @@
 // Behaviour test for 00b47630: final.cpp copied verbatim, the two declared CShaderRenderManager callees stubbed below.
 // CEngineLightingManager::SetupDefaultFogStates()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -52,7 +53,7 @@ class CMatrix3x4 { public:
         m[0] = a; m[1] = b; m[2] = c; m[3] = d; m[4] = e; m[5] = f;
         m[6] = g; m[7] = h; m[8] = i; m[9] = j; m[10] = k; m[11] = l;
     }
-    __forceinline void PreMultiply(const CMatrix3x4& l)
+    FABLE_FORCEINLINE void PreMultiply(const CMatrix3x4& l)
     {
         CMatrix3x4 a(*this);
         m[0] = a.m[3] * l.m[1] + a.m[6] * l.m[2] + a.m[0] * l.m[0];
@@ -100,7 +101,7 @@ class CRenderStateManager { public:
     CTrackedRenderState  m_fogVertexMode;          // +0x29a8
     CTrackedRenderState  m_fogTableMode;           // +0x29bc
 
-    static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderStateManager* mgr)
+    static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderStateManager* mgr)
 {
         if (state.m_value != value) {
             if ((mgr->m_captureMask & state.m_captureMask) == 0) {

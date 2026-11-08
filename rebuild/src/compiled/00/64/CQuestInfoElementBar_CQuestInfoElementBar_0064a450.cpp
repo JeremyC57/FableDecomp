@@ -7,12 +7,13 @@
 // at +0x48); the thing's UID at +0x18 and its map number (a short) at +0x8e.
 // Shape: size TU (`optimize("s", on)` + `("y", off)`): each zero float is its own `fldz ; fstp`, the zero Graphic2 is
 // `and dword [esi+34h],0`; both colours copy the same argument through the __forceinline CRGBColour copy ctor / Set.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CThing;
 class CThingPhysical { public:

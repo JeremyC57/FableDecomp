@@ -3,13 +3,14 @@
 // Grade: RELOCATION_MATCH -- named bone reference; stepwise sums in retail term order (operator*= rows, inverse
 //   translation); the c11 cofactor written out twice (in det and in r.E11) instead of a named local, so its CSE
 //   temporary dies at r.E11 (fxch reuse) and the cofactor products take retail's operand order
+#include "fable_compiler.h"
 class CMatrix3x4 {
 public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
     float E41, E42, E43;
-    __forceinline CMatrix3x4& operator*=(const CMatrix3x4& b)
+    FABLE_FORCEINLINE CMatrix3x4& operator*=(const CMatrix3x4& b)
     {
         CMatrix3x4 a = *this;
         { float t = a.E11 * b.E11; t += a.E12 * b.E21; t += a.E13 * b.E31; E11 = t; }
@@ -26,7 +27,7 @@ public:
         { float t = a.E41 * b.E13; t += a.E42 * b.E23; t += a.E43 * b.E33; t += b.E43; E43 = t; }
         return *this;
     }
-    __forceinline void GetInverse(CMatrix3x4& r) const
+    FABLE_FORCEINLINE void GetInverse(CMatrix3x4& r) const
     {
         float det = (E32 * E13 - E33 * E12) * E21 + (E23 * E12 - E22 * E13) * E31 + (E22 * E33 - E32 * E23) * E11;
         float invDet = 1.0f / det;

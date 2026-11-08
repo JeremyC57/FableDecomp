@@ -15,9 +15,10 @@
 //   first)/2), *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }` --
 //   the size test is `and eax,-16 ; cmp eax,100h`, the decremented budget is stored back to its argument slot.
 // Label correction: catalogued as `Sort_QuicksortPhase_CCharString`; the body is STLport `__introsort_loop`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

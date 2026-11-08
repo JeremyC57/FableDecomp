@@ -1,5 +1,6 @@
 // Behaviour test for 00703590: final.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -96,7 +97,7 @@ class CThingPhysical { public:
     CTCPhysicsBase*       PhysicsTC;                    // +0x60
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -109,7 +110,7 @@ class CThingPhysical { public:
         }
         return false;
     }
-    template<class T> __forceinline bool PickInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool PickInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -120,7 +121,7 @@ class CThingPhysical { public:
         }
         return false;
     }
-    template<class T> __forceinline bool PickInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool PickInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -131,7 +132,7 @@ class CThingPhysical { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

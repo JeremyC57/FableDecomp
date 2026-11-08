@@ -18,6 +18,7 @@
 //   shared goto label -- VC7.1 then cross-jumps the copies and keeps the first one as the fall-through of the first test
 //   (a goto to one shared block gets that block sunk below the loop); the frames-per-second global read into a local
 //   before the GetWorldFrame call; the creature through an inline getter (`mov eax,[esi+4] ; mov eax,[eax+18h]`).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -29,7 +30,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.Get() != 0) {
         if (!p.Get()->IsDead())

@@ -9,6 +9,7 @@
 // (`CTC* tc; if (GetInterface(0x3d,&tc)) ...; return tc;`): retail reads the dead key slot `[esp+4]` when the bit is clear.
 // Layout (supersedes any local-model note above): engine/CTCCreatureGenerator.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCCreatureGenerator CTCCreatureGeneratorDonor
 #include "engine/CTCCreatureGenerator.h"
 #undef CTCCreatureGenerator
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(long interfaceType, T** ppOut)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(long interfaceType, T** ppOut)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -76,7 +77,7 @@ public:
 };
 #pragma pack(pop)
 
-static __forceinline CTCCreatureGenerator* GetGenerator(CThing* thing)
+static FABLE_FORCEINLINE CTCCreatureGenerator* GetGenerator(CThing* thing)
 {
     CTCCreatureGenerator* gen;
     thing->GetInterface(0x3d, &gen);

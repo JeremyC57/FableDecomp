@@ -13,6 +13,7 @@
 // allocated in the base constructor, the count zeroed by the derived init list (after the call, as retail),
 // then `_M_empty_initialize()` (red colour, null root, leftmost/rightmost = header, each re-reading the header pointer);
 // the members follow in declaration order with the zero register shared.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
 namespace std {
@@ -32,30 +33,30 @@ template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
 };
 
 template <class T> struct allocator {
-    __forceinline T* allocate(unsigned int n) { return static_cast<T*>(malloc(n * sizeof(T))); }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return static_cast<T*>(malloc(n * sizeof(T))); }
 };
 template <class T> struct less {};
 
 template <class T, class A> struct _STLP_alloc_proxy : A {
     T _M_data;
-    __forceinline _STLP_alloc_proxy(const A&, T p) : _M_data(p) {}
+    FABLE_FORCEINLINE _STLP_alloc_proxy(const A&, T p) : _M_data(p) {}
 };
 
 template <class V, class A> struct _Rb_tree_base {
     typedef _Rb_tree_node<V> _Node;
     _STLP_alloc_proxy<_Rb_tree_node_base*, allocator<_Node> > _M_header;   // +0x00
-    __forceinline _Rb_tree_base(const A&) : _M_header(allocator<_Node>(), 0) { _M_header._M_data = _M_header.allocate(1); }
+    FABLE_FORCEINLINE _Rb_tree_base(const A&) : _M_header(allocator<_Node>(), 0) { _M_header._M_data = _M_header.allocate(1); }
 };
 
 template <class K, class V, class C, class A> struct _Rb_tree : _Rb_tree_base<V, A> {
     unsigned int _M_node_count;                                             // +0x04
     C            _M_key_compare;                                            // +0x08
-    __forceinline _Rb_tree(const C& comp) : _Rb_tree_base<V, A>(A()), _M_node_count(0), _M_key_compare(comp)
+    FABLE_FORCEINLINE _Rb_tree(const C& comp) : _Rb_tree_base<V, A>(A()), _M_node_count(0), _M_key_compare(comp)
     {
         _M_empty_initialize();
     }
     private:
-    __forceinline void _M_empty_initialize()
+    FABLE_FORCEINLINE void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;      // _S_rb_tree_red
         this->_M_header._M_data->_M_parent = 0;
@@ -69,7 +70,7 @@ template <class K, class T, class C = less<K>, class A = allocator<pair<K const,
 public:
     typedef pair<K const, T> value_type;
     _Rb_tree<K, value_type, C, A> _M_t;
-    __forceinline map() : _M_t(C()) {}
+    FABLE_FORCEINLINE map() : _M_t(C()) {}
 };
 }
 

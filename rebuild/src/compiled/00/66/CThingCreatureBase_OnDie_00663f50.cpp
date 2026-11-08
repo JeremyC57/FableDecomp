@@ -29,6 +29,7 @@
 //   def index are read into locals before Create (retail reads them ahead of the mode's virtual call); the body's physics
 //   TC goes through an inline accessor (keeps the object in edi across the inner call); the physics TC and the world are
 //   locals ahead of AddMessage; each entity-events component is fetched before its `new` event.
+#include "fable_compiler.h"
 #define VF(n) virtual void v##n();
 #include "engine/C3DVector.h"
 class CRightHandedSet;
@@ -150,13 +151,13 @@ public:
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;    // 0x004C73D0
     void AddAndCopyTC(const CTCBase* tc, bool activate);   // 0x004C9F60
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -165,7 +166,7 @@ public:
             it = map->end();
         return it->second;
     }
-    template <class T> __forceinline bool GetConstInterface(const T** ppOut, long type) const
+    template <class T> FABLE_FORCEINLINE bool GetConstInterface(const T** ppOut, long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -177,7 +178,7 @@ public:
         }
         return false;
     }
-    __forceinline const CTCBase* GetConstTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetConstTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

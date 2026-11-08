@@ -15,6 +15,7 @@
 //   models).
 // Shape: the empty-name test is the inline operator==("") written as two tests that jump to the empty arm; the script-name
 //   filter copies the name into the dead name slot and the GetEvent result is kept in bl across its destructor.
+#include "fable_compiler.h"
 #include <string.h>
 #include "engine/CGameScriptThing.h"
 #include "engine/CSpawnedFuncBase.h"
@@ -72,8 +73,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 struct CEventHitBy;                                     // NEntityEvents::CEventHitBy
 struct CIsEventCreatedAfter { long Frame; CIsEventCreatedAfter(long f) : Frame(f) {} };
 struct CIsEventCreatedBeforeOrOn { long Frame; CIsEventCreatedBeforeOrOn(long f) : Frame(f) {} };
@@ -94,7 +95,7 @@ struct CTCEntityEventsNative {
     bool GetEvent(CEventHitBy** out, const CFilter_Bind3<CIsEventCreatedAfter, CIsEventCreatedBeforeOrOn, CIsHitEventHitByThingWithScriptName>& filter) const;   // 0x008D4840
     bool GetEvent(CEventHitBy** out, const CInFramesFilter& filter) const;   // 0x008D47A0
 };
-template <class F> __forceinline bool HasHitEvent(const CTCEntityEventsNative* events, const F& filter)
+template <class F> FABLE_FORCEINLINE bool HasHitEvent(const CTCEntityEventsNative* events, const F& filter)
 {
     CEventHitBy* event;
     return events->GetEvent(&event, filter);

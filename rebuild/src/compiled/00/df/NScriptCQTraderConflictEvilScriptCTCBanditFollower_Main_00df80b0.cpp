@@ -18,6 +18,7 @@
 // Shape: the CTC_BanditFighter row 0x00DF8970 (same TU) plus a local scripted-thing handle and a paused movie sequence
 //   (the CTH_ThunderBoy row 0x00EDF3A0 handle/movie model); each condition is a bool materialised over conditional
 //   CCharString temporaries.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -39,7 +40,7 @@ typedef long EScriptEntityMoveType;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 struct CResourcePImp {                                 // the handles' counted implementation pointer
     void* Data;

@@ -12,6 +12,7 @@
 // slot 1.
 // Shape: the landed DestroyThemeAt model (same TU): the layer out-slot and the def pointer homed in the dead `pos` slot;
 // the def's release has no null test and the flag is read before it (`setne bl`).
+#include "fable_compiler.h"
 #include <new>
 #include "engine/C3DVector.h"
 class CDefPointeeBase { public:
@@ -23,7 +24,7 @@ class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x98 - 0x08];
     long          DestructionThemeDef;             // +0x98
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }

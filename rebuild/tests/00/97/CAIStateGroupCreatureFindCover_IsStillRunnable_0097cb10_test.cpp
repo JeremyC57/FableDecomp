@@ -4,6 +4,7 @@
 // LowerBound (linear walk), GetThingInPrimarySlot, IsProjectileWeapon and GetPosition. Checks: dead or missing enemy ->
 // false; no carrying interface -> false; empty primary slot -> false; a non-projectile weapon -> false; a projectile
 // weapon with the enemy facing us -> true, facing away -> false.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 #ifndef _MSC_VER
@@ -41,7 +42,7 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -53,9 +54,9 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
+    FABLE_FORCEINLINE void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 struct CPhysicsBody {
@@ -72,18 +73,18 @@ class CThing
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad_0x4c[0x60 - 0x4c];
     CPhysicsBody* PhysicsBody;                      // +0x60
-    __forceinline CPhysicsBody* GetPhysicsBody() const { return PhysicsBody; }
+    FABLE_FORCEINLINE CPhysicsBody* GetPhysicsBody() const { return PhysicsBody; }
     unsigned char _pad_0x64[0x91 - 0x64];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     const C3DVector* GetPosition() const;           // 0x004C73D0
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -98,7 +99,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
@@ -130,7 +131,7 @@ class CTCWeapon                                    // interface type 0x48 (word 
     bool IsProjectileWeapon();                      // 0x005DAA40
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0)
     {

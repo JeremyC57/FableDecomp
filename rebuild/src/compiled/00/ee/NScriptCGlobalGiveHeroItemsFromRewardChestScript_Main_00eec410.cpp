@@ -15,6 +15,7 @@
 // Shape: the target's IsAlive / GetDefName are the inline CScriptThing virtuals expanded on the local.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00eec750 at 00cda0dd with name "Global_GiveHeroItemsFromRewardChest"; Alloc news + stores script vtable 012f5730; PDB ?Alloc@CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CGlobal_GiveHeroItemsFromRewardChestScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGlobal_GiveHeroItemsFromRewardChestScript@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -26,7 +27,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
@@ -932,7 +933,7 @@ class CCharString { public:
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  CCharString(const CCharString& other);             // 0x0099EC30
  ~CCharString();                                    // 0x0099EAE0
- __forceinline bool operator==(const char* text) const
+ FABLE_FORCEINLINE bool operator==(const char* text) const
  {
   if (PStringData == 0) {
    if (strcmp(text, "") == 0)
@@ -979,7 +980,7 @@ static inline CCharString DefNameOf(const CScriptThing& t)
 namespace NScript {
 class CIsThingConscious : public CPredicateBase { public:          // vtable 0x012C2FE8
  CScriptThing Thing;
- __forceinline CIsThingConscious(const CScriptThing& t) : Thing(t) { }
+ FABLE_FORCEINLINE CIsThingConscious(const CScriptThing& t) : Thing(t) { }
  virtual bool operator()() const; virtual CPredicateBase* Clone() const;
  ~CIsThingConscious() { }
 };

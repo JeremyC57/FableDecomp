@@ -14,8 +14,9 @@
 //   the sub-def out pointer is zeroed after the def fetch, then copied into a holder whose destructor releases it with
 //   no null test (`dec [ecx+4] ; jne`), so the def stays in ecx for the radius read; the radius stays on the FPU for
 //   the conditional 0.1 pad.
+#include "fable_compiler.h"
 #include <new>
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 extern "C" void* malloc(unsigned int size);        // 0x00BFEA0E
 
 struct CTCBase_Retail;
@@ -30,7 +31,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020 (the key by address)
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -89,8 +90,8 @@ class CThingCreatureBase { public:
     CTCMap_Retail  m_tcs;                          // +0x44
     unsigned char  _pad50[0x20];
     CDefClassBase* PDef;                           // +0x70
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool GetInterface(T** out, long kind)   // the out-parameter lookup: the component stays in eax
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)   // the out-parameter lookup: the component stays in eax
     {
         if (HasTC(kind)) {
             *out = (T*)m_tcs.Find(kind);
@@ -120,7 +121,7 @@ class CNavigatorExternalInterface { public:               // vtable 0x01241D74
 class CGroundNavigatorExternalInterface : public CNavigatorExternalInterface { public:   // vtable 0x0125EC9C
     CThingCreatureBase* Creature;                  // +0x04
     float               Radius;                    // +0x08
-    __forceinline CNavigatorObstacles* GetPNavigatorObstacles()   // inline twin of 0x006CD7B0
+    FABLE_FORCEINLINE CNavigatorObstacles* GetPNavigatorObstacles()   // inline twin of 0x006CD7B0
     {
         CTCCreatureNavigation_Retail* navigation;
         if (Creature->GetInterface(&navigation, 7))

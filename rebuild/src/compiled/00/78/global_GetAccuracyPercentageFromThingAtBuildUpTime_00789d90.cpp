@@ -16,6 +16,7 @@
 //   and the result is parked in the dead def slot while the by-value CDefPointer releases its count (`dec ; jne ;
 //   call [vtbl+4]`); the function pointer below only keeps the file-local function emitted.
 
+#include "fable_compiler.h"
 class CTCBase;
 enum EHeroTrainableStatType { };
 
@@ -42,13 +43,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                      // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                          // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

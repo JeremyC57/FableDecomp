@@ -10,6 +10,7 @@
 // GetPItem for the null and the dead test, Kill gets a fresh GetPItem, and the clear is `p = CIntelligentPointer<CThing>(0)`
 // -- a frame temporary (base ctor, vtable store, SetPItem(0)) copied through the inline `T* item = other.GetPItem();
 // SetPItem(item);` assignment and destroyed by the base destructor (CIntelligentPointer declares no destructor).
+#include "fable_compiler.h"
 class CBaseObject;
 
 #include "engine/CThing.h"
@@ -54,7 +55,7 @@ class CTCFishingSpot : public CTCBase { public:                           // vta
     CIntelligentPointer<CThing> PParticle2;                 // +0x14
     CIntelligentPointer<CThing> PParticleFish;              // +0x1c
     bool                        Enabled;                    // +0x24
-    static __forceinline void RemoveParticle(CIntelligentPointer<CThing>& particle)
+    static FABLE_FORCEINLINE void RemoveParticle(CIntelligentPointer<CThing>& particle)
     {
         if (IS_THING_ALIVE(particle)) {
             ((CThing*)particle.GetPItem())->Kill(true);

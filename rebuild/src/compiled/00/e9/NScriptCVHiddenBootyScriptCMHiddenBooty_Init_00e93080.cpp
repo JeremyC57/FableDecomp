@@ -13,6 +13,7 @@
 // trailing `true` is pushed before the nested lookup (right to left).
 // Naming wave 35: identity reg 00e92a99 "M_HiddenBooty" in 00e92a50; Alloc 00e92f70; vtable 012ecae8 slot 2; PDB ?Init@CM_HiddenBooty@CV_HiddenBootyScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_HiddenBooty::Init (wave3/labels_alloc.tsv); PDB ?Init@CM_HiddenBooty@CV_HiddenBootyScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CM_HiddenBooty@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
     void* m_pData;
@@ -26,7 +27,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

@@ -7,6 +7,7 @@
 // Shape: the prologue of the landed IsActionWithStrikeEventHelperName @ 0x00857150 (same inline GetPActiveStrikeEvent
 //          helper and models); each return copy-constructs the hidden result in place, so both paths end with their own
 //          epilogue. HelperPointName is the CCharString at +4 of the event (Ego_r.pdb).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -64,7 +65,7 @@ class CCombatActionBase { public:
     unsigned char _pad20[0xbc - 0x20];          // +0x20
     CStrikeEventList StrikeEvents;              // +0xbc
     unsigned char _padc4[0x114 - 0xc4];         // +0xc4
-    __forceinline CStrikeEvent* GetPActiveStrikeEvent() const     // inlined helper: the for_each result is a temporary read through its returned pointer
+    FABLE_FORCEINLINE CStrikeEvent* GetPActiveStrikeEvent() const     // inlined helper: the for_each result is a temporary read through its returned pointer
     {
         return for_each(StrikeEvents.begin(), StrikeEvents.end(),
                         CGetActiveStrikeEventThatIsFirstToFinish(FramesRunning)).m_pFirstToFinish;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -19,14 +20,14 @@ struct AstmMap {
     AstmNode* lb(int* pKey);
     AstmNode* first;
     AstmNode* end;
-    __forceinline AstmTarget* Find(int kind)   // the inlined map find: end when the key is absent
+    FABLE_FORCEINLINE AstmTarget* Find(int kind)   // the inlined map find: end when the key is absent
     {
         int key = kind;
         AstmNode* node = lb(&key);
         return ((node == end || kind < node->key) ? end : node)->value;
     }
 };
-__forceinline AstmTarget* GetTCIfPresent(unsigned char* thing, int kind)
+FABLE_FORCEINLINE AstmTarget* GetTCIfPresent(unsigned char* thing, int kind)
 {
     AstmTarget* tc;                                // deliberately unset when the component is absent
     if (*(unsigned int*)(thing + 0x30) & 0x4000)

@@ -11,6 +11,7 @@
 //   destructor (`T* data = Data; if (data) { if (--data->RefCount == 0) data->Release(); Data = 0; }`: the
 //   local keeps the pointer in ecx and the `dec` flags feed the branch; the clear is re-addressed through the node). erase
 //   is `__forceinline`: as a plain inline VC7.1 keeps this payload's erase out of line (22-byte pop_front calling it).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
 class CCharString {
@@ -108,7 +109,7 @@ public:
     void _M_deallocate(_Node* __p) { if (__p != 0) free(__p); }
     iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
 
-    __forceinline iterator erase(iterator __position)
+    FABLE_FORCEINLINE iterator erase(iterator __position)
     {
         _List_node_base* __next_node = __position._M_node->_M_next;
         _List_node_base* __prev_node = __position._M_node->_M_prev;

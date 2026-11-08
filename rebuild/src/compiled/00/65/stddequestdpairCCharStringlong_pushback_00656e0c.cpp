@@ -9,6 +9,7 @@
 // Shape: STLport verbatim: `if (finish.cur != finish.last - 1) { _Copy_Construct(finish.cur, t); ++finish.cur; }
 // else _M_push_back_aux_v(t);` -- `last - 1` is the `sub eax,8` on the loaded last pointer.
 // Opt: size TU (`optimize("s", on)`; no frame-pointer pragma: with `y` off the lane adds `push ebp`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -30,12 +31,12 @@ template <class _T1, class _T2> struct pair {
     pair(const pair& __p);                          // 0x0050B7B0 (out of line in retail)
 };
 
-__forceinline size_t __deque_buf_size(size_t n) { return n < 128 ? (128 / n) : 1; }
+FABLE_FORCEINLINE size_t __deque_buf_size(size_t n) { return n < 128 ? (128 / n) : 1; }
 
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> struct allocator {
-    __forceinline _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -50,7 +51,7 @@ template <class _Tp> struct _Deque_iterator {
     _Tp*         _M_first;                               // +0x04
     _Tp*         _M_last;                                // +0x08
     _Map_pointer _M_node;                                // +0x0c
-    __forceinline void _M_set_node(_Map_pointer __new_node)
+    FABLE_FORCEINLINE void _M_set_node(_Map_pointer __new_node)
     {
         _M_last = (_M_first = *(_M_node = __new_node)) + ptrdiff_t(_S_buffer_size());
     }

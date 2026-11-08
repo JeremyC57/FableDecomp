@@ -16,6 +16,7 @@
 //   and the no-def arm needs no release at all; each arm returns true through its own tail; both
 //   failures share the final `return false`; the GetDef argument goes through an inline const GetCreatureDef()
 //   accessor (BrainDef reloaded after the test, as in InitialiseFromDef 0x008338D0).
+#include "fable_compiler.h"
 class CDefString { public:
     long TablePos;
     bool operator==(const char* text) const;    // 0x005B3440
@@ -96,7 +97,7 @@ class CThingAICreature : public CThingCreatureBase { public:
     bool          PerformingVillageTaskFlag : 1;    // +0x1c8 bit 0
     bool          AISuspended : 1;                  // +0x1c8 bit 1
     CSuspenderSet Suspenders;                       // +0x1cc
-    __forceinline void AddSuspender(void* suspender)
+    FABLE_FORCEINLINE void AddSuspender(void* suspender)
     {
         Suspenders.InsertUnique(suspender);
         AISuspended = !Suspenders.empty();

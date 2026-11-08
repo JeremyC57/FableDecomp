@@ -19,6 +19,7 @@
 //   "UnLimboSword", 0, ParentClass, &T::UnLimboSword), "")` whose three name temporaries get conditional-destruction flags.
 // Naming wave 35: identity reg 00ea7849 "EmptyGrave" in 00ea7800; Alloc 00ea7990; vtable 012ee4c0 slot 1; PDB ?Main@CEmptyGrave@CV_MazeResearchScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CEmptyGrave::Main (wave3/labels_alloc.tsv); PDB ?Main@CEmptyGrave@CV_MazeResearchScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CEmptyGrave@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_MazeResearchScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -43,7 +44,7 @@ class CScriptThing : public CBaseClass { public:                           // vt
     virtual bool MsgIsUsedBy(const CCharString& name) const;   // slot 20 (+0x50)
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() { }                   // inline here; out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() { }                   // inline here; out-of-line copy 0x004AA840
 };
 class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x0127094C, 0x10 bytes
     virtual void h000();
@@ -89,7 +90,7 @@ public:
     CCutsceneFlagMap cs_flags;                          // +0x58 (PDB +0x6c)
     void UnLimboSword();                                // 0x00EA85E0
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { AddSpawnedFunction(func, region); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { AddSpawnedFunction(func, region); }
 public:
     class CEmptyGrave;               // the entity class below (naming wave 35)
 };

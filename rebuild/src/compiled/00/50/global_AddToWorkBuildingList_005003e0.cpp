@@ -20,6 +20,7 @@
 //   STLport insert(end(), x) (create node, prev read first); the full-building erase takes the iterator by value (the
 //   user copy constructor builds it in its slot); the def pointer releases inline at the end (long form, as the landed
 //   0x00942A00).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -40,13 +41,13 @@ public:
     long Property;                                  // +0x3C ESimBuildingProperty
     long WorkSpaces;                                // +0x40
     long LiveSpaces;                                // +0x44
-    __forceinline void ReleaseTemporary() const { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() const { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 
 template <class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
 };
 
@@ -162,7 +163,7 @@ public:
         _Rb_tree_node_base*& leftmost, _Rb_tree_node_base*& rightmost);   // 0x0042A34E (_STLP_CALL)
 };
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
 template <class K, class T, class Compare = less<K>, class A = allocator<pair<const K, T> > > class map {
 public:

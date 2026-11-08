@@ -6,6 +6,7 @@
 // Shape (family K122, representative 0x004E41DD): STLport 4.6 `while (__last - __first > 1) pop_heap(__first, __last--, __comp);`
 //   with pop_heap inline and __pop_heap_aux out of line (the K088 body with the other inline split; the distance test folds to
 //   `and ~(size-1) ; cmp size`); size TU (the comparator pushed from its argument slot each pass).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace std {
 template <class _T1, class _T2> struct pair {
@@ -20,9 +21,9 @@ public:
 namespace std {
 template <class _RandomAccessIterator, class _Tp, class _Compare>
 void __fastcall __pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last, _Tp*, _Compare __comp);   // 0x005F8E8F
-template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
+template <class _Tp> FABLE_FORCEINLINE _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 template <class _RandomAccessIterator, class _Compare>
-__forceinline void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
+FABLE_FORCEINLINE void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
     __pop_heap_aux(__first, __last, __value_type(__first), __comp);
 }

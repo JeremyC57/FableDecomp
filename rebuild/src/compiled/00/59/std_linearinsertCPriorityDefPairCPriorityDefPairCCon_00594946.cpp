@@ -13,6 +13,7 @@
 // val, comp);` -- the `random_access_iterator_tag` temporary homed in the high byte of the empty comparator's slot
 // (`lea eax,[ebp+13h]`), the null distance pointer pushed as `0`.
 // Shape: first in edi, last in esi. Frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -60,7 +61,7 @@ void __fastcall __unguarded_linear_insert(CPriorityDefPair* __last, CPriorityDef
                                           CContextSensitivePriorityCompare __comp);           // 0x00593924
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                 _BidirectionalIter2 __result)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);

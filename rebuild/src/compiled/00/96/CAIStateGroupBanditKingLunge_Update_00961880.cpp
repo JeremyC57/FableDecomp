@@ -3,6 +3,7 @@
 // CThing's donor component map is +0x48 but retail is +0x44 (presence words start +0x20), so the narrow retail component shell is intentional.
 // CThingAICreature's generated header flattens these inherited fields into padding. No CThing, pointer or boss shared headers exist.
 // The action's retail temporary occupies 0x114 bytes; the generated CCreatureAction_BanditKingLunge header is 0x12c, so an opaque retail action shell preserves its audited constructor/destructor boundary.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_BanditKingLunge.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
@@ -20,7 +21,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CThingRetail {
  unsigned char inherited[0x20]; unsigned long UsingComponents[9]; CInterfaceMap Components;
  bool IsPerformingAnyAction(); // 0x006622A0
- template<class T> __forceinline void GetInterface(T** out,long type) {
+ template<class T> FABLE_FORCEINLINE void GetInterface(T** out,long type) {
   if(UsingComponents[type>>5] & (1UL << (type & 31))) {
    ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&Components; CInterfaceMap::Entry* it=map->LowerBound(key);
    if(it==map->last || type<it->first) it=map->last;
@@ -49,9 +50,9 @@ class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens th
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct BanditKingLungeMethods : public CAIStateGroupBase, CAIStateGroup_BanditKingLunge {
- __forceinline CAIStateGroupBaseLayout* Base() { return (CAIStateGroupBaseLayout*)this; }
- __forceinline CThingRetail* Creature() { return (CThingRetail*)Base()->PBrain->Creature; }
- __forceinline CBaseIntelligentPointer& Target() { return *(CBaseIntelligentPointer*)Player; }
+ FABLE_FORCEINLINE CAIStateGroupBaseLayout* Base() { return (CAIStateGroupBaseLayout*)this; }
+ FABLE_FORCEINLINE CThingRetail* Creature() { return (CThingRetail*)Base()->PBrain->Creature; }
+ FABLE_FORCEINLINE CBaseIntelligentPointer& Target() { return *(CBaseIntelligentPointer*)Player; }
  long AIAction_DoNothing(); // 0x0097E200
  long AIAction_LookAtThing(long,CConstThingPointer,long,float); // 0x0097D6F0
  bool CanLungeAtPlayer(CThingRetail*); // 0x009613A0

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
@@ -16,7 +17,7 @@ class CWideStringData { public:                                // STLport basic_
 class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                     // 0x0099B510
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

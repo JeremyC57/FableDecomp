@@ -11,6 +11,7 @@
 //   inline (type, flags) constructor; retail sits 4 below the PDB from the animated mesh's RenderInfo on (the 2D members at
 //   +0x128); the bounding sphere's inline constructor zeroes its four words after the vtable store (integer zeroes through
 //   the shared ebx).
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -132,7 +133,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CCache Cache;                                       // +0xd4
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct C2DVectorF { float X, Y; C2DVectorF() { } };
 class C2DBoxF { public: C2DVectorF TopLeft, BottomRight; C2DBoxF() { } };
@@ -148,7 +149,7 @@ class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAn
     C3DBoundingSphere ObjectBoundingSphere;             // +0x140
     virtual void v00();
     CEngineInternalPrimitive2DAnimatedMesh();
-    __forceinline CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
 };
 
 CEngineInternalPrimitive2DAnimatedMesh::CEngineInternalPrimitive2DAnimatedMesh()

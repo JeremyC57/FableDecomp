@@ -18,6 +18,7 @@
 //   `position` copy drops its dead Z word; the suspend target is a named local (GetPItem before the argument pushes); the
 //   2D length test is `X*X + Y*Y > eps*eps` after `direction.Z = 0`; the aim is `direction * forward + position +
 //   C3DVector(direction.Y, -direction.X, 0.0f) * side` (the perpendicular term first, then the forward sum).
+#include "fable_compiler.h"
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
@@ -66,7 +67,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     return p.Get() && !p.Get()->IsDead();
 }

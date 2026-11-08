@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #define CIVCountedPointeeBase CIVCountedPointeeBase_HeaderEvidence
@@ -100,5 +101,5 @@ template<class T,class Al>std::vector<T,Al>::vector(const Al&){this->_M_start=th
 CHeroSoulsRoundDef::CHeroSoulsRoundDef(){NumWaves=0;}CHeroSoulsRoundDef::~CHeroSoulsRoundDef(){}
 CHeroSoulsRoundDef::CHeroSoulsRoundDef(const CHeroSoulsRoundDef& other):CDefClassBase(other),NumWaves(other.NumWaves),Waves(other.Waves){}
 void CHeroSoulsRoundDef::Transfer(CPersistContext&){}
-namespace std{struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};template<class I,class O,class D>__forceinline O __copy_backward(I first,I last,O result,const random_access_iterator_tag&,D*){for(D n=last-first;n>0;--n)*--result=*--last;return result;}template<class I,class O>O __fastcall __copy_backward_ptrs(I first,I last,O result,const __false_type&){return __copy_backward(first,last,result,random_access_iterator_tag(),(int*)0);}}
+namespace std{struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};template<class I,class O,class D>FABLE_FORCEINLINE O __copy_backward(I first,I last,O result,const random_access_iterator_tag&,D*){for(D n=last-first;n>0;--n)*--result=*--last;return result;}template<class I,class O>O __fastcall __copy_backward_ptrs(I first,I last,O result,const __false_type&){return __copy_backward(first,last,result,random_access_iterator_tag(),(int*)0);}}
 int main(){CHeroSoulsRoundDef records[6];for(int i=0;i<6;++i){records[i].NumWaves=10+i;records[i].GlobalIndex=100+i;}CHeroSoulsRoundDef* result=std::__copy_backward_ptrs(records,records+4,records+6,std::__false_type());if(result!=records+2||baseAssignments!=4||vectorAssignments!=4||bad)goto fail;for(int i=0;i<4;++i)if(records[i+2].NumWaves!=10+i||records[i+2].GlobalIndex!=100+i)goto fail;if(std::__copy_backward_ptrs(records,records,records+3,std::__false_type())!=records+3||baseAssignments!=4)goto fail;puts("00f35910_TEST PASS");return 0;fail:puts("00f35910_TEST FAIL");return 1;}

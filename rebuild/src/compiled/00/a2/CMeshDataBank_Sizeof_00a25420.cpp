@@ -9,6 +9,7 @@
 //   pointer re-read each pass (the virtual call may change it); the loop-holding template needs __forceinline.
 // Layout: MeshesAndAnimations (CArray<CMeshDataBankEntry*>, STLport vector) at +0x380 (engine/CMeshDataBank.h); local
 //   polymorphic model (the header flattens the vptr).
+#include "fable_compiler.h"
 #include "engine/CArray.h"
 
 template <class T> inline bool GFPIsNull(T* p) { return p == 0; }
@@ -19,7 +20,7 @@ template <class T> inline unsigned long __fastcall GFPSizeof(T& pointer)
         return sizeof(T) + GFSizeof(*pointer);
     return sizeof(T);
 }
-template <class C> __forceinline unsigned long __fastcall GFPContainerSizeof(C& container)
+template <class C> FABLE_FORCEINLINE unsigned long __fastcall GFPContainerSizeof(C& container)
 {
     unsigned long size = sizeof(C) + container.size() * sizeof(typename C::value_type);
     for (typename C::const_iterator it = container.begin(); it != container.end(); ++it)

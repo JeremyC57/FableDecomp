@@ -3,6 +3,7 @@
 // blends into the area shrunk by one on the top/left, leaves other cells alone and calls UpdateBrushHeights,
 // UpdateBrushThemes, UpdateBrushBlends in that order; amount != 1 blends heights with the radial falloff weight;
 // both paths report GetWorldBox(region index, game area) to the update sink.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -64,7 +65,7 @@ class CHeightMap { public:
     CRetailVector<CHeightMapCell> Cells;
     long SizeX;
     long SizeY;
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
     void SetSizeZAt(const C2DCoordI& cell, float size)
     {
         float value;
@@ -108,7 +109,7 @@ class CMap { public:
     virtual void UpdateBrushBlends(CScriptedMapBrush* brush) { CHECK(brush == Expected); g_order[g_orderCount++] = 'B'; }
     virtual void UpdateBrushThemes(CScriptedMapBrush* brush) { CHECK(brush == Expected); g_order[g_orderCount++] = 'T'; }
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex) { return (unsigned char)(themeDefIndex + 40); }
-    __forceinline void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer)
+    FABLE_FORCEINLINE void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer)
     {
         if (themeDefIndex > 0) {
             long paletteIndex = AddThemeDefIndexToPalette(themeDefIndex);

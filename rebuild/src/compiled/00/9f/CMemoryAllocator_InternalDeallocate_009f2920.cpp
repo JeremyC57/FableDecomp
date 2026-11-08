@@ -6,6 +6,7 @@
 // Layout (PDB CMemoryAllocator): MemoryAllocatedPerTrackingID[256] +0, NoAllocations +0x40c, NoAllocators +0x410; the debug info
 //   (guard, tracking ID, size) is the 12 bytes at block + size - 0x14.
 // Shape: the area (block - 4) is computed up front into ebp; the fill is the memset intrinsic (`rep stosd ; rep stosb` with 0xCDCDCDCD).
+#include "fable_compiler.h"
 #include <string.h>
 extern unsigned char* g_pRegionStart;       // 0x013CAAA4
 extern unsigned char* g_pRegionEnd;         // 0x013CAAA8
@@ -30,7 +31,7 @@ struct SDebugInfo {
     unsigned long TrackingID;
     long          Size;
 };
-__forceinline unsigned char GetAllocatorID(void* block)
+FABLE_FORCEINLINE unsigned char GetAllocatorID(void* block)
 {
     if ((unsigned char*)block >= g_pRegionStart && (unsigned char*)block < g_pRegionEnd)
         return (unsigned char)((unsigned long)((unsigned char*)block - g_pRegionStart) >> 24);
@@ -44,7 +45,7 @@ class CMemoryAllocator { public:
     unsigned long NoAllocations;
     unsigned long NoAllocators;
     unsigned long GetAllocationSize(void* block);
-    __forceinline SDebugInfo* GetDebugInfo(void* block)
+    FABLE_FORCEINLINE SDebugInfo* GetDebugInfo(void* block)
     {
         GetAllocationSize(block);
         return (SDebugInfo*)((unsigned char*)block + GetAllocationSize(block) - 0x14);

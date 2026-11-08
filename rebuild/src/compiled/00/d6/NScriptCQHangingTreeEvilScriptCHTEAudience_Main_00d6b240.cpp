@@ -15,6 +15,7 @@
 //   final walk is a plain `while (!IsActiveThreadTerminating()) { ...; Game->NewScriptFrame(); }`.
 // Naming wave 35: identity reg 00d697af "HTE_Audience" in 00d69480; Alloc 00d6b180; vtable 012d2258 slot 1; PDB ?Main@CHTE_Audience@CQ_HangingTreeEvilScript@NScript@@; refs=1; was under-qualified CHTE_Audience::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTE_Audience@CQ_HangingTreeEvilScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTE_Audience@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HangingTreeEvilScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
@@ -40,7 +41,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

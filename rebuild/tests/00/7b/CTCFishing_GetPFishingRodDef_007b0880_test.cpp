@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -24,13 +25,13 @@ public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -38,7 +39,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -71,8 +72,8 @@ template<class T> class CDefPointer {
 public:
     T* Object;
     CDefPointer() : Object(0) {}                    // test only
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->Release();

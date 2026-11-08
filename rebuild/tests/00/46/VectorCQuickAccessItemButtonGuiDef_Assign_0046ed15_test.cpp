@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +28,7 @@ public:
  T* AllocateCopy(unsigned n,const T* first,const T* last);
  void Dispose();
  static T* __fastcall Copy(const T* first,const T* last,T* result,const EmptyTag& tag=EmptyTag());
- static __forceinline T* Construct(const T* first,const T* last,T* result) {
+ static FABLE_FORCEINLINE T* Construct(const T* first,const T* last,T* result) {
   T* current=result;
   for(;first!=last;++first,++current) if(current) new(current) T(*first);
   return current;

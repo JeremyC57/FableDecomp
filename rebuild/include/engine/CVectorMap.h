@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CVECTORMAP_H
 #define FABLE_ENGINE_CVECTORMAP_H
+#include "fable_compiler.h"
 // CVectorMap<K,V,CompareType> (Codex pass 11 consolidation, one model): Ego_r TPI CVectorMap derives CArray<pair<K,V> >
 // (a public STLport vector); retail LowerBound reads start +0 / finish +4, Compare is at +12 and Dirty at +13 (sizeof 0x10,
 // the "CVectorMap 0x10" container size of the generated headers). LowerBound is out of line in retail (every caller calls it).
@@ -36,14 +37,14 @@ public:
     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under
     // optimize("s") a plain inline Find is called out of line instead (0x005C552C, 0x005C36C2).
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     iterator Find(const K& key) {
         iterator i=LowerBound(key);
         return i==this->end() || key<i->first ? this->end() : i;
     }
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     const_iterator Find(const K& key) const {
         const_iterator i=LowerBound(key);
@@ -54,7 +55,7 @@ public:
     // member-wise assignment is expanded at both call sites (the vector operator= called out of line, Compare copies nothing, the
     // Dirty byte copied through al); under optimize("s") the implicit operator= is called out of line instead (a 33-byte
     // ??4CVectorMap COMDAT), so the expanded form is __forceinline (no out-of-line ??4CVectorMap in Fable.exe).
-    __forceinline CVectorMap& operator=(const CVectorMap& other) {
+    FABLE_FORCEINLINE CVectorMap& operator=(const CVectorMap& other) {
         CArray<std::pair<K,V> >::operator=(other);
         Compare=other.Compare;
         Dirty=other.Dirty;

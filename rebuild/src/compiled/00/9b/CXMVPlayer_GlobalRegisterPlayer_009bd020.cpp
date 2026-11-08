@@ -20,6 +20,7 @@
 // arguments are built in their stack slots right to left (`push ecx ; mov ecx,esp ; push -1 ; push lit`) after the
 // two bools (false, true); the handle and the flag are stored after the call.
 
+#include "fable_compiler.h"
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -44,7 +45,7 @@ private:
 
 template <class T> class CTBaseSingleton {
 public:
-    static __forceinline T& __fastcall Get()
+    static FABLE_FORCEINLINE T& __fastcall Get()
     {
         if (Instance.IsNull())
             Instance.Reset(new T);

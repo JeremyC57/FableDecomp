@@ -1,4 +1,5 @@
 // Behaviour test for 0089bbc0: body copied from src/0089bbc0.cpp (CGameScriptInterface::EntityPlayObjectAnimation), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -11,12 +12,12 @@ struct CTCMap_Retail {
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind) { STCEntry_Retail* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
     STCEntry_Retail* LowerBound(const unsigned long& kind) const { STCEntry_Retail* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -32,9 +33,9 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
     bool valid; CThing_Retail* thing;
     virtual CThing_Retail* GetThing() const { return thing; }
@@ -47,9 +48,9 @@ struct CTCAnimatingObject_Retail {
     bool m_hasId;
     unsigned char _pad0d[3];
     long m_id;
-    __forceinline long GetId() const { return m_hasId ? m_id : -1; }
+    FABLE_FORCEINLINE long GetId() const { return m_hasId ? m_id : -1; }
     void PlayAnimation(const CCharString& anim, long id, bool loop) { ++g_playCalls; g_playAnim = &anim; g_playId = id; g_playLoop = loop; g_playThis = this; }
-    __forceinline void PlayNextAnimation(const CCharString& anim, bool loop) { PlayAnimation(anim, GetId() + 1, loop); }
+    FABLE_FORCEINLINE void PlayNextAnimation(const CCharString& anim, bool loop) { PlayAnimation(anim, GetId() + 1, loop); }
 };
 class CGameScriptInterface { public:
     virtual void v000() {}

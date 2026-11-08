@@ -8,6 +8,7 @@
 // `Data = 0` releasing then storing zero twice, the member destructor releasing again); the mesh class is
 // `__declspec(novtable)` with an empty destructor, so only the base's inline destructor stores a vtable (after
 // the members are destroyed).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -29,14 +30,14 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -53,7 +54,7 @@ class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

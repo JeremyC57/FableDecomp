@@ -19,6 +19,7 @@
 // empty `__false_type()` tag overlays the dead comparator slot (`lea ecx,[esp+40h]`) as retail (the 0x00A85420
 // recipe). The key pair<long,long> has STLport's explicit memberwise copy constructor (`pair(const pair<_T1,_T2>&)`):
 // with an implicit one the `lea ebp,[ebx-14h]` (last - 1) is scheduled two instructions early.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -55,7 +56,7 @@ template <class T> struct _Vector_base {
     T* _M_start;
     T* _M_finish;
     _STLP_alloc_proxy<T> _M_end_of_storage;
-    __forceinline _Vector_base(unsigned int n, const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
+    FABLE_FORCEINLINE _Vector_base(unsigned int n, const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
     {
         _M_start = _M_end_of_storage.allocate(n);
         _M_finish = _M_start;
@@ -65,7 +66,7 @@ template <class T> struct _Vector_base {
 template <class T> struct vector : _Vector_base<T> {
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     allocator<T> get_allocator() const { return allocator<T>(); }
-    __forceinline vector(const vector& x) : _Vector_base<T>(x.size(), x.get_allocator())
+    FABLE_FORCEINLINE vector(const vector& x) : _Vector_base<T>(x.size(), x.get_allocator())
     {
         this->_M_finish = __uninitialized_copy((const T*)x._M_start, (const T*)x._M_finish, this->_M_start, __false_type());
     }

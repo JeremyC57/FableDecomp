@@ -13,6 +13,7 @@
 // interface is absent (`CTCEnemy* tc; if (Has) tc = Get; return tc;`): its slot is the dead argument
 // slot that also holds the lookup key, so the absent path reads it back (`mov eax,[esp+10h]`); every
 // return keeps its own exit (`mov al,1` / `xor al,al` / the ally test's al).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -35,7 +36,7 @@ class CThing { public:
     }
 };
 
-__forceinline CTCBase* GetTCIfPresent(const CThing& thing, long kind)
+FABLE_FORCEINLINE CTCBase* GetTCIfPresent(const CThing& thing, long kind)
 {
     CTCBase* tc;
     if (thing.HasInterface(kind))

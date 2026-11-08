@@ -18,6 +18,7 @@
 //   `if (creature.IsAnimCombinationAnim(action))` a local vector filled by
 //   GetAllCombinationAnimsFromType(1, ...) and walked with a named `CAnimSet*` (address taken by push_back, homed in the
 //   dead `action` slot, which the __true_type temporary shares); else the main anim set by address.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
@@ -130,7 +131,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

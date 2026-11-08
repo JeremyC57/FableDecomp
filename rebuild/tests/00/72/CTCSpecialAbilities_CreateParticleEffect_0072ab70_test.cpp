@@ -1,5 +1,6 @@
 // Behaviour test for 0x0072AB70 CTCSpecialAbilities::CreateParticleEffect: spawns an emitter thing at the position
 // (not attached) and, when it exists and is not dead, sets its particle-emitter component (0x4B) to always update.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -37,7 +38,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 (bit 0: dead)
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

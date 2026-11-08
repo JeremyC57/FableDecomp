@@ -18,6 +18,7 @@
 //   line inside the raw-end loops (the out-of-line __fastcall declaration) while x_copy's implicit copy is expanded in place;
 //   __uninitialized_copy, __uninitialized_fill_n (via uninitialized_fill_n) and fill are `__forceinline`; __false_type has
 //   no user constructor (retail zero-stores both tags).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
@@ -69,7 +70,7 @@ public:
 namespace std {
 template <class _T1, class _T2> void __fastcall _Construct(_T1* __p, const _T2& __val);           // 0x00D34EC0
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -77,7 +78,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -85,7 +86,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }
@@ -93,7 +94,7 @@ template <class _BidirectionalIter1, class _BidirectionalIter2>
 _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                     _BidirectionalIter2 __result, const __false_type&);   // 0x00F34110
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

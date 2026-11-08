@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -42,7 +43,7 @@ class CThingCreatureBase { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

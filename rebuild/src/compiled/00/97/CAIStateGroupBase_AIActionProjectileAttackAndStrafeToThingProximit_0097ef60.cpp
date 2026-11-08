@@ -16,6 +16,7 @@
 // true then cleared; the action is a temporary built inside the SetCurrentAction call and destroyed inline (def
 // release + null, PTarget dtor, base dtor); the indicator def is released by hand at the end. The thing to move to is
 // passed on by value (a copy built in the argument slots: base ctor, vtable store, SetPItem(GetPItem())).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -73,7 +74,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -100,7 +101,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

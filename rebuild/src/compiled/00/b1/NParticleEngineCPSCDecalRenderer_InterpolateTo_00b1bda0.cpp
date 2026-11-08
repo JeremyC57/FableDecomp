@@ -22,6 +22,7 @@
 //   builds on Initialise(r, g, b, a) (all four bytes read before any is stored; header engine/CRGBColour.h FABLE_RETAIL_CRGBCOLOUR,
 //   overlay hdr/): with the plain member-wise copy every byte load interleaves with its store and the whole function's register
 //   allocation shifts (648 diff lines before, RELOCATION_MATCH after). The colour overload is __forceinline (plain inline stays a call).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CRGBCOLOUR
 #include "engine/CRGBColour.h"
 #include "engine/GFFloatToLongNear.h"
@@ -34,7 +35,7 @@ namespace NParticleEngine {
 inline float __fastcall GFInterpolate(float a, float b, float t) { return a * (1.0f - t) + b * t; }
 inline unsigned long __fastcall GFInterpolate(unsigned long a, unsigned long b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
 inline unsigned char __fastcall GFInterpolate(unsigned char a, unsigned char b, float t) { return (unsigned char)GFFloatToLongNear((1.0f - t) * a + b * t); }
-__forceinline CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
+FABLE_FORCEINLINE CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
 }
 namespace NParticleEngine {
 class CParticleSystem;

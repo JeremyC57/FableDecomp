@@ -14,6 +14,7 @@
 // Same-TU caller: a reduced find_match (the landed 0x00C07610 shape) that only exists so swd_accept is emitted with its private
 //   convention; only _swd_accept is graded.
 // Layout: lzo1x_999_t / lzo1x_999_swd_t as the landed swd_remove_node 0x00C07140 (Ego_r PDB layouts).
+#include "fable_compiler.h"
 typedef unsigned char  lzo_byte;
 typedef unsigned int   lzo_uint;
 typedef unsigned long  lzo_uint32;
@@ -127,7 +128,7 @@ static __declspec(noinline) void swd_getbyte(lzo_swd_p s)
         s->rp = 0;
 }
 
-static __forceinline void swd_remove_node(lzo_swd_p s, lzo_uint node)
+static FABLE_FORCEINLINE void swd_remove_node(lzo_swd_p s, lzo_uint node)
 {
     if (s->node_count == 0)
     {

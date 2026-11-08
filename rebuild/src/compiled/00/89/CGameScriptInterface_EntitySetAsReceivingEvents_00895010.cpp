@@ -3,6 +3,7 @@
 // Callees: CScriptThing virtual slots 75 (+0x12c, IsValid) and 11 (+0x2c, GetThing), CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("CTCEntityEvents" @ 0x0123ADF8, built in the dead flag slot),
 // CThing::AddTC @ 0x004C9D60, ~CCharString @ 0x0099EAE0, CThing::RemoveTC @ 0x004C9840.
 // Leaf: EntitySetAsReceivingEvents
+#include "fable_compiler.h"
 #include <string.h>
 struct CThing_Retail;
 class CScriptThing;
@@ -106,7 +107,7 @@ struct CThing_Retail {
     void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
     void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
     void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

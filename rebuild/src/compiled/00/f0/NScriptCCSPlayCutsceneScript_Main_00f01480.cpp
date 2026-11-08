@@ -16,6 +16,7 @@
 //   member used here. The cast map is the retail 12-byte STLport tree {head, size, compare}, node 0x24 bytes.
 // Shape: the landed CQS_ScytheInfoScript::PlayCutscene 0x00E2A900 model; the counted pointer's operator= reads the source's
 //   Info before its Data (the other order swaps two loads in the second assignment).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 class CCharString { public:
@@ -64,7 +65,7 @@ struct CCutsceneCastMap {                              // map<CCharString, CScri
     node*         head;
     unsigned long size;
     unsigned char compare;
-    __forceinline CCutsceneCastMap()
+    FABLE_FORCEINLINE CCutsceneCastMap()
         : head(0)
     {
         head = (node*)malloc(sizeof(node));
@@ -74,7 +75,7 @@ struct CCutsceneCastMap {                              // map<CCharString, CScri
         head->left   = head;
         head->right  = head;
     }
-    __forceinline ~CCutsceneCastMap()
+    FABLE_FORCEINLINE ~CCutsceneCastMap()
     {
         if (size) {
             Erase(head->parent);

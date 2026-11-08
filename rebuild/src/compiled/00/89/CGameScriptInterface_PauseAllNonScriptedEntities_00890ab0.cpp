@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00890AB0, length 80 bytes.
 // Callees: CWorld virtual slot 3 (+0xc) GetThingManager, CThingManager::SetNonScriptedEntitesPaused @ 0x0051EFC0, CBulletTimeManager::SetBulletTimeSlowdownMultiplier @ 0x004C6170 / RemoveBulletTimeSlowdown @ 0x004C6140 (label propagated). Shape: the flag kept in ebx across the first call, the bullet-time manager re-read through World in both arms, `ret 4`.
 // Leaf: PauseAllNonScriptedEntities
+#include "fable_compiler.h"
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -46,7 +47,7 @@ struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
     void AssignHomeBuilding(CThing_Retail* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
     void SetNewBrain(CDefPointer_Retail brain);     // 0x00833010 (CThingAICreature::SetNewBrain, the counted def pointer by value)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

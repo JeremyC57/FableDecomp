@@ -23,6 +23,7 @@
 //   frame word; the abilities lookup is const, hence the const LowerBound); the CCountedPointer local is zeroed at its
 //   declaration and filled by Reset; for the missing-ability dimming the slider component is read into a block local, which
 //   schedules the state key's zero store after the vtable load as retail does (through `slider->` it lands before the push).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CTCBase.h"
@@ -167,7 +168,7 @@ public:
     unsigned char    _pad00[0x20];
     std::bitset<274> UsingComponents;                         // +0x20
     TCMap            Components;                              // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (UsingComponents.test(T::INTERFACE_TYPE)) {
             TCMap* map = &Components;
@@ -179,7 +180,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (UsingComponents.test(T::INTERFACE_TYPE)) {
             const TCMap* map = &Components;

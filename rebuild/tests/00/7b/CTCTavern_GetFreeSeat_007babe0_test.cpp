@@ -1,4 +1,5 @@
 // Behaviour test for 007babe0: body copied from src/007babe0.cpp (CTCTavern::GetFreeSeat), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -49,7 +50,7 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;
     unsigned long m_typeFlags;
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -62,8 +63,8 @@ public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

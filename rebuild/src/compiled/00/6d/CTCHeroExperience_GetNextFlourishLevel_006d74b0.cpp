@@ -9,7 +9,8 @@
 // multiplier, one temporary for the divisor. The level adds the double 1.0 (0x01237F00) before the truncation.
 // Layout: retail ExperienceMultiplierParam +0x30, PDef +0x54 (CHeroExperienceDef: the level divisor float at +0x64),
 // PHeroCombatDef +0x58 (CHeroCombatDef: flourish-enabled byte +0xd0, flourish level step +0xd4).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CRefCounted {
     long m_count;
 };

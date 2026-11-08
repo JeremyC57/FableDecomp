@@ -9,6 +9,7 @@
 //   primitive kind tested against 1).
 // Shape: the bank is reached through an inline GetBank() accessor (the global-then-bank load sits in the call block). Each id read goes through a __forceinline helper whose local is homed in the dead stream-argument slot; the text
 //   helper returns early on an empty name, so the CCharString dtor is emitted on both arms.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -49,8 +50,8 @@ public:
     const unsigned char* m_pData;           // +0xC
     long                 SourceChunkStreamPos;
     long                 m_remaining;       // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -64,8 +65,8 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
-    __forceinline long ReadIndex()
+    FABLE_FORCEINLINE long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE long ReadIndex()
     {
         CCharString name = ReadString();
         if (name.IsEmpty())

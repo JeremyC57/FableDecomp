@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005366FF, length 60 bytes.
 // Leaf: OnActivate
 // Shape: the size-optimised frame-pointer module, a 4-byte frame slot for the returned pointer, `this` in esi, `leave ; ret`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 struct CComponentOwnerVirtual_005366ff {
@@ -10,11 +11,11 @@ struct CComponentOwnerVirtual_005366ff {
 };
 struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
     unsigned long IVRefCount;
-    __forceinline void DecRef() { --IVRefCount; }
-    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+    FABLE_FORCEINLINE void DecRef() { --IVRefCount; }
+    FABLE_FORCEINLINE unsigned long GetRefCount() const { return IVRefCount; }
 };
 struct CComponentOwner_005366ff : CComponentOwnerVirtual_005366ff, CIVRefCounted {   // count at +4, Delete in slot 1
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)

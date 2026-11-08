@@ -12,6 +12,7 @@
 // Shape: the LRU refresh is a `__forceinline` CResource member applied to the volume then to the frame data; the texture
 //   pointer is read through a full-expression CTexturePointer copy (+1 then -1 on its count, before the null test); the
 //   success path is nested so the callee-saved pushes stay at entry and both failures share one `xor al,al` exit.
+#include "fable_compiler.h"
 class CBankFileAsyncData { public:
 public:
     bool IsFinished() const;   // 0x009D54E0
@@ -37,7 +38,7 @@ public:
 private:
     void ListInsert(CResource*a0, CResource*a1);   // 0x009FBF90
 public:
-    __forceinline void Touch()
+    FABLE_FORCEINLINE void Touch()
     {
         if (List && Stamp != List->Stamp) {
             ListRemove();

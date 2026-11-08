@@ -5,6 +5,7 @@
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F5E0, 656 bytes, `ret 4`.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CCharStringData;
@@ -80,7 +81,7 @@ class CThing { public:
     unsigned char FlagsBC;                                  // +0xbc
     void Kill(bool removeNow);                              // 0x004C9B80
     bool GetDummyObject(const CCharString& name, C3DVector* position, class CRightHandedSet* orientation);
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

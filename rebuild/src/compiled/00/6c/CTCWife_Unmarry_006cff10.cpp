@@ -17,6 +17,7 @@
 // Shape: the inline IsMarriedToThePlayer guard (`cmp [ebp+20h],eax ; jg`); the house component is an out-parameter lookup
 //   into a pointer initialised to 0 and used even when the building has no such component; the hero stats lookup's out
 //   pointer is uninitialised (it shares the key word) and is used unconditionally, as retail does.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -28,7 +29,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -13,6 +13,7 @@
 //   OtherShaderVars +0x224.
 // Shape: the fresnel clamp is `if (EnableFresnel) f = Clamp(FresnelFactor * 0.25f, 0, 1); else f = 0;` (retail tail-merges the
 //   else with the low clamp and puts the high clamp after the `ret`).
+#include "fable_compiler.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
@@ -58,7 +59,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

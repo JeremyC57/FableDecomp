@@ -12,6 +12,7 @@
 // Layout (Ego_r.pdb, matches retail): HomeBuilding +0x10 / UID +0x18, WorkBuilding +0x20 / UID +0x28, Creature +0x30 /
 //         UID +0x38, DayToBeRecreated +0x40, Respawnable +0x48; CThing type byte +0x10 (1 creature, 3 building);
 //         CThingAICreature HomeBuilding +0x168, WorkBuilding +0x170.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -55,13 +56,13 @@ public:
     void* PPositionData;                            // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                          // +0x91 (bit 0: being destroyed)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (PresentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &Interfaces;

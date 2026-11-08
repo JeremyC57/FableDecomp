@@ -5,6 +5,7 @@
 //   through the primitive's manager pointer (+0x14) as an ordinary virtual call (the landed source read the slot through a
 //   memcpy'd pointer to member).
 // Actual headers retained; native list24 vs donor28 from CArray12 vs16.
+#include "fable_compiler.h"
 #define CEngineSubPrimitiveRenderer CSubRendererDonor
 #define CRenderStateManager CRenderStateManagerDonor
 #define CRenderManagerCore CRenderManagerCoreDonor
@@ -21,7 +22,7 @@ struct CSubRenderStateManager {
  CSubState DeviceStates[231];CSubState BookmarkDummy;unsigned InitFlags;
  void PopBookmark(); //A05840
  void PushBookmark(){Stack[StackSize].State=&BookmarkDummy;++StackSize;BookmarkMask<<=1;}
- __forceinline void Set(CSubState& state,unsigned value){if(state.Desired!=value){if(!(state.BookmarkMask&BookmarkMask)){state.BookmarkMask|=BookmarkMask;Stack[StackSize].State=&state;Stack[StackSize].OldValue=state.Desired;++StackSize;}state.Desired=value;if(!state.Dirty){state.Dirty=true;Updates[UpdateSize]=&state;++UpdateSize;}}}
+ FABLE_FORCEINLINE void Set(CSubState& state,unsigned value){if(state.Desired!=value){if(!(state.BookmarkMask&BookmarkMask)){state.BookmarkMask|=BookmarkMask;Stack[StackSize].State=&state;Stack[StackSize].OldValue=state.Desired;++StackSize;}state.Desired=value;if(!state.Dirty){state.Dirty=true;Updates[UpdateSize]=&state;++UpdateSize;}}}
 };
 class CEngineSubPrimitiveBase;
 class CEnginePrimitiveManager { public:virtual void v0();virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();

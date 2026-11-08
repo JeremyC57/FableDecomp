@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -685,7 +686,7 @@ struct CTCQuestCompletionUIMethods:CTCQuestCompletionUI {void Activate(long,cons
 struct ComponentEntry {long Type;void* Component;};
 struct ComponentMap {ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);};
 struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned long UsingComponents[9];ComponentMap Components;
- __forceinline bool GetQuestCompletionUI(CTCQuestCompletionUIMethods** out){if(UsingComponents[7]&0x10000000){long key=252;ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;*out=static_cast<CTCQuestCompletionUIMethods*>((it==end||it->Type>252?end:it)->Component);return true;}return false;}
+ FABLE_FORCEINLINE bool GetQuestCompletionUI(CTCQuestCompletionUIMethods** out){if(UsingComponents[7]&0x10000000){long key=252;ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;*out=static_cast<CTCQuestCompletionUIMethods*>((it==end||it->Type>252?end:it)->Component);return true;}return false;}
 };
 struct CPlayerMethods:CPlayer {CThingNative* GetHeroThing();}; //00487DC0
 struct CPlayerManagerMethods:CPlayerManager {CPlayerMethods* GetMainPlayer();}; //00449970

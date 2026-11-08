@@ -13,6 +13,7 @@
 //   slot 1, clear, copy, add-ref); the by-value copy of val is built in the outgoing argument area; val is destroyed on
 //   exit (the callee owns its by-value parameter). Both pointers are read into locals before the compare (`cmp ecx,eax`;
 //   `Object != other.Object` gives `cmp ecx,[esi+4]`), and the incoming one is re-read after the release.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -28,7 +29,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

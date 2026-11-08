@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -993,7 +994,7 @@ struct InventoryMethods:CTCInventory{typedef void(InventoryMethods::*ReturnMetho
 FABLE_STATIC_ASSERT(sizeof(InventoryMethods::ReturnMethod)==4);
 struct HeroStatsMethods:CTCHeroStats{void SetMoneyAsConfiscated(bool);}; //0057C999
 class CGameDefinitionManager{ public:static CGameDefinitionManager& __fastcall Get();long GetDefGlobalIndexFromName(const CCharString&);}; //0044C6B0,009AD410
-template<int Key,class T> __forceinline T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[0]&(1u<<Key)){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
+template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[0]&(1u<<Key)){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ReturnAllConfiscatedItemsToHero()const;};
 void CGameScriptInterfaceMethods::ReturnAllConfiscatedItemsToHero()const{
  CThingNative* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetHeroThing();if(hero&&!(hero->DeletedFlags&1)){

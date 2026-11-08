@@ -13,6 +13,7 @@
 // Shape: the message manager is a named local spilled to the frame for the final RemoveMessage; the filter is a
 //   temporary with a constructor; the owner lookup is the out-parameter GetInterface with a reference to the owner
 //   pointer; WaitingForConfirmation is cleared between the HouseQuestion compare and its jump (statement order).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -24,20 +25,20 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

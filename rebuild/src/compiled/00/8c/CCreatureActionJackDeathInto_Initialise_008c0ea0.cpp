@@ -16,6 +16,7 @@
 //   the effect id's frame word, not the sub-def's); the name string is a named local in its own block and shares
 //   the sub-def's frame word (the def stays in esi) -- which needs the same-TU GetSubDef stand-in below (retail's LTCG
 //   knowledge that the def pointer's address does not escape).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
@@ -23,7 +24,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -103,7 +104,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

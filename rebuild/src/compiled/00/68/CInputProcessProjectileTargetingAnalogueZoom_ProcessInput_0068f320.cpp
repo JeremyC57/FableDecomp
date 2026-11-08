@@ -11,6 +11,7 @@
 //   Component 0x81's class is unconfirmed (named CTCProjectileZoom here).
 // Shape: GetTC is a `__forceinline` `T* c = 0; if (HasTC(k)) c = Find(k); return c;` inlined at each of the three zoom
 //   calls (the `xor ecx,ecx` preload each time); its key shares the dead `event` argument slot.
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 class C2DVector { public:
     float x, y;
@@ -34,7 +35,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCProjectileZoom* Find(long kind)
+    FABLE_FORCEINLINE CTCProjectileZoom* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCProjectileZoom*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -47,8 +48,8 @@ class CThing { public:
     CTCMap        m_tcs;                           // +0x44
     unsigned char _pad50[0x91 - 0x50];
     unsigned char m_dead : 1;                      // +0x91 bit 0
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCProjectileZoom* GetTC(long kind)
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCProjectileZoom* GetTC(long kind)
     {
         CTCProjectileZoom* tc = 0;
         if (HasTC(kind))

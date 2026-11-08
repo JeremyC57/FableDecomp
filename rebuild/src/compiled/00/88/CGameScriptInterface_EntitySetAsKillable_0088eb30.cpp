@@ -3,6 +3,7 @@
 // Callees: CScriptThing virtual slots 75 (+0x12c, IsValid) and 11 (+0x2c, GetThing), CGameScriptInterface virtual slots 526 (+0x838, EntitySetAsToAddToComboMultiplierWhenHit) and 527 (+0x83c, EntitySetAsToAddToStatChangesWhenHit),
 // CThingGameObject::SetAsGivingHeroStatChangesOnBeingHit @ 0x008389C0.
 // Leaf: EntitySetAsKillable
+#include "fable_compiler.h"
 #include <string.h>
 struct CThing_Retail;
 class CScriptThing;
@@ -102,7 +103,7 @@ struct CThing_Retail {
     void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
     void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
     void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

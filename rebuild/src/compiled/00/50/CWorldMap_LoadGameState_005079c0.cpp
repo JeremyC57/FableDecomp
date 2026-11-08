@@ -17,6 +17,7 @@
 //   declaration homes it in memory for the whole function); the two "END_REGION" reads go through inline const char*
 //   helpers with a named CCharString (lea-addressed, destroyed at the helper's end); the comment list's destructor is
 //   inlined (STLport clear + node free).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CCharString {
@@ -131,7 +132,7 @@ public:
     protected: void CheckCRC(const char* name); public:                    // 0x00404500
     template <class T> void Transfer(T& value);                  // 0x00431143
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
-    __forceinline void TransferBinary(unsigned long& value)
+    FABLE_FORCEINLINE void TransferBinary(unsigned long& value)
     {
         CheckCRC("");
         CPersistTraits<unsigned long> traits;

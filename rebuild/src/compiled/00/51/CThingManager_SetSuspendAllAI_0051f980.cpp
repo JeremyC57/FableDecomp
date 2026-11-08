@@ -22,6 +22,7 @@
 //   CThingFilter_None temporary is homed in the byte below it; the vector's zero stores are scheduled after the pushes.
 // Label: 0x00833A10 is CThingAICreature::SuspendAI (Ego_r `?SuspendAI@CThingAICreature@@QAEX_NPAX@Z`; it edits the
 //   creature's suspender set); the landed source and the catalog call it CThingAnimatable::SetSuspendAnimation.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
@@ -143,11 +144,11 @@ public:
             return true;
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -155,7 +156,7 @@ public:
         CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->type) ? map->last : it;
         return (T*)sel->component;
     }
-    template <class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* tc;
         if (HasTC(interfaceType))

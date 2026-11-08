@@ -15,6 +15,7 @@
 //   base-destructor call), both __forceinline.
 // Shape: STLport `for (_Distance n = last - first; n > 0; --n) *--result = *--last; return result;` -- the count in ebx
 //   (`dec ebx ; jne`), each step one SetPItem(GetPItem()) assignment; the empty range returns result straight from its slot.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -28,8 +29,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         SetPItem(p.GetPItem());
         return *this;

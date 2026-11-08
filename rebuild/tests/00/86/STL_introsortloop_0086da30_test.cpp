@@ -2,11 +2,12 @@
 // Flags: /Gr
 // Leaf: __introsort_loop
 // Layout: 12byte value, unsigned key+0 and8byte trivially copied payload+4;4byte comparator; actual payload aliases unknown.
+#include "fable_compiler.h"
 namespace FableSort_0086da30 {
 template<class K,class V> struct pair {K first;V second;pair(){}pair(const pair& p):first(p.first),second(p.second){}};
 typedef pair<unsigned int,pair<unsigned int,unsigned int> > CSortValue;
 struct CKeyPairCompareLess {int State;bool operator()(const CSortValue&a,const CSortValue&b)const{return a.first<b.first;}};
-template<class T,class C> __forceinline const T& __median(const T&a,const T&b,const T&c,C comp){
+template<class T,class C> FABLE_FORCEINLINE const T& __median(const T&a,const T&b,const T&c,C comp){
  if(comp(a,b)){if(comp(b,c))return b;else if(comp(a,c))return c;else return a;}
  else if(comp(a,c))return a;else if(comp(b,c))return c;else return b;
 }

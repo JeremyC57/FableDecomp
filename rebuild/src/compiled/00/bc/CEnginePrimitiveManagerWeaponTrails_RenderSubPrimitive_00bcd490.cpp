@@ -13,6 +13,7 @@
 //   (core in eax, state in ecx, the manager mask in edx as retail); a pure state-side or manager-side setter swaps registers.
 // Shape: opening the capture block is inline (push the block marker +0x3a24 on the capture stack, shift the capture mask);
 //   each state change is the inline tracked-state Set; the restore arms tail-duplicate the RestoreCaptureBlock call.
+#include "fable_compiler.h"
 class CEngineSubPrimitiveBase;
 
 struct CTrackedRenderState {                       // 0x14 bytes
@@ -21,7 +22,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -42,7 +43,7 @@ class CRenderStateManager { public:
     unsigned char        _pad28a4[0x3a24 - 0x28a4];
     unsigned char        m_captureBlockMarker[4];  // +0x3a24
     void RestoreCaptureBlock();                    // 0x00A05840
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -57,7 +58,7 @@ class CRenderStateManager { public:
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         ++m_capturedCount;
@@ -68,7 +69,7 @@ extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 extern CRenderStateManager* g_pRenderManagerCore;    // 0x01436E18
 extern unsigned long g_renderStateDefault_01396fb8;  // 0x01396FB8
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);

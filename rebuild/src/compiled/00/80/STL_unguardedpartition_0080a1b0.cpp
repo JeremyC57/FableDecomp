@@ -14,6 +14,7 @@
 //   NPlayerTargeting::CTargetPoint (0x1c); the landed 0x0080AA60 model.
 // Shape: STLport `for (;;) { while (comp(*first, pivot)) ++first; --last; while (comp(pivot, *last)) --last; if
 //   (!(first < last)) return first; iter_swap(first, last); ++first; }` -- iter_swap inlined to the out-of-line swap.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -29,10 +30,10 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;

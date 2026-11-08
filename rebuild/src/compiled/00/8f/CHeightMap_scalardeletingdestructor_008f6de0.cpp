@@ -11,6 +11,7 @@
 // its block under a null test, then the base destructor. The `new` factory (inline constructor)
 // pulls the vtable and the deleting destructor into the TU.
 
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 namespace N_0099a300 { struct CBaseClass {
@@ -42,7 +43,7 @@ class CHeightMap : public CBaseClass { public:                                  
     unsigned long*       WorldSeed;                                       // +0x0c
     CHeightMapCellVector Cells;                                           // +0x10
     CHeightMap(CWorld* world, CMap* map) : World(world), Map(map), WorldSeed(0) {}
-    __forceinline virtual ~CHeightMap()
+    FABLE_FORCEINLINE virtual ~CHeightMap()
     {
         WorldSeed = 0;
     }

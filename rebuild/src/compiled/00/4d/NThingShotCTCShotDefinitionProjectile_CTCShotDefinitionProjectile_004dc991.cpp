@@ -10,6 +10,7 @@
 // Shape: size TU (`push dword ptr [esp+0Ch]`, `and dword ptr [edi+4],0`) = `#pragma optimize("s", on)`; the handle is a
 // member object with a `__forceinline` default constructor (a plain inline one is called out of line under "s"; CBaseClass() out of line, its own vtable, a null counted pointer from
 // the embedded CIVCountedPointer's inline constructor), addressed through edi.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 
@@ -24,7 +25,7 @@ struct CIVCountedPointer {
 
 class CEnginePrimitiveHandle : public CBaseClass { public: // vtable 0x0122F598
     CIVCountedPointer Data;                  // +4
-    __forceinline CEnginePrimitiveHandle() { }
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }
 };
 
 namespace NThingShot {

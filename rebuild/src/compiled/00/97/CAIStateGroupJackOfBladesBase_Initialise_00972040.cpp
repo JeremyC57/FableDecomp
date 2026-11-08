@@ -10,6 +10,7 @@
 // the key temporary and the never-written boss local of the miss path share the dead fifth argument
 // slot (`[esp+18h]`), both arms join in esi; then SetNextBossPhase(0, false) and the boss dword at +0x10
 // cleared. The engine header CAIStateGroup_JackOfBladesBase.h is flattened data-only: local model.
+#include "fable_compiler.h"
 class CTCBase;
 class CAIBrain;
 class CCharString;
@@ -24,7 +25,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -10,6 +10,7 @@
 //   chunk has room, else ReadWithSrcChunkOverflow), as in the landed 0x007AD7F0 / 0x00AAAB10.
 // Layout: retail differs from Ego_r.pdb after +0x58 (MeshVolumes is 0x10 bytes in retail, 0x14 in the PDB):
 //   MeshGenerators +0x68, PackedNames +0x74, PackedNamesSize +0x78, AnimatedFlag +0x7a. Local model.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -35,8 +36,8 @@ class CMemoryDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;             // +0x10
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void ReadInline(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void ReadInline(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -50,10 +51,10 @@ class CMemoryDataInputStream { public:
         else
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline bool ReadBool() { unsigned char value; ReadInline(&value, sizeof(value)); return value != 0; }
-    __forceinline unsigned long ReadULong() { unsigned long value; ReadInline(&value, sizeof(value)); return value; }
-    __forceinline float ReadFloat() { float value; ReadInline(&value, sizeof(value)); return value; }
-    __forceinline unsigned short ReadUShort() { unsigned short value; ReadInline(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; ReadInline(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; ReadInline(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; ReadInline(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned short ReadUShort() { unsigned short value; ReadInline(&value, sizeof(value)); return value; }
 };
 
 class C3DBoundingSphere { public: C3DVector Centre; float Radius; };

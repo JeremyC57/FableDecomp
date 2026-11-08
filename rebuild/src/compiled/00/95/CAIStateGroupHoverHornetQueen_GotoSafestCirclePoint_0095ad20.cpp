@@ -9,8 +9,9 @@
 // Shape: three inline fast normalises (`*this *= FastInvSqrt(len)` through a const float& operator*=); the circle-marker
 //        element is read through the vector's inline `*(begin() + i)` accessor (a plain `_M_start[i]` colours the begin
 //        reload and the next normalise's bit temporaries edx/ecx and hoists the index load above the creature load).
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -21,11 +22,11 @@ __forceinline float FastInvSqrt(float lengthSquared)
 #define FABLE_RETAIL_C3DVECTOR
 #include "engine/C3DVector.h"
 class CThing;
-__forceinline C3DVector Direction(const CThing* to, const CThing* from);
-__forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
+FABLE_FORCEINLINE C3DVector Direction(const CThing* to, const CThing* from);
+FABLE_FORCEINLINE float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
 #include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
-__forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPos() - from->GetPos(); }
+FABLE_FORCEINLINE C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPos() - from->GetPos(); }
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

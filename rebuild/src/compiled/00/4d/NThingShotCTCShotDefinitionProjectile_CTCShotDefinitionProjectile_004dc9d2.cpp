@@ -10,6 +10,7 @@
 // below the PDB after HitThingsList). Handle model = the landed CLocalDetailPrimitiveMesh dtor 0x00BDFD80 with the size TU's
 // __forceinline GetRefCount() ternary (`Object ? RefCount : 0` == 1) (graphics
 // layer: CEnginePrimitiveHandle vtable 0x0122F598, CBaseClass vtable 0x01231710).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
@@ -19,7 +20,7 @@ public:
     virtual void v002();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle); // slot 3 (+0x0C)
     long RefCount;                                                   // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--RefCount == 0)
             Destroy();
@@ -29,16 +30,16 @@ class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
-    __forceinline long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline bool IsUnique() const { return GetRefCount() == 1; }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE long GetRefCount() const { return Object ? Object->RefCount : 0; }
+    FABLE_FORCEINLINE bool IsUnique() const { return GetRefCount() == 1; }
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -53,7 +54,7 @@ class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

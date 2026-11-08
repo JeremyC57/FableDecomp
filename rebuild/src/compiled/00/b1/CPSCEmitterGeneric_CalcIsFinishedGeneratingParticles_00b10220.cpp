@@ -9,6 +9,7 @@
 // Shape: the packed field is decoded by an inline quantiser: unsigned-to-float, scale, then rounded to two decimals with
 // an inline power-of-ten loop and an inline float-to-int helper -- retail's helper is a bare dword `fistp` after a
 // float store/reload (inline asm in the original): lane gap.
+#include "fable_compiler.h"
 struct CPSCEmitterGeneric {
     unsigned char _pad00[0x28];
     long          m_particlesGenerated;     // +0x28
@@ -24,7 +25,7 @@ namespace NParticleEngine { long __fastcall GetTickRate(); }   // 0x00AEA9F0, Fa
 // the engine's inline-assembly float-to-long helper, expanded in place (the by-value parameter is homed in a dead slot)
 #include "engine/GFFloatToLongNear.h"
 
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     long i = decimals;

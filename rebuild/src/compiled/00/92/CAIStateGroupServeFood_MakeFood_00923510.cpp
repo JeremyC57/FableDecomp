@@ -18,6 +18,7 @@
 // Shape: the def-name string is a named local in a block with the manager pointer read into a local first (an inline
 //         `GetPWorld()->PDefManager->Get(...)` pushes the string before the GetPWorld call); the player number is a
 //         local read before the implicit "" conversion.
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -30,7 +31,7 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     class CTCBase* AddTC(const class CCharString& name, bool a, void* params);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -55,7 +56,7 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }

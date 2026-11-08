@@ -13,6 +13,7 @@
 // Layout: CTextureMorph {unsigned long NewTexture +0, unsigned long GroupID +4} (Ego_r); retail CVectorMap = STLport
 // vector +0x00 (12 bytes), empty Compare +0x0C, bool Dirty +0x0D.
 // Manifest label "TextureMorph_AddToList" is a descriptive auto label.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
@@ -142,7 +143,7 @@ public:
     C                        Compare;                // +0x0C
     bool                     Dirty;                  // +0x0D
 
-    __forceinline void Insert(const K& key, const V& value)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)
     {
         Vector.push_back(value_type(key, value));
         Dirty = true;

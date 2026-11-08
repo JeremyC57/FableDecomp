@@ -12,6 +12,7 @@
 // run and cross-jumps the three bodies into one tail; the member objects keep retail's order (zeros, `lea` of Morph, vtable,
 // Morph constructor). Retail sizes: 0xac, 0xe4 (PDB 0xf4: retail containers are narrower), 0xac. The switch lowers to a
 // `sub eax,8 / sub eax,2 / sub eax,2` chain with the case-12 body first.
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
 class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
@@ -22,14 +23,14 @@ class CEngineInternalPrimitiveBase { public:              // engine/CEngineInter
 
 template <class T> class CIVCountedPointer { public:     // intrusive counted pointer (one word)
     T* m_p;
-    __forceinline CIVCountedPointer() : m_p(0) { }
+    FABLE_FORCEINLINE CIVCountedPointer() : m_p(0) { }
 };
 class CEnginePrimitiveSimulationInfo;
 class CEngineMeshEffect;
 
 class CEnginePrimitiveThemeChannelDesc { public:          // three flag bytes
     bool m_a, m_b, m_c;
-    __forceinline CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
+    FABLE_FORCEINLINE CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
 };
 
 struct __declspec(novtable) CEngineInternalPrimitiveStaticMeshBase : CEngineInternalPrimitiveBase {   // intermediate base
@@ -41,13 +42,13 @@ struct __declspec(novtable) CEngineInternalPrimitiveStaticMeshBase : CEngineInte
     CIVCountedPointer<CEngineMeshEffect>              MeshEffect;       // +0x68
     CEnginePrimitiveThemeChannelDesc                  ThemeChannelDesc; // +0x6C
     unsigned char _pad6f[0x3d];                    // +0x6F .. +0xAC
-    __forceinline CEngineInternalPrimitiveStaticMeshBase(long type, unsigned long flags)
+    FABLE_FORCEINLINE CEngineInternalPrimitiveStaticMeshBase(long type, unsigned long flags)
         : CEngineInternalPrimitiveBase(type, flags), m_mesh(0), m_material(0), m_animation(0) { }
 };
 
 class CEngineInternalPrimitiveStaticMesh : public CEngineInternalPrimitiveStaticMeshBase { public:   // vtable 0x012A425C, 0xac bytes
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(8, 0xa) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(8, 0xa) { }
 };
 
 class CEngineInternalPrimitiveMorphInfo { public:
@@ -58,12 +59,12 @@ class CEngineInternalPrimitiveMorphInfo { public:
 struct CEngineInternalPrimitiveMorphedStaticMesh : CEngineInternalPrimitiveStaticMeshBase {   // vtable 0x012A51B4, 0xe4 bytes
     CEngineInternalPrimitiveMorphInfo Morph;       // +0xAC
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveMorphedStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(0xa, 8) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveMorphedStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(0xa, 8) { }
 };
 
 struct CEngineInternalPrimitiveStaticMeshFromFile : CEngineInternalPrimitiveStaticMeshBase {   // vtable 0x012A4374, 0xac bytes
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveStaticMeshFromFile() : CEngineInternalPrimitiveStaticMeshBase(0xc, 8) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveStaticMeshFromFile() : CEngineInternalPrimitiveStaticMeshBase(0xc, 8) { }
 };
 
 struct CEnginePrimitiveManagerStaticMeshesBase {

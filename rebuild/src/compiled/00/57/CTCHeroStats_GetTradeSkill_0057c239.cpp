@@ -15,6 +15,7 @@
 // arm shares the `return 0.0f` tail (0x0122DEDC is 0.0f). The def table (+0xF0, a 12-byte float vector) is read
 // through the def pointer in eax with three separate size() evaluations: `level < size()`, the `size() != 0`
 // guard and `size() - 1` in the clamp.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -31,7 +32,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) const { return m_present.test(wanted); }
-    template<class T> __forceinline T* GetTC(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

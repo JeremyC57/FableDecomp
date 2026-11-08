@@ -28,6 +28,7 @@
 //   a float local (x87 `fld`/`fstp`, not integer moves); the nav result is read before the Active store; the squared
 //   length is written X*X + Y*Y + Z*Z over the output member (emitted Z, Y, X); the step target is `offset + position`
 //   through an inline operator+.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
@@ -64,7 +65,7 @@ class CThing { public:
     unsigned char _pad50[0x60 - 0x50];
     CTCPhysicsBase* PPhysics;                   // +0x60
     bool IsPerformingAnyAction();               // 0x006622A0 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -77,7 +78,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetConstInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(const T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

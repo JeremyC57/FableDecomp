@@ -10,6 +10,7 @@
 // Shape: the landed GetAllLeafThings 0x006AE830 with a by-reference Bind2; the OverlappingArea filter inline: thing
 //   PhysicsTC +0x60, bounding info, the inline-asm ceil, the filter's C2DBoxI copied, grown by the radius (X1, X0, Y0, Y1
 //   order of the _ftol calls), then the centre's (long) X/Y tested inside [X0, X1) x [Y0, Y1).
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
@@ -118,7 +119,7 @@ public:
 class CThingFilter_OverlappingArea {
 public:
     const C2DBoxI* Area;                              // +0x00
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const CTCPhysicsBase* physics = thing.PhysicsTC;
         if (!physics)
@@ -146,7 +147,7 @@ public:
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
-    template <class T> __forceinline bool operator()(const T& thing) const { return First(thing) && Second(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {

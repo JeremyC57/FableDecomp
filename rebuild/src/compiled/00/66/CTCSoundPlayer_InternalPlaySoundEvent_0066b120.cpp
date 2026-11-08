@@ -16,6 +16,7 @@
 //   CSoundPair {FirstSound, LastSound}; CTCBase ParentThing +4; CThing PhysicsTC +0x60, Position +0x0c.
 // Shape: as InternalPlaySoundEventAtPos 0x0066A920 with CreatePAttachedEmitter(flag) and `init.OverrideID = overrideID`.
 // No pragma.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
@@ -66,8 +67,8 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
 public:
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
-    __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
 class CGameSubsystem {
 public:

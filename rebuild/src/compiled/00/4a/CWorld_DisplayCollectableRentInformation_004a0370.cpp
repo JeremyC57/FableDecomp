@@ -18,6 +18,7 @@
 //   landed 0x007795A0); CThing interface bitset +0x20 / map +0x44 / Dead bit +0x91 (landed GetInterface model).
 // Shape: GetInterface writes through an out pointer and the house pointer is used without a null test (its home
 //   slot is shared with the filter and the lookup key, hence the load before the loop).
+#include "fable_compiler.h"
 #define CWorld CWorld_PDB
 #include "engine/CWorld.h"
 #undef CWorld
@@ -58,7 +59,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                        // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                             // +0x91 bit 0 Dead
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -71,7 +72,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

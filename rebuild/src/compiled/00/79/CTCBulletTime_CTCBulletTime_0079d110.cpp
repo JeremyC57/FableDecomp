@@ -11,6 +11,7 @@
 // Layout: engine/CTCBulletTime.h offsets (its opaque member arrays carry no destructors, so the members are re-typed here):
 // DisplacementEffectPrimitive +0x18, PDef +0x20, m_tpLoopingEffect +0x30, LoopSound +0x38, PItemRemoved +0x3c,
 // HitCreatureBlur +0x44, ScreenFilterKey +0x50, CutSceneCancel +0x56.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -95,22 +96,22 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
-    __forceinline ~CIVCountedPointer() { ReleaseRef(); }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { ReleaseRef(); }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass {      // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                     // +0x04
     virtual void v001();
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
 };
 class CSpecialAbilitiesBulletTimeDef { public:
     virtual void v00();
@@ -159,7 +160,7 @@ class CTCBulletTime : public CTCBase { public:
     bool Pausable;                              // +0x54
     bool Paused;                                // +0x55
     bool CutSceneCancel;                        // +0x56
-    __forceinline void StopSound(unsigned long sound)
+    FABLE_FORCEINLINE void StopSound(unsigned long sound)
     {
         CTCSoundEmitter* emitter;
         if (ParentThing->GetTC(TCI_SOUND_PLAYER, &emitter))

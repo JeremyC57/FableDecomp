@@ -8,6 +8,7 @@
 // looked-up component goes straight to the getter; both nulls fall to the shared `xor al,al` tail and the
 // predicate's true result is re-materialised (`mov al,1`), so the body is the early-return form.
 // The manifest module (a WorkBase template instantiation) is kept; the class is identified by the component type.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

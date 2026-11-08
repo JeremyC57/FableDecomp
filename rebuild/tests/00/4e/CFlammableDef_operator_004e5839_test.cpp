@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -30,7 +31,7 @@ class CFireEffectCreationSet { public:         // PDB 0x18 bytes (retail 0x14): 
     virtual void v00();
     bool m_baseFlag;                    // +0x04 (unnamed base-class byte in the PDB)
     CContainmentMap ContainmentMap;     // +0x08
-    __forceinline CFireEffectCreationSet& operator=(const CFireEffectCreationSet& other)
+    FABLE_FORCEINLINE CFireEffectCreationSet& operator=(const CFireEffectCreationSet& other)
     {
         m_baseFlag = other.m_baseFlag;
         ContainmentMap = other.ContainmentMap;

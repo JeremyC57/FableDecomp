@@ -18,6 +18,7 @@
 //   end; ++it) { crime = *it; village->ReportCrime(..); if (village thing has 0x4F) { if (!op->KnowsOfDeed(..))
 //   op->InformOfDeed(.., false); } if (log) { effects = log->GetDeedEffectsDef(it->Type); severity 2/3 -> severe; } }
 //   if (severe) village->RecalculateSecuritySweep(0); } PendingCrimes.clear();`
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -34,15 +35,15 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(type);
         return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = GetTC<T>(interfaceType);

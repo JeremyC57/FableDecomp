@@ -1,5 +1,6 @@
 // Behaviour test for 0077cd50: src/0077cd50.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCHighlightItem::FrameUpdate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -39,10 +40,10 @@ template <class T> class CDefPointer { public:
     CDefPointer() {}
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CThingDef {
     bool GetSubDefRaw(CDefPointer<const CHighlightItemDef>* out) const;   // 0x0077D080
-    __forceinline bool GetSubDef(CDefPointer<const CHighlightItemDef>* out) const { out->Object = 0; return GetSubDefRaw(out); }
+    FABLE_FORCEINLINE bool GetSubDef(CDefPointer<const CHighlightItemDef>* out) const { out->Object = 0; return GetSubDefRaw(out); }
 };
 void* FindDef_CThingDef_GetSubDefRaw_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def

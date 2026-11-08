@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -23,7 +24,7 @@ public:
  static _Link_type _S_minimum(_Link_type x) { while(x->_M_left) x=(_Link_type)x->_M_left; return x; }
  static _Link_type _S_maximum(_Link_type x) { while(x->_M_right) x=(_Link_type)x->_M_right; return x; }
  void clear() { if(_M_node_count!=0) { _M_erase(_M_root()); _M_leftmost()=_M_header; _M_root()=0; _M_rightmost()=_M_header; _M_node_count=0; } }
- __forceinline _Rb_tree& operator=(const _Rb_tree& x) {
+ FABLE_FORCEINLINE _Rb_tree& operator=(const _Rb_tree& x) {
   if(this!=&x) { clear(); _M_node_count=0; _M_key_compare=x._M_key_compare;
    if(x._M_root()==0) { _M_root()=0; _M_leftmost()=_M_header; _M_rightmost()=_M_header; }
    else { _M_root()=_M_copy(x._M_root(),_M_header); _M_leftmost()=_S_minimum(_M_root()); _M_rightmost()=_S_maximum(_M_root()); _M_node_count=x._M_node_count; }

@@ -15,6 +15,7 @@
 //   (`if (Open) { Open = false; Restore(); }`), each shader (own vtable, null-tested `dec ; jne ; call [vt]` release,
 //   CShaderBase vtable), then the render target's implicit destructor (no vtable store): ZBufferSurface then
 //   RenderToSurface (own vtable + Uninitialise), then ~CBaseClass; the base destructor is tail-called.
+#include "fable_compiler.h"
 class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
 };
@@ -31,7 +32,7 @@ extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
 struct CRenderStateCaptureBlock {
     bool Open;
-    __forceinline ~CRenderStateCaptureBlock()
+    FABLE_FORCEINLINE ~CRenderStateCaptureBlock()
     {
         if (Open) {
             Open = false;
@@ -56,7 +57,7 @@ class CShaderBase { public:                               // vtable 0x0129A030
 };
 class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
-    __forceinline virtual ~CPixelShader()
+    FABLE_FORCEINLINE virtual ~CPixelShader()
     {
         CPixelShaderData* data = Data;
         if (data) {
@@ -67,7 +68,7 @@ class CPixelShader : public CShaderBase { public:                // vtable 0x012
 };
 class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
-    __forceinline virtual ~CVertexShader()
+    FABLE_FORCEINLINE virtual ~CVertexShader()
     {
         CVertexShaderData* data = Data;
         if (data) {
@@ -85,7 +86,7 @@ class CSurface { public:                                  // vtable 0x0122F84C, 
     void*              PAllocatedMemory;           // +0x0c
     virtual void v00();
     void Uninitialise();                           // 0x009F2E20
-    __forceinline ~CSurface() { Uninitialise(); }
+    FABLE_FORCEINLINE ~CSurface() { Uninitialise(); }
 };
 class CRenderTarget : public CBaseClass { public:                // 0x24 bytes, implicit destructor
     CSurface RenderToSurface;                      // +0x04

@@ -9,6 +9,7 @@
 //   implicit `??4` out of line) with CDefPointer's inline assignment: compare the two def pointers, release the old def
 //   (count at +4; the pointer cleared inside the null test, `and [esi+4],0`), copy the new one and add-ref it. /Os will
 //   not expand either helper on its own, so both are `__forceinline` (the release on the def keeps one load of the pointer).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CDefCounted {                                     // counted def object: vptr, reference count at +4
@@ -16,7 +17,7 @@ public:
     virtual void Unused0();
     virtual void Destroy() const;                       // slot 1 (callable through a const def)
     mutable long RefCount;                              // +0x04
-    __forceinline void Release() const
+    FABLE_FORCEINLINE void Release() const
     {
         if (--RefCount == 0)
             Destroy();
@@ -34,7 +35,7 @@ public:
         if (PDef)
             ++PDef->RefCount;
     }
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (PDef != other.PDef) {
             if (PDef) {

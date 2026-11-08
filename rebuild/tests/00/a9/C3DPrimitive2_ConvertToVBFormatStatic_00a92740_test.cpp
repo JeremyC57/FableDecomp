@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -61,7 +62,7 @@ struct CByteVector {
     unsigned char* end;
     void insert(unsigned char*, unsigned long, const unsigned char&); // 0x00485F3A
     unsigned long size() const { return (unsigned long)(last - first); }
-    __forceinline void resize(unsigned long count, const unsigned char& value)
+    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
     {
         if (count < size())
             last = first + count;

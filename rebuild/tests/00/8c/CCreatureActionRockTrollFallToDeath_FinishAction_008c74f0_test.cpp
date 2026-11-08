@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -769,7 +770,7 @@ class CThing:public CBaseObject { public:
     unsigned char DeadFlags;
     const C3DVector& GetPosition()const; //004C73D0 PhysicsTC+0C
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             long type=key;
             CInterfaceMap* map=&Components;
@@ -961,7 +962,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
 struct NativeCountedDef {
  struct VTable;const VTable* VPtr;unsigned long IVRefCount;
  void DeletingDestructor(unsigned long);void Delete()const;
- __forceinline void Release(){if(!--IVRefCount)(this->*GetDelete())();}
+ FABLE_FORCEINLINE void Release(){if(!--IVRefCount)(this->*GetDelete())();}
  typedef void(NativeCountedDef::*DeleteMethod)()const;
  DeleteMethod GetDelete()const;
 };
@@ -970,7 +971,7 @@ inline NativeCountedDef::DeleteMethod NativeCountedDef::GetDelete()const{return 
 template<class T>struct DefPointer {
  T* Object;DefPointer():Object(0){} explicit DefPointer(T* p):Object(p){if(p)++p->IVRefCount;}
  DefPointer(const DefPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
- __forceinline void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
+ FABLE_FORCEINLINE void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
  ~DefPointer(){T* p=Object;if(p)p->Release();}
  T* operator->()const{return Object;}
 };
@@ -1014,7 +1015,7 @@ class CCreatureAction_RockTrollShakeAndExplode:public CCombatActionBase { public
     virtual CCreatureActionBase* Clone()const;
     virtual void Initialise();
     virtual void FinishAction();
- __forceinline CCreatureAction_RockTrollShakeAndExplode(CThingCreatureBase* actor):CCombatActionBase(actor,250,CSoundPair()){} //008C7BB0
+ FABLE_FORCEINLINE CCreatureAction_RockTrollShakeAndExplode(CThingCreatureBase* actor):CCombatActionBase(actor,250,CSoundPair()){} //008C7BB0
 };
 void CCreatureAction_RockTrollFallToDeath::FinishAction(){
  DefPointer<CTrollBattleDef> battle;

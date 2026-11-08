@@ -10,6 +10,7 @@
 // the count is the STLport resize(n, CPlane()) inlined (erase the tail when shrinking, else insert the default
 // plane at end()); then one Read3DVector + ReadFloat per plane. No sub-chunk call: the chunk is a leaf.
 // Layout: retail C3DMeshFileChunk base is 0x2c bytes (Ego_r.pdb 0x34): Name +0x2c, Planes +0x30 (PDB +8 each).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -38,8 +39,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -53,9 +54,9 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

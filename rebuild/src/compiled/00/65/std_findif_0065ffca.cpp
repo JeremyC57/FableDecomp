@@ -13,6 +13,7 @@
 //   CBaseIntelligentPointer::~CBaseIntelligentPointer() 0x00A01C10 (the by-value predicate, destroyed by the callee).
 // Shape: STLport `return __find_if(__first, __last, __pred, _STLP_ITERATOR_CATEGORY(__first, _InputIter));`; the same-TU noinline
 //   __find_if body lets VC7.1 home the empty tag in the `last` argument slot (`lea esi,[ebp+0Fh]`) as retail does.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 class CVillageTaskHorn;
@@ -43,17 +44,17 @@ struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
 struct _List_iterator_base {
     _List_node_base* _M_node;
-    __forceinline _List_iterator_base(_List_node_base* __x) : _M_node(__x) { }
-    __forceinline void _M_incr() { _M_node = _M_node->_M_next; }
-    __forceinline bool operator!=(const _List_iterator_base& __y) const { return _M_node != __y._M_node; }
+    FABLE_FORCEINLINE _List_iterator_base(_List_node_base* __x) : _M_node(__x) { }
+    FABLE_FORCEINLINE void _M_incr() { _M_node = _M_node->_M_next; }
+    FABLE_FORCEINLINE bool operator!=(const _List_iterator_base& __y) const { return _M_node != __y._M_node; }
 };
 template <class _Tp, class _Traits> struct _List_iterator : public _List_iterator_base {
-    __forceinline _List_iterator(_List_node_base* __x) : _List_iterator_base(__x) { }
-    __forceinline _List_iterator(const _List_iterator& __x) : _List_iterator_base(__x._M_node) { }
-    __forceinline _Tp& operator*() const { return ((_List_node<_Tp>*)_M_node)->_M_data; }
-    __forceinline _List_iterator& operator++() { _M_incr(); return *this; }
+    FABLE_FORCEINLINE _List_iterator(_List_node_base* __x) : _List_iterator_base(__x) { }
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& __x) : _List_iterator_base(__x._M_node) { }
+    FABLE_FORCEINLINE _Tp& operator*() const { return ((_List_node<_Tp>*)_M_node)->_M_data; }
+    FABLE_FORCEINLINE _List_iterator& operator++() { _M_incr(); return *this; }
 };
-__forceinline bidirectional_iterator_tag iterator_category(const _List_iterator_base&) { return bidirectional_iterator_tag(); }
+FABLE_FORCEINLINE bidirectional_iterator_tag iterator_category(const _List_iterator_base&) { return bidirectional_iterator_tag(); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _Predicate>

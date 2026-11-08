@@ -10,6 +10,7 @@
 // Shape: a `changed` flag in bl; the boss lookup is the one-ternary HasTC + GetTC on the const map (component straight into
 //   ecx); the remove test is `(Timer > 0 && --Timer == 0) || changed`; the mode-manager lookup result is not tested, so the
 //   absent path calls through the never-written out variable (VC7.1 duplicates that call tail).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -19,11 +20,11 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -31,7 +32,7 @@ class CThing { public:
         const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -13,6 +13,7 @@
 // Shape: the sound stop is the in-class inline member whose other call (in Pause, 0x0079CF30) is emitted out of line at
 // 0x0079CEE0: its by-value handle is loaded before the presence test; the slowdown removal goes through an inline CWorld
 // forwarder, the world for the filter removal is a named local fetched before the arguments; the effect kill is the Pause shape (one-bit `unsigned short` dead flag, temporary from 0).
+#include "fable_compiler.h"
 #define CTCBulletTime CTCBulletTimeLayout
 #include "engine/CTCBulletTime.h"
 #undef CTCBulletTime
@@ -98,7 +99,7 @@ struct CTCBulletTimeImpl : CTCBulletTime {
     {
         return *(CIntelligentPointer<NParticleEngine::CParticleEmitter>*)m_tpLoopingEffect;
     }
-    __forceinline void StopSound(unsigned long sound)   // out of line at 0x0079CEE0
+    FABLE_FORCEINLINE void StopSound(unsigned long sound)   // out of line at 0x0079CEE0
     {
         CTCSoundEmitter* emitter;
         if (GetParentThing()->GetTC(TCI_SOUND_PLAYER, &emitter))

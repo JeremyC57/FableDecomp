@@ -10,6 +10,7 @@
 // the member) and frees the node; the match breaks out to the shared name-dtor tail.
 // Layout: retail CBankFileManager (see CreateRetailBank 0x009A7720): RetailBanks +0x10 (list<CCountedPointer<
 // NBankFileManager::CRetailBank>>, 4 bytes); CRetailBank::FilePath (CCharString) +0x24.
+#include "fable_compiler.h"
 extern "C" int __cdecl _stricmp(const char* a, const char* b); // 0x00BFEBA8 MSVCR71 _stricmp (import thunk)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
@@ -41,7 +42,7 @@ class CRetailBank { public:
 struct CRetailBankPointer {                        // CCountedPointer<NBankFileManager::CRetailBank>
     NBankFileManager::CRetailBank* Data;
     SCountBlock* Info;
-    __forceinline ~CRetailBankPointer()
+    FABLE_FORCEINLINE ~CRetailBankPointer()
     {
         if (Info) {
             --Info->m_references;

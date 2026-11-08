@@ -1,6 +1,7 @@
 // Behaviour test for 0x007B42D0 CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn: DeedHandle then Type through the
 // inlined CMemoryDataInputStream::Read -- straight from the current chunk when 4 bytes remain, through the overflow
 // reader otherwise, and not at all when position + 4 leaves [0, 0x7FFFFFFF].
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,8 +25,8 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     {
         ++g_overflows; std::memcpy(buffer, &g_overflowValue, size); position += size;
     }
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -45,7 +46,7 @@ class CCrimeWaitingForBribe { public: long DeedHandle; long Type; };
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
     {
         long number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));

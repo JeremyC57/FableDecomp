@@ -10,6 +10,7 @@
 // Shape (family M144, representative 0x00581CC9): `CDefPointer<const CInventoryDef> def = PDef; return def->InitialInventoryWeaponsItems;` --
 //   the copy's add-ref and its release are both null-tested; the member address is formed before the release (CDefPointer copy/dtor __forceinline: /Os leaves them out of line otherwise).
 //   `optimize("s", on)` (the add-ref / release are read-modify-write).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
@@ -34,12 +35,12 @@ public:
 template <class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->m_refCount;
     }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->m_refCount == 0)
             Object->Destroy();

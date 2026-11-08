@@ -9,6 +9,7 @@
 // with the same members.
 // Shape: the landed CRandomGenerator::Next inline (seed * 0x24A1 + 0x24DF, then GFROR13) & 3 into a named local; the sound name is
 // a named CCharString local (an unnamed temporary passes the ctor's eax instead of `lea ecx ; push ecx`).
+#include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long value);       // 0x00497890
 class CCharString { public:
     void* PStringData;
@@ -17,7 +18,7 @@ class CCharString { public:
 };
 struct CRandomGenerator {
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
 };
 class CWorld {
 public:

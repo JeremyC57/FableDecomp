@@ -7,6 +7,7 @@
 //        Release() member does the decrement (`--Object->RefCount` written in the CDefPointer dtor gives `dec eax` before the
 //        `[ecx+0xa0]` load). The name string "SHOT_CROSSBOW_BOLT" (0x0125556C) is a named CCharString local (`lea eax ; push eax`).
 // Layout: CTCWeapon (engine header): ParentThing +0x04, WeaponDef +0x0C; CWeaponDef: RefCount +0x04, created-shot index +0xA0.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);  // 0x0099EBF0
@@ -30,8 +31,8 @@ class CWeaponDef { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { Object->Release(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CThing;
@@ -47,7 +48,7 @@ class CTCWeapon : public CTCBase { public:
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];
     CDefPointer<CWeaponDef> WeaponDef;           // +0x0c
-    __forceinline CDefPointer<CWeaponDef> GetWeaponDef() const { return WeaponDef; }
+    FABLE_FORCEINLINE CDefPointer<CWeaponDef> GetWeaponDef() const { return WeaponDef; }
     long GetCreatedShotDefGlobalIndex() const;
 };
 long CTCWeapon::GetCreatedShotDefGlobalIndex() const

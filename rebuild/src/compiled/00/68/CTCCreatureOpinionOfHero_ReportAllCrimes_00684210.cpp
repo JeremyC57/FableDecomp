@@ -13,6 +13,7 @@
 // / ReportCrime @ 0x0065CB6B, CTCCreatureOpinionOfHero::InformOfDeed(long, bool) @ 0x00683590.
 // Layout: as the landed DecriminaliseAllKnownCrimes (0x00684050): PendingDeeds +0x54, KnownDeeds list<long>[92] +0x1c8
 // (retail 4-byte STLport lists); COpinionDeed type +0, Decriminalised +0x22, IsCrime +0x23, linked handle +0x24.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -32,7 +33,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceConst(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceConst(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -80,7 +81,7 @@ struct SListNode {
     long       _M_data;
 };
 struct CLongList { SListNode* _M_node; };
-__forceinline bool IsCrime(const COpinionDeed* deed)
+FABLE_FORCEINLINE bool IsCrime(const COpinionDeed* deed)
 {
     if (deed->Type < 2)
         return false;
@@ -89,7 +90,7 @@ __forceinline bool IsCrime(const COpinionDeed* deed)
     return deed->IsCrime && !deed->Decriminalised;
 }
 class CTCCreatureOpinionOfHero;
-__forceinline void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, CTCCreatureOpinionOfHero* informed,
+FABLE_FORCEINLINE void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, CTCCreatureOpinionOfHero* informed,
                               CLongList& deeds);
 class CTCBase
 {
@@ -108,7 +109,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
     void InformOfDeed(long handle, bool flag);               // 0x00683590
     void ReportAllCrimes(CTCCreatureOpinionOfHero* informed);
 };
-__forceinline void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, CTCCreatureOpinionOfHero* informed,
+FABLE_FORCEINLINE void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, CTCCreatureOpinionOfHero* informed,
                               CLongList& deeds)
 {
     SListNode* end = deeds._M_node;

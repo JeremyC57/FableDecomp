@@ -24,6 +24,7 @@
 //   FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in, SpawnFunction) plus the rotated wait of CV_RockTrollFirstEncounterScript::Main
 //   0x00EC3D40. `cmp byte ptr [esi+49h],1` is `bBard_finished != true`. The unread `mov [esp+14h],ebx` at entry (the
 //   conditional-temporary flags' home) comes out of VC7.1 by itself here. First grade.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -76,7 +77,7 @@ public:
     void PostAddScriptedEntities();                                                   // 0x00CB8930
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 namespace NScript {
 class CV_TalentlessBardScript : public CScriptBase {

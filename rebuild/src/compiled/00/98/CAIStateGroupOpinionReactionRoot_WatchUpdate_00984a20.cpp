@@ -14,6 +14,7 @@
 // (`mov eax,1` / `xor eax,eax`). The member is unaligned at +0x6b (engine header, pack 1), so the class is
 // modelled packed.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -92,7 +93,7 @@ struct CAIStateGroupBaseL : CAIStateGroupBase {
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   // 0x0097D6F0
     // a random frame count below `range`: the range arrives by const reference, so the literal is materialised
     // in a register and divided with `div` (the landed seed step: seed*0x24A1+0x24DF, GFROR13)
-    __forceinline unsigned long RandomFrames(const unsigned long& range)
+    FABLE_FORCEINLINE unsigned long RandomFrames(const unsigned long& range)
     {
         unsigned long* seed = GetPWorldSeed();
         unsigned long next = *seed * 0x24A1U + 0x24DFU;

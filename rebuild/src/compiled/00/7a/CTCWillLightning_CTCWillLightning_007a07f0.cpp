@@ -14,6 +14,7 @@
 // Shape: `CTCDParticleEmitter* emitter = 0;` before the GetPItem call gives `xor edi,edi`; the CThing dead flag is bit 0
 //   of +0x91; the two hand-effect members stay in ebx/ebp for their destructor calls; the def release is the pointee's
 //   inline Release() followed by `Object = 0`.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -33,7 +34,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

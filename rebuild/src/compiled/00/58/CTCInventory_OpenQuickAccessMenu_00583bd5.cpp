@@ -14,6 +14,7 @@
 // lives in edi and the lookup key in the one frame word; every blocker returns early.
 // Layout: CTCInGameMenu::InGameMenuOpen +0x0C (engine header); the quest start component's flag +0x0C (descriptive);
 // CPlayerGui busy byte +0xF6, the hero information screen manager's showing byte +0x34 (descriptive).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -39,7 +40,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -87,7 +88,7 @@ class CPlayerGui { public:
 class CTCInventory { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
-    __forceinline const CThing* GetConstParent() const { return ParentThing; }
+    FABLE_FORCEINLINE const CThing* GetConstParent() const { return ParentThing; }
     void OpenQuickAccessMenu();
 };
 

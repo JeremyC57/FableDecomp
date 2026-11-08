@@ -13,6 +13,7 @@
 //   share one `pop esi ; xor al,al` tail, the def/state false exits the outer one; the owner pointer is tested
 //   through the member, then fetched again into a named local for the village lookup (two GetPItem calls; a third
 //   call appears when the lookup re-reads the member).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -39,7 +40,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

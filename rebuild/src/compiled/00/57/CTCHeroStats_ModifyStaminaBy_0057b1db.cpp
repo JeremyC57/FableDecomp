@@ -20,6 +20,7 @@
 // parameter slot. The def is read through an inline GetHeroStatsDef() accessor.
 // Layout: retail Stamina +0x58, MaxStamina +0x5C, FramesUntilStaminaRefills +0x60, InfiniteStamina +0x16C
 // (PDB +0x60/+0x64/+0x68/+0x184).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -74,7 +75,7 @@ class CTCHeroStats : public CTCBase { public:
     void ModifyStaminaBy(long delta);
 };
 
-template <class T> __forceinline void GFLimit(T& value, const T& lo, const T& hi)
+template <class T> FABLE_FORCEINLINE void GFLimit(T& value, const T& lo, const T& hi)
 {
     if (value < lo)
         value = lo;

@@ -18,6 +18,7 @@
 //   PDB offsets, so the class is modelled locally. CShaderRenderManager as in 0x00B54210 (BoneMatrices +0x3dc).
 // Shape: `float factor = 0; if (...) factor = ...;` keeps the zero store before the branch and the frame slot; resize(4)
 //   passes an uninitialised 48-byte default-constructed temporary (the 0x30 bytes of frame above the float).
+#include "fable_compiler.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix3x4 { public: float M[12]; };
 struct CPreTransposedBoneMatrix {
@@ -52,7 +53,7 @@ public:
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
     void SetBoneTransform(unsigned long index, const CMatrix3x4* matrix);                        // 0x0098A7F0
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

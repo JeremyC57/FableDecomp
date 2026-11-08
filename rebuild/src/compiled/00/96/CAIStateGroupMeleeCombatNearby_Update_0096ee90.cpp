@@ -15,6 +15,7 @@
 //          creature then world (GetPWorld after the creature load).
 // Layout: engine/CAIStateGroup_MeleeCombatNearby.h is flattened (vptr spelled as a data member) and this function makes
 //          virtual calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
+#include "fable_compiler.h"
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -39,9 +40,9 @@ struct CBaseIntelligentPointer {
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

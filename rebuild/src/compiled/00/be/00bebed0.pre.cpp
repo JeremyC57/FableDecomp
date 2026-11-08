@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y",off)
 #include <new>
 #include "candidates/composed_texture_compiled.h"
@@ -8,7 +9,7 @@ struct CompositeMapEntry
     CCompositeSurfaceInfo Value;
 };
 
-static __forceinline void ReleaseGraphicFrameData(CGraphicFrameData* data)
+static FABLE_FORCEINLINE void ReleaseGraphicFrameData(CGraphicFrameData* data)
 {
     --data->RefCount;
     if (data->RefCount == 0)

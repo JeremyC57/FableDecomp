@@ -9,8 +9,9 @@
 // Body: the inlined GFRandom(n, seed) (Ego_r.pdb ?GFRandom@@YIKKPAK@Z): `*seed = GFROR13(*seed * 0x24A1 + 0x24DF); return n ? *seed % n : 0;`,
 //   the seed pointer fetched before the size is computed (the landed 0x008EE720 shape).
 // Header debt: engine/CMaterialDef.h carries the Ego_r (Dinkumware) offsets; modelled locally with retail ones.
+#include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long value);            // 0x00497890
-__forceinline unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24A1 + 0x24DF;
     *seed = GFROR13(*seed);

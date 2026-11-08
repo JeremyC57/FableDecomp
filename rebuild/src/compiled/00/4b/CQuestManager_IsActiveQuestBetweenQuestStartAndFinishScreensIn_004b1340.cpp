@@ -11,6 +11,7 @@
 // conditional, with a construction flag) and an inline
 // CCharString == whose length+Compare tail is a nested inline IsEqual (its own `xor al,al ; mov bl,al` false exit);
 // the match bool survives the temporary's destructor in bl.
+#include "fable_compiler.h"
 template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharStringData (data and inline comparisons)
     const char*   Data;
     unsigned long Length;
@@ -55,7 +56,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -72,9 +73,9 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                         // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 
 template <class T> struct CRetailVector {              // STLport vector (12 bytes)
     T* _M_start;

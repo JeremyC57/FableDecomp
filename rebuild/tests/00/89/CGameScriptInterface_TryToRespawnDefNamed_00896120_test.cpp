@@ -1,4 +1,5 @@
 // Behaviour test for 00896120: body copied from src/00896120.cpp (CGameScriptInterface::TryToRespawnDefNamed), the thing / village callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,7 +30,7 @@ struct CThing_Retail {
     unsigned char         m_dead;
     unsigned char         _pad92[0x40];
     int                   m_id;
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap_Retail* map = &m_interfaces;

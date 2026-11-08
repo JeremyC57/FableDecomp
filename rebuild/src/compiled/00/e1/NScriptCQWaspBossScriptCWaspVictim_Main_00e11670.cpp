@@ -21,6 +21,7 @@
 //   nested declaration). The CTimer ctor and dtor are same-TU `__declspec(noinline)` bodies (GOTCHAS: VC7.1 then knows the timer does not
 //   escape and keeps TimerIndex in ebx across the scream loop, and the 0 of the object ctor in ebx); with header-only declarations
 //   ebx/ebp swap (dl=66..81). operator= is `__forceinline` (as 24 landed CTimer rows): plain inline stays a call at this site.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -45,7 +46,7 @@ enum EScriptEntityMoveType { };
 extern CGameScriptInterfaceBase* pDSTGame;
 __declspec(noinline) CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 __declspec(noinline) CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline bool CScriptThing::IsAlive() const { return !PImp.IsNull() && PImp->IsAlive(); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }

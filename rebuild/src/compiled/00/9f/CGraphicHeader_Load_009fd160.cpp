@@ -11,6 +11,7 @@
 // Shape: the inlined CDataInputStream::Read(buffer, size) of the landed TransferBinaryIn family (64-bit
 // position guard, `rep movsd` fast path, ReadWithSrcChunkOverflow fallback); the by-value CPixelFormat
 // result is built in the dead stream-argument slot and copied as one dword.
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -23,8 +24,8 @@ class CPixelFormat { public:                              // 4 bytes, non-POD (r
 
 struct CDataInputStreamReader : CDataInputStream {   // the engine layout plus the retail member functions
     CPixelFormat ReadPixelFormat();                                    // 0x00994670
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))

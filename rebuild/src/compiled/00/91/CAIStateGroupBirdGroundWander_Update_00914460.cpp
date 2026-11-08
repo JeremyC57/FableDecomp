@@ -15,6 +15,7 @@
 //          every exit breaks to the one Terminate call.
 // Layout: CAIStateGroupBase per engine/CAIStateGroupBase.h (PBrain +4); creature bitset +0x20, interface map +0x44.
 //          No engine header exists for CAIStateGroup_BirdGroundWander (the PDB header lists it without members).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CThingCreatureBase;
@@ -38,7 +39,7 @@ class CThing : public CThingPhysical { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {

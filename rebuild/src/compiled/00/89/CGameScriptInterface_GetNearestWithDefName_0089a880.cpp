@@ -18,6 +18,7 @@
 //   local handle whose GetPos (`if (!Data) return zero;` order) is devirtualised and inlined while `from`'s goes through
 //   the vtable. The vector destructor is STLport's `_Destroy(_M_start, _M_finish)` (by-value pair: the end pointer cached
 //   in ebx) then free(): an in-place `for (p = _M_start; p != _M_finish; ...)` loop shifts the whole register allocation.
+#include "fable_compiler.h"
 extern "C" void free(void* p);                           // 0x00BFEA14
 void operator delete(void* p);                           // 0x00BFE9BC
 class CCharString { public: void* PStringData; };
@@ -50,7 +51,7 @@ public:
     virtual bool IsSameThing(const CScriptThing* other) const;   // slot 78 (+0x138), on the implementation objects
     bool operator==(const CScriptThing& other) const { return PImp.Data->IsSameThing(other.PImp.Data); }
 };
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -63,7 +64,7 @@ public:                       // STLport vector (retail 12 bytes)
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

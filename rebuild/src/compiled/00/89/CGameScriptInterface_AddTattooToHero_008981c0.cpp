@@ -13,6 +13,7 @@
 // Layout: CThing player byte +0x90, dead flags +0x91 bit 0, UsingComponents +0x20 (TC 3 = word 0 bit 3), component map
 //   +0x44, physics +0x60; the engine singleton's +0x28 object holds the CIEngine at +0x2C.
 // Shape: the scratch script name is a named local in its own block around Create (destroyed right after it).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -65,8 +66,8 @@ struct CThing_Retail : public CThing {
     signed char           m_player;                 // +0x90
     unsigned char         m_dead : 1;               // +0x91 bit 0
     unsigned char         m_91_1 : 7;
-    __forceinline unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;
@@ -75,7 +76,7 @@ struct CThing_Retail : public CThing {
             it = map->end();
         return ((CTCBase_Retail*)it->second);
     }
-    template<class T> __forceinline bool GetInterfaceOut(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceOut(T** ppOut, long interfaceType)
     {
         if (HasInterface(interfaceType)) {
             *ppOut = (T*)GetInterface(interfaceType);

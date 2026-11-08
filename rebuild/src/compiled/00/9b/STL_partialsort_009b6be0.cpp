@@ -11,6 +11,7 @@
 // Callees: __make_heap @ 0x009B3CF0, __adjust_heap @ 0x009B3060 (landed), sort_heap @ 0x009B5C10 (landed).
 // Shape: as 0x009B6A40 (CWideString): make_heap and __pop_heap inlined; the T(*i) value stays in edx/ecx and is stored
 //   into the argument area for __adjust_heap after `*i = *first`.
+#include "fable_compiler.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
@@ -41,7 +42,7 @@ template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compar
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

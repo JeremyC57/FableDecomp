@@ -1,6 +1,7 @@
 // CTCInventoryClothing::GetCurrentTotalArmorValue() -- sum the armour of every worn clothing modifier plus the "no clothing" defaults of the uncovered suit parts
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -40,8 +41,8 @@ struct CThingDefPointer;
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline CDefPointer(const CThingDefPointer& o);
-    __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointer(const CThingDefPointer& o);
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 // Layout: retail CAppearanceModifierDef / armour def (Ego_r.pdb - 8, the 16-byte containers are 12 in retail).
@@ -72,10 +73,10 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<const CAppearanceModi
 #pragma auto_inline(on)
 struct CThingDefPointer {                                      // CDefPointer<const CThingDef> as returned untyped
     const CThingDef* Object;
-    __forceinline ~CThingDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CThingDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     const CThingDef* operator->() const { return Object; }
 };
-template<class T> __forceinline CDefPointer<T>::CDefPointer(const CThingDefPointer& o) : Object((T*)o.Object) { if (Object) ++Object->RefCount; }
+template<class T> FABLE_FORCEINLINE CDefPointer<T>::CDefPointer(const CThingDefPointer& o) : Object((T*)o.Object) { if (Object) ++Object->RefCount; }
 class CDefinitionManager { public:
     CThingDefPointer GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
@@ -96,7 +97,7 @@ class CThing { public:
     unsigned char  _pad00[0x20];
     std::bitset<274>  m_present;                                  // +0x20
     CInterfaceMap  m_interfaces;                               // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

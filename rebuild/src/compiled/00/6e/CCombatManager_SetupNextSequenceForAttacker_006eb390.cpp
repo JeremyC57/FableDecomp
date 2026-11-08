@@ -32,6 +32,7 @@
 //   CombatSequences +0x28, PLastAttacker +0x5c); CCombatManager Combatants +0x10, DialogueManager +0x38 (PDB +0x40: two
 //   12-byte maps); CThing UniqueID +0x18, interface bitset +0x20 / map +0x44, def +0x70, dead flag +0x91 bit 0;
 //   CCreatureDef flag byte +0x148.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject { public:};
 class CThing;
@@ -80,15 +81,15 @@ class CThing : public CBaseObject { public:
     unsigned char Flags91;                                // +0x91 bit 0: dead
     unsigned __int64 GetUID() const { return UniqueID; }
     CDefPointer<CCreatureDef> GetDef() const { return Def; }
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetConstTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetConstTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;
         const CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -8,6 +8,7 @@
 //        split (`and ecx,1Fh ; shl edx,cl ; shr eax,5 ; test [edi+eax*4+20h],edx`); the map lookup key lives in the dead
 //        argument slot and the `type < it->type` test is `cmp esi,[eax] ; jge`.
 // Layout: retail CThing bitset +0x20 (bitset<274>, 9 words), interface map +0x44.
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);   // 0x00BFEAF2
 extern "C" void __cdecl abort();                 // 0x00BFEAEC
 class CTCBase {
@@ -49,7 +50,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     void CopyTCIfExists(const CTCBase& source);
 };
-__forceinline CTCBase* GetTC(CThing* thing, long type)
+FABLE_FORCEINLINE CTCBase* GetTC(CThing* thing, long type)
 {
     ETCInterfaceType key = (ETCInterfaceType)(type);
     CInterfaceMap* map = &thing->Components;

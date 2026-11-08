@@ -20,6 +20,7 @@
 // Naming wave 28 (family d3): the grow-insert 0x004125A0 is the protected STLport member (IAE; DECISIONS_W27 D3, the
 //   own row's spelling ?_M_insert_overflow@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@IAEXPAVCDateAndTime@@ABV3@ABU__false_type@2@I_N@Z).
 //   Was public (QAE).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -93,13 +94,13 @@ void __fastcall fill<CDateAndTime*, CDateAndTime>(CDateAndTime* __first, CDateAn
 }
 #pragma auto_inline(on)
 
-__forceinline CDateAndTime* __copy_backward_ptrs(CDateAndTime* __first, CDateAndTime* __last,
+FABLE_FORCEINLINE CDateAndTime* __copy_backward_ptrs(CDateAndTime* __first, CDateAndTime* __last,
                                                       CDateAndTime* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
-__forceinline CDateAndTime* uninitialized_fill_n(CDateAndTime* __first, unsigned int __n,
+FABLE_FORCEINLINE CDateAndTime* uninitialized_fill_n(CDateAndTime* __first, unsigned int __n,
                                                       const CDateAndTime& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());

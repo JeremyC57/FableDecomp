@@ -8,6 +8,7 @@
 // +0x34, `test ch,20h`; then 0xe2 = CTCKraken, bit 2 of the byte at +0x3c), CTCBoss::IncrementBossPhase @ 0x007AED20.
 // Shape: both lookups are UNCHECKED accessors (absent arms read the key word); the final store is duplicated into both arms.
 // Layout: CTCKraken ReturnHeadToWater +0x5c (Ego_r.pdb +0x6c).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -33,13 +34,13 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCBoss* GetBoss() const
+    FABLE_FORCEINLINE CTCBoss* GetBoss() const
     {
         CTCBoss* boss;
         PCreature.Get()->GetTC(TCI_BOSS, &boss);
         return boss;
     }
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.Get()->GetTC(TCI_KRAKEN, &kraken);

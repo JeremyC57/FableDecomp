@@ -10,6 +10,7 @@
 // allocate's `n ? malloc(n * 0x2c) : 0` reusing the old-size slot; the __false_type temporaries sit in the high byte
 // of the atEnd argument slot (`lea eax,[ebp+1Bh]`); _M_set stores end of storage, finish, start.
 // Flags: #pragma optimize("y", off) + ("s", on) (frame pointer and `leave`, size TU).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -56,16 +57,16 @@ __declspec(noinline) CCategory* __fastcall UninitializedFillN(CCategory* first, 
 }
 #pragma auto_inline(on)
 
-template<class T> __forceinline const T& Max(const T& a, const T& b) { return a < b ? b : a; }   // STLport (max)
+template<class T> FABLE_FORCEINLINE const T& Max(const T& a, const T& b) { return a < b ? b : a; }   // STLport (max)
 
 struct CCategoryVector {                            // STLport vector<CCategory>: start, finish, end of storage
     CCategory* _M_start;
     CCategory* _M_finish;
     CCategory* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    static __forceinline CCategory* allocate(unsigned long n) { return n != 0 ? (CCategory*)malloc(n * sizeof(CCategory)) : 0; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    static FABLE_FORCEINLINE CCategory* allocate(unsigned long n) { return n != 0 ? (CCategory*)malloc(n * sizeof(CCategory)) : 0; }
     void _M_clear();                                // 0x005C2C42
-    __forceinline void _M_set(CCategory* start, CCategory* finish, CCategory* endOfStorage)
+    FABLE_FORCEINLINE void _M_set(CCategory* start, CCategory* finish, CCategory* endOfStorage)
     {
         _M_start = start;
         _M_finish = finish;

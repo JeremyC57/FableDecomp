@@ -15,6 +15,7 @@
 // Layout (local model): retail STLport lists are 4 bytes (PDB 12), so from ExplosionList (+0x30) on, retail = PDB - 8 per
 // list: PBeamWeaponEffect +0x34 (PDB +0x3C), HeadTrackTarget +0x51 (PDB +0x61). CKrakenDef BeamTrackSpeed +0x58,
 // TargetingTrackSpeed +0x5C (PDB). CThing PhysicsTC +0x60, dead bit +0x91.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
@@ -69,7 +70,7 @@ class CKrakenDef { public:
 
 float __stdcall AngleDifference(float a, float b);      // 0x00A441E0
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

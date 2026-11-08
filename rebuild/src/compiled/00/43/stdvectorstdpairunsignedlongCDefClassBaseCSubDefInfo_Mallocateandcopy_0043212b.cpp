@@ -15,6 +15,7 @@
 // size TU allocate, _Construct and __uninitialized_copy must be __forceinline (else all three stay out of line: 38 bytes).
 // Model: local -- engine/CDefClassBase.h is data-only (no member functions); only the nested CSubDefInfo (its copy constructor)
 // is needed, so it is local.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stdlib.h>
 #include <new>
@@ -28,11 +29,11 @@ template <class T1, class T2> struct pair {
 };
 template <class T> class allocator {
 public:
-    __forceinline T* allocate(size_t n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

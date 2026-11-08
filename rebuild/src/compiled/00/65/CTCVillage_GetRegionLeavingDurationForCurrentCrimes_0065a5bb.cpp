@@ -21,6 +21,7 @@
 //        keeps end() in ebx; the effects def is a temporary whose null-tested destructor releases it and clears its
 //        pointer (the store survives because the compare follows; `__forceinline`, this size TU otherwise calls it out
 //        of line); its frame word is the lookup key's.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -34,7 +35,7 @@ class CThing { public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -81,7 +82,7 @@ struct CDefVirtual {
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -90,7 +91,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

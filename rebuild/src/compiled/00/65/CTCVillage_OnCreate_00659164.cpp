@@ -22,6 +22,7 @@
 //        knowledge (stand-ins below), so VC keeps the thing def in ebx (reloaded from its slot once ebx holds the 0x14
 //        key) and the people def is read back for the release; the hero stays in edi: IS_THING_ALIVE<const CThing*> takes a converted
 //        temporary copy (its frame word then holds the lookup key).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
@@ -40,7 +41,7 @@ struct CDefBase {
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CVillageDef : public CDefBase { public:
@@ -100,7 +101,7 @@ public:
     unsigned char  _pad8e[3];
     unsigned char  Flags91;                     // +0x91 bit 0: dead
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

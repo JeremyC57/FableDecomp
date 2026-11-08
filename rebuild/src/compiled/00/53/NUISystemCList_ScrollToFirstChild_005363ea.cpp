@@ -1,19 +1,20 @@
 // NUISystem::CList::ScrollToFirstChild() -- scroll a non-empty list back to its first child: shift the list up by 25 per hidden child above the selection, step the selected child out (states 2-5 removed, state 4, ten 0.2 s updates), select child 0 and step it in (state 3, ten updates, states 2-5 added), then sync the non-scrolling children's selection states
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005363EA, 610 bytes; frame-pointer size TU (as ScrollDownProcess 0x00537302).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CUISound;
 struct CUIIconsDef : CDefBase {
@@ -25,7 +26,7 @@ struct CUIIconsDef : CDefBase {
 struct CIconsDefPointer {
     CUIIconsDef* Object;
     CIconsDefPointer() {}
-    __forceinline ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CUIIconsDef* operator->() const { return Object; }
 };
 

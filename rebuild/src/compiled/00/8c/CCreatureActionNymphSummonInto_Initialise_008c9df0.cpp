@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C9DF0, length 72 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), the body's virtual slot 36 (`call [edx+90h]`, one argument), CCombatActionBase::Initialise @ 0x00857520 (non-virtual call).
 // Shape: the 63-body "scoped name + base Initialise" family (landed 0x008CC760) with one virtual call in between; the body pointer is read through an inline accessor so that it is fetched into ecx before the argument push (a bare member read lands in eax and is moved).
+#include "fable_compiler.h"
 #include "fable_string.h"
 struct CCreatureBody {                      // the object at +0x60 of the creature: slot 36 takes one flag
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -15,7 +16,7 @@ struct CCreatureBody {                      // the object at +0x60 of the creatu
 class CBaseObject { public:
     unsigned char _pad[0x60];
     CCreatureBody* m_pBody;                 // +0x60
-    __forceinline CCreatureBody* GetBody() { return m_pBody; }
+    FABLE_FORCEINLINE CCreatureBody* GetBody() { return m_pBody; }
 };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"

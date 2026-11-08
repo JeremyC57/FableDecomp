@@ -19,6 +19,7 @@
 //   vector at +0x44 (as landed 0x00914AA0/0x0092E890). The filter types follow 0x00914AA0; its empty child object has a
 //   user-provided empty ctor so value-initialization does not zero an unused byte. The *_Methods structs are the lane's
 //   method carriers for generated data-only headers.
+#include "fable_compiler.h"
 #include "engine/CAIBrain.h"
 #define CAIStateGroupBase CAIStateGroupBasePdb
 #include "engine/CAIStateGroupBase.h"              // layout only; the local class below carries the protected accessors (PDB: IBE)
@@ -40,11 +41,11 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char pad[0x20]; unsigned int UsingComponents[9]; CInterfaceMap Interfaces;
-    template<class T> __forceinline T* GetTC(int id) {
+    template<class T> FABLE_FORCEINLINE T* GetTC(int id) {
         ETCInterfaceType key = (ETCInterfaceType)(id); CInterfaceMap* m=&Interfaces; CInterfaceMap::value_type* p=m->LowerBound(key);
         if (p==m->end() || id<p->first) p=m->end(); return (T*)p->second;
     }
-    template<class T> __forceinline T* GetTCConst(int id) const {
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(int id) const {
         ETCInterfaceType key = (ETCInterfaceType)(id); const CInterfaceMap* m=&Interfaces; const CInterfaceMap::value_type* p=m->LowerBound(key);
         if (p==m->end() || id<p->first) p=m->end(); return (T*)p->second;
     }

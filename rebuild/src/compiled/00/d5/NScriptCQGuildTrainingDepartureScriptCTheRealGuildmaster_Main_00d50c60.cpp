@@ -19,6 +19,7 @@
 // Shape: the CPreMeleeMaze row 0x00D43DB0 model (counted CScriptThing with inline destructor, local handle with the
 //   implicit inline destructor) plus the CTH_ThunderBoy InlineCopy argument, the landed cutscene cast-map calls
 //   (CScytheNearOracle 0x00E2A320) and a CRGBColour built in its argument slot.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -81,7 +82,7 @@ protected:
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 struct CScriptGameResourceObjectImpl;
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes

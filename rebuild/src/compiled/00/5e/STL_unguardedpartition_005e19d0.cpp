@@ -11,6 +11,7 @@
 //   (`cmp [esi],ebx ; jge` = signed enum compare), the loops are rotated with the step folded into the reload, and the
 //   by-value pivot's counted pointer is released before the return (no zero store: the slot dies).
 // Label correction: catalogued as `QuickSort_Partition_8Byte`; the body is STLport `__unguarded_partition`.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -26,7 +27,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

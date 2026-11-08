@@ -4,6 +4,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -50,13 +51,13 @@ struct CRefCounted {
     long GetRefCount() const { return m_count; }
 };
 struct CStyleDef : CDefObject, CRefCounted {            // ref count at +0x04
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
     unsigned char _pad08[0x1a8 - 0x08];
     unsigned char Style[4];                             // +0x1a8
 };
 struct CStyleDefPointer {
     CStyleDef* Object;
-    __forceinline ~CStyleDefPointer()
+    FABLE_FORCEINLINE ~CStyleDefPointer()
     {
         if (Object)
             Object->ReleaseTemporary();

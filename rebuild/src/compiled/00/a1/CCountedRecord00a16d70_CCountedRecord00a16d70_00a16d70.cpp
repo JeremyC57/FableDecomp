@@ -7,6 +7,7 @@
 // at +0x1c and cannot be named from the body. Members are destroyed in reverse order; the counted
 // pointer's inline destructor decrements, re-reads the block, destroys + frees on zero and nulls
 // both words (speed form: `test eax,eax`, immediate zero stores).
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
@@ -23,7 +24,7 @@ struct SCountBlock {                            // the shared count block of a C
 struct CCountedPointer_CPointee {    // {object, count block}
     CPointee* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CPointee()   // forced: VC7.1 would call it out of line
+    FABLE_FORCEINLINE ~CCountedPointer_CPointee()   // forced: VC7.1 would call it out of line
     {
         if (m_pCount) {
             --m_pCount->m_references;

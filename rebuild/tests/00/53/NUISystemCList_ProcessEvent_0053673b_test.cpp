@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 namespace std {
 template <class T> struct _List_node { _List_node* _M_next; _List_node* _M_prev; T _M_data; };
@@ -22,7 +23,7 @@ public:
     T* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer() { if (Object) Object->DecRef(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->DecRef(); }
 };
 class CComponent;
 extern std::list<CComponent*> g_ComponentList;          // 0x013B8A98 (name not recovered)

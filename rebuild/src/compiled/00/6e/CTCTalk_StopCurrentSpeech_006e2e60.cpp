@@ -12,6 +12,7 @@
 // SampleStartedFrame +0x10, SampleDurationFrames +0x14, MimeStartTime +0x1C, SampleLoadedTime +0x20, SampleID +0x28, LipSynching +0x35.
 // Shape: this overload is the landed one-argument body inlined after the component lookup (`GetTC(k)` passed straight in, so the emitter
 // goes `mov ecx,[eax+4]`); the zero stores share `xor eax,eax`, -1.0f is an immediate.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };
 namespace std { template <class _T1, class _T2> struct pair { _T1 first; _T2 second; }; }
@@ -30,7 +31,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

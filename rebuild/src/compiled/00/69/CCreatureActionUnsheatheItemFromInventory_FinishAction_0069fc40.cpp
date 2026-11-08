@@ -11,6 +11,7 @@
 // Layout (Ego_r.pdb, retail offsets 0xc lower than the PDB build): PUnsheatheItem CIntelligentPointer<CThing> at +0xa8,
 // PFollowUpAction CCountedPointer<CCreatureActionBase> at +0xb0 (object) / +0xb4 (count). The follow-up is re-read from
 // the member for the refusal call (`mov ecx,[esi+0b0h]`). Modelled locally (the generated headers flatten the bases).
+#include "fable_compiler.h"
 class CTCBase;
 class CCreatureActionBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

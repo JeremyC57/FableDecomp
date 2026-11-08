@@ -13,6 +13,7 @@
 // uninitialised out pointer (stale `mov eax,[esp+4]`); `CDefPointer<const CVillageDef> def =
 // village->PDef;` is a local copy (null-tested add-ref) whose destructor releases WITHOUT a null test
 // (`dec [ecx+4] ; jne`); CrateDefIndex is re-read for the test; one shared Kill(false).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

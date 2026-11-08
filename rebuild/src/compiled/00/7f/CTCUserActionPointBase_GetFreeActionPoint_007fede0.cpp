@@ -21,6 +21,7 @@
 //   erase tests `finish != pos + 1` before the memmove; the blocked-list search is the external find with the end
 //   pointer in a named local (edi) and the value as a named copy; the owner is a named GetPItem before the virtual call;
 //   the overflow insert is a same-TU stand-in as in the landed sibling.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 #include "engine/C3DVector.h"
@@ -30,7 +31,7 @@ class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 #include <string.h>
 
 long __fastcall GFROR13(unsigned long);       // 0x00497890
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

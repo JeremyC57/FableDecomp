@@ -1,4 +1,5 @@
 // Behaviour test for 0x006E9F60 (source body copied from src/006e9f60.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -68,7 +69,7 @@ public:
     unsigned char Dead : 1;                                 // +0x91 bit 0
     bool IsDead() const { return Dead; }
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -81,7 +82,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -92,7 +93,7 @@ public:
     }
 };
 
-static __forceinline bool IsUsingProjectileWeapon(const CThing& thing)
+static FABLE_FORCEINLINE bool IsUsingProjectileWeapon(const CThing& thing)
 {
     CTCCombat* combat;
     if (thing.GetInterface(0x30, &combat)) {

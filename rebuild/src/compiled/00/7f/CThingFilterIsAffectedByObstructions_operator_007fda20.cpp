@@ -9,6 +9,7 @@
 //   right after IsWithinArea's operator(), the retail order here. Mode 0x5f is NCreatureMode::CModeHitByEpicSpell (its GetType
 //   0x00741CC0 returns 0x5f).
 // Callees: CVectorMap LowerBound 0x004365B0 (const), CTCCreatureModeManager::GetCurrentMode 0x0073A6E0, CModeBase::GetType (slot 1).
+#include "fable_compiler.h"
 class CTCBase {
 public:
     virtual ~CTCBase();
@@ -34,8 +35,8 @@ class CThing { public:
     unsigned long  m_tcMask[8];                           // +0x20 UsingComponents bitset
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                                 // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase* GetTC(long kind) const
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const
     {
         const CTCMap* map = &m_tcs;
         const STCEntry* it = map->LowerBound((ETCInterfaceType)kind);

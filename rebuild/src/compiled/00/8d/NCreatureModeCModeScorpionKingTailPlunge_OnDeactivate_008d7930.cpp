@@ -6,6 +6,7 @@
 // Layout: Ego_r.pdb CModeScorpionKingTailPlunge is byte-packed after bRecovering (+0x88): TargetPos +0x89, TailPos +0x95,
 // PTarget +0xa1, PTailEmitter +0xa9, PDustTrailEmitter +0xb1 (the unaligned `lea esi,[edi+0A9h]` confirms it), so the
 // derived members sit under `#pragma pack(1)`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)   // size-optimised TU (retry wave 2 sweep: /O2 gives the esi/edi swap, /Os retail's this-in-edi)
 // Global classes (Ego_r.pdb spellings): CThing::Kill ?Kill@CThing@@QAEX_N@Z, CBaseIntelligentPointer::GetPItem
 // ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ, CTCCreatureModeManager::CModeBase, CModeStandBase.
@@ -19,7 +20,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }   // inline in retail (the /Os TU calls 0x00A01B50 directly)
+    FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }   // inline in retail (the /Os TU calls 0x00A01B50 directly)
 };
 class CTCCreatureModeManager {
 public:

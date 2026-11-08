@@ -17,6 +17,7 @@
 //   out variable's slot on the miss path) and the inline GetInterface stores its entry pick as ONE ternary so the
 //   carrying component lands straight in ecx; the carryable def is a CDefPointer local released at the end
 //   (DecRefToZero, null test folded after the dereference).
+#include "fable_compiler.h"
 class CThing;
 class CThingObject;
 #include "engine/C3DVector.h"
@@ -26,7 +27,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -98,7 +99,7 @@ class CThing { public:
     signed char m_player;                             // +0x90
     long GetPlayer() const { return m_player; }
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

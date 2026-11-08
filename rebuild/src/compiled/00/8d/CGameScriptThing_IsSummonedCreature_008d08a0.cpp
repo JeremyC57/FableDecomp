@@ -4,6 +4,7 @@
 // Retail008D08A0 length191. PointerA01B50; component lowerbound4365B0; definition manager accessor4C7990; index9AD410; narrowstring ctor99EBF0,dtor99EAE0. Literal125D2A4 GHOSTLY_SWORD.
 // CGameScriptThing::MsgPerformedFlourish -- query entity events within current script frame interval
 // Leaf: MsgPerformedFlourish
+#include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CQuestManager.h"
@@ -23,10 +24,10 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct PointerView{void*VTable;IntelligentInfo* Info;}; //00A01B50
 struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
-struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;__forceinline long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990
+struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;FABLE_FORCEINLINE long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990
 // PDB CTCSummonableCreature HasBeenSummoned+10; no generated class header exists.
-struct SummonableCreature:CTCBase{unsigned long SummonState;bool HasBeenSummoned;__forceinline bool GetHasBeenSummoned()const{return HasBeenSummoned;}};
-static __forceinline bool PeekSummon(CThingNative*thing,const SummonableCreature**out){if(thing->UsingComponents[5]&1){long key=160;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;*out=static_cast<const SummonableCreature*>((it==end||it->Type>160?end:it)->Component);return true;}return false;}
+struct SummonableCreature:CTCBase{unsigned long SummonState;bool HasBeenSummoned;FABLE_FORCEINLINE bool GetHasBeenSummoned()const{return HasBeenSummoned;}};
+static FABLE_FORCEINLINE bool PeekSummon(CThingNative*thing,const SummonableCreature**out){if(thing->UsingComponents[5]&1){long key=160;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;*out=static_cast<const SummonableCreature*>((it==end||it->Type>160?end:it)->Component);return true;}return false;}
 struct CGameScriptThingMethods:CGameScriptThing{bool IsSummonedCreature()const;};
 bool CGameScriptThingMethods::IsSummonedCreature()const{
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);

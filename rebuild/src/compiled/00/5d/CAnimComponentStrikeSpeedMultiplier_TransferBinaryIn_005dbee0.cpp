@@ -8,6 +8,7 @@
 // register on every exit (the rejected-position exit copies the uninitialised slot, like retail).
 // The multiplier is a float (PDB: CAnimComponentStrikeSpeedMultiplier::AnimationSpeedMultiplier, +8); a float
 // copied without arithmetic moves through an integer register.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -19,8 +20,8 @@ public:
     const unsigned char* m_pData;          // +0x0C current chunk read pointer
     long m_chunkPosition;                  // +0x10
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

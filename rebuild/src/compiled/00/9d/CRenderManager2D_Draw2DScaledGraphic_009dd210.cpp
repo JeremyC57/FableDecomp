@@ -16,6 +16,7 @@
 // (loads `this` before the pushes); the 0.01-texel nudge divides inside the loop so both quotients are hoisted onto the
 // x87 stack; the RHW is a void helper over the vertex reference whose three arms assign (the first an integer copy) and
 // whose z reads go back to memory.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CTVertexRHWColSpecTex1 { public:                        // 32 bytes
@@ -43,7 +44,7 @@ struct SCountBlock {
 struct CCountedPointer_CTexture {
     CTexture*    m_pObject;                            // +0x00
     SCountBlock* m_pCount;                             // +0x04
-    __forceinline ~CCountedPointer_CTexture()
+    FABLE_FORCEINLINE ~CCountedPointer_CTexture()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -65,7 +66,7 @@ class CGraphicFrameData { public:
     void Uninitialise();                               // 0x009FCBA0
     CTextureQuadUVs GetTextureQuadUVs() const;         // 0x009FC810
     CTexture* GetTexture() const { return PTexture.m_pObject; }
-    __forceinline ~CGraphicFrameData()
+    FABLE_FORCEINLINE ~CGraphicFrameData()
     {
         if (m_flags & 0x10)
             Uninitialise();
@@ -74,7 +75,7 @@ class CGraphicFrameData { public:
 class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         CGraphicFrameData* data = FrameData;
         if (data) {
@@ -101,7 +102,7 @@ template <class T> struct CRetailVector {
 class CGraphicDataBank { public:
     unsigned char               _pad[0x1e0];
     CRetailVector<CGraphicInfo> m_records;             // +0x1e0
-    __forceinline const CGraphicInfo* Get(unsigned long index) const { return index < m_records.size() ? &m_records[index] : 0; }
+    FABLE_FORCEINLINE const CGraphicInfo* Get(unsigned long index) const { return index < m_records.size() ? &m_records[index] : 0; }
 };
 float __fastcall GFAXToVX_009e1e10(float x);                    // 0x009E1E10
 float __fastcall GFAYToVY(float y);                    // 0x009E1E40
@@ -110,7 +111,7 @@ static const unsigned long s_CornerOrderNormal[4] = { 0, 1, 2, 3 };    // 0x0129
 static const unsigned long s_CornerOrderFlipX[4]  = { 1, 0, 3, 2 };    // 0x0129B95C
 static const unsigned long s_CornerOrderFlipY[4]  = { 3, 2, 1, 0 };    // 0x0129B96C
 
-static __forceinline float GetRHWForZ(const float& z)
+static FABLE_FORCEINLINE float GetRHWForZ(const float& z)
 {
     if (z >= 0.0f && z < 0.01f)
         return g_ScreenRHW;
@@ -119,7 +120,7 @@ static __forceinline float GetRHWForZ(const float& z)
     return 1.0f / z;
 }
 
-static __forceinline void SetRHWForZ(CTVertexRHWColSpecTex1& vert)
+static FABLE_FORCEINLINE void SetRHWForZ(CTVertexRHWColSpecTex1& vert)
 {
     if (vert.Z >= 0.0f && vert.Z < 0.01f)
         vert.RHW = g_ScreenRHW;

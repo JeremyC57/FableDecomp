@@ -6,6 +6,7 @@
 //   CCreatureAction_PlayAnimation 0x008424F0, ~CCreatureActionBase 0x00693EF0, the action id getter 0x00692620,
 //   AIAction_PerformActionAndWait 0x0097DB70, AIAction_DoNothing 0x0097E200, Terminate 0x008FCF40.
 // Constants: 4.0f @ 0x0128FD88, 1.4f @ 0x0128FD90, 0.0001f @ 0x0129BA3C.
+#include "fable_compiler.h"
 class C3DVector {
 public:
     void Rotate(float a0, float a1);   // 0x00A14260 (Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z)
@@ -14,8 +15,8 @@ private: public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    __forceinline C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    __forceinline C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
+    FABLE_FORCEINLINE C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);    // 0x006AF640
@@ -89,7 +90,7 @@ struct CAIStateGroup_Clean : public CAIStateGroupBase {
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
         bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
-    __forceinline unsigned long Random()
+    FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;
@@ -97,7 +98,7 @@ struct CAIStateGroup_Clean : public CAIStateGroupBase {
     }
 };
 
-__forceinline bool IsAlive(const CThingBuilding* thing) { return thing && !(thing->m_flags91 & 1); }
+FABLE_FORCEINLINE bool IsAlive(const CThingBuilding* thing) { return thing && !(thing->m_flags91 & 1); }
 
 void CAIStateGroup_Clean::Update()
 {

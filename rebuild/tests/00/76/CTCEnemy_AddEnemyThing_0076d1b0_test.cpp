@@ -1,4 +1,5 @@
 // Behaviour test for 0x0076D1B0 (source body copied from src/0076d1b0.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -93,7 +94,7 @@ public:
     unsigned long UsingComponents[9];               // +0x20 bitset<274>
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline bool GetInterface(long type, CTCBase** out)     // the landed 0x007504E0 out-parameter shape
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)     // the landed 0x007504E0 out-parameter shape
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             long key = type;

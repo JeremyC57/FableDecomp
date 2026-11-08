@@ -1,5 +1,6 @@
 // Behaviour test for 007310c0: src/007310c0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCDoor::UpdateOpenStatusTriggerTypeScript()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -141,7 +142,7 @@ public:
 class CDefClassBase {
 public:
     template<class T> bool GetSubDefRaw(CDefPointer<const T>* out) const;   // 0x0042B0A2 for T = CAppearanceDef
-    template<class T> __forceinline bool GetSubDef(CDefPointer<const T>* out) const { out->Object = 0; return GetSubDefRaw(out); }
+    template<class T> FABLE_FORCEINLINE bool GetSubDef(CDefPointer<const T>* out) const { out->Object = 0; return GetSubDefRaw(out); }
 };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)

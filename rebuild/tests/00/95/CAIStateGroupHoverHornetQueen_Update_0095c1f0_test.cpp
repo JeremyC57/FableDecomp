@@ -2,6 +2,7 @@
 // stubs (IsStillRunnable answers come from a script string) and the exact call trace is compared: terminate when not
 // runnable, 0 spawn point -> phase 1, 1/4 spawn -> next phase, 2/5 deregister / wait / re-register on the target,
 // 3/6 attack loop with knock-down idles then increment, 7 attack when far from the arena centre, dive-bomb when near.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -38,7 +39,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -15,6 +15,7 @@
 // Shape: the landed CTCBed/CTCCupboard animation accessor (an unset local when the component is absent); the queue's
 //   front is played and popped through the inline STLport erase(begin()); the frame time record is built by a
 //   (seconds) constructor from `scaled ? seconds / scale : seconds`.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* memory);     // 0x00BFEA14
 class CMainGameComponent {
 protected:
@@ -112,7 +113,7 @@ public:
 private:
     void PlayAnimation(const CAnimInit& init, long priority);   // 0x007F8DC0 (Ego_r: private)
 public:
-    __forceinline CTCAnimationComplex* GetAnimationComplex() const
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;
         if (ParentThing->HasTC(TCI_ANIMATION))

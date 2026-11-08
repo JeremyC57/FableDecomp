@@ -20,6 +20,7 @@
 // Shape: the creature is read DIRECTLY as `PBrain->PCreature` at the loop head and in the reached block (parse-time field
 //        chains take distinct scratch registers: PBrain ecx, creature eax, PBody edx), but through the inline GetCreature()
 //        accessor at the SetCurrentAction call (the inline-expanded chain leaves eax for the action temp's lea).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -43,7 +44,7 @@ class CThing { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

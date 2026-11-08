@@ -64,8 +64,13 @@ local_10`, which had no byte effect.
   is plain `inline` C++, and `portable_twins_check.py` builds it with g++ (64-bit run, plus a `-m32` syntax check).
 - **Outside the helpers:** `__forceinline` also appears in Lionhead header helpers and row sources (EXTRA_RULES 2026-11-01), to
   match retail's inline expansion. This is NOT asm, and these rules do not touch it.
-  - A non-MSVC compiler needs one compatibility define, `#define __forceinline inline __attribute__((always_inline))`.
-    `engine/CSpawnedFunc.h` already does this locally.
+  - Spell it `FABLE_FORCEINLINE` (`rebuild/include/fable_compiler.h`: `__forceinline` under MSVC, so the bytes are unchanged;
+    plain `inline` elsewhere). Owner, 2026-11-08: the reconstruction must stay portable. Every bare `__forceinline` in
+    rebuild/ was converted (17,609 tokens, 7,079 files; MSVC-mode preprocessing identical for all 14,825 affected files, a VC7.1
+    re-grade sample all MATCH / RELOCATION_MATCH, behaviour tests PASS). `tools/decomp_pipeline/check_portable_spellings.py`
+    finds a bare one and verify_and_land.py rejects it (NOT_PORTABLE). An `#ifdef _MSC_VER`-guarded one is tolerated.
+  - `#pragma inline_depth` / `auto_inline` / `optimize` need nothing: the standard requires a compiler to ignore a pragma it does
+    not recognise (GCC / Clang only warn under -Wunknown-pragmas).
 
 ## Existing code (2026-11-05 migration)
 - **The landed `retail_asm` rows that carry `__asm` in the row source** (99 at 2026-11-05, allowed by the 2026-10-24 rule) move it

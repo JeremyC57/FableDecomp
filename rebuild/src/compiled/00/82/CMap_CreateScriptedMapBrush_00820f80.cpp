@@ -9,6 +9,7 @@
 // Shape: STLport push_back = insert(end(), x): the end node is read before the allocation, `_Construct` is a placement new with its null test,
 //   the previous node is read once into a local before the links are written; the new entry is kept as its NODE pointer (`&node->_M_data`
 //   computed after the map-ID calls, `add edi,8` just before the push), the map ID is a named local evaluated before the world-map call.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
@@ -26,13 +27,13 @@ struct SBrushNode {
 };
 struct CBrushList {
     SBrushNode* _M_node;
-    __forceinline SBrushNode* _M_create_node(const CScriptedMapBrush& x)
+    FABLE_FORCEINLINE SBrushNode* _M_create_node(const CScriptedMapBrush& x)
     {
         SBrushNode* tmp = (SBrushNode*)malloc(sizeof(SBrushNode));
         new (&tmp->_M_data) CScriptedMapBrush(x);
         return tmp;
     }
-    __forceinline void insert(SBrushNode* pos, const CScriptedMapBrush& x)
+    FABLE_FORCEINLINE void insert(SBrushNode* pos, const CScriptedMapBrush& x)
     {
         SBrushNode* tmp = _M_create_node(x);
         SBrushNode* prev = pos->_M_prev;

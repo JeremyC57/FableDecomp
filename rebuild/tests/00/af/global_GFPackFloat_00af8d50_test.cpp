@@ -1,5 +1,6 @@
 // Behaviour test for 0x00AF8D50 (source body copied from src/00af8d50.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -40,7 +41,7 @@ static unsigned long long ra_tsc = 1000000;
 //   asm (C++ conversions call _ftol2 / set the rounding mode).
 // Label: catalog "Audio_CalculateFilterParameter" is a guess.
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long GFFloatToLong(float value)
+FABLE_FORCEINLINE long GFFloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)

@@ -18,6 +18,7 @@
 //   speeds +0x1c/+0x20.
 // Shape: the 0x5a component pointer is zero-initialised and GetInterface's result is not tested; the playback rate is
 //   1 / (AnimLength * frames per second) clamped to [0, 1] and written to both speeds.
+#include "fable_compiler.h"
 #include <math.h>
 
 class CTCBase;
@@ -85,7 +86,7 @@ struct CModeDragonFlying : CModeBase {
     void OnActivate();
 };
 
-__forceinline float Distance(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE float Distance(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;
     float dy = a.Y - b.Y;

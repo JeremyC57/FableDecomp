@@ -14,6 +14,7 @@
 // CGameEvent as the landed CTCWife::SendPauseEvent 0x006CEBF0 (40 bytes over an empty CMemoryBuffer).
 // Shape: the out-parameter GetInterface lookup (leaves the component in eax before `mov ecx,eax`); the event payload is an inline by-value
 // AddULONG (its value homed in the frame word below the event) written before the player number.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -25,7 +26,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline bool GetInterface(long type, CTCBase** out)   // inline: the landed GetInterface family shape (0x007504E0)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)   // inline: the landed GetInterface family shape (0x007504E0)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

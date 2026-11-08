@@ -5,6 +5,7 @@
 // Layout: CarrySlots at +0xc as 0x006A1060 (retail 12-byte vector of {slot, CIntelligentPointer<CThing>}).
 // Shape: the same `__forceinline` FindThing loop as IsCarryingThing, then `!= end()` re-reads `last`
 // and the slot key of the hit is passed with a false flag.
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -43,7 +44,7 @@ class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c
-    __forceinline SCarrySlotEntry* FindThing(CThing* thing)
+    FABLE_FORCEINLINE SCarrySlotEntry* FindThing(CThing* thing)
     {
         for (SCarrySlotEntry* it = CarrySlots.begin(); it != CarrySlots.end(); ++it)
             if (it->second.GetPItem() == thing)

@@ -20,19 +20,20 @@
 // Shape: the no-shooter base call is the else arm (placed last); the shooter position is a named copy (user copy
 //   constructor) before the subtraction; both CCharString names are block-scoped named locals (constructed before the
 //   other arguments, destroyed right after the call); the message manager is a named local; GetDef has a same-TU stand-in.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
-    __forceinline C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-    __forceinline void operator*=(const float& s) { X *= s; Y *= s; Z *= s; }
-    __forceinline void Normalise();
+    FABLE_FORCEINLINE C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
+    FABLE_FORCEINLINE C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    FABLE_FORCEINLINE C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
+    FABLE_FORCEINLINE void operator*=(const float& s) { X *= s; Y *= s; Z *= s; }
+    FABLE_FORCEINLINE void Normalise();
 };
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -40,8 +41,8 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-__forceinline void C3DVector::Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE void C3DVector::Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -62,7 +63,7 @@ private: public:
     unsigned char _pad54[0x18];
     unsigned long ThingTypeFlags;                       // +0x6c (bit 3: game object)
     bool HasTC(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetTC(long wanted)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
@@ -104,14 +105,14 @@ struct CDefBase {
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
-    __forceinline void Release() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
 };
 class CMessageEventDef : public CDefBase { public: };
 
 template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) { }
-    __forceinline ~CDefPointer() { if (Data) Data->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Data) Data->Release(); }
     T* operator->() const { return Data; }
 };
 class CThingShotDef { public:

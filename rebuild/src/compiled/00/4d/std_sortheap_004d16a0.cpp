@@ -14,6 +14,7 @@
 // Shape: pop_heap / __pop_heap_aux / __pop_heap are __forceinline (VC7.1 keeps the plain-inline STLport helpers out of line).
 // Callee: __adjust_heap 0x004D0660 (`__fastcall`: first ecx, hole edx; len, the 28-byte value and the comparator slot on the
 //   stack, `ret 24h`).
+#include "fable_compiler.h"
 enum EConversationProtagonist { };
 enum EConversationCameraPosition { };
 enum EConversationCameraFocus { };
@@ -59,7 +60,7 @@ template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }   
 template <class _Tp> inline int* __distance_type(const _Tp*) { return (int*)0; }     // _STLP_DISTANCE_TYPE for pointers
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                        _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;
@@ -67,13 +68,13 @@ __forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterat
 }
 
 template <class _RandomAccessIterator, class _Tp, class _Compare>
-__forceinline void __pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last, _Tp*, _Compare __comp)
+FABLE_FORCEINLINE void __pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last, _Tp*, _Compare __comp)
 {
     __pop_heap(__first, __last - 1, __last - 1, _Tp(*(__last - 1)), __comp, __distance_type(__first));
 }
 
 template <class _RandomAccessIterator, class _Compare>
-__forceinline void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
+FABLE_FORCEINLINE void pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
     __pop_heap_aux(__first, __last, __value_type(__first), __comp);
 }

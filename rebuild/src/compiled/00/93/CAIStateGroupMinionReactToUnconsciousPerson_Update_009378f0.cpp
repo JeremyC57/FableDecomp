@@ -19,6 +19,7 @@
 // cl,bl`; the shifted-byte form narrows to a byte load and swaps this/&PPerson between ebp/edi), bound to a `const bool&`
 // (the byte spill at +0x0b); the message def is released by hand through a pointer local (landed 0x00849140 shape) and
 // passed by value through an add-ref copy; a named person local puts the flags push after GetPItem.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -36,7 +37,7 @@ class CThing { public:
         unsigned long word = m_presentBits[interfaceType >> 5];
         return ((word >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const bool& present = HasTC(interfaceType);
         if (present) {
@@ -61,10 +62,10 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
     template<class U> CIntelligentPointerConstThing(const CIntelligentPointer<U>& other);   // 0x0091F990
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

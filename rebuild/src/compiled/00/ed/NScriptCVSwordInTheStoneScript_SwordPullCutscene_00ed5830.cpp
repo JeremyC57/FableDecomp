@@ -9,6 +9,7 @@
 //   0x00CB7940, pGlobalScriptDef 0x0143E90C (SwordInTheStone* fields).
 // Layout: engine/CV_SwordInTheStoneScript.h (new, 0x80): SwordRemovalAttemptCount +0x48 .. CrowdSwordTimer +0x7C.
 // Shape: WaspBoss cutscene model plus the ScriptedThingBase OUTOFLINE_DTOR opt-in; ends with SwordRemovalAttemptCount++.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -39,7 +40,7 @@ template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer
 #include "engine/CV_SwordInTheStoneScript.h"
 #include "engine/fable_script_cutscene.h"
 #include "engine/fable_script_def_global.h"
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 inline CScriptThing::CScriptThing() { }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 

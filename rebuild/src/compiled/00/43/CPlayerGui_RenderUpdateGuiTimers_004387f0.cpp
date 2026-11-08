@@ -9,6 +9,7 @@
 // renderer's tail, - 0x14 after it): PDrawQuestInfo +0x1c8, GuiMode +0x294, FadeInTimer +0x298, the stat bars +0x2cc..+0x2fc.
 // Shape: the lazily loaded def via the landed __forceinline GetPlayerGuiDef helper; the two stat-bar times are float locals; the
 // quest-info secondary fade passes the address of a local mode forced to 2.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -32,7 +33,7 @@ class CDefinitionManager { public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

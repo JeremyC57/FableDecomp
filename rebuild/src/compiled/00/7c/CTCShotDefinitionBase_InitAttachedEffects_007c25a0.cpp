@@ -10,6 +10,7 @@
 //   CBaseClass ctor 0x0099A2D0, push_back 0x0076B120, SetEmitterUpdateParameters 0x006E11A0, ~CParticleUpdateParameters 0x006E2500.
 // Layout: as the landed UpdateEffects 0x007C2480 (same TU); PShotDef +0x38 (CThingShotDef AttachedContinuousEffect +0x48,
 //   UseEndTimeLineOnContinousEffect +0x50, PDB minus 4); CThing appearance +0x64; g_CCharString_013bacb4 = "SHOT_CREATION_DUMMY".
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 #include "engine/C3DVector.h"
@@ -29,32 +30,32 @@ struct CVectorParamVector {                             // retail STLport vector
     SVectorParam* _M_start;
     SVectorParam* _M_finish;
     SVectorParam* _M_end_of_storage;
-    __forceinline CVectorParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE CVectorParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     void push_back(const SVectorParam& value);          // 0x0076B120
 };
 struct CUpdateParamVector {
     SUpdateParam* _M_start;
     SUpdateParam* _M_finish;
     SUpdateParam* _M_end_of_storage;
-    __forceinline CUpdateParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE CUpdateParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 struct CCompare {};
 struct CVectorParamMap {
     CVectorParamVector Vector;                          // +0x00
     CCompare           Compare;                         // +0x0c
     bool               Dirty;                           // +0x0d
-    __forceinline CVectorParamMap() : Dirty(false) {}
+    FABLE_FORCEINLINE CVectorParamMap() : Dirty(false) {}
 };
 struct CUpdateParamMap {
     CUpdateParamVector Vector;                          // +0x00
     CCompare           Compare;                         // +0x0c
     bool               Dirty;                           // +0x0d
-    __forceinline CUpdateParamMap() : Dirty(false) {}
+    FABLE_FORCEINLINE CUpdateParamMap() : Dirty(false) {}
 };
 struct CParticleUpdateParameters : CBaseClass {         // <unsigned long, unsigned long>, vtable 0x0125FFDC
     CVectorParamMap VectorParams;                       // +0x04
     CUpdateParamMap UpdateParams;                       // +0x14
-    __forceinline CParticleUpdateParameters() {}
+    FABLE_FORCEINLINE CParticleUpdateParameters() {}
     virtual ~CParticleUpdateParameters();               // 0x006E2500
 };
 }
@@ -168,7 +169,7 @@ public:
     struct CThingAppearance* Appearance;                // +0x64
     unsigned char   _pad68[0x91 - 0x68];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

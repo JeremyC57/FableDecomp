@@ -14,6 +14,7 @@
 // result stays in its argument slot. Frame pointer kept (`optimize("y",off)` + `("s",on)`, the def TU settings).
 // Label correction: catalog "Vector_ShiftCopyElements" is a guess.
 // Leaf: __copy_ptrs
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -36,7 +37,7 @@ class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:   // v
     C2DVector Position;                                     // +0x40
     C2DVector Offset;                                       // +0x48
     // The memberwise assignment, spelled out: the /Os TU calls the compiler-generated one out of line.
-    __forceinline CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
+    FABLE_FORCEINLINE CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
     {
         CParentDefClassBase::operator=(other);
         ButtonGraphic = other.ButtonGraphic;
@@ -51,7 +52,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

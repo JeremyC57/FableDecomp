@@ -2,6 +2,7 @@
 // Leaf: ?Recover@CModeRockTrollVulnerable@NCreatureMode@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
+#include "fable_compiler.h"
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -48,7 +49,7 @@ class CThing:public CClass {
 public:
     // Layout: all Thing fields are accessed through the imported physical layout only.
     unsigned char unobservedThingState[sizeof(CThingLayout)-sizeof(CClass)];
-    template<class T>__forceinline bool GetTC(T**out) {
+    template<class T>FABLE_FORCEINLINE bool GetTC(T**out) {
         const unsigned long*bits=reinterpret_cast<const unsigned long*>(reinterpret_cast<const CThingLayout*>(this)->UsingComponents);
         if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))) {
             ETCInterfaceType type=T::StatGetInterfaceType();

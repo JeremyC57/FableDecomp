@@ -23,6 +23,7 @@
 //   rebuilt as "GOODS_PLACE_" + two zero-padded digits and retried. VC7.1 inlines only the second push_back (the others
 //   call 0x00777F80), as retail. The lookup keys, the CCharString and the dead `thing` argument share one frame word; the
 //   same-TU bodies of reserve and assign keep the string's address from escaping (no dead constructor stores).
+#include "fable_compiler.h"
 #include <string.h>
 
 extern "C" void* __cdecl malloc(unsigned int size);                                   // 0x00BFEA0E
@@ -252,8 +253,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44 Components
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

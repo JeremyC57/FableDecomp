@@ -17,6 +17,7 @@
 //        live thing of the tint list. The colour constructor assigns R, G, B, A in its body (a member-initialiser list
 //        reorders the four _ftol channel conversions), the highlight channels are read straight through the def's vector
 //        (a named element pointer takes ebp), and the loop caches the list end in a local.
+#include "fable_compiler.h"
 class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
@@ -77,11 +78,11 @@ public:
     long FadeOutTime;                               // +0x1C
     CIntelligentPointer<CThing> PEffect;                // +0x20
     vector<CIntelligentPointer<CThing> > TintList;       // +0x28
-    static __forceinline unsigned char Channel(long colour, float t, long white)
+    static FABLE_FORCEINLINE unsigned char Channel(long colour, float t, long white)
     {
         return (unsigned char)(colour * t + white);
     }
-    __forceinline void ApplyTint(CThing* thing, float t)
+    FABLE_FORCEINLINE void ApplyTint(CThing* thing, float t)
     {
         long white = (long)((1.0f - t) * 255.0f);
         const CSpecialAbilitiesElectrocutedEffectDef* def = PDef;

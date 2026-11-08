@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 
 #include "rebuild_abi.h"
@@ -26,7 +27,7 @@ class CSurface
     CSurface& operator=(const CSurface& source);
     C2DExtentsI GetDimensions() const;
 
-    __forceinline void* GetSurface() const
+    FABLE_FORCEINLINE void* GetSurface() const
     {
         return resource04;
     }

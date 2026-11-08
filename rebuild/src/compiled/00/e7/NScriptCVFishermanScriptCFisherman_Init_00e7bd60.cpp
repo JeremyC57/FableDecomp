@@ -18,6 +18,7 @@
 // Shape (family L139, landed 0x00E0DAA0): `#pragma inline_depth(1)`; the CSpawnedFunc1 ctor must be __forceinline (a plain
 //   inline ctor stays a call at depth 1), its member copy of Me is the out-of-line 0x004ABE90; the region name is SpawnFunction's
 //   default CCharString argument (SpawnFunction is a source-level forceinline helper with no retail symbol).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -45,7 +46,7 @@ public:
     void (T::*Func)(P1);                                // +0x34
     T* PClass;                                          // +0x38
     P1 Par1;                                            // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), P1 par1)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), P1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
 };
@@ -60,7 +61,7 @@ public:
     bool FishermanMustRunAway;                          // +0x50
     bool QuestCardGiven;                                // +0x51
     long FishermanTasks;                                // +0x54
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const CCharString& regionName = CCharString("")) { AddSpawnedFunction(func, regionName); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& regionName = CCharString("")) { AddSpawnedFunction(func, regionName); }
     void NPCAttitudeProcess(CScriptThing thing);        // 0x00E7C010
     class CFisherman;
 };

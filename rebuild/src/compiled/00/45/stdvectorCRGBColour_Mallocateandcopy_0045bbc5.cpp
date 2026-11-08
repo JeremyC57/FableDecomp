@@ -6,6 +6,7 @@
 // Model: STLport 4.x _M_allocate_and_copy = allocate(n) + __uninitialized_copy(first, last, result, __false_type) (CRGBColour
 // has a user copy ctor, so it is not a POD for the type traits), `_Construct(&*cur, *first)` per element, out of line.
 // Shape: `pop ecx` after malloc, no frame pointer = size TU (#pragma optimize("s", on)); free templates `__fastcall` (/Gr).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -22,7 +23,7 @@ struct __false_type { };
 template <class T1, class T2> void __fastcall _Construct(T1* p, const T2& value);   // 0x0045BB8F
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -31,7 +32,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 }
 
 template <class T> struct allocator {
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
 template <class T, class A = allocator<T> > class vector {

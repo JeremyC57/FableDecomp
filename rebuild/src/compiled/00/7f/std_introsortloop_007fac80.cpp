@@ -13,6 +13,7 @@
 //   first) / 2), *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }`
 //   -- the by-value comparator copies are memberwise (the CompareInXYPlane byte cached in bl) except the partial_sort
 //   one, which calls the out-of-line implicit copy constructor.
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
@@ -35,7 +36,7 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                     // +0x91 bit 0
     const C3DVector& GetPos() const;                             // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -50,7 +51,7 @@ public:
     }
 };
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);         // 0x0076D2F0
-__forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
 
 class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00

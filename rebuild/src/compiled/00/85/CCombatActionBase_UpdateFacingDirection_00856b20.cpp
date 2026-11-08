@@ -8,6 +8,7 @@
 //   CThing::GetPos 0x004C73D0, fmod (intrinsic) 0x00BFEB28, AngleDifference 0x00A441E0 (__stdcall).
 // Layout: Ego_r.pdb CCreatureActionBase: PCreature +0x08, PAnimEntry +0x74; CCombatActionBase PTarget PDB +0xb4 =
 //   retail +0xa8 (retail CCreatureActionBase is 0xa8: its three STLport containers are 4 bytes smaller each).
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl fabs(double x);
@@ -38,7 +39,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-__forceinline float FacingFraction(float x, float y)
+FABLE_FORCEINLINE float FacingFraction(float x, float y)
 {
     float fraction = (float)atan2(x, y) * 0.15915493667125702f;
     if (fraction < 0.0f || fraction >= 1.0f) {

@@ -15,6 +15,7 @@
 //   float-to-long helper GFFloatToLongNear; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`, so no C++ form gives the
 //   bare dword fistp.
 // Helper: the shared engine/GFFloatToLongNear.h (asm path + FABLE_PORTABLE C++ twin); this row carries no asm of its own.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CRGBCOLOUR
 #include "engine/CRGBColour.h"
 #include "engine/GFFloatToLongNear.h"
@@ -26,7 +27,7 @@ CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long t);
 namespace NParticleEngine {
 inline unsigned char __fastcall GFInterpolate(unsigned char a, unsigned char b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
 inline unsigned long __fastcall GFInterpolate(unsigned long a, unsigned long b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
-__forceinline CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
+FABLE_FORCEINLINE CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
 class CParticleSystem;
 template <class K, class V> class CParticleUpdateParamCallback : public CBaseClassNonCopyable { };
 class CPSCBase : public CParticleUpdateParamCallback<unsigned long, unsigned long> {

@@ -14,6 +14,7 @@
 // CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0. A 4-byte struct value makes the memcpy a movsd; the TU keeps frame pointers and optimises for size.
 // The manifest label (`CPersistTraits<...>::TransferBinaryIn`) is propagated; the value type is
 // modelled by size. One of 70 bodies of this shape.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -29,7 +30,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)

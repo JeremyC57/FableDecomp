@@ -10,6 +10,7 @@
 //          @ 0x006A1440, CTCWeapon::IsProjectileWeapon @ 0x005DAA40, CThing::GetPosition @ 0x004C73D0, the physics body's
 //          GetFacing (slot 70, +0x118); globals 0x013CE558 (rsqrt mantissa table), 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC.
 // Layout: PEnemy +0x14 (CIntelligentPointer<const CThing>), as the landed CreatureTakeCover::IsStillRunnable 0x00979E90 model.
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 class CThing;
 
@@ -32,7 +33,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -56,18 +57,18 @@ class CThing
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad_0x4c[0x60 - 0x4c];
     CPhysicsBody* PhysicsBody;                      // +0x60
-    __forceinline CPhysicsBody* GetPhysicsBody() const { return PhysicsBody; }
+    FABLE_FORCEINLINE CPhysicsBody* GetPhysicsBody() const { return PhysicsBody; }
     unsigned char _pad_0x64[0x91 - 0x64];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     const C3DVector& GetPos() const;    // 0x004C73D0
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -82,7 +83,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
@@ -114,7 +115,7 @@ class CTCWeapon                                    // interface type 0x48 (word 
     bool IsProjectileWeapon() const;                      // 0x005DAA40
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {

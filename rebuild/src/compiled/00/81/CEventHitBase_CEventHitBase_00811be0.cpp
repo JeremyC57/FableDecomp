@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00811BE0, length 80 bytes.
 // Leaf: ??1CEventHitBase@NEntityEvents@@QAE@XZ
 // Shape: a non-virtual destructor in a polymorphic class, `this` in esi, the counted pointer's destructor inlined, `ret`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CHitObject_00811be0;
 struct SCountBlock_00811be0 {                           // the shared count block of a CCountedPointer
@@ -12,7 +13,7 @@ struct SCountBlock_00811be0 {                           // the shared count bloc
 struct CCountedPointer_00811be0 {                       // {object, count block}
     CHitObject_00811be0*           m_pObject;                    // +0x00
     SCountBlock_00811be0* m_pCount;                     // +0x04
-    __forceinline ~CCountedPointer_00811be0()
+    FABLE_FORCEINLINE ~CCountedPointer_00811be0()
     {
         if (m_pCount) {
             --m_pCount->m_references;

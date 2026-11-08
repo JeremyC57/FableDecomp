@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __cdecl
 #define __forceinline inline
@@ -14,7 +15,7 @@ class CEnvironmentThemePriorityStackEntry { public:
  long ThemeTransitionTargetID; float ThemeTransitionInitialWeight; bool ThemeTransitionActive;
  double ThemeTransitionStartTime; float ThemeTransitionDuration;
  void SetOnlyTheme(long); void RestoreDefaultTheme(); void SetThemeWeight(long,float,bool); void RebalanceWeights();
- __forceinline void SetBaseWeight(float weight,bool locked) {
+ FABLE_FORCEINLINE void SetBaseWeight(float weight,bool locked) {
    if(weight < 0.0f) weight=0.0f; else if(weight > 1.0f) weight=1.0f;
    BaseWeight=weight; BaseWeightLocked=locked; RebalanceWeights();
  }

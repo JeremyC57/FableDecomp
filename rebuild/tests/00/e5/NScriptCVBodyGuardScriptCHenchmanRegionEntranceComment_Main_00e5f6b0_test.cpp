@@ -1,5 +1,6 @@
 // Behaviour test for 00e5f6b0: src/00e5f6b0.cpp copied verbatim; the script interface, IsDone, the distance test, the
 // comment call and the string / script-thing members are stubs that record their calls.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -80,7 +81,7 @@ public:
     CQ_SunnyvaleMasterData*    PMasterData;        // +0x18
     std::vector<CScriptThing>  HenchmanVector;     // +0x1C
     bool IsDone();                                 // 0x00F35B30
-    __forceinline void WalkHenchmen()
+    FABLE_FORCEINLINE void WalkHenchmen()
     {
         for (unsigned int i = 0; i < HenchmanVector.size(); ++i) {
             if (IsDone())

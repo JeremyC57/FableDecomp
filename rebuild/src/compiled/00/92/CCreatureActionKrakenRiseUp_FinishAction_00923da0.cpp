@@ -8,6 +8,7 @@
 // @ 0x00859A20 (direct base call, last).
 // Shape: the UNCHECKED interface-9 accessor (absent arm reads the key word); `and byte ptr [eax+1c8h],0BFh` is a bool bit-field
 // cleared in place through a NAMED local (`GetAICreature()->ImmuneToAttack = false` adds `add eax,1c8h` and a byte round trip) (CThingAICreature::ImmuneToAttack, bit 6 of +0x1c8; Ego_r.pdb +0x1f8).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -20,7 +21,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -76,13 +77,13 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCInterface9* GetInterface9() const
+    FABLE_FORCEINLINE CTCInterface9* GetInterface9() const
     {
         CTCInterface9* component;
         PCreature.GetPItem()->GetInterface(&component, 9);
         return component;
     }
-    __forceinline CThingAICreature* GetAICreature() const { return static_cast<CThingAICreature*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE CThingAICreature* GetAICreature() const { return static_cast<CThingAICreature*>(PCreature.GetPItem()); }
 };
 struct CCreatureAction_KrakenRiseUp : CCombatActionBase {   // vtable 0x01290594, sizeof 0x114
     virtual void FinishAction();

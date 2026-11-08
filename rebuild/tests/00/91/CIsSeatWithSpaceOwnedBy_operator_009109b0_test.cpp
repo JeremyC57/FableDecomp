@@ -1,5 +1,6 @@
 // Behaviour test for 009109b0: final.cpp copied verbatim, the virtual type-flags getter, LowerBound, GetPItem and
 // IsActionPointFree stubbed so every arm of the seat/ownership/free-point test is observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -47,7 +48,7 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -87,9 +88,9 @@ public:
     unsigned char  _bits91 : 4;
     unsigned char  InLimbo : 1;                    // +0x91 bit 5
     unsigned char  _bits91b : 2;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CThing* GetOwnerOf(const CThing* thing)
+FABLE_FORCEINLINE CThing* GetOwnerOf(const CThing* thing)
 {
     CTCOwnedEntity* owned = (CTCOwnedEntity*)thing->m_tcs.Find(0x33);
     return (CThing*)owned->POwner.GetPItem();

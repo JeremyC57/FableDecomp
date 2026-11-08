@@ -10,6 +10,7 @@
 // Shape: the typed intelligent-pointer getter `GetPItem() && IsThingOfType<T>(GetPItem()) ? (T*)GetPItem() : 0` (mask in a local); the
 // fourth thing filter is called out of line (its own TSF instantiation; the others are `__forceinline`); the matching message's
 // address is a named pointer local (kept in ebx and returned).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_STATTYPEFLAGS
 #include "engine/CThing.h"
@@ -51,7 +52,7 @@ class CThingFilter_IsNavLineOfSightToThing { public:
 };
 template <class F> class CMessageEventFilter_ThingSearchFilter { public:
     F* Filter;
-    __forceinline bool operator()(const CMessageEvent& message) const
+    FABLE_FORCEINLINE bool operator()(const CMessageEvent& message) const
     {
         CThingAICreature* creature = message.POriginator.GetTypedPItem<CThingAICreature>();
         if (!creature)
@@ -68,7 +69,7 @@ template <class F1, class F2, class F3, class F4> class CFilter_Bind4 { public:
     F2* PF2;
     F3* PF3;
     F4* PF4;
-    __forceinline bool operator()(const CMessageEvent& message) const
+    FABLE_FORCEINLINE bool operator()(const CMessageEvent& message) const
     {
         return (*PF1)(message) && (*PF2)(message) && (*PF3)(message) && (*PF4)(message);
     }

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 class CBaseClassNonCopyable {
@@ -9,7 +10,7 @@ struct CGameComponentInterface {
 };
 class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
-    virtual __forceinline ~CGameComponent() { }
+    virtual FABLE_FORCEINLINE ~CGameComponent() { }
 };
 class CCPPointerInfo { public:
     long  References;
@@ -39,7 +40,7 @@ struct CWideStringVector {                                 // STLport vector<CWi
     CWideString* _M_start;
     CWideString* _M_finish;
     CWideString* _M_end_of_storage;
-    static __forceinline void _Destroy(CWideString* first, CWideString* last)
+    static FABLE_FORCEINLINE void _Destroy(CWideString* first, CWideString* last)
     {
         for (; first != last; ++first)
             first->~CWideString();

@@ -21,6 +21,7 @@
 //   target again; then the const out-pointer lookup (descriptive PeekTC, 0x004365B0) and
 //   `HasScriptTargetOverride() || IsAwareOfThing(creature, target, false)` (both inlined; the out-of-line
 //   NCreatureAI::IsAwareOfThing is 0x008645E0, its `false` pushed from the zero eax). The lookups must be __forceinline.
+#include "fable_compiler.h"
 class CBaseObject;
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -42,7 +43,7 @@ public:
     unsigned char Dead : 1;                                 // +0x91 bit 0
     unsigned char CreatedByOwnerThingCreation : 1;
 
-    template <class T> __forceinline bool GetTC(long type, T** out)      // component through an out-pointer (non-const lookup)
+    template <class T> FABLE_FORCEINLINE bool GetTC(long type, T** out)      // component through an out-pointer (non-const lookup)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -55,7 +56,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool PeekTC(long type, const T** out) const    // the const lookup
+    template <class T> FABLE_FORCEINLINE bool PeekTC(long type, const T** out) const    // the const lookup
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

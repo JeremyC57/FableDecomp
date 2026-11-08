@@ -7,6 +7,7 @@
 // CProcessedInput::AddGameEvent @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); its char
 // array gives the /GS cookie frame. The input-process base as engine/CInputProcessGameBase.h.
+#include "fable_compiler.h"
 class CInputEvent;
 struct CMemoryBuffer {
 };
@@ -22,7 +23,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    __forceinline void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
+    FABLE_FORCEINLINE void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
 };
 class CPlayer {
 public:

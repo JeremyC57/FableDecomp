@@ -18,6 +18,7 @@
 //   inline_depth(0) so it still expands while its by-value CScriptThing is destroyed out of line.
 // Naming wave 35: identity reg 00da3b73 "GuardToLeadTheWay" in 00da34b0; Alloc 00da6560; vtable 012d7654 slot 1; PDB ?Main@CGuardToLeadTheWay@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardToLeadTheWay::Main (wave3/labels_alloc.tsv); PDB ?Main@CGuardToLeadTheWay@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGuardToLeadTheWay@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_MinionClifftopChaseScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -126,11 +127,11 @@ struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_Mini
     SpawnedThingCallback          Func;                 // +0x34
     CQ_MinionClifftopChaseScript* PClass;               // +0x38
     CScriptThing                  Par1;                 // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_MinionClifftopChaseScript* owner, CScriptThing par1);
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_MinionClifftopChaseScript* owner, CScriptThing par1);
 };
 // The constructor expands in Main, but the by-value CScriptThing it destroys stays an out-of-line call (0x004AA840).
 #pragma inline_depth(0)
-__forceinline CSpawnedFunc1::CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_MinionClifftopChaseScript* owner, CScriptThing par1)
+FABLE_FORCEINLINE CSpawnedFunc1::CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_MinionClifftopChaseScript* owner, CScriptThing par1)
     : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par1) { }
 #pragma inline_depth()
 class CEntityScriptBase { public:

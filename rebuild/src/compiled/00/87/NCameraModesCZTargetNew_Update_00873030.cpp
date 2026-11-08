@@ -16,6 +16,7 @@
 //   member chain moves the load to eax or below the pushes); HasTC is a forced-inline `unsigned long` mask test (`test ch,1`); the component is the one-ternary entry pick over a template constant key
 //   loaded straight into ecx; the blend is a named float read first, then `lookAt += (aim - lookAt) * blend` through inline C3DVector operators; the two
 //   positions are stored through the implicit operator= (`lea ecx,[esi+54h]` copy, then `add esi,10h`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CThing;
@@ -60,8 +61,8 @@ class CThing { public:
     unsigned char _pad68[0x29];
     unsigned char Dead : 1;                             // +0x91 bit 0
     const CTCGraphicAppearance* GetGraphicAppearance() const { return PGraphicAppearance; }
-    __forceinline unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
-    template<long TYPE> __forceinline CTCBase* GetTC() const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
+    template<long TYPE> FABLE_FORCEINLINE CTCBase* GetTC() const
     {
         ETCInterfaceType type = (ETCInterfaceType)(TYPE);
         const CInterfaceMap* map = &Interfaces;

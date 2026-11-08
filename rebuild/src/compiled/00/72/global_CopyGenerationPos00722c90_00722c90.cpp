@@ -9,6 +9,7 @@
 // PEmitter +0xC. The implicit operator= copies Pos through pointer registers (`mov eax,esi ; mov ecx,edi`: a C3DVector
 // with a user copy constructor and no operator=, GOTCHAS wave 25 chunk 185), then PEmitter = other.PEmitter as
 // SetPItem(other.GetPItem()) (CBaseIntelligentPointer @ 0x00A01B50 / 0x00A01B90, modelled as the landed 0x0080AA60).
+#include "fable_compiler.h"
 class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
@@ -20,7 +21,7 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"

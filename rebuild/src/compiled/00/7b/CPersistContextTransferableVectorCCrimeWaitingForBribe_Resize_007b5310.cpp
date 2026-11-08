@@ -10,6 +10,7 @@
 // before the size computation). The default record (Ego_r.pdb CCrimeWaitingForBribe, 8 bytes: DeedHandle,
 // EOpinionDeedType Type) is the `sub esp,8` temporary, zeroed through eax by its inline constructor; the size is `(finish - start) >> 3`; the shrink arm passes `start + n` and the cached finish, the grow arm
 // reloads finish and passes (finish, n - size, &x); no destructor, both arms return separately (`ret 4`).
+#include "fable_compiler.h"
 class CCrimeWaitingForBribe { public:                     // 8 bytes
     long DeedHandle;                               // +0x0
     long Type;                                     // +0x4 EOpinionDeedType
@@ -26,14 +27,14 @@ struct CCrimeWaitingForBribeVector {               // STLport vector<CCrimeWaiti
     CCrimeWaitingForBribe* erase(CCrimeWaitingForBribe* first, CCrimeWaitingForBribe* last);                         // 0x007B48E0
     void _M_fill_insert(CCrimeWaitingForBribe* position, unsigned long n, const CCrimeWaitingForBribe& x);           // 0x007B4E00
     void insert(CCrimeWaitingForBribe* position, unsigned long n, const CCrimeWaitingForBribe& x) { _M_fill_insert(position, n, x); }
-    __forceinline void resize(unsigned long newSize, const CCrimeWaitingForBribe& x)
+    FABLE_FORCEINLINE void resize(unsigned long newSize, const CCrimeWaitingForBribe& x)
     {
         if (newSize < size())
             erase(begin() + newSize, end());
         else
             insert(end(), newSize - size(), x);
     }
-    __forceinline void resize(unsigned long newSize) { resize(newSize, CCrimeWaitingForBribe()); }
+    FABLE_FORCEINLINE void resize(unsigned long newSize) { resize(newSize, CCrimeWaitingForBribe()); }
 };
 
 struct CPersistContext_TransferableVector {

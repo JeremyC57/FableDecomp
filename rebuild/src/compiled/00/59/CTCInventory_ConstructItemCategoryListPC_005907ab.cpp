@@ -19,6 +19,7 @@
 //   built as a named CCharString; the merged entry goes in through `insert(make_pair(key, count))` (the count is loaded
 //   into a register before the key store; a direct pair constructor stores it at once).
 // Layout: retail CTCInventory ParentThing +0x04; engine/CTCInventory.h is the PDB layout, so `this` is a local model.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -195,7 +196,7 @@ class CThing { public:
     std::bitset<274> m_present;                            // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long kind) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
         if (m_present.test(kind)) {
             long key = kind;

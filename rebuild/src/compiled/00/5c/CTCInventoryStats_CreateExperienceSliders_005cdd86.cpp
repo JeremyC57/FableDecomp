@@ -3,6 +3,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (sec1b 2026-10-30) -- one `long value` and one `long level` reused by all four sliders (value = the stat, level = current ? value : the original experience), as retail homes them in the dead parent slot / [ebp-4]; per-slider named values gave fresh slots. Earlier residue: frame-slot assignment only.
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -104,7 +105,7 @@ public:
     std::bitset<274> present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
@@ -115,7 +116,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         T* component;
         GetInterface(&component, wanted);

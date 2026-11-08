@@ -2,6 +2,7 @@
 // Leaf: ?_M_insert_overflow@?$vector@VCBlockInfo@CVertexGroupBlockOptimiser@@V?$allocator@VCBlockInfo@CVertexGroupBlockOptimiser@@@std@@@std@@IAEXPAVCBlockInfo@CVertexGroupBlockOptimiser@@ABV34@ABU__false_type@2@I_N@Z
 // Identity: proven; own push0xADBFB0 called by CVertexGroupBlockOptimiser::AddBlocks0xADA0E9 on local vector; input BlockIndex,Cost,Benefit stack12-byte record agrees with PDB CBlockInfo; copy0xADA7E0/fill0xADA820.
 // Layout: generated outer headers have no nested record declarations; outer declarations provide naming scope only and no outer object is accessed. Retail vector has3pointers.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -24,7 +25,7 @@ struct __false_type { __false_type() {} };
 template<class T> class allocator { public: T* allocate(unsigned int n) { return n?(T*)malloc(n*sizeof(T)):0; } void deallocate(T* p,unsigned int) { if(p) free(p); } };
 template<class V,class T,class Alloc> class _STLP_alloc_proxy:public Alloc { public: V _M_data; };
 template<class T> inline const T& max(const T& a,const T& b) { return a<b?b:a; }
-template<class T,class V> __forceinline void _Construct(T* p,const V& value) { new(p) T(value); }
+template<class T,class V> FABLE_FORCEINLINE void _Construct(T* p,const V& value) { new(p) T(value); }
 template<class Input,class Output> NOINLINE Output __fastcall __uninitialized_copy(Input first,Input last,Output result,const __false_type&) { Output current=result; for(;first!=last;++first,++current) _Construct(&*current,*first); return current; }
 template<class Iter,class Size,class T> NOINLINE Iter __fastcall __uninitialized_fill_n(Iter first,Size count,const T& value,const __false_type&) { for(;count>0;--count,++first) _Construct(&*first,value); return first; }
 template<class T,class Alloc=allocator<T> > class vector { public: typedef unsigned int size_type; typedef T* pointer; T* _M_start; T* _M_finish; _STLP_alloc_proxy<T*,T,Alloc> _M_end_of_storage;

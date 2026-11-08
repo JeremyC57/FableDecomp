@@ -14,6 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 #define VEC_DTOR
 class CCharString { public:
     void* PStringData;
@@ -66,7 +67,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
 #endif
     CScriptThing() {}
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     ~CScriptThing() {}
 };
 namespace std {
@@ -83,7 +84,7 @@ public:
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 #ifndef VEC_DTOR
-#define VEC_DTOR __forceinline
+#define VEC_DTOR FABLE_FORCEINLINE
 #endif
     VEC_DTOR ~vector()
     {
@@ -125,7 +126,7 @@ class CScriptBase { public:                                    // retail 0x40 by
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const CCharString& regionName = CCharString("")) { AddSpawnedFunction(func, regionName); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& regionName = CCharString("")) { AddSpawnedFunction(func, regionName); }
 };
 namespace NScript {
 class CQ_WaspBossScript : public CScriptBase {

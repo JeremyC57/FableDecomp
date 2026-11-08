@@ -11,6 +11,7 @@
 // Model: STLport 4.6 explicit vector(n): _Vector_base(n, alloc) (allocate = n ? malloc(n*56) : 0), then
 // uninitialized_fill_n(start, n, T()) -- the default value is a 0x38-byte frame temporary copied with `rep movsd`
 // (trivial copy ctor) under the placement-new null test.
+#include "fable_compiler.h"
 #include <new>
 #include <stddef.h>
 
@@ -41,7 +42,7 @@ public:
 
 namespace std {
 
-template <class T> __forceinline T* uninitialized_fill_n(T* first, size_t count, const T& value)
+template <class T> FABLE_FORCEINLINE T* uninitialized_fill_n(T* first, size_t count, const T& value)
 {
     T* cursor = first;
     for (; count > 0; --count, ++cursor)

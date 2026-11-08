@@ -14,6 +14,7 @@
 //   CMap::SetEngineBlendAt(long, long, unsigned char, unsigned long, EThemePaintType) 0x0081EFC0, def Destroy slot 1.
 // Layout: retail CWorldMap::DestroyedThemePositions +0xb0 (12-byte STLport vector of C2DCoordI; PDB +0xd0);
 //   CEngineThemeDef::DestructionThemeDef retail +0x98 (PDB +0x9c, def layouts sit 4 below the PDB); the def's count at +4.
+#include "fable_compiler.h"
 #include <new>
 struct __false_type { __false_type() { } };
 #include "engine/C3DVector.h"
@@ -41,7 +42,7 @@ class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x98 - 0x08];
     long          DestructionThemeDef;             // +0x98
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }

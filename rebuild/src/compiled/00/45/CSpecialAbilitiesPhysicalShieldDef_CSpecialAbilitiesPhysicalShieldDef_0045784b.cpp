@@ -12,6 +12,7 @@
 // +0xec..+0x110, ColorEnd +0x11c, ColorHit +0x128, ManaDamage +0x138 (each PDB vector is 16 bytes, so the later members
 // drift by 4 per vector).
 // Shape: as 0x004575FC -- empty destructor, `__forceinline` vector<float> destructors in reverse order, base tail jump.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
@@ -23,7 +24,7 @@ struct CFloatVector {                              // retail std::vector<float> 
     float* m_first;
     float* m_last;
     float* m_end;
-    __forceinline ~CFloatVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~CFloatVector() { if (m_first) free(m_first); }
 };
 // Model: the retail def chain from engine/CParentDefClassBase.h; the derived def is `__declspec(novtable)` (no vtable
 //   store of its own in the destructor, as 0x0047747C) and its CDefString members are the 4-byte TablePos class.

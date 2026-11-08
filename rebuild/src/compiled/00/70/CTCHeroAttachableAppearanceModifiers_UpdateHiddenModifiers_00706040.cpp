@@ -1,4 +1,5 @@
 // CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers() -- marks every modifier visible, then hides any lower-layer modifier whose hide mask overlaps a visible higher-layer modifier
+#include "fable_compiler.h"
 class CDefClassBase {
 public:
     virtual void v00();
@@ -21,13 +22,13 @@ public:
 template<class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
     }
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
             if (Object) {
@@ -46,7 +47,7 @@ public:
 template<class T> class CDefTempPointer {
 public:
     T* Object;
-    __forceinline ~CDefTempPointer()
+    FABLE_FORCEINLINE ~CDefTempPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();
@@ -66,7 +67,7 @@ public:
 class CDefinitionManager {
 public:
     CDefTempPointer<const CDefinition> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
-    __forceinline bool GetDef(long index, CDefPointer<const CDefinition>& out) const
+    FABLE_FORCEINLINE bool GetDef(long index, CDefPointer<const CDefinition>& out) const
     {
         if (index <= 0)
             return false;

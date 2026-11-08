@@ -8,6 +8,7 @@
 // Shape: `this` rides in ebx and the PCreature address in edi; esi is pushed only inside the lookup block. Retail CCombatActionBase is
 // 0x114 bytes (the engine header is the PDB's 0x12c-byte layout), so `this` is modelled locally.
 // Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+#include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 using NGraphicAppearance::CTCGraphicAppearance;
 class CTCBase;
@@ -24,7 +25,7 @@ class CThing { public:
     CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
     CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }                           // inline accessors: the member is
     CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   //   loaded straight into ecx
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -22,6 +22,7 @@
 // Interfaces: 0x29 CTCHero (one-ternary pick: component straight into ecx), 0x42 CTCEntityEvents, 0x10 CTCSoundPlayer
 // (`found = last; if (it != last && !(wanted < it->type)) found = it;`: retail keeps last in edi and overwrites it), 3 CTCHeroMorph.
 // Layout: retail Morality +0x28 (PDB +0x30), MoralityChangingEnabled +0x2C (PDB +0x34).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -41,7 +42,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     const C3DVector& GetPos() const;            // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -54,7 +55,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfacePick(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterfacePick(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -65,7 +66,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceAlt(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceAlt(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

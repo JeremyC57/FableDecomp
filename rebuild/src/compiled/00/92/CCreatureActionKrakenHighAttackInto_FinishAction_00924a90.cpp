@@ -10,6 +10,7 @@
 // CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase @ 0x0062E900 (manifest "~CTCLightningOrb" is propagated).
 // Shape: an inline two-fetch alive test on PTarget (`IsValid`), each arm builds its 0x11c / 0x114-byte temporary at the frame base
 // inside the SetCurrentAction call and destroys it through the base destructor.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -35,8 +36,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     CIntelligentPointer<CThing> PTarget;            // +0xa8 CIntelligentPointer<CThing> (Ego_r.pdb +0xb4)
     unsigned char           _padb0[0x114 - 0xb0];
     virtual ~CCombatActionBase();                       // 0x0062E900
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.Get()); }
-    __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.Get()); }
+    FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
         return PTarget.Get() && !PTarget.Get()->IsDead();
     }

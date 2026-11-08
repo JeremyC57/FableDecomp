@@ -16,6 +16,7 @@
 // CSoundInit a temporary whose ctor assigns PlaybackType in its body (stored after OverrideID), and PlayAttachedSample,
 // which receives both addresses by const reference, has a same-TU noinline stand-in too (without it 22 lines: the pair
 // stores sink below the pushes) -- the "every address-taking callee gets a stand-in" lever.
+#include "fable_compiler.h"
 class CTCBase;
 class CDefPointeeBase { public:                                       // counted def object: vptr, reference count at +4
     virtual void v00();
@@ -112,7 +113,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

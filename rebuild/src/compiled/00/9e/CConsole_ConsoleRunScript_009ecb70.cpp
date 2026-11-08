@@ -12,6 +12,7 @@
 //   negative offset is false; else intrinsic strcmp == 0) applied to the ToLower() temporary. The ".ini" suffix is a named
 //   local in its own block (retail reads its data straight from the frame slot; a CCharString(".ini") temporary is
 //   addressed through the constructor's eax, DIFFER 257v255); it is built before ToLower runs and dies after it.
+#include "fable_compiler.h"
 #include <string.h>
 extern char g_emptyString[];                            // 0x0129AAF4
 struct CStringData { char* Text; long Length; };
@@ -31,7 +32,7 @@ public:
     CWideString ToWideString() const;                   // 0x0099E480
     long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
-    __forceinline bool EndsWith(const CCharString& suffix) const
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
     {
         long offset = Length() - suffix.Length();
         if (offset >= 0)

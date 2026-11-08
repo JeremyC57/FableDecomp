@@ -22,6 +22,7 @@
 //   MissionSucceeded +0x48 .. RockTrollTriggered +0x4E, RockTrollHealthBarID +0x50, PlayedExhumeCutScene +0x54,
 //   AddedItemsToRockTroll +0x55 (0x58 bytes).
 // Model: the landed NScript::CV_SwordInTheStoneScript::Main 0x00ED4D20 (CEntityScriptBinding / CSpawnedFunc / SpawnFunction).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -73,7 +74,7 @@ public:
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 namespace NScript {
 class CV_RockTrollFirstEncounterScript : public CScriptBase {

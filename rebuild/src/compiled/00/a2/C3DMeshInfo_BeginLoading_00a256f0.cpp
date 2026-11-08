@@ -13,6 +13,7 @@
 // Layout: C3DMeshInfo Bank +4, Index +8, MeshData +0xc, LODDataSizes[4] +0x50 (engine/C3DMeshInfo.h); CMeshData and
 // C3DMeshLODInfo from the landed RemoveLOD 0x00A249A0 / C3DMeshLODInfo ctor 0x00A24430.
 // Leaf: BeginLoading
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 struct SCountBlock {
     long m_references;                             // +0
@@ -109,7 +110,7 @@ class CMeshDataBank { public:
 template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) {}
-    __forceinline CIVCountedPointer& operator=(T* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(T* object)
     {
         if (T* old = m_pObject) {
             if (--old->RefCount == 0)

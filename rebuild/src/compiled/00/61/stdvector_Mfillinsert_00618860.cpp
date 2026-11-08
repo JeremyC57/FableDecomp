@@ -13,6 +13,7 @@
 // Shape: STLport 4.6 `_M_fill_insert` verbatim; the helpers are same-TU noinline bodies (auto_inline off) so VC7.1 homes
 //   the empty tags and `old_finish - n` / `n - elems_after` in the dead n argument slot as retail does; the two
 //   `fill(.., x_copy)` calls tail-merge into one block before x_copy's destructor.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* __p) throw() { return __p; }
 
 class CCharString {
@@ -45,7 +46,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>
@@ -80,13 +81,13 @@ __declspec(noinline) void __fastcall fill(_ForwardIter __first, _ForwardIter __l
 #pragma auto_inline(on)
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }
 
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

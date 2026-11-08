@@ -10,6 +10,7 @@
 // Shape: the set's assignment is inlined (`__forceinline`; the DDK out-lines the implicit one): its vptr is not copied,
 //   the byte at +0x3c is loaded before `add edi,40h` and stored after the `lea ecx`, then the map's out-of-line operator=.
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -26,7 +27,7 @@ class CFireEffectCreationSet { public:         // PDB 0x18 bytes (retail 0x14): 
     virtual void v00();
     bool m_baseFlag;                    // +0x04 (unnamed base-class byte in the PDB)
     CContainmentMap ContainmentMap;     // +0x08
-    __forceinline CFireEffectCreationSet& operator=(const CFireEffectCreationSet& other)
+    FABLE_FORCEINLINE CFireEffectCreationSet& operator=(const CFireEffectCreationSet& other)
     {
         m_baseFlag = other.m_baseFlag;
         ContainmentMap = other.ContainmentMap;

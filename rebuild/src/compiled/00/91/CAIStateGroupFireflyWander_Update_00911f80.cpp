@@ -11,6 +11,7 @@
 // Shape: the two 2D offsets are C3DVector differences (the hero one is spilled, giving retail's 0x28 frame); the night
 //   branch comes first; the show toggle calls GetCreature() twice; the day branch uses the out-parameter GetInterface
 //   (component left in eax).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -45,14 +46,14 @@ class CThing { public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
         return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

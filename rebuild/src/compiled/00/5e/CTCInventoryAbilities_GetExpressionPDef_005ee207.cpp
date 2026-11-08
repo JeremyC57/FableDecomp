@@ -1,4 +1,5 @@
 // CTCInventoryAbilities::GetExpressionPDef(long) -- looks up the definition with the given global index and returns it as a counted CDefPointer<const CExpressionDef>
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE207, length 68 bytes.
@@ -23,12 +24,12 @@ struct CDefVirtual {
 
 struct CDefRefCounted {                           // second base: the count sits at +4 behind the vptr
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 
 class CDefClassBase : public CDefVirtual, public CDefRefCounted { public:
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -42,12 +43,12 @@ class CExpressionDef : public CDefClassBase { public:
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() { }
-    template <class U> __forceinline CDefPointer(const CDefPointer<U>& other) : m_p((T*)other.m_p)
+    template <class U> FABLE_FORCEINLINE CDefPointer(const CDefPointer<U>& other) : m_p((T*)other.m_p)
     {
         if (m_p)
             ++m_p->m_count;
     }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p)
             m_p->ReleaseTemporary();

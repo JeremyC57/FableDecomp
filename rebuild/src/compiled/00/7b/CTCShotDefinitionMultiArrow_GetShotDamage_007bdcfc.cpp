@@ -12,6 +12,7 @@
 // CThing presence bitset +0x20, interface map +0x44.
 // Shape: the multiplier is a float local initialised with fld1; the interface key temporary reuses the alive
 // test's frame word; the lookup is a __forceinline template returning the component (landed 0x0064B668 shape).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -24,7 +25,7 @@ class CThing { public:
     std::bitset<274> m_present;                        // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
     bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

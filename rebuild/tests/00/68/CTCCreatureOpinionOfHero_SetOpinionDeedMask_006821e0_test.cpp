@@ -1,5 +1,6 @@
 // Behaviour test for 0x006821E0: CTCCreatureOpinionOfHero::SetOpinionDeedMask(long defIndex) -- reset the 0x5C-entry deed mask to all enabled; for a def index naming an OPINION_DEED_MASK def, fill the mask with the def's default and then apply each per-deed override from its DeedEnabled map
 // A copy of the source model and logic (compiled separately from src/006821e0.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -78,7 +79,7 @@ public:
     void _M_fill_assign(size_type __n, const _Tp& __val);   // 0x006860F0 (vector<bool>)
     void assign(size_type __n, const _Tp& __val) { _M_fill_assign(__n, __val); }
     vector() { this->_M_start = this->_M_finish = this->_M_end_of_storage._M_data = 0; }   // test-only
-    __forceinline vector(size_type __n, const _Tp& __val)
+    FABLE_FORCEINLINE vector(size_type __n, const _Tp& __val)
     {
         this->_M_start = (_Tp*)malloc(__n * sizeof(_Tp));
         this->_M_finish = this->_M_start;
@@ -86,7 +87,7 @@ public:
         memset(this->_M_start, __val, __n);
         this->_M_finish = this->_M_start + __n;
     }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         if (this->_M_start != 0)
             free(this->_M_start);

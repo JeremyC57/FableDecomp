@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008CD470 length298. Actual donor derived layout included; native tail -0x18.
 // Actual physics slot74=7238E0 SetFacingAnglesFromRHSet; slot75 is distinct SetRHSet.
+#include "fable_compiler.h"
 #define CCreatureAction_CastAssassinRush CCreatureAction_CastAssassinRush_PDB
 #include "engine/CCreatureAction_CastAssassinRush.h"
 #undef CCreatureAction_CastAssassinRush
@@ -42,7 +43,7 @@ class CTCParamsBase;
 enum ETCInterfaceType { };
 class CThing:public CClass { public:
  unsigned char _beforePhysics[0x4f];CPhysicsMethods* PPhysics;
- __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
+ FABLE_FORCEINLINE CPhysicsMethods* GetPhysics()const{return PPhysics;}
  void RemoveTC(ETCInterfaceType); //004C9840
  CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };

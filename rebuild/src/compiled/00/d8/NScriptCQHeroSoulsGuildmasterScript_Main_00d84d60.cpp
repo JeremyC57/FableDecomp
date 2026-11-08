@@ -17,6 +17,7 @@
 //   655 GetActiveQuestName, 704 AutoSaveQuestStart.
 // Shape: the landed quest-Main binding model (CQ_TraderConflictGoodScript::Main 0x00DFA450) with WAIT_UNTIL loops; the local CTimer's
 //   destructor is a plain inline body (VC7.1 expands it at the hot loop exits and calls 0x00CD4470 elsewhere, as retail).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
@@ -42,8 +43,8 @@ extern CGameScriptInterfaceBase* pDSTGame;               // 0x0143E8F8
 void __fastcall AddLogbookStoryEntryString(const CCharString& text);   // 0x00CBE960
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 namespace NScript {
 #define FABLE_HSG_ENTITY(Name) \

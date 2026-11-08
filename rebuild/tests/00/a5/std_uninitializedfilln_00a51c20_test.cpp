@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +15,7 @@
 class CQuaternion{public:float X,Y,Z,W;};
 namespace std {
 struct __false_type{};
-template<class T,class U>__forceinline void _Construct(T* p,const U& value){new(p)T(value);}
+template<class T,class U>FABLE_FORCEINLINE void _Construct(T* p,const U& value){new(p)T(value);}
 template<class Iter,class Size,class T>Iter __fastcall __uninitialized_fill_n(Iter first,Size count,const T& value,const __false_type&){for(;count>0;--count,++first)_Construct(first,value);return first;}
 }
 typedef CQuaternion Element;

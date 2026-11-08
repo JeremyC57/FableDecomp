@@ -13,12 +13,13 @@
 //   `atan2(dz, sqrt(dy*dy + dx*dx)) * (1 / 2pi)` (intrinsic atan2 / sqrt -> fpatan / fsqrt; the y square is formed
 //   first), stored once to the `push ecx` frame float, then the landed `__forceinline WrapAngle` of the XY twin
 //   (`if (a < 0 || a >= 1) { a = fmod(a, 1.0); if (a < 0) a += 1; }`, the fmod result returned off the x87 stack).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, sqrt, fmod)
 
 #include "engine/C3DVector.h"
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

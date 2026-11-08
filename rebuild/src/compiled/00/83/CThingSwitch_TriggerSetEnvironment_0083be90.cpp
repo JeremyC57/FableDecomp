@@ -13,6 +13,7 @@
 // the hero position is a C2DVector converted from the physics position (only Y lands in the frame, X stays on the
 // x87 stack) and tested by the half-open ContainsPoint inlined here (the sibling TriggerSetPlayerAreaName 0x0083C990
 // calls the out-of-line copy 0x00535CD0); the world is a named local so PeekWorld runs before the argument pushes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
@@ -21,7 +22,7 @@ class C2DVector { public:
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
-    __forceinline bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
+    FABLE_FORCEINLINE bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 class CCharString { public: void* PStringData; };
 class CEnvironment {

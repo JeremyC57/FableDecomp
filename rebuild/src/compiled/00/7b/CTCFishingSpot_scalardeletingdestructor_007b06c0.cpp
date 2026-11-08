@@ -11,6 +11,7 @@
 // (CIntelligentPointer<CThing>, 8 bytes each: vptr + item), Enabled +0x24.
 // Shape: own vtable store first, the user destructor body (RemoveParticles) before the member
 // destructors, which run in reverse declaration order; a `new` factory pulls the `??_G` into the TU.
+#include "fable_compiler.h"
 class CThing;
 
 class CTCBase { public:                                   // engine/CTCBase.h offsets, modelled polymorphic
@@ -36,7 +37,7 @@ protected:
     void RemoveParticles();                        // 0x007B01C0  // protected (?RemoveParticles@CTCFishingSpot@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
 public:
     CTCFishingSpot(CThing& owner) : CTCBase(owner) { }
-    __forceinline virtual ~CTCFishingSpot() { RemoveParticles(); }
+    FABLE_FORCEINLINE virtual ~CTCFishingSpot() { RemoveParticles(); }
 };
 
 CTCFishingSpot* Create_CTCFishingSpot(CThing& owner)

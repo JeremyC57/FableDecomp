@@ -4,6 +4,7 @@
 //          the component's virtual SetStatus (slot 28).
 // Shape: the component comes from an inline accessor whose local stays UNSET when the mask bit is clear, so retail reads a dead
 // slot on that path and emits the virtual call twice.
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -17,14 +18,14 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020 (the key by address)
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind)          // the inlined map `find`: end entry when the key is absent
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: end entry when the key is absent
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
             it = m_pLast;
         return ((CTCBase_Retail*)it->second);
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -41,10 +42,10 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase_Retail* GetTC(long kind) { return m_tcs.Find(kind); }
-    __forceinline CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
-    template <class T> __forceinline bool GetInterface(T** out, long kind)   // the out-parameter lookup: the component stays in eax
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase_Retail* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)   // the out-parameter lookup: the component stays in eax
     {
         if (HasTC(kind)) {
             *out = (T*)GetTC(kind);
@@ -52,7 +53,7 @@ struct CThing_Retail {
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** out, long kind) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
         if (HasTC(kind)) {
             *out = (T*)GetTC(kind);
@@ -60,14 +61,14 @@ struct CThing_Retail {
         }
         return false;
     }
-    __forceinline CTCBase_Retail* GetTCIfPresent(long kind)   // the component, deliberately unset when the mask bit is clear (retail reads a dead slot)
+    FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(long kind)   // the component, deliberately unset when the mask bit is clear (retail reads a dead slot)
     {
         CTCBase_Retail* tc;
         if (HasTC(kind))
             tc = GetTC(kind);
         return tc;
     }
-    __forceinline const CTCBase_Retail* GetTCIfPresent(long kind) const
+    FABLE_FORCEINLINE const CTCBase_Retail* GetTCIfPresent(long kind) const
     {
         const CTCBase_Retail* tc;
         if (HasTC(kind))

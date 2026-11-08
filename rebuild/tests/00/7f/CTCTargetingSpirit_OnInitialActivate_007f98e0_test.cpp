@@ -1,4 +1,5 @@
 // Behaviour test for 007f98e0: body copied from src/007f98e0.cpp (CTCTargetingSpirit::OnInitialActivate), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -22,7 +23,7 @@ struct CDistanceMap {
     long     _M_node_count;
     iterator find(const long& key) const { g_findKey = key; iterator it; it._M_node = _M_header; for (int i = 0; i < 2; ++i) if (g_nodes[i].first == key) it._M_node = &g_nodes[i]; return it; }
 };
-static __forceinline float FindDistance(const CDistanceMap& map, long key)
+static FABLE_FORCEINLINE float FindDistance(const CDistanceMap& map, long key)
 {
     CDistanceMap::iterator it = map.find(key);
     return it._M_node != map._M_header ? it._M_node->second : 0.0f;

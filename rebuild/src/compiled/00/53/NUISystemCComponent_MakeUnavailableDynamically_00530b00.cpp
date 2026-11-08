@@ -9,6 +9,7 @@
 //   +0x88, InitialColour +0x8C; CRGBColour bytes B, G, R, A).
 // Shape: `CComponent::MakeUnavailable()` qualified and __forceinline, then TargetColour, InitialColour and Colour each
 //   scaled R, G, B as the loop does.
+#include "fable_compiler.h"
 namespace NUISystem {
 
 struct CRGBColour {                         // 4 bytes: B, G, R, A
@@ -178,7 +179,7 @@ public:
 
 namespace NUISystem {
 
-__forceinline void CComponent::MakeUnavailable()
+FABLE_FORCEINLINE void CComponent::MakeUnavailable()
 {
     for (CStateMapIterator it = GetStates().begin(); it != GetStates().end(); ++it)
     {

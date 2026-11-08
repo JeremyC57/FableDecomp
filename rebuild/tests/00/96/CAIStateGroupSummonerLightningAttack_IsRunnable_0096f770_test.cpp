@@ -2,6 +2,7 @@
 // stubbed; covers no enemy source / no enemy / dead enemy, the line-of-sight probe (from = creature + 2z, to = enemy + 2z) and
 // its failure, the out-of-range latch through CIntelligentPointerCreature, the preemptive frame gate, the seeded percentage
 // roll against LightningChance, the LOS chance with CanBeTargeted, and the next-frame scheduling.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -37,7 +38,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -48,7 +49,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceC(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceC(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -103,7 +104,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vptr 0x01238C6C
     virtual void v00();
-    explicit __forceinline CIntelligentPointerCreature(CThing* thing) { SetPItem(thing); }
+    explicit FABLE_FORCEINLINE CIntelligentPointerCreature(CThing* thing) { SetPItem(thing); }
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* thing);    // 0x004A96F0
@@ -137,7 +138,7 @@ struct CAIStateGroup_SummonerLightningAttack : CAIStateGroupBase {
     const CSummonerDef* PDef;                   // +0x1c CDefPointer<const CSummonerDef>
     long NextFrameForPreemptiveUse;             // +0x20
     CThing* GetCreature() const { return PBrain->PCreature; }
-    __forceinline bool IsTargetable(CTCLightningTarget* target)
+    FABLE_FORCEINLINE bool IsTargetable(CTCLightningTarget* target)
     {
         CTCLightningTarget::SMatch out;
         return target->CanBeTargeted(&out, GetCreature());

@@ -9,6 +9,7 @@
 // Shape: the landed CQ_WizardBattleScript::CleanUp (0x00E1D690) model: by-value CScriptThing temporaries with the inline
 //   counted-pointer destructor, a local STLport vector with a __forceinline destructor (free); the competitor count is
 //   read once.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -29,7 +30,7 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() {}
 
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -45,7 +46,7 @@ public:                     // STLport vector (retail 12 bytes), malloc_alloc st
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     long size() const { return _M_finish - _M_start; }
     T& operator[](long n) { return _M_start[n]; }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

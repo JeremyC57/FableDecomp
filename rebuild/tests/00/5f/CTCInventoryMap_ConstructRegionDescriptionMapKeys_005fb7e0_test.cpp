@@ -1,5 +1,6 @@
 // Behaviour test for 005fb7e0: src/005fb7e0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -33,7 +34,7 @@ class CWideString { public:
 };
 void operator delete(void* p);                         // 0x00BFE9BC
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1

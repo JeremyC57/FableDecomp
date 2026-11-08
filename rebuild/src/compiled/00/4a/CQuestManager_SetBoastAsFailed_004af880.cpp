@@ -11,6 +11,7 @@
 // Shape: the search is a __forceinline FindAcceptedBoast(id, name, CBoast*& out) returning bool; only that form gives
 // retail's ebx push on the non-empty path and the store straight on the hit (an inline loop in the body pushes ebx at entry,
 // a pointer-returning helper adds `lea ; test` before the store).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // (by-value parameter; built by the caller)
@@ -44,7 +45,7 @@ class CQuestManager { public:
     unsigned char _pad_0x00[0x68];
     CBoastNode*   Boasts;                          // +0x68 list<CBoast> (head node; PDB +0xa4)
     CBoastNode*   AcceptedBoasts;                  // +0x6c list<CBoast> (head node; PDB +0xb0)
-    __forceinline bool FindAcceptedBoast(long id, const CCharString& scriptName, CBoast*& boast)
+    FABLE_FORCEINLINE bool FindAcceptedBoast(long id, const CCharString& scriptName, CBoast*& boast)
     {
         for (CBoastNode* node = AcceptedBoasts->next; node != AcceptedBoasts; node = node->next) {
             if (node->value.ID == id && (scriptName == "" || scriptName == node->value.ScriptName)) {

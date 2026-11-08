@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -57,7 +58,7 @@ namespace std{template<class T>class allocator{};template<class K,class V>struct
 template<class T>class CArray:public std::vector<T>{};template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{private:C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
 class CThing:public CClass {
-public:template<class T>__forceinline bool GetTC(T**out){
+public:template<class T>FABLE_FORCEINLINE bool GetTC(T**out){
  unsigned long*bits=reinterpret_cast<unsigned long*>(reinterpret_cast<CThingLayout*>(this)->UsingComponents);
  if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))){ETCInterfaceType type=T::StatGetInterfaceType();CVectorMap<ETCInterfaceType,CTCBase*>&map=*reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>*>(reinterpret_cast<CThingLayout*>(this)->Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(type);if(it==map.end()||T::StatGetInterfaceType()<it->first)it=map.end();*out=static_cast<T*>(it->second);return true;}return false;
  }

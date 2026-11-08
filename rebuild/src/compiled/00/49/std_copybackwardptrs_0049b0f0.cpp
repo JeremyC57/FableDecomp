@@ -8,6 +8,7 @@
 // Callees: CTexture::operator= 0x009FA1C0 (FableWin.pdb ??4CTexture@@QAEABV0@ABV0@@Z; the catalog's ??4CTexture@@QAEAAU0@ABU0@@Z binding is the wrong key/return).
 // Shape: STLport 4.6 _algobase.h `__copy_backward_ptrs(first, last, result, const __false_type&)` -- the non-trivial-assignment overload vector::_M_fill_insert / insert / _M_range_insert call with _TrivialAss() -- with `__copy_backward(first, last, result, random_access_iterator_tag(), (ptrdiff_t*)0)` inlined; __copy_backward is __forceinline (as plain `inline` VC7.1 keeps it out of line as a
 //   cdecl call, 25v49), the loop counts n down in ebx and reads the source through the constant distance last - result.
+#include "fable_compiler.h"
 class CTexture {                                        // Ego_r.pdb, 8 bytes (`sar eax,3`)
 public:
     void* Words[2];
@@ -19,7 +20,7 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                                  _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)

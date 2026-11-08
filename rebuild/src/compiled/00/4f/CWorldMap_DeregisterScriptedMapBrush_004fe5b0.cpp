@@ -14,6 +14,7 @@
 //   (rebalance with &header->_M_parent/_M_left/_M_right, `_Destroy` of the value = the key's destructor, the
 //   allocator's null-tested free, `--_M_node_count`); the header pointer is loaded once for the end test and the
 //   three references.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 
 class CCharString {
@@ -81,7 +82,7 @@ public:
 };
 typedef _Rb_global<bool> _Rb_global_inst;
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
 template <class V> struct _Rb_tree_iterator {
     _Rb_tree_node_base* _M_node;
@@ -105,7 +106,7 @@ private:
 public:
     iterator end() { return iterator(_M_header._M_data); }
     template <class _KT> iterator find(const _KT& k) { return iterator(_M_find(k)); }
-    static __forceinline void deallocate(_Node* p, unsigned int) { if (p != 0) free(p); }
+    static FABLE_FORCEINLINE void deallocate(_Node* p, unsigned int) { if (p != 0) free(p); }
     void erase(iterator position)
     {
         _Node* y = (_Node*)_Rb_global_inst::_Rebalance_for_erase(position._M_node, _M_header._M_data->_M_parent,

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifdef FABLE_RETAIL_CSTRINGPARSER
 #ifndef FABLE_ENGINE_CSTRINGPARSER_H
 #define FABLE_ENGINE_CSTRINGPARSER_H
@@ -74,13 +75,13 @@ protected:
 #ifdef FABLE_RETAIL_CSTRINGPARSER_MOVESTRINGPOS
     // Chunk 756 (row 0x009B9D70 SkipPastNewline): Ego_r.pdb ?CalcInQuotes@CStringParser@@IBE_N_NPBD1@Z and ?MoveStringPos@CStringParser@@IAEXK@Z
     // (protected). Inline: retail SkipPastNewline / SkipWhitespace expand both (the out-of-line CalcInQuotes copy is 0x009B9570).
-    __forceinline bool CalcInQuotes(bool inQuotes,const char* from,const char* to) const {
+    FABLE_FORCEINLINE bool CalcInQuotes(bool inQuotes,const char* from,const char* to) const {
         for(const char* p=from;p!=to;++p)
             if(*p=='"'||*p=='\'')
                 inQuotes=!inQuotes;
         return inQuotes;
     }
-    __forceinline void MoveStringPos(unsigned long n) {
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
         if(n) {
             CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,String+CursorPos.StringPos,String+CursorPos.StringPos+n);
             CursorPos.StringPos+=n;

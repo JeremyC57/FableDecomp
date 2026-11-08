@@ -9,6 +9,7 @@
 // Shape: the first token is read and discarded (temporary destroyed at once); `found` is homed in the dead `stream`
 //          argument slot; each quote is skipped by the inlined one-byte ReadChar whose dead character copy VC drops
 //          (pointer/count/position updates only); the success path is nested so the `return false` exit is placed last.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(memcpy)
 
@@ -34,8 +35,8 @@ class CDataInputStream : public CDataStream { public:
     void* CurrentSourcePtr;                  // +0x0c
     unsigned long SourceChunkStreamPos;      // +0x10
     long SourceChunkBytesRemaining;          // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dest, long n)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dest, long n)
     {
         __int64 newPosition = (__int64)(StreamPos + n);
         if (!IsValidPosition(newPosition)) return;
@@ -46,7 +47,7 @@ class CDataInputStream : public CDataStream { public:
             StreamPos += n;
         } else ReadWithSrcChunkOverflow((unsigned char*)dest, n);
     }
-    __forceinline char ReadChar() { char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE char ReadChar() { char value; Read(&value, 1); return value; }
     CCharString ReadUntilCharacter(char terminator, bool* found);   // 0x00994DC0
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0

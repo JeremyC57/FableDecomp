@@ -8,6 +8,7 @@
 // Callees: __copy_backward 0x00CB94D0, __unguarded_linear_insert 0x00CB92C0, CCharString copy/assign/dtor.
 // Shape: copy_backward is a __forceinline wrapper passing a `random_access_iterator_tag()` (user constructor, so no
 //   byte store) and `(int*)0`; `*__first = __val` is the inline pair assignment.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* m_pStringData;
@@ -46,7 +47,7 @@ template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00CB92C0
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result)
+FABLE_FORCEINLINE _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

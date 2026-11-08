@@ -7,6 +7,7 @@
 // The z offsets are read through the shadow renderer global 0x01436E60, not `this`.
 // Layout: engine/CEngineShadowRenderer.h (ShadowBufferRenderStateCaptureBlock +0x24c, RenderTarget +0x2c4,
 //   ShadowBufferTexture +0x2e8, RenderingTechnique +0x334); the projection matrix sits in SceneData at +0x4c.
+#include "fable_compiler.h"
 #include "engine/CEngineShadowRenderer.h"
 
 class C2DExtentsI { public: unsigned long Width; unsigned long Height; };
@@ -43,7 +44,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -68,7 +69,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     unsigned char        _pad2b88[0x3a24 - 0x2b88];
     unsigned char        m_captureBlockMarker[4];  // +0x3A24
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -83,7 +84,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
@@ -94,13 +95,13 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);
 }
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {
@@ -118,9 +119,9 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
     }
 }
 
-static __forceinline unsigned long FloatBits(float value) { return *(unsigned long*)&value; }
+static FABLE_FORCEINLINE unsigned long FloatBits(float value) { return *(unsigned long*)&value; }
 
-static __forceinline void SetWindowSize(C2DBoxF& window, unsigned long width, unsigned long height)
+static FABLE_FORCEINLINE void SetWindowSize(C2DBoxF& window, unsigned long width, unsigned long height)
 {
     window.X0 = 0.0f;
     window.Y0 = 0.0f;

@@ -14,6 +14,7 @@
 //   empty tag temporaries in the dead `creature` argument slot as retail does (GOTCHAS 24l); the vector is STLport's real
 //   _Vector_base with the _STLP_alloc_proxy end-of-storage member built from a default allocator argument -- with a plain
 //   pointer third member VC7.1 schedules `push edi` before the three zero stores instead of between the second and third.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
@@ -81,7 +82,7 @@ public:
     _Tp* _M_finish;                                     // +0x04
     _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;  // +0x08
     _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    __forceinline ~_Vector_base() { if (_M_start != 0) free(_M_start); }
+    FABLE_FORCEINLINE ~_Vector_base() { if (_M_start != 0) free(_M_start); }
 };
 
 template <class _Tp, class _Alloc = allocator<_Tp> >
@@ -90,7 +91,7 @@ public:
     typedef _Tp* iterator;
     typedef _Alloc allocator_type;
     explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
     iterator erase(iterator __first, iterator __last)
@@ -107,7 +108,7 @@ public:
 class CCombatSequenceBase {                             // vtable 0x01278FEC
 public:
     CCombatSequenceBase(CThingCreatureBase& creature, CThingCreatureBase& target);
-    virtual __forceinline ~CCombatSequenceBase() { }
+    virtual FABLE_FORCEINLINE ~CCombatSequenceBase() { }
     virtual void PureSlot1() = 0;                       // _purecall in the retail vtable
     virtual void PureSlot2() = 0;                       // _purecall in the retail vtable
 

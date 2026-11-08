@@ -12,6 +12,7 @@
 // Shape: the mesh base's stores precede the derived vtable store (an inline __declspec(novtable) intermediate base); each
 // interpolator is CBaseClass + vtable + members; the map is the STLport _Rb_tree_base header allocation then
 // _M_empty_initialize re-reading the header after each store; the render info's two words come last.
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -134,7 +135,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00();
     CEngineInternalPrimitiveAnimatedMesh();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 
 CEngineInternalPrimitiveAnimatedMesh::CEngineInternalPrimitiveAnimatedMesh()

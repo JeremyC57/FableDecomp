@@ -10,6 +10,7 @@
 // Shape: the checked mode-manager lookup (component left in eax), the UNCHECKED tentacle lookup in an inline accessor (absent
 // arm reads the shared key word, which the block-scoped name string reuses afterwards), the tentacle kept in esi for two calls.
 // Layout: owner CIntelligentPointer +8 (CCombatActionBase is 0x114 in retail).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -36,7 +37,7 @@ class CCombatActionBase { public:
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKrakenTentacle* GetTentacle() const
+    FABLE_FORCEINLINE CTCKrakenTentacle* GetTentacle() const
     {
         CTCKrakenTentacle* tentacle;
         PCreature.Get()->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);

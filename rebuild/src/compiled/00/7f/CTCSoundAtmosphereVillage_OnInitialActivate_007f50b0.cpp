@@ -13,6 +13,7 @@
 // Shape: the village comes from an inline accessor returning an unset local on the absent path (retail reads the dead frame word); the def
 // pointer is a by-value result whose dtor (`if (Object) { Object->ReleaseTemporary(); Object = 0; }`, DecRef/GetRefCount on the ref-count
 // base at +4) merges with the `if (def.Object)` test; the GetPItem call sits between the hidden-pointer push and the call.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -84,7 +85,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -105,7 +106,7 @@ struct CTCSoundAtmosphere {
 struct CTCSoundAtmosphereVillage : CTCSoundAtmosphere {
     long NumLivingSpaces;                       // +0x14
     long NumVillageMembers;                     // +0x18
-    __forceinline CTCVillage* GetVillage()
+    FABLE_FORCEINLINE CTCVillage* GetVillage()
     {
         CTCVillage* village;
         if (ParentThing->HasTC(0x22))

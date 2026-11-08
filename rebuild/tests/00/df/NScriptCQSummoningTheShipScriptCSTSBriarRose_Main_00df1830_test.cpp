@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cassert>
 #include <string>
@@ -20,7 +21,7 @@ CGameScriptInterfaceBase* pDSTGame;
 class CTimer{long TimerIndex;public:CTimer();~CTimer();CTimer&operator=(long);long GetTime()const;bool operator==(long)const;};
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline bool CTimer::operator==(long time) const { return GetTime()==time; }
 namespace NScript{class CIsThingAlive{public:CIsThingAlive(const CScriptThing&t){assert(t.kind==0);}};class CQ_SummoningTheShipScript{public:long CurrentAttackWave,SummonersAlive;bool SummonerAttacksStarted;CQ_SummoningTheShipScript():CurrentAttackWave(0),SummonersAlive(0),SummonerAttacksStarted(false){}bool MakeBriarRoseComment(const CCharString&s){state->attempts.push_back(s.text);if(state->commentFailures){--state->commentFailures;return false;}state->accepted.push_back(s.text);return true;}

@@ -11,6 +11,7 @@
 //   vectors): TavernGameState +0xc0; CTCTavernGameSpotTheAddition (PDB minus 0x18 up to KnickKnacks, minus 0x1c after):
 //   Pointer +0x104, PointerScale +0x108, Selected +0x144; CTavernGameDef PointerPhaseSpeed +0x1a0 (PDB +0x1a4 - 4).
 // Shape: two def lookups through CDefPointer locals; the graphic appearance comes through the out-parameter GetInterface.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -19,7 +20,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

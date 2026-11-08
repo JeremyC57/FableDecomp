@@ -19,6 +19,7 @@
 // Shape: the villager walk re-reads the list head for the end test; the member pointer is uninitialised when the
 //   interface is absent (retail calls SetPVillage on the stale [ebp-8]); the CDefPointer release is inline
 //   (`dec [ecx+4] ; jne ; call [eax+4]` then `and [edi],0`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CTCBase;
 class CBaseObject;
@@ -34,7 +35,7 @@ public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -90,7 +91,7 @@ struct CDefPointee {
 };
 struct CVillageDefPointer {                     // CDefPointer<const CVillageDef>
     CDefPointee* Object;
-    __forceinline ~CVillageDefPointer()
+    FABLE_FORCEINLINE ~CVillageDefPointer()
     {
         if (Object) {
             Object->Release();

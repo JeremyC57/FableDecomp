@@ -17,6 +17,7 @@
 // Layout: Ego_r.pdb NTCScriptedControl::CActionTalkBase 4 bytes high after Messages (CArray 16 vs retail 12): retail
 //          Terminated +9, UpdateCounter +0x18, GameTurnDuration +0x48, ScrollText +0x90, FinishedScroll +0x91 (as the landed
 //          ctor @ 0x00717BC0); CActionBase PTCScript +4 (CTCBase: ParentThing +4).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -37,7 +38,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

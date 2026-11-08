@@ -18,6 +18,7 @@
 //   OUTOFLINE_DTOR (retail expands every movie ctor and calls every movie dtor); the CTimer and its loop in a block of their own so the
 //   timer overlays the prologue CCharString temporary at 0x10 (chunk 816 / 818); the loop as for (;; NSF) { if (T) return; ... } (the
 //   loop-entry check then serves retail's expanded natural-exit ~CTimer and the seh_hero ctors stay calls).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -52,8 +53,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 void FABLE_FASTCALL RunCutsceneMacro(const CCharString&, std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>&, std::map<CCharString,bool>*, std::map<CCharString,CCharString>*, bool, bool);   // 0x00CBFB7D
 inline CScriptThing::~CScriptThing() { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 void NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster::Main()
 {

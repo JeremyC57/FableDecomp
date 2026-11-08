@@ -16,6 +16,7 @@
 // Shape: STLport `if (last - first < 2) return; len = last - first; parent = (len - 2) / 2; for (;;) { __adjust_heap(first,
 //   parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- len computed once (`sar ebp,3`),
 //   first parked in the `push ecx` slot, the value copy-constructed in its argument slot, first + parent kept in ebx.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -29,8 +30,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         SetPItem(p.GetPItem());
         return *this;

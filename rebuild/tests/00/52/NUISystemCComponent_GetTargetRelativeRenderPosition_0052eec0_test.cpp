@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -223,7 +224,7 @@ class CComponent { public:
  bool IsUsingRelativePosition()const;
  const C2DVector& TargetRelativeZoomInto(C2DVector& out)const;
  const C2DVector& TargetRelativePositionInto(C2DVector& out)const;
- __forceinline C2DVector TransformPosition(C2DVector& position,CComponent* parent)const{
+ FABLE_FORCEINLINE C2DVector TransformPosition(C2DVector& position,CComponent* parent)const{
 
   if(!IsPositionIndependent()){
    {C2DVector result;position.X*=parent->TargetRelativeZoomInto(result).X;}
@@ -241,10 +242,10 @@ union CComponentSlot {
  const C2DVector&(CComponent::*GetTargetRelativeRenderPositionInto)(C2DVector&)const;
  const C2DVector&(CComponent::*GetTargetRelativeRenderZoomInto)(C2DVector&)const;
 };
-__forceinline bool CComponent::IsPositionIndependent()const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[102].IsPositionIndependent)();}
-__forceinline bool CComponent::IsUsingRelativePosition()const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[117].IsUsingRelativePosition)();}
-__forceinline const C2DVector& CComponent::TargetRelativeZoomInto(C2DVector& out)const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[123].GetTargetRelativeRenderZoomInto)(out);}
-__forceinline const C2DVector& CComponent::TargetRelativePositionInto(C2DVector& out)const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[122].GetTargetRelativeRenderPositionInto)(out);}
+FABLE_FORCEINLINE bool CComponent::IsPositionIndependent()const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[102].IsPositionIndependent)();}
+FABLE_FORCEINLINE bool CComponent::IsUsingRelativePosition()const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[117].IsUsingRelativePosition)();}
+FABLE_FORCEINLINE const C2DVector& CComponent::TargetRelativeZoomInto(C2DVector& out)const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[123].GetTargetRelativeRenderZoomInto)(out);}
+FABLE_FORCEINLINE const C2DVector& CComponent::TargetRelativePositionInto(C2DVector& out)const{return (this->*reinterpret_cast<CComponentSlot*>(__vftable)[122].GetTargetRelativeRenderPositionInto)(out);}
 FABLE_STATIC_ASSERT(sizeof(CComponentSlot)==4);
 FABLE_STATIC_ASSERT(offsetof(CComponent,TargetPosition)==0x3c);
 FABLE_STATIC_ASSERT(offsetof(CComponent,PParent)==0xc8);

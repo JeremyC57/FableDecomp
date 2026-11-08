@@ -1,5 +1,6 @@
 // Behaviour test of CTCInventoryAbilities::SetExpressionToButton(long expression, long button) (retail 0x005F66D9)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -34,12 +35,12 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
     C    Compare;                                          // +0x0C
     bool Dirty;                                            // +0x0D
     value_type* LowerBound(const K& key);                  // 0x005F7FDF
-    __forceinline value_type* Find(const K& key)
+    FABLE_FORCEINLINE value_type* Find(const K& key)
     {
         value_type* it = LowerBound(key);
         return (it == this->end() || key < it->first) ? this->end() : it;
     }
-    __forceinline void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
     {
         this->push_back(value_type(key, value));
         Dirty = true;
@@ -54,7 +55,7 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
 
 typedef CVectorMap<long, long, CKeyPairCompareLess<long, long> > CExpressionButtonMap;
 
-__forceinline pair<long, long>* FindExpression(CExpressionButtonMap& map, long expression)
+FABLE_FORCEINLINE pair<long, long>* FindExpression(CExpressionButtonMap& map, long expression)
 {
     pair<long, long>* it = map.begin();
     pair<long, long>* last = map.end();

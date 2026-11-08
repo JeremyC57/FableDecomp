@@ -10,6 +10,7 @@
 // Shape: the inline IsValidPosition test (`p >= 0 && p <= 0x7fffffff` on the __int64 product), the allocation result homed in
 // the dead `count` argument slot, then a placement-new loop (`new (p) T` keeps its null test) counting down in ebp with the
 // element pointer advanced by 0x4c; members are built in declaration order (bounding-sphere zeroes, handle base call, vtable, handle 0).
+#include "fable_compiler.h"
 #include <new>
 
 #include "engine/C3DVector.h"
@@ -38,7 +39,7 @@ struct CLocalDetailPrimitiveMeshZSpriteBatch {
 
 class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long bytes, void* owner);             // 0x00BD9AF0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     template<class T> T* AllocArrayOfObjects(long count, void* owner);
 };
 

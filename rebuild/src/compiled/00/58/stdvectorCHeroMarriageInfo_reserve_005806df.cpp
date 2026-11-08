@@ -13,6 +13,7 @@
 // it; the old size reuses the dead `n` slot.
 // Model: CHeroMarriageInfo modelled locally (24 bytes, PDB members; its copy ctor is out of line).
 // Shape: frame-pointer size TU (`leave`, `push 18h ; pop edi`): `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -31,7 +32,7 @@ namespace std {
 
 template <class _Tp> struct allocator {
     _Tp* allocate(size_t __n, const void* __hint = 0);                      // 0x0057EFF0
-    __forceinline void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -48,8 +49,8 @@ public:
     size_t size() const { return size_t(_M_finish - _M_start); }
     size_t capacity() const { return size_t(_M_end_of_storage._M_data - _M_start); }
     pointer _M_allocate_and_copy(size_t __n, const _Tp* __first, const _Tp* __last);   // 0x0057F8A7
-    __forceinline void _M_clear() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_clear() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         _M_start = __s;
         _M_finish = __f;

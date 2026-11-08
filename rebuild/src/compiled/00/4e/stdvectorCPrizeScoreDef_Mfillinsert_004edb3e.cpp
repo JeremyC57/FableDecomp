@@ -12,6 +12,7 @@
 //   Score +0x28 + Mult +0x2C -- the 0x004ED161 model.
 // Shape: STLport 4.6 `_M_fill_insert` verbatim under `optimize("y", off)` + `optimize("s", on)`; helpers retail inlined are
 //   `__forceinline`, the out-of-line ones declarations (which keeps the zero-filled tag stores).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -42,7 +43,7 @@ public:
     long  Mult;                                      // +0x2c
     virtual void v00();
     // copy constructor: the implicit one (under "s" VC7.1 emits it out of line, 0x004EDC9B)
-    __forceinline CPrizeScoreDef& operator=(const CPrizeScoreDef& o)
+    FABLE_FORCEINLINE CPrizeScoreDef& operator=(const CPrizeScoreDef& o)
     {
         CDefClassBase::operator=(o);
         Score = o.Score;
@@ -68,7 +69,7 @@ public:
 template <class _T1, class _T2> void __fastcall _Construct(_T1* __p, const _T2& __val);           // 0x004EAC30
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -85,7 +86,7 @@ _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first,
                                                     _BidirectionalIter2 __result, const __false_type&);  // 0x004EDCC2
 
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for ( ; __first != __last; ++__first)
         *__first = __val;

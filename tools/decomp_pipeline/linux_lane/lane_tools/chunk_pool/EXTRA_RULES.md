@@ -97,6 +97,9 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
   qualifier in the retail class: write it with `volatile` and a `// Retail-volatile: <address>: <instruction pair>; <who writes it>`
   line (0x009C42F0 / 0x009C4F20 CFileInstaller::PCompletedRead). Still never as a spill trick: no `volatile` on a local, a
   parameter, or a member only one thread touches; the lander's grep is relaxed only for a source carrying the evidence line.
+- **Portable spelling (owner, 2026-11-08):** write `FABLE_FORCEINLINE` (rebuild/include/fable_compiler.h), never a bare
+  `__forceinline`: it is `__forceinline` under MSVC (same bytes) and `inline` elsewhere; the lander rejects a bare one (NOT_PORTABLE).
+  Everywhere below, "`__forceinline`" means that spelling.
 - **`__forceinline` on Lionhead header helpers is retail.** GetTC / PeekTC / GetInterface, C3DVector arithmetic and GetLength,
   CCountedPointer copy / Release: no out-of-line copy exists in the Ego_r / FableWin PDB name sets or in retail Fable.exe
   (thousands of use sites, all expanded), and plain `inline` leaves a call under VC7.1's budget. Keep `__forceinline` there;

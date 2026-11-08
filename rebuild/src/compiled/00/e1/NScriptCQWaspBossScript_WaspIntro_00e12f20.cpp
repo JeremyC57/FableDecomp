@@ -3,6 +3,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CCharString { public:
@@ -32,7 +33,7 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;
     // implicit destructor; out of line: 0x007E74D0
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {                                                   // out of line: 0x008ABD10
         CBaseObject::operator=(other);
         PImp = other.PImp;
@@ -54,7 +55,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
     node*         head;
     unsigned long size;
     unsigned char compare;
-    __forceinline CCutsceneCastMap()
+    FABLE_FORCEINLINE CCutsceneCastMap()
         : head(0)
     {
         head = (node*)malloc(sizeof(node));

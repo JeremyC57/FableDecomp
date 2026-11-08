@@ -23,6 +23,7 @@
 //   Each creature's boss component comes from the landed GetTCIfPresent idiom (`T* tc; if (HasTC) tc = GetTC; return
 //   tc;`): HasTC tests bit 13 of the +0x34 word, GetTC copies the key into the frame word the filter used and runs the
 //   lower-bound lookup; the never-written local is the esi loaded from that word before the loop (absent -> stale).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
@@ -149,11 +150,11 @@ public:
             return true;
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -161,7 +162,7 @@ public:
         CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
         return (T*)sel->second;
     }
-    template <class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* tc;
         if (HasTC(interfaceType))

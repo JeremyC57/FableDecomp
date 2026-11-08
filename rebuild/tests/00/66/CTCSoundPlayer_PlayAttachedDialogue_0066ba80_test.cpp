@@ -1,5 +1,6 @@
 // Behaviour test for 0x0066BA80: CTCSoundPlayer::PlayAttachedDialogue(unsigned long textID, bool flag1, bool flag2, bool altFader, bool flag4) -- play a dialogue line attached to the owner: resolve the text entry (a group entry directly, else the entry for the owner's talk voice), find its sound bank and the "SND_"-prefixed sample, then play it with the dialogue fader (0x20 when altFader, else 0x8040); 0 when anything is missing
 // A copy of the source model and logic (compiled separately from src/0066ba80.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -52,7 +53,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

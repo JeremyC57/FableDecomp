@@ -15,6 +15,7 @@
 //   (fast path into ebp); the loop value-initialises the pair (key 0, the inner map built), reads the key through a
 //   long-traits temporary (its 4-byte DefaultVal) homed on the dead count slot, the value through the traits local, then inserts a value_type
 //   copy (the implicit CComboMultiplierData copy: out-of-line map copy + two float moves) and destroys both pairs.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
@@ -27,8 +28,8 @@ class CDataInputStream { friend struct CInputStreamMethods;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CInputStreamMethods : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -118,7 +119,7 @@ template <> __declspec(noinline) void CPersistTraits<long>::TransferBinaryIn(CIn
 }
 #pragma auto_inline(on)
 
-__forceinline void ReadCount(CInputStreamMethods& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CInputStreamMethods& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

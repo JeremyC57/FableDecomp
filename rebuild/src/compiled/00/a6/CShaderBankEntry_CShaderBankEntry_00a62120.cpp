@@ -19,6 +19,7 @@
 //   end-of-storage is the allocator proxy with its own ctor (member-init store order); CArray::GetData is
 //   `size() > 0 ? _M_start : this`; push_back is inline with a `__false_type()` temporary passed to a same-TU member-template
 //   _M_insert_overflow body (the empty-tag rule: the tag shares the name's slot, as retail).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memcpy, memset)
@@ -120,14 +121,14 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     CMemoryDataInputStream(void* data, unsigned long size);  // 0x00994930
     ~CMemoryDataInputStream();                               // 0x00993B10
     CCharString ReadNullTerminatedString();                  // 0x00995D30
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline unsigned long ReadULong()
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE unsigned long ReadULong()
     {
         unsigned long value;
         Read(&value, sizeof(value));
         return value;
     }
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

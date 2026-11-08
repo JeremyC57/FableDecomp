@@ -1,5 +1,6 @@
 // Behaviour test for 0x0074FBB0 std::for_each(CThingObject**, CThingObject**, CAddObjectsNotSolidTo): every object in
 // the range has each entry of the held object list added to its interface-77 CTCSolidToThing; the functor comes back.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -25,7 +26,7 @@ public:
     value_type* First;                                       // +0x00
     value_type* Last;                                        // +0x04
     value_type* EndOfStorage;                                // +0x08
-    static __forceinline const value_type* LowerBound(const value_type* first, const value_type* last, const long& key)
+    static FABLE_FORCEINLINE const value_type* LowerBound(const value_type* first, const value_type* last, const long& key)
     {
         int count = last - first;
         while (count > 0) {
@@ -63,8 +64,8 @@ public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                        // +0x20
     CInterfaceMap   m_interfaces;                            // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         if (HasTC(type)) {
             const CInterfaceMap::value_type* last = m_interfaces.Last;
@@ -89,7 +90,7 @@ class CAddObjectsNotSolidTo {
 public:
     const std::vector<CThingObject*>* ObjectList;           // +0x00
     CAddObjectsNotSolidTo(const std::vector<CThingObject*>& objects) : ObjectList(&objects) { }
-    __forceinline void operator()(CThingObject* object)
+    FABLE_FORCEINLINE void operator()(CThingObject* object)
     {
         CTCSolidToThing* solid = object->GetTC<CTCSolidToThing>(77);
         const CThingObject* const* end = ObjectList->end();

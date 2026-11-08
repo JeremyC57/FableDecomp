@@ -19,6 +19,7 @@
 //   stores); the CIVCountedPointer release dec-tests the pointee's IVRefCount through a local copy (`dec [ecx+4]`), while the
 //   CDefPointer release calls the pointee's Release() (long from the unsigned count: the `mov edx,edi` copy) on a copy taken
 //   inside the null test.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
@@ -119,7 +120,7 @@ protected:
 class CEnginePrimitiveHandle : public CBaseClass {      // vtable 0x0122F598
 public:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
-    virtual __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    virtual FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
     void Clear()                                        // 0x0041BE70
     {
         if (Data.GetRefCount() == 1)

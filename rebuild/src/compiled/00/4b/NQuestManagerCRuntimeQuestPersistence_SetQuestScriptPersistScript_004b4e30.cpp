@@ -11,6 +11,7 @@
 // Shape: the map's inline Find (`last` read once after LowerBound), then a CPersistInfo local built from the arguments; a hit
 // assigns it through the inline memberwise operator=, a miss runs the inline Add (pair temporary in its own block, Dirty =
 // true) and the inline SortIfDirty (the test folds, the true store stays before the sort call, false after).
+#include "fable_compiler.h"
 class CCharStringData { public:
     bool operator<(const CCharStringData& other) const;   // 0x00429950 (CBasicString<char>::operator<)
 };
@@ -40,8 +41,8 @@ struct CRuntimeQuestPersistence {
         CCharString PersistScript;                 // +0x04
         CPersistInfo(const CCharString& questName, const CCharString& persistScript)
             : QuestName(questName), PersistScript(persistScript) { }
-        __forceinline CPersistInfo(const CPersistInfo& other) : QuestName(other.QuestName), PersistScript(other.PersistScript) { }
-        __forceinline CPersistInfo& operator=(const CPersistInfo& other)
+        FABLE_FORCEINLINE CPersistInfo(const CPersistInfo& other) : QuestName(other.QuestName), PersistScript(other.PersistScript) { }
+        FABLE_FORCEINLINE CPersistInfo& operator=(const CPersistInfo& other)
         {
             QuestName = other.QuestName;
             PersistScript = other.PersistScript;
@@ -51,7 +52,7 @@ struct CRuntimeQuestPersistence {
     struct SPair {                                 // pair<CCharString, CPersistInfo>, 12 bytes
         CCharString  first;                        // +0x00
         CPersistInfo second;                       // +0x04
-        __forceinline SPair(const CCharString& key, const CPersistInfo& value) : first(key), second(value) { }
+        FABLE_FORCEINLINE SPair(const CCharString& key, const CPersistInfo& value) : first(key), second(value) { }
     };
     struct CKeyPairCompareLess { };                // empty comparator (1 byte)
     struct CPersistMap {                           // CVectorMap<CCharString, CPersistInfo>: STLport vector, Compare, Dirty
@@ -69,7 +70,7 @@ struct CRuntimeQuestPersistence {
             SPair* last = m_pLast;
             return (it == last || key < it->first) ? last : it;
         }
-        __forceinline void Add(const CCharString& key, const CPersistInfo& value)
+        FABLE_FORCEINLINE void Add(const CCharString& key, const CPersistInfo& value)
         {
             {
                 SPair pair(key, value);
@@ -78,7 +79,7 @@ struct CRuntimeQuestPersistence {
             Dirty = true;
             SortIfDirty();
         }
-        __forceinline void SortIfDirty();
+        FABLE_FORCEINLINE void SortIfDirty();
     };
     CPersistMap PersistScripts;                    // +0x00
     CPersistMap MasterDataPersistScripts;          // +0x10
@@ -89,7 +90,7 @@ struct CRuntimeQuestPersistence {
 void __fastcall sort(CRuntimeQuestPersistence::SPair* first, CRuntimeQuestPersistence::SPair* last,
                      CRuntimeQuestPersistence::CKeyPairCompareLess comp);   // 0x004BBB40 (SGI sort, /Gr)
 
-__forceinline void CRuntimeQuestPersistence::CPersistMap::SortIfDirty()
+FABLE_FORCEINLINE void CRuntimeQuestPersistence::CPersistMap::SortIfDirty()
 {
     if (Dirty) {
         sort(m_pFirst, m_pLast, Compare);

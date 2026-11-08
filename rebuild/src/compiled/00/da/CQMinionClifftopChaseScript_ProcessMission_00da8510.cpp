@@ -14,6 +14,7 @@
 //   pGlobalScriptDef 0x0143E90C (+0xd54 escape time).
 // Layout (retail = Ego_r.pdb - 0x14, as the landed CQ_MinionClifftopChaseScript sources): MapKeeperSaidDialog +0x48,
 //   MissionFailed +0x49, TrollFlag +0x54, EscapeTimer +0x5c (CTimer), TimerBarID +0x60, ReasonForFailure +0x64.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -65,8 +66,8 @@ class CTimer;
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
-    __forceinline void Set(long time) { pDSTGame->SetTimer(Index, time); }
-    __forceinline long Get() const { return pDSTGame->GetTimer(Index); }
+    FABLE_FORCEINLINE void Set(long time) { pDSTGame->SetTimer(Index, time); }
+    FABLE_FORCEINLINE long Get() const { return pDSTGame->GetTimer(Index); }
 };
 class CScriptDef { public:
     unsigned char _pad[0xd54];

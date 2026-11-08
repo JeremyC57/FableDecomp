@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 // std::__uninitialized_copy(first,last,result,tag) -- Copy-construct counted pointers into raw storage.
@@ -11,8 +12,8 @@
 #define __forceinline inline
 #endif
 class CUnprovenPointee_00ad68d0;class CCPPointerInfo{public:unsigned long RefCount;void (__fastcall* DeleteFunc)(void*);void* Data;};
-template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}__forceinline CCountedPointer(const CCountedPointer& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CCountedPointer();};
-namespace std{struct __false_type{__false_type(){}};template<class T,class U>__forceinline void _Construct(T* p,const U& value){if(p)new(p)T(value);}template<class Input,class Output>Output __fastcall __uninitialized_copy(Input first,Input last,Output result,const __false_type&){Output current=result;for(;first!=last;++first,++current)_Construct(current,*first);return current;}}
+template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CCountedPointer();};
+namespace std{struct __false_type{__false_type(){}};template<class T,class U>FABLE_FORCEINLINE void _Construct(T* p,const U& value){if(p)new(p)T(value);}template<class Input,class Output>Output __fastcall __uninitialized_copy(Input first,Input last,Output result,const __false_type&){Output current=result;for(;first!=last;++first,++current)_Construct(current,*first);return current;}}
 typedef CCountedPointer<CUnprovenPointee_00ad68d0> Element;
 template Element* __fastcall std::__uninitialized_copy<Element*,Element*>(Element*,Element*,Element*,const std::__false_type&);
 template<class T>CCountedPointer<T>::~CCountedPointer(){if(Info)--Info->RefCount;}

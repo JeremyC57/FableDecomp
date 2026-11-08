@@ -19,6 +19,7 @@
 //   negation with `test ; sete bl`); IsFullyDegraded is inlined at its first use only (an inline copy of the landed body) and called
 //   out of line at the second; `cur - new > eps` gives `test ah,41h ; jne` to the shared return; the component comes from
 //   the out-parameter GetInterface; its call is the last statement, so VC7.1 tail-jumps.
+#include "fable_compiler.h"
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -28,7 +29,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

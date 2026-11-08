@@ -13,6 +13,7 @@
 // Levers: CTimer operator< (long) for the incubation tests (argument preloaded as retail); the hero-behind test as one x87
 //   expression me < hero; SetEntityAsRegionFollowing(hero, Me, b); the not-alive arm `T; for(;;){NSF; T;}` tail-merges into the
 //   joined path's exit test as retail (a `while (!T) NSF;` duplicates the test).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -65,11 +66,11 @@ inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(th
 inline NScript::CIsThingAlive::~CIsThingAlive() {}
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
 inline bool CScriptThing::operator==(const CScriptThing& other) const { return PImp->IsEqualTo(*other.PImp); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-__forceinline bool CTimer::operator==(long time) const { return GetTime() == time; }
-__forceinline bool CTimer::operator!=(long time) const { return GetTime() != time; }
-__forceinline bool CTimer::operator<(long time) const { return GetTime() < time; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE bool CTimer::operator==(long time) const { return GetTime() == time; }
+FABLE_FORCEINLINE bool CTimer::operator!=(long time) const { return GetTime() != time; }
+FABLE_FORCEINLINE bool CTimer::operator<(long time) const { return GetTime() < time; }
 #define DW_T if (IsActiveThreadTerminating()) return _Fail_Val.Return()
 #define DW_START_SCRIPTING(thing, seh) \
     if (seh.IsValid()) seh.Release(); \

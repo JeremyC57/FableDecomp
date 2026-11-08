@@ -11,6 +11,7 @@
 //   <CThingObject>(CThing*) is out of line (0x0065E133) and its operator= inline, reading the new item into a named local
 //   before SetPItem (so &PAmmo is formed after the GetPItem call as retail); GetInterface stores the component as ONE ternary
 //   `*ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;` (fixes the esi/ebx/edi permutation).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -57,13 +58,13 @@ public:
     unsigned char _pad54[0x3c];
     char          PlayerNumber;                       // +0x90
     const C3DVector& GetPos() const;             // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -79,7 +80,7 @@ class CThingObject : public CThing {};
 class CRightHandedSet;
 CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                            unsigned long flags, const CCharString& name);   // 0x00703210
-__forceinline CThingObject* CreateThingObject(long defIndex, const CThing* owner, const CThing* at, const CCharString& name)
+FABLE_FORCEINLINE CThingObject* CreateThingObject(long defIndex, const CThing* owner, const CThing* at, const CCharString& name)
 {
     return CreateThingObject(defIndex, &at->GetPos(), owner->PlayerNumber, 0, 0, name);
 }
@@ -102,7 +103,7 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                     // out of line (CThingObject: 0x0065E133)
-    __forceinline CIntelligentPointer& operator=(T* item)
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(T* item)
     {
         CIntelligentPointer pointer(item);
         CThing* p = ((CThing*)pointer.GetPItem());

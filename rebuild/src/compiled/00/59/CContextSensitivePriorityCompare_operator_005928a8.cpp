@@ -6,6 +6,7 @@
 // "GetContextSensitivePreferredItemButtonIndex" label is propagated). `this` is unused.
 // Shape: the left priority survives in esi across the right lookup; the bool result is formed
 // through a full register (`xor ecx ; setg cl ; mov al,cl`), the plain `return a > b;` form.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 struct CContextItem_Retail {
     unsigned char _pad[0x2c];
@@ -20,7 +21,7 @@ struct SContextEntry_Retail {
 long __fastcall GetContextSensitivePriority_00581bde(long id);   // 0x00581BDE
 
 class CContextSensitivePriorityCompare { public:
-    static __forceinline long GetPriority(const SContextEntry_Retail& entry)
+    static FABLE_FORCEINLINE long GetPriority(const SContextEntry_Retail& entry)
     {
         if (entry.m_pItem)
             return entry.m_pItem->m_priority;

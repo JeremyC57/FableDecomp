@@ -11,6 +11,7 @@
 // call and deregistered from the world's combat manager (+0x4c). The registration test runs on its own named
 // creature local (`self`): with the inline chain in the condition the two brain loads swap eax/edx. `this` is the PDB header layout; PBrain lives
 // in the flattened base bytes at +0x04.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_VersusEnemyBase.h"
 
 class CTCBase;
@@ -36,7 +37,7 @@ class CThing { public:
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

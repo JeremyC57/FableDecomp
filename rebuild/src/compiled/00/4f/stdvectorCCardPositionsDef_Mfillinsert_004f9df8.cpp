@@ -10,6 +10,7 @@
 //   (0x39 bytes, byte-packed: CDefClassBase + InstantiationName + SubDefInfoMap) + vector<C2DVector> Offset +0x3C.
 // Shape: the 0x004EDB3E model; x_copy's copy constructor and the fills' operator= are inline memberwise
 //   (`__forceinline`), the destructor out of line.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -87,8 +88,8 @@ class CCardPositionsDef : public CParentDefClassBase {   // vtable 0x012439DC, 0
 public:
     std::vector<C2DVector> Offset;                  // +0x3c
     virtual void v00();
-    __forceinline CCardPositionsDef(const CCardPositionsDef& o) : CParentDefClassBase(o), Offset(o.Offset) { }
-    __forceinline CCardPositionsDef& operator=(const CCardPositionsDef& o)
+    FABLE_FORCEINLINE CCardPositionsDef(const CCardPositionsDef& o) : CParentDefClassBase(o), Offset(o.Offset) { }
+    FABLE_FORCEINLINE CCardPositionsDef& operator=(const CCardPositionsDef& o)
     {
         CParentDefClassBase::operator=(o);
         Offset = o.Offset;
@@ -101,7 +102,7 @@ namespace std {
 template <class _T1, class _T2> void __fastcall _Construct(_T1* __p, const _T2& __val);           // 0x004EBDF1
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -118,7 +119,7 @@ _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first,
                                                     _BidirectionalIter2 __result, const __false_type&);  // 0x004F9F62
 
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for ( ; __first != __last; ++__first)
         *__first = __val;

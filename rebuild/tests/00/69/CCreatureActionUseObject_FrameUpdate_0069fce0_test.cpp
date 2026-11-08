@@ -1,5 +1,6 @@
 // Behaviour test for 0069fce0: src/0069fce0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CCreatureAction_UseObject::FrameUpdate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -48,14 +49,14 @@ class CThing { public:
     CTCPhysicsBase* m_pPhysics;                 // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (const T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
@@ -63,7 +64,7 @@ class CThing { public:
 struct CTCActionUse {                           // interface type 0xD
     bool CanBeUsedFromDummy() const;            // 0x007EABE0
 };
-__forceinline bool CanUseFromDummy(const CThing* thing)
+FABLE_FORCEINLINE bool CanUseFromDummy(const CThing* thing)
 {
     return thing->HasTC(0xd) && thing->GetTC<CTCActionUse>(0xd)->CanBeUsedFromDummy();
 }

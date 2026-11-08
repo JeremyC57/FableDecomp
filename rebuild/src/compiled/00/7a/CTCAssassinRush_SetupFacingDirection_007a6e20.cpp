@@ -9,6 +9,7 @@
 // Shape: C3DVector's inline fast Normalise (the out-of-line copy is 0x00486F60: exponent (380 - e) / 2, table mantissa, one
 // Newton step) writes the components back with `fst`, the inline dot with (0, 0, 1) keeps them on the x87 stack (VC7.1
 // folds the two zero terms into `(x + y) * 0`), and `cos` stays an intrinsic on the constant.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(cos)
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
@@ -19,7 +20,7 @@ class C3DVector { public:
     float Z;    // +0x08
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

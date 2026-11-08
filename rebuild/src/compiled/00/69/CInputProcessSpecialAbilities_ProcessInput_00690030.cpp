@@ -14,6 +14,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
+#include "fable_compiler.h"
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 inline float Abs(float x) { return (float)fabs(x); }
@@ -62,14 +63,14 @@ public:
     CInterfaceMap m_interfaces;                    // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                        // +0x91 bit 0
-    template<class T> __forceinline T* GetInterfaceUnchecked(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

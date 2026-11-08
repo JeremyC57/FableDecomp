@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -203,7 +204,7 @@ extern const unsigned char ResourceVTable[]; //0127094C
 // It is not the distinct CBaseIntelligentPointer constructor 00A01B10.
 struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  void InitializeCBaseObject(); //0099A380, this points to flattened base at offset0
- __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
+ FABLE_FORCEINLINE ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  void DestroyCBaseObject(); //0099A430
  ~ScriptResource(){ //007E74D0; same body inlined on the early acquisition-failure exit
   if(PImp_Info){--PImp_Info->RefCount;if(PImp_Info->RefCount==0){PImp_Info->DeleteFunc(PImp_Info->Data);delete PImp_Info;}}

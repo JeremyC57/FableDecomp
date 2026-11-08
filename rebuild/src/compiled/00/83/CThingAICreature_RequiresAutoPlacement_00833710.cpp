@@ -10,6 +10,7 @@
 // Shape: `village && village->GetDef()->Flag` with GetDef returning a CDefPointer BY VALUE (copy ctor `inc [ecx+4]`):
 //   the conditionally built temporary gets a construction flag (zeroed at entry, set to 1 on the arm that builds it)
 //   tested before its release; the && result is a bool local tested after the release.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -50,7 +51,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

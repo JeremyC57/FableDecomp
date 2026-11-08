@@ -13,6 +13,7 @@
 // Shape: CanStrike is cleared right after the base update; the kraken test is the landed inline IS_THING_ALIVE (two GetPItem calls)
 // negated into an early `Kill ; return` that keeps its own epilogue in place; the emergence test is `fraction < 1.0f` (`fcomp ; test ah,5 ; jp` skips to the tracking arm);
 // Tracking is cleared between the queued-tick load and its test, and the tick is re-read after the world-frame call.
+#include "fable_compiler.h"
 extern "C" int  __cdecl puts(const char* text);    // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 struct CPresenceBits {                             // std::bitset<274>
@@ -38,7 +39,7 @@ class CThing { public:
     unsigned char Dead : 1;                          // +0x91 bit 0
     unsigned char _pad_0x92[0xb4 - 0x92];
     float         EmergeFraction;                    // +0xb4
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (UsingComponents.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

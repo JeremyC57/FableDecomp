@@ -15,6 +15,7 @@
 //   forced-inline helper with NAMED empty strings (extension built first; unnamed temporaries are built and pushed one
 //   at a time), the directory created when missing, then the free byte count compared unsigned 64-bit against the
 //   sign-extended size: three separate `return false` (the merged false block on the fall-through, true at the end).
+#include "fable_compiler.h"
 typedef unsigned short wchar;
 
 class CWideString
@@ -49,7 +50,7 @@ public:
 };
 
 // The directory part of a split path rejoined with an empty name and extension (both named, extension built first).
-static __forceinline CWideString MakeDirectoryPath(const CWideString& drive, const CWideString& dir)
+static FABLE_FORCEINLINE CWideString MakeDirectoryPath(const CWideString& drive, const CWideString& dir)
 {
     CWideString extension(L""), name(L"");
     return CAFile::MakePath(drive, dir, name, extension);

@@ -8,12 +8,13 @@
 // Shape: size TU (`optimize("s", on)` + `("y", off)`: ebp frame, `fld ; push ecx ; fstp [esp]` for the float base
 // argument); `Value(maxValue), MaxValue(maxValue)` gives `fst ; fstp`; each colour is the CRGBColour copy ctor calling
 // an inline Set(r, g, b, a) (all four bytes loaded before any store); one zero register for the null thing.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CThing;
 class CThingPhysical { public:

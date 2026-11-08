@@ -17,6 +17,7 @@
 // Shape: the physics component is a named local whose vtable VC parks in the dead `instantly` slot across GetPos; the
 // interface key and the out pointer also live in that slot; the CGameScriptInterface pointer is a named local (fetched with
 // its vtable before the pushes), the CScriptThing an unnamed temporary; `new` keeps its null test.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 class C3DVector;
@@ -48,7 +49,7 @@ public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
     CScriptThing GetScriptThing() const;              // 0x004C7E50
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -61,7 +62,7 @@ public:
         }
         return false;
     }
-    __forceinline CTCScriptedControl* GetScriptedControl()
+    FABLE_FORCEINLINE CTCScriptedControl* GetScriptedControl()
     {
         CTCScriptedControl* control;
         GetInterface(&control, 0x1f);

@@ -1,6 +1,7 @@
 // Behaviour test for CConfigOptionsDefaultsDef::operator= (0x004345A0): the inlined CDefClassBase chain
 // (root operator= spy, manager/index words, the three flag bits, instantiation name, sub-def vector map
 // spy) and the fourteen config words; checks *this returns and the bit fields are copied bit by bit.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -23,7 +24,7 @@ class CDefClassBase : public CDefRootBase { public:
     unsigned char Setup : 1;
     unsigned char Template : 1;
     unsigned char DefaultValsApplied : 1;
-    __forceinline CDefClassBase& operator=(const CDefClassBase& other)
+    FABLE_FORCEINLINE CDefClassBase& operator=(const CDefClassBase& other)
     {
         CDefRootBase::operator=(other);
         PDefManager = other.PDefManager;
@@ -46,7 +47,7 @@ template<class K, class V> class CVectorMap { public:
     CRetailVector<V>    m_vector;
     CKeyPairCompareLess m_compare;
     bool                m_sorted;
-    __forceinline CVectorMap& operator=(const CVectorMap& other)
+    FABLE_FORCEINLINE CVectorMap& operator=(const CVectorMap& other)
     {
         m_vector = other.m_vector;
         m_compare = other.m_compare;
@@ -61,7 +62,7 @@ struct CSubDefInfo { long m_key; };
 class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;
-    __forceinline CParentDefClassBase& operator=(const CParentDefClassBase& other)
+    FABLE_FORCEINLINE CParentDefClassBase& operator=(const CParentDefClassBase& other)
     {
         CDefClassBase::operator=(other);
         InstantiationName = other.InstantiationName;

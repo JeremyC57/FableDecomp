@@ -8,6 +8,7 @@
 // Shape: STLport 4.6 vector.c verbatim (agent951's 4-byte model 0x0046CBF1, unchanged but for the element): __x_copy lives in the two-dword frame,
 //   each 8-byte element moves as two dwords; the overflow tag is value-initialised (`stosb`); copy / copy_backward / fill are __forceinline under /Os.
 // Element: CObjectFamilyEntry {long Object; long Probability} (Ego_r.pdb, 8 bytes)
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -19,9 +20,9 @@ public:
 namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -31,7 +32,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x);   // 0x0046C5D5
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
                                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -39,13 +40,13 @@ __forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _Ran
     return __result;
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                        _BidirectionalIter2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

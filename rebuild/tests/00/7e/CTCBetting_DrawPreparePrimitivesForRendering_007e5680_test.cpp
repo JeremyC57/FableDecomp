@@ -1,6 +1,7 @@
 // Behaviour test for 007e5680: src/007e5680.cpp copied verbatim; the display, the GUI def, the betting def lookup and
 // DrawStatBoxWithText stubbed so the gate (input enabled + sub-def found), both boxes' screen positions, widths, texts
 // and money flags, and the def release are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -70,7 +71,7 @@ class CBettingDef { public:
     float         BetBoxY;                      // +0x2c
     float         MoneyBoxX;                    // +0x30
     float         MoneyBoxY;                    // +0x34
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--RefCount == 0)
             Destroy();
@@ -79,7 +80,7 @@ class CBettingDef { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->Release();

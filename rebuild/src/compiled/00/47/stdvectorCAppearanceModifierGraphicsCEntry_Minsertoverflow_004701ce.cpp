@@ -9,6 +9,7 @@
 // Label: the catalog name is behavioural; STLport protects _M_insert_overflow (IAE) and the vector carries its allocator.
 // Shape: every STLport helper is plain inline in the library; VC7.1 keeps the loops out of line unless forced, so the loop helpers
 //   (__uninitialized_copy, __uninitialized_fill_n) and _Construct / (max) are __forceinline here.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -22,10 +23,10 @@ public:
 
 namespace std {
 struct __false_type { };
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -33,7 +34,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -42,7 +43,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
 }
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(size_t __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(size_t __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
     void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
 };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

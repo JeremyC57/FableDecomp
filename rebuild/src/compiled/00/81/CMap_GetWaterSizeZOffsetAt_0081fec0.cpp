@@ -8,6 +8,7 @@
 // Shape: four straight-line probes through C2DCoordI temporaries; x+1 and y+1 are NAMED locals (`long x1`, `long y1`: x1 spills to
 //   the dead first coordinate, y1 takes the pos/y register -- `y++` swaps esi/edi); the running sum is homed in the dead `pos`
 //   argument slot and the count is kept in ebp with a frame copy for the final `fild`.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
@@ -28,7 +29,7 @@ class CHeightMap { public:                                // retail layout
     unsigned char                  _pad1c[0x1e8];
     long                           SizeX;          // +0x204
     long                           SizeY;          // +0x208
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 class CMap { public:
     unsigned char                            _pad00[0x1c];

@@ -7,6 +7,7 @@
 // Layout: CSoundPair {Min +0, Max +4} (sample index range); the generator's seed is its only word.
 // Shape: the generator step `seed = GFROR13(seed * 0x24A1 + 0x24DF)` and `n ? r % n : 0` inlined (as the landed 0x008EE720); the generator
 // is a named reference fetched first; the index is a named local computed before the argument pushes (min re-read after the divide).
+#include "fable_compiler.h"
 class CASoundBank;
 class CSoundInit;
 class CSoundPair { public:
@@ -16,8 +17,8 @@ class CSoundPair { public:
 long __fastcall GFROR13(unsigned long value);            // 0x00497890 ?GFROR13@@YIJK@Z
 struct CRandomGenerator {
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
-    __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
 struct CRandomOwner {
     unsigned char _pad00[0x16140];

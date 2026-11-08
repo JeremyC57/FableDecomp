@@ -13,6 +13,7 @@
 // Shape: one nested `if` chain with a single `return false` (retail pushes all four registers up front and shares one
 // false epilogue, keeping 0 in ebx); the loop reads the node's value afresh for each use; the UID goes through an inline
 // by-value getter (loads before the &info address); the state test is a named bool set in an `||` chain (1,3,2,4,5).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -25,7 +26,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

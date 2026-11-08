@@ -13,6 +13,7 @@
 //   CurrentScriptFrame +0x1C), engine/CTCEntityEvents.h (Events list +0xC); the landed MsgReceivedInventoryItem
 //   0x008D2540 native thing and event models (retail CThing UsingComponents +0x20, component map +0x44, dead +0x91).
 // Shape: the two event types are a switch with two identical case bodies, each returning (case 11 laid out first).
+#include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CSpawnedFuncBase.h"
 class CCharString { public:
@@ -83,8 +84,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
 struct CGameScriptThingMethods : CGameScriptThing {
     bool MsgIsPresentedWithItem(CCharString& itemDefName) const;

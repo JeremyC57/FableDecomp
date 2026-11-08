@@ -12,12 +12,13 @@
 //   high byte of the n slot, eax shared with the `atend = false` push).
 // Model: the three STLport vector words; CRGBColour is the PDB's 4-byte B, G, R, A record with a user copy constructor
 //   (`__forceinline`: the size TU otherwise calls it out of line for x_copy).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
 class CRGBColour { public:                                      // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(const CRGBColour& other) { R = other.R; G = other.G; B = other.B; A = other.A; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { R = other.R; G = other.G; B = other.B; A = other.A; }
 };
 
 namespace std {
@@ -28,7 +29,7 @@ struct random_access_iterator_tag { };
 void __fastcall _Construct(CRGBColour* p, const CRGBColour& value);                                  // 0x0045BB8F
 CRGBColour* __fastcall uninitialized_fill_n(CRGBColour* first, unsigned int n, const CRGBColour& x); // 0x00469149
 
-template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     _Tp* __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -36,7 +37,7 @@ template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* 
     return __cur;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward(_Tp* __first, _Tp* __last, _Tp* __result,
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward(_Tp* __first, _Tp* __last, _Tp* __result,
                                                         const random_access_iterator_tag&, int*)
 {
     for (int __n = int(__last - __first); __n > 0; --__n)
@@ -44,12 +45,12 @@ template <class _Tp> __forceinline _Tp* __copy_backward(_Tp* __first, _Tp* __las
     return __result;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
-template <class _Tp> __forceinline void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
+template <class _Tp> FABLE_FORCEINLINE void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

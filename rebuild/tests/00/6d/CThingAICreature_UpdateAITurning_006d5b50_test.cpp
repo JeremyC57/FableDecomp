@@ -1,4 +1,5 @@
 // 006d5b50 behaviour test: CThingAICreature::UpdateAITurning
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #include <stdint.h>
@@ -12,7 +13,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-__forceinline float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y * v.Y + v.X * v.X; }
+FABLE_FORCEINLINE float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y * v.Y + v.X * v.X; }
 class CBaseObject;
 struct CBaseIntelligentPointer {
     unsigned char _pad00[0x08];
@@ -39,8 +40,8 @@ class CThing { public:
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                                 // +0x91
     const C3DVector& GetPosition() const;                   // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_tcs;

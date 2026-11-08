@@ -1,6 +1,7 @@
 // 0061aa80 CTCInventoryQuests::MoveToPreviousTestQuest
 // Leaf: ?MoveToPreviousTestQuest@CTCInventoryQuests@@QAEXXZ
 // Flags:
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);extern "C" void*__cdecl malloc(unsigned int);
 inline void*__cdecl operator new(unsigned int,void*p){return p;}
 // Layout: original CTestQuest has six CCharString handles and ColourIndex at +8, native size28.
@@ -19,7 +20,7 @@ iterator begin(){return this->_M_start;}iterator end(){return this->_M_finish;}c
 protected:template<class It>T*_M_allocate_and_copy(size_type n,It first,It last){T*p=this->_M_end_of_storage.allocate(n);uninitialized_copy(first,last,p);return p;}
 public:__declspec(noinline)vector&operator=(const vector&x){if(&x!=this){size_type n=x.size();if(n>capacity()){T*p=_M_allocate_and_copy(n,x.begin(),x.end());__destroy_aux(this->_M_start,this->_M_finish,__false_type());if(this->_M_start)free(this->_M_start);this->_M_start=p;this->_M_end_of_storage._M_data=p+n;}else if(size()>=n){T*p=copy(x.begin(),x.end(),begin());__destroy_aux(p,this->_M_finish,__false_type());}else{copy(x.begin(),x.begin()+size(),begin());uninitialized_copy(x.begin()+size(),x.end(),this->_M_finish);}this->_M_finish=this->_M_start+n;}return *this;}
 protected:__declspec(noinline)void _M_insert_overflow(T*pos,const T&x,const __false_type&,size_type n,bool atEnd){size_type old=size(),cap=old+(old>n?old:n);T*start=this->_M_end_of_storage.allocate(cap);T*finish=uninitialized_copy(this->_M_start,pos,start);for(size_type i=0;i<n;++i){new(finish)T(x);++finish;}if(!atEnd)finish=uninitialized_copy(pos,this->_M_finish,finish);__destroy_aux(this->_M_start,this->_M_finish,__false_type());if(this->_M_start)free(this->_M_start);this->_M_start=start;this->_M_finish=finish;this->_M_end_of_storage._M_data=start+cap;}
-public:__forceinline void push_back(const T&x){if(this->_M_finish!=this->_M_end_of_storage._M_data){new(this->_M_finish)T(x);++this->_M_finish;}else _M_insert_overflow(this->_M_finish,x,__false_type(),1,true);}
+public:FABLE_FORCEINLINE void push_back(const T&x){if(this->_M_finish!=this->_M_end_of_storage._M_data){new(this->_M_finish)T(x);++this->_M_finish;}else _M_insert_overflow(this->_M_finish,x,__false_type(),1,true);}
 };
 template<class It,class Compare>void __fastcall sort(It,It,Compare);
 

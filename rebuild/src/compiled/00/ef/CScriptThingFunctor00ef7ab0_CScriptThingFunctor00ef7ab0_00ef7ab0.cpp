@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EF7AB0, length 96 bytes.
 // Leaf: ??1CScriptThingFunctor_00ef7ab0@@QAE@XZ
 // The chunk label "CIsThingAlive::~CIsThingAlive" is shared by two functors with different vtables; named by address. Shape: `this` in edi, the member in esi.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct SCountBlock_00ef7ab0 {
     long  m_references;                            // +0x00
@@ -15,7 +16,7 @@ public:
 struct CCountedPointer_00ef7ab0 {                      // the thing and its count block (a member object: its destructor runs after the vtable store)
     void*               m_pThing;                  // +0x00
     SCountBlock_00ef7ab0*   m_pCount;                  // +0x04
-    __forceinline ~CCountedPointer_00ef7ab0()
+    FABLE_FORCEINLINE ~CCountedPointer_00ef7ab0()
     {
         if (m_pCount) {
             --m_pCount->m_references;

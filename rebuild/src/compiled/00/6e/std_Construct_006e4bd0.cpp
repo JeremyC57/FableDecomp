@@ -2,6 +2,7 @@
 // Retail: Fable.exe @ 0x006E4BD0, 63 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10, GetPItem 0x00A01B50, SetPItem 0x00A01B90.
 // Leaf: _Construct
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N006e4bd0 {
 struct CBaseObject;
@@ -24,7 +25,7 @@ struct CActiveDialogueInfo {                     // NSpeechGainManager::CActiveD
     EDialogueLayer              Layer;           // +0x0C
     bool                        IsLayerHead;     // +0x10
     float                       OutputGain;      // +0x14
-    __forceinline CActiveDialogueInfo(const CActiveDialogueInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CActiveDialogueInfo(const CActiveDialogueInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : ThingSpeaking(o.ThingSpeaking), SoundID(o.SoundID), Layer(o.Layer), IsLayerHead(o.IsLayerHead), OutputGain(o.OutputGain) { }
 };
 

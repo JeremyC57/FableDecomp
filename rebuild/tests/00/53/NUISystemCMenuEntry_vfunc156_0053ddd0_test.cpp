@@ -1,14 +1,15 @@
 // BEGIN exact source snapshot SHA256 86f43f48d6cf2bce1a28a17cf91f7f07c3f90072b03b361e6f58c74de3d9d148
 //0053ddd0 NUISystem::CMenuEntry::GoBackwards (inferred method label).
 // Layout: secondary CObserver at+4; retailobserver20 versus donor24 (STLset shrink).
+#include "fable_compiler.h"
 #include "engine/CObserver.h"
 #include "fable_string.h"
 struct RefCount {long Count;void DecRef(){--Count;}long GetRefCount()const{return Count;}};struct RefVirtual {virtual void Slot0()=0;virtual void Delete()=0;};struct Def:RefVirtual,RefCount {unsigned char BeforeFlag[0x20a-8];bool PartOfListTree;unsigned char BeforeClose[0x221-0x20b];bool PCStyle;void Release(){DecRef();if(GetRefCount()==0)Delete();}};
-struct DefPointer {Def* Object;__forceinline ~DefPointer(){if(Object){Object->Release();Object=0;}}Def* operator->()const{return Object;}};
+struct DefPointer {Def* Object;FABLE_FORCEINLINE ~DefPointer(){if(Object){Object->Release();Object=0;}}Def* operator->()const{return Object;}};
 
 // Layout: CUIMiscThingsDef SoundBack debug1a4 ->retail19c; CUIDef flags have independent container drift.
 struct MiscDef:RefVirtual,RefCount {unsigned char ToSound[0x19c-8];CCharString SoundBack;void Release(){DecRef();if(GetRefCount()==0)Delete();}};
-struct MiscPointer {MiscDef* Object;__forceinline ~MiscPointer(){if(Object){Object->Release();Object=0;}}MiscDef* operator->()const{return Object;}};
+struct MiscPointer {MiscDef* Object;FABLE_FORCEINLINE ~MiscPointer(){if(Object){Object->Release();Object=0;}}MiscDef* operator->()const{return Object;}};
 
 #include <stdlib.h>
 namespace NUISystem {
@@ -146,7 +147,7 @@ virtual void Slot130()=0;
 virtual void SetTargetState(unsigned long)=0;
 };
 struct Observer {virtual void Observer0()=0;unsigned char Data[0x10];};
-struct Stack {struct Node {Node* Next;Node* Prev;Component* Object;};Node* Head;__forceinline unsigned long size()const{unsigned long n=0;for(Node*p=Head->Next;p!=Head;p=p->Next)++n;return n;}__forceinline void pop_front(){Node*p=Head->Next;Node*n=p->Next;Node*previous=p->Prev;previous->Next=n;n->Prev=previous;free(p);}Component* front()const{return Head->Next->Object;}};extern Stack MenuStack_013b8a98;
+struct Stack {struct Node {Node* Next;Node* Prev;Component* Object;};Node* Head;FABLE_FORCEINLINE unsigned long size()const{unsigned long n=0;for(Node*p=Head->Next;p!=Head;p=p->Next)++n;return n;}FABLE_FORCEINLINE void pop_front(){Node*p=Head->Next;Node*n=p->Next;Node*previous=p->Prev;previous->Next=n;n->Prev=previous;free(p);}Component* front()const{return Head->Next->Object;}};extern Stack MenuStack_013b8a98;
 class CManager { public:
 virtual void ManagerSlot00()=0;
 virtual void ManagerSlot01()=0;

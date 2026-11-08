@@ -14,6 +14,7 @@
 //   fill_len == 1 construct is the inline memberwise copy constructor (11 dword moves alternating edx/ecx, not `rep movsd`) behind
 //   placement new's null test: CResourceEntry has user default and copy constructors in both PDB name sets, and `_Construct` is
 //   `__forceinline` (plain `inline` left it an out-of-line call, 207v265). The trivial destructor loop of _M_clear vanishes.
+#include "fable_compiler.h"
 class CTexture;
 class CSurface;
 enum EResourceType { EResourceType_Force32 = 0x7fffffff };
@@ -67,7 +68,7 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
 };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
 inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)

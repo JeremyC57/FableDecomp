@@ -9,6 +9,7 @@
 //   the last one (+0x2840 <- 0) only when the global byte @ 0x0143B8CC is clear.
 //   Values: +0x2868<-1, +0x2854<-0, +0x2b88<-1, +0x2bd8<-[0x01396E34], +0x2b9c/+0x2bb0<-[0x01396F38], +0x2bc4<-[0x01396F40],
 //   +0x2bec/+0x2c14/+0x2c00<-1.
+#include "fable_compiler.h"
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
 struct CTrackedRenderState {                       // 0x14 bytes
@@ -67,7 +68,7 @@ class CRenderStateManager { public:                       // @ 0x013CB508
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

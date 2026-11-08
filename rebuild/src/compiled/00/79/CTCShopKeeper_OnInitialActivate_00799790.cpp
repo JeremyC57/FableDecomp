@@ -15,6 +15,7 @@
 // Shape: `Shop = CIntelligentPointer<CThing>(x)` builds the temporary in the frame (ctor, vtable, SetPItem) and assigns it
 //        through an inline operator=; the HasTC filter, the lookup key and the loop's temporary share that frame word; the
 //        found shop leaves the loop by `break` and both "no shop" exits skip SetShopKeeper.
+#include "fable_compiler.h"
 extern "C" void free(void* p);                  // 0x00BFEA14
 class CTCBase;
 class CBaseObject;
@@ -43,8 +44,8 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0x170 - 0x92];
     CBaseIntelligentPointer ShopThing;          // +0x170 (creature's shop thing; name unverified)
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

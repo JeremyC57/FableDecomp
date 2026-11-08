@@ -12,6 +12,7 @@
 // reverse order: the CIntelligentPointer (compiler-generated destructor: no vtable reset, the base destructor out of
 // line), then the def pointer's `__forceinline` release (`dec dword ptr [ecx+4] ; jne`, the clear inside the null
 // test), then the out-of-line CTCBase destructor; a `new` factory pulls the vtable and the ??_G into the TU.
+#include "fable_compiler.h"
 class CThing;
 
 struct CRefCountedDef {
@@ -23,7 +24,7 @@ struct CRefCountedDef {
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         T* p = m_p;
         if (p) {
@@ -58,7 +59,7 @@ class CTCSummonableCreature : public CTCBase { public:
     CDefPointer<CRefCountedDef> PDef;               // +0x0c CDefPointer<CSummonableCreatureDef const>
     bool                        HasBeenSummoned;    // +0x10
     CIntelligentPointer         Summoner;           // +0x11 CIntelligentPointer<CThingCreatureBase>
-    __forceinline virtual ~CTCSummonableCreature() {}
+    FABLE_FORCEINLINE virtual ~CTCSummonableCreature() {}
 };
 #pragma pack(pop)
 

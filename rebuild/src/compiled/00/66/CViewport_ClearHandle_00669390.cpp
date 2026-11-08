@@ -8,6 +8,7 @@
 // Shape: CViewport::ClearHandle is `m_handle.Clear();` with the handle's Clear inlined (the same body as the retail
 // CEnginePrimitiveHandle::Clear @ 0x0041BE70); the release is the CIVCountedPointer `operator=(0)` shape (wave 24h): a local copy,
 // `dec [p+4] ; jne`, the clear inside the test plus a second unconditional clear.
+#include "fable_compiler.h"
 struct CHandle;
 struct CCountedObject {
     virtual void v00();
@@ -19,7 +20,7 @@ struct CCountedObject {
 struct CCountedPointer {
     CCountedObject* Object;
     long GetRefCount() const { return Object ? Object->m_count : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CCountedObject* object = Object;
         if (object) {
@@ -28,7 +29,7 @@ struct CCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CCountedPointer& operator=(CCountedObject* object)
+    FABLE_FORCEINLINE CCountedPointer& operator=(CCountedObject* object)
     {
         Release();
         Object = object;
@@ -40,7 +41,7 @@ struct CCountedPointer {
 struct CHandle {
     void*           m_owner;                    // +0x00
     CCountedPointer Data;                       // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandle(this);

@@ -3,19 +3,20 @@
 // Leaf: _M_fill_insert
 // Layout:85db50/85d7a0 null-check destination then construct by five wordcopies; model actual object lifetimes with placementconstruction and explicit20-byte copy.
 // Layout: oracle pointer stride 20 bytes; vector offsets +0,+4,+8.
+#include "fable_compiler.h"
 #include <new>
 namespace N0085e570 {
 
 struct __false_type { __false_type() {} }; struct random_access_iterator_tag { random_access_iterator_tag() {} };
-struct Element { unsigned int W0; unsigned int W1; unsigned int W2; unsigned int W3; unsigned int W4; Element(){} __forceinline Element(const Element& x){W0=x.W0;W1=x.W1;W2=x.W2;W3=x.W3;W4=x.W4;} };
+struct Element { unsigned int W0; unsigned int W1; unsigned int W2; unsigned int W3; unsigned int W4; Element(){} FABLE_FORCEINLINE Element(const Element& x){W0=x.W0;W1=x.W1;W2=x.W2;W3=x.W3;W4=x.W4;} };
 #pragma auto_inline(off)
 template<class T> __declspec(noinline) T* __fastcall __uninitialized_copy(T* first,T* last,T* out,const __false_type&) { for(;first!=last;++first,++out) new(out) T(*first); return out; }
 template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T* last,T* out,const random_access_iterator_tag&,int*) { for(int n=int(last-first);n>0;--n) *--out=*--last; return out; }
 template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
 template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x,const __false_type&) { for(;n>0;--n,++first) new(first) T(x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
-template<class T> __forceinline T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x,__false_type());}
+template<class T> FABLE_FORCEINLINE T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
+template<class T> FABLE_FORCEINLINE T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x,__false_type());}
 template<class T> struct vector {
  T* _M_start; T* _M_finish; T* _M_end_of_storage;
  void _M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool atend=false);

@@ -10,6 +10,7 @@
 //   rests on the layout and the callees alone. The catalog label "CActiveFile::~CActiveFile" is wrong.
 // Shape: the __false_type tag temporary of _Destroy is homed in the dead flags argument slot (`lea eax,[esp+8]`); that
 //   needs the same-TU noinline __destroy_aux body below (declaration-only gives a new frame slot, `push ecx ; lea [esp+7]`).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);                       // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 
@@ -34,7 +35,7 @@ public:
     _Tp* _M_start;                                         // +0x00
     _Tp* _M_finish;                                        // +0x04
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    __forceinline ~_Vector_base()
+    FABLE_FORCEINLINE ~_Vector_base()
     {
         if (_M_start != 0)
             _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
@@ -43,7 +44,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : public _Vector_base<_Tp, _Alloc> {
 public:
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 }
 
@@ -64,7 +65,7 @@ class CTCAppearanceMorphBase { public:
         };
         CArray<CMeshMorphSetParts> MeshParts;              // +0x00
         CEngineTextureMorphSet     OriginalMeshTextureMorphs;   // +0x0C
-        __forceinline ~CMeshMorphSet() { }
+        FABLE_FORCEINLINE ~CMeshMorphSet() { }
     };
 };
 

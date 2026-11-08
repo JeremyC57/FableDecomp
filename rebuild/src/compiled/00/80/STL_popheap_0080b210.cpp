@@ -11,6 +11,7 @@
 // Label: the catalog's `_Pop_heap<CTargetPoint*,...>` is the Dinkumware spelling of this STLport `__pop_heap`.
 // Layout: Ego_r.pdb CThingCompare_BestForTargeting2 (0x34) and NPlayerTargeting::CTargetPoint (0x1C); the model of
 //   the matched __pop_heap_aux 0x0080B430.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -24,8 +25,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"
@@ -36,10 +37,10 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;

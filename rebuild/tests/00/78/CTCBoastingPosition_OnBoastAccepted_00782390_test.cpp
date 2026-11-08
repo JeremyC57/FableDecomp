@@ -1,5 +1,6 @@
 // Behaviour test for 00782390: src/00782390.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCBoastingPosition::OnBoastAccepted(CThingCreatureBase& hero)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -59,7 +60,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;
@@ -71,7 +72,7 @@ public:
         *out = (T*)it->component;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;

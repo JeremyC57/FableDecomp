@@ -4,6 +4,7 @@
 // Callees: the list's erase @ 0x004507A1 (the manifest label "LTextTreeWalkThrough::BuildTreeArray" is propagated), free @ 0x00BFEA14 twice. Shape: the list's
 // inline destructor (from a speed header: `add esp,4` after its free) inside a size-optimised class destructor (`pop ecx` after the last free): inlined code
 // keeps the optimisation setting of the function it came from. The chunk label is propagated; the class is named by address.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
 struct SEntryNode_00a96da0 {                          // the list node: +4 the first entry link, +8 next, +0xc prev
@@ -17,7 +18,7 @@ struct CRetailEntryList_00a96da0 {                    // a retail list: head nod
     SEntryNode_00a96da0* m_pHead;                     // +0x00
     long             m_count;                      // +0x04
     void EraseFrom(SEntryNode_00a96da0* node);        // 0x004507A1
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         if (m_count) {
             EraseFrom(m_pHead->m_pFirst);
@@ -27,7 +28,7 @@ struct CRetailEntryList_00a96da0 {                    // a retail list: head nod
             m_count = 0;
         }
     }
-    __forceinline ~CRetailEntryList_00a96da0()
+    FABLE_FORCEINLINE ~CRetailEntryList_00a96da0()
     {
         clear();
         if (m_pHead)

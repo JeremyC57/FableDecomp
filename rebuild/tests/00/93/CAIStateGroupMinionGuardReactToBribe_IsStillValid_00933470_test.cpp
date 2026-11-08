@@ -1,4 +1,5 @@
 // Behaviour test for 00933470: body copied from src/00933470.cpp (CAIStateGroup_MinionGuardReactToBribe::IsStillValid), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -17,7 +18,7 @@ class CThing { public:
     unsigned char _pad1[0x45];
     unsigned char m_flags91;
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

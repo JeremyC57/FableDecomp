@@ -14,6 +14,7 @@
 // WorkBuilding +0x170 (PDB +0x190/+0x198); CThing bitset +0x20, map +0x44, Dead bit 0 of +0x91, LevelPersistent bit 4 of +0x92.
 // Shape: each remove gets an intelligent-pointer temporary (base ctor, vtable store, SetPItem, direct dtor); the two lookups are the
 // out-parameter GetInterface with the result unchecked; the deed lookup's thing is a named local reused for the position.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -33,7 +34,7 @@ public:
     unsigned char Dying : 1;
     unsigned char ForceFrameUpdate : 1;
     unsigned char LevelPersistent : 1;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

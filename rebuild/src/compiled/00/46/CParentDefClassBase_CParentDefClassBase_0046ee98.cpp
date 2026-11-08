@@ -16,6 +16,7 @@
 // out of line otherwise) -- its vector member is copied out of line and
 // its Dirty byte is copied through the map pointers (`add edi,29h` / `lea ebx,[esi+29h]`, then
 // `[edi+0Dh]` -> `[ebx+0Dh]`); the empty comparator copies nothing.
+#include "fable_compiler.h"
 #pragma optimize("s", on)   // the def module is size-optimised
 
 #pragma pack(push, 1)
@@ -44,7 +45,7 @@ struct CSubDefInfoMap {                                                   // CVe
     CSubDefInfoVector   Vector;                                           // +0x00
     CKeyPairCompareLess Compare;                                          // +0x0c
     bool                Dirty;                                            // +0x0d
-    __forceinline CSubDefInfoMap(const CSubDefInfoMap& other)
+    FABLE_FORCEINLINE CSubDefInfoMap(const CSubDefInfoMap& other)
         : Vector(other.Vector), Compare(other.Compare), Dirty(other.Dirty)
     {
     }

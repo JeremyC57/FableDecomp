@@ -1,5 +1,6 @@
 // Behaviour test for 00858400: src/00858400.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CCombatActionBase::ProcessPossibleProneThingsStrikeEvent(float, const std::pair<C3DVector,C3DVector>&, const std::pair<C3DVector,C3DVector>&, CThingGameObject&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -33,7 +34,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
     void push_back(const T& x);                 // out of line (0x0066E630 for C3DVector)
     void _M_insert_overflow(T* pos, const T& x, const __true_type&, unsigned int n, bool atend);   // 0x00788FFC
-    __forceinline void push_back_inline(T x)
+    FABLE_FORCEINLINE void push_back_inline(T x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
             new (this->_M_finish) T(x);
@@ -86,7 +87,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

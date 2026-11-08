@@ -17,6 +17,7 @@
 //   target gain and the named difference stay on the x87 stack; the new gain is ONE ternary stored into OutputGain and
 //   passed from it (a named newGain local, or an unnamed difference, spills them to frame slots); step = elapsedFrames *
 //   the attack/release delta picked by the sign of the difference.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -40,8 +41,8 @@ public:
     unsigned char _pad4c[0x91 - 0x4C];
     unsigned char StateBits;                                // +0x91 Dead 0x01
     bool IsDead() const { return (StateBits & 0x01) != 0; }
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;

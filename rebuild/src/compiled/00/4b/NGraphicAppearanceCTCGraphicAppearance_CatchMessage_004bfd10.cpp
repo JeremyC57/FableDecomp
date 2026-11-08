@@ -18,10 +18,11 @@
 // Shape: the sub-def out pointer is a zeroed CDefPointer local released at the end through the pointee's inline Release
 // (`dec [ecx+4] ; jne`); the owner's channel is a reference local (ebp) shared by both calls; each owned thing is read with
 // ONE GetPItem; the parent's lookup goes through a const thing (const LowerBound).
+#include "fable_compiler.h"
 class CTCBase;
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                 // slot 1 (+0x04)
@@ -103,7 +104,7 @@ public:
     CThingBaseDef* GetBaseDef() const { return PBaseDef; }
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                                  // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -114,7 +115,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

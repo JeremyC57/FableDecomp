@@ -16,6 +16,7 @@
 //   constructor in the PDB parameter order. The Peek accessors are what fixed the last residue: with direct member reads
 //   VC7.1 kept ZSpriteEntries in esi and the spilled fade-in fields in edi; through the inline accessors it picks
 //   retail's edi (entries) / esi (scratch) colouring.
+#include "fable_compiler.h"
 class C3DMeshInfo;
 class CEngineCamera;
 class CDataInputStream;
@@ -63,7 +64,7 @@ struct CAddPrimitiveDesc {                          // 80 bytes
     long                ObjectCount;                // +0x44
     long                AlphaRef;                   // +0x48
     bool                Persistent;                 // +0x4c
-    __forceinline CAddPrimitiveDesc(const C3DBoundingSphere& sphere, const C3DBoundingBox& box, const C3DMeshInfo* mesh,
+    FABLE_FORCEINLINE CAddPrimitiveDesc(const C3DBoundingSphere& sphere, const C3DBoundingBox& box, const C3DMeshInfo* mesh,
                                     float maxScale, CEngineFadeDistance fade, float fadeInStart, float fadeInEnd,
                                     CObjectEntry* entries, long count, long alphaRef, bool persistent)
         : BoundingSphere(sphere), BoundingBox(box), MaxScale(maxScale), Mesh(mesh), FadeDist(fade), FadeInStart(fadeInStart),

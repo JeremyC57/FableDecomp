@@ -7,6 +7,7 @@
 // fourth dword before the counted pointer at +0x10, so it is the pair's assignment.
 // Shape: memberwise with the CIVCountedPointer operator= inlined (`if (p != o.p) { Release(); p = o.p;
 // if (p) ++p->count; }`); plain `mov [esi+10h],0` null store (not a size TU).
+#include "fable_compiler.h"
 class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04): called when the intrusive count hits zero
@@ -16,7 +17,7 @@ class CIVCountedPointeeBase { public:
 // Intrusive counted pointer (4 bytes): the pointee carries the count at +4.
 template<class T> class CIVCountedPointer { public:
     T* m_pObject;
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* p = m_pObject;
         if (p) {
@@ -25,7 +26,7 @@ template<class T> class CIVCountedPointer { public:
             m_pObject = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         if (m_pObject != other.m_pObject) {
             Release();

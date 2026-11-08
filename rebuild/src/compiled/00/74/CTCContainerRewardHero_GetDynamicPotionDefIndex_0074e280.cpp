@@ -13,6 +13,7 @@
 // potion counts double; a hero-stats ratio difference under 0.0001 falls back to the potion counts, written as its own
 // `if (fabsf(...) < 0.0001f) { counts }` block inside the stats branch (VC7.1 tail-merges it with the no-stats fallback and
 // lays the counts path out first, which also gives retail's frame-slot assignment; a negated test lays the ratio first).
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 class CCharString { public:
@@ -40,13 +41,13 @@ class CThing { public:
     unsigned char _pad92[0xb0 - 0x92];
     float         MaxHealth;                        // +0xb0
     float         Health;                           // +0xb4
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

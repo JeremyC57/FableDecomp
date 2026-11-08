@@ -7,6 +7,7 @@
 // runs before any member destructor): all three are MEMBER objects destroyed in reverse declaration order -- two
 // 12-byte array records whose inline destructor frees their first word (`__forceinline`: a size TU would call an
 // inline destructor out of line), then the intelligent pointer declared last. The dtor label is propagated.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
@@ -20,7 +21,7 @@ struct CHeapArray {                                 // 12-byte array record: dat
     void* m_pData;
     long  m_size;
     long  m_capacity;
-    __forceinline ~CHeapArray() { if (m_pData != 0) free(m_pData); }
+    FABLE_FORCEINLINE ~CHeapArray() { if (m_pData != 0) free(m_pData); }
 };
 
 struct CChunkedFileChunkBase {

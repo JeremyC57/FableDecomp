@@ -12,6 +12,7 @@
 // Shape: the first loop is rotated (entry in esi, list in edi, set in ebp pushed only around it); the second keeps the
 //   entry in eax and jumps back to one shared `test eax,eax`: a plain `while (placed)`, `for (;;)` or `for` with a
 //   `return` all rotate it; the top-tested form needs the `__forceinline` early-return condition helper IsEntry.
+#include "fable_compiler.h"
 struct CSoundEventManager;
 
 struct CSoundEvent {                               // 0xB4 bytes (vtable 0x012B3674)
@@ -29,7 +30,7 @@ struct CSoundEventList {                           // typed event list over an i
     unsigned char m_impl[8];                    // +8
 };
 
-static __forceinline bool IsEntry(const CSoundEvent* entry)
+static FABLE_FORCEINLINE bool IsEntry(const CSoundEvent* entry)
 {
     if (entry == 0)
         return false;

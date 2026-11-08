@@ -15,6 +15,7 @@
 // this instantiation); cur is strength-reduced to `first + (result - first)`. No EH frame (the
 // element copy cannot throw). The pair's memberwise user copy ctor (STLport declares one) gives the three single-word
 // copies (a plain 12-byte record copies through a block move instead).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -39,7 +40,7 @@ inline void _Construct(T1* p, const T2& value)
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

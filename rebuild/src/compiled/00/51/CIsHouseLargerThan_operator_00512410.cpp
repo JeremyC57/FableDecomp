@@ -8,6 +8,7 @@
 //   dead argument slots. The release is the landed CAIStateGroup_LightHomeCandle model (CRefCounted at +4, inline DecRef +
 //   GetRefCount -> `add eax,4 ; dec ; test ; mov [eax]`); `Object = 0` in the destructor is retail's zero store after the first
 //   released temporary of each pair (dead-store-eliminated on the second).
+#include "fable_compiler.h"
 struct CRefCounted {                               // reference count base at +4 of a def
     long Count;
     void DecRef() { --Count; }
@@ -19,11 +20,11 @@ struct CBuildingSimDefinition {
     CRefCounted Ref;                               // +0x04
     unsigned char _pad08[0x44 - 0x08];
     long HouseSize;                                // +0x44
-    __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
 class CThingBuilding {

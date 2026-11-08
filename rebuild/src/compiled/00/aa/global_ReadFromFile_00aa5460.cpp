@@ -10,6 +10,7 @@
 // Shape: the landed caller's inline CDataInputStream::Read model (the IsValidPosition range test on the 64-bit new position, the
 //   in-chunk memcpy fast path, the overflow call) through a by-value ReadFloat helper; the helper's temporary takes the one frame
 //   slot and each result is copied to its member through an integer register (a float copy with no arithmetic).
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
@@ -28,8 +29,8 @@ public:
 };
 
 struct CInputStreamAccess : CDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 pos) { return pos >= 0 && pos <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 pos) { return pos >= 0 && pos <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0) return;
         __int64 newPosition = (__int64)(StreamPos + size);
@@ -42,7 +43,7 @@ struct CInputStreamAccess : CDataInputStream {
         } else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline float ReadFloat() { float value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, 4); return value; }
 };
 
 void __fastcall ReadFromFile(CVertexCompressionParams& params, CDataInputStream& input)

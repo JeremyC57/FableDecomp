@@ -11,6 +11,7 @@
 //   constructor (key dword, then rep movsd x10), `*__result = *__first` the trivial assignment (rep movsd x11), and the
 //   value is copied again into __adjust_heap's argument area; the distance is (last-1 - first) / 0x2C.
 // Callees: std::__adjust_heap 0x00758910.
+#include "fable_compiler.h"
 enum EBodyLocation { BODY_LOCATION_NONE = 0 };
 
 class CWoundMorphs {
@@ -40,7 +41,7 @@ void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeInd
                               _Compare __comp);                                                    // 0x00758910
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                        _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

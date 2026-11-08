@@ -16,6 +16,7 @@
 //   PauseAllNonScriptedEntities, 496 EntitySetAsScared.
 // Layout: engine/CQ_BreakSiegeScript.h CDisplacedTrader (Ego_r.pdb, 36 bytes = retail new size): ParentClass +0x14, PMasterData +0x18,
 //   TimesSpokenTo +0x1c, RandomMutteringsDelay (CTimer) +0x20.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
@@ -43,8 +44,8 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, 
 enum EHeroAbility { HERO_ABILITY_NULL=0, HERO_ABILITY_HEAL_LIFE_SPELL=14 };
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing&, const C3DVector&, float);            // 0x00CBE45C
 extern CGameScriptInterfaceBase* pDSTGame;                                                                   // 0x0143E8F8
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 inline bool CScriptThing::operator==(const CScriptThing& other) const { return PImp->IsEqualTo(*other.PImp); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }

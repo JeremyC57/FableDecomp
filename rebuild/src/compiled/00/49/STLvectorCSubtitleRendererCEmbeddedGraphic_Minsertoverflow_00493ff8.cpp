@@ -20,6 +20,7 @@
 // Fix (agent901): the landed byte-identical twin 0x00580A7B (vector<pair<const CRegion*, C3DVector>>) shape -- same-TU
 //   auto_inline(off) bodies for __uninitialized_copy / __uninitialized_fill_n (tag unnamed, never touched) and
 //   `#pragma optimize("y", off)`: the three tag temporaries then pack into the bool __atend slot padding as retail.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -67,13 +68,13 @@ CEmbeddedGraphic* __fastcall __uninitialized_fill_n(CEmbeddedGraphic* __first, s
 }
 #pragma auto_inline(on)
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> struct allocator {
-    __forceinline _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -88,8 +89,8 @@ public:
     _Tp*                                                _M_finish;            // +0x04
     _STLP_alloc_proxy<_Tp*, _Tp, allocator<_Tp> >       _M_end_of_storage;    // +0x08
     size_t size() const { return size_t(_M_finish - _M_start); }
-    __forceinline void _M_clear() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_clear() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         _M_start = __s;
         _M_finish = __f;

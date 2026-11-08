@@ -10,12 +10,13 @@
 // Shape: the reach is radius + 1; each axis extends the low corner by the negative part of the velocity and the high corner by
 //   the positive part. C2DBoxI is TopLeft (minX, maxY) / BottomRight (maxX, minY); filled, validated and returned through the
 //   hidden pointer by the __forceinline memberwise copy (no NRVO).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}
-    __forceinline C2DBoxI(const C2DBoxI& o)
+    FABLE_FORCEINLINE C2DBoxI(const C2DBoxI& o)
     {
         TopLeft.X = o.TopLeft.X;
         TopLeft.Y = o.TopLeft.Y;

@@ -33,6 +33,7 @@
 //   ST_IDLE is a named CCharString assigned through operator=(const CCharString&); the special idle goes through the
 //   out-of-line CAnimInit constructor as a temporary argument, the pose idle reads its flags into a local and then builds a
 //   default CAnimInit and calls Set (the zero stores land after the pushes), so both share the SetMainAnim tail.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
@@ -93,8 +94,8 @@ class CThing { public:
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char Flags91;                              // +0x91 (bit 0: dead)
     const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline const T* GetConstTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE const T* GetConstTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

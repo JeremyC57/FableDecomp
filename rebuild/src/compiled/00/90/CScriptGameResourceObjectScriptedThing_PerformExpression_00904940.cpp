@@ -13,6 +13,7 @@
 // frame word and its miss arm reads the (still live) `target` slot, which VC7.1 picks as the home of the
 // never-written component; the target thing is fetched after the lookup and both extra data words are -1.
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -33,7 +34,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

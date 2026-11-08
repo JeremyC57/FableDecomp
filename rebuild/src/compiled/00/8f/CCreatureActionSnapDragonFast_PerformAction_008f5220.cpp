@@ -13,6 +13,7 @@
 //          create @ 0x007FD4B0 (__fastcall), driver SetValue @ 0x007FD3D0, intelligent pointer @ 0x00A01B10 / 0x00A01B90 /
 //          0x00A01C10, push_back @ 0x004AD520, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
 //          @ 0x009AD410, thing create @ 0x0080C500 (__fastcall), SetOwner @ 0x0080CBF0. Globals: 1.5f 0x0125AADC, 2.5f 0x01241D68.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
@@ -45,7 +46,7 @@ public:
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
     }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

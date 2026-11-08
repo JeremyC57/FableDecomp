@@ -14,6 +14,7 @@
 // stack first and gives the 16-byte sphere frame slot; the translation comes from a third GetPos() copy. The product is
 // an inline Multiply(a, b) on the target over a named copy `a` of the transform (an operator*= with an internal copy
 // loads the wrong operand of each row-2..4 product); one chained zero store, one chained diagonal store.
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
@@ -28,7 +29,7 @@ public:
     float E21, E22, E23;
     float E31, E32, E33;
     float E41, E42, E43;
-    __forceinline void Multiply(const CMatrix3x4& a, const CMatrix3x4& b)
+    FABLE_FORCEINLINE void Multiply(const CMatrix3x4& a, const CMatrix3x4& b)
     {
         E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;
         E12 = a.E11 * b.E12 + a.E12 * b.E22 + a.E13 * b.E32;

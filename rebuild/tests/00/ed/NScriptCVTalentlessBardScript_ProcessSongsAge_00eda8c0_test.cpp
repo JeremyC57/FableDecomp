@@ -1,5 +1,6 @@
 // Behaviour test for 00eda8c0: src/00eda8c0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // NScript::CV_TalentlessBardScript::ProcessSongsAge()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,7 +37,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
     void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&,
                             unsigned long fill_len, bool atend);   // 0x00433530
     void push_back(const CCharString& x);               // 0x0044BFF0 (out of line)
-    __forceinline void push_back_inline(const CCharString& x)   // the same STLport body, expanded at the first site
+    FABLE_FORCEINLINE void push_back_inline(const CCharString& x)   // the same STLport body, expanded at the first site
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CCharString(x);

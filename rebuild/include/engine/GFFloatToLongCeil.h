@@ -20,6 +20,7 @@
 //   rebuild/tests/portable/test_GFFloatToLongCeil.cpp.
 #ifndef FABLE_ENGINE_GFFLOATTOLONGCEIL_H
 #define FABLE_ENGINE_GFFLOATTOLONGCEIL_H
+#include "fable_compiler.h"
 #include "fable_x87_twins.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
@@ -39,7 +40,7 @@ namespace fable_portable
 #ifdef FABLE_PORTABLE
 using fable_portable::GFFloatToLongCeil;
 #else
-__forceinline long __fastcall GFFloatToLongCeil(float value)
+FABLE_FORCEINLINE long __fastcall GFFloatToLongCeil(float value)
 {
     long  result;
     float one;

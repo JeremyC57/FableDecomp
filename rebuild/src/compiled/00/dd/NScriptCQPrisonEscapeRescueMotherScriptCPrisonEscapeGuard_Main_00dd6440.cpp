@@ -20,6 +20,7 @@
 //   the two around the StartScriptingEntity wait, and VC7.1's per-site frequency rule gives the split.
 // Naming wave 35: identity reg 00dd2eee "PrisonEscapeGuard" in 00dd2ce0; Alloc 00dd6330; vtable 012dc074 slot 1; PDB ?Main@CPrisonEscapeGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CPrisonEscapeGuard::Main (wave3/labels_alloc.tsv); PDB ?Main@CPrisonEscapeGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CPrisonEscapeGuard@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_PrisonEscapeRescueMotherScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -99,8 +100,8 @@ namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimation
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 namespace NScript {
 class CQ_PrisonEscapeRescueMotherScript {
 public:

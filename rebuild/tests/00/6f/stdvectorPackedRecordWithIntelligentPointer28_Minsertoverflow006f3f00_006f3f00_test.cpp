@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 49bbada3066c149d6ffc5a7869911c0f3e620b0402e21ec4cb76ab62dc7d58d5
@@ -37,7 +38,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_006f3f00* first,Elemen
  for(;first!=last;++first)first->~Element_006f3f00();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_006f3f00<T>::InsertGrow(T* position,const T& value,const Tag_006f3f00&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

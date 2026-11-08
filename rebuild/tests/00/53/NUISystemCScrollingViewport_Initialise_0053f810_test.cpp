@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -61,7 +62,7 @@ template<class T> struct CRetailVector {   // STLport vector: 12 bytes
         _M_start = p; _M_finish = p + n + 1; _M_end_of_storage = p + cap;
         (void)position; (void)fillLength; (void)atEnd;
     }
-    __forceinline void push_back(const T& x)
+    FABLE_FORCEINLINE void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)

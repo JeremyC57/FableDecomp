@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -42,7 +43,7 @@ class CEngineInternalPrimitiveBase { public:        // the referenced primitive:
 struct CIVCountedPointer {                   // the counted primitive pointer (as the landed handle ??_G 0x0041C500)
     CEngineInternalPrimitiveBase* Object;
     long GetRefCount() const { return Object ? Object->m_handleCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CEngineInternalPrimitiveBase* object = Object;
         if (object) {
@@ -51,7 +52,7 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
     {
         Release();
         Object = object;
@@ -59,14 +60,14 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
             ++object->m_handleCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass {   // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                  // +0x04
     virtual void v00();
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);

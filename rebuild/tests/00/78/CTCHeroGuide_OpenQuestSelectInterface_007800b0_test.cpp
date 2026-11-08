@@ -1,5 +1,6 @@
 // Behaviour test for 007800b0: src/007800b0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCHeroGuide::OpenQuestSelectInterface
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -76,8 +77,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x170 - 0x4c];
     CBaseIntelligentPointer HeroCentre;                 // +0x170
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline const T* FindTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE const T* FindTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -86,7 +87,7 @@ class CThing { public:
             it = map->last;
         return (const T*)it->component;
     }
-    template<class T> __forceinline T* GetTC(long type)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         T* result;
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {

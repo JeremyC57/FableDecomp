@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -26,7 +27,7 @@ struct CClanInfo {                               // CTCHeroOnlineScoreboard::CCl
     CCharString HomePageURL;                     // +0x0C
     int         NumMembers;                      // +0x10
     CClanInfo() { }
-    __forceinline CClanInfo(const CClanInfo& o)   // the implicit copy, spelled out so VC7.1 inlines it into _Construct
+    FABLE_FORCEINLINE CClanInfo(const CClanInfo& o)   // the implicit copy, spelled out so VC7.1 inlines it into _Construct
         : Name(o.Name), ClanID(o.ClanID), Description(o.Description), HomePageURL(o.HomePageURL), NumMembers(o.NumMembers) { }
 };
 

@@ -3,6 +3,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: original PDB virtual const signature; direct mode/generator calls independently named.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 #include "engine/CTCTargeted.h"
 #ifndef _MSC_VER
@@ -29,7 +30,7 @@ class CTCCreatureModeManager:public CTCBase {public:class CModeBase{public:virtu
 #include "engine/CTCCreatureGenerator.h"
 #undef CTCCreatureGenerator
 class CTCCreatureGenerator:public CTCCreatureGenerator_HeaderLayout {public:bool IsDepleted()const;long GetNumGeneratedCreatures()const;bool AreAllCreaturesAlive()const;};
-__forceinline bool IsThingAlive(const CScriptThing& script){CThing* p=script.GetPThing();return p && !p->IsDead();}
+FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& script){CThing* p=script.GetPThing();return p && !p->IsDead();}
 // Layout: shared script header retained as evidence; genuine virtual declaration, owner fields untouched.
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

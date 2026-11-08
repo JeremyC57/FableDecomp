@@ -19,6 +19,7 @@
 // second map lookup, the field after it); the def pointer temporary's
 // destructor releases through the pointee's DecRef/GetRefCount and clears the word; the lookup key and the second temporary
 // share a frame word.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -37,8 +38,8 @@ public:
     unsigned char _pad00[0x20];
     std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool HasTC(long type) { return present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE bool HasTC(long type) { return present.test(type); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -61,7 +62,7 @@ struct CDefVirtual {
 class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x3c - 0x08];
     long KnowledgeLifeInSeconds;                            // +0x3c
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -71,7 +72,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -242,7 +243,7 @@ namespace NUISystem {
 class CUIDef:public CIVCountedPointeeBase { public:
  unsigned char DefinitionData[0x221-8];bool PCStyle;
  typedef void(CUIDef::*DeleteMethod)()const;
- __forceinline void ReleaseReference()const {CUIDef*p=const_cast<CUIDef*>(this);--p->IVRefCount;if(static_cast<long>(p->IVRefCount)==0)(this->*static_cast<DeleteMethod*>(__vftable)[1])();}
+ FABLE_FORCEINLINE void ReleaseReference()const {CUIDef*p=const_cast<CUIDef*>(this);--p->IVRefCount;if(static_cast<long>(p->IVRefCount)==0)(this->*static_cast<DeleteMethod*>(__vftable)[1])();}
 };
 struct DefinitionPointer {
  const CUIDef*Object;
@@ -258,7 +259,7 @@ struct ActionList;
 class CComponent { public:
  void*VTable;unsigned char ComponentData[0xb0-4];ChildArray Children;
  typedef void(CComponent::*ParentMethod)(CComponent*);
- __forceinline void SetParent(CComponent*p){(this->*static_cast<ParentMethod*>(VTable)[51])(p);}
+ FABLE_FORCEINLINE void SetParent(CComponent*p){(this->*static_cast<ParentMethod*>(VTable)[51])(p);}
 };
 class CMenuEntry:public CComponent { public:
  unsigned char StateComponentData[0x160-0xbc];bool WasHovered;unsigned char MenuData[0x1a8-0x161];

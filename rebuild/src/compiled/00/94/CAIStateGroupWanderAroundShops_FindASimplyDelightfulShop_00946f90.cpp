@@ -23,6 +23,7 @@
 //   the element itself (`push ebx`, a reference into `shops`).
 // Layout: CThing retail offsets as the landed GetPBestLeafThing 0x00936070 (bitset +0x20, interface map +0x44, state bits
 //   +0x91); engine/CThingSearchTools.h is a flattened method-less layout, so the class is restated with its members.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
@@ -169,11 +170,11 @@ public:
             return true;
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)interfaceType;
         CInterfaceMap* map = &m_interfaces;

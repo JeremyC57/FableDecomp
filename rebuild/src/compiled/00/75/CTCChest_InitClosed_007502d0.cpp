@@ -20,6 +20,7 @@
 //   (frame zero stores after the pushes); the mesh bank is named before the PeekAnimation argument; the helper reset is an
 //   inline Init in retail's store order (closed flag, both transition amounts last-first, the two times, then the
 //   opening/closing flags); the transition test compares Last != Amount.
+#include "fable_compiler.h"
 class CTCBase;
 
 class CCharString { public:
@@ -131,7 +132,7 @@ class CThing { public:
     CThingBaseDef* PBaseDef;                                   // +0x70
     void SetForceFrameUpdate(bool force);                      // 0x004C7C60
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline T* GetTC(long wanted)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;

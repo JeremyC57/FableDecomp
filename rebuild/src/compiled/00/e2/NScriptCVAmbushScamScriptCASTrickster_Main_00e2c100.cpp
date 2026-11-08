@@ -5,6 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E2C100, 8945 bytes, thiscall, plain `ret`, no EH frame.
 // Identity (proven): slot 1 (Main) of the CAS_Trickster entity vtable 0x012E2850 that Alloc 0x00E2BC90 stores (slot 0 the landed
 //   scalar deleting dtor, slot 2 Init); Ego_r.pdb / FableWin.pdb ?Main@CAS_Trickster@CV_AmbushScamScript@NScript@@EAEXXZ.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -42,8 +43,8 @@ enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GRO
 enum EScriptEntityMoveType { MOVE_TYPE_WALKING=0, MOVE_TYPE_RUNNING=1 };
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 #define T IsActiveThreadTerminating()
 #define NSF Game->NewScriptFrame()
 #define NSF2 \

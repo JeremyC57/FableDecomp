@@ -1,5 +1,6 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +4.
+#include "fable_compiler.h"
 #define CCreatureAction_ScorpionChargeInto CCreatureAction_ScorpionChargeIntoPdb
 #include "engine/CCreatureAction_ScorpionChargeInto.h"
 #undef CCreatureAction_ScorpionChargeInto
@@ -65,7 +66,7 @@ class CThing:public CBaseObject { public:
     unsigned char LaterState[0x1d];
     unsigned char DeadFlags;
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;

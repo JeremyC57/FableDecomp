@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <new>
@@ -32,7 +33,7 @@ class C3DAnimationInterpolator:public CBaseClass {public:C3DAnimationBlendState 
 class CCharStringData;class CCharString {public:CCharStringData*PStringData;};
 // Accessed original anonymous component fields; overlapping union aliases are
 // unexported and explicitly omitted, as in independently audited text descriptor.
-class CRGBColour {public:unsigned char B,G,R,A;__forceinline void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}__forceinline CRGBColour(const CRGBColour&x){Initialise(x.R,x.G,x.B,x.A);}};
+class CRGBColour {public:unsigned char B,G,R,A;FABLE_FORCEINLINE void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}FABLE_FORCEINLINE CRGBColour(const CRGBColour&x){Initialise(x.R,x.G,x.B,x.A);}};
 enum EEnginePrimitiveType {};enum EEngineInterpolationSet {};enum ECompositeBlendType {};
 class CEnginePrimitiveThemeChannelDesc {public:unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad;CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){}};
 class CEnginePrimitive {public:EEnginePrimitiveType Type;EEngineInterpolationSet InterpolationSet;CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;};

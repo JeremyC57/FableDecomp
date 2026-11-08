@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 347b1e6e0eb06207c1f47864e332d83ba44cd463db4b66edae53d7170555ae24
@@ -16,7 +17,7 @@ template<class T, class C> inline void Unguarded(T* last,T value,C comp) {
  while(comp(value,*next)) { *last=*next; last=next; --next; }
  *last=value;
 }
-template<class T> __forceinline T* CopyBackward(T* first,T* last,T* result) {
+template<class T> FABLE_FORCEINLINE T* CopyBackward(T* first,T* last,T* result) {
  for(int count=last-first; count>0; --count) *--result=*--last;
  return result;
 }

@@ -1,4 +1,5 @@
 // test for 0x00BAE160 CEnginePrimitiveManagerSprites::AddSprite -- fields, flags, registration, handle reference counting
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -50,7 +51,7 @@ class CEnginePrimitiveHandle : public CBaseClass { public:   // vtable 0x0122F59
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;  // +0x04
     CEnginePrimitiveHandle() { }
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& other) : CBaseClass(other), Data(other.Data) { }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
     void Clear()
     {
         if (!Data.IsNull() && Data.GetRefCount() == 1)

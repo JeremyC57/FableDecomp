@@ -12,6 +12,7 @@
 // length +0x20 and two cursor words +0x24/+0x28 that the inline constructor zeroes; CGameEvent::GetData(CMemoryBuffer&)
 // 0x009F17A0 (label "CEventPacket::CopyToBuffer") fills it and CMemoryBuffer::Read(unsigned long, void*) 0x009F18F0
 // (label "CircularBuffer_Read") consumes it.
+#include "fable_compiler.h"
 struct CMemoryBuffer {
     unsigned char Data[0x20];                      // +0x00
     long          Length;                          // +0x20
@@ -19,7 +20,7 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline bool ReadBool() { bool value; Read(1, &value); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { bool value; Read(1, &value); return value; }
 };
 class CGameEvent { public:
     long          Type;                            // +0x00

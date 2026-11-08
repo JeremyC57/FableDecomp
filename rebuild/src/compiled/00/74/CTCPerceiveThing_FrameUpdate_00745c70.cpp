@@ -18,6 +18,7 @@
 // Shape: the melee flag is a bool local kept in bl (HasTC test, else 0) and stored into PerceptionCombat on every path; the
 //   update test is `IsUpdatingThisFrame() || (inMelee && !PerceptionCombat)`; the reset / update arms each get their own
 //   epilogue with the trailing store.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -28,13 +29,13 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

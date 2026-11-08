@@ -14,6 +14,7 @@
 // Label correction: the catalog's `_Uninit_copy<_Vector_const_iterator<_Vector_val<unsigned int,allocator<unsigned int> > >,
 // unsigned int*,allocator<unsigned int> >` is a Dinkumware name propagated over all 40 rows of this chunk; retail's STL
 // is STLport 4.x and the `ret 8`, the element stride and the placement null test name this body.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() { } };
 namespace FableCopy_006a3130 {
@@ -29,7 +30,7 @@ struct CBaseIntelligentPointer {                        // 8 bytes: vtable + ite
 };
 template <class T>
 struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C for CIntelligentPointer<CThing>
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 struct CThingGraphicArgPasser {                         // 9 bytes (byte-packed)
     CIntelligentPointer<CThing> thing;                  // +0x00

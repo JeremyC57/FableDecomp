@@ -10,6 +10,7 @@
 // for the call and the HeadTrackTarget store.
 // Layout: Ego_r.pdb Interrupt / LoopNum +0x12c / +0x130, retail +0x114 / +0x118 (CCombatActionBase is 0x114 in retail; the
 // landed ctor 0x00925780 stores its bool and long arguments there); CTCKraken HeadTrackTarget +0x51 (PDB +0x61).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -33,7 +34,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.Get()->GetTC(TCI_KRAKEN, &kraken);

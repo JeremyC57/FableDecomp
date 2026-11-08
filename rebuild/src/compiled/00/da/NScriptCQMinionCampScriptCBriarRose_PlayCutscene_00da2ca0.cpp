@@ -16,6 +16,7 @@
 // Shape: the hand582 0x00D848D0 cut-scene model (local CBaseObject / resource classes, real STLport map). The ScriptedThingBase
 //   assignment needs an explicit __forceinline operator= (CBaseObject::operator= call + inline counted-pointer assign); the
 //   implicit one is emitted out of line at the second cast store.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
@@ -49,7 +50,7 @@ public:
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
 public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;

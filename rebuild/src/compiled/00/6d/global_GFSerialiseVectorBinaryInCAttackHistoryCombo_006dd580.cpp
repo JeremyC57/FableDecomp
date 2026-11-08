@@ -15,6 +15,7 @@
 // Shape: the landed GFSerialiseVectorBinaryIn template (0x00569B30 speed form): the inline 4-byte count Read (64-bit
 //   position range check, the fast path forwards the chunk word straight into ebx), the one-argument resize called out
 //   of line, then `traits.TransferBinaryIn(stream, &out[i])` with a byte offset in edi and a down-counter in ebx.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -23,8 +24,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -62,7 +63,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const;   // 0x006DC6A0
 };
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

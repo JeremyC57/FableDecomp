@@ -2,13 +2,14 @@
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: __partial_sort
 // Layout: SGI template iterator stride, comparator dword and ret cleanup from oracle.tsv.
+#include "fable_compiler.h"
 #include <new>
 namespace N00cbcfc0 {
 
 struct CKeyPairCompareLess {unsigned int State;};
 
 struct Block {unsigned int Count;void (__fastcall *Destroy)(void*);void* Object;};
-struct Pointer {void* Object;Block* Control; __forceinline Block* GetControl()const{return Control;}Pointer():Object(0),Control(0){} __forceinline Pointer(const Pointer& o){Object=o.Object;Control=o.Control;if(Control)++Control->Count;} __forceinline void Release(){if(Control){--Control->Count;if(Control->Count==0){Control->Destroy(Control->Object);::operator delete(GetControl());}}} __forceinline ~Pointer(){Release();} __forceinline Pointer& operator=(const Pointer& o){Block* b=o.Control;void* p=o.Object;if(Control!=b){Release();Object=p;Control=b;if(b)++b->Count;}return *this;}};
+struct Pointer {void* Object;Block* Control; FABLE_FORCEINLINE Block* GetControl()const{return Control;}Pointer():Object(0),Control(0){} FABLE_FORCEINLINE Pointer(const Pointer& o){Object=o.Object;Control=o.Control;if(Control)++Control->Count;} FABLE_FORCEINLINE void Release(){if(Control){--Control->Count;if(Control->Count==0){Control->Destroy(Control->Object);::operator delete(GetControl());}}} FABLE_FORCEINLINE ~Pointer(){Release();} FABLE_FORCEINLINE Pointer& operator=(const Pointer& o){Block* b=o.Control;void* p=o.Object;if(Control!=b){Release();Object=p;Control=b;if(b)++b->Count;}return *this;}};
 struct Element {unsigned __int64 Key;Pointer P;};
 #pragma auto_inline(off)
 template<class T,class C> __declspec(noinline) void __fastcall __adjust_heap(T* first,int hole,int length,T value,C comp){int top=hole;int child=hole*2+2;while(child<length){if(first[child].Key<first[child-1].Key)--child;first[hole]=first[child];hole=child;child=hole*2+2;}if(child==length){first[hole]=first[child-1];hole=child-1;}int parent=(hole-1)/2;while(hole>top&&first[parent].Key<value.Key){first[hole]=first[parent];hole=parent;parent=(hole-1)/2;}first[hole]=value;}

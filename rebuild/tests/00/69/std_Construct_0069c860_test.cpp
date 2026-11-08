@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -24,7 +25,7 @@ struct CQuake {                                  // CGameCameraManager::CQuake (
     float     Phase;                             // +0x28
     bool      Global;                            // +0x2C
     CQuake() { }
-    __forceinline CQuake(const CQuake& o)        // the implicit memberwise copy, spelled out so VC7.1 inlines it into _Construct
+    FABLE_FORCEINLINE CQuake(const CQuake& o)        // the implicit memberwise copy, spelled out so VC7.1 inlines it into _Construct
         : Position(o.Position), Axis(o.Axis), Frame(o.Frame), Amplitude(o.Amplitude), Duration(o.Duration),
           Frequency(o.Frequency), Phase(o.Phase), Global(o.Global) { }
 };

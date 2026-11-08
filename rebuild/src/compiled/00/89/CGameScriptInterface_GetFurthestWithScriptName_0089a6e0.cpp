@@ -14,6 +14,7 @@
 // Shape: the vector dtor must be __forceinline with a by-value _Destroy(first, last) helper (retail caches `last` in a
 // register); CScriptThing::GetPos inline virtual so the local copy's call is devirtualised.
 // Opt: /O2 (16-aligned entry, loop alignment padding).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #include "engine/C3DVector.h"
@@ -138,7 +139,7 @@ public:
     virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
     bool operator==(const CScriptThing& other) const { return PImp.Data->IsSameThing(other.PImp.Data); }
 };
-__forceinline void _Destroy(CScriptThing* first, CScriptThing* last)
+FABLE_FORCEINLINE void _Destroy(CScriptThing* first, CScriptThing* last)
 {
     for (; first != last; ++first)
         first->~CScriptThing();
@@ -148,7 +149,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CScriptThingVector()
+    FABLE_FORCEINLINE ~CScriptThingVector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start) free(_M_start);

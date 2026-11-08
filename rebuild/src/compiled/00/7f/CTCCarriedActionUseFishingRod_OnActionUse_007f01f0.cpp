@@ -13,6 +13,7 @@
 // Shape: the expression name is a named local in the fishing block (destroyed after the action temporary); the action is the
 // CTCActionUseActivateQuest temporary (0x007EF600 model: novtable leaf, unaligned intelligent pointer at +0xAD); the closing
 // lookup is HasTC + one-ternary GetTC (component in ecx).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -60,13 +61,13 @@ struct CThingWithComponents {
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

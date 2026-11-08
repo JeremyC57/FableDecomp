@@ -5,6 +5,7 @@
 // bitset dword +0x38, tested as `test ch,40h`).
 // The creature is the base's +0x1c (retail layout, see 0x008B0AB0). The 0x93 test is the bitset alone (no lookup). The found component's byte at +0xc is returned as `!= 0 ? true : false`
 // (bare `setne al`); no will component means valid.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -17,13 +18,13 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline bool HasInterface(long interfaceType) const   // the bitset test alone
+    FABLE_FORCEINLINE bool HasInterface(long interfaceType) const   // the bitset test alone
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)   // forced: two lookups in one body exceed the inliner budget
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)   // forced: two lookups in one body exceed the inliner budget
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

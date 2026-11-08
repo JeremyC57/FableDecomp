@@ -10,6 +10,7 @@
 //   the dereference).
 // Layout: retail RTTI CTCWeapon <- CTCBase (engine/CTCBase.h, data-only, included under a layout name); CWeaponDef <- CSubDefClassBase
 //   <- CDefClassBase <- CDefPointeeBase <- CResource <- CIVCountedPointeeBase (Ego_r.pdb members; CDefClassBase is 0x25 bytes).
+#include "fable_compiler.h"
 #define CTCBase CTCBasePdb
 #include "engine/CTCBase.h"
 #undef CTCBase
@@ -18,8 +19,8 @@ class CIVCountedPointeeBase {                               // Ego_r.pdb 8 bytes
 public:
     virtual ~CIVCountedPointeeBase();
     virtual void Delete() const;                            // slot 1 (FableWin.pdb ?Delete@CIVCountedPointeeBase@@UBEXXZ)
-    __forceinline void AddRef() const { ++IVRefCount; }      // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline here)
-    __forceinline long Release() const                      // FableWin.pdb ?Release@CIVCountedPointeeBase@@QBEJXZ (inline here)
+    FABLE_FORCEINLINE void AddRef() const { ++IVRefCount; }      // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline here)
+    FABLE_FORCEINLINE long Release() const                      // FableWin.pdb ?Release@CIVCountedPointeeBase@@QBEJXZ (inline here)
     {
         if (--IVRefCount == 0) {
             Delete();
@@ -54,7 +55,7 @@ class CSubDefClassBase : public CDefClassBase { };          // Ego_r.pdb 0x25 by
 template <class T> class CDefPointer {                      // Ego_r.pdb 4 bytes
 public:
     CDefPointer(const CDefPointer<T>& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }   // the IV release, inline (as the landed 0x005DA7D0)
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }   // the IV release, inline (as the landed 0x005DA7D0)
     T* operator->() const { return static_cast<T*>(Object); }   // FableWin.pdb ??C?$CDefPointer@$$CB...@@QBEPB...@@XZ
     CDefPointeeBase* Object;                                // +0x00
 };

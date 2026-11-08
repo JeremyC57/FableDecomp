@@ -15,6 +15,7 @@
 //   +0xa8); members +0x114/+0x118 take the two arguments; the def's cast-sound string id at +0x110.
 // Shape: the landed 0x008BC8C0 source verbatim with a by-value inline SetPTarget(CIntelligentPointer<CThing>) fed an
 //   explicit temporary built from the target argument (first try).
+#include "fable_compiler.h"
 class CThingCreatureBase;
 class CTCBase;
 class CCharString { public:
@@ -24,7 +25,7 @@ class CCharString { public:
 };
 class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 class CSpecialAbilitiesLightningSpellDef { public:
     virtual void v00();
@@ -89,7 +90,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -108,7 +109,7 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
@@ -123,7 +124,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    __forceinline void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem((CBaseObject*)(((CThing*)target.GetPItem()))); }
+    FABLE_FORCEINLINE void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem((CBaseObject*)(((CThing*)target.GetPItem()))); }
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };

@@ -11,6 +11,7 @@
 //   the pointee keeps IVRefCount at +0x04 and Type at +0x08 (engine/CIVCountedPointeeBase.h,
 //   engine/CEnginePersistentPrimitiveBase.h). Local model: those generated headers are flat and carry no virtual
 //   slots, which the handle's destructor needs (Delete slot 1, NotifyReleased slot 3).
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t);                 // 0x00BFEA0E
 class CEnginePrimitiveHandle;
@@ -21,28 +22,28 @@ class CEnginePersistentPrimitiveBase { public:
  virtual void NotifyReleased(const CEnginePrimitiveHandle&);
  unsigned long IVRefCount;
  long Type;
- __forceinline unsigned long RemoveReference(){return --IVRefCount;}
+ FABLE_FORCEINLINE unsigned long RemoveReference(){return --IVRefCount;}
 };
 class CBaseClass { public:CBaseClass();virtual ~CBaseClass();}; //0099a2d0/0099a2e0
 struct CHandlePointer {
  CEnginePersistentPrimitiveBase* Object;
  CHandlePointer():Object(0){}
  CHandlePointer(const CHandlePointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
- __forceinline ~CHandlePointer(){if(Object){CEnginePersistentPrimitiveBase* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
+ FABLE_FORCEINLINE ~CHandlePointer(){if(Object){CEnginePersistentPrimitiveBase* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
 class CEnginePrimitiveHandle:public CBaseClass { public:
  CHandlePointer Data;
  CEnginePrimitiveHandle():CBaseClass(),Data(){}
- __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
+ FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
 };
 #include <new>
 struct CHandleNode { CHandleNode* Next;CHandleNode* Previous;CEnginePrimitiveHandle Value; };
 struct CHandleIterator {CHandleNode* Node;CHandleIterator(CHandleNode* n):Node(n){} CHandleIterator(const CHandleIterator& o):Node(o.Node){}};
 struct CEnginePrimitiveHandleList {
  CHandleIterator InsertDefault(CHandleIterator);
- __forceinline CHandleIterator Insert(CHandleIterator position,const CEnginePrimitiveHandle& value);
+ FABLE_FORCEINLINE CHandleIterator Insert(CHandleIterator position,const CEnginePrimitiveHandle& value);
 };
-__forceinline CHandleIterator CEnginePrimitiveHandleList::Insert(CHandleIterator position,const CEnginePrimitiveHandle& value)
+FABLE_FORCEINLINE CHandleIterator CEnginePrimitiveHandleList::Insert(CHandleIterator position,const CEnginePrimitiveHandle& value)
 {
  CHandleNode* node=static_cast<CHandleNode*>(malloc(sizeof(CHandleNode)));
  if(&node->Value)new(&node->Value)CEnginePrimitiveHandle(value);

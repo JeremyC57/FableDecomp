@@ -13,6 +13,7 @@
 // move arm (an initialised block local is stored after the address lea instead of after the first push).
 // Layout: no engine header for CTCAIScratchpad or CCreatureNavigationDef; members named from Ego_r.pdb (WanderCentrePoint
 // +0x14, WanderMaxDistance +0x24, ScriptingStateGroup +0x38; AvoidDynamicObstacles +0x34).
+#include "fable_compiler.h"
 class CTCBase;
 
 #include "engine/C3DVector.h"
@@ -53,7 +54,7 @@ class CThing { public:
     CDefClassBase* PhysicsTC;                   // +0x70
     const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {

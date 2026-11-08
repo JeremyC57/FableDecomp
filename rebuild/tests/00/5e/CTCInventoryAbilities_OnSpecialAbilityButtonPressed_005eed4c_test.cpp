@@ -1,5 +1,6 @@
 // Behaviour test of CTCInventoryAbilities::OnSpecialAbilityButtonPressed(long button) (retail 0x005EED4C)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -28,7 +29,7 @@ template <class K, class V, class C> class CVectorMap { public:   // STLport vec
     bool          Dirty;                                   // +0x0D
     value_type* end() { return m_last; }
     value_type* LowerBound(const K& key);                  // 0x005F7F4C
-    __forceinline value_type* Find(const K& key)
+    FABLE_FORCEINLINE value_type* Find(const K& key)
     {
         value_type* it = LowerBound(key);
         return (it == end() || key < it->first) ? end() : it;

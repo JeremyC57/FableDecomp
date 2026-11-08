@@ -14,6 +14,7 @@
 //   MeshEffect +0x80, ThemeChannelDesc +0x84, TintColour +0x88, BulletTimeAffectsCloth +0x8c).
 // Shape: `Cache = CCache()` builds an STLport map temporary (malloc'd header), assigns it through the out-of-line tree
 //   operator= and erases/frees it; the counted mesh-effect assignment is the inline CIVCountedPointer operator=.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
@@ -116,7 +117,7 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         T* old = Object;
         if (old != other.Object) {

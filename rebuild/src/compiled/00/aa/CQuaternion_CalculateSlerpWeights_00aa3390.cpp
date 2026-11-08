@@ -16,6 +16,7 @@
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Globals: arc-cosine table 0x013CB530, cosine table 0x013CD550 (landed names); 0.0f 0x0122DEDC, 1.0f 0x0122DED8, 0.05f
 //   0x0125A15C, 512.5f 0x0129CD1C, 0.5f 0x0122F59C, 1/(2pi) 0x01237F08, 1024.0f 0x01230010.
+#include "fable_compiler.h"
 extern float g_ArcCosTable[1026];       // 0x013CB530
 extern float g_CosTable[1025];          // 0x013CD550
 extern "C" double __cdecl sqrt(double);
@@ -23,14 +24,14 @@ extern "C" double __cdecl sqrt(double);
 
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default)
 #include "engine/GFFloatToLongNear.h"
-__forceinline float __fastcall GFFastArcCos(float cosine)
+FABLE_FORCEINLINE float __fastcall GFFastArcCos(float cosine)
 {
     cosine = (cosine + 1.0f) * 512.5f;
     long i = GFFloatToLongNear(cosine - 0.5f);
     float frac = cosine - (float)i;
     return ((1.0f - frac) * g_ArcCosTable[i] + frac * g_ArcCosTable[i + 1]) * 0.15915494f;
 }
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);

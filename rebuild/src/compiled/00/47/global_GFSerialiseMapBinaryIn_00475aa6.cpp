@@ -11,6 +11,7 @@
 // Shape: the string traits calls the stream's slot 6 ReadNullTerminatedString (0x00995D30) DIRECTLY through a vtable view
 //   (an inline wrapper re-addresses the string temporary with an extra `lea`); CCharString ctor 0x0099E4B0, dtor 0x0099EAE0,
 //   operator= 0x0099EFB0; the long traits 0x0040FE60 is out of line (stand-in).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -38,8 +39,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -83,7 +84,7 @@ template <class T> struct CPersistTraits {
     CPersistTraits() : DefaultVal() { }
     void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* out) const;
 };
-template <> __forceinline void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, CCharString* out) const
+template <> FABLE_FORCEINLINE void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryDataInputStreamReader& stream, CCharString* out) const
 {
     *out = reinterpret_cast<CDataInputStreamVirtuals&>(stream).ReadNullTerminatedString();
 }
@@ -91,7 +92,7 @@ template <> struct CPersistTraits<long> {
     CPersistTraits() { }
     void TransferBinaryIn(CMemoryDataInputStreamReader& stream, long* out) const;   // 0x0040FE60
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

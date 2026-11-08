@@ -11,6 +11,7 @@
 // reference) -- both sites expanded inline, as in the landed __copy_backward 0x005E0E70 of this TU.
 // The key test is UNSIGNED (`jae`); the by-value entry's pointer is released at the end without a
 // zero store (its destructor). /Gr: first=ecx, hole=edx; `ret 1Ch` = top + 20-byte pair + comparator.
+#include "fable_compiler.h"
 namespace N005e1310 {
 struct CAnimComponentMap {                                // intrusively counted: count at +4
     virtual void v00();
@@ -20,7 +21,7 @@ struct CAnimComponentMap {                                // intrusively counted
 template <class T> struct CIVCountedPointer {             // one word: the counted object
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {
@@ -29,7 +30,7 @@ template <class T> struct CIVCountedPointer {             // one word: the count
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         if (Object != other.Object) {
             Release();

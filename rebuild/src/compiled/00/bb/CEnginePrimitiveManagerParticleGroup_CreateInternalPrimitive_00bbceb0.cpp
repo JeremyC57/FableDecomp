@@ -11,6 +11,7 @@
 // list zeroes its proxy, mallocs and self-links a local node and stores it, the array and the sphere zero their
 // words from the shared zero register edi; the two mallocs' argument words are popped together (`add esp,8`).
 // The group constructor must be `__forceinline` (plain `inline` leaves it out of line behind a null test).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
@@ -52,7 +53,7 @@ struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {   
     C3DBoundingSphere                   BSphere;               // +0x5c
     unsigned char                       _rest6c[0xac - 0x6c];  // DistanceFromCam, WorldMat, flags (not initialised here)
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveParticleGroup(long type, unsigned long flags)
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleGroup(long type, unsigned long flags)
         : CEngineInternalPrimitiveBase(type, flags) { }
 };
 

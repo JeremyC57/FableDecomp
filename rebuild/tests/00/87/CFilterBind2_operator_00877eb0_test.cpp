@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -25,7 +26,7 @@ class CThingFilter_IsOfType {public:unsigned long Type;bool operator()(const CTh
 class CThingFilter_OverlappingSphere {
 public:
     C3DVector SpherePos;float Radius;
-    __forceinline bool operator()(const CThing& thing)const {
+    FABLE_FORCEINLINE bool operator()(const CThing& thing)const {
         C3DVector center;float radius;
         thing.PhysicsTC->GetBoundingInfo(center,radius);
         C3DVector delta=center-SpherePos;

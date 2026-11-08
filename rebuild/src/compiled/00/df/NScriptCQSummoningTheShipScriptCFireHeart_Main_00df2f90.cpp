@@ -14,6 +14,7 @@
 //   bools at +0x50/+0x51/+0x52 = PDB - 0x14), PMasterData +0x18.
 // Naming wave 35: identity reg 00df157b "FireHeart" in 00df13a0; Alloc 00df2e90; vtable 012de2f0 slot 1; PDB ?Main@CFireHeart@CQ_SummoningTheShipScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CFireHeart::Main (wave3/labels_alloc.tsv); PDB ?Main@CFireHeart@CQ_SummoningTheShipScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CFireHeart@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_SummoningTheShipScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -34,7 +35,7 @@ struct CBase {                                          // vtable 0x01231710
 #include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

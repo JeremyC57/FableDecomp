@@ -11,6 +11,7 @@
 // Shape: as 0x00CBB920; val's D-form release closes the function.
 //   CCountedPointer is modelled with the release form the D rows need (decrement, re-read, test, then Data = Info = 0):
 //   VC7.1 emits the same bytes for this row as with the short `if (Info && --Info->RefCount == 0)` form.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 class CActiveEntityScriptBase;
@@ -36,7 +37,7 @@ template <class _RandomAccessIter, class _Tp, class _Compare>
 void __fastcall __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp);   // 0x00CBA840
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result)
+FABLE_FORCEINLINE _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

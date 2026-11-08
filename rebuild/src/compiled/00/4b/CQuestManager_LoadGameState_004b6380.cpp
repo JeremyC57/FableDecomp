@@ -11,6 +11,7 @@
 // Shape: the mode test is a named bool (`Mode == 2 || Mode == 3`, as in the landed SaveGameState) so the binary arm
 // comes first; the count read is the landed ReadPresizedString 0x00996390 inline ReadLong (value homed in the dead
 // context-argument slot); the byte array's GetData idiom; the parser's "" filename an unnamed temporary.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
@@ -37,8 +38,8 @@ class CMemoryDataInputStream { public:
     void*         CurrentSourcePtr;                        // +0x0c
     unsigned long SourceChunkStreamPos;                    // +0x10
     long          SourceChunkBytesRemaining;               // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -54,7 +55,7 @@ class CMemoryDataInputStream { public:
         else
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, 4);

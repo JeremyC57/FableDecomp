@@ -1,4 +1,5 @@
 // 007b2fd0 behaviour test: CTCGuard::WitnessedCrime (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -12,9 +13,9 @@ static CTCHeroOpinionDeedLog* g_log;
 
 class CThing { public:
     bool hasMember, hasLog;
-    __forceinline unsigned long HasTC(long type) const { return type == 0x23 ? hasMember : (type == 0x51 ? hasLog : 0); }
-    template<class T> __forceinline T* GetTC(long wanted) { return wanted == 0x23 ? (T*)g_member : (T*)g_log; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return type == 0x23 ? hasMember : (type == 0x51 ? hasLog : 0); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) { return wanted == 0x23 ? (T*)g_member : (T*)g_log; }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = GetTC<T>(interfaceType);

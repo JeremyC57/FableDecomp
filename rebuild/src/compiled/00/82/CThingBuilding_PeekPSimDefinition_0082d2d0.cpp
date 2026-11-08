@@ -9,6 +9,7 @@
 //        the release (`[edi+74h]`); the result holder is zeroed, filled, copied into the hidden result (add-ref) and released
 //        (the increment and decrement through one register under a shared null test); the empty arm stores a null result.
 // Layout: CThing DefGlobalIndex +0x8C; CThingBuildingDef::SimBuildingDef +0x74 (Ego_r.pdb +0x78, def classes pack to 1).
+#include "fable_compiler.h"
 class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
@@ -72,7 +73,7 @@ class CThingBuilding { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;                   // +0x8c
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    __forceinline const CThingBuildingDef* PeekPDef() const
+    FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
     {
         CDefPointer<CThingBuildingDef> def;
         GetDefinitionManager()->GetDef(DefGlobalIndex, &def);

@@ -11,6 +11,7 @@
 //   the manager and returns the RAW object pointer, so the local's release (`dec [esi+4] ; jne ; call [eax+4]`, the
 //   counted release living on the def object) runs BEFORE the field read (the landed wave-24m rule).
 // Identity: CThingBuilding vtable 0x0124509C slot 57; the `mov al ; and al,1` getter is an unsigned char bitfield.
+#include "fable_compiler.h"
 class CDefPointeeBase { public:                // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();             // slot 1
@@ -62,7 +63,7 @@ class CThingBuilding { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;      // +0x8c (CThing; PDB +0x9c)
     CDefinitionManager* GetDefinitionManager();     // 0x004C7990 (CThing)
-    __forceinline const CThingBuildingDef* GetBuildingDef()
+    FABLE_FORCEINLINE const CThingBuildingDef* GetBuildingDef()
     {
         CDefPointer<CThingBuildingDef> def;
         GetDefinitionManager()->GetDef(DefGlobalIndex, &def);

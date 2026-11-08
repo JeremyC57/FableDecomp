@@ -13,6 +13,7 @@
 // exits share `xor al,al`.
 // CThing is modelled locally: rebuild/include/engine has no CThing.h and the CThingCreatureBase/CThingAICreature
 // headers pad the CThing bytes.
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 
@@ -56,7 +57,7 @@ public:
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type) const
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

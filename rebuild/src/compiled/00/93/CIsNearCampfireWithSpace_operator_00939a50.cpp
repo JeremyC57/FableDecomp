@@ -9,6 +9,7 @@
 // Shape: `(unsigned char)(flags >> 14) & 1` gives `shr eax,0Eh ; test al,1`; the squared distance sums `x*x + y*y + z*z`
 // over three float locals; `!(d <= max)` style exit through `test ah,41h ; jp`; the lookup result feeds
 // `GetTC(...)->IsActionPointFree()` directly (`mov ecx,[eax+4]`) and its bool is returned by a tail `call ; ret`.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 struct CTCBase_Retail;
 class CTCBase;
@@ -22,7 +23,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -50,8 +51,8 @@ public:
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
     const C3DVector& GetPos() const;          // 0x004C73D0
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
 class CIsNearCampfireWithSpace {
 public:

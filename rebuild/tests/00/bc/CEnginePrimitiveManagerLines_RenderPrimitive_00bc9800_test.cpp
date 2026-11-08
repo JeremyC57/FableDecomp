@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -490,24 +491,24 @@ class CRenderStateManager:public CRenderStateManagerFields{public:
  struct CStateStackElement{public:CStateInfo*State;unsigned long Value;};
  struct CDeviceState{public:unsigned char unread0[60];CStateInfo ZBufferWriteEnable,ZBufferEnable;unsigned char unread100[20];CStateInfo PolyCullMode;};
  static unsigned long D3DPolyCullModeTable[3];
- __forceinline void SetRenderState(unsigned long value,CStateInfo&state){
+ FABLE_FORCEINLINE void SetRenderState(unsigned long value,CStateInfo&state){
  if(state.DesiredState!=value){
  if((CurrentBookmarkMask&state.BookmarkMask)==0){state.BookmarkMask|=CurrentBookmarkMask;reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize].State=&state;reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize].Value=state.DesiredState;++StateStackSize;}
  state.DesiredState=value;if(!state.DirtyListFlag){state.DirtyListFlag=true;StateUpdateList[StateUpdateListSize]=reinterpret_cast< ::CStateInfo*>(&state);++StateUpdateListSize;}
  }}
  public:void RestoreCaptureBlock();
- __forceinline void StartCaptureBlock(){reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize++].State=reinterpret_cast<CStateInfo*>(BookmarkDummyState);CurrentBookmarkMask<<=1;}
- __forceinline void SetPolyCullMode(POLY_CULL_MODE value){SetRenderState(D3DPolyCullModeTable[value],reinterpret_cast<CDeviceState*>(DeviceState)->PolyCullMode);}
- __forceinline void SetZBufferEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferEnable);}
- __forceinline void SetZBufferWriteEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferWriteEnable);}
+ FABLE_FORCEINLINE void StartCaptureBlock(){reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize++].State=reinterpret_cast<CStateInfo*>(BookmarkDummyState);CurrentBookmarkMask<<=1;}
+ FABLE_FORCEINLINE void SetPolyCullMode(POLY_CULL_MODE value){SetRenderState(D3DPolyCullModeTable[value],reinterpret_cast<CDeviceState*>(DeviceState)->PolyCullMode);}
+ FABLE_FORCEINLINE void SetZBufferEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferEnable);}
+ FABLE_FORCEINLINE void SetZBufferWriteEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferWriteEnable);}
 };
 class CRenderManagerCore:public CRenderStateManager{};class CRenderManager2D:public CRenderManagerCore{};class CRenderManager:public CRenderManager2D{};
 namespace NEngineInternal{extern CRenderManager*GPRenderManager;}
 class CRenderStateCaptureBlock{public:bool Open;static CRenderStateManager*StateManager;public:
- __forceinline CRenderStateCaptureBlock():Open(false){Capture();}
- __forceinline ~CRenderStateCaptureBlock(){Restore();}
- __forceinline void Capture(){if(!Open){StateManager->StartCaptureBlock();Open=true;}}
- __forceinline void Restore(){if(Open){StateManager->RestoreCaptureBlock();Open=false;}}
+ FABLE_FORCEINLINE CRenderStateCaptureBlock():Open(false){Capture();}
+ FABLE_FORCEINLINE ~CRenderStateCaptureBlock(){Restore();}
+ FABLE_FORCEINLINE void Capture(){if(!Open){StateManager->StartCaptureBlock();Open=true;}}
+ FABLE_FORCEINLINE void Restore(){if(Open){StateManager->RestoreCaptureBlock();Open=false;}}
 };
 class CEnginePrimitiveRenderUtil:public CBaseClassNonCopyable{};
 // Layout: original polymorphic util4, SceneList reference4, private Enable8.

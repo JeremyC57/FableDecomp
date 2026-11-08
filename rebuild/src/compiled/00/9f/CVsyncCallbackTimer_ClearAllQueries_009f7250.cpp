@@ -18,6 +18,7 @@
 //   __prev_node, __result, __it, __first, ...) are kept verbatim. Retail STLport list = one node pointer (4 bytes); node =
 //   {_M_next, _M_prev, _M_data}; CVsyncCallbackTimer::CPendingQuery (Ego_r.pdb, 16 bytes) = {Query, Frame, double TimeStamp}.
 // Pragma: #pragma optimize("", off).
+#include "fable_compiler.h"
 #pragma optimize("", off)
 extern "C" void __cdecl free(void* block);                         // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);                // 0x00BFEA0E
@@ -134,7 +135,7 @@ public:
         unsigned int __result = distance(begin(), end());
         return __result;
     }
-    __forceinline _Tp& back() { iterator __tmp = end(); --__tmp; return *__tmp; }
+    FABLE_FORCEINLINE _Tp& back() { iterator __tmp = end(); --__tmp; return *__tmp; }
     iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

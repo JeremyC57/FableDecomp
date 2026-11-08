@@ -1,4 +1,5 @@
 // Behaviour test for 004df14b: body copied from src/004df14b.cpp, callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -12,8 +13,8 @@ class C3DVector { public: float X, Y, Z; C3DVector() { } };
 template<class T> struct CRetailVector { T* m_pFirst; T* m_pLast; CAllocProxy<T*> m_pEnd; CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
 struct CIntelligentPointerThing { void* __vftable; void* PData; };
 class CBaseClass { public: virtual void v00() {} CBaseClass() { ++g_handleCtor; } };
-struct CIVCountedPointer { CEnginePersistentPrimitiveBase* Object; __forceinline CIVCountedPointer() : Object(0) { } };
-class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
+struct CIVCountedPointer { CEnginePersistentPrimitiveBase* Object; FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { } };
+class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; virtual void v00() {} FABLE_FORCEINLINE CEnginePrimitiveHandle() { } };
 class CTCDPhysicalObstruction : public CTCDriverBase_Calls { public:
     C3DVector StartPos; C3DVector EndPos; long LifeTimer; float Radius; CRetailVector<CIntelligentPointerThing> ThingsToIgnoreObstruction;
     CEnginePrimitiveHandle line1; CEnginePrimitiveHandle line2; CEnginePrimitiveHandle line3;

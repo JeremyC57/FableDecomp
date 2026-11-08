@@ -13,6 +13,7 @@
 //   CurrentTurncoatedness +0x10, PDef +0x14, TurncoatedEffect +0x18, TimeDelayBeforeResistanceRecoveryFrames +0x30,
 //   CurrentRecoveryTimer +0x34, TurncoatStageEffects +0x3c, CreatureTurncoatResistance +0x48; CTurncoatDef TurncoatedEffect
 //   +0x28, TurncoatActivateEffect +0x2c.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 
@@ -32,7 +33,7 @@ class CThing { public:
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags;                              // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

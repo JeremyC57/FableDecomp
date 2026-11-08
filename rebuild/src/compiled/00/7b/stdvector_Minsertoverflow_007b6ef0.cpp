@@ -13,6 +13,7 @@
 //   `atend` slot), the pointer's copy constructor is `__forceinline` (base ctor, vtable store, SetPItem(GetPItem())),
 //   and `_M_clear()` inlines to the `__pointer->~_Tp()` loop -- a virtual destructor, so each element is destroyed
 //   through vtable slot 0 with a zero delete flag -- plus `if (_M_start) free(_M_start)`.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 
@@ -32,7 +33,7 @@ public:
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0125A860 for CThingMarker
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 namespace std {

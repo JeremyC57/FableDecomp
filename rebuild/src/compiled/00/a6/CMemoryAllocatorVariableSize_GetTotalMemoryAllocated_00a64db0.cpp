@@ -5,6 +5,7 @@
 //   PNextChunk +0x20, PFirstAllocatedArea +0x30; CMemoryArea (0x20) next at +0, payload size at +0x18.
 // Shape: the alignment helper is STATIC and reads the globals just stored, so VC forwards the stored values (shift in ecx,
 //   alignment in esi) instead of re-reading the members; both aligned sizes ((n + align - 1) >> shift << shift) are hoisted out of the loop.
+#include "fable_compiler.h"
 extern unsigned long g_AllocatorAlignmentShift;   // 0x013D28D8
 extern unsigned long g_AllocatorAlignment;        // 0x013D28D4
 
@@ -35,7 +36,7 @@ class CMemoryAllocatorVariableSize { public:
     unsigned long     Alignment;                   // +0xc14
     unsigned long     AlignmentShift;              // +0xc18
     CMemoryAreaChunk* PFirstChunk;                 // +0xc1c
-    static __forceinline unsigned long AlignSize(unsigned long size) { return ((size + g_AllocatorAlignment - 1) >> g_AllocatorAlignmentShift) << g_AllocatorAlignmentShift; }
+    static FABLE_FORCEINLINE unsigned long AlignSize(unsigned long size) { return ((size + g_AllocatorAlignment - 1) >> g_AllocatorAlignmentShift) << g_AllocatorAlignmentShift; }
     unsigned long GetTotalMemoryAllocated();
 };
 

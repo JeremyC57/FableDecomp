@@ -1,5 +1,6 @@
 // Behaviour test for 00734210: src/00734210.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCCombat::SetBlockPercentageChance(float percentage, EWeaponClass weaponClass)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -73,7 +74,7 @@ struct CCombatAbilityMap {                      // STLport multimap (12 bytes): 
     SAbilityNode* _M_header;
     unsigned long _M_node_count;
     unsigned long _M_key_compare;
-    __forceinline CAbilityIterator lower_bound(const ECombatAbilityDataType& k) const
+    FABLE_FORCEINLINE CAbilityIterator lower_bound(const ECombatAbilityDataType& k) const
     {
         SAbilityNode* y = _M_header;
         SAbilityNode* x = _M_header->_M_parent;
@@ -86,7 +87,7 @@ struct CCombatAbilityMap {                      // STLport multimap (12 bytes): 
         }
         return CAbilityIterator(y);
     }
-    __forceinline CAbilityIterator upper_bound(const ECombatAbilityDataType& k) const
+    FABLE_FORCEINLINE CAbilityIterator upper_bound(const ECombatAbilityDataType& k) const
     {
         SAbilityNode* y = _M_header;
         SAbilityNode* x = _M_header->_M_parent;

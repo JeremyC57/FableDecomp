@@ -2,6 +2,7 @@
 // battle sub-def's exhausted time, clears the type-9 component's active flag (the map's end entry when the type is not in
 // the map), sets RecoveryCount = time * frames-per-second, runs CModeBase::OnActivate, sets physics mode 8, clears bit 0 of
 // the thing's +0xbc flags and resets the creature's action unless one is being performed; the def is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -101,13 +102,13 @@ class CThing { public:
     CDefClassBase*  PDef;                  // +0x70
     unsigned char   _pad74[0xbc - 0x74];
     unsigned char   m_flagsBC;             // +0xbc
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

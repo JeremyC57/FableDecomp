@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::CDrawQuickAccessIcons(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, list), own vtable, charge state cleared (index -1), flash fade and charge-up handle built, empty handle/effect/position vectors, then thirteen effect slots and thirteen effect positions
@@ -24,12 +25,12 @@ class CIVCountedPointeeBase;
 
 struct CIVCountedPointer {                         // embedded member with an inline constructor
     CIVCountedPointeeBase* Object;
-    __forceinline CIVCountedPointer() : Object(0) { }
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4
-    __forceinline CEnginePrimitiveHandle() { }
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }
 };
 
 class C2DCoordI { public:

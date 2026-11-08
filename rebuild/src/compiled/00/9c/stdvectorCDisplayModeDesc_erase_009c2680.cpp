@@ -8,6 +8,7 @@
 //   (__false_type), so the copy is the random-access __copy loop `for (n = last - first; n > 0; --n) *result++ = *first++`
 //   with the element's implicit memberwise operator= (four dword moves); the trivial destructors leave no loop. VC7.1
 //   only expands __copy_ptrs/__copy here when they are __forceinline (plain `inline` leaves two out-of-line calls).
+#include "fable_compiler.h"
 #include <stddef.h>
 class C2DExtentsI {                                         // Ego_r.pdb, 8 bytes
 public:
@@ -37,7 +38,7 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
 };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                                  _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -48,7 +49,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }

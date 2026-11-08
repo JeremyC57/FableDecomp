@@ -3,6 +3,7 @@
 // Flags:
 // Shape: DrawBuffersIndexed is called straight on NEngineInternal::GPShaderRenderManager with the buffer casts in the
 //   argument list; a named manager local (prior) makes VC reload [esi+0x1d4] instead of keeping &D3DDevice in esi.
+#include "fable_compiler.h"
 #include "engine/CBaseClassNonCopyable.h"
 #define CRenderStateManager CRenderStateManagerFields
 #include "engine/CRenderStateManager.h"
@@ -193,25 +194,25 @@ class CRenderStateManager:public CRenderStateManagerFields{
  struct CStateStackElement{public:CStateInfo*State;unsigned long Value;};
  struct CDeviceState{public:unsigned char unread0[40];CStateInfo ColourWriteEnable,ZBufferWriteEnable,ZBufferEnable;unsigned char unread100[20];CStateInfo PolyCullMode;};
  static unsigned long D3DPolyCullModeTable[3];
- __forceinline void SetRenderState(unsigned long value,CStateInfo&state){
+ FABLE_FORCEINLINE void SetRenderState(unsigned long value,CStateInfo&state){
  if(state.DesiredState!=value){
  if((CurrentBookmarkMask&state.BookmarkMask)==0){state.BookmarkMask|=CurrentBookmarkMask;reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize].State=&state;reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize].Value=state.DesiredState;++StateStackSize;}
  state.DesiredState=value;if(!state.DirtyListFlag){state.DirtyListFlag=true;StateUpdateList[StateUpdateListSize]=reinterpret_cast< ::CStateInfo*>(&state);++StateUpdateListSize;}
  }}
  public:void RestoreCaptureBlock();void RealiseRenderState();
- __forceinline void StartCaptureBlock(){reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize++].State=reinterpret_cast<CStateInfo*>(BookmarkDummyState);CurrentBookmarkMask<<=1;}
- __forceinline void SetPolyCullMode(POLY_CULL_MODE value){SetRenderState(D3DPolyCullModeTable[value],reinterpret_cast<CDeviceState*>(DeviceState)->PolyCullMode);}
- __forceinline void SetColourWriteEnable(bool value){SetRenderState(value?15:0,reinterpret_cast<CDeviceState*>(DeviceState)->ColourWriteEnable);}
- __forceinline void SetZBufferEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferEnable);}
- __forceinline void SetZBufferWriteEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferWriteEnable);}
+ FABLE_FORCEINLINE void StartCaptureBlock(){reinterpret_cast<CStateStackElement*>(StateStack)[StateStackSize++].State=reinterpret_cast<CStateInfo*>(BookmarkDummyState);CurrentBookmarkMask<<=1;}
+ FABLE_FORCEINLINE void SetPolyCullMode(POLY_CULL_MODE value){SetRenderState(D3DPolyCullModeTable[value],reinterpret_cast<CDeviceState*>(DeviceState)->PolyCullMode);}
+ FABLE_FORCEINLINE void SetColourWriteEnable(bool value){SetRenderState(value?15:0,reinterpret_cast<CDeviceState*>(DeviceState)->ColourWriteEnable);}
+ FABLE_FORCEINLINE void SetZBufferEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferEnable);}
+ FABLE_FORCEINLINE void SetZBufferWriteEnable(bool value){SetRenderState(value?1:0,reinterpret_cast<CDeviceState*>(DeviceState)->ZBufferWriteEnable);}
 };
 class CRenderManagerCore:public CRenderStateManager{};class CRenderManager2D:public CRenderManagerCore{};class CRenderManager:public CRenderManager2D{};
 namespace NEngineInternal{extern CRenderManager*GPRenderManager;}
 class CRenderStateCaptureBlock{bool Open;static CRenderStateManager*StateManager;public:
- __forceinline CRenderStateCaptureBlock():Open(false){Capture();}
- __forceinline ~CRenderStateCaptureBlock(){Restore();}
- __forceinline void Capture(){if(!Open){StateManager->StartCaptureBlock();Open=true;}}
- __forceinline void Restore(){if(Open){StateManager->RestoreCaptureBlock();Open=false;}}
+ FABLE_FORCEINLINE CRenderStateCaptureBlock():Open(false){Capture();}
+ FABLE_FORCEINLINE ~CRenderStateCaptureBlock(){Restore();}
+ FABLE_FORCEINLINE void Capture(){if(!Open){StateManager->StartCaptureBlock();Open=true;}}
+ FABLE_FORCEINLINE void Restore(){if(Open){StateManager->RestoreCaptureBlock();Open=false;}}
 };
 
 class CMatrix3x4;class CVertexShaderData;class CPixelShaderData;class CShaderBase{protected:virtual~CShaderBase();};class CVertexShader:public CShaderBase{private:CVertexShaderData*Data;};class CPixelShader:public CShaderBase{private:CPixelShaderData*Data;};
@@ -227,9 +228,9 @@ class CVertexBufferWin32:public CVertexBufferBase{};
 class CIndexBuffer:public CIndexBufferFields{public:IDirect3DIndexBuffer9*GetD3DIndexBuffer(){return PD3DIndexBuffer;}EPrimitiveType GetPrimitiveType()const{return reinterpret_cast<const EPrimitiveType&>(PrimitiveType);}};
 class CShaderRenderManager:public CBaseClassNonCopyable{private:const CVertexShaderConstantLayout*CurrentVSConstantLayout;unsigned char unread08[0x1c8];CRenderManager*RenderManager;IDirect3DDevice9*D3DDevice;unsigned char unread1d8[0x10];bool WorldMatrixIsIdentity;unsigned char unread1e9[0x1ef];unsigned long UpdateFlags;
 public:void ApplyVertexShader(const CVertexShader&,bool);void ApplyPixelShader(const CPixelShader&);void SetWorldTransform(const CMatrix3x4&);
- __forceinline void SelectVertexBuffer(CVertexBufferWin32&vb){D3DDevice->SetStreamSource(0,vb.GetD3DVertexBuffer(),0,vb.GetStride());}
- __forceinline void DrawBuffersIndexed(CVertexBufferWin32&vb,unsigned long first,unsigned long count,CIndexBuffer&ib,unsigned long start,unsigned long primitives,EPrimitiveType type){SelectVertexBuffer(vb);D3DDevice->SetIndices(ib.GetD3DIndexBuffer());if(type==PT_NULL)type=ib.GetPrimitiveType();RenderManager->RealiseRenderState();D3DDevice->DrawIndexedPrimitive(static_cast<D3DPRIMITIVETYPE>(type),0,first,count,start,primitives);}
-    __forceinline void PrepareForRender(unsigned long flags)
+ FABLE_FORCEINLINE void SelectVertexBuffer(CVertexBufferWin32&vb){D3DDevice->SetStreamSource(0,vb.GetD3DVertexBuffer(),0,vb.GetStride());}
+ FABLE_FORCEINLINE void DrawBuffersIndexed(CVertexBufferWin32&vb,unsigned long first,unsigned long count,CIndexBuffer&ib,unsigned long start,unsigned long primitives,EPrimitiveType type){SelectVertexBuffer(vb);D3DDevice->SetIndices(ib.GetD3DIndexBuffer());if(type==PT_NULL)type=ib.GetPrimitiveType();RenderManager->RealiseRenderState();D3DDevice->DrawIndexedPrimitive(static_cast<D3DPRIMITIVETYPE>(type),0,first,count,start,primitives);}
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.PeekAsCArray(),

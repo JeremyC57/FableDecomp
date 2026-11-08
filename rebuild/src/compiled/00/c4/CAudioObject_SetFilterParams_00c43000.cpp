@@ -10,6 +10,7 @@
 //   the fourth belongs (retail never compares +0x0C), so the model does too; each `fld [value] ; fld [storage] ;
 //   fucompp ; test ah,44h ; jp` loads the right operand first. The copies are the implicit 24-byte assignment
 //   (six dword moves through one register). The clear arm is `or eax,8` in a register with the zero store between.
+#include "fable_compiler.h"
 struct SFilterParams {
     float m_a;                                  // +0x00
     float m_b;                                  // +0x04
@@ -17,7 +18,7 @@ struct SFilterParams {
     float m_d;                                  // +0x0c
     float m_e;                                  // +0x10
     float m_f;                                  // +0x14
-    __forceinline bool operator==(const SFilterParams& other) const
+    FABLE_FORCEINLINE bool operator==(const SFilterParams& other) const
     {
         return m_a == other.m_a && m_b == other.m_b && m_c == other.m_c
             && m_a == other.m_a && m_e == other.m_e && m_f == other.m_f;

@@ -6,16 +6,17 @@
 // Body: CIVCountedPointer release -- `if (p) { p->Release(); p = 0; }` with Release = `if (--IVRefCount == 0) slot1()`.
 // Layout: +0x00..+0x0b trivially destructible data (unknown, folded body); +0x0c CIVCountedPointer<T> (one pointer).
 // Opt: size TU (`and dword ptr [esi+0Ch],0`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                          // slot 1 (+4)
     unsigned long IVRefCount;                           // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) DeleteThis(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
 template <class T> class CIVCountedPointer { public:
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();

@@ -9,6 +9,7 @@
 // PhysicsTC at +0x60 (as 0x006689E0).
 // Shape: the sphere filter is the landed operator() body made inline (the bound radius lands in the dead filter
 // argument slot, the centre in the frame); the second filter stays a call through the bound reference.
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -69,7 +70,7 @@ class CThingBuilding : public CThing { public: enum { ThingListType = 3 }; };
 class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;                        // +0x00
     float     Radius;                           // +0x0c
-    __forceinline bool operator()(CThing* thing) const
+    FABLE_FORCEINLINE bool operator()(CThing* thing) const
     {
         C3DVector centre;
         float boundRadius;
@@ -91,7 +92,7 @@ template <class A, class B> class CFilter_Bind2 { public:     // both filters, h
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
-    template <class T> __forceinline bool operator()(T* thing) const { return First(thing) && Second(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(T* thing) const { return First(thing) && Second(thing); }
 };
 template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long long
 #define __forceinline inline
@@ -10,8 +11,8 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF(const C2DVector*,const C2
 class CRGBColour { public:
  unsigned char B,G,R,A;
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { Set(r,g,b,a); }
- __forceinline void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
- __forceinline CRGBColour(const CRGBColour& o) { Set(o.R,o.G,o.B,o.A); }
+ FABLE_FORCEINLINE void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+ FABLE_FORCEINLINE CRGBColour(const CRGBColour& o) { Set(o.R,o.G,o.B,o.A); }
 };
 class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){} };
 class CEnginePrimitive { public:

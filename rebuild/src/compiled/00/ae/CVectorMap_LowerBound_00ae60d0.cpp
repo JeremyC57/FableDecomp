@@ -10,9 +10,10 @@
 //   null entry name -> true, null key -> false); the key's data pointer is hoisted (ebp), which VC7.1 does only when the
 //   callee's body is visible in the TU (noinline, as the landed 0x007564F0 of the same family).
 // Model: the landed 0x00A6F2F0 LowerBound text with the landed 0x007564F0 CCharString / CBasicString model.
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

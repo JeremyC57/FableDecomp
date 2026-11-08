@@ -21,6 +21,7 @@
 // Shape: the PDB's public setters SetTextureUVModeU / SetTextureUVModeV / SetTextureFilterModeMin (stage, mode) map the mode
 //   through a lookup table and call the private SetRenderState(value, state) (modelled here with the looked-up value); the
 //   bookmark test reads the manager mask first, and the dirty flag is tested before the new value is stored.
+#include "fable_compiler.h"
 #define CRenderStateManager CRenderStateManagerLayout
 #include "engine/CRenderStateManager.h"
 #undef CRenderStateManager
@@ -53,11 +54,11 @@ public:
     CStateStackElement* GetStateStack() { return reinterpret_cast<CStateStackElement*>(StateStack); }
     CDeviceState& GetDeviceState() { return *reinterpret_cast<CDeviceState*>(DeviceState); }
 
-    __forceinline void SetTextureUVModeU(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureUVModeU[stage]); }
-    __forceinline void SetTextureUVModeV(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureUVModeV[stage]); }
-    __forceinline void SetTextureFilterModeMin(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureFilterModeMin[stage]); }
+    FABLE_FORCEINLINE void SetTextureUVModeU(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureUVModeU[stage]); }
+    FABLE_FORCEINLINE void SetTextureUVModeV(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureUVModeV[stage]); }
+    FABLE_FORCEINLINE void SetTextureFilterModeMin(long stage, const unsigned long& d3dValue) { SetRenderState(d3dValue, GetDeviceState().TextureFilterModeMin[stage]); }
 private:
-    __forceinline void SetRenderState(unsigned long value, CStateInfo& state)
+    FABLE_FORCEINLINE void SetRenderState(unsigned long value, CStateInfo& state)
     {
         if (state.DesiredState != value) {
             if ((CurrentBookmarkMask & state.BookmarkMask) == 0) {
@@ -70,7 +71,7 @@ private:
             AddStateToUpdateList(state);
         }
     }
-    __forceinline void AddStateToUpdateList(CStateInfo& state)
+    FABLE_FORCEINLINE void AddStateToUpdateList(CStateInfo& state)
     {
         if (!state.DirtyListFlag) {
             state.DirtyListFlag = true;

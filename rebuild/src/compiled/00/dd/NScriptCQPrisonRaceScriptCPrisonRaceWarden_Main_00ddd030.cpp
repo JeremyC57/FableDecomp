@@ -21,6 +21,7 @@
 // the terminate test duplicated in both cut-scene arms is hoisted by VC; the final idle loop is a do-while.
 // Naming wave 35: identity reg 00ddaf6b "PrisonRaceWarden" in 00ddae40; Alloc 00ddc2d0; vtable 012dca10 slot 1; PDB ?Main@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CPrisonRaceWarden::Main (wave3/labels_alloc.tsv); PDB ?Main@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CPrisonRaceWarden@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_PrisonRaceScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -36,7 +37,7 @@ struct CCountedPointerWords {
     void*           Data;
     CCPPointerInfo* Info;
     CCountedPointerWords& operator=(const CCountedPointerWords& other);   // 0x008AB1E0
-    __forceinline void ReleaseInline()
+    FABLE_FORCEINLINE void ReleaseInline()
     {
         if (Info) {
             --Info->RefCount;
@@ -70,7 +71,7 @@ struct CBaseObjectDtor {
     virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
@@ -80,7 +81,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void Destroy();                                    // 0x007E74D0
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         PImp.ReleaseInline();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

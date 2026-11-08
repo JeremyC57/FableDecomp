@@ -12,6 +12,7 @@
 // Shape: every miss path reads the never-written out slot, which is also the lookup key slot.
 // Layout: engine/CAIStateGroup_MinionSleep.h flattens the base (pads only); Ego_r.pdb puts CAIStateGroup_GoToBed (0x60 bytes,
 // PBed +0x14, BedPos +0x3c) under it, so the class is modelled locally with those PDB members.
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -27,7 +28,7 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -40,7 +41,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

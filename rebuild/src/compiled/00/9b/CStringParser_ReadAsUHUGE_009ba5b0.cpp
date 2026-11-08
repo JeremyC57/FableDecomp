@@ -1,6 +1,7 @@
 // 009ba5b0 CStringParser::ReadAsUHUGE
 // Leaf: ?ReadAsUHUGE@CStringParser@@QAE_KXZ
 // Flags:
+#include "fable_compiler.h"
 #define CStringParser CStringParserFields
 #include "engine/CStringParser.h"
 #undef CStringParser
@@ -11,7 +12,7 @@ class CStringParser:public CStringParserFields{public:
  long SkipWhitespace();unsigned __int64 ReadAsUHUGE();
  unsigned long GetStringPos()const{return reinterpret_cast<const CCursorPos&>(CursorPos).StringPos;}
 protected:bool CalcInQuotes(bool,const char*,const char*)const;
- __forceinline void MoveStringPos(unsigned long n){if(n){
+ FABLE_FORCEINLINE void MoveStringPos(unsigned long n){if(n){
  reinterpret_cast<CCursorPos*>(CursorPos)->InQuotes=CalcInQuotes(reinterpret_cast<CCursorPos*>(CursorPos)->InQuotes,static_cast<const char*>(String)+reinterpret_cast<CCursorPos*>(CursorPos)->StringPos,static_cast<const char*>(String)+reinterpret_cast<CCursorPos*>(CursorPos)->StringPos+n);
  reinterpret_cast<CCursorPos*>(CursorPos)->StringPos+=n;
  }}

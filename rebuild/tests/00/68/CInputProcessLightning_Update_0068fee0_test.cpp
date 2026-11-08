@@ -2,6 +2,7 @@
 // unless MyPlayer's controlled creature exists, is alive and holds component kind 0x94 (bit 20 of the presence word
 // at +0x30). Checks: no creature, dead creature with the component, live creature with it (no event), live creature
 // with only the neighbouring kinds 0x93/0x95/0xb4 (event), and the event's default fields.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_fail = 0;
@@ -29,7 +30,7 @@ struct CThing_Retail {
     unsigned char  _pad40[0x51];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class CPlayer {
 public:

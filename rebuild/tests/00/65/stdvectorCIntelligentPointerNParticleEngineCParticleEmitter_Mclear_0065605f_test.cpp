@@ -1,5 +1,6 @@
 // Test for 0x0065605F vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::_M_clear: the source object must
 // destroy every element of [start, finish) through __destroy_aux, then free the block (and skip free on a null start).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 inline void* operator new(size_t, void* p) { return p; }
@@ -22,7 +23,7 @@ template <class _ForwardIterator>
 void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0043F850
 
 template <class _ForwardIterator>
-__forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 {
     __destroy_aux(__first, __last, __false_type());
 }

@@ -11,6 +11,7 @@
 //   +0x20 (kind 0xF6 = word 7 bit 22) and map +0x44 as in the landed CInputProcessBetting::ProcessInput 0x00691560.
 // Shape: the presence test precedes the lookup, so the component pick is the plain end/hit ternary (no preload); the
 //   release arm's 0x25/0x26 sends are cross-jumped into from the press arm.
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 class CProcessedInput {
@@ -40,7 +41,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCQuickAccessMenu* Find(long kind)
+    FABLE_FORCEINLINE CTCQuickAccessMenu* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCQuickAccessMenu*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -54,8 +55,8 @@ class CThing { public:
     CTCMap        m_tcs;                           // +0x44
     unsigned char _pad50[0x91 - 0x50];
     unsigned char m_dead : 1;                      // +0x91 bit 0
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCQuickAccessMenu* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCQuickAccessMenu* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {

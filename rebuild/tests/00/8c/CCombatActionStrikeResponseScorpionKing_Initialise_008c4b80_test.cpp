@@ -1,6 +1,7 @@
 // Behaviour test for 008c4b80: src/008c4b80.cpp copied verbatim; Initialise runs the base Initialise keeping the body's
 // facing angle, then (with the def's special-effects sub-def) spawns "EYE_GET_HIT" at the creature and, for a live
 // effect with interface 0x4b, attaches its emitter to the creature's "EMITTER_EYE" helper; refs are released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -103,7 +104,7 @@ public:
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     CPhysicsBody* GetBody() const { return m_pBody; }
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

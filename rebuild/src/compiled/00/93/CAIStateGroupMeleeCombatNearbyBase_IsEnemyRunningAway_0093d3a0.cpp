@@ -12,6 +12,7 @@
 // body in ecx before the vptr load; the scratchpad pointer is uninitialised on a miss (retail reads the frame word the
 // perceiver occupies, as VC packs both there); `bool b = false; if (..) b = true;` gives `xor bl,bl ; ... ; mov bl,1`.
 // Layout: engine/CAIStateGroup_MeleeCombatNearbyBase.h flattens the base; local model with its PEnemy (+0x14).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
@@ -38,18 +39,18 @@ class CThing { public:
     CPhysicsBody* m_pBody;                      // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
     C3DVector GetFacing() const { return m_pBody->GetFacing(); }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline void GetTC(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE void GetTC(T** ppOut, long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(type);
         *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

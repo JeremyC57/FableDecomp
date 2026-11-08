@@ -13,6 +13,7 @@
 // vectors in retail (16 in the PDB/engine header), so IceBumpmapVertexShader is at +0x188 (PDB +0x194) and
 // IceBumpmapPixelShader at +0x190 (PDB +0x19c); a local view is used, as in the landed CEngineWaterRenderer rows.
 
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
@@ -57,7 +58,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
@@ -164,7 +165,7 @@ public:
 };
 extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCore* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCore* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

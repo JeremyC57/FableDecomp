@@ -14,6 +14,7 @@
 // inline at the end) through copy_if with the house predicate (back_insert_iterator has a user ctor, so copy_if returns it
 // through a hidden pointer); the 0x23 component is a named local (an unnamed GetTC result moves its key to a second slot);
 // the walk caches the end pointer in a frame local.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 class CTCBase;
@@ -37,8 +38,8 @@ class CThing { public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

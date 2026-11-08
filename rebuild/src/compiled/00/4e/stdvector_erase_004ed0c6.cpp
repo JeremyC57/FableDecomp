@@ -12,6 +12,7 @@
 //   TU compiles first, gets no store and is homed in the top byte of the `first` slot (`lea eax,[ebp+0Bh]`).
 // Element: CShopItemDef, 0x48 bytes in retail (vtable 0x0123B644 slot 20 returns 0x48, base CSubDefClassBase), Ego_r.pdb members
 //   rebased to retail (retail offset = Ego_r offset).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace std {
@@ -35,13 +36,13 @@ _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __res
 template <class _Tp>
 void __destroy_aux(_Tp* __first, _Tp* __last, const __false_type&);   // 0x004DA5BD (defined below, ahead of erase)
 template <class _Tp>
-__forceinline void __destroy(_Tp* __first, _Tp* __last, _Tp*)
+FABLE_FORCEINLINE void __destroy(_Tp* __first, _Tp* __last, _Tp*)
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(__first, __last, _Trivial_destructor());
 }
 template <class _Tp>
-__forceinline void _Destroy(_Tp* __first, _Tp* __last)
+FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last)
 {
     __destroy(__first, __last, (_Tp*)0);
 }

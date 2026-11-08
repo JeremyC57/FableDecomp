@@ -9,6 +9,7 @@
 // ParentThing +4, Morality +0x28 (PDB +0x30).
 // Shape: the experience component comes through the inline accessor with an unset local (the absent path reads the
 // dead argument slot); the morality sum is written def-first (`mov eax,[def+2Ch] ; add eax,[stats+28h]`).
+#include "fable_compiler.h"
 class CTCHeroExperience;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,7 +22,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCHeroExperience* Find(long kind)
+    FABLE_FORCEINLINE CTCHeroExperience* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -35,9 +36,9 @@ class CThing { public:
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCHeroExperience* GetTCIfPresent(CThing* thing, long kind)
+FABLE_FORCEINLINE CTCHeroExperience* GetTCIfPresent(CThing* thing, long kind)
 {
     CTCHeroExperience* tc;                         // deliberately unset when the component is absent
     if (thing->HasTC(kind))

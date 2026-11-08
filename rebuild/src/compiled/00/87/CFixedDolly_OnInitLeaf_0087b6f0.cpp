@@ -12,6 +12,7 @@
 // absent path reads garbage, as the landed 0x0069F480 family); the found component rides in esi. The `kind == 1 ? a : b` object of the
 // centre call selects between the component (register) and a second, never-assigned component pointer read from the same shared
 // frame word -- retail's `mov ecx,esi ; je ; mov ecx,[esp+8]`.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -14,6 +14,7 @@
 // Shape: the tentacle comes from the unchecked out-parameter lookup in an inline accessor (as the landed FrameUpdate 0x008CF460);
 //   the limit is written `(long)(def->TentacleSmackDownTime * GetConstantFPS())`: the fps-first spelling keeps the int-to-float
 //   spill in its own slot and costs the frame 4 bytes (the lookup key no longer packs with the CSoundPair temporary).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };
 #include "engine/CVectorMap.h"
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -99,7 +100,7 @@ class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   
     virtual void v00();
     CCreatureAction_TentacleStrikeLoop(CThingCreatureBase* owner, long startTick);   // 0x008CF990
     virtual void FinishAction();
-    __forceinline CTCKrakenTentacle* GetTentacle() const
+    FABLE_FORCEINLINE CTCKrakenTentacle* GetTentacle() const
     {
         CTCKrakenTentacle* tentacle;
         PCreature.GetPItem()->GetInterface(&tentacle, 0xe3);

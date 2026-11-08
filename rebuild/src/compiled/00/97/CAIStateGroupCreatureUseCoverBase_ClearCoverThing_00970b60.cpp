@@ -9,6 +9,7 @@
 // Shape: the reset `PCoverThing = CIntelligentPointer<CThing>(0)` (vtable 0x01238C6C) runs only inside the alive test;
 // the out-parameter lookup keeps the component in eax (`mov eax,[eax+4] ; push 0 ; mov ecx,eax`).
 // Layout: Ego_r.pdb CAIStateGroup_CreatureUseCoverBase (PCoverThing +0x1f, CoverList +0x28, TimingCritical +0x1e).
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -57,7 +58,7 @@ struct CCoverList                                   // vector<CIntelligentPointe
     CIntelligentPointer<CThing>* erase(CIntelligentPointer<CThing>* from, CIntelligentPointer<CThing>* to);   // 0x004AC0F0
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {

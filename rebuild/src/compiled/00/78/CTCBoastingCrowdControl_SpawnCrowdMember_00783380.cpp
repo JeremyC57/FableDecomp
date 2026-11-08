@@ -11,6 +11,7 @@
 // 0.5f 0x0122F59C, 5.0f 0x0126B388, 1/(2pi) 0x01237F08.
 // Layout: CThingAICreatureInit (Ego_r.pdb, 28 bytes) as the landed 0x008A9100; crowd def MaleChance +0x34, MaleDef +0x80,
 // FemaleDef +0x84; creature flag bytes +0x92 (bit 4), +0x15c (bit 6), +0x1c9 (bit 0).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 class CCharString { public:
@@ -24,13 +25,13 @@ namespace { extern CCharString BOASTING_CROWD_MEMBER_SCRIPT_NAME; }             
 #include "engine/C3DVector.h"
 long __fastcall GFROR13(unsigned long value);  // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-__forceinline unsigned long GFRandom(unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);
     return *seed;
 }
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -52,7 +53,7 @@ class CThingAICreatureInit { public:                           // Ego_r.pdb, 28 
     bool EnableCreatureAutoPlacing;                     // +0x13
     CThingBuilding* HomeBuilding;                       // +0x14
     CThingBuilding* WorkBuilding;                       // +0x18
-    __forceinline CThingAICreatureInit(const CCharString& scriptName = "", const CCharString& brainName = "")
+    FABLE_FORCEINLINE CThingAICreatureInit(const CCharString& scriptName = "", const CCharString& brainName = "")
         : OriginalThing(0), PreviousThing(0), ScriptName(scriptName), OverridingBrainName(brainName),
           PlayerCharacter(false), Drawable(true), PlaceAtEndOfList(true), EnableCreatureAutoPlacing(false),
           HomeBuilding(0), WorkBuilding(0) {}
@@ -86,7 +87,7 @@ struct CTCMap {
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind);    // 0x0040F020
-    __forceinline void* Find(long kind)
+    FABLE_FORCEINLINE void* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
@@ -143,7 +144,7 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline void* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE void* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingAICreature : public CThing { public:
     void AutoPlaceNear(const C3DVector& pos, float radius);   // 0x00665DF0

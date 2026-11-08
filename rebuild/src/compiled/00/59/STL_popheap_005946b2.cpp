@@ -12,6 +12,7 @@
 //   area), __adjust_heap 0x00593E3E (`__fastcall` first, hole 0 in edx), ~pair 0x005930F3 (the by-value val).
 // Shape: the STLport body in a size TU: the pair helpers stay out of line; the by-value val argument is copy-built in
 //   the argument area (`push ecx ; push ecx ; mov ecx,esp`), the empty comparator pushed from its own slot.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {
 public:
@@ -25,7 +26,7 @@ class CDefPointer {
 public:
     T* Object;                                          // +0x00
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++((CDefPointeeBase*)Object)->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) { if (--((CDefPointeeBase*)Object)->IVRefCount == 0) ((CDefPointeeBase*)Object)->Delete(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--((CDefPointeeBase*)Object)->IVRefCount == 0) ((CDefPointeeBase*)Object)->Delete(); Object = 0; } }
     CDefPointer& operator=(const CDefPointer& p)
     {
         if (Object != p.Object) {

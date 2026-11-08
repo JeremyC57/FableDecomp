@@ -16,6 +16,7 @@
 // ([ebp+1Bh]): reproduced by same-TU `auto_inline(off)` noinline template bodies of the two helpers whose tag parameter
 // is unnamed (GOTCHAS empty-tag rule).
 // Opt: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -39,9 +40,9 @@ public:
 namespace std {
 struct __false_type { __false_type() { } };
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>
@@ -64,7 +65,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter
 
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -81,7 +82,7 @@ public:
     _STLP_alloc_proxy<pointer, _Tp, allocator<_Tp> > _M_end_of_storage; // +0x08
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     void _M_clear();                                                    // 0x0065605F
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e) { _M_start = __s; _M_finish = __f; _M_end_of_storage._M_data = __e; }
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e) { _M_start = __s; _M_finish = __f; _M_end_of_storage._M_data = __e; }
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);
 };
 

@@ -1,6 +1,7 @@
 // Behaviour test for 0095e790: src/0095e790.cpp copied verbatim; the player chain, the boasting-crowd component and
 // the crowd group stubbed so the hero/dead/component gates, the group state and acceptance tests and the boaster
 // assignment are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -34,7 +35,7 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

@@ -4,10 +4,11 @@
 // `operator*=(const float&)` (chunk 278 lever) makes VC7.1 pop the Newton-step reciprocal to the frame and multiply
 // X/Y/Z from memory (`fstp [r] ; fxch ; fmul [r]`), which is retail's x87 shape; the plain `X *= r` form keeps r on
 // the stack (`fst ; fmul st(2) ; fstp st(1)`).
+#include "fable_compiler.h"
 #include <math.h>
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |

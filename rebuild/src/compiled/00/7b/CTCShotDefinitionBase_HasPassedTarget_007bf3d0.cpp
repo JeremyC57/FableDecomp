@@ -8,6 +8,7 @@
 // landed CTCDegradableBase::ChangeMesh 0x008EC9C0). Global 0.0f @ 0x0122DEDC.
 // Layout: retail CTCShotDefinitionBase sits 4 bytes below the PDB after the HitThingsList vector: TargetPos +0x51
 // (PDB 0x55, packed C3DVector at an odd offset); CTCPhysicsBase (PDB): Position +0x0C, OldPosition +0x18.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 #include "engine/C3DVector.h"
 #pragma pack(pop)
@@ -20,7 +21,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -39,7 +40,7 @@ class CTCPhysicsBase { public:
     C3DVector Position;                             // +0x0c
     C3DVector OldPosition;                          // +0x18
 };
-__forceinline CTCPhysicsBase* GetPhysics(CThing* thing)
+FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics(CThing* thing)
 {
     CTCPhysicsBase* physics;
     thing->GetInterface(&physics, 2);               // TC_PHYSICS

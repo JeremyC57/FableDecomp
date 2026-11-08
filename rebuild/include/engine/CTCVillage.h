@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CTCVILLAGE_H
 #define FABLE_ENGINE_CTCVILLAGE_H
+#include "fable_compiler.h"
 #ifdef FABLE_RETAIL_CTCVILLAGE
 // Retail opt-in (2026-11-03, chunk 719 row 0x004FF750 CreateRelevantPersonAndUpdateStats): the real base. Retail
 // CTCVillage derives CTCBase (Fable.exe RTTI; the flattened default spells the base's vptr/ParentThing/flags as
@@ -33,7 +34,7 @@ public:
     void SetGuardFollowingPlayer(CThingAICreature* guard);   // 0x0090C780
     CThingAICreature* GetGuardFollowingPlayer() { return reinterpret_cast<CIntelligentPointer<CThingAICreature>*>(GuardFollowingPlayer)->Get(); }
 #endif
-    __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+    FABLE_FORCEINLINE CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
 #ifdef FABLE_RETAIL_CTCVILLAGE_BRIBE
     // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?GetCostToBribe@CTCVillage@@QAEJXZ, out of line in retail (0x006588CF:
     // `mov eax,[ecx+94h] ; mov eax,[eax+0F8h] ; ret`, PDef's CVillageDef::BribeCost; landed as _global::GetMember_dword0x94_deref0xf8).

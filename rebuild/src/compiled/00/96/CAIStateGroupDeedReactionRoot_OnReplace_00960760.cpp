@@ -11,6 +11,7 @@
 // Shape: HasTC forceinline (bitset test inline); deed-effects def SpeechReaction is a bit-field so the sign test is
 //   `test cl,cl; jns`; CDefPointer release is a member Release() with --RefCount; the speech release names
 //   `CWorldObject* world = GetPWorld()` first so the call precedes the argument pushes.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -35,20 +36,20 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
         return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
-    __forceinline const CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -103,7 +104,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

@@ -17,6 +17,7 @@
 //   unchecked (the creature / weapon flag guarantees them); the positive verdict is tested first
 //   (`if (IsUsingProjectileWeapon(..)) return want ? 5 : 0; return want ? 0 : 5;`), which puts the not-projectile arm
 //   right after the combat test as retail; the three key words share one `push ecx` slot with the same-TU LowerBound body.
+#include "fable_compiler.h"
 class CTCBase;
 
 struct CInterfaceMap {
@@ -71,7 +72,7 @@ public:
     unsigned char Dead : 1;                                 // +0x91 bit 0
     bool IsDead() const { return Dead; }
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -84,7 +85,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -95,7 +96,7 @@ public:
     }
 };
 
-static __forceinline bool IsUsingProjectileWeapon(const CThing& thing)
+static FABLE_FORCEINLINE bool IsUsingProjectileWeapon(const CThing& thing)
 {
     CTCCombat* combat;
     if (thing.GetInterface(0x30, &combat)) {

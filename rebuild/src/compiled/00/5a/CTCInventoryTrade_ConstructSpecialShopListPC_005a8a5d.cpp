@@ -12,6 +12,7 @@
 //   CWideString copy 0x0099B720 / operator= 0x0099B7D0 / += 0x0099B8D0 / ~ 0x0099B510, GetXString 0x005CC772,
 //   GFIntToWideString 0x00405F00.
 // Shape: the front-end manager goes through a named local so GetInstance is called before CreateComponent's pushes.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -37,7 +38,7 @@ struct CDefBase {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
 };
 struct CMiscThingsDef : CDefBase { };
 void* FindDef_c();
@@ -76,7 +77,7 @@ class CThing { public:
     std::bitset<274> present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

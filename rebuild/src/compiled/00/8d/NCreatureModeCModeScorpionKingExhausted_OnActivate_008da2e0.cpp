@@ -18,6 +18,7 @@
 // time and released at the end without a null test (`dec [ebp+4] ; jne`); the component is HasTC + a returned GetTC with
 // the end/hit choice as one ternary (the landed 0x008D8F30 idiom; null when absent, written unconditionally); ParentThing
 // is read into a local once for the flag clear and the IsPerformingAnyAction call.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -92,13 +93,13 @@ class CThing { public:
     CDefClassBase*  PDef;                  // +0x70
     unsigned char   _pad74[0xbc - 0x74];
     unsigned char   m_flagsBC;             // +0xbc
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

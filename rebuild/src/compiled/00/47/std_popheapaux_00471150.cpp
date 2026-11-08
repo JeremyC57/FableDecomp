@@ -12,6 +12,7 @@
 // Shape: STLport 4.6 __pop_heap_aux with __pop_heap inlined (`__forceinline` under "s"): the _Tp(*(last - 1)) copy is
 //   built in the argument area by pair's member-wise copy constructor, the root is block-copied into the back slot.
 //   Frame pointer: `optimize("y", off)` + `optimize("s", on)`, as the module's other landed bodies (0x004710F0).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -25,7 +26,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 
@@ -35,14 +36,14 @@ public:
 };
 
 namespace std {
-template <class _Tp> __forceinline int* __distance_type(const _Tp*) { return (int*)0; }  // _STLP_DISTANCE_TYPE for pointers
+template <class _Tp> FABLE_FORCEINLINE int* __distance_type(const _Tp*) { return (int*)0; }  // _STLP_DISTANCE_TYPE for pointers
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
 void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                               _Compare __comp);                                                      // 0x00471055
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

@@ -16,6 +16,7 @@
 // Shape: STLport 4.6 vector.c verbatim; the single fill copy is the implicit copy constructor inline, _M_clear's
 //   _Destroy loop inline (__forceinline __destroy_aux) calling the implicit destructor (ObjectName). The two helpers sit
 //   in this retail TU and get same-TU noinline bodies (STLport 4.6 text), as 0x00A3D060. At landing the retail COMDATs win.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -72,7 +73,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter
 }
 #pragma auto_inline(on)
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for (; __first != __last; ++__first)
         _Destroy(&*__first);

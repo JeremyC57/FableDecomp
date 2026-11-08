@@ -15,6 +15,7 @@
 //   SetCurrentAction); each component comes from an inline accessor `T* c = 0; if (HasTC) c = GetTC(ternary)` (the landed
 //   CTCBed accessor) -- the out-parameter GetInterface or a plain if/else puts the zero in eax instead of ecx.
 // Layout: local model -- no generated header for CModeScorpionKingVulnerable; offsets are Ego_r.pdb's (CModeBase ParentThing +4).
+#include "fable_compiler.h"
 namespace NCreatureMode {
 struct CTCBase;
 struct CThing;
@@ -35,7 +36,7 @@ struct CThing {
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -48,20 +49,20 @@ struct CThing {
         }
         return false;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* component = 0;
         if (HasTC(interfaceType))

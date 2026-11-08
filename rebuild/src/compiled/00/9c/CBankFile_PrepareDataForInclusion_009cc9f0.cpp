@@ -13,6 +13,7 @@
 //          uninitialized_fill_n of unsigned char is the memset intrinsic (`rep stosd ; rep stosb`); the data pointer is
 //          the CArray `size() ? begin : (T*)this` accessor, evaluated twice; the source is reached through a counted
 //          pointer's inline operator-> (the plain struct member form picks other registers).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(memset)
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
@@ -79,7 +80,7 @@ struct CByteArray : _Vector_base<unsigned char> {      // CArray<unsigned char> 
 };
 
 #include "engine/CCountedPointer.h"
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDataWriter {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, unsigned long size);   // slot 4 (+0x10)

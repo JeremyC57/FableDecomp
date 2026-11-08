@@ -15,10 +15,11 @@
 //   out-of-line string compare, whose template body sits in the TU as in retail so that the key's data pointer is read
 //   once before the loop (see 0x007ACD30). Byte-identical shape to 0x00A54B50 (C3DAnimationStats' TimingEvents).
 // Label correction: the catalog's `_Tree<_Tmap_traits<CCharString,...>>::_Ubound` is propagated (this is insert_equal).
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

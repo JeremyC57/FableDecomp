@@ -4,6 +4,7 @@
 // Identity uses exact IEEE words (all0x3f800000). Append preserves existing records and reloads input bounds after each push.
 // Helpers use ECX/EDX first/last and a fastcall unsigned-CRC predicate; native comparator0x00A44C90 is independently byte-exact.
 // Standard logarithm/algorithm expression retains the original compiler instruction ordering without assembly or artificial storage.
+#include "fable_compiler.h"
 #include "fable_string.h"
 class C3DSkeletalBoneMorph { public:
     CCharString BoneName;
@@ -36,14 +37,14 @@ void __fastcall InsertionSort(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph*
 void __fastcall InsertionSortTail(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last,
                                   long, bool (__fastcall* less)(const C3DSkeletalBoneMorph&, const C3DSkeletalBoneMorph&)); // 0x00A45F90
 
-template<class Size> __forceinline Size MorphLog(Size n)
+template<class Size> FABLE_FORCEINLINE Size MorphLog(Size n)
 {
     Size depth;
     for (depth = 0; n != 1; n >>= 1) ++depth;
     return depth;
 }
 
-__forceinline void SortMorphs(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last)
+FABLE_FORCEINLINE void SortMorphs(C3DSkeletalBoneMorph* first, C3DSkeletalBoneMorph* last)
 {
     if (first != last) {
         IntroSort(first, last, 0, MorphLog((long)(last - first)) * 2, BoneMorphLess);

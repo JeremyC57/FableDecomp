@@ -19,17 +19,18 @@
 // RandomFrames(seconds) helper that copies CMainGameComponent::GetConstantFPS() into a local BEFORE fetching the seed and forms the range
 // before the seed update: retail loads fps into a callee-saved register ahead of GetPWorldSeed and multiplies (x40/x5)
 // between the seed arithmetic and GFROR13; the leave test's fps load stays inside the `over` branch this way.
+#include "fable_compiler.h"
 class CTCBase;
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    __forceinline float GetMagnitude() const;
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
+    FABLE_FORCEINLINE float GetMagnitude() const;
 };
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-__forceinline float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
+FABLE_FORCEINLINE float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -103,7 +104,7 @@ public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_DoNothing(); public:                  protected: // 0x0097E200
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    __forceinline unsigned long RandomFrames(unsigned long seconds)   // random frame count below seconds * fps
+    FABLE_FORCEINLINE unsigned long RandomFrames(unsigned long seconds)   // random frame count below seconds * fps
     {
         long fps = CMainGameComponent::GetConstantFPS();
         unsigned long* seed = GetPWorldSeed();

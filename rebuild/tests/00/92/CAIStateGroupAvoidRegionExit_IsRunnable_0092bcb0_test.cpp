@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -39,7 +40,7 @@ struct CRetailThingView {
       if(it==map->Last || type<it->Type) it=map->Last;
       return it->Component;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             long key = type;
             CRetailInterfaceMap* map = &Components;

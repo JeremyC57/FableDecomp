@@ -12,6 +12,7 @@
 // Shape: STLport 4.6 `_M_insert_overflow(.., const __false_type&, ..)` verbatim; the tag-taking callees retail calls
 //   carry same-TU noinline bodies (tags on the live `atend` slot, GOTCHAS 0x4ADB50). `_Copy_Construct` must be
 //   `__forceinline`: with the 28-byte implicit copy (three counted-pointer bumps) VC7.1 otherwise calls it out of line.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
@@ -58,7 +59,7 @@ public:
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
 inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)

@@ -11,6 +11,7 @@
 // Shape: the landed CCreatureAction_ScorpionTailPlunge::PerformAction (0x008C4810) without the explosion null test,
 // preceded by the CHECKED out-parameter mode-manager lookup (component left in eax, `mov ecx,eax`); the lookup key,
 // the def-name string and the unchecked driver out pointer share the one `push ecx` frame word.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CThing;
 class CTCBase;
@@ -30,7 +31,7 @@ class CThing { public:
     unsigned char     _pad9[0x8];
     CExplosionDriver* m_pDriver;            // +0x5c
     const C3DVector& GetPos() const;   // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

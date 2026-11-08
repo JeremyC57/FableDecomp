@@ -9,6 +9,7 @@
 // Layout: CThing UsingComponents +0x20 (bitset words), component map +0x44 {first, last} (the landed CloseDoor 0x00895DE0 model).
 // Shape: each component test reads its mask word (`test dword` / `test byte` narrowed for TC 0x46), the lookup key is
 //   homed in the dead objectDefName argument slot, the map pointer is a named pointer in edi.
+#include "fable_compiler.h"
 class CCharString;
 struct CTCBase_Retail;
 class CTCBase;
@@ -20,7 +21,7 @@ struct CThing_Retail {
     unsigned long         m_presentBits[9];         // +0x20 std::bitset of the interface types present
     CInterfaceMap_Retail  m_interfaces;             // +0x44
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType) const
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap_Retail* map = &m_interfaces;

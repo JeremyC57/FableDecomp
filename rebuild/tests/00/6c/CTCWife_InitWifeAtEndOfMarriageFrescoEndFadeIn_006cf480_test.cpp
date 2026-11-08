@@ -1,5 +1,6 @@
 // Behaviour test for 006cf480: src/006cf480.cpp copied verbatim; with an owner def that has a CWifeDef sub-def with a
 // positive Dowry, the live hero's CTCHeroStats (interface 4) gets AddMoney(Dowry, true); the sub-def is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -61,7 +62,7 @@ public:
     CDefPointer<CDefClassBase> PDef;            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

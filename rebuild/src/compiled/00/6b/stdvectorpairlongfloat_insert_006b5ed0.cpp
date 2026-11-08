@@ -14,6 +14,7 @@
 //   load-bearing: the tags carry a user constructor (a POD empty tag gets a `mov byte ptr [esp+30h],0`
 //   zero fill retail lacks), and __copy_backward_ptrs is __forceinline (plain inline stays a call, and the
 //   offset then lives in ebx instead of the spilled ebp: DIFFER 200v220).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 namespace std {
 typedef int ptrdiff_t;
@@ -42,7 +43,7 @@ inline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAcce
     return __result;
 }
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }

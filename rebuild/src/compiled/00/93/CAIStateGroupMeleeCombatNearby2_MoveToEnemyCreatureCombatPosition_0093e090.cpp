@@ -9,6 +9,7 @@
 // Shape: the UID is read through a named creature local before the static frame call (edi:ebx), the last frame lives in
 // ebp; the inline navigation lookup has no consumer, so only its binary-search loop survives.
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h flattens the base; local model with its PEnemy (+0x14); CThing UID +0x18.
+#include "fable_compiler.h"
 class CTCBase;
 
 #include "engine/C3DVector.h"
@@ -50,7 +51,7 @@ class CThing { public:
     unsigned char _pad64[0x2d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {

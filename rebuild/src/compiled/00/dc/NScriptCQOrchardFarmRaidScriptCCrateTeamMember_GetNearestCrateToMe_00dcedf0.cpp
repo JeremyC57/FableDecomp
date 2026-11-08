@@ -20,6 +20,7 @@
 //   operator[] as STLport's `*(begin() + n)` (with `_M_start + n` the element address is `mov edx,[ecx] ; add edx,ebp`),
 //   and the counted-pointer assignment reading other.Info before other.Data (`lea eax,&other.PImp ; mov eax,[eax]`;
 //   Data first loads [edx+ebp+4] into ecx, 351v350).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                          // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
@@ -28,8 +29,8 @@ void operator delete(void* p);                          // 0x00BFE9BC
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-__forceinline CScriptThing::~CScriptThing() { }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 namespace std {                                         // STLport 4.6 vector (12 bytes)

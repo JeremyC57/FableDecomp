@@ -5,6 +5,7 @@
 // Callees: malloc 0x00BFEA0E (STLport __malloc_alloc, skipped for n == 0).
 // Shape (family M042, representative 0x0045D264): STLport `__result = allocate(__n); __uninitialized_copy(__first, __last,
 //   __result, __false_type()); return __result;` with allocate/_Construct/__uninitialized_copy `__forceinline`; the pair's explicit STLport copy constructor (`pair(const pair<_T1,_T2>&)`) re-addresses the second member (`[esi+ecx+4]`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int);
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
@@ -19,11 +20,11 @@ template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
 };
-template <class _Tp> class allocator { public: allocator() { } __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; } };
+template <class _Tp> class allocator { public: allocator() { } FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; } };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

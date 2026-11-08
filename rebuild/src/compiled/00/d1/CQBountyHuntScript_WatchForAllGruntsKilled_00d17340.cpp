@@ -10,6 +10,7 @@
 // virtual destructor calls, then free) is expanded at all four returns with the free tail shared; the wait loop
 // is `for (;;) { if (term) return; if (AllDead) break; yield; }`, followed by two terminating re-tests (a plain
 // `inline` destructor is emitted out of line and called once).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -27,7 +28,7 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -41,7 +42,7 @@ public:                     // STLport vector (retail 12 bytes), malloc_alloc st
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

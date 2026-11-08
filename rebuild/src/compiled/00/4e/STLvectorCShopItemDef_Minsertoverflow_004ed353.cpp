@@ -14,6 +14,7 @@
 //   `_M_clear(); _M_set(new_start, new_finish, new_start + len)`. In the size TU the helpers must be `__forceinline`.
 //   Frame-pointer size TU: `optimize("y", off)` + `("s", on)`.
 // Model: the element is engine/CShopItemDef.h (only its 0x48 size matters: every element operation is out of line).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CShopItemDef.h"
@@ -23,9 +24,9 @@ extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 namespace std {
 struct __false_type { __false_type() { } };
 template <class T> void __fastcall _Construct(T* p, const T& value);   // 0x004E9C39
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -33,7 +34,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
     return cur;
 }
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)
@@ -42,7 +43,7 @@ __forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, cons
 }
 template <class T> struct allocator {           // STLport allocator<T>: empty
     allocator() { }
-    __forceinline T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 template <class T> struct _STLP_alloc_proxy : allocator<T> {
     T* _M_data;
@@ -54,7 +55,7 @@ public:
     _STLP_alloc_proxy<T> _M_end_of_storage;     // +8
     size_t size() const { return size_t(_M_finish - _M_start); }
     void _M_clear();                            // 0x004E9BB7
-    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage._M_data = e; }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage._M_data = e; }
     void _M_insert_overflow(T* position, const T& x, const __false_type&, size_t fill_len, bool atend);
 };
 template <class T>

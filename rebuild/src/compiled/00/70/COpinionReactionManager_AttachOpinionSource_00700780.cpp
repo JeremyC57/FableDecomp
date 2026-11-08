@@ -10,6 +10,7 @@
 // component lookup is the landed out-parameter GetInterface template (TC type 0x50 = bit 16 of presence word 2);
 // the AddTC name is a named CCharString local in its own block (built in the dead ppSource slot before the
 // trailing pushes); the result is re-read through ppSource for the null test; `x && f()` with the shared false tail.
+#include "fable_compiler.h"
 class CTCBase;
 class CTCOpinionSource { public:
     bool PushNewSourceDef(const class CCharString& defName);   // 0x00771620
@@ -29,7 +30,7 @@ class CThing { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

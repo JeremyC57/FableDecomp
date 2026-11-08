@@ -16,6 +16,7 @@
 // Layout: CThing type byte +0x10, PhysicsTC +0x60 (retail; PDB +0x70 with 16-byte containers). engine/CTCPhysicsBase.h
 // exists (Position +0x0C, OldPosition +0x18 agree) but flattens the C3DVectors to floats and has no virtual interface for
 // slot 79, so the physics component is a local model with the same offsets.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 #define VSLOT(n) virtual void vslot##n();
@@ -30,7 +31,7 @@ public:
     long          m_unknown08;                       // +0x08
     C3DVector     Position;                          // +0x0C
     C3DVector     OldPosition;                       // +0x18
-    __forceinline C3DVector GetPosition(float t) const
+    FABLE_FORCEINLINE C3DVector GetPosition(float t) const
     {
         return t == 1.0f ? Position : (Position - OldPosition) * t + OldPosition;
     }

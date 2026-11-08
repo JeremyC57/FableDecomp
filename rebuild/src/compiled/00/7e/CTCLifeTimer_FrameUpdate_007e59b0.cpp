@@ -12,6 +12,7 @@
 // lookup with 0 (`xor eax,eax`), then tests the two fade-state bytes +0x0d / +0x0c.
 // Layout: PDB CTCLifeTimer (0x14, as the landed ctor 0x007E5970): ParentThing +0x04, FramesLeft +0x0c, FadeOutBeforeKill
 // +0x10, PerformOnDie +0x11. No engine header.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -24,12 +25,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long kind)
+    FABLE_FORCEINLINE CTCBase* Find(long kind)
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((it == m_pLast || kind < it->first) ? m_pLast : it)->second;
     }
-    __forceinline CTCBase* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((it == m_pLast || kind < it->first) ? m_pLast : it)->second;
@@ -47,7 +48,7 @@ class CThing { public:
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     void Kill(bool performOnDie);                  // 0x004C9B80
 public:
     CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60

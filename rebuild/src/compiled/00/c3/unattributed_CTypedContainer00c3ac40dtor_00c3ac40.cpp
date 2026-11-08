@@ -6,6 +6,7 @@
 // runs before the container's vtable store; the calls stay virtual because the body runs through
 // the container's vtable in a novtable class. The manifest label is propagated; the classes are
 // named by address.
+#include "fable_compiler.h"
 struct CItem_00c3ac40 { };                  // trivially destructible: `delete` is operator delete alone
 
 struct CContainerBase_00c3ac40 {             // vtable 0x012B1AB0
@@ -15,8 +16,8 @@ struct CContainerBase_00c3ac40 {             // vtable 0x012B1AB0
     virtual void v09(); virtual void v10();
     virtual CItem_00c3ac40* Next();            // slot 11
     long m_count;                          // +4
-    __forceinline CItem_00c3ac40* NextItem() { return Next(); }          // keeps the call virtual inside the destructor
-    __forceinline void RemoveItem(CItem_00c3ac40* item) { Remove(item); }
+    FABLE_FORCEINLINE CItem_00c3ac40* NextItem() { return Next(); }          // keeps the call virtual inside the destructor
+    FABLE_FORCEINLINE void RemoveItem(CItem_00c3ac40* item) { Remove(item); }
     ~CContainerBase_00c3ac40() { }
 };
 

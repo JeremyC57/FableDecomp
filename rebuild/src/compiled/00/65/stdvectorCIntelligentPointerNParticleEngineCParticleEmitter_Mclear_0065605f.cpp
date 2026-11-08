@@ -14,6 +14,7 @@
 //   _M_end_of_storage._M_data - _M_start); }` with _Destroy -> __destroy_aux(.., __false_type) and the null-tested
 //   deallocate inline (`__forceinline` _Destroy, as in the landed caller 0x006566C3: the size TU otherwise keeps it out
 //   of line). The tag has a user-declared constructor (repo idiom: no zero-fill of the temporary).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
@@ -32,7 +33,7 @@ template <class _ForwardIterator>
 void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0043F850
 
 template <class _ForwardIterator>
-__forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 {
     __destroy_aux(__first, __last, __false_type());
 }

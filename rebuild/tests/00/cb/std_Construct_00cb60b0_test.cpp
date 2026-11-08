@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -24,14 +25,14 @@ struct CScriptInfo {                             // PDB sizeof 0x14
     long                ID;                      // +0x0C
     bool                MasterScript;            // +0x10
     CScriptInfo() { }
-    __forceinline CScriptInfo(const CScriptInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CScriptInfo(const CScriptInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : AllocFunc(o.AllocFunc), MasterScriptDataAlloc(o.MasterScriptDataAlloc), Name(o.Name), ID(o.ID), MasterScript(o.MasterScript) { }
 };
 struct CNamedScriptInfo {                        // std::pair<CCharString, CScriptInfo>
     CCharString first;                           // +0x00
     CScriptInfo second;                          // +0x04
     CNamedScriptInfo() { }
-    __forceinline CNamedScriptInfo(const CNamedScriptInfo& o) : first(o.first), second(o.second) { }   // pair copy, forced inline (VC7.1 otherwise calls it)
+    FABLE_FORCEINLINE CNamedScriptInfo(const CNamedScriptInfo& o) : first(o.first), second(o.second) { }   // pair copy, forced inline (VC7.1 otherwise calls it)
 };
 
 void __fastcall _Construct(CNamedScriptInfo* p, const CNamedScriptInfo& value)

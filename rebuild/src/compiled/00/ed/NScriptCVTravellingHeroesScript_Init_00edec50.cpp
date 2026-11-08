@@ -2,6 +2,7 @@
 // Leaf: ?Init@CV_TravellingHeroesScript@NScript@@UAEXXZ
 // Identity: own script-info registration 00cd98f2->00ee40a0 stores factory for literal V_TravellingHeroes, whose own allocation/constructor stores vtable012f407c; target is slot3 Init. Original field names from named PDB class layout, independently checked against own offsets and setter uses.
 // Layout: shared handle headers aliased to restore real CBaseObject/CBaseClass hierarchy and counted pointers. Original CScriptBase64 typed list/maps, CLevelScriptBase72 Game/MasterScriptData; own registry uses common master-data allocator00cdbd20. Flags at120; PC owner size140. No opaque base prefix.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -28,7 +29,7 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

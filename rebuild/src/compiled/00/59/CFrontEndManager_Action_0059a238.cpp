@@ -27,6 +27,7 @@
 // component of 0x0F is a local; the 0xD7 parameter is a CActionParamString* (its &Value is a spilled CSE, as retail).
 // Leaf: ?Action@CFrontEndManager@NUISystem
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -44,7 +45,7 @@ public:
     void* PStringData;
     ~CWideString();                                       // 0x0099B510
     const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

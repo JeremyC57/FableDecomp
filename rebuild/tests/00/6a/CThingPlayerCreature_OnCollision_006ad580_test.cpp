@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CThingPlayerCreature::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing) -- after the creature handling, a live player creature touching (type 1) a live, non-limbo thing remembers the collision (flag, normal, position); objects go to OnCollisionWithObject, experience orbs give their points to the main hero's experience component (0x68) and, for a co-op player, to this creature's co-op spirit (0xc7), then are collected
@@ -82,13 +83,13 @@ class CThing { public:
     unsigned char  _bits91b : 2;
     CPlayerManager* GetPlayerManager();                 // 0x004C7A00
     bool GetTCDriver(CTCDExperienceOrb** out);          // 0x006AE5C0 (GetTCDriver<CTCDExperienceOrb>)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long type)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -96,7 +97,7 @@ class CThing { public:
         CInterfaceMap::SEntry* end = map->last;
         return (T*)(it == end || type < it->type ? end : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -107,7 +108,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline CTCCoopSpirit* GetCoopSpirit()
+    FABLE_FORCEINLINE CTCCoopSpirit* GetCoopSpirit()
     {
         CTCCoopSpirit* spirit;
         if (HasTC(0xc7))
@@ -136,7 +137,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
     C3DVector     LastThingCollisionNormal;             // +0x1cd
     C3DVector     LastThingCollisionPosition;           // +0x1d9
     void OnCollisionWithObject(CThing* thing);          // 0x006ACA30
-    __forceinline void CollectExperienceOrb(CTCDExperienceOrb* orb, CThing* hero)
+    FABLE_FORCEINLINE void CollectExperienceOrb(CTCDExperienceOrb* orb, CThing* hero)
     {
         CTCHeroExperience* experience;
         if (hero && hero->GetInterface(&experience, 0x68))

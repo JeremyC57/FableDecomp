@@ -13,6 +13,7 @@
 // Shape: `GetDef()->ReplacementObject` through the by-value def temporary (null-tested add-ref, release from the def's own
 //   Release) read twice; the orientation is a local copy, the empty name a named local; the created object's component is
 //   the HasTC + end/hit ternary lookup.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -54,8 +55,8 @@ public:
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
-    __forceinline unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(T** out, long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (HasTC(type)) {
             *out = GetTC<T>(type);
@@ -63,7 +64,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

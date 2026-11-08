@@ -1,6 +1,7 @@
 // NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithFiniteLine,
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // retail 0x00815070. Isolated main-review fidelity source; author009 remains frozen. PDB identity: egor 19838 / debug 0x0080DF40.
+#include "fable_compiler.h"
 extern const float DELTA_NOTIONAL_ZERO;                    // retail 0x0129BA3C
 extern const float g_NegativeOne_0122dee0;                  // retail 0x0122DEE0
 class C3DVector { public:
@@ -11,7 +12,7 @@ class C3DVector { public:
     const C3DVector operator-(const C3DVector& other) const {
         return C3DVector(X-other.X,Y-other.Y,Z-other.Z);
     }
-    __forceinline const C3DVector operator-() const {
+    FABLE_FORCEINLINE const C3DVector operator-() const {
         return C3DVector(X*-1.0f,Y*-1.0f,Z*-1.0f);
     }
     float SquaredLength() const { return X * X + (Y * Y + Z * Z); }

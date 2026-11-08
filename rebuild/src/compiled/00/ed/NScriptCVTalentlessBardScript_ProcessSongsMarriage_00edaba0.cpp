@@ -14,6 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -33,7 +34,7 @@ protected:
     void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&, unsigned int fill_len, bool atend);    // 0x00433530
 public:
     void push_back(const CCharString& x);              // 0x0044BFF0 (the out-of-line copy)
-    __forceinline void push_back_inlined(const CCharString& x)   // the same STLport body, expanded at one site
+    FABLE_FORCEINLINE void push_back_inlined(const CCharString& x)   // the same STLport body, expanded at one site
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CCharString(x);

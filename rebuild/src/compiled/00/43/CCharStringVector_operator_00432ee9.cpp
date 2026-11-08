@@ -10,6 +10,7 @@
 // `cmp [p],0 ; je` is the placement-new null test); finally `finish = start + n`. The TU is
 // size-optimised with frame pointers (`push ebp ; mov ebp,esp`, `leave`), as for the landed
 // CParticleAttachmentInfoVector::operator= 0x004E29BA.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -24,13 +25,13 @@ private:
 
 void __fastcall DestroyRange(CCharString* first, CCharString* last);   // 0x00414E00
 
-static __forceinline CCharString* CopyRange(const CCharString* first, const CCharString* last, CCharString* out)
+static FABLE_FORCEINLINE CCharString* CopyRange(const CCharString* first, const CCharString* last, CCharString* out)
 {
     for (int n = int(last - first); n > 0; --n, ++first, ++out)
         *out = *first;
     return out;
 }
-static __forceinline CCharString* UninitializedCopy(const CCharString* first, const CCharString* last, CCharString* out)
+static FABLE_FORCEINLINE CCharString* UninitializedCopy(const CCharString* first, const CCharString* last, CCharString* out)
 {
     CCharString* current = out;
     for (; first != last; ++first, ++current)

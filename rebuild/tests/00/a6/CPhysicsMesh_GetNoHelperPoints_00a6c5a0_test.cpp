@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #define protected public
@@ -16,7 +17,7 @@ class CCharStringData{public:CBasicString<char> Data;long NoRefs;};
 #pragma auto_inline(off)
 template<>long __fastcall CBasicString<char>::Compare(const char* a,const char* b){for(;*a||*b;++a,++b){if(*a<*b)return -1;if(*a>*b)return 1;}return 0;}
 #pragma auto_inline(on)
-class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}~CCharString();__forceinline bool operator==(const CCharString& other)const{if(PStringData==other.PStringData)return true;if(!PStringData||!other.PStringData)return false;return PStringData->Data==other.PStringData->Data;}};
+class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}~CCharString();FABLE_FORCEINLINE bool operator==(const CCharString& other)const{if(PStringData==other.PStringData)return true;if(!PStringData||!other.PStringData)return false;return PStringData->Data==other.PStringData->Data;}};
 namespace std{template<class A,class B>struct pair{A first;B second;};template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:const T* begin()const{return this->_M_start;}const T* end()const{return this->_M_finish;}};}
 template<class T>class CArray:public std::vector<T>{};template<class T>class CCompareString{};template<class K,class V,class Cmp>class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;};
 #pragma pack(push,1)

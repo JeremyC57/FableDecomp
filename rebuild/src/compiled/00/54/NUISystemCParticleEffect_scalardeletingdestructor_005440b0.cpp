@@ -15,6 +15,7 @@
 // the base destructor is out of line. The `new CParticleEffect(owner)` factory (inline constructor)
 // pulls the vtable -- and so the deleting destructor -- into the TU.
 
+#include "fable_compiler.h"
 namespace NUISystem {
 
 struct IComponentA {                                                      // the interface base at +0x04 (vtable, 0x10 bytes of state)
@@ -50,7 +51,7 @@ namespace NUISystem {
 class CParticleEffect : public CChangingStateComponent { public:                        // vtables 0x0124735C / 0x01247338 / 0x01247330
     CParticleEmitter* m_pEffect;                                          // +0x15c
     CParticleEffect(long owner) : CChangingStateComponent(owner), m_pEffect(0) {}
-    __forceinline virtual ~CParticleEffect()
+    FABLE_FORCEINLINE virtual ~CParticleEffect()
     {
         if (m_pEffect) {
             m_pEffect->Kill();

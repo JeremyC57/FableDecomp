@@ -12,6 +12,7 @@
 //   _M_header.deallocate(x, 1); x = y; }`; the pair's implicit destructor releases the pointer (second, with its zero
 //   store) before ~CCharString (first); the malloc allocator's `if (p) free(p)` test folds away (x != 0).
 // Label correction: catalogued as `BinaryTree_DestroyRecursive_WithRefcount`; the body is STLport `_Rb_tree::_M_erase`.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);
 
 class CCharString { public:
@@ -27,7 +28,7 @@ class CAnimComponentBase { public:                                // CIVCountedP
 
 template <class T> class CIVCountedPointer { public:              // one word: the intrusively counted object
     T* Object;
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

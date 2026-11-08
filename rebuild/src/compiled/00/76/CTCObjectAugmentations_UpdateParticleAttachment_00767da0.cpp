@@ -24,6 +24,7 @@
 //   STLport 4.6 _M_insert_overflow body (and its __uninitialized_copy / __uninitialized_fill_n) in the TU, as in the landed
 //   0x0076ADA0 TU, lets VC7.1 keep the END key in esi for the second push_back's in-place construct; the PDB's bool
 //   GetTC(T**) with the one-ternary store `*out = ((it == end || T < it->first) ? end : it)->second` lands the emitter in ecx.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);           // 0x00BFEA0E
 extern "C" void __cdecl free(void*);                     // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -203,8 +204,8 @@ class CThing { public:                                      // partial view, ret
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
     NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetTC(T** out)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             TCMap* map = &Components;

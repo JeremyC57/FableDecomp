@@ -9,6 +9,7 @@
 //   TransferOutLong @ 0x009E2560 (`__fastcall` context, out, &copy).
 // Shape: the landed 0x00614080 / 0x0040FA20 text writers: each long through an inline CPersistTraits<long>::TransferOut
 //   (copy into the dead `out` argument slot, no frame). Speed-optimised (default) TU.
+#include "fable_compiler.h"
 class CPersistContext;
 class CCharString {
 public:
@@ -36,7 +37,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
     {
         long copy = *value;
         TransferOutLong(context, out, &copy);

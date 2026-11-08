@@ -21,6 +21,7 @@
 //   point is a second uninitialised local in the same frame word.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -34,7 +35,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    template <class T> __forceinline void GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -73,7 +74,7 @@ class CBulletTimeManager { public:
     long m_active;                                  // +0x04
     unsigned char _pad8[4];
     bool m_slowing;                                 // +0x0c
-    __forceinline bool IsRunning() const { return m_slowing || m_active != 0; }
+    FABLE_FORCEINLINE bool IsRunning() const { return m_slowing || m_active != 0; }
     bool IsTimeForFullUpdate();                     // 0x004C6060
     void SetBulletTimeSlowdownMultiplier(long frames, class CCombatActionBase* source, float multiplier);   // 0x004C6170
 };

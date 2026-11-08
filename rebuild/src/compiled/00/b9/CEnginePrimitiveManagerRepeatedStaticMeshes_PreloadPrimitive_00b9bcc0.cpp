@@ -6,6 +6,7 @@
 // Shape: the LOD search stays top-tested (`cmp lod,3 ; jae` with a jmp back) only with a __forceinline early-return condition
 //   (IsBelowLODCount); the inline RequestLoad is nested (Data, then Data->Frame) with the new-CFrameData path last; the distance clamp is a
 //   `?:` max (je, not jp); lodScale is read between the dx/dy statements.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 #include <math.h>
 class CEngineInternalPrimitiveBase;
@@ -25,7 +26,7 @@ class CTexture;
 struct CCountedPointer_CTexture {
     CTexture*    m_pObject;
     SCountBlock* m_pCount;
-    __forceinline ~CCountedPointer_CTexture()
+    FABLE_FORCEINLINE ~CCountedPointer_CTexture()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -45,7 +46,7 @@ class CGraphicFrameData { public:
     unsigned char            _pad10[0xa];
     unsigned char            m_flags;              // +0x1a
     void Uninitialise();                           // 0x009FCBA0
-    __forceinline ~CGraphicFrameData()
+    FABLE_FORCEINLINE ~CGraphicFrameData()
     {
         if (m_flags & 0x10)
             Uninitialise();
@@ -54,7 +55,7 @@ class CGraphicFrameData { public:
 class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame(const CGraphicFrame& other) : FrameData(other.FrameData) { if (FrameData) ++FrameData->ReferenceCount; }
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         if (--FrameData->ReferenceCount == 0)
             delete FrameData;
@@ -84,7 +85,7 @@ public:
 private:
     void ListInsert(CResource*a0, CResource*a1);   // 0x009FBF90
 public:
-    __forceinline void Touch()
+    FABLE_FORCEINLINE void Touch()
     {
         if (List && Stamp != List->Stamp) {
             ListRemove();
@@ -152,7 +153,7 @@ struct CGraphicInfoFrameT {
     CIVCountedPointer<CFrameData> Data;            // +0x08
     CGraphicInfo*                 GraphicInfo;     // +0x0c
     bool InternalGetFrameForcedLoading(long flags);   // 0x009FF6B0
-    __forceinline bool RequestLoad(unsigned long mip, unsigned long flags)
+    FABLE_FORCEINLINE bool RequestLoad(unsigned long mip, unsigned long flags)
     {
         if (Data.Data) {
             if (Data->Frame.FrameData) {
@@ -191,8 +192,8 @@ template <class T> struct CRetailVector {
 struct CGraphicBank {
     unsigned char               _pad[0x1e0];
     CRetailVector<SBankGraphic> m_records;         // +0x1e0
-    __forceinline SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
-    __forceinline CGraphicInfoFrameT* GetFrame(unsigned long index) { return Get(index) ? Get(index)->m_pFrame : 0; }
+    FABLE_FORCEINLINE SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
+    FABLE_FORCEINLINE CGraphicInfoFrameT* GetFrame(unsigned long index) { return Get(index) ? Get(index)->m_pFrame : 0; }
 };
 
 
@@ -262,7 +263,7 @@ class CEngineInternalPrimitiveRepeatedStaticMesh { public:
     C3DVector     Centre;                          // +0x70
     float         Radius;                          // +0x7c
 };
-__forceinline bool IsBelowLODCount(unsigned long lod)
+FABLE_FORCEINLINE bool IsBelowLODCount(unsigned long lod)
 {
     if (lod >= 3)
         return false;

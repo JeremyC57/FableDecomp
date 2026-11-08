@@ -12,6 +12,7 @@
 // Shape: the once-per-approach flag is a frame bool; edi/ebx are shrink-wrapped below the first terminate test.
 // Naming wave 35: identity reg 00efcaae "Gift" in 00efca00; Alloc 00efd680; vtable 012f6de8 slot 1; PDB ?Main@CGift@CMarkTestScriptsScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGift::Main (wave3/labels_alloc.tsv); PDB ?Main@CGift@CMarkTestScriptsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGift@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -23,7 +24,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

@@ -7,7 +7,8 @@
 // Shape: CDefPointer::operator= inlined exactly as the landed SetCameraManagerDef (compare, release through a local copy, null, copy
 // re-read from the reference, add-ref); the def index is read through the ARGUMENT (`mov edx,[edi]`), and the local CDefPointer lives in
 // the dead argument slot (`lea ecx,[esp+0Ch]`), zeroed after the GetDef pushes.
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1: runs when the last reference goes

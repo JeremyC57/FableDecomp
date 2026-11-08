@@ -15,6 +15,7 @@
 // Layout (retail, local model): CAnimSet in CAnimateThing at +0 (Anims vector<short> +0x04, CurrentPercentageComplete +0x1c,
 //   LastPercentageComplete +0x20, Type +0x50; PDB +0x58 with 16-byte vectors); CTCLook FractionOfTurningToAcceptEachFrame +0x44,
 //   PCurrentTurningAnim +0x9c (PDB +0xa0).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                      // +0x00
@@ -80,7 +81,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;                       // +0x44
     unsigned char  _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                         // +0x60
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -91,7 +92,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* component;
         GetInterface(&component, interfaceType);

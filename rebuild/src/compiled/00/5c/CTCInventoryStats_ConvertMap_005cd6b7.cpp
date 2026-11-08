@@ -14,6 +14,7 @@
 // A break + `li != out.end()` re-test keeps `out` in ebx, re-reads end() and homes the name in the dead `out` slot.
 // Layout: STLport map header node (begin = header->_M_left +8; key +0x10, value +0x14), list sentinel (_M_next +0, data +8).
 // Label: the catalog's CTCInventoryStats_AggregateCreatureGroupStats is this method.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString {
@@ -21,7 +22,7 @@ public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -35,7 +36,7 @@ namespace std {
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;
-    __forceinline pair(const T1& a, const T2& b) : first(a), second(b) {}   // /Os: plain inline stays a call
+    FABLE_FORCEINLINE pair(const T1& a, const T2& b) : first(a), second(b) {}   // /Os: plain inline stays a call
 };
 struct _Rb_tree_node_base {
     bool                _M_color;                       // +0x00

@@ -6,13 +6,14 @@
 // Body: STLport 4.6 _algobase.h: `__copy_ptrs(first, last, result, const __false_type&)` = `__copy(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0)` (the loop above), reached through STLport's copy -> __copy_aux -> __copy_ptrs dispatch, all inlined into this out-of-line copy; `__fastcall` on the template definition (the
 //   TU's /Gr convention). VC7.1 keeps __copy out of line under plain `inline`, so it is `__forceinline` here (as in G034).
+#include "fable_compiler.h"
 class C4DVector { public: float X, Y, Z, W; };
 namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>   // inline in every retail body
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

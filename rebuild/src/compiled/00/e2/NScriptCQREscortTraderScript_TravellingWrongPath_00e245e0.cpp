@@ -15,6 +15,7 @@
 //   Compare's body must be in the TU (auto_inline(off), the chunk 576 0x00F088E0 trick): VC7.1 then knows the compares write
 //   no memory, keeps CurrentLoadedRegion's data pointer in ebx and reuses the pre-loop &RouteDynamic[TradeRoute] / end /
 //   RouteDynamic-RouteStatic base in the frame (declared only: 363v372, every value reloaded after each call).
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     T*            PData;                                // +0x00
@@ -56,7 +57,7 @@ template <> long __fastcall CBasicString<char>::Compare(const char* a, const cha
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -19,7 +20,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing() { SetPItem(0); }
     CIntelligentPointerConstThing(const CThing* item);              // 0x00668B60
-    __forceinline CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other)
+    FABLE_FORCEINLINE CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other)
     {
         CThing* item = other.GetPItem();
         SetPItem((CBaseObject*)item);
@@ -50,13 +51,13 @@ class CThing { public:
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     CPlayer* GetPlayer();                           // 0x004C7A10
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

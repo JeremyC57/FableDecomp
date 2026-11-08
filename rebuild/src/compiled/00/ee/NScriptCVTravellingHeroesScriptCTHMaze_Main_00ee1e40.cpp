@@ -15,6 +15,7 @@
 //   CV_TravellingHeroesScript sits 0x14 below the Ego_r.pdb offsets: MazeCutsceneDone +0x7b.
 // Shape: the CTH_ThunderBoy row 0x00EDF3A0 (same TU) with a local scripted-thing handle (its virtual calls devirtualised);
 //   the talk and hit blocks each run a paused movie sequence (VC7.1 expands the movie ctor/dtor inline only in the first).
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -76,7 +77,7 @@ typedef long EGameflowPosition;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 struct CResourcePImp {                                 // the handles' counted implementation pointer
     void* Data;

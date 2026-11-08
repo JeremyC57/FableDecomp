@@ -2,6 +2,7 @@
 // Retail 0x0096D2D0, 175 bytes. GetBuilding virtual slot 14; LowerBound 0x004365B0;
 // GFGetPVillageInterface 0x007EE540 and intelligent pointer GetPItem 0x00A01B50.
 // Retail WorkBuilding is +0x170 (donor +0x198); shared engine headers retain the donor layout.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
@@ -31,7 +32,7 @@ struct CRetailThingView {
     CRetailInterfaceMap Components;
     unsigned char _beforeDead[0x91-0x4c];
     unsigned char Dead:1;
-    template<class T> __forceinline bool GetInterface(T** out, long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CRetailInterfaceMap* map = &Components;
@@ -96,7 +97,7 @@ struct IStateGroupBuildingView {
 struct CRetailWorkerView {
     unsigned char _beforeWorkBuilding[0x170];
     CIntelligentPointer<CThingAICreature> WorkBuilding;
-    __forceinline CIntelligentPointer<CThingAICreature>& GetWorkBuilding() { return WorkBuilding; }
+    FABLE_FORCEINLINE CIntelligentPointer<CThingAICreature>& GetWorkBuilding() { return WorkBuilding; }
 };
 bool __fastcall IsStaffed(CAIStateGroupBase* self, void*)
 {

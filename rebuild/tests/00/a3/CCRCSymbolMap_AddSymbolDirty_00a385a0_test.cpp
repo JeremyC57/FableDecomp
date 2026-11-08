@@ -1,4 +1,5 @@
 // Behaviour test for 0x00A385A0 (source body copied from src/00a385a0.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -109,7 +110,7 @@ public:
             return Data.end();
         return it;
     }
-    __forceinline void Insert(const K& key, const V& value)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)
     {
         Data.push_back(value_type(key, value));
         Dirty = true;

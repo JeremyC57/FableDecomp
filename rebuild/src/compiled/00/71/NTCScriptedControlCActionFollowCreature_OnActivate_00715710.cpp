@@ -8,6 +8,7 @@
 //   OnActivate is its virtual (?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and 0x00713D50 is the private
 //   SetAsSneaking (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z, was an invented global SetSneaking).
 //   Same bytes.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -31,7 +32,7 @@ public:
     C3DVector Position;
     CBoundingBox Bounds;
     virtual void v000();
-    __forceinline CPhysicsSnapshot(const C3DVector& position, const CBoundingBox& bounds) : Position(position), Bounds(bounds) { }
+    FABLE_FORCEINLINE CPhysicsSnapshot(const C3DVector& position, const CBoundingBox& bounds) : Position(position), Bounds(bounds) { }
 };
 
 class CTCPhysicsBase { public:
@@ -71,7 +72,7 @@ class CThing { public:
     unsigned char       _pad54[0xc];
     CTCPhysicsBase*     PPhysics;                    // +0x60
     void AddTC(const CCharString& name, bool b, const CPhysicsSnapshot& snapshot);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -10,6 +10,7 @@
 //   The inline c_str()/length() getters are written null-first (`PStringData == 0 ? "" : ...`) for retail's block order.
 // Layout: CCharString handle on the packed CCharStringData (PData +0, StringLength +4); the trail's table count +0x0c and
 //   8-byte entries (name first) at +0x54 -- local model (no engine header for CTCWeaponTrail).
+#include "fable_compiler.h"
 #pragma auto_inline(off)
 long __fastcall Compare(const char* a, const char* b)       // 0x00411570 (landed body; same-TU so VC7.1 knows it writes no memory)
 {
@@ -34,7 +35,7 @@ struct CBasicStringChar {
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
-    __forceinline bool operator==(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE bool operator==(const CBasicStringChar& other) const
     {
         if (StringLength != other.StringLength)
             return false;
@@ -50,7 +51,7 @@ class CCharString { public:
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Data.StringLength; }
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
     CCharString ToLower() const;                            // 0x0099ED10
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

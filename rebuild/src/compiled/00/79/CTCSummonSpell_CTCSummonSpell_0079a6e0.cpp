@@ -18,6 +18,7 @@
 // Shape: the landed CTCForcePushPower ctor (0x007A54A0): init-list members after the vtable store sharing the ebx zero; the
 //   class-name string in its own block; the creature-name string a block-scoped by-value result; `FadeInTimer =
 //   CurFadeInTimer = ...` stores CurFadeInTimer first.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -89,13 +90,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

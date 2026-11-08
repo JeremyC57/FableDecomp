@@ -23,6 +23,7 @@
 // Layout: local model (no engine header for CCombatManager): RegisteredCombatSequences +0x04 (12 bytes), Combatants +0x10;
 //   map node value CCombatantInfo at +0x18 (retail 0x70 bytes: AttackerInfo +0x04, DefenderInfo +0x34); retail CThing
 //   UniqueID +0x18, component bits +0x20, interface map +0x44, def +0x70, dead flag +0x91 bit 0, combat flags +0x15c.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
@@ -77,20 +78,20 @@ class CThing { public:
     unsigned char    CombatFlags4 : 4;
     CDefString GetDefName() const;                 // 0x004C7CC0
     unsigned __int64 GetUID() const { return UniqueID; }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetConstInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -103,7 +104,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -254,12 +255,12 @@ __declspec(noinline) unsigned long CAttackerMap::erase(const unsigned __int64& k
     return TmplSink_0(this, 2 + *(const long*)&key);
 }
 #pragma auto_inline(on)
-__forceinline void TraceDeregister(CCharString attackerName, const CCharString& attackedName, const CCombatantInfo& attackedInfo)
+FABLE_FORCEINLINE void TraceDeregister(CCharString attackerName, const CCharString& attackedName, const CCombatantInfo& attackedInfo)
 {
     CombatTrace("Deregistering combatant " + attackerName + " was attacking " + attackedName + " (who has " +
                 GFIntToCharString(attackedInfo.DefenderInfo.Attackers.size() - 1) + " things still attacking)");
 }
-__forceinline void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
+FABLE_FORCEINLINE void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
 {
     TraceDeregister(GDefStringTable.GetString(attacker->GetDefName()), attackedName, attackedInfo);
 }

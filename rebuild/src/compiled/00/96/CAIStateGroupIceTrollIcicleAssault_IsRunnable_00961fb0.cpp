@@ -13,6 +13,7 @@
 // 0x0092C070 / 0x007E4B60) so the def stays in edi; operator= is a __forceinline SetPItem(other.GetPItem()).
 // Layout: Ego_r.pdb CAIStateGroup_IceTrollIcicleAssault (PTarget +0x14); CSnowTrollDef::IceTrailDistanceLimit +0x5c
 // (Ego_r.pdb); the creature's counted def class at +0x70. The engine header flattens the base, so the model is local.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 
@@ -59,11 +60,11 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
     CDefClassPointer GetPDefClass() const { return PDefClass; }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -74,7 +75,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -95,7 +96,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(CThing* thing);         // 0x004A96F0
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 #pragma auto_inline(off)

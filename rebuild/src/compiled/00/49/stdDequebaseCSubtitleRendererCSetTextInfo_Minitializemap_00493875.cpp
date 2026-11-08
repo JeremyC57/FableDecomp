@@ -15,6 +15,7 @@
 // Frame-pointer size TU (`optimize("y",off)` + `("s",on)`); `(max)` and the allocator are `__forceinline`.
 // Label correction: catalog "CEngineInterpolationInfo_Initialize" is propagated.
 // Leaf: _M_initialize_map
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -40,13 +41,13 @@ public:
 };
 
 namespace std {
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
 inline unsigned int __deque_buf_size(unsigned int __size) { return __size < 128 ? (unsigned int)(128 / __size) : 1u; }
 
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp> class _STLP_alloc_proxy : public allocator<_Tp> {

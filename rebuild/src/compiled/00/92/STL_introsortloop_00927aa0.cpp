@@ -17,6 +17,7 @@
 //   return; } --depth_limit; cut = __unguarded_partition(first, last, _Tp(__median(*first, *(first + (last - first) / 2),
 //   *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }` -- comp loaded
 //   once into ebp and pushed before the depth test; the pivot copy-constructed in its slot from the median's reference.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -30,8 +31,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         SetPItem(p.GetPItem());
         return *this;

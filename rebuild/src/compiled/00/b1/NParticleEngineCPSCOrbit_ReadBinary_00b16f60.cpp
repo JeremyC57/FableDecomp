@@ -6,6 +6,7 @@
 // Layout: PDB (Ego_r) CDataInputStream names (StreamPos +4, StreamSize +8, CurrentSourcePtr +0xc, SourceChunkStreamPos +0x10,
 //   SourceChunkBytesRemaining +0x14) and CPSCOrbit/COrbitSettings names (CentreParam +0x0c, Orbits +0x10, 0x90 bytes).
 //   Local model: engine/CDataInputStream.h is data-only and cannot carry the inline Read this function inlines.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 class CDataInputStream { public:
@@ -15,8 +16,8 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {

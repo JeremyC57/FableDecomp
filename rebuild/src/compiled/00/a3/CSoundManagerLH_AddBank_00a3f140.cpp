@@ -14,6 +14,7 @@
 //   the CVectorMap add is the inline STLport push_back of a temporary pair (placement-new null test, `add [esi+4],8`,
 //   overflow with (__false_type, 1, true)) plus `Dirty = true`, then the inline sort-when-dirty. Retail inlines these
 //   here, so Add and push_back are __forceinline (GOTCHAS: one inlined call site).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 class CCharString {
@@ -49,7 +50,7 @@ public:
     _Tp* _M_end_of_storage;                                 // +0x08
     iterator begin() { return _M_start; }
     iterator end() { return _M_finish; }
-    __forceinline void push_back(const _Tp& __x)
+    FABLE_FORCEINLINE void push_back(const _Tp& __x)
     {
         if (_M_finish != _M_end_of_storage) {
             _Construct(_M_finish, __x);
@@ -78,7 +79,7 @@ public:
     std::vector<value_type> Data;                           // +0x00
     C                        Comp;                          // +0x0C (empty comparator)
     bool                     Dirty;                         // +0x0D
-    __forceinline void Add(const K& key, const V& value)
+    FABLE_FORCEINLINE void Add(const K& key, const V& value)
     {
         Data.push_back(value_type(key, value));
         Dirty = true;

@@ -1,6 +1,7 @@
 // Behaviour test for 0x00da2860 (RST2): model plus the body verbatim from final.cpp, callees stubbed.
 // Checks that a hit which costs health clears the no-damage flag and ends the watch, a hit without damage keeps
 // watching, termination before and after the hit, and the release of the by-value thing on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -21,7 +22,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
     bool MsgIsHitBy(const CCharString& a) const { if (strcmp(a.Text, "") != 0) g_badArg = true; return g_frames >= g_hitFrame; }
 };
 class CGameScriptInterface { public:

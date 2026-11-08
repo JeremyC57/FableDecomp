@@ -15,13 +15,14 @@
 // (else it stays out of line); the head sentinel is reached through an inline accessor at each use, so Head.PrevResource
 // is read straight off the list ([list+10h]) before the head address is formed (a cached `head` local makes the lane
 // form the address first and hold the link in esi); the links are written through the resource's members.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include "engine/CResource.h"
 #include "engine/CResourceList.h"
 
 struct CResourceList_Methods : CResourceList {
     CResource* GetHead() { return reinterpret_cast<CResource*>(this->Head); }
-    __forceinline void AddResource(CResource* resource)
+    FABLE_FORCEINLINE void AddResource(CResource* resource)
     {
         resource->ResourceList = this;
         resource->LastUsedFrame = this->CurrentFrame;

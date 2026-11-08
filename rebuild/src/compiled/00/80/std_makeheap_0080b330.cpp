@@ -14,6 +14,7 @@
 //   non-trivial; the bool moves as a byte), then the target point copy-constructed in its slot (base ctor, vtable,
 //   SetPItem(GetPItem()), Index, the position, FrameRejected through a pointer strength-reduced to `first + parent*28 +
 //   0x14`).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -27,8 +28,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"
@@ -40,7 +41,7 @@ public:
     long                        Index;                      // +0x08
     C3DVector                   TargetingPosition;          // +0x0C
     long                        FrameRejected;              // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
 };

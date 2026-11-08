@@ -11,6 +11,7 @@
 // store), the bool lands in the dead high byte of the index slot, the temporary in [ebp-8] and its release is the inlined long form
 // (`mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0`) of the CItem module. The second temporary is homed in the dead index
 // slot ([ebp+0Ch], the index itself lives in edi).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public:
@@ -37,7 +38,7 @@ class CIVCountedPointeeBase : public CIVVirtual, public CIVRefCounted { public:
 };
 template <class T> class CIVCountedPointer { public:      // 4 bytes
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object)
             Object->ReleaseTemporary();

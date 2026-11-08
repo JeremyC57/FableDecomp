@@ -6,6 +6,7 @@
 //   SetState(state, value, core) with the core LAST (VC7.1 copies inline parameters in parameter order).
 // States: texture-stage pairs +0x3204/+0x32a4 (colour op/arg globals 0x01396E80/0x01396E7C), +0x3344/+0x33e4 and
 //   +0x3484/+0x3524 (0x01396EF0/0x01396EEC), and +0x3218 (0x01396E70).
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -46,7 +47,7 @@ extern unsigned long g_renderStateDefault_01396ef0;    // 0x01396EF0
 extern unsigned long g_renderStateDefault_01396eec;    // 0x01396EEC
 extern unsigned long g_renderStateDefault_01396e70;    // 0x01396E70
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

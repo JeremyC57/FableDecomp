@@ -17,6 +17,7 @@
 //   exits); the three filter operators are __forceinline (plain inline leaves calls). The SolidToThing test reads only SourceThing in retail (PTCSolidToThing is never loaded). The flags
 //   test reads the thing's component into a local before the null tests, then `a || b` on the source component. The
 //   circle test is the landed 0x0063EF50 body (dx squared first needs the two-statement `d2`). No pragma.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CThing;
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
@@ -47,7 +48,7 @@ class CThingFilter_SolidToThing {
 public:
     CThing*          SourceThing;               // +0x00
     CTCSolidToThing* PTCSolidToThing;           // +0x04
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         return &thing != SourceThing;
     }
@@ -56,7 +57,7 @@ class CThingFilter_PhysicsFlagsSolidToThing {
 public:
     CThing*         SourceThing;                // +0x00
     CTCPhysicsBase* SourceThingPhysicsTC;       // +0x04
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         CTCPhysicsBase* physics = thing.PhysicsTC;
         if (!SourceThingPhysicsTC || !physics)
@@ -81,7 +82,7 @@ public:
             return true;
         return false;
     }
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         CTCPhysicsBase* physics = thing.PhysicsTC;
         if (physics)

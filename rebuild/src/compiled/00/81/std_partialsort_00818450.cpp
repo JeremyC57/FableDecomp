@@ -14,6 +14,7 @@
 // `*result = *first`, memberwise through registers and the frame, the C3DVector floats through fld/fstp), sort_heap.
 // __pop_heap is `__forceinline` as in the landed sort_heap 0x008182E0: plain `inline` leaves it a call (by-value
 // element with a non-trivial copy constructor).
+#include "fable_compiler.h"
 struct CHitLocation;
 #include "engine/C3DVector.h"
 namespace {
@@ -42,7 +43,7 @@ inline void make_heap(RandomAccessIter first, RandomAccessIter last, Compare com
 }
 
 template <class RandomAccessIter, class Tp, class Compare, class Distance>
-__forceinline void __pop_heap(RandomAccessIter first, RandomAccessIter last, RandomAccessIter result, Tp val, Compare comp, Distance*)
+FABLE_FORCEINLINE void __pop_heap(RandomAccessIter first, RandomAccessIter last, RandomAccessIter result, Tp val, Compare comp, Distance*)
 {
     *result = *first;
     __adjust_heap(first, Distance(0), Distance(last - first), val, comp);

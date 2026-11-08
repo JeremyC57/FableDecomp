@@ -16,6 +16,7 @@
 //   whose key reuses the dead `item` argument slot; `if (m_onlyWithFreePoint) return points->IsActionPointFree(); return
 //   true;` -- the member test is scheduled between the end/hit select and the component load, the call's al is returned
 //   as is, and the miss paths share one `xor al,al` exit.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 
@@ -39,7 +40,7 @@ public:
     unsigned char  _pad11[0x0f];
     unsigned long  m_presentBits[9];            // +0x20 interface bitset
     CInterfaceMap  m_interfaces;                // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

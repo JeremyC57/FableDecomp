@@ -18,6 +18,7 @@
 //   which leaves the last equality stored to a dead byte (`mov [ebp+0Bh],al`).
 // Layout: retail CTCMeleeTrap StrikeAnimation +0x61 (PDB +0x6D; the trap base is 12 bytes smaller in retail, as the
 //   landed 0x00788555 PlayingContinuous +0x60); CAnimationEntry +0x00 the animation id.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -58,13 +59,13 @@ template<> bool CBasicString<char>::operator==(const CBasicString<char>& other) 
 class CCharStringData : public CBasicString<char> { public: };
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
-    __forceinline unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
-    __forceinline bool StartsWith(const CCharString& prefix) const
+    FABLE_FORCEINLINE const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
+    FABLE_FORCEINLINE unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
+    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const
     {
         return strncmp(GetPString(), prefix.GetPString(), prefix.Length()) == 0;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

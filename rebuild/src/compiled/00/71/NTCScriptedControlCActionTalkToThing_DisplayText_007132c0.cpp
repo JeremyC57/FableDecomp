@@ -11,6 +11,7 @@
 // Layout: retail CActionTalkBase is Ego_r.pdb less 4 (CArray<CSubtitledMessage> 12 bytes: Messages +0x30, CurrentMessageIndex +0x3c,
 //   GameTurnDuration +0x48, SoundStartedPlaying +0x73); retail CSubtitledMessage is 0x44 (Text +0xc); CActionTalkToThing
 //   AskingHeroQuestion +0x91, DisplayOverScreenFade +0x92, QuestionButton1..3 +0x94/+0x98/+0x9c (PDB less 8).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:
@@ -107,9 +108,9 @@ public:
     CCharString QuestionButton1;                // +0x94
     CCharString QuestionButton2;                // +0x98
     CCharString QuestionButton3;                // +0x9c
-    __forceinline CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
-    __forceinline CFontBank* GetFont() const { return PControl->PThing->PeekComponent()->Font; }
-    __forceinline CPlayerGui* GetPlayerGui() const { return (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()); }
+    FABLE_FORCEINLINE CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
+    FABLE_FORCEINLINE CFontBank* GetFont() const { return PControl->PThing->PeekComponent()->Font; }
+    FABLE_FORCEINLINE CPlayerGui* GetPlayerGui() const { return (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()); }
     void DisplayText();
 };
 

@@ -8,6 +8,7 @@
 // class must be complete or VC emits the 16-byte general member-pointer call. Every member dtor is `__forceinline`;
 // the vector uses an STLport-style `_Destroy(first, last)` helper (end kept in ebx); the owner release is a local copy.
 // Leaf: ??1CSharedData
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
@@ -24,7 +25,7 @@ struct CIVObject {
 
 struct CIVPointer {
     CIVObject* m_p;
-    __forceinline ~CIVPointer()
+    FABLE_FORCEINLINE ~CIVPointer()
     {
         CIVObject* p = m_p;
         if (p) {
@@ -49,7 +50,7 @@ struct CBlendEntryVector {                         // STLport vector<CBlendEntry
         for (; first != last; ++first)
             first->~CBlendEntry();
     }
-    __forceinline ~CBlendEntryVector()
+    FABLE_FORCEINLINE ~CBlendEntryVector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)
@@ -67,7 +68,7 @@ struct SCountedBlock {
 struct CCountedPointerData {
     void*          Data;
     SCountedBlock* Info;
-    __forceinline ~CCountedPointerData()
+    FABLE_FORCEINLINE ~CCountedPointerData()
     {
         if (Info) {
             --Info->m_count;

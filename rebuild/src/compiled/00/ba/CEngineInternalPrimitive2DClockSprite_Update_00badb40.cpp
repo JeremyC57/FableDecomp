@@ -4,6 +4,7 @@
 // Shape: Colour2 is a plain member copy and the interpolation set binds the by-value PDB getter
 //   (?GetInterpolationSet@CEnginePrimitive@@QBE?AW4EEngineInterpolationSet@@XZ) to a const reference; the bound
 //   temporary restarts the eax/edx copy alternation so the set and the filter bit both load into eax as retail.
+#include "fable_compiler.h"
 #include "rebuild_abi.h"
 extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) 1e-4f, the tree spelling (naming wave 13). ChatGPT reads the Ego_r public here as ?DELTA_NOTIONAL_ZERO@@3MB: confirm with a PDB data dump
 class C2DVector{public:float X,Y;float GetSquaredMagnitude()const{return X*X+Y*Y;}bool IsNonZero()const{return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}};
@@ -38,9 +39,9 @@ class CBaseClass{public:virtual~CBaseClass();};
 template<class T>class CIVCountedPointer{private:CIVCountedPointeeBase*Object;};
 class CGraphicInfoFrame:public CBaseClass{public:class CFrameData;private:unsigned short FrameNum;signed char SmallMipmapLevel;CIVCountedPointer<CFrameData>Data;CGraphicInfo*GraphicInfo;public:void BeginLoading(unsigned long,unsigned long)const;unsigned long GetWidth()const;unsigned long GetHeight()const;};
 class CGraphicInfo{private:CGraphicDataBank::CGraphicHeader Header;CGraphicDataBank::ETextureType TextureType;CGraphicDataBank*Bank;long Index;CGraphicInfoFrame*Frames;public:const CGraphicInfoFrame*PeekInfoFrame(unsigned long n)const{return Frames+n;}unsigned long GetWidth()const{return Header.FrameWidth;}unsigned long GetHeight()const{return Header.FrameHeight;}};
-__forceinline const CGraphicInfo*CGraphicDataBank::PeekGraphic(unsigned long n)const{return n<GraphicList.size()?&GraphicList[n]:0;}
-__forceinline const CGraphicInfoFrame*CGraphicDataBank::PeekGraphicInfoFrame(unsigned long n,unsigned long frame)const{return PeekGraphic(n)?PeekGraphic(n)->PeekInfoFrame(frame):0;}
-__forceinline unsigned long CGraphicInfoFrame::GetWidth()const{return GraphicInfo->GetWidth();}__forceinline unsigned long CGraphicInfoFrame::GetHeight()const{return GraphicInfo->GetHeight();}
+FABLE_FORCEINLINE const CGraphicInfo*CGraphicDataBank::PeekGraphic(unsigned long n)const{return n<GraphicList.size()?&GraphicList[n]:0;}
+FABLE_FORCEINLINE const CGraphicInfoFrame*CGraphicDataBank::PeekGraphicInfoFrame(unsigned long n,unsigned long frame)const{return PeekGraphic(n)?PeekGraphic(n)->PeekInfoFrame(frame):0;}
+FABLE_FORCEINLINE unsigned long CGraphicInfoFrame::GetWidth()const{return GraphicInfo->GetWidth();}FABLE_FORCEINLINE unsigned long CGraphicInfoFrame::GetHeight()const{return GraphicInfo->GetHeight();}
 #define CEngineResourceManager CEngineResourceManagerFields
 #include "engine/CEngineResourceManager.h"
 #undef CEngineResourceManager

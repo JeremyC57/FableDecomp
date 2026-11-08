@@ -4,6 +4,7 @@
 // PDB C3DVertex2 has Position +0, Normal +12, U +24, V +28, total32; default construction leaves fields uninitialized.
 // Leaf: ReadFromFile@C3DMeshFileVerticesChunkMethods
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileVerticesChunk.h"
@@ -13,8 +14,8 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 struct CInputStreamVirtuals { virtual void v0(); virtual void v1(); virtual unsigned long GetPosition(); };
 struct CInputStreamAccess : CDataInputStream {
  unsigned long GetPosition() { return ((CInputStreamVirtuals*)this)->GetPosition(); }
- static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
- __forceinline void Read(void* buffer,long size) {
+ static FABLE_FORCEINLINE bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
+ FABLE_FORCEINLINE void Read(void* buffer,long size) {
   if(size<=0) return;
   __int64 newPosition=(__int64)(StreamPos+size);
   if(!IsValidPosition(newPosition)) return;
@@ -25,7 +26,7 @@ struct CInputStreamAccess : CDataInputStream {
    StreamPos+=size;
   } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
  }
- __forceinline unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
+ FABLE_FORCEINLINE unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
 };
 
 class C3DVertex2 { public:C3DVector Position,Normal;float U,V;C3DVertex2() {}};

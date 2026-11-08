@@ -2,6 +2,7 @@
 // Leaf: ?Main@CSignpost@CPersonalScript_alextestScript@NScript@@EAEXXZ
 // Naming wave 35: identity reg 00eed40e "Signpost" in 00eed360; Alloc 00eed5d0; vtable 012f5890 slot 1; PDB ?Main@CSignpost@CPersonalScript_alextestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012f5890::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CSignpost@CPersonalScript_alextestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CExitWardensOffice@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own); class CExitWardensOffice renamed CSignpost); same bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -32,10 +33,10 @@ private:
 };
 }
 typedef NScript::CPersonalScript_alextestScript::CSignpost CSignpost;    // global spelling used below //F35B10/F35B30
-__forceinline bool WardenUsed(const CScriptThing& thing,const CCharString& name){typedef bool(CScriptThing::*F)(const CCharString&)const;return (thing.*static_cast<const F*>(thing.__vftable)[20])(name);}
-__forceinline void WardenFrame(CGameScriptInterface* s){typedef void(CGameScriptInterface::*F)()const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+7,sizeof(f));(s->*f)();}
-__forceinline void WardenInfo(CGameScriptInterface* s,const CCharString& name){typedef void(CGameScriptInterface::*F)(const CCharString&)const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+115,sizeof(f));(s->*f)(name);}
-__forceinline bool WardenClicked(CGameScriptInterface* s){typedef bool(CGameScriptInterface::*F)()const;return (s->*static_cast<const F*>(s->__vftable)[40])();}
+FABLE_FORCEINLINE bool WardenUsed(const CScriptThing& thing,const CCharString& name){typedef bool(CScriptThing::*F)(const CCharString&)const;return (thing.*static_cast<const F*>(thing.__vftable)[20])(name);}
+FABLE_FORCEINLINE void WardenFrame(CGameScriptInterface* s){typedef void(CGameScriptInterface::*F)()const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+7,sizeof(f));(s->*f)();}
+FABLE_FORCEINLINE void WardenInfo(CGameScriptInterface* s,const CCharString& name){typedef void(CGameScriptInterface::*F)(const CCharString&)const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+115,sizeof(f));(s->*f)(name);}
+FABLE_FORCEINLINE bool WardenClicked(CGameScriptInterface* s){typedef bool(CGameScriptInterface::*F)()const;return (s->*static_cast<const F*>(s->__vftable)[40])();}
 #ifdef _MSC_VER
 typedef char Alive16[sizeof(CIsThingAlive)==16?1:-1];
 typedef char Thing8[offsetof(CSignpost,Thing)==8?1:-1];

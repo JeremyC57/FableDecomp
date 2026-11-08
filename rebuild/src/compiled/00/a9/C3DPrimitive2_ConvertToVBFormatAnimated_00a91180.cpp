@@ -5,6 +5,7 @@
 //   multiplied twice -- `count` for the 31-bit range check and `stride * vertexCount` again in resize -- which keeps
 //   `stride` live across the check and gives retail's `mov eax,edi ; imul eax,[esp+14h]` (a single `count` is multiplied
 //   in place: `imul edi ; mov eax,edi`).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*); // 0x00BFEA14
 class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 void __fastcall ConvertAnimatedVertices(const void*, unsigned long, void*, unsigned long, unsigned long, CVertexCompressionParams&); // 0x00A90FC0
@@ -58,7 +59,7 @@ struct CByteVector {
     unsigned char* end;
     void insert(unsigned char*, unsigned long, const unsigned char&); // 0x00485F3A
     unsigned long size() const { return (unsigned long)(last - first); }
-    __forceinline void resize(unsigned long count, const unsigned char& value)
+    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
     {
         if (count < size())
             last = first + count;

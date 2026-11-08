@@ -16,6 +16,7 @@
 //   the 12-byte block {references, destroy(object) __fastcall, object}.
 // Shape: the old and new actions are local counted copies (inline copy/release); the refused-action branch uses the
 //   out-parameter GetInterface (bitset test + lookup in one inline bool) so the component lands in eax like retail.
+#include "fable_compiler.h"
 class CTCBase;
 
 void __fastcall Destroy_CCreatureActionBase(void* object);
@@ -85,7 +86,7 @@ class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
-    __forceinline bool GetInterface(long type, CTCBase** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

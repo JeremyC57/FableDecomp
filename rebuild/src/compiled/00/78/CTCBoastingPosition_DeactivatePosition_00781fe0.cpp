@@ -11,6 +11,7 @@
 // Shape: the two flag stores before the &PParticleEffect formation's first use; the particle kill is an inline helper
 // (`GetPItem() && !GetPItem()->IsDead()` then `GetPItem()->Kill(true)`); ParentThing re-read after the virtual call and kept in
 // esi for the lookup.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -30,7 +31,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

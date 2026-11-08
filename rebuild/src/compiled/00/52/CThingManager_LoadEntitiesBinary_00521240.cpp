@@ -19,6 +19,7 @@
 // Shape: the same-TU noinline bodies of _M_find and _M_insert_overflow let VC7.1 keep the set header in esi across both
 //   lookups and pack the empty __true_type temporary with retail's frame (0x94); the statement order of the opening
 //   stores is retail's schedule (interval, the two members, hasProcess, ticks).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
@@ -29,7 +30,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;
@@ -217,7 +218,7 @@ public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long        SourceChunkStreamPos;          // +0x10
     long                 SourceChunkBytesRemaining;     // +0x14
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPos = (__int64)(StreamPos + size);
         if (newPos < 0 || newPos > 0x7fffffff)
@@ -230,8 +231,8 @@ public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULONG() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    __forceinline long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULONG() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }
 protected:
     void SetPositionAssumeWithinSourceChunk(unsigned long position);   // 0x00993C10
 private:
@@ -248,7 +249,7 @@ public:
     virtual void ReadCompressed(void* buffer, long size);
     virtual CCharString ReadNullTerminatedString();
     virtual CWideString ReadNullTerminatedWString();
-    __forceinline const unsigned char* ReadConstData(long size)
+    FABLE_FORCEINLINE const unsigned char* ReadConstData(long size)
     {
         if (size > 0) {
             unsigned long position = GetPosition();

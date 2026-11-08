@@ -2,20 +2,21 @@
 // Flags: /O2 /Oy /W3
 // Leaf: TransferBinaryIn
 // Layout: CDataInputStream shared header; zone fields PDB12911-12913, map pair key/value reads from retail.
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND class CMemoryDataInputStream   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 
 extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 #pragma intrinsic(memcpy)
 class CMemoryDataInputStream: public CDataInputStream { public:
- __forceinline void Read(void* out,int size) {
+ FABLE_FORCEINLINE void Read(void* out,int size) {
   __int64 next=(__int64)(StreamPos+size);
   if(next<0 || next>0x7fffffff) return;
   if(SourceChunkBytesRemaining>=size) {memcpy(out,CurrentSourcePtr,size);CurrentSourcePtr=(unsigned char*)CurrentSourcePtr+size;SourceChunkBytesRemaining-=size;StreamPos+=size;}
   else ReadWithSrcChunkOverflow((unsigned char*)out,size);
  }
- __forceinline unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
- __forceinline void ReadScalar(int* out){int v;Read(&v,4);*out=v;}
+ FABLE_FORCEINLINE unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
+ FABLE_FORCEINLINE void ReadScalar(int* out){int v;Read(&v,4);*out=v;}
 };
 
 namespace N006dc070 {

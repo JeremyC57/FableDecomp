@@ -15,6 +15,7 @@
 //   landed CInputProcessPhotojournalCapture::ProcessInput 0x00691AE0.
 // Shape: `CTCGamePlayer* player = 0; if (HasTC) player = GetTC;` gives the `xor ebx,ebx` preload; each UI arm returns
 //   on its own (no SetHandled in this process).
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput;
 class C2DVector { public:
@@ -58,7 +59,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCGamePlayer* Find(long kind)
+    FABLE_FORCEINLINE CTCGamePlayer* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCGamePlayer*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -70,8 +71,8 @@ class CThing { public:
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCGamePlayer* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCGamePlayer* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTCVillage::OnKill() -- restart game time if the village had stopped it, then notify the live hero's interface-243 component
 // Leaf: ?OnKill@CTCVillage
@@ -27,7 +28,7 @@ public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

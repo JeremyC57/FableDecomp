@@ -10,6 +10,7 @@
 //   the end) with the key in the first frame word and the component in a register; the vector<CThing*> is a local
 //   STLport vector (three zero words, `free` of the storage at the end), walked with its end re-read every pass;
 //   IS_THING_ALIVE is inline.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -57,7 +58,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;

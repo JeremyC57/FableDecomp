@@ -1,4 +1,5 @@
 // Behaviour test for 0x00522880: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -42,7 +43,7 @@ template <class T> struct CRetailVector {
         if (first) free(first);
     }
 };
-template <class T> __forceinline void Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void Construct(T* p, const T& value) { new (p) T(value); }
 template <class T> struct CRetailPtrVector {
     T* first;
     T* last;
@@ -90,8 +91,8 @@ public:
     bool IsGameStatePersisted();                        // 0x004C8280
     bool IsLevelLess();                                 // 0x004C7930
     void SetCurrentMapNumber(long map);                 // 0x004C7580
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;

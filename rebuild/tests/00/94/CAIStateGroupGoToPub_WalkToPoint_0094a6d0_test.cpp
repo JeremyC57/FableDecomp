@@ -1,5 +1,6 @@
 // Behaviour test for 0094a6d0: src/0094a6d0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CAIStateGroup_GoToPub::WalkToPoint(const C3DVector&, const CRightHandedSet&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -108,7 +109,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

@@ -14,6 +14,7 @@
 //   bytes) as in the landed CInputProcessCombat::ProcessUnarmedInput 0x0068E8F0.
 // Shape: `T* p = 0; if (HasTC) p = GetTC;` gives the `xor esi,esi` preload; the lookup key and both payload values sit
 //   in the dead `event` argument slot (the event itself lives in ebx).
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -50,7 +51,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCFishing* Find(long kind)
+    FABLE_FORCEINLINE CTCFishing* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCFishing*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -62,8 +63,8 @@ class CThing { public:
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCFishing* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCFishing* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {

@@ -10,6 +10,7 @@
 // lookup key's `push ecx` word).
 // Layout: Ego_r.pdb PTrophyBeingShown +0xb4, ShowingTrophyDeedHandle +0xbc, PostedDeed +0xc0, PEmitter +0xc1 (packed);
 // retail CCreatureActionBase is 0xa8, so the members sit 12 bytes lower (PEmitter at the odd offset +0xb5).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -42,7 +43,7 @@ public:
     bool                    PostedDeed;         // +0xb4
     CIntelligentPointer<CThing> PEmitter;           // +0xb5 (packed)
     virtual void FinishAction();
-    __forceinline CTCTrophy* GetTrophy() const
+    FABLE_FORCEINLINE CTCTrophy* GetTrophy() const
     {
         CTCTrophy* trophy;
         PTrophyBeingShown.Get()->GetTC(TCI_TROPHY, &trophy);

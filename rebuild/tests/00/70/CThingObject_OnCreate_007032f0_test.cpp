@@ -1,5 +1,6 @@
 // Behaviour test for 007032f0 CThingObject::OnCreate: final.cpp body verbatim; the base creation / validation, the graphic
 // appearance, the CCharString runtime and the sprite component are stubs recording their calls.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -39,7 +40,7 @@ class CCharString { public:
             return false;
         return Compare(PStringData->m_pData, other.PStringData->m_pData) == 0;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -123,13 +124,13 @@ class CThing { public:
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  Dead : 1;                            // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

@@ -7,6 +7,7 @@
 // CTCQuestCard::ScriptQuestName at +0x28.
 // Shape: the quest card comes from the unchecked GetQuestCard helper (an unset local when the TC is absent, landed
 // IsAnyQuestActive 0x004B1080): VC7.1 loads that local's word once before the loop; `this` is parked in the frame word.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 
 class CCharStringData { public:                                 // the shared string block
@@ -43,7 +44,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
+    FABLE_FORCEINLINE CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
     {
         const CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -58,13 +59,13 @@ class CThing { public:                                          // retail CThing
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
     CTCMap        Components;                            // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
     void Kill(bool immediately);                         // 0x004C9B80
 };
 
 class CTCQuestCard;                                     // TC type 0x6c
-__forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
+FABLE_FORCEINLINE CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
 {
     CTCQuestCard* tc;
     if (thing->HasTC(0x6c))

@@ -13,6 +13,7 @@
 //   __uninitialized_copy(first, last, result, __false_type()); return result; }` (exceptions off: no unwind). The
 //   destination walks as `edi + esi` (the source pointer plus a fixed difference), with the placement null test on it.
 //   Size TU: `optimize("s", on)` with the inline helpers `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -33,7 +34,7 @@ template <class T1, class T2> struct pair {
 template <class T> class allocator {
 public:
     allocator() { }
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
 
 template <class V, class A> struct _STLP_alloc_proxy : public A {
@@ -41,13 +42,13 @@ template <class V, class A> struct _STLP_alloc_proxy : public A {
 };
 
 template <class T1, class T2>
-__forceinline void _Construct(T1* p, const T2& value)
+FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -82,7 +83,7 @@ class CAttackHistoryCombo {                         // Ego_r.pdb (retail 0x10 by
 public:
     std::vector<std::pair<EAttackHistoryType, EDamageAttribute> > AttackCombo;   // +0x00
     float Multiplier;                                                           // +0x0C
-    __forceinline CAttackHistoryCombo(const CAttackHistoryCombo& other)
+    FABLE_FORCEINLINE CAttackHistoryCombo(const CAttackHistoryCombo& other)
         : AttackCombo(other.AttackCombo), Multiplier(other.Multiplier) { }
 };
 

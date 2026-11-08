@@ -12,6 +12,7 @@
 //   inlined (decrement's first test is the end() header: red node whose grandparent is itself -> rightmost).
 //   VC7.1 keeps a plain `inline` __advance out of line here (a 25-byte forwarder); __forceinline folds it as retail did.
 // Label: catalog "BinaryTree_AdvanceIterator" (descriptive); the STLport name is advance.
+#include "fable_compiler.h"
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
 
 class CCharString {
@@ -102,7 +103,7 @@ template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { n
 
 namespace std {
 template <class _BidirectionalIterator, class _Distance>
-__forceinline void __cdecl __advance(_BidirectionalIterator& __i, _Distance __n, const bidirectional_iterator_tag&)
+FABLE_FORCEINLINE void __cdecl __advance(_BidirectionalIterator& __i, _Distance __n, const bidirectional_iterator_tag&)
 {
     if (__n > 0)
         while (__n--) ++__i;

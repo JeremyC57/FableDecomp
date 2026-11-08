@@ -11,6 +11,7 @@
 // def with one (the shared zero register `esi`).
 // Layout (retail): CurrentClothingSelected map +0x140 (as the landed ctor 0x005B7049); CAppearanceModifierDef suit part
 // +0x4C.
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -133,7 +134,7 @@ struct CLongVector {
     long* _M_finish;
     long* _M_end_of_storage;
     CLongVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CLongVector() { if (_M_start) free(_M_start); }
+    FABLE_FORCEINLINE ~CLongVector() { if (_M_start) free(_M_start); }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     long& operator[](unsigned long n) { return *(_M_start + n); }
 };

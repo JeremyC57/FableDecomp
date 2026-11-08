@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A7F60,164 bytes; query0048D400 uses native CThingFilter_HasTC calling006A80A0; Bob type242, force-visible00787740 (flag+30h and virtualslot9).
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -143,6 +144,6 @@ void ThingSearchMethods::GetAllWithTC(const HasTC& filter,ThingVector& out)const
 #pragma auto_inline(on)
  //0048D400,filter006A80A0
 struct CTCBobNative:CTCBase{unsigned char Rhset[24];C3DVector Pos;bool ForceVisible;void SetForceVisible();}; //00787740
-__forceinline CTCBobNative* GetBob(CThingNative* thing){CTCBobNative* result;if(thing->UsingComponents[7]&0x40000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)242);ComponentEntry* end=map->Finish;result=static_cast<CTCBobNative*>(((void*)(it==end||it->first>242?end:it)->second));}return result;}
+FABLE_FORCEINLINE CTCBobNative* GetBob(CThingNative* thing){CTCBobNative* result;if(thing->UsingComponents[7]&0x40000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)242);ComponentEntry* end=map->Finish;result=static_cast<CTCBobNative*>(((void*)(it==end||it->first>242?end:it)->second));}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ForceShipsVisible()const;};
 void CGameScriptInterfaceMethods::ForceShipsVisible()const{ThingVector things;reinterpret_cast<ThingSearchMethods*>(World->PThingSearchTools_ptr)->GetAllWithTC(HasTC(242),things);for(CThingNative** it=things.Start;it!=things.Finish;++it){CThingNative* thing=*it;if(thing&&!(thing->LifeFlags&1)&& (thing->UsingComponents[7]&0x40000))GetBob(thing)->SetForceVisible();}}

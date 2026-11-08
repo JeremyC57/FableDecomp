@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 int __attribute__((mode(DI)))
 #define __cdecl
@@ -86,7 +87,7 @@ public:const C3DVector&GetPos()const;
         if(bits[(unsigned)type>>5]&(1UL<<((unsigned)type&31)))return true;
         return false;
     }
-    __forceinline CTCBase&GetTC(ETCInterfaceType type) {
+    FABLE_FORCEINLINE CTCBase&GetTC(ETCInterfaceType type) {
         ETCInterfaceType key=type;
         CVectorMap<ETCInterfaceType,CTCBase*>&map=*reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>*>(reinterpret_cast<CThingLayout*>(this)->Components);
         std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);

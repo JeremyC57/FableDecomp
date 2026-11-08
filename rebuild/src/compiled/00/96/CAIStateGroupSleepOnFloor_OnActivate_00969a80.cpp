@@ -10,6 +10,7 @@
 // the end entry) with its bool result IGNORED, so when the bit is clear the uninitialised `task`
 // slot ([esp+4]) is what gets used (retail bug reproduced). Then PBrain->Creature is assigned to
 // the task and the flag at +0x1c is cleared. The result slot shares the frame with the key.
+#include "fable_compiler.h"
 class CThing;
 
 class CVillageTaskBase { public:
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline bool GetInterface(long type, CVillageTaskBase** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CVillageTaskBase** out)
     {
         if (m_presentBits[type / 32] & (1 << (type % 32))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

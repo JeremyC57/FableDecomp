@@ -11,6 +11,7 @@
 // Shape: the click flag lives in bl from the entry; the pressure stays on the FPU (`fcom` keeps it) until it is stored;
 //   the targeting component comes from an inline accessor that leaves its result unset when the kind is absent (retail
 //   then reads the dead key slot), so VC duplicates the call into both arms.
+#include "fable_compiler.h"
 class CInputEvent;
 class CProcessedInput;
 struct CTCBase_Retail;
@@ -25,7 +26,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020 (the key by address)
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -42,13 +43,13 @@ class CThing { public:
     unsigned char  _pad50[0x91 - 0x50];
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class CThingPlayerCreature : public CThing { };
 class CTCTargetingPlayer { public:
     void SetAsTargetNextThing();                   // 0x00802590
 };
-__forceinline CTCTargetingPlayer* GetTargetingIfPresent(CThing* thing)
+FABLE_FORCEINLINE CTCTargetingPlayer* GetTargetingIfPresent(CThing* thing)
 {
     CTCTargetingPlayer* tc;                        // deliberately unset when the component is absent
     if (thing->HasTC(8))

@@ -11,6 +11,7 @@
 //   11 dwords, edi/esi reloaded from the frame after each block move); both __uninitialized_copy calls and
 //   __uninitialized_fill_n are `__forceinline` (inlined like retail), the _M_clear destroy loop is empty and vanishes,
 //   leaving the null-tested free. The new block is homed in the `push ecx` word frame and the old `this` spilled.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -48,7 +49,7 @@ template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __va
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -57,7 +58,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

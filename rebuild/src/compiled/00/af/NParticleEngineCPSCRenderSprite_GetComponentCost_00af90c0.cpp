@@ -16,6 +16,7 @@
 //   CParticleSystemCost as the landed CPSCLight::GetComponentCost.
 // Constants: 4294967296.0f 0x0122DCB4, 1/2047 0x0129F65C, 20.0f 0x0122F160, 1.0f 0x0122DED8, 10.0f 0x01237F0C, 2.0f 0x0122DCDC,
 //   1/1023 0x0129EF84, 0.001f 0x01266300, 0.5f 0x0122F59C (read from the binary).
+#include "fable_compiler.h"
 namespace NParticleEngine {
 
 class CParticleSystemCost { public:
@@ -91,7 +92,7 @@ class CPSCRenderSprite : public CPSCBase { public:
 
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     long i = decimals;

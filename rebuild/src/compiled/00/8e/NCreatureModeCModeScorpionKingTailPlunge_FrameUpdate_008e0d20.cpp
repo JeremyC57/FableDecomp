@@ -16,9 +16,10 @@
 // Shape: the near-target pull-in normalises the delta IN PLACE (forceinline Normalise, so the direction reuses delta's frame words);
 //   the dust step is `delta / (float)frames` through an inline operator/ that multiplies by 1/s (fst + fmul st(2)); the dust
 //   emitter's driver is read through a forceinline accessor so it lands in ecx before the push.
+#include "fable_compiler.h"
 #include <math.h>
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -33,11 +34,11 @@ class C3DVector { public:
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline void Normalise() { float inv = FastInvSqrt(X * X + Y * Y + Z * Z); X *= inv; Y *= inv; Z *= inv; }
-    __forceinline C3DVector operator/(float s) const { return *this * (1.0f / s); }
+    FABLE_FORCEINLINE void Normalise() { float inv = FastInvSqrt(X * X + Y * Y + Z * Z); X *= inv; Y *= inv; Z *= inv; }
+    FABLE_FORCEINLINE C3DVector operator/(float s) const { return *this * (1.0f / s); }
     float GetLength2D() const { return sqrtf(X * X + Y * Y); }
 };
-__forceinline C3DVector ScaleRef(const C3DVector& v, const float& s) { return C3DVector(s * v.X, s * v.Y, s * v.Z); }
+FABLE_FORCEINLINE C3DVector ScaleRef(const C3DVector& v, const float& s) { return C3DVector(s * v.X, s * v.Y, s * v.Z); }
 class CTCDriverBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void MoveTo(const C3DVector& position);   // slot 30 (+0x78)
@@ -68,14 +69,14 @@ class CThing { public:
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool immediately);
-    __forceinline CTCDriverBase* GetDriver() const { return PTCDriver; }                // 0x004C9B80
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE CTCDriverBase* GetDriver() const { return PTCDriver; }                // 0x004C9B80
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

@@ -17,6 +17,7 @@
 // copy ctor and dtor only inline as `__forceinline`.
 // Layout: CTCInventory screen base subobject +0x130, quick-access-assign-pending flag +0x1CE; retail CThing def
 // pointer object +0x70; sub-def +0x78 the inventory def's global index.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -34,8 +35,8 @@ struct CInventorySubDef : CRefCounted {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 
@@ -64,7 +65,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventorySubDef>*
 class CThing { public:
     unsigned char           _pad_0x00[0x70];
     CDefPointer<CThingDef>  PDef;                    // +0x70
-    __forceinline CDefPointer<CThingDef> GetDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CThingDef> GetDef() const { return PDef; }
 };
 
 struct CScreenBase {

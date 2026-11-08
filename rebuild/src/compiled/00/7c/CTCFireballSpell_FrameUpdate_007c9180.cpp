@@ -14,6 +14,7 @@
 // Shape: the intelligent-pointer conversions are plain inline members; VC7.1 inlines the later call sites and calls the
 //        out-of-line copies for the first ones, as retail. The validity call goes through an inline helper that names the
 //        def first, which is what loads PDef into ebx before the target's GetPItem call.
+#include "fable_compiler.h"
 #pragma pack(push, 2)
 class CBaseObject;
 class CBaseIntelligentPointer {
@@ -69,8 +70,8 @@ public:
     unsigned char Flags6C;                              // +0x6C
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char Flags91;                              // +0x91
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &Interfaces;
@@ -142,7 +143,7 @@ public:
     bool OneAnimCastMode;                               // +0x51
     CIntelligentPointer<CThing> PTarget;                // +0x52
     CIntelligentPointer<CThing> PItemRemoved;           // +0x5A
-    __forceinline bool IsValidTarget(const CThing* thing) const
+    FABLE_FORCEINLINE bool IsValidTarget(const CThing* thing) const
     {
         const CSpecialAbilitiesFireballSpellDef* def = PDef;
         return IsValidRangedWeaponTargetForShooter(thing, PTarget.Get(), def->TargettingArcAngle);

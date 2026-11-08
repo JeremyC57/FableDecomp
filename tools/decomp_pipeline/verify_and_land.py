@@ -34,6 +34,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from artifact_layout import shard_directory
 from crawl import purity
+import check_portable_spellings
 import reloc_identity
 import standin_leaf
 GENERIC_STRUCT_NAMES = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner",
@@ -513,6 +514,10 @@ def main():
         # Purity gate: hand-written machine code is an oracle, not a reconstruction (CONTRIBUTING.md).
         if not purity.is_genuine(src0):
             print(f"{addr:10} {'NOT_GENUINE':16} {'-':6} {name}"); continue
+        # Portability gate (owner, 2026-11-08): MSVC's `__forceinline` is spelled FABLE_FORCEINLINE (fable_compiler.h).
+        bare_fi=check_portable_spellings.bare_forceinline_lines(src0)+check_portable_spellings.bare_forceinline_lines(tst)
+        if bare_fi:
+            print(f"{addr:10} {'NOT_PORTABLE':16} {'-':6} {name}  bare __forceinline (use FABLE_FORCEINLINE)"); continue
         # Shared-header policy: warn when a candidate redeclares a class that already has an
         # engine header, or models `this` with a throwaway struct name. LANDVERIFY_STRICT_HEADERS=1
         # turns the warnings into rejections.

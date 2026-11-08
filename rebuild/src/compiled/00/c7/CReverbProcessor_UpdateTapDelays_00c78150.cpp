@@ -18,6 +18,7 @@
 // Shape: the clamp is `if (room < 0.9f) room = 0.9f;` then `room < 2.5f ? (room - 0.8f) * k : 1.0f` (retail keeps the
 //   clamped value on the x87 stack); the column offset `i * segment` is a local of the inner loop body (VC7.1 hoists the
 //   multiply but converts it per tap); the first-column factor is the inline `?:` (kept on the x87 stack and popped).
+#include "fable_compiler.h"
 #include "libpk/FtoL.h"
 
 struct SMixFormat {
@@ -58,7 +59,7 @@ public:
     void UpdateTapDelays(SReverbState* state, const SReverbParams* params);
 };
 
-__forceinline long RoundHalfDownToLong(float value)
+FABLE_FORCEINLINE long RoundHalfDownToLong(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

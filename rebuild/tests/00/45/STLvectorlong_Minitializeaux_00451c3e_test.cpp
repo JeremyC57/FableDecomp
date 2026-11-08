@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +18,7 @@ struct __true_type { };
 template <class _Tp> class allocator {
 public:
     allocator() { }
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -27,7 +28,7 @@ public:
 };
 
 template <class _OutputIter, class _Size, class _Tp>
-__forceinline _OutputIter fill_n(_OutputIter __first, _Size __n, const _Tp& __val)
+FABLE_FORCEINLINE _OutputIter fill_n(_OutputIter __first, _Size __n, const _Tp& __val)
 {
     for (; __n > 0; --__n, ++__first)
         *__first = __val;
@@ -35,7 +36,7 @@ __forceinline _OutputIter fill_n(_OutputIter __first, _Size __n, const _Tp& __va
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return fill_n(__first, __n, __x);                       // __uninitialized_fill_n(..., __true_type): POD
 }

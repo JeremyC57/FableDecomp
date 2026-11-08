@@ -9,6 +9,7 @@
 // Tried: RAII out pointer + holder (extra zero store), plain out slot + holder + entry reference, non-const def types.
 //   Next: the augmentation slot as a plain CDefSlot released by hand at the end (`if (p) { if (--p->m_refCount == 0) ... }`
 //   on a pointer local read after SetupAugmentationSounds); lane gap otherwise (callee-saved colouring, chunk 161 0x69A8B0 family).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 struct CDefVirtual {
     virtual void v00();
@@ -17,7 +18,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     mutable long m_refCount;                            // +0x04
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -25,7 +26,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { T* object = Object; ReleaseDef(object); }
+    FABLE_FORCEINLINE ~CDefPointer() { T* object = Object; ReleaseDef(object); }
     CDefPointer& operator=(T* object)
     {
         if (Object != object) {
@@ -42,7 +43,7 @@ template <class T> class CDefPointer { public:
 };
 template <class T> struct CDefHolder {                  // owns the reference GetDef handed over
     T* Object;
-    __forceinline ~CDefHolder() { ReleaseDef(Object); }
+    FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
 };
 class CAugmentationDef : public CDefBase { public: };
 class CDefClassBase : public CDefBase { public:

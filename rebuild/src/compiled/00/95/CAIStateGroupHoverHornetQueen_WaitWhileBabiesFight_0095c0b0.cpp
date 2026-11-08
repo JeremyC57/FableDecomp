@@ -13,6 +13,7 @@
 // (retail 12-byte STLport vectors put CircleMarkers at +0x50; the PDB's 16-byte vectors would put it at +0x54).
 // Leaf: WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
@@ -32,7 +33,7 @@ class CThing { public:
     unsigned char _pad4c[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -41,7 +42,7 @@ class CThing { public:
             *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
         }
     }
-    template<class T> __forceinline void GetInterfaceInline(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceInline(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             CInterfaceMap::SEntry* last = m_interfaces.last;

@@ -1,6 +1,7 @@
 //0041b550 NUISystem::CSprite::SetGraphicIndex (PDB egor903/debug0042cd20).
 // Layout: sharedCSprite donor has flattened bases; retailSizecc/d0,GraphicIndex178.
 // Graphic resource model reused from matched0041ac20; includes same recovered helpers.
+#include "fable_compiler.h"
 #include <new>
 #include "engine/CSprite.h"
 #include "engine/CResource.h"
@@ -23,7 +24,7 @@ struct CResource {                                     // Ego_r.pdb, 0x1C bytes
     unsigned long  LastUsedFrame;                      // +0x18
     void ListRemove();                                 // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next); // 0x009FBF90
-    __forceinline void Touch();
+    FABLE_FORCEINLINE void Touch();
 };
 struct CResourceList {                                 // Ego_r.pdb, 0x3C bytes
     unsigned long _pad00;
@@ -33,7 +34,7 @@ struct CResourceList {                                 // Ego_r.pdb, 0x3C bytes
     long          MaximumMemory;                       // +0x28
     unsigned long CurrentFrame;                        // +0x2c
 };
-__forceinline void CResource::Touch()
+FABLE_FORCEINLINE void CResource::Touch()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();
@@ -49,7 +50,7 @@ struct CCPInfo {
 struct CTexturePointer {                               // CCountedPointer<CTexture>
     void* Data;
     CCPInfo* Info;
-    __forceinline ~CTexturePointer()
+    FABLE_FORCEINLINE ~CTexturePointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -74,8 +75,8 @@ struct CGraphicFrameData {                             // Ego_r.pdb, 27 bytes
     unsigned char   IsInitialised : 1;
     unsigned char   ScreenGraphic : 1;
     void Uninitialise();                               // 0x009FCBA0
-    __forceinline ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
-    __forceinline void DecRef()
+    FABLE_FORCEINLINE ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
+    FABLE_FORCEINLINE void DecRef()
     {
         if (--ReferenceCount == 0) {
             this->~CGraphicFrameData();
@@ -86,12 +87,12 @@ struct CGraphicFrameData {                             // Ego_r.pdb, 27 bytes
 struct CGraphicFrame {                                 // intrusive pointer to CGraphicFrameData
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         if (FrameData)
             FrameData->DecRef();
     }
-    __forceinline CGraphicFrame& operator=(const CGraphicFrame& other)
+    FABLE_FORCEINLINE CGraphicFrame& operator=(const CGraphicFrame& other)
     {
         if (FrameData)
             FrameData->DecRef();
@@ -104,7 +105,7 @@ struct CGraphicFrame {                                 // intrusive pointer to C
 struct CManagedTexture {                               // Ego_r.pdb, 8 bytes
     unsigned long _pad00;
     CResource*    Data;                                // +0x04 CIVCountedPointer<CManagedTextureData>
-    __forceinline void Touch() { if (Data) Data->Touch(); }
+    FABLE_FORCEINLINE void Touch() { if (Data) Data->Touch(); }
 };
 struct CGraphicInfoFrame;
 struct CFrameData : CResource {                        // Ego_r.pdb, 0x44 bytes
@@ -119,7 +120,7 @@ struct CFrameData : CResource {                        // Ego_r.pdb, 0x44 bytes
     CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
     CFrameData(CGraphicInfoFrame* frame);              // 0x009FE380
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FDE80
-    __forceinline void DecRef() { if (--RefCount == 0) Release(); }
+    FABLE_FORCEINLINE void DecRef() { if (--RefCount == 0) Release(); }
 };
 struct CGraphicDataBank;
 struct CGraphicInfo {
@@ -130,7 +131,7 @@ struct CGraphicInfo {
 };
 struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
     CFrameData* P;
-    __forceinline CFrameDataPointer& operator=(CFrameData* p)
+    FABLE_FORCEINLINE CFrameDataPointer& operator=(CFrameData* p)
     {
         if (P) {
             P->DecRef();
@@ -150,7 +151,7 @@ struct CGraphicInfoFrame {                             // Ego_r.pdb, 16 bytes
     CGraphicInfo*     GraphicInfo;                     // +0x0c
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FE620
     bool InternalGetFrameForcedLoading(unsigned long flags);   // 0x009FF6B0
-    __forceinline bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
+    FABLE_FORCEINLINE bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
 };
 struct CGraphicInfoArray {
     CGraphicInfo* _M_start; CGraphicInfo* _M_finish; CGraphicInfo* _M_end_of_storage;
@@ -168,10 +169,10 @@ struct CGraphicDataBank {
     unsigned long CurrentFrame;                        // +0x194
     unsigned char _pad198[0x1e0 - 0x198];
     CGraphicInfoArray GraphicList;                     // +0x1e0 (CArray<CGraphicInfo>: STLport vector)
-    __forceinline CGraphicInfo* GetGraphicInfo(unsigned long index) { return index < GraphicList.size() ? &GraphicList[index] : 0; }
-    __forceinline CGraphicInfoFrame* GetGraphicFrames(unsigned long index) { return GetGraphicInfo(index) ? GetGraphicInfo(index)->Frames : 0; }
+    FABLE_FORCEINLINE CGraphicInfo* GetGraphicInfo(unsigned long index) { return index < GraphicList.size() ? &GraphicList[index] : 0; }
+    FABLE_FORCEINLINE CGraphicInfoFrame* GetGraphicFrames(unsigned long index) { return GetGraphicInfo(index) ? GetGraphicInfo(index)->Frames : 0; }
 };
-__forceinline bool CGraphicInfoFrame::GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags)
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags)
 {
     if (Data) {
         if (Data->Frame.FrameData) {

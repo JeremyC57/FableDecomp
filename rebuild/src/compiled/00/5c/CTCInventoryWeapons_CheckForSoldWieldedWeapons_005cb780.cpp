@@ -13,6 +13,7 @@
 //   same-TU noinline stand-in (it only writes the out slot) so the sub-def is read once into esi.
 // Layout: retail PActiveMeleeWeapon +0x134 / PActiveRangedWeapon +0x141 (packed, as the landed AugmentWeapon 0x005C44FA);
 //   weapon def class +0x2C (retail offset).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -45,7 +46,7 @@ class CDefClassBase : public CDefPointeeBase { public:
 };
 struct CDefClassPointer {                       // CDefPointer<CDefClassBase>: GetPDefFromGlobalIndex's by-value result
     CDefClassBase* Object;
-    __forceinline ~CDefClassPointer()
+    FABLE_FORCEINLINE ~CDefClassPointer()
     {
         if (Object) {
             CDefPointeeBase* p = Object;

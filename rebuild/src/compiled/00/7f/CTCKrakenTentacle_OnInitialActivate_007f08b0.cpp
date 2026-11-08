@@ -10,6 +10,7 @@
 //   CTCBase::OnInitialActivate @ 0x00686870 (empty base body).
 // Model: the landed sibling CTCKrakenTentacle::DoDieFX 0x007F0B10 (its second half is this function's tail).
 // Data: 0x01271D0C "DRIP", 0x012651BC "TARGET_CURSOR_POINT", 0x01271D00 "MEETS_WATER", 0x01271CF0 "EFFECT_WATER".
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CCharStringData;
@@ -72,7 +73,7 @@ class CThing { public:
     CDefClassBase* PDef;                                    // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                                  // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

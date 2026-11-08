@@ -16,6 +16,7 @@
 // test -- then the base destructor. The `new` factory (inline constructor) pulls the vtable and the
 // deleting destructor into the TU.
 
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 class CBankFile { public:
@@ -46,7 +47,7 @@ class CShaderDataBank : public CBankFile { public:                              
     CBankStateBlock    StateBlock;                                        // +0x11c
     CShaderDataBank() {}
     void DeleteShaderEntries();                                           // 0x00A62050
-    __forceinline virtual ~CShaderDataBank()
+    FABLE_FORCEINLINE virtual ~CShaderDataBank()
     {
         DeleteShaderEntries();
     }

@@ -15,12 +15,13 @@
 //   __forceinline as in the landed InterpolateTo rows): a * (1 - t) + b * t; VC7.1 unrolls the point loop four times (as retail).
 // Shape: the sizes are signed longs (`fild` with no unsigned fix-up); the two copied endpoints come from an if / else-if chain that
 //   tests i >= from.size() first and only then i >= to.size() (the third arm reads both arrays), as retail's three paths show.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CARRAY
 #include "engine/C3DVector.h"
 #include "engine/CArray.h"
 #include "engine/GFFloatToLongNear.h"
 namespace NParticleEngine {
-__forceinline C3DVector __fastcall GFInterpolate(const C3DVector& a, const C3DVector& b, float t) { return a * (1.0f - t) + b * t; }
+FABLE_FORCEINLINE C3DVector __fastcall GFInterpolate(const C3DVector& a, const C3DVector& b, float t) { return a * (1.0f - t) + b * t; }
 template <class T> CArray<T> __fastcall GFInterpolateArray(const CArray<T>& from, const CArray<T>& to, float t, const T& defaultValue)
 {
     long fromSize = from.size();

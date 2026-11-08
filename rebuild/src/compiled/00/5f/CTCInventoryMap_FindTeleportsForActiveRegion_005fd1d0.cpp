@@ -11,6 +11,7 @@
 // Layout: local view -- CTCInventoryMap teleport positions vector<C2DCoordI> +0x1E8 (12 bytes), ActiveRegionIndex +0x238
 //   (landed sibling FindQuestsForActiveRegion 0x005FD0F0); CWorld +0x20 thing search tools (engine/CWorld.h); CRegion's
 //   linked-map vector<long> +0x00; teleporter component (0xDD) enabled flag +0x10.
+#include "fable_compiler.h"
 #include <new>
 struct __false_type { __false_type() { } };
 #include "engine/C3DVector.h"
@@ -110,8 +111,8 @@ public:
     unsigned long m_presentBits[9];                   // +0x20 bitset of interface types
     CInterfaceMap m_interfaces;                       // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long kind) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const
     {
         long key = kind;
         const CInterfaceMap* map = &m_interfaces;
@@ -119,14 +120,14 @@ public:
         const CInterfaceMap::value_type* end = map->end();
         return (it == end || kind < it->first ? end : it)->second;
     }
-    template<class T> __forceinline T* PeekTC(long kind) const
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long kind) const
     {
         T* out;
         if (HasTC(kind))
             out = (T*)GetTC(kind);
         return out;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long kind) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
         if (HasTC(kind)) {
             long key = kind;

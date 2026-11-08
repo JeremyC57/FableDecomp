@@ -15,6 +15,7 @@
 //   ActionPointIndex +0x64, Sitting +0x70, HandsOffMode +0xa0, TimeNextReactToPlayer +0xa8; retail CThingAICreature
 //   WorkBuilding +0x170 (landed 0x0094C900). Modelled locally (flattened bases, no engine header for the group).
 
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject { };
 class CThing;
@@ -63,9 +64,9 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 #include "engine/CIntelligentPointer.h"
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
-    __forceinline CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CBuildingPointer& operator=(const CBuildingPointer& other) { CBaseObject* item = other.CBaseIntelligentPointer::GetPItem(); SetPItem(item); return *this; }
-    __forceinline CThingBuilding* GetPItem() const { return (CThingBuilding*)CBaseIntelligentPointer::GetPItem(); }
+    FABLE_FORCEINLINE CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CBuildingPointer& operator=(const CBuildingPointer& other) { CBaseObject* item = other.CBaseIntelligentPointer::GetPItem(); SetPItem(item); return *this; }
+    FABLE_FORCEINLINE CThingBuilding* GetPItem() const { return (CThingBuilding*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CThingObject;
 template <class T> bool __fastcall IS_THING_ALIVE(const T& p);   // 0x0078B2A0 = ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@ (FableWin.pdb; PTable is CIntelligentPointer<CThingObject>, Ego_r.pdb)
@@ -77,25 +78,25 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline T* GetTCConst(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -107,7 +108,7 @@ public:
         return false;
     }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!(static_cast<CThing*>(p.GetPItem())->m_flags91 & 1))
@@ -187,7 +188,7 @@ public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    __forceinline CThingAICreature* GetCreature() const { return PBrain->PCreature; }
+    FABLE_FORCEINLINE CThingAICreature* GetCreature() const { return PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
 protected:
     CPlayerManager& GetPlayerManager() const;   // 0x008FCF90 (Ego_r.pdb ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ)

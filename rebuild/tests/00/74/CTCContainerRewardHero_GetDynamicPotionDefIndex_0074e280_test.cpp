@@ -1,5 +1,6 @@
 // Behaviour test for 0074e280: src/0074e280.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCContainerRewardHero::GetDynamicPotionDefIndex()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -49,13 +50,13 @@ class CThing { public:
     unsigned char _pad92[0xb0 - 0x92];
     float         MaxHealth;                        // +0xb0
     float         Health;                           // +0xb4
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

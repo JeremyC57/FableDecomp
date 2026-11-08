@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class CWideString {
 public:
@@ -12,10 +13,10 @@ template <class T> struct less {
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;
-    __forceinline pair(const T1& a, const T2& b) : first(a), second(b) {}
+    FABLE_FORCEINLINE pair(const T1& a, const T2& b) : first(a), second(b) {}
     template <class U1, class U2> pair(const pair<U1, U2>& p);   // 0x00485125 for <CWideString,bool> -> <const CWideString,bool>
 };
-template <class T1, class T2> __forceinline pair<T1, T2> make_pair(const T1& a, const T2& b) { return pair<T1, T2>(a, b); }
+template <class T1, class T2> FABLE_FORCEINLINE pair<T1, T2> make_pair(const T1& a, const T2& b) { return pair<T1, T2>(a, b); }
 struct _Rb_tree_node_base {
     bool                _M_color;
     _Rb_tree_node_base* _M_parent;

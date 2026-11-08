@@ -5,6 +5,7 @@
 //   core @ 0x01436E18 (capture stack +0x08, dirty list +0x2008, counts +0x2808/+0x280C, capture mask +0x2814, 0x14-byte
 //   tracked states) and the same `__forceinline` SetState(state, value, core) with the core LAST.
 // States in retail order: +0x291c<-0x01396F6C, +0x2930<-0x01396F68, +0x3204<-0x01396E7C, +0x32a4<-0x01396E7C, +0x3344<-0x01396EF0, +0x33e4<-0x01396EEC, +0x3484<-0x01396EF0, +0x3524<-0x01396EEC, +0x3218<-0x01396E70, +0x32b8<-0x01396E70
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -50,7 +51,7 @@ extern unsigned long g_renderStateDefault_01396ef0;    // 0x01396EF0
 extern unsigned long g_renderStateDefault_01396f68;    // 0x01396F68
 extern unsigned long g_renderStateDefault_01396f6c;    // 0x01396F6C
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

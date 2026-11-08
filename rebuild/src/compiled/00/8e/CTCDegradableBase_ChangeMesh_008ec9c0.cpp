@@ -14,6 +14,7 @@
 // GetInterface whose uninitialised out pointer shares the dead argument slot with the lookup key, so
 // the absent path calls through whatever the slot holds (`mov eax,[esp+0Ch]`) and both arms keep their
 // own call and `ret 4`.
+#include "fable_compiler.h"
 #pragma pack(push, 2)
 class CEngineGraphic { public:
     unsigned long BankIndex;                                // +0x00
@@ -45,7 +46,7 @@ class CTCPhysicsBase { public:
     void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B08E0
 };
 
-__forceinline CTCPhysicsBase* GetPhysics(CThing* thing)
+FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics(CThing* thing)
 {
     CTCPhysicsBase* physics;
     thing->GetTC(TCI_PHYSICS, &physics);                       // TC_PHYSICS

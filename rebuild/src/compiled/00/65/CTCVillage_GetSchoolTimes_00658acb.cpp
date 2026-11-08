@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTCVillage::GetSchoolTimes(float&, float&) const -- current school start/end times from the village def's SchoolStartTimes and SchoolDuration through GetTimes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00658ACB, length 85 bytes (PDB `?GetSchoolTimes@CTCVillage@@QBE_NAAM0@Z`).
@@ -29,12 +30,12 @@ class CVillageDef { public:
 
 struct CDefPointerVillageDef {
     CVillageDef* Object;
-    __forceinline CDefPointerVillageDef(const CDefPointerVillageDef& other) : Object(other.Object)
+    FABLE_FORCEINLINE CDefPointerVillageDef(const CDefPointerVillageDef& other) : Object(other.Object)
     {
         if (Object)
             ++Object->RefCount;
     }
-    __forceinline ~CDefPointerVillageDef()
+    FABLE_FORCEINLINE ~CDefPointerVillageDef()
     {
         if (Object) {
             if (--Object->RefCount == 0)
@@ -48,7 +49,7 @@ class CTCVillage { public:
     void*                 __vftable;        // +0x00
     unsigned char         _pad_0x04[0x90];
     CDefPointerVillageDef PDef;             // +0x94
-    __forceinline CDefPointerVillageDef GetPDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointerVillageDef GetPDef() const { return PDef; }
     bool GetTimes(const CLongVector& startTimes, long duration, float& start, float& end) const;   // 0x00658716
     bool GetSchoolTimes(float& start, float& end) const;
 };

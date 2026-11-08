@@ -11,6 +11,7 @@
 //   uninitialised C3DVector() slot, the loop stores through `*(begin() + i)` (the array start is loaded before the
 //   Read3DVector call), and the else arm is the inline STLport clear() = erase(begin(), end()) whose copy loop runs
 //   over the empty [finish, finish) range.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -24,8 +25,8 @@ class CDataInputStream { public:
     long SourceChunkStreamPos;             // +0x10
     long m_remaining;                      // +0x14
     C3DVector Read3DVector();                                          // 0x009950F0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -39,8 +40,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
@@ -54,7 +55,7 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
     T& operator[](unsigned long n) { return *(begin() + n); }
     CArray& operator=(const CArray& other);                                  // 0x0075B8D0
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());  // 0x0075C040
-    static __forceinline T* copy(T* first, T* last, T* result)
+    static FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
     {
         for (long n = last - first; n > 0; --n) {
             *result = *first;
@@ -63,13 +64,13 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
         }
         return result;
     }
-    __forceinline T* erase(T* first, T* last)
+    FABLE_FORCEINLINE T* erase(T* first, T* last)
     {
         T* i = copy(last, _M_finish, first);
         _M_finish = i;
         return first;
     }
-    __forceinline void clear() { erase(begin(), end()); }
+    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
 };
 
 class CCardinalSpline { public:

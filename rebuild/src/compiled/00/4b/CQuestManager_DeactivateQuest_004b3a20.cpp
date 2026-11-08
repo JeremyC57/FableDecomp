@@ -17,6 +17,7 @@
 // Layout: retail STLport CQuestManager (ActiveQuests +0x38, BetweenStartAndEndScreenQuests +0x4c, World +0x7c,
 // PQuestCurrentlyRunning +0x88, DayActive +0x8c, NightActive +0x8d, NumberOfQuestsBetweenStartAndFinishScreens +0x98);
 // CActiveQuest (landed ctor 0x004B0310): ID +0, PScript +8, LoadedResources +0x25, QuestName +0x30.
+#include "fable_compiler.h"
 #include <new>
 void __cdecl operator delete(void* p);              // 0x00BFE9BC
 
@@ -130,7 +131,7 @@ struct CCodeSectionManagerPointer {                 // static CCountedPointer<CC
     void Reset(CCodeSectionManager* object);        // 0x00413590
 };
 extern CCodeSectionManagerPointer g_pCodeSectionManager;   // 0x013CAA68
-__forceinline CCodeSectionManager* GetCodeSectionManager()
+FABLE_FORCEINLINE CCodeSectionManager* GetCodeSectionManager()
 {
     if (!g_pCodeSectionManager.m_pObject)
         g_pCodeSectionManager.Reset(new(operator new(0x2c)) CCodeSectionManager());

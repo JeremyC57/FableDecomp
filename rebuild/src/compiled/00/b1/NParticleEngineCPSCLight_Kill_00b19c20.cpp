@@ -9,6 +9,7 @@
 // Shape: the handle's inline Clear() from the landed destructor, verbatim: the null-safe `GetRefCount() == 1` test
 // (handle address formed in esi first), then `Data = 0` = the counted release plus the second unconditional zero
 // store. Plain `ret`.
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePrimitiveHandle;
@@ -24,7 +25,7 @@ class CEngineInternalPrimitiveBase { public:        // the referenced primitive:
 struct CIVCountedPointer {                   // the counted primitive pointer (as the landed handle ??_G 0x0041C500)
     CEngineInternalPrimitiveBase* Object;
     long GetRefCount() const { return Object ? Object->m_handleCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CEngineInternalPrimitiveBase* object = Object;
         if (object) {
@@ -33,7 +34,7 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
     {
         Release();
         Object = object;
@@ -41,13 +42,13 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
             ++object->m_handleCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass {   // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                  // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);

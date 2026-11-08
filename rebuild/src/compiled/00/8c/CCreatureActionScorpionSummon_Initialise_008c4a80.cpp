@@ -8,6 +8,7 @@
 // key frame word straight into ecx, as retail); the call is spelled in BOTH arms so VC7.1 cross-jumps them with the component already
 // in ecx (one call after a joined pointer copies it through eax, +2 bytes). PCreature is addressed once (`lea edi,[esi+8]`); the last
 // creature is a named local because retail fetches it before pushing the two arguments.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -17,7 +18,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -30,7 +31,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline CInterfaceMap::value_type* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

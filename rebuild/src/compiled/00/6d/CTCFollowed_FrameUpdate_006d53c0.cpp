@@ -21,6 +21,7 @@
 //        the deed TC and the TC 0x7A pointer are uninitialised when the TC is missing, as in retail; the idle-reaction follower
 //        and Thing are named locals so they are read before the PostDeed pushes.
 // Vtable check: RELOCATION_MATCH; the only relocation beyond callees/globals is the CIntelligentPointer vftable 0x01238C6C (rtti-vtables.tsv).
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseIntelligentPointer {
 public:
@@ -33,7 +34,7 @@ public:
 class CThing;
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 #include "engine/C3DVector.h"
@@ -43,7 +44,7 @@ struct CTCMap {
     CTCPair* _M_finish;
     CTCPair* LowerBound(const long& key);               // 0x0040F020
     CTCPair* LowerBoundConst(const long& key);          // 0x004365B0
-    __forceinline void* Find(long type)
+    FABLE_FORCEINLINE void* Find(long type)
     {
         long key = type;
         CTCPair* it = LowerBound(key);
@@ -51,7 +52,7 @@ struct CTCMap {
             it = _M_finish;
         return it->TC;
     }
-    __forceinline void* FindConst(long type)
+    FABLE_FORCEINLINE void* FindConst(long type)
     {
         long key = type;
         CTCPair* it = LowerBoundConst(key);
@@ -67,7 +68,7 @@ public:
     unsigned __int64 UID;                               // +0x18
     unsigned long PresentBits[9];                       // +0x20
     CTCMap TCs;                                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
     const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CTCCreatureOpinionOfHero {
@@ -120,7 +121,7 @@ struct CFollowerList {
     CFollowerNode* begin() const { return _M_node->_M_next; }
     CFollowerNode* end() const { return _M_node; }
     long size() const;                                  // 0x0065F17B
-    __forceinline CFollowerNode* erase(CFollowerNode* pos)
+    FABLE_FORCEINLINE CFollowerNode* erase(CFollowerNode* pos)
     {
         CFollowerNode* next = pos->_M_next;
         CFollowerNode* prev = pos->_M_prev;
@@ -150,7 +151,7 @@ public:
     C3DVector LastPlayerPosition;                       // +0x1C
     void CullNullFollowers();                           // 0x006D5260
     void OnFollowerLeft(CThing* follower);              // 0x006D5050
-    __forceinline bool IsTimeToUpdate() const
+    FABLE_FORCEINLINE bool IsTimeToUpdate() const
     {
         CWorld* world = &GetWorld();
         unsigned __int64 uid = Thing->UID;

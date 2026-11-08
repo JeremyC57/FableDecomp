@@ -20,6 +20,7 @@
 //          vtable is read before the by-value name is built; the menu pointer is zeroed BEFORE the hero fetch (`xor ebx,ebx`
 //          ahead of GetMainPlayer; declared after it, the zero lands just before the bitset test) and is dereferenced
 //          without a null test, as retail does.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -67,7 +68,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

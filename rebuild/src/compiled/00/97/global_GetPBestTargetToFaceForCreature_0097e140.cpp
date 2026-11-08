@@ -17,6 +17,7 @@
 // Shape: two const GetInterface lookups written as HasTC + the one-ternary entry pick (component straight into ecx); VC
 //   keeps the map address in esi across the combat tests and reuses it for the second lookup; both keys share the
 //   `push ecx` frame word.
+#include "fable_compiler.h"
 class CThing { };
 class CThingCreatureBase;
 class CTCBase;
@@ -58,11 +59,11 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline unsigned long HasTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const
     {
         return m_presentBits[type >> 5] & (1UL << (type & 31));
     }
-    template<class T> __forceinline const T* GetTC(long type) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

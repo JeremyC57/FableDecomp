@@ -7,6 +7,7 @@
 //   clears it through ?clear@?$_List_base@VCScriptThingInfo@CGameScriptThingManager@@V?$allocator@...@std@@@std@@QAEXXZ 0x004BA810
 //   (labels_chunk691; the landed own row) and frees the sentinel; the second member is NullThing. Was a CScriptThingListBase_004bb600
 //   stand-in base with a Clear(); the members are destroyed in reverse order as before (NullThing, then ScriptThings).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -22,7 +23,7 @@ public:
 struct CCountedPointer_004bb600 {                  // the thing and its count block (a member object: its destructor runs after the vtable store)
     void*                 m_pThing;                // +0x00
     SCountBlock_004bb600* m_pCount;                // +0x04
-    __forceinline ~CCountedPointer_004bb600()
+    FABLE_FORCEINLINE ~CCountedPointer_004bb600()
     {
         if (m_pCount) {
             --m_pCount->m_references;

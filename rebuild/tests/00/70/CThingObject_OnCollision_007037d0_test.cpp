@@ -1,5 +1,6 @@
 // Behaviour test for 007037d0: src/007037d0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CThingObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -69,7 +70,7 @@ struct CDebrisDef : CDefObject {
     unsigned char _pad08[0x34 - 0x08];
     long          DebrisThingDef;                              // +0x34
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
@@ -155,14 +156,14 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::SEntry* it = map->LowerBound(type);
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

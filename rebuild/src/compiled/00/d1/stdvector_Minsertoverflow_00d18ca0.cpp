@@ -14,6 +14,7 @@
 //   _STLP_TRY / _STLP_UNWIND pair is empty); (max) returns a reference, so VC7.1 picks the address of fill_len or of the
 //   old-size local; placement new keeps its null test; __uninitialized_copy is __forceinline (plain inline leaves the second copy, the
 //   suffix, out of line), __uninitialized_fill_n plain inline.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                                  // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -55,7 +56,7 @@ template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { r
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for ( ; __first != __last; ++__first, ++__cur)

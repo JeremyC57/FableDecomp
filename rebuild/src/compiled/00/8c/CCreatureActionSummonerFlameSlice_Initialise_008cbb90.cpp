@@ -1,6 +1,7 @@
 // CCreatureAction_SummonerFlameSlice::Initialise -- create physical obstruction and exempt the actor.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008CBB90,270bytes. Native leaf PObstruction114 versus donor12C.
+#include "fable_compiler.h"
 #define CCreatureAction_SummonerFlameSlice CCreatureAction_SummonerFlameSlicePdb
 #include "engine/CCreatureAction_SummonerFlameSlice.h"
 #undef CCreatureAction_SummonerFlameSlice
@@ -64,7 +65,7 @@ class CThing:public CBaseObject { public:
     unsigned char DeadFlags;
     const C3DVector& GetPos() const; //004C73D0
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             long type=key;
             CInterfaceMap* map=&Components;

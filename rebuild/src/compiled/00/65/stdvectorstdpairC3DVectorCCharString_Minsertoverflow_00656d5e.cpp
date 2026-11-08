@@ -8,6 +8,7 @@
 // Shape (family K121, representative 0x004E3526): STLport 4.6 `_M_insert_overflow(.., const __false_type&, ..)` in a frame/size
 //   TU (the K102 shape with the copy/fill helpers out of line: their STLport bodies sit in this TU as noinline stand-ins, as in
 //   the landed 0x007B6EF0 / 0x005BC0FB rows, so VC7.1 homes each tag in the top byte of the atEnd slot [ebp+1Bh]).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
@@ -23,8 +24,8 @@ template <class _T1, class _T2> struct pair {
 }
 namespace std {
 struct __false_type { __false_type() { } };
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
 __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                                   const __false_type&)
@@ -50,9 +51,9 @@ public:
     T* _M_finish;                   // +0x04
     T* _M_end_of_storage;           // +0x08
     unsigned int size() const { return _M_finish - _M_start; }
-    static __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    static FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
     void _M_clear();                                    // 0x006568CF
-    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
 protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);
 };

@@ -19,6 +19,7 @@
 // CDefClassBase::GetSubDef<CCreatureDef> (0x00485815, the landed body) -- VC7.1 then knows none of them keeps the
 // address of the key or the def pointers, so the 4-key shares its frame word with the def pointer, the CCreatureDef
 // pointer lives in the dead `events` slot and the 0xa0 key shares its word with the stack event.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -31,7 +32,7 @@ public:
     unsigned char _pad54[0x38];
     unsigned short m_globalDefIndex;                    // +0x8c
     long GetGlobalDefIndex() const { return m_globalDefIndex; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -44,7 +45,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -68,7 +69,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefPointee {
     virtual void v00();
     virtual void Destroy();                             // slot 1

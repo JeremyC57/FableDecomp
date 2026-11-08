@@ -1,4 +1,5 @@
 // Behaviour test for 0092b3e0: src/0092b3e0.cpp copied verbatim, out-of-line callees stubbed below.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 // ---- source (verbatim) ----
@@ -38,7 +39,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
 };
 class CThingCreatureBase;
 class CCombatManager { public:
@@ -86,7 +87,7 @@ class CAIStateGroupBase { public:
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
-    __forceinline unsigned long Random()
+    FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;

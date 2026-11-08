@@ -9,6 +9,7 @@
 //   PRegion +0x10, Neighbours +0x14/+0x18, PreferabilityCost +0x1c.
 // Shape: same-TU stand-ins for the growth path and the sort (auto_inline off); the base chain inline (Blocked's false store is dead, overwritten by the body); the loop re-reads the source
 //   vector's size; the pair's constant `false` is hoisted out of the loop; PRegion is cleared again in the body.
+#include "fable_compiler.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
@@ -60,7 +61,7 @@ struct CUniqueIDVector {                           // STLport vector<SUniqueIDOp
     SUniqueIDOpen* _M_finish;
     _STLP_alloc_proxy<SUniqueIDOpen> _M_end_of_storage;
     void _M_insert_overflow(SUniqueIDOpen* position, const SUniqueIDOpen& x, const __true_type&, unsigned long fillLen, bool atEnd);   // 0x00A82380
-    __forceinline void push_back(const SUniqueIDOpen& x)
+    FABLE_FORCEINLINE void push_back(const SUniqueIDOpen& x)
     {
         if (_M_finish != _M_end_of_storage._M_data) {
             if (_M_finish)
@@ -75,7 +76,7 @@ struct CUniqueIDMap {                              // CVectorMap<unsigned __int6
     CKeyPairCompareLess Compare;                   // +0x0c
     bool                Dirty;                     // +0x0d
     CUniqueIDMap() { Entries._M_start = 0; Entries._M_finish = 0; Entries._M_end_of_storage._M_data = 0; Dirty = false; }
-    __forceinline void Add(const unsigned __int64& key, const bool& value)
+    FABLE_FORCEINLINE void Add(const unsigned __int64& key, const bool& value)
     {
         Entries.push_back(SUniqueIDOpen(key, value));
         Dirty = true;

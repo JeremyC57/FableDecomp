@@ -11,6 +11,7 @@
 // Callees: map<CCharString,unsigned long>::operator[] 0x0042D131 (bound as the invented CRetailMap), CCRC::Calc 0x004014A0,
 //   vector<pair<unsigned long,unsigned long> >::_M_insert_overflow 0x009B6300, CBankFile::ConvertPathToFilename 0x009CBE10,
 //   CCharString::GetAsLowerCase 0x0099ED10 / copy ctor 0x0099EC30 / dtor 0x0099EAE0, multimap insert_equal 0x009D34E0.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
@@ -92,7 +93,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    __forceinline void push_back(const _Tp& __x)
+    FABLE_FORCEINLINE void push_back(const _Tp& __x)
     {
         if (_M_finish != _M_end_of_storage) {
             _Construct(_M_finish, __x);
@@ -135,7 +136,7 @@ public:
     std::vector<value_type> Data;                          // +0x00
     Compare                 Comparator;                    // +0x0c
     bool                    Dirty;                         // +0x0d
-    __forceinline void Insert(const K& key, const V& value)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)
     {
         Data.push_back(value_type(key, value));
         Dirty = true;

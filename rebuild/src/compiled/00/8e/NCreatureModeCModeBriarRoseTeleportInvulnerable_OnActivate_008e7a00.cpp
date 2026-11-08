@@ -8,6 +8,7 @@
 //   type does not escape and the CIntelligentPointer temp overlays its word as retail; `out` declared before `effectType`
 //   (zero-store order).
 // Callees: CModeStandBase::OnActivate 0x008621A0, __ftol2 0x00BFEA70, SuspendAI 0x00833A10, LowerBound 0x0040F020, CTCBoss::IsReadyForPhaseChange 0x007AEE90 / IncrementBossPhase 0x007AED20, GetSubDef 0x00669580, CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPos 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -92,7 +93,7 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char  _pad74[0x1d];
     unsigned char  m_flags91;                   // +0x91
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

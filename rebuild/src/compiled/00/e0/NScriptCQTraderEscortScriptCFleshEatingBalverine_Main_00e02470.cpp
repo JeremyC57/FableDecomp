@@ -18,6 +18,7 @@
 //   is stored before they are destroyed.
 // Naming wave 35: identity reg 00e00e65 "FleshEatingBalverine" in 00e00db0; Alloc 00e02390; vtable 012df4fc slot 1; PDB ?Main@CFleshEatingBalverine@CQ_TraderEscortScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces NScript::CQ_TraderEscortScript::CInfectedBalverine::Main: current name also held by 00e02950; CQ_TraderEscortScript::CInfectedBalverine::Main is at 00e02950 (its own vtable slot) (wave3/labels_alloc.tsv); PDB ?Main@CFleshEatingBalverine@CQ_TraderEscortScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CInfectedBalverine@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); class CInfectedBalverine renamed CFleshEatingBalverine; outer stand-in CQ_TraderEscortScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
@@ -121,7 +122,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

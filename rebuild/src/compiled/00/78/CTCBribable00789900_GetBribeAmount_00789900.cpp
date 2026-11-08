@@ -8,6 +8,7 @@
 // component fetched for interface type 0x80, with the result compared `jle`. The object is a thing
 // component ({vptr, owning CThing* at +4, ..., default amount at +0xc}); the default is read into a local
 // first (retail loads +0xc into eax before the lookup frees ecx) and overwritten by the guard's answer. Named by what it does.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -20,13 +21,13 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline bool HasInterface(long interfaceType) const   // the bitset test alone
+    FABLE_FORCEINLINE bool HasInterface(long interfaceType) const   // the bitset test alone
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)   // forced: two lookups in one body exceed the inliner budget
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)   // forced: two lookups in one body exceed the inliner budget
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

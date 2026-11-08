@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -861,7 +862,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCBoastUI, ActivateLater) == 0x33);
 #endif // FABLE_ENGINE_CTCBOASTUI_H
 
 struct BoastMethods:CTCBoastUI{void AllowUIToOpen(bool);}; //0056A930
-__forceinline BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>((it==end||it->Type>232?end:it)->Component);}return result;}
+FABLE_FORCEINLINE BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>((it==end||it->Type>232?end:it)->Component);}return result;}
 struct MovieTransitionState{unsigned char Prefix[0xf4];bool Busy;};extern MovieTransitionState* g_MovieTransitionState; //013B8790
 extern long g_MovieCameraID; //01380C34
 extern long g_MovieState; //013BAD00

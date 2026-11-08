@@ -12,6 +12,7 @@
 // Shape: the const lookups go through `const CThingObject* const& self = this;` -- a reference to the this pointer (the
 //        pointer itself homed, then forwarded): VC7.1 then treats the 0x47 bit load as a may-alias of the frame-local
 //        interpolators and keeps the orientation vtable store ahead of it (a plain `self = this` or `this` hoists the load).
+#include "fable_compiler.h"
 class CEnginePrimitivePrepareInfo { public:
     long  _f00;
     float Time;                                         // +0x04
@@ -71,7 +72,7 @@ class CThingPhysical { public:
     CTCPhysicsBase*       PhysicsTC;                    // +0x60
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -84,7 +85,7 @@ class CThingPhysical { public:
         }
         return false;
     }
-    template<class T> __forceinline bool PickInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool PickInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -95,7 +96,7 @@ class CThingPhysical { public:
         }
         return false;
     }
-    template<class T> __forceinline bool PickInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool PickInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -106,7 +107,7 @@ class CThingPhysical { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

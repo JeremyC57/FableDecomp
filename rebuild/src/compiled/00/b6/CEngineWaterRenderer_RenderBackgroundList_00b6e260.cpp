@@ -14,6 +14,7 @@
 //   16-bit `mov cx` load --, MinZ, MaxZ-MinZ, map X); the occlusion id is one local shared by both arms and stored once
 //   after them (tail-merged per arm, held in edi); the query allocation is an inline manager helper (id = count; record =
 //   SOcclusionQuery(0,0); ++count) returning -1 when full.
+#include "fable_compiler.h"
 class CMatrix3x4 { public: float M[12]; };
 struct SOcclusionQuery { long A; long B; SOcclusionQuery() {} SOcclusionQuery(long a, long b) : A(a), B(b) {} };
 
@@ -27,7 +28,7 @@ public:
     long RenderOcclusionBox(const CMatrix3x4& box);     // 0x00B8D420
     void BeginQuery();                             // 0x00B8D090
     void EndQuery(long id);                        // 0x00B8D0A0
-    __forceinline long AllocateQuery()
+    FABLE_FORCEINLINE long AllocateQuery()
     {
         if (QueryCount < 0x2000) {
             unsigned long id = QueryCount;

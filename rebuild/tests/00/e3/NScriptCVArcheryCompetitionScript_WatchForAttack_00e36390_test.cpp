@@ -1,6 +1,7 @@
 // Behaviour test for 0x00E36390 (RST): model plus the body verbatim from final.cpp, callees stubbed.
 // Checks that hits only count while the contest is idle (0) or over (2) and the owner survives them (both flags set),
 // a running contest ignores them, a dead owner stops the watch, termination in the hit block, and the release on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,7 +39,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
     bool IsAlive() const { return g_frames < g_dieAt; }
     bool MsgIsHitBy(const CCharString& a) const { return HitCheck(a, 1); }
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& a) const { return HitCheck(a, 2); }

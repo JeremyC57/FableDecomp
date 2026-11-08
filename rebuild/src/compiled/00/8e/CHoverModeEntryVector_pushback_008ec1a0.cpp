@@ -8,6 +8,7 @@
 // Shape: the landed 0x00CB7210 push_back: placement new under VC's null test with a `__forceinline`
 // memberwise copy ctor, finish re-read and advanced by 0x18; the empty __false_type temporary is homed in
 // the dead `x` argument slot.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
@@ -18,7 +19,7 @@ struct SHoverModeEntry {                // 24 bytes
     C3DVector     m_offset;                 // +0x04
     long          m_10;                     // +0x10
     long          m_14;                     // +0x14
-    __forceinline SHoverModeEntry(const SHoverModeEntry& o)
+    FABLE_FORCEINLINE SHoverModeEntry(const SHoverModeEntry& o)
         : m_name(o.m_name), m_offset(o.m_offset), m_10(o.m_10), m_14(o.m_14) {}
 };
 struct __false_type { __false_type() {} };  // empty tag with a user constructor (no byte store)

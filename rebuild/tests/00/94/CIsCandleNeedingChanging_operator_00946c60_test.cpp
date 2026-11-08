@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -34,7 +35,7 @@ class CThing { public:
         ++m_interfaces.last; m_interfaces.end = m_interfaces.last;
     }
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -47,7 +48,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterfaceConst(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -89,7 +90,7 @@ class CIsCandleNeedingChanging {
 public:
     CAIStateGroup_LightHomeCandle* m_pStateGroup;
     bool operator()(const CIntelligentPointer<CThing>& thing) const;
-    static __forceinline bool IsCandle(CThing* candle, const CIntelligentPointer<CThing>& thing)
+    static FABLE_FORCEINLINE bool IsCandle(CThing* candle, const CIntelligentPointer<CThing>& thing)
     {
         return ((unsigned char)(candle->GetStateFlags() >> 8) & 1)
             || (((unsigned char)(candle->GetStateFlags() >> 9) & 1) && thing.GetPItem()->HasTC(0x27));

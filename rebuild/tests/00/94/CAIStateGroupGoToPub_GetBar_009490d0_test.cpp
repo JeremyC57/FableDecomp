@@ -12,6 +12,7 @@
 // Layout: GoToPub from Ego_r.pdb (base 0x14: PPub +0x14, PBar +0x1c, PBarman +0x2c); the building contents component (0x21)
 // keeps its thing list head at +0x0c (landed SitForMeal 0x00945B10); CTCTavernBar (0xb9) Barman is Ego_r.pdb +0x1c, +0x18 in
 // retail (the Jugs vector at +0x0c is 12 bytes in STLport).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __cdecl
@@ -35,11 +36,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

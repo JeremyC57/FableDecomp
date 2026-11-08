@@ -1,5 +1,6 @@
 // Behaviour test for 007aa370: final.cpp copied verbatim, the declared callees stubbed below so every call and the
 // list clearing are observable. CTCAssassinRush::CleanUpEffects
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -64,7 +65,7 @@ public:
         if (m_pGraphicAppearance)
             m_pGraphicAppearance->SetAlpha(alpha);
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -104,7 +105,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-template <class T> __forceinline T* copy(T* first, T* last, T* result)
+template <class T> FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;
@@ -113,7 +114,7 @@ template <class T> __forceinline T* copy(T* first, T* last, T* result)
     }
     return result;
 }
-template <class T> __forceinline void _Destroy(T* first, T* last)
+template <class T> FABLE_FORCEINLINE void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -130,14 +131,14 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* end_ptr() { return _M_finish; }
     iterator begin() { return iterator(_M_start); }
     iterator end() { return iterator(_M_finish); }
-    __forceinline iterator erase(iterator first, iterator last)
+    FABLE_FORCEINLINE iterator erase(iterator first, iterator last)
     {
         T* i = copy(last.p, _M_finish, first.p);
         _Destroy(i, _M_finish);
         _M_finish = i;
         return first;
     }
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         iterator last = end();
         iterator first = begin();

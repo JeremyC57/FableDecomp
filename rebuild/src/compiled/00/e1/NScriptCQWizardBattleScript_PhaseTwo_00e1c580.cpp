@@ -11,6 +11,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 #define VEC_DTOR
 class CCharString { public:
     void* PStringData;
@@ -80,7 +81,7 @@ public:
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 #ifndef VEC_DTOR
-#define VEC_DTOR __forceinline
+#define VEC_DTOR FABLE_FORCEINLINE
 #endif
     VEC_DTOR ~vector()
     {
@@ -105,7 +106,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 };
 class CRGBColour { public:                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
@@ -116,7 +117,7 @@ template <class T, class A> struct CSpawnedFunc1 : CSpawnedFuncBase {
     void (T::*Func)(A&);                                // +0x34
     T* PClass;                                          // +0x38
     A* Arg;                                             // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(A&), A& arg)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(A&), A& arg)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Arg(&arg) {}
     virtual void SuspendableProcess() { (PClass->*Func)(*Arg); }
 };
@@ -130,7 +131,7 @@ class CScriptBase { public:                                    // retail 0x40 by
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 namespace NScript {
 class CQ_WizardBattleScript : public CScriptBase {

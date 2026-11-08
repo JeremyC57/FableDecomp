@@ -1,4 +1,5 @@
 // Behaviour test for 006a8370: body copied from src/006a8370.cpp (CThingFilter_CanCollideOrInteractWithThing::operator()), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -38,7 +39,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;

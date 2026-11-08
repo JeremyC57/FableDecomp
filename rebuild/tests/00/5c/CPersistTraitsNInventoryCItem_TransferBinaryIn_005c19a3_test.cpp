@@ -1,4 +1,5 @@
 // behaviour test for 0x005C19A3 CPersistTraits<NInventory::CItem>::TransferBinaryIn
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,8 +47,8 @@ class CMemoryDataInputStream : public CDataInputStream, public CMemoryDataInputS
 {
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -61,7 +62,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    template <class T> __forceinline T ReadType() { T v; Read(&v, sizeof(T)); return v; }
+    template <class T> FABLE_FORCEINLINE T ReadType() { T v; Read(&v, sizeof(T)); return v; }
 };
 namespace std {
 template <class T> class vector {

@@ -13,6 +13,7 @@
 //   IsDone exit jumps to one shared `done:` return at the end, which moves the destroy-spawnPos exit block below the inline GetPos
 //   ternary as in retail (a plain in-loop `return` keeps it inline after the post-loop IsDone test).
 //   built before the position argument; the CreateCreature result is a discarded temporary (it reuses the filter's slot).
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -25,7 +26,7 @@ class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v00() const; virtual void v01() const; virtual void v02() const; virtual void v03() const;
     virtual void v04() const; virtual void v05() const;
-    virtual __forceinline const C3DVector& GetPos() const   // slot 6 (+0x18), 0x004AA980
+    virtual FABLE_FORCEINLINE const C3DVector& GetPos() const   // slot 6 (+0x18), 0x004AA980
     {
         if (!PImp_Data)
             return g_ZeroVector;

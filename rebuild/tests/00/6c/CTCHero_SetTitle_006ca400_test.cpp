@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -89,7 +90,7 @@ public:
     unsigned char ThingType;                        // +0x10
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

@@ -15,6 +15,7 @@
 // stored first); the unused sub-def is a CDefPointer homed in the dead `a3` slot, released through the pointee's
 // Release() (DecRefToZero; ecx form) once GetSubDef has a same-TU `auto_inline(off)` stand-in (without it VC7.1 reloads
 // the def into eax and emits the long count update).
+#include "fable_compiler.h"
 class C3DVector;
 class CCharString { public:
     void* PStringData;
@@ -23,7 +24,7 @@ class CCharString { public:
 };
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefObject {
     virtual void v00();
     virtual void Destroy();                                    // slot 1 (+0x04)

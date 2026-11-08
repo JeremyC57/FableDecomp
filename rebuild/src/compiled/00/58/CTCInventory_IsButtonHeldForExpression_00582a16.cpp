@@ -14,6 +14,7 @@
 // into a named local before the player number is fetched (the interface parked in the dead name slot, then ebx).
 // Layout: CExpressionDef::DummyObject +0x70 (PDB +0x74; retail defs sit 4 bytes below the PDB); CPlayer's game
 // player interface +0x0C.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -89,7 +90,7 @@ class CTCInventory { public:
 
     CDefinitionManager* GetDefinitionManager() const;    // 0x006869D0 (CTCBase)
     long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08 (CTCInventoryBase)
-    __forceinline bool IsActionButtonHeld(long action)
+    FABLE_FORCEINLINE bool IsActionButtonHeld(long action)
     {
         CThing* thing = ParentThing;
         CGamePlayerInterface* input = thing->PeekPlayer().PGamePlayerInterface;

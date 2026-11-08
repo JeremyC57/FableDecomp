@@ -7,6 +7,7 @@
 //   RegisteredConsoleInputs.find(...) hoists `lea esi,[ecx+40h]` above the ToLower call); end() is the header pointer.
 // Layout: retail CConsole RegisteredConsoleInputs +0x40 (STLport map, 12 bytes); node value pair at +0x10.
 // Leaf: ?GetRegisteredConsoleInput@CConsole_Retail@@QAEPAVCConsoleInputBase@@ABVCCharString@@@Z
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -40,7 +41,7 @@ struct CConsole_Retail {
     unsigned char  _pad04[0x3c];            // +0x04 maps, command lines, HelpBarString
     CInputMap      RegisteredConsoleInputs; // +0x40
     CConsoleInputBase* GetRegisteredConsoleInput(const CCharString& name);
-    __forceinline SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
+    FABLE_FORCEINLINE SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
 };
 
 CConsoleInputBase* CConsole_Retail::GetRegisteredConsoleInput(const CCharString& name)

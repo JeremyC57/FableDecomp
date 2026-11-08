@@ -8,6 +8,7 @@
 // CreatedAfter(FrameOfLastHit + 2)` in the frame (the empty hit-kind filter in the high byte of a slot, the
 // frame filter at +0xc, the Bind2 pair at +0x14) and shares one out-pointer slot; `return bIsRangeAttack = true`.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -52,7 +53,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

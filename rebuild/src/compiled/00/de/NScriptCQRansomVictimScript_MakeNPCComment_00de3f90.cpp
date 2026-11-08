@@ -13,6 +13,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 #define THING_INLINE_COPY
 #define VEC_DTOR
 class CCharString { public:
@@ -69,9 +70,9 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
 #endif
     CScriptThing() {}
-    __forceinline bool operator==(const CScriptThing& other) const { return PImp.Data->IsEqualTo(other.PImp.Data); }
-    __forceinline bool operator!=(const CScriptThing& other) const { return !PImp.Data->IsEqualTo(other.PImp.Data); }
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+    FABLE_FORCEINLINE bool operator==(const CScriptThing& other) const { return PImp.Data->IsEqualTo(other.PImp.Data); }
+    FABLE_FORCEINLINE bool operator!=(const CScriptThing& other) const { return !PImp.Data->IsEqualTo(other.PImp.Data); }
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     ~CScriptThing() {}
 };
 namespace std {
@@ -88,7 +89,7 @@ public:
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 #ifndef VEC_DTOR
-#define VEC_DTOR __forceinline
+#define VEC_DTOR FABLE_FORCEINLINE
 #endif
     VEC_DTOR ~vector()
     {
@@ -112,7 +113,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:
     long Index;
-    __forceinline ~CTimer() { pDSTGame->DeregisterTimer(Index); }   // 0x00CD4470
+    FABLE_FORCEINLINE ~CTimer() { pDSTGame->DeregisterTimer(Index); }   // 0x00CD4470
     void Set(long time) { pDSTGame->SetTimer(Index, time); }
     long Get() const { return pDSTGame->GetTimer(Index); }
 };

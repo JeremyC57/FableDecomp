@@ -1,4 +1,5 @@
 // Natural resource constructor selection after original donor audit.
+#include "fable_compiler.h"
 #include <cassert>
 #include <cstdio>
 #include <string>
@@ -33,7 +34,7 @@ static CGameScriptInterfaceBase* pDSTGame;
 class CTimer{long TimerIndex;public:CTimer();~CTimer();CTimer&operator=(long);bool operator==(long)const;};
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline bool CTimer::operator==(long time) const { return pDSTGame->GetTimer(TimerIndex)==time; }
 
 static void FadeOutAndKillEntity(const CScriptThing&t,float d,bool a,bool b){assert(t.id==1&&d==1&&a&&b);action("fade");}

@@ -15,6 +15,7 @@
 // (uninitialised) slot value is used, like retail.
 // engine/CAnimComponentStrikeResponseAnim.h keeps the name as a raw CCharStringData* at +8; the class
 // is modelled locally so the member can be a real CCharString with its out-of-line operator=.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -37,8 +38,8 @@ public:
     long m_chunkPosition;                  // +0x10
     long m_remaining;                      // +0x14 bytes left in the current chunk
     CCharString ReadString(unsigned long length);                       // 0x00996BE0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -65,7 +66,7 @@ public:
 };
 
 // CPersistTraits<unsigned long>::TransferBinaryIn -- the 4-byte read into its own local, then copied out
-static __forceinline void TransferLength(CDataInputStream& in, unsigned long* out)
+static FABLE_FORCEINLINE void TransferLength(CDataInputStream& in, unsigned long* out)
 {
     unsigned long value;
     in.Read(&value, sizeof(value));

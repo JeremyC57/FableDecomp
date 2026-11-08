@@ -17,6 +17,7 @@
 // __forceinline in this size TU (without it all three are emitted as calls: 153 bytes).
 // Layout: engine/CMemoryDataInputStream.h's members (position +4, chunkBase +0xC, chunkLength +0x14); that header flattens the vptr
 // into a void* member and so cannot carry the virtual call, hence a local class with the same members and a real vtable.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -45,8 +46,8 @@ public:
     long  chunkLength;                                   // +0x14
     void* StreamSource;                                  // +0x18
 
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -69,7 +70,7 @@ public:
     T* _M_finish;
     T* _M_end_of_storage;
     void resize(unsigned int newSize, const T& x);       // 0x0043332C for CCharString
-    __forceinline void resize(unsigned int newSize) { resize(newSize, T()); }
+    FABLE_FORCEINLINE void resize(unsigned int newSize) { resize(newSize, T()); }
     T* begin() { return _M_start; }
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
@@ -77,11 +78,11 @@ public:
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
-    __forceinline CPersistTraits() : DefaultVal() { }
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const { *out = stream.ReadNullTerminatedString(); }
+    FABLE_FORCEINLINE CPersistTraits() : DefaultVal() { }
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const { *out = stream.ReadNullTerminatedString(); }
 };
 
-__forceinline void ReadCount(CMemoryDataInputStream& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStream& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

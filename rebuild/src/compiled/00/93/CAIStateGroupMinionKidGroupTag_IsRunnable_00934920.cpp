@@ -17,6 +17,7 @@
 // Layout: CAIStateGroup_MinionKidGroupTag members as the landed Cleanup 0x009347B0 (InitiatedTag +0x14, PTCGroupTag +0x18,
 // InitialTagPos +0x1c, FrameLastPlayedIn +0x2c); world definition manager +0x10, message manager +0x60.
 // Shape: the distance is sqrt(dz*dz + dy*dy + dx*dx) of component locals; InitialTagPos takes the implicit operator=.
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CMainGameComponent {
@@ -91,7 +92,7 @@ struct CThingFilter_IsNotThing {
 class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
-    __forceinline CThingFilter_In2DRange(const CThing* thing, float range) : Pos(thing->GetPos()), Range(range) { }
+    FABLE_FORCEINLINE CThingFilter_In2DRange(const CThing* thing, float range) : Pos(thing->GetPos()), Range(range) { }
 };
 template<class F> class CMessageEventFilter_ThingSearchFilter { public:
     const F* Filter;

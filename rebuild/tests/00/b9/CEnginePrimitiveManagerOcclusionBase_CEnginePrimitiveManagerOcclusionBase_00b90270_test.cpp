@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -858,7 +859,7 @@ class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
 class CShaderBase {
 protected:
     CShaderBase();
-    __forceinline virtual ~CShaderBase() { }
+    FABLE_FORCEINLINE virtual ~CShaderBase() { }
     virtual CCharString GetDebugName() const;
 };
 struct CVertexShaderData {
@@ -881,7 +882,7 @@ class CVertexShader : public CShaderBase { public:
         ++Data->ReferenceCount;
         return *this;
     }
-    __forceinline virtual ~CVertexShader() { if (Data) Data->ReleaseReference(); }
+    FABLE_FORCEINLINE virtual ~CVertexShader() { if (Data) Data->ReleaseReference(); }
     virtual CCharString GetDebugName() const;
     virtual unsigned long CountReferences();
 };
@@ -889,7 +890,7 @@ struct CShaderResourceCallView {
     CVertexShader* GetVertexShader(CVertexShader* result, const CCharString&) const; // hidden result, native 00A5D5F0
 };
 struct CEngineResourceManagerRetailAccess {
-    static __forceinline CShaderResourceCallView* ShaderResourceAt29C8(CEngineResourceManager_PDB* engine) {
+    static FABLE_FORCEINLINE CShaderResourceCallView* ShaderResourceAt29C8(CEngineResourceManager_PDB* engine) {
         return *reinterpret_cast<CShaderResourceCallView**>(reinterpret_cast<unsigned char*>(engine) + 0x29c8);
     }
 };

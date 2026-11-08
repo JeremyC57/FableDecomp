@@ -9,9 +9,10 @@
 //   `next` lives in esi as `last - 1` (`lea esi,[edi-4]`), the inline CCharString operator< compares val (this) with
 //   *next (other). The comparator's real body above the caller keeps val's payload test order (see 0x005E0650).
 // Label correction: catalogued as `SortedList_Insert`; the body is STLport `__unguarded_linear_insert`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

@@ -1,4 +1,5 @@
 // Behaviour test for 00784600: body copied from src/00784600.cpp (CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -17,7 +18,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

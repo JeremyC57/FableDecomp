@@ -5,6 +5,7 @@
 // Shape: as 0x004E0D7E with four 16-byte records (data pointer first): the derived class is `__declspec(novtable)`,
 // members are released last-to-first, CDefPointeeBase's empty inline destructor stores its vtable before the `jmp`.
 // The "CPatchTesselationEdgeStrip" dtor label is propagated over byte-identical def destructors.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
@@ -14,7 +15,7 @@ struct CHeapArray16 {                               // 16-byte array record: dat
     long  m_size;
     long  m_capacity;
     long  m_growBy;
-    __forceinline ~CHeapArray16() { if (m_pData != 0) free(m_pData); }
+    FABLE_FORCEINLINE ~CHeapArray16() { if (m_pData != 0) free(m_pData); }
 };
 
 class CResource { public:

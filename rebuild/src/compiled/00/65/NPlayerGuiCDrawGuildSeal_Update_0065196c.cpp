@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawGuildSeal::Update() -- track the hero's ready-to-level-up state (an adult hero with an experience component; a rising edge queues the guild-seal message) and, once the current message has run out, show the next queued message unless the GUI or the display blocks it
@@ -30,7 +31,7 @@ class CThing { public:
     std::bitset<274> m_present;                       // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUncheckedConst(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUncheckedConst(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

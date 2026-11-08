@@ -10,6 +10,7 @@
 // `DeliveredReaction = DeliveredSpeech = false` shares the `xor al,al` with the DeedIsVirtual compare.
 // Layout: Ego_r.pdb CAIStateGroup_DeedReactionRoot = retail (ThingReactingTo +0x14, DeedIsVirtual +0x24,
 // LastThingOpinionSourceUID +0x28 (CThing::UniqueID +0x18, ulong64), DeliveredReaction +0x34, DeliveredSpeech +0x35).
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -49,13 +50,13 @@ class CThing
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::value_type* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE CInterfaceMap::value_type* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -70,7 +71,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
@@ -124,7 +125,7 @@ struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase
     void OnActivate();
 };
 
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
 {
     if (p.GetPItem() != 0)
     {

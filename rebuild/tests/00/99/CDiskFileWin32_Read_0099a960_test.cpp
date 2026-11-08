@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include "engine/CDiskFileWin32.h"
 
@@ -12,7 +13,7 @@ class CCharString { public:
     operator const char*() const;                  // 0x0099E4C0
 };
 
-__forceinline void ReportFileError(CCharString message)
+FABLE_FORCEINLINE void ReportFileError(CCharString message)
 {
     (const char*)message;
 }
@@ -22,7 +23,7 @@ struct CExceptionBase { };
 struct CBBBFileException : CExceptionBase {
     long Error;
     CBBBFileException(long error) : Error(error) { }
-    __forceinline CBBBFileException(long error, const CCharString& message) : Error(error) { ReportFileError(message); }
+    FABLE_FORCEINLINE CBBBFileException(long error, const CCharString& message) : Error(error) { ReportFileError(message); }
 };
 
 enum {

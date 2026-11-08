@@ -12,12 +12,13 @@
 // Fix (sweep 3): the callee 0x009B9870 is CParsedItem::GetSymbol (retail body order = the PDB's GetSymbol, GetString,
 // GetInteger, GetFloat run 0x009B9870..0x009B98A0; FINDINGS chunk 482); it was declared as GetString.
 // Leaf: ?ParserIsSeparatorNext@CAFile
+#include "fable_compiler.h"
 #include <string.h>
 
 struct CBasicStringChar {                               // CBasicString<char> (packed 13 bytes in retail)
     char*         PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
-    __forceinline bool operator==(char c) const
+    FABLE_FORCEINLINE bool operator==(char c) const
     {
         char text[2];
         text[0] = c;
@@ -35,7 +36,7 @@ public:
     CCharStringData* PStringData;                       // +0x00
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(char c) const
+    FABLE_FORCEINLINE bool operator==(char c) const
     {
         if (PStringData == 0)
             return false;

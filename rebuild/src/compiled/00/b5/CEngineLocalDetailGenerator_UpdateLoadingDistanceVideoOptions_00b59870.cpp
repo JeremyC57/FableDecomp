@@ -10,6 +10,7 @@
 //   DrawDistanceMinimum +0x4C, RepeatedMeshDrawDistanceFactor +0x54). No engine/ header exists for either class.
 // Shape: the reset loop unrolls into sixteen stores of two hoisted registers; the bit walk is the engine's branch-free
 //   highest-set-bit binary search (the landed 0x00BE2A80 helper) inlined, with the bit count homed in the loop counter.
+#include "fable_compiler.h"
 class CEngineVideoOptionsDef { public:
     unsigned char _pad00[0x48];
     float DrawDistanceMultiplier;          // +0x48
@@ -28,7 +29,7 @@ class CEngineLocalDetailGenerator { public:
 };
 
 // the engine's branch-free highest-set-bit search (descriptive name, as landed at 0x00BE2A80; inline only, no symbol)
-__forceinline long HighestSetBit(unsigned long value)
+FABLE_FORCEINLINE long HighestSetBit(unsigned long value)
 {
     if (value == 0)
         return -1;

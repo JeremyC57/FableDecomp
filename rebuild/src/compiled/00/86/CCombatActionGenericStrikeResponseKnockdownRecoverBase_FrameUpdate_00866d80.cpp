@@ -3,6 +3,7 @@
 // Retail0x00866D80,249 bytes. Action native base0x114 vs donor0x12c; PCreature+8, FramesRunning+1c,
 // MovementEventInterruptActive+dc, CanBeHit+114. Native ThingCreatureDef RecoverEvadeHitsPercent+140 vs donor148.
 // CBaseIntelligentPointer is real {vptr,CBaseObjectPointer*PData}, record{object,refcount}; never a counted pointer.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CCombatActionBase CCombatActionBase_PDB
 #include "engine/_quarantine/CCombatActionBase.h"
@@ -32,7 +33,7 @@ struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];
     unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeDefinition[0x24];
     CThingCreatureDef* PThingCreatureDef;unsigned char _beforeMovement[0x14c];C3DVector RelativeMovementAcceleration;
-    __forceinline bool GetInterface(CTCCreatureModeManager** out,long type){
+    FABLE_FORCEINLINE bool GetInterface(CTCCreatureModeManager** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){
             ETCInterfaceType key = (ETCInterfaceType)(type);InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(key);
             if(p==map->Last || type<p->first)p=map->Last;

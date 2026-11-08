@@ -1,5 +1,6 @@
 // Behaviour test for 00750050: final.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCChest::GetNumberOfKeysToUnlock(CCharString&) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -87,7 +88,7 @@ class CTCChest { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     const CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
-    __forceinline CChestDef* GetChestDef(bool& found) const
+    FABLE_FORCEINLINE CChestDef* GetChestDef(bool& found) const
     {
         CDefClassBase* thingDef = ParentThing->PDef;
         CDefPointer<CChestDef> out;

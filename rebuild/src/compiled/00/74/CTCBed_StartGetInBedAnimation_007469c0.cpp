@@ -10,6 +10,7 @@
 // PDef +0x14; CBedDef Animating +0x38.
 // Shape: an inline accessor returning an unset local filled by HasTC + a one-ternary GetTC, so the component lands in ecx: the lookup key and the never-initialised out pointer share the dead
 // `sleepAnimation` slot, so the absent path reads it back from there (as retail does).
+#include "fable_compiler.h"
 struct CTCBaseInterface;
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -65,7 +66,7 @@ public:
     bool    Animating;                          // +0x0f
     long    BedSleepAnim;                       // +0x10
     const CBedDef* PDef;                        // +0x14 CDefPointer<CBedDef const> object word
-    __forceinline CTCAnimationComplex* GetAnimationComplex() const
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;
         if (ParentThing->HasTC(TCI_ANIMATION))

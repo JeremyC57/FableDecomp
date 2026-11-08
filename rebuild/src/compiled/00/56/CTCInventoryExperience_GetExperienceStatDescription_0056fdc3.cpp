@@ -13,6 +13,7 @@
 // Shape: `this` is spilled to [ebp-4] (the lookup key takes [ebp-8]) because the component (ebx), the stat (esi) and the
 // def (edi) occupy the callee-saved registers; the maximum level is fetched before `level` is loaded and compared as
 // `level == max + 1`; the text id is a named local tested after the register pops.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); };   // 0x0099B720 / 0x0099B510
@@ -62,7 +63,7 @@ template <unsigned int _Nb> class bitset { public:
 }
 class CThing { public:
     unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
-    template<class T> __forceinline bool GetInterface(T** out, long kind) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);
             if (it == map->last || kind < it->first) it = map->last;

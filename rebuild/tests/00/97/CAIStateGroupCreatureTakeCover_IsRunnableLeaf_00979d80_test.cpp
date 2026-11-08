@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 // The host fixture widens pointers; the target fixture includes the shared 32-bit header.
@@ -51,13 +52,13 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -72,7 +73,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
@@ -105,7 +106,7 @@ class CThingCreatureBase : public CThing
     bool IsIncapacitated();                         // 0x00661E80 (flags byte +0x15c: bit 2, else bit 3; manifest "CText::GetAlignment" is propagated)
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0)
     {
@@ -119,7 +120,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 bool __fastcall IsInMeleeWithCombatWheelAttackers(CThing* creature);   // 0x00979910
 
 // pointer form of the alive test: one GetPItem read
-__forceinline bool IS_THING_ALIVE(CThing* thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* thing)
 {
     if (thing != 0)
     {

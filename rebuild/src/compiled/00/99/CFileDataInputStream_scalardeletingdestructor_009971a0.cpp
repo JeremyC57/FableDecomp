@@ -10,6 +10,7 @@
 // the same offsets. Shape: the destructor body calls the virtual Close(), which VC7.1 binds
 // statically inside a destructor; the intermediate CDataStream's inline destructor stores its
 // vtable (0x0129A69C) before the root base's out-of-line destructor.
+#include "fable_compiler.h"
 class CAFile;
 
 class CBaseClassNonCopyable {
@@ -30,7 +31,7 @@ class CFileDataInputStream : public CDataStream { public:        // vtable 0x012
     long           BufferSize;                     // +0x20
     CFileDataInputStream() : File(0), Buffer(0), BufferSize(0) { }
     virtual void Close();                          // 0x00994300
-    __forceinline virtual ~CFileDataInputStream() { Close(); }
+    FABLE_FORCEINLINE virtual ~CFileDataInputStream() { Close(); }
 };
 
 CFileDataInputStream* Create_CFileDataInputStream()

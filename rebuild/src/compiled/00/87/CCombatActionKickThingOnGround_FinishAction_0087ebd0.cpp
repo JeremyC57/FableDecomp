@@ -9,6 +9,7 @@
 //   engine/CCombatAction_KickThingOnGround.h is pads only at these offsets). Thing model as the landed 0x0095D310.
 // Shape: IS_THING_ALIVE re-fetches GetPItem for each test; each GetInterface's key lives in the frame; `this` is spilled
 //   once to the frame because esi is reused for the map.
+#include "fable_compiler.h"
 enum ETCInterfaceType { TC_INTERFACE_NONE = 0 };
 class CTCBase;
 namespace std {
@@ -37,7 +38,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad1[0x91 - 0x44 - sizeof(CInterfaceMap)];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)interfaceType;

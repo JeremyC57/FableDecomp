@@ -14,6 +14,7 @@
 // also made by the profile manager with masks 0x10..0x80) are not confirmed; CManager slots as the matched 0x00595845.
 // Layout: retail CFrontEndManager m_stackScreens +0x20, m_mapScreens +0x54, PScreenToDeactivate +0x98, PScreenToActivate +0x9c.
 // Opt: size TU (unaligned entry) with a frame pointer (`leave`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 namespace std {
@@ -65,7 +66,7 @@ template <class T> class CDefPointer {
 public:
     T* Object;
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->DecRef();

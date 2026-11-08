@@ -15,6 +15,7 @@
 // Layout: as the landed CTCChest::Open (0x00750540): retail CThing bitset +0x20 (interface 0x4B = bit 11 of +0x28), the
 //   cached driver +0x5C, flags +0x91 (bit 0 dead, bit 1 created by owner thing creation); CTCCreatedEntity PCreator +0x0C
 //   (Ego_r.pdb); the creator's owning thing +0x04.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCParamsBase;
@@ -48,7 +49,7 @@ public:
     unsigned char        m_flags91;                    // +0x91 bit 0 dead, bit 1 created by owner thing creation
     const C3DVector& GetPos() const;              // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

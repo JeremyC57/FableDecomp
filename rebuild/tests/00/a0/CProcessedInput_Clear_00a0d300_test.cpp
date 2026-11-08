@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // 00a0d300 CProcessedInput::Clear
@@ -14,7 +15,7 @@
 #endif
 enum EProcessedEventType{};
 enum EGameEventPriority{};
-class CGameEvent{public:long Type;signed char Player;unsigned char Data[32];unsigned char EndPos;bool Valid,Replacement;__forceinline void Uninitialise(){if(Valid)Valid=false;}};
+class CGameEvent{public:long Type;signed char Player;unsigned char Data[32];unsigned char EndPos;bool Valid,Replacement;FABLE_FORCEINLINE void Uninitialise(){if(Valid)Valid=false;}};
 // Layout: imported176-byte storage; original typed enum/array members restored.
 class CProcessedInput{public:long Player;EProcessedEventType Type;CGameEvent GameEvents[4];unsigned char NoGameEvents;EGameEventPriority Priority;void Clear();};
 FABLE_STATIC_ASSERT(sizeof(CGameEvent)==40);

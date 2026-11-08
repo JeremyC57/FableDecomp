@@ -10,6 +10,7 @@
 //   locally because the method has to mangle on CDataInputStream itself (engine/CDataInputStream.h carries no methods).
 // Shape: three inlined Read calls through one 4-byte frame local, each value stored into a C3DAngles local (copied
 //   through GPRs) that is returned by value.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -29,8 +30,8 @@ class CDataInputStream { public:
     C3DAngles Read3DAngles();
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -44,7 +45,7 @@ private:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
 C3DAngles CDataInputStream::Read3DAngles()

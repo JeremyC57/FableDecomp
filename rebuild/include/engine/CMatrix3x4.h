@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CMATRIX3X4_H
 #define FABLE_ENGINE_CMATRIX3X4_H
+#include "fable_compiler.h"
 // CMatrix3x4 (Ego_r TPI: a union whose struct arm is float E11..E43, rows of three, size 0x30; struct_layouts_egor.tsv
 // CMatrix3x4_u_0_s_0). The flat members below are that struct arm (identical layout). TransformPoint overloads: FableWin
 // ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (0x024543E0) and ?TransformPoint@CMatrix3x4@@QBEXABVC3DVector@@AAV2@@Z
@@ -17,7 +18,7 @@ public:
     CMatrix3x4(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
         E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
     }
-    __forceinline void PreMultiply(const CMatrix3x4& l) {
+    FABLE_FORCEINLINE void PreMultiply(const CMatrix3x4& l) {
         CMatrix3x4 a(*this);
         E11=a.E21*l.E12+a.E31*l.E13+a.E11*l.E11;
         E12=a.E22*l.E12+a.E32*l.E13+a.E12*l.E11;
@@ -40,7 +41,7 @@ public:
     // (the body of the landed 0x00B393D0 model: cofactors over the determinant, then the translation through the inverse).
     // __forceinline as the owner's 2026-11-01 rule for Lionhead math helpers with no out-of-line copy in Ego_r.pdb or Fable.exe:
     // plain inline leaves PreScale and SetInverse called out of line in PreparePrimitivesForEngine (934 v 1330 bytes).
-    __forceinline void Set(const C3DVector& x_axis,const C3DVector& y_axis,const C3DVector& z_axis,const C3DVector& translation) {
+    FABLE_FORCEINLINE void Set(const C3DVector& x_axis,const C3DVector& y_axis,const C3DVector& z_axis,const C3DVector& translation) {
         E11=x_axis.X; E12=x_axis.Y; E13=x_axis.Z;
         E21=y_axis.X; E22=y_axis.Y; E23=y_axis.Z;
         E31=z_axis.X; E32=z_axis.Y; E33=z_axis.Z;
@@ -49,10 +50,10 @@ public:
     // Chunk 751 (row 0x007767A0): Ego_r.pdb / FableWin.pdb ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z, out of line in
     // retail at 0x007767A0 (the axes from the orientation -- GetRight, Forward, Up -- and the translation through the Set above).
     void Set(const class CRightHandedSet& orientation,const C3DVector& translation);
-    __forceinline void Set(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
+    FABLE_FORCEINLINE void Set(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
         E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
     }
-    __forceinline void PreScale(float scale) {
+    FABLE_FORCEINLINE void PreScale(float scale) {
         E11*=scale; E12*=scale; E13*=scale;
         E21*=scale; E22*=scale; E23*=scale;
         E31*=scale; E32*=scale; E33*=scale;
@@ -61,15 +62,15 @@ public:
     // (all twelve elements, translation included, column by column as retail scales them 0x00BE0FB6..0x00BE102B) and
     // ?PostTranslate@CMatrix3x4@@QAEXABVC3DVector@@@Z (E4k += v; the by-reference operand gives retail's `fld E4k ; fadd v` order).
     // No Ego_r.pdb or retail out-of-line copy; __forceinline per the owner's 2026-11-01 helper rule.
-    __forceinline void PostScale(float scale) {
+    FABLE_FORCEINLINE void PostScale(float scale) {
         E11*=scale; E21*=scale; E31*=scale; E41*=scale;
         E12*=scale; E22*=scale; E32*=scale; E42*=scale;
         E13*=scale; E23*=scale; E33*=scale; E43*=scale;
     }
-    __forceinline void PostTranslate(const C3DVector& v) {
+    FABLE_FORCEINLINE void PostTranslate(const C3DVector& v) {
         E41+=v.X; E42+=v.Y; E43+=v.Z;
     }
-    __forceinline void SetInverse(const CMatrix3x4& m) {
+    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m) {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;
         E11 = (m.E22 * m.E33 - m.E23 * m.E32) * inv;
@@ -100,7 +101,7 @@ public:
     // X row as E21*y+E31*z, then E11*x, then E41, but the Y and Z rows left to right (`fld x ; fmul E12 ; .. fmul E22 ; faddp ; ..
     // fmul E32 ; faddp ; fadd E42`, and E13, E23, E33, E43) -- the parenthesised Y / Z rows above give E22*y+E32*z first there (dl 18).
     // A third retail context for the same inline body (see the Open note above).
-    __forceinline void TransformPoint(C3DVector& point) const {
+    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -109,7 +110,7 @@ public:
         point.Z=E13*xx+E23*yy+E33*zz+E43;
     }
 #else
-    __forceinline void TransformPoint(C3DVector& point) const {
+    FABLE_FORCEINLINE void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
         const float zz=point.Z;
@@ -164,7 +165,7 @@ public:
     // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z (FableWin debug copy 0x0261C690; no retail out-of-line copy:
     // 0x007DE710 expands it -- one reciprocal of the X row's squared length (`fdivr [1.0f]`), the transposed 3x3 times it, then the
     // translation through the result). The copy of *this is implicit (AttachObject's `rep movsd` of 12 dwords).
-    __forceinline void PostMultiply(const CMatrix3x4& matrix) {
+    FABLE_FORCEINLINE void PostMultiply(const CMatrix3x4& matrix) {
         CMatrix3x4 a(*this);
         E11 = a.E11 * matrix.E11 + a.E12 * matrix.E21 + a.E13 * matrix.E31;
         E12 = a.E11 * matrix.E12 + a.E12 * matrix.E22 + a.E13 * matrix.E32;
@@ -179,7 +180,7 @@ public:
         E42 = a.E41 * matrix.E12 + a.E42 * matrix.E22 + a.E43 * matrix.E32 + matrix.E42;
         E43 = a.E41 * matrix.E13 + a.E42 * matrix.E23 + a.E43 * matrix.E33 + matrix.E43;
     }
-    __forceinline float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+    FABLE_FORCEINLINE float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
         float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
         E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
         E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;

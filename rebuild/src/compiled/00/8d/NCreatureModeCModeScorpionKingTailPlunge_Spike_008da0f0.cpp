@@ -16,6 +16,7 @@
 //   dropped at the top {0, 0, CCharString x2, false, true, true, false, 0, 0} is a local model (no PDB match pinned).
 // Shape: as the landed StrikeResponseScorpionKing::Initialise 0x008C4B80 (stand-in GetSubDef / GetEffectFromString bodies
 //   that only write their out slots) and ScorpionTailPlunge::PerformAction 0x008C4810 (def index from a scoped name).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet;
 class CCharString { public:
@@ -118,20 +119,20 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char  _pad74[0x90 - 0x74];
     signed char    Player;                      // +0x90
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* component = 0;
         if (HasTC(interfaceType))

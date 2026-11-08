@@ -11,6 +11,7 @@
 // Thing copy ctor4ABE90,dtor4AA840; string ctor99EBF0,dtor99EAE0. Native empty literal122D70E (NUL).
 // Naming wave 35: identity reg 00d9a55c "HobbeBarrel" in 00d9a190; Alloc 00d9c3c0; vtable 012d6b48 slot 1; PDB ?Main@CHobbeBarrel@CQ_HobbeToothContestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHobbeBarrel::Main (wave3/labels_alloc.tsv); PDB ?Main@CHobbeBarrel@CQ_HobbeToothContestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHobbeBarrel@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); NScript-level CHobbeBarrel nested into CQ_HobbeToothContestScript); same bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
 #define FABLE_RETAIL_NSCRIPT
@@ -46,7 +47,7 @@ union GameSlot { void* Address; void (ScriptGame::*Wait)() const; };
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4);
 #endif
 struct ScriptGame : ::CGameScriptInterface {
-    __forceinline void WaitForNextFrame() const { (this->*static_cast<GameSlot*>(__vftable)[7].Wait)(); }
+    FABLE_FORCEINLINE void WaitForNextFrame() const { (this->*static_cast<GameSlot*>(__vftable)[7].Wait)(); }
 };
 class CQ_HobbeToothContestScript { public:
     unsigned char BaseAndQuestFields[0x5a];

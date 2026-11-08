@@ -8,13 +8,14 @@
 // Shape: `IsInWorkHours() && IsAlive(Shop) && IsAlive(PrettyThing)` -- the int-typed `&&` chain
 // materialises `mov eax,1` / shared `xor eax,eax` (full register); each pointer's address is formed
 // once into esi for both GetPItem calls. Base modelled locally (flattened header).
+#include "fable_compiler.h"
 #include "engine/CThing.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
     CThing* GetPItem();                         // 0x00A01B50
-    __forceinline bool IsAlive()
+    FABLE_FORCEINLINE bool IsAlive()
     {
         if (GetPItem() != 0) {
             if (!GetPItem()->IsDead())

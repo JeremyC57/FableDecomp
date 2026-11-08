@@ -22,6 +22,7 @@
 //   CTCHeroRangedAttacks are engine/CPlayer.h / engine/CTCHeroRangedAttacks.h layout-renamed bases carrying the PDB methods;
 //   CCreatureActionBase is local because engine/CCreatureActionBase.h models the vptr as data and the temporary's dtor chain
 //   needs the real virtual dtor (retail sizeof 0xa8, the action 0xb0).
+#include "fable_compiler.h"
 #define CWorld CWorldLayout
 #include "engine/CWorld.h"
 #undef CWorld
@@ -47,13 +48,13 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                 // +0x91 bit 0
     CPlayer& GetPlayer();                                   // 0x004C7A30
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (UsingComponents.test(type))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;

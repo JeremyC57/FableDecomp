@@ -11,6 +11,7 @@
 // Shape: the village name is a named local in its own block; the nested call fetches the interface vtable once (edi).
 // Naming wave 35: identity reg 00d1d3c6 "KG_Sheriff" in 00d1d100; Alloc 00d1df20; vtable 012caf1c slot 2; PDB ?Init@CKG_Sheriff@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CKG_Sheriff::Init (wave3/labels_alloc.tsv); PDB ?Init@CKG_Sheriff@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CKG_Sheriff@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
     void* m_pData;
@@ -24,7 +25,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

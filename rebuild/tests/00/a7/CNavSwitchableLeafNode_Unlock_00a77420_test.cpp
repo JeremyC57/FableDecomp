@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,8 +46,8 @@ public:
 template<class T,int N> class CSmallVector {
 public:
  T* Start; signed char Size;
- __forceinline const T* begin() const {return Start;}
- __forceinline const T* end() const {return Start+Size;}
+ FABLE_FORCEINLINE const T* begin() const {return Start;}
+ FABLE_FORCEINLINE const T* end() const {return Start+Size;}
 };
 class CNavRegion;
 // Layout: real RTTI base CANavQuadTreeNode+0, PRegion+16, Neighbours+20,

@@ -10,6 +10,7 @@
 // Shape: a pair<long, CCharString> local (index stored next to the string copy) handed to the inline STLport push_back
 // (placement memberwise copy / _M_insert_overflow with the __false_type tag in the dead index slot); the def out pointer also
 // reuses the dead index slot, the def taken out of it into a holder whose release loses its null test after the flag read.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -90,7 +91,7 @@ class CTCContainer : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CContainerItemVector ContainerItems;                // +0x0c
-    __forceinline CThingDef* GetItemDef(long defIndex) const
+    FABLE_FORCEINLINE CThingDef* GetItemDef(long defIndex) const
     {
         CDefPointer<CThingDef> out;
         GetDefinitionManager().GetDef(defIndex, &out);

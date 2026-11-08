@@ -13,6 +13,7 @@
 //   key compare walks key and the leaf's words with one index register and a fixed difference. The child table and the
 //   leaf words are direct `(node + 1)` casts: a helper member (Children()/Key()) would be left as a call. The
 //   leaf words go through a named `nodeKey` local: indexing the cast in the loop keeps key[i] indexed and walks the leaf.
+#include "fable_compiler.h"
 class CEngineTreeFilerBase {
 public:
     struct CNodeHeader {                           // Ego_r.pdb, 28 bytes
@@ -36,7 +37,7 @@ private:
     CNodeHeader* FindNode(CNodeHeader* node, unsigned long* key);
 };
 
-__forceinline CEngineTreeFilerBase::CNodeHeader* CEngineTreeFilerBase::FindNode(CNodeHeader* node, unsigned long* key)
+FABLE_FORCEINLINE CEngineTreeFilerBase::CNodeHeader* CEngineTreeFilerBase::FindNode(CNodeHeader* node, unsigned long* key)
 {
     if (node->IsLeaf)
         return node;

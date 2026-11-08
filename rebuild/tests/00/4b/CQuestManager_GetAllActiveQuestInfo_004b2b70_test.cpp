@@ -1,5 +1,6 @@
 // Behaviour test for 004b2b70: src/004b2b70.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CQuestManager::GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vector<CCharString>& defNames)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -78,7 +79,7 @@ struct CTCMap {
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const unsigned long& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const
+    FABLE_FORCEINLINE CTCBase* Find(long type) const
     {
         CTCEntry* it = LowerBound((unsigned long)type);
         if (it == _M_finish || type < it->Type)
@@ -91,8 +92,8 @@ class CThing { public:
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
     CTCMap        Components;                          // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
     CDefString GetDefName() const;                     // 0x004C7CC0
 };
 class CTCQuestCard { public:                                  // TC type 0x6c (Ego_r.pdb)

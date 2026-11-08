@@ -1,5 +1,6 @@
 // Behaviour test for 0070d390: final.cpp copied verbatim (free from <cstdlib>), the declared callees stubbed below so
 // calls and arguments are observable. CAnimateThing::UpdateCombinationAnimList
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -115,7 +116,7 @@ public:
     void UpdateCombinationAnimList(CAnimSetList& anims, const CAnimSetUpdateInfo& info);
 };
 
-__forceinline bool FadeOutCombinationAnim(CAnimSet& set)
+FABLE_FORCEINLINE bool FadeOutCombinationAnim(CAnimSet& set)
 {
     if (set.ChangeAlphaBy > EPSILON) {
         CTransitionBlendAlpha& alpha = set.InternalAlphas[0];
@@ -129,7 +130,7 @@ __forceinline bool FadeOutCombinationAnim(CAnimSet& set)
     }
     return false;
 }
-__forceinline void FadeInCombinationAnim(CAnimSet& set)
+FABLE_FORCEINLINE void FadeInCombinationAnim(CAnimSet& set)
 {
     if (!set.Finished && set.ChangeAlphaBy > EPSILON) {
         CTransitionBlendAlpha& alpha = set.InternalAlphas[0];

@@ -16,6 +16,7 @@
 // Shape: the message is a temporary passed straight to the inline push_back (retail keeps the ctor's eax as the source);
 // the insert reads the old tail into a local before linking; the font counted pointer is a temporary whose dtor does not
 // clear its words; the margin clamp is `if (area.TLX < margin) area.TLX = margin;`.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -60,7 +61,7 @@ class CDefinitionManager { public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

@@ -15,6 +15,7 @@
 // A vector push takes a by-value ThingCast<T> temporary (homed in the dead argument slot and shared with the
 // __true_type tag: the same-TU noinline STLport overflow body shows VC7.1 the tag is never read); a list push
 // inserts before end() reading end()->prev once; an intelligent-pointer push builds a named temporary.
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
@@ -194,7 +195,7 @@ public:
     const C& Third;
     const D& Fourth;
     const E& Fifth;
-    template <class T> __forceinline bool operator()(const T& thing) const
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const
     { return First(thing) && Second(thing) && Third(thing) && Fourth(thing) && Fifth(thing); }
 };
 template <class A> class CFilter_Not {

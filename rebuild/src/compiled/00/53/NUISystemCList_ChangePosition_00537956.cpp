@@ -7,6 +7,7 @@
 // the owner pointer of the landed CList::OnActivate (0x005366FF) with a null-tested release (`mov ecx,eax ;
 // add eax,4 ; dec [eax] ; cmp [eax],0`) lands in the dead argument slot; the flag is read into bl before the
 // release; the target vector is a 2-word local copied memberwise.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C2DVector { public:
@@ -20,11 +21,11 @@ struct CListOwnerVirtual {
 };
 struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
     unsigned long IVRefCount;
-    __forceinline void DecRef() { --IVRefCount; }
-    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+    FABLE_FORCEINLINE void DecRef() { --IVRefCount; }
+    FABLE_FORCEINLINE unsigned long GetRefCount() const { return IVRefCount; }
 };
 struct CListOwner : CListOwnerVirtual, CIVRefCounted {   // reference-counted: count at +4, Delete in slot 1
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)

@@ -4,6 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E799F0, 2580 bytes, thiscall, plain `ret` (four epilogue copies), frame 0x90.
 // Identity (proven): Ego_r.pdb ?Main@CEM_Rhodri@CV_ExposeMayorScript@NScript@@EAEXXZ; slot 1 of the CEM_Rhodri entity vtable stored by
 //   the landed Alloc 0x00E765D0.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -28,8 +29,8 @@ enum EHeroAbility { HERO_ABILITY_NULL=0, HERO_ABILITY_FORCE_PUSH=1, HERO_ABILITY
 extern CGameScriptInterfaceBase* pDSTGame;               // 0x0143E8F8
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 // Inline control (owner decision 2026-11-08, device 3): compile the predicate's destructor with no inlining of its own, so its
 // body stays `~CScriptThing()` as a call; Main then expands ~CIsThingConscious (filter vtable store + call 0x004AA840) exactly as retail.

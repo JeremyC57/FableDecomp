@@ -9,6 +9,7 @@
 // no _STLP_TRY). The pair copy is memberwise: the key dword, the CIVCountedPointer copy ctor (`if (Object) AddRef()`,
 // RefCount at +4), Priority, then the three bools byte by byte (the entry's implicit copy ctor, made non-trivial by
 // the counted pointer).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);          // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -62,7 +63,7 @@ template <class T> struct allocator {};
 template <class T> struct less {};
 template <class P> struct _Select1st {};
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class K, class V, class KoV, class C, class A> class _Rb_tree {
 public:

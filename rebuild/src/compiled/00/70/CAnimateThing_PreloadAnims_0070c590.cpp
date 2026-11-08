@@ -3,6 +3,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Layout: no engine/CAnimSet.h / CCompleteAnimation.h; retail STLport vector is 12 bytes and list 4 bytes, so CAnimSet is 0x54,
 // CCompleteAnimation keeps TransitionAnimSets at +0x54 / CombinationAnims at +0x58, CAnimateThing::DelayedAnim at +0x64 (ctor 0x0070E710).
+#include "fable_compiler.h"
 class C3DAnimationInfo { public: public:
     void BeginLoading(bool) const;   // 0x00A26730
 };                    // 0xA26730
@@ -71,7 +72,7 @@ public:
     CShortVector Anims;
     CAlphaVector InternalAlphas;
     char _pad1c[0x54 - 0x1c];
-    __forceinline void Preload() const
+    FABLE_FORCEINLINE void Preload() const
     {
         for (unsigned int i = 0; i < (unsigned int)(Anims._M_finish - Anims._M_start); i++)
             PreloadAnimation(Anims._M_start[i]);

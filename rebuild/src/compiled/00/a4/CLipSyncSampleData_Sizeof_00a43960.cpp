@@ -5,6 +5,7 @@
 // Shape: an array's size is `count * 4 + 12` plus the sum of its elements' sizes; a frame (CLipSyncFrameData, a
 // vector of 12-byte phonemes) has the same form with a constant 12 per phoneme, so the inner loop only steps
 // `add edx,0Ch`. The counts are the signed `/ 12` (0x2AAAAAAB multiply). Total + 4 for the trailing long.
+#include "fable_compiler.h"
 class CLipSyncPhoneme { public:                           // 12 bytes
     void*         Name;
     unsigned long ID;
@@ -16,7 +17,7 @@ template <class T> class CArray { public:
     T* m_last;
     T* m_end;
     unsigned long Size() const { return m_last - m_first; }
-    __forceinline unsigned long Sizeof() const
+    FABLE_FORCEINLINE unsigned long Sizeof() const
     {
         unsigned long size = Size() * 4 + 12;
         for (const T* it = m_first; it != m_last; ++it)

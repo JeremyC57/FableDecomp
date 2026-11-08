@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -26,7 +27,7 @@ struct CEnvironmentThemePriorityStackEntry {     // NEnvironmentInternal::CEnvir
     double            ThemeTransitionStartTime;  // +0x20
     float             ThemeTransitionDuration;   // +0x28
     CEnvironmentThemePriorityStackEntry() { }
-    __forceinline CEnvironmentThemePriorityStackEntry(const CEnvironmentThemePriorityStackEntry& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CEnvironmentThemePriorityStackEntry(const CEnvironmentThemePriorityStackEntry& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : BaseWeight(o.BaseWeight), BaseWeightLocked(o.BaseWeightLocked), Themes(o.Themes),
           ThemeTransitionTargetID(o.ThemeTransitionTargetID), ThemeTransitionInitialWeight(o.ThemeTransitionInitialWeight),
           ThemeTransitionActive(o.ThemeTransitionActive), ThemeTransitionStartTime(o.ThemeTransitionStartTime),

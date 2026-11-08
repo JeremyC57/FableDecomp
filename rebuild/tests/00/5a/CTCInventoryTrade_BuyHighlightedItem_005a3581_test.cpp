@@ -1,5 +1,6 @@
 // Behaviour test for 005a3581: src/005a3581.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCInventoryTrade::BuyHighlightedItem
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -48,7 +49,7 @@ public:
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) const { return present.test(type); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

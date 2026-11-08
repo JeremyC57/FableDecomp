@@ -14,6 +14,7 @@
 //   interface map +0x44 (first/last), dead flag bit 0 of +0x91.
 // Shape: the emitter lookup is GetTC with a null default (`xor ecx,ecx` before the presence test); the component is
 //   used unconditionally (ecx may be null on the call, as in retail).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -26,7 +27,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 (bit 0: dead)
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

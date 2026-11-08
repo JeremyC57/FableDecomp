@@ -12,6 +12,7 @@
 // Layout: engine/CTCPhysicsStandard.h offsets (local model with real C3DVector/CRightHandedSet members, as the landed
 //   CTCPhysicsControlled::Move 0x00725C40 / CTCPhysicsRigidBody::OnCreate 0x0075B2D0); flag bytes +0x84/+0x85 per the PDB
 //   bitfield order. CThing +0x64 graphic appearance (graphic data +0x44: index +0, type byte +0xd; has-graphic byte +0x51).
+#include "fable_compiler.h"
 #include <math.h>
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class C3DVector { public:
@@ -56,7 +57,7 @@ struct CGraphicDataRef {
     unsigned char _pad04[9];
     unsigned char Type;                             // +0x0d
     bool IsValid() const { return Type != 0; }
-    __forceinline bool HasPhysicsMesh(CGraphicBank* bank) const
+    FABLE_FORCEINLINE bool HasPhysicsMesh(CGraphicBank* bank) const
     {
         if (Type == 5) {
             if (Index)

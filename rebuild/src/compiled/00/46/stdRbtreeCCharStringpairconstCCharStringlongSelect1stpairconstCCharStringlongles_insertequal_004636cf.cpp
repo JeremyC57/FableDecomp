@@ -17,6 +17,7 @@
 //   0x00411570) must be visible in the TU: VC7.1 then knows the call only reads memory and hoists the value key's data
 //   pointer into ebx for the whole walk (saved inside the `x != 0` guard); with a bare declaration it is re-read per node.
 //   The size TU keeps operator< / less::operator() out of line unless they are __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -43,7 +44,7 @@ inline long __fastcall Compare(const char* a, const char* b)   // 0x00411570
 class CCharString {
 public:
     CCharStringData* PStringData;       // +0x00
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -64,7 +65,7 @@ template <class _T1, class _T2> struct pair {
 };
 
 template <class _Tp> struct less {
-    __forceinline bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
+    FABLE_FORCEINLINE bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 
 template <class _Pair> struct _Select1st {

@@ -12,6 +12,7 @@
 // destroy at zero; the null test folds into the `if (mat.Object && ...)` test); the candle is reassigned through a
 // CIntelligentPointer<CThing> temporary (vtable 0x01238C6C).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CWorld;
 
@@ -34,7 +35,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -137,12 +138,12 @@ class CMaterialDef { public:
     CRefCounted Ref;                            // +0x04
     unsigned char _pad08[0x3c - 0x08];
     unsigned long Flags;                        // +0x3c (bit 5: no candle work)
-    __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T>
 class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
 };
 class CThingBuilding : public CThing { public:

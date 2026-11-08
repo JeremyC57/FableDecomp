@@ -18,6 +18,7 @@
 //   EVERY exit out of line). The loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }`.
 // Naming wave 35: identity reg 00da3c4d "GuardNotThisWay" in 00da34b0; Alloc 00da6810; vtable 012d768c slot 1; PDB ?Main@CGuardNotThisWay@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardNotThisWay::Main (wave3/labels_alloc.tsv); PDB ?Main@CGuardNotThisWay@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGuardNotThisWay@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -69,9 +70,9 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
-__forceinline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 (established spelling; naming wave 35: was g_bScriptAnimationFlag)
 class CEntityScriptBase { public:

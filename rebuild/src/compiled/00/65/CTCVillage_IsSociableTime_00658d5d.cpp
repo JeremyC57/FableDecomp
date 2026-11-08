@@ -1,6 +1,7 @@
 // 00658d5d CTCVillage::IsSociableTime
 // Leaf: ?IsSociableTime@CTCVillage@@QBE_NXZ
 // Flags: /Os
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "rebuild_abi.h"
 #define CTCBase CTCBaseFields
@@ -24,7 +25,7 @@
 // Their flattened identifiers are implementation projections, not retail names.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass {protected:virtual~CBaseClassNonCopyable();};
-class CIVCountedPointeeBase {public:virtual~CIVCountedPointeeBase();virtual void Delete()const;mutable unsigned long IVRefCount;__forceinline void AddRef()const{++IVRefCount;}__forceinline long Release()const{if(--IVRefCount==0){Delete();return 0;}return IVRefCount;}};
+class CIVCountedPointeeBase {public:virtual~CIVCountedPointeeBase();virtual void Delete()const;mutable unsigned long IVRefCount;FABLE_FORCEINLINE void AddRef()const{++IVRefCount;}FABLE_FORCEINLINE long Release()const{if(--IVRefCount==0){Delete();return 0;}return IVRefCount;}};
 class CResourceList;class CResource:public CIVCountedPointeeBase {public:CResourceList*ResourceList;CResource*PrevResource,*NextResource;unsigned long ResourceSize,LastUsedFrame;};class CDefPointeeBase:public CResource {};
 class CDefinitionManager;
 #pragma pack(push,1)
@@ -78,7 +79,7 @@ class CVillageDef:public CSubDefClassBase {public:
     long             FramesBeforeGuardSnoop;                 // +0x104
     long             FramesBeforeGuardSnoopNightShops;       // +0x108
 };
-template<class T>class CDefPointer {public:CDefPointeeBase*Object;CDefPointer():Object(0){}__forceinline CDefPointer(const CDefPointer&x):Object(x.Object){if(Object)Object->AddRef();}__forceinline void Release(){if(Object){Object->Release();Object=0;}}__forceinline~CDefPointer(){Release();}__forceinline T*operator->()const{return static_cast<T*>(Object);}};
+template<class T>class CDefPointer {public:CDefPointeeBase*Object;CDefPointer():Object(0){}FABLE_FORCEINLINE CDefPointer(const CDefPointer&x):Object(x.Object){if(Object)Object->AddRef();}FABLE_FORCEINLINE void Release(){if(Object){Object->Release();Object=0;}}FABLE_FORCEINLINE~CDefPointer(){Release();}FABLE_FORCEINLINE T*operator->()const{return static_cast<T*>(Object);}};
 class CWorld;
 class CTCBase:public CBaseClassNonCopyable {public:virtual~CTCBase();CThing*ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;protected:const CWorld&PeekWorld()const;};
 class CGameTimeManager;
@@ -269,7 +270,7 @@ class CTCVillage:public CTCBase {public:
     unsigned char    GuardWarningHero[0x8];                  // +0xdc CIntelligentPointer<CThingAICreature>
     bool             CurrentIsHeroCriminal;                  // +0xe4
     unsigned char    _pad_0xe5[0x3];                         // +0xe5
-__forceinline CDefPointer<const CVillageDef>GetPDef()const{return PDef;}
+FABLE_FORCEINLINE CDefPointer<const CVillageDef>GetPDef()const{return PDef;}
 bool IsNightTime()const;bool IsSociableTime()const;bool IsCurfewTime()const;
 };
 FABLE_STATIC_ASSERT(sizeof(CResource)==28);FABLE_STATIC_ASSERT(sizeof(CDefClassBase)==37);FABLE_STATIC_ASSERT(sizeof(CSubDefClassBase)==37);FABLE_STATIC_ASSERT(sizeof(CVillageDef)==sizeof(CVillageDefFields));FABLE_STATIC_ASSERT(sizeof(CTCBase)==sizeof(CTCBaseFields));FABLE_STATIC_ASSERT(sizeof(CTCVillage)==sizeof(CTCVillageFields));FABLE_STATIC_ASSERT(sizeof(CWorld)==sizeof(CWorldFields));FABLE_STATIC_ASSERT(sizeof(CGameTimeManager)==60);

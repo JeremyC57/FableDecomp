@@ -12,6 +12,7 @@
 // Shape: `CComponent::MakeAvailable()` qualified and __forceinline (VC7.1 does not auto-inline the loop; retail has it inline
 //   with its loop-head alignment); the colour copy-constructed
 //   from the current state, its alpha replaced from GetColour(), then ChangeColour(colour, 0, false).
+#include "fable_compiler.h"
 namespace NUISystem {
 
 struct CRGBColour {                         // 4 bytes: B, G, R, A
@@ -177,7 +178,7 @@ public:
 
 namespace NUISystem {
 
-__forceinline void CComponent::MakeAvailable()
+FABLE_FORCEINLINE void CComponent::MakeAvailable()
 {
     for (CStateMapIterator it = GetStates().begin(); it != GetStates().end(); ++it)
     {

@@ -2,6 +2,7 @@
 // Retail 0x00958C00, 163 bytes. LowerBound 0x0040F020, GFGetPVillageInterface 0x007EE540,
 // intelligent pointer GetPItem 0x00A01B50. Interface 0x23 is villager; guard is bit 20 at +0x34.
 // PDB names plus landed GetBuilding 0x0096D260 establish the villager/village lookup.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
@@ -20,7 +21,7 @@ struct CRetailThingView {
     CRetailInterfaceMap Components;
     unsigned char _beforeDead[0x91-0x4c];
     unsigned char Dead:1;
-    template<class T> __forceinline bool GetInterface(T** out, long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             long key = type;
             CRetailInterfaceMap* map = &Components;

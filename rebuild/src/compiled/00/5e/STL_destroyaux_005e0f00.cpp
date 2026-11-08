@@ -8,6 +8,7 @@
 //   counted pointer's inline release (null test, `dec [obj+4]`, slot 1 at zero) and its zero store survives because
 //   the element lives on in the buffer (the same destructor's store is dead and dropped for a dying stack temporary).
 // Label correction: catalogued as `_Copy_backward<CDefPointer<CThingBaseDef const>*,...>` (propagated).
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -23,7 +24,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

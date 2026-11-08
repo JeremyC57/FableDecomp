@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTCVillage::AddTorchToVillage(CThing* torch) -- append the torch to the village's torch list and point its village-member component (interface 35) at this village
 // Leaf: AddTorchToVillage
@@ -28,7 +29,7 @@ public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

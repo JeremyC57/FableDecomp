@@ -9,6 +9,7 @@
 //   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CDrinkersReactMarker::IsActiveThreadTerminating (non-const).
 // Naming wave 35: identity reg 00d9a494 "DrinkersReactMarker" in 00d9a190; Alloc 00d9c1d0; vtable 012d6b2c slot 1; PDB ?Main@CDrinkersReactMarker@CQ_HobbeToothContestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012d6b2c::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CDrinkersReactMarker@CQ_HobbeToothContestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDrinkersReactMarker@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
@@ -23,7 +24,7 @@ struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp
 struct ScriptMethods:CBaseClass{
  CountedScriptImp PImp;
  ScriptMethods(){}
- __forceinline ScriptMethods(const CScriptThing& other):CBaseClass(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
+ FABLE_FORCEINLINE ScriptMethods(const CScriptThing& other):CBaseClass(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
  ScriptMethods(const ScriptMethods& other):CBaseClass(),PImp(other.PImp){}
  virtual ~ScriptMethods(){} //native inline vptr reset, counted release, CBaseClass dtor99A2E0
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0

@@ -18,6 +18,7 @@
 //   (the `lea ecx,[esp+..]` pick between the spilled size and the reused argument slot), __ucopy_trivial's
 //   `last == first ? result : memmove(..) + n` for both copies (the second test folds away against the outer
 //   `first != last`), _M_construct_null as a byte store; the length error is `__declspec(noreturn)`.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void  __cdecl free(void* p);                                          // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
@@ -31,7 +32,7 @@ template <class _Iter> inline int distance(const _Iter& __first, const _Iter& __
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-__forceinline void* __ucopy_trivial(const void* __first, const void* __last, void* __result)
+FABLE_FORCEINLINE void* __ucopy_trivial(const void* __first, const void* __last, void* __result)
 {
     return (__last == __first) ? __result :
         ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first))) +

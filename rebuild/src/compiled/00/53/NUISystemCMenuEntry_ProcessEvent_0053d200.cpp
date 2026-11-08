@@ -11,6 +11,7 @@
 //   unselect test is one && chain stored in a named bool (homed in the dead `event` slot) whose GetDef temporary is conditionally
 //   destroyed (flag word zeroed at entry; the forceinline destructor nulls the pointer); the parent is re-read through an inline
 //   accessor after the GetType call (a plain `PParent` re-read loads eax and copies to ecx).
+#include "fable_compiler.h"
 namespace NUISystem {
 
 enum EEvent { EVENT_2 = 2, EVENT_3 = 3, EVENT_4 = 4, EVENT_5 = 5, EVENT_25 = 25 };
@@ -39,7 +40,7 @@ struct CComponentDef : CDefVirtual, CRefCounted {
 struct CDefPointer {
     CComponentDef* m_p;
     CDefPointer() { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_p) {
             m_p->ReleaseTemporary();

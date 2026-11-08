@@ -12,6 +12,7 @@
 // Shape: the handle reset is the CEnginePrimitiveHandle Clear() of 0x00AF70D0 (IsUnique notification, release plus a
 //   second zero store, `__forceinline`); `Playing == true` compares with 1; `delete` of the video system calls its
 //   out-of-line destructor then operator delete.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
 class CEnginePrimitiveHandle;
@@ -33,7 +34,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -47,7 +48,7 @@ class CEnginePrimitiveHandle {                     // vtable 0x0122F598
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

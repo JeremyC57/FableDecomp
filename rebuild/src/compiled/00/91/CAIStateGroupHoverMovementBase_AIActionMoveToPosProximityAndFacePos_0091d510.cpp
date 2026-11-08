@@ -8,6 +8,7 @@
 //   operator delete 0x00BFE9BC, the brain's virtual slot 2 (+8, yield). Epsilon 0.0001f @ 0x0129BA3C.
 // Layout: CBrainOutput per the landed 0x0097DF60 / 0x0097E890 model (Types +0, LookFlags +4, NavigationInput +8, PAction
 // +0x20, MoveToPos +0x28, LookAtPos +0x34, LookAtThing +0x40); creature interface bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 class CThing;
 class C3DVector { public:
     float X, Y, Z;
@@ -91,7 +92,7 @@ class CThingCreatureBase : public CThingPhysical { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionVirtuals* CurrentAction;     // +0x100
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long count = m_interfaces.last - m_interfaces.first;
         CInterfaceMap::SEntry* it = m_interfaces.first;

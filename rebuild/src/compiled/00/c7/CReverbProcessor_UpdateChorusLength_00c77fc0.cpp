@@ -12,6 +12,7 @@
 // The processor (`this`) holds per-line / per-tap scale factors and the mixer format; the parameter block is the
 // dirty-flagged reverb description handed to the dispatcher 0x00C783F0, the state block is what the per-sample
 // loop reads. Layouts are taken from the offsets the dispatcher and its update helpers touch.
+#include "fable_compiler.h"
 struct SMixFormat {
     unsigned long m_flags;                 // +0x00
     unsigned long m_channels;              // +0x04
@@ -91,7 +92,7 @@ public:
 // libpk's inline-assembly float-to-long helper (round to nearest, the FPU default)
 #include "libpk/FtoL.h"
 // libpk's round-half-down helper (out-of-line copy at 0x00C3FF70): round(value - 0.5), negatives step back up by one
-__forceinline long RoundHalfDownToLong(float value)
+FABLE_FORCEINLINE long RoundHalfDownToLong(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

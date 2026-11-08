@@ -1,4 +1,5 @@
 // Behaviour test for 00437ae0 (CPlayerGui::UpdateStat): jump vs animate, recent max, settle/hold timers, reopen.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <math.h>
 #ifndef _MSC_VER
@@ -8,7 +9,7 @@ float g_fEpsilon = 0.0001f;
 long g_FramesPerSecond = 10;
 static unsigned long s_frame = 100;
 unsigned long GetCurrentFrame() { return s_frame; }
-__forceinline bool FramesExceed(const unsigned long& since, float seconds)
+FABLE_FORCEINLINE bool FramesExceed(const unsigned long& since, float seconds)
 {
     long fps = g_FramesPerSecond;
     return (float)(GetCurrentFrame() - since) > (float)fps * seconds;

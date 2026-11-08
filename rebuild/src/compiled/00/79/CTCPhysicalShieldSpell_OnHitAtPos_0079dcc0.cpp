@@ -9,6 +9,7 @@
 // Shape: if/else of the two operator= calls tail-merges into `push A / jmp / push B / call`; the out-slot def and the zero
 //   effect type follow the landed 0x008EC320. Tried: `&&` condition, nested if, the call through the slot member, a holder
 //   whose destructor releases. Next: lane gap: register choice for the out-slot def copy (chunk 161 0x69A8B0 family).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #include "engine/C3DVector.h"
 class CThing;
@@ -36,7 +37,7 @@ template <class T> class CDefPointer { public:                 // the out-slot G
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

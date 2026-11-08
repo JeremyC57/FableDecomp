@@ -11,6 +11,7 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14; the parent's attack-line counter +0x5c (descriptive).
 // Naming wave 35: identity reg 00dfa567 "TC_BanditHostageKeeper" in 00dfa450; Alloc 00dfb990; vtable 012dedc0 slot 1; PDB ?Main@CTC_BanditHostageKeeper@CQ_TraderConflictGoodScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTC_BanditHostageKeeper::Main (wave3/labels_alloc.tsv); PDB ?Main@CTC_BanditHostageKeeper@CQ_TraderConflictGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CTC_BanditHostageKeeper@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
@@ -36,7 +37,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

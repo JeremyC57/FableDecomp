@@ -14,6 +14,7 @@
 // Shape: HasTC + inline GetTC per inventory inside the alive test (edi pushed only there, all three keys in the
 //   single frame word that later holds the file-name temporary); the save result held in bl across that temporary's
 //   destructor; the flag returned by re-reading the member.
+#include "fable_compiler.h"
 class CWideStringData;
 class CWideString { public:
     CWideStringData* PStringData;
@@ -40,7 +41,7 @@ class CThing { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;

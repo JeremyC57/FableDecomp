@@ -9,6 +9,7 @@
 // same-body instance. The catalog "swap<CDebugSphere>" is propagated (CDebugSphere is 76 bytes).
 // Shape: `_Tp __tmp = *a; *a = *b; *b = __tmp;` -- the STLport pair's user copy ctor builds the temporary (one dword,
 // then the six CCameraTag dwords through a pointer), the two assignments are `rep movsd` (7 dwords).
+#include "fable_compiler.h"
 enum EConversationProtagonist { ECP_0 };
 enum EConversationCameraPosition { ECCP_0 };
 enum EConversationCameraFocus { ECCF_0 };
@@ -36,7 +37,7 @@ template <class T1, class T2> struct pair {
 };
 
 template <class _ForwardIter1, class _ForwardIter2, class _Tp>
-__forceinline void __iter_swap(_ForwardIter1 a, _ForwardIter2 b, _Tp*)
+FABLE_FORCEINLINE void __iter_swap(_ForwardIter1 a, _ForwardIter2 b, _Tp*)
 {
     _Tp tmp = *a;
     *a = *b;

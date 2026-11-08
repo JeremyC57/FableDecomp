@@ -2,6 +2,7 @@
 // Leaf: _$E1
 // Identity: probable. Own RTTI CDynamicObjectHeap<72,16> and global01436fb0; own lighting allocation consumers corroborate element type/size. FableWin nameset contains dynamic initializer for LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight. CDynamicObjectHeapBase ctor00f36c60, base20, FreeList20, StartBlock24, sixteen entries stride72, NextEntry1176, grow byte1180. Base RefCountedRelease00f36ca0 dispatches slot1; base vtable slot1 is purecall. No engine header for these types.
 // Layout: original heap template, typed base and embedded block. Nested record keys follow the landed same-template constructor; template APIs not used here omitted.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -22,7 +23,7 @@ public:
     CObjectEntry* FreeList;
     CObjectAllocatorBlockEntry StartBlock;
     bool AllowHeapToGrow;
-    __forceinline CDynamicObjectHeap(bool allowHeapToGrow) {
+    FABLE_FORCEINLINE CDynamicObjectHeap(bool allowHeapToGrow) {
         AllowHeapToGrow=allowHeapToGrow;
         FreeList=0;
         StartBlock.NextEntry=0;

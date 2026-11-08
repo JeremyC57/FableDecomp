@@ -8,6 +8,7 @@
 // then `pot != 0 && creature->AutoPlaceNear(pot->GetPos(), 3.0f)` materialises as the
 // full-register `mov eax,1` / `xor eax,eax` form of an int-typed `&&` expression. The creature is
 // read into a named local (esi) before the radius push so retail's load pair stays ahead of the call.
+#include "fable_compiler.h"
 class C3DVector;
 
 #include "engine/CThing.h"
@@ -45,7 +46,7 @@ struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
 private:
     CThing* GetPCookingPot() const;                   // 0x00945A90
 public:
-    __forceinline bool PlaceCreatureNear(CThing* pot)
+    FABLE_FORCEINLINE bool PlaceCreatureNear(CThing* pot)
     {
         CThingAICreature* creature = PBrain->Creature;
         return creature->AutoPlaceNear(pot->GetPos(), 3.0f);

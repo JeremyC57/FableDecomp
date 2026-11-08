@@ -1,6 +1,7 @@
 // Behaviour test for 0x00672530 GFSerialiseVectorBinaryIn<ENavigatorType>: the count comes off the stream (fast
 // (The model uses int for the 4-byte stream words: long is 8 bytes under x64 g++.)
 // in-chunk path or the overflow path), the vector is resized to it with zero fill, and every element is read in order.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -22,7 +23,7 @@ struct CMemoryDataInputStreamReader {
         std::memcpy(buffer, &overflowValue, size);
         position += size;
     }
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         long long newPosition = (long long)(unsigned int)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -70,7 +71,7 @@ template <> struct CPersistTraits<ENavigatorType> {
     }
 };
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
 {
     int value;
     stream.Read(&value, sizeof(value));

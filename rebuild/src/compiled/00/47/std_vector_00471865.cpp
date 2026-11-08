@@ -3,6 +3,7 @@
 // Callees: _Ucopy/allocate-copy @ 0x0047197A (catalog "AnimationVector_AllocCopy"), _Tidy @ 0x00471A4F (catalog
 // "CActiveFile::OnReadFinished", propagated), copy @ 0x004719CE (catalog "VectorInsert_CopyAnimations"; range end in edx),
 // _Destroy_range @ 0x00454404 (__fastcall, iterator tag by reference), CAnimationEntry::CAnimationEntry(const CAnimationEntry&) @ 0x00471954.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CAnimationEntry { public:
@@ -12,15 +13,15 @@ class CAnimationEntry { public:
 };
 struct SPair {
     unsigned long first; CAnimationEntry second;
-    __forceinline SPair(const SPair& other) : first(other.first), second(other.second) {}
+    FABLE_FORCEINLINE SPair(const SPair& other) : first(other.first), second(other.second) {}
 };
 struct STag { };
 inline void* operator new(unsigned int, void* p) throw() { return p; }
 SPair* __fastcall CopyRange(SPair* first, SPair* last, SPair* dest, const STag& tag);   // 0x004719CE
 struct SAlloc { SAlloc() {} };
 void __fastcall DestroyRange(SPair* first, SPair* last, const SAlloc& alloc);        // 0x00454404
-__forceinline void Construct(SPair* p, const SPair& value) { new ((void*)p) SPair(value); }
-__forceinline SPair* UninitCopy(SPair* first, SPair* last, SPair* dest)
+FABLE_FORCEINLINE void Construct(SPair* p, const SPair& value) { new ((void*)p) SPair(value); }
+FABLE_FORCEINLINE SPair* UninitCopy(SPair* first, SPair* last, SPair* dest)
 {
     SPair* ptr = dest;
     for (; first != last; ++first, ++ptr)

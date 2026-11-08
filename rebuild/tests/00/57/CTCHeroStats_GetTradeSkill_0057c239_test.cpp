@@ -1,6 +1,7 @@
 // Behaviour test for 0057c239: src/0057c239.cpp copied verbatim; the presence bitset, the interface map, the experience
 // component and the definition manager stubbed so the in-range level, the clamp to the last entry, the empty table and
 // the missing component are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -43,7 +44,7 @@ class CThing { public:
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) const { return m_present.test(wanted); }
-    template<class T> __forceinline T* GetTC(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) const
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;

@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FE780, length 64 bytes.
 // Leaf: ??_GCGameCameraBase@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x01264A8C) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CList_0048ca60 {                            // a 4-byte list (one sentinel pointer)
     void* m_pNode;
@@ -15,7 +16,7 @@ class CAIGameCameraBase { public:                         // vtable 0x0125C1F4
 struct CGameCameraBase : CAIGameCameraBase {              // vtable 0x01264A8C
     CList_0048ca60 m_lista8;                       // +0xa8
     CList_0048ca60 m_listac;                       // +0xac
-    __forceinline virtual ~CGameCameraBase() { }
+    FABLE_FORCEINLINE virtual ~CGameCameraBase() { }
 };
 
 void* MakeOne_006fe780()                                 // forces the vtable (and so the scalar deleting destructor) into the object; not part of the retail body

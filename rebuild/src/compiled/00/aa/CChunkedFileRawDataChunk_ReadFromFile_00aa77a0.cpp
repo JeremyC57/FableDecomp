@@ -9,6 +9,7 @@
 // (`rep movsd ; rep movsb`) with the chunk pointer / remaining count / position updates, or the overflow read.
 // `this` uses engine/CChunkedFileRawDataChunk.h (Data +0x10, ByteSize +0x14); the method (virtual in retail, the
 // flattened header carries no vtable declarations) is declared on a methods-only derivation of it.
+#include "fable_compiler.h"
 #include "engine/CChunkedFileRawDataChunk.h"
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
@@ -25,8 +26,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;

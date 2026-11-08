@@ -14,6 +14,7 @@
 // Shape: the GetInterface out-parameter idiom with one ternary entry pick; each flag is ONE `&&`/`||` expression assigned to the member
 //   (retail's `mov eax,1 / xor eax,eax` then `mov [ebp+0xc],al`; if-statements or inline bool helpers add a frame byte and `mov al,1`);
 //   the creature is re-read in each call argument; the hero thing is a named local (ebx) set by an if/else.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -23,7 +24,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

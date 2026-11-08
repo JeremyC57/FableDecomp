@@ -1,5 +1,6 @@
 // Behaviour test for 008803e0: src/008803e0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCPhysicsBase::HasSphereSphereCollidedAt(const CTCPhysicsBase* other, const C3DVector& pos, CPhysicsCollideResponse* response) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -25,7 +26,7 @@ class C3DVector { public:
     float Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

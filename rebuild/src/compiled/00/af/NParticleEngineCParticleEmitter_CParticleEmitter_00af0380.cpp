@@ -9,10 +9,11 @@
 //   flag words +0x40 / +0x42 and bytes +0x44 / +0x45, OldPos +0x46, Velocity +0x52, OrientationInterpolator +0x60 (vtable
 //   0x01239824), PositionInterpolator +0x94 (vtable 0x0123981C), Transform +0xb0, InverseTransform +0xe0, EndTransform
 //   +0x110, Name +0x140, BSphere +0x144, distances +0x154..+0x168. The emitter's own vtable is 0x0129F348.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Translation;
-    __forceinline void SetIdentity()
+    FABLE_FORCEINLINE void SetIdentity()
     {
         Right.Y = Right.Z = Up.X = Up.Z = Forward.X = Forward.Y = Translation.X = Translation.Y = Translation.Z = 0.0f;
         Right.X = Up.Y = Forward.Z = 1.0f;

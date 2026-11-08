@@ -13,6 +13,7 @@
 // {vptr, long 0, CIntelligentPointer<CThing> Chest}: its base CEventBase zeroes the long in an inline ctor with no vtable of its own.
 // Shape: IS_THING_ALIVE on PChest; every component is a zero-preloaded `if (HasTC) GetTC` (the three `xor reg,reg`); the `new` null
 // test selects 0 for AddEvent and the two AddEvent calls are not merged (the landed CCreatureAction_ShowItemToThing 0x00845270 shape).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
@@ -23,7 +24,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

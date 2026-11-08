@@ -7,6 +7,7 @@
 //   and the sound player is fetched with GetInterface (not HasTC + FindTC): VC7.1 then loads the component into ecx before the
 //   BowDrawbackSoundID test as retail; the CVectorMap LowerBound instantiation is defined in this TU (noinline).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00789FF0, 449 bytes (+ int3 padding), `ret`.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,11 +22,11 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                         // +0x91 bit 0: dead
     void Kill(bool immediately);                     // 0x004C9B80
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -36,7 +37,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

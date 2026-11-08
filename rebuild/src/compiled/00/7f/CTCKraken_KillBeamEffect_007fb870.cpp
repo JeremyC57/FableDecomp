@@ -14,6 +14,7 @@
 // Shape: the sibling of StartBeamEffect 0x007FB6A0: KillBeamCounter = 5 comes BEFORE the def pointer / effect type
 // declarations (their zero stores follow it; VC also hoists one effect-type zero above the counter test), the effect thing is
 // tested raw (`fade && !fade->IsDead()`) and not kept.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
@@ -95,7 +96,7 @@ public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -1,4 +1,5 @@
 // 0082d3b0 behaviour test: CThingBuilding::PeekPCameraManagerSetDefinition
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __declspec(x)
@@ -112,7 +113,7 @@ class CThingBuilding { public:
     unsigned short DefGlobalIndex;                   // +0x8c
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
     CWorld* GetWorld() const;                       // 0x004C7AB0
-    __forceinline const CThingBuildingDef* PeekPDef() const
+    FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
     {
         CDefPointer<CThingBuildingDef> def;
         GetDefinitionManager()->GetDef(DefGlobalIndex, &def);

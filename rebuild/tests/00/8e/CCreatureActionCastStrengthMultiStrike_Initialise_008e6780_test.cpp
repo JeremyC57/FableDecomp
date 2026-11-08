@@ -16,6 +16,7 @@
 //   pointer after the length, so the first pointer is copied eax->esi and `it = last` reuses esi), then insert(pair(this, 1.75f)) with the pair and the hidden result in the
 //   frame, the recalculation and the animation name (implicit conversions of the literals, so the strings are
 //   re-addressed with `lea`).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCParamsBase;
 class CCharString { public:
@@ -31,12 +32,12 @@ class CThing { public:
     SInterfaceEntry* m_interfacesLast;                // +0x48
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline bool LacksTC(long type) const
+    FABLE_FORCEINLINE bool LacksTC(long type) const
     {
         if (HasTC(type)) return false;
         return true;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         int len = int(m_interfacesLast - m_interfacesFirst);
         SInterfaceEntry* it = m_interfacesFirst;

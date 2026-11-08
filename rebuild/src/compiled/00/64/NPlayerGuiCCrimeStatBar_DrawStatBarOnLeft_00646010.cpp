@@ -11,6 +11,7 @@
 //   CPlayerGui::Draw2DText 0x00438010 (Ego_r).  Float pool: 0.5f @ 0x0122F59C.
 // Layout: as the sibling CStatBar::DrawStatBarOnLeft 0x00646762 TU (retail = Ego_r.pdb CStatBar minus 8); CCrimeStatBar adds the
 //   text-colour flag at +0x68 and its def the text colour at +0x424.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // the engine's inline-assembly FPU floor helper (standalone copy GFFloatToLongFloor 0x0048D940; same block as the landed
@@ -25,7 +26,7 @@ class C2DVector { public:
 class CRGBColour { public:                                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour() {}
-    __forceinline CRGBColour(const CRGBColour& other) { G = other.G; R = other.R; B = other.B; A = other.A; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { G = other.G; R = other.R; B = other.B; A = other.A; }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 class CWideString {

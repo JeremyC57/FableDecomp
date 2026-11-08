@@ -12,6 +12,7 @@
 // Model: STLport 4.x `__introsort_loop` (`__stl_threshold` 16: for 8-byte elements the size test is the byte distance
 //   masked with ~7 against 0x80); the pivot is built in the by-value argument area with pair's member-wise copy constructor.
 // Shape: size TU with a frame pointer (`optimize("y", off)` + `("s", on)`); __median stays out of line.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -23,7 +24,7 @@ namespace std {
 template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
-    __forceinline pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
+    FABLE_FORCEINLINE pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
 };
 }
 
@@ -39,10 +40,10 @@ RandomAccessIter __fastcall __unguarded_partition(RandomAccessIter first, Random
 template <class RandomAccessIter, class T, class Compare>
 void __fastcall __partial_sort(RandomAccessIter first, RandomAccessIter middle, RandomAccessIter last, T*, Compare comp); // 0x00470FA5
 
-template <class T> __forceinline T* __value_type(const T*) { return (T*)0; }   // _STLP_VALUE_TYPE for pointers
+template <class T> FABLE_FORCEINLINE T* __value_type(const T*) { return (T*)0; }   // _STLP_VALUE_TYPE for pointers
 
 template <class RandomAccessIter, class Compare>
-__forceinline void partial_sort(RandomAccessIter first, RandomAccessIter middle, RandomAccessIter last, Compare comp)
+FABLE_FORCEINLINE void partial_sort(RandomAccessIter first, RandomAccessIter middle, RandomAccessIter last, Compare comp)
 {
     __partial_sort(first, middle, last, __value_type(first), comp);
 }

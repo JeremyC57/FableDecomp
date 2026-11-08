@@ -10,9 +10,10 @@
 //   `cdq ; sub eax,edx ; sar 1`. The comparator's real body above the caller keeps val's payload test in registers
 //   (see 0x005E0650).
 // Label: catalogued as Dinkumware `_Push_heap<CCharString*,int,CCharString>`; the code is STLport `__push_heap`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

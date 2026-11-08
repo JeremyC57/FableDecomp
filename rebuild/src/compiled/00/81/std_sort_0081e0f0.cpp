@@ -14,6 +14,7 @@
 //   FinalInsertionSort_SElement12_0081d400; both out of line).
 // Shape: STLport 4.6 `sort(first, last, comp)` (the model of the landed 0x00470CF1, here under the TU's /O2): the inline
 //   `__lg` count loop, the pushed 0 value-type pointer, the comparator slot reloaded once into ebx for both calls.
+#include "fable_compiler.h"
 class CDefString {                                          // 4 bytes, an index into the def string table
 public:
     long TablePos;                                          // +0x0
@@ -42,7 +43,7 @@ public:
 };
 
 namespace std {
-template <class _Size> __forceinline _Size __lg(_Size __n)
+template <class _Size> FABLE_FORCEINLINE _Size __lg(_Size __n)
 {
     _Size __k;
     for (__k = 0; __n != 1; __n >>= 1)
@@ -50,7 +51,7 @@ template <class _Size> __forceinline _Size __lg(_Size __n)
     return __k;
 }
 
-template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }   // _STLP_VALUE_TYPE for pointers
+template <class _Tp> FABLE_FORCEINLINE _Tp* __value_type(const _Tp*) { return (_Tp*)0; }   // _STLP_VALUE_TYPE for pointers
 
 template <class _RandomAccessIter, class _Tp, class _Size, class _Compare>
 void __fastcall __introsort_loop(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Size __depth_limit,

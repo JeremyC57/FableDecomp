@@ -10,6 +10,7 @@
 // Layout (PDB CModeBlock 0x20): CModeBase 0x1c (ParentThing +0x04), PCreature +0x1c. Creature: state byte +0x10.
 // Shape: the landed CCreatureAction_BlockBase::Initialise 0x00855430 sound block (string temporary first, the play-parameter
 // block assigned in its ctor body) inside the GetInterface test, after the suspend test.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -68,7 +69,7 @@ class CThingCreatureBase : public CThingAnimatable { public:
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

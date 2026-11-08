@@ -4,6 +4,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #define CIVCountedPointeeBase CIVCountedPointeeBaseLayout
 #include "engine/CIVCountedPointeeBase.h"
@@ -62,7 +63,7 @@ public:const C3DVector&GetPos()const;
         if(bits[(unsigned)type>>5]&(1UL<<((unsigned)type&31)))return true;
         return false;
     }
-    __forceinline CTCBase&GetTC(ETCInterfaceType type) {
+    FABLE_FORCEINLINE CTCBase&GetTC(ETCInterfaceType type) {
         ETCInterfaceType key=type;
         CVectorMap<ETCInterfaceType,CTCBase*>&map=*reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>*>(reinterpret_cast<CThingLayout*>(this)->Components);
         std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);

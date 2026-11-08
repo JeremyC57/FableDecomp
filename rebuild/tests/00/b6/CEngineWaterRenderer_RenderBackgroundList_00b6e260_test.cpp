@@ -1,5 +1,6 @@
 // Behaviour test for 00b6e260 CEngineWaterRenderer::RenderBackgroundList: final.cpp body verbatim; the occlusion manager
 // and RenderBackgroundPatch are stubs that record calls, boxes and query ids.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -35,7 +36,7 @@ public:
     long RenderOcclusionBox(const CMatrix3x4& box);     // 0x00B8D420
     void BeginQuery();                             // 0x00B8D090
     void EndQuery(long id);                        // 0x00B8D0A0
-    __forceinline long AllocateQuery()
+    FABLE_FORCEINLINE long AllocateQuery()
     {
         if (QueryCount < 0x2000) {
             unsigned long id = QueryCount;

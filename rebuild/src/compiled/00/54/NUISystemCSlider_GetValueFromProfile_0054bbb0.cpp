@@ -6,6 +6,7 @@
 //   MeshDetail 0x0054A590 (ShadowDetail inline), maxima 0x00408550 (shadow) / 0x00408500 (texture) / 0x004085A0 (mesh) / 0x004084B0 (effects);
 //   ChangePositionDelta (slot 32, +0x80), STLport map<unsigned long, CUIState>::operator[] 0x0042D5B1. Pool 0.0f 0x0122DEDC.
 // Model: the landed CSlider::Update 0x0054BA20 and AdjustValueToProfile 0x0054A6F0.
+#include "fable_compiler.h"
 #include <math.h>
 class C2DVector { public:
     float X, Y;
@@ -81,7 +82,7 @@ static inline float SliderPixels(float value, float minimum, float dimension, fl
     float offset = (value - minimum) * dimension;
     return offset / range;
 }
-__forceinline void CSlider::SetThumbToValue()
+FABLE_FORCEINLINE void CSlider::SetThumbToValue()
 {
     C2DVector delta;
     float rangeX = Max.X - Min.X;

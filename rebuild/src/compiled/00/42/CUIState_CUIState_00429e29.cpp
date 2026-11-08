@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CUIState::CUIState(const CUIState& other) -- copy constructor: the change flag/type, position and zoom words, the colour through CRGBColour's component-wise copy, the update time and the linear-change flag
@@ -12,8 +13,8 @@
 class C2DVector { public: float X, Y; };
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
 };
 struct CUIState {
     unsigned long StateChangeFlag;                 // +0x00

@@ -17,12 +17,13 @@
 //   it share the name's frame word; DecRefToZero gives the short release. The PushSpecialCameraMode prelude (the constant 1 kept in bl for the two flag stores and the dead-bit test); the
 //   sound name in its own block; the mode def pointer shares the name's frame word, is passed by value (copy built in the
 //   argument slot, add-ref through a null test) and released at the end through the held register (`dec [edi+4] ; jne`).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCameraModeDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1

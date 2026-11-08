@@ -12,6 +12,7 @@
 // LastBattleCryFrame +0x20. CThing interface bits at +0x20, the interface CVectorMap at +0x44, Dead = +0x91 bit 0.
 // Shape: `if (GetInterface(&talk, 0xF) && talk->IsTalking()) return;` (esi pushed only inside the interface branch); the reset
 // assigns a temporary CIntelligentPointer<CThingCreatureBase>(0).
+#include "fable_compiler.h"
 struct TSpeechGroupInfo {                   // CombatDialogueManager::TSpeechGroupInfo, Ego_r.pdb 4 bytes
     long NextAllowedFrame;                  // +0x00
 };
@@ -58,7 +59,7 @@ public:
     CInterfaceMap  m_interfaces;            // +0x44
     unsigned char  _pad54[0x3d];
     unsigned char  Dead : 1;                // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -71,7 +72,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

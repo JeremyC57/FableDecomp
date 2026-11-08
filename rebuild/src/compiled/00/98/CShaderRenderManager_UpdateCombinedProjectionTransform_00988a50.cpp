@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <xmmintrin.h>
 
 typedef unsigned char fable_u8;
@@ -34,7 +35,7 @@ __declspec(align(16)) struct CMatrix4x4ProjectionView
     float m[4][4];
 };
 
-static __forceinline void MultiplyPretransposed(
+static FABLE_FORCEINLINE void MultiplyPretransposed(
     CMatrix4x4ProjectionView& output,
     const CMatrix4x4ProjectionView& left,
     const CMatrix4x4ProjectionView& right)

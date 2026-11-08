@@ -1,5 +1,6 @@
 // Behaviour test for 0089bdf0: src/0089bdf0.cpp copied verbatim, the script thing, physics and components stubbed so the
 // early exits, the look direction and the immediate turn are observable. CGameScriptInterface::EntitySetFacingAngle
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -53,7 +54,7 @@ struct CThing_Retail {
     unsigned char         _pad4c[0x14];
     CThingPhysics_Retail* m_pPhysics;               // +0x60
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap_Retail* map = &m_interfaces;

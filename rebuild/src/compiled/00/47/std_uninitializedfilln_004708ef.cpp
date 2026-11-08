@@ -10,6 +10,7 @@
 //   _Construct inlined: `for (; n > 0; --n, ++cur) new (&*cur) T(x)` -- the placement-new null test, then pair's
 //   member-wise copy constructor (three dword moves through esi). Exceptions off (no unwind frame).
 // Shape: size TU (#pragma optimize("s", on)), no frame pointer; the unsigned `n > 0` test is the `jbe`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -25,16 +26,16 @@ struct __false_type { };
 template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
-    __forceinline pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
+    FABLE_FORCEINLINE pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
 };
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value)
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)

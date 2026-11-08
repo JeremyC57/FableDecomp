@@ -2,6 +2,7 @@
 // Retail 0x00861D00,252 bytes. Actual generated header supplies all six pointer pairs.
 // PDB CModeBase::Active is +0x18, in flattened inherited padding. CCPPointerInfo is refs0/callback4/data8.
 // Callback ABI is native fastcall: ecx=data, no stack argument. Scalar block delete is 0x00BFE9BC.
+#include "fable_compiler.h"
 #include "engine/CModeStandBase.h"
 #ifndef _MSC_VER
 #define __fastcall
@@ -13,7 +14,7 @@ FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,DeleteFunc)==4);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,Data)==8);
 void operator delete(void*) throw(); // 0x00BFE9BC
 struct CModeStandBaseNative : CModeStandBase {
-    __forceinline void Reset(CAnimEntryLite*& data,CCPPointerInfo*& info) {
+    FABLE_FORCEINLINE void Reset(CAnimEntryLite*& data,CCPPointerInfo*& info) {
         if(info) {
             --info->RefCount;
             if(info->RefCount==0) {

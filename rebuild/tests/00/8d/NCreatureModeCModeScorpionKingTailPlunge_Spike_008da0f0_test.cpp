@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NCreatureMode::CModeScorpionKingTailPlunge::Spike() -- the tail plunge lands: create the spike thing at the target position for the scorpion's player, trigger its type-0x7D component, and spawn the def's spike special effect there
@@ -136,20 +137,20 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char  _pad74[0x90 - 0x74];
     signed char    Player;                      // +0x90
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* component = 0;
         if (HasTC(interfaceType))

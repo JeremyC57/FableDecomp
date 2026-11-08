@@ -16,6 +16,7 @@
 // Shape: `(float)CMainGameComponent::GetConstantFPS()` written at each use keeps one fild and two `fdiv` (a float local turns them into a
 // reciprocal multiply); the two time tests as one `!(a < x) && !(b < y)` guard on `return true` give retail's `jnp fail`
 // with the success path falling through (two `if (a < x) return false;` invert the first branch).
+#include "fable_compiler.h"
 struct TSpeechGroupInfo {                   // CombatDialogueManager::TSpeechGroupInfo, Ego_r.pdb 4 bytes
     long NextAllowedFrame;                  // +0x00
 };
@@ -71,7 +72,7 @@ public:
     CInterfaceMap  m_interfaces;            // +0x44
     unsigned char  _pad4c[0x91 - 0x4c];
     unsigned char  Dead : 1;                // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -84,7 +85,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

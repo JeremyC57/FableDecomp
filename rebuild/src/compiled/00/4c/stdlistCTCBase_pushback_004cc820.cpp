@@ -7,6 +7,7 @@
 // Callees: malloc @ 0x00BFEA0E.
 // Shape: STLport 4.x `push_back(x) { insert(end(), x); }` with insert and `_M_create_node` inlined (as 0x004C0050): the
 // sentinel loaded into esi first, the placement copy null-tested, prev re-read after the allocation.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
@@ -22,28 +23,28 @@ struct _List_node_base {
 template <class T> struct _List_node : _List_node_base {
     T _M_data;
 };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class T> struct allocator {
-    __forceinline T* allocate(unsigned int n) { return static_cast<T*>(malloc(n * sizeof(T))); }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return static_cast<T*>(malloc(n * sizeof(T))); }
 };
 template <class T> struct _List_iterator {
     _List_node_base* _M_node;
-    __forceinline _List_iterator(_List_node_base* x) : _M_node(x) {}
-    __forceinline _List_iterator(const _List_iterator& x) : _M_node(x._M_node) {}
+    FABLE_FORCEINLINE _List_iterator(_List_node_base* x) : _M_node(x) {}
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& x) : _M_node(x._M_node) {}
 };
 template <class T> class list {
 public:
     typedef _List_node<T> _Node;
     typedef _List_iterator<T> iterator;
     struct : allocator<_Node> { _List_node_base* _M_data; } _M_node;   // _STLP_alloc_proxy: the sentinel
-    __forceinline iterator end() { return iterator(_M_node._M_data); }
-    __forceinline _Node* _M_create_node(const T& x)
+    FABLE_FORCEINLINE iterator end() { return iterator(_M_node._M_data); }
+    FABLE_FORCEINLINE _Node* _M_create_node(const T& x)
     {
         _Node* p = _M_node.allocate(1);
         _Construct(&p->_M_data, x);
         return p;
     }
-    __forceinline iterator insert(iterator position, const T& x)
+    FABLE_FORCEINLINE iterator insert(iterator position, const T& x)
     {
         _Node* tmp = _M_create_node(x);
         _List_node_base* n = position._M_node;

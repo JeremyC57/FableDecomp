@@ -12,6 +12,7 @@
 // brain's creature at +0x18; the threat's flag byte at +0x6c (bit 3) and dead bit at +0x91 (retail CThing).
 // Shape: the found flag of the inlined navigation lookup is written through the bool that MoveToPos later fills (one
 // frame byte); the 2D personal-space test compares a named distance against a named squared radius.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 
@@ -37,7 +38,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline void GetInterfaceR(T** ppOut, long interfaceType, bool& has)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceR(T** ppOut, long interfaceType, bool& has)
     {
         has = TestTC(interfaceType);
         if (has) {
@@ -49,7 +50,7 @@ class CThing { public:
             *ppOut = (T*)it->second;
         }
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -74,7 +75,7 @@ class CBaseObject;
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

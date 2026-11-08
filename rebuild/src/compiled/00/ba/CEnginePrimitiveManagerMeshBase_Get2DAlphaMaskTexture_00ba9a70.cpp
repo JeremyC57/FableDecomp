@@ -15,6 +15,7 @@
 //   BuildHWStipplePatterns 0x00B3C4B0 pins HWInverseStipplePatterns at +0x2AB4; the mask's "blank" is the all-ones texture).
 // Shape: as the Reflection differ (STLport-style vector member for the double size computation; `flags = 0; if (BlockOnLoad ||
 //   force) flags = 0x11;`), the frame body inlined per row because its frame-less result differs between the four siblings.
+#include "fable_compiler.h"
 class CTexture;
 enum ETextureType { TEXTURE_TYPE_0 = 0 };
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
@@ -35,7 +36,7 @@ public:
 private:
     void ListInsert(CResource*a0, CResource*a1); // 0x009FBF90
 public:
-    __forceinline void Touch();
+    FABLE_FORCEINLINE void Touch();
 };
 class CResourceList { public:                                 // Ego_r.pdb, 0x3C bytes
     unsigned long _pad00;
@@ -45,7 +46,7 @@ class CResourceList { public:                                 // Ego_r.pdb, 0x3C
     long          MaximumMemory;                       // +0x28
     unsigned long CurrentFrame;                        // +0x2c
 };
-__forceinline void CResource::Touch()
+FABLE_FORCEINLINE void CResource::Touch()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();
@@ -62,7 +63,7 @@ struct CCPInfo {
 struct CTexturePointer {                               // CCountedPointer<CTexture>
     CTexture* Data;
     CCPInfo* Info;
-    __forceinline ~CTexturePointer()
+    FABLE_FORCEINLINE ~CTexturePointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -87,8 +88,8 @@ class CGraphicFrameData { public:                             // Ego_r.pdb, 27 b
     unsigned char   IsInitialised : 1;
     unsigned char   ScreenGraphic : 1;
     void Uninitialise();                               // 0x009FCBA0
-    __forceinline ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
-    __forceinline void DecRef()
+    FABLE_FORCEINLINE ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
+    FABLE_FORCEINLINE void DecRef()
     {
         if (--ReferenceCount == 0) {
             this->~CGraphicFrameData();
@@ -98,7 +99,7 @@ class CGraphicFrameData { public:                             // Ego_r.pdb, 27 b
 };
 class CGraphicFrame { public:                                 // intrusive pointer to CGraphicFrameData
     CGraphicFrameData* FrameData;
-    __forceinline CGraphicFrame& operator=(const CGraphicFrame& other)
+    FABLE_FORCEINLINE CGraphicFrame& operator=(const CGraphicFrame& other)
     {
         if (FrameData)
             FrameData->DecRef();
@@ -111,7 +112,7 @@ class CGraphicFrame { public:                                 // intrusive point
 class CManagedTexture { public:                               // Ego_r.pdb, 8 bytes
     unsigned long _pad00;
     CResource*    Data;                                // +0x04 CIVCountedPointer<CManagedTextureData>
-    __forceinline void Touch() { if (Data) Data->Touch(); }
+    FABLE_FORCEINLINE void Touch() { if (Data) Data->Touch(); }
 };
 class CGraphicInfoFrame;
 class CGraphicDataBank { public:
@@ -120,7 +121,7 @@ class CGraphicDataBank { public:
 };
 template <class T> struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
     T* P;
-    __forceinline CFrameDataPointer& operator=(T* p)
+    FABLE_FORCEINLINE CFrameDataPointer& operator=(T* p)
     {
         if (P) {
             P->DecRef();
@@ -142,7 +143,7 @@ class CGraphicInfoFrame { public: class CFrameData; public:                     
 private:
     bool InternalGetFrameForcedLoading(unsigned long flags) const;   // 0x009FF6B0 (Ego_r.pdb ?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z, private)   // 0x009FF6B0
 public:
-    __forceinline const CTexture* GetTexture(unsigned long mipmapLevel, unsigned long flags);   // per-row inline body (the frame-less result differs between the four siblings)
+    FABLE_FORCEINLINE const CTexture* GetTexture(unsigned long mipmapLevel, unsigned long flags);   // per-row inline body (the frame-less result differs between the four siblings)
     const CTexture* GetBlankTexture() const;                      // 0x009FD3F0 ?GetBlankTexture@CGraphicInfoFrame@@QBEPBVCTexture@@XZ
 };
 class CGraphicInfoFrame::CFrameData : public CResource { public:                        // Ego_r.pdb, 0x44 bytes
@@ -157,7 +158,7 @@ class CGraphicInfoFrame::CFrameData : public CResource { public:                
     CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
     CFrameData(const CGraphicInfoFrame* frame);              // 0x009FE380
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FDE80
-    __forceinline void DecRef() { if (--RefCount == 0) Release(); }
+    FABLE_FORCEINLINE void DecRef() { if (--RefCount == 0) Release(); }
 };   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
 typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
 
@@ -171,16 +172,16 @@ class CGraphicInfo { public:                                  // Ego_r.pdb, 0x2c
 };
 template<class T> struct SVector {                  // STLport std::vector<T> (start, finish, end of storage)
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
-    __forceinline unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    __forceinline const T& operator[](unsigned long n) const { return *(_M_start + n); }
+    FABLE_FORCEINLINE unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
+    FABLE_FORCEINLINE const T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
 class CGraphicDataBankFull : public CGraphicDataBank { public:   // the bank's graphic list (std::vector<CGraphicInfo>) and blank textures
     unsigned char      _pad01[0x1e0 - 0x198];
     SVector<CGraphicInfo> GraphicList;                 // +0x1e0
     unsigned char      _pad02[0x2b4 - 0x1ec];
     const CTexture* GetBlankTexture(ETextureType type) const;   // 0x009FD150 ?GetBlankTexture@CGraphicDataBank@@QBEPBVCTexture@@W4ETextureType@1@@Z
-    __forceinline unsigned long GetNoGraphics() const { return GraphicList.size(); }
-    __forceinline const CGraphicInfo* GetGraphicInfo(unsigned long index) const { return index < GraphicList.size() ? &GraphicList[index] : 0; }
+    FABLE_FORCEINLINE unsigned long GetNoGraphics() const { return GraphicList.size(); }
+    FABLE_FORCEINLINE const CGraphicInfo* GetGraphicInfo(unsigned long index) const { return index < GraphicList.size() ? &GraphicList[index] : 0; }
 };
 class C3DMeshMaterial { public:                              // Ego_r.pdb, 0x30 bytes
     void*          __vftable;
@@ -207,7 +208,7 @@ struct CEnginePrimitiveManagerMeshBase {
     static const CTexture* __fastcall Get2DAlphaMaskTexture(unsigned long bankIndex, unsigned long mipmap, bool& preloading, const CGraphicDataBank* bank, bool force);
 };
 
-__forceinline const CTexture* CGraphicInfoFrame::GetTexture(unsigned long mipmapLevel, unsigned long flags)
+FABLE_FORCEINLINE const CTexture* CGraphicInfoFrame::GetTexture(unsigned long mipmapLevel, unsigned long flags)
 {
     if (Data) {
         if (Data->Frame.FrameData) {

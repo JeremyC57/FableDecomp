@@ -9,6 +9,7 @@
 // because the loop compared against the template's by-value `last` copy. A hand-written loop CSEs the two
 // loads and frees ecx (5 bytes shorter). Local layout model
 // (retail CCombatActionBase is 0x114 bytes, the PDB build's 0x12c).
+#include "fable_compiler.h"
 struct CStrikeEvent {
     unsigned char _pad[0x10];
     long EndFrame;                              // +0x10
@@ -43,7 +44,7 @@ struct CIsStrikeEventActiveAfterFrame {         // find_if predicate: the event 
 };
 
 template<class Iterator, class Predicate>       // std::find_if, inlined: `last` is a by-value copy, so the
-__forceinline Iterator find_if(Iterator first, Iterator last, Predicate pred)   // caller's end() is re-read after the loop
+FABLE_FORCEINLINE Iterator find_if(Iterator first, Iterator last, Predicate pred)   // caller's end() is re-read after the loop
 {
     for (; first != last; ++first) {
         if (pred(*first))

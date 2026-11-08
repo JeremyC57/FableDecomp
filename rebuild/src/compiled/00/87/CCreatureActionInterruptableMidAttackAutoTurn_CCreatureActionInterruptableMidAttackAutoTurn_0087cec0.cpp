@@ -14,6 +14,7 @@
 // Shape: the def goes through the inline protected CCombatActionBase::SetPMeleeAbility(CDefPointer<...>) (PDB: by value), which is
 //   retail's copy / assign / release sequence.
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -157,7 +158,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -169,7 +170,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

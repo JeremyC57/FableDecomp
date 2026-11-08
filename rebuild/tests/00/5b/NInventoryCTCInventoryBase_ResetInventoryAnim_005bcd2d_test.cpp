@@ -1,5 +1,6 @@
 // Behaviour test for 005bcd2d: src/005bcd2d.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. NInventory::CTCInventoryBase::ResetInventoryAnim(long defIndex)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -49,7 +50,7 @@ class CTCInventoryBase { public:
     unsigned char _pad_0x114[0x124 - 0x114];
     long InventoryAnimThingDefIndex;               // +0x124
     long RHSetInvItemDefIndex;                     // +0x128
-    __forceinline void ResetRHSets(const CRightHandedSet& start)
+    FABLE_FORCEINLINE void ResetRHSets(const CRightHandedSet& start)
     {
         InventoryAnimLastRHSet = start;
         InventoryAnimCurrentRHSet = start;

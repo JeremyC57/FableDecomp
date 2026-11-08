@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -25,8 +26,8 @@ class CMemoryDataInputStream { public:
         for (long i = 0; i < size; ++i) buffer[i] = (unsigned char)(0xA0 + i);
         position += size;
     }
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -85,7 +86,7 @@ template <> struct CPersistTraits<CWeaponTrailGraphicSet> {
         stream.Read(&out->Knockdown, 4);
     }
 };
-__forceinline void ReadCount(CMemoryDataInputStream& stream, LONG32* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStream& stream, LONG32* out)
 {
     LONG32 value;
     stream.Read(&value, sizeof(value));

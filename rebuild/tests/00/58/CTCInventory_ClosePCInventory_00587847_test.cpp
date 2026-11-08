@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CTCInventory::ClosePCInventory(bool closeInGameMenu) -- leave the PC inventory screens: cancel the pending UI action,
@@ -43,7 +44,7 @@ public:
     CPresenceBits present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool HasTC(long type) { return present.test(type); }
+    FABLE_FORCEINLINE bool HasTC(long type) { return present.test(type); }
     // Inline component find (lower bound + not-found -> end), the shape of a fully-inlined GetTC: with its result unused
     // VC7.1 deletes the search but keeps the thing pointer it loaded for it (`mov eax,[edi+4]` / `lea ecx,[eax+20h]`).
     CTCBase* FindTCInline(long type)
@@ -57,7 +58,7 @@ public:
         if (it == m_interfaces.last || type < it->type) it = m_interfaces.last;
         return it->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
@@ -68,7 +69,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

@@ -10,6 +10,7 @@
 //   bumped by the pair's explicit copy ctor), the implicit pair operator= runs the inline CIVCountedPointer::operator=
 //   twice (self test, release + zero store, adopt + count bump), then tmp's destructor releases without a zero store.
 // Label correction: catalogued as `swap<CAnimationEntry>` (propagated); the element is the 8-byte anim-component pair.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -25,7 +26,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

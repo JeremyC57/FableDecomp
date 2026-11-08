@@ -17,6 +17,7 @@
 //   out-of-line call, kept so by `#pragma inline_depth(0)` regions.
 // Naming wave 35: identity reg 00d6f929 "HTG_FreedomFighter" in 00d6f4b0; Alloc 00d700e0; vtable 012d278c slot 1; PDB ?Main@CHTG_FreedomFighter@CQ_HangingTreeGoodScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHTG_FreedomFighter::Main (wave3/labels_alloc.tsv); PDB ?Main@CHTG_FreedomFighter@CQ_HangingTreeGoodScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHTG_FreedomFighter@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
@@ -27,7 +28,7 @@ struct CCountedPointer {                                // CCountedPointer<CScri
  CCountBlock* Info;
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
  CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
- __forceinline ~CCountedPointer()
+ FABLE_FORCEINLINE ~CCountedPointer()
  {
   if (Info) {
    --Info->References;
@@ -53,7 +54,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- __forceinline ~CScriptThing() { }                      // out of line 0x004AA840
+ FABLE_FORCEINLINE ~CScriptThing() { }                      // out of line 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -61,7 +62,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive();
 };

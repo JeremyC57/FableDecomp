@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -74,7 +75,7 @@ public:
     unsigned char unobservedThingState[sizeof(CThingLayout)-sizeof(CClass)];
     bool IsDead()const{return (reinterpret_cast<const CThingLayout*>(this)->CreatedBySerialisation[0]&1)!=0;}
     void Kill(bool);
-    template<class T>__forceinline bool GetTC(T**out) {
+    template<class T>FABLE_FORCEINLINE bool GetTC(T**out) {
         const unsigned long*bits=reinterpret_cast<const unsigned long*>(reinterpret_cast<const CThingLayout*>(this)->UsingComponents);
         if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))) {
             ETCInterfaceType type=T::StatGetInterfaceType();
@@ -136,7 +137,7 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {publi
     T*operator->()const{return Get();}
 };
 #pragma pack(pop)
-template<class T>__forceinline bool __fastcall IS_THING_ALIVE(const T&p){return p.Get()!=0&&!p.Get()->IsDead();}
+template<class T>FABLE_FORCEINLINE bool __fastcall IS_THING_ALIVE(const T&p){return p.Get()!=0&&!p.Get()->IsDead();}
 namespace NHitLocations {class CHitLocation {public:void SetEnabled(bool);};}
 class CTCHitLocations:public CTCBase {public:
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x7f;}

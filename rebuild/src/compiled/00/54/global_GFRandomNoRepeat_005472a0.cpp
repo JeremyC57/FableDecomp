@@ -10,11 +10,12 @@
 //   `while (range > 1 && result == previous)` with the attempt count initialised before it: the loop-invariant
 //   `range > 1` is tested once at the entry and the result lives in ebx, previous in the frame slot. The `if (range > 1)
 //   { while (result == previous) ... }` form keeps the first result in eax and previous in ebx (145v134).
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall OutputDebugStringW(const unsigned short* text);   // KERNEL32 import (IAT 0x0143FE14); WCHAR is unsigned short (no /Zc:wchar_t)
 
 long __fastcall GFROR13(unsigned long);       // 0x00497890 (rotate right by 13)
 
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

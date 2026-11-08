@@ -8,6 +8,7 @@
 // Model: STLport 4.6 `_M_insert` verbatim (the y == header / w == 0 / x != 0 / key-compare chain), less<CCharString> and
 //   CCharString's operator< inlined; the iterator (user copy constructor) is returned through the hidden pointer.
 // Shape: size TU (#pragma optimize("s", on)); the compare's body is visible to the TU as in retail.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 // CBasicString<char>'s character compare @ 0x00411570 (landed body), visible to this TU as in retail's header so VC knows it
@@ -32,7 +33,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570
 
 struct CBasicStringChar {                           // CBasicString<char> (PDB 13 bytes; only the text pointer is read here)
     char* PData;                                    // +0x00
-    __forceinline bool operator<(const CBasicStringChar& other) const { return Compare_00411570(PData, other.PData) < 0; }
+    FABLE_FORCEINLINE bool operator<(const CBasicStringChar& other) const { return Compare_00411570(PData, other.PData) < 0; }
 };
 class CCharStringData { public:                            // the shared string block (PDB 17 bytes: Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                          // +0x00
@@ -40,7 +41,7 @@ class CCharStringData { public:                            // the shared string 
 class CCharString {
 public:
     CCharStringData* PStringData;                   // +0x00
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -54,7 +55,7 @@ public:
 
 namespace std {
 template <class T> struct less {
-    __forceinline bool operator()(const T& a, const T& b) const { return a < b; }
+    FABLE_FORCEINLINE bool operator()(const T& a, const T& b) const { return a < b; }
 };
 template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
@@ -87,10 +88,10 @@ public:
     _Rb_tree_node_base* _M_header;                  // +0x00
     unsigned int        _M_node_count;              // +0x04
     Compare             _M_key_compare;             // +0x08
-    __forceinline _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
-    __forceinline _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
-    __forceinline _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
-    static __forceinline const Key& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
+    FABLE_FORCEINLINE _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
+    FABLE_FORCEINLINE _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
+    FABLE_FORCEINLINE _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
+    static FABLE_FORCEINLINE const Key& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
 protected:
     _Link_type _M_create_node(const Value& x);     // 0x0046ECE7
 private:

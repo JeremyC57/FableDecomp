@@ -18,6 +18,7 @@
 //   accessor (its GetPItem runs before the &def push) and the item goes to PutThingInCarrySlot through the inline
 //   conversion operator (its GetPItem runs before the other pushes). LowerBound / GetSubDef are same-TU noinline bodies so
 //   the key and def words are not escaped; the def release folds its null test (DecRefToZero, landed 0x00848500 form).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CCharString { public:
@@ -25,7 +26,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -98,15 +99,15 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     CPlayer& GetPlayer();                             // 0x004C7A30
     CDefClassBase* GetDef() const { return m_pDef; }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -18,6 +18,7 @@
 // Shape: ParentThing is a named local only for the TC lookup and the forward; the target alive test is an inline helper (one
 //   GetTarget call); the divisor is a second `(float)AimingNumFrames` (CSE temp + named local = retail's two float slots; one
 //   named local lets VC7.1 reassociate the division).
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 extern "C" double __cdecl acos(double);
 #pragma intrinsic(sqrt, acos)
@@ -78,13 +79,13 @@ class CThing { public:
     CTCGraphicAppearance* Graphic;                      // +0x64
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  m_flags91;                           // +0x91 bit 0: dead
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

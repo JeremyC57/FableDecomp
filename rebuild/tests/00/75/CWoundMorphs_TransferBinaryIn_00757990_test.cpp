@@ -1,5 +1,6 @@
 // Behaviour test for retail 0x00757990: candidate source embedded verbatim, then a working memory stream, a vector
 // resize, the map sort, and a main that reads a two-entry block through the fast path and the overflow path.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -33,8 +34,8 @@ class CMemoryDataInputStream { public:
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

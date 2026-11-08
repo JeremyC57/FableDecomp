@@ -26,6 +26,7 @@
 //   getter for the reaction manager (eax, then `mov ecx, eax` after the push); the advice chance is written
 //   `def->Probability > GFFloatRandom(..)` (def loaded into edi before the seed call); the advice pick is the engine's
 //   inline LCG (`seed*0x24A1 + 0x24DF`, GFROR13, `% 4`).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -40,7 +41,7 @@ extern CCharString g_CourtingAdviceGroupNames[4];           // 0x013BAB30
 
 long __fastcall GFROR13(unsigned long value);      // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

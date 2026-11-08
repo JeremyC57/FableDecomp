@@ -1,5 +1,6 @@
 // Behaviour test for 008b74d0: src/008b74d0.cpp copied verbatim; GetSubDef, CalcAndLookup, the animation/base
 // Initialise, GetPItem, GetPosition and the special-effect Create are stubs that record their calls.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -25,7 +26,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -90,7 +91,7 @@ class CThing { public:
             it = map->last;
         return it->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -122,7 +123,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     void Initialise();                                // 0x00857520
 };
 struct SEffectsOut { CSpecialEffectsDef* Object; };
-__forceinline bool GetSubDefRaw(CDefClassBase* def, SEffectsOut* out, CSpecialEffectsDef*& result)
+FABLE_FORCEINLINE bool GetSubDefRaw(CDefClassBase* def, SEffectsOut* out, CSpecialEffectsDef*& result)
 {
     bool found = def->GetSubDef((CDefPointer<CSpecialEffectsDef>*)out);
     result = out->Object;

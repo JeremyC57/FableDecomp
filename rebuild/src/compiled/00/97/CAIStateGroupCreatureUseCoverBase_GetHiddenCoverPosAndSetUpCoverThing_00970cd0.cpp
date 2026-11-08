@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0x00970CD0,277 bytes. Uses shared UseCoverBase, Base and Brain storage. Inherited enemy handle+0x14 is opaque in the generated group header.
 // CThing retail component map+0x44 differs from donor+0x48; narrow retail shell preserves audited fields. Brain dispatch slot2 is retained through a methods-only view of the shared header's vtable prefix.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
@@ -28,7 +29,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CThingRetail {
  unsigned char inherited[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char beforeDeath[0x91-0x4c];unsigned char deathFlags;
- __forceinline bool GetOccupiable(CTCOccupiableMethods** out) {
+ FABLE_FORCEINLINE bool GetOccupiable(CTCOccupiableMethods** out) {
   if(UsingComponents[5]&0x1000) {
    ETCInterfaceType key = (ETCInterfaceType)(172);CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(key);
    if(it==map->last || 172<it->first)it=map->last;
@@ -37,9 +38,9 @@ struct CThingRetail {
  }
 };
 struct UseCoverMethods : CAIStateGroup_CreatureUseCoverBase {
- __forceinline CIntelligentPointerRetail& Enemy(){return *(CIntelligentPointerRetail*)_pad_0x14;}
- __forceinline CIntelligentPointerRetail& Cover(){return *(CIntelligentPointerRetail*)PCoverThing;}
- __forceinline CIntelligentVector& Candidates(){return *(CIntelligentVector*)CoverList;}
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Enemy(){return *(CIntelligentPointerRetail*)_pad_0x14;}
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Cover(){return *(CIntelligentPointerRetail*)PCoverThing;}
+ FABLE_FORCEINLINE CIntelligentVector& Candidates(){return *(CIntelligentVector*)CoverList;}
  bool GetHiddenCoverPos(C3DVector&,CThingRetail*); //00970930
  void ClearCover(); //00970B60
  bool GetHiddenCoverPosAndSetUpCoverThing(C3DVector&);

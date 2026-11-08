@@ -10,6 +10,7 @@
 // slot), then the base call with chunkSize - (GetPosition() - start) -- the stream model of the landed 0x00AA5370.
 // Layout: retail C3DMeshFileChunk base is 0x2c bytes (PDB header 0x34); Position +0x2c, SubMeshIndex +0x38,
 // BoneIndex +0x3c, Name +0x40 (same model as the landed ctor 0x00AA9B20), so the engine header is not used.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -30,8 +31,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -45,8 +46,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

@@ -1,5 +1,6 @@
 // Behaviour test of std::__partial_sort(CCharString* first, CCharString* middle, CCharString* last, CCharString*, less<CCharString> comp) (retail 0x005E2EB0)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -9,7 +10,7 @@
 
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

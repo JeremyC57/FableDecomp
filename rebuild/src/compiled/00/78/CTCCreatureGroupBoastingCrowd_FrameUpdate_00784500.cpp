@@ -17,6 +17,7 @@
 //   0x007841C0) must be `__forceinline` to be inlined into the guard chain; the source clearing is a while loop (rotated:
 //   pre-test, `dec ; test ; jg`) whose manager is a named loop local (edi pushed around the loop only);
 //   `HeroMadeGoodBoast ? 7 : 8` gives `neg ; sbb ; add 8`.
+#include "fable_compiler.h"
 #include "engine/CThing.h"
 class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* source, bool immediately);   // 0x007008C0
@@ -69,7 +70,7 @@ class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
     long FrameToClearRemainingOpinionSources;   // +0x40
     long FrameToLeavePostBoastState;            // +0x44
     void EnterCrowdState(long state);           // 0x00784260
-    __forceinline bool CurrentStateIsOffPodiumType()
+    FABLE_FORCEINLINE bool CurrentStateIsOffPodiumType()
     {
         long state = CrowdState;
         return state == 0 || state == 1 || state == 7 || state == 8 || state == 9 || state == 10;

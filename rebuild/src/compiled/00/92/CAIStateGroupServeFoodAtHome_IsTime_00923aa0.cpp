@@ -2,6 +2,7 @@
 // Leaf: ?IsTime@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own RTTI0128cefc IsTime slot14 and PDB signature; TC35 CTCVillageMember GetPVillage007ee540.00658bb9 is IsEatTime: CVillageDef EatStartTimes retail132/EatDuration144 (donor152/168 reduced by five/four-byte vector changes), not catalog IsCookTime.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 #include "engine/CAIBrain.h"
 #define CTCVillage CTCVillage_HeaderLayout
@@ -22,7 +23,7 @@ enum ETCInterfaceType{TC_VILLAGE_MEMBER=35};
 template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef const value_type* const_iterator;CArray<value_type> Data;Cmp Compare;bool Dirty;__declspec(noinline) const_iterator LowerBound(const K& key)const{const_iterator first=Data.begin();long count=Data.end()-first;while(count>0){long half=count/2;const_iterator middle=first+half;if(middle->first<key){first=middle+1;count-=half+1;}else count=half;}return first;}V Get(const K key)const{const_iterator p=LowerBound(key);const_iterator last=Data.end();return (p==last || key<p->first?last:p)->second;}};
 // Layout: no active CThing header. Original UsingComponents+32 and Components+68; actual const LowerBound overload004365b0.
-class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>__forceinline bool GetTC(T** out)const{if(!(UsingComponents[1]&8))return false;*out=(T*)Components.Get(TC_VILLAGE_MEMBER);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
+class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>FABLE_FORCEINLINE bool GetTC(T** out)const{if(!(UsingComponents[1]&8))return false;*out=(T*)Components.Get(TC_VILLAGE_MEMBER);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
 class CTCVillage:public CTCVillage_HeaderLayout{public:bool IsEatTime()const;};class CTCVillageMember:public CTCBase{public:CTCVillage* GetPVillage()const;};
 // Layout: genuine state-group polymorphism replaces flat header vptr; PBrain+4. Other inherited owner fields are unused.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

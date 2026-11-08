@@ -14,6 +14,7 @@
 //   element, the fill and the tail, and the trivial-destructor `_M_clear` free.
 // Model: Ego_r.pdb CDateAndTime (Year, Month, Day, Hour, Minute, Second, Millisecond; 28 bytes) with its declared
 //   default constructor 0x009E9AB0 and the implicit copy, as the landed 0x0048608C; STLport's three vector words.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -42,7 +43,7 @@ template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __va
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last,
                                                                   _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -52,7 +53,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
                                                                     const __false_type&)
 {
     _ForwardIter __cur = __first;

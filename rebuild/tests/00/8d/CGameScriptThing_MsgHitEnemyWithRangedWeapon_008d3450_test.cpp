@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -387,8 +388,8 @@ struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThrea
 struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct QuestManagerNative{unsigned char State[0x88];ActiveQuest* PQuestCurrentlyRunning;};
 extern QuestManagerNative* QuestManager; //013B89FC
-__forceinline long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
-__forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 // Native event vtable 01272390: slot0 deleting destructor 00811D10; slot1 GetType 00811D00 returns29.
 // PDB event layout WorldFrame+4; PThingHit+8; HitEnemy+10h; UsedMeleeWeapon+11h.
 // Real event virtual order: destructor, GetType, OnAdd, GetLifeTime, IsReadyToDie.

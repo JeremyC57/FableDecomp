@@ -1,4 +1,5 @@
 // CTCInventory::SetEditBoxValues() -- fills every scoreboard edit box from the user profile (login, password, proxy ip, proxy and server ports) and refreshes it
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -22,7 +23,7 @@ public:
     CCharStringData* PStringData;
     ~CCharString();                                   // 0x0099EAE0
     CWideString ToWideString() const;                 // 0x0099E480
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -54,9 +55,9 @@ class CUserProfileManager { public:                          // retail offsets (
     static CUserProfileManager& __fastcall Get();     // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     void Save();                                      // 0x0040A740
     void Apply();                                     // 0x0040BC80
-    __forceinline CWideString GetScoreBoardUserName() const { return ScoreBoardUserName; }
-    __forceinline CWideString GetScoreBoardPassword() const { return ScoreBoardPassword; }
-    __forceinline CWideString GetScoreBoardProxyIp() const { return ScoreBoardProxyIp; }
+    FABLE_FORCEINLINE CWideString GetScoreBoardUserName() const { return ScoreBoardUserName; }
+    FABLE_FORCEINLINE CWideString GetScoreBoardPassword() const { return ScoreBoardPassword; }
+    FABLE_FORCEINLINE CWideString GetScoreBoardProxyIp() const { return ScoreBoardProxyIp; }
     long GetScoreBoardProxyPort() const { return ScoreBoardProxyPort; }
     long GetScoreBoardServerPort() const { return ScoreBoardServerPort; }
 };

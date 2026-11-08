@@ -8,9 +8,10 @@
 //   if (_M_key_compare(__k, _S_key(__x))) __y = __x, __x = _S_left(__x); else __x = _S_right(__x); return __y;` -- k's data
 //   pointer loaded once (edi) -- VC7.1 hoists it only when it can see that CBasicString<char>::operator< writes no memory,
 //   so that callee's body is compiled in this TU (noinline, as the landed _M_find 0x00756350 of the same family); speed TU.
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

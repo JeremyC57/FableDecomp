@@ -1,5 +1,6 @@
 // Behaviour test for 0x005CC530 (source body copied from src/005cc530.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -36,7 +37,7 @@ static unsigned long long ra_tsc = 1000000;
 // Body: float scale = 1.0f; for (long n = places; n; --n) scale *= 10.0f; return (float)Round(value * scale) / scale;
 //   the scale lives in st(0) through the loop with `fst [esp]` copies on both paths; the division reads the frame copy.
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)

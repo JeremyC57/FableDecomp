@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __cdecl
@@ -9,7 +10,7 @@
 #include <cstdlib>
 extern long g_FramesPerSecond;                      // 0x01375550
 
-template <class T> __forceinline void GFLimitHigh(T& value, const T& hi)
+template <class T> FABLE_FORCEINLINE void GFLimitHigh(T& value, const T& hi)
 {
     if (value > hi)
         value = hi;
@@ -28,7 +29,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

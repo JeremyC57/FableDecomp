@@ -12,9 +12,10 @@
 //   frame word (pushed uninitialised: `less` needs a user-written empty constructor, else `less<T>()` stores a zero
 //   byte into it), and the element count computed for __lg is reused for the threshold test.
 // Label correction: catalogued as `CCharStringPair_SortedRange`; the body is STLport `sort(first, last)`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

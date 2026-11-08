@@ -14,6 +14,7 @@
 //          CThing interface bitset +0x20, map +0x44, the def class +0x70 (descriptive).
 // Shape: both interface lookups are the out-pointer GetInterface without a test, its entry pick a ternary (component lands in ecx); the
 //          squared distance is summed Z, X, Y; the def pointer's dtor releases with `dec [ebp+4]`.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -65,7 +66,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x1c];
     CDefClassBase* PDef;                        // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -11,6 +11,7 @@
 //   middle, comp);` -- the signed key test reuses the loaded key for the by-value copy built in the argument area; the
 //   loop re-reads `last` from its argument slot.
 // Label correction: catalogued as `STL_HeapSortPhase`; the body is STLport `__partial_sort`.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -26,7 +27,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

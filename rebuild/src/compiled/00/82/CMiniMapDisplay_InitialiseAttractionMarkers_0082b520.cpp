@@ -9,6 +9,7 @@
 //   IsAttractedToHero 0x006CFE80, PeekGuiDef 0x00438570, CMiniMapDisplay::AddMarker 0x0082A500.
 // Shape: the InitialiseTraderMarkers model (0x0082AE80): right-operand-first `current == region(...)`, the inline long map-index
 //   getter, the if / else-if marker calls tail-merged by VC7.1 into one AddMarker call.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -26,7 +27,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -2,6 +2,7 @@
 // Leaf: ?OnHitAtPos@CTCRockTrollShield@@QAEXPAVCThing@@ABVC3DVector@@1JAA_N@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags:
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"
@@ -45,11 +46,11 @@
 extern unsigned long GFastOneOverSqrtTable[128];
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
-__forceinline float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
 class C3DVector{public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}
-__forceinline const C3DVector&operator*=(float scale){X*=scale;Y*=scale;Z*=scale;return *this;}
-__forceinline C3DVector&Normalise(){float factor=GFFastOneOverSqrt(X*X+Y*Y+Z*Z);X*=factor;Y*=factor;Z*=factor;return *this;}
-__forceinline const float Dot(const C3DVector&b)const{float r=Y*b.Y;r+=Z*b.Z;r+=X*b.X;return r;}
+FABLE_FORCEINLINE const C3DVector&operator*=(float scale){X*=scale;Y*=scale;Z*=scale;return *this;}
+FABLE_FORCEINLINE C3DVector&Normalise(){float factor=GFFastOneOverSqrt(X*X+Y*Y+Z*Z);X*=factor;Y*=factor;Z*=factor;return *this;}
+FABLE_FORCEINLINE const float Dot(const C3DVector&b)const{float r=Y*b.Y;r+=Z*b.Z;r+=X*b.X;return r;}
 };class CRightHandedSet{protected:C3DVector Up,Forward;};
 class CCRC{public:static unsigned long __fastcall Calc(unsigned long,const void*,unsigned long);};
 template<class T>class CBasicString{protected:T*PData;unsigned long StringLength;public:const T*PeekData()const{return PData;}unsigned long GetLength()const{return StringLength;}};

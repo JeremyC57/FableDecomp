@@ -14,6 +14,7 @@
 // release `if (start) free(start)`, and the def release `if (p) { p->Release(); p = 0; }` (all `__forceinline`).
 // Leaf: ??1CTCHeroCentre
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CThing;
@@ -38,7 +39,7 @@ struct CRetailVector {                             // STLport vector: start, fin
     T* m_pStart;
     T* m_pFinish;
     T* m_pEndOfStorage;
-    __forceinline ~CRetailVector()
+    FABLE_FORCEINLINE ~CRetailVector()
     {
         DestroyRange(m_pStart, m_pFinish);
         if (m_pStart)
@@ -51,7 +52,7 @@ struct CRetailVector<C3DVector> {
     C3DVector* m_pStart;
     C3DVector* m_pFinish;
     C3DVector* m_pEndOfStorage;
-    __forceinline ~CRetailVector()
+    FABLE_FORCEINLINE ~CRetailVector()
     {
         if (m_pStart)
             free(m_pStart);
@@ -72,7 +73,7 @@ public:
 
 struct CDefPointer {                               // CDefPointer<const CHeroCentreDef>
     CHeroCentreDef* m_pDef;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (m_pDef) {
             m_pDef->Release();

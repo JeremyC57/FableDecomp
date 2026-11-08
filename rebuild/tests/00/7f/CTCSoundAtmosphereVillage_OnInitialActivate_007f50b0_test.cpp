@@ -1,4 +1,5 @@
 // Behaviour test for 007f50b0: body copied from src/007f50b0.cpp (CTCSoundAtmosphereVillage::vfunc_6 = OnInitialActivate), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -91,7 +92,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -113,7 +114,7 @@ struct CTCSoundAtmosphere {
 struct CTCSoundAtmosphereVillage : CTCSoundAtmosphere {
     long NumLivingSpaces;
     long NumVillageMembers;
-    __forceinline CTCVillage* GetVillage()
+    FABLE_FORCEINLINE CTCVillage* GetVillage()
     {
         CTCVillage* village;
         if (ParentThing->HasTC(0x22))

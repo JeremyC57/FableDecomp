@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -818,7 +819,7 @@ struct CEnvironmentSpellEffectInterfaceMethods{void SetBypassScreenFilter(const 
 // Donor environment SpellEffectInterface+1A8C differs from retail+1964. Native projection preserves pointer alignment on host.
 struct EnvironmentNative{unsigned char WeatherAndThemes[0x1964];CEnvironmentSpellEffectInterfaceMethods* SpellEffectInterface;};
 struct CarryingMethods:CTCBase{void SetAllCarriedThingsAsBypassFilter(void*);}; //006A2520, type70
-__forceinline CarryingMethods* GetCarrying(CThingNative* thing){CarryingMethods* result;if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(70);ComponentEntry* end=map->Finish;result=static_cast<CarryingMethods*>((it==end||it->Type>70?end:it)->Component);}return result;}
+FABLE_FORCEINLINE CarryingMethods* GetCarrying(CThingNative* thing){CarryingMethods* result;if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(70);ComponentEntry* end=map->Finish;result=static_cast<CarryingMethods*>((it==end||it->Type>70?end:it)->Component);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetThingAndCarriedItemsNotAffectedByScreenFilter(ScriptMethods&,void*)const;};
 void CGameScriptInterfaceMethods::SetThingAndCarriedItemsNotAffectedByScreenFilter(ScriptMethods& script,void* bypass)const{
  CThingNative* thing=script.GetPThing();PointerVector things;things.PushBack(IntelligentPointer(thing));reinterpret_cast<EnvironmentNative*>(World->PEnvironment_ptr)->SpellEffectInterface->SetBypassScreenFilter(things,bypass);

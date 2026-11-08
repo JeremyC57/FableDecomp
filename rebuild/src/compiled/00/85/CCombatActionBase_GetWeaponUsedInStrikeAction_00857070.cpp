@@ -11,6 +11,7 @@
 // Also: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 on the event's PWeapon (+0x14, Ego_r.pdb); the dead bit is
 // +0x91 & 1 of the thing (the IS_THING_DEAD test of the landed 0x00836BE0).
 // Shape: nested ifs, one `xor eax,eax` null tail shared by the three failing paths, the live weapon returned in eax.
+#include "fable_compiler.h"
 #include "engine/CThing.h"
 
 class CBaseObject;
@@ -69,7 +70,7 @@ class CCombatActionBase { public:
     unsigned char _pad20[0xbc - 0x20];          // +0x20
     CStrikeEventList StrikeEvents;              // +0xbc
     unsigned char _padc4[0x114 - 0xc4];         // +0xc4
-    __forceinline CStrikeEvent* GetPActiveStrikeEvent() const     // inlined helper: the for_each result is a temporary read through its returned pointer
+    FABLE_FORCEINLINE CStrikeEvent* GetPActiveStrikeEvent() const     // inlined helper: the for_each result is a temporary read through its returned pointer
     {
         return for_each(StrikeEvents.begin(), StrikeEvents.end(),
                         CGetActiveStrikeEventThatIsFirstToFinish(FramesRunning)).m_pFirstToFinish;

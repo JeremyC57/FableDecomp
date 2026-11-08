@@ -11,6 +11,7 @@
 //   by-value helper (the CurrentLine copy is built before the hidden-result address, then destroyed right after the call);
 //   the guess goes through a forced-inline SetGuessLine(const CCharString&) so the command-text temporary outlives the
 //   named CConsoleCommandLine (destroyed text, ~CBase, then the temporary) while the ctor still takes the returned pointer.
+#include "fable_compiler.h"
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
 
 class CCharStringData { public:
@@ -70,7 +71,7 @@ class CConsole { public:
     bool GuessMode;                                         // +0x65
     SCommandNode* GuessIterator;                            // +0x68
     void SetGuessMode();
-    __forceinline void SetGuessLine(const CCharString& text)
+    FABLE_FORCEINLINE void SetGuessLine(const CCharString& text)
     {
         CConsoleCommandLine guess(text);
         GuessLine = guess;

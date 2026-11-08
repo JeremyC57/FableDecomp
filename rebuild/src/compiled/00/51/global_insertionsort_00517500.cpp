@@ -14,6 +14,7 @@
 //   itself (`lea ecx,[esp+20h]`); with only a declaration it makes a 1-byte copy into a frame temporary and calls on
 //   that (`sub esp,8`, 125 v 113 bytes).
 // Label: catalog "InsertionSortWithComparator" (propagated); STLport spelling __insertion_sort.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);
 
 struct CRefCounted {                           // reference count base at +4 of a def (landed 0x00512410 model)
@@ -27,11 +28,11 @@ struct CBuildingSimDefinition {
     CRefCounted Ref;                           // +0x04
     unsigned char _pad08[0x44 - 0x08];
     long HouseSize;                            // +0x44
-    __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
 class CThingBuilding {

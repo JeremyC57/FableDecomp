@@ -10,6 +10,7 @@
 //   (void*)&vector` (unsigned `ja`), byte count Size() * sizeof; with both accessors __forceinline (the size TU
 //   otherwise keeps data() out of line) the second Size() is computed once and shared.
 //   Size-optimised TU: #pragma optimize("s", on) (`push 0Eh ; pop ecx`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CDataOutputStream { public:
@@ -36,8 +37,8 @@ template<class T> class CArray { public:   // STLport vector, 12 bytes in retail
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    __forceinline const T* data() const { return size() > 0 ? _M_start : (const T*)this; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    FABLE_FORCEINLINE const T* data() const { return size() > 0 ? _M_start : (const T*)this; }
 };
 
 namespace NGraphicAppearance {

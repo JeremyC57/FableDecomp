@@ -12,6 +12,7 @@
 //   plain template VC7.1 calls it out of line, `__cdecl`, `add esp,10h`); the threshold test is
 //   the byte form `and eax,-4 ; cmp eax,40h`. /Gr algorithm TU (`__fastcall` template: first in ecx, last in edx, the
 //   value-type tag, the depth limit and the empty 4-byte comparator on the stack).
+#include "fable_compiler.h"
 enum ENavigatorType { NAVIGATOR_TYPE_0 };                  // 4-byte enum (signed compares)
 
 namespace std {
@@ -57,7 +58,7 @@ inline void iter_swap(_ForwardIter1 __a, _ForwardIter2 __b)
 }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline _RandomAccessIter __unguarded_partition(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __pivot, _Compare __comp)
+FABLE_FORCEINLINE _RandomAccessIter __unguarded_partition(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __pivot, _Compare __comp)
 {
     for (;;) {
         while (__comp(*__first, __pivot))

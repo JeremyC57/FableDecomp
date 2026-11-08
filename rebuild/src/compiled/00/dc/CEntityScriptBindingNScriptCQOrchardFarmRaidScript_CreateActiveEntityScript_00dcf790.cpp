@@ -1,6 +1,7 @@
 // 00dcf790 CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::CreateActiveEntityScript
 // Flags: none
 // Leaf: ?CreateActiveEntityScript@CEntityScriptBinding
+#include "fable_compiler.h"
 #include <new>
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
@@ -14,7 +15,7 @@ struct CCPPointerInfo { unsigned RefCount; void (__fastcall *DeleteFunc)(void*);
 template<class T> struct CCountedPointer {
  T* Data; CCPPointerInfo* Info;
  CCountedPointer(T* p);
- __forceinline CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info) {if(Info) ++Info->RefCount;}
+ FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info) {if(Info) ++Info->RefCount;}
  __declspec(noinline) ~CCountedPointer() {if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}} Data=0;Info=0;}
  void ShareData(T*,CCPPointerInfo*);
 };
@@ -36,8 +37,8 @@ typedef NScript::CQ_OrchardFarmRaidScript ParentScript;
 struct CActiveEntityScript: CActiveEntityScriptBase {
  void* Func; ParentScript* PParentScript;
  virtual ~CActiveEntityScript();
- __forceinline CActiveEntityScript(CScriptThing* entity,unsigned lo,unsigned hi,unsigned flags,ParentScript* script,void* fn):CActiveEntityScriptBase(entity,lo,hi,flags),Func(fn),PParentScript(script) {}
- __forceinline CActiveEntityScript(CScriptThing* entity,unsigned lo,unsigned hi,unsigned flags,ParentScript* script,const CCountedPointer<CEntityScriptBase>& object):CActiveEntityScriptBase(entity,lo,hi,flags),PParentScript(script) {PEntityScript.ShareData(object.Data,object.Info);}
+ FABLE_FORCEINLINE CActiveEntityScript(CScriptThing* entity,unsigned lo,unsigned hi,unsigned flags,ParentScript* script,void* fn):CActiveEntityScriptBase(entity,lo,hi,flags),Func(fn),PParentScript(script) {}
+ FABLE_FORCEINLINE CActiveEntityScript(CScriptThing* entity,unsigned lo,unsigned hi,unsigned flags,ParentScript* script,const CCountedPointer<CEntityScriptBase>& object):CActiveEntityScriptBase(entity,lo,hi,flags),PParentScript(script) {PEntityScript.ShareData(object.Data,object.Info);}
 };
 struct CEntityScriptBinding {
  void* VTable; void* EntityScriptName; ParentScript* PParentScript; void* Func;

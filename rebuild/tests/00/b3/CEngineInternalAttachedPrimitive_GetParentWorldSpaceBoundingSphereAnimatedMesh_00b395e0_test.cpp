@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -231,7 +232,7 @@ class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):
 class C3DBoundingSphere { public:C3DVector Center;float Radius;C3DVector GetPos()const{return C3DVector(Center.X,Center.Y,Center.Z);}void SetPos(const C3DVector& p){Center=p;}};
 struct MeshInfoMethods:C3DMeshInfo {C3DBoundingSphere GetBoundingSphere()const{return *reinterpret_cast<const C3DBoundingSphere*>(BoundingSphere);}};
 class CMatrix3x4 { public:C3DVector X,Y,Z,Pos;
- __forceinline void Transform(C3DVector& v)const{float x=v.X,y=v.Y,z=v.Z;v.X=X.X*x+Y.X*y+Z.X*z+Pos.X;v.Y=X.Y*x+Y.Y*y+Z.Y*z+Pos.Y;v.Z=X.Z*x+Y.Z*y+Z.Z*z+Pos.Z;}
+ FABLE_FORCEINLINE void Transform(C3DVector& v)const{float x=v.X,y=v.Y,z=v.Z;v.X=X.X*x+Y.X*y+Z.X*z+Pos.X;v.Y=X.Y*x+Y.Y*y+Z.Y*z+Pos.Y;v.Z=X.Z*x+Y.Z*y+Z.Z*z+Pos.Z;}
 };
 struct MeshMethods;
 #pragma pointers_to_members(full_generality,single_inheritance)

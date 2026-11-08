@@ -2,20 +2,21 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B29680, length 84 bytes.
 // Leaf: DeleteAll
 // Callees: memmove @ 0x00BFEAE6. The chunk label (CMeshDataBank::FreeDeviceSpecificResources) is propagated; named by address. Shape: `this` in esi, the index in edi, `ret`.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int size);
 
 template<class T> struct CRetailVector {           // VC6-era Dinkumware vector: first / last / end
     T* m_first;
     T* m_last;
     T* m_end;
-    __forceinline T* Copy(T* first, T* last, T* dest)   // the POD `copy` of the erase: a memmove of the tail
+    FABLE_FORCEINLINE T* Copy(T* first, T* last, T* dest)   // the POD `copy` of the erase: a memmove of the tail
     {
         if (first == last)
             return dest;
         long bytes = (char*)last - (char*)first;
         return (T*)((char*)memmove(dest, first, bytes) + bytes);
     }
-    __forceinline void erase(T* first, T* last)
+    FABLE_FORCEINLINE void erase(T* first, T* last)
     {
         T* kept = Copy(last, m_last, first);
         m_last = kept;

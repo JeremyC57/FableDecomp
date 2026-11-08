@@ -8,6 +8,7 @@
 //   `push 0`), free 0x00BFEA14.
 // Shape (family K108, representative 0x004AC940): the landed vector<CIntelligentPointer<CThingMarker> >::_M_insert_overflow
 //   0x007B6EF0 verbatim with this pointee (same-TU noinline copy/fill helpers, __forceinline pointer copy ctor, inline _M_clear).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 
@@ -27,7 +28,7 @@ public:
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0125A858 for CThingObject
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 namespace std {

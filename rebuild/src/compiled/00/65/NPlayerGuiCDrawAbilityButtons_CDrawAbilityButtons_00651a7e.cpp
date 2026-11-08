@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // NPlayerGui::CDrawAbilityButtons::CDrawAbilityButtons(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, list), own vtable, three columns, two empty primitive handles, empty special-handle and effect vectors, then one effect slot per ability-button effect in the GUI def
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00651A7E, length 134 bytes.
@@ -39,12 +40,12 @@ class CIVCountedPointeeBase;
 
 struct CIVCountedPointer {                         // embedded member with an inline constructor: its zero store follows the
     CIVCountedPointeeBase* Object;                 // handle's vtable store
-    __forceinline CIVCountedPointer() : Object(0) { }
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4 (PDB: CIVCountedPointer<CEnginePersistentPrimitiveBase>)
-    __forceinline CEnginePrimitiveHandle() { }
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }
 };
 
 namespace NPlayerGui {

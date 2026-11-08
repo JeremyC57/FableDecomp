@@ -15,6 +15,7 @@
 //   226 v 225, `__x_copy` gets a `push ecx` frame word). VC7.1 also uses the clobber set of those compiled bodies: the
 //   `__uninitialized_copy` stand-in counts down in edx so edx is not assumed to survive the call -- retail re-reads
 //   `old_finish - n` and `old_finish` from their slots after it (a `first != last` stand-in keeps them in edx: 222 v 225).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -51,14 +52,14 @@ EHeroAbility* __fastcall uninitialized_fill_n(EHeroAbility* __first, unsigned in
 }
 #pragma auto_inline(on)
 
-__forceinline EHeroAbility* __copy_backward_ptrs(EHeroAbility* __first, EHeroAbility* __last, EHeroAbility* __result,
+FABLE_FORCEINLINE EHeroAbility* __copy_backward_ptrs(EHeroAbility* __first, EHeroAbility* __last, EHeroAbility* __result,
                                                  const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

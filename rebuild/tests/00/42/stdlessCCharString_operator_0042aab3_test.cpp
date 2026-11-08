@@ -1,4 +1,5 @@
 // test for 0042aab3 less<CCharString>
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 template <class C> class CBasicString {
@@ -8,7 +9,7 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

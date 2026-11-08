@@ -2,6 +2,7 @@
 // Retail 0x00A8EDA0, 165 bytes. operator new 0x00BFEA1A; CBase ctor 0x0099A2F0;
 // CVertexBufferWin32 Initialise 0x00A63150, vtable 0x0129BA20. Model reuses landed ctor 0x00A8E160.
 // Flags bit 0 selects 24-byte vertices/pool 2, otherwise 8-byte vertices/pool 1; count is at least one.
+#include "fable_compiler.h"
 struct CBase {
     virtual void VSlot0(unsigned long flags);
     ~CBase(); // 0x0099A300
@@ -32,7 +33,7 @@ struct CVertexBufferBase : CBase {              // 0x34 bytes, PDB member names
 struct CVertexBufferWin32_Retail : CVertexBufferBase {
 
     virtual void VSlot1();
-    __forceinline CVertexBufferWin32_Retail() : CVertexBufferBase() { PVertexBuffer = 0; Stride = 0; }
+    FABLE_FORCEINLINE CVertexBufferWin32_Retail() : CVertexBufferBase() { PVertexBuffer = 0; Stride = 0; }
     CVertexBufferWin32_Retail(long type, long a, long b, unsigned long c, long pool);
     bool Initialise(long type, long a, long b, unsigned long c, long pool);   // 0x00A63150
 };

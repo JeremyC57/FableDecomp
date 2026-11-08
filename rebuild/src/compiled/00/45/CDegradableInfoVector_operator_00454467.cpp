@@ -12,6 +12,7 @@
 // trivial destructor), else copies size() elements and placement-copies the rest through
 // `__uninitialized_copy` (hence the null test). The helpers must be __forceinline: the size-optimised
 // TU otherwise emits them out of line.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <new>
 
@@ -35,7 +36,7 @@ class CDegradableInfo { public:                       // PDB: 28 bytes, a POD bl
 struct random_access_iterator_tag {};
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                                  _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -47,7 +48,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
 {
     _ForwardIter __cur = __result;
     for ( ; __first != __last; ++__first, ++__cur)

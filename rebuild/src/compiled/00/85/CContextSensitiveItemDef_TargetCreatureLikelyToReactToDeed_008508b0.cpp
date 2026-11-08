@@ -7,6 +7,7 @@
 // Layout: CContextSensitiveItemDef ExtraData2 +0x38 (Ego_r.pdb = retail); CThing interface bitset +0x20, map +0x44.
 // Shape: the const interface lookups use a same-TU const LowerBound stand-in (0x004365B0, the landed 0x008330D0 idiom);
 //   the hero's deed def is a by-value CDefPointer, a conditionally constructed temporary inside the final test.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -63,7 +64,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
-    template <class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

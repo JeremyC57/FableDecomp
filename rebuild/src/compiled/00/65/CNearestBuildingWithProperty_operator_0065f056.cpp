@@ -10,13 +10,14 @@
 //   NearestBuilding +0x10, BestDistanceSquared +0x14; the sim def's property bits at +0x3c, its reference count at +4.
 // Shape: the vector helpers are __forceinline (the TU is /Os); the def pointer is a scoped CDefPointer local (inline release at the end, skipped when null); the squared distance
 //   is a named float (`fst` into the frame) compared only when a building is already held (`test ah,5 ; jp`: strictly nearer).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C3DVector { public:
     float X, Y, Z;
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
+    FABLE_FORCEINLINE C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
 };
 struct CRefCounted {                               // reference count base at +4 of a def
     long Count;

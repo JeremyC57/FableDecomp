@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void*__cdecl malloc(size_t);extern "C" void __cdecl free(void*);
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -21,7 +22,7 @@ class COpinionSet{protected:CArray<float>OpinionValues;public:float&operator[](l
 enum EOpinion{};enum ETCInterfaceType{};class CTCBase;
 #include "engine/CVectorMap.h"
 // Layout: shared flattened CThing fields; the original const PeekTC template reads native bitset20 and map44.
-class CThing:public CThingFields{public:template<class T>__forceinline bool PeekTC(T**out)const{ETCInterfaceType type=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;const CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<const CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);const std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=reinterpret_cast<T*>(i->second);return true;}return false;}};
+class CThing:public CThingFields{public:template<class T>FABLE_FORCEINLINE bool PeekTC(T**out)const{ETCInterfaceType type=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;const CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<const CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);const std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=reinterpret_cast<T*>(i->second);return true;}return false;}};
 class CThingPlayerCreature;
 class CPlayer:public CPlayerFields{public:const CThingPlayerCreature*PeekPControlledCreature()const;};
 class CWorld:public CWorldFields{public:const CPlayer*PeekMyPlayer()const;};

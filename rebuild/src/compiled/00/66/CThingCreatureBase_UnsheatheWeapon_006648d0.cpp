@@ -15,6 +15,7 @@
 //   absent arm reads the never-written local from its dead argument slot); the "" name is an implicit conversion
 //   temporary (built before the other arguments); the def out pointer sits in the dead index slot and is released
 //   without a null test.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
@@ -77,13 +78,13 @@ public:
     unsigned char _pad74[0x90 - 0x74];
     signed char PlayerNumber;                   // +0x90
     const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline CCarryableDef* GetCarryableDef()
+    FABLE_FORCEINLINE CCarryableDef* GetCarryableDef()
     {
         CDefPointer<const CCarryableDef> out;
         PBaseDef->GetSubDef(&out);
         return const_cast<CCarryableDef*>(out.Object);
     }
-    __forceinline CTCCarrying* GetCarrying()
+    FABLE_FORCEINLINE CTCCarrying* GetCarrying()
     {
         CTCCarrying* carrying;
         if (UsingComponents[0x46 >> 5] & (1UL << (0x46 & 31))) {

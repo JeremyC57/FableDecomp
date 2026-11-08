@@ -14,6 +14,7 @@
 // Changed +0x190, OffsetToUseAbove +0x194, OffsetToUseUnder +0x198 (same model as the landed constructor).
 // Leaf: ??_GCScrollingViewport@NUISystem@@UAEPAXI@Z
 
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);       // 0x00BFE9BC
 
 struct IViewportPrimary {                        // the primary base (vptr at +0)
@@ -64,7 +65,7 @@ class CScrollingViewport : public CViewport { public:          // vtables 0x0124
     {
         GetDataFromDef();
     }
-    __forceinline virtual ~CScrollingViewport()
+    FABLE_FORCEINLINE virtual ~CScrollingViewport()
     {
         CManager::GetInstance()->RemoveObserver(this);
         if (g_pActiveScrollingViewport == this)

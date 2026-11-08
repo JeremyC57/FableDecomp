@@ -2,6 +2,7 @@
 // Leaf: EntityStopFollowing
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A7980,228bytes;00449970 mainplayer;00487DC0 hero;006D4D70 IsFollower (not propagated IsAIFollower);006D5180 RemoveFollower;006D5AB0 ForceAIReset forwards to0088BB60;008AC890 remove eventtype3.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -125,7 +126,7 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct CTCFollowedNative:CTCBase{bool IsFollower(const CThingNative*)const;void RemoveFollower(CThingNative&);}; //006D4D70,006D5180; native first list +0c is Followers, second +10 is AIFollowers
 struct EventTypeFilter{long Type;EventTypeFilter(long t):Type(t){}};
 struct EventListMethods{void RemoveIf(const long*);}; //008AC890 actual byvalue CConvFilterToCP stores pointer to predicate
-template<long key> __forceinline void* GetComponent(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;return (it==end||it->Type>key?end:it)->Component;}
-__forceinline void RemoveFollowEvents(CTCEntityEvents* events){const long type=3;reinterpret_cast<EventListMethods*>(events->Events)->RemoveIf(&type);}
+template<long key> FABLE_FORCEINLINE void* GetComponent(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;return (it==end||it->Type>key?end:it)->Component;}
+FABLE_FORCEINLINE void RemoveFollowEvents(CTCEntityEvents* events){const long type=3;reinterpret_cast<EventListMethods*>(events->Events)->RemoveIf(&type);}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityStopFollowing(const ScriptMethods&)const;};
 void CGameScriptInterfaceMethods::EntityStopFollowing(const ScriptMethods& script)const{if(script.IsAlive()){CThingNative* thing=script.GetPThing();CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->LifeFlags&1)&&(hero->UsingComponents[5]&0x10000000)){long key=188;ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;CTCFollowedNative* followed=static_cast<CTCFollowedNative*>((it==end||it->Type>188?end:it)->Component);if(followed->IsFollower(thing)){followed->RemoveFollower(*thing);thing->ForceAIReset();if(thing->UsingComponents[2]&4){key=66;ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;CTCEntityEvents* events=static_cast<CTCEntityEvents*>((it==end||it->Type>66?end:it)->Component);key=3;reinterpret_cast<EventListMethods*>(events->Events)->RemoveIf(&key);}}}}}

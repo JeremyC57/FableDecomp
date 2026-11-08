@@ -8,6 +8,7 @@
 // after the manager load); its vtable store is scheduled between the bit test and the branch; the `??_G` is pulled into
 // the TU by a `new CTCMapwho` factory with the constructor inline; the destructor and RemoveFromMapwho are `__forceinline`
 // (otherwise the `??_G` collapses to `call ??1CTCMapwho ; delete`).
+#include "fable_compiler.h"
 class CThing;
 struct CThingMapCell;
 class CTCMapwho;
@@ -54,14 +55,14 @@ class CTCMapwho : public CTCBase { public:
         TRNode.PMapwho = this;
         BLNode.PMapwho = this;
     }
-    __forceinline void RemoveFromMapwho()
+    FABLE_FORCEINLINE void RemoveFromMapwho()
     {
         if (InMapwho) {
             CWorldMap* map = (&GetWorldMap());
             map->m_pThingMapManager->DestroyMapwhoNode(this);
         }
     }
-    __forceinline virtual ~CTCMapwho()
+    FABLE_FORCEINLINE virtual ~CTCMapwho()
     {
         RemoveFromMapwho();
     }

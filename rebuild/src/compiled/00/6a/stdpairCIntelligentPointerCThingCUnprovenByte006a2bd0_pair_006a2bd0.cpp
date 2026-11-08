@@ -7,6 +7,7 @@
 // Callees: CBaseIntelligentPointer() 0x00A01B10, CBaseIntelligentPointer::GetPItem 0x00A01B50 (on other.first), SetPItem 0x00A01B90.
 // Shape (family K115, representative 0x004CBBB0): STLport `pair(const pair& __o) : first(__o.first), second(__o.second) {}` with
 //   the K108 __forceinline intelligent-pointer copy constructor; emitted by an explicit instantiation of the pair.
+#include "fable_compiler.h"
 class CBaseObject;
 class CThing;
 class CBaseIntelligentPointer {
@@ -19,7 +20,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 class CUnprovenByte_006a2bd0 {                                            // descriptive: the pair's 1-byte second
 public:

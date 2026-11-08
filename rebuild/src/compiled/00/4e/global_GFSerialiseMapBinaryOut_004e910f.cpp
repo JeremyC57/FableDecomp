@@ -13,6 +13,7 @@
 //   `__forceinline` (the size TU otherwise calls it out of line through a frame word, `push ecx` prologue).
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; STLport map = {header node pointer, count, comparator};
 //   node = {colour, parent, left, right, pair<const EObjectAugmentationType, CWeaponTrailGraphicSet>} (value at +0x10).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -75,7 +76,7 @@ template <> struct CPersistTraits<EObjectAugmentationType> {
     void TransferBinaryOut(CDataOutputStreamWriter& stream, const EObjectAugmentationType& value) const { stream.WriteSLONG((long)value); }
 };
 template <> struct CPersistTraits<CWeaponTrailGraphicSet> {
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CWeaponTrailGraphicSet& value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CWeaponTrailGraphicSet& value) const
     {
         stream.WriteSLONG(value.Attack);
         stream.WriteSLONG(value.Knockdown);

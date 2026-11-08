@@ -13,6 +13,7 @@
 //   `_Construct` out of line (a /Gr algorithm instance) while __uninitialized_copy / __uninitialized_fill_n, allocate
 //   and max inline. sizeof 0x30 is not a power of two, so size() is an `idiv` in the size TU.
 // Shape: size TU with a frame pointer (`optimize("y", off)` + `("s", on)`; `and dword ptr [ebp-8],0` for the null block).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -30,12 +31,12 @@ public:
 namespace std {
 struct __false_type { __false_type() { } };
 
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 
 template <class T1, class T2> void __fastcall _Construct(T1* p, const T2& value);   // 0x004EAC30
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -44,7 +45,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 }
 
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)
@@ -58,9 +59,9 @@ public:
     T* _M_finish;                                   // +0x04
     T* _M_end_of_storage;                           // +0x08
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    static __forceinline T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    static FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
     void _M_clear();                                // 0x004EABC2
-    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);
 };
 

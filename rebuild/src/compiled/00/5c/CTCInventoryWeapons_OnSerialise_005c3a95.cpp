@@ -13,6 +13,7 @@
 //   argument slots on its own; CDefString has a declared copy constructor so it comes back through a hidden pointer as retail.
 // Layout: packed weapons block -- melee pointer +0x134 / def index +0x13C / carried +0x140, ranged pointer +0x141 / def index
 //   +0x14C / carried +0x150; confiscated melee/ranged +0x160/+0x164, previously wielded +0x168/+0x16C; thing def index word +0x8C.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -68,7 +69,7 @@ struct CThingBase {
     unsigned char  _pad00[0x20];
     std::bitset<274>  m_present;                           // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long kind) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
         if (m_present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind);

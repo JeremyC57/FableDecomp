@@ -14,6 +14,7 @@
 //          slots can be declared; the group's CIntelligentPointer<CThingBuilding> at +0x14 (descriptive);
 //          retail CThingAICreature WorkBuilding +0x170 (landed 0x00830360).
 
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CThingBuilding;
@@ -66,7 +67,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
@@ -100,7 +101,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-__forceinline bool IS_THING_ALIVE(CThing* const& thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* const& thing)
 {
     if (thing != 0) {
         if (!(thing->m_flags91 & 1))

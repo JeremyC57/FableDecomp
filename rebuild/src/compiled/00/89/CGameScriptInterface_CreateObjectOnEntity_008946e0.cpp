@@ -12,6 +12,7 @@
 // Layout: as CreateObject; CThing +0x60 is a component pointer (name unproven).
 // Shape: the result local is built first; the def pointer lives in the dead `defName` slot; the inline-once band puts
 //   the GetScriptThing temporary's destructor out of line and the result's inline (block end first).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 class CCharString { public:
     void* PStringData;
@@ -30,7 +31,7 @@ inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CThingObjectDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1

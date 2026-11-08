@@ -8,6 +8,7 @@
 // Callees: CWideString::operator= 0x0099B7D0 (FableWin.pdb ??4CWideString@@QAEABV0@ABV0@@Z).
 // Shape: STLport 4.6 _algobase.h `copy_backward(first, last, result)` -> `__copy_backward_aux(..., __true_type)` -> `__copy_backward_ptrs(..., __false_type)` -> the random-access `__copy_backward`, all inlined into the front end; __copy_backward is __forceinline (as plain `inline` VC7.1 keeps it out of line as a
 //   cdecl call, 25v49), the loop counts n down in ebx and reads the source through the constant distance last - result.
+#include "fable_compiler.h"
 class CWideString {                                     // one pointer
 public:
     void* Data;
@@ -19,7 +20,7 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                                  _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -35,7 +36,7 @@ inline _BidirectionalIter __fastcall __copy_backward_ptrs(_RandomAccessIter __fi
 }
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __copy_backward_aux(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward_aux(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                       _BidirectionalIter2 __result, const __true_type&)
 {
     return __copy_backward_ptrs(__first, __last, __result, __false_type());

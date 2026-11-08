@@ -1,5 +1,6 @@
 // CGameCameraManager::PushProjectileWeaponMode -- build projectile camera at the current targeting FOV.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+#include "fable_compiler.h"
 #define CGameCameraManager CGameCameraManagerDonor
 #define CCameraManagerDef CCameraManagerDefDonor
 #define CCameraModeDef CCameraModeDefDonor
@@ -35,7 +36,7 @@ template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 typedef std::pair<ETCInterfaceType, CTCBase*> CCameraComponentEntry;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:CCameraComponentEntry* Begin;CCameraComponentEntry* End;CCameraComponentEntry* Capacity;const CCameraComponentEntry* LowerBound(const ETCInterfaceType& key) const;
- __forceinline CTCHeroRangedAttacks* Find()const{ETCInterfaceType key = (ETCInterfaceType)(0x81);const CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->first)p=End;return ((CTCHeroRangedAttacks*)p->second);}};
+ FABLE_FORCEINLINE CTCHeroRangedAttacks* Find()const{ETCInterfaceType key = (ETCInterfaceType)(0x81);const CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->first)p=End;return ((CTCHeroRangedAttacks*)p->second);}};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CCameraComponentMap;
 class CThing { public:unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
 struct CCameraRangedMethods:CTCHeroRangedAttacks {float GetProjectileWeaponFirstPersonTargetingModeZoomFOV()const;}; //789CC0

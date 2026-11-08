@@ -16,6 +16,7 @@
 // Shape: as the landed CCreatureAction_JackDeathInto::Initialise 0x008C0EA0: the thing's def is a by-value CDefPointer copy
 //   (addref, GetSubDef, release in the full expression) and GetSubDef has the same-TU stand-in body, so the sub-def stays in ebp
 //   and the effect id reuses its frame word; the emitter is an uninitialised local filled under HasTC(0x4b).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CTCParamsBase;
@@ -24,7 +25,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1

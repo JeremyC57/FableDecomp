@@ -2,6 +2,7 @@
 // Checks the barber lookup (nearest to the hero, by script name), the wait until she is alive, the wait until she is
 // killed, BarberLadyKilled only when neither re-test is terminating, termination at every test, and the release of the
 // barber handle on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -22,7 +23,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { if (Id != 1) ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { if (Id != 1) ++g_live; }
-    __forceinline ~CScriptThing() { if (Id != 1) --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { if (Id != 1) --g_live; }
     bool MsgIsKilledBy(const CCharString& killer) const { if (strcmp(killer.Text, "") != 0 || Id != 9) g_badArg = true; return g_frames >= g_killFrame; }
     bool IsAlive() const { if (Id != 9) g_badArg = true; return g_frames >= g_aliveFrame; }
 };

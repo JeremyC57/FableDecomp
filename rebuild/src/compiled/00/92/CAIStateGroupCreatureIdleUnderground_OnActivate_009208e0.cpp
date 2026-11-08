@@ -13,6 +13,7 @@
 // runs after the call. Frame 0x118 = the lookup key (+0) and the 0x114-byte retail action (+4; the PDB's
 // 300-byte layout is wider).
 // Model: local (no engine header for this class).
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 
@@ -35,7 +36,7 @@ class CThingAICreature { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
     bool SetCurrentAction(CCreatureActionBase* action);            // 0x006644F0 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

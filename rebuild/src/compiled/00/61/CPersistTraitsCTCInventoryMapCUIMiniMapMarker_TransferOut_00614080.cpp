@@ -14,6 +14,7 @@
 //   (copy into the dead `out` argument slot), each float through an inline CPersistTraits<float>::TransferOut (the
 //   formatted temporary built in that slot after the 8-byte push), the name copied into a function-scope local that is
 //   destroyed at the end before the traits. No EH frame (the TU has no /EHsc). Speed-optimised (default) TU.
+#include "fable_compiler.h"
 class CPersistContext;
 class CCharString {
 public:
@@ -48,14 +49,14 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
     {
         long copy = *value;
         TransferOutLong(context, out, &copy);
     }
 };
 template <> struct CPersistTraits<float> {
-    __forceinline void TransferOut(CPersistContext* context, CCharString* out, const float* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const float* value) const
     {
         *out += CCharString::FormatDouble(6, *value);
     }

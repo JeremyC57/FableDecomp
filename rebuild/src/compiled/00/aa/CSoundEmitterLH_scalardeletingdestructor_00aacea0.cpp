@@ -12,6 +12,7 @@
 // (`DestroyElements(); if (data) free(data);`) -- retail keeps the member address in edi and reloads
 // the data word through it -- then the base destructor. The array destructor must be `__forceinline`:
 // a plain inline one (two calls + a free) is emitted out of line and called once.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -22,7 +23,7 @@ struct CEmitterArray {                             // array whose destructor tea
     long  m_capacity;
     void DestroyElements();                        // 0x00AACC60
     CEmitterArray() : m_pData(0), m_size(0), m_capacity(0) { }
-    __forceinline ~CEmitterArray()
+    FABLE_FORCEINLINE ~CEmitterArray()
     {
         DestroyElements();
         if (m_pData) free(m_pData);
@@ -34,7 +35,7 @@ struct CSoundEmitterLH : CBaseClass {                   // vtable 0x0129E6EC
     CEmitterArray m_soundEmitters;                      // +0x14
     void Shutdown();                               // 0x00AAC2E0
     CSoundEmitterLH() { }
-    __forceinline virtual ~CSoundEmitterLH() { Shutdown(); }
+    FABLE_FORCEINLINE virtual ~CSoundEmitterLH() { Shutdown(); }
 };
 
 CSoundEmitterLH* Create_CSoundEmitterLH()

@@ -24,17 +24,18 @@
 // Shape: the liveness test binds the GetPItem result as a temporary (its frame word is reused by the component-name
 //   temporary); the direction is the inline difference with Z zeroed afterwards (the Z subtraction is dead); the ground
 //   point's height stays on the x87 stack into the inline sum; C3DVector temporaries share one frame slot.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C3DVector {
 public:
     float X, Y, Z;
-    __forceinline C3DVector() {}
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
+    FABLE_FORCEINLINE C3DVector() {}
+    FABLE_FORCEINLINE C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+    FABLE_FORCEINLINE C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    FABLE_FORCEINLINE C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector& Normalise();                             // 0x00A14440
 };
 class CCharString {

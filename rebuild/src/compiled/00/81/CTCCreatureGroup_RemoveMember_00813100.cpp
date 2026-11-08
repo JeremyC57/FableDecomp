@@ -9,6 +9,7 @@
 // and CGroupMemberData at +0x18: PMember +0x18 (8 bytes), IsActive +0x20, JoinedFrame +0x24, DeactivatedFrame +0x28.
 // Retail CThing: UniqueID +0x18, Dead bit +0x91. Vtable 0x0124326C: slot 29 RemoveMember, 30 DeactivateMember,
 // 31 ActivateMember. The local polymorphic model is used because engine/CTCBase.h flattens the vptr.
+#include "fable_compiler.h"
 class CThing { public:
     unsigned char _pad00[0x18];
     unsigned long long UniqueID;                // +0x18
@@ -64,8 +65,8 @@ public:
     CMemberMap Members;                         // +0x18
 };
 
-static __forceinline CMemberNode* FindMember(CMemberMap& map, unsigned long long uid) { return map.find(uid); }
-static __forceinline void EraseMember(CMemberMap& map, unsigned long long uid) { map.erase(uid); }
+static FABLE_FORCEINLINE CMemberNode* FindMember(CMemberMap& map, unsigned long long uid) { return map.find(uid); }
+static FABLE_FORCEINLINE void EraseMember(CMemberMap& map, unsigned long long uid) { map.erase(uid); }
 
 bool CTCCreatureGroup::RemoveMember(CThing* member)
 {

@@ -8,6 +8,7 @@
 // Globals: the allocator @ 0x013CAA90.
 // Shape: the inline static Allocate(size, type) (create-on-demand test before the lock, the InternalAllocate result kept in edi
 //   across the leave) followed by the align-up `(block + alignment + 3) & ~(alignment - 1)` (`dec esi ; not esi ; and`).
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
 extern unsigned char g_allocatorLock[24];   // 0x013CAA70 (CRITICAL_SECTION)
@@ -21,7 +22,7 @@ protected:
     static void EnterSynchronisation() { EnterCriticalSection(g_allocatorLock); }
     static void LeaveSynchronisation() { LeaveCriticalSection(g_allocatorLock); }
 public:
-    static __forceinline void* Allocate(unsigned long size, unsigned long type)
+    static FABLE_FORCEINLINE void* Allocate(unsigned long size, unsigned long type)
     {
         if (!Allocator)
             Create();

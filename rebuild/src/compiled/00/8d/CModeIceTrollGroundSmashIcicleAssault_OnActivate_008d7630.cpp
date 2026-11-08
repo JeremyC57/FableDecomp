@@ -3,6 +3,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native008D7630 length242. Subdef8C7A70 identifies CSnowTrollDef by native123565C; SuspendAI833A10 is genuine CThingAICreature API.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -36,8 +37,8 @@ struct ThingNative : public CThing {
  void SuspendAI(bool,void*); //833A10, actual CThingAICreature donor53A870, native suspenders1CC/AISuspended1C8bit1
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0xc];EmitterMethods*Emitter;void*PositionInterface;unsigned char Unrecovered64[8];unsigned long TypeFlags;NativeDefinition*Definition;unsigned char Unrecovered74[0x18];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){int key=type;ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;return p->Component;}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){int key=type;ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;return p->Component;}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 
 struct WeaponMethods:CTCWeapon{long GetWeaponClass()const;}; //5DA7F0, def+2C (PDB Class), not propagated CCategory label
@@ -70,7 +71,7 @@ struct BaseIntelligentPointer {
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
- __forceinline IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
+ FABLE_FORCEINLINE IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
  IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem()));return*this;}
 };
@@ -85,8 +86,8 @@ template<class T>union CIVSlot{void*Native;void(T::*Delete)()const;}; //genuine 
 struct SnowDefinitionPointer {const CSnowTrollDef*Object;}; //native CDefPointer<CSnowTrollDef const> view, donor size4
 struct NativeDefinition:CIVCountedPointeeBase {bool GetSnowTroll(SnowDefinitionPointer*)const;}; //8C7A70, GetSubDef CSnowTrollDef literal123565C
 struct NativeEffects:CIVCountedPointeeBase {bool GetEffectFromString(const CCharString&,long&)const;}; //669D30
-static __forceinline void ReleaseDefinition(NativeDefinition*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeDefinition>*>(p->__vftable)[1].Delete)();}
-static __forceinline void ReleaseEffects(NativeEffects*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeEffects>*>(p->__vftable)[1].Delete)();}
+static FABLE_FORCEINLINE void ReleaseDefinition(NativeDefinition*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeDefinition>*>(p->__vftable)[1].Delete)();}
+static FABLE_FORCEINLINE void ReleaseEffects(NativeEffects*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeEffects>*>(p->__vftable)[1].Delete)();}
 struct DefinitionPointer {NativeDefinition*Object;DefinitionPointer(NativeDefinition*p):Object(p){if(p)++p->IVRefCount;}~DefinitionPointer(){ReleaseDefinition(Object);}};
 struct EffectsPointer {NativeEffects*Object;EffectsPointer():Object(0){}};
 #ifdef _MSC_VER

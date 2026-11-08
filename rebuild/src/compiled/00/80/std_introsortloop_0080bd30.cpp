@@ -13,6 +13,7 @@
 //   first) / 2), *(last - 1), comp)), comp); __introsort_loop(cut, last, (_Tp*)0, depth_limit, comp); last = cut; }`
 //   -- __median is inlined here (its by-value comparator copied into a local), the other comparator copies are
 //   memberwise except the partial_sort one, which calls the out-of-line implicit copy constructor.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -26,8 +27,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"
@@ -39,7 +40,7 @@ public:
     long                        Index;                      // +0x08
     C3DVector                   TargetingPosition;          // +0x0C
     long                        FrameRejected;              // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
 };

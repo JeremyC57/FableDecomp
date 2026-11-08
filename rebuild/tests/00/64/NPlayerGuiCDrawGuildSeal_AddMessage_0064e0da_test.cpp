@@ -1,4 +1,5 @@
 // Behaviour test for 0064e0da: body copied from src/0064e0da.cpp (NPlayerGui::CDrawGuildSeal::AddMessage), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,7 +27,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;
     bool alive;
     bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -51,7 +52,7 @@ namespace NPlayerGui {
 struct SGuildSealMessage {
     CCharString Text;
     long Time;
-    __forceinline SGuildSealMessage(const CCharString& text, long time) : Text(text), Time(time) { }
+    FABLE_FORCEINLINE SGuildSealMessage(const CCharString& text, long time) : Text(text), Time(time) { }
 };
 static int g_pushCalls = 0; static const void* g_pushText = 0; static long g_pushTime = -1;
 struct CMessageDeque {

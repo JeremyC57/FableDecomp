@@ -1,5 +1,6 @@
 // Behaviour test for 0x005E2B30 vector<pair<unsigned long, CAnimationEntry> >::reserve(n): when n exceeds the capacity,
 // copy the entries into a fresh block (component references taken), destroy the old ones (references dropped), free it.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __fastcall
@@ -21,7 +22,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

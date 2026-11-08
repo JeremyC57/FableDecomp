@@ -15,6 +15,7 @@
 //   0x3c-byte base is local, with the out-of-line assignment declared.
 // Shape: `push 50h ; pop esi` = size TU with a frame pointer (`optimize("y", off)` + `("s", on)`); the `result` value
 //   parameter is re-homed in its own slot by the inlined __copy (`mov ebx,[ebp+8] ; mov [ebp+8],ebx`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -35,7 +36,7 @@ public:
     C2DVector Position;                             // +0x40
     C2DVector Offset;                               // +0x48
     // the compiler-generated member-wise assignment, spelled out: a size TU leaves the implicit one out of line
-    __forceinline CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
+    FABLE_FORCEINLINE CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
     {
         CParentDefClassBase::operator=(other);
         ButtonGraphic = other.ButtonGraphic;
@@ -50,7 +51,7 @@ struct __false_type { };
 struct random_access_iterator_tag { };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {

@@ -9,6 +9,7 @@
 //   ChildTrailPrimIndex +0x60.
 // Shape: the body is two inline `Clear()` calls (0x00AF70D0 form); each CEnginePrimitiveHandle member then runs its inline
 //   destructor (vtable store, Clear, the counted pointer's own release, base). One shared zero register (ebx).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
 public:
@@ -28,7 +29,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -37,7 +38,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
@@ -49,13 +50,13 @@ public:
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 class CBaseClassNonCopyable {                      // vtable 0x0129A7C4

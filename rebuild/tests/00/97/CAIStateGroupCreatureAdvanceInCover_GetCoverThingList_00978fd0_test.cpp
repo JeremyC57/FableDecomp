@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -43,8 +44,8 @@ struct C2DBox { float minX,minY,maxX,maxY;
 };
 struct CThingSearchToolsRetail { void FindInRoughArea(const C2DBoxI&,const CFilterBind4&,CThingVector&); }; // 0x009793D0
 struct AdvanceInCoverMethods : CAIStateGroup_CreatureAdvanceInCover {
- __forceinline CIntelligentPointerRetail& Cover() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->PCoverThing; }
- __forceinline CIntelligentPointerRetail& Enemy() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->_pad_0x14; }
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Cover() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->PCoverThing; }
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Enemy() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->_pad_0x14; }
  CThingSearchToolsRetail* PeekThingSearchTools(); // 0x008FD000
  void GetCoverThingList(CThingVector&);
 };

@@ -10,6 +10,7 @@
 //   down, &x on the stack -> ebx loaded once), placement-new null test, the advanced pointer returned.
 // Label correction: the catalog `_Fill_n<unsigned long*,unsigned int,unsigned long>` is propagated; the stride (0x1F0)
 //   and the copy constructor name the element (NEnvironmentInternal CThemeChannel, as 0x006B6560 fill).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 struct CThemeChannel {                                  // 496 bytes (0x1F0)
@@ -21,7 +22,7 @@ struct __false_type { __false_type() { } };
 
 namespace std {
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)

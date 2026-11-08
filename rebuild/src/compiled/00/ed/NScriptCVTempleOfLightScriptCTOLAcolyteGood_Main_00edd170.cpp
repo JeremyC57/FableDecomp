@@ -17,6 +17,7 @@
 //   `for (;; NewScriptFrame()) { if (T) return ...; ... }` (chunk 824): the loop-top return then shares retail's expanded
 //   ~altar / ~seh_me exit, and VC7.1 keeps the shared [~altar, ~seh_me, ret] return tail after the LAST (vector) pad as retail
 //   does; the `for (; !T; NewScriptFrame())` form (chunk 811) left it after the first (exit_point) pad (GOTCHAS chunk 813 lever).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -50,8 +51,8 @@ enum EScriptEntityMoveType { MOVE_TYPE_WALKING=0, MOVE_TYPE_RUNNING=1 };
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748
 extern CGameScriptInterfaceBase* pDSTGame;                 // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;     // 0x0143E90C
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 inline CScriptThing::~CScriptThing() { }
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
 bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float);   // 0x00CBE2FF

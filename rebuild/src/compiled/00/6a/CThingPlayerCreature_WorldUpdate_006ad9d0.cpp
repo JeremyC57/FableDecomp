@@ -17,6 +17,7 @@
 // vectors are cleared with chained `X = Y = Z = 0.0f` (Z first; a C3DVector temporary goes through the frame), which
 // is what makes VC7.1 keep 0 (and the flag mask 2) in ebx; the look component comes through the out-parameter
 // GetInterface (component in eax, moved to ecx after the push), the weapon trail through the plain entry pick.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -52,14 +53,14 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

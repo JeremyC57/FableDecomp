@@ -25,6 +25,7 @@
 //   `X*X + Y*Y + Z*Z` (retail squares Z, Y, X: C3DVector::GetSquaredMagnitude's X/Z/Y order and Dot both differ); the rod fallback
 //   tests OBJECT_FISHING_ROD and carries it in both arms (retail keeps the call, drops the dead test: `mov bl,al` with no use);
 //   the vector's destructor is declared out of line (GOTCHAS chunk 789).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -45,7 +46,7 @@
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingConscious::~CIsThingConscious() { }
-__forceinline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
 template <> std::vector<CScriptThing, std::allocator<CScriptThing> >::~vector();   // 0x008AC970
 
 void NScript::CExpression_FishScript::Main()

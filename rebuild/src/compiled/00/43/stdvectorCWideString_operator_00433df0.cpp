@@ -18,6 +18,7 @@
 //   __forceinline under VC7.1; __uninitialized_copy stays plain inline, so the grow arm calls it out of line with the
 //   __false_type tag homed in the realloc arm's `__tmp` slot, as retail does.
 // Flags: /Gr
+#include "fable_compiler.h"
 #include <stdlib.h>
 
 class CWideString {                                      // Ego_r.pdb, 4 bytes (refcounted wide-string data pointer)
@@ -38,15 +39,15 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp>
-__forceinline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+FABLE_FORCEINLINE void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for ( ; __first != __last; ++__first)
         _Destroy(&*__first);
 }
 template <class _ForwardIterator>
-__forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last) { __destroy_aux(__first, __last, __false_type()); }
+FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last) { __destroy_aux(__first, __last, __false_type()); }
 
 template <class _InputIter, class _ForwardIter>
 inline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
@@ -58,7 +59,7 @@ inline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, 
 }
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                           _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -69,7 +70,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
@@ -103,13 +104,13 @@ public:
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);
 protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
     template <class _ForwardIterator>
-    __forceinline pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
+    FABLE_FORCEINLINE pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, _IsPODType());

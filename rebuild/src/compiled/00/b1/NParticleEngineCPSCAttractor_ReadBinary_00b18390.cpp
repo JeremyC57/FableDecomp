@@ -13,6 +13,7 @@
 //   radius/force +0x1c/+0x20, AttractorUserPointsArray +0x24. CDataInputStream as in the landed readers.
 // Shape: the eight inlined reads in WriteBinary order; the name word is read and dropped (no store survives); the flags
 //   are bool bit-field assignments from a one-byte read (`test ; setne ; xor ; and ; xor`).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 #include "engine/C3DVector.h"
@@ -24,18 +25,18 @@ class CDataInputStream { public:
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
     C3DVector Read3DVector();                           // 0x009950F0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {
             memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

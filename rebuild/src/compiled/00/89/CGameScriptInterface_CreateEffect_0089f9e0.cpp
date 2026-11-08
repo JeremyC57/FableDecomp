@@ -1,6 +1,7 @@
 // CGameScriptInterface::CreateEffect(const CCharString&,const CScriptThing&,const CCharString&,const CCharString&,bool,bool) -- attach a created emitter and return its script handle
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0089F9E0,180 bytes. Real engine CScriptThing flattened base; PMF dispatch to GetPThing slot11 and IsAlive slot75. Native CThing map44 and emitter bit75.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -106,7 +107,7 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 CThingNative* __fastcall CreateParticle(const CCharString&,const C3DVector&,bool); //006E0970
 class CRightHandedSet;
 struct EmitterMethods{void AttachToThing(CThingNative*,long,const CCharString&,long,float);void SetAlwaysUpdate(bool);void SetEmitterOrientation(const CRightHandedSet&);}; //006E0BE0,006E0590
-class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void Rotate(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){Rotate(Up,angle);}}; //00A22F80
+class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void Rotate(const C3DVector&,float);FABLE_FORCEINLINE void RotateAboutUp(float angle){Rotate(Up,angle);}}; //00A22F80
 void SetEmitterOrientationDeclaration();
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateEffect(const CCharString&,const C3DVector&,const CCharString&,float,bool,bool)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateEffect(const CCharString& name,const C3DVector& pos,const CCharString&,float angle,bool,bool always)const{

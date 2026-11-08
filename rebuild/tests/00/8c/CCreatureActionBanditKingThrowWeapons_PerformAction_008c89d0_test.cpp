@@ -4,6 +4,7 @@
 // accuracy as float, 1, 1, ability out, -1), the right-hand weapon def index stored into the boss component (only for
 // slot 0, only when the def and the component exist), the def and ability releases, and the shot's physics state 2 and
 // navigator enable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 
@@ -135,7 +136,7 @@ class CThing { public:
         it->component = component;
     }
     CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -196,7 +197,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* m_pItem;
     CThingCreatureBase* GetPItem() const { return m_pItem; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }

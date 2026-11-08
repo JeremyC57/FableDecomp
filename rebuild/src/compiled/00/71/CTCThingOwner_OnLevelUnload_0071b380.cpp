@@ -13,6 +13,7 @@
 //        every node, re-links the head and frees it); the component lookup is the inline STLport/Dinkumware lower_bound
 //        (`count / 2` halving) with the out-parameter end/hit choice, the pointer declared before the loop (retail
 //        keeps the uninitialised frame word when the bit is clear).
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 class CBaseObject;
@@ -30,7 +31,7 @@ public:
     unsigned char    _pad4c[0x91 - 0x4c];
     unsigned char    m_flags91;                 // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template<class T> __forceinline void GetInterface(T** ppOut, long type)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long type)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             CInterfaceEntry* first = m_interfacesFirst;

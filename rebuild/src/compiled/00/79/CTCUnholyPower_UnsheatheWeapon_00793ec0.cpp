@@ -15,6 +15,7 @@
 // +0x44, def +0x70, dead flag +0x91; CCarryableDef carry slot +0x28.
 // Model: the landed CCreatureAction_UnsheatheItemFromInventory::PerformAction (0x0069F9E0), with the parent thing held in a
 // local; the carrying and mode-manager components are left unset when absent (retail reads the lookup key's frame word).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -56,14 +57,14 @@ class CThing { public:
     CDefClassBase* m_pDef;                                   // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                                // +0x91 bit 0: dead
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -76,7 +77,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }

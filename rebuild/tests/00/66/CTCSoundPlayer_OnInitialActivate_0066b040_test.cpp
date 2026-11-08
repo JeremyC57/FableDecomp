@@ -1,5 +1,6 @@
 // Behaviour test for 0066b040: src/0066b040.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCSoundPlayer::OnInitialActivate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -15,7 +16,7 @@ static int fails = 0;
 // CTCSoundPlayer::AnimCriteriaClipDistance (short) +0x1c; the sub-def's clip distance is a short at +0x50.
 // Shape: a null-initialised local CDefPointer filled by GetSubDef, read when it succeeds, released at the end
 // (one null test, `dec [ecx+4]` in place).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CSoundPlayerDef;
 
 struct CDefPointee {

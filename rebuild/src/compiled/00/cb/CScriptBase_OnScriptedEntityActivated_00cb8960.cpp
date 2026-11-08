@@ -18,6 +18,7 @@
 // Shape: CVectorMap::Add and the STLport push_back must be __forceinline (else VC emits Add out of line); the
 // pair temporary forwards its four words from registers into the in-place copy, the growth call homes the
 // __false_type tag in the entity argument slot; the inline Sort re-reads Dirty right after the store.
+#include "fable_compiler.h"
 class CCharString { public:
     char* m_pData;
     bool operator<(const CCharString& other) const;   // 0x009E6530
@@ -65,7 +66,7 @@ struct CEntityScriptMap {
             return it;
         return end();
     }
-    __forceinline void push_back(const CEntityScriptEntry& x)
+    FABLE_FORCEINLINE void push_back(const CEntityScriptEntry& x)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CEntityScriptEntry(x);
@@ -74,7 +75,7 @@ struct CEntityScriptMap {
         else
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
-    __forceinline void Add(const unsigned __int64& key, const CCountedPointer<CActiveEntityScriptBase>& value)
+    FABLE_FORCEINLINE void Add(const unsigned __int64& key, const CCountedPointer<CActiveEntityScriptBase>& value)
     {
         push_back(CEntityScriptEntry(key, value));
         Dirty = true;

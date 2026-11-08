@@ -15,6 +15,7 @@
 //   CTCTavernJug as the landed ReplaceJug (pack 1, OnBar +0x10, RHSet +0x11, Pos +0x29); the bar point's user +0x18.
 // Shape: RemoveMode(0x2b) belongs to the carrying-jug branch (the retail not-carrying `je` skips it); the ternary
 //   GetInterface form puts the 0x47 component straight into ecx.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
@@ -114,7 +115,7 @@ class CTCTavernJug { public:                           // interface 0xbb on the 
     bool OnBar;                                 // +0x10
     CRightHandedSet RHSet;                      // +0x11
     C3DVector Pos;                              // +0x29
-    __forceinline void ReplaceJug()             // 0x00968090 (inlined here)
+    FABLE_FORCEINLINE void ReplaceJug()             // 0x00968090 (inlined here)
     {
         CTCPhysicsBase* physics = m_pParentThing->m_pPhysics;
         if (physics) {

@@ -16,6 +16,7 @@
 // Shape: SDecoderMessage's implicit copy constructor inlined: +0 long, the +4 sub-record out of line, +0x20 long, the 16-byte
 //   record at +0x24 through `lea` addresses (an embedded struct's implicit copy), +0x34..+0x3C longs; the count is decremented
 //   before the record pointer (`index << 6` plus the block) is formed.
+#include "fable_compiler.h"
 class CString { public:
     char* m_pBuffer;
     CString(char* buffer) : m_pBuffer(buffer) { }
@@ -54,7 +55,7 @@ struct CUnprovenDecoderQuad_00C48E00 {          // 16 bytes at SDecoderMessage+0
 };
 
 struct SDecoderMessage {                        // 0x40 bytes: one async-decoder message record
-    __forceinline SDecoderMessage(const SDecoderMessage& other)
+    FABLE_FORCEINLINE SDecoderMessage(const SDecoderMessage& other)
         : m_type(other.m_type), m_record(other.m_record), m_flags(other.m_flags), m_quad(other.m_quad),
           m_tail0(other.m_tail0), m_tail1(other.m_tail1), m_tail2(other.m_tail2) { }
     long                            m_type;     // +0x00

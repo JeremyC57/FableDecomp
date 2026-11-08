@@ -1,5 +1,6 @@
 // Behaviour test for 007eed20: src/007eed20.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCSmashableBase::Smash()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -62,8 +63,8 @@ public:
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
-    __forceinline unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(T** out, long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (HasTC(type)) {
             *out = GetTC<T>(type);
@@ -71,7 +72,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

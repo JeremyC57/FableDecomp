@@ -1,5 +1,6 @@
 // Behaviour test for 0096c4f0: src/0096c4f0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CAIStateGroup_Thunder::Update
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -46,7 +47,7 @@ class CThing { public:
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -70,7 +71,7 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 #pragma pack(pop)
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -149,7 +150,7 @@ class CAIStateGroupBase { public:
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);   // 0x0097DB70
     CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
 };
-__forceinline float Distance2D(CThing* target, CThing* me)
+FABLE_FORCEINLINE float Distance2D(CThing* target, CThing* me)
 {
     const C3DVector& from = me->GetPosition();
     const C3DVector& to = target->GetPosition();

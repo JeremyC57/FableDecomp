@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -53,7 +54,7 @@ public:
     CBaseIntelligentPointer WorkBuilding;           // +0x170
 };
 
-__forceinline bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPItem per pointer here
+FABLE_FORCEINLINE bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPItem per pointer here
 {
     CThing* thing = p.GetPItem();
     if (thing && !thing->Dead)

@@ -1,5 +1,6 @@
 // Behaviour test for 0x0066E370: std::vector::_M_insert_overflow(C3DVector* position, const C3DVector& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD vector growth for 3D points: allocate old + max(old, n), copy the head, construct the n new copies, copy the tail, free the old block
 // A copy of the source model and logic (compiled separately from src/0066e370.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -24,13 +25,13 @@ public:
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&);   // 0x0066DDF0 (landed)
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy_head(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy_head(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -38,7 +39,7 @@ __forceinline _ForwardIter __uninitialized_copy_head(_InputIter __first, _InputI
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

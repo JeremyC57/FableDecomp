@@ -14,6 +14,7 @@
 //   Sort members inline as there, the value search is the early-return helper.
 // Label correction: catalogued as `CRandomAppearanceMorph_SetSkeletalMorphValue`; the body is
 //   CTCInventoryAbilities::SetExpressionToButton (ExpressionButtons is the CVectorMap<long,long> at +0x1C8).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -41,12 +42,12 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
     C    Compare;                                          // +0x0C
     bool Dirty;                                            // +0x0D
     value_type* LowerBound(const K& key);                  // 0x005F7FDF
-    __forceinline value_type* Find(const K& key)
+    FABLE_FORCEINLINE value_type* Find(const K& key)
     {
         value_type* it = LowerBound(key);
         return (it == this->end() || key < it->first) ? this->end() : it;
     }
-    __forceinline void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
     {
         this->push_back(value_type(key, value));
         Dirty = true;
@@ -61,7 +62,7 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
 
 typedef CVectorMap<long, long, CKeyPairCompareLess<long, long> > CExpressionButtonMap;
 
-__forceinline pair<long, long>* FindExpression(CExpressionButtonMap& map, long expression)
+FABLE_FORCEINLINE pair<long, long>* FindExpression(CExpressionButtonMap& map, long expression)
 {
     pair<long, long>* it = map.begin();
     pair<long, long>* last = map.end();

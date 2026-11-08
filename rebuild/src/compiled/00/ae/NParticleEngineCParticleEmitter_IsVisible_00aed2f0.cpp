@@ -17,6 +17,7 @@
 //   +0x15c, FadeOutStart +0x160, FadeInStart +0x164, FadeInEnd +0x168. CParticleSystem: flag byte +0x50 (Enabled bit 1,
 //   Dead bit 2, Visible bit 5), GlobalAlpha +0x54, FadeAlpha +0x58 (landed 0x00AF4660). CEnginePrimitivePrepareInfo engine
 //   +0x34 (landed 0x00AEB2D0).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
@@ -113,7 +114,7 @@ public:
     float                       FadeInEnd;             // +0x168
     float GetFadeAlpha(float distance) const;         // 0x00AECD70
     bool IsSleeping() const { return Sleeping; }
-    __forceinline void UpdateSystemsVisibility(float alpha)
+    FABLE_FORCEINLINE void UpdateSystemsVisibility(float alpha)
     {
         for (CParticleSystemPtr* it = ParticleSystems._M_start; it != ParticleSystems._M_finish; ++it) {
             CParticleSystem* system = it->Data;
@@ -121,7 +122,7 @@ public:
             system->Visible = system->Enabled && !system->Dead && system->GlobalAlpha > 0.0f;
         }
     }
-    __forceinline bool BuildBoundingSphere(float distance, const CEnginePrimitivePrepareInfo* info, float alpha)
+    FABLE_FORCEINLINE bool BuildBoundingSphere(float distance, const CEnginePrimitivePrepareInfo* info, float alpha)
     {
         bool allValid = true;
         C3DBoundingSphere sphere;

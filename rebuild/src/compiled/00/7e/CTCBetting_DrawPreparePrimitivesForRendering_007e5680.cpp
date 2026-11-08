@@ -20,6 +20,7 @@
 // Tried: the def through operator-> at each use (0x24 frame, def copied to two registers), the named def local alone
 //   (0x24 frame), an out pointer plus a releasing holder (0x24 frame); the base def through the inline GetBaseDef()
 //   accessor fixes the last register rotation.
+#include "fable_compiler.h"
 #include <stddef.h>
 class C2DVector { public:
     float X, Y;
@@ -66,7 +67,7 @@ class CBettingDef { public:
     float         BetBoxY;                      // +0x2c
     float         MoneyBoxX;                    // +0x30
     float         MoneyBoxY;                    // +0x34
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--RefCount == 0)
             Destroy();
@@ -75,7 +76,7 @@ class CBettingDef { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->Release();

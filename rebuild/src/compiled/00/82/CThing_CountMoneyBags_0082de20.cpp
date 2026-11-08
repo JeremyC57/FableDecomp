@@ -9,6 +9,7 @@
 // CTCBuyableHouse class is propagated; kept under the catalog leaf on a local CThing model.
 // Shape: the 0x0082DD90 loop with a checked out-parameter GetInterface on each element; the count is bumped before the three
 // flag bytes are tested (+0x12, +0x13, +0x10; any set returns false), the result is `count > 0` (`setg`).
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 
@@ -73,7 +74,7 @@ class CThing { public:
     unsigned char m_stateFlags;                     // +0x91 (bit 0 = dead)
 
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -86,7 +87,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

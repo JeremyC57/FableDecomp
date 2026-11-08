@@ -12,6 +12,7 @@
 // empty (T() leaves the frame temporary unset); UninitializedFillN must be `__forceinline` here.
 // Shape: three stack arguments (`ret 0Ch`): STLport vector(n, val, alloc); the user memberwise copy ctor re-reads the
 // value through its pointer every pass. Instantiated alone so the TU emits only this constructor.
+#include "fable_compiler.h"
 #include <new>
 #include <stddef.h>
 
@@ -21,7 +22,7 @@ extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
 namespace std {
 
-template <class T> __forceinline T* UninitializedFillN(T* first, unsigned int count, const T& value)
+template <class T> FABLE_FORCEINLINE T* UninitializedFillN(T* first, unsigned int count, const T& value)
 {
     T* cursor = first;
     for (; count > 0; --count, ++cursor)

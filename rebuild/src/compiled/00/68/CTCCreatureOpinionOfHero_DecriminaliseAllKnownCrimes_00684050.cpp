@@ -15,6 +15,7 @@
 // result unused; `this` is spilled to a frame word and re-read for the pending list. IsCrime tests `Type > 9` first (retail
 // lays the 2..9 arm second); the linked handle is swapped in BEFORE the first decriminalise call (`first = handle; handle =
 // linked; Decriminalise(first)`), which keeps the deed log in ebx and the list sentinel in ebp (no extra frame word).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -54,7 +55,7 @@ struct CLongList {                                  // retail STLport list<long>
     SListNode* _M_node;
 };
 
-__forceinline bool IsCrime(const COpinionDeed* deed)
+FABLE_FORCEINLINE bool IsCrime(const COpinionDeed* deed)
 {
     if (deed->Type < 2)
         return false;
@@ -63,7 +64,7 @@ __forceinline bool IsCrime(const COpinionDeed* deed)
     return deed->IsCrime && !deed->Decriminalised;
 }
 
-__forceinline void DecriminaliseList(CTCHeroOpinionDeedLog* log, CLongList& deeds)
+FABLE_FORCEINLINE void DecriminaliseList(CTCHeroOpinionDeedLog* log, CLongList& deeds)
 {
     SListNode* end = deeds._M_node;
     for (SListNode* it = end->_M_next; it != end; it = it->_M_next) {

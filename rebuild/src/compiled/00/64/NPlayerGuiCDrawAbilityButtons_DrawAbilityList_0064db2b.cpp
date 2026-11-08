@@ -10,6 +10,7 @@
 //   retail 4 smaller); hero thing presence bits +0x20, interface map +0x44; abilities component scroll index +0x144. Modelled locally.
 // Shape: /Os via optimize("y",off)+("s",on); the GetInterface out-param idiom with the null component tested in the same condition;
 //   the drawn-row counter is initialised as `firstRow - 1` (initialising it from the scrollRow local swaps two registers).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stdlib.h>
@@ -48,7 +49,7 @@ class CThing { public:
     mutable std::bitset<274> m_present;               // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (m_present.test(type)) {
             long key = type;

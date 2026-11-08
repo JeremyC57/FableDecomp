@@ -16,6 +16,7 @@
 //          `IsOfType(0x1f) && IsOriginatedByThing(home)` bound by pointers; every exit returns InvestigatingNoise.
 // Layout: engine/CAIStateGroup_MinionReactToNoise.h (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker
 //          +0x21, FrameOfLastInteraction +0x24); PBrain is the first dword at +0x04.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_MinionReactToNoise.h"
 
 class CTCBase;
@@ -44,7 +45,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
     bool IsPointInside(const C3DVector& point); // 0x0082D000 (CThingBuilding)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

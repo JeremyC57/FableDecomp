@@ -1,4 +1,5 @@
 // Behaviour test for 008a0720: body copied from src/008a0720.cpp (CGameScriptInterface::EntityFadeOut), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -11,12 +12,12 @@ struct CTCMap_Retail {
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind) { STCEntry_Retail* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
     STCEntry_Retail* LowerBound(const unsigned long& kind) const { STCEntry_Retail* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -32,9 +33,9 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
     bool valid; CThing_Retail* thing;
     virtual CThing_Retail* GetThing() const { return thing; }
@@ -49,7 +50,7 @@ class CTCParamsBase;
 static int g_fadeCalls = 0; static float g_fadeTime = -1.0f; static int g_fadeIn = -1; static void* g_fadeThis = 0;
 struct CTCFadeOutAndIn_Retail {
     void Fade(float time, bool fadeIn) { ++g_fadeCalls; g_fadeTime = time; g_fadeIn = fadeIn; g_fadeThis = this; }
-    __forceinline void FadeOut(float time) { Fade(time, false); }
+    FABLE_FORCEINLINE void FadeOut(float time) { Fade(time, false); }
 };
 static int g_addCalls = 0; static const char* g_addName = 0; static int g_addActivate = -1; static CTCBase_Retail* g_addResult = 0;
 struct CThingWithAddTC_Retail : CThing_Retail {

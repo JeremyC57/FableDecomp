@@ -7,6 +7,7 @@
 // loop-invariant block load across a call reproduces with the end and the key block in locals read inside the
 // guard of a bottom-tested loop (a for-loop with the key local hoists that load above the guard).
 // Model: PDB CSymbolMap (+4 SLONGMap, the retail 12-byte vector), pair<CCharString, CSymbolInfo>.
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
@@ -17,7 +18,7 @@ class CCharString { public:
     CCharStringData* m_pStringData;
 };
 
-static __forceinline bool SameText(CCharStringData* a, CCharStringData* b)
+static FABLE_FORCEINLINE bool SameText(CCharStringData* a, CCharStringData* b)
 {
     if (a == b)
         return true;

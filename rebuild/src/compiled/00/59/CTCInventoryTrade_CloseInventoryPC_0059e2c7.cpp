@@ -22,6 +22,7 @@
 // Layout: retail CTCInventoryTrade (see the landed dtor): Components +0x0C, ItemsToBuy/ItemsToSell +0x144/+0x150,
 // InventoryTradeOpen/InventoryTradeInitialised +0x218/+0x219; engine/CTCInventoryTrade.h is the PDB-flattened layout, so
 // the class is modelled locally.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace NUISystem {
@@ -56,7 +57,7 @@ struct CPlayerData : CRefCounted {
 };
 struct CPlayerPtr {
     CPlayerData* Data;
-    __forceinline ~CPlayerPtr() { if (Data) Data->Release(); }
+    FABLE_FORCEINLINE ~CPlayerPtr() { if (Data) Data->Release(); }
 };
 namespace NUISystem { class CManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

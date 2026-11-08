@@ -1,4 +1,5 @@
 // Behaviour test for 0x00836260 (copy of the model + stand-in callee bodies).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -125,13 +126,13 @@ public:
     CTCBase* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     void Kill(bool immediately);                        // 0x004C9B80
     bool GetTCDriver(CTCDParticleEmitter** out);        // 0x004ACB50 (GetTCDriver<CTCDParticleEmitter>)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -139,7 +140,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    __forceinline const CTCBase* GetConstTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetConstTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

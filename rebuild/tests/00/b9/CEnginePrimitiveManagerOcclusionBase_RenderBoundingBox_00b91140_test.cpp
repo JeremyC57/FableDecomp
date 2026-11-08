@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -45,10 +46,10 @@ struct CHandleVector {                            // STLport vector<unsigned lon
     unsigned long* _M_finish;
     unsigned long* _M_end_of_storage;
     bool empty() const { return _M_start == _M_finish; }
-    __forceinline void clear() { _M_finish = (unsigned long*)__copy_trivial(_M_finish, _M_finish, _M_start); }
+    FABLE_FORCEINLINE void clear() { _M_finish = (unsigned long*)__copy_trivial(_M_finish, _M_finish, _M_start); }
     template <class Tag> void _M_insert_overflow(unsigned long* where, const unsigned long& value, const Tag&, unsigned long count,
                             bool atEnd);   // 0x00464ACE
-    __forceinline void push_back(const unsigned long& value)
+    FABLE_FORCEINLINE void push_back(const unsigned long& value)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) unsigned long(value);
@@ -57,7 +58,7 @@ struct CHandleVector {                            // STLport vector<unsigned lon
         else
             _M_insert_overflow(_M_finish, value, SScalarTag(), 1, true);
     }
-    __forceinline void Add(unsigned long value) { push_back(value); }
+    FABLE_FORCEINLINE void Add(unsigned long value) { push_back(value); }
 };
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -107,7 +108,7 @@ class CEngineOcclusionManager { public:
     COccluderEntry* Entries;                       // +0x4014
     COccluderEntry* PrevFrameEntries;              // +0x4018
     unsigned long   EntriesSize;                   // +0x401c
-    __forceinline unsigned long AllocateOccluderHandle()
+    FABLE_FORCEINLINE unsigned long AllocateOccluderHandle()
     {
         if (EntriesSize < 0x2000) {
             unsigned long index = EntriesSize;

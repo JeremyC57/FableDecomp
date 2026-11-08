@@ -1,6 +1,7 @@
 // Behaviour test for 007fbb00: src/007fbb00.cpp copied verbatim; CreateHeadEffect drops the old head effect, looks the
 // named effect up in the parent's special-effects sub-def (type 0 when absent), spawns it at the parent, stores it in
 // PHeadEffect and, when alive, attaches TC 0x4B's emitter to the parent's EFFECT_WATER helper; the sub-def is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -45,7 +46,7 @@ template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -86,7 +87,7 @@ struct CTCMap_Retail {
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind);   // 0x0040F020
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -101,7 +102,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                      // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880

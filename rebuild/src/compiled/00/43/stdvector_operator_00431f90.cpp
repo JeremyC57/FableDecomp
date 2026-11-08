@@ -10,6 +10,7 @@
 //   explicit copy constructor (dword-wise copy in the uninitialized loop).
 // Callees: _M_allocate_and_copy 0x0043212B, _M_clear 0x0043211D (the 14-byte `if (_M_start) free(_M_start)`).
 // Leaf: ??4?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <new>
 
@@ -44,10 +45,10 @@ template <class ForwardIter> inline void _Destroy(ForwardIter first, ForwardIter
     for (; first != last; ++first)
         _Destroy(&*first);
 }
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                          const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {
@@ -58,12 +59,12 @@ __forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, O
     return result;
 }
 template <class T>
-__forceinline T* __copy_ptrs(const T* first, const T* last, T* result, const __false_type&)
+FABLE_FORCEINLINE T* __copy_ptrs(const T* first, const T* last, T* result, const __false_type&)
 {
     return __copy(first, last, result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

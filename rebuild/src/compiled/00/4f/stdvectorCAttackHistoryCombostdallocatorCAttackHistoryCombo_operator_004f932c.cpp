@@ -16,6 +16,7 @@
 //   0x004E41C0, is visible and never reads it, while `__copy_ptrs` 0x004F94D2 is emitted after this function);
 //   the tail's __uninitialized_copy is inlined (placement null test, pair-vector copy, the float as a dword move).
 //   Size TU with a frame pointer (`optimize("y", off)` + `("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -44,13 +45,13 @@ template <class T1, class T2> struct pair {
 };
 
 template <class T1, class T2>
-__forceinline void _Construct(T1* p, const T2& value)
+FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -62,7 +63,7 @@ template <class InputIter, class OutputIter>
 OutputIter __fastcall __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&);   // 0x004F94D2
 
 template <class T>
-__forceinline void _Destroy(T* p)
+FABLE_FORCEINLINE void _Destroy(T* p)
 {
     p->~T();
 }
@@ -75,14 +76,14 @@ void __fastcall __destroy_aux(ForwardIter first, ForwardIter last, const __false
 }
 
 template <class ForwardIter, class T>
-__forceinline void __destroy(ForwardIter first, ForwardIter last, T*)
+FABLE_FORCEINLINE void __destroy(ForwardIter first, ForwardIter last, T*)
 {
     typedef typename __type_traits<T>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(first, last, _Trivial_destructor());
 }
 
 template <class ForwardIter>
-__forceinline void _Destroy(ForwardIter first, ForwardIter last)
+FABLE_FORCEINLINE void _Destroy(ForwardIter first, ForwardIter last)
 {
     __destroy(first, last, first);
 }
@@ -151,7 +152,7 @@ class CAttackHistoryCombo {                         // Ego_r.pdb (retail 0x10 by
 public:
     std::vector<std::pair<EAttackHistoryType, EDamageAttribute> > AttackCombo;   // +0x00
     float Multiplier;                                                           // +0x0C
-    __forceinline CAttackHistoryCombo(const CAttackHistoryCombo& x) : AttackCombo(x.AttackCombo), Multiplier(x.Multiplier) { }
+    FABLE_FORCEINLINE CAttackHistoryCombo(const CAttackHistoryCombo& x) : AttackCombo(x.AttackCombo), Multiplier(x.Multiplier) { }
 };
 
 template std::vector<CAttackHistoryCombo>& std::vector<CAttackHistoryCombo>::operator=(const std::vector<CAttackHistoryCombo>& x);

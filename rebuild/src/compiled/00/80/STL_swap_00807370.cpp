@@ -9,6 +9,7 @@
 // Shape: STLport `_Tp __tmp = __a; __a = __b; __b = __tmp;` -- the copy constructor is the base constructor, the vtable
 //   store and SetPItem(a.GetPItem()); each assignment is SetPItem(other.GetPItem()); the temporary is destroyed by a
 //   direct call to the base destructor.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -23,8 +24,8 @@ public:
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         SetPItem(other.GetPItem());
         return *this;

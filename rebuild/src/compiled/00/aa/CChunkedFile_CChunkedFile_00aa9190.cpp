@@ -7,6 +7,7 @@
 // the Ego_r PDB (CChunkedFile, 20 bytes): RootChunk CCountedPointer<CChunkedFileSuperChunk> at +4,
 // Version at +0xc, FileComment at +0x10. Members are destroyed in reverse order (string first, then
 // the inlined CCountedPointer destructor whose two null stores precede the out-of-line base destructor).
+#include "fable_compiler.h"
 class CChunkedFileSuperChunk;
 
 class CCharString { public:
@@ -24,7 +25,7 @@ struct SCountBlock {                            // the shared count block of a C
 struct CCountedPointer_CChunkedFileSuperChunk {                  // {object, count block}
     CChunkedFileSuperChunk*       m_pObject;                     // +0x00
     SCountBlock* m_pCount;                      // +0x04
-    __forceinline ~CCountedPointer_CChunkedFileSuperChunk()      // forced: VC7.1 would otherwise call it out of line
+    FABLE_FORCEINLINE ~CCountedPointer_CChunkedFileSuperChunk()      // forced: VC7.1 would otherwise call it out of line
     {
         if (m_pCount) {
             --m_pCount->m_references;

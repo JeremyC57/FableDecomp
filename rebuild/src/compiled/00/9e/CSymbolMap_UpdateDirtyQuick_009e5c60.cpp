@@ -2,6 +2,7 @@
 // Leaf: ?UpdateDirtyQuick@CSymbolMap@@QBEXXZ
 // Identity: CSymbolMap::UpdateDirtyQuick()const (chunk 695): this body only sorts, as the landed CCRCSymbolMap::UpdateDirtyQuick 0x00A38FE0 does, and FableWin orders UpdateDirty (0x009E5C30, sort + trim) before UpdateDirtyQuick, as retail does; caller TransferIn 0x009E2590; original nested CSymbolInfo GroupName/EntryName/Val gives16-byte pair. Own RTTI129c158 -> CBaseClassNonCopyable -> CBaseClass. Sort009e7e40.
 // Layout: original polymorphic bases and STLport containers; no active owner header. CVectorMap Data12, empty Compare byte+12, Dirty+13.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -27,6 +28,6 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 class CSymbolMap:public CBaseClassNonCopyable{public:class CSymbolInfo{public:CCharString GroupName,EntryName;long Val;};mutable CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> > SLONGMap;void UpdateDirtyQuick()const;};
 void CSymbolMap::UpdateDirtyQuick()const{SLONGMap.Sort();}

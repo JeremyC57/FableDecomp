@@ -11,6 +11,7 @@
 // at +0xb8 / +0xbc (Ego_r.pdb +0xc8 / +0xcc less 0x10: four retail 12-byte vectors before them).
 // Shape: the building pointers are assigned from temporaries (as SetupFromVillager); the UIDs are modelled as two words (an
 // __int64 member pads the vptr to 8); the random wait is the inline LCG + GFROR13 with a zero-range guard.
+#include "fable_compiler.h"
 class CBaseObject;
 class CThingBuilding;
 
@@ -87,7 +88,7 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer
 }
 #pragma auto_inline(on)
 long __fastcall GFROR13(unsigned long);     // 0x00497890
-__forceinline unsigned long GFRandomBelow(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandomBelow(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

@@ -3,6 +3,7 @@
 // the given damage when reversed (direction negated) and 1 point otherwise, with GuaranteeHit set and the dust effect off;
 // (2) a non-game-object owner takes no hit; (3) the damage floor; (4) an AI creature owner has its animation resumed; (5) a
 // live particle is killed, a dead one is not; (6) the component removes itself (0x8d) every time.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -95,7 +96,7 @@ public:
     bool Initialised;
     bool StartedMoving;
     void FinishBeingForcePushed(bool reversed, float damage);
-    __forceinline void HitOwner(CThing* owner, C3DVector position, const C3DVector& direction, float damage)
+    FABLE_FORCEINLINE void HitOwner(CThing* owner, C3DVector position, const C3DVector& direction, float damage)
     {
         CHitParameters hit(0, PThingCausingForcePush.GetPItem(), 0, position, direction, true, false, false, false);
         hit.GuaranteeHit = true;

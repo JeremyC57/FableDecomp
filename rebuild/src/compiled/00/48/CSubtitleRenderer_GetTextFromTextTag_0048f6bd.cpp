@@ -1,4 +1,5 @@
 // CSubtitleRenderer::GetTextFromTextTag(const CWideString& tag, CWideString& text) -- look the tag up in the game text bank: a text entry gives its text; a group entry gives its next member's text (remembering the tag, advancing the group index and whether entries remain); an unknown tag, or a group already exhausted, copies the tag itself and returns false
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: GetTextFromTextTag
@@ -42,12 +43,12 @@ class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long RefCount;                              // +0x04
-    __forceinline void Release() const { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void Release() const { if (--RefCount == 0) Destroy(); }
 };
 template <class T> class CIVCountedPointer {
 public:
     T* Data;
-    __forceinline ~CIVCountedPointer() { if (Data) { Data->Release(); Data = 0; } }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { if (Data) { Data->Release(); Data = 0; } }
     T* operator->() const { return Data; }
 };
 class CBankFile

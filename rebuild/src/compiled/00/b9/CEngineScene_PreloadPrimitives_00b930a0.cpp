@@ -11,6 +11,7 @@
 //   BoundingSphere +0x84, ClipToSphere +0x94. No engine header carries these as typed members.
 // Shape: the sphere is one function-scope local cleared member by member each iteration (a loop-scoped zeroing ctor lets
 //   VC7.1 sink the four stores below the vptr load and push); the grid pointer is named before the call's arguments.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
@@ -29,7 +30,7 @@ class CShadowClipVolume { public:
     long              ClipPlaneCount;              // +0x80
     C3DBoundingSphere BoundingSphere;              // +0x84
     bool              ClipToSphere;                // +0x94
-    __forceinline bool IsSphereInside(const C3DBoundingSphere& sphere) const
+    FABLE_FORCEINLINE bool IsSphereInside(const C3DBoundingSphere& sphere) const
     {
         if (ClipToSphere) {
             float dx = sphere.Center.X - BoundingSphere.Center.X;

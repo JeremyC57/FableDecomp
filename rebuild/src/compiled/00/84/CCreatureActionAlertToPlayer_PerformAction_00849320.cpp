@@ -8,6 +8,7 @@
 // CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0.
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; the perceived thing's type byte at +0x10 is
 // compared with 2 (the player creature type) before the awareness call. No engine header exists for this class.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -20,7 +21,7 @@ class CThing { public:
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

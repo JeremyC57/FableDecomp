@@ -1,5 +1,6 @@
 // CTCInventoryAbilities::~CTCInventoryAbilities() -- destroy the ability/expression bookkeeping members in reverse order, then both bases
 // Leaf: ??1CTCInventoryAbilities
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F3CFE, length 200 bytes. Called only by the deleting destructor 0x005FA461
 // (slot 0 of CTCInventoryAbilities's vtable 0x01256AD4); the catalog label
@@ -22,7 +23,7 @@ template<class T> struct CPODVector {              // STLport vector of a trivia
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CPODVector()
+    FABLE_FORCEINLINE ~CPODVector()
     {
         if (_M_start)
             free(_M_start);

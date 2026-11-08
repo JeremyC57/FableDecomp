@@ -1,4 +1,5 @@
 // Behaviour test for 0x006CE730 (source body copied from src/006ce730.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -97,14 +98,14 @@ public:
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const   // the landed 0x007504E0 shape
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const   // the landed 0x007504E0 shape
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

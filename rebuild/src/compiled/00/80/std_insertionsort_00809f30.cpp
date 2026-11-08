@@ -8,6 +8,7 @@
 //   by-value argument slot. Callers 0x0080A800 / 0x0080A81E (__final_insertion_sort) and 0x0080B53D / 0x0080B557.
 // Callees: STLport __linear_insert(first, last, value, comp) 0x00809650, CBaseIntelligentPointer ctor 0x00A01B10 /
 //   GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (the callee destroys its by-value argument).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -21,7 +22,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
 };
 typedef CIntelligentPointer<CThing> ThingPointer;
 

@@ -7,6 +7,7 @@
 //   free 0x00BFEA14.
 // Shape (family K105, representative 0x00485DBC): the landed __true_type overload 0x007A91A0 (family F005) in a frame/size TU:
 //   allocate and _M_clear/_M_set inline, __copy_trivial and fill_n called; new_start in ebx, len in edi.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
@@ -14,14 +15,14 @@ extern "C" void __cdecl free(void* block);                                      
 namespace NPlayerGui { class CDrawBase; }
 namespace std {
 struct __true_type { };
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 void* __fastcall __copy_trivial(const void* __first, const void* __last, void* __result);   // 0x00405BA0
 template <class _OutputIter, class _Size, class _Tp>
 _OutputIter __fastcall fill_n(_OutputIter __first, _Size __n, const _Tp& __value);         // 0x00654D0C
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
 public:
@@ -37,13 +38,13 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
-    __forceinline size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    FABLE_FORCEINLINE size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;

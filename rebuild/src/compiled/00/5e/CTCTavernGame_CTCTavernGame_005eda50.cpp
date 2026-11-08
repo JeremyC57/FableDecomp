@@ -18,6 +18,7 @@
 // Shape: the implicit destructor, emitted out of line through a qualified explicit destructor call in a one-line helper
 //   (EmitImplicitDestructor, not a retail function); CCountedPointer's inline release (`ReleaseData(); Data = 0; Info = 0;`),
 //   STLport ~vector (_Destroy the range, then ~_Vector_base frees the block).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
@@ -69,7 +70,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     T* operator->() const { return static_cast<T*>(Object); }
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -78,25 +79,25 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
     unsigned long GetReferenceCount() const { return Data.GetRefCount(); }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (GetReferenceCount() == 1)
             Data->NotifyReleased(*this);
         Data.Reset(0);
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 

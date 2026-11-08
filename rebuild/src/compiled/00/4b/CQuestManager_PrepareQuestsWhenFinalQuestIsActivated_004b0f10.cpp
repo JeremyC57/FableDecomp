@@ -13,6 +13,7 @@
 // GetActiveQuestCardFromScriptName 0x004B0C80; the closing World store is duplicated into both exits.
 // Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CWorld CWorldDonor
 #include "engine/CWorld.h"
 #undef CWorld
@@ -49,7 +50,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
+    FABLE_FORCEINLINE CTCBase* Find(long type) const         // the inlined map find: the end entry when absent
     {
         const CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -75,13 +76,13 @@ class CThing { public:                                          // retail CThing
     unsigned char InLimbo : 1;                           // bit 5
     unsigned char KillLocked : 1;
     unsigned char CreatedBySerialisation : 1;
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
     void Kill(bool immediately);                         // 0x004C9B80
 };
 
 class CTCQuestCard;                                     // TC type 0x6c
-__forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
+FABLE_FORCEINLINE CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
 {
     CTCQuestCard* tc;
     if (thing->HasTC(0x6c))

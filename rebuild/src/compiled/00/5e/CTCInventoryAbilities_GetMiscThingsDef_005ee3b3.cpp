@@ -17,6 +17,7 @@
 // Fix (retry 10): the def local's release stays register-held once GetDef<T> has its same-TU operator=-shaped body
 //   (defreal), and CGameDefinitionManager::Get is the `__fastcall` static returning a reference (a plain static Get()
 //   hoisted `lea eax,[ebp-4]` above `push 1`).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -36,9 +37,9 @@ struct CDefBase {                           // counted game definition: vtable +
 template <class T>
 class CDefPointer { public:
     T* m_pDef;
-    __forceinline CDefPointer() : m_pDef(0) { }
-    __forceinline CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
-    __forceinline ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
+    FABLE_FORCEINLINE CDefPointer() : m_pDef(0) { }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
 };
 
 struct CUIMiscThingsDef : CDefBase { };

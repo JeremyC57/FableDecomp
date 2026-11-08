@@ -13,6 +13,7 @@
 //   return first;` with the counted random-access __copy forced inline (the count `(finish - last) / 0x88` homed in the
 //   dead `last` slot, the source kept as an offset from the destination in [ebp-4]); unlike the 0xC4 sibling 0x00476F9B,
 //   _Destroy itself stays out of line here (no tag push; finish loaded into edx before first into ecx).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CEngineLocalDetailObjectDef {                         // retail 0x88 bytes (only the size and the assignment matter here)
@@ -34,7 +35,7 @@ template <class _ForwardIterator>
 void __fastcall _Destroy(_ForwardIterator __first, _ForwardIterator __last);   // 0x004774B9
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -46,7 +47,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

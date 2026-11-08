@@ -14,6 +14,7 @@
 //   -> false, else the data compare), iter_swap reaching the out-of-line swap(*a, *b). The by-value pivot dies through
 //   the pair destructor's out-of-line COMDAT (VC7.1 inlines the implicit ~pair here, 182 v 110, so the model declares
 //   it, as the same-TU swap/linear-insert callees are declared).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
 // Same-TU body of CBasicString<char>::operator< 0x00429950 (landed) under auto_inline(off), so VC7.1 keeps the
@@ -22,7 +23,7 @@ void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

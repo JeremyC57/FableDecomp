@@ -19,6 +19,7 @@
 //   CutsceneFinished +0x4c (PDB +0x60).
 // Shape: the landed WaspIntro sibling, with the cast map spelled as the real STLport 4.6 std::map (inline constructor:
 //   malloc'd header node; out-of-line operator[] and destructor).
+#include "fable_compiler.h"
 #include <stddef.h>
 
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
@@ -80,7 +81,7 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -669,14 +670,14 @@ class CThingManager { public:CThing* GetPThingWithUID(ThingUID);}; //0051ED80 ac
 class C2DCoordI { public:long X,Y;};
 class CWorldMap { public:
  void* VTable;typedef long(CWorldMap::*MapNumberMethod)(const C2DCoordI&)const;
- __forceinline long GetMapNumberAt(const C2DCoordI& p)const{return(this->*static_cast<MapNumberMethod*>(VTable)[17])(p);}
+ FABLE_FORCEINLINE long GetMapNumberAt(const C2DCoordI& p)const{return(this->*static_cast<MapNumberMethod*>(VTable)[17])(p);}
 };
 class CWorld { public:
  void* VTable;
  typedef CThingManager&(CWorld::*ThingManagerMethod)();
  typedef const CWorldMap&(CWorld::*WorldMapMethod)()const;
- __forceinline CThingManager& GetThingManager(){return(this->*static_cast<ThingManagerMethod*>(VTable)[3])();}
- __forceinline const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
+ FABLE_FORCEINLINE CThingManager& GetThingManager(){return(this->*static_cast<ThingManagerMethod*>(VTable)[3])();}
+ FABLE_FORCEINLINE const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
 };
 class CMap { public:
  unsigned char NativeMapPrefix[0x20];CWorld* World;

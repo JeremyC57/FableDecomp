@@ -16,6 +16,7 @@
 // conditional-temporary flag (bl; its frame word is zeroed at entry and doubles as the lookup key). The
 // temporary's implicit destructor stores no vtable and calls the CCombatActionBase destructor.
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -36,7 +37,7 @@ class CThing_Retail { public:
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

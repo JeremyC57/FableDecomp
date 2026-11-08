@@ -13,6 +13,7 @@
 // Shape: `return (*F1)(thing) && (*F2)(thing);` (the `&&` value gives the `mov eax,1` / `xor eax,eax` exits) over the landed
 //   0x006689E0 sphere body made __forceinline (plain inline stays a call): centre in a frame local, the bound radius homed in the dead argument slot, the
 //   squares summed as one expression (VC squares Z, Y, X). No pragma.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
@@ -28,7 +29,7 @@ class CThingFilter_OverlappingSphere {
 public:
     C3DVector SpherePos;                        // +0x00
     float     Radius;                           // +0x0c
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         C3DVector centre;
         float boundRadius;

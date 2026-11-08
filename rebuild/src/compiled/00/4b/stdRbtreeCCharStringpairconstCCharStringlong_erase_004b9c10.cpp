@@ -10,6 +10,7 @@
 // (identical-code folded over map<CCharString, 4-byte value> instantiations); `long` stands for it.
 // Shape: `erase(first++)` = the in-order successor computed inline (`_M_increment`) with the victim kept in ecx;
 // clear() zeroes parent and count from one `xor esi,esi` register.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 
 class CCharStringData;
@@ -42,13 +43,13 @@ template <class _Dummy> struct _Rb_global {
                                                             _Rb_tree_node_base*& leftmost, _Rb_tree_node_base*& rightmost);   // 0x0042A34E
 };
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
 struct _Rb_tree_iterator {
     _Rb_tree_node_base* _M_node;
-    __forceinline _Rb_tree_iterator() {}
-    __forceinline _Rb_tree_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
-    __forceinline void _M_increment()
+    FABLE_FORCEINLINE _Rb_tree_iterator() {}
+    FABLE_FORCEINLINE _Rb_tree_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
+    FABLE_FORCEINLINE void _M_increment()
     {
         if (_M_node->_M_right != 0) {
             _M_node = _M_node->_M_right;
@@ -65,9 +66,9 @@ struct _Rb_tree_iterator {
                 _M_node = y;
         }
     }
-    __forceinline _Rb_tree_iterator operator++(int) { _Rb_tree_iterator tmp = *this; _M_increment(); return tmp; }
-    __forceinline bool operator==(const _Rb_tree_iterator& x) const { return _M_node == x._M_node; }
-    __forceinline bool operator!=(const _Rb_tree_iterator& x) const { return _M_node != x._M_node; }
+    FABLE_FORCEINLINE _Rb_tree_iterator operator++(int) { _Rb_tree_iterator tmp = *this; _M_increment(); return tmp; }
+    FABLE_FORCEINLINE bool operator==(const _Rb_tree_iterator& x) const { return _M_node == x._M_node; }
+    FABLE_FORCEINLINE bool operator!=(const _Rb_tree_iterator& x) const { return _M_node != x._M_node; }
 };
 
 template <class K, class V> class _Rb_tree {
@@ -80,9 +81,9 @@ public:
 private:
     void _M_erase(_Node* x);                 // 0x004ABA70
 public:
-    __forceinline iterator begin() { return iterator(_M_header->_M_left); }
-    __forceinline iterator end() { return iterator(_M_header); }
-    __forceinline void clear()
+    FABLE_FORCEINLINE iterator begin() { return iterator(_M_header->_M_left); }
+    FABLE_FORCEINLINE iterator end() { return iterator(_M_header); }
+    FABLE_FORCEINLINE void clear()
     {
         if (_M_node_count != 0) {
             _M_erase(static_cast<_Node*>(_M_header->_M_parent));
@@ -92,7 +93,7 @@ public:
             _M_node_count = 0;
         }
     }
-    __forceinline void erase(iterator position)
+    FABLE_FORCEINLINE void erase(iterator position)
     {
         _Node* y = static_cast<_Node*>(_Rb_global<bool>::_Rebalance_for_erase(position._M_node, _M_header->_M_parent,
                                                                               _M_header->_M_left, _M_header->_M_right));

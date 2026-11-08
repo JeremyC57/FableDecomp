@@ -15,6 +15,7 @@
 // through esi; the region's def pointer is a by-value CCountedPointer copy whose copy ctor and dtor share the null
 // test.
 
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -28,7 +29,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_dead : 1;             // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -41,7 +42,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* tc;
         GetInterface(&tc, interfaceType);

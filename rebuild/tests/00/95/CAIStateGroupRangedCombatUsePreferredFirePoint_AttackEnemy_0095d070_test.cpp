@@ -1,5 +1,6 @@
 // Behaviour test for 0095d070: src/0095d070.cpp copied verbatim, the readiness test, positions and the combat pump stubbed
 // so every exit is observable. CAIStateGroup_RangedCombatUsePreferredFirePoint::AttackEnemy()
+#include "fable_compiler.h"
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
@@ -43,7 +44,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -128,7 +129,7 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBaseC {
     bool AttackEnemy();
     // the creature is a named local read before the fire-point position; the 2D delta is built by the by-value
     // `operator-` and `X*X + Y*Y` compared with the tolerance
-    __forceinline bool IsAwayFromFirePoint()
+    FABLE_FORCEINLINE bool IsAwayFromFirePoint()
     {
         CThingPos* creature = (CThingPos*)GetCreature();
         const C2DVector& firePos = ((CThingPos*)PFirePoint.GetPItem())->GetPosition();

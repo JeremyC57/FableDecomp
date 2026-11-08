@@ -12,6 +12,7 @@
 // Shape: /Os pass-through base argument; the derived vtable store first, then the vector's inline
 // constructor (three zero stores through ebp), then each handle's inline default constructor: the
 // CBaseClass call, the handle vtable (kept in ebx across the three) and the null CIVCountedPointer.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 struct CThingConst;
@@ -47,12 +48,12 @@ struct CIntelligentPointerThing {                           // CIntelligentPoint
 
 struct CIVCountedPointer {                                  // CIVCountedPointer<CEnginePersistentPrimitiveBase>
     CEnginePersistentPrimitiveBase* Object;
-    __forceinline CIVCountedPointer() : Object(0) { }
+    FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598
     CIVCountedPointer Data;                                 // +4
-    __forceinline CEnginePrimitiveHandle() { }             // inline under /Os only when forced
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }             // inline under /Os only when forced
 };
 
 class CTCDPhysicalObstruction : public CTCDriverBase_Calls { public:

@@ -18,6 +18,7 @@
 //   locals (`= false; if (x) = true;`), homed in bytes 1..3 of the 4-byte frame word; the game-player interface is a local taken
 //   before the PeekPlayer().GetJoystickDeviceNumber() argument chain. A same-TU noinline LowerBound body keeps the lookup keys uncaptured
 //   so they share the second frame word with the carrying pointer.
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -72,13 +73,13 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;                          // +0x91 bit 0: dead
     const CPlayer& PeekPlayer() const;              // 0x004C7A10
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -89,7 +90,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetConstInterface(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE T* GetConstInterface(long interfaceType) const
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

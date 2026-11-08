@@ -13,6 +13,7 @@
 // CThing: interface bitset +0x20 (type 0x31 = CTCCreatureModeManager, bit 17 of the second word), interface map +0x44.
 // Shape: the inline out-parameter GetInterface (the not-found arm leaves the out pointer untouched, so retail
 // reads the shared key/out frame slot); the mode type comes from a virtual call on GetCurrentMode().
+#include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
 class CBaseObject;
@@ -100,7 +101,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

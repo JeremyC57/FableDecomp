@@ -1,6 +1,7 @@
 // Behaviour test for 0x006D4AA0 CPersistContext_TransferableVector<pair<CCharString,long> >::Resize: the traits default
 // ("", 0) is built, STLport resize(n, x) erases the tail or fill-inserts copies of the default, and the traits string is
 // destroyed on both paths. Working stand-ins for erase / _M_fill_insert over a fixed buffer.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -46,7 +47,7 @@ struct SNamedLongVector {
         for (unsigned long i = 0; i < n; ++i) *_M_finish++ = x;
     }
     void insert(SNamedLong* position, unsigned long n, const SNamedLong& x) { _M_fill_insert(position, n, x); }
-    __forceinline void resize(unsigned long newSize, const SNamedLong& x)
+    FABLE_FORCEINLINE void resize(unsigned long newSize, const SNamedLong& x)
     {
         if (newSize < size())
             erase(begin() + newSize, end());

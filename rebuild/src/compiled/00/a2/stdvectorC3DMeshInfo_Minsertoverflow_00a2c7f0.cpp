@@ -16,6 +16,7 @@
 //   the tail copy as a call, exactly as retail; noinline or __forceinline helpers give an all-call or all-inline body.
 // Layout: local models -- engine/C3DMeshInfo.h / CMeshDataBankEntry.h are flat (no vptr, no base), and the placement
 //   copy needs the real polymorphic pair (header debt, NOTES.md).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -48,13 +49,13 @@ template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { r
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for ( ; __first != __last; ++__first)
         _Destroy(&*__first);
 }
 template <class _ForwardIterator>
-__forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 {
     __destroy_aux(__first, __last, __false_type());
 }

@@ -24,6 +24,7 @@
 // Shape: the landed CAT_Sentry::Init 0x00F08E90 spawn block (real CSpawnedFunc1 template, __forceinline ctor, inline copy
 //   of Me into the by-value argument, out-of-line ~CScriptThing); CCharString::operator== inline (strcmp intrinsic on
 //   the null arm, Compare otherwise).
+#include "fable_compiler.h"
 #include <string.h>
 class CCharString;
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
@@ -31,7 +32,7 @@ template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -45,7 +46,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -60,7 +61,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 #include "engine/CCountedPointer.h"
 class CBaseClass { public:                              // vtable 0x01231710
     virtual ~CBaseClass();                              // 0x0099A2E0
-    __forceinline CBaseClass() { }
+    FABLE_FORCEINLINE CBaseClass() { }
 };
 class CScriptThing : public CBaseClass { public:        // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002();
@@ -68,7 +69,7 @@ class CScriptThing : public CBaseClass { public:        // vtable 0x01238C8C, 12
     CCountedPointer<CScriptThing> PImp;                 // +0x04
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other);            // 0x004ABE90 (the out-of-line copy)
-    __forceinline CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
+    FABLE_FORCEINLINE CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
 class CGameScriptInterfaceBase { public:          // slots: ghidra_out/cgsi_slots_aligned.tsv (CGameScriptInterface vtable 0x01260F0C)
@@ -134,7 +135,7 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 namespace NScript { class CPredicateBase; }
 class CSpawnedFuncBase { public:                        // 0x34 bytes
     unsigned char _base[0x10];                          // CScriptProcessBase +0x04 .. +0x13 (vptr +0x00)
@@ -154,7 +155,7 @@ template <class TClass, class TPar1> class CSpawnedFunc1 : public CSpawnedFuncBa
     void (TClass::*Func)(TPar1);                        // +0x34
     TClass* PClass;                                     // +0x38
     TPar1   Par1;                                       // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, TClass* pclass, void (TClass::*func)(TPar1), TPar1 par1)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, TClass* pclass, void (TClass::*func)(TPar1), TPar1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
     virtual void SuspendableProcess();
 };

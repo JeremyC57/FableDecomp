@@ -22,6 +22,7 @@
 // Frame: the combatant map find has a same-TU noinline body (below) so VC7.1 knows its node result is not derived from the key
 //   it was handed; with the extern declaration alone the first key's slot stays alive while &info.AttackerInfo (spilled for
 //   SetAttackerProngAsBlocked) lives, and the frame grows to 60h (key spellings, pointer/reference info, block scopes, /Oa, QFE do not help).
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class C3DVector { public:
@@ -69,7 +70,7 @@ class CThing { public:
     unsigned char m_flags6c;                          // +0x6c
     unsigned __int64 GetUID() const { return UniqueID; }
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline T* GetTCIfPresent(long type) const
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long type) const
     {
         T* component = 0;
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {

@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2EEC0, length 96 bytes.
 // Callees: CGraphicFrameData::Uninitialise @ 0x009FCBA0, the count block's destroy (slot +4 with the object at +8 in ecx), operator delete @ 0x00BFE9BC twice (the block,
 // then the data). Shape: `dec dword ptr [esi] ; jne` on the shared count, the inlined destructor chain, the pointer cleared on both arms. One of three byte-identical copies (0x0041C150, 0x00A00B90, 0x00B2EEC0).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct SCountBlock_00b2eec0 {
     long  m_references;                            // +0x00
@@ -11,7 +12,7 @@ struct SCountBlock_00b2eec0 {
 struct CCountedPointer_00b2eec0 {                     // 8 bytes: the object and its count block
     void*                 m_pObject;               // +0x00
     SCountBlock_00b2eec0*    m_pCount;                // +0x04
-    __forceinline ~CCountedPointer_00b2eec0()
+    FABLE_FORCEINLINE ~CCountedPointer_00b2eec0()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -30,7 +31,7 @@ class CGraphicFrameData { public:                   // the shared frame data: a 
     CCountedPointer_00b2eec0   m_texture;             // +0x08
     unsigned char           _pad10[0xa];
     unsigned char           m_flags;               // +0x1a (bit 4 = initialised)
-    __forceinline ~CGraphicFrameData()
+    FABLE_FORCEINLINE ~CGraphicFrameData()
     {
         if (m_flags & 0x10)
             Uninitialise();

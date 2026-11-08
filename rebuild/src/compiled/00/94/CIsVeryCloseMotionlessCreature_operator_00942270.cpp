@@ -13,6 +13,7 @@
 //   the step is `(pos - lastPos).GetLengthSquared()` with the landed C3DVector inline operators; the distance is the
 //   square root of the 2D sum; the step test is `!(step > eps*eps)` (`test ah,5 ; jnp`, NaN passes); both tests are
 //   nested ifs sharing the `xor al,al` exit.
+#include "fable_compiler.h"
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double x);
 #include "engine/C3DVector.h"
@@ -34,7 +35,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -64,9 +65,9 @@ public:
     unsigned char  _pad50[0x10];
     CPhysicsBody*  m_pBody;                        // +0x60
     long GetCreatureCategory() const;              // 0x00662000
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCMotion* GetMotionIfPresent(const CThing* thing)
+FABLE_FORCEINLINE CTCMotion* GetMotionIfPresent(const CThing* thing)
 {
     CTCMotion* tc;                                 // deliberately unset when the component is absent
     if (thing->HasTC(2))

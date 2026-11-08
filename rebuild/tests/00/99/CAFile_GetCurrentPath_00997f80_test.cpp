@@ -1,4 +1,5 @@
 // Behaviour test for 0x00997F80 (source body copied from src/00997f80.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -42,7 +43,7 @@ struct CBasicStringW {                                  // STLport basic_string<
     unsigned long size() const { return _M_finish - _M_start; }
     const wchar16* data() const { return _M_start; }
 };
-__forceinline bool operator==(const CBasicStringW& s, const wchar16* text)
+FABLE_FORCEINLINE bool operator==(const CBasicStringW& s, const wchar16* text)
 {
     unsigned long n = char_traits_w::length(text);
     return s.size() == n && char_traits_w::compare(s.data(), text, n) == 0;

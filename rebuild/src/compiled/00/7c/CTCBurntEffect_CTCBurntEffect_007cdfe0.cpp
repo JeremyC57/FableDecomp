@@ -20,6 +20,7 @@
 //   The copy loop __copy (0x007CE1F0, same TU, back_insert_iterator returned by hidden pointer in ecx) has a
 //   same-TU stand-in body (AppendThing = push_back of the converted CIntelligentPointer): with only a declaration
 //   VC7.1 homes the hidden result in the dead `index` slot instead of the dead `parent` slot.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
 class CThing;
@@ -122,13 +123,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

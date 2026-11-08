@@ -10,6 +10,7 @@
 // the byte buffer is the retail CArray with the GetData idiom (its own address when empty).
 // Shape: the compressed size is written through the `bufferSize` PARAMETER (its home slot: the parameter is reassigned after the
 // three-way clamp has chosen the chunk size, so the clamp itself stays in edi); `finished` is a frame byte cleared before the do/while.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 
 class CACompressor { public:                                        // landed 0x00A3AEA0 (vtable 0x0129B424)
@@ -42,7 +43,7 @@ class CDataOutputStream { public:
     virtual long GetPosition();                              // slot 2 (+8)
     virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    __forceinline void WriteLong(long value) { WriteData(&value, 4); }
+    FABLE_FORCEINLINE void WriteLong(long value) { WriteData(&value, 4); }
     void WriteZlibCompressed(const void* data, long size, long bufferSize);
 };
 

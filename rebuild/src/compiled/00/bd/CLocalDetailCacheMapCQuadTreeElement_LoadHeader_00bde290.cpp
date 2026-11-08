@@ -10,6 +10,7 @@
 // Shape: the landed sibling CObjectCacheGroupCollection::LoadHeader (0x00BDE190): a header local whose bounding
 // sphere constructor zeroes its four floats (immediate stores), the __forceinline Read, then member-wise copies in
 // source order (the four shorts, the file-block trio, fade/mask, then the sphere through its implicit assignment).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
@@ -20,7 +21,7 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    __forceinline void Read(void* destination, long bytes)
+    FABLE_FORCEINLINE void Read(void* destination, long bytes)
     {
         __int64 next = (unsigned long)(StreamPos + bytes);
         if (next >= 0 && next <= 0x7fffffff) {

@@ -14,11 +14,12 @@
 // Shape: STLport 4.6 `__unguarded_linear_insert`; the pair / CPersistInfo assignments are the implicit member-wise ones
 //   (three operator= calls), val's implicit destructor runs PersistScript, QuestName, first. /Gr TU: the template is
 //   `__fastcall`. The landed 0x00429950 body sits above under `auto_inline(off)` as the extra rule asks.
+#include "fable_compiler.h"
 #pragma auto_inline(off)
 template <class T> class CBasicString {
 public:
     T* m_pData;                                             // +0x0
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

@@ -10,6 +10,7 @@
 //   inline manager setter (`SetMousePosition(CMousePosition&)`), the same form as the landed sibling
 //   CInputProcessPhotojournalCapture::ProcessInput 0x00691AE0. Float members are required: with longs the same form
 //   stays in registers.
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 struct CMousePosition {
     float X, Y;
@@ -58,7 +59,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCQuestCompletionUI* Find(long kind)
+    FABLE_FORCEINLINE CTCQuestCompletionUI* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCQuestCompletionUI*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -69,8 +70,8 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCQuestCompletionUI* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCQuestCompletionUI* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {

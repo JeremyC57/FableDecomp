@@ -1,4 +1,5 @@
 // Behaviour test for 0x008326A0: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -37,7 +38,7 @@ struct SCountBlock {
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -109,7 +110,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20
     CInterfaceMap Components;                   // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

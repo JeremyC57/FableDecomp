@@ -18,6 +18,7 @@
 //   bytes in both builds): WaypointInfo[18] +0x48, TourGuideKilled +0x120, AllFollowersDead +0x121, QuestFinished +0x122.
 // Shape: the landed CQS_GuardianSisterInfo2_SisterInBanditCampScript::Main 0x00E268C0 / CV_IntroductionToTrophiesScript::Main
 //   0x00E9C4B0 forms (bindings with conditional name temporaries, the __forceinline SpawnFunction helper, `while (!flag)`).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -58,7 +59,7 @@ public:
     void WatchForClosingTime();                         // 0x00EE4A00
     void WatchForGuideKilled();                         // 0x00EE4A70
     // Source-level spawn helper of the landed quest rows (no retail symbol).
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 
 void CV_TourGuideScript::Main()

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CTCInventory::GetQuickAccessItemDef(unsigned long index) -- inventory-item definition of the item in a combined slot, a null def pointer for an empty slot
@@ -34,7 +35,7 @@ class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
     CLongVector   ContextSensitiveItems;             // +0x154 (PDB +0x178)
-    __forceinline long GetQuickAccessItem(unsigned long index)   // 0x00581E33 (inlined here)
+    FABLE_FORCEINLINE long GetQuickAccessItem(unsigned long index)   // 0x00581E33 (inlined here)
     {
         if (index < ContextSensitiveItems.size())
             return ContextSensitiveItems[index];

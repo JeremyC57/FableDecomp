@@ -1,4 +1,5 @@
 // Behaviour test for 0x0076DF90: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -42,7 +43,7 @@ struct CBasicStringChar {
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
-    __forceinline bool operator==(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE bool operator==(const CBasicStringChar& other) const
     {
         if (StringLength != other.StringLength)
             return false;
@@ -58,7 +59,7 @@ class CCharString { public:
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Data.StringLength; }
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
     CCharString ToLower() const;                            // 0x0099ED10
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

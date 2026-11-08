@@ -14,6 +14,7 @@
 // still lives), and the root's inline empty destructor restores the root vtable. Built under
 // /EHsc (the funclets land through the funclet pass). The manifest label is propagated garbage;
 // the classes are named by address. One of 3 bodies of this shape.
+#include "fable_compiler.h"
 namespace N_00c3b960 { struct CItem {
     ~CItem();                              // 0x00C3B960
 }; } using N_00c3b960::CItem;
@@ -44,7 +45,7 @@ struct CContainer_00c30640 : CRoot_00c30640 {          // vtable 0x012B4B90
     virtual void v09();
     virtual void v10();
     virtual CItem* RemoveFirst();          // slot 11
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         while (CItem* item = RemoveFirst()) {
             OnRemove(item);

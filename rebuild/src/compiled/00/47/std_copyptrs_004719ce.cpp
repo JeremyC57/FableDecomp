@@ -11,6 +11,7 @@
 //   *result++ = *first++` (the `idiv` by 0x14). The element assignment is pair's implicit member-wise operator= (the key
 //   dword, then CAnimationEntry::operator= on +4), spelled out `__forceinline` because a size TU leaves it out of line.
 // Shape: `push 14h ; pop edi` = size TU (#pragma optimize("s", on)), no frame pointer.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CAnimComponentMap;
@@ -30,7 +31,7 @@ struct random_access_iterator_tag { };
 template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
-    __forceinline pair& operator=(const pair<T1, T2>& other)
+    FABLE_FORCEINLINE pair& operator=(const pair<T1, T2>& other)
     {
         first = other.first;
         second = other.second;
@@ -39,7 +40,7 @@ template <class T1, class T2> struct pair {
 };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {

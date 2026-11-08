@@ -1,5 +1,6 @@
 // Behaviour test for 007bb070: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCTrespasser::ForceTrespass() -- when the trespassed thing is alive and trespassable, posts the trespass deed to the owner's opinion deed log, keeping the handle when no trespass deed is open yet
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -37,7 +38,7 @@ class CThing { public:
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

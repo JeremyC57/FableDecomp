@@ -14,6 +14,7 @@
 // Shape: the report string is inlined at the first two sites and called out of line at the third (VC7.1's inline
 //   budget: modelled as a __forceinline constructor plus the out-of-line allocator overload); the first two reports
 //   tail-merge; each return keeps its own cookie-check epilogue.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                                // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int size);  // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);                                         // 0x00BFEA14
@@ -37,7 +38,7 @@ struct CNetErrorString {                           // STLport basic_string<char>
     {
         return last == first ? result : (char*)memmove(result, first, last - first) + (last - first);
     }
-    __forceinline CNetErrorString(const char* text)
+    FABLE_FORCEINLINE CNetErrorString(const char* text)
     {
         unsigned int n = strlen(text);
         m_start = (char*)malloc(n + 1);
@@ -47,7 +48,7 @@ struct CNetErrorString {                           // STLport basic_string<char>
         *m_finish = 0;
     }
     CNetErrorString(const char* text, const std::allocator<char>& a);   // 0x00568440
-    __forceinline ~CNetErrorString()
+    FABLE_FORCEINLINE ~CNetErrorString()
     {
         if (m_start)
             free(m_start);

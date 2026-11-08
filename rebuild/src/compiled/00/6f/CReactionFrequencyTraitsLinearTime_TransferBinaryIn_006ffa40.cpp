@@ -7,6 +7,7 @@
 // the dead stream-argument slot (two named locals give the second its own frame word), each read then stored
 // to its member. FrameHappened (+0x0c) is runtime state and is
 // not persisted. `this` uses engine/CReactionFrequencyTraits_LinearTime.h.
+#include "fable_compiler.h"
 #include "engine/CReactionFrequencyTraits_LinearTime.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -22,8 +23,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

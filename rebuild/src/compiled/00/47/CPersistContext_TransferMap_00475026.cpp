@@ -18,6 +18,7 @@
 //   referenced once per exit and its slot outranks the conditional-temp flag ([ebp-8], as retail); the binary cases are
 //   mode 2 = TransferMapIn(PLoadStream) and mode 3 = TransferMapOut(PSaveStream) (the parked source had them swapped,
 //   which the masked jump-target diff hid).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -39,7 +40,7 @@ template <class T> class CBasicString { public:                       // Ego_r.p
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
 public:
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

@@ -3,6 +3,7 @@
 // negative-time early outs, the landing (SetPosition(*EndPos) and a normalised XY facing with Up (0,0,1)), the intangible
 // mode's time (battle def or 5.0f) and follow-up action (lunge at a living target, else drop-in), the def release, and the
 // particle detach; and the missing-component cases.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cmath>
 
@@ -124,7 +125,7 @@ class CThing { public:
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CTCGraphicAppearance* GetGraphicAppearance() const { return GraphicAppearanceTC; }
     CDefClassBase* GetDef() const { return m_pDef; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -156,7 +157,7 @@ struct CCreaturePointer {
     CThingCreatureBase* GetPItem() const { return m_pItem; }
     operator CThingCreatureBase*() const { return GetPItem(); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

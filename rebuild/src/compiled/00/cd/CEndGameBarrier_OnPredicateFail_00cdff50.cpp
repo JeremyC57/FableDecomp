@@ -4,6 +4,7 @@
 // Actual Thing/Game/string headers. Verified Thing slots6 GetPos,10 GetAngleXY,75 IsAlive;
 // Game slots108 RemoveThing,100 CreateEffect. Returned Thing destructor004AA840; strings99EBF0/99EAE0.
 // Leaf: OnPredicateFail
+#include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
@@ -17,7 +18,7 @@ struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
  ScriptMethods(){}
- __forceinline ScriptMethods(const CScriptThing& other):CBaseClassNative(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
+ FABLE_FORCEINLINE ScriptMethods(const CScriptThing& other):CBaseClassNative(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
  ScriptMethods(const ScriptMethods& other):CBaseClassNative(),PImp(other.PImp){}
  virtual ~ScriptMethods(); //004AA840, callee owns by-value argument destruction
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0

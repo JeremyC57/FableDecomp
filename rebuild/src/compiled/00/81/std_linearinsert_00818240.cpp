@@ -12,6 +12,7 @@
 // `*first = val`; the else arm copies val memberwise into the callee's argument area (C3DVector's user copy
 // constructor makes the element's implicit copy constructor memberwise). Plain `inline` leaves copy_backward an
 // out-of-line call here (measured, with and without the SGI Distance* tag level); `__forceinline` restores retail's body.
+#include "fable_compiler.h"
 struct CHitLocation;
 #include "engine/C3DVector.h"
 namespace {
@@ -27,7 +28,7 @@ struct THitLocationIntersectionElementPred {       // empty functor, passed in a
 }
 namespace std {
 template <class BidirectionalIter1, class BidirectionalIter2>
-__forceinline BidirectionalIter2 copy_backward(BidirectionalIter1 first, BidirectionalIter1 last, BidirectionalIter2 result)
+FABLE_FORCEINLINE BidirectionalIter2 copy_backward(BidirectionalIter1 first, BidirectionalIter1 last, BidirectionalIter2 result)
 {
     for (int n = last - first; n > 0; --n)
         *--result = *--last;

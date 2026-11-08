@@ -1,5 +1,6 @@
 // CEnginePrimitiveOcclusionGroupManager::RenderPrimitive -- first render lazily creates current-layer occlusion info unless disabled, advances frame count, queues a bounding-box subprimitive. Retail00bacc50 body184bytes ret12,8int3 padding. Calls globalnew00bfea1a,infoctor00b2fa90,poolnew00beb540,subbasector0099a2f0,sortedqueue00b84720. RTTI sub012a3e84=CEngineSubPrimitiveBoundingBox. CurrentOcclusionLayer is shareddata+78, not renderer sceneindex. Native base OcclusionInfo[2]+48,FramesRendered+60; PDB donor queryInfo36 versus retail32 from CArray16/12. Shared flattened headers used with narrow methods/accessors for hiddenbase slots.
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __declspec(x)
 #define __forceinline inline
@@ -17,11 +18,11 @@ struct COcclusionPointer;
 class CEngineInternalPrimitiveOcclusionGroup:public CEngineInternalPrimitiveBase { public:COcclusionPointer* HostInfos;unsigned long FramesRendered;};
 class CEnginePrimitiveOcclusionGroupManager { public:void* VTable;};
 #endif
-struct COcclusionPointee {virtual ~COcclusionPointee();virtual void Delete() const;unsigned long IVRefCount; __forceinline void Release(){if(--IVRefCount==0)Delete();}};
+struct COcclusionPointee {virtual ~COcclusionPointee();virtual void Delete() const;unsigned long IVRefCount; FABLE_FORCEINLINE void Release(){if(--IVRefCount==0)Delete();}};
 class CEnginePrimitiveOcclusionInfo:public COcclusionPointee { public:long InvisibleFrames;void* TestFirst;void* TestLast;void* TestEnd;bool Seen;unsigned long TestFrame;CEnginePrimitiveOcclusionInfo();}; //00b2fa90
 struct COcclusionPointer {
  COcclusionPointee* Object;
- __forceinline void SetNew(CEnginePrimitiveOcclusionInfo* p){if(Object){Object->Release();Object=0;}Object=p;}
+ FABLE_FORCEINLINE void SetNew(CEnginePrimitiveOcclusionInfo* p){if(Object){Object->Release();Object=0;}Object=p;}
 };
 static COcclusionPointer& GetInfo(CEngineInternalPrimitiveOcclusionGroup& g,long index){
 #ifdef _MSC_VER

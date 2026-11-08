@@ -1,6 +1,7 @@
 // Behaviour test for 004bfd10: src/004bfd10.cpp copied verbatim; the def lookup (through the same-TU GetSubDef body),
 // the interface maps, the owned-thing list and SetLightingChannel stubbed so the override gate, the owner's channel
 // copy to this appearance and to every live owned thing with an appearance, and the def release are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -28,7 +29,7 @@ static int fails = 0;
 class CTCBase;
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                 // slot 1 (+0x04)
@@ -114,7 +115,7 @@ public:
     CThingBaseDef* GetBaseDef() const { return PBaseDef; }
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                                  // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -125,7 +126,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

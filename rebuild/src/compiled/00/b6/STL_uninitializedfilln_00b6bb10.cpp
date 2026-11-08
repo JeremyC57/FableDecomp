@@ -13,6 +13,7 @@
 // Shape: STLport 4.6 `return __uninitialized_fill_n(__first, __n, __x, _IS_POD_ITER(__first, _Tp));` with the loop
 //   `for (; __n > 0; --__n, ++__cur) _Construct(&*__cur, __x);` inline (unsigned count: `test edx,edx ; jbe`); VC7.1
 //   keeps the inner helper out of line unless it is __forceinline (it then emits a 23-byte forwarder).
+#include "fable_compiler.h"
 #include <new>
 
 struct CVertexShaderData {
@@ -39,7 +40,7 @@ namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

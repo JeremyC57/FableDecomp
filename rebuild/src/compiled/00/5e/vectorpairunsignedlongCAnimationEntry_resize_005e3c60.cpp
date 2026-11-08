@@ -18,7 +18,8 @@
 // stand-in body for the two-argument resize that MAY store a non-constant pointer into the temporary's component
 // field (without a body the temporary's address escapes and the lane loads the slot into eax and copies it to ecx;
 // a body that only reads the value lets VC7.1 prove the field is still 0 and drop the release altogether).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CRefCounted {                                        // second base: the count sits at +4 behind the vptr
     long m_count;
 };

@@ -17,6 +17,7 @@
 // Shape: the main loop is `for (;; NSF) { T; ... }` (gotcha 2376): VC7.1 rotates it and expands ~marker / ~seh_me only at the loop
 //   exit pad, every other return calls the out-of-line dtors; `while (!T) { ... NSF; }` expands them at the first inner-wait return
 //   instead (one extra jmp). GetPos is __forceinline (a plain inline stays a call under this function's budget).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -41,7 +42,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, 
 enum ETextGroupSelectionMethod { GROUP_SELECT_NONE=0, GROUP_SELECT_RANDOM=1, GROUP_SELECT_RANDOM_NO_REPEAT=2, GROUP_SELECT_SEQUENTIAL=3, GROUP_SELECT_FIRST_ONLY=4 };
 enum EScriptEntityMoveType { ENTITY_MOVE_WALK=0, ENTITY_MOVE_RUN=1 };
 inline CScriptThing::~CScriptThing() { }
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 #define MA_T if (IsActiveThreadTerminating()) return
 #define MA_START \
     if (seh_me.IsValid()) seh_me.Release(); \

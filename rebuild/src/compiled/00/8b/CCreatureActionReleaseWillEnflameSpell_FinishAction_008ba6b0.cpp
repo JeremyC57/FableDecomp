@@ -14,6 +14,7 @@
 // Layout: CCreatureActionBase::PItemRemoved CIntelligentPointer<CThing> +0x2C (Ego_r and retail); CTCSpecialAbilities::
 //   AbilityMutexLock +0x0C, CurrentAbility +0x10 (Ego_r); the temporary action is 0xB8 bytes (frame 0xBC with the name).
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -156,7 +157,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -168,7 +169,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

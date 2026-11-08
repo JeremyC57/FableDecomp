@@ -13,6 +13,7 @@
 // Shape: a size TU (`pop ecx` after free: `#pragma optimize("s", on)`, the vector destructors `__forceinline`); the
 // class is `__declspec(novtable)` so only the inlined CDefPointeeBase vtable store (0x01230BA0) appears, after the
 // member destructors and right before the base-destructor tail jump.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
@@ -28,7 +29,7 @@ class CResource { public:
 };
 class CDefPointeeBase : public CResource { public:          // vtable 0x01230BA0
     virtual void v00();
-    __forceinline ~CDefPointeeBase() { }
+    FABLE_FORCEINLINE ~CDefPointeeBase() { }
 };
 
 struct CAugmentationParticleMap {                  // retail map<EObjectAugmentationType, CObjectAugmentationParticleSet>
@@ -47,7 +48,7 @@ struct CLongVector {                               // retail vector<long>: first
     long* m_pFirst;
     long* m_pLast;
     long* m_pEnd;
-    __forceinline ~CLongVector() { if (m_pFirst) free(m_pFirst); }
+    FABLE_FORCEINLINE ~CLongVector() { if (m_pFirst) free(m_pFirst); }
 };
 
 struct __declspec(novtable) CObjectAugmentationsDef : CDefPointeeBase {   // vtable 0x01243974

@@ -13,6 +13,7 @@
 // CPersistTraits<T>::TransferBinaryIn(stream, &x); the count is a `!= 0` down-counter (`test edi,edi ; je` then `dec edi ; jne`;
 // `i < count` gives `jbe`), the per-entry key and multiplier locals take the two dead argument slots, and the pair temporary is
 // built from them right before each insert. No frame pointer.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -24,8 +25,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -71,7 +72,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<unsigned long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
     {
         unsigned long number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));
@@ -79,7 +80,7 @@ template <> struct CPersistTraits<unsigned long> {
     }
 };
 template <> struct CPersistTraits<float> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
     {
         float number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));
@@ -87,7 +88,7 @@ template <> struct CPersistTraits<float> {
     }
 };
 template <> struct CPersistTraits<EDamageAttribute> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, EDamageAttribute* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, EDamageAttribute* value)
     {
         EDamageAttribute number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));

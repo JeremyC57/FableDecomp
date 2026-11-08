@@ -12,6 +12,7 @@
 // Shape: the first failure exit releases the mesh pointer inline, the empty-primitive exit calls the out-of-line destructor; the set-up loop names
 //   the simulation and the program before the call (a direct chained call interleaves the pushes and tail-merges the two inline releases).
 // Leaf: RunSimulation
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 void* __cdecl operator new(unsigned int size);
 struct SCountBlock {
@@ -33,7 +34,7 @@ struct CMeshPointer {                                   // CCountedPointer<const
     C3DMesh2* Object;
     SCountBlock* Info;
     void Destroy();                                     // 0x00A36EC0 (out-of-line destructor body)
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Info) {
             --Info->m_references;

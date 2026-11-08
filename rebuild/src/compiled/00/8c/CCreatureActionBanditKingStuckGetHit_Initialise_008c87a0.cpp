@@ -13,6 +13,7 @@
 // Layout (retail, local model): CCombatActionBase is 0x114 bytes (PCreature +0x08); PStuckEffect +0x114 (PDB +0x12C).
 // Shape: both string literals are implicit conversions (built before the other arguments); the sub-def holder is
 //   function-scoped, so the base Initialise runs before its release.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
@@ -67,7 +68,7 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

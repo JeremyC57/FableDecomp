@@ -13,6 +13,7 @@
 // esi (its null test merges with the `if`, its release is the trailing `dec [esi+4] ; jne`), so the dead out slot is
 // reused by the block-scoped "DEATH" string; the bool result survives the string's destructor in bl. Create's third
 // argument (0) is pushed before the owner's position is fetched.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharString { public:
@@ -98,7 +99,7 @@ class CCombatActionBase { public:                             // retail sizeof 0
     void SetCombatAnimation(const CCharString& name);    // 0x008574D0
     virtual void Initialise();                                 // 0x00857520
     CThing* GetOwner() const { return (CThing*)POwner.GetPItem(); }
-    __forceinline CSpecialEffectsDef* GetSpecialEffectsDef() const
+    FABLE_FORCEINLINE CSpecialEffectsDef* GetSpecialEffectsDef() const
     {
         CDefPointer<CSpecialEffectsDef> out;
         CDefCopy<CDefClassBase> def(GetOwner()->PDef);

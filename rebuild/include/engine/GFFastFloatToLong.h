@@ -17,6 +17,7 @@
 //   rebuild/tests/portable/test_GFFastFloatToLong.cpp.
 #ifndef FABLE_ENGINE_GFFASTFLOATTOLONG_H
 #define FABLE_ENGINE_GFFASTFLOATTOLONG_H
+#include "fable_compiler.h"
 #include "fable_x87_twins.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
@@ -32,7 +33,7 @@ namespace fable_portable
 #ifdef FABLE_PORTABLE
 using fable_portable::GFFastFloatToLong;
 #else
-__forceinline long __fastcall GFFastFloatToLong(float value)
+FABLE_FORCEINLINE long __fastcall GFFastFloatToLong(float value)
 {
     long result;
     long* resultPtr = &result;

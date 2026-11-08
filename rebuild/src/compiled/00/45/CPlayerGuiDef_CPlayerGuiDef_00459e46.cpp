@@ -11,6 +11,7 @@
 // later member drifts by 4 per container; offsets below are the retail ones the body touches.
 // Shape: empty user destructor (no vtable store of its own: `__declspec(novtable)` on the derived def, as 0x0047747C),
 // `__forceinline` POD-vector destructors.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
@@ -25,19 +26,19 @@ struct CLongVector {                               // retail std::vector<long> (
     long* m_first;
     long* m_last;
     long* m_end;
-    __forceinline ~CLongVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~CLongVector() { if (m_first) free(m_first); }
 };
 struct C2DVectorVector {                           // retail std::vector<C2DVector> (12 bytes)
     C2DVector* m_first;
     C2DVector* m_last;
     C2DVector* m_end;
-    __forceinline ~C2DVectorVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~C2DVectorVector() { if (m_first) free(m_first); }
 };
 struct CFloatVector {                              // retail std::vector<float> (12 bytes)
     float* m_first;
     float* m_last;
     float* m_end;
-    __forceinline ~CFloatVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~CFloatVector() { if (m_first) free(m_first); }
 };
 class CCharString { public:                               // 4-byte string handle
     void* m_pData;
@@ -47,7 +48,7 @@ struct CRGBColourVector {                          // retail std::vector<CRGBCol
     CRGBColour* m_first;
     CRGBColour* m_last;
     CRGBColour* m_end;
-    __forceinline ~CRGBColourVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~CRGBColourVector() { if (m_first) free(m_first); }
 };
 struct CQuickAccessItemButtonGuiDefVector {        // retail vector<CQuickAccessItemButtonGuiDef,std::allocator<CQuickAccessItemButtonGuiDef> (12 bytes)
     void* m_words[3];

@@ -24,6 +24,7 @@
 //   CBasicString::operator== calls (the null test threaded to the second comparison) only with the CCharString copy
 //   ctor, dtor and ReleaseData bodies in the TU (same-TU noinline stand-ins of the landed 0x0099EC30 / 0x0099EAE0 /
 //   0x0099E9B0 bodies: without them the local's address escapes and the block is reloaded and re-tested).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 
@@ -47,7 +48,7 @@ public:
     CCharString(const CCharString& other);                                      // 0x0099EC30
     ~CCharString();                                                             // 0x0099EAE0
     void ReleaseData();                                                         // 0x0099E9B0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -139,13 +140,13 @@ public:
     CInterfaceMap   m_interfaces;                                               // +0x44
     unsigned char   _pad54[0x3d];
     unsigned char   m_flags91;                                                  // +0x91 bit 0: dead
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -1,4 +1,5 @@
 // Behaviour test for 0x00769C00 Copy_StringStringThing_00769c00: a copy of the source model with working stand-ins for the out-of-line callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,7 +25,7 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 class CThing;

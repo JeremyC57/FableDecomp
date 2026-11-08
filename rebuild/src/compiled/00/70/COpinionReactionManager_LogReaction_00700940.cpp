@@ -12,6 +12,7 @@
 // the absent arm reads the never-written local from the lookup key's frame word (the dead `reaction` slot);
 // each traits pointer is a named local (tested and used from one load);
 // `tc->GetWorld()->GetWorldFrame()` keeps the GetWorld call although GetWorldFrame is static.
+#include "fable_compiler.h"
 class CThing;
 class CWorld { public:
     static long __fastcall GetFrame();            // 0x0049D870
@@ -33,7 +34,7 @@ class CThing { public:
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
     CInterfaceMap m_interfaces;             // +0x44
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -42,7 +43,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    __forceinline CTCCreatureOpinionOfHero* GetOpinionOfHeroTC()
+    FABLE_FORCEINLINE CTCCreatureOpinionOfHero* GetOpinionOfHeroTC()
     {
         CTCCreatureOpinionOfHero* tc;
         if (HasTC(0x4f))

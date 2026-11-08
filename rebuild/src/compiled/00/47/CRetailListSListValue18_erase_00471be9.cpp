@@ -11,6 +11,7 @@
 // the hidden pointer (`mov eax,[esp+0Ch] ; mov [eax],edi`). Under "s" the one-node erase is __forceinline.
 // Label correction: the catalog's `_Copy_impl<_List_unchecked_iterator<..CHeroMarriageInfo..>, back_insert_iterator<..>>`
 // is propagated from 0x005810AE; the 24-byte element fits CHeroMarriageInfo (0x18) but is unverified -- descriptive names.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* p);           // 0x00BFEA14
@@ -29,16 +30,16 @@ struct _List_node : _List_node_base {
 
 struct _List_iterator {
     _List_node_base* _M_node;
-    __forceinline _List_iterator(_List_node_base* n) : _M_node(n) { }
-    __forceinline _List_iterator(const _List_iterator& o) : _M_node(o._M_node) { }
-    __forceinline bool operator!=(const _List_iterator& o) const { return _M_node != o._M_node; }
-    __forceinline _List_iterator operator++(int) { _List_iterator tmp = *this; _M_node = _M_node->_M_next; return tmp; }
+    FABLE_FORCEINLINE _List_iterator(_List_node_base* n) : _M_node(n) { }
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& o) : _M_node(o._M_node) { }
+    FABLE_FORCEINLINE bool operator!=(const _List_iterator& o) const { return _M_node != o._M_node; }
+    FABLE_FORCEINLINE _List_iterator operator++(int) { _List_iterator tmp = *this; _M_node = _M_node->_M_next; return tmp; }
 };
 
 struct CRetailList_SListValue18 {                // STLport list<SListValue18>: the head node pointer only
     _List_node_base* _M_node;
     typedef _List_iterator iterator;
-    __forceinline iterator erase(iterator position)
+    FABLE_FORCEINLINE iterator erase(iterator position)
     {
         _List_node_base* next = position._M_node->_M_next;
         _List_node_base* prev = position._M_node->_M_prev;

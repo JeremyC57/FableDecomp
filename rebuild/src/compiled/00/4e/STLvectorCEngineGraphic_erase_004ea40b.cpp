@@ -11,6 +11,7 @@
 //   14-byte assignments `movsd x3 ; movsw`, the source walked as `result + (last - first)`), the trivial destructor loop
 //   vanishes. Size TU without a frame pointer: `#pragma optimize("s", on)` (`push 0Eh ; pop esi ; idiv esi`); the helpers
 //   are `__forceinline` (the size TU would out-line them).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 namespace std {
@@ -32,7 +33,7 @@ template <class T> struct __type_traits {
     typedef __false_type has_trivial_destructor;
 };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance n = last - first; n > 0; --n) {
@@ -43,18 +44,18 @@ __forceinline _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last
     return result;
 }
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(const _Tp* first, const _Tp* last, _Tp* result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(const _Tp* first, const _Tp* last, _Tp* result, const __false_type&)
 {
     return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
 }
-template <class _Tp> __forceinline void _Destroy(_Tp* p) { p->~_Tp(); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* p) { p->~_Tp(); }
 template <class _ForwardIter>
-__forceinline void __destroy_aux(_ForwardIter first, _ForwardIter last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIter first, _ForwardIter last, const __false_type&)
 {
     for (; first != last; ++first)
         _Destroy(&*first);
 }
-template <class _Tp> __forceinline void _Destroy(_Tp* first, _Tp* last)
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* first, _Tp* last)
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(first, last, _Trivial_destructor());

@@ -10,6 +10,7 @@
 //   (four dwords, then the counted pointer's self test / release + zero store / adopt + count bump; the moving copy
 //   reads through a second induction pointer at next+0x10), and val's own pointer is released at the end.
 // Label correction: catalogued as `_Move<CPhysicsMeshInfo*,CPhysicsMeshInfo*>` (propagated).
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -23,7 +24,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

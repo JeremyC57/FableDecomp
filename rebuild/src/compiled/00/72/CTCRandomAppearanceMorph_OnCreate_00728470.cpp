@@ -11,6 +11,7 @@
 // store (the member's own address as the out pointer loads it into ecx).
 // Layout = Ego_r.pdb CTCRandomAppearanceMorph with the 12-byte retail vector: CTCBase ParentThing +0x04, PMeshMorphSet +0x10,
 // Seed +0x18, PrimHandles +0x1c, PTCSkeletalMorph +0x28.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool GetInterface(long type, CTCBase** out)   // inline: the landed GetInterface family shape
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)   // inline: the landed GetInterface family shape
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

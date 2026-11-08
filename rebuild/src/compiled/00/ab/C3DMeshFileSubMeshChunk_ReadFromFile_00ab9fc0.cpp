@@ -10,6 +10,7 @@
 // Layout: retail C3DMeshFileChunk base is 0x2c bytes (the engine header C3DMeshFileSubMeshChunk.h has 0x34): Name +0x2c,
 // SubMeshIndex +0x30, ParentIndex +0x34, FirstChildIndex +0x38, NextSiblingIndex +0x3c (header +8 each), so the
 // header is not used.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -30,8 +31,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -45,7 +46,7 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

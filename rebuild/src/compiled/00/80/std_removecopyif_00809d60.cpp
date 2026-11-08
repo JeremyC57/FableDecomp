@@ -18,6 +18,7 @@
 // the predicate's two pointers on the stack (`ret 0Ch`).
 // Label correction: catalog `_Remove_if<CTargetPoint*,CFilter_Bind2<...>>` is the remove_copy_if half (the
 // caller inlines find_if and calls this from the element after the hit).
+#include "fable_compiler.h"
 namespace N00809d60 {
 struct CBaseObject;
 struct CTCBase;
@@ -35,13 +36,13 @@ struct CThing {
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                     // +0x20 bitset<274>
     CTCMap Components;                                    // +0x44
-    __forceinline bool HasTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE bool HasTC(ETCInterfaceType type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const CTCMap* map = &Components;
@@ -87,7 +88,7 @@ struct CThingFilter_IsInFOV {
     bool operator()(const CTargetPoint& tp) const;        // 0x006A7380
 };
 struct CTargetPointFilter_IsStealableStockItem {          // _anon_58ED6966
-    __forceinline bool operator()(const CTargetPoint& tp) const
+    FABLE_FORCEINLINE bool operator()(const CTargetPoint& tp) const
     {
         const CThing* thing = tp.PThing.GetPItem();
         if (!thing->HasTC(TC_STOCK_ITEM))
@@ -99,7 +100,7 @@ struct CTargetPointFilter_IsStealableStockItem {          // _anon_58ED6966
 template <class TF1, class TF2> struct CFilter_Bind2 {
     TF1* F1;                                              // +0x0
     TF2* F2;                                              // +0x4
-    template <class T> __forceinline bool operator()(const T& t) const { return (*F1)(t) && (*F2)(t); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& t) const { return (*F1)(t) && (*F2)(t); }
 };
 typedef CFilter_Bind2<CThingFilter_IsInFOV, CTargetPointFilter_IsStealableStockItem> Pred;
 template <class _InputIter, class _OutputIter, class _Predicate>

@@ -17,6 +17,7 @@
 // the action's cast parameters at +0x114 / +0x118 (descriptive names); the drain's target pointer +0x14.
 // Frame: the same-TU CVectorMap::LowerBound stand-in (auto_inline(off), above the caller) is what lets the lookup key
 // share its frame word with the name temporary and the by-value operator= parameter, as retail (LTCG) does.
+#include "fable_compiler.h"
 class CTCParamsBase;
 class CBaseObject;
 class CTCBase;
@@ -29,8 +30,8 @@ class CThing;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 #include "engine/CVectorMap.h"

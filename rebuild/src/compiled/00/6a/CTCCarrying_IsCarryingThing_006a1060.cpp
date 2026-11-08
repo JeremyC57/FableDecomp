@@ -7,6 +7,7 @@
 // Shape: an inline FindThing loop (must be `__forceinline`: VC7.1 does not inline loops by default) whose
 // not-found path returns end() (`mov esi,[edi+10h]`), then `!= end()` re-reads `last` for the bool
 // (`xor eax,eax ; cmp ; setne al`). The loop re-reads `last` each iteration.
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -45,7 +46,7 @@ class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c
-    __forceinline SCarrySlotEntry* FindThing(CThing* thing)
+    FABLE_FORCEINLINE SCarrySlotEntry* FindThing(CThing* thing)
     {
         for (SCarrySlotEntry* it = CarrySlots.begin(); it != CarrySlots.end(); ++it)
             if (it->second.GetPItem() == thing)

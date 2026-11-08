@@ -21,6 +21,7 @@
 //   The block count is read once into a local (retail's count-down loop and the primitive spilled from edi); the draw
 //   arguments are named locals in the order primitiveCount, startIndex, vertexCount (that order puts PrimitiveCount in
 //   ebx and spills StartIndex / VertexCount as retail does; the direct-argument form swaps them).
+#include "fable_compiler.h"
 #define COM_SLOT(n) virtual void __stdcall slot##n()
 
 struct IDirect3DBaseTexture9;
@@ -148,7 +149,7 @@ public:
     unsigned char     _pad000[0x1d0];
     CRenderManager*   RenderManager;               // +0x1d0
     IDirect3DDevice9* D3DDevice;                   // +0x1d4
-    __forceinline void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
+    FABLE_FORCEINLINE void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
                             unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
     {
         D3DDevice->SetIndices(indexBuffer.PD3DIndexBuffer);

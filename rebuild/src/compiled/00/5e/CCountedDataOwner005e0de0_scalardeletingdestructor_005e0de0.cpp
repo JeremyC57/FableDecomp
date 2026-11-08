@@ -10,6 +10,7 @@
 // Shape: the same as 0x004C3CD0 (C3DAnimationBlendState): no vtable store, the base destructor on `this` after the
 // member release = a non-polymorphic class with the base object as its FIRST MEMBER; the counted pointer's release
 // (`dec dword ptr [ecx+4] ; jne`, clear inside the null test) and the class destructor are `__forceinline`.
+#include "fable_compiler.h"
 struct CInstanceCountedBase {
     virtual ~CInstanceCountedBase();                // 0x0099EAE0
 };
@@ -22,7 +23,7 @@ struct CCountedData {
 
 template <class T> class CIVCountedPointer { public:
     T* m_p;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* p = m_p;
         if (p) {
@@ -36,7 +37,7 @@ template <class T> class CIVCountedPointer { public:
 struct CCountedDataOwner005e0de0 {
     CInstanceCountedBase            m_base;         // +0x00
     CIVCountedPointer<CCountedData> m_data;         // +0x04
-    __forceinline ~CCountedDataOwner005e0de0() {}
+    FABLE_FORCEINLINE ~CCountedDataOwner005e0de0() {}
 };
 
 void DeleteCCountedDataOwner005e0de0(CCountedDataOwner005e0de0* p)

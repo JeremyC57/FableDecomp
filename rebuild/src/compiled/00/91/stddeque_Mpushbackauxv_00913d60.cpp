@@ -12,6 +12,7 @@
 //   buffer from allocator::allocate(buffer_size()) folded to `malloc(60h)`, the placement-new copy under its null test,
 //   then _M_set_node(node + 1) and `cur = first`. `_Construct` must be __forceinline: with a plain inline VC7.1 keeps it
 //   an out-of-line call here (the TU's push_back 0x00913E70 does call an out-of-line _Construct, 0x00913590).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -28,7 +29,7 @@ public:
 };
 
 namespace std {
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class T> class allocator {
 public:

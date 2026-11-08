@@ -1,12 +1,13 @@
 // CMemoryAllocatorFixedSize::Deallocate(void*) -- return an area to its chunk free list.
 // Native 0x00a662a0, 242 bytes. PDB fixed-size CMemoryArea is four bytes (distinct from variable-size area).
 // Actual allocator header is complete; extension adds methods without changing layout.
+#include "fable_compiler.h"
 #include "engine/CMemoryAllocatorFixedSize.h"
 struct CMemoryArea { unsigned char AreaID, NextAreaID, PreviousAreaID, AllocatorID;
- __forceinline CMemoryArea* GetNext(unsigned long size) { return NextAreaID!=255 ? (CMemoryArea*)((char*)this+(NextAreaID-AreaID)*size) : 0; }
- __forceinline CMemoryArea* GetPrevious(unsigned long size) { return PreviousAreaID!=255 ? (CMemoryArea*)((char*)this+(PreviousAreaID-AreaID)*size) : 0; }
- __forceinline void SetNext(unsigned char id) { NextAreaID=id; }
- __forceinline void SetPrevious(unsigned char id) { PreviousAreaID=id; }
+ FABLE_FORCEINLINE CMemoryArea* GetNext(unsigned long size) { return NextAreaID!=255 ? (CMemoryArea*)((char*)this+(NextAreaID-AreaID)*size) : 0; }
+ FABLE_FORCEINLINE CMemoryArea* GetPrevious(unsigned long size) { return PreviousAreaID!=255 ? (CMemoryArea*)((char*)this+(PreviousAreaID-AreaID)*size) : 0; }
+ FABLE_FORCEINLINE void SetNext(unsigned char id) { NextAreaID=id; }
+ FABLE_FORCEINLINE void SetPrevious(unsigned char id) { PreviousAreaID=id; }
 };
 struct CMemoryAreaChunk {
  void* ThisChunkMem; long NoAllocatedAreas; CMemoryAreaChunk *PNextChunk,*PPreviousChunk;

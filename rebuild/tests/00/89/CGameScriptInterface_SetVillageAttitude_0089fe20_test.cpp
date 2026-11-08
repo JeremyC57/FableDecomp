@@ -1,4 +1,5 @@
 // Behaviour test for 0089fe20: body copied from src/0089fe20.cpp (CGameScriptInterface::SetVillageAttitude), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -11,12 +12,12 @@ struct CTCMap_Retail {
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind) { STCEntry_Retail* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
     STCEntry_Retail* LowerBound(const unsigned long& kind) const { STCEntry_Retail* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -32,9 +33,9 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
     bool valid; CThing_Retail* thing;
     virtual CThing_Retail* GetThing() const { return thing; }
@@ -44,7 +45,7 @@ enum EScriptVillageAttitude { SCRIPT_VILLAGE_ATTITUDE_0, SCRIPT_VILLAGE_ATTITUDE
 static int g_setCalls = 0; static long g_setValue = -1; static void* g_setThis = 0;
 struct CTCVillage_Retail {
     void SetAttitude(long attitude) { ++g_setCalls; g_setValue = attitude; g_setThis = this; }
-    __forceinline void SetScriptAttitude(EScriptVillageAttitude attitude)
+    FABLE_FORCEINLINE void SetScriptAttitude(EScriptVillageAttitude attitude)
     {
         switch (attitude) {
         case SCRIPT_VILLAGE_ATTITUDE_0: SetAttitude(0); break;

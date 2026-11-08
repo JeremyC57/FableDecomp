@@ -19,6 +19,7 @@
 // Shape: the sprite test binds the literal CCharString to a block-scoped const reference and stores the comparison in a
 //   bool, so both temporaries die before the test (retail destroys them ahead of `test bl,bl`) and the compare re-reads the
 //   literal's data word from the frame instead of keeping the constructor's returned address.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
@@ -32,7 +33,7 @@ class CCharString { public:
             return false;
         return Compare(PStringData->m_pData, other.PStringData->m_pData) == 0;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -98,13 +99,13 @@ class CThing { public:
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  Dead : 1;                            // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

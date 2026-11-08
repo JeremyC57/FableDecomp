@@ -1,6 +1,7 @@
 // CMemoryDataInputStream::CMemoryDataInputStream(const CCharString& text) -- the CBaseClassNonCopyable base (0x0099A2F0), the stream state zeroed (+4..+0x14), this class's vtable (0x0123675C), then the source set from the string: its chars (the empty literal 0x0129AAF4 for a null string) at +0xc / +0x18, the position (+4) and flags (+0x10) cleared, its length at +8 / +0x14
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00995F50, length 96 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Shape: the zeroing state is a second, non-polymorphic base; the two accessors are inlined with their own null tests (length first: the arguments of the inline setter are evaluated right to left), `ret 4`.
+#include "fable_compiler.h"
 struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                       // 0x0099A2F0
@@ -28,7 +29,7 @@ struct SMemoryStreamState_00995f50 {              // a second, non-polymorphic b
 class CMemoryDataInputStream : public CBaseClassNonCopyable, public SMemoryStreamState_00995f50 { public:   // vtable 0x0123675C
     const char* m_pDataCopy;                       // +0x18
     CMemoryDataInputStream(const CCharString& text);
-    __forceinline void SetSource(const char* data, unsigned long length)
+    FABLE_FORCEINLINE void SetSource(const char* data, unsigned long length)
     {
         m_pData = data;
         m_pDataCopy = data;

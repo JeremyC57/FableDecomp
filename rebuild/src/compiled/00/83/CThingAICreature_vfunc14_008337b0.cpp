@@ -8,6 +8,7 @@
 // Shape: the landed GetInterface out-parameter template; interface 0x10 is bit 16 of bitset word 0
 // (`test dword ptr [ecx+20h],10000h`); the `if (resuming)` arm comes first, the else arm is placed last.
 // VC7.1 declines to inline the template inside the if-arm here, so it is `__forceinline`.
+#include "fable_compiler.h"
 class CTCBase;
 
 class CTCSummonSpell { public:
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
     CInterfaceMap       Components;                  // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

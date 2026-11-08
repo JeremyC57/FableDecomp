@@ -17,6 +17,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -44,7 +45,7 @@ class CCharString { public:
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -76,7 +77,7 @@ public:                      // STLport vector (retail 12 bytes), malloc_alloc s
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()                             // out-of-line copy 0x008AC970
+    FABLE_FORCEINLINE ~vector()                             // out-of-line copy 0x008AC970
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

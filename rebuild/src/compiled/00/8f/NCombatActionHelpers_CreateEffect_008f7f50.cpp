@@ -16,6 +16,7 @@
 //   subobject at +4 and passes `lea ecx,[params+4]` to its constructor (182v182 / 212v212). The key/vector pair is built
 //   by value (the vector copied through integer registers: C3DVector has no user copy ctor here), then the parameters
 //   object, push_back, the emitter call and the out-of-line destructor.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;                          // +0x00
@@ -41,32 +42,32 @@ struct CVectorParamVector {                     // retail STLport vector (12 byt
     SVectorParam* _M_start;
     SVectorParam* _M_finish;
     SVectorParam* _M_end_of_storage;
-    __forceinline CVectorParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE CVectorParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     void push_back(const SVectorParam& value);  // 0x0076B120
 };
 struct CUpdateParamVector {
     SUpdateParam* _M_start;
     SUpdateParam* _M_finish;
     SUpdateParam* _M_end_of_storage;
-    __forceinline CUpdateParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE CUpdateParamVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 struct CCompare {};
 struct CVectorParamMap {                        // CVectorMap<unsigned long, C3DVector, ...>
     CVectorParamVector Vector;                  // +0x00
     CCompare           Compare;                 // +0x0c
     bool               Dirty;                   // +0x0d
-    __forceinline CVectorParamMap() : Dirty(false) {}
+    FABLE_FORCEINLINE CVectorParamMap() : Dirty(false) {}
 };
 struct CUpdateParamMap {                        // CVectorMap<unsigned long, CParticleUpdateParamDesc, ...>
     CUpdateParamVector Vector;                  // +0x00
     CCompare           Compare;                 // +0x0c
     bool               Dirty;                   // +0x0d
-    __forceinline CUpdateParamMap() : Dirty(false) {}
+    FABLE_FORCEINLINE CUpdateParamMap() : Dirty(false) {}
 };
 struct CParticleUpdateParameters : CBaseClass { // <unsigned long, unsigned long>, vtable 0x0125FFDC
     CVectorParamMap VectorParams;               // +0x04
     CUpdateParamMap UpdateParams;               // +0x14
-    __forceinline CParticleUpdateParameters() {}
+    FABLE_FORCEINLINE CParticleUpdateParameters() {}
     virtual ~CParticleUpdateParameters();       // 0x006E2500
 };
 }
@@ -90,7 +91,7 @@ public:
     unsigned long   m_presentBits[9];           // +0x20
     unsigned char   _pad44[0x5c - 0x44];
     void*           PTCDriver;                  // +0x5c (the particle emitter component when kind 0x4b is present)
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
 
 class CThingCreatureBase : public CThing {

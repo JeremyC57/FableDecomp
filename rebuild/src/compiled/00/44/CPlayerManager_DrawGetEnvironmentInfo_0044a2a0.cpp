@@ -12,6 +12,7 @@
 // Layout: CThing TC mask +0x20 (0xc7 = word 6 bit 7, the sign bit of byte +0x38), Components +0x44.
 // Shape: the uninitialised `CTCCoopSpirit* spirit; if (HasTC) spirit = GetTC;` (the stale value is the find key's
 // frame word); all wide-string temporaries and the key live in the two dead argument slots.
+#include "fable_compiler.h"
 typedef unsigned short wchar_t;                        // VC7.1 default: wchar_t is not a native type
 class CWideString { public:
     void* PStringData;
@@ -34,7 +35,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const
+    FABLE_FORCEINLINE CTCBase* Find(long type) const
     {
         const CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -48,8 +49,8 @@ class CThing { public:
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
     CTCMap        Components;                          // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
 class CThingPlayerCreature : public CThing { };
 class CTCCoopSpirit { public:                                 // TC type 0xc7

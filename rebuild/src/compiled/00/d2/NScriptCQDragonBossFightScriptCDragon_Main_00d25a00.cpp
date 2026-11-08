@@ -16,6 +16,7 @@
 // first store because the store may alias). Graded RELOCATION_MATCH on the first build.
 // Naming wave 35: identity reg 00d25629 "Dragon" in 00d255e0; Alloc 00d257d0; vtable 012cb770 slot 1; PDB ?Main@CDragon@CQ_DragonBossFightScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CDragon::Main (wave3/labels_alloc.tsv); PDB ?Main@CDragon@CQ_DragonBossFightScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDragon@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_DragonBossFightScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -25,7 +26,7 @@ class CCPPointerInfo;
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }

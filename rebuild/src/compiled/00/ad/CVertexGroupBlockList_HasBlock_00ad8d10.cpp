@@ -11,6 +11,7 @@
 //   `*(current - 1)`); the count test, then a `__forceinline` ContainsAll walking the group pointer by value
 //   (`++i, ++groups`: the pointer, not an index, is what retail steps) and looking every group up with the inline
 //   lower-bound find (a miss returns false straight to the next block).
+#include "fable_compiler.h"
 struct SGroupMapNode {                             // STLport _Rb_tree_node<pair<const unsigned long, long> >
     long           Color;                          // +0x00
     SGroupMapNode* Parent;                         // +0x04
@@ -23,7 +24,7 @@ struct CGroupToIndexMap {                          // map<unsigned long, long> (
     SGroupMapNode* Header;                         // +0x00
     unsigned long  NodeCount;                      // +0x04
     unsigned long  Compare;                        // +0x08
-    __forceinline SGroupMapNode* find(unsigned long key) const   // inline STLport _Rb_tree::find, returning the node
+    FABLE_FORCEINLINE SGroupMapNode* find(unsigned long key) const   // inline STLport _Rb_tree::find, returning the node
     {
         SGroupMapNode* y = Header;
         SGroupMapNode* x = Header->Parent;
@@ -51,7 +52,7 @@ struct CGroupArray {                               // CArray<unsigned long> (ret
 class CVertexGroupBlock { public:                         // retail 0x18 bytes (PDB 32: debug containers)
     CGroupArray      Groups;                       // +0x00
     CGroupToIndexMap GroupToIndexMap;              // +0x0c
-    __forceinline bool ContainsAll(const unsigned long* groups, unsigned long count) const
+    FABLE_FORCEINLINE bool ContainsAll(const unsigned long* groups, unsigned long count) const
     {
         for (unsigned long i = 0; i < count; ++i, ++groups)
             if (GroupToIndexMap.find(*groups) == GroupToIndexMap.Header)

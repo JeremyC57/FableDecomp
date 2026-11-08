@@ -10,6 +10,7 @@
 // Shape: `return cond ? CCharString(a) : CCharString(b);` -- each arm builds its own temporary (flag bits 1/2 in ebx),
 //        the result is copy-constructed and the live temporary destroyed by flag; the def is read once into edi and
 //        released by hand without a null test.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -66,7 +67,7 @@ class CThing { public:
 class CTCTavernTable { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
-    __forceinline CTavernTableDef* TakeTableDef()
+    FABLE_FORCEINLINE CTavernTableDef* TakeTableDef()
     {
         CDefPointer out;
         ParentThing->DefHolder->GetSubDef_007b9700(&out);

@@ -17,12 +17,13 @@
 //   `push dword ptr [ebp+N]` argument re-reads with no spills; the helper must be `__forceinline` (the size TU calls a plain
 //   `inline` one out of line).
 // Model: the three STLport vector words (_M_start, _M_finish, _M_end_of_storage); no engine header (library type).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);   // 0x00BFEAE6
 
 namespace std {
-__forceinline void* __copy_trivial(const void* first, const void* last, void* result)
+FABLE_FORCEINLINE void* __copy_trivial(const void* first, const void* last, void* result)
 {
     return (last == first) ? result
         : ((char*)memmove(result, first, (const char*)last - (const char*)first)) + ((const char*)last - (const char*)first);

@@ -15,6 +15,7 @@
 // Shape: two byte-flag guards to one shared exit; the mode manager comes from an inline accessor returning an unset local
 //   when the 0x31 bit is clear (retail calls RemoveMode on the dead `push ecx` frame word, which also held the lookup key),
 //   so the call is duplicated on both paths.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
@@ -28,7 +29,7 @@ class CTCCreatureModeManager { public:                  // interface 0x31
 };
 // The creature's mode manager as the berserk code fetches it: an unset local when the thing has no 0x31 component
 // (retail then reads the dead frame word; never reached in practice).
-__forceinline CTCCreatureModeManager* GetModeManager(CThing* thing)
+FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager(CThing* thing)
 {
     CTCCreatureModeManager* modes;
     if (thing->HasTC(TCI_ENTITY_MODE_MANAGER))

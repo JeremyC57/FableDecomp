@@ -11,6 +11,7 @@
 //   components into locals x, y, z, w first (loads in X..W order), and the norm sums w*w + z*z + y*y + x*x. The translation
 //   is a C3DVector temporary built from the position (its Z travels as an integer copy). The scale components are float
 //   locals declared Z, Y, X, and the rows are scaled with `*=` (the rotation values are forwarded from the frame).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix3x4 { public:
@@ -20,7 +21,7 @@ class CMatrix3x4 { public:
 };
 class CQuaternion { public:
     float X, Y, Z, W;
-    __forceinline void ToMatrix(CMatrix3x4& m, const C3DVector& pos) const
+    FABLE_FORCEINLINE void ToMatrix(CMatrix3x4& m, const C3DVector& pos) const
     {
         float x = X, y = Y, z = Z, w = W;
         float n = w * w + z * z + y * y + x * x;

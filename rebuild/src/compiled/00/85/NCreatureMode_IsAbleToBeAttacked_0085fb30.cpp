@@ -2,6 +2,7 @@
 // Flags:
 // Leaf: ?IsAbleToBeAttacked@NCreatureMode@@YI_NABVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
+#include "fable_compiler.h"
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -114,7 +115,7 @@ protected:
  unsigned char unreadThingTail[sizeof(CThingLayout)-0x70];
 public:unsigned long GetTypeFlags()const{return ThingTypeFlags;}
  bool HasTC(ETCInterfaceType t)const{if(UsingComponents._M_w[t>>5]&(1UL<<(t&31)))return true;return false;}
- __forceinline const CTCBase&GetTC(ETCInterfaceType t)const{return *Components.Find(t)->second;}
+ FABLE_FORCEINLINE const CTCBase&GetTC(ETCInterfaceType t)const{return *Components.Find(t)->second;}
 };
 // Layout: native physical bitfieldbc has EvadeAllHits at bit3.
 class CThingPhysical:public CThing{

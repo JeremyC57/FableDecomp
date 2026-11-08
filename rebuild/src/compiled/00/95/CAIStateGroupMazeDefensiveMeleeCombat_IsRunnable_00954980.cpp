@@ -14,6 +14,7 @@
 // temporary (whose 8-byte slot also homes the lookup key) and `return true`; the shared `xor al,al` tail last.
 // The component class is not identified (interface type 8): descriptive names. The engine header
 // CAIStateGroup_MazeDefensiveMeleeCombat.h is flattened data-only: local model (PDB: LastHealFrame +0x20).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -26,7 +27,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];                 // +0x4c..+0x90
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

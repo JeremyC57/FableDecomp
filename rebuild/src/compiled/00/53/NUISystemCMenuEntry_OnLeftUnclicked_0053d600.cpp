@@ -2,6 +2,7 @@
 // Retail 0x0053D600, 91 bytes (vtable 0x0124662C slot 147). Callees: LoadAndReturnDef (slot 108), GoForward (slot 155,
 // +0x26C, 0x0053D720), ExecuteActions (slot 131, +0x20C) with the action list pointer at +0x17C.
 // Name: Ego_r.pdb ?OnLeftUnclicked@CMenuEntry@NUISystem@@UAEXXZ (source order OnHovered, OnLeftUnclicked, OnRightClicked).
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -17,7 +18,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

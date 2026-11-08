@@ -11,6 +11,7 @@
 // Shape: `__fastcall` (first in ecx -> eax as `cur`, n in edx -> esi counted down, &x on the stack -> ecx). The inline
 //   copy constructor stores the vtable and copies the counted pointer (`++P->RefCount` at +4 when non-null); placement-new
 //   null test; /O2 loop-head pad. The inner helper needs `__forceinline` (a plain inline cdecl helper stays a call).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -33,7 +34,7 @@ public:
 
 struct __false_type { __false_type() { } };     // STLport _IS_POD_ITER result for a class element
 
-__forceinline CEnginePrimitiveHandle* __uninitialized_fill_n(CEnginePrimitiveHandle* first, unsigned int n, const CEnginePrimitiveHandle& x, const __false_type&)
+FABLE_FORCEINLINE CEnginePrimitiveHandle* __uninitialized_fill_n(CEnginePrimitiveHandle* first, unsigned int n, const CEnginePrimitiveHandle& x, const __false_type&)
 {
     CEnginePrimitiveHandle* cur = first;
     for (; n > 0; --n, ++cur)

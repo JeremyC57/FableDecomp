@@ -9,6 +9,7 @@
 // Shape: the landed STLport _M_insert 0x0069D520 with `y == header || (w == 0 && (x != 0 || key(v) < key(y)))`; this
 //   instantiation inlines _M_create_node in the left-hand branch only (a `__forceinline` copy, GOTCHAS 0x4C4890) and
 //   calls the out-of-line member in the right-hand branch. The iterator returns through the hidden pointer.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -63,7 +64,7 @@ struct CSoundSetTree {                                      // _Rb_tree<EObjectA
         iterator(std::_Rb_tree_node_base* node) : _M_node(node) { }
     };
     SSoundSetNode* _M_create_node(const SSoundSetValue& __x);   // 0x00769980
-    __forceinline SSoundSetNode* _M_create_node_inline(const SSoundSetValue& __x)
+    FABLE_FORCEINLINE SSoundSetNode* _M_create_node_inline(const SSoundSetValue& __x)
     {
         SSoundSetNode* __tmp = (SSoundSetNode*)malloc(sizeof(SSoundSetNode));
         new (&__tmp->_M_value_field) SSoundSetValue(__x);

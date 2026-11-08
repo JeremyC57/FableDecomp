@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -492,7 +493,7 @@ struct CTCAIScratchpadNative:CTCBase {
 FABLE_STATIC_ASSERT(sizeof(CTCAIScratchpadNative)==132);
 FABLE_STATIC_ASSERT(offsetof(CTCAIScratchpadNative,Action)==72);
 FABLE_STATIC_ASSERT(offsetof(CTCAIScratchpadNative,PDef)==128);
-__forceinline CTCAIScratchpadNative* GetScratchpad(CThingNative* thing){
+FABLE_FORCEINLINE CTCAIScratchpadNative* GetScratchpad(CThingNative* thing){
  CTCAIScratchpadNative* result;
  if(thing->UsingComponents[5]&0x400){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(170);ComponentEntry* end=map->Finish;result=static_cast<CTCAIScratchpadNative*>((it==end||it->Type>170?end:it)->Component);}
  return result; // native requires the scratchpad component; no absent-component fallback is initialized.

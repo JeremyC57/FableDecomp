@@ -15,6 +15,7 @@
 // the morph is built in the frame (GroupID, the CDefString constructed in place, the bool), Insert's push_back of the
 // pair temporary keeps its four dwords in edi/ecx/edx/ebx, and Update's `if (Dirty)` re-reads the flag just stored.
 // Manifest label "CRegion_AddNavigationExit" is a propagated label.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
@@ -153,7 +154,7 @@ public:
     C                        Compare;                // +0x0C
     bool                     Dirty;                  // +0x0D
 
-    __forceinline void Insert(const K& key, const V& value)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)
     {
         Vector.push_back(value_type(key, value));
         Dirty = true;

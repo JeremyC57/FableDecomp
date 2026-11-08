@@ -23,6 +23,7 @@
 //   members, the real STLport 4.6 map<CCharString, CScriptGameResourceObjectScriptedThingBase>).
 // Shape: the hero object, the cast and the movie live in an inner block: retail destroys the movie (inline), the cast (map dtor
 //   call) and the hero (0x007E74D0) before RemoveThing, the sister object only at the function end.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
@@ -51,7 +52,7 @@ public:
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
 public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {                                                   // implicit copy-assignment, expanded (0x008ABD10 is its COMDAT)
         CScriptGameResourceObjectBase::operator=(other);
         PImp = other.PImp;

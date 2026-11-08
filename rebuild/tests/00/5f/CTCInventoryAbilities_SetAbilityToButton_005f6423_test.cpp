@@ -1,5 +1,6 @@
 // Behaviour test of CTCInventoryAbilities::SetAbilityToButton(EHeroAbility ability, long button, bool flag) (retail 0x005F6423)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -36,12 +37,12 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
     C    Compare;                                          // +0x0C
     bool Dirty;                                            // +0x0D
     value_type* LowerBound(const K& key);                  // 0x005F7F4C
-    __forceinline value_type* Find(const K& key)
+    FABLE_FORCEINLINE value_type* Find(const K& key)
     {
         value_type* it = LowerBound(key);
         return (it == this->end() || key < it->first) ? this->end() : it;
     }
-    __forceinline void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
     {
         this->push_back(value_type(key, value));
         Dirty = true;
@@ -56,7 +57,7 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
 
 typedef CVectorMap<long, EHeroAbility, CKeyPairCompareLess<long, EHeroAbility> > CAbilityButtonMap;
 
-__forceinline pair<long, EHeroAbility>* FindAbility(CAbilityButtonMap& map, EHeroAbility ability)
+FABLE_FORCEINLINE pair<long, EHeroAbility>* FindAbility(CAbilityButtonMap& map, EHeroAbility ability)
 {
     pair<long, EHeroAbility>* it = map.begin();
     pair<long, EHeroAbility>* last = map.end();

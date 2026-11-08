@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class CCharStringData { public:
     const char*   Chars;                                 // +0x00
@@ -7,7 +8,7 @@ long __fastcall Compare(const char* a, const char* b);   // 0x00411570
 class CCharString {
 public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -35,7 +36,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC()
+    template <class T> FABLE_FORCEINLINE T* GetTC()
     {
         long type = T::INTERFACE_TYPE;
         CInterfaceMap* map = &Components;

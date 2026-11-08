@@ -16,6 +16,7 @@
 // Shape: the def is fetched through a by-value getter (the add-ref copy lives in esi, its CDefString name result reuses
 // the filter temporary's slot); the scratchpad lookup is the const out-parameter GetInterface (key in the dead argument
 // slot); `== "EXPRESSION_FOLLOW"` is the inline CCharString compare with `strcmp(text, "")` on the null block.
+#include "fable_compiler.h"
 #include <string.h>
 
 class CTCBase;
@@ -29,7 +30,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -42,7 +43,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -55,11 +56,11 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
@@ -81,7 +82,7 @@ class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -123,7 +124,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
     CIntelligentPointerConstThing(const CThing* thing);     // 0x00668B60
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {
-    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other)
+    FABLE_FORCEINLINE CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other)
     {
         SetPItem((CBaseObject*)(((CThing*)other.GetPItem())));
         return *this;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include "engine/CSurface.h"
 #include "engine/CPixelFormat.h"
@@ -14,7 +15,7 @@ struct CPixelFormat_Methods : CPixelFormat {
 struct CSurface_Methods : CSurface {
     const C2DExtentsI GetDimensions() const;             // 0x009F2F90
     const CPixelFormat_Methods GetPixelFormat() const;   // 0x009F2F60
-    __forceinline unsigned long GetWidth() const { return GetDimensions().X; }
+    FABLE_FORCEINLINE unsigned long GetWidth() const { return GetDimensions().X; }
     unsigned long GetHeight() const;                     // 0x00415BF0 (out of line: GetDimensions().Y)
 };
 class CDisplayManager {

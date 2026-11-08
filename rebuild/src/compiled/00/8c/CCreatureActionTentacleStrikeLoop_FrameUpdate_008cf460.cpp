@@ -10,6 +10,7 @@
 // CIntelligentPointer at +0x10, fetched once for the present / not dead test (inline IsThingAlive), then the CHECKED lookup feeds the bool call (`||` chain).
 // Layout: owner CIntelligentPointer +8; Ego_r.pdb StartTick / Interrupt / StartHealth +0x12c / +0x130 / +0x134, retail
 // +0x114 / +0x118 / +0x11c (CCombatActionBase is 0x114 in retail); the creature's health float at +0xb4.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -77,7 +78,7 @@ class CCombatActionBase { public:
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKrakenTentacle* GetTentacle() const
+    FABLE_FORCEINLINE CTCKrakenTentacle* GetTentacle() const
     {
         CTCKrakenTentacle* tentacle;
         PCreature.GetPItem()->GetInterface(&tentacle, 0xe3);

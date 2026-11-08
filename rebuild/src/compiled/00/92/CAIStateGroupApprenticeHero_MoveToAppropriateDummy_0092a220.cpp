@@ -10,6 +10,7 @@
 // Shape: C3DVector with a user copy ctor keeps the position in the frame (not ebx/ebp); a named CCharString in its own
 //          block (address re-taken, destroyed before the null test); do/while(result == 4) keeps the loop unrotated; a
 //          named `action` copy read before the dead lookup puts Action in ebx and result in ebp (proximity reloaded).
+#include "fable_compiler.h"
 #define CAIStateGroup_ApprenticeHero CAIStateGroup_ApprenticeHeroLayout
 #include "engine/CAIStateGroup_ApprenticeHero.h"
 #undef CAIStateGroup_ApprenticeHero
@@ -49,7 +50,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

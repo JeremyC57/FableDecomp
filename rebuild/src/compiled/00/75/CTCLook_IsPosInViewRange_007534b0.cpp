@@ -20,6 +20,7 @@
 // Layout: retail CTCLook ParentThing +0x04, PParentCreature +0x10, HeadAngleRelToBodyXY +0x2C, EyeAnglesRelToHeadXY
 //   +0x34 (Ego_r.pdb, matches retail here); CThing bitset +0x20, interface map +0x44, +0x60 object, dead flag bit 0 of
 //   +0x91; the animate thing's state byte +0x50, flags +0x51 and the entry vector +0x04/+0x08.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fmod)
 float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0
@@ -69,7 +70,7 @@ class CThing { public:
     CThingPlacement* PPlacement;                            // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                                  // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (UsingComponents.test(wanted)) {
             long type = wanted;

@@ -13,6 +13,7 @@
 // returning an unset local when the thing has no 0xed driver; the
 // caster is wrapped in a CIntelligentPointer temporary (the thing read before the base ctor) for the out-of-line push_back;
 // the obstruction pointer is set through a second temporary and the inline operator= (`SetPItem(other.GetPItem())`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
@@ -27,8 +28,8 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   Flags91;                            // +0x91 bit 0 Dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCDPhysicalObstruction* GetObstructionDriver()
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCDPhysicalObstruction* GetObstructionDriver()
     {
         CTCDPhysicalObstruction* driver;                // deliberately unset when absent (retail reads a dead slot)
         if (HasTC(0xed))

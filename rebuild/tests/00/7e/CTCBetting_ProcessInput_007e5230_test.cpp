@@ -1,4 +1,5 @@
 // 007e5230 behaviour test: CTCBetting::ProcessInput (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -50,7 +51,7 @@ struct CTCMap {
         }
         return first;
     }
-    __forceinline CTCHeroStats* Find(long kind)
+    FABLE_FORCEINLINE CTCHeroStats* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
@@ -60,7 +61,7 @@ class CThing { public:
     unsigned long m_tcMask[9];
     CTCMap        m_tcs;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 static CThing* g_heroThing;
 class CPlayer { public: CThing* GetHeroCreature() { return g_heroThing; } };

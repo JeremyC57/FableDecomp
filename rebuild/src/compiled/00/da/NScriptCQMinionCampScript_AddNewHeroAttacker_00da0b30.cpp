@@ -15,6 +15,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
 #include "engine/CCountedPointer.h"
@@ -25,7 +26,7 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
-    __forceinline void Assign(const CScriptThing& other) { PImp = other.PImp; }   // the inline expansion of operator=
+    FABLE_FORCEINLINE void Assign(const CScriptThing& other) { PImp = other.PImp; }   // the inline expansion of operator=
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const; virtual void v06() const; virtual void v07() const; virtual void v08() const;
     virtual void v09() const; virtual void v10() const; virtual void v11() const; virtual void v12() const; virtual void v13() const; virtual void v14() const; virtual void v15() const; virtual void v16() const;
     virtual void v17() const; virtual void v18() const; virtual void v19() const; virtual void v20() const; virtual void v21() const; virtual void v22() const; virtual void v23() const; virtual void v24() const;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -13,14 +14,14 @@ class CThing;class CThingCreatureBase;class CBaseObject;
 struct PointerLink {CBaseObject* item;int refs;};
 class CBaseIntelligentPointer {public:PointerLink* link;CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();CBaseObject* GetPItem()const;void SetPItem(CBaseObject*);};
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {public:
- __forceinline CIntelligentPointer(T* p){SetPItem(p);}
- __forceinline T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}
- __forceinline void SetPItem(T* p){CBaseIntelligentPointer::SetPItem((CBaseObject*)p);}
+ FABLE_FORCEINLINE CIntelligentPointer(T* p){SetPItem(p);}
+ FABLE_FORCEINLINE T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}
+ FABLE_FORCEINLINE void SetPItem(T* p){CBaseIntelligentPointer::SetPItem((CBaseObject*)p);}
 };
 class CCharString {public:char* data;~CCharString();};
-struct Ref{virtual void Reserved()=0;virtual void DeleteThis()=0;int count;__forceinline void Release(){if(--count==0)DeleteThis();}};
+struct Ref{virtual void Reserved()=0;virtual void DeleteThis()=0;int count;FABLE_FORCEINLINE void Release(){if(--count==0)DeleteThis();}};
 struct Node{Node* next;Node* prev;void* value;};
-struct ListView{Node* head;__forceinline int Size()const{int count=0;for(Node* p=head->next;p!=head;p=p->next)++count;return count;}};
+struct ListView{Node* head;FABLE_FORCEINLINE int Size()const{int count=0;for(Node* p=head->next;p!=head;p=p->next)++count;return count;}};
 class CEnginePrimitiveHandle {public:virtual ~CEnginePrimitiveHandle();unsigned payload;};
 typedef CIntelligentPointer<CThingCreatureBase> CreaturePointer;
 extern unsigned GeneratorVtable_01268c24[];extern int CreatureCount_013bad54;

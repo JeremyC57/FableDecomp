@@ -13,6 +13,7 @@
 // (inlined GetTC 0x4b); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CBaseIntelligentPointer() 0x00A01B10 /
 // SetPItem 0x00A01B90 / ~CBaseIntelligentPointer 0x00A01C10; vector<CIntelligentPointer<CThing>>::push_back 0x004AD520.
 // Layout: the landed CTCBurntEffect ctor 0x007CDFE0 (PDef +0x0c, CurTime +0x10, fade times +0x14..+0x1c, Effects +0x20).
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 #include "engine/C3DVector.h"
@@ -85,15 +86,15 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                          // +0x91 bit 0 = being deleted
     const C3DVector& GetPos() const;             // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((CTCBaseX*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
-    template <class T> __forceinline T* GetTCDriver(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTCDriver(long interfaceType)
     {
         if (!(m_flags91 & 1) && HasTC(interfaceType))
             return GetTC<T>(interfaceType);

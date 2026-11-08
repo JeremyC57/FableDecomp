@@ -17,6 +17,7 @@
 //   g_SSEAvailable 0x013D2880.
 // Shape: the distance feeds GetLODZBandAtZ in one expression (a named local float changes the x87 stack order of the
 //   fallback's sum of squares).
+#include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
@@ -27,7 +28,7 @@ class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
     C3DVector MaxCoord;                                 // +0x0c
-    __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
         if (g_SSEAvailable) {
             float result;
@@ -49,7 +50,7 @@ public:
             closest.Z = MaxCoord.Z;
         return (point - closest).GetSquaredMagnitude();
     }
-    __forceinline float CalcShortestDistanceToPoint(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPoint(const C3DVector& point) const
     {
         return (float)sqrt(CalcShortestDistanceToPointSquared(point));
     }

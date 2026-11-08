@@ -5,6 +5,7 @@
 // Callees CParentDefClassBase ctor00430370, CHeroAbilityStatWeight ctor0045326D (7),
 // CHeroAbilityStatPackage ctor0045324F. No globals or pool constants; fldz is literal0.0f.
 // Leaf: ??0CHeroCombatDef
+#include "fable_compiler.h"
 #pragma optimize("s",on)
 #ifdef _MSC_VER
 #define CParentDefClassBase CParentDefClassBaseDonor
@@ -47,7 +48,7 @@ template <class T> struct CPODVector {             // retail std::vector<T> (12 
     T* m_first;
     T* m_last;
     T* m_end;
-    __forceinline CPODVector() : m_first(0),m_last(0),m_end(0) {}
+    FABLE_FORCEINLINE CPODVector() : m_first(0),m_last(0),m_end(0) {}
 };
 class CFloatRange { public: float Min, Max; CFloatRange() : Min(0),Max(0) {} };
 class CHeroAbilityStatWeight { public:                    // map<EHeroTrainableStatType, float> (STLport, 12 bytes)

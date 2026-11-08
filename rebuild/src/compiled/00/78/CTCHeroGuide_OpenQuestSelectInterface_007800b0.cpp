@@ -21,6 +21,7 @@
 // the centre pointer +0x170; the 0x33 component's centre pointer +0x0D; the 0x19 component's flag +0x14D (retail).
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -36,8 +37,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad54[0x11c];
     CBaseIntelligentPointer HeroCentre;                 // +0x170
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline const T* FindTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE const T* FindTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -46,7 +47,7 @@ class CThing { public:
             it = map->end();
         return (const T*)it->second;
     }
-    template<class T> __forceinline T* GetTC(long type)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         T* result;
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {

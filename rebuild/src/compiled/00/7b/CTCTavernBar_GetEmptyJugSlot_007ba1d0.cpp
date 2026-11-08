@@ -11,6 +11,7 @@
 // Shape: GetJug is inlined here (`__forceinline`, early-out `return CIntelligentPointer(0)` then `first[index]` through a
 //   named begin pointer: VC7.1 then spills `this` and reuses edi for the vector start like retail); `slot++` gives the
 //   load/inc/store of the reference.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
@@ -58,7 +59,7 @@ class CTCTavernBar { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CJugVector Jugs;                                // +0x0c (PDB +0x0c; retail vector 12 bytes)
-    __forceinline CIntelligentPointer<CThingObject> GetJug(long index) const
+    FABLE_FORCEINLINE CIntelligentPointer<CThingObject> GetJug(long index) const
     {
         if ((unsigned long)index >= Jugs.size())
             return CIntelligentPointer<CThingObject>(0);

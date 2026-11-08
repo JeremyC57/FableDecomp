@@ -8,6 +8,7 @@
 //   `case 2` (binary load: the inlined by-value ReadLong into the frame word, resize, transfer each element) and a
 //   `default` (write size(), transfer each element).  The 0x40-byte element makes size() a `sar 6`; `this` is kept in
 //   the frame (`[ebp-8]`) because ebx doubles as the element offset in the save loop.  CPersistContext offsets from Ego_r.pdb.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -24,8 +25,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -39,7 +40,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, sizeof(value));

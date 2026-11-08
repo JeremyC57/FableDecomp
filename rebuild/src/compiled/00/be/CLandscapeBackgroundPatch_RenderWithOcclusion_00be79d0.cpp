@@ -11,6 +11,7 @@
 //   same offsets. The parent tree node's +0xA4 pointer reaches the landscape map whose +0x14 header holds the world-map origin
 //   (+0x60 X, +0x62 Y) -- descriptive, the PDB node view differs from retail here. The occlusion manager keeps a fixed
 //   0x2000-entry query array (+0x4014) and its count (+0x401C); the query allocation is inline.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Position;
@@ -29,7 +30,7 @@ class CEngineOcclusionManager { public:
     void EndQuery(long handle);                     // 0x00B8D0A0
     unsigned long GetQueryResult(long handle, bool wait);   // 0x00B8D0B0
     long RenderOcclusionBox(const CMatrix3x4& box); // 0x00B8D420
-    __forceinline long AddQuery()
+    FABLE_FORCEINLINE long AddQuery()
     {
         unsigned long index = QueryCount;
         if (index < 0x2000) {

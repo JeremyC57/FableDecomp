@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -3030,10 +3031,10 @@ template<class T>struct _Nonconst_traits{typedef T*pointer;typedef T&reference;}
 template<class B>class _Rb_global{public:static _Rb_tree_node_base*_M_increment(_Rb_tree_node_base*x){if(x->_M_right){x=x->_M_right;while(x->_M_left)x=x->_M_left;}else{_Rb_tree_node_base*y=x->_M_parent;while(x==y->_M_right){x=y;y=y->_M_parent;}if(x->_M_right!=y)x=y;}return x;}};
 template<class K,class V,class Select,class Compare,class A>class _Rb_tree:public _Rb_tree_base<V,A>{protected:unsigned long _M_node_count;Compare _M_key_compare;public:typedef _Rb_tree_iterator<V,_Nonconst_traits<V> >iterator;
  __declspec(noinline)iterator lower_bound(const K&k){_Rb_tree_node_base*y=this->_M_header._M_data;_Rb_tree_node_base*x=y->_M_parent;while(x){if(!_M_key_compare(Select()(static_cast<_Rb_tree_node<V>*>(x)->_M_value_field),k)){y=x;x=x->_M_left;}else x=x->_M_right;}return iterator(static_cast<_Rb_tree_node<V>*>(y));}
- __forceinline iterator upper_bound(const K&k){_Rb_tree_node_base*y=this->_M_header._M_data;_Rb_tree_node_base*x=y->_M_parent;while(x){if(_M_key_compare(k,Select()(static_cast<_Rb_tree_node<V>*>(x)->_M_value_field))){y=x;x=x->_M_left;}else x=x->_M_right;}return iterator(static_cast<_Rb_tree_node<V>*>(y));}
- __forceinline pair<iterator,iterator>equal_range(const K&k){return pair<iterator,iterator>(lower_bound(k),upper_bound(k));}
+ FABLE_FORCEINLINE iterator upper_bound(const K&k){_Rb_tree_node_base*y=this->_M_header._M_data;_Rb_tree_node_base*x=y->_M_parent;while(x){if(_M_key_compare(k,Select()(static_cast<_Rb_tree_node<V>*>(x)->_M_value_field))){y=x;x=x->_M_left;}else x=x->_M_right;}return iterator(static_cast<_Rb_tree_node<V>*>(y));}
+ FABLE_FORCEINLINE pair<iterator,iterator>equal_range(const K&k){return pair<iterator,iterator>(lower_bound(k),upper_bound(k));}
 };
-template<class K,class V,class C=less<K>,class A=allocator<pair<const K,V> > >class multimap{private:typedef pair<const K,V>value_type;typedef _Rb_tree<K,value_type,_Select1st<value_type>,C,A>_Rep_type;_Rep_type _M_t;public:typedef typename _Rep_type::iterator iterator;__forceinline pair<iterator,iterator>equal_range(const K&k){return _M_t.equal_range(k);}__forceinline iterator lower_bound(const K&k){return _M_t.lower_bound(k);}__forceinline iterator upper_bound(const K&k){return _M_t.upper_bound(k);}};
+template<class K,class V,class C=less<K>,class A=allocator<pair<const K,V> > >class multimap{private:typedef pair<const K,V>value_type;typedef _Rb_tree<K,value_type,_Select1st<value_type>,C,A>_Rep_type;_Rep_type _M_t;public:typedef typename _Rep_type::iterator iterator;FABLE_FORCEINLINE pair<iterator,iterator>equal_range(const K&k){return _M_t.equal_range(k);}FABLE_FORCEINLINE iterator lower_bound(const K&k){return _M_t.lower_bound(k);}FABLE_FORCEINLINE iterator upper_bound(const K&k){return _M_t.upper_bound(k);}};
 }
 
 enum ECombatAbilityDataType{};enum ECombatAbilityInterfaceType{};enum EWeaponClass{};

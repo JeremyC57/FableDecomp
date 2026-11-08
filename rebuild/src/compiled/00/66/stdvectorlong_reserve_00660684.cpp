@@ -10,6 +10,7 @@
 // _M_start, _M_finish); _M_clear(); } else tmp = allocate(n); _M_set(tmp, tmp + old_size, tmp + n); }`; n lives in ebp
 // (no frame pointer in this TU).
 // Opt: size TU (`optimize("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -20,8 +21,8 @@ namespace std {
 template <class T> class allocator {
 public:
     allocator() { }
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
-    __forceinline void deallocate(T* p, unsigned int) { if (p != 0) free(p); }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE void deallocate(T* p, unsigned int) { if (p != 0) free(p); }
 };
 
 template <class V, class A> struct _STLP_alloc_proxy : public A {
@@ -43,13 +44,13 @@ public:
     template <class ForwardIter> T* _M_allocate_and_copy(unsigned int n, ForwardIter first, ForwardIter last);   // 0x00660213
     public:
     protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
     public:
     protected:
-    __forceinline void _M_set(T* s, T* f, T* e) { this->_M_start = s; this->_M_finish = f; this->_M_end_of_storage._M_data = e; }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { this->_M_start = s; this->_M_finish = f; this->_M_end_of_storage._M_data = e; }
     public:
     void reserve(unsigned int n)
     {

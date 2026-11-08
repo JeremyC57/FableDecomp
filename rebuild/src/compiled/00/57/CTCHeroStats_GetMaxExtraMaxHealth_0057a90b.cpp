@@ -11,6 +11,7 @@
 // pragma pair the by-value holder accessor must be `__forceinline` (plain `inline` is called out of line with the
 // frame word as its hidden result).
 // Layout: retail CHeroStatsDef sits 0x14 below the PDB here: MaxExtraMaxHitPoints +0xD8 (PDB +0xEC).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -20,25 +21,25 @@ class CHeroStatsDef { public:
     long          RefCount;                    // +0x04 CDefPointeeBase
     unsigned char _pad_0x08[0xD0];
     float         MaxExtraMaxHitPoints;        // +0xD8 (PDB +0xEC)
-    __forceinline void AddRef() { ++RefCount; }
-    __forceinline void Release() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void AddRef() { ++RefCount; }
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
 };
 
 struct CHeroStatsDefPointer {                  // CDefPointer<const CHeroStatsDef>
     CHeroStatsDef* Object;
-    __forceinline CHeroStatsDefPointer(const CHeroStatsDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CHeroStatsDefPointer(const CHeroStatsDefPointer& other) : Object(other.Object)
     {
         if (Object)
             Object->AddRef();
     }
-    __forceinline ~CHeroStatsDefPointer() { Object->Release(); }
+    FABLE_FORCEINLINE ~CHeroStatsDefPointer() { Object->Release(); }
     CHeroStatsDef* operator->() const { return Object; }
 };
 
 class CGameDefinitionManager { public:
     unsigned char        _pad_0x00[0xDC];
     CHeroStatsDefPointer PHeroStatsDef;        // +0xDC
-    __forceinline CHeroStatsDefPointer GetHeroStatsDef() const { return PHeroStatsDef; }
+    FABLE_FORCEINLINE CHeroStatsDefPointer GetHeroStatsDef() const { return PHeroStatsDef; }
 };
 
 class CTCBase

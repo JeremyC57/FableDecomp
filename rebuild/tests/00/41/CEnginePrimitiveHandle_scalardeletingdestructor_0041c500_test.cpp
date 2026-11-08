@@ -1,4 +1,5 @@
 // behaviour test for 0x0041C500 CEnginePrimitiveHandle scalar deleting destructor (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CEnginePrimitiveHandle::`scalar deleting destructor'(unsigned int flags) -- the inlined destructor (Clear: tell the primitive its last handle is going, drop the counted Data pointer; then the member's own release and ~CBaseClass) and, for flag bit 0, operator delete
@@ -36,7 +37,7 @@ struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
     long GetRefCount() const { return Object ? Object->m_refCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -45,7 +46,7 @@ struct CIVCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
     {
         Release();
         Object = object;
@@ -53,19 +54,19 @@ struct CIVCountedPointer {
             ++object->m_refCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598
     CIVCountedPointer Data;                        // +0x04
     CEnginePrimitiveHandle() { }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 // VC7.1 emits the class's vtable and scalar deleting destructor in a TU that constructs it; this helper is that construction.

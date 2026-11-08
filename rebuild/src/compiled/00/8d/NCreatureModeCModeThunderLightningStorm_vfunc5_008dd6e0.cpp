@@ -1,6 +1,7 @@
 //008dd6e0 NCreatureMode::CModeThunderLightningStorm::OnActivate; original PDB egor20086.
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Fidelity correction only; direct helper/RTTI evidence: advisor/008dd6e0_main_audit.md.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CModeStandBase CModeStandBasePdb
 #include "engine/CModeStandBase.h"
@@ -113,7 +114,7 @@ class CThing { public:
     unsigned char BeforeComponents[0x20];
     unsigned long UsingComponents[9];
     CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Interfaces;
-    template<class T> __forceinline bool GetTC(T** out,ETCInterfaceType interfaceType){
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** out,ETCInterfaceType interfaceType){
         if(UsingComponents[interfaceType>>5]&(1UL<<(interfaceType&31))){
             ETCInterfaceType type=interfaceType;
             typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Map;

@@ -15,6 +15,7 @@
 //   element is a pair temporary whose CTextureMorph has a user zeroing ctor (VC then keeps one zero register, esi, for the
 //   temporary's stores and every 64-bit range compare; a POD value-init zeroes through eax and the compares turn into `test`);
 //   ReadBool returns `byte != 0`. 3 grades.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
@@ -23,7 +24,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* out, long size)
+    FABLE_FORCEINLINE void Read(void* out, long size)
     {
         if (size > 0) {
             __int64 next = (__int64)(unsigned)(position + size);
@@ -32,8 +33,8 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             else ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)out, size);
         }
     }
-    __forceinline long ReadLong() { long v; Read(&v, 4); return v; }
-    __forceinline bool ReadBool() { unsigned char v; Read(&v, 1); return v != 0; }
+    FABLE_FORCEINLINE long ReadLong() { long v; Read(&v, 4); return v; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char v; Read(&v, 1); return v != 0; }
 };
 
 class CRandomAppearanceMorph {

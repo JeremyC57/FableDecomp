@@ -14,6 +14,7 @@
 //   __unguarded_insertion_sort(first + 16, last, comp); } else __insertion_sort(first, last, comp);` -- with three
 //   comparator copies VC7.1 calls the implicit copy constructor out of line (0x007F9730), and the setup of the first
 //   copy (`sub esp,34h ; lea edx,&comp ; mov ecx,esp ; push edx`) is hoisted above the branch.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -29,10 +30,10 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;

@@ -1,5 +1,6 @@
 // Behaviour test for 005f4b30: src/005f4b30.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryAbilities::GetPrioritisedAbilityDefs(vector<CDefPointer<const CHeroAbilityDef>>* defs)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -41,7 +42,7 @@ template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other);
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

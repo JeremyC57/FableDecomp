@@ -1,6 +1,7 @@
 // 00a49f60 BST_InsertEntry_EHeroMorphType
 // Flags: none
 // Leaf: ?insert_unique@_Rb_tree
+#include "fable_compiler.h"
 namespace HeroMorphTree {
 // Layout: insertion helper00632d30 allocates24-byte nodes and copies CCharString at+20 via0099ec30; value is key/string pair.
 #pragma pack(push,1)
@@ -10,15 +11,15 @@ struct CCharString {CCharStringData* Data;CCharString();CCharString(const char*,
 namespace std {template<class A,class B>struct pair {A first;B second;pair(const A& a):first(a),second(){}};}
 typedef std::pair<const unsigned,CCharString> value_type;
 // Layout: retail node colour +0,parent +4,left +8,right +12,key +16; tree header +0,count +4.
-struct _Rb_tree_node_base {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node_base*Parent,*Left,*Right;__forceinline const value_type&GetValue()const;};
+struct _Rb_tree_node_base {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node_base*Parent,*Left,*Right;FABLE_FORCEINLINE const value_type&GetValue()const;};
 struct _Rb_tree_node:_Rb_tree_node_base {value_type Value;_Rb_tree_node(const value_type&v=value_type(0)):Value(v){Colour=0;Parent=Left=Right=0;}};
-__forceinline const value_type&_Rb_tree_node_base::GetValue()const{return static_cast<const _Rb_tree_node*>(this)->Value;}
+FABLE_FORCEINLINE const value_type&_Rb_tree_node_base::GetValue()const{return static_cast<const _Rb_tree_node*>(this)->Value;}
 
 struct _Rb_tree_base_iterator {
  _Rb_tree_node_base* Node;
  void _M_increment(); void _M_decrement();
 };
-struct _Rb_tree_iterator:_Rb_tree_base_iterator {__forceinline _Rb_tree_iterator(){}__forceinline _Rb_tree_iterator(_Rb_tree_node_base*p){Node=p;}__forceinline _Rb_tree_iterator(const _Rb_tree_iterator&i){Node=i.Node;}__forceinline _Rb_tree_iterator&operator++(){_M_increment();return *this;}__forceinline _Rb_tree_iterator&operator--(){_M_decrement();return *this;}};
+struct _Rb_tree_iterator:_Rb_tree_base_iterator {FABLE_FORCEINLINE _Rb_tree_iterator(){}FABLE_FORCEINLINE _Rb_tree_iterator(_Rb_tree_node_base*p){Node=p;}FABLE_FORCEINLINE _Rb_tree_iterator(const _Rb_tree_iterator&i){Node=i.Node;}FABLE_FORCEINLINE _Rb_tree_iterator&operator++(){_M_increment();return *this;}FABLE_FORCEINLINE _Rb_tree_iterator&operator--(){_M_decrement();return *this;}};
 __declspec(noinline) void _Rb_tree_base_iterator::_M_increment(){if(Node->Right){Node=Node->Right;while(Node->Left)Node=Node->Left;}else{_Rb_tree_node_base* p=Node->Parent;while(Node==p->Right){Node=p;p=p->Parent;}if(Node->Right!=p)Node=p;}}
 __declspec(noinline) void _Rb_tree_base_iterator::_M_decrement(){if(Node->Colour==0 && Node->Parent->Parent==Node){Node=Node->Right;return;}if(Node->Left){Node=Node->Left;while(Node->Right)Node=Node->Right;}else{_Rb_tree_node_base* p=Node->Parent;while(Node==p->Left){Node=p;p=p->Parent;}Node=p;}}
 struct _Rb_tree_insert_result { _Rb_tree_iterator First;bool Second;};

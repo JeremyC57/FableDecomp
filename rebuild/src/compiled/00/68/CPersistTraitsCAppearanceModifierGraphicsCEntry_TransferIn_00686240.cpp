@@ -11,6 +11,7 @@
 //   strcmp intrinsic, otherwise CBasicString<char>::operator==); the longs come through the inline by-value TransferInLong()
 //   helper (its local in the parser slot); the float traits is a block-local object whose real TransferIn body is in the TU
 //   (VC7.1 then homes its `this` on the value slot); the closing ")" is read and discarded. Speed-optimised (default) TU.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 template <class T> class CBasicString { public:
@@ -22,7 +23,7 @@ class CCharString { public:
     CBasicString<char>* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;
@@ -47,7 +48,7 @@ class CPersistContext { public:                               // Ego_r.pdb, 0x2C
 };
 enum { PARSED_ITEM_SYMBOL = 2 };
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-__forceinline long TransferInLong(CPersistContext* context, CStringParser* parser)
+FABLE_FORCEINLINE long TransferInLong(CPersistContext* context, CStringParser* parser)
 {
     long value;
     TransferIn(context, parser, &value);

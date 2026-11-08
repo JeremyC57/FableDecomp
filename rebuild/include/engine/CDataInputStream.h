@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifdef FABLE_RETAIL_CDATAINPUTSTREAM
 #ifndef FABLE_ENGINE_CDATAINPUTSTREAM_H
 #define FABLE_ENGINE_CDATAINPUTSTREAM_H
@@ -21,7 +22,7 @@ public:
     unsigned long GetLength() const { return StreamSize; }
     virtual unsigned long GetPosition() const { return StreamPos; }
     virtual void SetPosition(unsigned long);
-    __forceinline void Read(void* buffer,long size) {
+    FABLE_FORCEINLINE void Read(void* buffer,long size) {
         if(size<=0)return;
         __int64 newPosition=(__int64)(StreamPos+size);
         if(newPosition<0 || newPosition>0x7fffffff)return;
@@ -32,20 +33,20 @@ public:
             StreamPos+=size;
         } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
     }
-    template<class T> __forceinline T ReadType() { T val; Read(&val,sizeof(T)); return val; }
-    __forceinline unsigned long ReadULONG() { return ReadType<unsigned long>(); }
-    __forceinline long ReadSLONG() { return ReadType<long>(); }
+    template<class T> FABLE_FORCEINLINE T ReadType() { T val; Read(&val,sizeof(T)); return val; }
+    FABLE_FORCEINLINE unsigned long ReadULONG() { return ReadType<unsigned long>(); }
+    FABLE_FORCEINLINE long ReadSLONG() { return ReadType<long>(); }
     // Chunk 779 (row 0x00AAD650 CWaveLoader::LoadWaveFile): FableWin.pdb ?ReadUWORD@CDataInputStream@@QAEGXZ, ?ReadSWORD@..@@QAEFXZ and
     // ?ReadUBYTE@..@@QAEEXZ (Ego_r keeps only the ReadType<G/F/E> instances they wrap), expanded in retail like ReadULONG / ReadSLONG.
-    __forceinline unsigned short ReadUWORD() { return ReadType<unsigned short>(); }
-    __forceinline short ReadSWORD() { return ReadType<short>(); }
-    __forceinline unsigned char ReadUBYTE() { return ReadType<unsigned char>(); }
+    FABLE_FORCEINLINE unsigned short ReadUWORD() { return ReadType<unsigned short>(); }
+    FABLE_FORCEINLINE short ReadSWORD() { return ReadType<short>(); }
+    FABLE_FORCEINLINE unsigned char ReadUBYTE() { return ReadType<unsigned char>(); }
     // Chunk 737 (CPSCLight / CPSCSingleSprite::ReadBinary 0x00B193D0 / 0x00B068F0): FableWin.pdb ?ReadFloat@CDataInputStream@@QAEMXZ
     // and ?ReadEBOOL@CDataInputStream@@QAE_NXZ, expanded in retail (a 4-byte read stored as a float; a 1-byte read, `test ; setne`,
     // as the landed CPSCAttractor::ReadBinary 0x00B18390 model's ReadBool); ?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
     // stays out of line (0x009945E0, hidden result pointer).
-    __forceinline float ReadFloat() { return ReadType<float>(); }
-    __forceinline bool ReadEBOOL() { return ReadType<unsigned char>() != 0; }
+    FABLE_FORCEINLINE float ReadFloat() { return ReadType<float>(); }
+    FABLE_FORCEINLINE bool ReadEBOOL() { return ReadType<unsigned char>() != 0; }
     CRGBColour ReadColour();
     // Chunk 739 (CPSCUpdateNormal::ReadBinary 0x00B0B860): FableWin.pdb ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ, out of
     // line in retail (0x009950F0, hidden result pointer; the landed CDataInputStream_Read3DVector_009950f0 row).

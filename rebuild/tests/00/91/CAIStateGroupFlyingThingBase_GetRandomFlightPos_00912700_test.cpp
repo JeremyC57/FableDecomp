@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cmath>
 #ifndef _MSC_VER
@@ -17,7 +18,7 @@ struct CNavigationMethods {unsigned long GetNavigatorType();void SetNavigatorToT
 struct CInterfaceMap {struct Entry {long type;void* value;};Entry* first;Entry* last;Entry* LowerBound(const long*);}; //0040F020
 struct CThingRetail {unsigned char beforeComponents[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;
  const C3DVector& GetPosition();float GetHeightZBelowAt(const C3DVector&,bool,bool); //004C73D0,00666D40
- __forceinline bool GetNavigation(CNavigationMethods** out){if(UsingComponents[0]&128){long key=7;CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(&key);if(it==map->last||7<it->type)it=map->last;*out=(CNavigationMethods*)it->value;return true;}return false;}
+ FABLE_FORCEINLINE bool GetNavigation(CNavigationMethods** out){if(UsingComponents[0]&128){long key=7;CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(&key);if(it==map->last||7<it->type)it=map->last;*out=(CNavigationMethods*)it->value;return true;}return false;}
 };
 struct CWorldMapMethods {
 virtual void s00();virtual void s01();virtual void s02();virtual void s03();virtual void s04();virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual long GetMapNumberAt(const C3DVector&)const;float GetGroundSizeZAt(const C3DVector&);}; //slot16=004FC0C0,0063A390

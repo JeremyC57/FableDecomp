@@ -13,6 +13,7 @@
 //   `xor ecx,ecx`, the component loaded straight into ecx), the mode fetched before the position;
 //   offset = target - position through an inline operator- building C3DVector(x, y, z) (Z computed first), the facing
 //   a by-value virtual result; the mode's result is returned directly.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -49,7 +50,7 @@ class CThing { public:
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -66,7 +67,7 @@ class CThing { public:
 
 class CThingCreatureBase : public CThing { public:
     float GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType);
-    __forceinline CTCCreatureModeManager* GetModeManager()
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager()
     {
         CTCCreatureModeManager* modes = 0;
         if (HasTC(0x31))

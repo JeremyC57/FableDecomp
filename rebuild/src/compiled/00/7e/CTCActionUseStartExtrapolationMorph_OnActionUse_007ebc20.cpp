@@ -10,6 +10,7 @@
 // Shape: the parent is read before the user's position; atan2(dx, dy) of parent - user (intrinsic fpatan), scaled to a
 //   turn fraction, stored once to the dead argument slot, then the landed WrapAngle (`if (a < 0 || a >= 1) { a = fmod(a,
 //   1.0); if (a < 0) a += 1; }`, as 0x00754E70 / 0x0069FCE0), and `+ 0.5f` straight into the pushed float.
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
@@ -26,7 +27,7 @@ public:
 
 #include "engine/CThing.h"
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

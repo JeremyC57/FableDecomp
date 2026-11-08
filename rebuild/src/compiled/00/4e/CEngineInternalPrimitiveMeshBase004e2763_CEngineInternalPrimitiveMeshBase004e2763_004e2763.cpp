@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CEngineInternalPrimitiveMeshBase_004e2763::~CEngineInternalPrimitiveMeshBase_004e2763() -- free the vertex block at +0x10, release the mesh resource's counted pointer at +0xc, then the base destructor (sibling jump)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2763, length 46 bytes.
@@ -20,7 +21,7 @@ struct CMeshResource {                             // counted object: vptr, then
 
 struct CIVCountedPointer_Mesh {
     CMeshResource* m_p;
-    __forceinline ~CIVCountedPointer_Mesh()        // the inlined member destructor: the release (forced: the size TU would call it)
+    FABLE_FORCEINLINE ~CIVCountedPointer_Mesh()        // the inlined member destructor: the release (forced: the size TU would call it)
     {
         if (m_p) {
             m_p->Release();
@@ -31,7 +32,7 @@ struct CIVCountedPointer_Mesh {
 
 struct CMallocBlock {                              // a malloc'd buffer member: its destructor frees it
     void* m_p;
-    __forceinline ~CMallocBlock()
+    FABLE_FORCEINLINE ~CMallocBlock()
     {
         if (m_p != 0)
             free(m_p);

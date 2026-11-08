@@ -11,6 +11,7 @@
 // Shape: STLport 4.6 `_M_fill_insert` verbatim; x_copy is the implicit memberwise copy (`rep movsd` x10 into the frame);
 //   in this TU __copy_backward_ptrs and uninitialized_fill_n stay out of line (same-TU noinline bodies, auto_inline off),
 //   so the empty tags and `old_finish - n` / `n - elems_after` live in the dead n argument slot as retail does.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* __p) throw() { return __p; }
 
 class CTCInventoryMap {
@@ -33,7 +34,7 @@ public:
 namespace std {
 struct __false_type { __false_type() { } };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>

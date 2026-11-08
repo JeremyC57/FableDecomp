@@ -10,6 +10,7 @@
 // name, unproven), the def's virtual Destroy (slot 1). The ability index is CAbilityDef +0x28.
 // Shape: HasTC + one-ternary GetTC: the abilities component is a named local (esi) and the showable component lands in ecx;
 // the def is read from its out pointer right after GetSubDef into edi and released by hand inside the block.
+#include "fable_compiler.h"
 struct CTCBaseInterface;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 class CTCBase;
@@ -51,13 +52,13 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44 Components
     unsigned char _pad54[0x1c];
     const CDefClassBase* PDef;                  // +0x70
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

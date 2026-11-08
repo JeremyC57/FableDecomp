@@ -14,6 +14,7 @@
 //   inline operators need __forceinline: plain inline left CWideStringData::operator== out of line.
 // Layout: CWideString is one CWideStringData* (Ego_r); CWideStringData is the STLport basic_string<wchar_t> (start, finish,
 //   end of storage: 12 bytes in retail) then NoRefs. Characters are modelled as unsigned short (no /Zc:wchar_t needed here).
+#include "fable_compiler.h"
 namespace std {
 template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
     static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
@@ -27,7 +28,7 @@ public:
     unsigned short* DataEndOfStorage;                   // +0x08 _M_end_of_storage
     long            NoRefs;                             // +0x0C
     unsigned int size() const { return unsigned int(DataFinish - DataStart); }
-    __forceinline bool operator==(const CWideStringData& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideStringData& other) const
     {
         return size() == other.size() && std::__char_traits_base<unsigned short, unsigned short>::compare(DataStart, other.DataStart, size()) == 0;
     }
@@ -36,7 +37,7 @@ public:
 class CWideString {
 public:
     CWideStringData* PStringData;                       // +0x00
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

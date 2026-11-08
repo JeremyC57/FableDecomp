@@ -1,5 +1,6 @@
 // Behaviour test for CInputProcessTargetLockCycleTargets::ProcessInput (0x00689050): click detection, the pulse timer
 // update, the stored pressure and the next-target call for a live hero with a targeting component.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 #ifndef _MSC_VER
@@ -29,7 +30,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it;
         return it;
     }
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -45,13 +46,13 @@ class CThing { public:
     unsigned char  _pad50[0x91 - 0x50];
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class CTCTargetingPlayer { public:
     int m_next;
     void SetAsTargetNextThing() { ++m_next; }
 };
-__forceinline CTCTargetingPlayer* GetTargetingIfPresent(CThing* thing)
+FABLE_FORCEINLINE CTCTargetingPlayer* GetTargetingIfPresent(CThing* thing)
 {
     CTCTargetingPlayer* tc;                        // deliberately unset when the component is absent
     if (thing->HasTC(8))

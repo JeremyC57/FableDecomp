@@ -7,6 +7,7 @@
 // Shape: two inlined CDataInputStream::Read calls (64-bit position range check, chunk fast path with `movsd`, overflow
 //   reader) into one 4-byte local homed in the dead stream-argument slot, each followed by its member store (the
 //   value pointer is re-read from its slot). Size-optimised TU: #pragma optimize("s", on) (ebp frame).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -14,8 +15,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -29,7 +30,7 @@ struct CDataInputStreamReader : CDataInputStream {
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 };
 
 class CWeaponTrailGraphicSet { public:

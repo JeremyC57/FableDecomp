@@ -13,6 +13,7 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there, and CScorpionHome is nested in it as Ego_r.pdb spells it
 //   (?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ, a private virtual; FableWin ?OnPredicateFail@/?GetParentScript@ the same) (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 #define VEC_DTOR
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
@@ -108,7 +109,7 @@ public:
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 #ifndef VEC_DTOR
-#define VEC_DTOR __forceinline
+#define VEC_DTOR FABLE_FORCEINLINE
 #endif
     VEC_DTOR ~vector()
     {

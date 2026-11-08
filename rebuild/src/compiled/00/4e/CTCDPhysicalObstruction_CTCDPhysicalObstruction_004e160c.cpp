@@ -19,6 +19,7 @@
 //   ternary count -- the size TU keeps `mov eax,[eax+4] / xor eax,eax ; cmp eax,1` -- then `Data = 0` = release + two
 //   zero stores) followed by the counted pointer's own null-tested release, then ~CBaseClass. The empty ctor and the
 //   qualified destructor call only make the TU emit the implicit destructor out of line.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
@@ -28,30 +29,30 @@ public:
     virtual void v002();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle); // slot 3 (+0x0C)
     long RefCount;                                                   // +0x04
-    __forceinline void Release() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
 };
 class CIVCountedPointer {                          // CIVCountedPointer<CEnginePersistentPrimitiveBase>
 public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
-    __forceinline long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline bool IsUnique() const { return GetRefCount() == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
-    __forceinline ~CIVCountedPointer() { ReleaseRef(); }
+    FABLE_FORCEINLINE long GetRefCount() const { return Object ? Object->RefCount : 0; }
+    FABLE_FORCEINLINE bool IsUnique() const { return GetRefCount() == 1; }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { ReleaseRef(); }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
 };
 class CThing;
 class CThingPointerVector {                        // vector<CIntelligentPointer<CThing> >, 12 bytes in retail

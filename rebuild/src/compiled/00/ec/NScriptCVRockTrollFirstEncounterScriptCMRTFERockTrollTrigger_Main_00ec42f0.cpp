@@ -16,6 +16,7 @@
 //   built before the position argument; the CreateCreature result is a discarded temporary (it reuses the filter's slot).
 // Naming wave 35: identity reg 00ec3e6c "M_RTFERockTrollTrigger" in 00ec3d40; Alloc 00ec41f0; vtable 012f166c slot 1; PDB ?Main@CM_RTFERockTrollTrigger@CV_RockTrollFirstEncounterScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_RTFERockTrollTrigger::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_RTFERockTrollTrigger@CV_RockTrollFirstEncounterScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_RTFERockTrollTrigger@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
@@ -31,7 +32,7 @@ protected:
 public:
     virtual void v00() const; virtual void v01() const; virtual void v02() const; virtual void v03() const;
     virtual void v04() const; virtual void v05() const;
-    virtual __forceinline const C3DVector& GetPos() const   // slot 6 (+0x18), 0x004AA980
+    virtual FABLE_FORCEINLINE const C3DVector& GetPos() const   // slot 6 (+0x18), 0x004AA980
     {
         if (!PImp_Data)
             return NullCoord;

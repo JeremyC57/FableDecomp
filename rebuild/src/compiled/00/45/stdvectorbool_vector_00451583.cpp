@@ -9,6 +9,7 @@
 // Shape: frame pointer kept with `push dword ptr [ebp+N]` pass-through arguments and no spills = size TU with /Oy off:
 // #pragma optimize("y", off) + ("s", on). The fill is STLport fill_n (`for (; n > 0; --n, ++first) *first = value;`),
 // the value re-read through its reference every pass (a bool store may alias it).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -30,7 +31,7 @@ template <class T, class A> struct _Vector_base {
 };
 
 template <class OutputIter, class Size, class T>
-__forceinline OutputIter fill_n(OutputIter first, Size n, const T& value)
+FABLE_FORCEINLINE OutputIter fill_n(OutputIter first, Size n, const T& value)
 {
     for (; n > 0; --n, ++first)
         *first = value;

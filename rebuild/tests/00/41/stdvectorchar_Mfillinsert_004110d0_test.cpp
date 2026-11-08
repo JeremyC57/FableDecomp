@@ -10,15 +10,16 @@
 // Callees: memmove @ 0x00BFEAE6 (both copies); the fills are inlined memsets (rep stosd / rep stosb);
 //   vector::_M_insert_overflow(position, x, const __true_type&, n, false) on the grow path.
 // Layout: retail [ecx+0,4,8] is STLport vector<char> storage (start / finish / end of storage).
+#include "fable_compiler.h"
 #include <string.h>
 #include <stdlib.h>
 namespace std {
 struct __true_type { __true_type(){} };
 template <class _Tp> class allocator { };
-__forceinline char* CopyChars(const char*first,const char*last,char*out){if(last!=first)memmove(out,first,last-first);return out+(last-first);}
-__forceinline char* CopyBackward(const char*first,const char*last,char*out){int count=last-first;if(count>0)memmove(out-count,first,count);return out-count;}
-__forceinline void FillChars(char*first,char*last,const char&value){memset(first,(unsigned char)value,last-first);}
-__forceinline char* FillN(char*first,unsigned count,const char&value){memset(first,(unsigned char)value,count);return first+count;}
+FABLE_FORCEINLINE char* CopyChars(const char*first,const char*last,char*out){if(last!=first)memmove(out,first,last-first);return out+(last-first);}
+FABLE_FORCEINLINE char* CopyBackward(const char*first,const char*last,char*out){int count=last-first;if(count>0)memmove(out-count,first,count);return out-count;}
+FABLE_FORCEINLINE void FillChars(char*first,char*last,const char&value){memset(first,(unsigned char)value,last-first);}
+FABLE_FORCEINLINE char* FillN(char*first,unsigned count,const char&value){memset(first,(unsigned char)value,count);return first+count;}
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
  _Tp *_M_start,*_M_finish,*_M_end_of_storage;

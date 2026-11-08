@@ -13,6 +13,7 @@
 // Shape: `current == GetRegionNumberMapIsIn(...)` -- VC7.1 evaluates the RIGHT operand of an int `==` first, so the region
 //   lookup runs first and the compare is `cmp current, saved`; the map index goes through an inline long getter (a direct
 //   short member argument gives `movsx ecx`); the def's array `this` (def + 0x958) stays in eax after the inlined operator[].
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -30,7 +31,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -1,6 +1,7 @@
 // CFilter_Bind2::operator()(thing) -- Require both the first predicate and sphere overlap.
 // Leaf: ??$?RVCUnprovenThing_00877f40@@@?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@QBE_NABVCUnprovenThing_00877f40@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
+#include "fable_compiler.h"
 #pragma pack(push,1)
 #include "engine/C3DVector.h"
 #pragma pack(pop)
@@ -15,7 +16,7 @@ class CThingFilter_IsOfType {public:unsigned long Type;bool operator()(const CTh
 class CThingFilter_OverlappingSphere {
 public:
     C3DVector SpherePos;float Radius;
-    __forceinline bool operator()(const CThing& thing)const {
+    FABLE_FORCEINLINE bool operator()(const CThing& thing)const {
         C3DVector center;float radius;
         thing.GetPhysicsTC()->GetBoundingInfo(center,radius);
         C3DVector delta=center-SpherePos;

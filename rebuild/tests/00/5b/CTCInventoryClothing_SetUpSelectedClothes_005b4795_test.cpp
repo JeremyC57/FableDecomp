@@ -1,5 +1,6 @@
 // Behaviour test for 005b4795: src/005b4795.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryClothing::SetUpSelectedClothes()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -140,7 +141,7 @@ struct CLongVector {
     long* _M_finish;
     long* _M_end_of_storage;
     CLongVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CLongVector() { if (_M_start) free(_M_start); }
+    FABLE_FORCEINLINE ~CLongVector() { if (_M_start) free(_M_start); }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     long& operator[](unsigned long n) { return *(_M_start + n); }
 };

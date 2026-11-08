@@ -29,6 +29,7 @@
 //   RegionUnloading +0xD4, PassabilityBeingShown +0xD5.
 // Shape: the body divides by `1 << granularityShift` (the parameter, CSE'd with the Granularity initialiser, so retail
 //   keeps it in ebp across the resize call) and reads the area through C2DBoxI::GetHeight / GetWidth after the copy.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
@@ -97,7 +98,7 @@ template <class _Tp> struct less { };
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -105,7 +106,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }
@@ -113,7 +114,7 @@ __forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n,
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
     _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    __forceinline _Vector_base(unsigned int __n, const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0)
+    FABLE_FORCEINLINE _Vector_base(unsigned int __n, const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0)
     {
         _M_start = _M_end_of_storage.allocate(__n);
         _M_finish = _M_start;
@@ -126,7 +127,7 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     explicit vector(const _Alloc& __a = _Alloc()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    __forceinline explicit vector(unsigned int __n) : _Vector_base<_Tp, _Alloc>(__n, _Alloc())
+    FABLE_FORCEINLINE explicit vector(unsigned int __n) : _Vector_base<_Tp, _Alloc>(__n, _Alloc())
     {
         this->_M_finish = uninitialized_fill_n(this->_M_start, __n, _Tp());
     }

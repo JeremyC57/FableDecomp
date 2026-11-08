@@ -13,6 +13,7 @@
 // Shape: no vptr reset (the class declares no destructor), members destroyed in reverse order; the spline's vector frees its
 // storage with a plain null test (`push eax ; call free ; pop ecx`) and the def pointer releases through the def object and
 // clears with `and dword ptr [esi+0Ch],0` -- a size-optimised TU, so the inline destructors are `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
@@ -36,7 +37,7 @@ struct CDefBase {                                  // counted def: vptr, count a
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_count;                                  // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();
@@ -46,7 +47,7 @@ struct CDefBase {                                  // counted def: vptr, count a
 struct CNymphDefPointer {                          // CDefPointer<CNymphDef const>
     CDefBase* m_pDef;
     CNymphDefPointer() : m_pDef(0) { }
-    __forceinline ~CNymphDefPointer()
+    FABLE_FORCEINLINE ~CNymphDefPointer()
     {
         if (m_pDef) {
             m_pDef->Release();
@@ -62,7 +63,7 @@ struct CSplinePointVector {                        // STLport vector<C3DVector> 
     C3DVector* _M_finish;
     C3DVector* _M_end_of_storage;
     CSplinePointVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~CSplinePointVector()
+    FABLE_FORCEINLINE ~CSplinePointVector()
     {
         if (_M_start)
             free(_M_start);

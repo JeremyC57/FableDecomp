@@ -5,6 +5,7 @@
 // slot; the device is a COM-style interface (`__stdcall` slot 2 = Release with `this` pushed). EH
 // state 0 covers the body. The manifest label (`DestroyDevice`) names the inlined helper; the
 // class is the one whose vtable is stored.
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall CoUninitialize();   // IAT 0x01440648 = ole32.dll!CoUninitialize
 struct IUnknown_00c57310 {                 // COM-style: `this` is pushed as the first stack argument
     virtual long __stdcall QueryInterface();
@@ -20,7 +21,7 @@ struct CDisplayManagerBase_00c57310 {      // vtable 0x012B5868
 class CDisplayManager : public CDisplayManagerBase_00c57310 { public:   // vtable 0x012B8DF8
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void ReleaseResources();       // slot 5
-    __forceinline void DoReleaseResources() { ReleaseResources(); }
+    FABLE_FORCEINLINE void DoReleaseResources() { ReleaseResources(); }
     unsigned char _pad[4];
     IUnknown_00c57310* m_pDevice;          // +8
     ~CDisplayManager();

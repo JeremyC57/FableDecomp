@@ -12,6 +12,7 @@
 //   type traits, so the copy is the placement-new loop with its null test. The empty allocator temporary is homed in
 //   the dead argument slot's top byte (`lea eax,[ebp+0Bh]`) and never initialised (empty user constructor).
 // Shape: size TU with a frame pointer (`optimize("y", off)` + `("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -22,13 +23,13 @@ enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE };
 namespace std {
 struct __false_type { };
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value)
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

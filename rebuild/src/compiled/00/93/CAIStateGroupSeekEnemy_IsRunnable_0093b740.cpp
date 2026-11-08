@@ -14,6 +14,7 @@
 //          (a __forceinline helper fed by an implicit conversion, so the temporary address is re-taken); the frame count is stored into the dead key slot for the fild.
 // Layout: engine/CAIStateGroup_SeekEnemy.h (PEnemy +0x14); PBrain is the first dword at +0x04; the perception
 //          component's +0x1c frame count is descriptive.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_SeekEnemy.h"
 
 class CTCBase;
@@ -26,11 +27,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -41,7 +42,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -89,7 +90,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer(T* item);     // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
-    __forceinline void AssignInline(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE void AssignInline(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }

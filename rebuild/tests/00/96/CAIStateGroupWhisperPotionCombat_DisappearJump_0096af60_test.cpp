@@ -1,4 +1,5 @@
 // 0096af60 behaviour test: CAIStateGroup_WhisperPotionCombat::DisappearJump (control flow of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -70,7 +71,7 @@ struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
     bool JumpIntoSky();
 };
 
-__forceinline bool CAIStateGroup_WhisperPotionCombat::JumpIntoSky()
+FABLE_FORCEINLINE bool CAIStateGroup_WhisperPotionCombat::JumpIntoSky()
 {
     long result;
     do {

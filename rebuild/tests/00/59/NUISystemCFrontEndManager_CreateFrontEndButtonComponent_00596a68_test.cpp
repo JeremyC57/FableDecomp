@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 #pragma pack(push, 1)
@@ -18,7 +19,7 @@ public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -39,7 +40,7 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(T* data);                           // 0x00429C15 for CComponent
-    template <class U> __forceinline CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
+    template <class U> FABLE_FORCEINLINE CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
     {
         ShareData((T*)other.Data, other.Info);
     }

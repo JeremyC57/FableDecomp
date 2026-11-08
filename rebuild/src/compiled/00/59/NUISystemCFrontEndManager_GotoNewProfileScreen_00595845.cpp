@@ -17,6 +17,7 @@
 // release through an inline def method (--RefCount; if (RefCount == 0) DestroySelf()): retail keeps the object in ecx and
 // &RefCount in eax (`add eax,4; dec [eax]; cmp [eax],0`); the open-coded release reloads Object instead. The component's
 // CObserver base is formed from *top (reference conversion), matching retail's `add esi,4` with no null check.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharString { public: void* PStringData; };
@@ -64,7 +65,7 @@ template <class T> class CDefPointer {
 public:
     T* Object;
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->DecRef();

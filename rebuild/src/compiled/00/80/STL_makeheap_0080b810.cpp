@@ -11,6 +11,7 @@
 // Shape: STLport `__make_heap(first, last, comp, _STLP_VALUE_TYPE(first, ..), _STLP_DISTANCE_TYPE(first, ..))` -- the
 //   two null type pointers pushed first, then the comparator's implicit copy expanded inline (thirteen dwords and the
 //   CompareInXYPlane byte through cl); the twin of 0x008097D0.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -26,10 +27,10 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint(const CTargetPoint& other)
         : PThing(other.PThing), Index(other.Index), TargetingPosition(other.TargetingPosition),
           FrameRejected(other.FrameRejected) { }
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;

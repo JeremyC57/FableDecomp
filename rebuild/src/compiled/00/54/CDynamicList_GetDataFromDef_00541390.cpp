@@ -5,6 +5,7 @@
 // NativeVT1246E44 slot108 const LoadAndReturnDef=530EC0; find index535F5A fastcall ret8; vector insert485DBC ret14.
 // Actual PDB LoadAndReturnDef returns CDefPointer<const CUIDef>; release uses CIVCountedPointeeBase::Delete()const slot1=42D930.
 // Leaf: GetDataFromDef
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <string.h>
 #include <new>
@@ -56,7 +57,7 @@ class CDynamicList { public:
  // Lowering of actual LoadAndReturnDef() const: thiscall, hidden stack result address, same address in EAX.
  typedef DefinitionResultStorage*(CDynamicList::*LoadDefinitionMethod)(DefinitionResultStorage*)const;
 
- __forceinline void AppendScrollingChild(CComponent* child){ScrollingChildren.push_back(child);}
+ FABLE_FORCEINLINE void AppendScrollingChild(CComponent* child){ScrollingChildren.push_back(child);}
  void GetDataFromDef();
 };
 #ifdef _MSC_VER

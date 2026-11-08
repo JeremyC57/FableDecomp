@@ -15,6 +15,7 @@
 //   the divide by 0x34 is the 0x4EC4EC4F multiply. With plain `inline` VC7.1 keeps __copy out of line (the inlined
 //   element operator= makes it too big: `push 0 ; lea eax,[esp+8] ; call`, 25 v 74); `__forceinline` on __copy
 //   reproduces retail's single body.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
@@ -34,7 +35,7 @@ public:
 };
 namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

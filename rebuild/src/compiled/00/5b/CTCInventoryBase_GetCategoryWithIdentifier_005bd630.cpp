@@ -11,6 +11,7 @@
 // ItemsInCategory +0x08, PDef +0x14, PInventory +0x18, GlobalDefIndex +0x1C, SelectedItemIndex +0x20,
 // HighlightedItemIndex +0x24, Selected +0x28, DisplayItems +0x29; retail CTCInventoryBase Categories +0x20 (PDB +0x24);
 // CInventoryCategoryDef Identifier +0x50.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -24,8 +25,8 @@ class CInventoryCategoryDef { public:
 
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 
@@ -39,7 +40,7 @@ class CCategory { public:                                   // retail 0x2C bytes
     bool          DisplayItems;                      // +0x29
     unsigned char _pad_0x2a[0x2];
 
-    __forceinline CDefPointer<CInventoryCategoryDef> GetDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CInventoryCategoryDef> GetDef() const { return PDef; }
 };
 
 template <class T> struct CRetailVector {            // STLport vector (12 bytes)

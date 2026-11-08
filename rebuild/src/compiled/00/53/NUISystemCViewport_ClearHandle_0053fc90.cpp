@@ -10,6 +10,7 @@
 // Shape: the inline CEnginePrimitiveHandle::Clear() of the landed ~CPSCDecalRenderer (0x00B1FFC0): the uniqueness test,
 // then `Data = 0` = the inline release (null test, `dec [Data+4]`, destroy at zero, zero store) plus the second
 // unconditional zero store of operator=(0).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
 public:
@@ -25,14 +26,14 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

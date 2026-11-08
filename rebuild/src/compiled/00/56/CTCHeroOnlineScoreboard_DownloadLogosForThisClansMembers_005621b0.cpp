@@ -11,6 +11,7 @@
 // Shape: the reply numbers go through the IMPLICIT const char* -> CCharString conversion (an explicit CCharString(..., -1)
 // temporary passes the ctor result in ecx and reverses the request chain's temp slots); the data line is read with lines[i]
 // and i is bumped after Write; the int -> wide text helper returns a named local (copied, no NRVO).
+#include "fable_compiler.h"
 typedef unsigned short wchar16;
 extern "C" void __cdecl free(void* block);
 extern "C" unsigned int __cdecl strlen(const char* text);
@@ -137,7 +138,7 @@ public:
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
     CCharString GetCachedMemberLogosAsString();      // 0x0055EA80
     CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
-    __forceinline bool OpenRequest(const CCharString& request)
+    FABLE_FORCEINLINE bool OpenRequest(const CCharString& request)
     {
         LHString text(request.c_str());
         CCharString key("THIS-ISMY-VALI-DCDK-EYOH-YESI-TISM", -1);

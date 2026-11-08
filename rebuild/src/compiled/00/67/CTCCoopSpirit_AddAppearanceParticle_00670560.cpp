@@ -12,6 +12,7 @@
 // the lookup key and the empty CCharString (a named local in its own `{}` block) all share the dead
 // argument slot (a clear bit reads it back, `mov esi,[esp+0Ch]`); with the out pointer and the string
 // as plain locals of the body VC opens a `push ecx` frame word instead.
+#include "fable_compiler.h"
 class CTCBase;
 class C3DVector;
 
@@ -27,7 +28,7 @@ class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
-__forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
+FABLE_FORCEINLINE CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
     CTCDParticleEmitter* emitter;
     thing->GetTC(TCI_PARTICLE_EMITTER, &emitter);                    // TC_PARTICLE_EMITTER

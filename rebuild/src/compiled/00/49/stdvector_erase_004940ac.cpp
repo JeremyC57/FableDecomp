@@ -9,6 +9,7 @@
 // Body: STLport 4.6 `pointer __i = __copy_ptrs(__last, _M_finish, __first, _TrivialAss()); _Destroy(__i, _M_finish);
 //   _M_finish = __i; return __first;` -- the family G067 body with __copy left out of line: both callees are same-TU noinline
 //   `__fastcall` bodies that never touch their tag, so VC7.1 homes both tags in the live `first` slot ([ebp+0Bh]) as retail does.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -65,7 +66,7 @@ __declspec(noinline) _OutputIter __fastcall __copy(_RandomAccessIter __first, _R
 #pragma auto_inline(on)
 
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }
@@ -81,7 +82,7 @@ __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _Fo
 }
 #pragma auto_inline(on)
 
-template <class _Tp> __forceinline void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last) { __destroy_aux(__first, __last, __false_type()); }
 
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : protected _Vector_base<_Tp, _Alloc> {

@@ -14,6 +14,7 @@
 //   `last = copy(last, last, first)`, detach through Exchange, free); pointer elements copy through STLport's
 //   __copy_trivial (memmove), 12-byte elements through the counted copy loop; the tree clears and the CRC vector-map
 //   clear are the landed ClearEntries forms; the counted pointer reset re-reads its info member after the decrement.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);   // 0x00BFEAE6
 void operator delete(void* p);                               // 0x00BFE9BC
@@ -21,13 +22,13 @@ void operator delete[](void* p);                             // 0x00BFEB1C
 
 template <class P> inline P Exchange(P& slot, P value) { P old = slot; slot = value; return old; }
 
-template <class T> __forceinline T* CopyRange(T* first, T* last, T* result)
+template <class T> FABLE_FORCEINLINE T* CopyRange(T* first, T* last, T* result)
 {
     for (long n = last - first; n > 0; --n, ++first, ++result)
         *result = *first;
     return result;
 }
-template <class T> __forceinline T** CopyRange(T** first, T** last, T** result)
+template <class T> FABLE_FORCEINLINE T** CopyRange(T** first, T** last, T** result)
 {
     return last == first ? result
                          : (T**)((char*)memmove(result, first, (char*)last - (char*)first) + ((char*)last - (char*)first));
@@ -36,7 +37,7 @@ template <class T> __forceinline T** CopyRange(T** first, T** last, T** result)
 template <class T> class CArray { public:                           // retail STLport vector: first, last, end_of_storage
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
-    __forceinline void DeallocateMemory()
+    FABLE_FORCEINLINE void DeallocateMemory()
     {
         if (capacity() > 0) {
             last = CopyRange(last, last, first);

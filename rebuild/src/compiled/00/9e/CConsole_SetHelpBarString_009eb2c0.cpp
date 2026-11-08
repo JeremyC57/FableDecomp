@@ -20,6 +20,7 @@
 // inlined parser teardown binds ??1CBaseClass@@UAE@XZ 0x0099A2E0 (was the non-virtual QAE spelling). Same bytes.
 // Layout: the retail CConsole offsets of the landed rows (0x009EA660): FrontCommandLine +0x1c, HelpBarString
 // +0x3c; CStringParser as the landed 0x00CB7CB0 (0x28 bytes).
+#include "fable_compiler.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -43,7 +44,7 @@ public:
             return g_emptyText_0129aaf4;
         return PStringData->PData;
     }
-    __forceinline bool operator==(char c) const
+    FABLE_FORCEINLINE bool operator==(char c) const
     {
         if (PStringData == 0)
             return false;

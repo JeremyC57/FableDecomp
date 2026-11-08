@@ -16,6 +16,7 @@
 //   checked against the object relocations: TRUE on the fall-through, FALSE on the `je`) -- with the "," literal
 //   CSE'd into edi. Frame-pointer size TU.
 // Layout: engine/CHeroMarriageInfo.h (WifeUID +0, MaritalHomeUID +8, State +0x10, GayMarriage +0x14).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CHeroMarriageInfo.h"
@@ -39,21 +40,21 @@ extern const char g_textFalse_0122d6cc[];                             // 0x0122D
 template <class T> struct CPersistTraits;
 
 template <> struct CPersistTraits<unsigned __int64> {
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const unsigned __int64* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const unsigned __int64* value) const
     {
         unsigned __int64 copy = *value;
         out += CCharString(copy);
     }
 };
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const long* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const long* value) const
     {
         long copy = *value;
         TransferOutLong(&context, &out, &copy);
     }
 };
 template <> struct CPersistTraits<bool> {
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const bool* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const bool* value) const
     {
         if (*value)
             out += g_textTrue_0122d6d4;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -144,7 +145,7 @@ public:
     unsigned char     _pad000[0x1d0];
     CRenderManager*   RenderManager;               // +0x1d0
     IDirect3DDevice9* D3DDevice;                   // +0x1d4
-    __forceinline void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
+    FABLE_FORCEINLINE void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
                             unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
     {
         D3DDevice->SetIndices(indexBuffer.PD3DIndexBuffer);

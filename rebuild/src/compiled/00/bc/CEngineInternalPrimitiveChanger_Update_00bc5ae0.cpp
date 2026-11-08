@@ -8,6 +8,7 @@
 // Shape: the counted copy keeps the old pointer in a local (`mov ecx,[esi+54h] ; cmp ecx,[edi+18h]`) with the release on the
 // pointee; the vector address stays in ebx from the reserve call, so the inline mask helper reads `[ebx]`/`[ebx+4]`; the flags
 // argument is still in edx for the `__fastcall` UpdatePosition (no reload of +0x60).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -36,7 +37,7 @@ public:
     CEngineInternalPrimitiveBase* Object;
     CEngineInternalPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -45,7 +46,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEngineInternalPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -65,7 +66,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

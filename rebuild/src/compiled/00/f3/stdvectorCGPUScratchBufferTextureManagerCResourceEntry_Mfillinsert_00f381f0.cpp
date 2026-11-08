@@ -12,6 +12,7 @@
 //   `position` argument slot (live in the else arm): __false_type has a user constructor and the tag-taking helpers have same-TU
 //   `__declspec(noinline)` bodies. The x copy constructor must be opaque here (declared only): with a visible inline body VC7.1
 //   still calls it but keeps _M_finish in a register across the call (280v282); retail reloads it.
+#include "fable_compiler.h"
 class CTexture;
 class CSurface;
 enum EResourceType { EResourceType_Force32 = 0x7fffffff };
@@ -53,7 +54,7 @@ public:
     _Tp* _M_finish;
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
 };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
 __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)   // 0x00F37CC0
 {

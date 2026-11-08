@@ -1,5 +1,6 @@
 // Behaviour test for 008967f0: src/008967f0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CGameScriptInterface::SetThingAsUsable(const CScriptThing& thing, bool usable) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -68,7 +69,7 @@ class CThing { public:
     CInterfaceMap_Retail m_interfaces;           // +0x44
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         CInterfaceMap_Retail* map = &m_interfaces;
         CInterfaceMap_Retail::SEntry* it = map->LowerBound(&interfaceType);
@@ -76,7 +77,7 @@ class CThing { public:
             it = map->last;
         return it->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

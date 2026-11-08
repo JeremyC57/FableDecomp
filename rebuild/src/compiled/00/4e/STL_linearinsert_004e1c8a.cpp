@@ -16,6 +16,7 @@
 //   `__forceinline` (the landed 0x00AF2F10 inline: same block -> false, null this -> true, null other -> false, else
 //   the payload compare); copy_backward's fresh `random_access_iterator_tag()` lands in the high byte of the
 //   comparator's argument slot (`lea eax,[ebp+1Bh]`), the distance pointer is a null `push 0`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace std {
 
@@ -32,7 +33,7 @@ class CCharString { public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -63,14 +64,14 @@ template <class T1, class T2> struct pair {                // STLport pair
 typedef pair<CCharString, CRegisteredTCInfo> SRegisteredTCEntry;   // 16 bytes
 
 struct CKeyPairCompareLess {                               // CKeyPairCompareLess<CCharString, CRegisteredTCInfo>
-    __forceinline bool operator()(const SRegisteredTCEntry& a, const SRegisteredTCEntry& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const SRegisteredTCEntry& a, const SRegisteredTCEntry& b) const { return a.first < b.first; }
 };
 
 SRegisteredTCEntry* __fastcall __copy_backward(SRegisteredTCEntry* first, SRegisteredTCEntry* last,
                                                SRegisteredTCEntry* result, const random_access_iterator_tag&,
                                                int*);   // 0x004DA738
 
-__forceinline SRegisteredTCEntry* copy_backward(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry* result)
+FABLE_FORCEINLINE SRegisteredTCEntry* copy_backward(SRegisteredTCEntry* first, SRegisteredTCEntry* last, SRegisteredTCEntry* result)
 {
     return __copy_backward(first, last, result, random_access_iterator_tag(), (int*)0);
 }

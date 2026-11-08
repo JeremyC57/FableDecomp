@@ -1,5 +1,6 @@
 // Behaviour test for 0075c420: src/0075c420.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCCameraPointDefinitionBase::TransformPosition(const C3DVector& position, const C3DVector* origin, const CRightHandedSet* axes) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -20,7 +21,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
+    FABLE_FORCEINLINE C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     C3DVector operator-(const C3DVector& b) const
     {
         return C3DVector(X - b.X, Y - b.Y, Z - b.Z);

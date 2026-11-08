@@ -11,6 +11,7 @@
 // generated header is a flat byte-packed POD (no base class, no virtual), which cannot express the base copy
 // constructor. CDefClassBase is 0x25 bytes byte-packed (landed 0x006250B0 model).
 // Label correction: the catalog's `_Cons_val<allocator<pair<CCharString,pair<long,CDateAndTime>>>>` is propagated.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -34,7 +35,7 @@ class CShopItemDef : public CDefClassBase { public:              // vtable 0x012
     long Type;                                     // +0x28
     CShopItem Item;                                // +0x2c
     virtual void v00();
-    __forceinline CShopItemDef(const CShopItemDef& o) : CDefClassBase(o), Type(o.Type), Item(o.Item) { }
+    FABLE_FORCEINLINE CShopItemDef(const CShopItemDef& o) : CDefClassBase(o), Type(o.Type), Item(o.Item) { }
 };
 
 void __fastcall Construct_ShopItemDef_004e9c39(CShopItemDef* p, const CShopItemDef& value)

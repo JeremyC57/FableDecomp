@@ -6,6 +6,7 @@
 // Combat action base is 0x114 retail versus donor 0x12c; sky-jump EndPos is +114.
 // The shared result is compared after both temporary actions are destroyed, then every path terminates.
 // Address-of-temporary syntax follows VC7.1; g++ fixtures compile the identical body with -fpermissive.
+#include "fable_compiler.h"
 #define CAIStateGroup_BalverineCornered CAIStateGroup_BalverineCorneredLayout
 #include "engine/CAIStateGroup_BalverineCornered.h"
 #undef CAIStateGroup_BalverineCornered
@@ -31,7 +32,7 @@ struct CRetailThing {
     CInterfaceMap Components;
     unsigned char _beforeDead[0x3d];
     unsigned char Dead:1;
-    template<class T> __forceinline bool GetInterface(T** out,long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long type) {
         if (UsingComponents[type>>5] & (1UL<<(type&31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map=&Components;

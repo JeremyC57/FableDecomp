@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -128,7 +129,7 @@ struct CCompositeSurfaceMap {                      // CVectorMap<long, CComposit
         } else
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
-    __forceinline void Add(const long& key, const CCompositeSurfaceInfo& info) { push_back(CSurfacePair(key, info)); NeedsSort = true; }
+    FABLE_FORCEINLINE void Add(const long& key, const CCompositeSurfaceInfo& info) { push_back(CSurfacePair(key, info)); NeedsSort = true; }
     void Sort()
     {
         if (NeedsSort) {

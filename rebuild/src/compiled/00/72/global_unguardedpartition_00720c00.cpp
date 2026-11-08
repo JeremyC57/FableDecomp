@@ -9,12 +9,13 @@
 // Convention: /Gr (link-time __fastcall): first in ecx (edi), last in edx (esi), the 24-byte pivot and the empty
 //   comparator on the stack (0x18 + 4 = 0x1C).  The pivot key is loaded once into ebx.
 // Element: the landed __adjust_heap 0x0071FF00 model (pair<EHeroMorphType, CTextureMorphEntry>, signed key).
+#include "fable_compiler.h"
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;              // +0x00

@@ -9,6 +9,7 @@
 //   share the frame slot of the `push ecx` (their undefined byte is what gets pushed; less<> needs a user-declared
 //   constructor or the byte is zeroed). VC7.1 inlines __final_insertion_sort only for the long row on its own; the
 //   8-byte rows need it __forceinline.
+#include "fable_compiler.h"
 namespace std {
 template <class _Tp> struct less {
     less() { }                                            // user-declared: the empty temporaries are not zero-filled
@@ -38,7 +39,7 @@ inline void __unguarded_insertion_sort(_RandomAccessIter __first, _RandomAccessI
     __unguarded_insertion_sort_aux(__first, __last, __value_type(__first), __comp);
 }
 template <class _RandomAccessIter, class _Compare>
-__forceinline void __final_insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
+FABLE_FORCEINLINE void __final_insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
 {
     if (__last - __first > 16) {                          // __stl_threshold
         __insertion_sort(__first, __first + 16, __comp);

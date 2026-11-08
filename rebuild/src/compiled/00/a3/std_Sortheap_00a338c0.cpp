@@ -14,6 +14,7 @@
 // stored field by field from the temporary (`fstp` for X/Y). _Pop_heap and _Pop_heap_0 are __forceinline: with
 // plain `inline` VC7.1 keeps _Pop_heap out of line here (a local cdecl call, 133 v 217 bytes) -- its inliner
 // declines it (the 0x0076AF10 sibling, whose pair has no implicit-copy member, inlines with plain `inline`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class C3DHelperPoint { public:
@@ -36,14 +37,14 @@ struct CKeyPairCompareLess {
 
 void __fastcall _Adjust_heap(SKeyedHelper* first, long hole, long bottom, SKeyedHelper value, CKeyPairCompareLess pred);   // 0x00A32440
 
-__forceinline void _Pop_heap(SKeyedHelper* first, SKeyedHelper* last, SKeyedHelper* dest, SKeyedHelper value,
+FABLE_FORCEINLINE void _Pop_heap(SKeyedHelper* first, SKeyedHelper* last, SKeyedHelper* dest, SKeyedHelper value,
                       CKeyPairCompareLess pred, long*)
 {
     *dest = *first;
     _Adjust_heap(first, 0, long(last - first), value, pred);
 }
 
-__forceinline void _Pop_heap_0(SKeyedHelper* first, SKeyedHelper* last, CKeyPairCompareLess pred, SKeyedHelper*)
+FABLE_FORCEINLINE void _Pop_heap_0(SKeyedHelper* first, SKeyedHelper* last, CKeyPairCompareLess pred, SKeyedHelper*)
 {
     _Pop_heap(first, last - 1, last - 1, SKeyedHelper(*(last - 1)), pred, (long*)0);
 }

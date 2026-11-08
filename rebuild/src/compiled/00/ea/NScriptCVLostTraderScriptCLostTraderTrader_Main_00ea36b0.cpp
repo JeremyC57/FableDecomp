@@ -22,6 +22,7 @@
 //   retail's mix (one exit expands DeregisterTimer, the rest call 0x00CD4470); the implicit MovieBase pair with the
 //   declared-only CCountedPointer dtor gives the out-of-line ctor in case 3 and the expanded ctor + one expanded exit in
 //   case 4. One function-wide flags word guards the hit-test CCharString temporaries (bits 1..0x4000).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -54,8 +55,8 @@ inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(th
 extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 extern "C" int __cdecl rand();
 void NScript::CV_LostTraderScript::CLostTraderTrader::Main()
 {

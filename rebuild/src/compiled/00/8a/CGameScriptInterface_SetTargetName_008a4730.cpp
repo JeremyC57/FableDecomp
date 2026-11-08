@@ -8,6 +8,7 @@
 //   retail virtual CGameScriptInterface member (was the invented CGameScriptInterfaceMethods; the landed sibling 0x008A1E50 is the model);
 //   the scratchpad setter is the PDB CTCAIScratchpad::SetTargetName(CCharString) by value (FableWin.pdb), expanded inline
 // Retail008A4730,259 bytes;0040F020 lower_bound,0099A2E0 base destructor,00BFE9BC delete; CTCAIScratchpad donor layout.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -46,7 +47,7 @@ struct CTCAIScratchpadNative:CTCBase {
 FABLE_STATIC_ASSERT(sizeof(CTCAIScratchpadNative)==132);
 FABLE_STATIC_ASSERT(offsetof(CTCAIScratchpadNative,Action)==72);
 FABLE_STATIC_ASSERT(offsetof(CTCAIScratchpadNative,PDef)==128);
-__forceinline CTCAIScratchpadNative* GetScratchpad(CThing* thing){
+FABLE_FORCEINLINE CTCAIScratchpadNative* GetScratchpad(CThing* thing){
  CTCAIScratchpadNative* result;
  if(thing->UsingComponents[5]&0x400){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)170);ComponentEntry* end=map->Finish;result=static_cast<CTCAIScratchpadNative*>(((void*)(it==end||it->first>170?end:it)->second));}
  return result; // native requires the scratchpad component; no absent-component fallback is initialized.

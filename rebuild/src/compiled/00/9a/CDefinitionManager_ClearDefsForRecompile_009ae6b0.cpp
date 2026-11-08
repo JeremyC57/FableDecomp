@@ -2,6 +2,7 @@
 // Leaf: ClearDefsForRecompile
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AE6B0, length 268 bytes (`ret 4`). Type-name table @ 0x013CA828 (GetName 0x9D49F0), _stricmp 0xBFEBA8, key-data ctor 0x9BAA70.
 // Note: the +1/+1/-1 refcount triple is a by-value pass-through copy (param copy, return copy, param dtor); the map-slot assignment keeps the old pointer in a local (short release form).
+#include "fable_compiler.h"
 extern "C" int __cdecl _stricmp(const char*, const char*);
 struct CStringData { char* Data; int Length; };
 class CCharString { public:
@@ -35,7 +36,7 @@ struct CDefSourceObj {
 struct CDefEntry {
     long Type; long _04; long _08;
     CCountedPointer Obj;                                  // +0x0c
-    static __forceinline CCountedPointer Pass(CCountedPointer p) { return p; }
+    static FABLE_FORCEINLINE CCountedPointer Pass(CCountedPointer p) { return p; }
 };
 class CDefStringTable { public: const char* GetStringAsCharArray(long id) const; };   // 0x009D49F0 ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z (PDB; naming wave 21: was a CDefTypeNames::GetName stand-in)
 extern CDefStringTable GDefStringTable;                   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)

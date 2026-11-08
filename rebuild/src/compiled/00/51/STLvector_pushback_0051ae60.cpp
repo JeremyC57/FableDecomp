@@ -13,6 +13,7 @@
 //   `__forceinline` (else VC7.1 calls it): placement new with its null test, then the implicit copy constructor
 //   (each CCountedPointer copy bumps the shared count when Info is non-null), `add dword ptr [ecx+4],1Ch`. The
 //   __false_type temporary is homed in x's own argument slot (`lea edx,[esp+0Ch]` -- x is still read from it).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
 class CAFile;
@@ -37,7 +38,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2>
-__forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> class allocator { public: allocator() { } };
 

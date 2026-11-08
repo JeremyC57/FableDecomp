@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: InsertGrow
 // Layout: element stride500 derived from retail pointer division and allocation; concrete identity uncertain except cited caller.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
@@ -20,7 +21,7 @@ __declspec(noinline) Element_0088a070* __fastcall UninitializedCopy(const Elemen
  return out;
 }
 #pragma auto_inline(on)
-__forceinline Element_0088a070* __fastcall UninitializedFill(Element_0088a070* out,unsigned int count,const Element_0088a070& value,const Tag_0088a070&) {
+FABLE_FORCEINLINE Element_0088a070* __fastcall UninitializedFill(Element_0088a070* out,unsigned int count,const Element_0088a070& value,const Tag_0088a070&) {
  for(;count>0;--count,++out)if(out)new(out)Element_0088a070(value);
  return out;
 }
@@ -28,7 +29,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_0088a070* first,Elemen
  for(;first!=last;++first)first->~Element_0088a070();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_0088a070<T>::InsertGrow(T* position,const T& value,const Tag_0088a070&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

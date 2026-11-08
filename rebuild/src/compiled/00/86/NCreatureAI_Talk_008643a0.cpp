@@ -21,6 +21,7 @@
 //   zero store lands between the HasTC(0x10) test and its branch, its storage the dead name-reference argument slot;
 //   the release is skipped on the path that never called GetSubDef); the sound player and the listener's event
 //   component through the direct-return non-const GetTC; the bool args to PlayAttachedSample are pushed before the CSoundInit temporary is constructed.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;                                      // +0x00
@@ -29,7 +30,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 template <class T> class CDefPointer {
 public:
@@ -117,13 +118,13 @@ public:
     unsigned char _pad54[0x1c];
     CDefPointer<const CThingBaseDef> PBaseDef;              // +0x70
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

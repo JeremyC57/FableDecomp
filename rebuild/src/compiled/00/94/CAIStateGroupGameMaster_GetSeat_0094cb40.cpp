@@ -12,6 +12,7 @@
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub base: PPub +0x14, PTable +0x24, PTankard +0x34, SeatIndex +0x3c, Pos +0x40, RHSet
 //   +0x4c, ActionPointIndex +0x64; CThing interface bitset +0x20, map +0x44, Dead +0x91 bit 0; table list component
 //   (interface 0x21) STLport list node at +0x0c.
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 #include "engine/CAIBrain.h"
@@ -42,7 +43,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     return ((CThing*)p.GetPItem()) != 0 && !((CThing*)p.GetPItem())->IsDead();
 }

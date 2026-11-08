@@ -16,6 +16,7 @@
 // Shape: frame-pointer size TU; the T() temporary is the zeroed 8-byte counted pointer at [ebp-8] (`and dword ptr`),
 // the value_type temporary sits at [ebp-14h]; the less<CCharString> functor body is a same-TU noinline COMDAT as in
 // the landed sibling.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 template <class C> class CBasicString {
@@ -29,7 +30,7 @@ public:
     CBasicString<char>* PData;                           // +0x00
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

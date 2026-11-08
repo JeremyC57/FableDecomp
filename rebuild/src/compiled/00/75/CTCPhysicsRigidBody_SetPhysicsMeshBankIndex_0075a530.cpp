@@ -12,6 +12,7 @@
 // Layout: as the landed ctor 0x0075AA80 / OnCreate 0x0075B2D0: PPhysicsMeshInfo +0x64, RHSet +0x68, OffsetVector +0x98
 //   (C2DVector); retail CPhysicsMesh = PDB - 0x1c (bounding sphere radius +0x80, bounding box +0x84, circle radius +0xa4).
 //   Same shape as the sibling CTCPhysicsStandard::SetPhysicsMeshBankIndex 0x00724630.
+#include "fable_compiler.h"
 extern void operator delete(void* p);
 #include "engine/C3DVector.h"
 class C3DBoundingBox { public:
@@ -56,7 +57,7 @@ class CPhysicsMesh : public CRefVirtual, public CRefCounted { public:
     C3DBoundingBox BoundingBox;                 // +0x84
     unsigned char _pad9c[0xa4 - 0x9c];
     float     BoundingCircleRadius;             // +0xa4
-    __forceinline C3DVector GetBoundingBoxCentre() const { return BoundingBox.GetCentre(); }
+    FABLE_FORCEINLINE C3DVector GetBoundingBoxCentre() const { return BoundingBox.GetCentre(); }
     bool HasNavigationLayers() const { return !NavigationVolumes.empty(); }
     float GetBoundingSphereRadius() const { return BoundingSphereRadius; }
     float GetBoundingCircleRadius() const { return BoundingCircleRadius; }
@@ -121,7 +122,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x64 - 0x4c];
     NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

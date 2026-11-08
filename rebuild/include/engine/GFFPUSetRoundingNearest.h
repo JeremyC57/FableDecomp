@@ -17,6 +17,7 @@
 //   x86 / x86-64 glibc sets both the x87 RC and the SSE MXCSR.RC). Tests in rebuild/tests/portable/test_GFFPUSetRoundingNearest.cpp.
 #ifndef FABLE_ENGINE_GFFPUSETROUNDINGNEAREST_H
 #define FABLE_ENGINE_GFFPUSETROUNDINGNEAREST_H
+#include "fable_compiler.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
 #if defined(_MSC_VER)
@@ -40,7 +41,7 @@ namespace fable_portable
 #ifdef FABLE_PORTABLE
 using fable_portable::GFFPUSetRoundingNearest;
 #else
-__forceinline void __fastcall GFFPUSetRoundingNearest()
+FABLE_FORCEINLINE void __fastcall GFFPUSetRoundingNearest()
 {
     unsigned long control_word;
     __asm fnstcw word ptr control_word

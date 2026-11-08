@@ -18,6 +18,7 @@
 //   ~CGraphicFrameData = Uninitialise when IsInitialised then the CCountedPointer<CTexture> release, operator delete; a
 //   `delete data` calls ??_GCGraphicFrameData instead, probe 1) and the STLport ~_Vector_base frees of the trivially destructible blend vectors; the implicit
 //   ~CManagedTextureOwner stores nothing (engine/CResource.h retail opt-in).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CResource.h"                            // : CIVCountedPointeeBase; ~CResource 0x009FC550
 #include "engine/CBaseClass.h"
@@ -109,7 +110,7 @@ class CGraphicFrame {                                    // Ego_r.pdb, 4 bytes (
     // dtor + operator delete) leaves a call here (probes 3-5, 7, 9-11), so it is __forceinline like the other Lionhead
     // header release helpers (EXTRA_RULES owner decision 2026-11-01).
 public:
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         CGraphicFrameData* data = FrameData;
         if (data) {

@@ -14,6 +14,7 @@
 //          slots with the test byte.
 // Layout: creature LastAttacker intelligent pointer +0xF4 (CThingCreatureBase), bitset +0x20, interface map +0x44.
 //          No engine header exists for CAIStateGroup_ChickenPanic; the base follows engine/CAIStateGroupBase.h.
+#include "fable_compiler.h"
 class CTCBase;
 
 struct CInterfaceMap {
@@ -79,7 +80,7 @@ class CThing : public CThingPhysical { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {

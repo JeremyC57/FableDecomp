@@ -11,6 +11,7 @@
 // `*_Dest = *_First` is the float store + CCharString::operator=, the by-value argument is built in the
 // argument area (float + CCharString copy ctor) and the local's string is destroyed after the call. The 8-byte
 // pair local gives VC7.1's `and esp,-8` frame.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;                         // +0x0
@@ -26,13 +27,13 @@ template <class _Ty1, class _Ty2> struct pair {
 };
 template <class _RanIt, class _Diff, class _Ty, class _Pr>
 void __fastcall _Adjust_heap(_RanIt _First, _Diff _Hole, _Diff _Bottom, _Ty _Val, _Pr _Pred);   // 0x004D0590
-template <class _RanIt, class _Diff, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Diff, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Pop_heap(_RanIt _First, _RanIt _Last, _RanIt _Dest, _Ty _Val, _Pr _Pred, _Diff*)
 {
     *_Dest = *_First;
     _Adjust_heap(_First, _Diff(0), _Diff(_Last - _First), _Val, _Pred);
 }
-template <class _RanIt, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Pop_heap_0(_RanIt _First, _RanIt _Last, _Pr _Pred, _Ty*)
 {
     _Pop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)), _Pred, (int*)0);

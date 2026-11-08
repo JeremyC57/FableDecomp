@@ -1,5 +1,6 @@
 // NUISystem::CList::Update(float) -- per-frame list update: when this list is the active front component, refresh the layout and scroll bar and drop any stray selected-looking children back to idle; then run the base component update and fire the state-entry actions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005367F3, 573 bytes, `ret 4`; frame-pointer size TU.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -15,15 +16,15 @@ public:
 namespace NUISystem {
 struct CRefCounted {
     long m_count;                                    // +0x04
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void DestroySelf();                      // slot 1 (+4)
 };
 class CUIDef : public CDefVirtual, public CRefCounted { public:
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) DestroySelf(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) DestroySelf(); }
     unsigned char _pad08[0x220 - 8];
     bool          IsFrontList;                       // +0x220 (name not recovered)
 };
@@ -32,7 +33,7 @@ public:
     T* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer() { if (Object) const_cast<CUIDef*>(Object)->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) const_cast<CUIDef*>(Object)->ReleaseTemporary(); }
 };
 class CComponent;
 extern std::list<CComponent*> g_ComponentList;      // 0x013B8A98

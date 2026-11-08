@@ -10,6 +10,7 @@
 // Shape: the ranged component through the out-pointer GetInterface (`mov eax,[eax+4] ; push ecx ; mov ecx,eax`; the
 //   HasTC + GetTC spelling loads it straight into ecx); the def pointer lives in the dead pressure argument slot; its release is the inline CDefPointer dtor
 //   (`dec [esi+4] ; jne ; call [vtbl+4]`).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -76,7 +77,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     CDefinitionManager* GetDefinitionManager(); // 0x004C7990
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -85,7 +86,7 @@ class CThing { public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -121,7 +122,7 @@ class CThingCreatureBase : public CThing { public:
     virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
     virtual void UseAbilityDef(const CHeroAbilityDef* def);    // slot 72 (+0x120) 0x0066A4E0
     void UseAbility(long abilityDefIndex, float buttonPressure);
-    __forceinline void UseAbilityByIndex(long abilityDefIndex)
+    FABLE_FORCEINLINE void UseAbilityByIndex(long abilityDefIndex)
     {
         CDefPointer<const CHeroAbilityDef> out;
         GetDefinitionManager()->GetDef(abilityDefIndex, &out);

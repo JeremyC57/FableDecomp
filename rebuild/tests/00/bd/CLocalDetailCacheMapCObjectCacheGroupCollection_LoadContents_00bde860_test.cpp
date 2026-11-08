@@ -1,6 +1,7 @@
 // Behaviour test for 00bde860: final.cpp copied verbatim (memcpy renamed to a wrapper under g++), every declared callee
 // stubbed below so the calls, their arguments and the resulting collection list are observable.
 // CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents(CEngineStaticMapFileBlockManager*, const CObjectTypeCollectionPalette&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -62,8 +63,8 @@ public:
     long                 SourceChunkBytesRemaining;          // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     void SetPositionAssumeWithinSourceChunk(unsigned long position);    // 0x00993C10
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -79,14 +80,14 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 };
 class CMemoryDataInputStream : public CDataInputStream {
 public:
     const unsigned char* StreamSource;                       // +0x18
     CMemoryDataInputStream(const unsigned char* data, long size);   // 0x00994930
     ~CMemoryDataInputStream();                               // 0x00993B10
-    __forceinline const unsigned char* GetDataAndSkip(long bytes)
+    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long bytes)
     {
         if (bytes <= 0)
             return 0;
@@ -112,7 +113,7 @@ struct CTemporaryBuffer {                                    // 0x18 bytes
     long                    MemoryHandle;                    // +0x0c
     CScratchBuffer*         ScratchBuffer;                   // +0x10
     long                    AllocateType;                    // +0x14
-    __forceinline unsigned char* GetData() const { return Data; }
+    FABLE_FORCEINLINE unsigned char* GetData() const { return Data; }
 };
 class CMovableResource;
 class CMovableResourceMemoryPool { public:

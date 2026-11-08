@@ -10,6 +10,7 @@
 // Shape: /O2 (16-aligned entry). Two things matter. C2DVector's user copy ctor keeps the four value loads inside the copy
 // loop (without it they are hoisted into ebx/ebp/edi, 131v122). The fill loop has to be inlined, which VC7.1 does here only
 // with __forceinline (plain inline or the STLport __uninitialized_fill_n dispatch stays out of line, 82v122 / 87v122).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 class C2DVector {
@@ -47,7 +48,7 @@ public:
     T* _M_finish;
     _STLP_alloc_proxy<T*, A> _M_end_of_storage;
 };
-template <class T> __forceinline T* uninitialized_fill_n(T* first, unsigned int n, const T& x)
+template <class T> FABLE_FORCEINLINE T* uninitialized_fill_n(T* first, unsigned int n, const T& x)
 {
     T* cur = first;
     for ( ; n > 0; --n, ++cur)

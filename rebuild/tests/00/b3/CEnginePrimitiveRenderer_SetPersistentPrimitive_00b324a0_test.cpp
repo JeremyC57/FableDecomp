@@ -1,4 +1,5 @@
 // behaviour test for 0x00B324A0 CEnginePrimitiveRenderer::SetPersistentPrimitive (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 // CEnginePrimitiveRenderer::SetPersistentPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned long flags, bool nonPersistent) -- update the handle's internal primitive in place when it already has the right type, else release it, create a new internal primitive through the type's manager, initialise it and register it with the 2D renderer (flag 0x40) or its manager
 // Grade: RELOCATION_MATCH -- the handle is the CEnginePrimitiveHandle model of the landed ??_G 0x0041C500: a counted pointer member with a null-safe `GetRefCount()`, Clear = `if (Data.GetRefCount() == 1) notify; Data = 0;` (operator= = release + a second zero store, retail's re-read and doubled store) and Set = Clear, the counted release again (the dead zero-register release), then the raw store of the new primitive
@@ -35,7 +36,7 @@ public:
 struct CIVCountedPointer {
     CEngineInternalPrimitiveBase* Object;
     long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CEngineInternalPrimitiveBase* object = Object;
         if (object) {
@@ -44,7 +45,7 @@ struct CIVCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
     {
         Release();
         Object = object;
@@ -58,13 +59,13 @@ class CEnginePrimitiveHandle {
 public:
     void*             _vptr;
     CIVCountedPointer Data;                         // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline void Set(CEngineInternalPrimitiveBase* primitive)
+    FABLE_FORCEINLINE void Set(CEngineInternalPrimitiveBase* primitive)
     {
         Clear();
         Data.Release();

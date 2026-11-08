@@ -26,6 +26,7 @@
 // Names: GetCreature() is a descriptive inline (the PDB's CCreatureActionBase::GetPCreature returns `const CThingCreatureBase*`;
 //   a CIntelligentPointer<T>::GetPItem template layer changes the register allocation here, so the casts are spelled out as
 //   in the landed sibling); GetCheckedTC / GetTC / GetInterface / CreateThingAt are the fleet's descriptive inline helpers.
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 #include "engine/C3DVector.h"
@@ -68,7 +69,7 @@ class CThing { public:
         }
         return (UsingComponents[position >> 5] & (1UL << (position & 31))) != 0;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Components;
@@ -77,14 +78,14 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    __forceinline CTCBase* GetCheckedTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetCheckedTC(long interfaceType)
     {
         CTCBase* tc;
         if (TestComponent(interfaceType))
             tc = GetTC(interfaceType);
         return tc;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -95,7 +96,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -117,7 +118,7 @@ class CThingCreatureBase : public CThing { public:
     void MakeNoise(const CCharString& noise);           // 0x00662110
 };
 // A copy of `item` at `at`, owned by `owner`'s player (the landed sibling 0x00849380's helper).
-__forceinline CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
 {
     long defIndex = item->DefGlobalIndex;
     return CThingObject::Create(defIndex, at->GetPos(), owner->GetPlayer(), 0, 0, name);

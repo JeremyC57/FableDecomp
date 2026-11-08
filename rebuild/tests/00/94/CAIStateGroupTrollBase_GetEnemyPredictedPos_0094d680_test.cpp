@@ -1,6 +1,7 @@
 // Behaviour test for 0094d680: src/0094d680.cpp copied verbatim; GetEnemyPredictedPos returns the enemy position plus
 // ten times (physics position - enemy position) scaled by the troll throw def's lead time (0 without the sub-def); the
 // sub-def is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -48,7 +49,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -62,7 +63,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -74,7 +75,7 @@ class CThing { public:
         return sel;
     }
     // the bitset::test form: the test's bool is materialised (`shr ; and dl,1 ; mov [esp+x],dl`) and returned
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -89,7 +90,7 @@ class CThing { public:
     }
     // the ternary form (landed 0x00954690): the end/hit choice is ONE ternary, so the component lands straight in
     // the register of its use (ecx for a call on it); the miss path reads the never-written slot
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -101,7 +102,7 @@ class CThing { public:
         return false;
     }
     // the KidCleanup form (landed 0x00915190): `if (mask) *pp = Lookup();` with an entry-value lookup
-    __forceinline CTCBase* LookupValue(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* LookupValue(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap::SEntry* p = m_interfaces.LowerBound(&type);
@@ -109,14 +110,14 @@ class CThing { public:
         else if (p->type > interfaceType) p = m_interfaces.last;
         return p->component;
     }
-    template<class T> __forceinline void GetInterfaceK(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceK(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             *ppOut = (T*)LookupValue(interfaceType);
     }
     // a NON-template lookup core shared by every interface type (its key local packs into one frame slot across
     // several inlined lookups); the typed wrappers only cast
-    __forceinline bool GetInterfaceCore(CTCBase** ppOut, long interfaceType)
+    FABLE_FORCEINLINE bool GetInterfaceCore(CTCBase** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -127,12 +128,12 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceN(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceN(T** ppOut, long interfaceType)
     {
         return GetInterfaceCore((CTCBase**)ppOut, interfaceType);
     }
     // GetInterface<T>() returning the component: hit = the entry's component, miss = the never-written local
-    template<class T> __forceinline T* PeekInterface(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* PeekInterface(long interfaceType)
     {
         T* component;
         if (HasTC(interfaceType))
@@ -140,7 +141,7 @@ class CThing { public:
         return component;
     }
     // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceV(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

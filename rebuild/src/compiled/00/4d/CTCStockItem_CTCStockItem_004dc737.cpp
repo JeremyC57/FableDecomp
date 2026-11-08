@@ -10,6 +10,7 @@
 // Shape: init list in declaration order; the handle is a member object with an inline constructor whose data pointer is
 // itself a CIVCountedPointer member object (its zero follows the handle vtable, as 0x00BFBBC0); under optimize("s")
 // both constructors must be `__forceinline` or the handle's is called out of line.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 
@@ -26,12 +27,12 @@ class CTCBase { public:
 class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {                                  // CIVCountedPointer<CEnginePersistentPrimitiveBase>
     CEnginePersistentPrimitiveBase* m_pObject;
-    __forceinline CIVCountedPointer() : m_pObject(0) { }
+    FABLE_FORCEINLINE CIVCountedPointer() : m_pObject(0) { }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598, 8 bytes
     CIVCountedPointer Data;                                 // +0x04
-    __forceinline CEnginePrimitiveHandle() { }
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() { }
 };
 
 class CTCStockItem : public CTCBase { public:

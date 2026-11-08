@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -18,7 +19,7 @@ class CRGBColour { public:
  CRGBColour(){}
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}
  CRGBColour(const CRGBColour&c){Initialise(c.Components.R,c.Components.G,c.Components.B,c.Components.A);}
- __forceinline void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
+ FABLE_FORCEINLINE void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
  {Components.R=r;Components.G=g;Components.B=b;Components.A=a;}
 };
 class CBaseClass{public:virtual ~CBaseClass();};

@@ -1,5 +1,6 @@
 // Behaviour test: CThingSwitch::Save over a small heap CCharString (C++03; g++ and VC7.1). The string storage is leaked
 // on purpose (the model has no copy constructor, so the conditional's copies stay shallow).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,7 +32,7 @@ class CCharString { public:
     ~CCharString();                                                             // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);      // 0x009A08B0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

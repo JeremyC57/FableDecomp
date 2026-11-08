@@ -20,6 +20,7 @@
 // Shape: `GetDef() && GetDef()->GetSubDef(&shopDef) && shopDef->AlwaysOpen` with GetDef returning a CDefPointer BY VALUE:
 //        the two conditionally built temporaries get construction flags in ebx (1, then 3) tested before their
 //        releases; the shop def is read once from its out slot (GetSubDef stand-in below) and held in ebp.
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -85,7 +86,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

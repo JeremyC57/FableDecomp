@@ -8,6 +8,7 @@
 // Shape: /Gr TU (`__fastcall` template: first in ecx -> eax, n in edx counted down, &x on the stack -> ecx); the inner
 //   `__uninitialized_fill_n(..., __false_type())` is `__forceinline`; `__n > 0` on the unsigned count is the `jbe` entry
 //   test; the implicit copy of the 6-byte record is a block copy through esi/edi (dword then word).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
 class C3DTriangle2 {                                 // 6 bytes
@@ -22,7 +23,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

@@ -2,12 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A66600, length 27 bytes.
 // Leaf: ??_GCMemoryAllocatorFixedSize@@UAEPAXI@Z
 // Shape: the flag tested before the vtable store, `this` in esi passed in ecx to the release, `ret 4`.
+#include "fable_compiler.h"
 void __fastcall ReleaseAllocator_00a66750(void* block);   // 0x00A66750: VirtualFree(block, 0, MEM_RELEASE)
 
 struct CMemoryAllocatorFixedSize {                 // vtable 0x0129DB64
     virtual void v00();
     unsigned char _pad04[0xc30 - 4];
-    __forceinline virtual ~CMemoryAllocatorFixedSize() { }
+    FABLE_FORCEINLINE virtual ~CMemoryAllocatorFixedSize() { }
     static void operator delete(void* block) { ReleaseAllocator_00a66750(block); }
 };
 

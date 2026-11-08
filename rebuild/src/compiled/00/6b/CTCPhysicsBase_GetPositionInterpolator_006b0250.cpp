@@ -8,6 +8,7 @@
 //   engine/CTCPhysicsBase.h flattens Position/OldPosition into floats with no C3DVector members). Position +0x0c,
 //   OldPosition +0x18 (PDB); C3DPositionInterpolator 0x1c bytes (CBase vptr, StartPosition +0x04, EndPosition +0x10),
 //   its constructor and assignment inline here (the landed 0x006AF570 ctor is the out-of-line copy).
+#include "fable_compiler.h"
 class CThing;
 
 class C3DVector { public:
@@ -18,7 +19,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline C3DVector Interpolate(const C3DVector& to, float t) const { return (to - *this) * t + *this; }
+    FABLE_FORCEINLINE C3DVector Interpolate(const C3DVector& to, float t) const { return (to - *this) * t + *this; }
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCLASS

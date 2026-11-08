@@ -7,6 +7,7 @@
 // landed CMemoryDataInputStream inline Read (0x00632E00 family: position +4, chunk pointer +0xC, bytes left +0x14).
 // Shape: each value is an inline by-value ReadUShort/ReadBool whose local shares one frame slot; the flag is
 // `value != 0` (setne); the four loads are early-returning tests with the last one's bool as the result.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -20,8 +21,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long m_10;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -35,13 +36,13 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned short ReadUShort()
+    FABLE_FORCEINLINE unsigned short ReadUShort()
     {
         unsigned short value;
         Read(&value, sizeof(value));
         return value;
     }
-    __forceinline bool ReadBool()
+    FABLE_FORCEINLINE bool ReadBool()
     {
         unsigned char value;
         Read(&value, sizeof(value));

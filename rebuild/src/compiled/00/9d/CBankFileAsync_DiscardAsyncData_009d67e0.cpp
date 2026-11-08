@@ -8,6 +8,7 @@
 // destructor is emitted on both return paths and the caller's test threads into them (a bool local spills to bl); the pointer reset releases the count and zeroes Info before Data.
 // Layout: retail CBankFileAsyncData (landed OnFileReadCompletion 0x009D54A0): m_pBank +0x28, m_finished +0x44,
 // m_completionPending +0x46.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 struct CRITICAL_SECTION_Fable {                    // Win32 RTL_CRITICAL_SECTION, 24 bytes (dword aligned)
@@ -39,7 +40,7 @@ class CBankFileAsyncData { public:
 struct CAsyncDataPointer {                         // CCountedPointer<CBankFileAsyncData>
     CBankFileAsyncData* Data;                      // +0
     SCountBlock*        Info;                      // +4
-    __forceinline void ReleaseInfo()
+    FABLE_FORCEINLINE void ReleaseInfo()
     {
         if (Info) {
             --Info->m_references;
@@ -49,13 +50,13 @@ struct CAsyncDataPointer {                         // CCountedPointer<CBankFileA
             }
         }
     }
-    __forceinline ~CAsyncDataPointer()
+    FABLE_FORCEINLINE ~CAsyncDataPointer()
     {
         ReleaseInfo();
         Data = 0;
         Info = 0;
     }
-    __forceinline void Reset()
+    FABLE_FORCEINLINE void Reset()
     {
         ReleaseInfo();
         Info = 0;

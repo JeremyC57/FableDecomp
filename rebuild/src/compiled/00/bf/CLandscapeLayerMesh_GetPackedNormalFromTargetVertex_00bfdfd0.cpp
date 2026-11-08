@@ -12,6 +12,7 @@
 // Shape: as the background twin 0x00BE6800: the normal copied into a C3DVector local (X/Y integer moves, Z on the FPU stack),
 // PackVertexNormal inline (z, y, x rounded, combined as ((y & 0x7ff) | (z << 11)) << 11 | (x & 0x7ff)); here the products are
 // homed in the dead vertex-argument slot. The ROUND helper is the one of the landed retail_asm source 0x00BFDF60.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTVertexLandscapeForeground {
 public:
@@ -23,7 +24,7 @@ public:
 // the engine's inline-assembly ROUND helper (round to nearest, the FPU default); expanded in place as a __forceinline
 #include "engine/GFFloatToLongNear.h"
 
-__forceinline unsigned long PackVertexNormal(const C3DVector& normal)
+FABLE_FORCEINLINE unsigned long PackVertexNormal(const C3DVector& normal)
 {
     long z = GFFloatToLongNear(normal.Z * 511.0f);
     long y = GFFloatToLongNear(normal.Y * 1023.0f);

@@ -11,6 +11,7 @@
 // Layout: retail CWorldMap Regions vector<CRegion> at +0x2C (0x58-byte CRegion, Name +0x18), as the landed
 //   SetRegionAsLoaded 0x004FC8A0 (the PDB header rebuild/include/engine/CWorldMap.h has 16-byte containers: +0x34);
 //   CPersistContext Mode +0x18, load stream +0x24, save stream +0x28.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -51,7 +52,7 @@ class CPersistContext { public:
     template <class T> void Transfer(T& value);                   // 0x00431143
     void WriteText(const CCharString& text);             // 0x009BAB50
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
-    __forceinline void TransferBinary(unsigned long& value)
+    FABLE_FORCEINLINE void TransferBinary(unsigned long& value)
     {
         CheckCRC("");
         CPersistTraits<unsigned long> traits;

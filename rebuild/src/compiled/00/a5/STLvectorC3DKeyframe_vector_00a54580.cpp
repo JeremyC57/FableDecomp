@@ -10,6 +10,7 @@
 //   `_M_start = allocate(n)` (`n != 0 ? malloc(n * 48) : 0`), `_M_finish = _M_start`, `_M_end_of_storage = _M_start + n`;
 //   the `_Tp()` temporary lives in a 0x30-byte frame slot and is never initialised; the fill (unsigned `n > 0`, placement
 //   null test) copies it with `rep movsd` (12 dwords); the advanced pointer is stored as the finish.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);       // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
@@ -37,7 +38,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -45,7 +46,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }

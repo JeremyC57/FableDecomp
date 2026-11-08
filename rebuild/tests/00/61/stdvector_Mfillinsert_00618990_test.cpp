@@ -1,5 +1,6 @@
 // Behaviour test for 0x00618990: std::vector::_M_fill_insert(CTCInventoryMap::CUIRegionInfo* position, unsigned int n, const CUIRegionInfo& x) -- STLport insert of n copies of a 40-byte region info record: slide the tail inside the spare capacity, or grow through _M_insert_overflow
 // A copy of the source model and logic (compiled separately from src/00618990.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -33,7 +34,7 @@ public:
 namespace std {
 struct __false_type { __false_type() { } };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>

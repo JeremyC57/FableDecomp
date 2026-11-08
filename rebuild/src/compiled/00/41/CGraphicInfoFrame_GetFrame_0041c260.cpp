@@ -13,6 +13,7 @@
 //   `~CGraphicFrameData(); operator delete(this)` keeps the scalar deleting destructor out; the low-mip test is
 //   written `<` with the early return in the else arm; the frame-data-without-frame case falls to one shared
 //   BeginLoading after the if.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
 class CResourceList;
@@ -31,7 +32,7 @@ public:
 private:
     void ListInsert(CResource*a0, CResource*a1); // 0x009FBF90
 public:
-    __forceinline void Touch();
+    FABLE_FORCEINLINE void Touch();
 };
 class CResourceList { public:                                 // Ego_r.pdb, 0x3C bytes
     unsigned long _pad00;
@@ -41,7 +42,7 @@ class CResourceList { public:                                 // Ego_r.pdb, 0x3C
     long          MaximumMemory;                       // +0x28
     unsigned long CurrentFrame;                        // +0x2c
 };
-__forceinline void CResource::Touch()
+FABLE_FORCEINLINE void CResource::Touch()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();
@@ -58,7 +59,7 @@ struct CCPInfo {
 struct CTexturePointer {                               // CCountedPointer<CTexture>
     void* Data;
     CCPInfo* Info;
-    __forceinline ~CTexturePointer()
+    FABLE_FORCEINLINE ~CTexturePointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -83,8 +84,8 @@ class CGraphicFrameData { public:                             // Ego_r.pdb, 27 b
     unsigned char   IsInitialised : 1;
     unsigned char   ScreenGraphic : 1;
     void Uninitialise();                               // 0x009FCBA0
-    __forceinline ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
-    __forceinline void DecRef()
+    FABLE_FORCEINLINE ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
+    FABLE_FORCEINLINE void DecRef()
     {
         if (--ReferenceCount == 0) {
             this->~CGraphicFrameData();
@@ -94,7 +95,7 @@ class CGraphicFrameData { public:                             // Ego_r.pdb, 27 b
 };
 class CGraphicFrame { public:                                 // intrusive pointer to CGraphicFrameData
     CGraphicFrameData* FrameData;
-    __forceinline CGraphicFrame& operator=(const CGraphicFrame& other)
+    FABLE_FORCEINLINE CGraphicFrame& operator=(const CGraphicFrame& other)
     {
         if (FrameData)
             FrameData->DecRef();
@@ -107,7 +108,7 @@ class CGraphicFrame { public:                                 // intrusive point
 class CManagedTexture { public:                               // Ego_r.pdb, 8 bytes
     unsigned long _pad00;
     CResource*    Data;                                // +0x04 CIVCountedPointer<CManagedTextureData>
-    __forceinline void Touch() { if (Data) Data->Touch(); }
+    FABLE_FORCEINLINE void Touch() { if (Data) Data->Touch(); }
 };
 class CGraphicInfoFrame;
 class CGraphicDataBank { public:
@@ -122,7 +123,7 @@ class CGraphicInfo { public:
 };
 template <class T> struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
     T* P;
-    __forceinline CFrameDataPointer& operator=(T* p)
+    FABLE_FORCEINLINE CFrameDataPointer& operator=(T* p)
     {
         if (P) {
             P->DecRef();
@@ -157,7 +158,7 @@ class CGraphicInfoFrame::CFrameData : public CResource { public:                
     CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
     CFrameData(const CGraphicInfoFrame* frame);              // 0x009FE380
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FDE80
-    __forceinline void DecRef() { if (--RefCount == 0) Release(); }
+    FABLE_FORCEINLINE void DecRef() { if (--RefCount == 0) Release(); }
 };   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
 typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
 

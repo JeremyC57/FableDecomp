@@ -1,4 +1,5 @@
 // Behaviour test for CTCTavernGameSpotTheAddition::OnInitialActivate (0x007d83c0): base activation, game-position action point, game piece, first live linked thing of the cover type remembered with position/frame, cover laid unless the view is showing.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -59,7 +60,7 @@ public:
     unsigned char Dead : 1;
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -72,7 +73,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceC(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceC(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

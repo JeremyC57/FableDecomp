@@ -10,6 +10,7 @@
 //   virtual GetPosition slot 2), reused verbatim; the generator itself holds no state used here.
 // Shape: that function twice over (vertex block, then index block) with one function-scope range compressor; the counts
 //   are written through the out-pointers and re-read from them.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
@@ -27,8 +28,8 @@ class CMemoryDataInputStream { public:
     virtual void v01();
     virtual unsigned long GetPosition();                // slot 2
     void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))
@@ -42,13 +43,13 @@ class CMemoryDataInputStream { public:
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)dst, size);
         }
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, 4);
         return value;
     }
-    __forceinline const unsigned char* GetDataAndSkip(long size)
+    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long size)
     {
         unsigned long position = GetPosition();
         __int64 np = (__int64)(position + size);

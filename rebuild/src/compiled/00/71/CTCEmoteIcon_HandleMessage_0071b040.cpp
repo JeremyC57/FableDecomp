@@ -10,6 +10,7 @@
 // second unconditional zero store (`mov [esi+4],0` twice).
 // Shape: `this` in esi across the message's virtual call; the handle is tested with IsValid (+0x2c) and then released
 // (+0x2c read again by IsUnique); with `this` dead afterwards esi itself becomes the handle (`add esi,28h`).
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CTCMessage {
@@ -39,7 +40,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -55,7 +56,7 @@ public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
     bool IsValid() const { return Data.Object != 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

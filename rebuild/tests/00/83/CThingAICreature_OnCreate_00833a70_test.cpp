@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -82,7 +83,7 @@ class CThingAICreature : public CThingCreatureBase { public:
     bool          PerformingVillageTaskFlag : 1;    // +0x1c8 bit 0
     bool          AISuspended : 1;                  // +0x1c8 bit 1
     CSuspenderSet Suspenders;                       // +0x1cc
-    __forceinline void AddSuspender(void* suspender)
+    FABLE_FORCEINLINE void AddSuspender(void* suspender)
     {
         Suspenders.InsertUnique(suspender);
         AISuspended = !Suspenders.empty();

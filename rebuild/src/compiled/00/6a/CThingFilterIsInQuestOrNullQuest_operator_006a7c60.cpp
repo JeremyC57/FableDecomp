@@ -14,6 +14,7 @@
 // Shape: three inline CCharString equalities or-ed into an int-wide bool (`mov eax,1` / `xor eax,eax`): the
 //   string == string form (same block, then both non-null with equal length and Compare() == 0), then two
 //   string == literal forms whose null-block arm is the intrinsic `strcmp(text, "")` (`repe cmpsb`).
+#include "fable_compiler.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -44,7 +45,7 @@ public:
             return Compare(PStringData->Data.PData, other.PStringData->Data.PData) ? false : true;
         return false;
     }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

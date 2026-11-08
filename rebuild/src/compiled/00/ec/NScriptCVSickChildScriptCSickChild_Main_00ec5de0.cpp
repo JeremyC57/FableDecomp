@@ -1,6 +1,7 @@
 // NScript::CV_SickChildScript::CSickChild::Main() -- manage the sick child in bed, recovery and dialogue.
 // Leaf: ?Main@CSickChild@CV_SickChildScript@NScript@@EAEXXZ
 // Original Ego_r TPI10a85; native012f18dc slot1 and original named bed binding.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR
@@ -41,7 +42,7 @@ inline bool CTimer::operator==(long time) const { return GetTime()==time; }
 inline float __fastcall GFArcTan(double opposite,double adjacent)
 { return (float)atan2(opposite,adjacent)/(2.0f*3.14159265358979323846f); }
 // Fidelity: proven original header math; stronger expansion follows the owner header-helper rule, not a recovered keyword.
-__forceinline float __fastcall GET_ROUNDED_ANGLE(float angle)
+FABLE_FORCEINLINE float __fastcall GET_ROUNDED_ANGLE(float angle)
 {
     if(angle<0.0f || angle>=1.0f) {
         angle=(float)fmod(angle,1.0f);
@@ -49,7 +50,7 @@ __forceinline float __fastcall GET_ROUNDED_ANGLE(float angle)
     }
     return angle;
 }
-__forceinline float C3DVector::GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X,Y)); }
+FABLE_FORCEINLINE float C3DVector::GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X,Y)); }
 
 void NScript::CV_SickChildScript::CSickChild::Main()
 {

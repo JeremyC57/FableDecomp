@@ -1,4 +1,5 @@
 // Behaviour test for 0x006A5460: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -32,7 +33,7 @@ class C3DVector { public:
     float GetLength() const;                                // 0x00A14480
     float GetLengthInline() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
 };
-__forceinline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.X * b.X + a.Y * b.Y; }
+FABLE_FORCEINLINE float DotProduct(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.X * b.X + a.Y * b.Y; }
 struct CPhysicsHit {
     C3DVector Position;
     C3DVector Normal;

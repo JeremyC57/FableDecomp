@@ -14,6 +14,7 @@
 // the enemy pointer address stays in ebx, zero in ebp (also the `false` of the final SetAttackerAsReadyToAttack).
 // Layout: engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h flattens the base, and the function makes virtual
 // calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -25,7 +26,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -65,7 +66,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -77,7 +78,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
         m_pObject = 0;
         m_pCount = 0;
     }
-    __forceinline void Reset(CCreatureActionBase* object)
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -129,7 +130,7 @@ inline CBrainOutput::~CBrainOutput()
 {
 }
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

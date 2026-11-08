@@ -17,6 +17,7 @@
 //          new-expression arguments (ParentThing, Conversation.Get()) are read after its allocation; the parent thing is
 //          read into a local before the GetThing() compare; the inline Get() accessor (not a raw `.Data` read) keeps the
 //          conversation pointer in esi.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject {
 public:
@@ -33,7 +34,7 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
     CInterfaceMap Components;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

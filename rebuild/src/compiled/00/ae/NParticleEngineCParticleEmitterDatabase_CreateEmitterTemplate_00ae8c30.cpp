@@ -22,6 +22,7 @@
 //   with its __uninitialized_copy / __uninitialized_fill_n / __destroy_aux helpers is defined in the TU (retail emits them
 //   here: 0x00AEA440 calls 0x00AE9860 / 0x00AE98A0 / 0x00AE9D50), else the escaped pair temporary is reloaded after every
 //   reference-count write (grade 2, 301v275) -- the landed Insert 0x00AEA6F0 needed the same.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);             // 0x00BFEA1A
@@ -151,7 +152,7 @@ public:
     std::vector<value_type> Data;                          // +0x0
     C    Compare;                                          // +0xC
     bool Dirty;                                            // +0xD
-    __forceinline void Insert(const K& key, const V& value)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)
     {
         Data.push_back(value_type(key, value));
         Dirty = true;

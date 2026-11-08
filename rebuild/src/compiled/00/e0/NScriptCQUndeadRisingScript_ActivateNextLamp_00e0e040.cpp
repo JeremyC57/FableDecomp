@@ -15,6 +15,7 @@
 //   +0x60 (12-byte STLport vector<CScriptThing>), boss_points +0x6c.
 // Shape: two search loops (an unlit lamp on screen, else the first unlit lamp), then the point copy, a default-constructed
 //   effect assigned from CreateEffect, and the token increment; all CScriptThing / CCountedPointer members inline (__forceinline).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -30,15 +31,15 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CLevelScriptBase.h"
 #include "engine/CGameScriptInterfaceBase.h"
 
-__forceinline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-__forceinline CScriptThing::~CScriptThing() { }
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other)
+FABLE_FORCEINLINE CScriptThing::CScriptThing() { }
+FABLE_FORCEINLINE CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() { }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other)
 {
     PImp = other.PImp;
     return *this;
 }
-__forceinline const C3DVector& CScriptThing::GetPos() const
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const
 {
     if (!PImp.Data)
         return NullCoord;

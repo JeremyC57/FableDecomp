@@ -17,6 +17,7 @@
 // Shape: PrepareForRender(flags) is `__forceinline` in this model (VC7.1 inlined it into both weather boxes) and folds
 // for the constant 5; the CArray data is the `size ? first : (T*)this` GetData select; the point count is
 // `(long)(strength * 1024.0f)` through __ftol2.
+#include "fable_compiler.h"
 #include "engine/CEngineWeatherRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -47,7 +48,7 @@ class CShaderRenderManager {
 public:
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

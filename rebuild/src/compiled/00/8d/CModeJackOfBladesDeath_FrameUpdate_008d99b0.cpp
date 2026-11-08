@@ -17,6 +17,7 @@
 //   local filled by GetSubDef(&def) and released by hand (no null test) on both exits; the position is the lerp
 //   (target - start) * t + start with t = Timer / (long)(fps * duration); the mode manager pointer is zero-initialised and the
 //   GetInterface result is not tested.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -72,7 +73,7 @@ class CThing { public:
     CPhysicsObject* PPhysics;                   // +0x60
     unsigned char   _pad64[0x0c];
     CDefClassBase*  PDef;                       // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

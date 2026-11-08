@@ -1,4 +1,5 @@
 // CEnginePrimitiveHandleVector::AppendDefault -- append a default handle with placement-copy or004413c0 overflow helper. Retail005ed940 complete181bytes+11int3. OriginalAddPrimitive label is propagated; shared persistent headers and genuine polymorphic lifetime model from00443f90. Handles8bytes. Copy construction increments refcount; default temporary cleanup notifies last-reference before rereading its current pointee. Flags[].
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -14,19 +15,19 @@ struct CPersistentPrimitiveMethods {
  virtual void NotifyReleased(const CEnginePrimitiveHandle&);
  unsigned long IVRefCount;
  long Type;
- __forceinline unsigned long RemoveReference(){return --IVRefCount;}
+ FABLE_FORCEINLINE unsigned long RemoveReference(){return --IVRefCount;}
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CHandlePointer {
  CPersistentPrimitiveMethods* Object;
  CHandlePointer():Object(0){}
  CHandlePointer(const CHandlePointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
- __forceinline ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
+ FABLE_FORCEINLINE ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
 class CEnginePrimitiveHandle:public CBaseClass { public:
  CHandlePointer Data;
  CEnginePrimitiveHandle():CBaseClass(),Data(){}
- __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
+ FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
 };
 struct CFalseType {CFalseType(){}};
 struct CEnginePrimitiveHandleVector {

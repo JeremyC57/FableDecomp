@@ -1,4 +1,5 @@
 // 00783380 behaviour test: CTCBoastingCrowdControl::SpawnCrowdMember (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -18,13 +19,13 @@ class C3DVector { public: float X, Y, Z; };
 static unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static float g_floatRandom;
 static float __fastcall GFFloatRandom(float range, unsigned long* seed) { (void)seed; return g_floatRandom * range; }
-__forceinline unsigned long GFRandom(unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);
     return *seed;
 }
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -66,7 +67,7 @@ struct CTCMap {
         }
         return first;
     }
-    __forceinline void* Find(long kind)
+    FABLE_FORCEINLINE void* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
@@ -103,7 +104,7 @@ class CThing { public:
     const C3DVector& GetPosition() const { return Pos; }
     void SetAsGameStatePersisted(bool p) { g_persisted = p; }
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline void* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE void* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 static long g_createDef = -1; static long g_createPlayer; static bool g_createAuto; static const char* g_createScript;
 static float g_autoRadius; static float g_sexuality;

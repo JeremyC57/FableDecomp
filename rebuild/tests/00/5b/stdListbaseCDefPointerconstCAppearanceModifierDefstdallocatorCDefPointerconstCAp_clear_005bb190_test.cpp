@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <new>
@@ -829,7 +830,7 @@ FABLE_STATIC_ASSERT(sizeof(CDefPointer<CDefPointeeBase>) == 0x4);
 // End shared header engine/CDefPointer.h
 namespace std {
 template <class _Tp> class allocator { public:
-    __forceinline void deallocate(_Tp* __p, unsigned int) { free(__p); }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { free(__p); }
 };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:
@@ -842,7 +843,7 @@ struct _List_node_base {
 template <class _Tp> struct _List_node : public _List_node_base {
     _Tp _M_data;
 };
-template <class _Tp> __forceinline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _Tp, class _Alloc> class _List_base { public:
     _STLP_alloc_proxy<_List_node<_Tp>*, _List_node<_Tp>, allocator<_List_node<_Tp> > > _M_node;
     void clear();

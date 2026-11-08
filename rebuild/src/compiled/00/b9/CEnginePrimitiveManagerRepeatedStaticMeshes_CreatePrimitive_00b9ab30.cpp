@@ -10,6 +10,7 @@
 // NonPersistent flag is bit 1 of the +0x34 bitfield byte). The scene is reached as manager +4 -> [0] -> +4 (descriptive names).
 // Shape: identical to the sibling apart from the bitfield update (`NonPersistent = !desc.Persistent`, the description kept
 // in ebp) and the scene registration through the context chain.
+#include "fable_compiler.h"
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include <stddef.h>
 void* __cdecl operator new(size_t);   // 0x00BFEA1A
@@ -48,14 +49,14 @@ struct CPrimitiveCountedPointerNative {
     CEngineInternalPrimitiveNative* Object;
     CPrimitiveCountedPointerNative(CEngineInternalPrimitiveNative* p) : Object(p) {}
     CPrimitiveCountedPointerNative(const CPrimitiveCountedPointerNative& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CPrimitiveCountedPointerNative()
+    FABLE_FORCEINLINE ~CPrimitiveCountedPointerNative()
     { if (Object) { CEngineInternalPrimitiveNative* p = Object; if (!p->RemoveReference()) p->Destroy(); } Object = 0; }
 };
 struct CEnginePrimitiveHandleNative : CBaseClass {   // vtable 0x0122F598
     CPrimitiveCountedPointerNative Data;
     CEnginePrimitiveHandleNative(CEngineInternalPrimitiveNative* p) : Data(p) {}
     CEnginePrimitiveHandleNative(const CEnginePrimitiveHandleNative& o) : CBaseClass(o), Data(o.Data) {}
-    __forceinline virtual ~CEnginePrimitiveHandleNative()
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandleNative()
     { if (Data.Object && Data.Object->IVRefCount == 1) Data.Object->OnLastHandleReleased(this); }
 };
 

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -32,7 +33,7 @@ struct CRetailThing {
     CInterfaceMap Components;
     unsigned char _beforeDead[0x91-0x4c];
     unsigned char Dead:1;
-    template<class T> __forceinline bool GetInterface(T** out,long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long type) {
         if (UsingComponents[type>>5] & (1UL<<(type&31))) {
             long key=type;
             CInterfaceMap* map=&Components;

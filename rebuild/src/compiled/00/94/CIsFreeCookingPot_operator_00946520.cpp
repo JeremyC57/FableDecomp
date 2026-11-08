@@ -11,6 +11,7 @@
 // Same model as the landed CIsFreeHopscotchBoard (0x00941BE0) / CThingFilter_HasFreeActionPoint (0x006A8B40) / 0x00938BF0.
 // Shape: the last GetPItem result feeds both the bit test and the lookup (`thing.GetPItem()->GetInterfaceConst(...)`);
 // `return actionPoint->IsActionPointFree();` returns its al directly.
+#include "fable_compiler.h"
 class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
@@ -32,7 +33,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                      // +0x91
     bool HasTC(long type) const { return (m_presentBits[type >> 5] & (1UL << (type & 31))) != 0; }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -45,7 +46,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterfaceConst(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

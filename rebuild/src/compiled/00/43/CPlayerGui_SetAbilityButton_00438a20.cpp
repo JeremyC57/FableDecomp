@@ -7,6 +7,7 @@
 // renderer); the def's 0x5c-byte ability table vector sits at +0x7fc (descriptive).
 // Shape: a lazily loaded def (inline helper), the bound `(unsigned long)index < size()` after a signed `index >= 0`
 // test, the size as a pointer difference divided by 0x5c (`imul 0B21642C9h`), the element as `*(begin() + n)`.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -38,7 +39,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

@@ -13,6 +13,7 @@
 //          group ducks while the cover and the enemy live, the hidden cover position stays within 1.0 of the creature (XY,
 //          a named float from fsqrt) and the group is still runnable; every exit terminates.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (pack(1): enemy +0x14, PCoverThing +0x1F) behind engine/CAIStateGroupBase.h.
+#include "fable_compiler.h"
 #define CAIStateGroup_CreatureUseCoverBase CAIStateGroup_CreatureUseCoverBaseLayout
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #undef CAIStateGroup_CreatureUseCoverBase
@@ -54,7 +55,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.Get() != 0) {
         if (!p.Get()->IsDead())
@@ -62,7 +63,7 @@ __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     }
     return false;
 }
-__forceinline bool IS_THING_ALIVE(CThing* const& thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* const& thing)
 {
     if (thing != 0) {
         if (!thing->IsDead())

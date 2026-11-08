@@ -19,6 +19,7 @@
 //   declaration x takes the dead GetTC key slot [esp+10h] instead.
 // Device: GetActionAnimSetList_Use is not a retail function; it only keeps the anonymous-namespace body emitted (GOTCHAS,
 //   chunk 390 `_Use` caller).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
@@ -159,20 +160,20 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                   // +0x20
     CInterfaceMap  m_interfaces;                       // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(key);
         return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
-    __forceinline CTCAnimationComplex* GetAnimationComplex()
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex()
     {
         CTCAnimationComplex* complex;
         if (HasTC(0x5a))

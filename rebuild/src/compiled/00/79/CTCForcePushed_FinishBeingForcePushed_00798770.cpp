@@ -10,6 +10,7 @@
 // user copy constructor (the position copy must be the implicit aggregate one); `direction` is built memberwise from the
 // DirectionBeingPushed members through the three-float constructor (retail `mov eax,[edi+2Ch] ; mov ecx,[edi+30h] ; ...`).
 // Layout: landed CTCForcePushed_SetUpForcePush_007986a0 model; CHitParameters CreateDustParticleEffectOnHit +0x24, GuaranteeHit +0x25 (PDB).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 namespace NHitLocations { class CHitLocation; }
@@ -109,7 +110,7 @@ public:
     bool Initialised;                               // +0x3C
     bool StartedMoving;                             // +0x3D
     void FinishBeingForcePushed(bool reversed, float damage);
-    __forceinline void HitOwner(CThing* owner, C3DVector position, const C3DVector& direction, float damage)
+    FABLE_FORCEINLINE void HitOwner(CThing* owner, C3DVector position, const C3DVector& direction, float damage)
     {
         CHitParameters hit(0, PThingCausingForcePush.GetPItem(), 0, position, direction, true, false, false, false);
         hit.GuaranteeHit = true;

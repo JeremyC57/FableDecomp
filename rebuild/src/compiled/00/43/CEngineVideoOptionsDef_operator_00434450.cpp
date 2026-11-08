@@ -7,6 +7,7 @@
 //   byte-packed (dword at +0x25, vector at +0x29, sorted flag at +0x36 are all unaligned in the retail copy), so the
 //   #pragma pack(1) reproduces a proven native layout. No engine/ header exists for these classes.
 //   CEngineVideoOptionsDef fields use the PDB names/types, 4 bytes earlier than the Ego_r layout (base is 0x3c in TLC).
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 class CDefPointeeBase { public:                                   // 28-byte polymorphic root of CDefClassBase
     virtual void v00();
@@ -20,7 +21,7 @@ class CDefClassBase : public CDefPointeeBase { public:
     unsigned char Setup : 1;                            // +0x24 bit 0
     unsigned char Template : 1;                         // +0x24 bit 1
     unsigned char DefaultValsApplied : 1;               // +0x24 bit 2
-    __forceinline CDefClassBase& operator=(const CDefClassBase& other)
+    FABLE_FORCEINLINE CDefClassBase& operator=(const CDefClassBase& other)
     {
         CDefPointeeBase::operator=(other);
         PDefManager = other.PDefManager;
@@ -42,7 +43,7 @@ template<class K, class V> class CVectorMap { public:          // retail: 14 byt
     CRetailVector<V>    m_vector;                       // +0x00
     CKeyPairCompareLess m_compare;                      // +0x0c (empty)
     bool                m_sorted;                       // +0x0d
-    __forceinline CVectorMap& operator=(const CVectorMap& other)
+    FABLE_FORCEINLINE CVectorMap& operator=(const CVectorMap& other)
     {
         m_vector = other.m_vector;
         m_compare = other.m_compare;
@@ -57,7 +58,7 @@ struct CSubDefInfo;
 class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;   // +0x25
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;       // +0x29
-    __forceinline CParentDefClassBase& operator=(const CParentDefClassBase& other)
+    FABLE_FORCEINLINE CParentDefClassBase& operator=(const CParentDefClassBase& other)
     {
         CDefClassBase::operator=(other);
         InstantiationName = other.InstantiationName;

@@ -16,6 +16,7 @@
 //   the SetMainAnim call (mode computed first, Looping re-read for the argument); if/else (not an early return) lets the mode
 //   share the name's frame slot; C3DVector needs a user copy ctor for retail's load/store order; the list iterator needs a
 //   user copy ctor so erase's by-value argument is built in place.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -83,13 +84,13 @@ class CThingCreatureBase { public:
     CTCDriverBase*    PTCDriver;                          // +0x60
     unsigned char  _pad64[0x10c - 0x64];
     C3DVector      Forward;                             // +0x10c
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -113,12 +114,12 @@ template <class T> class CCountedPointer { public:
 template <class T> class CCountedPointer<const T> { public:
     const T* m_pObject;
     SCountBlock* m_pCount;
-    __forceinline CCountedPointer(const CCountedPointer<T>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
+    FABLE_FORCEINLINE CCountedPointer(const CCountedPointer<T>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
     {
         if (m_pCount)
             ++m_pCount->m_references;
     }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (m_pCount) {
             if (--m_pCount->m_references == 0) {

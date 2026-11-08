@@ -1,6 +1,7 @@
 // Behaviour test for 0x008597A0 CCombatActionBase::ProcessStrikeEvents: runs the reconstructed body over stubbed callees;
 // checks the new-strike-event path (damage, LastWeaponUsedInStrike, aug fire), the ended-event and no-strike clears (alive and
 // dead weapons), and the three timed flags (interrupt, reset combo with the combat component, movement interrupt).
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -36,7 +37,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;
     unsigned long ThingTypeFlags;
     unsigned char Dead : 1;
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -6,6 +6,7 @@
 // Identity: twin of 0x00AB0B70 one indirection further (`mov ecx,[ecx]` first); no direct caller or vtable reference found.
 // Shape: the referenced entry's inline name getter (the same conditional-temporary ternary as 0x00AB0B70) runs with the entry
 // as `this`, so it must be `__forceinline` (a plain in-class inline stays out of line in this TU).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
@@ -14,7 +15,7 @@ class CCharString { public:
 };
 struct SMorphEntry {
     const char* m_pName;                             // +0x00
-    __forceinline CCharString GetName() const { return m_pName ? CCharString(m_pName, -1) : CCharString("", -1); }
+    FABLE_FORCEINLINE CCharString GetName() const { return m_pName ? CCharString(m_pName, -1) : CCharString("", -1); }
 };
 class CParticleMorphs { public:
     const SMorphEntry* m_pEntry;                     // +0x00

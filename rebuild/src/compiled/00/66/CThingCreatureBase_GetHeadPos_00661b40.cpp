@@ -11,14 +11,15 @@
 // Shape: the graphic is reached through an inline accessor (retail loads it into ecx before the pushes), the flag
 //   default is `0` then `if (!recalculate) flags = 0x21`, and C3DVector has a declared memberwise copy ctor (the
 //   returned `pos` is copied X through the FPU, Y/Z as dwords).
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-__forceinline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public: void* PStringData; };

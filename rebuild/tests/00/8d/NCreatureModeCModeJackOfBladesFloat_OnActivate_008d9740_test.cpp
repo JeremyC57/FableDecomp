@@ -1,6 +1,7 @@
 // Behaviour test for 008d9740: src/008d9740.cpp copied verbatim; OnActivate takes the creature definition's special-effects
 // sub-def, looks up "FLOAT_POWER", spawns that effect at the creature, stores it in PEmitter2 and (when it has the particle
 // emitter TC 0x4B) attaches it to the creature's TARGET_CURSOR_POINT; the definition and the sub-def are released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -43,7 +44,7 @@ template <class T> class CDefPointer { public:         // a counted def referenc
     ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (--def->m_refCount == 0)
         def->Destroy();
@@ -107,7 +108,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 struct CModeJackOfBladesFloat {

@@ -1,6 +1,7 @@
 // Behaviour test for std::map<CCharString, unsigned long>::operator[] (0x0042D131): an existing key returns
 // its value slot without inserting, a new key is inserted (in order) with value 0 and its slot returned; the
 // temporary pair's key copy is destroyed again.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,7 +21,7 @@ public:
     CCharString(CBasicString<char>* data) : PData(data) { ++g_liveStrings; }
     CCharString(const CCharString& other) : PData(other.PData) { ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

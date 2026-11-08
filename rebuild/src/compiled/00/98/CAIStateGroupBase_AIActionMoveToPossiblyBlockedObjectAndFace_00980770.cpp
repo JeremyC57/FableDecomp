@@ -12,6 +12,7 @@
 // Notes: each `bool reached` lives in its own scope (retail packs it into the dead `route` argument slot); the
 //   final branch is written inverted (`result != 2 || !filter()` first) so the route-failure return cross-jumps to
 //   the same tail retail picks; retry loops use `if (r == 4) continue; break;`.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -28,8 +29,8 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;    // 0x004C73D0
-    __forceinline bool TestTC(long type) const { return ((m_presentBits[type >> 5] >> (type & 31)) & 1) != 0; }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE bool TestTC(long type) const { return ((m_presentBits[type >> 5] >> (type & 31)) & 1) != 0; }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

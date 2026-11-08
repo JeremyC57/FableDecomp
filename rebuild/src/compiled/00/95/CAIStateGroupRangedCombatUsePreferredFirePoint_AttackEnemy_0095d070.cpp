@@ -14,6 +14,7 @@
 // `operator-` and `X*X + Y*Y` compared with `fcomp [g] ; test ah,41h` (greater-than).
 // PFirePoint is the engine header name (the header flattens the base so the class is modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -100,7 +101,7 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBaseC {
     bool AttackEnemy();
     // the creature is a named local read before the fire-point position; the 2D delta is built by the by-value
     // `operator-` and `X*X + Y*Y` compared with the tolerance
-    __forceinline bool IsAwayFromFirePoint()
+    FABLE_FORCEINLINE bool IsAwayFromFirePoint()
     {
         CThingPos* creature = (CThingPos*)GetCreature();
         const C2DVector& firePos = ((CThingPos*)PFirePoint.Get())->GetPos();

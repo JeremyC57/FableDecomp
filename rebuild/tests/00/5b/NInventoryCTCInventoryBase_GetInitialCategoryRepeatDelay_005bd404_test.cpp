@@ -1,16 +1,17 @@
 // test for 005bd404 CTCInventoryBase::GetInitialCategoryRepeatDelay
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     mutable unsigned long IVRefCount;                    // +0x04
-    __forceinline void Release() const { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() const { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CInventoryDef : public CDefPointeeBase { public:

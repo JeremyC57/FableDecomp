@@ -1,5 +1,6 @@
 // Behaviour test for 00bc5c50: src/00bc5c50.cpp copied verbatim; SetChildPrimitive grows the slot vector, creates the
 // child through the type's manager, releases the old child, updates and enables the new one, then refreshes the mask.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -48,7 +49,7 @@ public:
     CEngineInternalPrimitiveBase* Object;
     CEngineInternalPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void Attach(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE void Attach(CEngineInternalPrimitiveBase* object)
     {
         if (Object) {
             Object->Release();
@@ -56,7 +57,7 @@ public:
         }
         Object = object;
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -65,7 +66,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEngineInternalPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -85,7 +86,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

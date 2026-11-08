@@ -13,6 +13,7 @@
 // Layout: Ego_r.pdb CHeroSoulsRoundDef (60; retail 0x38 with STLport's 12-byte vector): CDefClassBase (0x25, pack 1), NumWaves +0x28,
 //   Waves (vector<CHeroSoulsWaveDef >) +0x2C. CDefClassBase comes from engine/CDefClassBase.h under a layout name (the header is
 //   data-only; the PDB class declares the out-of-line operator=).
+#include "fable_compiler.h"
 #include <stddef.h>
 #define CDefClassBase CDefClassBasePdb
 #include "engine/CDefClassBase.h"
@@ -43,7 +44,7 @@ public:
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);   // 0x00F27BC0
 };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                                             _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

@@ -15,6 +15,7 @@
 //   string("ANY") temporary (malloc(4), memmove 3, terminator), whose block pointer stays in esi for its free because
 //   the TU knows LAddress(const string&, unsigned short) only reads the name and STLport's _M_throw_length_error has a
 //   body here (an opaque callee taking either address forces the pointer back through memory).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(memcmp, strlen)
 
@@ -99,7 +100,7 @@ public:
         this->_M_allocate_block(8);
         _M_terminate_string();
     }
-    __forceinline basic_string(const _CharT* __s, const allocator_type& __a = allocator_type())
+    FABLE_FORCEINLINE basic_string(const _CharT* __s, const allocator_type& __a = allocator_type())
         : _String_base<_CharT, _Alloc>(__a)
     {
         _M_range_initialize(__s, __s + _Traits::length(__s));
@@ -119,7 +120,7 @@ public:
     _Self& _M_assign_dispatch(const _CharT* __f, const _CharT* __l, const __false_type&);   // 0x00569140
 
     template <class _InputIter>
-    __forceinline void _M_range_initialize(_InputIter __f, _InputIter __l)
+    FABLE_FORCEINLINE void _M_range_initialize(_InputIter __f, _InputIter __l)
     {
         int __n = __l - __f;
         this->_M_allocate_block(__n + 1);

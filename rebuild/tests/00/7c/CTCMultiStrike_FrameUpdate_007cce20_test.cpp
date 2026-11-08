@@ -1,5 +1,6 @@
 // Behaviour test for 007cce20: src/007cce20.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCMultiStrike::FrameUpdate()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -87,7 +88,7 @@ public:
     unsigned long ThingTypeFlags;                   // +0x6C (bit 3: game object)
     void RemoveTC(long interfaceType);              // 0x004C9840
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline T* GetTC(long wanted)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

@@ -15,6 +15,7 @@
 //   are declarations only, so the `_TrivialAss()` / `_IsPODType()` empty-POD tags keep their `xor eax,eax ; stosb` zero
 //   fill. x_copy's destructor: the compiler-generated CShopItemDef / CDefClassBase destructors store no vtable, the
 //   user-declared inline ~CDefPointeeBase() {} stores 0x01230BA0, then the out-of-line base destructor.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -53,8 +54,8 @@ public:
     long      Type;                                  // +0x28
     CShopItem Item;                                  // +0x2c
     virtual void v00();
-    __forceinline CShopItemDef(const CShopItemDef& o) : CDefClassBase(o), Type(o.Type), Item(o.Item) { }
-    __forceinline CShopItemDef& operator=(const CShopItemDef& o)
+    FABLE_FORCEINLINE CShopItemDef(const CShopItemDef& o) : CDefClassBase(o), Type(o.Type), Item(o.Item) { }
+    FABLE_FORCEINLINE CShopItemDef& operator=(const CShopItemDef& o)
     {
         CDefClassBase::operator=(o);
         Type = o.Type;
@@ -80,7 +81,7 @@ public:
 template <class _T1, class _T2> void __fastcall _Construct(_T1* __p, const _T2& __val);           // 0x004E9C39
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -97,7 +98,7 @@ _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first,
                                                     _BidirectionalIter2 __result, const __false_type&);  // 0x004ED2F1
 
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for ( ; __first != __last; ++__first)
         *__first = __val;

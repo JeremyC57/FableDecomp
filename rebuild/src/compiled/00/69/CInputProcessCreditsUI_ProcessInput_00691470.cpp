@@ -10,6 +10,7 @@
 // Quitting +0x1c (PDB +0x20). The input-process base as engine/CInputProcessGameBase.h (MyPlayer +0x18); the
 // engine/CInputProcessCreditsUI.h header only flattens that base, so the base members are modelled here.
 // Shape: the inlined map find (`it == end || key < it->key` -> end) keeps the component in esi; the event rides in edi.
+#include "fable_compiler.h"
 class CInputEvent;
 class CProcessedInput;
 struct CTCBase_Retail;
@@ -24,7 +25,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -38,7 +39,7 @@ struct CThing_Retail {
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class CThingPlayerCreature : public CThing_Retail { };
 class CTCCreditsUI {

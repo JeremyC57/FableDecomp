@@ -18,6 +18,7 @@
 // Shape: the binding / wait models of the landed CQ_OakValeBanditRaidScript::Main 0x00DBF2D0; an unused function-scope CTimer
 //   (its inline ctor / dtor bracket the body: RegisterTimer first, DeregisterTimer on every return); the bindings' name
 //   temporaries are VC7.1's flag-guarded conditional temporaries of `new` (bits 1..0x20 in ebx).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -56,7 +57,7 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     TAllocFunc      ClassAllocFunc;                     // +0x10
     bool            ClassAllocValid;                    // +0x14
     unsigned long   Flags;                              // +0x18
-    __forceinline CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
+    FABLE_FORCEINLINE CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
         : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) {}
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };

@@ -17,6 +17,7 @@
 // pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
 // test (re-read in the size TU: `dec [eax] ; cmp [eax],0`) and the def is kept in ecx for the virtual call. Frame pointer and size optimisation from the TU's pragmas. The manifest
 // label names one instantiation; the def type is opaque. One of 6 bodies of this shape.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -55,7 +56,7 @@ template <class T> class CDefPointer { public:
         if (m_p)
             m_p->ReleaseTemporary();
     }
-    __forceinline CDefPointer& operator=(const CDefPointer& other)   // forced: the size TU would call it out of line
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)   // forced: the size TU would call it out of line
     {
         if (m_p != other.m_p) {
             if (m_p) {

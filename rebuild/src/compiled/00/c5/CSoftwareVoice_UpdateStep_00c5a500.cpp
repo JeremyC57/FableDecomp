@@ -12,9 +12,10 @@
 // both rates are unsigned conversions (`fild ; jge ; fadd 2^32`); `< 0.01f` is `fcom ; test ah,5 ; jp`; the
 // unfolded `+ 0.5f - 0.5f` precedes the ROUND; the cap stores first then re-stores 0xF000 (`cmp ; mov ; jbe`).
 // the inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
+#include "fable_compiler.h"
 #include "libpk/FtoL.h"
 // truncation toward zero on top of it: round(x - 0.5) is floor(x), negatives step back up by one
-__forceinline long FloatToLongTruncate(float value)
+FABLE_FORCEINLINE long FloatToLongTruncate(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

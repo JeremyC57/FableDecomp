@@ -3,6 +3,7 @@
 // exercises each control-flow path. Prints exactly one pass line on success.
 //
 // Build (VC7.1):  cl /nologo /O2 /Oy /W3 test_00898bb0.cpp
+#include "fable_compiler.h"
 #include <cstdio>
 #if !defined(_MSC_VER)
 #  define __fastcall
@@ -40,7 +41,7 @@ struct HeroMap {
     void*    pad_00;                               // +0x0
     void*    endNode;                              // +0x4
     MapNode* lower_bound(const long* key);         // __fastcall
-    __forceinline void* Find(long kind)            // the inlined map find: end when the key is absent
+    FABLE_FORCEINLINE void* Find(long kind)            // the inlined map find: end when the key is absent
     {
         long key = kind;
         MapNode* found = lower_bound(&key);
@@ -50,7 +51,7 @@ struct HeroMap {
     }
 };
 
-__forceinline void* GetTCIfPresent(HeroThing* thing, long kind)
+FABLE_FORCEINLINE void* GetTCIfPresent(HeroThing* thing, long kind)
 {
     void* tc;                                      // deliberately unset when the component is absent (retail reads a dead slot)
     if (thing->flags38 & 0x0800)

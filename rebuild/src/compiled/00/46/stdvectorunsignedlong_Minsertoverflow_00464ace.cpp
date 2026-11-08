@@ -9,6 +9,7 @@
 // `__copy_trivial(start, pos, new_start)`, `fill_n(new_finish, fill_len, x)` (x re-read every pass), the tail copy when
 // !atend, the inline `_M_clear()` and `_M_set(new_start, new_finish, new_start + len)`.
 // Shape: frame pointer, `and dword ptr [ebp-4],0` = size TU with /Oy off: #pragma optimize("y", off) + ("s", on).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -20,16 +21,16 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 namespace std {
 struct __true_type { };
 
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 
-__forceinline void* __copy_trivial(const void* first, const void* last, void* result)
+FABLE_FORCEINLINE void* __copy_trivial(const void* first, const void* last, void* result)
 {
     return (last == first) ? result :
         ((char*)memmove(result, first, ((const char*)last - (const char*)first))) + ((const char*)last - (const char*)first);
 }
 
 template <class OutputIter, class Size, class T>
-__forceinline OutputIter fill_n(OutputIter first, Size n, const T& value)
+FABLE_FORCEINLINE OutputIter fill_n(OutputIter first, Size n, const T& value)
 {
     for (; n > 0; --n, ++first)
         *first = value;
@@ -37,8 +38,8 @@ __forceinline OutputIter fill_n(OutputIter first, Size n, const T& value)
 }
 
 template <class T> struct allocator {
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
-    __forceinline void deallocate(T* p, unsigned int) { free(p); }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE void deallocate(T* p, unsigned int) { free(p); }
 };
 
 template <class T, class A = allocator<T> > class vector {
@@ -49,12 +50,12 @@ public:
     struct : A { pointer _M_data; } _M_end_of_storage;
 
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         if (_M_start)
             _M_end_of_storage.deallocate(_M_start, (unsigned int)(_M_end_of_storage._M_data - _M_start));
     }
-    __forceinline void _M_set(pointer s, pointer f, pointer e)
+    FABLE_FORCEINLINE void _M_set(pointer s, pointer f, pointer e)
     {
         _M_start = s;
         _M_finish = f;

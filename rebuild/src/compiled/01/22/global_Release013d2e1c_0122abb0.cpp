@@ -8,6 +8,7 @@
 // inlined Reset(0) decrements the block, destroys the object through the block's function pointer
 // and frees the block (operator delete @ 0x00BFE9BC) on the last reference, then nulls both
 // fields (the "adopt new object" half folds away for a null argument). One of 25 bodies.
+#include "fable_compiler.h"
 struct SCountBlock {
     long m_references;
     void (__fastcall* m_pfnDestroy)(void*);
@@ -17,7 +18,7 @@ struct SCountBlock {
 struct CCountedPointerStatic {
     void* m_pObject;
     SCountBlock* m_pCount;
-    __forceinline void Reset(void* object)
+    FABLE_FORCEINLINE void Reset(void* object)
     {
         if (m_pCount) {
             --m_pCount->m_references;

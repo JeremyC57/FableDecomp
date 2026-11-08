@@ -13,6 +13,7 @@
 //   `#pragma optimize("s", on)`.
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; CExplosionRing is the PDB's 16-byte record (no engine
 //   header); the vector is STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -47,7 +48,7 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CExplosionRing> {
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CExplosionRing* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CExplosionRing* value) const
     {
         value->TransferBinaryOut(stream);
     }

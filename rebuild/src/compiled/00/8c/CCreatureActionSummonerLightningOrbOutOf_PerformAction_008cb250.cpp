@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"
@@ -142,7 +143,7 @@ class CThing:public CThingFields{public:
  bool IsDead()const{return (reinterpret_cast<const unsigned char*>(this)[0x91]&1)!=0;}
  CTCPhysicsBase*GetPhysicsTC(){return PhysicsTC;}
  NGraphicAppearance::CTCGraphicAppearance*GetTCGraphicAppearance(){return reinterpret_cast<NGraphicAppearance::CTCGraphicAppearance*>(PTCGraphicAppearance);}
- template<class T>__forceinline bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31))){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);*out=reinterpret_cast<T*>((it==map.end()||kind<it->first?map.end():it)->second);return true;}return false;}
+ template<class T>FABLE_FORCEINLINE bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31))){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);*out=reinterpret_cast<T*>((it==map.end()||kind<it->first?map.end():it)->second);return true;}return false;}
 };
 class CThingPhysical:public CThing{};class CThingGameObject:public CThingPhysical{};class CThingCreatureBase:public CThingGameObject{};
 class CThingObject:public CThingGameObject{public:static CThingObject*__fastcall Create(long,const C3DVector&,long,const CRightHandedSet*,unsigned long,const CCharString&);};

@@ -2,6 +2,7 @@
 // Leaf: ?RemoveActiveQuestCardAndMakeAvailableAgain@CQuestManager@@QAEXABVCCharString@@_N@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags:
+#include "fable_compiler.h"
 #define FABLE_RETAIL_BASE_CLASS
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"
@@ -80,11 +81,11 @@ template<class K,class V,class Compare>typename CVectorMap<K,V,Compare>::const_i
  return first;
 }
 #pragma auto_inline(on)
-template<class T>__forceinline bool CThing::GetTC(ETCInterfaceType t,T**out)
+template<class T>FABLE_FORCEINLINE bool CThing::GetTC(ETCInterfaceType t,T**out)
 {
  if(HasTC(t)){const ETCInterfaceType key=t;const CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<const CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);*out=reinterpret_cast<T*>(map.Find(key)->second);return true;}return false;
 }
-template<>__forceinline bool CThing::GetTC<CTCQuestCard>(CTCQuestCard**out){return GetTC(static_cast<ETCInterfaceType>(0x6c),out);}
+template<>FABLE_FORCEINLINE bool CThing::GetTC<CTCQuestCard>(CTCQuestCard**out){return GetTC(static_cast<ETCInterfaceType>(0x6c),out);}
 template<class T>class CTBaseSingletonNoDefaultAlloc {public:static T&__fastcall Get(){return *PClass;}private:static CCountedPointer<T>PClass;};
 class CPlayerGui:public CPlayerGuiFields {public:void UpdateMiniMapMarkers(bool);};
 void CQuestManager::RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString&scriptName,bool available)

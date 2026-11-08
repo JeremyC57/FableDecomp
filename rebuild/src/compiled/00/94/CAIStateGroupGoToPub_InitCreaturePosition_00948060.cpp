@@ -13,6 +13,7 @@
 // conditional copies (ebx mask 1 / 3); the pointer operator= names the item before SetPItem.
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub PPub +0x14, PTable +0x24, NextFramePub +0x68, UnderScriptControl +0xa1;
 // CTCAIScratchpad (0xaa) TableName +0x70, SeatName +0x74; CTCOwnedEntity (0x33) POwner +0x0d (odd offset, pack(1)).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -37,8 +38,8 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((const CThing*)item)); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((const CThing*)item)); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
     T* Get() const { return (T*)GetPItem(); }
 };
 

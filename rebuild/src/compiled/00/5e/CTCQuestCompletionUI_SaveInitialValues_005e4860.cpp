@@ -21,6 +21,7 @@
 //   GetInterface) stays homed and is re-read; questIndex lives in di for the test and the first key. The renown store
 //   loads the value before the key; the gold/experience stores name the key first (`long key = ...`) and then the value,
 //   which is retail's key-chain-before-value order ahead of each operator[] call.
+#include "fable_compiler.h"
 class CCharString;
 class CTCBase;
 
@@ -39,7 +40,7 @@ public:
     CInterfaceMap  m_interfaces;                       // +0x44
     unsigned char  _pad4c[0x8c - 0x4c];
     unsigned short DefGlobalIndex;                     // +0x8c
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -50,13 +51,13 @@ public:
         }
         return false;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

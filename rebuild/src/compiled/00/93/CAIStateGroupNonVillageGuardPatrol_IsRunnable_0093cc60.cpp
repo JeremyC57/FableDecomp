@@ -14,6 +14,7 @@
 //          right to left (comparator copies the position, then the filter); the hit is latched through a temporary.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with the
 //          patrol node intelligent pointer at +0x14.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
@@ -53,8 +54,8 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerTrackNode : CBaseIntelligentPointer {   // CIntelligentPointer<CThingTrackNode>, vtable 0x0125A894
     virtual void v00();
-    __forceinline CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
-    __forceinline CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
+    FABLE_FORCEINLINE CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

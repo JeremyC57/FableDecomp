@@ -10,6 +10,7 @@
 //   `delete Allocator; Allocator = 0;` through the inline `__fastcall` class operator delete (VirtualFree): with the count test
 //   inlined on the same register VC7.1 drops the delete-expression's null test (ecx copied to esi for VirtualFree). An explicit
 //   `a->~CMemoryAllocator(); VirtualFree(a, ..)` through a local loads the global straight into esi instead.
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
 extern "C" __declspec(dllimport) int __stdcall VirtualFree(void* address, unsigned long size, unsigned long freeType);   // IAT 0x0143FD40
@@ -32,13 +33,13 @@ protected:
     static void EnterSynchronisation() { EnterCriticalSection(g_allocatorLock); }
     static void LeaveSynchronisation() { LeaveCriticalSection(g_allocatorLock); }
     unsigned long GetNoAllocations() { return NoAllocations; }
-    static __forceinline void Destroy()
+    static FABLE_FORCEINLINE void Destroy()
     {
         delete Allocator;
         Allocator = 0;
     }
 public:
-    static __forceinline void Deallocate(void* block)
+    static FABLE_FORCEINLINE void Deallocate(void* block)
     {
         EnterSynchronisation();
         if (block && Allocator) {

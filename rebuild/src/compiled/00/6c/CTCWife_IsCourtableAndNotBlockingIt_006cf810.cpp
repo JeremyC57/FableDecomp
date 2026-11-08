@@ -8,6 +8,7 @@
 //        byte; the hero (not dead) must carry interface 4 (bitset byte +0x20 bit 4) whose pointer at +0x114 is null.
 // Layout: CTCWife (engine header): ParentThing +0x04, OpinionAttitude +0x10, CourtingBlocked +0x15; retail CThing bitset
 //         +0x20, interface map +0x44, Dead +0x91.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -21,7 +22,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     unsigned char _pad92[0x1c9 - 0x92];
     unsigned char Flags1C9;                     // +0x1c9 (CThingCreatureBase flag byte; bit 3 tested, descriptive)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

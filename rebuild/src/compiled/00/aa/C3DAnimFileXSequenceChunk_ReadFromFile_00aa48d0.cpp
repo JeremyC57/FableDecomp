@@ -8,6 +8,7 @@
 // inline `rep movsd/movsb` memcpy and re-read pointer/count/position updates, else the overflow reader),
 // skipped for a non-positive size. Branch polarity matters: the accessor tests `size != 0` first (begin is
 // the fall-through value) and the read tests `size <= remaining` (`cmp size,[rem] ; jg overflow`).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -19,7 +20,7 @@ public:
     const unsigned char* m_pData;          // +0x0C current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;

@@ -23,6 +23,7 @@
 // Shape: the out-parameter GetInterface leaves the map pointer uninitialised when the hero has no map (retail reads the
 //        frame word); the lookup key and the out flag are homed in the dead `hero` argument slot (hero stays in edi);
 //        the event path returns with its own cookie check, every failure joins the trailing `= true` store.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 
@@ -38,7 +39,7 @@ public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         Health;                       // +0xb4 (CThingPhysical)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

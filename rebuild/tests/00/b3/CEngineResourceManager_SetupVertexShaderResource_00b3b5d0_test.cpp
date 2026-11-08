@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -565,8 +566,8 @@ struct CShaderResourcePointer {
     CShaderResourcePointer() : Data(0), Info(0) { }
     CShaderResourcePointer(const CShaderResourcePointer& other)
         : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CShaderResourcePointer() { Release(); }
-    __forceinline void Release() {
+    FABLE_FORCEINLINE ~CShaderResourcePointer() { Release(); }
+    FABLE_FORCEINLINE void Release() {
         if (Info) {
             --Info->RefCount;
             if (Info->RefCount == 0) {
@@ -575,7 +576,7 @@ struct CShaderResourcePointer {
             }
         }
     }
-    __forceinline CShaderResourcePointer& operator=(const CShaderResourcePointer& other) {
+    FABLE_FORCEINLINE CShaderResourcePointer& operator=(const CShaderResourcePointer& other) {
         CCPPointerInfoNative* info = other.Info;
         CShaderResource* data = other.Data;
         if (Info != info) {

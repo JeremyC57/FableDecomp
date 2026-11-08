@@ -12,6 +12,7 @@
 // condition with the implicitly converted string temporary keeps its construction flag in ebx (zeroed at entry) and the
 // condition in a frame byte. The suspend call goes through a second named creature local so GetPItem runs before the
 // two constant arguments are pushed.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharString { public:
@@ -34,7 +35,7 @@ template <class T> class CDefPointer { public:      // the out-slot GetSubDef fi
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

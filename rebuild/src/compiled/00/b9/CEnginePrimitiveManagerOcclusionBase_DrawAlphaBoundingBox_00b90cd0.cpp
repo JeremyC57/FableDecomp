@@ -7,6 +7,7 @@
 //   @ 0x00A05840 (global 0x013CB508; the capture-block open is the inline of the landed 0x00BE1E70 / 0x00B89A20).
 //   Render core 0x01436E18: the model of the landed SetupStencilMask 0x00BF1030 with the `__forceinline` SetState.
 // Sibling: DrawDebugVisibilityTestBox 0x00B90700 (same states plus +0x2868/+0x282C, no shader toggle).
+#include "fable_compiler.h"
 struct SCaptureEntry { void* Block; unsigned long State; };
 struct CCaptureStateManager {
     unsigned char _pad000[8];
@@ -75,7 +76,7 @@ extern unsigned long g_renderStateDefault_01396f78;    // 0x01396F78
 extern unsigned long g_renderStateDefault_01396f7c;    // 0x01396F7C
 extern unsigned long g_renderStateDefault_01396fa8;    // 0x01396FA8
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {
@@ -98,7 +99,7 @@ class CShaderRenderManager { public:
     bool          PixelShadersEnabled;             // +0x391
     void EnablePixelShaders();                     // 0x00988110
     void DisablePixelShaders();                    // 0x00988190
-    __forceinline void SetPixelShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetPixelShadersEnabled(bool enable)
     {
         if (enable != PixelShadersEnabled) {
             if (enable)

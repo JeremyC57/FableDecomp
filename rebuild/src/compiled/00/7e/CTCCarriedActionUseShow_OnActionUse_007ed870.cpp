@@ -14,6 +14,7 @@
 // CTCChest::GetOpenAnimationForCreature holder pattern (the thing's def read before the out pointer is zeroed; the def
 // copied out into a register-held holder released at the end) with a same-TU GetSubDef stand-in so the out slot is shared
 // with the interface keys; the stats come from the out-parameter GetInterface (component in eax), reusing the user map.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -27,15 +28,15 @@ class CThing { public:
     unsigned char _pad54[0x1c];
     CDefClassBase* PDef;                                    // +0x70 (CDefPointer Object)
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         CInterfaceMap* map = &m_interfaces;
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -48,7 +49,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTCConst(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

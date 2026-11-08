@@ -22,6 +22,7 @@
 //   reads the thing manager through a STATIC creature accessor (`PCreature.GetPItem()->PeekThingManager()`): the call is
 //   still made for its side effects and the global load follows it (a non-static inline hoists the global above the call);
 //   the haste and carrying components use the out-parameter GetInterface; the carried-thing vector is released with free.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 class CTCBase;
 class CThing;
@@ -40,13 +41,13 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                 // +0x91 bit 0
     void Kill(bool b);                      // 0x004C9B80
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -1,4 +1,5 @@
 // Behaviour test for 0093e240: body copied from src/0093e240.cpp (CAIStateGroup_MeleeCombatNearby2::Cleanup), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -17,7 +18,7 @@ class CThingCreatureBase { public:
     CInterfaceMap m_interfaces;
     bool IsRegisteredCombatant() { ++g_isReg; return g_registered; }
     bool UsesCreatureModes() { ++g_uses; return g_usesModes; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

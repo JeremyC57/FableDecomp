@@ -7,9 +7,10 @@
 // / ~CCharString @ 0x0099EAE0 (iter_swap's temporary pair in the frame, then the by-value pivot's name).
 // Shape: STLport 4.6 verbatim, with iter_swap -> __iter_swap(a, b, value_type) inlined and CCharString::operator< inlined
 // (the pivot's string block is re-read into esi at the top of each round).
+#include "fable_compiler.h"
 struct CBasicStringChar {                           // CBasicString<char> (13 bytes packed; only compared here)
     char* PData;                                    // +0x00
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

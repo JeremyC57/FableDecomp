@@ -1,4 +1,5 @@
 // Behaviour test for 005c2c65: body copied from src/005c2c65.cpp (vector<CCategory>::_M_insert_overflow), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -19,15 +20,15 @@ static CCategory* __fastcall UninitializedCopy(const CCategory* first, const CCa
 { ++g_ucopy; for (; first != last; ++first, ++result) new (result) CCategory(*first); return result; }
 static CCategory* __fastcall UninitializedFillN(CCategory* first, unsigned long count, const CCategory& value, const __false_type&)
 { ++g_fill; g_fillCount = count; for (unsigned long i = 0; i < count; ++i) new (first + i) CCategory(value); return first + count; }
-template<class T> __forceinline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
+template<class T> FABLE_FORCEINLINE const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 struct CCategoryVector {
     CCategory* _M_start;
     CCategory* _M_finish;
     CCategory* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    static __forceinline CCategory* allocate(unsigned long n) { return n != 0 ? (CCategory*)malloc(n * sizeof(CCategory)) : 0; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    static FABLE_FORCEINLINE CCategory* allocate(unsigned long n) { return n != 0 ? (CCategory*)malloc(n * sizeof(CCategory)) : 0; }
     void _M_clear() { ++g_clear; }
-    __forceinline void _M_set(CCategory* start, CCategory* finish, CCategory* endOfStorage)
+    FABLE_FORCEINLINE void _M_set(CCategory* start, CCategory* finish, CCategory* endOfStorage)
     {
         _M_start = start;
         _M_finish = finish;

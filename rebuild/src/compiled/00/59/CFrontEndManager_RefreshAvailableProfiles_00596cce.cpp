@@ -21,6 +21,7 @@
 // vector<CWideString> destructor, and map::operator[] (so the screen-key temporary's word is shared with the old-list
 // pointer and the loop counter: frame 0x64, not 0x68); `y` is declared before `count` for retail's store order.
 // Leaf: ?RefreshAvailableProfiles@CFrontEndManager@NUISystem
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -82,7 +83,7 @@ public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* data);                             // 0x00429C15 (CComponent) / 0x0042AA29 (CAction)
-    template <class U> __forceinline CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
+    template <class U> FABLE_FORCEINLINE CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
     {
         ShareData((T*)other.Data, other.Info);
     }

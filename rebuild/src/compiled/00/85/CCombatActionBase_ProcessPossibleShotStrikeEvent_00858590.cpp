@@ -11,6 +11,7 @@
 //   _M_insert_overflow 0x00788FFC, C3DVector::AccurateNormalise @ 0x00A14440, GetWeaponUsedInStrikeAction 0x00857070,
 //   CHitParameters ctor 0x007A3BC0 / dtor 0x00789358, GetPItem 0x00A01B50, GetMeleeHitParameters 0x00838BC0,
 //   OnHit (slot 65), ProcessFramesRunningForOnHitWithParams 0x00856040.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
 class CTCBase;
@@ -36,7 +37,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
     void push_back(const T& x);                 // out of line (0x0066E630 for C3DVector)
     void _M_insert_overflow(T* pos, const T& x, const __true_type&, unsigned int n, bool atend);   // 0x00788FFC
-    __forceinline void push_back_inline(T x)
+    FABLE_FORCEINLINE void push_back_inline(T x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
             new (this->_M_finish) T(x);
@@ -104,7 +105,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

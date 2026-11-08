@@ -21,6 +21,7 @@
 //   gives `test eax,eax ; jns`; GetTC inside the call expression pushes the sphere arguments in another order); the sphere
 //   centre is a 12-byte frame local and the radius out-parameter reuses the dead lookup-key slot (the thing argument's
 //   home) only with the same-TU LowerBound stand-in below (an external LowerBound gives a 0x10 frame).
+#include "fable_compiler.h"
 class CTCBase;
 struct CTCInterfaceEntry {
     long     type;
@@ -39,8 +40,8 @@ public:
     unsigned char   _pad04[0x20 - 0x04];
     unsigned long   m_tcPresent[9];                     // +0x20 interface present bits
     CTCInterfaceMap m_tcs;                              // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (HasTC(type)) {
             long key = type;
@@ -103,7 +104,7 @@ class CThingFilter_CombatOverlappingSphere {
 public:
     C3DVector SpherePos;                                // +0x00
     float     Radius;                                   // +0x0C
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const CTCHitLocations* hitLocations;
         if (thing.GetInterface(&hitLocations, 0x7f)) {

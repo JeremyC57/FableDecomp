@@ -13,6 +13,7 @@
 // temporary inside the loop gives the `and esp,-8` frame.
 // Layout: CBrainOutput from Ego_r.pdb (landed 0x00835620 / 0x006D60C0 models); the state group is local (the engine
 // header flattens the base), PEnemy +0x14.
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -39,7 +40,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -51,7 +52,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
         m_pObject = 0;
         m_pCount = 0;
     }
-    __forceinline void Reset(CCreatureActionBase* object)
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
     {
         if (m_pCount) {
             --m_pCount->m_references;

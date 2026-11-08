@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -528,7 +529,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
 // Donor CTCDExperienceOrb fields, struct_layouts_egor.tsv83459..83468; no generated class header.
 struct ExperienceOrbMethods:CTCBase{CDefPointeeBase* PDef;long ExperiencePoints,CombinationImmunityTimer,LifeTimer;bool DecayOverTime,PickedUp;void SetExperiencePoints(long);}; //00779E10; DecayOverTime+1C
 FABLE_STATIC_ASSERT(offsetof(ExperienceOrbMethods,DecayOverTime)==28);
-static __forceinline void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>((it==end||it->Type>105?end:it)->Component);}}
+static FABLE_FORCEINLINE void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>((it==end||it->Type>105?end:it)->Component);}}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateExperienceOrb(const C3DVector&,long)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateExperienceOrb(const C3DVector& position,long scale)const{
  long definition;{CCharString name("THING_EXPERIENCE_ORB",-1);definition=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}

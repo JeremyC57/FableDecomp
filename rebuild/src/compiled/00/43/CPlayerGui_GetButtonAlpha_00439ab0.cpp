@@ -12,6 +12,7 @@
 // then a merged value live across the calls, so VC spills it once at entry (`fst [esp]`, the `push ecx` word) and
 // reloads it there; a direct `return alpha` there is constant-folded to a fresh `fld 1.0`, and assigning the fade
 // result to alpha moves the reload block. The tail multiply is shared by the fade and plain paths.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -23,7 +24,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase* Find(long type) const
+    FABLE_FORCEINLINE CTCBase* Find(long type) const
     {
         const CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -39,8 +40,8 @@ class CThing { public:
     CTCMap        Components;                          // +0x44
     unsigned char _pad50[0x41];
     unsigned char Dead : 1;                            // +0x91 bit 0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
 class CTCInventory { public:                                  // TC type 0x11
     float GetContextSensitiveFadeAlpha(long button);   // 0x00581D2A

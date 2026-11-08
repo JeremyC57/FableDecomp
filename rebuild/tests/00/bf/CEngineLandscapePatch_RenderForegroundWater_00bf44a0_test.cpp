@@ -1,5 +1,6 @@
 // Behaviour test for 00bf44a0: src/00bf44a0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CEngineLandscapePatch::RenderForegroundWater()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -31,7 +32,7 @@ template <class T> struct CRetailVector {              // STLport vector (12 byt
     T* _M_end_of_storage;
     void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fill, bool atEnd);
     void push_back(const T& x);                       // 0x00BF5EA0 (the out-of-line copy)
-    __forceinline void push_back_inline(const T& x)   // the same body, inlined at the first two call sites
+    FABLE_FORCEINLINE void push_back_inline(const T& x)   // the same body, inlined at the first two call sites
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) T(x);
@@ -72,7 +73,7 @@ class C3DBoundingBox { public: C3DVector Min, Max; };
 struct SBoxedWaterPatch {                              // 28 bytes
     C3DBoundingBox   Box;
     CWaterPatchMesh* Mesh;
-    __forceinline SBoxedWaterPatch(const C3DBoundingBox& box, CWaterPatchMesh* mesh) : Box(box), Mesh(mesh) { }
+    FABLE_FORCEINLINE SBoxedWaterPatch(const C3DBoundingBox& box, CWaterPatchMesh* mesh) : Box(box), Mesh(mesh) { }
 };
 struct CBoxedWaterPatchVector {
     SBoxedWaterPatch* _M_start;

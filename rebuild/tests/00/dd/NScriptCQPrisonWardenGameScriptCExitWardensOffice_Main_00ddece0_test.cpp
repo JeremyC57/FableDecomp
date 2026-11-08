@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -285,7 +286,7 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 
 // VC7.1 single-inheritance member pointers contain one code address. View the vtable entry
 // by reference to retain virtual dispatch shape; fixture builds genuine member entries for each host ABI.
-template<class M> __forceinline const M& VirtualSlot(void* table,long n) {
+template<class M> FABLE_FORCEINLINE const M& VirtualSlot(void* table,long n) {
 #ifdef _MSC_VER
  typedef char NativeMemberPointerMustBeOneWord[sizeof(M)==sizeof(void*)?1:-1];
 #endif

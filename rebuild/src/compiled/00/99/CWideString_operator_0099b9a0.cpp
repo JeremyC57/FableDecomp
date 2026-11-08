@@ -8,6 +8,7 @@
 // Layout: CWideStringData {basic_string<wchar_t> {_M_start, _M_finish, _M_end_of_storage}, NoRefs +0xC}.
 // Shape: append copies its character first and its count second (the count lands in the caller's dead character slot,
 //          the copy in the frame); the length error is noreturn, so its call is laid out of line.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
@@ -21,7 +22,7 @@ struct CWideBasicString {
     size_t capacity() const { return (_M_end_of_storage - _M_start) - 1; }
     __declspec(noreturn) void _M_throw_length_error() const;   // 0x0099C550
     void reserve(size_t n);                        // 0x0099C990
-    __forceinline CWideBasicString& append(size_t n, wchar_t c)
+    FABLE_FORCEINLINE CWideBasicString& append(size_t n, wchar_t c)
     {
         wchar_t fill = c;
         size_t count = n;

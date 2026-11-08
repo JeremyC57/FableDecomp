@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // Behaviour test for CGameScriptInterface::IsPlayerCarryingItemOfType (0x008973A0): false without a live hero that has
@@ -35,7 +36,7 @@ class CThing { public:
     long DefIndex;
     CDefString GetDefName() const { CDefString d; d.Index = DefIndex; return d; }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

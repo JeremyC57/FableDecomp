@@ -1,4 +1,5 @@
 // Behaviour test for 0065bffa: body copied from src/0065bffa.cpp (CTCVillage::IsReportedOrUnreportedCrimeKnown), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -25,7 +26,7 @@ public:
 class CThing : public CBaseObject {
 public:
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

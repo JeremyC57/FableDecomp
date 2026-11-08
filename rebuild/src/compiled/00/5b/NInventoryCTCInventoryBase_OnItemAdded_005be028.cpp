@@ -14,6 +14,7 @@
 // `__declspec(novtable)` CEventBase zeroes WorldFrame before the derived vtable store; the hero lookup key homes in the
 // dead `suppressTutorials` slot; tutorials 3 (non-augmentation), 0x20 and the item's inventory category.
 // Layout: ParentThing +0x04; CEventBase {vptr, WorldFrame +4}, ItemDefIndex +8 (Ego_r.pdb).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
@@ -35,7 +36,7 @@ class CThing { public:
             it = map->end();
         return (T*)((void*)it->second);
     }
-    template<class T> __forceinline T* QueryTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* QueryTC(long wanted)
     {
         T* p = 0;
         if (m_present.test(wanted)) {
@@ -46,7 +47,7 @@ class CThing { public:
         }
         return p;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             *out = GetTC<T>(wanted);

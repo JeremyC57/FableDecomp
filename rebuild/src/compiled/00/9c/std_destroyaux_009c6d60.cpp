@@ -10,6 +10,7 @@
 // Globals: the global allocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94.
 // Shape: the chunk destructor tests Mem and calls the landed GFFreeFromGlobalAllocator body (0x009A4350) inline, whose
 // own null test survives (`test esi,esi` twice) because it sits after the lock call.
+#include "fable_compiler.h"
 class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10
@@ -20,7 +21,7 @@ void __cdecl GFEnterAllocatorLock();               // 0x009F2000
 void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;          // 0x013CAA90
 extern bool              g_bDestroyAllocatorWhenEmpty_013caa94; // 0x013CAA94
-__forceinline void GFFreeFromGlobalAllocator(void* block)
+FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
 {
     GFEnterAllocatorLock();
     if (block && g_pGlobalAllocator_013caa90) {

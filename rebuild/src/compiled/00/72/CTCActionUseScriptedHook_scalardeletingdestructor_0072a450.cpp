@@ -10,6 +10,7 @@
 // 8-byte alignment of +0x18/+0x30). CTCBase restated as in the landed 0x007A62D0 (the header's vptr is a data word).
 // Shape: a `__forceinline` user virtual destructor (a plain inline one stays out of line: 30v75) whose body calls RemoveFromGlobalTCs after the vtable store; members die in
 // reverse order (the intelligent pointers' generated destructors call the base destructor directly).
+#include "fable_compiler.h"
 class CThing;
 
 class CTCBase { public:
@@ -49,7 +50,7 @@ class CTCActionUseScriptedHook : public CTCBase { public:
     long                ReplacementObject;               // +0x48
     bool                ReversedOnMiniMap;               // +0x4c
     bool                HiddenOnMiniMap;                 // +0x4d
-    __forceinline virtual ~CTCActionUseScriptedHook() { RemoveFromGlobalTCs(); }
+    FABLE_FORCEINLINE virtual ~CTCActionUseScriptedHook() { RemoveFromGlobalTCs(); }
 };
 
 CTCActionUseScriptedHook* NewCTCActionUseScriptedHook()

@@ -11,6 +11,7 @@
 //   assignment of a record whose base has its own operator=, so the record's operator= is written out and
 //   `__forceinline`; the def's own operator= is then the plain memberwise form.
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -28,7 +29,7 @@ class CCombatAbilityData { public:
 
 class CCombatAbilityStrafingData : public CCombatAbilityData { public:
     float RotationSpeed;                // +0x18
-    __forceinline CCombatAbilityStrafingData& operator=(const CCombatAbilityStrafingData& other)
+    FABLE_FORCEINLINE CCombatAbilityStrafingData& operator=(const CCombatAbilityStrafingData& other)
     {
         CCombatAbilityData::operator=(other);
         RotationSpeed = other.RotationSpeed;

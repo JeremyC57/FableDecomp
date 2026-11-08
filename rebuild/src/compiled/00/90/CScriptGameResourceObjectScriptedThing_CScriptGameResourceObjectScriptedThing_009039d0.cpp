@@ -20,6 +20,7 @@
 // a creature mode manager (interface 0x31 = bit 17 of the bitset word at +0x24), removes mode 7 if it is current.
 // Layout: engine/CScriptGameResourceObjectScriptedThing.h (PDB, sizeof 0x28) agrees on every offset but is a
 // flat record without bases or constructors, so the class chain is modelled locally (as in 0x00903710).
+#include "fable_compiler.h"
 class CCPPointerInfo;
 class CGameScriptInterface;
 class CTCBase;
@@ -35,7 +36,7 @@ class CThing : public CBaseObject { public:
     unsigned char  _pad08[0x18];
     unsigned long  m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -48,7 +49,7 @@ class CThing : public CBaseObject { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* tc;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

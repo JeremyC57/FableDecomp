@@ -13,6 +13,7 @@
 //   random_access_iterator_tag(), (int*)0)`, the empty tag
 //   temporary homed in the high byte of the dead comparator slot (`lea eax,[ebp+13h]`); the by-value pair for the
 //   unguarded insert is built in the argument area by STLport pair's memberwise copy constructor.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -40,7 +41,7 @@ template <class RandomAccessIter, class T, class Compare>
 void __fastcall __unguarded_linear_insert(RandomAccessIter last, T val, Compare comp);    // 0x005F7D15
 
 template <class BidirectionalIter1, class BidirectionalIter2>
-__forceinline BidirectionalIter2 copy_backward(BidirectionalIter1 first, BidirectionalIter1 last, BidirectionalIter2 result)
+FABLE_FORCEINLINE BidirectionalIter2 copy_backward(BidirectionalIter1 first, BidirectionalIter1 last, BidirectionalIter2 result)
 {
     return __copy_backward(first, last, result, random_access_iterator_tag(), (int*)0);
 }

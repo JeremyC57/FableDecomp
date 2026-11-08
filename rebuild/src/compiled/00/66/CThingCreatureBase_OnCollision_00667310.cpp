@@ -17,6 +17,7 @@
 // Shape: the mode test and the knockdown live inside HasTC(0x31) with the const GetTC; the slope test is an inline dot
 //   product with the constant up vector (the compiler keeps (Y + X) * 0 + Z); the knockdown action is a temporary passed
 //   straight to SetCurrentAction, destroyed by its implicit (inline) destructor.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
 class CTCBase;
@@ -41,7 +42,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                     // +0x91 bit 0
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -50,7 +51,7 @@ class CThing { public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

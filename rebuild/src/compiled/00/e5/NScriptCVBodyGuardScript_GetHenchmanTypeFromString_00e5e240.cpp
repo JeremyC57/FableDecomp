@@ -13,13 +13,14 @@
 //   CQ_TraderConflictGoodScript::UpdateLiveEnemies 0x00DFC320. Retail keeps PStringData in ebx across the four tests, which
 //   needs Compare's body in the TU (below; declared only, each test reloads [ebx], 267v261). The TU also emits that body
 //   (?Compare@?$CBasicString@D@@KIJPBD0@Z); the `// Leaf:` line pins the graded symbol.
+#include "fable_compiler.h"
 #include <string.h>
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     T*            PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -51,7 +52,7 @@ template <> long __fastcall CBasicString<char>::Compare(const char* a, const cha
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

@@ -3,6 +3,7 @@
 // Callees: CSubtitleRenderer::IsTextFullyShown? 0x0048E072 (name unconfirmed), IsWaitingForClickPast 0x0048DB46, CPlayerManager::GetMainPlayer 0x00449970,
 //   CPlayer::PeekPControlledCreature 0x00487DD0 / GetPControlledCreature 0x00487DC0, IS_THING_ALIVE<CThing*> 0x0043DBF0, bitset::test 0x00410DE0,
 //   LowerBound const 0x004365B0 / non-const 0x0040F020, front-end predicate 0x00434D60 on CMainGameComponent::Get()+0x28, CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: IsInInteractiveState
@@ -139,21 +140,21 @@ class CThing { public:
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceConst(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceConst(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline void GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

@@ -17,6 +17,7 @@
 // whose key slot doubles as the result (no zero store when the interface is absent).
 // Layout (local model): CThing bitset +0x20, interface map +0x44, PGraphicAppearance +0x64, flags +0x91 (bit 1 = created
 // by owner); CTCGraphicAppearance scale +0x34; the component's owning thing +0x04.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
@@ -48,7 +49,7 @@ public:
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead, bit 1: created by owner
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

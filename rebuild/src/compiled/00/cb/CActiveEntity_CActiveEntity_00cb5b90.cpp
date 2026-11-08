@@ -13,6 +13,7 @@
 // operator delete @ 0x00BFEA14.
 // Shape: the singleton accessor is inline (`if (!p) p.Reset(new T); return p;`) and read before the by-value copy;
 // erase is out of line; the two vector destructors use by-value _Destroy(first, last) range helpers (end cached).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -35,14 +36,14 @@ struct CParticleMorphManagerPointer {               // static CCountedPointer<CP
 };
 extern CParticleMorphManagerPointer g_pParticleMorphManager;   // 0x013CAA68
 
-__forceinline CParticleMorphManager* GetParticleMorphManager()
+FABLE_FORCEINLINE CParticleMorphManager* GetParticleMorphManager()
 {
     if (!g_pParticleMorphManager.m_pObject)
         g_pParticleMorphManager.Reset(new(operator new(0x2c)) CParticleMorphManager());
     return g_pParticleMorphManager.m_pObject;
 }
 
-__forceinline void DestroyRange(CCharString* first, CCharString* last)
+FABLE_FORCEINLINE void DestroyRange(CCharString* first, CCharString* last)
 {
     for (; first != last; ++first)
         first->~CCharString();
@@ -56,7 +57,7 @@ struct CMorphNameVector {                           // STLport vector<CCharStrin
     CCharString* begin() const { return m_first; }
     CCharString* end() const { return m_last; }
     void clear() { erase(begin(), end()); }
-    __forceinline ~CMorphNameVector()
+    FABLE_FORCEINLINE ~CMorphNameVector()
     {
         DestroyRange(m_first, m_last);
         if (m_first)
@@ -71,7 +72,7 @@ struct CMorphEntry {                                // 0x18 bytes: two strings
     unsigned char _pad10[8];
 };
 
-__forceinline void DestroyRange(CMorphEntry* first, CMorphEntry* last)
+FABLE_FORCEINLINE void DestroyRange(CMorphEntry* first, CMorphEntry* last)
 {
     for (; first != last; ++first)
         first->~CMorphEntry();
@@ -81,7 +82,7 @@ struct CMorphEntryVector {                          // STLport vector<CMorphEntr
     CMorphEntry* m_first;
     CMorphEntry* m_last;
     CMorphEntry* m_end;
-    __forceinline ~CMorphEntryVector()
+    FABLE_FORCEINLINE ~CMorphEntryVector()
     {
         DestroyRange(m_first, m_last);
         if (m_first)
@@ -94,7 +95,7 @@ struct CActiveEntity {
     CMorphEntryVector m_morphs;                     // +0x04
     unsigned char    _pad10[4];
     CMorphNameVector m_morphNames;                  // +0x14
-    __forceinline void ResetParticleMorphs()
+    FABLE_FORCEINLINE void ResetParticleMorphs()
     {
         for (CCharString* it = m_morphNames.m_first; it != m_morphNames.m_last; ++it)
             GetParticleMorphManager()->RemoveMorph(*it);

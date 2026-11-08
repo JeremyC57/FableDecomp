@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_C3DVECTOR_H
 #define FABLE_ENGINE_C3DVECTOR_H
+#include "fable_compiler.h"
 // PDB C3DVector complete TPI 0x2783: public X/Y/Z at 0/4/8, size 12.
 // Embedded alignment is under review; this header introduces no packing directive.
 // One model (Codex pass 11 consolidation): the arithmetic helpers are __forceinline (owner 2026-11-01: C3DVector arithmetic
@@ -17,7 +18,7 @@ extern const float DELTA_NOTIONAL_ZERO;                                 // 0x012
 // exponent (0x17C - e) / 2, the 128-entry mantissa table 0x013CE558, one Newton step with 3.0f / 0.5f), the body the landed
 // 0x007AF0F0 / 0x006B3030 rows model locally.
 extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013CE558
-__forceinline float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
+FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
 #endif
 class C3DVector {
 public:

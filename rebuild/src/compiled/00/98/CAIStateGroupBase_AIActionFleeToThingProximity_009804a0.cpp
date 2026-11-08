@@ -14,6 +14,7 @@
 // brain's creature at +0x18; dead bit at +0x91 (retail CThing).
 // Shape: the found flag of the inlined navigation lookup is written through the bool that MoveToPos later fills; the
 // PerformAction result is discarded (the loop re-tests the proximity move result); the creature is named before DELTA_NOTIONAL_ZERO.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 
@@ -36,7 +37,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline void GetInterfaceR(T** ppOut, long interfaceType, bool& has)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceR(T** ppOut, long interfaceType, bool& has)
     {
         has = TestTC(interfaceType);
         if (has) {
@@ -48,7 +49,7 @@ class CThing { public:
             *ppOut = (T*)it->second;
         }
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -79,7 +80,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
     CIntelligentPointerConstThing(const CIntelligentPointerConstCreature& other);
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
@@ -97,7 +98,7 @@ inline CIntelligentPointerConstThing::CIntelligentPointerConstThing(const CIntel
 {
     SetPItem((CBaseObject*)(((CThing*)other.GetPItem())));
 }
-__forceinline bool IS_THING_ALIVE(const CThing* thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CThing* thing)
 {
     if (thing != 0) {
         if (!(thing->m_flags91 & 1))

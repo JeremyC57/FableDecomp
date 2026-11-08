@@ -11,6 +11,7 @@
 //   CThing::GetScriptThing() @ 0x004C7E50 (by value), CScriptThing::operator= @ 0x008AB980, CBaseClass ctor/dtor
 //   @ 0x0099A2D0 / 0x0099A2E0, operator delete @ 0x00BFE9BC, the def's slot 1. CScriptThing vtable 0x01238C8C.
 // Layout / shape: as the landed 0x00894820 (CDefPointer homed in the dead defName slot, named result local, no NRVO).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
@@ -33,7 +34,7 @@ inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CThingObjectDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1

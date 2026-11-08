@@ -9,6 +9,7 @@
 // empty (T() leaves the frame temporary unset); UninitializedFillN must be `__forceinline` here.
 // Shape: the element has a user memberwise copy ctor -- the zero initialisers stay immediates and the loop re-reads the
 // three words of the T() temporary every pass (the implicit copy hoists them into ebx/edx/ecx: that is 0x008F69B0).
+#include "fable_compiler.h"
 #include <new>
 #include <stddef.h>
 
@@ -16,7 +17,7 @@ extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
 #include "engine/C3DVector.h"
 
-template <class T> __forceinline T* UninitializedFillN(T* first, unsigned long count, const T& value)
+template <class T> FABLE_FORCEINLINE T* UninitializedFillN(T* first, unsigned long count, const T& value)
 {
     T* cursor = first;
     for (; count > 0; --count, ++cursor)

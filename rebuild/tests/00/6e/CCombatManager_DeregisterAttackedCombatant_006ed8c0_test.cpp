@@ -1,5 +1,6 @@
 // Behaviour test for 006ed8c0: src/006ed8c0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CCombatManager::DeregisterAttackedCombatant(CThingCreatureBase* attacked)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -47,7 +48,7 @@ class CAttackPatternDef : public CDefVirtual { public:
     long RefCount;                                     // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer& operator=(T* p)

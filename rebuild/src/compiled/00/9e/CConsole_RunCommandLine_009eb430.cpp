@@ -14,6 +14,7 @@
 // object is loaded once for the null test and the call.
 // Layout: the retail CConsole offsets of the landed rows (0x009EA660): FrontCommandLine +0x1c,
 // RegisteredConsoleInputs +0x40; CStringParser as the landed 0x00CB7CB0 (0x28 bytes).
+#include "fable_compiler.h"
 extern const char g_emptyText_0129aaf4[];  // 0x0129AAF4 ("", CCharString's empty text)
 class CCharStringData { public:
     const char*   PData;                    // +0
@@ -109,7 +110,7 @@ class CConsole { public:
     CCharString    HelpBarString;           // +0x3c
     CInputMap      RegisteredConsoleInputs; // +0x40
     void RunCommandLine();
-    __forceinline SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
+    FABLE_FORCEINLINE SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
 public:
     void SendMessageToUser(const CCharString&);   // 0x009EB260
 };

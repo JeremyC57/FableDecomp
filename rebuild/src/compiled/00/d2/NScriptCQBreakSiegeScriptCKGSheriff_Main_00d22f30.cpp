@@ -15,6 +15,7 @@
 //   7, 8, 39, 70, 72, 108, 114, 133, 231, 264, 265, 296, 350, 352, 360, 361, 364-366, 370, 371, 376, 379, 475, 517, 526, 599, 655;
 //   Me slots 21 MsgIsHitBy, 27 MsgIsTalkedToBy, 41 MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom.
 // Attempts (STATUS.tsv): the tail `if (T) return; do NSF; while (!T);` is what cross-jumps into retail's entry jump to the loop test.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
@@ -46,7 +47,7 @@ template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map();                // 0x00CDBFB0
 template<> std::vector<CScriptThing>::~vector();                                                    // 0x008AC970
 template<> CCountedPointer<CScriptGameResourceObjectScriptedThingBase>& CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::operator=(const CCountedPointer<CScriptGameResourceObjectScriptedThingBase>& other);   // 0x008AB1E0
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 

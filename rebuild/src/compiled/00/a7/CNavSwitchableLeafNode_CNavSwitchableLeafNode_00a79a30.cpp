@@ -9,6 +9,7 @@
 //   16-byte pairs, comparator byte +0x2c, Dirty +0x2d); the leaf base's Blocked +0x0f and PRegion +0x10.
 // Shape: the count and the loop index are homed in the dead `regions` / `readPreferability` slots; each id is added
 //   through the vector map's inline Add (push_back, then Dirty), the map is sorted once through the inline Sort().
+#include "fable_compiler.h"
 class C2DVector { public: float X, Y; };
 class CAFile {
 public:
@@ -52,7 +53,7 @@ struct CUniqueIDVector {                           // STLport vector<SUniqueIDOp
     _STLP_alloc_proxy<SUniqueIDOpen> _M_end_of_storage;
     CUniqueIDVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     void _M_insert_overflow(SUniqueIDOpen* position, const SUniqueIDOpen& x, const __true_type&, unsigned long fillLen, bool atEnd);   // 0x00A82380
-    __forceinline void push_back(const SUniqueIDOpen& x)
+    FABLE_FORCEINLINE void push_back(const SUniqueIDOpen& x)
     {
         if (_M_finish != _M_end_of_storage._M_data) {
             if (_M_finish)
@@ -78,7 +79,7 @@ struct CUniqueIDMap {                              // CVectorMap<unsigned __int6
     CKeyPairCompareLess Compare;                   // +0x0c
     bool                Dirty;                     // +0x0d
     CUniqueIDMap() : Dirty(false) { }
-    __forceinline void Add(const unsigned __int64& key, const bool& value)
+    FABLE_FORCEINLINE void Add(const unsigned __int64& key, const bool& value)
     {
         Entries.push_back(SUniqueIDOpen(key, value));
         Dirty = true;

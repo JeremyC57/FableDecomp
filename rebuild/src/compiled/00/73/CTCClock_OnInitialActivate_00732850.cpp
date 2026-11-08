@@ -14,6 +14,7 @@
 //   through .Object (the add-ref and the release share one null test, both count stores kept), the raw pointer then asks
 //   for the appearance sub-def (def in esi for the release at the end); the animation component through the landed
 //   CTCCupboard 0x00749B40 GetTCIfPresent accessor, fetched first.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
 };
@@ -92,15 +93,15 @@ class CThing { public:
     unsigned char _pad54[0x1c];
     CThingBaseDef* PBaseDef;                    // +0x70
     CCountedDefPointer<CThingBaseDef> GetBaseDef() const { return CCountedDefPointer<CThingBaseDef>(PBaseDef); }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
     {
         CTCBase* tc;                            // deliberately unset when absent (retail reads a dead slot)
         if (HasTC(interfaceType))

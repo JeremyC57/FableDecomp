@@ -1,6 +1,7 @@
 // Behaviour test for NUISystem::CFrontEndManager::Action (0x0059A238): the reconstruction (src/0059a238.cpp, verbatim)
 // driven through recording doubles for every action type it handles -- the installer pause/unpause, each go-forward
 // screen, load/new game, the delete-profile flows and their titles, the invalid-save message and the keyboard actions.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 // NUISystem::CFrontEndManager::Action(const CCountedPointer<CAction>&) -- the front-end action dispatcher
 // Retail 0x0059A238, 1486 bytes, `ret 4` (Ego_r.pdb ?Action@CFrontEndManager@NUISystem). Every action first stamps
@@ -47,7 +48,7 @@ public:
     void* PStringData;
     ~CWideString();                                       // 0x0099B510
     const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

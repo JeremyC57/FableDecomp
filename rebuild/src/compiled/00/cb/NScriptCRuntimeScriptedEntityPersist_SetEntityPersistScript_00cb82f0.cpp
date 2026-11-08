@@ -8,6 +8,7 @@
 // Shape: Find + `it->second = info` or Add (push_back of a pair temporary, Dirty = true, sort, Dirty = false). Add and
 //   Sort are __forceinline; LowerBound gets a same-TU __declspec(noinline) body (it only reads), which lets VC7.1 keep
 //   the key and `this` in registers across it as retail does instead of reloading them from the argument slots.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* m_pStringData;
@@ -67,12 +68,12 @@ public:
             return end();
         return it;
     }
-    __forceinline void Sort()
+    FABLE_FORCEINLINE void Sort()
     {
         std::sort(Vector.begin(), Vector.end(), Compare);
         Dirty = false;
     }
-    __forceinline void Add(const K& key, const V& value)
+    FABLE_FORCEINLINE void Add(const K& key, const V& value)
     {
         Vector.push_back(value_type(key, value));
         Dirty = true;

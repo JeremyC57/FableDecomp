@@ -14,6 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -36,7 +37,7 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;              // +0x08
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;
@@ -53,7 +54,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
     _Rb_tree_node_base* _M_header;
     unsigned long       _M_node_count;
     unsigned char       _M_key_compare;
-    __forceinline CCutsceneCastMap() : _M_header(0)
+    FABLE_FORCEINLINE CCutsceneCastMap() : _M_header(0)
     {
         _M_header = (_Rb_tree_node_base*)malloc(0x24);
         _M_node_count = 0;
@@ -62,7 +63,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
         _M_header->_M_left = _M_header;
         _M_header->_M_right = _M_header;
     }
-    __forceinline ~CCutsceneCastMap()                   // out of line 0x00CDBFB0
+    FABLE_FORCEINLINE ~CCutsceneCastMap()                   // out of line 0x00CDBFB0
     {
         if (_M_node_count) {
             _M_erase(_M_header->_M_parent);
@@ -81,7 +82,7 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
     _Rb_tree_node_base* _M_header;
     unsigned long       _M_node_count;
     unsigned char       _M_key_compare;
-    __forceinline CCutsceneArgMap() : _M_header(0)
+    FABLE_FORCEINLINE CCutsceneArgMap() : _M_header(0)
     {
         _M_header = (_Rb_tree_node_base*)malloc(0x18);
         _M_node_count = 0;
@@ -90,7 +91,7 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
         _M_header->_M_left = _M_header;
         _M_header->_M_right = _M_header;
     }
-    __forceinline ~CCutsceneArgMap()
+    FABLE_FORCEINLINE ~CCutsceneArgMap()
     {
         if (_M_node_count) {
             _M_erase(_M_header->_M_parent);

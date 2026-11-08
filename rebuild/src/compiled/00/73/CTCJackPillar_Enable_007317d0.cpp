@@ -16,6 +16,7 @@
 //   same-TU noinline stand-ins of the landed CCreatureActionJackFloatUp::PerformAction 0x008C0FB0 (the effect type shares the
 //   frame word left by the first push); the sub-def is released by hand after SetVisible(true).
 // Strings: "RISE" @ 0x01266F98, "RISE_UP_EFFECT" @ 0x01266F88.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -99,13 +100,13 @@ public:
     unsigned char  _pad64[0x70 - 0x64];
     CDefClassBase* m_pDef;                            // +0x70
     const C3DVector& GetPos() const;             // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -118,7 +119,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* component;
         GetInterface(&component, interfaceType);

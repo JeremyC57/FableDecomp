@@ -5,12 +5,13 @@
 // Adapted from STLport4.6.2. Copyright1994 Hewlett-Packard;1996 Silicon Graphics;1999 Boris Fomitchev.
 // Permission to use/copy/modify/distribute for any purpose is granted without fee provided notices remain.
 // Supplied as is without warranty. Only original declarations needed by this instantiation are retained.
+#include "fable_compiler.h"
 class CRGBColour { public:
  union { struct { unsigned char B,G,R,A; } Components; };
  CRGBColour(){}
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}
  CRGBColour(const CRGBColour&c){Initialise(c.Components.R,c.Components.G,c.Components.B,c.Components.A);}
- __forceinline void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
+ FABLE_FORCEINLINE void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
  {Components.R=r;Components.G=g;Components.B=b;Components.A=a;}
 };
 #include <stddef.h>

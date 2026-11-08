@@ -5,6 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00691870, 592 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 // Layout: engine/CInputProcessFireheartMinigame.h is a flattened view (base +0x04..+0x28); the game-base methods need
 // the CInputProcessGameBase base, modelled as in the landed CInputProcessOracleMinigame 0x00691680.
+#include "fable_compiler.h"
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -36,8 +37,8 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
-    template<class T> __forceinline T* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetInterface(long interfaceType)
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -48,7 +49,7 @@ public:
         }
         return result;
     }
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -57,7 +58,7 @@ public:
             *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
         }
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

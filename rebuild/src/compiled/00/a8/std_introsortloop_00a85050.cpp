@@ -12,6 +12,7 @@
 //   copied into the partition's argument area by pair's explicit copy (key words, then the inline list copy ctor whose
 //   non-const iterator is built in its own argument slot). _M_insert_dispatch is a same-TU noinline stand-in that never
 //   reads its tag, so VC homes the tag on the live depth-limit slot as retail does.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -114,7 +115,7 @@ template <class _T1, class _T2> struct pair {
     pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 template <class _Tp, class _Compare>
-__forceinline const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
+FABLE_FORCEINLINE const _Tp& __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _Compare __comp)
 {
     if (__comp(__a, __b))
         if (__comp(__b, __c))

@@ -12,13 +12,14 @@
 // Model: less<CCharString>::operator() (0x0042AAB3) and CBasicString<char>::operator< (0x00429950) are given their bodies (noinline, as the landed
 //   0x0042AAB3 / 0x00429950 sources) so VC7.1 sees the compare writes no memory and keeps the header pointer in a register across it
 //   (declared-only compare: 153v166 on the J045 representative).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
 template <class C> class CBasicString {
 public:
     C* PData;                                              // +0x00
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const C* b = other.PData;
         const C* a = PData;
@@ -38,7 +39,7 @@ public:
 class CCharString {                                        // 4 bytes (Ego_r)
 public:
     CBasicString<char>* PData;                             // +0x0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

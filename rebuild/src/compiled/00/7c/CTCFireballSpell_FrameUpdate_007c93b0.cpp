@@ -11,6 +11,7 @@
 // the effect through an intelligent-pointer temporary + operator=, an uninitialised emitter local; first try.
 // Names: catalog "FrameUpdate" sits on 0x007C9180, but this row is the vtable slot-9 override; 0x007C9180 is a non-virtual helper.
 // Layout: retail CTCFireballSpell = Ego_r.pdb minus 4 after the timer; timer CurrentState +0x20, WillIncrementedFlag +0x38.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -28,7 +29,7 @@ template <class T> class CDefPointer { public:          // the out slot GetSubDe
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -72,7 +73,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;                // +0x44
     unsigned char  _pad54[0x3d];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -87,8 +88,8 @@ class CThing { public:
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
     void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
-    __forceinline unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase_Retail* FindTC(long kind)
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase_Retail* FindTC(long kind)
     {
         ETCInterfaceType type = (ETCInterfaceType)(kind);
         CInterfaceMap* map = &m_interfaces;

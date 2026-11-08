@@ -8,6 +8,7 @@
 // Shape: the shared-block arm is the landed MakeOwnCopyOfData 0x0099EAF0 body; the empty arm inlines the block's
 //          (length, growth) constructor (`__forceinline`: zero words, bitfield read/modify/write, then Initialise(0, 0x20)),
 //          NoRefs = 1 after it; both arms publish the (possibly null) block last.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 struct CBasicStringChar {                     // CBasicString<char>, 13 bytes
     char*         PData;                      // +0x00
@@ -16,7 +17,7 @@ struct CBasicStringChar {                     // CBasicString<char>, 13 bytes
     unsigned long m_reserved    : 1;          // +0x08 bit 31 (not initialised here)
     unsigned char UseFastExtend : 1;          // +0x0c bit 0
     CBasicStringChar(const char* text);       // 0x009A0590
-    __forceinline CBasicStringChar(long length, unsigned long growth)
+    FABLE_FORCEINLINE CBasicStringChar(long length, unsigned long growth)
         : PData(0), StringLength(0), DataLength(0), UseFastExtend(1)
     {
         Initialise(length, growth);
@@ -27,7 +28,7 @@ class CCharStringData { public:                      // 17 bytes
     CBasicStringChar Data;                    // +0x00
     long             NoRefs;                  // +0x0d
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }
-    __forceinline CCharStringData(long length, unsigned long growth) : Data(length, growth), NoRefs(1) { }
+    FABLE_FORCEINLINE CCharStringData(long length, unsigned long growth) : Data(length, growth), NoRefs(1) { }
 };
 #pragma pack(pop)
 

@@ -1,6 +1,7 @@
 // Behaviour test for 008d9870: src/008d9870.cpp copied verbatim; OnActivate clears creature flags 1|4 for a thing of type
 // flag 2, takes the definition's special-effects sub-def, looks up "FLOAT_SCREAM", spawns the effect at the creature,
 // stores it in PEmitter and (TC 0x4B) attaches it to the creature's TARGET_CURSOR_POINT; the sub-def is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,7 +30,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -123,7 +124,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing() { }
-    __forceinline CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 

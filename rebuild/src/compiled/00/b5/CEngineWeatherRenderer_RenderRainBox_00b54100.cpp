@@ -21,6 +21,7 @@
 // upload, the pixel-shader pair, the ambient/fog/light-globals updates, the combined projection and the camera
 // position; the CArray data is the `size ? first : (T*)this` GetData select. The two counts are truncated with
 // __ftol2 right to left (triangles = strength * 256 first, vertices = strength * 512 second).
+#include "fable_compiler.h"
 #include "engine/CEngineWeatherRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -51,7 +52,7 @@ class CShaderRenderManager {
 public:
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

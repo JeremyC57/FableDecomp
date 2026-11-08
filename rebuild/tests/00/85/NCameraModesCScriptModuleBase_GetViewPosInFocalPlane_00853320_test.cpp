@@ -1,5 +1,6 @@
 // Behaviour test for 00853320: src/00853320.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. NCameraModes::CScriptModuleBase::GetViewPosInFocalPlane(const C3DVector& pos, const C3DVector& dir)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -24,9 +25,9 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    FABLE_FORCEINLINE C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     void Normalise();                                // 0x00A14440
 };

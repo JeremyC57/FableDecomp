@@ -3,6 +3,7 @@
 // Speech exits (chunk 821): the statement-macro do-while makes the two speech-wait terminate returns inner-loop exits (c2 frequency rule,
 //   docs/pipeline/INLINE_DEPTH_REVISIT.md), so VC7.1 expands the implicit MovieBase dtor at both and tail-merges them (`jmp 0x00D2F58B`) as retail.
 // Leaf: ?Main@CEndGameScythe@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
@@ -35,7 +36,7 @@ template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map();
 template<> CCountedPointer<CScriptGameResourceObjectScriptedThingBase>& CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::operator=(const CCountedPointer<CScriptGameResourceObjectScriptedThingBase>& other);
 
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 
 void NScript::CQ_EndGameFocalSitesScript::CEndGameScythe::Main()
 {

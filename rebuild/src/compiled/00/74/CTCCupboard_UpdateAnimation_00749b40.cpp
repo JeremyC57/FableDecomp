@@ -14,6 +14,7 @@
 // the component lands straight in ecx and the absent arm reads the key's frame word)
 // and the 12-byte frame-time record is zero-constructed before the Animating test; the seconds are stored inside;
 // `1.0f - eps < fraction` is `fld 1.0 ; fsub eps ; fcomp [esi+1Ch] ; test ah,5 ; jp`.
+#include "fable_compiler.h"
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -29,15 +30,15 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
     {
         CTCBase* tc;                                    // deliberately unset when absent (retail reads a dead slot)
         if (HasTC(interfaceType))

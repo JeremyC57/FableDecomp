@@ -1,6 +1,7 @@
 // NCreatureMode::CModeBriarRoseConcentrate::FindHitEvent() -- true when the thing (+4) has an entity-events component (interface type 0x42, the inlined CThing::GetInterface: presence bit, CVectorMap::LowerBound @ 0x004365B0 on the map at +0x44) holding an event of type 1 (HasEvent<CIsEventOfType> @ 0x008E89D0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E79A0, length 84 bytes.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0, CTCEntityEvents::HasEvent<NEntityEvents::CIsEventOfType> @ 0x008E89D0 (the filter by reference). The GetInterface shape is the landed out-parameter model (0x00895D50): the lookup key and then the one-word filter share the single frame slot. Shape: `push ecx` frame, the map in esi, `mov al,1` / `xor al,al` tails, `ret`.
+#include "fable_compiler.h"
 namespace NCreatureMode {
 struct CTCBase;
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
@@ -13,7 +14,7 @@ struct CThing {
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 the bitset of the interface types present
     CInterfaceMap m_interfaces;                    // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

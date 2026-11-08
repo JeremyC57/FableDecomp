@@ -17,6 +17,7 @@
 //   dtor 0x008AC970.
 // Naming wave 35: identity reg 00dbf69b "M_RestartMarker" in 00dbf2d0; Alloc 00dc0090; vtable 012d9f80 slot 1; PDB ?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_RestartMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_RestartMarker@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -47,7 +48,7 @@ struct CBaseObjectDtor {                                // destructor-only view 
     virtual ~CBaseObjectDtor();                         // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CHandlePImp {
     void*           Data;
@@ -56,7 +57,7 @@ struct CHandlePImp {
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
-    __forceinline CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsValid() const;                                 // 0x00CD23B9
@@ -70,9 +71,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();
@@ -92,19 +93,19 @@ void __fastcall AddLogbookStoryEntry(long entry);       // 0x00CBE87F
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-template<class T> __forceinline void DestroyRange(T* first, T* last)
+template<class T> FABLE_FORCEINLINE void DestroyRange(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
 }
 struct CScriptThingVector {                             // vector<CScriptThing> (STLport, 12 bytes)
     CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
-    __forceinline CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CScriptThingVector()                 // out-of-line copy 0x008AC970 where inline_depth(0) applies
+    FABLE_FORCEINLINE CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE ~CScriptThingVector()                 // out-of-line copy 0x008AC970 where inline_depth(0) applies
     {
         DestroyRange(_M_start, _M_finish);
         if (_M_start)

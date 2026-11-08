@@ -6,6 +6,7 @@
 // Shape: STLport list inlines -- size() walks the ring (re-evaluated every pass), front() reads the first node's pointer,
 // pop_front() unlinks, runs the counted-pointer dtor (count release, Data/Info zeroed) and frees the node.
 // Layout: retail CBankFileAsync (see the ctor 0x009D5F80): DisposalList +0x144, CriticalSection +0x14c.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 struct _RTL_CRITICAL_SECTION {                    // Win32 RTL_CRITICAL_SECTION, 24 bytes (dword aligned)
@@ -36,7 +37,7 @@ class CBankFileAsyncData { public:
 struct CAsyncDataPointer {                         // CCountedPointer<CBankFileAsyncData>
     CBankFileAsyncData* Data;                      // +0
     SCountBlock*        Info;                      // +4
-    __forceinline void ReleaseInfo()
+    FABLE_FORCEINLINE void ReleaseInfo()
     {
         if (Info) {
             --Info->m_references;
@@ -46,13 +47,13 @@ struct CAsyncDataPointer {                         // CCountedPointer<CBankFileA
             }
         }
     }
-    __forceinline ~CAsyncDataPointer()
+    FABLE_FORCEINLINE ~CAsyncDataPointer()
     {
         ReleaseInfo();
         Data = 0;
         Info = 0;
     }
-    __forceinline void Reset()
+    FABLE_FORCEINLINE void Reset()
     {
         ReleaseInfo();
         Info = 0;

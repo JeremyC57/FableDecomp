@@ -1,4 +1,5 @@
 // Behaviour test for 0x00666B50: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -31,7 +32,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 }
 
 struct SScalarTag { SScalarTag() { } };
-template <class T> __forceinline void Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void Construct(T* p, const T& value) { new (p) T(value); }
 struct CLongVector {
     long* first;
     long* last;
@@ -102,7 +103,7 @@ class CThing { public:
     unsigned long UsingComponents[9];           // +0x20
     CInterfaceMap Components;                   // +0x44
     CWorld* GetWorld();                         // 0x004C7AB0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

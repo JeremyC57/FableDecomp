@@ -16,6 +16,7 @@
 //        offset with `mov ecx,eax ; add ecx,168h`); the result is a named bool in a frame byte set when a home user is found; the walk re-reads end() through the
 //        spilled `this`; the mode manager comes from the unchecked out-parameter GetInterface (the absent arm reads the
 //        lookup key's frame word); an awake home user returns false straight away (`xor al,al` after the epilogue).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -44,7 +45,7 @@ class CThing { public:
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -53,7 +54,7 @@ class CThing { public:
             it = map->last;
         return it->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

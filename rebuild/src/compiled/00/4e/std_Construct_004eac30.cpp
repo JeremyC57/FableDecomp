@@ -7,6 +7,7 @@
 //   inline: the base copy, the vtable store, then the members through eax -- a size-optimised module, so the member-wise
 //   copy constructor is spelled out and `__forceinline` (VC7.1 /Os does not inline it otherwise).
 // Header debt: the def base is modelled by its retail size (0x25 bytes, packed) with its out-of-line copy constructor.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 #pragma pack(push, 1)
@@ -19,7 +20,7 @@ public:
 #pragma pack(pop)
 class CPrizeScoreDef : public CDefClassBase {
 public:
-    __forceinline CPrizeScoreDef(const CPrizeScoreDef& other) : CDefClassBase(other), Score(other.Score), Mult(other.Mult) { }
+    FABLE_FORCEINLINE CPrizeScoreDef(const CPrizeScoreDef& other) : CDefClassBase(other), Score(other.Score), Mult(other.Mult) { }
     float Score;                                          // +0x28
     long Mult;                                            // +0x2c
 };

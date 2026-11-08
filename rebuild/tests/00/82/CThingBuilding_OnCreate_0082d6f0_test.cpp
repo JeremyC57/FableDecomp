@@ -1,6 +1,7 @@
 // Behaviour test for 0082d6f0: src/0082d6f0.cpp copied verbatim; OnCreate copies the building def's graphic into the
 // appearance, applies the scale, clears the 0xD4 flag, runs the game-object OnCreate and on success sets both health words
 // from the def's max health; each def fetch is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -87,7 +88,7 @@ class CThingBuilding { public:
     unsigned char         _padb8[0xd4 - 0xb8];
     unsigned char         m_flagD4 : 1;              // +0xd4 bit 0 (descriptive)
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    __forceinline const CThingBuildingDef* PeekPDef() const
+    FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
     {
         CDefPointer def;
         GetDefinitionManager()->GetDef_004ab840(DefGlobalIndex, &def);

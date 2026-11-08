@@ -12,6 +12,7 @@
 //   with the single-element insert inlined (create the node, then tmp->next = n, tmp->prev = p, p->next = tmp,
 //   n->prev = tmp). COpinionTransientOffset is local (no engine header).
 // Shape: size TU (#pragma optimize("s", on)), no frame pointer.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class COpinionTransientOffset { public:                    // PDB 24 bytes
@@ -49,7 +50,7 @@ public:
     typedef _List_iterator<T> const_iterator;
     _List_node_base* _M_node;                       // +0x00 the header node
     _List_node<T>* _M_create_node(const T& x);     // 0x00471C79
-    __forceinline iterator insert(iterator position, const T& x)
+    FABLE_FORCEINLINE iterator insert(iterator position, const T& x)
     {
         _List_node<T>* tmp = _M_create_node(x);
         _List_node_base* n = position._M_node;

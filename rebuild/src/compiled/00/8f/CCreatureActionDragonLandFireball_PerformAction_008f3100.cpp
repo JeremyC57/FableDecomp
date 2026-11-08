@@ -18,6 +18,7 @@
 //   assignment, the TC name a named local in its own block, the ability CDefPointer in a sibling block.
 // Layout: PDB CCreatureAction_DragonLandFireball (0x134) has PShot at +0x12c; retail CCombatActionBase is 0x114 bytes, so
 //   `this` is modelled locally with PShot at +0x114 (the twin's evidence).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 
@@ -136,7 +137,7 @@ class CThing { public:
     const C3DVector& GetPos() const;              // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params);   // 0x004C9D60
 };
-__forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
+FABLE_FORCEINLINE bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
 {
     CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
     return appearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -148,7 +149,7 @@ class CThingObject;
 class CThingObject { public:
     static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
-__forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
     return ((CThing*)CThingObject::Create(defIndex, *(&position), creature->PlayerNumber, 0, 0, name));
 }

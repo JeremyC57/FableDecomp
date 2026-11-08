@@ -1,6 +1,7 @@
 // Behaviour test for 0084a350: src/0084a350.cpp copied verbatim (its same-TU GetSubDef and LowerBound bodies run for
 // real); the def manager, the components and the thing calls stubbed so the jug goes into the carry slot named by its
 // carryable def, the creature gets mode 0x2b, the jug is marked unfilled, the def is released, and a dead jug is ignored.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -27,7 +28,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -124,7 +125,7 @@ class CThing { public:
     signed char m_player;                             // +0x90
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

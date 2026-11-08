@@ -1,5 +1,6 @@
 // Behaviour test for 0x0051FA00 CThingManager::SetAllBossesToBossPhase: only scan-visible AI creatures carrying the boss
 // component (0xAD) are found, and each one's boss component gets SetNextBossPhase(params[0].ValSLONG, false).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -135,11 +136,11 @@ public:
             return true;
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -147,7 +148,7 @@ public:
         CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->type) ? map->last : it;
         return (T*)sel->component;
     }
-    template <class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* tc;
         if (HasTC(interfaceType))

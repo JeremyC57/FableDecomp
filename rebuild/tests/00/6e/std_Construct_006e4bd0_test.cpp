@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -31,7 +32,7 @@ struct CActiveDialogueInfo {                     // NSpeechGainManager::CActiveD
     bool                        IsLayerHead;     // +0x10
     float                       OutputGain;      // +0x14
     CActiveDialogueInfo() { }
-    __forceinline CActiveDialogueInfo(const CActiveDialogueInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CActiveDialogueInfo(const CActiveDialogueInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : ThingSpeaking(o.ThingSpeaking), SoundID(o.SoundID), Layer(o.Layer), IsLayerHead(o.IsLayerHead), OutputGain(o.OutputGain) { }
 };
 

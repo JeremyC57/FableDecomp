@@ -1,5 +1,6 @@
 // Behaviour test for 009612f0: src/009612f0.cpp copied verbatim; the player chain, positions and intelligent pointers
 // stubbed so the hero/dead/distance gates and the target assignment are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -58,7 +59,7 @@ class CAIBrain
 
 // squared XY distance between two positions (Y term evaluated first by VC7.1; arguments evaluate right to left,
 // so `b` -- the creature -- is fetched first and kept in esi)
-__forceinline float GetDistanceSquaredXY(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE float GetDistanceSquaredXY(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;
     float dy = a.Y - b.Y;

@@ -18,6 +18,7 @@
 // Layout: Ego_r.pdb CTCDrainLife matches retail (PDef +0x0C, SpellLevel +0x10, PItemRemoved +0x14, Shots +0x1C (12-byte
 //         STLport vector), JustReleased +0x28, SpellDelayFrames +0x2C); retail CSpecialAbilitiesDrainLifeDef::SpellDelaySecs
 //         +0x6C (PDB +0x80: the def base is 4 bytes smaller and the four vectors 12 bytes each).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -89,7 +90,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -1,4 +1,5 @@
 // Behaviour test for CTCTavernBar (0x007ba8c0): slot walk, jug filter, ACTION_POINT_*_0<n> naming, first claimed point wins.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -35,8 +36,8 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                // +0x20
     CInterfaceMap  m_interfaces;                    // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -91,7 +92,7 @@ class CTCTavernBar { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CJugVector Jugs;                                // +0x0c (PDB +0x0c; retail vector 12 bytes)
-    __forceinline CIntelligentPointer<CThingObject> GetJug(long index) const
+    FABLE_FORCEINLINE CIntelligentPointer<CThingObject> GetJug(long index) const
     {
         if ((unsigned long)index >= Jugs.size())
             return CIntelligentPointer<CThingObject>(0);

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00B05C20 (source body copied from src/00b05c20.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -37,7 +38,7 @@ static unsigned long long ra_tsc = 1000000;
 // Constants: 1.0f @ 0x0122DED8.
 // Label: catalog "GFInterpolate" (_global) -- the namespace is NParticleEngine.
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long GFFloatToLong(float value)
+FABLE_FORCEINLINE long GFFloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)

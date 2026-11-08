@@ -14,10 +14,11 @@
 //   Y/Z kept on the x87 stack); the dot product takes the facing first; the comparison is against `(float)cos(angle)` --
 //   the float cast makes VC park the cosine in the dead stack slot (`fstp st(3)`, two `fxch`, `fcompp`); the explicit
 //   `if (...) return true; return false;` gives the `mov al,1` / `xor al,al` exits.
+#include "fable_compiler.h"
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -27,7 +28,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 }
 #define FABLE_RETAIL_C3DVECTOR
 #include "engine/C3DVector.h"
-__forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
+FABLE_FORCEINLINE float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
 class CTCPhysicsBase {
 public:

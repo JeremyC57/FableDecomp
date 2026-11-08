@@ -7,6 +7,7 @@
 // Shape: the map::insert(const value_type&) instantiation has a same-TU stand-in that builds the pair<iterator, bool>
 //   result in place, so the dropped result shares the find-key frame slot (frame 0xF8 as retail); find has its real
 //   same-TU body and LowerBound a same-TU body.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
 class CTCBase;
@@ -26,7 +27,7 @@ class CThingCreatureBase { public:
     unsigned char CombatFlags4 : 4;
     unsigned __int64 GetUID() const { return UniqueID; }
     bool IsInCombatAsAttacker();            // 0x00662410
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

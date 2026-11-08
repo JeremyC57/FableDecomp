@@ -13,6 +13,7 @@
 //   `last + 1`; `*first = val` is two dword stores (the key still in esi). The else arm is the inlined
 //   `__unguarded_linear_insert` with its by-value `val` held in esi/edi.
 //   Frame pointer: `optimize("y", off)` + `optimize("s", on)` as the module's other landed bodies.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -25,7 +26,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 
@@ -42,20 +43,20 @@ template <class _Tp1, class _Tp2> struct _OKToMemCpy {
     static _Type _Answer() { return _Type(); }
 };
 template <class _Tp1, class _Tp2>
-__forceinline _OKToMemCpy<_Tp1, _Tp2> _IsOKToMemCpy(_Tp1*, _Tp2*) { return _OKToMemCpy<_Tp1, _Tp2>(); }
+FABLE_FORCEINLINE _OKToMemCpy<_Tp1, _Tp2> _IsOKToMemCpy(_Tp1*, _Tp2*) { return _OKToMemCpy<_Tp1, _Tp2>(); }
 
 template <class _BidirectionalIter1, class _BidirectionalIter2>
 _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                     _BidirectionalIter2 __result, const __false_type&);   // 0x0047130E
 
 template <class _Tp1, class _Tp2>
-__forceinline _Tp2* copy_backward(_Tp1* __first, _Tp1* __last, _Tp2* __result)
+FABLE_FORCEINLINE _Tp2* copy_backward(_Tp1* __first, _Tp1* __last, _Tp2* __result)
 {
     return __copy_backward_ptrs(__first, __last, __result, _IsOKToMemCpy(__first, __result)._Answer());
 }
 
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     _RandomAccessIter __next = __last;
     --__next;

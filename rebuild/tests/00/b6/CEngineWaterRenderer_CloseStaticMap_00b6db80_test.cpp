@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::CloseStaticMap -- release sea geometry, discard async data and release loading pointers.
 // Retail00b6db80 178bytes. Shared donor offsets differ: HaveBackgroundSea2aa vs276, LoadingSea5fc vs5b8.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CEngineWaterRenderer.h"
 #include "engine/CIndexBuffer.h"
@@ -12,7 +13,7 @@ class CVertexBufferWin32 { public:unsigned char State[0x34];};
 #endif
 class CCPPointerInfo { public:unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;};
 struct CAsyncPointer {void* Data;CCPPointerInfo* Info;
- __forceinline void Reset(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Info=0;Data=0;}
+ FABLE_FORCEINLINE void Reset(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Info=0;Data=0;}
 };
 void __fastcall DiscardAsyncData(CAsyncPointer*); //009d68a0
 struct CVertexBufferNative:CVertexBufferWin32 {void Uninitialise();}; //00a63200

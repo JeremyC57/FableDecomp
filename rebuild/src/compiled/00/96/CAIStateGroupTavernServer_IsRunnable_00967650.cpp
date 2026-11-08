@@ -14,6 +14,7 @@
 //          final jug reset is an implicit conversion from 0 into the out-of-line operator=.
 // Layout: engine/CAIStateGroup_TavernServer.h (PJug +0x14, PBar +0x1c, PPub +0x34, ServingActionPointIndex +0x40);
 //          PBrain is the first dword of the flattened base at +0x04.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_TavernServer.h"
 
 class CTCBase;
@@ -32,14 +33,14 @@ class CTCVillageMember { public:                       // interface 0x23
 class CBaseObject;
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 namespace N_0065e133 { namespace N_007b82c0 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     CIntelligentPointerConstThing(CThing* item);    // 0x0065E133
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x007B82C0
 }; } using N_007b82c0::CIntelligentPointerConstThing; } using N_0065e133::CIntelligentPointerConstThing;
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

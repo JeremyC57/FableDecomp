@@ -13,6 +13,7 @@
 //   takes `const long&`), homed in the dead `index` argument slot; the size TU will not inline that helper by itself, and
 //   retail did inline it (no `&traits` in ecx), so it is __forceinline. The forced inline is also what schedules the index
 //   load before the m_pFirst dereference (the earlier free-function model with a direct local could not).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CPersistContext;
@@ -24,7 +25,7 @@ public:
 };
 template <class T> class CPersistTraits {
 public:
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const T& value)
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const T& value)
     {
         long temp = value;
         CPersistTraitsSLONG::TransferOut(context, out, temp);

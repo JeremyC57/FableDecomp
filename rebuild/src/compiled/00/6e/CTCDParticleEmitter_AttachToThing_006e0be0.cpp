@@ -19,6 +19,7 @@
 //   one-ternary form, both over a same-TU LowerBound body; GetSubDef has a same-TU out-only stand-in (the def is cached in
 //   ebp and reloaded from its slot); the emitter name is reached through a named emitter pointer; SetAlwaysUpdate(true)
 //   is inline with one GetPItem.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -72,7 +73,7 @@ class CThing { public:
     unsigned char _pad54[0x1c];
     CDefClassBase* PDef;                                    // +0x70
     bool IsAffectedByBulletTime() const;                    // 0x004C9920
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -86,7 +87,7 @@ class CThing { public:
         return false;
     }
     // The same lookup with the one-ternary entry pick (retail loads the component straight into ecx at the sound call).
-    template <class T> __forceinline bool GetTC(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

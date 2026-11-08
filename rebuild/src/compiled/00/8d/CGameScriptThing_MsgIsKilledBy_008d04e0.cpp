@@ -15,6 +15,7 @@
 //   unassigned case, the block compare otherwise -- the landed SetButton1OverrideText 0x0048F7C0 form), every hit
 //   `goto`-joined to one true exit; the GetScriptThing temporary exists only on the last `&&` arm, so VC keeps its
 //   destruction flag in the first frame word and the comparison's result in bl.
+#include "fable_compiler.h"
 #include <string.h>
 #include "engine/CGameScriptThing.h"
 #include "engine/CWorld.h"
@@ -51,7 +52,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

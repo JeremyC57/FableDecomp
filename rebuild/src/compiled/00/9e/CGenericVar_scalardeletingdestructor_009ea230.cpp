@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009EA230, length 39 bytes.
 // Leaf: ??_GCGenericVar@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129C3E4) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CCharString { public:
     void* m_pStringData;
@@ -13,7 +14,7 @@ struct CGenericVarRoot_009ea230 {
 class CGenericVar : public CGenericVarRoot_009ea230 { public:              // vtable 0x0129C3E4
     long        Type;                               // +0x04
     CCharString m_name;                            // +0x08
-    __forceinline virtual ~CGenericVar() { }
+    FABLE_FORCEINLINE virtual ~CGenericVar() { }
 };
 
 void* MakeOne_009ea230()                                 // forces the vtable (and so the scalar deleting destructor) into the object; not part of the retail body

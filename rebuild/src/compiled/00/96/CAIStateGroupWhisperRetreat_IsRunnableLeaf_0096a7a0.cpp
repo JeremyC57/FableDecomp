@@ -11,6 +11,7 @@
 // Shape: GetSubDef and GetPFirstThing are same-TU noinline stand-in bodies that write only their out slot, so neither the
 //          def slot nor `arenaCentre` is address-exposed: the frame packs to 0x10 (the HasScriptName filter temporary reuses
 //          the def slot, the intelligent-pointer temporary the name's) and the zeros are stored as immediates.
+#include "fable_compiler.h"
 class CThing;
 class CCharString {
 public:
@@ -51,7 +52,7 @@ struct CWhisperRetreatDef : CDefVirtual {
     unsigned char _pad08[0x3c - 0x08];
     long          HitsBeforeRetreat;                   // +0x3c
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }

@@ -6,6 +6,7 @@
 // Layout: CCharString is one pointer to its CBasicString<char> data (no engine/ header).
 // Opt: size TU (unaligned entry). Shape: CCharString::operator< is __forceinline (the size TU otherwise calls it) and
 // tests `other.PData == PData` -- the reversed operands are what load the right-hand string first.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 template <class C> class CBasicString {
 public:
@@ -14,7 +15,7 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

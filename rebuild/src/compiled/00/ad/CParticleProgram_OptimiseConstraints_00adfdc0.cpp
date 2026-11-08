@@ -9,6 +9,7 @@
 // Layout: Constraints (CMemoryDataOutputStream, 0x18 bytes) at +0x114 as in the landed CParticleProgram::WriteToFile
 //   0x00AE2230 model; CDataInputStream is the landed 0x00AF4660 model (inline Read with the 64-bit position range check,
 //   StreamPos +0x04, StreamSize +0x08, CurrentSourcePtr +0x0c, SourceChunkBytesRemaining +0x14).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 class CDataOutputStream {
@@ -40,8 +41,8 @@ class CDataInputStream { public:
     unsigned long SourceChunkStreamPos;                                // +0x10
     long SourceChunkBytesRemaining;                                    // +0x14
     void ReadToStream(CDataOutputStream& out, long size);              // 0x009964E0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))
@@ -54,7 +55,7 @@ class CDataInputStream { public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };

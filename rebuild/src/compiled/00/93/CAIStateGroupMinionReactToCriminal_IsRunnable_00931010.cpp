@@ -19,6 +19,7 @@
 // Layout: Ego_r.pdb CAIStateGroup_MinionReactToCriminal (PHero +0x14, PHome +0x1c, FrameLastLeftStategroup +0x24);
 // CThingAICreature HomeBuilding +0x168 / WorkBuilding +0x170 as in the landed 0x00831F80; CTCShop StockState +0x0c,
 // StallLike +0x50 (12-byte retail containers). The engine header flattens the base, so the model is local.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -31,11 +32,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

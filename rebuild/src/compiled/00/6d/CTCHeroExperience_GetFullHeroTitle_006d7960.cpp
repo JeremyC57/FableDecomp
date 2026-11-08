@@ -2,6 +2,7 @@
 // Naming wave 18: the global stand-in g_GameText (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // CTCHeroExperience::GetFullHeroTitle() const -- hero title text, plus " - " and the best earned title from the experience def's list
+#include "fable_compiler.h"
 class CWideString {
 public:
     void* Data;
@@ -31,8 +32,8 @@ public:
 template<class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -42,7 +43,7 @@ public:
 template<class T> class CCountedPointer {
 public:
     T* Object;
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Object) {
             Object->Release();
@@ -54,7 +55,7 @@ public:
 template<class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
@@ -148,8 +149,8 @@ public:
     unsigned char _pad00[0x20];
     unsigned long PresentBits[9];                       // +0x20
     CInterfaceMap Interfaces;                           // +0x44
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &Interfaces;

@@ -8,6 +8,7 @@
 //        (Dead bit 0 of +0x91 clear) that fails IsUsableBy returns the global empty string, every other path returns the
 //        def's CCharString at +0x34 read straight through the CDefPointer (no add-ref).
 // Layout: CTCWeapon ParentThing +0x04, WeaponDef +0x0C; retail CThing bitset +0x20, interface map +0x44, Dead +0x91.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -19,7 +20,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

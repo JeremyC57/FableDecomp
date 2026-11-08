@@ -12,6 +12,7 @@
 // The intelligent pointer classes are declared under `#pragma pack(1)` so the PDB's unaligned member offsets come out;
 // the `__forceinline` destructor and the inline model constructor + `new` factory put `??_G` (with the body inlined)
 // into the TU. engine/CTCBase.h is a flattened POD, so the polymorphic CTCBase is modelled locally.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -33,7 +34,7 @@ struct CDefPointee {                           // counted def: count at +4, slot
 struct CDefPointer {                           // CDefPointer<T const>
     CDefPointee* m_pDef;
     CDefPointer() : m_pDef(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         CDefPointee* def = m_pDef;
         if (def) {
@@ -60,7 +61,7 @@ class CTCWillEnflame : public CTCBase { public:   // vtable 0x0126C824
     bool                IsZTargetting;         // +0x20
     CIntelligentPointer<CThing> PTarget;               // +0x21 CIntelligentPointer<CThing> (unaligned)
     CTCWillEnflame(CThing& owner) : CTCBase(owner) { }   // model constructor: pulls the vtable into the TU
-    __forceinline virtual ~CTCWillEnflame() { }
+    FABLE_FORCEINLINE virtual ~CTCWillEnflame() { }
 };
 
 CTCWillEnflame* Create_CTCWillEnflame(CThing& owner)

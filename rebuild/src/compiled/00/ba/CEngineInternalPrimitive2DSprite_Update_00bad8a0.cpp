@@ -17,6 +17,7 @@
 // case halves the ushort sizes into `unsigned long` locals (unsigned fild fix-up, both conversions kept on the x87 stack);
 // the texture case needs `unsigned long` locals for both dimensions (else VC filds the first straight from the result)
 // and an inline GetTexture() accessor (a plain member read loads the second call's `this` after its pushes).
+#include "fable_compiler.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
 
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (0.0001f)
@@ -80,8 +81,8 @@ template <class T> struct CRetailVector {
 struct CGraphicBank {
     unsigned char               _pad[0x1e0];
     CRetailVector<CGraphicInfo> m_records;   // +0x1e0
-    __forceinline CGraphicInfo* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
-    __forceinline CGraphicInfoFrame* GetFrame(unsigned long index, unsigned long frame) { return Get(index) ? &Get(index)->Frames[frame] : 0; }
+    FABLE_FORCEINLINE CGraphicInfo* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
+    FABLE_FORCEINLINE CGraphicInfoFrame* GetFrame(unsigned long index, unsigned long frame) { return Get(index) ? &Get(index)->Frames[frame] : 0; }
 };
 struct CEngineGlobal_01436e98 {
     unsigned char _pad[0x954];

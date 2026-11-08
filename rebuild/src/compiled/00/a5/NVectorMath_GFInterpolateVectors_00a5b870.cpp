@@ -29,6 +29,7 @@
 //     argument slot [ebx+1Ch] read by every fmul. VC7.1 unrolls the loop by four (`cmp count,4 ; jl`,
 //     (count-4)/4+1 passes, then a remainder loop).
 // Layout: C4DVector X +0, Y +4, Z +8, W +0xc (16 bytes, the SSE rows load it with movaps).
+#include "fable_compiler.h"
 #include "engine/NVectorMathSSE.h"
 class C4DVector {
 public:
@@ -38,7 +39,7 @@ public:
     const C4DVector operator-(const C4DVector& o) const { return C4DVector(X - o.X, Y - o.Y, Z - o.Z, W - o.W); }
     const C4DVector operator+(const C4DVector& o) const { return C4DVector(X + o.X, Y + o.Y, Z + o.Z, W + o.W); }
     const C4DVector operator*(float s) const { return C4DVector(X * s, Y * s, Z * s, W * s); }
-    __forceinline const C4DVector Interpolate(const C4DVector& to, float t) const { return (to - *this) * t + *this; }
+    FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& to, float t) const { return (to - *this) * t + *this; }
 };
 extern bool g_SSEAvailable;                                          // 0x013D2880
 namespace NVectorMath {

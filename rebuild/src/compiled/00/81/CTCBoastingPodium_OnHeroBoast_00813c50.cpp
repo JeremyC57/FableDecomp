@@ -13,6 +13,7 @@
 // BoastingPositions CVectorMap); CBoast Cost +4; retail CThing Dead = bit 0 of +0x91.
 // Shape: the quest manager is read into a local before each call's arguments (inline helpers); each by-value CCharString is built straight in its argument slot (`push ecx ; mov ecx,esp`) from the "" literal;
 // HasTC narrows to a byte test, the one-ternary GetTC leaves the component in ecx for AddMoney.
+#include "fable_compiler.h"
 struct CTCBaseInterface;
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -36,12 +37,12 @@ class CQuestManager { public:
     CBoast* GetBoast(long id, CCharString scriptName);          // 0x004AF7A0
     void SetBoastAsMade(long id, CCharString scriptName);       // 0x004B1A80
 };
-__forceinline CBoast* GetBoast(long id)
+FABLE_FORCEINLINE CBoast* GetBoast(long id)
 {
     CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     return questManager->GetBoast(id, "");
 }
-__forceinline void SetBoastAsMade(long id)
+FABLE_FORCEINLINE void SetBoastAsMade(long id)
 {
     CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     questManager->SetBoastAsMade(id, "");

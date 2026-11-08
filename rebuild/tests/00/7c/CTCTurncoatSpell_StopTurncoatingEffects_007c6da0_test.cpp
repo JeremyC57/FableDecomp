@@ -1,5 +1,6 @@
 // Behaviour test for 007c6da0: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCTurncoatSpell::StopTurncoatingEffects() -- stops the spell's looping sound on the caster's sound player and fades out the two turncoating effect things that are still alive
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned char _pad_0x4c[0x45];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00676740: CPersistContext::Transfer(CRandomAppearanceMorph& value) -- persist a random-appearance morph by binary stream only: CRC-check the empty key, build the default value, then load or save the morph by the context's binary mode
 // A copy of the source model and logic (compiled separately from src/00676740.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -101,7 +102,7 @@ void __fastcall __destroy_aux<CArray<CRandomAppearanceMorph::CBodyPartMesh>*>(CA
 template <> vector<CRandomAppearanceMorph::CTextureMorphMap, allocator<CRandomAppearanceMorph::CTextureMorphMap> >::~vector();   // 0x006753B0
 }
 
-__forceinline CRandomAppearanceMorph::~CRandomAppearanceMorph() { }
+FABLE_FORCEINLINE CRandomAppearanceMorph::~CRandomAppearanceMorph() { }
 
 class CPersistContext {
 public:

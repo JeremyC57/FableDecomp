@@ -13,6 +13,7 @@
 //   tag in a frame byte), the other two call the out-of-line copy; the age compares are `GetHeroAge() > (long)`
 //   (`fild ; fcompp ; test ah,5 ; jp`).
 // Layout (retail): Game +0x40, SongItems +0x68 (landed ProcessSongsQuestComplete 0x00ED9B40).
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -33,7 +34,7 @@ protected:
                             unsigned int fill_len, bool atend);    // 0x00433530
 public:
     void push_back(const CCharString& x);               // 0x0044BFF0 (out of line)
-    __forceinline void push_back_inline(const CCharString& x)   // the same STLport body, expanded at the first site
+    FABLE_FORCEINLINE void push_back_inline(const CCharString& x)   // the same STLport body, expanded at the first site
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CCharString(x);

@@ -17,6 +17,7 @@
 // the pending flag is cleared whenever the checks pass.
 // Layout: retail CTCInventoryAbilities WaitingToGiveTutorial +0x140 (PDB +0x158); CTCInventoryBase InventoryOpen
 // +0x58 (PDB +0x60); CWorld Paused +0xA4.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -33,7 +34,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) { return m_present.test(wanted); }
-    template<class T> __forceinline T* GetTCUnchecked(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTCUnchecked(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;

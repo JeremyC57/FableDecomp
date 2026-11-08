@@ -9,6 +9,7 @@
 // operator delete(void*)` (the pointer is handed over in ecx). Layout as the landed ??1 0x00836D00:
 // PDB CThingTrackNode is 264 bytes, retail 0x18 smaller (the CThingGameObject base is 0xd0 bytes): the
 // two track words +0xd0/+0xd4, NextNodeUID +0xd8, PreviousNodeUID +0xe0, TrackName +0xe8, IsStart +0xec.
+#include "fable_compiler.h"
 class CThingTrackNode;
 
 class CCharString { public:
@@ -35,7 +36,7 @@ class CThingTrackNode : public CThingGameObject { public:        // vtable 0x012
     bool             IsStart;                      // +0xec
     bool             IsEnd;                        // +0xed
     CThingTrackNode() { }
-    __forceinline virtual ~CThingTrackNode() { }
+    FABLE_FORCEINLINE virtual ~CThingTrackNode() { }
 };
 #pragma pack(pop)
 

@@ -8,6 +8,7 @@
 //   explicit copy ctor: key, three entry dwords through esi, then the component pointer's add-ref; the `__false_type`
 //   tag temporary is homed in x's own argument slot (`lea edx,[esp+0Ch]`), as the 8-byte twin 0x005E3110.
 // Label: catalogued as `std_Vector_PushBack_Inline`.
+#include "fable_compiler.h"
 #include <new>
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
@@ -22,7 +23,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

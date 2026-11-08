@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerOcclusionBase::CEnginePrimitiveManagerOcclusionBase(CArray<CEngineScene*>&) -- initialize the occlusion manager, shader, unit-box counted pointer and silhouette threshold; retail 00B90270, 274 bytes. Native RTTI COL/CHD for VT 012A3E14 proves the zero-offset chain OcclusionBase -> CEnginePrimitiveManager -> CEnginePrimitiveRenderUtil -> CBaseClassNonCopyable -> CBaseClass. PDB names the constructor and fields VertexShader +0x0c, UnitBox +0x14, SilhouetteTreshold +0x1c. The donor CEngineResourceManager header is retained under an alias; retail reads its shader resource at +0x29c8, while the donor layout differs. CMeshDataBank's donor MeshInfoBuffer is +0x404, but retail helper 00A24280 reads the native array at +0x380; the helper call view below records only that observed ABI. 00A5D5F0 returns CVertexShader by hidden result; 009CCDC0 is CBankFile::FindIndexBySymbol (confirmed exact-address source and PDB identity); 00A25E70 is C3DMeshInfo::GetMesh (PDB signature). The two CCharString values are retail literals.
 // Leaf: CEnginePrimitiveManagerOcclusionBase
+#include "fable_compiler.h"
 #define CEngineResourceManager CEngineResourceManager_PDB
 #include "engine/CEngineResourceManager.h"
 #undef CEngineResourceManager
@@ -70,7 +71,7 @@ class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
 class CShaderBase {
 protected:
     CShaderBase();
-    __forceinline virtual ~CShaderBase() { }
+    FABLE_FORCEINLINE virtual ~CShaderBase() { }
     virtual CCharString GetDebugName() const;
 };
 struct CVertexShaderData {
@@ -93,7 +94,7 @@ class CVertexShader : public CShaderBase { public:
         ++Data->ReferenceCount;
         return *this;
     }
-    __forceinline virtual ~CVertexShader() { if (Data) Data->ReleaseReference(); }
+    FABLE_FORCEINLINE virtual ~CVertexShader() { if (Data) Data->ReleaseReference(); }
     virtual CCharString GetDebugName() const;
     virtual unsigned long CountReferences();
 };
@@ -101,7 +102,7 @@ struct CShaderResourceCallView {
     CVertexShader* GetVertexShader(CVertexShader* result, const CCharString&) const; // hidden result, native 00A5D5F0
 };
 struct CEngineResourceManagerRetailAccess {
-    static __forceinline CShaderResourceCallView* ShaderResourceAt29C8(CEngineResourceManager_PDB* engine) {
+    static FABLE_FORCEINLINE CShaderResourceCallView* ShaderResourceAt29C8(CEngineResourceManager_PDB* engine) {
         return *reinterpret_cast<CShaderResourceCallView**>(reinterpret_cast<unsigned char*>(engine) + 0x29c8);
     }
 };

@@ -12,6 +12,7 @@
 // Shape: the destructor body (CloseFonts), then the members in reverse order: the string, the CArray's
 // inline `if (data) free(data)`, the state block's inline destructor (its vtable store survives because
 // the base destructor call follows), then the base.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CCharString { public:
@@ -47,7 +48,7 @@ class CFontDataBank : public CBankFile { public:                 // vtable 0x012
     CCharString     m_name;                        // +0x12c
     void CloseFonts();                             // 0x00A633A0
     CFontDataBank() { }
-    __forceinline virtual ~CFontDataBank() { CloseFonts(); }
+    FABLE_FORCEINLINE virtual ~CFontDataBank() { CloseFonts(); }
 };
 
 CFontDataBank* Create_CFontDataBank()

@@ -11,6 +11,7 @@
 //   test, push_back as insert(end(), x) with placement new's null test on the node's value) with both filters out of line.
 // Header debt: engine/CThingSearchTools.h declares no member functions, so the class is modelled locally with its Ego_r.pdb
 //   members to carry the member template's real name.
+#include "fable_compiler.h"
 #include <stdlib.h>
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 // ---- CThing (retail layout): the state bit byte +0x91 = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
@@ -47,7 +48,7 @@ public:
 };
 template <class TF1, class TF2> class CFilter_Bind2 {     // Ego_r.pdb: F1, F2 (pointers)
 public:
-    template <class T> __forceinline bool operator()(const T& thing) const { return (*F1)(thing) && (*F2)(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return (*F1)(thing) && (*F2)(thing); }
     TF1* F1;                                              // +0x0
     TF2* F2;                                              // +0x4
 };

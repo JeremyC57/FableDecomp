@@ -14,6 +14,7 @@
 //   inline CCharString::operator< (same block -> false, null this -> true, null other -> false, else the out-of-line
 //   CBasicString compare) with no frame, which under /Os needs `__forceinline` on both CCharString::operator< and the
 //   comparator's operator(); without it VC7.1 emits an ebp frame and calls the comparator (DIFFER 69v85).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 template <class T> class CBasicString {
 public:
@@ -44,7 +45,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -79,7 +80,7 @@ template <class _T1, class _T2> struct pair {          // STLport pair: user con
 
 template <class K, class V> class CKeyPairCompareLess { // Ego_r.pdb: empty, passed by value (4-byte slot)
 public:
-    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
 typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TTCInfoPair;            // 16 bytes

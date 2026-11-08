@@ -8,6 +8,7 @@
 // Shape: the landed 0x00CB7210 push_back: placement new under VC's null test with a `__forceinline`
 // memberwise copy ctor, finish re-read and advanced by 0x14; the empty __false_type temporary is homed in
 // the dead `x` argument slot.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
@@ -18,7 +19,7 @@ struct SSkeletalMorphEntry {                // 20 bytes
     long          m_08;                     // +0x08
     long          m_0c;                     // +0x0c
     long          m_10;                     // +0x10
-    __forceinline SSkeletalMorphEntry(const SSkeletalMorphEntry& o)
+    FABLE_FORCEINLINE SSkeletalMorphEntry(const SSkeletalMorphEntry& o)
         : m_name(o.m_name), m_04(o.m_04), m_08(o.m_08), m_0c(o.m_0c), m_10(o.m_10) {}
 };
 struct __false_type { __false_type() {} };  // empty tag with a user constructor (no byte store)

@@ -11,6 +11,7 @@
 //   (`fld; fsub; fld; fsub; fxch st(1); fstp; fstp`) and lets the 12-byte result share the 8-byte foc_pos frame slot
 //   (frame 0xC). ChatGPT pass 10's field-by-field / ctor-argument forms stored X before computing Y (293v295).
 // Layout: as ChatGPT pass 10 modelled it (Ego_r CBase members; retail CPhysicsState 0x30, CBase 0xA4, CRotateAround 0xC8).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -48,7 +49,7 @@ class CThing:public CThingFields{public:const C3DVector&GetPos()const;};
 class CThingGameObject:public CThing{unsigned char _pad_0x98[0x38];};
 class CCameraModeDef;
 // Layout: use shared handle storage and original same-type assignment; native reloads the source after Release.
-template<> __forceinline CDefPointer<const CCameraModeDef>&CDefPointer<const CCameraModeDef>::operator=(const CDefPointer<const CCameraModeDef>&other){if(Object!=other.Object){Release();Object=other.Object;if(Object)Object->AddRef();}return *this;}
+template<> FABLE_FORCEINLINE CDefPointer<const CCameraModeDef>&CDefPointer<const CCameraModeDef>::operator=(const CDefPointer<const CCameraModeDef>&other){if(Object!=other.Object){Release();Object=other.Object;if(Object)Object->AddRef();}return *this;}
 class CEnginePrimitivePrepareInfo;
 namespace NCameraModes{class CBase;enum EMode{};}
 class CGameCameraManager:public CGameCameraManagerFields{public:NCameraModes::CBase*GetCameraMode(){return reinterpret_cast<NCameraModes::CBase*>(CurrentMode_Data);}const NCameraModes::CBase*GetCameraMode()const{return reinterpret_cast<const NCameraModes::CBase*>(CurrentMode_Data);}};

@@ -15,6 +15,7 @@
 //   474 EntitySetFacingAngle; CScriptThing slot 10 GetAngleXY.
 // Shape: model of the landed CQ_HerosOldHouseScript Main (this chunk); the two GetThingWithScriptName temporaries expand
 //   ~CScriptThing inline (vtable 0x01238C8C store, CCountedPointer release, ~CBaseClass), the header's inline-dtor contract.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -54,7 +55,7 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     TAllocFunc      ClassAllocFunc;                     // +0x10
     bool            ClassAllocValid;                    // +0x14
     unsigned long   Flags;                              // +0x18
-    __forceinline CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
+    FABLE_FORCEINLINE CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
         : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) {}
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };

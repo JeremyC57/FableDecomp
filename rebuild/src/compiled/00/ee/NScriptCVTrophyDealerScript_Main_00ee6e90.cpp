@@ -21,6 +21,7 @@
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, PMasterData +0x44; Main reads no member of its own.
 // Model: the landed NScript::CV_RockTrollFirstEncounterScript::Main 0x00EC3D40 (CEntityScriptBinding / CSpawnedFunc /
 //   SpawnFunction, polymorphic CScriptBase, CGameScriptInterfaceBase keeping its padding virtuals).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -73,7 +74,7 @@ public:
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 namespace NScript {
 class CV_TrophyDealerScript : public CScriptBase {

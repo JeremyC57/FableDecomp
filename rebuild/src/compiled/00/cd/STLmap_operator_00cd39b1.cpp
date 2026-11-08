@@ -10,6 +10,7 @@
 // Shape: the landed 0x0042D131 source verbatim with this TU's tree helpers: STLport 4.x operator[] under
 //   optimize("s", on); the functor body is a visible noinline COMDAT that never touches `this` (declared only, the
 //   temporary takes its own frame word).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 template <class C> class CBasicString {
@@ -23,7 +24,7 @@ public:
     CBasicString<char>* PData;                           // +0x00
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

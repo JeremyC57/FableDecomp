@@ -16,6 +16,7 @@
 //        out-of-line push_back; the emitter comes from a `__forceinline` helper around the unchecked out-parameter
 //        GetInterface, so its uninitialised out pointer, the lookup key and the empty CCharString (a named local in its
 //        own block) all share the dead `particleDef` argument slot (landed twin 0x00670560).
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
@@ -35,7 +36,7 @@ private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
-__forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
+FABLE_FORCEINLINE CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
     CTCDParticleEmitter* emitter;
     thing->GetTC(TCI_PARTICLE_EMITTER, &emitter);        // TC_PARTICLE_EMITTER

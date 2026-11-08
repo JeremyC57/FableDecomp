@@ -18,6 +18,7 @@
 // temporary then share the dead argument slot).
 // Layout: Ego_r.pdb CTCKraken: ParentThing +0x04, PHeadEffect +0x28 (CIntelligentPointer<CThing>); CThing PBaseDef +0x70,
 // UsingComponents +0x20 (0x4b = word 2 bit 11), components map +0x44, dead bit +0x91. No engine header.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -38,7 +39,7 @@ template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -84,7 +85,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -100,7 +101,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                      // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 

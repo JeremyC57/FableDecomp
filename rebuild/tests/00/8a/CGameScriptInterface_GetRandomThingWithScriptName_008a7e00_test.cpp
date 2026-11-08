@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -746,7 +747,7 @@ void ThingSearchMethods::GetAllWithScriptName(const HasScriptName& filter,ThingV
  //005ED860
 unsigned long __fastcall GFROR13(unsigned long); //00497890
 struct WorldMethods:CWorld{unsigned long* GetPRandomSeed();}; //0049D810
-__forceinline unsigned long RandomIndex(unsigned long* seed,unsigned long count){*seed=*seed*9377+9439;*seed=GFROR13(*seed);return count?*seed%count:0;}
+FABLE_FORCEINLINE unsigned long RandomIndex(unsigned long* seed,unsigned long count){*seed=*seed*9377+9439;*seed=GFROR13(*seed);return count?*seed%count:0;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods GetRandomThingWithScriptName(const CCharString&)const;};
 ScriptMethods CGameScriptInterfaceMethods::GetRandomThingWithScriptName(const CCharString& name)const{ThingVector things;reinterpret_cast<ThingSearchMethods*>(World->PThingSearchTools_ptr)->GetAllWithScriptName(HasScriptName(name),things);if(things.Start==things.Finish)return ScriptMethods();unsigned long count=things.Finish-things.Start;return things.Start[RandomIndex(reinterpret_cast<WorldMethods*>(World)->GetPRandomSeed(),count)]->GetScriptThing();}
 

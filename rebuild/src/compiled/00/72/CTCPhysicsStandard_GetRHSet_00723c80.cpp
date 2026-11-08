@@ -9,6 +9,7 @@
 //   (0x17C - e) / 2, table mantissa, one Newton step). The Newton step written `r = (3 - r*r*l) * r; r *= 0.5f;` is
 //   what places `mov edx,0x17c` between `fld st(2)` and `fmul st(3)` in the second normalise (a single expression
 //   schedules it one instruction later). The result is built by value from the two locals (user C3DVector copy ctor).
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
@@ -21,7 +22,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float lengthSquared = Z * Z;
         lengthSquared += Y * Y;

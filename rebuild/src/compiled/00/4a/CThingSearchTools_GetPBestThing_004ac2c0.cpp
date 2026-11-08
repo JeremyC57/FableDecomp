@@ -7,6 +7,7 @@
 // CThing is a local retail-layout model; the filters and comparators are local models (Ego_r.pdb members),
 // called out of line with the thing by reference; the CFilter_BindN / CFilter_Not hold their filters by reference.
 // Shape: the template body of the landed siblings (0x00936950 GetPBestLeafThing, GetPBestThing re-reading `*it`).
+#include "fable_compiler.h"
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -65,7 +66,7 @@ protected:
     Op2 _M_fn2;
     Op3 _M_fn3;
 public:
-    __forceinline bool operator()(const CThing& x) const { return _M_fn1(_M_fn2(x), _M_fn3(x)); }
+    FABLE_FORCEINLINE bool operator()(const CThing& x) const { return _M_fn1(_M_fn2(x), _M_fn3(x)); }
 };
 }
 class CThingFilter_In2DRange { public:                    // Ego_r.pdb: Pos, Range
@@ -76,7 +77,7 @@ class CThingFilter_In2DRange { public:                    // Ego_r.pdb: Pos, Ran
 template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
-    template <class T> __forceinline bool operator()(const T& thing) const { return First(thing) && Second(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
 class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     C3DVector Pos;

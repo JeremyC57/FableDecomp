@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055C8D0, length 96 bytes.
 // Leaf: ??_GCMouseCursor@NUISystem@@UAEPAXI@Z
 // Shape: `this` in esi, the observer sub-object in edi, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct IPrimary_0055c8d0 { virtual void v00(); };
 struct CObserver {                                 // the secondary base at +4 (0x14 bytes)
@@ -31,7 +32,7 @@ class CMouseCursor : public CSprite { public:                    // vtables 0x01
     virtual void a00();
     virtual void b00();
     CMouseCursor(void* def) : CSprite(def) { CManager::GetInstance()->AddObserver(this); ObserveEvent(0x19); CManager::GetInstance()->m_pMouseCursor = this; }   // 0x0055C650, inline here so the factory pulls the vtables in
-    __forceinline virtual ~CMouseCursor()
+    FABLE_FORCEINLINE virtual ~CMouseCursor()
     {
         CManager::GetInstance()->RemoveObserver(this);
         CManager::GetInstance()->m_pMouseCursor = 0;

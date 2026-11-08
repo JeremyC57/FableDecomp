@@ -15,6 +15,7 @@
 // Shape: the found flag is a byte local cleared first (its zero shared with the early exits' `mov al,bl`); the frame
 //   window is read through the two `__forceinline` quest-manager helpers; each hit pushes the by-value
 //   GetCreatureGroupOfKilledThing() result, an rvalue VC homes in the dead `groups` slot.
+#include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 
 struct CSpawnedFuncNative {
@@ -31,8 +32,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -55,7 +56,7 @@ struct CThingNative {
     unsigned char Metadata[0x41];
     unsigned char LifeFlags;                            // +0x91 bit 0: dead
     bool HasTC(long type) const { if (UsingComponents[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const ComponentMap* map = &Components;

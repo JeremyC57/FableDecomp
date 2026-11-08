@@ -19,6 +19,7 @@
 //   both uncaptured, so the deed key stays in ecx across the byte stores. The deed key is a named local; the map end is a local
 //   read once (edi); the scratch "applied" vector is constructed with an inline zero fill (`rep stosd`, 0x17 dwords) after the
 //   std::fill and freed on the way out. The assign's `true` temporary is the high byte of the 4-byte frame word.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);               // 0x00BFEA14
 extern "C" void* __cdecl memset(void* d, int c, unsigned int n);
@@ -87,7 +88,7 @@ public:
     _Tp& operator[](size_type __n) { return *(this->_M_start + __n); }
     void _M_fill_assign(size_type __n, const _Tp& __val);   // 0x006860F0 (vector<bool>)
     void assign(size_type __n, const _Tp& __val) { _M_fill_assign(__n, __val); }
-    __forceinline vector(size_type __n, const _Tp& __val)
+    FABLE_FORCEINLINE vector(size_type __n, const _Tp& __val)
     {
         this->_M_start = (_Tp*)malloc(__n * sizeof(_Tp));
         this->_M_finish = this->_M_start;
@@ -95,7 +96,7 @@ public:
         memset(this->_M_start, __val, __n);
         this->_M_finish = this->_M_start + __n;
     }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         if (this->_M_start != 0)
             free(this->_M_start);

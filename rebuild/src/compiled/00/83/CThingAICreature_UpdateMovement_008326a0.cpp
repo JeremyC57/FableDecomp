@@ -14,6 +14,7 @@
 // called out of line on the scripted exit and inlined on the brain path (the inline-once band).
 // Layout: CBrainOutput from the landed 0x00835620 / 0x006D60C0 / 0x0093DDE0 models; retail CThing interface bitset +0x20,
 // CVectorMap +0x44; CThingAICreature movement component +0x60, Brain +0x1a8, flag byte +0x1c8 (descriptive).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -28,7 +29,7 @@ struct SCountBlock {
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -106,7 +107,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20
     CInterfaceMap Components;                   // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

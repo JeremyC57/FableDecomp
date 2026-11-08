@@ -1,5 +1,6 @@
 // Behaviour test for 00aee560: final.cpp body copied verbatim; the engine calls take the address of a temporary group
 // (VC accepts it), so the g++ run needs `g++ -std=c++98 -w -fpermissive`.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -35,7 +36,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
     CMatrix3x4() {}
-    __forceinline void SetInverse(const CMatrix3x4& m)
+    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m)
     {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;

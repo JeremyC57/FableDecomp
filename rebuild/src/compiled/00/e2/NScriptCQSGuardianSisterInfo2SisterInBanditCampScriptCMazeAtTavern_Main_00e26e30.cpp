@@ -1,6 +1,7 @@
 // NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::Main() -- Maze repeats timed greetings, grants the Bandit Camp quest and teleports away.
 // Leaf: ?Main@CMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@EAEXXZ
 // Grade: RELOCATION_MATCH(2477v2477) -- original frame loop and scoped success return restore cleanup.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -35,7 +36,7 @@ template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~ma
 extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline bool CTimer::operator==(long time) const { return pDSTGame->GetTimer(TimerIndex)==time; }
 
 void NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::Main()

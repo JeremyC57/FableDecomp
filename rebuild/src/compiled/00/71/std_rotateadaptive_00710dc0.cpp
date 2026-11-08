@@ -10,6 +10,7 @@
 //   last) -> __rotate(..., (int*)0, (T*)0). copy / copy_backward over the non-trivial iterator type reduce to
 //   STLport's counted random-access __copy / __copy_backward loops, all inlined (`__forceinline`: VC7.1 otherwise
 //   leaves the first copy_backward out of line, 250 v 264).
+#include "fable_compiler.h"
 class CAnimSet {                                // retail layout
 public:
     unsigned char _before[0x4C];
@@ -62,7 +63,7 @@ inline _ForwardIter rotate(_ForwardIter __first, _ForwardIter __middle, _Forward
 }
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -73,7 +74,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
                                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -81,12 +82,12 @@ __forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _Ran
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter copy(_InputIter __first, _InputIter __last, _OutputIter __result)
+FABLE_FORCEINLINE _OutputIter copy(_InputIter __first, _InputIter __last, _OutputIter __result)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result)
+FABLE_FORCEINLINE _BidirectionalIter2 copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

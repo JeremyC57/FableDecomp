@@ -16,13 +16,14 @@
 //   intrinsic on the null arm, Compare otherwise); VC7.1 threads the null test once through all five compares (two chains)
 //   only when it can see Compare's body (below): with Compare declared only, every compare reloads and re-tests the
 //   argument's PStringData (355v325).
+#include "fable_compiler.h"
 #include <string.h>
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     T*            PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -56,7 +57,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

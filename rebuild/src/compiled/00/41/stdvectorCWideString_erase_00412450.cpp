@@ -18,6 +18,7 @@
 // erase calling it), retail has both expanded. The manifest name
 // Std_Vector_Erase_Range is descriptive; landed callers (CFrontendProfileList::Refresh 0x00495830,
 // CFrontendGameComponent::GetWorldNames 0x00495890) already call this as vector<CWideString>::erase.
+#include "fable_compiler.h"
 class CWideStringData;
 
 class CWideString {
@@ -29,7 +30,7 @@ private:
 };
 
 template <class T>
-__forceinline T* RetailCopy(T* first, T* last, T* result)    // STLport __copy, random-access form
+FABLE_FORCEINLINE T* RetailCopy(T* first, T* last, T* result)    // STLport __copy, random-access form
 {
     for (int n = int(last - first); n > 0; --n) {
         *result = *first;
@@ -40,7 +41,7 @@ __forceinline T* RetailCopy(T* first, T* last, T* result)    // STLport __copy, 
 }
 
 template <class T>
-__forceinline void RetailDestroy(T* first, T* last)          // STLport _Destroy range
+FABLE_FORCEINLINE void RetailDestroy(T* first, T* last)          // STLport _Destroy range
 {
     for (; first != last; ++first)
         first->~T();

@@ -3,6 +3,7 @@
 // then, until the thread terminates, each time the hero talks to Me the hero-guide quest-card flag is set to the
 // current toggle (false, true, ...) with the expected script frames; every exit releases every script thing
 // (reference counts back to the start) and every CCharString temporary.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -39,7 +40,7 @@ class CScriptThing : public CBaseClass { public:
     explicit CScriptThing(CCPPointerInfo* info) { PImp.Data = 0; PImp.Info = info; ++info->RefCount; }
     CScriptThing(const CScriptThing& other) { PImp.Data = other.PImp.Data; PImp.Info = other.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
     virtual bool MsgIsTalkedToBy(const CCharString& name) const { CHECK(strcmp(name.PStringData, "SCRIPT_NAME_HERO") == 0); return (++g_talkCalls % 2) == 0; }
-    __forceinline ~CScriptThing() {}
+    FABLE_FORCEINLINE ~CScriptThing() {}
 };
 static CCPPointerInfo g_meInfo, g_guideInfo;
 static int g_frames = 0, g_sets = 0; static bool g_setArgs[16];
@@ -57,13 +58,13 @@ class CPredicateBase { public:
 #pragma inline_depth(0)
 struct CHeldThing {
     CScriptThing Thing;
-    __forceinline CHeldThing(const CScriptThing& t) : Thing(t) {}
+    FABLE_FORCEINLINE CHeldThing(const CScriptThing& t) : Thing(t) {}
     ~CHeldThing() {}
 };
 #pragma inline_depth()
 struct CIsThing : CPredicateBase {
     CHeldThing Thing;
-    __forceinline CIsThing(const CScriptThing& t) : Thing(t) {}
+    FABLE_FORCEINLINE CIsThing(const CScriptThing& t) : Thing(t) {}
     virtual bool operator()() const { return true; }
     virtual CPredicateBase* Clone() const { return 0; }
     ~CIsThing() {}
@@ -77,7 +78,7 @@ struct CIsThingStored : CPredicateBase {
 };
 class CIsThingAlive : public CPredicateBase { public:
     CScriptThing Thing;
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) {}
+    FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t) : Thing(t) {}
     virtual bool operator()() const { return true; }
     virtual CPredicateBase* Clone() const { return 0; }
     ~CIsThingAlive() {}

@@ -11,6 +11,7 @@
 // Shape: a same-TU auto_inline(off) stand-in body for LowerBound (the 008330d0 idiom) lets VC7.1 share the lookup key word with
 //   the zero-initialised mapwho out pointer; the final SetCurrentMapNumber goes through an inline GetParentThing() (retail
 //   mov esi,[esi+4] / mov ecx,esi). Local CTCPhysicsBase model (the engine header has no virtuals).
+#include "fable_compiler.h"
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -41,7 +42,7 @@ public:
     CInterfaceMap  m_interfaces;                        // +0x44
     void SetCurrentMapNumber(long map);                 // 0x004C7580
     void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

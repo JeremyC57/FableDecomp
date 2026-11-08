@@ -1,5 +1,6 @@
 // Actual GFSerialiseMapBinaryOut<CHeroStatIncreaseData,EDamageAttribute>, not manifest WriteToStream.
 // PDB0058CFB0 / fablewin01F0B3F0. ECX outputstream, EDX const outer map. Leaf: WriteStatIncreaseMap
+#include "fable_compiler.h"
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
 #undef CDataOutputStream
@@ -29,5 +30,5 @@ struct HeroStatIncreaseData {InnerMap StatIncreases;}; //implicit genuine defaul
 struct StatTraits {HeroStatIncreaseData DefaultValue;void TransferBinaryOut(OutputMethods&,const HeroStatIncreaseData&);}; //native6DB0F0/PDB58AD90, void thiscall(stream&,constdata&), inner enum keys WriteSLONG and float WriteFloat993EE0
 struct OuterNode {unsigned char Colour;OuterNode*Parent,*Left,*Right;EDamageAttributeABI Key;HeroStatIncreaseData Value;};
 struct OuterMap {OuterNode*Head;unsigned long Count;unsigned char Allocator[4];};
-static __forceinline OuterNode* NextNode(OuterNode*x){if(x->Right){x=x->Right;while(x->Left)x=x->Left;}else{OuterNode*y=x->Parent;while(x==y->Right){x=y;y=y->Parent;}if(x->Right!=y)x=y;}return x;}
+static FABLE_FORCEINLINE OuterNode* NextNode(OuterNode*x){if(x->Right){x=x->Right;while(x->Left)x=x->Left;}else{OuterNode*y=x->Parent;while(x==y->Right){x=y;y=y->Parent;}if(x->Right!=y)x=y;}return x;}
 void __fastcall WriteStatIncreaseMap(OutputMethods&stream,const OuterMap&map){StatTraits traits;stream.WriteSLONG(map.Count);for(OuterNode*i=map.Head->Left;i!=map.Head;i=NextNode(i)){stream.WriteSLONG(i->Key);traits.TransferBinaryOut(stream,i->Value);}}

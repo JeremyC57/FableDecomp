@@ -10,6 +10,7 @@
 // Shape: the CTCLightningNode destructor's (0x004E769F): no vptr reset (the class declares no destructor), members destroyed
 // in reverse order, the def pointer's `__forceinline` destructor releasing through the def object and clearing with
 // `and dword ptr [esi+1Ch],0` (size-optimised TU); the `??1` is emitted through a `new CTCLightningOrb` factory.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 struct CLinearSpline;
@@ -31,7 +32,7 @@ struct CDefBase {                                  // counted def: vptr, count a
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_count;                                  // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();
@@ -41,7 +42,7 @@ struct CDefBase {                                  // counted def: vptr, count a
 struct CLightningOrbDefPointer {                      // CDefPointer<CLightningOrbDef const>
     CDefBase* m_pDef;
     CLightningOrbDefPointer() : m_pDef(0) { }
-    __forceinline ~CLightningOrbDefPointer()
+    FABLE_FORCEINLINE ~CLightningOrbDefPointer()
     {
         if (m_pDef) {
             m_pDef->Release();

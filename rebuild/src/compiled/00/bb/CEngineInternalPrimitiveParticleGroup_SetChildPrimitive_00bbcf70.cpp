@@ -16,6 +16,7 @@
 //   iterator is a local with only the used byte set before the struct copy (the word copy carries the padding); child starts
 //   at 0 (xor edi,edi) and takes the existing pointer inside the null test; Enable is assigned `~(flags >> 5)` (bit-field xor
 //   merge with `not al`).
+#include "fable_compiler.h"
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
@@ -66,7 +67,7 @@ public:
     }
     CEngineInternalPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* p)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* p)
     {
         if (Object) {
             Object->Release();
@@ -75,7 +76,7 @@ public:
         Object = p;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -98,7 +99,7 @@ public:
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
     }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

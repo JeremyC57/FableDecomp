@@ -16,6 +16,7 @@
 // Layout: engine/CAIStateGroupBase.h (PBrain +0x04), CAIBrain.h (Creature +0x18), CWorld.h (PThingCombatManager_ptr
 //   +0x4c); the group's enemy pointer at +0x14 (PDB: unnamed base bytes) and the physics radius at +0x34 are retail
 //   offsets. The *_Methods structs are the lane's method carriers for generated data-only headers.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_MeleeCombatNearby.h"
 #define CAIStateGroupBase CAIStateGroupBasePdb
 #include "engine/CAIStateGroupBase.h"              // layout only; the local class below carries the protected accessor (PDB: IBE)
@@ -52,9 +53,9 @@ struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroupBase {   // the en
     unsigned char _pad_0x18[0x4];                            // +0x18
     bool          Archer;                                    // +0x1c
     unsigned char _pad_0x1d[0x3];                            // +0x1d
-    __forceinline CThingCreatureBase* Creature() { return (CThingCreatureBase*)((CAIStateGroupBase*)this)->PBrain->Creature; }
-    __forceinline CWorld* GetPWorld() { return &GetWorld(); }
-    __forceinline CBaseIntelligentPointer* PEnemy() { return (CBaseIntelligentPointer*)_pad_0x14; }   // +0x14
+    FABLE_FORCEINLINE CThingCreatureBase* Creature() { return (CThingCreatureBase*)((CAIStateGroupBase*)this)->PBrain->Creature; }
+    FABLE_FORCEINLINE CWorld* GetPWorld() { return &GetWorld(); }
+    FABLE_FORCEINLINE CBaseIntelligentPointer* PEnemy() { return (CBaseIntelligentPointer*)_pad_0x14; }   // +0x14
     bool IsEnemyCreatureInCombatPosition();
 };
 bool CAIStateGroup_MeleeCombatNearby_Methods::IsEnemyCreatureInCombatPosition() {

@@ -14,6 +14,7 @@
 // @ 0x009A4350; expanded here, which needs `__forceinline` -- a visible body or plain `inline` stays a call): the
 // block is loaded into esi before the lock call, the allocator `delete` keeps the pointer in esi for the operator
 // delete call; then the block pointer is nulled.
+#include "fable_compiler.h"
 void __cdecl operator delete[](void* block);    // 0x00BFEB1C (MSVCR71 import thunk; the lane <new> lacks it)
 
 class CMemoryAllocator {
@@ -35,7 +36,7 @@ extern unsigned char*  g_pStreamingFontCacheByteTable;     // 0x013BDA38
 extern unsigned long*  g_pStreamingFontCachePairTable;     // 0x013BDA3C (8-byte records)
 extern unsigned short* g_pStreamingFontCacheWordTable;     // 0x013BDA40
 
-__forceinline void __fastcall GFFreeFromGlobalAllocator(void* block)   // 0x009A4350 (inlined here)
+FABLE_FORCEINLINE void __fastcall GFFreeFromGlobalAllocator(void* block)   // 0x009A4350 (inlined here)
 {
     CMemoryAllocator::EnterSynchronisation();
     if (block && g_pGlobalAllocator) {

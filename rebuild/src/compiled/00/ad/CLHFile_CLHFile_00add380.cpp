@@ -26,6 +26,7 @@
 //   CWideString(fileName) temporary is built after it, a named local takes a new frame slot: probes 3 / 4).
 // Layout: CThreadedFile restates the Ego_r.pdb members (no engine/CThreadedFile.h); CCountedPointer from engine/CCountedPointer.h.
 //   LHA::CFile vtable 0x0129F06C = four _purecall slots + the virtual destructor (slot 4).
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #include <string.h>
 
@@ -46,7 +47,7 @@ public:
     ~CCharString();                                                // 0x0099EAE0
     CCharString ToUpper() const;                                   // 0x0099EE20
     CWideString ToWideString() const;                              // 0x0099E480
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

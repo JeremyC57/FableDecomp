@@ -15,9 +15,10 @@
 //   the comparator's dead argument slot (`lea eax,[esp+20h]`), the distance pointer is a null `push 0`; the pair's
 //   memberwise user copy constructor (CCharString copy + three dword moves) builds the forwarded value.
 // Label correction: catalogued as `SortedMap_InsertOrUpdate`; the body is STLport `__linear_insert`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

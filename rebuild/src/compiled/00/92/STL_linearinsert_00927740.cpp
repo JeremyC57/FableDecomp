@@ -17,6 +17,7 @@
 //   __unguarded_linear_insert(last, val, comp);` -- copy_backward's empty iterator tag is a const-reference temporary homed
 //   over the LIVE comparator slot (`lea eax,[esp+20h]`), which needs the real __copy_backward body out of line in the TU
 //   (auto_inline(off) + noinline, GOTCHAS "empty tag over a LIVE argument slot"); comp is held in ebp and passed in edx.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -30,8 +31,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         SetPItem(p.GetPItem());
         return *this;

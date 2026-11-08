@@ -12,6 +12,7 @@
 //   through the non-const LowerBound, the navigation through the const one); the brain pointer is named so both creature
 //   loads read it; delta/away vectors use the constructor-argument operator- (Z first, dead Z dropped for the 2D test);
 //   the look-at speed literal is 0.0027777f (0x3B360A13, not 1/360).
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 class C3DVector { public:
@@ -58,7 +59,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91
     const C3DVector& GetPos() const;       // 0x004C73D0
     bool TestTC(long type) const { return ((UsingComponents[type >> 5] >> (type & 31)) & 1) != 0; }
-    template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType, bool* has)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long interfaceType, bool* has)
     {
         *has = TestTC(interfaceType);
         if (*has) {
@@ -70,7 +71,7 @@ class CThing { public:
             *ppOut = (T*)it->second;
         }
     }
-    template<class T> __forceinline void GetInterfaceC(T** ppOut, long interfaceType, bool* has) const
+    template<class T> FABLE_FORCEINLINE void GetInterfaceC(T** ppOut, long interfaceType, bool* has) const
     {
         *has = TestTC(interfaceType);
         if (*has) {

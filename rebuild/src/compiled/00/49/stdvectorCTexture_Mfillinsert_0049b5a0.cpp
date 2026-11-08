@@ -11,6 +11,7 @@
 //   `__declspec(noinline)` body under `auto_inline(off)`, which lets VC7.1 home each `__false_type()` temporary in the dead
 //   `n` argument slot (`lea eax,[esp+20h]`) and keep old_finish - n / n - elems_after there, as retail does. The else
 //   branch calls the TAG-LESS `uninitialized_fill_n` (one stack argument, `ret 4`), exactly as the STLport source reads.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
@@ -75,7 +76,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __f
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {                                                                                 // (inlined into 0x0049AE00)
     _ForwardIter __cur = __first;
     for ( ; __n > 0; --__n, ++__cur)
@@ -96,7 +97,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { };
 struct random_access_iterator_tag : public bidirectional_iterator_tag { };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                           _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)

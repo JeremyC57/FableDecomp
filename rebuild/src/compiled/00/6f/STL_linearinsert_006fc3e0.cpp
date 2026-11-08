@@ -8,6 +8,7 @@
 //   0x006FB5C0 (same-TU noinline body, the landed source's shape), __unguarded_linear_insert 0x006FB960, operator
 //   delete[] 0x00BFEB1C.
 // Layout: element pair<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > (12 bytes: key, Start, Size).
+#include "fable_compiler.h"
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C
 
@@ -72,13 +73,13 @@ __declspec(noinline) _BidirectionalIter __fastcall __copy_backward(_RandomAccess
 }
 #pragma auto_inline(on)
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                                   _BidirectionalIter2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __fastcall copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __fastcall copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                            _BidirectionalIter2 __result)
 {
     return __copy_backward_ptrs(__first, __last, __result, __false_type());

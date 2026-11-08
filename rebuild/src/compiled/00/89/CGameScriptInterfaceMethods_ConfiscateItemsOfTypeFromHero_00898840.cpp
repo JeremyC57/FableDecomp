@@ -1,5 +1,6 @@
 // CGameScriptInterface::ConfiscateItemsOfTypeFromHero -- confiscate present hero inventories
 // Retail00898840,245 bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
 #define CPlayer CPlayerPdb
@@ -21,7 +22,7 @@ public:
 };
 
 class CGameDefinitionManager: public CDefinitionManager { public:static CGameDefinitionManager& __fastcall Get();}; //0044C6B0,009AD410
-template<int Key,class T> __forceinline T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[0]&(1u<<Key)){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
+template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[0]&(1u<<Key)){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ConfiscateItemsOfTypeFromHero(const CCharString& type)const;};
 void CGameScriptInterfaceMethods::ConfiscateItemsOfTypeFromHero(const CCharString& type)const{
  CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)){

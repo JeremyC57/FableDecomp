@@ -15,6 +15,7 @@
 //   : it` with end read after the lookup; then `GetShopTC() != 0 && Stealable` as `if (..) return true;` inside the
 //   HasTC block and one shared `return false` (the `mov al,1` / shared `xor al,al` tail; `return a && b` gives
 //   `mov eax,1` and an early `return false` duplicates the epilogue).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCShop;
 enum ETCInterfaceType { TC_STOCK_ITEM = 0x54, TC_FORCE_DWORD = 0x7fffffff };
@@ -30,13 +31,13 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                     // +0x20 bitset<274>
     CTCMap Components;                                    // +0x44
-    __forceinline bool HasTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE bool HasTC(ETCInterfaceType type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const CTCMap* map = &Components;

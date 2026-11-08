@@ -6,6 +6,7 @@
 // Shape (family K077, representative 0x0040F8A0): the landed CPersistTraits<long>::TransferBinaryIn 0x0040FE60 verbatim as the
 //   template member: a local filled by the inline Read (64-bit position check through an inline bool predicate, memcpy
 //   from the chunk pointer +0xC, chunk length +0x14, position += size) and copied to the output.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 class CDataInputStream { friend class CMemoryDataInputStream;
@@ -19,8 +20,8 @@ public:
     const unsigned char* m_pData;          // +0x0C current chunk read pointer
     long SourceChunkStreamPos;             // +0x10
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

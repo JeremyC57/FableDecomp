@@ -6,6 +6,7 @@
 //   0x004FC5B0, slot 17 GetMapNumberAt +0x44, slot 10 IsMapLoaded +0x28, ConvertWorldMapCoordsToLocalCoords 0x004FC3C0,
 //   slot 19 PeekMap +0x4C, CMap::GetThemeSizeZAt 0x00820100); the block-corner offset table 0x01385818 {(0,1),(1,1),(1,0),(0,0)}.
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets).
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 
@@ -120,11 +121,11 @@ public:
     bool IsPosInMap(const C3DVector& pos) const;                     // 0x004FC600
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const; // 0x004FC3C0
     C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const; // 0x004FC2A0
-    __forceinline float GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const;   // 0x0063A7E0 (inlined here)
+    FABLE_FORCEINLINE float GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const;   // 0x0063A7E0 (inlined here)
     bool IsLineOfSight(const C3DVector& from, const C3DVector& to) const;
 };
 
-__forceinline float CWorldMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const
+FABLE_FORCEINLINE float CWorldMap::GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const
 {
     if (IsPosInMap(pos))
     {

@@ -16,6 +16,7 @@
 // never-written out pointer from the dead `countTransaction` slot the key was homed in.
 // Layout: retail CTCHeroStats sits 8 bytes below the PDB (engine/CTCHeroStats.h carries PDB offsets): Money +0x3C,
 // MaxMoney +0x40, TotalMoneyEarned +0x48, TotalMoneySpent +0x4C.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,7 +27,7 @@ template <class T> inline const T& Max(const T& left, const T& right)
     return left < right ? right : left;
 }
 
-template <class T> __forceinline void GFLimit(T& value, const T& lo, const T& hi)
+template <class T> FABLE_FORCEINLINE void GFLimit(T& value, const T& lo, const T& hi)
 {
     if (value < lo)
         value = lo;

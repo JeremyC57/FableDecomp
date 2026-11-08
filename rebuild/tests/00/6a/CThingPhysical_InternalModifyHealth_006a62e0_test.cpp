@@ -1,4 +1,5 @@
 // Behaviour test for 0x006A62E0: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -60,15 +61,15 @@ class CThingPhysical { public:
     unsigned char _padb8[4];
     unsigned char Damageable : 1;                           // +0xbc
     unsigned char Killable : 1;
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(type);
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

@@ -15,6 +15,7 @@
 //   the element offset strength-reduced into a frame word; the comment result survives the temporaries in bl.
 // Naming wave 35: identity reg 00e5d603 "HenchmanRegionEntranceComment" in 00e5d4f0; Alloc 00e5f5c0; vtable 012e70e4 slot 1; PDB ?Main@CHenchmanRegionEntranceComment@CV_BodyGuardScript@NScript@@; refs=1; was under-qualified CHenchmanRegionEntranceComment::Main (wave3/labels_alloc.tsv); PDB ?Main@CHenchmanRegionEntranceComment@CV_BodyGuardScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHenchmanRegionEntranceComment@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
@@ -76,7 +77,7 @@ public:
     CV_BodyGuardScript*        ParentClass;        // +0x14
     CQ_SunnyvaleMasterData*    PMasterData;        // +0x18
     std::vector<CScriptThing>  HenchmanVector;     // +0x1C
-    __forceinline void WalkHenchmen()
+    FABLE_FORCEINLINE void WalkHenchmen()
     {
         for (unsigned int i = 0; i < HenchmanVector.size(); ++i) {
             if (IsActiveThreadTerminating())

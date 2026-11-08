@@ -13,6 +13,7 @@
 // Shape: the two name lines build their prefix as an explicit CCharString (0x0099F570 is CCharString + CCharString) and
 //   pick `name == "" ? CCharString("NULL") : name`; the conditional temporaries are tracked by the ebx flag bits 1 and 2.
 //   The inline CCharString::operator== has the null-block arm `strcmp(text, "") == 0` (the `repe cmpsb` against "").
+#include "fable_compiler.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -35,7 +36,7 @@ class CCharString { public:
     ~CCharString();                                                             // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);      // 0x009A08B0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

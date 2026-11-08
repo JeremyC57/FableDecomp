@@ -7,6 +7,7 @@
 // 8-byte handle. Modelled locally with the retail offsets (engine/CEngineInternalPrimitiveParticleGroup.h has the PDB offsets).
 // Shape: `PrimitiveIDToIterator[id].m_pNode->m_value` (element load folded, `add edi,8`), then `handle = value` with every handle
 // helper `__forceinline` and the counted release on the pointee (see 0x0043F9B0).
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -28,7 +29,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -37,7 +38,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEnginePersistentPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -57,13 +58,13 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
+    FABLE_FORCEINLINE CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
     {
         Clear();
         Data = other.Data;

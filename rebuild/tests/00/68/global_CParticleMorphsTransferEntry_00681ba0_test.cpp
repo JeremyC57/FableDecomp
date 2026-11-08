@@ -4,6 +4,7 @@
 // Shape: the write/read choice is a named bool (gives retail's write-first block order); the default argument of Write is
 //   DefaultString() (default ctor into the inline local, copy ctor into the result, dtor) so all three strings home in the
 //   dead ctx/name/arr argument slots and no frame is allocated.
+#include "fable_compiler.h"
 #include <new>
 void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete[](void*);
@@ -20,7 +21,7 @@ Data* MakeData(const char*,int);Data* ShareData(Data*);void DropData(Data*);
 class CPersistContext { public:char pad[24];int mode;void Write(const char*,CCharString&,CCharString&);void Read(const char*,CCharString&);};
 namespace std {template<class T>struct vector {T* first;T* last;T* end;};}
 typedef std::vector<bool> BoolVector;
-__forceinline CCharString DefaultString(){CCharString s;return s;}
+FABLE_FORCEINLINE CCharString DefaultString(){CCharString s;return s;}
 struct CPersistTraits {void Transfer(CPersistContext*,CCharString*,BoolVector*);};
 void CPersistTraits::Transfer(CPersistContext* ctx,CCharString* name,BoolVector* arr){
  bool writing=ctx->mode==1||ctx->mode==3;if(writing){CCharString value("");for(bool* p=arr->first,*end=arr->last;p!=end;++p)value.AppendCharacter(*p?'T':'F');const char* key=name->Text();ctx->Write(key,value,DefaultString());return;}

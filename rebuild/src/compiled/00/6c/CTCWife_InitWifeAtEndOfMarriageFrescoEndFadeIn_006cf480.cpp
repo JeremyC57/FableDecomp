@@ -13,6 +13,7 @@
 //        ternary (the component lands straight in ecx) into the shared key word; AddMoney gets the re-read Dowry and true.
 //        The early return on a null owner def skips the release because the sub-def is known null.
 // Layout: CTCWife ParentThing +0x04; CThing PDef +0x70; CWifeDef Dowry +0x28 (PDB 40).
+#include "fable_compiler.h"
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -52,7 +53,7 @@ public:
     CDefPointer<CDefClassBase> PDef;            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

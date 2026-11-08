@@ -13,6 +13,7 @@
 // pointer in eax) to the unaligned TargetOffsetVector_X/_Y (+0x09/+0x0d, pack 1) viewed as a C2DVector; a
 // named local re-reads the frame and moves `this` from edi to ebp. `this` is the PDB header layout.
 // Leaf: TransferBinaryIn
+#include "fable_compiler.h"
 #include "engine/CAnimComponentCombatFlourishTargetOffset.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -34,8 +35,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     long SourceChunkStreamPos;
     long m_remaining;                           // +0x14 bytes left in the current chunk
     C2DVector ReadC2DVector();                  // 0x00995030
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

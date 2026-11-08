@@ -1,6 +1,7 @@
 // BEGIN exact source snapshot SHA256 5fcac364a5a028505828563379e33931403c5be22425b7bb519357f939199abf
 //008dd6e0 NCreatureMode::CModeThunderLightningStorm::OnActivate; original PDB egor20086.
 // Fidelity correction only; direct helper/RTTI evidence: advisor/008dd6e0_main_audit.md.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CModeStandBase CModeStandBasePdb
 #include "engine/CModeStandBase.h"
@@ -120,7 +121,7 @@ class CThing { public:
     unsigned char BeforeComponents[0x20];
     unsigned long UsingComponents[9];
     CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Interfaces;
-    template<class T> __forceinline bool GetTC(T** out,ETCInterfaceType interfaceType){
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** out,ETCInterfaceType interfaceType){
         if(UsingComponents[interfaceType>>5]&(1UL<<(interfaceType&31))){
             ETCInterfaceType type=interfaceType;
             typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Map;

@@ -12,6 +12,7 @@
 //   const @ 0x0073A8A0 and AddMode(unsigned long) @ 0x0073AE10 (Ego_r.pdb `?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z`,
 //   `?AddMode@CTCCreatureModeManager@@QAE_NK@Z`).
 // Shape: as Pause; the mode manager is kept in esi for both calls (from the lookup or the dead frame word).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
@@ -25,7 +26,7 @@ class CTCCreatureModeManager { public:                  // interface 0x31
 };
 // The creature's mode manager as the berserk code fetches it: an unset local when the thing has no 0x31 component
 // (retail then reads the dead frame word; never reached in practice).
-__forceinline CTCCreatureModeManager* GetModeManager(CThing* thing)
+FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager(CThing* thing)
 {
     CTCCreatureModeManager* modes;
     if (thing->HasTC(TCI_ENTITY_MODE_MANAGER))

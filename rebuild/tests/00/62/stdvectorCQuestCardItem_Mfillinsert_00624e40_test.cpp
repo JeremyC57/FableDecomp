@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #define protected public
 // std::vector<CQuestCardItem>::_M_fill_insert(pointer,unsigned int,const value_type&) -- Insert copies within spare capacity or grow the vector.
@@ -22,7 +23,7 @@ class CQuestCardItem{public:long ItemIndex;CWideString ItemText;};
 namespace std{
 struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};
 template<class T>class allocator{public:T* allocate(unsigned int n){return n?(T*)malloc(n*sizeof(T)):0;}void deallocate(T* p,unsigned int){if(p)free(p);}};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};
-template<class T,class V>__forceinline void __fastcall _Construct(T* p,const V& x){new(p)T(x);}
+template<class T,class V>FABLE_FORCEINLINE void __fastcall _Construct(T* p,const V& x){new(p)T(x);}
 template<class I,class O>NOINLINE O __fastcall __uninitialized_copy(I first,I last,O result,const __false_type&){O current=result;for(;first!=last;++first,++current)_Construct(&*current,*first);return current;}
 template<class I,class N,class T>NOINLINE I __fastcall uninitialized_fill_n(I first,N n,const T& value){I current=first;for(;n>0;--n,++current)_Construct(&*current,value);return current;}
 template<class I,class O,class D>NOINLINE O __fastcall __copy_backward(I first,I last,O result,const random_access_iterator_tag&,D*){for(D n=last-first;n>0;--n)*--result=*--last;return result;}

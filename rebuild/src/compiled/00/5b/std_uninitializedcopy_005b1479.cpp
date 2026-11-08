@@ -5,6 +5,7 @@
 // Shape (family M151, representative 0x005B1479): STLport `for (; first != last; ++first, ++cur) _Construct(&*cur, *first);`
 //   -- the placement-new null test, then CDefPointer's copy (store, null test, `inc [obj+4]`); the element model is the landed
 //   uninitialized_fill_n<CDefPointer<const CThingBaseDef>*> 0x007688B0's. Size TU (no loop alignment).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 inline void* operator new(unsigned int, void* p) { return p; }
 class CDefPointeeBase {                                     // counted def object: vptr, reference count at +4
@@ -25,7 +26,7 @@ public:
 };
 namespace std {
 struct __false_type { __false_type() { } };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {

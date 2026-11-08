@@ -13,6 +13,7 @@
 // resets are converting-ctor temporaries assigned through the inline operator= (the <CThingObject> vtable cached in edi).
 // Layout: GoToPub from Ego_r.pdb (base 0x14): PPub +0x14, PBar +0x1c, PTable +0x24, PBarman +0x2c, PTankard +0x34, SeatIndex
 // +0x3c, Sitting +0x70, BarActionPointIndex +0x74, HandsOffMode +0xa0.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -34,8 +35,8 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((const CThing*)item)); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((const CThing*)item)); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 class CTCCreatureModeManager { public:                 // interface 0x31

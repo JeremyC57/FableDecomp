@@ -5,6 +5,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -104,7 +105,7 @@ struct CMovieImpPointer {
 };
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
-    virtual __forceinline ~CScriptGameResourceObjectBase() {}
+    virtual FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() {}
 };
 
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C

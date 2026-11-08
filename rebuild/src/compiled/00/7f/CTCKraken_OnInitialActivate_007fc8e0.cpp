@@ -14,6 +14,7 @@
 // is the out-parameter GetInterface writing PTCBoss; the thing def is an inline by-value getter whose
 // null tests share the zero register with the later clears; the targeted lookup is the unchecked `T* tc; GetInterface(&tc, 9);`
 // (the absent path reads the never-written local, as the landed 0x00898410).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -46,7 +47,7 @@ public:
     unsigned char              _pad54[0x1c];
     CDefPointer<CDefClassBase> PDef;                     // +0x70
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -59,7 +60,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         T* tc;
         GetInterface(&tc, interfaceType);

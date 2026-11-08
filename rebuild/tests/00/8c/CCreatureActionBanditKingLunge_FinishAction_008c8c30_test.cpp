@@ -2,6 +2,7 @@
 // components and actions; checks the stuck path (mode 0x53, the stuck hit location on and the normal one off, the boss loop
 // count, the obstruction half a facing ahead with the king ignored, the stuck action's arguments, the obstruction killed only
 // when the action is refused), the missing-component cases, and the unstuck fallback for a dead target or an unfinished lunge.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 
@@ -76,7 +77,7 @@ class CThing { public:
     const C3DVector& GetPosition() const { return m_position; }
     void Kill(bool flag) { ++m_killed; m_killFlag = flag; }
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

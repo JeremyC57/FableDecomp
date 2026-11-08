@@ -6,6 +6,7 @@
 // Shape (family M061, representative 0x00471530): STLport `if (__last - __first < 2) return; __len = __last - __first; __parent =
 //   (__len - 2) / 2; for (;;) { __adjust_heap(__first, __parent, __len, _Tp(*(__first + __parent)), __comp); if (__parent == 0)
 //   return; __parent--; }` -- the pair copied into the argument area through the forced-inline pair copy; `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefString {                                          // Ego_r.pdb, 4 bytes
 public:
@@ -15,7 +16,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot

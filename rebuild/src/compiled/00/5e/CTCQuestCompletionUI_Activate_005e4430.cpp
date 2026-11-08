@@ -9,6 +9,7 @@
 //   FrameStartedBoastProcessing +0x28, PCardDef +0x2c, Boasts +0x30, RenderedObjectDef +0x34, QuestSummary +0x38,
 //   SuccessSummary +0x3c, QuestObjective +0x40, LastRenderTime +0x48, ScriptName +0x50, GoldReward +0x58, RenownReward +0x5c,
 //   PBlack +0xbc and QuestCardDef +0xc4 (PDB -0x14 after the three maps).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);
 class CCharString { public:
     void* m_pData;
@@ -24,14 +25,14 @@ class CWideString { public:
     const CWideString& operator=(const CWideString& other);      // 0x0099B7D0
 };
 struct CDef { virtual void v00(); virtual void DeleteThis(); long RefCount;
-    __forceinline void Release() { if (--RefCount == 0) DeleteThis(); } };
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) DeleteThis(); } };
 template <class T> class CDefPointer { public:
     T* P;
-    __forceinline CDefPointer() : P(0) { }
-    __forceinline T* operator->() const { return P; }
-    __forceinline CDefPointer(const CDefPointer& o) : P(o.P) { if (P) ++P->RefCount; }
-    __forceinline ~CDefPointer() { if (P) P->Release(); }
-    __forceinline CDefPointer& operator=(const CDefPointer& o)
+    FABLE_FORCEINLINE CDefPointer() : P(0) { }
+    FABLE_FORCEINLINE T* operator->() const { return P; }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& o) : P(o.P) { if (P) ++P->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (P) P->Release(); }
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& o)
     {
         if (P != o.P) {
             if (P) { P->Release(); P = 0; }

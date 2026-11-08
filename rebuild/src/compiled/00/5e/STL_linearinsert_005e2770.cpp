@@ -11,6 +11,7 @@
 //   `__copy_backward(first, last, last + 1, random_access_iterator_tag(), (int*)0)` call, its empty tag temporary homed in
 //   the dead comparator slot (`lea eax,[esp+20h]`); the by-value val's counted pointer is released once at the join.
 // Label correction: catalogued as `std_MoveElement_Pair`; the body is STLport `__linear_insert`.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -24,7 +25,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

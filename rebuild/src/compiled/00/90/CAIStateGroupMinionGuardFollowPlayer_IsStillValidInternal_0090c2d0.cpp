@@ -12,6 +12,7 @@
 // Layout: no engine header for this class; the player's 0x75 component +0x0c building pointer, the village's +0xc8 frame,
 // the sim definition's +0x44 owner and the 0xD5 component's +0x11 flag are descriptive; CThing +0x10 is the thing type.
 // Shape: the landed CIsHouseLargerThan / LightHomeCandle CDefPointer model (inline ReleaseTemporary over a CRefCounted at +4).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -24,8 +25,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -49,11 +50,11 @@ struct CBuildingSimDefinition {
     CRefCounted Ref;                                    // +0x04
     unsigned char _pad08[0x44 - 0x08];
     void* Owner;                                        // +0x44 (descriptive)
-    __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
 class CThingBuilding : public CThing { public:
@@ -75,7 +76,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-__forceinline bool IsAlive(const CThing* thing)
+FABLE_FORCEINLINE bool IsAlive(const CThing* thing)
 {
     if (thing && !(thing->m_flags91 & 1))
         return true;

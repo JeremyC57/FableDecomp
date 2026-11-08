@@ -9,6 +9,7 @@
 // Shape: as this chunk's 0x0086D160 (the 16-byte skeletal-morph twin) and 0x006810E0: /Gr algorithm TU, make_heap the
 //   inline forwarder (two null tags pushed before the comparator), __pop_heap `__forceinline`; here the middle pointer
 //   is spilled to a frame word and reloaded around the value build.
+#include "fable_compiler.h"
 enum EExpressionType { EXPRESSION_TYPE_NONE = 0 };
 
 class CExpressionSet {
@@ -44,7 +45,7 @@ inline void make_heap(_RandomAccessIter __first, _RandomAccessIter __last, _Comp
 }
 
 template <class _RandomAccessIter, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIter __first, _RandomAccessIter __last, _RandomAccessIter __result, _Tp __val, _Compare __comp, _Distance*)
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIter __first, _RandomAccessIter __last, _RandomAccessIter __result, _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;
     __adjust_heap(__first, _Distance(0), _Distance(__last - __first), __val, __comp);

@@ -7,14 +7,15 @@
 // Callees: the old def's Destroy() (vtable slot 1).
 // Shape (family L015): `#pragma optimize("s", on)`; inline Release()/AddRef() on the pointee (`dec [ecx+4] ; jne`,
 //   `inc [eax+4]`), `Object = 0` as `and [esi],0`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {                                    // vptr; reference count at +4
 public:
     virtual ~CDefPointeeBase();
     virtual void Destroy() const;                         // slot 1
     mutable long RefCount;                                // +0x04
-    __forceinline void AddRef() const { ++RefCount; }
-    __forceinline void Release() const
+    FABLE_FORCEINLINE void AddRef() const { ++RefCount; }
+    FABLE_FORCEINLINE void Release() const
     {
         if (--RefCount == 0)
             Destroy();
@@ -24,7 +25,7 @@ class CUnprovenDef_005f7e99;                                   // descriptive: t
 template <class T> class CDefPointer {                     // Ego_r.pdb, 4 bytes
 public:
     const CDefPointeeBase* Object;                        // +0x00
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Object) {
             Object->Release();

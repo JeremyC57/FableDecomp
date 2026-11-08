@@ -12,6 +12,7 @@
 //   re-read from its stack slot each time); `*result = *first` is CTargetPoint's assignment: SetPItem(GetPItem()), Index,
 //   the C3DVector through `lea eax,[esi+0Ch]` (implicit C3DVector assignment) and FrameRejected. VC7.1 strength-reduces
 //   result->TargetingPosition into a second induction register (`lea edi,[ebx+0Ch]`, Index stored at [edi-4]).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -24,8 +25,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-    __forceinline bool operator==(const CIntelligentPointer& other) const { return GetPItem() == other.GetPItem(); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE bool operator==(const CIntelligentPointer& other) const { return GetPItem() == other.GetPItem(); }
 };
 
 #include "engine/C3DVector.h"
@@ -36,7 +37,7 @@ class CTargetPoint { public:
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;
@@ -44,7 +45,7 @@ class CTargetPoint { public:
         FrameRejected = other.FrameRejected;
         return *this;
     }
-    __forceinline bool operator==(const CTargetPoint& other) const
+    FABLE_FORCEINLINE bool operator==(const CTargetPoint& other) const
     {
         return PThing == other.PThing && Index == other.Index;
     }

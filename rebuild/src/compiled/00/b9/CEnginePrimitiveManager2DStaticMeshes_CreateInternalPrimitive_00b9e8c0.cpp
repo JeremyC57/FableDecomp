@@ -10,6 +10,7 @@
 // zeroing constructor (stored after the vtable) and the orientation interpolator at +0xD4 (CBaseClass call + its vtable).
 // The constructors are `__forceinline` (VC7.1 keeps a constructor of this size out of line). Member names are descriptive
 // (no PDB layout for the 2D static mesh primitive).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
 class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
@@ -22,12 +23,12 @@ class CEngineInternalPrimitiveBase { public:              // engine/CEngineInter
 
 class C3DOrientationInterpolator : public CBaseClass { public:   // vtable 0x01239824
     unsigned char _body[0x30];
-    __forceinline C3DOrientationInterpolator() { }
+    FABLE_FORCEINLINE C3DOrientationInterpolator() { }
 };
 
 struct SFourWords {                                // four words cleared by an inline constructor
     long m_words[4];
-    __forceinline SFourWords() { m_words[0] = 0; m_words[1] = 0; m_words[2] = 0; m_words[3] = 0; }
+    FABLE_FORCEINLINE SFourWords() { m_words[0] = 0; m_words[1] = 0; m_words[2] = 0; m_words[3] = 0; }
 };
 
 struct __declspec(novtable) CEngineInternalPrimitiveStaticMeshBase : CEngineInternalPrimitiveBase {   // intermediate base
@@ -41,7 +42,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveStaticMeshBase : CEngineInte
     bool          m_lit;                           // +0x6D
     bool          m_dirty;                         // +0x6E
     unsigned char _pad6f[0x55];
-    __forceinline CEngineInternalPrimitiveStaticMeshBase(long type, unsigned long flags)
+    FABLE_FORCEINLINE CEngineInternalPrimitiveStaticMeshBase(long type, unsigned long flags)
         : CEngineInternalPrimitiveBase(type, flags), m_mesh(0), m_material(0), m_animation(0), m_frame(0), m_flags(0),
           m_visible(false), m_lit(false), m_dirty(false) { }
 };
@@ -51,7 +52,7 @@ struct CEngineInternalPrimitive2DStaticMesh : CEngineInternalPrimitiveStaticMesh
     C3DOrientationInterpolator m_orientation;      // +0xD4
     unsigned char              _rest[0x130 - 0xd4 - sizeof(C3DOrientationInterpolator)];
     virtual void v00();
-    __forceinline CEngineInternalPrimitive2DStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(0x24, 0x80000000) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitive2DStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(0x24, 0x80000000) { }
 };
 
 class CEnginePrimitiveManager2DStaticMeshes { public:

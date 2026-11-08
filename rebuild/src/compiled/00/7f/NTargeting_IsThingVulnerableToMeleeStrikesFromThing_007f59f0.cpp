@@ -12,6 +12,7 @@
 //   return false;` (`test al,al ; setne al` on the callee's bool).
 // Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CPlayer CPlayerDonor
 #include "engine/CPlayer.h"
 #undef CPlayer
@@ -44,7 +45,7 @@ public:
     unsigned char  _pad50[0x6c - 0x50];
     unsigned long  ThingTypeFlags;              // +0x6c
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;

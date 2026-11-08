@@ -13,6 +13,7 @@
 //   (`optimize("s", on)`, as the landed operator=). The base constructor is `__forceinline` and zeroes the header word
 //   before the allocation (as the landed 0x004F9960 relative); the red colour store is common to both arms and hoisted
 //   above the branch; the root/leftmost/rightmost accessors return references, so the header is re-read before each call.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace NUISystem {
 class CUIState {                                         // 0x24 bytes (Ego_r.pdb 36)
@@ -50,7 +51,7 @@ template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
 template <class V, class A> class _Rb_tree_base {
 public:
     _Rb_tree_node_base* _M_header;                       // +0x00 (_M_header._M_data)
-    __forceinline _Rb_tree_base() : _M_header(0) { _M_header = (_Rb_tree_node_base*)malloc(sizeof(_Rb_tree_node<V>)); }
+    FABLE_FORCEINLINE _Rb_tree_base() : _M_header(0) { _M_header = (_Rb_tree_node_base*)malloc(sizeof(_Rb_tree_node<V>)); }
 };
 template <class K, class V, class KoV, class C, class A> class _Rb_tree : public _Rb_tree_base<V, A> {
 public:

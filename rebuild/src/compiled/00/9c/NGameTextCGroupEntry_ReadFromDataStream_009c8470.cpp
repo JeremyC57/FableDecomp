@@ -1,5 +1,6 @@
 // NGameText::CGroupEntry::ReadFromDataStream -- PDB00B15EF0
 // Leaf: ReadFromDataStream
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct InputReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/CResource.h"
@@ -12,9 +13,9 @@ typedef fable_i32 NativeLong;
 // Native serialized long32 is explicit on host; all pointers retain full host width.
 struct InputReader:CDataInputStream {InputReader(); // genuine CDataInputStream default PDB00AFBBC0
  private: //00993CA0, PDB00AFBD30
- public:static __forceinline bool IsValidPosition(__int64 p){return p>=0&&p<=0x7fffffff;}
- __forceinline void Read(void*dest,long n){if(n>0){__int64 next=(__int64)(StreamPos+n);if(!IsValidPosition(next))return;if(n<=SourceChunkBytesRemaining){memcpy(dest,CurrentSourcePtr,n);CurrentSourcePtr=(unsigned char*)CurrentSourcePtr+n;SourceChunkBytesRemaining-=n;StreamPos+=n;}else ReadWithSrcChunkOverflow((unsigned char*)dest,n);}}
- __forceinline NativeLong ReadLong(){NativeLong v;Read(&v,4);return v;}
+ public:static FABLE_FORCEINLINE bool IsValidPosition(__int64 p){return p>=0&&p<=0x7fffffff;}
+ FABLE_FORCEINLINE void Read(void*dest,long n){if(n>0){__int64 next=(__int64)(StreamPos+n);if(!IsValidPosition(next))return;if(n<=SourceChunkBytesRemaining){memcpy(dest,CurrentSourcePtr,n);CurrentSourcePtr=(unsigned char*)CurrentSourcePtr+n;SourceChunkBytesRemaining-=n;StreamPos+=n;}else ReadWithSrcChunkOverflow((unsigned char*)dest,n);}}
+ FABLE_FORCEINLINE NativeLong ReadLong(){NativeLong v;Read(&v,4);return v;}
 };
 struct ResourceMethods:CResource {ResourceMethods();void SetResourceSize(unsigned long);}; //009FBF20/PDB00B6BDD0, true nonconst void(ulong)
 struct BankFileAsync;

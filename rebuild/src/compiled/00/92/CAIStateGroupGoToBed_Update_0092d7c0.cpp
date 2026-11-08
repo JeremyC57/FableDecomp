@@ -12,6 +12,7 @@
 // (ebx flag mask 3 / 0xF); the name goes through an inline (name, filter) wrapper (landed 0x00970610).
 // Layout: Ego_r.pdb CAIStateGroup_GoToBed PBed +0x14, BedPos +0x3c, Rhset +0x48 (Up, Forward +0x54); CTCSleep
 // IsReadyToSleep +0x0c.
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -53,11 +54,11 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                           // +0x91 bit 0: dead
     const C3DVector& GetPos() const;    // 0x004C73D0
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

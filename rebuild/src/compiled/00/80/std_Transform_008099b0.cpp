@@ -15,6 +15,7 @@
 //   and the copy constructor (base ctor, vtable, `SetPItem(other.GetPItem())`), `++_M_finish`, else
 //   `_M_insert_overflow(_M_finish, x, __false_type(), 1, true)` with the tag homed in a frame byte -- then the temporary's
 //   destructor. The 8-byte temporary gives VC7.1's `and esp,-8` frame.
+#include "fable_compiler.h"
 class CBaseObject;
 class CThing;
 
@@ -30,7 +31,7 @@ public:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 inline void* operator new(unsigned int, void* where) { return where; }

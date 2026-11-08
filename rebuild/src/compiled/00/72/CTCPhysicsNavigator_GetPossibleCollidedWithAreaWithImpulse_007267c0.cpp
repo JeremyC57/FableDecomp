@@ -13,12 +13,13 @@
 // four corners are converted in TL.X, TL.Y, BR.X, BR.Y order (TL = (minX, maxY), BR = (maxX, minY)), validated and copied out.
 // Layout (PDB): CTCBase ParentThing +0x04, Position +0x0c, Velocity +0x28, Radius +0x34 (CTCPhysicsBase);
 // engine/CTCPhysicsNavigator.h is a flattened POD with opaque base pads, so the class is modelled locally.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}
-    __forceinline C2DBoxI(const C2DBoxI& o)
+    FABLE_FORCEINLINE C2DBoxI(const C2DBoxI& o)
     {
         TopLeft.X = o.TopLeft.X;
         TopLeft.Y = o.TopLeft.Y;

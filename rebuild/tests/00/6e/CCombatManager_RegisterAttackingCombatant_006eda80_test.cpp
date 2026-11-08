@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CCombatManager::RegisterAttackingCombatant(CThingCreatureBase&, CThingCreatureBase&, bool) -- (re)register the attacker:
@@ -48,7 +49,7 @@ class CThingCreatureBase { public:
     unsigned char CombatFlags4 : 4;
     unsigned __int64 GetUID() const { return UniqueID; }
     bool IsInCombatAsAttacker();            // 0x00662410
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

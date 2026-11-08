@@ -14,6 +14,7 @@
 //   null-safe `deed ? deed->Type : 0`); UsePerceiving is then narrowed in the body from the inline HasTC/GetTC lookup as
 //   `UsePerceiving = UsePerceiving && !source->AlwaysAwareOf` -- the && over the known-true flag yields the full-register
 //   0/1 (`xor eax,eax ; test dl,dl ; sete al`); a plain `= !x` (or == false, ternary, if/else, accessor) gives `sete dl`.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -35,7 +36,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

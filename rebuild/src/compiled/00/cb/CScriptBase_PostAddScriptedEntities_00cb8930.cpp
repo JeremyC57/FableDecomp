@@ -2,6 +2,7 @@
 // Leaf: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ
 // Identity: Own derived script constructors call PostAddScriptedEntities00cb8930 after bindings; canonical original name and PDB. EntityScriptBindings+24 after original Threads4 and EntityScripts16. Sort00cbdf70 pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>.
 // Layout: original polymorphic bases and STLport containers; no active owner header. CVectorMap Data12, empty Compare byte+12, Dirty+13.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -27,6 +28,6 @@ template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 class CScriptBase:public CBaseClassNonCopyable{public:std::list<CCountedPointer<CSpawnedFuncBase> > Threads;CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;void PostAddScriptedEntities();};
 void CScriptBase::PostAddScriptedEntities(){EntityScriptBindings.Sort();}

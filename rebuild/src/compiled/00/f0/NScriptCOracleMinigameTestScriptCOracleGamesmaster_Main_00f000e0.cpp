@@ -2,6 +2,7 @@
 // Leaf: ?Main@COracleGamesmaster@COracleMinigameTestScript@NScript@@EAEXXZ
 // Grade: RELOCATION_MATCH -- original timer helper uses documented stronger expansion after ordinary forms fail.
 // Inline evidence: original body/types and native expansion proven; original keyword unproven; Owner preference applied to this genuine header helper.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -23,7 +24,7 @@ bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing&,const CScri
 extern CGameScriptInterfaceBase* pDSTGame;
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline bool CTimer::operator==(long time) const { return GetTime()==time; }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}

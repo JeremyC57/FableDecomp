@@ -15,6 +15,7 @@
 //   4-byte Read (`position += size`), STLport's inline one-argument resize (`resize(n, T())`, the zeroed temporary in
 //   [ebp-14h]), then traits.TransferBinaryIn(stream, &out[i]) with the index strength-reduced to a byte offset and a
 //   down-counter. The size TU keeps the one-argument resize out of line unless __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -25,7 +26,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -49,7 +50,7 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     void resize(size_type __new_size, const _Tp& __x);                  // 0x00466D9C for CBrainUpdateZone
-    __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
+    FABLE_FORCEINLINE void resize(size_type __new_size) { resize(__new_size, _Tp()); }
     _Tp* begin() { return _M_start; }
     _Tp& operator[](size_type __n) { return *(begin() + __n); }
 };
@@ -69,7 +70,7 @@ template <> struct CPersistTraits<CBrainUpdateZone> {
     void TransferBinaryIn(CMemoryDataInputStreamReader* stream, CBrainUpdateZone* value);  // 0x00466C8E
 };
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

@@ -2,6 +2,7 @@
 // Retail: Fable.exe @ 0x006B6670, 65 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CArray<CThemeWeight> copy ctor @ 0x006B58F0.
 // Leaf: _Construct
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N006b6670 {
 struct CThemeWeightArray {                                 // retail 12-byte STLport-vector body (void)
@@ -19,7 +20,7 @@ struct CEnvironmentThemePriorityStackEntry {     // NEnvironmentInternal::CEnvir
     bool              ThemeTransitionActive;     // +0x1C
     double            ThemeTransitionStartTime;  // +0x20
     float             ThemeTransitionDuration;   // +0x28
-    __forceinline CEnvironmentThemePriorityStackEntry(const CEnvironmentThemePriorityStackEntry& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CEnvironmentThemePriorityStackEntry(const CEnvironmentThemePriorityStackEntry& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : BaseWeight(o.BaseWeight), BaseWeightLocked(o.BaseWeightLocked), Themes(o.Themes),
           ThemeTransitionTargetID(o.ThemeTransitionTargetID), ThemeTransitionInitialWeight(o.ThemeTransitionInitialWeight),
           ThemeTransitionActive(o.ThemeTransitionActive), ThemeTransitionStartTime(o.ThemeTransitionStartTime),

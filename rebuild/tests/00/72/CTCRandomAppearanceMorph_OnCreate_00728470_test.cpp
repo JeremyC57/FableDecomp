@@ -1,5 +1,6 @@
 // Behaviour test for 00728470: body copied from src/00728470.cpp (CTCRandomAppearanceMorph::vfunc_4) with the inline GetInterface;
 // the interface map's LowerBound and UpdateMorphSet stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
-    __forceinline bool GetInterface(long type, CTCBase** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

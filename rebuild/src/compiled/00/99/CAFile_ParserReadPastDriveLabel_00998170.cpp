@@ -13,6 +13,7 @@
 // Fix (sweep 3, FINDINGS chunk 482): the callee 0x009B9870 is CParsedItem::GetSymbol (retail body order = the PDB's
 // GetSymbol, GetString, GetInteger, GetFloat run 0x009B9870..0x009B98A0); GetString is 0x009B9880.
 // Leaf: ?ParserReadPastDriveLabel@CAFile
+#include "fable_compiler.h"
 #include <string.h>
 
 template <class T> class CBasicString { public:                               // CBasicString<char> (packed 13 bytes in retail)
@@ -28,7 +29,7 @@ class CCharString
 {
 public:
     CCharStringData* PStringData;                       // +0x00
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

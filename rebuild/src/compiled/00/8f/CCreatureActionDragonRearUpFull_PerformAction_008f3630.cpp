@@ -24,8 +24,9 @@
 //   The FastInvSqrt Newton step must keep its explicit grouping (see the grade line): the plain left-to-right form emits
 //   the same instructions but stores X*r right after its fmul, ahead of the Init pushes.
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PShot at +0x114, PDB +0x12c).
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -37,7 +38,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline void Normalise() { float r = FastInvSqrt(X * X + Y * Y + Z * Z); X *= r; Y *= r; Z *= r; }
+    FABLE_FORCEINLINE void Normalise() { float r = FastInvSqrt(X * X + Y * Y + Z * Z); X *= r; Y *= r; Z *= r; }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
@@ -140,7 +141,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CSpecialEffectsDef** out)
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
     bool GetDefShot(long index, CThingShotDef** out);  // 0x0078B230
-    __forceinline bool GetDef(long index, CThingShotDef** out) { return GetDefShot(index, out); }
+    FABLE_FORCEINLINE bool GetDef(long index, CThingShotDef** out) { return GetDefShot(index, out); }
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
@@ -185,7 +186,7 @@ class CThing { public:
     unsigned char         _pad74[0x90 - 0x74];
     signed char           PlayerNumber;                // +0x90
     const C3DVector& GetPos() const;              // 0x004C73D0
-    __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
+    FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CDefClassBase* GetDef() const { return PDef; }
     long GetPlayerNumber() const { return PlayerNumber; }
     CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params);   // 0x004C9D60
@@ -195,7 +196,7 @@ class CThingCreatureBase : public CThing { public:
 };
 CThing* __fastcall Create(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
                           unsigned long flags, const CCharString& scriptName);   // 0x00703210
-__forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
     return Create(defIndex, &position, creature->PlayerNumber, 0, 0, name);
 }

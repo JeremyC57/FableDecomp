@@ -10,6 +10,7 @@
 // Shape: the sibling of CreateObject. A failed lookup / factory call / dead building falls through to the thing manager's
 // failure flag (+0xC8); success ends with `continue` (the `jmp` to the loop increment).
 // Layout (local model): as CreateObject, plus CThing PTCPhysics +0x60.
+#include "fable_compiler.h"
 class CTCBase;
 class CTCPhysicsBase;
 #include "engine/C3DVector.h"
@@ -44,7 +45,7 @@ public:
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead, bit 1: created by owner
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

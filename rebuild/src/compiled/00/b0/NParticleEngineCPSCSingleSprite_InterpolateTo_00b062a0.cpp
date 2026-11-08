@@ -15,6 +15,7 @@
 //   WriteBinary 0x00B06060 model). StayWithEmitterIntFactor (+0x8C) and EnteringTimelineEnd (+0x97) are not interpolated.
 // Shape: the members in the order retail touches them; MaxTrailLength's long lerp loads the operands straight from memory while
 //   NoCrossedSprites / FadeIn / FadeOut go through frame copies -- the same inline body, VC7.1's choice.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CRGBCOLOUR
 #include "engine/CRGBColour.h"
 #include "engine/GFFloatToLongNear.h"
@@ -25,7 +26,7 @@ inline float __fastcall GFInterpolate(float a, float b, float t) { return a * (1
 inline long __fastcall GFInterpolate(long a, long b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
 inline bool __fastcall GFInterpolate(bool a, bool b, float t) { return t > 0.5f ? b : a; }
 inline unsigned long __fastcall GFInterpolateUpdateParams(unsigned long a, unsigned long b, float t) { return t > 0.5f ? b : a; }
-__forceinline CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
+FABLE_FORCEINLINE CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
 class CParticleSystem;
 template <class K, class V> class CParticleUpdateParamCallback : public CBaseClassNonCopyable { };
 class CPSCBase : public CParticleUpdateParamCallback<unsigned long, unsigned long> {

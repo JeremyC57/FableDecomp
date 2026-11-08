@@ -12,6 +12,7 @@
 //   counters are not in the initialiser list.
 // Shape: declaration-order initialiser list; the RegionTime resize passes the literal 0 so the `const long&` temporary (in the dead
 //   owner slot) is pushed before the map-count calls; the handle's derived ctor is force-inlined after its out-of-line base.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -50,7 +51,7 @@ struct CDrunkennessDefPointer {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle : public CBaseClass { public:   // vtable 0x0122F598
     long Handle;                                     // +0x04
-    __forceinline CEnginePrimitiveHandle() : Handle(0) {}
+    FABLE_FORCEINLINE CEnginePrimitiveHandle() : Handle(0) {}
 };
 struct CMarriageAllocator { CMarriageAllocator() {} };
 struct CMarriageList {                               // STLport list<CHeroMarriageInfo>

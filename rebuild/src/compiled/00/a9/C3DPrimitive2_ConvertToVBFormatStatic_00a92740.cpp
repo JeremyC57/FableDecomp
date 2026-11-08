@@ -6,6 +6,7 @@
 // DataStreams.first +4 (the stream's Format subobject), as shown by A927A7's mov [local+4]; add 4.
 // Empty staging uses the vector object as its native sentinel.
 // Invalid wrapped 32-bit byte count skips both transform paths and conversion while preserving cleanup.
+#include "fable_compiler.h"
 #include <string.h>
 
 extern "C" void __cdecl free(void*); // 0x00BFEA14
@@ -42,7 +43,7 @@ struct CByteVector {
     unsigned char* end;
     void insert(unsigned char*, unsigned long, const unsigned char&); // 0x00485F3A
     unsigned long size() const { return (unsigned long)(last - first); }
-    __forceinline void resize(unsigned long count, const unsigned char& value)
+    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
     {
         if (count < size())
             last = first + count;

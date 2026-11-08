@@ -1,6 +1,7 @@
 // Behaviour test for 0x004671CA CPersistTraits<CBrainBehaviour>::TransferBinaryIn: the Name def string through its own
 // binary reader, then Priority and ScriptAIPriority through the inlined CMemoryDataInputStream::Read -- straight from the current chunk when 4 bytes remain, through the overflow
 // reader otherwise, and not at all when position + 4 leaves [0, 0x7FFFFFFF].
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,7 +25,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     {
         ++g_overflows; std::memcpy(buffer, &g_overflowValue, size); position += size;
     }
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -50,7 +51,7 @@ class CBrainBehaviour { public: CDefString Name; long Priority; long ScriptAIPri
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
     {
         long number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));

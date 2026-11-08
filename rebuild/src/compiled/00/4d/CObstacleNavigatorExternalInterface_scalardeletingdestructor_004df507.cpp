@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DF507, length 43 bytes.
 // Leaf: ??_GCObstacleNavigatorExternalInterface@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x01241D04) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CMember_004df54f {
@@ -15,7 +16,7 @@ class CNavigatorExternalInterface { public:               // vtable 0x01241D74
 };
 class CObstacleNavigatorExternalInterface : public CNavigatorExternalInterface { public:              // vtable 0x01241D04
     CMember_004df54f m_member8;                    // +0x08
-    __forceinline virtual ~CObstacleNavigatorExternalInterface() { }
+    FABLE_FORCEINLINE virtual ~CObstacleNavigatorExternalInterface() { }
 };
 
 void* MakeOne_004df507()                                 // forces the vtable (and so the scalar deleting destructor) into the object; not part of the retail body

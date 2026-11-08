@@ -11,6 +11,7 @@
 // Shape: the follow-up action is the object word of a counted pointer at +0xa8 (the block word at +0xac, see 0x006DD980), read again from
 // the member for the virtual call (`mov ecx,[esi+0A8h]`); the mode-manager call sits inside the GetInterface if, so the miss path
 // returns directly. `this` rides in esi until the lookup re-uses it for the map.
+#include "fable_compiler.h"
 class CTCBase;
 class CCreatureActionBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

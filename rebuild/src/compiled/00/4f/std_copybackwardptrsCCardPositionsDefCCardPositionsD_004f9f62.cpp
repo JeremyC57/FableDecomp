@@ -11,6 +11,7 @@
 // Shape: STLport `__copy_backward_ptrs(first, last, result, __false_type) { return __copy_backward(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0); }` with the counted `__copy_backward` inlined (`*--result = *--last`,
 //   last walking as `edi + esi`); the count is an `idiv` by 0x48. Size TU (`dec ebx ; jne`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class C2DVector {
@@ -46,7 +47,7 @@ public:
 };
 
 template <class BidirectionalIter1, class BidirectionalIter2, class Distance>
-__forceinline BidirectionalIter2 __copy_backward(BidirectionalIter1 first, BidirectionalIter1 last,
+FABLE_FORCEINLINE BidirectionalIter2 __copy_backward(BidirectionalIter1 first, BidirectionalIter1 last,
                                                  BidirectionalIter2 result, const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n)
@@ -72,7 +73,7 @@ BidirectionalIter2 __fastcall __copy_backward_ptrs(BidirectionalIter1 first, Bid
 class CCardPositionsDef : public CParentDefClassBase {   // Ego_r.pdb, retail sizeof 0x48
 public:
     std::vector<C2DVector> Offset;                  // +0x3C
-    __forceinline CCardPositionsDef& operator=(const CCardPositionsDef& other)
+    FABLE_FORCEINLINE CCardPositionsDef& operator=(const CCardPositionsDef& other)
     {
         CParentDefClassBase::operator=(other);
         Offset = other.Offset;

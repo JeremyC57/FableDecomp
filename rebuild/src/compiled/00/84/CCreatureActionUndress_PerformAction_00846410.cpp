@@ -15,6 +15,7 @@
 //   member, then links a fresh 12-byte sentinel through a local before storing it. The item offset is a 12-byte
 //   C3DVector with only X/Y assigned (keeps retail's frame); the name, player, offset and position live in a block of
 //   their own so the "" CCharString dies right after Create.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (MSVCR71 import thunk)
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class CCharString { public:
@@ -138,7 +139,7 @@ public:
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
     C3DVector GetHeadPos(bool world);                 // 0x00661B40
-    __forceinline CTCBase* FindTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* FindTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -147,7 +148,7 @@ public:
             it = map->end();
         return it->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -158,7 +159,7 @@ public:
         }
         return false;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }

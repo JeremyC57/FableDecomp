@@ -15,6 +15,7 @@
 //   test, a zero-preloaded HasTC/GetTC pick and the emitter call made even on null; the key 0x4b kept in ebx across
 //   both); the members die in reverse order: the inline set destructor (erase, header reset, free), the out-of-line
 //   intelligent-pointer destructors, the inline def release with its zero store; the base destructor is called.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -88,7 +89,7 @@ class CTCPhysicalShieldSpell : public CTCBase { public:       // vtable 0x0126C5
     bool  Paused;                               // +0x45
     bool  CutSceneCancelled;                    // +0x46
     CThingPointerSet AllowReactionAttackers;    // +0x48
-    static __forceinline void FadeOrKillEffect(CIntelligentPointer<CThing>& effect)   // CTCSpecialAbilities helper, inlined
+    static FABLE_FORCEINLINE void FadeOrKillEffect(CIntelligentPointer<CThing>& effect)   // CTCSpecialAbilities helper, inlined
     {
         CThing* thing = effect.Get();
         if (thing && !thing->IsDead()) {

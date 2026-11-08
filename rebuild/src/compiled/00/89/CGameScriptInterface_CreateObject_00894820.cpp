@@ -15,6 +15,7 @@
 // Shape: the def pointer is homed in the dead `defName` slot and released at the end (DecRefToZero); the result
 //   is a named local default-constructed after the Create call, assigned from the by-value GetScriptThing temporary
 //   (both destructors inline), copied into the hidden result and destroyed (no NRVO in VC7.1).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
@@ -33,7 +34,7 @@ inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CThingObjectDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1

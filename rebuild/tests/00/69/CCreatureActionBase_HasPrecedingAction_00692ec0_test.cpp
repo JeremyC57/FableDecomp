@@ -1,4 +1,5 @@
 // behaviour test for 0x00692EC0 CCreatureActionBase::HasPrecedingAction (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CCreatureActionBase::HasPrecedingAction() -- true when the action reports a preceding animation (virtual slot 36) and the creature's interface-70 component says it is not busy with one; false otherwise
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline long GetInterface(T** ppOut, long interfaceType)   // a BOOL (long) result in this TU: the
+    template<class T> FABLE_FORCEINLINE long GetInterface(T** ppOut, long interfaceType)   // a BOOL (long) result in this TU: the
     {                                                                                 //   `&&` below is then materialised in eax
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

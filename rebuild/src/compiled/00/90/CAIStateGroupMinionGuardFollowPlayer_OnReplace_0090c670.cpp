@@ -3,6 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
 // Layout: existing shared flattened headers supply observed offsets; no new packing.
+#include "fable_compiler.h"
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -52,7 +53,7 @@ public:
         if(bits[(unsigned)type>>5]&(1UL<<((unsigned)type&31)))return true;
         return false;
     }
-    template<class T>__forceinline bool GetTC(T**out) {
+    template<class T>FABLE_FORCEINLINE bool GetTC(T**out) {
         const unsigned long*bits=reinterpret_cast<const unsigned long*>(reinterpret_cast<const CThingLayout*>(this)->UsingComponents);
         if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))) {
             ETCInterfaceType type=T::StatGetInterfaceType();
@@ -157,7 +158,7 @@ public:
 private:unsigned char unobservedVillageState[sizeof(CTCVillageLayout)-sizeof(CTCBase)];
 };
 class CTCVillageMember:public CTCBase {
-public:static __forceinline ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x23;}
+public:static FABLE_FORCEINLINE ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x23;}
     CTCVillage*GetPVillage()const;
 };
 class CAIStateGroup_MinionGuardFollowPlayer:public CAIStateGroupBase {

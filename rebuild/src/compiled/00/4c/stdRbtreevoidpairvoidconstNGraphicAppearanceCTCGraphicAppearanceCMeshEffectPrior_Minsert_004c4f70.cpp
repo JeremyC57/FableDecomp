@@ -10,6 +10,7 @@
 // and called the out-of-line copy at the right-hand site (per-function inline budget), so the left site uses a
 // __forceinline copy of the node build and the right one the declared member. Keys compare unsigned (`jb`). The value
 // copy is memberwise: key, CIVCountedPointer copy ctor (AddRef at +4), Priority, three bools.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);          // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -84,7 +85,7 @@ public:
 protected:
     _Link_type _M_create_node(const V& x);                              // 0x004C41D0
 public:
-    __forceinline _Link_type _M_create_node_inline(const V& x)
+    FABLE_FORCEINLINE _Link_type _M_create_node_inline(const V& x)
     {
         _Link_type tmp = static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<V>)));
         new (&tmp->_M_value_field) V(x);

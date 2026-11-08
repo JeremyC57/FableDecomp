@@ -21,12 +21,13 @@
 //   Activated +0x08, Terminated +0x09), Update is its virtual (?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and
 //   0x00713D50 is the private SetAsSneaking (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z, was an
 //   invented global SetSneaking). Same bytes.
+#include "fable_compiler.h"
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 template<class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 class CTCBase;
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
-__forceinline C3DVector Offset(const C3DVector& pos, const C3DVector& delta) { return C3DVector(delta.X + pos.X, delta.Y + pos.Y, delta.Z + pos.Z); }
+FABLE_FORCEINLINE C3DVector Offset(const C3DVector& pos, const C3DVector& delta) { return C3DVector(delta.X + pos.X, delta.Y + pos.Y, delta.Z + pos.Z); }
 float __fastcall Get2DDistance(const C2DVector& a, const C2DVector& b);   // 0x009E1AD0
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -71,7 +72,7 @@ class CThing { public:
     float GetCurrentSpeed() const;              // 0x00661CD0
     float GetSneakSpeedTowards(const C3DVector& pos);   // 0x00664CB0
     bool IsPerformingAnyAction();               // 0x006622A0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -84,7 +85,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceC(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceC(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

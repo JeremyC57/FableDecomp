@@ -13,6 +13,7 @@
 // (null and bit 0 of +0x91) before the emitter lookup (`p = 0; if (HasTC) p = GetTC`). The nymph is found through the out-parameter
 // GetInterface(T**, type) template (component left in eax, `mov ecx,eax` after the argument). GetSubDef and GetEffectFromString
 // get same-TU stand-in bodies (write only the out slot / the `long&`), so neither the def slot nor the effect-type word escapes.
+#include "fable_compiler.h"
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* m_pData;
@@ -46,7 +47,7 @@ template <class T> class CDefPointer { public:      // the out-slot GetSubDef fi
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -83,14 +84,14 @@ class CThing { public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -103,7 +104,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }

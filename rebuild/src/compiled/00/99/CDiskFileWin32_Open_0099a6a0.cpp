@@ -21,6 +21,7 @@
 //   default leaves a null handle that the INVALID_HANDLE_VALUE test folds away; the error text keeps the last-error
 //   string in its own named local (its destructor and the message's are unreachable after the throw: no EH frame),
 //   the by-value message copy of the inline exception constructor lands in the dead pathname slot.
+#include "fable_compiler.h"
 typedef unsigned short wchar16;
 
 extern "C" __declspec(dllimport) void* __stdcall CreateFileW(const wchar16* name, unsigned long access, unsigned long share, void* security, unsigned long disposition, unsigned long attributes, void* templateFile);   // 0x0143FE2C
@@ -54,7 +55,7 @@ class CAFile { public:
     static void __fastcall CreateDirectoryForFile(const CWideString& path);                       // 0x00999620
 };
 
-__forceinline void ReportFileError(CCharString message)
+FABLE_FORCEINLINE void ReportFileError(CCharString message)
 {
     (const char*)message;
 }
@@ -62,7 +63,7 @@ enum EFileExceptionType { FILE_EXCEPTION_BAD_FILENAME = 1, FILE_EXCEPTION_CANNOT
 struct CExceptionBase { };
 struct CBBBFileException : CExceptionBase {                 // throw info 0x01369380, 4-byte object
     EFileExceptionType Type;
-    __forceinline CBBBFileException(const CCharString& message, EFileExceptionType type) : Type(type) { ReportFileError(message); }
+    FABLE_FORCEINLINE CBBBFileException(const CCharString& message, EFileExceptionType type) : Type(type) { ReportFileError(message); }
 };
 
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_READ_WRITE = 2, FILE_ACCESS_READ_WRITE_OPEN_ALWAYS = 3, FILE_ACCESS_CREATE = 4 };

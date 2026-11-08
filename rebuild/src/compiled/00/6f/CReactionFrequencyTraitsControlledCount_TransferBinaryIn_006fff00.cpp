@@ -10,6 +10,7 @@
 // stream-argument slot and is then stored to its member. Each read is a non-template __forceinline ReadValue(T&)
 // (local + Read + store), as in the siblings; the bool is read as a byte and normalised (`test al,al; setne`).
 // Leaf: TransferBinaryIn@CReactionFrequencyTraits_ControlledCount
+#include "fable_compiler.h"
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -25,8 +26,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -40,9 +41,9 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline void ReadValue(bool& out) { unsigned char value; Read(&value, sizeof(value)); out = value != 0; }
-    __forceinline void ReadValue(float& out) { float value; Read(&value, sizeof(value)); out = value; }
-    __forceinline void ReadValue(unsigned long& out) { unsigned long value; Read(&value, sizeof(value)); out = value; }
+    FABLE_FORCEINLINE void ReadValue(bool& out) { unsigned char value; Read(&value, sizeof(value)); out = value != 0; }
+    FABLE_FORCEINLINE void ReadValue(float& out) { float value; Read(&value, sizeof(value)); out = value; }
+    FABLE_FORCEINLINE void ReadValue(unsigned long& out) { unsigned long value; Read(&value, sizeof(value)); out = value; }
 };
 
 struct CReactionFrequencyTraits_ControlledCount_Methods : CReactionFrequencyTraits_ControlledCount {

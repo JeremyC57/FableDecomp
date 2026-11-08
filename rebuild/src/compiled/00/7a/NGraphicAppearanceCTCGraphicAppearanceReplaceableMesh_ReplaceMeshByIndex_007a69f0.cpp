@@ -14,6 +14,7 @@
 // Layout: Ego_r.pdb CTCGraphicAppearanceReplaceableMesh (matches retail): Replaced +0x10, MeshIndex +0x14, PDef +0x1C;
 //         CReplaceableMeshDef::Meshes +0x28 (first word: the CEngineGraphic array); retail CThing PTCGraphicAppearance
 //         +0x64 and CTCGraphicAppearance::MainGraphic +0x44 (PDB +0x5C: two 12-byte maps and two 4-byte lists).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -70,13 +71,13 @@ public:
     unsigned char _pad54[0x10];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     void SendMessageW(const NTCMessages::CMessageBase& message);       // 0x004C7820
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -84,7 +85,7 @@ public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCPhysicsBase* GetPhysicsTC()
+    FABLE_FORCEINLINE CTCPhysicsBase* GetPhysicsTC()
     {
         CTCPhysicsBase* physics;
         if (HasTC(2))

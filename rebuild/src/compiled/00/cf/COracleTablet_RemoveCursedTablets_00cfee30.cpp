@@ -11,6 +11,7 @@
 //   PMasterData +0x18, AlreadyDugHere +0x1c.
 // Shape: an else-if chain; VC7.1 cross-jumps the eight `TakeObjectFromHero("...")` arms into one tail that differs only
 //   in the pushed literal; the const char* argument builds its CCharString before GetHero is called.
+#include "fable_compiler.h"
 class CCharString;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/CCountedPointer.h"
@@ -21,7 +22,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

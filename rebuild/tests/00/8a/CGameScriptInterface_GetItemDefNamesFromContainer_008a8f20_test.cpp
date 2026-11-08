@@ -1,4 +1,5 @@
 // Behaviour test for 008a8f20: body copied from src/008a8f20.cpp (CGameScriptInterface::GetItemDefNamesFromContainer), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -57,7 +58,7 @@ public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00BA7B30 (source body copied from src/00ba7b30.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -44,7 +45,7 @@ static unsigned long long ra_tsc = 1000000;
 
 // the engine's pointer-out float-to-int helper (round to nearest, the FPU default); expanded in place as a __forceinline,
 // its two by-value parameters get frame copies
-__forceinline void FloatToInt(int* result, float value)
+FABLE_FORCEINLINE void FloatToInt(int* result, float value)
 {
     RA_FISTP_PTR(value, result)
 }

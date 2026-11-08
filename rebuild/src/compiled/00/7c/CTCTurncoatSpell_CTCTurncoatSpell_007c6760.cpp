@@ -11,6 +11,7 @@
 //   GetDefIndex 0x009AD390, GetDef<CTurncoatSpellDef> 0x007C7720, CTCInventoryAbilities::GetAbilityLevel 0x005EDE93, __ftol2
 // Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
 //   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CCharString { public:
@@ -28,21 +29,21 @@ public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(key);
         return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTCC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTCC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(key);
         return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
-    template<class T> __forceinline void GetInterface(long interfaceType, T** out)
+    template<class T> FABLE_FORCEINLINE void GetInterface(long interfaceType, T** out)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(interfaceType);
@@ -51,7 +52,7 @@ public:
             *out = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
         }
     }
-    template<class T> __forceinline void GetInterfaceC(long interfaceType, T** out) const
+    template<class T> FABLE_FORCEINLINE void GetInterfaceC(long interfaceType, T** out) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(interfaceType);

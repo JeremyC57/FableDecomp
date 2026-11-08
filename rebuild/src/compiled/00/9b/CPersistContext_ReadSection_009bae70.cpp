@@ -13,6 +13,7 @@
 // Layout: CPersistContext and CPersistContextReadSection per Ego_r.pdb with the retail 0x28-byte CStringParser (STLport
 //   4-byte comment list; landed 0x00463334-family models): InputStream +0x2c, Parser +0x48, Text +0x70.
 // Literals: "START_" 0x0129B31C, "END_" 0x0129B324, "" 0x0122D70E; the null-string text 0x0129AAF4.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 #pragma pack(push, 1)
@@ -63,7 +64,7 @@ class CStringParser : public CBase { public:                         // retail 0
     bool FindKeyword(const CCharString& keyword);      // 0x009B9BA0
     long SkipPastNewline();                            // 0x009B9D70
     CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
-    __forceinline void Init(const CCharString& text, const CCharString& filename = "")
+    FABLE_FORCEINLINE void Init(const CCharString& text, const CCharString& filename = "")
     {
         TempCharString = text;
         Init(text.GetData(), 0, filename, 0);
@@ -87,8 +88,8 @@ public:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
     void OpenMemorySource(void* data, unsigned long size);            // 0x00994570
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -101,8 +102,8 @@ public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long value; Read(&value, 4); return value; }
-    __forceinline const unsigned char* GetDataAndSkip(long bytes)
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long bytes)
     {
         unsigned long position = GetPosition();
         __int64 newPosition = (__int64)(position + bytes);
@@ -135,7 +136,7 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;               // +0x24
     CDataOutputStream*      PSaveStream;               // +0x28
     bool ReadSection(CPersistContextReadSection& section, const CCharString& name);
-    __forceinline void InitBinaryLoad(CMemoryDataInputStream* stream)
+    FABLE_FORCEINLINE void InitBinaryLoad(CMemoryDataInputStream* stream)
     {
         Mode = MODE_LOAD_BINARY;
         PLoadStream = stream;
@@ -143,7 +144,7 @@ class CPersistContext { public:
         PDefinitionManager = 0;
         UseCRCCheck = false;
     }
-    __forceinline void InitTextLoad(CStringParser* parser, TErrorCallback errorCallback, bool useDefaults,
+    FABLE_FORCEINLINE void InitTextLoad(CStringParser* parser, TErrorCallback errorCallback, bool useDefaults,
                                     CDefinitionManager* definitionManager, CSymbolMap* symbolMap, CCharString* stringToClean)
     {                                                  // the inline body of the text-load constructor 0x009BADD0
         Mode = MODE_LOAD_TEXT;

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00DF9180 NScript::CQ_TraderConflictEvilScript::CTC_Villager::Main: the source model is copied
 // verbatim (filler virtual slots given empty bodies) and every callee is a recording stub driven by a frame counter.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -146,8 +147,8 @@ struct GameCalls {                                     // CGameScriptInterface v
 extern GameCalls* g_pGameScriptInterface;              // 0x0143E8F8
 class CTimer { public:                                        // a script timer: the interface's timer index
     long TimerIndex;
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
+    FABLE_FORCEINLINE long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+    FABLE_FORCEINLINE void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
 };
 struct CIsThingAlive {                                 // vtable 0x012C32F0: a predicate holding a script thing
     virtual void v00();

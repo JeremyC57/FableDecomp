@@ -1,5 +1,6 @@
 // Behaviour test for 007502d0: src/007502d0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCChest::InitClosed()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -141,7 +142,7 @@ class CThing { public:
     CThingBaseDef* PBaseDef;                                   // +0x70
     void SetForceFrameUpdate(bool force);                      // 0x004C7C60
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline T* GetTC(long wanted)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

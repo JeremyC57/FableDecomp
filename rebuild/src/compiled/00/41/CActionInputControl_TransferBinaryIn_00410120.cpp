@@ -8,6 +8,7 @@
 // Shape: five inlined CMemoryDataInputStream::Read calls of 4 bytes (64-bit position range check, in-chunk copy or
 //        the overflow reader), each value homed in the dead stream-argument slot through a by-value inline helper;
 //        the direction is assigned straight from the by-value call (8-byte temporary in the frame).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -27,8 +28,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     long SourceChunkStreamPos;
     long m_remaining;                           // +0x14 bytes left in the current chunk
     C2DVector ReadC2DVector();                  // 0x00995030
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -42,7 +43,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
 };
 
 enum EGameAction { GAME_ACTION_NONE };

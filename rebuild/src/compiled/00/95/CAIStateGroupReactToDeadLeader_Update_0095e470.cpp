@@ -10,13 +10,14 @@
 // Shape: the navigation lookup inlines the vector-map lower_bound (len/2 halving) on the word-local HasTC; the enemy is cleared
 // through an 8-byte intelligent-pointer temporary inside the loop (the `and esp,-8` frame); lower_bound copies `first` into
 // the walking pointer after the length; `reached` sits in its own block around the do-loop (shares the HasTC byte slot).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    static __forceinline SEntry* LowerBound(SEntry* first, SEntry* end, long key)
+    static FABLE_FORCEINLINE SEntry* LowerBound(SEntry* first, SEntry* end, long key)
     {
         long len = end - first;
         SEntry* it = first;
@@ -44,7 +45,7 @@ class CThing { public:
         unsigned long word = m_presentBits[interfaceType >> 5];
         return ((word >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const bool& present = HasTC(interfaceType);
         if (present) {
@@ -76,8 +77,8 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     T* GetPCreature() const { return (T*)GetPItem(); }
 
 public:
@@ -85,7 +86,7 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

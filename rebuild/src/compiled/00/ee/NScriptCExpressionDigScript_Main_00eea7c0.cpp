@@ -14,6 +14,7 @@
 //   found = false block inline instead of after the success arm. The discarded GetPos/GetAngleXY calls stay (virtual), the float result popped.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00eeae70 at 00cd9d47 with name "Expression_Dig"; Alloc news + stores script vtable 012f5628; PDB ?Alloc@CExpression_DigScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CExpression_DigScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CExpression_DigScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CExpression_DigScript@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
@@ -22,8 +23,8 @@ class CCharString { public:
 
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
 #include "engine/C3DVector.h"

@@ -10,6 +10,7 @@
 //   nor the effect type escapes: the slot word is reused by the "FLOAT_POWER" string, the effect-type word by the
 //   intelligent-pointer temporary and the bone-name string (frame 0xc); the definition is a counted reference in its own
 //   block (add-ref, GetSubDef, release), the effect sub-def is released by hand at the end (known non-null: no test).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -36,7 +37,7 @@ template <class T> class CDefPointer { public:         // a counted def referenc
     ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (--def->m_refCount == 0)
         def->Destroy();
@@ -105,7 +106,7 @@ private:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
 public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }

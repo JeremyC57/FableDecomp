@@ -1,5 +1,6 @@
 // Behaviour test for 00b18390: final.cpp copied verbatim (memcpy wrapper and 32-bit long under g++), the stream's
 // overflow read, Read3DVector and the point array's resize stubbed so both read paths and the user-point loop are observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -45,18 +46,18 @@ class CDataInputStream { public:
     long SourceChunkBytesRemaining;                     // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     C3DVector Read3DVector();                           // 0x009950F0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {
             memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
-    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
-    __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 struct CVector3D {                                      // STLport vector<C3DVector> (12 bytes)
     C3DVector* _M_start;

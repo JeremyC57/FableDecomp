@@ -10,6 +10,7 @@
 // (Age +0x30, Stamina +0x58, RenownLevel +0x70, Attractiveness +0x9c, BestTimePairs +0x178, Marriages +0x1d8); engine/CTCHeroStats.h
 // carries the PDB offsets.
 // ScriptOverridePreventStaminaRefill +0x68 (PDB +0x70), TrainingStatus +0x114 (PDB +0x11c).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -28,7 +29,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;
@@ -40,7 +41,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;

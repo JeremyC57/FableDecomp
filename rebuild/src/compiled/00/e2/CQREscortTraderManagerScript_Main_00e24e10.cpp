@@ -10,6 +10,7 @@
 // Shape: the day/time tests go through inline helpers that take the CScriptDef pointer, so pGlobalScriptDef is loaded into
 //   callee-saved edi before each interface call; that makes edi a saved register, which VC then also uses as the zero
 //   register (xor edi,edi) for the flag word, the first-run stores and the phase-0 test.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -29,8 +30,8 @@ enum EscortTraderManagerPhase {
     PHASE_ACTIVATE_FIRST, PHASE_WAIT_TRADER_ESCORT, PHASE_ACTIVATE_SECOND, PHASE_WAIT_BANDIT_CAMP, PHASE_ACTIVATE_THIRD,
     PHASE_WAIT_ARENA, PHASE_ACTIVATE_FOURTH, PHASE_WAIT_GRAVEYARD, PHASE_REPEAT
 };
-static __forceinline long DayModInterval(long day, const CScriptDef* def) { return day % def->EscortTraderQuestDayInterval; }
-static __forceinline bool NotPastStartTime(long time, const CScriptDef* def) { return time <= def->EscortTraderQuestStartTime; }
+static FABLE_FORCEINLINE long DayModInterval(long day, const CScriptDef* def) { return day % def->EscortTraderQuestDayInterval; }
+static FABLE_FORCEINLINE bool NotPastStartTime(long time, const CScriptDef* def) { return time <= def->EscortTraderQuestStartTime; }
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

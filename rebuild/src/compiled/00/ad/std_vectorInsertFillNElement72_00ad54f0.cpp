@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: _M_fill_insert
 // Layout: oracle element stride 72 bytes and local copy/destruction call offsets; uncertain element identity.
+#include "fable_compiler.h"
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int);
 namespace N00ad54f0 {
@@ -11,7 +12,7 @@ extern "C" void __cdecl free(void*);
 struct Buffer {
  unsigned int* _M_start; unsigned int* _M_finish; unsigned int* _M_end_of_storage;
  Buffer(); Buffer(const Buffer&); Buffer& operator=(const Buffer&);
- __forceinline ~Buffer() { if(_M_start) free(_M_start); }
+ FABLE_FORCEINLINE ~Buffer() { if(_M_start) free(_M_start); }
 };
 struct String { unsigned int W0; String(); String(const String&); ~String(); String& operator=(const String&); };
 struct Element { unsigned int W0; unsigned int Data[17]; Element(); Element(const Element&); Element& operator=(const Element&); };
@@ -22,8 +23,8 @@ template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T*
 template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
 template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x) { for(;n>0;--n,++first) _Construct(first,x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag()); }
-template<class T> __forceinline T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x);}
+template<class T> FABLE_FORCEINLINE T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag()); }
+template<class T> FABLE_FORCEINLINE T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x);}
 template<class T> struct vector {
  T* _M_start; T* _M_finish; T* _M_end_of_storage;
  template<class Tag> __declspec(noinline) void _M_insert_overflow(T* pos,const T& x,const Tag&,unsigned int n,bool atend=false);

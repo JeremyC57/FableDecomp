@@ -12,6 +12,7 @@
 // empty CScriptThing() listener (out-of-line CBase ctor, vtable 0x01238C8C, null pimpl); both temporaries die after the call
 // (the thing's inline counted release first). The zero register ebp feeds the zero arguments and the pimpl stores.
 // Layout = Ego_r.pdb entity script base: Game +4, Me +8.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
     void* m_pData;
@@ -25,8 +26,8 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::CScriptThing() {}
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CGameScriptInterface { public:

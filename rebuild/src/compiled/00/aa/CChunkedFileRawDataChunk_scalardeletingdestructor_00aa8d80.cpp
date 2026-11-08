@@ -9,6 +9,7 @@
 // Shape: the `delete[] Data` of a byte array is a bare `operator delete[]` (no null test, no element
 // destructors); the data word is loaded and pushed before the vtable store. The intermediate
 // CChunkedFileChunk (vtable 0x0129E474) has an inline empty destructor (its vtable store follows).
+#include "fable_compiler.h"
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 class CBaseClassNonCopyable {
 protected:                                      // root polymorphic base
@@ -26,7 +27,7 @@ struct CChunkedFileRawDataChunk : CChunkedFileChunk {   // vtable 0x0129E4B8
     unsigned char* Data;                           // +0x10
     unsigned long  ByteSize;                       // +0x14
     CChunkedFileRawDataChunk() : Data(0), ByteSize(0) { }
-    __forceinline virtual ~CChunkedFileRawDataChunk() { delete[] Data; }
+    FABLE_FORCEINLINE virtual ~CChunkedFileRawDataChunk() { delete[] Data; }
 };
 
 CChunkedFileRawDataChunk* Create_CChunkedFileRawDataChunk()

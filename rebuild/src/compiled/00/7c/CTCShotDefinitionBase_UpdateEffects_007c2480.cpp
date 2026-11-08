@@ -17,6 +17,7 @@
 //   order) and tested as `!(lengthSquared > eps * eps)` (`fcompp ; test ah,5 ; jnp skip`: NaN also takes the body); the
 //   {crc, movement} pair is a named local built before the parameter block (a push_back temporary is built after it); the parameter block is a local with an inline constructor (CBaseClass base, two empty maps), filled by
 //   push_back of the pair and released by its out-of-line destructor.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCRC {
@@ -82,7 +83,7 @@ public:
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
 class CBaseObject;
 class CBaseObjectPointer;

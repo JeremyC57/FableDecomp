@@ -1,6 +1,7 @@
+#include "fable_compiler.h"
 #include <cstdio>
 struct CSprite_00b1b5e0 { unsigned char _pad00[0x48]; float m_height; long GetHeight() const; };
-__forceinline void FloatToLong(long* result, float value) { __asm fld value __asm mov edx, result __asm fistp dword ptr [edx] }
+FABLE_FORCEINLINE void FloatToLong(long* result, float value) { __asm fld value __asm mov edx, result __asm fistp dword ptr [edx] }
 long CSprite_00b1b5e0::GetHeight() const { long height; FloatToLong(&height, m_height); return height; }
 int main() {
     CSprite_00b1b5e0 s; s.m_height = 12.4f; bool ok = s.GetHeight() == 12;

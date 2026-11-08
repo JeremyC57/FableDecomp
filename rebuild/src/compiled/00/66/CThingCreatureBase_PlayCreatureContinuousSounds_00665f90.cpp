@@ -16,6 +16,7 @@
 //   GetSubDef result and the component test are one `&&`; the channel name is a named local built from the counter read
 //   before the counter is stored back, inside its own block after the component lookup (so the lookup key, a local of
 //   the inlined GetTC, shares the voice local's frame word, not the int-string temporary's).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PData;
@@ -76,11 +77,11 @@ class CThingCreatureBase { public:
     CInterfaceMap m_interfaces;             // +0x44
     unsigned char _pad54[0x8c];
     CThingCreatureDef* PDef;                // +0xe0 CDefPointer<CThingCreatureDef const>::Object
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

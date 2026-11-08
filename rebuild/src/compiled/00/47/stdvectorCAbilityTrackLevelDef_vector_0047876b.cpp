@@ -13,6 +13,7 @@
 // helpers `__forceinline`.
 // Label: the catalog's "CAbilityTrackLevelDef_vector_CopyAndResize" (single caller 0x004786F0).
 // Leaf: ??0?$vector
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -32,13 +33,13 @@ public:
     allocator(const allocator&) { }
 };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val)
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val)
 {
     new (__p) _T1(__val);
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                                 const __false_type&)
 {
     _ForwardIter __cur = __result;
@@ -48,7 +49,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
+FABLE_FORCEINLINE _ForwardIter uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
 {
     return __uninitialized_copy(__first, __last, __result, __false_type());
 }

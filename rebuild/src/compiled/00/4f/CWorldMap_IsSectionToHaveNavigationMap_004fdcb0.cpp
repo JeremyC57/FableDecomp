@@ -14,6 +14,7 @@
 // Shape: CCharString::operator== inline with its null-block `strcmp(text, "")` arm (landed 0x0083BF90); each search is
 //   one call over the CFilter_Bind2 temporary built from the two filter temporaries; its bool result is dropped and the
 //   out pointer is tested.
+#include "fable_compiler.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -61,7 +62,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                                      // 0x0099EC30
     ~CCharString();                                                             // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

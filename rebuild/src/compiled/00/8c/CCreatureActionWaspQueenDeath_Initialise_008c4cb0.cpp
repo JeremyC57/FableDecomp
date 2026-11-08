@@ -15,6 +15,7 @@
 // GetSubDef and GetEffectFromString get same-TU stand-in bodies (write the out slot / `long&` only), so VC7.1 knows neither the def
 // slot nor the effect-type word escapes: the `PDeathEffect = CIntelligentPointer<CThing>(effect)` temporary (forceinline ctor: base
 // ctor, vtable store, SetPItem) then overlays the dead effect-type word as in retail.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -35,7 +36,7 @@ template <class T> struct CDefSlot {         // the out-slot GetSubDef fills (co
     T* m_p;
     CDefSlot() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -114,7 +115,7 @@ class CBaseObject;
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentThingPointer() : CBaseIntelligentPointer() { }
-    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114

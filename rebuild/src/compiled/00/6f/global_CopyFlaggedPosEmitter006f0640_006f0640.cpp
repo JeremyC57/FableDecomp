@@ -10,6 +10,7 @@
 // 13-byte block with a memberwise user operator= (its implicit one block-copies 13 bytes: 3 dwords + 1 byte); then a long at +0x10 (the outer struct realigns) and a CIntelligentPointer at +0x14
 // (SetPItem(other.GetPItem()), CBaseIntelligentPointer @ 0x00A01B50 / 0x00A01B90). The manifest's
 // `CTCSmokeGenerator::CGenerationPos` label is propagated (that record is 0x14 bytes, see 0x00722C90).
+#include "fable_compiler.h"
 class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
@@ -21,7 +22,7 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"

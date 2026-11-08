@@ -10,6 +10,7 @@
 //   0x0074B770, CTCCarrying::UpdateCarriedObjects 0x006A1D60; game-interface slots 418 (+0x688) and 474 (+0x768).
 // Layout: the landed MakeHeroCarryItemInHand / SetHeroHandLampAsLit thing model (component mask +0x20, map +0x44, dead bit +0x91); CGameEvent per Ego_r.pdb (landed 0x00690C70).
 // Shape: the walk-component lookup (kind 7) uses the ternary entry pick so the component loads straight into ecx; the other lookups use the eax join.
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);
 extern "C" __declspec(noreturn) void __cdecl abort();
 struct CTCBase_Retail;
@@ -23,19 +24,19 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
     STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
             it = m_pLast;
         return it->m_pTC;
     }
-    __forceinline CTCBase_Retail* FindPick(long kind)      // the ternary entry pick (component loaded straight into the use register)
+    FABLE_FORCEINLINE CTCBase_Retail* FindPick(long kind)      // the ternary entry pick (component loaded straight into the use register)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return (it == m_pLast || kind < it->m_kind ? m_pLast : it)->m_pTC;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -55,8 +56,8 @@ struct CThing_Retail {
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
     void SetInLimbo(bool limbo);                   // 0x004C8CF0
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
-    __forceinline bool TestComponent(unsigned long position) const    // STLport bitset<274>::test with its range check
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
+    FABLE_FORCEINLINE bool TestComponent(unsigned long position) const    // STLport bitset<274>::test with its range check
     {
         if (position >= 274) {
             puts("bitset");
@@ -79,8 +80,8 @@ __declspec(noinline) STCEntry_Retail* CTCMap_Retail::LowerBound(const unsigned l
         ++it;
     return it;
 }
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-__forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 
 #include "engine/C3DVector.h"
 #define VPAD1(a) virtual void a();

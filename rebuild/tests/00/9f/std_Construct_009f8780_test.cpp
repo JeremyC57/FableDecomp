@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -28,7 +29,7 @@ struct CGraphicDataBankInfo {                    // CGraphicBankManager::CGraphi
     CCharString                       BankHandle;       // +0x2C
     CCountedPointer<CGraphicDataBank> GraphicDataBank;  // +0x30
     CGraphicDataBankInfo() { }
-    __forceinline CGraphicDataBankInfo(const CGraphicDataBankInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CGraphicDataBankInfo(const CGraphicDataBankInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : Init(o.Init), BankHandle(o.BankHandle), GraphicDataBank(o.GraphicDataBank) { }
 };
 

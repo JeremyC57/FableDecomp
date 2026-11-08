@@ -13,6 +13,7 @@
 //        interface lookup key. The component is the one-ternary entry select, so it lands straight in ecx for the virtual.
 // Layout: retail CTCUnholyPower sits 4 bytes below the PDB here: PTarget +0x6D (PDB +0x71, an odd-offset
 //         CIntelligentPointer, so the pointer classes are pack(1)), IsZTargetting +0x75 (PDB +0x79). CPlayer::ZTargeting +0x20A.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CBaseObject;
@@ -25,7 +26,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing() { SetPItem(0); }
     CIntelligentPointerConstThing(const CThing* item);              // 0x00668B60
-    __forceinline CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other)
+    FABLE_FORCEINLINE CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other)
     {
         CThing* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
@@ -60,13 +61,13 @@ class CThing { public:
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

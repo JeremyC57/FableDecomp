@@ -25,6 +25,7 @@
 //   retail address binds one mangled name.
 // Naming wave 35: identity reg 00ef02d2 "OpinionMan" in 00ef0090; Alloc 00ef3660; vtable 012f63b4 slot 1; PDB ?Main@COpinionMan@CPersonalScript_EmptyScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified COpinionMan::Main (wave3/labels_alloc.tsv); PDB ?Main@COpinionMan@CPersonalScript_EmptyScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@COpinionMan@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -37,7 +38,7 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 #include "engine/CGameScriptInterface.h"
 class C2DCoordI;
 class C2DVector;
@@ -906,18 +907,18 @@ virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 namespace NScript {
 #pragma inline_depth(0)
 struct CHeldThing {                                    // depth-0 holder: its inline dtor expands, the ~CScriptThing inside it stays a call
     CScriptThing Thing;
-    __forceinline CHeldThing(const CScriptThing& t) : Thing(t) {}
+    FABLE_FORCEINLINE CHeldThing(const CScriptThing& t) : Thing(t) {}
     ~CHeldThing() {}
 };
 #pragma inline_depth()
 struct CIsThing : CPredicateBase {                     // vtable 0x012C2FE8
     CHeldThing Thing;
-    __forceinline CIsThing(const CScriptThing& t) : Thing(t) {}
+    FABLE_FORCEINLINE CIsThing(const CScriptThing& t) : Thing(t) {}
     virtual bool operator()() const;
     virtual CPredicateBase* Clone() const;
     ~CIsThing() {}                                     // out-of-line copy 0x00EF7AB0

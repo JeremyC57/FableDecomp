@@ -14,6 +14,7 @@
 //   descending address order and the three diagonal ones last, which VC7.1 follows only in statement order, so the inline
 //   matrix ctor writes its members in that order. C3DVector needs a user operator= for the camera-position copy to read
 //   through the camera pointer (`mov ecx,[eax+54h]`) instead of forming the member address.
+#include "fable_compiler.h"
 class CRGBFloatColour;
 class C4DVector { public:
     float X, Y, Z, W;
@@ -85,7 +86,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

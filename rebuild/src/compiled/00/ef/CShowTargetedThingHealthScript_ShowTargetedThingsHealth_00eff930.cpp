@@ -19,6 +19,7 @@
 //   late returns retail sends to the out-of-line copy, and `for (;;) { if (IsActiveThreadTerminating()) return; ... }`.
 //   The counted-pointer assignment reads the source's Info then Data first (the landed RemoveParty 0x00D732F0 model).
 //   IsAlive and IsDead are inline virtuals expanded on the locals, so IsDead leaves its own virtual IsAlive call.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -67,7 +68,7 @@ class CScriptThing : public CBaseClass { public:
     virtual bool IsDead() const { return !IsAlive(); }                       // slot 76 (+0x130) 0x004AA890
     CCountedPointer<CScriptThing> PImp;                               // +0x04 Data, +0x08 Info
     CScriptThing() {}
-    __forceinline ~CScriptThing() {}                    // out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() {}                    // out-of-line copy 0x004AA840
     const CScriptThingImp* Imp() const { return (const CScriptThingImp*)PImp.Data; }
 };
 inline bool operator==(const CScriptThing& a, const CScriptThing& b)

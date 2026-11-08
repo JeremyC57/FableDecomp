@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <stdlib.h>
 namespace NHeroInformationScreens { class CBase; }
@@ -5,7 +6,7 @@ namespace std {
 template <class T> class allocator {
 public:
     allocator() {}
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
 template <class V, class A> struct _STLP_alloc_proxy : public A {
     V _M_data;

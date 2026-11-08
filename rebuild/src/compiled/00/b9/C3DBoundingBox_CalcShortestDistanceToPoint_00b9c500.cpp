@@ -11,6 +11,7 @@
 //   padding into the next body (0x00B9C620): BOUNDS_FIX.tsv. Identity: Ego_r.pdb / FableWin.pdb
 //   ?CalcShortestDistanceToPoint@C3DBoundingBox@@QBEMABVC3DVector@@@Z (the catalog label CalcShortestDistanceToPointSquared is
 //   propagated from the fsqrt-less twin 0x00B49810).
+#include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
@@ -21,10 +22,10 @@ class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
     C3DVector MaxCoord;                                 // +0x0c
-    __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const;
+    FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const;
     float CalcShortestDistanceToPoint(const C3DVector& point) const;
 };
-__forceinline float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
+FABLE_FORCEINLINE float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
 {
     if (g_SSEAvailable) {
         float result;

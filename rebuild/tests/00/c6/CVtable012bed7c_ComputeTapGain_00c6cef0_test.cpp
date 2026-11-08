@@ -1,5 +1,6 @@
 // Behaviour test for 0x00C6CEF0 (source body copied from src/00c6cef0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
 #define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
 #endif
@@ -40,7 +41,7 @@ static unsigned long long ra_tsc = 1000000;
 // Retail-asm: 0x00C6CEFE `fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]` -- libpk's inline-assembly rounding helper (the product homed in the dead `scale` slot, the result in the `push ecx` slot). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)

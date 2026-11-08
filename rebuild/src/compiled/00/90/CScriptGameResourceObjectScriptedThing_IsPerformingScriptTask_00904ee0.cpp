@@ -9,6 +9,7 @@
 // Shape: same nested tests and inlined GetInterface as ClearCommands (0x00904310); the result is
 // `!IsEmpty()`, which gives the widened `neg al ; sbb eax,eax ; inc eax` tail on both
 // arms, and the dead/null exits share `xor al,al`.
+#include "fable_compiler.h"
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
 class CTCBase;
@@ -24,7 +25,7 @@ class CThing_Retail { public:
     unsigned char  _pad54[0x3d];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

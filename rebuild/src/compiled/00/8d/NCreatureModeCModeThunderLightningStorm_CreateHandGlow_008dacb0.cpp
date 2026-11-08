@@ -6,6 +6,7 @@
 //   VC7.1 overlays its word with the intelligent-pointer temporary, the GetInterface key and the bone-name string (as
 //   retail); GetInterface out-store as one ternary.
 // Callees: GetSubDef 0x00669580 (same-TU stand-in body), CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPos 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020, CTCDParticleEmitter::AttachToThing 0x006E0BE0.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 #include "engine/C3DVector.h"
@@ -74,7 +75,7 @@ class CThing { public:
     unsigned char  _pad54[0x3d];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

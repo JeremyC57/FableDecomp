@@ -16,6 +16,7 @@
 //   whose locals (the axes and the index) live in the frame and the dead `sleeper` slot, with `((CThing_Retail*)user.GetPThing())` evaluated
 //   inside the GetFreeActionPoint argument list (after the other pushes); C3DVector has no user copy/assignment, so the
 //   forward axis copies as three dword moves.
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -28,7 +29,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020 (the key by address)
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -42,7 +43,7 @@ struct CThing_Retail {
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -60,7 +61,7 @@ public:
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-__forceinline bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CScriptThing& user, C3DVector& position,
+FABLE_FORCEINLINE bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CScriptThing& user, C3DVector& position,
                                         C3DVector& orientation)
 {
     CRightHandedSet axes;

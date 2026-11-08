@@ -12,9 +12,10 @@
 // field is `Min + (float)GFRandom((unsigned long)Max, GetPWorldSeed())` with the engine's inline LCG random (seed advanced in
 // place, GFROR13, `range ? seed % range : 0`; arguments evaluated right to left, so the seed accessor runs before the
 // float-to-integer conversion); the def pointer is re-read from the member before each field.
+#include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long);      // 0x00497890
 
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

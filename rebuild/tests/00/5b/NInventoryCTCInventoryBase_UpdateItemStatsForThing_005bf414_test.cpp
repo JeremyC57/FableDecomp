@@ -1,4 +1,5 @@
 // Behaviour test for 005bf414: body copied from src/005bf414.cpp (CTCInventoryBase::UpdateItemStatsForThing), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -17,7 +18,7 @@ class CThing { public:
     CPresenceBits m_present;
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

@@ -13,6 +13,7 @@
 //   VC7.1 home both def pointers and the lookup key in the dead argument slots.
 // Layout: retail CTCInventory (engine/CTCInventory.h, STLport 4.6 12-byte vectors): QuickAccessItems +0x148,
 //   ContextSensitiveItems +0x154, ContextSensitiveUpdate +0x1D4 (as the landed GetQuickAccessItem 0x00581E33 / OnItemAdded); retail CThing bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -26,7 +27,7 @@ public:
     unsigned char _pad00[0x20];
     std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -50,7 +51,7 @@ class CDefClassBase { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();

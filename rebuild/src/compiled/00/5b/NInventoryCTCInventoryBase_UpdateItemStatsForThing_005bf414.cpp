@@ -12,6 +12,7 @@
 // Shape: the component local is zeroed first (`and [ebp-8],0`) and its address taken by GetInterface, so the miss path reads
 // it back from the frame; the GetInterface key sits in the dead `thing` slot; `this` is spilled to [ebp-4] around the lookup.
 // Layout: retail CTCInventoryBase Categories {first,last,end} +0x20 (0x2C-byte CCategory); CThing bitset +0x20, map +0x44.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

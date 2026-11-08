@@ -11,6 +11,7 @@
 // Shape: frame-pointer size TU (`#pragma optimize("y", off)` + `("s", on)`); the empty tags are homed in the high byte of
 //   the `atend` slot (`lea eax,[ebp+1Bh]`) thanks to the same-TU `__uninitialized_copy` body; `max` works on references
 //   (`lea ecx,[ebp+14h]` / `lea ecx,[ebp-4]`), the old size's frame word is reused for the new block.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -39,7 +40,7 @@ EHeroAbility* __fastcall __uninitialized_copy(const EHeroAbility* __first, const
 #pragma auto_inline(on)
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -47,13 +48,13 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
     return __cur;
 }
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> struct allocator {
-    __forceinline _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, size_t) { if (__p) free(__p); }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -68,8 +69,8 @@ public:
     _Tp*                                                _M_finish;            // +0x04
     _STLP_alloc_proxy<_Tp*, _Tp, allocator<_Tp> >       _M_end_of_storage;    // +0x08
     size_t size() const { return size_t(_M_finish - _M_start); }
-    __forceinline void _M_clear() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_clear() { _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         _M_start = __s;
         _M_finish = __f;

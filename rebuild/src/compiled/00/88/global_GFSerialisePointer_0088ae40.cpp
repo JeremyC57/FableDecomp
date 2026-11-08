@@ -26,6 +26,7 @@
 //   CThingManager::PeekWorld() and CWorld::PeekDefinitionManager() (the plain member chain rotates eax/edx/ecx one step
 //   off retail), the dummy component through GetTC<T>(T**) into a zeroed pointer, and
 //   `pointer = CIntelligentPointer<CThing>(thing)` (the temporary's implicit destructor calls the base one directly).
+#include "fable_compiler.h"
 class CBaseObject {
 public:
     virtual ~CBaseObject();
@@ -82,7 +83,7 @@ public:
     unsigned char    CreatedByOwnerThingCreation : 1;
 
     unsigned __int64 GetUniqueID() const { return UniqueID; }   // Ego_r ?GetUniqueID@CThing@@QBE_KXZ
-    template <class T> __forceinline bool GetTC(T** out)        // Ego_r ??$GetTC@VCTCThingUIDDummyForSerialisation@@@CThing@@QAE_NPAPAV...
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)        // Ego_r ??$GetTC@VCTCThingUIDDummyForSerialisation@@@CThing@@QAE_NPAPAV...
     {
         long type = T::StatGetInterfaceType();
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {

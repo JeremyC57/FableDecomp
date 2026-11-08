@@ -4,6 +4,7 @@
 // the purchase: the price paid, the copy created at the buyer for its player with an empty name, added to the inventory at
 // the price, the shopkeeper's sold-item event (buyer, item, false) only when the keeper has an event component, and the
 // message 0x13 (1000 frames, buyer position, buyer).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -103,7 +104,7 @@ class CThing { public:
         }
         return (m_presentBits[position >> 5] & (1UL << (position & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -114,7 +115,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -125,7 +126,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetCheckedInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetCheckedInterface(T** ppOut, long interfaceType)
     {
         if (TestComponent(interfaceType)) {
             long type = interfaceType;
@@ -154,7 +155,7 @@ CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, l
     g_createOrientation = orientation; g_createFlags = flags; std::strcpy(g_createName, name.m_text);
     return g_createResult;
 }
-__forceinline CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
 {
     long defIndex = item->DefIndex;
     return CreateThingObject(defIndex, &at->GetPosition(), owner->GetPlayer(), 0, 0, name);

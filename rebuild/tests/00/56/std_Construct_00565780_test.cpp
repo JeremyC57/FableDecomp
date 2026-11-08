@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -21,7 +22,7 @@ struct CActivity {                               // CTCHeroOnlineScoreboard::CAc
     unsigned char NumDecPlacesToShow;            // +0x0C
     bool          LowerIsBetter;                 // +0x0D
     CActivity() { }
-    __forceinline CActivity(const CActivity& o) : Name(o.Name), Description(o.Description), UnitOfMeasurement(o.UnitOfMeasurement), NumDecPlacesToShow(o.NumDecPlacesToShow), LowerIsBetter(o.LowerIsBetter) { }
+    FABLE_FORCEINLINE CActivity(const CActivity& o) : Name(o.Name), Description(o.Description), UnitOfMeasurement(o.UnitOfMeasurement), NumDecPlacesToShow(o.NumDecPlacesToShow), LowerIsBetter(o.LowerIsBetter) { }
 };
 
 void __fastcall _Construct(CActivity* p, const CActivity& value)

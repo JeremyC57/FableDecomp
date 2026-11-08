@@ -14,6 +14,7 @@
 // (`_ftol`) and compared back as `GetHealth(briar) < health` (fild ; fcompp ; test ah,41h); the hit test is a named
 // bool over one `&&` chain holding the "" conversion temporary (flag in ebx); with two exits the inline destructor
 // is expanded at both.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -30,7 +31,7 @@ class CScriptThing;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitBy(attacker); return false; }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }

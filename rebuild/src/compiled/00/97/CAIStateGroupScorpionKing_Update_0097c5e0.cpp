@@ -25,6 +25,7 @@
 //   retail CCombatActionBase size, no members of its own). CAIBrain Creature +0x18, read through the inline
 //   CAIStateGroupBase::GetCreature() (Ego_r.pdb `IBEAAVCThingAICreature@@XZ`; the reference accessor gives retail's eax for the
 //   temporary's argument, a raw `*PBrain->Creature` takes edx).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
@@ -42,7 +43,7 @@ class CThing { public:                                      // partial view, ret
     unsigned char      _pad_0x04[0x20 - 0x04];
     std::bitset<274>   UsingComponents;                     // +0x20
     TCMap              Components;                          // +0x44
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (UsingComponents[T::INTERFACE_TYPE]) {
             TCMap* map = &Components;

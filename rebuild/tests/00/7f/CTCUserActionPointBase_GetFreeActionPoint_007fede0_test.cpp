@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __fastcall
@@ -32,7 +33,7 @@ class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 #include <string.h>
 
 unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

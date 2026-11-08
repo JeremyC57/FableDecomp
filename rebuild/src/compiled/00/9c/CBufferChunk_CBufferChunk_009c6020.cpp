@@ -10,6 +10,7 @@
 // once into esi, the early `pop esi ; ret` is the outer null test, the inlined body re-tests the block after taking
 // the lock, `delete` of the global is the null-tested destructor + class operator delete pair, and the lock release is
 // the tail jump.
+#include "fable_compiler.h"
 class CMemoryAllocator { public:
     void InternalDeallocate(void* block);     // 0x009F2920
     long GetAllocationCount();                // 0x009F1F10
@@ -23,7 +24,7 @@ void __cdecl GFLeaveAllocatorLock();          // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;          // 0x013CAA90
 extern bool              g_bDestroyAllocatorWhenEmpty_013caa94; // 0x013CAA94
 
-__forceinline void __fastcall GFFreeFromGlobalAllocator(void* block)   // 0x009A4350, inlined here (a plain `inline` stays out of line)
+FABLE_FORCEINLINE void __fastcall GFFreeFromGlobalAllocator(void* block)   // 0x009A4350, inlined here (a plain `inline` stays out of line)
 {
     GFEnterAllocatorLock();
     if (block && g_pGlobalAllocator_013caa90) {

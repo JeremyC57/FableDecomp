@@ -17,6 +17,7 @@
 //   C4DVector::Initialise(const C3DVector&, float) (PDB): with an inline member call in the body VC7.1 unrolls the loop
 //   by four (retail's `cmp ebx,4 ; jl` + remainder loop); the same stores written field by field, through a reference
 //   local, as a while loop or with a signed index are never unrolled (234v391).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
@@ -26,8 +27,8 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 #include "engine/CDataInputStream.h"
 class CDataInputReader : public CDataInputStream {         // inline Read helper (no extra state)
 public:
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))

@@ -1,4 +1,5 @@
 // Behaviour test for 0x004ED2F1 CopyBackwardPtrs_Element48_004ed2f1: a copy of the source model with working stand-ins for the out-of-line callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -24,7 +25,7 @@ struct SElement48 {
     CRecordHead   Head;                // +0x00
     long          Value;               // +0x28
     SRecordTail   Tail;                // +0x2C
-    __forceinline SElement48& operator=(const SElement48& other)
+    FABLE_FORCEINLINE SElement48& operator=(const SElement48& other)
     {
         Head = other.Head;
         Value = other.Value;
@@ -36,7 +37,7 @@ struct SElement48 {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
-__forceinline SElement48* __copy_backward(SElement48* first, SElement48* last, SElement48* result, const random_access_iterator_tag&, int*)
+FABLE_FORCEINLINE SElement48* __copy_backward(SElement48* first, SElement48* last, SElement48* result, const random_access_iterator_tag&, int*)
 {
     for (int n = last - first; n > 0; --n)
         *--result = *--last;

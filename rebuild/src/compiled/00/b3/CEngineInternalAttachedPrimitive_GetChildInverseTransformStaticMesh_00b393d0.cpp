@@ -11,6 +11,7 @@
 // Shape: the stats are a counted pointer released inline at the end (the landed HasDummyObject 0x004BE2C0 model); the
 // inverse is an inline cofactor/determinant 3x3 inverse plus the negated rotated translation, written in retail's
 // operand order.
+#include "fable_compiler.h"
 #include "engine/_quarantine/CEngineInternalPrimitiveMeshBase.h"
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
@@ -35,13 +36,13 @@ class CMatrix3x4 { public:
     float E21, E22, E23;
     float E31, E32, E33;
     float E41, E42, E43;
-    __forceinline void SetIdentity()
+    FABLE_FORCEINLINE void SetIdentity()
     {
         E43 = 0.0f; E42 = 0.0f; E41 = 0.0f;
         E32 = 0.0f; E31 = 0.0f; E23 = 0.0f; E21 = 0.0f; E13 = 0.0f; E12 = 0.0f;
         E33 = 1.0f; E22 = 1.0f; E11 = 1.0f;
     }
-    __forceinline void SetInverse(const CMatrix3x4& m)
+    FABLE_FORCEINLINE void SetInverse(const CMatrix3x4& m)
     {
         float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
         float inv = 1.0f / det;

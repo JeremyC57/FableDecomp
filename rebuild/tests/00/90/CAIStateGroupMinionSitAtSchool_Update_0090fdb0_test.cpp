@@ -1,5 +1,6 @@
 // Behaviour test for 0090fdb0: final.cpp copied verbatim; every callee is stubbed and scripted so the school window,
 // the staggered end time, the walk/run choice, the hand-raising and the random leave test are observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -38,12 +39,12 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    __forceinline float GetMagnitude() const;
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
+    FABLE_FORCEINLINE float GetMagnitude() const;
 };
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-__forceinline float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
+FABLE_FORCEINLINE float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -67,7 +68,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
             long type = interfaceType;
@@ -134,7 +135,7 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
-    __forceinline unsigned long RandomFrames(unsigned long seconds)   // random frame count below seconds * fps
+    FABLE_FORCEINLINE unsigned long RandomFrames(unsigned long seconds)   // random frame count below seconds * fps
     {
         long fps = g_framesPerSecond;
         unsigned long* seed = GetPWorldSeed();

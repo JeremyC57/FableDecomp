@@ -12,6 +12,7 @@
 //   +0x2c bit 23), interface map +0x44; the TC 0x47 component's hold word +0x10 (class not identified).
 // Shape: DiesOff read once into a bool local (bl); the TC 0x47 test is the out-parameter const GetInterface (component left in eax), the shot TC through the
 //   non-const one; the update path is the nested success path returning false, the kill block laid out last.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -43,7 +44,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
@@ -52,7 +53,7 @@ public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline bool GetInterface(const T** out, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** out, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -75,7 +76,7 @@ public:
     long DieOffTimer;                           // +0xd4
     bool DiesOff;                               // +0xd8
     void UpdateObject_007034d0();               // 0x007034D0
-    __forceinline bool IsDieOffHeld() const
+    FABLE_FORCEINLINE bool IsDieOffHeld() const
     {
         const CTCDieOffHold_47* hold;
         return GetInterface(&hold, 0x47) && hold->HoldCount != 0;

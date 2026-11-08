@@ -13,6 +13,7 @@
 //   `texture ? texture->PD3DTexture : 0` inside a __forceinline CRenderManagerCore::SetTexture(long, const CTexture*)
 //   overload (the landed 0x00BA7DB0 device) with the -1 stage tests outside it: that loads g_pRenderManagerCore at entry
 //   and names block/stages ebx/ebp as retail; the select written in this body loads the core after it.
+#include "fable_compiler.h"
 struct IDirect3DBaseTexture9 { };
 struct IDirect3DTexture9 : IDirect3DBaseTexture9 { };
 struct IDirect3DDevice9 {
@@ -64,7 +65,7 @@ public:
     unsigned long      Bits;                       // +0x04 ByteLength:28, AllocationSource:4
 };
 
-__forceinline void CRenderManagerCore::SetTexture(long stage, const CTexture* texture)
+FABLE_FORCEINLINE void CRenderManagerCore::SetTexture(long stage, const CTexture* texture)
 {
     SetTexture(stage, texture ? texture->PD3DTexture : 0);
 }

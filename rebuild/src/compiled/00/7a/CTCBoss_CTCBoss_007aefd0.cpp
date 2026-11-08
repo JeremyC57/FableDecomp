@@ -13,6 +13,7 @@
 // currentBossPhase +0x18, NextWeapon +0x1C, BCountStrikes +0x20, EnablePhaseChanges +0x21, PhaseStartPos +0x22 (unaligned, so
 // C3DVector is declared packed), HelperCreatures +0x30, Effects +0x3C; retail CThing: bitset +0x20, map +0x44, base def +0x70,
 // Dead +0x91.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 #include "engine/C3DVector.h"
 #pragma pack(pop)
@@ -33,7 +34,7 @@ public:
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

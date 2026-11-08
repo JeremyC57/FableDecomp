@@ -17,6 +17,7 @@
 // Shape: a dense switch over CurrentAbility (1..19, default merged with the four empty cases); each case reads ParentThing
 //   once into a local and runs the inline `if (HasTC(t)) GetTC(t)->Cancel();` pair, the key homed in the `push ecx` word.
 //   In a body this large VC7.1 keeps HasTC/GetInterface/GetTC out of line unless they are `__forceinline`.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -27,14 +28,14 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
     template <class T>
-    __forceinline void GetInterface(long type, T** out)
+    FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -42,7 +43,7 @@ class CThing { public:
         *out = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T>
-    __forceinline T* GetTC(long type, T*)
+    FABLE_FORCEINLINE T* GetTC(long type, T*)
     {
         T* tc;
         GetInterface(type, &tc);

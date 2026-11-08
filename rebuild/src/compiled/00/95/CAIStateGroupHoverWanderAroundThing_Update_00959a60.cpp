@@ -15,6 +15,7 @@
 // Layout: the generated engine/CAIStateGroup_HoverWanderAroundThing.h spells the vptr as a data member, so the class is
 //          modelled locally with a polymorphic base (PBrain +0x04, PThing intelligent pointer +0x1c as in the header):
 //          the function makes a virtual call through slot 22.
+#include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
 
@@ -41,9 +42,9 @@ struct CBaseIntelligentPointer {
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

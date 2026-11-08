@@ -6,6 +6,7 @@
 //         CompressedOpaquePixelFormat +0xfb0 / CompressedAlphaPixelFormat +0xfb4, MaxCompositeTextureSize +0x10c8, MinRenderTargetSize +0x10cc
 //         (Ego_r.pdb names, retail offsets = PDB - 0x1c0 here); CGraphicBankStateBlock 0x64 bytes (vtable 0x0129C888, landed 0x009FEA20 model);
 //         pixel-format info table 0x0129BA4C (0x24-byte rows, alpha bit count first).
+#include "fable_compiler.h"
 #include <stddef.h>
 void* __cdecl operator new(size_t size);
 void __cdecl operator_delete_00bfe9bc(void* p);         // 0x00BFE9BC
@@ -100,7 +101,7 @@ struct CEngineData_01436e98 {
 };
 extern CEngineData_01436e98* g_pEngine_01436e98;        // 0x01436E98
 
-__forceinline long HighestSetBit(unsigned long value)
+FABLE_FORCEINLINE long HighestSetBit(unsigned long value)
 {
     if (value == 0)
         return -1;
@@ -114,7 +115,7 @@ __forceinline long HighestSetBit(unsigned long value)
     r += ((long)((1 << (r + 1)) - value) >> 31) & 1;
     return r;
 }
-__forceinline unsigned long NextPowerOfTwo(unsigned long value)
+FABLE_FORCEINLINE unsigned long NextPowerOfTwo(unsigned long value)
 {
     if (value == 0)
         return 0;

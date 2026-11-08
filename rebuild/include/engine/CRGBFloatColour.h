@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CRGBFLOATCOLOUR_H
 #define FABLE_ENGINE_CRGBFLOATCOLOUR_H
+#include "fable_compiler.h"
 // CRGBFloatColour: one retail model (merged 2026-11-03 from chunk 723b/723c and Codex pass 13). Ego_r.pdb class (V-keyed,
 // 16 bytes: float R +0, G +4, B +8, A +0xC; CShaderRenderManager::AmbientColour +0x1AC / FogColour +0x1BC). Constructors from the
 // Ego_r.pdb name set: ??0CRGBFloatColour@@QAE@XZ (empty), ??0CRGBFloatColour@@QAE@MMMM@Z, ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z;
@@ -23,7 +24,7 @@ public:
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
     // ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z (inline; chunk 723c, RenderSingleSprite 0x00BC04F0): each byte channel times
     // 1/255 (the float pool 0x01231724), R, G, B, A in member order.
-    __forceinline CRGBFloatColour(const CRGBColour& colour)
+    FABLE_FORCEINLINE CRGBFloatColour(const CRGBColour& colour)
         : R(colour.R * (1.0f / 255.0f)), G(colour.G * (1.0f / 255.0f)), B(colour.B * (1.0f / 255.0f)), A(colour.A * (1.0f / 255.0f)) { }
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
@@ -33,7 +34,7 @@ public:
     // AddAbilityToList 0x00570332: the four __ftol2 calls on the returned colour's pointer, A first, after the later arguments).
     // __forceinline, not plain inline: retail expands it in that /Os TU (calls 0x00570785..0x005707AB to __ftol2 0x00BFEA70, no
     // call to 0x00429880) while the out-of-line COMDAT exists; plain in-class inline is called out of line under /Os.
-    __forceinline CRGBColour GetRGBColour() const
+    FABLE_FORCEINLINE CRGBColour GetRGBColour() const
     {
         return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f),
                           (unsigned char)(A * 255.0f));
@@ -49,8 +50,8 @@ public:
     CRGBFloatColour operator+(const CRGBFloatColour& c) const { return CRGBFloatColour(R + c.R, G + c.G, B + c.B, A + c.A); }
     CRGBFloatColour operator-(const CRGBFloatColour& c) const { return CRGBFloatColour(R - c.R, G - c.G, B - c.B, A - c.A); }
     CRGBFloatColour operator*(float f) const { return CRGBFloatColour(R * f, G * f, B * f, A * f); }
-    __forceinline CRGBFloatColour Interpolate(const CRGBFloatColour& colour, float t) const { return *this * (1.0f - t) + colour * t; }
-    __forceinline CRGBColour GetRGBColourClamped() const
+    FABLE_FORCEINLINE CRGBFloatColour Interpolate(const CRGBFloatColour& colour, float t) const { return *this * (1.0f - t) + colour * t; }
+    FABLE_FORCEINLINE CRGBColour GetRGBColourClamped() const
     {
         long r = GFFloatToLongNear(R * 255.0f);
         long g = GFFloatToLongNear(G * 255.0f);
@@ -71,7 +72,7 @@ public:
     // where GetRGBColour's own COMDAT 0x00429880 converts A first. Same body as GetRGBColour; a separate function so the member order
     // of the expansion is the compiler's (not a different spelling). __forceinline as GetRGBColour above: plain in-class inline is called
     // out of line under /Os (chunk 867 grade v3: four calls to the operator's COMDAT, 2796 bytes against retail's 2995).
-    __forceinline operator CRGBColour() const
+    FABLE_FORCEINLINE operator CRGBColour() const
     {
         return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f),
                           (unsigned char)(A * 255.0f));
@@ -81,7 +82,7 @@ public:
     // Retail opt-in (chunk 855, row 0x0052F900 NUISystem::CComponent::UpdateColour): FableWin.pdb ?Clamp@CRGBFloatColour@@QAEXXZ, inline in
     // retail (no out-of-line copy is bound; __forceinline: with plain inline VC7.1 calls it out of line in UpdateColour). Clamp limits each channel
     // to [0, 1] in member order (0x0052FCF7..0x0052FDC7: above 1.0f stores 1.0f, else below 0.0f stores 0.0f).
-    __forceinline void Clamp()
+    FABLE_FORCEINLINE void Clamp()
     {
         if (R > 1.0f) R = 1.0f; else if (R < 0.0f) R = 0.0f;
         if (G > 1.0f) G = 1.0f; else if (G < 0.0f) G = 0.0f;

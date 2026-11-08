@@ -16,6 +16,7 @@
 // FinalAction +0x90, RadialBlurFadeKey +0x98, UseCollision +0x9c, ScheduleForCancel +0x9e (as the landed CancelMove
 // 0x007AA480), FakeCollideWithSomething +0x9f, RushDelayFrameCount +0xa0, CompletedExitModes +0xa4 sit 4 below the PDB.
 // Shape: the sibling CTCBattleCharge constructor 0x007A71B0 (same TU family); FLT_MAX is 0x7F7FFFFF.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -84,13 +85,13 @@ public:
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -98,7 +99,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

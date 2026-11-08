@@ -22,6 +22,7 @@
 //   from the landed NScript::CQ_HobbeCaveScript::CHobbeLeader::Main 0x00D8FA30.
 // Naming wave 35: identity reg 00e1e159 "M_BanditTrigger" in 00e1e110; Alloc 00e1e880; vtable 012e1538 slot 1; PDB ?Main@CM_BanditTrigger@CQR_EscortTraderScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_BanditTrigger::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_BanditTrigger@CQR_EscortTraderScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_BanditTrigger@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQR_EscortTraderScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -44,7 +45,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }
@@ -916,8 +917,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 struct CCharStringVector { CCharString* _M_start; CCharString* _M_finish; CCharString* _M_end_of_storage; };
 class CScriptDef { public:
     unsigned char _pad[0x9ac];

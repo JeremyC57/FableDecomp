@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,14 +25,14 @@ class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCop
 class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];};
 class CClass:public CBaseObject{unsigned char pass9_unread_class[12];};
 // Layout: header/RTTI true ancestry; donor Dead bit161 maps toretail145.
-class CThing:public CClass{unsigned char pass9_unread_thing[125];public:unsigned char Dead:1;__forceinline bool IsDead()const{return Dead!=0;}void SetInLimbo(bool);};
+class CThing:public CClass{unsigned char pass9_unread_thing[125];public:unsigned char Dead:1;FABLE_FORCEINLINE bool IsDead()const{return Dead!=0;}void SetInLimbo(bool);};
 class CBaseIntelligentPointer{public:virtual~CBaseIntelligentPointer();
  // Layout: PData is an opaque four-byte pointer representation. Its pointee
  // is not named or modeled; only the original typed accessor is called here.
  unsigned char PData[4];CBaseObject*GetPItem()const;
 };
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:__forceinline T*operator->()const{return static_cast<T*>(GetPItem());}};
-template<class T>__forceinline bool __fastcall IS_THING_ALIVE(const T&p){return p.operator->()!=0&&!p->IsDead();}
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:FABLE_FORCEINLINE T*operator->()const{return static_cast<T*>(GetPItem());}};
+template<class T>FABLE_FORCEINLINE bool __fastcall IS_THING_ALIVE(const T&p){return p.operator->()!=0&&!p->IsDead();}
 namespace std{
 template<class T>class allocator{};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};

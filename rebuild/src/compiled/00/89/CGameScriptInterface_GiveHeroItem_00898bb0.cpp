@@ -9,6 +9,7 @@
 // arg1 is an "item query" object with a vtable.  We only touch two slots:
 //   vtbl[0x12c/4] -> bool  ShouldGive(this)          (call [eax+0x12c])
 //   vtbl[0x2c /4] -> void* GetItemDef(this)          (call [edx+0x2c])
+#include "fable_compiler.h"
 struct HeroItemQueryVtbl;
 struct HeroItemQuery {
     HeroItemQueryVtbl* vtbl;   // [edi+0]
@@ -50,7 +51,7 @@ struct HeroMap {
     void*    pad_00;                               // +0x0
     void*    endNode;                              // +0x4 accessed as [this+4]
     MapNode* lower_bound(const long* key);         // __fastcall
-    __forceinline void* Find(long kind)            // the inlined map find: end when the key is absent
+    FABLE_FORCEINLINE void* Find(long kind)            // the inlined map find: end when the key is absent
     {
         long key = kind;
         MapNode* found = lower_bound(&key);
@@ -59,7 +60,7 @@ struct HeroMap {
         return found->value;
     }
 };
-__forceinline void* GetTCIfPresent(HeroThing* thing, long kind)
+FABLE_FORCEINLINE void* GetTCIfPresent(HeroThing* thing, long kind)
 {
     void* tc;                                      // deliberately unset when the component is absent (retail reads a dead slot)
     if (thing->flags38 & 0x0800)

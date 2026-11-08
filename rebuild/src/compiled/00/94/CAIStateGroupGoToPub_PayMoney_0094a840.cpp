@@ -15,6 +15,7 @@
 // by-value GetBarman (temporary CIntelligentPointer, vtable 0x0123E7E0).
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub PBar +0x1c, PBarman +0x2c, BarIndex +0x9c; CTCTavernBar (0xb9) Barman +0x18
 // (retail STLport vector 12 bytes); CWorld +0x60 message event manager.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -44,9 +45,9 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer() { }
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer() { }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 class CTCTavernBar { public:                                  // interface 0xb9
     unsigned char _pad0[0x18];

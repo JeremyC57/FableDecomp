@@ -13,6 +13,7 @@
 // slot 48 kind flags). Header debt: engine/CThing.h carries the vptr as data, so the virtual slot needs this local model.
 // Shape: `GetPItem() && type == 5 && (flags >> 17) & 1`, then the interface fetch (bit 13 of +0x24 for 0x2D, LowerBound,
 // end-or-greater -> end) and a tail `return actionPoint->IsActionPointFree();`.
+#include "fable_compiler.h"
 class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
@@ -34,7 +35,7 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                      // +0x91
     bool HasTC(long type) const { return (m_presentBits[type >> 5] & (1UL << (type & 31))) != 0; }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -47,7 +48,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterfaceConst(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterfaceConst(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

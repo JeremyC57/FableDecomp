@@ -14,6 +14,7 @@
 //   __false_type)`: `for ( ; first != last; ++first) _Destroy(&*first);` with `_Destroy(p)` = `p->~_Tp()`. Size TU
 //   (unaligned entry); the size TU does not expand plain `inline` helpers, so the three are __forceinline (as the
 //   __copy helpers of the sibling 0x00478C2D), and _Destroy carries the /Gr TU's __fastcall explicitly.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CAbilityTrackLevelDef {                           // retail 0x48 bytes (only the size and the destructor matter here)
@@ -30,20 +31,20 @@ template <class _Tp> struct __type_traits {
     typedef __false_type has_trivial_destructor;
 };
 
-template <class _Tp> __forceinline void _Destroy(_Tp* __pointer)
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __pointer)
 {
     __pointer->~_Tp();
 }
 
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for ( ; __first != __last; ++__first)
         _Destroy(&*__first);
 }
 
 template <class _ForwardIterator, class _Tp>
-__forceinline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
+FABLE_FORCEINLINE void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(__first, __last, _Trivial_destructor());

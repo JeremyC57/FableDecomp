@@ -15,12 +15,13 @@
 // Layout (PDB, as the landed AddImpulseVelocity 0x00725250 / GetPossibleCollidedWithArea 0x00759870): CTCBase ParentThing +0x04,
 // Position +0x0c, Velocity +0x28, Radius +0x34, CTCPhysicsControlled::ImpulseVelocity +0x88. engine/CTCPhysicsStandard.h does
 // not name the CTCPhysicsBase members (opaque pads), so the class is modelled locally.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}
-    __forceinline C2DBoxI(const C2DBoxI& o)
+    FABLE_FORCEINLINE C2DBoxI(const C2DBoxI& o)
     {
         TopLeft.X = o.TopLeft.X;
         TopLeft.Y = o.TopLeft.Y;

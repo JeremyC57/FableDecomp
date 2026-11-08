@@ -5,6 +5,7 @@
 // Callees: ApplyPixelShader 0x00988140, ApplyVertexShader 0x00988020, the inlined PrepareForRender(0) (0x00B54100 model),
 //   DrawAsIndexedTris 0x00A0AEA0 on the render core @ 0x01436E18.
 // Layout: engine/CEngineSkyRenderer.h (SkySpriteVertexShader +0x110, SkySpritePixelShader +0x130).
+#include "fable_compiler.h"
 #include "engine/CEngineSkyRenderer.h"
 
 class C3DVector { public:
@@ -58,7 +59,7 @@ public:
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, const C4DVector* value);   // 0x00989B50
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

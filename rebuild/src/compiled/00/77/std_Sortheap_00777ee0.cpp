@@ -14,13 +14,14 @@
 // Label correction: the catalog's `_Sort_heap<float*,std::less<float>>` is propagated -- both the inline sift
 // (`cmp ebp,[..] ; jge`) and the callee 0x00776750 compare as SIGNED INTEGERS (00A5A7D0 is the float twin
 // with fcomp), so the element is a 4-byte signed integer (modelled as long).
+#include "fable_compiler.h"
 namespace std {
 template <class _Ty> struct less {
     bool operator()(const _Ty& _Left, const _Ty& _Right) const { return _Left < _Right; }
 };
 template <class _RanIt, class _Diff, class _Ty, class _Pr>
 void __fastcall _Push_heap(_RanIt _First, _Diff _Hole, _Diff _Top, _Ty _Val, _Pr _Pred);   // 0x00776750
-template <class _RanIt, class _Diff, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Diff, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Adjust_heap(_RanIt _First, _Diff _Hole, _Diff _Bottom, _Ty _Val, _Pr _Pred)
 {
     _Diff _Top = _Hole;
@@ -37,13 +38,13 @@ void _Adjust_heap(_RanIt _First, _Diff _Hole, _Diff _Bottom, _Ty _Val, _Pr _Pred
     }
     _Push_heap(_First, _Hole, _Top, _Val, _Pred);
 }
-template <class _RanIt, class _Diff, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Diff, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Pop_heap(_RanIt _First, _RanIt _Last, _RanIt _Dest, _Ty _Val, _Pr _Pred, _Diff*)
 {
     *_Dest = *_First;
     _Adjust_heap(_First, _Diff(0), _Diff(_Last - _First), _Val, _Pred);
 }
-template <class _RanIt, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Pop_heap_0(_RanIt _First, _RanIt _Last, _Pr _Pred, _Ty*)
 {
     _Pop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)), _Pred, (int*)0);

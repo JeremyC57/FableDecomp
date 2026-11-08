@@ -5,6 +5,7 @@
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own Main callback registration00d8e61c stores this function with exact method literal WatchForGrannysRegion and parent receiver; independent PDB nameset agrees. Own Game vtable01260f0c slot12 IsRegionLoaded,72 GetThingWithScriptName,440 SetVillageLimbo/447 SetThingAsUsable; real script base Game64. Counted handle CScriptThing lifetime and assigning returned handle explicit original copy semantics; late cancellation exits call destructor004aa840.
 // Layout: actual typed script ancestry and original counted handle model; inherited Game64; inactive owned trailing quest state unaccessed. Shared headers retained as evidence, unused virtual slots descriptive.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -31,8 +32,8 @@ class CPersistContext;class CBaseObjectPointer;
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& s) :PImp(s.PImp){}
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& s) {PImp=s.PImp;return *this;}
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& s) {PImp=s.PImp;return *this;}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& who) const {if(!PImp.Data)return false;return PImp->MsgIsKilledBy(who);}
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

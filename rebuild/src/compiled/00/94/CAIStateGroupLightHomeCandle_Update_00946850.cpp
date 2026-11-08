@@ -12,6 +12,7 @@
 // component is the uninitialised out-parameter GetTC (the absent branch reads the key slot); the candle position is a
 // frame C3DVector (user copy ctor); the pointer clear goes through a named null CIntelligentPointer.
 // Layout: Ego_r.pdb CAIStateGroup_LightHomeCandle (0x1c): PCandle +0x14; retail CCreatureAction_UseObject is 0xe0 bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCBase;
@@ -24,7 +25,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     const C3DVector& GetPos() const;       // 0x004C73D0
     bool HasTC(long t) const { return (m_presentBits[t >> 5] >> (t & 31)) & 1; }
-    template<class T> __forceinline void GetTC(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetTC(T** ppOut, long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

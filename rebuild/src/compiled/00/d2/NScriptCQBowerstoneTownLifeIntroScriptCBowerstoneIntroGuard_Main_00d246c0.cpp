@@ -19,6 +19,7 @@
 //   explicit __forceinline base-then-member copy (the implicit one is emitted out of line).
 // Naming wave 35: identity reg 00d23e0d "BowerstoneIntroGuard" in 00d23dc0; Alloc 00d24210; vtable 012cb5c4 slot 1; PDB ?Main@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBowerstoneIntroGuard::Main (wave3/labels_alloc.tsv); PDB ?Main@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBowerstoneIntroGuard@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_BowerstoneTownLifeIntroScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -35,7 +36,7 @@ struct CCountedPointerWords {
     void*           Data;
     CCPPointerInfo* Info;
     CCountedPointerWords& operator=(const CCountedPointerWords& other);   // 0x008AB1E0
-    __forceinline void ReleaseInline()
+    FABLE_FORCEINLINE void ReleaseInline()
     {
         if (Info) {
             --Info->RefCount;
@@ -68,13 +69,13 @@ struct CBaseObjectDtor {
     virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001();
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;
@@ -83,7 +84,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void Destroy();                                    // 0x007E74D0
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         PImp.ReleaseInline();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();
@@ -97,9 +98,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4
     CMovieImpWords PImp;
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

@@ -13,6 +13,7 @@
 // LookFlags are cleared in the BODY (their stores follow the LookAtThing call), and the body then
 // resets PAction to null (`Reset(0)` inlined with the constant: release the block, store the
 // null count first and the null object second -- the Reset order, unlike the destructor's).
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -32,7 +33,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline void Reset(CCreatureActionBase* object)   // forced: VC7.1 would call it out of line
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)   // forced: VC7.1 would call it out of line
     {
         if (m_pCount) {
             --m_pCount->m_references;

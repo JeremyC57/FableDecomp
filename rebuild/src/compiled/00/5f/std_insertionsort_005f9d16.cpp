@@ -6,12 +6,13 @@
 // Shape (family M060, representative 0x0047127A): STLport `if (__first == __last) return; for (__i = __first + 1; __i != __last;
 //   ++__i) __linear_insert(__first, __i, _Tp(*__i), __comp);` -- the pair is copied into the argument area through STLport's
 //   explicit (forced inline) pair copy constructor; `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 template <class Key, class Value> class CKeyPairCompareLess {   // empty; passed in a 4-byte slot

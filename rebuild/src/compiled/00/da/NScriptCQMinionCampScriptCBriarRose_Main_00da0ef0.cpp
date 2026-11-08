@@ -16,6 +16,7 @@
 // Data: engine/CQ_MinionCampScript.h (new, chunk 809).
 // Shape: generated entity script (T-check at the start of every nested block and after every WAIT loop); DoChant and
 //   DoOnHeroHitSpeech (both PDB name sets, no retail copy) expanded.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -53,10 +54,10 @@ public:
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
 }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing):Thing(thing) {}
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
-__forceinline void NScript::CQ_MinionCampScript::CBriarRose::DoChant()
+FABLE_FORCEINLINE void NScript::CQ_MinionCampScript::CBriarRose::DoChant()
 {
     seh_me.PlayAnimation("ST_CHANTING_INTO",false,false,false,true,NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations,false,false);
     seh_me.PlayLoopingAnimation("ST_CHANTING_LOOP",-1,false,false,false,true,NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations,false,false);

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -32,7 +33,7 @@ class CCombatAbilityData { public:
 
 class CCombatAbilityStrafingData : public CCombatAbilityData { public:
     float RotationSpeed;                // +0x18
-    __forceinline CCombatAbilityStrafingData& operator=(const CCombatAbilityStrafingData& other)
+    FABLE_FORCEINLINE CCombatAbilityStrafingData& operator=(const CCombatAbilityStrafingData& other)
     {
         CCombatAbilityData::operator=(other);
         RotationSpeed = other.RotationSpeed;

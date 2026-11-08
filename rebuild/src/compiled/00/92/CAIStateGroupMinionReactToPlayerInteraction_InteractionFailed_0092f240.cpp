@@ -19,6 +19,7 @@
 //   every TU that instantiates them): VC7.1 then knows the bound filter does not escape and stores its first pointer before the
 //   second filter's ctor call, with the type word after (an external declaration stores both after the call: 189v193). The sound
 //   criteria is a NAMED CCharString (built before the bool arguments are pushed).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
@@ -35,7 +36,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -6,10 +6,11 @@
 // which VC7.1 tail-duplicates into each of the three return paths without folding the constant (`xor ecx,ecx ;
 // test eax,eax ; setl cl`). Taking the other string's pointer first makes it the loop induction pointer (this
 // string is read through the constant distance), as retail. Catalog row: only the first 85 bytes (stops before the last `ret 4`).
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

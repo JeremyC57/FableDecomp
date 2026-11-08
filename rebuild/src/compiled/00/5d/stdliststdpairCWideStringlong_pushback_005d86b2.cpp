@@ -9,6 +9,7 @@
 // Shape: `end()` is the sentinel node word (`mov edx,[ecx]`); the iterator has a user copy constructor, so the by-value
 //   argument is copy-built in its stack slot (`push ecx ; mov eax,esp ; mov [eax],edx`); the hidden iterator result
 //   reuses the dead `x` argument slot (`lea eax,[ebp+8]`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CWideString;
@@ -21,7 +22,7 @@ struct _List_node_base;
 template <class _Tp> struct _List_iterator {
     _List_node_base* _M_node;
     _List_iterator(_List_node_base* __x) : _M_node(__x) { }
-    __forceinline _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
 };
 
 template <class _Tp, class _Alloc = allocator<_Tp> > class list {

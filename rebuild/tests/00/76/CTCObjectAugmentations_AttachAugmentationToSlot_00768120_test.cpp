@@ -1,5 +1,6 @@
 // Behaviour test for 00768120: src/00768120.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -23,7 +24,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     mutable long m_refCount;                            // +0x04
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();
@@ -31,7 +32,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { T* object = Object; ReleaseDef(object); }
+    FABLE_FORCEINLINE ~CDefPointer() { T* object = Object; ReleaseDef(object); }
     CDefPointer& operator=(T* object)
     {
         if (Object != object) {
@@ -48,7 +49,7 @@ template <class T> class CDefPointer { public:
 };
 template <class T> struct CDefHolder {                  // owns the reference GetDef handed over
     T* Object;
-    __forceinline ~CDefHolder() { ReleaseDef(Object); }
+    FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
 };
 class CAugmentationDef : public CDefBase { public: };
 class CDefClassBase : public CDefBase { public:

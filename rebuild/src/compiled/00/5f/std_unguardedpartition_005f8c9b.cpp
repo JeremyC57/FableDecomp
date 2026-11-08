@@ -8,6 +8,7 @@
 // Shape: size TU (`#pragma optimize("s", on)`: the first scan is entered by a jump to its test); only pivot.first is read
 //   (edi); the inlined `__iter_swap_aux` temporary is the STLport pair copy (ecx/esi), then two word-wise assignments
 //   (`__forceinline` on iter_swap / __iter_swap_aux: the size TU otherwise calls them out of line).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 enum EHeroAbility { ABILITY_NULL = 0, EHeroAbility_Force32 = 0x7fffffff };
@@ -26,7 +27,7 @@ template <class K, class V> class CKeyPairCompareLess { public:
 
 namespace std {
 template <class ForwardIter1, class ForwardIter2, class T>
-__forceinline void __iter_swap_aux(ForwardIter1 a, ForwardIter2 b, T*)
+FABLE_FORCEINLINE void __iter_swap_aux(ForwardIter1 a, ForwardIter2 b, T*)
 {
     T tmp = *a;
     *a = *b;
@@ -34,7 +35,7 @@ __forceinline void __iter_swap_aux(ForwardIter1 a, ForwardIter2 b, T*)
 }
 
 template <class ForwardIter1, class ForwardIter2>
-__forceinline void iter_swap(ForwardIter1 a, ForwardIter2 b)
+FABLE_FORCEINLINE void iter_swap(ForwardIter1 a, ForwardIter2 b)
 {
     __iter_swap_aux(a, b, a);
 }

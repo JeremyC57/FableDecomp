@@ -16,11 +16,12 @@
 //   `*first = val` is three operator= calls, the else arm copy-constructs val into the argument area; val's implicit
 //   destructor ends both arms. /Gr TU: the templates are `__fastcall`. The landed 0x00429950 body sits above under
 //   `auto_inline(off)` as the extra rule asks.
+#include "fable_compiler.h"
 #pragma auto_inline(off)
 template <class T> class CBasicString {
 public:
     T* m_pData;                                             // +0x0
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

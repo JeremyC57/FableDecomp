@@ -19,6 +19,7 @@
 // Shape (needs C3DVector's user copy constructor for the inline fill loop to keep the cursor in ecx): STLport 4.6 `_M_fill_insert` verbatim; the 16-byte x_copy lives in the frame, uninitialized_fill_n inlines as
 //   the placement-new loop (count homed on the dead x slot), __copy_backward_ptrs inlines into the tagged
 //   __copy_backward call.
+#include "fable_compiler.h"
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
 #include "engine/C3DVector.h"
@@ -70,7 +71,7 @@ inline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _Bi
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -79,7 +80,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }

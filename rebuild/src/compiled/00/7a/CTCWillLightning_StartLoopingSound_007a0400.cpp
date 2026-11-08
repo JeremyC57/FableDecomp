@@ -15,6 +15,7 @@
 //   at retail +0x114 (PDB +0x158).
 // Shape: the sound component is a named local (esi); the string is a named local in its own block so it shares the interface
 //   key's frame word; the handle is stored before the string's destructor.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;                          // +0 the shared string block
     ~CCharString();                             // 0x0099EAE0
@@ -45,7 +46,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

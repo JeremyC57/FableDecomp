@@ -11,6 +11,7 @@
 // Layout: engine/CAIStateGroup_MinionReactToPlayerInteraction.h flattens the base and types ReactionType as bytes, so the
 // model is local: NextReactionFrame[5] +0x14, ReactionType +0x28 (Ego_r.pdb); the village's +0x88 count and the event's
 // +0x3c type are descriptive.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -21,8 +22,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

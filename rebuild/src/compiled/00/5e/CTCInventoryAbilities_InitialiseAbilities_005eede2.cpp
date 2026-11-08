@@ -16,6 +16,7 @@
 // Layout (retail; Ego_r.pdb names): ExperienceSpentOnAbilities vector<long> +0x148, ReceivedAbilityOrder +0x154,
 // Abilities vector<pair<long, CDefPointer>> +0x160; CHeroAbilityDef::Ability +0x3C; CUIMiscThingsDef::
 // TotalSpellsInPalettes +0x148 (PDB +0x14C).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -45,7 +46,7 @@ template <class T> class CDefPointer { public:
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (Object != other.Object) {
             if (Object) {

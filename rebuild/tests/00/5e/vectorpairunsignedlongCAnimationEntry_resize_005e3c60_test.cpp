@@ -1,10 +1,11 @@
 // Behaviour test for 005e3c60: body copied from src/005e3c60.cpp (vector<pair<unsigned long, CAnimationEntry> >::resize(n)),
 // the two-argument resize stubbed to record the default value it receives and optionally hand back a component map.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CRefCounted { long m_count; };
 static int g_destroyed = 0;
 struct CCountedVirtual {

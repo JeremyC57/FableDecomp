@@ -8,6 +8,7 @@
 // own slot (`mov [esp+0Ch],cl ; mov byte ptr [esp+0Dh],0`) and returns `strcmp(...) == 0 ? true : false` (`test eax,eax ;
 // sete al`); the outer negation goes through a full register (`xor ecx,ecx ; test al,al ; sete cl ; mov al,cl`) and is
 // tail-duplicated into the equal, unequal (`sbb eax,eax ; sbb eax,-1`) and null-string (`xor al,al`) exits.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 
@@ -24,7 +25,7 @@ class CCharStringData { public:                      // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;             // +0x00
-    __forceinline bool operator==(char character) const
+    FABLE_FORCEINLINE bool operator==(char character) const
     {
         if (PStringData != 0) {
             char text[2];

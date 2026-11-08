@@ -10,6 +10,7 @@
 // Layout: CThing UsingComponents bitset<274> +0x20 (type 0x1a = bit 26 of word 0), Components map +0x44.
 // Shape: the item's component is HasTC + GetTC into ebx; the hero's inventory goes through the range-checked bitset::test
 // and an unset result local (the absent arm reads the lookup key's slot, the dead `item` argument slot).
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 class CTCBase;
@@ -20,7 +21,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                   // +0x20 bitset<274>
     CInterfaceMap Components;                           // +0x44
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     bool TestComponent(unsigned long position) const    // STLport bitset<274>::test (exception-free range check)
     {
         if (position >= 274) {
@@ -29,7 +30,7 @@ class CThing { public:
         }
         return (UsingComponents[position >> 5] & (1UL << (position & 31))) != 0;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
@@ -38,7 +39,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    __forceinline CTCBase* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
     {
         CTCBase* tc;                                    // deliberately unset when absent (retail reads a dead slot)
         if (TestComponent(interfaceType))

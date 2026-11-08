@@ -23,6 +23,7 @@
 // Shape: every by-value CScriptThing is an inline copy of Me (CBaseClass then CScriptThing vtable, PImp words, reference
 //   increment), so the copy ctor and the CCountedPointer copy are `__forceinline` after the shared header; the by-value
 //   C3DVector needs a memberwise user copy ctor (the implicit copy loads Z before storing Y).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -34,7 +35,7 @@ public:
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-__forceinline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+FABLE_FORCEINLINE CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 #include "engine/CGameScriptInterfaceBase.h"
 #include "engine/CEntityScriptBase.h"
 

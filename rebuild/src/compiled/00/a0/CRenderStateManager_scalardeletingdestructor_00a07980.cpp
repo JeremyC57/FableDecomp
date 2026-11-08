@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A07980, length 48 bytes.
 // Leaf: ??_GCRenderStateManager@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129C978) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CRenderStateManager;
 extern CRenderStateManager* g_pRenderStateManager_013cb508;   // 0x013CB508
@@ -12,7 +13,7 @@ public:
 };
 class CRenderStateManager : public CBaseClassNonCopyable { public:              // vtable 0x0129C978
     void* m_4;                                     // +0x04
-    __forceinline virtual ~CRenderStateManager()
+    FABLE_FORCEINLINE virtual ~CRenderStateManager()
     {
         g_pRenderStateManager_013cb508 = 0;
         m_4 = 0;

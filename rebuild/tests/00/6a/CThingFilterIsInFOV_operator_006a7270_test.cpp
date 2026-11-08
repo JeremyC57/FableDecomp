@@ -1,5 +1,6 @@
 // Behaviour test for 006a7270: src/006a7270.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CThingFilter_IsInFOV::operator()(const C3DVector& pos) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -32,7 +33,7 @@ class C3DVector { public:
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 inline C3DVector& operator*=(C3DVector& a, float s) { a.X *= s; a.Y *= s; a.Z *= s; return a; }
 inline float operator*(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -50,7 +51,7 @@ class CThingFilter_IsInFOV { public:
     bool operator()(const C3DVector& pos) const;
 };
 
-__forceinline void FastNormalise(C3DVector& v)
+FABLE_FORCEINLINE void FastNormalise(C3DVector& v)
 {
     v *= FastInvSqrt(v.Y * v.Y + (v.X * v.X + v.Z * v.Z));
 }

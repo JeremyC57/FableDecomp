@@ -16,6 +16,7 @@
 //   helpers get same-TU noinline STAND-IN bodies (only their calls matter; the copy helpers are simplified loops):
 //   declared only, VC7.1 places n, elems_after and the tags in other frame slots (389v389, slot numbers only).
 //   At landing the retail COMDATs win.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -37,7 +38,7 @@ template <class _T1, class _T2> struct pair {
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for (; __first != __last; ++__first)
         _Destroy(&*__first);

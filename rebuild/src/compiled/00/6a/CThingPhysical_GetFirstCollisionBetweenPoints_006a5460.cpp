@@ -12,6 +12,7 @@
 // Shape: the physics component goes through an inline getter (each use loads straight into ecx); the hit test recomputes
 //   `hitPosition - from` in both the dot product and the length (VC7.1 CSEs it, spilling Y/Z into dead argument slots and keeping a
 //   copy of X on the x87 stack), with `dot >= 0 && length < limit` as one condition; the length limit is `!(length > 0.0001f)`.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 class C3DVector { public:
@@ -22,7 +23,7 @@ class C3DVector { public:
     float GetMagnitudeAndNormalise();                                // 0x00A14480 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ (normalises in place, returns the old magnitude)
     float GetLengthInline() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
 };
-__forceinline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.X * b.X + a.Y * b.Y; }
+FABLE_FORCEINLINE float DotProduct(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.X * b.X + a.Y * b.Y; }
 struct CPhysicsHit {
     C3DVector Position;
     C3DVector Normal;

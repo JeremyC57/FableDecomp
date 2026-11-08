@@ -13,6 +13,7 @@
 // Shape: as SummonerLightningOrbAttackTarget (0x00903CA0) plus a target type test (ThingTypeFlags bit 2 at
 // +0x6c) between GetPThing and the unchecked GetInterface (key and miss read in the dead `target` slot).
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -32,7 +33,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

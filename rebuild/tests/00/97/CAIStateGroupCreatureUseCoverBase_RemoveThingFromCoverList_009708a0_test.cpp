@@ -1,4 +1,5 @@
 // Behaviour test for 009708a0: the model below is a copy of src/009708a0.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -15,7 +16,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-__forceinline CIntelligentPointerThing* CopyRange(CIntelligentPointerThing* first, CIntelligentPointerThing* last, CIntelligentPointerThing* result)
+FABLE_FORCEINLINE CIntelligentPointerThing* CopyRange(CIntelligentPointerThing* first, CIntelligentPointerThing* last, CIntelligentPointerThing* result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;
@@ -30,7 +31,7 @@ struct CCoverThingVector {
     CIntelligentPointerThing* _M_end_of_storage;
     CIntelligentPointerThing* begin() { return _M_start; }
     CIntelligentPointerThing* end() { return _M_finish; }
-    __forceinline CIntelligentPointerThing* erase(CIntelligentPointerThing* pos)
+    FABLE_FORCEINLINE CIntelligentPointerThing* erase(CIntelligentPointerThing* pos)
     {
         if (pos + 1 != _M_finish)
             CopyRange(pos + 1, _M_finish, pos);

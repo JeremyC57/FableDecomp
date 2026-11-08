@@ -1,6 +1,7 @@
 // Behaviour test for 0x006C9DE0 CPersistContext_TransferableVector<COpinionDeedRecord>::Resize: STLport
 // resize(n) -> resize(n, T()): shrinking erases [start + n, finish), growing fill-inserts n - size zeroed records at
 // finish. The two out-of-line vector members are simple working stand-ins over a fixed buffer.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -35,14 +36,14 @@ struct COpinionDeedRecordVector {
         for (unsigned long i = 0; i < n; ++i) *_M_finish++ = x;
     }
     void insert(COpinionDeedRecord* position, unsigned long n, const COpinionDeedRecord& x) { _M_fill_insert(position, n, x); }
-    __forceinline void resize(unsigned long newSize, const COpinionDeedRecord& x)
+    FABLE_FORCEINLINE void resize(unsigned long newSize, const COpinionDeedRecord& x)
     {
         if (newSize < size())
             erase(begin() + newSize, end());
         else
             insert(end(), newSize - size(), x);
     }
-    __forceinline void resize(unsigned long newSize) { resize(newSize, COpinionDeedRecord()); }
+    FABLE_FORCEINLINE void resize(unsigned long newSize) { resize(newSize, COpinionDeedRecord()); }
 };
 
 struct CPersistContext_TransferableVector {

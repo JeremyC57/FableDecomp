@@ -1,6 +1,7 @@
 // Behaviour test for 0096a7a0: src/0096a7a0.cpp copied verbatim; IsRunnableLeaf, on a fresh hit, stamps the frame and
 // counts the hit; when the count reaches the retreat def's HitsBeforeRetreat it resets the count, points PArenaCentre at
 // the thing scripted "WhisperArenaCentre" (null when none) and returns true; the def reference is always released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -59,7 +60,7 @@ struct CWhisperRetreatDef : CDefVirtual {
     unsigned char _pad08[0x3c - 0x08];
     long          HitsBeforeRetreat;                   // +0x3c
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }

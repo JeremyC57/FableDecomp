@@ -1,5 +1,6 @@
 // Behaviour test for 007e93c0: src/007e93c0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCAvoidRegionExit::OnRemove()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -109,7 +110,7 @@ class CTCAvoidRegionExit : public CTCBase {
 public:
     unsigned char _body[0x20 - 0x0c];                       // EntranceMarker, ExitMarker, NextFrameCheck
     void UpdateBestDist();                             // 0x007E9250
-    __forceinline void RemoveFromExitWeights()
+    FABLE_FORCEINLINE void RemoveFromExitWeights()
     {
         SExitWeightRange range = g_AvoidRegionExitWeights.EqualRange(GetParentThing());
         g_AvoidRegionExitWeights.Erase(range.first, range.second);

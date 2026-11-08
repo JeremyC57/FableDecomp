@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1), @0x00979D80, 258 bytes.
 // Callees: CAIStateGroupBase::GetWorld @0x008FCFC0; NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable @0x00982890 (temporary vtable 0x0128FFD4); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers @0x00979910; CVectorMap::LowerBound @0x004365B0; CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40; qualified base IsRunnableLeaf @0x00970F30.
 // The PDB header only exposes a flattened 0x50-byte base area. The fields at +0x14/+0x1f and inherited call behavior follow the landed CreatureTakeCover/CreatureUseCoverBase relatives. GetInterface inlines the presence-bit test at +0x28, then searches the sorted component map.
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -32,13 +33,13 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -53,7 +54,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
@@ -86,7 +87,7 @@ class CThingCreatureBase : public CThing
     bool IsIncapacitated();                         // 0x00661E80 (flags byte +0x15c: bit 2, else bit 3; manifest "CText::GetAlignment" is propagated)
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0)
     {
@@ -100,7 +101,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 bool __fastcall IsInMeleeWithCombatWheelAttackers(CThing* creature);   // 0x00979910
 
 // pointer form of the alive test: one GetPItem read
-__forceinline bool IS_THING_ALIVE(CThing* thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* thing)
 {
     if (thing != 0)
     {

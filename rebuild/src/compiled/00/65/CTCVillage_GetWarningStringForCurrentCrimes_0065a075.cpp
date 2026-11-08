@@ -1,6 +1,7 @@
 // 0065a075 CTCVillage::GetWarningStringForCurrentCrimes
 // Leaf: ?GetWarningStringForCurrentCrimes@CTCVillage@@QBE?AVCCharString@@JAA_NAAJ@Z
 // Flags: /O1 /Oy-
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -25,7 +26,7 @@
 template<class T>class CBasicString{protected:T*PData;unsigned long StringLength;public:__declspec(noinline)bool operator==(const T*s)const{return Compare(PData,s)==0;}protected:static long __fastcall Compare(const T*a,const T*b){while(*a||*b){if(*a<*b)return -1;if(*a>*b)return 1;++a;++b;}return 0;}};
 // Layout: only original string-data Data prefix is read; complete allocation metadata is not materialized.
 class CCharStringData{public:CBasicString<char>Data;};
-class CCharString{protected:CCharStringData*PStringData;public:CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);const CCharString&operator=(const char*);__forceinline bool operator==(const char*s)const{if(!PStringData){if(strcmp(s,"")==0)return true;return false;}return PStringData->Data==s;}};
+class CCharString{protected:CCharStringData*PStringData;public:CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);const CCharString&operator=(const char*);FABLE_FORCEINLINE bool operator==(const char*s)const{if(!PStringData){if(strcmp(s,"")==0)return true;return false;}return PStringData->Data==s;}};
 namespace std{
 template<class T>class allocator{};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
@@ -54,7 +55,7 @@ class CTCBase;enum ETCInterfaceType{};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
 class CTCHeroOpinionDeedLog;
 // Layout: imported bitset20 and Components44 retain the original nonconst GetTC template.
-class CThing:public CThingFields{public:template<class T>__forceinline bool GetTC(T**out){ETCInterfaceType type=T::StatGetInterfaceType();if(reinterpret_cast<const std::bitset<274>&>(UsingComponents).test(static_cast<unsigned int>(type))){CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);ETCInterfaceType key=type;std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);std::pair<ETCInterfaceType,CTCBase*>*result=map.end();if(i!=result&&!(type<i->first))result=i;*out=reinterpret_cast<T*>(result->second);return true;}return false;}};
+class CThing:public CThingFields{public:template<class T>FABLE_FORCEINLINE bool GetTC(T**out){ETCInterfaceType type=T::StatGetInterfaceType();if(reinterpret_cast<const std::bitset<274>&>(UsingComponents).test(static_cast<unsigned int>(type))){CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);ETCInterfaceType key=type;std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);std::pair<ETCInterfaceType,CTCBase*>*result=map.end();if(i!=result&&!(type<i->first))result=i;*out=reinterpret_cast<T*>(result->second);return true;}return false;}};
 class CThingPlayerCreature:public CThing{};
 class CPlayer:public CPlayerFields{public:CThingPlayerCreature*GetPControlledCreature()const;};
 class CWorld:public CWorldFields{public:const CPlayer*PeekMyPlayer()const;};

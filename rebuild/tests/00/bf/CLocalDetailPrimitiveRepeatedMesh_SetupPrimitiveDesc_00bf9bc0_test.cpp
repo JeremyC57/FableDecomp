@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -112,7 +113,7 @@ struct CAddMeshDesc {
  const C3DMeshInfo* MeshInfo;float MaxScale;const float* VectorNormals;long ObjectCount;const CSubsectionElement* SubSections;
  C3DBoundingBox BoundingBox;C3DBoundingSphere BoundingSphere;CEngineFadeDistance FadeDist;C4DVector* ObjectOffsets;C4DVector* ObjectMatricies;
  unsigned long EnginePrimitiveFlags;long AlphaRef;float AlphaMipBias;bool Persistent;unsigned long EPFFlags;const unsigned char* WindDelayArray;float WindScaleFactor;
- __forceinline CAddMeshDesc(const C3DMeshInfo* mesh,long n,C4DVector* matrices,C4DVector* offsets,const float* normals,const CSubsectionElement* sections,const unsigned char* wind,float scale,const C3DBoundingBox& box,const C3DBoundingSphere& sphere,float windscale,const CEngineFadeDistance& fade,unsigned long flags,long alpha,float bias,bool persistent,unsigned long epf):
+ FABLE_FORCEINLINE CAddMeshDesc(const C3DMeshInfo* mesh,long n,C4DVector* matrices,C4DVector* offsets,const float* normals,const CSubsectionElement* sections,const unsigned char* wind,float scale,const C3DBoundingBox& box,const C3DBoundingSphere& sphere,float windscale,const CEngineFadeDistance& fade,unsigned long flags,long alpha,float bias,bool persistent,unsigned long epf):
  MeshInfo(mesh),MaxScale(scale),VectorNormals(normals),ObjectCount(n),SubSections(sections),BoundingBox(box),BoundingSphere(sphere),FadeDist(fade),ObjectOffsets(offsets),ObjectMatricies(matrices),EnginePrimitiveFlags(flags),AlphaRef(alpha),AlphaMipBias(bias),Persistent(persistent),EPFFlags(epf),WindDelayArray(wind),WindScaleFactor(scale*windscale){}
 };
 struct RepeatedMeshView {

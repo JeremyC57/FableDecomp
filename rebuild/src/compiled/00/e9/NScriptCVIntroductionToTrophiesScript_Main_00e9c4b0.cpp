@@ -24,6 +24,7 @@
 //   OpinionRequired +0x5C, CutsceneStarted +0x60 .. OutsideTavernTimerReset +0x62, OpinionTimer +0x64, OutsideTavernTimer +0x68.
 // Model: the landed NScript::CV_RockTrollFirstEncounterScript::Main 0x00EC3D40 (CEntityScriptBinding / CSpawnedFunc /
 //   SpawnFunction, polymorphic CScriptBase, CGameScriptInterfaceBase keeping its padding virtuals).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -76,7 +77,7 @@ public:
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.

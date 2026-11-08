@@ -20,6 +20,7 @@
 // Local models (no shared header yet; NOTES.md "Header debt"): NScript::CIsThingConscious (CPredicateBase + Thing, vtable
 //   0x012C2FE8, the landed 0x00CDDAB0 / 0x00CDDAE0 / 0x00CDDB10 model), CBaseObject / CScriptGameResourceObjectBase /
 //   ScriptedThingBase / MovieBase (the landed 0x00D7AA30 model), CSpawnedFunc<T> (the template every landed spawning row defines).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -79,7 +80,7 @@ public:
     // Source-level spawn helper of the landed quest rows (TalentlessBard Main 0x00ED7830, EscortTrader DoMission 0x00E1F0C0); no
     // symbol: retail allocates the thread first and builds the region-name temporary after it, while both temporaries live to the
     // end of the statement, which a direct AddSpawnedFunction(new ..., CCharString("")) call evaluates the other way round.
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 
 void CExpression_FollowScript::Main()

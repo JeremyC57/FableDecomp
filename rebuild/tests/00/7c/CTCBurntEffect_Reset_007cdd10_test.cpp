@@ -1,4 +1,5 @@
 // 007cdd10 behaviour test: CTCBurntEffect::Reset (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -99,15 +100,15 @@ public:
     C3DVector     Position;
     CThing() : Position(1.0f, 2.0f, 3.0f) {}
     const C3DVector& GetPosition() const { return Position; }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline T* GetTCDriver(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTCDriver(long interfaceType)
     {
         if (!(m_flags91 & 1) && HasTC(interfaceType))
             return GetTC<T>(interfaceType);

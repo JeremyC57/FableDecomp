@@ -13,6 +13,7 @@
 // release (`cmp [esi+10h],eax ; sete bl`). Member names of the boss/def fields are descriptive.
 // Tried: release on the address-taken local (re-read from the frame each use, 166), this pointer copy (168; the
 // lane spills into the wave-18 `mov esi,[eax+4] ; add eax,4 ; dec esi` release), a Release() member + hits local (168).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -50,7 +51,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x1c];                 // +0x4c..+0x6f
     CDefClassBase* PDef;                        // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

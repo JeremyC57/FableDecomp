@@ -6,6 +6,7 @@
 // number of characters revealed per frame (descriptive name).
 // Shape: the lazy def load is the same inline helper as CPlayerGui::GetAbilityButton (agent153 0x00438990); the
 // sum is stored before the length call; the clamp is `if (n < 0) n = 0; else if (n > len) n = len;`.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -30,7 +31,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

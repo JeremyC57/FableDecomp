@@ -11,6 +11,7 @@
 //   CCharString at +4 (inline GetName). A brace-initialised iterator in the for-init is a VC7.1 syntax error.
 // Layout: retail CConsole RegisteredConsoleInputs header +0x40 (as the landed 0x009EB590 / 0x009EB430).
 // Leaf: ?ConsoleCommandList@CConsole@@SIXAAV1@ABU?$vector@VCGenericVar@@@std@@@Z
+#include "fable_compiler.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -30,7 +31,7 @@ class CCharStringData { public:
 class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                 // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -76,7 +77,7 @@ struct SInputNode {                                 // STLport _Rb_tree_node<pai
 struct CInputIterator {
     SInputNode* _M_node;
     SInputNode* operator->() const { return _M_node; }
-    __forceinline CInputIterator& operator++()
+    FABLE_FORCEINLINE CInputIterator& operator++()
     {
         SInputNode* x = _M_node;
         if (x->_M_right) {

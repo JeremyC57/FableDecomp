@@ -20,6 +20,7 @@
 // Layout: engine/CQ_MinionClifftopChaseScript.h (opt-in FABLE_RETAIL_CQ_MINIONCLIFFTOPCHASESCRIPT_MAPKEEPER): DoneIntro +0x1c,
 //   ImprisonedFX +0x20; ParentClass MapKeeperSaidDialog +0x48, MissionSucceeded +0x4a, KilledGuardingMinions +0x50, MissionTimer
 //   +0x5c, MissionTimerID +0x60.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
@@ -49,7 +50,7 @@
 #include "stlport/fable_map.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 extern CGameScriptInterfaceBase* pDSTGame;                                                                   // 0x0143E8F8
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 template <> std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>::map();                       // 0x00CDBF70

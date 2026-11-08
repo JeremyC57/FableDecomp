@@ -12,6 +12,7 @@
 // Label: the catalog's "vector_reallocate_with_padding"; callers are the landed _M_fill_insert 0x00485F3A (as
 // its documented callee) and the push_back/insert paths at 0x009E98A9.. / 0x00A4F4C4.
 // Leaf: _M_insert_overflow
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -25,20 +26,20 @@ struct __true_type { __true_type() { } };
 void* __fastcall __copy_trivial(const void* __first, const void* __last, void* __result);       // 0x00405BA0
 void __fastcall fill(unsigned char* __first, unsigned char* __last, const unsigned char& __val); // 0x0047CE40
 
-__forceinline unsigned char* fill_n(unsigned char* __first, unsigned int __n, const unsigned char& __val)
+FABLE_FORCEINLINE unsigned char* fill_n(unsigned char* __first, unsigned int __n, const unsigned char& __val)
 {
     fill(__first, __first + __n, __val);
     return __first + __n;
 }
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
 template <class _Tp> class allocator {
 public:
     allocator() { }
     allocator(const allocator&) { }
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -55,11 +56,11 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
 
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
     }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         _M_start = __s;
         _M_finish = __f;

@@ -1,5 +1,6 @@
 // Behaviour test for 00977820: src/00977820.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CAIStateGroup_Guildmaster::GetBetterTeleportPos(C3DVector&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -116,7 +117,7 @@ struct CThingPointer : CBaseIntelligentPointer {             // CIntelligentPoin
     CThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CThingPointer& operator=(const CThingPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -124,7 +125,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-__forceinline bool IS_THING_ALIVE(CThing* const& thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* const& thing)
 {
     if (thing != 0) {
         if (!(thing->m_flags91 & 1))

@@ -7,6 +7,7 @@
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; its byte at +0xc and dword at +0x10 are
 // cleared through the shared zero register. No engine header matches the retail layout (CCreatureActionBase is 0xa8
 // bytes in retail, 0xb4 in the PDB), so `this` is modelled locally.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -17,7 +18,7 @@ class CThingCreatureBase { public:                 // engine/CThingCreatureBase.
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

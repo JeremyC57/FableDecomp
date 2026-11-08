@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +15,7 @@
 #endif
 extern "C" int __cdecl _stricmp(const char*,const char*);
 class CCharStringData{public:char* PData;};
-class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}CCharString(const char*,long=-1);~CCharString();const char* GetAsCharArray()const{return PStringData==0?"":PStringData->PData;}__forceinline bool operator==(const CCharString& other)const{return _stricmp(GetAsCharArray(),other.GetAsCharArray())==0;}};
+class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}CCharString(const char*,long=-1);~CCharString();const char* GetAsCharArray()const{return PStringData==0?"":PStringData->PData;}FABLE_FORCEINLINE bool operator==(const CCharString& other)const{return _stricmp(GetAsCharArray(),other.GetAsCharArray())==0;}};
 bool __fastcall IsTrue(const CCharString& text){CCharString expected("true");return text==expected;}
 
 #ifndef _MSC_VER

@@ -1,6 +1,7 @@
 // Behaviour test for 0x00EE6A40 (RST): model plus the body verbatim from final.cpp, callees stubbed.
 // Checks the TourGuideFollower collection, that leaving the guild complex stops the watch without the flag, that all
 // followers dead (tour unfinished) sets AllFollowersDead, a finished tour ignores it, and that every exit destroys and frees the vector.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -40,7 +41,7 @@ struct CScriptThingVector {
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~CScriptThingVector()
+    FABLE_FORCEINLINE ~CScriptThingVector()
     {
         CScriptThing* last = _M_finish;
         for (CScriptThing* p = _M_start; p != last; ++p)

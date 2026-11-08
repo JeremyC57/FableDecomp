@@ -1,5 +1,6 @@
 // Behaviour test for 0065c1fc: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCVillage::RemoveCrimeIfApologisable(long deedHandle) -- unless the hero apologised less than 450 frames ago, drops the crime when its deed is over and its deed type can be apologised for
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -35,7 +36,7 @@ class CThing { public:
             it = map->last;
         return it->component;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);
@@ -75,7 +76,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     bool ReactionRestrictToTarget : 1;          // bit 1
     bool AllowSimultaneousReactionDialogue : 1; // bit 2
     bool CanApologise : 1;                      // bit 3
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -84,7 +85,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

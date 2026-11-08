@@ -1,5 +1,6 @@
 // Behaviour test for 007df6a0: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCWallMountEffects::DoEffect() -- stamp the use frame, then a teleport mount starts its CTCTeleporter on the living hero and a healing mount heals the living creature using it
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -27,7 +28,7 @@ class CThing { public:
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

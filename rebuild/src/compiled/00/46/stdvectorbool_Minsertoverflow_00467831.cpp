@@ -17,6 +17,7 @@
 //   Size TU (`and dword ptr [ebp-4],0`, `pop ecx` cleanup) with a frame pointer: `optimize("y", off)` + `("s", on)`;
 //   the helpers are `__forceinline` because the size TU would call them out of line.
 // Model: the three STLport vector words; no engine header (library type).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
@@ -25,13 +26,13 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes
 
 namespace std {
 struct __true_type { __true_type() {} };
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
-__forceinline void* __copy_trivial(const void* first, const void* last, void* result)
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+FABLE_FORCEINLINE void* __copy_trivial(const void* first, const void* last, void* result)
 {
     return (last == first) ? result
         : ((char*)memmove(result, first, (const char*)last - (const char*)first)) + ((const char*)last - (const char*)first);
 }
-template <class T> __forceinline T* fill_n(T* first, unsigned int n, const T& value)
+template <class T> FABLE_FORCEINLINE T* fill_n(T* first, unsigned int n, const T& value)
 {
     for (; n > 0; --n, ++first)
         *first = value;
@@ -43,9 +44,9 @@ public:
     T* _M_finish;                   // +0x04
     T* _M_end_of_storage;           // +0x08
     unsigned int size() const { return _M_finish - _M_start; }
-    static __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
-    __forceinline void _M_clear() { if (_M_start != 0) free(_M_start); }
-    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
+    static FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE void _M_clear() { if (_M_start != 0) free(_M_start); }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
     void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fillLength, bool atEnd);
 };
 template <class T> void vector<T>::_M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fillLength, bool atEnd)

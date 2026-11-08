@@ -14,6 +14,7 @@
 //   +0x24, SplinePosParamData +0x2c).
 // Shape: the point arrays reach GFInterpolateArray as by-value copies (an inline GetControlPoints), the zero vector is the
 //   default-value argument; the random-offset branch tests own data before t, the position-parameter branch t first.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
@@ -43,7 +44,7 @@ template <class T> class CCountedPointer { public:
     SCountBlock* Info;
     void Reset(T* object);                             // 0x00B23240 / 0x00B23170
     T* operator->() const { return Data; }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Info) {
             --Info->m_references;

@@ -12,6 +12,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -55,7 +56,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     }
 };
 
-template<class T> __forceinline void DestroyRange(T* first, T* last)
+template<class T> FABLE_FORCEINLINE void DestroyRange(T* first, T* last)
 {
     for (; first != last; ++first)
         first->~T();
@@ -63,7 +64,7 @@ template<class T> __forceinline void DestroyRange(T* first, T* last)
 
 struct CScriptThingVector {                             // vector<CScriptThing> (STLport, 12 bytes)
     CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
-    __forceinline CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~CScriptThingVector()                 // out of line: 0x008AC970
     {
         DestroyRange(_M_start, _M_finish);

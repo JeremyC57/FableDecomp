@@ -11,6 +11,7 @@
 //   CVectorMap::Insert builds the pair in the frame and push_backs it (`_Construct` from the registers, `__true_type`
 //   tag homed in the name slot on the overflow path), then Dirty = true on both paths.
 
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 class CCharStringData { public:                                    // CBasicString<char> head of the shared block
@@ -111,7 +112,7 @@ public:
             return Data.end();
         return it;
     }
-    __forceinline void Insert(const K& key, const V& value)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)
     {
         Data.push_back(value_type(key, value));
         Dirty = true;

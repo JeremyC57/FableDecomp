@@ -16,6 +16,7 @@
 //   copy_backward(first, last, last + 1); *first = val; } else __unguarded_linear_insert(last, val, comp);`) and
 //   STLport's trivial copy_backward (`n = (char*)last - (char*)first; if (n > 0) memmove((char*)result - n, first, n)`).
 //   The by-value comparator of the inlined __linear_insert is copied into a local once, ahead of the loop.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
@@ -39,7 +40,7 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                                     // +0x91 bit 0
     const C3DVector& GetPos() const;                             // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -54,7 +55,7 @@ public:
     }
 };
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);         // 0x0076D2F0
-__forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
 
 class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00

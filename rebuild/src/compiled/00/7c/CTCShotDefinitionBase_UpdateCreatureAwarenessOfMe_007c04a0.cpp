@@ -12,6 +12,7 @@
 //   zero store sits between the bit test and the jump); GetSubDef has a same-TU stand-in so the def stays in edi; the
 //   sound name is a named CCharString in its own block (lea, not the ctor's eax); the def class comes from an inline
 //   owner accessor (edx/ecx/eax order at the GetSubDef call).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
@@ -157,7 +158,7 @@ class CThing { public:
     unsigned char _pad74[0x1d];
     unsigned char Dead : 1;                         // +0x91 bit 0
     const C3DVector& GetPos() const;           // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

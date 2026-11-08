@@ -21,6 +21,7 @@
 // Layout: CIVCountedPointeeBase from engine/CIVCountedPointeeBase.h (retail opt-in); engine/CEnginePersistentPrimitiveBase.h is a
 //   flattened layout, so the polymorphic base is local (vtable 0x012A3D60 order {dtor, Delete, CollectStats, NotifyReleased,
 //   WasRendered}, as 0x005424B0).
+#include "fable_compiler.h"
 #include "rebuild_abi.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CIVCountedPointeeBase.h"
@@ -65,7 +66,7 @@ public:
 class CEnginePrimitiveHandle : public CBaseClass {          // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;    // +0x04
-    virtual __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    virtual FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
     void Clear()                                            // 0x0041BE70 out of line
     {
         if (Data.GetRefCount() == 1)

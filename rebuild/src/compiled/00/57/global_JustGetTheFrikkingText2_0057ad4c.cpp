@@ -14,6 +14,7 @@
 //   eax after them); CWideString needs its user copy ctor/dtor for the hidden-pointer returns; the counted-pointer
 //   temporary is homed in the frame word and released after the text is copied out (landed model:
 //   CTCRegionDisplay::SetCurrentAreaName 0x00639BA0). Frame-pointer size TU.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -52,7 +53,7 @@ class CTextEntry : public CCounted { public:
 using NGameText::CTextEntry;
 template <class T> class CIVCountedPointer { public:
     T* Data;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Data) {
             Data->Release();

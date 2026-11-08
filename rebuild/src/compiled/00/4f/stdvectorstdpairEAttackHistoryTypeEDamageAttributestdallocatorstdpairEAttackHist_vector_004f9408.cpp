@@ -13,6 +13,7 @@
 //   explicit memberwise pair copy constructor. The def TU is size-optimised with a frame pointer
 //   (`optimize("y", off)` + `("s", on)`); the size TU calls _Construct / __uninitialized_copy out of line unless
 //   they are `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -33,13 +34,13 @@ template <class T1, class T2> struct pair {
 };
 
 template <class T1, class T2>
-__forceinline void _Construct(T1* p, const T2& value)
+FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

@@ -1,6 +1,7 @@
 // agent680: src/004c7e90.cpp body (same-TU GetScriptThing/HasScriptThing + IsUnderScriptSupervision) pasted unchanged.
 // Fixture: selected target and counted-pointer bodies unchanged, complete original script virtual table retained.
 // Unused virtual boundaries abort; actual constructors/copies and conditional destruction are exercised.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -1118,7 +1119,7 @@ FABLE_STATIC_ASSERT(offsetof(CQuestManager, PMostRecentValidUsedTargetName_PStri
 class CThing:public CThingLayout{public:CScriptThing GetScriptThing()const;bool HasScriptThing()const;bool IsUnderScriptSupervision()const;};
 class CGameScriptThingManager{public:bool HasScriptThing(const CThing&);CScriptThing CreateScriptThing(const CThing&);};
 template<class T>class CTBaseSingletonNoDefaultAlloc{public:static T&__fastcall Get(){return *PClass;}private:static CCountedPointer<T>PClass;};
-__forceinline CScriptThing::~CScriptThing(){}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing(){}
 CScriptThing CThing::GetScriptThing()const{
  return CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PGameScriptThingManager_Data->CreateScriptThing(*this);
 }

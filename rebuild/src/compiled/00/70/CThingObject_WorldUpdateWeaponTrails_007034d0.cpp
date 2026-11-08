@@ -15,6 +15,7 @@
 //   the bitset word in edi ACROSS the non-const LowerBound call: that needs the lookup's body visible in the TU, so
 //   0x0040F020 is given a same-TU noinline STAND-IN body (a plain binary search, as landed in 0x00838BC0) under
 //   `#pragma auto_inline(off)` -- the accepted stand-in pattern of GOTCHAS (chunks 205-206).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCCarrying;
 
@@ -51,7 +52,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &Interfaces;
@@ -60,7 +61,7 @@ public:
             it = map->end();
         return it->second;
     }
-    __forceinline const CTCBase* PeekTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* PeekTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &Interfaces;

@@ -13,6 +13,7 @@
 // CAction)` with every constructor inline (`__forceinline`: CAction, its two list heads built in a local node, the count
 // block; the block reads the object back through the pointer), the type stored through the pointer, ExecuteAction by
 // reference, the inline counted release (block re-read from its frame word), the vector's null-tested free; one ebx zero.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);           // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);        // 0x00BFEA1A
@@ -26,7 +27,7 @@ template<class T> struct CActionList {               // head-only doubly linked 
         T      value;                                // +0x08
     };
     SNode* head;
-    __forceinline CActionList() : head(0)
+    FABLE_FORCEINLINE CActionList() : head(0)
     {
         SNode* node = (SNode*)malloc(sizeof(SNode));
         node->next = node;
@@ -41,7 +42,7 @@ class CAction { public:                                     // 0x10 bytes
     CActionList<CActionParam*> UIActionParams;       // +0x04
     CActionList<long>          ThingActionParams;    // +0x08
     bool                       Valid;                // +0x0c
-    __forceinline CAction() : ActionType(0), Valid(true) { }
+    FABLE_FORCEINLINE CAction() : ActionType(0), Valid(true) { }
     ~CAction();                                      // 0x0053FD00
 };
 
@@ -51,20 +52,20 @@ struct SCountBlock {
     long m_references;                               // +0
     void (__fastcall* m_pfnDestroy)(void*);          // +4
     void* m_pObject;                                 // +8
-    __forceinline SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyAction), m_pObject(object) { }
+    FABLE_FORCEINLINE SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyAction), m_pObject(object) { }
 };
 
 template<class T> struct CCountedPointer {
     T*           m_pObject;                          // +0
     SCountBlock* m_pCount;                           // +4
-    __forceinline CCountedPointer(T* object) : m_pObject(object)
+    FABLE_FORCEINLINE CCountedPointer(T* object) : m_pObject(object)
     {
         if (object)
             m_pCount = new SCountBlock(m_pObject);
         else
             m_pCount = 0;
     }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (m_pCount) {
             --m_pCount->m_references;

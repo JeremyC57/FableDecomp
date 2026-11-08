@@ -16,6 +16,7 @@
 //   creature read so the xor sits ahead of GetPItem), the clear through the
 //   non-const one; the main-game-component global is read through an inline accessor so it loads before the GetPlayer chain; the two level-up blocks are written
 //   out separately (the AI one also checks the level is non-negative).
+#include "fable_compiler.h"
 class CBaseObject;
 class CTCBase;
 class CPlayer {
@@ -58,13 +59,13 @@ public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;                          // +0x91 (bit 0: dead / being removed)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -72,7 +73,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

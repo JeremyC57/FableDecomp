@@ -14,6 +14,7 @@
 //   address is formed once per pass and homed; the count is read once before the loop; the def-pointer releases are
 //   `__forceinline`; the item vector's destructor frees its storage with free().
 // Layout: NInventory::CItem is 8 bytes (def index first); retail CThing bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -30,7 +31,7 @@ public:
     std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) { return present.test(type); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -54,7 +55,7 @@ class CDefClassBase { public:
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();

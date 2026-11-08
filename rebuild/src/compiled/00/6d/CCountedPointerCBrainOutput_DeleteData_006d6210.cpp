@@ -13,6 +13,7 @@
 // Shape: `delete static_cast<CBrainOutput*>(data)` = null test, the inlined implicit destructor (members in reverse
 // order: LookAtThing, then PAction's release with the count re-read after the decrement and both zero stores),
 // then operator delete.
+#include "fable_compiler.h"
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     void* m_pItem;                              // +0x04
@@ -34,7 +35,7 @@ struct SCountBlock {                            // the shared count block of a C
 struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) {
             --m_pCount->m_references;

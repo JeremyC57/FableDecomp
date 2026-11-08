@@ -11,6 +11,7 @@
 // CM_HiddenBooty::Init 0x00E93080 one.
 // Layout: retail CArtefact (PDB 0x1c): entity thing word +0x0c, ParentClass +0x14; retail CQ_OrchardFarmRaidScript CrateList
 // +0x54 (PDB +0x68, the usual -0x14 retail shift; STLport vector of 12-byte CScriptThing).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SCountBlock {
@@ -32,12 +33,12 @@ struct CScriptThingImp {
 struct CScriptThingPImp {                          // CCountedPointer<CScriptThingImp>
     CScriptThingImp* Data;
     SCountBlock*     Info;
-    __forceinline CScriptThingPImp(const CScriptThingPImp& other) : Data(other.Data), Info(other.Info)
+    FABLE_FORCEINLINE CScriptThingPImp(const CScriptThingPImp& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)
             ++Info->m_references;
     }
-    __forceinline ~CScriptThingPImp()
+    FABLE_FORCEINLINE ~CScriptThingPImp()
     {
         if (Info) {
             --Info->m_references;
@@ -52,8 +53,8 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
 };
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    __forceinline CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
-    __forceinline ~CScriptThing() {}
+    FABLE_FORCEINLINE CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
+    FABLE_FORCEINLINE ~CScriptThing() {}
     bool IsThing(void* thing) const { return PImp.Data->IsThing(thing); }
 };
 struct CScriptThingVector {                        // STLport vector<CScriptThing> (12 bytes)

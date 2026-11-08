@@ -1,4 +1,5 @@
 // Behaviour test for 0083d280: body copied from src/0083d280.cpp (CThingMarker::GetProperties), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -42,7 +43,7 @@ class CThing { public:
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
 };
 class CThingMarker : public CThing { public:
-    __forceinline CDefPointer GetMarkerDef()
+    FABLE_FORCEINLINE CDefPointer GetMarkerDef()
     {
         CDefPointer def;
         GetDefinitionManager()->GetDef_0083d630(DefGlobalIndex, def);

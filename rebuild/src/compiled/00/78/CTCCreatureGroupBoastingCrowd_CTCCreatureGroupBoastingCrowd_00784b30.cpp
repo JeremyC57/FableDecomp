@@ -12,6 +12,7 @@
 // Shape: the CTCCreatureGroup ctor is an inline base (`__forceinline`) whose map is the STLport tree (header nulled, malloc'd,
 // count zeroed, `_M_empty_initialize`); the intelligent pointer is an inline derived ctor over the out-of-line base ctor;
 // the parent's +0x70 test reuses the 2 held in ecx.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 struct CThingGraphic_0x70 {
@@ -41,7 +42,7 @@ struct SMemberNode {                               // 0x30 bytes: rb links, key 
 };
 struct CMemberTreeBase {
     SMemberNode* m_pHeader;
-    __forceinline CMemberTreeBase() : m_pHeader(0)
+    FABLE_FORCEINLINE CMemberTreeBase() : m_pHeader(0)
     {
         m_pHeader = (SMemberNode*)malloc(sizeof(SMemberNode));
     }
@@ -49,7 +50,7 @@ struct CMemberTreeBase {
 struct CMemberTree : CMemberTreeBase {             // map<unsigned __int64, CGroupMemberData> (12 bytes in retail)
     unsigned long m_nodeCount;
     unsigned char m_compare;                       // empty std::less
-    __forceinline CMemberTree() : m_nodeCount(0)
+    FABLE_FORCEINLINE CMemberTree() : m_nodeCount(0)
     {
         m_pHeader->m_color = 0;
         m_pHeader->m_pParent = 0;
@@ -64,7 +65,7 @@ class CTCCreatureGroup : public CTCBase { public:
     bool          ShutdownOnEmpty;                 // +0x14
     CMemberTree   Members;                         // +0x18
     virtual void v01();
-    __forceinline CTCCreatureGroup(CThing* parent)
+    FABLE_FORCEINLINE CTCCreatureGroup(CThing* parent)
         : CTCBase(parent), MemberCount(0), ActiveMemberCount(0), ShutdownOnEmpty(true)
     {
     }

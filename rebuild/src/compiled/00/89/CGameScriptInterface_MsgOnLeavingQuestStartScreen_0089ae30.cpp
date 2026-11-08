@@ -12,6 +12,7 @@
 // Shape: the frames are taken as they are (no -1) and the manager read into a local before the filters are built (the
 //   landed MsgOnExpressionPerformed 0x00893B00 form); the `__forceinline` CCharString operator== (same block, both non-null, equal
 //   length, `Compare ? false : true`) gives the 8-bit `neg ; sbb al,al ; inc al`; true and false keep separate exits.
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pData;                          // +0x00
     unsigned long m_length;                         // +0x04
@@ -35,7 +36,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -60,7 +61,7 @@ class CThing { public:
     unsigned char _pad70[0x21];
     unsigned char m_dead : 1;                       // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

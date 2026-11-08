@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <new>
 #ifndef _MSC_VER
@@ -7,7 +8,7 @@ void FreeBlock_00c3c370(void*);
 class CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenLibraryObject_012B5868();};
 class CPooledNode:public CUnprovenLibraryObject_012B5868{public:CPooledNode* Prev;CPooledNode* Next;CPooledNode();virtual ~CPooledNode();};
 class CUnprovenFloat3_00C40970{public:float X,Y,Z;};
-class CListenerState:public CPooledNode{public:CUnprovenFloat3_00C40970 Vector0C,Vector18;int Integer24,Integer28,Integer2C;float Float30,Float34,Float38;int Integer3C;float Scalar40;int Integer44;float Scalar48,Scalar4C,Scalar50,Scalar54,Scalar58,Scalar5C,Scalar60,Scalar64;int Integer68,Integer6C;unsigned int UnprovenWord70;int Integer74;unsigned long DirtyFlags;void* EffectHandle;CListenerState();virtual ~CListenerState();void SetVector0C(const CUnprovenFloat3_00C40970*);void SetVector18(const CUnprovenFloat3_00C40970*);void SetInteger44(int);void SetInteger6C(int);static __forceinline void operator delete(void* p){FreeBlock_00c3c370(p);}static __forceinline void operator delete[](void* p){FreeBlock_00c3c370(p);}};
+class CListenerState:public CPooledNode{public:CUnprovenFloat3_00C40970 Vector0C,Vector18;int Integer24,Integer28,Integer2C;float Float30,Float34,Float38;int Integer3C;float Scalar40;int Integer44;float Scalar48,Scalar4C,Scalar50,Scalar54,Scalar58,Scalar5C,Scalar60,Scalar64;int Integer68,Integer6C;unsigned int UnprovenWord70;int Integer74;unsigned long DirtyFlags;void* EffectHandle;CListenerState();virtual ~CListenerState();void SetVector0C(const CUnprovenFloat3_00C40970*);void SetVector18(const CUnprovenFloat3_00C40970*);void SetInteger44(int);void SetInteger6C(int);static FABLE_FORCEINLINE void operator delete(void* p){FreeBlock_00c3c370(p);}static FABLE_FORCEINLINE void operator delete[](void* p){FreeBlock_00c3c370(p);}};
 #ifdef _MSC_VER
 typedef char NodeSize[sizeof(CPooledNode)==12?1:-1];typedef char ParameterSize[sizeof(CListenerState)==128?1:-1];
 #endif

@@ -13,6 +13,7 @@
 // Layout (retail; Ego_r.pdb CParticleEmitter is 0xc larger from +0x18: the editor's vector and update parameters are wider):
 // ParticleSystems +0x08, UpdateParameters +0x14, PrimitiveGroupHandle +0x38, OrientationInterpolator +0x60,
 // PositionInterpolator +0x94, Transform/InverseTransform/EndTransform +0xb0, Name +0x140.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -47,7 +48,7 @@ template <class T> class CIVCountedPointer { public:      // intrusive counted p
 class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     CEnginePrimitiveHandle() { }
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data->OnLastHandleReleased(this);

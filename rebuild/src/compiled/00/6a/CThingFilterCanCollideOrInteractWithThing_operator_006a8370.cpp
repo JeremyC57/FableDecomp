@@ -11,6 +11,7 @@
 // Shape: the thing's physics component is read first into a local (homed in the dead argument slot); each TC 0x4d test
 //   is HasTC + the inline const GetTC (the filter's own parent re-read for the second call's argument); the final
 //   collide/interact pair is an `||` inside the null and identity tests with separate true/false exits.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -52,7 +53,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

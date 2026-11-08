@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawPerceivers::Update() -- rebuild the perceiver summary: for each perceiving thing still alive, its perception component raises State to 2 (hostile perception) or 1 (aware) and counts it; each counted thing makes the allegiance 2 (an enemy of the hero) or else 1 (an ally); dead things are erased from the list
@@ -52,7 +53,7 @@ class CThing { public:
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUncheckedConst(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUncheckedConst(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

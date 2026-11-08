@@ -14,6 +14,7 @@
 //   temporaries through C3DVector's memberwise copy constructor.
 // Layout: engine/CEngineLightingManager.h (retail offsets: LookupGridWorldX +0xC4, LookupGridWorldY +0xC8,
 //   SmallObjectLookupGrid +0x4EC as CEngineLocalLightArray*[64][64]).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #define CEngineLightingManager CEngineLightingManagerLayout
 #include "engine/CEngineLightingManager.h"
@@ -23,7 +24,7 @@
 class C3DBoundingBox { public:
     C3DVector MinCoord;
     C3DVector MaxCoord;
-    __forceinline C3DBoundingBox(const C3DVector& minCoord, const C3DVector& maxCoord) { MinCoord = minCoord; MaxCoord = maxCoord; }
+    FABLE_FORCEINLINE C3DBoundingBox(const C3DVector& minCoord, const C3DVector& maxCoord) { MinCoord = minCoord; MaxCoord = maxCoord; }
 };
 class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;

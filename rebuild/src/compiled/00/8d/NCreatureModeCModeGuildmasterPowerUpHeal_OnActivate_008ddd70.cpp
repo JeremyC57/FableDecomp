@@ -17,6 +17,7 @@
 //   0x008C0EA0 effect block (by-value CDefPointer copy, same-TU GetSubDef stand-in, zeroed sub-def and effect id per bodyguard) and a same-TU
 //   CalcAndLookup stand-in that places the effect-id zero store.
 //   The effect and the component go on the guildmaster (ParentThing), once per bodyguard, exactly as retail does.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CTCParamsBase;
@@ -25,7 +26,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1

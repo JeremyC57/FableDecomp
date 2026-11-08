@@ -11,6 +11,7 @@
 // Shape: the owner comes from an unchecked out-parameter lookup (on an absent interface retail reads the never-written out
 // word, which is the lookup key's frame word) and is re-read from that word on every pass; the seat
 // is a named local after the alive test; HasTC is the raw bitset test and GetTC the one-ternary const lookup into ecx.
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -32,7 +33,7 @@ public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -45,8 +46,8 @@ public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

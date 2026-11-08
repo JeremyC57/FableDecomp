@@ -22,6 +22,7 @@
 //   early vptr load, push, then the Up/Forward.Z stores. The facing dot is written as three sequenced statements
 //   (`c = fY*rY; c += fZ*rZ; c += fX*rX;`) -- every single-expression order (X+Y+Z, X+(Y+Z), (Y+Z)+X, ...) comes out
 //   Z,Y,X or Z,X,Y. The blocking test is an inline CThingCreatureBase::IsBlocking (HasTC + const GetTC lookup).
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl acos(double x);
@@ -101,7 +102,7 @@ class CCombatManager { public:
     unsigned char _pad00[0x1c];
     bool CombatStrafeTurningEnabled;                           // +0x1C
 };
-__forceinline float FacingFraction(float x, float y)
+FABLE_FORCEINLINE float FacingFraction(float x, float y)
 {
     float fraction = (float)atan2(x, y) * 0.15915493667125702f;
     if (fraction < 0.0f || fraction >= 1.0f) {

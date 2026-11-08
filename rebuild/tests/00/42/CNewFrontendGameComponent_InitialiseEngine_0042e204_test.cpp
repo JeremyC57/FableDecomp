@@ -1,4 +1,5 @@
 // Behaviour test for 0x0042e204: the candidate source below is embedded verbatim, followed by stand-ins for its callees
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -142,12 +143,12 @@ template <class T> class CDefPointer
 {
 public:
     CDefPointer(ENullDef = ENullDef_DescriptiveNull) : Object(0) {}
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer() { Release(); }
-    template <class U> __forceinline void SetDynamicCast(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
+    FABLE_FORCEINLINE ~CDefPointer() { Release(); }
+    template <class U> FABLE_FORCEINLINE void SetDynamicCast(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); }
     CDefPointeeBase* InternalGetObject() const { return Object; }
     bool IsNull() const { return Object == 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Object) {
             CDefPointeeBase* object = Object;
@@ -158,7 +159,7 @@ public:
     }
     CDefPointeeBase* Object;                             // +0x00
 private:
-    __forceinline void Assign(CDefPointeeBase* object)
+    FABLE_FORCEINLINE void Assign(CDefPointeeBase* object)
     {
         if (Object != object) {
             Release();

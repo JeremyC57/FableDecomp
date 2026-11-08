@@ -13,6 +13,7 @@
 // before the unchecked GetInterface, whose miss arm reads the never-written component from the key word
 // homed in the dead `target` argument slot. `new` keeps its null test, so AddAction is duplicated per arm.
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -33,7 +34,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -19,6 +19,7 @@
 //   temporary. The augmentation index goes through STLport's `operator[]` = `*(begin() + n)`: that form gives retail's
 //   byte-offset CSE (`shl ecx,2 ; cmp [ecx+eax],0 ... push [ecx+eax]`); `*(_M_start + n)` CSEs the whole address.
 //   EBP frame + size TU (optimize "y" off + "s" on, below).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define CItem CItemLayout
@@ -100,7 +101,7 @@ template <class T> class CPersistTraits;
 template <> class CPersistTraits<long> {
 public:
     long DefaultVal;
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const long& value)
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const long& value)
     {
         long copy = value;
         CPersistTraitsSLONG::TransferOut(context, out, copy);
@@ -109,7 +110,7 @@ public:
 template <> class CPersistTraits<bool> {
 public:
     bool DefaultVal;
-    __forceinline void TransferOut(CPersistContext& context, CCharString& out, const bool& value)
+    FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const bool& value)
     {
         if (value)
             out += "TRUE";

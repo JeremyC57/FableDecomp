@@ -11,6 +11,7 @@
 // merge into one `add esp,8`. The 2D group then zeroes its four words +0x5C..+0x68 and stores its own vtable last. One zero
 // register (edi) serves the null test and every clear. All three constructors (2D group, group, list) must be
 // `__forceinline`: VC7.1 keeps a constructor of this size out of line otherwise.
+#include "fable_compiler.h"
 #include <stdlib.h>
 
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
@@ -29,7 +30,7 @@ struct CRetailSTLportList {                        // STLport list: the sentinel
         T      value;
     };
     SNode* m_node;
-    __forceinline CRetailSTLportList()
+    FABLE_FORCEINLINE CRetailSTLportList()
     {
         m_node = 0;
         SNode* node = (SNode*)malloc(sizeof(SNode));
@@ -53,7 +54,7 @@ struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {   
     CArray<CPrimitiveIterator>                 PrimitiveIDToIterator;   // +0x4C
     CRetailSTLportList<long>                   FreePrimitiveIDs;    // +0x58
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveParticleGroup() : CEngineInternalPrimitiveBase(0x20, 0x80000000) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleGroup() : CEngineInternalPrimitiveBase(0x20, 0x80000000) { }
 };
 
 struct CEngineInternalPrimitive2DParticleGroup : CEngineInternalPrimitiveParticleGroup {   // vtable 0x012A7E3C, 0x108 bytes
@@ -63,7 +64,7 @@ struct CEngineInternalPrimitive2DParticleGroup : CEngineInternalPrimitiveParticl
     long          m_68;                            // +0x68
     unsigned char _rest6c[0x9c];                   // +0x6C .. +0x108 (not initialised here)
     virtual void v00();
-    __forceinline CEngineInternalPrimitive2DParticleGroup() : m_5c(0), m_60(0), m_64(0), m_68(0) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitive2DParticleGroup() : m_5c(0), m_60(0), m_64(0), m_68(0) { }
 };
 
 enum EEnginePrimitiveType { ENGINE_PRIMITIVE_TYPE_2D_PARTICLE_GROUP = 0x20 };

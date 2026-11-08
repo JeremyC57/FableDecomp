@@ -13,6 +13,7 @@
 // Shape: the landed CActionFireProjectileWeapon (0x00716790) / CM_HiddenBooty::Init (0x00E93080) models: novtable
 // CAction intermediate with ebx-zero stores, inline CScriptThing default ctor and destructor; the dead-bit test on the
 // raw target pointer is inline.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 
 #define FABLE_RETAIL_CTHING
@@ -34,7 +35,7 @@ struct CScriptThingImp;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing::~CScriptThing() { }
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
 struct __declspec(novtable) CAction : CBaseClassNonCopyable {       // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead

@@ -17,6 +17,7 @@
 //   compare, `LineOfSight || Smelt`, the !Find guard, then AddMessage(0xC, lifespan, static_cast<CThingPhysical*>(creature)->PeekPos(), creature,
 //   PEnemy.GetPItem(), 0.0f, 36.0f, 0) with the creature in a named local. Tried: nested ifs (best), one && chain,
 //   #pragma optimize("s"), a `bool` result local -- all keep the duplicated early-exit tail.
+#include "fable_compiler.h"
 class CTCBase;
 class C3DVector;
 
@@ -31,7 +32,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

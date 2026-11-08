@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __cdecl
 #define __fastcall
@@ -52,7 +53,7 @@ template<class T>struct iterator_traits<T*> {typedef random_access_iterator_tag 
 template<class I,class B,class D>__declspec(noinline) B __fastcall __copy_backward(I first,I last,B result,const random_access_iterator_tag&,D*){for(D n=last-first;n>0;--n)*--result=*--last;return result;}
 template<class I,class O>inline O __fastcall __copy_backward_ptrs(I first,I last,O result,const __false_type&){return __copy_backward(first,last,result,typename iterator_traits<I>::iterator_category(),static_cast<typename iterator_traits<I>::difference_type*>(0));}
 template<class F,class T>__declspec(noinline) void __fastcall fill(F first,F last,const T&v){for(;first!=last;++first)*first=v;}
-template<class F,class S,class T>__forceinline F __fastcall __uninitialized_fill_n(F first,S n,const T&v,const __false_type&){F cur=first;for(;n>0;--n,++cur)_Construct(&*cur,v);return cur;}
+template<class F,class S,class T>FABLE_FORCEINLINE F __fastcall __uninitialized_fill_n(F first,S n,const T&v,const __false_type&){F cur=first;for(;n>0;--n,++cur)_Construct(&*cur,v);return cur;}
 template<class F,class S,class T>__declspec(noinline) F __fastcall uninitialized_fill_n(F first,S n,const T&v){return __uninitialized_fill_n(first,n,v,typename __type_traits<T>::is_POD_type());}
 
 template<class T,class A>class _Vector_base {public:typedef typename _Alloc_traits<T,A>::allocator_type allocator_type;_Vector_base(const A&a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){}_Vector_base(size_t n,const A&a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){_M_start=_M_end_of_storage.allocate(n);_M_finish=_M_start;_M_end_of_storage._M_data=_M_start+n;}~_Vector_base(){if(_M_start)_M_end_of_storage.deallocate(_M_start,_M_end_of_storage._M_data-_M_start);}protected:T*_M_start;T*_M_finish;_STLP_alloc_proxy<T*,T,allocator_type>_M_end_of_storage;};

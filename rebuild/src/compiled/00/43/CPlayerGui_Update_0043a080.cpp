@@ -17,6 +17,7 @@
 // message line budget +0x904 is named descriptively.
 // Shape: STLport list loops over the sentinel's _M_next with an inline erase (next/prev locals, implicit element dtor,
 // free(node)); the player's character is an inline GetPItem accessor on the CPlayer intelligent pointer +0x34.
+#include "fable_compiler.h"
 #include <stdlib.h>
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -34,7 +35,7 @@ class CDefinitionManager { public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

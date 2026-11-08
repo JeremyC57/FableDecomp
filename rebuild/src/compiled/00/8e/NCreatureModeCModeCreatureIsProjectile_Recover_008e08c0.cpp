@@ -14,6 +14,7 @@
 // frame temporary (retail CCombatActionBase is 0x114 bytes; CanBeHit/Flip follow).
 // Shape: the action is an unnamed temporary passed by reference (built, used, destroyed by the implicit derived dtor = the
 // out-of-line base dtor); VC duplicates the RemoveMode tail for the GetInterface miss arm.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -47,7 +48,7 @@ class CThingCreatureBase : public CThingAnimatable { public:
     unsigned char   _pad54[0xc];
     CPhysicsObject* PPhysics;              // +0x60
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

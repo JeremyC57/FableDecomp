@@ -5,6 +5,7 @@
 // Donor list88 but16-byte vectors/larger banks shift later members (banks41c/7a4, frameb50).
 // Calls frame Sizeof009FCBF0, texture FrameEnd00A698B0, resource bank009FC430,
 // graphic banks009FD660, operator delete00BFE9BC and free00BFEA14. CCPPointerInfo callback is void __fastcall(void*) at4, Data8.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CEngineSurfaceCompositionManager.h"
 #include "engine/CGraphicFrame.h"
@@ -26,8 +27,8 @@ class CCompositeSurfaceCache { public: unsigned char ResourceAndMorphs[0x4c]; CG
 class CCPPointerInfo { public: unsigned long RefCount; void (__fastcall *DeleteFunc)(void*); void* Data; };
 struct CCachePointer {
  CCompositeSurfaceCache* Data; CCPPointerInfo* Info;
- __forceinline unsigned long GetRefCount() const { return Info ? Info->RefCount : 0; }
- __forceinline ~CCachePointer() {
+ FABLE_FORCEINLINE unsigned long GetRefCount() const { return Info ? Info->RefCount : 0; }
+ FABLE_FORCEINLINE ~CCachePointer() {
   if(Info) {--Info->RefCount; if(Info->RefCount==0) { Info->DeleteFunc(Info->Data); delete Info; }}
   Data=0;Info=0;
  }

@@ -1,5 +1,6 @@
 // Behaviour test for 0x0062CE60: CWorld::EALoadGameFromInGameMenu(const CGameEvent* event) -- game-event action: if the event player's hero is alive, copy the save-game name list from the hero's interface 0xC6, read the chosen index from the event data and load that save
 // A copy of the source model and logic (compiled separately from src/0062ce60.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -58,7 +59,7 @@ class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     typedef _Alloc allocator_type;
     explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     _Tp& operator[](unsigned int __n) { return *(this->_M_start + __n); }
 };
 }
@@ -71,7 +72,7 @@ public:
     long          WritePos;                            // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);       // 0x009F18F0
-    __forceinline long ReadLong() { long value = 0; Read(4, &value); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value = 0; Read(4, &value); return value; }
 };
 class CGameEvent {
 public:
@@ -111,7 +112,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             long type = interfaceType;

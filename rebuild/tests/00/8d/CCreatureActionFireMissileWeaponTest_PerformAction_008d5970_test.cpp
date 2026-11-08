@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -624,7 +625,7 @@ class CThing:public CBaseObject { public:
     unsigned char DeadFlags;
     void SetInLimbo(bool); //004C8CF0
     void Kill(bool); //004C9B80
-    template<class T> __forceinline bool GetInterface(T** out,long key) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             long type=key;
             CInterfaceMap* map=&Components;
@@ -634,7 +635,7 @@ class CThing:public CBaseObject { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out,long key) const {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long key) const {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             long type=key;
             const CInterfaceMap* map=&Components;
@@ -761,7 +762,7 @@ struct __declspec(novtable) CCreatureActionBase {
 struct NativeCountedDef {
  struct VTable;const VTable* VPtr;unsigned long IVRefCount;
  void DeletingDestructor(unsigned long);void Delete()const;
- __forceinline void Release(){if(!--IVRefCount)(this->*GetDelete())();}
+ FABLE_FORCEINLINE void Release(){if(!--IVRefCount)(this->*GetDelete())();}
  typedef void(NativeCountedDef::*DeleteMethod)()const;
  DeleteMethod GetDelete()const;
 };
@@ -770,7 +771,7 @@ inline NativeCountedDef::DeleteMethod NativeCountedDef::GetDelete()const{return 
 template<class T>struct DefPointer {
  T* Object;DefPointer():Object(0){} explicit DefPointer(T* p):Object(p){if(p)++p->IVRefCount;}
  DefPointer(const DefPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
- __forceinline void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
+ FABLE_FORCEINLINE void Assign(const DefPointer& p){if(Object!=p.Object){if(Object){Object->Release();Object=0;}Object=p.Object;if(Object)++Object->IVRefCount;}}
  ~DefPointer(){if(Object)Object->Release();}
  T* operator->()const{return Object;}
 };
@@ -778,7 +779,7 @@ template<class T>struct DefPointer {
 class CMeleeCombatAbilityDef:public NativeCountedDef { public:}; // borrowed native lifetime view, no definition fields accessed
 
 class CTCCarrying { public:CThing* GetThingInPrimarySlot();}; //006A1440
-__forceinline CThing* CThingCreatureBase::GetPrimaryHeldThing()const {CThing* held=0;CTCCarrying* carrying;if(GetInterface(&carrying,70))held=carrying->GetThingInPrimarySlot();return held;}
+FABLE_FORCEINLINE CThing* CThingCreatureBase::GetPrimaryHeldThing()const {CThing* held=0;CTCCarrying* carrying;if(GetInterface(&carrying,70))held=carrying->GetThingInPrimarySlot();return held;}
 class CRightHandedSet;
 CThing* __fastcall CreateShot(long,CThing*,CThing*,const CThing*,float,float,float,const DefPointer<CMeleeCombatAbilityDef>&,const C3DVector*,const CRightHandedSet*); //007C0AD0
 class CCreatureAction_FireMissileTest:public CCreatureActionBase { public:

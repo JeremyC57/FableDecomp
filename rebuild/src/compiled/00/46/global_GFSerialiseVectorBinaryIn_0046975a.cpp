@@ -7,6 +7,7 @@
 // Shape (family M048, representative 0x00463F9C): the landed size-TU template (0x00469CB2) with an enum traits whose
 //   DefaultVal is zero (`and dword ptr [ebp-10h],0`) and STLport's `resize(n, T())` temporary zeroed in its frame word.
 // Model: engine/CMemoryDataInputStream.h + the reader adapter of the landed template.
+#include "fable_compiler.h"
 enum ECreatureGeneratorGenerateType { ECREATUREGENERATORGENERATETYPE_NONE = 0 };
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -18,8 +19,8 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -42,7 +43,7 @@ public:
     T* _M_finish;                                           // +0x04
     T* _M_end_of_storage;                                   // +0x08
     void resize(unsigned int newSize, const T& x);         // 0x00469851
-    __forceinline void resize(unsigned int newSize) { resize(newSize, T()); }
+    FABLE_FORCEINLINE void resize(unsigned int newSize) { resize(newSize, T()); }
     T* begin() { return _M_start; }
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
@@ -53,7 +54,7 @@ template <> struct CPersistTraits<ECreatureGeneratorGenerateType> {
     CPersistTraits() : DefaultVal(ECreatureGeneratorGenerateType(0)) { }
     void TransferBinaryIn(CMemoryDataInputStream& stream, ECreatureGeneratorGenerateType* out) const;   // 0x004697EE
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

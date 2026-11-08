@@ -1,6 +1,7 @@
 // NUISystem::CFrontEndButton::OnObserverRemove() -- a PC-style button losing its observer drops its hover (OnUnhovered + WasHovered = false)
 // Retail 0x0054DE70, 81 bytes (vtable 0x01249554 slot 109). Callees: LoadAndReturnDef (slot 108), OnUnhovered (slot 144, +0x240).
 // Name from Ego_r.pdb: ?OnObserverRemove@CFrontEndButton@NUISystem@@MAEXXZ.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -16,7 +17,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

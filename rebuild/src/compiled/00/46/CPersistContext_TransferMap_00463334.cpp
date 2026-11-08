@@ -21,6 +21,7 @@
 // Fixed (rename1, 2026-10-24): the tree insert 0x004636CF was declared as `insert` (find-or-insert); it is the landed
 //   STLport _Rb_tree<..>::insert_equal(const value_type&) (walk to a leaf with no uniqueness test, then _M_insert), so the
 //   declaration now says insert_equal. Bytes unchanged.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -42,7 +43,7 @@ template <class T> class CBasicString { public:                       // Ego_r.p
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
 public:
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

@@ -12,6 +12,7 @@
 // (whole-word bit test `mov ecx,[eax+20h] ; test ch,1`); the target passes the inline IsThingAlive.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
+#include "fable_compiler.h"
 class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -28,7 +29,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_stateFlags;                             // +0x91 (bit 0 = dead)
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

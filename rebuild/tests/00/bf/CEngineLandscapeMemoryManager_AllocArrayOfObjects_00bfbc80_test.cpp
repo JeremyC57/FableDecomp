@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -45,7 +46,7 @@ struct CLocalDetailPrimitiveMeshZSpriteBatch {
 
 class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long bytes, void* owner);             // 0x00BD9AF0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     template<class T> T* AllocArrayOfObjects(long count, void* owner);
 };
 

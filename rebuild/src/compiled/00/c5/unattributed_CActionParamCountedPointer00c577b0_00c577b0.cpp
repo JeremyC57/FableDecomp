@@ -6,6 +6,7 @@
 // call through the class's own vtable slot at a constant address (`call dword ptr [vtable+14h]`). EH state 0 covers the body (the base is alive; its inline empty destructor
 // only restores the base vtable). The manifest label (`~CActionParamCCountedPointer<...>`) names
 // the shape; the class is named by address. One of 2 bodies of this shape.
+#include "fable_compiler.h"
 struct CActionParamBase_00c577b0 {             // vtable 0x012B5868
     virtual void v00();
     ~CActionParamBase_00c577b0() { }
@@ -17,7 +18,7 @@ struct CActionParamCountedPointer_00c577b0 : CActionParamBase_00c577b0 {    // v
     virtual void v03();
     virtual void v04();
     virtual void Release();                // slot 5
-    __forceinline void DoRelease() { Release(); }   // keeps the call virtual: written directly in the destructor it would be a direct call
+    FABLE_FORCEINLINE void DoRelease() { Release(); }   // keeps the call virtual: written directly in the destructor it would be a direct call
     ~CActionParamCountedPointer_00c577b0();
 };
 

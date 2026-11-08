@@ -2,6 +2,7 @@
 // Retail: Fable.exe @ 0x00565780, 55 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CCharString copy ctor @ 0x0099EC30 (x3).
 // Leaf: _Construct
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N00565780 {
 struct CCharString {
@@ -14,7 +15,7 @@ struct CActivity {                               // CTCHeroOnlineScoreboard::CAc
     CCharString   UnitOfMeasurement;             // +0x08
     unsigned char NumDecPlacesToShow;            // +0x0C
     bool          LowerIsBetter;                 // +0x0D
-    __forceinline CActivity(const CActivity& o) : Name(o.Name), Description(o.Description), UnitOfMeasurement(o.UnitOfMeasurement), NumDecPlacesToShow(o.NumDecPlacesToShow), LowerIsBetter(o.LowerIsBetter) { }
+    FABLE_FORCEINLINE CActivity(const CActivity& o) : Name(o.Name), Description(o.Description), UnitOfMeasurement(o.UnitOfMeasurement), NumDecPlacesToShow(o.NumDecPlacesToShow), LowerIsBetter(o.LowerIsBetter) { }
 };
 
 // STLport _Construct: placement-copy one element (null-checked placement new, then the implicit copy constructor)

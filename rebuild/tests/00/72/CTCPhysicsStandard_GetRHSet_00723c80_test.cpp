@@ -1,4 +1,5 @@
 // Behaviour test for CTCPhysicsStandard::GetRHSet (0x00723c80): the interpolated set is unit length and points along the lerp.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cmath>
 #ifndef _MSC_VER
@@ -26,7 +27,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float lengthSquared = Z * Z;
         lengthSquared += Y * Y;

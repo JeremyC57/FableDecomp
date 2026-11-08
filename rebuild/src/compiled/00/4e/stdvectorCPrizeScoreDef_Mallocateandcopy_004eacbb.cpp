@@ -6,6 +6,7 @@
 // Shape (family K123, representative 0x004E9C63): STLport 4.6 `_M_allocate_and_copy` with allocate and __uninitialized_copy inline
 //   (size TU: both __forceinline) and the element _Construct out of line; the vector model is the landed operator= rows' one
 //   (one template parameter, matching the bound names).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
 class CPrizeScoreDef {                                   // retail 0x30 bytes (Ego_r.pdb); opaque here
@@ -15,7 +16,7 @@ public:
 namespace std {
 struct __false_type { };
 template <class T> void __fastcall _Construct(T* p, const T& val);                     // 0x004EAC30
-template <class T> __forceinline T* __uninitialized_copy(const T* first, const T* last, T* result, const __false_type&)
+template <class T> FABLE_FORCEINLINE T* __uninitialized_copy(const T* first, const T* last, T* result, const __false_type&)
 {
     T* cur = result;
     for (; first != last; ++first, ++cur)
@@ -27,7 +28,7 @@ public:
     T* _M_start;                                            // +0x00
     T* _M_finish;                                           // +0x04
     T* _M_end_of_storage;                                   // +0x08
-    static __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    static FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
     T* _M_allocate_and_copy(unsigned int n, const T* first, const T* last)
     {
         T* result = allocate(n);

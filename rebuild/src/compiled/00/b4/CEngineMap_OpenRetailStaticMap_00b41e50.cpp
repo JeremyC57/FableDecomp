@@ -22,6 +22,7 @@
 // Shape: the find iterator is read after CloseStaticMap (`mov eax,[ebx+14h]`); the counted pointer's operator= reads the source's
 //   Info and Data into locals before the compare (retail holds them in ebx/ebp across the release); the returned temporary dies
 //   right after the assignment (its dtor's zero stores are dead); SetBankFileEntry gets a by-value copy (add-reference).
+#include "fable_compiler.h"
 #define CLocalDetailCacheMap CLocalDetailCacheMap_Header
 #include "engine/CLocalDetailCacheMap.h"
 #undef CLocalDetailCacheMap
@@ -41,8 +42,8 @@ template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base { _Valu
 template <class _Value, class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Value _M_data; };
 template <class _Value> struct _Rb_tree_const_iterator {
     _Rb_tree_node_base* _M_node;
-    __forceinline _Rb_tree_const_iterator(_Rb_tree_node_base* __x) : _M_node(__x) { }
-    __forceinline const _Value* operator->() const { return &((_Rb_tree_node<_Value>*)_M_node)->_M_value_field; }
+    FABLE_FORCEINLINE _Rb_tree_const_iterator(_Rb_tree_node_base* __x) : _M_node(__x) { }
+    FABLE_FORCEINLINE const _Value* operator->() const { return &((_Rb_tree_node<_Value>*)_M_node)->_M_value_field; }
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 class _Rb_tree {
@@ -52,7 +53,7 @@ public:
     _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_header;
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
-    template <class _KT> __forceinline const_iterator find(const _KT& __x) const { return const_iterator(_M_find(__x)); }
+    template <class _KT> FABLE_FORCEINLINE const_iterator find(const _KT& __x) const { return const_iterator(_M_find(__x)); }
 private:
     template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // 0x0042B467
 public:
@@ -64,7 +65,7 @@ public:
     typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::const_iterator const_iterator;
     _Rep_type _M_t;
-    __forceinline const_iterator find(const _Key& __x) const { return _M_t.find(__x); }
+    FABLE_FORCEINLINE const_iterator find(const _Key& __x) const { return _M_t.find(__x); }
 };
 
 }

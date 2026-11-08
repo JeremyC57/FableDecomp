@@ -1,5 +1,6 @@
 // CModeJackOfBladesFlash::ExtinguishFlames() -- put out the flames on the perceived target and on every nearby thing
 // Grade: see STATUS.tsv
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 class CTCBase;
 class CThing;
@@ -20,7 +21,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(long(interfaceType + 0));

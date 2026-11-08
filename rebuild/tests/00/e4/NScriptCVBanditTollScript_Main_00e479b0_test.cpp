@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -162,7 +163,7 @@ void CScriptBase::AddEntityScriptBinding(CEntityScriptBindingBase* p) {
 template<class T> class CSpawnedFunc:public CSpawnedFuncBase {
 public:
     void (T::*Func)();T* PClass;
-    __forceinline CSpawnedFunc(const CCharString& name,unsigned long id,T* pclass,void (T::*func)())
+    FABLE_FORCEINLINE CSpawnedFunc(const CCharString& name,unsigned long id,T* pclass,void (T::*func)())
         :CSpawnedFuncBase(name,id),Func(func),PClass(pclass) {}
     static void* operator new(size_t n) throw() {
         unsigned bit=1u<<allocation_index++;return (failure_mask&bit)?0:malloc(n);

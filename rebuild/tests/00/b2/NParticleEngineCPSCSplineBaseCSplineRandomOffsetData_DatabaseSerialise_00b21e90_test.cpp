@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -43,7 +44,7 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
     T& operator[](unsigned long n) { return *(begin() + n); }
     CArray& operator=(const CArray& other) { _M_finish = _M_start; for (T* p = other._M_start; p != other._M_finish; ++p) *_M_finish++ = *p; return *this; }
     void resize(unsigned int newSize, const C3DVector& value = C3DVector()) { while (size() < newSize) *_M_finish++ = value; _M_finish = _M_start + newSize; }
-    static __forceinline T* copy(T* first, T* last, T* result)
+    static FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
     {
         for (long n = last - first; n > 0; --n) {
             *result = *first;
@@ -52,13 +53,13 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
         }
         return result;
     }
-    __forceinline T* erase(T* first, T* last)
+    FABLE_FORCEINLINE T* erase(T* first, T* last)
     {
         T* i = copy(last, _M_finish, first);
         _M_finish = i;
         return first;
     }
-    __forceinline void clear() { erase(begin(), end()); }
+    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
 };
 
 class CCardinalSpline { public:
@@ -68,7 +69,7 @@ class CCardinalSpline { public:
 };
 
 template <class T>
-__forceinline void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
+FABLE_FORCEINLINE void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
 {
     context.Transfer(name, value, defaultValue);
 }

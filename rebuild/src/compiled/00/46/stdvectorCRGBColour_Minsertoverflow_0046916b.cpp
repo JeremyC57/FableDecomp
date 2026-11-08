@@ -12,6 +12,7 @@
 //   (the `_STLP_TRY/_STLP_UNWIND` guards compile to nothing).
 // Model: the three STLport vector words; CRGBColour is the 4-byte D3DCOLOR record (B, G, R, A) with a user copy constructor
 //   (engine/CRGBColour.h is a data-only header; the copy itself lives in 0x0045BB8F, so only the size matters here).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
@@ -24,16 +25,16 @@ class CRGBColour { public:
 
 namespace std {
 struct __false_type { __false_type() {} };
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
 void __fastcall _Construct(CRGBColour* p, const CRGBColour& value);                    // 0x0045BB8F
-template <class T> __forceinline T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
+template <class T> FABLE_FORCEINLINE T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
 {
     T* cur = result;
     for (; first != last; ++first, ++cur)
         _Construct(cur, *first);
     return cur;
 }
-template <class T> __forceinline T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
+template <class T> FABLE_FORCEINLINE T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
 {
     T* cur = first;
     for (; n > 0; --n, ++cur)
@@ -46,9 +47,9 @@ public:
     T* _M_finish;                   // +0x04
     T* _M_end_of_storage;           // +0x08
     unsigned int size() const { return _M_finish - _M_start; }
-    static __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
-    __forceinline void _M_clear() { if (_M_start != 0) free(_M_start); }
-    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
+    static FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE void _M_clear() { if (_M_start != 0) free(_M_start); }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);
 };
 template <class T> void vector<T>::_M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd)

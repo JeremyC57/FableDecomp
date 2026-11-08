@@ -15,6 +15,7 @@
 //   idiom: the name chain is built before the value/default pushes), each element goes through `*(begin() + i)` so the
 //   array start is read first, and the loop is `if (i < count) { two zero defaults; do ... while (++i < count); }`
 //   (the six zero stores sit once inside the guard). The size is `count > size ? count : size` (retail `cmp ; jg`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharStringData;
@@ -42,7 +43,7 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
     T& operator[](unsigned long n) { return *(begin() + n); }
     CArray& operator=(const CArray& other);                                  // 0x0075B8D0
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());  // 0x0075C040
-    static __forceinline T* copy(T* first, T* last, T* result)
+    static FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
     {
         for (long n = last - first; n > 0; --n) {
             *result = *first;
@@ -51,13 +52,13 @@ template <class T> class CArray { public:              // STLport vector<T> (12 
         }
         return result;
     }
-    __forceinline T* erase(T* first, T* last)
+    FABLE_FORCEINLINE T* erase(T* first, T* last)
     {
         T* i = copy(last, _M_finish, first);
         _M_finish = i;
         return first;
     }
-    __forceinline void clear() { erase(begin(), end()); }
+    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
 };
 
 class CCardinalSpline { public:
@@ -67,7 +68,7 @@ class CCardinalSpline { public:
 };
 
 template <class T>
-__forceinline void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
+FABLE_FORCEINLINE void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
 {
     context.Transfer(name, value, defaultValue);
 }

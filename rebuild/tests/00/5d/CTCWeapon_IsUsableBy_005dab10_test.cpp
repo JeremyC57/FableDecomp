@@ -1,5 +1,6 @@
 // Behaviour test for 005dab10: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCWeapon::IsUsableBy(const CThing& thing) const -- only creatures may use a weapon; class-1 things, a suppressed game, things without hero experience and weapon classes 0/1/3 always may; class 2 needs berserk or the experience requirements
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -41,8 +42,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x6c - 0x4c];
     unsigned long ThingTypeFlags;               // +0x6c bit 3: creature
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

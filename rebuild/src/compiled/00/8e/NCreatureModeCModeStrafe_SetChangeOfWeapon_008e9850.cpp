@@ -19,6 +19,7 @@
 // Shape: HasTC + one-ternary GetTC (key homed in the dead `weapon` slot); the aim entry is a named local held across
 //   the getter call (edi), the components a named local and the bank an inline accessor (`mov eax,[eax+3Ch] ; push ;
 //   mov ecx,eax`); the centre re-reads AimingNumFrames.
+#include "fable_compiler.h"
 class CTCBase;
 
 class CCharStringData { public:
@@ -60,13 +61,13 @@ class CThing { public:
     CInterfaceMap  m_interfaces;               // +0x44
     unsigned char  _pad54[0x38];
     unsigned short m_weaponId;                 // +0x8c (DefGlobalIndex)
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

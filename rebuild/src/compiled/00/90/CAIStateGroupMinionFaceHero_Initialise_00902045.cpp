@@ -10,6 +10,7 @@
 // arguments pushed straight from the frame (`push dword ptr [ebp+..]`).
 // `PHero = 0` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment shape; the zero
 // store at +0x1c is scheduled between the argument pushes. No engine header; layout local, names descriptive.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
@@ -29,8 +30,8 @@ struct CBaseIntelligentPointer {
 
 struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01237F14
     // __forceinline: under optimize("s") VC7.1 otherwise calls these small inline members out of line
-    __forceinline CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 class CAIStateGroupBase { public:

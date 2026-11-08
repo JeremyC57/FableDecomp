@@ -10,6 +10,7 @@
 // quest object is a named local (inline member reads keep it in ecx and shift the compare registers).
 // Leaf: ?DeactivateQuest@CQuestManager@@QAEXABVCCharString@@K@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_count->RefCount are the header CCPPointerInfo's (same offsets).
+#include "fable_compiler.h"
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
@@ -17,7 +18,7 @@ class CCharString { public:
     CCharStringData* PStringData;
 };
 
-__forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
+FABLE_FORCEINLINE bool SameText(const CCharStringData* a, const CCharStringData* b)
 {
     if (a == b)
         return true;

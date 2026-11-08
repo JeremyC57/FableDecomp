@@ -1,6 +1,7 @@
 // CGameScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility -- query entity events within current script frame interval
 // Leaf: MsgPerformedAnyNonAggressiveSpecialAbility
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+#include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CQuestManager.h"
@@ -23,12 +24,12 @@ struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThrea
 struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct QuestManagerNative{unsigned char State[0x88];ActiveQuest* PQuestCurrentlyRunning;};
 extern QuestManagerNative* QuestManager; //013B89FC
-__forceinline long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
-__forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 struct EntityEvent{virtual ~EntityEvent();virtual long GetType()const;long CreatedFrame;long Ability;bool Aggressive;};
 struct EventNode{EventNode*Next;EventNode*Prev;EntityEvent*Data;void*Info;};
 struct EventList{EventNode*Head;};
-struct EntityEventsMethods:CTCEntityEvents{__forceinline EventNode* Head()const{return *reinterpret_cast<EventNode* const*>(Events);}};
+struct EntityEventsMethods:CTCEntityEvents{FABLE_FORCEINLINE EventNode* Head()const{return *reinterpret_cast<EventNode* const*>(Events);}};
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgPerformedAnyNonAggressiveSpecialAbility()const;};
 bool CGameScriptThingMethods::MsgPerformedAnyNonAggressiveSpecialAbility()const{
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){

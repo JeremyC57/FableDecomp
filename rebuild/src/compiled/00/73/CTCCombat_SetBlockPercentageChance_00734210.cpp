@@ -15,6 +15,7 @@
 // Label: the mangled name ?SetBlockPercentageChance@CTCCombat@@QAEXMW4EWeaponClass@@@Z gives (float, EWeaponClass): retail
 //   reads the float from the first argument slot and compares the block data's +0x2c against the second (the earlier
 //   (long, float) order was wrong). The same name at 0x0074B7A0 is a mid-function reference, not a second body.
+#include "fable_compiler.h"
 enum EWeaponClass { WEAPON_CLASS_0 };
 enum ECombatAbilityDataType { COMBAT_ABILITY_DATA_0, COMBAT_ABILITY_DATA_BLOCK };
 class CCombatAbilityData { public:
@@ -66,7 +67,7 @@ struct CCombatAbilityMap {                      // STLport multimap (12 bytes): 
     SAbilityNode* _M_header;
     unsigned long _M_node_count;
     unsigned long _M_key_compare;
-    __forceinline CAbilityIterator lower_bound(const ECombatAbilityDataType& k) const
+    FABLE_FORCEINLINE CAbilityIterator lower_bound(const ECombatAbilityDataType& k) const
     {
         SAbilityNode* y = _M_header;
         SAbilityNode* x = _M_header->_M_parent;
@@ -79,7 +80,7 @@ struct CCombatAbilityMap {                      // STLport multimap (12 bytes): 
         }
         return CAbilityIterator(y);
     }
-    __forceinline CAbilityIterator upper_bound(const ECombatAbilityDataType& k) const
+    FABLE_FORCEINLINE CAbilityIterator upper_bound(const ECombatAbilityDataType& k) const
     {
         SAbilityNode* y = _M_header;
         SAbilityNode* x = _M_header->_M_parent;

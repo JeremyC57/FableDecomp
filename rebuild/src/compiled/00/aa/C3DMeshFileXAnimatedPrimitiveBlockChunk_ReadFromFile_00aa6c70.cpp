@@ -12,6 +12,7 @@
 // Layout: retail CArray is 12 bytes (PDB 16): GroupBlock +0x2c, BonesPerVertex +0x44, VertexList +0x48,
 // BoneWeights +0x54, as in the landed WriteToFile 0x00AA5720 and dtor 0x00AA7480; no engine header.
 // Leaf: ReadFromFile@C3DMeshFileXAnimatedPrimitiveBlockChunk
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -25,8 +26,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long m_10;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -42,7 +43,7 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

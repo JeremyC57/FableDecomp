@@ -14,6 +14,7 @@
 //   literal `false` (`and byte ptr [esi+10h], mask` in both tail-duplicated arms), else on an existing component store the
 //   variable through VC's xor bit insert and run Cleanup (the six default-true bits, then the cleared one, before
 //   `ParentThing->RemoveTC(0x9c)`).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCParamsBase;
 
@@ -37,7 +38,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline T* GetTC()
+    template <class T> FABLE_FORCEINLINE T* GetTC()
     {
         CTCMap* map = &m_tcs;
         STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);

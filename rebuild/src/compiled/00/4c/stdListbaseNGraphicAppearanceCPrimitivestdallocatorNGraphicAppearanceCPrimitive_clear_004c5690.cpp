@@ -14,6 +14,7 @@
 // exactly as the landed out-of-line copy 0x004C4160 (IsUnique -> slot 3, `Data = 0` = release plus a second zero store,
 // the counted pointer's member destructor, then the out-of-line CBaseClass destructor). The node allocator frees
 // without a null test (as in the landed RemovePrimitive 0x004BF920).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
 class CEnginePrimitiveHandle;
@@ -37,14 +38,14 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -61,7 +62,7 @@ class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
@@ -81,7 +82,7 @@ public:
 namespace std {
 template <class T> class allocator {                // STLport 4.6 _alloc.h: class key `class` (V?$allocator)
 public:
-    __forceinline void deallocate(void* p, unsigned int) { free(p); }
+    FABLE_FORCEINLINE void deallocate(void* p, unsigned int) { free(p); }
 };
 
 struct _List_node_base {
@@ -92,7 +93,7 @@ template <class T> struct _List_node : _List_node_base {
     T _M_data;                                     // +0x08
 };
 
-template <class T> __forceinline void _Destroy(T* p) { p->~T(); }
+template <class T> FABLE_FORCEINLINE void _Destroy(T* p) { p->~T(); }
 
 template <class T, class A> class _List_base {
 public:

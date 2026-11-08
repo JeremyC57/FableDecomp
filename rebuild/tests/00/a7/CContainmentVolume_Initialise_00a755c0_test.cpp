@@ -1,5 +1,6 @@
 // Behaviour test for 00a755c0: final.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CContainmentVolume::Initialise(const CPlane*, unsigned long, CMovableResourceMemoryPool*)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -54,14 +55,14 @@ class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, void* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
 };
 
-static __forceinline bool IsValidSize(__int64 size) { return size >= 0 && size <= 0x7fffffff; }
-static __forceinline bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner);
+static FABLE_FORCEINLINE bool IsValidSize(__int64 size) { return size >= 0 && size <= 0x7fffffff; }
+static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner);
 
 struct CContainmentVolume_Methods : CContainmentVolume {
     bool Initialise(const CPlane* planes, unsigned long count, CMovableResourceMemoryPool* pool);
 };
 
-static __forceinline bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner)
+static FABLE_FORCEINLINE bool AllocateChecked(CMovableResourceMemoryPool* pool, long* handle, unsigned long bytes, void* owner)
 {
     if (!IsValidSize((__int64)bytes))
         return false;

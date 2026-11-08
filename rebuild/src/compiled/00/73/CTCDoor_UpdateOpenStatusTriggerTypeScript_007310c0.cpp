@@ -11,6 +11,7 @@
 //        duplicated `OldOpen = CurrentOpen` tail.
 // Layout: engine/CTCDoor.h (+0x04 `m4` is CTCBase::ParentThing); retail CThing PBaseDef.Object +0x70 (PDB +0x80);
 //         CAppearanceDef::Animation +0x34 (PDB); retail CWorld::PMainMeshBank +0x3C.
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #include "engine/CTCDoor.h"
 
@@ -56,7 +57,7 @@ public:
 class CDefClassBase {
 public:
     template<class T> bool GetSubDefRaw(CDefPointer<const T>* out) const;   // 0x0042B0A2 for T = CAppearanceDef
-    template<class T> __forceinline bool GetSubDef(CDefPointer<const T>* out) const { out->Object = 0; return GetSubDefRaw(out); }
+    template<class T> FABLE_FORCEINLINE bool GetSubDef(CDefPointer<const T>* out) const { out->Object = 0; return GetSubDefRaw(out); }
 };
 void* FindDef_s7r_0();
 #pragma auto_inline(off)

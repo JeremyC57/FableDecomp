@@ -15,6 +15,7 @@
 //   dead `set` argument slot (set lives in ebx) -- and the owner is re-read from it each pass; VC7.1 packs them only when
 //   the const LowerBound body is visible in the TU (same-TU auto_inline(off) stand-in), otherwise the owner gets its own
 //   `push ecx` slot.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CCharString;
@@ -65,7 +66,7 @@ public:
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                     // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

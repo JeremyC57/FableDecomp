@@ -1,6 +1,7 @@
 // 004fe630 CWorldMap::GetNavigationSectionOffsetInFile
 // Flags: /O2 /Oy /W3 
 // Leaf: GetNavigationSectionOffsetInFile
+#include "fable_compiler.h"
 #include <string.h>
 #include <stdlib.h>
 #include "engine/CWorldMap.h"
@@ -11,16 +12,16 @@ template<class Char>struct CBasicString{Char*PData;unsigned StringLength,DataLen
 struct CCharStringData{CBasicString<char>Data;int RefCount;CCharStringData(){} CCharStringData(int,char);~CCharStringData();};
 #pragma pack(pop)
 extern int CCharStringInstances;
-struct CCharString{CCharStringData*p;CCharStringData*AllocStringData(const char*,int);__declspec(noinline) void UnassignString(){if(p&&--p->RefCount<=0)delete p;p=0;}__declspec(noinline) CCharString():p(0){++CCharStringInstances;}__declspec(noinline) CCharString(const char*s,int n=-1):p(0){++CCharStringInstances;if(s&&*s)p=AllocStringData(s,n);}__declspec(noinline) CCharString(const CCharString&s);__declspec(noinline) ~CCharString(){UnassignString();--CCharStringInstances;}__declspec(noinline) CCharString&operator=(const CCharString&s){if(this!=&s){if(p)UnassignString();if(s.p){p=s.p;++p->RefCount;}}return *this;}__declspec(noinline) void LoadFromFile(CAFile*,void*,int);__forceinline bool Equals(const char*s)const{bool equal;if(p){equal=p->Data==s;}else{equal=strcmp(s,"")==0;}return equal;}};
+struct CCharString{CCharStringData*p;CCharStringData*AllocStringData(const char*,int);__declspec(noinline) void UnassignString(){if(p&&--p->RefCount<=0)delete p;p=0;}__declspec(noinline) CCharString():p(0){++CCharStringInstances;}__declspec(noinline) CCharString(const char*s,int n=-1):p(0){++CCharStringInstances;if(s&&*s)p=AllocStringData(s,n);}__declspec(noinline) CCharString(const CCharString&s);__declspec(noinline) ~CCharString(){UnassignString();--CCharStringInstances;}__declspec(noinline) CCharString&operator=(const CCharString&s){if(this!=&s){if(p)UnassignString();if(s.p){p=s.p;++p->RefCount;}}return *this;}__declspec(noinline) void LoadFromFile(CAFile*,void*,int);FABLE_FORCEINLINE bool Equals(const char*s)const{bool equal;if(p){equal=p->Data==s;}else{equal=strcmp(s,"")==0;}return equal;}};
 // Layout: 004b9370 tree node parent+4,left+8,right+c,key CCharString+10.
 void CCharString::LoadFromFile(CAFile*file,void*context,int length){UnassignString();if(length==-1)length=file->GetFileSize()-file->GetFilePosition();p=new CCharStringData(length,' ');if(p&&length>0)file->ReadRaw(p->Data.PData,length,context);}
 struct Node{int color;Node*parent;Node*left;Node*right;CCharString value;};
-__forceinline bool Less(const CCharString&a,const CCharString&b){if(a.p==b.p)return false;if(!b.p)return false;if(!a.p)return true;return strcmp(a.p->Data.PData,b.p->Data.PData)<0;}
+FABLE_FORCEINLINE bool Less(const CCharString&a,const CCharString&b){if(a.p==b.p)return false;if(!b.p)return false;if(!a.p)return true;return strcmp(a.p->Data.PData,b.p->Data.PData)<0;}
 namespace std {template<class T>struct set{Node*head;__declspec(noinline) Node*find(const T&key)const{Node*y=head;Node*x=head->parent;while(x){if(!Less(x->value,key)){y=x;x=x->left;}else x=x->right;}if(y==head||Less(key,y->value))return head;return y;}};}
 
 // Layout: active CWorldMap header supplies receiver storage; method adapter adds no fields. PDB004d24e0 names return pair<CCharString,long> and CAFile/set arguments; receiver unused.
 // Layout: result is string pointer+0 and index+4, both observed in epilogue.
-namespace std {template<class A,class B>struct pair{A first;B second;__forceinline pair(const A&a,const B&b):first(a),second(b){}__forceinline pair(const pair&p):first(p.first),second(p.second){}};}
+namespace std {template<class A,class B>struct pair{A first;B second;FABLE_FORCEINLINE pair(const A&a,const B&b):first(a),second(b){}FABLE_FORCEINLINE pair(const pair&p):first(p.first),second(p.second){}};}
 // Layout: int models retail32-bit long in pair while the fixture remains portable to 64-bit hosts.
 typedef std::pair<CCharString,int> NavigationSection;
 struct CWorldMapMethods: ::CWorldMap {NavigationSection GetNavigationSectionOffsetInFile(CAFile&file,const std::set<CCharString>&map)const;};

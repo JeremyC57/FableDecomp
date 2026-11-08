@@ -20,6 +20,7 @@
 //   through an if/else of constant stores (VC7.1 merges them into `or al,18h` / `and al,0E7h`; `a = b = v` inserts each
 //   bit); CCharString's inline operator== is `__forceinline`; the "CTCWife" name is a block-scoped named local (built in
 //   the dead argument slot before the AddTC pushes).
+#include "fable_compiler.h"
 class CTCBase;
 class CCharStringData { public:
     const char*   m_pData;                              // +0x00
@@ -32,7 +33,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -96,7 +97,7 @@ public:
     bool CanBeCourted : 1;                              // +0x1c9 bit 3
     bool CanBeMarried : 1;                              // +0x1c9 bit 4
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

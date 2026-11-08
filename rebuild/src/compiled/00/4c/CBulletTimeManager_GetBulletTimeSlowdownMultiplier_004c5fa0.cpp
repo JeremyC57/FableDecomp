@@ -10,6 +10,7 @@
 // LastStrikeActionTick +0x10, World +0x14, PlayerManager +0x18; CBulletTimeInfo {Multiplier +0, SoundPitch +4} at node +0x14.
 // Shape: `UseDefaultMultiplier || empty()` returns the converted global; the running sum stays in st(0) from g_fZero;
 // `++it` is STLport `_M_node = _Rb_global<bool>::_M_increment(_M_node)` inlined (one register here: no pressure).
+#include "fable_compiler.h"
 extern long g_DefaultBulletTimeSlowdown;                // 0x01378D00 (4)
 
 namespace std {
@@ -29,7 +30,7 @@ template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
 };
 
 template <class _Dummy> struct _Rb_global {
-    static __forceinline _Rb_tree_node_base* _M_increment(_Rb_tree_node_base* _M_node)
+    static FABLE_FORCEINLINE _Rb_tree_node_base* _M_increment(_Rb_tree_node_base* _M_node)
     {
         if (_M_node->_M_right != 0) {
             _M_node = _M_node->_M_right;
@@ -51,15 +52,15 @@ template <class _Dummy> struct _Rb_global {
 
 struct _Rb_tree_base_iterator {
     _Rb_tree_node_base* _M_node;
-    __forceinline _Rb_tree_base_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
-    __forceinline void _M_increment() { _M_node = _Rb_global<bool>::_M_increment(_M_node); }
+    FABLE_FORCEINLINE _Rb_tree_base_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
+    FABLE_FORCEINLINE void _M_increment() { _M_node = _Rb_global<bool>::_M_increment(_M_node); }
 };
 
 template <class V> struct _Rb_tree_iterator : _Rb_tree_base_iterator {
-    __forceinline _Rb_tree_iterator(_Rb_tree_node_base* x) : _Rb_tree_base_iterator(x) {}
-    __forceinline _Rb_tree_iterator& operator++() { _M_increment(); return *this; }
-    __forceinline V* operator->() const { return &static_cast<_Rb_tree_node<V>*>(_M_node)->_M_value_field; }
-    __forceinline bool operator!=(const _Rb_tree_iterator& x) const { return _M_node != x._M_node; }
+    FABLE_FORCEINLINE _Rb_tree_iterator(_Rb_tree_node_base* x) : _Rb_tree_base_iterator(x) {}
+    FABLE_FORCEINLINE _Rb_tree_iterator& operator++() { _M_increment(); return *this; }
+    FABLE_FORCEINLINE V* operator->() const { return &static_cast<_Rb_tree_node<V>*>(_M_node)->_M_value_field; }
+    FABLE_FORCEINLINE bool operator!=(const _Rb_tree_iterator& x) const { return _M_node != x._M_node; }
 };
 
 template <class K, class T> class map {
@@ -70,9 +71,9 @@ public:
     unsigned int        _M_node_count;                  // +0x04
     unsigned int        _M_key_compare;                 // +0x08
     typedef _Rb_tree_iterator<const value_type> const_iterator;
-    __forceinline const_iterator begin() const { return const_iterator(_M_header->_M_left); }
-    __forceinline const_iterator end() const { return const_iterator(_M_header); }
-    __forceinline bool empty() const { return _M_node_count == 0; }
+    FABLE_FORCEINLINE const_iterator begin() const { return const_iterator(_M_header->_M_left); }
+    FABLE_FORCEINLINE const_iterator end() const { return const_iterator(_M_header); }
+    FABLE_FORCEINLINE bool empty() const { return _M_node_count == 0; }
 };
 }
 

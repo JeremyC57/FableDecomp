@@ -1,5 +1,6 @@
 // Behaviour test for 009226b0: src/009226b0.cpp copied verbatim; IsStillValid is true only when no type-0x14 message from the
 // creature is pending and the creature's drunkenness component says drunk.
+#include "fable_compiler.h"
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
@@ -60,7 +61,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

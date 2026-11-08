@@ -29,6 +29,7 @@
 //   read; the frame is reused (dummy frame, then overwritten by GetLastRHSet); the side axis is passed as an explicit
 //   C3DVector copy (retail copies it into the dead up-axis temporary); the default CDefPointer temporary releases through
 //   CIVCountedPointeeBase::Release() (count returned) then nulls; the 0x77 lookup key lands in the dead `target` slot.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
@@ -100,7 +101,7 @@ class CThing { public:                                      // partial view, ret
     bool IsDead() const { return Dead; }
     void Kill(bool immediately);                            // 0x004C9B80
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (UsingComponents[T::INTERFACE_TYPE]) {
             TCMap* map = &Components;

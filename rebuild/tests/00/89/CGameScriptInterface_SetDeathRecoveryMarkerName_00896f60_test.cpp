@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #if !defined(_MSC_VER)
 #  define __fastcall
@@ -29,7 +30,7 @@ struct DeathRecoveryMarkerNameMap
     DeathRecoveryMarkerNameNode* end;
 
     DeathRecoveryMarkerNameNode* lower_bound(const int* key);
-    __forceinline DeathRecoveryMarkerNameInterface* Find(int kind)   // the inlined map find: end when the key is absent
+    FABLE_FORCEINLINE DeathRecoveryMarkerNameInterface* Find(int kind)   // the inlined map find: end when the key is absent
     {
         int key = kind;
         DeathRecoveryMarkerNameNode* found = lower_bound(&key);
@@ -54,7 +55,7 @@ class CGameScriptInterface                        // test-local view (engine/CGa
     CPlayerManager* PlayerManager;                 // +0x14
 };
 
-template <class T> __forceinline bool GetTCOut(unsigned char* thing, int kind, T** out)
+template <class T> FABLE_FORCEINLINE bool GetTCOut(unsigned char* thing, int kind, T** out)
 {
     if (*(unsigned char*)(thing + 0x20) & 0x10) {
         *out = ((DeathRecoveryMarkerNameMap*)(thing + 0x44))->Find(kind);

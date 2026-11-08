@@ -16,6 +16,7 @@
 // Shape: the landed CScytheNearOracle::Main 0x00E2A320 / CDF_ThunderHelmet::Main 0x00E6F1C0 handle and movie models; the
 //   boy handle is reached through ParentClass (virtual calls), its scripted-control reset is an inline helper taking it by
 //   reference. Twin: CTH_ThunderGirl::Main 0x00EDFA00 (seh_Girl +0x58).
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -70,7 +71,7 @@ protected:
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 struct CResourcePImp {                                 // the handles' counted implementation pointer
     void* Data;

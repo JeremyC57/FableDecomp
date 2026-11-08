@@ -20,6 +20,7 @@
 //   view): type byte +0x10 (here 1 = an AI creature, 2 = the player creature), component-present bits +0x20, interface map +0x44,
 //   ScriptName +0x74, DefGlobalIndex +0x8c, PlayerNumber +0x90 (PDB +0x84/+0x9c/+0xa0, the 0x10 retail CThing shift).
 //   CThingPlayerCreatureInit as Ego_r.pdb (12 bytes).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -126,7 +127,7 @@ public:
     void AddAndCopyTC(const CTCBase* tc, bool a);       // 0x004C9F60
     void CopyTCIfExists(const CTCBase* tc);             // 0x004C8FB0
     void Kill(bool immediately);                        // 0x004C9B80
-    __forceinline bool GetInterface(const CTCBase** out, long wanted) const
+    FABLE_FORCEINLINE bool GetInterface(const CTCBase** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

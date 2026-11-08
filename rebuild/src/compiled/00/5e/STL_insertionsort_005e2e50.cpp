@@ -9,6 +9,7 @@
 //   memberwise copy: three dwords and the counted pointer's add-ref copy), the source fields read through a second
 //   induction pointer at +0x0c (`lea esi,[edi+0Ch]`); same template as the landed __insertion_sort 0x005E2E00.
 // Label correction: catalogued as `std_HeapInitCopyPairs`; the body is STLport `__insertion_sort`.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -22,7 +23,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         bool has = (unsigned char)(m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1;
         if (has) {
@@ -44,7 +45,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 class CCharString { public:
     void* m_pData;
@@ -73,7 +74,7 @@ template <class T> struct vector {              // STLport vector<T> (retail 12 
         } else
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
-    __forceinline void push_back_inline(const T& x)   // the same STLport body, expanded at the second site
+    FABLE_FORCEINLINE void push_back_inline(const T& x)   // the same STLport body, expanded at the second site
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish) *_M_finish = x;

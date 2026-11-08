@@ -1,5 +1,6 @@
 // Behaviour test for CInputProcessSetRangedWeaponMode::ProcessInput (0x0068F180): the held/action tests, the gated
 // component flag and the live-hero test decide whether game event 0x31 is queued.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 #ifndef _MSC_VER
@@ -28,7 +29,7 @@ class CProcessedInput {
 public:
     int m_count; long m_last;
     void AddGameEvent(const CGameEvent& event) { ++m_count; m_last = event.Type; }
-    __forceinline void AddGameEvent(long type)
+    FABLE_FORCEINLINE void AddGameEvent(long type)
     {
         CGameEvent gameEvent(type);
         AddGameEvent(gameEvent);
@@ -49,7 +50,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it;
         return it;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -69,13 +70,13 @@ class CThing { public:
     unsigned char  _pad50[0x91 - 0x50];
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline bool HasTC(long kind) const
+    FABLE_FORCEINLINE bool HasTC(long kind) const
     {
         if (m_tcMask[kind >> 5] & (1UL << (kind & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** out, long kind) const   // the out-parameter lookup
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const   // the out-parameter lookup
     {
         if (HasTC(kind)) {
             *out = (T*)m_tcs.Find(kind);

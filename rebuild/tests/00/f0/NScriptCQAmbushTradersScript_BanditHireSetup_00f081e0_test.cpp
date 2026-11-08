@@ -1,5 +1,6 @@
 // Behaviour test for 00f081e0: src/00f081e0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CQ_AmbushTradersScript::BanditHireSetup(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -126,7 +127,7 @@ template <class C, class P> struct CSpawnedFunc1 : CSpawnedFuncBase {
     C*                  PClass;                            // +0x38
     CScriptThingStored  Par1;                              // +0x3c
     virtual void v00();
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, TFunc func, C* owner, CScriptThingParam par)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, TFunc func, C* owner, CScriptThingParam par)
         : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par) { }
 };
 
@@ -139,7 +140,7 @@ class CScriptBase { public:                                        // retail 0x4
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
     void Add(CSpawnedFuncBase* func, const CCharString& name);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { Add(func, region); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { Add(func, region); }
 };
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* Game;                             // +0x40

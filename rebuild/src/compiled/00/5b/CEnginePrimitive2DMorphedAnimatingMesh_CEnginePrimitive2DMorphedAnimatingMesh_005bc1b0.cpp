@@ -2,6 +2,7 @@
 // Leaf: ??0CEnginePrimitive2DMorphedAnimatingMesh@@QAE@_KKABV?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@2@ABVC3DAnimationBlendState@@ABVC2DBoxF@@ABVC3DBoundingSphere@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Os /Oy-
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "rebuild_abi.h"
 #ifdef _MSC_VER
@@ -25,7 +26,7 @@ class C3DAnimationInterpolator:public CBaseClass {public:C3DAnimationBlendState 
 class CCharStringData;class CCharString {public:CCharStringData*PStringData;};
 // Accessed original anonymous component fields; overlapping union aliases are
 // unexported and explicitly omitted, as in independently audited text descriptor.
-class CRGBColour {public:unsigned char B,G,R,A;__forceinline void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}__forceinline CRGBColour(const CRGBColour&x){Initialise(x.R,x.G,x.B,x.A);}};
+class CRGBColour {public:unsigned char B,G,R,A;FABLE_FORCEINLINE void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Initialise(r,g,b,a);}FABLE_FORCEINLINE CRGBColour(const CRGBColour&x){Initialise(x.R,x.G,x.B,x.A);}};
 enum EEnginePrimitiveType {};enum EEngineInterpolationSet {};enum ECompositeBlendType {};
 class CEnginePrimitiveThemeChannelDesc {public:unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad;CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){}};
 class CEnginePrimitive {public:EEnginePrimitiveType Type;EEngineInterpolationSet InterpolationSet;CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;};

@@ -6,6 +6,7 @@
 // Layout: as the sibling HasWaterAt 0x0081FB00 (CMap DefinitionManager +0x1c, palette +0x1a6c, height map +0x1a7c); CEngineThemeDef
 //   WaterHeight is retail +0x6c (PDB +0x70).
 // Shape: the coordinates copied into locals, nested scopes with one raw def pointer per layer released by hand on the way out. GetDef is a same-TU stand-in that only writes its out slot.
+#include "fable_compiler.h"
 class C2DCoordI { public:
     long X, Y;
 };
@@ -28,7 +29,7 @@ class CHeightMap { public:                                // retail layout
     unsigned char                  _pad1c[0x1e8];
     long                           SizeX;          // +0x204
     long                           SizeY;          // +0x208
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 struct CEngineThemePaletteEntry {                  // 8 bytes
     long DefIndex;

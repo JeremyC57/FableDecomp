@@ -12,6 +12,7 @@
 //   in a `do { ... yield; } while (!stop)` loop; here the message manager's FindMostRecentMessage template (landed
 //   0x00746260 form) is inlined, so the list head is re-read every step and the event (node + 8) lives in ebp; the
 //   GetInterface end/hit choice is one ternary so the spline lands straight in ecx for HasMessage.
+#include "fable_compiler.h"
 class CCharString;
 
 class CThing { public:
@@ -29,7 +30,7 @@ class CThing { public:
     unsigned char _pad70[0x21];
     unsigned char m_dead : 1;             // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

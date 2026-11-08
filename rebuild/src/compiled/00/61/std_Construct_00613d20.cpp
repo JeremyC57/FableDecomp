@@ -2,6 +2,7 @@
 // Retail: Fable.exe @ 0x00613D20, 59 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CCharString copy ctor @ 0x0099EC30.
 // Leaf: _Construct
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N00613d20 {
 struct CCharString {
@@ -19,7 +20,7 @@ struct CUIMiniMapMarker {                        // CTCInventoryMap::CUIMiniMapM
     long        DefNameLength;                   // +0x10
     long        GraphicIndex;                    // +0x14
     float       Angle;                           // +0x18
-    __forceinline CUIMiniMapMarker(const CUIMiniMapMarker& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CUIMiniMapMarker(const CUIMiniMapMarker& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : Region(o.Region), UIDefName(o.UIDefName), Position(o.Position), DefNameLength(o.DefNameLength),
           GraphicIndex(o.GraphicIndex), Angle(o.Angle) { }
 };

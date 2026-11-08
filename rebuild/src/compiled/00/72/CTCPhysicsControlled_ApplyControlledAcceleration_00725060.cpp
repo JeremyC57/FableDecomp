@@ -11,6 +11,7 @@
 // and Z terms first); the turn is WrapAngle(atan2(X, Y) / 2pi) for both vectors, AngleDifference(velocity, acceleration)
 // clamped by an if/else-if to +-0.007, then a rotation about +Z.
 // Layout: Ego_r.pdb CTCPhysicsBase Velocity +0x28 (Position +0x0c, OldPosition +0x18).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod, sqrt)
 
@@ -18,7 +19,7 @@
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + (a.Y * b.Y + a.Z * b.Z); }
 float __stdcall AngleDifference(float a, float b);      // 0x00A441E0
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

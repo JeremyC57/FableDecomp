@@ -13,6 +13,7 @@
 // RHSet +0xc = CRightHandedSet {Up +0, Forward +0xc}).
 // Shape: C3DVector inline operators `(cur - old) * t + old`, the landed inline fast Normalise (as the landed
 // CTCAssassinRush::SetupFacingDirection 0x007A6E20), the camera built straight into the hidden result.
+#include "fable_compiler.h"
 #include "engine/CPlayer.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
@@ -23,7 +24,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float lengthSquared = X * X + (Y * Y + Z * Z);
         unsigned long bits = *(unsigned long*)&lengthSquared;

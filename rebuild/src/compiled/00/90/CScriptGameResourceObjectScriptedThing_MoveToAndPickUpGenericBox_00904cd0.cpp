@@ -12,6 +12,7 @@
 // Shape: the landed MoveToThing 0x00903E20 model -- the presence bit bound to a `const unsigned char&` HasTC result
 // (stored to the shared key/control slot), the unchecked control read on a miss, the 0->3 / 1->5 / else 1 movement
 // switch; each action is a new-expression straight into AddAction (VC's null test of new).
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
@@ -37,7 +38,7 @@ struct CThing_Retail : public CThing {
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {

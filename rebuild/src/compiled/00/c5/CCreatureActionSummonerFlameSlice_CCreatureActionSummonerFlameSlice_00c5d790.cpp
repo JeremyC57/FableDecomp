@@ -6,6 +6,7 @@
 // direct call) and resolves to the constant vtable slot. The member's inline destructor stores
 // its vtable and passes its critical section to the `__stdcall` import. The class comes from the
 // manifest label; the rest is descriptive.
+#include "fable_compiler.h"
 struct CRITICAL_SECTION_00c5d790;
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(CRITICAL_SECTION_00c5d790*);   // IAT 0x0143FDE4
 
@@ -23,7 +24,7 @@ struct CSectionHolder_00c5d790 {           // +0x1c: vtable 0x012B8FC8
 class CCreatureAction_SummonerFlameSlice : public CActionBase_00c5d790 { public:   // vtable 0x012B8FCC
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void Release();                // slot 5
-    __forceinline void DoRelease() { Release(); }
+    FABLE_FORCEINLINE void DoRelease() { Release(); }
     unsigned char _pad[0x18];
     CSectionHolder_00c5d790 m_holder;      // +0x1c
     ~CCreatureAction_SummonerFlameSlice();

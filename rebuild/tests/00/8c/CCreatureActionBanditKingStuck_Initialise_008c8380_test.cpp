@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CCreatureAction_BanditKingStuck::Initialise() -- animation BK_STUCK; unless a live stuck effect exists, create the creature's STUCKLOOP special effect at its position, keep it in PStuckEffect and attach it to the creature through its particle emitter; then the base Initialise
@@ -104,7 +105,7 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

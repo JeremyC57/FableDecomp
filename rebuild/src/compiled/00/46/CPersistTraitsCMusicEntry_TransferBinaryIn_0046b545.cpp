@@ -10,6 +10,7 @@
 // CPersistTraits<T>::TransferBinaryIn(stream, &member) whose local is homed in the dead stream-argument slot [ebp+8];
 // the 4-byte float goes through a GPR (memcpy'd float local). The bool is read as a byte (`movsb` into [ebp+0Bh]) and
 // normalised (`cmp byte [ebp+0Bh],0 ; setne`). EBP frame + size TU (`#pragma optimize("y", off)` + `("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -23,7 +24,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -55,7 +56,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<unsigned long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
     {
         unsigned long number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));
@@ -63,7 +64,7 @@ template <> struct CPersistTraits<unsigned long> {
     }
 };
 template <> struct CPersistTraits<float> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
     {
         float number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));
@@ -71,7 +72,7 @@ template <> struct CPersistTraits<float> {
     }
 };
 template <> struct CPersistTraits<bool> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value)
     {
         unsigned char byte;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&byte, sizeof(byte));

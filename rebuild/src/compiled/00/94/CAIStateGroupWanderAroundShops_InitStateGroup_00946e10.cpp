@@ -9,6 +9,7 @@
 // dword word 6 bit 19 -> `test dword ptr [eax+38h],80000h`; the key in a named local; end-or-larger
 // -> the end entry; out-pointer form) and, when present, the registration. The landed CleanHouse
 // InitStateGroup @ 0x00917AF0 shape with idle type 10.
+#include "fable_compiler.h"
 class CAIBrain;
 class CAIStateGroupBase;
 
@@ -25,7 +26,7 @@ class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline bool GetInterface(long type, CTCIdleScheduler** out)
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCIdleScheduler** out)
     {
         if (m_presentBits[type / 32] & (1 << (type % 32))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

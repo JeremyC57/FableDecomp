@@ -1,5 +1,6 @@
 // Behaviour test for 0075d9a0: src/0075d9a0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCCameraPointBuilding::vfunc_17(CCharString& error) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -51,7 +52,7 @@ class CThing { public:
     bool IsDead() const { return (Flags91 & 1) != 0; }
     const C3DVector& GetPosition() const;       // 0x004C73D0
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             *ppOut = GetTC<T>(interfaceType);
@@ -59,7 +60,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) const
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;

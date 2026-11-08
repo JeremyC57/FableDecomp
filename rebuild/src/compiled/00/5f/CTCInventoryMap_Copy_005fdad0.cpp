@@ -12,6 +12,7 @@
 //   live `other` argument slot as in retail (otherwise a 0x14 frame).
 // Layout: local view -- three vector<CWideString> at +0x150 / +0x15C / +0x168 and a 4-byte-element id vector at +0x174
 //   (12-byte STLport vectors).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -88,7 +89,7 @@ struct CIdVector {                                   // STLport vector of a 4-by
         return cur;
     }
     static const unsigned long& max_ref(const unsigned long& a, const unsigned long& b) { return a < b ? b : a; }
-    __forceinline void _M_insert_overflow(ERegionId* pos, const ERegionId& x, unsigned long fillLength)
+    FABLE_FORCEINLINE void _M_insert_overflow(ERegionId* pos, const ERegionId& x, unsigned long fillLength)
     {
         unsigned long oldSize = size();
         unsigned long len = oldSize + max_ref(oldSize, fillLength);
@@ -103,7 +104,7 @@ struct CIdVector {                                   // STLport vector of a 4-by
         _M_start = newStart;
         _M_finish = newFinish;
     }
-    __forceinline void push_back(const ERegionId& x)
+    FABLE_FORCEINLINE void push_back(const ERegionId& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)

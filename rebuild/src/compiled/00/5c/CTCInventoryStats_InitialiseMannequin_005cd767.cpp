@@ -14,6 +14,7 @@
 //   added unconditionally (read uninitialised when absent, as retail); all def-pointer functions are __forceinline.
 // Layout: local views -- CTCInventoryStats ParentThing +0x04, hero def +0x68, Mannequin +0x140; CThing presence bits +0x20,
 //   interface map +0x44, component +0x64, base def +0x70; hero def mannequin def index +0x2E0; appearance animation set +0x34.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -47,14 +48,14 @@ class CDefPointeeBase { public:
 template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
-    __forceinline CDefPointer(T* p) : m_pObject(p) { if (p) ++p->m_refCount; }
-    __forceinline ~CDefPointer() { if (m_pObject) { if (--m_pObject->m_refCount == 0) m_pObject->DestroyDef(); } }
+    FABLE_FORCEINLINE CDefPointer(T* p) : m_pObject(p) { if (p) ++p->m_refCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (m_pObject) { if (--m_pObject->m_refCount == 0) m_pObject->DestroyDef(); } }
     T* operator->() const { return m_pObject; }
 };
 template<class T> struct CDefRef {
     T* m_pObject;
-    __forceinline CDefRef(T* p) : m_pObject(p) { if (p) ++p->m_refCount; }
-    __forceinline ~CDefRef() { if (--m_pObject->m_refCount == 0) m_pObject->DestroyDef(); }
+    FABLE_FORCEINLINE CDefRef(T* p) : m_pObject(p) { if (p) ++p->m_refCount; }
+    FABLE_FORCEINLINE ~CDefRef() { if (--m_pObject->m_refCount == 0) m_pObject->DestroyDef(); }
     T* operator->() const { return m_pObject; }
 };
 class CAppearanceDef : public CDefPointeeBase { public:
@@ -120,7 +121,7 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     void AddAndCopyTC(CTCBase* tc, bool b);             // 0x004C9F60
     void AddTC(const CCharString& name, bool a, bool b);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** out, long kind)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)
     {
         if (m_present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind);

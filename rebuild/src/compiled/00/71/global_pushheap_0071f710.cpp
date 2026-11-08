@@ -10,13 +10,14 @@
 // Link-time __fastcall (/Gr algorithm TU): first in ecx, hole in edx, then top, the 24-byte pair by
 // value and the empty comparator (4 + 0x18 + 4 = 0x20).  Byte twin of 0x00819B10.
 // Shape: SGI `__push_heap` (`parent = (hole - 1) / 2; while (hole > top && comp(*(first + parent), value))`).
+#include "fable_compiler.h"
 namespace N0071f710 {
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 struct CRGBColour {                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 struct CCompositeBlendDesc {
     unsigned long       TextureIndex;              // +0x00

@@ -20,6 +20,7 @@
 // Layout: engine/CAIStateGroup_WhisperPotionCombat.h is 4 bytes high after TrapThings (PDB vector 16 vs retail 12):
 //          retail PTarget +0x14 (CIntelligentPointer<CThing>, PDB `_pad`), TrapThings +0x1c, FrameLastRun +0x28,
 //          Jump_to_pos +0x2c. CCombatTypeDef +0x6c is a float range (PDB offsets are vector-shifted; descriptive name).
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 class CThing;
@@ -41,7 +42,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     const C3DVector& GetPos() const;    // 0x004C73D0
     CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -121,13 +122,13 @@ struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
     long FrameLastRun;                          // +0x28
     C3DVector Jump_to_pos;                      // +0x2c
     bool FindValidCombatPositions(C3DVector* jumpPos);   // 0x0096A3C0
-    __forceinline bool RestampAndCheckRange();
+    FABLE_FORCEINLINE bool RestampAndCheckRange();
     bool IsRunnableLeaf();
 };
 
 // Restamp the last-run frame with a random extra delay of up to 5 s, then test the planar distance to the target
 // against the creature's combat-type range.
-__forceinline bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
+FABLE_FORCEINLINE bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
 {
     FrameLastRun = GetPWorld()->GetFrame();
     long rate = CMainGameComponent::GetConstantFPS();

@@ -10,6 +10,7 @@
 // The comparator is a 4-byte functor passed by value. /Gr TU (__fastcall: first in ecx, last
 // in edx, comp on the stack). Labels (`make_heap`, `HeapSort`, `Introsort_TripletPartition`) are
 // propagated; the body is SGI's `sort`. One of 12 bodies of this shape.
+#include "fable_compiler.h"
 struct SElement4 {
     unsigned char _body[0x4];
 };
@@ -29,7 +30,7 @@ template<class Size> inline Size Lg(Size n)
 void __fastcall IntrosortLoop_0096e410(SElement4* first, SElement4* last, SElement4* valueType, long depthLimit, SCompare comp);   // 0x0096E410
 void __fastcall InsertionSort_0096d980(SElement4* first, SElement4* last, SCompare comp);   // 0x0096D980
 void __fastcall UnguardedInsertionSortAux_0096d780(SElement4* first, SElement4* last, SElement4* valueType, SCompare comp);   // 0x0096D780
-__forceinline void FinalInsertionSort(SElement4* first, SElement4* last, SCompare comp)
+FABLE_FORCEINLINE void FinalInsertionSort(SElement4* first, SElement4* last, SCompare comp)
 {
     if (last - first > 16) {
         InsertionSort_0096d980(first, first + 16, comp);

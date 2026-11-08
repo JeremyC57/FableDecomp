@@ -9,9 +9,10 @@
 //   __adjust_heap(first, parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the
 //   element address `first + parent` is strength-reduced into edi (`sub edi,4` per step).
 // Label correction: catalogued as `STL_MakeHeap_CCharString`; the body is STLport `__make_heap`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

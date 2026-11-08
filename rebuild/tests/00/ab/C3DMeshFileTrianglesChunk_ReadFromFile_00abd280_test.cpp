@@ -1,5 +1,6 @@
 // Behaviour test for 00abd280: src/00abd280.cpp copied verbatim (including its real resize/_M_fill_insert/_M_insert_overflow
 // bodies); stream virtuals, the overflow reader, the fastcall STLport helpers and the super chunk reader are stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -35,8 +36,8 @@ class CDataInputStream { public:
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -52,7 +53,7 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
 class C3DTriangle2 { public:

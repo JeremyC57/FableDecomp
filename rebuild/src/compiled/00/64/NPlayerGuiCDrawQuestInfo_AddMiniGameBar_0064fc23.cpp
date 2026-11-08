@@ -15,6 +15,7 @@
 // Leaf: AddMiniGameBar
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets). Spellings unified: 00654c8f: ??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z; 0064a3ed: ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z -> ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z; 00654bc0: ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z
 // Naming wave 18: the interface-presence stand-in CTCBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -40,7 +41,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     std::bitset<274>     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
-    template<class T> __forceinline T* GetTC(long type) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CTCMap* map = &Components;
@@ -49,7 +50,7 @@ class CThing { public:
             it = map->_M_finish;
         return (T*)it->second;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long type) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) const
     {
         if (UsingComponents.test(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

@@ -9,6 +9,7 @@
 //   +0x30/+0x32/+0x34); the vertex buffer through the PDB CVertexBufferBase fields (PVertexBuffer +4, Length +8, Stride +0x10).
 // Shape: the world matrix is 0x00B7C510's (members written translation/off-diagonal first, diagonal last); a bridge strip's
 //   vertex count is its byte length divided (signed) by the stride.
+#include "fable_compiler.h"
 #include "engine/CEngineWaterBackgroundSubPatch.h"
 
 class CRGBFloatColour;
@@ -82,7 +83,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
@@ -213,14 +214,14 @@ struct CRenderManagerCore {                         // the render manager core @
 
     void DrawCurrentBuffersAsIndexedTris(unsigned long minIndex, unsigned long vertexCount,
                                          unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60
-    __forceinline void SetVertexBuffer(CVertexBufferWin32* buffer)
+    FABLE_FORCEINLINE void SetVertexBuffer(CVertexBufferWin32* buffer)
     {
         if (buffer)
             PD3DDevice->SetStreamSource(0, buffer->PVertexBuffer, 0, buffer->Stride);
         else
             PD3DDevice->SetStreamSource(0, 0, 0, 0);
     }
-    __forceinline void SetIndexBuffer(CIndexBuffer* buffer)
+    FABLE_FORCEINLINE void SetIndexBuffer(CIndexBuffer* buffer)
     {
         PSelectedIndexBuffer = buffer;
         if (buffer)

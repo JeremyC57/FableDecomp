@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A9020 length216; actualScriptThing slots75IsAlive and11GetPThing, nativeTC61.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -132,7 +133,7 @@ public:
 struct DefinitionMethods:CDefinitionManager{}; //009AD410
 class CDefIndex{ public:long Index;CDefIndex(long index):Index(index){}};
 struct IndexVector{CDefIndex *Start,*Finish,*End;IndexVector():Start(0),Finish(0),End(0){}~IndexVector(){if(Start)free(Start);}void PushBack(const CDefIndex&);IndexVector& operator=(const IndexVector&);}; //007CA160,004E24BA
-__forceinline CTCCreatureGenerator* GetGenerator(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)61);ComponentEntry* end=map->Finish;return static_cast<CTCCreatureGenerator*>(((void*)(it==end||it->first>61?end:it)->second));}
+FABLE_FORCEINLINE CTCCreatureGenerator* GetGenerator(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)61);ComponentEntry* end=map->Finish;return static_cast<CTCCreatureGenerator*>(((void*)(it==end||it->first>61?end:it)->second));}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void CreatureGeneratorSetFamily(const ScriptMethods&,const CCharString&)const;};
 void CGameScriptInterfaceMethods::CreatureGeneratorSetFamily(const ScriptMethods& script,const CCharString& family)const{
  if(script.IsAlive()){

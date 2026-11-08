@@ -19,6 +19,7 @@
 // Shape: same-TU out-only stand-in for the dragon def getter (the out slot stays private, so the name temp reuses it);
 //   both world maps named in locals before the IsPosInMap / GetHeightZBelowPos calls (retail evaluates `this` first);
 //   the dependents component through the out-parameter GetInterface ternary (`mov eax,[eax+4] ; push ; mov ecx,eax`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 class CCharString { public:
@@ -88,7 +89,7 @@ class CThing { public:
     CTCGraphicAppearance* PGraphic;             // +0x64
     unsigned char         _pad68[0x70 - 0x68];
     CDefClassBase*        PDef;                 // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

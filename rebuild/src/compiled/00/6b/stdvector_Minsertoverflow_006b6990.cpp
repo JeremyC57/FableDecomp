@@ -14,6 +14,7 @@
 //   placement copy, otherwise __uninitialized_fill_n inlined (`test ebx,ebx / jbe` + a placement-new loop), the tail copy
 //   unless atend, then `_M_clear()` and `_M_set`. The two tag-taking callees are same-TU noinline bodies that never touch
 //   the tag, so every `__false_type()` temporary is homed in the live atend argument slot (`lea ...,[esp+28h]`).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
@@ -147,7 +148,7 @@ __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _Fo
 #pragma auto_inline(on)
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

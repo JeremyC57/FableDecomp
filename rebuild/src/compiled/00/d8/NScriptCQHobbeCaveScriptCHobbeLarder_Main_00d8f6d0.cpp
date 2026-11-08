@@ -13,6 +13,7 @@
 //   PMasterData +0x18; CQ_HobbeCaveScript KingGruntedOrders PDB +0x74 / retail +0x60, HobbesCloseby PDB +0x7f / retail +0x6b.
 // Shape: generated script code (`if (IsActiveThreadTerminating()) return;` after every statement); CTimer has inline ctor and
 //   dtor (VC7.1 expands the dtor at the two early returns inside the first loop and calls the out-of-line copy elsewhere).
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
@@ -113,7 +114,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

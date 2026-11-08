@@ -14,6 +14,7 @@
 // less<CCharString>::operator() -- a COMDAT of this same TU in retail (0x0042AAB3, landed) -- is a visible
 // noinline body that never touches `this`; declared only, the temporary takes its own frame word (0xC v 8).
 // Leaf: ??A?$map
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 template <class C> class CBasicString {
@@ -27,7 +28,7 @@ public:
     CBasicString<char>* PData;                           // +0x00
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

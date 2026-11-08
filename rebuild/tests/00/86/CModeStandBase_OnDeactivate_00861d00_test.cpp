@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -135,7 +136,7 @@ FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,DeleteFunc)==4);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,Data)==8);
 void operator delete(void*) throw(); // 0x00BFE9BC
 struct CModeStandBaseNative : CModeStandBase {
-    __forceinline void Reset(CAnimEntryLite*& data,CCPPointerInfo*& info) {
+    FABLE_FORCEINLINE void Reset(CAnimEntryLite*& data,CCPPointerInfo*& info) {
         if(info) {
             --info->RefCount;
             if(info->RefCount==0) {

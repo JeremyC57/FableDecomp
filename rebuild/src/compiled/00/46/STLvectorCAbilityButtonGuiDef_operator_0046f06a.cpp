@@ -1,6 +1,7 @@
 // 0046f06a std::vector<CAbilityButtonGuiDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
 // Leaf: ??4?$vector@VCAbilityButtonGuiDef@@@std@@IAEAAU01@ABU01@@Z
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 
@@ -10,9 +11,9 @@ class CAbilityButtonGuiDef { public:unsigned data[22];CAbilityButtonGuiDef();CAb
 namespace std {
 struct __false_type{__false_type(){}};
 template<class Tag> __declspec(noinline) void __fastcall _Destroy(CAbilityButtonGuiDef*a,CAbilityButtonGuiDef*b,const Tag&){while(a!=b){a->~CAbilityButtonGuiDef();++a;}}
-template<class T>__forceinline T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
-template<class T>__forceinline void _Construct(T*p,const T&v){if(p)new(p)T(v);}
-template<class T>__forceinline void _UninitializedCopy(T*out,T*first,T*last){while(first!=last){_Construct(out,*first++);++out;}}
+template<class T>FABLE_FORCEINLINE T*_Copy(T*first,T*last,T*out){for(int n=last-first;n>0;--n,++first,++out)*out=*first;return out;}
+template<class T>FABLE_FORCEINLINE void _Construct(T*p,const T&v){if(p)new(p)T(v);}
+template<class T>FABLE_FORCEINLINE void _UninitializedCopy(T*out,T*first,T*last){while(first!=last){_Construct(out,*first++);++out;}}
 template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;
  protected:
  T*_M_allocate_and_copy(unsigned,T*,T*);void _M_clear();vector&operator=(const vector&);

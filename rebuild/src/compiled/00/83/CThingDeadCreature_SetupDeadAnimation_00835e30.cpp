@@ -19,6 +19,7 @@
 //   Animation +0x34; CAnimInit 0x2c bytes (the landed CTCBed model).
 // Shape: the filter is reached through the counted pointer's inline operator* (a raw pointer member rotates eax/edx);
 //   the zero frame time is three floats (immediate stores after the push); the entry's index is read before the reset.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString { public: void* PStringData; };
 extern CCharString g_CCharString_013baf40;              // "STANDARD_DEAD"
@@ -129,20 +130,20 @@ class CThing { public:
     void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     unsigned long* GetRandomSeed();                     // 0x004C7AE0
     void SetAsFrameUpdated();                           // 0x004C7C40
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long type)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    __forceinline CTCAnimationComplex* GetAnimationComplex()
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex()
     {
         CTCAnimationComplex* complex;
         if (HasTC(0x5a))

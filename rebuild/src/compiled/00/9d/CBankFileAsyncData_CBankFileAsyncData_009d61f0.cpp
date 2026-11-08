@@ -18,6 +18,7 @@
 //          8-aligned (`and esp,-8`); the wait is a peeled test plus a do-while that unlocks around Sleep(0), the threaded
 //          file reached through an inline accessor so the object loads before the UID push (a direct member chain pushes
 //          first); the buffer free is the inlined GFFreeFromGlobalAllocator with the buffer read into edi before the lock.
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);   // import 0x0143FE1C
 
 struct CRITICAL_SECTION_Fable { unsigned char _body[0x18]; };
@@ -40,7 +41,7 @@ void __cdecl GFEnterAllocatorLock();               // 0x009F2000
 void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;          // 0x013CAA90
 extern bool              g_bDestroyAllocatorWhenEmpty_013caa94; // 0x013CAA94
-__forceinline void GFFreeFromGlobalAllocator(void* block)
+FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
 {
     GFEnterAllocatorLock();
     if (block && g_pGlobalAllocator_013caa90) {

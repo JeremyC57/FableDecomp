@@ -14,6 +14,7 @@
 // "s" VC7.1 calls the comparator and CCharString::operator< out of line unless they are __forceinline.
 // Label: catalogued as Dinkumware `_Med3<pair<CCharString,CCharString>*, CKeyPairCompareLess<CCharString,CCharString> >`;
 // the body returns a reference and never swaps, i.e. SGI's `__median`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -25,7 +26,7 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;
@@ -45,7 +46,7 @@ struct pair {
 
 template <class K, class V>
 class CKeyPairCompareLess { public:                       // empty functor, passed in a 4-byte slot
-    __forceinline bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 
 typedef pair<CCharString, CCharString> CStringPair;

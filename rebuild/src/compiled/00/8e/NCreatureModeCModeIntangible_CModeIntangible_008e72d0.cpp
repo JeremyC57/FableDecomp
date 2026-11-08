@@ -3,6 +3,7 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags:
+#include "fable_compiler.h"
 #define CCharString CCharStringLayout
 #define CCharStringData CCharStringDataLayout
 #include "fable_string.h"
@@ -48,7 +49,7 @@ public:virtual ~CModeBase();
     unsigned char unobservedModeState[24];CModeBase(CThing&);
 };};
 // Layout: static-only declaration; no CMainGameComponent instance or full extent claimed.
-class CMainGameComponent{protected:static long ConstantFPS;public:static __forceinline long __fastcall GetConstantFPS(){return ConstantFPS;}};
+class CMainGameComponent{protected:static long ConstantFPS;public:static FABLE_FORCEINLINE long __fastcall GetConstantFPS(){return ConstantFPS;}};
 namespace NCreatureMode {
 class CModeDragonBase:public CTCCreatureModeManager::CModeBase {
 protected:CAnimFilterOfGroup Filter;CIntelligentPointer<CThing>PTarget;

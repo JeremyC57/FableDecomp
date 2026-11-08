@@ -3,6 +3,7 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Layout: CActionMoveTo offsets are the PDB's (+0x24 PTargetThing, +0x34 PTCOldPhysics, +0x45/+0x46/+0x48/+0x4c); the creature is
 // re-read through the owning control at +4 (its +4), as in the landed CActionLeadCreature::OnActivate 0x007122D0.
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -24,7 +25,7 @@ public:
     C3DVector Position;
     CBoundingBox Bounds;
     virtual void v000();
-    __forceinline CPhysicsSnapshot(const C3DVector& position, const CBoundingBox& bounds) : Position(position), Bounds(bounds) { }
+    FABLE_FORCEINLINE CPhysicsSnapshot(const C3DVector& position, const CBoundingBox& bounds) : Position(position), Bounds(bounds) { }
 };
 
 struct CPhysicsObject {
@@ -74,7 +75,7 @@ class CThing { public:
     unsigned char       _pad64[0x91 - 0x64];
     unsigned char       Flags91;                     // +0x91
     void AddTC(const CCharString& name, bool b, const CPhysicsSnapshot& snapshot);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

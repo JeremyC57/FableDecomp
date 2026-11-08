@@ -12,10 +12,11 @@
 // Node layout: color +0, parent +4, left +8, right +0xC, key at +0x10 (first word of the value); tree: header node
 //   pointer +0, node count +4, comparator +8.
 // Value: the key itself (_Identity<CCharString>).
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

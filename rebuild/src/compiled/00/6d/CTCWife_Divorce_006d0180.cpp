@@ -18,6 +18,7 @@
 //   FrameGotMarriedToThePlayer +0x20, DivorcedHero +0x24, LoveAttitudeValue +0x8c; CHeroMarriageDef
 //   HeroStatMoralityInOpinionFormChangePerDivorce +0xac; CTCCreatureOpinionOfHero LastOpinionReactionFrame +0x0c,
 //   HeroOpinionEnemy +0x342; CTCHeroStats Morality +0x28.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -31,7 +32,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     unsigned char _pad92[0x1c9 - 0x92];
     unsigned char Flags1C9;                     // +0x1c9
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

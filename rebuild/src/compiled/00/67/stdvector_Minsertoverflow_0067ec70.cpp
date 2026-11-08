@@ -7,6 +7,7 @@
 //   verbatim (the landed CGraphicInfo instance 0x00A01120) over a trivially copyable, trivially destructible 28-byte record:
 //   the implicit copy is `rep movsd` (7 dwords), the _Destroy loop of _M_clear vanishes; __uninitialized_copy needs
 //   `__forceinline` (plain `inline` leaves the suffix copy out of line). Speed TU.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
@@ -41,7 +42,7 @@ template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { r
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

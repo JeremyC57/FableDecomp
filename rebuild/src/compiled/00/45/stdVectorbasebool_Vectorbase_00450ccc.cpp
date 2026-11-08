@@ -9,6 +9,7 @@
 // Model: the landed STLport _Vector_base / _STLP_alloc_proxy model of 0x007C2AB0 (CSTLportVector<C3DVector>), here emitted
 // out of line; allocate() and the proxy ctor are __forceinline (a size TU leaves them out of line otherwise).
 // Shape: size TU (`pop ecx` after the malloc, the zero register stored before the null test) -- #pragma optimize("s", on).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -17,13 +18,13 @@ extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 namespace std {
 template <class T> class allocator {            // STLport allocator<T>: empty
 public:
-    __forceinline allocator() { }
-    __forceinline T* allocate(unsigned int count) { return count != 0 ? static_cast<T*>(malloc(count * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE allocator() { }
+    FABLE_FORCEINLINE T* allocate(unsigned int count) { return count != 0 ? static_cast<T*>(malloc(count * sizeof(T))) : 0; }
 };
 
 template <class P, class T, class A> struct _STLP_alloc_proxy : A {   // the end-of-storage pointer over the empty allocator
     P _M_data;
-    __forceinline _STLP_alloc_proxy(const A& a, P p) : A(a), _M_data(p) { }
+    FABLE_FORCEINLINE _STLP_alloc_proxy(const A& a, P p) : A(a), _M_data(p) { }
 };
 
 template <class T, class A> struct _Vector_base {

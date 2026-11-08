@@ -10,6 +10,7 @@
 // member's inline destructor (re-reads Data: release + null store again). Layout as the landed constructor @ 0x005BB32E:
 // {vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}. Both the destructor and the counted pointer's members
 // are `__forceinline` (GOTCHAS 24i: a `??_G` with an inlined counted release), and a `new` factory pulls in the vtable.
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CEnginePrimitiveHandle;
@@ -31,7 +32,7 @@ struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
     long GetRefCount() const { return Object ? Object->m_refCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -40,7 +41,7 @@ struct CIVCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
     {
         Release();
         Object = object;
@@ -48,19 +49,19 @@ struct CIVCountedPointer {
             ++object->m_refCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598
     CIVCountedPointer Data;                        // +0x04
     CEnginePrimitiveHandle() { }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 // VC7.1 emits the class's vtable and scalar deleting destructor in a TU that constructs it; this helper is that construction.

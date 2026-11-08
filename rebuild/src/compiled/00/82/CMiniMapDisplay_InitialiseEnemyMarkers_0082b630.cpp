@@ -12,6 +12,7 @@
 // Shape: the InitialiseTraderMarkers model plus the hero guard; the CDefString temporary (a class with a user ctor, so it is
 //   returned through a hidden pointer) is compared in place; bit 7 of the thing's +0x15d flags is a 1-bit bitfield
 //   (`test al,al ; js`).
+#include "fable_compiler.h"
 class CDefString { public:                                // a def name index
     long Index;
     CDefString();
@@ -38,7 +39,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

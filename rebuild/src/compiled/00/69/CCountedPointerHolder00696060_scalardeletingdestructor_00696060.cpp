@@ -7,6 +7,7 @@
 // Layout: local model -- three plain words, then a CIVCountedPointer at +0xC; no vtable.
 // Shape: a NON-polymorphic class deleted with `delete` (VC7.1 emits the non-virtual `??_G`, no vtable store); the
 // counted pointer's release is `__forceinline` (`dec dword ptr [ecx+4] ; jne`, the clear inside the null test).
+#include "fable_compiler.h"
 struct CCountedObject {
     virtual void v00();
     virtual void Destroy();                         // slot 1
@@ -15,7 +16,7 @@ struct CCountedObject {
 
 template <class T> class CIVCountedPointer { public:
     T* m_p;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* p = m_p;
         if (p) {

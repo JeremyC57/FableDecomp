@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -281,7 +282,7 @@ class CDynamicList { public:
  // Lowering of actual LoadAndReturnDef() const: thiscall, hidden stack result address, same address in EAX.
  typedef DefinitionResultStorage*(CDynamicList::*LoadDefinitionMethod)(DefinitionResultStorage*)const;
 
- __forceinline void AppendScrollingChild(CComponent* child){ScrollingChildren.push_back(child);}
+ FABLE_FORCEINLINE void AppendScrollingChild(CComponent* child){ScrollingChildren.push_back(child);}
  void GetDataFromDef();
 };
 #ifdef _MSC_VER

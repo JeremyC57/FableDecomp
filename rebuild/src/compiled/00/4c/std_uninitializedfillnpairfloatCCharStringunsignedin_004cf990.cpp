@@ -10,6 +10,7 @@
 // Shape: STLport `for (; n > 0; --n, ++cur) _Construct(&*cur, x); return cur;` (no EH: no _STLP_TRY). n is unsigned
 // (`jbe`); _Construct is the placement new of the pair (null-tested), whose user copy ctor copies the float as a dword
 // and copy-constructs the string.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CCharStringData;
@@ -28,7 +29,7 @@ template <class T1, class T2> struct pair {
     pair(const pair& o) : first(o.first), second(o.second) {}
 };
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter first, _Size n, const _Tp& x, const __false_type&)

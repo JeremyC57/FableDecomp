@@ -1,5 +1,6 @@
 // Behaviour test for 0x005CDBBE CTCInventoryStats::GetStatsPersonalityValueRenown(): RenownLevel / RenownMaxLevel of the
 // owner thing's hero stats (interface 4), 0 when it has none, the stats pointer is null or the maximum is 0.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -37,7 +38,7 @@ __declspec(noinline) CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long*
 }
 class CThing { public:
     unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces; unsigned int bits;
-    template<class T> __forceinline bool GetInterface(T** out, long kind) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             long key = kind; CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(&key);
             if (it == map->last || kind < it->type) it = map->last;

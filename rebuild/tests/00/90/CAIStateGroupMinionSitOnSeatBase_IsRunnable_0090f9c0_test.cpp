@@ -1,4 +1,5 @@
 // behaviour test for 0x0090F9C0 CAIStateGroup_MinionSitOnSeatBase::IsRunnable (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CAIStateGroup_MinionSitOnSeatBase::IsRunnable() -- when it is time to sit and an owner object exists, join the owner's gather point (if the group uses one), pick a seat from the owner and check the seat is valid.
@@ -62,14 +63,14 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
     // the pointer-returning lookup: the component lands straight in ecx for the call that follows
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -147,7 +148,7 @@ struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroup_UsesSeat {
     virtual bool IsRunnable();
 };
 
-__forceinline bool AddAsUserTo(CTCGatherPointBase* gatherPoint, CThing* user) { return gatherPoint->AddAsUser(user); }
+FABLE_FORCEINLINE bool AddAsUserTo(CTCGatherPointBase* gatherPoint, CThing* user) { return gatherPoint->AddAsUser(user); }
 
 bool CAIStateGroup_MinionSitOnSeatBase::IsRunnable()
 {

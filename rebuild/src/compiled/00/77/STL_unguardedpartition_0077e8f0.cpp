@@ -14,9 +14,10 @@
 //   across the compare calls and is re-read only after the out-of-line iter_swap (the comparator's real body is
 //   compiled above the caller, auto_inline off, as in the landed CCharString partition 0x005E0650).
 // Label correction: catalogued as `Partition_ThreeWay_Quicksort`; the body is STLport `__unguarded_partition`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

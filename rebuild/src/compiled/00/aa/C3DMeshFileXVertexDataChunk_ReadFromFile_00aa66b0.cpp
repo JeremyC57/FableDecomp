@@ -9,14 +9,15 @@
 // and filled with one bulk Read of that byte count into GetData() (the array itself when empty).
 // Layout: engine/C3DMeshFileXVertexDataChunk.h; VertexData +0x40 viewed as the retail 12-byte STLport vector.
 // Leaf: ReadFromFile@C3DMeshFileXVertexDataChunkMethods
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileXVertexDataChunk.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 struct CInputStreamAccess : CDataInputStream {
- static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
- __forceinline void Read(void* buffer,long size) {
+ static FABLE_FORCEINLINE bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
+ FABLE_FORCEINLINE void Read(void* buffer,long size) {
   if(size<=0) return;
   __int64 newPosition=(__int64)(StreamPos+size);
   if(!IsValidPosition(newPosition)) return;
@@ -27,7 +28,7 @@ struct CInputStreamAccess : CDataInputStream {
    StreamPos+=size;
   } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
  }
- __forceinline unsigned long ReadULong() {unsigned long value;Read(&value,4);return value;}
+ FABLE_FORCEINLINE unsigned long ReadULong() {unsigned long value;Read(&value,4);return value;}
 };
 template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;

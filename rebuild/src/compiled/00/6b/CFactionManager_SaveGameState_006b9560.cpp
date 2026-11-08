@@ -1,6 +1,7 @@
 // CFactionManager::SaveGameState(CPersistContext&) const -- persist faction count and per-index faction object.
 // Native006B9560 168 bytes;410BE0 transfer,99F830 integer text,99F690 concat,99E4C0 cstr,6BAED0 named faction transfer,99EAE0 dtor.
 // PDB Factions vector map pair is key plus two-word counted pointer (12-byte records).
+#include "fable_compiler.h"
 #include "fable_string.h"
 CCharString __fastcall GFIntToCharString(long);
 CCharString __fastcall operator+(const char*,const CCharString&);
@@ -9,7 +10,7 @@ class CPersistContext { public:
  template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
  void TransferFaction(const char*,CFaction&);
 };
-struct CountedFaction { CFaction* Data; void* Info; __forceinline CFaction& operator*() const { return *Data; } };
+struct CountedFaction { CFaction* Data; void* Info; FABLE_FORCEINLINE CFaction& operator*() const { return *Data; } };
 struct FactionEntry { unsigned long Key; CountedFaction Faction; };
 class CFactionManager { public:
  FactionEntry *Start,*Finish,*EndOfStorage;

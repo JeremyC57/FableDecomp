@@ -6,6 +6,7 @@
 // Callees: malloc 0x00BFEA0E, std::__uninitialized_copy 0x00BF5B50 and std::__uninitialized_fill_n 0x00BF5BB0 (`__fastcall`), free 0x00BFEA14.
 // Shape (family M124, representative 0x00543B70): the STLport 4.6 model of M052/M113 with the two range helpers out of line
 //   (`__fastcall`, the empty __false_type tags homed in the dead __atend slot), the single x placement copy inline.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -28,9 +29,9 @@ template <class _T1, class _T2> struct pair {
     pair(const pair& __o) : first(__o.first), second(__o.second) { }   // STLport's explicit copy
 };
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 // the two range helpers stay out of line (`__declspec(noinline)`), but their bodies are visible: VC7.1 then knows the
 // empty tag's address is not kept and homes the tag temporaries in the dead __atend slot, as retail does
@@ -53,8 +54,8 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter
 
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 
 template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
@@ -73,13 +74,13 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
-    __forceinline size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    FABLE_FORCEINLINE size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;

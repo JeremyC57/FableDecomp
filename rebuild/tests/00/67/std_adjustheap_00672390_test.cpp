@@ -1,6 +1,7 @@
 // Behaviour test for 0x00672390 std::__adjust_heap<ENavigatorType*, int, ENavigatorType, less<ENavigatorType> >:
 // sift a hole at the top of a max-heap down and push the value back in; the result must be a valid max-heap that
 // holds the value in place of the old top.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -15,7 +16,7 @@ template <class _Tp> struct less {
 };
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
-__forceinline void __push_heap(_RandomAccessIterator first, _Distance holeIndex, _Distance topIndex, _Tp value,
+FABLE_FORCEINLINE void __push_heap(_RandomAccessIterator first, _Distance holeIndex, _Distance topIndex, _Tp value,
                                _Compare comp)
 {
     _Distance parent = (holeIndex - 1) / 2;

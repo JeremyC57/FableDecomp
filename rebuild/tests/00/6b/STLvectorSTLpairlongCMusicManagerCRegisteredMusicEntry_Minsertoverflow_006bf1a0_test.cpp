@@ -1,6 +1,7 @@
 // 006bf1a0 std::vector<std::pair<long,CMusicManager::CRegisteredMusicEntry>>::_M_insert_overflow
 // Flags: /O2 /Oy /W3
 // Leaf: _M_insert_overflow
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 // Layout: retail CWideStringData uses text/start+0,finish+4,storage+8 and signed refs+12,total16; copy0099b758 and release0099b4d9 prove refs+12.
@@ -12,7 +13,7 @@ class CWideString{ public:CWideStringData*PData;CWideString();CWideString(const 
 class CMusicManager{ public:class CRegisteredMusicEntry{ public:CWideString SrcFileName,DstFileName;float Gain,Offset;bool CacheToHD;};};
 namespace std{
 struct __false_type{__false_type(){}};
-template<class A,class B>struct pair{A first;B second;pair(){}__forceinline pair(const pair&x):first(x.first),second(x.second){}};
+template<class A,class B>struct pair{A first;B second;pair(){}FABLE_FORCEINLINE pair(const pair&x):first(x.first),second(x.second){}};
 typedef pair<long,CMusicManager::CRegisteredMusicEntry> MusicEntry;
 template<class Tag>__declspec(noinline)MusicEntry*__fastcall uninitialized_copy(MusicEntry*a,MusicEntry*b,MusicEntry*c,const Tag&){while(a!=b){if(c)new(c)MusicEntry(*a);++a;++c;}return c;}
 template<class Tag>__declspec(noinline)MusicEntry*__fastcall uninitialized_fill_n(MusicEntry*c,unsigned n,const MusicEntry&v,const Tag&){while(n--){if(c)new(c)MusicEntry(v);++c;}return c;}

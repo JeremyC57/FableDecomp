@@ -1,4 +1,5 @@
 // Behaviour test for 00584b42: body copied from src/00584b42.cpp (CTCInventory::ClosePCInventoryMenu), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -19,7 +20,7 @@ class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     bool HasTC(long wanted) { return m_present.test(wanted); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

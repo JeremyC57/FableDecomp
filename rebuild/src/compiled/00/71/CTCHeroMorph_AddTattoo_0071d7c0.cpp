@@ -14,6 +14,7 @@
 // pointer is declared before the element copy, so the copy is released first.
 // Layout: retail CTCHeroMorph (two 4-byte lists): Tattoos +0x1c, FrameTattoosChanged +0x34, Changed +0x3d (PDB +0x2c/+0x4c/+0x55);
 // CTattooDef RemovesAllTattoos +0x3c, CoversBodyAreaFlags +0x40, SpecificCoversBodyAreaFlags +0x48 (Ego_r.pdb); CThing PDef +0x70.
+#include "fable_compiler.h"
 #include <new>
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -83,10 +84,10 @@ struct CThingDefVector {                                // STLport vector<CDefPo
         _M_finish = i;
         return first;
     }
-    __forceinline void clear() { erase(begin(), end()); }
+    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
     void _M_insert_overflow(CThingDefPointer* pos, const CThingDefPointer& x, const __true_type& tag,
                             unsigned long fillLength, bool atEnd);   // 0x005B3275
-    __forceinline void push_back(const CThingDefPointer& x)
+    FABLE_FORCEINLINE void push_back(const CThingDefPointer& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)

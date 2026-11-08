@@ -10,6 +10,7 @@
 // type 0xda = bit 26 of the +0x38 word), map +0x44, dead bit +0x91.
 // Shape: the trophy lookup is the unchecked out-parameter GetInterface (the absent arm reads the never-written local from the
 // dead `user` argument slot, GOTCHAS chunk 129); the target component is loaded straight into ecx (HasTC + one-ternary GetTC).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -22,8 +23,8 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char m_dead : 1;                           // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -32,14 +33,14 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    __forceinline CTCBase* GetTCSelect(long interfaceType)   // one ternary: the component goes straight to ecx
+    FABLE_FORCEINLINE CTCBase* GetTCSelect(long interfaceType)   // one ternary: the component goes straight to ecx
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

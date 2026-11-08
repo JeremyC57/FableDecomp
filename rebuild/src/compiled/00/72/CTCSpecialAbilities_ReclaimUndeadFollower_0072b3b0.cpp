@@ -14,6 +14,7 @@
 //   interface fetch is the out-pointer GetInterface (as in the landed SetupBerserk 0x0072CBA0: the ternary on the
 //   iterator stored through the out pointer) -- a pointer-returning GetTC gives `mov ecx,[eax+4] ; mov edx,[ecx+18h]`
 //   where retail reuses eax (`mov eax,[eax+4] ; mov ecx,[eax+18h]`).
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -31,7 +32,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template <class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

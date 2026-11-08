@@ -8,6 +8,7 @@
 //   inlined (`__forceinline`, GOTCHAS 00440180/007688b0); otherwise the same bytes as the four-argument helper 0x006B7C10
 //   (first ecx -> eax as `cur`, n in edx counted down, &x -> esi, placement-new null test, 7-byte block copy).
 // Label correction: the catalog `_Fill_n<unsigned long*,unsigned int,unsigned long>` is propagated.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 struct __false_type { __false_type() { } };
@@ -22,7 +23,7 @@ class CGameMapCell { public:                                   // 7 bytes
 
 namespace std {
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)

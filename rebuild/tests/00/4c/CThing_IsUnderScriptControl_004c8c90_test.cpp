@@ -1,4 +1,5 @@
 // Behaviour test for 004c8c90: body copied from src/004c8c90.cpp (CThing::IsUnderScriptControl), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];
     CInterfaceMap       Components;
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &Components;

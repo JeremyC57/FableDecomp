@@ -8,6 +8,7 @@
 //   `optimize("s", on)`; __copy_trivial must be `__forceinline` (the size module calls it out of line otherwise) and keeps
 //   its `__last == __first` test; the extend arm's tag comes from an inline helper returning __true_type by value (the
 //   zero-filled byte and its self-copy at [ebp-1]).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl memmove(void*, const void*, unsigned int);
@@ -15,19 +16,19 @@ namespace std {
 struct __true_type { };
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
-__forceinline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+FABLE_FORCEINLINE void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
     return (__last == __first) ? __result :
         ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first))) + ((const char*)__last - (const char*)__first);
 }
-template <class _Tp> __forceinline _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __true_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __true_type&)
 {
     return (_Tp*)__copy_trivial(__first, __last, __result);
 }
 template <class _InputIter, class _ForwardIter>
 _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __true_type&);
 template <class _Tp> inline void _Destroy(_Tp*, _Tp*) { }
-template <class _Tp> __forceinline __true_type _Is_POD(_Tp*) { return __true_type(); }
+template <class _Tp> FABLE_FORCEINLINE __true_type _Is_POD(_Tp*) { return __true_type(); }
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
     _Tp* _M_start;

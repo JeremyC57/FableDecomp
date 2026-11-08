@@ -1,4 +1,5 @@
 // Behaviour test for 0090fb60: body copied from src/0090fb60.cpp (CAIStateGroup_MinionSitAtInn::GetSeat), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,9 +30,9 @@ struct CBaseIntelligentPointerCtor {
     ~CBaseIntelligentPointerCtor() {}
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing() {}
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerThing() {}
+    FABLE_FORCEINLINE CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 static int g_freeSeat = 0; static CThing* g_seatFor = 0; static void* g_tavernThis = 0; static CThing* g_seat = 0;
 class CTCTavern { public: CThing* GetFreeSeat(CThing* creature) { ++g_freeSeat; g_seatFor = creature; g_tavernThis = this; return g_seat; } };
@@ -41,7 +42,7 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain; long ScriptAIPriority; void* Name_PStringData; unsigned char Terminated; unsigned char Priority; unsigned char Enabled; unsigned char _pad_0x13;
 };
 struct CThingF : CThing {
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

@@ -11,6 +11,7 @@
 // Constants: 1/16383 0x0129F664, 100.0f 0x01230A08, 1/32767 0x0129C81C, 300.0f 0x01238808, 10.0f 0x01237F0C, 1.0f 0x0122DED8,
 //   0.0f 0x0122DEDC, 2^32 0x0122DCB4, FLT_MAX immediate 0x7F7FFFFF. Shape: the max is the macro form (the start count is
 //   re-read from the bitfields when it wins); the pps quantiser runs before the branch.
+#include "fable_compiler.h"
 namespace NParticleEngine {
 
 class CPSCBase { public:
@@ -60,7 +61,7 @@ class CPSCEmitterGeneric : public CPSCBase { public:
 
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     long i = decimals;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CGameScriptInterface::EntitySetAsScared(const CScriptThing& thing,bool value) const -- Forward the creature request under retail lifetime and type checks.
@@ -135,10 +136,10 @@ template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess {public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap {public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;Cmp Compare;bool Dirty;
 __declspec(noinline) iterator LowerBound(const K& key){iterator first=Data.begin();int count=Data.end()-first;while(count>0){int half=count/2;iterator middle=first+half;if(Compare(*middle,key)){first=middle+1;count-=half+1;}else count=half;}return first;}
-__forceinline V Get(K key){iterator it=LowerBound(key);iterator last=Data.end();return (it==last || key<it->first ? last:it)->second;}
+FABLE_FORCEINLINE V Get(K key){iterator it=LowerBound(key);iterator last=Data.end();return (it==last || key<it->first ? last:it)->second;}
 };
 // Layout: no active CThing header; original UsingComponents+0x20, Components+0x44 from retail. Nine32-bit bitset words precede the16-byte CVectorMap. Only these members are used.
-class CThing {public:unsigned char Prefix[0x20];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;unsigned char Pad54[0x18];unsigned int ThingTypeFlags;unsigned char Pad70[0x21];unsigned char Dead:1;unsigned char OtherFlags:7;template<class T>__forceinline bool GetTC(ETCInterfaceType kind,T** out){if(!HasTC(kind))return false;*out=(T*)Components.Get(kind);return true;} __forceinline bool HasTC(ETCInterfaceType kind)const{return (UsingComponents[(unsigned int)kind>>5]&(1u<<((unsigned int)kind&31)))!=0;}};
+class CThing {public:unsigned char Prefix[0x20];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;unsigned char Pad54[0x18];unsigned int ThingTypeFlags;unsigned char Pad70[0x21];unsigned char Dead:1;unsigned char OtherFlags:7;template<class T>FABLE_FORCEINLINE bool GetTC(ETCInterfaceType kind,T** out){if(!HasTC(kind))return false;*out=(T*)Components.Get(kind);return true;} FABLE_FORCEINLINE bool HasTC(ETCInterfaceType kind)const{return (UsingComponents[(unsigned int)kind>>5]&(1u<<((unsigned int)kind&31)))!=0;}};
 // Layout: no CTCEnemy header. PDB original bool fields at+12/+13 after the shared CTCBase; later lists/faction untouched and omitted.
 class CTCEnemy:public CTCBase {public:bool FriendsWithEverythingFlag,EnableFollowersEnemyProxy;};
 // Layout: shared CScriptThing header is flattened. A genuine polymorphic interface is required for GetPThing slot11 and IsAlive slot75; uninvoked slots have descriptive placeholders only. PImp data/info follow at+4/+8.
@@ -280,7 +281,7 @@ public:
 #endif // FABLE_ENGINE_CTCCREATUREGENERATOR_H
 #undef CTCCreatureGenerator
 class CTCCreatureGenerator:public CTCCreatureGenerator_HeaderLayout {public:bool IsDepleted()const;long GetNumGeneratedCreatures()const;bool AreAllCreaturesAlive()const;};
-__forceinline bool IsThingAlive(const CScriptThing& script){CThing* p=script.GetPThing();return p && !p->Dead;}
+FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& script){CThing* p=script.GetPThing();return p && !p->Dead;}
 // Layout: shared script header retained as evidence; genuine virtual declaration, owner fields untouched.
 class CGameScriptInterface {public:virtual void EntitySetAsScared(const CScriptThing& thing,bool value)const;unsigned char OwnerFields[0x4c];};
 void CGameScriptInterface::EntitySetAsScared(const CScriptThing& thing,bool value)const{if(thing.IsAlive() && (thing.GetPThing()->ThingTypeFlags&8)){CTCCreatureModeManager* component;thing.GetPThing()->GetTC((ETCInterfaceType)49,&component);if(value){if(component->GetCurrentMode().GetType()!=15)component->AddMode(15);}else component->RemoveMode(15);}}

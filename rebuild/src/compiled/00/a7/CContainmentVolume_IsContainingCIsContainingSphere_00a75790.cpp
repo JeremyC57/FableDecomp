@@ -14,6 +14,7 @@
 // ordered less-than of -Radius against the distance); the early false exit is `xor al,al`, the
 // true result is the constant hoisted into bl before the loop. The loop is the flag-controlled
 // `while (contained && i < Size)` form: a `for` with `return false` rotates the loop instead.
+#include "fable_compiler.h"
 #include "engine/CContainmentVolume.h"
 
 #include "engine/C3DVector.h"
@@ -21,7 +22,7 @@
 class CPlane { public:
     C3DVector Normal;
     float     Distance;
-    __forceinline float GetSignedDistance(const C3DVector& point) const
+    FABLE_FORCEINLINE float GetSignedDistance(const C3DVector& point) const
     {
         return point.Z * Normal.Z + point.Y * Normal.Y + point.X * Normal.X - Distance;
     }
@@ -30,7 +31,7 @@ class CPlane { public:
 class CIsContainingSphere { public:
     C3DVector Point;
     float     Radius;
-    __forceinline bool operator()(const CPlane& plane) const
+    FABLE_FORCEINLINE bool operator()(const CPlane& plane) const
     {
         return plane.GetSignedDistance(Point) > -Radius;
     }

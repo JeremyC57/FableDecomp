@@ -22,6 +22,7 @@
 //   the list object is read into a local before the map operator[] call; the two returns share the destructor tail through bl.
 // Layout: retail CTCInventoryTrade ItemSellLists +0x20C (map<CComponent*, CComponent*>, PDB +0x258); CActionParamULONG
 //   (vtable 0x0122F844, type 5) 12 bytes.
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -51,7 +52,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                            // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;

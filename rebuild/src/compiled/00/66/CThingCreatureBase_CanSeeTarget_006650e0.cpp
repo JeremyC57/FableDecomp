@@ -10,6 +10,7 @@
 // Shape: HasTC is the raw bitset test and GetTC the inline const lookup forwarding all four arguments; the facing is a
 //   named float local parked in the dead last-argument slot across the head-position call; `2*|d| <= fov` with
 //   separate true/false exits (`test ah,41h ; jp`), the doubling as `fadd st,st`.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fabs)
 
@@ -45,7 +46,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

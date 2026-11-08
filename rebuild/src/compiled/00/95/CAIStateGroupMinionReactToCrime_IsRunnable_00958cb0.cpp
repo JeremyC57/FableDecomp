@@ -12,6 +12,7 @@
 //          spilled across the calls (its home doubles as the hero log lookup miss slot).
 // Layout: engine/CAIStateGroup_MinionReactToCrime.h (OpinionDeedHandle +0x14, AllowDuplicateReactToCrime +0x19);
 //          PBrain is the first dword at +0x04; the deed's +0x00 type / +0x04 / +0x24 handle are descriptive.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_MinionReactToCrime.h"
 
 class CTCBase;
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -35,7 +36,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceX(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -7,6 +7,7 @@
 // Layout: CArenaWaveDef is 0x3C bytes in retail (Ego_r.pdb 0x40 bytes; 1 STLport container 12 bytes, 16 in the PDB), the `imul` stride; opaque here.
 // Shape: H059's model without the size pragma -- the speed-mode form of the same STLport `_M_allocate_and_copy` (`add esp, 4` after
 //   malloc, `last` held in ebx, the loop aligned with `mov edi, edi`); allocate / _Construct / __uninitialized_copy stay `__forceinline`.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -23,7 +24,7 @@ struct __false_type { __false_type() { } };
 template <class T> class allocator {
 public:
     allocator() { }
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
 
 template <class V, class T, class A> class _STLP_alloc_proxy : public A {
@@ -32,13 +33,13 @@ public:
 };
 
 template <class T1, class T2>
-__forceinline void _Construct(T1* p, const T2& value)
+FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

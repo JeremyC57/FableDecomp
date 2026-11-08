@@ -22,6 +22,7 @@
 // Data: 0x01271D14 "ON_DIE", 0x01271CF0 "EFFECT_WATER".
 // Layout: Ego_r.pdb CTCKrakenTentacle (0x50): PRippleEffect +0x20 (CIntelligentPointer<CThing>); CThing interface
 //   bitset +0x20, interface map +0x44, def +0x70, dead flag bit 0 of +0x91.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CCharStringData;
@@ -84,7 +85,7 @@ class CThing { public:
     CDefClassBase* PDef;                                    // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                                  // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

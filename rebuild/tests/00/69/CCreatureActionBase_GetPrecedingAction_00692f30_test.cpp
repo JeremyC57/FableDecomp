@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -445,7 +446,7 @@ class CThingCreatureBase { public:
  unsigned char _nativeBeforeComponentFlags[0x20];
  unsigned long UsingComponents[9];
  CInterfaceMap Components;
- __forceinline bool GetCarrying(CTCCarrying** out){
+ FABLE_FORCEINLINE bool GetCarrying(CTCCarrying** out){
   if(UsingComponents[2]&0x40){CInterfaceMap* map=&Components;const long type=0x46;
    CInterfaceMap::Entry* p=map->LowerBound(&type);
    CInterfaceMap::Entry* selected=(p!=map->Last && p->Type<=type)?p:map->Last;

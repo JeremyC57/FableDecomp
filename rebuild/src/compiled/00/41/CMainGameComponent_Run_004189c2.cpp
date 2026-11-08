@@ -21,6 +21,7 @@
 // Shape: the frame-pointer size TU of the landed InitGraphics rows; the region pointer is an inline by-value getter
 //   whose discarded result is copied and dropped (`inc ; dec ; jne` on the pointee through AddRef/Release members);
 //   the frame start time is read into a local before the second clock call; Running is cleared before *next is stored.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CWideString;
@@ -33,8 +34,8 @@ struct CRefCounted {
 };
 struct CRefPointer {
     CRefCounted* m_p;
-    __forceinline CRefPointer(const CRefPointer& other) : m_p(other.m_p) { if (m_p) m_p->AddRef(); }
-    __forceinline ~CRefPointer() { if (m_p) m_p->Release(); }
+    FABLE_FORCEINLINE CRefPointer(const CRefPointer& other) : m_p(other.m_p) { if (m_p) m_p->AddRef(); }
+    FABLE_FORCEINLINE ~CRefPointer() { if (m_p) m_p->Release(); }
 };
 class CRegion { public:
     unsigned char _pad00[0x24];

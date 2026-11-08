@@ -13,6 +13,7 @@
 // Shape: the landed CPersistTraits<pair<EReactionSpeechType,long>>::TransferIn 0x00755F40 model -- inline CCharString
 //   operator== (null data compares the literal with "" through the strcmp intrinsic), each long read into the dead
 //   argument slots through an inline by-value reader, the closing ")" read and compared with the result discarded.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 template <class T> class CBasicString { public:
@@ -21,7 +22,7 @@ template <class T> class CBasicString { public:
 class CCharString { public:
     CBasicString<char>* PStringData;
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -36,7 +37,7 @@ class CStringParser { public:
 };
 class CPersistContext;
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-__forceinline long TransferInLong(CPersistContext& context, CStringParser& parser)
+FABLE_FORCEINLINE long TransferInLong(CPersistContext& context, CStringParser& parser)
 {
     long value;
     TransferIn(&context, &parser, &value);

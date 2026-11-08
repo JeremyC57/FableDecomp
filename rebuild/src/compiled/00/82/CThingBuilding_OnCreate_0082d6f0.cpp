@@ -14,6 +14,7 @@
 // Layout: CThing PTCGraphicAppearance +0x64, DefGlobalIndex +0x8C; CThingPhysical Scale +0x9C, MaxHealth +0xB0, Health +0xB4
 //         (Ego_r.pdb +0xC8/+0xCC); the +0xD4 flag byte (descriptive); CTCGraphicAppearance::Graphic +0x44; CThingBuildingDef
 //         MaxHealth +0x50 and Graphic +0x78 (PDB +0x7C, def classes pack to 1).
+#include "fable_compiler.h"
 class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
@@ -79,7 +80,7 @@ class CThingBuilding { public:
     unsigned char         _padb8[0xd4 - 0xb8];
     unsigned char         m_flagD4 : 1;              // +0xd4 bit 0 (descriptive)
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    __forceinline const CThingBuildingDef* PeekPDef() const
+    FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
     {
         CDefPointer def;
         GetDefinitionManager()->GetDef_004ab840(DefGlobalIndex, &def);

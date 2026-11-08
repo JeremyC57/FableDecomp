@@ -1,6 +1,7 @@
 // 005fc8a0 NScreen005fc8a0::CTCInventoryMap::ConstructQuestsScreen_CurrentQuestsPC (catalog name; PC variant of 005fc2d0)
 // Flags: /O2 /Oy /W3
 // Leaf: ConstructQuestsScreen_CurrentQuestsPC
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 namespace NScreen005fc8a0 {
@@ -8,14 +9,14 @@ namespace NScreen005fc8a0 {
 struct CCharStringData{char* text;int length,capacity;unsigned char owned;int refs;};
 #pragma pack(pop)
 extern int StringInstances;CCharStringData* NewStringData(const char*,int);void DeleteStringData(CCharStringData*);
-struct CCharString {void* data;CCharString(const char*,int=-1);__forceinline CCharString(const CCharString& x):data(x.data){++StringInstances;if(data)++((CCharStringData*)data)->refs;}~CCharString();const char* Text()const{return data?((CCharStringData*)data)->text:"";}};
-struct __true_type{__true_type(){}};struct vector {void **first,**last,**end;vector():first(0),last(0),end(0){}__forceinline ~vector(){if(first)free(first);}template<class T> __declspec(noinline) void _M_insert_overflow(void** pos,void*const& value,const T&,int count,int skipTail){unsigned old=first?(unsigned)(last-first):0;unsigned cap=old+(old<(unsigned)count?(unsigned)count:old);void** fresh=(void**)malloc(cap*sizeof(void*));void** out=fresh;for(void** i=first;i!=pos;++i)*out++=*i;for(int j=0;j<count;++j)*out++=value;if(!skipTail)for(void** k=pos;k!=last;++k)*out++=*k;free(first);first=fresh;last=out;end=fresh+cap;}__forceinline void push_back(void*const& p){if(last!=end){if(last)new(last)void*(p);++last;}else _M_insert_overflow(last,p,__true_type(),1,1);}};
+struct CCharString {void* data;CCharString(const char*,int=-1);FABLE_FORCEINLINE CCharString(const CCharString& x):data(x.data){++StringInstances;if(data)++((CCharStringData*)data)->refs;}~CCharString();const char* Text()const{return data?((CCharStringData*)data)->text:"";}};
+struct __true_type{__true_type(){}};struct vector {void **first,**last,**end;vector():first(0),last(0),end(0){}FABLE_FORCEINLINE ~vector(){if(first)free(first);}template<class T> __declspec(noinline) void _M_insert_overflow(void** pos,void*const& value,const T&,int count,int skipTail){unsigned old=first?(unsigned)(last-first):0;unsigned cap=old+(old<(unsigned)count?(unsigned)count:old);void** fresh=(void**)malloc(cap*sizeof(void*));void** out=fresh;for(void** i=first;i!=pos;++i)*out++=*i;for(int j=0;j<count;++j)*out++=value;if(!skipTail)for(void** k=pos;k!=last;++k)*out++=*k;free(first);first=fresh;last=out;end=fresh+cap;}FABLE_FORCEINLINE void push_back(void*const& p){if(last!=end){if(last)new(last)void*(p);++last;}else _M_insert_overflow(last,p,__true_type(),1,1);}};
 struct CBaseIntelligentPointer {void* table;void* p;void* Get();};
-struct Node {Node* next;Node* prev;CBaseIntelligentPointer value;};struct List {Node* head;__forceinline unsigned Size()const{unsigned n=0;for(Node* p=head->next;p!=head;p=p->next)++n;return n;}};
+struct Node {Node* next;Node* prev;CBaseIntelligentPointer value;};struct List {Node* head;FABLE_FORCEINLINE unsigned Size()const{unsigned n=0;for(Node* p=head->next;p!=head;p=p->next)++n;return n;}};
 struct CopiedList:List {CopiedList(const List&);~CopiedList();};
 struct CQuestManager {char pad[92];List current,past;};extern CQuestManager* g_pQuestManager;
 struct CComponent;void __fastcall DestroyWidget(void*);struct Block {int refs;void(__fastcall*destroy)(void*);void* object;Block(void* p):refs(1),destroy(DestroyWidget),object(p){}};
-struct Ptr {CComponent* p;Block* b;__forceinline Block* GetControl()const{return b;}__forceinline Ptr(CComponent* w):p(w),b(p?new Block(p):0){}__forceinline ~Ptr(){if(b&&!--b->refs){b->destroy(b->object);delete GetControl();}p=0;b=0;}};
+struct Ptr {CComponent* p;Block* b;FABLE_FORCEINLINE Block* GetControl()const{return b;}FABLE_FORCEINLINE Ptr(CComponent* w):p(w),b(p?new Block(p):0){}FABLE_FORCEINLINE ~Ptr(){if(b&&!--b->refs){b->destroy(b->object);delete GetControl();}p=0;b=0;}};
 struct CComponent {
 virtual void v0()=0;
 virtual void v1()=0;
@@ -168,7 +169,7 @@ struct CManager {__declspec(noinline) CComponent* CreateComponent(const CCharStr
 CComponent* LookupWidget(CManager*,const char*,int);
 CComponent* CManager::CreateComponent(const CCharString& name,int flag){return LookupWidget(this,name.Text(),flag);}
 struct CUIMiscThingsDef {virtual void v0()=0;virtual void Delete()=0;int refs;};
-struct CDefPointer {CUIMiscThingsDef* p;CDefPointer():p(0){}CDefPointer(const CDefPointer& r):p(r.p){if(p)++p->refs;}__forceinline ~CDefPointer(){CUIMiscThingsDef* d=p;if(d&&!--d->refs)d->Delete();}};
+struct CDefPointer {CUIMiscThingsDef* p;CDefPointer():p(0){}CDefPointer(const CDefPointer& r):p(r.p){if(p)++p->refs;}FABLE_FORCEINLINE ~CDefPointer(){CUIMiscThingsDef* d=p;if(d&&!--d->refs)d->Delete();}};
 struct CDefinitionManager {CDefPointer Acquire(int);__declspec(noinline) int Index(const CCharString&,bool);__declspec(noinline) bool Get(int,CUIMiscThingsDef*&);};CDefinitionManager* __fastcall GetDefinitionManager();
 int LookupDefinitionIndex(CDefinitionManager*,const char*,bool);
 int CDefinitionManager::Index(const CCharString& name,bool flag){return LookupDefinitionIndex(this,name.Text(),flag);}

@@ -10,6 +10,7 @@
 // null test, `dec dword ptr [ecx+8] ; jne`, the plain `delete` without a second null test, then the
 // CShaderBase vtable store and the `test byte ptr [esp+8],1` free. engine/CVertexShader.h gives the
 // 8-byte {vptr, Data} layout; it is a flat record so the polymorphic model is local.
+#include "fable_compiler.h"
 struct CPixelShaderData {
     virtual ~CPixelShaderData();              // slot 0: the deleting destructor is called with 1
     void* m_pShader;                          // +0x04
@@ -22,7 +23,7 @@ class CShaderBase { public:                          // vtable 0x0129A030
 
 class CPixelShader : public CShaderBase { public:           // vtable 0x0129A054
     CPixelShaderData* Data;                   // +0x04
-    __forceinline virtual ~CPixelShader()      // __forceinline keeps the release in the ??_G body (else it collapses to `call ??1`)
+    FABLE_FORCEINLINE virtual ~CPixelShader()      // __forceinline keeps the release in the ??_G body (else it collapses to `call ??1`)
     {
         CPixelShaderData* data = Data;              // a local copy: the member form re-reads Data after the decrement
         if (data) {

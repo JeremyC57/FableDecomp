@@ -1,6 +1,7 @@
 // CGameScriptInterface::SetHouseOwnedByPlayer -- update house ownership/rental state and hero property count
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00895ED0,289 bytes;0040F020 lower_bound,0099A2E0 base destructor,00BFE9BC delete; CTCAIScratchpad donor layout.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -117,7 +118,7 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct HeroStatsRetail{unsigned char BeforeCounts[0xe0];long NumberOfShopsOwned,NumberOfHousesOwned;};
 struct BuyableHouseMethods:CTCBuyableHouse{void SetOwnedByPlayer(bool);void SetRented(bool);}; //006C17B0,006C1150
 // Real CThing component lookup; result is deliberately unspecified when HasTC is false, as in native.
-template<int Key,class T> __forceinline T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
+template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetHouseOwnedByPlayer(const ScriptMethods&,bool,bool)const;};
 void CGameScriptInterfaceMethods::SetHouseOwnedByPlayer(const ScriptMethods& script,bool owned,bool rented)const{
  CThingNative* thing=script.GetPThing();if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[6]&0x200000)){

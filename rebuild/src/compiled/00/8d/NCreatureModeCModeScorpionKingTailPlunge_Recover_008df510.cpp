@@ -21,6 +21,7 @@
 // Shape: the landed Spike 0x008DA0F0 model: same-TU out-only stand-ins for GetSubDef / GetEffectFromString (the effects
 //   def lives in ebp after the call, its slot reused by the TAIL_DUST_EFFECT temporary), a counted out pointer released at
 //   the function end, GetTCIfPresent (`xor ecx,ecx` default) and IS_THING_ALIVE.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -93,20 +94,20 @@ class CThing { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     void Kill(bool immediately);                // 0x004C9B80
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* component = 0;
         if (HasTC(interfaceType))

@@ -17,6 +17,7 @@
 // the `__x_copy` construction (declared only, VC7.1 re-reads it after the call).
 // Model: CHeroMarriageInfo modelled locally (24 bytes, PDB members; its copy ctor is out of line).
 // Shape: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -71,7 +72,7 @@ void __fastcall fill(CHeroMarriageInfo* __first, CHeroMarriageInfo* __last, cons
 }
 #pragma auto_inline(on)
 
-__forceinline CHeroMarriageInfo* __copy_backward_ptrs(CHeroMarriageInfo* __first, CHeroMarriageInfo* __last,
+FABLE_FORCEINLINE CHeroMarriageInfo* __copy_backward_ptrs(CHeroMarriageInfo* __first, CHeroMarriageInfo* __last,
                                                       CHeroMarriageInfo* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);

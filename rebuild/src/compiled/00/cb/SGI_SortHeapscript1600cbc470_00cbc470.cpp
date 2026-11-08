@@ -2,12 +2,13 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: SortHeap
 // Layout: retail counted block has count +0, destroy callback +4 and object +8.
+#include "fable_compiler.h"
 struct CountBlock_00cbc470 { int references; void (__fastcall *Destroy)(void*); void* object; };
 template<class T> struct CountedPointer_00cbc470 {
  T* object; CountBlock_00cbc470* block;
  CountedPointer_00cbc470():object(0),block(0){}
  CountedPointer_00cbc470(const CountedPointer_00cbc470& p):object(p.object),block(p.block){if(block)++block->references;}
- __forceinline CountBlock_00cbc470* GetBlock()const{return block;}
+ FABLE_FORCEINLINE CountBlock_00cbc470* GetBlock()const{return block;}
  CountedPointer_00cbc470& Assign(T* nextObject,CountBlock_00cbc470* nextBlock) {
   if(block!=nextBlock){if(block){--block->references;if(block->references==0){block->Destroy(block->object);operator delete(GetBlock());}}object=nextObject;block=nextBlock;if(block)++block->references;}return *this;
  }

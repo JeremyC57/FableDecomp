@@ -11,6 +11,7 @@
 // Shape: `delete p` on a non-polymorphic class with an inline destructor makes VC7.1 emit the non-virtual `??_G`
 //   (`QAEPAXI@Z`): STLport `~_List_base() { clear(); _M_node.deallocate(_M_node._M_data, 1); }` (the allocator's
 //   `if (__p != 0) free(__p)`), then the flag-tested operator delete; `mov eax,esi` returns `this`.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                // 0x00BFEA14
 void __cdecl operator delete(void* block);                // 0x00BFE9BC
 
@@ -19,7 +20,7 @@ namespace NUISystem { class CAction; }
 struct CActionList {                                      // std::list<CCountedPointer<NUISystem::CAction> >
     void* _M_node;                                        // +0x00 the sentinel node (_List_base::_M_node._M_data)
     void clear();                                         // 0x005356A0
-    __forceinline ~CActionList()
+    FABLE_FORCEINLINE ~CActionList()
     {
         clear();
         if (_M_node != 0)

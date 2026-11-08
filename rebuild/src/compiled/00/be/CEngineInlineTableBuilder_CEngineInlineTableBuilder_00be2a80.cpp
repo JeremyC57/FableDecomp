@@ -5,9 +5,10 @@
 // is bottom-tested with the helper's zero and top-bit tests inside it; the helper's result lives in ebx and is stored as a byte. The
 // helper's `++value` lands as `lea esi,[edi+1]` here because the loop index stays live. The helper must be `__forceinline` (plain
 // `inline` leaves it out of line).
+#include "fable_compiler.h"
 extern signed char g_highestSetBitTable[256];   // 0x0143B990
 
-__forceinline long HighestSetBit(unsigned long value)
+FABLE_FORCEINLINE long HighestSetBit(unsigned long value)
 {
     if (value == 0)
         return -1;

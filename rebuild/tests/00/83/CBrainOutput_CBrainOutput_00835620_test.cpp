@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <new>
@@ -10,7 +11,7 @@ struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(CCreatur
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject; SCountBlock* m_pCount;
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline void Reset(CCreatureActionBase* object)
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
     {
         if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } }
         m_pCount = 0; m_pObject = object;

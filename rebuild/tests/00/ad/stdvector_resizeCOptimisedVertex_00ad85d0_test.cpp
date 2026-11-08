@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: _M_fill_insert
 // Layout: PDB COptimisedVertex192, retail maps12 shift Exists to144,Unique148,Output152,Groups156,PairContractions168; FaceList132; stride184. Copy00ad77f0 and dtor00ad7400 confirm three owning trees.
+#include "fable_compiler.h"
 namespace N00ad85d0 {
 struct __false_type { __false_type() {} }; struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -9,7 +10,7 @@ extern "C" void __cdecl free(void*);
 struct Buffer {
  unsigned int* _M_start; unsigned int* _M_finish; unsigned int* _M_end_of_storage;
  Buffer(); Buffer(const Buffer&); Buffer& operator=(const Buffer&);
- __forceinline ~Buffer() { if(_M_start) free(_M_start); }
+ FABLE_FORCEINLINE ~Buffer() { if(_M_start) free(_M_start); }
 };
 struct String { unsigned int W0; String(); String(const String&); ~String(); String& operator=(const String&); };
 
@@ -30,8 +31,8 @@ template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T*
 template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
 template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x) { for(;n>0;--n,++first) _Construct(first,x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
-template<class T> __forceinline T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x);}
+template<class T> FABLE_FORCEINLINE T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
+template<class T> FABLE_FORCEINLINE T* UninitializedFillN(T* first,unsigned int n,const T& x){return __uninitialized_fill_n(first,n,x);}
 template<class T> struct vector {
  T* _M_start; T* _M_finish; T* _M_end_of_storage;
  void _M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool atend=false);

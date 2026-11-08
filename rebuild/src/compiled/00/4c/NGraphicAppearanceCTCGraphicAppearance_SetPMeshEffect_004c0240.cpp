@@ -17,6 +17,7 @@
 //          load (`mov eax,[eax+28h]`; a direct member read keeps it in a second register, a local in the body hoists the
 //          load above the branch); the entry is assigned from a temporary whose counted pointer is body-assigned
 //          (`xor edi,edi ; test ebp,ebp` + load/inc/store), rides in edi and is released after the memberwise copy.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 
 class CTCBase;
@@ -40,7 +41,7 @@ public:
         bool weapon = TestTC(0x48);
         return weapon;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -132,7 +133,7 @@ class CTCGraphicAppearance { public:
     unsigned char  _pad18[0x58 - 0x18];
     unsigned char  UpdatePrimitiveReasons;                  // +0x58
     void ClearMeshEffect(void* owner);                      // 0x004BFE20
-    __forceinline bool ParentIsWeapon() const               // the parent in a named local (its register dies at the word load)
+    FABLE_FORCEINLINE bool ParentIsWeapon() const               // the parent in a named local (its register dies at the word load)
     {
         CThing* parent = ParentThing;
         return parent->IsWeapon();

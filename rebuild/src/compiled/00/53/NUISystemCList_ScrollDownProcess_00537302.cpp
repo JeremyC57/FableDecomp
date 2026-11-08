@@ -1,19 +1,20 @@
 // NUISystem::CList::ScrollDownProcess() -- scroll the list one child down: run the scroll-down action if one is set, else (unless the list is busy) move the selection, refresh the child states and play the move or end-of-list sound
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00537302, 570 bytes; CList vtable 0x012462E4 slot 183; frame-pointer size TU.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CUISound;
 struct CUIIconsDef : CDefBase {
@@ -25,7 +26,7 @@ struct CUIIconsDef : CDefBase {
 struct CIconsDefPointer {
     CUIIconsDef* Object;
     CIconsDefPointer() {}
-    __forceinline ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CUIIconsDef* operator->() const { return Object; }
 };
 

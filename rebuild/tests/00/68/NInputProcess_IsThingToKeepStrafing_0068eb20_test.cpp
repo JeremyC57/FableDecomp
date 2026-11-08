@@ -1,5 +1,6 @@
 // Behaviour test for 0x0068EB20: NInputProcess::IsThingToKeepStrafing(const CThingPlayerCreature& creature) -- the hero keeps strafing while it holds a live projectile weapon outside ranged-weapon mode and is firing, loading, has the strafe action (0xA, held) queued or is busy with an action, or while its weapon is analogue-loading but not yet loaded
 // A copy of the source model and logic (compiled separately from src/0068eb20.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -62,13 +63,13 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;                          // +0x91 bit 0: dead
     CPlayer* GetPlayer() const;                     // 0x004C7A10
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -79,7 +80,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetConstInterface(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE T* GetConstInterface(long interfaceType) const
     {
         T* result = 0;
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

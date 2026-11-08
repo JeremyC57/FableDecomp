@@ -12,6 +12,7 @@
 //   CTCPerceiveThing::ResetPerceptionVariables @ 0x00744DB0 (TC 0x34).
 // Shape: the look direction is the intrinsic cos/sin pair of `angle * (double)2pi` and a zero pitch read from a double
 //   in memory (0x0122ED70, not folded), X = sin(yaw)*cos(pitch), Y = cos(yaw)*cos(pitch), Z = sin(pitch).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sin, cos)
 #include "engine/C3DVector.h"
@@ -42,7 +43,7 @@ struct CThing_Retail {
     unsigned char         _pad54[0xc];
     CThingPhysics_Retail* m_pPhysics;               // +0x60
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;

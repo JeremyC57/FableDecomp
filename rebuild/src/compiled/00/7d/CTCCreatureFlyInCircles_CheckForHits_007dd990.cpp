@@ -12,6 +12,7 @@
 // local; the filter is a temporary CFilter_Bind2 holding references to two temporaries: the
 // CIsHitEventHitBy(hero) (built in the lookup key's frame word, its store scheduled after the pushes)
 // and the empty CIsHitEventHitByShot (user ctor, one frame byte).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -23,7 +24,7 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

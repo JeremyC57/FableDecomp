@@ -1,5 +1,6 @@
 // Behaviour test for 0x00664E50: CThingCreatureBase::IsThingInViewAngle(const CThing& thing, float viewAngle, bool useLookAngle) const -- true when a living thing lies within half of viewAngle (in turns) of this creature's XY facing, or of its head-look direction when useLookAngle and it has a CTCLook
 // A copy of the source model and logic (compiled separately from src/00664e50.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -21,9 +22,9 @@ public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-__forceinline float NormaliseAngle(float angle)
+FABLE_FORCEINLINE float NormaliseAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -32,8 +33,8 @@ __forceinline float NormaliseAngle(float angle)
     }
     return angle;
 }
-__forceinline float GetAngleXY(float x, float y) { return NormaliseAngle((float)atan2((double)x, (double)y) * 0.15915494f); }
-__forceinline float AngleDifference(float a, float b)
+FABLE_FORCEINLINE float GetAngleXY(float x, float y) { return NormaliseAngle((float)atan2((double)x, (double)y) * 0.15915494f); }
+FABLE_FORCEINLINE float AngleDifference(float a, float b)
 {
     float difference = (float)fabs((double)(NormaliseAngle(a) - NormaliseAngle(b)));
     if (difference > 0.5f)
@@ -79,13 +80,13 @@ public:
     unsigned char Flags91;                             // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;              // 0x004C73D0
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

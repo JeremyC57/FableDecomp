@@ -1,5 +1,6 @@
 // Behaviour test for 0090f830: src/0090f830.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CAIStateGroup_MinionListenToStory::SitDown()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -81,7 +82,7 @@ class CAnimFilterOfGroup { public:                     // vtable 0x01267568
 class CAIStateGroupBase;
 struct CModeSitListen : CModeSitBase {          // 0x38 bytes
     CAnimFilterOfGroup Filter;                  // +0x2c
-    __forceinline CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim);
+    FABLE_FORCEINLINE CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim);
     virtual void v00();
 };
 void __fastcall DeleteSitMode(void* object);   // 0x008AA810

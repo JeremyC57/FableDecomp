@@ -11,6 +11,7 @@
 //   because VC cannot fold x*0), built in the inline cross product's result temporary and copied into a named local;
 //   that axis is spun about the direction by a random angle, normalised, and the direction rotated about it by
 //   rand/48 + 1/144. The named result is copied out through the hidden pointer (no NRVO in VC7.1).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
@@ -20,7 +21,7 @@ inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 
 unsigned long __fastcall GFROR13(unsigned long value);                  // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);       // 0x004978A0
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);

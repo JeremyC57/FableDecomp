@@ -16,6 +16,7 @@
 // (VC7.1 hoists the arms' identical leading GetPositionOffset() call above the branch, CSEs the converted half into the
 // dead `count` slot and cross-jumps the arms); the alpha is named as `1.0f - GetAlphaOffset() * half` (retail's
 // in-place `fsubr [1.0f]`, the vtable reloaded for the Set call); the def flag is read into a bool before the release.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -52,7 +53,7 @@ struct CUIDef : CDefVirtual, CRefCounted {
 #pragma pack(pop)
 template <class T> struct CDefPointer {
     T* Data;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Data) {
             const_cast<CUIDef*>(Data)->ReleaseTemporary();

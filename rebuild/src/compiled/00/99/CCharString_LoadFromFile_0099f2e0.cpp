@@ -1,6 +1,7 @@
 // 0099f2e0 CCharString::LoadFromFile
 // Flags:
 // Leaf: ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z
+#include "fable_compiler.h"
 #include <new>
 #define CCharString Pass9CharStringStorage
 #define CCharStringData Pass9CharStringDataStorage
@@ -30,11 +31,11 @@ class CAFile:public CBaseClassNonCopyable{public:
 #pragma pack(push,1)
 template<class T>class CBasicString{public:
  T*PData;unsigned long StringLength;unsigned long DataLength:31;bool UseFastExtend:1;
- __forceinline CBasicString(unsigned long n,T c):PData(0),StringLength(0),DataLength(0),UseFastExtend(true){SetString(n,c);}
+ FABLE_FORCEINLINE CBasicString(unsigned long n,T c):PData(0),StringLength(0),DataLength(0),UseFastExtend(true){SetString(n,c);}
 protected:void SetString(unsigned long,T);
 };
 class CCharStringData{public:CBasicString<char>Data;long NoRefs;
- __forceinline CCharStringData(long n,char c):Data(n,c),NoRefs(1){}
+ FABLE_FORCEINLINE CCharStringData(long n,char c):Data(n,c),NoRefs(1){}
 };
 #pragma pack(pop)
 class CCharString{public:CCharStringData*PStringData;

@@ -7,6 +7,7 @@
 // local virtual shell preserves IVRefCount+4 and Delete slot1, GetType slot2.
 // Calls: new00BFEA1A, LowerBound005DFA50, Erase005E1E60, Insert005E29D0,
 // Sort005E3AD0 (__fastcall), plus component/map virtual slots.
+#include "fable_compiler.h"
 #include <new>
 class CIVCountedPointeeBase { public:
     virtual void Slot0(); virtual void Delete();
@@ -38,7 +39,7 @@ struct CAnimComponentVectorMap {
         if (p==Last || key<p->Key) p=Last;
         return p;
     }
-    __forceinline void Add(long key,CAnimComponentBase* component) {
+    FABLE_FORCEINLINE void Add(long key,CAnimComponentBase* component) {
         ++component->IVRefCount;
         CAnimComponentEntry value={key,component};
         if (Last!=Limit) {

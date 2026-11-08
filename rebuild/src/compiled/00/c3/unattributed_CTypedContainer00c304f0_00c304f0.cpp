@@ -12,6 +12,7 @@
 // is what keeps the call virtual (a direct `this->Init()` in a constructor is devirtualised).
 // Built under /EHsc (the funclets land through the funclet pass). The manifest label is
 // propagated garbage; the classes are named by address. One of 3 bodies of this shape.
+#include "fable_compiler.h"
 struct CNode {
     unsigned char _body[0x10];
     CNode(long kind);                      // 0x00C185B0
@@ -33,7 +34,7 @@ struct CContainer_00c304f0 : CRoot_00c304f0 {          // vtable 0x012B4B48
     virtual void v04();
     virtual void v05();
     virtual void Init();                   // slot 6
-    __forceinline void Initialise() { Init(); }
+    FABLE_FORCEINLINE void Initialise() { Init(); }
     CContainer_00c304f0() : CRoot_00c304f0(&m_node), m_node(1) { }
     ~CContainer_00c304f0() { }
 };

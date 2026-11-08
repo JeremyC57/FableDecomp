@@ -14,6 +14,7 @@
 // argument push, and the base-relative &PCreature takes over esi). The lookup's string comes from the implicit
 // const char* conversion inside a `found && ...` condition, so VC keeps a "temporary constructed" flag (zeroed at
 // entry, set with the string) and destroys the string under it before branching on the condition saved in bl.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharString { public:
@@ -36,7 +37,7 @@ template <class T> class CDefPointer { public:      // the out-slot GetSubDef fi
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

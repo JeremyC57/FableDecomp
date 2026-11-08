@@ -5,6 +5,7 @@
 //   ?CloseStaticMap@CEngineWaterRenderer@@QAEXXZ; was a local CWaterStaticMap; the retail layout stays local, as 0x00B6D480 models it);
 //   the engine layout headers are included under a layout alias. The Leaf line is new (the row had none).
 // Retail00b6db80 178bytes. Shared donor offsets differ: HaveBackgroundSea2aa vs276, LoadingSea5fc vs5b8.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #define CEngineWaterRenderer CEngineWaterRendererLayout
 #define CIndexBuffer CIndexBufferLayout
@@ -21,7 +22,7 @@
 #endif
 class CCPPointerInfo { public:unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;};
 struct CAsyncPointer {void* Data;CCPPointerInfo* Info;
- __forceinline void Reset(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Info=0;Data=0;}
+ FABLE_FORCEINLINE void Reset(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Info=0;Data=0;}
 };
 void __fastcall DiscardAsyncData(CAsyncPointer*); //009d68a0
 class CVertexBufferWin32 { public:unsigned char State[0x34];void Uninitialise();}; //00a63200

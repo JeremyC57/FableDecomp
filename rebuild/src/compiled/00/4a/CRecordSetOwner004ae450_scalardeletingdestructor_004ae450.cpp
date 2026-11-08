@@ -9,6 +9,7 @@
 // Layout: local model -- 0x18 bytes of plain members, a CIVCountedPointer at +0x18, a vector of records at +0x1C.
 // Shape: a NON-polymorphic class deleted with `delete` (non-virtual `??_G`, no vtable store); members are destroyed in
 // reverse order (the vector first, out of line; then the forceinlined counted-pointer release).
+#include "fable_compiler.h"
 struct CCountedObject {
     virtual void v00();
     virtual void Destroy();                         // slot 1
@@ -17,7 +18,7 @@ struct CCountedObject {
 
 template <class T> class CIVCountedPointer { public:
     T* m_p;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* p = m_p;
         if (p) {

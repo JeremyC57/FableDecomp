@@ -20,6 +20,7 @@
 //   if/else either way round) lays the -1 arm first (the parked 156v156 block-placement residue).
 //   The local CDefPointer release `if (--IVRefCount == 0) Delete();` gives retail's `mov eax,[ecx+4] ; push ebx ; mov bl ;
 //   dec eax`; the shared engine/CDefPointer.h (Release() returning the count) grades 156v156 with `dec eax` before `push ebx`.
+#include "fable_compiler.h"
 #define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
 #undef CTCBase
@@ -41,8 +42,8 @@ class CWeaponDef : public CDefPointeeBase { public:         // retail layout (0x
 };
 template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer() { Object->Release(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
+    FABLE_FORCEINLINE ~CDefPointer() { Object->Release(); }
     T* operator->() const { return static_cast<T*>(Object); }
 };
 
@@ -54,7 +55,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -79,7 +80,7 @@ class CTCWeapon : public CTCWeaponLayout { public:
     {
         return *reinterpret_cast<const CDefPointer<const CWeaponDef>*>(&WeaponDef_Object);
     }
-    __forceinline CDefPointer<const CWeaponDef> GetWeaponDef() const { return WeaponDef(); }
+    FABLE_FORCEINLINE CDefPointer<const CWeaponDef> GetWeaponDef() const { return WeaponDef(); }
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);
 };
 

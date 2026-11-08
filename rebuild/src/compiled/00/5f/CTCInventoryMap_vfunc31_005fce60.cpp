@@ -8,6 +8,7 @@
 // Callees: as CTCInventoryQuests::CloseInventoryPC (0x00621720) plus CTCInventoryMap's list clear 0x005FC510.
 // Layout: local view -- Components +0x0C, hero-info CBase +0x130, +0x188 / +0x214 cleared longs, +0x240 / +0x248 flags,
 //   previous hero-info screen +0x244, +0x58 flag.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 namespace NUISystem {
@@ -46,7 +47,7 @@ struct CPlayerData : CRefCounted {
 };
 struct CPlayerPtr {
     CPlayerData* Data;
-    __forceinline ~CPlayerPtr() { if (Data) Data->Release(); }
+    FABLE_FORCEINLINE ~CPlayerPtr() { if (Data) Data->Release(); }
 };
 namespace NUISystem {
 class CManager {

@@ -6,6 +6,7 @@
 // pointer at +0, a CCharString at +0x1c; the manifest's CBrainOutput label is propagated). The class
 // is not polymorphic: VC7.1 emits a non-virtual `??_G` in any TU that `delete`s one (the Destroy
 // helper); the flag test is scheduled before the two null stores.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
@@ -22,7 +23,7 @@ struct SCountBlock {                            // the shared count block of a C
 struct CCountedPointer_CPointee {    // {object, count block}
     CPointee* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CPointee()   // forced: VC7.1 would call it out of line
+    FABLE_FORCEINLINE ~CCountedPointer_CPointee()   // forced: VC7.1 would call it out of line
     {
         if (m_pCount) {
             --m_pCount->m_references;

@@ -1,5 +1,6 @@
 // Behaviour test for 007ddda0: src/007ddda0.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CTCCreatureFlyInCircles::PlayLoopAnim()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,7 +30,7 @@ class C3DVector { public:
     float Z;    // +0x08
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

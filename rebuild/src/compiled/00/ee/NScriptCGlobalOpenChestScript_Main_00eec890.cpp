@@ -11,6 +11,7 @@
 // Layout: quest-script base CScriptBase (retail 0x40 bytes), CGameScriptInterface* at +0x40.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00eecea0 at 00cda176 with name "Global_OpenChest"; Alloc news + stores script vtable 012f5760; PDB ?Alloc@CGlobal_OpenChestScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CGlobal_OpenChestScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CGlobal_OpenChestScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGlobal_OpenChestScript@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_NONE };
 class CCharString { public:
     void* PStringData;
@@ -62,7 +63,7 @@ class CScriptThing : public CBase { public:                           // vtable 
 #include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

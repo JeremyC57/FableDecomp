@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <new>
@@ -21,11 +22,11 @@ class CMovableResource {public:
 };
 #pragma pack(push,1)
 class C3DVector {public:float X,Y,Z;
- __forceinline C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
+ FABLE_FORCEINLINE C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
 };
 #pragma pack(pop)
 class C3DBoundingSphere {public:C3DVector Center;float Radius;
- __forceinline C3DBoundingSphere():Center(0.0f,0.0f,0.0f),Radius(0.0f){}
+ FABLE_FORCEINLINE C3DBoundingSphere():Center(0.0f,0.0f,0.0f),Radius(0.0f){}
 };
 // Layout: the outer class uses its shared physical storage; only its nested scope is needed.
 class CLocalDetailCacheMap:public Pass9LocalDetailMapStorage {public:class CObjectCacheGroupCollection;class CQuadTreeElement;};

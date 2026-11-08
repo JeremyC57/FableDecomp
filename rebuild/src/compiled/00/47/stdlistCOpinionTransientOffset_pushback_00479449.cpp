@@ -11,6 +11,7 @@
 // Pragma: optimize("s") (the pass-through `push dword ptr [esp+8]`); the size TU only inlines insert/end when
 // they are `__forceinline`.
 // Leaf: push_back
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class COpinionTransientOffset { public:
@@ -42,8 +43,8 @@ public:
     _List_node_base* _M_node;           // +0x00 sentinel
 
     _Node* _M_create_node(const _Tp& x);                   // 0x00471C79
-    __forceinline iterator end() { return iterator(_M_node); }
-    __forceinline iterator insert(iterator position, const _Tp& x)
+    FABLE_FORCEINLINE iterator end() { return iterator(_M_node); }
+    FABLE_FORCEINLINE iterator insert(iterator position, const _Tp& x)
     {
         _Node* tmp = _M_create_node(x);
         _List_node_base* n = position._M_node;

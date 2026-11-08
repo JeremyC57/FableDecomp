@@ -10,6 +10,7 @@
 //   inherited CComponent Size +0xCC; the sprite def (descriptive): graphics vector +0x40 of 124-byte entries (index +0x3C),
 //   floats +0x58/+0x5C, angle +0xB8, flag +0x224; CGraphicDataBank graphic list (12-byte vector of 0x2C-byte CGraphicInfo,
 //   frames +0x28) at +0x1E0, current frame +0x194.
+#include "fable_compiler.h"
 #include <stddef.h>
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 void* __cdecl operator new(size_t size);               // 0x00BFEA1A
@@ -30,7 +31,7 @@ public:
 private:
     void ListInsert(CResource*a0, CResource*a1); // 0x009FBF90
 public:
-    __forceinline void Touch();
+    FABLE_FORCEINLINE void Touch();
 };
 class CResourceList { public:                                 // Ego_r.pdb, 0x3C bytes
     unsigned long _pad00;
@@ -40,7 +41,7 @@ class CResourceList { public:                                 // Ego_r.pdb, 0x3C
     long          MaximumMemory;                       // +0x28
     unsigned long CurrentFrame;                        // +0x2c
 };
-__forceinline void CResource::Touch()
+FABLE_FORCEINLINE void CResource::Touch()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();
@@ -56,7 +57,7 @@ struct CCPInfo {
 struct CTexturePointer {                               // CCountedPointer<CTexture>
     void* Data;
     CCPInfo* Info;
-    __forceinline ~CTexturePointer()
+    FABLE_FORCEINLINE ~CTexturePointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -81,8 +82,8 @@ class CGraphicFrameData { public:                             // Ego_r.pdb, 27 b
     unsigned char   IsInitialised : 1;
     unsigned char   ScreenGraphic : 1;
     void Uninitialise();                               // 0x009FCBA0
-    __forceinline ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
-    __forceinline void DecRef()
+    FABLE_FORCEINLINE ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }
+    FABLE_FORCEINLINE void DecRef()
     {
         if (--ReferenceCount == 0) {
             this->~CGraphicFrameData();
@@ -93,12 +94,12 @@ class CGraphicFrameData { public:                             // Ego_r.pdb, 27 b
 class CGraphicFrame { public:                                 // intrusive pointer to CGraphicFrameData
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         if (FrameData)
             FrameData->DecRef();
     }
-    __forceinline CGraphicFrame& operator=(const CGraphicFrame& other)
+    FABLE_FORCEINLINE CGraphicFrame& operator=(const CGraphicFrame& other)
     {
         if (FrameData)
             FrameData->DecRef();
@@ -111,7 +112,7 @@ class CGraphicFrame { public:                                 // intrusive point
 class CManagedTexture { public:                               // Ego_r.pdb, 8 bytes
     unsigned long _pad00;
     CResource*    Data;                                // +0x04 CIVCountedPointer<CManagedTextureData>
-    __forceinline void Touch() { if (Data) Data->Touch(); }
+    FABLE_FORCEINLINE void Touch() { if (Data) Data->Touch(); }
 };
 class CGraphicInfoFrame;
 class CGraphicDataBank;
@@ -123,7 +124,7 @@ class CGraphicInfo { public:
 };
 template <class T> struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
     T* P;
-    __forceinline CFrameDataPointer& operator=(T* p)
+    FABLE_FORCEINLINE CFrameDataPointer& operator=(T* p)
     {
         if (P) {
             P->DecRef();
@@ -145,7 +146,7 @@ class CGraphicInfoFrame { public: class CFrameData; public:                     
 private:
     bool InternalGetFrameForcedLoading(unsigned long flags) const;   // 0x009FF6B0 (Ego_r.pdb ?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z, private)   // 0x009FF6B0
 public:
-    __forceinline bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
+    FABLE_FORCEINLINE bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
 };
 class CGraphicInfoFrame::CFrameData : public CResource { public:                        // Ego_r.pdb, 0x44 bytes
     CGraphicFrame   Frame;                             // +0x1c
@@ -159,7 +160,7 @@ class CGraphicInfoFrame::CFrameData : public CResource { public:                
     CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
     CFrameData(const CGraphicInfoFrame* frame);              // 0x009FE380
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FDE80
-    __forceinline void DecRef() { if (--RefCount == 0) Release(); }
+    FABLE_FORCEINLINE void DecRef() { if (--RefCount == 0) Release(); }
 };   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
 typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
 
@@ -179,10 +180,10 @@ class CGraphicDataBank { public:
     unsigned long CurrentFrame;                        // +0x194
     unsigned char _pad198[0x1e0 - 0x198];
     CGraphicInfoArray GraphicList;                     // +0x1e0 (CArray<CGraphicInfo>: STLport vector)
-    __forceinline CGraphicInfo* GetGraphicInfo(unsigned long index) { return index < GraphicList.size() ? &GraphicList[index] : 0; }
-    __forceinline CGraphicInfoFrame* GetGraphicFrames(unsigned long index) { return GetGraphicInfo(index) ? GetGraphicInfo(index)->Frames : 0; }
+    FABLE_FORCEINLINE CGraphicInfo* GetGraphicInfo(unsigned long index) { return index < GraphicList.size() ? &GraphicList[index] : 0; }
+    FABLE_FORCEINLINE CGraphicInfoFrame* GetGraphicFrames(unsigned long index) { return GetGraphicInfo(index) ? GetGraphicInfo(index)->Frames : 0; }
 };
-__forceinline bool CGraphicInfoFrame::GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags)
+FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags)
 {
     if (Data) {
         if (Data->Frame.FrameData) {

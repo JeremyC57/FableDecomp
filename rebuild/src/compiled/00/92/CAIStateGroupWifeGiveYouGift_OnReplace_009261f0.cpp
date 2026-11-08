@@ -24,6 +24,7 @@
 //   an unset result local (the absent arm reads the lookup key slot), the hero's inventory through the range-checked
 //   bitset::test; the "" script name and the text symbol as implicit const char* -> CCharString conversions; the item
 //   description as an unnamed CWideString temporary handed to ConstructString.
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 class CTCBase;
@@ -40,7 +41,7 @@ class CThing { public:
     signed char PlayerNumber;                           // +0x90
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     bool TestComponent(unsigned long position) const
     {
         if (position >= 274) {
@@ -49,7 +50,7 @@ class CThing { public:
         }
         return (UsingComponents[position >> 5] & (1UL << (position & 31))) != 0;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
@@ -58,14 +59,14 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    __forceinline CTCBase* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
     {
         CTCBase* tc;
         if (TestComponent(interfaceType))
             tc = GetTC(interfaceType);
         return tc;
     }
-    __forceinline CTCBase* GetTCIfHas(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfHas(long interfaceType)
     {
         CTCBase* tc;
         if (HasTC(interfaceType))

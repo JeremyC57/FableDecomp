@@ -25,6 +25,7 @@
 //   duplicated epilogue); both exits goto one shared attack tail. An if-return + for(;;) form compiles to a rotated aware test.
 // Naming wave 35: identity reg 00ed4d73 "SwordOfStrength" in 00ed4d20; Alloc 00ed5130; vtable 012f3158 slot 1; PDB ?Main@CSwordOfStrength@CV_SwordInTheStoneScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSwordOfStrength::Main (wave3/labels_alloc.tsv); PDB ?Main@CSwordOfStrength@CV_SwordInTheStoneScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSwordOfStrength@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CV_SwordInTheStoneScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
@@ -153,7 +154,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive();                                  // 0x00E241B0 (out of line)
 };

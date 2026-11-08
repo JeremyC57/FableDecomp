@@ -1,4 +1,5 @@
 // Behaviour test for 00811100: the model below is a copy of src/00811100.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <string.h>
@@ -18,7 +19,7 @@ long __fastcall CompareStrings(const char* a, const char* b) { ++g_compareCalls;
 class CCharString {
 public:
     CBasicStringChar* PStringData;                 // +0x00 (the shared block starts with its CBasicString)
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         CBasicStringChar* a = PStringData;
         CBasicStringChar* b = other.PStringData;

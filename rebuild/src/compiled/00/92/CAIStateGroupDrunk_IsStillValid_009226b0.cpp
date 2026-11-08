@@ -11,6 +11,7 @@
 // Shape: the message pointer is kept in edi across the drunkenness lookup; the lookup's bool is NOT tested (the miss
 // path reads the dead key slot `[esp+8]`); `message == 0 && drunk->m_isDrunk` returns a full-register 0/1.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -54,7 +55,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

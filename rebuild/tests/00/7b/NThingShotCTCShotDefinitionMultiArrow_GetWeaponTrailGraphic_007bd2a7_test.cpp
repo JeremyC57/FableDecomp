@@ -1,5 +1,6 @@
 // Behaviour test for 007bd2a7: src/007bd2a7.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. NThingShot::CTCShotDefinitionMultiArrow::GetWeaponTrailGraphic()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -25,7 +26,7 @@ struct CDefPointee {                         // counted def: count at +4, slot 1
     virtual void v00();
     virtual void Destroy() const;            // slot 1 (+4)
     mutable long m_refCount;                 // +0x04
-    __forceinline void Release() const
+    FABLE_FORCEINLINE void Release() const
     {
         if (--m_refCount == 0)
             Destroy();
@@ -40,7 +41,7 @@ struct CMultiArrowDef : CDefPointee {
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         Object->Release();
     }

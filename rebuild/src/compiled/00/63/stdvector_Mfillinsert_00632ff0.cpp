@@ -15,6 +15,7 @@
 //   uninitialized_fill_n front end out of line (VC7.1 inlines a loop only under __forceinline). The def chain as the landed ~CUIStateDef: byte-packed, the derived defs
 //   `__declspec(novtable)` (only CDefPointeeBase's vtable store survives). The overflow tag is value-initialised
 //   (`mov byte [esp+23h],0`: __false_type without a user constructor in this TU).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -60,7 +61,7 @@ inline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
     __destroy_aux(__first, __last, _Trivial_destructor());
 }
 template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last) { __destroy(__first, __last, __first); }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
@@ -136,7 +137,7 @@ public:
 
 namespace std {
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -146,7 +147,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 template <class _ForwardIter, class _Size, class _Tp>
 _ForwardIter __fastcall uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x);   // 0x00633340
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                           _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -154,13 +155,13 @@ __forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _Ran
     return __result;
 }
 template <class _BidirectionalIter1, class _BidirectionalIter2>
-__forceinline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                 _BidirectionalIter2 __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 template <class _ForwardIter, class _Tp>
-__forceinline void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+FABLE_FORCEINLINE void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

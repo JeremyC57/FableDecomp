@@ -1,13 +1,14 @@
 // 0086e4b0 STL::VectorElement16::FillInsert_0086e4b0
 // Flags: /O2 /Oy /Gr
 // Leaf: FillInsert
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void*p){return p;}
 struct Tag_0086e4b0{Tag_0086e4b0(){}};
 // Layout: element16 has nested vector12 and byte+13; copy ctor00673e10, destructor frees member+0.
 struct Inner_0086e4b0{int* start;int* finish;int* end;Inner_0086e4b0():start(0),finish(0),end(0){}Inner_0086e4b0(const Inner_0086e4b0&);~Inner_0086e4b0(){if(start)free(start);}Inner_0086e4b0& operator=(const Inner_0086e4b0&);};
-struct Element_0086e4b0{Inner_0086e4b0 vector;char unused;char flag;Element_0086e4b0(){}__forceinline Element_0086e4b0(const Element_0086e4b0&o):vector(o.vector),flag(o.flag){}__forceinline Element_0086e4b0& operator=(const Element_0086e4b0&o){vector=o.vector;flag=o.flag;return *this;}};
+struct Element_0086e4b0{Inner_0086e4b0 vector;char unused;char flag;Element_0086e4b0(){}FABLE_FORCEINLINE Element_0086e4b0(const Element_0086e4b0&o):vector(o.vector),flag(o.flag){}FABLE_FORCEINLINE Element_0086e4b0& operator=(const Element_0086e4b0&o){vector=o.vector;flag=o.flag;return *this;}};
 // Layout:12-byte vector; retail fill-insertion receives(position,count,const value&).
 template<class T>struct Vector_0086e4b0{T* start;T* finish;T* end;void Grow(T*,const T&,const Tag_0086e4b0&,unsigned int,bool);void FillInsert(T*,unsigned int,const T&);};
 Element_0086e4b0* __fastcall UninitCopy(Element_0086e4b0*,Element_0086e4b0*,Element_0086e4b0*,const Tag_0086e4b0&);

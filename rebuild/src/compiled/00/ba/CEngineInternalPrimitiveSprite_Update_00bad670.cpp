@@ -10,6 +10,7 @@
 //   PDB CEngineInternalPrimitiveSprite (WorldPos +0x48 .. bitfield byte +0x84) / CEnginePrimitiveSprite (WorldPos +0x0c .. Offset +0x40).
 // Shape: the six flag-word bits are plain `bool`-valued bitfield assignments after `IsParticle = true` (VC7.1 merges them into
 //   one byte RMW as retail); the frame getter is the landed bank model with a frame index; every offset branch shares the tail call.
+#include "fable_compiler.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
 
 #include "engine/C3DVector.h"
@@ -68,8 +69,8 @@ template <class T> struct CRetailVector {
 struct CGraphicBank {
     unsigned char               _pad[0x1e0];
     CRetailVector<SBankGraphic> m_records;         // +0x1e0
-    __forceinline SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
-    __forceinline CGraphicInfoFrame* GetFrame(unsigned long index, unsigned long frame) { return Get(index) ? &Get(index)->m_pFrames[frame] : 0; }
+    FABLE_FORCEINLINE SBankGraphic* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
+    FABLE_FORCEINLINE CGraphicInfoFrame* GetFrame(unsigned long index, unsigned long frame) { return Get(index) ? &Get(index)->m_pFrames[frame] : 0; }
 };
 
 struct CEngineGlobal_01436e98 {

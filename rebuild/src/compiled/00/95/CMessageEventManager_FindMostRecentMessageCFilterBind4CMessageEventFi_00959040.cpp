@@ -9,6 +9,7 @@
 // one-pointer message list at +0x04 (node next +0, prev +4, value +8), the filter's four member pointers, the matching
 // message as a named pointer local; the head re-read for each end test. std::unary_negate holds its predicate by value, so
 // its address is the PF3 pointer itself.
+#include "fable_compiler.h"
 class CMessageEvent { public:
     unsigned char _pad00[0x48];
     unsigned char POriginator[8];               // +0x48 CIntelligentPointer<CThing>
@@ -40,7 +41,7 @@ template <class F1, class F2, class F3, class F4> class CFilter_Bind4 { public:
     F2* PF2;                                    // +0x04
     F3* PF3;                                    // +0x08
     F4* PF4;                                    // +0x0C
-    __forceinline bool operator()(const CMessageEvent& message) const
+    FABLE_FORCEINLINE bool operator()(const CMessageEvent& message) const
     {
         return (*PF1)(message) && (*PF2)(message) && (*PF3)(message) && (*PF4)(message);
     }

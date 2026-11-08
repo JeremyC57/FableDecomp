@@ -12,6 +12,7 @@
 // Shape: STLport _algo.c `make_heap; for (i = middle; i < last; ++i) if (comp(*i, *first)) __pop_heap(first, middle, i,
 //   T(*i), comp, DISTANCE_TYPE); sort_heap;` with make_heap and __pop_heap inlined (the T(*i) value is the frame local,
 //   its by-value copy for __adjust_heap is built in the argument area).
+#include "fable_compiler.h"
 class CWideString {
 public:
     CWideString(const CWideString& other);              // 0x0099B720
@@ -40,7 +41,7 @@ template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compar
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);   // 0x009B2EA0
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

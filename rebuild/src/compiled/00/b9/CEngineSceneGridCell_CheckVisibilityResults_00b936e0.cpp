@@ -1,4 +1,5 @@
 // CEngineSceneGridCell::CheckVisibilityResults -- retain visible primitives and detach newly visible group primitives. Retail00b936e0 complete181bytes; ignored args preserve ABI. Shared fields native, calleeB2FAC0 occluded count, B8FE60 remove, B92450 delete group. Shared flattened primitive headers restore native fields; virtual-only interface restores slot27. No cell/handle header. Callee00b2fa40 resets occlusion record through manager01436e58.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 class CEngineSceneGridCell;
@@ -20,7 +21,7 @@ template<class T> class CIVCountedPointer { public:T* m_p;
  CIVCountedPointer& operator=(T* p){Release();m_p=p;return *this;}
 };
 class CEnginePrimitiveHandle { public:void* VTable;CIVCountedPointer<CPersistentPrimitiveMethods> Data;
- __forceinline void Clear(){if(Data.GetRefCount()==1)Data->NotifyReleased(*this);Data=0;}
+ FABLE_FORCEINLINE void Clear(){if(Data.GetRefCount()==1)Data->NotifyReleased(*this);Data=0;}
 };
 class CEnginePrimitiveOcclusionInfo;
 struct CNativeOcclusionBase {CEngineInternalPrimitiveBase Base;CEnginePrimitiveOcclusionInfo* OcclusionInfo[2];};
@@ -31,13 +32,13 @@ struct CPrimitiveVirtuals {
 class CEnginePrimitiveOcclusionManager { public:unsigned char Header[12];unsigned long PrimitiveOccludeDelay;};
 #endif
 struct CEnginePrimitiveOcclusionManagerMethods:CEnginePrimitiveOcclusionManager {unsigned long GetOccludedFrames(CEnginePrimitiveOcclusionInfo*); //00b2fac0
- __forceinline bool IsVisible(CEnginePrimitiveOcclusionInfo* info){if(GetOccludedFrames(info)>PrimitiveOccludeDelay)return false;return true;}
+ FABLE_FORCEINLINE bool IsVisible(CEnginePrimitiveOcclusionInfo* info){if(GetOccludedFrames(info)>PrimitiveOccludeDelay)return false;return true;}
 };
 extern CEnginePrimitiveOcclusionManagerMethods* g_pPrimitiveOcclusionManager; //01436e58
 class CEngineSceneGridCell { public:CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;float BoundingBox[6],DrawDistance;CEnginePrimitiveHandle GroupPrimitiveHandle[2];long LocalCount;unsigned long TotalCount,RenderMask,OccludedLayers;unsigned char Flags,OccludedFrames,PreloadFrames;void DeleteOcclusionGroup(long layer,bool reset);bool CheckVisibilityResults(long layer,unsigned long,unsigned long,bool force);};
 struct CPrimitiveMethods:CEngineInternalPrimitiveBase {void RemoveFromList();}; //00b8fe60
 struct CNativeOcclusionGroup {CNativeOcclusionBase Base;CEngineSceneGridCell* GridCell;void* Grid;unsigned long GridX,GridY,FramesRendered;};
-static __forceinline bool IsLayerVisible(CNativeOcclusionBase* p,long layer){if(layer!=-1){CEnginePrimitiveOcclusionInfo* info=p->OcclusionInfo[layer];if(info && g_pPrimitiveOcclusionManager->IsVisible(info))return true;}return false;}
+static FABLE_FORCEINLINE bool IsLayerVisible(CNativeOcclusionBase* p,long layer){if(layer!=-1){CEnginePrimitiveOcclusionInfo* info=p->OcclusionInfo[layer];if(info && g_pPrimitiveOcclusionManager->IsVisible(info))return true;}return false;}
 bool CEngineSceneGridCell::CheckVisibilityResults(long layer,unsigned long,unsigned long,bool force){
  bool visible=false;
  for(CEngineInternalPrimitiveBase* p=FirstPrimitive;p;){

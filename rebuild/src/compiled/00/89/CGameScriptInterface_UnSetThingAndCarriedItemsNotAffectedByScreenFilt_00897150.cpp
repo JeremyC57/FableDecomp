@@ -10,6 +10,7 @@
 //   GetTC (non-const LowerBound 0x0040F020) and clear the byte at +0x1c. The inline that clears it is not named in the
 //   PDB sets (FableWin.pdb has CTCCarrying::UnSetAllCarriedThingsAsBypassFilter() but its body is not proven to be this
 //   store): descriptive member and inline.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -28,7 +29,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;
@@ -40,7 +41,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;

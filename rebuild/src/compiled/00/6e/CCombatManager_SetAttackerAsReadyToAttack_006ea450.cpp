@@ -10,6 +10,7 @@
 //   the thing's interface bitset +0x20 / vector map +0x44 / dead bit +0x91 as the landed 0x0095D310.
 // Shape: the UID is read once into a named local and handed by value to the inline IsCreatureAttacking / GetCombatantInfo
 //   (landed 0x006E9E40); the interface key temporaries live in the dead `creature` slot.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned __int64 GetUID() const { return UniqueID; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

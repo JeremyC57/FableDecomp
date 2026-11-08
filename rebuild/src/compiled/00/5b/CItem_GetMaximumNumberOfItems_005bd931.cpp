@@ -4,6 +4,7 @@
 //   private const GetInventoryItemDef returning CDefPointer<const CInventoryItemDef>.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD931, length 58 bytes.
 // Shape: the EBP frame with the 4-byte counted temporary at [ebp-4], the maximum in esi across the release, `leave`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CItem.h"
@@ -13,11 +14,11 @@ struct CIVCountedPointeeVirtual {
 };
 struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
     unsigned long IVRefCount;
-    __forceinline void DecRef() { --IVRefCount; }
-    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+    FABLE_FORCEINLINE void DecRef() { --IVRefCount; }
+    FABLE_FORCEINLINE unsigned long GetRefCount() const { return IVRefCount; }
 };
 class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -31,7 +32,7 @@ class CInventoryItemDef : public CIVCountedPointeeBase { public:
 template <class T> class CDefPointer {             // 4 bytes: the counted def pointer
 public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             const_cast<CInventoryItemDef*>(Object)->ReleaseTemporary();

@@ -1,5 +1,6 @@
 // Behaviour test for 005bec92: src/005bec92.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. NInventory::CItem::AddItem(long, long, long)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,14 +30,14 @@ struct CDefBase {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
     T* Detach() { T* p = Object; Object = 0; return p; }
 };
 template <class T> struct CDefHolder {             // adopts a reference (no addref)
     T* Object;
     CDefHolder(T* p) : Object(p) { }
-    __forceinline ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 class CAugmentationDef : public CDefBase { public:

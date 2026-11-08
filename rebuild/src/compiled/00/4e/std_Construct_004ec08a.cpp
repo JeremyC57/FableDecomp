@@ -7,6 +7,7 @@
 //   inline: the base copy, the vtable store, then the members through eax -- a size-optimised module, so the member-wise
 //   copy constructor is spelled out and `__forceinline` (VC7.1 /Os does not inline it otherwise).
 // Header debt: the def base is modelled by its retail size (0x39 bytes, packed) with its out-of-line copy constructor.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 #pragma pack(push, 1)
@@ -21,7 +22,7 @@ public:
     virtual void Transfer(CPersistContext& context);              // ?Transfer@CCardDef@@UAEXAAVCPersistContext@@@Z
     virtual void Copy(const CDefClassBase* other);                // ?Copy@CCardDef@@UAEXPBVCDefClassBase@@@Z
     virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CCardDef@@UAEKXZ
-    __forceinline CCardDef(const CCardDef& other) : CParentDefClassBase(other), CardName(other.CardName), CardVal(other.CardVal) { }
+    FABLE_FORCEINLINE CCardDef(const CCardDef& other) : CParentDefClassBase(other), CardName(other.CardName), CardVal(other.CardVal) { }
     long CardName;                                        // +0x3c
     long CardVal;                                         // +0x40
 };

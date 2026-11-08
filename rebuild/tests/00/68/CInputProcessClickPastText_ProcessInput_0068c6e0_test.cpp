@@ -1,4 +1,5 @@
 // Behaviour test for 0068c6e0: the model below is a copy of src/0068c6e0.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -29,7 +30,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event) { ++g_addCalls; g_addedType = event.Type; g_addedPlayer = event.Player; g_addedValid = event.Valid; g_addedReplacement = event.Replacement; g_addedEndPos = event.EndPos; }
-    __forceinline void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
+    FABLE_FORCEINLINE void AddGameEvent(long type) { CGameEvent gameEvent(type); AddGameEvent(gameEvent); }
     void SetHandled() { ++g_handledCalls; }
 };
 class CPlayer {

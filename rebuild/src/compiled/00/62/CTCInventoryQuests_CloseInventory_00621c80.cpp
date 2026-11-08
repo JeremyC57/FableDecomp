@@ -11,6 +11,7 @@
 // Shape: the matched CloseInventoryPC body with the HUD / world stamp moved up (see that row for the STLport inline forms).
 // Layout: local view -- Components +0x0C, quest cards (0x2C-byte elements) +0x20, hero-info CBase +0x130, primitive handles
 //   +0x134, refresh flag +0x14D, previous hero-info screen +0x168.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 namespace NUISystem {
@@ -88,7 +89,7 @@ struct CPlayerData : CRefCounted {
 };
 struct CPlayerPtr {
     CPlayerData* Data;
-    __forceinline ~CPlayerPtr() { if (Data) Data->Release(); }
+    FABLE_FORCEINLINE ~CPlayerPtr() { if (Data) Data->Release(); }
 };
 namespace NUISystem {
 class CManager {

@@ -10,6 +10,7 @@
 // Shape: the character comes from the inlined ReadChar() (one-byte Read into a frame byte, value kept in bl; a
 // failed read leaves the frame byte stale and VC7.1 keeps the previous bl); the four-way whitespace test is
 // written inline; the pushed-back character is un-read with SetPosition(GetPosition() - 1); no NRVO in VC7.1.
+#include "fable_compiler.h"
 #define CDataInputStream CDataInputStreamLayout
 #include "engine/CDataInputStream.h"
 #undef CDataInputStream
@@ -38,8 +39,8 @@ class CDataInputStream : public CDataStream { public:
     void* CurrentSourcePtr;                  // +0x0c
     unsigned long SourceChunkStreamPos;      // +0x10
     long SourceChunkBytesRemaining;          // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dest, long n)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dest, long n)
     {
         __int64 newPosition = (__int64)(StreamPos + n);
         if (!IsValidPosition(newPosition)) return;
@@ -50,7 +51,7 @@ class CDataInputStream : public CDataStream { public:
             StreamPos += n;
         } else ReadWithSrcChunkOverflow((unsigned char*)dest, n);
     }
-    __forceinline char ReadChar() { char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE char ReadChar() { char value; Read(&value, 1); return value; }
     CCharString ReadWhiteSpace();
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0

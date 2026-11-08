@@ -12,6 +12,7 @@
 // Shape: STLport 4.6 `for (i = first; i != last; ++i) __unguarded_linear_insert(i, _Tp(*i), comp);` with the step inlined
 //   (`__forceinline` under "s"); the by-value _Tp copy uses pair's member-wise copy constructor. Frame pointer:
 //   `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -24,7 +25,7 @@ namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x0
     _T2 second;                                             // +0x4
-    __forceinline pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
+    FABLE_FORCEINLINE pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }
 };
 }
 
@@ -35,7 +36,7 @@ public:
 
 namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     _RandomAccessIter __next = __last;
     --__next;

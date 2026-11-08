@@ -11,6 +11,7 @@
 // Shape: the effect position is a ternary of two GetPos calls (VC merges the call); the def pointer is a named local
 //   so it is held in edi across the GetWorld call; the search tools are a named reference; the first positions.size() is
 //   written twice (no named count) so the inlined random range keeps its zero test as retail.
+#include "fable_compiler.h"
 #include <stdlib.h>
 #define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
@@ -118,7 +119,7 @@ class CThing { public:
     unsigned char FlagsBC;                                  // +0xbc
     void Kill(bool removeNow);                              // 0x004C9B80
     bool GetDummyObject(const CCharString& name, C3DVector* position, class CRightHandedSet* orientation);
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
@@ -181,7 +182,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem(item);
         return *this;
     }
-    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
+    FABLE_FORCEINLINE bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 
@@ -228,7 +229,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);              // 0x00668B60
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
-    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
+    FABLE_FORCEINLINE bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 struct CTCTargeting {

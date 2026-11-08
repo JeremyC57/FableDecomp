@@ -1,5 +1,6 @@
 // Behaviour test for CGameScriptInterface::EntityGetShotStrikePos (0x0089DF70): only a live thing with the
 // entity-events component (interface 0x42) and a recorded shot strike reports true and copies the StrikePos.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 class C3DVector { public: float X, Y, Z; };
@@ -14,7 +15,7 @@ struct CTCMap {                                    // the thing's component map 
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind);   // 0x0040F020 (same-TU stand-in below)
-    __forceinline CTCBase* Find(long kind)
+    FABLE_FORCEINLINE CTCBase* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -49,10 +50,10 @@ class CThing { public:
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 
-template <class T> __forceinline bool GetTCOut(CThing* thing, long kind, T** out)   // out-parameter lookup: the component stays in eax
+template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing* thing, long kind, T** out)   // out-parameter lookup: the component stays in eax
 {
     if (thing->HasTC(kind)) {
         *out = (T*)thing->m_tcs.Find(kind);

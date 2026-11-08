@@ -8,6 +8,7 @@
 // bytes) plus the trail group's own 0x10 bytes, which this constructor leaves alone.
 // Shape: the inlined (`__forceinline`) particle-group constructor exactly as in 0x00BBCEB0 with the trail group's
 // type and flags, then the derived class's inline constructor stores its own vtable last (after `pop edi`).
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
@@ -49,14 +50,14 @@ struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {   
     C3DBoundingSphere                   BSphere;               // +0x5c
     unsigned char                       _rest6c[0xac - 0x6c];  // DistanceFromCam, WorldMat, flags (not initialised here)
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveParticleGroup(long type, unsigned long flags)
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleGroup(long type, unsigned long flags)
         : CEngineInternalPrimitiveBase(type, flags) { }
 };
 
 struct CEngineInternalPrimitiveParticleSpriteTrailGroup : CEngineInternalPrimitiveParticleGroup {   // vtable 0x012A5BFC; 0xbc bytes
     unsigned char _trail[0x10];                    // +0xac .. +0xbc (not initialised here)
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveParticleSpriteTrailGroup()
+    FABLE_FORCEINLINE CEngineInternalPrimitiveParticleSpriteTrailGroup()
         : CEngineInternalPrimitiveParticleGroup(0x1d, 0x88000) { }
 };
 

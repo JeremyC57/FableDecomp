@@ -13,6 +13,7 @@
 // +0x8C) equals the "HERO_GUILD_TELEPORT_MARKER" def gets the hero; the compare is taken into a bool before the
 // string temporary dies (`sete bl`). The list dtor is inline at the normal exit and out of line at the early return.
 // Layout: retail CThing: def index word +0x8C, state byte +0x91 bit 0 = dead.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
@@ -122,7 +123,7 @@ public:
 class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     void TeleportHeroToTeleporter(CThing& teleporter) const;   // 0x005FBD20 (Ego_r.pdb: const, by reference)
     void TeleportHeroToGuild() const;                          // Ego_r.pdb: const
-    __forceinline void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things) const
+    FABLE_FORCEINLINE void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things) const
     {
         CWorld* world = (&GetWorld());
         world->ThingSearchTools->GetAllThings(filter, things);

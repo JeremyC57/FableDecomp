@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __stdcall
@@ -15,7 +16,7 @@ public:   virtual ~CBaseClassNonCopyable() { ++g_baseDtor; } };
 struct CVertexShaderData : CBaseClassNonCopyable {
     IUnknownRetail* m_pShader; IUnknownRetail* m_pDeclaration; long m_handle; long m_refCount;
     CVertexShaderData(IUnknownRetail* s, IUnknownRetail* d) : m_pShader(s), m_pDeclaration(d), m_handle(0), m_refCount(1) { }
-    __forceinline virtual ~CVertexShaderData() { if (m_pDeclaration) m_pDeclaration->Release(); if (m_pShader) m_pShader->Release(); }
+    FABLE_FORCEINLINE virtual ~CVertexShaderData() { if (m_pDeclaration) m_pDeclaration->Release(); if (m_pShader) m_pShader->Release(); }
 };
 int main()
 {

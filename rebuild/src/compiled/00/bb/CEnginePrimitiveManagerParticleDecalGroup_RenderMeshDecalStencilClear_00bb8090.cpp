@@ -12,6 +12,7 @@
 //   block later.
 // Layout: engine/CEnginePrimitiveManagerParticleDecalGroup.h (MeshDecalStencilClearVertexShader +0x64,
 //   MeshDecalStencilClearPixelShader +0x8c).
+#include "fable_compiler.h"
 #include "engine/CEnginePrimitiveManagerParticleDecalGroup.h"
 
 class C3DVector { public: float X, Y, Z; };
@@ -45,7 +46,7 @@ public:
     void ApplyVertexShader(CVertexShader* shader, bool force);   // 0x00988020
     void ApplyPixelShader(CPixelShader* shader);                 // 0x00988140
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
@@ -162,7 +163,7 @@ extern unsigned long g_renderStateDefault_01396f3c;    // 0x01396F3C
 extern unsigned long g_renderStateDefault_01396e34;    // 0x01396E34
 extern unsigned long g_renderStateDefault_01396f9c;    // 0x01396F9C
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         unsigned long mask = core->m_captureMask;

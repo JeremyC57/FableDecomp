@@ -13,6 +13,7 @@
 // first: right-to-left) so it rides in esi across the world call (three callee-saved registers).
 // Layout local (the engine header flattens the base).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -94,7 +95,7 @@ struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBaseW {
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase {
     virtual bool IsRunnable();
     // the creature is a NAMED local taken before the argument pushes (it rides in esi across the world call)
-    __forceinline bool IsTimeForSchool(CTCVillager* villager)
+    FABLE_FORCEINLINE bool IsTimeForSchool(CTCVillager* villager)
     {
         CThing* creature = PBrain->PCreature;
         return ((CTCVillageMember*)villager)->GetPVillage()->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), true);

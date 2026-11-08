@@ -15,6 +15,7 @@
 // the forwarding IsBeingCarriedBy needs `__forceinline virtual` (a plain inline virtual is called out of line).
 // Naming wave 35: identity reg 00ef09eb "SwordChest" in 00ef0090; Alloc 00ef21b0; vtable 012f61c0 slot 1; PDB ?Main@CSwordChest@CPersonalScript_EmptyScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSwordChest::Main (wave3/labels_alloc.tsv); PDB ?Main@CSwordChest@CPersonalScript_EmptyScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -28,7 +29,7 @@ class CCPPointerInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline bool CScriptThing::IsBeingCarriedBy(const CCharString& name) const { return PImp.Data && PImp.Data->IsBeingCarriedBy(name); }
+FABLE_FORCEINLINE bool CScriptThing::IsBeingCarriedBy(const CCharString& name) const { return PImp.Data && PImp.Data->IsBeingCarriedBy(name); }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

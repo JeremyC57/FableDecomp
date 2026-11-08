@@ -7,6 +7,7 @@
 // in Update @ 0x00BC5AE0 and the landed ClearAllChildPrimitives @ 0x00BC5C00, whose ComputeRenderLayerMask shape is reused).
 // Shape: no validity test before the handle Clear (unlike the viewport/group bodies); `m_pFirst[index].Clear()` re-reads the
 // first pointer after the range check and forms the slot address in edi; the mask helper is inline.
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -35,7 +36,7 @@ public:
     CEngineInternalPrimitiveBase* Object;
     CEngineInternalPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -44,7 +45,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEngineInternalPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -64,7 +65,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

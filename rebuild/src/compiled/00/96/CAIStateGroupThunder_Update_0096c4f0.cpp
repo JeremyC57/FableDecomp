@@ -8,6 +8,7 @@
 //   only (the def is then loaded once into esi and reused for the range test and the release), the CVectorMap LowerBound
 //   instantiation 0x0040F020 has its same-TU binary-search body, and the static accessor CGameDefinitionManager::Get
 //   0x0044C6B0 is `__fastcall` as in the landed headers (that convention puts the name temporary's `lea` after `push 1`).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -40,7 +41,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
@@ -122,7 +123,7 @@ class CAIStateGroupBase { public:
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   // 0x0097DB70
     CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
 };
-__forceinline float Distance2D(CThing* target, CThing* me)
+FABLE_FORCEINLINE float Distance2D(CThing* target, CThing* me)
 {
     const C3DVector& from = me->GetPos();
     const C3DVector& to = target->GetPos();

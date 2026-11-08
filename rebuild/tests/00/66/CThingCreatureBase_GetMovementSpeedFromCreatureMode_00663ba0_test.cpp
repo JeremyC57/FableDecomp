@@ -1,4 +1,5 @@
 // Behaviour test for 00663ba0: body copied from src/00663ba0.cpp (CThingCreatureBase::GetMovementSpeedFromCreatureMode), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -34,7 +35,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     C3DVector position;
     const C3DVector& GetPosition() const { return position; }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -50,7 +51,7 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public:
     float GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType);
-    __forceinline CTCCreatureModeManager* GetModeManager()
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager()
     {
         CTCCreatureModeManager* modes = 0;
         if (HasTC(0x31))

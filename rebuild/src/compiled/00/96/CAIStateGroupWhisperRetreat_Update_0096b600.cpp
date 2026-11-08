@@ -14,6 +14,7 @@
 //          switch is `sub eax,0 ; je` / `sub eax,2 ; jne` with the phase-2 arm ending in its own Terminate + epilogue.
 // Layout: engine/CAIStateGroup_WhisperRetreat.h over the landed CAIStateGroupBase model; the retail target pointer sits at
 //          +0x14 (the PDB header's `_pad_0x14/_0x18`; PArenaCentre +0x1c is unused here).
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 class CThing;
@@ -32,7 +33,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;    // 0x004C73D0
     void UnsheatheMeleeWeapon();                // 0x006649C0 (CThingCreatureBase)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

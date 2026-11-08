@@ -6,6 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00838BC0, `ret 0x18`.
 // Layout (retail; Ego_r.pdb in brackets): CThing interface bitset +0x20, map +0x44, ThingTypeFlags +0x6c [+0x7c],
 //   PBaseDef +0x70 [+0x80], Dead +0x91 bit 0; creature current action +0x100; CHitParameters Position +0x2, Direction +0xe.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 struct CInterfaceMap {
@@ -57,9 +58,9 @@ struct CCountedBase {
 };
 template<class T> class CCountedPointer { public:
     T* Object;
-    __forceinline CCountedPointer() : Object(0) { }
-    __forceinline CCountedPointer(const CCountedPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE CCountedPointer() : Object(0) { }
+    FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Object)
             Object->Release();
@@ -148,7 +149,7 @@ class CThing { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* CurrentAction;              // +0x100 (creatures only)
     float GetBaseMeleeDamage();                      // 0x00662190
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;
@@ -161,7 +162,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetConstInterface(const T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(const T** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;
@@ -174,7 +175,7 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline bool HasTC(long wanted) const
+    FABLE_FORCEINLINE bool HasTC(long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31)))
             return true;

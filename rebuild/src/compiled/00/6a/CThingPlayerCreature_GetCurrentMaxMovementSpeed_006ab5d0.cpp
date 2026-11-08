@@ -19,6 +19,7 @@
 // Layout (retail, local model; see NOTES.md header debt): component bitset +0x20, component map +0x44, physics TC +0x60,
 //   MovementBandType +0x200 (Ego_r.pdb +0x22C minus 0x10 CThing and 0x1C of container shrink). The vtable fillers v000..v078 and
 //   v00..v69 are unnamed slot placeholders; only the named slots are proven.
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -38,7 +39,7 @@ struct CTCMap {
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0
-    __forceinline CTCBase* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase* Find(long kind) const
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return (it == m_pLast || kind < it->m_kind ? m_pLast : it)->m_pTC;
@@ -65,10 +66,10 @@ public:
     CTCMap         m_tcs;                       // +0x44
     unsigned char  _pad50[0x60 - 0x50];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase* GetTC(long kind) const { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const { return m_tcs.Find(kind); }
     const C3DVector& GetPos() const;            // 0x004C73D0
-    template <class T> __forceinline bool PeekTC(const T** ppOut, long kind) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** ppOut, long kind) const
     {
         if (HasTC(kind)) {
             *ppOut = (const T*)m_tcs.Find(kind);
@@ -109,7 +110,7 @@ public:
     virtual float GetMaxSprintingSpeed(const C3DVector& direction) const;   // slot 82 (+0x148)
 protected:
     float GetCurrentMaxMovementSpeed() const;
-    __forceinline float GetBandSpeed(const C3DVector& direction) const
+    FABLE_FORCEINLINE float GetBandSpeed(const C3DVector& direction) const
     {
         switch (MovementBandType)
         {

@@ -7,6 +7,7 @@
 // unconditional zero store), then the PDef member destructor runs the same release again on the re-read member. The
 // release, the assignment, the member destructor and the virtual destructor are `__forceinline` (else the deleting
 // destructor collapses to `call ??1 ; delete`); a `new` factory pulls the vtable and the ??_G into the TU.
+#include "fable_compiler.h"
 class CThing;
 
 class CDefPointeeBase { public:
@@ -18,7 +19,7 @@ class CDefPointeeBase { public:
 struct CDefPointer {                        // CDefPointer<CExperienceDef const>
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CDefPointeeBase* object = Object;
         if (object) {
@@ -27,13 +28,13 @@ struct CDefPointer {                        // CDefPointer<CExperienceDef const>
             Object = 0;
         }
     }
-    __forceinline CDefPointer& operator=(int)
+    FABLE_FORCEINLINE CDefPointer& operator=(int)
     {
         Release();
         Object = 0;
         return *this;
     }
-    __forceinline ~CDefPointer() { Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { Release(); }
 };
 
 class CTCBase { public:
@@ -52,7 +53,7 @@ class CTCDExperienceOrb : public CTCBase { public:
     bool DecayOverTime;                     // +0x1c
     bool PickedUp;                          // +0x1d
     CTCDExperienceOrb(CThing* parent) : CTCBase(parent) { }
-    __forceinline virtual ~CTCDExperienceOrb() { PDef = 0; }
+    FABLE_FORCEINLINE virtual ~CTCDExperienceOrb() { PDef = 0; }
 };
 
 CTCDExperienceOrb* CreateExperienceOrb(CThing* parent)

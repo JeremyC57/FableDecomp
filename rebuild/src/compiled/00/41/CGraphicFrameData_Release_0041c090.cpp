@@ -15,6 +15,7 @@
 // Model: local -- engine/CTexture.h exists, but the generated header is data-only (pack(1), no member functions, no virtuals:
 // the vptr and counted pointers are flattened into raw words); the inlined release needs CTexture's virtual slots, so it is
 // local.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);               // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 class CTexture;
@@ -36,7 +37,7 @@ public:
     unsigned char             ScreenGraphic : 1;         // bit 5
     void Uninitialise();                                 // 0x009FCBA0
     void Release();
-    __forceinline ~CGraphicFrameData()
+    FABLE_FORCEINLINE ~CGraphicFrameData()
     {
         if (IsInitialised)
             Uninitialise();

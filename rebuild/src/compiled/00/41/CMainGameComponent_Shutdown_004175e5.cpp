@@ -15,6 +15,7 @@
 // Shape: each counted pointer is cleared by its out-of-line release followed by `Data = 0` (an inline Clear()); the scoped_ptrs
 //   reset with `old = px; px = 0; delete old`; the 1 for the deleting dtors lives in ebp (`xor ebp,ebp ; inc ebp`).
 // Pragma: #pragma optimize("s", on) -- a size-optimised TU (unaligned entry; constants materialised in registers).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CPolymorphic {
 public:
@@ -41,7 +42,7 @@ template <class T> struct scoped_ptr {
         void* Data;                                                          \
         void* Info;                                                          \
         void Release();                                                      \
-        __forceinline void Clear() { Release(); Data = 0; }                  \
+        FABLE_FORCEINLINE void Clear() { Release(); Data = 0; }                  \
     };
 COUNTED_POINTER(CCountedPointer403750, 0x00403750)
 COUNTED_POINTER(CCountedPointer4190b6, 0x004190B6)

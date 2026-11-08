@@ -13,6 +13,7 @@
 // Shape: the agent160 GetInterface model (__forceinline: bit test, key in a frame slot, LowerBound, `it == last ||
 //   key < it->type` -> last), the map pointer replacing `this` in esi on that arm. Each combat-manager read is a named
 //   local (`mov eax,[eax+4ch] ; push esi ; mov ecx,eax`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -43,7 +44,7 @@ class CThing { public:
     unsigned char _pad54[0x18];
     unsigned char m_flags6c;                    // +0x6c
     CWorld* GetWorld();                         // 0x004C7AB0
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

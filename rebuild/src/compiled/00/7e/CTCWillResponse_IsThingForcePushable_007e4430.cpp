@@ -15,6 +15,7 @@
 //   the inline `IsThingForcePushable() const` result bound to a `const bool&`. Both lookups are the PDB's
 //   `PeekTC<const T>(const T** out) const`, which must be `__forceinline` (the second instance is otherwise emitted out of
 //   line and esi is shrink-wrapped).
+#include "fable_compiler.h"
 class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
@@ -54,7 +55,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;

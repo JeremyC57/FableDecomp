@@ -17,6 +17,7 @@
 //   takes `positions.end()` captured right after the size test (retail's edi survives the calls); the second erase is the
 //   plain expression form; `while (!found && size)` with if/else (no break) keeps retail's top-tested loop and the
 //   `mov bl,1` / `mov bl,[found]` exits.
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include "engine/C3DVector.h"
 namespace std {
@@ -152,7 +153,7 @@ class CThing { public:
     CDefClassBase*  m_pDef;                             // +0x70
     const C3DVector& GetPos() const;               // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

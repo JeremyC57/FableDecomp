@@ -14,6 +14,7 @@
 //   because the size TU calls the implicit one out of line; __copy is __forceinline for the same reason (the landed
 //   0x004E9BDA recipe). Size TU without a frame pointer: `#pragma optimize("s", on)`.
 // Model: no engine header for CCardPositionsDef (Ego_r.pdb gives 80 bytes, retail 0x48); local model as in 0x004EBDF1.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace std {
 struct __false_type { };
@@ -34,7 +35,7 @@ struct C2DVectorVector {                                    // STLport vector<C2
 class CCardPositionsDef : public CParentDefClassBase {      // 0x48 bytes
 public:
     C2DVectorVector Offset;                                 // +0x3C
-    __forceinline CCardPositionsDef& operator=(const CCardPositionsDef& o)
+    FABLE_FORCEINLINE CCardPositionsDef& operator=(const CCardPositionsDef& o)
     {
         CParentDefClassBase::operator=(o);
         Offset = o.Offset;
@@ -43,7 +44,7 @@ public:
 };
 namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance n = last - first; n > 0; --n) {

@@ -12,6 +12,7 @@
 // expression); then the out-parameter GetInterface template with its result ignored, RemoveMode(0x19)
 // tail-duplicated into the hit and miss arms (the miss arm reads the never-written manager local from the
 // key's `push ecx` slot). No engine header models the state group's vptr chain: local model.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -25,7 +26,7 @@ class CThingCreatureBase { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
     CCombatManager& GetCombatManager();         // 0x00661ED0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

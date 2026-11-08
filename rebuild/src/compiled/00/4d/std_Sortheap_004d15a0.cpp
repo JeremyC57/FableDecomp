@@ -12,6 +12,7 @@
 // Label correction: the catalog's `_Sort_heap<std::pair<long,unsigned_long>*>` is propagated -- the key is a
 // float (`fld`) and the callee is the pair<float,EConversationAttitude> _Adjust_heap with a by-value
 // CKeyPairCompareLess comparator (`ret 4`).
+#include "fable_compiler.h"
 enum EConversationAttitude { CONVERSATION_ATTITUDE_FORCE_DWORD = 0x7fffffff };
 template <class K, class V> class CKeyPairCompareLess { public: };
 namespace std {
@@ -22,13 +23,13 @@ template <class _Ty1, class _Ty2> struct pair {
 };
 template <class _RanIt, class _Diff, class _Ty, class _Pr>
 void __fastcall _Adjust_heap(_RanIt _First, _Diff _Hole, _Diff _Bottom, _Ty _Val, _Pr _Pred);   // 0x004D04F0
-template <class _RanIt, class _Diff, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Diff, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Pop_heap(_RanIt _First, _RanIt _Last, _RanIt _Dest, _Ty _Val, _Pr _Pred, _Diff*)
 {
     *_Dest = *_First;
     _Adjust_heap(_First, _Diff(0), _Diff(_Last - _First), _Val, _Pred);
 }
-template <class _RanIt, class _Ty, class _Pr> __forceinline
+template <class _RanIt, class _Ty, class _Pr> FABLE_FORCEINLINE
 void _Pop_heap_0(_RanIt _First, _RanIt _Last, _Pr _Pred, _Ty*)
 {
     _Pop_heap(_First, _Last - 1, _Last - 1, _Ty(*(_Last - 1)), _Pred, (int*)0);

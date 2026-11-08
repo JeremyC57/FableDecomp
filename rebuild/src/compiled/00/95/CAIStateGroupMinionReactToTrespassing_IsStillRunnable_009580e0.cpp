@@ -1,6 +1,7 @@
 // CAIStateGroup_MinionReactToTrespassing::IsStillRunnable(bool) -- periodically check ongoing trespass deeds targeting the creature home
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail0x009580e0,295 bytes. Home retail+168 differs from donor+190, hence local creature overlay.
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_MinionReactToTrespassing.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCCreatureOpinionOfHero.h"
@@ -18,7 +19,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead; unsigned char tail[0xd6]; CBaseIntelligentPointer Home; CThing* GetHome() { return ((CThing*)Home.GetPItem()); }
-    template<class T> __forceinline bool GetInterface(T** out,long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out,long type) {
         if(bits[type>>5]&(1UL<<(type&31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; const CInterfaceMap::Entry* it=map->LowerBound(key);
             if(it==map->last || it->first>type) it=map->last;

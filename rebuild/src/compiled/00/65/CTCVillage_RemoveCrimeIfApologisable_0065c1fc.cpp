@@ -20,6 +20,7 @@
 //        destructor (the clear of its pointer is elided before the return).
 // Layout (supersedes any local-model note above): engine/CTCVillage.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCVillage CTCVillageDonor
 #include "engine/CTCVillage.h"
 #undef CTCVillage
@@ -36,7 +37,7 @@ class CThing { public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -45,7 +46,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);
@@ -90,7 +91,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     bool ReactionRestrictToTarget : 1;          // bit 1
     bool AllowSimultaneousReactionDialogue : 1; // bit 2
     bool CanApologise : 1;                      // bit 3
-    __forceinline void ReleaseTemporary()
+    FABLE_FORCEINLINE void ReleaseTemporary()
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -99,7 +100,7 @@ class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->ReleaseTemporary();

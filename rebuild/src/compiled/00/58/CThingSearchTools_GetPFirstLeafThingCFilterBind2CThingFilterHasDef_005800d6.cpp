@@ -12,6 +12,7 @@
 // `[filter+4]` re-read per test) and is `__forceinline` `a(thing) && b(thing)` (under /Os
 // a plain inline operator() stays out of line); the loop re-reads end()
 // (`cmp esi,[ebx]`); the found path stores the out pointer and shares the epilogue (`jmp`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include "engine/CThingSearchTools.h"
 
@@ -43,7 +44,7 @@ class CThingFilter_HasScriptData { public:
 template <class A, class B> class CFilter_Bind2 { public:
     const A& m_first;
     const B& m_second;
-    template <class T> __forceinline bool operator()(const T& thing) const { return m_first(thing) && m_second(thing); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& thing) const { return m_first(thing) && m_second(thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {

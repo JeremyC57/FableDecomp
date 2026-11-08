@@ -5,6 +5,7 @@
 // Retail CTCNymph: ReadyToSummon +0x5a (PDB +0x5e: the spline's vector is 4 bytes narrower in retail).
 // Shape: the inline out-parameter GetInterface(&summon, 0xfa) (bit 26 of the bitset word at +0x3c) inside the flag test, both
 // false exits sharing `xor al,al`; the count test is a `return count > 0;` bool (`xor ecx,ecx ; setg cl ; mov al,cl`).
+#include "fable_compiler.h"
 class CTCAISummon { public:
     long GetMaxCreatureCount();                     // 0x007FDF60
 };
@@ -18,7 +19,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

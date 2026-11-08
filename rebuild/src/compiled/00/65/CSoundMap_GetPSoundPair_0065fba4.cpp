@@ -14,6 +14,7 @@
 // (`auto_inline(off)`, the landed 0x0065E412 body) -- with a declaration only, VC7.1 re-reads the escaped key after the
 // call. The `!=` test order gives retail's `je` to the null return.
 // Opt: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -49,7 +50,7 @@ public:
     C           Compare;                                   // +0x0c (empty, padded)
     const_iterator end() const { return Last; }
     const_iterator LowerBound(const K& key) const;         // 0x0065E412
-    __forceinline const_iterator Find(const K& key) const
+    FABLE_FORCEINLINE const_iterator Find(const K& key) const
     {
         const_iterator it = LowerBound(key);
         if (it == end() || Compare(key, *it))

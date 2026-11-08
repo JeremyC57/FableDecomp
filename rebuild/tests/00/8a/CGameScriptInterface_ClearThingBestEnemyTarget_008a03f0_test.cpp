@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -482,9 +483,9 @@ struct TargetingMethods{ //CTCBase virtual prefix, native CTCTargetingAI table01
 FABLE_STATIC_ASSERT(offsetof(TargetingMethods,ParentThing)==offsetof(CTCBase,ParentThing));
 FABLE_STATIC_ASSERT(sizeof(TargetingMethods)==sizeof(CTCBase));
 long __fastcall CompareStrings(const char*,const char*); //00411570
-static __forceinline CCharStringData* StringData(const CCharString& s){return *reinterpret_cast<CCharStringData* const*>(&s);}
-static __forceinline bool EqualData(const CCharStringData* x,const CCharStringData* y){if(x->unknown04!=y->unknown04)return false;return CompareStrings(x->text,y->text)==0;}
-static __forceinline bool EqualStrings(const CCharString& a,const CCharString& b){CCharStringData* x=StringData(a);CCharStringData* y=StringData(b);if(x==y)return 1;if(!x||!y)return 0;return EqualData(x,y);}
+static FABLE_FORCEINLINE CCharStringData* StringData(const CCharString& s){return *reinterpret_cast<CCharStringData* const*>(&s);}
+static FABLE_FORCEINLINE bool EqualData(const CCharStringData* x,const CCharStringData* y){if(x->unknown04!=y->unknown04)return false;return CompareStrings(x->text,y->text)==0;}
+static FABLE_FORCEINLINE bool EqualStrings(const CCharString& a,const CCharString& b){CCharStringData* x=StringData(a);CCharStringData* y=StringData(b);if(x==y)return 1;if(!x||!y)return 0;return EqualData(x,y);}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ClearThingBestEnemyTarget(const ScriptMethods&)const;};
 void CGameScriptInterfaceMethods::ClearThingBestEnemyTarget(const ScriptMethods& thing)const{
  if(thing.IsAlive()){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x100){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound(8);ComponentEntry* end=map->Finish;TargetingMethods* targeting=static_cast<TargetingMethods*>((it==end||it->Type>8?end:it)->Component);

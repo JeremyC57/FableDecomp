@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: _M_fill_insert
 // Layout: record flag0, set<long> A+4 and B+16; set Head0/Count4/Compare8 (12 bytes). Callee00ad3a10 allocates20-byte sentinel and copies tree;00ad4a70 destroys both sets.
+#include "fable_compiler.h"
 namespace N00ad7e80 {
 struct __false_type { __false_type() {} }; struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -20,7 +21,7 @@ template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T*
 template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
 template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x,const __false_type&) { for(;n>0;--n,++first) _Construct(first,x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
+template<class T> FABLE_FORCEINLINE T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
 template<class T> struct vector {
  T* _M_start; T* _M_finish; T* _M_end_of_storage;
  void _M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool atend=false);

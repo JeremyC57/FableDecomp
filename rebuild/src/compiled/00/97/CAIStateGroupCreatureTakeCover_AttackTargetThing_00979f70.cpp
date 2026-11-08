@@ -7,6 +7,7 @@
 // Shape: LookAtThing and the into-aim face-and-wait pass the target through an inlined base-reference conversion; the aim
 //   call copies it through the out-of-line copy ctor 0x0091F990; the dialogue def goes by value into an inline helper built
 //   from the raw pointer (gives the memory-form dec and the group spill); creature named before a named GetPWorld().
+#include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
 class CBaseObject;
@@ -22,8 +23,8 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& o);   // 0x0091F990
-    __forceinline explicit CIntelligentPointer(const CBaseIntelligentPointer& o) { SetPItem(o.GetPItem()); }
-    __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    FABLE_FORCEINLINE explicit CIntelligentPointer(const CBaseIntelligentPointer& o) { SetPItem(o.GetPItem()); }
+    FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     virtual void v01();
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& p);   // 0x006961F0 (IS_THING_ALIVE<CIntelligentPointer<const CThing> >)
@@ -59,7 +60,7 @@ template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
     CDefPointer(T* p) : Object(p) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 class CCombatDialogueDef : public CDefPointeeBase { public:
@@ -72,7 +73,7 @@ class CombatDialogueManager { public:
     CDefPointer<CCombatDialogueDef> GetDialogueDef() const { return PDialogueDef; }
     bool SaySpeech(CThingCreatureBase& talker, unsigned long speechGroup);   // 0x008AFC40
 };
-__forceinline unsigned long GetRangedAimingGroup(CDefPointer<CCombatDialogueDef> def) { return def->RangedCombatAiming; }
+FABLE_FORCEINLINE unsigned long GetRangedAimingGroup(CDefPointer<CCombatDialogueDef> def) { return def->RangedCombatAiming; }
 class CCombatManager {
 public:
     unsigned char _pad00[0x38];
@@ -116,7 +117,7 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
 protected:
     CWorld& GetWorld() const;                   // 0x008FCFC0
-    __forceinline void SayCombatSpeech(unsigned long group)
+    FABLE_FORCEINLINE void SayCombatSpeech(unsigned long group)
     {
         CThingCreatureBase* creature = GetCreature();
         CWorld& world = GetWorld();

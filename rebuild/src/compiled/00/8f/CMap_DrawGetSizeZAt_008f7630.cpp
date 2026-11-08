@@ -9,6 +9,7 @@
 // Shape: the clamps are a macro (the upper bound is re-read inside each else-arm, so Width/Height load once per clamp, never
 //   CSE'd); one `float z` assigned in an if/else tree with a single return (four early returns cross-jump the shared
 //   `(..)*dy + (h10-h00)*dx + h00` tail the other way round).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
@@ -29,7 +30,7 @@ class CHeightMap { public:
     unsigned char                  _pad1c[0x1e8];
     long                           SizeX;          // +0x204
     long                           SizeY;          // +0x208
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 #define CLAMP_TO_MAP(v, high) ((v) < 0 ? 0 : ((v) > (high) ? (high) : (v)))
 class CMap {

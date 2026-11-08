@@ -12,6 +12,7 @@
 // the two-argument resize out of line): TransVector stays in ecx, the default temporary's zero stores (through eax) are
 // scheduled after the size computation; the size is `(finish - start) >> 3`; the shrink arm passes `start + n` and the
 // cached finish, the grow arm reloads finish and passes (finish, n - size, &x); both arms return separately (`ret 4`).
+#include "fable_compiler.h"
 struct COpinionDeedRecord {                        // 8 bytes
     long m_deedType;                               // +0x0
     long m_value;                                  // +0x4
@@ -28,14 +29,14 @@ struct COpinionDeedRecordVector {               // STLport vector<COpinionDeedRe
     COpinionDeedRecord* erase(COpinionDeedRecord* first, COpinionDeedRecord* last);                         // 0x006C7FE0
     void _M_fill_insert(COpinionDeedRecord* position, unsigned long n, const COpinionDeedRecord& x);           // 0x006C8610
     void insert(COpinionDeedRecord* position, unsigned long n, const COpinionDeedRecord& x) { _M_fill_insert(position, n, x); }
-    __forceinline void resize(unsigned long newSize, const COpinionDeedRecord& x)
+    FABLE_FORCEINLINE void resize(unsigned long newSize, const COpinionDeedRecord& x)
     {
         if (newSize < size())
             erase(begin() + newSize, end());
         else
             insert(end(), newSize - size(), x);
     }
-    __forceinline void resize(unsigned long newSize) { resize(newSize, COpinionDeedRecord()); }
+    FABLE_FORCEINLINE void resize(unsigned long newSize) { resize(newSize, COpinionDeedRecord()); }
 };
 
 struct CPersistContext_TransferableVector {

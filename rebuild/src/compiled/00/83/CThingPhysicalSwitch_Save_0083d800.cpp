@@ -13,6 +13,7 @@
 // Shape: the line starts from an explicit empty CCharString("") (the extra 0x0099EBF0 call before the first operator+),
 //   then `name == "" ? CCharString("NULL") : name` (the conditional temporary tracked by ebx bit 1) as CThingSwitch::Save;
 //   the inline CCharString::operator== has the null-block arm `strcmp(text, "") == 0` (the `repe cmpsb` against "").
+#include "fable_compiler.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -34,7 +35,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);                           // 0x0099EBF0
     ~CCharString();                                                             // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

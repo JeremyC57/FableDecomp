@@ -10,6 +10,7 @@
 // Shape: three plain longs zeroed first (+0x14 warning source, +0x18, +0x1c last warning id -- the members
 // the landed CheckForOtherGuardsNewWarning @ 0x00939D70 writes), then `PPlayer = 0` at +0x20 through the
 // converting temporary + inline `SetPItem(other.GetPItem())` assignment. No engine header for this class.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
@@ -29,8 +30,8 @@ struct CBaseIntelligentPointer {
 
 struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01231C4C
     // __forceinline: under optimize("s") VC7.1 otherwise calls these small inline members out of line
-    __forceinline CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 class CAIStateGroupBase { public:

@@ -14,6 +14,7 @@
 // eax and forms `lea esi,[eax+0Ch]`; the value-returning HasTC + GetConstTC pair gives `mov esi,[eax+4] ; add esi,0Ch`),
 // the pointer's address kept in esi for both GetPItem calls (`!p || dead`), the creature re-read from +4 for the Kill.
 // Plain `ret`.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -29,13 +30,13 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char Dead : 1;                // +0x91 bit 0
     void Kill(bool immediately);           // 0x004C9B80
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetConstInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

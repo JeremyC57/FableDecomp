@@ -2,6 +2,7 @@
 // Leaf: ?FindHitEvent@CAIStateGroup_ScorpionKing@@IAE_NXZ
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own owner bIsRangeAttack offset, original PDB protected FindHitEvent; helper953000 calls IsHitByShot00810f70,953090 IsHitByMelee00810f80; actual const event/filter template types, not duplicate manifest labels.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 #include "engine/CAIBrain.h"
 #define CAIStateGroupBase CAIStateGroupBase_HeaderLayout
@@ -22,7 +23,7 @@ enum ETCInterfaceType{TC_ENTITY_EVENTS=66};
 template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef const value_type* const_iterator;CArray<value_type> Data;Cmp Compare;bool Dirty;__declspec(noinline) const_iterator LowerBound(const K& key)const{const_iterator first=Data.begin();long count=Data.end()-first;while(count>0){long half=count/2;const_iterator middle=first+half;if(middle->first<key){first=middle+1;count-=half+1;}else count=half;}return first;}V Get(const K key)const{const_iterator p=LowerBound(key);const_iterator last=Data.end();return (p==last || key<p->first?last:p)->second;}};
 // Layout: no active CThing header. Original UsingComponents+32 and Components+68; actual const LowerBound overload004365b0.
-class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>__forceinline bool GetTC(T** out)const{if(!(UsingComponents[2]&4))return false;*out=(T*)Components.Get(TC_ENTITY_EVENTS);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
+class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>FABLE_FORCEINLINE bool GetTC(T** out)const{if(!(UsingComponents[2]&4))return false;*out=(T*)Components.Get(TC_ENTITY_EVENTS);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
 namespace NEntityEvents{class CEventHitBy;class CIsHitEventHitByShot{public:CIsHitEventHitByShot(){}};class CIsHitEventHitByMelee{public:CIsHitEventHitByMelee(){}};}
 class CTCEntityEvents:public CTCEntityEvents_HeaderLayout{public:template<class Event,class Filter>bool GetEvent(Event**,const Filter&)const;};
 // Layout: active owner and base/brain headers retained; inherited PBrain+4 projected through shared CAIStateGroupBase layout. Helpers953000/953090 are Shot/Melee const CEventHitBy instantiations.

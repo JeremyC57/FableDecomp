@@ -16,6 +16,7 @@
 // Shape: the BarrelThug entity model; the marker number of each vector element is a named local compared after its CCharString dies
 //   (a2: `if (GFCharStringToInt(...) == n)` set the flag before the dtor, 245 lines -> RELOCATION_MATCH). Case order = source order =
 //   the descending literal addresses (LIBRARY 0x012CFB70 .. DINING_ROOM 0x012CF8AC).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -42,9 +43,9 @@ template<> std::vector<CScriptThing>::~vector();              // 0x008AC970
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 
 void NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::Main()
 {

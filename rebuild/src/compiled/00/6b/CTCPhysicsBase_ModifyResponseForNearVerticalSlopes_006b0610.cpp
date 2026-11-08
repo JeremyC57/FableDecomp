@@ -16,6 +16,7 @@
 // Layout: CTCBase ParentThing +0x04; CThing +0x10 a class byte (2 tested); CPhysicsCollideResponse (PDB) CollidePos +0x00,
 // CollideNormal +0x0c, Friction +0x18. engine/CTCPhysicsBase.h flattens the vectors into floats and has no CTCBase
 // members, so the class is modelled locally.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(cos)
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
@@ -26,7 +27,7 @@ class C3DVector { public:
     float Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

@@ -14,6 +14,7 @@
 // move type maps 0 -> 3, 1 -> 5, else 1 (a switch); the miss arm reads the never-written control from a dead argument slot.
 // Layout: the engine header's offsets (ScriptInterface +0x10, PThing +0x14) on a local polymorphic model, because the
 // slot-11 virtual call needs a real vptr (deriving virtuals from the flat header would add a second vptr).
+#include "fable_compiler.h"
 #include <stddef.h>
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
@@ -32,7 +33,7 @@ struct CThing_Retail {
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {

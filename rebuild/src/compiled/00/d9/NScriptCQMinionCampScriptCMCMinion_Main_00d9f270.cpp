@@ -27,6 +27,7 @@
 //   in the inline operator=; operator!= loads the other Data first. Expands the inline operator= at one site and
 //   calls the out-of-line copies elsewhere,
 //   as retail does.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -75,9 +76,9 @@ class CScriptThing : public CBaseClass { public:                           // vt
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
-    __forceinline void AssignInline(const CScriptThing& other) { PImp = other.PImp; }
+    FABLE_FORCEINLINE void AssignInline(const CScriptThing& other) { PImp = other.PImp; }
     bool operator!=(const CScriptThing& other) const { const CScriptThingImpl* otherData = other.PImp.Data; return !PImp.Data->IsSameThing(otherData); }
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

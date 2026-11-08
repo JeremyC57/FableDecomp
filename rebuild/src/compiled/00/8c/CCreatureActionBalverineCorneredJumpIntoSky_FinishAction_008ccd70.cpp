@@ -27,6 +27,7 @@
 //   action takes PCreature through an inline `operator CThingCreatureBase*()` -- the creature is fetched BEFORE the
 //   target's GetPItem, which also gives retail's register map (direct GetPItem arguments put the mode manager in ebp).
 // Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+#include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 using NGraphicAppearance::CTCGraphicAppearance;
 class CTCBase;
@@ -112,7 +113,7 @@ class CThing { public:
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CTCGraphicAppearance* GetGraphicAppearance() const { return GraphicAppearanceTC; }
     CDefClassBase* GetDef() const { return m_pDef; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -137,7 +138,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {
     operator CThingCreatureBase*() const { return GetPItem(); }
 };
 
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

@@ -9,6 +9,7 @@
 //   release through vtable slot 1 (`dec [esi+4] ; jne`). Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, DELTA_NOTIONAL_ZERO @ 0x0129BA3C.
 // Layout: Ego_r.pdb CTCObjectAugmentations Augmentations +0x14 (vector<CDefPointer<CThingBaseDef>>, 12-byte retail vector);
 //   CAugmentationDef (PDB = retail) frequency/increase +0x44/+0x48.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 // Retail-asm: 0x0076639A..0x007663B4 `fld [ebp-8] ; fadd [ebp-14h] ; fistp dword ptr [ebp-0Ch] ; fild [ebp-0Ch] ; fsub [ebp-10h] ; fstp [ebp-18h] ; mov eax,[ebp-8] ; cmp eax,[ebp-18h] ; jne ; dec dword ptr [ebp-0Ch]` -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
@@ -23,7 +24,7 @@ template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (--def->m_refCount == 0)
         def->Destroy();

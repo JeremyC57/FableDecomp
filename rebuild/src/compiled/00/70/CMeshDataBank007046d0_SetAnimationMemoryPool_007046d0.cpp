@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007046D0, length 96 bytes.
 // Leaf: SetAnimationMemoryPool
 // Callees: operator delete @ 0x00BFE9BC. The chunk label is propagated; named by address. Shape: the argument's two words read from the stack, its block in edi, `ret 8` (the callee cleans the by-value argument).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CPool_007046d0;
 struct SCountBlock_007046d0 {                      // the shared count block of a CCountedPointer
@@ -13,7 +14,7 @@ struct CCountedPointer_007046d0 {                  // {object, count block}
     CPool_007046d0*       m_pObject;               // +0x00
     SCountBlock_007046d0* m_pCount;                // +0x04
     CCountedPointer_007046d0(const CCountedPointer_007046d0& other);
-    __forceinline ~CCountedPointer_007046d0()
+    FABLE_FORCEINLINE ~CCountedPointer_007046d0()
     {
         if (m_pCount) {
             if (--m_pCount->m_references == 0) {
@@ -22,7 +23,7 @@ struct CCountedPointer_007046d0 {                  // {object, count block}
             }
         }
     }
-    __forceinline CCountedPointer_007046d0& operator=(const CCountedPointer_007046d0& other)
+    FABLE_FORCEINLINE CCountedPointer_007046d0& operator=(const CCountedPointer_007046d0& other)
     {
         SCountBlock_007046d0* block = other.m_pCount;
         if (m_pCount != block) {

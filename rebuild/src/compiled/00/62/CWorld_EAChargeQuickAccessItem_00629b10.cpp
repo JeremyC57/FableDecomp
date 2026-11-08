@@ -15,6 +15,7 @@
 //   (CThing dead bit +0x91 bit 0); the payload is the 44-byte CMemoryBuffer idiom; the charge flag comes from an inline
 //   by-value ReadChar() so its byte and the normalised bool (`!= 0`) share the dead `event` argument slot, the bool
 //   stays in bl (ebx pushed only on that path) for the mode switch.
+#include "fable_compiler.h"
 struct CMemoryBuffer {
     unsigned char Data[0x20];                      // +0x00
     long          Length;                          // +0x20
@@ -22,7 +23,7 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline char ReadChar() { char value; Read(1, &value); return value; }
+    FABLE_FORCEINLINE char ReadChar() { char value; Read(1, &value); return value; }
 };
 class CGameEvent { public:
     long          Type;                            // +0x00

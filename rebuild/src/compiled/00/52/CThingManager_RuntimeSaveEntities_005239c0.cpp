@@ -17,6 +17,7 @@
 //   the two savers, the same STLport vector<CCharString> name list.
 // Shape: the name vector is the first local; SerialisingGameState (+0x9a) is set before the branch and cleared after it; the script
 //   strings and the empty "" script live in the dead `gamePersistent` argument slot.
+#include "fable_compiler.h"
 #define CMemoryDataOutputStream CMemoryDataOutputStreamDonor
 #include "engine/CMemoryDataOutputStream.h"
 #undef CMemoryDataOutputStream
@@ -116,7 +117,7 @@ public:
     typedef typename _Vector_base<_Tp, _Alloc>::allocator_type allocator_type;
     explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _IsPODType;
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    FABLE_FORCEINLINE ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     const _Tp* begin() const { return this->_M_start; }
     const _Tp* end() const { return this->_M_finish; }
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }

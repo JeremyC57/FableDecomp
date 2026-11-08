@@ -14,6 +14,7 @@
 //   only inlines it here when it is `__forceinline`, else 73v159 with a call): the pair
 //   temporary, STLport push_back on the 16-byte element (or the overflow call with the __false_type tag homed in the dead
 //   `params` slot), the pair's ~CBaseClass, `Dirty = true`, and the descriptor's ~CBaseClass at the end of the statement.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -65,7 +66,7 @@ public:
     CArray<std::pair<K, V> > Data;                         // +0x00
     TCompare                  Compare;                      // +0x0C (empty comparator)
     bool                      Dirty;                        // +0x0D
-    __forceinline void Insert(const K& key, const V& value)   // inlined into the CollectUpdateParameters callers (out of line @ 0x00B0FB40)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)   // inlined into the CollectUpdateParameters callers (out of line @ 0x00B0FB40)
     {
         Data.push_back(std::pair<K, V>(key, value));
         Dirty = true;

@@ -10,6 +10,7 @@
 //          is 12 bytes (`push 0Ch ; pop esi`, `lea eax,[eax+eax*2] ; shl 2`): whole-element assignments are three `movsd`, and the
 //          placement copy goes through a member-wise copy constructor (the first word, then the 8-byte block), which also gives
 //          retail's frame, spills and rotated tail loop (twin of 0x004E6F74).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <new>
 
@@ -23,7 +24,7 @@ struct CSkeletalMorphEntry {                 // 12 bytes: a word then two words 
 struct random_access_iterator_tag {};
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                                  _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -35,7 +36,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result)
 {
     _ForwardIter __cur = __result;
     for ( ; __first != __last; ++__first, ++__cur)

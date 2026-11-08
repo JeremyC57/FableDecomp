@@ -1,5 +1,6 @@
 // Behaviour test for 0097e890: final.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CAIStateGroupBase::AIAction_MoveToPosProximity
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -108,7 +109,7 @@ class CThingCreatureBase { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionVirtuals* CurrentAction;     // +0x100
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long count = m_interfaces.last - m_interfaces.first;
         CInterfaceMap::SEntry* it = m_interfaces.first;

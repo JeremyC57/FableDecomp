@@ -12,6 +12,7 @@
 //   node, then tmp->next = n, tmp->prev = n->prev, n->prev->next = tmp, n->prev = tmp); the position node is hoisted into edi,
 //   the loop is rotated (one `first == last` test ahead of it). The size TU keeps insert(pos, x) out of line unless it is
 //   __forceinline (retail has no call to it); a speed TU caches `last` in ebp instead of re-reading it.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CStringParserCommentBoundaries {
@@ -61,7 +62,7 @@ public:
 
     _List_node<_Tp>* _M_create_node(const _Tp& __x);   // 0x00463901
 
-    __forceinline iterator insert(iterator __position, const _Tp& __x)
+    FABLE_FORCEINLINE iterator insert(iterator __position, const _Tp& __x)
     {
         _List_node<_Tp>* __tmp = _M_create_node(__x);
         _List_node_base* __n = __position._M_node;

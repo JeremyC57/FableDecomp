@@ -7,6 +7,7 @@
 // Shape (family K080, representative 0x004196B2): the landed speed-TU GetDef 0x0083B000 under `optimize("y", off)` +
 //   `("s", on)`: the converting operator= is __forceinline (size mode otherwise calls it), the old def released through
 //   Release() (`dec [ecx+4] ; jne`), the temporary through ReleaseTemporary() on the count base (`dec [eax] ; cmp [eax],0`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public: void* PStringData; };
@@ -30,7 +31,7 @@ public:
     T* m_p;
     CDefPointer() { }
     ~CDefPointer() { if (m_p) m_p->ReleaseTemporary(); }
-    template <class U> __forceinline CDefPointer& operator=(const CDefPointer<U>& other)
+    template <class U> FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer<U>& other)
     {
         if (m_p != other.m_p) {
             if (m_p) {

@@ -10,9 +10,10 @@
 // word directly; the hit increments the node's value (+0x14).
 // Layout: CThing def index (unsigned short) +0x8C; retail CTCInventoryStats kill table (STLport map<long,long>, header word
 // first) at +0x134; the creature sub-def's kill-category key at +0xAC (retail offsets).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -23,8 +24,8 @@ template <class T> struct CSubDefPointer {    // the GetSubDef out pointer, rele
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 struct CCreatureKillDef : CDefPointeeBase {

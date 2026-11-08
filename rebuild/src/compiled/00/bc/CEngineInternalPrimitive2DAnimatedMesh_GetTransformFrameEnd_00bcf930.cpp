@@ -16,6 +16,7 @@
 //   inlined rotation reuses its words. The rotation multiplies every row (translation included, no translation term) by a
 //   constant 3x3 built from literals: VC7.1 propagates the constants, folds the `* 1.0f` terms, keeps the `* 0.0f` products
 //   (CSE'd across a row, one spilled to the dead argument slot) and turns `+ y * -1.0f` into `- y * 1.0f`.
+#include "fable_compiler.h"
 #include "engine/CEngineInternalPrimitive2DAnimatedMesh.h"
 #include "engine/C3DMeshInfo.h"
 #include "engine/C3DVector.h"
@@ -38,7 +39,7 @@ struct CMatrix3x3 {
     CMatrix3x3(float a, float b, float c, float d, float e, float f, float g, float h, float i)
         : E11(a), E12(b), E13(c), E21(d), E22(e), E23(f), E31(g), E32(h), E33(i) {}
 };
-__forceinline void Rotate(CMatrix3x4& m, const CMatrix3x3& b)
+FABLE_FORCEINLINE void Rotate(CMatrix3x4& m, const CMatrix3x3& b)
 {
     CMatrix3x4 a(m);
     m.E11 = a.E11 * b.E11 + a.E12 * b.E21 + a.E13 * b.E31;

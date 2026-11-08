@@ -19,6 +19,7 @@
 //   (CBaseObject::operator= call + inline PImp copy): the operator is declared by the header's existing OUTOFLINE_ASSIGN switch
 //   and defined `__forceinline` here, as the landed same-TU WaspIntro 0x00E12F20 does (plain inline stays a call, 1004 bytes).
 //   IsAlive in the `&&` form (the if-form compares the result with the cached zero, `cmp al,bl`).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -43,7 +44,7 @@ template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer
 #include "engine/NScript_CQ_WaspBossScript.h"
 #include "stlport/fable_map.h"
 #include "engine/fable_script_cutscene.h"
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp=other.PImp; return *this; }

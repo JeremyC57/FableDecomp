@@ -22,6 +22,7 @@
 //   items.empty()` first, then the gold arm, then the items arm gives retail's jump-threaded block order; the hero
 //   stats lookup is the never-written-local form (its miss reads the receiver slot, as retail does); the font and the
 //   text bank come through the Ego_r inline accessors CMainGameComponent::PeekCutSceneMainFont / GetTextBank.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CSubDefClassBase.h"
 #include "engine/CDefPointer.h"
@@ -133,17 +134,17 @@ class CThing { public:
     unsigned char ThingFlags;                               // +0x91 (bit 0: dead)
     bool IsDead() const { return (ThingFlags & 1) != 0; }
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
-    __forceinline unsigned long HasTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const
     {
         return Components_present[type >> 5] & (1UL << (type & 31));
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         CInterfaceMap* map = &Components;
         CInterfaceMap::value_type* it = map->LowerBound((ETCInterfaceType)type);
         return (T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
-    template <class T> __forceinline T* PeekTCOrUnset(long type)
+    template <class T> FABLE_FORCEINLINE T* PeekTCOrUnset(long type)
     {
         T* component;
         if (HasTC(type))

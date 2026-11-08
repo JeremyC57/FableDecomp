@@ -12,6 +12,7 @@
 // Shape: the carrying component comes from the non-const out-parameter GetInterface; the carried thing is used through a
 // const pointer, so its weapon lookup binds the const LowerBound copy. The weapon arm calls SetGroup out of line, while the
 // "STAND" fallback is an inline copy of the same assignment + CRC (the literal's CCharString temporary, one shared null test).
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pData;                 // +0
     unsigned long m_length;                // +4
@@ -36,7 +37,7 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
     void SetGroup(const CCharString& group);   // 0x0073DFF0 (the out-of-line copy)
-    __forceinline void SetGroupInline(const CCharString& group)
+    FABLE_FORCEINLINE void SetGroupInline(const CCharString& group)
     {
         Group = group;
         GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
@@ -56,7 +57,7 @@ class CThing { public:
     unsigned char _pad9[0x3d];
     unsigned char m_lifeFlags;             // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_lifeFlags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -69,7 +70,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

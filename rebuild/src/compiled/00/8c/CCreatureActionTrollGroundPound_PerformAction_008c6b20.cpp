@@ -8,6 +8,7 @@
 // Layout: CThing interface bitset +0x20, map +0x44, PTCDriver +0x5c (the cached driver component), def +0x70, player +0x90.
 // Shape: GetSubDef 0x008C79B0 sits in this TU (same-TU noinline stand-in), as does the LowerBound stand-in (0x0040F020),
 //   so the key word, the def word and the out pointers share frame slots; each position is a block-scoped copy.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -69,7 +70,7 @@ public:
     char           PlayerNumber;                      // +0x90
     CDefClassBase* GetDef() const { return Def; }
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -82,7 +83,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetDriver(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetDriver(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             *ppOut = (T*)PTCDriver;
@@ -94,7 +95,7 @@ public:
 class CRightHandedSet;
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                      unsigned long flags, const CCharString& name);   // 0x00703210
-__forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
     return CreateThingObject(defIndex, &position, creature->PlayerNumber, 0, 0, name);
 }

@@ -15,6 +15,7 @@
 // HealthIncreaseAccum +0x34, PHealingTarget +0x40.
 // Shape: the landed CTCDrainLife ctor (0x007C30E0) family; the list is STLport (`_M_node` alloc proxy zeroed, then the
 // malloc'd sentinel linked to itself), the vectors `_Vector_base` + `_STLP_alloc_proxy`.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -106,7 +107,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

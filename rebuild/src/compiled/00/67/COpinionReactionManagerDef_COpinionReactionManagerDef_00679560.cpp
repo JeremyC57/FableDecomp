@@ -16,6 +16,7 @@
 // Shape: STLport 4.6 container constructors inline (vector zeros; _Rb_tree_base header from malloc then
 //   _M_empty_initialize; _List_base self-linked node); CReactionFrequencyTraitsArray's user ctor (PDB ??0, inlined)
 //   is the unsigned 79-step loop clearing both rows.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 
@@ -191,7 +192,7 @@ class CReactionMatch;
 class CReactionFrequencyTraits;
 class CReactionFrequencyTraitsArray { public:
     CReactionFrequencyTraits* LowHigh[2][79];       // +0x000 low row, +0x13c high row
-    __forceinline CReactionFrequencyTraitsArray()
+    FABLE_FORCEINLINE CReactionFrequencyTraitsArray()
     {
         for (unsigned long i = 0; i < 79; ++i) {
             LowHigh[0][i] = 0;

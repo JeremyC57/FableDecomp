@@ -1,10 +1,11 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class CContainmentVolume { public: void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
 class C3DVector { public: float X; float Y; float Z; };
 class CPlane { public:
     C3DVector Normal;
     float     Distance;
-    __forceinline float GetSignedDistance(const C3DVector& point) const
+    FABLE_FORCEINLINE float GetSignedDistance(const C3DVector& point) const
     {
         return point.Z * Normal.Z + point.Y * Normal.Y + point.X * Normal.X - Distance;
     }
@@ -12,7 +13,7 @@ class CPlane { public:
 class CIsContainingSphere { public:
     C3DVector Point;
     float     Radius;
-    __forceinline bool operator()(const CPlane& plane) const { return plane.GetSignedDistance(Point) > -Radius; }
+    FABLE_FORCEINLINE bool operator()(const CPlane& plane) const { return plane.GetSignedDistance(Point) > -Radius; }
 };
 struct CContainmentVolume_Methods : CContainmentVolume {
     template<class TTest> bool IsContaining(const TTest& test) const;

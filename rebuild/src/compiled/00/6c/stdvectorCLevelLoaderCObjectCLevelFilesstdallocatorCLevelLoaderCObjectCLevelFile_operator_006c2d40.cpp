@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: ??4?$vector@VCLevelFiles@CObject@CLevelLoader@@V?$allocator@VCLevelFiles@CObject@CLevelLoader@@@std@@@std@@QAEAAV01@ABV01@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 #include "engine/CCountedPointer.h"
@@ -19,9 +20,9 @@ template<class Tag>__declspec(noinline) CLevelFiles*__fastcall uninitialized_cop
 template<class Tag>__declspec(noinline) CLevelFiles*__fastcall copy(CLevelFiles*a,CLevelFiles*b,CLevelFiles*c,const Tag&,int){while(a!=b)*c++=*a++;return c;}
 __declspec(noinline) void __fastcall _Destroy(CLevelFiles*a,CLevelFiles*b){while(a!=b)(a++)->~CLevelFiles();}
 template<class T>class allocator{};
-template<class T,class A=allocator<T> >class vector{public:T*_M_start,*_M_finish,*_M_end_of_storage;void _M_clear();__forceinline T*_M_allocate_and_copy(unsigned,T*,T*);vector&operator=(const vector&);};
+template<class T,class A=allocator<T> >class vector{public:T*_M_start,*_M_finish,*_M_end_of_storage;void _M_clear();FABLE_FORCEINLINE T*_M_allocate_and_copy(unsigned,T*,T*);vector&operator=(const vector&);};
 template<class T,class A>__declspec(noinline)void vector<T,A>::_M_clear(){_Destroy(_M_start,_M_finish);free(_M_start);}
-template<class T,class A>__forceinline T*vector<T,A>::_M_allocate_and_copy(unsigned n,T*a,T*b){T*fresh=n?(T*)malloc(n*sizeof(T)):0;uninitialized_copy(a,b,fresh,__false_type());return fresh;}
+template<class T,class A>FABLE_FORCEINLINE T*vector<T,A>::_M_allocate_and_copy(unsigned n,T*a,T*b){T*fresh=n?(T*)malloc(n*sizeof(T)):0;uninitialized_copy(a,b,fresh,__false_type());return fresh;}
 template<class T,class A>vector<T,A>&vector<T,A>::operator=(const vector&rhs){
  if(&rhs!=this){
   const unsigned count=rhs._M_finish-rhs._M_start;

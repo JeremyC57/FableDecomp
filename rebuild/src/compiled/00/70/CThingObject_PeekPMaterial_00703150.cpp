@@ -8,7 +8,8 @@
 // Shape: returned by value through the hidden pointer; the hit arm builds a zeroed CDefPointer local, fills it through GetDef
 // and returns it by copy (VC7.1 has no NRVO: the copy ctor's add-ref and the local's release merge into
 // `inc ; mov eax,edx ; dec eax`), the miss arm returns a default-constructed (null) pointer.
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;               // slot 1

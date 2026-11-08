@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -58,7 +59,7 @@ class CParticleSimulation { public:                       // Ego_r.pdb, retail 0
     unsigned char _rest[0x50];                     // +0x30 .. +0x80
 };
 
-template<class In, class Out> __forceinline Out CopyVectors(In first, In last, Out result)
+template<class In, class Out> FABLE_FORCEINLINE Out CopyVectors(In first, In last, Out result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;

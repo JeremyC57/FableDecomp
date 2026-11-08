@@ -13,6 +13,7 @@
 // Layout: retail CSlider = Ego_r.pdb minus 0x30 (landed ctor 0x0054C050): Min +0x18c, Max +0x194, Step +0x19c, Value +0x1a4, Move +0x1ac,
 //   OldValue +0x1ad, StartValue +0x1b5, Actions +0x1c0, PDefAction +0x1d4, PLeftArrow +0x1d8, PRightArrow +0x1dc, PreviousValue +0x1e0;
 //   the slider's CActionParam base sits at +0x18.
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
@@ -29,7 +30,7 @@ template <class T> struct CRetailListIterator {
 };
 template <class T> struct CRetailList {
     CRetailListNode<T>* _M_node;
-    __forceinline CRetailList() : _M_node(0) {
+    FABLE_FORCEINLINE CRetailList() : _M_node(0) {
         CRetailListNode<T>* n = (CRetailListNode<T>*)malloc(sizeof(CRetailListNode<T>));
         n->_M_next = n;
         n->_M_prev = n;
@@ -92,7 +93,7 @@ struct CInlineAction {                                  // the same 16-byte CAct
     CRetailList<CActionParam*> UIActionParams;
     CRetailList<long> ThingActionParams;
     bool Valid;
-    __forceinline CInlineAction() : ActionType(0), Valid(true) { }
+    FABLE_FORCEINLINE CInlineAction() : ActionType(0), Valid(true) { }
 };
 struct CInlineActionPointer {
     CInlineAction* m_pObject;
@@ -116,7 +117,7 @@ struct __false_type { __false_type() { } };
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);   // 0x0054A2A0
-    __forceinline void push_back(const T& x) {
+    FABLE_FORCEINLINE void push_back(const T& x) {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
                 new (_M_finish) T(x);

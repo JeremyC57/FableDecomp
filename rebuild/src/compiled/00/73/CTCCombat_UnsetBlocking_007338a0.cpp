@@ -15,6 +15,7 @@
 // Shape: the mode manager is an uninitialised local filled by the inlined lookup (the miss path reads the slot
 //   and duplicates the tail); the two bools are cleared from one `xor al,al`, +0x63 then +0x62.
 // Model: the retail CTCCombat layout is local (engine/CTCCombat.h still has the PDB's 16-byte vectors: header debt).
+#include "fable_compiler.h"
 class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
@@ -36,7 +37,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

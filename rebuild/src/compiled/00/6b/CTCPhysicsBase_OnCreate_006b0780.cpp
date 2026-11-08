@@ -11,8 +11,9 @@
 //   update (`X = Y = Z = 0` written in OnCreate hoists the +0x3c byte load above them).
 // Tried: pointer local + ReleaseDef, RAII CDefPointer destructor (re-reads the slot), holder struct, holder + Zero().
 //   Next: lane gap: copy-register allocation (retail loads the def into the callee-saved register first; the 0x0079DCC0 shape).
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class C3DVector { public:
     float X, Y, Z;
     void Zero() { X = Y = Z = 0.0f; }
@@ -40,14 +41,14 @@ template <class T> class CDefPointer { public:
         Object = 0;
     }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && DecRefToZero(def->m_refCount))
         def->Destroy();
 }
 template <class T> struct CDefHolder {                  // owns the reference GetDef handed over
     T* Object;
-    __forceinline ~CDefHolder() { ReleaseDef(Object); }
+    FABLE_FORCEINLINE ~CDefHolder() { ReleaseDef(Object); }
 };
 class CPhysicsDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];

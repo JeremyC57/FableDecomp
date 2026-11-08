@@ -10,6 +10,7 @@
 //   middle, comp);` -- the unsigned key test (`jae`) reuses the loaded key for the 20-byte by-value copy built in the
 //   argument area; `last` is re-read from its slot each pass.
 // Label correction: catalogued as `std_sort_IntrosortPartition20Byte_Callback`; the body is STLport `__partial_sort`.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
@@ -23,7 +24,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

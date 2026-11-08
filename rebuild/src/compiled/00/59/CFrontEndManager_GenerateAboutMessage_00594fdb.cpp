@@ -13,6 +13,7 @@
 //   loop); the per-entry counted temporary is released after the text is appended; the two parts are written out in full;
 //   the counted-pointer release and the vector accessors need __forceinline in this size TU; `entries[i]` returns a reference
 //   (`push [eax+edi*4]`); the registry default is an implicit L"" conversion; a non-static member gives `ret 4`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public:
@@ -37,23 +38,23 @@ struct CRefVirtual {
 };
 struct CRefCounted {
     mutable long m_count;
-    __forceinline void DecRef() const { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() const { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CRefBase : CRefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() const { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() const { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CIVCountedPointer { public:
     T* Data;
-    __forceinline ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
-    __forceinline T* operator->() const { return Data; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
+    FABLE_FORCEINLINE T* operator->() const { return Data; }
 };
 struct CTagArray {
     unsigned long* First;
     unsigned long* Last;
     unsigned long* Capacity;
-    __forceinline long size() const { return Last - First; }
-    __forceinline const unsigned long& operator[](unsigned long i) const { return First[i]; }
+    FABLE_FORCEINLINE long size() const { return Last - First; }
+    FABLE_FORCEINLINE const unsigned long& operator[](unsigned long i) const { return First[i]; }
 };
 namespace NGameText {
 class CGroupEntry : public CRefBase { public:              // NGameText group: its entry tags at +0x1c

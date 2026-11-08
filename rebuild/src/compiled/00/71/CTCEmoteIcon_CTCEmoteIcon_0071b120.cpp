@@ -17,6 +17,7 @@
 //   (EmitImplicitDestructor, not a retail function; chunk 562 0x005EDA50). The inline virtual ~CEnginePrimitiveHandle stores the
 //   handle vtable 0x0122F598, runs Clear() (null-safe GetReferenceCount() == 1 test, NotifyReleased(*this), Data.Reset(0)), the
 //   CIVCountedPointer destructor and ~CBaseClass (the agent 561/562 CEnginePrimitiveHandle model).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle;
 class CIVCountedPointeeBase { public:
@@ -35,7 +36,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     T* operator->() const { return static_cast<T*>(Object); }
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -44,25 +45,25 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
     unsigned long GetReferenceCount() const { return Data.GetRefCount(); }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (GetReferenceCount() == 1)
             Data->NotifyReleased(*this);
         Data.Reset(0);
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 class CBaseClassNonCopyable : public CBaseClass { public:

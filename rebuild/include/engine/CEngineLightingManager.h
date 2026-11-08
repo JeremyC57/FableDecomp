@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CENGINELIGHTINGMANAGER_H
 #define FABLE_ENGINE_CENGINELIGHTINGMANAGER_H
+#include "fable_compiler.h"
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER
 // Retail opt-in (chunk 723b): CEngineLightingManager : CEnginePrimitiveManager (+0) , CEngineComponent (+0xC) (RTTI
 // .?AVCEngineLightingManager@@); the engine's instance is 0x01436E9C (settled spelling g_pEngineLightingManager, NAME_FIXES_QUEUE c722). Own members from +0x18 with their
@@ -85,14 +86,14 @@ public:
     // ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z, ?SetCurrentEnvironmentThemeChannel@CEngineLightingManager@@
     // QAEXABVCEnginePrimitiveThemeChannelDesc@@@Z, ?SetSelfIlluminationAmbient@CEngineLightingManager@@QAEXJ@Z and
     // ?RestoreDefaultPrimitiveParameters@CEngineLightingManager@@QAEXXZ (the three resets in this order, 0x00BBE922..0x00BBE9BB).
-    __forceinline void SetEnableFadedShadowFactor(bool enable)
+    FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
     {
         if (FadedShadowDiffuseFactorEnabled != enable) {
             FadedShadowDiffuseFactorEnabled = enable;
             StateUpdateFlags |= 1;
         }
     }
-    __forceinline void SetCurrentEnvironmentThemeChannel(const CEnginePrimitiveThemeChannelDesc& channel)
+    FABLE_FORCEINLINE void SetCurrentEnvironmentThemeChannel(const CEnginePrimitiveThemeChannelDesc& channel)
     {
         if (CurrentThemeChannel.ChannelIndex0 != channel.ChannelIndex0 || CurrentThemeChannel.ChannelIndex1 != channel.ChannelIndex1 ||
             CurrentThemeChannel.ChannelBlendFactor != channel.ChannelBlendFactor) {
@@ -104,14 +105,14 @@ public:
             StateUpdateFlags |= 0xf;
         }
     }
-    __forceinline void SetSelfIlluminationAmbient(long percentage)
+    FABLE_FORCEINLINE void SetSelfIlluminationAmbient(long percentage)
     {
         if (SelfIlluminationAmbientPercentage != percentage) {
             SelfIlluminationAmbientPercentage = percentage;
             StateUpdateFlags |= 2;
         }
     }
-    __forceinline void RestoreDefaultPrimitiveParameters()
+    FABLE_FORCEINLINE void RestoreDefaultPrimitiveParameters()
     {
         SetEnableFadedShadowFactor(false);
         SetCurrentEnvironmentThemeChannel(CEnginePrimitiveThemeChannelDesc());

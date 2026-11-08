@@ -16,6 +16,7 @@
 // not escape: the def stays in ebp from the call to the release and the out word is reused by the first filter; the base
 // def is a named local (GetSubDef setup order), the set pointer a named local (lea edi,[ebp+28h]) and the entry a named
 // local (the second filter dies before the index call, keeping its base-vtable dtor store).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                         // 0x00BFEA14
 
 class CCharString { public:
@@ -87,7 +88,7 @@ class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }

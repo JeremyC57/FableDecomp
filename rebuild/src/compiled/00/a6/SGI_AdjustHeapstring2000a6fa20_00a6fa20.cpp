@@ -2,8 +2,9 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: AdjustHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
+#include "fable_compiler.h"
 class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);bool operator<(const CCharString&)const;};
-struct Payload_00a6fa20 {int data[4];Payload_00a6fa20(){}__forceinline Payload_00a6fa20(const Payload_00a6fa20& o){data[0]=o.data[0];data[1]=o.data[1];data[2]=o.data[2];data[3]=o.data[3];}};
+struct Payload_00a6fa20 {int data[4];Payload_00a6fa20(){}FABLE_FORCEINLINE Payload_00a6fa20(const Payload_00a6fa20& o){data[0]=o.data[0];data[1]=o.data[1];data[2]=o.data[2];data[3]=o.data[3];}};
 template<class K,class V> struct Pair_00a6fa20 { K first;V second;Pair_00a6fa20(){}Pair_00a6fa20(const Pair_00a6fa20& p):first(p.first),second(p.second){} };
 typedef Pair_00a6fa20<CCharString,Payload_00a6fa20> Record_00a6fa20;
 struct Compare_00a6fa20 {int state;bool operator()(const Record_00a6fa20&a,const Record_00a6fa20&b)const{return a.first.operator<(b.first);}};

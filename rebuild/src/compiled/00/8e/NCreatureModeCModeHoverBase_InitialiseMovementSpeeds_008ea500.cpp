@@ -15,6 +15,7 @@
 //   {ThetaLow, ThetaHigh, RadHigh}, MovementType +0x10, MovementSpeed +0x14).
 // Shape: the inline CCharString EndsWith (the landed 0x005955AB model) with null-first Length()/c_str() ternaries (`== 0 ? ...`);
 //   the speeds are written as one chained assignment (fst / fstp).
+#include "fable_compiler.h"
 #include <string.h>
 extern char g_emptyString[];                            // 0x0129AAF4
 struct CStringData { char* Text; long Length; };
@@ -24,7 +25,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
-    __forceinline bool EndsWith(const CCharString& suffix) const
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
     {
         long offset = Length() - suffix.Length();
         if (offset >= 0)

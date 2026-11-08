@@ -1,4 +1,5 @@
 // Self-contained original target and lookup; external engine calls mocked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -2039,7 +2040,7 @@ public:
  unsigned char unreadThingTail[sizeof(CThingLayout)-0x70];
 public:unsigned long GetTypeFlags()const{return ThingTypeFlags;}
  bool HasTC(ETCInterfaceType t)const{if(UsingComponents._M_w[t>>5]&(1UL<<(t&31)))return true;return false;}
- __forceinline const CTCBase&GetTC(ETCInterfaceType t)const{return *Components.Find(t)->second;}
+ FABLE_FORCEINLINE const CTCBase&GetTC(ETCInterfaceType t)const{return *Components.Find(t)->second;}
 };
 // Layout: native physical bitfieldbc has EvadeAllHits at bit3.
 class CThingPhysical:public CThing{

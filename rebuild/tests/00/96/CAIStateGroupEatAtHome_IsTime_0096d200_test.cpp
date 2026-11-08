@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
@@ -222,7 +223,7 @@ namespace std{template<class K,class V>struct pair{K first;V second;};template<c
 template<class T>class CArray:public std::vector<T>{};template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef const value_type* const_iterator;CArray<value_type> Data;Cmp Compare;bool Dirty;__declspec(noinline) const_iterator LowerBound(const K& key)const{const_iterator first=Data.begin();long count=Data.end()-first;while(count>0){long half=count/2;const_iterator middle=first+half;if(middle->first<key){first=middle+1;count-=half+1;}else count=half;}return first;}V Get(const K key)const{const_iterator p=LowerBound(key);const_iterator last=Data.end();return (p==last || key<p->first?last:p)->second;}};
 // Layout: no active CThing header. Original UsingComponents+32 and Components+68; actual const LowerBound overload004365b0.
-class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>__forceinline bool GetTC(T** out)const{if(!(UsingComponents[1]&8))return false;*out=(T*)Components.Get(TC_VILLAGE_MEMBER);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
+class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>FABLE_FORCEINLINE bool GetTC(T** out)const{if(!(UsingComponents[1]&8))return false;*out=(T*)Components.Get(TC_VILLAGE_MEMBER);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
 class CTCVillage:public CTCVillage_HeaderLayout{public:bool IsEatTime()const;};class CTCVillageMember:public CTCBase{public:CTCVillage* GetPVillage()const;};
 // Layout: genuine state-group polymorphism replaces flat header vptr; PBrain+4. Other inherited owner fields are unused.
 class CBaseClass{public:virtual ~CBaseClass(){}};

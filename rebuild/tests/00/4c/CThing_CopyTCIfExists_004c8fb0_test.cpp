@@ -1,4 +1,5 @@
 // Behaviour test for 004c8fb0: body copied from src/004c8fb0.cpp (CThing::CopyTCIfExists), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -44,7 +45,7 @@ public:
     CInterfaceMap Components;
     void CopyTCIfExists(const CTCBase& source);
 };
-__forceinline CTCBase* GetTC(CThing* thing, long type)
+FABLE_FORCEINLINE CTCBase* GetTC(CThing* thing, long type)
 {
     long key = type;
     CInterfaceMap* map = &thing->Components;

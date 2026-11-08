@@ -1,4 +1,5 @@
 // 0072caa0 behaviour test for CTCSpecialAbilities::SetupAssassinRush
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -67,7 +68,7 @@ public:
     unsigned char Dead : 1;
     CPlayer& GetPlayer() { return g_player; }
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template <class T> __forceinline T* GetTC(ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const CInterfaceMap* map = &Components;

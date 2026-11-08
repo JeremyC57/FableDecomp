@@ -7,11 +7,12 @@
 // Layout: the berserked effect vector<long> sits at +0x80 in retail (STLport begin/end/capacity; the PDB's 16-byte debug vectors put it at +0x94).
 // Shape: the inlined generator step `seed = GFROR13(seed * 0x24A1 + 0x24DF)` and `n ? r % n : 0`; the generator is a named local fetched
 //   BEFORE the size is computed; the non-empty arm is the nested one so `return 0` lands at the end.
+#include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long value);     // 0x00497890
 struct CRandomGenerator {
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
-    __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
 struct CEngineRandomOwner {                       // the object at +0x24 of the engine singleton
     CRandomGenerator* GetRandomGenerator();       // 0x0049D800

@@ -22,6 +22,7 @@
 //   store) cannot be written against it (NOTES.md header debt).
 // Shape: the landed CAT_Phase1Guard::Init 0x00F083A0 (same TU) spawn block; by-value CScriptThing arguments are the inline
 //   copy (InlineCopy tag, as the landed CAT_Sentry::Main), CSpawnedFunc1::Par1 the out-of-line one.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -35,7 +36,7 @@ void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
-    __forceinline CBaseClass() { }
+    FABLE_FORCEINLINE CBaseClass() { }
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
@@ -53,7 +54,7 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
     CCountedPointer<CScriptThing>     PImp;            // +0x04
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other);           // 0x004ABE90 (the out-of-line copy)
-    __forceinline CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
+    FABLE_FORCEINLINE CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing();                                   // 0x004AA840
 };
 typedef long EScriptingStateGroups;
@@ -189,7 +190,7 @@ template <class TClass, class TPar1> class CSpawnedFunc1 : public CSpawnedFuncBa
     void (TClass::*Func)(TPar1);                       // +0x34
     TClass* PClass;                                    // +0x38
     TPar1   Par1;                                      // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, TClass* pclass, void (TClass::*func)(TPar1), TPar1 par1)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, TClass* pclass, void (TClass::*func)(TPar1), TPar1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
     virtual void SuspendableProcess();
 };

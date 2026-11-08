@@ -16,6 +16,7 @@
 //   `explicit vector(n)` (allocate 3, then uninitialized_fill_n of a T() temporary built after the allocation, through the
 //   element copy ctor with a count-down in the dead `owner` slot; the empty temporary has no destructor call in retail, so
 //   the 12-byte element is modelled without one).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -94,14 +95,14 @@ struct CModifierListVector {                           // vector<vector<CModifie
     CModifierEntryList*     _M_start;
     CModifierEntryList*     _M_finish;
     SModifierListAllocProxy _M_end_of_storage;
-    static __forceinline CModifierEntryList* uninitialized_fill_n(CModifierEntryList* first, unsigned long n, const CModifierEntryList& value)
+    static FABLE_FORCEINLINE CModifierEntryList* uninitialized_fill_n(CModifierEntryList* first, unsigned long n, const CModifierEntryList& value)
     {
         CModifierEntryList* cur = first;
         for (; n > 0; --n, ++cur)
             new (cur) CModifierEntryList(value);
         return cur;
     }
-    __forceinline explicit CModifierListVector(unsigned long n)
+    FABLE_FORCEINLINE explicit CModifierListVector(unsigned long n)
         : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = (CModifierEntryList*)malloc(n * sizeof(CModifierEntryList));

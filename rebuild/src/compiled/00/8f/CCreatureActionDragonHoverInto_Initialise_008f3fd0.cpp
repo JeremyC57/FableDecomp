@@ -10,6 +10,7 @@
 // the new position is a default-constructed C3DVector assigned member by member (X/Y as dword moves, Z - offset on the FPU; a
 // 3-float ctor routes X/Y through the FPU, a copy + `Z -= k` reloads Z from the copy); the component lookup result is
 // not tested, so the "missing" path writes through the uninitialised out-parameter (two tails).
+#include "fable_compiler.h"
 class CTCBase;
 
 #include "engine/C3DVector.h"
@@ -58,7 +59,7 @@ class CThingCreatureBase : public CThing { public:
     CPhysicsBody* m_pBody;                      // +0x60
     void ResetPosition(const C3DVector& position) { m_pBody->ResetPosition(position); }
     C3DVector GetFacing() const { return m_pBody->GetFacing(); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

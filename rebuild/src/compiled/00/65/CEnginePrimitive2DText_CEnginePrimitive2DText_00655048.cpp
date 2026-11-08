@@ -8,6 +8,7 @@
 // channels to an inline Set), the text through its copy constructor and the font pointer last. Same layout as the
 // 0x00543910 constructor of this chunk. The colour copy constructor and Set must be `__forceinline` (the /Os TU calls them
 // out of line otherwise).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class C2DVector { public:
@@ -16,14 +17,14 @@ class C2DVector { public:
 
 class CRGBColour { public:
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
         R = r;
         G = g;
         B = b;
         A = a;
     }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
 class CWideString { public:

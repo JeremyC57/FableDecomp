@@ -22,6 +22,7 @@
 //   handle gives `mov ebx,[esi+14h]; add ebx,58h`, and the plain member path reloads it for Release.
 //   The local CTimer has plain inline ctor / dtor and __forceinline operator= / GetTime (the landed 0x00D84D60 model): the two
 //   wait loops expand ~CTimer, the other exits call 0x00CD4470.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -43,8 +44,8 @@ enum EHeroAbility { HERO_ABILITY_NULL=0, HERO_ABILITY_FORCE_PUSH=1, HERO_ABILITY
 extern CGameScriptInterfaceBase* pDSTGame;               // 0x0143E8F8
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();
 
 inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing):Thing(thing) {}

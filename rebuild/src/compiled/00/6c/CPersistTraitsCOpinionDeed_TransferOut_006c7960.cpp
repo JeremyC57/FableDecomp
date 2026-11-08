@@ -17,6 +17,7 @@
 //   CPersistTraits<long>::TransferOut (copy into the dead `out` slot), each bool through the inline
 //   `if (*value) out += "TRUE"; else out += "FALSE";` (one merged call; the witness flag is always written as a false
 //   local, which folds to "FALSE"). `*value` is re-read after every call. No EH frame. Speed-optimised (default) TU.
+#include "fable_compiler.h"
 class CPersistContext;
 class CThing;
 class CCharString {
@@ -59,14 +60,14 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
     {
         long copy = *value;
         TransferOutLong(context, out, &copy);
     }
 };
 template <> struct CPersistTraits<bool> {
-    __forceinline void TransferOut(CPersistContext* context, CCharString* out, const bool* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const bool* value) const
     {
         if (*value)
             *out += "TRUE";

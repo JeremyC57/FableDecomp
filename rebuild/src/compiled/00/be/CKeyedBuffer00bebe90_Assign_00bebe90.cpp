@@ -11,6 +11,7 @@
 // Layout: +0x20 the tree {head, size}, +0x2c char* first, +0x30 char* finish (0x34 bytes).
 // The manifest label "CCreatureAbilityDef::Copy" is propagated and rejected (the PDB
 // CCreatureAbilityDef has no tree member); the argument is the tree itself, not a def.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
 struct CRetailTree_erase004aba70 {             // std::map/set: head + size
@@ -22,18 +23,18 @@ struct CRetailTree_erase004aba70 {             // std::map/set: head + size
 struct CRetailVector_char {                    // SGI vector<char>: start / finish (end-of-storage not touched here)
     char* first;
     char* finish;
-    static __forceinline char* CopyTrivial(const char* copyFirst, const char* copyLast, char* result)
+    static FABLE_FORCEINLINE char* CopyTrivial(const char* copyFirst, const char* copyLast, char* result)
     {
         return (copyLast == copyFirst) ? result
              : static_cast<char*>(memmove(result, copyFirst, copyLast - copyFirst)) + (copyLast - copyFirst);
     }
-    __forceinline char* erase(char* eraseFirst, char* eraseLast)
+    FABLE_FORCEINLINE char* erase(char* eraseFirst, char* eraseLast)
     {
         char* i = CopyTrivial(eraseLast, finish, eraseFirst);
         finish = i;
         return eraseFirst;
     }
-    __forceinline void clear() { erase(first, finish); }
+    FABLE_FORCEINLINE void clear() { erase(first, finish); }
 };
 
 struct CKeyedBuffer_00bebe90 {

@@ -1,6 +1,7 @@
 // Behaviour test for 008e0060: final.cpp copied verbatim (CRT names wrapped and `long` forced to 32 bits under g++; build
 // with `g++ -fpermissive`), every declared callee stubbed below so the calls, their arguments and the vectors are observable.
 // NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -39,7 +40,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1

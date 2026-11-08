@@ -3,6 +3,7 @@
 // members read at -4 (CurrentTime +0x2c, LastEventTime +0x190, EventDelay +0x188). Callees: LoadAndReturnDef (primary
 // slot 108 on this-4), CClickable::ProcessEvent 0x0055AD60. `test ah,5 ; jnp` = early out on the ordered `<`.
 // Name from Ego_r.pdb: ?ProcessEvent@CFrontEndButton@NUISystem@@UAEXW4EEvent@2@@Z.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -18,7 +19,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

@@ -1,4 +1,5 @@
 // Behaviour test for CInputProcessSpecialAbilities::Update (0x0068FF50): which button flags are shown and the latch.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 #ifndef _MSC_VER
@@ -32,7 +33,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it;
         return it;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -52,7 +53,7 @@ class CThing { public:
     unsigned char  _pad50[0x91 - 0x50];
     unsigned char  Dead : 1;                       // +0x91 bit 0
     unsigned char  _bits91 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class CPlayer {
 public:

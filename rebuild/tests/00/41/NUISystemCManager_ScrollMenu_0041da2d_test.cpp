@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -579,14 +580,14 @@ class CComponent { public:
  typedef bool(CComponent::*DraggedMethod)();
  typedef CComponent*(CComponent::*ScrollBarMethod)();
  typedef void(CComponent::*ChangeVectorMethod)(const C2DVector&,float,bool);
- __forceinline bool IsDragged(){return (this->*static_cast<DraggedMethod*>(VTable)[150])();}
- __forceinline CComponent* GetScrollBar(){return (this->*static_cast<ScrollBarMethod*>(VTable)[175])();}
- __forceinline void ChangePositionDelta(const C2DVector& d,float time,bool linear){(this->*static_cast<ChangeVectorMethod*>(VTable)[33])(d,time,linear);}
+ FABLE_FORCEINLINE bool IsDragged(){return (this->*static_cast<DraggedMethod*>(VTable)[150])();}
+ FABLE_FORCEINLINE CComponent* GetScrollBar(){return (this->*static_cast<ScrollBarMethod*>(VTable)[175])();}
+ FABLE_FORCEINLINE void ChangePositionDelta(const C2DVector& d,float time,bool linear){(this->*static_cast<ChangeVectorMethod*>(VTable)[33])(d,time,linear);}
 };
 class CScrollingViewport:public CComponent { public:
  unsigned char NativeViewportState[0x188-sizeof(void*)];CComponent* PScrollBar;
  typedef float(CScrollingViewport::*SpeedMethod)();
- __forceinline float GetScrollingSpeed(){return (this->*static_cast<SpeedMethod*>(VTable)[144])();}
+ FABLE_FORCEINLINE float GetScrollingSpeed(){return (this->*static_cast<SpeedMethod*>(VTable)[144])();}
 };
 struct ComponentNode {ComponentNode* Next;ComponentNode* Previous;CComponent* Data;};
 extern CScrollingViewport* g_pActiveScrollingViewport; //013B8AAC
@@ -594,8 +595,8 @@ extern ComponentNode* g_ActiveListHead; //013B8A98
 class CManager { public:
  void* VTable;unsigned char NativeManagerState[0xc4-sizeof(void*)];float DescriptionScrollingOffset;
  typedef void(CManager::*EventMethod)(EEvent);
- __forceinline void SetEvent(EEvent e){(this->*static_cast<EventMethod*>(VTable)[0])(e);}
- __forceinline void ScrollViewport(CScrollingViewport* viewport,long count){
+ FABLE_FORCEINLINE void SetEvent(EEvent e){(this->*static_cast<EventMethod*>(VTable)[0])(e);}
+ FABLE_FORCEINLINE void ScrollViewport(CScrollingViewport* viewport,long count){
   if(count>0){DescriptionScrollingOffset=count*viewport->GetScrollingSpeed();SetEvent(ScrollForward);DescriptionScrollingOffset=-1.0f;}
   else{count=-count;DescriptionScrollingOffset=count*viewport->GetScrollingSpeed();SetEvent(ScrollBackward);}
  }

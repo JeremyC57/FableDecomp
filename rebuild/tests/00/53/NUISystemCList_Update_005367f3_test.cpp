@@ -4,6 +4,7 @@
 // is sent to 4, loses states 2..5 and gets ten 0.2f updates; otherwise none of that happens. Then the base update always
 // runs, and when the state change is finished: 6 -> ChangeState(0); 5 -> ChangeState(3) plus the selected child to 3;
 // 0 / 3 run the inactive / selected actions. The temporary def is released.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -26,15 +27,15 @@ public:
 namespace NUISystem {
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00() { }
     virtual void DestroySelf() { ++g_destroyed; }
 };
 class CUIDef : public CDefVirtual, public CRefCounted { public:
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) DestroySelf(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) DestroySelf(); }
     bool IsFrontList;
 };
 template <class T> class CDefPointer {
@@ -43,7 +44,7 @@ public:
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) const_cast<CUIDef*>(Object)->m_count++; }   // model: counted copy (no NRVO under /Od)
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer() { if (Object) const_cast<CUIDef*>(Object)->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) const_cast<CUIDef*>(Object)->ReleaseTemporary(); }
 };
 class CComponent;
 std::list<CComponent*> g_ComponentList;

@@ -10,6 +10,7 @@
 // (the separate [esp+0x10] slot), the loop thing is pushed through an rvalue cast (its own [esp+0x1c] slot).
 // Layout (retail CThingManager): Things list sentinel +0x18, PlayerManager +0x30, Saving flag +0x9a;
 // CThing UsingComponents +0x20, Components +0x44, CurrentMapNumber +0x8e, flags byte +0x91.
+#include "fable_compiler.h"
 #include <new>
 
 class CCharString { public:
@@ -32,7 +33,7 @@ template <class T> struct CRetailVector {
         if (first) free(first);
     }
 };
-template <class T> __forceinline void Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void Construct(T* p, const T& value) { new (p) T(value); }
 template <class T> struct CRetailPtrVector {
     T* first;
     T* last;
@@ -87,8 +88,8 @@ public:
     bool IsGameStatePersisted();                        // 0x004C8280
     bool IsLevelLess();                                 // 0x004C7930
     void SetCurrentMapNumber(long map);                 // 0x004C7580
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;

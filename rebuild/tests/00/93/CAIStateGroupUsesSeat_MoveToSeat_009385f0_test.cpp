@@ -1,4 +1,5 @@
 // 009385f0 behaviour test: CAIStateGroup_UsesSeat::MoveToSeat (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -18,7 +19,7 @@ struct CTCUserActionPointBase;
 static CTCUserActionPointBase* g_point;
 static int g_hasInterface;
 class CThing { public:
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (interfaceType == 0x2d && g_hasInterface) { *ppOut = (T*)g_point; return true; }
         return false;

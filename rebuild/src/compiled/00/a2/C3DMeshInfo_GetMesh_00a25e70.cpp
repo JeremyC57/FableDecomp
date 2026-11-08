@@ -13,6 +13,7 @@
 // Layout: engine/C3DMeshInfo.h MeshData +0xc, LODDataSizes[4] +0x50; C3DMeshLODInfo Mesh +0x1c, FileData +0x24 (as
 //   GetMeshStats, modelled locally for the polymorphic CResource base).
 // Leaf: GetMesh
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -54,7 +55,7 @@ struct CMeshPointer {                              // CCountedPointer<const C3DM
     C3DMesh2* Object;                              // +0
     SCountBlock* Info;                             // +4
     CMeshPointer& operator=(const CMeshPointer& other);   // 0x00A2ACC0 (out of line at four sites)
-    __forceinline void Assign(const CMeshPointer& other)
+    FABLE_FORCEINLINE void Assign(const CMeshPointer& other)
     {
         SCountBlock* c = other.Info; C3DMesh2* p = other.Object;
         if (Info != c) {
@@ -78,7 +79,7 @@ class C3DMeshLODInfo : public CResource { public:
     unsigned char LOD;                     // +0x30
     bool UsedMeshStats;                    // +0x31
     bool BuildMesh(bool a, bool b);        // 0x00A24520
-    __forceinline void Touch()
+    FABLE_FORCEINLINE void Touch()
     {
         if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
             ListRemove();

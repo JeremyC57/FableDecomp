@@ -11,6 +11,7 @@
 //          def index word +0x8c, killer intelligent pointer +0xf4 (descriptive).
 // Shape: the spawn position is a named sum computed before the call, so the negated velocity (third argument) is formed
 //          after it; the sum is velocity + position (Z first through the inline ctor).
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -53,7 +54,7 @@ public:
     unsigned short          DefIndex;               // +0x8c
     unsigned char           _pad8e[0xf4 - 0x8e];
     CBaseIntelligentPointer Killer;                 // +0xf4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

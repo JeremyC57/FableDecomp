@@ -10,9 +10,10 @@
 // moves through esi; the implicit copy is `rep movsd`, even over named fields), then
 // `add [ecx+4],24h`; the empty __true_type temporary (user ctor, no byte store) is homed in the `x`
 // argument slot.
+#include "fable_compiler.h"
 struct SGoodsPlace {                        // 36 bytes
     long m_00, m_04, m_08, m_0c, m_10, m_14, m_18, m_1c, m_20;
-    __forceinline SGoodsPlace(const SGoodsPlace& o)
+    FABLE_FORCEINLINE SGoodsPlace(const SGoodsPlace& o)
         : m_00(o.m_00), m_04(o.m_04), m_08(o.m_08), m_0c(o.m_0c), m_10(o.m_10),
           m_14(o.m_14), m_18(o.m_18), m_1c(o.m_1c), m_20(o.m_20) {}
 };

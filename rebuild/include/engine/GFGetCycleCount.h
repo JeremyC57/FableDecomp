@@ -20,6 +20,7 @@
 //   read the same counter).
 #ifndef FABLE_ENGINE_GFGETCYCLECOUNT_H
 #define FABLE_ENGINE_GFGETCYCLECOUNT_H
+#include "fable_compiler.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
 #if defined(_MSC_VER) && _MSC_VER >= 1400
@@ -74,7 +75,7 @@ using fable_portable::GFGetCycleCount;
     __asm rdtsc \
     __asm mov dword ptr counter, eax \
     __asm mov dword ptr counter+4, edx
-__forceinline __int64 __fastcall GFGetCycleCount()
+FABLE_FORCEINLINE __int64 __fastcall GFGetCycleCount()
 {
     __int64 counter;
     __asm {

@@ -1,6 +1,7 @@
 // 009994a0 CAFile::CreateDirectoryW
 // Flags: /O2 /Oy /W3 /Gr /GS
 // Leaf: CreateDirectoryW
+#include "fable_compiler.h"
 #include <stdlib.h>
 namespace AFileSupport {
 struct CWideStringData {unsigned short* text,*last,*limit;int refs;};
@@ -21,8 +22,8 @@ namespace NFile{__declspec(noinline) bool __fastcall GetItemFromPath(const unsig
 //   operator const unsigned short*() is only declared (retail 0x0099AF00 is out of TU; an in-TU body changes the frame).
 // Nonconst/const wide-character conversions preserve99af00(path) and99af10(drive) identities.
 // Three256-word split buffers, MAX_PATH260 component and _MAX_DRIVE3;997880 emits only backslash-terminated components.
-namespace NFile{__forceinline long __fastcall ConvertDriveLetterToNumber(wchar_t c){if(c>='a'&&c<='z')return c-96;if(c>='A'&&c<='Z')return c-64;return 0;}}
-__forceinline CWideString ResolveExpandPath(const CWideString& input){return ExpandPath(input,GetCurrentWorkingDirectory());}
+namespace NFile{FABLE_FORCEINLINE long __fastcall ConvertDriveLetterToNumber(wchar_t c){if(c>='a'&&c<='z')return c-96;if(c>='A'&&c<='Z')return c-64;return 0;}}
+FABLE_FORCEINLINE CWideString ResolveExpandPath(const CWideString& input){return ExpandPath(input,GetCurrentWorkingDirectory());}
 }
 // CAFile is global in retail; AFileSupport only isolates the in-TU string, split and CRT-shaped helper models.
 class CAFile{ public:static void __fastcall CreateDirectoryW(const AFileSupport::CWideString&);};

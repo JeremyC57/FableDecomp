@@ -5,6 +5,7 @@
 // Actual Thing, Game, Resource and BaseObject headers; named full-width PMFs for verified slots7/8.
 // Naming wave 35: identity reg 00d2ae6b "EndGameScarletRobe" in 00d2aa40; Alloc 00d2cf80; vtable 012cc428 slot 1; PDB ?Main@CEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was CVtable_012cc428::vfunc_1 (wave3/labels_alloc.tsv); PDB ?Main@CEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CVtable012CC428@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); class CVtable012CC428 renamed CEndGameScarletRobe); same bytes.
+#include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CBaseObject.h"
@@ -26,7 +27,7 @@ extern const unsigned char ResourceVTable[]; //0127094C
 // It is not the distinct CBaseIntelligentPointer constructor 00A01B10.
 struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  void InitializeCBaseObject(); //0099A380, this points to flattened base at offset0
- __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
+ FABLE_FORCEINLINE ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  void DestroyCBaseObject(); //0099A430
  ~ScriptResource(){ //007E74D0; same body inlined on the early acquisition-failure exit
   if(PImp_Info){--PImp_Info->RefCount;if(PImp_Info->RefCount==0){PImp_Info->DeleteFunc(PImp_Info->Data);delete PImp_Info;}}

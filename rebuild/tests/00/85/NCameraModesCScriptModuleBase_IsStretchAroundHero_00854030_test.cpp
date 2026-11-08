@@ -1,6 +1,7 @@
 // Behaviour test for 0x00854030 NCameraModes::CScriptModuleBase::IsStretchAroundHero: true when the live camera point
 // thing has a camera-point component (interface 0x3F) whose subject is the hero, or else when the live origin thing is
 // a creature (type 2) whose player is the main player; false otherwise.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -58,7 +59,7 @@ class CThing { public:
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
     bool IsDead() const { return m_dead; }
-    template<class T> __forceinline bool PeekTC(const T** ppOut, long interfaceType) const   // FableWin.pdb ??$PeekTC@...@CThing@@QBE_NPAPB...@Z
+    template<class T> FABLE_FORCEINLINE bool PeekTC(const T** ppOut, long interfaceType) const   // FableWin.pdb ??$PeekTC@...@CThing@@QBE_NPAPB...@Z
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

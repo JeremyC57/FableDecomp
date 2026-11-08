@@ -2,6 +2,7 @@
 // Flags: /Gr
 // Leaf: _M_insert_overflow
 // Layout: vector3 pointers; pair stride8 and CWideString at+4 from ctor99b720 indexed access.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
@@ -11,7 +12,7 @@ struct __false_type {__false_type(){}};
 } // (hoisted to global scope: naming wave 22, the PDB CWideString)
 class CWideString { public:void* data;CWideString():data(0){} CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
 namespace FableVector_00569450 {
-template<class K,class V> struct pair {K first;V second;pair(){} __forceinline pair(const pair& o):first(o.first),second(o.second){}};
+template<class K,class V> struct pair {K first;V second;pair(){} FABLE_FORCEINLINE pair(const pair& o):first(o.first),second(o.second){}};
 typedef pair<int,CWideString> CKeyStringPair;
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct vector {
@@ -33,7 +34,7 @@ __declspec(noinline) void __fastcall _Destroy(CKeyStringPair* first,CKeyStringPa
  for(;first!=last;++first)first->~CKeyStringPair();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void vector<T>::_M_insert_overflow(T* position,const T& value,const __false_type&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

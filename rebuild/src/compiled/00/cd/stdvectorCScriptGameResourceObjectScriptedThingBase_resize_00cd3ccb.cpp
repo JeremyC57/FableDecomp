@@ -5,6 +5,7 @@
 // Callees: vector::erase(iterator, iterator) 0x00CD3228, vector::_M_fill_insert(iterator, size_type, const T&) 0x00CD378D.
 // Shape (family K101, representative 0x0046B681): STLport 4.6 `resize(n, x)` with the inline insert(pos, n, x) forwarding to
 //   _M_fill_insert; size TU (`optimize("s", on)`), so the tiny accessors are __forceinline; the signed `sar 4` size.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CScriptGameResourceObjectScriptedThingBase {       // Ego_r.pdb 16 bytes (vtable 0x0127094C, PImp +0x08); opaque here
 public:
@@ -19,12 +20,12 @@ public:
     _Tp* _M_start;                                          // +0x00
     _Tp* _M_finish;                                         // +0x04
     _Tp* _M_end_of_storage;                                 // +0x08
-    __forceinline iterator begin() { return _M_start; }
-    __forceinline iterator end() { return _M_finish; }
-    __forceinline size_type size() const { return size_type(_M_finish - _M_start); }
+    FABLE_FORCEINLINE iterator begin() { return _M_start; }
+    FABLE_FORCEINLINE iterator end() { return _M_finish; }
+    FABLE_FORCEINLINE size_type size() const { return size_type(_M_finish - _M_start); }
     iterator erase(iterator __first, iterator __last);                          // 0x00CD3228
     void _M_fill_insert(iterator __pos, size_type __n, const _Tp& __x);         // 0x00CD378D
-    __forceinline void insert(iterator __pos, size_type __n, const _Tp& __x) { _M_fill_insert(__pos, __n, __x); }
+    FABLE_FORCEINLINE void insert(iterator __pos, size_type __n, const _Tp& __x) { _M_fill_insert(__pos, __n, __x); }
     void resize(size_type __new_size, const _Tp& __x)
     {
         if (__new_size < size())

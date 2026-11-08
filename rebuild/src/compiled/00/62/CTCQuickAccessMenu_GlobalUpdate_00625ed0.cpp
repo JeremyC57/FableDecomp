@@ -19,6 +19,7 @@
 // +0x10, Quitting +0x1c). The interface-0x11 component carries two STLport sets at +0x1fc / +0x208 ({header, count}).
 // Shape: Components.clear() as the STLport erase(begin(), end()) with a trivial pointer copy; the list clear and the two
 // set clears are the inlined STLport bodies; the front-end counted result is released with the DecRef/GetRefCount pair.
+#include "fable_compiler.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -40,7 +41,7 @@ struct CThingIface {                                        // CThing: interface
         return false;
     }
     template <class T>
-    __forceinline void GetInterface(long type, T** out)
+    FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         if (HasTC(type)) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

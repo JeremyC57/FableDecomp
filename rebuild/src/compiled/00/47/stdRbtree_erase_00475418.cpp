@@ -6,6 +6,7 @@
 // Shape (family M063, representative 0x00475418): STLport `__y = _Rebalance_for_erase(__position._M_node, _M_header._M_data->
 //   _M_parent, _M_header._M_data->_M_left, _M_header._M_data->_M_right); _Destroy(&__y->_M_value_field); _M_header.deallocate(
 //   __y, 1); --_M_node_count;` with the allocator's null-tested free inline.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void*);                      // 0x00BFEA14
 class CCharString {
@@ -14,14 +15,14 @@ public:
     void* PStringData;
 };
 namespace std {
-template <class _Tp> class allocator { public: allocator() { } __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p) free(__p); } };
+template <class _Tp> class allocator { public: allocator() { } FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p) free(__p); } };
 template <class _Tp> struct less { };
 template <class _T1, class _T2> struct pair {
     _T1 first;
     _T2 second;
 };
 template <class _Pair> struct _Select1st { };
-template <class _Tp> __forceinline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 struct _Rb_tree_node_base {
     bool _M_color;
     _Rb_tree_node_base* _M_parent;

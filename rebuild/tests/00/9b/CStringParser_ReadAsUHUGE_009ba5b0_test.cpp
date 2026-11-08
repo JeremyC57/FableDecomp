@@ -1,5 +1,6 @@
 // Fixture: the target body and original quote scanner are pasted unchanged.
 // Host uses its 64-bit unsigned long for the original 64-bit integer result.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long
 #define __cdecl
@@ -139,7 +140,7 @@ class CStringParser:public CStringParserFields{public:
  long SkipWhitespace();unsigned __int64 ReadAsUHUGE();
  unsigned long GetStringPos()const{return reinterpret_cast<const CCursorPos&>(CursorPos).StringPos;}
 protected:bool CalcInQuotes(bool,const char*,const char*)const;
- __forceinline void MoveStringPos(unsigned long n){if(n){
+ FABLE_FORCEINLINE void MoveStringPos(unsigned long n){if(n){
  reinterpret_cast<CCursorPos*>(CursorPos)->InQuotes=CalcInQuotes(reinterpret_cast<CCursorPos*>(CursorPos)->InQuotes,static_cast<const char*>(String)+reinterpret_cast<CCursorPos*>(CursorPos)->StringPos,static_cast<const char*>(String)+reinterpret_cast<CCursorPos*>(CursorPos)->StringPos+n);
  reinterpret_cast<CCursorPos*>(CursorPos)->StringPos+=n;
  }}

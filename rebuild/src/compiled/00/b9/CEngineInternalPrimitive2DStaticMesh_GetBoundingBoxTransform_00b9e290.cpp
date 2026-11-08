@@ -13,6 +13,7 @@
 //   a `rep movsd` copy of the left operand into the same frame words (lexical scope) and the twelve sums written to the
 //   destination. VC7.1 reassociates the three-term sums; the forms below reproduce retail's x87 term order (rows 1..3.1
 //   x,y,z; 3.2/3.3 and the translation row y,z,x) -- found by a per-element search over the 12 sum forms.
+#include "fable_compiler.h"
 #include "engine/CEngineInternalPrimitive2DStaticMesh.h"
 #include "engine/C3DMeshInfo.h"
 
@@ -25,7 +26,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
 
-    __forceinline CMatrix3x4& operator*=(const CMatrix3x4& b)
+    FABLE_FORCEINLINE CMatrix3x4& operator*=(const CMatrix3x4& b)
     {
         CMatrix3x4 a(*this);
         E11 = a.E11 * b.E11 + a.E13 * b.E31 + a.E12 * b.E21;
@@ -50,7 +51,7 @@ class C3DBoundingBox { public:
     void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0
 };
 
-static __forceinline C3DMeshInfo* GetMeshInfo(const CEngineInternalPrimitive2DStaticMesh* self)
+static FABLE_FORCEINLINE C3DMeshInfo* GetMeshInfo(const CEngineInternalPrimitive2DStaticMesh* self)
 {
     return *(C3DMeshInfo* const*)self->_pad_0x50;      // CEngineInternalPrimitiveMeshBase::MeshInfo (+0x50)
 }

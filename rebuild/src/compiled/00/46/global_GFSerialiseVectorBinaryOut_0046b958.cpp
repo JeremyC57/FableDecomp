@@ -11,6 +11,7 @@
 //   offset in ebp, the count run down in the `push ecx` frame word. Size TU, no frame pointer: `#pragma optimize("s", on)`.
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; CMusicSetEntry is local (no engine header); the vector is
 //   STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -42,7 +43,7 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CMusicSetEntry> {
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CMusicSetEntry* value) const
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStreamWriter& stream, const CMusicSetEntry* value) const
     {
         stream.WriteSLONG(value->NormalMusicID);
         stream.WriteSLONG(value->DangerMusicID);

@@ -13,6 +13,7 @@
 // `(i - first) / 28` by the 0x92492493 reciprocal, one `rep movsd` per element moved down (VC7.1 leaves plain
 // `inline` copy_backward / __copy_backward / __linear_insert out of line here, so all three are __forceinline); the else arm block-copies `*i`
 // again into the argument area for the unguarded insert.
+#include "fable_compiler.h"
 struct random_access_iterator_tag {
     random_access_iterator_tag() { }
 };
@@ -37,7 +38,7 @@ typedef CDegradableDef::CIsHealth1GTHealth2 CIsHealth1GTHealth2;
 
 void __fastcall __unguarded_linear_insert(CDegradableInfo* last, CDegradableInfo value, CIsHealth1GTHealth2 comp);   // 0x0067E550
 
-__forceinline CDegradableInfo* __copy_backward(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo* result,
+FABLE_FORCEINLINE CDegradableInfo* __copy_backward(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo* result,
                                         const random_access_iterator_tag&, int*)
 {
     for (int n = last - first; n > 0; --n)
@@ -45,12 +46,12 @@ __forceinline CDegradableInfo* __copy_backward(CDegradableInfo* first, CDegradab
     return result;
 }
 
-__forceinline CDegradableInfo* copy_backward(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo* result)
+FABLE_FORCEINLINE CDegradableInfo* copy_backward(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo* result)
 {
     return __copy_backward(first, last, result, random_access_iterator_tag(), (int*)0);
 }
 
-__forceinline void __linear_insert(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo value, CIsHealth1GTHealth2 comp)
+FABLE_FORCEINLINE void __linear_insert(CDegradableInfo* first, CDegradableInfo* last, CDegradableInfo value, CIsHealth1GTHealth2 comp)
 {
     if (comp(value, *first)) {
         copy_backward(first, last, last + 1);

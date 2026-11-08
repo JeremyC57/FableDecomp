@@ -10,6 +10,7 @@
 //   8-byte {Index, CCharString Name}) +4, DefaultIndex +0x10, RetailVersion +0x14.
 // Shape: operator[] as `*(begin_() + n)` through an inline accessor (retry-10 STLport rule). The flag byte and the count are inline by-value stream reads homed in the dead `stream` slot; the count is
 //   re-read from that slot for each loop test; the name temporary is a frame word.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -29,8 +30,8 @@ public:
     const unsigned char* m_pData;                   // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                               // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -44,8 +45,8 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline char ReadChar() { char v; Read(&v, sizeof(v)); return v; }
-    __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE char ReadChar() { char v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

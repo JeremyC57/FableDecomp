@@ -9,6 +9,7 @@
 // Shape: STLport 4.6 `__copy_backward_ptrs(first, last, result, const __false_type&)` with the SGI random-access
 //   `__copy_backward(.., random_access_iterator_tag(), (ptrdiff_t*)0)` inlined (`__forceinline` under "s"): the count is a
 //   signed divide by 12 (`push 0Ch ; pop ecx ; idiv`), the source addressed as result + (last - result), movsd x3 per step.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CSoundPair {                                          // Ego_r.pdb, 8 bytes (a class: mangled V)
@@ -27,7 +28,7 @@ template <class _T1, class _T2> struct pair {
 };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result,
                                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)

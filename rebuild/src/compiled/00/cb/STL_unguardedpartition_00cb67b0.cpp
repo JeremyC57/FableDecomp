@@ -16,11 +16,12 @@
 // CCharString::operator< is the inline handle compare in front of CBasicString<char>::operator< 0x00429950.
 // Same-TU stand-in of CBasicString<char>::operator< 0x00429950 (the landed body, kept out of line): with it VC7.1
 // knows the compare writes no memory and keeps the pivot key's handle in esi across the scans.
+#include "fable_compiler.h"
 #pragma auto_inline(off)
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;

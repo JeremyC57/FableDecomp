@@ -17,6 +17,7 @@
 // Shape: `for (;;)` with the termination return at the top (VC7.1 rotates it as retail does and sinks both returns' inline
 //   dtor copies to the end in source order; `while (!IsActiveThreadTerminating())` defers only the arm's return copy, so the
 //   two copies came out swapped, 230v230); the script IF macro's termination test opens the arm. CScriptThing's virtual dtor and the counted pointer's dtor are `__forceinline` (both exits inline the release).
+#include "fable_compiler.h"
 #include <string.h>
 #include "engine/CBaseClass.h"                         // vtable 0x01231710, ~CBaseClass 0x0099A2E0
 class CCharString { public:
@@ -28,7 +29,7 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"                       // vtable 0x01238C8C (79 slots)
-__forceinline CScriptThing::~CScriptThing() { }         // 0x004AA840 where it stays out of line
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() { }         // 0x004AA840 where it stays out of line
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const   // slot 18 (+0x48) 0x004AAAF0
 {
     if (!PImp.Data)

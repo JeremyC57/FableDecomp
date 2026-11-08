@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cassert>
 #include <cmath>
@@ -14,7 +15,7 @@ class C4DVector {public:float X,Y,Z,W;C4DVector(){} C4DVector(float x,float y,fl
 };
 class CMatrix4x4 {public:float E11,E12,E13,E14,E21,E22,E23,E24,E31,E32,E33,E34,E41,E42,E43,E44;
  float SetInverseOfUniformScaleRotationTranslation(const CMatrix4x4&);
-    __forceinline void TransformTransposedAssumeW(const C4DVector& src,C4DVector& dest,float w) const {
+    FABLE_FORCEINLINE void TransformTransposedAssumeW(const C4DVector& src,C4DVector& dest,float w) const {
         C4DVector vect=src;
         dest.X=E11*vect.X+E12*vect.Y+E13*vect.Z+E14*w;
         dest.Y=E21*vect.X+E22*vect.Y+E23*vect.Z+E24*w;

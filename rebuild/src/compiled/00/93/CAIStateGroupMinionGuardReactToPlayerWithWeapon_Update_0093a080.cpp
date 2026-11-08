@@ -17,6 +17,7 @@
 // Shape: the admonishing watch loop is placed at the end; the frame window compare is unsigned. In IsWithinWarningTime
 //         the world pointer is fetched into a local BEFORE CMainGameComponent::GetConstantFPS() is read (retail calls GetPThingWorld, then
 //         loads the global into ebx; a frames-per-second local read first puts the load ahead of the call).
+#include "fable_compiler.h"
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -43,14 +44,14 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    template<class U> __forceinline CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem((CBaseObject*)(other.GetPItem())); }
+    template<class U> FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem((CBaseObject*)(other.GetPItem())); }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {    // the MoveToThingProximity argument type
     virtual void v00();
     CIntelligentPointerThing(const CBaseIntelligentPointer& other);   // 0x00930D20
 };
-__forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !((CThing*)thing.GetPItem())->IsDead(); }
+FABLE_FORCEINLINE bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !((CThing*)thing.GetPItem())->IsDead(); }
 class CMessageEventManager { public:
     void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
                     float range, float radius, long data);   // 0x00687540
@@ -102,7 +103,7 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
 private:
     bool IsPlayerCarryingWeapon() const;        // 0x00939E70 ?IsPlayerCarryingWeapon@...@@ABE_NXZ (private)
 public:
-    __forceinline bool IsWithinWarningTime()
+    FABLE_FORCEINLINE bool IsWithinWarningTime()
     {
         const CWorld& world = PeekWorld();
         long framesPerSecond = CMainGameComponent::GetConstantFPS();

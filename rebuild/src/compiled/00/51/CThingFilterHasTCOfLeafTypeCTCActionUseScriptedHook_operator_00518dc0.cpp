@@ -19,6 +19,7 @@
 //   key still in its own slot).
 // Next: find the source form whose key temporary dies before the literal is built (VC then overlays both on the
 //   `thing` slot), e.g. the key from a separate GetTC<T>(ETCInterfaceType, T**) helper as Ego_r lists.
+#include "fable_compiler.h"
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570 (strcmp-style, 0 = equal)
 
 class CCharStringData { public:
@@ -70,7 +71,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long& type);       // 0x0040F020
-    __forceinline CTCBase* Find(ETCInterfaceType type)
+    FABLE_FORCEINLINE CTCBase* Find(ETCInterfaceType type)
     {
         SEntry* it = LowerBound(type);
         SEntry* sel = (it == last || type < it->type) ? last : it;
@@ -105,11 +106,11 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 bitset<274> of present interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline bool GetTCOfLeafType(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTCOfLeafType(T** out)
     {
         if (HasTC(T::StatGetInterfaceType())) {
             CTCBase* tc = m_interfaces.Find(T::StatGetInterfaceType());

@@ -14,6 +14,7 @@
 //   _S_minimum(_M_root()); _M_rightmost() = _S_maximum(_M_root()); } _M_node_count = x._M_node_count; }` -- the red
 //   colour store of both branches is hoisted above the test. VC7.1 keeps the tree copy constructor out of line under
 //   plain `inline` (a 19-byte forwarder, graded), so it is `__forceinline` here.
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
 #include "engine/CCountedPointer.h"
@@ -114,7 +115,7 @@ public:
         _M_rightmost() = this->_M_header._M_data;
     }
     public:
-    __forceinline _Rb_tree(const _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>& __x)   // inline in every retail set / map copy
+    FABLE_FORCEINLINE _Rb_tree(const _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>& __x)   // inline in every retail set / map copy
         : _Base(__x.get_allocator()), _M_node_count(0), _M_key_compare(__x._M_key_compare)
     {
         if (__x._M_root() == 0)

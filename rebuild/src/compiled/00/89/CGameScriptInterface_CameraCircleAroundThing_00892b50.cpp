@@ -11,6 +11,7 @@
 // CScriptModuleBase is 0x4c bytes.
 // Shape: /O2 (16-aligned entry); CCountedPointer(T*) __forceinline, handing the Object member to the info block. C3DVector
 // needs its user copy ctor: the implicit one copies through `lea eax,[esi+50h]` (199v197).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CThing;
 class CScriptThing {
@@ -46,7 +47,7 @@ public:
     T*              Object;
     CCPPointerInfo* Info;
     static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
-    __forceinline CCountedPointer(T* object) : Object(object)
+    FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
             Info = new CCPPointerInfo(DeleteObject, Object);

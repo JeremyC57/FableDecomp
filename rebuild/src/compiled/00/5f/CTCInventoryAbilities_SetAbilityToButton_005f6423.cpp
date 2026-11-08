@@ -13,6 +13,7 @@
 //   the value search is the landed 0x005EDF33 helper (an early `return it`, then `return last`), Insert builds the
 //   pair temporary in the 8-byte frame, push_back, `Dirty = true`, and the inline Update() re-reads Dirty before Sort().
 // Label correction: catalogued as `AbilityMap_SetData`; the PDB name is SetAbilityToButton.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -42,12 +43,12 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
     C    Compare;                                          // +0x0C
     bool Dirty;                                            // +0x0D
     value_type* LowerBound(const K& key);                  // 0x005F7F4C
-    __forceinline value_type* Find(const K& key)
+    FABLE_FORCEINLINE value_type* Find(const K& key)
     {
         value_type* it = LowerBound(key);
         return (it == this->end() || key < it->first) ? this->end() : it;
     }
-    __forceinline void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)   // a plain inline stays out of line in the size TU
     {
         this->push_back(value_type(key, value));
         Dirty = true;
@@ -62,7 +63,7 @@ template <class K, class V, class C> class CVectorMap : public vector<pair<K, V>
 
 typedef CVectorMap<long, EHeroAbility, CKeyPairCompareLess<long, EHeroAbility> > CAbilityButtonMap;
 
-__forceinline pair<long, EHeroAbility>* FindAbility(CAbilityButtonMap& map, EHeroAbility ability)
+FABLE_FORCEINLINE pair<long, EHeroAbility>* FindAbility(CAbilityButtonMap& map, EHeroAbility ability)
 {
     pair<long, EHeroAbility>* it = map.begin();
     pair<long, EHeroAbility>* last = map.end();

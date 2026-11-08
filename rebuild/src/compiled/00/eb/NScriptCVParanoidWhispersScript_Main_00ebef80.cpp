@@ -17,6 +17,7 @@
 // Layout: retail NScript headers (CLevelScriptBase 0x48); no CV_ParanoidWhispersScript member is touched.
 // Shape: the landed CV_IntroductionToTrophiesScript::Main 0x00E9C4B0 form (bindings with conditional name temporaries, the
 //   __forceinline SpawnFunction helper); the last spawn's name temporary is destroyed after the epilogue pops.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -57,7 +58,7 @@ public:
     void CheckForNecklaceAndQuit();                     // 0x00EBF1E0
     void WatchForAngryTraders();                        // 0x00EBF390
     // Source-level spawn helper of the landed quest rows (no retail symbol).
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 
 void CV_ParanoidWhispersScript::Main()

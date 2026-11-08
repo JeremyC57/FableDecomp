@@ -1,4 +1,5 @@
 // NThingShot::CTCShotDefinitionMultiArrow::GetWeaponTrailGraphic() -- loads the shot's multi-arrow sub-def into a local def pointer and returns its weapon-trail graphic id
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: GetWeaponTrailGraphic
@@ -18,7 +19,7 @@ struct CDefPointee {                         // counted def: count at +4, slot 1
     virtual void v00();
     virtual void Destroy() const;            // slot 1 (+4)
     mutable long m_refCount;                 // +0x04
-    __forceinline void Release() const
+    FABLE_FORCEINLINE void Release() const
     {
         if (--m_refCount == 0)
             Destroy();
@@ -33,7 +34,7 @@ struct CMultiArrowDef : CDefPointee {
 template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         Object->Release();
     }

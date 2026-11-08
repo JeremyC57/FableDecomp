@@ -14,6 +14,7 @@
 //          interface-0x13 component's held-item intelligent pointer at +0x141 (descriptive); the weapon's flag byte +0x91.
 // Shape: the barred test wraps the body (the `xor al,al` arm sits last); the default cast is a temporary of the
 //          SetCurrentAction call, the sheathe action a named local; both lookups are the ternary GetInterface (this in ebp).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -31,7 +32,7 @@ public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                        // +0x91
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

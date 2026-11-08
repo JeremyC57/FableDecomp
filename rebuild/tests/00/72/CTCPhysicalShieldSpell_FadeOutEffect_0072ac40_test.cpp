@@ -1,4 +1,5 @@
 // Behaviour test for 0072ac40: body copied from src/0072ac40.cpp (CTCPhysicalShieldSpell::FadeOutEffect), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,8 +17,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;
     unsigned char _pad4c[0x45];
     unsigned char m_removeFlags;
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

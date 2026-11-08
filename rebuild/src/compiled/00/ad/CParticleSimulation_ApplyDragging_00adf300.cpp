@@ -11,13 +11,14 @@
 // Shape: the 16-aligned CMatrix4x4 (`and esp,-16` frame) is built from the 3x4 by an inline converting constructor
 //   (`__forceinline`: transposed, last row 0,0,0,1); the in-place blend goes through an inline wrapper passing `*this` as the
 //   source (`push eax ; mov ecx,eax` with one `lea`); the blend factor is evaluated early by the scheduler.
+#include "fable_compiler.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix3x4 { public: float m[4][3]; };                  // rows: right, up, forward, position
 
 class __declspec(align(16)) CMatrix4x4 {
 public:
     float m[4][4];
-    __forceinline CMatrix4x4(const CMatrix3x4& o)
+    FABLE_FORCEINLINE CMatrix4x4(const CMatrix3x4& o)
     {
         m[0][0] = o.m[0][0]; m[0][1] = o.m[1][0]; m[0][2] = o.m[2][0]; m[0][3] = o.m[3][0];
         m[1][0] = o.m[0][1]; m[1][1] = o.m[1][1]; m[1][2] = o.m[2][1]; m[1][3] = o.m[3][1];

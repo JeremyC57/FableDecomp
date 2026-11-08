@@ -2,6 +2,7 @@
 // Leaf: ??$__copy_backward_ptrs@PAVCArenaRoundDef@@PAV1@@std@@YIPAVCArenaRoundDef@@PAV1@00ABU__false_type@0@@Z
 // Identity: proven; own _M_fill_insert callers pass result+__false_type (ret8), genuine STLport pointer dispatch around inlined random-access __copy_backward; same-template landed CFireHeartPatternDef twin00f34110. Record identity comes from its actual private wrapper/Transfer fields, not propagated catalog CThingBuildingDef labels.
 // Layout: original DefClass37 full CIV/Resource/DefPointee chain, original scalar40/vector44, true typed STLport vector/base/proxy; actual compiler-generated memberwise operator= invokes original base00431f10 and typed vector assignment. Unknown unused definition slots2–17 explicit, Transfer18/Copy19. Shared flattened headers retained as evidence.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -19,5 +20,5 @@ class CPersistContext;class CDefinitionManager;class CCharStringData;class CChar
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
 class CArenaWaveDef;class CArenaRoundDef:public CDefClassBase{public:long NumWaves;std::vector<CArenaWaveDef> Waves;CArenaRoundDef();CArenaRoundDef(const CArenaRoundDef&);virtual ~CArenaRoundDef();virtual void Transfer(CPersistContext&);virtual void Copy(const CDefClassBase*);virtual unsigned long GetSizeofClass();};   // def vtable 0x012FB288 (no RTTI): slot 0 0x00F25B40 (implicit inline dtor), Transfer 0x00F27E60, Copy 0x00F268F0, GetSizeofClass 0x00F25B30
-namespace std{struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};template<class I,class O,class D>__forceinline O __copy_backward(I first,I last,O result,const random_access_iterator_tag&,D*){for(D n=last-first;n>0;--n)*--result=*--last;return result;}template<class I,class O>O __fastcall __copy_backward_ptrs(I first,I last,O result,const __false_type&){return __copy_backward(first,last,result,random_access_iterator_tag(),(int*)0);}}
+namespace std{struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};template<class I,class O,class D>FABLE_FORCEINLINE O __copy_backward(I first,I last,O result,const random_access_iterator_tag&,D*){for(D n=last-first;n>0;--n)*--result=*--last;return result;}template<class I,class O>O __fastcall __copy_backward_ptrs(I first,I last,O result,const __false_type&){return __copy_backward(first,last,result,random_access_iterator_tag(),(int*)0);}}
 template CArenaRoundDef* __fastcall std::__copy_backward_ptrs(CArenaRoundDef*,CArenaRoundDef*,CArenaRoundDef*,const std::__false_type&);

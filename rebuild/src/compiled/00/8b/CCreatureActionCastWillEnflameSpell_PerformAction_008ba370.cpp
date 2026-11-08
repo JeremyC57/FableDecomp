@@ -5,6 +5,7 @@
 // @ 0x0040F020 (the inlined GetInterface lookup for type 0x95 = bit 21 of the bitset dword at +0x30; landed shape of 0x00849320).
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; the byte at +0xd of the component is set.
 // Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so `this` is modelled locally.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -15,7 +16,7 @@ class CThingCreatureBase { public:                 // engine/CThingCreatureBase.
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

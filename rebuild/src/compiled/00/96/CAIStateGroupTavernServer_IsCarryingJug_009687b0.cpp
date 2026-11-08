@@ -12,6 +12,7 @@
 // result `!found` is `neg ; sbb ; inc`; the def released without a null test (`dec [esi+4] ; jne`).
 // The engine header is padding only (PDB names PJug +0x14 ...), so a local model is used.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 
 class CDefPointeeBase { public:
@@ -65,7 +66,7 @@ class CThing { public:
     CDefPointer<CDefClassBase> PDef;            // +0x70 CDefPointer<const CThingDef>
     unsigned char _pad2[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

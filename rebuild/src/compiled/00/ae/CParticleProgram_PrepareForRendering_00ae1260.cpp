@@ -8,6 +8,7 @@
 // Layout: as the 4-argument overload 0x00AE1600 (retail 12-byte containers); only the matrix of the animation
 // arguments is used.
 // Shape: the buffer pointer from GetVectorBuffer stays in ebx for the transform and the blend.
+#include "fable_compiler.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix4x4;
 class C3DGroup2;
@@ -49,7 +50,7 @@ class CParticleSimulation { public:                       // Ego_r.pdb, retail 0
     unsigned char _rest[0x50];                     // +0x30 .. +0x80
 };
 
-template<class In, class Out> __forceinline Out CopyVectors(In first, In last, Out result)
+template<class In, class Out> FABLE_FORCEINLINE Out CopyVectors(In first, In last, Out result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;

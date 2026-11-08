@@ -17,17 +17,18 @@
 // pointers first, equal pointers never less) whose inner `*a < *b` is CBasicString<char>::operator< INLINED here as
 // `Compare(a->PData, b->PData) < 0` (`setl al`) -- in the landed 0x007AD060 TU it is an out-of-line strcmp loop. Both _M_insert
 // calls reuse the value's stack slot [ebp+0xC] for their hidden iterator result.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
 
 template <class C> class CBasicString { public:
     C* PData;                                            // +0x00
-    __forceinline bool operator<(const CBasicString& other) const { return Compare(PData, other.PData) < 0; }
+    FABLE_FORCEINLINE bool operator<(const CBasicString& other) const { return Compare(PData, other.PData) < 0; }
 };
 
 template <class T> struct CComparePointer {
-    __forceinline bool operator()(const T* a, const T* b) const
+    FABLE_FORCEINLINE bool operator()(const T* a, const T* b) const
     {
         bool result;
         if (b == a)

@@ -9,6 +9,7 @@
 //   left implicit, VC7.1 emits them out of line here) the implicit memberwise assignment written out (the def module out-lines it); the generated engine header
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 // Each morph class wraps one CVectorMap whose implicit assignment inlines: vector operator=, nothing for the empty comparator, the sorted byte at +0x0d.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CDefClassBase { public:
@@ -32,7 +33,7 @@ template<class V> class CVectorMap { public:   // retail 16 bytes (PDB 20): vect
     V m_vector;
     CKeyPairCompareLess m_compare;
     bool m_sorted;
-    __forceinline CVectorMap& operator=(const CVectorMap& other)
+    FABLE_FORCEINLINE CVectorMap& operator=(const CVectorMap& other)
     {
         m_vector = other.m_vector;
         m_compare = other.m_compare;
@@ -42,15 +43,15 @@ template<class V> class CVectorMap { public:   // retail 16 bytes (PDB 20): vect
 };
 class CTextureMorphs { public:
     CVectorMap<CTextureMorphEntryVector> Morphs;
-    __forceinline CTextureMorphs& operator=(const CTextureMorphs& other) { Morphs = other.Morphs; return *this; }
+    FABLE_FORCEINLINE CTextureMorphs& operator=(const CTextureMorphs& other) { Morphs = other.Morphs; return *this; }
 };
 class CSkeletalMorphs { public:
     CVectorMap<CSkeletalMorphEntryVector> Morphs;
-    __forceinline CSkeletalMorphs& operator=(const CSkeletalMorphs& other) { Morphs = other.Morphs; return *this; }
+    FABLE_FORCEINLINE CSkeletalMorphs& operator=(const CSkeletalMorphs& other) { Morphs = other.Morphs; return *this; }
 };
 class CParticleMorphs { public:
     CVectorMap<CParticleMorphEntryVector> Morphs;
-    __forceinline CParticleMorphs& operator=(const CParticleMorphs& other) { Morphs = other.Morphs; return *this; }
+    FABLE_FORCEINLINE CParticleMorphs& operator=(const CParticleMorphs& other) { Morphs = other.Morphs; return *this; }
 };
 
 class CHeroMorphDef : public CDefClassBase { public:

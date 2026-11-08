@@ -5,7 +5,8 @@
 // Shape: one `__forceinline` ClampToLimit helper expanded in both fallback arms: the stored arm forwards the fallback
 // into the compare, the other reads `*out`, and VC7.1 cross-jumps the two copies' compare/store tails; each clamp is
 // `if (*out > limit) *out = limit;` (an integer move of the limit).
-__forceinline void ClampToLimit(float* out, float limit, float secondaryLimit)
+#include "fable_compiler.h"
+FABLE_FORCEINLINE void ClampToLimit(float* out, float limit, float secondaryLimit)
 {
     if (limit != -1.0f) {
         if (*out > limit)

@@ -18,6 +18,7 @@
 //   tested), the vector-map lookup through a named map pointer in esi, and the emitter call made on the result
 //   even when it is null (retail behaviour).
 // Leaf: FadeOrKillEffect
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };
@@ -41,7 +42,7 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    template <class T> __forceinline void GetTC(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
+    template <class T> FABLE_FORCEINLINE void GetTC(T** ppOut, long interfaceType)   // leaves *ppOut alone when absent
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

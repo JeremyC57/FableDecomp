@@ -19,6 +19,7 @@
 //   GetDef needs its same-TU stand-in body (below, under auto_inline(off)): without it the def lands in the argument
 //   slot, is reloaded for the release and the frame/registers differ (LTCG knowledge that the pointer it fills does
 //   not escape).
+#include "fable_compiler.h"
 class CThingCreatureBase;
 class CTCBase;
 class CCharString { public:
@@ -28,7 +29,7 @@ class CCharString { public:
 };
 class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 class CSpecialAbilitiesLightningSpellDef { public:
     virtual void v00();
@@ -96,7 +97,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

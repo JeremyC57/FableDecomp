@@ -15,6 +15,7 @@
 //   thing walk breaks after the first enabled teleporter.
 // Layout: local view -- CTCInventoryMap teleport region list vector<long> +0x208, region count +0x23C; CWorld +0x20
 //   thing search tools (engine/CWorld.h); CRegion's linked-map vector<long> +0x00; teleporter (0xDD) enabled flag +0x10.
+#include "fable_compiler.h"
 #include <new>
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 namespace std {
@@ -113,8 +114,8 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                   // +0x20 bitset of interface types
     CInterfaceMap m_interfaces;                       // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long kind) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const
     {
         const CInterfaceMap::SEntry* it = m_interfaces.first;
         long count = m_interfaces.last - m_interfaces.first;
@@ -129,7 +130,7 @@ public:
         const CInterfaceMap::SEntry* end = m_interfaces.last;
         return (it == end || kind < it->type ? end : it)->component;
     }
-    template<class T> __forceinline T* PeekTC(long kind) const
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long kind) const
     {
         T* out;
         if (HasTC(kind))

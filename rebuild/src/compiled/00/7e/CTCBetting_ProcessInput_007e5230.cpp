@@ -10,6 +10,7 @@
 // dtor 0x0099EAE0, CTCBetting::PlaySound 0x007E51D0, CProcessedInput::SetHandled 0x00A0D390, CSubtitleRenderer::Clear
 // 0x00492BAB. Globals: betting flag 0x013BAE1D, bet placed 0x013BAE1E, bet 0x013BAE20, repeat delay/rates 0x01384040..4C.
 // Layout: CTCBetting as the landed 0x007E57C0; CBettingDef MaxBet +0x3c, MinBet +0x38, Step +0x40; hero gold TC (4) +0x3c.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -49,7 +50,7 @@ struct CTCMap {
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind);    // 0x0040F020
-    __forceinline CTCHeroStats* Find(long kind)
+    FABLE_FORCEINLINE CTCHeroStats* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
@@ -60,7 +61,7 @@ class CThing { public:
     unsigned long m_tcMask[9];                          // +0x20
     CTCMap        m_tcs;                                // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:

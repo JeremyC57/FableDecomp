@@ -16,6 +16,7 @@
 // The CSpawnedFuncBase constructor must be `__forceinline` (a plain inline one is emitted out of line).
 // Leaf: ??0CActiveEntityScriptBase
 
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
@@ -74,7 +75,7 @@ class CSpawnedFuncBase : public CScriptProcessBase { public:  // vtable 0x012C2F
     bool Interrupted;                           // +0x29
     CPredicatePointer PPredicate;               // +0x2c
     virtual void v00();
-    __forceinline CSpawnedFuncBase(const CCharString& name)
+    FABLE_FORCEINLINE CSpawnedFuncBase(const CCharString& name)
         : CScriptProcessBase(1, 0x40, 0.1f), ID(1), LastScriptFrame(-1), CurrentScriptFrame(-1), Name(name),
           AssociatedRegionName(), FuncPaused(false), Interrupted(false), PPredicate() { }
 };

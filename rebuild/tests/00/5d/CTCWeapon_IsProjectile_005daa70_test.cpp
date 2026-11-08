@@ -1,4 +1,5 @@
 // test for 005daa70 CTCWeapon::IsProjectile
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 enum EWeaponType { WEAPON_TYPE_NONE, WEAPON_TYPE_PROJECTILE_A = 5, WEAPON_TYPE_PROJECTILE_B = 6 };
@@ -6,12 +7,12 @@ class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CWeaponDef : public CDefPointeeBase { public:

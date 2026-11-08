@@ -9,6 +9,7 @@
 // Shape: `T* p = 0; if (HasTC(k)) p = GetTC<T>(k);` gives the `xor ecx,ecx` preload with the dword presence test
 //   (`mov edx,[eax+20h] ; test dh,2`), and the flag store goes through p unconditionally; ParentThing is re-read for the
 //   physics call and the flag; the inline CModeBase::OnDeactivate (`Active = false`) comes last.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -32,11 +33,11 @@ class CThing { public:
     CPhysicsObject* PPhysics;              // +0x60
     unsigned char   _pad64[0xbc - 0x64];
     unsigned char   CreatureFlags;         // +0xbc (creature-derived member)
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

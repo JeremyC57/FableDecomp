@@ -12,19 +12,20 @@
 // Shape: the cosine is the inline FableWin CQuaternion::Dot taken before the sign weight is declared (declared after it, VC7.1
 //   keeps the dot on the x87 stack with `fst` where retail stores and reloads it); the position is the inline
 //   C4DVector::Interpolate (engine/C4DVector.h retail opt-in: (v - *this) * t + *this through three temporaries).
+#include "fable_compiler.h"
 extern float g_ArcCosTable[1026];       // 0x013CB530
 extern float g_CosTable[1025];          // 0x013CD550
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 #include "engine/GFFloatToLongNear.h"
-__forceinline float __fastcall GFFastArcCos(float cosine)
+FABLE_FORCEINLINE float __fastcall GFFastArcCos(float cosine)
 {
     cosine = (cosine + 1.0f) * 512.5f;
     long i = GFFloatToLongNear(cosine - 0.5f);
     float frac = cosine - (float)i;
     return ((1.0f - frac) * g_ArcCosTable[i] + frac * g_ArcCosTable[i + 1]) * 0.15915494f;
 }
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);

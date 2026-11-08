@@ -5,6 +5,7 @@
 // Retail 0x00978FD0, 287 bytes excluding padding. Shared AdvanceInCover/UseCoverBase/Base/Brain headers audited.
 // UseCoverBase exposes PCoverThing at the retail unaligned +0x1f; inherited intelligent enemy handle at +0x14 is opaque in its generated header.
 // Search 0x009793D0 audited: calls the four bound predicates, then appends matching things to the supplied vector. No predicate or callback is omitted.
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/CAIStateGroup_CreatureAdvanceInCover.h"
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
@@ -35,8 +36,8 @@ struct C2DBox { float minX,minY,maxX,maxY;
 };
 struct CThingSearchToolsRetail { void FindInRoughArea(const C2DBoxI&,const CFilterBind4&,CThingVector&); }; // 0x009793D0
 struct AdvanceInCoverMethods : CAIStateGroup_CreatureAdvanceInCover {
- __forceinline CIntelligentPointerRetail& Cover() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->PCoverThing; }
- __forceinline CIntelligentPointerRetail& Enemy() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->_pad_0x14; }
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Cover() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->PCoverThing; }
+ FABLE_FORCEINLINE CIntelligentPointerRetail& Enemy() { return *(CIntelligentPointerRetail*)((CAIStateGroup_CreatureUseCoverBase*)this)->_pad_0x14; }
  CThingSearchToolsRetail* PeekThingSearchTools(); // 0x008FD000
  void GetCoverThingList(CThingVector&);
 };

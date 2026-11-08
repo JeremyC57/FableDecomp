@@ -1,4 +1,5 @@
 // 00bdc980 behaviour test: CEngineLandscapeMap::GetEdgeStrip
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #include <stdint.h>
@@ -35,7 +36,7 @@ class CEngineWorldMap { public:
     long                MapOffsetX;                // +0x18
     long                MapOffsetY;                // +0x1c
     CArray<CEngineMap*> MapList;                   // +0x20
-    __forceinline CEngineMap* PeekMap(long x, long y)
+    FABLE_FORCEINLINE CEngineMap* PeekMap(long x, long y)
     {
         long cellX = x - MapOffsetX;
         long cellY = y - MapOffsetY;

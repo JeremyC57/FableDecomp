@@ -14,6 +14,7 @@
 // Shape: C3DVector needs a DECLARED memberwise copy ctor (the two rotated copies of the facing then take x straight from
 //          the x87 stack and the estimate's integer ops schedule like retail; with the implicit copy every word goes
 //          through memory); the side choice is an if/else of `pos += side * 10.0f` (VC merges the z tail).
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 class C3DVector { public:
     float X;    // +0x00
@@ -26,7 +27,7 @@ class C3DVector { public:
     C3DVector operator*(float k) const { return C3DVector(X * k, Y * k, Z * k); }
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
     void RotateXY(float turns);                 // 0x00A14040
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

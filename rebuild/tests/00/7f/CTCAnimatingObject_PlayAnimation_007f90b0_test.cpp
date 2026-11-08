@@ -1,5 +1,6 @@
 // Behaviour test for 007f90b0: src/007f90b0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCAnimatingObject::PlayAnimation(const CCharString& name, long priority, bool looping)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -94,7 +95,7 @@ class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }

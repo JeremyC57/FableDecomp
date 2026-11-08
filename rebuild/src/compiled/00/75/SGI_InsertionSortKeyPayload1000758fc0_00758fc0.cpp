@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: InsertionSort
 // Layout: retail stride 44; first dword key, remaining 10 dwords copied by rep movsd.
+#include "fable_compiler.h"
 template<int N> struct Payload_00758fc0 { int data[N]; };
 template<class K, class V> struct Pair_00758fc0 {
  K first; V second;
@@ -13,7 +14,7 @@ template<class T, class C> inline void Unguarded(T* last,T value,C comp) {
  while(comp(value,*next)) { *last=*next; last=next; --next; }
  *last=value;
 }
-template<class T> __forceinline T* CopyBackward(T* first,T* last,T* result) {
+template<class T> FABLE_FORCEINLINE T* CopyBackward(T* first,T* last,T* result) {
  for(int count=last-first; count>0; --count) *--result=*--last;
  return result;
 }

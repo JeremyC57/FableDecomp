@@ -10,6 +10,7 @@
 // Shape: STLport 4.6 `_M_insert_overflow(pos, x, const __false_type&, fill_len, atend)` verbatim with the inline
 //   __uninitialized_copy / __uninitialized_fill_n loops; max() takes the address of the fill_len argument.
 //   __uninitialized_copy needs `__forceinline`: plain `inline` leaves the suffix copy (the second instance) out of line.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -44,7 +45,7 @@ template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __va
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                          const __false_type&)
 {
     _ForwardIter __cur = __result;

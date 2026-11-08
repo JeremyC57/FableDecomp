@@ -16,6 +16,7 @@
 // share the `xor al,al` epilogue); IS_THING_ALIVE is `__forceinline` (VC out-lines the fourth expansion otherwise); the
 // target point is taken into a named pointer before the range read (retail calls GetPItem before pushing the range);
 // the final `&&` returns through the full register (`mov eax,1` / `xor eax,eax`).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -36,7 +37,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

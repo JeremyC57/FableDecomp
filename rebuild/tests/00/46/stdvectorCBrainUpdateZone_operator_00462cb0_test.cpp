@@ -11,6 +11,7 @@
 // Callees: _M_allocate_and_copy @ 0x00462DC1, _M_clear @ 0x00462E04 (both out of line in this size TU).
 // Shape: STLport 4.6 vector::operator= over a class element (__type_traits all __false_type): __copy_ptrs ->
 //   __copy random-access loop, __uninitialized_copy -> placement-new loop (VC7.1 null-tests the placement address).
+#include "fable_compiler.h"
 #include <new>
 
 class CBrainUpdateZone {
@@ -30,14 +31,14 @@ public:
     _Value _M_data;
 };
 
-template <class _Tp> __forceinline _Tp* _Copy(_Tp* __first, _Tp* __last, _Tp* __result)
+template <class _Tp> FABLE_FORCEINLINE _Tp* _Copy(_Tp* __first, _Tp* __last, _Tp* __result)
 {
     for (int __n = __last - __first; __n > 0; --__n, ++__first, ++__result)
         *__result = *__first;
     return __result;
 }
 
-template <class _Tp> __forceinline void _UninitializedCopy(_Tp* __result, _Tp* __first, _Tp* __last)
+template <class _Tp> FABLE_FORCEINLINE void _UninitializedCopy(_Tp* __result, _Tp* __first, _Tp* __last)
 {
     while (__first != __last) {
         if (__result)

@@ -21,6 +21,7 @@
 //        memory counter fild reads; its 53 is stored after the hoisted pack-position copies (a plain `height = 53; --height`
 //        counter is stored before the loop guard). The erase loop is STLport `erase(begin())` (memmove of the tail in bytes,
 //        then `_M_finish -= 1` with the -4 hoisted into ebx); the insert passes a random_access_iterator_tag temporary.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 
 namespace std {
@@ -116,7 +117,7 @@ public:
     virtual void Destroy() const;             // slot 1
     mutable long RefCount;                    // +0x04
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CTavernGameCardBaseDef : public CDefClassBase {
 public:
     unsigned char _pad_0x08[0x24];

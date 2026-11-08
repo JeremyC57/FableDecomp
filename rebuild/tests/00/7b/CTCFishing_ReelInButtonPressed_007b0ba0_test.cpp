@@ -1,5 +1,6 @@
 // Behaviour test for 007b0ba0: src/007b0ba0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCFishing::ReelInButtonPressed()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -50,13 +51,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

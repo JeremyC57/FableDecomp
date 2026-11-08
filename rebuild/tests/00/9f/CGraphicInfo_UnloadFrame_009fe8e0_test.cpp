@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -355,7 +356,7 @@ struct GraphicHeader {unsigned short Width,Height,Depth,FrameWidth,FrameHeight,F
 #pragma pack(pop)
 struct BankNative {unsigned char NativeState[0x268];unsigned long UnloadFrameDelay;}; //retail+268 vs donor+2E4, actual donor header retained
 class CGraphicInfo { public:CGraphicInfo();GraphicHeader Header;long TextureType;BankNative*Bank;long Index;GraphicInfoFrame*Frames;void UnloadFrame(unsigned long);}; //actual default PDB00B57D00; no repository header
-__forceinline const unsigned long& MinAge(const unsigned long&a,const unsigned long&b){return a<b?a:b;}
+FABLE_FORCEINLINE const unsigned long& MinAge(const unsigned long&a,const unsigned long&b){return a<b?a:b;}
 void CGraphicInfo::UnloadFrame(unsigned long index){
  unsigned long count=Header.FrameCount;
  if(count>1){

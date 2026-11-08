@@ -11,6 +11,7 @@
 // is spilled to [ebp-8]; the two durations live in [ebp-14h] and [ebp-10h] (the second defaults to 0.0f via `fldz`).
 // Shape: the def out slot is zeroed and filled before the animation starts; the filter temporary is rebuilt for each table call and
 // the entry's index (its first word) feeds the mesh bank lookup; the durations are pushed through `fstp` onto the argument stack.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -37,7 +38,7 @@ class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_refCount == 0)
             Destroy();
@@ -46,7 +47,7 @@ class CDefPointeeBase { public:
 template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (released by hand)
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             Object->Release();

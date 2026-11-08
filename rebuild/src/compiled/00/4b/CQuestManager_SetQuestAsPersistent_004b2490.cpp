@@ -10,6 +10,7 @@
 // only declared) that does not stop at the first match; the card is skipped when null or dead. The quest's name
 // block is read into a named local first: passing both blocks inline loads the key first (eax/ecx swapped).
 // Leaf: SetQuestAsPersistent
+#include "fable_compiler.h"
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
@@ -17,7 +18,7 @@ class CCharString { public:
     CCharStringData* PStringData;
 };
 
-__forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
+FABLE_FORCEINLINE bool SameText(const CCharStringData* a, const CCharStringData* b)
 {
     if (a == b)
         return true;

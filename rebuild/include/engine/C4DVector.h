@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_C4DVECTOR_H
 #define FABLE_ENGINE_C4DVECTOR_H
+#include "fable_compiler.h"
 // C4DVector (Ego_r TPI: public float X,Y,Z,W at 0/4/8/0xC, size 0x10). Ctors ??0C4DVector@@QAE@XZ, @MMMM@Z, @ABVC3DVector@@M@Z
 // (FableWin); Initialise(const C3DVector&, float) ?Initialise@C4DVector@@QAEXABVC3DVector@@M@Z and ToC3DVector
 // ?ToC3DVector@C4DVector@@QBE?AVC3DVector@@XZ (FableWin) are inline in retail (CParticleSimulation's particle accessors,
@@ -33,7 +34,7 @@ public:
     // plain inline, VC7.1 emits it out of line in that caller.
     const C4DVector operator-(const C4DVector& v) const { return C4DVector(X-v.X,Y-v.Y,Z-v.Z,W-v.W); }
     const C4DVector operator+(const C4DVector& v) const { return C4DVector(X+v.X,Y+v.Y,Z+v.Z,W+v.W); }
-    __forceinline const C4DVector Interpolate(const C4DVector& v, float t) const { return (v - *this) * t + *this; }
+    FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& v, float t) const { return (v - *this) * t + *this; }
 #endif
 #ifdef FABLE_RETAIL_C4DVECTOR_RGBCOLOUR
     // Chunk 756 (row 0x00BB17D0): FableWin.pdb ??0C4DVector@@QAE@ABVCRGBColour@@@Z (FableWin 0x017D4970 / 0x02D149F0), out of line

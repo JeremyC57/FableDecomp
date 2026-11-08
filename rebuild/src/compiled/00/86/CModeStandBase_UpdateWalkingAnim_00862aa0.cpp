@@ -25,6 +25,7 @@
 //   (speed 0, type 5) whose body stores lite, entry, type, speed (VC7.1 emits the three constant stores speed, type, entry as
 //   retail). That constructor is not in the PDB name sets (inline-only, no symbol): its existence is inferred from the store
 //   order, which the three-argument PDB constructor (MEABV...) cannot produce.
+#include "fable_compiler.h"
 #include <math.h>
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C
 
@@ -57,7 +58,7 @@ public:
     float          VelocityY;                   // +0x110
     const C3DVector& GetPos() const;            // 0x004C73D0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc)
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc)
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;

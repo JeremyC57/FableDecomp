@@ -10,6 +10,7 @@
 // Z*Nz + Y*Ny + X*Nx - D (each product loads the plane component first, `fld [plane] ; fmul
 // [point]`), compared against 0.0f with `test ah,41h ; jne` (= "not greater"); the early false
 // exit is `xor al,al`, the true result is the constant hoisted into bl before the loop.
+#include "fable_compiler.h"
 #include "engine/CContainmentVolume.h"
 
 #include "engine/C3DVector.h"
@@ -17,7 +18,7 @@
 class CPlane { public:
     C3DVector Normal;
     float     Distance;
-    __forceinline float GetSignedDistance(const C3DVector& point) const
+    FABLE_FORCEINLINE float GetSignedDistance(const C3DVector& point) const
     {
         return point.Z * Normal.Z + point.Y * Normal.Y + point.X * Normal.X - Distance;
     }
@@ -25,7 +26,7 @@ class CPlane { public:
 
 class CIsContainingPoint { public:
     C3DVector Point;
-    __forceinline bool operator()(const CPlane& plane) const
+    FABLE_FORCEINLINE bool operator()(const CPlane& plane) const
     {
         return plane.GetSignedDistance(Point) > 0.0f;
     }

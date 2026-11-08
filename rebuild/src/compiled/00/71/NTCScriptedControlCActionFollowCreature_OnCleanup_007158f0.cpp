@@ -20,6 +20,7 @@
 //          the physics component (position +0xc).
 // PDB spelling (sweep 3): CActionFollowCreature is class-keyed, OnCleanup virtual and SetAsSneaking private, as Ego_r spells
 //   them (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z; was QAE). Same bytes.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 #include "engine/C3DVector.h"
@@ -73,11 +74,11 @@ class CThing { public:
     unsigned char _pad9[0xc];
     CPhysicsComponent* m_pPhysics;              // +0x60
     CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

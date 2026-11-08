@@ -20,6 +20,7 @@
 //   Effects +0x70, Camera +0x7c). The arms sit in the bytes as Sound, Dialogue, Music, HUDAlpha, Gamma, Shadow, Texture,
 //   Camera, Mesh, Effects, so the cases are written in that order (an earlier version listed them by value: same
 //   behaviour, but every jump-table slot pointed at an arm calling a different getter than retail's).
+#include "fable_compiler.h"
 #include <math.h>
 class C2DVector { public: float X, Y; };
 class CRGBColour { public:
@@ -135,7 +136,7 @@ class CAction { public:
     virtual void v00();
     CSliderTargetRef* PTarget;                           // +0x04
 };
-static __forceinline bool Differs(const C2DVector& a, const C2DVector& b)
+static FABLE_FORCEINLINE bool Differs(const C2DVector& a, const C2DVector& b)
 {
     return !(fabs(a.X - b.X) <= 0.0001f) || !(fabs(a.Y - b.Y) <= 0.0001f);
 }

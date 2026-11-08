@@ -15,6 +15,7 @@
 //   "BROTHER" 0x012DD72C, "BANDIT" 0x012D5AB0, "" 0x0129AAF4 (NullChar).
 // Shape: the landed CV_SickChildScript::PlayCutscene 0x00ECE460 body (csargs, hero, "$ARG1", cast) on the landed
 //   CQ_FireHeartScript::PlayCutscene 0x00D39330 shared-header model.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -32,7 +33,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST,SCRIPT_AI_PRIORITY_LOW,SCRIPT
 #include "stlport/fable_map.h"
 #include "engine/CQ_RansomVictimScript.h"
 #include "engine/fable_script_cutscene.h"
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 
 void NScript::CQ_RansomVictimScript::PlayCutscene(CCharString name, CCharString arg)
 {

@@ -1,6 +1,7 @@
 // 004eae1e std::vector<CShoveHaPennyRegionDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
 // Leaf: ??4?$vector@UCShoveHaPennyRegionDef@X_004eae1e@@@X_004eae1e@@QAEAAU01@ABU01@@Z
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <string.h>
 #include <new>
@@ -13,13 +14,13 @@ namespace X_004eae1e {
 struct CSubDefClassBase {virtual ~CSubDefClassBase();char baseData[33];CSubDefClassBase();CSubDefClassBase(const CSubDefClassBase&);CSubDefClassBase& operator=(const CSubDefClassBase&);};
 
 #pragma pack(pop)
-struct CShoveHaPennyRegionDef:CSubDefClassBase {float Start,Score;CShoveHaPennyRegionDef();__forceinline CShoveHaPennyRegionDef(const CShoveHaPennyRegionDef& x):CSubDefClassBase(x),Start(x.Start),Score(x.Score){} };
+struct CShoveHaPennyRegionDef:CSubDefClassBase {float Start,Score;CShoveHaPennyRegionDef();FABLE_FORCEINLINE CShoveHaPennyRegionDef(const CShoveHaPennyRegionDef& x):CSubDefClassBase(x),Start(x.Start),Score(x.Score){} };
 struct __false_type {};
 CShoveHaPennyRegionDef* __fastcall copy(CShoveHaPennyRegionDef* f,CShoveHaPennyRegionDef* e,CShoveHaPennyRegionDef* o,const __false_type&);
 template<class Tag>__declspec(noinline) void __fastcall destroy(CShoveHaPennyRegionDef* f,CShoveHaPennyRegionDef* e,const Tag&){for(;f!=e;++f)f->~CShoveHaPennyRegionDef();}
 __declspec(noinline) void __fastcall construct(CShoveHaPennyRegionDef* out,const CShoveHaPennyRegionDef& x);
-__forceinline CShoveHaPennyRegionDef* uninitialized_copy(CShoveHaPennyRegionDef* f,CShoveHaPennyRegionDef* e,CShoveHaPennyRegionDef* o){for(;;){if(f==e)break;construct(o,*f);++f;++o;}return o;}
-template<class T> __forceinline void _UninitializedCopy(T* out,T* first,T* last){while(first!=last){construct(out,*first);++first;++out;}}
+FABLE_FORCEINLINE CShoveHaPennyRegionDef* uninitialized_copy(CShoveHaPennyRegionDef* f,CShoveHaPennyRegionDef* e,CShoveHaPennyRegionDef* o){for(;;){if(f==e)break;construct(o,*f);++f;++o;}return o;}
+template<class T> FABLE_FORCEINLINE void _UninitializedCopy(T* out,T* first,T* last){while(first!=last){construct(out,*first);++first;++out;}}
 template<class T> struct vector {
  T *first,*last,*limit;
  T* _M_allocate_and_copy(unsigned,T*,T*);

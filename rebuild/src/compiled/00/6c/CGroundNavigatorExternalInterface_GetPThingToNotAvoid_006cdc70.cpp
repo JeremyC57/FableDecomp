@@ -8,6 +8,7 @@
 // ahead of the dereference (retail falls through into the zero exit and jumps forward to the found tail).
 // Model: the engine header for the interface (Creature at +4); the creature and the navigation component are local
 // models (as the landed siblings).
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -27,7 +28,7 @@ class CThingCreatureBase { public:                        // the retail creature
     unsigned char         _pad04[0x1c];
     unsigned long         m_presentBits[9];        // +0x20 bitset of the component kinds present
     CTCMap_Retail         m_tcs;                   // +0x44 the sorted {kind, component} map
-    template<class T> __forceinline void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(kind);
@@ -38,7 +39,7 @@ class CThingCreatureBase { public:                        // the retail creature
             *ppOut = (T*)((CTCBase_Retail*)it->second);
         }
     }
-    template<class T> __forceinline void GetInterface(T** ppOut, long kind) const
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long kind) const
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(kind);

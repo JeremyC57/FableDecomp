@@ -2,6 +2,7 @@
 // Leaf: MsgPerformedAnyAggressiveSpecialAbility
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x008d27e0. Native component lookup 004365B0, intelligent pointer 00A01B50, quest global013B89FC.
+#include "fable_compiler.h"
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CQuestManager.h"
@@ -24,8 +25,8 @@ struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThrea
 struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct QuestManagerNative{unsigned char State[0x88];ActiveQuest* PQuestCurrentlyRunning;};
 extern QuestManagerNative* QuestManager; //013B89FC
-__forceinline long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
-__forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 // Event classes have no generated headers. PDB CEventBase is vptr+WorldFrame;
 // event virtual slot0 is its deleting destructor, slot1 GetType (retail VTs audited).
 struct EventBase{virtual ~EventBase();virtual int GetType()const=0;long WorldFrame;};
@@ -34,7 +35,7 @@ struct MoneyEvent:EventBase{unsigned char ThingGivingItem[8];long Amount;};
 struct AbilityEvent:EventBase{int Ability;bool Aggressive;};
 struct EventNode{EventNode*Next;EventNode*Previous;EventBase*Data;void*Info;};
 struct EventList{EventNode*Head;};
-__forceinline EventList& Events(CTCEntityEvents*tc){return *reinterpret_cast<EventList*>(tc->Events);}
+FABLE_FORCEINLINE EventList& Events(CTCEntityEvents*tc){return *reinterpret_cast<EventList*>(tc->Events);}
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgPerformedAnyAggressiveSpecialAbility()const;};
 bool CGameScriptThingMethods::MsgPerformedAnyAggressiveSpecialAbility()const{
  const PointerView*p=reinterpret_cast<const PointerView*>(PThing);if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){

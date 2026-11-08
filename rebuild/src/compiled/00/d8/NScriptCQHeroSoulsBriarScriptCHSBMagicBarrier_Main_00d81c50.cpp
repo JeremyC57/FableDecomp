@@ -15,6 +15,7 @@
 //   "off" assignments leaves those and every exit out of line.
 // Naming wave 35: identity reg 00d80f53 "HSB_MagicBarrier" in 00d80e40; Alloc 00d81b60; vtable 012d4370 slot 1; PDB ?Main@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHSB_MagicBarrier::Main (wave3/labels_alloc.tsv); PDB ?Main@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHSB_MagicBarrier@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -64,7 +65,7 @@ class CScriptThing : public CBaseClass { public:                           // vt
 #include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

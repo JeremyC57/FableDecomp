@@ -1,4 +1,5 @@
 // Behaviour test for CInputManager::IsEventProcessed (0x009F4B10): matching per device type.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 #ifndef _MSC_VER
@@ -28,7 +29,7 @@ public:
 };
 // Two events describe the same input: same type and device number, and per device type the same joystick button (for
 // the button kinds 0x13..0x15), the same character (char kinds 0x0f/0x10) or key, any mouse event; else no match.
-__forceinline bool IsSameInput(const CInputEvent& stored, const CInputEvent& event)
+FABLE_FORCEINLINE bool IsSameInput(const CInputEvent& stored, const CInputEvent& event)
 {
     if (stored.GetType() != event.GetType())
         return false;

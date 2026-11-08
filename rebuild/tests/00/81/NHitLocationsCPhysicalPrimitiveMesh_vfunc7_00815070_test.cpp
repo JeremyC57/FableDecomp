@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // BEGIN exact source snapshot SHA256 75e0bd0ce4aa57debab8a7aa71c43077c54e4ff9909da719d7defe32cbb1d5d2
@@ -13,7 +14,7 @@ class C3DVector { public:
     const C3DVector operator-(const C3DVector& other) const {
         return C3DVector(X-other.X,Y-other.Y,Z-other.Z);
     }
-    __forceinline const C3DVector operator-() const {
+    FABLE_FORCEINLINE const C3DVector operator-() const {
         return C3DVector(X*-1.0f,Y*-1.0f,Z*-1.0f);
     }
     float SquaredLength() const { return X * X + (Y * Y + Z * Z); }

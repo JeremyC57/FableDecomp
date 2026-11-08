@@ -15,6 +15,7 @@
 //   `optimize("s")` with the comparator and CCharString::operator< `__forceinline` (the landed 0x00AF2F10 inline);
 //   the by-value copy is built in the argument area by the out-of-line pair copy constructor, the distance tag is a
 //   null `push 0`; `*first`'s block pointer is re-read every pass (the heap top changes in __pop_heap).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 namespace std {
 
@@ -27,7 +28,7 @@ struct CCharString {
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -56,7 +57,7 @@ template <class T1, class T2> struct pair {                // STLport pair
 typedef pair<CCharString, CRegisteredTCInfo> SRegisteredTCEntry;   // 16 bytes
 
 struct CKeyPairCompareLess {                               // CKeyPairCompareLess<CCharString, CRegisteredTCInfo>
-    __forceinline bool operator()(const SRegisteredTCEntry& a, const SRegisteredTCEntry& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const SRegisteredTCEntry& a, const SRegisteredTCEntry& b) const { return a.first < b.first; }
 };
 
 void __fastcall make_heap(SRegisteredTCEntry* first, SRegisteredTCEntry* last, CKeyPairCompareLess comp);   // 0x004E36C3

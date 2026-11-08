@@ -1,5 +1,6 @@
 // Behaviour test for 007e9410: src/007e9410.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCAvoidRegionExit::OnKill()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -101,7 +102,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
 class CTCAvoidRegionExit : public CTCBase_Calls { public:
     unsigned char _body[0x20 - 0x0c];                       // EntranceMarker, ExitMarker, NextFrameCheck
     void UpdateMaxExitWeight();                             // 0x007E9250
-    __forceinline void RemoveFromExitWeights()
+    FABLE_FORCEINLINE void RemoveFromExitWeights()
     {
         SExitWeightRange range = g_AvoidRegionExitWeights.EqualRange(GetParentThing());
         g_AvoidRegionExitWeights.Erase(range.first, range.second);

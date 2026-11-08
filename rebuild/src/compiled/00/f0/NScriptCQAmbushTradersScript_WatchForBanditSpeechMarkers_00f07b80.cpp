@@ -19,6 +19,7 @@
 // Shape: __forceinline ~CScriptThing; the returns inside the marker scope and the marker's own destruction sit in
 // inline_depth(0) regions (out-of-line ~CScriptThing), the three early returns and the loop exit inline the argument's
 // destructor.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
@@ -36,7 +37,7 @@ class CBaseClass { public:
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThing> PImp;
-    __forceinline ~CScriptThing() { }                  // out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() { }                  // out-of-line copy 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CGameScriptInterfaceBase { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)

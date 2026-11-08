@@ -10,6 +10,7 @@
 // 0x00BDE290, UnloadStaticContents 0x00BDE020.
 // Layout: PDB CQuadTreeElement (landed dtor 0x00BDDFB0); retail CObjectCacheGroupCollection is the PDB layout less the
 // trailing SourceObjectCount (0x38 bytes).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(memcpy)
 
@@ -20,7 +21,7 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    __forceinline void Read(void* destination, long bytes)
+    FABLE_FORCEINLINE void Read(void* destination, long bytes)
     {
         __int64 next = (unsigned long)(StreamPos + bytes);
         if (next >= 0 && next <= 0x7fffffff) {
@@ -33,7 +34,7 @@ class CDataInputStream { public:
                 ReadWithSrcChunkOverflow((unsigned char*)destination, bytes);
         }
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, 4);

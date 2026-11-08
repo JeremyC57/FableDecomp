@@ -22,6 +22,7 @@
 //   STLport std::min(gold, Amount) by reference; receiver and creature are named locals read before the PostDeed constants.
 //   Probe history (8 probes) in probe/00845040.log; the prior's 552v547 constant-4 register residue is gone.
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -183,13 +184,13 @@ public:
     long GetJoystickDeviceNumber() const;                        // 0x004C7CA0
     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }         // inline (Ego_r ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ)
     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-    __forceinline bool HasTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE bool HasTC(ETCInterfaceType type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -199,7 +200,7 @@ public:
         *out = (T*)((it == map->Data.end() || T::StatGetInterfaceType() < it->first) ? map->Data.end() : it)->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

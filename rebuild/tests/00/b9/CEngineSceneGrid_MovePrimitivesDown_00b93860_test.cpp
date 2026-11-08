@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -255,13 +256,13 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase, RefLayerMask) == 0x44
 class CEngineInternalPrimitiveBase:public CEngineInternalPrimitiveBaseFields{public:void AddToList(CEngineInternalPrimitiveBase**);void RemoveFromList();CEngineSceneGridPos GetGridPos()const{return *reinterpret_cast<const CEngineSceneGridPos*>(&GridPos_Level);}CEngineInternalPrimitiveBase*GetNextPrimitive()const{return reinterpret_cast<CEngineInternalPrimitiveBase*>(NextPrimitive);}};
 class CEngineSceneGrid;
 class CEngineSceneGridCell{friend class CEngineSceneGrid;private:CEngineSceneGridCell*Parent;CEngineInternalPrimitiveBase*FirstPrimitive;unsigned char unobservedBoundingBoxDrawAndHandles[0x2c];long LocalCount;unsigned long TotalCount,RenderMask,OccludedLayers;unsigned char BoundingBoxValid:1;unsigned char TotalCountValid:1;unsigned char RenderMaskValid:1;unsigned char WasRendered:1;unsigned char HasOcclusionResults:1;unsigned char OccludedFrames,PreloadFrames;
-CEngineSceneGridCell(CEngineSceneGridCell*);void InvalidateAll();__forceinline void AddPrimitive(CEngineInternalPrimitiveBase&p){p.AddToList(&FirstPrimitive);++LocalCount;if(BoundingBoxValid||TotalCountValid||RenderMaskValid){BoundingBoxValid=0;TotalCountValid=0;RenderMaskValid=0;if(Parent)Parent->InvalidateAll();}}};
+CEngineSceneGridCell(CEngineSceneGridCell*);void InvalidateAll();FABLE_FORCEINLINE void AddPrimitive(CEngineInternalPrimitiveBase&p){p.AddToList(&FirstPrimitive);++LocalCount;if(BoundingBoxValid||TotalCountValid||RenderMaskValid){BoundingBoxValid=0;TotalCountValid=0;RenderMaskValid=0;if(Parent)Parent->InvalidateAll();}}};
 namespace std{template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T*_M_start,*_M_finish;_STLP_alloc_proxy<T*,T,A>_M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T&operator[](unsigned int n){return this->_M_start[n];}};}
 template<class T>class CArray:public std::vector<T>{public:T&operator[](unsigned int n){return std::vector<T>::operator[](n);}};
 class CBaseClassNonCopyable{protected:virtual~CBaseClassNonCopyable();};
 class CEngineSceneGrid:public CBaseClassNonCopyable{
 private:unsigned long Level;CEngineSceneGrid*LevelUp,*LevelDown;unsigned long Size;CArray<CEngineSceneGridCell*>GridCells;
-__forceinline void AddPrimitive(unsigned long x,unsigned long y,CEngineInternalPrimitiveBase&p){CEngineSceneGridCell*cell=GridCells[Size*y+x];if(!cell){CEngineSceneGridCell*parent=0;if(LevelUp)parent=LevelUp->GetCellCreate(x>>1,y>>1);cell=new CEngineSceneGridCell(parent);GridCells[Size*y+x]=cell;}p.GridCell=cell;cell->AddPrimitive(p);}
+FABLE_FORCEINLINE void AddPrimitive(unsigned long x,unsigned long y,CEngineInternalPrimitiveBase&p){CEngineSceneGridCell*cell=GridCells[Size*y+x];if(!cell){CEngineSceneGridCell*parent=0;if(LevelUp)parent=LevelUp->GetCellCreate(x>>1,y>>1);cell=new CEngineSceneGridCell(parent);GridCells[Size*y+x]=cell;}p.GridCell=cell;cell->AddPrimitive(p);}
 void MovePrimitivesDown();public:CEngineSceneGridCell*GetCellCreate(unsigned long,unsigned long);
 };
 #ifdef _MSC_VER

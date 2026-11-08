@@ -16,6 +16,7 @@
 // Shape: the user destructor body is an inline shader Release() (null-tested release, then `Data = 0`); member destructors
 //   follow inline in reverse order; the map's destroy takes an empty allocator temporary in the top byte of the `push ecx`
 //   slot; POD arrays only free their storage; the base destructor is called (the frame word blocks the tail jump).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
 class CBaseClassNonCopyable {
@@ -41,7 +42,7 @@ class CShaderBase { public:                               // vtable 0x0129A030
 };
 class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
-    __forceinline virtual ~CPixelShader()
+    FABLE_FORCEINLINE virtual ~CPixelShader()
     {
         CPixelShaderData* data = Data;
         if (data) {
@@ -52,7 +53,7 @@ class CPixelShader : public CShaderBase { public:                // vtable 0x012
 };
 class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CVertexShaderData* data = Data;
         if (data) {
@@ -61,7 +62,7 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
         }
         Data = 0;
     }
-    __forceinline virtual ~CVertexShader()
+    FABLE_FORCEINLINE virtual ~CVertexShader()
     {
         CVertexShaderData* data = Data;
         if (data) {
@@ -74,7 +75,7 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
 class CVertexBufferWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0129BA20, 0x34 bytes
     unsigned char _body[0x30];
     void Uninitialise();                           // 0x00A63200
-    __forceinline virtual ~CVertexBufferWin32() { Uninitialise(); }
+    FABLE_FORCEINLINE virtual ~CVertexBufferWin32() { Uninitialise(); }
 };
 
 class CMovableResource { public:                          // vtable 0x0129B860
@@ -88,14 +89,14 @@ class CIndexBuffer : public CMovableResource { public:           // vtable 0x012
     long                   PrimitiveType;          // +0x0c
     void*                  PAllocatedBuffer;       // +0x10
     void Uninitialise();                           // 0x00AC1EE0
-    __forceinline virtual ~CIndexBuffer() { Uninitialise(); }
+    FABLE_FORCEINLINE virtual ~CIndexBuffer() { Uninitialise(); }
 };
 
 template <class T> struct CPODArray {              // CArray<T> / vector<T> of a trivial T, 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CPODArray() { if (_M_start) free(_M_start); }
+    FABLE_FORCEINLINE ~CPODArray() { if (_M_start) free(_M_start); }
 };
 
 template <class T> struct allocator { allocator() {} };
@@ -105,7 +106,7 @@ template <class T> class CArray { public:                 // vector<T> of a non-
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CArray()
+    FABLE_FORCEINLINE ~CArray()
     {
         _Destroy_range(_M_start, _M_finish, allocator<T>());
         if (_M_start)

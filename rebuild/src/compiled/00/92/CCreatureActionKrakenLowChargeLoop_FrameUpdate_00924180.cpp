@@ -10,6 +10,7 @@
 // `health < StartHealth` loads the owner's health first (`fcomp ; test ah,5 ; jp` = ordered less), then the phase test.
 // Layout: Ego_r.pdb LoopNum / StartHealth +0x12c / +0x130, retail +0x114 / +0x118 (the landed ctor 0x009254C0 copies the owner's
 // +0xb4 health into +0x118); CTCKraken HeadHasBeenHit +0x52 and Phase +0x60 (PDB +0x62 / +0x70).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -69,7 +70,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.GetPItem()->GetInterface(&kraken, 0xe2);

@@ -13,6 +13,7 @@
 // `and dword ptr [esi+24h],0`; the intelligent-pointer destructors add nothing to the out-of-line base destructor. The
 // `??1` is emitted through a `new CTCLightningNode` factory (the `??_G` calls it out of line). Size-optimised TU (the
 // `and` zero store); the def pointer's destructor and Release are `__forceinline` (the size TU would call them).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 struct CLightningBranchPointer;
@@ -34,7 +35,7 @@ struct CDefBase {                                  // counted def: vptr, count a
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_count;                                  // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();
@@ -44,7 +45,7 @@ struct CDefBase {                                  // counted def: vptr, count a
 struct CLightningDefPointer {                      // CDefPointer<CLightningDef const>
     CDefBase* m_pDef;
     CLightningDefPointer() : m_pDef(0) { }
-    __forceinline ~CLightningDefPointer()
+    FABLE_FORCEINLINE ~CLightningDefPointer()
     {
         if (m_pDef) {
             m_pDef->Release();

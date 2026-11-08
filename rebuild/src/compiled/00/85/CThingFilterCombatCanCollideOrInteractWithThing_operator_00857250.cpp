@@ -10,6 +10,7 @@
 //   TC 0x77 = word +0x2c bit 23), map +0x44, PhysicsTC +0x60, ThingTypeFlags +0x6c (bit 3 creature, bit 7 dead).
 // Shape: the landed CThingFilter_CanCollideOrInteractWithThing::operator() 0x006A8370 body with the dead-creature
 //   exclusion after the creature one and the two extra pass tests before the final `return false`.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -54,7 +55,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -37,8 +38,8 @@ class CDataInputStream { public:
     long                 m_10;
     long                 m_remaining;      // +0x14 bytes left in the current chunk
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -52,8 +53,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned char ReadUChar() { unsigned char value; Read(&value, 1); return value; }
-    __forceinline long ReadLong() { long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned char ReadUChar() { unsigned char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, 4); return value; }
 };
 
 struct __true_type { __true_type() { } };

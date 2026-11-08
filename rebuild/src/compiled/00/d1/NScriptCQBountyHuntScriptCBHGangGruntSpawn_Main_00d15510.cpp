@@ -19,6 +19,7 @@
 //   byte slot); the handle's compiler-generated destructor is inline once (the first exit) and out of line elsewhere.
 // Naming wave 35: identity reg 00d13861 "BH_GangGruntSpawn" in 00d13580; Alloc 00d153f0; vtable 012ca4f4 slot 1; PDB ?Main@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBH_GangGruntSpawn::Main (wave3/labels_alloc.tsv); PDB ?Main@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBH_GangGruntSpawn@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_BountyHuntScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -72,7 +73,7 @@ public:
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
-    __forceinline virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
     VPAD8(p2x0) VPAD4(p2x1) VPAD2(p2x2)   // slots 7..20
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
     VPAD16(p3x0) VPAD2(p3x1) VPAD1(p3x2)   // slots 22..40
@@ -149,8 +150,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 struct CQ_SunnyvaleMasterData;
 class CEntityScriptBase
 {

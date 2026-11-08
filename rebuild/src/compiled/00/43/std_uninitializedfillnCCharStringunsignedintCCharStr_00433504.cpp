@@ -7,6 +7,7 @@
 // Opt: size TU (unaligned entry; `push dword ptr [esp+0Ch]` re-read per element instead of /O2's ebx copy). Shape: the
 // __false_type helper is marked __forceinline -- the size TU otherwise keeps it out of line (the retail body has it
 // inlined into the 3-argument function, `ret 4`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <new>
 class CCharString {
@@ -18,7 +19,7 @@ namespace std {
 struct __false_type {};
 template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)

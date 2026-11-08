@@ -1,5 +1,6 @@
 // Behaviour test for 0x00B0A4A0 (source body copied from src/00b0a4a0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -36,7 +37,7 @@ static unsigned long long ra_tsc = 1000000;
 // Label: catalog "PackUVForVertexBuffer" is a guess (and duplicates 0x00B0A420's).
 // the engine's pointer-out float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline,
 // its two by-value parameters get frame copies
-__forceinline void GFFloatToLong(long* result, float value)
+FABLE_FORCEINLINE void GFFloatToLong(long* result, float value)
 {
     RA_FISTP_PTR(value, result)
 }

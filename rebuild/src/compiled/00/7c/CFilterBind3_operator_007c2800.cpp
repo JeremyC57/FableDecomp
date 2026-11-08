@@ -15,6 +15,7 @@
 // Shape: `return (*F1)(thing) && (*F2)(thing) && (*F3)(thing);` (the `&&` value gives the `mov eax,1` / `xor eax,eax`
 //   exits); the shots filter is __forceinline and reads the type flags and the physics component into locals before
 //   the evade call.
+#include "fable_compiler.h"
 class CThing;
 
 class CTCBase {
@@ -68,7 +69,7 @@ public:
 namespace {
 class CThingFilter_ShotsToCheckForCollisionWith {
 public:
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         unsigned long flags = thing.ThingTypeFlags;
         CTCPhysicsBase* physics = thing.PhysicsTC;

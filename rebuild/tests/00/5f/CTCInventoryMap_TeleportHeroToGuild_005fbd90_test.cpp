@@ -1,5 +1,6 @@
 // Behaviour test for 005fbd90: src/005fbd90.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryMap::TeleportHeroToGuild()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -124,7 +125,7 @@ class CTCInventoryMap { public:
     CWorld* GetWorld();                               // 0x00686A70 (CTCBase)
     void TeleportHeroToTeleporter(CThing* teleporter);   // 0x005FBD20
     void TeleportHeroToGuild();
-    __forceinline void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things)
+    FABLE_FORCEINLINE void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things)
     {
         CWorld* world = GetWorld();
         world->ThingSearchTools->GetAllThings(filter, things);

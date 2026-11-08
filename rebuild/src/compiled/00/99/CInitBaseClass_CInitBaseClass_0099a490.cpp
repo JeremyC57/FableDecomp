@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099A490, length 64 bytes.
 // Leaf: ??_GCInitBaseClass@@UAEPAXI@Z
 // Shape: the constant 1 in al for both `cmp cl,al` and `test [esp+8],al`, `mov eax,esi`, `ret 4`.
+#include "fable_compiler.h"
 extern long g_initialisedCount_013bca14;          // 0x013BCA14
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CBaseClass { public:                                // vtable 0x01231710
@@ -9,10 +10,10 @@ class CBaseClass { public:                                // vtable 0x01231710
 };
 class CInitBaseClass : public CBaseClass { public:               // vtable 0x0129A7CC
     bool m_initialised;                            // +0x04
-    virtual __forceinline ~CInitBaseClass();
+    virtual FABLE_FORCEINLINE ~CInitBaseClass();
 };
 
-__forceinline CInitBaseClass::~CInitBaseClass()
+FABLE_FORCEINLINE CInitBaseClass::~CInitBaseClass()
 {
     if (m_initialised == true) {
         --g_initialisedCount_013bca14;

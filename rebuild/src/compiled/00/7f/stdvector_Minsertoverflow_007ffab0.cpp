@@ -6,6 +6,7 @@
 // Shape (family M113, representative 0x00517D90): the STLport 4.6 model of M052 (landed 0x008D61A0) in a frame-less module:
 //   max() through references (`lea ecx,[esp+1Ch] ; jb ; lea ecx,[esp+8]`), each element copied field by field (dword, byte)
 //   behind placement new's null test.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -26,12 +27,12 @@ template <class _T1, class _T2> struct pair {
     pair(const pair& __o) : first(__o.first), second(__o.second) { }   // STLport's explicit copy
 };
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -40,7 +41,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -50,8 +51,8 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
 
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 
 template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
@@ -70,13 +71,13 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
-    __forceinline size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    FABLE_FORCEINLINE size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;

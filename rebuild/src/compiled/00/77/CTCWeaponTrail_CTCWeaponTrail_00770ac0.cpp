@@ -14,6 +14,7 @@
 // Shape: CTCWeaponTrail is `__declspec(novtable)` in this TU (the dtor stores no vtable); members die in reverse order with the
 //   STLport vector dtors inlined (the handle loop over a by-value [first, last) pair, then `if (start) free(start)`); the
 //   projectile handle is the landed CEnginePrimitiveHandle model with a `__forceinline` dtor.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 
 struct SScalarTag { SScalarTag() { } };
@@ -48,7 +49,7 @@ template <class T> class CIVCountedPointer { public:
 
 class CEnginePrimitiveHandle : public CBaseClass { public:           // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
-    __forceinline virtual ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data->OnLastHandleReleased(this);

@@ -12,6 +12,7 @@
 //   __uninitialized_copy 0x006A31D0 model: key, then the pointer copy through a second destination pointer).
 // Shape: _Construct's placement null test; the __false_type temporary is homed in the dead x-argument slot
 //   (`lea edx,[esp+10h]`) after x has been loaded into ecx.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() { } };
 namespace FablePush_006a3cd0 {
@@ -26,7 +27,7 @@ struct CBaseIntelligentPointer {                        // 8 bytes: vtable + ite
 };
 template <class T>
 struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C for CIntelligentPointer<CThing>
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 template <class T1, class T2>
 struct pair {                                           // STLport pair: explicit memberwise copy constructor

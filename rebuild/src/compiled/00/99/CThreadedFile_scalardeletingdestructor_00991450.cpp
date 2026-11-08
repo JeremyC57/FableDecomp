@@ -11,6 +11,7 @@
 // request still queued for this file, the handle is closed and reset, the two flags cleared through
 // one `xor al,al` zero register (OpenFlag first). Close must be `__forceinline` here: a plain inline
 // member with a call and an import call stays out of line in the deleting destructor.
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);   // IAT 0x0143FE30
 
 class CThreadedFile;
@@ -40,7 +41,7 @@ class CThreadedFile : public CBaseClassNonCopyable { public:                    
     unsigned long PhysicalSortKey;                 // +0x14
     bool          OpenedForWrite;                  // +0x18
     bool          OpenFlag;                        // +0x19
-    __forceinline void Close()
+    FABLE_FORCEINLINE void Close()
     {
         if (FileHandle != (void*)-1) {
             g_ThreadedFileManager.RemovePendingRequests(this);
@@ -51,7 +52,7 @@ class CThreadedFile : public CBaseClassNonCopyable { public:                    
         }
     }
     CThreadedFile() : FileHandle((void*)-1) { }
-    __forceinline virtual ~CThreadedFile() { Close(); }
+    FABLE_FORCEINLINE virtual ~CThreadedFile() { Close(); }
 };
 
 CThreadedFile* Create_CThreadedFile()

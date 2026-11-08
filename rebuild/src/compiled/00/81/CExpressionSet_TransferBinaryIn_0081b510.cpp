@@ -8,6 +8,7 @@
 //   +0x10, offsets read from the retail body). CDataInputStream inline Read as in the landed 0x00B16F60.
 // Shape: the Read test is written `size <= remaining` (cmp size,[remaining] ; jg); the data pointer (GetData select) is
 //   taken before the byte count; the trailing dword is read back into the count local (one shared argument slot).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
@@ -21,8 +22,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))

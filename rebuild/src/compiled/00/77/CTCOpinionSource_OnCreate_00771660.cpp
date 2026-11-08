@@ -16,12 +16,13 @@
 //   cursor copy; the reaction flags are `i >= 18` over an unsigned index; the source-list push_back is an inline insert
 //   at the sentinel taking the node pointer (a member push_back leaves a dead `add eax,71Ch` of the list address), with
 //   the intelligent-pointer temporary built before GetWorld() as the argument.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
 class CThing;
 class CWorld;
 
-template <class T> __forceinline T* FillN(T* first, unsigned long count, const T& value)
+template <class T> FABLE_FORCEINLINE T* FillN(T* first, unsigned long count, const T& value)
 {
     T* cur = first;
     for (; count > 0; --count, ++cur)
@@ -30,13 +31,13 @@ template <class T> __forceinline T* FillN(T* first, unsigned long count, const T
 }
 template <class T> struct SAllocProxy {             // STLport _STLP_alloc_proxy: the end-of-storage pointer
     T* _M_data;
-    __forceinline SAllocProxy(T* data) : _M_data(data) { }
+    FABLE_FORCEINLINE SAllocProxy(T* data) : _M_data(data) { }
 };
 template <class T> struct CArrayBase {              // STLport _Vector_base
     T*              m_pData;
     T*              m_pLast;
     SAllocProxy<T>  m_End;
-    __forceinline CArrayBase(unsigned long count) : m_pData(0), m_pLast(0), m_End(0)
+    FABLE_FORCEINLINE CArrayBase(unsigned long count) : m_pData(0), m_pLast(0), m_End(0)
     {
         m_pData = (T*)malloc(count * sizeof(T));
         m_pLast = m_pData;
@@ -46,7 +47,7 @@ template <class T> struct CArrayBase {              // STLport _Vector_base
 #include "engine/CArray.h"
 class COpinionSet { public:                                // retail 12 bytes
     CArray<float> OpinionValues;
-    __forceinline COpinionSet() : OpinionValues(5) { }
+    FABLE_FORCEINLINE COpinionSet() : OpinionValues(5) { }
 };
 #include "engine/CCountedPointer.h"
 
@@ -74,7 +75,7 @@ template <class T> struct SListNode {
 template <class T> struct CList {                   // STLport list: sentinel pointer only
     SListNode<T>* Node;
 };
-template <class T> __forceinline void ListInsert(SListNode<T>* position, const T& value)
+template <class T> FABLE_FORCEINLINE void ListInsert(SListNode<T>* position, const T& value)
 {
     SListNode<T>* node = (SListNode<T>*)malloc(sizeof(SListNode<T>));
     new (&node->Data) T(value);

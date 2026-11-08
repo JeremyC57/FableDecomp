@@ -10,6 +10,7 @@
 // Layout (retail CTCWillLightning, the PDB list/pointer members 0xc larger): WeaponState +0x0c, LeftHandAnim +0x10,
 //   PrimaryHandEffect +0x20, SecondaryHandEffect +0x24, m_lsState +0x6c, m_cbpPlayer +0x70, m_tpLeftHandEffect +0x78,
 //   m_tpRightHandEffect +0x80.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CBaseObject;
@@ -29,20 +30,20 @@ class CThing { public:
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline T* GetInterface(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetInterface(long wanted)
     {
         if (HasTC(wanted))
             return GetTC<T>(wanted);
         return 0;
     }
-    template<class T> __forceinline void GetInterface(T** ppOut, long wanted)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long wanted)
     {
         if (HasTC(wanted))
             *ppOut = GetTC<T>(wanted);

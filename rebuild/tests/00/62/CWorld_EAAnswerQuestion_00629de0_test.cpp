@@ -1,5 +1,6 @@
 // Behaviour test for 0x00629DE0: CWorld::EAAnswerQuestion(const CGameEvent* event) -- game-event action: read the answer from the event, post message 0x10 carrying it after 50 frames, and while the subtitle box is displaying text play the A (answer 1) or B button sound and clear the subtitles
 // A copy of the source model and logic (compiled separately from src/00629de0.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -76,7 +77,7 @@ public:
     long          WritePos;                            // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);       // 0x009F18F0
-    __forceinline long ReadLong() { long value = 0; Read(4, &value); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value = 0; Read(4, &value); return value; }
 };
 class CGameEvent {
 public:

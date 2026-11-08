@@ -10,6 +10,7 @@
 //   held by reference: this+0 -> the area filter, this+8 -> the quest filter); CFilter_Bind3 is the Ego_r.pdb template.
 // Callees: CTCPhysicsBase::GetBoundingInfo(C3DVector&, float&) const @ 0x006AF640, CThingFilter_IsInQuestOrNullQuest::operator()
 //   @ 0x006A7C60, __ftol2 @ 0x00BFEA70 (six times).
+#include "fable_compiler.h"
 #include "engine/CThing.h"
 
 // ---- the overlapping-area filter (inline in retail) ----------------------------------------------------------------
@@ -34,7 +35,7 @@ public:
 class CThingFilter_OverlappingArea {
 public:
     const C2DBoxI* Area;                              // +0x00
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const const CTCPhysicsBase* physics = thing.GetPhysicsTC();
         if (!physics)
@@ -62,7 +63,7 @@ struct CThingVirtuals {
 };
 class CThingFilter_HasNavigationInformation {
 public:
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         const CTCPhysicsBase* physics = thing.GetPhysicsTC();
         const CThingVirtuals& v = *(const CThingVirtuals*)&thing;

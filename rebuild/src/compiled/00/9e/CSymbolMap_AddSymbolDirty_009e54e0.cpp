@@ -9,6 +9,7 @@
 // Shape (the module needs `__forceinline` on Add, the pair ctor and CSymbolInfo's memberwise copy): CVectorMap::Add (landed out of line at 0x009E7C00 for another caller) is inlined: the pair temporary is built from
 //   the key and the CSymbolInfo temporary, pushed, destroyed, then Dirty is set before the info temporary dies; the
 //   insert result lives in the `if` scope and shares the info temporary's frame slot.
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
@@ -30,13 +31,13 @@ struct CSymbolInfo {                               // CSymbolMap::CSymbolInfo (1
     CCharString GroupName;                         // +0x00
     CCharString EntryName;                         // +0x04
     long        Val;                               // +0x08
-    __forceinline CSymbolInfo(const CCharString& group, const CCharString& entry, long val) : GroupName(group), EntryName(entry), Val(val) {}
-    __forceinline CSymbolInfo(const CSymbolInfo& other) : GroupName(other.GroupName), EntryName(other.EntryName), Val(other.Val) {}
+    FABLE_FORCEINLINE CSymbolInfo(const CCharString& group, const CCharString& entry, long val) : GroupName(group), EntryName(entry), Val(val) {}
+    FABLE_FORCEINLINE CSymbolInfo(const CSymbolInfo& other) : GroupName(other.GroupName), EntryName(other.EntryName), Val(other.Val) {}
 };
 template <class T1, class T2> struct pair {        // STLport pair
     T1 first;
     T2 second;
-    __forceinline pair(const T1& a, const T2& b) : first(a), second(b) {}
+    FABLE_FORCEINLINE pair(const T1& a, const T2& b) : first(a), second(b) {}
 };
 template <class T> struct vector {                 // retail STLport vector: 12 bytes
     T* _M_start;
@@ -50,7 +51,7 @@ template <class K, class V, class C> class CVectorMap { public:
     vector< pair<K, V> > Data;                     // +0x00
     C                    Compare;                  // +0x0c
     bool                 Dirty;                    // +0x0d
-    __forceinline void Add(const K& key, const V& value) { Data.push_back(pair<K, V>(key, value)); Dirty = true; }
+    FABLE_FORCEINLINE void Add(const K& key, const V& value) { Data.push_back(pair<K, V>(key, value)); Dirty = true; }
 };
 class CSymbolMap { public:
     long                                                    _padding_;               // +0x00

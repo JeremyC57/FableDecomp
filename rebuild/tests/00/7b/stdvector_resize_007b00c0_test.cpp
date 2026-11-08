@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -30,7 +31,7 @@ public:
     T* erase(T*,T*);
     void _M_fill_insert(T*,unsigned int,const T&);
     unsigned int size() const {return (unsigned int)(this->_M_finish-this->_M_start);}
-    __forceinline void resize(unsigned int n,const T& value) {
+    FABLE_FORCEINLINE void resize(unsigned int n,const T& value) {
         if(n<size()) erase(this->_M_start+n,this->_M_finish);
         else _M_fill_insert(this->_M_finish,n-size(),value);
     }

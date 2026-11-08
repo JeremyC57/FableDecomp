@@ -9,6 +9,7 @@
 //   VC7.1 inlines both (CRC Calc + map find, and the STLport placement-new push_back with the 0x004AC940 overflow). The inline
 //   CRC needs `len` then `str` as named locals in that order (retail's `[ecx+esi]` index-first SIB); `y = Header; return y;` and
 //   the caller's `!= Effects.end()` member re-read give retail's find tail.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 extern char g_emptyString[];                            // 0x0129AAF4
 extern const unsigned long g_crcTable_0129a168[256];    // 0x0129A168
@@ -20,7 +21,7 @@ class CCharString { public:
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
 };
-__forceinline unsigned long CalcCRC(unsigned long seed, const char* data, unsigned long length)
+FABLE_FORCEINLINE unsigned long CalcCRC(unsigned long seed, const char* data, unsigned long length)
 {
     if (length == 0)
         return seed;
@@ -48,7 +49,7 @@ struct SEffectNode {                            // STLport _Rb_tree_node<pair<co
 struct CEffectMap {
     SEffectNode* Header;
     SEffectNode* end() const { return Header; }
-    __forceinline SEffectNode* find(const unsigned long& key) const
+    FABLE_FORCEINLINE SEffectNode* find(const unsigned long& key) const
     {
         SEffectNode* y = Header;
         SEffectNode* x = Header->Parent;
@@ -68,7 +69,7 @@ class CSpecialEffectsDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CEffectMap    Effects;                      // +0x28 map<unsigned long, long> (header node pointer)
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
-    __forceinline bool GetEffectFromStringInline(const CCharString& name, long& type) const
+    FABLE_FORCEINLINE bool GetEffectFromStringInline(const CCharString& name, long& type) const
     {
         unsigned long len = name.Length();
         const char* str = name.c_str();
@@ -136,7 +137,7 @@ struct CIntelligentPointerVector {                    // STLport vector<CIntelli
     void push_back(const CIntelligentPointerThing& x); // 0x004AD520
     void _M_insert_overflow(CIntelligentPointerThing* position, const CIntelligentPointerThing& x, const __false_type&,
                             unsigned int count, bool atEnd);   // 0x004AC940
-    __forceinline void push_back_inline(const CIntelligentPointerThing& x)
+    FABLE_FORCEINLINE void push_back_inline(const CIntelligentPointerThing& x)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CIntelligentPointerThing(x);

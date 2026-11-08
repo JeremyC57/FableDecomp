@@ -1,5 +1,6 @@
 // Behaviour test for 0079dcc0: src/0079dcc0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCPhysicalShieldSpell::OnHitAtPos(const C3DVector& position)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -42,7 +43,7 @@ template <class T> class CDefPointer { public:                 // the out-slot G
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-template <class T> __forceinline void ReleaseDef(T* def)
+template <class T> FABLE_FORCEINLINE void ReleaseDef(T* def)
 {
     if (def && --def->m_refCount == 0)
         def->Destroy();

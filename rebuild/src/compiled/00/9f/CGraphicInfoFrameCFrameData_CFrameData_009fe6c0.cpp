@@ -14,6 +14,7 @@
 //   ManagedTexture.Release(); Frame.UnInitialise(); CurrentMipmapLevel = -1; TouchedMipmapLevel = 127;), auto-inlined; then
 //   the member dtors in reverse: CCountedPointer<CBankFileAsyncData> (engine/CCountedPointer.h), the two ~CManagedTexture calls,
 //   the forced-inline ~CGraphicFrame (see 0x00B2B910) sharing the zero register.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CResource.h"                            // : CIVCountedPointeeBase; ~CResource 0x009FC550
 #include "engine/CBaseClass.h"
@@ -60,7 +61,7 @@ class CGraphicFrame {                                    // Ego_r.pdb, 4 bytes (
     // dtor + operator delete) leaves a call in ~CCompositeSurfaceCache 0x00B2B910 (that row's probes 3-5, 7, 9-11), so it is __forceinline like the other Lionhead
     // header release helpers (EXTRA_RULES owner decision 2026-11-01).
 public:
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         CGraphicFrameData* data = FrameData;
         if (data) {

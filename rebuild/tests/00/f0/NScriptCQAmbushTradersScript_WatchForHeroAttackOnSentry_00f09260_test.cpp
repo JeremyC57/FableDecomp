@@ -1,6 +1,7 @@
 // Behaviour test for 0x00F09260 (RST): model plus the body verbatim from final.cpp, callees stubbed.
 // Checks the immediate-terminate exit, a melee hit and a special-ability hit (flag set, stop after the trailing test),
 // the sentry dying (no flag), and termination detected inside the hit block (no flag); the by-value sentry is released on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,7 +39,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    FABLE_FORCEINLINE ~CScriptThing() { --g_live; }
     bool IsAlive() const { return g_frames < g_dieAt; }
     bool MsgIsHitBy(const CCharString& a) const { return HitCheck(a, 1); }
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& a) const { return HitCheck(a, 2); }

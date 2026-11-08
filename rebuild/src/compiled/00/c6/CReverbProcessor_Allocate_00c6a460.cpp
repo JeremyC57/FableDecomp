@@ -19,6 +19,7 @@
 //   0x00C76AB0, CReverbPreDelay::Allocate 0x00C76DD0, CStereoDelayLine::Allocate 0x00C75050 (all parked hand444, same
 //   signatures as declared here).
 // Config: +4 channel count, +8 sample rate, +0x1C the tap lengths (the fields this body and its callees read).
+#include "fable_compiler.h"
 struct CReverbConfig {
     unsigned int  m_flags;                              // +0x00
     unsigned int  m_channels;                           // +0x04
@@ -30,7 +31,7 @@ struct CReverbConfig {
 // libpk's inline-assembly float-to-long helper (round to nearest, the FPU default)
 #include "libpk/FtoL.h"
 // libpk's round-half-down helper (out-of-line copy at 0x00C3FF70): round(value - 0.5), negatives step back up by one
-__forceinline long RoundHalfDownToLong(float value)
+FABLE_FORCEINLINE long RoundHalfDownToLong(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

@@ -12,6 +12,7 @@
 //   reuses edi, 3 diff lines), the keeper test and the tavern test as one `||` condition over a single SetStockState(0) (an
 //   if / else-if pair duplicates the call setup: 2 lines), and PeekTC over the real engine/CVectorMap.h with std::bitset
 //   component bits (the old draft's eax/ecx swap after GetPItem: 8 lines).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
@@ -38,7 +39,7 @@ public:
     CIntelligentPointer<CThing> PWorkplace;         // +0x170 (creature; descriptive)
     CThing* GetPWorkplace() const { return PWorkplace.Get(); }
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc)
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc)
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;

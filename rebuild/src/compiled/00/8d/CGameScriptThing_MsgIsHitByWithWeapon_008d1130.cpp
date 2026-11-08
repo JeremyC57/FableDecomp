@@ -14,6 +14,7 @@
 //   CTCEntityEvents::GetEvent<CEventHitBy, CFilter_Bind4<CIsHitEventHitByThingWithScriptName, CEventFilter_HitEventWith(No)Weapon,
 //   CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter>> instances 0x008D49B0 / 0x008D48F0; the quest manager 0x013B89FC.
 // Layout / shape: the landed MsgIsHitByWithDecapitate 0x008D1440 model (component check before the frame reads here).
+#include "fable_compiler.h"
 #include <string.h>
 #include "engine/CGameScriptThing.h"
 #include "engine/CSpawnedFuncBase.h"
@@ -84,8 +85,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 struct CEventHitBy;                                     // NEntityEvents::CEventHitBy
 struct CIsEventCreatedAfter { long Frame; CIsEventCreatedAfter(long f) : Frame(f) {} };
 struct CIsEventCreatedBeforeOrOn { long Frame; CIsEventCreatedBeforeOrOn(long f) : Frame(f) {} };
@@ -131,7 +132,7 @@ __declspec(noinline) bool CTCEntityEventsNative::GetEvent(CEventHitBy** out, con
     return event != 0;
 }
 #pragma auto_inline(on)
-template <class F> __forceinline bool HasHitFor(const CTCEntityEventsNative* events, const CCharString& name, const F& weapon, long current, long last)
+template <class F> FABLE_FORCEINLINE bool HasHitFor(const CTCEntityEventsNative* events, const CCharString& name, const F& weapon, long current, long last)
 {
     CEventHitBy* event;
     return events->GetEvent(&event, CFilter_Bind4<CIsHitEventHitByThingWithScriptName, F, CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter>(

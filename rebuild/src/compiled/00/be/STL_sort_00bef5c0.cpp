@@ -15,6 +15,7 @@
 //   __final_insertion_sort and __unguarded_insertion_sort __forceinline (plain inline leaves them out of line): ranges longer than __stl_threshold (16) get
 //   __insertion_sort(first, first + 16) then __unguarded_insertion_sort_aux(first + 16, last, (T*)0), shorter ones a single
 //   __insertion_sort. `__fastcall` on the template definitions.
+#include "fable_compiler.h"
 #include <new>
 
 // CBaseClass: the polymorphic engine root (out-of-line virtual destructor 0x0099A2E0, vtable 0x01231710).
@@ -56,7 +57,7 @@ void __fastcall __insertion_sort(RandomAccessIter first, RandomAccessIter last, 
 template <class RandomAccessIter, class T, class Compare>
 void __fastcall __unguarded_insertion_sort_aux(RandomAccessIter first, RandomAccessIter last, T*, Compare comp);   // 0x00BEDD20
 
-template <class Size> __forceinline Size __lg(Size n)
+template <class Size> FABLE_FORCEINLINE Size __lg(Size n)
 {
     Size k;
     for (k = 0; n != 1; n >>= 1)
@@ -65,13 +66,13 @@ template <class Size> __forceinline Size __lg(Size n)
 }
 
 template <class RandomAccessIter, class Compare>
-__forceinline void __unguarded_insertion_sort(RandomAccessIter first, RandomAccessIter last, Compare comp)
+FABLE_FORCEINLINE void __unguarded_insertion_sort(RandomAccessIter first, RandomAccessIter last, Compare comp)
 {
     __unguarded_insertion_sort_aux(first, last, (CSurfaceEntry*)0, comp);
 }
 
 template <class RandomAccessIter, class Compare>
-__forceinline void __final_insertion_sort(RandomAccessIter first, RandomAccessIter last, Compare comp)
+FABLE_FORCEINLINE void __final_insertion_sort(RandomAccessIter first, RandomAccessIter last, Compare comp)
 {
     if (last - first > __stl_threshold) {
         __insertion_sort(first, first + __stl_threshold, comp);

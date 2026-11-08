@@ -4,6 +4,7 @@
 // Native00E33B00 length190. String literals verified through NUL.
 // Naming wave 35: identity reg 00e32796 "M_AC_DummyMoving" in 00e32540; Alloc 00e33a20; vtable 012e3140 slot 1; PDB ?Main@CM_AC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_AC_DummyMoving::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_AC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_AC_DummyMoving@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #define CScriptThing CScriptThingDonor
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -111,7 +112,7 @@ virtual bool IsAlive() const; //slot75 0x004AB130
 virtual bool IsDead() const; //slot76 0x004AA890
 virtual bool IsNull() const; //slot77 0x004AB150
 virtual bool IsEqualTo(const CScriptThing&) const; //slot78 0x004AA8A0
- __forceinline virtual ~CScriptThing(){
+ FABLE_FORCEINLINE virtual ~CScriptThing(){
  if(PImp_Info){--PImp_Info->References;if(PImp_Info->References==0){PImp_Info->Delete(PImp_Info->Data);::operator delete(PImp_Info);}}
  PImp_Data=0;PImp_Info=0;
 }
@@ -158,7 +159,7 @@ FABLE_STATIC_ASSERT(sizeof(CM_AC_DummyMoving)==28);
 FABLE_STATIC_ASSERT(offsetof(CEntityScriptBase,Me)==8);
 FABLE_STATIC_ASSERT(sizeof(void (CM_AC_DummyMoving::*)())==4);
 #endif
-__forceinline CScriptThing SpawnDummy(CEntityScriptBase* owner){
+FABLE_FORCEINLINE CScriptThing SpawnDummy(CEntityScriptBase* owner){
  CCharString name("AC_DummyMoving"); CCharString definition("OBJECT_STRAW_DUMMY_01");
  return owner->Game->CreateObjectOnEntity(definition,owner->Me,name);
 }

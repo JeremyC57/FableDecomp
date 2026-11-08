@@ -14,6 +14,7 @@
 // p->Destroy(); m_p = 0; }` (`dec dword ptr [ecx+4] ; jne`); both it and the class destructor are `__forceinline` (a
 // generated destructor plus a forceinlined release is called out of line from the ??_G; a polymorphic derived class
 // with no destructor left the release out of line).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CSharedData {
@@ -25,7 +26,7 @@ struct CSharedData {
 template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) {}
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* p = m_p;
         if (p) {
@@ -39,7 +40,7 @@ template <class T> class CIVCountedPointer { public:
 class C3DAnimationBlendState { public:
     CBaseClass                     m_base;          // +0x00 (the polymorphic base, modelled as the first member)
     CIVCountedPointer<CSharedData> Data;            // +0x04
-    __forceinline ~C3DAnimationBlendState() {}
+    FABLE_FORCEINLINE ~C3DAnimationBlendState() {}
 };
 
 void DeleteC3DAnimationBlendState(C3DAnimationBlendState* p)

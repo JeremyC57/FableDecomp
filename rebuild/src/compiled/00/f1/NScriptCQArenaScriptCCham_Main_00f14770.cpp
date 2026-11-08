@@ -18,6 +18,7 @@
 //   the handle is a destructor-less view destroyed by hand per exit.
 // Naming wave 35: identity reg 00f0fc46 "Cham" in 00f0fb70; Alloc 00f14670; vtable 012f8fb4 slot 1; PDB ?Main@CCham@CQ_ArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CCham::Main (wave3/labels_alloc.tsv); PDB ?Main@CCham@CQ_ArenaScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -33,7 +34,7 @@ class CCPPointerInfo { public:                                // CCountedPointer
 template <class T> class CCountedPointer { public:                          // CCountedPointer<T> {Data, Info}
     void*           Data;
     CCPPointerInfo* Info;
-    __forceinline void ReleaseInline()                 // ~CCountedPointer body
+    FABLE_FORCEINLINE void ReleaseInline()                 // ~CCountedPointer body
     {
         if (Info) {
             --Info->RefCount;
@@ -66,7 +67,7 @@ struct CBaseObjectDtor {                               // the same root, as its 
     virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointer<CScriptThing> PImp;                         // +0x08
@@ -80,7 +81,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
-    __forceinline void DestroyInline()                 // the compiler-generated destructor: member release, then the base
+    FABLE_FORCEINLINE void DestroyInline()                 // the compiler-generated destructor: member release, then the base
     {
         PImp.ReleaseInline();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

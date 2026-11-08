@@ -13,6 +13,7 @@
 // (98 users, a list of CComponent*) and the slot 182 / 183 targets (ScrollUpProcess / ScrollDownProcess candidates) are
 // not confirmed.
 // Opt: size TU (unaligned entry) with a frame pointer (`leave`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 namespace std {
@@ -38,7 +39,7 @@ public:
     T* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return Object; }
-    __forceinline ~CDefPointer() { if (Object) Object->DecRef(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->DecRef(); }
 };
 class CComponent;
 extern std::list<CComponent*> g_ComponentList;          // 0x013B8A98 (name not recovered)

@@ -16,6 +16,7 @@
 // Shape: the same `HasTC(0x83)` bitset test + appearance call (reason 2) as the landed WorldUpdate 0x00836260 next door.
 // Layout (retail): CThing UsingComponents bitset<274> at +0x20 (nine dwords); local model (engine/CThing.h carries the Ego_r
 //   offsets, 0x10 high past the containers), as the landed 0x00836260.
+#include "fable_compiler.h"
 class CThing {
 public:
     virtual ~CThing();
@@ -23,7 +24,7 @@ public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                     // +0x20 UsingComponents (bitset<274>)
     void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

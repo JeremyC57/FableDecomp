@@ -1,6 +1,7 @@
 // 009b9c60 CStringParser::SkipWhitespace
 // Leaf: ?SkipWhitespace@CStringParser@@QAEJXZ
 // Flags:
+#include "fable_compiler.h"
 #define CStringParser CStringParserFields
 #include "engine/CStringParser.h"
 #undef CStringParser
@@ -28,13 +29,13 @@ protected:
  void (__fastcall*ErrorCallback)(const CCharString&);CCursorPos CursorPos;
 public:virtual~CStringParser();
  long SkipWhitespace();
- __forceinline const char* PeekString(){return static_cast<const char*>(String)+CursorPos.StringPos;}
- __forceinline unsigned long GetStringPos()const{return CursorPos.StringPos;}
+ FABLE_FORCEINLINE const char* PeekString(){return static_cast<const char*>(String)+CursorPos.StringPos;}
+ FABLE_FORCEINLINE unsigned long GetStringPos()const{return CursorPos.StringPos;}
 protected:
- __forceinline bool CalcInQuotes(bool inQuotes,const char*from,const char*to)const {
+ FABLE_FORCEINLINE bool CalcInQuotes(bool inQuotes,const char*from,const char*to)const {
   for(const char*p=from;p!=to;++p)if(*p=='"'||*p=='\'')inQuotes=!inQuotes;return inQuotes;
  }
- __forceinline void MoveStringPos(unsigned long n){if(n){CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,static_cast<const char*>(String)+CursorPos.StringPos,static_cast<const char*>(String)+CursorPos.StringPos+n);CursorPos.StringPos+=n;}}
+ FABLE_FORCEINLINE void MoveStringPos(unsigned long n){if(n){CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,static_cast<const char*>(String)+CursorPos.StringPos,static_cast<const char*>(String)+CursorPos.StringPos+n);CursorPos.StringPos+=n;}}
 };
 FABLE_STATIC_ASSERT(sizeof(CStringParser)==sizeof(CStringParserFields));
 long CStringParser::SkipWhitespace(){

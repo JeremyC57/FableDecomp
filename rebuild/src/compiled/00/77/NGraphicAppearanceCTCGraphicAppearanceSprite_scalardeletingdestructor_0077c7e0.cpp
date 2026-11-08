@@ -10,6 +10,7 @@
 // destructor is inline and empty, so only its vtable store survives (after the unregister call, before ~CTCBase).
 // Local models: no engine headers exist for these classes; CThing is reduced to the two members the body reads;
 // engine/CTCBase.h is a flattened POD (vptr as a data member), so the polymorphic CTCBase is modelled locally.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 struct CPrimitive;
 
@@ -47,7 +48,7 @@ class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceCom
     bool FadeOutWithAnim;                                   // +0x28
     CPrimitive* PrimHandle;                                 // +0x2c
     CTCGraphicAppearanceSprite(CThing* thing) : CTCBase(thing), PrimHandle(0) { }
-    __forceinline virtual ~CTCGraphicAppearanceSprite()
+    FABLE_FORCEINLINE virtual ~CTCGraphicAppearanceSprite()
     {
         if (!ParentThing->IsDead())
             ParentThing->GetTCGraphicAppearance()->UnregisterComponent(*this);

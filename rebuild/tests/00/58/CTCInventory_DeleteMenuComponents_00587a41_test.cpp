@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CTCInventory::DeleteMenuComponents() -- tear down the open inventory screen: base clean-up, clear the edit boxes, close the screen-specific menu, then (if a screen was open) delete every menu component except the two persistent ones, keep only those two, reset the UI manager and the global list registry, and mark no screen open
@@ -65,7 +66,7 @@ public:
         if (it == m_interfaces.last || type < it->type) it = m_interfaces.last;
         return it->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

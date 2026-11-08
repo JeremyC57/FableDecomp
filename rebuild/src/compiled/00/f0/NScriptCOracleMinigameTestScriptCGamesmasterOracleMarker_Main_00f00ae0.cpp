@@ -4,6 +4,7 @@
 // Retail00F00AE0 length194; game slot91 CreateCreature008A9100, slot7 NewScriptFrame006E7410; ScriptThing slot6 GetPos004AA980.
 // Naming wave 35: identity reg 00effebe "GamesmasterOracleMarker" in 00effe10; Alloc 00f00a10; vtable 012f7238 slot 1; PDB ?Main@CGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGamesmasterOracleMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGamesmasterOracleMarker@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -226,7 +227,7 @@ public:
 using NScript::COracleMinigameTestScript;
 namespace NScript {
 class COracleMinigameTestScript::CGamesmasterOracleMarker {
-public:GameMethods*Game;ScriptMethods Marker;void*ParentClass;void*PMasterData;__forceinline ScriptMethods CreateOracle(){CCharString name("OracleGamesmaster",-1);CCharString definition("CREATURE_SS_ORACLE_GAMES_MASTER",-1);return Game->CreateCreature(definition,Marker.GetPos(),name,false);}
+public:GameMethods*Game;ScriptMethods Marker;void*ParentClass;void*PMasterData;FABLE_FORCEINLINE ScriptMethods CreateOracle(){CCharString name("OracleGamesmaster",-1);CCharString definition("CREATURE_SS_ORACLE_GAMES_MASTER",-1);return Game->CreateCreature(definition,Marker.GetPos(),name,false);}
 private:
     virtual void Main();                          // PDB ?Main@CGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@EAEXXZ
 };

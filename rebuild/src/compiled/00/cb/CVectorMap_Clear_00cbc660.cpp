@@ -17,6 +17,7 @@
 // helper (`Swap(T&, T&)`); a hand-written three-temporary swap loads both before the stores and swaps the registers.
 // The destructor and _Tidy are __forceinline (VC7.1 otherwise calls the temporary's destructor out of line).
 // The retail container is reconstructed by hand (the DDK STL is not the retail revision; GOTCHAS wave 22).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 
 class CCharString { public:
@@ -50,7 +51,7 @@ template <class T> struct CRetailVector {           // VC6-era Dinkumware vector
     T* _Last;
     T* _End;
     CRetailVector() : _First(0), _Last(0), _End(0) {}
-    __forceinline ~CRetailVector() { _Tidy(); }
+    FABLE_FORCEINLINE ~CRetailVector() { _Tidy(); }
     T* begin() { return _First; }
     T* end() { return _Last; }
     T* erase(T* first, T* last);                    // 0x00CBBDA0
@@ -61,7 +62,7 @@ template <class T> struct CRetailVector {           // VC6-era Dinkumware vector
         Swap(_Last, x._Last);
         Swap(_End, x._End);
     }
-    __forceinline void _Tidy()
+    FABLE_FORCEINLINE void _Tidy()
     {
         for (T* p = _First; p != _Last; ++p)
             p->~T();

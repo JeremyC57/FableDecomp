@@ -13,6 +13,7 @@
 //   pointer +0x344 and FrameLastUpdatedUnknownThreat +0x34c (the landed SetOpinionReactionMask 0x00681E30 agrees).
 // Shape: the masks are byte vectors of 18/79/92 entries filled with 1 (memset), the opinion set five zero floats; the
 //   92 list heads are built by an inline counted loop; the def fields are read through the member pointer each call.
+#include "fable_compiler.h"
 #include <string.h>
 class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -28,7 +29,7 @@ class CTCBase { public:
 template <class T> struct CRetailList {             // STLport list: one sentinel-node pointer
     struct node { node* next; node* prev; T value; };
     node* head;
-    __forceinline CRetailList() : head(0)
+    FABLE_FORCEINLINE CRetailList() : head(0)
     {
         node* sentinel = (node*)malloc(sizeof(node));
         sentinel->next = sentinel;
@@ -38,7 +39,7 @@ template <class T> struct CRetailList {             // STLport list: one sentine
 };
 
 // STLport uninitialized_fill_n over a byte/float range: memset, then the end pointer from the argument
-template <class T> __forceinline T* UninitializedFillZeroOr(T* first, unsigned int count, int byteValue)
+template <class T> FABLE_FORCEINLINE T* UninitializedFillZeroOr(T* first, unsigned int count, int byteValue)
 {
     memset(first, byteValue, count * sizeof(T));
     return first + count;
@@ -54,7 +55,7 @@ struct CRetailMaskVector {                          // the retail mask vectors: 
     unsigned char* _M_start;
     unsigned char* _M_finish;
     SAllocProxy<unsigned char> _M_end_of_storage;
-    __forceinline CRetailMaskVector(unsigned int count, bool value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
+    FABLE_FORCEINLINE CRetailMaskVector(unsigned int count, bool value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = _M_end_of_storage.allocate(count);
         _M_end_of_storage._M_data = _M_start + count;
@@ -66,7 +67,7 @@ class COpinionSet { public:                                // five opinion value
     float* _M_start;
     float* _M_finish;
     SAllocProxy<float> _M_end_of_storage;
-    __forceinline COpinionSet() : _M_start(0), _M_finish(0), _M_end_of_storage(0)
+    FABLE_FORCEINLINE COpinionSet() : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = _M_end_of_storage.allocate(5);
         _M_end_of_storage._M_data = _M_start + 5;

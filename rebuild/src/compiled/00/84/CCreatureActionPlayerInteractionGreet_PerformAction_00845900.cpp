@@ -10,6 +10,7 @@
 // Shape: the landed CCreatureAction_GiveItemToThing 0x00842F70 message model (creature fetched twice into named locals, the manager
 // into a third before the arguments); IS_THING_ALIVE on both pointers; `this` spills to the frame (`mov [esp+0Ch],ebp`) because ebp
 // walks on to &PTarget; the `new` null test selects 0 for AddEvent (the landed ShowItemToThing shape).
+#include "fable_compiler.h"
 class C3DVector;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -24,7 +25,7 @@ class CThing : public CThingPhysical { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

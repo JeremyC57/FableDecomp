@@ -1,4 +1,5 @@
 // behaviour test for 0x00669390 CViewport::ClearHandle (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CViewport::ClearHandle() -- when the viewport's counted handle (+0x28) holds the object's last external reference (count == 1), notify the object (virtual slot 3, with the handle); then release the handle
@@ -22,7 +23,7 @@ struct CCountedObject {
 struct CCountedPointer {
     CCountedObject* Object;
     long GetRefCount() const { return Object ? Object->m_count : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CCountedObject* object = Object;
         if (object) {
@@ -31,7 +32,7 @@ struct CCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CCountedPointer& operator=(CCountedObject* object)
+    FABLE_FORCEINLINE CCountedPointer& operator=(CCountedObject* object)
     {
         Release();
         Object = object;
@@ -43,7 +44,7 @@ struct CCountedPointer {
 struct CHandle {
     void*           m_owner;                    // +0x00
     CCountedPointer Data;                       // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandle(this);

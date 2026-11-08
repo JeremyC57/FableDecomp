@@ -16,6 +16,7 @@
 // return false on their own (a merged `bool activated` lets VC7.1 tail-merge the two calls into one test).
 // Layout: retail CTCInventoryQuests (CTCInventoryBase 0x130, 12-byte vectors): QuestCardCount +0x150 (PDB +0x170);
 // CTCQuestCard feat index +0x14. No engine header for the class.
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -29,12 +30,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -46,16 +47,16 @@ class CThing { public:
     unsigned long  m_tcMask[8];                 // +0x20 UsingComponents
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                       // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTCIfPresent(CThing* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(CThing* thing, long kind)
 {
     CTCBase_Retail* tc;                         // deliberately unset when the component is absent (retail reads a dead slot)
     if (thing->HasTC(kind))
         tc = thing->m_tcs.Find(kind);
     return tc;
 }
-__forceinline CTCBase_Retail* GetTCIfPresentConst(const CThing* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresentConst(const CThing* thing, long kind)
 {
     CTCBase_Retail* tc;
     if (thing->HasTC(kind))

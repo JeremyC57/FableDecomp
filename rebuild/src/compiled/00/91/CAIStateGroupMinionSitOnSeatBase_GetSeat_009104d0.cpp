@@ -12,6 +12,7 @@
 // Shape: the GetAllLeafThings body is visible in this TU (overlay FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY, noinline), so VC7.1 knows the
 //   seats vector is not captured and keeps its start in ebp across SetSeat (the free test); the random index is the inline
 //   GFRandom(range, seed) (Ego_r.pdb ?GFRandom@@YIKKPAK@Z, landed 0x008EE600 model) with its `range ? .. : 0` folded by the count test.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -39,7 +40,7 @@
 
 long __fastcall GFROR13(unsigned long value);                       // 0x00497890 ?GFROR13@@YIJK@Z
 // Ego_r.pdb ?GFRandom@@YIKKPAK@Z, expanded in retail (no out-of-line copy; landed 0x008EE600 model).
-__forceinline unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24A1 + 0x24DF;
     *seed = GFROR13(*seed);

@@ -15,6 +15,7 @@
 //          horizontal length guarded against 1e-4, then the vector is normalised in place with an explicit reciprocal, scaled by
 //          (Radius - length) into the impulse temporary; the two flag setters go through the out-parameter GetInterface(T**,
 //          type) template (the landed 0x007504E0 shape), which keeps each component in eax.
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
@@ -61,7 +62,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x14];
     CPhysicsObject* PPhysics;                   // +0x60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

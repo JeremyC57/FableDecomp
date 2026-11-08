@@ -12,6 +12,7 @@
 // before the player argument; the stick length is the inline `sqrt(Y*Y + X*X)` (retail squares Y first); the override
 // vector's members are stored one by one (X, Y, the flag, then Z) and normalised with C3DVector's inline fast Normalise
 // (landed CTCAssassinRush::SetupFacingDirection 0x007A6E20 model); the angle is a named float local (`fstp ; mov ; push`).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
@@ -25,7 +26,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

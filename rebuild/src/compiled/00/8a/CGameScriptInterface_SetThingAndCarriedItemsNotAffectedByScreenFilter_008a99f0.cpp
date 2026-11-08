@@ -4,6 +4,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A99F0 length232; genuine native packed intelligent pointer9bytes, base destructorA01C10, VT1238C6C slot0=4A9710.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
@@ -139,7 +140,7 @@ struct CEnvironmentSpellEffectInterfaceMethods{void SetBypassScreenFilter(const 
 // Donor environment SpellEffectInterface+1A8C differs from retail+1964. Native projection preserves pointer alignment on host.
 struct EnvironmentNative{unsigned char WeatherAndThemes[0x1964];CEnvironmentSpellEffectInterfaceMethods* SpellEffectInterface;};
 struct CarryingMethods:CTCBase{void SetAllCarriedThingsAsBypassFilter(void*);}; //006A2520, type70
-__forceinline CarryingMethods* GetCarrying(CThingNative* thing){CarryingMethods* result;if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)70);ComponentEntry* end=map->Finish;result=static_cast<CarryingMethods*>(((void*)(it==end||it->first>70?end:it)->second));}return result;}
+FABLE_FORCEINLINE CarryingMethods* GetCarrying(CThingNative* thing){CarryingMethods* result;if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)70);ComponentEntry* end=map->Finish;result=static_cast<CarryingMethods*>(((void*)(it==end||it->first>70?end:it)->second));}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetThingAndCarriedItemsNotAffectedByScreenFilter(ScriptMethods&,void*)const;};
 void CGameScriptInterfaceMethods::SetThingAndCarriedItemsNotAffectedByScreenFilter(ScriptMethods& script,void* bypass)const{
  CThingNative* thing=script.GetPThing();PointerVector things;things.PushBack(IntelligentPointer(thing));reinterpret_cast<EnvironmentNative*>(World->PEnvironment_ptr)->SpellEffectInterface->SetBypassScreenFilter(things,bypass);

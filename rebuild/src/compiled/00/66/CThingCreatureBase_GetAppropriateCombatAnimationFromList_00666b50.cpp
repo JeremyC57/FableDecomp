@@ -17,6 +17,7 @@
 // word with the loop index); the vector<long> grow template gets a same-TU auto_inline(off) body that does not leak the vector
 // (so `last` stays in esi), push_back keeps `last` in a local; the info out-pointer lands in the dead `anims` argument slot by
 // itself; the range helper is the ternary `range ? seed % range : 0` (the if/return form puts the zero arm first).
+#include "fable_compiler.h"
 #include <new>
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 long __fastcall GFROR13(unsigned long);   // 0x00497890
@@ -28,7 +29,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return range ? seed % range : 0;
 }
 
-template <class T> __forceinline void Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void Construct(T* p, const T& value) { new (p) T(value); }
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 struct __true_type { __true_type() { } };
@@ -111,7 +112,7 @@ class CThing { public:
 protected:
     const CWorld& PeekWorld() const;            // 0x004C7AB0 (Ego_r.pdb / FableWin.pdb IBE)
 public:
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

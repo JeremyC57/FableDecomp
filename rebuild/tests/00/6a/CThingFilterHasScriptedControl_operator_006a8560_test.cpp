@@ -1,4 +1,5 @@
 // Behaviour test for 006a8560: body copied from src/006a8560.cpp (CThingFilter_HasScriptedControl::operator()), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -23,7 +24,7 @@ class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool hasScript;
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

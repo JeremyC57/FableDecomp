@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -60,7 +61,7 @@ class CEnginePrimitiveHandle : public CBaseClass { public:           // vtable 0
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     virtual void v00() {}
     CEnginePrimitiveHandle() { }
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data->OnLastHandleReleased(this);

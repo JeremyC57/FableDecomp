@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -874,10 +875,10 @@ FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorFixedSize, NoEmptyChunks) == 0xc48)
 #endif // FABLE_ENGINE_CMEMORYALLOCATORFIXEDSIZE_H
 
 struct CMemoryArea { unsigned char AreaID, NextAreaID, PreviousAreaID, AllocatorID;
- __forceinline CMemoryArea* GetNext(unsigned long size) { return NextAreaID!=255 ? (CMemoryArea*)((char*)this+(NextAreaID-AreaID)*size) : 0; }
- __forceinline CMemoryArea* GetPrevious(unsigned long size) { return PreviousAreaID!=255 ? (CMemoryArea*)((char*)this+(PreviousAreaID-AreaID)*size) : 0; }
- __forceinline void SetNext(unsigned char id) { NextAreaID=id; }
- __forceinline void SetPrevious(unsigned char id) { PreviousAreaID=id; }
+ FABLE_FORCEINLINE CMemoryArea* GetNext(unsigned long size) { return NextAreaID!=255 ? (CMemoryArea*)((char*)this+(NextAreaID-AreaID)*size) : 0; }
+ FABLE_FORCEINLINE CMemoryArea* GetPrevious(unsigned long size) { return PreviousAreaID!=255 ? (CMemoryArea*)((char*)this+(PreviousAreaID-AreaID)*size) : 0; }
+ FABLE_FORCEINLINE void SetNext(unsigned char id) { NextAreaID=id; }
+ FABLE_FORCEINLINE void SetPrevious(unsigned char id) { PreviousAreaID=id; }
 };
 struct CMemoryAreaChunk {
  void* ThisChunkMem; long NoAllocatedAreas; CMemoryAreaChunk *PNextChunk,*PPreviousChunk;

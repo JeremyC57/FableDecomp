@@ -10,6 +10,7 @@
 //   _M_finish = i; return first;` -- the non-trivial assignment path is SGI's random-access `__copy` (`for (n = last -
 //   first; n > 0; --n) *result++ = *first++`, the source addressed as result + (last - first)), and `_Destroy` calls the
 //   out-of-line `__destroy_aux` with an empty tag homed on the `first` argument slot.
+#include "fable_compiler.h"
 namespace std {
 
 struct __false_type { __false_type() { } };
@@ -31,7 +32,7 @@ public:
 };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

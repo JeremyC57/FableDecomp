@@ -7,6 +7,7 @@
 // Shape: the inline Remove takes the key by value (`__forceinline`), names the UpperBound result before the
 // __copy pushes, caches the old end in ebx; Dirty sort as in AddSubDef.
 // ---- shared model (CParentDefClassBase sub-def map) ----
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pData;                  // +0 (CBasicString<char>::PData)
     unsigned long m_length;                 // +4 (StringLength)
@@ -75,7 +76,7 @@ struct CSubDefInfoMap {
     bool                Dirty;              // +0x0d
     CSubDefPair* LowerBound(const unsigned long* key);   // 0x009B20D0
     CSubDefPair* UpperBound(const unsigned long* key);   // 0x009B2190
-    __forceinline void Remove(unsigned long key)
+    FABLE_FORCEINLINE void Remove(unsigned long key)
     {
         CSubDefPair* first = LowerBound(&key);
         CSubDefPair* last = Data.m_last;

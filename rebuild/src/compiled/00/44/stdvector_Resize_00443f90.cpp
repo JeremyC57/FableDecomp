@@ -1,4 +1,5 @@
 // CEnginePrimitiveHandleVector::Resize -- constructs a default engine handle, erases excess elements or inserts fill copies, then releases the temporary. Retail00443f90 complete177bytes ret4+15int3 padding. Manifest AddPrimitive is propagatedwrong: 66callers pass scalarcount and native8byteelement arithmetic; RTTI0122f598=CEnginePrimitiveHandle. Helpers00440d70 erase(begin,end),00442350 insert(position,count,fill); CBase ctor0099a2d0/dtor0099a2e0. Shared flat persistentprimitive/CIVbase headers included for native layout; virtual methodview restores slots0dtor/1Delete/3NotifyReleased(consthandle&) callback and refcount+4. No vector/handle/CBase header exists.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -14,18 +15,18 @@ struct CPersistentPrimitiveMethods {
  virtual void NotifyReleased(const CEnginePrimitiveHandle&);
  unsigned long IVRefCount;
  long Type;
- __forceinline unsigned long RemoveReference(){return --IVRefCount;}
+ FABLE_FORCEINLINE unsigned long RemoveReference(){return --IVRefCount;}
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CHandlePointer {
  CPersistentPrimitiveMethods* Object;
  CHandlePointer():Object(0){}
- __forceinline ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
+ FABLE_FORCEINLINE ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
 class CEnginePrimitiveHandle:public CBaseClass { public:
  CHandlePointer Data;
  CEnginePrimitiveHandle():CBaseClass(),Data(){}
- __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
+ FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
 };
 struct CEnginePrimitiveHandleVector {
  CEnginePrimitiveHandle* First;CEnginePrimitiveHandle* Last;CEnginePrimitiveHandle* End;

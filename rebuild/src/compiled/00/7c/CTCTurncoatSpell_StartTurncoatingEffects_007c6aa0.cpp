@@ -11,6 +11,7 @@
 //   ~ 0x0099EAE0. CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout (retail CTCTurncoatSpell = Ego_r.pdb less 4 after the timer): PDef +0x40, PTarget +0x44, LoopingSound +0x50,
 //   TurncoatingEffectOnMe +0x74, TurncoatingEffectOnTarget +0x7c.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CBaseObject;
@@ -42,7 +43,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
         return *this;
     }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

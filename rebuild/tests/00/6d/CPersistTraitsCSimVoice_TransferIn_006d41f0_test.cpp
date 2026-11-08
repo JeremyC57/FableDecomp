@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: TransferIn
 // Layout:40e510 ret12 with ECX pointing at local CCharString default proves StringTraits member; CStringParser shared header; parenthesis/comma token literals and output +0/+4 assignments are retail evidence.
+#include "fable_compiler.h"
 #include "engine/CStringParser.h"
 namespace N006d41f0 {
 
@@ -9,7 +10,7 @@ extern "C" int __cdecl strcmp(const char*,const char*);
 #pragma intrinsic(strcmp)
 int __fastcall Compare(const char*,const char*);
 struct CBasicString {const char* Data;bool Equal(const char*) const;};
-struct CCharString {CBasicString* Data;CCharString();CCharString(const CCharString&);~CCharString(); __forceinline bool Equal(const char* s) const {if(!Data)return strcmp(s,"")==0;return Data->Equal(s);} __forceinline bool CompareEqual(const char* s)const{if(!Data)return strcmp(s,"")==0;return Compare(Data->Data,s)==0;}};
+struct CCharString {CBasicString* Data;CCharString();CCharString(const CCharString&);~CCharString(); FABLE_FORCEINLINE bool Equal(const char* s) const {if(!Data)return strcmp(s,"")==0;return Data->Equal(s);} FABLE_FORCEINLINE bool CompareEqual(const char* s)const{if(!Data)return strcmp(s,"")==0;return Compare(Data->Data,s)==0;}};
 struct Parser:CStringParser {::N006d41f0::CCharString ReadAsString();};
 struct CPersistContext {unsigned int State;};
 void __fastcall ReadInteger(CPersistContext*,Parser*,unsigned int*);

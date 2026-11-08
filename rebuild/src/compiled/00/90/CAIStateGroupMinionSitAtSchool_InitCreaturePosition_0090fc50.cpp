@@ -13,6 +13,7 @@
 // pointer-returning FindTC result straight into ecx; the creature is the argument of an inline helper for the home
 // lookup and the call (esi). Layout local (the engine header flattens the base).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -89,7 +90,7 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroupBase {
     virtual bool InitCreaturePosition();
 };
 
-__forceinline bool PlaceNearHome(CThingCreatureHome* creature)
+FABLE_FORCEINLINE bool PlaceNearHome(CThingCreatureHome* creature)
 {
     return creature->AutoPlaceNearBuilding((CThingBuilding*)creature->PHome.Get(), 5.0f);
 }

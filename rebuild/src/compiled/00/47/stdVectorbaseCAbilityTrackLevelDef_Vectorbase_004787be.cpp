@@ -10,6 +10,7 @@
 // allocator's allocate and the proxy constructor only as `__forceinline`.
 // Label: the catalog's "CAbilityTrackLevelDef_vector_Reserve" (caller: the vector copy constructor 0x0047876B).
 // Leaf: ??0?$_Vector_base
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
@@ -24,14 +25,14 @@ template <class _Tp> class allocator {
 public:
     allocator() { }
     allocator(const allocator&) { }
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc {
 public:
     _Value _M_data;
-    __forceinline _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
+    FABLE_FORCEINLINE _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
 };
 
 template <class _Tp, class _Alloc> class _Vector_base {

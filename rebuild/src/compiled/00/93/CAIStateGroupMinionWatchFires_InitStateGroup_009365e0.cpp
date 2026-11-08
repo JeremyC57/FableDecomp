@@ -7,6 +7,7 @@
 // bit 19 of the bitset dword at +0x38), CTCIdleScheduler::RegisterIdleStateGroup(CAIStateGroupBase*, EIdleStateGroup)
 // @ 0x00801920. Same shape as the landed CAIStateGroup_CleanHouse::InitStateGroup @ 0x00917AF0 (idle type 2).
 // The lookup's bool is tested, so the miss path falls to the epilogue; the key temporary is the only local.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -30,7 +31,7 @@ class CThing { public:
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

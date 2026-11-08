@@ -13,6 +13,7 @@
 //   +0x48); the group's child handle vector (8-byte CEnginePrimitiveHandle, Data at +4) begins at +0x50.
 // Shape: the best result lives in the dead `group` argument slot; the child vector is re-read every iteration; the info
 //   copy is the counted pointer's operator= (identity test, release, add-ref).
+#include "fable_compiler.h"
 class CEngineSubPrimitiveBase;
 class CEngineSubPrimitiveChain { public:
     CEngineSubPrimitiveBase* LastOpaque;
@@ -32,7 +33,7 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline void Assign(T* object)
+    FABLE_FORCEINLINE void Assign(T* object)
     {
         if (Object) {
             Object->Release();
@@ -40,7 +41,7 @@ public:
         }
         Object = object;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         T* old = Object;
         if (old != other.Object) {

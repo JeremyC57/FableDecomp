@@ -15,6 +15,7 @@
 //   InitSounds.clear();` -- STLport 4.x tree iterator whose `++` is `_M_node = _Rb_global<bool>::_M_increment(_M_node)`
 //   (the static template body inlined by /Ob2: the walk runs in eax and is copied back to esi), inline `_Rb_tree::clear()` (root
 //   erase, then leftmost/root/rightmost/count reset); `this` is spilled across the inlined GetInterface.
+#include "fable_compiler.h"
 class CTCBase;
 
 class CInterfaceMap {
@@ -30,7 +31,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

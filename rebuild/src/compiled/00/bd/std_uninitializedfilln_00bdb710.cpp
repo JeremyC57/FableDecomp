@@ -3,6 +3,7 @@
 // Flags: /Gr
 // Identity: Own overflow00bdb8e0 shares uninitialized-copy00bdb6d0 with CEngineVSConstantLayoutBasic constructor00bdbb70; ReservedPresets vector at+320 copied through00bdbb60/00bdb9f0; PDB CVertexShaderConstant X/Y/Z/W sixteen-byte class.
 // Layout: original four-float class16, implicit copy constructor.
+#include "fable_compiler.h"
 #include <new>
 #ifndef _MSC_VER
 #define __fastcall
@@ -11,7 +12,7 @@
 class CVertexShaderConstant{public:float X,Y,Z,W;};
 namespace std {
 struct __false_type{};
-template<class T,class U>__forceinline void _Construct(T* p,const U& value){new(p)T(value);}
+template<class T,class U>FABLE_FORCEINLINE void _Construct(T* p,const U& value){new(p)T(value);}
 template<class Iter,class Size,class T>Iter __fastcall __uninitialized_fill_n(Iter first,Size count,const T& value,const __false_type&){for(;count>0;--count,++first)_Construct(first,value);return first;}
 }
 typedef CVertexShaderConstant Element;

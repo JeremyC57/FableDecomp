@@ -1,6 +1,7 @@
 // CGameCameraManager::PushLookAround() -- start CRotateAround camera mode and play ROTATE_START
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00699970; native baseA4, modeC8; explicit native vtable views from RTTI, no invented virtual slots.
+#include "fable_compiler.h"
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
@@ -27,7 +28,7 @@ class CBase { public:
 };
 extern void* g_RotateAroundVTable[]; //0125C674; RTTI CRotateAround
 extern void* g_OrbitGameVTable[]; //0125C6DC; RTTI COrbitGame
-struct CRotateAround:CBase {float StringLengthXY,HeightOffset,XAxis[3],YAxis[3],Theta;__forceinline CRotateAround(CGameCameraManager* m,const CCameraModeDefPointer& d):CBase(m,d){VTable=g_RotateAroundVTable;}};
+struct CRotateAround:CBase {float StringLengthXY,HeightOffset,XAxis[3],YAxis[3],Theta;FABLE_FORCEINLINE CRotateAround(CGameCameraManager* m,const CCameraModeDefPointer& d):CBase(m,d){VTable=g_RotateAroundVTable;}};
 struct COrbitGame:CBase {float OrbitState[6];COrbitGame(CGameCameraManager* m,const CCameraModeDefPointer& d):CBase(m,d){VTable=g_OrbitGameVTable;}};
 }
 struct CCountedCameraMode {NCameraModes::CBase* Data;void* Info;CCountedCameraMode(NCameraModes::CBase*);}; //0056C880; native owned parameter consumed by697E20

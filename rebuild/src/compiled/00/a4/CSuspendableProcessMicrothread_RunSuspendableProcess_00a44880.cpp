@@ -11,6 +11,7 @@
 //   SuspendSuspendableProcess 0x00A44840): `this` spilled to [ebp-48h], every inline vector member called out of line, each
 //   pointer handed to push_back through its own conversion temporary, the empty() bool widened with `movzx`, the slice start
 //   time stored straight from the x87 double.
+#include "fable_compiler.h"
 #pragma optimize("", off)
 struct MicroThreadInfo;
 double __fastcall GFGetTime();                     // 0x009E1BC0
@@ -46,7 +47,7 @@ public:
 
 extern CSuspendableProcessMicrothread*  g_pScriptRunner;     // 0x013D2838
 extern vector<CASuspendableProcess*>    g_ProcessStack;      // 0x013D2828
-__forceinline void StartTimeslice(CASuspendableProcess* process)
+FABLE_FORCEINLINE void StartTimeslice(CASuspendableProcess* process)
 {
     long reserved[12];     // never touched: models retail's 0x30 untouched inlinee frame bytes (contents unknown)
     process->TimeProcessSliceStarted = (float)GFGetTime();

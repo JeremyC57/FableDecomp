@@ -14,6 +14,7 @@
 // pointer (`and [ebp+8],0`); the sub-def out pointer takes the dead `suitDefIndex` slot ([ebp+0Ch]); the suit def is read into
 // a register (edi) and released by hand without a null test, the owning def through the slot with one (the landed OnCreate
 // idiom of this module). The map walk re-reads end() every pass; `this` is spilled to [ebp-4] and 0x5E to edi (`push 5Eh ; pop edi`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
@@ -25,7 +26,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

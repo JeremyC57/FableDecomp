@@ -19,6 +19,7 @@
 // bitset<274> +0x20, Components CVectorMap +0x44, Dead bit 0 of +0x91 (Ego_r +0xA1 minus 0x10: bitset, CVectorMap, list).
 // Getter identities (Ego_r.pdb donor order = retail order 0x008FCF40..0x008FD010): Terminate 0x008FCF40, PeekWorld
 // 0x008FCFA0, GetWorld 0x008FCFC0, GetPWorldSeed 0x008FCFD0, PeekThingSearchTools 0x008FD000, IsStopping 0x008FD010.
+#include "fable_compiler.h"
 #include "engine/CAIBrain.h"                           // Creature +0x18
 class CCharStringData;
 class CCharString {
@@ -81,7 +82,7 @@ private:
     long FramesRunning;                                 // +0x1C
 };
 
-template <class T> __forceinline bool IS_THING_ALIVE(const T& p)
+template <class T> FABLE_FORCEINLINE bool IS_THING_ALIVE(const T& p)
 {
     return p.GetPItem() && !static_cast<CThing*>(p.GetPItem())->IsDead();
 }

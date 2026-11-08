@@ -10,6 +10,7 @@
 // Shape: `for (n = last - first; n > 0; --n) *--result = *--last;` -- the count in ebx, `last` strength-reduced to
 //   `result + (last - result)` (edi holds the constant distance).
 // Label: catalogued as `STL_CopyBackward_CCharString`.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
@@ -17,7 +18,7 @@ class CCharString { public:
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-__forceinline CCharString* __copy_backward(CCharString* first, CCharString* last, CCharString* result,
+FABLE_FORCEINLINE CCharString* __copy_backward(CCharString* first, CCharString* last, CCharString* result,
                                     const random_access_iterator_tag&, int*)
 {
     for (int n = last - first; n > 0; --n)

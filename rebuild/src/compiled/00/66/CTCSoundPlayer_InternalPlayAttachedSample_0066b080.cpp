@@ -16,6 +16,7 @@
 // Shape: `if (sample && state)` shares the invalid-handle exit; CreatePAttachedEmitter(flag); an init without fader bits
 //   is copied (`rep movsd`) and given 0x8010, else passed through.
 // No pragma.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
@@ -66,8 +67,8 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
 public:
     unsigned long Seed;
-    __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
-    __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
+    FABLE_FORCEINLINE unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
+    FABLE_FORCEINLINE unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
 class CGameSubsystem {
 public:

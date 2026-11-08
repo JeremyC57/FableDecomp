@@ -14,6 +14,7 @@
 //   if (!handler->HandleFailure(..)) break; }` (rotated; its exit flags feed the `AllocatedSize == 0` test); the timeout is
 //   `!(GFGetTime() <= start + timeout)` (`fcompp ; test ah,1 ; je`); GFFreeFromGlobalAllocator needs `__forceinline`; the
 //   pointer/flag stores precede the memset of the free lists (`rep stosd`).
+#include "fable_compiler.h"
 #include <string.h>
 struct _RTL_CRITICAL_SECTION_Retail { long m_words[6]; };   // 24 bytes
 extern "C" __declspec(dllimport) int  __stdcall TryEnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);   // IAT 0x0143FD30
@@ -31,7 +32,7 @@ void __cdecl GFEnterAllocatorLock();               // 0x009F2000
 void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;             // 0x013CAA90
 extern bool              g_bDestroyAllocatorWhenEmpty_013caa94;   // 0x013CAA94
-__forceinline void __fastcall GFFreeFromGlobalAllocator(void* block)    // 0x009A4350 (inlined here)
+FABLE_FORCEINLINE void __fastcall GFFreeFromGlobalAllocator(void* block)    // 0x009A4350 (inlined here)
 {
     GFEnterAllocatorLock();
     if (block && g_pGlobalAllocator_013caa90) {

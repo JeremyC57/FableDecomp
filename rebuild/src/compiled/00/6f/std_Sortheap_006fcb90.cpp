@@ -12,6 +12,7 @@
 // `&other != this` self-test around Copy); the value argument is copy-constructed from the temporary the same way,
 // and after _Adjust_heap the temporary's destructor runs Clear() inline (`delete[] Start`, then Start = Size = 0:
 // the two zero stores after the call). Model of the landed 0x006FBD60 / 0x006FB5C0 sources.
+#include "fable_compiler.h"
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 
 namespace NAnimationEvents { class CEvent { public: long m_a, m_b; }; }
@@ -50,14 +51,14 @@ struct CKeyPairCompareLess {
 
 void __fastcall _Adjust_heap(SKeyedEvents* first, long hole, long bottom, SKeyedEvents value, CKeyPairCompareLess pred);   // 0x006FBD60
 
-__forceinline void _Pop_heap(SKeyedEvents* first, SKeyedEvents* last, SKeyedEvents* dest, SKeyedEvents value,
+FABLE_FORCEINLINE void _Pop_heap(SKeyedEvents* first, SKeyedEvents* last, SKeyedEvents* dest, SKeyedEvents value,
                       CKeyPairCompareLess pred, long*)
 {
     *dest = *first;
     _Adjust_heap(first, 0, long(last - first), value, pred);
 }
 
-__forceinline void _Pop_heap_0(SKeyedEvents* first, SKeyedEvents* last, CKeyPairCompareLess pred, SKeyedEvents*)
+FABLE_FORCEINLINE void _Pop_heap_0(SKeyedEvents* first, SKeyedEvents* last, CKeyPairCompareLess pred, SKeyedEvents*)
 {
     _Pop_heap(first, last - 1, last - 1, SKeyedEvents(*(last - 1)), pred, (long*)0);
 }

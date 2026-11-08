@@ -12,6 +12,7 @@
 // Layout: CCountedPointer {Data +0, Info +4}; CCharString data block = CBasicString<char> (as the matched 0x008A86C0).
 // Shape: the default-name temporaries and the state keys live in the dead reference-parameter slots.
 // Opt: size TU with a frame pointer.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 #include <string.h>
@@ -33,7 +34,7 @@ public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -54,7 +55,7 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(T* data);                           // 0x00429C15 for CComponent
-    template <class U> __forceinline CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
+    template <class U> FABLE_FORCEINLINE CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
     {
         ShareData((T*)other.Data, other.Info);
     }

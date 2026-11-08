@@ -1,5 +1,6 @@
 // Behaviour test for 0057adb8: src/0057adb8.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCHeroStats::ResetTrainingStatus()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -30,13 +31,13 @@ class CHeroDef { public:
     long          RefCount;                    // +0x04 CDefPointeeBase
     unsigned char _pad_0x08[0x24];
     long          DefaultHeroTrainingStatus;   // +0x2C EHeroTrainingStatus
-    __forceinline void Release() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) Destroy(); }
 };
 
 struct CHeroDefPointer {                       // CDefPointer<const CHeroDef>
     CHeroDef* Object;
-    __forceinline CHeroDefPointer() : Object(0) {}
-    __forceinline ~CHeroDefPointer()
+    FABLE_FORCEINLINE CHeroDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CHeroDefPointer()
     {
         if (Object)
             Object->Release();

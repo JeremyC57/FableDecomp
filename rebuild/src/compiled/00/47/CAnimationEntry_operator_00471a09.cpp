@@ -7,6 +7,7 @@
 // pointer's operator= is `if (p != o.p) { Release(); p = o.p; if (p) ++p->count; }` with Release inlined
 // (`dec [ecx+4] ; jne ; call [eax+4]`, then the null store). `and dword ptr [esi+0Ch],0` for the null store
 // marks a size-optimised translation unit: #pragma optimize("s", on).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CIVCountedPointeeBase { public:
     virtual void v0();
@@ -17,7 +18,7 @@ class CIVCountedPointeeBase { public:
 // Intrusive counted pointer (4 bytes): the pointee carries the count at +4.
 template<class T> class CIVCountedPointer { public:
     T* m_pObject;
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* p = m_pObject;
         if (p) {
@@ -26,7 +27,7 @@ template<class T> class CIVCountedPointer { public:
             m_pObject = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         if (m_pObject != other.m_pObject) {
             Release();

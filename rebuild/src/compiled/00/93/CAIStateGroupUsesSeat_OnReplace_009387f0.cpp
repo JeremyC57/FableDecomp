@@ -13,6 +13,7 @@
 //          destroyed around the get-up call.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with PSeat +0x14,
 //          the seat flag +0x1c, sitting +0x1d, the action point index +0x20 and the alternate flag +0x30 (descriptive).
+#include "fable_compiler.h"
 class CCharStringData;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -29,7 +30,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.Get() != 0) {
         if (!p.Get()->IsDead())

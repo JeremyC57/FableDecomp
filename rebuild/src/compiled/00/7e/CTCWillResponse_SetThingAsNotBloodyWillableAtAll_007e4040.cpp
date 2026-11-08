@@ -16,6 +16,7 @@
 //   `const char*` -> CCharString conversion (address re-taken with `lea` after the ctor). GetTC is the one-ternary pick
 //   `((it == last || kind < it->kind) ? last : it)->component`, which leaves the clear arm's component in ecx (the if-assign
 //   form puts it in eax and swaps al/cl in the bit tests).
+#include "fable_compiler.h"
 class CTCBase;
 class CTCParamsBase;
 
@@ -39,7 +40,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline T* GetTC()
+    template <class T> FABLE_FORCEINLINE T* GetTC()
     {
         CTCMap* map = &m_tcs;
         STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);

@@ -6,11 +6,12 @@
 // Shape: the scalar compares are `fabs(a - b) < tol` (`test ah,5 ; jp`); the destination goes through C3DVector's inline
 //   `__forceinline` tolerance compare, which tests `<=` per component (`test ah,41h ; jp`); `if (...) return true; return false;`
 //   gives the byte exits (`return a && b` widens to eax).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fabs)
 class C3DVector { public:
     float X, Y, Z;
-    __forceinline bool IsEqual(const C3DVector& other, float tolerance) const
+    FABLE_FORCEINLINE bool IsEqual(const C3DVector& other, float tolerance) const
     {
         return fabs(X - other.X) <= tolerance && fabs(Y - other.Y) <= tolerance && fabs(Z - other.Z) <= tolerance;
     }

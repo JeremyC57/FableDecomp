@@ -13,12 +13,13 @@
 // then each CRGBColour through the landed four-channel Set: R, G, B, A stores from the B/G/R/A loads), built straight
 // into the argument area from a strength-reduced `first + parent*24 + 11h` pointer (the 0x00720610 pop_heap of the same
 // TU calls the out-of-line 0x005BA48A instead -- that call site copies a by-value argument).
+#include "fable_compiler.h"
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
 class CCompositeBlendDesc { public:                       // 16 bytes (implicit memberwise copy)

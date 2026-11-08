@@ -11,6 +11,7 @@
 //   0x004E9xxx..0x004FAxxx: ebp frames, `push N ; pop reg ; idiv`, unaligned entry points): `#pragma optimize("s", on)`.
 //   There VC7.1 inlines nothing on its own, but retail inlined every helper, so _Construct / _Copy_Construct /
 //   __uninitialized_copy / __uninitialized_fill_n are `__forceinline` (inline-only templates give calls).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
@@ -48,8 +49,8 @@ public:
 
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
 inline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
@@ -63,7 +64,7 @@ template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first,
 }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                              const __false_type&)
 {                                                                                 // 0x0049AD70
     _ForwardIter __cur = __result;
@@ -73,7 +74,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {                                                                                 // 0x0049ADA0
     _ForwardIter __cur = __first;
     for ( ; __n > 0; --__n, ++__cur)

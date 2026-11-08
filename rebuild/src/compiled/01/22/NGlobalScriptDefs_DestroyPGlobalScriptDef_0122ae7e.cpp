@@ -21,6 +21,7 @@
 //   statements (28 bytes both: VC7.1 folds them into `dec [ecx+4] ; jne`). Retail's `dec dword ptr [eax] ; cmp dword ptr [eax],0` re-reads the
 //   count after the RMW: the vo-latile signature (the same release appears inline all through the quest-script module,
 //   e.g. 0x00CBEEB0); vo-latile cannot land, so the row is parked.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase { public:                               // counted def object: vptr, reference count at +4
     virtual void v00();
@@ -32,7 +33,7 @@ class CScriptDef : public CDefPointeeBase { public: };               // the glob
 
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             T* object = Object;

@@ -1,5 +1,6 @@
 // Behaviour test for 00833010: src/00833010.cpp copied verbatim; LowerBound, the scheduler hook, the getters,
 // the brain ctor and the counted-pointer Reset are stubbed. CThingAICreature::SetNewBrain
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -65,7 +66,7 @@ class CThingAICreature { public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad4c[0x1a8 - 0x4c];
     CBrainPointer PBrain;                            // +0x1a8
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
             long type = wanted;

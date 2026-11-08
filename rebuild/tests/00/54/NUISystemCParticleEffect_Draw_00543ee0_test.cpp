@@ -1,5 +1,6 @@
 // Behaviour test for 00543ee0: src/00543ee0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. NUISystem::CParticleEffect::Draw(long, long, long, long, long)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -252,7 +253,7 @@ class CParticleEffect : public CChangingStateComponent {   // vtable 0x0124735C
 public:
     CParticleEmitter* Emitter;                     // +0x15c
     long              EffectIndex;                 // +0x160
-    __forceinline void CreateEmitter()
+    FABLE_FORCEINLINE void CreateEmitter()
     {
         CRightHandedSet axes;
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,

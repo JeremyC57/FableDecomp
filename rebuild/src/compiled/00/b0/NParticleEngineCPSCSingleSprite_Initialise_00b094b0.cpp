@@ -22,6 +22,7 @@
 //   locals before the crossed-sprite test; each created id is stored after growing the list (inline one-argument resize
 //   over the 0x004428F0 fill overload); the trail record's members are set in the order GraphicFrame, GraphicIndex,
 //   SkipPoints, MaxLength, Flags, Width, BlendMode, BlendOp (found by a compile-only order search).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CEnginePrimitive { public:
     long Type;                                      // +0x00
@@ -68,7 +69,7 @@ struct CLongVector {                                // STLport vector<long> (12 
     unsigned int size() const { return _M_finish - _M_start; }
     long& operator[](unsigned int n) { return _M_start[n]; }
     void resize(unsigned int newSize, const long& value);    // 0x004428F0
-    __forceinline void resize(unsigned int newSize) { resize(newSize, long()); }
+    FABLE_FORCEINLINE void resize(unsigned int newSize) { resize(newSize, long()); }
 };
 
 namespace NParticleEngine {

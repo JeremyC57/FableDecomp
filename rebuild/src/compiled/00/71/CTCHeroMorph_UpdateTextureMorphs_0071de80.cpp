@@ -1,5 +1,6 @@
 // CTCHeroMorph::UpdateTextureMorphs() -- rebuilds the hero's texture morphs and composite textures from the current morph strengths, sorts them by priority and pushes them to the hero's texture-morph component
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+#include "fable_compiler.h"
 #include <stdlib.h>
 class CCharString {
 public:
@@ -20,8 +21,8 @@ public:
 template<class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -32,8 +33,8 @@ template<class T> struct vector {
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~vector()
+    FABLE_FORCEINLINE vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE ~vector()
     {
         if (_M_start)
             free(_M_start);
@@ -57,20 +58,20 @@ struct CCompositeTextureList {
     vector<CCompositeTextureEntry> Entries;
     CCompositeTextureLess Compare;
     bool NeedsHeap;
-    __forceinline CCompositeTextureList() : NeedsHeap(false) {}
+    FABLE_FORCEINLINE CCompositeTextureList() : NeedsHeap(false) {}
 };
 void __fastcall MakeCompositeHeap(CCompositeTextureEntry* first, CCompositeTextureEntry* last, CCompositeTextureLess comp);   // 0x00721FE0
 void __fastcall IntroSortLoop(CTextureMorph* first, CTextureMorph* last, CTextureMorph* type, long depth, CTextureMorphLess comp);   // 0x00721C10
 void __fastcall InsertionSort(CTextureMorph* first, CTextureMorph* last, CTextureMorphLess comp);   // 0x007212D0
 void __fastcall UnguardedInsertionSort(CTextureMorph* first, CTextureMorph* last, CTextureMorph* type, CTextureMorphLess comp);   // 0x0071F570
-__forceinline long Lg(long n)
+FABLE_FORCEINLINE long Lg(long n)
 {
     long k;
     for (k = 0; n != 1; n >>= 1)
         ++k;
     return k;
 }
-__forceinline void SortTextureMorphs(CTextureMorph* first, CTextureMorph* last, CTextureMorphLess comp)
+FABLE_FORCEINLINE void SortTextureMorphs(CTextureMorph* first, CTextureMorph* last, CTextureMorphLess comp)
 {
     if (first != last) {
         IntroSortLoop(first, last, 0, Lg(last - first) * 2, comp);
@@ -125,8 +126,8 @@ public:
     vector<CTCEntry> TCs;                               // +0x44
     unsigned char _pad50[0x70 - 0x50];
     const CThingDef* PDef;                              // +0x70
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    static __forceinline const CTCEntry* LowerBound(const CTCEntry* first, const CTCEntry* last, long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    static FABLE_FORCEINLINE const CTCEntry* LowerBound(const CTCEntry* first, const CTCEntry* last, long type)
     {
         long len = last - first;
         while (len > 0) {
@@ -140,7 +141,7 @@ public:
         }
         return first;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         const CTCEntry* last = TCs._M_finish;
         const CTCEntry* first = LowerBound(TCs._M_start, last, type);
@@ -148,7 +149,7 @@ public:
             first = last;
         return first->TC;
     }
-    __forceinline CTCBase* GetTCOld(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTCOld(long type) const
     {
         const CTCEntry* first = TCs._M_start;
         const CTCEntry* last = TCs._M_finish;

@@ -15,6 +15,7 @@
 // Shape: the line is a by-value temporary from the landed family's __forceinline GetCurrentText(); the scroll test is
 //          `GetLength() >= 25` stored straight into ScrollText (`setge`) before the temporary dies, then re-read; the
 //          duration is `(float)GameTurnDuration / CMainGameComponent::GetConstantFPS()` (`fild ; fidiv`).
+#include "fable_compiler.h"
 class CTCBase;
 class CWideStringText {                            // the message text as stored (converted by 0x0099B720)
 public:
@@ -35,7 +36,7 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
     CInterfaceMap Components;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -86,7 +87,7 @@ public:
     unsigned char      _pad40[0x48 - 0x40];        // Conversation
     long               GameTurnDuration;           // +0x48
     unsigned char      _pad4c[0x90 - 0x4c];        // tag indices .. SkippedCurrentLine
-    __forceinline CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
+    FABLE_FORCEINLINE CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
 };
 
 class CActionOverheadTalkToThing : public CActionTalkBase {

@@ -1,5 +1,6 @@
 // Behaviour test for 005f694d: src/005f694d.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryAbilities::ResetAssignedAbilities()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,7 +27,7 @@ namespace std {
 template<class T> inline const T& max(const T& a, const T& b) { return a < b ? b : a; }
 }
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1

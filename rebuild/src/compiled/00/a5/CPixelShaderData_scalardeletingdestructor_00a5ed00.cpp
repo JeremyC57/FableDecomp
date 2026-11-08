@@ -11,6 +11,7 @@
 // PixelShader->Release()`), `delete[]` of the long array is a bare operator delete[] call; the
 // `??_G` needs the virtual destructor `__forceinline` and a `new CPixelShaderData` factory so the
 // TU emits the vtable.
+#include "fable_compiler.h"
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct IDirect3DPixelShader9 {
     virtual long __stdcall QueryInterface(const void* iid, void** out);
@@ -29,7 +30,7 @@ struct CPixelShaderData : CBaseClass {             // vtable 0x0129D58C
     unsigned long          ConstCount;             // +0x0c
     long*                  ConstIndices;           // +0x10
     CPixelShaderData() : PixelShader(0), ReferenceCount(1), ConstCount(0), ConstIndices(0) { }
-    __forceinline virtual ~CPixelShaderData()
+    FABLE_FORCEINLINE virtual ~CPixelShaderData()
     {
         if (PixelShader)
             PixelShader->Release();

@@ -14,6 +14,7 @@
 // Layout (retail, local model): CCombatActionBase is 0x114 bytes (PCreature +0x08); PDieEffect +0x114 (PDB +0x12C);
 //   the interface-9 component's flag byte +0x10.
 // Shape: the sibling 0x008C87A0 model (block-scoped effect id, implicit string conversions, named-item operator=).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
@@ -68,7 +69,7 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

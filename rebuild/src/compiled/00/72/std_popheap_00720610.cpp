@@ -15,12 +15,13 @@
 //   TextureLayer after the first argument-area store; the by-value copy for __adjust_heap is built in the argument
 //   area by the implicit pair copy ctor (two words inline, the blend description through its out-of-line copy ctor); the count is
 //   the reciprocal multiply by 0x2AAAAAAB with `sar edx,2` (divide by 24).
+#include "fable_compiler.h"
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;              // +0x00

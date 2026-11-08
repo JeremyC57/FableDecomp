@@ -1,5 +1,6 @@
 // Behaviour test for 005b36e9: src/005b36e9.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CTCInventoryClothing::OnCreate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -77,7 +78,7 @@ class CThing { public:
     unsigned char _pad64[0x70 - 0x64];
     CDefPointer<CDefClassBase> PDef;            // +0x70
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;

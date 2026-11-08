@@ -10,6 +10,7 @@
 // the block-scoped name string reuses); the CDefPointer local is zeroed inside the string construction and released at
 // the end through the def's inline ReleaseTemporary on its ref-count base at +4 (null test kept, null store elided).
 // Layout: owner CIntelligentPointer +8.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -18,7 +19,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -100,7 +101,7 @@ public:
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
-    __forceinline CTCCombat* GetCombat() const
+    FABLE_FORCEINLINE CTCCombat* GetCombat() const
     {
         CTCCombat* combat;
         PCreature.GetPItem()->GetInterface(&combat, 0x30);

@@ -11,6 +11,7 @@
 //   ignored, then `trigger->SetPTCReceptor(0)`; the search cursor IS the picked entry (a separate LowerBound result
 //   variable copies it through eax); the never-written trigger local shares the unused functor argument's slot
 //   (esi is loaded from it before the loop). operator() needs __forceinline once the search is written out.
+#include "fable_compiler.h"
 class CTCBase;
 class CTCActivationReceptorBase;
 
@@ -32,7 +33,7 @@ public:
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             STCEntry* last = m_tcs.m_pLast;                     // the map's lower_bound, inlined into one cursor
@@ -66,7 +67,7 @@ class CInformTriggerOfReceptorDeath {
 public:
     CTCActivationReceptorBase* PReceptor;
     CInformTriggerOfReceptorDeath(CTCActivationReceptorBase* receptor) : PReceptor(receptor) { }
-    __forceinline void operator()(CThing* thing)
+    FABLE_FORCEINLINE void operator()(CThing* thing)
     {
         CTCActivationTrigger* trigger;
         thing->GetTC(&trigger);

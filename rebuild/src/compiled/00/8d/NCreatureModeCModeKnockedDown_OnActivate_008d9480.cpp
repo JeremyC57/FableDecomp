@@ -9,6 +9,7 @@
 // Name: FableWin.pdb `?OnActivate@CModeKnockedDown@NCreatureMode@@UAEXXZ` (slot 5).
 // Shape: the emote lookup is the out-parameter GetInterface (`mov eax,[eax+4] ; push ... ; mov ecx,eax`), the 0x30 lookup
 //   the HasTC + one-ternary GetTC on the non-const map (component straight into ecx); ParentThing is re-read for each block.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -26,7 +27,7 @@ class CThing : public CThingAICreature { public:
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -39,11 +40,11 @@ class CThing : public CThingAICreature { public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

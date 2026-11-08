@@ -13,6 +13,7 @@
 //   resident list (STLport list of CIntelligentPointer<CThing>) at +0x2C.
 // Shape: the member pointers are reached through inline accessors (`lea ecx,[eax+N]`); a null or dead resident `continue`s without advancing (as retail: the iterator is only advanced on the
 //   non-matching path, and reset to begin() after each kill).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -66,7 +67,7 @@ class CThing { public:
     CIntelligentPointer<CThing> HomeBuilding;           // +0x168
     CIntelligentPointer<CThing> OtherResidence;         // +0x170
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;

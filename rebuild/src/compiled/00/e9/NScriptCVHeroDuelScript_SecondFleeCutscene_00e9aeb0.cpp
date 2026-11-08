@@ -14,6 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -40,7 +41,7 @@ inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharS
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
-    virtual __forceinline ~CScriptGameResourceObjectBase() {}
+    virtual FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() {}
 };
 
 struct CScriptThingImp;
@@ -68,8 +69,8 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
 
 struct CHeldMovie {                                     // holder: its forceinline dtor expands the movie's implicit dtor at every exit
     CScriptGameResourceObjectMovieBase Obj;
-    __forceinline CHeldMovie() {}
-    __forceinline ~CHeldMovie() {}
+    FABLE_FORCEINLINE CHeldMovie() {}
+    FABLE_FORCEINLINE ~CHeldMovie() {}
 };
 
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)

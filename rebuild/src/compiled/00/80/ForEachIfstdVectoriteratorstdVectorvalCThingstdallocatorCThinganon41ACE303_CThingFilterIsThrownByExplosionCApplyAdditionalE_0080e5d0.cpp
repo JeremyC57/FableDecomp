@@ -13,6 +13,7 @@
 // Shape: the anonymous-namespace filter is a `__forceinline` operator() written as one `&&` guard on `return true`; HasTC is
 // `if (bits & mask) return true; return false;` (a `!= 0` return gives `shr ; test cl,1`); GetTC is the `__forceinline` inline
 // lower_bound walk (last, then first, the count, then `it = first`) with the `it == last || type < it->type` miss test.
+#include "fable_compiler.h"
 class CTCBase;
 class CMode {
 public:
@@ -41,7 +42,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         CInterfaceMap::SEntry* last = m_interfaces.last;
         CInterfaceMap::SEntry* first = m_interfaces.first;
@@ -63,7 +64,7 @@ public:
 
 namespace {
 struct CThingFilter_IsThrownByExplosion {
-    __forceinline bool operator()(CThing* thing) const
+    FABLE_FORCEINLINE bool operator()(CThing* thing) const
     {
         if (thing && !thing->Dead && thing->HasTC(0x31)
             && thing->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode()->GetModeType() == 0x42)

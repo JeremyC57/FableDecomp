@@ -22,6 +22,7 @@
 // Shape: the rand() % 3 switch keeps its decrement chain (`sub edx,0 ; je ; dec ; je ; dec ; jne`): case 0, 1, 2 and a
 //   default arm repeating case 0, which VC7.1 cross-jumps onto case 0 (`case 0: default:` drops the `sub edx,0` / `jne`,
 //   406v411; no default 417v411); the by-value Me is the inline copy of the landed CAT_Sentry::Init 0x00F08E90 model.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -32,13 +33,13 @@ extern "C" int __cdecl rand();                         // 0x00BFEB16 (MSVCR71)
 #include "engine/CCountedPointer.h"
 class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
-    __forceinline CBaseClass() { }
+    FABLE_FORCEINLINE CBaseClass() { }
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThing>     PImp;            // +0x04
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other);           // 0x004ABE90 (the out-of-line copy)
-    __forceinline CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
+    FABLE_FORCEINLINE CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing();                                   // 0x004AA840
 };
 class CGameScriptInterfaceBase { public:              // the interface CGameScriptInterface (vtable 0x01260F0C) implements; (ghidra_out/cgsi_slots_aligned.tsv)
@@ -142,7 +143,7 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CEntityScriptBase { public:                     // retail 0x14 bytes
     virtual ~CEntityScriptBase();                      // slot 0
     CGameScriptInterfaceBase* Game;                    // +0x04

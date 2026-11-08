@@ -3,6 +3,7 @@
 // Layout: local models -- render core / capture block / shader-enable saver as the matched ShowGlowTexture 0x00B61690; the
 //   counted CGraphicFrame and its frame-data release as the landed CGraphicFrame::operator= 0x0041C0E0; the D3D9 device's
 //   SetTexture (slot 65) through the core's stage-0 texture cache (+0x3D00, device +0x3CF0, active texture count +0x3CB8).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9 {
@@ -80,7 +81,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -112,9 +113,9 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     IDirect3DDevice9*    m_pDevice;                // +0x3CF0
     unsigned char        _pad3cf4[0x3d00 - 0x3cf4];
     IDirect3DBaseTexture9* m_currentTexture[8];    // +0x3D00
-    __forceinline void SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture);
+    FABLE_FORCEINLINE void SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture);
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -129,7 +130,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
@@ -138,7 +139,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 };
 extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-__forceinline void CRenderManagerCoreView::SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture)
+FABLE_FORCEINLINE void CRenderManagerCoreView::SetTexture(unsigned long stage, IDirect3DBaseTexture9* texture)
 {
     if (g_pRenderManagerCore->m_currentTexture[stage] != texture) {
         g_pRenderManagerCore->m_currentTexture[stage] = texture;
@@ -146,7 +147,7 @@ __forceinline void CRenderManagerCoreView::SetTexture(unsigned long stage, IDire
     }
 }
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);
@@ -155,12 +156,12 @@ __forceinline void CTrackedRenderState::Set(unsigned long value)
 extern unsigned long g_renderStateDefault_01396fb8;    // 0x01396FB8
 extern unsigned long g_renderStateDefault_01396dd0;    // 0x01396DD0
 
-static __forceinline void SetState(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
 {
     if (state.m_value != value)
         core->ChangeState(state, value);
 }
-static __forceinline void SetStateConst(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetStateConst(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         unsigned long mask = core->m_captureMask;
@@ -188,7 +189,7 @@ struct CShaderEnableState {                             // the static shader man
     void DisableVertexShaders();                        // 0x009880E0
     void EnablePixelShaders();                          // 0x00988110
     void DisablePixelShaders();                         // 0x00988190
-    __forceinline void SetVertexShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetVertexShadersEnabled(bool enable)
     {
         if (enable != VertexShadersEnabled) {
             if (enable)
@@ -197,7 +198,7 @@ struct CShaderEnableState {                             // the static shader man
                 DisableVertexShaders();
         }
     }
-    __forceinline void SetPixelShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetPixelShadersEnabled(bool enable)
     {
         if (enable != PixelShadersEnabled) {
             if (enable)
@@ -211,20 +212,20 @@ extern CShaderEnableState g_ShaderRenderManager;        // 0x013BC470
 
 
 struct CRenderStateCaptureBlock {
-    __forceinline CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
-    __forceinline ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
+    FABLE_FORCEINLINE CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
+    FABLE_FORCEINLINE ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
 };
 struct CShaderEnableSaver {
     bool m_vertexShaders;
     bool m_pixelShaders;
-    __forceinline CShaderEnableSaver(bool vertexShaders, bool pixelShaders)
+    FABLE_FORCEINLINE CShaderEnableSaver(bool vertexShaders, bool pixelShaders)
     {
         m_vertexShaders = g_ShaderRenderManager.VertexShadersEnabled;
         g_ShaderRenderManager.SetVertexShadersEnabled(vertexShaders);
         m_pixelShaders = g_ShaderRenderManager.PixelShadersEnabled;
         g_ShaderRenderManager.SetPixelShadersEnabled(pixelShaders);
     }
-    __forceinline ~CShaderEnableSaver()
+    FABLE_FORCEINLINE ~CShaderEnableSaver()
     {
         g_ShaderRenderManager.SetVertexShadersEnabled(m_vertexShaders);
         g_ShaderRenderManager.SetPixelShadersEnabled(m_pixelShaders);
@@ -259,7 +260,7 @@ class CTexture { public:
 struct CCountedPointer_CTexture {
     CTexture*    m_pObject;
     SCountBlock* m_pCount;
-    __forceinline ~CCountedPointer_CTexture()
+    FABLE_FORCEINLINE ~CCountedPointer_CTexture()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -279,7 +280,7 @@ class CGraphicFrameData { public:
     unsigned char            _pad10[0xa];
     unsigned char            m_flags;              // +0x1a
     void Uninitialise();                           // 0x009FCBA0
-    __forceinline ~CGraphicFrameData()
+    FABLE_FORCEINLINE ~CGraphicFrameData()
     {
         if (m_flags & 0x10)
             Uninitialise();
@@ -288,7 +289,7 @@ class CGraphicFrameData { public:
 class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
-    __forceinline ~CGraphicFrame()
+    FABLE_FORCEINLINE ~CGraphicFrame()
     {
         CGraphicFrameData* data = FrameData;
         if (data) {
@@ -317,8 +318,8 @@ template <class T> struct CRetailVector {
 struct CGraphicBank {
     unsigned char               _pad[0x1e0];
     CRetailVector<CGraphicInfo> m_records;         // +0x1e0
-    __forceinline CGraphicInfo* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
-    __forceinline bool GetFrame(CGraphicFrame* frame, unsigned long bankIndex, unsigned long frameIndex)
+    FABLE_FORCEINLINE CGraphicInfo* Get(unsigned long index) { return index < m_records.size() ? &m_records[index] : 0; }
+    FABLE_FORCEINLINE bool GetFrame(CGraphicFrame* frame, unsigned long bankIndex, unsigned long frameIndex)
     {
         return Get(bankIndex)->GetFrame(frame, frameIndex, 0, 0);
     }

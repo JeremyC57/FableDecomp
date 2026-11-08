@@ -1,5 +1,6 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad1[0x23] removed.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::ClearSoundEffects() -- stop the charging sound on the hero's sound component (interface 0x10) and forget its ID
@@ -28,7 +29,7 @@ class CThing { public:
     std::bitset<274> m_present;                       // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

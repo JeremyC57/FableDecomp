@@ -1,5 +1,6 @@
 // Behaviour test for 00629c40: src/00629c40.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CWorld::EAControlledCreatureUseAbility(const CGameEvent*)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -22,8 +23,8 @@ struct CMemoryBuffer {
     long          WritePos;                        // +0x28
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
-    __forceinline unsigned short ReadUShort() { unsigned short value; Read(2, &value); return value; }
-    __forceinline float ReadFloat() { float value; Read(4, &value); return value; }
+    FABLE_FORCEINLINE unsigned short ReadUShort() { unsigned short value; Read(2, &value); return value; }
+    FABLE_FORCEINLINE float ReadFloat() { float value; Read(4, &value); return value; }
 };
 class CGameEvent {
 public:

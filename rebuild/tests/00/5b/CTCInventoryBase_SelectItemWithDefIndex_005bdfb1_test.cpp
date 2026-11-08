@@ -1,5 +1,6 @@
 // Behaviour test for 005bdfb1: src/005bdfb1.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCInventoryBase::SelectItemWithDefIndex(long)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -56,7 +57,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventoryItemDef>
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer() { T* object = Object; if (object && --object->RefCount == 0) object->Destroy(); }
+    FABLE_FORCEINLINE ~CDefPointer() { T* object = Object; if (object && --object->RefCount == 0) object->Destroy(); }
     T* operator->() const { return Object; }
 };
 

@@ -14,6 +14,7 @@
 //   the global list registry @ 0x013B8A98's clear @ 0x004855A3, the components' scalar deleting destructor (slot 0).
 // Layout: retail CTCInventory (12-byte vectors): Components +0x0C, EditBoxes +0x144, the two persistent components
 //   +0x214 / +0x218, the open screen +0x21C; retail CThing bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -69,7 +70,7 @@ public:
         if (it == m_interfaces.last || type < it->type) it = m_interfaces.last;
         return it->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

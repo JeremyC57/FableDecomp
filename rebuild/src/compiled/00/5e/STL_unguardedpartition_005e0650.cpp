@@ -13,9 +13,10 @@
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }`; the inlined `__iter_swap_aux` temporary
 //   lives in the `push ecx` frame slot (same shape as the landed CWideString partition 0x00497200).
 // Label correction: catalogued as `QuickSort_Partition_StringKey`; the body is STLport `__unguarded_partition`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

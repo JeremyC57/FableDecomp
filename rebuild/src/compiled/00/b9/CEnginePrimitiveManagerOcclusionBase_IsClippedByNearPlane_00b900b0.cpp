@@ -8,6 +8,7 @@
 // Shape: the corners are a local C3DVector[8] of +-1; the box-to-camera matrix is a full inline CMatrix3x4 product written
 //   component-wise (z term first) of which only the Z column survives dead-store elimination; the per-corner depth is
 //   `x*R.z + y*U.z + z*F.z + P.z` in source order (VC7.1 evaluates the z product first).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CMatrix3x4 { public:
@@ -17,7 +18,7 @@ class CMatrix3x4 { public:
     C3DVector Pos;                                 // +0x24
 };
 
-__forceinline void Multiply(CMatrix3x4& r, const CMatrix3x4& a, const CMatrix3x4& b)
+FABLE_FORCEINLINE void Multiply(CMatrix3x4& r, const CMatrix3x4& a, const CMatrix3x4& b)
 {
     r.Right.X = a.Right.Z * b.Forward.X + a.Right.Y * b.Up.X + a.Right.X * b.Right.X;
     r.Right.Y = a.Right.Z * b.Forward.Y + a.Right.Y * b.Up.Y + a.Right.X * b.Right.Y;

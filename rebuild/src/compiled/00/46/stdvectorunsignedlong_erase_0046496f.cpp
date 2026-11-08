@@ -8,6 +8,7 @@
 // `(last == first) ? result : memmove(...) + n` form (inlined), the trivial _Destroy, `_M_finish = i`, `return first`.
 // Shape: frame pointer with `push dword ptr [ebp+N]` pass-through arguments = size TU with /Oy off:
 // #pragma optimize("y", off) + ("s", on).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -16,18 +17,18 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 namespace std {
 struct __true_type { };
 
-__forceinline void* __copy_trivial(const void* first, const void* last, void* result)
+FABLE_FORCEINLINE void* __copy_trivial(const void* first, const void* last, void* result)
 {
     return (last == first) ? result :
         ((char*)memmove(result, first, ((const char*)last - (const char*)first))) + ((const char*)last - (const char*)first);
 }
 
-template <class T> __forceinline T* __copy_ptrs(const T* first, const T* last, T* result, const __true_type&)
+template <class T> FABLE_FORCEINLINE T* __copy_ptrs(const T* first, const T* last, T* result, const __true_type&)
 {
     return (T*)__copy_trivial(first, last, result);
 }
 
-template <class T> __forceinline void _Destroy(T*, T*) { }
+template <class T> FABLE_FORCEINLINE void _Destroy(T*, T*) { }
 
 template <class T> class vector {
 public:

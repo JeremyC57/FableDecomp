@@ -13,6 +13,7 @@
 // second target before its last zero store); one `xor ebp,ebp` zero for every zero store; the counted pointer zeroes inline before the allocation; the
 // target assignment is an inline memberwise operator= (Name, then BoneMorphs); CurrentValue/SkeletalMorph are body
 // assignments after the copies.
+#include "fable_compiler.h"
 class CCharString
 { public:
     void* PStringData;
@@ -45,7 +46,7 @@ class C3DSkeletalMorphTarget                       // retail 0x10 bytes
 { public:
     CCharString Name;                               // +0x00
     CBoneMorphArray BoneMorphs;                     // +0x04
-    __forceinline C3DSkeletalMorphTarget& operator=(const C3DSkeletalMorphTarget& other)
+    FABLE_FORCEINLINE C3DSkeletalMorphTarget& operator=(const C3DSkeletalMorphTarget& other)
     {
         Name = other.Name;
         BoneMorphs = other.BoneMorphs;

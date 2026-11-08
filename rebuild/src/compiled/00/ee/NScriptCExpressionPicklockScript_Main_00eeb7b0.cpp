@@ -15,6 +15,7 @@
 //   the second is the direct call. The movie handle lives in an inner block so its dtor runs before the final DeactivateQuestLater.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00eebd70 at 00cd9e79 with name "Expression_Picklock"; Alloc news + stores script vtable 012f56d0; PDB ?Alloc@CExpression_PicklockScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CExpression_PicklockScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CExpression_PicklockScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CExpression_PicklockScript@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #include <stdlib.h>
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -36,7 +37,7 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 
-__forceinline bool IsThingHandleAlive(const CScriptThing& thing)
+FABLE_FORCEINLINE bool IsThingHandleAlive(const CScriptThing& thing)
 {
     return thing.PImp.Data != 0 && thing.PImp.Data->IsAlive();
 }

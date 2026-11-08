@@ -18,6 +18,7 @@
 // Shape: the TC lookup is the checked HasTC + GetTC pair whose key copy VC7.1 homes in the dead `card` argument slot;
 // the intelligent pointer is a named temporary built out of line, pushed by reference and destroyed after the call;
 // the remove_if predicate is a 4-byte functor passed by value.
+#include "fable_compiler.h"
 class CCharString { public: class CCharStringData* PStringData; };
 
 class CTCBase;
@@ -41,8 +42,8 @@ class CThing { public:                                          // retail CThing
     unsigned char _pad50[0x91 - 0x50];
     unsigned char Dead : 1;                              // +0x91 bit 0 (PDB +0xa1)
     unsigned char _91_1 : 7;
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         CTCMap* map = &Components;
         ETCInterfaceType key = (ETCInterfaceType)(type);

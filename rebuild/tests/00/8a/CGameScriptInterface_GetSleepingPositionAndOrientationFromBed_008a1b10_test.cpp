@@ -1,6 +1,7 @@
 // Behaviour test for CGameScriptInterface::GetSleepingPositionAndOrientationFromBed (0x008A1B10): each failing test
 // returns false and leaves the outputs alone; on success position comes from the action point, orientation is its
 // forward axis, the sleeper's thing is the user and the index is marked used.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 #ifndef _MSC_VER
@@ -25,7 +26,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it;
         return it;
     }
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -38,7 +39,7 @@ struct CThing_Retail {
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 class C3DVector { public:
     float X, Y, Z;
@@ -74,7 +75,7 @@ class CScriptThing { public:
     virtual void v072() {} virtual void v073() {} virtual void v074() {}
     virtual bool IsValid() const { return m_valid; }
 };
-__forceinline bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CScriptThing& user, C3DVector& position,
+FABLE_FORCEINLINE bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CScriptThing& user, C3DVector& position,
                                         C3DVector& orientation)
 {
     CRightHandedSet axes;

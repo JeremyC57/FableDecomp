@@ -23,6 +23,7 @@
 //   BlendMode +0x78, Lit/Sprite3D bits 1/2 of +0x84); CIVCountedPointeeBase IVRefCount +0x04. The flattened engine headers
 //   carry the vptr as a data member, so the polymorphic classes are modelled locally. Slot 2 of CEnginePersistentPrimitiveBase
 //   has no recovered name (placeholder kept only for the vtable position); the type-7 enumerator likewise (literal).
+#include "fable_compiler.h"
 class CTexture;
 #include "engine/C3DVector.h"
 enum EEnginePrimitiveBlendMode { };
@@ -62,7 +63,7 @@ class CEnginePrimitiveHandle : public CBaseClass { public:   // vtable 0x0122F59
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;  // +0x04
     CEnginePrimitiveHandle() { }
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& other) : CBaseClass(other), Data(other.Data) { }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
     void Clear()
     {
         if (!Data.IsNull() && Data.GetRefCount() == 1)

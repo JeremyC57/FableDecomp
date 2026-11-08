@@ -6,6 +6,7 @@
 // Layout: local model -- the retail sort list is a 12-byte STLport vector (the PDB CArray is 0x10), so every later member sits 4
 //   bytes lower than engine/CEnginePrimitiveManagerRepeatedZSprites.h (BillboardTextureHandle +0xa4, ZBufferTextureHandle +0xa8,
 //   ControlPointWeightingPower/count +0xc0).
+#include "fable_compiler.h"
 #include <string.h>
 
 class CEngineInternalPrimitiveRepeatedZSprite { public:
@@ -15,7 +16,7 @@ class CEngineInternalPrimitiveRepeatedZSprite { public:
     float         Depth;                           // +0x8c
 };
 typedef CEngineInternalPrimitiveRepeatedZSprite* PSprite;
-static __forceinline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+static FABLE_FORCEINLINE void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
     return (__last == __first) ? __result
         : ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first))) + ((const char*)__last - (const char*)__first);
@@ -27,14 +28,14 @@ struct CSortList {                                 // STLport vector<CEngineInte
     unsigned long size() const { return _M_finish - _M_start; }
     PSprite& operator[](unsigned long i) { return _M_start[i]; }
     void _M_fill_insert(PSprite* position, unsigned long count, const PSprite& value);   // 0x00BAC800
-    __forceinline PSprite* erase(PSprite* first, PSprite* last)
+    FABLE_FORCEINLINE PSprite* erase(PSprite* first, PSprite* last)
     {
         PSprite* i = (PSprite*)__copy_trivial(last, _M_finish, first);
         _M_finish = i;
         return first;
     }
-    __forceinline void resize(unsigned long newSize) { resize(newSize, PSprite()); }
-    __forceinline void resize(unsigned long newSize, const PSprite& value)
+    FABLE_FORCEINLINE void resize(unsigned long newSize) { resize(newSize, PSprite()); }
+    FABLE_FORCEINLINE void resize(unsigned long newSize, const PSprite& value)
     {
         if (newSize < size())
             erase(_M_start + newSize, _M_finish);
@@ -42,7 +43,7 @@ struct CSortList {                                 // STLport vector<CEngineInte
             _M_fill_insert(_M_finish, newSize - size(), value);
     }
 };
-static __forceinline bool SortsBefore(const PSprite b, const PSprite a)
+static FABLE_FORCEINLINE bool SortsBefore(const PSprite b, const PSprite a)
 {
     if (a->MeshKey > b->MeshKey)
         return true;
@@ -50,7 +51,7 @@ static __forceinline bool SortsBefore(const PSprite b, const PSprite a)
         return true;
     return false;
 }
-static __forceinline void Swap(PSprite& a, PSprite& b)
+static FABLE_FORCEINLINE void Swap(PSprite& a, PSprite& b)
 {
     PSprite tmp = a;
     a = b;
@@ -76,7 +77,7 @@ struct CEngineLightingManagerView {
     SFogColour    Colour;                          // +0xe0
     unsigned long DirtyFlags;                      // +0xe4
     long          PendingLights;                   // +0xe8
-    __forceinline void SetColour(const SFogColour& c)
+    FABLE_FORCEINLINE void SetColour(const SFogColour& c)
     {
         if (Colour.A != c.A || Colour.B != c.B || Colour.C != c.C) {
             Colour = c;
@@ -87,7 +88,7 @@ struct CEngineLightingManagerView {
             DirtyFlags |= 0xf;
         }
     }
-    __forceinline void Flush()
+    FABLE_FORCEINLINE void Flush()
     {
         if (PendingAmbient) {
             PendingAmbient = false;

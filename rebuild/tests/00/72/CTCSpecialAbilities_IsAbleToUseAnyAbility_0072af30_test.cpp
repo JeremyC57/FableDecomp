@@ -12,6 +12,7 @@
 //   The weapon test goes through an inline IsWeaponUsableBy(weapon, user) whose weapon argument is the GetTC ternary:
 //   the component lands in ecx before ParentThing is loaded and pushed through eax (a direct member call on the
 //   FindEntry / GetTC / out-parameter component pushes the argument first or joins the component through eax).
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -24,8 +25,8 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -55,7 +56,7 @@ class CTCSpecialAbilities { public:
     bool IsAbleToUseAnyAbility(EHeroAbility ability) const;
 };
 
-__forceinline bool IsWeaponUsableBy(CTCWeapon* weapon, const CThing& user) { return weapon->IsUsableBy(user); }
+FABLE_FORCEINLINE bool IsWeaponUsableBy(CTCWeapon* weapon, const CThing& user) { return weapon->IsUsableBy(user); }
 bool CTCSpecialAbilities::IsAbleToUseAnyAbility(EHeroAbility ability) const
 {
     if (!AbilityMutexLock && !UsingBed && !IsKnockedDown(ParentThing)) {

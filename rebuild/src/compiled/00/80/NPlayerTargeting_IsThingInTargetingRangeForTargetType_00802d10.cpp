@@ -18,6 +18,7 @@
 //   pointer zeroed between that load and its null-tested add-ref, released by hand after GetSubDef; the delta is a
 //   12-byte C3DVector temporary (`target - thing`, Z unused: the fourth frame word) whose X/Y squares are compared with
 //   range * range (Y term first); the bool survives the null-tested release of the sub-def.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
@@ -62,7 +63,7 @@ struct CTCMap {
 };
 struct CTCBitset {
     unsigned long _M_w[9];
-    __forceinline bool test(long bit) const { if (_M_w[bit >> 5] & (1UL << (bit & 31))) return true; return false; }
+    FABLE_FORCEINLINE bool test(long bit) const { if (_M_w[bit >> 5] & (1UL << (bit & 31))) return true; return false; }
 };
 class CThing {
 public:
@@ -75,8 +76,8 @@ public:
     unsigned char _pad50[0x70 - 0x50];
     CDefPointer<const CThingBaseDef> PBaseDef;           // +0x70
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }   // FableWin ?GetPBaseDef@CThing@@QBE?AV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
-    __forceinline bool HasTC(long type) const { return UsingComponents.test(type); }
-    template <class T> __forceinline T* GetTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const { return UsingComponents.test(type); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         unsigned long key = type;
         const CTCMap* map = &Components;

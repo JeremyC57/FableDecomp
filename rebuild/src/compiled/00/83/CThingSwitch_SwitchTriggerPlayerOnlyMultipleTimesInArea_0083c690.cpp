@@ -14,6 +14,7 @@
 // Shape: the trigger square is a C2DBoxF filled member by member (one PeekPos() call per component); the hero's
 //   point is a C2DVector built from two PeekPos() calls (Y first: arguments are evaluated right to left) and tested
 //   with the half-open ContainsPoint inlined. The const query chain is reached through a `const CThing*`.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class C2DVector { public:
@@ -23,7 +24,7 @@ class C2DVector { public:
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
-    __forceinline bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
+    FABLE_FORCEINLINE bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 
 struct CEventBase { virtual void v00(); };
@@ -61,13 +62,13 @@ class CThing { public:
     unsigned char  Dead : 1;                            // +0x91 bit 0
     const CPlayerManager* GetPlayerManager() const;     // 0x004C79F0
     CPlayerManager* GetPlayerManager();                 // 0x004C7A00
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

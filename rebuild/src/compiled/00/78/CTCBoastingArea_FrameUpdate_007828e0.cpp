@@ -11,9 +11,10 @@
 // before the squares, `X*X + (Y*Y + Z*Z)` for retail's Z,Y,X order); the anticipation result lives in a frame byte,
 // the boasting one in cl; the state switch returns from every arm. The parent thing goes through an inline GetThing()
 // accessor so it is read into ebx BEFORE the hero position call (a direct `Thing->` loads it after and keeps the bool in bl).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
-__forceinline bool InRange(const C3DVector& d, float radius)
+FABLE_FORCEINLINE bool InRange(const C3DVector& d, float radius)
 {
     return d.X * d.X + (d.Y * d.Y + d.Z * d.Z) < radius * radius;
 }

@@ -23,6 +23,7 @@
 // Shape: the hero-stats interface fetch before the static GetTimeSpentInGame is dead except for the out-of-line bitset test;
 //   its pure-load lookup is modelled as an indexed read (any pure load keeps retail's `mov eax,[esi+4] ; lea ecx,[eax+20h]`).
 //   The two region arms are one statement each so VC7.1 cross-jumps the shared GetEntry tail.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -70,18 +71,18 @@ struct CRefCounted {
     virtual void v00();
     virtual void Destroy() const;                       // slot 1 (+0x04)
     mutable long m_count;                               // +0x04
-    __forceinline void DecRef() const { --m_count; if (m_count == 0) Destroy(); }
+    FABLE_FORCEINLINE void DecRef() const { --m_count; if (m_count == 0) Destroy(); }
 };
 template<class T> struct CDefPtr {                      // the getters' by-value result
     T* m_p;
     CDefPtr(const CDefPtr& other);
-    __forceinline ~CDefPtr() { if (m_p) m_p->DecRef(); }
+    FABLE_FORCEINLINE ~CDefPtr() { if (m_p) m_p->DecRef(); }
     T* operator->() const { return m_p; }
 };
 template<class T> class CIVCountedPointer { public:     // NGameText::CDataBank's by-value results (FableWin), released and cleared
     T* m_p;
     CIVCountedPointer(const CIVCountedPointer& other);
-    __forceinline ~CIVCountedPointer() { if (m_p) { m_p->DecRef(); m_p = 0; } }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { if (m_p) { m_p->DecRef(); m_p = 0; } }
     T* operator->() const { return m_p; }
 };
 struct CUIDef : CRefCounted {
@@ -118,7 +119,7 @@ private: public:
     long       _pad00[0x14 / 4];
     CDataBank* TextBank;                                // +0x14
 };
-__forceinline CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
+FABLE_FORCEINLINE CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
 namespace NUISystem {
 class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04();
@@ -151,7 +152,7 @@ class CThing { public:
     std::bitset<274> present;                              // +0x20
     long          _pad21[(0x44 - 0x24) / 4];
     class CTCBase** m_firstTC;                         // +0x44 (interface map, simplified)
-    template<class T> __forceinline T* GetTC(long kind) { if (present.test(kind)) return (T*)m_firstTC[kind]; return 0; }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long kind) { if (present.test(kind)) return (T*)m_firstTC[kind]; return 0; }
 };
 class CTCBase { public:
     virtual void v00();

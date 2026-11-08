@@ -7,6 +7,7 @@
 //        interface 0xBF (CTCObjectAugmentations, bit 31 of CThing bitset word 5 at +0x34 -> `jns`) looked up with the
 //        inline GetInterface; `speed * mult` gives `call ; fmul [speed]`.
 // Layout: CTCWeapon ParentThing +0x04, WeaponDef +0x0C; retail CThing interface bitset +0x20, interface map +0x44.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -18,7 +19,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -42,8 +43,8 @@ class CWeaponDef { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer() { Object->Release(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CTCObjectAugmentations { public:
@@ -55,7 +56,7 @@ class CTCWeapon { public:
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];
     CDefPointer<CWeaponDef> WeaponDef;           // +0x0c
-    __forceinline CDefPointer<CWeaponDef> GetWeaponDef() const { return WeaponDef; }
+    FABLE_FORCEINLINE CDefPointer<CWeaponDef> GetWeaponDef() const { return WeaponDef; }
     float GetAnimationSpeedValue() const;
 };
 float CTCWeapon::GetAnimationSpeedValue() const

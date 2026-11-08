@@ -12,6 +12,7 @@
 // Shape: STLport 4.x `~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start,
 //   _M_end_of_storage._M_data - _M_start); }`; the size is dead. Pragma: optimize("s") (`pop ecx` after free); the size
 //   TU inlines the allocator's deallocate only as `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
@@ -26,7 +27,7 @@ namespace std {
 template <class _Tp> class allocator {
 public:
     allocator() { }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

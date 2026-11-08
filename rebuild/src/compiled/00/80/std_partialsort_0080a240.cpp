@@ -16,6 +16,7 @@
 //   __pop_heap(first, middle, i, _Tp(*i), comp, (int*)0); sort_heap(first, middle, comp);` -- the predicate inline (the
 //   landed 0x00807520 named-local coin: `and eax,1` parked in a frame word), __pop_heap `__forceinline` (assign
 //   *first to *i, then __adjust_heap with the temporary copied into its argument slot), the temporary destroyed after.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -87,7 +88,7 @@ inline void make_heap(_RandomAccessIterator __first, _RandomAccessIterator __las
 }
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last,
                               _RandomAccessIterator __result, _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

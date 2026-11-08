@@ -8,11 +8,12 @@
 // itself (was the invented ParserMethods wrapper) with ReadNextItem 0x009BA080 / ReadAsStringUntilString 0x009BA110; and
 // ReadFromParserAsString is CGenericVarRef's private member (Ego_r/FableWin ?ReadFromParserAsString@CGenericVarRef@@AAE...).
 // Same bytes. Left: the StringDataMethods::Equals wrapper for CBasicString<char>::operator==(const char*) 0x004115A0.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #include <string.h>
 struct StringDataMethods:CCharStringData{bool Equals(const char*)const;}; //004115A0 CBasicString<char>::operator==
 extern const char EmptyString[]; //0122D70E empty CBasicString fallback
-static __forceinline bool StringEquals(const CCharString&s,const char*t){CCharStringData*d=*reinterpret_cast<CCharStringData*const*>(&s);if(!d)return strcmp(t,EmptyString)==0;return static_cast<StringDataMethods*>(d)->Equals(t);}
+static FABLE_FORCEINLINE bool StringEquals(const CCharString&s,const char*t){CCharStringData*d=*reinterpret_cast<CCharStringData*const*>(&s);if(!d)return strcmp(t,EmptyString)==0;return static_cast<StringDataMethods*>(d)->Equals(t);}
 class CParsedItem{public:long Type;long Value;CCharString String;const CCharString& GetSymbol()const;const CCharString& GetString()const;}; //009B9870/009B9880
 class CStringParser{public:bool ReadNextItem(CParsedItem&);bool ReadAsStringUntilString(const CCharString&,CParsedItem&);}; //009BA080/009BA110
 class CGenericVarRef{public:long Type;CCharString*PData;private:bool ReadFromParserAsString(CStringParser&);};

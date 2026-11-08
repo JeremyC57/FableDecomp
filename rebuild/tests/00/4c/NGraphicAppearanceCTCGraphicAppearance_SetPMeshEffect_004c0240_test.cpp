@@ -1,5 +1,6 @@
 // Behaviour test for 004c0240: final.cpp copied verbatim, the declared callees stubbed below so calls, arguments, the
 // map entries and the effect reference counts are observable. NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -61,7 +62,7 @@ public:
         bool weapon = TestTC(0x48);
         return weapon;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -153,7 +154,7 @@ class CTCGraphicAppearance { public:
     unsigned char  _pad18[0x58 - 0x18];
     unsigned char  UpdatePrimitiveReasons;                  // +0x58
     void ClearMeshEffect(void* owner);                      // 0x004BFE20
-    __forceinline bool ParentIsWeapon() const               // the parent in a named local (its register dies at the word load)
+    FABLE_FORCEINLINE bool ParentIsWeapon() const               // the parent in a named local (its register dies at the word load)
     {
         CThing* parent = ParentThing;
         return parent->IsWeapon();

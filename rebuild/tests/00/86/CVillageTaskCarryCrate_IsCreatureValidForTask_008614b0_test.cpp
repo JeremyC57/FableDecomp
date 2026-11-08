@@ -1,4 +1,5 @@
 // behaviour test for 0x008614B0 CVillageTaskCarryCrate::IsCreatureValidForTask (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CVillageTaskCarryCrate::IsCreatureValidForTask(CThing* creature) -- a creature suits the task when its carrying state is the opposite of the task's: empty-handed for a pickup, carrying something for a drop-off
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                    // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

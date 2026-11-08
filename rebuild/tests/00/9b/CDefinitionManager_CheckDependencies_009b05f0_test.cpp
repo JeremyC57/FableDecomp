@@ -3,6 +3,7 @@
 // checksum-file callees given small in-memory bodies and the CRC table built as the standard reflected CRC-32 table. Checks the .cks
 // pathname, that the CRC equals an independent reference over the checksums sorted by lower-case name, and that the disabled flag
 // leaves the CRC 0 without opening the checksum file.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -147,7 +148,7 @@ struct CFileChecksumMap {                               // CVectorMap<CCharStrin
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     CFileChecksum& operator[](unsigned long n) { return *(_M_start + n); }
     void InsertGrow(CFileChecksum* where, const CFileChecksum& value, const SScalarTag& tag, unsigned long count, bool atEnd);   // 0x009B71B0
-    __forceinline void push_back(const CFileChecksum& value)
+    FABLE_FORCEINLINE void push_back(const CFileChecksum& value)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) CFileChecksum(value);
@@ -156,7 +157,7 @@ struct CFileChecksumMap {                               // CVectorMap<CCharStrin
         else
             InsertGrow(_M_finish, value, SScalarTag(), 1, true);
     }
-    __forceinline void Add(const CCharString& key, const unsigned long& value)
+    FABLE_FORCEINLINE void Add(const CCharString& key, const unsigned long& value)
     {
         push_back(CFileChecksum(key, value));
         NeedsSort = true;

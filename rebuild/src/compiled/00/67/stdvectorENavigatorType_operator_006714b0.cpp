@@ -12,6 +12,7 @@
 //   __uninitialized_copy(x.start + size(), x.finish, finish, __false_type()); } finish = start + xlen; } return *this;`
 //   (__copy_ptrs is the counted random-access __copy for a non-POD enum); the copy helpers are __forceinline (plain
 //   inline leaves the three helper calls). No pragma.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 enum ENavigatorType { NAVIGATOR_TYPE_0 };                  // 4-byte enum: STLport treats it as non-POD (__false_type)
@@ -24,7 +25,7 @@ template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __va
 template <class _Tp> inline void _Destroy(_Tp*, _Tp*) { }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -32,7 +33,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -43,7 +44,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(const _Tp* __first, const _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

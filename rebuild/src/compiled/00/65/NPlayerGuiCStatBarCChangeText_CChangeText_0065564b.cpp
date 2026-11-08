@@ -7,13 +7,14 @@
 // Callees: CWideString::CWideString(const CWideString&) 0x0099B720.
 // Shape: the colour copy is `CRGBColour(const CRGBColour&) { Set(R, G, B, A); }` with a __forceinline four-byte Set: all four loads come
 //   before the stores (a member-wise copy interleaves them); /O1 inlines only __forceinline helpers.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class C2DVector { public: float X, Y; };
 class CRGBColour {
 public:
     unsigned char B, G, R, A;
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
         R = r;
         G = g;

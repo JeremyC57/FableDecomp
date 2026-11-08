@@ -17,6 +17,7 @@
 // LastExperienceMultiplierParam +0x34, ExperienceAttenuationTimer +0x38, AbleToGainExperience +0x3c, Pickups +0x40,
 // ExperienceSpentOnStats +0x44, AttackHistory +0x50, PDef +0x54, PHeroCombatDef +0x58, PHeroStatsDef +0x5c; the definition
 // manager's hero-stats def pointer at +0xdc.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
@@ -59,7 +60,7 @@ class CGameDefinitionManager { public:
     CDefPointer<CHeroStatsDef> GetHeroStatsDef() const { return HeroStatsDef; }
 };
 
-template <class T> __forceinline T* UninitializedFillN(T* first, unsigned long count, const T& value)
+template <class T> FABLE_FORCEINLINE T* UninitializedFillN(T* first, unsigned long count, const T& value)
 {                                                   // STLport __uninitialized_fill_n(.., __true_type): fill_n, plain stores
     for (; count > 0; --count, ++first)
         *first = value;

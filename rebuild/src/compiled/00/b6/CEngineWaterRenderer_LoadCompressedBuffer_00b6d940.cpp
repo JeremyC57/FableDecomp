@@ -10,6 +10,7 @@
 //   headers are data-only and cannot carry the inlined Read or the virtual call (as in the landed 0x00B16F60).
 // Shape: each value comes from a value-returning ReadLong (count spills to the dead stream-argument slot); the range
 //   compressor is a function-scope local declared first (its own frame slot); the skip helper assigns 0 in an else.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
@@ -27,8 +28,8 @@ class CMemoryDataInputStream { public:
     virtual void v01();
     virtual unsigned long GetPosition();                // slot 2
     void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))
@@ -42,13 +43,13 @@ class CMemoryDataInputStream { public:
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)dst, size);
         }
     }
-    __forceinline long ReadLong()
+    FABLE_FORCEINLINE long ReadLong()
     {
         long value;
         Read(&value, 4);
         return value;
     }
-    __forceinline const unsigned char* GetDataAndSkip(long size)
+    FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long size)
     {
         unsigned long position = GetPosition();
         __int64 np = (__int64)(position + size);

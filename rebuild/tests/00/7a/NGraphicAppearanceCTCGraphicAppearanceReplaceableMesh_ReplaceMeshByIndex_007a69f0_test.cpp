@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -73,13 +74,13 @@ public:
     unsigned char _pad4c[0x64 - 0x4c];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     void SendMessageW(const NTCMessages::CMessageBase& message);       // 0x004C7820
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -87,7 +88,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    __forceinline CTCPhysicsBase* GetPhysicsTC()
+    FABLE_FORCEINLINE CTCPhysicsBase* GetPhysicsTC()
     {
         CTCPhysicsBase* physics;
         if (HasTC(2))

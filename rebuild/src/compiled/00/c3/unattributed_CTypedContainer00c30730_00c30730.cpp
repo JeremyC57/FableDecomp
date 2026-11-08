@@ -14,6 +14,7 @@
 // still lives), and the root's inline empty destructor restores the root vtable. Built under
 // /EHsc (the funclets land through the funclet pass). The manifest label is propagated garbage;
 // the classes are named by address. One of 3 bodies of this shape.
+#include "fable_compiler.h"
 struct CUnprovenTransferRecord_00C3B7A0 {
     ~CUnprovenTransferRecord_00C3B7A0();                              // 0x00C3B6B0
 };
@@ -44,7 +45,7 @@ struct CContainer_00c30730 : CRoot_00c30730 {          // vtable 0x012B4BD8
     virtual void v09();
     virtual void v10();
     virtual CUnprovenTransferRecord_00C3B7A0* RemoveFirst();          // slot 11
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         while (CUnprovenTransferRecord_00C3B7A0* item = RemoveFirst()) {
             OnRemove(item);

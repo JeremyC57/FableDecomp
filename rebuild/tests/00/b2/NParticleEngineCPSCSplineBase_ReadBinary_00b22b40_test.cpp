@@ -1,6 +1,7 @@
 // Behaviour test for 00b22b40: final.cpp copied verbatim (CRT names wrapped and 32-bit `long` under g++; build with
 // `g++ -fpermissive`), every declared callee stubbed below so the stream reads, allocations and the rebuilt spline are
 // observable. NParticleEngine::CPSCSplineBase::ReadBinary(CDataInputStream&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -58,8 +59,8 @@ class CDataInputStream { public:
     long SourceChunkBytesRemaining;                                    // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     C3DVector Read3DVector();                                          // 0x009950F0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))
@@ -72,8 +73,8 @@ class CDataInputStream { public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 };
 class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                   // +0x00

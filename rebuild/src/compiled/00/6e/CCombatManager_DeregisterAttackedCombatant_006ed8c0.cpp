@@ -8,6 +8,7 @@
 // Layout: the landed CCombatManager_Retail model (Combatants +0x10, node key +0x10, info +0x18); retail CCombatantInfo has a
 //          0x30-byte attacker part, so DefenderInfo sits at +0x34 (attackers map, PLastAttacker +0x28, PAttackPattern +0x30,
 //          AttackPatternIndex +0x34); the being-attacked flag is bit 3 of creature +0x15c.
+#include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase { public:
     unsigned char    _pad[0x18];
@@ -47,7 +48,7 @@ class CAttackPatternDef : public CDefVirtual { public:
     long RefCount;                                     // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer& operator=(T* p)

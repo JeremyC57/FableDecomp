@@ -19,6 +19,7 @@
 //   Retail length 1389 bytes (the row's 1392 includes the 3-byte pad).
 // Naming wave 35: identity reg 00da36f0 "MagicBarrier" in 00da34b0; Alloc 00da4d40; vtable 012d74c8 slot 1; PDB ?Main@CMagicBarrier@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMagicBarrier::Main (wave3/labels_alloc.tsv); PDB ?Main@CMagicBarrier@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMagicBarrier@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -50,8 +51,8 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    __forceinline ~CScriptThing() { }                    // out of line 0x004AA840
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+    FABLE_FORCEINLINE ~CScriptThing() { }                    // out of line 0x004AA840
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
     virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }   // slot 6
     virtual void v07() const; virtual void v08() const; virtual void v09() const;
@@ -67,7 +68,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
 class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;                                // +0x04 (copied inline, destroyed out of line)
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+    FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     virtual ~CIsThingAlive();
 };

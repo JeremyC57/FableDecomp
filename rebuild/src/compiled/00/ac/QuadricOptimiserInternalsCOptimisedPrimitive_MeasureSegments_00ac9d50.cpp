@@ -16,6 +16,7 @@
 // Shape: the face count is hoisted into a signed local; each face's three vertices go through one inline helper (the
 //   position's Y/Z homed in frame slots, X kept on the x87 stack across both compares); STLport resize(n) = erase tail /
 //   _M_fill_insert; the diagonal is the difference vector's GetLength (Z*Z + Y*Y + X*X under the sqrt).
+#include "fable_compiler.h"
 #include <math.h>
 inline void* operator new(unsigned int, void* p) { return p; }
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
@@ -52,7 +53,7 @@ inline void* __copy_trivial(const void* __first, const void* __last, void* __res
         ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first))) + ((const char*)__last - (const char*)__first);
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -164,7 +165,7 @@ private:
     void MeasureVertex(C3DVector& p, const COptimisedFace& face, long vertex, CArray<C3DVector>& mins, CArray<C3DVector>& maxs);
 };
 
-__forceinline void COptimisedPrimitive::MeasureVertex(C3DVector& p, const COptimisedFace& face, long vertex, CArray<C3DVector>& mins, CArray<C3DVector>& maxs)
+FABLE_FORCEINLINE void COptimisedPrimitive::MeasureVertex(C3DVector& p, const COptimisedFace& face, long vertex, CArray<C3DVector>& mins, CArray<C3DVector>& maxs)
 {
     p = Vertices[face.VertexIndices[vertex]].Position;
     C3DVector& mn = mins[face.Segment];

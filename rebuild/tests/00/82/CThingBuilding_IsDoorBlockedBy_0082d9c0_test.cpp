@@ -1,5 +1,6 @@
 // Behaviour test for 0082d9c0: src/0082d9c0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CThingBuilding::IsDoorBlockedBy(CThing* thing)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -23,10 +24,10 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
+    FABLE_FORCEINLINE float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-__forceinline bool GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE bool GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)
 {
     return (a - b).GetLengthSquared() < distance * distance;
 }
@@ -44,18 +45,18 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
     const C3DVector& GetPosition() const;   // 0x004C73D0
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

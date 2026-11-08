@@ -13,6 +13,7 @@
 // Model: local (the script's interface pointer at +4, its own script thing at +8, state byte +0x1c and word +0x20).
 // Naming wave 35: identity reg 00d1d29a "GuardToHelpDefend" in 00d1d100; Alloc 00d1ea10; vtable 012cafa4 slot 2; PDB ?Init@CGuardToHelpDefend@CQ_BreakSiegeScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuardToHelpDefend::Init (wave3/labels_alloc.tsv); PDB ?Init@CGuardToHelpDefend@CQ_BreakSiegeScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CGuardToHelpDefend@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
     void* m_pData;
@@ -26,7 +27,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CGameScriptInterface { public:

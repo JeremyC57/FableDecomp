@@ -15,6 +15,7 @@
 //   CThing has no shared header: only the retail type-flag word +0x6c (PDB +0x7c) is touched.
 // Names: the layer table and the three search-stamp globals keep their landed descriptive spellings (variable names
 //   unrecovered); the overflow member is STLport 4.6 protected (IAE) with the __true_type tag (pointer elements).
+#include "fable_compiler.h"
 #include "engine/CTCMapwho.h"
 #include "engine/CTCBase.h"
 #include <stddef.h>
@@ -25,12 +26,12 @@ extern "C" void __cdecl free(void*);
 namespace std {
 struct __true_type { __true_type() {} };
 template <class _Tp> class allocator { };
-__forceinline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+FABLE_FORCEINLINE void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
     return __last == __first ? __result
         : (char*)memmove(__result, __first, (const char*)__last - (const char*)__first) + ((const char*)__last - (const char*)__first);
 }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector {
 public:
@@ -43,10 +44,10 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len, bool __atend = false);
 public:
-    __forceinline iterator begin() const { return _M_start; }
-    __forceinline iterator end() const { return _M_finish; }
-    __forceinline _Tp& operator[](size_type __n) const { return _M_start[__n]; }
-    __forceinline void push_back(const _Tp& __x)
+    FABLE_FORCEINLINE iterator begin() const { return _M_start; }
+    FABLE_FORCEINLINE iterator end() const { return _M_finish; }
+    FABLE_FORCEINLINE _Tp& operator[](size_type __n) const { return _M_start[__n]; }
+    FABLE_FORCEINLINE void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage) {
             _Construct(this->_M_finish, __x);
@@ -55,7 +56,7 @@ public:
         else
             _M_insert_overflow(this->_M_finish, __x, __true_type(), 1UL, true);
     }
-    __forceinline void clear()
+    FABLE_FORCEINLINE void clear()
     {
         this->_M_finish = (pointer)__copy_trivial(this->_M_finish, this->_M_finish, this->_M_start);
     }
@@ -84,7 +85,7 @@ class CThing { public:
     unsigned long ThingTypeFlags;                                  // +0x6c retail (PDB +0x7c)
     enum { ThingTypeMask = 0 };
 };
-template <class T> __forceinline bool IsThingOfType(const CThing* thing)
+template <class T> FABLE_FORCEINLINE bool IsThingOfType(const CThing* thing)
 {
     unsigned long mask = T::ThingTypeMask;
     return (thing->ThingTypeFlags & mask) == mask;
@@ -94,8 +95,8 @@ class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI() {}
     C2DBoxI(const C2DBoxI& v) : TLX(v.TLX), TLY(v.TLY), BRX(v.BRX), BRY(v.BRY) {}
-    __forceinline long Width() const { return BRX - TLX; }
-    __forceinline long Height() const { return BRY - TLY; }
+    FABLE_FORCEINLINE long Width() const { return BRX - TLX; }
+    FABLE_FORCEINLINE long Height() const { return BRY - TLY; }
 };
 struct CMapwhoNode { CTCMapwho* PMapwho; CMapwhoNode* PNext; CMapwhoNode* PPrevious; CThingMapCell* PCell; };
 struct CThingMapCell { CMapwhoNode* PFirstNode; };
@@ -133,7 +134,7 @@ class CThingFilter_MakesLineWithPosInDirectionOfLine;
 template <class TFilter1, class TFilter2> class CFilter_Bind2 { public:
     TFilter1* F1;                                                        // +0x00
     TFilter2* F2;                                                      // +0x04
-    template <class T> __forceinline bool operator()(const T& p) const { return (*this->F1)(p) && (*this->F2)(p); }
+    template <class T> FABLE_FORCEINLINE bool operator()(const T& p) const { return (*this->F1)(p) && (*this->F2)(p); }
 };
 class CThingSearchTools {
 public:
@@ -142,7 +143,7 @@ public:
 protected:
     void GetAllThingMapsInArea(const C2DBoxI& area, std::vector<NThingMap::CThingMap*>& maps) const;        // 0x0049C6F0
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map, const C2DBoxI& area) const; // 0x0049C700
-    __forceinline C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&, long layer, const C2DBoxI& box) const
+    FABLE_FORCEINLINE C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&, long layer, const C2DBoxI& box) const
     {
         long shift = LayerInfo_0137dad8[layer].ScaleShift;
         C2DBoxI out;

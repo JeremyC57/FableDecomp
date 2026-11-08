@@ -1,6 +1,7 @@
 // Test for 0x0065F604 CDefClassBase::GetSubDef<CEntitySoundDef>: with an index the def comes back in *out with its
 // reference counted once for *out (the manager's and the local's references released); without one, false and *out
 // untouched; an old *out def is released on reassignment.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include "fable_string.h"
@@ -40,7 +41,7 @@ template <> class CDefPointer<CDefClassBase> {         // the manager's (protect
 public:
     CDefBase* m_p;
     CDefPointer() { }
-    __forceinline ~CDefPointer()                       // forced: the size TU would call it out of line
+    FABLE_FORCEINLINE ~CDefPointer()                       // forced: the size TU would call it out of line
     {
         if (m_p) {
             m_p->ReleaseTemporary();
@@ -59,7 +60,7 @@ public:
         if (m_p)
             m_p->Release();
     }
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (m_p != other.m_p) {
             if (m_p) {

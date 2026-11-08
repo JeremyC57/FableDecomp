@@ -10,6 +10,7 @@
 // identity test: VC7.1 then CSEs the right operand's ADDRESS (`last - 1`) into a temporary emitted as its own
 // `sub eax,4 ; mov eax,[eax]`; with cached block locals the single load folds into `[eax-4]` (solved by the shared
 // retry advisor).
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                                 // +0x00
     unsigned long m_length;                                 // +0x04
@@ -19,7 +20,7 @@ class CCharString { public:
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     if (sa.m_pStringData == sb.m_pStringData)
         return true;

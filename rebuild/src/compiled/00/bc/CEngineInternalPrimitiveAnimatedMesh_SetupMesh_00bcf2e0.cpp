@@ -18,6 +18,7 @@
 // Layout (retail): CEngineInternalPrimitiveMeshBase::MeshInfo +0x50; RenderInfo (CEngineRenderInfoAnimatedMesh, 4 bytes below the
 //   Ego_r +0xe4) Mesh +0xe4, LOD +0xe8, BoneTransforms +0x120, RenderFrame +0x124 (as the landed SetupMesh2D); C3DMeshInfo
 //   LODErrors +0x40, LODDataSizes +0x50 (engine/C3DMeshInfo.h).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 #define CEngine CEngineDonor
 #include "engine/CEngine.h"
@@ -51,7 +52,7 @@ class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData { pub
 extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData;   // 0x01436E78
 extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e80;              // 0x01436E80
 class CEnginePrimitiveManagerMeshBase : public CEnginePrimitiveManagerMeshBaseHeader { public:   // engine/CEnginePrimitiveManagerMeshBase.h layout
-    static __forceinline unsigned long __fastcall GetAppropriateLOD(const C3DMeshInfo* meshInfo, float distance, float radius, float errorTolerance)
+    static FABLE_FORCEINLINE unsigned long __fastcall GetAppropriateLOD(const C3DMeshInfo* meshInfo, float distance, float radius, float errorTolerance)
     {
         float distanceToSurface = distance - radius > 0.0001f ? distance - radius : 0.0001f;
         errorTolerance *= distanceToSurface / (radius * g_pPrimitiveRendererSharedData->LODVirtualScreenSizeFOVAdjusted);

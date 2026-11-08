@@ -9,6 +9,7 @@
 // Shape: nested ifs with one shared `xor al,al` exit; `HasTC(k)` as the raw masked word, the filter a named local so the
 //   final call tail-jumps. GetTC picks the end/hit entry with ONE ternary, so the component is loaded straight into ecx
 //   before the argument (an if-assign pick joins it through eax and moves it to ecx).
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -24,7 +25,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

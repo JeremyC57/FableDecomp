@@ -19,6 +19,7 @@
 // Shape: the sound ids are read into locals (edi); the empty prompts are implicit const char* conversions (default length
 //        -1), so the second temporary lands in the dead `caught` slot; the zero vector and the world are named locals,
 //        which builds the vector and calls GetWorld before the message arguments are pushed.
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseIntelligentPointer {
 public:
@@ -69,7 +70,7 @@ public:
 protected:
     const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50
 public:
-    __forceinline void PostMessage(long type, const C3DVector& pos, const CThing* thing)
+    FABLE_FORCEINLINE void PostMessage(long type, const C3DVector& pos, const CThing* thing)
     {
         GetWorld().PMessages->AddMessage(type, g_framesPerSecond, pos, 0, 0, 0, 0, thing);
     }

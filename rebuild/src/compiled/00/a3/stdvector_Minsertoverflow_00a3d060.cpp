@@ -18,6 +18,7 @@
 //   same-TU noinline bodies (retail holds them in this TU): declared only, VC7.1 keeps a second frame word and puts the
 //   tag on the fill_len slot; with the bodies visible new_start is homed in the dead fill_len slot and every tag shares
 //   the atend slot, as retail. At landing the retail COMDATs of those helpers win.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -69,7 +70,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter
 }
 #pragma auto_inline(on)
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for (; __first != __last; ++__first)
         _Destroy(&*__first);

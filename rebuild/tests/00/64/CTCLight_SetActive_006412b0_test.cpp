@@ -1,5 +1,6 @@
 // Behaviour test for 006412b0: src/006412b0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCLight::SetActive
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -41,13 +42,13 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool SameText(const CCharString& other) const
+    FABLE_FORCEINLINE bool SameText(const CCharString& other) const
     {
         if (PStringData->m_length != other.PStringData->m_length)
             return false;
         return Compare(PStringData->m_pData, other.PStringData->m_pData) == 0;
     }
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -83,7 +84,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     {
         return LowerBoundRange(first, last, *type);
     }
-    static __forceinline const SEntry* LowerBoundRange(const SEntry* it, const SEntry* end, const long& type)
+    static FABLE_FORCEINLINE const SEntry* LowerBoundRange(const SEntry* it, const SEntry* end, const long& type)
     {
         int len = int(end - it);
         while (len > 0) {
@@ -126,13 +127,13 @@ public:
     CTCGraphicAppearance* PGraphicAppearance;           // +0x64
     void UpdateGraphicAppearance(long reason);          // 0x004C7590
     void SetAsFrameUpdated();                           // 0x004C7C40
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -143,14 +144,14 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap::SEntry* last = m_interfaces.last;

@@ -17,6 +17,7 @@
 // ecx), object}).
 // Shape: an inline find over the list (end held in a register), the "already queued" path releases the argument and returns false;
 // the replaced type is preset 0 and RemoveMode runs after the idle time is stored.
+#include "fable_compiler.h"
 class CMainGameComponent {                               // the landed CThingDeadCreature::WorldUpdate 0x00836260 spelling
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -34,8 +35,8 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

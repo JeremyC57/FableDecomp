@@ -14,6 +14,7 @@
 // IsNot filters and the found-creature out pointer live in the dead argument slots, the range filter copies the position
 // as dwords (the filter temporaries are built right to left); the search tools are fetched into a local inside an inline
 // helper so they come after the temporaries and before the pushes; the search result is normalised to a bool.
+#include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
 #include "engine/C3DVector.h"
@@ -71,7 +72,7 @@ protected:
     const CWorld& PeekWorld() const;   // 0x00686A80
 };
 class CTCSingleUserActionPoints : public CTCBase { public:
-    __forceinline bool FindFirstCreature(const C2DBoxI& area, const CActionPointFilter& filter, CThingCreatureBase** found) const
+    FABLE_FORCEINLINE bool FindFirstCreature(const C2DBoxI& area, const CActionPointFilter& filter, CThingCreatureBase** found) const
     {
         CThingSearchTools* searchTools = PeekWorld().ThingSearchTools;
         return searchTools->GetPFirstThingInRoughArea(area, filter, found);

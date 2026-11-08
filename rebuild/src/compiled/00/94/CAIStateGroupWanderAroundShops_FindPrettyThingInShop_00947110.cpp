@@ -12,6 +12,7 @@
 //   GetTC result (an out-parameter lookup keeps it address-taken and gives the item temporary a slot of its own).
 // Layout: Ego_r.pdb CTCThingOwner (ObjectList, an STLport list<CIntelligentPointer<CThing> > header pointer, at +0x0C);
 //   CThing interface bitset +0x20, map +0x44, Dead bit 0 of +0x91. No members of `this` are touched.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -70,11 +71,11 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char StateBits;                            // +0x91 bit 0: Dead
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -94,7 +95,7 @@ private:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-__forceinline bool IS_THING_ALIVE(const CThing* thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CThing* thing)
 {
     if (thing != 0) {
         if (!(thing->StateBits & 1))
@@ -102,7 +103,7 @@ __forceinline bool IS_THING_ALIVE(const CThing* thing)
     }
     return false;
 }
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->StateBits & 1))

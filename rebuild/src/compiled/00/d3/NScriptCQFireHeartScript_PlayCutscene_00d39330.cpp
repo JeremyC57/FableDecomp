@@ -8,6 +8,7 @@
 //   0x009AACE0 (declared-only specialization), movie ctor 0x006E7B60, movie PImp dtor 0x006E7AB0, RunCutsceneMacro 0x00CBFB7D (__fastcall).
 // Layout: engine/CQ_FireHeartScript.h: CutsceneFlags +0x4C, csargs +0x58, seh_Prophet / seh_Rose / seh_Scythe / seh_GM handles.
 // Shape: the landed CQ_WaspBossScript intro/outro model (malloc'd cast-map header, CWideScreenMagicPauseEntities pause pair).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -35,7 +36,7 @@ template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer
 #include "stlport/fable_map.h"
 #include "engine/CQ_FireHeartScript.h"
 #include "engine/fable_script_cutscene.h"
-__forceinline CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& CScriptGameResourceObjectScriptedThingBase::operator=(const CScriptGameResourceObjectScriptedThingBase& other) { CScriptGameResourceObjectBase::operator=(other); PImp=other.PImp; return *this; }
 template<> void std::map<CCharString, CCharString>::clear();   // 0x009AACE0
 
 void NScript::CQ_FireHeartScript::PlayCutscene(CCharString name)

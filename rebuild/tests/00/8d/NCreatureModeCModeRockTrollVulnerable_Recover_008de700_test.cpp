@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __declspec(x)
 #define __fastcall
@@ -67,7 +68,7 @@ class CThing:public CClass {
 public:
     // Layout: all Thing fields are accessed through the imported physical layout only.
     unsigned char unobservedThingState[sizeof(CThingLayout)-sizeof(CClass)];
-    template<class T>__forceinline bool GetTC(T**out) {
+    template<class T>FABLE_FORCEINLINE bool GetTC(T**out) {
         const unsigned long*bits=reinterpret_cast<const unsigned long*>(reinterpret_cast<const CThingLayout*>(this)->UsingComponents);
         if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))) {
             ETCInterfaceType type=T::StatGetInterfaceType();

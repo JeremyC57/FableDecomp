@@ -8,6 +8,7 @@
 // copy reads the old pointer into a local (`mov ecx,[esi+4] ; cmp ecx,[edi+4]`) and the release lives on the pointee
 // (`old->Release()` keeps the pointer in ecx for `dec [ecx+4] ; jne ; call [vt+4]`), other's pointer is re-read after the release.
 // Leaf: ??4CEnginePrimitiveHandle
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 
 class CEnginePersistentPrimitiveBase {
@@ -29,7 +30,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -38,7 +39,7 @@ public:
         Object = 0;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         CEnginePersistentPrimitiveBase* old = Object;
         if (old != other.Object) {
@@ -58,7 +59,7 @@ class CEnginePrimitiveHandle {                     // 8 bytes: vptr (0x0122F598)
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

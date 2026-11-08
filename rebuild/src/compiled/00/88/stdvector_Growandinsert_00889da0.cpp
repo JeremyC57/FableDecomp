@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3
 // Leaf: _M_fill_insert
 // Layout: PDB CEnvironmentThemePriorityStackEntry56 atlines25599-25608; retail Themes vector12bytes shifts TargetID to20, InitialWeight24, Active28, StartTime32, Duration40; stride48. CThemeWeight12 atPDB25632-25634.
+#include "fable_compiler.h"
 namespace N00889da0 {
 struct __false_type { __false_type() {} }; struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
@@ -9,7 +10,7 @@ extern "C" void __cdecl free(void*);
 struct ThemeWeight {int ThemeID;float Weight;bool LockWeight;};
 struct ThemeVector {ThemeWeight* _M_start;ThemeWeight* _M_finish;ThemeWeight* _M_end_of_storage;
  ThemeVector();ThemeVector(const ThemeVector&);ThemeVector& operator=(const ThemeVector&);
- __forceinline ~ThemeVector(){if(_M_start)free(_M_start);}
+ FABLE_FORCEINLINE ~ThemeVector(){if(_M_start)free(_M_start);}
 };
 struct CEnvironmentThemePriorityStackEntry {
  float BaseWeight;bool BaseWeightLocked;ThemeVector Themes;int ThemeTransitionTargetID;float ThemeTransitionInitialWeight;bool ThemeTransitionActive;double ThemeTransitionStartTime;float ThemeTransitionDuration;
@@ -23,7 +24,7 @@ template<class T> __declspec(noinline) T* __fastcall __copy_backward(T* first,T*
 template<class T> __declspec(noinline) void __fastcall fill(T* first,T* last,const T& x) { for(;first!=last;++first) *first=x; }
 template<class T> __declspec(noinline) T* __fastcall __uninitialized_fill_n(T* first,unsigned int n,const T& x,const __false_type&) { for(;n>0;--n,++first) _Construct(first,x); return first; }
 #pragma auto_inline(on)
-template<class T> __forceinline T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
+template<class T> FABLE_FORCEINLINE T* __copy_backward_ptrs(T* first,T* last,T* out,const __false_type&) { return __copy_backward(first,last,out,random_access_iterator_tag(),(int*)0); }
 template<class T> struct vector {
  T* _M_start; T* _M_finish; T* _M_end_of_storage;
  void _M_insert_overflow(T* pos,const T& x,const __false_type&,unsigned int n,bool atend=false);

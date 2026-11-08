@@ -9,6 +9,7 @@
 // retail +0x168 / +0x170 (Ego_r.pdb +0x190 / +0x198), as the landed 0x007BB660 filter model.
 // Shape: the creature pointer is re-read through GetPItem for each building; home first, then work (the
 // CThingFilter_HasBuildingAsHomeOrWork filter of 0x007BB660 tests work first); `mov al,1 ; jmp` / `xor al,al` tail.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CThing;
 class CBaseObject;
@@ -18,7 +19,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                         // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CThing { public:
     unsigned char _pad_0x00[0x168];

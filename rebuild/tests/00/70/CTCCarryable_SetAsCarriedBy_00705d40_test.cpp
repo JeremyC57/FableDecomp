@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -3627,9 +3628,9 @@ class CThing:public CThingFields{public:const C3DVector&GetPos()const;void SetCu
  const CThingBaseDef&PeekBaseDef()const{return *reinterpret_cast<const CThingBaseDef*>(PBaseDef_Object);}
  CTCPhysicsBase*GetPhysicsTC(){return PhysicsTC;}
  NGraphicAppearance::CTCGraphicAppearance*GetTCGraphicAppearance(){return reinterpret_cast<NGraphicAppearance::CTCGraphicAppearance*>(PTCGraphicAppearance);}
- __forceinline bool HasTC(ETCInterfaceType kind)const{if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31)))return true;return false;}
- template<class T>__forceinline bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(HasTC(kind)){*out=static_cast<T*>(&GetTC(kind));return true;}return false;}
- __forceinline CTCBase&GetTC(ETCInterfaceType kind){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);return *((it==map.end()||kind<it->first)?map.end():it)->second;}
+ FABLE_FORCEINLINE bool HasTC(ETCInterfaceType kind)const{if(reinterpret_cast<const unsigned long*>(UsingComponents)[kind>>5]&(1UL<<(kind&31)))return true;return false;}
+ template<class T>FABLE_FORCEINLINE bool GetTC(T**out){ETCInterfaceType kind=T::StatGetInterfaceType();if(HasTC(kind)){*out=static_cast<T*>(&GetTC(kind));return true;}return false;}
+ FABLE_FORCEINLINE CTCBase&GetTC(ETCInterfaceType kind){ETCInterfaceType key=kind;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);std::pair<ETCInterfaceType,CTCBase*>*it=map.LowerBound(key);return *((it==map.end()||kind<it->first)?map.end():it)->second;}
 };
 class CTCWeaponTrail:public CTCBase{public:void ClearAllWeaponTrails();};
 class CTCVolumeContainmentTracker:public CTCBase{public:static ETCInterfaceType __fastcall StatGetInterfaceType(){return static_cast<ETCInterfaceType>(0x75);}void OnThingCarried(CThing&);};

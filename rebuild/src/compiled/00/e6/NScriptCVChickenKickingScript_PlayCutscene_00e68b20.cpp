@@ -13,6 +13,7 @@
 //   "ORGANISER" 0x012E7E88.
 // Layout (retail = Ego_r.pdb - 0x14): csargs +0x64 (12-byte STLport map), seh_Chicken +0x70, seh_ChickenMaster +0x80.
 // Shape: as 0x00DA2CA0 without the movie / pause, passing &csargs and clearing it afterwards.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
@@ -46,7 +47,7 @@ public:
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
 public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
         PImp = other.PImp;

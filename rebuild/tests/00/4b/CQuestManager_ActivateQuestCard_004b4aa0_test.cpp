@@ -3,6 +3,7 @@
 // Shape: the quest-card component lookup is a template-constant-key GetTC: LowerBound binds its const long& to the constant, so the
 //   key temporary is homed in the dead `card` argument slot (shared with the uninitialised-on-miss tc) and the compare stays an
 //   immediate; a by-value key copy local takes its own frame word.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
@@ -32,8 +33,8 @@ class CThing { public:
     unsigned char _pad50[0x91 - 0x50];
     unsigned char Dead : 1;                              // +0x91 bit 0
     unsigned char _91_1 : 7;
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <long K> __forceinline CTCBase* GetTCK()
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <long K> FABLE_FORCEINLINE CTCBase* GetTCK()
     {
         CTCMap* map = &Components;
         CTCEntry* it = map->LowerBound(K);

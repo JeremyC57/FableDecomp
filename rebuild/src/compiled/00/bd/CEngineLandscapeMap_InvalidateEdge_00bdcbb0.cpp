@@ -9,6 +9,7 @@
 // Shape: for directions 0/1 the outside walk has no return, so it falls into the in-map clipping exactly as retail does
 //   (retail reaches the y < WorldPosY block after the walk); the 2/3 walk returns. The world map global is read at each
 //   PeekMap (retail reloads it after every call).
+#include "fable_compiler.h"
 class CLandscapeBackgroundTreeNode { public:
     void InvalidateEdge(long x, long y, long length, long direction);   // 0x00BF67F0
 };
@@ -31,7 +32,7 @@ class CEngineWorldMap { public:
     long                MapOffsetX;                // +0x18
     long                MapOffsetY;                // +0x1c
     CArray<CEngineMap*> MapList;                   // +0x20
-    __forceinline CEngineMap* PeekMap(long x, long y)
+    FABLE_FORCEINLINE CEngineMap* PeekMap(long x, long y)
     {
         long cellX = x - MapOffsetX;
         long cellY = y - MapOffsetY;

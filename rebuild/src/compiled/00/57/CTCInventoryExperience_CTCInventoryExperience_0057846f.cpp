@@ -15,6 +15,7 @@
 // Layout: engine/CTCInventoryExperience.h is the flattened retail layout (no bases), so a local view carries the bases and
 //   the PDB member names at the header's offsets. The POD vectors' `if (start) free(start)` is `__forceinline`, as the landed
 //   ~CTCInventoryClothing.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);                    // 0x00BFEA14
 class CCharString;
@@ -41,7 +42,7 @@ public:
     iterator begin() { return _M_start; }
     iterator end() { return _M_finish; }
     iterator erase(iterator __position);
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         if (_M_start)
             free(_M_start);

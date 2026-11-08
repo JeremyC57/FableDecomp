@@ -17,6 +17,7 @@
 //   0x004AA840, while the first two expand inline.
 // Naming wave 35: identity reg 00cde8cf "EndGameBarrier" in 00cde420; Alloc 00cdfe30; vtable 012c3434 slot 1; PDB ?Main@CEndGameBarrier@CPersonalScript_GlobalThingsScript@NScript@@; refs=1; replaces CMagicBarrierGraveyard::Main: current name also held by 00da5490; CMagicBarrierGraveyard::Main is at 00da5490 (its own vtable slot) (wave3/labels_alloc.tsv); PDB ?Main@CEndGameBarrier@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CMagicBarrierGraveyard@@UAEXXZ`; this source now defines the PDB member (class CMagicBarrierGraveyard renamed CEndGameBarrier); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -53,7 +54,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

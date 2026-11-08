@@ -10,6 +10,7 @@
 // Shape: `this` stays in ecx (no frame); the placement copy is six direct dword moves through esi (the trivially copyable element). The full
 //   branch passes a const reference to the empty __false_type tag whose 1-byte temporary VC homes in this function's dead argument slot
 //   (`lea edx,[esp+0Ch]` after the two `push 1`).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
 class CTVertexLandscapeBackground {                // Ego_r.pdb, 24 bytes (CTVertexLandscapeBackgroundBase layout; the chunk 688 _M_fill_insert 0x00B6CE00 model)
@@ -30,7 +31,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 
 template <class _T1, class _T2>
-__forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> class allocator { public: allocator() { } };
 

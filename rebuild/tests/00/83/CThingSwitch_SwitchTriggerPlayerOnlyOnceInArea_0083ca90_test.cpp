@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -28,7 +29,7 @@ class C2DVector { public:
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
-    __forceinline bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
+    FABLE_FORCEINLINE bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 
 struct CEventBase { virtual void v00(); };
@@ -67,13 +68,13 @@ class CThing { public:
     unsigned char  Dead : 1;                            // +0x91 bit 0
     const CPlayerManager* GetPlayerManager() const;     // 0x004C79F0
     CPlayerManager* GetPlayerManager();                 // 0x004C7A00
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

@@ -13,6 +13,7 @@
 // false, null this -> true, null other -> false, else the payload compare); under /Os the value's
 // key word is compared in memory (`cmp [ebp+0Ch],ecx`) rather than loaded.
 // Shape: SGI `__push_heap` (`parent = (hole - 1) / 2; while (hole > top && comp(*(first + parent), value))`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CThing;
@@ -28,7 +29,7 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -56,7 +57,7 @@ typedef pair<CCharString, CRegisteredTCInfo> TEntry;
 
 template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
-    __forceinline bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<CCharString, CRegisteredTCInfo> TCompare;
 

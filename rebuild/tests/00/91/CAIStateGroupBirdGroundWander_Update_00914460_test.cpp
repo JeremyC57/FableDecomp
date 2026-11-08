@@ -1,5 +1,6 @@
 // Behaviour test for 00914460: src/00914460.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CAIStateGroup_BirdGroundWander::Update()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -48,7 +49,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {

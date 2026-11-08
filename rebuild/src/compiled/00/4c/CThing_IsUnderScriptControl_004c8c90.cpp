@@ -6,6 +6,7 @@
 // Shape: the landed GetInterface out-parameter template; interface 0x1f is bit 31 of bitset word 0
 // (`mov eax,[ecx+20h] ; test eax,eax ; jns`). The missing-component exit is a plain `return false`
 // (`xor al,al`); the rest is one `||` expression (full-register 0/1). The component's flag is the byte at +0x18.
+#include "fable_compiler.h"
 class CTCBase;
 
 struct CTCScriptControl {
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
     CInterfaceMap       Components;                  // +0x44
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &Components;

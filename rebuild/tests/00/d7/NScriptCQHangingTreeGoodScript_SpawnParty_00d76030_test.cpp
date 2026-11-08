@@ -1,5 +1,6 @@
 // Self-contained C++03 fixture: selected function and complete original headers are pasted.
 // The unused master-script context is opaque: this function never reads it.
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -1774,7 +1775,7 @@ public:
     void clear() { erase(begin(),end()); }
     void resize(size_type n,const _Tp& x);
 #pragma auto_inline(off)
-    __forceinline
+    FABLE_FORCEINLINE
     void resize(size_type n) { resize(n,_Tp()); }
 #pragma auto_inline(on)
 protected:

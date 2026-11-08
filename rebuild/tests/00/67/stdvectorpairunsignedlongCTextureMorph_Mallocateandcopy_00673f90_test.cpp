@@ -1,5 +1,6 @@
 // Behaviour test for 0x00673F90 std::vector<pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> >::_M_allocate_and_copy: a block of n
 // entries comes from malloc (none for n == 0), [first, last) is copy-constructed into its front, and the block is returned.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <new>
@@ -23,7 +24,7 @@ template <class _T1, class _T2> struct pair {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CDAB0, length 48 bytes.
 // Callees: none. Shape: the body pointer loaded, the position sub-object addressed once (`add ecx,0Ch`) and copied through three word moves into the hidden result, `ret 4`.
 // Model: the engine header for the interface (vptr, Creature at +4, Radius at +8); the creature, its physics body (+0x60) and its component map are local models (engine/CThingCreatureBase.h has no names at these offsets).
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long            m_kind;
@@ -66,7 +67,7 @@ class CThingCreatureBase { public:                        // the retail creature
     unsigned char         _pad74[0x1d];
     unsigned char         m_dead : 1;              // +0x91 bit 0
     unsigned char         m_91_1 : 7;
-    template<class T> __forceinline void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;
@@ -77,7 +78,7 @@ class CThingCreatureBase { public:                        // the retail creature
             *ppOut = (T*)it->m_pTC;
         }
     }
-    template<class T> __forceinline void GetInterface(T** ppOut, long kind) const
+    template<class T> FABLE_FORCEINLINE void GetInterface(T** ppOut, long kind) const
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
             long type = kind;

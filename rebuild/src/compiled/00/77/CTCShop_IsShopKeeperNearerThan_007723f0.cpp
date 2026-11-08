@@ -22,6 +22,7 @@
 //   (plain inline is called out of line) and takes the two things, so the keeper's GetPItem runs before the hero's GetPos.
 //   GFWorld2DDistanceSmallerThan(const C3DVector&, const C3DVector&, float, bool) of the PDB takes positions, which would
 //   evaluate the keeper's position first; the helper here is descriptive (`IsWithin2DDistance`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
@@ -47,7 +48,7 @@ template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing)
 {
     return thing != 0 && !thing->IsDead();
 }
-__forceinline bool IsWithin2DDistance(const CThing* a, const CThing* b, float distance)
+FABLE_FORCEINLINE bool IsWithin2DDistance(const CThing* a, const CThing* b, float distance)
 {
     const C3DVector& pa = a->GetPos();
     const C3DVector& pb = b->GetPos();

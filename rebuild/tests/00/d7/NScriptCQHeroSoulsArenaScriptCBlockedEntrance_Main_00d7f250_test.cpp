@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -252,13 +253,13 @@ FABLE_STATIC_ASSERT(sizeof(ScriptThingSlot)==4);
 FABLE_STATIC_ASSERT(sizeof(GameScriptSlot)==4);
 #endif
 struct ScriptThingCalls:CScriptThing {
- __forceinline bool MsgIsUsedBy(const CCharString& user)const{return(this->*reinterpret_cast<ScriptThingSlot*>(__vftable)[20].MsgIsUsedBy)(user);}
+ FABLE_FORCEINLINE bool MsgIsUsedBy(const CCharString& user)const{return(this->*reinterpret_cast<ScriptThingSlot*>(__vftable)[20].MsgIsUsedBy)(user);}
 }; //nativeCScriptThing01238C8C slot20=004AAB10, PDB UBE_NABVCCharString
 struct GameScriptCalls:CGameScriptInterface {
- __forceinline void EntitySetAsLocked(const CScriptThing& thing,bool locked)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[518].EntitySetAsLocked)(thing,locked);}
- __forceinline void DisplayGameInfo(const CCharString& text)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[115].DisplayGameInfo)(text);}
- __forceinline bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
- __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
+ FABLE_FORCEINLINE void EntitySetAsLocked(const CScriptThing& thing,bool locked)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[518].EntitySetAsLocked)(thing,locked);}
+ FABLE_FORCEINLINE void DisplayGameInfo(const CCharString& text)const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[115].DisplayGameInfo)(text);}
+ FABLE_FORCEINLINE bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
+ FABLE_FORCEINLINE void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
 }; //nativeCGSI01260F0C:818=89DC10,1CC=8929D0,A0=894370,1C=6E7410 audited native/PDB signatures.
 class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;ScriptThingCalls Me;
  bool IsActiveThreadTerminating(); //00F35B30: virtual GetParentScript slot3 then CScriptBase::IsActiveThreadTerminating00CB7940

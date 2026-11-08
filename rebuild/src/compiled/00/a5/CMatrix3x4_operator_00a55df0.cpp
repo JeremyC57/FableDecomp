@@ -7,6 +7,7 @@
 //   (rep movsd) copies of *this, the products written in k order (VC7.1 reorders each sum by operand address), then the implicit copy of
 //   the local into the hidden result. The row-3 sums E31 and E32 are grouped `k3 + (k1 + k2)` (E31 with its k2/k1 pair inside the
 //   parentheses): that grouping alone places the result-copy `mov ecx,0xc` after the E32 `fmul` as in retail.
+#include "fable_compiler.h"
 class CMatrix3x4 {
 public:
     float E11, E12, E13;
@@ -14,7 +15,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
 
-    __forceinline CMatrix3x4& operator*=(const CMatrix3x4& b)
+    FABLE_FORCEINLINE CMatrix3x4& operator*=(const CMatrix3x4& b)
     {
         CMatrix3x4 a = *this;
         E11 = a.E13 * b.E31 + a.E12 * b.E21 + a.E11 * b.E11;

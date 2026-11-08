@@ -14,6 +14,7 @@
 // out-of-line const-thing pointer temporary and re-addresses it with `lea ecx,[esp+8]`; an explicit
 // `CIntelligentPointerConstThing(target)` functional cast reuses the ctor's returned this, `mov ecx,eax`); the targeting
 // component is the one-ternary GetTC (straight into ecx for the virtual call).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -30,8 +31,8 @@ class CThing { public:
     unsigned long ThingTypeFlags;                       // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Flags91;                              // +0x91 bit 0 Dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTCSelect(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTCSelect(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -59,8 +60,8 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
-    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 #pragma pack(pop)
 class CTCDivineWrath { public:

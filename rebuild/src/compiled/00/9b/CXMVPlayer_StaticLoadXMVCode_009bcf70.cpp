@@ -16,6 +16,7 @@
 // static members).
 // Shape: `if (count == 0) Get().LoadSection(handle); ++count;` -- the increment is the shared tail (`inc dword ptr`).
 
+#include "fable_compiler.h"
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -40,7 +41,7 @@ private:
 
 template <class T> class CTBaseSingleton {
 public:
-    static __forceinline T& __fastcall Get()
+    static FABLE_FORCEINLINE T& __fastcall Get()
     {
         if (Instance.IsNull())
             Instance.Reset(new T);

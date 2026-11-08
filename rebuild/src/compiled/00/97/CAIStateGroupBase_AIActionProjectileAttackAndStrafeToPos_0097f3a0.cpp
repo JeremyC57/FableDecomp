@@ -14,6 +14,7 @@
 // Shape: the mode lookup is the bitset::test GetInterface (the test bool is stored); the strafe flag is a named bool set
 // true then cleared; the action is a temporary built inside the SetCurrentAction call and destroyed inline (def
 // release + null, PTarget dtor, base dtor); the indicator def is released by hand at the end.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 
@@ -72,7 +73,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType)
     {
         bool has = TestTC(interfaceType);
         if (has) {
@@ -111,7 +112,7 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

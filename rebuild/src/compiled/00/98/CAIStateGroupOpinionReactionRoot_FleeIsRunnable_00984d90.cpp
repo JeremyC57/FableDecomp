@@ -24,6 +24,7 @@
 //   0xc the STLport CSoundMap saves). CAIStateGroup_OpinionReactionRoot (engine header, pack 1): ThingReactingTo +0x6b.
 // Shape: the region test is `!GFPIsNull(region.GetPRegionDef()) && region.GetPRegionDef()->PreventHeroWeaponUse && ...` over three
 //   by-value CDefPointer temporaries (VC7.1 destroys them through the ebx flag mask).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
@@ -41,8 +42,8 @@ public:
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    __forceinline const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc) const
+    FABLE_FORCEINLINE const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc) const
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;
@@ -74,12 +75,12 @@ public:
 };
 template<class T> class CDefPointer {
 public:
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Delete(); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Delete(); }
     T* operator->() const { return static_cast<T*>(Object); }
     CDefPointeeBase* Object;
 };
-template<class T> __forceinline bool __fastcall GFPIsNull(const CDefPointer<T>& p) { return p.Object == 0; }
+template<class T> FABLE_FORCEINLINE bool __fastcall GFPIsNull(const CDefPointer<T>& p) { return p.Object == 0; }
 class CRegionDef : public CDefPointeeBase {
 public:
     unsigned char _pad08[0x70 - 0x08];

@@ -11,6 +11,7 @@
 // Shape: `itemDef && itemDef->GetSubDef(...)` with the sub-def declared before the test; the thing's def is re-fetched twice through an inline
 //   by-value GetDef() in one && condition (the two conditionally destroyed temporaries keep retail's flag word); the three floats are named
 //   locals in retail's load order (Min, Max, then the skill cap).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -70,14 +71,14 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x1c];
     CDefPointer<CDefClassBase> Def;             // +0x70
-    template<class T> __forceinline const T* GetTC(long wanted) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(type);
         return (const T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return Def; }
 };
 class CBaseObject;

@@ -4,6 +4,7 @@
 // Shape: the lookup key reuses the dead script-thing argument slot.
 // Leaf: GetNumberOfKeysNeededToUnlockChest
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
+#include "fable_compiler.h"
 #include <string.h>
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
@@ -102,7 +103,7 @@ struct CThing_Retail {
     void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
     void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
     void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

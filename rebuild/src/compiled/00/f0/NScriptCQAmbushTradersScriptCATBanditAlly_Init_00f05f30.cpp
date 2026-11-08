@@ -24,6 +24,7 @@
 //   flattens the vptr into a data member and has no constructor).
 // Shape: the landed CAT_Sentry::Init 0x00F08E90 spawn block (real CSpawnedFunc1 template, __forceinline ctor, inline copy of
 //   Me into the by-value argument, out-of-line ~CScriptThing); the conditional-temporary flags are homed in the frame here.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -40,7 +41,7 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
     CCountedPointer<CScriptThing>     PImp;            // +0x04
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other);           // 0x004ABE90 (the out-of-line copy)
-    __forceinline CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(other), PImp(other.PImp) { }
+    FABLE_FORCEINLINE CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(other), PImp(other.PImp) { }
     ~CScriptThing();                                   // 0x004AA840
 };
 #define FABLE_RETAIL_NSCRIPT
@@ -48,7 +49,7 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
 #include "engine/CTimer.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // Retail expands CTimer::operator=(long) inline (Ego_r ??4CTimer@@QAEAAV0@J@Z): slot 89 SetTimer through 0x0143E8F8.
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 // Layout: the retail polymorphic suspendable-process chain from the shared headers (FABLE_RETAIL_SUSPENDABLE_PROCESS
 //   opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass,
 //   0x34 bytes, vtable 0x012C2F9C).
@@ -58,7 +59,7 @@ template <class TClass, class TPar1> class CSpawnedFunc1 : public CSpawnedFuncBa
     void (TClass::*Func)(TPar1);                       // +0x34
     TClass* PClass;                                    // +0x38
     TPar1   Par1;                                      // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, TClass* pclass, void (TClass::*func)(TPar1), TPar1 par1)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, TClass* pclass, void (TClass::*func)(TPar1), TPar1 par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
     virtual void SuspendableProcess();
 };

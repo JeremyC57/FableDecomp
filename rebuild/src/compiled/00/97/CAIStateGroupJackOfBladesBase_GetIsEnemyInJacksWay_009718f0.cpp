@@ -17,6 +17,7 @@
 //   order, which spill slot each lands in and the x87 add order follow two compound forms: GetSquaredMagnitude2D as
 //   `squared = Y * Y; squared += X * X;` and the Normalise sum as `z * z; += x * x; += y * y`. Each alone fixed one half
 //   (the path squares / the enemy spill slots); the earlier `y, z, x` Normalise and `X * X + Y * Y` forms swapped them.
+#include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector {
@@ -33,7 +34,7 @@ public:
         return squared;
     }
     const float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
-    __forceinline C3DVector& Normalise()
+    FABLE_FORCEINLINE C3DVector& Normalise()
     {
         float x = X;
         float y = Y;

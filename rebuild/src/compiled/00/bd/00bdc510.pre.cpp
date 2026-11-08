@@ -1,8 +1,9 @@
+#include "fable_compiler.h"
 #pragma optimize("y",off)
 #include <new>
 #include "candidates/landscape_map_update_foreground_compiled.h"
 
-static __forceinline float ClampForegroundMapCoordinate(float value, float minimum, float maximum)
+static FABLE_FORCEINLINE float ClampForegroundMapCoordinate(float value, float minimum, float maximum)
 {
     if (value < minimum)
         return minimum;
@@ -34,7 +35,7 @@ static void DestroyForegroundPatchArray(CEngineLandscapePatch* patches)
     operator delete(allocation);
 }
 
-static __forceinline LS_LOADING_STATUS FinishForegroundUpdate(
+static FABLE_FORCEINLINE LS_LOADING_STATUS FinishForegroundUpdate(
     CEngineLandscapeMap* map,
     LS_LOADING_STATUS status)
 {

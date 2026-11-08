@@ -1,4 +1,5 @@
 // Behaviour test for 0044a070: the model below is a copy of src/0044a070.cpp (compiled separately), driven by test doubles.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -52,7 +53,7 @@ class CPlayerManager { public:
     CPlayerVector Players;                              // +0x0c
     long          PlayerNeutral;                        // +0x18
     long          MainPlayer;                           // +0x1c
-    __forceinline CPlayer* GetPlayer(long number)   // 0x004498C0 (inlined here)
+    FABLE_FORCEINLINE CPlayer* GetPlayer(long number)   // 0x004498C0 (inlined here)
     {
         long count = Players.size();
         for (long i = 0; i < count; ++i)

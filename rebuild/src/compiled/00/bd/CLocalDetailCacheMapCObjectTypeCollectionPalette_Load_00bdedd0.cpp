@@ -11,6 +11,7 @@
 //   The frame temporary CLocalDetailObjectCollectionType is 0x44 bytes in retail (frame 0x58); its ctor zeroes the three mesh pointers.
 // Shape: both header values come from by-value read helpers (homed in the dead stream slot); the per-entry type is a frame
 //   temporary built and destroyed each pass; the push_back value is a named pointer local.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);   // 0x00BFEAE6
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -24,8 +25,8 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0x0c current chunk read pointer
     long                 m_10;
     long                 m_remaining;      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -39,8 +40,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned char ReadUChar() { unsigned char value; Read(&value, 1); return value; }
-    __forceinline long ReadLong() { long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned char ReadUChar() { unsigned char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE long ReadLong() { long value; Read(&value, 4); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

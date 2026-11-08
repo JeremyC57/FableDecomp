@@ -15,6 +15,7 @@
 //   RemoveFromGlobalTCs right after the vtable store; the members die in reverse order (the vector's
 //   `if (_M_start != 0) free`, two out-of-line string destructors) before the out-of-line CTCBase destructor; a `new`
 //   factory pulls the `??_G` into the TU.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);               // 0x00BFEA14
 
 class CThing;
@@ -59,7 +60,7 @@ class CTCPhotojournalCapture : public CTCBase { public:
     CThing*          PMannequin;                         // +0x38
     bool             WasPlayerGuiOpen;                   // +0x3c
     long             TakeScreenshotAfterFrames;          // +0x40
-    __forceinline virtual ~CTCPhotojournalCapture() { RemoveFromGlobalTCs(); }
+    FABLE_FORCEINLINE virtual ~CTCPhotojournalCapture() { RemoveFromGlobalTCs(); }
 };
 
 CTCPhotojournalCapture* NewCTCPhotojournalCapture()

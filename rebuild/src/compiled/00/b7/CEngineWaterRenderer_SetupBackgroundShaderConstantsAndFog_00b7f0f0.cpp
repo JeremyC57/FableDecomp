@@ -15,6 +15,7 @@
 //   constant 6 through a C4DVector(const CRGBFloatColour&) conversion temporary: retail keeps both (z/w go through the
 //   product's frame slots, x/y straight to the C4DVector) -- a C4DVector product local, by-value parameters or a user copy
 //   ctor all store the product once. Float pool: -0.5f @ 0x01238798.
+#include "fable_compiler.h"
 class CRGBFloatColour;
 class C4DVector { public:
     float X, Y, Z, W;
@@ -67,7 +68,7 @@ public:
         UpdateFlags |= 2;
     }
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

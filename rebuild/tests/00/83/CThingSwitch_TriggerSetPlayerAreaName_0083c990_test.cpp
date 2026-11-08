@@ -1,5 +1,6 @@
 // Behaviour test for 0083c990: final.cpp copied verbatim, the declared callees stubbed below so the switch's trigger
 // square, the hero look-up, the box test argument, the interface look-up and the area-name call are observable.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -71,7 +72,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

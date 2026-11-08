@@ -12,6 +12,7 @@
 //   inline (__forceinline); the greater-than comparator is `fld val ; fcomp [next] ; test ah,41h ; jne`, every element
 //   copy a 7-dword `rep movsd`.  /Gr TU written as explicit __fastcall.
 // Label: catalog "_Copy_impl<CActionInputControl*,CActionInputControl*>" is propagated.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 class CEngineGraphic {                                      // 14 bytes (Ego_r.pdb)
 public:
@@ -44,7 +45,7 @@ public:
 
 namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     _RandomAccessIter __next = __last;
     --__next;

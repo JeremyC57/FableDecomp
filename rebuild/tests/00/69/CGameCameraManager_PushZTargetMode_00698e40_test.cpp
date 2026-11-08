@@ -1,6 +1,7 @@
 // Behaviour test for 00698e40: src/00698e40.cpp copied verbatim; the observed thing, camera scripts, the camera-mode
 // def lookup (through the same-TU GetDef body), the sound helper and the mode plumbing stubbed so the flags, the
 // observed/script gates, the Z_TARGET_START sound and the pending/current mode switch are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -29,7 +30,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCameraModeDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1

@@ -13,6 +13,7 @@
 // tag over the dead bool slot.
 // Layout: C3DMeshStats retail offsets as in the landed SaveBinary 0x00A2EAA0 / GetHelperPoint 0x00A2E8C0:
 // HelperPoints +0x38, DummyObjects +0x48, PackedNames +0x74.
+#include "fable_compiler.h"
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
@@ -151,12 +152,12 @@ class C3DMeshStats { public:
     char* PackedNames;                     // +0x74
     unsigned short PackedNamesSize;        // +0x78
     bool AnimatedFlag;                     // +0x7A
-    __forceinline long GetNoHelperPoints(const CCharString& name)
+    FABLE_FORCEINLINE long GetNoHelperPoints(const CCharString& name)
     {
         unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
         return HelperPoints.UpperBound(crc) - HelperPoints.LowerBound(crc);
     }
-    __forceinline long GetNoDummyObjects(const CCharString& name)
+    FABLE_FORCEINLINE long GetNoDummyObjects(const CCharString& name)
     {
         unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
         return DummyObjects.UpperBound(crc) - DummyObjects.LowerBound(crc);

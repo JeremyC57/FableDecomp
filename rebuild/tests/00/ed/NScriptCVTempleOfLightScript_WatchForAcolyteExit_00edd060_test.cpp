@@ -1,5 +1,6 @@
 // Behaviour test for 00edd060: src/00edd060.cpp copied verbatim, callees stubbed below so calls and arguments are observable.
 // CV_TempleOfLightScript::WatchForAcolyteExit()
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -54,7 +55,7 @@ template <class T> struct vector {                     // STLport vector (retail
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     void Destroy();                                    // ~vector, out of line: 0x008AC970
-    __forceinline void DestroyInline()                 // the same body, expanded once (VC's inline-once band)
+    FABLE_FORCEINLINE void DestroyInline()                 // the same body, expanded once (VC's inline-once band)
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

@@ -13,13 +13,14 @@
 // the literal bounds become frame temporaries (1.0f and 0.0f stored up front), the value is the expression
 // itself (`fst` into the dead argument slot; a named result local gives `fstp ; fld`), and the returned
 // reference is loaded with `lea eax ; fld [eax]`.
+#include "fable_compiler.h"
 struct CArrayFloat {                                     // retail CArray<float>: begin/end/capacity
     float* m_begin; float* m_end; float* m_capacity;
 };
 
 class COpinionSet { public:
     CArrayFloat OpinionValues;                           // +0x00
-    __forceinline float GetSqDistance(const COpinionSet& other) const
+    FABLE_FORCEINLINE float GetSqDistance(const COpinionSet& other) const
     {
         float sqDistance = 0.0f;
         for (long i = 0; i < 5; ++i) {
@@ -35,7 +36,7 @@ class CReactionMatch { public:
     long  ReactionType;                                  // +0x04 EOpinionReactionType
 };
 
-static __forceinline const float& Clamp(const float& value, const float& lo, const float& hi)
+static FABLE_FORCEINLINE const float& Clamp(const float& value, const float& lo, const float& hi)
 {
     if (value < lo) return lo;
     if (value > hi) return hi;

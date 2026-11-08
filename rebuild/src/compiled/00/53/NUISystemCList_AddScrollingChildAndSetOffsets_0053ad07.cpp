@@ -11,6 +11,7 @@
 // Layout: the ComputeScrollBarPosition view, plus retail = Ego_r.pdb CList - 0x3c from PositionOffset on (12-byte
 //   vectors): PositionOffsetToUse +0x190, AlphaOffsetToUse +0x19c, NextScrollingChildAlpha +0x1a0,
 //   NextScrollingChildPosition +0x1a4; CComponent Children +0xb0 (8-byte CCountedPointer elements), ShapeChildren +0xe4.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -56,7 +57,7 @@ struct CComponentDef : CDefVirtual, CRefCounted {
 #pragma pack(pop)
 template <class T> struct CDefPointer {
     T* Data;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Data) {
             Data->ReleaseTemporary();

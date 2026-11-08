@@ -13,6 +13,7 @@
 //   viewport fields U/H/V, then position and matrix); the unused dimensions result is a named local (a discarded temporary shares
 //   the chain's frame words, 8 bytes short); the fog disable is a __forceinline manager member (a direct SetState swaps eax/ecx and the
 //   capture-block store order); the child entry is a `const&` local (an indexed member read folds the lea into the load).
+#include "fable_compiler.h"
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
@@ -98,8 +99,8 @@ class CRenderStateManager { public:
     unsigned long        m_captureMask;            // +0x2814
     unsigned char        _pad2818[0x2944 - 0x2818];
     CTrackedRenderState  m_fogEnable;              // +0x2944
-    __forceinline void DisableFog() { SetState(m_fogEnable, 0); }
-    __forceinline void SetState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void DisableFog() { SetState(m_fogEnable, 0); }
+    FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value)
     {
         if (state.m_value != value) {
             if ((m_captureMask & state.m_captureMask) == 0) {

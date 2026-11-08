@@ -14,6 +14,7 @@
 //   jeering +0x51, duel over +0x52, spectators released +0x53, hero hit count +0x54), PMasterData +0x18, facing-hero toggle +0x1c.
 // Naming wave 35: identity reg 00e988a0 "Spectator" in 00e987c0; Alloc 00e997e0; vtable 012ed1c8 slot 1; PDB ?Main@CSpectator@CV_HeroDuelScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSpectator::Main (wave3/labels_alloc.tsv); PDB ?Main@CSpectator@CV_HeroDuelScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSpectator@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -77,8 +78,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 (established spelling; naming wave 35: was g_bScriptAnimationFlag)
 struct CQ_HeroDuelScript {
     unsigned char _pad00[0x4b];

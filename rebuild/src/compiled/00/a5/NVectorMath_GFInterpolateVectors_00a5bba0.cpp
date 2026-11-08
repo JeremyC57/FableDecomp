@@ -23,6 +23,7 @@
 // Shape: the landed 0x00A5BEF0 model with one weight: the x87 fallback walks local copies of the three stream pointers
 //   and calls the __forceinline C4DVector::Interpolate (FableWin.pdb: const C4DVector Interpolate(const C4DVector&, float)
 //   const, out of line at 0x00A5B7D0 in this TU); VC7.1 unrolls it four times with a remainder loop.
+#include "fable_compiler.h"
 #include "engine/NVectorMathSSE.h"
 class C4DVector {
 public:
@@ -32,7 +33,7 @@ public:
     const C4DVector operator-(const C4DVector& o) const { return C4DVector(X - o.X, Y - o.Y, Z - o.Z, W - o.W); }
     const C4DVector operator+(const C4DVector& o) const { return C4DVector(X + o.X, Y + o.Y, Z + o.Z, W + o.W); }
     const C4DVector operator*(float s) const { return C4DVector(X * s, Y * s, Z * s, W * s); }
-    __forceinline const C4DVector Interpolate(const C4DVector& to, float t) const { return (to - *this) * t + *this; }
+    FABLE_FORCEINLINE const C4DVector Interpolate(const C4DVector& to, float t) const { return (to - *this) * t + *this; }
 };
 extern bool g_SSEAvailable;                                          // 0x013D2880
 namespace NVectorMath {

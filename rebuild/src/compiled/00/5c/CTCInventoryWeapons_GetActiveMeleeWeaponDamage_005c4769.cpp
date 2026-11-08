@@ -9,6 +9,7 @@
 // Shape: the zero result, the GetInterface key and the accessor's unset component (read back on the miss path) all share the
 // one frame word [ebp-4]; the hit path assigns the result, which stays in st(0) for the single `return damage`.
 // Layout: PActiveMeleeWeapon at retail +0x134 (as the landed RefreshActiveWeaponData 0x005C30D3).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -21,7 +22,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -34,7 +35,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         T* component;
         GetInterface(&component, wanted);

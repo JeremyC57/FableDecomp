@@ -12,6 +12,7 @@
 //   0.0f 0x0122DEDC, 2^32 0x0122DCB4, FLT_MAX immediate 0x7F7FFFFF. Shape: the max is the macro form (the start count is
 //   re-read from the bitfields when it wins, and the clipped time min(span, time) is re-evaluated when the product wins);
 //   the pps quantiser runs before the branch. Sibling of GetNumberOfDecals 0x00B0FFC0 (same TU shape).
+#include "fable_compiler.h"
 namespace NParticleEngine {
 
 class CPSCBase { public:
@@ -61,7 +62,7 @@ class CPSCEmitterGeneric : public CPSCBase { public:
 
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     long i = decimals;

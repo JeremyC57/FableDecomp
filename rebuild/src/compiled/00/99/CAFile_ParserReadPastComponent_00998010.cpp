@@ -20,6 +20,7 @@
 //   /Oa is the retail TU's: component's data block is loaded once and reused across the out-of-line `== "."`
 //   call for the `== ".."` test, and the component reference stays in its frame slot through the scan (without /Oa,
 //   VC7.1 keeps it in ebp and reloads the block: 350 bytes).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 
@@ -45,7 +46,7 @@ public:
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Data.StringLength; }
     const char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->Data.PData; }
     char operator[](long index) const { return GetString()[index]; }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

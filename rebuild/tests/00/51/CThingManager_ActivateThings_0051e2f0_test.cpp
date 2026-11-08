@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -27,7 +28,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
-__forceinline void ShowProgress(const char* message)
+FABLE_FORCEINLINE void ShowProgress(const char* message)
 {
     CCharString text(message);
     DisplayProgress(text, -1.0f, false, false);

@@ -8,6 +8,7 @@
 //   AbleToStrafeAndShoot (bool) at +0x18, ShotAccuracyPercentage at +0x1c.
 // Shape: as 0x00453F63 -- the record's operator= is inlined (`__forceinline`; the DDK out-lines the implicit
 //   one) and its byte + dword are copied relative to the record pointers (here edi/esi, `this` in ebx).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -26,7 +27,7 @@ class CCombatAbilityData { public:
 class CCombatAbilityProjectileAttackData : public CCombatAbilityData { public:
     bool AbleToStrafeAndShoot;          // +0x18
     long ShotAccuracyPercentage;        // +0x1c
-    __forceinline CCombatAbilityProjectileAttackData& operator=(const CCombatAbilityProjectileAttackData& other)
+    FABLE_FORCEINLINE CCombatAbilityProjectileAttackData& operator=(const CCombatAbilityProjectileAttackData& other)
     {
         CCombatAbilityData::operator=(other);
         AbleToStrafeAndShoot = other.AbleToStrafeAndShoot;

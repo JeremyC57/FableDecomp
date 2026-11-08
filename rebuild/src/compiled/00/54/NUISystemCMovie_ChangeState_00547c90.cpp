@@ -13,6 +13,7 @@
 //   +0xcc/+0xd0; the video system's frame description (+0x20) holds the long width/height at +0x16c/+0x170.
 // Shape: the full path is a CWideString temporary homed in the dead `newState` slot (destroyed after `PlayingMovie = this`);
 //   CPixelFormat has no constructor store here; the extents are built in a frame local before the create call.
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 
 class CWideString { public:
@@ -50,7 +51,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -64,7 +65,7 @@ class CEnginePrimitiveHandle {                     // vtable 0x0122F598
 public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

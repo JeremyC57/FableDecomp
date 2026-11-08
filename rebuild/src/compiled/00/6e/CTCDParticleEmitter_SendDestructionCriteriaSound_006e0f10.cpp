@@ -13,6 +13,7 @@
 // Shape: the driver is a named local read before the interface test (edi); the landed out-parameter GetInterface template
 //   (key in the first frame word); the sound name is a named local in its own block, so it shares the key's frame word,
 //   and the ToUpper temporary takes the second word.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString {
 public:
@@ -41,7 +42,7 @@ public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad54[0x8];
     CTCDParticleEmitter* PTCDriver;                         // +0x5C
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

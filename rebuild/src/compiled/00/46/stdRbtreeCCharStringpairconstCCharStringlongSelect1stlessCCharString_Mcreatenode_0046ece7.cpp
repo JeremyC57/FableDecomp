@@ -11,6 +11,7 @@
 //   unwind frame in retail). CCharString is local (no engine header): one PStringData pointer.
 // Shape: `pop ecx` after malloc = size TU (#pragma optimize("s", on)), no frame pointer. In this size TU pair's copy
 //   constructor must be `__forceinline` (plain inline leaves it out of line: 33v46).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
@@ -27,10 +28,10 @@ namespace std {
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;
-    __forceinline pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
+    FABLE_FORCEINLINE pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
 };
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value)
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
@@ -52,7 +53,7 @@ public:
     typedef _Rb_tree_node<Value>* _Link_type;
     _Rb_tree_node_base* _M_header;                  // +0x00
     unsigned int        _M_node_count;              // +0x04
-    __forceinline _Link_type _M_allocate_node() { return static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<Value>))); }
+    FABLE_FORCEINLINE _Link_type _M_allocate_node() { return static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<Value>))); }
 protected:
     _Link_type _M_create_node(const Value& x);
 };

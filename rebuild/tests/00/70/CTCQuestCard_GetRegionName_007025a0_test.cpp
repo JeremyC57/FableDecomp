@@ -1,5 +1,6 @@
 // Behaviour test for 007025a0: src/007025a0.cpp copied verbatim; the card's own region name unless it is empty (null
 // block or "" text) and a def exists, in which case the def's region name from the def string table.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -35,7 +36,7 @@ public:
     CCharStringData* PStringData;               // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

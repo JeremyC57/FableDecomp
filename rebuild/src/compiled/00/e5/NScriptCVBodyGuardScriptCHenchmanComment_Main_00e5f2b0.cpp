@@ -16,6 +16,7 @@
 //   serves both loops (a per-loop index swaps the index/offset frame words).
 // Naming wave 35: identity reg 00e5d59f "HenchmanComment" in 00e5d4f0; Alloc 00e5f1c0; vtable 012e70c8 slot 1; PDB ?Main@CHenchmanComment@CV_BodyGuardScript@NScript@@; refs=1; was under-qualified CHenchmanComment::Main (wave3/labels_alloc.tsv); PDB ?Main@CHenchmanComment@CV_BodyGuardScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHenchmanComment@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -45,7 +46,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
@@ -951,7 +952,7 @@ class CCharString { public:
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  CCharString(const CCharString& other);             // 0x0099EC30
  ~CCharString();                                    // 0x0099EAE0
- __forceinline bool operator==(const char* text) const
+ FABLE_FORCEINLINE bool operator==(const char* text) const
  {
   if (PStringData == 0) {
    if (strcmp(text, "") == 0)

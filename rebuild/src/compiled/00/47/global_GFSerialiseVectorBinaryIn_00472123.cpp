@@ -10,6 +10,7 @@
 //   default element, then each element read in place; the count stays in its stack slot (no register left), the index in esi.
 // Model: the traits body (0x0045ED25) was compiled earlier in the retail TU, so it is visible here (an explicit member specialization is the device): the
 //   traits object needs no store and shares the homed vector pointer's slot, as in GFSerialiseMapBinaryIn (families J047 / J060).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define CDataInputStream CDataInputStreamPdb
@@ -19,7 +20,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 class CDataInputStream : public CDataInputStreamPdb {      // engine/CDataInputStream.h is data-only: the reader is added here
 public:
-    __forceinline void Read(void* buffer, long size)       // FableWin.pdb ?Read@CDataInputStream@@QAEXPAXJ@Z (inline here)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)       // FableWin.pdb ?Read@CDataInputStream@@QAEXPAXJ@Z (inline here)
     {
         __int64 newPosition = (__int64)(unsigned long)(StreamPos + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -33,7 +34,7 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }                          // FableWin.pdb ?ReadSLONG@CDataInputStream@@QAEJXZ
+    FABLE_FORCEINLINE long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }                          // FableWin.pdb ?ReadSLONG@CDataInputStream@@QAEJXZ
     unsigned long ReadULONG() { unsigned long value; Read(&value, sizeof(value)); return value; }        // FableWin.pdb ?ReadULONG@CDataInputStream@@QAEKXZ
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0

@@ -1,5 +1,6 @@
 // Behaviour test for 008f2580: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCTavernGameCardBase::AddPointerParticleEffect(long particleDef) -- spawns an effect thing at the pointer object, remembers it in the particle-effect list and attaches its emitter to the pointer
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad_0x4c[0x45];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -55,7 +56,7 @@ class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
-__forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
+FABLE_FORCEINLINE CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
     CTCDParticleEmitter* emitter;
     thing->GetInterface(&emitter, 0x4b);        // TC_PARTICLE_EMITTER

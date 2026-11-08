@@ -4,6 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063C230, `ret 8`, ebp frame.
 // Callees: _ftol 0x00BFEA70, CWorldMap::GetThemeMinCameraSizeZOffsetAt(const C3DVector&) 0x0063A540, GetThemeMinCameraSizeZOffsetAtBlock(const C2DCoordI&) 0x0063BB40 inlined (PeekMap called twice, CMap::GetThemeMinCameraSizeZOffsetAt 0x0081FA90).
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets).
+#include "fable_compiler.h"
 #include <math.h>
 #include "engine/C3DVector.h"
 
@@ -127,10 +128,10 @@ public:
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const; // 0x004FC3C0
     C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const; // 0x004FC2A0
     float GetThemeMinCameraSizeZOffsetAt(const C3DVector& pos) const;   // 0x0063A540
-    __forceinline float GetThemeMinCameraSizeZOffsetAtBlock(const C2DCoordI& pos) const;   // 0x0063BB40 (inlined here)
+    FABLE_FORCEINLINE float GetThemeMinCameraSizeZOffsetAtBlock(const C2DCoordI& pos) const;   // 0x0063BB40 (inlined here)
     float GetAverageThemeMinCameraSizeZOffsetInArea(const C3DVector& tl, const C3DVector& br) const;
 };
-__forceinline float CWorldMap::GetThemeMinCameraSizeZOffsetAtBlock(const C2DCoordI& pos) const
+FABLE_FORCEINLINE float CWorldMap::GetThemeMinCameraSizeZOffsetAtBlock(const C2DCoordI& pos) const
 {
     if (IsPosInMap(pos))
     {

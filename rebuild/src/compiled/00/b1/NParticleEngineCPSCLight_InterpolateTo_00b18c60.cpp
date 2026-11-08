@@ -17,6 +17,7 @@
 // Shape: the members in the order retail touches them (not declaration order); the bool overload selects the byte before the bit is
 //   extracted; `1 - t` and `t * 256` are each computed once; the point loop takes the target's count (signed /12 size) and VC7.1
 //   unrolls it by four. Colour arguments go by value through engine/CRGBColour.h FABLE_RETAIL_CRGBCOLOUR (Initialise copy ctor).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CRGBCOLOUR
 #include "engine/CRGBColour.h"
 #include "engine/C3DVector.h"
@@ -32,7 +33,7 @@ inline float __fastcall GFInterpolate(float a, float b, float t) { return a * (1
 inline long __fastcall GFInterpolate(long a, long b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
 inline bool __fastcall GFInterpolate(bool a, bool b, float t) { return t > 0.5f ? b : a; }
 inline unsigned long __fastcall GFInterpolateUpdateParams(unsigned long a, unsigned long b, float t) { return t > 0.5f ? b : a; }
-__forceinline CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
+FABLE_FORCEINLINE CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
 inline C3DVector __fastcall GFInterpolate(const C3DVector& a, const C3DVector& b, float t) { return a * (1.0f - t) + b * t; }
 class CParticleSystem;
 template <class K, class V> class CParticleUpdateParamCallback : public CBaseClassNonCopyable { };

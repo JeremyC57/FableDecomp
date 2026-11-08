@@ -1,4 +1,5 @@
 // Behaviour test for 00691560: body copied from src/00691560.cpp (CInputProcessBetting::ProcessInput), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -20,7 +21,7 @@ struct CTCMap {
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const unsigned long& kind) { STCEntry* it = m_pFirst; while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it; return it; }
-    __forceinline CTCBase* Find(long kind)
+    FABLE_FORCEINLINE CTCBase* Find(long kind)
     {
         STCEntry* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -31,8 +32,8 @@ class CThing { public:
     unsigned long m_tcMask[8];
     unsigned char _pad40[4];
     CTCMap        m_tcs;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CPlayer { public: CThing* hero; CThing* GetHeroCreature() { return hero; } };
 class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };

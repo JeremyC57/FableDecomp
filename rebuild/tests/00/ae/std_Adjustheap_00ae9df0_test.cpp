@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 #include <new>
@@ -11,7 +12,7 @@ template<class T> struct CCountedPointer {
  T* Data; CCPPointerInfo* Info;
  CCountedPointer():Data(0),Info(0){}
  CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
- __forceinline CCPPointerInfo* GetBlock()const{return Info;}
+ FABLE_FORCEINLINE CCPPointerInfo* GetBlock()const{return Info;}
  CCountedPointer& Assign(T* nextObject,CCPPointerInfo* nextBlock) {
   if(Info!=nextBlock){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(GetBlock());}}Data=nextObject;Info=nextBlock;if(Info)++Info->RefCount;}return *this;
  }

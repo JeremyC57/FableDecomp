@@ -1,5 +1,6 @@
 // Behaviour test for 004b1670: src/004b1670.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CManager::AddQuestCardEntry(const CCharString& name, const CCharString& value, bool flag)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -61,7 +62,7 @@ struct CEntryList {
     SEntryIterator end() { return SEntryIterator(_M_node); }
     SEntryIterator insert(SEntryIterator pos, const SEntry& x);   // 0x004B99E0
     void push_back(const SEntry& x) { insert(SEntryIterator(_M_node), x); }
-    __forceinline bool Contains(const CCharString& name)
+    FABLE_FORCEINLINE bool Contains(const CCharString& name)
     {
         SEntryNode* end = _M_node;
         SEntryNode* first = end->_M_next;

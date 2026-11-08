@@ -9,6 +9,7 @@
 // CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
 // Shape: `dist2 > R` gives `fcomp ; test ah,41h ; jne`; the inline distance helper keeps both differences on the FPU;
 // PTargetThing = CIntelligentPointer<..>(hero) (inline ctor, vtable 0x01231C4C).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 #include "engine/CThing.h"
@@ -43,7 +44,7 @@ class CAIBrain
 
 // squared XY distance between two positions (Y term evaluated first by VC7.1; arguments evaluate right to left,
 // so `b` -- the creature -- is fetched first and kept in esi)
-__forceinline float GetDistanceSquaredXY(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE float GetDistanceSquaredXY(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;
     float dy = a.Y - b.Y;

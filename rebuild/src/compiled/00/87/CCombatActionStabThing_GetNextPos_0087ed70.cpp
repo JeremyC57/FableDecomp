@@ -1,6 +1,7 @@
 // CCombatAction_StabThing::GetNextPos()const -- use stealth approach position on first frame and face target, otherwise retain current position.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native0087ED70,244 bytes; component54 CTCStealth, actual PDB GetPositionToMoveToForStabOn(CThing&,float&)const at donor759570 -> native746EC0.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CCreatureActionBase CCreatureActionBase_PDB
 #include "engine/CCreatureActionBase.h"
@@ -28,7 +29,7 @@ union PhysicsSlot {void* Address;void(PhysicsView::*SetFacingAngleXY)(float);};
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(PhysicsSlot)==4);
 #endif
-struct PhysicsView:CTCPhysicsBase {__forceinline void SetFacingAngleXY(const float& angle){(this->*reinterpret_cast<PhysicsSlot*>(__vftable)[66].SetFacingAngleXY)(angle);}}; //slot66=00723760 nativeCTCPhysicsStandard
+struct PhysicsView:CTCPhysicsBase {FABLE_FORCEINLINE void SetFacingAngleXY(const float& angle){(this->*reinterpret_cast<PhysicsSlot*>(__vftable)[66].SetFacingAngleXY)(angle);}}; //slot66=00723760 nativeCTCPhysicsStandard
 class CTCStealth { public:C3DVector GetPositionToMoveToForStabOn(Creature& target,float& angle)const;}; //00746EC0
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -43,8 +44,8 @@ class CThing { public:
 };
 struct Creature : public CThing {
  unsigned char _beforeFlags[0x20];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforePhysics[0x14];PhysicsView* Physics;unsigned char _beforeDead[0x2d];unsigned char DeadFlags;
- __forceinline PhysicsView* GetPhysics()const{return Physics;}
- __forceinline bool GetInterface(CTCStealth** out,long type)const{if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key = (ETCInterfaceType)(type);const InterfaceMap* map=&Interfaces;const InterfaceEntry* p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;*out=((CTCStealth*)p->second);return true;}return false;}
+ FABLE_FORCEINLINE PhysicsView* GetPhysics()const{return Physics;}
+ FABLE_FORCEINLINE bool GetInterface(CTCStealth** out,long type)const{if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key = (ETCInterfaceType)(type);const InterfaceMap* map=&Interfaces;const InterfaceEntry* p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;*out=((CTCStealth*)p->second);return true;}return false;}
 };
 struct CBaseObjectPointer{void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer{virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50

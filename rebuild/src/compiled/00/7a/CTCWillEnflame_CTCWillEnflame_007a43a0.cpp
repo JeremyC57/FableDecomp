@@ -14,6 +14,7 @@
 //   parent (const LowerBound, component straight into ecx).
 // Layout: Ego_r.pdb CTCWillEnflame (0x2C) matches retail: EnflameActionInitialised +0x0C, Released +0x0D, PDef +0x10,
 //   SpellLevel +0x14, PItemRemoved +0x18, IsZTargetting +0x20, PTarget +0x21 (unaligned).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -81,13 +82,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -95,7 +96,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

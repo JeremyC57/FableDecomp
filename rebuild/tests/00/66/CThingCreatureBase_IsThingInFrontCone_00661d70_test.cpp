@@ -1,5 +1,6 @@
 // Behaviour test for 0x00661D70: CThingCreatureBase::IsThingInFrontCone(const CThing* thing) const -- true when the direction to the other thing lies within 20 degrees of this thing's physics facing (normalised dot product against cos 20 degrees)
 // A copy of the source model and logic (compiled separately from src/00661d70.cpp) with test stand-ins for the callees.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -49,7 +50,7 @@ public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float inv = FastInvSqrt(X * X + Y * Y + Z * Z);
         X *= inv;
@@ -57,8 +58,8 @@ public:
         Z *= inv;
     }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-__forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
 class CTCPhysicsBase {
 public:

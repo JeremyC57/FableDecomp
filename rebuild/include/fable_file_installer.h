@@ -1,4 +1,5 @@
 #pragma once
+#include "fable_compiler.h"
 
 #include "rebuild_abi.h"
 
@@ -12,7 +13,7 @@ class CFileInstaller
 
     CFileInstaller();
 
-    __forceinline static void* operator new(unsigned int size)
+    FABLE_FORCEINLINE static void* operator new(unsigned int size)
     {
         return FableFileInstallerAllocate(size);
     }

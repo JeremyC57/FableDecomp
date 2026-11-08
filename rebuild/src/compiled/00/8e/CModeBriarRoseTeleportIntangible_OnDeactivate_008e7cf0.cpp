@@ -2,6 +2,7 @@
 // Leaf: OnDeactivate
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native008E7CF0 length273. SetAsDrawable slot28 nativeCThingVT1239ABC->4C8E50; GetBriar8E7790 uses CBriarRoseDef.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -44,8 +45,8 @@ struct ThingNative : public CThing {
  void SuspendAI(bool,void*); //833A10, actual CThingAICreature donor53A870, native suspenders1CC/AISuspended1C8bit1
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0xc];EmitterMethods*Emitter;void*PositionInterface;unsigned char Unrecovered64[8];unsigned long TypeFlags;NativeDefinition*Definition;unsigned char Unrecovered74[0x18];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 
 struct WeaponMethods:CTCWeapon{long GetWeaponClass()const;}; //5DA7F0, def+2C (PDB Class), not propagated CCategory label
@@ -76,7 +77,7 @@ struct BaseIntelligentPointer {
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
- __forceinline IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
+ FABLE_FORCEINLINE IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
  IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(p.GetPItem());return*this;}
 };
@@ -91,8 +92,8 @@ template<class T>union CIVSlot{void*Native;void(T::*Delete)()const;}; //genuine 
 struct BriarDefinitionPointer;
 struct NativeDefinition:CIVCountedPointeeBase {bool GetBriar(BriarDefinitionPointer*)const;}; //8E7790, literal123562C CBriarRoseDef
 struct NativeEffects:CIVCountedPointeeBase {bool GetEffectFromString(const CCharString&,long&)const;}; //669D30
-static __forceinline void ReleaseDefinition(NativeDefinition*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeDefinition>*>(p->__vftable)[1].Delete)();}
-static __forceinline void ReleaseEffects(NativeEffects*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeEffects>*>(p->__vftable)[1].Delete)();}
+static FABLE_FORCEINLINE void ReleaseDefinition(NativeDefinition*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeDefinition>*>(p->__vftable)[1].Delete)();}
+static FABLE_FORCEINLINE void ReleaseEffects(NativeEffects*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeEffects>*>(p->__vftable)[1].Delete)();}
 struct DefinitionPointer {NativeDefinition*Object;DefinitionPointer(NativeDefinition*p):Object(p){if(p)++p->IVRefCount;}~DefinitionPointer(){ReleaseDefinition(Object);}};
 struct EffectsPointer {NativeEffects*Object;EffectsPointer():Object(0){}};
 #ifdef _MSC_VER
@@ -105,7 +106,7 @@ struct NativeBriar:CIVCountedPointeeBase {
 }; //actual CBriarRoseDef typed inherited CIV projection, native header field44
 FABLE_STATIC_ASSERT(offsetof(NativeBriar,SecondsForIntangibleEnvironmentThemeTransitionOut)==offsetof(CBriarRoseDef,SecondsForIntangibleEnvironmentThemeTransitionOut));
 struct BriarDefinitionPointer{NativeBriar*Object;BriarDefinitionPointer():Object(0){}};
-static __forceinline void ReleaseBriar(NativeBriar*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeBriar>*>(p->__vftable)[1].Delete)();}
+static FABLE_FORCEINLINE void ReleaseBriar(NativeBriar*p){if(p&&!--p->IVRefCount)(p->*static_cast<CIVSlot<NativeBriar>*>(p->__vftable)[1].Delete)();}
 struct EnvironmentMethods:CEnvironment {void TransitionToDefaultThemeAllChannels(long,float);}; //6B3950, donor6EF590 QAEXJM
 union DrawableSlot{void*Native;void(ThingNative::*SetAsDrawable)(bool);};
 #ifdef _MSC_VER

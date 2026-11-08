@@ -1,8 +1,9 @@
+#include "fable_compiler.h"
 #pragma optimize("y",off)
 #include <new>
 #include "candidates/preload_bump_texture_compiled.h"
 
-static __forceinline void RefreshOverlayResourceList(CResource* resource)
+static FABLE_FORCEINLINE void RefreshOverlayResourceList(CResource* resource)
 {
     if (resource != 0 && resource->ResourceList != 0 &&
         resource->ListGeneration != resource->ResourceList->Generation)

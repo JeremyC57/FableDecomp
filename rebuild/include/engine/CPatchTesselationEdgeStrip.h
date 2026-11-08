@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CPATCHTESSELATIONEDGESTRIP_H
 #define FABLE_ENGINE_CPATCHTESSELATIONEDGESTRIP_H
+#include "fable_compiler.h"
 // Retail layout (hand-written, chunk 706): RTTI .?AVCPatchTesselationEdgeStrip@@ : CBaseClassNonCopyable : CBaseClass, vtable
 // 0x012A8318; Ego_r.pdb sizeof 0x2C with StartPos +0x04, Size +0x06, the four CEdgeStipVertexArray<T> members +0x08..+0x27 and
 // Tesselated +0x28 / Vertical +0x29 (struct_layouts_egor.tsv); the four vertex types are nested structs (class key U in both PDB
@@ -81,7 +82,7 @@ inline CPatchTesselationEdgeStrip::CWaterVertex& CPatchTesselationEdgeStrip::Get
 inline CPatchTesselationEdgeStrip::CVertex& CPatchTesselationEdgeStrip::GetVert(unsigned long index) { return Verts[index]; }
 inline CPatchTesselationEdgeStrip::CFanBaseVertex& CPatchTesselationEdgeStrip::GetFanBaseVert(unsigned long index) { return FanBaseVerts[index]; }
 inline CPatchTesselationEdgeStrip::CWaterFanBaseVertex& CPatchTesselationEdgeStrip::GetWaterFanBaseVert(unsigned long index) { return WaterFanBaseVerts[index]; }
-__forceinline unsigned long CPatchTesselationEdgeStrip::FindWaterVert(unsigned long pos) const
+FABLE_FORCEINLINE unsigned long CPatchTesselationEdgeStrip::FindWaterVert(unsigned long pos) const
 {
     unsigned long i = 0;
     if (WaterVerts.Size()) {

@@ -7,6 +7,7 @@
 //   CPSCOrbit::ReadBinary 0x00B16F60 (StreamPos +4, CurrentSourcePtr +0xc, SourceChunkBytesRemaining +0x14).
 // Shape: the stream's inline template Read<T>(T&) (64-bit position check, in-chunk memcpy or the overflow call); the scale is read
 //   into a local (homed in the dead `in` argument slot) and then stored.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 class CDataInputStream { public:
@@ -16,15 +17,15 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {
             memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    template <class T> __forceinline void Read(T& value) { Read(&value, sizeof(T)); }
+    template <class T> FABLE_FORCEINLINE void Read(T& value) { Read(&value, sizeof(T)); }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

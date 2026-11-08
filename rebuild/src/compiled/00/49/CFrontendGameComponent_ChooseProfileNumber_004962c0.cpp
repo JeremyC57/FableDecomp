@@ -19,6 +19,7 @@
 // +0x1e0c, then the STLport vector shrink (0x10 -> 0xc): ProfileNamesOffset +0x1e18 (Ego_r +0x1e1c), CursorHighlight
 // +0x1e44 (Ego_r +0x1e50).
 // Opt: /O2 (16-aligned entry).
+#include "fable_compiler.h"
 #include <string.h>
 class CWideString {
 public:
@@ -62,7 +63,7 @@ public:
     long                     CursorHighlight;            // +0x1e44
     CWideString CreateNewProfile();                      // 0x004945B0
     void ClearString() { memset(String, 0, sizeof(String)); StringPos = 0; }
-    __forceinline void SetMode(EGameMode mode)
+    FABLE_FORCEINLINE void SetMode(EGameMode mode)
     {
         Mode = mode;
         CursorHighlight = 1;
@@ -70,7 +71,7 @@ public:
         if (Mode == GAME_MODE_10)
             GetWorldNames();
     }
-    __forceinline void LoadProfile(const CWideString& name, bool load)
+    FABLE_FORCEINLINE void LoadProfile(const CWideString& name, bool load)
     {
         CUserProfileManager::Get().SetProfileName(name, load);
     }

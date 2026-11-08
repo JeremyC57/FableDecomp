@@ -4,6 +4,7 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the inline Random() reads the range into a local after GFROR13 and before
 //   the seed store (the store may alias the range global, so source order fixes the schedule: load, compare, store, div).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
@@ -26,7 +27,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    FABLE_FORCEINLINE T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct SCountBlock {
     long m_references;
@@ -37,7 +38,7 @@ struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject;
     SCountBlock*         m_pCount;
     void Reset(CCreatureActionBase* object);    // 0x00668D90
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) {
             --m_pCount->m_references;

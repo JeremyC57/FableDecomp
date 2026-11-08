@@ -2,6 +2,7 @@
 // Leaf: OnActivate
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Native008E9A30 length297. Genuine Strafe VT1268588 slot3=8EA220; ego90F530 supplies animation-distance/index signature.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -29,8 +30,8 @@ struct ThingNative {
  void InitialiseMovementSpeeds(); //6A9A00 valid only runtime player-type2
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0x3c];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
- __forceinline void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->end()||type<p->first)p=map->end();return ((void*)p->second);}
- template<class T>__forceinline bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
+ FABLE_FORCEINLINE void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->end()||type<p->first)p=map->end();return ((void*)p->second);}
+ template<class T>FABLE_FORCEINLINE bool GetInterface(T*&out,int type) {if(UsingComponents[type/32]&(1u<<(type%32))){out=(T*)GetInterface(type);return true;}return false;}
 };
 struct WeaponMethods:CTCWeapon {const CCharString& GetAnimationGroupName()const;}; //005DABE0, returned def-string at weapondef+34 or shared13BAF5C
 struct MeshBankMethods:CMeshDataBank {const C3DAnimationInfo& GetAnimationInfo(long)const;}; //00A242C0, bank pointer array+380 indexed by entry BankIndex
@@ -40,12 +41,12 @@ class CCRC { public:
     static unsigned long __fastcall Calc(unsigned long a0, void const*a1, unsigned long a2);   // 0x004014A0 (Ego_r.pdb ?Calc@CCRC@@SIKKPBXK@Z)
 };
 struct StringAccess {
- static __forceinline CCharStringData* Data(const CCharString&s){CCharStringData*p;memcpy(&p,&s,sizeof p);return p;}
+ static FABLE_FORCEINLINE CCharStringData* Data(const CCharString&s){CCharStringData*p;memcpy(&p,&s,sizeof p);return p;}
 }; //read actual string representation using memcpy, preserving host alias rules
 struct AnimationGroupFilter {
  void*VTable;CCharString Group;unsigned long CRC;
  void SetAndHash(const CCharString&); //0073DFF0
- __forceinline void SetLiteral(const char*name){CCharString text(name,-1);Group=text;CCharStringData*p=StringAccess::Data(text);unsigned long length;const char*data;if(!p){length=0;data=EmptyNarrowString;}else{length=p->unknown04;data=p->text;}CRC=CCRC::Calc(0, data, length);}
+ FABLE_FORCEINLINE void SetLiteral(const char*name){CCharString text(name,-1);Group=text;CCharStringData*p=StringAccess::Data(text);unsigned long length;const char*data;if(!p){length=0;data=EmptyNarrowString;}else{length=p->unknown04;data=p->text;}CRC=CCRC::Calc(0, data, length);}
 };
 struct AnimEntryLite{long BankIndex,DelayTime,TransitionTime,AnimFlags;}; //PDB native16
 struct CountedAnimEntry{AnimEntryLite*Data;void*Info;};

@@ -15,6 +15,7 @@
 // Layout: entity-script model of the landed CHobbeLarder::Main 0x00D8F6D0 (GameCalls interface copied from it). CNecropolisGate
 //   (Ego_r.pdb, 28 bytes): ParentClass +0x14; CQ_AwakeningTheOracleScript is retail = Ego_r.pdb - 0x14: PlayedOpeningCS +0x49
 //   (PDB +0x5d), PlayedOpeningNecroCS +0x65 (PDB +0x79).
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 #define FABLE_RETAIL_NSCRIPT
@@ -104,7 +105,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

@@ -1,5 +1,6 @@
 // Behaviour test for 006bffd0: src/006bffd0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCBuyableHouse::GetValueOfTrophies
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -123,7 +124,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

@@ -7,8 +7,9 @@
 //   flag 0x0139CA14, block frames 0x0139C9F0, performance frequency (64-bit) 0x0139CA20; constants 2^32 @ 0x0122DCB4, 0.5f @
 //   0x0122F59C. The catalog label "Graphics_ConvertTimeToPixels" is descriptive.
 // libpk's inline-assembly truncation helper: round-to-nearest of (x - 0.5) by a bare fistp, corrected to truncation for negatives
+#include "fable_compiler.h"
 #include "libpk/FtoL.h"
-__forceinline long FloatToLongTrunc(float value)
+FABLE_FORCEINLINE long FloatToLongTrunc(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

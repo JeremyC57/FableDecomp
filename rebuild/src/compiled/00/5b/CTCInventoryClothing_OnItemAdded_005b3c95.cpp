@@ -13,6 +13,7 @@
 // `assignQuickAccess` slot ([ebp+0Ch]), the sub-def in [ebp-4]. The releases are hand-written inside their blocks, as in the
 // landed CTCInventoryTrade/Weapons::OnCreate twins (`dec [p+4] ; jne ; call [vt+4]`), the sub-def held in ebx as a named local. The CDefString temporary (one word, no destructor) lives in [ebp-8]. The interface type and the tutorial category are the
 // same immediate (0x29), so one register (edi) serves both. The sub-def is held in ebx across the tutorial call.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CDefString { public:                                  // one table position, no destructor
@@ -76,7 +77,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

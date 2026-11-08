@@ -1,5 +1,6 @@
 // Behaviour test for 0x00C42F50 (source body copied from src/00c42f50.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -54,7 +55,7 @@ public:
 };
 
 // libpk's linear-to-millibel conversion (out-of-line copy 0x00C40F50); the asm makes VC expand it only as __forceinline
-__forceinline long AmplitudeToMillibels(float amplitude)
+FABLE_FORCEINLINE long AmplitudeToMillibels(float amplitude)
 {
     if (amplitude != 0.0f) {
         long result;

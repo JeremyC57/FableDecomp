@@ -12,6 +12,7 @@
 //   landed CTCWound ctor 0x00757680; CIntelligentPointer as the landed 0x008C99C0 (temporary vtable 0x01237F1C).
 // Shape: IS_THING_ALIVE inlined (three GetPItem calls), the GetInterface out-parameter idiom; the target assignment goes through
 //   a scoped stack CIntelligentPointer (destroyed before the timer store and SetHandled).
+#include "fable_compiler.h"
 class CInputEvent;
 class CProcessedInput {
 public:
@@ -28,7 +29,7 @@ public:
     CInterfaceMap m_interfaces;                    // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                       // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -62,7 +63,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 bool __fastcall operator!=(const CBaseIntelligentPointer& pointer, const CThing* thing);   // 0x00689270
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))

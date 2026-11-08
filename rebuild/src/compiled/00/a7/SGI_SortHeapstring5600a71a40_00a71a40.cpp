@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: SortHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
+#include "fable_compiler.h"
 class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 struct Payload_00a71a40 {int data[13];};
 template<class K,class V> struct Pair_00a71a40 { K first;V second;Pair_00a71a40(){}Pair_00a71a40(const Pair_00a71a40& p):first(p.first),second(p.second){} };
@@ -24,7 +25,7 @@ template<class T,class C> __declspec(noinline) void AdjustHeap(T* first,int hole
  if(second==length){first[hole]=first[second-1];hole=second-1;}
  PushHeap(first,hole,top,value,comp);
 }
-template<class T,class C> __forceinline void PopHeap(T* first,T* last,T* dest,T value,C comp) {
+template<class T,class C> FABLE_FORCEINLINE void PopHeap(T* first,T* last,T* dest,T value,C comp) {
  *dest=*first;AdjustHeap(first,0,int(last-first),value,comp);
 }
 template<class T,class C> void SortHeap(T* first,T* last,C comp) {

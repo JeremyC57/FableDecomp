@@ -20,6 +20,7 @@
 //   zeroed with `X = Y = Z = 0` (Z stored first); the hero-combat def is a CDefPointer temporary assigned through
 //   CDefPointer::operator= and released through the def's inline ReleaseTemporary(); the body nests under the base
 //   OnCreate and ValidateInitialisation tests so both failures share one final `return false` (ebx pushed at entry).
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     void Clear() { X = Y = Z = 0.0f; }
@@ -40,7 +41,7 @@ struct CDefVirtual {
     virtual void Destroy();                             // slot 1
 };
 struct CDefObject : CDefVirtual, CRefCounted {
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();

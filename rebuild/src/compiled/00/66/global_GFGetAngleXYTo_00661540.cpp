@@ -11,12 +11,13 @@
 // then the landed `__forceinline WrapAngle` (0x007FAF60 model): `if (a < 0 || a >= 1) { a = fmod(a, 1.0); if (a < 0)
 // a += 1; }` -- the fmod result is returned straight off the x87 stack.
 // No pragma (`#pragma intrinsic(atan2, fmod)`).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
 #include "engine/C3DVector.h"
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);

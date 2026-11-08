@@ -11,6 +11,7 @@
 // CIVCountedPointer::operator=: when the pointers differ, release the old object (`dec [obj+4]`, virtual slot 1 at
 // zero, store 0), adopt the source's pointer and add a reference. The count lives in the dead `result` argument
 // slot; the strength-reduced src+0x10/dst+0x10 pointer pair addresses the counted pointer.
+#include "fable_compiler.h"
 class CAnimComponentMap { public:                      // intrusively counted: count at +4
     virtual void v00();
     virtual void Destroy();                      // slot 1 (+0x04)
@@ -20,7 +21,7 @@ class CAnimComponentMap { public:                      // intrusively counted: c
 template <class T>
 class CIVCountedPointer { public:                       // one word: the counted object
     T* Object;
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {
@@ -29,7 +30,7 @@ class CIVCountedPointer { public:                       // one word: the counted
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         if (Object != other.Object) {
             Release();

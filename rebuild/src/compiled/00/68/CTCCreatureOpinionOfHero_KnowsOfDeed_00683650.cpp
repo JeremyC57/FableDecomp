@@ -12,6 +12,7 @@
 // Model: engine/CTCCreatureOpinionOfHero.h is the PDB layout; retail STLport lists are 4 bytes (PDB 12), so HeroOpinionEnemy
 // sits at +0x342 (as in the landed SetHeroOpinionEnemy 0x006815D0 and KnowsOfDeed 0x00681AE0), hence a local model.
 // Retail CThing: interface bitset +0x20, map +0x44, Dead bit +0x91.
+#include "fable_compiler.h"
 struct CTCBaseInterface;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -24,8 +25,8 @@ class CThing { public:
     unsigned char _pad54[0x3d];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -72,14 +73,14 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
     bool KnowsOfDeed(long deedHandle, bool includePending);
 };
 
-static __forceinline CTCBaseInterface* GetTC(CThing* thing, long type)
+static FABLE_FORCEINLINE CTCBaseInterface* GetTC(CThing* thing, long type)
 {
     CInterfaceMap* map = &thing->m_interfaces;
     ETCInterfaceType key = (ETCInterfaceType)(type);
     CInterfaceMap::value_type* it = map->LowerBound(key);
     return ((CTCBaseInterface*)((it == map->end() || type < it->first) ? map->end() : it)->second);
 }
-static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
+static FABLE_FORCEINLINE CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 {
     CTCBaseInterface* tc;
     if (thing->HasTC(0x51))

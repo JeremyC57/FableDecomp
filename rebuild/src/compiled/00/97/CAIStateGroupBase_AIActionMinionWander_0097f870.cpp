@@ -13,6 +13,7 @@
 // Shape: the creature is a named local (edi, reused for the else-branch position); the physics TC is a named local; both interfaces use the bitset::test GetInterfaceT form (`shr ; and cl,1` kept in a frame byte); the result starts
 //          at 3 and is the move's return; a stopping group always reports 1.
 // Layout: CAIStateGroupBase modelled locally as engine/CAIStateGroupBase.h (PBrain +4); the building's physics TC +0x60.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
@@ -23,7 +24,7 @@ class CThing { public:
     std::bitset<274> UsingComponents;           // +0x20
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc)
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc)
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;

@@ -9,7 +9,8 @@
 // Shape: CThing::GetPBaseDef() (Ego_r.pdb, by value; inline) read through the temporary's operator-> into a def local
 //   (the copy's ++ and the release's -- fuse into `inc ; mov ; dec ; store ; store`), then `if (x > 0) return true;
 //   return false;` (folds to `test ; setg`).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer {                  // the landed 0x00861E60 model
 public:
     T* Object;

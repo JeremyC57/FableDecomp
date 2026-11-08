@@ -29,6 +29,7 @@
 // Shape: GetTC as the landed 0x00635080 (bitset reference proxy, LowerBound, end / greater test); the carrying, weapon
 //   and berserk lookups go through const things (the const LowerBound copy); the start-blocking action is a temporary
 //   inside the `&&`, so its destructor is guarded by the flag word VC7.1 clears at entry.
+#include "fable_compiler.h"
 #define CWorld CWorldDonor
 #include "engine/CWorld.h"
 #undef CWorld
@@ -68,7 +69,7 @@ public:
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
     unsigned char      _pad54[0x91 - 0x54];
     unsigned char      DeadFlags;                           // +0x91 (bit 0: dead)
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (UsingComponents[T::INTERFACE_TYPE]) {
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
@@ -81,7 +82,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetTC(const T** out) const
     {
         if (const_cast<CThing*>(this)->UsingComponents[T::INTERFACE_TYPE]) {
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;

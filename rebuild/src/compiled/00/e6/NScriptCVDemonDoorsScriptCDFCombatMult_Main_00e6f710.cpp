@@ -18,6 +18,7 @@
 // Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, inline_depth(0) elsewhere).
 // Naming wave 35: identity reg 00e6e491 "DF_CombatMult" in 00e6e380; Alloc 00e6f640; vtable 012e8d44 slot 1; PDB ?Main@CDF_CombatMult@CV_DemonDoorsScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CDF_CombatMult::Main (wave3/labels_alloc.tsv); PDB ?Main@CDF_CombatMult@CV_DemonDoorsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDF_CombatMult@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_DemonDoorsScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -82,7 +83,7 @@ using NScript::CIsThingAlive;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes

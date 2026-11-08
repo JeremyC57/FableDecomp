@@ -12,6 +12,7 @@
 //   written, so the iterator and the tag share the dead leader slot as in retail (advisor); the STLport tag hierarchy
 //   temporary avoids a zero store; the first GetScriptThing temporary is destroyed inline, the push_back one out of line.
 // Layout: CThing dead flags +0x91 bit 0, UsingComponents +0x20, component map +0x44.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -83,7 +84,7 @@ class CThing { public:
     unsigned char         m_dead : 1;               // +0x91 bit 0
     unsigned char         m_91_1 : 7;
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase_Retail* GetInterface(long interfaceType)
+    FABLE_FORCEINLINE CTCBase_Retail* GetInterface(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;

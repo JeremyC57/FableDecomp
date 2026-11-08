@@ -1,6 +1,7 @@
 // CMap::ApplyScriptedMapBrushUpdate(float amount, CScriptedMapBrush* brush)
 // Leaf: ?ApplyScriptedMapBrushUpdate@CMap@
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+#include "fable_compiler.h"
 extern "C" double __cdecl pow(double x, double y);
 extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
@@ -55,7 +56,7 @@ class CHeightMap { public:
     unsigned char                  _MapUpdateAreas[0x1e8];
     long                           SizeX;          // +0x204
     long                           SizeY;          // +0x208
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
     void SetSizeZAt(const C2DCoordI& cell, float size)   // out-of-line copy 0x00825440
     {
         float value;
@@ -106,7 +107,7 @@ class CMap { public:
     unsigned char           _pad1a80[0x1d24 - 0x1a80];
     unsigned char           RegionKey[4];          protected: // +0x1d24
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); public:   // 0x008F70F0
-    __forceinline void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer)   // out-of-line copy 0x0081EF30
+    FABLE_FORCEINLINE void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer)   // out-of-line copy 0x0081EF30
     {
         if (themeDefIndex > 0) {
             long paletteIndex = AddThemeDefIndexToPalette(themeDefIndex);

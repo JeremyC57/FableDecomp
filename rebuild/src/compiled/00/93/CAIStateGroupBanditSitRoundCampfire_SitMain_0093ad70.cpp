@@ -9,6 +9,7 @@
 // else `r - a < 1.0f` (`fld a ; fsubr st(1)`), the four activity calls tail-merged into one `test al,al ; jne` loop test.
 // Leaf: SitMain@CAIStateGroup_BanditSitRoundCampfire
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -34,7 +35,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -112,7 +113,7 @@ struct CThingI {
     unsigned long m_presentBits[9];             // +0x20
     CInlineInterfaceMap m_interfaces;           // +0x44
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long type)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
             CInlineInterfaceMap::SEntry* last = m_interfaces.last;

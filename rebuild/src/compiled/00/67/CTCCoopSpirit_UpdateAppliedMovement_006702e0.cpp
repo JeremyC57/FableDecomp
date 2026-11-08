@@ -13,6 +13,7 @@
 // stored Z, Y, X; the zero is kept in ebx for the timer too); the fast Normalise sums `(x * x + y * y) + z * z` with explicit
 // parentheses (the unparenthesised sum is CSE'd whole with GetLength's; retail shares only the three squares), otherwise the
 // landed SetupFacingDirection 0x007A6E20 fast Normalise; the scale is `*= length * 0.5f`.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
 extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
@@ -23,7 +24,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     void Zero() { X = Y = Z = 0.0f; }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    __forceinline void FastNormalise()
+    FABLE_FORCEINLINE void FastNormalise()
     {
         float x = X;
         float y = Y;
@@ -51,15 +52,15 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTCIfPresent(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTCIfPresent(long interfaceType)
     {
         CTCBase* tc;                                        // deliberately unset when absent (retail reads a dead slot)
         if (HasTC(interfaceType))

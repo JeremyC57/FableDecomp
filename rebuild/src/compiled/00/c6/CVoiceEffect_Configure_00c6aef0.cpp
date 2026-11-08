@@ -14,10 +14,11 @@
 //   model calls it through a pointer (a member called by name is devirtualised).
 // libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
 // `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
+#include "fable_compiler.h"
 #include "libpk/FtoL.h"
 // truncation toward zero on top of the rounding helper: round(x - 0.5) is floor(x), negatives step back up by one
 // (retail: `fsub [0.5f] ; fstp [slot] ; fld [slot] ; fistp dword [tmp] ; test ; jge ; inc`)
-__forceinline long FloatToLongTruncate(float value)
+FABLE_FORCEINLINE long FloatToLongTruncate(float value)
 {
     long result = FtoL(value - 0.5f);
     if (result < 0)

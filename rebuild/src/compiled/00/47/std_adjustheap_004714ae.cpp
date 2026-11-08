@@ -8,6 +8,7 @@
 // Model: STLport 4.x `__adjust_heap` (secondChild = 2 * (secondChild + 1)) with `__push_heap(first, holeIndex, topIndex,
 //   value, comp)` inlined; the by-value element stays in ebx/edi, element assignments are two dword moves.
 // Shape: size TU with a frame pointer (`optimize("y", off)` + `("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -19,17 +20,17 @@ namespace std {
 template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
     T2 second;                                      // +0x04
-    __forceinline pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
+    FABLE_FORCEINLINE pair(const pair<T1, T2>& other) : first(other.first), second(other.second) { }
 };
 }
 
 template <class Key, class Value> class CKeyPairCompareLess { public:
-    __forceinline bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 
 namespace std {
 template <class RandomAccessIter, class Distance, class T, class Compare>
-__forceinline void __push_heap(RandomAccessIter first, Distance holeIndex, Distance topIndex, T value, Compare comp)
+FABLE_FORCEINLINE void __push_heap(RandomAccessIter first, Distance holeIndex, Distance topIndex, T value, Compare comp)
 {
     Distance parent = (holeIndex - 1) / 2;
     while (holeIndex > topIndex && comp(*(first + parent), value)) {

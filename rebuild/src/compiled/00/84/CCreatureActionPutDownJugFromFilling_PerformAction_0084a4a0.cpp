@@ -12,6 +12,7 @@
 // Shape: the landed CCreatureAction_PickUpGoods 0x00848730 model: no outer alive test (only the physics reset is guarded), every lookup unchecked (the miss path
 //   reads the out word), the carryable def a CDefPointer local whose release has its null test folded (the def was dereferenced),
 //   the GetSubDef and LowerBound same-TU stand-ins carry retail's LTCG knowledge (def in ebx, key and def share one frame word).
+#include "fable_compiler.h"
 class CThing;
 class CThingObject;
 #define V10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); virtual void v##n##4(); \
@@ -29,7 +30,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -105,7 +106,7 @@ class CThing { public:
     signed char m_player;                             // +0x90
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

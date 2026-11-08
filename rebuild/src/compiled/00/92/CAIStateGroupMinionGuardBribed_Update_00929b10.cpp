@@ -15,6 +15,7 @@
 // interface map +0x44; interface 0x10 = sound component, 0x23 = CTCVillageMember; village bribe frame +0xA8).
 // Shape: the random delays are a static CWorld random called through GetPWorld() (the discarded call); the in-loop sound lookup
 // inlines the vector-map lower_bound, the after-loop one calls it.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -27,7 +28,7 @@ struct CInterfaceMap {
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
-    static __forceinline SEntry* LowerBoundInline(SEntry* first, SEntry* end, long key)
+    static FABLE_FORCEINLINE SEntry* LowerBoundInline(SEntry* first, SEntry* end, long key)
     {
         long len = end - first;
         SEntry* it = first;
@@ -50,7 +51,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
             long type = interfaceType;
@@ -61,7 +62,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceInline(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceInline(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
             CInterfaceMap::SEntry* end = m_interfaces.last;
@@ -90,9 +91,9 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerPlayerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
-    __forceinline CIntelligentPointerPlayerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointerPlayerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
@@ -112,7 +113,7 @@ class CPlayer { public:
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
-    static __forceinline unsigned long Random(unsigned long range, unsigned long* seed)
+    static FABLE_FORCEINLINE unsigned long Random(unsigned long range, unsigned long* seed)
     {
         *seed = *seed * 0x24A1U + 0x24DFU;
         *seed = GFROR13(*seed);

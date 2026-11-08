@@ -14,6 +14,7 @@
 // built in the 0xB8-byte frame area and bound to SetCurrentAction's const reference straight from the ctor's eax.
 // Layout: engine/CTCHeroRangedAttacks.h (PDB offsets match retail: PParentCreature +0x0C, Loading +0x17); the class is
 // modelled locally because the header flattens CTCBase (vptr and ParentThing as pads).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -30,7 +31,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -43,7 +44,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* FindTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

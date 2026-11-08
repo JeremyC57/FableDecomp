@@ -14,6 +14,7 @@
 //   the component radius in the dead type-key slot, the result homed on the dead `event` slot), the difference vector
 //   kept on the x87 stack. Lever: the squared length sums Z*Z, then Y*Y, then X*X (the landed GetNearestMember
 //   0x008128F0 form); `X * X + Y * Y + Z * Z` adds X*X before Y*Y (176v176, term order only).
+#include "fable_compiler.h"
 namespace std {
 template <class _Tp> inline const _Tp& (min)(const _Tp& __a, const _Tp& __b) { return __b < __a ? __b : __a; }
 }
@@ -67,7 +68,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

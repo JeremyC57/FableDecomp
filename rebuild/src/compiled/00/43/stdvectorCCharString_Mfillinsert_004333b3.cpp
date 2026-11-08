@@ -11,6 +11,7 @@
 //   at the end of the in-place branch; the inlined `_Construct` is the null-checked placement copy; `__copy_backward`
 //   counts down with `sar 2`; only the _M_insert_overflow call materialises its tag (`xor eax,eax ; stosb` at [ebp-1]).
 // Model: CCharString is the engine's one-pointer string handle (out-of-line copy, assignment and destructor).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -32,12 +33,12 @@ struct random_access_iterator_tag { };
 
 CCharString* __fastcall uninitialized_fill_n(CCharString* first, unsigned int n, const CCharString& x);  // 0x00433504
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val)
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val)
 {
     new (__p) _T1(__val);
 }
 
-template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     _Tp* __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -45,7 +46,7 @@ template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* 
     return __cur;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward(_Tp* __first, _Tp* __last, _Tp* __result,
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward(_Tp* __first, _Tp* __last, _Tp* __result,
                                                         const random_access_iterator_tag&, int*)
 {
     for (int __n = int(__last - __first); __n > 0; --__n)
@@ -53,12 +54,12 @@ template <class _Tp> __forceinline _Tp* __copy_backward(_Tp* __first, _Tp* __las
     return __result;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
-template <class _Tp> __forceinline void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
+template <class _Tp> FABLE_FORCEINLINE void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

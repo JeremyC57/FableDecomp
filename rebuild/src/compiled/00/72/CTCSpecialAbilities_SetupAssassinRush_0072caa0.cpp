@@ -15,6 +15,7 @@
 //   loads (a hand-folded mask form lets VC merge 0xA9/0xA8 into one `test ch,3`); both actions are TEMPORARIES bound to
 //   SetCurrentAction's const reference (the ctor's eax is pushed and the two set+destroy tails cross-jump); the empty counted
 //   pointer is built in its argument slot (user copy constructor).
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);              // 0x00BFEAF2 (MSVCR71 import thunk)
 extern "C" __declspec(noreturn) void __cdecl abort(void);   // 0x00BFEAEC
 #include "engine/CVectorMap.h"
@@ -48,7 +49,7 @@ public:
     unsigned char Dead : 1;                             // +0x91 bit 0
     const CPlayer& PeekPlayer() const;                 // 0x004C7A10 ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ (Ego_r.pdb / FableWin.pdb; catalog)
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template <class T> __forceinline T* GetTC(ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const CInterfaceMap* map = &Components;

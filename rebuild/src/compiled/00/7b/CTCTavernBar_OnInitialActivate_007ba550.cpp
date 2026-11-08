@@ -10,6 +10,7 @@
 //   SetRHSet vslot +0x12c, CThing::AddTC @ 0x004C9D60, CTCOwnedEntity::SetPOwner @ 0x007E8590.
 // Layout: Ego_r.pdb CTCTavernBar Jugs +0x0c (12-byte retail vector of 8-byte intelligent pointers); the jug's interface
 //   0xbb component RH set +0x11 / position +0x29 (packed), interface 0x32 owner pointer +0x0c.
+#include "fable_compiler.h"
 #include <new>
 class CCharString { public:
     void* PStringData;
@@ -101,7 +102,7 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
     template <class T>
-    __forceinline void GetInterface(long type, T** out)
+    FABLE_FORCEINLINE void GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -115,7 +116,7 @@ class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& pos, long playerNumber, const CRightHandedSet* rh,
                                            unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r.pdb)
     template <class T>
-    __forceinline void GetInterfaceFast(long type, T** out)
+    FABLE_FORCEINLINE void GetInterfaceFast(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             CInterfaceMap::SEntry* last = m_interfaces.last;

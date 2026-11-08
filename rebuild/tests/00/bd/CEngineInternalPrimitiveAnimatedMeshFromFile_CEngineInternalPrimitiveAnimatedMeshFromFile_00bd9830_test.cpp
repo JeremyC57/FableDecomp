@@ -1,6 +1,7 @@
 // Behaviour test for CEngineInternalPrimitiveAnimatedMeshFromFile() (0x00BD9830): the primitive base gets the type/flags pair, five CBaseClass-rooted
 // interpolator parts are built, the mesh base's pointers and theme channel are cleared, the cache map is an empty tree whose
 // header links to itself, and the render info has no bone transforms and frame -1.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __declspec(x)
@@ -133,7 +134,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00() { }
     CEngineInternalPrimitiveAnimatedMesh();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct CEngineInternalPrimitiveAnimatedMeshFromFile : CEngineInternalPrimitiveAnimatedMesh {   // vtable 0x012A7B74
     virtual void v00() { }

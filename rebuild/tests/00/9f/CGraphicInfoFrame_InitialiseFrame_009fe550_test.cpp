@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -86,9 +87,9 @@ void __cdecl operator delete(void*); // 0x00BFE9BC
 class CCPPointerInfo { public: long References; void (__fastcall* Destroy)(void*); void* Object; };
 struct CountedTexture {
  CTextureMethods* Data; CCPPointerInfo* Info;
- __forceinline void Release() { if(Info) { --Info->References; if(Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } } }
- __forceinline ~CountedTexture() { Release(); Data=0; Info=0; }
- __forceinline void Assign(const CountedTexture& p) { CTextureMethods* data=p.Data; CCPPointerInfo* info=p.Info; if(Info!=info) { Release(); Data=data; Info=info; if(info) ++info->References; } }
+ FABLE_FORCEINLINE void Release() { if(Info) { --Info->References; if(Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } } }
+ FABLE_FORCEINLINE ~CountedTexture() { Release(); Data=0; Info=0; }
+ FABLE_FORCEINLINE void Assign(const CountedTexture& p) { CTextureMethods* data=p.Data; CCPPointerInfo* info=p.Info; if(Info!=info) { Release(); Data=data; Info=info; if(info) ++info->References; } }
 };
 // No engine/CGraphicFrameData.h exists; PDB fields agree with all native offsets.
 class CGraphicFrameData { public:
@@ -96,7 +97,7 @@ class CGraphicFrameData { public:
  unsigned short TLX,TLY,Width,Height,Pitch;
  unsigned char Alpha:1,BooleanAlpha:1,UsesSurface:1,SectionOfTPage:1,IsInitialised:1,ScreenGraphic:1;
  void Uninitialise(); // 0x009FCBA0
- __forceinline ~CGraphicFrameData() { if(IsInitialised) Uninitialise(); }
+ FABLE_FORCEINLINE ~CGraphicFrameData() { if(IsInitialised) Uninitialise(); }
  bool InitialiseAsSurface(const CountedTexture&,unsigned long,unsigned long,bool,bool);
 };
 #ifndef FABLE_ENGINE_CRESOURCE_H
@@ -169,12 +170,12 @@ union IVSlot {
 FABLE_STATIC_ASSERT(sizeof(IVSlot)==4);
 #endif
 struct CIVCalls:CIVCountedPointeeBase {
- __forceinline void Delete() const {(this->*reinterpret_cast<const IVSlot*>(__vftable)[1].Delete)();}
+ FABLE_FORCEINLINE void Delete() const {(this->*reinterpret_cast<const IVSlot*>(__vftable)[1].Delete)();}
 };
-__forceinline void IVRelease(CIVCountedPointeeBase* p) { if(--p->IVRefCount==0) static_cast<CIVCalls*>(p)->Delete(); }
+FABLE_FORCEINLINE void IVRelease(CIVCountedPointeeBase* p) { if(--p->IVRefCount==0) static_cast<CIVCalls*>(p)->Delete(); }
 struct SharedFrame {
  CGraphicFrameData* FrameData;
- __forceinline void Assign(const SharedFrame& p) { CGraphicFrameData* old=FrameData; if(old && --old->ReferenceCount==0) { old->~CGraphicFrameData(); operator delete(old); } FrameData=p.FrameData; if(FrameData) ++FrameData->ReferenceCount; }
+ FABLE_FORCEINLINE void Assign(const SharedFrame& p) { CGraphicFrameData* old=FrameData; if(old && --old->ReferenceCount==0) { old->~CGraphicFrameData(); operator delete(old); } FrameData=p.FrameData; if(FrameData) ++FrameData->ReferenceCount; }
 };
 class CManagedTexture { public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&); bool ClearHandle() const; };
 class CGraphicInfoFrame;
@@ -184,7 +185,7 @@ struct CFrameData : CResource {
  CFrameData(CGraphicInfoFrame*);
 };
 struct ResourcePointer { CFrameData* Object;
- __forceinline void Assign(CFrameData* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }
+ FABLE_FORCEINLINE void Assign(CFrameData* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }
 };
 class CGraphicInfoFrame { public:
  unsigned long Unknown; unsigned short FrameNum; signed char SmallMipmapLevel; unsigned char Unknown7;

@@ -9,6 +9,7 @@
 //   @ 0x0099A2D0 (x5), malloc @ 0x00BFEA0E, CEngineInternalPrimitiveMorphInfo ctor @ 0x00BAA250 (out of line, +0x150).
 // Layout and shape: the 2D animated mesh ctor 0x00BD94E0 (same TU model) through its inline (type, flags) constructor, as
 //   chunk 211's CEngineInternalPrimitiveMorphedAnimatedMesh (0x00BD9940) adds its out-of-line MorphInfo member.
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -130,7 +131,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CCache Cache;                                       // +0xd4
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct C2DVectorF { float X, Y; C2DVectorF() { } };
 class C2DBoxF { public: C2DVectorF TopLeft, BottomRight; C2DBoxF() { } };
@@ -146,7 +147,7 @@ class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAn
     C3DBoundingSphere ObjectBoundingSphere;             // +0x140
     virtual void v00();
     CEngineInternalPrimitive2DAnimatedMesh();
-    __forceinline CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
 };
 class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x48];

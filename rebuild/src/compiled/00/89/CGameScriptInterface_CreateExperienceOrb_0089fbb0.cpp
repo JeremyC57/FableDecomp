@@ -2,6 +2,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0089FBB0,206 bytes; definition manager0044C6B0,lookup009AD410,create00779E90,SetExperiencePoints00779E10,handle004C7E50. Successful creation guarantees experience-orb interface105.
+#include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #define CThing CThingDonor
@@ -119,7 +120,7 @@ CThingNative* __fastcall CreateExperienceOrbThing(long,const C3DVector&); //0077
 // Donor CTCDExperienceOrb fields, struct_layouts_egor.tsv83459..83468; no generated class header.
 struct ExperienceOrbMethods:CTCBase{CDefPointeeBase* PDef;long ExperiencePoints,CombinationImmunityTimer,LifeTimer;bool DecayOverTime,PickedUp;void SetExperiencePoints(long);}; //00779E10; DecayOverTime+1C
 FABLE_STATIC_ASSERT(offsetof(ExperienceOrbMethods,DecayOverTime)==28);
-static __forceinline void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>(((void*)(it==end||it->first>105?end:it)->second));}}
+static FABLE_FORCEINLINE void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>(((void*)(it==end||it->first>105?end:it)->second));}}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateExperienceOrb(const C3DVector&,long)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateExperienceOrb(const C3DVector& position,long scale)const{
  long definition;{CCharString name("THING_EXPERIENCE_ORB",-1);definition=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}

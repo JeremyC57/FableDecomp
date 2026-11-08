@@ -11,6 +11,7 @@
 //   ebp) and calls 0x004AA840 for the later ones.
 // Naming wave 35: identity CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00cf91c0 at 00cd5770 with name "LadyGreyWifeManager"; Alloc news + stores script vtable 012c6c10; PDB ?Alloc@CLadyGreyWifeManagerScript@NScript@@SIPAVCScriptBase@@; script vtable slot 2 (slot 1 pushes "Main" 0x012C2F94); PDB Main; refs=1; was CLadyGreyWifeManagerScript::Main (namespace spelling) (wave3/labels_alloc.tsv); PDB ?Main@CLadyGreyWifeManagerScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CLadyGreyWifeManagerScript@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -51,7 +52,7 @@ struct CScriptThingImpl;
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() {}
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 static inline bool IsThingDead(const CScriptThing& thing) { return thing.IsDead(); }
 static inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }
 static inline const C3DVector& PositionOf(const CScriptThing& thing) { return thing.GetPos(); }

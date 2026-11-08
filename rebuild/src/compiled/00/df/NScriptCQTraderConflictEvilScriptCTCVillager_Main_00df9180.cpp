@@ -19,6 +19,7 @@
 // Shape: the landed CMuteGuardOutsideWoods::Main 0x00D86150 family: each hit test owns conditional CCharString temporaries
 //   (flag word in ebx, destroyed in reverse) and is materialised as a bool before its branch; the timer is read through the
 //   inline CTimer::GetTime (`add eax,6Ch ; mov eax,[eax]`) and written through CTimer::SetTime.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -128,8 +129,8 @@ class CGameScriptInterfaceBase { public:                                     // 
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:                                        // a script timer: the interface's timer index
     long TimerIndex;
-    __forceinline long GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-    __forceinline void SetTime(long time) { pDSTGame->SetTimer(TimerIndex, time); }
+    FABLE_FORCEINLINE long GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+    FABLE_FORCEINLINE void SetTime(long time) { pDSTGame->SetTimer(TimerIndex, time); }
 };
 namespace NScript {
 class __declspec(novtable) CPredicateBase

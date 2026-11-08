@@ -22,6 +22,7 @@
 //   layout name and CDefinitionManager derives from it -- so the function and its CompileDefinition callee bind the PDB
 //   symbols ?CompileString@CDefinitionManager@@IAE... / ?CompileDefinition@CDefinitionManager@@IAEXAAVCStringParser@@...
 //   (protected, FableWin/Ego_r name sets) instead of the CDefinitionManager_Methods wrapper's. Same bytes.
+#include "fable_compiler.h"
 #include <string.h>
 #define CDefinitionManager CDefinitionManagerLayout
 #include "engine/CDefinitionManager.h"
@@ -57,7 +58,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     const char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->Data.PData; }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

@@ -9,6 +9,7 @@
 // long) @ 0x009254C0 (landed), CCreatureAction_KrakenLowAttackOutOf::CCreatureAction_KrakenLowAttackOutOf(CThingCreatureBase&)
 // @ 0x00925680 (landed), CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase @ 0x0062E900.
 // Shape: as 0x00924A90 with a three-argument loop constructor (one `push 0`; ebx is pushed only inside the alive arm).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -32,8 +33,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8 CIntelligentPointer<CThing> (Ego_r.pdb +0xb4)
     unsigned char           _padb0[0x114 - 0xb0];
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
-    __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
+    FABLE_FORCEINLINE CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE bool IsTargetAlive() const    // two fetches: present, then not dead
     {
         return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead();
     }

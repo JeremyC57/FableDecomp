@@ -1,4 +1,5 @@
 // Behaviour test for CIsVeryCloseMotionlessCreature::operator() (0x00942270): category, motion and distance tests.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <math.h>
 #include <string.h>
@@ -40,7 +41,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it;
         return it;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         if (it == m_pLast || kind < it->m_kind)
@@ -68,9 +69,9 @@ public:
     long m_category; C3DVector m_pos;
     long GetCreatureCategory() const { return m_category; }
     const C3DVector& GetPosition_006a4d00() const { return m_pos; }
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCMotion* GetMotionIfPresent(const CThing* thing)
+FABLE_FORCEINLINE CTCMotion* GetMotionIfPresent(const CThing* thing)
 {
     CTCMotion* tc;                                 // deliberately unset when the component is absent
     if (thing->HasTC(2))

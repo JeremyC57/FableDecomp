@@ -20,6 +20,7 @@
 //          C3DVector's operator-/GetLengthSquared are __forceinline (VC out-lines them in this body otherwise); the
 //          LowerBound, list copy ctor and clear get same-TU noinline stand-ins so VC knows neither the key nor the list
 //          escapes (shared key/bestDistance frame word, sentinel kept in ebp across clear() for the free).
+#include "fable_compiler.h"
 class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 struct CInterfaceMap {
@@ -65,7 +66,7 @@ class CThing { public:
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
     virtual unsigned long GetProperties();      // slot 48 (+0xc0)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

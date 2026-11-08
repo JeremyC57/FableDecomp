@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __cdecl
 #define __stdcall
@@ -162,7 +163,7 @@ private:
 
 } // namespace LHNetworkLib
 
-__forceinline bool LHNetworkLib::LSocket::InitWS()
+FABLE_FORCEINLINE bool LHNetworkLib::LSocket::InitWS()
 {
     if (GlobalList.size() == 0) {
         WSADATA wsaData;

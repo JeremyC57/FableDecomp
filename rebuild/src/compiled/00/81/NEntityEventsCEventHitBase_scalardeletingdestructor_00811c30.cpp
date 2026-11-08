@@ -5,6 +5,7 @@
 // scheduled after the flag test; the base vtable store before the `je`. Both the pointer release and the virtual destructor are `__forceinline`: left to the
 // heuristics the release stays out of line and the deleting destructor shrinks to `call ??1 ; delete`. The chunk label "CEventHitBy" names a derived class; the stored vtable is CEventHitBase's.
 // Leaf: ??_GCEventHitBase@NEntityEvents@@UAEPAXI@Z
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct SCountBlock_00811c30 {
     long  m_references;                            // +0x00
@@ -15,7 +16,7 @@ struct SCountBlock_00811c30 {
 struct CCountedPointer_00811c30 {                     // 8 bytes: the object and its count block
     void*                m_pObject;                // +0x00
     SCountBlock_00811c30*    m_pCount;                // +0x04
-    __forceinline ~CCountedPointer_00811c30()
+    FABLE_FORCEINLINE ~CCountedPointer_00811c30()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -37,7 +38,7 @@ class CEventBase { public:                                // vtable 0x0124F2C4
 
 class CEventHitBase : public CEventBase { public:                // vtable 0x01272344
     CCountedPointer_00811c30 m_hitInfo;            // +0x08
-    __forceinline virtual ~CEventHitBase() { }
+    FABLE_FORCEINLINE virtual ~CEventHitBase() { }
 };
 }
 

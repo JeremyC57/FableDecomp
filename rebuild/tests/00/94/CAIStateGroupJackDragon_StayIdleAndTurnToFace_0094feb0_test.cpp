@@ -1,5 +1,6 @@
 // CAIStateGroup_JackDragon::StayIdleAndTurnToFace(float,const C3DVector&) -- interpolate facing while idling until the duration expires or the enemy becomes invalid.
 // Retail0094feb0 length311. Shared JackDragon/Base/Brain headers; narrow thing view exposes retail physics60 and dead91.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackDragon.h"
 #include "engine/CAIStateGroupBase.h"
@@ -94,8 +95,8 @@ extern long FramesPerSecond; //01375550
 struct CDragonWorld{static long GetWorldFrame();}; //0049d870
 struct DragonMethods:CAIStateGroup_JackDragon{
 CDragonWorld* GetPWorld();void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
-__forceinline CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
-__forceinline CDragonPointer& Enemy(){return *(CDragonPointer*)PEnemy;}
+FABLE_FORCEINLINE CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
+FABLE_FORCEINLINE CDragonPointer& Enemy(){return *(CDragonPointer*)PEnemy;}
 void StayIdleAndTurnToFace(float,const C3DVector&);
 };
 void DragonMethods::StayIdleAndTurnToFace(float duration,const C3DVector& facing){

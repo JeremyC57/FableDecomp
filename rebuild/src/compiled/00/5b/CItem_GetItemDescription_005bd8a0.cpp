@@ -10,6 +10,7 @@
 // Model: engine/CItem.h; the counted temporaries and their inlined release (`mov ecx,eax ; add eax,4 ; dec [eax] ;
 // cmp [eax],0`) exactly as the landed CItem::GetMaximumNumberOfItems 0x005BD931; both temporaries share the frame word
 // [ebp-4]; the text bank is read into a local before the argument pushes. Pragmas: the CItem module's frame-pointer size TU.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CItem.h"
@@ -24,11 +25,11 @@ struct CIVCountedPointeeVirtual {
 };
 struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
     mutable unsigned long IVRefCount;
-    __forceinline void DecRef() const { --IVRefCount; }
-    __forceinline unsigned long GetRefCount() const { return IVRefCount; }
+    FABLE_FORCEINLINE void DecRef() const { --IVRefCount; }
+    FABLE_FORCEINLINE unsigned long GetRefCount() const { return IVRefCount; }
 };
 class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
-    __forceinline void ReleaseTemporary() const
+    FABLE_FORCEINLINE void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -37,7 +38,7 @@ class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCoun
 };
 template <class T> class CIVCountedPointer { public:      // 4 bytes
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object)
             Object->ReleaseTemporary();

@@ -8,6 +8,7 @@
 //   CScriptThing member keeps the row's local model (its destructor expanded inline here, as retail; engine/CScriptThing.h declares it
 //   out of line).
 // Shape: `this` in edi, the member in esi.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CPredicateBase.h"                    // NScript::CPredicateBase, vtable 0x012C2FF4
@@ -23,7 +24,7 @@ public:
 struct CCountedPointer_00e241b0 {                      // the thing and its count block (a member object: its destructor runs after the vtable store)
     void*               m_pThing;                  // +0x00
     SCountBlock_00e241b0*   m_pCount;                  // +0x04
-    __forceinline ~CCountedPointer_00e241b0()
+    FABLE_FORCEINLINE ~CCountedPointer_00e241b0()
     {
         if (m_pCount) {
             --m_pCount->m_references;

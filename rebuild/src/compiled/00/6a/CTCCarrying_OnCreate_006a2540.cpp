@@ -15,7 +15,8 @@
 //   through the inline CVectorMap::Add (an STLport push_back of the pair: placement copy or _M_insert_overflow with the
 //   __false_type tag, then Dirty = true) with the null pointer temporary built at the call site; then the inline
 //   SortIfDirty (sort, Dirty = false).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;

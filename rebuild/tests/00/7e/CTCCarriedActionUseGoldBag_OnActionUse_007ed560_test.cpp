@@ -1,5 +1,6 @@
 // Behaviour test for 007ed560: src/007ed560.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CTCCarriedActionUseGoldBag::OnActionUse (vfunc_28)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -67,15 +68,15 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -88,7 +89,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTCConst(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(long wanted) const
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;

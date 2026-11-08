@@ -11,6 +11,7 @@
 //   0x0099B800, ~CWideString 0x0099B510, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame
 //   0x0049D870 (static, called through GetWorld()).
 // Layout: Ego_r.pdb CTCRegionDisplay as the landed 0x00639A90; the world's data bank at +0x14 of 0x013B86A0.
+#include "fable_compiler.h"
 #include <stddef.h>
 struct CStringData {
     char* Chars;                                            // +0x00
@@ -38,7 +39,7 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
     const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     const CWideString& operator=(const wchar_t* text);      // 0x0099B800
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (m_pData == other.m_pData)
             return true;
@@ -86,7 +87,7 @@ using NGameText::CGroupEntry;
 using NGameText::CTextEntry;
 template <class T> class CIVCountedPointer { public:
     T* Data;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Data) {
             Data->Release();

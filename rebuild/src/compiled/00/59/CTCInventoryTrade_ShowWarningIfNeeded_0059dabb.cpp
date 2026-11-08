@@ -14,6 +14,7 @@
 // Shape: the flag local is the byte [ebp-1]; the lookup key is an immediate in [ebp-8] (no spare register), which the warning
 // name then reuses; WarningNeeded is addressed once (`lea`) for its test and clear; the display engine is a named local so its call
 // precedes the argument pushes; the colour 0x122 and time 0.0f (`fldz`) are immediates on the argument stack.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -35,7 +36,7 @@ class CThing { public:
     unsigned char _pad_0x00[0x20];
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

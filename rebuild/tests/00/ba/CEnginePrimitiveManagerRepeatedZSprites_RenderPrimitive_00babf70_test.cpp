@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -39,14 +40,14 @@ public:
     unsigned char _pad00[0xc];
     unsigned long MaxOccludedFrames;               // +0x0c
     unsigned long GetOccludedFrames(CEnginePrimitiveOcclusionInfo* info);   // 0x00B2FAC0
-    __forceinline bool IsRecentlyVisible(CEnginePrimitiveOcclusionInfo* info) { return GetOccludedFrames(info) <= MaxOccludedFrames; }
+    FABLE_FORCEINLINE bool IsRecentlyVisible(CEnginePrimitiveOcclusionInfo* info) { return GetOccludedFrames(info) <= MaxOccludedFrames; }
 };
 extern CEnginePrimitiveOcclusionManager* g_pPrimitiveOcclusionManager;   // 0x01436E58
 
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline void Assign(T* object)
+    FABLE_FORCEINLINE void Assign(T* object)
     {
         if (Object) {
             Object->Release();

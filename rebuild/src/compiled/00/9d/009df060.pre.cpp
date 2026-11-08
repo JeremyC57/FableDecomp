@@ -1,15 +1,16 @@
+#include "fable_compiler.h"
 #pragma optimize("y",off)
 #include "fable_state_block_sold.h"
 
 template <typename T>
-static __forceinline T& SoldStateAt(
+static FABLE_FORCEINLINE T& SoldStateAt(
     fable_u8* base,
     fable_u32 offset)
 {
     return *reinterpret_cast<T*>(base + offset);
 }
 
-static __forceinline void QueueSoldTrackedDwordState(
+static FABLE_FORCEINLINE void QueueSoldTrackedDwordState(
     fable_u8* manager,
     fable_u32 stateOffset,
     fable_u32 requestedValue)

@@ -17,6 +17,7 @@
 //   arm with a `goto` past the BuyableItems update (VC7.1 keeps both operator[] calls and merges the `= 1` tail, as retail);
 //   `key` is declared before the def pointer (store order before the GetDef call).
 // Layout: local view -- NotInStock +0x140, item total +0x168, mode +0x170, BuyableItems map +0x1A4; STLport map is 12 bytes.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
@@ -70,13 +71,13 @@ struct CDefBase {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 template <class T> struct CDefBasePointer {
     T* Object;
-    __forceinline CDefBasePointer(const CDefBasePointer& o) : Object(o.Object) { }
-    __forceinline ~CDefBasePointer()
+    FABLE_FORCEINLINE CDefBasePointer(const CDefBasePointer& o) : Object(o.Object) { }
+    FABLE_FORCEINLINE ~CDefBasePointer()
     {
         if (Object) {
             T* p = Object;
@@ -139,7 +140,7 @@ class CThing { public:
     std::bitset<274>  m_present;                           // +0x20
     unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                        // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long kind)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind)
     {
         if (m_present.test(kind)) {
             long key = kind;
@@ -150,7 +151,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long kind) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) const
     {
         if (m_present.test(kind)) {
             long key = kind;

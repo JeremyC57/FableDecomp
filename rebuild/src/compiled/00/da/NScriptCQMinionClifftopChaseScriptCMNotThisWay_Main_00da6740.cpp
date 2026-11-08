@@ -5,6 +5,7 @@
 // All declared virtuals are native signatures and ordering, including reversed overloads.
 // Naming wave 35: identity reg 00da3be0 "M_NotThisWay" in 00da34b0; Alloc 00da6670; vtable 012d7670 slot 1; PDB ?Main@CM_NotThisWay@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_NotThisWay::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_NotThisWay@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_NotThisWay@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #define CScriptThing CScriptThingDonor
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -112,7 +113,7 @@ virtual bool IsAlive() const; //slot75 0x004AB130
 virtual bool IsDead() const; //slot76 0x004AA890
 virtual bool IsNull() const; //slot77 0x004AB150
 virtual bool IsEqualTo(const CScriptThing&) const; //slot78 0x004AA8A0
- __forceinline virtual ~CScriptThing(){
+ FABLE_FORCEINLINE virtual ~CScriptThing(){
  if(PImp_Info){--PImp_Info->References;if(PImp_Info->References==0){PImp_Info->Delete(PImp_Info->Data);::operator delete(PImp_Info);}}
  PImp_Data=0;PImp_Info=0;
 }

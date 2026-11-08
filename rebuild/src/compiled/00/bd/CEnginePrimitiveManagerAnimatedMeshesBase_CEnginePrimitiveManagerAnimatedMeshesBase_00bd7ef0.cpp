@@ -8,6 +8,7 @@
 //   ~CEnginePrimitiveManagerParticleDecalGroup 0x00BB99A0 (twin: ~CEnginePrimitiveManagerStaticMeshesBase 0x00BA8C70).
 // Shape: no user destructor (no own vtable store); each CVertexShader[4] is the eh-vector destructor loop (`mov edi,4`,
 //   pointer walked down by 8); the base destructor is tail-jumped.
+#include "fable_compiler.h"
 struct CPixelShaderData {
     virtual ~CPixelShaderData();                   // slot 0: the deleting destructor is called with 1
     void* m_pShader;                               // +0x04
@@ -24,7 +25,7 @@ class CShaderBase { public:                               // vtable 0x0129A030
 };
 class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
-    __forceinline virtual ~CPixelShader()
+    FABLE_FORCEINLINE virtual ~CPixelShader()
     {
         CPixelShaderData* data = Data;
         if (data) {
@@ -35,7 +36,7 @@ class CPixelShader : public CShaderBase { public:                // vtable 0x012
 };
 class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
-    __forceinline virtual ~CVertexShader()
+    FABLE_FORCEINLINE virtual ~CVertexShader()
     {
         CVertexShaderData* data = Data;
         if (data) {

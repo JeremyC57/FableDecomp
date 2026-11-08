@@ -15,6 +15,7 @@
 // Shape: the inventory pointer is an uninitialised local filled only under HasTC(0x13) (the untaken branch reads the stale key
 //   slot, GOTCHAS chunk 264); the creature's lookups are const (PeekTC), the weapon's is the non-const GetTC; both are
 //   __forceinline (VC7.1 otherwise keeps the second and third out of line) over same-TU noinline LowerBound bodies (chunk 242).
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -39,14 +40,14 @@ public:
     unsigned char      _pad54[0x91 - 0x54];
     unsigned char      Dead : 1;                        // +0x91 bit 0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
-    template <class T> __forceinline const T* PeekTC(ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE const T* PeekTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const TCMap* map = &Components;
         const TCMap::value_type* it = map->LowerBound(key);
         return (const T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline T* GetTC(ETCInterfaceType type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(ETCInterfaceType type)
     {
         ETCInterfaceType key = type;
         TCMap* map = &Components;

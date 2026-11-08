@@ -9,6 +9,7 @@
 // Shape: vector model of the landed CQ_HangingTreeGoodScript::WatchForHeroNearExit 0x00D76490 (`__forceinline` ~vector).
 // Naming wave 35: identity reg 00d3c2eb "HeroBed" in 00d3bc60; Alloc 00d40b30; vtable 012cdf60 slot 1; PDB ?Main@CHeroBed@CQ_GuildTrainingScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHeroBed::Main (wave3/labels_alloc.tsv); PDB ?Main@CHeroBed@CQ_GuildTrainingScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 class CCharString { public:
     void* PStringData;
@@ -33,7 +34,7 @@ public:
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

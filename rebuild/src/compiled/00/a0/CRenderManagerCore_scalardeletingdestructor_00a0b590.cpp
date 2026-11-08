@@ -13,6 +13,7 @@
 // vptr into plain bytes); member names and offsets are the PDB ones. SystemFont's own destructor is implicit, so it
 // stores no vtable of its own before the base destructor runs. The `new` factory pulls the vtable (and so the
 // deleting destructor) into the object; it is not part of the retail body.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
 class CDisplayManager;
@@ -55,7 +56,7 @@ struct CRenderManagerCore : CRenderStateManager {    // vtable 0x0129C9A4
             SystemFont.Uninitialise_00a6c120();
     }
 
-    __forceinline virtual ~CRenderManagerCore()
+    FABLE_FORCEINLINE virtual ~CRenderManagerCore()
     {
         Uninit();
     }

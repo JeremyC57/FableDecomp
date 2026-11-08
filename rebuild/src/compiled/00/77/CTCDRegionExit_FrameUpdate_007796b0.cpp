@@ -20,6 +20,7 @@
 // CTCDRegionExit::GetDisplayName @ 0x00779260, CTCRegionDisplay::SetCurrentAreaName @ 0x00639BA0 / FinishShowingRegionName
 // @ 0x00639930, CTCDRegionExit::MoveHeroThroughExit @ 0x00779080; (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (byte +0xf6), epsilon 0x0129BA3C.
 // Layout = Ego_r.pdb CTCDRegionExit (packed, as the landed MoveHeroThroughExit 0x00779080); CThing dead bit +0x91, +0xb4 float.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -35,8 +36,8 @@ public:
     unsigned char _pad92[0xb4 - 0x92];
     float         Health;                                    // +0xb4
     const C3DVector& GetPos() const;                    // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;

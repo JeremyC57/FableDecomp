@@ -1,4 +1,5 @@
 // behaviour test for 0x0090CA60 CAIStateGroup_MinionGossip::OnReplace (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 // CAIStateGroup_MinionGossip::OnReplace() -- drop the pending gossip message from this creature, clear the CTCGossip target, remove the gossip mode (0x1B) and remember the frame of the last gossip
 // Grade: RELOCATION_MATCH -- two levers together: the B-17 same-TU noinline FindMostRecentMessage stand-in (reads the const-reference filter, nothing escapes) puts the bound filter's first-pointer store before the UID-filter ctor call, and the creature read into a named local ahead of the call chain (`CThing* creature = PBrain->PCreature;`) gives retail's this=esi / message=edi and the late type-word store
@@ -43,7 +44,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -57,7 +58,7 @@ class CThing { public:
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    FABLE_FORCEINLINE CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -69,7 +70,7 @@ class CThing { public:
         return sel;
     }
     // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
-    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE void GetInterfaceV(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

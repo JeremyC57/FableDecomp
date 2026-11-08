@@ -13,6 +13,7 @@
 //   definition (the TU's free STLport helpers are fastcall). VC7.1 refuses to inline the plain-inline `__copy` (the
 //   pointer-difference divide) and the memberwise operator=, so both are `__forceinline` (as the landed 0x00B7FD70). Local def base: engine/CDefClassBase.h is a 0x25-byte pack(1)
 //   flat layout (vptr as data), unusable as a polymorphic base.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
@@ -31,7 +32,7 @@ public:
 class CFireHeartPatternDef : public CDefClassBase {   // 0x34 bytes in retail (Ego_r.pdb 60: the vector is 12 bytes here)
 public:
     std::vector<bool> PadActive;                   // +0x28
-    __forceinline CFireHeartPatternDef& operator=(const CFireHeartPatternDef& other)   // memberwise, inlined in retail
+    FABLE_FORCEINLINE CFireHeartPatternDef& operator=(const CFireHeartPatternDef& other)   // memberwise, inlined in retail
     {
         CDefClassBase::operator=(other);
         PadActive = other.PadActive;
@@ -48,7 +49,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

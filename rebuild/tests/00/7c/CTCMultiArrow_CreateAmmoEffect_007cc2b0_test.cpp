@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CTCMultiArrow::CreateAmmoEffect() -- count one ammo effect down; look "AMMO_EFFECT" up in the ability def's special-effects def, create that particle effect at the owner, attach a live effect's emitter to the owner and keep the effect in AmmoEffects
@@ -115,7 +116,7 @@ public:
     unsigned char m_flags91;                           // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;              // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -148,7 +149,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())

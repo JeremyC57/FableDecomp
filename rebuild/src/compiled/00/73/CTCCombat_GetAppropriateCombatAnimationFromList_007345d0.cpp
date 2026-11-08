@@ -20,6 +20,7 @@
 //   StartHandedness +8, MeleeFlourish +8 (bool). engine/CTCCombat.h / engine/CTCBase.h flatten the CTCBase vptr into a data
 //   word, so CTCBase (protected PeekWorld) and CTCCombat are modelled locally, polymorphic, at the headers' offsets.
 
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E (import thunk)
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14 (import thunk)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6 (import thunk)
@@ -197,7 +198,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 #pragma auto_inline(on)
 }
 
-__forceinline unsigned long GetRandomIndex(const CWorld& world, unsigned long range)
+FABLE_FORCEINLINE unsigned long GetRandomIndex(const CWorld& world, unsigned long range)
 {
     unsigned long r = GFRandom(world.GetWorldSeed());
     if (range == 0)

@@ -2,12 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085CA40, length 64 bytes.
 // Leaf: ??_GCPhysicsLeaf_0085ca40@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x01276AEC) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct CAsyncData_00850530;
 void __fastcall DiscardAsyncData_00850530(CAsyncData_00850530* data);   // 0x00850530
 struct CAsyncData_00850530 {
     void* m_pData;
-    __forceinline ~CAsyncData_00850530() { DiscardAsyncData_00850530(this); }
+    FABLE_FORCEINLINE ~CAsyncData_00850530() { DiscardAsyncData_00850530(this); }
 };
 namespace NCameraModes {
 class CSubComponentBase { public:                        // vtable 0x012758F4
@@ -20,7 +21,7 @@ struct CPhysicsLeaf_0085ca40 : NCameraModes::CSubComponentBase {              //
     long                 m_8;
     CAsyncData_00850530  m_asyncData;              // +0x0c
     char*                m_pBuffer;                // +0x10
-    __forceinline virtual ~CPhysicsLeaf_0085ca40()
+    FABLE_FORCEINLINE virtual ~CPhysicsLeaf_0085ca40()
     {
         delete m_pBuffer;
     }

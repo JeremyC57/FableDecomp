@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -24,7 +25,7 @@ class CThing { public:
     unsigned char  _pad8e[3];
     unsigned char  m_lifeFlags;            // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_lifeFlags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -37,13 +38,13 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

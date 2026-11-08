@@ -10,6 +10,7 @@
 // Layout: CHeroAbilityDef description table pointer +0x60 and maxed-out description +0x6c (retail offsets);
 //   CThing interface bitset +0x20 and interface map +0x44 as in the landed GetInterface users. Local model: the
 //   engine/ headers for these classes do not declare the methods called here.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); };
@@ -25,7 +26,7 @@ class CHeroAbilityDef : public CDefPointeeBase { public:
 };
 template<class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
 };
 class CTCBase;
 class CTCInventoryAbilities { public:
@@ -49,7 +50,7 @@ template <unsigned int _Nb> class bitset { public:
 }
 class CThing { public:
     unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
-    template<class T> __forceinline bool GetInterface(T** out, long kind) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);
             if (it == map->last || kind < it->first) it = map->last;

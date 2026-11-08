@@ -19,6 +19,7 @@
 // Shape: the owner is read into a local first; the target is a named third GetPItem before the hit parameters; the
 //   entity-events component is a named local (retail does the lookup before the new); the delay is the int frame rate
 //   times the def's seconds, truncated.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 namespace NHitLocations { class CHitLocation; }
@@ -77,7 +78,7 @@ public:
     unsigned long ThingTypeFlags;                   // +0x6C (bit 3: game object)
     void RemoveTC(ETCInterfaceType interfaceType);              // 0x004C9840
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template <class T> __forceinline T* GetTC(long wanted)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;

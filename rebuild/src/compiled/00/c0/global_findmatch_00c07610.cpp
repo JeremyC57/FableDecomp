@@ -11,6 +11,7 @@
 //   swd_findbest 0x00C07420, swd_getbyte 0x00C07090; the inline memset of best_pos is `rep stosd` (0x22 dwords).
 // Layout: lzo1x_999_t / lzo1x_999_swd_t as the landed swd_remove_node 0x00C07140 (Ego_r PDB layouts).
 // Layout: lzo1x_999_t / lzo1x_999_swd_t as the landed swd_remove_node 0x00C07140 (Ego_r PDB layouts).
+#include "fable_compiler.h"
 typedef unsigned char  lzo_byte;
 typedef unsigned int   lzo_uint;
 typedef unsigned long  lzo_uint32;
@@ -131,7 +132,7 @@ static __declspec(noinline) void swd_getbyte(lzo_swd_p s)
         s->rp = 0;
 }
 
-static __forceinline void swd_remove_node(lzo_swd_p s, lzo_uint node)
+static FABLE_FORCEINLINE void swd_remove_node(lzo_swd_p s, lzo_uint node)
 {
     if (s->node_count == 0)
     {

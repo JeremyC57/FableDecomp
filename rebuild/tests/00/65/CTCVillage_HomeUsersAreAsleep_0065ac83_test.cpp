@@ -1,5 +1,6 @@
 // Behaviour test for 0065ac83: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCVillage::HomeUsersAreAsleep(CThingBuilding* home) -- true when the building has at least one living villager calling it home and every such villager is in creature mode 13 (asleep)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -27,7 +28,7 @@ class CThing { public:
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -36,7 +37,7 @@ class CThing { public:
             it = map->last;
         return it->component;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

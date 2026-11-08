@@ -13,6 +13,7 @@
 // +0xa0, Cache +0xd4 (STLport map, header node from malloc(0x20)), RenderInfo from +0xe0 (+0x120 = 0, +0x124 = -1);
 // retail sizes 0x128 / 0x160 / 0x128 (PDB 0x12c for the plain mesh). The switch lowers to `sub 9 / sub 2 / sub 2` with
 // the case-0xd body first and the case-9 body last.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
 class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
@@ -23,14 +24,14 @@ class CEngineInternalPrimitiveBase { public:              // engine/CEngineInter
 
 template <class T> class CIVCountedPointer { public:     // intrusive counted pointer (one word)
     T* m_p;
-    __forceinline CIVCountedPointer() : m_p(0) { }
+    FABLE_FORCEINLINE CIVCountedPointer() : m_p(0) { }
 };
 class CEnginePrimitiveSimulationInfo;
 class CEngineMeshEffect;
 
 class CEnginePrimitiveThemeChannelDesc { public:          // three flag bytes
     bool m_a, m_b, m_c;
-    __forceinline CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
+    FABLE_FORCEINLINE CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
 };
 
 struct __declspec(novtable) CEngineInternalPrimitiveMeshBase : CEngineInternalPrimitiveBase {   // intermediate base
@@ -41,7 +42,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveMeshBase : CEngineInternalPr
     CIVCountedPointer<CEnginePrimitiveSimulationInfo> SimulationInfo;   // +0x64
     CIVCountedPointer<CEngineMeshEffect>              MeshEffect;       // +0x68
     CEnginePrimitiveThemeChannelDesc                  ThemeChannelDesc; // +0x6C
-    __forceinline CEngineInternalPrimitiveMeshBase(long type, unsigned long flags)
+    FABLE_FORCEINLINE CEngineInternalPrimitiveMeshBase(long type, unsigned long flags)
         : CEngineInternalPrimitiveBase(type, flags), m_mesh(0), m_material(0), m_animation(0) { }
 };
 
@@ -78,7 +79,7 @@ struct CRetailMap {                                // STLport map: header node p
     SNode*        m_header;
     unsigned long m_count;
     unsigned char m_compare;
-    __forceinline CRetailMap() : m_header(0)
+    FABLE_FORCEINLINE CRetailMap() : m_header(0)
     {
         m_header = (SNode*)malloc(sizeof(SNode));
         m_count = 0;
@@ -93,7 +94,7 @@ class CEngineRenderInfoAnimatedMesh { public:             // +0xe0 in the mesh; 
     unsigned char _pad00[0x40];
     long          m_count;                         // +0x40 (+0x120)
     long          m_index;                         // +0x44 (+0x124)
-    __forceinline CEngineRenderInfoAnimatedMesh() : m_count(0), m_index(-1) { }
+    FABLE_FORCEINLINE CEngineRenderInfoAnimatedMesh() : m_count(0), m_index(-1) { }
 };
 
 class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMeshBase { public:   // vtable 0x012A79B4
@@ -103,7 +104,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CRetailMap                    Cache;           // +0xD4
     CEngineRenderInfoAnimatedMesh RenderInfo;      // +0xE0
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags)
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags)
         : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 
@@ -115,12 +116,12 @@ class CEngineInternalPrimitiveMorphInfo { public:
 struct CEngineInternalPrimitiveMorphedAnimatedMesh : CEngineInternalPrimitiveAnimatedMesh {   // vtable 0x012A7C04, 0x160 bytes
     CEngineInternalPrimitiveMorphInfo Morph;       // +0x128
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveMorphedAnimatedMesh() : CEngineInternalPrimitiveAnimatedMesh(0xb, 0xa) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveMorphedAnimatedMesh() : CEngineInternalPrimitiveAnimatedMesh(0xb, 0xa) { }
 };
 
 struct CEngineInternalPrimitiveAnimatedMeshFromFile : CEngineInternalPrimitiveAnimatedMesh {   // vtable 0x012A7B74, 0x128 bytes
     virtual void v00();
-    __forceinline CEngineInternalPrimitiveAnimatedMeshFromFile() : CEngineInternalPrimitiveAnimatedMesh(0xd, 8) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMeshFromFile() : CEngineInternalPrimitiveAnimatedMesh(0xd, 8) { }
 };
 
 struct CEnginePrimitiveManagerAnimatedMeshesBase {

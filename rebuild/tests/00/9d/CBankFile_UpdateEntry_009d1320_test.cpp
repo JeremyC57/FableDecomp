@@ -1,6 +1,7 @@
 // Behaviour test for CBankFile::UpdateEntry (0x009D1320): model and body verbatim, every callee stubbed; exercises the
 // packed and runtime-table type/offset paths, the checksum loop (disk and non-disk filenames, computeChecksum off),
 // the info copy, the resize/write arguments (aligned padding) and the update-record state.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,8 +39,8 @@ class CDataInputStream { public:
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         if (size <= 0) return;
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
@@ -52,7 +53,7 @@ struct CByteVector {                                   // CArray<char> (STLport 
     char* _M_start;
     char* _M_finish;
     char* _M_end_of_storage;
-    __forceinline CByteVector(unsigned long n, char value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
+    FABLE_FORCEINLINE CByteVector(unsigned long n, char value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = n != 0 ? (char*)malloc(n) : 0;
         _M_end_of_storage = _M_start + n;

@@ -6,6 +6,7 @@
 // Shape: `GetPWorld()->GetWorldFrame()` keeps the accessor call before the static call; the target's dead bit is tested
 // inline; PTargetThing = CIntelligentPointer<CThing>(target) (vtable 0x01238C6C) through SetPItem(GetPItem()).
 // Layout: PTargetThing +0x14, next-use frame +0x1c (local model; the header is byte-flattened).
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -23,8 +24,8 @@ template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
 { public:
     virtual void v00();
-    __forceinline CIntelligentPointer() { }
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
+    FABLE_FORCEINLINE CIntelligentPointer() { }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -50,13 +51,13 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -71,7 +72,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

@@ -16,6 +16,7 @@
 // Opt: /O2 (16-aligned entry).
 // Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CWorld CWorldDonor
 #include "engine/CWorld.h"
 #undef CWorld
@@ -36,7 +37,7 @@ class CWideStringData { public:                                // STLport basic_
 class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                     // 0x0099B510
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

@@ -1,6 +1,7 @@
 // Behaviour test for CInputProcessDigging::ProcessInput @ 0x00690C70: only when the event is a button press AND game
 // action 3 AND the hero thing holds component kind 0xc6 (mask word 6, bit 6) is game event 0x1a queued, carrying the
 // long 0x17 then the byte 1 (EndPos 5, Player -1, Valid, not a replacement); the && chain short-circuits.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_fail = 0;
@@ -34,7 +35,7 @@ static CGameEvent g_lastEvent(0);
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
-    __forceinline void AddGameEvent(long type, long data, unsigned char flag)
+    FABLE_FORCEINLINE void AddGameEvent(long type, long data, unsigned char flag)
     {
         CGameEvent gameEvent(type);
         gameEvent.AddLong(data);

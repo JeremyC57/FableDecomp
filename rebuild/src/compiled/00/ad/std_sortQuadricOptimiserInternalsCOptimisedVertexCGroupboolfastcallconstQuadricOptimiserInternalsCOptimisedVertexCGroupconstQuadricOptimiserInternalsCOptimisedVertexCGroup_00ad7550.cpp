@@ -7,6 +7,7 @@
 //   __insertion_sort 0x00AD5B50 under a non-template SKeyPair8 stand-in (DEFERRED). Was the descriptive Sort_SElement8_00ad7550 (one of 22 bodies).
 // Retail bytes:  push ebx ; push edi ; mov ebx,edx ; mov edi,ecx ; cmp edi,ebx ; je E ; (n = (last - first) / 8) ; xor ecx,ecx ; cmp eax,1 ; je K ; L: sar eax,1 ; inc ecx ; cmp eax,1 ; jne L ; K: push [comp] ; push 0 ; mov edx,ebx ; mov ecx,edi ; call __introsort_loop ; (final insertion sort inlined, threshold 16) ...
 // /Gr TU (__fastcall: first in ecx, last in edx, comp on the stack); `__lg` is the shift-count loop, its result int (the iterator difference).
+#include "fable_compiler.h"
 namespace QuadricOptimiserInternals {
 class COptimisedVertex { public:
     class CGroup { public:                              // 8 bytes (Ego_r.pdb nested class)
@@ -43,7 +44,7 @@ inline void __fastcall __unguarded_insertion_sort(_RandomAccessIter __first, _Ra
     __unguarded_insertion_sort_aux(__first, __last, (typename iterator_traits<_RandomAccessIter>::value_type*)0, __comp);   // _STLP_VALUE_TYPE
 }
 template <class _RandomAccessIter, class _Compare>
-__forceinline void __fastcall __final_insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)   // inlined by retail here (out of line in the CScriptManager sort 0x00CBDF70)
+FABLE_FORCEINLINE void __fastcall __final_insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)   // inlined by retail here (out of line in the CScriptManager sort 0x00CBDF70)
 {
     if (__last - __first > __stl_threshold) {
         __insertion_sort(__first, __first + __stl_threshold, __comp);

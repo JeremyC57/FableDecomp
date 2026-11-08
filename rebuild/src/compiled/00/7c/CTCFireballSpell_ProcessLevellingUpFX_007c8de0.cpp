@@ -15,6 +15,7 @@
 // frame word (which retail zeroes at entry with the found flag's ebx); GetSubDef / GetEffectFromString are same-TU stand-ins.
 // Layout: retail CTCFireballSpell = Ego_r.pdb minus 4 after the timer (12-byte vector): Timer +0x0c (WillAccumulatedLevel +0x10),
 // PDef +0x40, FireballAttachmentName +0x6c. No engine header.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -77,7 +78,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;                // +0x44
     unsigned char  _pad54[0x3d];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -91,8 +92,8 @@ class CThing { public:
         return false;
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase_Retail* FindTC(long kind)
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase_Retail* FindTC(long kind)
     {
         ETCInterfaceType type = (ETCInterfaceType)(kind);
         CInterfaceMap* map = &m_interfaces;

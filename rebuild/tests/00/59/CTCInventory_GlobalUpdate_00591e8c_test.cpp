@@ -1,8 +1,9 @@
 // Behaviour test for 00591e8c: body copied from src/00591e8c.cpp (CTCInventory::GlobalUpdate), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_baseCalls = 0, g_rotCalls = 0, g_ctxCalls = 0, g_destroys = 0; static bool g_basePaused = false; static float g_rotAngle = 0.0f; static const void* g_rotAxis = 0;
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class C3DVector { public: float X, Y, Z; };
 long g_framesPerSecond = 10;
 C3DVector g_inventoryItemRotationAxis = { 0.0f, -1.0f, 0.0f };

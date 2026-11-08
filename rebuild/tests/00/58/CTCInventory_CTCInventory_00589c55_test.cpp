@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -33,7 +34,7 @@ template<class T> struct CPODVector {              // STLport vector of a trivia
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CPODVector()
+    FABLE_FORCEINLINE ~CPODVector()
     {
         if (_M_start)
             free(_M_start);

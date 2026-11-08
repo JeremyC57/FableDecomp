@@ -17,6 +17,7 @@
 //   shape, kept out of line with `__declspec(noinline)` as in retail): with a bare declaration the tag gets its own
 //   `push ecx` frame byte (77 v 75). The leaf is `??$find_if@` because `find_if` also matches the larger __find_if.
 // Label correction: the catalog's `_Tree<_Tmap_traits<long,long,less<long>,...>>` is propagated (the body is find_if).
+#include "fable_compiler.h"
 class CBaseObject;
 class CThing;
 
@@ -31,7 +32,7 @@ public:
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 namespace std {

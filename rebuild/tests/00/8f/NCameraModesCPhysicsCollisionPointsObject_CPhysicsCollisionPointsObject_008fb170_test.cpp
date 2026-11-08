@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #ifndef _MSC_VER
@@ -378,7 +379,7 @@ protected:
 public:
 #endif
 #ifdef FABLE_RETAIL_QUEST_COMPLETION
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     void push_back(const _Tp& x) {
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {

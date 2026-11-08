@@ -9,6 +9,7 @@
 // `if (p) delete p;` keeps the explicit null test, then the base and the deleting tail. The
 // destructor is `__forceinline` so its body lands inside the `??_G` as retail has it (otherwise
 // VC7.1 emits the `??1` out of line and the deleting destructor merely calls it).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);     // 0x00BFE9BC
 
 class CAnimateThing { public:
@@ -24,7 +25,7 @@ class CTCBase { public:
 
 class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing* m_pAnimateThing;             // +0x0c
-    __forceinline virtual ~CTCAnimationComplex()
+    FABLE_FORCEINLINE virtual ~CTCAnimationComplex()
     {
         if (m_pAnimateThing != 0)
             delete m_pAnimateThing;

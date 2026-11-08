@@ -13,6 +13,7 @@
 // Layout: local model -- engine/CCreatureActionBase.h has the PDB (debug STL) container sizes; retail uses 12-byte
 //   STLport vectors: ActionEvents {start +0x84, finish +0x88}, CutSceneEvents tree {header +0x90, count +0x94}; scalar
 //   members as the header (TotalTime +0x10 .. PAnimEntry +0x74). Interfaces 0x8c CTCHaste, 0x42 events, 0x10 sound.
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);
 extern "C" void __cdecl free(void* p);
 class CMainGameComponent {
@@ -66,7 +67,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const ETCInterfaceType& type);              // 0x0040F020
-    __forceinline CTCBase* FindInline(long key)
+    FABLE_FORCEINLINE CTCBase* FindInline(long key)
     {
         SEntry* end = last;
         SEntry* begin = first;
@@ -91,12 +92,12 @@ class CThing { public:
     CInterfaceMap m_interfaces;                        // +0x44
     CTCBase* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline bool LacksTC(long type) const
+    FABLE_FORCEINLINE bool LacksTC(long type) const
     {
         if (HasTC(type)) return false;
         return true;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -132,7 +133,7 @@ struct CActionEventVector {
     CActionEventPointer* Start;
     CActionEventPointer* Finish;
     CActionEventPointer* End;
-    __forceinline void Erase(CActionEventPointer* first, CActionEventPointer* last)
+    FABLE_FORCEINLINE void Erase(CActionEventPointer* first, CActionEventPointer* last)
     {
         CActionEventPointer* finish = Copy(last, Finish, first, SRandomTag(), 0);
         Destroy_range(finish, Finish, SRandomTag());
@@ -152,7 +153,7 @@ SCutSceneNode* __cdecl Rebalance_for_erase(SCutSceneNode* z, SCutSceneNode*& roo
 struct SCutSceneTree {
     SCutSceneNode* _M_header;
     unsigned long  _M_node_count;
-    __forceinline void erase(SCutSceneNode* pos)
+    FABLE_FORCEINLINE void erase(SCutSceneNode* pos)
     {
         SCutSceneNode* erased = Rebalance_for_erase(pos, _M_header->Parent, _M_header->Left, _M_header->Right);
         erased->Name.~CCharString();

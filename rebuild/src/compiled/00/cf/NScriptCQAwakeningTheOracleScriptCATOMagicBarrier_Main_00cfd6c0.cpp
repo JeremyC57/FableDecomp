@@ -13,6 +13,7 @@
 //   virtual; the first test on the locals is devirtualised and the inline IsAlive expands.
 // Naming wave 35: identity reg 00cfb3f3 "ATO_MagicBarrier" in 00cfb080; Alloc 00cfd5d0; vtable 012c7d38 slot 1; PDB ?Main@CATO_MagicBarrier@CQ_AwakeningTheOracleScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CATO_MagicBarrier::Main (wave3/labels_alloc.tsv); PDB ?Main@CATO_MagicBarrier@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CATO_MagicBarrier@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -63,7 +64,7 @@ namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
 class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+    FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     virtual ~CIsThingAlive() { }
 };

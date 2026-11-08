@@ -3,6 +3,7 @@
 // mode pushed only for a living enemy (owner = the creature, enemy = PEnemy), the TELEPORT_POP effect at the creature's
 // position, the TELEPORT_AWAY_WANK sound played with the default CSoundInit, the def-class reference counting (balanced),
 // the sub-def releases (Destroy on the last reference), and the missing-component / missing-def cases.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 
@@ -141,7 +142,7 @@ class CThing { public:
         it->component = component;
     }
     const C3DVector& GetPosition() const { return Position; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

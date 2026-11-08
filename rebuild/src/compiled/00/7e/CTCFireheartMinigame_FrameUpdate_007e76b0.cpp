@@ -17,6 +17,7 @@
 //         +0x18 (PDB); retail CSubtitleRenderer flags sit 8 below the PDB: InCutscene +0xDE, DisplayingText +0xE5.
 // Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CSubtitleRenderer CSubtitleRendererDonor
 #include "engine/CSubtitleRenderer.h"
 #undef CSubtitleRenderer
@@ -60,13 +61,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -74,7 +75,7 @@ public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCScriptedControl* GetScriptedControl()
+    FABLE_FORCEINLINE CTCScriptedControl* GetScriptedControl()
     {
         CTCScriptedControl* control;
         if (HasTC(0x1f))

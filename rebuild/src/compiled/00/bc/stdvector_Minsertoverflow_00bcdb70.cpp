@@ -16,6 +16,7 @@
 //   retail does (chunk 575 saw the same split); `_M_clear` is a declared out-of-line member; max() through references
 //   (`lea ecx,[esp+24h] ; jb ; lea ecx,[esp+0Ch]`); the __false_type temporary for the suffix copy is homed in the dead
 //   __atend slot. CArray<T> is the retail engine wrapper: an STLport vector<T> (12 bytes), as in the landed erase 0x00BCDB10.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -27,7 +28,7 @@ namespace std {
 struct __true_type { };
 struct __false_type { __false_type() { } };
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
@@ -51,8 +52,8 @@ inline _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Siz
 
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 
 template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
@@ -72,10 +73,10 @@ public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
     vector(const vector<_Tp, _Alloc>& __x);                 // vector<C3DVector>: 0x006F0810
-    __forceinline size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    FABLE_FORCEINLINE size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 protected:
     void _M_clear();                                        // vector<CArray<C3DVector> >: 0x00BCDA90
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;

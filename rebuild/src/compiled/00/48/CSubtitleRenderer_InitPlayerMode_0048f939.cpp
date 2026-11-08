@@ -25,6 +25,7 @@
 //   methods); the header keeps Button1Text / Button2Text as their data pointers and PlayerModeAdded as 4 bytes, so they
 //   are read through reinterpret_cast at each use (a reference local hoists the `lea` and swaps registers).
 // Enum values: EPlayerMode enumerator names are not in the dumped name sets; the modes are written as their retail values.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define CSubtitleRenderer CSubtitleRendererLayout
@@ -62,7 +63,7 @@ public:
     CWideStringData* PStringData;                       // +0x00
     CWideString(const wchar_t* text);                   // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
-    __forceinline bool operator==(const wchar_t* text) const   // Ego_r ??8CWideString@@QBE_NPB_W@Z (inline in retail)
+    FABLE_FORCEINLINE bool operator==(const wchar_t* text) const   // Ego_r ??8CWideString@@QBE_NPB_W@Z (inline in retail)
     {
         if (PStringData == 0) {
             if (wcscmp(text, L"") == 0)

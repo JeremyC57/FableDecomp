@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -505,7 +506,7 @@ class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
 class CShaderBase {
 protected:
     CShaderBase(); // FableWin PDB: 02C938E0
-    __forceinline virtual ~CShaderBase() { } // FableWin PDB: 02C8DBF0, empty body
+    FABLE_FORCEINLINE virtual ~CShaderBase() { } // FableWin PDB: 02C8DBF0, empty body
     virtual CCharString GetDebugName() const; // FableWin PDB: 02C8DC10
 };
 
@@ -537,7 +538,7 @@ class CVertexShader : public CShaderBase { public:
         ++Data->ReferenceCount;
         return *this;
     }
-    __forceinline virtual ~CVertexShader() { if (Data) Data->ReleaseReference(); }
+    FABLE_FORCEINLINE virtual ~CVertexShader() { if (Data) Data->ReleaseReference(); }
     virtual CCharString GetDebugName() const; // PDB: 032F37E0
     virtual unsigned long CountReferences(); // PDB: 009AD1C0
 };
@@ -579,7 +580,7 @@ struct CEngineDynamic3DResourceManagerNativeView {
     long FreePoolMem;
     long TotalMemAllocated;
     CEngineTreeFilerBase ResourceMappingTree;
-    __forceinline CEngineDynamic3DResourceManagerNativeView()
+    FABLE_FORCEINLINE CEngineDynamic3DResourceManagerNativeView()
         : NativeVptr(CEngineDynamic3DResourceManagerNativeVTable), ResourceMappingTree() {
         AllocCount = 0;
         FreePoolMem = 0;
@@ -589,7 +590,7 @@ struct CEngineDynamic3DResourceManagerNativeView {
 };
 struct CEngineVertexBufferPoolNativeView : CEngineDynamic3DResourceManagerNativeView {
     long SizeGranularity;
-    __forceinline CEngineVertexBufferPoolNativeView()
+    FABLE_FORCEINLINE CEngineVertexBufferPoolNativeView()
         : CEngineDynamic3DResourceManagerNativeView() {
         NativeVptr = CEngineVertexBufferPoolNativeVTable;
         SizeGranularity = 0x400;

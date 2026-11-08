@@ -14,6 +14,7 @@
 // FrameUpdate's (0x0071AF30).
 // Shape: one `&&` condition, two typed draw calls each with its own `ret 4`, every other path falls
 // into the inline handle release (`this` dead, so esi becomes the handle: `add esi,28h`).
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CEnginePrimitiveHandle;
@@ -37,7 +38,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -53,7 +54,7 @@ public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
     bool IsValid() const { return Data.Object != 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

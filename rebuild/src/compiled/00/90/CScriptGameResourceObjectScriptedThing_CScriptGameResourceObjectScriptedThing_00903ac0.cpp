@@ -16,6 +16,7 @@
 // Leaf: ??1CScriptGameResourceObjectScriptedThing
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 
 class CTCBase;
@@ -31,7 +32,7 @@ struct CThing_Retail {
     unsigned char  _pad54[0x3d];
     unsigned char  m_dead : 1;                       // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -57,11 +58,11 @@ struct CActionBase : CBaseClassNonCopyable {                         // vtable 0
     long m_actionState;                              // +0x04
     bool m_started;                                  // +0x08
     bool m_finished;                                 // +0x09
-    __forceinline CActionBase() : m_actionState(0), m_started(false), m_finished(false) { }
+    FABLE_FORCEINLINE CActionBase() : m_actionState(0), m_started(false), m_finished(false) { }
 };
 struct CActionStopScripting : CActionBase {          // vtable 0x0128D788, 0xc bytes
     virtual ~CActionStopScripting();
-    __forceinline CActionStopScripting() { }
+    FABLE_FORCEINLINE CActionStopScripting() { }
 };
 }
 

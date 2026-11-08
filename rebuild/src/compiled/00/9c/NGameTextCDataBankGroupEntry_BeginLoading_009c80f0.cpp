@@ -1,5 +1,6 @@
 // NGameText::CDataBankGroupEntry::BeginLoading -- create asynchronous group resource.
 // Retail009C80F0,296 bytes. Native resource bank164; resource lists168/1A4; PMF is not used by CCPPointerInfo.
+#include "fable_compiler.h"
 #define CDataBank CDataBankLegacy
 #define CIVCountedPointer CIVCountedPointerLegacy
 #include "fable_game_text_bank.h"
@@ -32,7 +33,7 @@ class CResourceList { public:
  void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
  bool MakeFreeSpace(unsigned long); //009FC4F0
 };
-__forceinline void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
+FABLE_FORCEINLINE void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
 template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
 
 #include "fable_string.h"
@@ -47,14 +48,14 @@ template<class T>struct CountedPointer {
  T* Data;NativePointerInfo* Info;
  CountedPointer():Data(0),Info(0){}
  CountedPointer(const CountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->Count;}
- __forceinline ~CountedPointer(){if(Info){--Info->Count;if(Info->Count==0){Info->Destroy(Info->Object);operator delete(Info);}}Data=0;Info=0;}
+ FABLE_FORCEINLINE ~CountedPointer(){if(Info){--Info->Count;if(Info->Count==0){Info->Destroy(Info->Object);operator delete(Info);}}Data=0;Info=0;}
  T* operator->()const{return Data;}
 };
 template<class T>struct OwnedIVPointer {
  T* Object;OwnedIVPointer():Object(0){}
- __forceinline ~OwnedIVPointer(){Reset();}
- __forceinline void Reset(){T* old=Object;if(old){if(!--old->IVRefCount)old->Delete();Object=0;}}
- __forceinline void Adopt(T* value){Reset();Object=value;}
+ FABLE_FORCEINLINE ~OwnedIVPointer(){Reset();}
+ FABLE_FORCEINLINE void Reset(){T* old=Object;if(old){if(!--old->IVRefCount)old->Delete();Object=0;}}
+ FABLE_FORCEINLINE void Adopt(T* value){Reset();Object=value;}
  T* operator->()const{return Object;}
 };
 class CBankFileAsyncData { public:};

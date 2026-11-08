@@ -7,6 +7,7 @@
 // Shape: the select + result test is the PDB's private SelectStatus(LSOCKET_SELECT, timeval*) inlined twice -- once with the
 // timeval, once with NULL for the blocking -1 case -- so each copy builds its own FD_SET stores and the two FD_ISSET calls
 // cross-jump into one; the timeout*1000 store precedes the -1 test.
+#include "fable_compiler.h"
 struct timeval {                                   // winsock timeval
     long tv_sec;
     long tv_usec;
@@ -86,7 +87,7 @@ public:
     unsigned long  NrLastDataSent;                 // +0x90
     unsigned long  NrLastDataReceived;             // +0x94
     void*          _DEBUGFP;                       // +0x98
-    __forceinline bool SelectRead(timeval* timeout)
+    FABLE_FORCEINLINE bool SelectRead(timeval* timeout)
     {
         fd_set readSet;
         FD_ZERO(&readSet);

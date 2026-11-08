@@ -7,13 +7,14 @@
 // Tracked state: a `__forceinline` free SetState(state, value, core) with the CORE LAST: VC7.1 copies inline parameters
 //   right to left, so retail's `mov edx,eax` (core) before `mov edi,esi` (value) needs the core after the value; the
 //   manager-method form (core = this, first) copies the value first. Each block's global is re-read only on the changed path.
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -43,7 +44,7 @@ extern unsigned long g_renderStateDefault_01396e70;    // 0x01396E70
 
 
 
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
     {
         if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {

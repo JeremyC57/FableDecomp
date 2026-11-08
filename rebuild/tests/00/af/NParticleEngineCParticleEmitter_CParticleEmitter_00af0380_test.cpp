@@ -2,6 +2,7 @@
 // containers, identity transforms, the default orientation basis, zero position interpolation and motion, the default
 // distances from the static getters, and its flag defaults (ReadZBuffer, DieIfOffscreen, EnableDithering,
 // ClearedParticles, ClearedDecals set; layer 74; everything else clear).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -15,7 +16,7 @@ class C3DVector { public:
 };
 class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Translation;
-    __forceinline void SetIdentity()
+    FABLE_FORCEINLINE void SetIdentity()
     {
         Right.Y = Right.Z = Up.X = Up.Z = Forward.X = Forward.Y = Translation.X = Translation.Y = Translation.Z = 0.0f;
         Right.X = Up.Y = Forward.Z = 1.0f;

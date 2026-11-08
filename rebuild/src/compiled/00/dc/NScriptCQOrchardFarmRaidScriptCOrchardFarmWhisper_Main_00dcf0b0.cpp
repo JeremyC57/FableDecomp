@@ -21,6 +21,7 @@
 // Shape: the CHTG_Audience::Main skeleton; CRGBColour has the landed R, G, B, A ctor (green, opaque).
 // Naming wave 35: identity reg 00dcc8ec "OrchardFarmWhisper" in 00dcc770; Alloc 00dcef50; vtable 012db3e0 slot 1; PDB ?Main@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified COrchardFarmWhisper::Main (wave3/labels_alloc.tsv); PDB ?Main@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@COrchardFarmWhisper@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_OrchardFarmRaidScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
@@ -35,7 +36,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

@@ -15,6 +15,7 @@
 // (absent arm reads the dead bool slot the key was homed in), and VC7.1 duplicates the final call into both arms.
 // Model: the landed 0x006D6660 / 0x006D66E0 CTCHeroExperience retail layout (12-byte STLport vectors; engine/CTCHeroExperience.h
 // carries the Ego_r.pdb debug-STL offsets).
+#include "fable_compiler.h"
 struct CTCBaseComponent;
 
 class CTCBase;
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -39,7 +40,7 @@ class CThing { public:
     }
 };
 
-template <class T> __forceinline void GFLimit(T& value, const T& lo, const T& hi)
+template <class T> FABLE_FORCEINLINE void GFLimit(T& value, const T& lo, const T& hi)
 {
     if (value < lo)
         value = lo;

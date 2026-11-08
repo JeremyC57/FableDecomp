@@ -7,6 +7,7 @@
 // of the bitset dword at +0x24). Float pool: 0.0f @ 0x0122DEDC.
 // Shape: lookup tested, then `component->m_value != 0.0f` (`fld [0.0] ; fld [eax+18h] ; fucompp ; test ah,44h ;
 // jnp false`), nested ifs with byte results (`mov al,1` / `xor al,al`). Frame: one `push ecx` for the key.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -30,7 +31,7 @@ class CThing { public:
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

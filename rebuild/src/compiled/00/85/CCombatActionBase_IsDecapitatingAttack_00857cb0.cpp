@@ -9,6 +9,7 @@
 // return false;` -- Find/GetBerserkInterface need __forceinline here (VC leaves the plain inline out of line
 // in this body, unlike 0x00866FB0); the one-dword frame holds the enum->long conversion temporary for LowerBound's reference.
 // Layout modelled locally (retail CCombatActionBase sizeof 0x114, PDB 0x12c).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { TC_INTERFACE_BERSERK = 0x84 };
 
@@ -21,7 +22,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CInterfacePair* m_pFirst;                   // +0x00
     CInterfacePair* m_pLast;                    // +0x04
     const CInterfacePair* LowerBound(const ETCInterfaceType& key) const;            // 0x004365B0
-    __forceinline const CInterfacePair* Find(ETCInterfaceType key)
+    FABLE_FORCEINLINE const CInterfacePair* Find(ETCInterfaceType key)
     {
         const CInterfacePair* it = LowerBound((ETCInterfaceType)(long)key);
         if (it == m_pLast || key < it->first)
@@ -40,7 +41,7 @@ class CThingCreatureBase_Retail { public:              // engine/CThingCreatureB
     unsigned long Flags30;                      // +0x30 (bit 0x10: berserk)
     unsigned char _pad34[0x44 - 0x34];          // +0x34
     CInterfaceMap Interfaces;                   // +0x44
-    __forceinline CTCBerserk_Calls* GetBerserkInterface() { return reinterpret_cast<CTCBerserk_Calls*>(Interfaces.Find(TC_INTERFACE_BERSERK)->second); }
+    FABLE_FORCEINLINE CTCBerserk_Calls* GetBerserkInterface() { return reinterpret_cast<CTCBerserk_Calls*>(Interfaces.Find(TC_INTERFACE_BERSERK)->second); }
 };
 
 class CMeleeCombatAbilityDef { public:

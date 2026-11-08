@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -528,7 +529,7 @@ struct GraphicInfoFrame:CBaseClass {GraphicInfoFrame();virtual ~GraphicInfoFrame
 struct GraphicHeader {unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;CPixelFormat PixelFormat;unsigned char TransparencyType,MipmapLevels,Flags,Padding;unsigned long FrameDataSize,CompressedMipmapSizes;};
 #pragma pack(pop)
 struct GraphicInfo {GraphicInfo();GraphicHeader Header;long TextureType;void*Bank;long Index;GraphicInfoFrame*Frames;}; // genuine ctor PDB00B57D00
-struct GraphicArray {GraphicInfo*First,*Last,*End;__forceinline unsigned long size()const{return Last-First;} __forceinline GraphicInfo& operator[](unsigned long i){return First[i];}};
+struct GraphicArray {GraphicInfo*First,*Last,*End;FABLE_FORCEINLINE unsigned long size()const{return Last-First;} FABLE_FORCEINLINE GraphicInfo& operator[](unsigned long i){return First[i];}};
 struct FrameArray {GraphicInfoFrame*First,*Last,*End;void resize(unsigned int);}; // std::vector resize(uint), PDB00B5F1E0 native00A016F0
 class CGraphicDataBank:public CBankFileAsync,public CResourceBank { public:CGraphicDataBank(); virtual ~CGraphicDataBank();
  virtual void Close();virtual unsigned long GetDataFormatVersion();virtual void NotifyBankSize(unsigned long,const BankArrayView<BankTypeCount>&);virtual void NotifyBankOpened();

@@ -11,6 +11,7 @@
 // (no EH frame: the message dtor after the throw is unreachable; its copy lands in a dead argument slot); the
 // exception ctor and ReportFileError are __forceinline or the third throw calls the ctor out of line.
 // Opt: /O2 (16-aligned entry).
+#include "fable_compiler.h"
 #include "engine/CDiskFileWin32.h"
 
 extern "C" __declspec(dllimport) int __stdcall ReadFile(void* file, void* buffer, unsigned long toRead,
@@ -24,7 +25,7 @@ class CCharString { public:
     operator const char*() const;                  // 0x0099E4C0
 };
 
-__forceinline void ReportFileError(CCharString message)
+FABLE_FORCEINLINE void ReportFileError(CCharString message)
 {
     (const char*)message;
 }
@@ -34,7 +35,7 @@ struct CExceptionBase { };
 struct CBBBFileException : CExceptionBase {
     long Error;
     CBBBFileException(long error) : Error(error) { }
-    __forceinline CBBBFileException(long error, const CCharString& message) : Error(error) { ReportFileError(message); }
+    FABLE_FORCEINLINE CBBBFileException(long error, const CCharString& message) : Error(error) { ReportFileError(message); }
 };
 
 enum {

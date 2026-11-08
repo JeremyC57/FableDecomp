@@ -13,6 +13,7 @@
 // Model: the landed twin 0x0049B5A0 (vector<CTexture>::_M_fill_insert), STLport 4.6 verbatim; here __copy_backward is the
 //   out-of-line helper and __copy_backward_ptrs inlines (retail passes the random_access tag and the 0 Distance*).
 //   _M_insert_overflow is declared public to keep the bound spelling of 0x006D4750.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
@@ -68,7 +69,7 @@ __declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __f
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for ( ; __n > 0; --__n, ++__cur)

@@ -7,13 +7,14 @@
 // Callee: _Construct(T*, const T&) 0x004E9C39 (__fastcall, per element).
 // Shape (family K125, representative 0x004ED437): STLport 4.6 `uninitialized_fill_n` -> `__uninitialized_fill_n(..., __false_type)`
 //   loop inline (size TU: __forceinline), the element construct out of line, &x re-read from its argument slot each pass.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include "engine/CShopItemDef.h"
 namespace std {
 struct __false_type { };
 template <class T> void __fastcall _Construct(T* p, const T& val);                     // 0x004E9C39
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

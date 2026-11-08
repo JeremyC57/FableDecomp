@@ -12,6 +12,7 @@
 // Shape: the destructor body call, then members in reverse order: the array's inline destructor
 // (`DestroyElements(); if (data) free(data);`, member address kept in edi), the string, then the base.
 // The array destructor must be `__forceinline` (a plain inline one is emitted out of line).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CCharString { public:
@@ -34,7 +35,7 @@ struct CDecalEmitterArray {                        // array whose destructor tea
     long  m_capacity;
     void DestroyElements();                        // 0x00B0F630
     CDecalEmitterArray() : m_pData(0), m_size(0), m_capacity(0) { }
-    __forceinline ~CDecalEmitterArray()
+    FABLE_FORCEINLINE ~CDecalEmitterArray()
     {
         DestroyElements();
         if (m_pData) free(m_pData);
@@ -50,7 +51,7 @@ protected:
     void KillAllDecalEmitters();                   // 0x00B0C730  // protected (?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
 public:
     CPSCUpdateNormal() { }
-    __forceinline virtual ~CPSCUpdateNormal() { KillAllDecalEmitters(); }
+    FABLE_FORCEINLINE virtual ~CPSCUpdateNormal() { KillAllDecalEmitters(); }
 };
 
 }

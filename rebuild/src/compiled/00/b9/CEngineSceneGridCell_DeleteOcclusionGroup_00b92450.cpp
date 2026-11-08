@@ -1,4 +1,5 @@
 // CEngineSceneGridCell::DeleteOcclusionGroup -- clear layer group handle and optionally reset member primitive occlusion histories. Retail00b92450 complete172bytes. Shared flattened primitive headers restore native fields; virtual-only interface restores slot27. No cell/handle header. Callee00b2fa40 resets occlusion record through manager01436e58.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 class CEngineSceneGridCell;
@@ -19,7 +20,7 @@ template<class T> class CIVCountedPointer { public:T* m_p;
  CIVCountedPointer& operator=(T* p){Release();m_p=p;return *this;}
 };
 class CEnginePrimitiveHandle { public:void* VTable;CIVCountedPointer<CPersistentPrimitiveMethods> Data;
- __forceinline void Clear(){if(Data.GetRefCount()==1)Data->NotifyReleased(*this);Data=0;}
+ FABLE_FORCEINLINE void Clear(){if(Data.GetRefCount()==1)Data->NotifyReleased(*this);Data=0;}
 };
 class CEnginePrimitiveOcclusionInfo;
 struct CNativeOcclusionBase {CEngineInternalPrimitiveBase Base;CEnginePrimitiveOcclusionInfo* OcclusionInfo[2];};

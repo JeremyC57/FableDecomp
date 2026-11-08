@@ -12,6 +12,7 @@
 // after the base call, the CSoundPair() temporary is zeroed through ecx after the first two pushes, and the owner for the
 // call's `this` is fetched after the temporary is built.
 // Layout: owner CIntelligentPointer +8.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -51,7 +52,7 @@ class CCombatActionBase { public:
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
-    __forceinline CTCInterface9* GetInterface9() const
+    FABLE_FORCEINLINE CTCInterface9* GetInterface9() const
     {
         CTCInterface9* component;
         PCreature.Get()->GetTC(TCI_TARGETED, &component);

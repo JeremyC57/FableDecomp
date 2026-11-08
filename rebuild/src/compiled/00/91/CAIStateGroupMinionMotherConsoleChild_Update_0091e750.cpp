@@ -18,6 +18,7 @@
 // out of the loop; GetInterface is a plain (not forced) inline returning its `present` local, which leaves the present
 // byte stored in the frame; the distance test sums `X*X + (Y*Y + Z*Z)`.
 // Layout: retail CThing interface bitset +0x20 / map +0x44; the event's child pointer +8.
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -66,7 +67,7 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // <const CThing>: vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
 namespace NEntityEvents {

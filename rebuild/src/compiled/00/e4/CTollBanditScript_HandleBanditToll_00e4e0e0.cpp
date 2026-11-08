@@ -11,6 +11,7 @@
 //   GetDistanceBetweenThings 0x00CBE512 (__fastcall), IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC;
 //   CGameScriptInterface slots 70 GetHero, 72 GetThingWithScriptName, 91 CreateCreature, 472 EntityTeleportToThing,
 //   474 EntitySetFacingAngle. Default position 0x0143E8E0 for an empty handle.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -35,7 +36,7 @@ public:
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing() { }                                  // out of line 0x004AA840
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+    FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
     virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }   // slot 6
     virtual void v07() const; virtual void v08() const; virtual void v09() const;

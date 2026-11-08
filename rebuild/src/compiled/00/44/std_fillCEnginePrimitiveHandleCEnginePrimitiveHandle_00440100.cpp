@@ -18,6 +18,7 @@
 // Model: local -- engine/CEngineInternalPrimitiveBase.h exists, but the generated header is data-only (pack(1), no member
 // functions, no virtuals: the vptr and counted pointers are flattened into raw words); the handle assignment calls the pointee's
 // virtual slots 1 and 3, so the pointee is local (the landed 0x0041C500 / 0x00B19C20 model).
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle;
 class CEngineInternalPrimitiveBase { public:                    // the referenced primitive: handle count at +4
@@ -30,7 +31,7 @@ class CEngineInternalPrimitiveBase { public:                    // the reference
 };
 struct CIVCountedPointer {                               // CIVCountedPointer<CEnginePersistentPrimitiveBase> (landed 0x00B19C20 model)
     CEngineInternalPrimitiveBase* Object;
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CEngineInternalPrimitiveBase* object = Object;
         if (object) {
@@ -39,7 +40,7 @@ struct CIVCountedPointer {                               // CIVCountedPointer<CE
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
     {
         Release();
         Object = object;
@@ -47,7 +48,7 @@ struct CIVCountedPointer {                               // CIVCountedPointer<CE
             ++object->m_handleCount;
         return *this;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         if (Object != other.Object) {
             Release();
@@ -61,13 +62,13 @@ struct CIVCountedPointer {                               // CIVCountedPointer<CE
 class CEnginePrimitiveHandle : public CBaseClass {       // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                              // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.Object)
             Data.Object->NotifyIfLastHandle(this);
         Data = 0;
     }
-    __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
+    FABLE_FORCEINLINE CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other)
     {
         Clear();
         Data = other.Data;

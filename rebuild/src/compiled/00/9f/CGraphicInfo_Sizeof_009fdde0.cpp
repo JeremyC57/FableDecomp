@@ -8,6 +8,7 @@
 // (register pressure), the frame offset steps by 16 in ebp.
 // Layout: Ego_r.pdb CGraphicInfo (FrameCount +0x0a in the header, Frames +0x28) / CGraphicInfoFrame (Data +8).
 // Leaf: ?Sizeof@CGraphicInfo@@QBEKXZ
+#include "fable_compiler.h"
 class CGraphicFrameData { public:
     unsigned long Sizeof() const;                  // 0x009FCBF0
 };
@@ -42,7 +43,7 @@ class CGraphicInfoFrame { public:                         // Ego_r.pdb, 16 bytes
     signed char    SmallMipmapLevel;               // +0x06
     CFrameData*    Data;                           // +0x08 CIVCountedPointer<CFrameData>
     CGraphicInfo*  GraphicInfo;                    // +0x0c
-    __forceinline unsigned long Sizeof() const
+    FABLE_FORCEINLINE unsigned long Sizeof() const
     {
         unsigned long size = sizeof(CGraphicInfoFrame);
         if (Data)

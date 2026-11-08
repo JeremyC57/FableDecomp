@@ -9,6 +9,7 @@
 // Shape: sizes compared unsigned (`sar 2` then `ja`/`jae`); the group key is a named local homed in the dead `other`
 // argument slot and passed to find by address; the result is a named iterator (its storage is the hidden-result slot,
 // re-read after the call: `mov eax,[ebp] ; cmp [esp+10h],eax`) compared with the header; the loop indexes Groups[i].
+#include "fable_compiler.h"
 struct SGroupMapNode {                             // STLport _Rb_tree_node<pair<const unsigned long, long> >
     long           Color;                          // +0x00
     SGroupMapNode* Parent;                         // +0x04
@@ -58,7 +59,7 @@ struct CGroupArray {                               // CArray<unsigned long> (ret
 class CVertexGroupBlock { public:                         // retail 0x14 bytes (PDB 32: debug containers)
     CGroupArray      Groups;                       // +0x00
     CGroupToIndexMap GroupToIndexMap;              // +0x0c
-    __forceinline bool HasGroup(unsigned long group) const
+    FABLE_FORCEINLINE bool HasGroup(unsigned long group) const
     {
         SGroupMapIterator it = GroupToIndexMap.find(group);
         return it.Node != GroupToIndexMap.Header;

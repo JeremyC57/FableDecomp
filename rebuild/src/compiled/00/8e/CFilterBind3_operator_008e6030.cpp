@@ -14,6 +14,7 @@
 // Shape: `return (*F1)(thing) && (*F2)(thing) && (*F3)(thing);` with the overlapping-sphere operator __forceinline (plain
 //   in-class `inline` stays an out-of-line call); its body is the landed 0x006689E0 one, so the bounding radius lands in
 //   the dead thing-argument slot and the sum of squares comes out z, y, x.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCPhysicsBase {
 public:
@@ -35,7 +36,7 @@ class CThingFilter_OverlappingSphere {
 public:
     C3DVector SpherePos;                                // +0x00
     float     Radius;                                   // +0x0C
-    __forceinline bool operator()(const CThing& thing) const
+    FABLE_FORCEINLINE bool operator()(const CThing& thing) const
     {
         C3DVector centre;
         float boundRadius;

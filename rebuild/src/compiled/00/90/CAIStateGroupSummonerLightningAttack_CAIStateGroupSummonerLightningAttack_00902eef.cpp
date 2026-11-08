@@ -14,6 +14,7 @@
 //   under /Os VC7.1 keeps the class-body destructor out of line (grade 1: a call, 27 bytes) and without /Os the clear is a 7-byte
 //   `mov` (grade 2, 43 bytes); retail has both the size-TU `and` and the inlined release. KillOne's explicit
 //   destructor call is a modelling device that makes VC7.1 emit the implicit destructor out of line.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
@@ -38,7 +39,7 @@ public:
 class CDefPointeeBase : public CResource { };            // Ego_r.pdb 0x1C, no members of its own
 template <class T> class CDefPointer {                   // Ego_r.pdb 4 bytes
 public:
-    __forceinline ~CDefPointer()                         // the IV release, inline (FableWin.pdb has it out of line, debug)
+    FABLE_FORCEINLINE ~CDefPointer()                         // the IV release, inline (FableWin.pdb has it out of line, debug)
     {
         CDefPointeeBase* p = Object;
         if (p) {

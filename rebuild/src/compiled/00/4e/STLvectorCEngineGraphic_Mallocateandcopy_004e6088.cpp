@@ -13,6 +13,7 @@
 //   return result; }` with `allocate(n)` = `n != 0 ? malloc(n * 14) : 0` and the `__false_type` copy loop inlined
 //   (allocate, _Construct and the copy loop `__forceinline` under `optimize("s")`): the placement-new null test per element, the implicit 14-byte copy as
 //   `movsd x3 ; movsw` (the record is 2-byte packed: `#pragma pack(2)`, the PDB size).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -33,10 +34,10 @@ struct CEngineGraphic {                         // Ego_r.pdb, 14 bytes
 };
 #pragma pack(pop)
 
-template <class T> __forceinline void _Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void _Construct(T* p, const T& value) { new (p) T(value); }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -46,7 +47,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 
 template <class T> struct allocator {           // STLport allocator<T>: empty
     allocator() { }
-    __forceinline T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
 template <class T> struct _STLP_alloc_proxy : allocator<T> {

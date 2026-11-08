@@ -13,10 +13,11 @@
 // ResolveAlias helper (as FindBank 0x009A7CA0: each arm pushes its own copy source), the retail
 // branch walks the list through the counted pointer's operator-> without copying it; separate `return true` /
 // `return false` exits (mov al,1 / xor al,al), the false exit laid right after the loop.
+#include "fable_compiler.h"
 class CBasicStringChar {                                    // CBasicString<char> (13 bytes packed; only compared here)
 public:
     char* PData;                                            // +0x00
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

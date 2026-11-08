@@ -11,6 +11,7 @@
 // Shape: two vtable stores = the derived store, then the inline (empty) destructor of the polymorphic
 // intermediate CDataStream (vtable 0x0129A69C) after the member destructor, then the root base's
 // out-of-line destructor.
+#include "fable_compiler.h"
 class CAFile;
 
 class CCharString { public:
@@ -34,7 +35,7 @@ struct CFileDataOutputStream : CDataStream {       // vtable 0x0129A6F8
     CCharString m_fileName;                        // +0x04
     CAFile*     File;                              // +0x08
     CFileDataOutputStream() : File(0) { }
-    __forceinline virtual ~CFileDataOutputStream() { }
+    FABLE_FORCEINLINE virtual ~CFileDataOutputStream() { }
 };
 
 CFileDataOutputStream* Create_CFileDataOutputStream()

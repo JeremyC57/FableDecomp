@@ -11,6 +11,7 @@
 //   +0x10} at +0x2840. CSurface/CRenderTarget as the landed CRenderTarget::AttachTarget 0x00A10E60.
 // Shape: as BeginOutlineRendering (scoped saved target); the clear colour is CRGBColour(0xff, ClearY, ClearX, 0); the
 //   state switch is an inline core method (early-out on an equal value, capture push, dirty-list push).
+#include "fable_compiler.h"
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -92,7 +93,7 @@ struct CRenderManagerCore {
     unsigned char      _pad2818[0x2840 - 0x2818];
     CRenderStateValue  DisplacementState;          // +0x2840
     void Clear(const CRGBColour& colour, unsigned long flags);   // 0x009D8CF0
-    __forceinline void SetState(CRenderStateValue& state, unsigned long value)
+    FABLE_FORCEINLINE void SetState(CRenderStateValue& state, unsigned long value)
     {
         if (state.Value == value)
             return;

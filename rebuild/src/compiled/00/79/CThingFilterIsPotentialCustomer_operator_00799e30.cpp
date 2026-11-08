@@ -10,19 +10,20 @@
 //   const @ 0x004C73D0; 6.0f @ 0x0126C11C.
 // Layout (Ego_r.pdb, matches retail): ShopperContainer +0, Pos +4, TCShopKeeper +0x10, AllowExistingShopper +0x14;
 //   CTCBase::ParentThing +4. CThing (retail, 0x10 below the PDB): thing-type byte +0x10, bitset +0x20, map +0x44.
+#include "fable_compiler.h"
 class CTCBase { public: void* vfptr; class CThing* ParentThing; };
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 }
 #include <math.h>
 #pragma intrinsic(sqrt)
-__forceinline float Length(const C3DVector& v)
+FABLE_FORCEINLINE float Length(const C3DVector& v)
 {
     return (float)sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
 }

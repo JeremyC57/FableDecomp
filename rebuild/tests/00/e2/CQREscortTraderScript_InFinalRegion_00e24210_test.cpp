@@ -1,5 +1,6 @@
 // Behaviour test for 00e24210: src/00e24210.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CQR_EscortTraderScript::InFinalRegion()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,7 +27,7 @@ class CCharString { public:
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     if (sa.m_pStringData == sb.m_pStringData)
         return true;

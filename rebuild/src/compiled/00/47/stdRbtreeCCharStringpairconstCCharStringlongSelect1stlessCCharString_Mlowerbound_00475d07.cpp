@@ -12,6 +12,7 @@
 //   null right -> false, else the data compare `< 0` (the key's block is read once into ebx).
 // Shape: size TU (#pragma optimize("s", on)), no frame pointer; the compare's body is visible so the key's block stays in ebx
 //   (with only a declaration VC reloads it after every call: 69v73).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 // CBasicString<char>'s character compare @ 0x00411570 (landed body), visible to this TU as in retail's header so VC knows it
@@ -36,7 +37,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570
 
 struct CBasicStringChar {                           // CBasicString<char> (PDB 13 bytes; only the text pointer is read here)
     char* PData;                                    // +0x00
-    __forceinline bool operator<(const CBasicStringChar& other) const { return Compare_00411570(PData, other.PData) < 0; }
+    FABLE_FORCEINLINE bool operator<(const CBasicStringChar& other) const { return Compare_00411570(PData, other.PData) < 0; }
 };
 class CCharStringData { public:                            // the shared string block (PDB 17 bytes: Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                          // +0x00
@@ -44,7 +45,7 @@ class CCharStringData { public:                            // the shared string 
 class CCharString {
 public:
     CCharStringData* PStringData;                   // +0x00
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -58,7 +59,7 @@ public:
 
 namespace std {
 template <class T> struct less {
-    __forceinline bool operator()(const T& a, const T& b) const { return a < b; }
+    FABLE_FORCEINLINE bool operator()(const T& a, const T& b) const { return a < b; }
 };
 template <class T1, class T2> struct pair {
     T1 first;                                       // +0x00
@@ -80,8 +81,8 @@ public:
     _Rb_tree_node_base* _M_header;                  // +0x00
     unsigned int        _M_node_count;              // +0x04
     Compare             _M_key_compare;             // +0x08
-    __forceinline _Base_ptr _M_root() const { return _M_header->_M_parent; }
-    static __forceinline const Key& _S_key(_Base_ptr x) { return static_cast<_Rb_tree_node<Value>*>(x)->_M_value_field.first; }
+    FABLE_FORCEINLINE _Base_ptr _M_root() const { return _M_header->_M_parent; }
+    static FABLE_FORCEINLINE const Key& _S_key(_Base_ptr x) { return static_cast<_Rb_tree_node<Value>*>(x)->_M_value_field.first; }
     _Base_ptr _M_lower_bound(const Key& k) const;
 };
 

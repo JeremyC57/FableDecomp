@@ -13,6 +13,7 @@
 //   one counted `dec ebx` loop, the source addressed as dst + (last - first)) and `_Destroy` over the tail; the two
 //   exits are tail-duplicated (empty tail: `mov eax,ecx`).
 // Label correction: catalogued as `Vector_EraseRange` (right idea); the element is CTexture.
+#include "fable_compiler.h"
 struct IDirect3DTexture9;
 
 class CTexture { public:
@@ -26,7 +27,7 @@ class CTexture { public:
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last,
                           _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <new>
@@ -11,14 +12,14 @@
 #define __forceinline inline
 #endif
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}__forceinline C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
+class C3DVector{public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}FABLE_FORCEINLINE C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
 #pragma pack(pop)
 class CThing;
 class CBaseClass{public:virtual~CBaseClass();};
 class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];protected:CBaseObject();virtual~CBaseObject();public:virtual void Validate()const;};
 enum EVillageTaskType{};
 class CVillageTaskBase:public CBaseObject{public:
- __forceinline CVillageTaskBase():CBaseObject(){}virtual~CVillageTaskBase();
+ FABLE_FORCEINLINE CVillageTaskBase():CBaseObject(){}virtual~CVillageTaskBase();
  virtual EVillageTaskType GetTaskType()const=0;
  virtual bool IsValid()const=0;
  virtual bool IsTaskAvailable()const=0;
@@ -28,7 +29,7 @@ class CVillageTaskBase:public CBaseObject{public:
  virtual void AssignCreatureToTask(const CThing&)=0;
 };
 class CBaseIntelligentPointer{public:virtual~CBaseIntelligentPointer();unsigned char PData[4];CBaseIntelligentPointer();};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:__forceinline CIntelligentPointer(){}};
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:FABLE_FORCEINLINE CIntelligentPointer(){}};
 // Layout: header and donor agree on52bytes; genuine task/object ancestry8,
 // intelligentpointer8 at8, packedvectors16/32, floats28/44, flag48.
 class CVillageTaskSecuritySweep:public CVillageTaskBase{public:

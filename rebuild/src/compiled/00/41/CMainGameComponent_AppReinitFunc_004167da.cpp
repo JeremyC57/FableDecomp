@@ -14,6 +14,7 @@
 // inlined argument is evaluated first and its C2DExtentsI temporary keeps its own slot (`sub esp,0Ch`); a plain
 // `GetDimensions().X` argument or local shares the slot with the CPixelFormat temporary. The surface address stays in edi
 // for the width and height while the depth re-reads the global.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 #include "engine/CSurface.h"
@@ -31,7 +32,7 @@ struct CPixelFormat_Methods : CPixelFormat {
 struct CSurface_Methods : CSurface {
     const C2DExtentsI GetDimensions() const;             // 0x009F2F90
     const CPixelFormat_Methods GetPixelFormat() const;   // 0x009F2F60
-    __forceinline unsigned long GetWidth() const { return GetDimensions().X; }
+    FABLE_FORCEINLINE unsigned long GetWidth() const { return GetDimensions().X; }
     unsigned long GetHeight() const;                     // 0x00415BF0 (out of line: GetDimensions().Y)
 };
 class CDisplayManager {

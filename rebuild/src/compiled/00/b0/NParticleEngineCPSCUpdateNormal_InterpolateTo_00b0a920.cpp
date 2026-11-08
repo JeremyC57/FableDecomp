@@ -18,6 +18,7 @@
 //   AccelerationParam / OrientFromGameParam +0x90 / +0x94, LifeTimer +0x98 (not interpolated), DecalEmitterList +0x9c (4-byte STLport list).
 // Shape: one statement per member in the editor's transfer order (the DatabaseCopy / DatabaseSerialise order); every 1-bit unsigned flag
 //   and the two 10-bit fade integers go through the unsigned long overload (`fild ; jge ; fadd 2^32`), `1 - t` is computed once.
+#include "fable_compiler.h"
 #include "engine/GFFloatToLongNear.h"
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/C3DVector.h"
@@ -33,7 +34,7 @@ inline float __fastcall GFInterpolate(float a, float b, float t) { return a * (1
 inline unsigned long __fastcall GFInterpolate(unsigned long a, unsigned long b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
 inline bool __fastcall GFInterpolate(bool a, bool b, float t) { return t > 0.5f ? b : a; }
 inline unsigned long __fastcall GFInterpolateUpdateParams(unsigned long a, unsigned long b, float t) { return t > 0.5f ? b : a; }
-__forceinline C3DVector __fastcall GFInterpolate(const C3DVector& a, const C3DVector& b, float t) { return a * (1.0f - t) + b * t; }
+FABLE_FORCEINLINE C3DVector __fastcall GFInterpolate(const C3DVector& a, const C3DVector& b, float t) { return a * (1.0f - t) + b * t; }
 inline CCharString __fastcall GFInterpolate(const CCharString& a, const CCharString& b, float t) { return t > 0.5f ? b : a; }
 class CParticleSystem;
 template <class K, class V> class CParticleUpdateParamCallback : public CBaseClassNonCopyable { };

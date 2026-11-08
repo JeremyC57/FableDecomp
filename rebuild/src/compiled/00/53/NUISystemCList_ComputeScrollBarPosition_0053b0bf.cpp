@@ -11,6 +11,7 @@
 //   value, 31 (+0x7c) ChangePosition, 82 (+0x148) GetStateMap with map operator[] 0x0042D5B1 (landed CreateLevelSlider
 //   model), 108 (+0x1b0) GetDef by value (def height at +0x146, released through slot 1), 150..159 descriptive scroll-bar
 //   slots. 4294967296.0f @ 0x0122DCB4 (unsigned-to-float fix-up).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -54,7 +55,7 @@ struct CComponentDef : CDefVirtual, CRefCounted {
 #pragma pack(pop)
 template <class T> struct CDefPointer {
     T* Data;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Data) {
             Data->ReleaseTemporary();

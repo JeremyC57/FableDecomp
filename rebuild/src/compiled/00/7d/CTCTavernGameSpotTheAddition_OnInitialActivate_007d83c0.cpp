@@ -6,6 +6,7 @@
 // Callees: CTCTavernGame::OnInitialActivate 0x005EA650, CDefClassBase::GetSubDef<T> 0x007D9A80, LowerBound 0x0040F020 / 0x004365B0 (const),
 //   CCharString ctor 0x0099EBF0, CTCNamedUserActionPoints::GetFreeNamedActionPoint 0x007FF190, CTCTavernGame::CreateGamePiece 0x005EA9B0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, 0x00686D60 (game view), PositionCover 0x007D7F10
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
@@ -55,7 +56,7 @@ public:
     unsigned char _pad8e[0x91 - 0x8e];
     unsigned char Dead : 1;                             // +0x91 bit0
     const C3DVector& GetPos() const;               // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -68,7 +69,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterfaceC(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceC(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

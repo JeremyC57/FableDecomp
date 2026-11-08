@@ -1,4 +1,5 @@
 // Behaviour test for 0x004DFCEA (source body copied from src/004dfcea.cpp; out-of-line callees stubbed below).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -44,7 +45,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
             return false;
@@ -94,7 +95,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef std::pair<CCharString, CTCBase::CRegisteredTCInfo> TEntry;
 template TEntry* __fastcall std::__unguarded_partition(TEntry*, TEntry*, TEntry, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>);

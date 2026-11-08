@@ -12,6 +12,7 @@
 // Shape (stand-ins): CDefClassBase::GetSubDef<CTrophyDef> (a template instantiation, out of line in retail) has a same-TU
 //   stand-in body that writes the out slot only, and the CVectorMap LowerBound (const) instantiation has its same-TU
 //   binary-search body; with both visible VC7.1 keeps the running value in ebp and releases the out def with one load.
+#include "fable_compiler.h"
 class CTCBase;
 class CBaseObject;
 class CDefPointeeBase { public:
@@ -116,7 +117,7 @@ class CThing { public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

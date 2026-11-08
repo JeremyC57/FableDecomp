@@ -12,6 +12,7 @@
 //   _Construct out of line. Under "s" allocate and __uninitialized_copy must be `__forceinline` (the landed-style recipe
 //   of 0x004E6088). Size TU without a frame pointer: `#pragma optimize("s", on)` (`pop ecx` after malloc).
 // Model: no engine header for CCardDef (Ego_r.pdb gives 72 bytes, retail 0x44); local polymorphic model.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -32,7 +33,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 template <class T> void __fastcall _Construct(T* p, const T& value);   // 0x004EC08A
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -41,7 +42,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 }
 template <class T> struct allocator {           // STLport allocator<T>: empty
     allocator() { }
-    __forceinline T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 template <class T> struct _STLP_alloc_proxy : allocator<T> {
     T* _M_data;

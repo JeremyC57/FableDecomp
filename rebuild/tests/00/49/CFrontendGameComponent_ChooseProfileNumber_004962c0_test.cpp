@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 class CWideString {
@@ -41,7 +42,7 @@ public:
     CWideString CreateNewProfile();                      // 0x004945B0
     void GetWorldNames();                                // 0x00495890
     void ClearString() { memset(String, 0, sizeof(String)); StringPos = 0; }
-    __forceinline void SetMode(EGameMode mode)
+    FABLE_FORCEINLINE void SetMode(EGameMode mode)
     {
         Mode = mode;
         CursorHighlight = 1;
@@ -49,7 +50,7 @@ public:
         if (Mode == GAME_MODE_10)
             GetWorldNames();
     }
-    __forceinline void LoadProfile(const CWideString& name, bool load)
+    FABLE_FORCEINLINE void LoadProfile(const CWideString& name, bool load)
     {
         CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, load);
     }

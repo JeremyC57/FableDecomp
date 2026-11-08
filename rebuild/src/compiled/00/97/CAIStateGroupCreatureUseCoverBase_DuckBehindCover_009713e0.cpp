@@ -19,6 +19,7 @@
 // Shape (the winning levers over the parked 18-line differ): the PDB accessor chain with the shared engine/CDefPointer.h by-value
 //   copy (replacing an invented GetDef stand-in) fixed the register rotation; the EAIActionReturn result held in a named local
 //   (compared after the temporary's destructor, `mov esi,eax ... cmp esi,2`) and `== 2 ? true : false` (sete al, no xor).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"
@@ -40,7 +41,7 @@ public:
     T* Get() const { return (T*)((CThing*)GetPItem()); }
 };
 
-template <class T> __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
+template <class T> FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
 {
     if (p.Get() != 0) {
         if (!p->IsDead())

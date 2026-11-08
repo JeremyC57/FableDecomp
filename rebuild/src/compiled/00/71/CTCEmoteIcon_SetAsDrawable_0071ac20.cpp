@@ -9,6 +9,7 @@
 // second unconditional zero store (`mov [esi+4],0` twice).
 // Shape: a bool argument (`mov al,[esp+4] ; test al,al ; jne` to the shared `ret 4`); the handle address is kept in
 // esi (`lea esi,[ecx+28h]`) and the release is inlined with a single read of Data for the IsUnique test.
+#include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
 class CEnginePrimitiveHandle;
@@ -32,7 +33,7 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -48,7 +49,7 @@ public:
     virtual void v000();
     CIVCountedPointer Data;                        // +0x04
     bool IsValid() const { return Data.Object != 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

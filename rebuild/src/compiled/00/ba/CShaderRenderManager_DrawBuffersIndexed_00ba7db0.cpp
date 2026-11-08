@@ -13,6 +13,7 @@
 //   CRenderManagerCore::SetTexture(long, const CTexture*) overload (__forceinline) that selects the D3D texture after the
 //   render manager is loaded -- the inline select at the call site swaps ebx/edi and shrink-wraps `push ebx` (235v236).
 //   Then the six-argument DrawBuffersIndexed overload __forceinline as in 0x00B8EB00.
+#include "fable_compiler.h"
 #include "engine/CIndexBuffer.h"
 
 #define COM_SLOT(n) virtual void __stdcall slot##n()
@@ -90,7 +91,7 @@ public:
     unsigned long      Bits;                       // +0x04 ByteLength:28, AllocationSource:4
 };
 
-__forceinline void CRenderManagerCore::SetTexture(long stage, const CTexture* texture)
+FABLE_FORCEINLINE void CRenderManagerCore::SetTexture(long stage, const CTexture* texture)
 {
     SetTexture(stage, texture ? texture->PD3DTexture : 0);
 }
@@ -104,7 +105,7 @@ public:
     {
         D3DDevice->SetStreamSource(0, vertexBuffer.PVertexBuffer, 0, vertexBuffer.Stride);
     }
-    __forceinline void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
+    FABLE_FORCEINLINE void DrawBuffersIndexed(unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer,
                                           unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType)
     {
         D3DDevice->SetIndices(indexBuffer.PD3DIndexBuffer);

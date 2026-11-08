@@ -14,6 +14,7 @@
 // type word (+4 = 0) before the event vtable (0x0128FA80), then the CIntelligentPointer<const CThing> at +8
 // (vtable 0x01237F1C) set to the child.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -144,7 +145,7 @@ namespace NEntityEvents {
 class CEventChildHurtGoToMother : public CEventBase_NEntityEvents { public:   // vtable 0x0128FA80
     CIntelligentPointerConstThing m_child;      // +0x08
     virtual void v00();
-    __forceinline CEventChildHurtGoToMother(CThing* child) : CEventBase_NEntityEvents(), m_child(child) { }
+    FABLE_FORCEINLINE CEventChildHurtGoToMother(CThing* child) : CEventBase_NEntityEvents(), m_child(child) { }
 };
 }
 

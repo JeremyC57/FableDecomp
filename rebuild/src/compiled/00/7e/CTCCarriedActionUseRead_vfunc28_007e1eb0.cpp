@@ -9,6 +9,7 @@
 // [+20h],10h`; type 0x1a = bit 26), component map +0x44, def +0x70.
 // Shape: the def object is taken out of the out pointer right after GetSubDef into a holder (ebx) whose destructor releases it
 // with `dec [ebx+4] ; jne` (GOTCHAS 24f/retry 8: a holder with a direct `--count`); the AlreadyRead store sits inside the block.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -55,7 +56,7 @@ class CThing { public:
     unsigned char  _pad54[0x1c];
     CDefClassBase* PDef;                                // +0x70
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -64,7 +65,7 @@ class CThing { public:
             it = map->end();
         return it->second;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

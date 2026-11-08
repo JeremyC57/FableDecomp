@@ -10,6 +10,7 @@
 // Body: GetInterface's result is ignored -- on a miss the call goes through the uninitialised scoreboard local (retail's miss arm
 //   passes the argument slot that local shares), exactly as written.
 // Header debt: engine/CGameScriptInterface.h, CPlayer, CThing and engine/CTCHeroOnlineScoreboard.h are flat layouts; modelled locally.
+#include "fable_compiler.h"
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
 #include "engine/CVectorMap.h"
@@ -20,7 +21,7 @@ public:
     unsigned char _pad04[0x1C];
     unsigned long PresentInterfaces[9];                    // +0x20 (the bitset of present interface types)
     CInterfaceMap Interfaces;                              // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, ETCInterfaceType type)
     {
         if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = type;

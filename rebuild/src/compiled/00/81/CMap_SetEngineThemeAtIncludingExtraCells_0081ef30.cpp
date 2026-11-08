@@ -5,6 +5,7 @@
 //   CHeightMapCell (PDB, 12 bytes) EngineThemePaletteIndex[3] at +4. Cell (x, y) = Cells[(SizeY - y) * (SizeX + 1) + x].
 // Shape: the theme test is `> 0` on the unsigned index (`jbe`); the palette index is taken into a LONG local first (`movzx edx,al`
 //   before the cell address), which also makes VC load the coordinates into registers; each arm inlines the cell accessor.
+#include "fable_compiler.h"
 class CWorld;
 class C2DCoordI { public:
     long X, Y;
@@ -40,7 +41,7 @@ class CHeightMap { public:                                // retail layout (PDB 
     long                           SizeXIncludingExtraCells;   // +0x20c
     long                           SizeYIncludingExtraCells;   // +0x210
     CHeightMap(CWorld* world, CMap* map, const CHeightMapInit& init);   // 0x008F63C0
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 template <class T> struct scoped_ptr {
     T* ptr;

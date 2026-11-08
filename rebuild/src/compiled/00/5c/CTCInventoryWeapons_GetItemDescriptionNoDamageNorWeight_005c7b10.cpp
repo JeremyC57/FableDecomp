@@ -17,6 +17,7 @@
 //   final def lookups sit in their own block so they reuse the ranged block's frame words.
 // Layout: retail PActiveMeleeWeapon +0x134 / PActiveRangedWeapon +0x141 (packed, as the landed AugmentWeapon 0x005C44FA);
 //   CThing PDef +0x70; ability def damage-def index +0xA0, damage def value +0x54, weapon def class +0x2C (retail offsets).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -51,7 +52,7 @@ class CDefClassBase : public CDefPointeeBase { public:
 };
 struct CDefBasePointer {                        // CDefPointer<CDefClassBase>: GetPDefFromGlobalIndex's by-value result
     CDefPointeeBase* Object;
-    __forceinline ~CDefBasePointer()
+    FABLE_FORCEINLINE ~CDefBasePointer()
     {
         if (Object) {
             CDefPointeeBase* p = Object;
@@ -62,7 +63,7 @@ struct CDefBasePointer {                        // CDefPointer<CDefClassBase>: G
         }
     }
 };
-__forceinline CDefPointeeBase* AddRef(const CDefBasePointer& pointer)
+FABLE_FORCEINLINE CDefPointeeBase* AddRef(const CDefBasePointer& pointer)
 {
     CDefPointeeBase* object = pointer.Object;
     if (object)
@@ -108,7 +109,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad54[0x1c];
     CDefPointer<CDefClassBase> PDef;                        // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -119,7 +120,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         T* component;
         GetInterface(&component, wanted);

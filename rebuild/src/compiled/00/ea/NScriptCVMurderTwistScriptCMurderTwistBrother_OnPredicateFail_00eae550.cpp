@@ -3,6 +3,7 @@
 // Identity: proven own named binding00ea8943 ->original class factory ->vtable012ef2dc slot5; original PDB privatevirtual EAE method. Actual entity20 Game/Me prefix, parent/master+20/+24, original BrainState28 where present; parent exact script96 with ItemsFound72/State76/Event80 and typed vector84.
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
 // Layout: real typed script/level/handle storage; original CScriptThing nonvirtual operator== forwards protected virtual IsEqualTo(constThing&)const slot78 through original PImp.Data; base default IsEqualTo returns false as own004aa8a0. Original game const RemoveThing108/EntitySetAsKillable517; genuine STLport vector begin/end/erase/push_back/_M_insert_overflow. Counted-info unsigned refcount and copy constructor retain actual addref. Unused virtual slots are descriptive projections; no fabricated active APIs. Shared handle headers aliased; fixtures alone expose protected storage.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 typedef __SIZE_TYPE__ PlacementSize;
 #else
@@ -33,7 +34,7 @@ template<class Iter,class Compare>void __fastcall sort(Iter first,Iter last,Comp
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

@@ -16,6 +16,7 @@
 // Shape: the thing is read into a local before GetWorld(); the frame-time temporary zeroes its other two fields in the
 //   initialiser list and takes the time in the body (the call result stays on the x87 stack until last); the animation
 //   component is the unchecked lookup (absent: the never-written slot, as the shared [ebp-4] key/out word) feeding a reference.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -41,7 +42,7 @@ public:
     unsigned char    _pad00[0x20];
     std::bitset<274> UsingComponents;                   // +0x20
     CInterfaceMap    m_interfaces;                      // +0x44
-    template <class T> __forceinline T* PeekTC(long type)
+    template <class T> FABLE_FORCEINLINE T* PeekTC(long type)
     {
         T* tc;
         if (UsingComponents.test(type)) {

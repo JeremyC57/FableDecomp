@@ -11,6 +11,7 @@
 //   empty allocator temporary (user constructor: no store) is homed in the high byte of the dead x slot (`lea eax,[ebp+0Bh]`),
 //   the `__false_type` copy loop (placement-new null test, the implicit two-dword C2DVector copy) is inlined and
 //   `__forceinline` (the size TU would out-line it). Frame-pointer size TU: `optimize("y", off)` + `("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -25,9 +26,9 @@ class C2DVector { public:                              // 8 bytes
 namespace std {
 struct __false_type { __false_type() { } };
 template <class T> struct __type_traits { typedef __false_type is_POD_type; };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

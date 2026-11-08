@@ -8,6 +8,7 @@
 // Shape: the three guards are early returns; `!light->Active` on a bool member gives `test dl,dl ; sete dl ; push edx`.
 // Layout: PObjectToUse is the CIntelligentPointer<CThing> at +0xa8 (Ego_r.pdb +0xb4, retail CCreatureActionBase is 0xa8 bytes);
 // CTCLight's active byte at +0x1c. Modelled locally (the generated headers flatten the bases).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -18,7 +19,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;             // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                // +0x91 (bit 0 tested here)
-    template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;

@@ -9,6 +9,7 @@
 // Shape: `CMatrix3x4 result(*this)` is the `rep movsd` into the frame, the inline element-wise add runs in memory
 //   order (`fld [res] ; fadd [other] ; fstp [res]` x12), and the result is block copied into the hidden return slot
 //   (VC7.1 has no NRVO).
+#include "fable_compiler.h"
 class CMatrix3x4 {
 public:
     float E11, E12, E13;
@@ -16,7 +17,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
 
-    __forceinline void Add(const CMatrix3x4& o)
+    FABLE_FORCEINLINE void Add(const CMatrix3x4& o)
     {
         E11 += o.E11; E12 += o.E12; E13 += o.E13;
         E21 += o.E21; E22 += o.E22; E23 += o.E23;

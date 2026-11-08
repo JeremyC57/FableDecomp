@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 // behaviour test: CSpeechFrame::ReadFromFile reads tag, count, resized real parts and the four floats (fast and overflow paths)
 
@@ -17,8 +18,8 @@ class CMemoryDataInputStream { public:
     long m_remaining;                      // +0x14 bytes left in the current chunk
     int overflowCalls;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { ++overflowCalls; std::memcpy(buffer, m_pData, size); m_pData += size; m_position += size; }
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -32,8 +33,8 @@ class CMemoryDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned int ReadULong() { unsigned int v; Read(&v, 4); return v; }
-    __forceinline float ReadFloat() { float v; Read(&v, 4); return v; }
+    FABLE_FORCEINLINE unsigned int ReadULong() { unsigned int v; Read(&v, 4); return v; }
+    FABLE_FORCEINLINE float ReadFloat() { float v; Read(&v, 4); return v; }
 };
 
 class CComplexNumber { public:

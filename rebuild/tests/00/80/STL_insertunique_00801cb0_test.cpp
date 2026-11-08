@@ -1,20 +1,21 @@
 // 00801cb0 std::_Rb_tree::insert_unique
 // Flags: /O2 /Oy /W3
 // Leaf: ?insert_unique@_Rb_tree
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 namespace RecutTree_00801cb0 {
 
 // Layout: actual mapped value from allocator/caller evidence in ROW; key16, mapped20.
-namespace std {template<class T>struct less{__forceinline bool operator()(const T&a,const T&b)const{return a<b;}};template<class A,class B>struct pair {A first;B second;pair(){}pair(const A& a):first(a),second(){}pair(const A&a,const B&b):first(a),second(b){}pair(const pair&o):first(o.first),second(o.second){}};}
+namespace std {template<class T>struct less{FABLE_FORCEINLINE bool operator()(const T&a,const T&b)const{return a<b;}};template<class A,class B>struct pair {A first;B second;pair(){}pair(const A& a):first(a),second(){}pair(const A&a,const B&b):first(a),second(b){}pair(const pair&o):first(o.first),second(o.second){}};}
 typedef std::pair<int,unsigned> value_type;
 // Layout: retail node colour +0,parent +4,left +8,right +12,key +16; tree header +0,count +4.
 struct _Rb_tree_node {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node* Parent;_Rb_tree_node* Left;_Rb_tree_node* Right;int Key;unsigned Mapped;};
 struct _Rb_tree_base_iterator{_Rb_tree_node*Node;};
 struct _Rb_tree_iterator: _Rb_tree_base_iterator {
- __forceinline _Rb_tree_iterator(){}
- __forceinline _Rb_tree_iterator(_Rb_tree_node*p){Node=p;}
- __forceinline _Rb_tree_iterator(const _Rb_tree_iterator&o){Node=o.Node;}
+ FABLE_FORCEINLINE _Rb_tree_iterator(){}
+ FABLE_FORCEINLINE _Rb_tree_iterator(_Rb_tree_node*p){Node=p;}
+ FABLE_FORCEINLINE _Rb_tree_iterator(const _Rb_tree_iterator&o){Node=o.Node;}
  void _M_increment(); void _M_decrement();
 };
 __declspec(noinline) void _Rb_tree_iterator::_M_increment(){if(Node->Right){Node=Node->Right;while(Node->Left)Node=Node->Left;}else{_Rb_tree_node* p=Node->Parent;while(Node==p->Right){Node=p;p=p->Parent;}if(Node->Right!=p)Node=p;}}

@@ -13,6 +13,7 @@
 //   0x14 quest-script shift), PMasterData +0x18. Movie model as CGraveyardDemon::Main 0x00DC3FC0 (destroyed inline everywhere).
 // Naming wave 35: identity reg 00d00ba0 "Gate1GuardInner" in 00d00af0; Alloc 00d02a70; vtable 012c8850 slot 1; PDB ?Main@CGate1GuardInner@CQ_BanditCampScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGate1GuardInner::Main (wave3/labels_alloc.tsv); PDB ?Main@CGate1GuardInner@CQ_BanditCampScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGate1GuardInner@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_BanditCampScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
@@ -31,7 +32,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -56,7 +57,7 @@ struct CBase {                                          // vtable 0x01231710
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -100,13 +101,13 @@ struct CMovieStorage { void* Words[4]; };              // raw frame storage of o
 inline void* operator new(unsigned int, void* where) { return where; }   // placement form: the handle is destroyed by hand
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBase*>(this)->CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase();
     }
-    __forceinline void Destroy()
+    FABLE_FORCEINLINE void Destroy()
     {
         reinterpret_cast<CScriptGameResourceObjectMovieFull*>(this)->CScriptGameResourceObjectMovieFull::~CScriptGameResourceObjectMovieFull();
     }

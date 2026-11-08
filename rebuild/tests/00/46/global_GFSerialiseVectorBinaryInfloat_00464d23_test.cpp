@@ -1,4 +1,5 @@
 // Behaviour test for 0x00464D23 GFSerialiseVectorBinaryIn<float> (source body copied; stream, resize and overflow stubbed).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -27,7 +28,7 @@ static int g_overflow = 0, g_resize = 0;
 // (32-bit `long` of the source written as int so the g++ x64 build reads 4-byte counts)
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char* buffer, int size);   // 0x00993CA0
-    __forceinline void Read(void* buffer, int size)
+    FABLE_FORCEINLINE void Read(void* buffer, int size)
     {
         __int64 newPosition = (__int64)(unsigned int)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -51,7 +52,7 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     void resize(size_type __new_size, const _Tp& __x);                  // 0x00442770 for float
-    __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
+    FABLE_FORCEINLINE void resize(size_type __new_size) { resize(__new_size, _Tp()); }
     _Tp* begin() { return _M_start; }
     _Tp& operator[](size_type __n) { return *(begin() + __n); }
 };
@@ -70,7 +71,7 @@ __declspec(noinline) void CPersistTraits<float>::TransferBinaryIn(CMemoryDataInp
     stream->Read(out, sizeof(float));
 }
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
 {
     int value;
     stream.Read(&value, sizeof(value));

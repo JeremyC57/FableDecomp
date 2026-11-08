@@ -14,6 +14,7 @@
 //   (`xor eax,eax ; stosb`) into dead argument slots ([ebp+13h], [ebp+0Fh]).
 // Model: as the landed 0x0046EE2D / 0x00476497: CParentDefClassBase is 0x3C bytes with its own operator=, then
 //   ButtonGraphic +0x3C, Position +0x40, Offset +0x48 (Ego_r.pdb names; retail base 4 bytes smaller than the PDB's).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -38,7 +39,7 @@ class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:  // vt
     C2DVector Position;                                      // +0x40
     C2DVector Offset;                                        // +0x48
     CQuickAccessItemButtonGuiDef(const CQuickAccessItemButtonGuiDef& other);   // 0x0046EE2D
-    __forceinline CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
+    FABLE_FORCEINLINE CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
     {
         CParentDefClassBase::operator=(other);
         ButtonGraphic = other.ButtonGraphic;
@@ -58,12 +59,12 @@ CQuickAccessItemButtonGuiDef* __fastcall uninitialized_fill_n(CQuickAccessItemBu
 template <class _Tp> _Tp* __fastcall __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result,
                                                          const __false_type&);                             // 0x00476497
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val)
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val)
 {
     new (__p) _T1(__val);
 }
 
-template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     _Tp* __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -71,7 +72,7 @@ template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* 
     return __cur;
 }
 
-template <class _Tp> __forceinline void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
+template <class _Tp> FABLE_FORCEINLINE void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

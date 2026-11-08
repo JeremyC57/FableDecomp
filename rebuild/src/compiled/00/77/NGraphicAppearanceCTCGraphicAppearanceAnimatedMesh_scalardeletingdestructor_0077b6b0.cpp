@@ -14,6 +14,7 @@
 // vtable (and so the `??_G`) into the TU.
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??_GCTCGraphicAppearanceAnimatedMesh
+#include "fable_compiler.h"
 class CThing;
 
 namespace NGraphicAppearance {
@@ -50,7 +51,7 @@ class CTCGraphicAppearanceAnimatedMesh : public CTCBase, public CAGraphicAppeara
     CPrimitive* PrimHandle;                             // +0x10
     virtual void v00();
     CTCGraphicAppearanceAnimatedMesh(CThing* owner) : CTCBase(owner), PrimHandle(0) { }
-    __forceinline virtual ~CTCGraphicAppearanceAnimatedMesh()
+    FABLE_FORCEINLINE virtual ~CTCGraphicAppearanceAnimatedMesh()
     {
         if (!ParentThing->IsDead())
             ParentThing->GetTCGraphicAppearance()->UnregisterComponent(*this);

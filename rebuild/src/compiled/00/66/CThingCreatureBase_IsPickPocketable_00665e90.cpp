@@ -15,6 +15,7 @@
 // Shape: the sub-def out pointer is the zeroed `push ecx` word (a same-TU stand-in GetSubDef keeps its address from escaping,
 //   so the def lives in ebp and the lookup key reuses the word); a null def skips to the single shared `return false` exit (no release); the success
 //   path releases inline and returns `mov al,1`, every failure joins one release + `xor al,al`.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance);   // 0x006614F0
 class CDefPointeeBase { public:                        // a counted definition object
@@ -74,7 +75,7 @@ class CThing { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_statusFlags;           // +0x91 (bit 0: dead)
     const C3DVector& GetPos() const;   // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

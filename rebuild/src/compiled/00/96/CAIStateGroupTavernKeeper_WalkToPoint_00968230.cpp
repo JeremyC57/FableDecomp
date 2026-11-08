@@ -8,6 +8,7 @@
 //          the forward copied through C3DVector's user copy ctor and the sum built by a three-float ctor (Z first).
 // Layout: engine/CAIStateGroup_TavernKeeper.h (PBar +0x1c, PPub +0x24); the
 //          CRightHandedSet's forward axis at +0x0c (descriptive).
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_TavernKeeper.h"
 
 #include "engine/C3DVector.h"
@@ -38,7 +39,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))

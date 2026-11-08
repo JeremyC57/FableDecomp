@@ -10,6 +10,7 @@
 // Shape: `result = allocate(n); __uninitialized_copy(first, last, result, __true_type()); return result;` -- the POD
 // `__uninitialized_copy` collapses inline onto `__copy_trivial` (exceptions off: no unwind), result kept in esi.
 // Opt: size TU (`optimize("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 extern "C" void* __cdecl malloc(unsigned int size);                                    // 0x00BFEA0E
@@ -22,7 +23,7 @@ struct __true_type { };
 template <class T> class allocator {
 public:
     allocator() { }
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
 
 template <class V, class A> struct _STLP_alloc_proxy : public A {
@@ -30,7 +31,7 @@ template <class V, class A> struct _STLP_alloc_proxy : public A {
 };
 
 template <class _Tp>
-__forceinline _Tp* __uninitialized_copy(const _Tp* __first, const _Tp* __last, _Tp* __result, const __true_type&)
+FABLE_FORCEINLINE _Tp* __uninitialized_copy(const _Tp* __first, const _Tp* __last, _Tp* __result, const __true_type&)
 {
     return (_Tp*)__copy_trivial(__first, __last, __result);
 }

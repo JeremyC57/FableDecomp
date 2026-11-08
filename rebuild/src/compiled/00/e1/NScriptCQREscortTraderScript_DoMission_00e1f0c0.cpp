@@ -17,6 +17,7 @@
 //   CQ_SunnyvaleMasterData*). Members at Ego_r.pdb offset - 0x14: TraderCreated +0x5E (Ego_r 0x72).
 // Model: the landed CV_TalentlessBardScript::Main 0x00ED7830 (CSpawnedFunc / SpawnFunction, retail CSpawnedFuncBase through the
 //   FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in) and CQGuildTrainingWoodsMeleeScript::CScorpionHome::Main 0x00D67270 (inline GetPos).
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString {
 public:
@@ -35,7 +36,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 
-__forceinline const C3DVector& CScriptThing::GetPos() const    // slot 6 0x004AA980, inlined here
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const    // slot 6 0x004AA980, inlined here
 {
     if (!PImp.Data)
         return NullCoord;
@@ -63,7 +64,7 @@ public:
     bool TraderIntroDone;                               // +0x5c
     bool DoneExpressions;                               // +0x5d
     bool TraderCreated;                                 // +0x5e
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
     void DoMission();
     void WatchForFailure();                             // 0x00E1F2D0
     void EscortTrader();                                // 0x00E1F3A0

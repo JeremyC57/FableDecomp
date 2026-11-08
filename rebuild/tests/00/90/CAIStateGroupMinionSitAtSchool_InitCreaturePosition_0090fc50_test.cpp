@@ -1,4 +1,5 @@
 // behaviour test for 0x0090FC50 CAIStateGroup_MinionSitAtSchool::InitCreaturePosition (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CAIStateGroup_MinionSitAtSchool::InitCreaturePosition() -- during school time, place the creature near its home building (radius 5).
@@ -59,7 +60,7 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
     // the pointer-returning lookup: the component lands straight in ecx for the call that follows
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -68,7 +69,7 @@ class CThing { public:
             it = map->last;
         return (T*)it->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -146,7 +147,7 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroupBase {
     virtual bool InitCreaturePosition();
 };
 
-__forceinline bool PlaceNearHome(CThingCreatureHome* creature)
+FABLE_FORCEINLINE bool PlaceNearHome(CThingCreatureHome* creature)
 {
     return creature->AutoPlaceNearBuilding((CThingBuilding*)creature->PHome.GetPItem(), 5.0f);
 }

@@ -8,6 +8,7 @@
 //   +0x70 (PDB +0x74, one dword lower in retail like MinCameraHeight).
 // Shape: nested scopes, one raw def pointer per theme layer released by hand (`--RefCount == 0` -> DestroySelf) on every exit;
 //   GetDef is a same-TU stand-in that only writes its out slot.
+#include "fable_compiler.h"
 class C2DCoordI { public:
     long X, Y;
 };
@@ -30,7 +31,7 @@ class CHeightMap { public:                                // retail layout
     unsigned char                  _pad1c[0x1e8];
     long                           SizeX;          // +0x204
     long                           SizeY;          // +0x208
-    __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
+    FABLE_FORCEINLINE CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 struct CEngineThemePaletteEntry {                  // 8 bytes
     long DefIndex;

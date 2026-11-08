@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5D5B0, length 41 bytes.
 // Leaf: ??_GCVtable_012b8fc8@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x012B8FC8) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(void* section);
 struct CLockedRoot_00c5d5b0 {
@@ -9,7 +10,7 @@ struct CLockedRoot_00c5d5b0 {
 };
 struct CVtable_012b8fc8 : CLockedRoot_00c5d5b0 {              // vtable 0x012B8FC8
     unsigned char m_section[24];                   // +0x04 (a CRITICAL_SECTION)
-    __forceinline virtual ~CVtable_012b8fc8()
+    FABLE_FORCEINLINE virtual ~CVtable_012b8fc8()
     {
         DeleteCriticalSection(m_section);
     }

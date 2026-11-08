@@ -2,6 +2,7 @@
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: GFSerialiseMapBinaryIn
 // Layout: shared stream layout, virtual slot6 returns CCharString, tree header Parent4/Left8/Right12; pair string+two signed dwords.
+#include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
 namespace X_007565e0 {
 extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
@@ -9,13 +10,13 @@ extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 // CDataInputStream::ReadWithSrcChunkOverflow at00993ca0 is inherited through this method-only bridge.
 struct CMemoryDataInputStreamAdapter: ::CMemoryDataInputStream {
  void ReadWithSrcChunkOverflow(unsigned char*,int);
- __forceinline void Read(void* out,int size) {
+ FABLE_FORCEINLINE void Read(void* out,int size) {
   __int64 next=(__int64)(unsigned)(position+size);
   if(next<0 || next>0x7fffffff) return;
   if(chunkLength>=size) {memcpy(out,(const void*)chunkBase,size);chunkBase+=size;chunkLength-=size;position+=size;}
   else ReadWithSrcChunkOverflow((unsigned char*)out,size);
  }
- __forceinline unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
+ FABLE_FORCEINLINE unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
 };
 
 

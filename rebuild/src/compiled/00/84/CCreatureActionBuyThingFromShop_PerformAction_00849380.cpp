@@ -31,6 +31,7 @@
 //   comes from a named CMainGameComponent local (a named font-bank local or a plain argument picks eax over edx); the sold
 //   event's buyer goes through the intelligent pointer's inline conversion (fetched before the push of `false`); the shopkeeper
 //   is an inline CTCShop accessor (`lea ecx,[eax+10h]`); the message manager is a named local after a named buyer local.
+#include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
 class CTCBase;
@@ -70,7 +71,7 @@ class CThing { public:
         }
         return (m_presentBits[position >> 5] & (1UL << (position & 31))) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -81,7 +82,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -92,7 +93,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetCheckedInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetCheckedInterface(T** ppOut, long interfaceType)
     {
         if (TestComponent(interfaceType)) {
             long type = interfaceType;
@@ -110,7 +111,7 @@ class CThingObject { public:
     static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
 // A copy of `item` at `at`, owned by `owner`'s player.
-__forceinline CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
 {
     long defIndex = item->DefIndex;
     return ((CThing*)CThingObject::Create(defIndex, *(&at->GetPos()), owner->GetPlayer(), 0, 0, name));

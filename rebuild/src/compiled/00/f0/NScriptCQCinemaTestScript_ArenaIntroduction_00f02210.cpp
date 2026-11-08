@@ -13,6 +13,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 class CCharString { public:
@@ -61,7 +62,7 @@ struct CCutsceneCastMap {                              // map<CCharString, CScri
     node*         head;
     unsigned long size;
     unsigned char compare;
-    __forceinline CCutsceneCastMap()
+    FABLE_FORCEINLINE CCutsceneCastMap()
         : head(0)
     {
         head = (node*)malloc(sizeof(node));
@@ -71,7 +72,7 @@ struct CCutsceneCastMap {                              // map<CCharString, CScri
         head->left   = head;
         head->right  = head;
     }
-    __forceinline ~CCutsceneCastMap()
+    FABLE_FORCEINLINE ~CCutsceneCastMap()
     {
         if (size) {
             Erase(head->parent);

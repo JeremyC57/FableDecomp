@@ -14,6 +14,7 @@
 //   OnSpecialAbilityUsed(it->second, false). Size TU (`optimize("s", on)`) like the sibling 0x005EE31D.
 // Label correction: catalogued as `CTCInventoryAbilities_TriggerSpecialAbility`; the PDB name is
 //   OnSpecialAbilityButtonPressed.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 enum EHeroAbility { HERO_ABILITY_NULL = 0, EHeroAbility_Force32 = 0x7fffffff };
@@ -35,7 +36,7 @@ template <class K, class V, class C> class CVectorMap { public:   // STLport vec
     bool          Dirty;                                   // +0x0D
     value_type* end() { return m_last; }
     value_type* LowerBound(const K& key);                  // 0x005F7F4C
-    __forceinline value_type* Find(const K& key)
+    FABLE_FORCEINLINE value_type* Find(const K& key)
     {
         value_type* it = LowerBound(key);
         return (it == end() || key < it->first) ? end() : it;

@@ -31,6 +31,7 @@
 //   tree members. The text save copies the loop iterator into `entry` and reads (*entry).first / .second: VC7.1 then holds
 //   the node in esi across the appends as retail does; reading (*it) off the loop iterator (its address escapes into the
 //   out-of-line operator++) reloads it after every call instead (DIFFER 1100v1104, one callee-saved register short).
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 #pragma pack(push, 1)
@@ -56,7 +57,7 @@ public:
     const CCharString& operator+=(const char* text);         // 0x0099F100
     bool operator<(const CCharString& other) const;    // (map key order; only inside the out-of-line tree code)
     const char* GetString() const { return PStringData != 0 ? PStringData->Data.PData : ""; }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

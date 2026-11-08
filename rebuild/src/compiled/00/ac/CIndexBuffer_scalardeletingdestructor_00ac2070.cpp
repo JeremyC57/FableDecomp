@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC2070, length 48 bytes.
 // Leaf: ??_GCIndexBuffer@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129EF2C) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
@@ -9,7 +10,7 @@ class CMovableResource { public:                          // vtable 0x0129B860
 };
 class CIndexBuffer : public CMovableResource { public:              // vtable 0x0129EF2C
     void Uninitialise();                           // 0x00AC1EE0 (Ego_r.pdb ?Uninitialise@CIndexBuffer@@QAEXXZ; naming wave 25, was Release)
-    __forceinline virtual ~CIndexBuffer()
+    FABLE_FORCEINLINE virtual ~CIndexBuffer()
     {
         Uninitialise();
     }

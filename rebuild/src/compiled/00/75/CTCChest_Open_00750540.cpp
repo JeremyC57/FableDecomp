@@ -17,6 +17,7 @@
 // emitter is `T* p = 0; if (HasTC) p = PTCDriver;` on one GetPItem result (landed CTCResurrectionItem::OnItemUsed 0x007F04C0
 // model); the opener flags are set through an inline COpenCloseHelper member (written directly they sink below the
 // SetForceFrameUpdate argument push); IS_THING_ALIVE is `__forceinline`.
+#include "fable_compiler.h"
 class CBaseObject;
 #include "engine/C3DVector.h"
 class CRightHandedSet;
@@ -97,7 +98,7 @@ public:
     void SetForceFrameUpdate(bool force);               // 0x004C7C60
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
@@ -132,7 +133,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         return *this;
     }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())

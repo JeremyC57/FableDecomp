@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -512,7 +513,7 @@ class CTCAssassinRush { public:
 class CTCParamsBase;
 class CThing:public CClass { public:
  unsigned char _beforePhysics[0x4f];CPhysicsMethods* PPhysics;
- __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
+ FABLE_FORCEINLINE CPhysicsMethods* GetPhysics()const{return PPhysics;}
  void RemoveTC(long); //004C9840
  CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };

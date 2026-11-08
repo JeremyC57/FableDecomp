@@ -9,6 +9,7 @@
 // sizeof(T)) : 0` (the block kept in ebx), then the non-POD __uninitialized_copy loop `for (; first != last; ++first, ++cur)
 // _Construct(&*cur, *first)` -- the placement new's null test on `first + (result - first)` (edi = result - first), then the
 // out-of-line copy constructor. allocate, _Construct and __uninitialized_copy are __forceinline (size TU).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stdlib.h>
 #include <new>
@@ -21,11 +22,11 @@ public:
 namespace std {
 template <class T> class allocator {
 public:
-    __forceinline T* allocate(size_t n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
 };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)

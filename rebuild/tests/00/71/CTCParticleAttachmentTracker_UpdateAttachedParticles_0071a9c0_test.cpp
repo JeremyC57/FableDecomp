@@ -10,6 +10,7 @@
 //   emitter comes from the out-parameter GetInterface(T**, type) template with the end/hit ternary inside (`*ppOut = (cond ?
 //   last : it)->component`): the out-parameter form gives retail's this/time registers, the ternary loads the component straight
 //   into ecx (the if-assign form goes through eax, HasTC + GetTC keeps this in ebx).
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +24,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x45];
     unsigned char m_removeFlags;                // +0x91 bit 0 = scheduled for removal
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

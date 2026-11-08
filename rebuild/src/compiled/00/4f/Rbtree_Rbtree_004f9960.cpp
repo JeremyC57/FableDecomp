@@ -16,6 +16,7 @@
 // constructor zeroes the header word before the allocation and stores the node after it; the root/leftmost/rightmost
 // accessors return REFERENCES, so `_M_root() = _M_copy(...)` takes the header into edi before the arguments; the red
 // colour store (0) is common to both arms and hoisted above the branch; one zero register (ebx) serves every null.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 struct SRbNode {
@@ -30,7 +31,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 struct _Rb_tree_base {
     SRbNode* Header;                          // +0x00 (_M_header._M_data)
-    __forceinline _Rb_tree_base() : Header(0) { Header = (SRbNode*)malloc(sizeof(SRbNode)); }
+    FABLE_FORCEINLINE _Rb_tree_base() : Header(0) { Header = (SRbNode*)malloc(sizeof(SRbNode)); }
 };
 
 class _Rb_tree : public _Rb_tree_base {

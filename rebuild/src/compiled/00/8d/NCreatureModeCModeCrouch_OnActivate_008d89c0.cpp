@@ -13,6 +13,7 @@
 //   then the dword `test ch,1`, one-ternary returned GetTC, a same-TU lower_bound stand-in so every key shares the one frame
 //   word; the weapon component is a named local (esi); the "CROUCH" temporary is built before the group-name call (a
 //   literal bound to a const CCharString& parameter); the 0x36 component is the out-parameter GetInterface (`mov eax,[eax+4]`).
+#include "fable_compiler.h"
 class CTCBase;
 
 class CCharString { public:
@@ -39,11 +40,11 @@ class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;               // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;
@@ -51,7 +52,7 @@ class CThing { public:
         const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

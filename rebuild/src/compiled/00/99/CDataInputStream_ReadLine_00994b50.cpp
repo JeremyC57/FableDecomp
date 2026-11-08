@@ -4,6 +4,7 @@
 // Native hidden result at ret4 is one pointer-sized string; copy constructs it from local before actual CCharString cleanup.
 // The field-free adapter preserves actual CCharString ownership/storage; narrow no-elision portability is not claimed.
 // Leaf: ReadLine
+#include "fable_compiler.h"
 #define CDataInputStream CDataInputStreamLayout
 #include "engine/CDataInputStream.h"
 #undef CDataInputStream
@@ -29,8 +30,8 @@ class CDataInputStream : public CDataStream { public:
     void* CurrentSourcePtr;
     unsigned long SourceChunkStreamPos;
     long SourceChunkBytesRemaining;
-    static __forceinline bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
-    __forceinline void Read(void* dest,long n) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dest,long n) {
         __int64 newPosition=(__int64)(StreamPos+n);
         if(!IsValidPosition(newPosition)) return;
         if(SourceChunkBytesRemaining>=n) {
@@ -40,7 +41,7 @@ class CDataInputStream : public CDataStream { public:
             StreamPos+=n;
         } else ReadWithSrcChunkOverflow((unsigned char*)dest,n);
     }
-    __forceinline char ReadChar() { char value; Read(&value,1); return value; }
+    FABLE_FORCEINLINE char ReadChar() { char value; Read(&value,1); return value; }
     CStringReadResult ReadLine();
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0

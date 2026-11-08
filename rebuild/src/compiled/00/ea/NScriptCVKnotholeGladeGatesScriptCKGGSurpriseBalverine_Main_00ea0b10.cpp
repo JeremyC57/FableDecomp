@@ -15,6 +15,7 @@
 //   (Ego_r.pdb, 28 bytes): ParentClass +0x14, PMasterData +0x18; CV_KnotholeGladeGatesScript::FirstBalvDead PDB +0x7c = retail +0x68.
 // Shape: generated script code; the loop condition's CCharString temporaries are conditional (flag word in ebx) and its result
 //   byte is stored before they are destroyed.
+#include "fable_compiler.h"
 class C3DVector;
 class CCharString;
 struct CScriptThingImpl;
@@ -125,7 +126,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive();                                 // 0x00E241B0 (out of line in this module)
 };
@@ -1045,8 +1046,8 @@ extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
 inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NGlobalConsole { extern bool GDefaultToUsingPhysicsInCutsceneAnimations; }   // 0x01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA (established spelling; naming wave 35d: was NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations)
 struct CV_KnotholeGladeGatesScript {

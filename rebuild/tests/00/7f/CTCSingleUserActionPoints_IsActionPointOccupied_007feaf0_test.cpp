@@ -1,6 +1,7 @@
 // Behaviour test for CTCSingleUserActionPoints::IsActionPointOccupied (0x007FEAF0): the dummy is placed (index, scale 1),
 // the search box is the truncated dummy XY as both corners, the filter excludes the owner and the user within 0.5 of the
 // dummy, and the result follows the search.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -74,7 +75,7 @@ class CTCSingleUserActionPoints { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     const CWorld* World;
     const CWorld* GetWorld() const { return World; }
-    __forceinline bool FindFirstCreature(const C2DBoxI& area, const CActionPointFilter& filter, CThingCreatureBase** found) const
+    FABLE_FORCEINLINE bool FindFirstCreature(const C2DBoxI& area, const CActionPointFilter& filter, CThingCreatureBase** found) const
     {
         CThingSearchTools* searchTools = GetWorld()->ThingSearchTools;
         return searchTools->GetPFirstThingInRoughArea(area, filter, found);

@@ -19,6 +19,7 @@
 // results are used unchecked (a miss reads the key slot); the next-greet frame goes through a float local and a village
 // local; the creature and tag-table locals are loaded ahead of the calls and the opinion manager comes through an inline
 // accessor (the `mov ecx,eax` after the argument pushes).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -34,7 +35,7 @@ class CThing { public:
         unsigned long word = m_presentBits[interfaceType >> 5];
         return ((word >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         const bool& present = HasTC(interfaceType);
         if (present) {
@@ -45,7 +46,7 @@ class CThing { public:
         }
         return present != 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         const bool& present = HasTC(interfaceType);
         if (present) {

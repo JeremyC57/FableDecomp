@@ -12,6 +12,7 @@
 // per element: SetPItem(src.GetPItem()), Index, the C3DVector through its IMPLICIT assignment (re-addressed in
 // ecx/edx) and FrameRejected, with src/src+0xC/dst/dst+0xC stepped back by 0x1C. Backward twin of the landed
 // __copy 0x00806EA0 (same model).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -25,8 +26,8 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 #include "engine/C3DVector.h"
@@ -37,7 +38,7 @@ class CTargetPoint { public:                            // Ego_r.pdb: 28 bytes
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
     long                        FrameRejected;   // +0x18
-    __forceinline CTargetPoint& operator=(const CTargetPoint& other)
+    FABLE_FORCEINLINE CTargetPoint& operator=(const CTargetPoint& other)
     {
         PThing = other.PThing;
         Index = other.Index;

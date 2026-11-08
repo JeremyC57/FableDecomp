@@ -14,6 +14,7 @@
 // GroupIndex +0x1c); map node value at +0x10; CThing TC bitset +0x20, interface vector +0x44/+0x48; quest
 // manager 0x013B89FC with its Boasts list at +0x68 (engine/CQuestManager.h, retail STLport 4.6: Boasts +0x68,
 // AcceptedBoasts +0x6c, as the landed CQuestManager::GetBoast 0x004AF7A0 / IsBoastTaken 0x004AF810).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
 class CCharString { public:
@@ -283,7 +284,7 @@ class CThing { public:
     SInterfaceEntry* m_interfacesFirst;                 // +0x44
     SInterfaceEntry* m_interfacesLast;                  // +0x48
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         int len = int(m_interfacesLast - m_interfacesFirst);
         SInterfaceEntry* it = m_interfacesFirst;

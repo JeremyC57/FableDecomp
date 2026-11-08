@@ -8,6 +8,7 @@
 // +0x6c); the card thing's dead bit +0x91 bit 0, mask word +0x2c (kind 0x6c = bit 12), component map +0x44.
 // Shape: `for (unsigned long i = 0; i < size(); ++i)` with size() recomputed (`sar 2`, unsigned compare) and the
 // element as `*(begin() + i)`; the three guards are one `&&` chain; the find's key temporary is the push-ecx frame word.
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -20,7 +21,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation; key by address)
-    __forceinline CTCBase_Retail* Find(long kind) const               // the inlined map `find`: end entry when absent
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const               // the inlined map `find`: end entry when absent
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -37,9 +38,9 @@ class CThing { public:
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(const CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(const CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CCharString { public:
     void* m_pStringData;
 };

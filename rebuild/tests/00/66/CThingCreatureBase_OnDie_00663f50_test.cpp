@@ -1,5 +1,6 @@
 // Behaviour test for 0x00663F50 CThingCreatureBase::OnDie: the source model is copied verbatim (filler virtual slots given
 // empty bodies) and every callee is a recording stub; two deaths are run (with and without a dead body / live killer).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -154,13 +155,13 @@ public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
     CWorld* PeekWorld();                                // 0x004C7AA0
     void AddAndCopyTC(const CTCBase* tc, bool activate);   // 0x004C9F60
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -169,7 +170,7 @@ public:
             it = map->last;
         return it->component;
     }
-    template <class T> __forceinline bool GetConstInterface(const T** ppOut, long type) const
+    template <class T> FABLE_FORCEINLINE bool GetConstInterface(const T** ppOut, long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;
@@ -181,7 +182,7 @@ public:
         }
         return false;
     }
-    __forceinline const CTCBase* GetConstTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetConstTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

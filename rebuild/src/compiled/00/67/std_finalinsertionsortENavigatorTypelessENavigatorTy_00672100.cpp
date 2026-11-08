@@ -10,6 +10,7 @@
 // Shape: STLport verbatim `if (last - first > __stl_threshold) { __insertion_sort(first, first + 16, (T*)0, comp);
 //   __unguarded_insertion_sort(first + 16, last, comp); } else __insertion_sort(first, last, (T*)0, comp);` with
 //   __insertion_sort __forceinline (plain inline stays a call) twice (`for (i = first + 1; i != last; ++i) __linear_insert(first, i, *i, comp);`). No pragma.
+#include "fable_compiler.h"
 enum ENavigatorType { NAVIGATOR_TYPE_0 };                  // 4-byte enum (signed compares)
 namespace std {
 template <class _Tp> struct less {
@@ -22,7 +23,7 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 template <class _RandomAccessIter, class _Compare>
 void __fastcall __unguarded_insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp);  // 0x00672180
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Compare __comp)
+FABLE_FORCEINLINE void __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Compare __comp)
 {
     if (__first == __last) return;
     for (_RandomAccessIter __i = __first + 1; __i != __last; ++__i)

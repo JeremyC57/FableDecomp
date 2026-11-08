@@ -1,4 +1,5 @@
 // Behaviour test for 0x004C9D60: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -79,7 +80,7 @@ extern CTCRemovalList g_TCRemovalList;                  // 0x013B8A24
 
 struct CTCBitset {                                      // std::bitset<274>
     unsigned long m_words[9];
-    __forceinline bool test(unsigned long position) const
+    FABLE_FORCEINLINE bool test(unsigned long position) const
     {
         if (position >= 274) {
             puts("bitset");
@@ -109,7 +110,7 @@ struct CTCEntryVector {
     STCEntry* _M_finish;
     STCEntry* _M_end_of_storage;
     void _M_insert_overflow(STCEntry* pos, const STCEntry& x, const __false_type& tag, unsigned long fill_len, bool atend);   // 0x004CCCE0
-    __forceinline void push_back(const STCEntry& x)
+    FABLE_FORCEINLINE void push_back(const STCEntry& x)
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) STCEntry(x);
@@ -142,7 +143,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
         return it;
     }
     STCEntry* end() const { return Data._M_finish; }
-    __forceinline void Add(long key, CTCBase* value) { Data.push_back(STCEntry(key, value)); Dirty = true; }
+    FABLE_FORCEINLINE void Add(long key, CTCBase* value) { Data.push_back(STCEntry(key, value)); Dirty = true; }
     void Resort()
     {
         sort(Data._M_start, Data._M_finish, Compare);

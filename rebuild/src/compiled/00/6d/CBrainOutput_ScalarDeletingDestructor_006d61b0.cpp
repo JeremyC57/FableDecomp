@@ -9,6 +9,7 @@
 // destructor body (PDB layout: PAction +0x20, LookAtThing +0x40, reverse order) is the speed form
 // (`test eax,eax`, immediate zero stores) -- the size form is the standalone destructor
 // @ 0x006D60C0. The flag test is scheduled before the two null stores.
+#include "fable_compiler.h"
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     void* m_pItem;                              // +0x04
@@ -30,7 +31,7 @@ struct SCountBlock {                            // the shared count block of a C
 struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     CCreatureActionBase* m_pObject;             // +0x00
     SCountBlock*         m_pCount;              // +0x04
-    __forceinline ~CCountedPointer_CCreatureActionBase()   // forced: VC7.1 would call it out of line
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()   // forced: VC7.1 would call it out of line
     {
         if (m_pCount) {
             --m_pCount->m_references;

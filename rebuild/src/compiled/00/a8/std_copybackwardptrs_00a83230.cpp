@@ -8,6 +8,7 @@
 // Callees: list<C2DLineF>::operator= 0x00517720 (landed 0x00517720, ??4?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEAAV01@ABV01@@Z).
 // Shape: STLport 4.6 _algobase.h `__copy_backward_ptrs(first, last, result, const __false_type&)` -- the non-trivial-assignment overload vector::_M_fill_insert / insert / _M_range_insert call with _TrivialAss() -- with `__copy_backward(first, last, result, random_access_iterator_tag(), (ptrdiff_t*)0)` inlined; __copy_backward is __forceinline (as plain `inline` VC7.1 keeps it out of line as a
 //   cdecl call, 25v49), the loop counts n down in ebx and reads the source through the constant distance last - result.
+#include "fable_compiler.h"
 class C2DLineF;
 namespace std {
 template <class _Tp> class allocator { };
@@ -23,7 +24,7 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                                  _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)

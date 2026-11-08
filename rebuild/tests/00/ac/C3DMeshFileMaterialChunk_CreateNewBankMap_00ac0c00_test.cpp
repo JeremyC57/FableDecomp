@@ -3,6 +3,7 @@
 // Shared donor superchunk34 vs native2c (12-byte vectors); map native3c vs donor44. Native views retain real virtual hierarchy.
 // AA8360 is CChunkedFileSuperChunk ctor (RTTI129e4f0), AA8490 its dtor; mapVT129ee34, implicit mapdtor deleting slotAC1960.
 // Narrow CCharString ctor99e4b0 increments13bd800; dtor99eae0. AddSubChunkAA84f0; callbackAC1460.
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #include "fable_string.h"
 #else
@@ -166,10 +167,10 @@ void __fastcall DeleteMapChunk(void*); //AC1460: if(p) delete static_cast<C3DMes
 class CCPPointerInfo { public:unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(void* p):RefCount(1),DeleteFunc(DeleteMapChunk),Data(p){} };
 template<class T> struct CountedPointer {
  T* Data;CCPPointerInfo* Info;
- __forceinline CountedPointer(T* p):Data(p),Info(p?new CCPPointerInfo(p):0){}
- __forceinline CountedPointer(const CountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
- template<class U> __forceinline CountedPointer(const CountedPointer<U>& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
- __forceinline ~CountedPointer(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}
+ FABLE_FORCEINLINE CountedPointer(T* p):Data(p),Info(p?new CCPPointerInfo(p):0){}
+ FABLE_FORCEINLINE CountedPointer(const CountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
+ template<class U> FABLE_FORCEINLINE CountedPointer(const CountedPointer<U>& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
+ FABLE_FORCEINLINE ~CountedPointer(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}
 };
 typedef CountedPointer<C3DMeshFileMapChunk> MapPointer;
 // Material this is a superchunk subobject; no material fields are read by CreateMap.

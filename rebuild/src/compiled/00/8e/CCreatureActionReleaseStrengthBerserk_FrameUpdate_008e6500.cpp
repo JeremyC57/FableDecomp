@@ -10,6 +10,7 @@
 // Shape: four float locals (the fourth shares the lookup key's frame word), each clamped `if (v < 0) v = 0; else if (v > 1) v = 1;`
 // (`test ah,5 ; jp` / `test ah,41h ; jne`); the joystick entries are 8-byte {device, id} pairs at the input manager's +0x2c; the
 // rumble parameters are a 20-byte {a, b, c, d, true} temporary built by an inline ctor in the argument area's frame slot.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -76,7 +77,7 @@ class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase { public
     virtual void FrameUpdate();
 };
 
-static __forceinline void Clamp01(float& v)
+static FABLE_FORCEINLINE void Clamp01(float& v)
 {
     if (v < 0.0f)
         v = 0.0f;

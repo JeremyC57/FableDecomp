@@ -1,5 +1,6 @@
 // Behaviour test for 00a91180: final.cpp copied verbatim, the callees stubbed below so the staging path, the transforms,
 // the range check and the conversion are observable. C3DPrimitive2::ConvertToVBFormatAnimated
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -81,7 +82,7 @@ struct CByteVector {
     unsigned char* end;
     void insert(unsigned char*, unsigned long, const unsigned char&); // 0x00485F3A
     unsigned long size() const { return (unsigned long)(last - first); }
-    __forceinline void resize(unsigned long count, const unsigned char& value)
+    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
     {
         if (count < size())
             last = first + count;

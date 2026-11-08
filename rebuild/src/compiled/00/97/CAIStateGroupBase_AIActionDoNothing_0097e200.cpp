@@ -10,6 +10,7 @@
 // `__forceinline` here (plain inline emits it out of line next to the two IsStopping calls).
 // Model: local (engine/CAIStateGroupBase.h and engine/CAIBrain.h carry the vptr as a plain word, and the brain
 // call here is virtual); PDB member names kept.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -20,7 +21,7 @@ class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

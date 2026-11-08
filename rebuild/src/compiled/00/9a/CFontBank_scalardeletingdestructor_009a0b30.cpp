@@ -8,6 +8,7 @@
 // Layout: engine/CFontBank.h (vptr, FontHeight +4, Name +8 as its string-data word, PManager +0x0c); the
 // class is modelled locally as a polymorphic CBase-derived class over the same offsets, with the name
 // as a real CCharString member. Shape: own vtable store, one member destructor, the base destructor.
+#include "fable_compiler.h"
 class CFontManager;
 
 class CCharString { public:
@@ -27,7 +28,7 @@ class CFontBank : public CBaseClassNonCopyable { public:                        
     CCharString   Name;                            // +0x08
     CFontManager* PManager;                        // +0x0c
     CFontBank() : FontHeight(0), PManager(0) { }
-    __forceinline virtual ~CFontBank() { }
+    FABLE_FORCEINLINE virtual ~CFontBank() { }
 };
 
 CFontBank* Create_CFontBank()

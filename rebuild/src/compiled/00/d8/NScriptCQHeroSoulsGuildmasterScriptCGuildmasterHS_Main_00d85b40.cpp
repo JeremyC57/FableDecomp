@@ -18,6 +18,7 @@
 //   switch has its own CCharString temporary per case and a default arm that repeats case 0.
 // Naming wave 35: identity reg 00d84db3 "Guildmaster_HS" in 00d84d60; Alloc 00d85a30; vtable 012d4a98 slot 1; PDB ?Main@CGuildmaster_HS@CQ_HeroSoulsGuildmasterScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CGuildmaster_HS::Main (wave3/labels_alloc.tsv); PDB ?Main@CGuildmaster_HS@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CGuildmaster_HS@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_HeroSoulsGuildmasterScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -99,8 +100,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NScript {
 class CQ_HeroSoulsGuildmasterScript {

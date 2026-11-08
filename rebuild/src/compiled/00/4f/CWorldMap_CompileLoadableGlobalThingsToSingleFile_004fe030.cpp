@@ -13,6 +13,7 @@
 //   Literals "Compiling global things" 0x01244620, "NEWMAP " 0x01244618, "\r\n" 0x012397F8, "\r\nENDMAP\r\n" 0x0124460C.
 // Layout: retail CWorldMap with 12-byte STLport containers: World +0x08, Maps (CArray<CMapInfo>, 0x48-byte entries;
 //   Used +0x24, LoadedOnPlayerProximity +0x28 per Ego_r.pdb) at +0x20; the thing manager's flag word at +0x80.
+#include "fable_compiler.h"
 #include <stdlib.h>
 class CWideString { public:
     void* PStringData;
@@ -40,7 +41,7 @@ template <> class vector<CCharString, allocator<CCharString> > { public:        
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    static __forceinline void _Destroy(CCharString* first, CCharString* last)
+    static FABLE_FORCEINLINE void _Destroy(CCharString* first, CCharString* last)
     {
         for (; first != last; ++first)
             first->~CCharString();

@@ -15,6 +15,7 @@
 // The base constructor must be `__forceinline` (with the malloc call VC7.1 keeps it out of line and
 // the derived constructor shrinks to `call ; mov [esi],0Ah`); the leaf names the derived constructor.
 // Leaf: ??0CLookDrawRequest_007554c0
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 struct SRbTreeNode {                                        // 0x14 bytes
@@ -65,7 +66,7 @@ struct CLookDrawRequestBase {
     unsigned char _pad43[0x4c - 0x43];                      // +0x43 .. +0x4b
     CRetailVector m_items;                                  // +0x4c
     CRbTree       m_tree;                                   // +0x58
-    __forceinline CLookDrawRequestBase()
+    FABLE_FORCEINLINE CLookDrawRequestBase()
         : m_type(8), m_count(0), m_flag08(false), m_flag09(false), m_flag0a(false)
         , m_count3c(0), m_flag40(false), m_flag41(false), m_flag42(false)
     {

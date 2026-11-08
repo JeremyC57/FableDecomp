@@ -16,6 +16,7 @@
 //   CFishCompOrganiser::PlayCutscene 0x00E80D60; free 0x00BFEA14; the wide-string global 0x0143E908 (landed descriptive spelling).
 // Layout: Ego_r.pdb CFishCompOrganiser with retail 12-byte containers (see the landed SpeakConversationLine 0x00E80CF0).
 // Shape: STLport `operator[]` as `*(begin() + n)` (the scaled index stays in edi, the vector start in ebx).
+#include "fable_compiler.h"
 #include <new>
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 class CCharString {
@@ -79,7 +80,7 @@ public:
 
 // the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
     for (long i = decimals; i; --i)

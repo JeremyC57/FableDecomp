@@ -19,6 +19,7 @@
 // Shape: an empty user-written virtual destructor (VC resets the vptr first); the CCharString-keyed maps' element loops
 //   are inlined (__forceinline __destroy_aux), the C3DMeshVolume ones and the nested CArray destructor are out of line
 //   (explicit specialisation declarations of the real retail symbols).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void*);                       // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 
@@ -55,7 +56,7 @@ template <class _T1, class _T2> struct pair {
 };
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for (; __first != __last; ++__first)
         _Destroy(&*__first);

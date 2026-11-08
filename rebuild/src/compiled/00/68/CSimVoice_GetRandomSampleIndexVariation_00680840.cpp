@@ -2,13 +2,14 @@
 // Leaf: ?GetRandomSampleIndexVariation@CSimVoice@@QBEJW4EReactionSpeechType@@AAK@Z
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
+#include "fable_compiler.h"
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CInitBaseClass:public CBaseClass {public:virtual~CInitBaseClass();virtual void Validate()const;bool Valid;};
 enum EReactionSpeechType {};
 long __fastcall GFROR13(unsigned long);
-__forceinline unsigned long __fastcall GFRandom(unsigned long range,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return range?*seed%range:0;}
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return range?*seed%range:0;}
 #include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess {public:bool operator()(const K&a,const K&b)const{return a<b;}};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> > {public:typedef std::pair<K,V>value_type;typedef const value_type*const_iterator;C Compare;bool Dirty;const_iterator LowerBound(const K&)const;const_iterator UpperBound(const K&)const;};

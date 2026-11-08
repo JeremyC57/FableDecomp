@@ -4,6 +4,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
+#include "fable_compiler.h"
 #define CSubtitleRenderer CSubtitleRendererLayout
 #include "engine/CSubtitleRenderer.h"
 #undef CSubtitleRenderer
@@ -114,7 +115,7 @@ class CThing { public:
     unsigned char   _pad00[0x20];
     std::bitset<274> UsingComponents;                   // +0x20
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
-    __forceinline CTCBase& GetTC(ETCInterfaceType type)   // ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z (inline)
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType type)   // ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z (inline)
     {
         ETCInterfaceType key = type;
         CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;

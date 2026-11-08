@@ -21,6 +21,7 @@
 //   VC7.1 gives the string the dead index slot [esp+14h] as retail (2026-10-28 retry: the fix, RELOCATION_MATCH).
 // Device: AttachEffectToStaff_Use is not a retail function; it only keeps the anonymous-namespace body emitted (GOTCHAS,
 //   chunk 390 `_Use` caller).
+#include "fable_compiler.h"
 class C3DVector;
 class CTCBase;
 
@@ -187,14 +188,14 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)type;
         CVectorMap<ETCInterfaceType, CTCBase*>* map = &Components;
         CVectorMap<ETCInterfaceType, CTCBase*>::value_type* it = map->LowerBound(key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline bool GetInterface(T** out, long type)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)type;

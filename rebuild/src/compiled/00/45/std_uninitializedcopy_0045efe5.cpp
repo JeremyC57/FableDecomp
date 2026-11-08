@@ -8,6 +8,7 @@
 //   `__copy_trivial` (`last == first ? result : memmove(result, first, n) + n`), all inline; `__fastcall` on the template definition (the /Gr
 //   algorithm TUs, as the landed 0x00ADC330), the empty-range arm jumping to the shared `ret 8`. VC7.1 keeps the plain-`inline` chain out of
 //   line here (one cdecl call), so the three helpers are `__forceinline` (as the landed __copy in 0x00673700).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
@@ -15,20 +16,20 @@ namespace std {
 
 struct __true_type { __true_type() { } };
 
-__forceinline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+FABLE_FORCEINLINE void* __copy_trivial(const void* __first, const void* __last, void* __result)
 {
     return (__last == __first) ? __result
         : ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first))) + ((const char*)__last - (const char*)__first);
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __true_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __true_type&)
 {
     return (_OutputIter)__copy_trivial(__first, __last, __result);
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_aux(_InputIter __first, _InputIter __last, _OutputIter __result, const __true_type&)
+FABLE_FORCEINLINE _OutputIter __copy_aux(_InputIter __first, _InputIter __last, _OutputIter __result, const __true_type&)
 {
     return __copy_ptrs(__first, __last, __result, __true_type());
 }

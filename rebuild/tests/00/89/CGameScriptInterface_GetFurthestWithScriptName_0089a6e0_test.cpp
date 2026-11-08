@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
@@ -124,7 +125,7 @@ class CScriptThing : public CBaseClass { public:                      // vtable 
     virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroVector : PImp.Data->GetPos(); }
     bool operator==(const CScriptThing& other) const { return PImp.Data->IsSameThing(other.PImp.Data); }
 };
-__forceinline void _Destroy(CScriptThing* first, CScriptThing* last)
+FABLE_FORCEINLINE void _Destroy(CScriptThing* first, CScriptThing* last)
 {
     for (; first != last; ++first)
         first->~CScriptThing();
@@ -134,7 +135,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CScriptThingVector()
+    FABLE_FORCEINLINE ~CScriptThingVector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start) free(_M_start);

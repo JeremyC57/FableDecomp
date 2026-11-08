@@ -8,6 +8,7 @@
 // Shape: no vtable store (the classes are modelled without virtuals); each member is a CDefPointer whose `__forceinline` destructor
 // releases through CDefBase::Release (`dec [ecx+4] ; jne ; call [eax+4]`) and nulls the field (`and [edi],0`, kept in the size TU);
 // pragma optimize("s", on).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 struct CDefVirtual {
@@ -24,7 +25,7 @@ struct CDefBase : CDefVirtual {
 };
 struct CDefPointer {
     CDefBase* m_p;
-    __forceinline ~CDefPointer()           // forced: the size TU would call it out of line
+    FABLE_FORCEINLINE ~CDefPointer()           // forced: the size TU would call it out of line
     {
         if (m_p) {
             m_p->Release();

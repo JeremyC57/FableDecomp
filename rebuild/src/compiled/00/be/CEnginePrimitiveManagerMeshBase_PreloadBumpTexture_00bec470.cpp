@@ -1,7 +1,8 @@
+#include "fable_compiler.h"
 #include <new>
 #include "candidates/preload_bump_texture_compiled.h"
 
-static __forceinline void RefreshResourceList(CResource* resource)
+static FABLE_FORCEINLINE void RefreshResourceList(CResource* resource)
 {
     if (resource != 0 && resource->ResourceList != 0 &&
         resource->ListGeneration != resource->ResourceList->Generation)

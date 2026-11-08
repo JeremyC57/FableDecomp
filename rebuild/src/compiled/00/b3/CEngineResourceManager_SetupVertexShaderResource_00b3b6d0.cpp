@@ -1,4 +1,5 @@
 // CEngineResourceManagerNative::SetupVertexShaderResource -- open vertex bank with flags0x48, replace counted shader resource, bind bank/input. Retail00b3b6d0 complete225bytes. Donor shared resource-manager/bank headers differ: native banks+960 size128, resources+29c0 size8. Nativeview same reviewed00b3b0c0. Callees98b860CreateResource,A5D7C0OpenShaderBank,A5D8B0SetVertexShaderInput,BFE9BCoperator delete; global1436e14. Shared fable_string.h models CCharString; no shaderresource/shader-render-manager headers. Bank virtualslot1 OpenReadOnly009d06f0; callback98ba10 accepts resource in ecx.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __cdecl
@@ -21,9 +22,9 @@ struct CShaderResourcePointer {
  CShaderResource* Data;CCPPointerInfoNative* Info;
  CShaderResourcePointer():Data(0),Info(0){}
  CShaderResourcePointer(const CShaderResourcePointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
- __forceinline ~CShaderResourcePointer(){Release();}
- __forceinline void Release(){if(Info){--Info->RefCount;if(Info->RefCount==0){(Info->Data->*Info->DeleteFunc)();operator delete(Info);}}}
- __forceinline CShaderResourcePointer& operator=(const CShaderResourcePointer& p){CCPPointerInfoNative* info=p.Info;CShaderResource* data=p.Data;if(Info!=info){Release();Data=data;Info=info;if(Info)++Info->RefCount;}return *this;}
+ FABLE_FORCEINLINE ~CShaderResourcePointer(){Release();}
+ FABLE_FORCEINLINE void Release(){if(Info){--Info->RefCount;if(Info->RefCount==0){(Info->Data->*Info->DeleteFunc)();operator delete(Info);}}}
+ FABLE_FORCEINLINE CShaderResourcePointer& operator=(const CShaderResourcePointer& p){CCPPointerInfoNative* info=p.Info;CShaderResource* data=p.Data;if(Info!=info){Release();Data=data;Info=info;if(Info)++Info->RefCount;}return *this;}
 };
 struct CShaderDataBankNative {virtual ~CShaderDataBankNative();virtual bool OpenReadOnly(const CCharString&,unsigned long);unsigned char NativeMembers[0x124];};
 class CShaderRenderManager { public:CShaderResourcePointer CreateResource();}; //0098b860

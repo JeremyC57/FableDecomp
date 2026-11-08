@@ -16,6 +16,7 @@
 //   the temporary's two string destructors (DstFileName first).
 // Label correction: the catalog `swap<CScriptInfo>` is propagated; the 24-byte stride, the CWideString pair and the
 //   callers in the CMusicManager sort name the element.
+#include "fable_compiler.h"
 class CWideString {
 public:
     void* PStringData;                                  // +0x00
@@ -47,7 +48,7 @@ struct pair {
 };
 
 template <class ForwardIter1, class ForwardIter2, class T>
-__forceinline void __iter_swap(ForwardIter1 a, ForwardIter2 b, T*)
+FABLE_FORCEINLINE void __iter_swap(ForwardIter1 a, ForwardIter2 b, T*)
 {
     T tmp = *a;
     *a = *b;

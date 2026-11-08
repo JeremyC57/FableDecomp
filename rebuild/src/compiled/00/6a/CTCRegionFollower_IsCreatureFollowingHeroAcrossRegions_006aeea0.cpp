@@ -13,6 +13,7 @@
 //   rotation of the old HasTC + GetTC form (7 diff lines) is gone. GetSubDef<CCreatureDef> keeps a same-TU noinline body (the landed
 //   CTCWound::AddWound 0x00757B30 stand-in shape, `__declspec(noinline)`, no pragma): an external declaration splits the def
 //   release into two blocks (21 diff lines). CCharString is fable_string.h (GetAsCharArray, NullChar 0x0129AAF4).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "fable_string.h"
 #define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
@@ -113,7 +114,7 @@ public:
     unsigned char  _pad54[0x70 - 0x54];
     CDefClassBase* PDef;                            // +0x70
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc) const
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc) const
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;

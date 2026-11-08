@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 3a87340aecf274e73a490b20b6014273b3c7ba6020c38f5184bb80ea19753901
@@ -11,8 +12,8 @@ inline void* operator new(unsigned int,void* p){return p;}
 struct Tag_0086e3b0 {Tag_0086e3b0(){}};
 // Layout: retail pair has 8-byte key, nested 12-byte vector at+8, byte at+21; stride24.
 struct Inner_0086e3b0 {int* start;int* finish;int* end;Inner_0086e3b0():start(0),finish(0),end(0){}Inner_0086e3b0(const Inner_0086e3b0&);~Inner_0086e3b0();};
-struct Detail_0086e3b0{Inner_0086e3b0 vector;char unused;char flag;Detail_0086e3b0(){}__forceinline Detail_0086e3b0(const Detail_0086e3b0& o):vector(o.vector),flag(o.flag){}};
-struct Element_0086e3b0{unsigned __int64 key;Detail_0086e3b0 second;Element_0086e3b0(){}__forceinline Element_0086e3b0(const Element_0086e3b0& o):key(o.key),second(o.second){}};
+struct Detail_0086e3b0{Inner_0086e3b0 vector;char unused;char flag;Detail_0086e3b0(){}FABLE_FORCEINLINE Detail_0086e3b0(const Detail_0086e3b0& o):vector(o.vector),flag(o.flag){}};
+struct Element_0086e3b0{unsigned __int64 key;Detail_0086e3b0 second;Element_0086e3b0(){}FABLE_FORCEINLINE Element_0086e3b0(const Element_0086e3b0& o):key(o.key),second(o.second){}};
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct Vector_0086e3b0 {
  T* start;T* finish;T* end;
@@ -33,7 +34,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_0086e3b0* first,Elemen
  for(;first!=last;++first)first->~Element_0086e3b0();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_0086e3b0<T>::InsertGrow(T* position,const T& value,const Tag_0086e3b0&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

@@ -33,6 +33,7 @@
 //   m_pFrontEndGraphicBank +0x40, m_pEngine +0x58.
 // Header debt: engine/CDefPointer.h (retail model) declares no null constructor (FableWin ??0..QAE@W4ENullDef@@@Z; enumerator
 //   name unproven), so the CDefPointer below is that header's model plus the ENullDef constructor.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointeeBase.h"
@@ -131,12 +132,12 @@ template <class T> class CDefPointer
 {
 public:
     CDefPointer(ENullDef = ENullDef_DescriptiveNull) : Object(0) {}
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
-    __forceinline ~CDefPointer() { Release(); }
-    template <class U> __forceinline void SetDynamicCast(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
+    FABLE_FORCEINLINE ~CDefPointer() { Release(); }
+    template <class U> FABLE_FORCEINLINE void SetDynamicCast(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); }
     CDefPointeeBase* InternalGetObject() const { return Object; }
     bool IsNull() const { return Object == 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (Object) {
             CDefPointeeBase* object = Object;
@@ -147,7 +148,7 @@ public:
     }
     CDefPointeeBase* Object;                             // +0x00
 private:
-    __forceinline void Assign(CDefPointeeBase* object)
+    FABLE_FORCEINLINE void Assign(CDefPointeeBase* object)
     {
         if (Object != object) {
             Release();

@@ -14,6 +14,7 @@
 // (`dec [ebx+4] ; jne`). With a CDefPointer destructor the lane re-reads the escaped slot `[ebp-4]` at the end
 // (the wave-24k "CDefPointer local re-read from its slot" gap, 102v96); this best form releases explicitly through a raw
 // pointer copy (98v96).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "fable_string.h"
@@ -37,7 +38,7 @@ class CAppearanceDef { public:                            // counted def: vptr, 
     long          m_count;                         // +0x04
     unsigned char _pad_0x08[0x34 - 0x08];
     CAnimationSet m_animations;                    // +0x34
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();

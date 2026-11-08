@@ -25,6 +25,7 @@
 //   block.  The interface map is reached through the non-const LowerBound copy although the thing is const (modelled
 //   with a const_cast in the inline GetTC).
 // Name: Ego_r.pdb `?PlayCameraSoundThroughObservedThing@?A0xa59f4854@@YIXPBVCThing@@ABVCCameraManagerDef@@ABVCCharString@@@Z`.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CSubDefClassBase.h"
@@ -103,13 +104,13 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                        // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                            // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline void* GetTC(long type) const
+    FABLE_FORCEINLINE void* GetTC(long type) const
     {
         long key = type;
         CInterfaceMap* map = const_cast<CInterfaceMap*>(&m_interfaces);

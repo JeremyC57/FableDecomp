@@ -1,14 +1,15 @@
 //00542140 NUISystem::CIconText::SetValue(resource ID); PDB SetValue and CDataBank text-entry signatures recovered.
+#include "fable_compiler.h"
 #include "fable_string.h"
 struct RefCount {mutable long References;void DecRef()const{--References;}long GetRefCount()const{return References;}};struct IVPointeeVirtual {virtual void Slot0()=0;virtual void Delete()const=0;};namespace NGameText { class CTextEntry:public IVPointeeVirtual,public RefCount { public:CWideString GetText()const;void Release()const{DecRef();if(GetRefCount()==0)Delete();}}; }
-template <class T> class CIVCountedPointer { public:T* Object;__forceinline ~CIVCountedPointer(){if(Object){Object->Release();Object=0;}}operator bool()const{return Object!=0;}T* operator->()const{return Object;}};
+template <class T> class CIVCountedPointer { public:T* Object;FABLE_FORCEINLINE ~CIVCountedPointer(){if(Object){Object->Release();Object=0;}}operator bool()const{return Object!=0;}T* operator->()const{return Object;}};
 namespace NGameText {
 class CDataBankTextEntry;
 class CDataBank { public:const CDataBankTextEntry* GetTextInfo(unsigned long)const;CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long,bool)const;};
 }
 using NGameText::CDataBank;
 // GetTextDataBank is an inferred inline accessor name; offsets14/60 are retail evidence.
-struct Game {unsigned char Pad[0x14];CDataBank* Manager;__forceinline CDataBank* GetTextDataBank()const{return Manager;}};struct System {unsigned char Pad[0x60];CDataBank* Manager;__forceinline CDataBank* GetTextDataBank()const{return Manager;}};extern Game* Game_013b86a0;extern System* System_013b871c;extern CWideString Empty_013bca24;
+struct Game {unsigned char Pad[0x14];CDataBank* Manager;FABLE_FORCEINLINE CDataBank* GetTextDataBank()const{return Manager;}};struct System {unsigned char Pad[0x60];CDataBank* Manager;FABLE_FORCEINLINE CDataBank* GetTextDataBank()const{return Manager;}};extern Game* Game_013b86a0;extern System* System_013b871c;extern CWideString Empty_013bca24;
 namespace NUISystem {class CIconText { public:
 virtual void Slot000()=0;
 virtual void Slot001()=0;

@@ -19,6 +19,7 @@
 // Shape: two `if / else if` arms each with its own GetTC lookup (key homed in the dead `thing` argument slot) and its
 // own inline STLport push_back; VC7.1 cross-jumps the two push_back tails (one in-place store block, one overflow
 // call). The converted `const CSteeringAgent*` temporary and the empty `__true_type` tag share that same slot.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 namespace std {
@@ -105,14 +106,14 @@ public:
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const   // the landed 0x007504E0 shape
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const   // the landed 0x007504E0 shape
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

@@ -9,6 +9,7 @@
 // Shape: the end position is widened to 64 bits from the 32-bit unsigned sum (high word `xor eax,eax`, its flags
 // feeding the first `jl`/`jg`), then the `p >= 0 && p <= 0x7fffffff` position test of the data streams
 // (NGameText::CGroupEntry::ReadFromDataStream 0x009C8470 inlines the same predicate); the copy is the /Oi memcpy.
+#include "fable_compiler.h"
 #include <string.h>
 
 class CBankFileEntryUpdateData
@@ -18,7 +19,7 @@ public:
     unsigned long InfoSize;                  // +0x04
     char*         InfoBuffer;                // +0x08
 
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     void ReadInfo(unsigned long offset, void* dest, unsigned long size) const;
 };
 

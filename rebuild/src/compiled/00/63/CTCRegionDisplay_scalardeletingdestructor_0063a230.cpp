@@ -8,6 +8,7 @@
 // data word, which cannot carry the virtual destructor, so CTCBase is restated (as the landed 0x007A62D0).
 // Shape: a `__forceinline` user virtual destructor (a plain inline one stays out of line: 30v59) whose body calls RemoveFromGlobalTCs right after the vtable store; members
 // die in reverse order before the out-of-line CTCBase destructor; a `new` factory pulls the `??_G` into the TU.
+#include "fable_compiler.h"
 class CThing;
 
 class CTCBase { public:
@@ -35,7 +36,7 @@ class CTCRegionDisplay : public CTCBase { public:
     bool          TimeOut;                               // +0x24
     bool          InfoDisplay;                           // +0x25
     bool          UpdateWhilePaused;                     // +0x26
-    __forceinline virtual ~CTCRegionDisplay() { RemoveFromGlobalTCs(); }
+    FABLE_FORCEINLINE virtual ~CTCRegionDisplay() { RemoveFromGlobalTCs(); }
 };
 
 CTCRegionDisplay* NewCTCRegionDisplay()

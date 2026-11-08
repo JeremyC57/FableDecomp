@@ -15,6 +15,7 @@
 //   CCharString&)`; 0x004B91F0 is the landed std::__find_if whose third argument is a predicate class (its other caller,
 //   STLport find_if 0x004B9E70, passes its own predicate word on the stack with edx unused). Bytes unchanged.
 
+#include "fable_compiler.h"
 class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
@@ -66,7 +67,7 @@ struct CEntryList {
     SEntryIterator end() { return SEntryIterator(_M_node); }
     SEntryIterator insert(SEntryIterator pos, const SEntry& x);   // 0x004B99E0
     void push_back(const SEntry& x) { insert(SEntryIterator(_M_node), x); }
-    __forceinline bool Contains(const CCharString& name)
+    FABLE_FORCEINLINE bool Contains(const CCharString& name)
     {
         SEntryNode* end = _M_node;
         SEntryNode* first = end->_M_next;

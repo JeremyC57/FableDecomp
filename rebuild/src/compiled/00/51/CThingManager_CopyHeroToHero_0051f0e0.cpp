@@ -19,6 +19,7 @@
 //   The six source lookups after the type-3 block go through a const CThing reference, i.e. the const GetInterface
 //   over the const LowerBound overload (retail's 0x004365B0); the type-3 and target lookups use the non-const one
 //   (0x0040F020): the two byte-identical copies are the two overloads, one symbol per retail address.
+#include "fable_compiler.h"
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -43,7 +44,7 @@ public:
     CPresenceBits m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     void CopyTCState(CTCBase* source, bool flag);    // 0x004C9F60
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present[wanted]) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -59,7 +60,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
     {
         if (m_present[wanted]) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

@@ -13,6 +13,7 @@
 // ctor (else a dead byte store); the centre out-pointer lives in its own block after the solid-to loop so the 0x4d lookup key
 // takes its frame slot (an address-taken local's slot is reserved for its whole scope).
 // Layout: HoverHornetQueen from Ego_r.pdb (ArenaCentrePos +0x28); CThingCreatureBase InitialPos +0xe8 (landed creature models).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -31,11 +32,11 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

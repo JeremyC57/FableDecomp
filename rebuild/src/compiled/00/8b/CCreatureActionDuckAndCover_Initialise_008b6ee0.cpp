@@ -11,6 +11,7 @@
 // is fetched before the angle maths; `fraction = atan2(X, Y) * (1/2pi)` is a float local tested `< 0 || >= 1` (`test ah,5 ; jnp`
 // then `test ah,1 ; jne`) before the fmod wrap and the negative fix-up. Retail CCombatActionBase is 0x114 bytes (the PDB header
 // is 0x18 larger), so `this` is modelled locally.
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
@@ -20,7 +21,7 @@ class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
-    __forceinline void Normalise()
+    FABLE_FORCEINLINE void Normalise()
     {
         float x = X;
         float y = Y;

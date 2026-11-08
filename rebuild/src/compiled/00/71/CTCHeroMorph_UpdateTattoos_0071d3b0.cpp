@@ -15,6 +15,7 @@
 //   _M_insert_overflow 0x00721060 (landed AddCompositeTexture 0x0071DBD0 model).
 // Layout: CTCHeroMorph Tattoos +0x1c, CustomToBankIndex +0x28 (landed AddTattoo 0x0071DA70); CTattooDef (engine/CTattooDef.h)
 //   TextureLayer +0x2c, ReplacingTextureIndex +0x30, BankIndex +0x34, Blend +0x38, CustomFileName +0x4c, CustomFileNameBase +0x50.
+#include "fable_compiler.h"
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include <stddef.h>
 #include <new>
@@ -124,16 +125,16 @@ __declspec(noinline) bool CDefClassBase::GetSubDef<CTattooDef>(CDefPointer<const
 typedef CDefPointer<const CThingBaseDef> CThingDefPointer;
 class CRGBColour { public:                                         // D3DCOLOR byte order
     unsigned char B, G, R, A;
-    __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-    __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
-    __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
+    FABLE_FORCEINLINE void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
+    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
+    FABLE_FORCEINLINE CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;                       // +0x00
     ECompositeBlendType BlendType;                          // +0x04
     CRGBColour          DiffuseColour;                      // +0x08
     CRGBColour          SpecularColour;                     // +0x0c
-    __forceinline CCompositeBlendDesc(ECompositeBlendType blendType, unsigned long textureIndex, const CRGBColour& diffuse,
+    FABLE_FORCEINLINE CCompositeBlendDesc(ECompositeBlendType blendType, unsigned long textureIndex, const CRGBColour& diffuse,
                                       const CRGBColour& specular)
         : TextureIndex(textureIndex), BlendType(blendType), DiffuseColour(diffuse), SpecularColour(specular) { }
     CCompositeBlendDesc(const CCompositeBlendDesc& other);   // 0x005BA48A
@@ -166,7 +167,7 @@ struct CTextureLayerMap {                                   // CVectorMap<long, 
     bool               Dirty;                               // +0x0d
     void _M_insert_overflow(CTextureLayerPair* pos, const CTextureLayerPair& x, const __false_type& tag,
                             unsigned long fillLength, bool atEnd);   // 0x00721060
-    __forceinline void push_back(const CTextureLayerPair& x)
+    FABLE_FORCEINLINE void push_back(const CTextureLayerPair& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
@@ -175,7 +176,7 @@ struct CTextureLayerMap {                                   // CVectorMap<long, 
         } else
             _M_insert_overflow(_M_finish, x, __false_type(), 1UL, true);
     }
-    __forceinline void Add(const long& key, const CTextureLayer& value)
+    FABLE_FORCEINLINE void Add(const long& key, const CTextureLayer& value)
     {
         push_back(CTextureLayerPair(key, value));
         Dirty = true;

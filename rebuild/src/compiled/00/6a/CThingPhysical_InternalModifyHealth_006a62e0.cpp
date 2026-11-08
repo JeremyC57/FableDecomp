@@ -6,6 +6,7 @@
 //   SetAsFrameUpdated 0x4C7C40; LowerBound non-const 0x40F020 (TC 4/9), const 0x4365B0 (TC 0xad).
 // Layout: retail CThing is 0x10 smaller and CThingPhysical a further 0x8 smaller than the PDB view: MaxHealth/Health/flag bits sit at
 //   +0xb0/+0xb4/+0xbc (fld [esi+0xb4], test byte [esi+0xbc]) where the PDB has +0xc8/+0xcc/+0xd4; the shared header's +0xb4 "Scale" does not fit retail.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -53,15 +54,15 @@ class CThingPhysical : public CThing { public:
     unsigned char _padb8[4];
     unsigned char Damageable : 1;                           // +0xbc
     unsigned char Killable : 1;
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

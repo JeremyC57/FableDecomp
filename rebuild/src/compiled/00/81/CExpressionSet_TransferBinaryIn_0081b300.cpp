@@ -10,6 +10,7 @@
 // with the value-initialised pair as a 6-dword frame temporary, the inlined block read into GetData()
 // (the vector's own address when empty), the re-sort of a dirty map, then a trailing marker read whose
 // unused result drops the fast-path copy (as in the landed COpinionSet 0x007020D0 / CSimVoice 0x00680950).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -24,8 +25,8 @@ class CMemoryDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -39,7 +40,7 @@ class CMemoryDataInputStream { public:
         else
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline void ReadBlock(void* buffer, long size)
+    FABLE_FORCEINLINE void ReadBlock(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -55,7 +56,7 @@ class CMemoryDataInputStream { public:
         else
             ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
 struct SExpressionValue {                  // 20-byte mapped value

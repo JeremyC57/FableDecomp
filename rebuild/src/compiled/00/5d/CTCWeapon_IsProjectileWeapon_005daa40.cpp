@@ -7,18 +7,19 @@
 // 0x005DAA00).
 // Shape: /O2; the class comes from the inline GetWeaponClass() (copy, read, release) so the compare follows the release
 // (`xor eax,eax ; cmp esi,3 ; sete al`); comparing inside the def-pointer scope computes it before the release into bl.
+#include "fable_compiler.h"
 enum EWeaponType { WEAPON_TYPE_NONE };
 enum EWeaponClass { WEAPON_CLASS_NONE, WEAPON_CLASS_1, WEAPON_CLASS_2, WEAPON_CLASS_PROJECTILE };
 class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
-    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+    FABLE_FORCEINLINE void Release() { if (--IVRefCount == 0) Delete(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
-    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CWeaponDef : public CDefPointeeBase { public:

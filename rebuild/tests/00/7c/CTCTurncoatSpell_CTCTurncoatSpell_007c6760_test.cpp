@@ -1,4 +1,5 @@
 // Behaviour test for CTCTurncoatSpell::CTCTurncoatSpell (0x007c6760): helper timer for ability 5, ability-cast component marked, turncoat def loaded, ability level read, per-level tables turned into frames and fractions.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -25,14 +26,14 @@ public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(key);
         return (it == map->last || type < it->type ? map->last : it)->component;
     }
-    __forceinline CTCBase* GetTCC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTCC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

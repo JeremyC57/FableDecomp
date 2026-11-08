@@ -5,6 +5,7 @@
 //   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: the batch ATTEMPTS.tsv, family FISTP.
 // Identity: descriptive. Own common base constructor00c6e6a0 initializes polymorphic lock at4, Win32 section8,volume32/crossfade36. Full destructor00c6e630 resets common object root012b5868 at00c6e64a; lock deleting destructor00c5d5b0 has no further base. Sibling derived constructor00c6d9d0 starts its own six gain/step pairs at40, proving base40 rather than168. Concrete constructors00c70120/00c70b00 round the scratch raw address168 upward to16-byte alignment and store pointer440. Derived scratch raw combines64short history+128short input+8short alignment slack at40; pointer440. Own block copy reads/writes128bytes of short history. Typed two voice pairs start444; constructor aligned coefficient pointers and SetupVoice stores prove voice fields, sizes292/676, and short coefficient data. Class/field names for this library remain descriptive; no library PDB identity claimed. Global0143bc2c installed at00c4d3af after allocating1d8 and calling ctor00c3e520. True ctor chain00c3e520->00c4d000 initializes base012b5b80 and four20byte pool objects at4/18/2c/40; pool ctor00c3c8a0 and full dtor00c3caa0 show true commonroot012b5868. Full base dtor00c3e2a0 resets root at00c3e308; master dtor00c3f380 chains base. Own ctor zeros TapTable1b8 and outputChannels1bc; inactive derived fields54..1b7 and1c0..1d7 explicitly unproven. Descriptive master name retained from existing library models, no original PDB identity claimed. SetupVoice converts gains with original bare FISTP32, clamps unsigned results32767, splits impulse Delay word50 into quotient and low3 bits, prepares short coefficients through 00c78970. Original helper descriptive catalog spelling retained.
 // Layout: true root/mixer and master ancestry, typed short coefficients and impulse25shorts+ushortDelay.
+#include "fable_compiler.h"
 #include <stddef.h>
 class CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenLibraryObject_012B5868(){}};
 struct CRITICAL_SECTION{void* DebugInfo;long LockCount,RecursionCount;void* OwningThread;void* LockSemaphore;unsigned long SpinCount;};
@@ -29,7 +30,7 @@ struct SUnprovenImpulse52{short Values[25];unsigned short Delay;};
 #include <math.h>
 #endif
 #include "libpk/FtoL.h"
-static __forceinline unsigned long RoundGain(float value){
+static FABLE_FORCEINLINE unsigned long RoundGain(float value){
 #ifdef _MSC_VER
 return (unsigned long)FtoL(value);
 #else

@@ -8,6 +8,7 @@
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
 //   Was: NScript::CEntityScriptBase with SetPredicate on the local CIsThingAlive and a non-const
 //   IsActiveThreadTerminating.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -26,7 +27,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
-    virtual __forceinline ~CScriptGameResourceObjectBase() {}
+    virtual FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() {}
 };
 
 struct CCountedPointerHandle {                          // CCountedPointer<CScriptedThingImp>
@@ -65,7 +66,7 @@ struct CMovieImpPointer {
 
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x01260EF4
     CMovieImpPointer PImp;                              // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() {}
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() {}
 };
 
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)

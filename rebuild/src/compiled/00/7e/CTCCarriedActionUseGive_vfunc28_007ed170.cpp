@@ -17,6 +17,7 @@
 //   lookup is HasTC + the ternary GetTC (const LowerBound) with the early return inside; the carried thing is a named
 //   local read before the targeted-thing vcall (frees eax for the vptr: `mov eax,[esi]`); the non-const GetTC forms the
 //   map pointer before the key local (`lea ecx,[key]` after `lea esi,[thing+44h]` order flips otherwise).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -27,14 +28,14 @@ class CThing { public:
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         CInterfaceMap* map = &m_interfaces;
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap::value_type* it = map->LowerBound(type);
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline T* GetTCConst(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

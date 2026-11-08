@@ -1,4 +1,5 @@
 // Behaviour test for 0095ebf0: body copied from src/0095ebf0.cpp (CAIStateGroup_BoastingCrowdMember::OnReplace), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -18,7 +19,7 @@ class CThing { public:
     unsigned char m_flags91;
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

@@ -1,4 +1,5 @@
 // Behaviour test for 0x009ECB70 CConsole::ConsoleRunScript: the source body verbatim (comments and CRT declarations dropped), mocks for its callees.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,7 +32,7 @@ public:
     CWideString ToWideString() const;                   // 0x0099E480
     long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
-    __forceinline bool EndsWith(const CCharString& suffix) const
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
     {
         long offset = Length() - suffix.Length();
         if (offset >= 0)

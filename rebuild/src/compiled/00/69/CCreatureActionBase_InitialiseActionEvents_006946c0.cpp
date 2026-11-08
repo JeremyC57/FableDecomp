@@ -29,6 +29,7 @@
 //   NAnimationEvents::CManager::GetEventNames / GetEventTimeInSeconds (Ego_r QBE spellings). The map type (map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >
 //   CCreatureActionBase::RegisteredActionEvents, Ego_r.pdb static) and its STLport _M_find are modelled descriptively here
 //   (one-word node view); see NOTES.md.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 void* __cdecl operator new(unsigned int size);
@@ -40,7 +41,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
     long FindCharPos(char c) const;                         // 0x0099E5A0
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
-    __forceinline long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
+    FABLE_FORCEINLINE long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
 };
 namespace std {
 template <class _Tp> class allocator { };
@@ -50,12 +51,12 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    static __forceinline void _Destroy(_Tp* first, _Tp* last)
+    static FABLE_FORCEINLINE void _Destroy(_Tp* first, _Tp* last)
     {
         for (; first != last; ++first)
             first->~_Tp();
     }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

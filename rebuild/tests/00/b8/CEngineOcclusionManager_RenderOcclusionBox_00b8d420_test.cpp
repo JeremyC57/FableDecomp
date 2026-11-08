@@ -2,6 +2,7 @@
 // Behavior-only fixture. Target, PrepareForRender and buffer-draw bodies are
 // pasted unchanged. SDK calls and unrelated update implementations are checked
 // boundaries on actual constructed objects; native layouts/slots are not claimed.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,9 +29,9 @@ class CShaderRenderManager{public:const CVertexShaderConstantLayout*CurrentVSCon
  void ApplyVertexShader(const CVertexShader&v,bool flag){CHECK(&v==expectedVS&&!flag);record(1);}void ApplyPixelShader(const CPixelShader&p){CHECK(&p==expectedPS);record(2);}void SetWorldTransform(const CMatrix3x4&t){CHECK(&t==expectedTransform);for(int i=0;i<12;++i)CHECK(t.Data[i]==(float)i);}
  void SetVSConstants(long reg,const void*data,unsigned long count){CHECK(reg==7&&count==presetCount&&data==CurrentVSConstantLayout->ReservedPresets.PeekAsCArray());if(count){const CVertexShaderConstant*v=static_cast<const CVertexShaderConstant*>(data);CHECK(v[0].X==1.0f&&v[0].Y==2.0f&&v[0].Z==3.0f&&v[0].W==4.0f&&v[1].X==5.0f&&v[1].Y==6.0f&&v[1].Z==7.0f&&v[1].W==8.0f);}record(5);}void UpdatePixelShader(){record(6);}void UpdatePixelShaderConstants(){record(7);}void UpdateAmbient(){record(8);}void UpdateFogColour(){record(9);}void UpdateLightGlobals(){record(10);}void UpdateCombinedProjectionTransform(){record(11);}
  void UpdateBoneTransform(){CHECK(false);}void UpdateWorldSpaceTextureTransform(){CHECK(false);}void UpdateObjectSpaceTextureTransform(){CHECK(false);}void UpdateWorldSpaceFogTransform(){CHECK(false);}void UpdateObjectSpaceFogTransform(){CHECK(false);}void UpdateObjectSpaceLighting(unsigned long){CHECK(false);}void UpdateWorldSpaceLighting(){CHECK(false);}void UpdateLocalisedSphereMapping(){CHECK(false);}void ResetWorldTransform(){CHECK(false);}void UpdateCameraPos(){CHECK(false);}
- __forceinline void SelectVertexBuffer(CVertexBufferWin32&vb){D3DDevice->SetStreamSource(0,vb.GetD3DVertexBuffer(),0,vb.GetStride());}
- __forceinline void DrawBuffersIndexed(CVertexBufferWin32&vb,unsigned long first,unsigned long count,CIndexBuffer&ib,unsigned long start,unsigned long primitives,EPrimitiveType type){SelectVertexBuffer(vb);D3DDevice->SetIndices(ib.GetD3DIndexBuffer());if(type==PT_NULL)type=ib.GetPrimitiveType();RenderManager->RealiseRenderState();D3DDevice->DrawIndexedPrimitive(static_cast<D3DPRIMITIVETYPE>(type),0,first,count,start,primitives);}
-    __forceinline void PrepareForRender(unsigned long flags)
+ FABLE_FORCEINLINE void SelectVertexBuffer(CVertexBufferWin32&vb){D3DDevice->SetStreamSource(0,vb.GetD3DVertexBuffer(),0,vb.GetStride());}
+ FABLE_FORCEINLINE void DrawBuffersIndexed(CVertexBufferWin32&vb,unsigned long first,unsigned long count,CIndexBuffer&ib,unsigned long start,unsigned long primitives,EPrimitiveType type){SelectVertexBuffer(vb);D3DDevice->SetIndices(ib.GetD3DIndexBuffer());if(type==PT_NULL)type=ib.GetPrimitiveType();RenderManager->RealiseRenderState();D3DDevice->DrawIndexedPrimitive(static_cast<D3DPRIMITIVETYPE>(type),0,first,count,start,primitives);}
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.PeekAsCArray(),

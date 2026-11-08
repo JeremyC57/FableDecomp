@@ -8,6 +8,7 @@
 // CCombatActionBase::Initialise @ 0x00857520 (direct base call, last).
 // Shape: the UNCHECKED out-parameter lookup in an inline accessor (absent arm reads the key word); VC duplicates the two-call
 // tail into both arms. The class adds no members (sizeof 0x114, ctor 0x00925820).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -29,7 +30,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.Get()->GetTC(TCI_KRAKEN, &kraken);

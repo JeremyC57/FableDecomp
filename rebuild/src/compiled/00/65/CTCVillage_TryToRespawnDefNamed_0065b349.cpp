@@ -17,6 +17,7 @@
 // Shape: `this` is spilled to [ebp-4] for the end re-read; the dummy binds IS_THING_ALIVE's const reference through a
 //        derived-to-base temporary homed in the dead `defName` slot, which also holds the GetTC key (0xD6, hoisted into
 //        ebx) and the villager pointer temporary of IS_THING_DEAD; the matching dummy's CreateVillager result is returned.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -32,7 +33,7 @@ class CBaseObject { public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

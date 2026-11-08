@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // std::vector::resize(unsigned int n, const T& value) -- Resize a counted-pointer vector with explicit destruction on shrink.
@@ -21,7 +22,7 @@ template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_da
 template<class T,class A=allocator<T> >class vector {
 public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;
     unsigned int size()const{return (unsigned int)(_M_finish-_M_start);}
-    __forceinline T* erase(T* first,T* last){T* result=__copy(last,_M_finish,first,random_access_iterator_tag(),(int*)0);__destroy_aux(result,_M_finish,__false_type());_M_finish=result;return first;}
+    FABLE_FORCEINLINE T* erase(T* first,T* last){T* result=__copy(last,_M_finish,first,random_access_iterator_tag(),(int*)0);__destroy_aux(result,_M_finish,__false_type());_M_finish=result;return first;}
     void resize(unsigned int n,const T& value){if(n<size())erase(_M_start+n,_M_finish);else _M_fill_insert(_M_finish,n-size(),value);}
 protected:void _M_fill_insert(T*,unsigned int,const T&);
 };

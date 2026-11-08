@@ -1,6 +1,7 @@
 // Behaviour test for NTCScriptedControl::CActionTalkToThing::DisplayText (0x007132C0): model and body verbatim, callees stubbed;
 // covers the plain subtitle (flags 0x13 / 0x813, duration / fps, background cleared only when the sound has not started),
 // the two- and three-button questions, and the temporary lifetimes around each SetText.
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -99,9 +100,9 @@ public:
     CCharString QuestionButton1;                // +0x94
     CCharString QuestionButton2;                // +0x98
     CCharString QuestionButton3;                // +0x9c
-    __forceinline CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
-    __forceinline CFontBank* GetFont() const { return PControl->PThing->PeekComponent()->Font; }
-    __forceinline CPlayerGui* GetPlayerGui() const { return g_pPlayerGui; }
+    FABLE_FORCEINLINE CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
+    FABLE_FORCEINLINE CFontBank* GetFont() const { return PControl->PThing->PeekComponent()->Font; }
+    FABLE_FORCEINLINE CPlayerGui* GetPlayerGui() const { return g_pPlayerGui; }
     void DisplayText();
 };
 

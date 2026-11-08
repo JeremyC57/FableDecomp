@@ -18,6 +18,7 @@
 //   zero-stores the __copy_ptrs tag in the dead argument slot (the two __copy_ptrs calls share their pushes).
 // Layout: the retail polymorphic def-class chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
 //   CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, 0x28 bytes, vtable 0x01230BCC).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
 class CFireHeartPatternDef : public CDefClassBase {     // 0x34 bytes in retail (Ego_r.pdb 60: Dinkumware vector<bool>)
@@ -45,7 +46,7 @@ void __fastcall _Construct(_T1* __p, const _T2& __val);                         
 template <class _ForwardIterator>
 void __fastcall _Destroy(_ForwardIterator __first, _ForwardIterator __last);                    // 0x00CDB7C0
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

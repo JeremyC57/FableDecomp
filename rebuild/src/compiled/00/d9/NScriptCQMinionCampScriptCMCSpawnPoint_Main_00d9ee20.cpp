@@ -11,6 +11,7 @@
 // Layout: entity-script model of the landed CDrinkingHobbe::Main 0x00D9BF60 (GameCalls interface copied from it).
 //   CQ_MinionCampScript (Ego_r.pdb 208 bytes): retail = PDB - 0x14 with 4-byte STLport lists, so MinionsSummoned +0x4b,
 //   CurrentStage +0x74, ShouldSpawn +0x98 (PDB +0xbc).
+#include "fable_compiler.h"
 class CCharString;
 class C3DVector;
 class CCPPointerInfo;
@@ -22,7 +23,7 @@ class CCPPointerInfo;
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+FABLE_FORCEINLINE NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }

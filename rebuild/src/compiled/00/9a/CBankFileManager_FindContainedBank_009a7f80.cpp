@@ -19,6 +19,7 @@
 //          into the caller's local, so the local's address is formed before the branch and each arm pushes its own source
 //          (`add eax,14h ; push eax ; jmp` / `push ebx`). A `?:` in the declaration, or a reference-returning resolver,
 //          shares one `push eax` instead (1 byte longer).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 
 class CCharStringData;
@@ -35,7 +36,7 @@ public:
 };
 
 #include "engine/CCountedPointer.h"
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 
 namespace std {

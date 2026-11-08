@@ -9,6 +9,7 @@
 // value and, if not yet queued, flag it and append it to the dirty list. `this` is never read (`ret`). SetState must be
 // `__forceinline` (plain inline stays out of line); the mask test is written `(m_captureMask & state.m_captureMask) == 0`
 // with `|=` (a cached `mask` local swaps edx/esi).
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
@@ -33,7 +34,7 @@ class CRenderStateManager { public:
     unsigned char        _pad2818[0x2944 - 0x2818];
     CTrackedRenderState  m_fogEnable;              // +0x2944
 
-    __forceinline void SetState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value)
     {
         if (state.m_value != value) {
             if ((m_captureMask & state.m_captureMask) == 0) {

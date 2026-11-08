@@ -19,12 +19,13 @@
 //   negated side temporary; a direct `C3DVector(dx, dy, 0)` or `a - b` + `Z = 0` duplicates the reciprocal instead
 //   (`fld st(0) ; fmul st(3)`). The side vector is (dir.Y, -dir.X, 0) and is negated for the right-hand ambush.
 //   The speech id is read through a scoped CDefPointer copy (AddRef + inline Release with no null test on release).
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -43,7 +44,7 @@ class C3DVector { public:
     inline C3DVector(const C2DVector& v);
     C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    __forceinline void Normalise() { float r = FastInvSqrt(X * X + Y * Y + Z * Z); X *= r; Y *= r; Z *= r; }
+    FABLE_FORCEINLINE void Normalise() { float r = FastInvSqrt(X * X + Y * Y + Z * Z); X *= r; Y *= r; Z *= r; }
 };
 class C2DVector { public:
     float X;    // +0x00

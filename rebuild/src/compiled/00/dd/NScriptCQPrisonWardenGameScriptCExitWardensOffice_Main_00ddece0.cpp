@@ -5,13 +5,14 @@
 // ScriptThing vtable1238C8C slot20 MsgIsUsedBy4AAB10. Signatures from native manifest and PDB.
 // Naming wave 35: identity reg 00dddf4b "ExitWardensOffice" in 00ddde20; Alloc 00ddec30; vtable 012dccf4 slot 1; PDB ?Main@CExitWardensOffice@CQ_PrisonWardenGameScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CExitWardensOffice::Main (wave3/labels_alloc.tsv); PDB ?Main@CExitWardensOffice@CQ_PrisonWardenGameScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CExitWardensOffice@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 #include "fable_string.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 // VC7.1 single-inheritance member pointers contain one code address. View the vtable entry
 // by reference to retain virtual dispatch shape; fixture builds genuine member entries for each host ABI.
 namespace NScript { class CPredicateBase; }
-template<class M> __forceinline const M& VirtualSlot(void* table,long n) {
+template<class M> FABLE_FORCEINLINE const M& VirtualSlot(void* table,long n) {
 #ifdef _MSC_VER
  typedef char NativeMemberPointerMustBeOneWord[sizeof(M)==sizeof(void*)?1:-1];
 #endif

@@ -23,6 +23,7 @@
 //   destructor and inline_depth limits the earlier sites.
 // Naming wave 35: identity reg 00d83687 "HS_Screamer" in 00d835d0; Alloc 00d83e60; vtable 012d477c slot 1; PDB ?Main@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHS_Screamer::Main (wave3/labels_alloc.tsv); PDB ?Main@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHS_Screamer@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_HeroSoulsMotherScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -40,7 +41,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+    FABLE_FORCEINLINE ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -63,14 +64,14 @@ class CScriptThing : public CBaseClass { public:                           // vt
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
-    __forceinline ~CScriptThing() { }                   // out-of-line copy 0x004AA840
+    FABLE_FORCEINLINE ~CScriptThing() { }                   // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -108,8 +109,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
 CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }

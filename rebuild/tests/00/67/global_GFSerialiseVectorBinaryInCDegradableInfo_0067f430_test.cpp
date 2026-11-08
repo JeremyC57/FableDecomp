@@ -1,5 +1,6 @@
 // Behaviour test for 0x0067F430 GFSerialiseVectorBinaryIn<CDegradableInfo> (source body copied; stream overflow and
 // the out-of-line resize stubbed). 32-bit `long`s of the source are written as int so the g++ x64 build reads 4-byte words.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -26,7 +27,7 @@ static int g_overflow = 0, g_resize = 0, g_zeroDefault = 0;
 
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char* buffer, int size);   // 0x00993CA0
-    __forceinline void Read(void* buffer, int size)
+    FABLE_FORCEINLINE void Read(void* buffer, int size)
     {
         __int64 newPosition = (__int64)(unsigned int)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -89,7 +90,7 @@ void CPersistTraits<CDegradableInfo>::TransferBinaryIn(CMemoryDataInputStreamRea
     stream->Read(&value->BlocksNavigation, 1);
 }
 
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, int* out)
 {
     int value;
     stream.Read(&value, sizeof(value));

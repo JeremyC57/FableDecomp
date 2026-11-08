@@ -10,6 +10,7 @@
 // indexing `Narrators[i]` re-reads the array base each iteration); the key's data block is read
 // once after the entry test, i.e. copied into a local inside the non-empty arm of the rotated loop (the landed
 // 0x004AF740 shape).
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
@@ -18,7 +19,7 @@ long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 class CCharString { public:
     CCharStringData* m_pData;
 };
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.m_pData;
     CCharStringData* b = sb.m_pData;

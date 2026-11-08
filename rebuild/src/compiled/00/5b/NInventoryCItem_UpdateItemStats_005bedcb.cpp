@@ -22,6 +22,7 @@
 //   unattributed_GetInterface0x53 0x005BB999.
 // Shape: every interface fetch goes through the inline out-parameter GetInterface (the key words then share one frame slot,
 //   the last one the dead argument slot); writing the lookups out longhand gives a third frame word.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
@@ -69,7 +70,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     std::bitset<274> m_present;               // +0x20
     CInterfaceMap m_interfaces;            // +0x44
-    template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long interfaceType)
     {
         if (m_present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -99,7 +100,7 @@ struct CItem {
     CCountedPointer_PerItemData PPerItemData;   // +0x08
     long AverageBoughtPrice;               // +0x10
     void UpdateItemStats(CThing* thing);
-    __forceinline void EnsurePerItemData() { if (!PPerItemData.Data) PPerItemData.Reset(new CPerItemData()); }
+    FABLE_FORCEINLINE void EnsurePerItemData() { if (!PPerItemData.Data) PPerItemData.Reset(new CPerItemData()); }
 };
 
 void CItem::UpdateItemStats(CThing* thing)

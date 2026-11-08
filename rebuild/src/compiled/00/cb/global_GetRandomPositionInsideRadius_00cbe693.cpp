@@ -12,6 +12,7 @@
 //   the (double)2pi inline, and `sin(xy) * (cosYZ * length)` grouped so cos*length is one CSE kept on the x87 stack
 //   (`fld [ebp-4] ; fmul len`, then `fld st(1) ; fmulp` per component); ungrouped `* cosYZ * length` homes the angle
 //   instead (130v131).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <math.h>
 #pragma intrinsic(sin, cos)
@@ -19,11 +20,11 @@ static const float TWO_PI = 6.2831855f;
 class C3DVector {
 public:
     float X, Y, Z;
-    __forceinline C3DVector() { }
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
+    FABLE_FORCEINLINE C3DVector() { }
+    FABLE_FORCEINLINE C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
     // Ego_r.pdb ?InitialiseFromAngles@C3DVector@@QAEABV1@MMM@Z: angles in turns, length
-    __forceinline const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
+    FABLE_FORCEINLINE const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
     {
         float cosYZ = (float)cos(angleYZ * (double)TWO_PI);
         X = (float)(sin(angleXY * (double)TWO_PI) * (cosYZ * length));

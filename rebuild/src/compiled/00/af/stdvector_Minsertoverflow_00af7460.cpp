@@ -17,6 +17,7 @@
 // Layout: CComponentInstance (Ego_r.pdb, 0x14): CBaseClass vptr, Component CCountedPointer<CPSCBase> +4, Enabled +0xC,
 //   InstanceName +0x10; RTTI .?AVCComponentInstance@NParticleEngine@@ has the single base CBaseClass (rtti_bases.tsv), so
 //   the shared engine/CBaseClass.h is the base (VC7.1 drops the dead CBaseClass vtable store of the implicit copy).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -46,7 +47,7 @@ template <class _T1, class _T2> struct pair {
     _T2 second;
 };
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
@@ -85,8 +86,8 @@ template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first,
 
 template <class _Tp> class allocator {
 public:
-    __forceinline _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    __forceinline void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+    FABLE_FORCEINLINE _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
 };
 
 template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
@@ -105,14 +106,14 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
-    __forceinline size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    FABLE_FORCEINLINE size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 protected:
-    __forceinline void _M_clear()
+    FABLE_FORCEINLINE void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;

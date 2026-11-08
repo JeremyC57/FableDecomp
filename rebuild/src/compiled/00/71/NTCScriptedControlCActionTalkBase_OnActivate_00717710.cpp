@@ -27,6 +27,7 @@
 //   twice); the target's tests call GetThing() again for each use except the creature local; the target's living test
 //   is an inline helper over one GetThing() result; the mode manager pointer starts null and is tested again before the
 //   mode is re-added.
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -44,7 +45,7 @@ public:
     unsigned long ThingTypeFlags;                       // +0x6C (bit 3 = creature)
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -57,7 +58,7 @@ public:
         }
         return false;
     }
-    template<class T> __forceinline bool GetConstInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(const T** ppOut, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -135,7 +136,7 @@ class CTCScriptedControl { public:
     CThing* ParentThing;                                // +0x04
 };
 
-__forceinline bool IsLivingThing(const CThing* thing) { return thing && !thing->Dead; }
+FABLE_FORCEINLINE bool IsLivingThing(const CThing* thing) { return thing && !thing->Dead; }
 
 namespace NTCScriptedControl {
 

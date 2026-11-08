@@ -1,6 +1,7 @@
 // Behaviour test for 00aed2f0: final.cpp copied verbatim (32-bit `long` under g++; `g++ -fpermissive` not needed), every
 // declared callee stubbed below so the fade, the visibility decisions and the rebuilt bounding sphere are observable.
 // NParticleEngine::CParticleEmitter::IsVisible(float, const CEnginePrimitivePrepareInfo*)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -133,7 +134,7 @@ public:
     float                       FadeInEnd;             // +0x168
     float GetFadeAlpha(float distance) const;         // 0x00AECD70
     bool IsSleeping() const { return Sleeping; }
-    __forceinline void UpdateSystemsVisibility(float alpha)
+    FABLE_FORCEINLINE void UpdateSystemsVisibility(float alpha)
     {
         for (CParticleSystemPtr* it = ParticleSystems._M_start; it != ParticleSystems._M_finish; ++it) {
             CParticleSystem* system = it->Data;
@@ -141,7 +142,7 @@ public:
             system->Visible = system->Enabled && !system->Dead && system->GlobalAlpha > 0.0f;
         }
     }
-    __forceinline bool BuildBoundingSphere(float distance, const CEnginePrimitivePrepareInfo* info, float alpha)
+    FABLE_FORCEINLINE bool BuildBoundingSphere(float distance, const CEnginePrimitivePrepareInfo* info, float alpha)
     {
         bool allValid = true;
         C3DBoundingSphere sphere;

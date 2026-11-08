@@ -9,6 +9,7 @@
 // +0xfc/+0x108 (modelled locally). The initial simulation's Positions is at +0x24.
 // Shape: the non-sim copy is the inline SGI random-access copy (n = (last - first), 16-byte elements; the result
 // pointer runs in a copy so the argument is re-read after the loop).
+#include "fable_compiler.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix4x4;
 class C3DGroup2;
@@ -50,7 +51,7 @@ class CParticleSimulation { public:                       // Ego_r.pdb, retail 0
     unsigned char _rest[0x50];                     // +0x30 .. +0x80
 };
 
-template<class In, class Out> __forceinline Out CopyVectors(In first, In last, Out result)
+template<class In, class Out> FABLE_FORCEINLINE Out CopyVectors(In first, In last, Out result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;

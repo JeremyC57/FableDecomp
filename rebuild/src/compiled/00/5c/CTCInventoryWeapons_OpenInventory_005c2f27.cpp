@@ -9,16 +9,17 @@
 // dword pairs into the box at [ebp-10h] through a user (forceinline) C2DVector copy ctor (`lea ecx,[esi+0A4h]` address forms); the temporaries release in reverse order (null test, `dec [reg+4] ; jne`, slot 1).
 // Layout: retail CTCInventoryBase PDef +0x68 (CDefPointer<const CInventoryDef>); the weapons box position/extents at
 // CInventoryDef +0xA4/+0xAC (retail offsets; names descriptive).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C2DVector { public:
     float X, Y;
-    __forceinline C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
+    FABLE_FORCEINLINE C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 class C2DBoxF { public:
     C2DVector TL;
     C2DVector Extents;
-    __forceinline C2DBoxF(const C2DVector& tl, const C2DVector& extents) : TL(tl), Extents(extents) {}
+    FABLE_FORCEINLINE C2DBoxF(const C2DVector& tl, const C2DVector& extents) : TL(tl), Extents(extents) {}
 };
 class CDefPointeeBase { public:
     virtual void v00();
@@ -32,15 +33,15 @@ class CInventoryDef : public CDefPointeeBase { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
-    __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 
 struct CTCInventoryBase_Weapons {
     unsigned char _pad00[0x68];
     CDefPointer<CInventoryDef> PDef;            // +0x68
-    __forceinline CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void OpenInventory();                       // 0x005BD4EA
     void SetInventoryAnimRenderBox(const C2DBoxF& box);   // 0x005BC58F
 };

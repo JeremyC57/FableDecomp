@@ -12,6 +12,7 @@
 //   engine state 0x01436E8C whose +0x198 provider yields the current environment (slot 1, landed 0x00B80790) and its
 //   settings (slot 1); the settings' sky block (+0x54) holds the base-band colour at +0x50.
 // Layout: engine/CEngineSkyRenderer.h (BaseBandVertexShader +0x118, BaseBandPixelShader +0x138).
+#include "fable_compiler.h"
 #include "engine/CEngineSkyRenderer.h"
 
 class C4DVector { public: float X, Y, Z, W; };
@@ -22,7 +23,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -42,7 +43,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     unsigned char        _pad28e0[0x3a24 - 0x28e0];
     unsigned char        m_captureBlockMarker[4];  // +0x3A24
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -57,7 +58,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
@@ -69,7 +70,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);
@@ -102,7 +103,7 @@ public:
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, const C4DVector* value);   // 0x00989B50
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

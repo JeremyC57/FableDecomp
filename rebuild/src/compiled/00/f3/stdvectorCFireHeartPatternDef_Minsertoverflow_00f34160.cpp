@@ -18,6 +18,7 @@
 //   A plain inline _Construct inlines every copy (399v330); `#pragma inline_depth(1)` also stops the destroy loop (325v330).
 // Layout: the retail polymorphic def-class chain from the shared header (FABLE_RETAIL_DEF_CLASS_BASE: CDefClassBase :
 //   CDefPointeeBase : CResource : CIVCountedPointeeBase, 0x28 bytes); CFireHeartPatternDef has no user ctor/dtor in either PDB.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
@@ -73,20 +74,20 @@ public:
 namespace std {
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 template <class _T1, class _T2> void __fastcall _Construct(_T1* __p, const _T2& __val);           // 0x00D34EC0
-template <class _Tp> __forceinline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for (; __first != __last; ++__first)
         _Destroy(&*__first);
 }
 template <class _ForwardIterator>
-__forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 {
     __destroy_aux(__first, __last, __false_type());
 }
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -94,7 +95,7 @@ __forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter _
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)
@@ -103,7 +104,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
 }
 
 template <class _Tp, class _Alloc>
-__forceinline void vector<_Tp, _Alloc>::_M_clear()
+FABLE_FORCEINLINE void vector<_Tp, _Alloc>::_M_clear()
 {
     _Destroy(this->_M_start, this->_M_finish);
     this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);

@@ -1,4 +1,5 @@
 // behaviour test for 0x00903BC0 CScriptGameResourceObjectScriptedThing::MoveToPosition (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CScriptGameResourceObjectScriptedThing::MoveToPosition(const C3DVector& position, float proximity, EScriptEntityMoveType moveType, bool waitUntilDone, bool flag) -- queue a move-to-position action for the live scripted thing and optionally wait for its tasks
@@ -38,7 +39,7 @@ struct CThing_Retail {
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -52,7 +53,7 @@ struct CThing_Retail {
         return false;
     }
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterfaceBit(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceBit(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {

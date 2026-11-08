@@ -1,5 +1,6 @@
 // Behaviour test for 00a85420: src/00a85420.cpp copied verbatim; malloc/memmove are the real CRT, the two element
 // copies are the source's own same-TU bodies. __uninitialized_copy<SNavLayerRecord>
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -65,7 +66,7 @@ template <class T> struct _Vector_base {
     T* _M_start;
     T* _M_finish;
     _STLP_alloc_proxy<T> _M_end_of_storage;
-    __forceinline _Vector_base(unsigned int n, const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
+    FABLE_FORCEINLINE _Vector_base(unsigned int n, const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0)
     {
         _M_start = _M_end_of_storage.allocate(n);
         _M_finish = _M_start;
@@ -75,7 +76,7 @@ template <class T> struct _Vector_base {
 template <class T, class IsPOD> struct vector : _Vector_base<T> {
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     allocator<T> get_allocator() const { return allocator<T>(); }
-    __forceinline vector(const vector& x) : _Vector_base<T>(x.size(), x.get_allocator())
+    FABLE_FORCEINLINE vector(const vector& x) : _Vector_base<T>(x.size(), x.get_allocator())
     {
         IsPOD tag;
         this->_M_finish = __uninitialized_copy((const T*)x._M_start, (const T*)x._M_finish, this->_M_start, tag);
@@ -86,13 +87,13 @@ struct CNavPairMap {                                    // CVectorMap<unsigned _
     vector<SNavPair, __false_type> Entries;             // +0x00
     CKeyPairCompareLess            Compare;             // +0x0c
     bool                           Dirty;               // +0x0d
-    __forceinline CNavPairMap(const CNavPairMap& o) : Entries(o.Entries), Compare(o.Compare), Dirty(o.Dirty) { }
+    FABLE_FORCEINLINE CNavPairMap(const CNavPairMap& o) : Entries(o.Entries), Compare(o.Compare), Dirty(o.Dirty) { }
 };
 struct SNavLayerRecord {                                // 0x28 bytes
     vector<unsigned int, __true_type> Indices;          // +0x00
     vector<SNavCell, __false_type>    Cells;            // +0x0c
     CNavPairMap                       Map;              // +0x18
-    __forceinline SNavLayerRecord(const SNavLayerRecord& o) : Indices(o.Indices), Cells(o.Cells), Map(o.Map) { }
+    FABLE_FORCEINLINE SNavLayerRecord(const SNavLayerRecord& o) : Indices(o.Indices), Cells(o.Cells), Map(o.Map) { }
 };
 
 SNavLayerRecord* __fastcall __uninitialized_copy(const SNavLayerRecord* first, const SNavLayerRecord* last, SNavLayerRecord* result, const __false_type&)

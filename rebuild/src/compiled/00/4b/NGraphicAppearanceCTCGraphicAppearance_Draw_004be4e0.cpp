@@ -16,6 +16,7 @@
 // Shape: the physics component is read into a named local before the position call (edi); the position interpolator is
 // returned by hidden pointer straight into its frame slot; the orientation interpolator is default-constructed (CBase ctor,
 // vtable store sunk below the argument push); both destroyed through the implicit destructors (~CBase only).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCLASS
 #include "engine/C3DVector.h"
@@ -71,7 +72,7 @@ class CTCGraphicAppearance { public:
     }
     void SetPrimitive(const CEnginePrimitivePrepareInfo& info, const C3DPositionInterpolator& position,
                       const C3DOrientationInterpolator& orientation);           // 0x004BD6E0
-    __forceinline void Draw(const CEnginePrimitivePrepareInfo& info, const C3DPositionInterpolator& position,
+    FABLE_FORCEINLINE void Draw(const CEnginePrimitivePrepareInfo& info, const C3DPositionInterpolator& position,
                             const C3DOrientationInterpolator& orientation)      // out of line: 0x004BE490
     {
         PrimitivesDrawn = 1;

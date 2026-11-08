@@ -1,4 +1,5 @@
 // Standalone exact selected Main and math bodies; external engine services are deterministic dependency doubles.
+#include "fable_compiler.h"
 #include <cassert>
 #include <cstdio>
 #include <cstring>
@@ -70,7 +71,7 @@ namespace NScript{class CIsThingAlive{public:CIsThingAlive(const CScriptThing&t)
 inline float __fastcall GFArcTan(double opposite,double adjacent)
 { return (float)atan2(opposite,adjacent)/(2.0f*3.14159265358979323846f); }
 // Fidelity: proven original header math; stronger expansion follows the owner header-helper rule, not a recovered keyword.
-__forceinline float __fastcall GET_ROUNDED_ANGLE(float angle)
+FABLE_FORCEINLINE float __fastcall GET_ROUNDED_ANGLE(float angle)
 {
     if(angle<0.0f || angle>=1.0f) {
         angle=(float)fmod(angle,1.0f);
@@ -78,7 +79,7 @@ __forceinline float __fastcall GET_ROUNDED_ANGLE(float angle)
     }
     return angle;
 }
-__forceinline float C3DVector::GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X,Y)); }
+FABLE_FORCEINLINE float C3DVector::GetAngleXY() const { return GET_ROUNDED_ANGLE(GFArcTan(X,Y)); }
 
 void NScript::CV_SickChildScript::CSickChild::Main()
 {

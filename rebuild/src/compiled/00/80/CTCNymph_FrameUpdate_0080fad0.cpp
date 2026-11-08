@@ -15,6 +15,7 @@
 // Shape: both CIntelligentPointer temporaries are named block locals -- the targeting one so operator= gets the local's
 //   address (a temporary passes the ctor's eax), the POldEffect reset one so the two destructor calls tail-merge as retail.
 // Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+#include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 using NGraphicAppearance::CTCGraphicAppearance;
 #define CTCBase CTCBaseLayout
@@ -100,7 +101,7 @@ class CThing { public:
     unsigned char FlagsBC;                                  // +0xbc
     void Kill(bool removeNow);                              // 0x004C9B80
     bool GetDummyObject(const CCharString& name, C3DVector* position, class CRightHandedSet* orientation);
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
@@ -167,7 +168,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem((CBaseObject*)item);
         return *this;
     }
-    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
+    FABLE_FORCEINLINE bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 
@@ -186,7 +187,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);              // 0x00668B60
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
-    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
+    FABLE_FORCEINLINE bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 struct CTCTargeting {

@@ -5,13 +5,14 @@
 // Callees: the def's Destroy() (vtable slot 1), operator delete 0x00BFE9BC.
 // Shape (family L012): `#pragma optimize("s", on)`; ~CDefPointer must be __forceinline (an /Os TU otherwise calls it out of
 //   line from the ??_G), the pointee's inline Release() gives `dec [ecx+4] ; jne`, `Object = 0` is `and [esi],0`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {                                    // vptr; reference count at +4
 public:
     virtual ~CDefPointeeBase();
     virtual void Destroy() const;                         // slot 1
     mutable long RefCount;                                // +0x04
-    __forceinline void Release() const
+    FABLE_FORCEINLINE void Release() const
     {
         if (--RefCount == 0)
             Destroy();
@@ -21,7 +22,7 @@ class CHeroAbilityDef;
 template <class T> class CDefPointer {                     // Ego_r.pdb, 4 bytes
 public:
     const CDefPointeeBase* Object;                        // +0x00
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

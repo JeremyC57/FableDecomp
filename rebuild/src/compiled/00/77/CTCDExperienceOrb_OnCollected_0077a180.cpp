@@ -14,6 +14,7 @@
 //   CExperienceDef PickupParticleEffectsPerExperiencePoints +0x38 (std::map<long, long>, STLport 12 bytes, after
 //   OrbCombiningParticleEffect +0x28 and ParticleScalesPerExperiencePoints +0x2C); CThing interface bits +0x20, interface map
 //   +0x44, PBaseDef +0x70 (Ego_r +0x80 less the 0x10 the retail CVectorMap saves); CEntitySoundDef SoundMap +0x28.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharString(const char* text, long length = -1);       // 0x0099EBF0 ??0CCharString@@QAE@PBDJ@Z
@@ -215,17 +216,17 @@ class CThing { public:
     CInterfaceMap Components;                               // +0x44
     unsigned char _pad54[0x70 - 0x54];
     CDefPointer<const CThingBaseDef> PBaseDef;              // +0x70
-    __forceinline unsigned long HasTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const
     {
         return Components_present[type >> 5] & (1UL << (type & 31));
     }
-    template <class T> __forceinline const T* PeekTC(long type) const
+    template <class T> FABLE_FORCEINLINE const T* PeekTC(long type) const
     {
         const CInterfaceMap* map = &Components;
         const CInterfaceMap::value_type* it = map->LowerBound((ETCInterfaceType)type);
         return (const T*)((it == map->_M_finish || type < it->first) ? map->_M_finish : it)->second;
     }
-    template <class T> __forceinline T* GetTC(long type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)type;
         CInterfaceMap* map = &Components;

@@ -19,6 +19,7 @@
 //   spilled `this` word); the emitter is the `T* c = 0; if (HasTC) c = GetTC(ternary)` accessor (`xor esi,esi` before the
 //   bit test); the created effect is used directly (no intelligent-pointer member); the "" bone name is the implicit
 //   const CCharString& conversion, built before the other AttachToThing arguments.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
@@ -85,27 +86,27 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* component = 0;
         if (HasTC(interfaceType))
             component = GetTC<T>(interfaceType);
         return component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

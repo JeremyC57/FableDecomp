@@ -11,6 +11,7 @@
 //   the tail copy unless atEnd (its end pointer homed in the dead atEnd slot), `_M_clear()` (trivial destructor: only
 //   `if (_M_start) free(_M_start)`) and `_M_set`.
 // Model: Ego_r.pdb CSoundBankEntry (20 bytes, implicit bitwise copy); the three STLport vector words.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
@@ -36,16 +37,16 @@ public:
 
 namespace std {
 struct __false_type { };
-template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
-template <class T> __forceinline T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
+template <class T> FABLE_FORCEINLINE const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class T> FABLE_FORCEINLINE T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
 {
     T* cur = result;
     for (; first != last; ++first, ++cur)
         _Construct(cur, *first);
     return cur;
 }
-template <class T> __forceinline T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
+template <class T> FABLE_FORCEINLINE T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
 {
     T* cur = first;
     for (; n > 0; --n, ++cur)
@@ -58,9 +59,9 @@ public:
     T* _M_finish;                   // +0x04
     T* _M_end_of_storage;           // +0x08
     unsigned int size() const { return _M_finish - _M_start; }
-    static __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
-    __forceinline void _M_clear() { if (_M_start != 0) free(_M_start); }
-    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
+    static FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    FABLE_FORCEINLINE void _M_clear() { if (_M_start != 0) free(_M_start); }
+    FABLE_FORCEINLINE void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);
 };
 template <class T> void vector<T>::_M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd)

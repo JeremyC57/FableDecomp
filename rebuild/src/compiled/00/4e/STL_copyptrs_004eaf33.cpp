@@ -14,6 +14,7 @@
 //   `("s", on)`.
 // Model: no engine header for CShoveHaPennyRegionDef; CDefClassBase as in the landed 0x004E9BDA (0x25 bytes, pack 1, the
 //   derived members at +0x28).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -29,7 +30,7 @@ public:
     float Start;                                     // +0x28
     float Score;                                     // +0x2c
     virtual void v00();
-    __forceinline CShoveHaPennyRegionDef& operator=(const CShoveHaPennyRegionDef& o)
+    FABLE_FORCEINLINE CShoveHaPennyRegionDef& operator=(const CShoveHaPennyRegionDef& o)
     {
         CDefClassBase::operator=(o);
         Start = o.Start;
@@ -41,7 +42,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance n = last - first; n > 0; --n) {

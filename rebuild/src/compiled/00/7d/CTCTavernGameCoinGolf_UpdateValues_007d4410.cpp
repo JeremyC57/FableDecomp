@@ -10,6 +10,7 @@
 //   GetPControlledCreature 0x00487DC0; LowerBound 0x0040F020; UpdateScoreForActivity 0x0055F3B0.
 // Layout: as the landed ShoveHaPenny UpdateValues 0x007D0850; CTCHeroStats (retail) BestScoreCoinGolf +0x184,
 //   BestScoreCoinGolfSnowspire +0x188, PrizeGivenCoinGolf +0x197, PrizeGivenCoinGolfSnowspire +0x198.
+#include "fable_compiler.h"
 class CDefString { public:                                 // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

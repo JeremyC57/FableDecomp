@@ -16,6 +16,7 @@
 //          10, 11 and 2 are tried in that order.
 // Layout: creature Home intelligent pointer at retail +0x168 (as the landed 0x009580E0); bitset +0x20, interface map
 //          +0x44, dead flag +0x91. No engine header exists for CAIStateGroup_GoToBed.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -40,7 +41,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -17,6 +17,7 @@
 //   on a byte slot, the out-of-line SendPauseEvent(bool&) form keeps the setne normalisation); the event's constant 9 lives in edi; the STLport tree dtor is `clear()` (erase, re-link the header, zero the count) then the header
 //   node released through `free`; the def pointer release is the pointee's inline `Release()` (`if (--RefCount == 0) DeleteThis()`,
 //   through ecx; open-coded in the holder dtor it goes through eax) with the zero store inside the null test.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 class CThing;
 struct CMemoryBuffer {
@@ -154,7 +155,7 @@ class CTCWife : public CTCBase { public:                         // vtable 0x012
     unsigned char _padA4[0xec - 0xa4];
     virtual void v01();
     ~CTCWife();
-    __forceinline void SendUnpauseEvent()
+    FABLE_FORCEINLINE void SendUnpauseEvent()
     {
         CGameEvent gameEvent(9);
         gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;

@@ -1,4 +1,5 @@
 // Behaviour test for 0x00431606 _Rb_tree<CCharString,...>::insert_unique (body copied from the source; callees stubbed).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -12,11 +13,11 @@ long __fastcall Compare(const char* a, const char* b);  // 0x00411570
 
 template <class C> class CBasicString { public:
     C* PData;                                            // +0x00
-    __forceinline bool operator<(const CBasicString& other) const { return Compare(PData, other.PData) < 0; }
+    FABLE_FORCEINLINE bool operator<(const CBasicString& other) const { return Compare(PData, other.PData) < 0; }
 };
 
 template <class T> struct CComparePointer {
-    __forceinline bool operator()(const T* a, const T* b) const
+    FABLE_FORCEINLINE bool operator()(const T* a, const T* b) const
     {
         bool result;
         if (b == a)

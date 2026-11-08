@@ -5,6 +5,7 @@
 // Shape (family K099, representative 0x00469E3E): the landed vector<EWeaponClass>::erase 0x004640D1 with an 8-byte element:
 //   __type_traits of a class is the unspecialised template (all __false_type), so __copy_ptrs takes the __copy element loop
 //   (the implicit operator= is two dword moves), the trivially destructible destroy loop folds away; size TU, helpers __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 class CDefString {                                       // Ego_r.pdb 4 bytes
@@ -34,7 +35,7 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;     // +0x08
 };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -45,18 +46,18 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _Tp>
-__forceinline _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }
-template <class _Tp> __forceinline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
 template <class _ForwardIterator>
-__forceinline void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
+FABLE_FORCEINLINE void __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&)
 {
     for ( ; __first != __last; ++__first)
         _Destroy(&*__first);
 }
-template <class _Tp> __forceinline void _Destroy(_Tp* __first, _Tp* __last)
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp* __first, _Tp* __last)
 {
     typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
     __destroy_aux(__first, __last, _Trivial_destructor());

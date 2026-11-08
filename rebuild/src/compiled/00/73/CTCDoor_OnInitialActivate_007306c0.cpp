@@ -13,6 +13,7 @@
 // Globals: g_DoorOpenAnimName 0x013BAD34, g_DoorCloseAnimName 0x013BAD38 (CCharString).
 // Model: the landed CTCDoor::Open (0x00730C00): engine/CTCDoor.h (+0x04 ParentThing, +0x10 CurrentOpen, +0x20 PDef);
 // CDoorDef TriggerType +0x28, open/close events +0x30/+0x34; CThing type byte +0x10, event sink +0x60, PBaseDef +0x70.
+#include "fable_compiler.h"
 #include "engine/CTCDoor.h"
 
 struct CTCBaseInterface;
@@ -90,7 +91,7 @@ class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
-__forceinline bool DecRefToZero(long& c) { return --c == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& c) { return --c == 0; }
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
@@ -205,20 +206,20 @@ class CThing { public:
         CCharString name = GDefStringTable.GetString(GetDefName());
         return name;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -255,7 +256,7 @@ class CDoorDef { public:
 struct CTCDoor_Methods : CTCDoor {
     CThing* Parent() const { return (CThing*)m4; }
     const CDoorDef* Def() const { return (const CDoorDef*)PDef_Object; }
-    __forceinline CTCAnimationComplex* GetAnimationComplex() const
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;
         if (Parent()->HasTC(0x5a))

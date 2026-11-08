@@ -1,9 +1,10 @@
+#include "fable_compiler.h"
 #include <cstdio>
 struct CPSCEmitterGeneric { unsigned char _pad00[0x28]; long m_particlesGenerated; unsigned char _pad2c[4]; unsigned long m_flags; unsigned char _pad34[0xc]; unsigned long m_packedLifetime; bool CalcIsFinishedGeneratingParticles() const; };
 static long g_clock = 0;
 namespace NParticleEngine { long __fastcall GetTickRate() { return g_clock; } }
 #include "engine/GFFloatToLongNear.h"
-static __forceinline float RoundToDecimals(float value, long decimals)
+static FABLE_FORCEINLINE float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f; long i = decimals;
     do scale *= 10.0f; while (--i);

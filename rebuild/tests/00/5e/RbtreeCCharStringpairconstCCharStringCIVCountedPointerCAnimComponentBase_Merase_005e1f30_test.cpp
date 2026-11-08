@@ -1,5 +1,6 @@
 // Behaviour test of _Rb_tree<CCharString, pair<const CCharString, CIVCountedPointer<CAnimComponentBase> > >::_M_erase(_Rb_tree_node* x) (retail 0x005E1F30)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -22,7 +23,7 @@ class CAnimComponentBase { public:                                // CIVCountedP
 
 template <class T> class CIVCountedPointer { public:              // one word: the intrusively counted object
     T* Object;
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

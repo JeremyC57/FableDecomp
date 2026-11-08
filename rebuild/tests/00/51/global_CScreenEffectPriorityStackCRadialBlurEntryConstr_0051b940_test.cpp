@@ -3,6 +3,7 @@
 // Leaf: ConvertPreviousUnknownVersionUp
 // Names: FableWin.pdb CReplaceSerialise<COldFileFormatMapHeader8,COldFileFormatMapHeader7>::ConvertPreviousUnknownVersionUp(void*) returning CCountedPointer<COldFileFormatMapHeader8>,
 //        COldFileFormatMapHeader8::ConvertFromOld(const COldFileFormatMapHeader7*), CCountedPointer<T>::DeleteData(void*), CCPPointerInfo; sizes from Ego_r.pdb.
+#include "fable_compiler.h"
 #include <new>
 // Layout: the serialised header opens with its version byte at +0x04.
 class COldFileFormatMapHeader7{ public:char pad[4];unsigned char VersionByte;};
@@ -10,15 +11,15 @@ class COldFileFormatMapHeader6;
 struct CFileLargeThemePalette{char storage[0x8400];CFileLargeThemePalette();};
 // Layout: exact retail allocation 0x1081e; LargeThemePalette at +0x16 and AtmosThemePalette at +0x841e each span 0x8400 bytes; prefix 0x16, VersionNumber/NoSoundThemeEntries 0x08. CCPPointerInfo size 0x0c: refs +0x00, deleter +0x04, data +0x08.
 #pragma pack(push,1)
-class COldFileFormatMapHeader8{ public:char prefix[0x16];CFileLargeThemePalette LargeThemePalette;char gap[0x08];CFileLargeThemePalette AtmosThemePalette;__forceinline COldFileFormatMapHeader8(){}void ConvertFromOld(const COldFileFormatMapHeader7*);};
+class COldFileFormatMapHeader8{ public:char prefix[0x16];CFileLargeThemePalette LargeThemePalette;char gap[0x08];CFileLargeThemePalette AtmosThemePalette;FABLE_FORCEINLINE COldFileFormatMapHeader8(){}void ConvertFromOld(const COldFileFormatMapHeader7*);};
 #pragma pack(pop)
-class CCPPointerInfo{ public:unsigned refs;void(__fastcall*destroy)(void*);void*object;__forceinline CCPPointerInfo(void*p,void(__fastcall*d)(void*)):refs(1),destroy(d),object(p){}};
+class CCPPointerInfo{ public:unsigned refs;void(__fastcall*destroy)(void*);void*object;FABLE_FORCEINLINE CCPPointerInfo(void*p,void(__fastcall*d)(void*)):refs(1),destroy(d),object(p){}};
 template<class T> class CCountedPointer{ public:T*object;CCPPointerInfo*control;
  static void __fastcall DeleteData(void*);
- __forceinline CCountedPointer(T*p):object(p),control(p?new CCPPointerInfo(p,DeleteData):0){}
- __forceinline CCountedPointer(const CCountedPointer&x):object(x.object),control(x.control){if(control)++control->refs;}
- __forceinline CCountedPointer&operator=(const CCountedPointer&x){CCPPointerInfo*c=x.control;T*o=x.object;if(control!=c){if(control&&--control->refs==0){control->destroy(control->object);operator delete(control);}object=o;control=c;if(control)++control->refs;}return *this;}
- __forceinline ~CCountedPointer(){if(control&&--control->refs==0){control->destroy(control->object);operator delete(control);}}
+ FABLE_FORCEINLINE CCountedPointer(T*p):object(p),control(p?new CCPPointerInfo(p,DeleteData):0){}
+ FABLE_FORCEINLINE CCountedPointer(const CCountedPointer&x):object(x.object),control(x.control){if(control)++control->refs;}
+ FABLE_FORCEINLINE CCountedPointer&operator=(const CCountedPointer&x){CCPPointerInfo*c=x.control;T*o=x.object;if(control!=c){if(control&&--control->refs==0){control->destroy(control->object);operator delete(control);}object=o;control=c;if(control)++control->refs;}return *this;}
+ FABLE_FORCEINLINE ~CCountedPointer(){if(control&&--control->refs==0){control->destroy(control->object);operator delete(control);}}
 };
 template<class TNew,class TOld> struct CReplaceSerialise{static CCountedPointer<TNew> __fastcall ConvertPreviousUnknownVersionUp(void*);};
 template<> CCountedPointer<COldFileFormatMapHeader8> __fastcall CReplaceSerialise<COldFileFormatMapHeader8,COldFileFormatMapHeader7>::ConvertPreviousUnknownVersionUp(void*data){

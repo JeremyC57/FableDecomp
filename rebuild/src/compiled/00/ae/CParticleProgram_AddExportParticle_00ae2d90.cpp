@@ -15,6 +15,7 @@
 //   = true;` with STLport push_back inline (placement copy with its null test, else _M_insert_overflow with the empty tag
 //   homed in the dead name slot); the temporary's string dies before the Dirty store on both paths. VC7.1 keeps a plain
 //   inline Add out of line here (`add ecx,88h ; call`, 24 bytes): the map's Add is `__forceinline`.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CCharString {
@@ -69,7 +70,7 @@ public:
     std::vector<value_type> m_vector;                      // +0x00
     C    Compare;                                           // +0x0c (empty)
     bool Dirty;                                             // +0x0d
-    __forceinline void Add(const K& key, const V& value)
+    FABLE_FORCEINLINE void Add(const K& key, const V& value)
     {
         m_vector.push_back(value_type(key, value));
         Dirty = true;

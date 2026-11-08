@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -102,13 +103,13 @@ class CThing { public:
     unsigned char  _pad4c[0x70 - 0x4c];
     CDefPointer<const CThingCreatureDef> PBaseDef;      // +0x70
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -123,7 +124,7 @@ class CThingCreatureBase : public CThing { public:
     unsigned char _pad74[0xe0 - 0x74];
     const CThingCreatureDef* PDef;                      // +0xe0 CDefPointer<const CThingCreatureDef>::Object
     const CThingCreatureDef* GetDef() const { return PDef; }
-    __forceinline const CThingCreatureDef& PeekDefinition() const
+    FABLE_FORCEINLINE const CThingCreatureDef& PeekDefinition() const
     {
         CDefPointer<const CThingCreatureDef> def(PBaseDef);
         return *def.Object;

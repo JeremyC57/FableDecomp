@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 a7f18047b437c8028ae4af35d241510b1778cab7a2db24894c89a307e4970644
@@ -10,7 +11,7 @@ template<class T> struct CountedPointer_006b9f10 {
  T* object; CountBlock_006b9f10* block;
  CountedPointer_006b9f10():object(0),block(0){}
  CountedPointer_006b9f10(const CountedPointer_006b9f10& p):object(p.object),block(p.block){if(block)++block->references;}
- __forceinline CountBlock_006b9f10* GetBlock()const{return block;}
+ FABLE_FORCEINLINE CountBlock_006b9f10* GetBlock()const{return block;}
  CountedPointer_006b9f10& Assign(T* nextObject,CountBlock_006b9f10* nextBlock) {
   if(block!=nextBlock){if(block){--block->references;if(block->references==0){block->Destroy(block->object);operator delete(GetBlock());}}object=nextObject;block=nextBlock;if(block)++block->references;}return *this;
  }

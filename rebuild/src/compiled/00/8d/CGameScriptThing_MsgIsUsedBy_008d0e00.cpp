@@ -17,6 +17,7 @@
 //   (strcmp("", "") / block compare) as in the landed MsgIsKilledBy 0x008D04E0; both hits return true directly. The
 //   component key is a TEMPORARY (`LowerBound(66)` through the const-long reference): a named `long key` keeps its own
 //   frame word, so the events pointer (spilled around the inline repe cmpsb) cannot reuse it and the frame grows by 4.
+#include "fable_compiler.h"
 #include <string.h>
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
@@ -54,7 +55,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 #pragma auto_inline(on)
 class CCharString { public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
             return true;
@@ -97,7 +98,7 @@ struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char Metadata[0x41]; unsigned char LifeFlags;
     CScriptThing GetScriptThing() const;                // 0x004C7E50
-    __forceinline CTCEntityEvents* GetEvents()
+    FABLE_FORCEINLINE CTCEntityEvents* GetEvents()
     {
 
         ComponentMap* map = &Components;
@@ -121,8 +122,8 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
 struct EventBase {
     virtual ~EventBase();

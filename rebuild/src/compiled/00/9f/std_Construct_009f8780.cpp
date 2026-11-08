@@ -3,6 +3,7 @@
 // Callees: CCharString copy ctor @ 0x0099EC30.
 // Leaf: _Construct
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N009f8780 {
 struct CCharString {
@@ -16,7 +17,7 @@ struct CGraphicDataBankInfo {                    // CGraphicBankManager::CGraphi
     CGraphicDataBankInit              Init;             // +0x00
     CCharString                       BankHandle;       // +0x2C
     CCountedPointer<CGraphicDataBank> GraphicDataBank;  // +0x30
-    __forceinline CGraphicDataBankInfo(const CGraphicDataBankInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CGraphicDataBankInfo(const CGraphicDataBankInfo& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : Init(o.Init), BankHandle(o.BankHandle), GraphicDataBank(o.GraphicDataBank) { }
 };
 

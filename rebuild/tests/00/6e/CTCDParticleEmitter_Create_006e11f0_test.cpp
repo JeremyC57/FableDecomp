@@ -1,6 +1,7 @@
 // 006e11f0 CTCDParticleEmitter::Create
 // Flags: /O2 /Oy /W3
 // Leaf: Create
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <string.h>
 #include "engine/CTCPhysicsBase.h"
@@ -11,7 +12,7 @@
 void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete[](void*);
 namespace X_006e11f0 {
-struct C3DVector {float X,Y,Z;__forceinline C3DVector(){}__forceinline C3DVector(const C3DVector&a):X(a.X),Y(a.Y),Z(a.Z){}};struct CRightHandedSet {C3DVector Up,Forward;__forceinline CRightHandedSet(){}__forceinline CRightHandedSet(const CRightHandedSet&a):Up(a.Up),Forward(a.Forward){}};extern CRightHandedSet DefaultAxes;
+struct C3DVector {float X,Y,Z;FABLE_FORCEINLINE C3DVector(){}FABLE_FORCEINLINE C3DVector(const C3DVector&a):X(a.X),Y(a.Y),Z(a.Z){}};struct CRightHandedSet {C3DVector Up,Forward;FABLE_FORCEINLINE CRightHandedSet(){}FABLE_FORCEINLINE CRightHandedSet(const CRightHandedSet&a):Up(a.Up),Forward(a.Forward){}};extern CRightHandedSet DefaultAxes;
 struct CBaseClass {virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {__declspec(noinline) CBaseClassNonCopyable();__declspec(noinline) virtual ~CBaseClassNonCopyable();};
 struct CTCParamsPhysicsBase:CBaseClassNonCopyable {C3DVector position;CRightHandedSet axes;__declspec(noinline) CTCParamsPhysicsBase(const C3DVector& p,const CRightHandedSet& a):position(p),axes(a){}};

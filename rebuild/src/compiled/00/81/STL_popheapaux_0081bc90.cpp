@@ -10,6 +10,7 @@
 //   the by-value T(*(last - 1)) is a frame temporary (pair copy ctor: key dword, then `rep movsd` x9), `*result = *first`
 //   the implicit `rep movsd` x10 straight into the last slot, the __adjust_heap value argument copied memberwise from the
 //   temporary into the argument area, len = (last - 1) - first.
+#include "fable_compiler.h"
 struct SPayload36 {                         // 36-byte POD payload (copied as one block)
     unsigned long m_words[9];
 };
@@ -30,7 +31,7 @@ struct CKeyPairCompareLess {                // empty, passed by value
 void __fastcall __adjust_heap(SKeyedBlock40* first, int holeIndex, int len, SKeyedBlock40 val, CKeyPairCompareLess comp);   // 0x0081AB40
 
 template <class RandomAccessIter, class T, class Compare, class Distance>
-__forceinline void __pop_heap(RandomAccessIter first, RandomAccessIter last, RandomAccessIter result, T val, Compare comp, Distance*)
+FABLE_FORCEINLINE void __pop_heap(RandomAccessIter first, RandomAccessIter last, RandomAccessIter result, T val, Compare comp, Distance*)
 {
     *result = *first;
     __adjust_heap(first, Distance(0), Distance(last - first), val, comp);

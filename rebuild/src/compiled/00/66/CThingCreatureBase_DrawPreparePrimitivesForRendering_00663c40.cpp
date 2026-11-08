@@ -26,6 +26,7 @@
 //   calls use the PDB inline `CTCBase& CThing::GetTC(ETCInterfaceType)` after `HasTC(ETCInterfaceType)`, written as the
 //   pick form (copied key, reference to Components, `(miss ? end : it)->second`), which loads the component straight
 //   into ecx. The parked source (one accessor for all four) missed the eax form by 4 bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CEnginePrimitive {
 public:
@@ -199,14 +200,14 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase& GetTC(ETCInterfaceType type)
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType type)
     {
         ETCInterfaceType key = type;
         CVectorMap<ETCInterfaceType, CTCBase*>& components = Components;
         CVectorMap<ETCInterfaceType, CTCBase*>::iterator p = components.LowerBound(key);
         return *(p == components.end() || type < p->first ? components.end() : p)->second;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!(UsingComponents[T::InterfaceType / 32] & (1UL << (T::InterfaceType % 32))))
             return false;
@@ -217,7 +218,7 @@ public:
         *out = (T*)p->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(T** out) const              // T = const X (PDB ??$PeekTC@$$CBV...)
+    template <class T> FABLE_FORCEINLINE bool PeekTC(T** out) const              // T = const X (PDB ??$PeekTC@$$CBV...)
     {
         if (!(UsingComponents[T::InterfaceType / 32] & (1UL << (T::InterfaceType % 32))))
             return false;

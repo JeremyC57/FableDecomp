@@ -12,6 +12,7 @@
 // the blocks); the 64-bit UID is tested as `> 0` (hi word `ja`, low word `jbe`) and pushed as two words; the def's inventory type is read
 // through a by-value def temporary (add-ref, read, `mov/dec/mov ; jne` release) into edi, which is both the bitset position and the
 // map key homed in the frame word; the found component is pushed straight into AddToInventory's first slot.
+#include "fable_compiler.h"
 extern "C" int  __cdecl puts(const char* text);    // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC (noreturn as in <stdlib.h>: the throw path tail-jumps)
 class CDefPointeeBase { public:
@@ -53,7 +54,7 @@ class CThing { public:
     unsigned char _pad_0x54[0x3d];
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);

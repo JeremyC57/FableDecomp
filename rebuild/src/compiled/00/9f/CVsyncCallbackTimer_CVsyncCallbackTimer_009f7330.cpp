@@ -13,6 +13,7 @@
 // Shape: an unoptimised TU (`#pragma optimize("", off)`: `this` spilled to [ebp-14h] and reloaded); the list destructor is
 // `__forceinline` (VC7.1 still inlines it at /Od), so each inlined call homes its own `this` and its head local in the
 // frame ([ebp-8]/[ebp-4] for +0x08, [ebp-10h]/[ebp-0Ch] for +0x04); members die in reverse order.
+#include "fable_compiler.h"
 #pragma optimize("", off)
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
@@ -23,7 +24,7 @@ struct IDirect3DDevice9;
 struct CPendingQueryList {
     void* _M_node;                                 // head node
     void clear();                                  // 0x009F7830
-    __forceinline ~CPendingQueryList()
+    FABLE_FORCEINLINE ~CPendingQueryList()
     {
         clear();
         void* head = _M_node;

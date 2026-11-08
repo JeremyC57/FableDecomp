@@ -1,4 +1,5 @@
 // 005e4430 behaviour test: CTCQuestCompletionUI::Activate (control flow + data of the final.cpp body)
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -26,14 +27,14 @@ class CWideString { public:
 static int g_deleted = 0;
 struct CDef { virtual void v00() {} virtual void DeleteThis() { ++g_deleted; } long RefCount;
     CDef() : RefCount(1) {}
-    __forceinline void Release() { if (--RefCount == 0) DeleteThis(); } };
+    FABLE_FORCEINLINE void Release() { if (--RefCount == 0) DeleteThis(); } };
 template <class T> class CDefPointer { public:
     T* P;
-    __forceinline CDefPointer() : P(0) { }
-    __forceinline T* operator->() const { return P; }
-    __forceinline CDefPointer(const CDefPointer& o) : P(o.P) { if (P) ++P->RefCount; }
-    __forceinline ~CDefPointer() { if (P) P->Release(); }
-    __forceinline CDefPointer& operator=(const CDefPointer& o)
+    FABLE_FORCEINLINE CDefPointer() : P(0) { }
+    FABLE_FORCEINLINE T* operator->() const { return P; }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& o) : P(o.P) { if (P) ++P->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (P) P->Release(); }
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& o)
     {
         if (P != o.P) {
             if (P) { P->Release(); P = 0; }

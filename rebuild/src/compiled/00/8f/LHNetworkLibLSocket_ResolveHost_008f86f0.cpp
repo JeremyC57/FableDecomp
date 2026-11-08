@@ -13,6 +13,7 @@
 // keeps it out of line otherwise). The address's IP is a named local (`serverIP`): retail stores eax at the shared
 // `ip = ...` tail from both paths (the member form re-reads [ebx+0Ch]). The failure test reads the caller's `ip`,
 // not the resolved value -- retail compares `[edi]` before any store (an original-source quirk, reproduced).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);                                      // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
@@ -78,7 +79,7 @@ class basic_string : protected _String_base<_CharT, _Alloc> {
 public:
     typedef _String_base<_CharT, _Alloc> _Base;
     typedef _Alloc allocator_type;
-    __forceinline basic_string(const _CharT* __s, const allocator_type& __a = allocator_type()) : _Base(__a)
+    FABLE_FORCEINLINE basic_string(const _CharT* __s, const allocator_type& __a = allocator_type()) : _Base(__a)
     {
         _M_range_initialize(__s, __s + _Traits::length(__s));
     }

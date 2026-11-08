@@ -10,6 +10,7 @@
 // Shape: the component is a null-initialised local assigned only when present (the zero preloaded in ecx; a ternary
 // materialises it in eax) and handed to the test unchecked; the
 // timer decrement is `--QuitModeTimer < 0` (`dec [edi+28h] ; jns`).
+#include "fable_compiler.h"
 class CProcessedInput;
 struct CTCBase_Retail;
 class CTCBase;
@@ -23,7 +24,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -40,8 +41,8 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing_Retail { };
 class CASuspendableProcess { public:

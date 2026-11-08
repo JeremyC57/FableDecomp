@@ -11,6 +11,7 @@
 //   __copy_backward loop inline (count = (finish - 2) - position, `dec eax` counter); `return begin() + n` duplicated
 //   into each tail with n parked in the dead `position` argument slot. __copy_backward_ptrs and __copy_backward are
 //   __forceinline: with plain `inline` VC7.1 calls __copy_backward_ptrs out of line here.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace std {
@@ -28,7 +29,7 @@ template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                           _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -37,7 +38,7 @@ __forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _Ran
 }
 
 template <class _Tp>
-__forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }

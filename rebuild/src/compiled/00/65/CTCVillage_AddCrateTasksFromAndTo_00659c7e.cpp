@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (retry wave 2 sec2c, 6 grades) on the verify text: shared def model (engine/CDefClassBase.h + CDefPointer verify text with the proposed CDefPointer(ENullDef) ctor) + the retail GetSubDef<CCrateStackDef> body same-TU noinline (0x0065F7B4, string "CCrateStackDef" 0x01243E30) + __forceinline Contains (retail inlines the find loop under /Os) + the counted pointer built as a temporary inside push_back (the ctor's returned this feeds the call) on engine/CCountedPointer.h. CDefPointer(ENullDef) landed in engine/CDefPointer.h 2026-10-31
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTCVillage::AddCrateTasksFromAndTo(const vector<long>&, const vector<long>&) -- rebuild the crate tasks: for every crate stack whose def type is a destination, queue a put-down task per missing crate (up to 2); then for every stack whose type is a source, queue a pick-up task per crate it holds
 // Leaf: ?AddCrateTasksFromAndTo@CTCVillage
@@ -55,7 +56,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x1c];
     const CDefClassBase* PDef;                        // +0x70
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;
@@ -91,7 +92,7 @@ struct CLongVector {
     long* _M_finish;
     long* _M_end_of_storage;
 };
-__forceinline bool Contains(const CLongVector& v, long value)
+FABLE_FORCEINLINE bool Contains(const CLongVector& v, long value)
 {
     for (const long* p = v._M_start; p != v._M_finish; ++p)
         if (value == *p)

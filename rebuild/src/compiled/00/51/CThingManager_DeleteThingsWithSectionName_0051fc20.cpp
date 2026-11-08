@@ -8,6 +8,7 @@
 // (CCharString) at retail +0x58, the dead flag bit 0 of +0x91 (as IS_THING_ALIVE tests it).
 // Shape: the list walk with the thing a named local (esi); the CCharString equality inlined as in the landed
 // CNavigatorManager::IsNavigationMapLoadedWithSectionName 0x00A14EE0 (`neg ; sbb ; inc`).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dest, const void* source, unsigned int count);   // 0x00BFEAE6
 inline void* CopyTrivial(const void* first, const void* last, void* result)
 {
@@ -22,7 +23,7 @@ class CCharString { public:
     CCharStringData* m_pStringData;
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.m_pStringData;
     CCharStringData* b = sb.m_pStringData;

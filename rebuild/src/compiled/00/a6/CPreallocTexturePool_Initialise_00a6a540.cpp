@@ -12,6 +12,7 @@
 // through ebx); the slot's intrusive operator=(T*) releases the old object through the pointee's inline Release()
 // (`dec [ecx+4] ; jne`; an open-coded decrement re-reads the count) and stores a zero
 // before the new pointer; the loop index and `this` live in frame words (the resize's default value shares the index's).
+#include "fable_compiler.h"
 void* operator new(unsigned int size);                 // 0x00BFEA1A
 
 class CResourceList { public:
@@ -34,7 +35,7 @@ class CResource { public:                                     // 0x1c bytes
 class CTexture { public:                                      // 8 bytes
     void* m_pFirst;
     void* m_pSecond;
-    __forceinline CTexture() : m_pFirst(0), m_pSecond(0) { }
+    FABLE_FORCEINLINE CTexture() : m_pFirst(0), m_pSecond(0) { }
 };
 class CVolumeTexture;
 template <class T> class CCountedPointer { public:
@@ -65,7 +66,7 @@ class CManagedTextureData : public CResource { public:               // vtable 0
     bool                            Allocated;         // +0x48
     bool                            Locked;            // +0x49
     bool                            BusyFlag;          // +0x4a
-    __forceinline CManagedTextureData()
+    FABLE_FORCEINLINE CManagedTextureData()
         : Width(0), Height(0), Owner(0), D3DHeader(0), Data(0), AllocSize(0), PoolIndex(0),
           Allocated(false), Locked(false), BusyFlag(false) { }
     virtual void v00();

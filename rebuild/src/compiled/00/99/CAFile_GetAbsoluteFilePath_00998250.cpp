@@ -16,6 +16,7 @@
 //   free), unlike IsFilePathSyntaxValid 0x00998A30 where VC7.1's inline budget leaves it a call to 0x004046B0. The "\\"
 //   arguments are implicit conversions: VC7.1 builds such a temporary before pushing any argument (retail order), while
 //   an explicit CCharString("\\") is built in argument order, after &item is pushed.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
@@ -45,7 +46,7 @@ public:
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Data.StringLength; }
     const char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->Data.PData; }
     char operator[](long index) const { return GetString()[index]; }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

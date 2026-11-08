@@ -17,6 +17,7 @@
 //   +0x20, AlphaMax +0x24 (used by PhaseMe). CScriptThing copy is expanded inline at the by-value SetIsPushableByHero argument.
 // Naming wave 35: identity reg 00d9e7e5 "FadeinSummoner" in 00d9e5e0; Alloc 00d9f5b0; vtable 012d6dc8 slot 1; PDB ?Main@CFadeinSummoner@CQ_MinionCampScript@NScript@@; refs=1; was under-qualified CFadeinSummoner::Main (wave3/labels_alloc.tsv); PDB ?Main@CFadeinSummoner@CQ_MinionCampScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CFadeinSummoner@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_MinionCampScript moved into NScript); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
@@ -90,8 +91,8 @@ extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameS
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
 CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }

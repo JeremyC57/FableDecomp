@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 
 class CBaseClass {
@@ -12,7 +13,7 @@ class CSurface
     unsigned long resourceState08;
     unsigned long PAllocatedMemory;
 
-    __forceinline CSurface()
+    FABLE_FORCEINLINE CSurface()
         : resource04(0),
           resourceState08(0)
     {

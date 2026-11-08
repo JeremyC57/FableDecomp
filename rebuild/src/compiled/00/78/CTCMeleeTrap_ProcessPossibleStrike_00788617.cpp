@@ -20,6 +20,7 @@
 //   direction = current.first - previous.first, normalised when its squared length exceeds DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO (landed 0x00805A90 form);
 //   the hit is built with the trap's parent as the hitting thing and no weapon, knock-down set, the other flags clear; the
 //   remembered entry is pair<CIntelligentPointer<CThing>, float>(&thing, g_framesPerSecond * 1.5f) converted on push_back.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 #include <new>
@@ -118,7 +119,7 @@ class CThing { public:                                        // retail CThing (
     CInterfaceMap    Components;                              // +0x44
     const C3DVector& GetPos() const;                          // 0x004C73D0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         long type = T::StatGetInterfaceType();
         if (HasTC((ETCInterfaceType)type)) {

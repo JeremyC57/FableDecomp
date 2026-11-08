@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CDEFSTRING_H
 #define FABLE_ENGINE_CDEFSTRING_H
+#include "fable_compiler.h"
 // Ego_r TPI CDefString class, size4, private TablePos+0; native parent-def
 // constructors initialise this member at +25 to -1.
 class CCharString;
@@ -40,7 +41,7 @@ public:
  // Per-TU inline opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): that TU expands GetString in place inside a conditional
  // full expression (0x00703F4B..0x00703F58: `mov ecx,[eax] ; push ecx ; push <result> ; mov ecx,offset GDefStringTable ; call
  // CDefStringTable::GetString 0x009D49B0`) where VC7.1's plain-inline heuristic calls the out-of-line copy 0x00415DD0. Same body.
- __forceinline CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
+ FABLE_FORCEINLINE CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
 #else
  CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
 #endif

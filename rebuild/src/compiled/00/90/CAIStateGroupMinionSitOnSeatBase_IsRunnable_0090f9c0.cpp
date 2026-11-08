@@ -15,6 +15,7 @@
 // lands in ecx before the creature argument is loaded); then `GetSeat(owner); return IsSeatValid();`.
 // Layout local (the engine header flattens the base and has no vtable).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -91,7 +92,7 @@ struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroup_UsesSeat {
     virtual bool IsRunnable();
 };
 
-__forceinline bool AddAsUserTo(CTCGatherPointBase* gatherPoint, CThing* user) { return gatherPoint->AddAsUser(user); }
+FABLE_FORCEINLINE bool AddAsUserTo(CTCGatherPointBase* gatherPoint, CThing* user) { return gatherPoint->AddAsUser(user); }
 
 bool CAIStateGroup_MinionSitOnSeatBase::IsRunnable()
 {

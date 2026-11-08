@@ -21,6 +21,7 @@
 //   ability pointer lives in a block around the CreateShot call only, so it is released (TrollProjectileAttack
 //   ReleaseTemporary model, null store kept) before the shot is touched; target and creature are named locals fetched
 //   before the argument pushes, the accuracy converted inline at its argument.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString { public:
     void* m_pData;
@@ -123,7 +124,7 @@ class CThing { public:
     unsigned char   _pad74[0x91 - 0x74];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -163,7 +164,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }

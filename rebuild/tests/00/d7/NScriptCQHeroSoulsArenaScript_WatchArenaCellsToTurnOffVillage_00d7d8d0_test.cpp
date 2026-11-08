@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NScript::CQ_HeroSoulsArenaScript::WatchArenaCellsToTurnOffVillage() -- Wait for region activation and update the target thing until cancellation.
@@ -60,7 +61,7 @@ typedef unsigned __int64 RetailUID;
 #endif
 class CBaseClass{public:CBaseClass();virtual ~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString(const char*,long=-1);~CCharString();bool FastCompare(const CCharString&)const;};
-class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall* DeleteFunc)(void*);void* Data;};template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}CCountedPointer(const CCountedPointer& x):Data(x.Data),Info(x.Info){if(Info)++Info->RefCount;}__forceinline ~CCountedPointer(){if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}Data=0;Info=0;}__forceinline CCountedPointer& operator=(const CCountedPointer& x){T* data=x.Data;CCPPointerInfo* info=x.Info;if(Info!=info){if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}Data=data;Info=info;if(Info)++Info->RefCount;}return *this;}T* operator->()const{return Data;}};
+class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall* DeleteFunc)(void*);void* Data;};template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}CCountedPointer(const CCountedPointer& x):Data(x.Data),Info(x.Info){if(Info)++Info->RefCount;}FABLE_FORCEINLINE ~CCountedPointer(){if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}Data=0;Info=0;}FABLE_FORCEINLINE CCountedPointer& operator=(const CCountedPointer& x){T* data=x.Data;CCPPointerInfo* info=x.Info;if(Info!=info){if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}Data=data;Info=info;if(Info)++Info->RefCount;}return *this;}T* operator->()const{return Data;}};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 namespace std{
 template<class A,class B>struct pair{A first;B second;};template<class T>class allocator{};
@@ -73,13 +74,13 @@ template<class Iter,class Compare>void __fastcall sort(Iter first,Iter last,Comp
 template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;FABLE_FORCEINLINE void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
 class CScriptGameResourceObjectBase:public CBaseObject{};
 class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase{public:CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;};
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing(){}CScriptThing(const CScriptThing& s):PImp(s.PImp){}__forceinline CScriptThing& operator=(const CScriptThing& s){PImp=s.PImp;return *this;}__forceinline virtual ~CScriptThing(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){}virtual void UnknownSlot10(){}virtual void UnknownSlot11(){}virtual void UnknownSlot12(){}virtual void UnknownSlot13(){}virtual void UnknownSlot14(){}virtual void UnknownSlot15(){}virtual void UnknownSlot16(){}virtual void UnknownSlot17(){}virtual bool MsgIsKilledBy(const CCharString& who)const{if(!PImp.Data)return false;return PImp->MsgIsKilledBy(who);}};
+class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing(){}CScriptThing(const CScriptThing& s):PImp(s.PImp){}FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& s){PImp=s.PImp;return *this;}FABLE_FORCEINLINE virtual ~CScriptThing(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){}virtual void UnknownSlot10(){}virtual void UnknownSlot11(){}virtual void UnknownSlot12(){}virtual void UnknownSlot13(){}virtual void UnknownSlot14(){}virtual void UnknownSlot15(){}virtual void UnknownSlot16(){}virtual void UnknownSlot17(){}virtual bool MsgIsKilledBy(const CCharString& who)const{if(!PImp.Data)return false;return PImp->MsgIsKilledBy(who);}};
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
 class CScriptBase:public CBaseClassNonCopyable{public:bool IsActiveThreadTerminating();
 std::list<CCountedPointer<CSpawnedFuncBase> > Threads;

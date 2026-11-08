@@ -14,6 +14,7 @@
 //   inline forwarder to the out-of-line __make_heap, __pop_heap is inline (__forceinline): value = *i, *i = *first,
 //   __adjust_heap(first, 0, middle - first, value, comp).  /Gr TU written as explicit __fastcall.
 // Label: catalog "swap<CDebugSphere>" is propagated.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 class CEngineGraphic {                                      // 14 bytes (Ego_r.pdb)
 public:
@@ -64,7 +65,7 @@ inline void make_heap(_RandomAccessIterator __first, _RandomAccessIterator __las
 }
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

@@ -10,6 +10,7 @@
 // Shape: `T* p = 0; if (HasTC) p = GetTC;` (retail's `xor ecx,ecx` preload, edi pushed only around the map lookup; the
 // out-parameter GetInterface form keeps the manager in edi); the camera out pointer zeroed in its frame word as in the
 // landed CPlayer::InitModeFirstPersonTargeting (0x00635A50), the getter's bool guarding the call.
+#include "fable_compiler.h"
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
 #undef CPlayer
@@ -32,7 +33,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const ETCInterfaceType& type);    // 0x0040F020
-    __forceinline CTCBase* Find(long type)
+    FABLE_FORCEINLINE CTCBase* Find(long type)
     {
         CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -48,8 +49,8 @@ class CThing { public:
     CTCMap        Components;                           // +0x44
     unsigned char _pad50[0x41];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) { return Components.Find(type); }
 };
 class CThingPlayerCreature : public CThing { };
 

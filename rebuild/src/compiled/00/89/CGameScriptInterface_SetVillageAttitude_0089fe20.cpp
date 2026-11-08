@@ -6,6 +6,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the map Find written as the ternary entry pick (`((it == last || kind < it->kind) ? last : it)->tc`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Leaf: ?SetVillageAttitude@CGameScriptInterface@@UBEXABVCScriptThing@@W4EScriptVillageAttitude@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "fable_compiler.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -19,12 +20,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -41,11 +42,11 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
 class CThingPlayerCreature : public CThing_Retail { };
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-__forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -63,21 +64,21 @@ struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
-__forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
     if (thing->HasTC(kind))
         tc = GetTC(thing, kind);
     return tc;
 }
-__forceinline CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
+FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;
     if (thing->HasTC(kind))
         tc = GetTCConst(thing, kind);
     return tc;
 }
-template <class T> __forceinline bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
+template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
 {
     if (thing->HasTC(kind)) {
         *out = (T*)GetTC(thing, kind);
@@ -91,7 +92,7 @@ class CCharString { public:                               // fable_string.h layo
     ~CCharString();                                // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-__forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
+FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
 {
     CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
     return t && !t->m_dead;
@@ -99,7 +100,7 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
 enum EScriptVillageAttitude { SCRIPT_VILLAGE_ATTITUDE_0, SCRIPT_VILLAGE_ATTITUDE_1, SCRIPT_VILLAGE_ATTITUDE_2 };
 struct CTCVillage_Retail {
     void SetAttitude(long attitude);               // 0x0065BFBC
-    __forceinline void SetScriptAttitude(EScriptVillageAttitude attitude)
+    FABLE_FORCEINLINE void SetScriptAttitude(EScriptVillageAttitude attitude)
     {
         switch (attitude) {
         case SCRIPT_VILLAGE_ATTITUDE_0: SetAttitude(0); break;

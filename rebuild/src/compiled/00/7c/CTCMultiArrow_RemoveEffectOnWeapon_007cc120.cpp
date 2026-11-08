@@ -6,6 +6,7 @@
 // CTCGraphicAppearance::ClearMeshEffect(void* key) @ 0x004BFFC0 and RemoveTintColour(void* owner) @ 0x004BFAE0 (key = this).
 // Layout: PDB CTCMultiArrow (0x4C; retail 0x48 with a 12-byte vector): RemovedEffect +0x20 (PDB offset).
 // Shape: IS_ALIVE `&&` the out-pointer GetInterface; RemovedEffect set on every path past the first test.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -17,7 +18,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

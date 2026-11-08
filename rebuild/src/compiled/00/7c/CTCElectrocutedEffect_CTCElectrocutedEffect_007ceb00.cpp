@@ -17,6 +17,7 @@
 //   CCharString homed in the dead `thing` slot, the index a named local); the carried things come in a local
 //   vector<CThing*> (zeroed after the lookup, freed by its inline destructor); `copy(begin, end, back_inserter(TintList))`
 //   inlines to the __copy call with the iterator-category temporary and a null distance pointer.
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class CThing;
 class CTCBase;
@@ -137,7 +138,7 @@ public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

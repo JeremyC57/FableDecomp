@@ -18,6 +18,7 @@
 // Layout: Ego_r.pdb CTCForcePushPower matches retail (PDef +0x0C, SpellLevel +0x10, PItemRemoved +0x14, Casted +0x1C,
 //         CurTimeDelayBetweenCastsFrames +0x20, IgnoreFriendlies +0x24); retail CSpecialAbilitiesForcePushDef::
 //         TimeDelayBetweenCastsSec +0x98 (PDB +0xA4: 4-byte smaller def base, 12-byte vectors).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -97,13 +98,13 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

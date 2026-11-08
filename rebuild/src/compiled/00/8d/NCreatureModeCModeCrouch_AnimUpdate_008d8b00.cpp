@@ -18,6 +18,7 @@
 //   the members, as the landed CModeStandBase::AnimUpdate 0x00862EC0 (Y loaded first, both kept on the x87 stack; a C2DVector
 //   copy loads X first); each branch builds its own name and VC merges the shared `SneakAnimName = name ; ~name` tail; the
 //   blend-in thing is ParentThing re-read after GetAnimFromName (a named local there). 4 grades.
+#include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
 
@@ -47,7 +48,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -111,7 +112,7 @@ class CAnimateThing { public:
     unsigned char CurrentAnimType;         // +0x50
     unsigned char CurrentAnimFlags;        // +0x51
     void SetMainAnim(const CAnimInit& init, long blendIn, long transition);   // 0x0070D580
-    __forceinline bool IsPlayingMainAnimType(unsigned char type) const
+    FABLE_FORCEINLINE bool IsPlayingMainAnimType(unsigned char type) const
     {
         return AnimsBegin != AnimsEnd && !(CurrentAnimFlags & 2) && CurrentAnimType == type;
     }

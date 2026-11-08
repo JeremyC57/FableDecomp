@@ -17,6 +17,7 @@
 // Shape: end() is read once into a local and compared with the find's result; the find's iterators are built in their
 //   argument slots (user copy constructor); the value and the empty iterator tag are both the `enemy` parameter slot.
 //   The pushed temporary's inline constructor takes the pointer by reference (re-read after the base constructor).
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -92,7 +93,7 @@ public:
     unsigned long UsingComponents[9];               // +0x20 bitset<274>
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline bool GetInterface(long type, CTCBase** out)     // the landed 0x007504E0 out-parameter shape
+    FABLE_FORCEINLINE bool GetInterface(long type, CTCBase** out)     // the landed 0x007504E0 out-parameter shape
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);

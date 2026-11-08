@@ -10,6 +10,7 @@
 // pointer is read into ebx and released by hand without a null test; the predicate carries the item's category
 // identifier (+0x3C); the end pointer stays in edi across the find.
 // Layout: retail CTCInventoryBase Categories {first +0x20, last +0x24}; NInventory::CCategory 0x2C bytes.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -49,7 +50,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventoryItemDef>
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer() { T* object = Object; if (object && --object->RefCount == 0) object->Destroy(); }
+    FABLE_FORCEINLINE ~CDefPointer() { T* object = Object; if (object && --object->RefCount == 0) object->Destroy(); }
     T* operator->() const { return Object; }
 };
 

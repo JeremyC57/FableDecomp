@@ -1,4 +1,5 @@
 // Behaviour test for CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe (0x007c04a0): search box, shooter exclusion, first hearing AI creature plays a random ARROW_FLY_BY sound once.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -141,7 +142,7 @@ class CThing { public:
     unsigned char Dead : 1;                         // +0x91 bit 0
     C3DVector Pos; bool Hears;
     const C3DVector& GetPosition() const { return Pos; }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

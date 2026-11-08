@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stddef.h>
 #include <string.h>
@@ -137,12 +138,12 @@ namespace std {
 template<class T>class allocator{};
 template<class T,class A>struct _STLP_alloc_proxy:A{T _M_data;};
 template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,A> _M_end_of_storage;};
-template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:__forceinline unsigned int size()const{return this->_M_finish-this->_M_start;}__forceinline const T& operator[](unsigned int index)const{return this->_M_start[index];}};
+template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:FABLE_FORCEINLINE unsigned int size()const{return this->_M_finish-this->_M_start;}FABLE_FORCEINLINE const T& operator[](unsigned int index)const{return this->_M_start[index];}};
 }
 template<class T>class CArray:public std::vector<T>{};
 class CGraphicDataBank:public CBankFileAsync,public CResourceBank {public:
  CArray<CGraphicInfo> GraphicList;
- __forceinline const CGraphicInfo* GetGraphicInfo(unsigned long index)const{return index<GraphicList.size()?&GraphicList[index]:0;}
+ FABLE_FORCEINLINE const CGraphicInfo* GetGraphicInfo(unsigned long index)const{return index<GraphicList.size()?&GraphicList[index]:0;}
  virtual unsigned long GetNoFramesInGraphic(unsigned long)const;
  virtual unsigned long GetGraphicFrameWidth(unsigned long,unsigned long)const;
  virtual unsigned long GetGraphicFrameHeight(unsigned long,unsigned long)const;

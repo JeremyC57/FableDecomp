@@ -8,6 +8,7 @@
 // Shape: no named locals, so every lookup key lives in the dead `name` parameter slot; PBrain is cached in ebx while the
 // creature is re-read after each member store. Layout: Ego_r.pdb CAIStateGroupBehaviourBase = retail
 // (PTCPerception +0x1c, PTCOpinion +0x20, PTCCreatureMode +0x24).
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString;
 class CThingAICreature;
@@ -22,13 +23,13 @@ class CThing
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -37,7 +38,7 @@ class CThing
             it = map->end();
         return it->second;
     }
-    __forceinline CTCBase* GetTCConst(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTCConst(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

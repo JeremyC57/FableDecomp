@@ -18,6 +18,7 @@
 //   local before the -1 morph index is declared (otherwise the -1 store lands before the argument push); CEntry::operator== is the intrinsic memcmp (`repe cmpsd`, 10 dwords); the new wound is a
 //   CWound temporary pushed on the front (STLport insert(begin(), x): retail homes begin() in the dead argument slot);
 //   the trim is `while (size() > 15) pop_back()` with STLport's walking size().
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);          // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" int __cdecl memcmp(const void* a, const void* b, unsigned int size);
@@ -43,7 +44,7 @@ class CWoundMorphs { public:
 };
 #include "engine/CCountedPointer.h"
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                                  // slot 1

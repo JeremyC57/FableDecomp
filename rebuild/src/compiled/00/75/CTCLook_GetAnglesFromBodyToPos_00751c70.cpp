@@ -15,6 +15,7 @@
 // || chain with a shared false exit, and both arms end in the same AngleDifference(bodyYZ, target) tail.
 // Layout (retail, as the landed GetHeadPos 0x00751B30): ParentThing +0x04 (PhysicsTC +0x60), PParentCreature +0x10,
 // RecoveryAngleToLookAt XY/YZ +0x1c/+0x20, CachedHeadPos +0xa1 (packed, PDB +0xa5). No engine header for CTCLook.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(fabs)
 
@@ -64,7 +65,7 @@ class CTCLook { public:
     unsigned char       _pad24[0xa0 - 0x24];
     bool                TargetAcquired;         // +0xa0 (PDB +0xa4)
     C3DVector           CachedHeadPos;          // +0xa1 (PDB +0xa5)
-    __forceinline C3DVector GetHeadPos() const
+    FABLE_FORCEINLINE C3DVector GetHeadPos() const
     {
         if (g_bQueryCreatureHeadPos)
             return PParentCreature->GetHeadPos(false);

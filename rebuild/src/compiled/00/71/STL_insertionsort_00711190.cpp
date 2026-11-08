@@ -11,6 +11,7 @@
 // Shape: the count of copy_backward is `(i - first) >> 2` from the frame constant `-4 - first` (strength-reduced), the
 // moved-down copy indexes `[edi+eax-4]`; the unguarded loop re-reads the value's priority (`mov ebp,[ecx+54h]`) after
 // each store because the iterator store may alias. VC7.1 leaves the helpers out of line unless they are __forceinline.
+#include "fable_compiler.h"
 class CAnimSet { public:                                 // retail layout (12-byte vectors)
     unsigned char _before[0x4c];                  // UpdateMode, Anims, InternalAlphas, ... AnimDelay
     long Priority;                                // +0x4C
@@ -36,7 +37,7 @@ struct random_access_iterator_tag {
     random_access_iterator_tag() { }
 };
 
-__forceinline CAnimSetIterator* __copy_backward(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator* result,
+FABLE_FORCEINLINE CAnimSetIterator* __copy_backward(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator* result,
                                                 const random_access_iterator_tag&, int*)
 {
     for (int n = last - first; n > 0; --n)
@@ -44,12 +45,12 @@ __forceinline CAnimSetIterator* __copy_backward(CAnimSetIterator* first, CAnimSe
     return result;
 }
 
-__forceinline CAnimSetIterator* copy_backward(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator* result)
+FABLE_FORCEINLINE CAnimSetIterator* copy_backward(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator* result)
 {
     return __copy_backward(first, last, result, random_access_iterator_tag(), (int*)0);
 }
 
-__forceinline void __unguarded_linear_insert(CAnimSetIterator* last, CAnimSetIterator val, CAnimSetItPriorityLessThan comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(CAnimSetIterator* last, CAnimSetIterator val, CAnimSetItPriorityLessThan comp)
 {
     CAnimSetIterator* next = last;
     --next;
@@ -61,7 +62,7 @@ __forceinline void __unguarded_linear_insert(CAnimSetIterator* last, CAnimSetIte
     *last = val;
 }
 
-__forceinline void __linear_insert(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator val, CAnimSetItPriorityLessThan comp)
+FABLE_FORCEINLINE void __linear_insert(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator val, CAnimSetItPriorityLessThan comp)
 {
     if (comp(val, *first)) {
         copy_backward(first, last, last + 1);

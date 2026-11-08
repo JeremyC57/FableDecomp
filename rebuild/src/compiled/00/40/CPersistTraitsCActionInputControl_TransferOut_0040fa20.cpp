@@ -13,6 +13,7 @@
 //   dead `out` argument slot, then TransferOutLong); the controller switch (1 Xbox button, 2 keyboard key, 3 mouse button)
 //   is a `dec eax ; je` chain with one merged call; the direction is written when its squared length beats eps*eps and the
 //   action is 0x3C or 0x72 (the float test first). Speed-optimised (default) TU.
+#include "fable_compiler.h"
 class CPersistContext;
 class CCharString {
 public:
@@ -43,7 +44,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
+    FABLE_FORCEINLINE void TransferOut(CPersistContext* context, CCharString* out, const long* value) const
     {
         long copy = *value;
         TransferOutLong(context, out, &copy);

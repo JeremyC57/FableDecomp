@@ -11,6 +11,7 @@
 // loaded straight into ecx for the call). `return talking || emoting;` is an int-valued `||`: retail returns
 // `mov eax,1` / `xor eax,eax`, not a byte.
 // CThing is modelled locally: rebuild/include/engine has no CThing.h and CThingCreatureBase.h pads the CThing bytes.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -55,7 +56,7 @@ public:
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type) const
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -70,7 +71,7 @@ public:
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

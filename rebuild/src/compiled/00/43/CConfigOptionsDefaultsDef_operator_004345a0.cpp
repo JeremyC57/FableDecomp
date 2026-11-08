@@ -14,6 +14,7 @@
 //   layout. The three 1-bit fields give the xor/and/xor read-modify-write byte sequence. This TU (the
 //   CDefClassBase module at 0x4345xx) is speed-compiled: copies rotate through eax/ecx/edx.
 // No engine/ header exists for the class: modelled locally from struct_layouts_egor.tsv.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 class CDefPointeeBase { public:                                   // 28-byte polymorphic root of CDefClassBase
     virtual void v00();
@@ -27,7 +28,7 @@ class CDefClassBase : public CDefPointeeBase { public:
     unsigned char Setup : 1;                            // +0x24 bit 0
     unsigned char Template : 1;                         // +0x24 bit 1
     unsigned char DefaultValsApplied : 1;               // +0x24 bit 2
-    __forceinline CDefClassBase& operator=(const CDefClassBase& other)
+    FABLE_FORCEINLINE CDefClassBase& operator=(const CDefClassBase& other)
     {
         CDefPointeeBase::operator=(other);
         PDefManager = other.PDefManager;
@@ -49,7 +50,7 @@ template<class K, class V> class CVectorMap { public:          // retail: 14 byt
     CRetailVector<V>    m_vector;                       // +0x00
     CKeyPairCompareLess m_compare;                      // +0x0c (empty)
     bool                m_sorted;                       // +0x0d
-    __forceinline CVectorMap& operator=(const CVectorMap& other)
+    FABLE_FORCEINLINE CVectorMap& operator=(const CVectorMap& other)
     {
         m_vector = other.m_vector;
         m_compare = other.m_compare;
@@ -64,7 +65,7 @@ struct CSubDefInfo;
 class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;   // +0x25
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;       // +0x29
-    __forceinline CParentDefClassBase& operator=(const CParentDefClassBase& other)
+    FABLE_FORCEINLINE CParentDefClassBase& operator=(const CParentDefClassBase& other)
     {
         CDefClassBase::operator=(other);
         InstantiationName = other.InstantiationName;

@@ -1,4 +1,5 @@
 // Behaviour test for 0x006CF1D0: the reconstructed body (pragmas stripped) driven through recording stubs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -155,7 +156,7 @@ class CTCWife : public CTCBase { public:                         // vtable 0x012
     unsigned char _padA4[0xec - 0xa4];
     virtual void v01();
     ~CTCWife();
-    __forceinline void SendUnpauseEvent()
+    FABLE_FORCEINLINE void SendUnpauseEvent()
     {
         CGameEvent gameEvent(9);
         gameEvent.Player = GetWorld()->GetCurrentPlayer()->m_playerNumber;

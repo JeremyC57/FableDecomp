@@ -8,6 +8,7 @@
 // Globals: the minimum marker distance @ 0x0125916C.
 // Layout: engine/CAIStateGroup_Guildmaster.h (PEnemy +0x18, PLastTeleportMarker +0x20, TeleportMarkers +0x28: retail
 //          vector first +0x28 / last +0x2C) behind CAIStateGroupBase (PBrain +4).
+#include "fable_compiler.h"
 #include "engine/CAIStateGroup_Guildmaster.h"
 
 extern "C" double __cdecl sqrt(double);
@@ -32,7 +33,7 @@ struct CThingPointer : CBaseIntelligentPointer {             // CIntelligentPoin
     CThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CThingPointer& operator=(const CThingPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())
@@ -40,7 +41,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-__forceinline bool IS_THING_ALIVE(CThing* const& thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* const& thing)
 {
     if (thing != 0) {
         if (!thing->IsDead())

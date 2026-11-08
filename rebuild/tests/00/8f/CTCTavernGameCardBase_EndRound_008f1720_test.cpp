@@ -1,5 +1,6 @@
 // Behaviour test for 008f1720: a self-contained copy of the candidate's model and body, run over stub callees.
 // CTCTavernGameCardBase::EndRound() -- base EndRound, clears the highlight off the highlighted card's graphic appearance, empties the card list and forgets the selected and highlighted cards
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -56,7 +57,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

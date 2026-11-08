@@ -13,6 +13,7 @@
 // Shape: CEnginePrimitiveHandle is the landed CPSCDecalRenderer::~CPSCDecalRenderer 0x00B1FFC0 model (Ego_r.pdb Clear(): IsUnique test,
 //   NotifyReleased(*this), `Data = 0`; an inline destructor = Clear() + the CIVCountedPointer destructor + ~CBaseClass), which stores the
 //   handle vtable before loading Data as retail does (2026-10-28 retry; the parked model hoisted the load).
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
 class CCharString {
@@ -46,7 +47,7 @@ template <class T> class CCountedPointer {
 public:
     T*              Data;                                   // +0x00
     CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
+    FABLE_FORCEINLINE void ReleaseData()
     {
         if (Info) {
             --Info->RefCount;
@@ -56,8 +57,8 @@ public:
             }
         }
     }
-    __forceinline void Reset() { ReleaseData(); Info = 0; Data = 0; }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
+    FABLE_FORCEINLINE void Reset() { ReleaseData(); Info = 0; Data = 0; }
+    FABLE_FORCEINLINE ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
 };
 
 class CFontBank;
@@ -93,7 +94,7 @@ public:
     T* Object;
     T* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->IVRefCount == 1; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {
@@ -102,19 +103,19 @@ public:
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(int) { Release(); Object = 0; return *this; }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { Release(); Object = 0; return *this; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class CEnginePrimitiveHandle : public CBaseClass {          // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->NotifyReleased(*this);
         Data = 0;
     }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 template <class T> class CDefPointer;

@@ -13,6 +13,7 @@
 // AssassinDisplacementTrail +0x20, TrailDelay +0x28, StartTrailDelay +0x2c, JustReleased +0x42, SlowTimeLength
 // +0x44, RadialBlurFadeKey +0x98, ScheduleForCancel +0x9e, RushDelayFrameCount +0xa0, CompletedExitModes +0xa4;
 // retail def blur height +0x44, blur fade time +0x4c; CThing state byte +0x10 (1 = player), interface 0xA7's mode +0x10.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -38,7 +39,7 @@ class CThing { public:
     void Kill(bool immediately);                        // 0x004C9B80
     void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
     void FinishCurrentAction();                         // 0x00662650
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -8,6 +8,7 @@
 //   CDefClassBase::GetSubDef<CCreatureDef> 0x00485815 (same-TU stand-in, as the landed AddWound 0x00757B30);
 //   CWoundMorphs::GetPWoundWithIndex(long) const 0x00757930; malloc 0x00BFEA0E / free 0x00BFEA14 (STLport list node).
 // Layout: as the landed AddWound 0x00757B30; CPersistContext Mode +0x18.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);          // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" int __cdecl memcmp(const void* a, const void* b, unsigned int size);
@@ -34,7 +35,7 @@ class CWoundMorphs { public:
 };
 #include "engine/CCountedPointer.h"
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                                  // slot 1
@@ -168,7 +169,7 @@ template <class T> struct CRetailList {                      // STLport list (4 
 };
 
 template <class T>
-__forceinline void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
+FABLE_FORCEINLINE void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
 {
     context.Transfer(name, value, defaultValue);
 }

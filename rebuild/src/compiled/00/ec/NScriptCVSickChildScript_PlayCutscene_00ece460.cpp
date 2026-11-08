@@ -15,6 +15,7 @@
 // Data: "NULL" 0x012393E4, "$ARG1" 0x012DD73C, "WITCH" 0x012F2610, "MUM" 0x012CC4F0, "HERO" 0x01255174, "" 0x0129AAF4.
 // Model: the landed CQ_HeroSoulsNostroScript::PlayCutscene 0x00D89AD0 (real STLport 4.6 maps, CBaseObject access, PImp
 //   members) plus the local cut-scene argument map std::map<CCharString, CCharString> that RunCutsceneMacro takes.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
@@ -47,7 +48,7 @@ public:
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
 public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
+    FABLE_FORCEINLINE CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CScriptGameResourceObjectBase::operator=(other);
         PImp = other.PImp;

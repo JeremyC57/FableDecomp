@@ -11,6 +11,7 @@
 // and its sorted component map at +0x44, dead bit +0x91 (the chunk-141 model).
 // Shape: the character is fetched three times (null test, dead test, then the component lookup); the inlined map
 // `find` takes the key by value, so its copy lands in the dead mode-argument slot.
+#include "fable_compiler.h"
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
@@ -42,7 +43,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020
-    __forceinline CTCBase_Retail* Find(long kind)
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         if (it == m_pLast || kind < it->first)
@@ -59,7 +60,7 @@ struct CThing_Retail {
     unsigned char  _pad50[0x41];
     unsigned char  m_dead : 1;                              // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 
 class CBaseObject;

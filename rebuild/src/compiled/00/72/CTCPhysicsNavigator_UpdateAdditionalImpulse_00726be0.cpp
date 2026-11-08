@@ -15,6 +15,7 @@
 //   place by an inline (position, float radius, owner) ctor that takes the owner creature from owner->ParentThing; the
 //   C3DVector copy is memberwise; GetAllThingsInRoughArea has a same-TU stand-in (as the landed 0x0092E950) so the result
 //   vector does not escape and its start stays in esi for the freeing destructor.
+#include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
 class CTCPhysicsBase;
@@ -156,7 +157,7 @@ class CApplyAdditionalImpulseIfInCombatAndTooClose { public:   // 0x18 bytes
     float               Radius;                     // +0x0c
     CTCPhysicsBase*     Owner;                      // +0x10
     CThingCreatureBase* OwnerCreature;              // +0x14
-    __forceinline CApplyAdditionalImpulseIfInCombatAndTooClose(const C3DVector& position, float radius, CTCPhysicsBase* owner)
+    FABLE_FORCEINLINE CApplyAdditionalImpulseIfInCombatAndTooClose(const C3DVector& position, float radius, CTCPhysicsBase* owner)
         : Position(position), Radius(radius), Owner(owner),
           OwnerCreature((CThingCreatureBase*)owner->ParentThing) { }
 };

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::ClearPrimitivesIfNecessary() -- when not drawing this frame, stop the charging sound, clear the charge-up handle and every special / spell-cross primitive handle; then the base drawer's clear
@@ -25,9 +26,9 @@ struct CEnginePrimitiveBase {                      // counted primitive: vptr, t
 
 struct CIVCountedPointer_Primitive {
     CEnginePrimitiveBase* m_p;
-    __forceinline CIVCountedPointer_Primitive() : m_p(0) { }
-    __forceinline long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE CIVCountedPointer_Primitive() : m_p(0) { }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
+    FABLE_FORCEINLINE void Release()
     {
         CEnginePrimitiveBase* object = m_p;
         if (object) {
@@ -36,7 +37,7 @@ struct CIVCountedPointer_Primitive {
             m_p = 0;
         }
     }
-    __forceinline CIVCountedPointer_Primitive& operator=(const CIVCountedPointer_Primitive& other)
+    FABLE_FORCEINLINE CIVCountedPointer_Primitive& operator=(const CIVCountedPointer_Primitive& other)
     {
         Release();
         m_p = other.m_p;
@@ -52,7 +53,7 @@ struct CBase {
 
 class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;              // +4
-    __forceinline void Clear()                     // 0x0041BE70 out of line (inlined here: size TU needs __forceinline)
+    FABLE_FORCEINLINE void Clear()                     // 0x0041BE70 out of line (inlined here: size TU needs __forceinline)
     {
         if (Data.GetRefCount() == 1)
             Data.m_p->OnLastHandleCleared(this);

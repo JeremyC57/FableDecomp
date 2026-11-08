@@ -14,6 +14,7 @@
 // a float local (`xy`) for retail's `fxch st(1) ; fxch st(1)` before fpatan. The rotation axis is built through a side
 // vector `(look.Y, -look.X, 0)` negated memberwise (retail's double fchs on look.X and the +0.0f Z store). The result is
 // returned by the memberwise user copy constructor (X through the x87, Y/Z as dwords).
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl sqrt(double x);
@@ -28,7 +29,7 @@ class C3DVector { public:
     void Rotate(const C3DVector& axis, float angle);          // 0x00A13C60
 };
 #include "engine/CThing.h"
-__forceinline float PitchFraction(const C3DVector& v)
+FABLE_FORCEINLINE float PitchFraction(const C3DVector& v)
 {
     float xy = (float)sqrt(v.X * v.X + v.Y * v.Y);
     float fraction = (float)atan2(v.Z, xy) * 0.15915493667125702f;

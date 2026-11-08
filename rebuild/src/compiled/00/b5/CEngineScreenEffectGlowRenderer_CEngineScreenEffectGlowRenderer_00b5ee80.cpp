@@ -12,6 +12,7 @@
 // Shape: own vtable store, the inline page free (`test ; jl`), then each member destructor inlined in reverse order: its own
 // vtable store, the null-tested `dec [data+N] ; jne ; call [vt]` release, the CShaderBase vtable store; the base destructor
 // is tail-called. The destructor is non-virtual in the model so the TU emits no `??_G` (the vtable comes from v00).
+#include "fable_compiler.h"
 class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
 };
@@ -37,7 +38,7 @@ class CShaderBase { public:                               // vtable 0x0129A030
 };
 class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
-    __forceinline virtual ~CPixelShader()
+    FABLE_FORCEINLINE virtual ~CPixelShader()
     {
         CPixelShaderData* data = Data;
         if (data) {
@@ -48,7 +49,7 @@ class CPixelShader : public CShaderBase { public:                // vtable 0x012
 };
 class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
-    __forceinline virtual ~CVertexShader()
+    FABLE_FORCEINLINE virtual ~CVertexShader()
     {
         CVertexShaderData* data = Data;
         if (data) {

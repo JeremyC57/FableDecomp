@@ -13,6 +13,7 @@
 // out-pointer in the dead temporary's word.
 // Layout: Ego_r.pdb CTCKraken: PTarget +0x20 (CIntelligentPointer<CThing>), Tentacles +0x30 (STLport list: one node
 // pointer). No engine header.
+#include "fable_compiler.h"
 class CBaseObject;
 class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
@@ -37,7 +38,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-    __forceinline CTCBase_Retail* Find(long kind) const
+    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
     {
         const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -51,7 +52,7 @@ class CThing { public:
     CTCMap_Retail  m_tcs;                       // +0x44
     unsigned char  _pad50[0x41];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

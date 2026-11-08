@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __cdecl
@@ -58,7 +59,7 @@ template <> CASuspendableProcess*& vector<CASuspendableProcess*>::back() { retur
 template <> void vector<CASuspendableProcess*>::pop_back() { --_M_finish; }
 extern CSuspendableProcessMicrothread*  g_pScriptRunner;     // 0x013D2838
 extern vector<CASuspendableProcess*>    g_ProcessStack;      // 0x013D2828
-__forceinline void StartTimeslice(CASuspendableProcess* process)
+FABLE_FORCEINLINE void StartTimeslice(CASuspendableProcess* process)
 {
     long reserved[12];     // never touched: models retail's 0x30 untouched inlinee frame bytes (contents unknown)
     process->TimeProcessSliceStarted = (float)GFGetTime();

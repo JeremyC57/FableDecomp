@@ -14,6 +14,7 @@
 //   unsigned index strength-reduced to a byte offset in edi, `jb`; a signed index gives `jl`), re-reading the array pointer
 //   through the reference every pass (the member call could change it); the unused traits local folds away. The size TU
 //   keeps the traits transfers out of line (and homes the traits in the argument slot) unless they are __forceinline.
+#include "fable_compiler.h"
 #pragma optimize("s", on)   // the def module is size-optimised
 
 class CDataOutputStream;
@@ -32,12 +33,12 @@ const unsigned long OPINION_PERSONALITY_TRAITS_COUNT = 5;   // entries in COpini
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<COpinionPersonalityTraits*> {
     COpinionPersonalityTraits* DefaultVal;                                                      // +0x00
-    __forceinline void TransferBinaryOut(CDataOutputStream* stream, COpinionPersonalityTraits* const* value)
+    FABLE_FORCEINLINE void TransferBinaryOut(CDataOutputStream* stream, COpinionPersonalityTraits* const* value)
     {
         for (unsigned long i = 0; i < OPINION_PERSONALITY_TRAITS_COUNT; ++i)
             (*value)[i].TransferBinaryOut(stream);
     }
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, COpinionPersonalityTraits** value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, COpinionPersonalityTraits** value)
     {
         for (unsigned long i = 0; i < OPINION_PERSONALITY_TRAITS_COUNT; ++i)
             (*value)[i].TransferBinaryIn(stream);

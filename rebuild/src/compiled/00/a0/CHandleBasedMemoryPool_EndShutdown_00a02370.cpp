@@ -8,6 +8,7 @@
 // BeginCritical 0x00A02140). CHeader as landed with InsertFreeArea (0x00A01DA0).
 // Globals: the global CMemoryAllocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94 (as the
 // landed GFFreeFromGlobalAllocator 0x009A4350 / CFileInstaller::InitBuffers 0x009C5310).
+#include "fable_compiler.h"
 struct _RTL_CRITICAL_SECTION_Retail { long m_words[6]; };   // 24 bytes
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);   // IAT 0x0143FEE4
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);       // IAT 0x0143FDE4
@@ -27,7 +28,7 @@ void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;               // 0x013CAA90
 extern bool              g_bDestroyAllocatorWhenEmpty_013caa94;     // 0x013CAA94
 
-__forceinline void* GFAllocateFromGlobalAllocator(long size, unsigned long flags)
+FABLE_FORCEINLINE void* GFAllocateFromGlobalAllocator(long size, unsigned long flags)
 {
     if (!g_pGlobalAllocator_013caa90)
         GFCreateGlobalAllocator();
@@ -36,7 +37,7 @@ __forceinline void* GFAllocateFromGlobalAllocator(long size, unsigned long flags
     GFLeaveAllocatorLock();
     return block;
 }
-__forceinline void GFFreeFromGlobalAllocator(void* block)
+FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
 {
     GFEnterAllocatorLock();
     if (block && g_pGlobalAllocator_013caa90) {
@@ -83,7 +84,7 @@ class CHandleBasedMemoryPool { public:
     void EndShutdown();
     void Initialise(long poolSize, bool multiThreaded, unsigned long memoryFlags);
     void InitialiseFromPreallocatedBuffer(void* buffer, long size, bool multiThreaded);
-    __forceinline void CreateInitialFreeArea()     // the whole pool as one free area
+    FABLE_FORCEINLINE void CreateInitialFreeArea()     // the whole pool as one free area
     {
         CHeader* area = (CHeader*)Buffer;
         area->Size = PoolSize - sizeof(CHeader);

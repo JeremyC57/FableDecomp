@@ -1,5 +1,6 @@
 // Fixture (agent680: target body replaced with src/00badb40.cpp's).
 // Behavioral fixture for the selected parked source; no byte-parity claim.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -583,9 +584,9 @@ class CBaseClass{public:virtual~CBaseClass();};
 template<class T>class CIVCountedPointer{private:CIVCountedPointeeBase*Object;};
 class CGraphicInfoFrame:public CBaseClass{public:class CFrameData;private:unsigned short FrameNum;signed char SmallMipmapLevel;CIVCountedPointer<CFrameData>Data;CGraphicInfo*GraphicInfo;public:void BeginLoading(unsigned long,unsigned long)const;unsigned long GetWidth()const;unsigned long GetHeight()const;};
 class CGraphicInfo{private:CGraphicDataBank::CGraphicHeader Header;CGraphicDataBank::ETextureType TextureType;CGraphicDataBank*Bank;long Index;CGraphicInfoFrame*Frames;public:const CGraphicInfoFrame*PeekInfoFrame(unsigned long n)const{return Frames+n;}unsigned long GetWidth()const{return Header.FrameWidth;}unsigned long GetHeight()const{return Header.FrameHeight;}};
-__forceinline const CGraphicInfo*CGraphicDataBank::PeekGraphic(unsigned long n)const{return n<GraphicList.size()?&GraphicList[n]:0;}
-__forceinline const CGraphicInfoFrame*CGraphicDataBank::PeekGraphicInfoFrame(unsigned long n,unsigned long frame)const{return PeekGraphic(n)?PeekGraphic(n)->PeekInfoFrame(frame):0;}
-__forceinline unsigned long CGraphicInfoFrame::GetWidth()const{return GraphicInfo->GetWidth();}__forceinline unsigned long CGraphicInfoFrame::GetHeight()const{return GraphicInfo->GetHeight();}
+FABLE_FORCEINLINE const CGraphicInfo*CGraphicDataBank::PeekGraphic(unsigned long n)const{return n<GraphicList.size()?&GraphicList[n]:0;}
+FABLE_FORCEINLINE const CGraphicInfoFrame*CGraphicDataBank::PeekGraphicInfoFrame(unsigned long n,unsigned long frame)const{return PeekGraphic(n)?PeekGraphic(n)->PeekInfoFrame(frame):0;}
+FABLE_FORCEINLINE unsigned long CGraphicInfoFrame::GetWidth()const{return GraphicInfo->GetWidth();}FABLE_FORCEINLINE unsigned long CGraphicInfoFrame::GetHeight()const{return GraphicInfo->GetHeight();}
 #define CEngineResourceManager CEngineResourceManagerFields
 // Begin shared header engine/CEngineResourceManager.h
 #ifndef FABLE_ENGINE_CENGINERESOURCEMANAGER_H

@@ -16,6 +16,7 @@
 //   empty tag sits on the `x` argument slot ([esp+24h]), which needs the same-TU helper bodies (GOTCHAS 504/667).
 // Model: Ego_r.pdb CEnginePrimitiveHandle (vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +0x04) with the
 //   counted-pointer accessors of the landed 0x00BBDCB0; STLport's three vector words.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -60,7 +61,7 @@ class CEnginePrimitiveHandle : public CBaseClass {        // vtable 0x0122F598, 
 public:
     CIVCountedPointer Data;                               // +0x04
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& x) : CBaseClass(x), Data(x.Data) { }
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);

@@ -1,5 +1,6 @@
 // Behaviour test for 006c8de0: src/006c8de0.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
 // and arguments are observable. CThingFilter_IsEligibleWitness::CThingFilter_IsEligibleWitness(COpinionDeed* deed, CThing* perpetrator, bool useHearing, CThingAICreature* notRecipient, CFaction* faction, bool reverseFactionSearch, bool unknownThreatSearch)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -44,7 +45,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &Components;

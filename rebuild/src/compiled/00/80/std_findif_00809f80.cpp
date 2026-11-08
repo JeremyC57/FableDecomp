@@ -14,6 +14,7 @@
 // Shape: STLport 4.x `__find_if` (trip count `(last - first) >> 2`, four tests per pass, `switch (last - first)` over
 //   3/2/1); the bind is `(*F1)(t) && (*F2)(t)`; VC7.1's per-function inline budget expands the stock-item filter (the
 //   landed 0x00809270 body, plain inline) at the first site only and calls it out of line at the other six.
+#include "fable_compiler.h"
 class CTCBase;
 class CTCShop;
 enum ETCInterfaceType { TC_STOCK_ITEM = 0x54, TC_FORCE_DWORD = 0x7fffffff };
@@ -29,13 +30,13 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                     // +0x20 bitset<274>
     CTCMap Components;                                    // +0x44
-    __forceinline bool HasTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE bool HasTC(ETCInterfaceType type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const CTCMap* map = &Components;

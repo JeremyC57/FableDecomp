@@ -1,6 +1,7 @@
 // NScript::CQ_GuildTrainingPreMeleeScript::Main() -- stage the opening guild lesson, cutscenes and expressions.
 // Leaf: ?Main@CQ_GuildTrainingPreMeleeScript@NScript@@UAEXXZ
 // Grade: RELOCATION_MATCH(2280v2280) -- genuine timer ctor/dtor context and documented header helper expansion.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
@@ -32,7 +33,7 @@ inline CScriptThing::~CScriptThing() {}
 CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
 CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #pragma auto_inline(on)
-__forceinline CTimer& CTimer::operator=(long n) { pDSTGame->SetTimer(TimerIndex,n); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long n) { pDSTGame->SetTimer(TimerIndex,n); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline bool CTimer::operator>(long n) const { return GetTime()>n; }
 

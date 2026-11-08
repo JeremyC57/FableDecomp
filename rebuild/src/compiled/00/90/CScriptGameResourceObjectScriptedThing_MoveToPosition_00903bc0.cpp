@@ -16,6 +16,7 @@
 // with FaceMovement = true. A virtual call on `this` needs the polymorphic model: engine/
 // CScriptGameResourceObjectScriptedThing.h keeps the vptr as a plain word, so this file models the class
 // locally with the header's offsets (ScriptInterface +0x10, PThing +0x14).
+#include "fable_compiler.h"
 #include <stddef.h>
 
 
@@ -35,7 +36,7 @@ class CThing_Retail { public:
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -49,7 +50,7 @@ class CThing_Retail { public:
         return false;
     }
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
-    template<class T> __forceinline bool GetInterfaceBit(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceBit(T** ppOut, long interfaceType)
     {
         const unsigned char& present = HasTC(interfaceType);
         if (present) {

@@ -6,6 +6,7 @@
 // Shape so far: a `__forceinline` by-value def getter (local CDefPointer filled by GetDef, returned
 // by copy) consumed by `->Properties`; the returned temporary's release is emitted without a
 // null test as in retail. Properties is CThingMarkerDef +0x84 (PDB +0x88).
+#include "fable_compiler.h"
 class CThingMarkerDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
@@ -46,7 +47,7 @@ class CThing { public:
     CDefinitionManager* GetDefinitionManager();    // 0x004C7990
 };
 class CThingMarker : public CThing { public:
-    __forceinline CDefPointer GetMarkerDef()
+    FABLE_FORCEINLINE CDefPointer GetMarkerDef()
     {
         CDefPointer def;
         GetDefinitionManager()->GetDef_0083d630(DefGlobalIndex, def);

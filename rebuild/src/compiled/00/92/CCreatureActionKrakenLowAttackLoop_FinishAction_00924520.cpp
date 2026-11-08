@@ -20,6 +20,7 @@
 //   CCreatureActionBase TotalTime +0x10 / FramesRunning +0x1C; CTCKraken PKrakenDef +0x0C; CKrakenDef LowStrikeAttackLoops
 //   +0x40 (Ego_r +0x40; the high-attack sibling 0x00924930 reads HighStrikeAttackLoops +0x44).
 // Device: KrakenLowAttackLoop_FinishAction_Use is not a retail function; it only keeps the anonymous-namespace body emitted.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { TC_KRAKEN = 226 };
 
@@ -67,7 +68,7 @@ public:
     unsigned char _pad_0x50[0x91 - 0x50];
     bool Dead : 1;                                           // +0x91 bit 0
     bool IsDead() const { return Dead != 0; }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!(UsingComponents[T::InterfaceType / 32] & (1UL << (T::InterfaceType % 32))))
             return false;

@@ -10,6 +10,7 @@
 //   (capture block, layout, shader enables) destroyed in reverse order, as retail restores them.
 // Layout: engine/CEngineScreenEffectRadialBlurRenderer.h (BlurTexture256_1 +0x0c, BlurTexture256_2 +0x10,
 //   ScreenCopyVertexShader +0x20, TextureOnlyPixelShader +0x40, ShowDebug +0x1c4, BlurToBackBufferVerts +0x1cc).
+#include "fable_compiler.h"
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
 class C4DVector { public: float X, Y, Z, W; };
@@ -21,7 +22,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -44,7 +45,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     unsigned char        _pad28cc[0x3a24 - 0x28cc];
     unsigned char        m_captureBlockMarker[4];  // +0x3A24
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -59,7 +60,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
             ++m_dirtyCount;
         }
     }
-    __forceinline void OpenCaptureBlock()
+    FABLE_FORCEINLINE void OpenCaptureBlock()
     {
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
@@ -71,7 +72,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 extern CRenderManagerCoreView* g_pRenderStateManager;  // 0x013CB508
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);
@@ -80,7 +81,7 @@ __forceinline void CTrackedRenderState::Set(unsigned long value)
 extern unsigned long g_renderStateDefault_01396fb8;    // 0x01396FB8
 extern const unsigned short g_QuadIndices_0139a550[6]; // 0x0139A550
 
-static __forceinline void SetState(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(unsigned long value, CTrackedRenderState& state, CRenderManagerCoreView* core)
 {
     if (state.m_value != value)
         core->ChangeState(state, value);
@@ -98,7 +99,7 @@ struct CShaderEnableState {                             // the static shader man
     void DisableVertexShaders();                        // 0x009880E0
     void EnablePixelShaders();                          // 0x00988110
     void DisablePixelShaders();                         // 0x00988190
-    __forceinline void SetVertexShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetVertexShadersEnabled(bool enable)
     {
         if (enable != VertexShadersEnabled) {
             if (enable)
@@ -107,7 +108,7 @@ struct CShaderEnableState {                             // the static shader man
                 DisableVertexShaders();
         }
     }
-    __forceinline void SetPixelShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetPixelShadersEnabled(bool enable)
     {
         if (enable != PixelShadersEnabled) {
             if (enable)
@@ -145,7 +146,7 @@ public:
     void ApplyVertexShader(CVertexShader* shader, bool force);                  // 0x00988020
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),
@@ -223,14 +224,14 @@ extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
 struct CShaderEnableSaver {                             // saves and forces the shader enables, restores them on exit
     bool m_vertexShaders;
     bool m_pixelShaders;
-    __forceinline CShaderEnableSaver(bool vertexShaders, bool pixelShaders)
+    FABLE_FORCEINLINE CShaderEnableSaver(bool vertexShaders, bool pixelShaders)
     {
         m_vertexShaders = g_ShaderRenderManager.VertexShadersEnabled;
         g_ShaderRenderManager.SetVertexShadersEnabled(vertexShaders);
         m_pixelShaders = g_ShaderRenderManager.PixelShadersEnabled;
         g_ShaderRenderManager.SetPixelShadersEnabled(pixelShaders);
     }
-    __forceinline ~CShaderEnableSaver()
+    FABLE_FORCEINLINE ~CShaderEnableSaver()
     {
         g_ShaderRenderManager.SetVertexShadersEnabled(m_vertexShaders);
         g_ShaderRenderManager.SetPixelShadersEnabled(m_pixelShaders);
@@ -238,16 +239,16 @@ struct CShaderEnableSaver {                             // saves and forces the 
 };
 struct CShaderLayoutSaver {                             // selects a vertex constant layout, restores the previous one on exit
     long m_layout;
-    __forceinline CShaderLayoutSaver(long layout)
+    FABLE_FORCEINLINE CShaderLayoutSaver(long layout)
     {
         m_layout = g_ShaderRenderManager.CurrentVSConstantLayoutIndex;
         g_ShaderRenderManager.SetVertexShaderConstantLayout(layout);
     }
-    __forceinline ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
+    FABLE_FORCEINLINE ~CShaderLayoutSaver() { g_ShaderRenderManager.SetVertexShaderConstantLayout(m_layout); }
 };
 struct CRenderStateCaptureBlock {
-    __forceinline CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
-    __forceinline ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
+    FABLE_FORCEINLINE CRenderStateCaptureBlock() { g_pRenderStateManager->OpenCaptureBlock(); }
+    FABLE_FORCEINLINE ~CRenderStateCaptureBlock() { g_pRenderStateManager->RestoreCaptureBlock(); }
 };
 
 struct CEngineScreenEffectRadialBlurRenderer_Methods : CEngineScreenEffectRadialBlurRenderer {

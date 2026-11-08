@@ -16,6 +16,7 @@
 // CCreatureActionBase 0xa8 bytes (aim 0xb0, fire 0xc8), CCombatActionBase 0x114 (play-combat-animation 0x118).
 // Shape: each practice step is `failed = name != "" && PerformActionAndWait(&Action(...), false) != 2;` (conditional
 // temporaries, ebx flag bits 1/2/4/8, the bool in a frame byte); the failure exits are gotos to one `success = false`.
+#include "fable_compiler.h"
 class CThing;
 class CCharString { public:
     void* PStringData;
@@ -34,7 +35,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
 };
 class CThingCreatureBase;
 class CCombatManager { public:
@@ -83,7 +84,7 @@ class CAIStateGroupBase { public:
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
-    __forceinline unsigned long Random()
+    FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;

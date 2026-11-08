@@ -12,6 +12,7 @@
 // ControlledCreature +0x2c, PlayerCharacter +0x34) through the CPlayer_Methods carrier.
 // Shape: the progress text is a temporary; the player number is a named local read before the GetMainPlayerID call
 // (ebx, pushed/popped around its short live range); the camera out pointer reuses the dead argument slot; GetMainPlayer is called twice.
+#include "fable_compiler.h"
 #include "engine/CPlayer.h"
 
 class CCharString { public:
@@ -32,7 +33,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-    __forceinline CTCBase* Find(long type)
+    FABLE_FORCEINLINE CTCBase* Find(long type)
     {
         CTCEntry* it = LowerBound((ETCInterfaceType)type);
         if (it == _M_finish || type < it->first)
@@ -48,8 +49,8 @@ class CThing { public:
     CTCMap        Components;                          // +0x44
     unsigned char _pad50[0x41];
     unsigned char Dead : 1;                            // +0x91 bit 0
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) { return Components.Find(type); }
 };
 struct CTCPlayerCharacterLinks {                       // TC type 0x7a
     void AddThing(CThing* thing);                      // 0x006AEDC0

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <string.h>
 class CWideStringData;
@@ -19,9 +20,9 @@ public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
-    __forceinline const char* c_str() const { return PStringData == 0 ? "" : PStringData->Text; }
-    __forceinline bool EndsWith(const CCharString& suffix) const
+    FABLE_FORCEINLINE long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
+    FABLE_FORCEINLINE const char* c_str() const { return PStringData == 0 ? "" : PStringData->Text; }
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
     {
         long offset = Length() - suffix.Length();
         if (offset >= 0)

@@ -3,8 +3,9 @@
 // Leaf: SetTarget
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The chunk label (CMurderTwistLeader::Init) is propagated; named by address. Shape: a 12-byte frame for the vector (X and Y through the FPU, Z through an integer register), `ret 4`.
+#include "fable_compiler.h"
 class C2DVector { public: float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
-static __forceinline C2DVector Sub(const C2DVector& a, const C2DVector& b) { C2DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; return r; }
+static FABLE_FORCEINLINE C2DVector Sub(const C2DVector& a, const C2DVector& b) { C2DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; return r; }
 #include "engine/C3DVector.h"
 struct ITargetOwner_00a7d9c0 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();

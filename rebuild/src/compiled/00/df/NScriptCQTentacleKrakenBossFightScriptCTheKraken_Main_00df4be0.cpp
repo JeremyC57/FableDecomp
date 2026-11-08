@@ -15,6 +15,7 @@
 //   cast-map / destructor-less movie model; a first handle is constructed (never used) before the health wait.
 // Naming wave 35: identity reg 00df4358 "TheKraken" in 00df4240; Alloc 00df4730; vtable 012de5ac slot 1; PDB ?Main@CTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTheKraken::Main (wave3/labels_alloc.tsv); PDB ?Main@CTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CTheKraken@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CCountedPointer.h"
@@ -37,7 +38,7 @@ struct CBaseObjectDtor {                       // destructor-only view of CBaseO
     virtual ~CBaseObjectDtor();                // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CCountedPointerWords {                  // {Data, Info}
     void* Data;
@@ -59,9 +60,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                       // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

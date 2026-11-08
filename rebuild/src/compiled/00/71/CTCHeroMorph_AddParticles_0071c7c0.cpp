@@ -14,6 +14,7 @@
 // Shape: the GetSubDef stand-in (same TU, auto_inline off) lets VC keep the def in ebx as retail's link-time codegen did;
 //        the helper-name conversion binds to a const reference (a named copy adds a copy-ctor call and a frame word); the
 //        local vector frees its storage directly (free(), CRT thunk 0x00BFEA14).
+#include "fable_compiler.h"
 #include <math.h>
 #include <stdlib.h>
 class CCharString {
@@ -55,8 +56,8 @@ public:
 template<class T> class CDefPointer {
 public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) {}
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object && --Object->RefCount == 0)
             Object->Destroy();
@@ -79,8 +80,8 @@ template<class T> struct vector {
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~vector()
+    FABLE_FORCEINLINE vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    FABLE_FORCEINLINE ~vector()
     {
         if (_M_start)
             free(_M_start);
@@ -110,7 +111,7 @@ public:
     const CThingDef* PDef;                              // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                              // +0x91
-    __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
     const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CTCBase {

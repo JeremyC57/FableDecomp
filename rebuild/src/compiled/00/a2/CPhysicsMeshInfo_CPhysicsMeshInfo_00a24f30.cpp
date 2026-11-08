@@ -8,6 +8,7 @@
 // generated headers flatten the vptr). The own vtable store comes FIRST, before the member load:
 // the release is the counted pointer's own inline destructor (a member object), which keeps the
 // pointee in a local (`dec [ecx+4]` then `mov eax,[ecx]` without a reload) and clears the member.
+#include "fable_compiler.h"
 class CMeshDataBank;
 
 struct CMeshData_a24f30 {                          // CPhysicsMeshInfo::CMeshData
@@ -18,7 +19,7 @@ struct CMeshData_a24f30 {                          // CPhysicsMeshInfo::CMeshDat
 
 template <class T> class CIVCountedPointer { public:
     T* m_pObject;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         T* object = m_pObject;
         if (object) {

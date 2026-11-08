@@ -18,6 +18,7 @@
 //   SendMessageToUser branch.
 // Layout: retail CConsole RegisteredConsoleInputs (map<CCharString, CCountedPointer<CConsoleInputBase> >) header at
 //   +0x40 (as the landed 0x009EB590 / 0x009EB690); CGenericVar ValString +0x08 (Ego_r.pdb, 0x1c bytes).
+#include "fable_compiler.h"
 extern "C" char* __cdecl strstr(const char* s, const char* sub);
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
@@ -40,15 +41,15 @@ class CCharString { public:
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
     CCharString GetAsLowerCase() const;             // 0x0099ED10
-    __forceinline const char* GetAsCharArray() const
+    FABLE_FORCEINLINE const char* GetAsCharArray() const
     {
         return PStringData == 0 ? "" : PStringData->Data.PData;
     }
-    __forceinline bool Contains(const CCharString& text) const
+    FABLE_FORCEINLINE bool Contains(const CCharString& text) const
     {
         return strstr(GetAsCharArray(), text.GetAsCharArray()) != 0;
     }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)
@@ -102,7 +103,7 @@ struct SInputNode {                                 // STLport _Rb_tree_node<pai
 struct CInputIterator {
     SInputNode* _M_node;
     SInputNode* operator->() const { return _M_node; }
-    __forceinline CInputIterator& operator++()
+    FABLE_FORCEINLINE CInputIterator& operator++()
     {
         SInputNode* x = _M_node;
         if (x->_M_right) {

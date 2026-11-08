@@ -23,6 +23,7 @@
 //   +0x20 / map +0x44 as the landed CInputProcessQuickAccessMenu::ProcessInput 0x00690FD0 (kind 0x10E = word 8 bit 14).
 // Shape: the mouse movement is a NAMED C2DVector local (retail re-takes its address with `lea` for MoveCursor); passing the
 //   call result straight through pushes the returned pointer instead.
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) short __stdcall GetAsyncKeyState(int key);
 class C2DVector { public: float X, Y; C2DVector() {} };
 enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
@@ -52,7 +53,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCPhotojournalCapture* Find(long kind)
+    FABLE_FORCEINLINE CTCPhotojournalCapture* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((CTCPhotojournalCapture*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
@@ -64,8 +65,8 @@ class CThing { public:
     unsigned long m_tcMask[8];                     // +0x20
     unsigned char _pad40[4];
     CTCMap        m_tcs;                           // +0x44
-    __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    __forceinline CTCPhotojournalCapture* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
+    FABLE_FORCEINLINE CTCPhotojournalCapture* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:

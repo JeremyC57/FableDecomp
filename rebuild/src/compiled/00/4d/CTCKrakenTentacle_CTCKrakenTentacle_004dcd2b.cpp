@@ -10,8 +10,9 @@
 // PRippleEffect +0x20, PObstruction +0x18, PKraken +0x10, then the inlined CDefPointer release of PTentacleDef +0x0c
 // (`dec [ecx+4] ; jne ; call [vt+4]`, then the zero store). No vtable store of its own: the model carries no virtuals
 // (the destructor is the plain ??1 the deleting destructor calls).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
-#define FORCEINLINE __forceinline
+#define FORCEINLINE FABLE_FORCEINLINE
 
 class CThing;
 

@@ -13,6 +13,7 @@
 // Shape: the landed STLport 4.6 vector<CConversation>::operator= 0x00E54AA0 model unchanged: __copy_ptrs / __copy /
 //   __uninitialized_copy `__forceinline`, the inline placement _Construct (null test, copy constructor out of line);
 //   _M_allocate_and_copy, _M_clear and _Destroy are declarations.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 // Layout: the retail polymorphic def-class chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in); CFeatDef is
 //   the Ego_r.pdb 0x64-byte def (vtable 0x012FB778, no RTTI; members opaque here, see the landed CFeatDef::Transfer 0x00F2D330).
@@ -41,7 +42,7 @@ public:
 };
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                                  const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -52,7 +53,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
@@ -61,7 +62,7 @@ inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _ForwardIterator>
 void __fastcall _Destroy(_ForwardIterator __first, _ForwardIterator __last);                    // 0x00F28F20
 template <class _InputIter, class _ForwardIter>
-__forceinline _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result, const __false_type&)
 {
     _ForwardIter __cur = __result;
     for (; __first != __last; ++__first, ++__cur)

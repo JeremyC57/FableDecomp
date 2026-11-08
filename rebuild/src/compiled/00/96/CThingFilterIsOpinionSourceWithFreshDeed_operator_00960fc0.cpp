@@ -11,6 +11,7 @@
 //   ReactNonstopFlag +0x77, VirtualDeed +0x80, VirtualDeedID +0x84.
 // Shape: nested ifs with the single false exit last; HasTC/GetTC inline; the stale-deed test is the deed id compare plus a 64-bit UID equality; each awareness test is
 //   an inline helper whose by-value flag parameter is homed in the dead argument slot before the creature is fetched.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -43,7 +44,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

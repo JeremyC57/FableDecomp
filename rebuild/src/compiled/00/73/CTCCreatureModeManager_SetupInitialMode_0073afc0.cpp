@@ -18,6 +18,7 @@
 //   same-TU stand-in body (out slot written inline, under auto_inline(off)): with only a declaration VC7.1 treats the
 //   out pointer's address as escaping and gives the GetInterface key its own frame word (`sub esp,8`, this/holder swap
 //   edi<->ebx); with the stand-in the key reuses the out pointer's `push ecx` word as in retail.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -87,7 +88,7 @@ class CThing { public:
     unsigned char  _pad54[0x1c];
     CDefClassBase* PDef;                        // +0x70
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00BFDFD0 (source body copied from src/00bfdfd0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -51,14 +52,14 @@ public:
     unsigned char  CliffLookupV, CliffLookupU;     // +0x14 / +0x15
 };
 // the engine's inline-assembly ROUND helper (round to nearest, the FPU default); expanded in place as a __forceinline
-__forceinline long ROUND(float value)
+FABLE_FORCEINLINE long ROUND(float value)
 {
     long result;
     RA_FISTP(value, result)
     return result;
 }
 
-__forceinline unsigned long PackVertexNormal(const C3DVector& normal)
+FABLE_FORCEINLINE unsigned long PackVertexNormal(const C3DVector& normal)
 {
     long z = ROUND(normal.Z * 511.0f);
     long y = ROUND(normal.Y * 1023.0f);

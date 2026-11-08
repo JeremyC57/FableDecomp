@@ -10,6 +10,7 @@
 // Shape: /O2 (16-aligned entry); the three tails after the inlined null checks are duplicated by the compiler. The
 // CCountedPointer(T*) ctor needs __forceinline (VC7.1 keeps it out of line otherwise, 75v153) and must hand the info block
 // the Object member, not the parameter: retail reloads Data from the argument slot (`mov ecx,[esi]`).
+#include "fable_compiler.h"
 class C3DVector;
 namespace NCameraModes {
 class CScriptModuleBase {
@@ -33,7 +34,7 @@ public:
     T*              Object;
     CCPPointerInfo* Info;
     static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
-    __forceinline CCountedPointer(T* object) : Object(object)
+    FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
             Info = new CCPPointerInfo(DeleteObject, Object);

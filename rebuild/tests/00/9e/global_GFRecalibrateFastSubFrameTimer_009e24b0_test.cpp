@@ -1,5 +1,6 @@
 // Behaviour test for 0x009E24B0 (source body copied from src/009e24b0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -40,7 +41,7 @@ typedef unsigned __int64 UHUGE;
 
 double __fastcall GFGetTime();                            // 0x009E1BC0
 // the engine's cycle-counter read (expanded in place: zero edx:eax, rdtsc, spill to the 8-byte local)
-__forceinline UHUGE GFGetCycleCount()
+FABLE_FORCEINLINE UHUGE GFGetCycleCount()
 {
     UHUGE counter;
     RA_RDTSC0(counter)

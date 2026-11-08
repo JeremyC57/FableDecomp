@@ -22,6 +22,7 @@
 //   `__declspec(noinline)` stand-ins (only operator+ is graded) -- that is what keeps __result unaliased, so
 //   the terminator store goes first, the end-of-storage store sinks to the first call and __result._M_start
 //   stays in edi across the copy.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void  __cdecl free(void* block);                                      // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
@@ -102,7 +103,7 @@ public:
     typedef _CharT* pointer;
     struct _Reserve_t { };
 
-    __forceinline basic_string(_Reserve_t, unsigned int __n, const allocator_type& __a = allocator_type())
+    FABLE_FORCEINLINE basic_string(_Reserve_t, unsigned int __n, const allocator_type& __a = allocator_type())
         : _Base(__a, __n + 1)
     {
         _M_terminate_string();

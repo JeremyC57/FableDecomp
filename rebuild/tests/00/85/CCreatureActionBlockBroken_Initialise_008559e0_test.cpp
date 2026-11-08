@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1672,7 +1673,7 @@ public:
         if(bits[(unsigned)type>>5]&(1UL<<((unsigned)type&31)))return true;
         return false;
     }
-    template<class T>__forceinline bool GetTC(T**out) {
+    template<class T>FABLE_FORCEINLINE bool GetTC(T**out) {
         const unsigned long*bits=reinterpret_cast<const unsigned long*>(reinterpret_cast<const CThingLayout*>(this)->UsingComponents);
         if(bits[T::StatGetInterfaceType()>>5]&(1UL<<(T::StatGetInterfaceType()&31))) {
             ETCInterfaceType type=T::StatGetInterfaceType();
@@ -3451,7 +3452,7 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {publi
 class CCharStringData;
 class CCharString {protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
 long __fastcall GFROR13(unsigned long);
-__forceinline unsigned long __fastcall GFRandom(unsigned long max,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return max?*seed%max:0;}
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long max,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return max?*seed%max:0;}
 class CTCBase:public CBaseClassNonCopyable{private:unsigned char unobservedTCState[TEST_TAIL(sizeof(CTCBaseFields)-sizeof(CBaseClassNonCopyable))];};
 class CTCCombat:public CTCBase {public:
  static ETCInterfaceType __fastcall StatGetInterfaceType(){return (ETCInterfaceType)0x30;}

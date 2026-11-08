@@ -1,4 +1,5 @@
 // Behaviour test for 0094cb40: src/0094cb40.cpp copied verbatim, out-of-line callees stubbed below.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -39,8 +40,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long type)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
             long key = type;
@@ -67,7 +68,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(CThing* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1);
 }

@@ -12,6 +12,7 @@
 //   ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z (the bool& overload of 0x00B9C2E0).
 // Layout: Ego_r.pdb CShadowClipVolume (ClipPlanes[8] +0, ClipPlaneCount +0x80, BoundingSphere +0x84, ClipToSphere +0x94);
 //   0.0f at 0x0122DEDC; fabs inline.
+#include "fable_compiler.h"
 #include "engine/C3DBoundingBoxSSE.h"
 extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
@@ -23,7 +24,7 @@ class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
     C3DVector MaxCoord;                                 // +0x0c
-    __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
         if (g_SSEAvailable) {
             float result;
@@ -49,7 +50,7 @@ public:
         float dz = point.Z - closest.Z;
         return dz * dz + d.X * d.X + d.Y * d.Y;
     }
-    __forceinline float CalcShortestDistanceToPoint(const C3DVector& point) const
+    FABLE_FORCEINLINE float CalcShortestDistanceToPoint(const C3DVector& point) const
     {
         return (float)sqrt(CalcShortestDistanceToPointSquared(point));
     }

@@ -14,9 +14,10 @@
 //   element address is strength-reduced into edi as `&(first + parent)->second.Z` (`lea edi,[eax+ecx+0Ch]`,
 //   `sub edi,10h` per step).
 // Label correction: catalogued as `MakeHeap_CKeyPair`; the body is STLport `__make_heap`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

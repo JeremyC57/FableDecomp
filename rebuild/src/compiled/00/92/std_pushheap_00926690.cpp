@@ -20,6 +20,7 @@
 //   *(first + parent); hole = parent; parent = (hole - 1) / 2; } *(first + hole) = val;` -- same instructions as retail
 //   with first/holeIndex swapped between ebp and the frame slot. Tried: the iterator-arithmetic form, the landed
 //   0x00806990 index form (`first[parent]`): identical output.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -33,8 +34,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { CBaseObject* item = p.GetPItem(); SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { CBaseObject* item = p.GetPItem(); SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         CBaseObject* item = p.GetPItem();
         SetPItem(item);

@@ -11,6 +11,7 @@
 //   have same-TU stand-ins (their out slots do not escape, so every temporary lands in the dead argument slots); GetInterface
 //   stores the component as ONE ternary `*ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;`
 //   (the if/assign spelling leaves effectType its own frame word and the found bool in memory).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -105,7 +106,7 @@ public:
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

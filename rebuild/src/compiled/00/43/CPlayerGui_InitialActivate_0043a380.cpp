@@ -11,6 +11,7 @@
 // +0x2CC/+0x2D4/+0x2DC/+0x2E4/+0x2EC (each bar's Active flag at +8; UpdateMorality/UpdateCrime read +0x2DC/+0x2EC).
 // Shape: the lazily loaded def through the landed inline helper; each resize's `1.0f` reference temporary is stored
 // before the def test (right-to-left argument evaluation) and the count is the signed `/0x5c` of the def's table.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -42,7 +43,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-__forceinline const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer
+FABLE_FORCEINLINE const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer
 {
     if (!g_PlayerGuiDef.Object) {
         CCharString name("PLAYER_GUI_PC", -1);

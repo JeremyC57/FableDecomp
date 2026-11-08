@@ -17,6 +17,7 @@
 //   negated (`test ah,5 ; jp`); a C2DVector-temporary form copies the hero's position to the frame first.
 // Naming wave 35: identity reg 00efa5d5 "welcome_guy" in 00efa4f0; Alloc 00efaa60; vtable 012f6a70 slot 1; PDB ?Main@Cwelcome_guy@Cbandit_level_cutsceneScript@NScript@@; refs=1; was under-qualified Cwelcome_guy::Main (wave3/labels_alloc.tsv); PDB ?Main@Cwelcome_guy@Cbandit_level_cutsceneScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@Cwelcome_guy@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -72,7 +73,7 @@ private:
 };
 }
 
-__forceinline float GetDistanceSquared2D(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE float GetDistanceSquared2D(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;
     float dy = a.Y - b.Y;

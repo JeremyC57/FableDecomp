@@ -12,6 +12,7 @@
 //   random_access_iterator_tag(), (ptrdiff_t*)0); }` with the counted `__copy_backward` inlined (`*--result = *--last`);
 //   the count is an `idiv` by 0x44. Size TU with a frame pointer (`optimize("y", off)` + `("s", on)`: result lives in
 //   its argument slot [ebp+8]), like this TU's _M_insert_overflow 0x004FA434.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -21,7 +22,7 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class BidirectionalIter1, class BidirectionalIter2, class Distance>
-__forceinline BidirectionalIter2 __copy_backward(BidirectionalIter1 first, BidirectionalIter1 last,
+FABLE_FORCEINLINE BidirectionalIter2 __copy_backward(BidirectionalIter1 first, BidirectionalIter1 last,
                                                  BidirectionalIter2 result, const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n)
@@ -48,7 +49,7 @@ class CCardDef : public CParentDefClassBase {      // Ego_r.pdb, retail sizeof 0
 public:
     long CardName;                                  // +0x3C
     long CardVal;                                   // +0x40
-    __forceinline CCardDef& operator=(const CCardDef& other)
+    FABLE_FORCEINLINE CCardDef& operator=(const CCardDef& other)
     {
         CParentDefClassBase::operator=(other);
         CardName = other.CardName;

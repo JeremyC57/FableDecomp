@@ -14,6 +14,7 @@
 //          SCountBlock for a non-null clone).
 // Layout: the base follows engine/CAIStateGroupBase.h (PBrain +4), modelled locally so the member functions can be declared;
 //          CBrainOutput per Ego_r.pdb / the landed 0x00835620 (Types +0, LookFlags +4, PAction +0x20, LookAtThing +0x40).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 #include "engine/CThing.h"
 class CBaseObject;
@@ -50,7 +51,7 @@ struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject;
     SCountBlock*         m_pCount;
     CCountedPointer_CCreatureActionBase() : m_pObject(0), m_pCount(0) { }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (m_pCount) {
             --m_pCount->m_references;
@@ -60,13 +61,13 @@ struct CCountedPointer_CCreatureActionBase {
             }
         }
     }
-    __forceinline void Reset(CCreatureActionBase* object)
+    FABLE_FORCEINLINE void Reset(CCreatureActionBase* object)
     {
         Release();
         m_pCount = 0;
         m_pObject = object;
     }
-    __forceinline CCountedPointer_CCreatureActionBase& operator=(CCreatureActionBase* object)
+    FABLE_FORCEINLINE CCountedPointer_CCreatureActionBase& operator=(CCreatureActionBase* object)
     {
         Release();
         m_pObject = object;
@@ -75,7 +76,7 @@ struct CCountedPointer_CCreatureActionBase {
             m_pCount = new SCountBlock(m_pObject);
         return *this;
     }
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         Release();
         m_pObject = 0;
@@ -97,18 +98,18 @@ class CBrainOutput { public:
     C3DVector                           MoveToPos;        // +0x28
     C3DVector                           LookAtPos;        // +0x34
     CIntelligentPointerConstThing       LookAtThing;      // +0x40
-    __forceinline void SetAsLookAtThing(const CThing* thing, long lookFlags)
+    FABLE_FORCEINLINE void SetAsLookAtThing(const CThing* thing, long lookFlags)
     {
         Types |= 4;
         LookAtThing = CIntelligentPointerConstThing(thing);
         LookFlags = lookFlags;
     }
-    __forceinline void SetAsPerformAction(const CCreatureActionBase* action)
+    FABLE_FORCEINLINE void SetAsPerformAction(const CCreatureActionBase* action)
     {
         Types |= 8;
         PAction = action->Clone();
     }
-    __forceinline CBrainOutput() : NavigationInput(), PAction(), LookAtThing()
+    FABLE_FORCEINLINE CBrainOutput() : NavigationInput(), PAction(), LookAtThing()
     {
         Types = 0;
         LookFlags = 0;

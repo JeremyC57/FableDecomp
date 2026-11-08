@@ -14,6 +14,7 @@
 // Shape: the landed out-of-line constructor body 0x00AF87C0 inline; against constant addresses VC7.1 walks the entries with
 //   one pointer compared with the end address (no six-way unroll) and stores FreeList once after the loop. The constructor
 //   must be `__forceinline`: VC7.1 calls a plain inline one holding a loop out of line.
+#include "fable_compiler.h"
 class CDynamicObjectHeapBase {
 public:
     CDynamicObjectHeapBase();                            // 0x00F36C60
@@ -34,7 +35,7 @@ public:
         CObjectEntry                Blocks[TCount];
         CObjectAllocatorBlockEntry* NextEntry;
     };
-    __forceinline CDynamicObjectHeap(bool allowHeapToGrow)
+    FABLE_FORCEINLINE CDynamicObjectHeap(bool allowHeapToGrow)
     {
         AllowHeapToGrow = allowHeapToGrow;
         FreeList = 0;

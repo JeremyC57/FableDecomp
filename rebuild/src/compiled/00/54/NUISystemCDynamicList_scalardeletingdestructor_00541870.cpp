@@ -13,6 +13,7 @@
 // (`push eax ; call free ; add esp,4`), the base destructor runs out of line. The `new` factory
 // (inline constructor) pulls the vtable and the deleting destructor into the TU.
 
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 namespace NUISystem {
@@ -63,7 +64,7 @@ class CDynamicList : public CChangingStateComponent { public:                   
     long                NumVisible;                                       // +0x170
     CComponentPtrVector ScrollingChildren;                                // +0x174
     CDynamicList(long owner) : CChangingStateComponent(owner), BInitialised(0) {}
-    __forceinline virtual ~CDynamicList() {}
+    FABLE_FORCEINLINE virtual ~CDynamicList() {}
     virtual void va00();
     virtual void vb00();
 };

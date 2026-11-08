@@ -10,6 +10,7 @@
 //   __partial_sort 0x006251C0, itself.
 // Shape: the landed 0x006FD1E0 model: `while (last - first > __stl_threshold)`; `--depth_limit` in its own argument
 //   slot; __median inlined; the pivot CTestQuest is copy-constructed straight into the by-value argument area.
+#include "fable_compiler.h"
 extern "C" int __cdecl _stricmp(const char* a, const char* b);                   // 0x00BFEBA8
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
@@ -25,7 +26,7 @@ class CCharString { public:
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 // CGameScriptThing::MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const -- whether the live thing got a hit event (TC 0x42) since the running quest script's last frame from a thing with that script name, with the named weapon (by global def index) or, for "NO_WEAPON", with no weapon
 // Leaf: MsgIsHitByWithWeapon
@@ -68,8 +69,8 @@ struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PAct
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
 struct QuestManagerNative { unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
 extern QuestManagerNative* g_pQuestManager;             // 0x013B89FC
-__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
-__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 struct CEventHitBy;                                     // NEntityEvents::CEventHitBy
 struct CIsEventCreatedAfter { long Frame; CIsEventCreatedAfter(long f) : Frame(f) {} };
 struct CIsEventCreatedBeforeOrOn { long Frame; CIsEventCreatedBeforeOrOn(long f) : Frame(f) {} };
@@ -115,7 +116,7 @@ __declspec(noinline) bool CTCEntityEventsNative::GetEvent(CEventHitBy** out, con
     return event != 0;
 }
 #pragma auto_inline(on)
-template <class F> __forceinline bool HasHitFor(const CTCEntityEventsNative* events, const CCharString& name, const F& weapon, long current, long last)
+template <class F> FABLE_FORCEINLINE bool HasHitFor(const CTCEntityEventsNative* events, const CCharString& name, const F& weapon, long current, long last)
 {
     CEventHitBy* event;
     return events->GetEvent(&event, CFilter_Bind4<CIsHitEventHitByThingWithScriptName, F, CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter>(

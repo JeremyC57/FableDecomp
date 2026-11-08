@@ -12,6 +12,7 @@
 //   value-initialised element temporary (`rep stosd` x6 at [ebp-1Ch]), data = `size() > 0 ? first : (void*)this`,
 //   `if (bytes > 0)` Read(data, bytes) with the `size <= remaining` test and the intrinsic memcpy; `this` is spilled
 //   to [ebp-4] across the first read. Size-optimised TU: #pragma optimize("s", on) (ebp frame, `leave`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
@@ -19,8 +20,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(StreamPos + size);
         if (!IsValidPosition(newPosition))
@@ -42,8 +43,8 @@ struct CPODVector_0046fee9 {            // STLport vector, 12 bytes
     SPODElement_0046fee9* _M_start;
     SPODElement_0046fee9* _M_finish;
     SPODElement_0046fee9* _M_end_of_storage;
-    __forceinline unsigned long size() const { return _M_finish - _M_start; }
-    __forceinline SPODElement_0046fee9* data() { return size() > 0 ? _M_start : (SPODElement_0046fee9*)this; }
+    FABLE_FORCEINLINE unsigned long size() const { return _M_finish - _M_start; }
+    FABLE_FORCEINLINE SPODElement_0046fee9* data() { return size() > 0 ? _M_start : (SPODElement_0046fee9*)this; }
     void resize(unsigned long count, const SPODElement_0046fee9& value);   // 0x0046FFD0
     void TransferBinaryIn(CDataInputStream* stream);
 };

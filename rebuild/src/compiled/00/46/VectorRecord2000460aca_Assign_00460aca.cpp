@@ -2,6 +2,7 @@
 // Flags: /O1 /Oy-
 // Leaf: Assign
 // Layout: retail 00460aca reads vector pointers at +0,+4,+8; signed pointer differences divide by 20. Element identity remains uncertain.
+#include "fable_compiler.h"
 #include <stddef.h>
 #include <new>
 struct Record20_00460aca {
@@ -13,11 +14,11 @@ public:
  T *begin_, *end_, *limit_;
  T* AllocateCopy(unsigned n,const T* first,const T* last);
  void Dispose();
- static __forceinline T* Copy(const T* first,const T* last,T* result) {
+ static FABLE_FORCEINLINE T* Copy(const T* first,const T* last,T* result) {
   for(ptrdiff_t n=last-first;n>0;--n,++first,++result) *result=*first;
   return result;
  }
- static __forceinline T* Construct(const T* first,const T* last,T* result) {
+ static FABLE_FORCEINLINE T* Construct(const T* first,const T* last,T* result) {
   T* current=result;
   for(;first!=last;++first,++current) if(current) new(current) T(*first);
   return current;

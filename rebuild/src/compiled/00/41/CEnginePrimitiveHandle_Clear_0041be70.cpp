@@ -6,6 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041BE70, length 57 bytes.
 // Callees: the primitive's virtual slot 3 (+0xC) and, at zero count, its virtual destroy (slot 1, +4).
 // Layout as the landed constructor @ 0x005BB32E: {vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}.
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CEnginePrimitiveHandle;
@@ -21,7 +22,7 @@ class CIVCountedPointeeBase { public:
 struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -30,7 +31,7 @@ struct CIVCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
     {
         Release();
         Object = object;
@@ -38,7 +39,7 @@ struct CIVCountedPointer {
             ++object->m_refCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598

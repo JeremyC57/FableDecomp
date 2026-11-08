@@ -8,6 +8,7 @@
 //   StartedMeleeTesting +0x5c, then WillHelpTimer (+0x60) = 0 through the expanded CTimer::operator= (pDSTGame 0x0143E8F8 slot 89
 //   SetTimer(TimerIndex, 0), `call [eax+164h]`), FightFinished +0x64, DisplayBirdKilledMessage +0x65.
 // Class: engine/CQ_GuildTrainingScript.h with the chunk 858 opt-in FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_INIT (GossipSetup declaration).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -21,7 +22,7 @@
 #include "engine/CQ_GuildTrainingScript.h"
 
 extern CGameScriptInterfaceBase* pDSTGame;                          // 0x0143E8F8
-__forceinline CTimer& CTimer::operator=(long n) { pDSTGame->SetTimer(TimerIndex, n); return *this; }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long n) { pDSTGame->SetTimer(TimerIndex, n); return *this; }
 
 void NScript::CQ_GuildTrainingScript::Init()
 {

@@ -2,6 +2,7 @@
 // the main game component carrying the flag as a single byte, stamped with the main player number from the
 // interface's player manager (+0x14) -- the number overwrites the default Player -1 after the byte is appended.
 // Checks both flag values with different player numbers, the copy length, and the event's remaining fields.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int g_fail = 0;
@@ -19,7 +20,7 @@ class CGameEvent : public CMemoryBuffer { public:
     bool          Valid;                          // +0x26
     bool          Replacement;                    // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
-    __forceinline void AddBOOL(bool value) { Copy(1, &value); }   // __forceinline + bool: the by-value copy is homed in the caller's dead bool slot
+    FABLE_FORCEINLINE void AddBOOL(bool value) { Copy(1, &value); }   // __forceinline + bool: the by-value copy is homed in the caller's dead bool slot
 };
 
 class CMainGameComponent { public:

@@ -2,6 +2,7 @@
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +8.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- compiler-generated vector assignment preserves the retail shared destination-address adjustment (207 bytes).
+#include "fable_compiler.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
@@ -25,7 +26,7 @@ struct CRetailThingView {
       if(it==map->end() || type<it->first) it=map->end();
       return ((void*)it->second);
     }
-    template<class T> __forceinline bool GetInterface(T** out, long type) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CRetailInterfaceMap* map = &Components;

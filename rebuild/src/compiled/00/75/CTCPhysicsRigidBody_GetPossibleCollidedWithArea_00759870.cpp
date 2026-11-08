@@ -9,12 +9,13 @@
 // Shape: a C2DBoxI local filled corner by corner in order (x0, y0, x1, y1: the radius stays on the FPU stack), validated, and
 //   returned by value through the hidden pointer (copied out by the __forceinline memberwise copy ctor:
 //   no NRVO; the implicit copy goes through ecx with `mov ecx,eax`).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}
-    __forceinline C2DBoxI(const C2DBoxI& o)
+    FABLE_FORCEINLINE C2DBoxI(const C2DBoxI& o)
     {
         TopLeft.X = o.TopLeft.X;
         TopLeft.Y = o.TopLeft.Y;

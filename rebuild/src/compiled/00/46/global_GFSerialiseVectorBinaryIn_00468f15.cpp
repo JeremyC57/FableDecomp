@@ -14,6 +14,7 @@
 //   `optimize("y", off)` + `("s", on)`.
 // Model: engine/CMemoryDataInputStream.h (the PDB signature's stream type) + a reader adapter carrying the retail member functions; CRGBColour is the 4-byte
 //   D3DCOLOR record (B, G, R, A) with an empty default constructor; the vector is STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define CMemoryDataInputStream CMemoryDataInputStreamLayout
@@ -41,8 +42,8 @@ class CRGBColour { public:
 };
 
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -71,9 +72,9 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CRGBColour> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CRGBColour* value) const { *value = stream.ReadColour(); }
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStreamReader& stream, CRGBColour* value) const { *value = stream.ReadColour(); }
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

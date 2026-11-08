@@ -16,6 +16,7 @@
 // constructed (zeros after the vtable) and then reset with the new copy; GetTC(k) keeps the component in esi for both
 // weapon reads.
 
+#include "fable_compiler.h"
 extern void* operator new(unsigned int size);       // 0x00BFEA1A
 
 class CThing { public:
@@ -31,7 +32,7 @@ class CThing { public:
     unsigned char m_dead : 1;             // +0x91 bit 0
     unsigned char m_91_1 : 7;
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

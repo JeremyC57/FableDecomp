@@ -1,5 +1,6 @@
 // CGenericVarRef::ReadFromParserAsBool
 // Leaf: ReadFromParserAsBool
+#include "fable_compiler.h"
 #include "fable_string.h"
 #define CStringParser CStringParserDonor
 #include "engine/CStringParser.h"
@@ -11,9 +12,9 @@ class CParsedItem {public:CParsedItem(){} long Type;long Value;CCharString Strin
 // Fix (sweep 3): the callee 0x009B9880 is CParsedItem::GetString, not GetSymbol (0x009B9870): retail's run 0x009B9870..0x009B98A0
 // follows the PDB member order GetSymbol, GetString, GetInteger, GetFloat, and this reads a type-2 item (InitAsString's type).
 extern char EmptyString[]; //0129AAF4
-__forceinline CCharString::operator const char*()const{return !storage_?EmptyString:storage_->text;}
+FABLE_FORCEINLINE CCharString::operator const char*()const{return !storage_?EmptyString:storage_->text;}
 extern "C" int __cdecl _stricmp(const char*,const char*); // MSVCR71.dll IAT014400EC via00BFEBA8
-__forceinline bool operator==(const CCharString&a,const CCharString&b){return _stricmp(a,b)==0;}
+FABLE_FORCEINLINE bool operator==(const CCharString&a,const CCharString&b){return _stricmp(a,b)==0;}
 class CGenericVar { public:CGenericVar();long Padding;long Type;CCharString ValString;long ValSLONG;unsigned long ValULONG;bool ValBool;float ValFloat;bool ReadFromParserAsBool(CStringParser&);}; // actual ctor PDB030A8B30; bool+14h
 struct CGenericVarRef {CGenericVarRef(bool&);long Type;union{bool*ValBool;void*Value;};bool ReadFromParserAsBool(CStringParser&);bool ReadFromParserAsSLONG(CStringParser&);bool ReadFromParserAsFloat(CStringParser&);bool ReadFromParserAsString(CStringParser&);bool ReadFromParser(CStringParser&);}; // actual bool-ref ctor PDB018A3D80
 

@@ -16,6 +16,7 @@
 // CanUseFromDummy(const CThing*) helper. The final SetPosition goes through a named creature local, so the physics
 // pointer loads straight into ecx. Both fix the this/&PUsedThing esi/edi assignment. The physics vtable has
 // SetFacingAngle at slot 66 (+0x108); the previous model declared one dummy slot too many.
+#include "fable_compiler.h"
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
@@ -37,7 +38,7 @@ class CTCPhysicsBase { public:
 struct CTCActionUse {                           // interface type 0xD
     bool CanBeUsedFromDummy() const;            // 0x007EABE0
 };
-__forceinline bool CanUseFromDummy(const CThing* thing)
+FABLE_FORCEINLINE bool CanUseFromDummy(const CThing* thing)
 {
     return thing->HasTC(TCI_ON_ACTION_USE) && ((const CTCActionUse*)&thing->GetTC(TCI_ON_ACTION_USE))->CanBeUsedFromDummy();
 }

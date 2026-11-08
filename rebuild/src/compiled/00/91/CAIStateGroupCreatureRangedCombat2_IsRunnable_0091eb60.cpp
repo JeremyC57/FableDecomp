@@ -10,6 +10,7 @@
 // right to left) and the member stores precede the vtable store (novtable base ctor). The module is a temporary (a named local
 // gets its own slot and a direct call); the intelligent pointer is a named local in its own block (a temporary reuses the
 // out-of-line ctor's eax) and shares the module's slot. Layout: PTargetThing +0x14 (Ego_r.pdb CAIStateGroup_CreatureRangedCombat2).
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -39,13 +40,13 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -60,7 +61,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

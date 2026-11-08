@@ -1,4 +1,5 @@
 // Behaviour test for 0064b5c1: body copied from src/0064b5c1.cpp (NPlayerGui::CDrawQuickAccessIcons::GetActivationTimeForButton), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -20,7 +21,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;
     bool alive;
     bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -67,7 +68,7 @@ static CInventoryItemDef* g_defToGive = 0; static long g_slotSeen = -99; static 
 class CTCInventory { public:
     CDefPointer GetQuickAccessItemDef(long slot) { ++g_defCalls; g_slotSeen = slot; CDefPointer p; p.m_p = g_defToGive; if (p.m_p) ++p.m_p->m_count; return p; }
 };
-__forceinline CTCInventory* GetInventory(CThing* thing)
+FABLE_FORCEINLINE CTCInventory* GetInventory(CThing* thing)
 {
     CTCInventory* inventory = 0;
     if (thing->HasInterface(0x11))

@@ -15,6 +15,7 @@
 // Layout: Ego_r.pdb CTCHero (matches retail): Title +0x10, HeroTitleObjectDef +0x14, PHeroTitleSubDef +0x18; CHeroTitleDef
 //         ::Title +0x28; retail CThing type byte +0x10 (anything but 2), interface 0x50 = word 2 bit 16; retail CWorld opinion
 //         reaction manager +0x74.
+#include "fable_compiler.h"
 class CThing;
 
 class CCharString { public:
@@ -98,7 +99,7 @@ public:
     unsigned char ThingType;                        // +0x10
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

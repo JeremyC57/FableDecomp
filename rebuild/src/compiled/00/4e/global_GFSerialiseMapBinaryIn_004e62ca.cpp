@@ -10,6 +10,7 @@
 //   64-bit range check, memcpy from the source chunk, else ReadWithSrcChunkOverflow), then per element a zeroed pair<K, V>, the two traits reads and
 //   map::insert of the converted value_type; the counted loop runs down a register.
 // Model: the key traits body (0x004E637D) is emitted after this function in retail, so VC7.1 compiled this body without it: the key traits object keeps its own zeroed slot ([ebp-0Ch]); the value traits body (0x0040FE60), compiled earlier in the TU, is visible here (an explicit member specialization is the device), so its object needs no store and shares the homed map pointer's slot.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define CDataInputStream CDataInputStreamPdb
@@ -19,7 +20,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 class CDataInputStream : public CDataInputStreamPdb {      // engine/CDataInputStream.h is data-only: the reader is added here
 public:
-    __forceinline void Read(void* buffer, long size)       // FableWin.pdb ?Read@CDataInputStream@@QAEXPAXJ@Z (inline here)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)       // FableWin.pdb ?Read@CDataInputStream@@QAEXPAXJ@Z (inline here)
     {
         __int64 newPosition = (__int64)(unsigned long)(StreamPos + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -33,7 +34,7 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }                          // FableWin.pdb ?ReadSLONG@CDataInputStream@@QAEJXZ
+    FABLE_FORCEINLINE long ReadSLONG() { long value; Read(&value, sizeof(value)); return value; }                          // FableWin.pdb ?ReadSLONG@CDataInputStream@@QAEJXZ
     unsigned long ReadULONG() { unsigned long value; Read(&value, sizeof(value)); return value; }        // FableWin.pdb ?ReadULONG@CDataInputStream@@QAEKXZ
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::DrawBox(CEnginePrimitivePrepareInfo*, const C2DBoxF&) -- mark the drawer as drawing and draw the quest box's background, grown by a fixed border, on layer 0x4b
@@ -17,13 +18,13 @@ class CEnginePrimitiveHandle;
 class C2DVector { public:
     float X;                                       // +0x00
     float Y;                                       // +0x04
-    __forceinline C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
+    FABLE_FORCEINLINE C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 
 class C2DBoxF { public:
     C2DVector TopLeft;                             // +0x00
     C2DVector BottomRight;                         // +0x08
-    __forceinline C2DBoxF(const C2DBoxF& other) : TopLeft(other.TopLeft), BottomRight(other.BottomRight) { }
+    FABLE_FORCEINLINE C2DBoxF(const C2DBoxF& other) : TopLeft(other.TopLeft), BottomRight(other.BottomRight) { }
 };
 
 struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words

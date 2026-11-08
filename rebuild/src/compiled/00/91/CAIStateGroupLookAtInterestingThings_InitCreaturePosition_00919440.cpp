@@ -12,6 +12,7 @@
 // returned through the full register: a thing exists, the inlined LCG `% 100 < 20` (unsigned `jae`), and the
 // placement with the creature read into esi before the argument pushes (inline helper).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -163,7 +164,7 @@ struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     CThing* FindInterestingThing();             // 0x00919240
     virtual bool InitCreaturePosition();
     // the creature is a NAMED local read before the argument pushes (it rides in esi across the calls)
-    __forceinline bool PlaceNearInterestingThing()
+    FABLE_FORCEINLINE bool PlaceNearInterestingThing()
     {
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         return creature->AutoPlaceNear(((CThingPositioned*)FindInterestingThing())->GetPos(), 2.0f);

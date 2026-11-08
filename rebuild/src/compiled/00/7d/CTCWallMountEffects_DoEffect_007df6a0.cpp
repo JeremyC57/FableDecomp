@@ -12,6 +12,7 @@
 //          CThing dead bit +0x91 bit 0.
 // Shape: a switch (`dec eax ; je` / `dec eax ; jne`); the teleporter is the `T* p = 0` preload then `if (HasTC) p = GetTC` (component in
 //          ecx, `xor ecx,ecx` preload); the healing creature is the landed IS_THING_ALIVE idiom re-fetching GetPItem.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -26,7 +27,7 @@ class CThing { public:
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

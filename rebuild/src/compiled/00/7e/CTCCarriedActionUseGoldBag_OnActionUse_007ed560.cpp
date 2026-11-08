@@ -11,6 +11,7 @@
 // a temporary passed straight to SetCurrentAction; the 0x1A report runs on every path.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -61,15 +62,15 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long wanted)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -82,7 +83,7 @@ class CThing { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTCConst(long wanted) const
+    template<class T> FABLE_FORCEINLINE T* GetTCConst(long wanted) const
     {
         long type = wanted;
         const CInterfaceMap* map = &m_interfaces;

@@ -12,6 +12,7 @@
 // with the placement-new null test (an enum has no type-traits specialisation, so it is not POD for STLport). Tree nodes
 // are the STLport _Rb_tree_node: color, parent, left, right, then the value at +0x10.
 // Shape: frame pointer, `pop ecx` after the __cdecl calls = size TU with /Oy off: #pragma optimize("y", off) + ("s", on).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -48,7 +49,7 @@ template <class V> struct _Rb_tree_iterator {
 };
 
 template <class InputIter>
-__forceinline int __distance(const InputIter& first, const InputIter& last, const input_iterator_tag&)
+FABLE_FORCEINLINE int __distance(const InputIter& first, const InputIter& last, const input_iterator_tag&)
 {
     int n = 0;
     InputIter it(first);
@@ -59,15 +60,15 @@ __forceinline int __distance(const InputIter& first, const InputIter& last, cons
     return n;
 }
 
-template <class InputIter> __forceinline int distance(InputIter first, InputIter last)
+template <class InputIter> FABLE_FORCEINLINE int distance(InputIter first, InputIter last)
 {
     return __distance(first, last, forward_iterator_tag());
 }
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -76,7 +77,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 }
 
 template <class T> struct allocator {
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
 template <class T, class A = allocator<T> > class vector {

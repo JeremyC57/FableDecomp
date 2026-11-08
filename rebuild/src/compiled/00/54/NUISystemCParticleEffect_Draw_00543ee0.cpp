@@ -17,6 +17,7 @@
 // `float r; if (override) r = (v / display) * virtual; else r = v; return r;` reading the copy (X's load forwards to the
 // member, Y's comes from the copied word). The if/else keeps a real store in the untaken arm, so VC7.1 re-tests the flag
 // for Y and shares one fstp per axis; a `?:` helper lets it drop Y's self-assignment and jump-thread the second test.
+#include "fable_compiler.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
@@ -243,7 +244,7 @@ class CParticleEffect : public CChangingStateComponent {   // vtable 0x0124735C
 public:
     CParticleEmitter* Emitter;                     // +0x15c
     long              EffectIndex;                 // +0x160
-    __forceinline void CreateEmitter()
+    FABLE_FORCEINLINE void CreateEmitter()
     {
         CRightHandedSet axes;
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,

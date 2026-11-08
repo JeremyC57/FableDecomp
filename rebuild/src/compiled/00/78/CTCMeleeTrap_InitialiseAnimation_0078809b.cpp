@@ -18,6 +18,7 @@
 //   the inc/dec folded) with the release through DecRefToZero(long&) (a plain `--RefCount == 0` loads and compares in a
 //   register); CDefPointer members __forceinline (size TU); GetSubDef has a same-TU out-only stand-in; the init is the
 //   Set-forwarding CAnimInit ctor (type 6, update mode 1, priority 100).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -46,12 +47,12 @@ class CDefPointeeBase { public:
     virtual void Destroy();                                    // slot 1 (+0x04)
     long RefCount;                                             // +0x04
 };
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer() : Object(0) { }
-    __forceinline CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE CDefPointer() : Object(0) { }
+    FABLE_FORCEINLINE CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object)
             if (DecRefToZero(Object->RefCount))
@@ -126,7 +127,7 @@ public:
     unsigned char    _pad54[0x1c];
     CThingBaseDef*   PBaseDef;                                 // +0x70
     CDefPointer<CThingBaseDef> GetPBaseDef() const { return CDefPointer<CThingBaseDef>(PBaseDef); }
-    template <class T> __forceinline T* PeekTC(long type)
+    template <class T> FABLE_FORCEINLINE T* PeekTC(long type)
     {
         T* tc;
         if (UsingComponents.test(type)) {

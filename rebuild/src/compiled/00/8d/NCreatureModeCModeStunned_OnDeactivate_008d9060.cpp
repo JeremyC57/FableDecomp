@@ -11,6 +11,7 @@
 // landed CModeCreatureIsProjectile::Recover 0x008E08C0).
 // Shape: the out-parameter GetInterface template (the key homed in the `push ecx` slot, `it == last || 9 < it->type`
 // picks last) used as the condition; the base call keeps `this` in edi. Plain `ret`.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -25,7 +26,7 @@ class CThingCreatureBase { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

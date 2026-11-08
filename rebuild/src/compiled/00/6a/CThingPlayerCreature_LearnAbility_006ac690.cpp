@@ -13,6 +13,7 @@
 //   bit 0; CHeroAbilityDef inventory object +0x98; interfaces 0x11 inventory, 0x1a inventory item, 0x6f abilities.
 // Shape: the def pointer returned by value is homed in the dead `learn` slot; its release is the null-tested
 //   CDefPointer dtor calling the pointee's inline ReleaseTemporary() (DecRef / GetRefCount).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
@@ -81,13 +82,13 @@ public:
     signed char PlayerNumber;                           // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long type)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (HasTC(type)) {
             *out = (T*)GetTC(type);
@@ -95,7 +96,7 @@ public:
         }
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -106,7 +107,7 @@ public:
 struct CTCInventoryFind : CTCInventory {
     // slot 47 (+0xbc): the first inventory thing of a def
 };
-__forceinline CThing* CreateThingObject(long defIndex, const CThing* creature, const CCharString& name)
+FABLE_FORCEINLINE CThing* CreateThingObject(long defIndex, const CThing* creature, const CCharString& name)
 {
     return CreateThingObject(defIndex, &creature->GetPos(), creature->PlayerNumber, 0, 0, name);
 }
@@ -121,7 +122,7 @@ struct CTCInventoryVirtual {
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46();
     virtual CThing* GetThingOfType(long defIndex);      // slot 47 (+0xbc)
 };
-__forceinline CThing* FindThing(CTCBase* inventory, long object)
+FABLE_FORCEINLINE CThing* FindThing(CTCBase* inventory, long object)
 {
     return ((CTCInventoryVirtual*)inventory)->GetThingOfType(object);
 }

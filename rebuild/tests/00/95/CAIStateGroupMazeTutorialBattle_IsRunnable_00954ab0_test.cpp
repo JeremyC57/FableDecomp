@@ -1,4 +1,5 @@
 // Behaviour test for 00954ab0: body copied from src/00954ab0.cpp (CAIStateGroup_MazeTutorialBattle::IsRunnable), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,7 +17,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;
     unsigned char _pad4c[0x45];
     unsigned char m_flags91;
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         long type = wanted;
         CInterfaceMap* map = &m_interfaces;

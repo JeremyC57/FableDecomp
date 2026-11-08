@@ -1,4 +1,5 @@
 // CTCInventoryAbilities::GetButtonAbilityIsSetTo(EHeroAbility, long*) -- finds which button the ability is assigned to; writes the button (or -1) and returns whether one was found
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EDF33, length 67 bytes.
 // Callees: none (the search over AbilityButtons is inlined).
@@ -23,7 +24,7 @@ struct CButtonMap {                               // CVectorMap<long, EHeroAbili
     SButtonEntry* end() { return last; }
 };
 
-__forceinline SButtonEntry* FindAbility(CButtonMap& map, long ability)
+FABLE_FORCEINLINE SButtonEntry* FindAbility(CButtonMap& map, long ability)
 {
     SButtonEntry* it = map.first;
     SButtonEntry* last = map.last;

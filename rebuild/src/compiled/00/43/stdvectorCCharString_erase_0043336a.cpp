@@ -11,6 +11,7 @@
 // with copy for a non-trivially-assignable T* range being the counted random-access loop `for (n = last - first; n > 0; --n)
 // { *result = *first; ++first; ++result; }` (`sar eax,2 ; jle`, then the source as `result + (last - first)` in ebx). copy and its
 // helpers are __forceinline in this size TU.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -22,7 +23,7 @@ public:
 namespace std {
 template <class ForwardIter> void __fastcall _Destroy(ForwardIter first, ForwardIter last);   // 0x00414E00 for CCharString*
 template <class RandomAccessIter, class OutputIter>
-__forceinline OutputIter copy(RandomAccessIter first, RandomAccessIter last, OutputIter result)
+FABLE_FORCEINLINE OutputIter copy(RandomAccessIter first, RandomAccessIter last, OutputIter result)
 {
     for (ptrdiff_t n = last - first; n > 0; --n) {
         *result = *first;

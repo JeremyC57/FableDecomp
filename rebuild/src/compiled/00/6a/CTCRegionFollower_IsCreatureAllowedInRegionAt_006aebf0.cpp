@@ -15,7 +15,8 @@
 //   same-TU stand-in under auto_inline(off) (the landed 0x00485815 body), so VC7.1 keeps the filled def in esi as retail's
 //   LTCG did. The copy constructor bumps the count through a `long&` local (`count = count + 1`): a plain `++Object->m_refCount`
 //   lets VC7.1 hoist the region def's flag load above the count store, retail loads it after.
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 #include "engine/C3DVector.h"
 struct CDefPointee {
     virtual void v00();

@@ -9,6 +9,7 @@
 // Shape: the GetAvailableQuestCardDefNameFromScriptName (0x004AF670) search: head in ebp, the key's string block
 // loaded once inside the non-empty guard (esi), the quest object in ebx, the do/while walk; the found branch
 // calls AddPRegion on the quest and returns through its own epilogue.
+#include "fable_compiler.h"
 class CRegion;
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
@@ -17,7 +18,7 @@ class CCharString { public:
     CCharStringData* PStringData;
 };
 
-__forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
+FABLE_FORCEINLINE bool SameText(const CCharStringData* a, const CCharStringData* b)
 {
     if (a == b)
         return true;

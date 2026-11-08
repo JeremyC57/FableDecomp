@@ -17,13 +17,14 @@
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, PMasterData +0x44, AllCreatures +0x48 (STLport vector<CScriptThing>, 12 bytes).
 // Shape: one `||` condition over the inline CCharString::operator== (strcmp intrinsic on the null arm, Compare otherwise); the
 //   erase arm leaves the iterator in place; followers are matched with a nested search and `break`.
+#include "fable_compiler.h"
 #include <string.h>
 template <class T> class CBasicString { public:        // 13 bytes, pack(1)
     T*            PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
     bool          UseFastExtend : 1;                    // +0x0c
-    __forceinline bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const T* text) const { return Compare(PData, text) ? false : true; }
 protected:
     static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 for <char>
 };
@@ -36,7 +37,7 @@ class CCharStringData { public:                         // 17 bytes
 class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

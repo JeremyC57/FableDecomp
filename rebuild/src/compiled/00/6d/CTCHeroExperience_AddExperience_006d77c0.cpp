@@ -22,6 +22,7 @@
 // Model: CTCHeroExperience in its retail layout (12-byte STLport vectors, 4-byte lists): engine/CTCHeroExperience.h carries
 // the Ego_r.pdb debug-STL offsets (TrainableStatLevels +0x28, PDef +0x70), so the class is modelled locally as the landed
 // 0x006D64B0 / 0x006D7170 do; only the members this body touches are typed.
+#include "fable_compiler.h"
 #include <stddef.h>
 
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
@@ -32,7 +33,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-template <class T> __forceinline void GFLimitHigh(T& value, const T& hi)
+template <class T> FABLE_FORCEINLINE void GFLimitHigh(T& value, const T& hi)
 {
     if (value > hi)
         value = hi;

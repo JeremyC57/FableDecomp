@@ -20,6 +20,7 @@
 // empty tag lives in the high byte of the `atend` slot (`lea eax,[ebp+1Bh]`, same-TU helper bodies below).
 // Shape: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`; the copy ctor is `__forceinline` (the size TU
 // otherwise calls it out of line from `_Copy_Construct`, and the register choice flips: 172 v 176).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -38,7 +39,7 @@ class CThingBaseDef;                                // a class in Ego_r.pdb; the
 template <class T> class CDefPointer {
 public:
     CDefPointeeBase* Object;                         // +0x00 (Ego_r.pdb)
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object)
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
         if (Object)
             ++Object->m_refCount;
@@ -72,12 +73,12 @@ CThingDefPointer* __fastcall __uninitialized_fill_n(CThingDefPointer* __first, s
 }
 #pragma auto_inline(on)
 
-template <class _Tp> __forceinline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+template <class _Tp> FABLE_FORCEINLINE const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
 
-template <class _T1, class _T2> __forceinline void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Copy_Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> struct allocator {
-    __forceinline _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    FABLE_FORCEINLINE _Tp* allocate(size_t __n, const void* = 0) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
 };
 
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -93,7 +94,7 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, allocator<_Tp> >       _M_end_of_storage;    // +0x08
     size_t size() const { return size_t(_M_finish - _M_start); }
     void _M_clear();                                                          // 0x005B31EC
-    __forceinline void _M_set(pointer __s, pointer __f, pointer __e)
+    FABLE_FORCEINLINE void _M_set(pointer __s, pointer __f, pointer __e)
     {
         _M_start = __s;
         _M_finish = __f;

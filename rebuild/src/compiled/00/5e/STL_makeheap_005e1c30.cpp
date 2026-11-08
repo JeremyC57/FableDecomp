@@ -10,6 +10,7 @@
 //   pair's explicit copy constructor builds the element in the argument area straight from `first[parent]`
 //   (`[edi+esi*8]`, no strength-reduced pointer here).
 // Label correction: catalogued as `STL_BuildHeap_PairRefCounted`; the body is STLport `__make_heap`.
+#include "fable_compiler.h"
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
 class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
@@ -25,7 +26,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

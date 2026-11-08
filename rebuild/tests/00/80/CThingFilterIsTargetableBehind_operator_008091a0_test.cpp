@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -72,7 +73,7 @@ public:
     // Layout: all original fields beyond the component map are unread.
     unsigned char unobservedThingTail[sizeof(CThing_Layout)-0x54];
     bool HasTC(ETCInterfaceType type)const { if(UsingComponents._M_w[type>>5]&(1UL<<(type&31)))return true;return false; }
-    template<class T>__forceinline bool GetTC(ETCInterfaceType type,T** out)const {
+    template<class T>FABLE_FORCEINLINE bool GetTC(ETCInterfaceType type,T** out)const {
         if(HasTC(type)) {
             ETCInterfaceType key=type;
             const CVectorMap<ETCInterfaceType,CTCBase*>& map=Components;

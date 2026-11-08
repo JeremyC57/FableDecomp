@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +16,7 @@ inline void* operator new(PlacementSize,void* p){return p;}
 namespace std {
 template<class A,class B> struct pair {A first;B second;pair(){}pair(const pair& other):first(other.first),second(other.second){}};
 struct __false_type {};
-template<class T,class V> __forceinline void _Construct(T* p,const V& value){new(p) T(value);}
+template<class T,class V> FABLE_FORCEINLINE void _Construct(T* p,const V& value){new(p) T(value);}
 template<class Iter,class Size,class T>
 inline Iter __fastcall __uninitialized_fill_n(Iter first,Size n,const T& value,const __false_type&){for(;n>0;--n,++first)_Construct(&*first,value);return first;}
 template<class Iter,class Size,class T>

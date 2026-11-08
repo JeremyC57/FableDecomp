@@ -1,6 +1,7 @@
 // Behaviour test for CChunkedFileLoader::LoadChunkedFile (0x00AA79C0): body verbatim, callees stubbed. Covers the good path
 // (version/comment stored, root chunk called with stream/size/loader, reference counts restored), the overflow read path,
 // and the three CChunkedFileException exits (bad file id, bad file type, root type mismatch).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #ifndef _MSC_VER
@@ -31,15 +32,15 @@ class CDataInputStream { public:
     virtual void v0() {} virtual void v1() {} virtual void v2() {} virtual void v3() {} virtual void v4() {} virtual void v5() {}
     virtual CCharString ReadString();                   // slot 6 (+0x18)
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
         if (SourceChunkBytesRemaining >= size) {
             memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 };
 class CChunkedFileSuperChunk { public:
     char ChunkType[5];                                  // +0x04
@@ -55,8 +56,8 @@ struct CRootPointer {
 struct CRootView {
     CChunkedFileSuperChunk* Data;
     CCPPointerInfo*         Info;
-    __forceinline CRootView(const CRootPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CRootView() { if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
+    FABLE_FORCEINLINE CRootView(const CRootPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    FABLE_FORCEINLINE ~CRootView() { if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
     CChunkedFileSuperChunk* operator->() const { return Data; }
 };
 class CChunkedFile { public:
@@ -67,7 +68,7 @@ class CChunkedFile { public:
 };
 struct CChunkedFileException { CChunkedFileException() {} };
 extern const char CHUNKED_FILE_ID[];
-static __forceinline bool SameID(const void* a, const void* b) { return memcmp(a, b, 4) == 0; }
+static FABLE_FORCEINLINE bool SameID(const void* a, const void* b) { return memcmp(a, b, 4) == 0; }
 class CChunkedFileLoader { public:
     virtual void v0() {}
     long ReadUnknownChunkTypes;                         // +0x04

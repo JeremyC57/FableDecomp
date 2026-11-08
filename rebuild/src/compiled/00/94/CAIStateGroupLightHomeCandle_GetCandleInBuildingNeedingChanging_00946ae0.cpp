@@ -16,6 +16,7 @@
 // Label: catalog "CAIStateGroup_LightHomeCandle_FindAndValidateTask" -> Ego_r.pdb
 //   ?GetCandleInBuildingNeedingChanging@CAIStateGroup_LightHomeCandle@@ABEPAVCThing@@AAVCThingBuilding@@@Z.
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
+#include "fable_compiler.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -49,7 +50,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 presence bitset of the interface types
     CInterfaceMap m_interfaces;                             // +0x44 sorted {type, component} vector map
-    template <class T> __forceinline bool GetInterface(T** out, long type)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type;

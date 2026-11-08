@@ -9,6 +9,7 @@
 // _Construct inlined (`new (p) T(value)`: the null test, then the implicit copy as a 5-dword `rep movsd` block, so
 // CDefString is trivially copyable here and modelled as its index).
 // Shape: `push 5 ; pop ecx` and `pop ecx` after malloc = size TU (#pragma optimize("s", on)), no frame pointer.
+#include "fable_compiler.h"
 #pragma optimize("s", on)), no frame pointer.
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -27,13 +28,13 @@ class CSoundBankEntry { public:                           // PDB 20 bytes
 namespace std {
 struct __false_type { };
 
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value)
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value)
 {
     new (p) T1(value);
 }
 
 template <class InputIter, class ForwardIter>
-__forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+FABLE_FORCEINLINE ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -42,7 +43,7 @@ __forceinline ForwardIter __uninitialized_copy(InputIter first, InputIter last, 
 }
 
 template <class T> struct allocator {
-    __forceinline T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(unsigned int n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
 template <class T, class A = allocator<T> > class vector {

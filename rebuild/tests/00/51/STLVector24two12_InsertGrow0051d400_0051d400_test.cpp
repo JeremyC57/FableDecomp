@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 c278203e76e49588293528983a17e89c2620dadeac9895f2597cfd240cc49e41
@@ -12,7 +13,7 @@ struct Tag_0051d400 {Tag_0051d400(){}};
 // Layout: retail two 12-byte subobject ctors at00514eb0 and0051b4c0; stride24.
 struct Data16{int words[4];};
 struct A_0051d400{Data16* start;Data16* finish;Data16* end;A_0051d400():start(0),finish(0),end(0){}A_0051d400(const A_0051d400&);~A_0051d400();};
-struct B_0051d400{Data16* start;Data16* finish;Data16* end;B_0051d400():start(0),finish(0),end(0){}B_0051d400(const B_0051d400&);~B_0051d400();};struct Element_0051d400{A_0051d400 a;B_0051d400 b;Element_0051d400(){}__forceinline Element_0051d400(const Element_0051d400& o):a(o.a),b(o.b){}};
+struct B_0051d400{Data16* start;Data16* finish;Data16* end;B_0051d400():start(0),finish(0),end(0){}B_0051d400(const B_0051d400&);~B_0051d400();};struct Element_0051d400{A_0051d400 a;B_0051d400 b;Element_0051d400(){}FABLE_FORCEINLINE Element_0051d400(const Element_0051d400& o):a(o.a),b(o.b){}};
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct Vector_0051d400 {
  T* start;T* finish;T* end;
@@ -33,7 +34,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_0051d400* first,Elemen
  for(;first!=last;++first)first->~Element_0051d400();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_0051d400<T>::InsertGrow(T* position,const T& value,const Tag_0051d400&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

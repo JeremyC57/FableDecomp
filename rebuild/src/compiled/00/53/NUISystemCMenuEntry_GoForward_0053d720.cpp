@@ -14,6 +14,7 @@
 //   +0x19c..+0x1b0; the front-end def's forward sound at +0x1a4; the parent menu def's flag byte at +0x20a.
 // Shape: the defs are released through a CRefCounted base at +4 (as the landed InitializeRumbleActions 0x0053DA30); the
 //   parent menu def is a conditional temporary of the `||` condition (retail's flag word at the frame bottom).
+#include "fable_compiler.h"
 void operator delete(void* p);                   // 0x00BFE9BC
 
 template <class T> struct _List_node {
@@ -161,7 +162,7 @@ class CMenuEntry { public:
     CRetailList<CAction>*     PActionsOnSelected;     // +0x1a8
     CRetailList<CAction>*     PActionsOnBack;         // +0x1ac
     CRetailList<CAction>*     PPreActions;            // +0x1b0
-    __forceinline void PlayForwardSound()
+    FABLE_FORCEINLINE void PlayForwardSound()
     {
         CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetDef()->ForwardSound, true);
     }

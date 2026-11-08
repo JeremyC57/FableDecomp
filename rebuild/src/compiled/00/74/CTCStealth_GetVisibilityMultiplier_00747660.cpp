@@ -14,6 +14,7 @@
 //   component stays in eax; HasTC + GetTC puts it in ecx), the 0x68 one from HasTC + GetTC; the day/night choice is the
 //   landed CTCPerceiveThing inline as a `__forceinline` member (the def re-read through PDef each time); the interface-4
 //   product is returned directly.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -23,15 +24,15 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
         const CInterfaceMap::value_type* it = map->LowerBound(key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
@@ -82,7 +83,7 @@ class CTCStealth : public CTCBase { public:
     unsigned char _pad08[0x1c - 0x08];
     const CStealthDef* PDef;                            // +0x1c CDefPointer<const CStealthDef>
     const CStealthDef* GetDef() const { return PDef; }
-    __forceinline float GetTimeOfDayVisibilityMultiplier() const
+    FABLE_FORCEINLINE float GetTimeOfDayVisibilityMultiplier() const
     {
         if (PeekWorld().GameTimeManager->IsDay())
             return GetDef()->DayTimeLampVisibilityMultiplier;

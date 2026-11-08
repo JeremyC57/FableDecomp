@@ -14,6 +14,7 @@
 //   block (dead before the closing read, so it shares the parser slot with the closing symbol temporary as `this`; a
 //   `CPersistTraits<bool>()` temporary would zero its byte); the closing ")" is read and discarded. EBP frame + size TU (`#pragma optimize("y", off)` +
 //   `("s", on)`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -22,14 +23,14 @@ struct CBasicStringChar {
     char*         PData;
     unsigned long StringLength;
     static long __fastcall Compare(const char* a, const char* b);   // 0x00411570
-    __forceinline bool operator==(const char* text) const { return Compare(PData, text) == 0; }
+    FABLE_FORCEINLINE bool operator==(const char* text) const { return Compare(PData, text) == 0; }
 };
 class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;
@@ -38,7 +39,7 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 extern "C" int __cdecl _stricmp(const char* a, const char* b);                 // 0x00BFEBA8
-__forceinline bool EqualsNoCase(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
+FABLE_FORCEINLINE bool EqualsNoCase(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
 class CStringParser {
 public:
     unsigned __int64 ReadAsUHUGE();   // 0x009BA5B0 (Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ)
@@ -50,7 +51,7 @@ class CPersistContext { public:
     void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-__forceinline long TransferInLong(CPersistContext* context, CStringParser* parser)
+FABLE_FORCEINLINE long TransferInLong(CPersistContext* context, CStringParser* parser)
 {
     long value;
     TransferIn(context, parser, &value);

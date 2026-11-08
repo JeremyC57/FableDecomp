@@ -1,6 +1,7 @@
 // Behaviour test for 0x00BEDD70 std::__adjust_heap over the (long, CCompositeSurfaceInfo) vector-map entries: the
 // sift-down moves the larger child up, the trailing single child is moved, the value is pushed back up, and every
 // counted-pointer reference is balanced (the by-value value is released, the base destructor runs).
+#include "fable_compiler.h"
 #include <new>
 
 // CBaseClass: the polymorphic engine root (out-of-line virtual destructor 0x0099A2E0, vtable 0x01231710).
@@ -20,11 +21,11 @@ template <class T> class CCountedPointer {
 public:
     T*              Data;                           // +0x00
     CCPPointerInfo* Info;                           // +0x04
-    __forceinline CCountedPointer() : Data(0), Info(0) { }
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer() { DeleteData(); Data = 0; Info = 0; }
-    __forceinline CCPPointerInfo* GetInfo() const { return Info; }
-    __forceinline void DeleteData()
+    FABLE_FORCEINLINE CCountedPointer() : Data(0), Info(0) { }
+    FABLE_FORCEINLINE CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    FABLE_FORCEINLINE ~CCountedPointer() { DeleteData(); Data = 0; Info = 0; }
+    FABLE_FORCEINLINE CCPPointerInfo* GetInfo() const { return Info; }
+    FABLE_FORCEINLINE void DeleteData()
     {
         if (Info) {
             --Info->RefCount;
@@ -34,7 +35,7 @@ public:
             }
         }
     }
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
+    FABLE_FORCEINLINE CCountedPointer& operator=(const CCountedPointer& other)
     {
         CCPPointerInfo* info = other.Info;
         T* data = other.Data;
@@ -68,7 +69,7 @@ typedef std::pair<long, CCompositeSurfaceInfo> CSurfaceEntry;   // 0x10 bytes
 // The vector map's key order (an empty functor passed by value).
 template <class K, class V> class CKeyPairCompareLess {
 public:
-    __forceinline bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+    FABLE_FORCEINLINE bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CCompositeSurfaceInfo> CSurfaceEntryLess;
 

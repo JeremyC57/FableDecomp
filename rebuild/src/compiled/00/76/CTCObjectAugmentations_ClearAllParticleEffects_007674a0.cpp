@@ -14,6 +14,7 @@
 // Layout (local model, as the landed ctor 0x007673C0): retail 12-byte STLport containers, ParticleEffects +0x38,
 // AttackParticleEffects +0x44, CurrentRunningAugEffect +0x50, ProjectileTrailEffect +0x65 (pack(1)); inner elements
 // ParticleAndEndPoints 0x14 and AttackParticleAndEndPoints 0x18 (ParticleEffect +0x10), field names before +0x10 descriptive.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 
@@ -67,15 +68,15 @@ template <class T> struct vector {                      // STLport vector: _Vect
     T* end() { return _M_finish; }
     T& operator[](unsigned long n) { return *(begin() + n); }
     vector& operator=(const vector& other);
-    __forceinline void clear() { erase(_M_start, _M_finish); }
-    __forceinline T* erase(T* first, T* last)
+    FABLE_FORCEINLINE void clear() { erase(_M_start, _M_finish); }
+    FABLE_FORCEINLINE T* erase(T* first, T* last)
     {
         T* i = Copy(last, _M_finish, first);
         DestroyAux(i, _M_finish, FalseType());
         _M_finish = i;
         return first;
     }
-    static __forceinline T* Copy(T* first, T* last, T* result)
+    static FABLE_FORCEINLINE T* Copy(T* first, T* last, T* result)
     {
         for (long n = last - first; n > 0; --n) {
             *result = *first;

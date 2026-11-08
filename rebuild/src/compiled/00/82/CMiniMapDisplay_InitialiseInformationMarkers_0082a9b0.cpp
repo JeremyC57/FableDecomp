@@ -14,6 +14,7 @@
 // Layout: as the landed sibling InitialiseTeleportMarkers 0x0082ABD0 (PRegion +0xb8; GUI def marker-graphics array +0x958,
 //   8-byte entries); the thing's def index (unsigned short) +0x8c; the information list at thing-lists +0x14.
 // Shape: the Teleport model; the followed component is HasTC + the const GetTC (0x4365B0 copy) assigned over a null default.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -44,13 +45,13 @@ class CThing { public:
     unsigned char m_flags90;                       // +0x90
     unsigned char m_flags91;                       // +0x91 bit 0: dead
     bool HasInformationFlag();                     // 0x008300D0
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

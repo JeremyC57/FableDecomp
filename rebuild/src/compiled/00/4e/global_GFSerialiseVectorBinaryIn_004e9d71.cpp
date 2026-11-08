@@ -15,6 +15,7 @@
 //   reference is spilled. Size TU with a frame pointer: `optimize("y", off)` + `("s", on)`.
 // Model: engine/CMemoryDataInputStream.h + a methods-only reader adapter; CMusicEntry is the PDB's 16-byte record (no engine
 //   header); the vector is STLport's three words.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -25,7 +26,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)
@@ -69,7 +70,7 @@ template <class T> struct CPersistTraits {
     T DefaultVal;
     void TransferBinaryIn(CMemoryDataInputStreamReader& stream, T* value) const;   // 0x004E9E0B
 };
-__forceinline void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStreamReader& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

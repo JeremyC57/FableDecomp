@@ -14,6 +14,7 @@
 //   intelligent-pointer temporary and the bone-name string (frame 0xc); the creature-flag clear reads ParentThing into a
 //   block-scoped local (keeps the scratch-register rotation); the thing's definition is copied (add-ref, GetSubDef,
 //   release) in an inline helper; the effect sub-def is released by hand at the end (known non-null: no test).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
 class CCharString { public:
@@ -22,7 +23,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -120,7 +121,7 @@ private:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
 public:
     CIntelligentPointer() { }
-    __forceinline CIntelligentPointer(T* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }

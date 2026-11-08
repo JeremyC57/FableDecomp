@@ -11,6 +11,7 @@
 //        manager comes from the by-value GetPTextureManager() (temp copy + release) into SetTextureManager 0x009FD870 (labelled
 //        NUISystem::CFrontEndScreen::AddActionOnLeftClicked; really CGraphicDataBank::SetTextureManager(const CCountedPointer&)). engine/CEngineSurfaceCompositionManager.h carries PDB offsets (list 0xc bytes, banks 0x388) that
 //        do not match retail, so `this` is modelled locally.
+#include "fable_compiler.h"
 #include <stdlib.h>
 extern "C" double __fastcall GFGetTime();               // 0x009E1BC0
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
@@ -58,7 +59,7 @@ struct CByteVector {
     CByteVector() : first(0), last(0), end(0) {}
     void insert(unsigned char*, unsigned long, const unsigned char&);   // 0x00485F3A
     unsigned long size() const { return (unsigned long)(last - first); }
-    __forceinline void resize(unsigned long count, const unsigned char& value)
+    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
     {
         if (count < size())
             last = first + count;
@@ -91,13 +92,13 @@ struct CEngineData_01436e98 {
 };
 extern CEngineData_01436e98* g_pEngine_01436e98;        // 0x01436E98
 
-__forceinline CHandleBasedMemoryPool* GetLoadingMemoryPool()
+FABLE_FORCEINLINE CHandleBasedMemoryPool* GetLoadingMemoryPool()
 {
     CCountedPointer<CHandleBasedMemoryPool> pool(g_pEngine_01436e98->MemoryPool);
     return pool.Data;
 }
 
-__forceinline bool IsPositive(long n)
+FABLE_FORCEINLINE bool IsPositive(long n)
 {
     if (n <= 0)
         return false;

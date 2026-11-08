@@ -8,6 +8,7 @@
 // Shape: the 0x68 / 0x46 lookups are const (LowerBound 0x004365B0), the 0x8C one non-const (0x0040F020); the stats def is
 //   returned by value; the ability def pointer is declared before the single `stats && GetSubDef` test (that order gives
 //   retail's slots and the zero register); CDefPointer's destructor nulls the pointer after the release.
+#include "fable_compiler.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;
@@ -74,7 +75,7 @@ public:
     CDefClassBase* m_pDef;                            // +0x70
     CDefPointer<const CHeroStatsDef> GetHeroStatsDef();   // 0x00663340
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    template <class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -87,7 +88,7 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

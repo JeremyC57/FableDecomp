@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CPARTICLESYSTEM_H
 #define FABLE_ENGINE_CPARTICLESYSTEM_H
+#include "fable_compiler.h"
 #include "engine/CBaseClass.h"
 #include "engine/CParticleEmitter.h"
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM
@@ -34,7 +35,7 @@ public:CParticleSystem();virtual ~CParticleSystem();
  float GetNormalisedTime() const { return NormalisedTimeEnabled ? NormalisedTime : 0.0f; }
  float GetGlobalAlpha() const { return GlobalAlpha; }
  float GetFadeAlpha() const { return FadeAlpha; }
- __forceinline void TransformPosIfWorld(C3DVector& pos) const { if (!StayWithEmitter) { CMatrix3x4 transform; GetSystemTransform(transform); transform.TransformPoint(pos); } }
+ FABLE_FORCEINLINE void TransformPosIfWorld(C3DVector& pos) const { if (!StayWithEmitter) { CMatrix3x4 transform; GetSystemTransform(transform); transform.TransformPoint(pos); } }
  // Chunk 739 (CPSCUpdateNormal::UpdateAddParticle 0x00B0CAD0 / Update 0x00B0DC20): FableWin.pdb
  // ?AllocateParticle@CParticleSystem@NParticleEngine@@QAEPAVCParticle@2@XZ (out of line, landed 0x00AF5010) and
  // ?PeekEmitterVelocity@CParticleSystem@NParticleEngine@@QBEABVC3DVector@@XZ (out of line at 0x00AF3DB0: `mov eax,[ecx+4] ;

@@ -7,6 +7,7 @@
 // Shape: inlined CMemoryDataInputStream::Read (64-bit position range check, fast in-chunk copy, else the overflow
 //        reader); the scalar values are homed in the dead stream-argument slot through by-value inline helpers;
 //        the variable-size group read skips an empty count and tests `size <= m_remaining` (retail `cmp eax,[ebx+14h] ; jg`).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 class CDataInputStream { friend class CMemoryDataInputStream;
@@ -19,8 +20,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         if (size <= 0)
             return;
@@ -36,10 +37,10 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline unsigned long ReadULong() { unsigned long v; Read(&v, sizeof(v)); return v; }
-    __forceinline unsigned short ReadUShort() { unsigned short v; Read(&v, sizeof(v)); return v; }
-    __forceinline unsigned char ReadUChar() { unsigned char v; Read(&v, sizeof(v)); return v; }
-    __forceinline bool ReadBool() { unsigned char v; Read(&v, sizeof(v)); return v != 0; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE unsigned short ReadUShort() { unsigned short v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE unsigned char ReadUChar() { unsigned char v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE bool ReadBool() { unsigned char v; Read(&v, sizeof(v)); return v != 0; }
 };
 struct CBaseBlock {
     unsigned long PrimitiveCount;          // +0x00

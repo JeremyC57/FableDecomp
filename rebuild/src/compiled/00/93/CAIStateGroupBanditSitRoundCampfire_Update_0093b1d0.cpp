@@ -40,6 +40,7 @@
 // (CIntelligentPointer<CThingObject>), +0x1C SeatPosIndex, +0x20 GotSeatPos, +0x21 Sitting, +0x24
 // FrameToNextSitOnSeat, +0x28 FrameToNextCheckIsRunnable, +0x2C WasCarryingWeapon. No generated engine header models
 // this polymorphic class (CAIStateGroupBase.h and CAIStateGroup_SitRoundCampfire.h are flat), so it is modelled here.
+#include "fable_compiler.h"
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
 #include <stddef.h>
@@ -142,7 +143,7 @@ public:
     std::bitset<274>   UsingComponents;                 // +0x20
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
     bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         bool has = HasTC((ETCInterfaceType)T::INTERFACE_TYPE);
         if (has) {
@@ -153,7 +154,7 @@ public:
         }
         return has;
     }
-    template <class T> __forceinline bool PeekTC(T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(T** out) const
     {
         bool has = HasTC((ETCInterfaceType)T::INTERFACE_TYPE);
         if (has) {

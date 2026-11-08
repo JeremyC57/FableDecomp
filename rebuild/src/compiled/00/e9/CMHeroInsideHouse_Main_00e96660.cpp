@@ -6,6 +6,7 @@
 // Shape: the barrier-here position is a __forceinline null-test accessor (the per-function inline budget otherwise puts the
 //   "_OFF" lines out of line); the physical-barrier position is a virtual GetPos on the GetThingWithScriptName temporary,
 //   which VC7.1 hoists ahead of the by-value "" argument. Handle ctor inline, dtor 0x007E74D0 / operator= 0x008ABD10 out of line.
+#include "fable_compiler.h"
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -43,7 +44,7 @@ public:
     ~CScriptThing() { }                                  // out of line 0x004AA840
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
     virtual const C3DVector& GetPos() const;                                   // slot 6 (+0x18)
-    __forceinline const C3DVector& PosOrZero() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
+    FABLE_FORCEINLINE const C3DVector& PosOrZero() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
@@ -58,7 +59,7 @@ struct CBaseObjectDtor {                                // destructor-only view 
     virtual ~CBaseObjectDtor();                         // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
-    __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
+    FABLE_FORCEINLINE virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 struct CHandlePImp {
     void*           Data;
@@ -81,9 +82,9 @@ struct CMovieImpPointer {
 struct CMovieImpWords { void* Data; void* Info; };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
-    __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
+    FABLE_FORCEINLINE CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
-    __forceinline void DestroyInline()
+    FABLE_FORCEINLINE void DestroyInline()
     {
         reinterpret_cast<CMovieImpPointer*>(&PImp)->~CMovieImpPointer();
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();

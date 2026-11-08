@@ -13,6 +13,7 @@
 //   (the `push 18h` between them), the allocation, then uninitialized_fill_n of a T() temporary (built after the allocation)
 //   through the intelligent pointer's copy ctor (base ctor, vtable, `SetPItem(other.GetPItem())`), the temporary destroyed
 //   by the base dtor (no user dtor on CIntelligentPointer); the scalars are init-list members.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
@@ -54,7 +55,7 @@ struct CCustomerVector {                               // vector<CIntelligentPoi
     CIntelligentPointer<CThingCreatureBase>* _M_start;
     CIntelligentPointer<CThingCreatureBase>* _M_finish;
     SCustomerAllocProxy                      _M_end_of_storage;
-    static __forceinline CIntelligentPointer<CThingCreatureBase>* uninitialized_fill_n(
+    static FABLE_FORCEINLINE CIntelligentPointer<CThingCreatureBase>* uninitialized_fill_n(
         CIntelligentPointer<CThingCreatureBase>* first, unsigned long n, const CIntelligentPointer<CThingCreatureBase>& value)
     {
         CIntelligentPointer<CThingCreatureBase>* cur = first;
@@ -62,7 +63,7 @@ struct CCustomerVector {                               // vector<CIntelligentPoi
             new (cur) CIntelligentPointer<CThingCreatureBase>(value);
         return cur;
     }
-    __forceinline explicit CCustomerVector(unsigned long n)
+    FABLE_FORCEINLINE explicit CCustomerVector(unsigned long n)
         : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = (CIntelligentPointer<CThingCreatureBase>*)malloc(n * sizeof(CIntelligentPointer<CThingCreatureBase>));

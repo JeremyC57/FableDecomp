@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -532,10 +533,10 @@ public:void TouchResource();
 };
 class CFailedAllocationHandler{public:virtual~CFailedAllocationHandler();};
 class CResourceList:public CFailedAllocationHandler{friend class CResource;private:CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;public:unsigned long GetCurrentFrame()const{return CurrentFrame;}};
-__forceinline void CResource::TouchResource(){if(ResourceList&&LastUsedFrame!=ResourceList->GetCurrentFrame()){ListRemove();ListInsert(ResourceList->Head.PrevResource,&ResourceList->Head);LastUsedFrame=ResourceList->GetCurrentFrame();}}
+FABLE_FORCEINLINE void CResource::TouchResource(){if(ResourceList&&LastUsedFrame!=ResourceList->GetCurrentFrame()){ListRemove();ListInsert(ResourceList->Head.PrevResource,&ResourceList->Head);LastUsedFrame=ResourceList->GetCurrentFrame();}}
 class CManagedTextureData:public CResource{};
 class CBaseClass{public:virtual~CBaseClass();};
-class CManagedTexture:public CBaseClass{private:CIVCountedPointer<CManagedTextureData>Data;public:__forceinline void TouchTexture(){if(!Data.IsNull())Data->TouchResource();}};
+class CManagedTexture:public CBaseClass{private:CIVCountedPointer<CManagedTextureData>Data;public:FABLE_FORCEINLINE void TouchTexture(){if(!Data.IsNull())Data->TouchResource();}};
 class CManagedTextureOwner:public CResource{};
 class CTexture;
 // Layout: accessed prefix of original27-byte CGraphicFrameData; trailing packed

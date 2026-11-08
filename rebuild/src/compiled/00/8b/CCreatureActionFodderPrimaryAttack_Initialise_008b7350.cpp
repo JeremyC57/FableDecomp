@@ -17,13 +17,14 @@
 //   word with the animation string); the inner choice is one SetCombatAnimation on a ternary of two CCharString
 //   if/else implicit conversions merged by VC (`push -1` hoisted above the branch); the def releases are the DecRefToZero form (the null tests
 //   fold away after the dereference).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1

@@ -1,4 +1,5 @@
 // Behaviour test for CTCShotDefinitionNymphFun::OnCollision (0x007bdb66): first hit by a live trap-spawning shooter spawns the trap (at the hit point, or snapped below a live terrain thing), makes the shooter immune, triggers it, marks the shot spent; base collision always runs.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #ifndef _MSC_VER
@@ -37,7 +38,7 @@ public:
     bool Alive;
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

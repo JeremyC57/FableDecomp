@@ -2,6 +2,7 @@
 // Retail 0x0053D170, 31 bytes (vtable 0x0124662C slot 60). Callees: child->GetType (slot 65, +0x104; the release build
 // keeps the virtual call of a compiled-out type check), CChangingStateComponent::AddChildDynamically 0x0052CAB0.
 // Name: Ego_r.pdb ?AddChildDynamically@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z.
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -17,7 +18,7 @@ struct CUIDef : CIVDeletable, CIVRefCount {
 // CDefPointer<CUIDef> returned by value (hidden pointer) from CComponent::LoadAndReturnDef.
 struct CUIDefPointer {
  CUIDef* Object;
- __forceinline ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
+ FABLE_FORCEINLINE ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
 namespace NUISystem {

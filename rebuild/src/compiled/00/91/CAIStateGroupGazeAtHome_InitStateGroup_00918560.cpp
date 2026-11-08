@@ -14,6 +14,7 @@
 // the dead `creature` argument slot) and this group is registered as EIdleStateGroup 7.
 // The engine headers (CAIStateGroup_GazeAtHome.h) are flattened data-only layouts without the vptr chain,
 // so `this` is modelled locally on the landed CAIStateGroup_Gaze model (0x009182B0).
+#include "fable_compiler.h"
 class CTCBase;
 class CThingGameObject;
 
@@ -26,7 +27,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

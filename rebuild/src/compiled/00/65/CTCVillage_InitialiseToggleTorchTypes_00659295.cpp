@@ -1,5 +1,6 @@
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CTCVillage::InitialiseToggleTorchTypes(CThingObject&) -- if the object has a light component (type 0x27), toggles that light's active state
@@ -32,7 +33,7 @@ class CThingObject { public:
     unsigned char _pad0[0x20];
     std::bitset<274>       TypeBits;                 // +0x20 std::bitset of interface types
     CInterfaceMap Interfaces;               // +0x44
-    template<class T> __forceinline T* PeekTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Interfaces;

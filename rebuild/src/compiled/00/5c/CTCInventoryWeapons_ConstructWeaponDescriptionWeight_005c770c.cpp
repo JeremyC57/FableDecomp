@@ -15,6 +15,7 @@
 //   keeps it in the dead argument slot); the resize count goes through a raw-pointer local so the zero temp is stored last.
 // Layout: the local per-item data is 0x24 bytes (vector + three longs + bool + index -1 + one word the inline ctor leaves unset);
 //   misc things def +0x3C weight-units string; weapon def class +0x2C; augmentation def slot count +0x28, slot values +0x40.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
@@ -58,19 +59,19 @@ struct CDefBase {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
     T* Detach() { T* p = Object; Object = 0; return p; }
 };
 template <class T> struct CDefHolder {
     T* Object;
     CDefHolder(T* p) : Object(p) { }
-    __forceinline ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 struct CDefBasePointer {
     CDefBase* Object;
-    __forceinline ~CDefBasePointer()
+    FABLE_FORCEINLINE ~CDefBasePointer()
     {
         if (Object) {
             CDefBase* p = Object;

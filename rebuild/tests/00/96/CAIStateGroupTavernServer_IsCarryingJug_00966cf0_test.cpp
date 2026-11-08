@@ -1,6 +1,7 @@
 // Behaviour test for 00966cf0: src/00966cf0.cpp copied verbatim; the jug's sub-def lookup (through the same-TU stand-in), the
 // inventory component and the intelligent pointer stubbed so the dead-jug early-out, the item-id query and the def
 // release are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -92,7 +93,7 @@ class CThing { public:
     CDefPointer<CDefClassBase> PDef;            // +0x70 CDefPointer<const CThingDef>
     unsigned char _pad2[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

@@ -1,4 +1,5 @@
 // CTCInventory::DeactivateAllEditBoxes(bool apply) -- deactivates every scoreboard edit box; with apply, first stores each box's text into the user profile (login, password, proxy ip, proxy and server ports) and saves it
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -22,7 +23,7 @@ public:
     CCharStringData* PStringData;
     ~CCharString();                                   // 0x0099EAE0
     CWideString ToWideString() const;                 // 0x0099E480
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

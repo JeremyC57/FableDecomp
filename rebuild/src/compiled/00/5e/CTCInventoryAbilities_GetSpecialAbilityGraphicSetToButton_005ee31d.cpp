@@ -1,5 +1,6 @@
 // CTCInventoryAbilities::GetSpecialAbilityGraphicSetToButton(long) const -- the icon graphic of the ability assigned to a button, 0 when the button has none
 // Leaf: ?GetSpecialAbilityGraphicSetToButton@CTCInventoryAbilities@@QBEJJ@Z
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE31D, length 72 bytes.
 // Signature: Ego_r.pdb / FableWin.pdb ?GetSpecialAbilityGraphicSetToButton@CTCInventoryAbilities@@QBEJJ@Z (a const member).
@@ -55,7 +56,7 @@ public:
     value_type* EndOfStorage;                     // +0x08
     const value_type* end() const { return Last; }
     const value_type* LowerBound(const K& key) const;   // 0x005F7F89
-    __forceinline const value_type* Find(const K& key) const
+    FABLE_FORCEINLINE const value_type* Find(const K& key) const
     {
         const value_type* it = LowerBound(key);
         return (it == end() || key < it->first) ? end() : it;

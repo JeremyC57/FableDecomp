@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawGuildSeal::AddMessage(const CCharString& text, long time, bool force) -- queue a guild-seal message when the hero is alive, not a child and carries a guild seal (OBJECT_GUILD_SEAL_1) in the inventory; unless forced, only when no message is queued
@@ -38,7 +39,7 @@ class CThing { public:
     std::bitset<274> m_present;                       // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type) const
+    template <class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -78,7 +79,7 @@ namespace NPlayerGui {
 struct SGuildSealMessage {
     CCharString Text;                              // +0
     long Time;                                     // +4
-    __forceinline SGuildSealMessage(const CCharString& text, long time) : Text(text), Time(time) { }
+    FABLE_FORCEINLINE SGuildSealMessage(const CCharString& text, long time) : Text(text), Time(time) { }
 };
 struct CMessageDeque {                             // STLport deque<SGuildSealMessage>
     void* StartCur; void* StartFirst; void* StartLast; void* StartNode;   // +0x00 start iterator

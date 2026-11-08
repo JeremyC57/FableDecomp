@@ -10,9 +10,10 @@
 //   if (second == len) { *(first + hole) = *(first + (second - 1)); hole = second - 1; } __push_heap(first, hole, top,
 //   val, comp);` -- topIndex is spilled to the `push ecx` frame word.
 // Label: catalogued as Dinkumware `_Adjust_heap<CCharString*,int,CCharString>`; the code is STLport `__adjust_heap`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

@@ -1,5 +1,6 @@
 // Behaviour test of std::swap(pair<unsigned long, CAnimationEntry>& a, pair<unsigned long, CAnimationEntry>& b) (retail 0x005E1020)
 // The model and the function body are the source's own; the retail callees are given test bodies below.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -20,7 +21,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

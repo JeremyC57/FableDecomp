@@ -9,6 +9,7 @@
 // first column of all four rows, then the second, then the third (E11,E21,E31,E41,E12,...), and the result is block
 // copied into the hidden return slot (VC7.1 has no NRVO).
 
+#include "fable_compiler.h"
 class CMatrix3x4 {
 public:
     float E11, E12, E13;
@@ -16,7 +17,7 @@ public:
     float E31, E32, E33;
     float E41, E42, E43;
 
-    __forceinline void PostScale(float s)
+    FABLE_FORCEINLINE void PostScale(float s)
     {
         E11 *= s; E21 *= s; E31 *= s; E41 *= s;
         E12 *= s; E22 *= s; E32 *= s; E42 *= s;

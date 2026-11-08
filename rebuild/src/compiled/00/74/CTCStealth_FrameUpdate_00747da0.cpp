@@ -20,6 +20,7 @@
 // Layout: Ego_r.pdb CTCStealth (Sneaking +0x0f, SneakingToggleSet +0x10, FrameStartedWalking +0x20,
 //   FrameStartedSneakingAndMoving +0x24, SneakingAndMovingDeedHandle +0x28, ActionPermittedToSneakID +0x2c); the creature's
 //   velocity +0x10c/+0x110, current action +0x100, hero state +0x200; the player's no-sneak flag +0x20a, interface +0x0c.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 struct CInterfaceMap {
@@ -96,14 +97,14 @@ class CThing { public:
     long          HeroState;                            // +0x200
     const C3DVector& GetPos() const;                    // 0x004C73D0
     CPlayer& GetPlayer();                               // 0x004C7A30
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
     template <class T>
-    __forceinline T* GetTC(long type)
+    FABLE_FORCEINLINE T* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -111,7 +112,7 @@ class CThing { public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
     template <class T>
-    __forceinline T* GetTC2(long type)
+    FABLE_FORCEINLINE T* GetTC2(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

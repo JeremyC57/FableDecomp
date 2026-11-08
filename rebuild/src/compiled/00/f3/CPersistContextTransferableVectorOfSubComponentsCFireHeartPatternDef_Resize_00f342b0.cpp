@@ -17,6 +17,7 @@
 //   out-of-line CDefClassBase(), stores its vtable and zeroes _M_start/_M_finish around the proxy call; its implicit
 //   destructor frees the vector storage and runs the inline user ~CDefPointeeBase() { } (vtable 0x01230BA0 store, then
 //   ~CResource) -- the implicit destructors of CDefClassBase/CFireHeartPatternDef store no vtable.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14
 
 class CDefinitionManager;
@@ -76,7 +77,7 @@ public:
     typedef _Alloc allocator_type;
     explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
     void resize(size_type __new_size, const _Tp& __x);   // 0x00F33DE0 for CFireHeartPatternDef
-    __forceinline void resize(size_type __new_size) { resize(__new_size, _Tp()); }
+    FABLE_FORCEINLINE void resize(size_type __new_size) { resize(__new_size, _Tp()); }
 };
 
 }   // namespace std

@@ -12,6 +12,7 @@
 // The intelligent pointer classes are declared under `#pragma pack(1)` so the PDB's unaligned member offsets come out;
 // the `__forceinline` destructor and the inline model constructor + `new` factory put `??_G` (with the body inlined)
 // into the TU. engine/CTCBase.h is a flattened POD, so the polymorphic CTCBase is modelled locally.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -33,7 +34,7 @@ struct CDefPointee {                           // counted def: count at +4, slot
 struct CDefPointer {                           // CDefPointer<T const>
     CDefPointee* m_pDef;
     CDefPointer() : m_pDef(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         CDefPointee* def = m_pDef;
         if (def) {
@@ -62,7 +63,7 @@ class CTCSummonSpell : public CTCBase { public:   // vtable 0x0126C2B4
     CIntelligentPointer<CThing> PItemRemoved;          // +0x2c CIntelligentPointer<CThing>
     bool                CutSceneCancelled;     // +0x34
     CTCSummonSpell(CThing& owner) : CTCBase(owner) { }   // model constructor: pulls the vtable into the TU
-    __forceinline virtual ~CTCSummonSpell() { }
+    FABLE_FORCEINLINE virtual ~CTCSummonSpell() { }
 };
 
 CTCSummonSpell* Create_CTCSummonSpell(CThing& owner)

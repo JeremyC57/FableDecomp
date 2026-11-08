@@ -11,6 +11,7 @@
 //   the dead parser- and context-argument slots through an inline by-value TransferInLong() helper (two named locals
 //   in the body take a fresh frame slot for the second) and are copied into the pair afterwards; the closing ")" is read and
 //   discarded. Speed-optimised (default) TU.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 template <class T> class CBasicString { public:
@@ -19,7 +20,7 @@ template <class T> class CBasicString { public:
 class CCharString { public:
     CBasicString<char>* PStringData;
     ~CCharString();                                     // 0x0099EAE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;
@@ -31,7 +32,7 @@ class CStringParser { public:
 };
 class CPersistContext;
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-__forceinline long TransferInLong(CPersistContext* context, CStringParser* parser)
+FABLE_FORCEINLINE long TransferInLong(CPersistContext* context, CStringParser* parser)
 {
     long value;
     TransferIn(context, parser, &value);

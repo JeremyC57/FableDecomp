@@ -11,6 +11,7 @@
 // use unsigned indices against a size() re-derived after every call. clear() is the STLport `erase(begin(), end())`
 // whose trivial pointer copy is `last == first ? result : memmove(result, first, n) + n`. The two number resets
 // re-read the global (it may alias the first store).
+#include "fable_compiler.h"
 #include <stddef.h>
 extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);   // 0x00BFEAE6
 
@@ -53,7 +54,7 @@ class CPlayerManager { public:
     CPlayerVector Players;                              // +0x0c
     long          PlayerNeutral;                        // +0x18
     long          MainPlayer;                           // +0x1c
-    __forceinline CPlayer* GetPlayer(long number)   // 0x004498C0 (inlined here)
+    FABLE_FORCEINLINE CPlayer* GetPlayer(long number)   // 0x004498C0 (inlined here)
     {
         long count = Players.size();
         for (long i = 0; i < count; ++i)

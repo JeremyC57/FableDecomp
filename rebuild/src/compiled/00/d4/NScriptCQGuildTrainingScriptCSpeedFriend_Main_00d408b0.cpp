@@ -9,6 +9,7 @@
 //   Was: SetPredicate declared on the entity class (?SetPredicate@CSpeedFriend@@...).
 // Naming wave 35: identity Anniversary wave 2026-11-04 (high): vtable 0x012CDF28 slot 1; Anniversary RTTI NScript::CQ_GuildTrainingScript::CSpeedFriend (string-literal match, validated 257/258); PDB name set has the Main member of NScript::CQ_GuildTrainingScript::CSpeedFriend; slot layout from named TLC siblings; function referenced by this vtable only (2026-11-04_anniversary/labels_high.tsv); PDB ?Main@CSpeedFriend@CQ_GuildTrainingScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CVtable012CDF28@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); class CVtable012CDF28 renamed CSpeedFriend); same bytes.
+#include "fable_compiler.h"
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();};
@@ -16,7 +17,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingConscious:public CPredicateBase { public:
  ScriptThingCopy Thing;
- __forceinline CIsThingConscious(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingConscious(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingConscious(){} //inline native vptr reset then Thing destructor4AA840
 };
@@ -38,7 +39,7 @@ extern const unsigned char ResourceVTable[]; //0127094C
 // It is not the distinct CBaseIntelligentPointer constructor 00A01B10.
 struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  void InitializeCBaseObject(); //0099A380, this points to flattened base at offset0
- __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
+ FABLE_FORCEINLINE ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  ~ScriptResource(); //007E74D0
 };
 #include "fable_string.h"
@@ -52,7 +53,7 @@ struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
  ScriptMethods(){}
- __forceinline ScriptMethods(const CScriptThing& other):CBaseClassNative(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
+ FABLE_FORCEINLINE ScriptMethods(const CScriptThing& other):CBaseClassNative(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
  ScriptMethods(const ScriptMethods& other):CBaseClassNative(),PImp(other.PImp){}
  virtual ~ScriptMethods(); //004AA840, callee owns by-value argument destruction
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0
@@ -146,7 +147,7 @@ union GameSlot {void* Address;void(GameCalls::*Frame)()const;bool(GameCalls::*St
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4);
 #endif
 struct GameCalls:CGameScriptInterface {
- __forceinline void SetIsPushableByHero(const CScriptThing& thing,bool pushable){(this->*reinterpret_cast<const GameSlot*>(__vftable)[844].SetPushable)(ScriptMethods(thing),pushable);}
+ FABLE_FORCEINLINE void SetIsPushableByHero(const CScriptThing& thing,bool pushable){(this->*reinterpret_cast<const GameSlot*>(__vftable)[844].SetPushable)(ScriptMethods(thing),pushable);}
  void NewScriptFrame()const{(this->*reinterpret_cast<const GameSlot*>(__vftable)[7].Frame)();}
  bool StartScriptingEntity(const CScriptThing& t,ScriptResource& r,int priority){return(this->*reinterpret_cast<const GameSlot*>(__vftable)[8].Start)(t,r,priority);}
 };

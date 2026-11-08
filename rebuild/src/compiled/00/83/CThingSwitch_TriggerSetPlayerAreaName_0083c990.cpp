@@ -11,6 +11,7 @@
 // bit +0x91; CThingSwitch TriggerRadius +0xd0, the area-name-shown flag +0xdc (Triggered in Ego_r.pdb at that offset).
 // Shape: the sibling TriggerSetEnvironment 0x0083BE90 with the box test out of line (the C2DVector conversion
 // temporary in the frame, passed by reference); the flag is set between the argument pushes and the call.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
@@ -53,7 +54,7 @@ public:
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

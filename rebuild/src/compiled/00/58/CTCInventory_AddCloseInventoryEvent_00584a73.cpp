@@ -22,6 +22,7 @@
 // Layout: CTCBase ParentThing +0x04; retail CThing interface bitset +0x20, map +0x44.
 // Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CPlayerGui CPlayerGuiDonor
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
@@ -41,7 +42,7 @@ class CThing { public:
     std::bitset<274> m_present;                         // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) { return m_present.test(wanted); }
-    template<class T> __forceinline T* GetTCUnchecked(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTCUnchecked(long wanted)
     {
         ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
@@ -50,7 +51,7 @@ class CThing { public:
             it = map->end();
         return (T*)it->second;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         T* component = 0;
         if (HasTC(wanted))

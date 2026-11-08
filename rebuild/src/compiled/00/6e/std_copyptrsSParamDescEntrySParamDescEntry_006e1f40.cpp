@@ -12,13 +12,14 @@
 // Shape: STLport `__copy_ptrs(first, last, result, __false_type) { return __copy(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0); }` with the counted `__copy` inlined (16-byte stride: `sar 4`); VC7.1
 //   strength-reduces the source walk to `lea edx,[ecx+0Ch]` and the third store to `[esi+edx]` (esi = result - first).
+#include "fable_compiler.h"
 namespace std {
 
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class RandomAccessIter, class OutputIter, class Distance>
-__forceinline OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
+FABLE_FORCEINLINE OutputIter __copy(RandomAccessIter first, RandomAccessIter last, OutputIter result,
                                 const random_access_iterator_tag&, Distance*)
 {
     for (Distance n = last - first; n > 0; --n) {

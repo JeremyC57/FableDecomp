@@ -18,6 +18,7 @@
 //   AIAction_PerformActionTargetFaceAndWait 0x0097DCB0, Terminate 0x008FCF40. Constant 1.8f @ 0x01298868.
 // Layout: Ego_r.pdb CAIStateGroup_CreatureUseCoverBase (byte-packed): PTargetThing +0x14, PCoverThing +0x1f, cover list
 //   begin/end +0x28/+0x2c, failure count +0x48 (engine/CAIStateGroup_CreatureTakeCover.h flattens the base; local model).
+#include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CTCBase;
@@ -41,7 +42,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntellige
     virtual void v00();
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x006961F0 (ICF: the identical IS_THING_ALIVE<T> instantiations share one body)
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
         if (!((CThing*)p.GetPItem())->IsDead())
@@ -49,7 +50,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-__forceinline bool IS_THING_ALIVE(CThing* thing)
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* thing)
 {
     if (thing != 0) {
         if (!thing->IsDead())
@@ -131,13 +132,13 @@ struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
     bool IsStillRunnable();                     // 0x00979E90
     bool AttackTargetThing();                   // 0x00979F70
     bool MoveFromCoverToFiringPosition(C3DVector& pos, const CIntelligentPointerConstThing& cover);   // 0x0097A1B0
-    __forceinline unsigned long Random()
+    FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetWorld().GetPRandomSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;
         return *seed = GFROR13(*seed);
     }
-    __forceinline float FlatDistanceTo(const C3DVector& pos)
+    FABLE_FORCEINLINE float FlatDistanceTo(const C3DVector& pos)
     {
         const C3DVector& here = GetCreature()->GetPos();
         float dx = pos.X - here.X;

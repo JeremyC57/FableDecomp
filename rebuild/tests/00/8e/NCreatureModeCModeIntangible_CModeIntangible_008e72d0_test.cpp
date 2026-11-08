@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -65,7 +66,7 @@ public:virtual ~CModeBase();
 };};
 // Layout: static-only declaration; no CMainGameComponent instance or full extent claimed.
 class CMainGameComponent{
-friend int ::main();protected:static long ConstantFPS;public:static __forceinline long __fastcall GetConstantFPS(){return ConstantFPS;}};
+friend int ::main();protected:static long ConstantFPS;public:static FABLE_FORCEINLINE long __fastcall GetConstantFPS(){return ConstantFPS;}};
 namespace NCreatureMode {
 class CModeDragonBase:public CTCCreatureModeManager::CModeBase {
 friend int ::main();

@@ -14,6 +14,7 @@
 // argument slot, tail-merged by VC7.1 after the literal push; the counted pointer's inline destructor releases the
 // count block ({refs, __fastcall destroy, object}) and zeroes both words; the def pointer releases through the
 // pointee's inline Release() (ecx) with no zero store.
+#include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class CCharString { public:
     void* m_pStringData;
@@ -27,7 +28,7 @@ class CWideString { public:
 };
 void operator delete(void* p);                         // 0x00BFE9BC
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1

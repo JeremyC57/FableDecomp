@@ -8,6 +8,7 @@
 //   its null test, the pair's explicit copy ctor copies the key and add-refs the pointee; the `__false_type` tag
 //   temporary is homed in x's own argument slot (`lea edx,[esp+0Ch]`), like the landed push_back 0x005E1EB0 of this TU.
 // Label: catalogued as `Vector_PushBack`.
+#include "fable_compiler.h"
 #include <new>
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
@@ -24,7 +25,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

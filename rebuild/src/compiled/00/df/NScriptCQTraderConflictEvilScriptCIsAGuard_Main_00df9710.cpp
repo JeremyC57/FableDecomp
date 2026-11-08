@@ -13,6 +13,7 @@
 //   +0x6a (retail = PDB - 0x18, as in the landed CQ_TraderConflictEvilScript::WatchTimeLimit 0x00DF7980).
 // Shape: generated script code; each `&&`/`||` condition builds its CCharString temporaries conditionally (flag word in ebx),
 //   stores the result byte and destroys the temporaries before the branch.
+#include "fable_compiler.h"
 class CCharString;
 struct CScriptThingImpl;
 #define FABLE_RETAIL_NSCRIPT
@@ -103,7 +104,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

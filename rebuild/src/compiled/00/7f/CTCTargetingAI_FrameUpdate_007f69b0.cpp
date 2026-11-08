@@ -16,6 +16,7 @@
 // Shape: an `if (!empty())` guard around the iterator loop; liveness through the inline bool IS_THING_ALIVE (nested ifs,
 //   so the erase block follows the tests; an open-coded `!thing || dead` puts it after the stealth block); the inline STLport erase (unlink, virtual destructor, free)
 //   returns the next node; the XY distance is `d.X * d.X + d.Y * d.Y` (VC emits the Y term first).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -30,8 +31,8 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

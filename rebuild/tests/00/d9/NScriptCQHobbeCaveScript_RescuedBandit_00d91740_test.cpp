@@ -2,6 +2,7 @@
 // Checks the wait for the HobbeCaveSideRoom level, the per-frame HobbeRoaming lookup, KilledSideRoomHobbes once they
 // are all dead (only when neither re-test is terminating), termination at every test, and that the hobbe vector's
 // elements and buffer are released on every exit.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -39,7 +40,7 @@ public:
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector()
+    FABLE_FORCEINLINE ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CCreatureAction_BanditKingLunge::PerformAction() -- spawn THING_EXPLOSION_TWINBLADE_POUND 1.5 units ahead of the creature (owner = creature), then create its STUCK special effect at the creature and attach it through the particle emitter
@@ -108,13 +109,13 @@ class CThing { public:
     const C3DVector& GetPosition() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

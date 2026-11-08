@@ -11,6 +11,7 @@
 //   written x+y+z (emitted z,y,x); the radius is the double-widened product of the landed GetBoundingSphereWorldSpace 0x00B9DBD0,
 //   stored into the dead bool argument slot. The near / far tests must be ONE `||` condition: two separate early returns
 //   duplicate the `fstp st(0)` false exit inline instead of sharing retail's tail block.
+#include "fable_compiler.h"
 #include "engine/CEngineInternalPrimitiveStaticMesh.h"
 #include "engine/C3DMeshInfo.h"
 #include "engine/CEngineCamera.h"
@@ -21,21 +22,21 @@ class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
 float __fastcall CEnginePrimitive_ComputeFadeDistance(const CEngineInternalPrimitiveStaticMesh* self);   // 0x00BEB660
 
-static __forceinline const C3DBoundingSphere& LocalSphere(const CEngineInternalPrimitiveStaticMesh* self)
+static FABLE_FORCEINLINE const C3DBoundingSphere& LocalSphere(const CEngineInternalPrimitiveStaticMesh* self)
 {
     const C3DMeshInfo* info = *(C3DMeshInfo* const*)self->_pad_0x50;
     return *(const C3DBoundingSphere*)info->BoundingSphere;
 }
-static __forceinline const float* Transform(const CEngineInternalPrimitiveStaticMesh* self)
+static FABLE_FORCEINLINE const float* Transform(const CEngineInternalPrimitiveStaticMesh* self)
 {
     return (const float*)self->ObjectTransform;
 }
-static __forceinline const C3DVector& CameraPosition(const CEngineCamera& camera) { return *(const C3DVector*)(camera.CameraDesc + 0x40); }
-static __forceinline float CameraNear(const CEngineCamera& camera) { return *(const float*)(camera.CameraDesc + 0x58); }
-static __forceinline float CameraFar(const CEngineCamera& camera) { return *(const float*)(camera.CameraDesc + 0x5c); }
-static __forceinline const CPlane* Planes(const CEngineCamera& camera) { return (const CPlane*)camera.FrustrumPlanes; }
+static FABLE_FORCEINLINE const C3DVector& CameraPosition(const CEngineCamera& camera) { return *(const C3DVector*)(camera.CameraDesc + 0x40); }
+static FABLE_FORCEINLINE float CameraNear(const CEngineCamera& camera) { return *(const float*)(camera.CameraDesc + 0x58); }
+static FABLE_FORCEINLINE float CameraFar(const CEngineCamera& camera) { return *(const float*)(camera.CameraDesc + 0x5c); }
+static FABLE_FORCEINLINE const CPlane* Planes(const CEngineCamera& camera) { return (const CPlane*)camera.FrustrumPlanes; }
 
-static __forceinline bool SphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
+static FABLE_FORCEINLINE bool SphereInFrustum(const CEngineCamera& camera, const C3DVector& centre, float radius)
 {
     C3DVector d = centre - CameraPosition(camera);
     float depth = d.X * camera.LookVector_X + d.Y * camera.LookVector_Y + d.Z * camera.LookVector_Z;

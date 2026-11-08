@@ -13,6 +13,7 @@
 //   Register lever: the intelligent pointer's __forceinline copy constructor names its item
 //   (`CBaseObject* item = other.GetPItem(); SetPItem(item);`, the landed 0x007B8230 model): that alone gives retail's
 //   cur-in-ebx / x-in-edi assignment (the unnamed `SetPItem(other.GetPItem())` swaps them -- the earlier parked residue).
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 class CBaseObject;
 class CThing;
@@ -26,7 +27,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { CBaseObject* item = other.GetPItem(); SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { CBaseObject* item = other.GetPItem(); SetPItem(item); }
     virtual ~CIntelligentPointer() { }                      // the class's own vtable 0x01238C6C (as the landed 0x007B8230 model)
 };
 #include "engine/C3DVector.h"

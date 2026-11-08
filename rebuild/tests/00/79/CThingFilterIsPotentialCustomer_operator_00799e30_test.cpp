@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #if !defined(_MSC_VER)
@@ -25,13 +26,13 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b)
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 }
 #include <math.h>
 #pragma intrinsic(sqrt)
-__forceinline float Length(const C3DVector& v)
+FABLE_FORCEINLINE float Length(const C3DVector& v)
 {
     return (float)sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
 }
@@ -50,13 +51,13 @@ class CThing { public:
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
     const C3DVector& GetPosition() const;               // 0x004C73D0
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;

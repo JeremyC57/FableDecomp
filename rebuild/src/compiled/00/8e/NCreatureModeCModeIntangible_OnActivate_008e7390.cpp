@@ -13,6 +13,7 @@
 // Layout: as OnDeactivate 0x008E74F0 (Ego_r.pdb CModeIntangible; CThingPhysical::Damageable bit 0 of +0xBC).
 // Shape: the boss lookup is the landed FrameUpdate (0x008E7600) one-ternary HasTC + GetTC on the const map; the weapon-trail
 //   lookup is the same ternary on the non-const map (component straight into ecx, `this` register reused for the thing).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -53,7 +54,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char   _pad64[0x58];
     unsigned char   Damageable : 1;             // +0xBC bit 0 (CThingPhysical)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -66,11 +67,11 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
@@ -78,7 +79,7 @@ class CThing { public:
         const CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;

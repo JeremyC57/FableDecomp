@@ -8,6 +8,7 @@
 // Model: the landed melee twin CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::Main 0x00D58490 (defines, includes, macros).
 // Levers: a __forceinline CScriptThing::GetPos (the dummy position expands as retail); each dummy phase's quest counter in its
 //   own block (its frame slot is reused by the last loop's line temporary, as retail) with one function-scope `long lastHits`.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CLEVELSCRIPTBASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -46,13 +47,13 @@ void FABLE_FASTCALL RunCutsceneMacro(const CCharString&, std::map<CCharString,CS
 void FABLE_FASTCALL AddLogbookTutorialEntry(const CCharString&);     // 0x00CBE9EE
 void FABLE_FASTCALL AddLogbookTutorialEntryPC(const CCharString&);   // 0x00CBEA81
 template<> CCountedPointer<CScriptThing>& CCountedPointer<CScriptThing>::operator=(const CCountedPointer<CScriptThing>&);   // 0x00704580
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 inline CScriptThing::~CScriptThing() { }
 inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #define GM_T if (IsActiveThreadTerminating()) return _Fail_Val.Return()
 #define GM_START_SCRIPTING(thing, seh) \
     if (seh.IsValid()) seh.Release(); \

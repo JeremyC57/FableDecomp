@@ -9,6 +9,7 @@
 //   function's), plus the landed CList::AddScrollingChildDynamically 0x0053BEAC (+0x17c scroll layout); the scroll type
 //   +0x148 is descriptive. The child's event-listener base sits at +4 (`neg/sbb/and` null-checked conversion for the
 //   front-end argument, unchecked `lea ecx,[edi+4]` for its own slot-3 call).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -54,7 +55,7 @@ struct CComponentDef : CDefVirtual, CRefCounted {
 #pragma pack(pop)
 template <class T> struct CDefPointer {
     T* Data;
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Data) {
             Data->ReleaseTemporary();

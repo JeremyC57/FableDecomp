@@ -18,6 +18,7 @@
 //   release through a local copy of the pointer -- releasing through the member reloads it and gives the long form -- and
 //   STLport vector dtors), all `__forceinline` (the size TU otherwise calls them out of line), and the two out-of-line
 //   container destructors; ~CTCBase is a tail jump.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -32,8 +33,8 @@ class CEnginePersistentPrimitiveBase { public:
 template <class T> class CIVCountedPointer { public:       // intrusive counted pointer (count at +4 of the object)
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
-    __forceinline ~CIVCountedPointer() { Release(); }
-    __forceinline void Release()
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE void Release()
     {
         T* p = m_p;
         if (p) {
@@ -42,14 +43,14 @@ template <class T> class CIVCountedPointer { public:       // intrusive counted 
             m_p = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(T* p) { Release(); m_p = p; return *this; }
-    __forceinline T* operator->() const { return m_p; }
-    __forceinline long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(T* p) { Release(); m_p = p; return *this; }
+    FABLE_FORCEINLINE T* operator->() const { return m_p; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:        // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     CEnginePrimitiveHandle() { }
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data->OnLastHandleReleased(this);
@@ -64,7 +65,7 @@ struct CDefPointee {
 template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         T* p = Object;
         if (p) {
@@ -82,7 +83,7 @@ template <class T> struct CVectorStorage {          // STLport vector<T> (retail
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CVectorStorage() { if (_M_start) free(_M_start); }
+    FABLE_FORCEINLINE ~CVectorStorage() { if (_M_start) free(_M_start); }
 };
 class CRegion;
 #include "engine/C3DVector.h"

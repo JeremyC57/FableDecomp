@@ -8,6 +8,7 @@
 // Shape: `for (cur = first; n > 0; --n, ++cur) _Construct(&*cur, x); return cur;` -- the unsigned size_type count
 //   (`test edx,edx ; jbe`), the placement-new null test per element, the implicit 14-byte copy. Size TU without a frame
 //   pointer: `#pragma optimize("s", on)`; the inline helpers (_Construct, __uninitialized_fill_n) are `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -27,9 +28,9 @@ struct CEngineGraphic {                         // Ego_r.pdb, 14 bytes
 #pragma pack(pop)
 
 template <class T> struct __type_traits { typedef __false_type is_POD_type; };
-template <class T1, class T2> __forceinline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
+template <class T1, class T2> FABLE_FORCEINLINE void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter first, _Size n, const _Tp& x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter first, _Size n, const _Tp& x, const __false_type&)
 {
     _ForwardIter cur = first;
     for (; n > 0; --n, ++cur)

@@ -16,6 +16,7 @@
 //   The release tests ecx straight from the slot (no eax staging) only when NEITHER callee that receives the def
 //   slot's address escapes it: same-TU noinline stand-ins for GetDef (out pointer) and the event ctor (const
 //   CDefPointer&) -- either alone leaves 17 lines.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
@@ -45,7 +46,7 @@ class CExpressionDef { public:
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefPointerExpressionDef {
     CExpressionDef* Object;
     CDefPointerExpressionDef() : Object(0) {}

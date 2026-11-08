@@ -23,6 +23,7 @@
 //   ebx) with zeroed CDefPointer locals released by their inline dtors; GetSubDef / CalcAndLookup have same-TU out-only
 //   stand-ins (non-template) so VC7.1 keeps the defs in registers. CSoundInit's default ctor sets PlaybackType in its
 //   body after the list (retail stores OverrideID -1 before PlaybackType 1).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -116,7 +117,7 @@ class CThing { public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

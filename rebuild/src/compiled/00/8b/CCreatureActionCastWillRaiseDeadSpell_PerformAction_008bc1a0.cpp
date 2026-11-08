@@ -20,6 +20,7 @@
 //   reserve 0x00660684 / _M_insert_overflow 0x00440990, CDefinitionManager::GetDef<CBrainDef> 0x0079BD80, ModifyHealth = slot 59.
 // Leaf: ?PerformAction@CCreatureAction_CastWillRaiseDeadSpell@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetSquaredMagnitude2D replaced by the header GetSquaredMagnitude2D (same computation).
+#include "fable_compiler.h"
 class CBaseObject { public: virtual void v00(); };
 class CThing;
 class CThingPhysical;
@@ -176,7 +177,7 @@ class CThing : public CBaseObject { public:
     const C3DVector& GetPos() const;                     // 0x004C73D0
     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
     unsigned long GetPlayerNumber() const { return PlayerNumber; }
-    template <class T> __forceinline bool GetInterface(T** out, long type)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type)
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)type;
@@ -268,9 +269,9 @@ class CBaseIntelligentPointer { public:
     void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer(T* item) { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-    __forceinline T* operator->() const { return (T*)GetPItem(); }
+    FABLE_FORCEINLINE CIntelligentPointer(T* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE T* operator->() const { return (T*)GetPItem(); }
 };
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();

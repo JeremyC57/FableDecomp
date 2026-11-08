@@ -1,5 +1,6 @@
 // Behaviour test for 0071dd50: src/0071dd50.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCHeroMorph::GetTattoos(vector<CDefPointer<const CTattooDef> >& tattoos) const
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -32,7 +33,7 @@ template <class T> class CDefPointer { public:
 };
 template <class T> struct CDefHolder {                  // owns the reference GetSubDef handed over
     T* Object;
-    __forceinline ~CDefHolder()
+    FABLE_FORCEINLINE ~CDefHolder()
     {
         if (Object && --Object->m_refCount == 0)
             Object->Destroy();

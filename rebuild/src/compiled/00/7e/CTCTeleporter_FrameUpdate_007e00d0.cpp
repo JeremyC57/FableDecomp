@@ -21,6 +21,7 @@
 //   PParticle +0x13, WaitingForTutorialToFinish +0x1b; CTeleporterDef Radius +0x28, ParticleEffect +0x2c, flag +0x30.
 // Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CWorld CWorldDonor
 #include "engine/CWorld.h"
 #undef CWorld
@@ -47,7 +48,7 @@ class CThing { public:
     unsigned char _pad90;
     unsigned char m_flags;                              // +0x91 bit 0: dead
     unsigned long HasTC(long t) const { return m_presentBits[t >> 5] & (1UL << (t & 31)); }
-    template<class T> __forceinline T* GetInterface(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetInterface(long wanted)
     {
         if (HasTC(wanted)) {
             ETCInterfaceType type = (ETCInterfaceType)(wanted);
@@ -57,7 +58,7 @@ class CThing { public:
         }
         return 0;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

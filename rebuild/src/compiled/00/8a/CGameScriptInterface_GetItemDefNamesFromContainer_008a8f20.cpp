@@ -11,6 +11,7 @@
 // Shape: the landed MsgOnExpressionPerformed 0x00893B00 def-name lookup (the CDefString temporary and the name share one
 //   frame word); push_back inlined (null-tested placement copy, finish += 4, else the overflow with the __false_type tag in
 //   the dead slot); the item count re-derived every pass.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 class CCharString { public:
     void* m_pData;
@@ -113,7 +114,7 @@ public:
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
-    template <class T> __forceinline const T* GetTC(long interfaceType) const
+    template <class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
         const CInterfaceMap* map = &m_interfaces;

@@ -3,6 +3,7 @@
 //   empty arm (strcmp("", "") on the unassigned case, the block compare otherwise): an inline operator==("") with two
 //   returns materialises its bool with `sete al` and re-tests it; the default tag is an implicit CWideString conversion
 //   (built before the other arguments and re-addressed with `lea`), not an explicit temporary.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048F7C0, 193 bytes, `ret 4`. Ego_r.pdb `?SetButton1OverrideText@CSubtitleRenderer@@QAEXABVCCharString@@@Z`.
@@ -42,7 +43,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
     CWideString ToWideString() const;           // 0x0099E480
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0)
             return strcmp(text, "") == 0;

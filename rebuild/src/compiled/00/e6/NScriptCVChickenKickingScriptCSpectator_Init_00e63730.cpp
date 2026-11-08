@@ -14,6 +14,7 @@
 // the branch on the second result.
 // Naming wave 35: identity reg 00e62c15 "Spectator" in 00e62a00; Alloc 00e63660; vtable 012e74b4 slot 2; PDB ?Init@CSpectator@CV_ChickenKickingScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CSpectator::Init (wave3/labels_alloc.tsv); PDB ?Init@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
@@ -28,7 +29,7 @@ struct CScriptThingImp;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF

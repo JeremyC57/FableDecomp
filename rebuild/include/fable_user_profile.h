@@ -1,4 +1,5 @@
 #pragma once
+#include "fable_compiler.h"
 
 #include "fable_string.h"
 
@@ -129,7 +130,7 @@ class CUserProfileManager
 public:
     CUserProfileManager();
 
-    __forceinline static void* operator new(unsigned int size)
+    FABLE_FORCEINLINE static void* operator new(unsigned int size)
     {
         return ::operator new(size);           // 0x00BFEA1A MSVCR71 operator new
     }

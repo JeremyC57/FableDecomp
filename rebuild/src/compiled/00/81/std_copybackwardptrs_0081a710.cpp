@@ -8,6 +8,7 @@
 //   last, result, random_access_iterator_tag(), (ptrdiff_t*)0)` (the loop above); `__fastcall` on the template
 //   definition (the TU's /Gr convention). VC7.1 keeps __copy_backward out of line under plain `inline` (a 25-byte
 //   forwarder, graded), so it is `__forceinline` here.
+#include "fable_compiler.h"
 enum EHeroMorphType { HERO_MORPH_TYPE_0 = 0 };
 enum EMeshLocationPoint { MESH_LOCATION_POINT_0 = 0 };
 class CDefString { public: long Index; };
@@ -28,7 +29,7 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>   // inline in every retail body
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                           _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)

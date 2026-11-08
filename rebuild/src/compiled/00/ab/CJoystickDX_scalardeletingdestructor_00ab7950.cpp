@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB7950, length 76 bytes.
 // Leaf: ??_GCJoystickDX@@UAEPAXI@Z
 // Callees: the device's COM slots, ~CJoystick @ 0x009E4420 (labelled "JoystickGui_Destructor"), operator delete @ 0x00BFE9BC. Vtable slot 9. Shape: the device load before the vtable store, `this` in esi, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 struct IDirectInputDevice8_Retail {              // COM: __stdcall methods, `this` pushed
     virtual long __stdcall QueryInterface(void* iid, void** out);   // slot 0
@@ -34,7 +35,7 @@ struct CJoystickDX : CJoystick {                   // vtable 0x0129EA7C
     bool                        Acquired;          // +0xd3c
     unsigned char               _pad0d3d[3];
     CInputManagerDX*            InputManagerDX;    // +0xd40
-    __forceinline virtual ~CJoystickDX()
+    FABLE_FORCEINLINE virtual ~CJoystickDX()
     {
         if (DJoystick) {
             DJoystick->Unacquire();

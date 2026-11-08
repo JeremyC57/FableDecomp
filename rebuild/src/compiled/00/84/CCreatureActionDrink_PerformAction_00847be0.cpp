@@ -13,6 +13,7 @@
 //   (+0xB0); CThing::PBaseDef +0x70 (read through the inline CThing::PeekBaseDef() const); CIVCountedPointeeBase::IVRefCount +0x04.
 // Shape: a same-TU noinline body of GetSubDef<CBonusItemDef> lets VC7.1 reuse the def pointer's frame word for the lookup key.
 // ---- Shared model (retail layouts; names from Ego_r.pdb / FableWin.pdb) ----
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -155,7 +156,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;
@@ -167,7 +168,7 @@ public:
         *out = (T*)it->second;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const
     {
         if (!HasTC(T::StatGetInterfaceType()))
             return false;

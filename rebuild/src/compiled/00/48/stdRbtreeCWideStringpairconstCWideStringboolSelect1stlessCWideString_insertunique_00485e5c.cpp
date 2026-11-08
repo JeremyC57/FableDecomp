@@ -10,6 +10,7 @@
 // `_M_insert`'s iterator result is homed in the dead `v` argument slot. Size TU with a frame pointer.
 // Label correction: catalog "RBTree_LowerBound_Iterator" is a guess.
 // Leaf: ?insert_unique@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$less@VCWideString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@_N@std@@@std@@_N@2@ABU?$pair@$$CBVCWideString@@_N@2@@Z
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -21,7 +22,7 @@ public:
 
 namespace std {
 template <class _Tp> struct less {
-    __forceinline bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
+    FABLE_FORCEINLINE bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
 };
 
 template <class _T1, class _T2> struct pair {

@@ -12,6 +12,7 @@
 // its used slots at 4 bytes plus each list (`sizeof + capacities`, folded to `((c1 + 10) * 3 + c2) * 2`); one
 // the vertex part is a named local computed first (kept in edi across the list loop, the list total spilled) and
 // the return sums the rest (VC folds the constants 12 + 12 + 16 into the final `lea ... + 28h`).
+#include "fable_compiler.h"
 class C3DVertex2 { public: unsigned char _data[0x20]; };
 #include "engine/C3DVector.h"
 class C3DBoundingSphere { public: float X, Y, Z, Radius; };
@@ -45,7 +46,7 @@ struct CTriangleListPointer {                      // CIVCountedPointer<N3DPrimi
     unsigned long Sizeof() const { return m_pObject ? m_pObject->Sizeof() : sizeof(*this); }
 };
 struct CTriangleListArray : CArray<CTriangleListPointer> {
-    __forceinline unsigned long Sizeof() const
+    FABLE_FORCEINLINE unsigned long Sizeof() const
     {
         unsigned long size = sizeof(*this) + Size() * sizeof(CTriangleListPointer);
         for (const CTriangleListPointer* it = m_pFirst; it != m_pLast; ++it)

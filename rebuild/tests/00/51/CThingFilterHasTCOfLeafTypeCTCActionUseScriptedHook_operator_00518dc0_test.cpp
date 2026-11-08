@@ -1,5 +1,6 @@
 // Behaviour test for 0x00518DC0 CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator()(thing): true only
 // when the thing has interface 0xC2 and that component's class type name is "CTCActionUseScriptedHook".
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -59,7 +60,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long& type);       // 0x0040F020
-    __forceinline CTCBase* Find(ETCInterfaceType type)
+    FABLE_FORCEINLINE CTCBase* Find(ETCInterfaceType type)
     {
         SEntry* it = LowerBound(type);
         SEntry* sel = (it == last || type < it->type) ? last : it;
@@ -112,11 +113,11 @@ public:
     unsigned char _pad00[0x20];
     unsigned int m_presentBits[9];             // +0x20 bitset<274> of present interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline unsigned int HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned int HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1U << (interfaceType & 31));
     }
-    template <class T> __forceinline bool GetTCOfLeafType(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTCOfLeafType(T** out)
     {
         if (HasTC(T::StatGetInterfaceType())) {
             CTCBase* tc = m_interfaces.Find(T::StatGetInterfaceType());

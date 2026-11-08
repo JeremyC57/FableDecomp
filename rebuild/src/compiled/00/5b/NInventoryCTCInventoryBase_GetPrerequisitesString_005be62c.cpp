@@ -2,6 +2,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
@@ -51,7 +52,7 @@ struct SNode {
 SNode* __cdecl Successor(SNode* node);                  // 0x004292C0
 struct CPrerequisiteMap {                               // STLport map<EQuestCardPrerequisite,long> (12 bytes in retail)
     SNode* header; long count; long compare;
-    __forceinline bool empty() const { return count == 0; }
+    FABLE_FORCEINLINE bool empty() const { return count == 0; }
 };
 class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
 class CQuestCardDef : public CDefPointeeBase { public:
@@ -60,8 +61,8 @@ class CQuestCardDef : public CDefPointeeBase { public:
 };
 template<class T> class CDefPointer { public:
     T* Object;
-    __forceinline ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
-    __forceinline T* operator->() const { return Object; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
+    FABLE_FORCEINLINE T* operator->() const { return Object; }
 };
 class CTCHeroStats : public CTCHeroStatsDonor {
  public:
@@ -85,7 +86,7 @@ template <unsigned int _Nb> class bitset { public:
 }
 class CThing { public:
     unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
-    template<class T> __forceinline bool GetInterface(T** out, long kind) {
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);
             *out = (T*)((void*)(it == map->last || kind < it->first ? map->last : it)->second);

@@ -1,4 +1,5 @@
 // Behaviour test for 00659295: body copied from src/00659295.cpp (CTCVillage::InitialiseToggleTorchTypes), the bitset / light callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -24,7 +25,7 @@ class CThingObject { public:
     CBitset       TypeBits;
     unsigned char _pad24[0x20];
     CInterfaceMap Interfaces;
-    template<class T> __forceinline T* PeekTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* PeekTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &Interfaces;

@@ -12,10 +12,11 @@
 //   0x0122DED8, 1.0 (double) 0x01237F00. CRightHandedSet = {Up +0, Forward +0xC} (Ego_r.pdb).
 // Shape: both virtual calls first, then the inline C3DVector::GetAngleYZ (fsqrt / fpatan / * 1/2pi) and the landed
 //   __forceinline WrapAngle on each forward axis; the first angle is kept in a frame float for the final `fsubr`.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, sqrt, fmod)
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -28,7 +29,7 @@ __forceinline float WrapAngle(float angle)
 class C3DVector {
 public:
     float X, Y, Z;
-    __forceinline float GetAngleYZ() const
+    FABLE_FORCEINLINE float GetAngleYZ() const
     {
         float angle = (float)atan2(Z, sqrt(X * X + Y * Y)) * 0.15915494f;
         return WrapAngle(angle);

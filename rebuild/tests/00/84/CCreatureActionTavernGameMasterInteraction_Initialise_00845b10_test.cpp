@@ -1,4 +1,5 @@
 // Self-contained unchanged target body. Tests expose fields and supply external engine calls.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -1751,7 +1752,7 @@ class CThing:public CClass{public:
  unsigned char unreadThing[0x91-0x54];bool Dead:1;unsigned char unreadFlags:7;
  unsigned char unreadTail[sizeof(CThingLayout)-0x92];
 public:bool IsDead()const{return Dead;}
- template<class T>__forceinline bool GetTC(T**p){
+ template<class T>FABLE_FORCEINLINE bool GetTC(T**p){
   ETCInterfaceType t=T::StatGetInterfaceType();
   if((UsingComponents._M_w[t>>5]&(1UL<<(t&31)))!=0){ETCInterfaceType key=T::StatGetInterfaceType();*p=static_cast<T*>(Components.Find(key)->second);return true;}
   return false;

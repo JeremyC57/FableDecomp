@@ -13,6 +13,7 @@
 // Shape: an empty destructor; the members die in reverse declaration order through a `__forceinline` vector<float>
 // destructor (a size TU keeps a plain inline one out of line), then the out-of-line base destructor as a sibling call. As
 // in the landed 0x00459ABE the base is modelled without its vptr: the def vtable is not re-stored here.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
 // Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
@@ -24,7 +25,7 @@ struct CFloatVector {                              // retail std::vector<float> 
     float* m_first;
     float* m_last;
     float* m_end;
-    __forceinline ~CFloatVector() { if (m_first) free(m_first); }
+    FABLE_FORCEINLINE ~CFloatVector() { if (m_first) free(m_first); }
 };
 // Model: the retail def chain from engine/CParentDefClassBase.h; the derived def is `__declspec(novtable)` (no vtable
 //   store of its own in the destructor, as 0x0047747C) and its CDefString members are the 4-byte TablePos class.

@@ -15,6 +15,7 @@
 // Shape: two `__forceinline` render-core helpers taking the buffer pointer: SetVertexBuffer's null/non-null arms tail-merge
 //   into one SetStreamSource call, SetIndexBuffer stores the selection then passes a ternary; called with 0 at the end they
 //   fold to the all-zero arguments. The third parameter is unused.
+#include "fable_compiler.h"
 #include "engine/CEngineSkyRenderer.h"
 
 #include "engine/C3DVector.h"
@@ -70,7 +71,7 @@ struct CTrackedRenderState {                       // 0x14 bytes
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -91,7 +92,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     IDirect3DDevice9*    PD3DDevice;               // +0x3CF0
     CIndexBuffer*        PSelectedIndexBuffer;     // +0x3CF4
 
-    __forceinline void ChangeState(CTrackedRenderState& state, unsigned long value)
+    FABLE_FORCEINLINE void ChangeState(CTrackedRenderState& state, unsigned long value)
     {
         if ((m_captureMask & state.m_captureMask) == 0) {
             state.m_captureMask |= m_captureMask;
@@ -106,14 +107,14 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
             ++m_dirtyCount;
         }
     }
-    __forceinline void SetVertexBuffer(CVertexBufferBase* buffer)
+    FABLE_FORCEINLINE void SetVertexBuffer(CVertexBufferBase* buffer)
     {
         if (buffer)
             PD3DDevice->SetStreamSource(0, buffer->PVertexBuffer, 0, buffer->Stride);
         else
             PD3DDevice->SetStreamSource(0, 0, 0, 0);
     }
-    __forceinline void SetIndexBuffer(CIndexBuffer* buffer)
+    FABLE_FORCEINLINE void SetIndexBuffer(CIndexBuffer* buffer)
     {
         PSelectedIndexBuffer = buffer;
         if (buffer)
@@ -124,7 +125,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 };
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 
-__forceinline void CTrackedRenderState::Set(unsigned long value)
+FABLE_FORCEINLINE void CTrackedRenderState::Set(unsigned long value)
 {
     if (m_value != value)
         g_pRenderManagerCore->ChangeState(*this, value);

@@ -6,6 +6,7 @@
 //   ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z (Ego_r.pdb
 //   0x0040C1F0 / FableWin.pdb 0x0189E580), so StringTraits is that global specialization (was N006d41f0::StringTraits with
 //   pointer parameters); the context and string are passed through reference casts. Bytes unchanged.
+#include "fable_compiler.h"
 #include "engine/CStringParser.h"
 namespace N006d41f0 {
 
@@ -13,7 +14,7 @@ extern "C" int __cdecl strcmp(const char*,const char*);
 #pragma intrinsic(strcmp)
 int __fastcall Compare(const char*,const char*);
 struct CBasicString {const char* Data;bool Equal(const char*) const;};
-struct CCharString {CBasicString* Data;CCharString();CCharString(const CCharString&);~CCharString(); __forceinline bool Equal(const char* s) const {if(!Data)return strcmp(s,"")==0;return Data->Equal(s);} __forceinline bool CompareEqual(const char* s)const{if(!Data)return strcmp(s,"")==0;return Compare(Data->Data,s)==0;}};
+struct CCharString {CBasicString* Data;CCharString();CCharString(const CCharString&);~CCharString(); FABLE_FORCEINLINE bool Equal(const char* s) const {if(!Data)return strcmp(s,"")==0;return Data->Equal(s);} FABLE_FORCEINLINE bool CompareEqual(const char* s)const{if(!Data)return strcmp(s,"")==0;return Compare(Data->Data,s)==0;}};
 struct Parser:CStringParser {::N006d41f0::CCharString ReadAsString();};
 struct CPersistContext {unsigned int State;};
 void __fastcall ReadInteger(CPersistContext*,Parser*,unsigned int*);

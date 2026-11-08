@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -27,7 +28,7 @@ struct CUIMiniMapMarker {                        // CTCInventoryMap::CUIMiniMapM
     long        GraphicIndex;                    // +0x14
     float       Angle;                           // +0x18
     CUIMiniMapMarker() { }
-    __forceinline CUIMiniMapMarker(const CUIMiniMapMarker& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
+    FABLE_FORCEINLINE CUIMiniMapMarker(const CUIMiniMapMarker& o)   // the implicit memberwise copy, spelled out so VC7.1 inlines it
         : Region(o.Region), UIDefName(o.UIDefName), Position(o.Position), DefNameLength(o.DefNameLength),
           GraphicIndex(o.GraphicIndex), Angle(o.Angle) { }
 };

@@ -19,6 +19,7 @@
 // bitset<274> +0x20, Components CVectorMap +0x44, Dead bit 0 of +0x91 (Ego_r +0xA1 minus 0x10: bitset, CVectorMap, list).
 // Getter identities (Ego_r.pdb donor order = retail order 0x008FCF40..0x008FD010): Terminate 0x008FCF40, PeekWorld
 // 0x008FCFA0, GetWorld 0x008FCFC0, GetPWorldSeed 0x008FCFD0, PeekThingSearchTools 0x008FD000, IsStopping 0x008FD010.
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CAIBrain.h"                           // Creature +0x18
 class CCharStringData;
@@ -54,7 +55,7 @@ public:
         const unsigned char mask = (unsigned char)(1 << (type & 7));
         return mask & bits;
     }
-    template <class T> __forceinline bool GetInterface(T** out, ETCInterfaceType type)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** out, ETCInterfaceType type)
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = type;
@@ -67,21 +68,21 @@ public:
         }
         return false;
     }
-    template <class T> __forceinline T* GetTC(ETCInterfaceType type)
+    template <class T> FABLE_FORCEINLINE T* GetTC(ETCInterfaceType type)
     {
         ETCInterfaceType key = type;
         CInterfaceMap* map = &Components;
         CInterfaceMap::value_type* it = map->LowerBound(key);
         return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline const T* PeekTC(ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE const T* PeekTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const CInterfaceMap* map = &Components;
         const CInterfaceMap::value_type* it = map->LowerBound(key);
         return (const T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
-    template <class T> __forceinline bool GetInterface(const T** out, ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(const T** out, ETCInterfaceType type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = type;

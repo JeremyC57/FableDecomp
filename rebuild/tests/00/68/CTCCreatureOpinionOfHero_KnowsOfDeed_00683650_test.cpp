@@ -1,4 +1,5 @@
 // Behaviour test for 00683650: body copied from src/00683650.cpp (CTCCreatureOpinionOfHero::KnowsOfDeed(long,bool)), the callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -16,7 +17,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;
-    __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
 class COpinionDeed { public: long Type; };
 static long g_handleSeen = -1;
@@ -35,14 +36,14 @@ class CTCCreatureOpinionOfHero { public:
     bool KnowsOfDeed(long deedHandle, long deedType, bool includePending) { ++g_typedCalls; g_typedHandle = deedHandle; g_typedType = deedType; g_typedPending = includePending; return g_typedResult; }
     bool KnowsOfDeed(long deedHandle, bool includePending);
 };
-static __forceinline CTCBaseInterface* GetTC(CThing* thing, long type)
+static FABLE_FORCEINLINE CTCBaseInterface* GetTC(CThing* thing, long type)
 {
     CInterfaceMap* map = &thing->m_interfaces;
     long key = type;
     CInterfaceMap::SEntry* it = map->LowerBound(&key);
     return ((it == map->last || type < it->type) ? map->last : it)->component;
 }
-static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
+static FABLE_FORCEINLINE CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 {
     CTCBaseInterface* tc = 0;
     if (thing->HasTC(0x51))

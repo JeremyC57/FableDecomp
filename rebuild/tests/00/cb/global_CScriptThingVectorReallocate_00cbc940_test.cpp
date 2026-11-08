@@ -1,16 +1,17 @@
 // 00cbc940 Row00cbc940::vector<Element>::_M_insert_overflow (STLport; catalog: CScriptThing_VectorReallocate, but element starts with a CCharString, not the CScriptThing vptr)
 // Flags: /O2 /Oy /W3 
 // Leaf: _M_insert_overflow
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 namespace Row00cbc940 {
 // Layout: oracle uses a 12-byte STLport vector; element stride 12 with counted pointer at final dword.
-struct CCharString {void*p;CCharString();CCharString(const char*);CCharString(const CCharString&);~CCharString();}; struct Ref{int refs;};struct Element{CCharString text;unsigned a;Ref*ref;Element():a(0),ref(0){}__forceinline Element(const Element&v):text(v.text),a(v.a),ref(v.ref){if(ref)++ref->refs;}};
+struct CCharString {void*p;CCharString();CCharString(const char*);CCharString(const CCharString&);~CCharString();}; struct Ref{int refs;};struct Element{CCharString text;unsigned a;Ref*ref;Element():a(0),ref(0){}FABLE_FORCEINLINE Element(const Element&v):text(v.text),a(v.a),ref(v.ref){if(ref)++ref->refs;}};
 struct __false_type {__false_type(){}};
 Element* __fastcall __uninitialized_copy(Element*,Element*,Element*,const bool&);
 Element* __fastcall __uninitialized_fill_n(Element*,unsigned,const Element&,const bool&);
 void __fastcall _Destroy(Element*,Element*,const bool&);
-__forceinline const unsigned& max(const unsigned&a,const unsigned&b){return a<b?b:a;}
+FABLE_FORCEINLINE const unsigned& max(const unsigned&a,const unsigned&b){return a<b?b:a;}
 template<class T> struct vector {T*_M_start,*_M_finish,*_M_end_of_storage;void _M_insert_overflow(T*,const T&,const __false_type&,unsigned,bool);};
 template<class T> void vector<T>::_M_insert_overflow(T*pos,const T&value,const __false_type&,unsigned n,bool atEnd) {
  unsigned old=_M_finish-_M_start; unsigned capacity=old+max(old,n);

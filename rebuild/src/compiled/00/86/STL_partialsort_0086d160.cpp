@@ -11,6 +11,7 @@
 //   last, the value-type tag and the empty comparator on the stack), make_heap the inline forwarder (two null tags pushed
 //   before the comparator), __pop_heap `__forceinline` with the value read before the `*__result = *__first` store and
 //   rebuilt in the argument area for __adjust_heap.
+#include "fable_compiler.h"
 class CDefString {                                          // Ego_r.pdb, 4 bytes
 public:
     long TablePos;                                          // +0x00
@@ -49,7 +50,7 @@ inline void make_heap(_RandomAccessIter __first, _RandomAccessIter __last, _Comp
 }
 
 template <class _RandomAccessIter, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIter __first, _RandomAccessIter __last, _RandomAccessIter __result, _Tp __val, _Compare __comp, _Distance*)
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIter __first, _RandomAccessIter __last, _RandomAccessIter __result, _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;
     __adjust_heap(__first, _Distance(0), _Distance(__last - __first), __val, __comp);

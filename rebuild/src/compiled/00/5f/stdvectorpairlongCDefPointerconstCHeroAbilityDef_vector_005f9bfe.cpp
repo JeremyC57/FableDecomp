@@ -10,6 +10,7 @@
 //   { _M_finish = uninitialized_fill_n(_M_start, n, value); }` with the inline front end dispatching on __false_type.
 // Shape: frame pointer kept in a size TU (`#pragma optimize("y", off)` + `("s", on)`); the empty `__false_type`
 //   temporary is homed in the high byte of n's slot (`lea eax,[ebp+0Bh]`).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -54,7 +55,7 @@ template <class ForwardIter, class Size, class T>
 ForwardIter __fastcall __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&);   // 0x005F9379
 
 template <class ForwardIter, class Size, class T>
-__forceinline ForwardIter uninitialized_fill_n(ForwardIter first, Size n, const T& x)
+FABLE_FORCEINLINE ForwardIter uninitialized_fill_n(ForwardIter first, Size n, const T& x)
 {
     return __uninitialized_fill_n(first, n, x, __false_type());
 }

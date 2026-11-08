@@ -11,6 +11,7 @@
 // (n = finish - finish, hence `cmp eax,eax`); the loop hands each element BY VALUE to a
 // `__forceinline` helper, so it is copied into the dead argument slot, and push_back's fresh
 // `__true_type()` lands in that same dead slot. The in-place construct is placement new (null test).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -65,7 +66,7 @@ struct CAnimIndexOwner_00857dc0 {
     unsigned char _pad00[0xf0];
     CLongVector   AnimIndices;                      // +0xf0 vector<long>
 
-    __forceinline void AddAnimIndex(long index) { AnimIndices.push_back(index); }
+    FABLE_FORCEINLINE void AddAnimIndex(long index) { AnimIndices.push_back(index); }
     void RemoveAnimIndices(const CLongVector& indices);
 };
 

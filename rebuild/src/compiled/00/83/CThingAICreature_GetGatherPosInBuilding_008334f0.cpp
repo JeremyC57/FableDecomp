@@ -16,6 +16,7 @@
 // Layout: retail CThing interface bitset +0x20, CVectorMap +0x44, PhysicsTC +0x60, PTCGraphicAppearance +0x64 (Ego_r
 //   +0x70/+0x74 less the 4-byte-narrower CVectorMap and the 8-byte-narrower list); CTCPhysicsBase::Radius +0x34 (engine/CTCPhysicsBase.h).
 //   Local CThing model as in the landed sibling GetSleepTimes 0x00833390 (engine/CThingAICreature.h is a flat pad class).
+#include "fable_compiler.h"
 #include "engine/CBaseObject.h"
 #include "engine/CTCPhysicsBase.h"                     // Radius +0x34
 
@@ -60,7 +61,7 @@ class CThing : public CBaseObject { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

@@ -10,6 +10,7 @@
 // `__false_type` temporary homed in the high byte of the dead `x` slot (`lea eax,[ebp+0Bh]`).
 // Shape: `_Construct` must be `__forceinline` (plain `inline` stays an out-of-line call in this size TU).
 // Frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
@@ -25,7 +26,7 @@ namespace std {
 
 struct __false_type { __false_type() { } };
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _Tp> struct allocator {
 };

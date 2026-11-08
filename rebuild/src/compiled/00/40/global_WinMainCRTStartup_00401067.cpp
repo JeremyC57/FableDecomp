@@ -15,6 +15,7 @@
 // Leaf: _WinMainCRTStartup
 // Flags: /O1
 
+#include "fable_compiler.h"
 #include <excpt.h>
 
 typedef void (__cdecl* _PVFV)(void);
@@ -151,7 +152,7 @@ extern "C" _PVFV __xi_z[];           // 0x01374E40
 extern "C" _PVFV __xc_a[];           // 0x01374000
 extern "C" _PVFV __xc_z[];           // 0x01374C38
 
-static __forceinline int __cdecl check_managed_app(void)
+static FABLE_FORCEINLINE int __cdecl check_managed_app(void)
 {
     IMAGE_DOS_HEADER* pDOSHeader;
     IMAGE_NT_HEADERS* pPEHeader;

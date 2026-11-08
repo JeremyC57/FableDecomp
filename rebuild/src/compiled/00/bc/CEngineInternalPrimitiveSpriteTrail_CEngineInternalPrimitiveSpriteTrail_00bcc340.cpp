@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own deleting-dtor00bcc320 and full RTTI12a6a4c; actual inherited hierarchy and original Trail+104; base vtable12354d0.
+#include "fable_compiler.h"
 #define CIVCountedPointeeBase CIVCountedPointeeBase_HeaderLayout
 #include "engine/CIVCountedPointeeBase.h"
 #undef CIVCountedPointeeBase
@@ -18,7 +19,7 @@
 #endif
 #include "engine/CArray.h"
 // Layout: shared base headers describe flattened vptrs; genuine polymorphic hierarchy is required for compiler-generated destruction. Original base fields and offsets retained; no target base reconstruction claim.
-class CIVCountedPointeeBase {public:virtual __forceinline ~CIVCountedPointeeBase(){}virtual void Delete()const;unsigned long IVRefCount;};
+class CIVCountedPointeeBase {public:virtual FABLE_FORCEINLINE ~CIVCountedPointeeBase(){}virtual void Delete()const;unsigned long IVRefCount;};
 class CEnginePersistentPrimitiveBase:public CIVCountedPointeeBase {public:long Type;};
 class CEngineSceneGridCell;
 class CEngineInternalPrimitiveBase:public CEnginePersistentPrimitiveBase {public:

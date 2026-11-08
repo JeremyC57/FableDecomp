@@ -12,6 +12,7 @@
 //   the {kind, component} vector map at +0x44 (local CThing model of the CTCCarrying rows).
 // Shape: member initialiser Pos(&thing.GetPos()); the body's PeekTC writes PTCNav only when the component
 //   exists (the out-parameter is the member itself), the conversion-temporary key sits in the dead thing slot.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { TC_CREATURE_NAVIGATION = 0x07 };
@@ -31,7 +32,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline bool PeekTC(T** pp) const
+    template<class T> FABLE_FORCEINLINE bool PeekTC(T** pp) const
     {
         if (HasTC(T::StatGetInterfaceType())) {
             *pp = (T*)Components.Find(T::StatGetInterfaceType())->second;

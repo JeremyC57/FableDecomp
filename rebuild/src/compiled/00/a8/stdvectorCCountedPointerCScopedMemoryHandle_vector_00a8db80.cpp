@@ -8,6 +8,7 @@
 //   allocator_type()) { _M_finish = uninitialized_fill_n(_M_start, __n, _Tp()); }` -- the base zeroes its three words,
 //   allocates and sets start/finish/end; the non-POD fill placement-copies the folded zero temporary (`cmp eax,0 ; je`
 //   per element: placement new's null test).
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);      // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 class CScopedMemoryHandle;
@@ -33,7 +34,7 @@ public:
 };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for ( ; __n > 0; --__n, ++__cur)
@@ -41,7 +42,7 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
     return __cur;
 }
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+FABLE_FORCEINLINE _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }

@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <assert.h>
 // BEGIN exact source snapshot SHA256 c970aad44eb67891b47ffcc912a98fb2cbf0fd8e7cd01ad484319fa20d1d8698
@@ -13,7 +14,7 @@ struct Tag_0052c150 {Tag_0052c150(){}};
 class CCharString { public:void* data;CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 // Layout: CSymbolInfo has string+0, vector12+4, int+16, byte+20; stride24, caller CSymbolMap::Insert.
 struct Inner_0052c150{int* start;int* finish;int* end;Inner_0052c150():start(0),finish(0),end(0){}Inner_0052c150(const Inner_0052c150&);~Inner_0052c150();};
-struct Element_0052c150{CCharString name;Inner_0052c150 vector;int kind;char flag;Element_0052c150(){}__forceinline Element_0052c150(const Element_0052c150& o):name(o.name),vector(o.vector),kind(o.kind),flag(o.flag){}};
+struct Element_0052c150{CCharString name;Inner_0052c150 vector;int kind;char flag;Element_0052c150(){}FABLE_FORCEINLINE Element_0052c150(const Element_0052c150& o):name(o.name),vector(o.vector),kind(o.kind),flag(o.flag){}};
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct Vector_0052c150 {
  T* start;T* finish;T* end;
@@ -34,7 +35,7 @@ __declspec(noinline) void __fastcall DestroyRange(Element_0052c150* first,Elemen
  for(;first!=last;++first)first->~Element_0052c150();
 }
 #pragma auto_inline(on)
-template<class T> __forceinline const T& Max(const T&a,const T&b){return a<b?b:a;}
+template<class T> FABLE_FORCEINLINE const T& Max(const T&a,const T&b){return a<b?b:a;}
 template<class T> void Vector_0052c150<T>::InsertGrow(T* position,const T& value,const Tag_0052c150&,unsigned int count,bool atEnd) {
  const unsigned int oldSize=Size();const unsigned int length=oldSize+Max(oldSize,count);
  T* newStart=length ? (T*)malloc(length*sizeof(T)):0;

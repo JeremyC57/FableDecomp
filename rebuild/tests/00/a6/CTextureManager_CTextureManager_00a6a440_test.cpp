@@ -14,6 +14,7 @@
 // Layout: retail CTextureManager (PDB - 0x40, see landed Uninitialise 0x00A696D0): Initialised +0x04, PreallocPools +0x4C
 //         (16 x 0x54), FailedAllocations +0x58C, BufferSize +0x5CC, TextureBuffer +0x5D0; CPreallocTexturePool: CResourceList
 //         base 0x3C, Count +0x3C, MaxSize +0x40, PoolIndex +0x44, Textures +0x48 (12-byte STLport vector; PDB 16).
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);           // 0x00BFEA14
 namespace N_0099a300 { class CBaseClass {                               // vtable 0x01231710
 public:
@@ -25,11 +26,11 @@ class CManagedTextureData { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long RefCount;                               // +0x04
-    __forceinline void DecRef() { if (--RefCount == 0) Destroy(); }
+    FABLE_FORCEINLINE void DecRef() { if (--RefCount == 0) Destroy(); }
 };
 template <class T> class CIVCountedPointer { public:
     T* Object;
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->DecRef();
@@ -41,7 +42,7 @@ template <class T> struct CRetailVector {        // STLport vector over a free()
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    __forceinline ~CRetailVector()
+    FABLE_FORCEINLINE ~CRetailVector()
     {
         T* last = _M_finish;
         for (T* p = _M_start; p != last; ++p)
@@ -60,7 +61,7 @@ struct __declspec(novtable) CPreallocTexturePool : CResourceList {
     unsigned long MaxSize;                       // +0x40
     long PoolIndex;                              // +0x44
     CRetailVector<CIVCountedPointer<CManagedTextureData> > Textures;   // +0x48
-    __forceinline ~CPreallocTexturePool() {}
+    FABLE_FORCEINLINE ~CPreallocTexturePool() {}
 };
 class CTextureManager : public CBaseClass {      // vtable 0x0129DC5C
 public:

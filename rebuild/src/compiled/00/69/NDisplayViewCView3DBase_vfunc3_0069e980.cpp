@@ -5,6 +5,7 @@
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_MainGameComponent_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
 #define CWorld CWorldPdb
 #define CRenderManagerCore CRenderManagerCorePdb
 #define CTCInGameMenu CTCInGameMenuPdb
@@ -99,12 +100,12 @@ struct CTCMap {
     Entry *First,*Last;
     Entry* LowerBound(const long*); // 0x0040f020
     const Entry* LowerBound(const long&) const; // 0x004365b0
-    template<class T> __forceinline T* Get(long interfaceType) {
+    template<class T> FABLE_FORCEINLINE T* Get(long interfaceType) {
         long type=interfaceType;
         Entry* it=LowerBound(&type);
         return (T*)(it==Last || interfaceType<it->Type ? Last : it)->Component;
     }
-    template<class T> __forceinline const T* Get(long interfaceType) const {
+    template<class T> FABLE_FORCEINLINE const T* Get(long interfaceType) const {
         long type=interfaceType;
         const Entry* it=LowerBound(type);
         return (const T*)(it==Last || interfaceType<it->Type ? Last : it)->Component;

@@ -1,5 +1,6 @@
 // Behaviour test for 0x00528090 advance(set iterator&, unsigned n): n == 0 leaves the iterator alone; otherwise it
 // steps n nodes in key order (through a parent climb and a right-subtree descent), landing on end() after the last key.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <new>
 #ifndef _MSC_VER
@@ -116,7 +117,7 @@ static void build_tree()
 
 namespace std {
 template <class _BidirectionalIterator, class _Distance>
-__forceinline void __cdecl __advance(_BidirectionalIterator& __i, _Distance __n, const bidirectional_iterator_tag&)
+FABLE_FORCEINLINE void __cdecl __advance(_BidirectionalIterator& __i, _Distance __n, const bidirectional_iterator_tag&)
 {
     if (__n > 0)
         while (__n--) ++__i;

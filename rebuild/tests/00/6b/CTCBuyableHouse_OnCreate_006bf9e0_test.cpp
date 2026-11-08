@@ -1,6 +1,7 @@
 // Behaviour test for 006bf9e0: src/006bf9e0.cpp copied verbatim; the def lookups (through the same-TU stand-ins), the
 // building-contents list and the thing calls stubbed so the scripted flag, the max dress level, the persisted marking
 // of the house and of its live contents with interface 0x26, and the def release are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -98,13 +99,13 @@ public:
     unsigned char  _pad8e[0x91 - 0x8e];
     unsigned char  m_stateFlags;                // +0x91 (bit 0: dead)
     void SetAsGameStatePersisted(bool persisted);   // 0x004C7880
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

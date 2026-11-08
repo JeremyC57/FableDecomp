@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -22,7 +23,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;           // +0x44
     long pad;
     long GetJoystickDeviceNumber() { return 1; }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

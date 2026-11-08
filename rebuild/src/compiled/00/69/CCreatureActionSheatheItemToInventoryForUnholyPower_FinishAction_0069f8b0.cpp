@@ -5,6 +5,7 @@
 // CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x86 = bit 6 of the bitset dword at +0x30), CTCUnholyPower::CancelAbilities @ 0x00794D90
 // (manifest leaf "CTCUnholyPower_CancelAbilities").
 // Shape: the twin of the landed 0x0069F800 (DivineWrath, type 0x85, trigger @ 0x0078F820): one `push ecx` frame for the lookup key, a byte-flag test on the component before the call.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -13,7 +14,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

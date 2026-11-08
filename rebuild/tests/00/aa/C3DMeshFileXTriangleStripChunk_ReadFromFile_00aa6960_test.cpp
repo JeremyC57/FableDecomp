@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <new>
 #ifndef _MSC_VER
@@ -29,8 +30,8 @@ struct CInputStreamVirtuals { virtual void v0(); virtual void v1(); virtual unsi
 struct CInputStreamAccess : CDataInputStream {
  unsigned long GetPosition() { return ((CInputStreamVirtuals*)this)->GetPosition(); }
  void ReadWithSrcChunkOverflow(unsigned char*, long); // 0x00993CA0
- static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
- __forceinline void Read(void* buffer,long size) {
+ static FABLE_FORCEINLINE bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
+ FABLE_FORCEINLINE void Read(void* buffer,long size) {
   if(size<=0) return;
   __int64 newPosition=(__int64)(StreamPos+size);
   if(!IsValidPosition(newPosition)) return;
@@ -41,7 +42,7 @@ struct CInputStreamAccess : CDataInputStream {
    StreamPos+=size;
   } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
  }
- __forceinline unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
+ FABLE_FORCEINLINE unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
 };
 
 

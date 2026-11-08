@@ -10,6 +10,7 @@
 //   parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` (signed halving = cdq/sub/sar).
 //   The retail TU is /Gr; the convention is written as an explicit __fastcall.
 // Label: catalog "Vector_MakeHeap" (descriptive); STLport spelling make_heap.
+#include "fable_compiler.h"
 enum ENavigatorType { NAVIGATOR_TYPE_NONE = -1, NAVIGATOR_TYPE_0 = 0 };
 
 namespace std {
@@ -25,7 +26,7 @@ template <class _Tp> inline _Tp* __value_type(_Tp* const&) { return (_Tp*)0; }
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
 template <class _RandomAccessIterator, class _Compare, class _Tp, class _Distance>
-__forceinline void __make_heap(_RandomAccessIterator first, _RandomAccessIterator last, _Compare comp, _Tp*, _Distance*)
+FABLE_FORCEINLINE void __make_heap(_RandomAccessIterator first, _RandomAccessIterator last, _Compare comp, _Tp*, _Distance*)
 {
     if (last - first < 2) return;
     _Distance len = last - first;

@@ -1,4 +1,5 @@
 // CSFindThing(const CCharString& name, map<CCharString, CScriptGameResourceObjectScriptedThingBase>& actors) -- resolve a cutscene actor name to a script thing: "HERO" is the hero, a scripting actor in the map gives its thing, anything else is looked up by script name
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?CSFindThing@@YI?AVCScriptThing@@ABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@@Z
@@ -50,7 +51,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08
     bool          UseFastExtend : 1;            // +0x0c
-    __forceinline bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
+    FABLE_FORCEINLINE bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
 class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
@@ -60,7 +61,7 @@ class CCharStringData { public:                        // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

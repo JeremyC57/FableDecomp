@@ -1,5 +1,6 @@
 // Behaviour test for 006a2540: src/006a2540.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
 // declared callees stubbed below so calls and arguments are observable. CTCCarrying::OnCreate()
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -22,7 +23,7 @@ static int fails = 0;
 //   through the inline CVectorMap::Add (an STLport push_back of the pair: placement copy or _M_insert_overflow with the
 //   __false_type tag, then Dirty = true) with the null pointer temporary built at the call site; then the inline
 //   SortIfDirty (sort, Dirty = false).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();

@@ -9,6 +9,7 @@
 //   Dead +0x91 bit 0; the TC 9 component's flag word at +0xc (bit 2 tested; component class not identified).
 // Shape: IS_THING_ALIVE inline; the TC 9 lookup is the out-parameter GetInterface(&tc, 9) (the component re-uses eax;
 //   a GetTC return value takes ecx); the hero read once.
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -20,7 +21,7 @@ struct CTCInterface9 {                          // the component behind ETCInter
 };
 
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);     // 0x0076D2F0
-__forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->IsDead(); }
+FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* p) { return p && !p->IsDead(); }
 
 class CVectorCompare_BestForTargeting { public: unsigned long m_words[11]; };
 class CThingCompare_BestForTargeting2 { public:

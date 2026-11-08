@@ -17,6 +17,7 @@
 //   the carryable def released without a null test); component lookups through an arrow-ternary GetTC; the weapon
 //   component an if/else-assigned pointer (null when absent); the forward vector `(float)sin(a * 2pi) * cosPitch` as a
 //   float product into a named C3DVector copied into a named CRightHandedSet; the AddTC name a block-scoped CCharString.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sin, cos)
 
@@ -32,7 +33,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                           // slot 1
@@ -148,11 +149,11 @@ public:
     void SetInLimbo(bool inLimbo);                    // 0x004C8CF0
     void Kill(bool immediately);                      // 0x004C9B80
     CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;
@@ -160,7 +161,7 @@ public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline const CTCBase* GetConstTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetConstTC(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -168,7 +169,7 @@ public:
         const CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (HasTC(interfaceType)) {
             *ppOut = (T*)GetTC(interfaceType);

@@ -1,6 +1,7 @@
 // CMemAllocator::CreateInstance -- allocate DirectShow memory allocator, initialize lock/free-list/semaphore and buffer; retail00cac9d0 212bytes. Propagated engine label rejected: CUnknown00cacc80, criticalsection import0143fee4, CreateSemaphoreW0143fe54, vtables012bf83c/012bf810 match allocator destructor00caa410. This is no-RTTI strmbase; CMemAllocator owner inferred from allocator methods and buffer+60. No shared class header exists.
 // Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CreateInstance@CMemAllocator@@SGPAVCUnknown@@PAUIUnknown@@PAJ@Z -- 212 bytes verified against Fable.exe 0x00CAC9D0
 // Flags: /EHsc
+#include "fable_compiler.h"
 #ifdef _MSC_VER
 #else
 #define __declspec(x)
@@ -44,11 +45,11 @@ struct __declspec(novtable) CBaseAllocatorNative:CUnknownAllocator,IMemAllocator
  void* m_hSem;long m_lWaiting,m_lSize,m_lCount,m_lAllocated,m_lAlignment,m_lPrefix;
  long m_bChanged,m_bCommitted,m_bDecommitInProgress;
  void* m_pNotify;long m_fEnableReleaseCallback;
- __forceinline CBaseAllocatorNative(IUnknown* outer,long* result):CUnknownAllocator(0,outer),m_lFree(),m_hSem(0),m_lWaiting(0),m_lSize(0),m_lCount(0),m_lAllocated(0),m_lAlignment(0),m_lPrefix(0),m_bChanged(0),m_bCommitted(0),m_bDecommitInProgress(0),m_pNotify(0),m_fEnableReleaseCallback(1){m_hSem=CreateSemaphoreW(0,0,0x7fffffff,0);if(!m_hSem)*result=(long)0x8007000e;}
+ FABLE_FORCEINLINE CBaseAllocatorNative(IUnknown* outer,long* result):CUnknownAllocator(0,outer),m_lFree(),m_hSem(0),m_lWaiting(0),m_lSize(0),m_lCount(0),m_lAllocated(0),m_lAlignment(0),m_lPrefix(0),m_bChanged(0),m_bCommitted(0),m_bDecommitInProgress(0),m_pNotify(0),m_fEnableReleaseCallback(1){m_hSem=CreateSemaphoreW(0,0,0x7fffffff,0);if(!m_hSem)*result=(long)0x8007000e;}
 };
 struct CMemAllocatorNative:CBaseAllocatorNative {
  void* m_pBuffer;
- __forceinline CMemAllocatorNative(IUnknown* outer,long* result):CBaseAllocatorNative(outer,result),m_pBuffer(0){}
+ FABLE_FORCEINLINE CMemAllocatorNative(IUnknown* outer,long* result):CBaseAllocatorNative(outer,result),m_pBuffer(0){}
  virtual long __stdcall NonDelegatingQueryInterface(const void*,void**);
  virtual unsigned long __stdcall NonDelegatingAddRef();
  virtual unsigned long __stdcall NonDelegatingRelease();

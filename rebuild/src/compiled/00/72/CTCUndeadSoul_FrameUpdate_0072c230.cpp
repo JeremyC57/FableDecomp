@@ -13,6 +13,7 @@
 // Shape: the constant 1 lives in ebx (dead-bit mask, the ability flag, the drawable flag, the type compare); the
 //        targeted component uses the `T* p = 0; if (HasTC) p = GetTC;` zero preload; the two arms are written out in
 //        full (each re-reads ParentThing).
+#include "fable_compiler.h"
 class CThing;
 class CTCBase;
 
@@ -39,15 +40,15 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad_0x54[0x3d];
     unsigned char m_flags;                      // +0x91 bit 0: dead
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    __forceinline CTCBase* GetTC(long interfaceType) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

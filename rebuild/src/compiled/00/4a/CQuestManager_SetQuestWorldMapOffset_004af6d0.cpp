@@ -6,6 +6,7 @@
 // Shape: the inlined GetActiveQuestFromScriptName walk (head in ebp, the name's block in esi read once after the empty
 // test) written as a __forceinline bool finder with an out-pointer so esi/ebx are pushed only on the non-empty path and
 // the hit goes straight to the two-dword marker copy.
+#include "fable_compiler.h"
 class CCharStringData { public:                           // the shared string block
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
@@ -48,7 +49,7 @@ struct SActiveQuestNode {                          // STLport list node of CCoun
 struct CQuestManagerRetail {                       // retail view of CQuestManager
     unsigned char     _pad00[0x38];                // +0x00 vptr, PGameScriptThingManager, RuntimeQuestPersistence, RegisteredQuestNames
     SActiveQuestNode* ActiveQuests;                // +0x38 STLport list: the sentinel node pointer
-    __forceinline bool FindActiveQuest(const CCharString& name, CActiveQuest*& found) const
+    FABLE_FORCEINLINE bool FindActiveQuest(const CCharString& name, CActiveQuest*& found) const
     {
         SActiveQuestNode* head = ActiveQuests;
         SActiveQuestNode* node = head->next;

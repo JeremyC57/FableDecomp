@@ -1,5 +1,6 @@
 // Behaviour test for 0041be70: src/0041be70.cpp copied verbatim; a counted primitive stub records the last-handle
 // notification (only at count 1, with the handle) and the destroy at zero count; Data must end null.
+#include "fable_compiler.h"
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
@@ -29,7 +30,7 @@ class CIVCountedPointeeBase { public:
 struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -38,7 +39,7 @@ struct CIVCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
     {
         Release();
         Object = object;
@@ -46,7 +47,7 @@ struct CIVCountedPointer {
             ++object->m_refCount;
         return *this;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 
 class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598

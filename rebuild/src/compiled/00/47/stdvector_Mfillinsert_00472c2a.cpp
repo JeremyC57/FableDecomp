@@ -12,6 +12,7 @@
 //   0x01230BA0 and the CResource destructor call); the inlined `_Construct` is the null-checked placement copy.
 // Model: CResource (0x1C, virtual destructor) <- CDefPointeeBase (vtable 0x01230BA0) <- CDefClassBase (PDefManager,
 //   GlobalIndex, DefaultValsApplied; 0x28 padded) <- CDialogueLayerDef (six floats, 0x40), member names from Ego_r.pdb.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -33,7 +34,7 @@ public:
 
 class CDefPointeeBase : public CResource {               // vtable 0x01230BA0
 public:
-    __forceinline ~CDefPointeeBase() { }
+    FABLE_FORCEINLINE ~CDefPointeeBase() { }
 };
 
 class CDefClassBase : public CDefPointeeBase {
@@ -41,7 +42,7 @@ public:
     CDefinitionManager* PDefManager;                     // +0x1C
     unsigned long GlobalIndex;                           // +0x20
     unsigned char DefaultValsApplied;                    // +0x24
-    __forceinline ~CDefClassBase() { }
+    FABLE_FORCEINLINE ~CDefClassBase() { }
 };
 
 namespace NSpeechGainManager {
@@ -55,7 +56,7 @@ public:
     float FocusShiftDistanceThreshold;                   // +0x3C
     CDialogueLayerDef(const CDialogueLayerDef& other);               // 0x004663E7
     CDialogueLayerDef& operator=(const CDialogueLayerDef& other);    // 0x004663AE
-    __forceinline ~CDialogueLayerDef() { }
+    FABLE_FORCEINLINE ~CDialogueLayerDef() { }
 };
 }
 
@@ -66,12 +67,12 @@ struct random_access_iterator_tag { };
 
 NSpeechGainManager::CDialogueLayerDef* __fastcall uninitialized_fill_n(NSpeechGainManager::CDialogueLayerDef* first, unsigned int n, const NSpeechGainManager::CDialogueLayerDef& x);  // 0x00472E58
 
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val)
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val)
 {
     new (__p) _T1(__val);
 }
 
-template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __uninitialized_copy(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     _Tp* __cur = __result;
     for (; __first != __last; ++__first, ++__cur)
@@ -79,7 +80,7 @@ template <class _Tp> __forceinline _Tp* __uninitialized_copy(_Tp* __first, _Tp* 
     return __cur;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward(_Tp* __first, _Tp* __last, _Tp* __result,
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward(_Tp* __first, _Tp* __last, _Tp* __result,
                                                         const random_access_iterator_tag&, int*)
 {
     for (int __n = int(__last - __first); __n > 0; --__n)
@@ -87,12 +88,12 @@ template <class _Tp> __forceinline _Tp* __copy_backward(_Tp* __first, _Tp* __las
     return __result;
 }
 
-template <class _Tp> __forceinline _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __copy_backward_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, const __false_type&)
 {
     return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
 
-template <class _Tp> __forceinline void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
+template <class _Tp> FABLE_FORCEINLINE void fill(_Tp* __first, _Tp* __last, const _Tp& __val)
 {
     for (; __first != __last; ++__first)
         *__first = __val;

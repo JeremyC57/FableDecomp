@@ -16,6 +16,7 @@
 // Shape: the track-name filter is a named local built before the position (the box is an argument temporary); the
 //   marker and the target computation sit in a block of their own (so the 0x46 lookup key and the dummy name reuse the
 //   marker's frame word); the marker branch loads target.Z for the shared `fadd 1.4`.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DBoxI { public:
@@ -65,7 +66,7 @@ public:
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
     }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

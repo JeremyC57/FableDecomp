@@ -10,6 +10,7 @@
 //   __adjust_heap(first, parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the value is
 //   spilled to the `push ecx` frame word for the __push_heap call, and `2 * parent + 2` is strength-reduced (`sub ebp,2`).
 //   __adjust_heap must be `__forceinline`: plain `inline` leaves it a __cdecl call (81 bytes).
+#include "fable_compiler.h"
 namespace std {
 
 template <class _Tp> struct less {
@@ -21,7 +22,7 @@ void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex
                             _Compare __comp);                                                  // 0x00776750
 
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
-__forceinline void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
+FABLE_FORCEINLINE void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
                           _Compare __comp)
 {
     _Distance __topIndex = __holeIndex;

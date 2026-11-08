@@ -15,6 +15,7 @@
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Globals: as CalculateSlerpWeights 0x00AA3390 (tables 0x013CB530 / 0x013CD550, 0.0f, 1.0f, 0.05f, 512.5f, 0.5f,
 //   1/(2pi), 1024.0f).
+#include "fable_compiler.h"
 extern float g_ArcCosTable[1026];       // 0x013CB530
 extern float g_CosTable[1025];          // 0x013CD550
 extern "C" double __cdecl sqrt(double);
@@ -22,14 +23,14 @@ extern "C" double __cdecl sqrt(double);
 
 // the engine's inline-assembly float-to-long helper (round to nearest, the FPU default)
 #include "engine/GFFloatToLongNear.h"
-__forceinline float __fastcall GFFastArcCos(float cosine)
+FABLE_FORCEINLINE float __fastcall GFFastArcCos(float cosine)
 {
     cosine = (cosine + 1.0f) * 512.5f;
     long i = GFFloatToLongNear(cosine - 0.5f);
     float frac = cosine - (float)i;
     return ((1.0f - frac) * g_ArcCosTable[i] + frac * g_ArcCosTable[i + 1]) * 0.15915494f;
 }
-__forceinline float __fastcall GFFastSin(float angle)
+FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
     angle = angle * 1024.0f;
     long i = GFFloatToLongNear(angle - 0.5f);

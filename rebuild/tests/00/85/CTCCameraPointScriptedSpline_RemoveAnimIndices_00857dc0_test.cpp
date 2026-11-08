@@ -1,4 +1,5 @@
 // Behaviour test for 00857dc0: body copied from src/00857dc0.cpp (CTCCameraPointScriptedSpline::RemoveAnimIndices), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -39,7 +40,7 @@ struct CLongVector {
 struct CAnimIndexOwner_00857dc0 {
     unsigned char _pad00[0xf0];
     CLongVector   AnimIndices;
-    __forceinline void AddAnimIndex(long index) { AnimIndices.push_back(index); }
+    FABLE_FORCEINLINE void AddAnimIndex(long index) { AnimIndices.push_back(index); }
     void RemoveAnimIndices(const CLongVector& indices);
 };
 void CAnimIndexOwner_00857dc0::RemoveAnimIndices(const CLongVector& indices)

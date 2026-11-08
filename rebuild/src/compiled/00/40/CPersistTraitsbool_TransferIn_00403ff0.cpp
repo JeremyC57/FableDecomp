@@ -14,6 +14,7 @@
 //   1/2 for TRUE/BTRUE, 4/8 for FALSE/BFALSE, spilled to the frame) and destroys them after the test; the condition bool
 //   of the first test is parked in the dead `parser` slot (parser lives in esi); each accepted branch stores the value,
 //   destroys the token and returns on its own tail. No EH frame (the TU has no /EHsc). Speed-optimised (default) TU.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 struct CBasicStringChar {
     char*         PData;
@@ -35,9 +36,9 @@ public:
     const char* GetString() const;
 };
 extern char EmptyString[];   // 0x0129AAF4, the CCharString header's shared ""
-__forceinline const char* CCharString::GetString() const { return PStringData == 0 ? EmptyString : PStringData->Data.PData; }
+FABLE_FORCEINLINE const char* CCharString::GetString() const { return PStringData == 0 ? EmptyString : PStringData->Data.PData; }
 // CCharString equality is case-insensitive (same inline as the landed CGenericVarRef::ReadFromParserAsBool 0x00A63DB0).
-__forceinline bool operator==(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
+FABLE_FORCEINLINE bool operator==(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
 
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 

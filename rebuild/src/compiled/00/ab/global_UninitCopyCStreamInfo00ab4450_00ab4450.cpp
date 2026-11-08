@@ -14,6 +14,7 @@
 //   constructor on `this+8`; placement-new null test on the destination. The named `cur = result` copy makes VC7.1 load
 //   result into esi before the empty-range test and return it from one shared epilogue (GOTCHAS 009f6c00); looping on
 //   `result` itself gives a second epilogue that reloads the argument.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
@@ -34,14 +35,14 @@ public:
         int          DataType;
     };
     CArray<CDataElement> DataElements;          // +0x04
-    __forceinline CVertexStreamFormat(const CVertexStreamFormat& o) : CBaseClass(o), DataElements(o.DataElements) { }
+    FABLE_FORCEINLINE CVertexStreamFormat(const CVertexStreamFormat& o) : CBaseClass(o), DataElements(o.DataElements) { }
     virtual ~CVertexStreamFormat() { }
 };
 
 struct CStreamInfo {                            // CVertexShaderInput::CStreamInfo, 20 bytes
     unsigned int        StreamIndex;            // +0x00
     CVertexStreamFormat StreamFormat;           // +0x04
-    __forceinline CStreamInfo(const CStreamInfo& o) : StreamIndex(o.StreamIndex), StreamFormat(o.StreamFormat) { }
+    FABLE_FORCEINLINE CStreamInfo(const CStreamInfo& o) : StreamIndex(o.StreamIndex), StreamFormat(o.StreamFormat) { }
 };
 
 CStreamInfo* __fastcall UninitCopy_CStreamInfo_00ab4450(const CStreamInfo* first, const CStreamInfo* last, CStreamInfo* result, const __false_type&)

@@ -14,6 +14,7 @@
 // Layout: retail CTCInventoryWeapons PActiveMeleeWeapon +0x134 and PActiveRangedWeapon +0x141 (Ego_r.pdb +0x14C /
 //   +0x159: the same 13-byte {pointer, def index, bool} stride, 0x18 lower in the release base; the intelligent pointer
 //   is 1-aligned as in the landed 0x007CA670); CThing def index +0x8C.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -29,7 +30,7 @@ public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad54[0x38];
     unsigned short DefIndex;                                // +0x8C
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

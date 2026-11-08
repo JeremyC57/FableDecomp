@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __fastcall
@@ -61,7 +62,7 @@ public:
     unsigned long UsingComponents[9];               // +0x20 bitset<274>
     CInterfaceMap m_interfaces;                     // +0x44
     bool HasTC(long type) const { return (UsingComponents[type >> 5] >> (type & 31)) & 1; }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         long key = type;
         CInterfaceMap* map = &m_interfaces;

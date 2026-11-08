@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -2269,7 +2270,7 @@ enum EOpinion{};enum ETCInterfaceType{};class CTCBase;
 template<class K,class V>class CKeyPairCompareLess{};
 template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{C Compare;bool Dirty;public:__declspec(noinline)const std::pair<K,V>*LowerBound(const K&key)const{const std::pair<K,V>*first=this->begin();long count=this->end()-first;while(count>0){long half=count/2;const std::pair<K,V>*middle=first+half;if(middle->first<key){first=middle+1;count-=half+1;}else count=half;}return first;}};
 // Layout: shared flattened CThing fields; the original const PeekTC template reads native bitset20 and map44.
-class CThing:public CThingFields{public:template<class T>__forceinline bool PeekTC(T**out)const{ETCInterfaceType type=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;const CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<const CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);const std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=reinterpret_cast<T*>(i->second);return true;}return false;}};
+class CThing:public CThingFields{public:template<class T>FABLE_FORCEINLINE bool PeekTC(T**out)const{ETCInterfaceType type=T::StatGetInterfaceType();if(reinterpret_cast<const unsigned long*>(UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;const CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<const CVectorMap<ETCInterfaceType,CTCBase*>&>(Components);const std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=reinterpret_cast<T*>(i->second);return true;}return false;}};
 class CThingPlayerCreature;
 class CPlayer:public CPlayerFields{public:const CThingPlayerCreature*PeekPControlledCreature()const;};
 class CWorld:public CWorldFields{public:const CPlayer*PeekMyPlayer()const;};

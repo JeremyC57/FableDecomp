@@ -17,6 +17,7 @@
 // Shape: the EnableVillagerDefTypes 0x0065B142 model (same-TU LowerBound and IS_THING_ALIVE bodies) with the guard flag
 //   filter and the owner's position passed straight to CreateVillager; the people walk keys GetTC through the dead
 //   `enable` slot.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -31,7 +32,7 @@ class CBaseObject { public:
     std::bitset<274>       m_present;                    // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

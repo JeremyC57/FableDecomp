@@ -13,6 +13,7 @@
 // copy-initialised from that temporary (add-ref through the returned pointer, the temporary released with the long form and zeroed) and
 // released by its destructor through the `DecRefToZero(long&)` helper (`mov eax,[esi+54h] ; dec [esi+4] ; mov [ebp-8],eax ; jne`: the
 // damage load is scheduled before the decrement only with the by-reference helper), then the weapon def by hand.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 struct CRefCounted {                                 // the count sits at +4 behind the vptr
@@ -34,7 +35,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
 };
 struct CDefPointerTemp {                             // the manager's by-value def reference
     CDefBase* m_p;
-    __forceinline ~CDefPointerTemp()
+    FABLE_FORCEINLINE ~CDefPointerTemp()
     {
         if (m_p) {
             m_p->ReleaseTemporary();
@@ -46,7 +47,7 @@ template <class T> class CDefPointer { public:              // the out slot the 
     T* Object;
     T* operator->() const { return Object; }
 };
-__forceinline bool DecRefToZero(long& c) { return --c == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& c) { return --c == 0; }
 template <class T> struct CDefPointerCopy {          // a def copied (add-ref) out of the manager's by-value temporary, released by its destructor
     T* Object;
     CDefPointerCopy(const CDefPointerTemp& temp) : Object((T*)temp.m_p) { if (Object) ++Object->m_count; }

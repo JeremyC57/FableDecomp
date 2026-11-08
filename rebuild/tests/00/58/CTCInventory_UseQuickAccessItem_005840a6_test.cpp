@@ -15,6 +15,7 @@
 // flag declared above the `if` overlaps the condition's temporary, which then takes the dead component word [ebp-4].
 // Layout: retail CTCInventory quick-access vector<long> at +0x148 (PDB +0x168; engine/CTCInventory.h carries the
 // 16-byte PDB containers, so `this` is a local model as in the landed IsQuickAccessItemUsable 0x005849EA).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -41,7 +42,7 @@ class CThing : public CBaseObject { public:
     CInterfaceMap  m_interfaces;                     // +0x44
     unsigned char  _pad_0x4c[0x40];
     unsigned short DefIndex;                         // +0x8C
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
             long type = wanted;
@@ -54,7 +55,7 @@ class CThing : public CBaseObject { public:
         }
         return false;
     }
-    template<class T> __forceinline T* GetTC(long wanted)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long wanted)
     {
         T* component = 0;
         GetInterface(&component, wanted);

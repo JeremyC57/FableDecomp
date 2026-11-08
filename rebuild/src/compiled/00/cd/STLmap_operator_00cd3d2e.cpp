@@ -14,6 +14,7 @@
 //   with `lea` after its out-of-line ctor and the insert result gets its own frame word (ebp-4). `T def;` puts the result
 //   in the dead `k` slot (118v118, frame 0x24); a bare `T()` pushes the ctor's eax (115v118). Destruction order:
 //   pair.second, pair.first, then the default temporary.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -28,7 +29,7 @@ public:
     CBasicString<char>* PData;                           // +0x00
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
-    __forceinline bool operator<(const CCharString& other) const
+    FABLE_FORCEINLINE bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)
             return false;

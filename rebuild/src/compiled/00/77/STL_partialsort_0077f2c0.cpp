@@ -13,9 +13,10 @@
 //   __pop_heap(first, middle, i, _Tp(*i), comp, _STLP_DISTANCE_TYPE(first, _RandomAccessIter)); sort_heap(first,
 //   middle, comp);` -- the comparator word rides in edi between the calls (re-read from its slot after the pop).
 // Label correction: catalogued as `_Find<CCharString*,CCharString>` (propagated); the body is STLport `__partial_sort`.
+#include "fable_compiler.h"
 struct CBasicStringChar {                                  // CBasicString<char>
     char* PData;
-    __forceinline long Compare(const CBasicStringChar& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicStringChar& other) const
     {
         const char* b = other.PData;
         const char* a = PData;

@@ -17,6 +17,7 @@
 // destructor does not collapse to `call ??1`. Left implicit, the intermediate base's destructor is
 // emitted out of line in this TU (it inlines in 0x007EBDD0's): it is written as an empty
 // `__forceinline` destructor of a `__declspec(novtable)` model so it inlines without a vtable store.
+#include "fable_compiler.h"
 class CThing;
 
 class CTCBase { public:                                      // engine/CTCBase.h layout (0xc bytes)
@@ -39,7 +40,7 @@ template<class T>
 class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         T* def = m_pDef;
         if (def != 0) {
@@ -54,7 +55,7 @@ struct __declspec(novtable) CTCActionUseBase : CTCBase {   // 0x14 bytes
     CDefPointer<CDefPointeeBase> PActionUseDef;             // +0x0c
     bool                         Usable;                    // +0x10
     CTCActionUseBase(CThing* owner);                        // 0x004DA939
-    __forceinline ~CTCActionUseBase() { }
+    FABLE_FORCEINLINE ~CTCActionUseBase() { }
 };
 
 struct CTCActionUseBuyHouse : CTCActionUseBase {            // vtable 0x01266A7C
@@ -62,7 +63,7 @@ struct CTCActionUseBuyHouse : CTCActionUseBase {            // vtable 0x01266A7C
     bool                         WaitingForConfirmation;    // +0x18
     long                         HouseQuestion;             // +0x1c
     CTCActionUseBuyHouse(CThing* owner) : CTCActionUseBase(owner), WaitingForConfirmation(false) { }
-    __forceinline virtual ~CTCActionUseBuyHouse() { RemoveFromGlobalTCs(); }
+    FABLE_FORCEINLINE virtual ~CTCActionUseBuyHouse() { RemoveFromGlobalTCs(); }
 };
 
 CTCActionUseBuyHouse* CreateActionUseBuyHouse(CThing* owner)

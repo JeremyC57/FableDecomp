@@ -14,6 +14,7 @@
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps the member's address (this of SetPItem) after the source's GetPItem call and colours the registers as retail; the
 //   inline `SetPItem(other.GetPItem())` form evaluates the inlined member's `this` first.
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -24,7 +25,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 
-__forceinline CIntelligentPointerThing* CopyRange(CIntelligentPointerThing* first, CIntelligentPointerThing* last, CIntelligentPointerThing* result)
+FABLE_FORCEINLINE CIntelligentPointerThing* CopyRange(CIntelligentPointerThing* first, CIntelligentPointerThing* last, CIntelligentPointerThing* result)
 {
     for (long n = last - first; n > 0; --n) {
         *result = *first;
@@ -40,7 +41,7 @@ struct CCoverThingVector {                          // std::vector<CIntelligentP
     CIntelligentPointerThing* _M_end_of_storage;
     CIntelligentPointerThing* begin() { return _M_start; }
     CIntelligentPointerThing* end() { return _M_finish; }
-    __forceinline CIntelligentPointerThing* erase(CIntelligentPointerThing* pos)
+    FABLE_FORCEINLINE CIntelligentPointerThing* erase(CIntelligentPointerThing* pos)
     {
         if (pos + 1 != _M_finish)
             CopyRange(pos + 1, _M_finish, pos);

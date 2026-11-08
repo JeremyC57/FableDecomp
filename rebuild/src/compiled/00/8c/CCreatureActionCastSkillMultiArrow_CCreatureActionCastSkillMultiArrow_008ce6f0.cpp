@@ -15,6 +15,7 @@
 // Shape: the landed one-argument-longer sibling 0x008CE900 model (same-TU GetDef / GetSubDef / GetEffectFromString /
 //   LowerBound stand-ins so every out slot lands in the dead argument slots). The new tail is a single && chain
 //   `effect && !IsDead() && GetInterface(&emitter, 0x4b)`: a separate HasTC test before GetInterface tests the bit twice.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -113,7 +114,7 @@ public:
     const C3DVector& GetPos() const;             // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     bool HasTC(long interfaceType) const { return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0; }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

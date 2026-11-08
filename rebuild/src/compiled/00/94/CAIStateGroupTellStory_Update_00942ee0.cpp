@@ -18,6 +18,7 @@
 //   FindThings / GetPBestThing get same-TU noinline stand-ins (the listener vector's address does not escape, so the
 //   start pointer stays in ebp for the free); the vector is declared first in the loop body (its zero register is
 //   scheduled before the filter stores); `start` is a named copy of _M_start.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -48,7 +49,7 @@ class CThing { public:
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
     }
-    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterfaceT(T** ppOut, long interfaceType) const
     {
         bool has = TestTC(interfaceType);
         if (has) {

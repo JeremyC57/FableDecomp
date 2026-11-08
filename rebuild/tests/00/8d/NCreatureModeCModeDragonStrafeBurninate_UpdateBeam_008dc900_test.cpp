@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NCreatureMode::CModeDragonStrafeBurninate::UpdateBeam(float progress) -- while the flame is active and the def's
@@ -117,7 +118,7 @@ class CThing { public:
     CTCGraphicAppearance* PGraphic;             // +0x64
     unsigned char         _pad68[0x70 - 0x68];
     CDefClassBase*        PDef;                 // +0x70
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

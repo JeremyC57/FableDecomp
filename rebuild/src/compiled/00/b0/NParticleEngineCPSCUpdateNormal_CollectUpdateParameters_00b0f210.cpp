@@ -11,6 +11,7 @@
 // Shape: the key is computed into a named local BEFORE the descriptor temporary (retail calls Calc first; as a call
 //   argument VC would build the right-hand descriptor first), then the `__forceinline` CVectorMap::Insert of 0x00B0FB40;
 //   the CRC stays in ebx.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* where) { return where; }
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -62,7 +63,7 @@ public:
     CArray<std::pair<K, V> > Data;                         // +0x00
     TCompare                  Compare;                      // +0x0C (empty comparator)
     bool                      Dirty;                        // +0x0D
-    __forceinline void Insert(const K& key, const V& value)   // inlined into the CollectUpdateParameters callers (out of line @ 0x00B0FB40)
+    FABLE_FORCEINLINE void Insert(const K& key, const V& value)   // inlined into the CollectUpdateParameters callers (out of line @ 0x00B0FB40)
     {
         Data.push_back(std::pair<K, V>(key, value));
         Dirty = true;

@@ -25,6 +25,7 @@
 //   (0x48 bytes: base 0x34, Func +0x34, PClass +0x38, Par1 +0x3c).
 // Shape: generated script code; the spawn is `ParentClass->AddSpawnedFunction(new CSpawnedFunc1(...), "")` (conditional name temporaries
 //   with frame flags, the by-value thing parameter destroyed before Add).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -150,7 +151,7 @@ struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_Unde
     SpawnedThingCallback   Func;                        // +0x34
     CQ_UndeadRisingScript* PClass;                      // +0x38
     CScriptThing           Par1;                        // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_UndeadRisingScript* owner, CScriptThing par1)
+    FABLE_FORCEINLINE CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_UndeadRisingScript* owner, CScriptThing par1)
         : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par1) { }
     virtual void SuspendableProcess();
 };

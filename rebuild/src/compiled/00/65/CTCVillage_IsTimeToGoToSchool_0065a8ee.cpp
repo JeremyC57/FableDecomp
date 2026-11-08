@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTCVillage::IsTimeToGoToSchool(CThingAICreature* child, const CWorld& world, bool run) -- true when the child's live school building is far enough away (capped) that, at its walk/run animation speed, it must set off now to arrive before its village's school start time
 // Leaf: ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
@@ -55,7 +56,7 @@ public:
     unsigned char      _pad54[0x3d];
     unsigned char      Dead : 1;                // +0x91 bit 0 (Ego_r.pdb CThing::Dead +0xA1)
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template <class T> __forceinline bool GetTC(T** out)
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)
     {
         long type = T::StatGetInterfaceType();
         if (HasTC((ETCInterfaceType)type)) {

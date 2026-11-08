@@ -15,6 +15,7 @@
 // Shape: the inline const PeekTC and GetPointType<T> out-parameter queries with their results ignored (as the landed
 //        CFixedDolly::OnInitLeaf 0x0087B6F0): both out pointers are uninitialised and share the lookup key's frame word, so the
 //        absent and wrong-type paths read it (`mov esi,[esp+8]` / `mov ecx,[esp+8]`); TrackThing is stored before its test.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -33,7 +34,7 @@ class CTCCameraPointDefinitionBase { public:
     virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual long GetCameraPointType() const;         // slot 28 (+0x70)
     unsigned char _body04[0x40 - 0x04];
-    template <class T> __forceinline bool GetPointType(const T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetPointType(const T** out) const
     {
         if (GetCameraPointType() == T::POINT_TYPE_ID) {
             *out = static_cast<const T*>(this);

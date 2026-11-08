@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // NPlayerGui::CDrawQuestInfo::AddMiniGameBar(EMiniGameType type, CThing* thing) -- create a mini-game bar element (green colour), append it,
@@ -31,7 +32,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     CTCBitset     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
-    template<class T> __forceinline T* GetTC(long type) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long type) const
     {
         unsigned long key = type;
         const CTCMap* map = &Components;
@@ -40,7 +41,7 @@ class CThing { public:
             it = map->_M_finish;
         return (T*)it->TC;
     }
-    template<class T> __forceinline bool GetInterface(T** out, long type) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long type) const
     {
         if (UsingComponents.test(type)) {
             unsigned long key = type;

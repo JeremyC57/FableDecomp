@@ -14,6 +14,7 @@
 //   the inline GetInterface (jump-threaded when the bit is clear).
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+#include "fable_compiler.h"
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
@@ -126,7 +127,7 @@ public:
     CInterfaceMap Interfaces;                             // +0x44
     unsigned char _pad50[0x91 - 0x50];
     unsigned char Dead : 1;                               // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(long type, const T** out) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(long type, const T** out) const
     {
         if (PresentInterfaces[type >> 5] & (1UL << (type & 31))) {
             long key = type;

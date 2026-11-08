@@ -11,6 +11,7 @@
 // Shape: the change test is one ternary on the weapon pointer (ActiveWeapon read before the branch); usability defaults to
 // true and is replaced by IsUsableBy only for a live weapon thing; `if (usable != LastUsable) SetChangeOfWeapon(weapon);
 // LastUsable = usable;` is duplicated by VC7.1 per known value of the bool (bl).
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 
@@ -27,7 +28,7 @@ class CThing { public:
     unsigned char  _pad8e[3];
     unsigned char  m_lifeFlags;            // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_lifeFlags & 1) != 0; }
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -40,13 +41,13 @@ class CThing { public:
         }
         return false;
     }
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline const T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE const T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

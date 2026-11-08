@@ -3,6 +3,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
+#include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"
@@ -236,7 +237,7 @@ class CThingCreatureBase:public CThingGameObject{};
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:CIntelligentPointer(T*p){SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(p)));}CIntelligentPointer&operator=(const CIntelligentPointer&x){SetPItem(x.GetPItem());return *this;}};
 #include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{};template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{private:C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
-template<class T>__forceinline bool CThing::GetTC(T**out){ETCInterfaceType type=T::StatGetInterfaceType();CThingFields*fields=reinterpret_cast<CThingFields*>(this);if(reinterpret_cast<unsigned long*>(fields->UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(fields->Components);std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=static_cast<T*>(i->second);return true;}return false;}
+template<class T>FABLE_FORCEINLINE bool CThing::GetTC(T**out){ETCInterfaceType type=T::StatGetInterfaceType();CThingFields*fields=reinterpret_cast<CThingFields*>(this);if(reinterpret_cast<unsigned long*>(fields->UsingComponents)[type>>5]&(1UL<<(type&31))){ETCInterfaceType key=type;CVectorMap<ETCInterfaceType,CTCBase*>&map=reinterpret_cast<CVectorMap<ETCInterfaceType,CTCBase*>&>(fields->Components);std::pair<ETCInterfaceType,CTCBase*>*i=map.LowerBound(key);if(i==map.end()||type<i->first)i=map.end();*out=static_cast<T*>(i->second);return true;}return false;}
 class CThingBodyReorienter{private:bool BodyReorientationDone,ReorientingBody;long ReorientationCount;bool StillCheckingForNewBodyReorientationAngle,HaveFinalReorientationAngle;float FinalReorientationAngleXY;enum ERotationDirection{};ERotationDirection RotationDirection;bool HasPossibleIntersectingThings;std::vector<CIntelligentPointer<CThing> >PossibleIntersectingThings;CThing&Body;public:CThingBodyReorienter(CThing&);~CThingBodyReorienter();};
 void __cdecl operator delete(void*);
 namespace boost{template<class T>class scoped_ptr{private:T*ptr;public:explicit scoped_ptr(T*p=0):ptr(p){}~scoped_ptr(){delete ptr;}void reset(T*p=0){T*old=ptr;ptr=p;delete old;}};}

@@ -13,6 +13,7 @@
 // Layout: engine/C3DMeshInfo.h MeshData +0xc, LODDataSizes[4] +0x50; CMeshData LODMeshes[4] +8, MeshStats +0x18 (landed
 //   RemoveLOD 0x00A249A0); engine/C3DMeshLODInfo.h is a CResource (list +8, LastUsedFrame +0x18) with Mesh +0x1c
 //   (CCountedPointer<C3DMesh2>), FileData +0x24, UsedMeshStats +0x31 -- modelled locally for the polymorphic base.
+#include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -60,7 +61,7 @@ class C3DMeshLODInfo : public CResource { public:
     void* MeshInfo;                        // +0x2c
     unsigned char LOD;                     // +0x30
     bool UsedMeshStats;                    // +0x31
-    __forceinline void Touch()
+    FABLE_FORCEINLINE void Touch()
     {
         if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
             ListRemove();

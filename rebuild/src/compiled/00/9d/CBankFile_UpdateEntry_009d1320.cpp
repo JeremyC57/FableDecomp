@@ -16,6 +16,7 @@
 //          before the IsPacked test); the CArray<char>(n, value) constructor fills through a local `first` pointer
 //          and derives _M_finish from it (STLport uninitialized_fill_n), which keeps the start in edx across the
 //          inline memset instead of reloading it from the frame.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
@@ -41,8 +42,8 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size) {
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size) {
         if (size <= 0) return;
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np)) return;
@@ -57,7 +58,7 @@ struct CByteVector {                                   // CArray<char> (STLport 
     char* _M_start;
     char* _M_finish;
     char* _M_end_of_storage;
-    __forceinline CByteVector(unsigned long n, char value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
+    FABLE_FORCEINLINE CByteVector(unsigned long n, char value) : _M_start(0), _M_finish(0), _M_end_of_storage(0)
     {
         _M_start = n != 0 ? (char*)malloc(n) : 0;
         _M_end_of_storage = _M_start + n;

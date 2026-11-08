@@ -1,4 +1,5 @@
 // Behaviour test for CTCTavernBar (0x007ba000): slot walk, jug filter, ACTION_POINT_*_0<n> naming, first claimed point wins.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -35,8 +36,8 @@ public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                // +0x20
     CInterfaceMap  m_interfaces;                    // +0x44
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

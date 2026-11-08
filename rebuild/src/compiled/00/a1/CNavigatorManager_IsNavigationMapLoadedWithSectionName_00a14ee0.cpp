@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A14EE0, length 96 bytes.
 // Leaf: IsNavigationMapLoadedWithSectionName
 // Callees: Compare @ 0x00411570 (`__fastcall(a, b)`). Shape: no frame, the id search loop aligned, the `== 0` as `neg ; sbb ; inc`, `ret 8`.
+#include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
@@ -11,7 +12,7 @@ class CCharString { public:
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
+static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.m_pStringData;
     CCharStringData* b = sb.m_pStringData;

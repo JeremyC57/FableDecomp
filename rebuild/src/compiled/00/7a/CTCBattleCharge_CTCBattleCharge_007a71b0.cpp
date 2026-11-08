@@ -14,6 +14,7 @@
 // ChargeDelayFrameCount +0x8c, CompletedExitModes +0x90 sit 4 below the PDB. The thing's type byte +0x10 (2 = creature).
 // Shape: the landed CTCWillEnflame/CTCForcePushPower constructor (0x007A43A0 / 0x007A54A0): default-constructed intelligent
 // pointers store only their vtable, the effect pointers are constructed from 0 (SetPItem); the def name is block-scoped.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -92,13 +93,13 @@ public:
     CInterfaceMap m_interfaces;                     // +0x44
     CPlayer& GetPlayer();                     // 0x004C7A30
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -106,7 +107,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

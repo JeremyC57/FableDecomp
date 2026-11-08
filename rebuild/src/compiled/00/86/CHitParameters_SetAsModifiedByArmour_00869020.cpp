@@ -14,6 +14,7 @@
 //    (retail's `fstp st(0) ; fld [esp+0x18]` reload at the loop entry) and tests `aug != Augmentations._M_finish`.
 //  * the absorb scale loop stores through a reference bound first (`float& entry = ...; entry = entry * scale;`) so the
 //    Increment load stays below the fmul/fstp pair.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);            // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 
@@ -37,8 +38,8 @@ public:
 
 struct CArmourDefPointer {                                     // CDefPointer<const CArmourDef>
     CArmourDef* Ptr;
-    __forceinline CArmourDefPointer(const CArmourDefPointer& other) : Ptr(other.Ptr) { if (Ptr) ++Ptr->RefCount; }
-    __forceinline ~CArmourDefPointer() { if (Ptr) { if (--Ptr->RefCount == 0) Ptr->DeleteThis(); } }
+    FABLE_FORCEINLINE CArmourDefPointer(const CArmourDefPointer& other) : Ptr(other.Ptr) { if (Ptr) ++Ptr->RefCount; }
+    FABLE_FORCEINLINE ~CArmourDefPointer() { if (Ptr) { if (--Ptr->RefCount == 0) Ptr->DeleteThis(); } }
     CArmourDef* operator->() const { return Ptr; }
 };
 
@@ -112,7 +113,7 @@ typedef long EObjectAugmentationType;
 
 struct CDamageNode : CRbNode { EDamageAttribute first; float second; };
 
-__forceinline CRbNode* Increment(CRbNode* node)
+FABLE_FORCEINLINE CRbNode* Increment(CRbNode* node)
 {
     if (node->_M_right != 0) {
         node = node->_M_right;
@@ -180,7 +181,7 @@ public:
     float         ArmourAbsorb;                                // +0xb4 (descriptive)
     unsigned char _padb8[0x1c8 - 0xb8];
     unsigned char Flags1c8;                                    // +0x1c8 (descriptive)
-    __forceinline bool IsRangedWeapon() const
+    FABLE_FORCEINLINE bool IsRangedWeapon() const
     {
         if (m_presentBits[3] & 0x800000) {
             ETCInterfaceType type = (ETCInterfaceType)(0x77);

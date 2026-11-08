@@ -1,6 +1,7 @@
 // CAnimationEventQuery_006f9240::GetEmbeddedEventNames(long animation, void* names) -- fetch the animation's counted stats (bank at +4: 0x00A242C0 then C3DAnimationInfo::GetAnimationStats @ 0x00A269C0) and have them fill the embedded event names (the second variant) (0x00A4EF90), releasing the stats (count block decremented, object destroyed and block freed at zero)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F9240, length 84 bytes.
 // Callees: 0x00A242C0 (the bank's animation lookup, `ret 4`), 0x00A269C0 (the stats counted pointer by hidden pointer), 0x00A4EF90 (on the stats with the out pointer; the manifest labels "GetAbilityLevel" / "CGraphicDataBank::ChangeScene" are propagated), operator delete @ 0x00BFE9BC. Shape: the hidden result pointer pushed before the inner call's argument, the inlined release, `ret 8`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class C3DAnimationStats;
 struct SCountBlock {                               // the shared count block of a CCountedPointer
@@ -11,7 +12,7 @@ struct SCountBlock {                               // the shared count block of 
 struct CCountedPointer_C3DAnimationStats {         // {object, count block}
     const C3DAnimationStats* m_pObject;            // +0x00
     SCountBlock*             m_pCount;             // +0x04
-    __forceinline ~CCountedPointer_C3DAnimationStats()
+    FABLE_FORCEINLINE ~CCountedPointer_C3DAnimationStats()
     {
         if (m_pCount) {
             --m_pCount->m_references;

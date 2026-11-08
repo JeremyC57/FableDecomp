@@ -10,6 +10,7 @@
 // Layout: CEngineInternalPrimitive2DAnimatedMesh (retail = Ego_r - 4): Initialised +0x128, Layer +0x12c, ClipBox +0x130,
 //   ObjectBoundingSphere +0x140; desc CEnginePrimitive2DAnimatedMesh: ClipBox +0xc, MeshIndex +0x1c, Alpha +0x20, Orientation
 //   +0x24, Anim +0x58, ObjectBoundingSphere +0x6c, TintColour +0x7c.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
@@ -119,7 +120,7 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         T* old = Object;
         if (old != other.Object) {

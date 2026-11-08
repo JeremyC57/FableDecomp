@@ -17,6 +17,7 @@
 // Prologue (what puts `this` in edi at the entry with the spill to [esp+10h], as retail): the point loop counts DOWN
 //   (`for (unsigned long i = count; i != 0; --i, ++point)`); the up-counting loop compiles to the same `dec ebp` loop
 //   but spills `this` straight from ecx and pushes edi later (592 vs 594).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
@@ -41,8 +42,8 @@ class CDataInputStream { public:
     unsigned long SourceChunkStreamPos;                                // +0x10
     long SourceChunkBytesRemaining;                                    // +0x14
     C3DVector Read3DVector();                                          // 0x009950F0
-    static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    __forceinline void Read(void* dst, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* dst, long size)
     {
         __int64 np = (__int64)(StreamPos + size);
         if (!IsValidPosition(np))
@@ -55,8 +56,8 @@ class CDataInputStream { public:
         } else
             ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
-    __forceinline unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
-    __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+    FABLE_FORCEINLINE unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
+    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };

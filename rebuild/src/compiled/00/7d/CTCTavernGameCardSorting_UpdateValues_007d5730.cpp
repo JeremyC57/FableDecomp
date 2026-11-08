@@ -12,6 +12,7 @@
 // Layout (retail CTCTavernGame, as the landed 0x005EA010 / 0x007DAB60): GameWon +0x21, Score +0x2c,
 //          NumConsecutiveRoundsWon +0xa4; CTavernGameDef PrizeScores +0x174 (0x30-byte entries, Score +0x28);
 //          CTCHeroStats (retail) sorting prize flag +0x195, best sorting time +0x17c.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -22,7 +23,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

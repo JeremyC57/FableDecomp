@@ -12,6 +12,7 @@
 //   PActiveMeleeWeapon +0x134 / PActiveRangedWeapon +0x141 (unaligned, the landed 0x005C30D3 model).
 // Shape: the multiplier a float local initialised to 1.0 (`mov [esp],3F800000h`); both weapon pointers fetched first; the
 //   melee weapon's multiplier assigned, the ranged one multiplied in (`fmul [local]`), each guarded by alive + HasTC.
+#include "fable_compiler.h"
 class CTCBase;
 class CTCObjectAugmentations;
 
@@ -28,8 +29,8 @@ public:
     unsigned char _pad54[0x3d];
     unsigned char StateBits;                                // +0x91 Dead 0x01
     bool IsDead() const { return (StateBits & 0x01) != 0; }
-    __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline const T* GetConstTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
+    template <class T> FABLE_FORCEINLINE const T* GetConstTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

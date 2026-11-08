@@ -11,6 +11,7 @@
 // Shape: frame pointer kept in a size TU (`#pragma optimize("y", off)` + `("s", on)`); x stays in ebx and its slot holds
 //   x._M_finish; the empty tags are homed in the high byte of that slot (`lea [ebp+0Bh]`); the `push 0` Distance* shared
 //   by both copy arms is hoisted above the size test.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -43,13 +44,13 @@ ForwardIter __fastcall __uninitialized_copy(InputIter first, InputIter last, For
                                             const __false_type&);                                   // 0x005F7B30
 
 template <class InputIter, class OutputIter>
-__forceinline OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&)
+FABLE_FORCEINLINE OutputIter __copy_ptrs(InputIter first, InputIter last, OutputIter result, const __false_type&)
 {
     return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
 }
 
 template <class ForwardIter>
-__forceinline void _Destroy(ForwardIter first, ForwardIter last)
+FABLE_FORCEINLINE void _Destroy(ForwardIter first, ForwardIter last)
 {
     __destroy_aux(first, last, __false_type());
 }

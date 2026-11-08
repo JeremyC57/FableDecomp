@@ -19,6 +19,7 @@
 //   rebuild/tests/portable/test_GFFloatToLongFloor.cpp.
 #ifndef FABLE_ENGINE_GFFLOATTOLONGFLOOR_H
 #define FABLE_ENGINE_GFFLOATTOLONGFLOOR_H
+#include "fable_compiler.h"
 #include "fable_x87_twins.h"
 
 #if defined(FABLE_PORTABLE) || defined(FABLE_DUAL_PATH_TEST)
@@ -38,7 +39,7 @@ namespace fable_portable
 #ifdef FABLE_PORTABLE
 using fable_portable::GFFloatToLongFloor;
 #else
-__forceinline long __fastcall GFFloatToLongFloor(float value)
+FABLE_FORCEINLINE long __fastcall GFFloatToLongFloor(float value)
 {
     long  result;
     float one;

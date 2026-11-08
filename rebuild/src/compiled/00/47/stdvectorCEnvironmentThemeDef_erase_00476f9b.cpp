@@ -13,6 +13,7 @@
 //   `__destroy_aux(first, last, __false_type())` tag temporary placed in the top byte of the `first` slot
 //   (`lea eax,[ebp+0Bh]`; the tag is never written). That slot needs the same-TU stand-in body of __destroy_aux (it
 //   never reads its tag); declared only, VC7.1 puts the tag on the dead `last` slot (`[ebp+0Fh]`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 class CEnvironmentThemeDef {                                // retail 0xC4 bytes (only the size and the assignment matter here)
@@ -41,23 +42,23 @@ __declspec(noinline) void __fastcall __destroy_aux(_ForwardIterator __first, _Fo
 #pragma auto_inline(on)
 
 template <class _ForwardIterator, class _Tp>
-__forceinline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
+FABLE_FORCEINLINE void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*)
 {
     __destroy_aux(__first, __last, __false_type());
 }
-template <class _Tp> __forceinline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
-template <class _Tp> __forceinline random_access_iterator_tag __iterator_category(const _Tp*)
+template <class _Tp> FABLE_FORCEINLINE _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
+template <class _Tp> FABLE_FORCEINLINE random_access_iterator_tag __iterator_category(const _Tp*)
 {
     return random_access_iterator_tag();
 }
-template <class _Tp> __forceinline int* __distance_type(const _Tp*) { return (int*)0; }
-template <class _ForwardIterator> __forceinline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+template <class _Tp> FABLE_FORCEINLINE int* __distance_type(const _Tp*) { return (int*)0; }
+template <class _ForwardIterator> FABLE_FORCEINLINE void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 {
     __destroy(__first, __last, __value_type(__first));
 }
 
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
                           const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
@@ -69,7 +70,7 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
 }
 
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, __iterator_category(__first), __distance_type(__first));
 }

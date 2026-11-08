@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __cdecl
 #define __forceinline inline
@@ -52,14 +53,14 @@ public:
     CInterfaceMap m_interfaces;                    // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                        // +0x91 bit 0
-    template<class T> __forceinline T* GetInterfaceUnchecked(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetInterfaceUnchecked(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)(it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

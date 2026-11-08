@@ -24,6 +24,7 @@
 //   GetTextEntryFromGroup is called through an inline two-argument overload holding `bool found = false` -- that puts the
 //   `found` store after the voice copy and in the textID slot too (a caller-side `found` is stored before the copy and pushes
 //   the key into the voice's frame word).
+#include "fable_compiler.h"
 class CCharString {
 public:
     void* PStringData;
@@ -61,7 +62,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

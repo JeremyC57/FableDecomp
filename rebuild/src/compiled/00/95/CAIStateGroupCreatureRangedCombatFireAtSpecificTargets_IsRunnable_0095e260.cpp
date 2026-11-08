@@ -8,6 +8,7 @@
 // Shape: the module is a temporary in the condition (landed 0x0091EB60 form); the component's target pointer is a
 // CIntelligentPointer at the odd +0x1d (byte-packed component), read twice; the copy is an inline
 // CIntelligentPointer<T>(item) temporary (vtable 0x01237F1C) assigned through SetPItem(GetPItem()).
+#include "fable_compiler.h"
 class CThing;
 
 class CBaseObject;
@@ -52,13 +53,13 @@ class CThing
     unsigned char _pad_0x4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -73,7 +74,7 @@ class CThing
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

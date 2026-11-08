@@ -8,13 +8,14 @@
 //   landed Diffuse-only `SetState(state, value, core)` (core last).
 // Layout: engine/CEnginePrimitiveRenderer.h has only padding below +0x274, so `this` is a local view: the saved shader
 //   enables at +0x260/+0x261, a flag at +0xbd and the light-index mode at +0x78 (0 when the flag is set, -1 otherwise).
+#include "fable_compiler.h"
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
     unsigned long m_value;                         // +0x04 requested value
     unsigned long m_captureMask;                   // +0x08
     long          m_appliedValue;                  // +0x0C
     bool          m_queued;                        // +0x10
-    __forceinline void Set(unsigned long value);
+    FABLE_FORCEINLINE void Set(unsigned long value);
 };
 struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
@@ -45,7 +46,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 
 };
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-static __forceinline void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetState(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         if ((core->m_captureMask & state.m_captureMask) == 0) {
@@ -63,7 +64,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
     }
 }
 
-static __forceinline void SetStateConst(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
+static FABLE_FORCEINLINE void SetStateConst(CTrackedRenderState& state, unsigned long value, CRenderManagerCoreView* core)
 {
     if (state.m_value != value) {
         unsigned long mask = core->m_captureMask;
@@ -92,7 +93,7 @@ public:
     void EnablePixelShaders();                          // 0x00988110
     void DisablePixelShaders();                         // 0x00988190
     void ResetWorldTransform();                         // 0x00988290
-    __forceinline void SetVertexShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetVertexShadersEnabled(bool enable)
     {
         if (enable != VertexShadersEnabled) {
             if (enable)
@@ -101,7 +102,7 @@ public:
                 DisableVertexShaders();
         }
     }
-    __forceinline void SetPixelShadersEnabled(bool enable)
+    FABLE_FORCEINLINE void SetPixelShadersEnabled(bool enable)
     {
         if (enable != PixelShadersEnabled) {
             if (enable)

@@ -15,6 +15,7 @@
 //   `continue` form of the parked source gave VC7.1 another flow graph and the six CWideString locals got the reverse
 //   slot order. The CWideString == CWideString compare reads both data blocks into locals first (retail's
 //   x = baseName in eax/edx, y = fileName in ecx/esi register choice).
+#include "fable_compiler.h"
 #define CWorld CWorldLayout
 #include "engine/CWorld.h"
 #undef CWorld
@@ -65,7 +66,7 @@ class CWideString { public:
     CWideString(const wchar_t* text);                   // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    __forceinline bool operator==(const wchar_t* text) const
+    FABLE_FORCEINLINE bool operator==(const wchar_t* text) const
     {
         if (PStringData == 0) {
             if (wcscmp(text, L"") == 0)
@@ -74,7 +75,7 @@ class CWideString { public:
         }
         return PStringData->Data == text;
     }
-    __forceinline bool operator==(const CWideString& other) const
+    FABLE_FORCEINLINE bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
             return true;

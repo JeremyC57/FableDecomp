@@ -11,6 +11,7 @@
 //   `__false_type` tag temporaries are homed in n's argument slot (`lea edx,[esp+18h]`) although n is read again for
 //   _M_set, and tmp is spilled to the `push ecx` frame word across the copy/destroy calls.
 // Label: catalogued as `std_Vector_Reserve`.
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
@@ -26,7 +27,7 @@ template <class T> class CIVCountedPointer { public:              // one word: t
         if (Object)
             ++Object->IVRefCount;
     }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         T* object = Object;
         if (object) {

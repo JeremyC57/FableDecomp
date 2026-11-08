@@ -8,6 +8,7 @@
 // +0x24; then 9, bit 9 of +0x20), CTCCreatureModeManager::AddMode @ 0x0073AE10.
 // Shape: both lookups are UNCHECKED accessors (absent arms read the key word); `mov cl ; or cl,40h ; mov` sets the bool
 // bit-field CThingAICreature::ImmuneToAttack (bit 6 of +0x1c8; Ego_r.pdb +0x1f8) through a NAMED local (the temporary form adds `add eax,1c8h`).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -20,7 +21,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0xb4 - 0x92];
     float         m_health;                     // +0xb4
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -76,19 +77,19 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCCreatureModeManager* GetModeManager() const
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager() const
     {
         CTCCreatureModeManager* modeManager;
         PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
         return modeManager;
     }
-    __forceinline CTCInterface9* GetInterface9() const
+    FABLE_FORCEINLINE CTCInterface9* GetInterface9() const
     {
         CTCInterface9* component;
         PCreature.GetPItem()->GetInterface(&component, 9);
         return component;
     }
-    __forceinline CThingAICreature* GetAICreature() const { return static_cast<CThingAICreature*>(PCreature.GetPItem()); }
+    FABLE_FORCEINLINE CThingAICreature* GetAICreature() const { return static_cast<CThingAICreature*>(PCreature.GetPItem()); }
 };
 struct CCreatureAction_KrakenReturnToWater : CCombatActionBase {   // vtable 0x012906F4, sizeof 0x114
     virtual void Initialise();

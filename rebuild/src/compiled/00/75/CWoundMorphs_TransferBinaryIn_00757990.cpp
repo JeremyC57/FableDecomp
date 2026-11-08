@@ -11,6 +11,7 @@
 // Shape: the trailing 4-byte field is read back into `count` (retail reads both into the dead stream-arg slot, frame
 //   0x30); CEntry's user ctor zeroes the longs and sets the float to 0.0f (the float is the one `mov [],0` immediate,
 //   the rest share the ebx zero); the inline Read tests `size <= m_remaining` (`cmp eax,[ebp+0x14]; jg`).
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -24,8 +25,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))

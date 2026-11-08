@@ -13,6 +13,7 @@
 //   unrotated); `offset = 0` is declared before the size call (retail zeroes edi first); the counted-pointer copy reads
 //   Info before Object.
 // Leaf: BeginLoadingStats
+#include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 struct SCountBlock {
     long m_references;                             // +0
@@ -104,7 +105,7 @@ class CMeshDataBank { public:
 template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) {}
-    __forceinline CIVCountedPointer& operator=(T* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(T* object)
     {
         if (T* old = m_pObject) {
             if (--old->RefCount == 0)
@@ -147,7 +148,7 @@ class C3DMeshInfo { public:
     unsigned char _pad10[0x40];
     unsigned long LODDataSizes[4];                 // +0x50
     bool IsLODPresent(unsigned long lod) const { return lod < 4 && LODDataSizes[lod] != 0; }
-    __forceinline long GetFirstLoadedLOD() const
+    FABLE_FORCEINLINE long GetFirstLoadedLOD() const
     {
         for (unsigned long i = 0; IsLODPresent(i); ++i)
             if (MeshData->LODMeshes[i].m_pObject)

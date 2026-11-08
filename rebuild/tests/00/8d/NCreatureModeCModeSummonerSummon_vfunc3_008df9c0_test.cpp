@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 // BEGIN exact source snapshot SHA256 f4d13b35f9053c4ed105a9f9450428b6397dc7b1bca4ee861a4515e52a787a4e
 // NCreatureMode::CModeSummonerSummon::FrameUpdate, retail 0x008DF9C0.
@@ -17,11 +18,11 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator*(float scale) const
+    FABLE_FORCEINLINE C3DVector operator*(float scale) const
     { return C3DVector(X * scale, Y * scale, Z * scale); }
-    __forceinline C3DVector operator+(const C3DVector& other) const
+    FABLE_FORCEINLINE C3DVector operator+(const C3DVector& other) const
     { return C3DVector(X + other.X, Y + other.Y, Z + other.Z); }
-    __forceinline C3DVector& operator+=(const C3DVector& other)
+    FABLE_FORCEINLINE C3DVector& operator+=(const C3DVector& other)
     { X += other.X; Y += other.Y; Z += other.Z; return *this; }
 };
 struct CTCInterface { virtual void v0() {} };

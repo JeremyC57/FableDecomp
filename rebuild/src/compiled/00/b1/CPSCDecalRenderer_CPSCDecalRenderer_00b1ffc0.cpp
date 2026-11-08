@@ -9,6 +9,7 @@
 // Shape: the renderer stores no vtable of its own (`__declspec(novtable)` chain); members die in reverse order, each handle's
 //   inline destructor is Clear() (the uniqueness test, then `Data = 0` = release + two zero stores) followed by the counted
 //   pointer's own destructor (a second, null-tested release the compiler cannot fold), then the handle's base destructor.
+#include "fable_compiler.h"
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
 public:
@@ -24,22 +25,22 @@ public:
     CEnginePersistentPrimitiveBase* Object;
     CEnginePersistentPrimitiveBase* operator->() const { return Object; }
     bool IsUnique() const { return Object != 0 && Object->RefCount == 1; }
-    __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
-    __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
-    __forceinline ~CIVCountedPointer() { ReleaseRef(); }
+    FABLE_FORCEINLINE void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { ReleaseRef(); }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.IsUnique())
             Data->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle() { Clear(); }
 };
 class CBaseClassNonCopyable {
 protected:

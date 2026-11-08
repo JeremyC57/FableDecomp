@@ -14,6 +14,7 @@
 //   after the switch reads through it; every case RETURNS (retail duplicates the release and the epilogue per case),
 //   cases written 1, 2, 3, default (default = the adult pair, merged with case 2); the fallback def comes from a named
 //   manager local so the def pointer is loaded before the age (ecx/eax as retail).
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -102,7 +103,7 @@ class CThing { public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;

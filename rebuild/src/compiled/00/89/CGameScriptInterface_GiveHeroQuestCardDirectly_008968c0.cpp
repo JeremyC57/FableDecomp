@@ -15,6 +15,7 @@
 //   word 3 bit 12), component map +0x44 (the landed 0x00896A30 / 0x006223C0 model); CTCQuestCard quest name +0x28.
 // Shape: the scratch strings live in dead argument slots (cardDefName after the index lookup, silent after its test);
 //   the guild-master message's two literals are temporaries built right to left.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -35,7 +36,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
     STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
-    __forceinline CTCBase* Find(long kind)
+    FABLE_FORCEINLINE CTCBase* Find(long kind)
     {
         STCEntry* it = LowerBound((ETCInterfaceType)kind);
         return ((it == m_pLast || kind < it->first) ? m_pLast : it)->second;

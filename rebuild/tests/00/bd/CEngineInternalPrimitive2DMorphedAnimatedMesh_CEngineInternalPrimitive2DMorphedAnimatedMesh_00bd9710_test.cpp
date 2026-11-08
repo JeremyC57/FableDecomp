@@ -1,4 +1,5 @@
 // Behaviour test for CEngineInternalPrimitive2DMorphedAnimatedMesh() (0x00BD9710): type 0x26 / flags 0x80000000 2D base, then the morph info member.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __declspec(x)
@@ -130,7 +131,7 @@ class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMesh
     CCache Cache;                                       // +0xd4
     CEngineRenderInfoAnimatedMesh RenderInfo;           // +0xe0
     virtual void v00() { }
-    __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct C2DVectorF { float X, Y; C2DVectorF() { } };
 class C2DBoxF { public: C2DVectorF TopLeft, BottomRight; C2DBoxF() { } };
@@ -146,7 +147,7 @@ class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAn
     C3DBoundingSphere ObjectBoundingSphere;
     virtual void v00() { }
     CEngineInternalPrimitive2DAnimatedMesh();
-    __forceinline CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
+    FABLE_FORCEINLINE CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
 };
 class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x48];

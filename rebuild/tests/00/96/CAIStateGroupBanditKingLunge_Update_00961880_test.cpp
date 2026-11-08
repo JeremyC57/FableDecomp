@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 #include <new>
 #ifndef _MSC_VER
@@ -32,7 +33,7 @@ struct CInterfaceMap { struct Entry { long type; void* component; }; Entry* firs
 struct CThingRetail {
  unsigned char inherited[0x20]; unsigned long UsingComponents[9]; CInterfaceMap Components;
  bool IsPerformingAnyAction(); // 0x006622A0
- template<class T> __forceinline void GetInterface(T** out,long type) {
+ template<class T> FABLE_FORCEINLINE void GetInterface(T** out,long type) {
   if(UsingComponents[type>>5] & (1UL << (type & 31))) {
    long key=type; CInterfaceMap* map=&Components; CInterfaceMap::Entry* it=map->LowerBound(&key);
    if(it==map->last || type<it->type) it=map->last;
@@ -58,9 +59,9 @@ struct CRetailBanditKingLungeAction {
 };
 long ReadGameTime(); // 0x0049D870
 struct BanditKingLungeMethods : CAIStateGroup_BanditKingLunge {
- __forceinline CAIStateGroupBase* Base() { return (CAIStateGroupBase*)this; }
- __forceinline CThingRetail* Creature() { return (CThingRetail*)Base()->PBrain->Creature; }
- __forceinline CBaseIntelligentPointer& Target() { return *(CBaseIntelligentPointer*)Player; }
+ FABLE_FORCEINLINE CAIStateGroupBase* Base() { return (CAIStateGroupBase*)this; }
+ FABLE_FORCEINLINE CThingRetail* Creature() { return (CThingRetail*)Base()->PBrain->Creature; }
+ FABLE_FORCEINLINE CBaseIntelligentPointer& Target() { return *(CBaseIntelligentPointer*)Player; }
  long AIAction_DoNothing(); // 0x0097E200
  long AIAction_LookAtThing(long,CConstThingPointer,long,float); // 0x0097D6F0
  bool CanLungeAtPlayer(CThingRetail*); // 0x009613A0

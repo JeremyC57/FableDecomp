@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -344,7 +345,7 @@ FABLE_STATIC_ASSERT(offsetof(ThingNative,Home)==0xe8);
 struct IntelligentInfo{ThingNative* Object;long References;};
 struct IntelligentPointerBase{IntelligentInfo* Info;IntelligentPointerBase();virtual ~IntelligentPointerBase();ThingNative* Get()const;void Set(ThingNative*);}; //00A01B10,00A01C10,00A01B50,00A01B90; baseVT129C95C
 struct IntelligentPointer:IntelligentPointerBase{IntelligentPointer(){}explicit IntelligentPointer(ThingNative* thing){Set(thing);}IntelligentPointer& operator=(const IntelligentPointer& other){Set(other.Get());return *this;}}; //nativeVT1238C6C only deleting destructor004A9710
-__forceinline float PhysicsAngle(const IntelligentPointer& pointer){return pointer.Get()->GetPhysicsTC()->GetAngleXY();}
+FABLE_FORCEINLINE float PhysicsAngle(const IntelligentPointer& pointer){return pointer.Get()->GetPhysicsTC()->GetAngleXY();}
 // Typed native projection permits actual intelligent-pointer/string members on either host ABI; offsets asserted against actual header.
 struct GameScriptThingNative{void* VTable;unsigned char Prefix[8];IntelligentPointer PThing;long ScriptCounter;unsigned __int64 ThingUID;CCharString Name,DataString;Vector3 Pos,HomePos;float AngleXY;CWorld* World;void InitFromThing(const ThingNative&);};
 FABLE_STATIC_ASSERT(sizeof(GameScriptThingNative)==sizeof(CGameScriptThing));

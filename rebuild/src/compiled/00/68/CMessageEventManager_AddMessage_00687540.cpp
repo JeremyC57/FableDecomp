@@ -8,6 +8,7 @@
 // Fix (chunk 762): engine/CBaseObject.h + engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN) instead of the
 //   local CBaseObject / CBaseIntelligentPointer models: VC7.1 then caches the CIntelligentPointer vtable constant in edi and keeps
 //   the originator in esi, as retail does (the local models swapped them, 17 lines).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
@@ -31,7 +32,7 @@ class CThing : public CBaseObject { public:
     std::bitset<274> UsingComponents;                   // +0x20
     CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Components;   // +0x44
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> __forceinline bool PeekTC(ETCInterfaceType id, T** ptc) const
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id, T** ptc) const
     {
         if (HasTC(id)) {
             ETCInterfaceType type = id;
@@ -71,7 +72,7 @@ struct SMessageNode {
 };
 struct CMessageList {                                   // STLport list<CMessageEvent>: the sentinel pointer only
     SMessageNode* m_pHead;
-    __forceinline void push_front(const CMessageEvent& value)
+    FABLE_FORCEINLINE void push_front(const CMessageEvent& value)
     {
         SMessageNode* position = m_pHead->m_pNext;
         SMessageNode* node = (SMessageNode*)malloc(sizeof(SMessageNode));

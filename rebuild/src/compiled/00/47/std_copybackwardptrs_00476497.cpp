@@ -14,6 +14,7 @@
 // result stays in its argument slot. Frame pointer kept (`optimize("y",off)` + `("s",on)`, the def TU settings).
 // Label correction: catalog "Vector_ShiftQuickAccessButtonsReverse" is a guess (the element is right).
 // Leaf: __copy_backward_ptrs
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -36,7 +37,7 @@ class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:   // v
     C2DVector Position;                                     // +0x40
     C2DVector Offset;                                       // +0x48
     // The memberwise assignment, spelled out: the /Os TU calls the compiler-generated one out of line.
-    __forceinline CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
+    FABLE_FORCEINLINE CQuickAccessItemButtonGuiDef& operator=(const CQuickAccessItemButtonGuiDef& other)
     {
         CParentDefClassBase::operator=(other);
         ButtonGraphic = other.ButtonGraphic;
@@ -51,7 +52,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
-__forceinline _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
                                                   _BidirectionalIter2 __result, const random_access_iterator_tag&,
                                                   _Distance*)
 {

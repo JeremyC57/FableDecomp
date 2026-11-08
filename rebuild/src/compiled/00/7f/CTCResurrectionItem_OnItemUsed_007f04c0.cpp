@@ -12,6 +12,7 @@
 // Shape: the action is a temporary of a derived class with an inline ctor over the out-of-line base ctor and an implicit
 //   destructor (only the base destructor call remains); the def is read into a named local (kept in edi for both tests); the
 //   emitter is `T* p = 0; if (HasTC(k)) p = member;`; the "" helper name is an implicit conversion built before the pushes.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -32,7 +33,7 @@ public:
     float          Health;                             // +0xb4
     const C3DVector& GetPos() const;              // 0x004C73D0
     void Kill(bool immediately);                       // 0x004C9B80
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;

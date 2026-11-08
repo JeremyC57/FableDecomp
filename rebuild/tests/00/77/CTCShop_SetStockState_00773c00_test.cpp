@@ -9,6 +9,7 @@
 // Shape: the new state is stored before the keeper tests; `state != 1` is pushed as `setne dl`. The shop-keeper
 // component comes from the out-parameter GetInterface whose entry pick is one end/hit ternary: the component loads
 // straight into ecx before the bool is formed (a HasInterface test + GetTC, or the if-form pick, forms the bool first).
+#include "fable_compiler.h"
 struct CTCBaseAny;
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBaseAny* component; };
@@ -22,7 +23,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long key = interfaceType;

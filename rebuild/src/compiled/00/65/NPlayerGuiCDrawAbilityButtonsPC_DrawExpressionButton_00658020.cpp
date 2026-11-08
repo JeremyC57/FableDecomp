@@ -14,6 +14,7 @@
 // Shape: one nested-if body (the early exits after the vector share retail's free tail); the def pointer's operator= and dtor are
 //   __forceinline, the dtor releases through `if (--count == 0) Destroy()` and nulls; the definition manager is read into a named local
 //   ahead of the argument; the layer is a named local defaulting to 0x44.
+#include "fable_compiler.h"
 #include <stdlib.h>
 class C2DVector { public: float X, Y; };
 void __fastcall GFAPositionToScreen(C2DVector* out, const C2DVector* in);   // 0x00643D0C
@@ -54,8 +55,8 @@ class CDefClassBase;
 template <class T> class CDefPointer { public:
     CExpressionDef* m_p;
     CDefPointer() : m_p(0) {}
-    __forceinline ~CDefPointer() { if (m_p) { m_p->Release(); m_p = 0; } }
-    __forceinline CDefPointer& operator=(const CDefPointer& other)
+    FABLE_FORCEINLINE ~CDefPointer() { if (m_p) { m_p->Release(); m_p = 0; } }
+    FABLE_FORCEINLINE CDefPointer& operator=(const CDefPointer& other)
     {
         if (m_p != other.m_p) {
             if (m_p) { m_p->ReleaseTemporary(); m_p = 0; }

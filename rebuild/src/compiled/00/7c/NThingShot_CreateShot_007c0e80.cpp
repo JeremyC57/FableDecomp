@@ -22,6 +22,7 @@
 // Shape: GetDef<T> is a same-TU noinline body (header template code); the weapon-component pointer is an uninitialised local filled under a named HasTC bool (both homed in the dead weapon
 //   argument slot); the TC name is the AddTC full-expression temporary; the by-value def copy locks in the argument area; the
 //   valid-index work is the then-block with the final `return 0` after it (the shared null exit sits at the end).
+#include "fable_compiler.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CTCBase;
@@ -47,7 +48,7 @@ public:
     unsigned char      _pad54[0x91 - 0x54];
     unsigned char      Dead : 1;                        // +0x91 bit 0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents[type]; }
-    template <class T> __forceinline const T* PeekTC(ETCInterfaceType type) const
+    template <class T> FABLE_FORCEINLINE const T* PeekTC(ETCInterfaceType type) const
     {
         ETCInterfaceType key = type;
         const TCMap* map = &Components;

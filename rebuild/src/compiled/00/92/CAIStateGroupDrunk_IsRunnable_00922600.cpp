@@ -9,6 +9,7 @@
 // pointers at +8/+0xc, the type at +4, the UID filter at +0x10); a hit returns `xor al,al`; the rest is one
 // `&&` chain returned through the full register (`mov eax,1` / `xor eax,eax`), the creature reloaded from PBrain.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -52,7 +53,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

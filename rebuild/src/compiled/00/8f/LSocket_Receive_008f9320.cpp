@@ -19,6 +19,7 @@
 //   inlined (`resize(n, char())`) at the two result sites and called out of line for the empty-buffer sizing (VC7.1's
 //   inline budget; modelled with the two-argument form written out); the WSAEWOULDBLOCK / WSAEINPROGRESS range test is
 //   an `||`, so its report block is laid out cold after the epilogue.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                                         // 0x00BFEA14
 extern "C" char* __cdecl _itoa(int value, char* buffer, int radix);                // 0x00BFED34
 extern "C" __declspec(dllimport) int __stdcall WSAGetLastError();                  // WSOCK32 #111
@@ -119,7 +120,7 @@ public:
     static bool __fastcall ConvertSockaddr2LAddress(const sockaddr_in& from, LAddress& address);  // 0x008F8BB0
     bool SetNonBlocking(bool nonBlocking);         // 0x008F8870
     unsigned long CheckReadSize();                 // 0x008F8370
-    __forceinline bool SelectRead(long microseconds)
+    FABLE_FORCEINLINE bool SelectRead(long microseconds)
     {
         timeval timeout;
         timeout.tv_sec = 0;

@@ -10,6 +10,7 @@
 // Names: parameter names are descriptive (the ctor takes argument 3, 1, 4, 2); mode class name not recovered.
 // Shape: 0x00892410 model (__forceinline CCountedPointer(T*)); ConvertSecondsToWF inline (long)(WFPS * seconds).
 // Opt: /O2.
+#include "fable_compiler.h"
 class C3DVector;
 namespace NCameraModes {
 class CScriptModuleBase {
@@ -34,7 +35,7 @@ public:
     T*              Object;
     CCPPointerInfo* Info;
     static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
-    __forceinline CCountedPointer(T* object) : Object(object)
+    FABLE_FORCEINLINE CCountedPointer(T* object) : Object(object)
     {
         if (object)
             Info = new CCPPointerInfo(DeleteObject, Object);

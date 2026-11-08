@@ -5,6 +5,7 @@
 // Shape (family M056, representative 0x0046B6C1): STLport `pointer __i = __copy_ptrs(__last, _M_finish, __first, __false_type());
 //   _Destroy(__i, _M_finish); _M_finish = __i; return __first;` -- __copy's `for (n = last - first; n > 0; --n)` record
 //   assignment loop inline (`__forceinline`); trivially destructible records leave _Destroy empty.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CExplosionRing { public: float RingRadius; long NumExplosions; float AngleOffset; float SecondsBeforeSpawnNewRing; };   // Ego_r.pdb, 16 bytes
 namespace std {
@@ -13,7 +14,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
-__forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
+FABLE_FORCEINLINE _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n) {
         *__result = *__first;
@@ -23,11 +24,11 @@ __forceinline _OutputIter __copy(_RandomAccessIter __first, _RandomAccessIter __
     return __result;
 }
 template <class _InputIter, class _OutputIter>
-__forceinline _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
+FABLE_FORCEINLINE _OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&)
 {
     return __copy(__first, __last, __result, random_access_iterator_tag(), (int*)0);
 }
-template <class _Tp> __forceinline void _Destroy(_Tp*, _Tp*) { }
+template <class _Tp> FABLE_FORCEINLINE void _Destroy(_Tp*, _Tp*) { }
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
     _Tp* _M_start;

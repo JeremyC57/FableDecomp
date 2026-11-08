@@ -5,6 +5,7 @@
 // Callees: CEngineCamera::ScreenToProjection(C2DVector&) 0x00B2FB70 on the camera @ 0x01436EA0, ApplyVertexShader 0x00988020,
 //   ApplyPixelShader 0x00988140, the inlined PrepareForRender(0) (0x00B54100 model), DrawAsIndexedTris 0x00A0AEA0.
 // Layout: engine/CEngineSkyRenderer.h (ScreenSpaceSpriteVertexShader +0x140, ScreenSpaceSpritePixelShader +0x148).
+#include "fable_compiler.h"
 #include "engine/CEngineSkyRenderer.h"
 
 class C2DVector { public: float X, Y; };
@@ -56,7 +57,7 @@ public:
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, const C4DVector* value);   // 0x00989B50
 
-    __forceinline void PrepareForRender(unsigned long flags)
+    FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
     {
         if (UpdateFlags & 4)
             SetVSConstants(CurrentVSConstantLayout->Reserved.Offset, CurrentVSConstantLayout->ReservedPresets.GetData(),

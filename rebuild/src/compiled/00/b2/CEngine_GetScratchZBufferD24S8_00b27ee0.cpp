@@ -11,6 +11,7 @@
 // Shape: the landed HighestSetBit 0x0099FDB0 inlined (full form: `or esi,-1` for 0, 31 for the top bit); the resize fill value
 // and the pixel format both live in the dead `size` argument slot (size itself stays in ebx); the format is a named local
 // built before the call, the extents a call temporary (built after the pushes); every element access re-reads the array.
+#include "fable_compiler.h"
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include "engine/CSurface.h"
 #define CPixelFormat CPixelFormatLayout
@@ -21,7 +22,7 @@ enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 extern void* g_CSurfaceVtable[];                   // 0x0122F84C
 
-__forceinline long HighestSetBit(unsigned long value)
+FABLE_FORCEINLINE long HighestSetBit(unsigned long value)
 {
     if (value == 0)
         return -1;

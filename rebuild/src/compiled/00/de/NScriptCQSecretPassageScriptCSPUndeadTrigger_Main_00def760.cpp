@@ -24,6 +24,7 @@
 // stays out of line; the spawned function is the CUndeadRisingZombieAttacker::OnPredicateFail 0x00E0DE90 new-expression.
 // Naming wave 35: identity Anniversary wave 2026-11-04 (high): vtable 0x012DDF3C slot 1; Anniversary RTTI NScript::CQ_SecretPassageScript::CSP_UndeadTrigger (string-literal match, validated 257/258); PDB name set has the Main member of NScript::CQ_SecretPassageScript::CSP_UndeadTrigger; slot layout from named TLC siblings; function referenced by this vtable only (2026-11-04_anniversary/labels_high.tsv); PDB ?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CSP_UndeadTrigger@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma pack(push, 1)
 struct CBasicStringChar {                              // CBasicString<char>, 13 bytes
@@ -61,7 +62,7 @@ void operator delete(void* p);                         // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+FABLE_FORCEINLINE CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 struct CScriptThingVector {                            // STLport vector<CScriptThing>
     CScriptThing* _M_start;

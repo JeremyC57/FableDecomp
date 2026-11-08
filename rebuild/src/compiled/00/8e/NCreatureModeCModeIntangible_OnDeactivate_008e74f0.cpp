@@ -17,6 +17,7 @@
 //   CThingPhysical::Damageable bit 0 of +0xBC (PDB +0xD4).
 // Shape: CModeBase::OnDeactivate is the inline `Active = false` between the first two calls; the player-creature tail runs on a
 //   named thing local (edi survives the calls); the bit store is a one-bit bitfield assignment (xor/and/xor).
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -60,7 +61,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char   _pad64[0x58];
     unsigned char   Damageable : 1;             // +0xBC bit 0 (CThingPhysical)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

@@ -2,6 +2,7 @@
 // Retail 00887a30, 203 bytes. GFGetTime 009e1bc0, SetOnlyTheme 00887330,
 // RestoreDefaultTheme 00887380, SetThemeWeight 00886d70, RebalanceWeights 00886200.
 // PDB names retained; no generated class header. Native CArray is 12 bytes rather than donor16.
+#include "fable_compiler.h"
 double __fastcall GFGetTime();   // 0x009E1BC0
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry { public:
@@ -10,7 +11,7 @@ class CEnvironmentThemePriorityStackEntry { public:
  long ThemeTransitionTargetID; float ThemeTransitionInitialWeight; bool ThemeTransitionActive;
  double ThemeTransitionStartTime; float ThemeTransitionDuration;
  void SetOnlyTheme(long); void RestoreDefaultTheme(); void SetThemeWeight(long,float,bool); void RebalanceWeights();
- __forceinline void SetDefaultThemeWeight(float weight,bool locked) {
+ FABLE_FORCEINLINE void SetDefaultThemeWeight(float weight,bool locked) {
    if(weight < 0.0f) weight=0.0f; else if(weight > 1.0f) weight=1.0f;
    BaseWeight=weight; BaseWeightLocked=locked; RebalanceWeights();
  }

@@ -12,6 +12,7 @@
 //   AddGossipFactionToCategory 0x008A9E60 (all take const CCharString&; the literals convert implicitly, so both
 //   temporaries are built before the first push, right to left).
 // Layout: quest-script base CScriptBase (retail 0x40 bytes), CGameScriptInterface* at +0x40.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -31,7 +32,7 @@ struct CBase {                                          // vtable 0x01231710
 #include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

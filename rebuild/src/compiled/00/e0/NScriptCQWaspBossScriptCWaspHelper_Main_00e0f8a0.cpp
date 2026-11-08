@@ -28,6 +28,7 @@
 //   ReachedWaspHelper site); the lead-phase "hero further" test is the single expression `GetDistanceBetweenThings(Me, pos) <
 //   GetDistanceBetweenThings(Game->GetHero(), pos)` (left operand first: retail loads Game before the first call). Every exit
 //   cross-jumps to the shared ~CTimer / ~CScriptThing / ~STB tail.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
@@ -59,8 +60,8 @@ float FABLE_FASTCALL GetDistanceBetweenThings(const CScriptThing&, const CScript
 extern CGameScriptInterfaceBase* pDSTGame;
 __declspec(noinline) CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 __declspec(noinline) CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
-__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
+FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }

@@ -10,6 +10,7 @@
 // so the presence test is `test ecx,ecx ; jns`. The miss path calls through the never-written component
 // local, homed in the key temporary's frame word (`mov eax,[esp+4]`).
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+#include "fable_compiler.h"
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
 class CTCBase;
@@ -25,7 +26,7 @@ class CThing_Retail { public:
     unsigned char  _pad54[0x3d];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

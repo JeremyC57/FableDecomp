@@ -1,4 +1,5 @@
 // Behaviour test for 0x006A9EF0 (copy of the model + stand-in callee bodies).
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -51,7 +52,7 @@ struct CDefVirtual {
     virtual void Destroy();                             // slot 1
 };
 struct CDefObject : CDefVirtual, CRefCounted {
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--m_count == 0)
             Destroy();

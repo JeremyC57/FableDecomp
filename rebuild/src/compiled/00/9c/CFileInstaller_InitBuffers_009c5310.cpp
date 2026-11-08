@@ -11,6 +11,7 @@
 // BufferChunkSize +0x64, NoBufferChunks +0x68. CBufferChunk = {Mem, Used, IsInput} (8 bytes).
 // Shape: the allocation as in the landed AllocVirtual 0x00BD9AF0 (inlined): the block is homed in the dead chunkSize argument slot
 // across the unlock, the element store re-reads BufferChunks' first pointer; the unsigned count loop (`jbe`/`jb`).
+#include "fable_compiler.h"
 extern "C" __declspec(dllimport) void* __stdcall GlobalAlloc(unsigned int flags, unsigned long bytes);   // IAT 0x0143FDD4
 
 class CMemoryAllocator { public:
@@ -23,7 +24,7 @@ void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 
-__forceinline void* GFAllocateFromGlobalAllocator(long size)
+FABLE_FORCEINLINE void* GFAllocateFromGlobalAllocator(long size)
 {
     if (!g_pGlobalAllocator_013caa90)
         GFCreateGlobalAllocator();

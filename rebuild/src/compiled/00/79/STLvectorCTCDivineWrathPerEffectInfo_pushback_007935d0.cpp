@@ -14,6 +14,7 @@
 //   [ebx+4],14h`), and the empty tag temporary is homed in the dead `x` argument slot after `x` is loaded. The record's
 //   copy constructor and the pointer's are `__forceinline` (otherwise VC7.1 calls an out-of-line implicit copy).
 // Label correction: catalogued as `StdVector_PushBack` (generic); the body is vector<CTCDivineWrath::PerEffectInfo>::push_back.
+#include "fable_compiler.h"
 class CBaseObject;
 class CThing;
 
@@ -26,7 +27,7 @@ struct CBaseIntelligentPointer {
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     virtual void v00();
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer()
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer()
     {
         SetPItem(other.GetPItem());
     }
@@ -39,7 +40,7 @@ public:
     struct PerEffectInfo {                              // 20 bytes
         C3DVector                   Position;            // +0x00
         CIntelligentPointer<CThing> Effect;              // +0x0c
-        __forceinline PerEffectInfo(const PerEffectInfo& o) : Position(o.Position), Effect(o.Effect) { }
+        FABLE_FORCEINLINE PerEffectInfo(const PerEffectInfo& o) : Position(o.Position), Effect(o.Effect) { }
     };
 };
 

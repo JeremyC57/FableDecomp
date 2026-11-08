@@ -1,6 +1,7 @@
 // Behaviour test for 0094bca0: src/0094bca0.cpp copied verbatim; the world clock, the shop-keeper component, the
 // opinion manager and the intelligent pointers stubbed so the frame gate, the speaking/work-hours gate, the stall pick
 // (shop thing, else the creature itself when on the spot) and the attitude veto are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -31,11 +32,11 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

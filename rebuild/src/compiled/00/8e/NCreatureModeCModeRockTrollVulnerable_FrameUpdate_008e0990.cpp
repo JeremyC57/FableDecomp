@@ -11,6 +11,7 @@
 // Shape: the component comes from an inline accessor returning an unset local (`T* tc; if (HasTC) tc = GetTC; return tc;`):
 //   the hit path loads it straight into ecx and the absent path reads the never-written local from the key's frame word;
 //   RecoveryCount is decremented only when non-zero and re-read for the `<= 0` test.
+#include "fable_compiler.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -21,11 +22,11 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
@@ -33,7 +34,7 @@ class CThing { public:
         CInterfaceMap::value_type* sel = (it == map->end() || interfaceType < it->first) ? map->end() : it;
         return (T*)sel->second;
     }
-    template<class T> __forceinline T* GetTCIfPresent(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTCIfPresent(long interfaceType)
     {
         T* tc;
         if (HasTC(interfaceType))

@@ -13,6 +13,7 @@
 //   (the absent path reads the never-written word); the progress is a named float read before the GettingIn test (and
 //   popped on the path that never compares it); `progress > 1.0f - DELTA_NOTIONAL_ZERO` (`test ah,41h ; jne`); the sleep loop
 //   is a CAnimInit local built by its inline constructor over Set.
+#include "fable_compiler.h"
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 struct CTCBaseInterface;
 class CTCBase;
@@ -77,7 +78,7 @@ public:
     bool    Animating;                          // +0x0f
     long    BedSleepAnim;                       // +0x10
     const CBedDef* PDef;                        // +0x14 CDefPointer<CBedDef const> object word
-    __forceinline CTCAnimationComplex* GetAnimationComplex() const
+    FABLE_FORCEINLINE CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;
         if (ParentThing->HasTC(TCI_ANIMATION))

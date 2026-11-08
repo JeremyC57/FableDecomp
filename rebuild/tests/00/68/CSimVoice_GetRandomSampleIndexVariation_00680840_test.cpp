@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -16,7 +17,7 @@ class CBaseClass {public:virtual~CBaseClass();};
 class CInitBaseClass:public CBaseClass {public:virtual~CInitBaseClass();virtual void Validate()const;bool Valid;};
 enum EReactionSpeechType {};
 long __fastcall GFROR13(unsigned long);
-__forceinline unsigned long __fastcall GFRandom(unsigned long range,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return range?*seed%range:0;}
+FABLE_FORCEINLINE unsigned long __fastcall GFRandom(unsigned long range,unsigned long*seed){*seed=*seed*0x24a1+0x24df;*seed=GFROR13(*seed);return range?*seed%range:0;}
 namespace std {
 template<class K,class V>struct pair {typedef K first_type;typedef V second_type;K first;V second;pair():first(K()),second(V()){}pair(const K&k,const V&v):first(k),second(v){}};
 template<class T>class allocator {};

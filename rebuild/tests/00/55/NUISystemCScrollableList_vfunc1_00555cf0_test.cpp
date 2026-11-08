@@ -1,10 +1,11 @@
 // BEGIN exact source snapshot SHA256 8bf1466d123fdaf5f5d687e2f46645176b9d08cd67fd3b8f3837300644f4f779
 //00555cf0 NUISystem::CScrollableList::ProcessEvent.
 // Layout: secondary CObserver at+4; retailobserver20 versus donor24 (STLset shrink).
+#include "fable_compiler.h"
 #include "engine/CObserver.h"
 #include "fable_string.h"
 struct RefCount {long Count;void DecRef(){--Count;}long GetRefCount()const{return Count;}};struct RefVirtual {virtual void Slot0()=0;virtual void Delete()=0;};struct Def:RefVirtual,RefCount {unsigned char ToActions[0x1a0-8];CCharString SoundForward;void Release(){DecRef();if(GetRefCount()==0)Delete();}};
-struct DefPointer {Def* Object;__forceinline ~DefPointer(){if(Object){Object->Release();Object=0;}}Def* operator->()const{return Object;}};
+struct DefPointer {Def* Object;FABLE_FORCEINLINE ~DefPointer(){if(Object){Object->Release();Object=0;}}Def* operator->()const{return Object;}};
 namespace NUISystem {
 struct Component {virtual void Slot000()=0;
 virtual void Slot001()=0;

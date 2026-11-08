@@ -10,6 +10,7 @@
 //   the TC 0x33 component's owner pointer at +0xd (CTCOwnedEntity::POwner, an odd-offset intelligent pointer).
 // Shape: the volume thing is chosen by HasTC/GetTC on 0x75 then 0x33 (the two GetPItem calls merge into one site), both
 //   aliveness tests are the inline IS_THING_ALIVE into bool locals, and the agreement is `(!a && !b) || (a && b)`.
+#include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -43,7 +44,7 @@ public:
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

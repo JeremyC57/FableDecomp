@@ -8,6 +8,7 @@
 //   float +0x18, frame count long +0x98.
 // Retail-asm: 0x00B0A848 / 0x00B0A8CC (fistp at 0x00B0A850 / 0x00B0A8D4) `fstp [slot] ; fld [slot] ; fistp dword ptr [slot]` in the inline table-cosine (x2) -- the engine's inline-assembly float-to-long helper (the by-value copy is stored and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
+#include "fable_compiler.h"
 extern const float g_cosTable[1025];                // 0x013CD550
 extern const float g_fadeScale;                     // 0x01266300
 extern const float g_cosTableScale;                 // 0x01230010
@@ -15,7 +16,7 @@ namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AE
 // the engine's inline-assembly float-to-long helper, expanded in place (VC7.1 homes the by-value parameter in a frame
 // word, often a dead argument slot, and reloads it for the bare dword fistp)
 #include "engine/GFFloatToLongNear.h"
-__forceinline float TableCos01(float x)
+FABLE_FORCEINLINE float TableCos01(float x)
 {
     float scaled = x * 0.5f * g_cosTableScale;
     long whole = GFFloatToLongNear(scaled - 0.5f);

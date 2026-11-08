@@ -11,10 +11,11 @@
 //   string's word read first), CCharString(const CCharString&) @ 0x0099EC30 (x2), CCharString::operator= @ 0x0099EFB0,
 //   ~CCharString @ 0x0099EAE0.
 // Shape: as 0x009B6A40 with CKeyPairCompareLess comparing `first`; make_heap and __pop_heap inlined.
+#include "fable_compiler.h"
 template <class T> class CBasicString {
 public:
     T* m_pData;
-    __forceinline long Compare(const CBasicString& other) const
+    FABLE_FORCEINLINE long Compare(const CBasicString& other) const
     {
         const T* b = other.m_pData;
         const T* a = m_pData;
@@ -81,7 +82,7 @@ template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compar
 void __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val, _Compare __comp);
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

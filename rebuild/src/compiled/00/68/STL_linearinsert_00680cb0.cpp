@@ -14,6 +14,7 @@
 //   on the stack). copy_backward -> __copy_backward_aux -> __copy_backward_ptrs (pair is not memcpy-safe) ->
 //   __copy_backward (`for (__n = __last - __first; __n > 0; --__n) *--__result = *--__last;`) all inline here
 //   (`__forceinline` on the loop body; plain `inline` leaves it a call).
+#include "fable_compiler.h"
 enum EReactionSpeechType { REACTION_SPEECH_TYPE_NONE = -1, REACTION_SPEECH_TYPE_0 = 0 };
 
 namespace std {
@@ -55,7 +56,7 @@ template <class _Tp1, class _Tp2> inline _OKToMemCpy<_Tp1, _Tp2> _IsOKToMemCpy(_
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__forceinline _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
+FABLE_FORCEINLINE _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)
         *--__result = *--__last;

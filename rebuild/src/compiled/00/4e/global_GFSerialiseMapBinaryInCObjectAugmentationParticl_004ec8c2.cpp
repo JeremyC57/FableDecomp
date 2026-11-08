@@ -21,6 +21,7 @@
 // Frame: the biased `lea ebp,[esp-78h]` size frame comes from `optimize("s", on)` alone (no `y off`); the pair default
 //   constructor is out of line in retail (declared here, not defined).
 // Model: CDataInputStream per Ego_r.pdb with its inline Read (the engine/ headers are flat layouts without methods).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -35,8 +36,8 @@ public:
     unsigned char* CurrentSourcePtr;                     // +0x0C
     unsigned long  SourceChunkStreamPos;                 // +0x10
     long           SourceChunkBytesRemaining;            // +0x14
-    static __forceinline bool IsValidPosition(__int64 pos) { return pos >= 0 && pos <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 pos) { return pos >= 0 && pos <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 new_pos = (__int64)(StreamPos + size);
         if (!IsValidPosition(new_pos))
@@ -50,8 +51,8 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    template <class T> __forceinline T ReadType() { T value; Read(&value, sizeof(T)); return value; }
-    __forceinline long ReadSLONG() { return ReadType<long>(); }
+    template <class T> FABLE_FORCEINLINE T ReadType() { T value; Read(&value, sizeof(T)); return value; }
+    FABLE_FORCEINLINE long ReadSLONG() { return ReadType<long>(); }
 private:
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };

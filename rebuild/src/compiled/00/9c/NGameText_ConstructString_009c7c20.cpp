@@ -14,6 +14,7 @@
 // bottom test; i + 1 is computed once into ebp and becomes the next i. A missing placeholder only sets the
 // `failed` byte (frame +3) and the loop goes on; `operator[]` is STLport's `*(begin() + n)`.
 
+#include "fable_compiler.h"
 class CWideString {
 public:
     CWideString();                                                              // 0x0099AED0
@@ -53,7 +54,7 @@ namespace NGameText {
 extern const unsigned short g_PlaceholderPrefix[];     // L"%"  @ 0x0129B470
 extern const unsigned short g_NumberFormat[];          // L"%d" @ 0x0122DE44
 
-__forceinline CWideString FormatIndex(int index)
+FABLE_FORCEINLINE CWideString FormatIndex(int index)
 {
     CWideString number;
     number.Sprintf(g_NumberFormat, index);

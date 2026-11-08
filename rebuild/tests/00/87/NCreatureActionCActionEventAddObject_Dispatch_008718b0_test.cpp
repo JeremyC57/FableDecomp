@@ -1,6 +1,7 @@
 // Behaviour test for 008718b0: src/008718b0.cpp copied verbatim; the definition lookups, object creation, carrying
 // component and AddTC stubbed so the carry gate, the hand slot lookup, the object created for the main player at the
 // thing's position and placed in the slot, and the optional destroy-on-finish component are checked.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -58,7 +59,7 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition();             // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;
@@ -105,13 +106,13 @@ struct CActionEventAddObject {
     CCharString Object;                         // +0x14
     CCharString Hand;                           // +0x18
     bool DestroyOnExit;                         // +0x1c
-    __forceinline void CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
+    FABLE_FORCEINLINE void CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
         CRightHandedSet& orientation, long slot);
     virtual void Dispatch(const CCreatureActionBase& action);
 };
 
 // Resolve the object def, create it for the player at the creature's position and hand it over.
-__forceinline void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
+FABLE_FORCEINLINE void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carrying, long player, C3DVector& position,
     CRightHandedSet& orientation, long slot)
 {
     long objectDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Object);

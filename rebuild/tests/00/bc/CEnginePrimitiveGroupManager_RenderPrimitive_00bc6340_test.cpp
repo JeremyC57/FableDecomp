@@ -1,4 +1,5 @@
 // behaviour test for 0x00BC6340 CEnginePrimitiveGroupManager::RenderPrimitive (body verbatim, callees stubbed)
+#include "fable_compiler.h"
 #include <stdio.h>
 // CEnginePrimitiveGroupManager::RenderPrimitive(CEngineInternalPrimitiveBase& group, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain) -- render a primitive group: during an occlusion pass make sure the group owns the pass's occlusion info and share it with each child's occlusion target, render every enabled child of the layer through its type's manager and return the best render result
 // Grade: RELOCATION_MATCH -- the child is tested through the handle (`handle.Data && (handle.Data->RenderLayerMask & layer) && handle.Data->Enable`) and only then named, which leaves retail's dead `lea eax,[eax+ecx*8]` after the child load; `result` declared before `count` loads begin into ecx and schedules `xor eax,eax` before the `sar`
@@ -33,7 +34,7 @@ public:
 template <class T> class CIVCountedPointer {
 public:
     T* Object;
-    __forceinline void Assign(T* object)
+    FABLE_FORCEINLINE void Assign(T* object)
     {
         if (Object) {
             Object->Release();
@@ -41,7 +42,7 @@ public:
         }
         Object = object;
     }
-    __forceinline CIVCountedPointer& operator=(const CIVCountedPointer& other)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
         T* old = Object;
         if (old != other.Object) {

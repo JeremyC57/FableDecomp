@@ -19,6 +19,7 @@
 // Shape: the mode-manager pointer is set only under the presence bit (a miss reads the key's slot); the brain output is
 //   constructed before the action; the action uses the inline 2-argument constructor (0 / false, then
 //   SetCombatAnimation); the clone goes through an inline CBrainOutput helper taking `const CCreatureActionBase&`.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -63,7 +64,7 @@ class CCreatureAction_GetUpFromSitting : public CCombatActionBase {   // retail 
 public:
     long SitModeType;                                       // +0x114
     bool Flag;                                              // +0x118
-    __forceinline CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim)
+    FABLE_FORCEINLINE CCreatureAction_GetUpFromSitting(CThingCreatureBase& creature, const CCharString& anim)
         : CCombatActionBase(creature, 0x32, CSoundPair()), SitModeType(0), Flag(false)
     {
         SetCombatAnimation(anim);

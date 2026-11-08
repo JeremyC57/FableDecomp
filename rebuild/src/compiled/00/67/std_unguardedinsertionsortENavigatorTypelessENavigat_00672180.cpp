@@ -10,6 +10,7 @@
 // Shape: STLport verbatim `__unguarded_insertion_sort_aux(first, last, (T*)0, comp)` -> `for (i = first; i != last; ++i)
 //   __unguarded_linear_insert(i, T(*i), comp);` -> `next = last; --next; while (comp(val, *next)) { *last = *next;
 //   last = next; --next; } *last = val;` (signed `jge`/`jl`); aux and the linear insert are __forceinline (plain inline leaves the aux call). No pragma.
+#include "fable_compiler.h"
 enum ENavigatorType { NAVIGATOR_TYPE_0 };                  // 4-byte enum (signed compares)
 namespace std {
 template <class _Tp> struct less {
@@ -18,7 +19,7 @@ template <class _Tp> struct less {
 };
 template <class _Tp> inline _Tp* __value_type(const _Tp*) { return (_Tp*)0; }
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val, _Compare __comp)
 {
     _RandomAccessIter __next = __last;
     --__next;
@@ -30,7 +31,7 @@ __forceinline void __unguarded_linear_insert(_RandomAccessIter __last, _Tp __val
     *__last = __val;
 }
 template <class _RandomAccessIter, class _Tp, class _Compare>
-__forceinline void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Compare __comp)
+FABLE_FORCEINLINE void __unguarded_insertion_sort_aux(_RandomAccessIter __first, _RandomAccessIter __last, _Tp*, _Compare __comp)
 {
     for (_RandomAccessIter __i = __first; __i != __last; ++__i)
         __unguarded_linear_insert(__i, _Tp(*__i), __comp);

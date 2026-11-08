@@ -15,6 +15,7 @@
 // then the pointer's copy (CBaseIntelligentPointer() + the derived vtable store + SetPItem(src.GetPItem())). The advanced
 // result is returned (kept in the result argument slot across the calls).
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CBaseObject;
@@ -30,7 +31,7 @@ struct CBaseIntelligentPointer {
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8 for CThingCreatureBase
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 #pragma pack(push, 1)

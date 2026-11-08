@@ -5,6 +5,7 @@
 //   and destroys carried objects (0x008FD0A0 / DestroyItem 0x008FD1B0) instead of unsheathing, and looks with the shared
 //   g_LibraryLookTurnSpeed 0x0138CBA8. Literals "OBJECT_IRON_LONGSWORD" 0x01291A50, "OBJECT_YEW_LONGBOW" 0x01291AF0,
 //   "CARRY_SLOT_RIGHT_HAND" 0x01265440, "CARRY_SLOT_LEFT_HAND" 0x01265428.
+#include "fable_compiler.h"
 class CThing;
 class CCharString { public:
     void* PStringData;
@@ -23,7 +24,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
 };
 class CThingCreatureBase;
 class CCombatManager { public:
@@ -73,7 +74,7 @@ class CAIStateGroupBase { public:
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
-    __forceinline unsigned long Random()
+    FABLE_FORCEINLINE unsigned long Random()
     {
         unsigned long* seed = GetPWorldSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;

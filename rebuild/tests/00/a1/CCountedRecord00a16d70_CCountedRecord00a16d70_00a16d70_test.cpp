@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 static int g_destroyed, g_ipDtors, g_ipCtors, g_blocksFreed;
 class CCharString { public: void* m_pStringData; ~CCharString() { ++g_ipDtors; } };
@@ -10,7 +11,7 @@ struct SCountBlock {
 };
 struct CCountedPointer_CPointee {
     CPointee* m_pObject; SCountBlock* m_pCount;
-    __forceinline ~CCountedPointer_CPointee()
+    FABLE_FORCEINLINE ~CCountedPointer_CPointee()
     {
         if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } }
         m_pObject = 0; m_pCount = 0;

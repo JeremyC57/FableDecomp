@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #define __cdecl
@@ -37,8 +38,8 @@ public:
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     const C3DVector& GetPosition() const;                   // 0x004C73D0
-    __forceinline bool HasTC(long type) { return present.test(type); }
-    template<class T> __forceinline T* FindTC(long interfaceType)
+    FABLE_FORCEINLINE bool HasTC(long type) { return present.test(type); }
+    template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
@@ -70,12 +71,12 @@ class CGameDefinitionManager { public:
 
 class C2DVector { public:
     float X, Y;
-    __forceinline C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
+    FABLE_FORCEINLINE C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 class C2DBoxF { public:
     C2DVector TL;
     C2DVector Extents;
-    __forceinline C2DBoxF(const C2DVector& tl, const C2DVector& extents) : TL(tl), Extents(extents) {}
+    FABLE_FORCEINLINE C2DBoxF(const C2DVector& tl, const C2DVector& extents) : TL(tl), Extents(extents) {}
 };
 class CDefPointeeBase { public:
     virtual void v00();
@@ -89,8 +90,8 @@ class CInventoryDef : public CDefPointeeBase { public:
 };
 template <class T> class CDefPointer { public:
     T* Object;
-    __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
-    __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
+    FABLE_FORCEINLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 
@@ -115,7 +116,7 @@ public:
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad08[0x68 - 0x08];
     CDefPointer<CInventoryDef> PDef;                        // +0x68
-    __forceinline CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
+    FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void OpenInventory();                                   // 0x005BD4EA
     void SetInventoryAnimRenderBox(const C2DBoxF& box);     // 0x005BC58F
     long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08

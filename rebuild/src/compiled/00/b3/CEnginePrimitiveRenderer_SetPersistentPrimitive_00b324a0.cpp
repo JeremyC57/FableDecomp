@@ -10,6 +10,7 @@
 // Layout: CEnginePrimitive: Type +0; CEngineInternalPrimitiveBase: RefCount +4, Type +8, GridPos.Level +0x24, Enable
 //   (bit 0) / NonPersistent (bit 1) of +0x34; CEnginePrimitiveHandle {vptr, Data}.
 // Shape: the handle helpers as the counted-pointer model above; `Enable = !(flags & 0x20)` through the 8-bit `not ; and 1` form.
+#include "fable_compiler.h"
 class CEnginePrimitive { public: long Type; };
 
 class CEnginePrimitiveHandle;
@@ -33,7 +34,7 @@ public:
 struct CIVCountedPointer {
     CEngineInternalPrimitiveBase* Object;
     long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CEngineInternalPrimitiveBase* object = Object;
         if (object) {
@@ -42,7 +43,7 @@ struct CIVCountedPointer {
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* object)
     {
         Release();
         Object = object;
@@ -56,13 +57,13 @@ class CEnginePrimitiveHandle {
 public:
     void*             _vptr;
     CIVCountedPointer Data;                         // +0x04
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);
         Data = 0;
     }
-    __forceinline void Set(CEngineInternalPrimitiveBase* primitive)
+    FABLE_FORCEINLINE void Set(CEngineInternalPrimitiveBase* primitive)
     {
         Clear();
         Data.Release();

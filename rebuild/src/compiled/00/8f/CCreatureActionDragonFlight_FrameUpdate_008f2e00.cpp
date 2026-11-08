@@ -3,6 +3,7 @@
 // Native008F2E00 length246. Actual physics header retained, field-free native ABI adapters;
 // slot70 by-value GetFacingVector lowered to explicit result buffer (ECXthis,EAXbuffer,ret4),
 // physics-standard723C00 verified; slot75 SetRHSet7239C0 copies24bytes,ret4.
+#include "fable_compiler.h"
 #define CCreatureAction_DragonFlight CCreatureAction_DragonFlight_PDB
 #include "engine/CCreatureAction_DragonFlight.h"
 #undef CCreatureAction_DragonFlight
@@ -37,7 +38,7 @@ FABLE_STATIC_ASSERT(sizeof(CPhysicsMethods)==sizeof(CTCPhysicsBase));
 class CThing { public:
  unsigned char _nativeBeforePhysics[0x60];
  CPhysicsMethods* PPhysics;
- __forceinline CPhysicsMethods* GetPhysics() const {return PPhysics;}
+ FABLE_FORCEINLINE CPhysicsMethods* GetPhysics() const {return PPhysics;}
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

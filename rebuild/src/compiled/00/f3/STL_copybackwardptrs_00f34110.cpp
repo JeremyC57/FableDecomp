@@ -10,6 +10,7 @@
 //   `for (n = last - first; n > 0; --n) *--result = *--last;` inlined (the source folded into an offset from the
 //   destination); `__fastcall` on the template definition; `__copy_backward` and the memberwise operator= `__forceinline`
 //   (VC7.1 refuses the plain-inline chain). Local def base as in 0x00F33EA0.
+#include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
@@ -28,7 +29,7 @@ public:
 class CFireHeartPatternDef : public CDefClassBase {   // 0x34 bytes in retail (Ego_r.pdb 60: the vector is 12 bytes here)
 public:
     std::vector<bool> PadActive;                   // +0x28
-    __forceinline CFireHeartPatternDef& operator=(const CFireHeartPatternDef& other)   // memberwise, inlined in retail
+    FABLE_FORCEINLINE CFireHeartPatternDef& operator=(const CFireHeartPatternDef& other)   // memberwise, inlined in retail
     {
         CDefClassBase::operator=(other);
         PadActive = other.PadActive;
@@ -45,7 +46,7 @@ struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
 
 template <class _BidirectionalIter1, class _BidirectionalIter2, class _Distance>
-__forceinline _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result,
+FABLE_FORCEINLINE _BidirectionalIter2 __copy_backward(_BidirectionalIter1 __first, _BidirectionalIter1 __last, _BidirectionalIter2 __result,
                                            const random_access_iterator_tag&, _Distance*)
 {
     for (_Distance __n = __last - __first; __n > 0; --__n)

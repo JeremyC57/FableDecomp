@@ -7,6 +7,7 @@
 // Element: 0x18 bytes = two CCharStrings (+0, +4: CCharString::operator= @ 0x0099EFB0), two words (+8, +0xC) and a
 // CIntelligentPointer at +0x10 (SetPItem(other.GetPItem()), CBaseIntelligentPointer @ 0x00A01B50 / 0x00A01B90). The
 // manifest's `CTCSmokeGenerator::CGenerationPos` label is propagated (that record is 0x14 bytes, see 0x00722C90).
+#include "fable_compiler.h"
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
@@ -23,7 +24,7 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
 class CThing;

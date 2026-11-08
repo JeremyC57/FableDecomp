@@ -1,10 +1,11 @@
 // Behaviour test for CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint (0x0095AD20): model and body verbatim, the
 // intelligent-pointer / position / GotoCirclePoint callees stubbed; empty markers, both choices and both index wrap-arounds.
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <math.h>
 
 unsigned long g_InvSqrtMantissaTable[128];   // stub table (zero mantissa correction)
-__forceinline float FastInvSqrt(float lengthSquared)
+FABLE_FORCEINLINE float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
@@ -16,18 +17,18 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
+    FABLE_FORCEINLINE C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
+    FABLE_FORCEINLINE void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
 };
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+FABLE_FORCEINLINE C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 class CThing;
-__forceinline C3DVector Direction(const CThing* to, const CThing* from);
-__forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
+FABLE_FORCEINLINE C3DVector Direction(const CThing* to, const CThing* from);
+FABLE_FORCEINLINE float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
 class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public: };
-__forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPosition() - from->GetPosition(); }
+FABLE_FORCEINLINE C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPosition() - from->GetPosition(); }
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;

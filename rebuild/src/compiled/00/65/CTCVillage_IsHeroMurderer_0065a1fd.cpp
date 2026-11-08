@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 // CTCVillage::IsHeroMurderer() -- true when the hero's deed log holds, for any of the village's recorded crime handles, a murder deed (type 9) with its flag at +0x23 set
 // Leaf: IsHeroMurderer
@@ -29,7 +30,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
-    __forceinline SEntry* find(const long* key, long value)
+    FABLE_FORCEINLINE SEntry* find(const long* key, long value)
     {
         SEntry* it = LowerBound(key);
         if (it == last || value < it->type)
@@ -44,7 +45,7 @@ public:
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         return m_interfaces.find(&type, interfaceType)->component;

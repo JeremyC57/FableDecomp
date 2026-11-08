@@ -8,12 +8,13 @@
 //        the world's LCG seed is advanced in place (`seed = seed*0x24A1 + 0x24DF`, stored, then `seed = GFROR13(seed)`),
 //        and an unsigned `% 100` compared signed (`jl`) against 95.
 // Layout: CTCWound ParentThing +0x04 (CTCBase).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 long __fastcall GFROR13(unsigned long value);    // 0x00497890
 class CWorld { public:
     unsigned long* GetWorldSeed() const;              // 0x0049D810
 };
-__forceinline long GetRandomBelow(CWorld* world, unsigned long n)
+FABLE_FORCEINLINE long GetRandomBelow(CWorld* world, unsigned long n)
 {
     unsigned long* seed = world->GetWorldSeed();
     *seed = *seed * 0x24a1 + 0x24df;

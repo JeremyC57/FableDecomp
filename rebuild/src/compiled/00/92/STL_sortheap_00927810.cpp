@@ -15,6 +15,7 @@
 // Shape: STLport `while (last - first > 1) pop_heap(first, last--, comp);` with pop_heap -> __pop_heap_aux -> __pop_heap
 //   inlined: `_Tp val(*(last - 1)); *(last - 1) = *first; __adjust_heap(first, 0, (last - 1) - first, val, comp);` -- val
 //   an aligned frame temporary, copied again into the callee's argument slot and destroyed after the call.
+#include "fable_compiler.h"
 class CThing;
 class CBaseObject;
 
@@ -28,8 +29,8 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& p)
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& p) { SetPItem(p.GetPItem()); }
+    FABLE_FORCEINLINE CIntelligentPointer& operator=(const CIntelligentPointer& p)
     {
         SetPItem(p.GetPItem());
         return *this;

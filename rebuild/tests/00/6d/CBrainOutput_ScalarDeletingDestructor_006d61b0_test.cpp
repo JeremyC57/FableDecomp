@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 static int g_destroyed, g_ipDtors, g_ipCtors, g_blocksFreed;
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_ipCtors; } ~CBaseIntelligentPointer() { ++g_ipDtors; } };
@@ -11,7 +12,7 @@ struct SCountBlock {
 };
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* m_pObject; SCountBlock* m_pCount;
-    __forceinline ~CCountedPointer_CCreatureActionBase()
+    FABLE_FORCEINLINE ~CCountedPointer_CCreatureActionBase()
     {
         if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } }
         m_pObject = 0; m_pCount = 0;

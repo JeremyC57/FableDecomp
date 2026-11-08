@@ -11,6 +11,7 @@
 //   0x008C4B80 idiom); the counted def reference and the effect name are conditional temporaries of one && expression;
 //   both mode-ctor pointers come through inline accessors (GetCreature, PEnemy.GetCreature) so the two GetPItem calls run
 //   before any push (enemy first) and the Imposter byte is loaded last.
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -82,7 +83,7 @@ public:
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     void UnsheatheMeleeWeapon_00666820();                      // 0x00666820 (CThingCreatureBase)
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

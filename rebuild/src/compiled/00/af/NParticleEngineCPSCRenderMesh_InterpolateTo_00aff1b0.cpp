@@ -12,6 +12,7 @@
 // Header debt: no shared CPSCBase / CPSCRenderMesh header; the class is modelled locally (Ego_r.pdb member names and offsets).
 // Retail-asm: 0x00AFF22D `fistp dword ptr [esp+14h]` (and 32 more, one per rounded member) -- GFFloatToLongNear, shared helper
 //   engine/GFFloatToLongNear.h; VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives fistp qword).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CRGBCOLOUR
 #include "engine/CRGBColour.h"
 #include "engine/GFFloatToLongNear.h"
@@ -23,7 +24,7 @@ CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long t);
 namespace NParticleEngine {
 inline unsigned long __fastcall GFInterpolate(unsigned long a, unsigned long b, float t) { return GFFloatToLongNear((1.0f - t) * a + b * t); }
 inline unsigned long __fastcall GFInterpolateUpdateParams(unsigned long a, unsigned long b, float t) { return t > 0.5f ? b : a; }
-__forceinline CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
+FABLE_FORCEINLINE CRGBColour __fastcall GFInterpolate(const CRGBColour& a, const CRGBColour& b, float t) { return GFGetInterpolatedColour(a, b, GFFloatToLongNear(t * 256.0f)); }
 class CParticleSystem;
 template <class K, class V> class CParticleUpdateParamCallback : public CBaseClassNonCopyable { };
 class CPSCBase : public CParticleUpdateParamCallback<unsigned long, unsigned long> {

@@ -14,7 +14,8 @@
 // (+0x48 of the camera set def) and the definition manager (World +0x10) are read before the
 // zeroed CDefPointer local is declared, so VC sinks its zero store below the pushes; the local's
 // inline destructor releases after the flag store (no null store).
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+#include "fable_compiler.h"
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CPlayer { public:
     void RemoveMode(long mode);                     // 0x00634190
 };

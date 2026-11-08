@@ -16,6 +16,7 @@
 //   CSafeTrader::Main 0x00E4A280).
 // Naming wave 35: identity reg 00e47c21 "BlockingBandit" in 00e479b0; Alloc 00e49850; vtable 012e4edc slot 1; PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBlockingBandit::Main (wave3/labels_alloc.tsv); PDB ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBlockingBandit@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CV_BanditTollScript moved into NScript); same bytes.
+#include "fable_compiler.h"
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -45,7 +46,7 @@ public:
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
-    __forceinline virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
     VPAD8(p2x0) VPAD4(p2x1) VPAD2(p2x2)   // slots 7..20
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
     VPAD16(p3x0) VPAD2(p3x1) VPAD1(p3x2)   // slots 22..40

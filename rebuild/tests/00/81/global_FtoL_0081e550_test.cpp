@@ -1,5 +1,6 @@
 // Behaviour test for 0x0081E550 (source body copied from src/0081e550.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same __asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -32,7 +33,7 @@ static unsigned long long ra_tsc = 1000000;
 // Retail-asm: 0x0081E55A `fld dword ptr [esp+0Ch]` + 0x0081E55E `mov edx,[esp+4]` + 0x0081E562 `fistp dword ptr [edx]` -- the engine's inline-assembly FloatToLong(long* result, float value) helper (the same three instructions as the landed retail_asm 0x00B1B5E0), the result pointer homed at [esp+4] and reloaded into edx; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op /Og /G5..G7) emits `fistp qword`, /arch:SSE2 a cvttss2si, so no C/C++ form gives a dword fistp.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081E550, 29 bytes, `ret 4` (one float on the stack; ecx unused). No callees, no code xrefs.
 // the engine's pointer-out float-to-long helper: expanded in place, the pointer parameter gets a frame copy
-__forceinline void FloatToLong(long* result, float value)
+FABLE_FORCEINLINE void FloatToLong(long* result, float value)
 {
     RA_FISTP_PTR(value, result)
 }

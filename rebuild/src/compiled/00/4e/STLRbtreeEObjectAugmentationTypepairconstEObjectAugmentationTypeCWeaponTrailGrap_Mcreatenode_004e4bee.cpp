@@ -19,6 +19,7 @@
 //   null test is on `&tmp->_M_value_field` (`lea ecx,[eax+10h] ; test ecx,ecx`), the value is STLport pair's
 //   memberwise copy (key dword, then the trail set's implicit two-dword copy); allocate / _Construct `__forceinline`
 //   under `optimize("s")`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 #include <stddef.h>
 
@@ -38,12 +39,12 @@ namespace std {
 template <class T1, class T2> struct pair {     // STLport pair: memberwise copy constructor
     T1 first;
     T2 second;
-    __forceinline pair(const pair& p) : first(p.first), second(p.second) { }
+    FABLE_FORCEINLINE pair(const pair& p) : first(p.first), second(p.second) { }
 };
 template <class _Pair> struct _Select1st { };
 template <class _Tp> struct less { };
 
-template <class T> __forceinline void _Construct(T* p, const T& value) { new (p) T(value); }
+template <class T> FABLE_FORCEINLINE void _Construct(T* p, const T& value) { new (p) T(value); }
 
 struct _Rb_tree_node_base {
     bool                _M_color;               // +0x00
@@ -58,7 +59,7 @@ template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
 template <class T> class allocator {            // STLport allocator<T>: empty
 public:
     allocator() { }
-    __forceinline T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
+    FABLE_FORCEINLINE T* allocate(size_t n) { return n != 0 ? static_cast<T*>(malloc(n * sizeof(T))) : 0; }
 };
 
 template <class T> struct _STLP_alloc_proxy : allocator<T> {

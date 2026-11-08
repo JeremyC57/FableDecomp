@@ -8,6 +8,7 @@
 // bitset dword at +0x24; then 0xe2 = CTCKraken, bit 2 of the byte at +0x3c), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0,
 // CTCKraken::StartHeadEffects @ 0x007FBC30 (landed).
 // Shape: BOTH lookups are UNCHECKED out-parameter accessors (each absent arm reads the shared key word and still calls).
+#include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -32,13 +33,13 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0x114 - 0x10];
-    __forceinline CTCCreatureModeManager* GetModeManager() const
+    FABLE_FORCEINLINE CTCCreatureModeManager* GetModeManager() const
     {
         CTCCreatureModeManager* modeManager;
         PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
         return modeManager;
     }
-    __forceinline CTCKraken* GetKraken() const
+    FABLE_FORCEINLINE CTCKraken* GetKraken() const
     {
         CTCKraken* kraken;
         PCreature.Get()->GetTC(TCI_KRAKEN, &kraken);

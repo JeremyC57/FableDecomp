@@ -1,6 +1,7 @@
 // 00820e20 NManager00820e20::CMap::Destroy (retail ~CMap body; catalog CParticleMorphs_Destructor is wrong)
 // Flags: /O2 /Oy /W3
 // Leaf: Destroy
+#include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
 void __cdecl operator delete[](void*);
@@ -10,7 +11,7 @@ namespace NManager00820e20 {
 // CMap.h is quarantined; CIDrawMap active header used as authoritative primary base ABI view.
 extern int CMap_vftable_CIDrawMap_0127252c[],CMap_vftable_CBaseClassNonCopyable_01272524[],CIDrawMap_vftable_01272494[],CBaseClassNonCopyable_vftable[];
 struct Object{virtual ~Object();};struct Node{Node*next,*prev;};
-__forceinline Object*Value(Node*n){return(Object*)((char*)n+8);}
+FABLE_FORCEINLINE Object*Value(Node*n){return(Object*)((char*)n+8);}
 #pragma pack(push,1)
 struct CCharStringData{char*text;unsigned length,capacity;bool useFastExtend;int refs;};
 #pragma pack(pop)
@@ -20,11 +21,11 @@ struct Target{void Remove(Object*);};
 struct Context{virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual void v3()=0;virtual void v4()=0;virtual void v5()=0;virtual void v6()=0;virtual void v7()=0;virtual void v8()=0;virtual void v9()=0;virtual void v10()=0;virtual void v11()=0;virtual Target*Get()=0;};
 struct CBaseClassNonCopyable{void*table;__declspec(noinline)void Destroy(){table=CBaseClassNonCopyable_vftable;}};struct __false_type{__false_type(){}};
 struct Control{unsigned refs;void(__fastcall*destroy)(void*);void*object;};
-struct Counted{Object*data;Control*info;Counted():data(0),info(0){}__forceinline~Counted(){if(info){if(!--info->refs){info->destroy(info->object);delete info;}}data=0;info=0;}};
+struct Counted{Object*data;Control*info;Counted():data(0),info(0){}FABLE_FORCEINLINE~Counted(){if(info){if(!--info->refs){info->destroy(info->object);delete info;}}data=0;info=0;}};
 struct CachedEntry{int key;Counted value;};
 template<class T>__declspec(noinline)void __fastcall _Destroy(CachedEntry*first,CachedEntry*last,const T&){for(;first!=last;++first)first->~CachedEntry();}
 struct vector{CachedEntry*first,*last,*end;};
-struct CMap:CIDrawMap{CBaseClassNonCopyable sub;vector*heap;Node*list;Strings*first,*last,*end;int gap;Context*context;char pad[0x1a6c-36];void*storage;char pad2[8];Object*a,*b;void Destroy();__forceinline void Clear(){Node*p=list->next;while(p!=list){Node*old=p;p=p->next;Value(old)->~Object();free(old);}list->next=list;list->prev=list;}};
+struct CMap:CIDrawMap{CBaseClassNonCopyable sub;vector*heap;Node*list;Strings*first,*last,*end;int gap;Context*context;char pad[0x1a6c-36];void*storage;char pad2[8];Object*a,*b;void Destroy();FABLE_FORCEINLINE void Clear(){Node*p=list->next;while(p!=list){Node*old=p;p=p->next;Value(old)->~Object();free(old);}list->next=list;list->prev=list;}};
 void CMap::Destroy(){__vftable=CMap_vftable_CIDrawMap_0127252c;sub.table=CMap_vftable_CBaseClassNonCopyable_01272524;Target*t=context->Get();for(Node*p=list->next;p!=list;p=p->next)t->Remove(Value(p));Clear();if(b)delete b;if(a)delete a;if(storage)free(storage);Strings*finish=last;for(Strings*s=first;s!=finish;++s)s->~Strings();if(first)free(first);Clear();if(list)free(list);vector*p=heap;if(p){_Destroy(p->first,p->last,__false_type());if(p->first)free(p->first);delete p;}sub.Destroy();__vftable=CIDrawMap_vftable_01272494;}
 }
 

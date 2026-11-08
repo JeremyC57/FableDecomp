@@ -1,8 +1,9 @@
+#include "fable_compiler.h"
 #pragma optimize("s",on)
 struct StdListIterator
 {
     void* node;
-    __forceinline StdListIterator(const StdListIterator& other)
+    FABLE_FORCEINLINE StdListIterator(const StdListIterator& other)
         : node(other.node) {}
 };
 

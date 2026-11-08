@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -125,7 +126,7 @@ struct NativeCountedPointee {
  unsigned long IVRefCount;
  void DecRef(){--IVRefCount;}
  long GetRefCount()const{return IVRefCount;}
- __forceinline void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
+ FABLE_FORCEINLINE void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
 };
 struct PersistentMethods:NativeCountedPointee {
  long Type;
@@ -140,13 +141,13 @@ struct PrimitivePointer {
  unsigned long GetRefCount()const{return Data?Data->GetRefCount():0;}
  PersistentMethods*operator->()const{return Data;} // PDB01909260
 
- __forceinline void Release(){if(Data){Data->RemoveReference();Data=0;}}
- __forceinline PrimitivePointer& operator=(const PrimitivePointer&other){if(Data!=other.Data){Release();Data=other.Data;if(Data)++Data->IVRefCount;}return *this;}
+ FABLE_FORCEINLINE void Release(){if(Data){Data->RemoveReference();Data=0;}}
+ FABLE_FORCEINLINE PrimitivePointer& operator=(const PrimitivePointer&other){if(Data!=other.Data){Release();Data=other.Data;if(Data)++Data->IVRefCount;}return *this;}
 };
 struct PrimitiveHandle {
  int UnusedHandleWord;PrimitivePointer Pointer; // raw PDB firstword int padding, not refcount
- __forceinline void Clear(){if(Pointer.GetRefCount()==1)Pointer->NotifyReleased(*this);Pointer.Release();Pointer.Data=0;}
- __forceinline PrimitiveHandle& operator=(const PrimitiveHandle& other){Clear();Pointer=other.Pointer;return *this;}
+ FABLE_FORCEINLINE void Clear(){if(Pointer.GetRefCount()==1)Pointer->NotifyReleased(*this);Pointer.Release();Pointer.Data=0;}
+ FABLE_FORCEINLINE PrimitiveHandle& operator=(const PrimitiveHandle& other){Clear();Pointer=other.Pointer;return *this;}
 };
 struct PrimitiveIDs {
  long* Start;long* Finish;long* Limit;

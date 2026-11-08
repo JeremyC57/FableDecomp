@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <cstdio>
 class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
@@ -22,7 +23,7 @@ public:
             return true;
         return false;
     }
-    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    template <class T> FABLE_FORCEINLINE bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;
@@ -32,7 +33,7 @@ public:
         *out = (T*)((it == map->last || T::INTERFACE_TYPE < it->type) ? map->last : it)->component;
         return true;
     }
-    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    template <class T> FABLE_FORCEINLINE bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;

@@ -15,6 +15,7 @@
 //   marker position read through the inline null-checked impl call (`!Data ? g_ZeroVector : Data->GetPosition()`).
 // Naming wave 35: identity reg 00d7cccd "HSA_ScreamingVillager" in 00d7c890; Alloc 00d7f7b0; vtable 012d3fb4 slot 1; PDB ?Main@CHSA_ScreamingVillager@CQ_HeroSoulsArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CHSA_ScreamingVillager::Main (wave3/labels_alloc.tsv); PDB ?Main@CHSA_ScreamingVillager@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CHSA_ScreamingVillager@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes. Also: global 0x01375748 respelled NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations.
+#include "fable_compiler.h"
 class CCharString;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
@@ -40,7 +41,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ FABLE_FORCEINLINE CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };

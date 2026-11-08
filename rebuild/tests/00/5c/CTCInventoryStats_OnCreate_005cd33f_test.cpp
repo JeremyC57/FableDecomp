@@ -1,5 +1,6 @@
 // Behaviour test for 005cd33f: src/005cd33f.cpp copied verbatim (including its real GetSubDef body); the GUI manager, the
 // definition manager, the sub-def lookup, the bitset test, LowerBound, SetPDef and the base OnCreate are stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -26,7 +27,7 @@ static int fails = 0;
 // lastCategoryIdx +0x148, pTCHeroExperience +0x14c, pTCHeroStats +0x150 (PDB minus 0x18).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -109,7 +110,7 @@ class CThing { public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad4c[0x70 - 0x4c];
     CDefPointer<CDefClassBase> PDef;            // +0x70
-    template <class T> __forceinline void GetInterface(long typeId, T** out) const
+    template <class T> FABLE_FORCEINLINE void GetInterface(long typeId, T** out) const
     {
         if (UsingComponents.test(typeId)) {
             long type = typeId;

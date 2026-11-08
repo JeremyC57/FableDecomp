@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
@@ -32,7 +33,7 @@ public:CCharString Name;T* Parent;CCountedPointer<CEntityScriptBase>(*Alloc)(T&,
 };
 template<class T>class CSpawnedFunc:public CSpawnedFuncBase{
 public:void(T::*Func)();T* PClass;
- __forceinline CSpawnedFunc(const CCharString& name,unsigned long id,T* pclass,void(T::*func)()):CSpawnedFuncBase(name,id),Func(func),PClass(pclass){}
+ FABLE_FORCEINLINE CSpawnedFunc(const CCharString& name,unsigned long id,T* pclass,void(T::*func)()):CSpawnedFuncBase(name,id),Func(func),PClass(pclass){}
  static void* operator new(size_t n)throw(){return allocation(n);}
  static void operator delete(void* p){free(p);}
 };

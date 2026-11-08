@@ -13,6 +13,7 @@
 //   inlined six times (speed TU, `position += size`) through inline CPersistTraits<T>::TransferBinaryIn, each local in
 //   the dead value-argument slot (`value` lives in edi); the name length read is forwarded in eax into
 //   ReadString, whose result temporary also takes the value slot. No frame pointer.
+#include "fable_compiler.h"
 #define CMemoryDataInputStream CMemoryDataInputStreamLayout
 #include "engine/CMemoryDataInputStream.h"
 #undef CMemoryDataInputStream
@@ -44,8 +45,8 @@ public:
 // Method view over the shared engine header (Ego_r.pdb layout: position +4, chunkBase +0xC = current chunk read
 // pointer, chunkLength +0x14 = bytes left in the chunk); the overflow reader and ReadString are CDataInputStream's.
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (!IsValidPosition(newPosition))
@@ -84,7 +85,7 @@ public:
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, long* value)
     {
         long number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));
@@ -92,7 +93,7 @@ template <> struct CPersistTraits<long> {
     }
 };
 template <> struct CPersistTraits<float> {
-    __forceinline void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
+    FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, float* value)
     {
         float number;
         static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&number, sizeof(number));

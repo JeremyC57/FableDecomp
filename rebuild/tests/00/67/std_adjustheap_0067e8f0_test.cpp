@@ -1,5 +1,6 @@
 // Behaviour test for 0x0067E8F0 std::__adjust_heap<CDegradableInfo*, int, CDegradableInfo, CIsHealth1GTHealth2>: sifting the hole at the
 // top down and pushing the value back in keeps the comparator heap (smallest health on top) and loses no stage.
+#include "fable_compiler.h"
 #include <cstdio>
 #ifndef _MSC_VER
 #define __fastcall
@@ -105,7 +106,7 @@ inline void make_heap(_RandomAccessIterator __first, _RandomAccessIterator __las
 }
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

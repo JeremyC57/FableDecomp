@@ -1,5 +1,6 @@
 // Behaviour test for 0x00C77FC0 (source body copied from src/00c77fc0.cpp; the retail inline-asm idioms are
 // spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
+#include "fable_compiler.h"
 #if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
 #define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
 #endif
@@ -119,14 +120,14 @@ public:
 };
 
 // libpk's inline-assembly float-to-long helper (round to nearest, the FPU default)
-__forceinline long FloatToLong(float value)
+FABLE_FORCEINLINE long FloatToLong(float value)
 {
     long result;
     RA_FISTP(value, result)
     return result;
 }
 // libpk's round-half-down helper (out-of-line copy at 0x00C3FF70): round(value - 0.5), negatives step back up by one
-__forceinline long RoundHalfDownToLong(float value)
+FABLE_FORCEINLINE long RoundHalfDownToLong(float value)
 {
     long result = FloatToLong(value - 0.5f);
     if (result < 0)

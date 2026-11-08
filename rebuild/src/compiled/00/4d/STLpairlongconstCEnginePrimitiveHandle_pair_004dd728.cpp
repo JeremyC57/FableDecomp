@@ -15,6 +15,7 @@
 // getter (`Object ? Object->RefCount : 0`, `xor eax,eax` arm) compared with 1, and the virtual call reloads the member
 // straight into ecx; `Data = 0` (release plus a second unconditional zero store) and the member destructor (whose null
 // test reuses the flags of the `and`) are `__forceinline`.
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CEnginePrimitiveHandle;
 
@@ -36,14 +37,14 @@ class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
     long GetRefCount() const { return Object ? Object->RefCount : 0; }
-    __forceinline ~CIVCountedPointer()
+    FABLE_FORCEINLINE ~CIVCountedPointer()
     {
         if (Object) {
             Object->Release();
             Object = 0;
         }
     }
-    __forceinline CIVCountedPointer& operator=(int)
+    FABLE_FORCEINLINE CIVCountedPointer& operator=(int)
     {
         if (Object) {
             Object->Release();
@@ -60,7 +61,7 @@ class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04
     virtual void v001();
-    __forceinline ~CEnginePrimitiveHandle()
+    FABLE_FORCEINLINE ~CEnginePrimitiveHandle()
     {
         if (Data.GetRefCount() == 1)
             Data.Object->OnLastHandleReleased(this);

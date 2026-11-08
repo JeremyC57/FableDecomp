@@ -3,6 +3,7 @@
 // Shared target header has StripVertices +0x10; use retail three-pointer vector prefix only.
 // Writer 0x00AA5930 and resize callee confirm two-byte indices and array-as-empty-list sentinel.
 // Leaf: ReadFromFile@C3DMeshFileXTriangleStripChunkMethods
+#include "fable_compiler.h"
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileXTriangleStripChunk.h"
@@ -11,8 +12,8 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 struct CInputStreamVirtuals { virtual void v0(); virtual void v1(); virtual unsigned long GetPosition(); };
 struct CInputStreamAccess : CDataInputStream {
  unsigned long GetPosition() { return ((CInputStreamVirtuals*)this)->GetPosition(); }
- static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
- __forceinline void Read(void* buffer,long size) {
+ static FABLE_FORCEINLINE bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
+ FABLE_FORCEINLINE void Read(void* buffer,long size) {
   if(size<=0) return;
   __int64 newPosition=(__int64)(StreamPos+size);
   if(!IsValidPosition(newPosition)) return;
@@ -23,7 +24,7 @@ struct CInputStreamAccess : CDataInputStream {
    StreamPos+=size;
   } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
  }
- __forceinline unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
+ FABLE_FORCEINLINE unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
 };
 
 

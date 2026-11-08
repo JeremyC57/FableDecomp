@@ -14,6 +14,7 @@
 //   pass; the STLport clear inlined); then the implicit member dtors: the map's ~_Rb_tree (clear: `_M_erase(root)` out of line
 //   and the header reset when node_count != 0) and ~_Rb_tree_base (free the header), the list's ~_List_base (clear again, free
 //   the header node), then the out-of-line ~CSprite.
+#include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 namespace std {
@@ -135,7 +136,7 @@ template <class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     T* operator->() const { return static_cast<T*>(Object); }
     unsigned long GetRefCount() const { return Object ? Object->IVRefCount : 0; }
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -144,25 +145,25 @@ template <class T> class CIVCountedPointer { public:
             Object = 0;
         }
     }
-    __forceinline void Reset(T* object)
+    FABLE_FORCEINLINE void Reset(T* object)
     {
         Release();
         Object = object;
         if (object)
             ++object->IVRefCount;
     }
-    __forceinline ~CIVCountedPointer() { Release(); }
+    FABLE_FORCEINLINE ~CIVCountedPointer() { Release(); }
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data; // +0x04
     unsigned long GetReferenceCount() const { return Data.GetRefCount(); }
-    __forceinline void Clear()
+    FABLE_FORCEINLINE void Clear()
     {
         if (GetReferenceCount() == 1)
             Data->NotifyReleased(*this);
         Data.Reset(0);
     }
-    __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
+    FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }
 };
 
 

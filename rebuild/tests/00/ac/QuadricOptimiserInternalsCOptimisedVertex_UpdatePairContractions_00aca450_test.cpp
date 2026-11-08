@@ -1,10 +1,11 @@
 // 00aca450 QuadricOptimiserInternals::COptimisedVertex::UpdatePairContractions
 // Flags: /O2 /Oy /W3
 // Leaf: UpdatePairContractions
+#include "fable_compiler.h"
 #include <stdlib.h>
 namespace X_00aca450 {
 struct CCPPointerInfo {unsigned RefCount;void(__fastcall*DeleteFunc)(void*);void*Data;};
-template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;__forceinline CCountedPointer():Data(0),Info(0){}__forceinline CCountedPointer(const CCountedPointer&o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}__forceinline ~CCountedPointer(){if(Info&&--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}Data=0;Info=0;}};
+template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;FABLE_FORCEINLINE CCountedPointer():Data(0),Info(0){}FABLE_FORCEINLINE CCountedPointer(const CCountedPointer&o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}FABLE_FORCEINLINE ~CCountedPointer(){if(Info&&--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}Data=0;Info=0;}};
 namespace QuadricOptimiserInternals {
 struct CSubContraction {unsigned Index1,Index2;};
 // Layout: contraction Exists0,Unsplit1,SubContractions first4/finish8/end12; only first is read.
@@ -15,11 +16,11 @@ namespace QuadricOptimiserInternals {__declspec(noinline) CContractionReference&
 namespace std {
 using QuadricOptimiserInternals::CContractionReference;
 struct _Rb_tree_node {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node*Parent,*Left,*Right;unsigned Key;CContractionReference Value;};
-__forceinline _Rb_tree_node*_Rb_global_increment(_Rb_tree_node*node){if(node->Right){node=node->Right;while(node->Left)node=node->Left;}else{_Rb_tree_node*p=node->Parent;while(node==p->Right){node=p;p=p->Parent;}if(node->Right!=p)node=p;}return node;}
-struct _Rb_tree_iterator {_Rb_tree_node*Node;__forceinline _Rb_tree_iterator(){}__forceinline _Rb_tree_iterator(const _Rb_tree_iterator&o):Node(o.Node){}__forceinline void increment(){Node=_Rb_global_increment(Node);}__forceinline _Rb_tree_iterator operator++(int){_Rb_tree_iterator old=*this;increment();return old;}};
+FABLE_FORCEINLINE _Rb_tree_node*_Rb_global_increment(_Rb_tree_node*node){if(node->Right){node=node->Right;while(node->Left)node=node->Left;}else{_Rb_tree_node*p=node->Parent;while(node==p->Right){node=p;p=p->Parent;}if(node->Right!=p)node=p;}return node;}
+struct _Rb_tree_iterator {_Rb_tree_node*Node;FABLE_FORCEINLINE _Rb_tree_iterator(){}FABLE_FORCEINLINE _Rb_tree_iterator(const _Rb_tree_iterator&o):Node(o.Node){}FABLE_FORCEINLINE void increment(){Node=_Rb_global_increment(Node);}FABLE_FORCEINLINE _Rb_tree_iterator operator++(int){_Rb_tree_iterator old=*this;increment();return old;}};
 template<class T>struct less{bool operator()(const T&a,const T&b)const{return a<b;}};
 // Layout: Groups9c and PairContractionsa8 establish12-byte retail map; empty key comparator follows header/count.
-template<class K,class V>struct map;template<>struct map<unsigned,CContractionReference>{_Rb_tree_node*Header;unsigned Count;less<unsigned> _M_key_compare;__forceinline map():Header(0){Header=(_Rb_tree_node*)malloc(sizeof(_Rb_tree_node));Count=0;Header->Colour=0;Header->Parent=0;Header->Left=Header;Header->Right=Header;}void _M_erase(_Rb_tree_node*);__forceinline ~map(){if(Count){_M_erase(Header->Parent);Header->Left=Header;Header->Parent=0;Header->Right=Header;Count=0;}if(Header)free(Header);}CContractionReference&operator[](const unsigned&);map&operator=(const map&);};
+template<class K,class V>struct map;template<>struct map<unsigned,CContractionReference>{_Rb_tree_node*Header;unsigned Count;less<unsigned> _M_key_compare;FABLE_FORCEINLINE map():Header(0){Header=(_Rb_tree_node*)malloc(sizeof(_Rb_tree_node));Count=0;Header->Colour=0;Header->Parent=0;Header->Left=Header;Header->Right=Header;}void _M_erase(_Rb_tree_node*);FABLE_FORCEINLINE ~map(){if(Count){_M_erase(Header->Parent);Header->Left=Header;Header->Parent=0;Header->Right=Header;Count=0;}if(Header)free(Header);}CContractionReference&operator[](const unsigned&);map&operator=(const map&);};
 }
 namespace QuadricOptimiserInternals {
 struct COptimisedPrimitive;

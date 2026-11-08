@@ -12,6 +12,7 @@
 // remain, else the overflow reader); CDefIndex is a one-long CLASS, so the 4-byte memcpy is a `movsd` into the local,
 // which VC homes in the dead stream-argument slot ([ebp+8]); the stream stays in ebx for the def-string read.
 // EBP frame + size TU (optimize("y", off), optimize("s", on)), as the landed 0x0046C98D.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
@@ -25,7 +26,7 @@ class CDataInputStream { friend struct CMemoryDataInputStreamReader;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    __forceinline void Read(void* buffer, long size)
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(unsigned long)(position + size);
         if (newPosition < 0 || newPosition > 0x7fffffff)

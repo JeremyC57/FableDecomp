@@ -1,19 +1,20 @@
 // NUISystem::CList::ScrollUntilChild(CComponent* child) -- select the scrolling child equal to child: unless it is already selected or the list has pending deletions, step the old selection out and the new one in, sync the non-scrolling children's selection states and play the list move (or end) sound; stamp the last input time
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00536DD9, 662 bytes; frame-pointer size TU (as ScrollDownProcess 0x00537302).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
 struct CRefCounted {
     long m_count;
-    __forceinline void DecRef() { --m_count; }
-    __forceinline long GetRefCount() const { return m_count; }
+    FABLE_FORCEINLINE void DecRef() { --m_count; }
+    FABLE_FORCEINLINE long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    FABLE_FORCEINLINE void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CUISound;
 struct CUIIconsDef : CDefBase {
@@ -25,7 +26,7 @@ struct CUIIconsDef : CDefBase {
 struct CIconsDefPointer {
     CUIIconsDef* Object;
     CIconsDefPointer() {}
-    __forceinline ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
+    FABLE_FORCEINLINE ~CIconsDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CUIIconsDef* operator->() const { return Object; }
 };
 

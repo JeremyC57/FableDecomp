@@ -3,12 +3,13 @@
 // Leaf: Update
 // Shape: Height is copied into a z-only offset vector before the angle (retail loads +0x78 first and keeps it on the x87 stack
 //   across the sin/cos block); the focal query takes GetPItem() into a local CThing* so the appearance load goes straight to ecx.
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sin,cos)
 extern const double TWO_PI;   // 0x0124F2B8 (established spelling; was NCameraModes::Scale)
 namespace NCameraModes {
 // Layout: camera pointer+38, intelligent handles8 at54/5c; Origin64, scalar phases70/74/78 and deltas7c/80/84, AxisX88/AxisY94; pointer vptr0/link4.
-struct C3DVector{float x,y,z;C3DVector(){}__forceinline C3DVector(float a,float b,float c):x(a),y(b),z(c){}__forceinline C3DVector(const C3DVector&p):x(p.x),y(p.y),z(p.z){}__forceinline C3DVector&operator+=(const C3DVector&b){x+=b.x;y+=b.y;z+=b.z;return *this;}__forceinline C3DVector operator*(float a)const{C3DVector r;r.x=x*a;r.y=y*a;r.z=z*a;return r;}__forceinline C3DVector operator+(const C3DVector&b)const{C3DVector r;r.x=x+b.x;r.y=y+b.y;r.z=z+b.z;return r;}};
+struct C3DVector{float x,y,z;C3DVector(){}FABLE_FORCEINLINE C3DVector(float a,float b,float c):x(a),y(b),z(c){}FABLE_FORCEINLINE C3DVector(const C3DVector&p):x(p.x),y(p.y),z(p.z){}FABLE_FORCEINLINE C3DVector&operator+=(const C3DVector&b){x+=b.x;y+=b.y;z+=b.z;return *this;}FABLE_FORCEINLINE C3DVector operator*(float a)const{C3DVector r;r.x=x*a;r.y=y*a;r.z=z*a;return r;}FABLE_FORCEINLINE C3DVector operator+(const C3DVector&b)const{C3DVector r;r.x=x+b.x;r.y=y+b.y;r.z=z+b.z;return r;}};
 struct CCharString{void*PStringData;};
 extern const CCharString g_helperCameraFocal_013bac4c,g_helperFocal_013bac48;
 struct CTCGraphicAppearance{bool GetHelperPoint(const CCharString&,int,unsigned,C3DVector&,float)const;C3DVector GetFocalPos(float)const;C3DVector GetCameraFocalPos(float)const;};

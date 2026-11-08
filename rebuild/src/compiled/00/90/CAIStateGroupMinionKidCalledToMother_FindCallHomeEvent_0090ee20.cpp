@@ -13,6 +13,7 @@
 // 8-byte UID filter at +0xc and the Bind3 pointers at +0x14..+0x1c; `xor eax,eax` null result. Layout local
 // (the engine header flattens the base; PMother is CThingAICreature's intelligent pointer at +0x180).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+#include "fable_compiler.h"
 class CTCBase;
 class CThing;
 class CWorld;
@@ -160,7 +161,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 // the kid's mother thing: a named creature parameter keeps the creature in eax and forms the pointer address
 // with `lea` (an inline member chain adds 0x180 to the `this` register instead)
-__forceinline CThing* MotherOf(CThingAICreatureM* kid)
+FABLE_FORCEINLINE CThing* MotherOf(CThingAICreatureM* kid)
 {
     return kid->PMother.Get();
 }

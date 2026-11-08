@@ -15,6 +15,7 @@
 // out-pointer template WITHOUT a check of its result, so the not-present path reads the uninitialised out local from its
 // frame slot (`mov esi,[esp+0Ch]`).
 // CThing is modelled locally: rebuild/include/engine has no CThing.h and CThingCreatureBase.h pads the CThing bytes.
+#include "fable_compiler.h"
 class CTCBase;
 
 #include "engine/C3DVector.h"
@@ -57,7 +58,7 @@ public:
             return true;
         return false;
     }
-    __forceinline const CInterfaceMap::SEntry* FindEntry(long type) const
+    FABLE_FORCEINLINE const CInterfaceMap::SEntry* FindEntry(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -72,7 +73,7 @@ public:
             sel = end;
         return sel;
     }
-    template <class T> __forceinline bool GetInterface(long type, T** out) const
+    template <class T> FABLE_FORCEINLINE bool GetInterface(long type, T** out) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {

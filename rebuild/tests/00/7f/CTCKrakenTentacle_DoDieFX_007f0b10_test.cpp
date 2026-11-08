@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // CTCKrakenTentacle::DoDieFX() -- end the ripple effect, look up the "ON_DIE" special effect of the tentacle's def, create that particle emitter at the tentacle as the new ripple effect and, if it lives, attach it to the tentacle's "EFFECT_WATER" bone
@@ -104,7 +105,7 @@ class CThing { public:
     CDefClassBase* PDef;                                    // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                                  // +0x91 (bit 0: dead)
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;

@@ -11,6 +11,7 @@
 //   0.0f 0x0122DEDC, 1.0f 0x0122DED8, double 1.0 0x01237F00, 0.5f 0x0122F59C.
 // Layout: retail CThing interface bitset +0x20 (TC 0x34 = word +0x24 bit 20, TC 0x43 = word +0x28 bit 3), interface map +0x44,
 //   PhysicsTC +0x60 (the landed 0x006650E0 CanSeeTarget model).
+#include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(atan2, fmod, fabs)
 
@@ -35,7 +36,7 @@ class CTCLook { public:
     float GetHeadAngleOffset();                 // 0x00751A80
 };
 
-__forceinline float WrapAngle(float angle)
+FABLE_FORCEINLINE float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {
         angle = (float)fmod((double)angle, 1.0);
@@ -45,7 +46,7 @@ __forceinline float WrapAngle(float angle)
     return angle;
 }
 
-__forceinline float AngleDistance(float a, float b)
+FABLE_FORCEINLINE float AngleDistance(float a, float b)
 {
     a = WrapAngle(a);
     float d = (float)fabs(a - WrapAngle(b));
@@ -61,7 +62,7 @@ public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    template<class T> __forceinline T* GetTC(long interfaceType) const
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;

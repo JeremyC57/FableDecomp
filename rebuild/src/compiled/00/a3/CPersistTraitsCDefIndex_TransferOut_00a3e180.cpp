@@ -14,6 +14,7 @@
 //   manager in a named local makes VC7.1 load it into ecx before the arguments, as retail; the name lookup goes through
 //   an inline CDefString::GetString() (its result address is re-formed with `lea` for the assignment).
 //   Speed-optimised (default) TU.
+#include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 class CCharStringData;
@@ -27,7 +28,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
-    __forceinline bool operator==(const char* text) const
+    FABLE_FORCEINLINE bool operator==(const char* text) const
     {
         if (PStringData == 0) {
             if (strcmp(text, "") == 0)

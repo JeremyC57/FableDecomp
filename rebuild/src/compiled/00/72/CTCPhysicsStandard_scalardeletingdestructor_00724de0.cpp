@@ -16,6 +16,7 @@
 // reset; a generated one was called out of line); the mesh info's delete is guarded explicitly (`delete p` of a
 // trivially destructible type emits no null test); the def pointer's release and the destructors are `__forceinline`;
 // a `new` factory pulls the vtable and the ??_G into the TU.
+#include "fable_compiler.h"
 class CThing;
 class CThingPhysicsMeshInfo { public: long m_data; };
 
@@ -30,7 +31,7 @@ class CPhysicsDef { public:
 template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) {}
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         T* p = m_p;
         if (p) {
@@ -57,12 +58,12 @@ struct __declspec(novtable) CTCPhysicsBase : CTCBase {
     float                    Radius;                // +0x34
     CDefPointer<CPhysicsDef> PhysicsDef;            // +0x38
     unsigned long            m_flags;               // +0x3c Moving / OldMoving bits
-    __forceinline virtual ~CTCPhysicsBase() {}
+    FABLE_FORCEINLINE virtual ~CTCPhysicsBase() {}
 };
 
 struct CTCPhysicsStandard : CTCPhysicsBase {
     CThingPhysicsMeshInfo* PPhysicsMeshInfo;        // +0x40
-    __forceinline virtual ~CTCPhysicsStandard()
+    FABLE_FORCEINLINE virtual ~CTCPhysicsStandard()
     {
         if (PPhysicsMeshInfo)
             delete PPhysicsMeshInfo;

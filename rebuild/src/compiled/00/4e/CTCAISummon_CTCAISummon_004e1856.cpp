@@ -8,13 +8,14 @@
 // Shape (family K119, representative 0x004DC03D): an out-of-line destructor with no vptr store (the compiler-generated one,
 //   kept out of line by the ??_G that calls it): members in reverse order, the CDefPointer's inline `if (Object) {
 //   Object->Release(); Object = 0; }` (Release: `if (--RefCount == 0) Destroy();`), then the base destructor; size TU (`and [m],0`).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 class CDefPointeeBase {                                  // counted def object: vptr, reference count at +4
 public:
     virtual void v00();
     virtual void Destroy();                              // slot 1
     long RefCount;                                       // +0x04
-    __forceinline void Release()
+    FABLE_FORCEINLINE void Release()
     {
         if (--RefCount == 0)
             Destroy();
@@ -23,7 +24,7 @@ public:
 template <class T> class CDefPointer {                   // Ego_r.pdb: CDefPointeeBase* Object
 public:
     CDefPointeeBase* Object;                             // +0x00
-    __forceinline ~CDefPointer()
+    FABLE_FORCEINLINE ~CDefPointer()
     {
         if (Object) {
             Object->Release();

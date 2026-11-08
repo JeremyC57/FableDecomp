@@ -1,4 +1,5 @@
 // Behaviour test for 008dcb60: body copied from src/008dcb60.cpp (CModeJackOfBladesFlash::ExtinguishFlames), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -30,7 +31,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    template <class T> __forceinline T* GetTC(long interfaceType)
+    template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(long(interfaceType + 0));

@@ -14,6 +14,7 @@
 //   +0x0c); retail CThing interface bitset +0x20, vector map +0x44, dead bit +0x91 (landed relatives 0x006EA450,
 //   0x007B0880); CThingCreatureBase +0x100 is the current action's data pointer in retail (PDB +0x11c, STLport
 //   containers 4 bytes shorter); CPlayer +0x218 is a control-lock byte.
+#include "fable_compiler.h"
 #include "engine/CTCHeroRangedAttacks.h"
 
 class CTCBase;
@@ -41,13 +42,13 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
@@ -55,7 +56,7 @@ class CThing { public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);

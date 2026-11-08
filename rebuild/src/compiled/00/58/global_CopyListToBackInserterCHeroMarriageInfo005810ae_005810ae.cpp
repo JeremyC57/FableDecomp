@@ -13,6 +13,7 @@
 // the hidden pointer (`mov [edi],ebx ; mov eax,edi`). Under "s" the iterator members are __forceinline.
 // Label: the catalog's `_Copy_impl<_List_unchecked_iterator<..CHeroMarriageInfo..>, back_insert_iterator<vector<
 // CHeroMarriageInfo>>>` names the instantiation (Dinkumware spelling of the STLport __copy).
+#include "fable_compiler.h"
 #pragma optimize("s", on)
 
 #include "engine/CHeroMarriageInfo.h"            // PDB layout, 0x18 bytes (only passed by reference here)
@@ -32,18 +33,18 @@ struct _List_node {
 
 struct _List_iterator {
     _List_node* _M_node;
-    __forceinline _List_iterator(const _List_iterator& o) : _M_node(o._M_node) { }
-    __forceinline CHeroMarriageInfo& operator*() const { return _M_node->_M_data; }
-    __forceinline _List_iterator& operator++() { _M_node = _M_node->_M_next; return *this; }
-    __forceinline bool operator!=(const _List_iterator& o) const { return _M_node != o._M_node; }
+    FABLE_FORCEINLINE _List_iterator(const _List_iterator& o) : _M_node(o._M_node) { }
+    FABLE_FORCEINLINE CHeroMarriageInfo& operator*() const { return _M_node->_M_data; }
+    FABLE_FORCEINLINE _List_iterator& operator++() { _M_node = _M_node->_M_next; return *this; }
+    FABLE_FORCEINLINE bool operator!=(const _List_iterator& o) const { return _M_node != o._M_node; }
 };
 
 struct back_insert_iterator {
     CHeroMarriageInfoVector* container;
     explicit back_insert_iterator(CHeroMarriageInfoVector& x) : container(&x) { }
-    __forceinline back_insert_iterator& operator=(const CHeroMarriageInfo& value) { container->push_back(value); return *this; }
-    __forceinline back_insert_iterator& operator*() { return *this; }
-    __forceinline back_insert_iterator& operator++() { return *this; }
+    FABLE_FORCEINLINE back_insert_iterator& operator=(const CHeroMarriageInfo& value) { container->push_back(value); return *this; }
+    FABLE_FORCEINLINE back_insert_iterator& operator*() { return *this; }
+    FABLE_FORCEINLINE back_insert_iterator& operator++() { return *this; }
 };
 
 struct input_iterator_tag { input_iterator_tag() { } };

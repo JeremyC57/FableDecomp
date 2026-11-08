@@ -5,6 +5,7 @@
 // Shape: CalcAndLookup (0x00669D30) gets a same-TU out-value-only stand-in body (the 0x008D9740 idiom): the effect index
 //   stops escaping, so the GetInterface(0x4B) key shares the dead effect word (+0x1c) as retail.
 // Layout: CThing bitset +0x20, map +0x44, PTCDriver +0x5c, physics +0x60, def +0x70, dead flag +0x91 bit 0 (as 0x8C8380/0x8F5060).
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
@@ -81,13 +82,13 @@ class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

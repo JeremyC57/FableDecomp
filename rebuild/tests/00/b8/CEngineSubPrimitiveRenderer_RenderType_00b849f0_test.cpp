@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -3963,7 +3964,7 @@ struct CSubRenderStateManager {
  CSubState DeviceStates[231];CSubState BookmarkDummy;unsigned InitFlags;
  void PopBookmark(); //A05840
  void PushBookmark(){Stack[StackSize].State=&BookmarkDummy;++StackSize;BookmarkMask<<=1;}
- __forceinline void Set(CSubState& state,unsigned value){if(state.Desired!=value){if(!(state.BookmarkMask&BookmarkMask)){state.BookmarkMask|=BookmarkMask;Stack[StackSize].State=&state;Stack[StackSize].OldValue=state.Desired;++StackSize;}state.Desired=value;if(!state.Dirty){state.Dirty=true;Updates[UpdateSize]=&state;++UpdateSize;}}}
+ FABLE_FORCEINLINE void Set(CSubState& state,unsigned value){if(state.Desired!=value){if(!(state.BookmarkMask&BookmarkMask)){state.BookmarkMask|=BookmarkMask;Stack[StackSize].State=&state;Stack[StackSize].OldValue=state.Desired;++StackSize;}state.Desired=value;if(!state.Dirty){state.Dirty=true;Updates[UpdateSize]=&state;++UpdateSize;}}}
 };
 struct CSubPrimitiveManager {void* Vtable;void* Scenes;bool Enable;};
 struct CSubPrimitive {void* Vtable;unsigned RenderFlags;unsigned char Alpha;void* Parent;CSubPrimitive* Next;CSubPrimitiveManager* Manager;};

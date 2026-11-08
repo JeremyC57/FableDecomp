@@ -25,6 +25,7 @@
 //   pick is the inline GFRandom (0x24A1/0x24DF LCG + GFROR13, `range ? seed % range : 0`), the entry copied into a new
 //   CAnimEntryLite before the counted pointer is built in the hidden result; both returns and the null fall-through keep
 //   their own release + epilogue.
+#include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
@@ -51,7 +52,7 @@ public:
 };
 
 long __fastcall GFROR13(unsigned long);       // 0x00497890
-__forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
+FABLE_FORCEINLINE unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);
@@ -196,7 +197,7 @@ public:
     TAnimMap Anims;                                         // +0x00
 };
 
-static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+static FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 
 template <class T> class CDefPointer {
 public:

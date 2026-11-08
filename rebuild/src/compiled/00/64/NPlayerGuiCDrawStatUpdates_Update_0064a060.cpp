@@ -16,6 +16,7 @@
 // Layout: local view (no engine/ header for CDrawStatUpdates, CDrawBase, CPlayerGui or CTCHeroExperience): CDrawBase PlayerGui +4 /
 //   PlayerManager +8 (Ego_r.pdb); CTCHeroExperience::ExperiencePointsAvailableToSpend +0x14 (Ego_r.pdb, read directly);
 //   CThing UsingComponents +0x20 / Components +0x44 (retail).
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace std {
@@ -64,7 +65,7 @@ public:
     unsigned char _pad_0x54[0x91 - 0x54];
     unsigned char Dead : 1;                                 // +0x91 bit 0
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    __forceinline const CTCBase* GetTC(ETCInterfaceType type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(ETCInterfaceType type) const
     {
         const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
         const ETCInterfaceType key = type;

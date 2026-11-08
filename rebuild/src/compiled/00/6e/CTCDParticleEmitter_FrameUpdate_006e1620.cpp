@@ -11,6 +11,7 @@
 // SetParticleCreationDisabled @ 0x006E0690 / UpdateEmitterThingAttachment @ 0x006DFFB0 / UpdateEmitterCameraAttachment
 // @ 0x006E0230, CTCPhysicsBase::GetOrientationInterpolator @ 0x006B0460, CParticleEmitter::SetHidden @ 0x006DFDA0,
 // CThing::Kill(bool) @ 0x004C9B80, the CTCBase accessor @ 0x00686D60 (slot 9), C3DOrientationInterpolator vtable 0x01239824.
+#include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -94,7 +95,7 @@ class CThing { public:
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Flags91;                                   // +0x91 bit 0 dead, bit 5 hidden
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -176,7 +177,7 @@ class CTCDParticleEmitter { public:
     bool IsParticleCreationDisabled();                       // 0x006E0DF0
     void SetParticleCreationDisabled(bool disabled);         // 0x006E0690
     void UpdateEmitterCameraAttachment(bool interpolate);    // 0x006E0230
-    __forceinline void SetPositionFrom(C3DVector position)
+    FABLE_FORCEINLINE void SetPositionFrom(C3DVector position)
     {
         NParticleEngine::CParticleEmitter* emitter = PEmitter.GetPItem();
         emitter->SetPosition(C3DPositionInterpolator(position, position));

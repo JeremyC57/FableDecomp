@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -614,8 +615,8 @@ struct ActiveQuest{unsigned char State[8];ScriptBaseNative* Script;};
 struct GameScriptThingManager{ScriptMethods GetNullScriptThing();}; //00704730, non-POD hidden result returned in caller slot
 struct QuestManagerNative{void* State;GameScriptThingManager* ScriptThings;unsigned char OtherState[0x80];ActiveQuest* PQuestCurrentlyRunning;};
 extern QuestManagerNative* QuestManager; //013B89FC
-__forceinline long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
-__forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
+FABLE_FORCEINLINE long LastFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->LastScriptFrame:0;}
+FABLE_FORCEINLINE long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->PActiveThread->CurrentScriptFrame:0;}
 // Event kind3; PDB originator PerformedBy intelligent pointer+8.
 // Result CScriptThing is non-POD, size12, hidden caller destination passed to both callees; no explicit out-pointer prototype.
 // Real event virtual order: destructor, GetType, OnAdd, GetLifeTime, IsReadyToDie.

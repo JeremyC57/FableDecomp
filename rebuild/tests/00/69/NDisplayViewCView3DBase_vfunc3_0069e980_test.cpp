@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 #include <string.h>
 // BEGIN exact source snapshot SHA256 aa1ec96bf9ec7747b03de64e63679dbb27dd710ae98f0667919f023f93926f44
@@ -96,12 +97,12 @@ struct CTCMap {
     Entry *First,*Last;
     Entry* LowerBound(const long*); // 0x0040f020
     const Entry* LowerBound(const long&) const; // 0x004365b0
-    template<class T> __forceinline T* Get(long interfaceType) {
+    template<class T> FABLE_FORCEINLINE T* Get(long interfaceType) {
         long type=interfaceType;
         Entry* it=LowerBound(&type);
         return (T*)(it==Last || interfaceType<it->Type ? Last : it)->Component;
     }
-    template<class T> __forceinline const T* Get(long interfaceType) const {
+    template<class T> FABLE_FORCEINLINE const T* Get(long interfaceType) const {
         long type=interfaceType;
         const Entry* it=LowerBound(type);
         return (const T*)(it==Last || interfaceType<it->Type ? Last : it)->Component;

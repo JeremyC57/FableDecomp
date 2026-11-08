@@ -12,6 +12,7 @@
 // absent path dereferences null, as retail does); the two SummonCreatures calls are not merged.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
+#include "fable_compiler.h"
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 
@@ -35,7 +36,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_deleteFlags;                // +0x91 bit 0: being deleted
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
             long type = interfaceType;

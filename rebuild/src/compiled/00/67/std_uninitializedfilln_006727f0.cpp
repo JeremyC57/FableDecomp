@@ -12,6 +12,7 @@
 //   every pass.  The helper needs __forceinline (a plain inline helper stays a call).  The retail TU is /Gr, written as
 //   an explicit __fastcall.
 // Label: catalog "_Fill_n<unsigned_long*,unsigned_int,unsigned_long>" is a propagated Dinkumware spelling.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 
 enum ENavigatorType { NAVIGATOR_TYPE_NONE = -1, NAVIGATOR_TYPE_0 = 0 };
@@ -22,7 +23,7 @@ struct __false_type { };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
+FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x, const __false_type&)
 {
     _ForwardIter __cur = __first;
     for (; __n > 0; --__n, ++__cur)

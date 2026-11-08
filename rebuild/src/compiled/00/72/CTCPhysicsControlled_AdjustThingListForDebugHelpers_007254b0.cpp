@@ -11,6 +11,7 @@
 //   path; the copy's end becomes the new finish (the `n ? ... : result` form tests the byte count instead). Both helpers are
 //   __forceinline: a plain inline erase is called out of line and the lane then folds the self-compare away.
 // Leaf: AdjustThingListForDebugHelpers
+#include "fable_compiler.h"
 #include <string.h>
 #define CTCPhysicsStandard CTCPhysicsStandardLayout
 #include "engine/CTCPhysicsStandard.h"
@@ -38,7 +39,7 @@ class CPlayerManager { public:
 
 extern bool g_bDebugHelpers;                // 0x013756E9
 
-__forceinline void* CopyTrivial(const void* first, const void* last, void* result)
+FABLE_FORCEINLINE void* CopyTrivial(const void* first, const void* last, void* result)
 {
     if (first == last)
         return result;
@@ -52,7 +53,7 @@ struct CThingVector {                       // STLport vector<CThing*>
     CThing** _M_end_of_storage;
     CThing** begin() { return _M_start; }
     CThing** end()   { return _M_finish; }
-    __forceinline CThing** erase(CThing** first, CThing** last)
+    FABLE_FORCEINLINE CThing** erase(CThing** first, CThing** last)
     {
         CThing** i = (CThing**)CopyTrivial(last, _M_finish, first);
         _M_finish = i;

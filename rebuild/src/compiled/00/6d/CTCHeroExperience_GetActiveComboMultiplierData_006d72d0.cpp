@@ -14,6 +14,7 @@
 //   CComboMultiplierData (Ego_r): ComboMultiplier map, two floats (0x14 bytes retail).
 // Shape: STLport 4.6 _Rb_tree_iterator with _Rb_global<bool>::_M_increment / _M_decrement expanded in place (the loop's ++it
 //   and the final rbegin()), the first post-increment kept as the out-of-line call.
+#include "fable_compiler.h"
 #define CTCHeroExperience CTCHeroExperienceLayout
 #include "engine/CTCHeroExperience.h"
 #undef CTCHeroExperience
@@ -41,7 +42,7 @@ template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
 template <class _Dummy> class _Rb_global {
 public:
     typedef _Rb_tree_node_base* _Base_ptr;
-    static __forceinline _Base_ptr __cdecl _M_increment(_Base_ptr _M_node)
+    static FABLE_FORCEINLINE _Base_ptr __cdecl _M_increment(_Base_ptr _M_node)
     {
         if (_M_node->_M_right != 0) {
             _M_node = _M_node->_M_right;
@@ -59,7 +60,7 @@ public:
         }
         return _M_node;
     }
-    static __forceinline _Base_ptr __cdecl _M_decrement(_Base_ptr _M_node)
+    static FABLE_FORCEINLINE _Base_ptr __cdecl _M_decrement(_Base_ptr _M_node)
     {
         if (_M_node->_M_color == false && _M_node->_M_parent->_M_parent == _M_node)
             _M_node = _M_node->_M_right;

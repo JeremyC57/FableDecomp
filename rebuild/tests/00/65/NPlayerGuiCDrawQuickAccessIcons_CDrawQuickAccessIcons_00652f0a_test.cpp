@@ -1,4 +1,5 @@
 // Behaviour test for 00652f0a: body copied from src/00652f0a.cpp (CDrawQuickAccessIcons ctor), callees stubbed.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -10,8 +11,8 @@ class CPlayerGui;
 class CBaseClass {
 public:  virtual void v00() {} CBaseClass() { ++g_handleCtor; } };
 class CIVCountedPointeeBase;
-struct CIVCountedPointer { CIVCountedPointeeBase* Object; __forceinline CIVCountedPointer() : Object(0) { } };
-class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
+struct CIVCountedPointer { CIVCountedPointeeBase* Object; FABLE_FORCEINLINE CIVCountedPointer() : Object(0) { } };
+class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; virtual void v00() {} FABLE_FORCEINLINE CEnginePrimitiveHandle() { } };
 class C2DCoordI { public: long X; long Y; C2DCoordI() { } };
 namespace NPlayerGui {
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };

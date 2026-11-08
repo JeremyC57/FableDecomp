@@ -2,11 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FCD10, length 48 bytes.
 // Leaf: ??_GCVolume@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129C840) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
+#include "fable_compiler.h"
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:              // vtable 0x0129C840
     void ReleaseVolume(long flags);                // 0x00A67460
-    __forceinline virtual ~CVolume()
+    FABLE_FORCEINLINE virtual ~CVolume()
     {
         ReleaseVolume(1);
     }

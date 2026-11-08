@@ -16,6 +16,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -33,7 +34,7 @@ class CScriptThing;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
-    virtual __forceinline ~CScriptGameResourceObjectBase() {}
+    virtual FABLE_FORCEINLINE ~CScriptGameResourceObjectBase() {}
 };
 
 struct CScriptThingImp;
@@ -58,8 +59,8 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
 
 struct CHeldMovie {                                     // holder: its forceinline dtor expands the movie's implicit dtor at every exit
     CScriptGameResourceObjectMovieBase Obj;
-    __forceinline CHeldMovie() {}
-    __forceinline ~CHeldMovie() {}
+    FABLE_FORCEINLINE CHeldMovie() {}
+    FABLE_FORCEINLINE ~CHeldMovie() {}
 };
 
 struct _Rb_tree_node_base {
@@ -71,13 +72,13 @@ struct _Rb_tree_node_base {
 
 struct _Rb_tree_base {
     _Rb_tree_node_base* _M_header;
-    __forceinline _Rb_tree_base() : _M_header(0) { _M_header = (_Rb_tree_node_base*)malloc(0x24); }
+    FABLE_FORCEINLINE _Rb_tree_base() : _M_header(0) { _M_header = (_Rb_tree_node_base*)malloc(0x24); }
 };
 
 struct CCutsceneCastMap : _Rb_tree_base {               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
     unsigned long       _M_node_count;
     unsigned char       _M_key_compare;
-    __forceinline CCutsceneCastMap() : _M_node_count(0)
+    FABLE_FORCEINLINE CCutsceneCastMap() : _M_node_count(0)
     {
         _M_header->_M_color = 0;
         _M_header->_M_parent = 0;

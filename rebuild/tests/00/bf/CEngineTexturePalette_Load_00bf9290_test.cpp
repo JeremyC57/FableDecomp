@@ -1,5 +1,6 @@
 // Behaviour test for 00bf9290: src/00bf9290.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CEngineTexturePalette::Load(CDataInputStream&)
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -37,8 +38,8 @@ public:
     long SourceChunkStreamPos;
     long m_remaining;                               // +0x14
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -52,8 +53,8 @@ public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline char ReadChar() { char v; Read(&v, sizeof(v)); return v; }
-    __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE char ReadChar() { char v; Read(&v, sizeof(v)); return v; }
+    FABLE_FORCEINLINE long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
 };
 
 class CBankFile {

@@ -15,6 +15,7 @@
 // call) and the pointer is nulled; then the base destructor and the deleting tail. The vtable
 // (and this `??_G`) is emitted because the TU constructs the object (MakeOne); the destructor is
 // `__forceinline` so its body sits inside the `??_G` (VC7.1 would otherwise emit `??1` out of line).
+#include "fable_compiler.h"
 class CAInputProcess;
 
 class CInputProcessManager {
@@ -32,7 +33,7 @@ struct CBaseClassNonCopyable {
 class CAInputProcess : public CBaseClassNonCopyable { public:
     CInputProcessManager* PPlayerInterface;     // +0x04
     void* InputProcessListPos[3];               // +0x08 CLinkedListPosition
-    __forceinline virtual ~CAInputProcess()
+    FABLE_FORCEINLINE virtual ~CAInputProcess()
     {
         if (PPlayerInterface != 0) {
             NotifyRemoved();

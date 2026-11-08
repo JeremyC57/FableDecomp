@@ -15,6 +15,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+#include "fable_compiler.h"
 class CCharStringData { public: const char* m_pText; unsigned long m_length; };
 class CCharString { public:
     CCharStringData* PStringData;
@@ -29,7 +30,7 @@ extern "C" char* __cdecl strstr(const char* text, const char* pattern);   // 0x0
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptBase.h"
 
-__forceinline bool NameContains(const CCharString& name, const char* text)
+FABLE_FORCEINLINE bool NameContains(const CCharString& name, const char* text)
 {
     CCharString pattern(text, -1);
     return strstr(name.GetPString(), pattern.GetPString()) ? true : false;

@@ -20,6 +20,7 @@
 // Shape: same-TU out-only stand-ins for both GetSubDef instantiations, GetEffectFromString and LowerBound (as Spike); both
 //   defs released by hand without a null test on the battle def; the particle emitter is a named local so GetTC runs before
 //   the "" temporary is built.
+#include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCharString { public:
@@ -105,13 +106,13 @@ class CThing { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
-    __forceinline bool HasTC(long interfaceType) const
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
             return true;
         return false;
     }
-    template<class T> __forceinline T* GetTC(long interfaceType)
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;

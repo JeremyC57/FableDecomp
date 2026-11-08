@@ -9,6 +9,7 @@
 // Each read is a non-template __forceinline ReadValue(T&) (local + Read + store): the inlined locals share the one
 // dead-argument slot and keep this in ebx (named locals in the body give a second frame word or swap ebx/edi).
 // `this` uses engine/CReactionFrequencyTraits_PeriodicFrequency.h.
+#include "fable_compiler.h"
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -23,8 +24,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);
         if (!IsValidPosition(newPosition))
@@ -38,8 +39,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
-    __forceinline void ReadValue(float& out) { float value; Read(&value, sizeof(value)); out = value; }
-    __forceinline void ReadValue(unsigned long& out) { unsigned long value; Read(&value, sizeof(value)); out = value; }
+    FABLE_FORCEINLINE void ReadValue(float& out) { float value; Read(&value, sizeof(value)); out = value; }
+    FABLE_FORCEINLINE void ReadValue(unsigned long& out) { unsigned long value; Read(&value, sizeof(value)); out = value; }
 };
 
 struct CReactionFrequencyTraits_PeriodicFrequency_Methods : CReactionFrequencyTraits_PeriodicFrequency {

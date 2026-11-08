@@ -6,6 +6,7 @@
 // Shape (family M148, representative 0x005947B6): STLport `if (_M_finish != _M_end_of_storage._M_data) { _Construct(_M_finish,
 //   __x); ++_M_finish; } else _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);` -- the pair's explicit copy
 //   constructor (two dword moves, null-checked placement); `optimize("y", off)` + `optimize("s", on)`.
+#include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
@@ -19,7 +20,7 @@ template <class _T1, class _T2> struct pair {
 };
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Tp _M_data; };
-template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _T1, class _T2> FABLE_FORCEINLINE void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
 template <class _Tp, class _Alloc> class _Vector_base {
 public:
     _Tp* _M_start;

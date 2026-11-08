@@ -8,6 +8,7 @@
 // Shape (family K008, representative 0x004AA190): STLport 4.6 `__uninitialized_fill_n(..., const __false_type&)` loop with the
 //   null-tested _Construct and the __forceinline intelligent-pointer copy constructor; the class's user-declared virtual
 //   destructor (the landed 0x00739550 model) gives retail's register assignment (x in edi, n in ebx); STLport's three-parameter template, as the binding spells it.
+#include "fable_compiler.h"
 inline void* operator new(unsigned int, void* p) { return p; }
 class CBaseObject;
 class CThing;
@@ -21,7 +22,7 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
 public:
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { CBaseObject* item = other.GetPItem(); SetPItem(item); }
+    FABLE_FORCEINLINE CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { CBaseObject* item = other.GetPItem(); SetPItem(item); }
     virtual ~CIntelligentPointer() { }                      // the class's own vtable (as the landed 0x00739550 row)
 };
 namespace std {

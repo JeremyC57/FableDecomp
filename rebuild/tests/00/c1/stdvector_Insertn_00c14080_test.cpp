@@ -1,3 +1,4 @@
+#include "fable_compiler.h"
 #include <stdio.h>
 // std::vector::_Insert_n(iterator,unsigned int,const value_type&) -- Original Dinkumware pointer insertion, growth and alias-safe temporary.
 // Leaf: ?_Insert_n@?$vector@PAVCUnprovenQueueRequestOne@@V?$allocator@PAVCUnprovenQueueRequestOne@@@std@@@std@@QAEXPAPAVCUnprovenQueueRequestOne@@IABQAV3@@Z
@@ -20,7 +21,7 @@ extern "C" __declspec(dllimport) void* __cdecl memmove(void*,const void*,size_t)
 #endif
 namespace std{
 template<class T>class allocator{public:T* allocate(unsigned int n){return (T*)operator new(n*sizeof(T));}void deallocate(T* p,unsigned int){operator delete(p);}unsigned int max_size()const{return 0xffffffffU/(unsigned int)sizeof(T);}};
-template<class T>__forceinline T* copy(T* first,T* last,T* result){unsigned int n=(unsigned int)(last-first);return (T*)memmove(result,first,n*sizeof(T))+n;}
+template<class T>FABLE_FORCEINLINE T* copy(T* first,T* last,T* result){unsigned int n=(unsigned int)(last-first);return (T*)memmove(result,first,n*sizeof(T))+n;}
 template<class T>NOINLINE void __fastcall fill(T* first,T* last,const T& value){for(;first!=last;++first)*first=value;}
 template<class T>NOINLINE T* __fastcall copy_backward(T* first,T* last,T* result){unsigned int n=(unsigned int)(last-first);T* out=result-n;memmove(out,first,n*sizeof(T));return out;}
 template<class T,class A=allocator<T> >class vector{public:typedef T* iterator;typedef unsigned int size_type;A _Alval;T* _Myfirst;T* _Mylast;T* _Myend;

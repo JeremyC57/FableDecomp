@@ -12,6 +12,7 @@
 //   (__forceinline; the stand-alone `ret 28h` __pop_heap at 0x0067EA60 is unreferenced): value copied first, then *first -> *result, then the
 //   by-value re-push and the /28 length.  /Gr TU written as explicit __fastcall.
 // Label: catalog "_Pop_heap_0<CDebugSphere*,CDebugSphere>" is a propagated Dinkumware label.
+#include "fable_compiler.h"
 #pragma pack(push, 1)
 class CEngineGraphic {                                      // 14 bytes (Ego_r.pdb)
 public:
@@ -50,7 +51,7 @@ void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeInd
 template <class _Tp> inline int* __distance_type(_Tp* const&) { return (int*)0; }
 
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
-__forceinline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
+FABLE_FORCEINLINE void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
                               _Tp __val, _Compare __comp, _Distance*)
 {
     *__result = *__first;

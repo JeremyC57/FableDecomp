@@ -11,6 +11,7 @@
 // Shape: inline clear(); the count through an inlined CPersistTraits<long>::TransferBinaryIn (fast path into ebx); the
 //   loop value-initialises the pair (key 0, CDefString's default TablePos -1), reads the key through an empty long-traits
 //   temporary homed on the pair's first word and the def string through its own member TransferBinaryIn.
+#include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -24,8 +25,8 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* chunkBase;                         // +0x0C
     long                 chunkPosition;                     // +0x10
     long                 chunkLength;                       // +0x14
-    static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
-    __forceinline void Read(void* buffer, long size)
+    static FABLE_FORCEINLINE bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
+    FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(position + size);
         if (!IsValidPosition(newPosition))
@@ -90,7 +91,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream& stream, T* out) const;
 };
 
-__forceinline void ReadCount(CMemoryDataInputStream& stream, long* out)
+FABLE_FORCEINLINE void ReadCount(CMemoryDataInputStream& stream, long* out)
 {
     long value;
     stream.Read(&value, sizeof(value));

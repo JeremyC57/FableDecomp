@@ -16,6 +16,7 @@
 //   `it == last || key < it->type` selection with the component kept in ebx; the faction name is a CCharString in its own
 //   block (homed in the dead witness slot) destroyed before the null test; PWorld/PFactionManager are scoped_ptrs read through
 //   their inline operator-> (the plain pointer form loads the global into ecx, retail into eax).
+#include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
@@ -64,13 +65,13 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline const CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

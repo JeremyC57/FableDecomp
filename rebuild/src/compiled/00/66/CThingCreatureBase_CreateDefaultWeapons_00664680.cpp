@@ -18,6 +18,7 @@
 //   UseMeleeWeaponAsDefault bit 4 of +0x148 (PDB 8 higher: def base 4, the NavigatorTypes vector 4).
 // Shape: every def read goes through an inline GetDef() pointer accessor (retail copies the def into eax for the melee
 //   pair and keeps it in edi across GetPos); the object's lookup goes through a `const CThing*` (const LowerBound).
+#include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
 class CRightHandedSet;
@@ -45,13 +46,13 @@ class CThing { public:
     unsigned char  _bits92b : 3;
     const C3DVector& GetPos() const;               // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
-    __forceinline bool HasTC(long type) const
+    FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
             return true;
         return false;
     }
-    __forceinline CTCBase* GetTC(long type)
+    FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
@@ -59,7 +60,7 @@ class CThing { public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-    __forceinline const CTCBase* GetTC(long type) const
+    FABLE_FORCEINLINE const CTCBase* GetTC(long type) const
     {
         ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;

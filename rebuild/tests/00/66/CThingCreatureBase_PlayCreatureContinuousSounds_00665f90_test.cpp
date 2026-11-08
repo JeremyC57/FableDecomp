@@ -1,6 +1,7 @@
 // Behaviour test for 00665f90: src/00665f90.cpp copied verbatim; PlayCreatureContinuousSounds, when the creature def has
 // the sound sub-def and the thing has interface 0x10, sets the sound component's channel to "VOICE<n+1>" (n the
 // round-robin counter, which advances modulo 8) and plays SE_CREATURE_CONTINUOUS; the sub-def is released.
+#include "fable_compiler.h"
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
@@ -83,11 +84,11 @@ class CThingCreatureBase { public:
     CInterfaceMap m_interfaces;             // +0x44
     unsigned char _pad4c[0xe0 - 0x4c];
     CThingCreatureDef* PDef;                // +0xe0 CDefPointer<CThingCreatureDef const>::Object
-    __forceinline unsigned long HasTC(long interfaceType) const
+    FABLE_FORCEINLINE unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
