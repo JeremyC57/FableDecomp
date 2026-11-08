@@ -33,8 +33,17 @@ private:
  CDebugManager* DebugManager;
  CCountedPointer<CGraphicBankManager> PGraphicBankManager;
  CCountedPointer<CMeshBankManager> PMeshBankManager;
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_FONTMANAGER
+ // Nested opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): retail reads the font manager at +0x84 (Output
+ // `mov ebp,[eax+84h]` after GFGetSystemManager 0x009A4EC0; the landed ~CText 0x0054F6E0 reads the same word), so the unnamed
+ // counted-pointer composite the ctor 0x009A7440 zeroes (`[esi+7Ch]` / `[esi+80h]`) sits before PFontManager, after
+ // PGraphicBankManager +0x6C and PMeshBankManager +0x74 (landed CGraphicBankManager / CMeshBankManager readers). Same size.
+ unsigned char _pad_007c[8]; // Native ctor009a7440 additional unaccessed composite; original name not recovered.
+ CCountedPointer<CFontManager> PFontManager;                            // +0x84 (retail)
+#else
  CCountedPointer<CFontManager> PFontManager;
  unsigned char _pad_0084[8]; // Native ctor009a7440 additional unaccessed composite; original name not recovered.
+#endif
  bool WindowInitialised,DDrawInitialised,ExclusiveMode;
  HINSTANCE__* WinInstanceHandle;HWND ApplicationWinHandle;int WinShow;char* WinCommandLine;
  CWideString WinAppName;

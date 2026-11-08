@@ -18,6 +18,17 @@ public:
  virtual ~CSurface();
 #endif
  void Uninitialise();                                     // 0x009F2E20
+#ifdef FABLE_RETAIL_CSURFACE_BITMAP
+ // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb ?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ
+ // (0x00B46C70 = the landed retail 0x009F2F90, hidden result) and ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z
+ // (0x00B46AA0 = the landed retail 0x009F2DD0). Needs C2DExtentsI / CWideString complete at the call. Declarations only.
+ C2DExtentsI GetDimensions() const;                       // 0x009F2F90
+ bool LoadFromBitmapFileToPreallocatedSurface(const class CWideString& filename, unsigned long filter);   // 0x009F2DD0
+ // FableWin.pdb ?GetWidth@CSurface@@QBEKXZ / ?GetHeight@CSurface@@QBEKXZ (debug only, inline in release: Output 0x00494900 calls
+ // GetDimensions 0x009F2F90 once per extent and keeps the one field). Needs C2DExtentsI complete before the include.
+ unsigned long GetWidth() const { return GetDimensions().X; }
+ unsigned long GetHeight() const { return GetDimensions().Y; }
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_PIXELFORMAT
  // chunk 751 (row 0x009BEE40): Ego_r.pdb ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ (0x009F2F60, by value through the hidden
  // pointer). Needs CPixelFormat complete (engine/CPixelFormat.h) before the include.

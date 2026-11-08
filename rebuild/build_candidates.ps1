@@ -385469,6 +385469,55 @@ $catalog = @(
         TestSource = '00/c7/CCombFilter_Allocate_00c75f80_test.cpp'
         PassPattern = '00c75f80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00494900'
+        Module = 'CFrontendGameComponent'
+        Source = '00/49/CFrontendGameComponent_Output_00494900.cpp'
+        TestSource = '00/49/CFrontendGameComponent_Output_00494900_test.cpp'
+        PassPattern = '00494900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb6e20'
+        Module = 'std::vector'
+        Source = '00/cb/stdvector_vector_00cb6e20.cpp'
+        TestSource = '00/cb/stdvector_vector_00cb6e20_test.cpp'
+        PassPattern = '00cb6e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3b3d0'
+        Module = 'NScript::CQ_GuildTrainingScript'
+        Source = '00/d3/NScriptCQGuildTrainingScript_Init_00d3b3d0.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScript_Init_00d3b3d0_test.cpp'
+        PassPattern = '00d3b3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7ae30'
+        Module = 'NScript::CQ_HeroSoulsThunderScript'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScript_OnPersist_00d7ae30.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScript_OnPersist_00d7ae30_test.cpp'
+        PassPattern = '00d7ae30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8dcc0'
+        Module = 'NScript::CQ_HobbeCaveScript'
+        Source = '00/d8/NScriptCQHobbeCaveScript_OnPersist_00d8dcc0.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScript_OnPersist_00d8dcc0_test.cpp'
+        PassPattern = '00d8dcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6980'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_OnPersist_00eb6980.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_OnPersist_00eb6980_test.cpp'
+        PassPattern = '00eb6980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121ad80'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet9_0121ad80.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet9_0121ad80_test.cpp'
+        PassPattern = '0121ad80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

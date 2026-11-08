@@ -48630,7 +48630,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cb6b00	__pop_heap	_global	__fastcall	void	4	pair<CCharString,CScriptInfo> *,pair<CCharString,CScriptInfo> *,CKeyPairCompareLess<CCharString,CScriptInfo>,pair<CCharString,CScriptInfo> *	1	yes	accepted									
 00cb6bd0	__make_heap	std	unknown	undefined	0		0	yes	accepted									
 00cb6ce0	__linear_insert	std	unknown	undefined	0		0	yes	accepted									
-00cb6e20	sub_00cb6e20	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00cb6e20	~vector	std::vector<std::pair<CCharString, CScriptInfo>, std::allocator<std::pair<CCharString, CScriptInfo>>>	unknown	undefined	0		0			discovered	gapscan							
 00cb6e60	_M_clear	std::vector<std::pair<CCharString, CScriptInfo>, std::allocator<std::pair<CCharString, CScriptInfo>>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 00cb6ea0	__insertion_sort	std	__fastcall	void	4	pair<float,CCharString> *,pair<float,CCharString> *,CKeyPairCompareLess<float,CCharString>,pair<float,CCharString> *	1	yes	accepted									
 00cb6f10	sort_heap	std	__fastcall	void	3	pair<unsigned_long,CRandomAppearanceMorph::CTextureMorph> *,pair<unsigned_long,CRandomAppearanceMorph::CTextureMorph> *,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>	1	yes	accepted									
@@ -56837,7 +56837,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121acd0	`dynamic initializer for 'UPSIDE_DOWN_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	unknown	undefined	0		0	yes	accepted									
 0121ad20	`dynamic initializer for 'UPSIDE_DOWN_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	__fastcall	void	0		1	yes	accepted									
 0121ad50	`dynamic initializer for 'UPSIDE_DOWN_LEFT_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	__fastcall	void	0		1	yes	accepted									
-0121ad80	sub_0121ad80	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121ad80	$E_InventoryOrientationRHSet9	_global	unknown	undefined	0		0			discovered	gapscan							
 0121adc0	sub_0121adc0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121adf0	sub_0121adf0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121ae20	g_CStatic_01229030_01229030	_static_init	unknown	undefined	0		0			discovered	gapscan							

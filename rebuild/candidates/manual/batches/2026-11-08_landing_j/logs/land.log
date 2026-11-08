@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00494900   RELOCATION_MATCH PASS   Output
+00cb6e20   RELOCATION_MATCH PASS   ~vector
+00d3b3d0   WARN RELOC_NAME: ?GossipSetup@CQ_GuildTrainingScript@NScript@@QAEXXZ -> 00d3b410 labelled 'CGameflowScript::DeclareGossipCategories'
+00d3b3d0   RELOCATION_MATCH PASS   Init
+00d7ae30   RELOCATION_MATCH PASS   OnPersist
+00d8dcc0   RELOCATION_MATCH PASS   OnPersist
+00eb6980   RELOCATION_MATCH PASS   OnPersist
+0121ad80   RELOCATION_MATCH PASS   $E_InventoryOrientationRHSet9
+
+WINS: 7
+  00494900 RELOCATION_MATCH CFrontendGameComponent::?Output@CFrontendGameComponent@@AAEXXZ
+  00cb6e20 RELOCATION_MATCH std::vector::??1?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAE@XZ
+  00d3b3d0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?Init@CQ_GuildTrainingScript@NScript@@UAEXXZ
+  00d7ae30 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::?OnPersist@CQ_HeroSoulsThunderScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00d8dcc0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::?OnPersist@CQ_HobbeCaveScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00eb6980 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::?OnPersist@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@EAEXAAVCPersistContext@@@Z
+  0121ad80 RELOCATION_MATCH _global::_$E1
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CFrontendGameComponent_Output_00494900
+  stdvector_vector_00cb6e20
+  NScriptCQGuildTrainingScript_Init_00d3b3d0
+  NScriptCQHeroSoulsThunderScript_OnPersist_00d7ae30
+  NScriptCQHobbeCaveScript_OnPersist_00d8dcc0
+  NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_OnPersist_00eb6980
+  global_EInventoryOrientationRHSet9_0121ad80

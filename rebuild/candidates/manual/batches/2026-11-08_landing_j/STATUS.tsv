@@ -1,0 +1,8 @@
+address	name	grade	behav	note
+00494900	CFrontendGameComponent::Output	RELOCATION_MATCH	PASS	landed
+00cb6e20	std::vector<std::pair<CCharString,CScriptInfo> >::~vector	RELOCATION_MATCH	PASS	landed
+00d3b3d0	NScript::CQ_GuildTrainingScript::Init	RELOCATION_MATCH	PASS	landed
+00d7ae30	NScript::CQ_HeroSoulsThunderScript::OnPersist	RELOCATION_MATCH	PASS	landed
+00d8dcc0	NScript::CQ_HobbeCaveScript::OnPersist	RELOCATION_MATCH	PASS	landed
+00eb6980	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::OnPersist	RELOCATION_MATCH	PASS	landed
+0121ad80	$E_InventoryOrientationRHSet9	RELOCATION_MATCH	PASS	landed

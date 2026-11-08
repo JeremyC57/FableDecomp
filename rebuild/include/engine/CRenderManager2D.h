@@ -61,6 +61,12 @@ public:
     // (the CRenderManager2D overload; the CDisplayManager one is 0x009BE420). Draw calls it on the render manager with (colour, 0).
     void ClearRenderTarget(const CRGBColour&,unsigned long);              // 0x009D8CF0
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DTEXTUREBOX
+    // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb 0x00B302F0
+    //   ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@AAVCTexture@@K@Z (the box overload, just before the UV one
+    //   0x00B30450 = retail 0x009DC870); Output calls retail 0x009DC6E0 with (box, colour, texture, 0). Declaration only.
+    bool Draw2DTexture(const C2DBoxF&,const CRGBColour&,CTexture&,unsigned long);   // 0x009DC6E0
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
     // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter
     // 0x00A0AAA0 (`ret`, returns the address of the float viewport box), called on NEngineInternal::GPRenderManager (0x01436E18) there and

@@ -30,6 +30,11 @@ public:
     virtual void RegisterMain();                                         // 0x00D8DC00 (slot 1)
     virtual void Main();                                                 // 0x00D8DD10 (slot 2)
     virtual void Init();                                                 // 0x00D8D640 (slot 3)
+#ifdef FABLE_RETAIL_CQ_HOBBECAVESCRIPT_ONPERSIST
+    // Retail opt-in (chunk 858): slot 4 of the script vtable 0x012D5540 is 0x00D8DCC0 (.rdata ref 0x012D5550), Ego_r.pdb /
+    //   FableWin.pdb ?OnPersist@CQ_HobbeCaveScript@NScript@@UAEXAAVCPersistContext@@@Z (overrides CScriptBase slot 4; no layout change).
+    virtual void OnPersist(CPersistContext&);                            // 0x00D8DCC0 (slot 4)
+#endif
     void RescuedBandit();                                                // 0x00D91740
     void WatchForTermination();                                          // 0x00D8E990
     void WatchForHavingKey();                                            // 0x00D8EE50

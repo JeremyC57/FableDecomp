@@ -36,6 +36,12 @@ public:
         : PD3DTexture(0), AllocationSource(0) { Initialise(size, levels, format, usage, pool, false, false); }
     class CSurface GetSurfaceLevel(long level) const;                    // 0x009F9E00
 #endif
+#ifdef FABLE_RETAIL_CTEXTURE_NEXTVALIDDIMENSIONS
+    // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): Ego_r.pdb 0x00B6A3C0
+    //   ?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z (static __fastcall, hidden result; retail
+    //   0x009FA620, ecx = result, edx = the requested extents, the format on the stack). Declaration only.
+    static C2DExtentsI __fastcall GetNextValidDimensions(const C2DExtentsI& size, const CPixelFormat& format);   // 0x009FA620
+#endif
     CTexture(const CTexture& other);                                     // 0x009F9D00 ??0CTexture@@QAE@ABV0@@Z
     ~CTexture() { Uninitialise(); }                                      // inline (Ego_r lists no ??1CTexture)
     // 0x009FA1C0: Ego_r.pdb ??4CTexture@@QAEABV0@ABV0@@Z returns a const reference (2026-11-03 landing b; was spelled

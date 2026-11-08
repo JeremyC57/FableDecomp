@@ -21,6 +21,11 @@ public:
     CTimer WillHelpTimer;
     bool FightFinished;
     bool DisplayBirdKilledMessage;
+#ifdef FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_INIT
+    // Retail opt-in (chunk 858): Init 0x00D3B3D0 (vtable 0x012CD458 slot 3) ends in a tail jump to 0x00D3B410, the landed
+    //   Ego_r.pdb / FableWin.pdb ?GossipSetup@CQ_GuildTrainingScript@NScript@@QAEXXZ (public, non-virtual); declaration only.
+    void GossipSetup();                                                  // 0x00D3B410
+#endif
 #ifdef FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN
     // Retail opt-in (chunk 800): the members Main 0x00D3BC60 calls (Ego_r.pdb ?<Name>@CQ_GuildTrainingScript@NScript@@QAEXXZ, the
     //   CSpawnedFunc thread-name literals "RunTutorials" .. "KeepBookcaseExitRemoved" next to each member pointer) and the nested

@@ -66,6 +66,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     both still need the shared-header rebase / last register tie; name fixes queued land0811j). Running: chunk 858 and a Fable **research**
     agent (`$S/w22/research861`, the user: research VC7.1's register / scheduling ties and remedies, full web access; deliverable
     RESEARCH.md -> docs/pipeline/ at landing; test set = the 26 parked rows of chunks 856 + 859, oracle `$S/batch/chunk861_oracle.tsv`).
+    Chunk 858 finished **7 of 10** (CFrontendGameComponent::Output + six small gap-scan rows; landed `2026-11-08_landing_j/`, queue land0811k;
+    CSystemManager font-manager offset is header debt, see its pending README). The research agent finished: `docs/pipeline/VC71_CODEGEN_RESEARCH.md`
+    (ranked remedies in section 6; put them in every new chunk brief). No agent is running.
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled

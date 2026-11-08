@@ -37554,3 +37554,7 @@ __imp__ShowCursor@4	01440350	00ab5d00
 ?push_back@?$list@PAVCEditBox@NUISystem@@V?$allocator@PAVCEditBox@NUISystem@@@std@@@std@@QAEXABQAVCEditBox@NUISystem@@@Z	005939ee	0058301a
 ??0?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@QAE@ABU01@@Z	00a825d0	00a852b0
 ?_M_insert_overflow@?$vector@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@V?$allocator@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@2@@std@@IAEXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@ABU32@ABU__false_type@2@I_N@Z	00a84c20	00a852b0
+?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@AAVCTexture@@K@Z	009dc6e0	00494900
+?GetBestCompressedOpaqueTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z	009be830	00494900
+?GossipSetup@CQ_GuildTrainingScript@NScript@@QAEXXZ	00d3b410	00d3b3d0
+_BACKWARDS_FORTY_FIVE_DEGREES_ORIENTATION	013b8bfc	0121ad80

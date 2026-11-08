@@ -61,6 +61,14 @@ public:
  // FableWin.pdb ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ (debug only: inline in release; 0x006286F0 reads
  // PRenderManager +0x08 in place).
  CRenderManager& GetRenderManager(){return *PRenderManager;}
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_FRONTEND
+ // Retail opt-in (chunk 858, row 0x00494900 CFrontendGameComponent::Output): FableWin.pdb ?GetBackBuffer@CDisplayManager@@QAEAAVCSurface@@XZ
+ // (debug only, inline in release: Output adds +0x2C, BackBufferSurface, to the manager in place) and Ego_r.pdb 0x00B23700
+ // ?GetBestCompressedOpaqueTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z (retail 0x009BE830, the first of the
+ // landed 0x009BE830 / 0x009BE870 / 0x009BE8B0 run, as Ego_r 0x00B23700 / 0x00B23750 Alpha / 0x00B237A0 BooleanAlpha).
+ CSurface& GetBackBuffer(){return BackBufferSurface;}
+ bool GetBestCompressedOpaqueTextureFormat(unsigned long bitDepth, class CPixelFormat& format);   // 0x009BE830
+#endif
  // ?GetD3DDevice@CDisplayManager@@QAEPAUIDirect3DDevice9@@XZ (FableWin 0x030C99A0, debug only: inline in release; Codex pass 13
  // row 0x009DA9F0 CRenderManager2D::Render2DDrawList reads D3DDevice in place for DrawPrimitiveUP).
  IDirect3DDevice9* GetD3DDevice(){return D3DDevice;}
