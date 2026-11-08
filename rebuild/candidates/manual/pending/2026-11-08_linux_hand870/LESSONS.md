@@ -1,0 +1,7 @@
+- **A held object reloaded where retail reuses a register:** give the holder's accessors (PKCAutoDelete::GetChecked / Release) same-TU `#pragma auto_inline(off)` bodies. Their mod/ref tells c2 the holder is unchanged (0x00C08D40).
+- **A private-convention static callee with a stand-in body gets a different convention:** write its real body (from the retail bytes) in the TU. VC picks the registers from how the callee's body uses each parameter (0x00C174A0 / 0x00C16F00).
+- **A struct with a char-array member draws /GS protection:** a local of it adds a cookie and changes the register allocation. Model opaque blocks as `long` arrays when retail has no cookie (0x00C16F00).
+- **Argument order for a private-convention static is visible at the call site:** VC evaluates arguments right to left, so a GetChecked() call that runs before the log is pushed or moved to edx means the log is the earlier parameter (0x00C174A0 -> 0x00C16F00, 0x00C17400).
+- **`load ; or [mem],imm ; store` vs `or ; load ; store`:** write `field = value;` before `flags |= bit;`, and the scheduler hoists the load above the or (0x00C313C0).
+- **Two loop counters in swapped frame slots:** swap the order of their updates at the loop tail (0x00C3BF30).
+- **The fs:[0] / fs:[0xabcdef] lines of an EH frame:** these are the __except_list relocation. RELOCATION_MATCH counts them as masked lines (md 6 per EH function); they are not a residue.

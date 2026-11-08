@@ -1,0 +1,18 @@
+address	name	source_1	source_2
+0x00C08D40	CSystem::LoadBank	trace ".\CSystem.cpp" line 54 "EMEM" (0x012B1B60)	CSystem vtable 0x012B1E24 slot 10; the catalog's CSystem::LoadBank
+0x00C0E1F0	CString::Left	MFC strcore.cpp Left text (byte match through engine/CString.h); MFC SpanIncluding / SpanExcluding (0x00C0E2C0 / 0x00C0E310 in the same extent) call it	sibling of the landed CString::Right 0x00C0E0F0 / Mid 0x00C0DF50
+0x00C174A0	LoadBankFile (descriptive)	dispatches on ".lug" / ".lut" / ".met" with the "not a recognised format" error	only caller 0x00C17640 (bank loader); PKCAutoFile open / GetChecked
+0x00C16F00	LoadLookupTableBank (descriptive, not graded)	the .lut branch of 0x00C174A0	texts "LHAudioBankLookupTable", "Could not open the lookup table", "Expecting deferred bank version number "
+0x00C18E20	PKCTRRedblackTree::AddValue	trace ".\PKCTRRedblackTree.cpp" lines 298 / 309	slot 5 of the tree vtable 0x012B2F0C (the Add slot the landed MorphToTree calls)
+0x00C19340	PKCTRRedblackTree::RemoveValue	trace ".\PKCTRRedblackTree.cpp" line 368 "Error: Key not found"	slot 6 of the tree vtable 0x012B2F0C
+0x00C1A510	PKCDefaultFileManager::OpenFile	traces ".\PKCDefaultFileManager.cpp" lines 101 / 116 / 122 / 132	the landed CloseFile 0x00C1A370 member layout (lock +4, file map +0x20, next key +0x80)
+0x00C1A870	PKCDefaultFileManager::ReleaseFile	trace ".\PKCDefaultFileManager.cpp" line 145 "Reference count for file out of sync"	the landed file-manager model (map Find 0x00C1AE50, file record {count, handle})
+0x00C1D320	CMatrix3x4::Invert (descriptive)	libpk 3x4 matrix TU (GetRotationAngles 0x00C1CC10 / PreMultiply 0x00C1CDA0)	the engine's flat E11..E43 CMatrix3x4 layout (engine/CMatrix3x4.h); the epsilon 0x0139C978 is shared with 0x00C1D1C0
+0x00C28400	CHandleBasedMemoryPool_012b4098::Defragment	Ego_r.pdb ?Defragment@CHandleBasedMemoryPool@@QAEXXZ (engine copy 0x00B6D670, same walk)	libpk pool vtable 0x012B4098
+0x00C28640	CHandleBasedMemoryPool_012b4098::ValidateResources	Ego_r.pdb ?ValidateResources@CHandleBasedMemoryPool@@QAEXXZ (0x00B6DA30)	libpk pool vtable 0x012B4098 slot 2 ValidateResource
+0x00C28690	CHandleBasedMemoryPool_012b4098::Free	Ego_r.pdb ?Free@CHandleBasedMemoryPool@@QAEXJ@Z (0x00B6DA90)	libpk pool (InsertFreeArea 0x00C27EF0, CombineAdjacentAreas, FreeHandle)
+0x00C28870	CHandleBasedMemoryPool_012b4098::PartialDefragment	Ego_r.pdb ?PartialDefragment@CHandleBasedMemoryPool@@QAE_NJ@Z (0x00B6DCB0)	libpk pool (MaxBlocksToTryOnPartialDefrag, GrowFreeArea, TestIfAreaIsGrowable)
+0x00C313C0	CUnprovenRecordReader_012b4d34::OnRecord (descriptive)	only slot of the one-slot vtable 0x012B4D34	the landed ReadBankData 0x00C30F60 binds the reader as CUnprovenRecordReader_012b4d34 (the second table reader)
+0x00C32CD0	PKCTRArray::AddValue	trace ".\PKCTRArray.cpp" lines 131 / 134 / 139	slot 5 of the PKCTRArray vtable 0x012B4E80
+0x00C3BF30	CAsyncFileReader::ReadRemote	the landed caller CRemoteLoader::LoadDataFromRemote 0x00C32060 binds ?ReadRemote@CAsyncFileReader@@QAE_NKKPAXKPAUIUserCallback@@@Z	traces ".\PKCFile.cpp" lines 28 / 87 "Cannot remote read if we have padding!" / 88
+0x00C42850	CPKRiffReader_00c427d0::Open (descriptive)	virtual slot of the WAV reader vtable 0x012B4FAC over the StreamReader base 0x012B4F9C	calls FindChunk 0x00C427D0 (landed CPKRiffReader_00c427d0) for 'fmt ' / 'data' / 'smpl'

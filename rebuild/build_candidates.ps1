@@ -385932,6 +385932,128 @@ $catalog = @(
         Source = '00/c0/global_zinflate_00c02470.cpp'
         Grade = 'toolchain_library'
     }
+    [pscustomobject]@{
+        Address = '00c08d40'
+        Module = 'CSystem'
+        Source = '00/c0/CSystem_LoadBank_00c08d40.cpp'
+        TestSource = '00/c0/CSystem_LoadBank_00c08d40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc /GS'
+        PassPattern = '00c08d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0e1f0'
+        Module = 'CString'
+        Source = '00/c0/CString_Left_00c0e1f0.cpp'
+        TestSource = '00/c0/CString_Left_00c0e1f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0e1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c174a0'
+        Module = '_global'
+        Source = '00/c1/global_LoadBankFile_00c174a0.cpp'
+        TestSource = '00/c1/global_LoadBankFile_00c174a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc /GS'
+        PassPattern = '00c174a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c18e20'
+        Module = 'PKCTRRedblackTree'
+        Source = '00/c1/PKCTRRedblackTree_AddValue_00c18e20.cpp'
+        TestSource = '00/c1/PKCTRRedblackTree_AddValue_00c18e20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c18e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c19340'
+        Module = 'PKCTRRedblackTree'
+        Source = '00/c1/PKCTRRedblackTree_RemoveValue_00c19340.cpp'
+        TestSource = '00/c1/PKCTRRedblackTree_RemoveValue_00c19340_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c19340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1a510'
+        Module = 'PKCDefaultFileManager'
+        Source = '00/c1/PKCDefaultFileManager_OpenFile_00c1a510.cpp'
+        TestSource = '00/c1/PKCDefaultFileManager_OpenFile_00c1a510_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1a510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1a870'
+        Module = 'PKCDefaultFileManager'
+        Source = '00/c1/PKCDefaultFileManager_ReleaseFile_00c1a870.cpp'
+        TestSource = '00/c1/PKCDefaultFileManager_ReleaseFile_00c1a870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1a870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1d320'
+        Module = 'CMatrix3x4'
+        Source = '00/c1/CMatrix3x4_Invert_00c1d320.cpp'
+        TestSource = '00/c1/CMatrix3x4_Invert_00c1d320_test.cpp'
+        PassPattern = '00c1d320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28400'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_Defragment_00c28400.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_Defragment_00c28400_test.cpp'
+        PassPattern = '00c28400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28640'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_ValidateResources_00c28640.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_ValidateResources_00c28640_test.cpp'
+        PassPattern = '00c28640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28690'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_Free_00c28690.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_Free_00c28690_test.cpp'
+        PassPattern = '00c28690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28870'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_PartialDefragment_00c28870.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_PartialDefragment_00c28870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c28870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c313c0'
+        Module = 'CUnprovenRecordReader_012b4d34'
+        Source = '00/c3/CUnprovenRecordReader012b4d34_OnRecord_00c313c0.cpp'
+        TestSource = '00/c3/CUnprovenRecordReader012b4d34_OnRecord_00c313c0_test.cpp'
+        PassPattern = '00c313c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c32cd0'
+        Module = 'PKCTRArray'
+        Source = '00/c3/PKCTRArray_AddValue_00c32cd0.cpp'
+        TestSource = '00/c3/PKCTRArray_AddValue_00c32cd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c32cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3bf30'
+        Module = 'CAsyncFileReader'
+        Source = '00/c3/CAsyncFileReader_ReadRemote_00c3bf30.cpp'
+        TestSource = '00/c3/CAsyncFileReader_ReadRemote_00c3bf30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3bf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c42850'
+        Module = 'CPKRiffReader_00c427d0'
+        Source = '00/c4/CPKRiffReader00c427d0_Open_00c42850.cpp'
+        TestSource = '00/c4/CPKRiffReader00c427d0_Open_00c42850_test.cpp'
+        PassPattern = '00c42850_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

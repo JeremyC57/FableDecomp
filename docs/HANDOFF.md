@@ -88,6 +88,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     untouched, two with a scoped device); 0x0083F650 landed after a shared-STL rewrite (`2026-11-08_landing_p/`, 443-byte extent).
     Chunk 866: 10 of 10 Ogg Vorbis rows landed (`2026-11-08_landing_q/`, real Xiph names).
     Chunk 868: 2 of 10 landed (`2026-11-08_landing_r/`: CBH_GangDeputy2::Main, CTalkingTrader1::Main); its parks continue. Chunk 869: 19 Vorbis functions landed (`2026-11-08_landing_s/`; 2 parked).
+    Chunk 870 (libpk, Opus high): 16 of 17 landed (`2026-11-08_landing_t/`; 0x00C1D1C0 parked, x87 CSE order); queue tag land0811t.
     Chunk 868 round 2: 0 new (0x00A2F740 rebuilt on new shared mesh headers, 720 lines from 1333; all eight parks re-graded, `pending/2026-11-08_linux_hand868/`).
     Library direction (owner, 2026-11-08; EXTRA_RULES "Owner direction, 2026-11-08 ..."): third-party vendor code (CRT, zlib 1.2.1,
     LZO 1.08, libogg/libvorbis 1.0.1 minus vorbisfile.c, strmbase, ImeUi) is linked from the vendor's source built unmodified with VC7.1,

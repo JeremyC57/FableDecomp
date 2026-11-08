@@ -43795,6 +43795,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0df50	Mid	CString	unknown	undefined	0		0	yes	accepted									
 00c0e0f0	Right	CString	unknown	undefined	0		0	yes	accepted									
 00c0e1f0	Left	CString	unknown	undefined	0		0	yes	accepted									
+00c0e2c0	SpanIncluding	CString	unknown	undefined	0		0			discovered	boundary							
+00c0e310	SpanExcluding	CString	unknown	undefined	0		0			discovered	boundary							
 00c0e360	GetFileNameWithoutExtension	CString	unknown	undefined	0		0	yes	accepted									
 00c0e440	Mid	CString	unknown	undefined	0		0	yes	accepted									
 00c0e580	SetMemberConst_00c0e580	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CBase_CBase_00c0e580.cpp
@@ -45006,6 +45008,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c283c0	Lock	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Lock_00c283c0.cpp
 00c283e0	Unlock	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Unlock_00c283e0.cpp
 00c28400	Defragment	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
+00c28540	SetHandleAddress_00c28540	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0			discovered	boundary							
+00c28560	GetHandleAddress_00c28560	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0			discovered	boundary							
 00c28580	MoveArea	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0	yes	accepted									
 00c28610	FreeHandle	CHandleBasedMemoryPool_012b4098	__thiscall	CCategory *	2	CTCInventoryBase *,long	1	yes	accepted									
 00c28640	ValidateResources	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									

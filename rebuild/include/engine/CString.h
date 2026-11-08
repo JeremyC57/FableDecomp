@@ -50,6 +50,13 @@ public:
     void AllocBuffer(int nLen);                              // 0x00C0BDA0
     void Init();
 #endif
+#ifdef FABLE_RETAIL_CSTRING_LEFT
+    // Chunk 870 (row 0x00C0E1F0 CString::Left): MFC strcore.cpp `CString::Left(int nCount) const` (?Left@CString@@QBE?AV1@H@Z) and
+    // the inline default constructor (afx.inl `CString::CString() { Init(); }`) the body's empty `dest` uses. Needs
+    // FABLE_RETAIL_CSTRING_ALLOCCOPY (Init, AllocCopy) and FABLE_RETAIL_CSTRING_BUILDERS (copy constructor, destructor).
+    CString() { Init(); }
+    CString Left(int nCount) const;
+#endif
 };
 #ifdef FABLE_RETAIL_CSTRING_ALLOCCOPY
 extern char* _afxPchNil;                                     // 0x0139C900

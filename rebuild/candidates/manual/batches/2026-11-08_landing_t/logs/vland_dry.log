@@ -1,0 +1,82 @@
+addr       parity           behav  name
+00c08d40   WARN SHARED_HEADER_AVAILABLE CString
+00c08d40   WARN RELOC_NAME: ??0CUnprovenPKObject_00c099f0@@QAE@PAVCSystem@@@Z -> 00c0edf0 labelled '_global::CCombatAbilityStrafeDef_Clone'
+00c08d40   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c08d40   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c08d40   WARN RELOC_NAME: ?GetAlignment@CUnprovenPKObject_00c099f0@@QBEKXZ -> 00c0e6e0 labelled 'CAIBrain::GetCurrentStateGroupDebugText'
+00c08d40   WARN RELOC_NAME: ?Lock@CLockPair_00c10100@@QAEXXZ -> 00c10100 labelled 'CScriptBase::Activate'
+00c08d40   WARN RELOC_NAME: ?Load@CProcessor_00c09110@@QAI_NPBGPAVCUnprovenPKObject_00c099f0@@PAUCBankLoadDesc_00c08d40@@@Z -> 00c17640 labelled 'Process_BankFileWithGraphicsSetup'
+00c08d40   WARN RELOC_NAME: ?Unlock@CLockPair_00c10100@@QAEXXZ -> 00c100f0 labelled 'CScriptBase::Activate'
+00c08d40   RELOCATION_MATCH PASS   LoadBank
+00c0e1f0   DIFFER(208v368)  PASS   Left
+00c174a0   WARN SHARED_HEADER_AVAILABLE CString
+00c174a0   WARN RELOC_NAME: ??0PKCAutoFile@@QAE@PAX@Z -> 00c31d80 labelled '__EH_epilog3'
+00c174a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c174a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBX@Z -> 00c0df20 labelled 'CString::operator<<(void const *)'
+00c174a0   WARN RELOC_NAME: ?LoadLookupTableBank@@YGXPAVCLoadLog@@PAVCBankFile@@PAVCScriptHost@@PBUSProcessorSettings_00c16ce0@@@Z -> 00c16f00 labelled 'LHAudioBank_ReadMurderTwistData'
+00c174a0   WARN RELOC_NAME: ??1PKCAutoFile@@QAE@XZ -> 00c31d90 labelled 'NUISystem::CChangingStateComponent::AddChildDynamically'
+00c174a0   RELOCATION_MATCH PASS   LoadBankFile
+00c18e20   WARN SHARED_HEADER_AVAILABLE CString
+00c18e20   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c18e20   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c18e20   RELOCATION_MATCH PASS   AddValue
+00c19340   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c19340   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c19340   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c19340   WARN RELOC_NAME: ?FreeAndClear@PKCTRAllocator@@QAEXPAPAUPKCTRRedblackNode@@@Z -> 00c19610 labelled 'CTexture::GetNoLevels'
+00c19340   RELOCATION_MATCH PASS   RemoveValue
+00c1a510   WARN SHARED_HEADER_AVAILABLE CString
+00c1a510   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c1a510   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1a510   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBX@Z -> 00c0df20 labelled 'CString::operator<<(void const *)'
+00c1a510   WARN RELOC_NAME: ??6CString@@QAIAAV0@I@Z -> 00c0def0 labelled 'CString::operator<<(unsigned int)'
+00c1a510   RELOCATION_MATCH PASS   OpenFile
+00c1a870   WARN SHARED_HEADER_AVAILABLE CString
+00c1a870   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c1a870   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c1a870   RELOCATION_MATCH PASS   ReleaseFile
+00c1d320   RELOCATION_MATCH PASS   Invert
+00c28400   DIFFER(310v373)  PASS   Defragment
+00c28640   MATCH            PASS   ValidateResources
+00c28690   WARN RELOC_NAME: ?CombineAdjacentAreas@CHandleBasedMemoryPool_012b4098@@QAEPAUCHeader@@PAU2@@Z -> 00c282e0 labelled 'CLandscapeFreeAreaList_00c282e0::MergeFreeArea'
+00c28690   RELOCATION_MATCH PASS   Free
+00c28870   WARN RELOC_NAME: ?GrowFreeArea@CHandleBasedMemoryPool_012b4098@@QAEHAAPAUCHeader@@@Z -> 00c286f0 labelled 'CHandleBasedMemoryPool_012b4098::CHandleBasedMemoryPool_012b4098::PartialDefragment'
+00c28870   RELOCATION_MATCH PASS   PartialDefragment
+00c313c0   WARN SHARED_HEADER_AVAILABLE CString
+00c313c0   WARN RELOC_NAME: ?CreateEntry@CAutoMapOwner_00c31560@@QAEPAUCAutoMapEntry_00c3baa0@@PBQAX@Z -> 00c31560 labelled '_global::CEngineWaterBackgroundSubPatch_Constructor'
+00c313c0   RELOCATION_MATCH PASS   OnRecord
+00c32cd0   WARN SHARED_HEADER_AVAILABLE CString
+00c32cd0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c32cd0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c32cd0   WARN RELOC_NAME: ?FindValueIndex@PKCTRArray@@QAEHPAVCUnprovenArrayComparator@@PBXPAH@Z -> 00c32160 labelled 'CSortedPtrArray::FindIndex'
+00c32cd0   RELOCATION_MATCH PASS   AddValue
+00c3bf30   WARN SHARED_HEADER_AVAILABLE CString
+00c3bf30   WARN RELOC_NAME: ?CreateConsoleVariable_00c4cc90@@YIPAVCMasterObject_00c4c8b0@@PAUIUserCallback@@K@Z -> 00c4cc90 labelled '_global::PKRACMasterObject_CreateConsoleVariable'
+00c3bf30   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c3bf30   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c3bf30   WARN RELOC_NAME: ?GetSize@CRACBuffer@@QAEKXZ -> 00c4c020 labelled '_global::GetMember_dword0x4_00c4c020'
+00c3bf30   WARN RELOC_NAME: ?GetHeadPadding@CRACBuffer@@QAEKXZ -> 00c4c010 labelled '_global::GetMember_dword0x10_00c4c010'
+00c3bf30   WARN RELOC_NAME: ?GetBlockCount@CRACBuffer@@QAEKXZ -> 00c4c2d0 labelled 'std::_Pop_heap_0<std::pair<unsigned_long,CSoundPair>*,std::pair<unsigned_long,class_CSoundPair>,CKeyPairCompareLess<unsigned_long,CSoundPair>_>'
+00c3bf30   WARN RELOC_NAME: ?GetFirstBlock@CRACBuffer@@QAEKXZ -> 00c4c2c0 labelled 'CCreatureActionBase::GetFramesRemaining'
+00c3bf30   WARN RELOC_NAME: ?GetAlignment@CRACBuffer@@QAEKXZ -> 00c4bfc0 labelled '_global::GetMember_dword0xc_00c4bfc0'
+00c3bf30   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c3bf30   WARN RELOC_NAME: ??1CRACBuffer@@QAE@XZ -> 00c4bf90 labelled '_global::Nop_ret0_00c4bf90'
+00c3bf30   RELOCATION_MATCH PASS   ReadRemote
+00c42850   WARN RELOC_NAME: ?Open@StreamReader@@UAE_NPBXK@Z -> 00c426c0 labelled 'CVtable_012b4f9c::SetStreamInput'
+00c42850   RELOCATION_MATCH PASS   Open
+
+WINS: 14
+  00c08d40 RELOCATION_MATCH CSystem::?LoadBank@CSystem@@UAEPAVCUnprovenPKObject_00c099f0@@PBGABUCBankParams_00c08d40@@@Z
+  00c174a0 RELOCATION_MATCH _global::?LoadBankFile@@YGXPAUCProcessor_00c09110@@PAVCLoadLog@@PBGPAVCScriptHost@@PBUSProcessorSettings_00c16ce0@@@Z
+  00c18e20 RELOCATION_MATCH PKCTRRedblackTree::?AddValue@PKCTRRedblackTree@@UAEXPAVCUnprovenArrayComparator@@PAX@Z
+  00c19340 RELOCATION_MATCH PKCTRRedblackTree::?RemoveValue@PKCTRRedblackTree@@UAEXPAVCUnprovenArrayComparator@@PBX@Z
+  00c1a510 RELOCATION_MATCH PKCDefaultFileManager::?OpenFile@PKCDefaultFileManager@@QAE_NPBGPAK@Z
+  00c1a870 RELOCATION_MATCH PKCDefaultFileManager::?ReleaseFile@PKCDefaultFileManager@@QAE_NK@Z
+  00c1d320 RELOCATION_MATCH CMatrix3x4::?Invert@CMatrix3x4@@QAEXXZ
+  00c28640 MATCH CHandleBasedMemoryPool_012b4098::?ValidateResources@CHandleBasedMemoryPool_012b4098@@QAEXXZ
+  00c28690 RELOCATION_MATCH CHandleBasedMemoryPool_012b4098::?Free@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z
+  00c28870 RELOCATION_MATCH CHandleBasedMemoryPool_012b4098::?PartialDefragment@CHandleBasedMemoryPool_012b4098@@QAEHJ@Z
+  00c313c0 RELOCATION_MATCH CUnprovenRecordReader_012b4d34::?OnRecord@CUnprovenRecordReader_012b4d34@@UAEXPAVCLoadLog@@PBX@Z
+  00c32cd0 RELOCATION_MATCH PKCTRArray::?AddValue@PKCTRArray@@UAEXPAVCUnprovenArrayComparator@@PAX@Z
+  00c3bf30 RELOCATION_MATCH CAsyncFileReader::?ReadRemote@CAsyncFileReader@@QAE_NKKPAXKPAUIUserCallback@@@Z
+  00c42850 RELOCATION_MATCH CPKRiffReader_00c427d0::?Open@CPKRiffReader_00c427d0@@UAE_NPBXK@Z
