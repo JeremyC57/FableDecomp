@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00c4f600	DIFFER	9204v9204	-	CEAXManager::SetEAXProperty: shared trailing listener-apply test fixed every role; only the scratch rotation of the three integer listener cases ROOM/ROOMHF/ROOMLF differs (10 lines); 80 grades
+00c7baf0	RELOCATION_MATCH	10544v10544	PASS	ResampleMonoFIR (catalog Graphics_RenderTextConditional_ProcessRows), /GS; true extent = catalog (8-entry case table at 0x00C7E400); inline split set by explicit Is32vec4 ctor wraps; 112 grades
+00c7e420	RELOCATION_MATCH	11980v11980	PASS	ResampleMonoRampFIR (catalog Audio_ConvolveFilter_LongVariant), /GS, short gains; true extent 11980 (catalog 11984 includes 4 bytes int3 pad); 300 grades (two 128-way wrap enumerations)

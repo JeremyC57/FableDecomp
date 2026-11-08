@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00c7baf0   WARN RELOC_NAME: ??5Is32vec4@@QAE?AV0@H@Z -> 00c7b8b0 labelled 'Is32vec4::operator>>(int)'
+00c7baf0   RELOCATION_MATCH PASS   ResampleMonoFIR
+00c7e420   WARN RELOC_NAME: ??_2Is32vec4@@QAEAAV0@H@Z -> 00c7b8f0 labelled 'Is32vec4::operator>>=(int)'
+00c7e420   WARN RELOC_NAME: ??5Is32vec4@@QAE?AV0@H@Z -> 00c7b8b0 labelled 'Is32vec4::operator>>(int)'
+00c7e420   RELOCATION_MATCH PASS   ResampleMonoRampFIR
+
+WINS: 2
+  00c7baf0 RELOCATION_MATCH _global::?ResampleMonoFIR@@YAXPBFKKKPAJ@Z
+  00c7e420 RELOCATION_MATCH _global::?ResampleMonoRampFIR@@YAXPBFKKKPAJFF@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  global_ResampleMonoFIR_00c7baf0
+  global_ResampleMonoRampFIR_00c7e420

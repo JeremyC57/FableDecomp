@@ -47603,8 +47603,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c7b930	CUnprovenSSEVector_00c7b930	CUnprovenSSEVector_00c7b930	__thiscall	undefined	8	CDateAndTime *,long,ulong,ulong,ulong,ulong,ulong,ulong	0	yes	accepted									
 00c7b970	CUnprovenSSEVector_00c7b970	CUnprovenSSEVector_00c7b970	__thiscall	undefined	8	CDateAndTime *,long,ulong,ulong,ulong,ulong,ulong,ulong	0	yes	accepted									
 00c7ba00	BuildKernelRows8	_global	unknown	undefined	0		0	yes	accepted									
-00c7baf0	Graphics_RenderTextConditional_ProcessRows	_global	unknown	undefined	0		0	yes	accepted									
-00c7e420	Audio_ConvolveFilter_LongVariant	_global	unknown	undefined	0		0	yes	accepted									
+00c7baf0	ResampleMonoFIR	_global	unknown	undefined	0		0	yes	accepted									
+00c7e420	ResampleMonoRampFIR	_global	unknown	undefined	0		0	yes	accepted									
 00c812f0	Audio_ConvolveFilter_LongComplex	_global	unknown	undefined	0		0	yes	accepted									
 00c843f0	Audio_ConvolveFilter_LongFull	_global	unknown	undefined	0		0	yes	accepted									
 00c87fd0	mixerGetControlDetailsA	WINMM.DLL	unknown	undefined	0		0			discovered	boundary							

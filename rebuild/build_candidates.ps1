@@ -386386,6 +386386,22 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c7ab20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c7baf0'
+        Module = '_global'
+        Source = '00/c7/global_ResampleMonoFIR_00c7baf0.cpp'
+        TestSource = '00/c7/global_ResampleMonoFIR_00c7baf0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c7baf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c7e420'
+        Module = '_global'
+        Source = '00/c7/global_ResampleMonoRampFIR_00c7e420.cpp'
+        TestSource = '00/c7/global_ResampleMonoRampFIR_00c7e420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c7e420_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

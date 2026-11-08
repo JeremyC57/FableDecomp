@@ -1,0 +1,4 @@
+address	name	source1	source2
+0x00C4F600	CEAXManager::SetEAXProperty	landed CEAXManager::QueueCommit 0x00C51A20 declares and calls it (catalog name agrees)	body: EAX 3.0/4.0 property-set GUID ladder, buffer/listener switches, callees ApplyVoiceBufferProperties 0x00C4EA30 and ApplyListenerProperties 0x00C4E3C0
+0x00C7BAF0	ResampleMonoFIR	landed MixFilteredVoice 0x00C70D60 / MixFilteredVoiceFadeIn 0x00C70C10 / MixFilteredVoiceFadeOut 0x00C70CB0 declarations (`// 0x00C7BAF0`)	body: SSE2 polyphase FIR (two 16-tap blocks, Is32vec4 += 0x00C7B870 / >> 0x00C7B8B0), twin of the landed ResampleMonoMMX 0x00C78A10
+0x00C7E420	ResampleMonoRampFIR	landed MixFilteredVoiceFadeIn 0x00C70C10 / MixFilteredVoiceFadeOut 0x00C70CB0 declarations (`// 0x00C7E420`), called with (0,0x100) / (0x7FFF,-0x100)	body: ResampleMonoFIR + per-lane 16-bit gain ramp (Is16vec8 gains, paddsw, >>= 0x00C7B8F0), twin of ResampleMonoRampMMX 0x00C79440

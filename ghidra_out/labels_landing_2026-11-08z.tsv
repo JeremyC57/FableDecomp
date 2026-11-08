@@ -1,0 +1,4 @@
+address	name	evidence
+0x00C7BAF0	?ResampleMonoFIR@@YAXPBFKKKPAJ@Z	chunk 878: landed MixFilteredVoice 0x00C70D60 / MixFilteredVoiceFadeIn 0x00C70C10 / MixFilteredVoiceFadeOut 0x00C70CB0 declare it at this address; body = SSE2 polyphase FIR twin of ResampleMonoMMX 0x00C78A10
+0x00C7E420	?ResampleMonoRampFIR@@YAXPBFKKKPAJFF@Z	chunk 878: landed MixFilteredVoiceFadeIn 0x00C70C10 / MixFilteredVoiceFadeOut 0x00C70CB0 declare it here; body = ResampleMonoFIR + per-lane 16-bit gain ramp (short gains)
+0x00C4F600	?SetEAXProperty@CEAXManager@@QAEJPBU_GUID@@KPAUCEAXVoice@@PAXK@Z	chunk 878: landed CEAXManager::QueueCommit 0x00C51A20 calls it; body = EAX property-set GUID ladder (parked DIFFER)
