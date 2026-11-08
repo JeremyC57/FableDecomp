@@ -1,0 +1,12 @@
+address	pdb_name	source1	source2
+00488d10	?InitInterfaces@CPlayer@@AAEXXZ	Ego_r.pdb 0x004941E0	FableWin.pdb 0x01AC5A80; one caller 0x0048A38C (CPlayer init); body builds the 66 CPlayer::InputProcess* members
+005dd670	?StatRegisterClass@CAnimationEntry@@SIXXZ	Ego_r.pdb 0x0063CE80	FableWin.pdb 0x01F9D910; caller 0x0044E907 (class registration); body writes RegisteredComponentsByType/Defaults (reloc_bindings)
+00839940	?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z	Ego_r.pdb 0x008147F0	FableWin.pdb 0x027EC280; CThingGameObject vtable slot reference
+00975bb0	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	Ego_r.pdb 0x0099B180	FableWin.pdb 0x02BE6F30; vtable reference 0x0128D6E4
+0078fd60	?FrameUpdate@CTCDivineWrath@@UAEXXZ	Ego_r.pdb 0x00795CC0	FableWin.pdb 0x0267DB40; vtable reference 0x0126BEA8
+00be3970	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z	Ego_r.pdb 0x009C3350	FableWin.pdb 0x02CBCC00; vtable 0x012A2B3C slot 0
+005e4be0	?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z	Ego_r.pdb 0x006432D0	FableWin.pdb 0x022C6030; caller 0x005E7123
+00507c30	?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z	Ego_r.pdb 0x004DC750	FableWin.pdb 0x01C79720; vtable reference 0x01244AF8
+00a0e0a0	??0CJoystickPositionTracker@@QAE@XZ	Ego_r.pdb 0x00B78760	FableWin.pdb 0x03190070; manifest label; called from InitInterfaces for CInputProcessCombat::PositionTracker
+00a1e5c0	?CalculateAndMoveToPosProximity@CNavigatorAStar@@AAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N222222M@Z	Ego_r.pdb 0x00B896E0	FableWin.pdb 0x031A9CD0; `ret 34h` = 5 dwords + 7 bools + float (13 dwords); its three callers are the manifest's CNavigatorAStar::MoveToPos 0x00A1FB00 / MoveToPosProximity 0x00A1FB50 / MoveToNavLineOfSightProximity 0x00A1FBA0 (the public wrappers)
+00804020	?UpdateTargetList@CTCTargetingPlayer@@IAEXXZ	Ego_r.pdb 0x007FF350 (between UpdateProjectileTargeting 0x007FF010 and FrameUpdate 0x008009E0, as retail 0x00803D60 < 0x00804020 < 0x00805600)	FableWin.pdb 0x024CFE90; only caller 0x008057B9 inside CTCTargetingPlayer::FrameUpdate 0x00805600; thiscall, no args, no other unplaced CTCTargetingPlayer method in either PDB

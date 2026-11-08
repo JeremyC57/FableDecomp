@@ -1,0 +1,21 @@
+# Chunk 873 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- After a virtual call through a pointer (`p->SetDefaultValue()`), VC7.1 treats `p` as non-null: later inline copies/AddRefs of it lose their null test (`inc [esi+4]` unconditional). Proved with a 2-line probe; 0x005DD670.
+- A plain-inline wrapper whose expansion is too costly (CVectorMap::Insert, 3919-byte result) is called out of line even though retail expanded it everywhere (Ego_r.pdb: 0 out-of-line copies); `__forceinline` on the wrapper (header, `#if defined(_MSC_VER)`) restores retail AND lets VC7.1's caller budget split the inner plain-inline push_back exactly as retail (17 expanded, 9 called). /d2inlT<N> cannot do this: it is a per-inlinee threshold with cliffs (Insert >90, push_back 55) and -inlcrmax / -inluserinl / -inlfcsa have no effect. 0x005DD670.
+- `map.insert(std::make_pair(k, v))` and `vec.push_back(std::make_pair(k, v))` inside Insert: the pair temporary is destroyed at the end of its own statement, so its release precedes the following `Dirty = true` store (0x005DD7B0 vs 0x005DD7BC). With the older `Insert(const value_type&)` (pair built by the caller) the pair lives to the end of the caller's statement and the `Dirty` store lands before its release.
+- Statement order of a struct fill can matter even when stores are independent: CInputProcessGameBaseInit filled World, DefinitionManager, MyPlayer, Component (0x00488D10); the declaration order gives one swapped pair.
+- An intermediate base's inline ctor vtable store that is immediately overwritten by the derived ctor is dropped by VC7.1 (CInputProcessInventoryBase in 0x00488D10): model the base ctor inline and do not add novtable.
+- `boost::scoped_ptr::reset(new T(init))` = operator new, null test, ctor, old pointer read, new stored, old deleted through vtable slot 0 (boost 1.30 swap form); 66 sites in 0x00488D10.
+- STLport list default ctor inside an inlined ctor: null proxy store + malloc(0x14) sentinel, self-linked (CInputProcessJumpingAndRolling, 0x00488D10).
+
+- Block layout follows the source's if/else order: retail 0x00BE3AB3 falls through into the short `previous = -1` arm and jumps over the long one, which VC7.1 gives for `if (end - start <= 1) { previous = -1; } else { ... }` and not for the inverted test (or a `continue`): 613 -> 427 diff lines on 0x00BE3970.
+- A neighbour reached as `vert[1]` from one `&strip->GetVert(index)` pointer is addressed off that pointer (`[ebx+27h]`), while `strip->GetVert(index + 1)` reloads the array base; retail's composite-vertex interpolation (0x00BE3D8C) is the pointer form (427 -> 198).
+- An out-of-class `inline` accessor definition (FindVert) can stay out of line inside a large caller; retail expanded it, so it needs `__forceinline` (same as chunk 785's lesson for template helpers).
+- A local initialised to 0 and conditionally overwritten (`long i = 0; if (p) i = f();`) keeps retail's `mov [esp+N],0` store before the test (0x00BE39D8); the if/else and ternary spellings move the zero into the else block.
+
+Review at landing:
+- 0x005DD670 needed ~30 grades (inline-budget investigation); 0x00488D10 needed 3. Both need the hdr/ overlay (35 new headers, 55 opt-in edits, hdrcheck2 clean).
+- Landed CAnimationEntry::TransferBinaryIn 0x005DD090 (rebuild/src/compiled/00/5d/CAnimationEntry_TransferBinaryIn_005dd090.cpp) has a local CAnimComponentBase model naming slot 4 `Clone`; by the Clone body 0x005DB1D0 slot 4 is Alloc and slot 5 Clone (new engine/CAnimComponentBase.h). Bytes unaffected (indirect call); migrate it to the shared header.
+- engine/CVectorMap.h's older opt-in `FABLE_RETAIL_CVECTORMAP_INSERT` declares `Insert(const value_type&)`, a signature neither PDB has (both only have Insert(const K&, const V&)); rows using it should move to `_INSERT_KEYVALUE`.
+- Four catalog rows hold several functions (0x00839940 x10, 0x00975BB0 x3, 0x0078FD60 x3, 0x00BE3970 x2): split them at the extents in NOTES.md / STATUS.tsv.
+- The 29 new CInputProcess leaf headers are unconditional but derive from the FABLE_RETAIL_INPUTPROCESS layout of CInputProcessGameBase.
+- 0x00BE3970 parked after 19 grades at 198 diff lines; its 0x00BE4660 / 0x00BE4FE0 water twins (chunk 785) park on the same kind of loop-pointer colouring: try the round-2 shapes (else-first layout, vert[1]) on them.

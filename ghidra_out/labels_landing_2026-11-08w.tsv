@@ -8,3 +8,5 @@ address	name	evidence
 0x005E4BE0	?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z	chunk 873: Ego_r.pdb 0x006432D0 ; FableWin.pdb 0x022C6030; caller 0x005E7123
 0x00507C30	?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z	chunk 873: Ego_r.pdb 0x004DC750 ; FableWin.pdb 0x01C79720; vtable reference 0x01244AF8
 0x00A0E0A0	??0CJoystickPositionTracker@@QAE@XZ	chunk 873: Ego_r.pdb 0x00B78760 ; FableWin.pdb 0x03190070; manifest label; called from InitInterfaces for CInputProcessCombat::PositionTracker
+0x00A1E5C0	CNavigatorAStar::CalculateAndMoveToPosProximity	chunk 873 round 2: Ego_r.pdb ?CalculateAndMoveToPosProximity@CNavigatorAStar@@AAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N222222M@Z (0x00B896E0) + FableWin.pdb 0x031A9CD0; ret 34h = 13 dwords; callers MoveToPos / MoveToPosProximity / MoveToNavLineOfSightProximity 0x00A1FB00..0x00A1FBA0
+0x00804020	CTCTargetingPlayer::UpdateTargetList	chunk 873 round 2: Ego_r.pdb ?UpdateTargetList@CTCTargetingPlayer@@IAEXXZ (0x007FF350) + FableWin.pdb 0x024CFE90, PDB order between UpdateProjectileTargeting and FrameUpdate; only caller 0x008057B9 inside FrameUpdate

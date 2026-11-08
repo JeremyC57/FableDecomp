@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00488d10	RELOCATION_MATCH	4142v4142	PASS	g3 (2 probes + 1 header grade); FABLE_RETAIL_INPUTPROCESS family + CPlayer _INPUTPROCESSES opt-in
+005dd670	RELOCATION_MATCH	5317v5317	PASS	~30 grades; forced CVectorMap::Insert(K,V) (PDB signature, 0 Ego_r out-of-line copies) with make_pair body; natural push_back budget split 17/26
+00a1e5c0	DIFFER	-v5437	-	not attempted; named CNavigatorAStar::CalculateAndMoveToPosProximity (PDB AAE, ret 0x34 = 13 dwords; callers are MoveToPos / MoveToPosProximity / MoveToNavLineOfSightProximity)
+00839940	DIFFER	-v5195	-	not attempted (row cut to OnHit's 5195 bytes by the coordinator); 26 inline GetTC (CVectorMap::LowerBound 0x0040F020), IS_THING_ALIVE x15
+00975bb0	DIFFER	-v4707	-	not attempted (row cut to 4707); AI state machine: GetPItem x40, IsStillRunnable x11, AIAction_PerformActionAndWait x4
+00804020	DIFFER	-v5587	-	not attempted; named CTCTargetingPlayer::UpdateTargetList (PDB IAE; only caller CTCTargetingPlayer::FrameUpdate 0x00805600; Ego_r/FableWin order UpdateProjectileTargeting < UpdateTargetList < FrameUpdate)
+0078fd60	DIFFER	-v9268	-	not attempted (row cut to 9268); largest row
+00be3970	DIFFER	2399v2390	-	19 grades (round 2, row cut to 2390): call set/blocks/expansions/x87 interpolation retail's; residue loop-top vertex pointer materialisation (udiff 198); differ/00be3970.cpp; GFFloatToLongNear helper (retail_asm when matched)
+005e4be0	DIFFER	-v4939	-	not attempted (4939 bytes); CTCQuestCompletionUI::GetQuestDescription (PDB); ends 0x005E5F2B
+00507c30	DIFFER	-v7661	-	not attempted (7661 bytes); CWorldMap::LoadFromFile (PDB); ends 0x00509A1D
