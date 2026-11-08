@@ -1,0 +1,15 @@
+address	status	bytes	test	note
+00c3cbd0	RELOCATION_MATCH	300v300	PASS	CodaGetErrorString; g1
+00c45990	RELOCATION_MATCH	1440v1440	PASS	CAmbientCube::Dump; /EHsc; g15 (early-exit any loop)
+00c4a3b0	RELOCATION_MATCH	1643v1643	PASS	PKCBufferedReader::Refill; /EHsc; g23
+00c4e730	RELOCATION_MATCH	760v760	PASS	CEAXManager::GetListenerProperty; g2
+00c4ea30	RELOCATION_MATCH	1182v1182	PASS	CEAXManager::ApplyVoiceBufferProperties; g11
+00c4eed0	RELOCATION_MATCH	804v804	PASS	CEAXManager::GetVoiceBufferProperty; g2
+00c51a20	RELOCATION_MATCH	1164v1164	PASS	CEAXManager::QueueCommit; true length 1164 (catalog 1248 holds 0x00C51EB0); g3
+00c51f50	SKIP	-	-	EAX 4.0 source property setter (28-case jump table, true end 0x00C527CD + table to 0x00C52840); not attempted (session budget)
+00c53340	RELOCATION_MATCH	180v180	PASS	CDirectSoundDevice::DetectSpeakerConfig; true length 180 (catalog 256 holds 0x00C53400/10/20/30); g1
+00c56a40	RELOCATION_MATCH	656v656	PASS	CAudioContext::Open; /GS; g3
+00c57800	RELOCATION_MATCH	436v436	PASS	CVtable_012b8ed4::CreateAndPlay; g1
+00c5b7c0	SKIP	-	-	software voice render step (__int64 math, _allmul, vtable calls; ret 0Ch, ends 0x00C5BCF2); not attempted (session budget)
+00c5c360	RELOCATION_MATCH	1173v1173	PASS	CSoftwareStreamVoice::MixRingBlock; /GS; g1
+00c880a0	RELOCATION_MATCH	1307v1307	PASS	CAudioSource::ApplyHardware; g12

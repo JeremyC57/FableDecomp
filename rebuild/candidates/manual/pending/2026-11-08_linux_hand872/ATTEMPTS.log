@@ -1,0 +1,77 @@
+00c3cbd0 #1 switch on long, 27 string returns -> RELOCATION_MATCH
+00c4e730 00c4e730.cpp DIFFER(764v760) early-return arms
+00c4e730 e730b.cpp RELOCATION_MATCH result accumulator, arms assign 0 + break
+00c4eed0 00c4eed0.cpp DIFFER(804v804) accumulator, field-wise groups
+00c4eed0 eed0b.cpp RELOCATION_MATCH group stores reordered to retail order
+00c53340 00c53340.cpp RELOCATION_MATCH switch, true len 180
+00c57800 00c57800.cpp RELOCATION_MATCH first
+00c56a40 00c56a40.cpp DIFFER(656v656) first: inline Initialise
+00c56a40 00c56a40.cpp DIFFER(656v656) rediff (same src)
+00c56a40 6a40b.cpp RELOCATION_MATCH nested ifs, single return -9 at end
+00c51a20 00c51a20.cpp DIFFER(1152v976) first
+00c51a20 1a20b.cpp DIFFER(1164v976) direct member exprs, no refs
+00c51a20 1a20b.cpp RELOCATION_MATCH true len 1164
+00c5c360 00c5c360.cpp RELOCATION_MATCH first: loops
+00c45990 00c45990.cpp DIFFER(1543v1440) first explicit blocks
+00c45990 5990e.cpp DIFFER(1639v1440) loop variant e
+00c45990 5990f.cpp DIFFER(1437v1440) loop variant f
+00c45990 5990g.cpp DIFFER(1437v1440) loop variant g
+00c45990 5990h.cpp DIFFER(1543v1440) loop variant h
+00c45990 5990i.cpp DIFFER(1543v1440) loop variant i
+00c45990 5990j.cpp DIFFER(1543v1440) loop variant j
+00c45990 5990k.cpp DIFFER(1437v1440) loop variant k
+00c45990 5990s.cpp DIFFER(1261v1440) for + pragma s
+00c45990 5990l.cpp DIFFER(1437v1440) loop variant l short counter
+00c45990 5990n.cpp DIFFER(1437v1440) loop variant n
+00c45990 5990o.cpp DIFFER(1543v1440) loop variant o
+00c4a3b0 00c4a3b0.cpp DIFFER(1623v1643) first
+00c4a3b0 a3b0b.cpp DIFFER(1640v1643) b: bytes=size, cmp, lea
+00c4a3b0 a3b0c.cpp DIFFER(1640v1643) c: unsigned move, remaining
+00c4a3b0 a3b0d.cpp DIFFER(1643v1643) d: slot==0 else-extend, move-=, size-1+bs
+00c4a3b0 a3b0e.cpp DIFFER(1643v1643) e: abs first, bs-1+size, end local
+00c4a3b0 a3b0f.cpp DIFFER(1643v1643) f: d + end local
+00c4a3b0 a3b0g.cpp DIFFER(1643v1643) g: claim before fileBlocks
+00c4a3b0 a3b0h.cpp DIFFER(1643v1643) h: inline GetBlockTotal
+00c4a3b0 a3b0i.cpp DIFFER(1643v1643) i: blockCount+firstBlock in EOF
+00c4a3b0 a3b0k.cpp DIFFER(1643v1643) k: count local
+00c4a3b0 a3b0j.cpp DIFFER(1643v1643) j: owners local
+00c4a3b0 a3b0m.cpp DIFFER(1643v1643) m: blockCount+firstSlot
+00c4a3b0 a3b0l.cpp DIFFER(1643v1643) l: signed char -1
+00c4a3b0 a3b0o.cpp DIFFER(1645v1643) o: total local in EOF
+00c4a3b0 a3b0n.cpp DIFFER(1643v1643) n: block local in EOF
+00c4a3b0 a3b0p.cpp DIFFER(1637v1643) p: ?: abs
+00c4a3b0 a3b0q.cpp DIFFER(1645v1643) q: labs
+00c4a3b0 a3b0t.cpp DIFFER(1645v1643) t: current local
+00c4a3b0 a3b0r.cpp DIFFER(1645v1643) r: abs of CSE expr
+00c4a3b0 a3b0u.cpp DIFFER(1645v1643) u: !(<)
+00c4a3b0 a3b0v.cpp RELOCATION_MATCH v: block local after total
+00c4a3b0 00c4a3b0.cpp RELOCATION_MATCH final clean
+00c4a3b0 00c4a3b0.cpp RELOCATION_MATCH final
+00c4ea30 ea30a.cpp DIFFER(1553v1180) a: first
+00c4ea30 ea30b.cpp DIFFER(965v1180) b: member then copy; wrap
+00c4ea30 ea30c.cpp DIFFER(965v1180) c: <=hi && >=lo macro
+00c4ea30 ea30e.cpp DIFFER(1372v1180) e: int copy, float double eval
+00c4ea30 ea30d.cpp DIFFER(1557v1180) d: all double eval
+00c4ea30 ea30e2.cpp DIFFER(1372v1180) e2: int copy, float double, direct
+00c4ea30 ea30d2.cpp DIFFER(1537v1180) d2: all double eval, direct
+00c4ea30 ea30f.cpp DIFFER(1182v1180) f: float if/else clamp-to
+00c4ea30 ea30g.cpp DIFFER(1182v1180) g: all clamp-to
+00c4ea30 ea30h.cpp DIFFER(1181v1182) h: bool return
+00c4ea30 00c4ea30.cpp RELOCATION_MATCH final
+00c880a0 80a0a.cpp DIFFER(1309v1307) a: first
+00c880a0 80a0a.cpp DIFFER(1309v1307) a: rerun for diff
+00c880a0 80a0b.cpp DIFFER(1309v1307) b: amp==0 early
+00c880a0 80a0c.cpp DIFFER(1309v1307) c: amp if/else
+00c880a0 80a0d.cpp DIFFER(1307v1307) d: gain *= twice
+00c880a0 80a0e.cpp DIFFER(1307v1307) e: cone*(dist*gain)
+00c880a0 80a0f.cpp DIFFER(1316v1307) f: while, break, mul after
+00c880a0 80a0g.cpp DIFFER(1320v1307) g: while, mul after call
+00c880a0 80a0h.cpp DIFFER(1307v1307) h: mul after GetError
+00c880a0 80a0i.cpp RELOCATION_MATCH i: x2+(y2+z2)
+00c880a0 00c880a0.cpp RELOCATION_MATCH final
+00c880a0 00c880a0.cpp RELOCATION_MATCH final2
+00c45990 5990p.cpp RELOCATION_MATCH p: for + if(any) break
+00c45990 5990q.cpp RELOCATION_MATCH q: for i<8 && !any
+00c45990 00c45990.cpp RELOCATION_MATCH src: engine/CString.h
+00c53340 00c53340.cpp RELOCATION_MATCH recheck true len
+00c51a20 00c51a20.cpp RELOCATION_MATCH recheck true len

@@ -46714,6 +46714,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c4f220	~CBankFile	CBankFile	__thiscall	void	3	CBankFile *,ulong,ulong	1	yes	accepted									
 00c4f600	PropertySerializer_GetPropertyTypeCode	_global	unknown	undefined	0		0	yes	accepted									
 00c51a20	PropertySerializer_WriteProperty	_global	unknown	undefined	0		0	yes	accepted									
+00c51eb0	sub_00c51eb0	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c51f00	SetVoiceProperty	CEAXManager	unknown	undefined	0		0	yes	accepted									
 00c51f50	CDrawGuildSeal_SetProperty	_global	unknown	undefined	0		0	yes	accepted									
 00c52840	Resize	CPersistContext_TransferableVector<CSoundBankEntry>	__thiscall	void	2	CPersistContext_TransferableVector<CSoundBankEntry> *,long	1	yes	accepted									
@@ -46730,6 +46731,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c53260	Initialise	CDirectSoundDevice	unknown	undefined	0		0	yes	accepted									
 00c53310	Uninitialise	CDirectSoundDevice_00c53310	__thiscall	void	1	CSurface *	1	yes	accepted									
 00c53340	sub_00c53340	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c53400	sub_00c53400	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c53410	sub_00c53410	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c53420	sub_00c53420	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c53430	sub_00c53430	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c53440	SetClamped_CAttribute_00c53440	_unattributed	unknown	undefined	0		0	yes	accepted									
 00c534a0	SetClamped_CAttribute_00c534a0	_unattributed	unknown	undefined	0		0	yes	accepted									
 00c53500	SetClamped_CAttribute_00c53500	_unattributed	unknown	undefined	0		0	yes	accepted									

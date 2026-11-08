@@ -386274,6 +386274,94 @@ $catalog = @(
         TestSource = '00/5d/CAnimationEntry_StatRegisterClass_005dd670_test.cpp'
         PassPattern = '005dd670_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c3cbd0'
+        Module = '_global'
+        Source = '00/c3/global_CodaGetErrorString_00c3cbd0.cpp'
+        TestSource = '00/c3/global_CodaGetErrorString_00c3cbd0_test.cpp'
+        PassPattern = '00c3cbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c45990'
+        Module = 'CAmbientCube'
+        Source = '00/c4/CAmbientCube_Dump_00c45990.cpp'
+        TestSource = '00/c4/CAmbientCube_Dump_00c45990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c45990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4a3b0'
+        Module = 'PKCBufferedReader'
+        Source = '00/c4/PKCBufferedReader_Refill_00c4a3b0.cpp'
+        TestSource = '00/c4/PKCBufferedReader_Refill_00c4a3b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4a3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4e730'
+        Module = 'CEAXManager'
+        Source = '00/c4/CEAXManager_GetListenerProperty_00c4e730.cpp'
+        TestSource = '00/c4/CEAXManager_GetListenerProperty_00c4e730_test.cpp'
+        PassPattern = '00c4e730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4ea30'
+        Module = 'CEAXManager'
+        Source = '00/c4/CEAXManager_ApplyVoiceBufferProperties_00c4ea30.cpp'
+        TestSource = '00/c4/CEAXManager_ApplyVoiceBufferProperties_00c4ea30_test.cpp'
+        PassPattern = '00c4ea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4eed0'
+        Module = 'CEAXManager'
+        Source = '00/c4/CEAXManager_GetVoiceBufferProperty_00c4eed0.cpp'
+        TestSource = '00/c4/CEAXManager_GetVoiceBufferProperty_00c4eed0_test.cpp'
+        PassPattern = '00c4eed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c51a20'
+        Module = 'CEAXManager'
+        Source = '00/c5/CEAXManager_QueueCommit_00c51a20.cpp'
+        TestSource = '00/c5/CEAXManager_QueueCommit_00c51a20_test.cpp'
+        PassPattern = '00c51a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53340'
+        Module = 'CDirectSoundDevice'
+        Source = '00/c5/CDirectSoundDevice_DetectSpeakerConfig_00c53340.cpp'
+        TestSource = '00/c5/CDirectSoundDevice_DetectSpeakerConfig_00c53340_test.cpp'
+        PassPattern = '00c53340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c56a40'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_Open_00c56a40.cpp'
+        TestSource = '00/c5/CAudioContext_Open_00c56a40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c56a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c57800'
+        Module = 'CVtable_012b8ed4'
+        Source = '00/c5/CVtable012b8ed4_CreateAndPlay_00c57800.cpp'
+        TestSource = '00/c5/CVtable012b8ed4_CreateAndPlay_00c57800_test.cpp'
+        PassPattern = '00c57800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5c360'
+        Module = 'CSoftwareStreamVoice'
+        Source = '00/c5/CSoftwareStreamVoice_MixRingBlock_00c5c360.cpp'
+        TestSource = '00/c5/CSoftwareStreamVoice_MixRingBlock_00c5c360_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c5c360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c880a0'
+        Module = 'CAudioSource'
+        Source = '00/c8/CAudioSource_ApplyHardware_00c880a0.cpp'
+        TestSource = '00/c8/CAudioSource_ApplyHardware_00c880a0_test.cpp'
+        PassPattern = '00c880a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

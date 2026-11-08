@@ -167,3 +167,5 @@ address	pool	module	name	length	class	action	new_length	evidence
 00975bb0	never	-	-	-	OVERLONG	len	4707	chunk 873: the function ends at 0x00976E13; the catalogued gap also holds 0x00976E20, 0x00976E70 (manifest boundary rows added 2026-11-08)
 0078fd60	never	-	-	-	OVERLONG	len	9268	chunk 873: the function ends at 0x00792194; the catalogued gap also holds 0x007921A0, 0x007921B0 (manifest boundary rows added 2026-11-08)
 00be3970	never	-	-	-	OVERLONG	len	2390	chunk 873: the function ends at 0x00BE42C6; the catalogued gap also holds 0x00BE42D0 (manifest boundary rows added 2026-11-08)
+00c51a20	never	CEAXManager	QueueCommit	1248	OVERLONG	len	1164	chunk 872: QueueCommit ends at 0x00C51EAB; 0x00C51EB0 is a separate function (manifest boundary row added); landed 2026-11-08x
+00c53340	never	CDirectSoundDevice	DetectSpeakerConfig	256	OVERLONG	len	180	chunk 872: ends at 0x00C533F3; 0x00C53400 / 0x00C53410 / 0x00C53420 / 0x00C53430 are separate functions (manifest boundary rows added); landed 2026-11-08x

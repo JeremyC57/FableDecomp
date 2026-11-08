@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00c3cbd0   RELOCATION_MATCH PASS   CodaGetErrorString
+00c45990   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c45990   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c45990   WARN RELOC_NAME: ??6CString@@QAIAAV0@N@Z -> 00c0ded0 labelled 'CString::operator<<(double)'
+00c45990   RELOCATION_MATCH PASS   Dump
+00c4a3b0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4a3b0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4a3b0   RELOCATION_MATCH PASS   Refill
+00c4e730   RELOCATION_MATCH PASS   GetListenerProperty
+00c4ea30   WARN RELOC_NAME: ?SetDirect@CLibpkObject1D8@@QAEXJ@Z -> 00c415a0 labelled 'CTCLook::SetHeadTurnState'
+00c4ea30   WARN RELOC_NAME: ?SetDirectHF@CLibpkObject1D8@@QAEXJ@Z -> 00c415c0 labelled 'CLibpkObject1D8::SetWord1A0'
+00c4ea30   WARN RELOC_NAME: ?SetEAXParameters@CLibpkObject1D8@@QAEXABUSAudioEAXParameters@@@Z -> 00c41e40 labelled 'CCombatant::SetCombatParameters'
+00c4ea30   WARN RELOC_NAME: ?SetDirect@C2DAudioObject@@QAEXJ@Z -> 00c44860 labelled 'CTCLook::SetHeadTurnState'
+00c4ea30   WARN RELOC_NAME: ?SetRoom@C2DAudioObject@@QAEXJ@Z -> 00c44880 labelled 'CRenderSetting_00c44880::SetValue'
+00c4ea30   RELOCATION_MATCH PASS   ApplyVoiceBufferProperties
+00c4eed0   RELOCATION_MATCH PASS   GetVoiceBufferProperty
+00c51a20   WARN RELOC_NAME: ?SetEAXProperty@CEAXManager@@QAEJPBU_GUID@@KPAUCEAXVoice@@PAXK@Z -> 00c4f600 labelled 'PropertySerializer_GetPropertyTypeCode'
+00c51a20   RELOCATION_MATCH PASS   QueueCommit
+00c53340   RELOCATION_MATCH PASS   DetectSpeakerConfig
+00c56a40   WARN RELOC_NAME: ?ClearEntryPoints@CAudioContext@@QAEXXZ -> 00c55c80 labelled 'CScreenEffectOwner_00c55c80::Reset'
+00c56a40   RELOCATION_MATCH PASS   Open
+00c57800   RELOCATION_MATCH PASS   CreateAndPlay
+00c5c360   WARN RELOC_NAME: ?MixQuad16@CMixBuffer@@QAEXPBFPBG@Z -> 00c58740 labelled 'CUnprovenAudioBuffer_00C591F0::RouteShort4'
+00c5c360   RELOCATION_MATCH PASS   MixRingBlock
+00c880a0   NOT_GENUINE      -      ApplyHardware
+
+WINS: 11
+  00c3cbd0 RELOCATION_MATCH _global::?CodaGetErrorString@@YAPBDJ@Z
+  00c45990 RELOCATION_MATCH CAmbientCube::?Dump@CAmbientCube@@QAEXXZ
+  00c4a3b0 RELOCATION_MATCH PKCBufferedReader::?Refill@PKCBufferedReader@@QAEXXZ
+  00c4e730 RELOCATION_MATCH CEAXManager::?GetListenerProperty@CEAXManager@@QAEJKPAXK@Z
+  00c4ea30 RELOCATION_MATCH CEAXManager::?ApplyVoiceBufferProperties@CEAXManager@@QAEJPAUCEAXVoice@@KKPAXK@Z
+  00c4eed0 RELOCATION_MATCH CEAXManager::?GetVoiceBufferProperty@CEAXManager@@QAEJPAUCEAXVoice@@KKPAXK@Z
+  00c51a20 RELOCATION_MATCH CEAXManager::?QueueCommit@CEAXManager@@QAEXPAU_CHANGES@@PAUCEAXVoice@@@Z
+  00c53340 RELOCATION_MATCH CDirectSoundDevice::?DetectSpeakerConfig@CDirectSoundDevice@@UAE_NXZ
+  00c56a40 RELOCATION_MATCH CAudioContext::?Open@CAudioContext@@UAEJKPBUSAudioDeviceDesc@@@Z
+  00c57800 RELOCATION_MATCH CVtable_012b8ed4::?CreateAndPlay@CVtable_012b8ed4@@UAE_NKK@Z
+  00c5c360 RELOCATION_MATCH CSoftwareStreamVoice::?MixRingBlock@CSoftwareStreamVoice@@QAEXXZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  global_CodaGetErrorString_00c3cbd0
+  CAmbientCube_Dump_00c45990
+  PKCBufferedReader_Refill_00c4a3b0
+  CEAXManager_GetListenerProperty_00c4e730
+  CEAXManager_ApplyVoiceBufferProperties_00c4ea30
+  CEAXManager_GetVoiceBufferProperty_00c4eed0
+  CEAXManager_QueueCommit_00c51a20
+  CDirectSoundDevice_DetectSpeakerConfig_00c53340
+  CAudioContext_Open_00c56a40
+  CVtable012b8ed4_CreateAndPlay_00c57800
+  CSoftwareStreamVoice_MixRingBlock_00c5c360

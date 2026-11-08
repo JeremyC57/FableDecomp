@@ -1,0 +1,13 @@
+address	name	evidence
+0x00C3CBD0	?CodaGetErrorString@@YAPBDJ@Z	chunk 872: the 27 C_RESULT name strings "C_OK".."C_ERR_FASTLOADTHREAD" + "UNRECOGNIZED" it returns for 0..-26 ; its stdcall forwarder 0x00C33440 (descriptive GameCODA name)
+0x00C45990	?Dump@CAmbientCube@@QAEXXZ	chunk 872: the "Ambient cube:-" / "   Apex (" strings it logs ; the landed CAmbientCube rows (ctor 0x00C45F30, UpdateDistances 0x00C45810) own the 8 x 0x1C apex block it reads
+0x00C4A3B0	?Refill@PKCBufferedReader@@QAEXXZ	chunk 872: .\PKCBufferedReader.cpp traces (lines 121..271) ; the landed callers Seek 0x00C4AA40 and CopyOutOfBuffers 0x00C4B640
+0x00C4E730	?GetListenerProperty@CEAXManager@@QAEJKPAXK@Z	chunk 872: EAX 3.0 listener property ids / EAX30LISTENERPROPERTIES copy ; caller 0x00C4F3BA, the twin of GetVoiceBufferProperty
+0x00C4EA30	?ApplyVoiceBufferProperties@CEAXManager@@QAEJPAUCEAXVoice@@KKPAXK@Z	chunk 872: its only caller SetEAXProperty 0x00C4F600 (call 0x00C5130E with voice, 2, id, data, size after a buffer property changed) ; it clamps the voice's EAX30BUFFERPROPERTIES (+0x1A8) into the voice's applied block and the owner audio object (+0x21C, CAudioObject::Open 0x00C42DD0)
+0x00C4EED0	?GetVoiceBufferProperty@CEAXManager@@QAEJPAUCEAXVoice@@KKPAXK@Z	chunk 872: EAX 3.0 buffer property ids over the voice's EAX30BUFFERPROPERTIES ; caller 0x00C4F5DD (the voice property-get dispatcher)
+0x00C51A20	?QueueCommit@CEAXManager@@QAEXPAU_CHANGES@@PAUCEAXVoice@@@Z	chunk 872: the landed callers' name ; it walks _CHANGES and calls SetEAXProperty 0x00C4F600 with the EAX30 buffer / listener GUIDs
+0x00C53340	?DetectSpeakerConfig@CDirectSoundDevice@@UAE_NXZ	chunk 872: IDirectSound::GetSpeakerConfig (COM slot 8) and the DSSPEAKER_* switch ; slot 3 of vtable 0x012B5BB0 (the landed CDirectSoundDevice rows)
+0x00C56A40	?Open@CAudioContext@@UAEJKPBUSAudioDeviceDesc@@@Z	chunk 872: slot 1 of the CAudioContext vtable 0x012B8C18 ; it runs the landed CAudioContext::Initialise 0x00C565F0 body and bumps RefCount (+0x1B4)
+0x00C57800	?CreateAndPlay@CVtable_012b8ed4@@UAE_NKK@Z	chunk 872: slot of vtable 0x012B8ED4 (the landed class name) ; OpenAL GenSources / GenBuffers / Sourcei calls through the landed CAudioContext members
+0x00C5C360	?MixRingBlock@CSoftwareStreamVoice@@QAEXXZ	chunk 872: the voice's ring buffer (+0x1F0) read cursor feeding CMixBuffer::Mix*16[Ramped] ; the landed CSoftwareStreamVoice / CMixBuffer rows
+0x00C880A0	?ApplyHardware@CAudioSource@@QAEXPAVCAudioObject@@K@Z	chunk 872: the landed caller CAudioSource::ApplySound 0x00C72E00 binds it ; EAXSet / alSourcef / alSourcefv on the source id +0x58 (hardware path)
