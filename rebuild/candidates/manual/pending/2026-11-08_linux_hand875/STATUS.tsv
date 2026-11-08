@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00839940	DIFFER	-v5195	-	no compiling body; full control-flow decode in differ/00839940.cpp (every branch, callee, TC id); inline-budget marker: last six HasTC are bitset::test calls
+00804020	DIFFER	-v5587	-	no compiling body; ordered call/phase skeleton in differ/00804020.cpp
+00a1e5c0	DIFFER	5423v5437	-	call profile identical; 15 hunks/115 lines left: LOS temp shape (int-copied position temp), x87 stack in IsRouteClear expansions, eax/ecx/edx rotation downstream; 75 grades

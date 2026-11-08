@@ -1,0 +1,11 @@
+address	pdb_name	source1	source2
+0x00A1E5C0	?CalculateAndMoveToPosProximity@CNavigatorAStar@@AAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N222222M@Z	Ego_r.pdb 0x00B896E0	FableWin.pdb; callers MoveToPos/MoveToPosProximity/MoveToNavLineOfSightProximity 0x00A1FB00..0x00A1FBA0, `ret 34h`
+0x00839940	?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z	Ego_r.pdb	FableWin.pdb; CThingCreatureBase::OnHit 0x00667D30 (landed) calls it first
+0x00804020	?UpdateTargetList@CTCTargetingPlayer@@IAEXXZ	Ego_r.pdb 0x007FF350	FableWin.pdb 0x024CFE90; only caller CTCTargetingPlayer::FrameUpdate 0x00805600
+0x00A77780	?IsConnectedToRegion@CNavRegion@@QBE_NABV1@@Z	Ego_r.pdb	FableWin.pdb
+0x00A150A0	?IsActionPoint@CNavigatorManager@@QBE_NABVC2DVector@@@Z	Ego_r.pdb	FableWin.pdb
+0x00A471D0	?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z	Ego_r.pdb	FableWin.pdb
+0x00A475C0	?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z	Ego_r.pdb	FableWin.pdb
+0x00A1A1A0	?IsCurrentNavigabilityBetter@CSteeringAgent@@QAE_NXZ	Ego_r.pdb	FableWin.pdb
+0x00A57770	?GetSquaredDist@C2DLineF@@QAEMABVC2DVector@@@Z	Ego_r.pdb	FableWin.pdb
+0x00437160	?GFGetSign@@YIJM@Z	Ego_r.pdb	FableWin.pdb
