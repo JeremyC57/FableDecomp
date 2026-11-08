@@ -1,0 +1,10 @@
+address	landed_or_catalog_spelling	correct_spelling	evidence
+0x00C969D0	_global::FFT_Radix4Transform	libvorbis::dradf2	smallft.c body byte-matches (MATCH); drftf1 radix-2 sites call it
+0x00C98E80	_global::FFT_2D_DispatchByRadix	libvorbis::drftf1	smallft.c body byte-matches; calls dradfg/dradf2/dradf4
+0x00C99060	_global::FFT_Radix4Stage	libvorbis::dradb2	smallft.c body byte-matches (MATCH); drftb1 radix-2 site calls it
+0x00C99400	_global::MDCT_Analysis	libvorbis::dradb3	smallft.c body byte-matches; drftb1 radix-3 sites call it
+0x00C9B9F0	_global::Audio_TransformFFTCoefficients	libvorbis::drftb1	smallft.c body byte-matches; calls dradbg/dradb3/dradb2/dradb4
+0x00C8CB70	_global::Audio_GetSamplePosition	libvorbis::ov_bitrate	vorbisfile.c body byte-matches; OV_EINVAL/OV_FALSE constants, ov_time_total 0x00C8AAF0 callee
+0x00C8E880	_global::OggVorbis_EncodeSetupPacket	libvorbis::_vorbis_pack_books	info.c body byte-matches; type-5 "vorbis" header, _floor_P/_residue_P/_mapping_P tables
+0x00C9BF30	C3DBoundingBox::InitialiseFromSphere (manifest)	libvorbis::mdct_butterfly_16	both tail calls of mdct_butterfly_32 0x00C9C000 bind here; landed libvorbis_mdctbutterfly8_00c9beb0.cpp names it
+0x00C9C400	(landed TU libvorbis_mdctbutterflies_00c9c400.cpp: helper body of mdct_butterfly_32, not a name)	mdct.c body: first pair is `x[14]=r0; x[15]=r1` (no cPI2_8 products)	landed text DIFFER(497v475) at 0x00C9C000, mdct.c text RELOCATION_MATCH; row 0x00C9C400's own bytes unaffected

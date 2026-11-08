@@ -37662,3 +37662,15 @@ _BACKWARDS_LEFT_FORTY_FIVE_DEGREES_ORIENTATION	0137d034	0121adf0
 ?g_NOVIGuardArrestDistance@@3MA	013ac840	00dac760
 ?g_NOVIGuardNoticeDistances@@3PAMA	013ac844	00dac760
 ??$__find_if@PBDU?$_Not_within_traits@V?$char_traits@D@std@@@std@@@std@@YIPBDPBD0U?$_Not_within_traits@V?$char_traits@D@std@@@0@ABUrandom_access_iterator_tag@0@@Z	00841900	0083f650
+@_v_writestring@12	00c8db80	00c8e880
+@vorbis_staticbook_pack@8	00c95ca0	00c8e880
+_dradf2@20	00c969d0	00c98e80
+_dradf4@28	00c96d20	00c98e80
+_dradfg@40	00c97600	00c98e80
+?taui@?1??dradb3@@9@24@4MA	013a3e00	00c99400
+?taur@?1??dradb3@@9@24@4MA	013a3dfc	00c99400
+_dradb2@20	00c99060	00c9b9f0
+_dradb3@24	00c99400	00c9b9f0
+_dradb4@28	00c998b0	00c9b9f0
+_dradbg@40	00c9a230	00c9b9f0
+_mdct_butterfly_16	00c9bf30	00c9c000

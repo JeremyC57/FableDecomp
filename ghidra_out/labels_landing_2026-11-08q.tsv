@@ -1,0 +1,17 @@
+address	name	evidence
+0x00C969D0	libvorbis::dradf2	chunk 866: libvorbis 1.0.1 smallft.c dradf2 (verbatim body); MATCH at 0x00C969D0 with Leaf _dradf2@20; called from drftf1 0x00C98E80 at the dradf2 sites
+0x00C98E80	libvorbis::drftf1	chunk 866: libvorbis 1.0.1 smallft.c drftf1 (verbatim body); RELOCATION_MATCH; its calls bind dradfg 0x00C97600 / dradf2 0x00C969D0 / dradf4 0x00C96D20 (calls.py)
+0x00C99060	libvorbis::dradb2	chunk 866: libvorbis 1.0.1 smallft.c dradb2 (verbatim body); MATCH at 0x00C99060; called from drftb1 0x00C9B9F0
+0x00C99400	libvorbis::dradb3	chunk 866: libvorbis 1.0.1 smallft.c dradb3 (verbatim body, taur/taui statics); RELOCATION_MATCH; called twice from drftb1 0x00C9B9F0 (ip==1 / else sites)
+0x00C9B9F0	libvorbis::drftb1	chunk 866: libvorbis 1.0.1 smallft.c drftb1 (verbatim body); RELOCATION_MATCH; calls bind dradbg 0x00C9A230 / dradb3 0x00C99400 / dradb2 0x00C99060 / dradb4 0x00C998B0; drft_backward 0x00C9BC30 calls it
+0x00C8BF90	libvorbis::_ov_splice	chunk 866: libvorbis 1.0.1 vorbisfile.c _ov_splice (verbatim body); RELOCATION_MATCH; landed ov_crosslap 0x00C8C3E0 TU already calls it under this name
+0x00C8D9D0	libogg::_packetout	chunk 866: libogg 1.1 framing.c _packetout (verbatim body); MATCH; landed ogg_stream_packetout 0x00C8DB10 / ogg_stream_packetpeek TU calls it
+0x00C9C000	libvorbis::mdct_butterfly_32	chunk 866: libvorbis 1.0.1 mdct.c mdct_butterfly_32 (verbatim body); RELOCATION_MATCH; tail calls bind mdct_butterfly_16 0x00C9BF30 twice; landed mdct_butterflies 0x00C9C400 calls it
+0x00C8E880	libvorbis::_vorbis_pack_books	chunk 866: libvorbis 1.0.1 info.c _vorbis_pack_books (verbatim body, "vorbis" string 0x012BF238); RELOCATION_MATCH; binds _floor_P 0x013A3DC8 / _residue_P 0x013A3DD0 / _mapping_P 0x013A3DDC / vorbis_staticbook_pack 0x00C95CA0 / oggpack_write 0x00C90FC0 / _v_writestring 0x00C8DB80
+0x00C8CB70	libvorbis::ov_bitrate	chunk 866: libvorbis 1.0.1 vorbisfile.c ov_bitrate (public __fastcall API, OV_EINVAL -131 / OV_FALSE -1 constants); RELOCATION_MATCH; binds ov_time_total 0x00C8AAF0, __allmul, __ftol2, __imp__floor 0x01440100
+0x00C9BF30	libvorbis::mdct_butterfly_16	chunk 866: libvorbis 1.0.1 mdct.c: the two tail calls of mdct_butterfly_32 (x, x+16) bind here; landed libvorbis_mdctbutterfly8_00c9beb0.cpp names 0x00C9BF30 as mdct_butterfly_16; manifest label C3DBoundingBox::InitialiseFromSphere is a propagated error (not landed, not graded here)
+0x00C96D20	libvorbis::dradf4	chunk 866: libvorbis 1.0.1 smallft.c: drftf1 0x00C98E80 calls it at its ip==4 site; smallft.c file order between dradf2 0x00C969D0 and dradfg 0x00C97600 (not graded here; manifest "FFT_Radix2Stage")
+0x00C97600	libvorbis::dradfg	chunk 866: libvorbis 1.0.1 smallft.c: drftf1 0x00C98E80 calls it at both general-radix sites (na==0 / else); smallft.c file order before drftf1 (not graded here; manifest "FFT_2D_Radix2")
+0x00C998B0	libvorbis::dradb4	chunk 866: libvorbis 1.0.1 smallft.c: drftb1 0x00C9B9F0 calls it at its ip==4 site; smallft.c file order after dradb3 0x00C99400 (not graded here; manifest "FFT_MixedRadixDecomposition")
+0x00C9A230	libvorbis::dradbg	chunk 866: libvorbis 1.0.1 smallft.c: drftb1 0x00C9B9F0 calls it at the general-radix site; smallft.c file order before drftb1 (not graded here; manifest "Audio_FFT_MixedRadixTransform")
+0x00C9BC30	libvorbis::drft_backward	chunk 866: libvorbis 1.0.1 smallft.c drft_backward: calls drftb1 0x00C9B9F0; follows landed drft_forward 0x00C9BC10 in file order (not graded here)

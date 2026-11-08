@@ -1,0 +1,29 @@
+00c969d0	1	_dradf2@20 /Gr smallft TU	MATCH
+00c98e80	1	_drftf1@20 /Gr smallft TU	RELOCATION_MATCH
+00c99060	1	_dradb2@20 /Gr smallft TU	MATCH
+00c99400	1	_dradb3@24 /Gr smallft TU	RELOCATION_MATCH
+00c9b9f0	1	_drftb1@20 /Gr smallft TU	RELOCATION_MATCH
+00c8bf90	1	__ov_splice@32 crosslap TU	RELOCATION_MATCH
+00c8d9d0	1	__packetout(no such symbol; largest fn) /Gr packetout TU	MATCH
+00c8d9d0	2	extern C static, leaf __packetout (still none: /Gr makes it @_packetout@12)	MATCH
+00c8d9d0	3	leaf @_packetout@12 /Gr	MATCH
+00c9c000	1	landed butterflies TU verbatim (its butterfly_32 body is NOT mdct.c: x[14]/x[15] get cPI2_8 products)	DIFFER(497v475)
+00c9c000	2	real mdct.c 1.0.1 mdct_butterfly_32 body (x[14]=r0; x[15]=r1)	RELOCATION_MATCH
+00c8e880	1	__vorbis_pack_books@8 /Gr C++ with engine/Vorbis.h	SRC_FAIL (Vorbis.h member named class: C only)
+00c8e880	2	/TC /Gr C TU over engine/Vorbis.h, static __stdcall + caller	RELOCATION_MATCH
+00c8cb70	1	1.0.1 text, rint=floor(x+.5f), float br	DIFFER(354v382): VC merged the two rint tails; retail has sub esp,8 BEFORE fadd in both branches
+00c8cb70	2	V1 double temp in seekable branch	DIFFER(354v382) merged tails
+00c8cb70	3-10	flags /Os /Ot /Op /Oi /Oa /Ow /Ob1 /GS	all DIFFER (354 or worse)
+00c8cb70	11	ltcg_grade.py (/GL+/LTCG)	still merged (382 by coincidence; lea same)
+00c8cb70	12	compiled as C (/TC /Gr)	DIFFER(354v382) merged
+00c8cb70	13	QFE 4035 compiler	DIFFER(354v382) merged
+00c8cb70	14	d3: br = rint(br); return br;	DIFFER(382v382): tails split, only lea [eax+esi] vs retail [esi+eax]
+00c8cb70	15	c6: return (float)rint(br)	DIFFER(382v382) lea only
+00c8cb70	16	d4: branch-2 (float)rint	DIFFER(382v382) lea only
+00c8cb70	17	d3 as C /TC /Gr	DIFFER(382v382) lea only
+00c8cb70	18	ov: VC7.1 math.h C++ overload float floor(float)	DIFFER(382v382) lea only
+00c8cb70	19	u1: exact math.h chain floor(float)->floorf->(float)floor((double))	DIFFER(382v382) lea only
+00c8cb70	20	t10: u1 + double tt; tt=ov_time_total(vf,-1); br=bits/tt	RELOCATION_MATCH
+00c8cb70	21	w6: u1 + double seconds=ov_time_total(vf,-1); br=bits/seconds	RELOCATION_MATCH (adopted)
+00c8cb70	22	w3: br at function scope	DIFFER(382v382) lea only
+00c8cb70	23	final src regrade	RELOCATION_MATCH

@@ -1,0 +1,11 @@
+address	status	best	note
+00c969d0	MATCH	src/00c969d0.cpp	dradf2, smallft TU, /Gr, 1 grade
+00c98e80	RELOCATION_MATCH	src/00c98e80.cpp	drftf1, smallft TU, /Gr, 1 grade
+00c99060	MATCH	src/00c99060.cpp	dradb2, smallft TU, /Gr, 1 grade
+00c99400	RELOCATION_MATCH	src/00c99400.cpp	dradb3, smallft TU, /Gr, 1 grade
+00c9b9f0	RELOCATION_MATCH	src/00c9b9f0.cpp	drftb1, smallft TU, /Gr, 1 grade
+00c8bf90	RELOCATION_MATCH	src/00c8bf90.cpp	_ov_splice, landed ov_crosslap TU, 1 grade
+00c8d9d0	MATCH	src/00c8d9d0.cpp	_packetout, landed packetout TU (static in extern C, leaf @_packetout@12 under /Gr), 3 grades
+00c9c000	RELOCATION_MATCH	src/00c9c000.cpp	mdct_butterfly_32, landed butterflies TU with the REAL mdct.c body (landed TU body wrong), 2 grades
+00c8e880	RELOCATION_MATCH	src/00c8e880.cpp	_vorbis_pack_books, C TU /TC /Gr over engine/Vorbis.h, 2 grades
+00c8cb70	RELOCATION_MATCH	src/00c8cb70.cpp	ov_bitrate, C++ math.h float floor overload + named time local, 23 grades (+6 micro-probe TUs)

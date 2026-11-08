@@ -47657,7 +47657,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c8bae0	ov_comment	libvorbis	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c8\0x00C8BAE0_global_Script_GetEntryPointer.cpp				
 00c8bb10	host_is_big_endian	libvorbis	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_AddChildPrimitive_00c8bb10.cpp
 00c8bb20	Primitive_ProcessVertexBuffer	_global	unknown	undefined	0		0	yes	accepted									
-00c8bf90	_ov_splice	_global	unknown	undefined	0		0	yes	accepted									
+00c8bf90	_ov_splice	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c1d0	_ov_initset	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c200	_ov_initprime	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c240	_ov_getlap	libvorbis	unknown	undefined	0		0	yes	accepted									
@@ -47669,7 +47669,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c8ca90	_ov_open2	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8cae0	ov_open_callbacks	libvorbis	__fastcall	undefined	0		0	yes	accepted									
 00c8cb20	ov_test_callbacks	libvorbis	unknown	undefined	0		0			discovered	gapscan							
-00c8cb70	Audio_GetSamplePosition	_global	unknown	undefined	0		0	yes	accepted									
+00c8cb70	ov_bitrate	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8ccf0	ogg_page_version	libogg	__fastcall	void	1	vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
 00c8cd00	ogg_page_continued	libogg	__fastcall	void	1	vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
 00c8cd10	ogg_page_bos	libogg	__fastcall	void	1	vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
@@ -47694,7 +47694,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c8d950	ogg_sync_reset	libogg	__thiscall	void	1	CDataInputStream *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_Close_00c8d950.cpp
 00c8d970	ogg_stream_reset	libogg	__thiscall	undefined	1	CRegionMinimap *	0	yes	accepted									
 00c8d9c0	ogg_stream_reset_serialno	_global	unknown	undefined	0		0	yes	accepted									
-00c8d9d0	_packetout	_global	unknown	undefined	0		0	yes	accepted									
+00c8d9d0	_packetout	libogg	unknown	undefined	0		0	yes	accepted									
 00c8db10	ogg_stream_packetout	_global	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\std_DestvalCFlasha_00c8db10.cpp
 00c8db20	ogg_stream_packetpeek	libogg	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 00c8db30	ogg_packet_clear	libogg	__thiscall	undefined	1	CSoundInit *	0	yes	accepted									
@@ -47717,7 +47717,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c8e580	vorbis_synthesis_headerin	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8e6e0	_vorbis_pack_info	libvorbis	unknown	undefined	0		0			discovered	gapscan							
 00c8e790	_vorbis_pack_comment	libvorbis	unknown	undefined	0		0	yes	accepted									
-00c8e880	OggVorbis_EncodeSetupPacket	_global	unknown	undefined	0		0	yes	accepted									
+00c8e880	_vorbis_pack_books	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8ea70	vorbis_commentheader_out	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8eda0	vorbis_synthesis	_global	unknown	undefined	0		0	yes	accepted									
 00c8eef0	vorbis_synthesis_trackonly	libvorbis	unknown	undefined	0		0	yes	accepted									
@@ -47818,22 +47818,22 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c96760	vorbis_book_decodevv_add	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c96800	drfti1	_global	unknown	undefined	0		0	yes	accepted									
 00c969b0	fdrffti	_global	__fastcall	void	3	allocator<CCharString> *,CCharString *,char *	1	yes	accepted									
-00c969d0	FFT_Radix4Transform	_global	unknown	undefined	0		0	yes	accepted									
-00c96d20	FFT_Radix2Stage	_global	unknown	undefined	0		0	yes	accepted									
-00c97600	FFT_2D_Radix2	_global	unknown	undefined	0		0	yes	accepted									
-00c98e80	FFT_2D_DispatchByRadix	_global	unknown	undefined	0		0	yes	accepted									
-00c99060	FFT_Radix4Stage	_global	unknown	undefined	0		0	yes	accepted									
-00c99400	MDCT_Analysis	_global	unknown	undefined	0		0	yes	accepted									
-00c998b0	FFT_MixedRadixDecomposition	_global	unknown	undefined	0		0	yes	accepted									
-00c9a230	Audio_FFT_MixedRadixTransform	_global	unknown	undefined	0		0	yes	accepted									
-00c9b9f0	Audio_TransformFFTCoefficients	_global	unknown	undefined	0		0	yes	accepted									
+00c969d0	dradf2	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c96d20	dradf4	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c97600	dradfg	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c98e80	drftf1	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c99060	dradb2	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c99400	dradb3	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c998b0	dradb4	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c9a230	dradbg	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c9b9f0	drftb1	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9bc10	drft_forward	libvorbis	__fastcall	void	1	CCountedPointer<CBankFileAsyncData> *	1	yes	accepted									
 00c9bc50	drft_init	_global	unknown	undefined	0		0	yes	accepted									
 00c9bc90	drft_clear	libvorbis	__fastcall	bool	1	CMemoryArea *	1	yes	accepted									
 00c9bcd0	mdct_init	_global	unknown	undefined	0		0	yes	accepted									
 00c9beb0	mdct_butterfly_8	libvorbis	unknown	undefined	0		0	yes	accepted									
-00c9bf30	InitialiseFromSphere	C3DBoundingBox	__thiscall	void	2	C3DBoundingBox *,C3DBoundingSphere *	1	yes	accepted									
-00c9c000	mdct_butterfly_32	_global	unknown	undefined	0		0	yes	accepted									
+00c9bf30	mdct_butterfly_16	libvorbis	__thiscall	void	2	C3DBoundingBox *,C3DBoundingSphere *	1	yes	accepted									
+00c9c000	mdct_butterfly_32	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9c1e0	mdct_butterfly_first	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9c2f0	mdct_butterfly_generic	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9c400	mdct_butterflies	libvorbis	unknown	undefined	0		0	yes	accepted									

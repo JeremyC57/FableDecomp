@@ -1,0 +1,42 @@
+addr       parity           behav  name
+00c8bf90   RELOCATION_MATCH PASS   _ov_splice
+00c8cb70   RELOCATION_MATCH PASS   ov_bitrate
+00c8d9d0   MATCH            PASS   _packetout
+00c8e880   RELOCATION_MATCH PASS   _vorbis_pack_books
+00c969d0   MATCH            PASS   dradf2
+00c98e80   WARN RELOC_NAME: _dradfg@40 -> 00c97600 labelled 'FFT_2D_Radix2'
+00c98e80   WARN RELOC_NAME: _dradf2@20 -> 00c969d0 labelled 'FFT_Radix4Transform'
+00c98e80   WARN RELOC_NAME: _dradf4@28 -> 00c96d20 labelled 'FFT_Radix2Stage'
+00c98e80   RELOCATION_MATCH PASS   drftf1
+00c99060   MATCH            PASS   dradb2
+00c99400   RELOCATION_MATCH PASS   dradb3
+00c9b9f0   WARN RELOC_NAME: _dradbg@40 -> 00c9a230 labelled 'Audio_ProcessBitstream'
+00c9b9f0   WARN RELOC_NAME: _dradb3@24 -> 00c99400 labelled 'MDCT_Analysis'
+00c9b9f0   WARN RELOC_NAME: _dradb2@20 -> 00c99060 labelled 'FFT_Radix4Stage'
+00c9b9f0   WARN RELOC_NAME: _dradb4@28 -> 00c998b0 labelled 'FFT_MixedRadixDecomposition'
+00c9b9f0   RELOCATION_MATCH PASS   drftb1
+00c9c000   RELOCATION_MATCH PASS   mdct_butterfly_32
+
+WINS: 10
+  00c8bf90 RELOCATION_MATCH libvorbis::__ov_splice@32
+  00c8cb70 RELOCATION_MATCH libvorbis::@ov_bitrate@8
+  00c8d9d0 MATCH libogg::@_packetout@12
+  00c8e880 RELOCATION_MATCH libvorbis::__vorbis_pack_books@8
+  00c969d0 MATCH libvorbis::_dradf2@20
+  00c98e80 RELOCATION_MATCH libvorbis::_drftf1@20
+  00c99060 MATCH libvorbis::_dradb2@20
+  00c99400 RELOCATION_MATCH libvorbis::_dradb3@24
+  00c9b9f0 RELOCATION_MATCH libvorbis::_drftb1@20
+  00c9c000 RELOCATION_MATCH libvorbis::_mdct_butterfly_32
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  libvorbis_ovsplice_00c8bf90
+  libvorbis_ovbitrate_00c8cb70
+  libogg_packetout_00c8d9d0
+  libvorbis_vorbispackbooks_00c8e880
+  libvorbis_dradf2_00c969d0
+  libvorbis_drftf1_00c98e80
+  libvorbis_dradb2_00c99060
+  libvorbis_dradb3_00c99400
+  libvorbis_drftb1_00c9b9f0
+  libvorbis_mdctbutterfly32_00c9c000
