@@ -93,7 +93,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     LZO 1.08, libogg/libvorbis 1.0.1 minus vorbisfile.c, strmbase, ImeUi) is linked from the vendor's source built unmodified with VC7.1,
     not hand-written; map + routes in docs/pipeline/LIBRARY_MAP.tsv / LIBRARY_LINKING.md (zlib inflate.c proven RELOCATION_MATCH).
     Research found libpk + the CODA audio engine and LHNetworkLib are Lionhead in-house code (no legitimate source exists), so they stay
-    reconstruction and are chunk material again. Next: vendor-object tooling (libsig_scan vendor class, lib_verify loose .obj, grade),
+    reconstruction (owner, 2026-11-08: "treat as game code"); chunks 870 (minus zlib) and 871 relaunched on them. Next: vendor-object tooling (libsig_scan vendor class, lib_verify loose .obj, grade),
     then label landed library rows on the dashboard.
     0x00C0..0x00C4 gap-scan rows of `mov ecx,[ecx+4]; mov eax,[ecx]; jmp [eax+N]` forwarders (72-byte extents) are thunks, not chunk material.
     Running (2026-11-08, 150 grades a row): chunk 866 (done) (ten never-attempted Ogg Vorbis / libpk rows, Xiph names), chunk 867 (ten
