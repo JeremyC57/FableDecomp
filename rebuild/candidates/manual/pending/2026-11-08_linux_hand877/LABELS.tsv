@@ -1,0 +1,8 @@
+address	pdb_name	source1	source2
+0x00839940	?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z	Ego_r.pdb	FableWin.pdb; landed CThingCreatureBase::OnHit 0x00667D30 calls it first
+0x00804020	?UpdateTargetList@CTCTargetingPlayer@@IAEXXZ	Ego_r.pdb 0x007FF350	FableWin.pdb 0x024CFE90; only caller CTCTargetingPlayer::FrameUpdate 0x00805600
+0x0083AF60	?GetPHitMaterialDef@CHitParameters@@QBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ	FableWin.pdb 0x027EBBE0	body reads CHitParameters +0x4C (PHitMaterialDef); OnHit sound site passes the CHitParameters
+0x0083AE30	??0CHitThing@NHeroStatModifierEvent@@QAE@ABVCCreatureStatsDef@@@Z	Ego_r.pdb 0x00815DF0	FableWin.pdb 0x027EFE40
+0x0057A56C	?InformOfEvent@CTCHeroStats@@QAEXABVCBase@NHeroStatModifierEvent@@@Z	Ego_r.pdb 0x0056D8D9	FableWin.pdb 0x01E63428
+0x007512C0	??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z	Ego_r.pdb 0x00762CD0 / FableWin.pdb 0x025A6D40	OnHit 0x00839DD6 calls it with ecx = the explosion thing returned by CTCDExplosion::Create 0x0080C460
+0x00661EF0	?PerformBlockedReaction@CThingCreatureBase@@QAEXPAV1@_N@Z	Ego_r.pdb 0x0053CD40 / FableWin.pdb 0x01D8EFF0	OnHit recoil site pushes (0, 1) with ecx = hitter (a CThingCreatureBase)

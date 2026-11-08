@@ -28032,3 +28032,5 @@ chunk	address	module	name	length
 878	00c4f600	CEAXManager	SetEAXProperty	9204
 878	00c7baf0	_global	Graphics_RenderTextConditional_ProcessRows	10544
 878	00c7e420	_global	Audio_ConvolveFilter_LongVariant	11984
+879	00502e90	CWorldMap	PopulateRegionWithVillagers	13622
+879	0058af10	CTCInventory	OpenPCOptionsMenu	13048
