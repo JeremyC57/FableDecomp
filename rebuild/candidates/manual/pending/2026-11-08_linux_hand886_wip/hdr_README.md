@@ -1,0 +1,18 @@
+# hdr/ overlay (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action)
+Every change is behind a new FABLE_RETAIL_* opt-in; the default path of each header is unchanged.
+
+| header | opt-in | change | evidence |
+|---|---|---|---|
+| engine/NUISystem_CManager.h | FABLE_RETAIL_CMANAGER_ACTION (inside FABLE_RETAIL_CMANAGER) | `GetCorrectComponentInterface(CComponent*)` (0x0041CD93, out of line); `SetDescriptionScrollingOffset(float)` 0x0041CF33, `SetDescriptionScrollingToMax(bool)` 0x0041CF1F | Ego_r/FableWin `?GetCorrectComponentInterface@CManager@NUISystem@@QAEPAVCComponent@2@PAV32@@Z`; FableWin setters (LABELS.tsv) |
+| engine/CMainGameComponent.h | FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER, _GETWORLD, _ADDGAMEEVENT | `CPlayerManager& GetPlayerManager()` / `CWorld& GetWorld()` (inline, read the scoped_ptr words +0x1C / +0x24 like PeekPlayerManager / PeekWorld); `void AddGameEvent(const CGameEvent&)` 0x0041649C (+ `class CGameEvent;` forward) | FableWin `?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ` 0x0187F010, `?GetWorld@...@@QAEAAVCWorld@@XZ` 0x018A3A80; Ego_r/FableWin `?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z` |
+| engine/NInventory_CTCInventoryBase.h | FABLE_RETAIL_CTCINVENTORYBASE_ISOPEN | `bool IsInventoryOpen() const { return InventoryOpen; }` (+0x58, inline in retail: BUY/SELL 0x0041F17F) | FableWin `?IsInventoryOpen@CTCInventoryBase@NInventory@@QBE_NXZ` |
+| engine/NUISystem_CActionParamString.h | (new header) | `NUISystem::CActionParamString : CActionParam { CWideString Value; /* +0x08 */ }`, 12 bytes | FableWin `??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z`; Ego_r layout (12 bytes, Value +8); TAKE_BOAST / PLAY_MOVIE read Value at +8 |
+| engine/CUserProfileManager.h | FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS | the 25 out-of-line setters (SetGamma 0x40B2D0 .. SetCameraBowYZInverted 0x40D2F0), Save 0x40A740, Apply 0x40BC80, SetDefaultValuesGameplay 0x408360 / Audio 0x4083B0 / Video 0x4093E0, CaptureBackBufferForUIBackground 0x406CC0; inline SetNewProfileToUseWASD (byte +0x78) and WereVideoChangesAccepted (byte +0x13C) over the opaque layout | FableWin names; each address is the call target of the matching SET_* / RESTORE_DEFAULTS_* case |
+| engine/CGameEvent.h | FABLE_RETAIL_CGAMEEVENT_CTOR | `CGameEvent(long type)` 0x004159B0, `void AddUBYTE(unsigned char)` 0x004159E0 (no layout change) | FableWin `??0CGameEvent@@QAE@J@Z`, `?AddUBYTE@CGameEvent@@QAEXE@Z` |
+| engine/NUISystem_CSpellContainerList.h | FABLE_RETAIL_CSPELLCONTAINERLIST_VIRTUALS | the 5 virtuals after CChangingStateComponent's 142 slots: AddSpellSelectionChild 142, AddSpellIndicationChild 143, SetSpellToAssign 144, ShowSpellSelectionChild 145, HideSpellSelectionChild 146 | vtable 0x012475C4; FableWin names; landed labels for 142/143/145/146 |
+| stlport/fable_containers.h | FABLE_RETAIL_STLP_LIST_REVERSE | STLport 4.6 `reverse_iterator<_Iterator>` (operator* decrements a copy, operator++ decrements current), `list::rbegin/rend` (+ const), `_List_iterator::operator--(int)` | STLport 4.6 _iterator.h / _list.h; the home-slot shape (LESSONS.md) |
+| fable_string.h, stlport/fable_string.h | (unchanged copies) | needed only so the overlay fable_containers.h is the one included (stlport/fable_string.h includes "fable_containers.h" from its own directory) | -- |
+
+Note: rebuild/include/fable_string.h changed in the repo during this session; when resuming, re-copy fable_string.h and
+stlport/fable_string.h (and re-apply the FABLE_RETAIL_STLP_LIST_REVERSE block to a fresh stlport/fable_containers.h) so the
+overlay does not shadow newer repo text.

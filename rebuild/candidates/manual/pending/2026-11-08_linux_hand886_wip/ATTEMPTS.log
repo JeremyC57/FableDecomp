@@ -1,0 +1,16 @@
+# grade log for 0x0041E6D3 (NUISystem::CManager::Action), retail 35651 bytes (code to 0x426E0B + 6 jump tables to 0x427216)
+v1a  SRC_FAIL  missing CObjectAugmentationsDef / CGameDefinitionManager incomplete
+v1b  SRC_FAIL  GPreviousSelected (FABLE_RETAIL_CLIST), CTCBase base
+v1c  SRC_FAIL  CEnginePrimitiveHandle / CResourceList static asserts
+v1d  DIFFER    1202v35651  (prologue + WIELD + AUGMENT only; no /GS)
+v1e  DIFFER    1202v35651  /GS (no cookie yet: no local arrays)
+v2a  SRC_FAIL  b1 spliced: AddActionIAmParamOf->AddPositionChild(slot124), GetWorld missing (also: earlier v2 attempts hung: cl.exe fatal C1189 #error hangs under wine)
+v2b  DIFFER    5157v35651  /GS  (~60 cases written; first diff = prologue frame 0x800 vs 0x30, Valid test via al)
+v3a  SRC_FAIL  b2 (CONSTRUCT_* etc): no list::rbegin -> overlay stlport reverse_iterator (needs hdr/fable_string.h + hdr/stlport/fable_string.h copies so the overlay fable_containers.h wins)
+v3b  DIFFER    8290v35651  /GS  (~80 cases)
+v4   DIFFER    9459v35651  /GS  (b3: exclusive input, spells, CHANGE_ALPHA, POP_MAP_STATE, OPEN_PC_*, DPAD; cookie now emitted)
+v5   DIFFER    10802v35651 /GS  (b4: RESTORE_DEFAULTS_*, SET_* video/camera, PC_ACCEPT_VIDEO_CHANGES, *_IF_LEAF)
+v6   DIFFER    13653v35651 /GS  (b5: PC_QUIT, logbook/PC constructs, style cards, ASSIGN_*_PC, SET_EXPRESSION_ITEM_TO_ASSIGN_SWAPPING_PC)
+v7   DIFFER    18843v35651 /GS  (b6: *_PC unassign/reset, owned events, observers, MOVE_COMPONENT, SEND_EVENT, SCROLL_DESCRIPTION_*, SET_SPELL_TO_ASSIGN_*_PC)
+v8   DIFFER    20848v35651 /GS  (b7+b8: EXPRESSIONS/MAGIC lists, OBSERVE/IGNORE, SCROLL_ACTIVE_LIST_*, tavern bets, keys, CLOSE_FRAME, CONTINUE, RESPAWN; difflib 47.4%)
+Next: write cases 2000-2023 and 3000-4002 (WORKLOG.md), then inline tuning.

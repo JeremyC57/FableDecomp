@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+005d6748	?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	virtual slot 87 of vtable 0x01254ADC (engine/CTCInventoryStats.h declares it virtual with a CComponent* parameter; FableWin UAE); CONSTRUCT_EXPERIENCE_LIST pushes the screen and calls [eax+15Ch] (0x0041FF0C)	labels_landing_2026-11-08v.tsv ?ConstructExperienceList@CTCInventoryStats@@AAEPAVCComponent@NUISystem@@XZ (private, no parameter)
+004083b0	?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ	RESTORE_DEFAULTS_AUDIO 0x0042116A + FableWin name set (see LABELS.tsv)	catalog CUserProfileManager::SetDefaultValuesGameplay

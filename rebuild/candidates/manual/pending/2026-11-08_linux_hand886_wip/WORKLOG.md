@@ -1,0 +1,67 @@
+# WORKLOG 0x0041E6D3 -- NUISystem::CManager::Action  (agent886, 2026-11-08)
+
+## Identity (done)
+- Real name `?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z`
+  (Ego_r.pdb 0x0042FEBC donor 34,588 B; FableWin.pdb 0x01AE7AE2; vtable 0x01230134 slot 14 = header decl order).
+- True extent 35,651 = code 0x41E6D3..0x426E0E + 6 jump tables (0x426E0E/58, 0x426EF6/34, 0x426F7E/12, 0x426FAE/107,
+  0x42715A/23, 0x4271B6/24) ending at 0x427216 (= CreateTickSlider, landed). The catalog extent is right.
+- TU: `#pragma optimize("y",off)` + `("s",on)` like the landed neighbours; `// Flags: /GS` (cookie [0x139c8a8] at [ebp+70h]).
+- Prologue `push ebp; lea ebp,[esp-74h]; sub esp,800h`; epilogue 0x426DFC `ret 4`.
+
+## State (v8: DIFFER 20848v35651, difflib 47.4%)
+- src/0041e6d3.cpp = best source (also differ/0041e6d3.cpp with the residue lines). Every case of t2/order.txt from WIELD
+  (0x41E752) through RESPAWN (0x423245) is written, in retail address order (= source order), from batches t2/b1..b8.cpp.
+- MISSING (write next, t2/order.txt lines 157-213):
+  * UI_ACTION_ADD_MESH_CHILD .. UI_ACTION_UNLOAD_WANTED_ITEM_DESC (2000-2023), 0x423261..0x426490, ~12.7 KB. These are the
+    description loaders (GetDef<T> 0x42AF3C / 0x42B040 / 0x42B144 + GetSubDef 0x42AF9E / 0x42B0A2 / 0x42B1A6 / 0x42B248,
+    the same-TU def lookups already modelled under auto_inline(off) at the top of src). 2004 alone is 2,728 bytes.
+  * CHEAT_MORALITY (3000) .. EXIT_PHOTOJOURNAL_CAPTURE (4002), 0x426490..0x426DFC, ~3.5 KB (photojournal, edit boxes,
+    scoreboard, clans, PLAY_SOUND, CLOSE_BOAST_MENU, ...). EXIT_PHOTOJOURNAL_CAPTURE decoded: hero GetTC(TCI_PHOTOJOURNAL_CAPTURE)
+    && capture -> ClosePhotojournalCapture().
+  Each missing case currently falls to `default: break;`.
+- The first difference is still at instruction 1 (frame 0x800 vs ours; it will only settle once every case and local exists).
+
+## How to work (tools in t2/)
+- `python3 $A/t2/lst.py <start> <end>`: condensed retail listing with callee names (names.pkl cache).
+  NB it labels `[ebx+..]` as this.X even when ebx is not `this` (e.g. `[this.PInputManager]` after `mov ebx,[this.PPlayer]` is
+  CThing+0x20 = the TC bitset). It truncates the address to the low bytes: cut -c3- output loses the 0x41/0x42 prefix.
+- Fast template diff for repetitive cases: diff a normalised listing against t2/l_pers.txt (the CONSTRUCT_* template), see
+  the shell in this session's history: `sed 's/0x4[0-9a-f]*//g;s/\[-[0-9a-f]*\]/[-X]/g;s/L[0-9a-f]*: //'`.
+- `python3 $A/t2/vt.py <Class@Ns>` (K0=first N=last env) dumps a retail vtable found through RTTI.
+- t2/pdbnames.txt: demangled FableWin/Ego_r names per callee. ghidra_out/fablewin_pdb_names.tsv for member names.
+- ALWAYS run `$A/t2/pp.sh` (g++ -E) before a grade: a fatal cl error (C1189 #error, unbalanced braces C1075/C1004) HANGS
+  cl.exe under the wine lane until the timeout (10 min) with no output.
+- gr.sh grades with the overlay (~1-2 min).
+
+## Decoding rules learned (apply to the missing cases)
+- edi = action.Get() (CAction*), esi = game (CMainGameComponent::Get() at entry), ebx = this at each case entry.
+- A home-slot store of a list header (`mov [ebp-6xx],hdr`) followed by `[hdr+4]` reads = `std::list<CActionParam*>::reverse_iterator
+  it = list.rbegin(); *it; *++it` (overlay stlport reverse_iterator). A plain `end()` + `*--it` has NO home store.
+- `begin()` walks (`mov esi,[hdr]`, `mov esi,[esi]`) = forward iterator `*it, *++it`.
+- GetTC: FABLE_RETAIL_CTHING_GETTC_EXPANDED; key stored in [ebp+7Ch] when `action` is dead, else in a local; miss path
+  reading an uninitialised local = `T* tc; owner->GetTC(id,&tc); tc->...` (no &&); `xor reg,reg` before = `T* tc = 0;`.
+- Hero sources: `mov ecx,[esi+1Ch]; call 0x449970; call 0x487DC0` = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+  `mov eax,[MainGame]` reloaded = CMainGameComponent::Get()->...; `mov ecx,[ebx+58h]` = PPlayer; 0x449960 = PeekPlayerManager() const.
+- Shared tails (cross-jumped by the compiler, nothing to write): 0x42143C SILENCE_SOUND_GROUPS, 0x423183 AddGameEvent,
+  0x42306F SetEvent, 0x4209D7 SetEvent(UI_EVENT_LEFT), 0x422E4E ~CCountedPointer<CAction>, 0x426205 ~CCountedPointer<CComponent>,
+  0x41F849 CPlayerGui ToggleLiveGui, 0x4223E9 the two swapping flags = false, 0x422A7D SetComponentSlotToSwap.
+
+## Open problems (the tuning phase, after every case exists)
+1. Inline split: same-TU functions defined BEFORE Action in retail address order (CTCInventory/CTCInventoryAbilities setters
+   0x41C965..0x41CA52, CMenuEntry::GSetForceProcessing 0x41CAC8, list<..>::begin 0x429A85, postfix -- 0x42899B, != 0x41C7C0)
+   are inlined early and called late (e.g. SetThingToAssign inline at 0x42247E but called at 0x422547). That is VC7.1's
+   caller inline budget: model them as same-TU out-of-line bodies (not in-class inline) and try `/d2inlS<N>` / `/d2inlT<N>`
+   per EXTRA_RULES. Header-inline callees in other TUs (CTCQuestCompletionUI::IsActive) stay inline everywhere; out-of-TU
+   ones (CTCQuickAccessMenu::IsActive 0x625930) are always calls.
+2. Prologue: retail `mov al,[eax+0Ch]; test al,al` for `action->Valid` (ours `cmp byte ptr`): check once the body is complete.
+3. GetDef<T> T for 0x42AF3C (A) and 0x42B144 (C) unproven (A = CDefClassBase now); byte global 0x0137D76C (GTeleportOpenedFromMap,
+   provisional); CMenuEntry::GForceProcessing data name 0x013B8AA8 unproven.
+4. Local models still used for CTCInventory*, CTCHero*, CTCQuickAccessMenu, CTCInGameMenu, CPlayerGui, CWorld, CQuestManager,
+   CTCBoastUI, CTCGamePlayer, CTCTavernGame, CTCQuestCompletionUI, CFrontEndManager, CMenuEntry, CRedefinerList,
+   CActionParam2DVector, CHeroAbilityDef: engine headers exist for most (CTCInventory.h, CTCInventoryStats.h, CTCInventoryMap.h,
+   CTCQuickAccessMenu.h, CTCInGameMenu.h, CPlayerGui.h, CWorld.h, CQuestManager.h, CTCBoastUI.h, NUISystem_CRedefinerList.h);
+   migrate them once the bytes match.
+5. No behaviour test yet (test/ empty): write it after the match.
+
+## Next step
+Write the 2000-2023 cases (start with 0x423261 ADD_MESH_CHILD, 600 B), then 3000-4002, grade, then the inline tuning.
