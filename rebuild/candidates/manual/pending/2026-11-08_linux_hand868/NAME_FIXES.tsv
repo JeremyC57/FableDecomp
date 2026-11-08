@@ -1,0 +1,2 @@
+address	landed_name	correct_name	evidence
+00a2e760	C3DMeshStats local model members MeshVolumeData (+0x74) / MeshVolumeDataSize (+0x78) in rebuild/src/.../C3DMeshStats_AllocateBuffers_00a2e760.cpp	PackedNames (char*, +0x74) / PackedNamesSize (unsigned short, +0x78)	ghidra_out/struct_layouts_egor.tsv C3DMeshStats (Ego_r.pdb) + the row 0x00A2F740 copying the PackNames output there (memmove to [this+0x74]); member names only, the function name is right

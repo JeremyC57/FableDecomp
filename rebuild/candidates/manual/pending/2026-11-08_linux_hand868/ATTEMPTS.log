@@ -134,3 +134,70 @@
 05:28:25	007a1b20	r4	DIFFER(2728v2840)	md=575	bytes=2162	0s	named frameTime local
 05:35:48	00d18df0	final	RELOCATION_MATCH	md=0	bytes=0	0s	final src re-grade
 05:35:49	00ecbdf0	final	RELOCATION_MATCH	md=14	bytes=0	0s	final src re-grade
+05:38:54	00d45060	base	DIFFER(3402v3439)	md=375	bytes=2426	0s	d45 baseline (coordinator round 2)
+05:40:46	00d45060	v1	DIFFER(4012v3439)	md=422	bytes=2872	0s	+inline ~CScriptThing body
+05:49:02	00d45060	v2	DIFFER(3580v3439)	md=532	bytes=2570	0s	v1 minus the after-second-loop T check
+05:49:02	00d45060	v3	DIFFER(3890v3439)	md=530	bytes=2669	0s	v2 + lever-4 loop-head macro on the main loop
+05:53:05	00d45060	v5	DIFFER(3580v3439)	md=532	bytes=2570	0s	v2 + do-while(0) on the first loop's top T
+05:53:05	00d45060	v4	DIFFER(3580v3439)	md=532	bytes=2570	0s	v2 + do-while(0) on the pre-wait T
+05:53:28	00d45060	v2T60	DIFFER(3541v3439)	md=265	bytes=2338	0s	diagnostic /d2inlT60 on v2
+05:53:28	00d45060	v2T50	DIFFER(3650v3439)	md=418	bytes=2495	0s	diagnostic /d2inlT50 on v2
+05:53:28	00d45060	v2T40	DIFFER(3297v3439)	md=490	bytes=2808	0s	diagnostic /d2inlT40 on v2
+05:53:28	00d45060	v2T30	DIFFER(3055v3439)	md=487	bytes=2844	0s	diagnostic /d2inlT30 on v2
+05:57:52	00d45060	dwsel	DIFFER(3890v3439)	md=530	bytes=2669	1s	v2 with only retail's expanded exits wrapped + lever-4 head
+05:57:53	00d45060	dwall	DIFFER(3598v3439)	md=525	bytes=2587	1s	v2 with every terminate check as the do-while(0) macro
+06:03:31	00d45060	v8b	DIFFER(3640v3439)	md=436	bytes=2626	0s	v1 + if(creatures.size()>0) guard on the second loop
+06:03:31	00d45060	v8a	DIFFER(3640v3439)	md=417	bytes=2624	0s	v1 + if(!creatures.empty()) guard on the second loop
+06:05:01	00d45060	v10	DIFFER(4012v3439)	md=422	bytes=2872	0s	v1 with the dtor defined in class (overlay opt-in INCLASS_DTOR)
+06:05:01	00d45060	v9	DIFFER(4012v3439)	md=422	bytes=2872	0s	v1 with the dtor defined out of class without the inline keyword
+06:07:46	00ece7f0	n1	DIFFER(4111v4086)	md=71	bytes=1034	0s	CCharString(pGlobalScriptDef->EndPotion) functional cast
+06:07:46	00ece7f0	n2	DIFFER(4111v4086)	md=71	bytes=1034	0s	static_cast<CCharString>(pGlobalScriptDef->EndPotion)
+06:08:56	00ece7f0	n4	DIFFER(4086v4086)	md=8	bytes=307	0s	const CDefString* potion=&...->EndPotion; PlayCutscene(.., *potion)
+06:08:56	00ece7f0	n3	DIFFER(4086v4086)	md=4	bytes=304	0s	pGlobalScriptDef->EndPotion.operator CCharString() direct
+06:10:19	00ece7f0	n6	DIFFER(4111v4086)	md=71	bytes=1034	0s	const CCharString& end=...->EndPotion; PlayCutscene(.., end) const-ref binding
+06:10:20	00ece7f0	n5	DIFFER(4134v4086)	md=93	bytes=1041	0s	CCharString end=pGlobalScriptDef->EndPotion; PlayCutscene(.., end) named temporary
+06:11:23	00d45060	v11	DIFFER(3709v3439)	md=465	bytes=2694	0s	v1 with both creature loops as for(;;){ if (i>=size) break; ...}
+06:11:23	00d45060	v12	DIFFER(3630v3439)	md=446	bytes=2629	0s	v1: first loop for(;;)/break, second loop plain + if(!empty()) guard
+06:12:35	00d45060	v8aT56	DIFFER(3396v3439)	md=103	bytes=2374	0s	diagnostic /d2inlT56 on v8a
+06:12:35	00d45060	v8aT60	DIFFER(3444v3439)	md=164	bytes=2359	0s	diagnostic /d2inlT60 on v8a (guarded second loop)
+06:13:10	00ece7f0	n8	DIFFER(4086v4086)	md=4	bytes=304	0s	PlayCutscene(.., (*pGlobalScriptDef).EndPotion)
+06:13:10	00ece7f0	n7	DIFFER(4086v4086)	md=9	bytes=308	0s	const CScriptDef& def=*pGlobalScriptDef; PlayCutscene(.., def.EndPotion)
+06:14:49	00d45060	v8bT58	DIFFER(3428v3439)	md=182	bytes=2382	0s	diagnostic /d2inlT58 on v8b
+06:14:49	00d45060	v8bT56	DIFFER(3380v3439)	md=121	bytes=2391	0s	diagnostic /d2inlT56 on v8b (size()>0 guard)
+06:14:50	00b92300	b1	DIFFER(348v335)	md=60	bytes=299	0s	mask = 1 << (layer+1) as the first statement
+06:14:50	007a1b20	r5	DIFFER(2712v2840)	md=426	bytes=2266	0s	AddTC name as a named CCharString local (temporary built before the argument pushes)
+06:16:59	00b92300	b2	DIFFER(335v335)	md=4	bytes=16	0s	layer copied to a const local l used for every access
+06:16:59	00c52bb0	c9	DIFFER(140v140)	md=12	bytes=6	0s	K5 range as a nested switch (Model) case 0..3 (c2 range check cmp 3 ; ja)
+06:17:26	00c52bb0	c11	DIFFER(140v140)	md=12	bytes=6	0s	K5 test as !(Model > 3)
+06:17:26	00b92300	b3	DIFFER(335v335)	md=50	bytes=37	0s	handle = *(GroupPrimitiveHandle + layer); test through handle
+06:18:40	00b92300	b5	DIFFER(335v335)	md=4	bytes=16	0s	index with (unsigned long)layer
+06:18:40	00b92300	b4	DIFFER(348v335)	md=66	bytes=306	0s	early-return test first, handle reference taken after it
+06:38:28	00a2f740	r1	DIFFER(3155v3051)	md=1511	bytes=2721	0s	a2f shared-header rebuild r1
+06:41:12	00a2f740	r2	DIFFER(3171v3051)	md=1306	bytes=2754	0s	a2f r2: CVectorMap locals + Insert
+06:41:13	00a2f740	r3	DIFFER(2835v3051)	md=953	bytes=2601	0s	a2f r3: r2 + while-loop forms
+06:42:23	00a2f740	r4	DIFFER(3037v3051)	md=992	bytes=2544	0s	a2f r4: r3 + implicit ~C3DMeshVolume + SetMinMax(center-diag, center+diag)
+06:43:16	00a2f740	r5	DIFFER(3037v3051)	md=843	bytes=2543	0s	a2f r5: r4 + named C3DHelperPoint local before the pair
+06:49:31	00a2f740	r6	DIFFER(2965v3051)	md=857	bytes=2557	0s	a2f r6: r5 + unused CVectorMap<ulong,C3DMeshVolume> local, sphere member assigns, SetCenterDiag(center, diagonal) locals
+06:49:52	00a2f740	r7	DIFFER(3049v3051)	md=832	bytes=2551	0s	a2f r7: r6 + __forceinline C3DBoundingBox::SetCenterDiag (header)
+06:51:58	00a2f740	r8	DIFFER(3059v3051)	md=749	bytes=2506	0s	a2f r8: r7 with dummy->GetName() at each use (no named reference)
+06:54:08	00a2f740	r9	DIFFER(3049v3051)	md=830	bytes=2569	0s	a2f r9: r7 + named CCharString createMeshPrefix local
+06:54:09	00a2f740	r10	DIFFER(3059v3051)	md=720	bytes=2505	0s	a2f r10: r8 + named CCharString createMeshPrefix local
+06:58:25	00a2f740	r12	DIFFER(3059v3051)	md=720	bytes=2505	0s	a2f r12: r10 + C3DDummyObject built by member assignments (public members)
+06:58:26	00a2f740	r11	DIFFER(3049v3051)	md=830	bytes=2576	0s	a2f r11: r10 + named name reference first in the loop body
+07:00:07	00a2f740	r13	DIFFER(3068v3051)	md=645	bytes=2499	0s	a2f r13: r10 + named rootChunk pointer local
+07:02:29	00a2f740	r14	DIFFER(3068v3051)	md=661	bytes=2492	0s	a2f r14: r10 + short-lived rootChunk pointer (HasHelpers/GetHelpers only)
+07:05:27	00dcfa60	base_T72	DIFFER(2451v2412)	md=41	bytes=1121	0s	DIAG T sweep on the differ base /d2inlT72
+07:05:28	00dcfa60	base_T66	DIFFER(2284v2412)	md=480	bytes=1794	0s	DIAG T sweep on the differ base /d2inlT66
+07:05:29	00dcfa60	base_T60	DIFFER(2300v2412)	md=482	bytes=1816	0s	DIAG T sweep on the differ base /d2inlT60
+07:05:29	00dcfa60	base_T56	DIFFER(2261v2412)	md=228	bytes=1775	0s	DIAG T sweep on the differ base /d2inlT56
+07:05:30	00dcfa60	base_T50	DIFFER(2506v2412)	md=748	bytes=1868	0s	DIAG T sweep on the differ base /d2inlT50
+07:09:52	00a2f740	hand	DIFFER(3059v3051)	md=720	bytes=2505	0s	differ hand-over check (= r10)
+07:09:52	007a1b20	hand	SRC_FAIL	md=-1	bytes=-1	1s	differ hand-over check (= r5)
+07:09:53	00d45060	hand	DIFFER(3396v3439)	md=103	bytes=2374	0s	differ hand-over check (= v8aT56)
+07:11:19	007a1b20	inc	SRC_FAIL	md=-1	bytes=-1	1s	diagnostic /showIncludes (overlay fable_string.h double include)
+07:12:13	00b92300	hand	DIFFER(335v335)	md=4	bytes=16	0s	differ hand-over check with the chunk hdr/
+07:12:13	007a1b20	hand2	DIFFER(2712v2840)	md=426	bytes=2266	0s	differ hand-over check (= r5) with the fable_definition_table.h overlay copy
+07:12:13	00c52bb0	hand	DIFFER(140v140)	md=4	bytes=2	0s	differ hand-over check with the chunk hdr/
+07:12:14	00d11930	hand	DIFFER(4056v4072)	md=24	bytes=124	0s	differ hand-over check with the chunk hdr/
+07:12:15	00dcfa60	hand	DIFFER(2451v2412)	md=41	bytes=1121	0s	differ hand-over check with the chunk hdr/
+07:12:15	00ece7f0	hand	DIFFER(4086v4086)	md=4	bytes=304	0s	differ hand-over check with the chunk hdr/

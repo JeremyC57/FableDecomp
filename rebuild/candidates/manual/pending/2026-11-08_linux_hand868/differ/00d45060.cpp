@@ -1,7 +1,7 @@
 // NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks() -- the Guild guard thread: make every creature but the sparrows, Whisper and the maze rival friends with everything and unkillable; then each frame (re-applying that whenever the hero comes back into the Guild complex) watch for the hero hitting a friend with bare hands, a melee or a ranged weapon inside the complex, other than the rival in the maze: the first three times speak the next guild-seal warning, the fourth time (unless a skill or will test is running, which it waits out) play CS_GUILD_BADHERO with the fourth warning, then reset the warnings
-// Grade: DIFFER(3402v3439) -- md=375: frame slot order -- retail puts maze at +0x18, the first creatures vector at +0x24 and the name temporary at +0x30; ours has the vector lowest (+0x18), the temporary at +0x24 and maze above; the rest of the diff is mostly the shifted offsets plus the release-copy layout
-// Chunk 868: not attempted beyond the baseline (budget spent on the other rows; frame-slot order residue as chunk 865 left it)
-// Next idea: find the scope/declaration shape that puts maze lowest (vector at function scope makes the frame 0xB4; a helper for the twice-repeated make-friendly loop is unproven -- no PDB member found)
+// Grade: DIFFER(3396v3439) -- md=103 with the DIAGNOSTIC flag /d2inlT56 (not a landing device: evidence of an inline-budget residue, not a single site); plain C++ best is the chunk-865 base md 375 (3402v3439; frame slot order: retail maze +0x18, first creatures vector +0x24, name temporary +0x30, ours vector lowest) and v8a md 417 (3640: inline ~CScriptThing body + `if (!creatures.empty())` guard on the second loop, which is what T56 then shapes to md 103); chunk 868 (23 grades): inline dtor body (v1), dropping the after-second-loop T check (v2), lever-4 loop-head macro (v3/dwsel), do-while(0) on the pre-wait / first-loop / all T checks (v4/v5/dwall), in-class or non-inline dtor definitions (v9/v10 = v1 bytes), for(;;)/break loop forms (v11/v12) all stay md 417-532; T sweep on v2: T60 265, T50 418, T40 490, T30 487; on v8a: T60 164, T56 103; on v8b (size()>0): T58 182, T56 121; the T56 residue is zero-register homing (retail `xor edi,edi` once v ours `xor ebp,ebp` re-materialised at each site, `push 0` v `push ebp`, `test ecx,ecx` v `cmp ecx,ebp`, `inc [esi+50h]` v load/inc/store) plus the guard's own `cmp ecx,eax ; je` which retail does not emit
+// Next idea: the plain-C++ quantity is which inline sites T56 flips (compare v8a v v8aT56 call lists with calls.py): find the one or two CScriptThing / CCharString release sites that change and give them retail's frequency by scope (a block-scoped temporary or a loop form) rather than the flag; then the frame slot order (maze declared/first-used before the creatures vector)
+// Flags: /d2inlT56
 // Leaf: ?CheckFriendlyAttacks@CQ_GuildTrainingScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D45060, 3439 bytes, thiscall, no EH frame.
 // Identity (proven, two sources): CQ_GuildTrainingScript::Main 0x00D3BC60 spawns it under the thread-name literal
@@ -45,6 +45,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, 
 inline bool CScriptThing::MsgIsHitBy(const CCharString& name) const { if (PImp.IsNull()) return false; return PImp->MsgIsHitBy(name); }
 inline bool CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& name) const { if (PImp.IsNull()) return false; return PImp->MsgIsHitBySpecialAbilityFrom(ability, name); }
 inline bool CScriptThing::MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const { if (PImp.IsNull()) return false; return PImp->MsgIsHitByAnySpecialAbilityFrom(name); }
+inline CScriptThing::~CScriptThing() { }
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map();
 template<> std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map();
 
@@ -78,6 +79,7 @@ void NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks()
             if (IsActiveThreadTerminating()) return;
             std::vector<CScriptThing> creatures;
             Game->GetAllCreaturesExcludingHero(creatures);
+            if (!creatures.empty())
             for (unsigned long i = 0; i < creatures.size(); ++i) {
                 if (IsActiveThreadTerminating()) return;
                 bool friendly = creatures[i].GetDefName() != "CREATURE_BIRD_GUILD_SPARROW"
