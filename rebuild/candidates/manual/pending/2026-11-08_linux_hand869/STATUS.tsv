@@ -1,0 +1,22 @@
+address	status	best	note
+00c96d20	RELOCATION_MATCH	src/00c96d20.cpp	dradf4, smallft TU (chunk 866 text), /Gr, leaf _dradf4@28, 1 grade
+00c97600	RELOCATION_MATCH	src/00c97600.cpp	dradfg, smallft TU, /Gr, leaf _dradfg@40, 1 grade
+00c998b0	RELOCATION_MATCH	src/00c998b0.cpp	dradb4, smallft TU, /Gr, leaf _dradb4@28, 1 grade
+00c9a230	RELOCATION_MATCH	src/00c9a230.cpp	dradbg, smallft TU, /Gr, leaf _dradbg@40, 1 grade
+00c9bc30	RELOCATION_MATCH	src/00c9bc30.cpp	drft_backward, smallft TU, /Gr, leaf @drft_backward@8 (public fastcall), 2 grades (first without leaf/flags: DIFFER 35v29)
+00c9bf30	RELOCATION_MATCH	src/00c9bf30.cpp	mdct_butterfly_16, landed butterfly_8 TU text, no flags, 1 grade
+00c8e2e0	RELOCATION_MATCH	src/00c8e2e0.cpp	_vorbis_unpack_books, landed vorbis_synthesis_headerin TU text, /Gr /GS, leaf __vorbis_unpack_books@8, 1 grade
+00c931d0	RELOCATION_MATCH	src/00c931d0.cpp	bark_noise_hybridmp, psy.c static beside the landed _vp_noisemask body, /Gr, leaf _bark_noise_hybridmp@24, 1 grade
+00c965c0	RELOCATION_MATCH	src/00c965c0.cpp	vorbis_book_decodev_add, landed decodevs_add TU + verbatim body, /Gr, 1 grade
+00c95a10	RELOCATION_MATCH	src/00c95a10.cpp	_best, C TU (/TC /Gr: codebook.c names a local `this`), split extent (588 of 642), 2 grades (SRC_FAIL as C++)
+00c95c60	MATCH	src/00c95c60.cpp	vorbis_book_codeword (bonus: second function of the 0x00C95A10 extent), same C TU, 1 grade
+00c95c80	MATCH	src/00c95c80.cpp	vorbis_book_codelen (bonus: third function of the 0x00C95A10 extent), same C TU, 1 grade
+00c91ab0	RELOCATION_MATCH	src/00c91ab0.cpp	setup_tone_curves, psy.c init slice TU, /Gr, leaf _setup_tone_curves@20 (first spelled @16: graded as the largest symbol), 2 grades
+00c92660	RELOCATION_MATCH	src/00c92660.cpp	_vp_psy_init, same psy.c slice TU, /Gr, 1 grade
+00c9cc60	MATCH	src/00c9cc60.cpp	limit_sum, bitrate.c C TU over engine/Vorbis.h (/TC /Gr), leaf _limit_sum@8, 1 grade
+00c9cff0	RELOCATION_MATCH	src/00c9cff0.cpp	vorbis_bitrate_addblock, same bitrate.c TU, split extent (2700 of 2888), 1 grade
+00c9da80	MATCH	src/00c9da80.cpp	vorbis_bitrate_flushpacket (bonus: second function of the 0x00C9CFF0 extent), same TU, 1 grade
+00c8bb20	RELOCATION_MATCH	src/00c8bb20.cpp	ov_read, landed vorbisfile.c slice TU + same-TU vorbis_ftoi via libvorbis/vorbis_ftoi.h + `int val=0`, /GS, split extent (950 of 1132), 14 grades
+00c8bee0	RELOCATION_MATCH	src/00c8bee0.cpp	ov_read_float (bonus: second function of the 0x00C8BB20 extent), same TU, /GS, 2 grades
+00c89850	DIFFER(607v588)	differ/00c89850.cpp	CReverbFilterTap::ProcessRamp (hand-written C++, no source): residue = the two-trip history-tap loop's induction form (retail down-counter + pointer walk for both records; VC7.1 keeps i and indexes current->m_historyDelay[i]), 13 grades
+00c95580	DIFFER(901v910)	differ/00c95580.cpp	vorbis_book_init_decode (sharedbook.c, C TU /TC /Gr): residue = two spilled temps' frame-slot order and `hi` register-resident vs retail's memory-resident hi in the hint loop (mask operand order follows), 7 grades

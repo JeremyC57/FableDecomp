@@ -132,7 +132,15 @@ def sym_identity(sym):
     if sym.startswith("?"):
         parts = sym[1:].split("@@")[0].split("@")
         return ("func", parts[0], parts[1] if len(parts) > 1 else "")
-    return ("c", sym.lstrip("_").split("@")[0], "")
+    leaf = sym.lstrip("_").split("@")[0]
+    return ("c", _CRT_ALIASES.get(leaf, leaf), "")
+
+
+# One CRT routine exported under two labels (the VC7.1 CRT's chkstk.asm defines `_chkstk` and `_alloca_probe` at one
+# address): VC7.1 emits `__chkstk` for a large frame and `__alloca_probe` for `_alloca`, and retail binds both to
+# 0x00BFEA30 (reloc_bindings: __chkstk from 0x00AB6060, __alloca_probe from 0x00C8DC90; setup_tone_curves 0x00C91AB0
+# calls it under both names). The same identity, not a conflict.
+_CRT_ALIASES = {"chkstk": "alloca_probe"}
 
 def _norm(s): return re.sub(r"[^a-z0-9]", "", s.lower())
 

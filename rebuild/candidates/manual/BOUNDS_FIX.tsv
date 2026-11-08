@@ -156,3 +156,6 @@ address	pool	module	name	length	class	action	new_length	evidence
 009cf053	never	_global	CBankFile_ProcessHeroQuestions	673	MIDSTART	skip	673	chunk 690 cut: not a function start (no padding, no callers, fell-into and jmp target inside 009cec60 CBankFile::Update); row removed from the manifest
 009cf2f4	never	_global	Catch@009cf2f4	166	MIDSTART	skip	166	chunk 690: not a catch funclet and not a function start: the code after a no-return _CxxThrowException call inside 009cec60 CBankFile::Update (same ebp frame, runs to its ret 0x009CF399); row removed from the manifest
 0083f650	never	LHNetworkLib::LHHttpHeaders	GetHeader	442	TRUNCATED	len	443	chunk 865: the function ends in a noreturn `call abort` and VC7.1 owns the int3 after it (retail 0xCC at 0x0083F80A); landed 443 bytes (landing 2026-11-08p)
+00c8bb20	never	libvorbis	ov_read	1132	OVERLONG	len	950	chunk 869: the catalogued gap holds ov_read (950, ends in ret) + ov_read_float 0x00C8BEE0 (172); both landed 2026-11-08s
+00c95a10	never	libvorbis	_best	642	OVERLONG	len	588	chunk 869: _best (588) + vorbis_book_codeword 0x00C95C60 (18) + vorbis_book_codelen 0x00C95C80 (18); all landed 2026-11-08s
+00c9cff0	never	libvorbis	vorbis_bitrate_addblock	2888	OVERLONG	len	2700	chunk 869: vorbis_bitrate_addblock (2700) + vorbis_bitrate_flushpacket 0x00C9DA80 (184); both landed 2026-11-08s

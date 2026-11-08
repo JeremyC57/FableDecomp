@@ -1,0 +1,53 @@
+addr       parity           behav  name
+00c8bb20   NOT_GENUINE      -      ov_read
+00c8bee0   OUTSIDE_MANIFEST -      ov_read_float
+00c8e2e0   RELOCATION_MATCH PASS   _vorbis_unpack_books
+00c91ab0   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c91ab0   RELOC_IDENTITY: retail 00bfea30 bound to __alloca_probe, __chkstk
+00c91ab0   RELOC_IDENTITY   -      setup_tone_curves
+00c92660   WARN RELOC_NAME: _setup_tone_curves@20 -> 00c91ab0 labelled 'BoundingBox_ComputeTransform'
+00c92660   RELOCATION_MATCH PASS   _vp_psy_init
+00c931d0   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c931d0   RELOCATION_MATCH PASS   bark_noise_hybridmp
+00c95a10   RELOCATION_MATCH PASS   _best
+00c95c60   OUTSIDE_MANIFEST -      vorbis_book_codeword
+00c95c80   OUTSIDE_MANIFEST -      vorbis_book_codelen
+00c965c0   RELOCATION_MATCH PASS   vorbis_book_decodev_add
+00c96d20   RELOCATION_MATCH PASS   dradf4
+00c97600   RELOCATION_MATCH PASS   dradfg
+00c998b0   RELOCATION_MATCH PASS   dradb4
+00c9a230   RELOCATION_MATCH PASS   dradbg
+00c9bc30   OUTSIDE_MANIFEST -      drft_backward
+00c9bf30   RELOCATION_MATCH PASS   mdct_butterfly_16
+00c9cc60   MATCH            PASS   limit_sum
+00c9cff0   WARN RELOC_NAME: _limit_sum@8 -> 00c9cc60 labelled 'Array_LinearSearch'
+00c9cff0   RELOCATION_MATCH PASS   vorbis_bitrate_addblock
+00c9da80   OUTSIDE_MANIFEST -      vorbis_bitrate_flushpacket
+
+WINS: 12
+  00c8e2e0 RELOCATION_MATCH libvorbis::__vorbis_unpack_books@8
+  00c92660 RELOCATION_MATCH libvorbis::@_vp_psy_init@20
+  00c931d0 RELOCATION_MATCH libvorbis::_bark_noise_hybridmp@24
+  00c95a10 RELOCATION_MATCH libvorbis::@_best@12
+  00c965c0 RELOCATION_MATCH libvorbis::@vorbis_book_decodev_add@16
+  00c96d20 RELOCATION_MATCH libvorbis::_dradf4@28
+  00c97600 RELOCATION_MATCH libvorbis::_dradfg@40
+  00c998b0 RELOCATION_MATCH libvorbis::_dradb4@28
+  00c9a230 RELOCATION_MATCH libvorbis::_dradbg@40
+  00c9bf30 RELOCATION_MATCH libvorbis::_mdct_butterfly_16
+  00c9cc60 MATCH libvorbis::_limit_sum@8
+  00c9cff0 RELOCATION_MATCH libvorbis::@vorbis_bitrate_addblock@4
+
+LANDED 12 wins into src/compiled + tests + catalog + oracle
+  libvorbis_vorbisunpackbooks_00c8e2e0
+  libvorbis_vppsyinit_00c92660
+  libvorbis_barknoisehybridmp_00c931d0
+  libvorbis_best_00c95a10
+  libvorbis_vorbisbookdecodevadd_00c965c0
+  libvorbis_dradf4_00c96d20
+  libvorbis_dradfg_00c97600
+  libvorbis_dradb4_00c998b0
+  libvorbis_dradbg_00c9a230
+  libvorbis_mdctbutterfly16_00c9bf30
+  libvorbis_limitsum_00c9cc60
+  libvorbis_vorbisbitrateaddblock_00c9cff0

@@ -47623,7 +47623,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c89350	ProcessRamped	CReverbDiffuserStage	unknown	undefined	0		0	yes	accepted									
 00c896c0	Allocate	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
 00c89750	Process	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
-00c89850	ProcessCrossfade	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
+00c89850	ProcessRamp	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
 00c89aa0	Feedback	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
 00c89b40	AddTrigger	CTCActivationReceptorBase	__thiscall	void	2	CTCActivationReceptorBase *,CTCActivationTrigger *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\CTCActivationReceptorBase_AddTrigger_00c89b40.cpp
 00c89b60	MixHistory	CReverbFilterTap	unknown	undefined	0		0	yes	accepted									
@@ -47656,7 +47656,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c8bab0	ov_info	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8bae0	ov_comment	libvorbis	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c8\0x00C8BAE0_global_Script_GetEntryPointer.cpp				
 00c8bb10	host_is_big_endian	libvorbis	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c8\global_AddChildPrimitive_00c8bb10.cpp
-00c8bb20	Primitive_ProcessVertexBuffer	_global	unknown	undefined	0		0	yes	accepted									
+00c8bb20	ov_read	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c8bee0	ov_read_float	libvorbis	unknown	undefined	0		0			discovered	boundary							
 00c8bf90	_ov_splice	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c1d0	_ov_initset	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c8c200	_ov_initprime	libvorbis	unknown	undefined	0		0	yes	accepted									
@@ -47767,15 +47768,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c918c0	min_curve	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c91980	max_curve	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c91a40	attenuate_curve	libvorbis	unknown	undefined	0		0	yes	accepted									
-00c91ab0	BoundingBox_ComputeTransform	_global	unknown	undefined	0		0	yes	accepted									
+00c91ab0	setup_tone_curves	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c92640	unitnorm	libvorbis	unknown	undefined	0		0	yes	accepted									
-00c92660	AudioSystem_ProcessSources	_global	unknown	undefined	0		0	yes	accepted									
+00c92660	_vp_psy_init	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c92bf0	_vp_psy_clear	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c92ca0	seed_curve	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c92e20	seed_loop	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c92f10	seed_chase	_global	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c9\0x00C92F10_global_DSP_ComputeRunningMinEnvelope.cpp				
 00c93080	max_seeds	libvorbis	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c9\0x00C93080_global_FFT_ComputeWaveformEnvelope.cpp				
-00c931d0	FFT_ComputeMagnitudes	_global	unknown	undefined	0		0	yes	accepted									
+00c931d0	bark_noise_hybridmp	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c93b30	vp_remove_floor	_global	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c9\0x00C93B30_global_Audio_ApplyGainTableToBuffer.cpp				
 00c93c40	vp_noisemask	_global	unknown	undefined	0		0	yes	accepted									
 00c93e30	_vp_tonemask	libvorbis	unknown	undefined	0		0	yes	accepted									
@@ -47802,9 +47803,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c954a0	vorbis_book_init_encode	libvorbis	__thiscall	undefined	1	CEntry *	0	yes	accepted									
 00c954f0	bitreverse	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c95560	sort32a	libvorbis	unknown	undefined	0		0	unmeasured	accepted									
-00c95580	CTCWound::CWound::Initialize	CTCWound::CWound	unknown	undefined	0		0	yes	accepted									
+00c95580	vorbis_book_init_decode	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c95910	_dist	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c95a10	_best	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c95c60	vorbis_book_codeword	libvorbis	unknown	undefined	0		0			discovered	boundary							
+00c95c80	vorbis_book_codelen	libvorbis	unknown	undefined	0		0			discovered	boundary							
 00c95ca0	vorbis_staticbook_pack	_global	unknown	undefined	0		0	yes	accepted									
 00c95ee0	vorbis_staticbook_unpack	_global	unknown	undefined	0		0	yes	accepted									
 00c96140	vorbis_book_encode	libvorbis	__thiscall	long	2	CEnvironment *,long	1	yes	accepted									
@@ -47813,7 +47816,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c96320	decode_packed_entry_number	_global	unknown	undefined	0		0	yes	accepted									
 00c96430	vorbis_book_decode	libvorbis	__thiscall	CDefPointer<CDefClassBase_const_>	3	CDefinitionManager *,CCharString *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c9\CDefinitionManager_GetPDefFromClassIndex_00c96430.cpp
 00c96450	vorbis_book_decodevs_add	_global	unknown	undefined	0		0	yes	accepted									
-00c965c0	sub_00c965c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c965c0	vorbis_book_decodev_add	libvorbis	unknown	undefined	0		0			discovered	gapscan							
 00c96700	vorbis_book_decodev_set	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c96760	vorbis_book_decodevv_add	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c96800	drfti1	_global	unknown	undefined	0		0	yes	accepted									
@@ -47828,6 +47831,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c9a230	dradbg	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9b9f0	drftb1	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9bc10	drft_forward	libvorbis	__fastcall	void	1	CCountedPointer<CBankFileAsyncData> *	1	yes	accepted									
+00c9bc30	drft_backward	libvorbis	unknown	undefined	0		0			discovered	boundary							
 00c9bc50	drft_init	_global	unknown	undefined	0		0	yes	accepted									
 00c9bc90	drft_clear	libvorbis	__fastcall	bool	1	CMemoryArea *	1	yes	accepted									
 00c9bcd0	mdct_init	_global	unknown	undefined	0		0	yes	accepted									
@@ -47844,11 +47848,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c9cb40	BINBYTES	_global	__thiscall	float *	3	CTopologySizeGrid *,long,long	1	yes	accepted									
 00c9cb60	Math_ComputeByteChunkCount	_global	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c9\0x00C9CB60_global_Math_ComputeByteChunkCount.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c9\global_MathComputeByteChunkCount_00c9cb60.cpp
 00c9cb80	floater_interpolate	libvorbis	unknown	undefined	0		0	yes	accepted									
-00c9cc60	Array_LinearSearch	_global	unknown	undefined	0		0	yes	accepted									
+00c9cc60	limit_sum	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9cd20	vorbis_bitrate_init	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9cf10	vorbis_bitrate_clear	libvorbis	unknown	undefined	0		0	yes	accepted									
 00c9cfd0	vorbis_bitrate_managed	libvorbis	__thiscall	EPlayerMode	1	CPlayer *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c9\CPlayer_GetCurrentMode_00c9cfd0.cpp
-00c9cff0	CLandscapeBackgroundDynamicBuildTemplate::UpdateTerrainGrid	CLandscapeBackgroundDynamicBuildTemplate	unknown	undefined	0		0	yes	accepted									
+00c9cff0	vorbis_bitrate_addblock	libvorbis	unknown	undefined	0		0	yes	accepted									
+00c9da80	vorbis_bitrate_flushpacket	libvorbis	unknown	undefined	0		0			discovered	boundary							
 00c9db40	ve_envelope_init	_global	unknown	undefined	0		0	yes	accepted									
 00c9dce0	_ve_envelope_clear	libvorbis	__thiscall	void	3	CRenderManager2D *,CGraphicFrame *,CUVBox *	1	yes	accepted									
 00c9dd40	todB	_global	unknown	undefined	0		0	yes	accepted									

@@ -1,0 +1,86 @@
+00c969d0	1	_dradf2@20 /Gr smallft TU	MATCH
+00c98e80	1	_drftf1@20 /Gr smallft TU	RELOCATION_MATCH
+00c99060	1	_dradb2@20 /Gr smallft TU	MATCH
+00c99400	1	_dradb3@24 /Gr smallft TU	RELOCATION_MATCH
+00c9b9f0	1	_drftb1@20 /Gr smallft TU	RELOCATION_MATCH
+00c8bf90	1	__ov_splice@32 crosslap TU	RELOCATION_MATCH
+00c8d9d0	1	__packetout(no such symbol; largest fn) /Gr packetout TU	MATCH
+00c8d9d0	2	extern C static, leaf __packetout (still none: /Gr makes it @_packetout@12)	MATCH
+00c8d9d0	3	leaf @_packetout@12 /Gr	MATCH
+00c9c000	1	landed butterflies TU verbatim (its butterfly_32 body is NOT mdct.c: x[14]/x[15] get cPI2_8 products)	DIFFER(497v475)
+00c9c000	2	real mdct.c 1.0.1 mdct_butterfly_32 body (x[14]=r0; x[15]=r1)	RELOCATION_MATCH
+00c8e880	1	__vorbis_pack_books@8 /Gr C++ with engine/Vorbis.h	SRC_FAIL (Vorbis.h member named class: C only)
+00c8e880	2	/TC /Gr C TU over engine/Vorbis.h, static __stdcall + caller	RELOCATION_MATCH
+00c8cb70	1	1.0.1 text, rint=floor(x+.5f), float br	DIFFER(354v382): VC merged the two rint tails; retail has sub esp,8 BEFORE fadd in both branches
+00c8cb70	2	V1 double temp in seekable branch	DIFFER(354v382) merged tails
+00c8cb70	3-10	flags /Os /Ot /Op /Oi /Oa /Ow /Ob1 /GS	all DIFFER (354 or worse)
+00c8cb70	11	ltcg_grade.py (/GL+/LTCG)	still merged (382 by coincidence; lea same)
+00c8cb70	12	compiled as C (/TC /Gr)	DIFFER(354v382) merged
+00c8cb70	13	QFE 4035 compiler	DIFFER(354v382) merged
+00c8cb70	14	d3: br = rint(br); return br;	DIFFER(382v382): tails split, only lea [eax+esi] vs retail [esi+eax]
+00c8cb70	15	c6: return (float)rint(br)	DIFFER(382v382) lea only
+00c8cb70	16	d4: branch-2 (float)rint	DIFFER(382v382) lea only
+00c8cb70	17	d3 as C /TC /Gr	DIFFER(382v382) lea only
+00c8cb70	18	ov: VC7.1 math.h C++ overload float floor(float)	DIFFER(382v382) lea only
+00c8cb70	19	u1: exact math.h chain floor(float)->floorf->(float)floor((double))	DIFFER(382v382) lea only
+00c8cb70	20	t10: u1 + double tt; tt=ov_time_total(vf,-1); br=bits/tt	RELOCATION_MATCH
+00c8cb70	21	w6: u1 + double seconds=ov_time_total(vf,-1); br=bits/seconds	RELOCATION_MATCH (adopted)
+00c8cb70	22	w3: br at function scope	DIFFER(382v382) lea only
+00c8cb70	23	final src regrade	RELOCATION_MATCH
+# ---- chunk 869 (2026-11-08) ----
+00c96d20	1	_dradf4@28 /Gr smallft TU	RELOCATION_MATCH
+00c97600	1	_dradfg@40 /Gr smallft TU	RELOCATION_MATCH
+00c998b0	1	_dradb4@28 /Gr smallft TU	RELOCATION_MATCH
+00c9a230	1	_dradbg@40 /Gr smallft TU	RELOCATION_MATCH
+00c9bc30	1	smallft TU, no leaf / no flags (grader took the largest symbol)	DIFFER(35v29)
+00c9bc30	2	@drft_backward@8 /Gr	RELOCATION_MATCH
+00c9bf30	1	_mdct_butterfly_16, landed butterfly_8 TU text	RELOCATION_MATCH
+00c8e2e0	1	__vorbis_unpack_books@8 /Gr /GS, landed headerin TU text	RELOCATION_MATCH
+00c931d0	1	_bark_noise_hybridmp@24 /Gr, static beside landed _vp_noisemask	RELOCATION_MATCH
+00c965c0	1	@vorbis_book_decodev_add@16 /Gr, landed decodevs_add TU	RELOCATION_MATCH
+00c95a10	1	@_best@12 as C++	SRC_FAIL (codebook.c local named `this`)
+00c95a10	2	@_best@12 /TC /Gr, trimmed oracle (588)	RELOCATION_MATCH
+00c95c60	1	@vorbis_book_codeword@8 /TC /Gr (bonus, trimmed oracle 18)	MATCH
+00c95c80	1	@vorbis_book_codelen@8 /TC /Gr (bonus, trimmed oracle 18)	MATCH
+00c91ab0	1	_setup_tone_curves@16 /Gr psy init TU (leaf misspelt; graded the largest symbol = the same function)	RELOCATION_MATCH
+00c91ab0	2	_setup_tone_curves@20 /Gr (leaf fixed)	RELOCATION_MATCH
+00c92660	1	@_vp_psy_init@20 /Gr psy init TU	RELOCATION_MATCH
+00c9cc60	1	_limit_sum@8 /TC /Gr bitrate TU over engine/Vorbis.h	MATCH
+00c9cff0	1	@vorbis_bitrate_addblock@4 /TC /Gr, trimmed oracle (2700)	RELOCATION_MATCH
+00c9da80	1	@vorbis_bitrate_flushpacket@8 /TC /Gr (bonus, trimmed oracle 184)	MATCH
+00c95580	1	@vorbis_book_init_decode@8 /TC /Gr, sharedbook.c verbatim	DIFFER(901v910) slot order + hi register
+00c95580	2	p1: codep[i] statement before codes[i]=bitreverse	DIFFER(917v910) worse
+00c95580	3	p2: same-TU _ilog + vorbis_book_clear bodies	DIFFER(990v910) book_clear inlined
+00c95580	4	p3: (mask&c->codelist[hi]) operand swap	DIFFER(901v910) unchanged
+00c95580	5	p3 as C++ by mistake (flags quoted as one arg)	SRC_FAIL
+00c95580	6	p4: long hi=0,lo=0	DIFFER(901v910) unchanged
+00c95580	7	p5: sortindex declared first	DIFFER(901v910) unchanged
+00c8bb20	1	@ov_read@28 /GS, landed ovpcmseek TU + ov_read/ov_read_float appended, vorbis_ftoi declared	DIFFER(1004v950) loop indices spilled, vf in ebx
+00c8bb20	2	exp1: same-TU stub vorbis_ftoi (clobbers eax only)	DIFFER(936v950) loops keep i/off in registers
+00c8bb20	3	exp2: exp1 + same-TU host_is_big_endian body	DIFFER(936v950) unchanged
+00c8bb20	4	exp3: same-TU vorbis_ftoi as (int)f under /QIfist	DIFFER(1000v950)
+00c8bb20	5	exp4: same-TU vorbis_ftoi via libvorbis/vorbis_ftoi.h VORBIS_FTOI	DIFFER(950v950) only `add al,bl` vs `mov cl,bl; add cl,al` (+pad)
+00c8bb20	6	exp5: *buffer++=off+val	DIFFER(950v950) unchanged
+00c8bb20	7	exp6: val+=off; *buffer++=val	DIFFER(950v950) unchanged
+00c8bb20	8	exp7: (char)(val+off)	DIFFER(950v950) unchanged
+00c8bb20	9	exp8: (char)val+(char)off	DIFFER(950v950) unchanged
+00c8bb20	10	exp9: int val declared inside the 8-bit loop	DIFFER(950v950) unchanged
+00c8bb20	11	exp10: /GS /J	DIFFER(950v950) unchanged
+00c8bb20	12	exp11: (unsigned char)(val+off)	DIFFER(950v950) unchanged
+00c8bb20	13	exp12: int val declared after int off	DIFFER(950v950) unchanged
+00c8bb20	14	exp13: int val=0 (exp4 + initialised declaration)	RELOCATION_MATCH
+00c8bee0	1	@ov_read_float@16 /GS, the ov_read TU (bonus, trimmed oracle 172)	RELOCATION_MATCH
+00c8bee0	2	final src regrade (own header, same TU text)	RELOCATION_MATCH
+00c89850	1	ProcessRamp hand-written C++ (samples local, loop i)	DIFFER(631v588)
+00c89850	2	v1: int i	DIFFER(631v588) unchanged
+00c89850	3	v2: pointer walk over the two records	DIFFER(634v588) worse (count to ebp)
+00c89850	4	v3: (float)count in place of the samples local (kills the hoisted 1/samples reciprocal)	DIFFER(615v588)
+00c89850	5	v4: v3 + float g local per record (gain loaded once, g*blend)	DIFFER(607v588)
+00c89850	6	v5: v4 + int i	DIFFER(607v588) unchanged
+00c89850	7	v6: v4 + unsigned d local before g	DIFFER(607v588) unchanged
+00c89850	8	v7: v4 + g before d locals	DIFFER(607v588) unchanged
+00c89850	9	v8: four array-base pointer locals outside the loop	DIFFER(620v588) worse
+00c89850	10	v12: Back() into a tap local before g	DIFFER(613v588) worse
+00c89850	11	v19: const SReverbTapParams* cur alias	DIFFER(607v588) unchanged
+00c89850	12	v20: i declared at function top	DIFFER(607v588) unchanged
+00c89850	13	v21: do { } while (++i < 2)	DIFFER(607v588) unchanged

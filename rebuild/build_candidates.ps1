@@ -385775,6 +385775,157 @@ $catalog = @(
         TestSource = '00/ec/NScriptCVSickChildScriptCTalkingTrader1_Main_00ecbdf0_test.cpp'
         PassPattern = '00ecbdf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c8e2e0'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_vorbisunpackbooks_00c8e2e0.cpp'
+        TestSource = '00/c8/libvorbis_vorbisunpackbooks_00c8e2e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '00c8e2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c92660'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vppsyinit_00c92660.cpp'
+        TestSource = '00/c9/libvorbis_vppsyinit_00c92660_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c92660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c931d0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_barknoisehybridmp_00c931d0.cpp'
+        TestSource = '00/c9/libvorbis_barknoisehybridmp_00c931d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c931d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c95a10'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_best_00c95a10.cpp'
+        TestSource = '00/c9/libvorbis_best_00c95a10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c95a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c965c0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbisbookdecodevadd_00c965c0.cpp'
+        TestSource = '00/c9/libvorbis_vorbisbookdecodevadd_00c965c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c965c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c96d20'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_dradf4_00c96d20.cpp'
+        TestSource = '00/c9/libvorbis_dradf4_00c96d20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c96d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c97600'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_dradfg_00c97600.cpp'
+        TestSource = '00/c9/libvorbis_dradfg_00c97600_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c97600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c998b0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_dradb4_00c998b0.cpp'
+        TestSource = '00/c9/libvorbis_dradb4_00c998b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c998b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9a230'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_dradbg_00c9a230.cpp'
+        TestSource = '00/c9/libvorbis_dradbg_00c9a230_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c9a230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9bf30'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_mdctbutterfly16_00c9bf30.cpp'
+        TestSource = '00/c9/libvorbis_mdctbutterfly16_00c9bf30_test.cpp'
+        PassPattern = '00c9bf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9cc60'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_limitsum_00c9cc60.cpp'
+        TestSource = '00/c9/libvorbis_limitsum_00c9cc60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c9cc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9cff0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbisbitrateaddblock_00c9cff0.cpp'
+        TestSource = '00/c9/libvorbis_vorbisbitrateaddblock_00c9cff0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c9cff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8bb20'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovread_00c8bb20.cpp'
+        TestSource = '00/c8/libvorbis_ovread_00c8bb20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c8bb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8bee0'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovreadfloat_00c8bee0.cpp'
+        TestSource = '00/c8/libvorbis_ovreadfloat_00c8bee0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c8bee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c91ab0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_setuptonecurves_00c91ab0.cpp'
+        TestSource = '00/c9/libvorbis_setuptonecurves_00c91ab0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c91ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c95c60'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbisbookcodeword_00c95c60.cpp'
+        TestSource = '00/c9/libvorbis_vorbisbookcodeword_00c95c60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c95c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c95c80'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbisbookcodelen_00c95c80.cpp'
+        TestSource = '00/c9/libvorbis_vorbisbookcodelen_00c95c80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c95c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9bc30'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_drftbackward_00c9bc30.cpp'
+        TestSource = '00/c9/libvorbis_drftbackward_00c9bc30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c9bc30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9da80'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbisbitrateflushpacket_00c9da80.cpp'
+        TestSource = '00/c9/libvorbis_vorbisbitrateflushpacket_00c9da80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c9da80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

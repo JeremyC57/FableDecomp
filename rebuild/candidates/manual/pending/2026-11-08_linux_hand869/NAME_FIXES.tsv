@@ -1,0 +1,20 @@
+address	landed_or_catalog_spelling	correct_spelling	evidence
+0x00C89850	CReverbFilterTap::ProcessCrossfade (catalog)	CReverbFilterTap::ProcessRamp (landed descriptive name)	the landed CReverbTapBank::Process 0x00C75E90 declares and binds ProcessRamp(7 args) here; the body is the ramped twin of the landed CReverbFilterTap::Process 0x00C89750 (parked DIFFER 607v588, not landed this chunk)
+0x00C8BB20	_global::Primitive_ProcessVertexBuffer (catalog)	libvorbis::ov_read	vorbisfile.c body byte-matches on the 950-byte split; the landed COggVorbisStream::Read binds @ov_read@28
+0x00C8BEE0	(uncatalogued start inside the 0x00C8BB20 extent)	libvorbis::ov_read_float	vorbisfile.c body byte-matches (172 bytes); file order ov_read, ov_read_float, _ov_splice
+0x00C91AB0	_global::BoundingBox_ComputeTransform (catalog)	libvorbis::setup_tone_curves	psy.c body byte-matches; called from _vp_psy_init 0x00C92660 at 0x00C92AAC with vi->toneatt
+0x00C92660	_global::AudioSystem_ProcessSources (catalog)	libvorbis::_vp_psy_init	psy.c body byte-matches; the landed _vds_shared_init 0x00C8F200 binds @_vp_psy_init@20
+0x00C931D0	_global::FFT_ComputeMagnitudes (catalog)	libvorbis::bark_noise_hybridmp	psy.c body byte-matches; called twice by the landed _vp_noisemask 0x00C93C40
+0x00C95580	CTCWound::CWound::Initialize (catalog)	libvorbis::vorbis_book_init_decode	sharedbook.c body (DIFFER 901v910, allocation only, same instruction stream); the landed _vds_shared_init binds @vorbis_book_init_decode@8 here
+0x00C965C0	_gapscan::sub_00c965c0 (catalog)	libvorbis::vorbis_book_decodev_add	codebook.c body byte-matches; calls decode_packed_entry_number 0x00C96320
+0x00C9BF30	C3DBoundingBox::InitialiseFromSphere (manifest / coverage.tsv)	libvorbis::mdct_butterfly_16	mdct.c body byte-matches; calls mdct_butterfly_8 0x00C9BEB0 twice; called by the landed mdct_butterfly_32 0x00C9C000
+0x00C9CC60	_global::Array_LinearSearch (catalog)	libvorbis::limit_sum	bitrate.c body byte-matches (MATCH); called twice by vorbis_bitrate_addblock 0x00C9CFF0
+0x00C9CFF0	CLandscapeBackgroundDynamicBuildTemplate::UpdateTerrainGrid (catalog)	libvorbis::vorbis_bitrate_addblock	bitrate.c body byte-matches on the 2700-byte split; file order after the landed vorbis_bitrate_managed 0x00C9CFD0
+0x00C9DA80	(uncatalogued start inside the 0x00C9CFF0 extent)	libvorbis::vorbis_bitrate_flushpacket	bitrate.c body byte-matches (MATCH, 184 bytes)
+0x00C95C60	(uncatalogued start inside the 0x00C95A10 extent)	libvorbis::vorbis_book_codeword	codebook.c body byte-matches (MATCH, 18 bytes)
+0x00C95C80	(uncatalogued start inside the 0x00C95A10 extent)	libvorbis::vorbis_book_codelen	codebook.c body byte-matches (MATCH, 18 bytes)
+0x00C89BE0	FtoL (landed global_FtoL_00c89be0.cpp, Leaf FtoL)	libvorbis::vorbis_ftoi (the vorbisfile.c TU's copy of os.h's helper)	the landed header libvorbis/vorbis_ftoi.h names 0x00C89BE0 as the second vorbis_ftoi copy; ov_read's five calls bind it; the twin 0x00CA3B10 is landed under the real name -- one name per retail address wants `vorbis_ftoi` here too (the landed row's Leaf/filename, not its bytes)
+0x00C9CB60	_global::Math_ComputeByteChunkCount (catalog / manifest)	libvorbis::LACING_ADJUST	bitrate.c `bytes + bytes/255 + 1` (bytes in ecx, plain ret); the addblock row binds @LACING_ADJUST@4 here (calls.py)
+0x00C9CB40	Hora (coverage.tsv label)	libvorbis::BINBYTES	landed as libvorbis_BINBYTES_00c9cb40.cpp; the addblock row binds @BINBYTES@12 here
+0x00C91800	DrawGetEnvironment (coverage.tsv label)	libogg::oggpack_get_buffer	bitwise.c accessor after oggpack_bytes 0x00C917B0; the addblock row binds @oggpack_get_buffer@4 here
+0x00C8BB10	AddChildPrimitive (coverage.tsv label)	libvorbis::host_is_big_endian	landed under the real name; ov_read's first call binds @host_is_big_endian@0 here

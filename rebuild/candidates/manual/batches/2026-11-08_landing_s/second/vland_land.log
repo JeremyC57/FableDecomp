@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00c8bb20   WARN RELOC_CONFLICT: _vorbis_ftoi@8 -> 00c89be0 here, 00ca3b10 in landed 00ca3e50
+00c8bb20   WARN RELOC_NAME: _vorbis_ftoi@8 -> 00c89be0 labelled 'FtoL'
+00c8bb20   RELOCATION_MATCH PASS   ov_read
+00c8bee0   RELOCATION_MATCH PASS   ov_read_float
+00c91ab0   WARN RELOC_DUPLICATE: retail 00bfea30 bound to __alloca_probe, __chkstk
+00c91ab0   WARN RELOC_NAME: __chkstk -> 00bfea30 labelled '__chkstk'
+00c91ab0   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c91ab0   RELOCATION_MATCH PASS   setup_tone_curves
+00c95c60   MATCH            PASS   vorbis_book_codeword
+00c95c80   MATCH            PASS   vorbis_book_codelen
+00c9bc30   RELOCATION_MATCH PASS   drft_backward
+00c9da80   MATCH            PASS   vorbis_bitrate_flushpacket
+
+WINS: 7
+  00c8bb20 RELOCATION_MATCH libvorbis::@ov_read@28
+  00c8bee0 RELOCATION_MATCH libvorbis::@ov_read_float@16
+  00c91ab0 RELOCATION_MATCH libvorbis::_setup_tone_curves@20
+  00c95c60 MATCH libvorbis::@vorbis_book_codeword@8
+  00c95c80 MATCH libvorbis::@vorbis_book_codelen@8
+  00c9bc30 RELOCATION_MATCH libvorbis::@drft_backward@8
+  00c9da80 MATCH libvorbis::@vorbis_bitrate_flushpacket@8
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  libvorbis_ovread_00c8bb20
+  libvorbis_ovreadfloat_00c8bee0
+  libvorbis_setuptonecurves_00c91ab0
+  libvorbis_vorbisbookcodeword_00c95c60
+  libvorbis_vorbisbookcodelen_00c95c80
+  libvorbis_drftbackward_00c9bc30
+  libvorbis_vorbisbitrateflushpacket_00c9da80
