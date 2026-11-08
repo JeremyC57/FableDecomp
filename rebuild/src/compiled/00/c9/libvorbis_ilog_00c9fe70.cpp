@@ -1,4 +1,5 @@
 // libvorbis::ilog(unsigned int v) -- libvorbis res0.c: bit length of v (the number of shifts until it is zero)
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @ilog@4 -- 14 bytes verified against Fable.exe 0x00C9FE70
 // Leaf: @ilog@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9FE70, 14 bytes (+ int3 padding). libvorbis lib/res0.c static helper (libpk's
 //   statically linked Xiph libvorbis, "Xiph.Org libVorbis I 20030909"); v in ecx, plain `ret` = the LTCG `__fastcall` shape of

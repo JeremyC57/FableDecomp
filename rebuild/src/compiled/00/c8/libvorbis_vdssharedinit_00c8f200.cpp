@@ -1,4 +1,5 @@
 // libvorbis::_vds_shared_init(vorbis_dsp_state *v, vorbis_info *vi, int encp) -- libvorbis block.c: clear the DSP state, allocate the private backend (MDCT lookups, window shapes, encoder FFTs/psychoacoustics or decoder codebooks), the PCM buffers and the floor/residue lookups
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @_vds_shared_init@12 -- 1007 bytes verified against Fable.exe 0x00C8F200
 // Shape (retry1): parked as an "LTCG custom register arguments" gap; the TU holds block.c's static _vds_shared_init as `extern "C" { static __declspec(noinline) int __stdcall }` with its two real callers vorbis_analysis_init / vorbis_synthesis_init, and VC7.1 /O2 picks retail's private convention (v in EBX, vi/encp on the stack, ret 8) itself.
 // Leaf: __vds_shared_init@12
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8F200, 1007 bytes (`ret 8`: v in EBX -- an LTCG private register convention --,

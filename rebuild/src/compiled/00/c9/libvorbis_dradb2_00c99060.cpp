@@ -1,4 +1,5 @@
 // libvorbis::dradb2(int ido, int l1, float* cc, float* ch, float* wa1) -- smallft.c (FFTPACK real FFT): backward (inverse) radix-2 pass -- for each of the l1 sub-transforms, rebuilds the two half-length outputs in ch from the packed sum / difference pairs of cc, applies the twiddle factors wa1 to the inner pairs and doubles the even-ido edge element (negating its imaginary part)
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @dradb2@20 -- 917 bytes verified against Fable.exe 0x00C99060
 // Leaf: _dradb2@20
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C99060, 917 bytes. libvorbis 1.0.1 lib/smallft.c `static void dradb2(...)`, kept out of line

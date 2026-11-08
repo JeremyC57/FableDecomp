@@ -1,4 +1,5 @@
 // bi_flush(deflate_state* s) -- zlib 1.2.1 trees.c bi_flush: move whole bytes from the 16-bit bit buffer to the pending output
+// Vendor-proof: zlib-1.2.1(trees.c) _bi_flush -- 127 bytes verified against Fable.exe 0x00C05040
 // Leaf: _bi_flush
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C05040. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

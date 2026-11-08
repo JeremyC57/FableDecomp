@@ -1,4 +1,5 @@
 // _global::zcalloc(voidpf opaque, unsigned items, unsigned size) -- zlib 1.2.1 default allocator: malloc(items * size)
+// Vendor-proof: zlib-1.2.1(zutil.c) _zcalloc -- 20 bytes verified against Fable.exe 0x00C06030
 // Leaf: _zcalloc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C06030, 20 bytes. zlib 1.2.1 zutil.c (32-bit branch), C linkage, __cdecl.
 // Callee: MSVCR71 malloc through its import slot 0x01440158 (`call [__imp__malloc]`; the thunk 0x00BFEA0E jumps

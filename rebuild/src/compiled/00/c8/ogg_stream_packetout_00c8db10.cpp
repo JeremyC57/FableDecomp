@@ -1,4 +1,5 @@
 // ogg_stream_packetout(ogg_stream_state* os, ogg_packet* op) -- libogg framing.c: take the next whole packet out of the stream (advance)
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_packetout@8 -- 12 bytes verified against Fable.exe 0x00C8DB10
 // Leaf: @ogg_stream_packetout@8
 // Flags: /Gr
 // Retail: Fable.exe 0x00C8DB10, 12 bytes (`mov eax,ecx; push 1; mov ecx,edx; call 0x00C8D9D0; ret`).

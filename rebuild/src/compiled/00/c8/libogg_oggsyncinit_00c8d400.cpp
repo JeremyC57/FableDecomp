@@ -1,4 +1,5 @@
 // libogg::ogg_sync_init(ogg_sync_state* oy) -- libogg framing.c: zero a sync state (null-safe); always returns 0
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_sync_init@4 -- 27 bytes verified against Fable.exe 0x00C8D400
 // Leaf: @ogg_sync_init@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8D400, 27 bytes (+5 int3). libogg src/framing.c inside libpk's statically linked
 //   Xiph Ogg Vorbis ("Xiph.Org libVorbis I 20030909"); the LTCG link made the API `__fastcall` (oy in ecx, plain `ret`).

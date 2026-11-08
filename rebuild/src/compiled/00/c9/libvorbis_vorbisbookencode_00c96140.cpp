@@ -1,4 +1,5 @@
 // libvorbis::vorbis_book_encode(codebook* book, int a, oggpack_buffer* b) -- write entry a's codeword with its length in bits and return that length
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_encode@12 -- 45 bytes verified against Fable.exe 0x00C96140
 // Leaf: @vorbis_book_encode@12
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96140, 43 bytes (+ int3 padding), book in ecx, a in edx, b on the stack
 //   (`ret 4`). libvorbis 1.0.1 lib/codebook.c. Callee: oggpack_write 0x00C90FC0 (`__fastcall`).

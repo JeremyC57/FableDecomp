@@ -1,4 +1,5 @@
 // libogg::ogg_stream_packetpeek(ogg_stream_state* os, ogg_packet* op) -- Xiph framing.c: look at the next packet without consuming it (_packetout with adv = 0)
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_packetpeek@8 -- 12 bytes verified against Fable.exe 0x00C8DB20
 // Leaf: @ogg_stream_packetpeek@8
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8DB20, 12 bytes, a TU-local static (or API) of the same library file as the landed

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_info_init(vorbis_info* vi) -- Xiph libvorbis info.c: zero the vorbis_info and hang a calloc'd 0xE80-byte codec_setup_info off it
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_info_init@4 -- 49 bytes verified against Fable.exe 0x00C8DF70
 // Leaf: @vorbis_info_init@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

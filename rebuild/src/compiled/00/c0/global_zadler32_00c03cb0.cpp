@@ -1,4 +1,5 @@
 // 00c03cb0 z_adler32
+// Vendor-proof: zlib-1.2.1(adler32.c) _z_adler32 -- 297 bytes verified against Fable.exe 0x00C03CB0
 // Leaf: _z_adler32
 // Flags:
 /* adler32.c -- compute the Adler-32 checksum of a data stream

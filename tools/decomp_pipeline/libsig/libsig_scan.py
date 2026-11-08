@@ -3,6 +3,8 @@
 
     python3 tools/decomp_pipeline/libsig/libsig_scan.py [--out rebuild/oracles/library_signatures.tsv]
         [--libdir TAG=DIR ...] [--implibdir DIR ...] [--min-len 8] [--log DIR]
+    python3 tools/decomp_pipeline/libsig/libsig_scan.py --vendor all|TAG [...] [--log DIR]
+        -> rebuild/oracles/vendor_signatures.tsv
 
 Bytes in retail `.text` that the linker copied from a prebuilt library are not Fable source: the CRT objects
 pulled from msvcrt.lib (sehprolg.obj, secchk.obj, crtexew.obj, ...) and the `jmp dword ptr [__imp_X]` thunks the
@@ -28,6 +30,15 @@ Library directories (first listed wins when two give identical bytes; the others
   import-name libraries: FABLE_LIBSIG_IMPLIBDIRS, default $FABLE_WINDDK_LIB (WinDDK wnet/i386 import libs)
 Retail exe: FABLE_EXE.
 
+Vendor libraries (--vendor TAG, or `all`; vendor_libs.tsv): third-party code retail compiled from unmodified source
+(zlib 1.2.1, LZO 1.08, libogg 1.1.1, libvorbis 1.0.1). Each linked TU is compiled from FABLE_THIRDPARTY with its
+recorded flags (vendor_lib.build_tu) and its objects are the library class `vendor/<tag>` (member = the TU path, e.g.
+`inflate.c`): their sections are scanned and resolved exactly like library members (the import records of the default
+library directories still name the IAT slots), the import thunks are not re-emitted, and the oracle goes to
+rebuild/oracles/vendor_signatures.tsv. A vendor pattern several TUs share (a `static ilog` copied into four files) with
+one retail copy per TU is assigned by neighbourhood: the copy whose neighbouring retail section is matched to the same
+TU belongs to that TU.
+
 Confidence: high = unique in .text, no relocation contradicts retail and (>= 16 bytes or >= 1 relocation
 confirmed); medium = unique, no contradiction, short and unconfirmed; low = several retail copies or a
 contradicted relocation (kept for the record, never used to land). A match that is not at a manifest function
@@ -48,6 +59,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import coff_lib as C  # noqa: E402
+import vendor_lib as VL  # noqa: E402
 
 ROOT = Path(os.environ.get("FABLE_ROOT", HERE.parents[2]))
 IMAGE_BASE = 0x400000
@@ -183,7 +195,19 @@ def lib_rank(tag_order, prov):
 
 
 def is_linked(prov):
-    return prov["tag"] in LINKED_TAGS and prov["lib"].lower() in LINKED
+    return prov["tag"] == "vendor" or (prov["tag"] in LINKED_TAGS and prov["lib"].lower() in LINKED)
+
+
+def vendor_libdirs(tags, log):
+    """[("vendor", [(tag, tu, obj path)])] for the vendor_libs.tsv tags (built or taken from the object cache)."""
+    cfg = VL.load_config()
+    files = []
+    for tag in (list(cfg) if "all" in tags else tags):
+        built, fails = VL.build_all(cfg, tag)
+        for tu, why in fails.items():
+            log.write(f"VENDOR BUILD FAIL {tag}({tu}): {why}\n")
+        files += [(tag, tu, p) for tu, p in built.items()]
+    return [("vendor", files)]
 
 
 def lib_files(d):
@@ -202,19 +226,21 @@ def load_sections(libdirs, min_len, log):
     pats = defaultdict(list)
     nsec = 0
     for tag, d in libdirs:
-        for f in lib_files(d):
+        # a directory of archives / loose objects, or (vendor) an explicit [(lib name, member name, obj path)] list
+        entries = [(f.name, f, None) for f in lib_files(d)] if not isinstance(d, list) else [(ln, p, mn) for ln, mn, p in d]
+        for lname, f, mn in entries:
             try:
                 members = ([(m.name, m) for m in C.Archive(f).members if m.kind == "coff"]
-                           if f.suffix.lower() == ".lib" else [(f.name, C.Member(f.name, 0, f.read_bytes()))])
+                           if f.suffix.lower() == ".lib" else [(mn or f.name, C.Member(mn or f.name, 0, f.read_bytes()))])
             except (ValueError, struct.error, IndexError) as ex:
-                log.write(f"SKIP {tag}/{f.name}: {ex}\n")
+                log.write(f"SKIP {tag}/{lname}: {ex}\n")
                 continue
             for mname, mem in members:
                 try:
                     obj = mem.coff()
                     secs = obj.code_sections(min_len)
                 except (struct.error, IndexError, ValueError) as ex:
-                    log.write(f"SKIP {tag}/{f.name}({mname}): {ex}\n")
+                    log.write(f"SKIP {tag}/{lname}({mname}): {ex}\n")
                     continue
                 syms_full = {s.name: s for s in obj.symbols}
                 for cs in secs:
@@ -225,7 +251,7 @@ def load_sections(libdirs, min_len, log):
                     key = bytes(b if not m else 0 for b, m in zip(cs.data, mask)) + b"|" + bytes(mask)
                     fsyms = [(o, n) for o, n, st in cs.symbols
                              if is_function_symbol(n, st, syms_full[n].type if n in syms_full else 0)]
-                    pats[key].append(dict(lib=f.name, member=mname, tag=tag, sec=cs.index, secname=cs.name,
+                    pats[key].append(dict(lib=lname, member=mname, tag=tag, sec=cs.index, secname=cs.name,
                                           data=cs.data, mask=bytes(mask), relocs=cs.relocs, syms=fsyms,
                                           comdat=cs.comdat, comp=obj.comp_ids(), obj=obj))
                     nsec += 1
@@ -238,7 +264,7 @@ def load_imports(libdirs, implibdirs):
     by_export, by_imp, code_syms = {}, {}, {}
     dirs = [(t, d) for t, d in libdirs] + [("implib", d) for d in implibdirs]
     for tag, d in dirs:
-        for f in lib_files(d):
+        for f in ([] if isinstance(d, list) else lib_files(d)):
             if f.suffix.lower() != ".lib":
                 continue
             try:
@@ -405,7 +431,9 @@ def resolve(pe, va, prov, by_imp, code_syms, thunks, symaddr, names=None):
 # ------------------------------------------------------------------ main
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--out", default=str(ROOT / "rebuild" / "oracles" / "library_signatures.tsv"))
+    ap.add_argument("--out", default=None, help="default rebuild/oracles/library_signatures.tsv "
+                    "(vendor_signatures.tsv with --vendor)")
+    ap.add_argument("--vendor", action="append", default=None, help="vendor_libs.tsv TAG, or all (repeatable)")
     ap.add_argument("--libdir", action="append", default=None, help="TAG=DIR (repeatable; first wins)")
     ap.add_argument("--implibdir", action="append", default=None)
     ap.add_argument("--min-len", type=int, default=8)
@@ -418,11 +446,14 @@ def main(argv=None):
     implibdirs = a.implibdir if a.implibdir is not None else default_implibdirs()
     if not libdirs:
         raise SystemExit("no library directory (set FABLE_VS2003_LIB / FABLE_VC71 or pass --libdir)")
+    a.out = a.out or str(ROOT / "rebuild" / "oracles" / ("vendor_signatures.tsv" if a.vendor else "library_signatures.tsv"))
     logdir = Path(a.log) if a.log else None
     if logdir:
         logdir.mkdir(parents=True, exist_ok=True)
     log = open(logdir / "scan.log", "w", encoding="utf-8") if logdir else open(os.devnull, "w")
     log.write(f"exe {a.exe}\nlibdirs {libdirs}\nimplibdirs {implibdirs}\n")
+    # vendor mode: the sections come from the vendor objects; the library directories only name the import records
+    sec_libdirs = vendor_libdirs(a.vendor, log) if a.vendor else libdirs
 
     pe = PE(a.exe)
     text, base = pe.text, pe.text_va
@@ -451,8 +482,8 @@ def main(argv=None):
         log.write(f"  not a thunk (mid-function jmp [IAT]) 0x{va:08X} -> {pe.iat[raw_thunks[va]]}\n")
 
     # ---- library sections
-    pats = load_sections(libdirs, a.min_len, log)
-    tag_order = {t: i for i, (t, _) in enumerate(libdirs)}
+    pats = load_sections(sec_libdirs, a.min_len, log)
+    tag_order = {t: i for i, (t, _) in enumerate(sec_libdirs)}
     for key in pats:
         pats[key].sort(key=lambda pv: lib_rank(tag_order, pv))
     matches = []        # (va, key, hits)
@@ -484,6 +515,7 @@ def main(argv=None):
     # ---- assign each retail hit one library section (one retail address = one library symbol)
     cand = {}                           # va -> (n, provider, copies, note)
     ambiguous = []
+    deferred = []                       # vendor patterns several TUs share
     for key, vas in matches:
         provs, seen_ = [], set()
         for pv in pats[key]:
@@ -499,6 +531,10 @@ def main(argv=None):
         if len(vas) == 1:
             va = vas[0]
             i = max(range(len(provs)), key=lambda j: (score[(va, j)][0] - 10 * score[(va, j)][1], -j))
+            tie = [j for j in range(len(provs)) if score[(va, j)] == score[(va, i)] and provs[j]["member"] != provs[i]["member"]]
+            if a.vendor and tie:                # same bytes in several TUs, relocations do not decide: neighbourhood
+                deferred.append((key, vas, provs, n))
+                continue
             cand[va] = (n, provs[i], 1, "", key)
             continue
         proven = {}
@@ -510,9 +546,13 @@ def main(argv=None):
         if proven and len(used) == len(set(used)):
             for va, i in proven.items():
                 cand[va] = (n, provs[i], len(vas), f"{len(vas)} retail copies of these bytes; relocations prove this one", key)
-            for va in vas:
-                if va not in proven:
-                    ambiguous.append((va, n, len(vas), provs[0], "copy without relocation proof"))
+            left = [va for va in vas if va not in proven]
+            rest = [pv for i, pv in enumerate(provs) if i not in used]
+            if a.vendor and left and rest:
+                deferred.append((key, left, rest, n))
+                continue
+            for va in left:
+                ambiguous.append((va, n, len(vas), provs[0], "copy without relocation proof"))
             continue
         same_member = len({(pv["lib"], pv["member"]) for pv in provs}) == 1
         if len(provs) == len(vas) > 1 and same_member and \
@@ -522,8 +562,51 @@ def main(argv=None):
                 cand[va] = (n, pv, len(vas), f"{len(vas)} sections of {pv['member']} share these bytes; "
                                              "assigned in object section order (the linker keeps it)", key)
             continue
+        if a.vendor:
+            deferred.append((key, vas, provs, n))
+            continue
         for va in vas:
             ambiguous.append((va, n, len(vas), provs[0], "several retail copies, no relocation proof"))
+
+    # vendor: a static several TUs define (`ilog`, `ilog2`, `bitreverse`) is the copy of the TU whose section sits next to
+    # it in retail (the linker keeps each object's sections together; < 16 bytes of padding between them)
+    def neighbour_members(va, n):
+        ks = sorted(cand)
+        i = bisect.bisect_left(ks, va)
+        out = set()
+        if i > 0 and ks[i - 1] + cand[ks[i - 1]][0] <= va < ks[i - 1] + cand[ks[i - 1]][0] + 16:
+            out.add(cand[ks[i - 1]][1]["member"])
+        if i < len(ks) and va + n <= ks[i] < va + n + 16:
+            out.add(cand[ks[i]][1]["member"])
+        return out
+    changed = True
+    while changed and deferred:
+        changed = False
+        for item in list(deferred):
+            key, vas, provs, n = item
+            assign = {}
+            for va in vas:
+                if va in cand:
+                    continue
+                fits = {pv["member"]: pv for pv in provs if pv["member"] in neighbour_members(va, n)}
+                if len(fits) == 1:
+                    assign[va] = next(iter(fits.values()))
+            if assign and len({pv["member"] for pv in assign.values()}) == len(assign):
+                for va, pv in assign.items():
+                    cand[va] = (n, pv, len(vas), f"{len(vas)} retail copies, {len({p_['member'] for p_ in provs})} TUs "
+                                                 f"define these bytes; the neighbouring retail section is {pv['member']}'s", key)
+                left = [va for va in vas if va not in assign]
+                taken = {pv["member"] for pv in assign.values()}
+                deferred.remove(item)
+                rest = [pv for pv in provs if pv["member"] not in taken]
+                if left and rest:
+                    deferred.append((key, left, rest, n))
+                for va in (left if not rest else []):
+                    ambiguous.append((va, n, len(vas), provs[0], "more retail copies than TUs defining these bytes"))
+                changed = True
+    for key, vas, provs, n in deferred:
+        for va in vas:
+            ambiguous.append((va, n, len(vas), provs[0], "several TUs define these bytes, no neighbouring section decides"))
 
     ends = {va + c[0] for va, c in cand.items()} | {t + 6 for t in thunks}
     lib_starts = set(cand) | set(thunks)
@@ -623,7 +706,7 @@ def main(argv=None):
                 catalog=catalog_bucket(sva, landed, known), catalog_name=cname,
                 parked="yes" if sva in parked else "", comp_id=" ".join(f"{p_}.{b_}" for p_, b_ in pv["comp"][:2]),
                 notes="; ".join(x for x in (alias, note, alt_note) if x)))
-    for t, (dll, nm) in sorted(thunks.items()):
+    for t, (dll, nm) in sorted(thunks.items() if not a.vendor else []):
         k = (dll.lower(), nm)
         src = by_export.get(k)
         slot = raw_thunks[t]

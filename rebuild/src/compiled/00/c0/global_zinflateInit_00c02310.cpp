@@ -1,4 +1,5 @@
 // _global::z_inflateInit_(z_streamp strm, const char* version, int stream_size) -- zlib 1.2.1 inflateInit_: forward to inflateInit2_ with DEF_WBITS (15)
+// Vendor-proof: zlib-1.2.1(inflate.c) _z_inflateInit_ -- 26 bytes verified against Fable.exe 0x00C02310
 // Leaf: _z_inflateInit_
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C02310, 26 bytes. zlib 1.2.1, Z_PREFIX build, C linkage, __cdecl.
 // The catalog label "ConstructString" is propagated/wrong: the body forwards (strm, 15, version, stream_size) to

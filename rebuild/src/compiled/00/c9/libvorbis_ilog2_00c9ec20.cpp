@@ -1,4 +1,5 @@
 // libvorbis::ilog2(unsigned int v) -- libvorbis mapping0.c static helper: the bit length of v - 1 (0 for 0 and 1)
+// Vendor-proof: libvorbis-1.0.1(lib/mapping0.c) @ilog@4 -- 24 bytes verified against Fable.exe 0x00C9EC20
 // Leaf: @ilog2@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00c9ec20, 24 bytes, v in ecx, plain `ret` (the LTCG __fastcall shape of the library's
 //   register-argument functions). libvorbis 1.0.1 lib/mapping0.c `static int ilog2(unsigned int v)` (libpk's statically linked

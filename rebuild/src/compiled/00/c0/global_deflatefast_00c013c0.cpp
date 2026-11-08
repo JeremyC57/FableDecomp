@@ -1,4 +1,5 @@
 // _global::deflate_fast(deflate_state* s, int flush) -- zlib 1.2.1 deflate.c deflate_fast: compress without lazy matching (levels 1-3): insert each string into the hash chains, take the longest match (or the RLE match for Z_RLE) at once, tally matches and literals and flush a block whenever the literal buffer fills
+// Vendor-proof: zlib-1.2.1(deflate.c) _deflate_fast -- 909 bytes verified against Fable.exe 0x00C013C0
 // Leaf: _deflate_fast
 // Flags: /TC
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C013C0, 909 bytes, __cdecl, plain `ret`. Compiled as C (/TC), as zlib's deflate.c is.

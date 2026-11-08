@@ -1,4 +1,5 @@
 // libogg::ogg_page_checksum_set(ogg_page* og) -- libogg framing: zero the CRC field (header bytes 22..25), run the table CRC-32 over the header then the body, and store the result little-endian back into bytes 22..25
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_page_checksum_set@4 -- 162 bytes verified against Fable.exe 0x00C8CF60
 // Leaf: @ogg_page_checksum_set@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

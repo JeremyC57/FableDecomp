@@ -1,4 +1,5 @@
 // 00c03b80 z_inflateCopy
+// Vendor-proof: zlib-1.2.1(inflate.c) _z_inflateCopy -- 289 bytes verified against Fable.exe 0x00C03B80
 // Leaf: _z_inflateCopy
 // Flags:
 // Original zlib1.2.1 compatible source; K&R prototype and final void-pointer assignment adapted to C++03. Algorithm unchanged.

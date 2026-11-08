@@ -1,4 +1,5 @@
 // libvorbis::vorbis_comment_add(vorbis_comment* vc, char* comment) -- libvorbis info.c: grow the comment and length arrays by one, store a malloc'd copy of the comment and its length, and keep the list NULL-terminated
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_comment_add@8 -- 147 bytes verified against Fable.exe 0x00C8DBF0
 // Leaf: @vorbis_comment_add@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

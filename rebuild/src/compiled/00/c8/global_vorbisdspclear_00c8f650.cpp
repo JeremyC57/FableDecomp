@@ -1,4 +1,5 @@
 // 00c8f650 vorbis_dsp_clear
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_dsp_clear@4 -- 546 bytes verified against Fable.exe 0x00C8F650
 // Leaf: @vorbis_dsp_clear@4
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

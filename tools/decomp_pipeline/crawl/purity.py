@@ -43,6 +43,13 @@ a landed file is `toolchain_library` when:
     `__asm`, `naked` or `_emit` anywhere.
 It counts with the genuine rows (the bytes are the toolchain's, the build links them), and is checked before
 the asm rules so the two never overlap.
+The same grade covers third-party vendor code retail compiled from unmodified source (owner direction 2026-11-08: zlib
+1.2.1, LZO 1.08, libogg 1.1.1, libvorbis 1.0.1): the stub carries
+  `// Vendor-library: <tag>(<file.c>) <symbol> -- <n> bytes verified against Fable.exe 0x<ADDR>`
+instead, <tag> a row of tools/decomp_pipeline/libsig/vendor_libs.tsv (version, fetch URL + sha256, flags), and
+lib_verify.py rebuilds the TU from that source with those flags. tools/landed_metrics.py reports these rows apart
+(`vendor_library`). A hand-written row that the vendor build also proves keeps its body and grade (`genuine`) and
+carries the same claim as `// Vendor-proof:` (provenance only; `vendor_source` in the metrics).
 
 Shared helper headers (owner, 2026-11-03: "clean C++ for a port; identical logic; asm only where retail itself ran it"):
 a retail inline-asm helper lives in one header (rebuild/include/engine/GFFloatToLongNear.h, ...) with the byte-matching
@@ -99,8 +106,9 @@ def _retail_asm(text):
 
 
 TOOLCHAIN_LIBRARY_TAG = "// Toolchain-library:"
-_TOOLCHAIN_CLAIM = re.compile(r"^//\s*Toolchain-library:\s*\S+?\(.+\)\s+\S+\s+--\s+\d+\s+bytes verified against "
-                              r"Fable\.exe\s+0x[0-9A-Fa-f]{8}\s*$", re.M)
+VENDOR_LIBRARY_TAG = "// Vendor-library:"
+_TOOLCHAIN_CLAIM = re.compile(r"^//\s*(?:Toolchain|Vendor)-library:\s*\S+?\(.+\)\s+\S+\s+--\s+\d+\s+bytes verified "
+                              r"against Fable\.exe\s+0x[0-9A-Fa-f]{8}\s*$", re.M)
 
 
 def _toolchain_library(text):
@@ -205,7 +213,7 @@ def _helper_grade(text, dirs=None):
 
 
 def classify(text, include_dirs=None):
-    if TOOLCHAIN_LIBRARY_TAG in text and _toolchain_library(text):
+    if (TOOLCHAIN_LIBRARY_TAG in text or VENDOR_LIBRARY_TAG in text) and _toolchain_library(text):
         return "toolchain_library"
     if "_emit" in text:
         return "emit_bake"

@@ -1,4 +1,5 @@
 // fill_window(deflate_state* s) -- zlib 1.2.1 deflate.c fill_window: slide the window and hash chains when strstart nears the end, then read more input and prime the hash
+// Vendor-proof: zlib-1.2.1(deflate.c) _fill_window -- 269 bytes verified against Fable.exe 0x00C01090
 // Leaf: _fill_window
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C01090, 269 bytes. zlib 1.2.1 ("deflate 1.2.1 Copyright 1995-2003" in .rdata).
 // Callers: deflate_stored 0x00C011CB, deflate_fast 0x00C013DE, deflate_slow 0x00C0176B (all three call it with s on

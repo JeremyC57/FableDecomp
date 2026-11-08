@@ -1,4 +1,5 @@
 // libvorbis::floor0_inverse2(vorbis_block* vb, vorbis_look_floor* i, void* memo, float* out) -- libvorbis floor0.c: render a decoded floor-0 LSP set into the spectral envelope (or zero it when the packet had none)
+// Vendor-proof: libvorbis-1.0.1(lib/floor0.c) @floor0_inverse2@16 -- 114 bytes verified against Fable.exe 0x00CA39C0
 // Leaf: @floor0_inverse2@16
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA39C0, 114 bytes. libvorbis I 20030909 lib/floor0.c, slot 6 (inverse2) of
 //   floor0_exportbundle 0x013AC244; LTCG-API `__fastcall` (vb ecx, i edx, memo/out on the stack, `ret 8`).

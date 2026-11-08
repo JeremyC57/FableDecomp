@@ -1,4 +1,5 @@
 // _global::z_deflateInit_(z_streamp strm, int level, const char* version, int stream_size) -- zlib 1.2.1 deflateInit_: forward to deflateInit2_ with Z_DEFLATED, MAX_WBITS, DEF_MEM_LEVEL and Z_DEFAULT_STRATEGY
+// Vendor-proof: zlib-1.2.1(deflate.c) _z_deflateInit_ -- 37 bytes verified against Fable.exe 0x00C021C0
 // Leaf: _z_deflateInit_
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C021C0, 37 bytes. zlib 1.2.1, Z_PREFIX build, C linkage, __cdecl.
 // Callee: z_deflateInit2_ 0x00C01F90 (__cdecl, 8 arguments: strm, level, method 8, windowBits 15, memLevel 8,

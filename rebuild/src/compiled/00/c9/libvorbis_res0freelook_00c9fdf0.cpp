@@ -1,4 +1,5 @@
 // libvorbis::res0_free_look(vorbis_look_residue* i) -- free a residue 0/1/2 look: the per-partition book arrays, the decode maps, then the look itself (wiped first)
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res0_free_look@4 -- 113 bytes verified against Fable.exe 0x00C9FDF0
 // Leaf: res0_free_look
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9FDF0, 113 bytes. libvorbis 1.0.1 lib/res0.c (the free_look slot of the
 //   residue0/1/2 function tables), compiled as C with /Gr: `__fastcall`, i in ecx, plain `ret`.

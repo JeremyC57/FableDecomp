@@ -1,4 +1,5 @@
 // 00c01f90 z_deflateInit2_
+// Vendor-proof: zlib-1.2.1(deflate.c) _z_deflateInit2_ -- 558 bytes verified against Fable.exe 0x00C01F90
 // Leaf: _z_deflateInit2_
 // Flags:
 // Published zlib1.2.1-compatible implementation; K&R parameter declaration adapted to C++03.

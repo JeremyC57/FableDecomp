@@ -1,4 +1,5 @@
 // libvorbis::vorbis_info_blocksize(vorbis_info* vi, int zo) -- Xiph libvorbis info.c: the short (zo 0) or long (zo 1) block size from the codec setup, -1 without one
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_info_blocksize@8 -- 15 bytes verified against Fable.exe 0x00C8DF60
 // Leaf: @vorbis_info_blocksize@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

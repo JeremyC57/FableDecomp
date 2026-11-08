@@ -1,4 +1,5 @@
 // libvorbis::icount(unsigned int v) -- libvorbis res0.c: population count (number of set bits) of a residue cascade mask
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @icount@4 -- 20 bytes verified against Fable.exe 0x00C9FE80
 // Leaf: @icount@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9FE80, 20 bytes (+12 int3). libvorbis lib/res0.c static helper (libpk's statically
 //   linked Xiph libvorbis, "Xiph.Org libVorbis I 20030909"); v arrives in ecx, plain `ret` = the LTCG/`/Gr` `__fastcall`

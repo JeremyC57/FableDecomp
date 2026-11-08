@@ -1,4 +1,5 @@
 // libvorbis::floor0_free_look(vorbis_look_floor* i) -- libvorbis floor0.c: free a floor-0 look (both linear bark maps, the map array), wipe it and free it
+// Vendor-proof: libvorbis-1.0.1(lib/floor0.c) @floor0_free_look@4 -- 94 bytes verified against Fable.exe 0x00CA35A0
 // Leaf: @floor0_free_look@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA35A0, 94 bytes (+2 int3). libvorbis lib/floor0.c (libpk's statically linked Xiph
 //   libvorbis, "Xiph.Org libVorbis I 20030909"): the free_look slot of the floor0 function table (its address sits at

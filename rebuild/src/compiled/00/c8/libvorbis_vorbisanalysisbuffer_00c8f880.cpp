@@ -1,4 +1,5 @@
 // libvorbis::vorbis_analysis_buffer(vorbis_dsp_state* v, int vals) -- libvorbis block.c: free the cached header packets, grow every channel's PCM buffer when `vals` more samples do not fit, and return the per-channel write pointers at the current PCM position
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_analysis_buffer@8 -- 210 bytes verified against Fable.exe 0x00C8F880
 // Leaf: @vorbis_analysis_buffer@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

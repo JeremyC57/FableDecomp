@@ -1,4 +1,5 @@
 // _global::STORE_RUN(lzo1x_999_t* c, lzo_byte* op, const lzo_byte* ii, lzo_uint t) -- LZO 1.08 lzo1x_9x.c STORE_RUN: emit a literal run of t bytes (first-run, short, medium or long length encoding) and copy the literals
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _STORE_RUN -- 191 bytes verified against Fable.exe 0x00C07890
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the LZO static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _STORE_RUN
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C07890, 191 bytes. Retail convention (VC7.1 private, from the same-TU static): op in ECX, c / ii / t on the stack, plain ret (caller cleans).

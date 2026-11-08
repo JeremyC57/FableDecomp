@@ -1,4 +1,5 @@
 // libvorbis::mdct_butterflies(mdct_lookup* init, DATA_TYPE* x, int points) -- run the MDCT butterfly stages (first, generic per stage, then the 32-point tail)
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_butterflies@12 -- 185 bytes verified against Fable.exe 0x00C9C400
 // Shape (retry1): parked as an "LTCG register arguments" gap; the TU holds mdct.c's statics (butterfly_8/16/32, first, generic as __stdcall, butterflies as __stdcall) inside `extern "C" { static __declspec(noinline) }` with an mdct_backward-shape caller, and VC7.1 /O2 picks every retail private convention itself (init in EAX; butterfly_first x in edi/ecx; generic ecx/edx + one push, callee-pop; butterfly_32 x in EAX).
 // Leaf: _mdct_butterflies@12
 // Retail: Fable.exe @ 0x00C9C400, 185 bytes. libvorbis 1.0.1 lib/mdct.c (STIN, out of line under LTCG). Grades: 1.

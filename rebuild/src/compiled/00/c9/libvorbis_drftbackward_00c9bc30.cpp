@@ -1,4 +1,5 @@
 // libvorbis::drft_backward(drft_lookup* l, float* data) -- smallft.c (FFTPACK real FFT): inverse real FFT entry -- for n > 1 runs drftb1 over the data with the lookup's trigcache (twiddles at trigcache + n) and splitcache (factor list)
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drft_backward@8 -- 29 bytes verified against Fable.exe 0x00C9BC30
 // Leaf: @drft_backward@8
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9BC30, 29 bytes. libvorbis 1.0.1 lib/smallft.c `drft_backward`.

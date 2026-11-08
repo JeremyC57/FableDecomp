@@ -1,4 +1,5 @@
 // bi_windup(deflate_state* s) -- zlib 1.2.1 trees.c bi_windup: flush the remaining bits of the bit buffer and align on a byte boundary
+// Vendor-proof: zlib-1.2.1(trees.c) _bi_windup -- 109 bytes verified against Fable.exe 0x00C050C0
 // Leaf: _bi_windup
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C050C0. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

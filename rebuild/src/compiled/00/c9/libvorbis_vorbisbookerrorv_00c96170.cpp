@@ -1,4 +1,5 @@
 // libvorbis::vorbis_book_errorv(codebook* book, float* a) -- replace a vector with its nearest codebook entry (single-stage search) and return the entry number
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_errorv@8 -- 158 bytes verified against Fable.exe 0x00C96170
 // Leaf: vorbis_book_errorv
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96170, 158 bytes. libvorbis 1.0.1 lib/codebook.c, compiled as C with
 //   /Gr: `__fastcall`, book in ecx, a in edx, plain `ret`.

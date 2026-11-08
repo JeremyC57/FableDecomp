@@ -1,4 +1,5 @@
 // libvorbis::drft_clear(drft_lookup* l) -- free a real-FFT lookup's trig and split caches and wipe it
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drft_clear@4 -- 53 bytes verified against Fable.exe 0x00C9BC90
 // Leaf: drft_clear
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9BC90, 53 bytes. libvorbis 1.0.1 lib/smallft.c, compiled as C with /Gr:
 //   `__fastcall`, l in ecx, plain `ret`.

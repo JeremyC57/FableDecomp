@@ -1,4 +1,5 @@
 // libogg::oggpack_adv1(oggpack_buffer* b) -- Xiph bitwise.c: advance the read position by one bit (carry into the next byte after bit 7)
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_adv1@4 -- 28 bytes verified against Fable.exe 0x00C91570
 // Leaf: @oggpack_adv1@4
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C91570, 28 bytes, __fastcall (b in ecx), plain ret. No callees.
 // Library: libpk statically links the Xiph Ogg Vorbis decoder ("Xiph.Org libVorbis I 20030909" @0x012BF240; libogg 1.1 /

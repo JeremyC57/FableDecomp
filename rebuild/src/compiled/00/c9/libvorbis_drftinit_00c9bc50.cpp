@@ -1,4 +1,5 @@
 // libvorbis::drft_init(drft_lookup* l, int n) -- smallft.c: record n, allocate the 3n-float trig cache and the 32-int split cache, then set them up through fdrffti
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drft_init@8 -- 53 bytes verified against Fable.exe 0x00C9BC50
 // Shape (retry1): parked as an "LTCG eax-argument convention" gap; this is libvorbis 1.0.1 smallft.c's static fdrffti. Inside one
 //   smallft.c TU (C, /Gr like the landed drft_clear) with the static drfti1 0x00C96800 and the caller drft_init 0x00C9BC50, VC7.1 /O2
 //   gives the static retail's private convention itself (n in eax, wsave in edx, ifac in ecx).

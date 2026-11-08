@@ -1,4 +1,5 @@
 // libvorbis::drftf1(int n, float* c, float* ch, float* wa, int* ifac) -- smallft.c (FFTPACK real FFT): forward driver -- walks the factor list ifac from the last factor down, ping-pongs between the data buffer c and the scratch buffer ch (na flag) and runs each stage through dradf4 (factor 4), dradf2 (factor 2) or the general dradfg, then copies ch back into c when the result ended in the scratch buffer
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drftf1@20 -- 470 bytes verified against Fable.exe 0x00C98E80
 // Leaf: _drftf1@20
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C98E80, 470 bytes. libvorbis 1.0.1 lib/smallft.c `static void drftf1(...)`, kept out of

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_book_decodevv_add(codebook* book, float** a, long offset, int ch, oggpack_buffer* b, int n) -- decode codebook vectors and add them channel-interleaved into the ch output vectors from offset/ch on; -1 on end of packet
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_decodevv_add@24 -- 149 bytes verified against Fable.exe 0x00C96760
 // Leaf: vorbis_book_decodevv_add
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96760, 149 bytes. libvorbis 1.0.1 lib/codebook.c, compiled as C with
 //   /Gr: `__fastcall`, book in ecx, a in edx (homed in the `push ecx` slot), offset/ch/b/n on the stack

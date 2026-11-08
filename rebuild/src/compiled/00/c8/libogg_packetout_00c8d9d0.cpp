@@ -1,4 +1,5 @@
 // libogg::_packetout(ogg_stream_state* os, ogg_packet* op, int adv) -- framing.c: the last part of decode -- group the lacing segments after lacing_returned into one packet: return 0 when none is complete, -1 (bumping lacing_returned and packetno) at a 0x400 hole marker, 1 as a cheap "whole packet waiting" probe when op and adv are both zero; otherwise gather the 255-chained segment sizes, fill op (e_o_s / b_o_s flags, body pointer, packetno, granulepos, bytes) and, when adv is set, advance body_returned, lacing_returned and packetno
+// Vendor-proof: libogg-1.1.1(src/framing.c) @_packetout@12 -- 311 bytes verified against Fable.exe 0x00C8D9D0
 // Leaf: @_packetout@12
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8D9D0, 311 bytes. libogg 1.1 framing.c `static int _packetout(...)`, kept out of line

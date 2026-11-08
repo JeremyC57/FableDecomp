@@ -1,4 +1,5 @@
 // libogg::oggpack_writeclear(oggpack_buffer* b) -- free the writer's buffer and zero the record
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_writeclear@4 -- 34 bytes verified against Fable.exe 0x00C91320
 // Leaf: @oggpack_writeclear@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C91320, 34 bytes, plain `ret`. libogg src/bitwise.c. Callee: free (MSVCR71
 //   import [0x01440154]). agent447's landed vorbis_bitrate_clear 0x00C9CF10 calls it on each queued packet buffer.

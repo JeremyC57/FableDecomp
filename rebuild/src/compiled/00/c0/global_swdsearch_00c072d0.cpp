@@ -1,4 +1,5 @@
 // _global::swd_search(lzo_swd_p s, lzo_uint node, lzo_uint cnt) -- LZO 1.08 lzo_swd.ch swd_search: walk cnt nodes of the 3-byte hash chain from node, recording the longest match (and the best position per length) at the current buffer position
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_search -- 232 bytes verified against Fable.exe 0x00C072D0
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the LZO static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _swd_search
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C072D0, 232 bytes. Retail convention (VC7.1 private, from the same-TU static): s in EAX, node in ECX, cnt on the stack, plain ret.

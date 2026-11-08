@@ -1,4 +1,5 @@
 // read_buf(z_streamp strm, Bytef* buf, unsigned size) -- zlib 1.2.1 deflate.c read_buf: move up to size input bytes into buf, updating adler32 (zlib wrap) or crc32 (gzip wrap)
+// Vendor-proof: zlib-1.2.1(deflate.c) _read_buf -- 119 bytes verified against Fable.exe 0x00C00D50
 // Leaf: _read_buf
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C00D50, 119 bytes, a TU-local static (or API) of the same library file as the landed
 //   row 0x00C01090. Shape (retry1): parked as an "LTCG custom register convention" gap; the landed host TU already holds this

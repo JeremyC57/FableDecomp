@@ -1,4 +1,5 @@
 // vorbis_comment_query(vorbis_comment* vc, char* tag, int count) -- libvorbis info.c: the count-th comment value whose name matches tag (case-insensitive "TAG=" prefix), or NULL
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_comment_query@12 -- 185 bytes verified against Fable.exe 0x00C8DD90
 // Leaf: @vorbis_comment_query@12
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8DD90, 185 bytes.
 // Retail TU: libpk's statically linked Xiph libvorbis I 20030909 lib/info.c. tagcompare is the file's static; VC7.1 gives it a

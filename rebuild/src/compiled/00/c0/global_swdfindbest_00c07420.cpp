@@ -1,4 +1,5 @@
 // _global::swd_findbest(lzo_swd_p s) -- LZO 1.08 lzo_swd.ch swd_findbest: hash the 3 bytes at bp into HEAD3, walk the chain (bounded by max_chain) for the longest match through swd_search2 / swd_search, record m_off and the best_off table, then retire the node leaving the window (swd_remove_node) and enter bp into HEAD2
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_findbest -- 413 bytes verified against Fable.exe 0x00C07420
 // Leaf: _swd_findbest
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C07420, 413 bytes, no prologue: s arrives in ESI (VC7.1 private convention of a TU-local
 //   static), plain `ret`. Callees: swd_search2 0x00C073C0 (s in EAX), swd_search 0x00C072D0 (s in EAX, node in ECX, cnt on the

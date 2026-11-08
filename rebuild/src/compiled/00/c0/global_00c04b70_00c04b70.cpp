@@ -1,4 +1,5 @@
 // compress_block(deflate_state*, const ct_data*, const ct_data*) -- writes literal and match codes for a compressed block.
+// Vendor-proof: zlib-1.2.1(trees.c) _compress_block -- 1055 bytes verified against Fable.exe 0x00C04B70
 // Leaf: _compress_block
 // Flags: /GS /TC
 // Vendor: zlib 1.2.1 trees.c; real same-file callers retain static function convention.

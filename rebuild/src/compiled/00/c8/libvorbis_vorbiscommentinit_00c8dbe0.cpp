@@ -1,4 +1,5 @@
 // libvorbis::vorbis_comment_init(vorbis_comment* vc) -- Xiph libvorbis info.c: zero the 16-byte vorbis_comment
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_comment_init@4 -- 14 bytes verified against Fable.exe 0x00C8DBE0
 // Leaf: @vorbis_comment_init@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

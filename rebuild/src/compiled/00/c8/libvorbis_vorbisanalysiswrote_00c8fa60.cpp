@@ -1,4 +1,5 @@
 // libvorbis::vorbis_analysis_wrote(vorbis_dsp_state* v, int vals) -- libvorbis block.c: account for vals newly written samples (OV_EINVAL past the buffer; reverse-extrapolate the stream start once enough is buffered), or at end of stream (vals <= 0) pad three long blocks and LPC-extrapolate each channel into them (zeroes when too little data)
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_analysis_wrote@8 -- 307 bytes verified against Fable.exe 0x00C8FA60
 // Leaf: @vorbis_analysis_wrote@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8FA60, 307 bytes, extern "C" __fastcall (v ecx, vals edx, plain `ret`), ebp frame
 //   for the 32-float LPC alloca (`mov eax,80h ; call __alloca_probe` 0x00BFEA30).

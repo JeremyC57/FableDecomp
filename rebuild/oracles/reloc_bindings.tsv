@@ -7650,7 +7650,7 @@ _vsprintf	00bfedd0	00a381d0
 ?Destroy_00a3a2f0@@YIXPAX@Z	00a3a2f0	00a3a380
 _deflate	00c006a0	00a3a7f0
 _deflateInit_	00c021c0	00a3a7f0
-_inflate	00c02470	00a3a840
+_z_inflate	00c02470	00a3a840
 _inflateInit_	00c02310	00a3a840
 ?fn_a3a9c0@@YAXXZ	00a3a9c0	00a3aa10
 ?fn_a3aa00@@YAXXZ	00a3aa00	00a3aa10

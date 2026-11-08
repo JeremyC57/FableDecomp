@@ -1,4 +1,5 @@
 // libvorbis::_preextrapolate_helper(vorbis_dsp_state* v) -- libvorbis block.c: once enough PCM is buffered, run a 32-order LPC extrapolation backwards over every channel to pre-roll the start of the stream
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @_preextrapolate_helper@4 -- 246 bytes verified against Fable.exe 0x00C8F960
 // Leaf: __preextrapolate_helper
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8F960, 246 bytes, a TU-local static (or API) of the same library file as the landed
 //   row 0x00C8FA60. Shape (retry1): parked as an "LTCG custom register convention" gap; the landed host TU already holds this

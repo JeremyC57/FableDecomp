@@ -1,4 +1,5 @@
 // _global::lzo_assert(int expr) -- LZO 1.08 lzo_assert: 1 when expr is non-zero, else 0 (the library's self-check helper)
+// Vendor-proof: lzo-1.08(src/lzo_util.c) _lzo_assert -- 12 bytes verified against Fable.exe 0x00C08530
 // Leaf: _lzo_assert
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C08530, 12 bytes. LZO 1.08 lzo_init.c, C linkage, __cdecl (LZO_PUBLIC). No callees.
 // Identity (proven): the LZO 1.08 body `return (expr) ? 1 : 0;` (`xor eax,eax ; test ecx,ecx ; setne al`), in the LZO 1.08

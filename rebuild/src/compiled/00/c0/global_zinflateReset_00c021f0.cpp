@@ -1,4 +1,5 @@
 // _global::z_inflateReset(z_streamp strm) -- zlib 1.2.1 inflateReset: zero the stream totals and message, reset the inflate state machine to HEAD and point the code tables at the state's codes[] area
+// Vendor-proof: zlib-1.2.1(inflate.c) _z_inflateReset -- 73 bytes verified against Fable.exe 0x00C021F0
 // Leaf: _z_inflateReset
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C021F0, 73 bytes. zlib 1.2.1, Z_PREFIX build, C linkage, __cdecl. No callees.
 // Shape: the 1.2.1 body (no `adler = 1`, `dmax`, `head` or `write = 0` -- those arrived in 1.2.2/1.2.3); one zero

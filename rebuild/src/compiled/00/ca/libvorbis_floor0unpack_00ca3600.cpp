@@ -1,4 +1,5 @@
 // libvorbis::floor0_unpack(vorbis_info* vi, oggpack_buffer* opb) -- libvorbis floor0.c: read a floor-0 setup header (order 8 bits, rate 16, barkmap 16, ampbits 6, ampdB 8, numbooks-1 4, then numbooks 8-bit book numbers) into a new vorbis_info_floor0; any order/rate/barkmap/numbooks below 1 or a book number outside [0, ci->books) frees it (floor0_free_info) and returns NULL
+// Vendor-proof: libvorbis-1.0.1(lib/floor0.c) @floor0_unpack@8 -- 221 bytes verified against Fable.exe 0x00CA3600
 // Leaf: @floor0_unpack@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA3600, 221 bytes. libpk's statically linked Xiph libvorbis 20030909 (lib/floor0.c); the
 // static unpack takes vi in ecx and opb in edx (the LTCG link turned the libvorbis statics into __fastcall), plain `ret`.

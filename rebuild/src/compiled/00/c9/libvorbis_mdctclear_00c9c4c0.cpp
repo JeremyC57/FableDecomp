@@ -1,4 +1,5 @@
 // libvorbis::mdct_clear(mdct_lookup* l) -- free an MDCT lookup's twiddle and bit-reverse tables and wipe it
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_clear@4 -- 59 bytes verified against Fable.exe 0x00C9C4C0
 // Leaf: mdct_clear
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9C4C0, 59 bytes. libvorbis 1.0.1 lib/mdct.c, compiled as C with /Gr:
 //   `__fastcall`, l in ecx, plain `ret`.

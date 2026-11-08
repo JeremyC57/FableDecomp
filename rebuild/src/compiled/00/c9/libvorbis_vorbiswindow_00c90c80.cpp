@@ -1,4 +1,5 @@
 // libvorbis::vorbis_window(vorbis_dsp_state* v, int W) -- block.c: the encoder/decoder window curve for block size W (short 0 / long 1), or NULL when no window is set up
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_window@8 -- 36 bytes verified against Fable.exe 0x00C90C80
 // Leaf: @vorbis_window@8
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C90C80, 36 bytes, LTCG __fastcall (v in ecx, W in edx), the tail call to _vorbis_window_get

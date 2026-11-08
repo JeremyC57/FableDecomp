@@ -1,4 +1,5 @@
 // libvorbis::floater_interpolate(bitrate_manager_state* bm, vorbis_info* vi, double desired_rate) -- pick the average-bitrate bin whose rate is closest to desired_rate, starting from rint(avgfloat)
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @floater_interpolate@16 -- 211 bytes verified against Fable.exe 0x00C9CB80
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libvorbis static retail's private register convention itself (chunk 585/586/593 lever).
 // Retail: Fable.exe @ 0x00C9CB80, 211 bytes. libvorbis 1.0.1 lib/bitrate.c (static). Callees: floor import [0x01440100], __ftol2 0x00BFEA70. Data: 0.5 @ 0x012316F0, 2^32 @ 0x012387C8 (the unsigned avg_sampleacc). Grades: 1.
 // The body is the shipped libvorbis 1.0.1 source; the register convention is VC7.1's own private one for the same-TU static.

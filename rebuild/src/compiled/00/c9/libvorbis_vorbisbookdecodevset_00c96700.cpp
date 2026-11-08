@@ -1,4 +1,5 @@
 // libvorbis::vorbis_book_decodev_set(codebook* book, float* a, oggpack_buffer* b, int n) -- decode codebook entries until n values are filled, copying each entry's vector into a; -1 on end of packet
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_decodev_set@16 -- 92 bytes verified against Fable.exe 0x00C96700
 // Leaf: vorbis_book_decodev_set
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96700, 92 bytes. libvorbis 1.0.1 lib/codebook.c, compiled as C with
 //   /Gr: `__fastcall`, book in ecx, a in edx, b and n on the stack (`ret 8`).

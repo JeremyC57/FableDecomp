@@ -1,4 +1,5 @@
 // send_all_trees(deflate_state* s, int lcodes, int dcodes, int blcodes) -- zlib 1.2.1 trees.c send_all_trees: emit the literal/distance/bit-length code counts, the bit-length code lengths in bl_order, then the literal and distance trees
+// Vendor-proof: zlib-1.2.1(trees.c) _send_all_trees -- 621 bytes verified against Fable.exe 0x00C04850
 // Leaf: _send_all_trees
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C04850, 621 bytes. The whole trees.c TU below is the landed scan_tree 0x00C04260 text

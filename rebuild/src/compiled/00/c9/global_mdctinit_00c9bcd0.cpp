@@ -1,4 +1,5 @@
 // 00c9bcd0 mdct_init
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_init@8 -- 470 bytes verified against Fable.exe 0x00C9BCD0
 // Leaf: @mdct_init@8
 // Flags: /Gr
 // Original libvorbis mdct.c/mdct.h and os.h numeric macros; BSD-style terms in reference COPYING.

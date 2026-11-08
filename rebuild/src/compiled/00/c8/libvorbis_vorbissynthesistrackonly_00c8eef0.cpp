@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_trackonly(vorbis_block* vb, ogg_packet* op) -- libvorbis synthesis.c: decode only an audio packet's header (type bit, mode, long/short window flags) into the block and copy the packet's granule, sequence and EOS, with no PCM
+// Vendor-proof: libvorbis-1.0.1(lib/synthesis.c) @vorbis_synthesis_trackonly@8 -- 207 bytes verified against Fable.exe 0x00C8EEF0
 // Leaf: @vorbis_synthesis_trackonly@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

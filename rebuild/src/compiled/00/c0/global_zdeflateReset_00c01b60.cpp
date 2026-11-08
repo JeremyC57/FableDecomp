@@ -1,4 +1,5 @@
 // _global::z_deflateReset(z_streamp strm) -- zlib 1.2.1 deflate.c deflateReset: clear the stream totals, rewind the pending buffer, restore wrap and status, seed adler/crc and reinitialise the trees and the match state
+// Vendor-proof: zlib-1.2.1(deflate.c) _z_deflateReset -- 145 bytes verified against Fable.exe 0x00C01B60
 // Shape (retry1): parked as "LTCG static lm_init (s in edx)"; with lm_init's real deflate.c body as a same-TU `extern "C" { static __declspec(noinline) }` VC7.1 /O2 gives it the s-in-edx private convention and the call site matches.
 // Leaf: _z_deflateReset
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C01B60, 145 bytes. __cdecl itself; it calls the deflate.c static lm_init 0x00C00DD0 with s in EDX (`mov edx,esi ; call`); z_crc32 0x00C05FD0, z_adler32 0x00C03CB0 and _tr_init 0x00C051C0 are __cdecl.

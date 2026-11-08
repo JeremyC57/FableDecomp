@@ -1,4 +1,5 @@
 // libogg::oggpack_read(oggpack_buffer* b, int bits) -- read the next `bits` (<= 32) bits LSb-first and advance; -1 (and still advance) when they run past the end of the buffer
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_read@8 -- 188 bytes verified against Fable.exe 0x00C915A0
 // Leaf: @oggpack_read@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C915A0, 188 bytes, plain `ret` (b in ecx, bits in edx). libogg src/bitwise.c.
 //   Data: mask[] @ 0x0139DDB8.

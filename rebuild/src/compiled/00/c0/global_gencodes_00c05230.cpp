@@ -1,4 +1,5 @@
 // gen_codes(ct_data* tree, int max_code, ushf* bl_count) -- zlib 1.2.1 trees.c gen_codes: build the bit-reversed canonical Huffman codes from the bit-length counts
+// Vendor-proof: zlib-1.2.1(trees.c) _gen_codes -- 138 bytes verified against Fable.exe 0x00C05230
 // Leaf: _gen_codes
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C05230. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

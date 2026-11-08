@@ -1,4 +1,5 @@
 // libogg::ogg_sync_wrote(ogg_sync_state* oy, long bytes) -- Xiph libogg framing.c: commit `bytes` written into the sync buffer: -1 when that overruns the storage, else advance fill and return 0
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_sync_wrote@8 -- 20 bytes verified against Fable.exe 0x00C8D4F0
 // Leaf: @ogg_sync_wrote@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

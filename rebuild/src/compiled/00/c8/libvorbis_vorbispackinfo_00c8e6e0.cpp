@@ -1,4 +1,5 @@
 // libvorbis::_vorbis_pack_info(oggpack_buffer* opb, vorbis_info* vi) -- libvorbis info.c: write the identification header body (packet type 1, "vorbis", version 0, channels, rate, the three bitrates, ilog2 of both block sizes, framing bit); OV_EFAULT when the codec setup is missing
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_vorbis_pack_info@8 -- 175 bytes verified against Fable.exe 0x00C8E6E0
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libvorbis static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: __vorbis_pack_info
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8E6E0, 175 bytes. libpk's statically linked Xiph libvorbis 20030909 (lib/info.c). Retail

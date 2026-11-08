@@ -1,4 +1,5 @@
 // vorbis_synthesis_init(vorbis_dsp_state* v, vorbis_info* vi) -- libvorbis block.c: shared DSP init for decoding, then vorbis_synthesis_restart; 1 on failure
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_synthesis_init@8 -- 33 bytes verified against Fable.exe 0x00C8FF00
 // Shape (retry1): parked as an "LTCG custom register arguments" gap; the TU holds block.c's static _vds_shared_init as `extern "C" { static __declspec(noinline) int __stdcall }` with its two real callers vorbis_analysis_init / vorbis_synthesis_init, and VC7.1 /O2 picks retail's private convention (v in EBX, vi/encp on the stack, ret 8) itself.
 // Leaf: @vorbis_synthesis_init@8
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8FF00, length 33 bytes (48 with padding).

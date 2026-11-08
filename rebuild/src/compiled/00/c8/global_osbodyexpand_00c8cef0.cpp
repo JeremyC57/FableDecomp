@@ -1,4 +1,5 @@
 // _os_body_expand(ogg_stream_state* os, int needed) -- libogg framing: grow the stream's body buffer by needed + 1024 bytes when the fill plus `needed` reaches its storage
+// Vendor-proof: libogg-1.1.1(src/framing.c) @_os_body_expand@8 -- 38 bytes verified against Fable.exe 0x00C8CEF0
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libogg static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: __os_body_expand
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8CEF0, length 38 bytes (48 with padding).

@@ -1,4 +1,5 @@
 // libogg::ogg_stream_destroy(ogg_stream_state* os) -- Xiph libogg framing.c: ogg_stream_clear the stream state, then free it; returns 0
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_destroy@4 -- 26 bytes verified against Fable.exe 0x00C8CED0
 // Leaf: @ogg_stream_destroy@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

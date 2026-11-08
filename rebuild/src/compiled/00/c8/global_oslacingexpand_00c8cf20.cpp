@@ -1,4 +1,5 @@
 // _os_lacing_expand(ogg_stream_state* os, int needed) -- libogg framing: grow the lacing and granule fifos by needed + 32 entries when the fill plus `needed` reaches their storage
+// Vendor-proof: libogg-1.1.1(src/framing.c) @_os_lacing_expand@8 -- 60 bytes verified against Fable.exe 0x00C8CF20
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libogg static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: __os_lacing_expand
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8CF20, length 60 bytes (64 with padding).

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_bitrate_managed(vorbis_block* vb) -- bitrate.c: 1 when the encoder's bitrate manager is queueing binned packets (managed mode), else 0
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @vorbis_bitrate_managed@4 -- 17 bytes verified against Fable.exe 0x00C9CFD0
 // Leaf: @vorbis_bitrate_managed@4
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9CFD0, LTCG __fastcall (vb in ecx).

@@ -1,4 +1,5 @@
 // libvorbis::_ve_envelope_mark(vorbis_dsp_state* v) -- 1 when the envelope detector marked a transient inside the current block's span (curmark or any search-step mark), else 0
+// Vendor-proof: libvorbis-1.0.1(lib/envelope.c) @_ve_envelope_mark@4 -- 177 bytes verified against Fable.exe 0x00C9E4A0
 // Leaf: _ve_envelope_mark
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9E4A0, 177 bytes. libvorbis 1.0.1 lib/envelope.c, compiled as C with
 //   /Gr: `__fastcall`, v in ecx, plain `ret`. No callees.

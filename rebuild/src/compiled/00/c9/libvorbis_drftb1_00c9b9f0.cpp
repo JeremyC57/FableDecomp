@@ -1,4 +1,5 @@
 // libvorbis::drftb1(int n, float* c, float* ch, float* wa, int* ifac) -- smallft.c (FFTPACK real FFT): backward (inverse) driver -- walks the factor list ifac from the first factor up, ping-pongs between the data buffer c and the scratch buffer ch (na flag) and runs each stage through dradb4 (factor 4), dradb2 (factor 2), dradb3 (factor 3) or the general dradbg, then copies ch back into c when the result ended in the scratch buffer
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drftb1@20 -- 536 bytes verified against Fable.exe 0x00C9B9F0
 // Leaf: _drftb1@20
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9B9F0, 536 bytes. libvorbis 1.0.1 lib/smallft.c `static void drftb1(...)`, kept out of

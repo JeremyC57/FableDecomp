@@ -1,4 +1,5 @@
 // init_match(lzo1x_999_t* c, lzo1x_999_swd_t* s, const lzo_byte* dict, lzo_uint dict_len, lzo_uint32 flags) -- LZO 1.08 lzo1x_9x.c init_match: mark the compressor state initialised, link it to the window, clear its statistics, initialise the window and set use_best_off
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _init_match -- 79 bytes verified against Fable.exe 0x00C075C0
 // Leaf: _init_match
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C075C0, 79 bytes, a TU-local static (or API) of the same library file as the landed
 //   row 0x00C06F30. Shape (retry1): parked as an "LTCG custom register convention" gap; the landed host TU already holds this

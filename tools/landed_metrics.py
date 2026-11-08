@@ -17,6 +17,16 @@ Counts:
                           count with the genuine rows
   library_source          genuine rows whose source is a VC7.1 compile of vendor (CRT) source that byte-matches the
                           library object retail linked: they carry `// Library: <lib>(<member>) <symbol>`
+  vendor_library          the toolchain_library rows whose stub carries `// Vendor-library:` (third-party code compiled
+                          from unmodified vendor source, proven by libsig/lib_verify.py; LIBRARY_SIGNATURES.md)
+  vendor_source           genuine (hand-written) rows that also carry a `// Vendor-proof:` line: the vendor build of the
+                          same function equals retail (kept as written, labelled as library: owner 2026-11-08)
+  split                   the same coverage per code origin, from docs/pipeline/LIBRARY_MAP.tsv (`category` column):
+                          game (Fable code, including the map's "Lionhead game code" rows and everything outside the
+                          map), lionhead_library (Lionhead in-house libraries: libpk/CODA audio, LHNetworkLib),
+                          third_party (vendor code: zlib, LZO, Xiph, DirectShow base classes, DXUT ImeUi) and toolchain
+                          (VC7.1 CRT objects and import thunks). A toolchain_library row outside every map range is
+                          counted by its proof line (toolchain, or third_party for `// Vendor-library:`).
   landed_genuine_known / landed_genuine_original
   matched_bytes / matched_bytes_genuine   retail bytes covered by landed rows (catalog row lengths)
   unlanded_bytes_estimate  known functions not landed, each sized as the gap to the next known function start, capped at 64 KB (unlanded_gap_cap; unlanded_gaps_capped counts the caps)
@@ -41,6 +51,35 @@ REBUILD = ROOT / "rebuild"
 
 def addr(s: str) -> str:
     return s.strip().lower().replace("0x", "").zfill(8)
+
+
+SPLIT_BUCKETS = ("game", "lionhead_library", "third_party", "toolchain")
+
+
+def load_library_map(path=ROOT / "docs" / "pipeline" / "LIBRARY_MAP.tsv"):
+    """[(start, end, bucket)] from LIBRARY_MAP.tsv (end exclusive; rows without hex bounds, e.g. `(spread)`, skipped)."""
+    out = []
+    if not path.exists():
+        return out
+    with open(path, encoding="utf-8") as f:
+        for r in csv.DictReader(f, delimiter="\t"):
+            try:
+                lo, hi = int(r["start"], 16), int(r["end"], 16)
+            except (KeyError, ValueError, TypeError):
+                continue
+            cat = (r.get("category") or "").strip()
+            bucket = ("toolchain" if cat.startswith("Microsoft toolchain") else
+                      "third_party" if cat.startswith("Third-party") else
+                      "lionhead_library" if cat.startswith("Lionhead in-house") else "game")
+            out.append((lo, hi, bucket))
+    return out
+
+
+def bucket_of(va, ranges):
+    for lo, hi, b in ranges:
+        if lo <= va < hi:
+            return b
+    return "game"
 
 
 def main() -> int:
@@ -69,6 +108,7 @@ def main() -> int:
                 original.add(a)
     kinds = {}
     library_source = set()
+    vendor_library, vendor_source = set(), set()
     missing = 0
     for a in catalog:
         rel = sources.get(a)
@@ -84,6 +124,10 @@ def main() -> int:
         kinds[a] = purity.classify(text_a)
         if kinds[a] == "genuine" and re.search(r"^// Library: \S+\(.+\) \S+", text_a, re.M):
             library_source.add(a)
+        if kinds[a] == "toolchain_library" and re.search(r"^//\s*Vendor-library:", text_a, re.M):
+            vendor_library.add(a)
+        if kinds[a] == "genuine" and re.search(r"^//\s*Vendor-proof:", text_a, re.M):
+            vendor_source.add(a)
     genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)}
     out = {
         "catalog_rows": len(catalog),
@@ -98,6 +142,8 @@ def main() -> int:
         "toolchain_library": sum(1 for k in kinds.values() if k == "toolchain_library"),
         "asm_bake": sum(1 for k in kinds.values() if k in ("naked_asm", "emit_bake")),
         "library_source": len(library_source),
+        "vendor_library": len(vendor_library),
+        "vendor_source": len(vendor_source),
         "missing_source": missing,
         "matched_bytes": sum(catalog.values()),
         "matched_bytes_genuine": sum(n for a, n in catalog.items() if a in genuine),
@@ -122,6 +168,29 @@ def main() -> int:
             capped += 1
         left += gap
     out["unlanded_bytes_estimate"] = left
+    # code origin split (docs/pipeline/LIBRARY_MAP.tsv)
+    ranges = load_library_map()
+    split = {b: dict(known=0, landed=0, landed_genuine=0, matched_bytes_genuine=0, unlanded_bytes_estimate=0)
+             for b in SPLIT_BUCKETS}
+    by_grade = 0
+    for i, va in enumerate(starts):
+        a = f"{va:08x}"
+        b = bucket_of(va, ranges)
+        if b == "game" and kinds.get(a) == "toolchain_library":
+            b = "third_party" if a in vendor_library else "toolchain"
+            by_grade += 1
+        d = split[b]
+        d["known"] += 1
+        if a in catalog:
+            d["landed"] += 1
+            if a in genuine:
+                d["landed_genuine"] += 1
+                d["matched_bytes_genuine"] += catalog[a]
+        else:
+            nxt = starts[i + 1] if i + 1 < len(starts) else text_end
+            d["unlanded_bytes_estimate"] += min(max(0, min(nxt, text_end) - va), gap_cap)
+    out["split"] = split
+    out["split_toolchain_by_grade"] = by_grade
     out["unlanded_gap_cap"] = gap_cap
     out["unlanded_gaps_capped"] = capped
     out["text_bytes"] = ts["size"]

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_pcmout(vorbis_dsp_state* v, float*** pcm) -- hand the caller per-channel pointers to the decoded, not yet returned PCM and return how many samples are ready
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_synthesis_pcmout@8 -- 80 bytes verified against Fable.exe 0x00C908E0
 // Leaf: vorbis_synthesis_pcmout
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C908E0, 80 bytes. libvorbis 1.0.1 ("Xiph.Org libVorbis I 20030909",
 //   string @ 0x00EBF240), lib/block.c. The library is compiled as C with /Gr: `__fastcall`, v in ecx, pcm in edx,

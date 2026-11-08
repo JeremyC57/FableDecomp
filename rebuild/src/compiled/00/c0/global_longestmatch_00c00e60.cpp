@@ -1,4 +1,5 @@
 // longest_match(deflate_state* s, IPos cur_match) -- zlib 1.2.1 deflate.c longest_match: walk the hash chain from cur_match and return the length of the longest match (match_start set to its position)
+// Vendor-proof: zlib-1.2.1(deflate.c) _longest_match -- 359 bytes verified against Fable.exe 0x00C00E60
 // Leaf: _longest_match
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C00E60, 359 bytes. zlib 1.2.1 ("deflate 1.2.1 Copyright 1995-2003" in .rdata),
 // built with Z_PREFIX (public entry points `_z_*`); longest_match is a deflate.c `local` (static) helper.

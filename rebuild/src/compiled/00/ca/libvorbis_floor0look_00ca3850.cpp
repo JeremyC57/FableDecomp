@@ -1,4 +1,5 @@
 // libvorbis::floor0_look(vorbis_dsp_state* vd, vorbis_info_floor* i) -- Xiph floor0.c (post-1.0.1): allocate a floor 0 look over the info: order, bark map size, the info itself and the two lazily built linear maps
+// Vendor-proof: libvorbis-1.0.1(lib/floor0.c) @floor0_look@8 -- 50 bytes verified against Fable.exe 0x00CA3850
 // Leaf: @floor0_look@8
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA3850, 50 bytes, __fastcall (vd ecx, unused; i edx), plain ret.
 // Callees: calloc (MSVCR71 import [0x01440058], hoisted into ebx) twice through _ogg_calloc.

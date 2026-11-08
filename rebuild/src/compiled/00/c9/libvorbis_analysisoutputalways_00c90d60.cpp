@@ -1,4 +1,5 @@
 // libvorbis::_analysis_output_always(char* base, int i, float* v, int n, int bark, int dB, ogg_int64_t off) -- libvorbis analysis.c debug dump: write n "x y" lines of the vector v to the Octave/Matlab file "<base>_<i>.m" (x = bark-scale band, time (j+off)/8000 or the index j; y = the dB value (-140 for zero) or the raw value)
+// Vendor-proof: libvorbis-1.0.1(lib/analysis.c) @_analysis_output_always@32 -- 370 bytes verified against Fable.exe 0x00C90D60
 // Leaf: @_analysis_output_always@32
 // Flags: /Gr /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C90D60, 370 bytes, `__fastcall` (base in ecx, i in edx, five stack words, `ret 18h`),

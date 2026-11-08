@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_restart(vorbis_dsp_state* v) -- libvorbis block.c: reset a decode state to the start of a stream (centre of the long window, halved for half-rate decode; returned / granule / sequence / sample count -1); -1 without backend, info or codec setup
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_synthesis_restart@4 -- 96 bytes verified against Fable.exe 0x00C8FEA0
 // Leaf: @vorbis_synthesis_restart@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

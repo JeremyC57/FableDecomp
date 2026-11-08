@@ -1,4 +1,5 @@
 // crc32_little(unsigned long crc, const unsigned char* buf, unsigned len) -- zlib 1.2.1 crc32.c little-endian BYFOUR CRC-32 (byte loop to alignment, 32-byte DOLIT32 loop, DOLIT4 loop, byte tail)
+// Vendor-proof: zlib-1.2.1(crc32.c) _crc32_little -- 722 bytes verified against Fable.exe 0x00C059D0
 // Leaf: _crc32_little
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C059D0, 722 bytes. zlib 1.2.1 crc32.c (Z_PREFIX build, BYFOUR), C linkage.
 // Identity: the sole caller z_crc32 0x00C05FD0 (landed) tail-jumps here after the folded endian test (the little-endian arm); the body reads crc_table[0..3] (0x012AF780..0x012B0380) only.

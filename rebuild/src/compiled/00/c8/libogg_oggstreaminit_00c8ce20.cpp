@@ -1,4 +1,5 @@
 // libogg::ogg_stream_init(ogg_stream_state* os, int serialno) -- libogg framing: zero the stream state, allocate the 16 KB body buffer and the 1024-entry lacing and granule fifos, and record the serial number; -1 on a null state
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_init@8 -- 94 bytes verified against Fable.exe 0x00C8CE20
 // Leaf: @ogg_stream_init@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

@@ -1,4 +1,5 @@
 // libvorbis::dradf2(int ido, int l1, float* cc, float* ch, float* wa1) -- smallft.c (FFTPACK real FFT): forward radix-2 pass -- for each of the l1 sub-transforms, butterflies the two half-length inputs of cc into ch (sum / difference), then applies the twiddle factors wa1 to the inner pairs and handles the even-ido edge element
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @dradf2@20 -- 836 bytes verified against Fable.exe 0x00C969D0
 // Leaf: _dradf2@20
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C969D0, 836 bytes. libvorbis 1.0.1 lib/smallft.c `static void dradf2(...)`, kept out of line

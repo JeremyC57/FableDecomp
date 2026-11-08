@@ -1,4 +1,5 @@
 // _global::putShortMSB(deflate_state* s, uInt b) -- zlib 1.2.1 deflate.c putShortMSB: append b to the pending buffer as a big-endian 16-bit value (zlib header and adler trailer)
+// Vendor-proof: zlib-1.2.1(deflate.c) _putShortMSB -- 39 bytes verified against Fable.exe 0x00C00600
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the zlib static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _putShortMSB
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C00600, 39 bytes. Retail convention (VC7.1 private, from the same-TU static): s in EAX, b in ECX, plain ret.

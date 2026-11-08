@@ -1,4 +1,5 @@
 // 00c95ca0 vorbis_staticbook_pack
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_staticbook_pack@8 -- 574 bytes verified against Fable.exe 0x00C95CA0
 // Leaf: @vorbis_staticbook_pack@8
 // Flags: /Gr
 // Original libvorbis codebook.c/headers; BSD-style terms in reference COPYING.

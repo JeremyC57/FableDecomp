@@ -1,4 +1,5 @@
 // 00c90950 vorbis_synthesis_lapout
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_synthesis_lapout@8 -- 804 bytes verified against Fable.exe 0x00C90950
 // Leaf: @vorbis_synthesis_lapout@8
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

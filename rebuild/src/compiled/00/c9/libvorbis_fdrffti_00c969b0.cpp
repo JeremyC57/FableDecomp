@@ -1,4 +1,5 @@
 // libvorbis::fdrffti(int n, float* wsave, int* ifac) -- smallft.c: real-FFT table setup -- unless n is 1, factor n and fill the twiddle table (wsave + n) through drfti1
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @fdrffti@12 -- 17 bytes verified against Fable.exe 0x00C969B0
 // Shape (retry1): parked as an "LTCG eax-argument convention" gap; this is libvorbis 1.0.1 smallft.c's static fdrffti. Inside one
 //   smallft.c TU (C, /Gr like the landed drft_clear) with the static drfti1 0x00C96800 and the caller drft_init 0x00C9BC50, VC7.1 /O2
 //   gives the static retail's private convention itself (n in eax, wsave in edx, ifac in ecx).

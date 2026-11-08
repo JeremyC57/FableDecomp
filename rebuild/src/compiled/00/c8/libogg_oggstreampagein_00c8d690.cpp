@@ -1,4 +1,5 @@
 // libogg::ogg_stream_pagein(ogg_stream_state* os, ogg_page* og) -- libogg framing: add an incoming page to a logical stream (drop returned data, check serial/version, grow the lacing fifo, unroll a partial packet on a sequence gap, append the body and the segment table, record the granulepos and eos)
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_pagein@8 -- 702 bytes verified against Fable.exe 0x00C8D690
 // Leaf: @ogg_stream_pagein@8
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8D690, 702 bytes, LTCG __fastcall (os in ecx, og in edx, plain `ret`).

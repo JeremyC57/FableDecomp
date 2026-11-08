@@ -1,4 +1,5 @@
 // libogg::oggpack_write(oggpack_buffer* b, unsigned long value, int bits) -- LSb-first bit packer: grow the buffer by 256 bytes when fewer than four remain, then OR/store the masked value into the next five bytes and advance
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_write@12 -- 243 bytes verified against Fable.exe 0x00C90FC0
 // Leaf: @oggpack_write@12
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C90FC0, 243 bytes, `ret 4` (b in ecx, value in edx, bits on the stack).
 //   libogg src/bitwise.c. Callee: realloc (MSVCR71 import [0x01440054]). Data: mask[] @ 0x0139DDB8.

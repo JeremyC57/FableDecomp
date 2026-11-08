@@ -1,4 +1,5 @@
 // libvorbis::_vorbis_pack_books(oggpack_buffer* opb, vorbis_info* vi) -- info.c: write the third (setup) header packet body -- type 5 + "vorbis", every static codebook through vorbis_staticbook_pack, the empty time-domain placeholders, then the floors (type + the backend's pack, failing when a floor type has none), residues, mappings and modes (blockflag, windowtype, transformtype, mapping) with the framing bit; OV_EFAULT without a codec setup, -1 on a pack failure
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_vorbis_pack_books@8 -- 483 bytes verified against Fable.exe 0x00C8E880
 // Leaf: __vorbis_pack_books@8
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8E880, 483 bytes. libvorbis info.c `static int _vorbis_pack_books(...)` ("libVorbis I

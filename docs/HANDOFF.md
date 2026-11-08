@@ -93,8 +93,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     LZO 1.08, libogg/libvorbis 1.0.1 minus vorbisfile.c, strmbase, ImeUi) is linked from the vendor's source built unmodified with VC7.1,
     not hand-written; map + routes in docs/pipeline/LIBRARY_MAP.tsv / LIBRARY_LINKING.md (zlib inflate.c proven RELOCATION_MATCH).
     Research found libpk + the CODA audio engine and LHNetworkLib are Lionhead in-house code (no legitimate source exists), so they stay
-    reconstruction (owner, 2026-11-08: "treat as game code"); chunks 870 (minus zlib) and 871 relaunched on them. Next: vendor-object tooling (libsig_scan vendor class, lib_verify loose .obj, grade),
-    then label landed library rows on the dashboard.
+    reconstruction (owner, 2026-11-08: "treat as game code"); chunks 870 (minus zlib) and 871 relaunched on them (Opus, high).
+    Vendor route built (tools/decomp_pipeline/libsig/vendor_libs.tsv, vendor_lib.py, fetch_vendor_libs.py; lib_verify / libsig_scan
+    --vendor): z_inflate 0x00C02470 landed as a `// Vendor-library:` toolchain_library stub; 248 landed zlib/LZO/Ogg/Vorbis rows carry a
+    `// Vendor-proof:` line (bodies kept); dashboard splits game / Lionhead library / third-party / toolchain. Open: the four /Gr
+    comparator TUs (floor1/lsp/psy/sharedbook) need a source patch, 37 unmanifested vendor functions, strmbase/ImeUi headers.
     0x00C0..0x00C4 gap-scan rows of `mov ecx,[ecx+4]; mov eax,[ecx]; jmp [eax+N]` forwarders (72-byte extents) are thunks, not chunk material.
     Running (2026-11-08, 150 grades a row): chunk 866 (done) (ten never-attempted Ogg Vorbis / libpk rows, Xiph names), chunk 867 (ten
     never-attempted PC UI / inventory rows in packed TUs), chunk 868 (Fable retry of ten parks: chunk 863's seven + 0x00D18DF0,

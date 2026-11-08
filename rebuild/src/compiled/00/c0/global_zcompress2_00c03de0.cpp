@@ -1,4 +1,5 @@
 // _global::z_compress2(Bytef* dest, uLongf* destLen, const Bytef* source, uLong sourceLen, int level) -- zlib 1.2.1 compress2: one-shot deflate of source into dest through a stack z_stream (deflateInit / deflate(Z_FINISH) / deflateEnd)
+// Vendor-proof: zlib-1.2.1(compress.c) _z_compress2 -- 169 bytes verified against Fable.exe 0x00C03DE0
 // Leaf: _z_compress2
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C03DE0, 169 bytes. zlib 1.2.1 compress.c, Z_PREFIX build, C linkage, __cdecl.
 // Callees: z_deflateInit_ 0x00C021C0 (the deflateInit macro: level, ZLIB_VERSION 0x0129CFE0, sizeof(z_stream) 0x38),

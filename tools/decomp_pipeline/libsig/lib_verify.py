@@ -29,6 +29,18 @@ landed the retail way, proof-verified like a library member) is checked from the
 file's `db` byte table must be exactly the claimed <n> bytes and equal retail at the address, and when the lane's
 MASM (`$FABLE_VC71/bin/ml.exe`, ML 7.10 under wine) is available the file is assembled and the object's code section
 that defines <symbol> must hold the same bytes with no relocations. The reason names which of the two proofs ran.
+A vendor-library claim (owner direction 2026-11-08: third-party code retail compiled from unmodified source is proven
+from that source, not rewritten by hand; docs/pipeline/LIBRARY_SIGNATURES.md "Vendor libraries")
+    // Vendor-library: <tag>(<file.c>) <symbol> -- <n> bytes verified against Fable.exe 0x<ADDR>   (body-less stub)
+    // Vendor-proof: <tag>(<file.c>) <symbol> -- <n> bytes verified against Fable.exe 0x<ADDR>     (provenance line on a
+                                                                                                  hand-written row)
+names a row of vendor_libs.tsv (tag, version, fetch URL + sha256, flags) and one of its linked TUs. The TU is compiled
+from the tree under FABLE_THIRDPARTY with cl 13.10.3077 and exactly the recorded flags (vendor_lib.build_tu, cached),
+and the code section defining <symbol> is compared with retail as for a library member: bytes outside relocations
+equal, and every relocation that can be resolved agrees (IAT slots and thunks from the VS 2003 import records,
+same-section labels, and targets another TU of the same vendor -- or of a vendor its includes name -- or msvcrt.lib
+defines, whose own bytes must sit at the target). A TU listed in `not_built` (not provable from unmodified source)
+is a MISMATCH with the config's reason.
 """
 from __future__ import annotations
 
@@ -47,29 +59,31 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import coff_lib as C  # noqa: E402
 import libsig_scan as LS  # noqa: E402
+import vendor_lib as VL  # noqa: E402
 
 ROOT = LS.ROOT
-CLAIM = re.compile(r"^//\s*Toolchain-library:\s*(\S+?)\((.+)\)\s+(\S+)\s+--\s+(\d+)\s+bytes verified against Fable\.exe\s+"
-                   r"(0x[0-9A-Fa-f]{8})\s*$", re.M)
+CLAIM = re.compile(r"^//\s*(Toolchain-library|Vendor-library|Vendor-proof):\s*(\S+?)\((.+)\)\s+(\S+)\s+--\s+(\d+)\s+"
+                   r"bytes verified against Fable\.exe\s+(0x[0-9A-Fa-f]{8})\s*$", re.M)
 
 
 def parse_claim(text):
     m = CLAIM.search(text)
     if not m:
         return None
-    lib, member, sym, n, addr = m.groups()
-    return dict(lib=lib, member=member, symbol=sym, length=int(n), address=int(addr, 16))
+    tag, lib, member, sym, n, addr = m.groups()
+    return dict(lib=lib, member=member, symbol=sym, length=int(n), address=int(addr, 16), tag=tag)
 
 
 def claim_from_oracle(addr):
-    p = ROOT / "rebuild" / "oracles" / "library_signatures.tsv"
-    if not p.exists():
-        return None
-    with open(p, encoding="utf-8") as f:
-        for r in csv.DictReader(f, delimiter="\t"):
-            if int(r["address"], 16) == addr:
-                return dict(lib=r["lib"].split("/")[-1], member=r["member"], symbol=r["symbol"],
-                            length=int(r["length"]), address=addr, kind=r["kind"])
+    for name in ("library_signatures.tsv", "vendor_signatures.tsv"):
+        p = ROOT / "rebuild" / "oracles" / name
+        if not p.exists():
+            continue
+        with open(p, encoding="utf-8") as f:
+            for r in csv.DictReader(f, delimiter="\t"):
+                if int(r["address"], 16) == addr:
+                    return dict(lib=r["lib"].split("/")[-1], member=r["member"], symbol=r["symbol"],
+                                length=int(r["length"]), address=addr, kind=r["kind"])
     return None
 
 
@@ -209,8 +223,14 @@ def verify_import_iat(pe, claim):
 
 
 def _definition(arc, obj, sym):
-    """(object, symbol) defining `sym` in this object or another member of the archive, or (None, None)."""
-    for o in [obj] + [m.coff() for m in arc.members if m.kind == "coff"]:
+    """(object, symbol) defining `sym` in this object or another member of the archive, or (None, None).
+    `arc` is a coff_lib.Archive or, for vendor objects, a {symbol: (object, Symbol)} index (ObjIndex)."""
+    for s in obj.symbols:
+        if s.name == sym and s.section > 0 and s.storage in (2, 3):
+            return obj, s
+    if isinstance(arc, dict):
+        return arc.get(sym, (None, None))
+    for o in [m.coff() for m in arc.members if m.kind == "coff"]:
         for s in o.symbols:
             if s.name == sym and s.section > 0 and s.storage in (2, 3):
                 return o, s
@@ -258,12 +278,19 @@ def verify_import(pe, claim, lib_path):
     return False, f"no short import record {claim['symbol']} in {lib_path.name}({claim['member']})"
 
 
-def verify_coff(pe, claim, lib_path, tag):
-    arc = C.Archive(lib_path)
-    mem = next((m for m in arc.members if m.name == claim["member"] and m.kind == "coff"), None)
-    if mem is None:
-        return False, f"member {claim['member']} not in {lib_path}"
-    obj = mem.coff()
+_IMPORTS = None
+
+
+def imports():
+    """libsig_scan.load_imports over the default library and import-library directories (read once)."""
+    global _IMPORTS
+    if _IMPORTS is None:
+        _IMPORTS = LS.load_imports(LS.default_libdirs(), LS.default_implibdirs())
+    return _IMPORTS
+
+
+def prove_section(pe, claim, obj, arc, label):
+    """Compare the code section of `obj` defining claim['symbol'] with retail; (ok, reason)."""
     for cs in obj.code_sections():
         off = next((o for o, n, _ in cs.symbols if n == claim["symbol"]), None)
         if off is None:
@@ -281,7 +308,7 @@ def verify_coff(pe, claim, lib_path, tag):
             return False, (f"{len(diff)} byte(s) differ outside relocations, first +0x{diff[0]:x} "
                            f"(lib {cs.data[diff[0]]:02x} retail {retail[diff[0]]:02x})")
         # relocation identity against retail (thunks found on the fly, IAT from the import directory)
-        by_export, by_imp, code_syms = LS.load_imports(LS.default_libdirs(), LS.default_implibdirs())
+        by_export, by_imp, code_syms = imports()
         thunks = {}
         for r in cs.relocs:
             sym = r.symbol
@@ -310,15 +337,71 @@ def verify_coff(pe, claim, lib_path, tag):
                 ok += v
                 bad += not v
         if bad:
-            return False, "relocation contradicts retail: " + " ".join(x for x in rel if "[bad]" in x)
-        return True, (f"{tag}/{lib_path.name}({claim['member']}) section {cs.index} {cs.name} {len(cs.data)} bytes at "
+            return False, "relocation contradicts retail: " + " ".join(x for x in rel if "[bad" in x)
+        return True, (f"{label} section {cs.index} {cs.name} {len(cs.data)} bytes at "
                       f"0x{sec_va:08X}, {len(masked)} masked relocation bytes, {ok}/{len(cs.relocs)} relocations proven"
                       + (f": {' '.join(rel)}" if rel else ""))
     return False, f"{claim['symbol']} is not defined in a code section of {claim['member']}"
 
 
+def verify_coff(pe, claim, lib_path, tag):
+    arc = C.Archive(lib_path)
+    mem = next((m for m in arc.members if m.name == claim["member"] and m.kind == "coff"), None)
+    if mem is None:
+        return False, f"member {claim['member']} not in {lib_path}"
+    return prove_section(pe, claim, mem.coff(), arc, f"{tag}/{lib_path.name}({claim['member']})")
+
+
+_VENDOR_INDEX = {}
+
+
+def vendor_index(cfg, tag):
+    """{symbol: (object, Symbol)} over every built TU of `tag`, of the vendors its includes name ({libogg-1.1.1}), and
+    of the VS 2003 msvcrt.lib static members (__ftol2, __security_cookie, __security_check_cookie)."""
+    if tag in _VENDOR_INDEX:
+        return _VENDOR_INDEX[tag]
+    objs = []
+    tags = [tag] + [i[1:].split("}", 1)[0] for i in cfg[tag]["includes_list"] if i.startswith("{")]
+    for t in tags:
+        built, _ = VL.build_all(cfg, t)
+        objs += [C.CoffObject(p.read_bytes(), p.name) for p in built.values()]
+    for _t, d in LS.default_libdirs()[:1]:
+        crt = Path(d) / "msvcrt.lib"
+        if crt.is_file():
+            objs += [o for _m, o in C.Archive(crt).objects()]
+    idx = {}
+    for o in objs:
+        for s in o.symbols:
+            if s.section > 0 and s.storage == 2:
+                idx.setdefault(s.name, (o, s))
+    _VENDOR_INDEX[tag] = idx
+    return idx
+
+
+def verify_vendor(pe, claim, cfg):
+    """A TU of a vendor_libs.tsv library compiled from the unmodified tree with the recorded flags."""
+    row = cfg[claim["lib"]]
+    kind = VL.source_kind(row, claim["member"])
+    if kind == "not_built":
+        return False, f"{claim['member']} is not provable from unmodified {claim['lib']}: {row['notes']}"
+    if kind is None:
+        return False, f"{claim['member']} is not a linked TU of {claim['lib']} (vendor_libs.tsv sources)"
+    objp, why = VL.build_tu(cfg, claim["lib"], claim["member"])
+    if objp is None:
+        return False, why
+    obj = C.CoffObject(objp.read_bytes(), objp.name)
+    ok, msg = prove_section(pe, claim, obj, vendor_index(cfg, claim["lib"]),
+                            f"vendor {claim['lib']}({claim['member']}) [{row['flags']}]")
+    return ok, msg
+
+
 def verify(claim, pe=None):
     pe = pe or LS.PE(os.environ["FABLE_EXE"])
+    cfg = VL.load_config()
+    if claim["lib"] in cfg and not claim["member"].lower().endswith(".asm"):
+        return verify_vendor(pe, claim, cfg)
+    if claim.get("tag", "Toolchain-library") != "Toolchain-library":
+        return False, f"{claim['lib']} is not a vendor_libs.tsv tag (a {claim['tag']} claim names a vendor TU)"
     libs = find_libs(claim["lib"])
     if not libs and claim["lib"] in NOT_ON_DISK and claim["member"].lower().endswith(".dll"):
         return verify_import_iat(pe, claim)
@@ -362,7 +445,7 @@ def main(argv):
     fails = 0
     for label, c in jobs:
         if not c:
-            print(f"{label} MISMATCH no Toolchain-library claim (stub header or library_signatures.tsv row)")
+            print(f"{label} MISMATCH no Toolchain-library / Vendor-library / Vendor-proof claim (stub header or oracle row)")
             fails += 1
             continue
         ok, msg = verify(c, pe)

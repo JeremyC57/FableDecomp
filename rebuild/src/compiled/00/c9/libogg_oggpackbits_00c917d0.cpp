@@ -1,4 +1,5 @@
 // libogg::oggpack_bits(oggpack_buffer* b) -- Xiph bitwise.c: the bit position (endbyte * 8 + endbit)
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_bits@4 -- 9 bytes verified against Fable.exe 0x00C917D0
 // Leaf: @oggpack_bits@4
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C917D0, 9 bytes, __fastcall (b in ecx), plain ret. No callees.
 // Library: libpk statically links the Xiph Ogg Vorbis decoder ("Xiph.Org libVorbis I 20030909" @0x012BF240; libogg 1.1 /

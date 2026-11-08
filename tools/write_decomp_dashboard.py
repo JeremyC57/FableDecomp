@@ -102,7 +102,26 @@ def main() -> int:
         f"| Landed rows using retail inline asm (grade `retail_asm`) | {lm['retail_asm']:,} | {lm['catalog_rows']:,} | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |",
         f"| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | {lm.get('toolchain_library', 0):,} | {lm['catalog_rows']:,} | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |",
         f"| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | {lm.get('library_source', 0):,} | {lm['catalog_rows']:,} | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |",
+        f"| — of which third-party vendor code compiled from unmodified source (`// Vendor-library:` stub) | {lm.get('vendor_library', 0):,} | {lm.get('toolchain_library', 0):,} | — | zlib 1.2.1 / LZO 1.08 / libogg 1.1.1 / libvorbis 1.0.1 TUs rebuilt from the fetched vendor tree with the recorded flags (`tools/decomp_pipeline/libsig/vendor_libs.tsv`; owner direction 2026-11-08) |",
+        f"| Landed hand-written rows the vendor build also proves (`// Vendor-proof:` line) | {lm.get('vendor_source', 0):,} | {lm['catalog_rows']:,} | — | Genuine C++ kept as written and labelled as library: the unmodified vendor TU compiles to the same bytes (owner 2026-11-08: keep, label as library) |",
         f"| Landed rows that are hand-written asm bakes | {lm['asm_bake']:,} | {lm['catalog_rows']:,} | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |",
+        "",
+        "### Game code vs library code",
+        "",
+        "Every known function is placed by `docs/pipeline/LIBRARY_MAP.tsv` (its `category` column): Fable game code (the "
+        "map's \"Lionhead game code\" rows and everything outside the mapped library blocks), Lionhead in-house libraries "
+        "(libpk + CODA audio, LHNetworkLib: reconstructed like game code), third-party vendor code (zlib, LZO, Xiph, "
+        "DirectShow base classes, DXUT ImeUi) and the VC7.1 toolchain (CRT objects, import thunks). "
+        f"{lm.get('split_toolchain_by_grade', 0):,} `toolchain_library` rows outside every mapped block are placed by their proof line.",
+        "",
+        "| Code origin | Landed genuine | Known functions | Coverage | Genuine bytes | Bytes coverage |",
+        "|---|---:|---:|---:|---:|---:|",
+        *[f"| {label} | {sp['landed_genuine']:,} | {sp['known']:,} | {pct(sp['landed_genuine'], sp['known'])} | "
+          f"{sp['matched_bytes_genuine']:,} | {pct(sp['matched_bytes_genuine'], sp['matched_bytes_genuine'] + sp['unlanded_bytes_estimate'])} |"
+          for label, sp in ((lbl, lm.get('split', {}).get(key)) for key, lbl in (
+              ("game", "Fable game code"), ("lionhead_library", "Lionhead in-house libraries"),
+              ("third_party", "Third-party vendor code"), ("toolchain", "VC7.1 toolchain (CRT, import thunks)")))
+          if sp],
         "",
         f"## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, {status_date})",
         "",

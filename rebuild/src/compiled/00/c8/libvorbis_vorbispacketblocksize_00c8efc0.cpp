@@ -1,4 +1,5 @@
 // libvorbis::vorbis_packet_blocksize(vorbis_info* vi, ogg_packet* op) -- libvorbis synthesis.c: the block size (short or long window) an audio packet decodes to, read from its type bit and mode number; OV_ENOTAUDIO / OV_EBADPACKET on a bad packet
+// Vendor-proof: libvorbis-1.0.1(lib/synthesis.c) @vorbis_packet_blocksize@8 -- 110 bytes verified against Fable.exe 0x00C8EFC0
 // Leaf: @vorbis_packet_blocksize@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

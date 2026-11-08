@@ -1,4 +1,5 @@
 // libvorbis::dradf4(int ido, int l1, float* cc, float* ch, float* wa1, float* wa2, float* wa3) -- smallft.c (FFTPACK real FFT): forward radix-4 pass -- for each of the l1 sub-transforms, combines the four quarter-length inputs of cc into ch with the hsqt2 = sqrt(1/2) edge rotation, then rotates the inner pairs by the three twiddle tables wa1 / wa2 / wa3 and handles the even-ido edge elements
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @dradf4@28 -- 2267 bytes verified against Fable.exe 0x00C96D20
 // Leaf: _dradf4@28
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96D20, 2267 bytes. libvorbis 1.0.1 lib/smallft.c `dradf4` (a file static kept out of line with a private register convention: the first arguments in ecx / edx / eax, the rest pushed, callee-pop ret).

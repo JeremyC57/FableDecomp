@@ -1,4 +1,5 @@
 // _global::syncsearch(unsigned* have, unsigned char* buf, unsigned len) -- zlib 1.2.1 inflate.c syncsearch: scan buf for the 00 00 FF FF stored-block marker, carrying the match count in *have, and return the bytes consumed
+// Vendor-proof: zlib-1.2.1(inflate.c) _syncsearch -- 82 bytes verified against Fable.exe 0x00C039F0
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the zlib static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _syncsearch
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C039F0, 82 bytes. zlib 1.2.1 inflate.c `local unsigned syncsearch(...)`, a static

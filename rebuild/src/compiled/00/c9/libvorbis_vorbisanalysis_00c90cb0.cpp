@@ -1,4 +1,5 @@
 // libvorbis::vorbis_analysis(vorbis_block* vb, ogg_packet* op) -- analysis.c: encode one block through mapping 0 and, when asked, hand the packed bits out as an ogg_packet
+// Vendor-proof: libvorbis-1.0.1(lib/analysis.c) @vorbis_analysis@8 -- 130 bytes verified against Fable.exe 0x00C90CB0
 // Leaf: @vorbis_analysis@8
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C90CB0, 130 bytes, LTCG __fastcall (vb in ecx, op in edx).

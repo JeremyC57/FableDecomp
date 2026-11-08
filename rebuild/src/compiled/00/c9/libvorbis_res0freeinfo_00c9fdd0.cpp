@@ -1,4 +1,5 @@
 // libvorbis::res0_free_info(vorbis_info_residue* i) -- wipe and free a residue 0/1/2 setup block; NULL is ignored
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res0_free_info@4 -- 30 bytes verified against Fable.exe 0x00C9FDD0
 // Leaf: @res0_free_info@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9FDD0, 30 bytes, i in ecx, plain `ret`. libvorbis 1.0.1 lib/res0.c (exported;
 //   in the residue0/1/2 export tables beside res0_free_look 0x00C9FDF0, which follows it).

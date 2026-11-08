@@ -1,4 +1,5 @@
 // libvorbis::vorbis_commentheader_out(vorbis_comment* vc, ogg_packet* op) -- libvorbis info.c: pack the comment header into a local bit-packer and hand a malloc'd copy of its bytes out as a (non-BOS, non-EOS, granule 0) packet; OV_EIMPL when packing fails
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_commentheader_out@8 -- 127 bytes verified against Fable.exe 0x00C8EA70
 // Leaf: @vorbis_commentheader_out@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

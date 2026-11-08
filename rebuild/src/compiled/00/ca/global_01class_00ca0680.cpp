@@ -1,4 +1,5 @@
 // 00ca0680 _01class
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @_01class@16 -- 522 bytes verified against Fable.exe 0x00CA0680
 // Leaf: __01class@16
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

@@ -1,4 +1,5 @@
 // libvorbis::_ve_envelope_clear(envelope_lookup* e) -- release an envelope detector: clear its MDCT, free the band windows, the MDCT window, the filter states and the mark array, then wipe it
+// Vendor-proof: libvorbis-1.0.1(lib/envelope.c) @_ve_envelope_clear@4 -- 87 bytes verified against Fable.exe 0x00C9DCE0
 // Leaf: @_ve_envelope_clear@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9DCE0, 87 bytes, e in ecx, plain `ret`. libvorbis 1.0.1 lib/envelope.c.
 //   Callees: mdct_clear 0x00C9C4C0 (landed, agent447) on &e->mdct (+0x10), free (MSVCR71 import [0x01440154], hoisted

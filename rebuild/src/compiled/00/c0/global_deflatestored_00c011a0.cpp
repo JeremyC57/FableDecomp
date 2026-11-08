@@ -1,4 +1,5 @@
 // _global::deflate_stored(deflate_state* s, int flush) -- zlib 1.2.1 deflate.c deflate_stored: copy input to stored (uncompressed) blocks of at most min(0xffff, pending_buf_size-5) bytes, flushing whenever the block fills or the window would overflow
+// Vendor-proof: zlib-1.2.1(deflate.c) _deflate_stored -- 529 bytes verified against Fable.exe 0x00C011A0
 // Leaf: _deflate_stored
 // Retail 0x00C011A0, 529 bytes, __cdecl. Identity: only reference is .rdata 0x012AE268 = zlib configuration_table[0].func;
 //   body is zlib 1.2.1 deflate.c verbatim. Callees fill_window 0x00C01090, _tr_flush_block 0x00C057D0, flush_pending

@@ -1,4 +1,5 @@
 // libvorbis::floor0_free_info(vorbis_info_floor* i) -- libvorbis floor0.c: wipe a floor-0 setup (vorbis_info_floor0, 96 bytes) and free it
+// Vendor-proof: libvorbis-1.0.1(lib/floor0.c) @floor0_free_info@4 -- 30 bytes verified against Fable.exe 0x00CA3580
 // Leaf: @floor0_free_info@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA3580, 30 bytes (+ int3 padding). libvorbis lib/floor0.c (libpk's statically linked Xiph
 //   libvorbis 20030909); i in ecx, plain `ret`.

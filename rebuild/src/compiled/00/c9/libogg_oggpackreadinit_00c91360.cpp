@@ -1,4 +1,5 @@
 // libogg::oggpack_readinit(oggpack_buffer* b, unsigned char* buf, int bytes) -- clear the 20-byte bit reader and point it at buf with bytes of storage
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_readinit@12 -- 36 bytes verified against Fable.exe 0x00C91360
 // Leaf: @oggpack_readinit@12
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C91360, 36 bytes, b in ecx, buf in edx, bytes on the stack (`ret 4`).
 //   libogg src/bitwise.c, compiled as C with /Gr (`__fastcall`), as the landed bitwise rows (oggpack_reset 0x00C912F0,

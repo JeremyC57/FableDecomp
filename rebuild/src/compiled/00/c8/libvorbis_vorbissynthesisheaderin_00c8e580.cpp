@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_headerin(vorbis_info* vi, vorbis_comment* vc, ogg_packet* op) -- libvorbis info.c: classify one of the three Vorbis header packets (type byte + "vorbis") and unpack it into the info (1), comment (3) or setup/codebook (5) structures; OV_ENOTVORBIS when the signature is wrong, OV_EBADHEADER for an out-of-order or malformed header
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_synthesis_headerin@12 -- 347 bytes verified against Fable.exe 0x00C8E580
 // Leaf: @vorbis_synthesis_headerin@12
 // Flags: /Gr /GS
 // Grades: 1 (RELOCATION_MATCH; the four info.c statics as same-TU noinline bodies, the two callee-pop ones `__stdcall`)

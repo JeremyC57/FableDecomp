@@ -1,4 +1,5 @@
 // libvorbis::_ve_amp(envelope_lookup* ve, vorbis_info_psy_global* gi, float* data, envelope_band* bands, envelope_filter_state* filters, long pos) -- envelope.c encoder: window + MDCT one search step of PCM, near-DC spreading, per-band pre-echo / post-echo amplitude deltas; returns trigger bits 1|2|4
+// Vendor-proof: libvorbis-1.0.1(lib/envelope.c) @_ve_amp@24 -- 1308 bytes verified against Fable.exe 0x00C9DD60
 // Leaf: @_ve_amp@24
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9DD60, 1308 bytes; a static with VC7.1's private convention (ve in eax, gi / data /

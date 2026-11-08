@@ -1,4 +1,5 @@
 // _vorbis_unpack_info(vorbis_info* vi, oggpack_buffer* opb) -- libvorbis info.c: read the identification header body (version, channels, rate, three bitrates, the two block sizes, framing bit) and validate it
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_vorbis_unpack_info@8 -- 220 bytes verified against Fable.exe 0x00C8E120
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libvorbis static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: __vorbis_unpack_info
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8E120, length 220 bytes (224 with padding).

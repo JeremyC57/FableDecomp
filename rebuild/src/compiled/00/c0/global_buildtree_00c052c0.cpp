@@ -1,4 +1,5 @@
 // build_tree(deflate_state* s, tree_desc* desc) -- zlib 1.2.1 trees.c build_tree: build the Huffman tree for one tree_desc (heap of leaves, pair the two least frequent nodes until one remains), then gen_bitlen + gen_codes
+// Vendor-proof: zlib-1.2.1(trees.c) _build_tree -- 498 bytes verified against Fable.exe 0x00C052C0
 // Leaf: _build_tree
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C052C0, 498 bytes. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically

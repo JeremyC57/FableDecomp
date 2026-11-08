@@ -1,4 +1,5 @@
 // libogg::oggpack_bytes(oggpack_buffer* b) -- number of bytes touched so far (whole bytes plus a partial one)
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_bytes@4 -- 20 bytes verified against Fable.exe 0x00C917B0
 // Leaf: oggpack_bytes
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C917B0, 20 bytes. libogg src/bitwise.c (bundled with libvorbis 1.0.1),
 //   compiled as C with /Gr: `__fastcall`, b in ecx, plain `ret`. No callees.

@@ -1,4 +1,5 @@
 // libvorbis::drft_forward(drft_lookup* l, float* data) -- smallft.c: forward real FFT of data in place (no-op for n == 1) through drftf1
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drft_forward@8 -- 30 bytes verified against Fable.exe 0x00C9BC10
 // Leaf: @drft_forward@8
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9BC10, 30 bytes, `__fastcall` (l in ecx, data in edx). Sole caller 0x00C9F0FE (libvorbis).

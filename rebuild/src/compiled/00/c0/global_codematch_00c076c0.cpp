@@ -1,4 +1,5 @@
 // _global::code_match(lzo1x_999_t* c, lzo_byte* op, lzo_uint m_len, lzo_uint m_off) -- LZO 1.08 lzo1x_9x.c code_match: emit one M1/M2/M3/M4 match code for (m_len, m_off), count it and remember it as the last match
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _code_match -- 451 bytes verified against Fable.exe 0x00C076C0
 // Leaf: _code_match
 // Shape: the LZO 1.08 lzo1x_9x.c body verbatim (LZO1X arms, asserts compiled out), a TU-local static inside
 //   `extern "C" { static __declspec(noinline) }` with a same-TU caller (chunk 585/601 lever): VC7.1 /O2 gives it retail's

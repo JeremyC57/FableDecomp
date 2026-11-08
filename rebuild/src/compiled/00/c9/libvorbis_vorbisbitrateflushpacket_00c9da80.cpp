@@ -1,4 +1,5 @@
 // libvorbis::vorbis_bitrate_flushpacket(vorbis_dsp_state* vd, ogg_packet* op) -- bitrate.c: hand the encoder's next finished packet to the caller: in unmanaged mode the single parked packet (copied out, the queue emptied); in managed mode nothing (0) while the flush pointer has caught up with last_to_flush, else the packet at next_to_flush with its bytes trimmed to the chosen bitrate bin (the bin from queue_actual, the byte count summed from the packet's bin sizes), advancing the pointer round the queue; 1 when a packet was returned
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @vorbis_bitrate_flushpacket@8 -- 184 bytes verified against Fable.exe 0x00C9DA80
 // Leaf: @vorbis_bitrate_flushpacket@8
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9DA80, 184 bytes, LTCG `extern "C" __fastcall` (vd in ecx, op in edx, plain `ret`). No callees;

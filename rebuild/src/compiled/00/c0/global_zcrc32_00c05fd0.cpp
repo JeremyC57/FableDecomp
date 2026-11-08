@@ -1,4 +1,5 @@
 // z_crc32(uLong crc, const Bytef* buf, uInt len) -- zlib 1.2.1 crc32.c crc32: return 0 for a NULL buffer, else tail-call the little-endian BYFOUR worker crc32_little
+// Vendor-proof: zlib-1.2.1(crc32.c) _z_crc32 -- 24 bytes verified against Fable.exe 0x00C05FD0
 // Leaf: _z_crc32
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C05FD0, 24 bytes, __cdecl; tail-jumps to crc32.c's static crc32_little 0x00C059D0 with
 //   crc in eax, buf in ecx and len in edx (the endian test folded away). zlib 1.2.1 Z_PREFIX build (crc32 -> z_crc32), BYFOUR.

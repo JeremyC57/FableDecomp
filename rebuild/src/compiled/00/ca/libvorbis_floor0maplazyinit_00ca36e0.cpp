@@ -1,4 +1,5 @@
 // libvorbis::floor0_map_lazy_init(vorbis_block* vb, vorbis_info_floor* infoX, vorbis_look_floor0* look) -- libvorbis floor0.c: on first use of a block size build the linear-bin to bark-band map (n = blocksize/2 entries scaled so bark(rate/2) lands on ln, clamped to ln-1, terminated by -1) and record n
+// Vendor-proof: libvorbis-1.0.1(lib/floor0.c) @floor0_map_lazy_init@12 -- 361 bytes verified against Fable.exe 0x00CA36E0
 // Leaf: @floor0_map_lazy_init@12
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA36E0, 361 bytes. libpk's statically linked Xiph libvorbis ("Xiph.Org libVorbis I

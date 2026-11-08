@@ -1,4 +1,5 @@
 // libvorbis::res2_forward(vorbis_block* vb, vorbis_look_residue* vl, float** in, float** out, int* nonzero, int ch, long** partword) -- Xiph res0.c residue type 2 encoder: interleave the channels into one block-allocated work vector, encode it as a single res1 channel with _01forward/_encodepart, then add pcm - coded back into each channel's sofar vector
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res2_forward@28 -- 596 bytes verified against Fable.exe 0x00CA1360
 // Leaf: @res2_forward@28
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA1360, 596 bytes, __fastcall (vb ecx, vl edx, in/out/nonzero/ch/partword on the stack,

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_block_clear(vorbis_block* vb) -- libvorbis block.c: release an analysis block's packer, reap and free the local arena and the internal block data, then zero the block
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_block_clear@4 -- 75 bytes verified against Fable.exe 0x00C8F1B0
 // Leaf: @vorbis_block_clear@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

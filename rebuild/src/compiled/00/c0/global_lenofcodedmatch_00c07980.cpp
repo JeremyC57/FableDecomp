@@ -1,4 +1,5 @@
 // _global::len_of_coded_match(lzo_uint m_len, lzo_uint m_off, lzo_uint lit) -- LZO 1.08 lzo1x_9x.c len_of_coded_match: the encoded size in bytes of a match (M1..M4 forms), or -1 when it cannot be coded
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _len_of_coded_match -- 139 bytes verified against Fable.exe 0x00C07980
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the LZO static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _len_of_coded_match
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C07980, 139 bytes. Retail convention (VC7.1 private, from the same-TU static): m_len in ECX, m_off in EDX, lit in ESI, plain ret.

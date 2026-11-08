@@ -1,4 +1,5 @@
 // libvorbis::mapping0_free_info(vorbis_info_mapping* i) -- wipe and free a mapping-type-0 setup block; NULL is ignored
+// Vendor-proof: libvorbis-1.0.1(lib/mapping0.c) @mapping0_free_info@4 -- 30 bytes verified against Fable.exe 0x00C9EC00
 // Leaf: @mapping0_free_info@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9EC00, 30 bytes, i in ecx, plain `ret`. libvorbis 1.0.1 lib/mapping0.c, a
 //   `static` reached through the mapping0_exportbundle table (so the /Gr convention); given external linkage here so the

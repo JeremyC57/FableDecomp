@@ -1,4 +1,5 @@
 // gen_bitlen(deflate_state* s, tree_desc* desc) -- zlib 1.2.1 trees.c gen_bitlen: compute optimal bit lengths for a tree and update opt_len/static_len, fixing overflow
+// Vendor-proof: zlib-1.2.1(trees.c) _gen_bitlen -- 563 bytes verified against Fable.exe 0x00C04020
 // Leaf: _gen_bitlen
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C052C0, 498 bytes. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically

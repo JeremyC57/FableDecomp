@@ -1,4 +1,5 @@
 // libvorbis::mapping0_forward(vorbis_block* vb) -- mapping0.c encoder: window + MDCT + FFT each channel, compute noise/tone masks and floor1 fits (three plus interpolated fits under bitrate management), couple, then per packet blob encode mode, floors, residue classes and residues and record the blob markers
+// Vendor-proof: libvorbis-1.0.1(lib/mapping0.c) @mapping0_forward@4 -- 2346 bytes verified against Fable.exe 0x00C9EF90
 // Leaf: @mapping0_forward@4
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9EF90, 2346 bytes, LTCG __fastcall (vb in ecx, plain `ret`): a static that is

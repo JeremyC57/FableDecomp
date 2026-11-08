@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T06:14:04+00:00",
+  "generated_at": "2026-11-08T08:28:07+00:00",
   "catalog_functions": 49568,
   "manifest_rows": 57097,
   "modules": 3433,
@@ -33,22 +33,55 @@
   "engine_headers_generated": 957,
   "candidate_integrity_pass": 1066,
   "candidate_host_syntax_pass": 575,
-  "landed_catalog_rows": 54772,
+  "landed_catalog_rows": 54773,
   "landed_known_functions": 57621,
   "landed_original_functions": 49567,
-  "landed_known": 54772,
-  "landed_original": 47052,
-  "landed_genuine_known": 54771,
-  "landed_genuine_original": 47051,
+  "landed_known": 54773,
+  "landed_original": 47053,
+  "landed_genuine_known": 54772,
+  "landed_genuine_original": 47052,
   "landed_genuine": 54116,
   "landed_retail_asm": 214,
-  "landed_toolchain_library": 441,
+  "landed_toolchain_library": 442,
   "landed_asm_bake": 1,
   "landed_library_source": 8,
+  "landed_vendor_library": 1,
+  "landed_vendor_source": 248,
   "landed_missing_source": 0,
-  "landed_matched_bytes": 6467096,
-  "landed_matched_bytes_genuine": 6466617,
-  "landed_unlanded_bytes_estimate": 3709941,
+  "landed_matched_bytes": 6472300,
+  "landed_matched_bytes_genuine": 6471821,
+  "landed_unlanded_bytes_estimate": 3704725,
+  "landed_split": {
+    "game": {
+      "known": 52277,
+      "landed": 49676,
+      "landed_genuine": 49675,
+      "matched_bytes_genuine": 5955177,
+      "unlanded_bytes_estimate": 3551791
+    },
+    "lionhead_library": {
+      "known": 4088,
+      "landed": 3862,
+      "landed_genuine": 3862,
+      "matched_bytes_genuine": 327806,
+      "unlanded_bytes_estimate": 151239
+    },
+    "third_party": {
+      "known": 813,
+      "landed": 795,
+      "landed_genuine": 795,
+      "matched_bytes_genuine": 182464,
+      "unlanded_bytes_estimate": 1600
+    },
+    "toolchain": {
+      "known": 443,
+      "landed": 440,
+      "landed_genuine": 440,
+      "matched_bytes_genuine": 6374,
+      "unlanded_bytes_estimate": 95
+    }
+  },
+  "landed_split_toolchain_by_grade": 17,
   "landed_unlanded_gap_cap": 65536,
   "landed_unlanded_gaps_capped": 1,
   "landed_text_bytes": 14858408

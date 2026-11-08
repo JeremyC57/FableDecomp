@@ -1,4 +1,5 @@
 // libvorbis::vorbis_bitrate_clear(bitrate_manager_state* bm) -- free the bitrate manager's queues, accumulators, min/max stacks and queued packet buffers, then wipe it
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @vorbis_bitrate_clear@4 -- 185 bytes verified against Fable.exe 0x00C9CF10
 // Leaf: vorbis_bitrate_clear
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9CF10, 185 bytes. libvorbis 1.0.1 lib/bitrate.c, compiled as C with
 //   /Gr: `__fastcall`, bm in ecx, plain `ret`.

@@ -1,4 +1,5 @@
 // 00c8dfb0 vorbis_info_clear
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_info_clear@4 -- 366 bytes verified against Fable.exe 0x00C8DFB0
 // Leaf: @vorbis_info_clear@4
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

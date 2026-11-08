@@ -1,4 +1,5 @@
 // libvorbis::vorbis_book_decodev_add(codebook* book, float* a, oggpack_buffer* b, int n) -- codebook.c: decode n residue values and add them into a, one codeword per dim-vector: for books wider than 8 a plain inner loop over the entry's values, otherwise the dim-way switch with fall-through (8 down to 1 adds); -1 when a codeword fails to decode, else 0
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_decodev_add@16 -- 316 bytes verified against Fable.exe 0x00C965C0
 // Leaf: @vorbis_book_decodev_add@16
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C965C0, 316 bytes, LTCG `extern "C" __fastcall` (book in ecx, a in edx, b and n on the stack,

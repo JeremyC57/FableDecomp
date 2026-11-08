@@ -1,4 +1,5 @@
 // libogg::oggpack_reset(oggpack_buffer* b) -- rewind the writer to the start of its buffer and empty the first byte
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_reset@4 -- 23 bytes verified against Fable.exe 0x00C912F0
 // Leaf: @oggpack_reset@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C912F0, 23 bytes, plain `ret`. libogg src/bitwise.c.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 447 + agent447 NOTES/LESSONS): the library past libpk is Xiph libogg +

@@ -1,4 +1,5 @@
 // libvorbis::_v_writestring(oggpack_buffer* o, char* s, int bytes) -- libvorbis info.c: write `bytes` characters of s into the bit packer, 8 bits each
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_v_writestring@12 -- 35 bytes verified against Fable.exe 0x00C8DB80
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libvorbis static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: __v_writestring
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8DB80, length 35 bytes (48 with padding).

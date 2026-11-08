@@ -1,4 +1,5 @@
 // 00c8d9c0 ogg_stream_reset_serialno
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_reset_serialno@8 -- 14 bytes verified against Fable.exe 0x00C8D9C0
 // Leaf: @ogg_stream_reset_serialno@8
 // Flags: /Gr
 // Original libogg 1.1 public C API; same-file reset body preserves register knowledge.

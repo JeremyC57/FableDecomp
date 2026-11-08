@@ -1,4 +1,5 @@
 // _tr_align(deflate_state* s) -- zlib 1.2.1 trees.c _tr_align: send one empty static block (3 header bits + the 7-bit END_BLOCK code) to give inflate enough lookahead, flush the bit buffer, and send a second empty block when fewer than 9 bits of lookahead were sent
+// Vendor-proof: zlib-1.2.1(trees.c) __tr_align -- 497 bytes verified against Fable.exe 0x00C055D0
 // Leaf: __tr_align
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C055D0, 497 bytes, __cdecl, zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0) statically linked as C.

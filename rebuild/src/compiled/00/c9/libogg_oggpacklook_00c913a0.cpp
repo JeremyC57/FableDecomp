@@ -1,4 +1,5 @@
 // libogg::oggpack_look(oggpack_buffer* b, int bits) -- peek the next `bits` (<= 32) bits LSb-first without advancing; -1 when they run past the end of the buffer
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_look@8 -- 148 bytes verified against Fable.exe 0x00C913A0
 // Leaf: oggpack_look
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C913A0, 148 bytes. libogg src/bitwise.c (bundled with libvorbis 1.0.1),
 //   compiled as C with /Gr: `__fastcall`, b in ecx, bits in edx, plain `ret`.

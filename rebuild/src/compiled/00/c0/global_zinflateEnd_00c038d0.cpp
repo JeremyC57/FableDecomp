@@ -1,4 +1,5 @@
 // _global::z_inflateEnd(z_streamp strm) -- zlib 1.2.1 inflateEnd: free the sliding window (if any) and the inflate state through strm->zfree and clear strm->state
+// Vendor-proof: zlib-1.2.1(inflate.c) _z_inflateEnd -- 72 bytes verified against Fable.exe 0x00C038D0
 // Leaf: _z_inflateEnd
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C038D0, 72 bytes. zlib 1.2.1, Z_PREFIX build, C linkage, __cdecl.
 // Callees: strm->zfree (+0x24) through the stream with strm->opaque (+0x28).

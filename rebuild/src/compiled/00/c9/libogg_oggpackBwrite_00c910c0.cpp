@@ -1,4 +1,5 @@
 // libogg::oggpackB_write(oggpack_buffer* b, unsigned long value, int bits) -- big-endian (MSb-first) bit packer: grow the buffer by 256 bytes when fewer than four remain, then OR/store the masked value into the next five bytes and advance
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpackB_write@12 -- 240 bytes verified against Fable.exe 0x00C910C0
 // Leaf: oggpackB_write
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C910C0, 240 bytes. libogg (bundled with libvorbis 1.0.1) src/bitwise.c,
 //   compiled as C with /Gr: `__fastcall`, b in ecx, value in edx, bits on the stack (`ret 4`).

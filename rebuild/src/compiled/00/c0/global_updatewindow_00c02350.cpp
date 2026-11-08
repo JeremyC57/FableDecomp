@@ -1,4 +1,5 @@
 // updatewindow(z_streamp strm, unsigned out) -- zlib 1.2.1 inflate.c updatewindow: allocate the sliding window on first use, then copy the last wsize (or fewer) output bytes into the circular window
+// Vendor-proof: zlib-1.2.1(inflate.c) _updatewindow -- 277 bytes verified against Fable.exe 0x00C02350
 // Leaf: _updatewindow
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C02350, 277 bytes. zlib 1.2.1 (Z_PREFIX build, the landed z_inflateReset 0x00C021F0 /
 // z_inflateInit2_ 0x00C02240 neighbours). updatewindow is an inflate.c `local` (static) function; its two retail callers are

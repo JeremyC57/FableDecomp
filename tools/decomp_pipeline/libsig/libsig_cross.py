@@ -2,6 +2,7 @@
 """Cross rebuild/oracles/library_signatures.tsv with the landed catalog and the unlanded pool.
 
     python3 tools/decomp_pipeline/libsig/libsig_cross.py [--oracle rebuild/oracles/library_signatures.tsv] [--out FILE.tsv]
+    python3 tools/decomp_pipeline/libsig/libsig_cross.py --oracle rebuild/oracles/vendor_signatures.tsv   (vendor scan)
 
 Buckets (from the oracle's `catalog` column, recomputed here against the live catalog):
   landed    a landed row (rebuild/oracles/auto-re-candidates.tsv): vendor bytes the project reconstructed or
@@ -40,9 +41,13 @@ def catalog_entries():
     return out
 
 
-def verdict(row, kind, grade):
+def verdict(row, kind, grade, text=""):
     if kind == "toolchain_library":
         return "toolchain_library stub (linked library bytes, proof line)"
+    if "// Vendor-proof:" in text:
+        return "hand-written row kept as written; the vendor build proves it (`// Vendor-proof:` provenance line)"
+    if row["lib"].startswith("vendor/"):
+        return "hand-written row the vendor build reproduces (add a `// Vendor-proof:` line)"
     if kind in ("naked_asm", "emit_bake"):
         return "hand-written asm of library bytes (re-grade to toolchain_library)"
     if row["kind"] == "import_thunk":
@@ -64,12 +69,13 @@ def main(argv=None):
         bucket = LS.catalog_bucket(va, landed, known)
         e = cat.get(r["address"].lower(), {})
         src = ROOT / "rebuild" / "src" / "compiled" / e["Source"] if e.get("Source") else None
-        kind = purity.classify(src.read_text(encoding="utf-8", errors="ignore")) if src and src.exists() else ""
+        text = src.read_text(encoding="utf-8", errors="ignore") if src and src.exists() else ""
+        kind = purity.classify(text) if text else ""
         out.append(dict(address=r["address"], bucket=bucket, kind=r["kind"], symbol=r["symbol"], lib=r["lib"],
                         member=r["member"], length=r["length"], confidence=r["confidence"],
                         catalog_name=landed.get(va, (known.get(va, ""),))[0], parked="yes" if va in parked else "",
                         source=e.get("Source", ""), purity=kind, grade=e.get("Grade", ""),
-                        verdict=verdict(r, kind, e.get("Grade", "")) if bucket == "landed" else ""))
+                        verdict=verdict(r, kind, e.get("Grade", ""), text) if bucket == "landed" else ""))
     c = Counter((o["bucket"], o["kind"]) for o in out)
     print(f"library signature hits: {len(out)}")
     for b in ("landed", "unlanded", "outside"):

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_bitrate_addblock(vorbis_block* vb) -- bitrate.c: queue one encoded block for bitrate management: without binned queueing just park the single packet (swapping oggpack buffers); otherwise add the packet and its PACKETBLOBS bin sizes at the queue head, update the average tracker (per-bin byte accumulators, the floating average bin chosen by floater_interpolate within the slew limits, applied to the centre packets, the tail aged out), then the min/max limiter (stack the recent packets' per-bin bytes, when over/under the hard limits search a new limit with limit_sum and collapse the stack to it, then age the tail out and revise queue_actual), and finally mark what may be flushed; -1 when the queue is full
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @vorbis_bitrate_addblock@4 -- 2700 bytes verified against Fable.exe 0x00C9CFF0
 // Leaf: @vorbis_bitrate_addblock@4
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9CFF0, 2888 bytes, LTCG `extern "C" __fastcall` (vb in ecx, plain `ret`), ebp frame with

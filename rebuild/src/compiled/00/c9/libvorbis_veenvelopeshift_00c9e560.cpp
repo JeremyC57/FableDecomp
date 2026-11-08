@@ -1,4 +1,5 @@
 // libvorbis::_ve_envelope_shift(envelope_lookup* e, long shift) -- slide the envelope detector's mark array and its sample cursors back by `shift` samples
+// Vendor-proof: libvorbis-1.0.1(lib/envelope.c) @_ve_envelope_shift@8 -- 109 bytes verified against Fable.exe 0x00C9E560
 // Leaf: _ve_envelope_shift
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9E560, 109 bytes. libvorbis 1.0.1 lib/envelope.c, compiled as C with
 //   /Gr: `__fastcall`, e in ecx, shift in edx, plain `ret`.

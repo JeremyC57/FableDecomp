@@ -1,4 +1,5 @@
 // inflate_table(codetype, unsigned short*, unsigned, code**, unsigned*, unsigned short*) -- builds a Huffman decoding table (zlib 1.2.1 inftrees.c)
+// Vendor-proof: zlib-1.2.1(inftrees.c) _inflate_table -- 1279 bytes verified against Fable.exe 0x00C064D0
 // Leaf: _inflate_table
 // Flags: /GS
 // Vendor: zlib 1.2.1 inftrees.c (built with Z_PREFIX like the rest of Fable's zlib; the local `this` is

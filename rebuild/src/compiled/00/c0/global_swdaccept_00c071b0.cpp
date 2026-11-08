@@ -1,4 +1,5 @@
 // swd_accept(lzo_swd_p s, lzo_uint n) -- LZO 1.08 lzo_swd.ch swd_accept: accept n bytes of the look-ahead, unlinking the oldest node and inserting each position into the 3-byte and 2-byte hash heads before fetching the next byte
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_accept -- 279 bytes verified against Fable.exe 0x00C071B0
 // Leaf: _swd_accept
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C071B0, 279 bytes. LZO 1.08 (lzo1x_9x.c includes lzo_swd.ch); PDB C name swd_accept,
 //   bound as `_swd_accept` by the landed caller find_match 0x00C07610 (call at 0x00C07625); neighbours swd_getbyte 0x00C07090,

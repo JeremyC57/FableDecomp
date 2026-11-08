@@ -1,4 +1,5 @@
 // swd_initdict(lzo_swd_p s, const lzo_byte* dict, lzo_uint dict_len) -- LZO 1.08 lzo_swd.ch swd_initdict: clamp the preset dictionary to the window size and copy it to the front of the ring buffer
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_initdict -- 98 bytes verified against Fable.exe 0x00C06DE0
 // Leaf: _swd_initdict
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C06DE0, 98 bytes, a TU-local static (or API) of the same library file as the landed
 //   row 0x00C06F30. Shape (retry1): parked as an "LTCG custom register convention" gap; the landed host TU already holds this

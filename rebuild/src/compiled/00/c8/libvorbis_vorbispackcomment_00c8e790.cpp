@@ -1,4 +1,5 @@
 // libvorbis::_vorbis_pack_comment(oggpack_buffer* opb, vorbis_comment* vc) -- libvorbis info.c: write the comment header (type 3, "vorbis", the vendor string "Xiph.Org libVorbis I 20030909", every comment length-prefixed, framing bit)
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_vorbis_pack_comment@8 -- 230 bytes verified against Fable.exe 0x00C8E790
 // Shape (retry1): parked as an "LTCG custom register arguments" gap; inside one info.c TU VC7.1 /O2 gives both statics retail's private conventions itself: _vorbis_pack_comment as a __stdcall static (opb in ecx, vc on the stack, `ret 4`) and the earlier-defined _v_writestring static (o in ebx, s in ecx, bytes in eax) (chunk 585/586/593 lever).
 // Leaf: __vorbis_pack_comment@8
 // Flags: /GS

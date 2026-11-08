@@ -1,4 +1,5 @@
 // 00c8fba0 vorbis_analysis_blockout
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_analysis_blockout@8 -- 765 bytes verified against Fable.exe 0x00C8FBA0
 // Leaf: @vorbis_analysis_blockout@8
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

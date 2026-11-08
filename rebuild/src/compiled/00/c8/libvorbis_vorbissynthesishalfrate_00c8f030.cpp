@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_halfrate(vorbis_info* vi, int flag) -- Xiph synthesis.c: set or clear the codec setup's half-rate decode flag; refused (-1) when asked for half rate with 64-sample short blocks
+// Vendor-proof: libvorbis-1.0.1(lib/synthesis.c) @vorbis_synthesis_halfrate@8 -- 32 bytes verified against Fable.exe 0x00C8F030
 // Leaf: @vorbis_synthesis_halfrate@8
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8F030, 32 bytes, __fastcall (vi ecx, flag edx), plain ret. No callees.
 // Library: libpk statically links the Xiph Ogg Vorbis decoder ("Xiph.Org libVorbis I 20030909"); compiled /Gr, the API

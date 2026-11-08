@@ -1,4 +1,5 @@
 // 00c9ea80 _vorbis_apply_window
+// Vendor-proof: libvorbis-1.0.1(lib/window.c) @_vorbis_apply_window@24 -- 380 bytes verified against Fable.exe 0x00C9EA80
 // Leaf: @_vorbis_apply_window@24
 // Flags: /Gr
 // Original libvorbis window.c; BSD-style terms in reference libvorbis COPYING.

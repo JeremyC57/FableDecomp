@@ -1,4 +1,5 @@
 // libogg::oggpack_writeinit(oggpack_buffer* b) -- zero the buffer record, then allocate the first 256-byte block as both buffer and write pointer, empty it and set the storage
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_writeinit@4 -- 51 bytes verified against Fable.exe 0x00C90F10
 // Leaf: @oggpack_writeinit@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C90F10, 51 bytes, plain `ret`. libogg src/bitwise.c. Callee: malloc (MSVCR71
 //   import [0x01440158]). A one-jump thunk at 0x00C90F50 forwards to it (bitwise.c's oggpackB_writeinit).

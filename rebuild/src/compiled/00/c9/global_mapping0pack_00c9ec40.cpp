@@ -1,4 +1,5 @@
 // 00c9ec40 mapping0_pack
+// Vendor-proof: libvorbis-1.0.1(lib/mapping0.c) @mapping0_pack@12 -- 308 bytes verified against Fable.exe 0x00C9EC40
 // Leaf: @mapping0_pack@12
 // Flags: /Gr
 // Original libvorbis mapping0.c; BSD-style terms in reference COPYING.

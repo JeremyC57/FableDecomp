@@ -1,4 +1,5 @@
 // crc32_big(unsigned long crc, const unsigned char* buf, unsigned len) -- zlib 1.2.1 crc32.c big-endian BYFOUR CRC-32 (REV'd crc, DOBIG32/DOBIG4 loops over crc_table[4..7])
+// Vendor-proof: zlib-1.2.1(crc32.c) _crc32_big -- 793 bytes verified against Fable.exe 0x00C05CB0
 // Leaf: _crc32_big
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C05CB0, 793 bytes. zlib 1.2.1 crc32.c (Z_PREFIX build, BYFOUR), C linkage.
 // Identity: follows crc32_little in crc32.c order; REV() byte swap of crc on entry and exit, pre-decremented word pointer (lea [ecx-4]) and crc_table[4..7] (0x012B0780..0x012B1380) prove the big-endian worker. No caller: z_crc32's endian test folds to the little arm, but the static body is still emitted (catalog label crc32_little was propagated/wrong).

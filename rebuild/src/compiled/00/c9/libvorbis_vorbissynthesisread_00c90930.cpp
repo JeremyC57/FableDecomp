@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_read(vorbis_dsp_state* v, int n) -- mark n decoded samples as consumed; OV_EINVAL (-131) when more are claimed than are ready
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_synthesis_read@8 -- 30 bytes verified against Fable.exe 0x00C90930
 // Leaf: vorbis_synthesis_read
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C90930, 30 bytes. libvorbis 1.0.1 lib/block.c, compiled as C with /Gr:
 //   `__fastcall`, v in ecx, n in edx, plain `ret`. No callees.

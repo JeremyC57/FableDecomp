@@ -1,4 +1,5 @@
 // libvorbis::vorbis_bitrate_init(vorbis_info* vi, bitrate_manager_state* bm) -- set up bitrate management: zero the state, size the packet queue from the managed-bitrate times and the short block size, allocate the bin queues, average/min-max tracking stacks and the queued packet buffers (one buffer when management is off)
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @vorbis_bitrate_init@8 -- 485 bytes verified against Fable.exe 0x00C9CD20
 // Leaf: @vorbis_bitrate_init@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9CD20, 484 bytes (+ padding), vi in ecx, bm in edx, plain `ret`. libvorbis 1.0.1
 //   lib/bitrate.c. Callees: calloc (MSVCR71 import [0x01440058], kept in a register) through _ogg_calloc, __ftol2

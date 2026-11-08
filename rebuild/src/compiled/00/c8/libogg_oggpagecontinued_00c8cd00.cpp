@@ -1,4 +1,5 @@
 // libogg::ogg_page_continued(ogg_page* og) -- Xiph libogg framing.c: header byte 5 bit 0x01 of an Ogg page (continued packet flag)
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_page_continued@4 -- 10 bytes verified against Fable.exe 0x00C8CD00
 // Leaf: @ogg_page_continued@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

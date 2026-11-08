@@ -1,4 +1,5 @@
 // libvorbis::_vorbis_unpack_books(vorbis_info* vi, oggpack_buffer* opb) -- info.c: read the third (setup) header packet body -- books (each static codebook calloc'd and unpacked), the unused time-domain placeholders (type must be < VI_TIMEB), then the floors, residues and maps (type read as 16 bits, bounds-checked, then the backend's unpack), the modes (blockflag / windowtype / transformtype / mapping, range-checked) and the framing bit; OV_EFAULT without a codec setup, OV_EBADHEADER (after vorbis_info_clear) on any failure
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_vorbis_unpack_books@8 -- 663 bytes verified against Fable.exe 0x00C8E2E0
 // Leaf: __vorbis_unpack_books@8
 // Flags: /Gr /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8E2E0, 663 bytes: libvorbis 1.0.1 lib/info.c `static int _vorbis_unpack_books(vorbis_info *vi,

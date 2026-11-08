@@ -1,4 +1,5 @@
 // lzo1x_999_compress_internal(...) -- Compress with the LZO1X sliding-window matcher.
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _lzo1x_999_compress_internal -- 1423 bytes verified against Fable.exe 0x00C07AF0
 // Leaf: _lzo1x_999_compress_internal
 // Vendor: LZO 1.08 lzo1x_9x.c with original match helpers from lzo_mchw.ch.
 // Layout: vendor lzo1x_999_t and lzo1x_999_swd_t; native member offsets corroborate.

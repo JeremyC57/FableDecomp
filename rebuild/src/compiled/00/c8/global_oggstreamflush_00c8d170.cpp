@@ -1,4 +1,5 @@
 // 00c8d170 ogg_stream_flush
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_flush@8 -- 562 bytes verified against Fable.exe 0x00C8D170
 // Leaf: @ogg_stream_flush@8
 // Flags: /Gr
 // Original libogg1.1 framing algorithm; 32bit API and observed fastcall translation-unit convention.

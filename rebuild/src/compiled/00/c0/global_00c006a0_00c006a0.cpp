@@ -1,4 +1,5 @@
 // z_deflate(z_streamp, int) -- advances a deflate stream and writes headers, blocks and trailers.
+// Vendor-proof: zlib-1.2.1(deflate.c) _z_deflate -- 1080 bytes verified against Fable.exe 0x00C006A0
 // Leaf: _z_deflate
 // Vendor: zlib 1.2.1 deflate.c, Z_PREFIX and GZIP.
 // Layout: zlib 1.2.1 deflate.h, corroborated by native member offsets.

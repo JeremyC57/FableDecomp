@@ -1,4 +1,5 @@
 // libvorbis::res2_class(vorbis_block* vb, vorbis_look_residue* vl, float** in, int* nonzero, int ch) -- libvorbis res0.c: residue-2 classification; counts the nonzero channels and, if any, classifies the interleaved vector through _2class
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res2_class@20 -- 66 bytes verified against Fable.exe 0x00CA1310
 // Shape (retry1): parked as an "LTCG custom register convention" gap (callee); with res0.c's static _2class body in the TU as `extern "C" { static __declspec(noinline) __stdcall }`, VC7.1 /O2 gives it retail's private convention itself (vb in EAX, vl/in/ch pushed, callee-pop), so the call site matches.
 // Leaf: @res2_class@20
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA1310, 66 bytes (+14 int3). libvorbis lib/res0.c; slot 5 (class) of residue2_exportbundle

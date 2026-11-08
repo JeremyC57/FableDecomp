@@ -1,4 +1,5 @@
 // libogg::ogg_sync_buffer(ogg_sync_state* oy, long size) -- libogg framing: slide out the bytes already returned, grow the sync buffer (size + fill + 4096) when fewer than `size` bytes are free, and return the write pointer at the fill mark
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_sync_buffer@8 -- 121 bytes verified against Fable.exe 0x00C8D470
 // Leaf: @ogg_sync_buffer@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

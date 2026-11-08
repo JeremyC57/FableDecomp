@@ -1,4 +1,5 @@
 // libogg::ogg_sync_reset(ogg_sync_state* oy) -- Xiph libogg framing.c: clear the sync state's fill/returned/unsynced/headerbytes/bodybytes; returns 0
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_sync_reset@4 -- 18 bytes verified against Fable.exe 0x00C8D950
 // Leaf: @ogg_sync_reset@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

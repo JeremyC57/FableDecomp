@@ -1,4 +1,5 @@
 // libvorbis::mdct_butterfly_8(DATA_TYPE* x) -- the 8-point MDCT butterfly stage
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_butterfly_8@4 -- 125 bytes verified against Fable.exe 0x00C9BEB0
 // Leaf: _mdct_butterfly_8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9BEB0, 125 bytes: libvorbis I 20030909 lib/mdct.c `STIN void mdct_butterfly_8(DATA_TYPE *x)`
 //   kept out of line, x arriving in eax; called (and tail-jumped) by mdct_butterfly_16 (0x00C9BFEB / 0x00C9BFF2).

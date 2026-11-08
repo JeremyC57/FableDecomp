@@ -114,6 +114,10 @@ def main() -> int:
         for phase in range(1, len(gfmain_phases) + 1)
     )
 
+    def split_value(bucket):
+        sp = coverage.get("landed_split", {}).get(bucket, {})
+        return f"{int(sp.get('landed_genuine', 0)):,} / {int(sp.get('known', 0)):,} ({percentage(int(sp.get('landed_genuine', 0)), int(sp.get('known', 0)), 2)})"
+
     snapshot_values = {
         "Catalogued retail functions": f"**{total:,}**",
         "Landed byte-matching C++ (genuine)": (
@@ -162,6 +166,16 @@ def main() -> int:
         "— landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine)": (
             f"{int(coverage.get('landed_library_source', 0)):,}"
         ),
+        "— of the `toolchain_library` rows, third-party vendor code rebuilt from unmodified source (`// Vendor-library:`)": (
+            f"{int(coverage.get('landed_vendor_library', 0)):,}"
+        ),
+        "— landed hand-written rows the unmodified vendor build also proves (`// Vendor-proof:` line)": (
+            f"{int(coverage.get('landed_vendor_source', 0)):,}"
+        ),
+        "Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`)": split_value("game"),
+        "Landed genuine, Lionhead in-house libraries (libpk/CODA audio, LHNetworkLib)": split_value("lionhead_library"),
+        "Landed genuine, third-party vendor code (zlib, LZO, Xiph, DirectShow, DXUT)": split_value("third_party"),
+        "Landed genuine, VC7.1 toolchain (CRT objects, import thunks)": split_value("toolchain"),
         "— landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction)": (
             f"{int(coverage['landed_asm_bake']):,}"
         ),

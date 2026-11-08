@@ -1,4 +1,5 @@
 // _tr_flush_block(deflate_state* s, charf* buf, ulg stored_len, int eof) -- zlib 1.2.1 trees.c _tr_flush_block: classify the data, build the literal / distance / bit-length trees, then emit the block as stored, static-tree or dynamic-tree, whichever is smallest, and reinitialise the block state
+// Vendor-proof: zlib-1.2.1(trees.c) __tr_flush_block -- 485 bytes verified against Fable.exe 0x00C057D0
 // Leaf: __tr_flush_block
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C057D0, 485 bytes, __cdecl. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0) statically linked,

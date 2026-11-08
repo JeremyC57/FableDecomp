@@ -1,4 +1,5 @@
 // inflate_fast(z_streamp, unsigned) -- decodes literals and length-distance pairs into output.
+// Vendor-proof: zlib-1.2.1(inffast.c) _inflate_fast -- 1131 bytes verified against Fable.exe 0x00C06060
 // Leaf: _inflate_fast
 // Vendor: zlib 1.2.1 inffast.c; C keyword local renamed here for C++ compatibility.
 // Layout: original zlib inflate.h and zlib.h; native loads confirm member positions.

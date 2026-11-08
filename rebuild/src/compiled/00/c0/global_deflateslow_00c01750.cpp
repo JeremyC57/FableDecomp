@@ -1,4 +1,5 @@
 // deflate_slow(deflate_state*,int) -- Compress a zlib block with lazy match selection.
+// Vendor-proof: zlib-1.2.1(deflate.c) _deflate_slow -- 1033 bytes verified against Fable.exe 0x00C01750
 // Leaf: _deflate_slow
 // Flags: /TC
 typedef unsigned char  Byte;

@@ -1,4 +1,5 @@
 // _global::set_data_type(deflate_state* s) -- zlib 1.2.1 trees.c set_data_type: classify the block as Z_BINARY or Z_ASCII from the literal frequencies (control bytes 0..6 and 128..255 against a quarter of 7..127)
+// Vendor-proof: zlib-1.2.1(trees.c) _set_data_type -- 129 bytes verified against Fable.exe 0x00C04F90
 // Leaf: @set_data_type@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C04F90, 129 bytes. zlib 1.2.1 trees.c (`local` = static). No callees.
 // Convention: retail is a whole-program (LTCG) build, and this static helper received `s` in ecx with nothing on the

@@ -1,4 +1,5 @@
 // _global::z_compressBound(uLong sourceLen) -- zlib 1.2.1 compressBound: the worst-case compress() output size for sourceLen input bytes
+// Vendor-proof: zlib-1.2.1(compress.c) _z_compressBound -- 21 bytes verified against Fable.exe 0x00C03EB0
 // Leaf: _z_compressBound
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C03EB0, 21 bytes. zlib 1.2.1 compress.c, Z_PREFIX build, C linkage, __cdecl. No callees.
 // Identity (proven): the zlib 1.2.1 compress.c body, byte for byte (`sourceLen + (sourceLen >> 12) + (sourceLen >> 14) + 11`,

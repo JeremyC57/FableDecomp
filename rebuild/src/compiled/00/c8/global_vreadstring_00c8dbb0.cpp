@@ -1,4 +1,5 @@
 // _v_readstring(oggpack_buffer* o, char* buf, int bytes) -- libvorbis info.c: read `bytes` 8-bit characters from the bit packer into buf
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @_v_readstring@12 -- 37 bytes verified against Fable.exe 0x00C8DBB0
 // Shape (retry1): parked as an "LTCG custom register convention" gap; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the libvorbis static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: __v_readstring
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8DBB0, length 37 bytes (48 with padding).

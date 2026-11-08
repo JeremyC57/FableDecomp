@@ -1,4 +1,5 @@
 // _global::z_deflateEnd(z_streamp strm) -- zlib 1.2.1 deflateEnd: validate the stream state, free pending_buf/head/prev/window and the state, return Z_DATA_ERROR if the stream was still busy
+// Vendor-proof: zlib-1.2.1(deflate.c) _z_deflateEnd -- 178 bytes verified against Fable.exe 0x00C00AE0
 // Leaf: _z_deflateEnd
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C00AE0, 178 bytes. zlib 1.2.1 (ZLIB_VERSION "1.2.1" at 0x0129CFE0) built with
 // Z_PREFIX, so the public entry points carry the z_ prefix (Ego_r/FableWin PDB name sets: _z_deflateEnd). C linkage, __cdecl.

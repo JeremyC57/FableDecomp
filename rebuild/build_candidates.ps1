@@ -385926,6 +385926,12 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
         PassPattern = '00c9da80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c02470'
+        Module = '_global'
+        Source = '00/c0/global_zinflate_00c02470.cpp'
+        Grade = 'toolchain_library'
+    }
 )
 
 $requestedAddresses = @(

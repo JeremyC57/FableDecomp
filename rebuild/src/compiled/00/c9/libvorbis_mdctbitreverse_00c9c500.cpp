@@ -1,4 +1,5 @@
 // libvorbis::mdct_bitreverse(mdct_lookup* init, float* x) -- libvorbis 1.0.1 mdct.c mdct_bitreverse: the bit-reversal pass of the MDCT, pairing bit-reversed elements of the upper half, rotating by the trig table and writing the outputs from both ends of x
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_bitreverse@8 -- 282 bytes verified against Fable.exe 0x00C9C500
 // Leaf: _mdct_bitreverse
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9C500, 282 bytes. libvorbis 1.0.1 lib/mdct.c inside libpk's Xiph decoder
 // ("Xiph.Org libVorbis I 20030909"); no PDB/RTTI, so the name is the libvorbis one. It follows the landed

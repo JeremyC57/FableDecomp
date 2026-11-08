@@ -1,4 +1,5 @@
 // libogg::oggpack_adv(oggpack_buffer* b, int bits) -- advance the read position by `bits` bits
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_adv@8 -- 41 bytes verified against Fable.exe 0x00C91530
 // Leaf: oggpack_adv
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C91530, 41 bytes. libogg src/bitwise.c (bundled with libvorbis 1.0.1),
 //   compiled as C with /Gr: `__fastcall`, b in ecx, bits in edx, plain `ret`. No callees.

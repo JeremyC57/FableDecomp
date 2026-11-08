@@ -1,4 +1,5 @@
 // libvorbis::_ve_envelope_search(vorbis_dsp_state* v) -- envelope.c encoder: run _ve_amp over every new search step of every channel, mark pre/post-echo triggers, then scan the marks from the cursor to decide whether the next block must be short (1), long (0) or needs more data (-1)
+// Vendor-proof: libvorbis-1.0.1(lib/envelope.c) @_ve_envelope_search@4 -- 541 bytes verified against Fable.exe 0x00C9E280
 // Leaf: @_ve_envelope_search@4
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9E280, 541 bytes, LTCG __fastcall (v in ecx, plain `ret`).

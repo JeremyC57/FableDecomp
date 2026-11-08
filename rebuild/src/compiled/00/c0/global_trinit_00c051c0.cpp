@@ -1,4 +1,5 @@
 // _global::_tr_init(deflate_state* s) -- zlib 1.2.1 trees.c _tr_init: bind the literal/length, distance and bit-length tree descriptors to their dynamic trees and static descriptors, clear the bit buffer, set last_eob_len = 8 and start the first block (init_block)
+// Vendor-proof: zlib-1.2.1(trees.c) __tr_init -- 100 bytes verified against Fable.exe 0x00C051C0
 // Leaf: __tr_init
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C051C0, 100 bytes. Public trees.c entry, s at [esp+4] (__cdecl), tail-jumps to the
 //   static init_block 0x00C03EE0 with s in EDX (the private register convention VC7.1 picks for a same-TU static).

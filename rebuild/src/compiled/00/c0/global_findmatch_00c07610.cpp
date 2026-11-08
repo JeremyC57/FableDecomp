@@ -1,4 +1,5 @@
 // _global::find_match(lzo1x_999_t* c, lzo1x_999_swd_t* s, lzo_uint this_len, lzo_uint skip) -- LZO 1.08 lzo1x_9x.c find_match: accept the previous match, search the window for the best match at the new position, fetch the next byte and report progress through the callback
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _find_match -- 166 bytes verified against Fable.exe 0x00C07610
 // Shape (retry1): parked as "LTCG custom register convention"; find_match and its three callees are TU-local statics, so the TU holds
 //   them all inside `extern "C" { static __declspec(noinline) }` with a same-TU caller and VC7.1 /O2 picks retail's private conventions
 //   itself (chunk 585/586/593 lever): find_match c in EBX, s in ECX, this_len in EAX, skip on the stack, plain ret; swd_accept s in EAX,

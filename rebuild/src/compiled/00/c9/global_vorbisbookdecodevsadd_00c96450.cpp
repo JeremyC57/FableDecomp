@@ -1,4 +1,5 @@
 // 00c96450 vorbis_book_decodevs_add
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_decodevs_add@16 -- 367 bytes verified against Fable.exe 0x00C96450
 // Leaf: @vorbis_book_decodevs_add@16
 // Flags: /Gr /Oy-
 // Original libvorbis codebook.c and codebook.h; BSD-style terms in reference COPYING.

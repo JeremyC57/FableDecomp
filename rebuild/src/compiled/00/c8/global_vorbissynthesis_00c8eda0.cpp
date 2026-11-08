@@ -1,4 +1,5 @@
 // 00c8eda0 vorbis_synthesis
+// Vendor-proof: libvorbis-1.0.1(lib/synthesis.c) @vorbis_synthesis@8 -- 331 bytes verified against Fable.exe 0x00C8EDA0
 // Leaf: @vorbis_synthesis@8
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

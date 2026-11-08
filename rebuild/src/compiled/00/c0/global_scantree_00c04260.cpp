@@ -1,4 +1,5 @@
 // scan_tree(deflate_state* s, ct_data* tree, int max_code) -- zlib 1.2.1 trees.c scan_tree: count the code-length run statistics of a literal or distance tree into bl_tree
+// Vendor-proof: zlib-1.2.1(trees.c) _scan_tree -- 216 bytes verified against Fable.exe 0x00C04260
 // Leaf: _scan_tree
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C04260. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

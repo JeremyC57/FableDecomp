@@ -1,4 +1,5 @@
 // libvorbis::_2class(vorbis_block* vb, vorbis_look_residue* vl, float** in, int ch) -- libvorbis res0.c: residue-2 classification of an interleaved channel vector, one class word per partition from the magnitude / angle maxima against the info's class metrics
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @_2class@16 -- 776 bytes verified against Fable.exe 0x00CA0890
 // Leaf: __2class@16
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA0890, 776 bytes. libvorbis lib/res0.c (Xiph "libVorbis I 20030909", post-1.0.1 CVS, GOTCHAS
 //   0xC89xxx..0xC9Exxx / 0xC908E0..0xC9FDF0); a C static compiled with VC7.1's private convention (vb in EAX, vl/in/ch on the stack,

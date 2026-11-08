@@ -1,4 +1,5 @@
 // libogg::ogg_stream_reset(ogg_stream_state* os) -- Xiph libogg framing.c: rewind a 0x168-byte ogg_stream_state: clear its fill and lacing counters, header fill, e_o_s/b_o_s, pageno = -1, packetno and granulepos = 0; returns 0
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_stream_reset@4 -- 70 bytes verified against Fable.exe 0x00C8D970
 // Leaf: @ogg_stream_reset@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

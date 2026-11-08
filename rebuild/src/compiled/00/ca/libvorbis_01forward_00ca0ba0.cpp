@@ -1,4 +1,5 @@
 // libvorbis::_01forward(vorbis_block* vb, vorbis_look_residue* vl, float** in, int ch, long** partword, int (*encode)(oggpack_buffer*, float*, int, codebook*, long*)) -- Xiph res0.c residue encoder core: per stage, write each channel's partition-class codeword (phrasebook) then the interleaved residual vectors of every partition whose class uses this stage through `encode`
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @_01forward@24 -- 579 bytes verified against Fable.exe 0x00CA0BA0
 // Leaf: __01forward@24
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA0BA0, 579 bytes; VC7.1's private convention for the TU-local static (vl in ebx, the

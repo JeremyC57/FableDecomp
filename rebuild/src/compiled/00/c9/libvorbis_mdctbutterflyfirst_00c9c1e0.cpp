@@ -1,4 +1,5 @@
 // libvorbis::mdct_butterfly_first(float* T, float* x, int points) -- mdct.c: first-stage N-point MDCT butterfly (in place, two registers): walks x from the top half down in blocks of 8 floats, adding the upper half into the lower and rotating the differences by the trig table T (16 floats per block)
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_butterfly_first@12 -- 259 bytes verified against Fable.exe 0x00C9C1E0
 // Leaf: _mdct_butterfly_first
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C9C1E0, length 259 bytes; sole caller mdct_butterflies 0x00C9C400
 // (call at 0x00C9C421).

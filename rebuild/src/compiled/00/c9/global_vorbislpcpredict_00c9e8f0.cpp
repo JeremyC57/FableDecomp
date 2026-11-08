@@ -1,4 +1,5 @@
 // 00c9e8f0 vorbis_lpc_predict
+// Vendor-proof: libvorbis-1.0.1(lib/lpc.c) @vorbis_lpc_predict@20 -- 371 bytes verified against Fable.exe 0x00C9E8F0
 // Leaf: @vorbis_lpc_predict@20
 // Flags: /Gr
 /********************************************************************

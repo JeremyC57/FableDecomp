@@ -1,4 +1,5 @@
 // 00c8d510 ogg_sync_pageseek
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_sync_pageseek@8 -- 313 bytes verified against Fable.exe 0x00C8D510
 // Leaf: @ogg_sync_pageseek@8
 // Flags: /Gr
 // Original libogg 1.1 framing algorithm and public structure layouts.

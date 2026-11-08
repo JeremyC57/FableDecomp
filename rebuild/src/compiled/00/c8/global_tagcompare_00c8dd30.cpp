@@ -1,4 +1,5 @@
 // tagcompare(const char* s1, const char* s2, int n) -- libvorbis info.c: case-insensitive compare of the first n characters (0 when equal, 1 on the first toupper mismatch)
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @tagcompare@12 -- 88 bytes verified against Fable.exe 0x00C8DD30
 // Leaf: _tagcompare@12
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8DD30, 88 bytes.
 // Retail TU: libpk's statically linked Xiph libvorbis I 20030909 lib/info.c. tagcompare is the file's static; VC7.1 gives it a

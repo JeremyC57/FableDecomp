@@ -1,4 +1,5 @@
 // _global::zcfree(voidpf opaque, voidpf ptr) -- zlib 1.2.1 default deallocator: free(ptr)
+// Vendor-proof: zlib-1.2.1(zutil.c) _zcfree -- 13 bytes verified against Fable.exe 0x00C06050
 // Leaf: _zcfree
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C06050, 13 bytes. zlib 1.2.1 zutil.c (32-bit branch), C linkage, __cdecl.
 // Identity: not called directly; its address is stored by z_deflateInit2_ (0x00C01FE3) and z_inflateInit2_ (0x00C0228A)

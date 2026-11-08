@@ -1,4 +1,5 @@
 // libvorbis::dradb4(int ido, int l1, float* cc, float* ch, float* wa1, float* wa2, float* wa3) -- smallft.c (FFTPACK real FFT): backward (inverse) radix-4 pass -- for each of the l1 sub-transforms, rebuilds the four quarter-length outputs in ch from the packed inputs of cc (with the sqrt2 = 1.414213562373095f edge rotation), then rotates the inner pairs by the twiddle tables wa1 / wa2 / wa3
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @dradb4@28 -- 2418 bytes verified against Fable.exe 0x00C998B0
 // Leaf: _dradb4@28
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C998B0, 2418 bytes. libvorbis 1.0.1 lib/smallft.c `dradb4` (a file static kept out of line with a private register convention: the first arguments in ecx / edx / eax, the rest pushed, callee-pop ret).

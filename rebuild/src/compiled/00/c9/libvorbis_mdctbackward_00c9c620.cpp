@@ -1,4 +1,5 @@
 // libvorbis::mdct_backward(mdct_lookup* init, float* in, float* out) -- mdct.c: inverse MDCT (rotate into the upper half, butterflies, bit-reverse, then rotate + window into the full n-sample output with the mirrored halves)
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_backward@12 -- 588 bytes verified against Fable.exe 0x00C9C620
 // Leaf: @mdct_backward@12
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9C620, 588 bytes, LTCG __fastcall (init in ecx, in in edx, out on the stack, `ret 4`).

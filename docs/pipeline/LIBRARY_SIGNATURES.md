@@ -44,6 +44,9 @@ On Windows the RTM toolset's own `D:\Tools\vc71\lib` is the same library (`build
 | `lib_verify.py` | Re-proves a row: `lib_verify.py <addr>...` or `--source <stub.cpp>`; prints `MATCH` / `MISMATCH`, exit 1 on any mismatch. Import libraries are found in the library directories, then in the import-library directories (`default_implibdirs`, the WinDDK `wnet/i386` copies); an import library that is not on disk (`NOT_ON_DISK`: only the DirectX SDK `d3dx9.lib`) is proven from the retail import directory alone and the reason says so |
 | `libsig_cross.py` | Crosses the oracle with the landed catalog, the manifest and the pending pool; lists the landed hits with their purity class |
 | `fetch_vs2003_libs.sh` | Fetches the VS 2003 `Vc7/lib` files (above) |
+| `vendor_libs.tsv` | Vendor-library config (2026-11-08): tag, version, tree under `FABLE_THIRDPARTY`, fetch URL, archive sha256, tree sha256, flags, include dirs, the linked TUs proven from unmodified source and the linked TUs that are not (`not_built`, reason in `notes`) |
+| `vendor_lib.py` | Builds a vendor TU with the lane's cl 13.10.3077 and exactly the recorded flags (`INCLUDE` = `$FABLE_VC71/include` only) into an object cache keyed by tree hash + flags + compiler (`FABLE_VENDOR_OBJ`, default `<FABLE_THIRDPARTY>/obj`). `vendor_lib.py` lists the config, `--build [TAG]` builds |
+| `fetch_vendor_libs.py` | Fetches every vendor tarball, checks its sha256 (a re-packed GitLab archive is accepted only when the unpacked tree hashes to `tree_sha256`), unpacks it to `<dest>/<tree>`; never into the repo |
 
 Rerun (lane env sourced, `FABLE_EXE` set; about 45 s):
 ```
@@ -254,14 +257,89 @@ Library spellings that stay different, with the reason:
    not from `reloc_bindings.tsv` alone: the table records a symbol once, so a stand-in spelling first seen elsewhere,
    or never recorded, does not list its other callers.
 
+## Vendor libraries (owner direction 2026-11-08)
+
+Owner, verbatim: "The core strategy is to isolate, identify, and link original or rebuilt library object files rather
+than rewriting them by hand." Third-party C code that retail compiled from **unmodified** vendor source gets the CRT's
+treatment: the tree is fetched (never committed), each linked TU is rebuilt with VC7.1 and the flags retail used, and
+the rows are proven byte for byte plus relocations against retail.
+
+| Tag (`vendor_libs.tsv`) | Source | Flags | TUs proven | Not provable from unmodified source |
+|---|---|---|---|---|
+| `zlib-1.2.1` | zlib.net fossils tarball (sha256 `94ded520...`) | `/O2 /Oy /W3 /MD /GS /DZ_PREFIX` | adler32 compress crc32 deflate inffast inflate inftrees trees zutil | none (gzio, uncompr, infback are not linked) |
+| `lzo-1.08` | oberhumer.com tarball (sha256 `bcead46b...`) | `/O2 /Oy /W3 /MD /GS` | src/lzo1x_9x.c lzo1x_d1.c lzo1x_d2.c lzo_util.c (+ `lzo1x_f1.asm`, Toolchain-library claim above) | none |
+| `libogg-1.1.1` | gitlab.xiph.org tag archive `v1.1.1` (sha256 `78e192eb...`, tree `3a837b83...`) | `/O2 /Ob1 /Oy /W3 /MD /GS /TC /Gr` | src/framing.c bitwise.c | `oggpack_writecopy_helper` differs, so its two callers `oggpack(B)_writecopy` fail the relocation check (both outside the manifest) |
+| `libvorbis-1.0.1` | gitlab.xiph.org tag archive `v1.0.1` (sha256 `da0e38b2...`, tree `abc02221...`; includes `{libogg-1.1.1}/include`) | same | 16 TUs of lib/ (analysis bitrate block codebook envelope floor0 info lookup lpc mapping0 mdct registry res0 smallft synthesis window) | floor1.c lsp.c psy.c sharedbook.c: under `/Gr` their qsort comparators become `__fastcall` and cl stops with C2440 (floor1.c(220), lsp.c(446), psy.c(991), sharedbook.c(354)); retail's comparators are `__cdecl`, so Lionhead built a patched copy. vorbisfile.c is Lionhead's fork (reconstruction). vorbisenc.c is not linked |
+
+(downloads.xiph.org and ftp.osuosl.org refuse the lane proxy's TLS, so the Xiph trees come from the vendor's own GitLab
+tag archives; their .c/.h files equal the per-file `raw.githubusercontent.com/xiph/...` fetch of the probe.)
+
+```
+python3 -I tools/decomp_pipeline/libsig/fetch_vendor_libs.py --dest $S/thirdparty     # 4 trees; export FABLE_THIRDPARTY=$S/thirdparty
+python3 -I tools/decomp_pipeline/libsig/libsig_scan.py --vendor all --log $S/libsig/logs/vendor_scan   # -> rebuild/oracles/vendor_signatures.tsv
+python3 -I tools/decomp_pipeline/libsig/lib_verify.py $(awk -F'\t' 'NR>1{print $1}' rebuild/oracles/vendor_signatures.tsv)
+```
+
+**Scan** (`--vendor`): the vendor objects are a library class `vendor/<tag>` with member = the TU path; their sections
+are matched and resolved like library members (the VS 2003 import records still name `__imp__malloc` etc.), no import
+thunks are re-emitted, and statics several TUs share (`ilog`, `ilog2`, `todB`, `bitreverse`) are assigned by
+neighbourhood: the copy whose neighbouring retail section belongs to a TU is that TU's (0x00C9EC20 is mapping0.c's
+`ilog`, not `ilog2`). 2026-11-08: **286 rows** (249 landed + 37 outside the manifest), 4 retail copies left ambiguous
+(the `ilog`/`ilog2`/`bitreverse` copies of floor1.c / sharedbook.c, which are not built). The scan's `confidence` is
+the CRT scan's (it does not run the second look below); `lib_verify.py` is the proof.
+
+**Proof** (`lib_verify.py`): the claim's tag names the config row; the TU is rebuilt (cached) and its section must
+equal retail outside relocations, and every relocation is resolved: IAT slots and thunks, same-section labels (jump
+tables), and any target defined by another built TU of the vendor (or of a vendor its includes name: libvorbis ->
+libogg) or by a VS 2003 msvcrt.lib member (`__ftol2`, `___security_cookie`, `@__security_check_cookie@4`) must hold
+that definition's bytes at the target (code masked at its relocations; data over its first 16 bytes: string literals,
+`__real@` constants, `crc_table`). z_inflate: 79/79 relocations proven. 284 of the 286 oracle rows MATCH (the two
+`writecopy` wrappers above are MISMATCH and claimed nowhere).
+
+**Grade: reuse `toolchain_library`.** Evidence: every consumer of the grade already does the right thing for vendor
+bytes -- `purity.classify` (no body, no asm), `is_genuine_kind`, `verify_and_land.py` (`LIBRARY_MATCH` from
+`lib_verify.py`, never landed from a payload), `reloc_audit.py` / `reloc_rename.py` (skip), `build_candidates.ps1`
+(`status = LIBRARY`), the dashboard and the README rows -- and the only thing that differs is which tree proves it. A
+new grade would have touched all of them for no behavioural difference. The stub's claim line names the vendor
+instead of the toolchain:
+
+```
+// Vendor-library: zlib-1.2.1(inflate.c) _z_inflate -- 5204 bytes verified against Fable.exe 0x00C02470
+```
+
+and `tools/landed_metrics.py` counts those stubs apart (`vendor_library`), and places every row by code origin
+(`split`, from `LIBRARY_MAP.tsv`: game / Lionhead in-house library / third-party / toolchain).
+
+**Hand-written rows stay** (owner: "Keep, label as library"): a landed genuine row whose bytes the vendor build also
+proves keeps its body, its grade and its test, and gets one provenance line after its header line, the same claim
+spelled `// Vendor-proof:`. `lib_verify.py <addr>` proves it from the row's source; `verify_and_land.py` prints `WARN
+VENDOR_PROOF_MISMATCH` on a recheck when it stops proving; the metrics count it as `vendor_source`; `libsig_cross.py
+--oracle rebuild/oracles/vendor_signatures.tsv` lists it.
+
+Applied 2026-11-08:
+* Landed (1): `_z_inflate` 0x00C02470 (5,204 bytes; `rebuild/src/compiled/00/c0/global_zinflate_00c02470.cpp`). Its two
+  callers (0x00A3A840, 0x00A3AB00) already spell `z_inflate`; the stale `_inflate` binding in `reloc_bindings.tsv` is
+  now `_z_inflate`.
+* Annotated (248 `// Vendor-proof:` lines): zlib 50, LZO 20, libogg 40, libvorbis 138 (every landed row of the vendor
+  oracle); all 249 claims `lib_verify.py` MATCH. `vland.py --recheck-landed` with `LANDVERIFY_STRICT_HEADERS=1
+  LANDVERIFY_STRICT_RELOCS=1`: 0x00C02470 LIBRARY_MATCH, 232 MATCH/RELOCATION_MATCH + PASS, 16 RELOC_IDENTITY that are
+  pre-existing (the same 16 on the unannotated sources: `__alloca_probe`/`__chkstk` naming, shared `@ilog2@4`/`@todB@4`,
+  the `__CIpow` thunk) and grade RELOCATION_MATCH + PASS without strict relocations.
+* Not landed: `vorbis_book_init_decode` 0x00C95580 (sharedbook.c, not provable from unmodified source; stays unlanded),
+  the 37 rows outside the manifest (boundary-row work, as the CRT boundary pass did), and the landed hand-written rows
+  of floor1.c / lsp.c / psy.c / sharedbook.c / vorbisfile.c (no vendor proof; they stay genuine reconstructions).
+* Respellings handed back (`NAME_FIXES.tsv`, not applied): 0x00C9CB60 `@LACING_ADJUST@4` (landed as
+  `Math_ComputeByteChunkCount`), 0x00C9EC20 `@ilog@4` (as `libvorbis::ilog2`), 0x00CA1000 `@res0_inverse@20` and
+  0x00CA12B0 `@res1_inverse@20` (as `_gapscan::sub_*`).
+
 ## Other vendor code (scoped, no library bytes on disk)
 
 | Vendor | Evidence | Status |
 |---|---|---|
 | D3DX9 (DirectX SDK April 2005, `d3dx9_25.dll`) | 11 import thunks to `d3dx9_25.dll` | import library `d3dx9.lib` not on disk; thunk bytes do not depend on it |
 | Direct3D 9 / DirectInput 8 import libraries | `d3d9.dll` (1 thunk), `DINPUT8.dll` (1) | named from the WinDDK `wnet/i386` libraries |
-| zlib 1.2.1 | strings ` deflate 1.2.1 Copyright 1995-2003 Jean-loup Gailly`, ` inflate 1.2.1 ...`; `CCompressorZlib` | compiled from source into Fable, no prebuilt library: reconstruction or a future vendor-source grade |
-| libVorbis 1.0.1 / libogg / vorbisfile | `Xiph.Org libVorbis I 20030909`; landed `ogg_stream_packetout` (/Gr); `_ov_d_seek_lap` callees take `vf` in esi (whole-program optimised) | compiled from source; same as zlib |
+| zlib 1.2.1 | strings ` deflate 1.2.1 Copyright 1995-2003 Jean-loup Gailly`, ` inflate 1.2.1 ...`; `CCompressorZlib` | proven from unmodified source: "Vendor libraries" above |
+| libVorbis 1.0.1 / libogg 1.1.1 / vorbisfile | `Xiph.Org libVorbis I 20030909`; landed `ogg_stream_packetout` (/Gr) | 18 TUs proven from unmodified source ("Vendor libraries" above); floor1/lsp/psy/sharedbook (patched comparators) and vorbisfile.c (Lionhead fork) stay reconstruction |
 | OpenAL | `/OpenAL32.dll`, `/wrap_oal.dll` strings | loaded at run time, no static code expected |
 | XMV video | `CXMVPlayer`, `.xmv` / `.wmv` files | player is Lionhead code; any decoder library is unidentified |
 | STL | 9 `std::` RTTI names, MSVCP71 imports | header templates compiled in Fable TUs, not a library |

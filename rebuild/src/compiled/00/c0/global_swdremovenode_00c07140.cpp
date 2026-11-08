@@ -1,4 +1,5 @@
 // _global::swd_remove_node(lzo_swd_p s, lzo_uint node) -- LZO 1.08 lzo_swd.ch swd_remove_node: when no dictionary nodes are pending, unlink `node` from the 3-byte hash chain count and the 2-byte head table; otherwise just count one pending node down
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_remove_node -- 107 bytes verified against Fable.exe 0x00C07140
 // Leaf: @swd_remove_node@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C07140, 107 bytes. LZO 1.08 (lzo1x_9x.c includes lzo_swd.ch), static. No callees.
 // Convention: retail is a whole-program (LTCG) build; this static helper received s in ecx and node in edx, with no

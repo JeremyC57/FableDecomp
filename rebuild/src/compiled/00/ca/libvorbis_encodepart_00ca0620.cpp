@@ -1,4 +1,5 @@
 // libvorbis::_encodepart(oggpack_buffer* opb, float* vec, int n, codebook* book, long* acc) -- residue encoder: code n/dim vectors of vec with their best codebook entries and return the number of bits written
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @_encodepart@20 -- 81 bytes verified against Fable.exe 0x00CA0620
 // Leaf: @_encodepart@20
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA0620, 81 bytes, opb in ecx, vec in edx, n/book/acc on the stack (`ret 0Ch`).
 //   libvorbis lib/res0.c (Xiph.Org libVorbis I 20030909 @ 0x00EBF240, compiled as C with /Gr: `__fastcall`).

@@ -1,4 +1,5 @@
 // 00c9ff80 res0_unpack
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res0_unpack@8 -- 348 bytes verified against Fable.exe 0x00C9FF80
 // Leaf: @res0_unpack@8
 // Flags: /Gr
 // Original libvorbis 1.0.1 cleanup body and public/internal layouts.

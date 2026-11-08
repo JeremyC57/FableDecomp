@@ -1,4 +1,5 @@
 // _global::init_block(deflate_state* s) -- zlib 1.2.1 trees.c init_block (static): zero the literal/length, distance and bit-length tree frequencies, seed END_BLOCK with 1 and clear the block statistics
+// Vendor-proof: zlib-1.2.1(trees.c) _init_block -- 100 bytes verified against Fable.exe 0x00C03EE0
 // Leaf: _init_block
 // Grade: MATCH (wave-2 sec6: the dummy-ecx __fastcall stand-in replaced by the trees.c static as a same-TU extern "C"
 //   static __declspec(noinline) with its real caller _tr_init 0x00C051C0 in the TU; length from the retail bytes,

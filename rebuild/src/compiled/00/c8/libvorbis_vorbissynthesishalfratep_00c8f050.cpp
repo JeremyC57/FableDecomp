@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_halfrate_p(vorbis_info* vi) -- Xiph libvorbis synthesis.c: the codec setup's halfrate_flag
+// Vendor-proof: libvorbis-1.0.1(lib/synthesis.c) @vorbis_synthesis_halfrate_p@4 -- 10 bytes verified against Fable.exe 0x00C8F050
 // Leaf: @vorbis_synthesis_halfrate_p@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

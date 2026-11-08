@@ -1,4 +1,5 @@
 // swd_insertdict(lzo_swd_p s, lzo_uint node, lzo_uint len) -- LZO 1.08 lzo_swd.ch swd_insertdict: thread len dictionary positions starting at node into the 3-byte hash chains and the 2-byte head table
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_insertdict -- 211 bytes verified against Fable.exe 0x00C06E50
 // Leaf: _swd_insertdict
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C06E50, 211 bytes, a TU-local static (or API) of the same library file as the landed
 //   row 0x00C06F30. Shape (retry1): parked as an "LTCG custom register convention" gap; the landed host TU already holds this

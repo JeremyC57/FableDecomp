@@ -1,4 +1,5 @@
 // decode_packed_entry_number(codebook* book, oggpack_buffer* b) -- libvorbis 1.0.1 codebook.c: decode the next codeword through the first-level table, else bisect the sorted codeword list; -1 on a bad or truncated codeword
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @decode_packed_entry_number@8 -- 268 bytes verified against Fable.exe 0x00C96320
 // Leaf: _decode_packed_entry_number@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96320, 268 bytes, `push b ; push book ; call`, callee pops (ret 8): the bound
 //   `_decode_packed_entry_number@8` (reloc_bindings, landed callers vorbis_book_decode 0x00C96430,

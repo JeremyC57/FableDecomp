@@ -1,4 +1,5 @@
 // send_tree(deflate_state*, ct_data*, int) -- encodes a tree as bit-length runs.
+// Vendor-proof: zlib-1.2.1(trees.c) _send_tree -- 1290 bytes verified against Fable.exe 0x00C04340
 // Leaf: _send_tree
 // Flags: /GS
 // Vendor: zlib 1.2.1 trees.c; real same-file callers retain static function convention.

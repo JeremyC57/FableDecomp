@@ -1,4 +1,5 @@
 // libvorbis::vorbis_comment_add_tag(vorbis_comment* vc, char* tag, char* contents) -- libvorbis info.c: build "TAG=contents" in an alloca buffer and add it as a comment
+// Vendor-proof: libvorbis-1.0.1(lib/info.c) @vorbis_comment_add_tag@12 -- 156 bytes verified against Fable.exe 0x00C8DC90
 // Leaf: @vorbis_comment_add_tag@12
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

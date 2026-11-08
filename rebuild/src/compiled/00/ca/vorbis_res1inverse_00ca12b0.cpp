@@ -1,4 +1,5 @@
 // vorbis::res1_inverse(...) -- Compact active residue channels and decode their partitions.
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res1_inverse@20 -- 89 bytes verified against Fable.exe 0x00CA12B0
 // Leaf: @res1_inverse@20
 // Identity: Xiph Vorbis1.0.1 res0.c original res1_inverse packs active channels then _01inverse with vorbis_book_decodev_add. Own helper00ca0df0 matches setup/partition decode algorithm and returns20 stack bytes; callback00c965c0 receives codebook/float in ecx/edx with remaining two stack args. Own wrapper uses normal fastcall. No owner layout accessed.
 #ifndef _MSC_VER

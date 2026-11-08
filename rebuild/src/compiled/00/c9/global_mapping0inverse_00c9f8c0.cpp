@@ -1,4 +1,5 @@
 // mapping0_inverse(vorbis_block*,vorbis_info_mapping*) -- Decode residue, reverse channel coupling, apply floor and transform channels.
+// Vendor-proof: libvorbis-1.0.1(lib/mapping0.c) @mapping0_inverse@8 -- 1282 bytes verified against Fable.exe 0x00C9F8C0
 // Leaf: @mapping0_inverse@8
 // Flags: /TC /Gr
 #include "engine/Vorbis.h"

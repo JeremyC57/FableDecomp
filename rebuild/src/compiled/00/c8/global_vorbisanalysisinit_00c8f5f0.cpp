@@ -1,4 +1,5 @@
 // vorbis_analysis_init(vorbis_dsp_state* v, vorbis_info* vi) -- libvorbis block.c: shared DSP init for encoding, then the global psychoacoustic lookup, the envelope state and the bitrate manager
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_analysis_init@8 -- 83 bytes verified against Fable.exe 0x00C8F5F0
 // Shape (retry1): parked as an "LTCG custom register arguments" gap; the TU holds block.c's static _vds_shared_init as `extern "C" { static __declspec(noinline) int __stdcall }` with its two real callers vorbis_analysis_init / vorbis_synthesis_init, and VC7.1 /O2 picks retail's private convention (v in EBX, vi/encp on the stack, ret 8) itself.
 // Leaf: @vorbis_analysis_init@8
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8F5F0, length 83 bytes (96 with padding).

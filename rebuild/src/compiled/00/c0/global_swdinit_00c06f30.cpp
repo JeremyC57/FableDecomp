@@ -1,4 +1,5 @@
 // swd_init(lzo_swd_p s, const lzo_byte* dict, lzo_uint dict_len) -- LZO 1.08 lzo_swd.ch swd_init: set the window defaults (n, f, threshold, max_chain, nice_length), clear the 3-byte chain lengths and the 2-byte heads, load the dictionary, prime the look-ahead from the input and insert the dictionary positions
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _swd_init -- 326 bytes verified against Fable.exe 0x00C06F30
 // Leaf: _swd_init
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C06F30, 326 bytes. LZO 1.08 (lzo1x_9x.c includes lzo_swd.ch); neighbours swd_initdict
 //   0x00C06DE0, swd_insertdict 0x00C06E50, the caller init_match 0x00C075C0 (call at 0x00C075F7), swd_remove_node 0x00C07140

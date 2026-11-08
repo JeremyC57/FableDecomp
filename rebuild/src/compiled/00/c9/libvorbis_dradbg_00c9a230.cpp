@@ -1,4 +1,5 @@
 // libvorbis::dradbg(int ido, int ip, int l1, int idl1, float* cc, float* c1, float* c2, float* ch, float* ch2, float* wa) -- smallft.c (FFTPACK real FFT): backward (inverse) general-radix pass -- the FFTPACK mixed-radix inverse stage for any factor ip: unpacks the ip sub-transforms of cc with the running cosine / sine recurrence (tpi/ip), rotates by the twiddles wa and writes the result through c1 / c2 / ch / ch2
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @dradbg@40 -- 6071 bytes verified against Fable.exe 0x00C9A230
 // Leaf: _dradbg@40
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9A230, 6071 bytes. libvorbis 1.0.1 lib/smallft.c `dradbg` (a file static kept out of line with a private register convention: the first arguments in ecx / edx / eax, the rest pushed, callee-pop ret).

@@ -1,4 +1,5 @@
 // 00c9fea0 res0_pack
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res0_pack@8 -- 215 bytes verified against Fable.exe 0x00C9FEA0
 // Leaf: @res0_pack@8
 // Flags: /Gr
 // Original libvorbis res0.c and backends.h; BSD-style terms in reference COPYING.

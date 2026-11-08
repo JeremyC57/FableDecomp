@@ -1,4 +1,5 @@
 // 00c9e5d0 vorbis_lpc_from_data
+// Vendor-proof: libvorbis-1.0.1(lib/lpc.c) @vorbis_lpc_from_data@16 -- 793 bytes verified against Fable.exe 0x00C9E5D0
 // Leaf: @vorbis_lpc_from_data@16
 // Flags: /Gr
 /********************************************************************

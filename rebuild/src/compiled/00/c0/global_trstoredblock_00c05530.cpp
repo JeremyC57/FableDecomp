@@ -1,4 +1,5 @@
 // _tr_stored_block(deflate_state* s, charf* buf, ulg stored_len, int eof) -- zlib 1.2.1 trees.c _tr_stored_block: send the 3-bit stored-block type (plus eof) and copy the block with its LEN/NLEN header
+// Vendor-proof: zlib-1.2.1(trees.c) __tr_stored_block -- 160 bytes verified against Fable.exe 0x00C05530
 // Leaf: __tr_stored_block
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C05530. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

@@ -1,4 +1,5 @@
 // libvorbis::vorbis_book_decode(codebook* book, oggpack_buffer* b) -- decode the next packed entry and map it through dec_index; the negative status when decoding fails
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @vorbis_book_decode@8 -- 22 bytes verified against Fable.exe 0x00C96430
 // Leaf: @vorbis_book_decode@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C96430, 22 bytes, book in ecx, b in edx, plain `ret`. libvorbis 1.0.1
 //   lib/codebook.c. Callee: decode_packed_entry_number 0x00C96320 -- a codebook.c `STIN` helper LTCG left out of line,

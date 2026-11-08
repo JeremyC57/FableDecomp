@@ -1,4 +1,5 @@
 // _global::flush_pending(z_streamp strm) -- zlib 1.2.1 deflate.c flush_pending: copy as much pending output as fits into next_out and advance both cursors and the totals
+// Vendor-proof: zlib-1.2.1(deflate.c) _flush_pending -- 100 bytes verified against Fable.exe 0x00C00630
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the zlib static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _flush_pending
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C00630, 100 bytes. Retail convention (VC7.1 private, from the same-TU static): strm in EAX, plain ret; zmemcpy is the intrinsic memcpy (rep movsd/movsb).

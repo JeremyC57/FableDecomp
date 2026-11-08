@@ -1,4 +1,5 @@
 // libvorbis::vorbis_synthesis_blockin(vorbis_dsp_state* v, vorbis_block* vb) -- block.c: overlap-add a decoded block into the dsp state's PCM double buffer (window lapping for the four long/short combinations, copy section), then update pcm_returned / pcm_current, the sample count and the granule position with end trimming
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_synthesis_blockin@8 -- 2470 bytes verified against Fable.exe 0x00C8FF30
 // Leaf: @vorbis_synthesis_blockin@8
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C8FF30, 2470 bytes, LTCG __fastcall (v in ecx, vb in edx, plain `ret`).

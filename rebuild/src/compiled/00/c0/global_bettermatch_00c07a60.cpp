@@ -1,4 +1,5 @@
 // _global::better_match(const lzo1x_999_swd_t* swd, lzo_uint* m_len, lzo_uint* m_off) -- LZO 1.08 lzo1x_9x.c better_match: trade one or two bytes of match length for a cheaper M2/M3 offset class using the per-length best offsets
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _better_match -- 140 bytes verified against Fable.exe 0x00C07A60
 // Shape (retry1): parked as "LTCG custom register convention"; inside `extern "C" { static __declspec(noinline) }` with a same-TU caller VC7.1 /O2 gives the LZO static retail's private register convention itself (chunk 585/586/593 lever).
 // Leaf: _better_match
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C07A60, 140 bytes. Retail convention (VC7.1 private, from the same-TU static): swd in ECX, m_len in EBX, m_off in EDI, plain ret.

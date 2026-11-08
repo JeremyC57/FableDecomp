@@ -1,4 +1,5 @@
 // _global::z_inflateInit2_(z_streamp strm, int windowBits, const char* version, int stream_size) -- zlib 1.2.1 inflateInit2_: check the library version and z_stream size, install the default allocator, allocate the inflate state, decode windowBits (raw / zlib / gzip wrap) and reset
+// Vendor-proof: zlib-1.2.1(inflate.c) _z_inflateInit2_ -- 199 bytes verified against Fable.exe 0x00C02240
 // Leaf: _z_inflateInit2_
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C02240, 199 bytes. zlib 1.2.1, Z_PREFIX build, C linkage, __cdecl.
 // Callees: zcalloc 0x00C06030 and zcfree 0x00C06050 (stored as the default allocator), strm->zalloc / strm->zfree

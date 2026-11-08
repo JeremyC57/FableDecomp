@@ -1,4 +1,5 @@
 // libvorbis::local_book_besterror(codebook* book, float* a) -- residue encoder helper (res0.c): find the codebook entry nearest to the vector a (threshold search per scalar, brute-force search when that entry has no codeword), subtract the entry's values from a and return the entry index
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @local_book_besterror@8 -- 879 bytes verified against Fable.exe 0x00CA02B0
 // Leaf: _local_book_besterror@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA02B0, 879 bytes, `ret 8` (a file static called with two stack arguments and
 //   callee-pop: `static __declspec(noinline) int __stdcall` inside extern "C", the chunk 675/676 libvorbis-static recipe).

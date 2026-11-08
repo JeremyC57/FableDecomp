@@ -1,4 +1,5 @@
 // libvorbis::bitreverse(ogg_uint32_t x) -- reverse the 32 bits of a codeword
+// Vendor-proof: libvorbis-1.0.1(lib/codebook.c) @bitreverse@4 -- 99 bytes verified against Fable.exe 0x00C962B0
 // Leaf: _bitreverse
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C962B0, 99 bytes: libvorbis I 20030909 lib/codebook.c `static ogg_uint32_t bitreverse(ogg_uint32_t x)`
 //   (byte-identical static copies in sharedbook.c 0x00C954F0 and codebook.c 0x00C962B0), x arriving in eax.

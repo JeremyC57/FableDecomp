@@ -1,4 +1,5 @@
 // copy_block(deflate_state* s, charf* buf, unsigned len, int header) -- zlib 1.2.1 trees.c copy_block: byte-align and copy a stored block, with its LEN/NLEN header when asked
+// Vendor-proof: zlib-1.2.1(trees.c) _copy_block -- 130 bytes verified against Fable.exe 0x00C05130
 // Leaf: _copy_block
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C05130. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

@@ -1,4 +1,5 @@
 // pqdownheap(deflate_state* s, ct_data* tree, int k) -- zlib 1.2.1 trees.c pqdownheap: sift heap[k] down the frequency heap until both sons are larger (ties broken by depth)
+// Vendor-proof: zlib-1.2.1(trees.c) _pqdownheap -- 196 bytes verified against Fable.exe 0x00C03F50
 // Leaf: _pqdownheap
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C03F50. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;

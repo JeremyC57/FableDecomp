@@ -1,4 +1,5 @@
 // libvorbis::mdct_butterfly_generic(float* T, float* x, int points, int trigint) -- mdct.c: N/stage-point generic MDCT butterfly (in place, two registers): walks x from the top half down in blocks of 8 floats, adding the upper half into the lower and rotating the differences by the trig table T, stepping T by trigint per pair
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_butterfly_generic@16 -- 269 bytes verified against Fable.exe 0x00C9C2F0
 // Leaf: _mdct_butterfly_generic@16
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C9C2F0, length 269 bytes; sole caller mdct_butterflies 0x00C9C400
 // (the inner `for (j...)` loop, after the mdct_butterfly_first 0x00C9C1E0 call).

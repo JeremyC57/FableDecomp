@@ -1,4 +1,5 @@
 // libvorbis::limit_sum(bitrate_manager_state* bm, int limit) -- bitrate.c: try out a new hard bitrate limit on the min/max stack: the accumulated byte total with the top stack entry re-binned from limit 0 to `limit`, then walking the stack down while its stored limits are above the new one, swapping each entry's bytes to the new limit's bin
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @limit_sum@8 -- 178 bytes verified against Fable.exe 0x00C9CC60
 // Leaf: _limit_sum@8
 // Flags: /TC /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9CC60, 178 bytes: libvorbis 1.0.1 lib/bitrate.c `static long limit_sum(...)` kept out of line with

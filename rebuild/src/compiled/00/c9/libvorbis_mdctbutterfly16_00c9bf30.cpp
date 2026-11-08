@@ -1,4 +1,5 @@
 // libvorbis::mdct_butterfly_16(DATA_TYPE* x) -- mdct.c: the 16-point MDCT butterfly stage -- four (x[k], x[k+1]) / (x[k+8], x[k+9]) pair rotations (two by cPI2_8 = sqrt(1/2), two plain), adding the upper half into the lower, then both 8-point halves through mdct_butterfly_8
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_butterfly_16@4 -- 199 bytes verified against Fable.exe 0x00C9BF30
 // Leaf: _mdct_butterfly_16
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9BF30, 199 bytes: libvorbis I 20030909 lib/mdct.c `STIN void mdct_butterfly_16(DATA_TYPE *x)` kept
 //   out of line with x arriving in eax (a private LTCG convention); it calls mdct_butterfly_8 0x00C9BEB0 at 0x00C9BFEB and tail-jumps to it

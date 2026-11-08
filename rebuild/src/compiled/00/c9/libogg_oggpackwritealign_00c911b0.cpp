@@ -1,4 +1,5 @@
 // libogg::oggpack_writealign(oggpack_buffer* b) -- pad the current byte with zero bits up to the next byte boundary
+// Vendor-proof: libogg-1.1.1(src/bitwise.c) @oggpack_writealign@4 -- 24 bytes verified against Fable.exe 0x00C911B0
 // Leaf: @oggpack_writealign@4
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C911B0, 24 bytes, plain `ret`. libogg src/bitwise.c. Callee: oggpack_write
 //   0x00C90FC0 (`__fastcall`, b passed on in ecx, 0 in edx, the pad count pushed).

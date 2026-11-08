@@ -1,4 +1,5 @@
 // libvorbis::vorbis_block_init(vorbis_dsp_state* v, vorbis_block* vb) -- Xiph libvorbis block.c: clear the 0x70-byte vorbis_block and bind it to its DSP state; for an analysis state calloc the 0x48-byte vorbis_block_internal, init the packer and seed ampmax = -9999
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @vorbis_block_init@8 -- 68 bytes verified against Fable.exe 0x00C8F080
 // Leaf: @vorbis_block_init@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

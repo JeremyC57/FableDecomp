@@ -1,4 +1,5 @@
 // _global::lzo1x_999_compress(const lzo_byte* in, lzo_uint in_len, lzo_byte* out, lzo_uintp out_len, lzo_voidp wrkmem) -- LZO 1.08 lzo1x_999_compress: best-ratio LZO1X compression at level 8 through lzo1x_999_compress_internal
+// Vendor-proof: lzo-1.08(src/lzo1x_9x.c) _lzo1x_999_compress -- 58 bytes verified against Fable.exe 0x00C08130
 // Leaf: _lzo1x_999_compress
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C08130, 58 bytes. LZO 1.08 lzo1x_9x.c, C linkage, __cdecl (LZO_PUBLIC).
 // Callee: lzo1x_999_compress_internal 0x00C07AF0 (__cdecl, 14 arguments; Ego_r PDB name set

@@ -1,4 +1,5 @@
 // libvorbis::res1_class(vorbis_block* vb, vorbis_look_residue* vl, float** in, int* nonzero, int ch) -- Xiph res0.c: pack the nonzero channels to the front of `in` and classify their partitions for residue type 1 (NULL when every channel is silent)
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res1_class@20 -- 84 bytes verified against Fable.exe 0x00CA1250
 // Leaf: @res1_class@20
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA1250, 84 bytes, __fastcall (vb ecx, vl edx, in/nonzero/ch on the
 //   stack), ret 0Ch. Callee: _01class 0x00CA0680 (static in res0.c; LTCG left it out of line with all four arguments on

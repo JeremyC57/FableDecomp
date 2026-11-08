@@ -1,4 +1,5 @@
 // libvorbis::todB(const float* x) -- scales.h: 20*log10(|x|) approximated from the IEEE bit pattern ((x's bits & 0x7fffffff) * 7.17711438e-7f - 764.6161886f)
+// Vendor-proof: libvorbis-1.0.1(lib/mapping0.c) @todB@4 -- 29 bytes verified against Fable.exe 0x00C9EF70
 // Shape (retry1): parked as "BLOCKED: retail passes the pointer in EAX"; this is libvorbis 1.0.1 scales.h's static todB (VORBIS_IEEE_FLOAT32),
 //   one private copy per including .c file. As a same-TU `static __declspec(noinline)` with a same-TU caller VC7.1 /O2 gives it the
 //   private convention itself (x in eax, plain `ret`). The body is the pre-union scales.h form (`ogg_int32_t i=*(ogg_int32_t *)x;`):

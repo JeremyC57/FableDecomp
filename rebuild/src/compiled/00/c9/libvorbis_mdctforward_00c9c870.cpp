@@ -1,4 +1,5 @@
 // libvorbis::mdct_forward(mdct_lookup* init, float* in, float* out) -- mdct.c: forward MDCT (window + rotate + step 1 into an alloca'd n-float work buffer, butterflies, bit-reverse, then rotate and scale by init->scale into out)
+// Vendor-proof: libvorbis-1.0.1(lib/mdct.c) @mdct_forward@12 -- 712 bytes verified against Fable.exe 0x00C9C870
 // Leaf: @mdct_forward@12
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C9C870, 712 bytes, LTCG __fastcall (init in ecx, in in edx, out on the stack,

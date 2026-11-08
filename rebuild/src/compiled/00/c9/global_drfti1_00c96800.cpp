@@ -1,4 +1,5 @@
 // 00c96800 drfti1
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @drfti1@12 -- 424 bytes verified against Fable.exe 0x00C96800
 // Leaf: _drfti1@12
 // Flags:
 // Original libvorbis smallft.c; BSD-style terms in reference COPYING.

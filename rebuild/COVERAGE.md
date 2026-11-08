@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-11-08T06:14:04+00:00`
+Generated: `2026-11-08T08:28:07+00:00`
 
 ## Landed reconstruction (live)
 
@@ -8,14 +8,27 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 
 | Measure | Landed | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
-| Original catalog functions landed, genuine C++ | 47,051 | 49,567 | 94.924% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
-| All known functions landed, genuine C++ | 54,771 | 57,621 | 95.054% | Adds the gap-scan and boundary functions found later |
-| Retail function bytes reproduced, genuine C++ | 6,466,617 | 10,176,558 | 63.544% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
-| Retail `.text` bytes reproduced, genuine C++ | 6,466,617 | 14,858,408 | 43.522% | Against the whole `.text` section (includes padding and inline data) |
-| Landed rows using retail inline asm (grade `retail_asm`) | 214 | 54,772 | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |
-| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 441 | 54,772 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
-| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 54,772 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
-| Landed rows that are hand-written asm bakes | 1 | 54,772 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
+| Original catalog functions landed, genuine C++ | 47,052 | 49,567 | 94.926% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
+| All known functions landed, genuine C++ | 54,772 | 57,621 | 95.056% | Adds the gap-scan and boundary functions found later |
+| Retail function bytes reproduced, genuine C++ | 6,471,821 | 10,176,546 | 63.595% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
+| Retail `.text` bytes reproduced, genuine C++ | 6,471,821 | 14,858,408 | 43.557% | Against the whole `.text` section (includes padding and inline data) |
+| Landed rows using retail inline asm (grade `retail_asm`) | 214 | 54,773 | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |
+| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 442 | 54,773 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
+| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 54,773 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
+| — of which third-party vendor code compiled from unmodified source (`// Vendor-library:` stub) | 1 | 442 | — | zlib 1.2.1 / LZO 1.08 / libogg 1.1.1 / libvorbis 1.0.1 TUs rebuilt from the fetched vendor tree with the recorded flags (`tools/decomp_pipeline/libsig/vendor_libs.tsv`; owner direction 2026-11-08) |
+| Landed hand-written rows the vendor build also proves (`// Vendor-proof:` line) | 248 | 54,773 | — | Genuine C++ kept as written and labelled as library: the unmodified vendor TU compiles to the same bytes (owner 2026-11-08: keep, label as library) |
+| Landed rows that are hand-written asm bakes | 1 | 54,773 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
+
+### Game code vs library code
+
+Every known function is placed by `docs/pipeline/LIBRARY_MAP.tsv` (its `category` column): Fable game code (the map's "Lionhead game code" rows and everything outside the mapped library blocks), Lionhead in-house libraries (libpk + CODA audio, LHNetworkLib: reconstructed like game code), third-party vendor code (zlib, LZO, Xiph, DirectShow base classes, DXUT ImeUi) and the VC7.1 toolchain (CRT objects, import thunks). 17 `toolchain_library` rows outside every mapped block are placed by their proof line.
+
+| Code origin | Landed genuine | Known functions | Coverage | Genuine bytes | Bytes coverage |
+|---|---:|---:|---:|---:|---:|
+| Fable game code | 49,675 | 52,277 | 95.023% | 5,955,177 | 62.640% |
+| Lionhead in-house libraries | 3,862 | 4,088 | 94.472% | 327,806 | 68.429% |
+| Third-party vendor code | 795 | 813 | 97.786% | 182,464 | 99.131% |
+| VC7.1 toolchain (CRT, import thunks) | 440 | 443 | 99.323% | 6,374 | 98.531% |
 
 ## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-09-07)
 
@@ -49,7 +62,7 @@ Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux l
 
 ## Interpretation
 
-The reverse-engineering database is near complete. Landed byte-matching C++ covers 94.924% of the original catalog by function count but 63.544% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
+The reverse-engineering database is near complete. Landed byte-matching C++ covers 94.926% of the original catalog by function count but 63.595% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
 
 The clean-decompile sweep predates later function discovery, so its denominator is 49,082 while the current catalog contains 49,568 functions. The dashboard does not silently extrapolate the missing 486 measurements.
 

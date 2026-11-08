@@ -1,4 +1,5 @@
 // 00c08170 lzo1x_decompress_safe
+// Vendor-proof: lzo-1.08(src/lzo1x_d2.c) _lzo1x_decompress_safe -- 947 bytes verified against Fable.exe 0x00C08170
 // Leaf: _lzo1x_decompress_safe
 // Flags:
 // Original LZO1.08 source with the original 32bit x86 configuration spelled out; see bundled COPYING and ORIGIN.txt.

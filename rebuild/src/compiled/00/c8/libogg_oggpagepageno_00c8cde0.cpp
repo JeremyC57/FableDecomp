@@ -1,4 +1,5 @@
 // libogg::ogg_page_pageno(ogg_page* og) -- libogg framing: the page sequence number, little-endian bytes 18..21 of the page header
+// Vendor-proof: libogg-1.1.1(src/framing.c) @ogg_page_pageno@4 -- 29 bytes verified against Fable.exe 0x00C8CDE0
 // Leaf: @ogg_page_pageno@4
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

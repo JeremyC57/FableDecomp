@@ -1,4 +1,5 @@
 // libvorbis::_vorbis_block_alloc(vorbis_block* vb, long bytes) -- libvorbis block.c: carve an 8-aligned chunk from the block's local arena; when it does not fit, retire the old store onto the reap chain and malloc a fresh one of exactly that size
+// Vendor-proof: libvorbis-1.0.1(lib/block.c) @_vorbis_block_alloc@8 -- 104 bytes verified against Fable.exe 0x00C8F0D0
 // Leaf: @_vorbis_block_alloc@8
 // Module (sweep2, 2026-10-25): owner decision 1c unifies the statically linked Xiph code on libogg / libvorbis (vorbisfile.c
 //   ov_* with libvorbis); was module _global. The extern "C" __fastcall symbol is unchanged.

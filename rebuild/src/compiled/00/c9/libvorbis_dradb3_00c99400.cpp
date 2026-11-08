@@ -1,4 +1,5 @@
 // libvorbis::dradb3(int ido, int l1, float* cc, float* ch, float* wa1, float* wa2) -- smallft.c (FFTPACK real FFT): backward (inverse) radix-3 pass -- for each of the l1 sub-transforms, combines the three packed inputs of cc with taur = -1/2 and taui = sqrt(3)/2 into the three outputs of ch, then rotates the inner pairs by the twiddle factors wa1 and wa2
+// Vendor-proof: libvorbis-1.0.1(lib/smallft.c) @dradb3@24 -- 1190 bytes verified against Fable.exe 0x00C99400
 // Leaf: _dradb3@24
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C99400, 1190 bytes. libvorbis 1.0.1 lib/smallft.c `static void dradb3(...)`, kept out of

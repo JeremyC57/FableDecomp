@@ -6,8 +6,10 @@ Env:   FABLE_ROOT, FABLE_VC71, FABLE_OBJDUMP override the Windows paths; FABLE_W
        VC7.1 tools through Wine (FABLE_VC71_LIB adds library directories, os.pathsep-separated).
        python verify_and_land.py --prune-fragment-report <report.md>
 Without --land: dry-run report only. With --land: writes src/tests/catalog/oracle for wins.
-A source graded toolchain_library (crawl/purity.py: a stub for VC7.1 library bytes) is never compiled or
-landed here: it prints LIBRARY_MATCH / LIBRARY_MISMATCH from libsig/lib_verify.py (docs/pipeline/LIBRARY_SIGNATURES.md).
+A source graded toolchain_library (crawl/purity.py: a stub for VC7.1 library bytes, or for vendor code compiled from
+unmodified source: `// Vendor-library:`) is never compiled or landed here: it prints LIBRARY_MATCH / LIBRARY_MISMATCH
+from libsig/lib_verify.py (docs/pipeline/LIBRARY_SIGNATURES.md). A compiled row that also carries a `// Vendor-proof:`
+line gets a `WARN VENDOR_PROOF_MISMATCH` line when lib_verify.py no longer proves that claim.
 Candidates without an authoritative manifest function start are always rejected. The prune
 flag removes already-landed outside-manifest rows from this specific authoring payload. The
 report mode strictly validates and prunes a saved mid-function-fragment audit."""
@@ -378,7 +380,7 @@ def library_proof(addr, src):
         import lib_verify
         claim = lib_verify.parse_claim(src)
         if not claim:
-            return "LIBRARY_MISMATCH", "no Toolchain-library claim line"
+            return "LIBRARY_MISMATCH", "no Toolchain-library / Vendor-library claim line"
         if claim["address"] != int(addr, 16):
             return "LIBRARY_MISMATCH", f"claim names 0x{claim['address']:08X}, row is {addr}"
         if not os.environ.get("FABLE_EXE"):
@@ -574,6 +576,9 @@ def main():
                 if why_: print(f"{addr:10} WARN STANDIN_LEAF {why_}")
             except Exception as ex: print(f"{addr:10} WARN STANDIN_CHECK_ERROR {type(ex).__name__}: {ex}")
         beh=behaviour_of(tst, addr, patt, work, e, sobj)
+        if "// Vendor-proof:" in src0:   # provenance line of a hand-written vendor row (keep, label as library)
+            vst, vwhy = library_proof(addr, src0)
+            if vst != "LIBRARY_MATCH": print(f"{addr:10} WARN VENDOR_PROOF_{vst.split('_',1)[1]} {vwhy}")
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
             base=make_base(mod, name.rsplit("::",1)[-1], addr)   # file names use the display leaf, not the symbol selector

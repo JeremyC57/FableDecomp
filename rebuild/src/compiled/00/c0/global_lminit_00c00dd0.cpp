@@ -1,4 +1,5 @@
 // _global::lm_init(deflate_state* s) -- zlib 1.2.1 deflate.c lm_init (static): size the window, clear the hash heads, load the level's lazy-match parameters from configuration_table and reset the match state
+// Vendor-proof: zlib-1.2.1(deflate.c) _lm_init -- 135 bytes verified against Fable.exe 0x00C00DD0
 // Leaf: _lm_init
 // Grade: RELOCATION_MATCH (wave-2 sec6: the dummy-ecx __fastcall stand-in replaced by the deflate.c static as a same-TU
 //   extern "C" static __declspec(noinline) inside its real caller's landed TU; length from the retail bytes,

@@ -1,4 +1,5 @@
 // libvorbis::BINBYTES(bitrate_manager_state* bm, long pos, long bin) -- bitrate.c: the byte count queued for packet slot `pos` in bitrate bin `bin` (queue_binned[pos * queue_bins + bin])
+// Vendor-proof: libvorbis-1.0.1(lib/bitrate.c) @BINBYTES@12 -- 18 bytes verified against Fable.exe 0x00C9CB40
 // Shape (retry1): parked as an "LTCG custom convention" gap (bm in eax, bin in edx, pos on the stack, `ret 4`); this is libvorbis
 //   1.0.1 bitrate.c's static BINBYTES. As a same-TU `static __declspec(noinline)` with a same-TU caller (stand-in for
 //   vorbis_bitrate_addblock, which calls it at 0x00C9D553.. and feeds LACING_ADJUST 0x00C9CB60) VC7.1 /O2 picks that private

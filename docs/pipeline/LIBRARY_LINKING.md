@@ -17,6 +17,14 @@ Region map: `LIBRARY_MAP.tsv` (this directory). Rule text for chunks: `EXTRA_RUL
   functions match vendor bytes: all linked zlib and LZO C code, libogg 1.1.1 55/56 sections, libvorbis 1.0.1 176/196 (every miss in
   vorbisfile.c). Flags: zlib/LZO `/O2 /Oy /W3 /MD /GS`; Xiph `/O2 /Ob1 /Oy /W3 /MD /GS /TC /Gr`.
 
+- **Done 2026-11-08 (vendor-library pass):** zlib 1.2.1, LZO 1.08, libogg 1.1.1 and libvorbis 1.0.1 are proven from
+  their unmodified source with grade `toolchain_library` and a `// Vendor-library:` claim (config
+  `tools/decomp_pipeline/libsig/vendor_libs.tsv`: URL, sha256, flags; trees under `FABLE_THIRDPARTY`, fetched by
+  `fetch_vendor_libs.py`). `z_inflate` 0x00C02470 landed; the 248 landed hand-written rows the vendor build reproduces
+  keep their bodies and carry a `// Vendor-proof:` line; 249/249 `lib_verify.py` MATCH. Details and the grade decision:
+  `LIBRARY_SIGNATURES.md`, "Vendor libraries". Coverage by code origin (game / Lionhead library / third-party /
+  toolchain) is on the dashboard (`rebuild/COVERAGE.md`).
+
 ## Availability
 Verified 2026-11-08 from the Linux lane. "Verified" means the URL answered HTTP 200 to curl through the
 session proxy in this session (hosts that the proxy would not resolve are marked). Nothing third-party
@@ -209,7 +217,7 @@ used `/Oa`, `/O1` or LTCG (the Rich header has no LTCG entries).
 
 ### Route per library
 
-#### A. zlib 1.2.1 — ready to land (51 rows, closes 1 unlanded)
+#### A. zlib 1.2.1 — DONE 2026-11-08 (z_inflate landed, 50 rows Vendor-proof; 13 unmanifested sections left for a boundary pass)
 ```
 mkdir -p $S/thirdparty/dl $S/thirdparty/zlib
 curl -L -o $S/thirdparty/dl/zlib-1.2.1.tar.gz https://zlib.net/fossils/zlib-1.2.1.tar.gz
@@ -235,13 +243,19 @@ logic). Covered: the 50 landed hand reconstructions 0x00C00600-0x00C064D0 become
 `bi_reverse`, `zError`, ...) become boundary rows the way the CRT ones did on 2026-10-30.
 Estimated closure of the 266 unlanded: **1**.
 
-#### B. LZO 1.08 — ready to land (21 rows, closes 0 unlanded; removes 20 hand bodies)
+#### B. LZO 1.08 — DONE 2026-11-08 (20 hand bodies kept with Vendor-proof; 5 unmanifested sections left)
 Same as A with `lzo1x_9x.c lzo1x_d1.c lzo1x_d2.c lzo_util.c` (`/I include /I src`, no defines) plus
 the proven `lzo1x_f1.asm`. `lzo1x_999_compress_level`, `lzo1x_999_compress_dict`, `code_run`,
 `min_gain`, `lzo_adler32` (0x00C085A0) are matched but not in the manifest: boundary rows.
 Licence note for the owner: GPL v2+ objects in the link (see AVAILABILITY.md §2).
 
-#### C. libogg 1.1.1 + libvorbis 1.0.1 — ready to land for 302 rows, closes 1 unlanded
+#### C. libogg 1.1.1 + libvorbis 1.0.1 — DONE 2026-11-08 for the 18 TUs that build unmodified (178 rows Vendor-proof)
+
+Status: the `__cdecl` comparator patch below is a source patch, so floor1.c / lsp.c / psy.c / sharedbook.c are NOT
+claimed (owner: unmodified vendor source only); `vorbis_book_init_decode` 0x00C95580 stays unlanded and those TUs'
+landed rows stay hand-written. Open question: the probe's cdecl build (no `/Gr`) matches exactly the nine statics
+`icomp`, `comp`, `apsort`, `sort32a`, `min_curve`, `max_curve`, `vorbis_dBquant`, `post_Y`, `cheby` of these TUs, so
+the patch may be wider than the comparator declarations; settle it before a patch file is recorded.
 ```
 # from a normal machine (osuosl TLS is refused by this session's proxy):
 curl -LO https://downloads.xiph.org/releases/ogg/libogg-1.1.1.tar.gz
@@ -335,6 +349,10 @@ third-party versions. The remaining ~240 unlanded rows are Lionhead audio/engine
 the reconstruction pipeline.
 
 ### Tooling changes to request from the coordinator
+Items 1-3 done 2026-11-08 (`libsig_scan.py --vendor`, `lib_verify.py` vendor claims, `toolchain_library` reused with a
+`// Vendor-library:` line; `LIBRARY_SIGNATURES.md` "Vendor libraries"). Item 4: the trees are under `FABLE_THIRDPARTY`
+and `vendor_lib.py --build` compiles them, but `build_candidates.ps1` does not yet compile/link the vendor objects for
+the Windows build. Item 5 is still open (blocks D and E).
 1. `libsig_scan.py`: a `--vendor TAG=DIR` library class whose patterns are kept (today only the VS
    2003/DDK "linked" set survives step 3), with the object file name recorded as `member`.
 2. `lib_verify.py`: accept loose `.obj` directories as libraries (the COFF reader already does) and

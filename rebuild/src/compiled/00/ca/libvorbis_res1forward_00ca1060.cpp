@@ -1,4 +1,5 @@
 // libvorbis::res1_forward(vorbis_block* vb, vorbis_look_residue* vl, float** in, float** out, int* nonzero, int ch, long** partword) -- Xiph res0.c residue type 1 encoder: add the nonzero channels into out, pack them to the front of in, encode their partitions with _encodepart, then subtract the coded residue back out of out
+// Vendor-proof: libvorbis-1.0.1(lib/res0.c) @res1_forward@28 -- 490 bytes verified against Fable.exe 0x00CA1060
 // Leaf: @res1_forward@28
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA1060, 490 bytes, __fastcall (vb ecx, vl edx, in/out/nonzero/ch/partword on the stack,
