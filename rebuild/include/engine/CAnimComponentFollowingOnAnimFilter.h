@@ -1,5 +1,34 @@
 #ifndef FABLE_ENGINE_CANIMCOMPONENTFOLLOWINGONANIMFILTER_H
 #define FABLE_ENGINE_CANIMCOMPONENTFOLLOWINGONANIMFILTER_H
+#ifdef FABLE_RETAIL_ANIMCOMPONENT
+// Retail opt-in (chunk 873, row 0x005DD670 CAnimationEntry::StatRegisterClass): RTTI CAnimComponentFollowingOnAnimFilter : CAnimComponentBase, vtable 0x012557D8;
+// retail sizeof 0xC (`push Ch ; call operator new` in StatRegisterClass; Ego_r.pdb sizeof 12: the animation components are
+// byte-packed, CAnimComponentCombatMisc 10 and CAnimComponentCombatFlourishTargetOffset 17 bytes). The constructor is inline in retail
+// (FableWin.pdb ??0CAnimComponentFollowingOnAnimFilter@@QAE@XZ): IVRefCount = 1, then this vtable and the member's constructor. FableWin.pdb
+// ?StatGetTokenName@CAnimComponentFollowingOnAnimFilter@@SI?AVCCharString@@XZ ("NextAnimFilter", the token RegisteredComponentsByToken keys it by) and
+// ?StatGetType@CAnimComponentFollowingOnAnimFilter@@SI?AW4EAnimComponent@@XZ (ANIM_COMPONENT_FOLLOWING_ON_ANIM_FILTER = 11, the RegisteredComponentDefaults key) are static __fastcall, inline in retail.
+// The overrides are declared only (Ego_r.pdb / FableWin.pdb ?GetType / ?Initialise / ?Alloc / ?Clone / ?TransferBinaryIn / ?TransferBinaryOut /
+// ?SetDefaultValue@CAnimComponentFollowingOnAnimFilter@@...).
+#include "rebuild_abi.h"
+#include "engine/CAnimComponentBase.h"
+#include "engine/CDefString.h"                // FABLE_RETAIL_CDEFSTRINGTABLE
+#pragma pack(push, 1)
+class CAnimComponentFollowingOnAnimFilter : public CAnimComponentBase {
+public:
+    virtual EAnimComponent GetType() const;
+    virtual bool Initialise(CPersistContext& context, const CCharString& token);
+    virtual CAnimComponentBase* Alloc() const;
+    virtual CAnimComponentBase* Clone() const;
+    virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+    virtual void TransferBinaryOut(CDataOutputStream& stream) const;
+    virtual void SetDefaultValue();
+    static CCharString __fastcall StatGetTokenName() { return CCharString("NextAnimFilter"); }
+    static EAnimComponent __fastcall StatGetType() { return ANIM_COMPONENT_FOLLOWING_ON_ANIM_FILTER; }
+    CDefString NextFilter;                        // +0x08 (-1: 0x005DE83E)
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);
+#else // the generated Ego_r layout (the landed default, unchanged)
 #ifdef FABLE_RETAIL_CANIMCOMPONENTFOLLOWINGONANIMFILTER
 // Retail opt-in (chunk 765, row 0x005DBED0): the polymorphic class, RTTI .?AVCAnimComponentFollowingOnAnimFilter@@ : CAnimComponentBase :
 // CIVCountedPointeeBase (ghidra_out/rtti_bases.tsv; vptr +0, IVRefCount +4), Ego_r.pdb member CDefString NextFilter +0x08 (sizeof 0xC,
@@ -45,4 +74,5 @@ FABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, __vftable) == 
 FABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, NextFilter_TablePos) == 0x8);
 
 #endif // FABLE_RETAIL_CANIMCOMPONENTFOLLOWINGONANIMFILTER
+#endif // FABLE_RETAIL_ANIMCOMPONENT
 #endif // FABLE_ENGINE_CANIMCOMPONENTFOLLOWINGONANIMFILTER_H

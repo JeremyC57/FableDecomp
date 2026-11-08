@@ -88,6 +88,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     untouched, two with a scoped device); 0x0083F650 landed after a shared-STL rewrite (`2026-11-08_landing_p/`, 443-byte extent).
     Chunk 866: 10 of 10 Ogg Vorbis rows landed (`2026-11-08_landing_q/`, real Xiph names).
     Chunk 868: 2 of 10 landed (`2026-11-08_landing_r/`: CBH_GangDeputy2::Main, CTalkingTrader1::Main); its parks continue. Chunk 869: 19 Vorbis functions landed (`2026-11-08_landing_s/`; 2 parked).
+    Chunks 872 (libpk) / 873 (game) running (Opus high). 873 pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.
     Chunk 867 (PC UI): 4 of 10 landed (`2026-11-08_landing_v/`; 31 headers gain opt-ins, 12 new); tag land0811v.
     Chunk 871 (libpk + 2 game rows, Opus high): 18 of 18 landed (`2026-11-08_landing_u/`, new libpk/CpuIdentify.h asm helper); tag land0811u.
     Chunk 870 (libpk, Opus high): 16 of 17 landed (`2026-11-08_landing_t/`; 0x00C1D1C0 parked, x87 CSE order); queue tag land0811t.

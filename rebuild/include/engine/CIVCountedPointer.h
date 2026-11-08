@@ -6,6 +6,14 @@
 template<class T> class CIVCountedPointer {
 public:
     CIVCountedPointer() : Object(0) { }
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_FROM_RAW
+    // Nested opt-in (chunk 873, row 0x005DD670 CAnimationEntry::StatRegisterClass): Ego_r.pdb / FableWin.pdb
+    // ??0?$CIVCountedPointer@VCAnimComponentBase@@@@QAE@PAVCAnimComponentBase@@@Z, inline in retail. It adopts the pointee: the new
+    // component's IVRefCount is 1 from CIVCountedPointeeBase's constructor (FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_CTOR; 0x005DD691
+    // `mov [eax+4],edi(1)`) and no AddRef follows; the local's one release at the end of each registration block
+    // (0x005DD820 `dec [esi+4]`) balances it. As Reset's adopting form (FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT).
+    CIVCountedPointer(T* object) : Object(object) { }
+#endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
     // Retail opt-in (chunk 734, row 0x004A1CB0): the counted copy constructor (FableWin.pdb ??0?$CIVCountedPointer@..@@QAE@ABV0@@Z,
     // inline in retail: `mov ecx,[eax+4] ; test ecx,ecx ; je ; inc dword ptr [ecx+4]` at 0x004A2084). Without the opt-in the
@@ -73,6 +81,17 @@ public:
     void Release() {
         if (Object) {
             Object->Release();
+            Object = 0;
+        }
+    }
+#elif defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_INNER)
+    // Nested opt-in (chunk 873, row 0x005DD670 CAnimationEntry::StatRegisterClass): the pointer copied inside the null test, so the
+    // copy into ecx follows the `je` (0x005DD707: `cmp eax,ebx ; je ; mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx`), then the
+    // zero store on the release path (0x005DD71D). Same semantics as the branch below.
+    void Release() {
+        if (Object) {
+            CIVCountedPointeeBase* object = Object;
+            if (object->Release() == 0) object->Delete();
             Object = 0;
         }
     }

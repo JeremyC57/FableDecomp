@@ -69,6 +69,21 @@ public:
     void Insert(const value_type& value) { this->push_back(value); Dirty=true; }
     void Update() { if(Dirty) { std::sort(this->begin(),this->end(),Compare); Dirty=false; } }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_INSERT_KEYVALUE
+    // Nested opt-in (chunk 873, row 0x005DD670 CAnimationEntry::StatRegisterClass): Insert as the PDBs declare it, (key, value) by const
+    // reference (FableWin.pdb ?Insert@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@..@@QAEXABW4EAnimComponent@@
+    // ABV?$CIVCountedPointer@VCAnimComponentBase@@@@@Z, and nine Ego_r-era instantiations, all `ABK ABV`). Forced inline: Ego_r.pdb holds
+    // no out-of-line CVectorMap::Insert (FableWin.pdb, unoptimised, 61) and retail expands all 26 calls of that row, while a plain inline
+    // Insert is called out of line there (3919 of 5317 bytes). The pair comes from make_pair inside its own statement, so it is
+    // destroyed before Dirty is set (0x005DD7B0 `dec [esi+4]` ... 0x005DD7BC `mov byte ptr [Dirty],1`), and its push_back is a plain
+    // inline that VC7.1's caller budget expands at the first 17 of the 26 sites and calls (0x005E3110) at the rest, as in retail.
+#if defined(_MSC_VER)
+    __forceinline
+#else
+    inline
+#endif
+    void Insert(const K& key,const V& value) { this->push_back(std::make_pair(key,value)); Dirty=true; }
+#endif
 private:
     CompareType Compare;
     bool Dirty;

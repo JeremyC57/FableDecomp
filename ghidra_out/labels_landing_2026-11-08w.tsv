@@ -1,0 +1,10 @@
+address	name	evidence
+0x00488D10	?InitInterfaces@CPlayer@@AAEXXZ	chunk 873: Ego_r.pdb 0x004941E0 ; FableWin.pdb 0x01AC5A80; one caller 0x0048A38C (CPlayer init); body builds the 66 CPlayer::InputProcess* members
+0x005DD670	?StatRegisterClass@CAnimationEntry@@SIXXZ	chunk 873: Ego_r.pdb 0x0063CE80 ; FableWin.pdb 0x01F9D910; caller 0x0044E907 (class registration); body writes RegisteredComponentsByType/Defaults (reloc_bindings)
+0x00839940	?OnHit@CThingGameObject@@UAEXAAVCHitParameters@@@Z	chunk 873: Ego_r.pdb 0x008147F0 ; FableWin.pdb 0x027EC280; CThingGameObject vtable slot reference
+0x00975BB0	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	chunk 873: Ego_r.pdb 0x0099B180 ; FableWin.pdb 0x02BE6F30; vtable reference 0x0128D6E4
+0x0078FD60	?FrameUpdate@CTCDivineWrath@@UAEXXZ	chunk 873: Ego_r.pdb 0x00795CC0 ; FableWin.pdb 0x0267DB40; vtable reference 0x0126BEA8
+0x00BE3970	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z	chunk 873: Ego_r.pdb 0x009C3350 ; FableWin.pdb 0x02CBCC00; vtable 0x012A2B3C slot 0
+0x005E4BE0	?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z	chunk 873: Ego_r.pdb 0x006432D0 ; FableWin.pdb 0x022C6030; caller 0x005E7123
+0x00507C30	?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z	chunk 873: Ego_r.pdb 0x004DC750 ; FableWin.pdb 0x01C79720; vtable reference 0x01244AF8
+0x00A0E0A0	??0CJoystickPositionTracker@@QAE@XZ	chunk 873: Ego_r.pdb 0x00B78760 ; FableWin.pdb 0x03190070; manifest label; called from InitInterfaces for CInputProcessCombat::PositionTracker

@@ -94,6 +94,9 @@ enum EPlayerMode;                                               // MS forward en
 class CThing;                                                   // chunk 718: GetPPlayerCharacterThing's return type
 class C2DBoxF; class CFontBank;                               // chunk 718: DrawFreeCamDebug's parameter types
 #include "engine/CPlayerModeInfo.h"                             // Codex pass 13: PlayerModeInfo's element type (16-byte member pointers)
+#ifdef FABLE_RETAIL_PLAYER_INPUTPROCESSES
+#include "boost/scoped_ptr.h"                                   // chunk 873: the input-process members' real type (needs FABLE_RETAIL_SCOPED_PTR)
+#endif
 #ifdef FABLE_RETAIL_CCAMERA
 #include "engine/CCamera.h"                                     // chunk 718: the three camera members' real type (below)
 #endif
@@ -159,6 +162,10 @@ public:
     // and its 94 private ?Init/Uninit<Mode>@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z members (Ego_r + FableWin).
 private:
     static const CPlayerModeInfo PlayerModeInfo[MAX_NO_PLAYER_MODES];
+#ifdef FABLE_RETAIL_PLAYER_INPUTPROCESSES
+    // Chunk 873: Ego_r.pdb / FableWin.pdb ?InitInterfaces@CPlayer@@AAEXXZ (private; retail 0x00488D10, called once at 0x0048A38C).
+    void InitInterfaces();
+#endif
     void InitModeControlCreature(EPlayerMode,CProcessedInput*);
     void UninitModeControlCreature(EPlayerMode,CProcessedInput*);
     void InitModeZTarget(EPlayerMode,CProcessedInput*);
@@ -304,6 +311,78 @@ public:
     unsigned char                                                RespawnInfo[0x10]; // +0xe8 CThingRespawnInfo
     CHeroLogBook*                                                PHeroLogBook_Data; // +0xf8 CCountedPointer<CHeroLogBook>::Data
     CCPPointerInfo*                                              PHeroLogBook_Info; // +0xfc CCountedPointer<CHeroLogBook>::Info
+#ifdef FABLE_RETAIL_PLAYER_INPUTPROCESSES
+    // Retail opt-in (chunk 873, row 0x00488D10 CPlayer::InitInterfaces): the 66 input processes are Boost 1.30 scoped_ptr members
+    // (Ego_r.pdb scoped_ptr<T> with the names below; boost/scoped_ptr.h FABLE_RETAIL_SCOPED_PTR + _RESET). Same offsets as the flattened
+    // `_ptr` words of the default branch. InitInterfaces fills each with `reset(new T(init))`: the old pointer read, the new one stored,
+    // then the old process deleted through its virtual destructor (`push 1 ; call [vtable]`).
+    boost::scoped_ptr<CInputProcessMain>                         InputProcessMain; // +0x100
+    boost::scoped_ptr<CInputProcessControlCreature>              InputProcessControlCreature; // +0x104
+    boost::scoped_ptr<CInputProcessZTarget>                      InputProcessZTarget; // +0x108
+    boost::scoped_ptr<CInputProcessDead>                         InputProcessDead; // +0x10c
+    boost::scoped_ptr<CInputProcessInventory>                    InputProcessInventory; // +0x110
+    boost::scoped_ptr<CInputProcessInventoryClothing>            InputProcessInventoryClothing; // +0x114
+    boost::scoped_ptr<CInputProcessInventoryWeapons>             InputProcessInventoryWeapons; // +0x118
+    boost::scoped_ptr<CInputProcessHeroAbilitiesScreen>          InputProcessHeroAbilitiesScreen; // +0x11c
+    boost::scoped_ptr<CInputProcessInventoryMapScreen>           InputProcessInventoryMapScreen; // +0x120
+    boost::scoped_ptr<CInputProcessInventoryStatsScreen>         InputProcessInventoryStatsScreen; // +0x124
+    boost::scoped_ptr<CInputProcessInventoryMagicScreen>         InputProcessInventoryMagicScreen; // +0x128
+    boost::scoped_ptr<CInputProcessInventoryExperienceScreen>    InputProcessInventoryExperienceScreen; // +0x12c
+    boost::scoped_ptr<CInputProcessInventoryTradeScreen>         InputProcessInventoryTradeScreen; // +0x130
+    boost::scoped_ptr<CInputProcessInventoryQuestsScreen>        InputProcessInventoryQuestsScreen; // +0x134
+    boost::scoped_ptr<CInputProcessHeroInformationScreens>       InputProcessHeroInformationScreens; // +0x138
+    boost::scoped_ptr<CInputProcessFirstPerson>                  InputProcessFirstPerson; // +0x13c
+    boost::scoped_ptr<CInputProcessClickPastText>                InputProcessClickPastText; // +0x140
+    boost::scoped_ptr<CInputProcessYesNoQuestion>                InputProcessYesNoQuestion; // +0x144
+    boost::scoped_ptr<CInputProcessFreezeControls>               InputProcessFreezeControls; // +0x148
+    boost::scoped_ptr<CInputProcessControlFreeCamera>            InputProcessControlFreeCamera; // +0x14c
+    boost::scoped_ptr<CInputProcessCreatureMovement>             InputProcessCreatureMovement; // +0x150
+    boost::scoped_ptr<CInputProcessUseEnvironment>               InputProcessUseEnvironment; // +0x154
+    boost::scoped_ptr<CInputProcessBlock>                        InputProcessBlock; // +0x158
+    boost::scoped_ptr<CInputProcessDebugControls>                InputProcessDebugControls; // +0x15c
+    boost::scoped_ptr<CInputProcessQuickAccessItems>             InputProcessQuickAccessItems; // +0x160
+    boost::scoped_ptr<CInputProcessCombat>                       InputProcessCombat; // +0x164
+    boost::scoped_ptr<CInputProcessSpecialAbilities>             InputProcessSpecialAbilities; // +0x168
+    boost::scoped_ptr<CInputProcessControlCreatureRightStick>    InputProcessControlCreatureRightStick; // +0x16c
+    boost::scoped_ptr<CInputProcessCameraLookAround>             InputProcessRightStickLookAround; // +0x170
+    boost::scoped_ptr<CInputProcessCycleSpecialCameraModes>      InputProcessCycleSpecialCameraModes; // +0x174
+    boost::scoped_ptr<CInputProcessRebootGame>                   InputProcessRebootGame; // +0x178
+    boost::scoped_ptr<CInputProcessJumpingAndRolling>            InputProcessJumpingAndRolling; // +0x17c
+    boost::scoped_ptr<CInputProcessFirstPersonTargeting>         InputProcessFirstPersonTargeting; // +0x180
+    boost::scoped_ptr<CInputProcessUseRangedWeapon>              InputProcessUseRangedWeapon; // +0x184
+    boost::scoped_ptr<CInputProcessControlCreatureActivateZTarget> InputProcessControlCreatureActivateZTarget; // +0x188
+    boost::scoped_ptr<CInputProcessControlCreatureActivateZTargetOnPress> InputProcessControlCreatureActivateZTargetOnPress; // +0x18c
+    boost::scoped_ptr<CInputProcessFirstPersonLookAround>        InputProcessLeftStickLookAround; // +0x190
+    boost::scoped_ptr<CInputProcessInGameMenu>                   InputProcessInGameMenu; // +0x194
+    boost::scoped_ptr<CInputProcessControlSpirit>                InputProcessControlSpirit; // +0x198
+    boost::scoped_ptr<CInputProcessTavernGame>                   InputProcessTavernGame; // +0x19c
+    boost::scoped_ptr<CInputProcessSetRangedWeaponMode>          InputProcessSetRangedWeaponMode; // +0x1a0
+    boost::scoped_ptr<CInputProcessCutScene>                     InputProcessCutScene; // +0x1a4
+    boost::scoped_ptr<CInputProcessFishing>                      InputProcessFishing; // +0x1a8
+    boost::scoped_ptr<CInputProcessDigging>                      InputProcessDigging; // +0x1ac
+    boost::scoped_ptr<CInputProcessParalysed>                    InputProcessParalysed; // +0x1b0
+    boost::scoped_ptr<CInputProcessBoastUI>                      InputProcessBoastUI; // +0x1b4
+    boost::scoped_ptr<CInputProcessSetRangedWeaponThirdPersonMode> InputProcessSetRangedWeaponThirdPerson; // +0x1b8
+    boost::scoped_ptr<CInputProcessUseRangedWeaponZLock>         InputProcessUseRangedWeaponZLock; // +0x1bc
+    boost::scoped_ptr<CInputProcessWatchForRangedWeaponThirdPersonModeTermination> InputProcessWatchForRangedWeaponThirdPersonModeTermination; // +0x1c0
+    boost::scoped_ptr<CInputProcessWatchForWillChargeUpThirdPersonModeTermination> InputProcessWatchForWillChargeUpThirdPersonModeTermination; // +0x1c4
+    boost::scoped_ptr<CInputProcessTargetLockCycleTargets>       InputProcessTargetLockCycleTargets; // +0x1c8
+    boost::scoped_ptr<CInputProcessQuickAccessMenu>              InputProcessQuickAccessMenu; // +0x1cc
+    boost::scoped_ptr<CInputProcessQuestCompletionUI>            InputProcessQuestCompletionUI; // +0x1d0
+    boost::scoped_ptr<CInputProcessTargetLockRightStickTargetSelect> InputProcessTargetLockRightStickTargetSelect; // +0x1d4
+    boost::scoped_ptr<CInputProcessBButtonExitMode>              InputProcessBButtonExitMode; // +0x1d8
+    boost::scoped_ptr<CInputProcessCreditsUI>                    InputProcessCreditsUI; // +0x1dc
+    boost::scoped_ptr<CInputProcessBetting>                      InputProcessBetting; // +0x1e0
+    boost::scoped_ptr<CInputProcessLightning>                    InputProcessLightning; // +0x1e4
+    boost::scoped_ptr<CInputProcessCreatureMovementWatchForControlAngleChange> InputProcessWatchForControlAngleChange; // +0x1e8
+    boost::scoped_ptr<CInputProcessOracleMinigame>               InputProcessOracleMinigame; // +0x1ec
+    boost::scoped_ptr<CInputProcessFireheartMinigame>            InputProcessFireheartMinigame; // +0x1f0
+    boost::scoped_ptr<CInputProcessStrafe>                       InputProcessStrafe; // +0x1f4
+    boost::scoped_ptr<CInputProcessConsole>                      InputProcessConsole; // +0x1f8
+    boost::scoped_ptr<CInputProcessProjectileTargetingAnalogueZoom> InputProcessProjectileTargetingAnalogueZoom; // +0x1fc
+    boost::scoped_ptr<CInputProcessPhotojournalCapture>          InputProcessPhotojournalCapture; // +0x200
+    boost::scoped_ptr<CInputProcessToggleViewHeroMode>           InputProcessToggleViewHeroMode; // +0x204
+#else
     CInputProcessMain*                                           InputProcessMain_ptr; // +0x100 scoped_ptr<CInputProcessMain>::ptr
     CInputProcessControlCreature*                                InputProcessControlCreature_ptr; // +0x104 scoped_ptr<CInputProcessControlCreature>::ptr
     CInputProcessZTarget*                                        InputProcessZTarget_ptr; // +0x108 scoped_ptr<CInputProcessZTarget>::ptr
@@ -370,6 +449,7 @@ public:
     CInputProcessProjectileTargetingAnalogueZoom*                InputProcessProjectileTargetingAnalogueZoom_ptr; // +0x1fc scoped_ptr<CInputProcessProjectileTargetingAnalogueZoom>::ptr
     CInputProcessPhotojournalCapture*                            InputProcessPhotojournalCapture_ptr; // +0x200 scoped_ptr<CInputProcessPhotojournalCapture>::ptr
     CInputProcessToggleViewHeroMode*                             InputProcessToggleViewHeroMode_ptr; // +0x204 scoped_ptr<CInputProcessToggleViewHeroMode>::ptr
+#endif // FABLE_RETAIL_PLAYER_INPUTPROCESSES
     bool                                                         Local; // +0x208
     bool                                                         ShowWorldThing; // +0x209
     bool                                                         ZTargeting; // +0x20a
@@ -420,6 +500,74 @@ FABLE_STATIC_ASSERT(offsetof(CPlayer, OldFreeCamera) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, RespawnInfo) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PHeroLogBook_Data) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PHeroLogBook_Info) == 0xfc);
+#ifdef FABLE_RETAIL_PLAYER_INPUTPROCESSES
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessMain) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreature) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessZTarget) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDead) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventory) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryClothing) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryWeapons) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessHeroAbilitiesScreen) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryMapScreen) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryStatsScreen) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryMagicScreen) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryExperienceScreen) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryTradeScreen) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryQuestsScreen) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessHeroInformationScreens) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFirstPerson) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessClickPastText) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessYesNoQuestion) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFreezeControls) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlFreeCamera) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCreatureMovement) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseEnvironment) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBlock) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDebugControls) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuickAccessItems) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCombat) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSpecialAbilities) == 0x168);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureRightStick) == 0x16c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessRightStickLookAround) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCycleSpecialCameraModes) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessRebootGame) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessJumpingAndRolling) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFirstPersonTargeting) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseRangedWeapon) == 0x184);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureActivateZTarget) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureActivateZTargetOnPress) == 0x18c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessLeftStickLookAround) == 0x190);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInGameMenu) == 0x194);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlSpirit) == 0x198);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTavernGame) == 0x19c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSetRangedWeaponMode) == 0x1a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCutScene) == 0x1a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFishing) == 0x1a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDigging) == 0x1ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessParalysed) == 0x1b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBoastUI) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSetRangedWeaponThirdPerson) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseRangedWeaponZLock) == 0x1bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForRangedWeaponThirdPersonModeTermination) == 0x1c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForWillChargeUpThirdPersonModeTermination) == 0x1c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTargetLockCycleTargets) == 0x1c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuickAccessMenu) == 0x1cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuestCompletionUI) == 0x1d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTargetLockRightStickTargetSelect) == 0x1d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBButtonExitMode) == 0x1d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCreditsUI) == 0x1dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBetting) == 0x1e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessLightning) == 0x1e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForControlAngleChange) == 0x1e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessOracleMinigame) == 0x1ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFireheartMinigame) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessStrafe) == 0x1f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessConsole) == 0x1f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessProjectileTargetingAnalogueZoom) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessPhotojournalCapture) == 0x200);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessToggleViewHeroMode) == 0x204);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessMain_ptr) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreature_ptr) == 0x104);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessZTarget_ptr) == 0x108);
@@ -486,6 +634,7 @@ FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessConsole_ptr) == 0x1f8);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessProjectileTargetingAnalogueZoom_ptr) == 0x1fc);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessPhotojournalCapture_ptr) == 0x200);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessToggleViewHeroMode_ptr) == 0x204);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayer, Local) == 0x208);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, ShowWorldThing) == 0x209);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, ZTargeting) == 0x20a);

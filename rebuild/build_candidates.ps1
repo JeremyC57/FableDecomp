@@ -386260,6 +386260,20 @@ $catalog = @(
         TestSource = '00/5d/CTCInventoryStats_ConstructExperienceList_005d6748_test.cpp'
         PassPattern = '005d6748_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00488d10'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_InitInterfaces_00488d10.cpp'
+        TestSource = '00/48/CPlayer_InitInterfaces_00488d10_test.cpp'
+        PassPattern = '00488d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dd670'
+        Module = 'CAnimationEntry'
+        Source = '00/5d/CAnimationEntry_StatRegisterClass_005dd670.cpp'
+        TestSource = '00/5d/CAnimationEntry_StatRegisterClass_005dd670_test.cpp'
+        PassPattern = '005dd670_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

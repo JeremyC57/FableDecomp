@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00488d10   RELOCATION_MATCH PASS   InitInterfaces
+005dd670   RELOCATION_MATCH PASS   StatRegisterClass
+
+WINS: 2
+  00488d10 RELOCATION_MATCH CPlayer::?InitInterfaces@CPlayer@@AAEXXZ
+  005dd670 RELOCATION_MATCH CAnimationEntry::?StatRegisterClass@CAnimationEntry@@SIXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CPlayer_InitInterfaces_00488d10
+  CAnimationEntry_StatRegisterClass_005dd670
