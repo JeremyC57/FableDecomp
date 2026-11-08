@@ -14,3 +14,7 @@ v6   DIFFER    13653v35651 /GS  (b5: PC_QUIT, logbook/PC constructs, style cards
 v7   DIFFER    18843v35651 /GS  (b6: *_PC unassign/reset, owned events, observers, MOVE_COMPONENT, SEND_EVENT, SCROLL_DESCRIPTION_*, SET_SPELL_TO_ASSIGN_*_PC)
 v8   DIFFER    20848v35651 /GS  (b7+b8: EXPRESSIONS/MAGIC lists, OBSERVE/IGNORE, SCROLL_ACTIVE_LIST_*, tavern bets, keys, CLOSE_FRAME, CONTINUE, RESPAWN; difflib 47.4%)
 Next: write cases 2000-2023 and 3000-4002 (WORKLOG.md), then inline tuning.
+v9   DIFFER    36635v35651 /GS  (session 2: all 213 cases written: 2000-2023 + 3000-4002; models + overlay CClickable/CMenuEntry/fable_definition_table)
+v10  DIFFER    35964v35651 /GS  (drop optimize("y",off): biased lea ebp,[esp-74h] frame now; frame 0x904 vs 0x800)
+v11  DIFFER    35760v35651 /GS  (CEngineGraphic PDB ctors -> non-POD: hidden ptr in ecx, temporaries read in place; GetPerItemDataForItem respell)
+v12  DIFFER    35762v35651 /GS  (CAction::IsValid overlay opt-in -> mov al/test al at entry; game loaded before null test; frame 0x8dc)

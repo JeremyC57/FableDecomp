@@ -3,7 +3,7 @@
 ## What matched (0)
 
 ## Parked for Fable 5.1 (1)
-- 0x0041E6D3 NUISystem::CManager::Action DIFFER(20848v35651): the source is incomplete -- ~165 of 213 switch cases are written (WIELD .. RESPAWN, 0x41E752..0x423261); the 2000-2023 description loaders (~12.7 KB) and the 3000-4002 photojournal / scoreboard cases (~3.5 KB) still fall to `default`, so the frame (sub esp,800h) and every register choice still differ from instruction 1 (difflib 47.4%) | tried: 8 grades building the body batch by batch (ATTEMPTS.log) | next: write the missing cases (WORKLOG.md "Decoding rules"), then tune the same-TU inline split (setters 0x41C965..0x41CA52, list begin 0x429A85 called late, inline early) with same-TU out-of-line bodies and /d2inlS<N>.
+- 0x0041E6D3 NUISystem::CManager::Action DIFFER(35762v35651): all 213 cases are written (loose per-case match 93.5%), but VC7.1 does not pack ours' disjoint-scope object locals into shared frame slots (retail puts every `CDeletion deletion` at [ebp-248h]; ours gives each its own), so the frame is 0x8DC vs 0x800 and every offset below [ebp-248h] differs | tried: 12 grades (ATTEMPTS.log); probes show c2 turns slot packing off above a count of frame symbols, and our source crosses it at case 130 (cases 0..129 pack), /d2inlS5/8 do not help | next: cut the frame-symbol count with retail-shaped spellings (fewer named object locals and inline-expansion temps; retail calls list begin 0x429A85 / != 0x41C830 / ++ 0x429CEA late) until `_deletion$` slots pack (probe/pk/runf.sh), then the per-case residues (WORKLOG.md Session 2).
 
 ## Skipped
 
@@ -17,6 +17,17 @@ See LABELS.tsv (25 rows, each with two sources). Catalog/manifest labels proven 
 - 0x005D6748 landed label `?ConstructExperienceList@CTCInventoryStats@@AAEPAVCComponent@NUISystem@@XZ` is the virtual slot 87
   taking the screen (NAME_FIXES.tsv).
 - The descriptive setters 0x0041C965 / 72 / 94, 0x0041CA31 / 3E / 52, 0x0041CF1F / 33, 0x005FA900 have PDB names (LABELS.tsv).
+
+Session 2 label corrections (LABELS.tsv / NAME_FIXES.tsv):
+- 0x00401490, landed as `CEngineMap::PeekWaterHasType`, is `?GFStringsAreEqual@@YI_NPB_W0@Z` (CWideString == const wchar_t* on a
+  null block; FableWin name set).
+- 0x005BE8D3 catalog `CTCInventoryBase::GetBoughtPrice` = NInventory::CTCInventoryBase::GetPerItemDataForItem (wave-1 decision
+  already says so; it returns the CPerItemData whose Augmentations vector LOAD_WEAPON_MENU_ENTRY_NAME walks).
+- 0x0042D405 = CTCInventoryWeapons::SetWeaponMappingToMenuEntry; 0x0042D41E = CTCInventoryClothing::SetClothingMappingToMenuEntry;
+  0x0042BEAD = CTCInventoryWeapons::AddComponentToAvailableWeaponsEntries (catalog Forward_Std_List_PushFront...);
+  0x0042CD3E / 0x0042CD61 = CTCInventoryTrade::GetNumberOfSellItems / GetNumberOfBuyItems (catalog FID_conflict:max_size);
+  0x0042D437 / 0x0042D44A = CTCInventoryTrade::RemoveFromItemSellList / RemoveFromItemBuyList (catalog
+  Forward_CompareAndCountAllocations...).
 
 ## Case map (for the successor)
 t2/order.txt lists every case body by retail address with its EActionType (= source order). Six jump tables:

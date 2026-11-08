@@ -19,3 +19,17 @@ Review at landing:
   CQuestManager, CTCBoastUI (see WORKLOG.md open problem 4).
 - CUserProfileManager overlay accessors SetNewProfileToUseWASD / WereVideoChangesAccepted read opaque bytes (+0x78 / +0x13C);
   type the members when the layout opt-ins are merged.
+Session 2 (2026-11-08):
+- A big size-optimised function's biased frame (`push ebp; lea ebp,[esp-74h]; sub esp,N`) comes from `#pragma optimize("s", on)`
+  alone; adding `optimize("y", off)` (as the landed neighbours do) gives a plain `mov ebp,esp` frame here.
+- VC7.1 c2 packs disjoint-scope object locals (e.g. every block-scoped `CDeletion deletion`) into ONE shared frame slot -- but only
+  while the function's count of frame-resident symbols stays under a limit: a probe switch packs at 360 cases and packs nothing
+  at 380 (same per-case body); spilled scalars count, enregistered ones barely. Past the limit every object local gets its own
+  slot and the frame balloons (0x0041E6D3: 0x8DC vs retail 0x800). `/d2inlS` does not move it. A frame that is uniformly too
+  deep with retail sharing [ebp-xxx] across cases = too many symbols in our source, not a missing local. Diagnose with `/FAs`
+  (the `_name$N = -off ; size` table before `PROC`): packed locals share one offset.
+- A class with a user-declared ctor (CEngineGraphic: PDB ??0CEngineGraphic@@QAE@XZ) returned by value from a __fastcall function
+  takes its hidden pointer in ecx (args shift to edx) and the caller reads the temporary in place; as a POD the hidden pointer is
+  pushed and the caller copies it out (movsd x3 + movsw for 14 bytes).
+- An inline bool getter (`CAction::IsValid()`) compiles to `mov al,[eax+0Ch]; test al,al`; the same member tested directly is
+  `cmp byte ptr [eax+0Ch],0`.

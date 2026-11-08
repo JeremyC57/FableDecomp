@@ -1,3 +1,5 @@
 address	correct_symbol	evidence	wrong_spellings_seen
 005d6748	?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	virtual slot 87 of vtable 0x01254ADC (engine/CTCInventoryStats.h declares it virtual with a CComponent* parameter; FableWin UAE); CONSTRUCT_EXPERIENCE_LIST pushes the screen and calls [eax+15Ch] (0x0041FF0C)	labels_landing_2026-11-08v.tsv ?ConstructExperienceList@CTCInventoryStats@@AAEPAVCComponent@NUISystem@@XZ (private, no parameter)
 004083b0	?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ	RESTORE_DEFAULTS_AUDIO 0x0042116A + FableWin name set (see LABELS.tsv)	catalog CUserProfileManager::SetDefaultValuesGameplay
+00401490	?GFStringsAreEqual@@YI_NPB_W0@Z	FableWin.pdb name set; the CWideString == const wchar_t* null-block compare (wcscmp == 0, fastcall) called from this row	landed CEngineMap::PeekWaterHasType
+005be8d3	?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z	FableWin.pdb name set + naming wave-1 DECISIONS.tsv; caller reads CPerItemData::Augmentations	catalog CTCInventoryBase::GetBoughtPrice (resynced manifest label)

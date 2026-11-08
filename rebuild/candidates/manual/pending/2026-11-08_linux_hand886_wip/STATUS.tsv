@@ -1,2 +1,2 @@
 address	status	bytes	test	note
-0041e6d3	DIFFER	20848v35651	-	NUISystem::CManager::Action; ~165 of 213 cases written (through RESPAWN 0x00423261); UI_ACTION_* 2000-2023 and 3000-4002 cases still missing; see WORKLOG.md
+0041e6d3	DIFFER	35762v35651	-	NUISystem::CManager::Action; all 213 cases written; loose per-case 93.5%; frame 0x8DC vs 0x800 (VC7.1 slot packing off: too many frame symbols); see WORKLOG.md Session 2
