@@ -1,5 +1,8 @@
 # Register-swap and operand-order misses: what we see and what we've tried
 
+> 2026-11-08: superseded in part by [VC71_CODEGEN_RESEARCH.md](VC71_CODEGEN_RESEARCH.md) (allocator priority rules, scratch rotation,
+> zero-constant thresholds, frame-slot mod/ref rule, x87 order rules, ranked remedies). Read that first.
+
 This is a brief for an outside helper. Context: byte-exact C++ reconstruction of `Fable.exe` with MSVC 7.1
 (cl 13.10.3077, `/O2 /Oy`, x87 floating point, STLport). Most parked rows have the right length and the right
 instructions. They differ only in **which register** or **which operand order** the compiler picked.
