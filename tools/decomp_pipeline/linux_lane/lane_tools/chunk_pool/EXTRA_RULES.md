@@ -114,19 +114,21 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
 ## Owner direction, 2026-11-08: third-party library code is isolated, identified and linked, not hand-written
 Owner, verbatim: "if the audio code is a library, then we can typically skip it in a byte matching decompilation. The core strategy is
 to isolate, identify, and link original or rebuilt library object files rather than rewriting them by hand."
-- No chunk hand-authors third-party library code any more: libpk / GameCODA (Sensaura) / the OpenAL back end, Xiph libogg / libvorbis,
-  zlib, LZO, DirectShow BaseClasses (strmbase), the VC7.1 CRT. Chunks take Fable game code only.
-- The route for library bytes is the one `toolchain_library` already uses (docs/pipeline/LIBRARY_SIGNATURES.md): identify the library and
-  version, build the original or a rebuilt object (vendor source compiled unmodified with VC7.1 at the matching flags, or the vendor's
-  shipped object / .asm), prove it against retail with a signature scan, and link it.
-- Chunks 870 and 871 (zlib + libpk) were stopped on this direction.
+- Third-party vendor code is not chunk material: the VC7.1 CRT, zlib 1.2.1, LZO 1.08, Xiph libogg 1.1.1/1.1.2 + libvorbis 1.0.1
+  (except Lionhead's patched vorbisfile.c, which stays reconstruction), DirectShow BaseClasses (strmbase), DXUT ImeUi.cpp. Region map:
+  docs/pipeline/LIBRARY_MAP.tsv; sources, versions, flags and routes: docs/pipeline/LIBRARY_LINKING.md.
+- The route for those bytes is the one `toolchain_library` already uses (docs/pipeline/LIBRARY_SIGNATURES.md): build the vendor's
+  original source unmodified with VC7.1 at the matching flags (or the vendor's shipped .asm), prove it against retail with the signature
+  tools, and link it. Proven 2026-11-08: zlib 1.2.1 `/TC /MD /GS /DZ_PREFIX` grades RELOCATION_MATCH for z_inflate 0x00C02470.
+- Correction (research, 2026-11-08): the audio block is NOT a vendor library. libpk + the "CODA" audio engine
+  (0x00C086C0..0x00C89C10) and LHNetworkLib are Lionhead in-house code compiled in Lionhead's tree by the game's own cl 13.10.3077
+  (Rich header: no foreign compiler; `d:\dev\audio\ver_fable_1.5_b\libpk\` paths and same-directory `.\PKC*.cpp` /
+  `.\CCodaFrameStreamer.cpp` asserts). No legitimate source, SDK or object exists for them or for Sensaura's GameCODA (leaks are
+  never used). The owner's condition ("if the audio code is a library") does not hold, so they stay reconstruction and are chunk
+  material again.
 - Already-landed hand-written library rows (owner answer, 2026-11-08: "Keep, label as library"): they stay landed and keep their
   grades; they are labelled as library code and reported apart from game code. When a vendor-built object is proven for the same
   range, the linked object becomes the row's provenance and the hand-written body stays as a readable reference.
-- Libraries with no public source (libpk, GameCODA): owner, verbatim: "look into if they are included in the retail files and look
-  carefully online to see if they can be found on reputable sites". Retail ships no DLL for either (statically linked; libpk paths
-  `d:\dev\audio\ver_fable_1.5_b\libpk\PK*.h` and GameCODA strings are in Fable.exe). Research is in progress; until it reports, no
-  chunk takes them. Never use leaked or pirated source.
 
 ## Owner decision, 2026-11-08: inline-budget residues may use an inline control (overrides the 2026-11-02 / 2026-11-03 bans)
 Owner, verbatim: "as long as it does not affect portability, matches retail bytes, behaves the same as retail, and is clean c++.
