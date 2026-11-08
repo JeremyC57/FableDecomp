@@ -25,7 +25,8 @@ List them at any time with `grep -rl '^// Revisit: inline-depth' rebuild/src` (o
 when the markers were added (rechecked with the markers in place: all 146 RELOCATION_MATCH + PASS, `rebuild/candidates/manual/revisit/2026-11-02_inline_depth/recheck_grades.tsv`).
 
 ## Rules
-- No new row may land with a `#pragma inline_depth` region or a second CScriptThing view (EXTRA_RULES; "no modelling device retail never had").
+- Owner decision 2026-11-08 (EXTRA_RULES, top inline section): an inline-budget residue may use an inline control -- a per-row `/d2inlT<N>` / `/d2inlS<N>` flag first, else a scoped `#pragma inline_depth` / `auto_inline` / `noinline` -- when the row matches, its test passes, it stays portable clean C++ and line 2 says `// Inline-budget: ...`. The 65 marked rows below are compliant under it (markers kept as provenance). A second CScriptThing view is still banned.
+- (Superseded 2026-11-08) No new row may land with a `#pragma inline_depth` region or a second CScriptThing view (EXTRA_RULES; "no modelling device retail never had").
 - When a pragma-free shape is found for one row, try it on the whole family and record the result here. A redone row drops its marker in the same commit.
 - Five sources mention `inline_depth` only in comments (0x00A64910, 0x00DD1AF0, 0x00E1CFD0, 0x00E9BBC0, 0x00F34160). Migration wave 8 or a parked
   note left the word there. They carry no directive and are not marked.

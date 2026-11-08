@@ -77,7 +77,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     chunk 864 (Fable retry of twenty parked near misses, research rules + probe, goal 10 of 20). Briefs `$S/w22/agent86N/CHUNK_BRIEF.md`
     carry the shared block `$S/w22/RESEARCH_RULES.md`.
     Chunk 862 finished 7 of 9 (the seven static initializers; landed `2026-11-08_landing_k/`, queue land0811l); its two parks (0x00531EC0,
-    0x00DAADD0) are pure inline-budget splits -- the agent asks whether a per-TU inline knob is acceptable (owner question, rule unchanged).
+    0x00DAADD0) are pure inline-budget splits. Owner decision 2026-11-08 (EXTRA_RULES, "Owner decision, 2026-11-08"): an inline-budget
+    residue may use an inline control (per-row `/d2inlT<N>` / `/d2inlS<N>` flag first, else a scoped `#pragma inline_depth` / `noinline`) when
+    the row matches, its test passes and it stays portable clean C++; line 2 `// Inline-budget: ...`. Chunk 865 lands the inline-budget parks.
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
@@ -116,7 +118,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x00429B72 / 0x00429C53, other rows to the bodies 0x00429160 / 0x004291DE (one symbol, two addresses; queued CHECK `land0611a`).
     Owner question (chunk 804): the three CQ_ArenaHoldingScriptScript fan Mains (0x00CF18D0 / 0x00CF2B70 / 0x00CF3D20) match
     only under the undocumented VC7.1 flag `/d2inlS20` (the caller-size inline cap), and chunk 809's CNOVI_Guard / CGhostGrannySon
-    Mains (0x00DAC760 / 0x00E8EF80) only under `/d2inlT72` (the inline threshold); they stay parked unless the owner rules on it.
+    Mains (0x00DAC760 / 0x00E8EF80) only under `/d2inlT72` (the inline threshold); owner ruled 2026-11-08 that this is allowed (chunk 865).
     Owner ruling (2026-11-07): a same-type cast that keeps behaviour identical and byte-matches is acceptable; 0x00DA91A0
     CMapKeeper::Main landed on it (`2026-11-07_landing_d/`). The six landed CScriptThingView rows may move to the cast-only form later. Chunk 821: `/d2inlS15` (diagnostic) matches 0x00D2ED20 / 0x00D2D930. Naming open: 0x0129BA3C
     EPSILON v DELTA_NOTIONAL_ZERO; 0x004BFFC0 also bound as the placeholder ClearMeshEffect_004bffc0 (queued `land0611v`).

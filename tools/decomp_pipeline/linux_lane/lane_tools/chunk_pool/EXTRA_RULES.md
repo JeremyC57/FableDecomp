@@ -111,16 +111,36 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
 - **Parked pairs land together.** 0x00626E40 ConstructItemCategoryList is reconstructed first (same retail TU, before
   0x006276F0 GetItemsListUI); 0x00935E40 PutOutFire with its identical sibling 0x009363D0. Cut as one "pairs" chunk.
 
+## Owner decision, 2026-11-08: inline-budget residues may use an inline control (overrides the 2026-11-02 / 2026-11-03 bans)
+Owner, verbatim: "as long as it does not affect portability, matches retail bytes, behaves the same as retail, and is clean c++.
+then whatever you need to do, you can do it" (answer to: may a row whose only residue is VC7.1's inline-budget split -- retail
+expands an inline callee at some sites and calls it at others -- use a compiler inline setting?).
+- Scope: residues that are inline decisions (expanded vs called copies of an inline function, inline depth, caller-size cap).
+  Not register choice, not block layout, not anything that needs asm; ASM_RULES and byte purity are unchanged.
+- Order of preference: (1) plain C++ with retail-plausible control flow (the 2026-11-03 note below); (2) a per-row compiler flag
+  with the source untouched: payload `"flags": ["/d2inlT<N>"]` / `"/d2inlS<N>"` (or a documented `/Ob<n>`), which becomes the
+  catalog `CompilerFlags` and the row's `// Flags:` line -- the least invasive device, no effect on any other compiler;
+  (3) a source-level MSVC inline control scoped to the affected code: `#pragma inline_depth(N)` ... `#pragma inline_depth()`,
+  `#pragma auto_inline(off)` ... `(on)`, `__declspec(noinline)` / `__forceinline` on a row-local helper. A source device must
+  leave plain, portable C++ for other compilers (pragmas other compilers ignore, or `#ifdef _MSC_VER` around the declspec).
+- Conditions, all required: vland MATCH / RELOCATION_MATCH; the behaviour test PASSes (same behaviour as retail); no
+  `__asm` / `naked` / `_emit` / `volatile`; shared headers as usual, no invented duplicate class model (two-view CScriptThing
+  is NOT covered); pick the smallest N that matches and say why.
+- Mark it: line 2 (or the line after the Leaf/Flags header) `// Inline-budget: <device> -- <which callee/sites; diagnostic evidence>`.
+- The 65 landed `// Revisit: inline-depth` rows are compliant under this decision; their markers stay as provenance. The
+  2026-11-07 ruling against a row-local `__forceinline` helper (0x0094AB00) stays for non-inline residues; for a pure
+  inline-budget residue this decision allows it (preference 3).
+
 ## Coordinator note, 2026-11-03: per-call-site inline splits without pragmas
 Retail mixes expanded and called copies of one plain-inline function inside one function; VC7.1 decides per call site from c2's
 static block frequency (docs/pipeline/INLINE_DEPTH_REVISIT.md, 2026-11-03 section). Reproduce a split with plain `inline` and
 retail-plausible control flow: a `do { ... } while (0)` statement macro used uniformly (e.g. at every terminate check), a loop
-guard, a real loop. Never `#pragma inline_depth`, never the hidden `/d2inl*` c2 knobs. Wrapping only some exits is accepted
+guard, a real loop. (2026-11-08: when this fails, the owner decision above allows an inline control.) Wrapping only some exits is accepted
 only with a line-2 note that retail's construct there is unproven.
 
 ## Owner decision, 2026-11-02: inline_depth rows kept and marked
 - The 129 landed rows with `#pragma inline_depth` regions and the 17 two-view CScriptThing rows stay. Line 2 of each carries `// Revisit: inline-depth` or
-  `// Revisit: two-view-CScriptThing` (docs/pipeline/INLINE_DEPTH_REVISIT.md). No new row lands with either device. A chunk that finds a pragma-free
+  `// Revisit: two-view-CScriptThing` (docs/pipeline/INLINE_DEPTH_REVISIT.md). (2026-11-08: `#pragma inline_depth` allowed again under the owner decision above; the two-view model is still banned.) A chunk that finds a pragma-free
   shape for one of them reports it; the coordinator tries it on the family and removes the marker from every row it redoes.
 
 ## Owner 2026-11-02: SDK packing boundaries retail used
