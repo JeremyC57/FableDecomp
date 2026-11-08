@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0x0061E6D0	DIFFER	12357v12356	-	differ/0061e6d0.cpp (probe v42): calls equal to retail with 6 inline_depth(0) budget stand-ins; register choice (const 0 / type / state_index), frame 0x42C v 0x41C; sdiff 467

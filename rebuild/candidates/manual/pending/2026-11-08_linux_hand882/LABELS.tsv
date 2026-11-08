@@ -1,0 +1,12 @@
+address	name	source1	source2
+0x0061E6D0	?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z	Ego_r.pdb 0x0059CED0	FableWin.pdb 0x01F80640 (+ RTTI .?AVCTCInventoryQuests@@, catalog row)
+0x004B1270	?IsActiveQuestStartedInRegion@CQuestManager@@QBE_NABVCCharString@@@Z	Ego_r.pdb 0x004B5810 / FableWin.pdb 0x01C55840	row 0x006204BE: `mov ecx,[CQuestManager instance]` + region-name CCharString arg, bool result
+0x005BEB57	?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z	Ego_r.pdb 0x00620EC7 / FableWin.pdb 0x0236E25F	row 0x0061F06B: this = the inventory screen, CRegion& arg, result -> CSprite::SetGraphicIndex
+0x00603000	?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z	Ego_r.pdb 0x00652B10 / FableWin.pdb 0x02093750	row 0x0061F102: this = GetTC(TCI_INVENTORY_MAP), (mini map component, region)
+0x005FF190	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	Ego_r.pdb 0x00650950 / FableWin.pdb 0x02099AF0	row final block: (world map component, vector<CRegion>)
+0x005FD410	?GetRegionsToDisplay@CTCInventoryMap@@QAEXAAV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z	Ego_r.pdb 0x00651990 / FableWin.pdb 0x0209C2B0	row final block: set<long>& argument
+0x00702280	?IsCore@CTCQuestCard@@QBE_NXZ	Ego_r.pdb 0x00723DA0 (first of IsCore < IsExclusive < IsOptional < IsVignette)	retail order 0x00702280 / 0x007022A0 / 0x007022C0 / 0x007022E0 (reads PDef +0x58 / +0x5A / opt / +0x59)
+0x007022A0	?IsExclusive@CTCQuestCard@@QBE_NXZ	Ego_r.pdb 0x00723DC0 / FableWin.pdb 0x02554800	reads PDef+0x5A (CQuestCardDef::IsExclusive, Ego_r layout -4)
+0x007022C0	?IsOptional@CTCQuestCard@@QBE_NXZ	Ego_r.pdb 0x00723DE0 / FableWin.pdb 0x02554960	row 0x0061E7C5 (second bucket test)
+0x007022E0	?IsVignette@CTCQuestCard@@QBE_NXZ	Ego_r.pdb 0x00723E00 / FableWin.pdb 0x02554AA0	reads PDef+0x59 (CQuestCardDef::IsVignette)
+0x009CCDC0	?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z	Ego_r.pdb 0x00B1A780 / FableWin.pdb 0x02F97650	row icon lookups ("HUD_ORB_QUEST_CORE" etc.) on the sprite CGraphicDataBank (CBankFile base at +0)

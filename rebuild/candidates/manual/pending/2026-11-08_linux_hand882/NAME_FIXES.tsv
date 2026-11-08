@@ -1,0 +1,4 @@
+address	landed_spelling	correct_spelling	evidence
+0x00411570	strcmp_signed (rebuild/src/compiled/00/41/global_global_00411570.cpp)	CBasicString<char>::Compare (static __fastcall long Compare(const char*, const char*))	fable_string.h CBasicString<T>::Compare declaration and the inline CCharString== callers; many landed rows already call it Compare / Compare_00411570
+0x007022A0	CTCQuestCard::IsCore	CTCQuestCard::IsExclusive	reads PDef+0x5A; Ego_r.pdb order IsCore 0x00723DA0 < IsExclusive 0x00723DC0 < IsOptional < IsVignette matches retail 0x00702280 < 0x007022A0 < 0x007022C0 < 0x007022E0
+0x007022E0	CTCShotDefinitionBase::CanBeHitByMeleeStrike (propagated label)	CTCQuestCard::IsVignette	reads PDef+0x59 (CQuestCardDef::IsVignette); Ego_r.pdb ?IsVignette@CTCQuestCard@@QBE_NXZ 0x00723E00 is the fourth of the run
