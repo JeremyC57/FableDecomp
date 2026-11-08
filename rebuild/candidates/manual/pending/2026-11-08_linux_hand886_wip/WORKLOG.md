@@ -1,6 +1,50 @@
 # WORKLOG 0x0041E6D3 -- NUISystem::CManager::Action  (agent886, 2026-11-08)
 
-## Session 4 (2026-11-08) -- READ THIS FIRST (parked at v17 = src/ = differ/)
+## Session 5 (2026-11-08) -- READ THIS FIRST (parked at v23 = src/ = differ/ minus the 6 Grade lines; t5/v18.cpp, t5/v22.cpp kept)
+State: **v23 DIFFER(35697v35651)**, difflib 92.7% of retail instructions (9277/10004; v17/v18 were 92.0%), loose per-case
+96.6% (t4/pc.py), frame 0x808 v retail 0x800. Byte count is now ABOVE retail because the 13 bool-setter memory homes (+5 bytes
+each) are retail's too; do not read 35632 (v22) as "closer".
+
+Fixed this session (all retail-evidenced, ATTEMPTS.log v19..v23):
+- POP_MAP_STATE: `std::map<unsigned long, CUIState>::iterator it;` declared, then `it = map->GetStates().find(state)`; the
+  insert loop reuses `it` = retail find temp [-628h] copied into the [-250h] slot; the pair is a named `value_type entry(..)`.
+  `iterator it = find()` (v19) shrinks the frame to 0x7FC.
+- 2020/2022: `CComponent* list; if (PInventoryTrade->InventoryTradeOpen) list = FindChild("PC_..."); else list = FindChild("UI_...");`
+- ASSIGN_SPELL_TO_ITEM_SLOT_PC: `reverse_iterator it = UIActionParams.rbegin(); ++it; ++it;` (home store of the list header).
+- CHANGE_CHILD_STATE: `reverse_iterator component = rbegin(); for (i = depth->Value; i > 0; --i) ++component;`.
+- 13 bool setters (SET_HEADPHONES .. SET_SHOW_TARGETING_STATUS): `bool enabled = ..->Value > 0; Get().SetX(enabled, false);`
+  gives retail's `seta al; mov byte [ebp+7Ch],al; push dword [ebp+7Ch]` (0x0041F245). A named bool local in this regime-1
+  function lives in memory; an argument expression stays in eax (`push eax`).
+- Tried, no change: SCROLL_* with the C2DVector built in the call (retail fills the delta, then loads GPreviousSelected in the
+  shared tail 0x422F30; ours still hoists the GPreviousSelected load above the delta stores).
+
+Entry register roles (the first difference, instruction 6) -- what c2 does (probe/p5/v18.trace via c2prio --trace):
+- The CAction* is NOT `action` itself but CSE temp #1395 of `action.Ptr` (kind 3) spanning the switch head and each case's first
+  use; killed by stores through pointers (reverse_iterator ++, list walks), not by calls; then rematerialised from [ebp+7Ch].
+- Colouring order = priority desc (prio = sum over referencing blocks of w*K*cost minus w*K per live-through block): temp #1395
+  prio 1015 is coloured BEFORE game #102 prio 571, so it takes esi and game gets edi. Retail needs game first, or an esi cost on the
+  temp. Chooser: cost array 0x10880680 filled in 0x107833F2: an uncoloured neighbour with a copy-relation list (+0x38) adds weight
+  to its preferred regs (0x107AA2BD / 0x107AC65E); an uncoloured neighbour with exactly one allowed reg adds spill*100
+  (0x10784B8F..0x10784B57); own relations subtract weight (0x1078C062); cheapest allowed reg in table order eax,ecx,edx,esi,edi,
+  ebx,ebp wins. Reference counts of both match retail almost exactly, so the cause is elsewhere: candidates are the K / live-
+  through sets (bool locals in memory -- v23 changed nothing here; CSE temps such as PInventoryTrade in 2008/2010 (retail ebx);
+  const 8 in LOAD_PHOTO (retail ebx)), and [ebp+7Ch] homes (v23: 258 ours v 257 retail; per case t5/percnt.py).
+
+Open, per case (t5/percnt.py `ebp \+ 0x7c\]` and t5/swap.py --show <caseaddr>):
+1. Cross-jump direction: retail keeps the GetTC + AddCloseInventoryEvent tail in CLOSE_TELEPORT_MENU (0x41F792) and
+   CLOSE_MENU / OPEN_ABILITIES / CLOSE_ABILITIES jump to it; ours keeps the earlier copies. EXIT_LIVE_GUI_IF_LEAF -> 0x41F849.
+2. CHOOSE_CLAN: retail `*action->UIActionParams.begin()` with a begin temp at [-678h] and the param in esi (ours 3 [7Ch] uses v 1).
+3. LOAD_PHOTO: photoTexture homed in [7Ch], const 8 in ebx (ours neither).
+4. ASSIGN_SPELL_TO_ITEM_SLOT_PC 6 v 4 and 2014 7 v 6 [7Ch] uses.
+5. Frame 0x808 v 0x800 since v21 (both reverse_iterator homes are retail's): 8 bytes of slots elsewhere (t5/fhist.py).
+6. SCROLL_* shared ChangeTargetPositionDelta tail; CWideString == non-null block placement in 2006/2013.
+
+Tools (t5/): swap.py (`SWAP=0 NOFRAME=1 python3 t5/swap.py <obj> [--show caseaddr]`, per-case touched counts), percnt.py
+(`percnt.py <obj> '<regex>'` per-case retail v ours counts), fhist.py (frame offset histogram), regcnt.py, roleuse.py,
+blk.py (c2 block dump filter), backj.py, loops.py. gr19..gr23.txt are the grade outputs, v19..v23.obj the objects.
+Always run t2/pp.sh on the source before gr.sh.
+
+## Session 4 (2026-11-08) (parked at v17; superseded by Session 5)
 - Working copy t4/w.cpp (src/ still v14). Fixes so far (no grade yet; objs from the c2 trace runs score loose 94.2%):
   * MISSING CASE found: UI_ACTION_TYPE_RESET_ASSIGNED_SPELLS (211, retail 0x00420ACF): hero GetTC(TCI_HERO_ABILITIES) ->
     CTCInventoryAbilities::ResetAssignedAbilities() 0x005F694D (Ego_r + FableWin ?ResetAssignedAbilities@CTCInventoryAbilities@@QAEXXZ).

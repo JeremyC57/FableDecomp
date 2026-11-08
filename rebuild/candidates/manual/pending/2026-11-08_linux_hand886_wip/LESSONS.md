@@ -77,3 +77,17 @@ Session 3 (2026-11-08) -- corrects the session-2 packing lesson above:
   combined with a region in the same statement.
 - Once the inline split matched, the frame matched too (0x800): the "one extra unshared 4-byte slot" was an inlined callee's
   temporary, not a declaration-order problem.
+
+## Session 5 (2026-11-08)
+- In a regime-1 function (>10000 IL tuples, global optimizer off) a named `bool` local lives in memory: `bool b = x > 0; f(b);`
+  gives `seta al; mov byte [ebp+7Ch],al; push dword [ebp+7Ch]`, while `f(x > 0)` gives `seta al; push eax` (0x0041F245, 13 sites).
+- A `std::list<T*>::reverse_iterator it = l.rbegin(); ++it;` stores the list header to a home slot and reads [hdr+4]; it is a
+  store through a pointer, so it kills the `action.Ptr` CSE temp and the next use reloads [ebp+7Ch] (0x00422101, CHANGE_CHILD_STATE).
+- `iterator it; it = m.find(k); if (it != m.end())` with the later loop reusing `it` = a find temp slot copied into the iterator
+  slot; `iterator it = m.find(k)` constructs in place and drops a slot (POP_MAP_STATE, frame 0x7FC v 0x800).
+- c2 colours by priority, not by first use: the CAction* register is the CSE temp of `action.Ptr`, and it is coloured before
+  `game` because its priority is higher. Reordering declarations or first uses of `game` does nothing (v18). The chooser's cost
+  array (0x10880680, filled at 0x107833F2) adds weight for uncoloured neighbours' copy preferences and spill*100 for
+  neighbours with one register left; the cheapest allowed register in eax,ecx,edx,esi,edi,ebx,ebp order wins.
+- Byte totals mislead: adding retail's own memory homes raised ours from 35632 to 35697 (retail 35651) while the instruction
+  match rose 92.5% -> 92.7%. Grade by difflib share and per-case counts, not by the size gap.

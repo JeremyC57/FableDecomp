@@ -39,3 +39,9 @@ middle of the code (e.g. 0x42095C `sub eax,0C9h` and 0x420F02 `cmp eax,7D0h`).
   best source differ/0041e6d3.cpp (= src/0041e6d3.cpp + grade lines). Inline split done with Inline-budget devices (line 3..8 of the
   source, hdr/README.md). Next: entry register roles (retail edi = CAction*, esi = game), cross-jump tails of CLOSE_MENU /
   OPEN_ABILITIES / CLOSE_ABILITIES, block placement of the expanded CWideString text == (2006/2013) and GetTC(0x6F), GetTC 75 v 73.
+
+## Parked (session 5, 2026-11-08)
+- 0x0041E6D3 NUISystem::CManager::Action: DIFFER(35697v35651), difflib 92.7% (9277/10004), loose per-case 96.6%, frame 0x808
+  v 0x800. Best source differ/0041e6d3.cpp (= src/0041e6d3.cpp + 6 grade lines). Next: entry register roles (c2 colours the
+  action.Ptr CSE temp #1395 before game; WORKLOG Session 5 has the cost-function reading), cross-jump tail direction
+  (CLOSE_TELEPORT_MENU keeps the shared tail in retail), CHOOSE_CLAN `*action->UIActionParams.begin()`, LOAD_PHOTO homes, frame +8.
