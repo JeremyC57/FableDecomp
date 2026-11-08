@@ -92,8 +92,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunks 877 / 879: 0 landed (OnHit, PopulateRegionWithVillagers parked as full bodies; hand877 / hand879). Chunk 880: OpenPCOptionsMenu landed
     (`2026-11-08_landing_aa/`). Chunk 881: both stereo SSE2 FIR resamplers landed
     (`2026-11-08_landing_ab/`). Chunk 882: ConstructQuestListPC 0x0061E6D0 parked
-    at DIFFER(12357v12356) (inline budget spent earlier in retail; `pending/2026-11-08_linux_hand882/`). Running: chunk 883
-    (ConstructLogbookScreen; owner: no new chunk agents after it); single-row worker
+    at DIFFER(12357v12356) (inline budget spent earlier in retail; `pending/2026-11-08_linux_hand882/`). Chunk 883: CTCInventoryMap::ConstructLogbookListPC
+    0x006096E0 parked at DIFFER(12832v12832) (/d2inlT71 fixes the call sequence; 17 register-allocation segments left;
+    `pending/2026-11-08_linux_hand883/`). No chunk agents running (owner). Single-row worker
     parked 0x00CBFB7D RunCutsceneMacro at DIFFER(74879v74778) (95% exact, 99% call order; the caller-size inline cap falls between
     /d2inlS8 and S9 on our STLport/CCharString header costs -- a lane gap, `pending/2026-11-08_linux_hand876/`) ; row 885 retries it with per-site
     inline devices (owner, "Try 1 now"). Single-row 884: CTCBase::RegisterTCs 0x004EE23F (44,806 bytes) landed (`2026-11-08_landing_ac/`).

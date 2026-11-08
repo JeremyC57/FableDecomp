@@ -12897,7 +12897,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00606d20	CTCInventoryMap	CTCInventoryMap	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 00606f80	~CTCInventoryMap	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 00607330	ConstructLogbookList	CTCInventoryMap	__thiscall	CComponent *	2	CTCInventoryMap *,CComponent *	1	yes	accepted									
-006096e0	ConstructLogbookScreen	_global	unknown	undefined	0		0	yes	accepted									
+006096e0	ConstructLogbookListPC	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 0060c900	CTCInventoryMap::BuildMapTeleportUI	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 0060eeb0	ConstructPCMapList	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 006116c0	ConstructScreen	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

@@ -1,0 +1,2 @@
+address	pdb_name	source_1	source_2
+0x006096E0	?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r.pdb + FableWin.pdb name; Ego_r donor order ConstructLogbookList 0x006595D0 < ConstructLogbookListPC 0x0065BBC0 matches retail ConstructLogbookList-family 0x00607330 < this < BuildMapTeleportUI 0x0060C900	calls the landed PC twin CTCInventoryMap::GetMenuEntryFromCategoryPC 0x005FAC20 (call sites 0x0060C7BF, 0x0060C809) and builds PC_LOGBOOK_* / PC_UI_FRAME_LOGBOOK components; writes CategoriesList (+0x144)
