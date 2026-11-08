@@ -1,0 +1,435 @@
+var/0050a650_V1.cpp  (1 function(s) traced, 22.19 s in gdb; cl rc 0)
+
+==============================================================================================================
+?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z  (defined at line 172)
+
+integer candidates in c2's colouring order (0x1078482f: priority desc, then key desc; equal -> later id first).
+allowed: a=eax c=ecx d=edx s=esi i=edi b=ebx p=ebp (table order; a value live across a call shows ...sibp)
+  #   id  candidate                lines            prio   key spill refs  allowed  register
+  0  119  temp                     237               116   613    28    7  acdsibp  ecx
+  1   39  p_thing                  236-237           108   632    12    3  ...sibp  esi
+  2   69  local                    237               108   629    12    3  acdsibp  eax
+  3  116  temp                     230               108   543    28    7  acdsibp  ecx
+  4  113  temp                     222               108   445    28    7  acdsibp  ecx
+  5  110  temp                     215               108   377    28    7  acdsibp  ecx
+  6  107  temp                     207               108   309    28    7  acdsibp  ecx
+  7  104  temp                     201               108   230    28    7  acdsibp  ecx
+  8   36  p_thing                  229-230            96   562    12    3  ...sibp  esi
+  9   66  local                    230                96   559    12    3  acdsibp  eax
+ 10   33  p_thing                  221-222            96   464    12    3  ...sibp  esi
+ 11   61  local                    222                96   461    12    3  acdsibp  eax
+ 12   29  thing                    214-215            96   396    12    3  ...sibp  esi
+ 13   57  local                    215                96   393    12    3  acdsibp  eax
+ 14   25  p_thing                  206-207            96   328    12    3  ...sibp  esi
+ 15   51  local                    207                96   325    12    3  acdsibp  eax
+ 16   23  p_thing                  200-201            96   249    12    3  ...sibp  esi
+ 17   44  local                    201                96   246    12    3  acdsibp  eax
+ 18   70  local                    233,237            92   609    22    6  ...sibp  edi
+ 19   58  local                    218,222            84   441    22    6  ...sibp  edi
+ 20   54  local                    210,215            84   373    22    6  ...sibp  edi
+ 21   53  local                    203,207            84   305    22    6  ...sibp  edi
+ 22   46  local                    195,201            84   226    22    6  ...sibp  edi
+ 23   63  local                    225,230            82   539    22    6  ...sibp  edi
+ 24   22  i_list                   199-200            64   271    20    6  ...sibp  ebx
+ 25   76  cur                      244                60   704    20    6  ...sibp  esi
+ 26   37  local                    235-236,239        60   656     8    5  acdsibp  eax
+ 27  100  temp                     192                60   149    32    8  acdsibp  eax
+ 28   41  local                    192                58   151    24    6  acdsibp  ecx
+ 29   74  cur                      243                56   689    20    6  ...sibp  esi
+ 30   24  i_list                   205-206            56   350    20    6  ...sibp  ebx
+ 31   49  cur                      203                56   280    20    6  ...sibp  esi
+ 32   35  entrance_it              228-229            50   584    14    5  ...sibp  ebx
+ 33   38  exit_k                   235-236            44   658    14    5  ...sibp  ebx
+ 34   28  creat_gen_it             212,214            42   419    14    5  ...sibp  ebx
+ 35   92  local                    237                40   614     4    2  acdsibp  eax
+ 36   32  nav_seed_it              220-221            40   486    14    5  ...sibp  ebx
+ 37   90  local                    230                36   544     4    2  acdsibp  eax
+ 38   85  local                    222                36   446     4    2  acdsibp  eax
+ 39   83  local                    215                36   378     4    2  acdsibp  eax
+ 40   81  local                    207                36   310     4    2  acdsibp  eax
+ 41   79  local                    201                36   231     4    2  acdsibp  eax
+ 42   13  p_thing                  181-182            36    84    16    4  ...sibp  esi
+ 43   10  map_no                   174-175            36     2     4    3  acdsibp  eax
+ 44   12  i_blist                  180-181            33   185    20    6  ...sibp  edi
+ 45   94  temp                     182,185            32    87    12    3  acdsibp  ecx
+ 46   26  local                    212                28   355     2    2  acdsibp  ebx
+ 47   77  tmp                      244                24   705     8    2  acdsibp  eax
+ 48   75  tmp                      243                24   690     8    2  acdsibp  eax
+ 49   30  local                    220                24   423     2    2  acdsibp  ebx
+ 50   52  tmp                      203                24   281     8    2  acdsibp  eax
+ 51   40  local                    174                16    21     4    2  acdsibp  ecx
+ 52    6  this                     172..237           13     6    32   10  ...sibp  ebp
+ 53   27  local                    242                 6   677     2    2  acdsibp  eax
+ 54   31  local                    241                 6   671     2    2  acdsibp  eax
+ 55   88  local                    228               -10   489     4    2  ...sibp  split, memory
+ 56   47  n                        197..243          -16   209    62   27  ...sibp  split: edi #93, edi #87, esi #59
+ 57    9  pworld_box               174..234          -19     8    44   19  ...sibp  split: ecx #118, esi #68
+ 58    3  const 0x10                                 -38     0     1    1  ...sibp  split, immediate
+ 59   34  local                    228,240           -59   491     6    4  ...sibp  split: eax #97, ebx #98
+ 60    1  const 0                                   -118     0    11   32  ...sibp  split, immediate
+ 61    8  section_name             175..234         -121    74    16    9  ...sibp  split: edi #86
+ 62   11  search_tools             177..234         -121    58    18    9  ...sibp  split, memory
+ 63    5  const 4                                   -121     0    -1    3  ...sibp  split, immediate
+ 64   42  n                        176,180,244      -151    64    38   17  ...sibp  split: edi #96, ebx #95
+ 65    7  area_init                175..237         -202    76    18    9  ...sibp  split, memory
+ 66    2  const 0xc                                 -282     0    11    8  ...sibp  split, immediate
+ 67    4  const 1                                   -295     0    -1   14  ...sibp  split, immediate
+
+not in the list (dropped before the sort: fewer than 2 references and spill <= 0, a 2-reference copy forwarded into its use,
+or not an integer candidate):
+       6  const 0x63                              refs 0   
+      14  radius                   186,189        refs 5   x87
+      15  local                    186,189        refs 3   x87
+      16  local                    186,189        refs 3   x87
+      17  local                    186-187,192    refs 5   x87
+      18  local                    186,188,192    refs 5   x87
+      19  _real@00000000           180,184        refs 2   x87
+      20  local                    189-190,192    refs 5   x87
+      21  local                    189,191-192    refs 5   x87
+      43  local                    201            refs 3   x87
+      45  local                    192            refs 6   
+      48  local                    207            refs 3   x87
+      50  local                    201            refs 5   
+      55  local                    207            refs 5   
+      56  local                    215            refs 3   x87
+      59  local                    215            refs 5   
+      60  local                    222            refs 3   x87
+      62  local                    230            refs 3   x87
+      64  temp                     174            refs 3   
+      65  local                    222            refs 5   
+      67  local                    225,227        refs 2   x87
+      68  local                    225,227        refs 2   x87
+      71  local                    230            refs 5   
+      72  local                    237            refs 3   x87
+      73  local                    237            refs 5   
+      78  local                    201            refs 3   x87
+      80  local                    207            refs 3   x87
+      82  local                    215            refs 3   x87
+      84  local                    222            refs 3   x87
+      86  local                    225,227        refs 2   x87
+      87  local                    225,227        refs 2   x87
+      89  local                    230            refs 3   x87
+      91  local                    237            refs 3   x87
+      93  temp                     176,244        refs 3   
+      95  temp                     187            refs 3   x87
+      96  temp                     188            refs 3   x87
+      97  temp                     190            refs 3   x87
+      98  temp                     191            refs 3   x87
+      99  temp                     192            refs 4   
+     101  temp                     197,203,243    refs 4   
+     102  temp                     195,201        refs 2   
+     103  temp                     195,201        refs 4   
+     105  temp                     203,207        refs 2   
+     106  temp                     203,207        refs 4   
+     108  temp                     210,215        refs 2   
+     109  temp                     210,215        refs 4   
+     111  temp                     218,222        refs 2   
+     112  temp                     218,222        refs 4   
+     114  temp                     225,230        refs 2   
+     115  temp                     225,230        refs 4   
+     117  temp                     233,237        refs 2   
+     118  temp                     233,237        refs 4   
+
+colouring steps (the driver 0x107821a7 takes the list head each time):
+  split pass over ids [19, 43, 48, 56, 60, 62, 72, 78, 80, 82, 84, 89, 91]
+  piece   #14   of #43
+  piece   #16   of #78
+  piece   #115  of #48
+  piece   #114  of #80
+  piece   #109  of #56
+  piece   #108  of #82
+  piece   #103  of #60
+  piece   #102  of #84
+  piece   #93   of #62
+  piece   #64   of #89
+  piece   #55   of #72
+  piece   #59   of #91
+  split pass over ids [98]
+  piece   #15   of #98
+  split pass over ids [20]
+  piece   #15   of #20
+  piece   #117  of #20
+  split pass over ids [18]
+  piece   #15   of #18
+  piece   #117  of #18
+  piece   #20   of #18
+  split pass over ids [17]
+  piece   #15   of #17
+  piece   #20   of #17
+  piece   #18   of #17
+  split pass over ids [117]
+  piece   #15   of #117
+  split pass over ids [20]
+  piece   #15   of #20
+  2-ref   #26   local                    checked for copy forwarding
+  2-ref   #27   local                    checked for copy forwarding
+  2-ref   #30   local                    checked for copy forwarding
+  2-ref   #31   local                    checked for copy forwarding
+  2-ref   #40   local                    checked for copy forwarding
+  2-ref   #52   tmp                      checked for copy forwarding
+  2-ref   #75   tmp                      checked for copy forwarding
+  2-ref   #77   tmp                      checked for copy forwarding
+  2-ref   #79   local                    checked for copy forwarding
+  2-ref   #81   local                    checked for copy forwarding
+  2-ref   #83   local                    checked for copy forwarding
+  2-ref   #85   local                    checked for copy forwarding
+  2-ref   #88   local                    checked for copy forwarding
+  2-ref   #90   local                    checked for copy forwarding
+  2-ref   #92   local                    checked for copy forwarding
+  choose  #119  temp                     prio   116  allowed acdsibp
+  -> ecx   #119  temp                      costs: {'eax': 1}
+  choose  #39   p_thing                  prio   108  allowed ...sibp
+  -> esi   #39   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #69   local                    prio   108  allowed acd.ibp
+  -> eax   #69   local                     costs: {'eax': -1}
+  choose  #116  temp                     prio   108  allowed acdsibp
+  -> ecx   #116  temp                      costs: {'eax': 1}
+  choose  #113  temp                     prio   108  allowed acdsibp
+  -> ecx   #113  temp                      costs: {'eax': 1}
+  choose  #110  temp                     prio   108  allowed acdsibp
+  -> ecx   #110  temp                      costs: {'eax': 1}
+  choose  #107  temp                     prio   108  allowed acdsibp
+  -> ecx   #107  temp                      costs: {'eax': 1}
+  choose  #104  temp                     prio   108  allowed acdsibp
+  -> ecx   #104  temp                      costs: {'eax': 1}
+  choose  #36   p_thing                  prio    96  allowed ...sibp
+  -> esi   #36   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #66   local                    prio    96  allowed acd.ibp
+  -> eax   #66   local                     costs: {'eax': -1}
+  choose  #33   p_thing                  prio    96  allowed ...sibp
+  -> esi   #33   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #61   local                    prio    96  allowed acd.ibp
+  -> eax   #61   local                     costs: {'eax': -1}
+  choose  #29   thing                    prio    96  allowed ...sibp
+  -> esi   #29   thing                     costs: {'eax': 1, 'ecx': -2}
+  choose  #57   local                    prio    96  allowed acd.ibp
+  -> eax   #57   local                     costs: {'eax': -1}
+  choose  #25   p_thing                  prio    96  allowed ...sibp
+  -> esi   #25   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #51   local                    prio    96  allowed acd.ibp
+  -> eax   #51   local                     costs: {'eax': -1}
+  choose  #23   p_thing                  prio    96  allowed ...sibp
+  -> esi   #23   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #44   local                    prio    96  allowed acd.ibp
+  -> eax   #44   local                     costs: {'eax': -1}
+  choose  #70   local                    prio    92  allowed ....ibp
+  -> edi   #70   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #58   local                    prio    84  allowed ....ibp
+  -> edi   #58   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #54   local                    prio    84  allowed ....ibp
+  -> edi   #54   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #53   local                    prio    84  allowed ....ibp
+  -> edi   #53   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #46   local                    prio    84  allowed ....ibp
+  -> edi   #46   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #63   local                    prio    82  allowed ....ibp
+  -> edi   #63   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #22   i_list                   prio    64  allowed .....bp
+  -> ebx   #22   i_list                    costs: {'eax': 1}
+  choose  #76   cur                      prio    60  allowed ...sibp
+  -> esi   #76   cur                       costs: {'ebp': 3800}
+  choose  #37   local                    prio    60  allowed acds.bp
+  -> eax   #37   local                     costs: {'ebp': 17200}
+  choose  #100  temp                     prio    60  allowed acdsibp
+  -> eax   #100  temp                      costs: {'ecx': 1, 'ebp': 18800}
+  choose  #41   local                    prio    58  allowed .cdsibp
+  -> ecx   #41   local                     costs: {'ecx': -1, 'ebp': 18800}
+  choose  #74   cur                      prio    56  allowed ...sibp
+  -> esi   #74   cur                       costs: {'ebp': 10000}
+  choose  #24   i_list                   prio    56  allowed .....bp
+  -> ebx   #24   i_list                    costs: {'eax': 1, 'ebp': 25000}
+  choose  #49   cur                      prio    56  allowed ...sibp
+  -> esi   #49   cur                       costs: {'ebp': 25000}
+  choose  #35   entrance_it              prio    50  allowed .....bp
+  -> ebx   #35   entrance_it               costs: {'eax': 1, 'ebp': 25000}
+  choose  #38   exit_k                   prio    44  allowed .....bp
+  -> ebx   #38   exit_k                    costs: {'eax': 1, 'ebp': 17800}
+  choose  #28   creat_gen_it             prio    42  allowed .....bp
+  -> ebx   #28   creat_gen_it              costs: {'eax': 1, 'ebp': 25000}
+  choose  #92   local                    prio    40  allowed a.ds..p
+  -> eax   #92   local                     costs: {'eax': -1, 'ebp': 16000}
+  choose  #32   nav_seed_it              prio    40  allowed .....bp
+  -> ebx   #32   nav_seed_it               costs: {'eax': 1, 'ebp': 25000}
+  choose  #90   local                    prio    36  allowed a.ds..p
+  -> eax   #90   local                     costs: {'eax': -1, 'ebp': 26000}
+  choose  #85   local                    prio    36  allowed a.ds..p
+  -> eax   #85   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #83   local                    prio    36  allowed a.ds..p
+  -> eax   #83   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #81   local                    prio    36  allowed a.ds..p
+  -> eax   #81   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #79   local                    prio    36  allowed a.ds..p
+  -> eax   #79   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #13   p_thing                  prio    36  allowed ...sibp
+  -> esi   #13   p_thing                   costs: {'ecx': -1, 'ebp': 18800}
+  choose  #10   map_no                   prio    36  allowed acdsibp
+  -> eax   #10   map_no                    costs: {'ebp': 12100}
+  choose  #12   i_blist                  prio    33  allowed ....ibp
+  -> edi   #12   i_blist                   costs: {'ecx': 1, 'ebp': 18800, 'esi': 1}
+  choose  #94   temp                     prio    32  allowed acds.bp
+  -> ecx   #94   temp                      costs: {'ecx': -1, 'ebp': 18800, 'esi': -1}
+  choose  #26   local                    prio    28  allowed acdsibp
+  -> ebx   #26   local                     costs: {'ebx': -1, 'ebp': 25000}
+  choose  #77   tmp                      prio    24  allowed acd.ibp
+  -> eax   #77   tmp                       costs: {'ebp': 3800}
+  choose  #75   tmp                      prio    24  allowed acd.ibp
+  -> eax   #75   tmp                       costs: {'ebp': 10000}
+  choose  #30   local                    prio    24  allowed acdsibp
+  -> ebx   #30   local                     costs: {'ebx': -1, 'ebp': 25000}
+  choose  #52   tmp                      prio    24  allowed acd.ibp
+  -> eax   #52   tmp                       costs: {'ebp': 25000}
+  choose  #40   local                    prio    16  allowed .cdsibp
+  -> ecx   #40   local                     costs: {'ebp': 4300}
+  choose  #6    this                     prio    13  allowed ......p
+  -> ebp   #6    this                      costs: {'ecx': -8, 'ebp': 22800}
+  split pass over ids [1, 2, 4, 5, 7, 8, 9, 11, 34, 42, 47, 88]
+  piece   #115  of #1
+  piece   #114  of #1
+  piece   #109  of #1
+  piece   #108  of #4
+  piece   #103  of #7
+  piece   #102  of #9
+  piece   #97   of #34
+  piece   #96   of #42
+  piece   #95   of #42
+  piece   #93   of #47
+  piece   #87   of #47
+  piece   #86   of #8
+  piece   #68   of #2
+  piece   #67   of #11
+  piece   #59   of #47
+  piece   #98   of #34
+  piece   #118  of #88
+  2-ref   #14   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #15   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #20   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #21   n                        checked for copy forwarding -> forwarded, not listed
+  2-ref   #55   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #64   pworld_box               checked for copy forwarding -> forwarded, not listed
+  drop    #68   const 0xc, piece of #2   refs 1 spill -1
+  2-ref   #97   local, piece of #34      checked for copy forwarding -> forwarded, not listed
+  2-ref   #98   local, piece of #34      checked for copy forwarding -> forwarded, not listed
+  2-ref   #103  area_init, piece of #7   checked for copy forwarding -> forwarded, not listed
+  2-ref   #105  const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #108  const 1, piece of #4     checked for copy forwarding -> forwarded, not listed
+  2-ref   #111  const 1                  checked for copy forwarding -> forwarded, not listed
+  drop    #118  local, piece of #88      refs 1 spill 0
+  re-sort: #27(6), #31(6), #97(6), #114(1), #111(0), #105(0), #55(0), #20(0), #15(0), #14(0), #115(-3), #103(-9), #3(-38), #108(-41), #109(-51)
+  choose  #95   n, piece of #42          prio   125  allowed .....b.
+  -> ebx   #95   n, piece of #42           costs: {'eax': -1, 'ebx': 2700}
+  split pass over ids [3, 102, 103, 108, 109]
+  piece   #118  of #102
+  piece   #68   of #102
+  piece   #88   of #109
+  piece   #47   of #103
+  2-ref   #42   const 1                  checked for copy forwarding -> forwarded, not listed
+  drop    #47   area_init, piece of #7   refs 1 spill 0
+  drop    #88   const 0, piece of #1     refs 1 spill -1
+  re-sort: #86(60), #67(60), #93(50), #59(48), #117(40), #96(34), #16(24), #98(20), #118(20), #17(15), #87(12), #64(12), #112(9), #18(9), #21(8), #27(6), #31(6), #97(6), #114(1), #42(0), #111(0), #105(0), #55(0), #20(0), #15(0), #14(0), #115(-3)
+  choose  #68   pworld_box, piece of #9  prio    64  allowed ...si..
+  -> esi   #68   pworld_box, piece of #9   (all costs 0: first allowed register in table order)
+  choose  #86   section_name, piece of # prio    60  allowed ....i..
+  -> edi   #86   section_name, piece of #  costs: {'edi': 400}
+  split pass over ids [67]
+  piece   #88   of #67
+  drop    #88   search_tools, piece of # refs 1 spill 0
+  re-sort: #93(50), #59(48), #117(40), #96(34), #16(24), #98(20), #118(20), #17(15), #87(12), #64(12), #112(9), #18(9), #21(8), #27(6), #31(6), #97(6), #114(1), #42(0), #111(0), #105(0), #55(0), #20(0), #15(0), #14(0), #115(-3)
+  choose  #93   n, piece of #47          prio    50  allowed ....ibp
+  -> edi   #93   n, piece of #47           (all costs 0: first allowed register in table order)
+  choose  #59   n, piece of #47          prio    48  allowed ...si..
+  -> esi   #59   n, piece of #47           costs: {'eax': -1}
+  choose  #117  pworld_box               prio    40  allowed acdsib.
+  -> eax   #117  pworld_box                (all costs 0: first allowed register in table order)
+  choose  #96   n, piece of #42          prio    34  allowed ....ibp
+  -> edi   #96   n, piece of #42           (all costs 0: first allowed register in table order)
+  choose  #16   n                        prio    24  allowed ...si..
+  -> esi   #16   n                         (all costs 0: first allowed register in table order)
+  choose  #98   local, piece of #34      prio    20  allowed acdsib.
+  -> ebx   #98   local, piece of #34       costs: {'ebx': -1}
+  choose  #118  pworld_box, piece of #9  prio    20  allowed .cds...
+  -> ecx   #118  pworld_box, piece of #9   (all costs 0: first allowed register in table order)
+  choose  #17   const 0                  prio    15  allowed acdsib.
+  -> eax   #17   const 0                   (all costs 0: first allowed register in table order)
+  choose  #87   n, piece of #47          prio    12  allowed ....ib.
+  -> edi   #87   n, piece of #47           (all costs 0: first allowed register in table order)
+  choose  #64   pworld_box               prio    12  allowed ....ib.
+  -> edi   #64   pworld_box                (all costs 0: first allowed register in table order)
+  choose  #112  const 0                  prio     9  allowed ...sib.
+  -> ebx   #112  const 0                   costs: {'ebx': -1}
+  choose  #18   const 0                  prio     9  allowed acdsib.
+  -> eax   #18   const 0                   (all costs 0: first allowed register in table order)
+  choose  #21   n                        prio     8  allowed acd.ib.
+  -> eax   #21   n                         (all costs 0: first allowed register in table order)
+  choose  #27   local                    prio     6  allowed acdsibp
+  -> eax   #27   local                     (all costs 0: first allowed register in table order)
+  choose  #31   local                    prio     6  allowed acdsibp
+  -> eax   #31   local                     (all costs 0: first allowed register in table order)
+  choose  #97   local, piece of #34      prio     6  allowed acdsibp
+  -> eax   #97   local, piece of #34       (all costs 0: first allowed register in table order)
+  skip    #114  const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #42   const 1                  spill -2 <= 0: not worth a register
+  skip    #111  const 1                  spill -2 <= 0: not worth a register
+  skip    #105  const 1                  spill -2 <= 0: not worth a register
+  skip    #55   const 1                  spill -2 <= 0: not worth a register
+  skip    #20   const 1                  spill -2 <= 0: not worth a register
+  skip    #15   const 1                  spill -2 <= 0: not worth a register
+  skip    #14   const 1                  spill -2 <= 0: not worth a register
+  skip    #115  const 0, piece of #1     spill -1 <= 0: not worth a register
+  skip    #114  const 0, piece of #1     spill -2 <= 0: not worth a register
+  split pass over ids [114]
+  piece   #88   of #114
+  drop    #88   const 0, piece of #1     refs 1 spill -2
+  re-sort: #42(-3), #111(-3), #105(-3), #55(-3), #20(-3), #15(-3), #14(-3), #115(-3)
+  choose  #67   const 0                  prio     9  allowed acdsib.
+  -> eax   #67   const 0                   (all costs 0: first allowed register in table order)
+  skip    #42   const 1                  spill -2 <= 0: not worth a register
+  skip    #111  const 1                  spill -2 <= 0: not worth a register
+  skip    #105  const 1                  spill -2 <= 0: not worth a register
+  skip    #55   const 1                  spill -2 <= 0: not worth a register
+  skip    #20   const 1                  spill -2 <= 0: not worth a register
+  skip    #15   const 1                  spill -2 <= 0: not worth a register
+  skip    #14   const 1                  spill -2 <= 0: not worth a register
+  skip    #115  const 0, piece of #1     spill -1 <= 0: not worth a register
+  end of allocation
+01:35:10	0050a650	V1	DIFFER(2249v2233)	md=32	bytes=296	flags=	0s	
+  == 564 same (retail 0050a650.., ours 0050a650..)
+  - 0050ad8c xor eax, eax
+  - 0050ad8e mov dword ptr [esp + 0x38], eax
+  - 0050ad92 mov dword ptr [esp + 0x3c], eax
+  - 0050ad96 mov dword ptr [esp + 0x40], eax
+  == 1 same (retail 0050ad9a.., ours 0050ad8c..)
+  + 0050ad93 xor ebx, ebx
+  == 2 same (retail 0050ada1.., ours 0050ad95..)
+  + 0050ad9a mov dword ptr [esp + 0x3c], ebx
+  + 0050ad9e mov dword ptr [esp + 0x40], ebx
+  + 0050ada2 mov dword ptr [esp + 0x44], ebx
+  == 11 same (retail 0050ada6.., ours 0050ada6..)
+  - 0050adcf mov ebx, dword ptr [esp + 0x38]
+  - 0050add3 cmp ebx, dword ptr [esp + 0x3c]
+  - 0050add7 je 0x50ae5f
+  + 0050adcf mov ecx, dword ptr [esp + 0x3c]
+  + 0050add3 mov eax, dword ptr [esp + 0x38]
+  + 0050add7 sub ecx, eax
+  + 0050add9 sar ecx, 2
+  + 0050addc test ecx, ecx
+  + 0050adde jbe 0x50ae70
+  == 2 same (retail 0050addd.., ours 0050ade4..)
+  - 0050ade7 mov esi, dword ptr [ebx]
+  + 0050adee mov edi, edi
+  + 0050adf0 mov esi, dword ptr [eax + ebx*4]
+  == 37 same (retail 0050ade9.., ours 0050adf3..)
+  - 0050ae54 mov eax, dword ptr [esp + 0x3c]
+  - 0050ae58 add ebx, 4
+  - 0050ae5b cmp ebx, eax
+  - 0050ae5d jne 0x50ade7
+  + 0050ae5e mov ecx, dword ptr [esp + 0x3c]
+  == 1 same (retail 0050ae5f.., ours 0050ae62..)
+  + 0050ae66 sub ecx, eax
+  + 0050ae68 inc ebx
+  + 0050ae69 sar ecx, 2
+  + 0050ae6c cmp ebx, ecx
+  + 0050ae6e jb 0x50adf0
+  == 27 same (retail 0050ae63.., ours 0050ae70..)
+  - 0050aead lea ecx, [ecx]
+  + 0050aeba lea ebx, [ebx]
+  == 35 same (retail 0050aeb0.., ours 0050aec0..)

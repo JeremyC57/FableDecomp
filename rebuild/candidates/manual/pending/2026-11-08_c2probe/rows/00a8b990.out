@@ -1,0 +1,2297 @@
+(--func from the row's // Leaf: line: ?InitialiseBones@C3DMesh2@@AAE_NABVC3DMeshFileSubMeshChunk@@@Z)
+(--flags from the row's // Flags: line: /Gr)
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand860/differ/00a8b990.cpp  (1 function(s) traced, 46.82 s in gdb; cl rc 0)
+
+==============================================================================================================
+?InitialiseBones@C3DMesh2@@AAE_NABVC3DMeshFileSubMeshChunk@@@Z  (defined at line 57)
+
+integer candidates in c2's colouring order (0x1078482f: priority desc, then key desc; equal -> later id first).
+allowed: a=eax c=ecx d=edx s=esi i=edi b=ebx p=ebp (table order; a value live across a call shows ...sibp)
+  #   id  candidate                lines            prio   key spill refs  allowed  register
+  0   47  cur                      67                272   110    76   13  acdsibp  eax
+  1   36  j                        87-90             147   346    16    7  .....bp  ebp
+  2   35  new_index                86-87,91-92       147   323    14    5  .....bp  ebx
+  3   87  temp                     67                112   102    40    5  acdsibp  ecx
+  4   86  temp                     67                108    95    32    6  acdsibp  edx
+  5   37  local                    63                104    41    24    6  acdsibp  eax
+  6   39  temp                     91                 96   325     8    2  acdsibp  eax
+  7   41  oldSize                  67                 88    72    20    7  acdsibp  eax
+  8   90  temp                     84,89,92           87   322    10    4  .....bp  split, memory
+  9   21  i                        74-75              80   262    20    9  acdsibp  eax
+ 10   48  local                    69                 76   165    24    6  ...sibp  esi
+ 11   58  local                    99                 60   461    20    6  ...sibp  esi
+ 12   53  local                    97                 60   365    20    6  ...sibp  esi
+ 13   40  local                    69                 60   166    12    3  acdsibp  eax
+ 14   67  local                    69                 52   163    12    4  acdsibp  eax
+ 15   17  local                    74-76,79-80        50   258    10    5  acdsibp  ecx
+ 16   89  temp                     82                 48   290    18    6  acdsibp  eax
+ 17   88  temp                     75-76              48   256    12    3  acdsibp  edx
+ 18   62  local                    99                 44   526    14    5  ...sibp  esi
+ 19   61  local                    99                 44   491    14    5  ...sibp  esi
+ 20   56  local                    97                 44   430    14    5  ...sibp  esi
+ 21   55  local                    97                 44   395    14    5  ...sibp  esi
+ 22   44  newFinish                67                 42   125     8    2  ...sibp  esi
+ 23   18  local                    87-88,92           39   320     4    3  acdsibp  eax
+ 24   22  i                        79-80              38   274    14    5  acdsibp  eax
+ 25   59  y                        99                 36   465    12    3  ...sibp  ebx
+ 26   54  y                        97                 36   369    12    3  ...sibp  ebx
+ 27   26  local                    85                 36   307     2    2  acdsibp  eax
+ 28   27  local                    85                 36   302     2    2  acdsibp  eax
+ 29   28  local                    85                 36   300     2    2  acdsibp  eax
+ 30   91  temp                     66                 36    57    12    3  acdsibp  eax
+ 31   73  local                    69                 32   198     8    3  acdsibp  eax
+ 32   16  local                    63                 32    26    12    3  acdsibp  eax
+ 33   74  local                    69                 28   201     8    3  a.dsibp  eax
+ 34   50  local                    82                 24   279     6    3  acdsibp  ecx
+ 35   80  temp                     79                 24   265     8    4  acdsibp  edx
+ 36   49  local                    69                 24   164     8    2  ...sibp  ebx
+ 37   25  local                    99                 22   494     4    4  acdsibp  esi
+ 38   24  local                    97                 22   398     4    4  acdsibp  esi
+ 39   43  newStart                 67                 22    90    24    6  ...sibp  ebx
+ 40   76  local                    87,92              21   321     0    2  acdsibp  split, memory
+ 41   57  local                    99                 20   487     6    2  ...sibp  ebx
+ 42   52  local                    97                 20   391     6    2  ...sibp  ebx
+ 43   68  local                    69                 20   179     8    3  a.dsibp  eax
+ 44   45  local                    67                 20    79    12    3  acdsibp  ecx
+ 45   32  local                    99                 18   470     2    3  acdsibp  eax
+ 46   29  local                    97                 18   374     2    3  acdsibp  eax
+ 47   71  local                    99                 16   508     4    3  acdsibp  eax
+ 48   78  local                    99                 16   488     2    2  acdsibp  ebx
+ 49   69  local                    97                 16   412     4    3  acdsibp  eax
+ 50   77  local                    97                 16   392     2    2  acdsibp  ebx
+ 51   51  local                    82                 16   277     4    2  acdsibp  eax
+ 52   15  local                    61,69-70           16   227   -20    2  acdsibp  split, memory
+ 53   33  local                    99                 12   473     2    2  acdsibp  eax
+ 54   30  local                    97                 12   377     2    2  acdsibp  eax
+ 55   46  temp                     82                 12   289     6    3  acdsibp  ecx
+ 56   72  local                    99                 10   511     4    3  a.dsibp  eax
+ 57   70  local                    97                 10   415     4    3  a.dsibp  eax
+ 58   75  local                    74,76,79           10   259    -2    2  acdsibp  split, memory
+ 59   38  local                    63-65,67           10    35    36    9  ...sibp  esi
+ 60   20  local                    99                  6   502     2    2  acdsibp  eax
+ 61   34  local                    99                  6   479     2    2  acdsibp  eax
+ 62   19  local                    97                  6   406     2    2  acdsibp  eax
+ 63   31  local                    97                  6   383     2    2  acdsibp  eax
+ 64   42  len                      67                -20    81    20    5  ...sibp  ebp
+ 65   66  local                    63,67,70          -52    50    68   17  ...sibp  edi
+ 66   63  local                    58,67            -107   130    10    3  ...sibp  ebp
+ 67   12  local                    58..99           -171   133    56   18  .....bp  split: esi #97, esi #98, edi #99, 3 pieces memory
+ 68    1  const 0                                   -189     0    18   75  .....b.  split: edi #82, esi #106, 6 pieces immediate
+ 69    9  this                     57..98           -208    19    30   12  .....bp  split: esi #101, esi #102, 1 piece memory
+ 70   60  local                    58,67,72,97,99   -219   132    52   15  .....bp  split: eax #64, 2 pieces memory
+ 71   11  sub_mesh                 60,69            -235     9     4    2  ...sibp  split, memory
+ 72   65  local                    59,68            -239   151     0    2  ...sibp  split, memory
+ 73    7  const 8                                   -268     0    -1    2  ...sibp  split, immediate
+ 74    5  const 0xca2dc8                            -268     0     1    1  ...sibp  split, immediate
+ 75    6  const -1                                  -330     0     3    3  ...sibp  split: edx #65
+ 76   64  local                    59,68,97,99      -354   150    24   11  .....bp  split: ebx #92, ebx #93, esi #94, 1 piece memory
+ 77   13  local                    59,68,90,97,99   -354   149    16   10  .....bp  split: ebp #95, ebp #96, 1 piece memory
+ 78    2  const 0x3c                                -374     0    -1    3  .....bp  split, immediate
+ 79    4  const 1                                   -427     0     1    7  .....b.  split, immediate
+ 80    8  const 4                                   -484     0    -1    5  .....bp  split, immediate
+
+not in the list (dropped before the sort: fewer than 2 references and spill <= 0, a 2-reference copy forwarded into its use,
+or not an integer candidate):
+       3  const 0xc                               refs 0   dropped
+       9  const 0x18                              refs 0   
+      10  const 0xf                               refs 0   dropped
+      14  local                    68             refs 2   dropped
+      23  local                    87             refs 2   dropped
+      79  temp                     67             refs 4   
+      81  temp                     78,81-82,84    refs 6   
+      82  temp                     82,89          refs 3   
+      83  temp                     65-66          refs 3   
+      84  temp                     66             refs 3   
+      85  temp                     67             refs 3   
+
+colouring steps (the driver 0x107821a7 takes the list head each time):
+  drop    #3    const 0xc                refs 1 spill -1
+  2-ref   #7    const 8                  checked for copy forwarding
+  drop    #10   const 0xf                refs 1 spill -1
+  2-ref   #11   sub_mesh                 checked for copy forwarding
+  drop    #14   local                    refs 1 spill 0
+  2-ref   #15   local                    checked for copy forwarding
+  2-ref   #19   local                    checked for copy forwarding
+  2-ref   #20   local                    checked for copy forwarding
+  drop    #23   local                    refs 1 spill 0
+  2-ref   #26   local                    checked for copy forwarding
+  2-ref   #27   local                    checked for copy forwarding
+  2-ref   #28   local                    checked for copy forwarding
+  2-ref   #30   local                    checked for copy forwarding
+  2-ref   #31   local                    checked for copy forwarding
+  2-ref   #33   local                    checked for copy forwarding
+  2-ref   #34   local                    checked for copy forwarding
+  2-ref   #39   temp                     checked for copy forwarding
+  2-ref   #44   newFinish                checked for copy forwarding
+  2-ref   #49   local                    checked for copy forwarding
+  2-ref   #51   local                    checked for copy forwarding
+  2-ref   #52   local                    checked for copy forwarding
+  2-ref   #57   local                    checked for copy forwarding
+  2-ref   #65   local                    checked for copy forwarding
+  2-ref   #75   local                    checked for copy forwarding
+  2-ref   #76   local                    checked for copy forwarding
+  2-ref   #77   local                    checked for copy forwarding
+  2-ref   #78   local                    checked for copy forwarding
+  choose  #47   cur                      prio   272  allowed acdsibp
+  -> eax   #47   cur                       costs: {'ebx': 1900}
+  choose  #36   j                        prio   147  allowed .....bp
+  -> ebp   #36   j                         costs: {'eax': 1, 'ebx': 1900}
+  choose  #35   new_index                prio   147  allowed .....b.
+  -> ebx   #35   new_index                 costs: {'eax': 1, 'ebx': 20700}
+  split pass over ids [1, 2, 4, 8, 9, 12, 13, 60, 64, 90]
+  piece   #23   of #1
+  piece   #14   of #2
+  piece   #10   of #4
+  piece   #3    of #8
+  piece   #85   of #9
+  piece   #84   of #12
+  piece   #83   of #13
+  piece   #82   of #60
+  piece   #81   of #64
+  2-ref   #14   const 0x3c, piece of #2  checked for copy forwarding -> forwarded, not listed
+  2-ref   #79   temp                     checked for copy forwarding -> forwarded, not listed
+  re-sort: #87(112), #86(108), #37(104), #39(96), #41(88), #21(80), #48(76), #58(60), #53(60), #40(60), #79(52), #67(52), #17(50), #89(48), #88(48), #62(44), #61(44), #56(44), #55(44), #44(42), #18(39), #22(38), #59(36), #54(36), #26(36), #27(36), #28(36), #91(36), #73(32), #16(32), #74(28), #50(24), #80(24), #49(24), #25(22), #24(22), #43(22), #76(21), #57(20), #52(20), #68(20), #45(20), #32(18), #29(18), #71(16), #78(16), #69(16), #77(16), #51(16), #15(16), #33(12), #30(12), #46(12), #72(10), #70(10), #75(10), #38(10), #20(6), #34(6), #19(6), #31(6), #42(-20), #66(-52), #63(-107), #82(-182), #23(-183), #84(-206), #11(-235), #65(-239), #85(-243), #10(-252), #7(-268), #5(-268), #81(-320), #6(-330), #14(-338), #83(-386), #3(-444)
+  choose  #87   temp                     prio   112  allowed .cdsibp
+  -> ecx   #87   temp                      costs: {'eax': -1}
+  choose  #86   temp                     prio   108  allowed ..dsibp
+  -> edx   #86   temp                      (all costs 0: first allowed register in table order)
+  choose  #37   local                    prio   104  allowed acdsibp
+  -> eax   #37   local                     costs: {'eax': -2}
+  choose  #39   temp                     prio    96  allowed acdsi..
+  -> eax   #39   temp                      costs: {'eax': -2}
+  choose  #41   oldSize                  prio    88  allowed acdsibp
+  -> eax   #41   oldSize                   (all costs 0: first allowed register in table order)
+  choose  #21   i                        prio    80  allowed acdsibp
+  -> eax   #21   i                         (all costs 0: first allowed register in table order)
+  choose  #48   local                    prio    76  allowed ...sibp
+  -> esi   #48   local                     costs: {'eax': 2}
+  choose  #58   local                    prio    60  allowed ...sibp
+  -> esi   #58   local                     costs: {'edi': 13600}
+  choose  #53   local                    prio    60  allowed ...sibp
+  -> esi   #53   local                     costs: {'edi': 13600}
+  choose  #40   local                    prio    60  allowed acd.ibp
+  -> eax   #40   local                     costs: {'eax': -2, 'edi': 15600}
+  skip    #79   temp                     spill -4 <= 0: not worth a register
+  choose  #67   local                    prio    52  allowed acd.ibp
+  -> eax   #67   local                     costs: {'edi': 15600}
+  choose  #17   local                    prio    50  allowed .cdsibp
+  -> ecx   #17   local                     costs: {'edi': 15600}
+  choose  #89   temp                     prio    48  allowed acdsibp
+  -> eax   #89   temp                      costs: {'edi': 15600}
+  choose  #88   temp                     prio    48  allowed ..dsibp
+  -> edx   #88   temp                      costs: {'edi': 15600}
+  choose  #62   local                    prio    44  allowed ...sibp
+  -> esi   #62   local                     costs: {'ecx': -1, 'edi': 13600}
+  choose  #61   local                    prio    44  allowed ...sibp
+  -> esi   #61   local                     costs: {'ecx': -1, 'edi': 13600}
+  choose  #56   local                    prio    44  allowed ...sibp
+  -> esi   #56   local                     costs: {'ecx': -1, 'edi': 13600}
+  choose  #55   local                    prio    44  allowed ...sibp
+  -> esi   #55   local                     costs: {'ecx': -1, 'edi': 13600}
+  choose  #44   newFinish                prio    42  allowed ...sibp
+  -> esi   #44   newFinish                 costs: {'eax': -1, 'edi': 15600}
+  choose  #18   local                    prio    39  allowed acdsi..
+  -> eax   #18   local                     costs: {'edi': 15600}
+  choose  #22   i                        prio    38  allowed a.dsibp
+  -> eax   #22   i                         costs: {'edi': 15600}
+  choose  #59   y                        prio    36  allowed ....ibp
+  -> ebx   #59   y                         costs: {'esi': -1, 'edi': 13600}
+  choose  #54   y                        prio    36  allowed ....ibp
+  -> ebx   #54   y                         costs: {'esi': -1, 'edi': 13600}
+  choose  #26   local                    prio    36  allowed acdsibp
+  -> eax   #26   local                     costs: {'eax': -2, 'edi': 15600}
+  choose  #27   local                    prio    36  allowed acdsibp
+  -> eax   #27   local                     costs: {'edi': 15600}
+  choose  #28   local                    prio    36  allowed acdsibp
+  -> eax   #28   local                     costs: {'edi': 15600}
+  choose  #91   temp                     prio    36  allowed acdsibp
+  -> eax   #91   temp                      costs: {'edi': 15600}
+  choose  #73   local                    prio    32  allowed acdsibp
+  -> eax   #73   local                     costs: {'edi': 15600}
+  choose  #16   local                    prio    32  allowed acdsibp
+  -> eax   #16   local                     costs: {'eax': -2, 'edi': 15600}
+  choose  #74   local                    prio    28  allowed a.dsibp
+  -> eax   #74   local                     costs: {'edi': 15600}
+  choose  #50   local                    prio    24  allowed .cdsibp
+  -> ecx   #50   local                     costs: {'edi': 15600}
+  choose  #80   temp                     prio    24  allowed ..dsibp
+  -> edx   #80   temp                      costs: {'edi': 15600}
+  choose  #49   local                    prio    24  allowed ....ibp
+  -> ebx   #49   local                     costs: {'eax': -1, 'edi': 15600}
+  choose  #25   local                    prio    22  allowed acdsibp
+  -> esi   #25   local                     costs: {'esi': -1, 'edi': 13600}
+  choose  #24   local                    prio    22  allowed acdsibp
+  -> esi   #24   local                     costs: {'esi': -1, 'edi': 13600}
+  choose  #43   newStart                 prio    22  allowed ....ibp
+  -> ebx   #43   newStart                  costs: {'eax': -3, 'edi': 15600}
+  skip    #76   local                    spill 0 <= 0: not worth a register
+  choose  #57   local                    prio    20  allowed ....ibp
+  -> ebx   #57   local                     costs: {'edi': 13600}
+  choose  #52   local                    prio    20  allowed ....ibp
+  -> ebx   #52   local                     costs: {'edi': 13600}
+  choose  #68   local                    prio    20  allowed a.d.i.p
+  -> eax   #68   local                     costs: {'edi': 15600}
+  choose  #45   local                    prio    20  allowed .cdsibp
+  -> ecx   #45   local                     costs: {'edi': 15600}
+  choose  #32   local                    prio    18  allowed acd.ibp
+  -> eax   #32   local                     costs: {'edi': 13600}
+  choose  #29   local                    prio    18  allowed acd.ibp
+  -> eax   #29   local                     costs: {'edi': 13600}
+  choose  #71   local                    prio    16  allowed acdsibp
+  -> eax   #71   local                     costs: {'edi': 13600}
+  choose  #78   local                    prio    16  allowed acd.ibp
+  -> ebx   #78   local                     costs: {'ebx': -1, 'edi': 13600}
+  choose  #69   local                    prio    16  allowed acdsibp
+  -> eax   #69   local                     costs: {'edi': 13600}
+  choose  #77   local                    prio    16  allowed acd.ibp
+  -> ebx   #77   local                     costs: {'ebx': -1, 'edi': 13600}
+  choose  #51   local                    prio    16  allowed a.dsibp
+  -> eax   #51   local                     costs: {'edi': 15600}
+  skip    #15   local                    spill -20 <= 0: not worth a register
+  choose  #33   local                    prio    12  allowed acdsibp
+  -> eax   #33   local                     costs: {'edi': 13600}
+  choose  #30   local                    prio    12  allowed acdsibp
+  -> eax   #30   local                     costs: {'edi': 13600}
+  choose  #46   temp                     prio    12  allowed .cdsibp
+  -> ecx   #46   temp                      costs: {'ecx': -1, 'edi': 15600}
+  choose  #72   local                    prio    10  allowed a.dsibp
+  -> eax   #72   local                     costs: {'edi': 13600}
+  choose  #70   local                    prio    10  allowed a.dsibp
+  -> eax   #70   local                     costs: {'edi': 13600}
+  skip    #75   local                    spill -2 <= 0: not worth a register
+  choose  #38   local                    prio    10  allowed ...si.p
+  -> esi   #38   local                     costs: {'eax': -2, 'edi': 15600}
+  choose  #20   local                    prio     6  allowed acdsibp
+  -> eax   #20   local                     costs: {'edi': 13600}
+  choose  #34   local                    prio     6  allowed acdsibp
+  -> eax   #34   local                     costs: {'edi': 13600}
+  choose  #19   local                    prio     6  allowed acdsibp
+  -> eax   #19   local                     costs: {'edi': 13600}
+  choose  #31   local                    prio     6  allowed acdsibp
+  -> eax   #31   local                     costs: {'edi': 13600}
+  choose  #42   len                      prio   -20  allowed ....i.p
+  -> ebp   #42   len                       costs: {'ecx': -1, 'edi': 15600}
+  split pass over ids [3, 5, 6, 7, 10, 14, 23, 65, 82]
+  piece   #90   of #3
+  piece   #64   of #5
+  piece   #60   of #6
+  piece   #13   of #7
+  piece   #12   of #10
+  piece   #9    of #14
+  piece   #8    of #23
+  piece   #4    of #65
+  piece   #2    of #82
+  2-ref   #4    local, piece of #65      checked for copy forwarding -> forwarded, not listed
+  2-ref   #9    const 0x3c, piece of #2  checked for copy forwarding -> forwarded, not listed
+  2-ref   #13   const 8, piece of #7     checked for copy forwarding -> forwarded, not listed
+  drop    #64   const 0xca2dc8, piece of refs 1 spill -1
+  re-sort: #66(-52), #63(-107), #8(-163), #2(-180), #4(-190), #12(-202), #84(-206), #11(-235), #85(-243), #13(-264), #60(-268), #9(-288), #81(-320), #83(-386), #90(-394), #15(-444), #79(-444), #75(-444), #76(-444)
+  choose  #66   local                    prio   -52  allowed ....i..
+  -> edi   #66   local                     costs: {'eax': -2, 'ebp': 1, 'edi': 13500}
+  split pass over ids [2, 4, 8, 9, 11, 12, 13, 60, 81, 83, 84, 85, 90]
+  piece   #64   of #2
+  piece   #82   of #8
+  piece   #65   of #8
+  piece   #23   of #8
+  piece   #14   of #8
+  piece   #10   of #8
+  piece   #7    of #8
+  piece   #6    of #9
+  piece   #5    of #12
+  piece   #3    of #13
+  piece   #1    of #60
+  piece   #92   of #81
+  piece   #93   of #81
+  piece   #94   of #81
+  piece   #95   of #83
+  piece   #96   of #83
+  piece   #97   of #84
+  piece   #98   of #84
+  piece   #99   of #84
+  piece   #100  of #84
+  piece   #101  of #85
+  piece   #102  of #85
+  piece   #103  of #90
+  piece   #104  of #90
+  piece   #105  of #85
+  piece   #106  of #8
+  piece   #107  of #84
+  piece   #108  of #2
+  piece   #109  of #83
+  piece   #110  of #81
+  piece   #111  of #4
+  piece   #112  of #11
+  piece   #113  of #84
+  piece   #114  of #2
+  2-ref   #1    const -1, piece of #6    checked for copy forwarding -> forwarded, not listed
+  drop    #3    const 8, piece of #7     refs 1 spill -14
+  drop    #6    const 0x3c, piece of #2  refs 1 spill -1
+  drop    #10   const 0, piece of #1     refs 1 spill -6
+  2-ref   #14   const 0, piece of #1     checked for copy forwarding -> forwarded, not listed
+  2-ref   #92   local, piece of #64      checked for copy forwarding -> forwarded, not listed
+  2-ref   #93   local, piece of #64      checked for copy forwarding -> forwarded, not listed
+  2-ref   #99   local, piece of #12      checked for copy forwarding -> forwarded, not listed
+  2-ref   #100  local, piece of #12      checked for copy forwarding -> forwarded, not listed
+  2-ref   #103  const 4, piece of #8     checked for copy forwarding -> forwarded, not listed
+  2-ref   #104  const 4, piece of #8     checked for copy forwarding -> forwarded, not listed
+  drop    #105  this, piece of #9        refs 1 spill 0
+  drop    #107  local, piece of #12      refs 1 spill 0
+  drop    #108  local, piece of #60      refs 1 spill 0
+  drop    #109  local, piece of #13      refs 1 spill 0
+  drop    #110  local, piece of #64      refs 1 spill 0
+  drop    #111  local, piece of #65      refs 1 spill 0
+  drop    #112  sub_mesh, piece of #11   refs 1 spill 0
+  drop    #113  local, piece of #12      refs 1 spill 0
+  drop    #114  local, piece of #60      refs 1 spill 0
+  re-sort: #63(-107), #15(-444), #79(-444), #75(-444), #76(-444)
+  choose  #64   local, piece of #60      prio    66  allowed acd..bp
+  -> eax   #64   local, piece of #60       costs: {'eax': -1, 'ebp': 1002}
+  choose  #94   local, piece of #64      prio    28  allowed ...s.bp
+  -> esi   #94   local, piece of #64       costs: {'ecx': -1, 'ebp': 1002}
+  skip    #100  local, piece of #12      spill 0 <= 0: not worth a register
+  choose  #93   local, piece of #64      prio    20  allowed ....ibp
+  -> ebx   #93   local, piece of #64       costs: {'edi': 900}
+  choose  #92   local, piece of #64      prio    20  allowed ....ibp
+  -> ebx   #92   local, piece of #64       costs: {'edi': 900}
+  choose  #96   local, piece of #13      prio    16  allowed ....i.p
+  -> ebp   #96   local, piece of #13       costs: {'esi': -1, 'edi': 900}
+  choose  #95   local, piece of #13      prio    16  allowed ....i.p
+  -> ebp   #95   local, piece of #13       costs: {'esi': -1, 'edi': 900}
+  choose  #102  this, piece of #9        prio    16  allowed ...sibp
+  -> esi   #102  this, piece of #9         costs: {'ecx': -1}
+  choose  #101  this, piece of #9        prio    15  allowed ...si..
+  -> esi   #101  this, piece of #9         costs: {'ecx': -3, 'edi': 900}
+  choose  #99   local, piece of #12      prio    13  allowed ....ibp
+  -> edi   #99   local, piece of #12       (all costs 0: first allowed register in table order)
+  choose  #98   local, piece of #12      prio    10  allowed ...sibp
+  -> esi   #98   local, piece of #12       costs: {'ecx': -1, 'edi': 900}
+  choose  #97   local, piece of #12      prio    10  allowed ...sibp
+  -> esi   #97   local, piece of #12       costs: {'ecx': -1, 'edi': 900}
+  choose  #106  const 0, piece of #1     prio     0  allowed ...sibp
+  -> esi   #106  const 0, piece of #1      (all costs 0: first allowed register in table order)
+  skip    #14   const 0, piece of #1     spill -2 <= 0: not worth a register
+  choose  #82   const 0, piece of #1     prio    -5  allowed ....i..
+  -> edi   #82   const 0, piece of #1      costs: {'ebx': -1, 'ebp': -1}
+  split pass over ids [103, 104]
+  re-sort: #23(-12), #65(-17), #5(-26), #7(-28), #1(-39), #63(-107), #15(-444), #79(-444), #75(-444), #100(-444), #76(-444), #14(-444)
+  skip    #23   const 0, piece of #1     spill 0 <= 0: not worth a register
+  skip    #65   const 0, piece of #1     spill 0 <= 0: not worth a register
+  skip    #5    const 1, piece of #4     spill -6 <= 0: not worth a register
+  skip    #7    const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #1    const -1, piece of #6    spill 0 <= 0: not worth a register
+  choose  #63   local                    prio  -107  allowed ......p
+  -> ebp   #63   local                     costs: {'ebx': -2, 'ebp': -2}
+  split pass over ids [23]
+  piece   #104  of #23
+  re-sort: #15(-444), #79(-444), #75(-444), #100(-444), #76(-444), #14(-444), #65(-444), #5(-444), #7(-444), #1(-444)
+  skip    #104  const 0, piece of #1     spill -6 <= 0: not worth a register
+  skip    #15   local                    spill -20 <= 0: not worth a register
+  split pass over ids [15, 75, 76, 100]
+  piece   #23   of #75
+  piece   #103  of #100
+  piece   #114  of #15
+  piece   #113  of #76
+  2-ref   #23   local, piece of #75      checked for copy forwarding -> forwarded, not listed
+  drop    #103  local, piece of #12      refs 1 spill 0
+  drop    #113  local, piece of #76      refs 1 spill 0
+  drop    #114  local, piece of #15      refs 1 spill 0
+  re-sort: #79(-444), #14(-444), #65(-444), #5(-444), #7(-444), #1(-444), #104(-444)
+  skip    #23   local, piece of #75      spill 0 <= 0: not worth a register
+  skip    #79   temp                     spill -4 <= 0: not worth a register
+  skip    #23   local, piece of #75      spill 0 <= 0: not worth a register
+  split pass over ids [23]
+  piece   #79   of #23
+  drop    #79   local, piece of #75      refs 1 spill 0
+  re-sort: #14(-444), #65(-444), #5(-444), #7(-444), #1(-444), #104(-444)
+  skip    #14   const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #65   const 0, piece of #1     spill 0 <= 0: not worth a register
+  skip    #5    const 1, piece of #4     spill -6 <= 0: not worth a register
+  split pass over ids [1, 5, 7, 104]
+  piece   #65   of #1
+  piece   #14   of #7
+  piece   #79   of #104
+  piece   #23   of #104
+  piece   #114  of #5
+  2-ref   #23   const 0, piece of #1     checked for copy forwarding -> forwarded, not listed
+  2-ref   #79   const 0, piece of #1     checked for copy forwarding -> forwarded, not listed
+  2-ref   #103  const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #113  const 1                  checked for copy forwarding -> forwarded, not listed
+  drop    #114  const 1, piece of #4     refs 1 spill -2
+  re-sort: 
+  choose  #100  const 0                  prio     8  allowed acds.b.
+  -> eax   #100  const 0                   (all costs 0: first allowed register in table order)
+  skip    #113  const 1                  spill 0 <= 0: not worth a register
+  skip    #103  const 1                  spill -2 <= 0: not worth a register
+  skip    #79   const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #23   const 0, piece of #1     spill -2 <= 0: not worth a register
+  choose  #65   const -1, piece of #6    prio    -2  allowed ..dsibp
+  -> edx   #65   const -1, piece of #6     (all costs 0: first allowed register in table order)
+  skip    #14   const 0, piece of #1     spill 0 <= 0: not worth a register
+  skip    #113  const 1                  spill 0 <= 0: not worth a register
+  skip    #103  const 1                  spill -2 <= 0: not worth a register
+  skip    #79   const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #23   const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #14   const 0, piece of #1     spill 0 <= 0: not worth a register
+  end of allocation
+
+where each priority comes from (priority pass 0x10782473, first run): per block, w = 1 << loop depth,
+K = candidates referenced in the block; a referenced candidate gains w*K*cost, one live through without a
+reference loses w*K.  cost: 2 per variable reference in the block, 0/1 for a constant.
+  block 1 (depth 0, lines 1-5): w 1 K 13
+      #8    const 4                referenced, cost   0: +0
+      #6    const -1               referenced, cost   0: +0
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0x3c             referenced, cost   0: +0
+      #11   sub_mesh               referenced, cost   2: +26
+      #65   local                  referenced, cost   2: +26
+      #64   local                  referenced, cost   2: +26
+      #13   local                  referenced, cost   2: +26
+      #63   local                  referenced, cost   2: +26
+      #60   local                  referenced, cost   2: +26
+      #12   local                  referenced, cost   2: +26
+      #1    const 0                referenced, cost   0: +0
+      #9    this                   referenced, cost   2: +26
+  block 2 (depth 0, lines 5): w 1 K 3
+      #7    const 8                referenced, cost   0: +0
+      #5    const 0xca2dc8         referenced, cost   0: +0
+      #3    ?                      referenced, cost   0: +0
+      #8    const 4                live through, no reference: -3
+      #6    const -1               live through, no reference: -3
+      #4    const 1                live through, no reference: -3
+      #2    const 0x3c             live through, no reference: -3
+      #11   sub_mesh               live through, no reference: -3
+      #65   local                  live through, no reference: -3
+      #64   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #63   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #1    const 0                live through, no reference: -3
+      #9    this                   live through, no reference: -3
+  block 3 (depth 1, lines 7): w 2 K 3
+      #16   local                  referenced, cost   4: +24
+      #7    const 8                live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             referenced, cost   0: +0
+      #11   sub_mesh               live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+      #9    this                   live through, no reference: -6
+  block 4 (depth 1, lines 7): w 2 K 2
+      #16   local                  referenced, cost   2: +8
+      #38   local                  referenced, cost   2: +8
+      #7    const 8                live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+      #9    this                   live through, no reference: -4
+  block 5 (depth 1, lines 7): w 2 K 2
+      #38   local                  referenced, cost   2: +8
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 6 (depth 1, lines 7): w 2 K 3
+      #66   local                  referenced, cost   2: +12
+      #38   local                  referenced, cost   2: +12
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 7 (depth 1, lines 7): w 2 K 3
+      #37   local                  referenced, cost   4: +24
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #38   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      referenced, cost   0: +0
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 8 (depth 1, lines 7): w 2 K 5
+      #37   local                  referenced, cost   8: +80
+      #66   local                  referenced, cost   2: +20
+      #65   local                  live through, no reference: -10
+      #64   local                  live through, no reference: -10
+      #63   local                  live through, no reference: -10
+      #60   local                  live through, no reference: -10
+      #38   local                  referenced, cost   2: +20
+      #13   local                  live through, no reference: -10
+      #12   local                  live through, no reference: -10
+      #11   sub_mesh               live through, no reference: -10
+      #9    this                   live through, no reference: -10
+      #8    const 4                live through, no reference: -10
+      #7    const 8                live through, no reference: -10
+      #6    const -1               live through, no reference: -10
+      #5    const 0xca2dc8         referenced, cost   1: +10
+      #4    const 1                referenced, cost   0: +0
+      #3    ?                      live through, no reference: -10
+      #2    const 0x3c             live through, no reference: -10
+      #1    const 0                live through, no reference: -10
+  block 9 (depth 1, lines 7): w 2 K 2
+      #66   local                  referenced, cost   2: +8
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 10 (depth 1, lines 7-9): w 2 K 3
+      #66   local                  live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #38   local                  referenced, cost   4: +24
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               referenced, cost   1: +6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   1: +6
+  block 11 (depth 1, lines 10): w 2 K 3
+      #91   temp                   referenced, cost   6: +36
+      #66   local                  live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #38   local                  referenced, cost   2: +12
+      #13   local                  live through, no reference: -6
+      #12   local                  referenced, cost   2: +12
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 12 (depth 1, lines 10-11): w 2 K 2
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  referenced, cost   2: +8
+      #60   local                  referenced, cost   2: +8
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 13 (depth 1, lines 11): w 2 K 2
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  referenced, cost   2: +8
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 14 (depth 1, lines 11): w 2 K 4
+      #38   local                  referenced, cost   2: +16
+      #66   local                  referenced, cost   4: +32
+      #65   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #63   local                  live through, no reference: -8
+      #60   local                  referenced, cost   4: +32
+      #13   local                  live through, no reference: -8
+      #12   local                  live through, no reference: -8
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                live through, no reference: -8
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                referenced, cost   0: +0
+  block 15 (depth 1, lines 11): w 2 K 1
+      #66   local                  referenced, cost   4: +8
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 16 (depth 1, lines 11): w 2 K 2
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  referenced, cost   2: +8
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                referenced, cost   0: +0
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 17 (depth 1, lines 11): w 2 K 4
+      #41   oldSize                referenced, cost  10: +80
+      #66   local                  live through, no reference: -8
+      #65   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #60   local                  referenced, cost   2: +16
+      #38   local                  live through, no reference: -8
+      #13   local                  live through, no reference: -8
+      #12   local                  referenced, cost   2: +16
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                referenced, cost   1: +8
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                live through, no reference: -8
+  block 18 (depth 1, lines 11): w 2 K 1
+      #45   local                  referenced, cost   2: +4
+      #41   oldSize                live through, no reference: -2
+      #66   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #38   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 19 (depth 1, lines 11): w 2 K 1
+      #45   local                  referenced, cost   2: +4
+      #66   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #41   oldSize                live through, no reference: -2
+      #38   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 20 (depth 1, lines 11): w 2 K 3
+      #41   oldSize                referenced, cost   2: +12
+      #45   local                  referenced, cost   2: +12
+      #42   len                    referenced, cost   6: +36
+      #66   local                  live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #38   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 21 (depth 1, lines 11): w 2 K 2
+      #43   newStart               referenced, cost   2: +8
+      #42   len                    referenced, cost   2: +8
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 22 (depth 1, lines 11): w 2 K 2
+      #43   newStart               referenced, cost   2: +8
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #42   len                    live through, no reference: -4
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 23 (depth 1, lines 11): w 2 K 4
+      #47   cur                    referenced, cost   2: +16
+      #43   newStart               referenced, cost   2: +16
+      #66   local                  live through, no reference: -8
+      #65   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #60   local                  referenced, cost   2: +16
+      #42   len                    live through, no reference: -8
+      #38   local                  live through, no reference: -8
+      #13   local                  live through, no reference: -8
+      #12   local                  referenced, cost   2: +16
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                live through, no reference: -8
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                live through, no reference: -8
+  block 24 (depth 1, lines 11): w 2 K 3
+      #86   temp                   referenced, cost   4: +24
+      #47   cur                    live through, no reference: -6
+      #43   newStart               referenced, cost   2: +12
+      #66   local                  live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #42   len                    live through, no reference: -6
+      #38   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  referenced, cost   2: +12
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 25 (depth 1, lines -): w 2 K 0
+  block 26 (depth 2, lines 11): w 4 K 2
+      #86   temp                   live through, no reference: -8
+      #47   cur                    referenced, cost   2: +16
+      #43   newStart               live through, no reference: -8
+      #66   local                  live through, no reference: -8
+      #65   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #60   local                  live through, no reference: -8
+      #42   len                    live through, no reference: -8
+      #38   local                  live through, no reference: -8
+      #13   local                  live through, no reference: -8
+      #12   local                  live through, no reference: -8
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                live through, no reference: -8
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                referenced, cost   0: +0
+  block 27 (depth 2, lines 11): w 4 K 4
+      #87   temp                   referenced, cost   6: +96
+      #86   temp                   referenced, cost   4: +64
+      #47   cur                    referenced, cost   8: +128
+      #43   newStart               live through, no reference: -16
+      #66   local                  live through, no reference: -16
+      #65   local                  live through, no reference: -16
+      #64   local                  live through, no reference: -16
+      #60   local                  live through, no reference: -16
+      #42   len                    live through, no reference: -16
+      #38   local                  live through, no reference: -16
+      #13   local                  live through, no reference: -16
+      #12   local                  live through, no reference: -16
+      #11   sub_mesh               live through, no reference: -16
+      #9    this                   live through, no reference: -16
+      #8    const 4                live through, no reference: -16
+      #7    const 8                live through, no reference: -16
+      #6    const -1               live through, no reference: -16
+      #5    const 0xca2dc8         live through, no reference: -16
+      #4    const 1                live through, no reference: -16
+      #3    ?                      live through, no reference: -16
+      #2    const 0x3c             live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 28 (depth 2, lines 11): w 4 K 1
+      #87   temp                   referenced, cost   4: +16
+      #86   temp                   live through, no reference: -4
+      #47   cur                    live through, no reference: -4
+      #43   newStart               live through, no reference: -4
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #42   len                    live through, no reference: -4
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 29 (depth 2, lines 11): w 4 K 4
+      #86   temp                   referenced, cost   2: +32
+      #47   cur                    referenced, cost   4: +64
+      #43   newStart               live through, no reference: -16
+      #66   local                  live through, no reference: -16
+      #65   local                  live through, no reference: -16
+      #64   local                  live through, no reference: -16
+      #60   local                  referenced, cost   2: +32
+      #42   len                    live through, no reference: -16
+      #38   local                  live through, no reference: -16
+      #13   local                  live through, no reference: -16
+      #12   local                  live through, no reference: -16
+      #11   sub_mesh               live through, no reference: -16
+      #9    this                   live through, no reference: -16
+      #8    const 4                live through, no reference: -16
+      #7    const 8                referenced, cost   0: +0
+      #6    const -1               live through, no reference: -16
+      #5    const 0xca2dc8         live through, no reference: -16
+      #4    const 1                live through, no reference: -16
+      #3    ?                      live through, no reference: -16
+      #2    const 0x3c             live through, no reference: -16
+      #1    const 0                live through, no reference: -16
+  block 30 (depth 1, lines -): w 2 K 0
+  block 31 (depth 1, lines 11): w 2 K 2
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #47   cur                    referenced, cost   2: +8
+      #43   newStart               live through, no reference: -4
+      #42   len                    live through, no reference: -4
+      #38   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 32 (depth 1, lines 11): w 2 K 4
+      #38   local                  referenced, cost   2: +16
+      #66   local                  referenced, cost   4: +32
+      #65   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #60   local                  live through, no reference: -8
+      #47   cur                    referenced, cost   4: +32
+      #43   newStart               live through, no reference: -8
+      #42   len                    live through, no reference: -8
+      #13   local                  live through, no reference: -8
+      #12   local                  live through, no reference: -8
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                live through, no reference: -8
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                referenced, cost   0: +0
+  block 33 (depth 1, lines 11): w 2 K 1
+      #66   local                  referenced, cost   4: +8
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #47   cur                    live through, no reference: -2
+      #43   newStart               live through, no reference: -2
+      #42   len                    live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 34 (depth 1, lines 11): w 2 K 5
+      #60   local                  referenced, cost   2: +20
+      #47   cur                    referenced, cost   2: +20
+      #44   newFinish              referenced, cost   2: +20
+      #66   local                  live through, no reference: -10
+      #65   local                  live through, no reference: -10
+      #64   local                  live through, no reference: -10
+      #43   newStart               live through, no reference: -10
+      #42   len                    live through, no reference: -10
+      #13   local                  live through, no reference: -10
+      #12   local                  referenced, cost   4: +40
+      #11   sub_mesh               live through, no reference: -10
+      #9    this                   live through, no reference: -10
+      #8    const 4                live through, no reference: -10
+      #7    const 8                live through, no reference: -10
+      #6    const -1               live through, no reference: -10
+      #5    const 0xca2dc8         live through, no reference: -10
+      #4    const 1                live through, no reference: -10
+      #3    ?                      live through, no reference: -10
+      #2    const 0x3c             live through, no reference: -10
+      #1    const 0                referenced, cost   0: +0
+  block 35 (depth 1, lines 11): w 2 K 1
+      #12   local                  referenced, cost   2: +4
+      #44   newFinish              live through, no reference: -2
+      #66   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #43   newStart               live through, no reference: -2
+      #42   len                    live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 36 (depth 1, lines 11): w 2 K 6
+      #42   len                    referenced, cost   2: +24
+      #43   newStart               referenced, cost   4: +48
+      #44   newFinish              referenced, cost   2: +24
+      #63   local                  referenced, cost   2: +24
+      #60   local                  referenced, cost   2: +24
+      #12   local                  referenced, cost   2: +24
+      #66   local                  live through, no reference: -12
+      #65   local                  live through, no reference: -12
+      #64   local                  live through, no reference: -12
+      #13   local                  live through, no reference: -12
+      #11   sub_mesh               live through, no reference: -12
+      #9    this                   live through, no reference: -12
+      #8    const 4                live through, no reference: -12
+      #7    const 8                live through, no reference: -12
+      #6    const -1               live through, no reference: -12
+      #5    const 0xca2dc8         live through, no reference: -12
+      #4    const 1                live through, no reference: -12
+      #3    ?                      live through, no reference: -12
+      #2    const 0x3c             live through, no reference: -12
+      #1    const 0                live through, no reference: -12
+  block 37 (depth 1, lines 11-12): w 2 K 3
+      #14   ?                      referenced, cost   2: +12
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #66   local                  live through, no reference: -6
+      #65   local                  referenced, cost   2: +12
+      #64   local                  referenced, cost   2: +12
+      #13   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 38 (depth 1, lines 12): w 2 K 2
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  referenced, cost   2: +8
+      #13   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 39 (depth 1, lines 12): w 2 K 1
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #66   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #64   local                  referenced, cost   2: +4
+      #13   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 40 (depth 1, lines 12): w 2 K 2
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  referenced, cost   2: +8
+      #13   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                referenced, cost   0: +0
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 41 (depth 1, lines 12): w 2 K 4
+      #13   local                  referenced, cost   0: +0
+      #64   local                  referenced, cost   2: +16
+      #65   local                  referenced, cost   0: +0
+      #66   local                  live through, no reference: -8
+      #63   local                  live through, no reference: -8
+      #60   local                  live through, no reference: -8
+      #12   local                  live through, no reference: -8
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                referenced, cost   0: +0
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                live through, no reference: -8
+  block 42 (depth 1, lines 12-13): w 2 K 5
+      #40   local                  referenced, cost   6: +60
+      #67   local                  referenced, cost   2: +20
+      #49   local                  referenced, cost   2: +20
+      #48   local                  referenced, cost   4: +40
+      #13   local                  live through, no reference: -10
+      #64   local                  live through, no reference: -10
+      #65   local                  live through, no reference: -10
+      #66   local                  live through, no reference: -10
+      #63   local                  live through, no reference: -10
+      #60   local                  live through, no reference: -10
+      #12   local                  live through, no reference: -10
+      #11   sub_mesh               referenced, cost   2: +20
+      #9    this                   live through, no reference: -10
+      #8    const 4                live through, no reference: -10
+      #7    const 8                live through, no reference: -10
+      #6    const -1               live through, no reference: -10
+      #5    const 0xca2dc8         live through, no reference: -10
+      #4    const 1                live through, no reference: -10
+      #3    ?                      live through, no reference: -10
+      #2    const 0x3c             live through, no reference: -10
+      #1    const 0                live through, no reference: -10
+  block 43 (depth 1, lines 13): w 2 K 2
+      #67   local                  referenced, cost   2: +8
+      #49   local                  live through, no reference: -4
+      #48   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #66   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 44 (depth 1, lines 13): w 2 K 3
+      #67   local                  referenced, cost   4: +24
+      #68   local                  referenced, cost   2: +12
+      #49   local                  live through, no reference: -6
+      #48   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #66   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 45 (depth 1, lines 13): w 2 K 1
+      #68   local                  referenced, cost   4: +8
+      #49   local                  live through, no reference: -2
+      #48   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #66   local                  live through, no reference: -2
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 46 (depth 1, lines 13): w 2 K 4
+      #49   local                  referenced, cost   2: +16
+      #15   local                  referenced, cost   2: +16
+      #48   local                  referenced, cost   4: +32
+      #13   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #65   local                  live through, no reference: -8
+      #66   local                  live through, no reference: -8
+      #63   local                  live through, no reference: -8
+      #60   local                  live through, no reference: -8
+      #12   local                  live through, no reference: -8
+      #11   sub_mesh               live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #7    const 8                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #5    const 0xca2dc8         live through, no reference: -8
+      #4    const 1                live through, no reference: -8
+      #3    ?                      live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                referenced, cost   0: +0
+  block 47 (depth 1, lines 13): w 2 K 2
+      #48   local                  referenced, cost   4: +16
+      #15   local                  referenced, cost   0: +0
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 48 (depth 1, lines 13): w 2 K 1
+      #15   local                  referenced, cost   0: +0
+      #66   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 49 (depth 1, lines 13): w 2 K 2
+      #73   local                  referenced, cost   2: +8
+      #15   local                  live through, no reference: -4
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 50 (depth 1, lines 13): w 2 K 3
+      #73   local                  referenced, cost   4: +24
+      #74   local                  referenced, cost   2: +12
+      #66   local                  live through, no reference: -6
+      #65   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #63   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #11   sub_mesh               live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #7    const 8                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #5    const 0xca2dc8         live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    ?                      live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 51 (depth 1, lines 13): w 2 K 2
+      #74   local                  referenced, cost   4: +16
+      #15   local                  referenced, cost   0: +0
+      #66   local                  live through, no reference: -4
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 52 (depth 1, lines 13): w 2 K 1
+      #15   local                  referenced, cost   0: +0
+      #66   local                  live through, no reference: -2
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 53 (depth 1, lines 13-14): w 2 K 2
+      #15   local                  live through, no reference: -4
+      #66   local                  referenced, cost   2: +8
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   2: +8
+  block 54 (depth 1, lines 14): w 2 K 1
+      #66   local                  referenced, cost   4: +8
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 55 (depth 1, lines 14): w 2 K 2
+      #66   local                  referenced, cost   6: +24
+      #15   local                  referenced, cost   0: +0
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 56 (depth 1, lines 14): w 2 K 1
+      #15   local                  referenced, cost   0: +0
+      #65   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #63   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #11   sub_mesh               live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #7    const 8                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #5    const 0xca2dc8         live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    ?                      live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 57 (depth 1, lines 5,14): w 2 K 2
+      #15   local                  referenced, cost   2: +8
+      #65   local                  live through, no reference: -4
+      #64   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #11   sub_mesh               live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #7    const 8                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #5    const 0xca2dc8         live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    ?                      live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 58 (depth 0, lines -): w 1 K 0
+  block 59 (depth 0, lines 16-18): w 1 K 7
+      #17   local                  referenced, cost   2: +14
+      #21   i                      referenced, cost   8: +56
+      #75   local                  referenced, cost   2: +14
+      #64   local                  live through, no reference: -7
+      #60   local                  referenced, cost   2: +14
+      #13   local                  live through, no reference: -7
+      #12   local                  referenced, cost   2: +14
+      #9    this                   referenced, cost   2: +14
+      #8    const 4                live through, no reference: -7
+      #6    const -1               live through, no reference: -7
+      #4    const 1                live through, no reference: -7
+      #2    const 0x3c             live through, no reference: -7
+      #1    const 0                referenced, cost   1: +7
+  block 60 (depth 0, lines -): w 1 K 0
+  block 61 (depth 1, lines 19): w 2 K 3
+      #17   local                  referenced, cost   2: +12
+      #21   i                      referenced, cost   2: +12
+      #75   local                  live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 62 (depth 1, lines 19): w 2 K 4
+      #88   temp                   referenced, cost   4: +32
+      #17   local                  live through, no reference: -8
+      #21   i                      referenced, cost   2: +16
+      #75   local                  live through, no reference: -8
+      #64   local                  live through, no reference: -8
+      #60   local                  live through, no reference: -8
+      #13   local                  live through, no reference: -8
+      #12   local                  referenced, cost   2: +16
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #6    const -1               referenced, cost   0: +0
+      #4    const 1                live through, no reference: -8
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                live through, no reference: -8
+  block 63 (depth 1, lines 20): w 2 K 4
+      #88   temp                   referenced, cost   2: +16
+      #17   local                  referenced, cost   2: +16
+      #75   local                  referenced, cost   0: +0
+      #64   local                  live through, no reference: -8
+      #60   local                  live through, no reference: -8
+      #21   i                      live through, no reference: -8
+      #13   local                  live through, no reference: -8
+      #12   local                  live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #8    const 4                live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0x3c             live through, no reference: -8
+      #1    const 0                live through, no reference: -8
+  block 64 (depth 1, lines 18): w 2 K 1
+      #17   local                  live through, no reference: -2
+      #75   local                  live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #21   i                      referenced, cost   2: +4
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 65 (depth 0, lines -): w 1 K 0
+  block 66 (depth 0, lines 22-23): w 1 K 6
+      #75   local                  referenced, cost   2: +12
+      #80   temp                   referenced, cost   4: +24
+      #22   i                      referenced, cost   2: +12
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #17   local                  referenced, cost   2: +12
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #9    this                   referenced, cost   2: +12
+      #8    const 4                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   1: +6
+  block 67 (depth 0, lines -): w 1 K 0
+  block 68 (depth 1, lines 24): w 2 K 3
+      #80   temp                   live through, no reference: -6
+      #22   i                      referenced, cost   2: +12
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #17   local                  referenced, cost   2: +12
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 69 (depth 1, lines 25): w 2 K 1
+      #80   temp                   live through, no reference: -2
+      #22   i                      live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #17   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #9    this                   referenced, cost   4: +8
+      #8    const 4                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 70 (depth 1, lines 23): w 2 K 2
+      #80   temp                   referenced, cost   2: +8
+      #22   i                      referenced, cost   4: +16
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #17   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 71 (depth 0, lines -): w 1 K 0
+  block 72 (depth 0, lines 26): w 1 K 4
+      #51   local                  referenced, cost   2: +8
+      #50   local                  referenced, cost   4: +16
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #9    this                   referenced, cost   4: +16
+      #8    const 4                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 73 (depth 0, lines 26): w 1 K 4
+      #50   local                  referenced, cost   2: +8
+      #51   local                  referenced, cost   2: +8
+      #46   temp                   referenced, cost   2: +8
+      #89   temp                   referenced, cost   2: +8
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0x3c             live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 74 (depth 0, lines -): w 1 K 0
+  block 75 (depth 1, lines 26): w 2 K 1
+      #46   temp                   live through, no reference: -2
+      #89   temp                   referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 76 (depth 1, lines 26): w 2 K 3
+      #46   temp                   live through, no reference: -6
+      #89   temp                   referenced, cost   4: +24
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #6    const -1               referenced, cost   1: +6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 77 (depth 1, lines 26): w 2 K 3
+      #46   temp                   referenced, cost   2: +12
+      #89   temp                   referenced, cost   2: +12
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             referenced, cost   0: +0
+      #1    const 0                live through, no reference: -6
+  block 78 (depth 0, lines -): w 1 K 0
+  block 79 (depth 0, lines 26,28-31): w 1 K 9
+      #28   local                  referenced, cost   4: +36
+      #27   local                  referenced, cost   4: +36
+      #26   local                  referenced, cost   4: +36
+      #18   local                  referenced, cost   2: +18
+      #76   local                  referenced, cost   2: +18
+      #36   j                      referenced, cost   2: +18
+      #35   new_index              referenced, cost   2: +18
+      #64   local                  live through, no reference: -9
+      #60   local                  live through, no reference: -9
+      #13   local                  live through, no reference: -9
+      #12   local                  live through, no reference: -9
+      #9    this                   referenced, cost   2: +18
+      #8    const 4                live through, no reference: -9
+      #4    const 1                live through, no reference: -9
+      #2    const 0x3c             live through, no reference: -9
+      #1    const 0                referenced, cost   3: +27
+  block 80 (depth 0, lines 28): w 1 K 2
+      #90   temp                   referenced, cost   2: +4
+      #18   local                  live through, no reference: -2
+      #76   local                  live through, no reference: -2
+      #36   j                      live through, no reference: -2
+      #35   new_index              live through, no reference: -2
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0x3c             live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 81 (depth 0, lines 28): w 1 K 1
+      #10   ?                      referenced, cost   0: +0
+      #90   temp                   live through, no reference: -1
+      #18   local                  live through, no reference: -1
+      #76   local                  live through, no reference: -1
+      #36   j                      live through, no reference: -1
+      #35   new_index              live through, no reference: -1
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #9    this                   live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #2    const 0x3c             live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 82 (depth 1, lines 32): w 2 K 3
+      #10   ?                      live through, no reference: -6
+      #90   temp                   live through, no reference: -6
+      #18   local                  referenced, cost   2: +12
+      #76   local                  live through, no reference: -6
+      #36   j                      referenced, cost   2: +12
+      #35   new_index              live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 83 (depth 1, lines 31,33-36): w 2 K 12
+      #39   temp                   referenced, cost   4: +96
+      #23   ?                      referenced, cost   2: +48
+      #18   local                  referenced, cost   0: +0
+      #76   local                  referenced, cost   0: +0
+      #90   temp                   referenced, cost   4: +96
+      #64   local                  live through, no reference: -24
+      #60   local                  live through, no reference: -24
+      #36   j                      referenced, cost   4: +96
+      #35   new_index              referenced, cost   6: +144
+      #13   local                  referenced, cost   2: +48
+      #12   local                  referenced, cost   2: +48
+      #10   ?                      referenced, cost   0: +0
+      #9    this                   referenced, cost   2: +48
+      #8    const 4                live through, no reference: -24
+      #4    const 1                live through, no reference: -24
+      #2    const 0x3c             referenced, cost   0: +0
+      #1    const 0                live through, no reference: -24
+  block 84 (depth 1, lines 31): w 2 K 3
+      #18   local                  referenced, cost   2: +12
+      #76   local                  referenced, cost   2: +12
+      #90   temp                   live through, no reference: -6
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #36   j                      referenced, cost   4: +24
+      #35   new_index              live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #10   ?                      live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0x3c             live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 85 (depth 0, lines -): w 1 K 0
+  block 86 (depth 0, lines 39-40): w 1 K 1
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #9    this                   referenced, cost   4: +4
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 87 (depth 0, lines 41): w 1 K 1
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                referenced, cost   0: +0
+  block 88 (depth 0, lines 41): w 1 K 3
+      #53   local                  referenced, cost   4: +12
+      #29   local                  referenced, cost   2: +6
+      #64   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #8    const 4                live through, no reference: -3
+      #1    const 0                referenced, cost   0: +0
+  block 89 (depth 0, lines -): w 1 K 0
+  block 90 (depth 1, lines 41): w 2 K 3
+      #54   y                      referenced, cost   6: +36
+      #53   local                  referenced, cost   8: +48
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 91 (depth 0, lines 41): w 1 K 1
+      #29   local                  referenced, cost   0: +0
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 92 (depth 0, lines 41): w 1 K 3
+      #30   local                  referenced, cost   4: +12
+      #29   local                  referenced, cost   4: +12
+      #64   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #8    const 4                live through, no reference: -3
+      #1    const 0                referenced, cost   2: +6
+  block 93 (depth 0, lines 41): w 1 K 2
+      #31   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 94 (depth 0, lines 41): w 1 K 1
+      #31   local                  referenced, cost   2: +2
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 95 (depth 0, lines 41): w 1 K 4
+      #77   local                  referenced, cost   4: +16
+      #55   local                  referenced, cost   2: +8
+      #24   local                  referenced, cost   4: +16
+      #52   local                  referenced, cost   2: +8
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 96 (depth 0, lines -): w 1 K 0
+  block 97 (depth 1, lines 41): w 2 K 3
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #55   local                  referenced, cost   6: +36
+      #52   local                  referenced, cost   2: +12
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #8    const 4                referenced, cost   0: +0
+      #1    const 0                live through, no reference: -6
+  block 98 (depth 0, lines 41): w 1 K 1
+      #24   local                  referenced, cost   0: +0
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 99 (depth 0, lines 41): w 1 K 2
+      #24   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 100 (depth 0, lines 41): w 1 K 1
+      #24   local                  referenced, cost   2: +2
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 101 (depth 0, lines 41): w 1 K 2
+      #19   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 102 (depth 0, lines 41): w 1 K 1
+      #19   local                  referenced, cost   2: +2
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 103 (depth 0, lines 41): w 1 K 2
+      #69   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 104 (depth 0, lines 41): w 1 K 3
+      #69   local                  referenced, cost   4: +12
+      #70   local                  referenced, cost   2: +6
+      #64   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #8    const 4                live through, no reference: -3
+      #1    const 0                referenced, cost   0: +0
+  block 105 (depth 0, lines 41): w 1 K 1
+      #70   local                  referenced, cost   4: +4
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 106 (depth 0, lines 41): w 1 K 4
+      #56   local                  referenced, cost   2: +8
+      #64   local                  referenced, cost   2: +8
+      #60   local                  live through, no reference: -4
+      #13   local                  referenced, cost   4: +16
+      #12   local                  live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #1    const 0                referenced, cost   2: +8
+  block 107 (depth 0, lines -): w 1 K 0
+  block 108 (depth 1, lines 41): w 2 K 3
+      #56   local                  referenced, cost   6: +36
+      #64   local                  referenced, cost   2: +12
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #8    const 4                referenced, cost   0: +0
+      #1    const 0                live through, no reference: -6
+  block 109 (depth 0, lines -): w 1 K 0
+  block 110 (depth 0, lines 41): w 1 K 2
+      #60   local                  live through, no reference: -2
+      #13   local                  referenced, cost   2: +4
+      #12   local                  live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 111 (depth 0, lines 41): w 1 K 1
+      #13   local                  referenced, cost   2: +2
+      #60   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 112 (depth 0, lines 41): w 1 K 3
+      #1    const 0                referenced, cost   0: +0
+      #60   local                  referenced, cost   2: +6
+      #12   local                  referenced, cost   4: +12
+  block 113 (depth 0, lines 41): w 1 K 1
+      #12   local                  referenced, cost   2: +2
+  block 114 (depth 0, lines 42-43): w 1 K 2
+      #9    this                   referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 115 (depth 0, lines 43): w 1 K 3
+      #58   local                  referenced, cost   4: +12
+      #32   local                  referenced, cost   2: +6
+      #64   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #8    const 4                live through, no reference: -3
+      #4    const 1                live through, no reference: -3
+      #1    const 0                referenced, cost   0: +0
+  block 116 (depth 0, lines -): w 1 K 0
+  block 117 (depth 1, lines 43): w 2 K 3
+      #59   y                      referenced, cost   6: +36
+      #58   local                  referenced, cost   8: +48
+      #64   local                  live through, no reference: -6
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #8    const 4                live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 118 (depth 0, lines 43): w 1 K 1
+      #32   local                  referenced, cost   0: +0
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 119 (depth 0, lines 43): w 1 K 3
+      #33   local                  referenced, cost   4: +12
+      #32   local                  referenced, cost   4: +12
+      #64   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #8    const 4                live through, no reference: -3
+      #4    const 1                live through, no reference: -3
+      #1    const 0                referenced, cost   2: +6
+  block 120 (depth 0, lines 43): w 1 K 2
+      #34   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 121 (depth 0, lines 43): w 1 K 1
+      #34   local                  referenced, cost   2: +2
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 122 (depth 0, lines 43): w 1 K 4
+      #78   local                  referenced, cost   4: +16
+      #61   local                  referenced, cost   2: +8
+      #25   local                  referenced, cost   4: +16
+      #57   local                  referenced, cost   2: +8
+      #64   local                  live through, no reference: -4
+      #60   local                  live through, no reference: -4
+      #13   local                  live through, no reference: -4
+      #12   local                  live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 123 (depth 0, lines -): w 1 K 0
+  block 124 (depth 1, lines 43): w 2 K 3
+      #64   local                  live through, no reference: -6
+      #61   local                  referenced, cost   6: +36
+      #60   local                  live through, no reference: -6
+      #57   local                  referenced, cost   2: +12
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #8    const 4                referenced, cost   0: +0
+      #4    const 1                live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 125 (depth 0, lines 43): w 1 K 1
+      #25   local                  referenced, cost   0: +0
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 126 (depth 0, lines 43): w 1 K 2
+      #25   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 127 (depth 0, lines 43): w 1 K 1
+      #25   local                  referenced, cost   2: +2
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 128 (depth 0, lines 43): w 1 K 2
+      #20   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 129 (depth 0, lines 43): w 1 K 1
+      #20   local                  referenced, cost   2: +2
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 130 (depth 0, lines 43): w 1 K 2
+      #71   local                  referenced, cost   2: +4
+      #64   local                  live through, no reference: -2
+      #60   local                  live through, no reference: -2
+      #13   local                  live through, no reference: -2
+      #12   local                  live through, no reference: -2
+      #8    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 131 (depth 0, lines 43): w 1 K 3
+      #71   local                  referenced, cost   4: +12
+      #72   local                  referenced, cost   2: +6
+      #64   local                  live through, no reference: -3
+      #60   local                  live through, no reference: -3
+      #13   local                  live through, no reference: -3
+      #12   local                  live through, no reference: -3
+      #8    const 4                live through, no reference: -3
+      #4    const 1                live through, no reference: -3
+      #1    const 0                referenced, cost   0: +0
+  block 132 (depth 0, lines 43): w 1 K 1
+      #72   local                  referenced, cost   4: +4
+      #64   local                  live through, no reference: -1
+      #60   local                  live through, no reference: -1
+      #13   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #8    const 4                live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 133 (depth 0, lines 43): w 1 K 4
+      #62   local                  referenced, cost   2: +8
+      #64   local                  referenced, cost   2: +8
+      #60   local                  live through, no reference: -4
+      #13   local                  referenced, cost   4: +16
+      #12   local                  live through, no reference: -4
+      #8    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #1    const 0                referenced, cost   2: +8
+  block 134 (depth 0, lines -): w 1 K 0
+  block 135 (depth 1, lines 43): w 2 K 3
+      #62   local                  referenced, cost   6: +36
+      #64   local                  referenced, cost   2: +12
+      #60   local                  live through, no reference: -6
+      #13   local                  live through, no reference: -6
+      #12   local                  live through, no reference: -6
+      #8    const 4                referenced, cost   0: +0
+      #4    const 1                live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 136 (depth 0, lines -): w 1 K 0
+  block 137 (depth 0, lines 43): w 1 K 2
+      #60   local                  live through, no reference: -2
+      #13   local                  referenced, cost   2: +4
+      #12   local                  live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 138 (depth 0, lines 43): w 1 K 1
+      #13   local                  referenced, cost   2: +2
+      #60   local                  live through, no reference: -1
+      #12   local                  live through, no reference: -1
+      #4    const 1                live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 139 (depth 0, lines 43): w 1 K 3
+      #1    const 0                referenced, cost   0: +0
+      #60   local                  referenced, cost   2: +6
+      #12   local                  referenced, cost   4: +12
+      #4    const 1                live through, no reference: -3
+  block 140 (depth 0, lines 43): w 1 K 1
+      #12   local                  referenced, cost   2: +2
+      #4    const 1                live through, no reference: -1
+  block 141 (depth 0, lines 43): w 1 K 1
+      #4    const 1                referenced, cost   0: +0
+  totals:
+      #47   cur                       272
+      #36   j                         147
+      #35   new_index                 147
+      #87   temp                      112
+      #86   temp                      108
+      #37   local                     104
+      #39   temp                       96
+      #41   oldSize                    88
+      #90   temp                       87
+      #21   i                          80
+      #48   local                      76
+      #58   local                      60
+      #53   local                      60
+      #40   local                      60
+      #67   local                      52
+      #17   local                      50
+      #89   temp                       48
+      #88   temp                       48
+      #62   local                      44
+      #61   local                      44
+      #56   local                      44
+      #55   local                      44
+      #44   newFinish                  42
+      #18   local                      39
+      #22   i                          38
+      #59   y                          36
+      #54   y                          36
+      #26   local                      36
+      #27   local                      36
+      #28   local                      36
+      #91   temp                       36
+      #73   local                      32
+      #16   local                      32
+      #74   local                      28
+      #50   local                      24
+      #80   temp                       24
+      #49   local                      24
+      #25   local                      22
+      #24   local                      22
+      #43   newStart                   22
+      #76   local                      21
+      #57   local                      20
+      #52   local                      20
+      #68   local                      20
+      #45   local                      20
+      #32   local                      18
+      #29   local                      18
+      #71   local                      16
+      #78   local                      16
+      #69   local                      16
+      #77   local                      16
+      #51   local                      16
+      #15   local                      16
+      #33   local                      12
+      #30   local                      12
+      #46   temp                       12
+      #72   local                      10
+      #70   local                      10
+      #75   local                      10
+      #38   local                      10
+      #20   local                       6
+      #34   local                       6
+      #19   local                       6
+      #31   local                       6
+      #42   len                       -20
+      #66   local                     -52
+      #63   local                    -107
+      #12   local                    -171
+      #1    const 0                  -189
+      #9    this                     -208
+      #60   local                    -219
+      #11   sub_mesh                 -235
+      #65   local                    -239
+      #7    const 8                  -268
+      #5    const 0xca2dc8           -268
+      #6    const -1                 -330
+      #64   local                    -354
+      #13   local                    -354
+      #2    const 0x3c               -374
+      #4    const 1                  -427
+      #8    const 4                  -484

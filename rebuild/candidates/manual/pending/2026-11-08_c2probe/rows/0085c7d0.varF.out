@@ -1,0 +1,76 @@
+var/0085c7d0_F.cpp  (1 function(s) traced, 6.53 s in gdb; cl rc 0)
+
+==============================================================================================================
+?OnInit@CMoveOnCylinder@NCameraModes@@UAEXXZ  (defined at line 111)
+
+integer candidates in c2's colouring order (0x1078482f: priority desc, then key desc; equal -> later id first).
+allowed: a=eax c=ecx d=edx s=esi i=edi b=ebx p=ebp (table order; a value live across a call shows ...sibp)
+  #   id  candidate                lines            prio   key spill refs  allowed  register
+  0   17  temp                     114,116           144   107    16    8  acdsibp  ecx
+  1   18  temp                     115-116           144    91    16    8  acdsibp  eax
+  2    5  this                     111-119           143     8    22   11  ...sibp  esi
+  3   15  temp                     114                72   108     8    4  acdsibp  eax
+  4   11  local                    119                72    48     8    4  a.d..bp  eax
+  5    7  phys                     113-114            54   114     6    3  acdsibp  ecx
+  6    8  local                    112                48    27    12    6  acdsibp  eax
+  7    6  local                    113                36   115     4    2  acdsibp  eax
+  8    3  local                    112                30    22    10    5  ...sibp  edi
+  9   14  local                    112                26    17     8    4  acdsibp  eax
+ 10   10  local                    112                20    36     4    2  acdsibp  ecx
+ 11   16  temp                     112                18    37     6    3  acdsibp  eax
+ 12    1  local                    112                18     4     6    3  acdsibp  eax
+ 13    4  const 1                                      1     0     0    2  .....b.  split, immediate
+ 14    2  const 0                                      1     0     1    8  ...sibp  ebx -> immediates after codegen (constants only, benefit 1 <= 2)
+
+not in the list (dropped before the sort: fewer than 2 references and spill <= 0, a 2-reference copy forwarded into its use,
+or not an integer candidate):
+       1  const 0x14                              refs 0   
+       3  const 0xc                               refs 0   
+       5  const 0xc949e8                          refs 0   
+       6  const 0x3f400000                        refs 0   
+       7  const 0xe                               refs 0   
+       9  local                    116            refs 5   
+      12  local                    116            refs 5   
+      13  _real@00000000           115            refs 3   x87
+      19  temp                     116            refs 3   
+      20  temp                     116            refs 3   
+      21  temp                     116            refs 3   
+      22  temp                     116            refs 3   
+
+expression temporaries in code-generation order (0x10775acc): the rotating pointer's register before the
+choice, the register given, and the rule: rotation = next free of eax/ecx/edx from the pointer (the pointer
+then moves past it); first free / score = no scratch register free, table order; hint / other.
+    line  ptr at  got  rule
+          (pointer reset to eax: new function)
+     112  eax     ecx  rotation  (pointer now at edx)
+     114  edx     edx  rotation  (pointer now at eax)
+     114  eax     eax  rotation  (pointer now at ecx)
+     114  ecx     edx  rotation  (pointer now at eax)
+     114  eax     edi  rotation  (pointer now at eax)
+     114  eax     edi  rotation  (pointer now at eax)
+     114  eax     eax  rotation  (pointer now at ecx)
+     115  ecx     edx  rotation  (pointer now at eax)
+     115  eax     edi  rotation  (pointer now at eax)
+     115  eax     edi  rotation  (pointer now at eax)
+     115  eax     edi  rotation  (pointer now at eax)
+     116  eax     eax  rotation  (pointer now at ecx)
+     116  -       eax  hint / other  (pointer now at ecx)
+     116  ecx     ecx  rotation  (pointer now at edx)
+     116  edx     edx  rotation  (pointer now at eax)
+     116  eax     ecx  rotation  (pointer now at edx)
+01:32:47	0085c7d0	vF	DIFFER(332v332)	md=12	bytes=7	flags=	0s	
+  == 42 same (retail 0085c7d0.., ours 0085c7d0..)
+  - 0085c846 mov eax, dword ptr [ecx]
+  - 0085c848 lea edx, [esp + 8]
+  - 0085c84c push edx
+  - 0085c84d call dword ptr [eax + 0x118]
+  + 0085c846 mov edx, dword ptr [ecx]
+  + 0085c848 lea eax, [esp + 8]
+  + 0085c84c push eax
+  + 0085c84d call dword ptr [edx + 0x118]
+  == 25 same (retail 0085c853.., ours 0085c853..)
+  - 0085c8b1 fld dword ptr [ecx + 8]
+  - 0085c8b4 fmul dword ptr [eax]
+  + 0085c8b1 fld dword ptr [eax]
+  + 0085c8b3 fmul dword ptr [ecx + 8]
+  == 29 same (retail 0085c8b6.., ours 0085c8b6..)

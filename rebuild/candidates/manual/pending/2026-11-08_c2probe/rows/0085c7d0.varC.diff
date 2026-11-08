@@ -1,0 +1,32 @@
+  == 3 same (retail 0085c7d0.., ours 0085c7d0..)
+  + 0085c7d5 mov esi, ecx
+  + 0085c7d7 mov edi, dword ptr [esi + 0x40]
+  == 1 same (retail 0085c7d5.., ours 0085c7da..)
+  - 0085c7d7 mov esi, ecx
+  == 4 same (retail 0085c7d9.., ours 0085c7dc..)
+  - 0085c7e5 mov ecx, dword ptr [esi + 0x40]
+  - 0085c7e8 push ecx
+  + 0085c7e8 push edi
+  == 60 same (retail 0085c7e9.., ours 0085c7e9..)
+  - 0085c8b1 fld dword ptr [ecx + 8]
+  - 0085c8b4 fmul dword ptr [eax]
+  - 0085c8b6 fld dword ptr [ecx]
+  - 0085c8b8 fmul dword ptr [eax + 8]
+  + 0085c8b1 fld dword ptr [eax]
+  + 0085c8b3 fmul dword ptr [ecx + 8]
+  + 0085c8b6 fld dword ptr [eax + 8]
+  + 0085c8b9 fmul dword ptr [ecx]
+  == 2 same (retail 0085c8bb.., ours 0085c8bb..)
+  - 0085c8c1 fld dword ptr [ecx]
+  + 0085c8c1 fld dword ptr [eax + 4]
+  == 1 same (retail 0085c8c3.., ours 0085c8c4..)
+  - 0085c8c7 fmul dword ptr [eax + 4]
+  - 0085c8ca fld dword ptr [ecx + 4]
+  + 0085c8c8 fmul dword ptr [ecx]
+  + 0085c8ca fld dword ptr [eax]
+  + 0085c8cc lea eax, [esi + 0xb0]
+  + 0085c8d2 fmul dword ptr [ecx + 4]
+  == 1 same (retail 0085c8cd.., ours 0085c8d5..)
+  - 0085c8d1 fmul dword ptr [eax]
+  - 0085c8d3 lea eax, [esi + 0xb0]
+  == 18 same (retail 0085c8d9.., ours 0085c8d9..)

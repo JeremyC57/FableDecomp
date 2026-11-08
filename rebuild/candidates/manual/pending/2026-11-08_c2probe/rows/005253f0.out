@@ -1,0 +1,1478 @@
+(--func from the row's // Leaf: line: ?LoadGameState@CThingManager@@QAEXAAVCPersistContext@@@Z)
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand856/differ/005253f0.cpp  (1 function(s) traced, 25.79 s in gdb; cl rc 0)
+
+==============================================================================================================
+?LoadGameState@CThingManager@@QAEXAAVCPersistContext@@@Z  (defined at line 51)
+
+integer candidates in c2's colouring order (0x1078482f: priority desc, then key desc; equal -> later id first).
+allowed: a=eax c=ecx d=edx s=esi i=edi b=ebx p=ebp (table order; a value live across a call shows ...sibp)
+  #   id  candidate                lines            prio   key spill refs  allowed  register
+  0   46  found                    101               368   633    56    9  ...sibp  esi
+  1   74  temp                     101               368   608    72    8  acdsibp  eax
+  2   43  found                    96                368   514    56    9  ...sibp  esi
+  3   77  temp                     96                368   489    72    8  acdsibp  eax
+  4   36  found                    93                368   415    56    9  ...sibp  esi
+  5   81  temp                     93                368   390    72    8  acdsibp  eax
+  6   33  found                    89                184   311    28    9  ...sibp  esi
+  7   85  temp                     89                184   286    36    8  acdsibp  eax
+  8   34  text                     93                132   401    28    5  ...sibp  edi
+  9   61  temp                     101               128   634    16    2  acdsibp  eax
+ 10   44  text                     101               128   619    28    5  ...sibp  edi
+ 11   57  temp                     96                128   515    16    2  acdsibp  eax
+ 12   40  temp                     93                128   416    16    2  acdsibp  eax
+ 13   41  text                     96                124   500    28    5  ...sibp  edi
+ 14   63  temp                     101               112   592    28    5  ...sibp  ebp
+ 15   60  temp                     96                112   473    28    5  ...sibp  ebp
+ 16   56  temp                     93                112   374    28    5  ...sibp  ebp
+ 17   72  temp (8-bit)             101                96   609    32    2  acd..b.  ecx
+ 18   75  temp (8-bit)             96                 96   490    32    2  acd..b.  ecx
+ 19   79  temp (8-bit)             93                 96   391    32    2  acd..b.  ecx
+ 20   73  temp                     101                80   601    16    2  acdsibp  edx
+ 21   76  temp                     96                 80   482    16    2  acdsibp  edx
+ 22   80  temp                     93                 80   383    16    2  acdsibp  edx
+ 23   48  cur                      111                64   698    20    6  ...sibp  esi
+ 24   37  temp                     89                 64   312     8    2  acdsibp  eax
+ 25   31  text                     89                 62   297    14    5  ...sibp  edi
+ 26   39  temp                     89                 56   270    14    5  ...sibp  ebp
+ 27   83  temp (8-bit)             89                 48   287    16    2  acd..b.  ecx
+ 28   82  temp                     79                 48   170    16    4  acdsibp  eax
+ 29   52  local                    111                44   694     6    5  acdsibp  eax
+ 30   84  temp                     89                 40   279     8    2  acdsibp  edx
+ 31    7  context                  54..76             40     2    12    7  ...sibp  esi
+ 32   51  local                    77-79              39   186    -4    6  acdsibp  split: edx #99
+ 33   91  local                    78-80,83           38   193     2    3  ...sibp  esi
+ 34   90  local                    78-80,83           38   192     2    3  ...sibp  edi
+ 35   89  local                    79                 36   168    12    3  acdsibp  ecx
+ 36   62  temp                     101                32   585    12    3  acdsibp  edi
+ 37   29  local                    97                 32   550     8    2  acd..b.  eax
+ 38   21  line                     97                 32   520     4    2  acdsibp  ecx
+ 39   59  temp                     96                 32   466    12    3  acdsibp  edi
+ 40   20  line                     96                 32   421     4    2  acdsibp  eax
+ 41   55  temp                     93                 32   367    12    3  acdsibp  edi
+ 42   22  line                     101                28   559     4    2  acdsibp  eax
+ 43   19  line                     93                 28   345     4    2  acdsibp  eax
+ 44   78  temp                     77                 26   116     8    4  acdsibp  eax
+ 45   49  tmp                      111                24   699     8    2  acdsibp  eax
+ 46   28  local                    101                24   588     4    2  acdsibp  eax
+ 47   27  local                    96                 24   469     4    2  acdsibp  eax
+ 48   25  local                    93                 24   370     4    2  acdsibp  eax
+ 49   24  count                    89-91              24   317     6    3  acdsibp  eax
+ 50   30  val                      77-78              24   151     2    3  acdsibp  ecx
+ 51   87  local                    77                 22   114     6    3  acdsibp  ecx
+ 52   47  local                    77-79              20   163    -2    3  acdsibp  split, memory
+ 53    5  local                    61                 20    40     4    2  .....b.  ebx
+ 54   50  local                    77-79              19   185    -4    6  acdsibp  split, memory
+ 55   53  local                    111                16   704     2    2  acdsibp  eax
+ 56   38  temp                     89                 16   263     6    3  acdsibp  edi
+ 57   18  line                     89                 16   236     2    2  acdsibp  eax
+ 58   69  temp                     76                 16   108     6    3  acdsibp  esi
+ 59    4  local                    74                 16    92     4    2  .....b.  ebx
+ 60   68  temp                     68                 16    74     6    3  acdsibp  eax
+ 61   67  temp                     63                 16    59     6    3  acdsibp  eax
+ 62   23  local                    89                 12   266     2    2  acdsibp  eax
+ 63   54  local                    111                10   702     2    2  acdsibp  eax
+ 64    1  const 1                                     10     0     1    2  acd..b.  eax
+ 65   11  const 4                                      0     0    -1    4  acdsibp  esi
+ 66    3  const 2                                    -17     0     0    4  ...sibp  immediate
+ 67    8  const 3                                    -21     0    -1    3  ...sibp  immediate
+ 68   58  temp                     78                -23   200     6    3  ...sibp  ebx
+ 69   70  temp                     78,84             -23   157     6    2  ...sibp  ebp
+ 70   12  const 8                                    -36     0    -1    4  ...sibp  split: edx #6
+ 71   10  const 0x7fffffff                           -83     0    -1    2  ...sibp  split, immediate
+ 72    2  const 0                                   -152     0     4   47  .....b.  split: ebx #86, 7 pieces immediate
+ 73    6  const -1                                  -311     0    -1   18  .....bp  split, immediate
+ 74   26  temp                     89,91            -354   638     6    3  .....bp  split, memory
+ 75   71  temp                     89,104           -354   340     6    2  .....bp  split: ecx #104, 1 piece memory
+ 76   16  const 0xcbccf4                            -376     0    -1    2  .....bp  split, immediate
+ 77    9  this                     51..103          -406    13    40   18  .....bp  split: ebx #35, edi #45
+ 78   13  const 0xcbcc34                            -414     0    -1    6  .....bp  split, immediate
+ 79   14  const 0xcbcc94                            -422     0    -1    4  .....bp  split, immediate
+ 80   15  const 0xcbcd54                            -426     0    -1    8  .....bp  split, immediate
+
+not in the list (dropped before the sort: fewer than 2 references and spill <= 0, a 2-reference copy forwarded into its use,
+or not an integer candidate):
+       4  const 0xcbcab4                          refs 0   
+       5  const 0xcbcb14                          refs 0   
+       7  const 0xcbcb74                          refs 0   
+       9  const 0xcbcbd4                          refs 0   
+      17  const 0xb                               refs 0   dropped
+      32  search_text              89             refs 4   
+      35  search_text              93             refs 4   
+      42  search_text              96             refs 4   
+      45  search_text              101            refs 4   
+      64  temp                     52,110         refs 3   
+      65  temp                     53,109         refs 3   
+      66  temp                     54,62,75       refs 4   
+      86  local                    77             refs 3   
+      88  local                    79             refs 3   
+
+colouring steps (the driver 0x107821a7 takes the list head each time):
+  2-ref   #1    const 1                  checked for copy forwarding
+  2-ref   #4    local                    checked for copy forwarding
+  2-ref   #5    local                    checked for copy forwarding
+  2-ref   #10   const 0x7fffffff         checked for copy forwarding
+  2-ref   #16   const 0xcbccf4           checked for copy forwarding
+  drop    #17   const 0xb                refs 1 spill -1
+  2-ref   #18   line                     checked for copy forwarding
+  2-ref   #19   line                     checked for copy forwarding
+  2-ref   #20   line                     checked for copy forwarding
+  2-ref   #21   line                     checked for copy forwarding
+  2-ref   #22   line                     checked for copy forwarding
+  2-ref   #23   local                    checked for copy forwarding
+  2-ref   #25   local                    checked for copy forwarding
+  2-ref   #27   local                    checked for copy forwarding
+  2-ref   #28   local                    checked for copy forwarding
+  2-ref   #29   local                    checked for copy forwarding
+  2-ref   #37   temp                     checked for copy forwarding
+  2-ref   #40   temp                     checked for copy forwarding
+  2-ref   #49   tmp                      checked for copy forwarding
+  2-ref   #53   local                    checked for copy forwarding
+  2-ref   #54   local                    checked for copy forwarding
+  2-ref   #57   temp                     checked for copy forwarding
+  2-ref   #61   temp                     checked for copy forwarding
+  2-ref   #70   temp                     checked for copy forwarding
+  2-ref   #71   temp                     checked for copy forwarding
+  2-ref   #72   temp (8-bit)             checked for copy forwarding
+  2-ref   #73   temp                     checked for copy forwarding
+  2-ref   #75   temp (8-bit)             checked for copy forwarding
+  2-ref   #76   temp                     checked for copy forwarding
+  2-ref   #79   temp (8-bit)             checked for copy forwarding
+  2-ref   #80   temp                     checked for copy forwarding
+  2-ref   #83   temp (8-bit)             checked for copy forwarding
+  2-ref   #84   temp                     checked for copy forwarding
+  choose  #46   found                    prio   368  allowed ...sibp
+  -> esi   #46   found                     costs: {'eax': -2, 'ebx': 400}
+  choose  #74   temp                     prio   368  allowed acd.ibp
+  -> eax   #74   temp                      costs: {'ebx': 400}
+  choose  #43   found                    prio   368  allowed ...sibp
+  -> esi   #43   found                     costs: {'eax': -2, 'ebx': 400}
+  choose  #77   temp                     prio   368  allowed acd.ibp
+  -> eax   #77   temp                      costs: {'ebx': 400}
+  choose  #36   found                    prio   368  allowed ...sibp
+  -> esi   #36   found                     costs: {'eax': -2, 'ebx': 400}
+  choose  #81   temp                     prio   368  allowed acd.ibp
+  -> eax   #81   temp                      costs: {'ebx': 400}
+  choose  #33   found                    prio   184  allowed ...sibp
+  -> esi   #33   found                     costs: {'eax': -2, 'ebx': 400}
+  choose  #85   temp                     prio   184  allowed acd.ibp
+  -> eax   #85   temp                      costs: {'ebx': 400}
+  choose  #34   text                     prio   132  allowed ....ibp
+  -> edi   #34   text                      costs: {'eax': 1, 'ebx': 400}
+  choose  #61   temp                     prio   128  allowed acd.ibp
+  -> eax   #61   temp                      costs: {'eax': -1, 'ebx': 400}
+  choose  #44   text                     prio   128  allowed ....ibp
+  -> edi   #44   text                      costs: {'ebx': 400}
+  choose  #57   temp                     prio   128  allowed acd.ibp
+  -> eax   #57   temp                      costs: {'eax': -1, 'ebx': 400}
+  choose  #40   temp                     prio   128  allowed acd..bp
+  -> eax   #40   temp                      costs: {'eax': -1, 'ebx': 400}
+  choose  #41   text                     prio   124  allowed ....ibp
+  -> edi   #41   text                      costs: {'ebx': 400}
+  choose  #63   temp                     prio   112  allowed .....bp
+  -> ebp   #63   temp                      costs: {'eax': -1, 'ebx': 400}
+  choose  #60   temp                     prio   112  allowed .....bp
+  -> ebp   #60   temp                      costs: {'eax': -1, 'ebx': 5600}
+  choose  #56   temp                     prio   112  allowed .....bp
+  -> ebp   #56   temp                      costs: {'eax': -1, 'ebx': 5600}
+  choose  #72   temp (8-bit)             prio    96  allowed .cd..b.
+  -> ecx   #72   temp (8-bit)              costs: {'ebx': 5600}
+  choose  #75   temp (8-bit)             prio    96  allowed .cd..b.
+  -> ecx   #75   temp (8-bit)              costs: {'ebx': 5600}
+  choose  #79   temp (8-bit)             prio    96  allowed .cd..b.
+  -> ecx   #79   temp (8-bit)              costs: {'ebx': 5600}
+  choose  #73   temp                     prio    80  allowed ..d..b.
+  -> edx   #73   temp                      costs: {'ebx': 5600}
+  choose  #76   temp                     prio    80  allowed ..d..b.
+  -> edx   #76   temp                      costs: {'ebx': 5600}
+  choose  #80   temp                     prio    80  allowed ..d..b.
+  -> edx   #80   temp                      costs: {'ebx': 5600}
+  choose  #48   cur                      prio    64  allowed ...sibp
+  -> esi   #48   cur                       costs: {'ebx': 400}
+  choose  #37   temp                     prio    64  allowed acd.ibp
+  -> eax   #37   temp                      costs: {'eax': -1, 'ebx': 4400}
+  choose  #31   text                     prio    62  allowed ....ibp
+  -> edi   #31   text                      costs: {'ebx': 4400}
+  choose  #39   temp                     prio    56  allowed .....bp
+  -> ebp   #39   temp                      costs: {'eax': -1, 'ebx': 4400}
+  choose  #83   temp (8-bit)             prio    48  allowed .cd..b.
+  -> ecx   #83   temp (8-bit)              costs: {'ebx': 4400}
+  choose  #82   temp                     prio    48  allowed acdsibp
+  -> eax   #82   temp                      costs: {'ebx': 4400}
+  choose  #52   local                    prio    44  allowed acd.ibp
+  -> eax   #52   local                     costs: {'ebx': 400}
+  choose  #84   temp                     prio    40  allowed ..d..b.
+  -> edx   #84   temp                      costs: {'ebx': 4400}
+  choose  #7    context                  prio    40  allowed ...sibp
+  -> esi   #7    context                   costs: {'ecx': -4, 'ebx': 5200}
+  skip    #51   local                    spill -4 <= 0: not worth a register
+  choose  #91   local                    prio    38  allowed ...sibp
+  -> esi   #91   local                     costs: {'ebx': 4400}
+  choose  #90   local                    prio    38  allowed ....ibp
+  -> edi   #90   local                     costs: {'ebx': 4400}
+  choose  #89   local                    prio    36  allowed .cd..bp
+  -> ecx   #89   local                     costs: {'ebx': 4000}
+  choose  #62   temp                     prio    32  allowed acdsibp
+  -> edi   #62   temp                      costs: {'ebx': 5600, 'edi': -1}
+  choose  #29   local                    prio    32  allowed acd..b.
+  -> eax   #29   local                     costs: {'eax': -1, 'ebx': 5600}
+  choose  #21   line                     prio    32  allowed acdsibp
+  -> ecx   #21   line                      costs: {'ecx': -1, 'ebx': 5600}
+  choose  #59   temp                     prio    32  allowed acdsibp
+  -> edi   #59   temp                      costs: {'ebx': 5600, 'edi': -1}
+  choose  #20   line                     prio    32  allowed acdsibp
+  -> eax   #20   line                      costs: {'ebx': 5600}
+  choose  #55   temp                     prio    32  allowed acdsibp
+  -> edi   #55   temp                      costs: {'ebx': 5600, 'edi': -1}
+  choose  #22   line                     prio    28  allowed acdsibp
+  -> eax   #22   line                      costs: {'ebx': 5600}
+  choose  #19   line                     prio    28  allowed acdsibp
+  -> eax   #19   line                      costs: {'ebx': 5600}
+  choose  #78   temp                     prio    26  allowed acdsibp
+  -> eax   #78   temp                      costs: {'ebx': 4400}
+  choose  #49   tmp                      prio    24  allowed acd.ibp
+  -> eax   #49   tmp                       costs: {'ebx': 400}
+  choose  #28   local                    prio    24  allowed acds.bp
+  -> eax   #28   local                     costs: {'ebx': 5600}
+  choose  #27   local                    prio    24  allowed acds.bp
+  -> eax   #27   local                     costs: {'ebx': 5600}
+  choose  #25   local                    prio    24  allowed acds.bp
+  -> eax   #25   local                     costs: {'ebx': 5600}
+  choose  #24   count                    prio    24  allowed acdsibp
+  -> eax   #24   count                     costs: {'eax': -1, 'ebx': 5000}
+  choose  #30   val                      prio    24  allowed .cdsibp
+  -> ecx   #30   val                       costs: {'ebx': 4400}
+  choose  #87   local                    prio    22  allowed .cdsibp
+  -> ecx   #87   local                     costs: {'ebx': 4000}
+  skip    #47   local                    spill -2 <= 0: not worth a register
+  choose  #5    local                    prio    20  allowed .....b.
+  -> ebx   #5    local                     costs: {'eax': -1, 'ebx': 4400}
+  split pass over ids [2, 6, 9]
+  piece   #17   of #2
+  piece   #66   of #2
+  piece   #65   of #2
+  piece   #64   of #2
+  piece   #86   of #2
+  piece   #88   of #6
+  piece   #32   of #6
+  piece   #35   of #9
+  piece   #42   of #9
+  piece   #45   of #9
+  2-ref   #32   const -1, piece of #6    checked for copy forwarding -> forwarded, not listed
+  2-ref   #35   this, piece of #9        checked for copy forwarding -> forwarded, not listed
+  2-ref   #66   const 0, piece of #2     checked for copy forwarding -> forwarded, not listed
+  2-ref   #92   const -1                 checked for copy forwarding -> forwarded, not listed
+  2-ref   #93   this                     checked for copy forwarding -> forwarded, not listed
+  re-sort: #50(19), #53(16), #38(16), #18(16), #69(16), #4(16), #68(16), #67(16), #23(12), #93(12), #86(12), #54(10), #1(10), #92(0), #11(0), #66(-4), #32(-15), #3(-17), #64(-18), #8(-21), #58(-23), #70(-23), #42(-28), #12(-36), #65(-42), #10(-83), #17(-189), #88(-225), #35(-313), #26(-354), #71(-354), #16(-376), #13(-414), #14(-422), #15(-426), #51(-426), #47(-426)
+  choose  #45   this, piece of #9        prio    52  allowed ....i.p
+  -> edi   #45   this, piece of #9         costs: {'ecx': -3}
+  skip    #50   local                    spill -4 <= 0: not worth a register
+  choose  #53   local                    prio    16  allowed acdsibp
+  -> eax   #53   local                     (all costs 0: first allowed register in table order)
+  choose  #38   temp                     prio    16  allowed acdsibp
+  -> edi   #38   temp                      costs: {'edi': -1}
+  choose  #18   line                     prio    16  allowed acdsibp
+  -> eax   #18   line                      (all costs 0: first allowed register in table order)
+  choose  #69   temp                     prio    16  allowed acdsibp
+  -> esi   #69   temp                      costs: {'esi': -1}
+  choose  #4    local                    prio    16  allowed .....b.
+  -> ebx   #4    local                     costs: {'eax': -2}
+  choose  #68   temp                     prio    16  allowed acd..bp
+  -> eax   #68   temp                      costs: {'esi': -1}
+  choose  #67   temp                     prio    16  allowed acd..bp
+  -> eax   #67   temp                      costs: {'esi': -1}
+  choose  #23   local                    prio    12  allowed acds.bp
+  -> eax   #23   local                     (all costs 0: first allowed register in table order)
+  choose  #93   this                     prio    12  allowed acdsibp
+  -> eax   #93   this                      (all costs 0: first allowed register in table order)
+  choose  #86   const 0, piece of #2     prio    12  allowed .....bp
+  -> ebx   #86   const 0, piece of #2      (all costs 0: first allowed register in table order)
+  choose  #54   local                    prio    10  allowed acdsibp
+  -> eax   #54   local                     (all costs 0: first allowed register in table order)
+  choose  #1    const 1                  prio    10  allowed acd..b.
+  -> eax   #1    const 1                   (all costs 0: first allowed register in table order)
+  skip    #92   const -1                 spill -1 <= 0: not worth a register
+  skip    #11   const 4                  spill -1 <= 0: not worth a register
+  skip    #66   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #32   const -1, piece of #6    spill -1 <= 0: not worth a register
+  skip    #3    const 2                  spill 0 <= 0: not worth a register
+  skip    #64   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #8    const 3                  spill -1 <= 0: not worth a register
+  choose  #58   temp                     prio   -23  allowed .....bp
+  -> ebx   #58   temp                      costs: {'ecx': -1}
+  choose  #70   temp                     prio   -23  allowed ......p
+  -> ebp   #70   temp                      costs: {'ecx': -1, 'ebp': 200}
+  split pass over ids [10, 12, 42, 65]
+  piece   #9    of #10
+  piece   #6    of #12
+  piece   #2    of #65
+  drop    #9    const 0x7fffffff, piece  refs 1 spill -1
+  re-sort: #17(-189), #88(-225), #35(-313), #26(-354), #71(-354), #16(-376), #13(-414), #14(-422), #15(-426), #50(-426), #51(-426), #47(-426), #92(-426), #11(-426), #66(-426), #32(-426), #3(-426), #64(-426), #8(-426)
+  skip    #6    const 8, piece of #12    spill -2 <= 0: not worth a register
+  skip    #2    const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #17   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #88   const -1, piece of #6    spill -2 <= 0: not worth a register
+  choose  #35   this, piece of #9        prio  -313  allowed .....b.
+  -> ebx   #35   this, piece of #9         costs: {'ecx': -1, 'ebx': 1200}
+  split pass over ids [13, 14, 15, 16, 17, 26, 71, 88]
+  piece   #9    of #13
+  piece   #65   of #15
+  piece   #42   of #15
+  piece   #12   of #15
+  piece   #10   of #17
+  piece   #94   of #17
+  piece   #95   of #17
+  piece   #96   of #17
+  piece   #97   of #88
+  piece   #98   of #88
+  piece   #99   of #13
+  piece   #100  of #14
+  piece   #101  of #71
+  piece   #104  of #71
+  2-ref   #12   const 0xcbcd54, piece of checked for copy forwarding -> forwarded, not listed
+  2-ref   #42   const 0xcbcd54, piece of checked for copy forwarding -> forwarded, not listed
+  2-ref   #65   const 0xcbcd54, piece of checked for copy forwarding -> forwarded, not listed
+  2-ref   #94   const 0, piece of #2     checked for copy forwarding -> forwarded, not listed
+  2-ref   #95   const 0, piece of #2     checked for copy forwarding -> forwarded, not listed
+  2-ref   #98   const -1, piece of #6    checked for copy forwarding -> forwarded, not listed
+  drop    #99   const 0xcbcc34, piece of refs 1 spill -1
+  drop    #100  const 0xcbcc94, piece of refs 1 spill -1
+  drop    #101  temp, piece of #71       refs 1 spill 2
+  2-ref   #102  const -1                 checked for copy forwarding -> forwarded, not listed
+  2-ref   #104  temp, piece of #71       checked for copy forwarding -> forwarded, not listed
+  2-ref   #105  temp                     checked for copy forwarding -> forwarded, not listed
+  re-sort: #50(-426), #51(-426), #47(-426), #92(-426), #11(-426), #66(-426), #32(-426), #3(-426), #64(-426), #8(-426), #6(-426), #2(-426)
+  choose  #104  temp, piece of #71       prio    32  allowed acdsi.p
+  -> ecx   #104  temp, piece of #71        costs: {'ecx': -1, 'ebx': -1}
+  skip    #105  temp                     spill -4 <= 0: not worth a register
+  skip    #103  const -1                 spill -2 <= 0: not worth a register
+  skip    #102  const -1                 spill -2 <= 0: not worth a register
+  skip    #9    const 0xcbcc34, piece of spill -6 <= 0: not worth a register
+  skip    #12   const 0xcbcd54, piece of spill -1 <= 0: not worth a register
+  skip    #65   const 0xcbcd54, piece of spill -4 <= 0: not worth a register
+  skip    #42   const 0xcbcd54, piece of spill -4 <= 0: not worth a register
+  skip    #95   const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #94   const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #97   const -1, piece of #6    spill -2 <= 0: not worth a register
+  skip    #98   const -1, piece of #6    spill -2 <= 0: not worth a register
+  skip    #96   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #10   const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #105  temp                     spill -4 <= 0: not worth a register
+  skip    #50   local                    spill -4 <= 0: not worth a register
+  split pass over ids [47, 50, 51]
+  piece   #105  of #50
+  piece   #101  of #50
+  piece   #100  of #47
+  piece   #99   of #51
+  piece   #88   of #47
+  drop    #88   local, piece of #47      refs 1 spill 0
+  drop    #100  local, piece of #47      refs 1 spill 0
+  re-sort: #92(-426), #11(-426), #66(-426), #32(-426), #3(-426), #64(-426), #8(-426), #6(-426), #2(-426), #103(-426), #102(-426), #9(-426), #12(-426), #65(-426), #42(-426), #95(-426), #94(-426), #97(-426), #98(-426), #96(-426), #10(-426)
+  skip    #71   local                    spill 0 <= 0: not worth a register
+  choose  #71   local                    prio    48  allowed .cd....
+  -> ecx   #71   local                     (all costs 0: first allowed register in table order)
+  skip    #105  local, piece of #50      spill 0 <= 0: not worth a register
+  skip    #99   local, piece of #51      spill 0 <= 0: not worth a register
+  choose  #99   local, piece of #51      prio    24  allowed ..dsibp
+  -> edx   #99   local, piece of #51       (all costs 0: first allowed register in table order)
+  skip    #101  local, piece of #50      spill 0 <= 0: not worth a register
+  skip    #101  local, piece of #50      spill 0 <= 0: not worth a register
+  split pass over ids [101, 105]
+  piece   #100  of #101
+  piece   #51   of #105
+  2-ref   #50   local                    checked for copy forwarding -> forwarded, not listed
+  drop    #51   local, piece of #50      refs 1 spill 0
+  2-ref   #88   local                    checked for copy forwarding -> forwarded, not listed
+  drop    #100  local, piece of #50      refs 1 spill 0
+  re-sort: #92(-426), #11(-426), #66(-426), #32(-426), #3(-426), #64(-426), #8(-426), #6(-426), #2(-426), #103(-426), #102(-426), #9(-426), #12(-426), #65(-426), #42(-426), #95(-426), #94(-426), #97(-426), #98(-426), #96(-426), #10(-426)
+  skip    #50   local                    spill -4 <= 0: not worth a register
+  skip    #88   local                    spill -2 <= 0: not worth a register
+  skip    #50   local                    spill -4 <= 0: not worth a register
+  skip    #88   local                    spill -2 <= 0: not worth a register
+  skip    #92   const -1                 spill -1 <= 0: not worth a register
+  choose  #11   const 4                  prio  -426  allowed ...sibp
+  -> esi   #11   const 4                   (all costs 0: first allowed register in table order)
+  skip    #66   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #32   const -1, piece of #6    spill -1 <= 0: not worth a register
+  skip    #3    const 2                  spill 0 <= 0: not worth a register
+  skip    #64   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #8    const 3                  spill -1 <= 0: not worth a register
+  choose  #6    const 8, piece of #12    prio  -426  allowed ..d....
+  -> edx   #6    const 8, piece of #12     (all costs 0: first allowed register in table order)
+  skip    #2    const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #103  const -1                 spill -2 <= 0: not worth a register
+  skip    #102  const -1                 spill -2 <= 0: not worth a register
+  skip    #9    const 0xcbcc34, piece of spill -6 <= 0: not worth a register
+  split pass over ids [9, 42, 65, 98]
+  piece   #102  of #42
+  piece   #103  of #65
+  piece   #2    of #9
+  drop    #2    const 0xcbcc34, piece of refs 1 spill -2
+  drop    #102  const 0xcbcd54, piece of refs 1 spill -2
+  drop    #103  const 0xcbcd54, piece of refs 1 spill -2
+  re-sort: #12(-426), #95(-426), #94(-426), #97(-426), #96(-426), #10(-426)
+  skip    #12   const 0xcbcd54, piece of spill -1 <= 0: not worth a register
+  skip    #95   const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #94   const 0, piece of #2     spill -2 <= 0: not worth a register
+  skip    #97   const -1, piece of #6    spill -2 <= 0: not worth a register
+  skip    #96   const 0, piece of #2     spill -1 <= 0: not worth a register
+  skip    #10   const 0, piece of #2     spill -2 <= 0: not worth a register
+  end of allocation
+
+where each priority comes from (priority pass 0x10782473, first run): per block, w = 1 << loop depth,
+K = candidates referenced in the block; a referenced candidate gains w*K*cost, one live through without a
+reference loses w*K.  cost: 2 per variable reference in the block, 0/1 for a constant.
+  block 1 (depth 0, lines 1-4): w 1 K 5
+      #1    const 1                referenced, cost   2: +10
+      #7    context                referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+      #3    const 2                referenced, cost   0: +0
+      #9    this                   referenced, cost   8: +40
+  block 2 (depth 0, lines 5-8): w 1 K 4
+      #7    context                referenced, cost   4: +16
+      #2    const 0                referenced, cost   3: +12
+      #3    const 2                referenced, cost   1: +4
+      #9    this                   referenced, cost   4: +16
+  block 3 (depth 0, lines 10-11): w 1 K 5
+      #5    local                  referenced, cost   4: +20
+      #8    const 3                referenced, cost   0: +0
+      #6    const -1               referenced, cost   0: +0
+      #7    context                referenced, cost   2: +10
+      #2    const 0                referenced, cost   0: +0
+      #3    const 2                live through, no reference: -5
+      #9    this                   live through, no reference: -5
+  block 4 (depth 0, lines 12): w 1 K 2
+      #8    const 3                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #7    context                live through, no reference: -2
+      #2    const 0                referenced, cost   0: +0
+      #3    const 2                live through, no reference: -2
+      #9    this                   referenced, cost   2: +4
+  block 5 (depth 0, lines 13): w 1 K 3
+      #67   temp                   referenced, cost   4: +12
+      #8    const 3                live through, no reference: -3
+      #6    const -1               live through, no reference: -3
+      #7    context                referenced, cost   2: +6
+      #2    const 0                live through, no reference: -3
+      #3    const 2                referenced, cost   0: +0
+      #9    this                   live through, no reference: -3
+  block 6 (depth 0, lines 13): w 1 K 2
+      #67   temp                   referenced, cost   2: +4
+      #8    const 3                referenced, cost   0: +0
+      #6    const -1               live through, no reference: -2
+      #7    context                live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+      #3    const 2                live through, no reference: -2
+      #9    this                   live through, no reference: -2
+  block 7 (depth 0, lines 13-15): w 1 K 1
+      #8    const 3                live through, no reference: -1
+      #6    const -1               live through, no reference: -1
+      #7    context                live through, no reference: -1
+      #2    const 0                live through, no reference: -1
+      #3    const 2                live through, no reference: -1
+      #9    this                   referenced, cost   2: +2
+  block 8 (depth 0, lines 16-17): w 1 K 1
+      #9    this                   referenced, cost   2: +2
+      #8    const 3                live through, no reference: -1
+      #7    context                live through, no reference: -1
+      #6    const -1               live through, no reference: -1
+      #3    const 2                live through, no reference: -1
+      #2    const 0                live through, no reference: -1
+  block 9 (depth 0, lines 18): w 1 K 3
+      #68   temp                   referenced, cost   4: +12
+      #9    this                   live through, no reference: -3
+      #8    const 3                live through, no reference: -3
+      #7    context                referenced, cost   2: +6
+      #6    const -1               live through, no reference: -3
+      #3    const 2                referenced, cost   0: +0
+      #2    const 0                live through, no reference: -3
+  block 10 (depth 0, lines 18): w 1 K 2
+      #68   temp                   referenced, cost   2: +4
+      #9    this                   live through, no reference: -2
+      #8    const 3                referenced, cost   0: +0
+      #7    context                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #3    const 2                live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 11 (depth 0, lines 18-20): w 1 K 1
+      #9    this                   referenced, cost   2: +2
+      #8    const 3                live through, no reference: -1
+      #7    context                live through, no reference: -1
+      #6    const -1               live through, no reference: -1
+      #3    const 2                live through, no reference: -1
+      #2    const 0                live through, no reference: -1
+  block 12 (depth 0, lines 21): w 1 K 1
+      #9    this                   referenced, cost   2: +2
+      #8    const 3                live through, no reference: -1
+      #7    context                live through, no reference: -1
+      #6    const -1               live through, no reference: -1
+      #3    const 2                live through, no reference: -1
+      #2    const 0                live through, no reference: -1
+  block 13 (depth 0, lines 24): w 1 K 4
+      #4    local                  referenced, cost   4: +16
+      #9    this                   live through, no reference: -4
+      #8    const 3                live through, no reference: -4
+      #7    context                referenced, cost   2: +8
+      #6    const -1               referenced, cost   0: +0
+      #3    const 2                live through, no reference: -4
+      #2    const 0                referenced, cost   0: +0
+  block 14 (depth 0, lines 25): w 1 K 2
+      #9    this                   referenced, cost   2: +4
+      #8    const 3                live through, no reference: -2
+      #7    context                live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #3    const 2                live through, no reference: -2
+      #2    const 0                referenced, cost   0: +0
+  block 15 (depth 0, lines 26): w 1 K 3
+      #3    const 2                referenced, cost   0: +0
+      #7    context                referenced, cost   2: +6
+      #69   temp                   referenced, cost   4: +12
+      #9    this                   live through, no reference: -3
+      #8    const 3                live through, no reference: -3
+      #6    const -1               live through, no reference: -3
+      #2    const 0                live through, no reference: -3
+  block 16 (depth 0, lines 26): w 1 K 2
+      #8    const 3                referenced, cost   0: +0
+      #69   temp                   referenced, cost   2: +4
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 17 (depth 0, lines 26-27): w 1 K 5
+      #10   const 0x7fffffff       referenced, cost   0: +0
+      #87   local                  referenced, cost   4: +20
+      #78   temp                   referenced, cost   2: +10
+      #47   local                  referenced, cost   2: +10
+      #9    this                   live through, no reference: -5
+      #2    const 0                referenced, cost   0: +0
+  block 18 (depth 0, lines 27): w 1 K 0
+  block 19 (depth 0, lines 27): w 1 K 2
+      #10   const 0x7fffffff       live through, no reference: -2
+      #87   local                  live through, no reference: -2
+      #78   temp                   referenced, cost   2: +4
+      #47   local                  live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #2    const 0                referenced, cost   0: +0
+  block 20 (depth 0, lines 27): w 1 K 2
+      #87   local                  referenced, cost   2: +4
+      #10   const 0x7fffffff       live through, no reference: -2
+      #78   temp                   live through, no reference: -2
+      #47   local                  live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #2    const 0                referenced, cost   0: +0
+  block 21 (depth 0, lines 27): w 1 K 0
+  block 22 (depth 0, lines 27): w 1 K 2
+      #10   const 0x7fffffff       referenced, cost   0: +0
+      #78   temp                   referenced, cost   2: +4
+      #47   local                  live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 23 (depth 0, lines 27): w 1 K 2
+      #11   const 4                referenced, cost   0: +0
+      #50   local                  referenced, cost   2: +4
+      #78   temp                   live through, no reference: -2
+      #10   const 0x7fffffff       live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 24 (depth 0, lines 27): w 1 K 6
+      #78   temp                   referenced, cost   2: +12
+      #11   const 4                referenced, cost   0: +0
+      #47   local                  referenced, cost   2: +12
+      #30   val                    referenced, cost   2: +12
+      #51   local                  referenced, cost   4: +24
+      #50   local                  referenced, cost   2: +12
+      #10   const 0x7fffffff       live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #2    const 0                live through, no reference: -6
+  block 25 (depth 0, lines 27): w 1 K 5
+      #11   const 4                referenced, cost   0: +0
+      #30   val                    referenced, cost   0: +0
+      #47   local                  referenced, cost   0: +0
+      #50   local                  referenced, cost   0: +0
+      #51   local                  referenced, cost   0: +0
+      #10   const 0x7fffffff       live through, no reference: -5
+      #9    this                   live through, no reference: -5
+      #2    const 0                live through, no reference: -5
+  block 26 (depth 0, lines 27): w 1 K 3
+      #30   val                    referenced, cost   0: +0
+      #50   local                  referenced, cost   0: +0
+      #51   local                  referenced, cost   0: +0
+      #47   local                  live through, no reference: -3
+      #10   const 0x7fffffff       live through, no reference: -3
+      #9    this                   live through, no reference: -3
+      #2    const 0                live through, no reference: -3
+  block 27 (depth 0, lines 27-28): w 1 K 2
+      #30   val                    referenced, cost   2: +4
+      #50   local                  live through, no reference: -2
+      #51   local                  live through, no reference: -2
+      #47   local                  live through, no reference: -2
+      #10   const 0x7fffffff       live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #2    const 0                referenced, cost   0: +0
+  block 28 (depth 0, lines 28): w 1 K 4
+      #30   val                    referenced, cost   2: +8
+      #58   temp                   referenced, cost   2: +8
+      #70   temp                   referenced, cost   2: +8
+      #50   local                  live through, no reference: -4
+      #51   local                  live through, no reference: -4
+      #47   local                  live through, no reference: -4
+      #10   const 0x7fffffff       live through, no reference: -4
+      #9    this                   referenced, cost   2: +8
+      #2    const 0                live through, no reference: -4
+  block 29 (depth 0, lines 28): w 1 K 3
+      #90   local                  referenced, cost   0: +0
+      #91   local                  referenced, cost   0: +0
+      #12   const 8                referenced, cost   0: +0
+      #58   temp                   live through, no reference: -3
+      #70   temp                   live through, no reference: -3
+      #50   local                  live through, no reference: -3
+      #51   local                  live through, no reference: -3
+      #47   local                  live through, no reference: -3
+      #10   const 0x7fffffff       live through, no reference: -3
+      #9    this                   live through, no reference: -3
+      #2    const 0                live through, no reference: -3
+  block 30 (depth 1, lines 28): w 2 K 3
+      #47   local                  referenced, cost   0: +0
+      #50   local                  referenced, cost   0: +0
+      #51   local                  referenced, cost   0: +0
+      #91   local                  live through, no reference: -6
+      #90   local                  live through, no reference: -6
+      #70   temp                   live through, no reference: -6
+      #58   temp                   live through, no reference: -6
+      #12   const 8                live through, no reference: -6
+      #10   const 0x7fffffff       live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #2    const 0                live through, no reference: -6
+  block 31 (depth 1, lines 29): w 2 K 4
+      #47   local                  referenced, cost   2: +16
+      #89   local                  referenced, cost   4: +32
+      #82   temp                   referenced, cost   2: +16
+      #50   local                  live through, no reference: -8
+      #51   local                  live through, no reference: -8
+      #91   local                  live through, no reference: -8
+      #90   local                  live through, no reference: -8
+      #70   temp                   live through, no reference: -8
+      #58   temp                   live through, no reference: -8
+      #12   const 8                live through, no reference: -8
+      #10   const 0x7fffffff       live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 32 (depth 1, lines 29): w 2 K 0
+  block 33 (depth 1, lines 29): w 2 K 2
+      #89   local                  live through, no reference: -4
+      #82   temp                   referenced, cost   2: +8
+      #50   local                  live through, no reference: -4
+      #51   local                  live through, no reference: -4
+      #91   local                  live through, no reference: -4
+      #90   local                  live through, no reference: -4
+      #70   temp                   live through, no reference: -4
+      #58   temp                   live through, no reference: -4
+      #12   const 8                live through, no reference: -4
+      #10   const 0x7fffffff       live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #2    const 0                referenced, cost   0: +0
+  block 34 (depth 1, lines 29): w 2 K 2
+      #89   local                  referenced, cost   2: +8
+      #82   temp                   live through, no reference: -4
+      #50   local                  live through, no reference: -4
+      #51   local                  live through, no reference: -4
+      #91   local                  live through, no reference: -4
+      #90   local                  live through, no reference: -4
+      #70   temp                   live through, no reference: -4
+      #58   temp                   live through, no reference: -4
+      #12   const 8                live through, no reference: -4
+      #10   const 0x7fffffff       live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #2    const 0                referenced, cost   0: +0
+  block 35 (depth 1, lines 29): w 2 K 0
+  block 36 (depth 1, lines 29): w 2 K 2
+      #82   temp                   referenced, cost   2: +8
+      #50   local                  live through, no reference: -4
+      #51   local                  live through, no reference: -4
+      #91   local                  live through, no reference: -4
+      #90   local                  live through, no reference: -4
+      #70   temp                   live through, no reference: -4
+      #58   temp                   live through, no reference: -4
+      #12   const 8                live through, no reference: -4
+      #10   const 0x7fffffff       referenced, cost   0: +0
+      #9    this                   live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 37 (depth 1, lines 29): w 2 K 2
+      #82   temp                   live through, no reference: -4
+      #70   temp                   live through, no reference: -4
+      #58   temp                   live through, no reference: -4
+      #51   local                  live through, no reference: -4
+      #50   local                  referenced, cost   2: +8
+      #12   const 8                referenced, cost   0: +0
+      #10   const 0x7fffffff       live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 38 (depth 1, lines 29): w 2 K 6
+      #82   temp                   referenced, cost   2: +24
+      #50   local                  referenced, cost   2: +24
+      #51   local                  referenced, cost   4: +48
+      #91   local                  referenced, cost   2: +24
+      #90   local                  referenced, cost   2: +24
+      #70   temp                   live through, no reference: -12
+      #58   temp                   live through, no reference: -12
+      #12   const 8                referenced, cost   0: +0
+      #10   const 0x7fffffff       live through, no reference: -12
+      #9    this                   live through, no reference: -12
+      #2    const 0                live through, no reference: -12
+  block 39 (depth 1, lines 29): w 2 K 3
+      #90   local                  referenced, cost   0: +0
+      #91   local                  referenced, cost   0: +0
+      #70   temp                   live through, no reference: -6
+      #58   temp                   live through, no reference: -6
+      #12   const 8                referenced, cost   0: +0
+      #10   const 0x7fffffff       live through, no reference: -6
+      #9    this                   live through, no reference: -6
+      #2    const 0                live through, no reference: -6
+  block 40 (depth 1, lines 28-35): w 2 K 5
+      #90   local                  referenced, cost   4: +40
+      #91   local                  referenced, cost   4: +40
+      #70   temp                   referenced, cost   2: +20
+      #58   temp                   referenced, cost   2: +20
+      #12   const 8                live through, no reference: -10
+      #10   const 0x7fffffff       live through, no reference: -10
+      #9    this                   referenced, cost   2: +20
+      #2    const 0                live through, no reference: -10
+  block 41 (depth 0, lines -): w 1 K 0
+  block 42 (depth 0, lines 35): w 1 K 0
+  block 43 (depth 0, lines 37-39): w 1 K 6
+      #18   line                   referenced, cost   2: +12
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         referenced, cost   0: +0
+      #13   const 0xcbcc34         referenced, cost   0: +0
+      #9    this                   live through, no reference: -6
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 44 (depth 0, lines 39): w 1 K 2
+      #38   temp                   referenced, cost   2: +4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -2
+      #13   const 0xcbcc34         live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 45 (depth 0, lines 39): w 1 K 2
+      #18   line                   referenced, cost   2: +4
+      #38   temp                   referenced, cost   2: +4
+      #15   const 0xcbcd54         live through, no reference: -2
+      #14   const 0xcbcc94         live through, no reference: -2
+      #13   const 0xcbcc34         live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 46 (depth 0, lines 39): w 1 K 4
+      #38   temp                   referenced, cost   2: +8
+      #23   local                  referenced, cost   2: +8
+      #31   text                   referenced, cost   2: +8
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                referenced, cost   0: +0
+  block 47 (depth 0, lines 39): w 1 K 2
+      #39   temp                   referenced, cost   2: +4
+      #31   text                   live through, no reference: -2
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -2
+      #13   const 0xcbcc34         live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 48 (depth 0, lines 39): w 1 K 2
+      #23   local                  referenced, cost   2: +4
+      #39   temp                   referenced, cost   2: +4
+      #31   text                   live through, no reference: -2
+      #15   const 0xcbcd54         live through, no reference: -2
+      #14   const 0xcbcc94         live through, no reference: -2
+      #13   const 0xcbcc34         live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 49 (depth 0, lines 39): w 1 K 4
+      #33   found                  referenced, cost   4: +16
+      #39   temp                   referenced, cost   2: +8
+      #31   text                   referenced, cost   2: +8
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                referenced, cost   0: +0
+  block 50 (depth 0, lines -): w 1 K 0
+  block 51 (depth 1, lines 39): w 2 K 5
+      #84   temp                   referenced, cost   2: +20
+      #85   temp                   referenced, cost   4: +40
+      #33   found                  referenced, cost   2: +20
+      #39   temp                   referenced, cost   2: +20
+      #31   text                   live through, no reference: -10
+      #15   const 0xcbcd54         live through, no reference: -10
+      #14   const 0xcbcc94         live through, no reference: -10
+      #13   const 0xcbcc34         live through, no reference: -10
+      #9    this                   live through, no reference: -10
+      #6    const -1               live through, no reference: -10
+      #2    const 0                referenced, cost   0: +0
+  block 52 (depth 1, lines -): w 2 K 0
+  block 53 (depth 2, lines 39): w 4 K 3
+      #83   temp (8-bit)           referenced, cost   4: +48
+      #84   temp                   live through, no reference: -12
+      #85   temp                   referenced, cost   4: +48
+      #33   found                  live through, no reference: -12
+      #39   temp                   live through, no reference: -12
+      #31   text                   live through, no reference: -12
+      #15   const 0xcbcd54         live through, no reference: -12
+      #14   const 0xcbcc94         live through, no reference: -12
+      #13   const 0xcbcc34         live through, no reference: -12
+      #9    this                   live through, no reference: -12
+      #6    const -1               live through, no reference: -12
+      #2    const 0                referenced, cost   0: +0
+  block 54 (depth 1, lines -): w 2 K 0
+  block 55 (depth 1, lines 39): w 2 K 8
+      #37   temp                   referenced, cost   4: +64
+      #85   temp                   referenced, cost   6: +96
+      #84   temp                   referenced, cost   2: +32
+      #33   found                  referenced, cost  10: +160
+      #31   text                   referenced, cost   4: +64
+      #39   temp                   referenced, cost   2: +32
+      #15   const 0xcbcd54         live through, no reference: -16
+      #14   const 0xcbcc94         live through, no reference: -16
+      #13   const 0xcbcc34         live through, no reference: -16
+      #9    this                   live through, no reference: -16
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 56 (depth 0, lines -): w 1 K 0
+  block 57 (depth 0, lines 39-41): w 1 K 4
+      #31   text                   referenced, cost   2: +8
+      #24   count                  referenced, cost   4: +16
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 58 (depth 0, lines 39): w 1 K 4
+      #24   count                  referenced, cost   2: +8
+      #26   temp                   referenced, cost   2: +8
+      #71   temp                   referenced, cost   2: +8
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   referenced, cost   2: +8
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 59 (depth 0, lines 39): w 1 K 2
+      #17   ?                      referenced, cost   0: +0
+      #16   const 0xcbccf4         referenced, cost   0: +0
+      #26   temp                   live through, no reference: -2
+      #71   temp                   live through, no reference: -2
+      #15   const 0xcbcd54         live through, no reference: -2
+      #14   const 0xcbcc94         live through, no reference: -2
+      #13   const 0xcbcc34         live through, no reference: -2
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 60 (depth 1, lines 42-43): w 2 K 5
+      #19   line                   referenced, cost   2: +20
+      #17   ?                      live through, no reference: -10
+      #16   const 0xcbccf4         live through, no reference: -10
+      #26   temp                   live through, no reference: -10
+      #71   temp                   live through, no reference: -10
+      #15   const 0xcbcd54         live through, no reference: -10
+      #14   const 0xcbcc94         referenced, cost   0: +0
+      #13   const 0xcbcc34         referenced, cost   0: +0
+      #9    this                   live through, no reference: -10
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 61 (depth 1, lines 43): w 2 K 2
+      #55   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 62 (depth 1, lines 43): w 2 K 2
+      #19   line                   referenced, cost   2: +8
+      #55   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 63 (depth 1, lines 43): w 2 K 4
+      #55   temp                   referenced, cost   2: +16
+      #25   local                  referenced, cost   2: +16
+      #34   text                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 64 (depth 1, lines 43): w 2 K 2
+      #56   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #34   text                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 65 (depth 1, lines 43): w 2 K 2
+      #25   local                  referenced, cost   2: +8
+      #56   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #34   text                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 66 (depth 1, lines 43): w 2 K 4
+      #36   found                  referenced, cost   4: +32
+      #56   temp                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #34   text                   referenced, cost   2: +16
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 67 (depth 1, lines -): w 2 K 0
+  block 68 (depth 2, lines 43): w 4 K 5
+      #80   temp                   referenced, cost   2: +40
+      #81   temp                   referenced, cost   4: +80
+      #36   found                  referenced, cost   2: +40
+      #56   temp                   referenced, cost   2: +40
+      #71   temp                   live through, no reference: -20
+      #34   text                   live through, no reference: -20
+      #26   temp                   live through, no reference: -20
+      #17   ?                      live through, no reference: -20
+      #16   const 0xcbccf4         live through, no reference: -20
+      #15   const 0xcbcd54         live through, no reference: -20
+      #14   const 0xcbcc94         live through, no reference: -20
+      #13   const 0xcbcc34         live through, no reference: -20
+      #9    this                   live through, no reference: -20
+      #6    const -1               live through, no reference: -20
+      #2    const 0                referenced, cost   0: +0
+  block 69 (depth 2, lines -): w 4 K 0
+  block 70 (depth 3, lines 43): w 8 K 3
+      #79   temp (8-bit)           referenced, cost   4: +96
+      #80   temp                   live through, no reference: -24
+      #81   temp                   referenced, cost   4: +96
+      #36   found                  live through, no reference: -24
+      #56   temp                   live through, no reference: -24
+      #71   temp                   live through, no reference: -24
+      #34   text                   live through, no reference: -24
+      #26   temp                   live through, no reference: -24
+      #17   ?                      live through, no reference: -24
+      #16   const 0xcbccf4         live through, no reference: -24
+      #15   const 0xcbcd54         live through, no reference: -24
+      #14   const 0xcbcc94         live through, no reference: -24
+      #13   const 0xcbcc34         live through, no reference: -24
+      #9    this                   live through, no reference: -24
+      #6    const -1               live through, no reference: -24
+      #2    const 0                referenced, cost   0: +0
+  block 71 (depth 2, lines -): w 4 K 0
+  block 72 (depth 2, lines 43): w 4 K 8
+      #40   temp                   referenced, cost   4: +128
+      #81   temp                   referenced, cost   6: +192
+      #80   temp                   referenced, cost   2: +64
+      #36   found                  referenced, cost  10: +320
+      #34   text                   referenced, cost   4: +128
+      #56   temp                   referenced, cost   2: +64
+      #71   temp                   live through, no reference: -32
+      #26   temp                   live through, no reference: -32
+      #17   ?                      live through, no reference: -32
+      #16   const 0xcbccf4         live through, no reference: -32
+      #15   const 0xcbcd54         live through, no reference: -32
+      #14   const 0xcbcc94         live through, no reference: -32
+      #13   const 0xcbcc34         live through, no reference: -32
+      #9    this                   live through, no reference: -32
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 73 (depth 1, lines -): w 2 K 0
+  block 74 (depth 1, lines 43-46): w 2 K 6
+      #34   text                   referenced, cost   2: +24
+      #20   line                   referenced, cost   2: +24
+      #71   temp                   live through, no reference: -12
+      #26   temp                   live through, no reference: -12
+      #17   ?                      live through, no reference: -12
+      #16   const 0xcbccf4         live through, no reference: -12
+      #15   const 0xcbcd54         live through, no reference: -12
+      #14   const 0xcbcc94         referenced, cost   0: +0
+      #13   const 0xcbcc34         referenced, cost   0: +0
+      #9    this                   live through, no reference: -12
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 75 (depth 1, lines 46): w 2 K 2
+      #59   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 76 (depth 1, lines 46): w 2 K 2
+      #20   line                   referenced, cost   2: +8
+      #59   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 77 (depth 1, lines 46): w 2 K 4
+      #59   temp                   referenced, cost   2: +16
+      #27   local                  referenced, cost   2: +16
+      #41   text                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 78 (depth 1, lines 46): w 2 K 2
+      #60   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #41   text                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 79 (depth 1, lines 46): w 2 K 2
+      #27   local                  referenced, cost   2: +8
+      #60   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #41   text                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 80 (depth 1, lines 46): w 2 K 4
+      #43   found                  referenced, cost   4: +32
+      #60   temp                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #41   text                   referenced, cost   2: +16
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 81 (depth 1, lines -): w 2 K 0
+  block 82 (depth 2, lines 46): w 4 K 5
+      #76   temp                   referenced, cost   2: +40
+      #77   temp                   referenced, cost   4: +80
+      #43   found                  referenced, cost   2: +40
+      #60   temp                   referenced, cost   2: +40
+      #71   temp                   live through, no reference: -20
+      #41   text                   live through, no reference: -20
+      #26   temp                   live through, no reference: -20
+      #17   ?                      live through, no reference: -20
+      #16   const 0xcbccf4         live through, no reference: -20
+      #15   const 0xcbcd54         live through, no reference: -20
+      #14   const 0xcbcc94         live through, no reference: -20
+      #13   const 0xcbcc34         live through, no reference: -20
+      #9    this                   live through, no reference: -20
+      #6    const -1               live through, no reference: -20
+      #2    const 0                referenced, cost   0: +0
+  block 83 (depth 2, lines -): w 4 K 0
+  block 84 (depth 3, lines 46): w 8 K 3
+      #75   temp (8-bit)           referenced, cost   4: +96
+      #76   temp                   live through, no reference: -24
+      #77   temp                   referenced, cost   4: +96
+      #43   found                  live through, no reference: -24
+      #60   temp                   live through, no reference: -24
+      #71   temp                   live through, no reference: -24
+      #41   text                   live through, no reference: -24
+      #26   temp                   live through, no reference: -24
+      #17   ?                      live through, no reference: -24
+      #16   const 0xcbccf4         live through, no reference: -24
+      #15   const 0xcbcd54         live through, no reference: -24
+      #14   const 0xcbcc94         live through, no reference: -24
+      #13   const 0xcbcc34         live through, no reference: -24
+      #9    this                   live through, no reference: -24
+      #6    const -1               live through, no reference: -24
+      #2    const 0                referenced, cost   0: +0
+  block 85 (depth 2, lines -): w 4 K 0
+  block 86 (depth 2, lines 46): w 4 K 8
+      #57   temp                   referenced, cost   4: +128
+      #77   temp                   referenced, cost   6: +192
+      #76   temp                   referenced, cost   2: +64
+      #43   found                  referenced, cost  10: +320
+      #41   text                   referenced, cost   4: +128
+      #60   temp                   referenced, cost   2: +64
+      #71   temp                   live through, no reference: -32
+      #26   temp                   live through, no reference: -32
+      #17   ?                      live through, no reference: -32
+      #16   const 0xcbccf4         live through, no reference: -32
+      #15   const 0xcbcd54         live through, no reference: -32
+      #14   const 0xcbcc94         live through, no reference: -32
+      #13   const 0xcbcc34         live through, no reference: -32
+      #9    this                   live through, no reference: -32
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 87 (depth 1, lines -): w 2 K 0
+  block 88 (depth 1, lines 46-47): w 2 K 4
+      #41   text                   referenced, cost   2: +16
+      #21   line                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 89 (depth 1, lines 47): w 2 K 3
+      #71   temp                   live through, no reference: -6
+      #26   temp                   live through, no reference: -6
+      #17   ?                      referenced, cost   0: +0
+      #16   const 0xcbccf4         referenced, cost   0: +0
+      #15   const 0xcbcd54         live through, no reference: -6
+      #14   const 0xcbcc94         live through, no reference: -6
+      #13   const 0xcbcc34         referenced, cost   0: +0
+      #9    this                   live through, no reference: -6
+      #6    const -1               live through, no reference: -6
+      #2    const 0                live through, no reference: -6
+  block 90 (depth 1, lines 47): w 2 K 0
+  block 91 (depth 1, lines 47): w 2 K 4
+      #29   local                  referenced, cost   4: +32
+      #21   line                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         referenced, cost   0: +0
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 92 (depth 1, lines 48): w 2 K 1
+      #71   temp                   live through, no reference: -2
+      #26   temp                   live through, no reference: -2
+      #17   ?                      live through, no reference: -2
+      #16   const 0xcbccf4         live through, no reference: -2
+      #15   const 0xcbcd54         live through, no reference: -2
+      #14   const 0xcbcc94         live through, no reference: -2
+      #13   const 0xcbcc34         referenced, cost   0: +0
+      #9    this                   live through, no reference: -2
+      #6    const -1               live through, no reference: -2
+      #2    const 0                live through, no reference: -2
+  block 93 (depth 1, lines 49-51): w 2 K 5
+      #22   line                   referenced, cost   2: +20
+      #71   temp                   live through, no reference: -10
+      #26   temp                   live through, no reference: -10
+      #17   ?                      live through, no reference: -10
+      #16   const 0xcbccf4         live through, no reference: -10
+      #15   const 0xcbcd54         live through, no reference: -10
+      #14   const 0xcbcc94         referenced, cost   0: +0
+      #13   const 0xcbcc34         referenced, cost   0: +0
+      #9    this                   live through, no reference: -10
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 94 (depth 1, lines 51): w 2 K 2
+      #62   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 95 (depth 1, lines 51): w 2 K 2
+      #22   line                   referenced, cost   2: +8
+      #62   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 96 (depth 1, lines 51): w 2 K 4
+      #62   temp                   referenced, cost   2: +16
+      #28   local                  referenced, cost   2: +16
+      #44   text                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 97 (depth 1, lines 51): w 2 K 2
+      #63   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #44   text                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         referenced, cost   0: +0
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 98 (depth 1, lines 51): w 2 K 2
+      #28   local                  referenced, cost   2: +8
+      #63   temp                   referenced, cost   2: +8
+      #71   temp                   live through, no reference: -4
+      #44   text                   live through, no reference: -4
+      #26   temp                   live through, no reference: -4
+      #17   ?                      live through, no reference: -4
+      #16   const 0xcbccf4         live through, no reference: -4
+      #15   const 0xcbcd54         live through, no reference: -4
+      #14   const 0xcbcc94         live through, no reference: -4
+      #13   const 0xcbcc34         live through, no reference: -4
+      #9    this                   live through, no reference: -4
+      #6    const -1               live through, no reference: -4
+      #2    const 0                live through, no reference: -4
+  block 99 (depth 1, lines 51): w 2 K 4
+      #46   found                  referenced, cost   4: +32
+      #63   temp                   referenced, cost   2: +16
+      #71   temp                   live through, no reference: -8
+      #44   text                   referenced, cost   2: +16
+      #26   temp                   live through, no reference: -8
+      #17   ?                      live through, no reference: -8
+      #16   const 0xcbccf4         live through, no reference: -8
+      #15   const 0xcbcd54         live through, no reference: -8
+      #14   const 0xcbcc94         live through, no reference: -8
+      #13   const 0xcbcc34         live through, no reference: -8
+      #9    this                   live through, no reference: -8
+      #6    const -1               live through, no reference: -8
+      #2    const 0                referenced, cost   0: +0
+  block 100 (depth 1, lines -): w 2 K 0
+  block 101 (depth 2, lines 51): w 4 K 5
+      #73   temp                   referenced, cost   2: +40
+      #74   temp                   referenced, cost   4: +80
+      #46   found                  referenced, cost   2: +40
+      #63   temp                   referenced, cost   2: +40
+      #71   temp                   live through, no reference: -20
+      #44   text                   live through, no reference: -20
+      #26   temp                   live through, no reference: -20
+      #17   ?                      live through, no reference: -20
+      #16   const 0xcbccf4         live through, no reference: -20
+      #15   const 0xcbcd54         live through, no reference: -20
+      #14   const 0xcbcc94         live through, no reference: -20
+      #13   const 0xcbcc34         live through, no reference: -20
+      #9    this                   live through, no reference: -20
+      #6    const -1               live through, no reference: -20
+      #2    const 0                referenced, cost   0: +0
+  block 102 (depth 2, lines -): w 4 K 0
+  block 103 (depth 3, lines 51): w 8 K 3
+      #72   temp (8-bit)           referenced, cost   4: +96
+      #73   temp                   live through, no reference: -24
+      #74   temp                   referenced, cost   4: +96
+      #46   found                  live through, no reference: -24
+      #63   temp                   live through, no reference: -24
+      #71   temp                   live through, no reference: -24
+      #44   text                   live through, no reference: -24
+      #26   temp                   live through, no reference: -24
+      #17   ?                      live through, no reference: -24
+      #16   const 0xcbccf4         live through, no reference: -24
+      #15   const 0xcbcd54         live through, no reference: -24
+      #14   const 0xcbcc94         live through, no reference: -24
+      #13   const 0xcbcc34         live through, no reference: -24
+      #9    this                   live through, no reference: -24
+      #6    const -1               live through, no reference: -24
+      #2    const 0                referenced, cost   0: +0
+  block 104 (depth 2, lines -): w 4 K 0
+  block 105 (depth 2, lines 51): w 4 K 8
+      #61   temp                   referenced, cost   4: +128
+      #74   temp                   referenced, cost   6: +192
+      #73   temp                   referenced, cost   2: +64
+      #46   found                  referenced, cost  10: +320
+      #44   text                   referenced, cost   4: +128
+      #63   temp                   referenced, cost   2: +64
+      #71   temp                   live through, no reference: -32
+      #26   temp                   live through, no reference: -32
+      #17   ?                      live through, no reference: -32
+      #16   const 0xcbccf4         live through, no reference: -32
+      #15   const 0xcbcd54         live through, no reference: -32
+      #14   const 0xcbcc94         live through, no reference: -32
+      #13   const 0xcbcc34         live through, no reference: -32
+      #9    this                   live through, no reference: -32
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                referenced, cost   0: +0
+  block 106 (depth 1, lines -): w 2 K 0
+  block 107 (depth 1, lines 41,51-55): w 2 K 5
+      #44   text                   referenced, cost   2: +20
+      #71   temp                   referenced, cost   2: +20
+      #26   temp                   referenced, cost   2: +20
+      #17   ?                      live through, no reference: -10
+      #16   const 0xcbccf4         live through, no reference: -10
+      #15   const 0xcbcd54         live through, no reference: -10
+      #14   const 0xcbcc94         live through, no reference: -10
+      #13   const 0xcbcc34         live through, no reference: -10
+      #9    this                   referenced, cost   2: +20
+      #6    const -1               referenced, cost   0: +0
+      #2    const 0                live through, no reference: -10
+  block 108 (depth 0, lines -): w 1 K 0
+  block 109 (depth 0, lines 56): w 1 K 0
+  block 110 (depth 0, lines 59-61): w 1 K 4
+      #9    this                   referenced, cost   4: +16
+      #48   cur                    referenced, cost   4: +16
+      #52   local                  referenced, cost   4: +16
+      #2    const 0                referenced, cost   2: +8
+  block 111 (depth 0, lines -): w 1 K 0
+  block 112 (depth 1, lines 61): w 2 K 3
+      #49   tmp                    referenced, cost   4: +24
+      #52   local                  referenced, cost   2: +12
+      #48   cur                    referenced, cost   8: +48
+      #2    const 0                live through, no reference: -6
+  block 113 (depth 0, lines -): w 1 K 0
+  block 114 (depth 0, lines 61): w 1 K 4
+      #2    const 0                referenced, cost   0: +0
+      #53   local                  referenced, cost   4: +16
+      #52   local                  referenced, cost   4: +16
+      #54   local                  referenced, cost   2: +8
+  block 115 (depth 0, lines 61): w 1 K 1
+      #54   local                  referenced, cost   2: +2
+  totals:
+      #46   found                     368
+      #74   temp                      368
+      #43   found                     368
+      #77   temp                      368
+      #36   found                     368
+      #81   temp                      368
+      #33   found                     184
+      #85   temp                      184
+      #34   text                      132
+      #61   temp                      128
+      #44   text                      128
+      #57   temp                      128
+      #40   temp                      128
+      #41   text                      124
+      #63   temp                      112
+      #60   temp                      112
+      #56   temp                      112
+      #72   temp (8-bit)               96
+      #75   temp (8-bit)               96
+      #79   temp (8-bit)               96
+      #73   temp                       80
+      #76   temp                       80
+      #80   temp                       80
+      #48   cur                        64
+      #37   temp                       64
+      #31   text                       62
+      #39   temp                       56
+      #83   temp (8-bit)               48
+      #82   temp                       48
+      #52   local                      44
+      #84   temp                       40
+      #7    context                    40
+      #51   local                      39
+      #91   local                      38
+      #90   local                      38
+      #89   local                      36
+      #62   temp                       32
+      #29   local                      32
+      #21   line                       32
+      #59   temp                       32
+      #20   line                       32
+      #55   temp                       32
+      #22   line                       28
+      #19   line                       28
+      #78   temp                       26
+      #49   tmp                        24
+      #28   local                      24
+      #27   local                      24
+      #25   local                      24
+      #24   count                      24
+      #30   val                        24
+      #87   local                      22
+      #47   local                      20
+      #5    local                      20
+      #50   local                      19
+      #53   local                      16
+      #38   temp                       16
+      #18   line                       16
+      #69   temp                       16
+      #4    local                      16
+      #68   temp                       16
+      #67   temp                       16
+      #23   local                      12
+      #54   local                      10
+      #1    const 1                    10
+      #11   const 4                     0
+      #3    const 2                   -17
+      #8    const 3                   -21
+      #58   temp                      -23
+      #70   temp                      -23
+      #12   const 8                   -36
+      #10   const 0x7fffffff          -83
+      #2    const 0                  -152
+      #6    const -1                 -311
+      #26   temp                     -354
+      #71   temp                     -354
+      #16   const 0xcbccf4           -376
+      #9    this                     -406
+      #13   const 0xcbcc34           -414
+      #14   const 0xcbcc94           -422
+      #15   const 0xcbcd54           -426

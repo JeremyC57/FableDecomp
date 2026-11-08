@@ -1,0 +1,1480 @@
+(--func from the row's // Leaf: line: ?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z)
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand856/differ/0050a650.cpp  (1 function(s) traced, 38.94 s in gdb; cl rc 0)
+
+==============================================================================================================
+?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z  (defined at line 172)
+
+integer candidates in c2's colouring order (0x1078482f: priority desc, then key desc; equal -> later id first).
+allowed: a=eax c=ecx d=edx s=esi i=edi b=ebx p=ebp (table order; a value live across a call shows ...sibp)
+  #   id  candidate                lines            prio   key spill refs  allowed  register
+  0  118  temp                     237               108   610    28    7  acdsibp  ecx
+  1  115  temp                     230               108   543    28    7  acdsibp  ecx
+  2  112  temp                     222               108   445    28    7  acdsibp  ecx
+  3  109  temp                     215               108   377    28    7  acdsibp  ecx
+  4  106  temp                     207               108   309    28    7  acdsibp  ecx
+  5  103  temp                     201               108   230    28    7  acdsibp  ecx
+  6   39  p_thing                  236-237            96   629    12    3  ...sibp  esi
+  7   71  local                    237                96   626    12    3  acdsibp  eax
+  8   36  p_thing                  229-230            96   562    12    3  ...sibp  esi
+  9   65  local                    230                96   559    12    3  acdsibp  eax
+ 10   33  p_thing                  221-222            96   464    12    3  ...sibp  esi
+ 11   61  local                    222                96   461    12    3  acdsibp  eax
+ 12   29  thing                    214-215            96   396    12    3  ...sibp  esi
+ 13   57  local                    215                96   393    12    3  acdsibp  eax
+ 14   25  p_thing                  206-207            96   328    12    3  ...sibp  esi
+ 15   51  local                    207                96   325    12    3  acdsibp  eax
+ 16   23  p_thing                  200-201            96   249    12    3  ...sibp  esi
+ 17   44  local                    201                96   246    12    3  acdsibp  eax
+ 18   68  local                    233,237            84   606    22    6  ...sibp  edi
+ 19   58  local                    218,222            84   441    22    6  ...sibp  edi
+ 20   54  local                    210,215            84   373    22    6  ...sibp  edi
+ 21   53  local                    203,207            84   305    22    6  ...sibp  edi
+ 22   46  local                    195,201            84   226    22    6  ...sibp  edi
+ 23   63  local                    225,230            82   539    22    6  ...sibp  edi
+ 24   22  i_list                   199-200            64   271    20    6  ...sibp  ebx
+ 25   75  cur                      244                60   698    20    6  ...sibp  esi
+ 26   99  temp                     192                60   149    32    8  acdsibp  eax
+ 27   41  local                    192                58   151    24    6  acdsibp  ecx
+ 28   73  cur                      243                56   683    20    6  ...sibp  esi
+ 29   24  i_list                   205-206            56   350    20    6  ...sibp  ebx
+ 30   49  cur                      203                56   280    20    6  ...sibp  esi
+ 31   35  entrance_it              228-229            50   584    14    5  ...sibp  ebx
+ 32   28  creat_gen_it             212,214            42   419    14    5  ...sibp  ebx
+ 33   38  exit_it                  235-236            40   651    14    5  ...sibp  ebx
+ 34   32  nav_seed_it              220-221            40   486    14    5  ...sibp  ebx
+ 35   91  local                    237                36   611     4    2  acdsibp  eax
+ 36   89  local                    230                36   544     4    2  acdsibp  eax
+ 37   84  local                    222                36   446     4    2  acdsibp  eax
+ 38   82  local                    215                36   378     4    2  acdsibp  eax
+ 39   80  local                    207                36   310     4    2  acdsibp  eax
+ 40   78  local                    201                36   231     4    2  acdsibp  eax
+ 41   13  p_thing                  181-182            36    84    16    4  ...sibp  esi
+ 42   10  map_no                   174-175            36     2     4    3  acdsibp  eax
+ 43   12  i_blist                  180-181            33   185    20    6  ...sibp  edi
+ 44   93  temp                     182,185            32    87    12    3  acdsibp  ecx
+ 45   37  local                    235,239            30   652     4    4  acdsibp  ebx
+ 46   26  local                    212                28   355     2    2  acdsibp  ebx
+ 47   76  tmp                      244                24   699     8    2  acdsibp  eax
+ 48   74  tmp                      243                24   684     8    2  acdsibp  eax
+ 49   30  local                    220                24   423     2    2  acdsibp  ebx
+ 50   52  tmp                      203                24   281     8    2  acdsibp  eax
+ 51   40  local                    174                16    21     4    2  acdsibp  ecx
+ 52    6  this                     172..237            9     6    32   10  ...sibp  ebp
+ 53   27  local                    242                 6   671     2    2  acdsibp  eax
+ 54   31  local                    241                 6   665     2    2  acdsibp  eax
+ 55   87  local                    228               -10   489     4    2  ...sibp  split, memory
+ 56   47  n                        197..243          -15   209    62   27  ...sibp  split: edi #94, edi #92, esi #59
+ 57    9  pworld_box               174..234          -19     8    44   19  ...sibp  split: ecx #117, esi #85
+ 58    3  const 0x10                                 -38     0     1    1  ...sibp  split, immediate
+ 59   34  local                    228,240           -58   491     6    4  ...sibp  split: eax #101, ebx #97
+ 60    1  const 0                                   -119     0    11   31  ...sibp  split, immediate
+ 61    8  section_name             175..234         -121    74    16    9  ...sibp  split: edi #86
+ 62   11  search_tools             177..234         -121    58    18    9  ...sibp  split, memory
+ 63   42  n                        176,180,244      -150    64    38   17  ...sibp  split: edi #96, ebx #95
+ 64    5  const 4                                   -163     0    -1    4  ...sibp  split, immediate
+ 65    7  area_init                175..237         -202    76    18    9  ...sibp  split, memory
+ 66    2  const 0xc                                 -280     0    11    8  ...sibp  split, immediate
+ 67    4  const 1                                   -293     0    -1   14  ...sibp  split, immediate
+
+not in the list (dropped before the sort: fewer than 2 references and spill <= 0, a 2-reference copy forwarded into its use,
+or not an integer candidate):
+       6  const 0x63                              refs 0   
+      14  radius                   186,189        refs 5   x87
+      15  local                    186,189        refs 3   x87
+      16  local                    186,189        refs 3   x87
+      17  local                    186-187,192    refs 5   x87
+      18  local                    186,188,192    refs 5   x87
+      19  _real@00000000           180,184        refs 2   x87
+      20  local                    189-190,192    refs 5   x87
+      21  local                    189,191-192    refs 5   x87
+      43  local                    201            refs 3   x87
+      45  local                    192            refs 6   
+      48  local                    207            refs 3   x87
+      50  local                    201            refs 5   
+      55  local                    207            refs 5   
+      56  local                    215            refs 3   x87
+      59  local                    215            refs 5   
+      60  local                    222            refs 3   x87
+      62  local                    230            refs 3   x87
+      64  local                    222            refs 5   
+      66  local                    225,227        refs 2   x87
+      67  local                    225,227        refs 2   x87
+      69  local                    230            refs 5   
+      70  local                    237            refs 3   x87
+      72  local                    237            refs 5   
+      77  local                    201            refs 3   x87
+      79  local                    207            refs 3   x87
+      81  local                    215            refs 3   x87
+      83  local                    222            refs 3   x87
+      85  local                    225,227        refs 2   x87
+      86  local                    225,227        refs 2   x87
+      88  local                    230            refs 3   x87
+      90  local                    237            refs 3   x87
+      92  temp                     176,244        refs 3   
+      94  temp                     187            refs 3   x87
+      95  temp                     188            refs 3   x87
+      96  temp                     190            refs 3   x87
+      97  temp                     191            refs 3   x87
+      98  temp                     192            refs 4   
+     100  temp                     197,203,243    refs 4   
+     101  temp                     195,201        refs 2   
+     102  temp                     195,201        refs 4   
+     104  temp                     203,207        refs 2   
+     105  temp                     203,207        refs 4   
+     107  temp                     210,215        refs 2   
+     108  temp                     210,215        refs 4   
+     110  temp                     218,222        refs 2   
+     111  temp                     218,222        refs 4   
+     113  temp                     225,230        refs 2   
+     114  temp                     225,230        refs 4   
+     116  temp                     233,237        refs 2   
+     117  temp                     233,237        refs 4   
+     119  temp                     174            refs 3   
+
+colouring steps (the driver 0x107821a7 takes the list head each time):
+  split pass over ids [19, 43, 48, 56, 60, 62, 70, 77, 79, 81, 83, 88, 90]
+  piece   #14   of #43
+  piece   #16   of #77
+  piece   #114  of #48
+  piece   #113  of #79
+  piece   #108  of #56
+  piece   #107  of #81
+  piece   #102  of #60
+  piece   #101  of #83
+  piece   #92   of #62
+  piece   #119  of #88
+  piece   #55   of #70
+  piece   #59   of #90
+  split pass over ids [97]
+  piece   #15   of #97
+  split pass over ids [20]
+  piece   #15   of #20
+  piece   #116  of #20
+  split pass over ids [18]
+  piece   #15   of #18
+  piece   #116  of #18
+  piece   #20   of #18
+  split pass over ids [17]
+  piece   #15   of #17
+  piece   #20   of #17
+  piece   #18   of #17
+  split pass over ids [116]
+  piece   #15   of #116
+  split pass over ids [20]
+  piece   #15   of #20
+  2-ref   #26   local                    checked for copy forwarding
+  2-ref   #27   local                    checked for copy forwarding
+  2-ref   #30   local                    checked for copy forwarding
+  2-ref   #31   local                    checked for copy forwarding
+  2-ref   #40   local                    checked for copy forwarding
+  2-ref   #52   tmp                      checked for copy forwarding
+  2-ref   #74   tmp                      checked for copy forwarding
+  2-ref   #76   tmp                      checked for copy forwarding
+  2-ref   #78   local                    checked for copy forwarding
+  2-ref   #80   local                    checked for copy forwarding
+  2-ref   #82   local                    checked for copy forwarding
+  2-ref   #84   local                    checked for copy forwarding
+  2-ref   #87   local                    checked for copy forwarding
+  2-ref   #89   local                    checked for copy forwarding
+  2-ref   #91   local                    checked for copy forwarding
+  choose  #118  temp                     prio   108  allowed acdsibp
+  -> ecx   #118  temp                      costs: {'eax': 1}
+  choose  #115  temp                     prio   108  allowed acdsibp
+  -> ecx   #115  temp                      costs: {'eax': 1}
+  choose  #112  temp                     prio   108  allowed acdsibp
+  -> ecx   #112  temp                      costs: {'eax': 1}
+  choose  #109  temp                     prio   108  allowed acdsibp
+  -> ecx   #109  temp                      costs: {'eax': 1}
+  choose  #106  temp                     prio   108  allowed acdsibp
+  -> ecx   #106  temp                      costs: {'eax': 1}
+  choose  #103  temp                     prio   108  allowed acdsibp
+  -> ecx   #103  temp                      costs: {'eax': 1}
+  choose  #39   p_thing                  prio    96  allowed ...sibp
+  -> esi   #39   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #71   local                    prio    96  allowed acd.ibp
+  -> eax   #71   local                     costs: {'eax': -1}
+  choose  #36   p_thing                  prio    96  allowed ...sibp
+  -> esi   #36   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #65   local                    prio    96  allowed acd.ibp
+  -> eax   #65   local                     costs: {'eax': -1}
+  choose  #33   p_thing                  prio    96  allowed ...sibp
+  -> esi   #33   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #61   local                    prio    96  allowed acd.ibp
+  -> eax   #61   local                     costs: {'eax': -1}
+  choose  #29   thing                    prio    96  allowed ...sibp
+  -> esi   #29   thing                     costs: {'eax': 1, 'ecx': -2}
+  choose  #57   local                    prio    96  allowed acd.ibp
+  -> eax   #57   local                     costs: {'eax': -1}
+  choose  #25   p_thing                  prio    96  allowed ...sibp
+  -> esi   #25   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #51   local                    prio    96  allowed acd.ibp
+  -> eax   #51   local                     costs: {'eax': -1}
+  choose  #23   p_thing                  prio    96  allowed ...sibp
+  -> esi   #23   p_thing                   costs: {'eax': 1, 'ecx': -2}
+  choose  #44   local                    prio    96  allowed acd.ibp
+  -> eax   #44   local                     costs: {'eax': -1}
+  choose  #68   local                    prio    84  allowed ....ibp
+  -> edi   #68   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #58   local                    prio    84  allowed ....ibp
+  -> edi   #58   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #54   local                    prio    84  allowed ....ibp
+  -> edi   #54   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #53   local                    prio    84  allowed ....ibp
+  -> edi   #53   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #46   local                    prio    84  allowed ....ibp
+  -> edi   #46   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #63   local                    prio    82  allowed ....ibp
+  -> edi   #63   local                     costs: {'eax': 1, 'ecx': -1}
+  choose  #22   i_list                   prio    64  allowed .....bp
+  -> ebx   #22   i_list                    costs: {'eax': 1}
+  choose  #75   cur                      prio    60  allowed ...sibp
+  -> esi   #75   cur                       costs: {'ebp': 3800}
+  choose  #99   temp                     prio    60  allowed acdsibp
+  -> eax   #99   temp                      costs: {'ecx': 1, 'ebp': 18800}
+  choose  #41   local                    prio    58  allowed .cdsibp
+  -> ecx   #41   local                     costs: {'ecx': -1, 'ebp': 18800}
+  choose  #73   cur                      prio    56  allowed ...sibp
+  -> esi   #73   cur                       costs: {'ebp': 10000}
+  choose  #24   i_list                   prio    56  allowed .....bp
+  -> ebx   #24   i_list                    costs: {'eax': 1, 'ebp': 25000}
+  choose  #49   cur                      prio    56  allowed ...sibp
+  -> esi   #49   cur                       costs: {'ebp': 25000}
+  choose  #35   entrance_it              prio    50  allowed .....bp
+  -> ebx   #35   entrance_it               costs: {'eax': 1, 'ebp': 25000}
+  choose  #28   creat_gen_it             prio    42  allowed .....bp
+  -> ebx   #28   creat_gen_it              costs: {'eax': 1, 'ebp': 25000}
+  choose  #38   exit_it                  prio    40  allowed .....bp
+  -> ebx   #38   exit_it                   costs: {'eax': 1, 'ebp': 17800}
+  choose  #32   nav_seed_it              prio    40  allowed .....bp
+  -> ebx   #32   nav_seed_it               costs: {'eax': 1, 'ebp': 25000}
+  choose  #91   local                    prio    36  allowed a.ds..p
+  -> eax   #91   local                     costs: {'eax': -1, 'ebp': 16000}
+  choose  #89   local                    prio    36  allowed a.ds..p
+  -> eax   #89   local                     costs: {'eax': -1, 'ebp': 26000}
+  choose  #84   local                    prio    36  allowed a.ds..p
+  -> eax   #84   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #82   local                    prio    36  allowed a.ds..p
+  -> eax   #82   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #80   local                    prio    36  allowed a.ds..p
+  -> eax   #80   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #78   local                    prio    36  allowed a.ds..p
+  -> eax   #78   local                     costs: {'eax': -1, 'ebp': 25000}
+  choose  #13   p_thing                  prio    36  allowed ...sibp
+  -> esi   #13   p_thing                   costs: {'ecx': -1, 'ebp': 18800}
+  choose  #10   map_no                   prio    36  allowed acdsibp
+  -> eax   #10   map_no                    costs: {'ebp': 12100}
+  choose  #12   i_blist                  prio    33  allowed ....ibp
+  -> edi   #12   i_blist                   costs: {'ecx': 1, 'ebp': 18800, 'esi': 1}
+  choose  #93   temp                     prio    32  allowed acds.bp
+  -> ecx   #93   temp                      costs: {'ecx': -1, 'ebp': 18800, 'esi': -1}
+  choose  #37   local                    prio    30  allowed acdsibp
+  -> ebx   #37   local                     costs: {'ebx': -1, 'ebp': 17800}
+  choose  #26   local                    prio    28  allowed acdsibp
+  -> ebx   #26   local                     costs: {'ebx': -1, 'ebp': 25000}
+  choose  #76   tmp                      prio    24  allowed acd.ibp
+  -> eax   #76   tmp                       costs: {'ebp': 3800}
+  choose  #74   tmp                      prio    24  allowed acd.ibp
+  -> eax   #74   tmp                       costs: {'ebp': 10000}
+  choose  #30   local                    prio    24  allowed acdsibp
+  -> ebx   #30   local                     costs: {'ebx': -1, 'ebp': 25000}
+  choose  #52   tmp                      prio    24  allowed acd.ibp
+  -> eax   #52   tmp                       costs: {'ebp': 25000}
+  choose  #40   local                    prio    16  allowed .cdsibp
+  -> ecx   #40   local                     costs: {'ebp': 4300}
+  choose  #6    this                     prio     9  allowed ......p
+  -> ebp   #6    this                      costs: {'ecx': -8, 'ebp': 22800}
+  split pass over ids [1, 2, 4, 5, 7, 8, 9, 11, 34, 42, 47, 87]
+  piece   #119  of #1
+  piece   #114  of #1
+  piece   #113  of #1
+  piece   #108  of #4
+  piece   #107  of #7
+  piece   #102  of #9
+  piece   #101  of #34
+  piece   #96   of #42
+  piece   #95   of #42
+  piece   #94   of #47
+  piece   #92   of #47
+  piece   #86   of #8
+  piece   #85   of #2
+  piece   #67   of #11
+  piece   #59   of #47
+  piece   #97   of #34
+  piece   #117  of #87
+  2-ref   #14   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #15   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #20   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #21   n                        checked for copy forwarding -> forwarded, not listed
+  2-ref   #55   const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #66   pworld_box               checked for copy forwarding -> forwarded, not listed
+  drop    #85   const 0xc, piece of #2   refs 1 spill -1
+  2-ref   #97   local, piece of #34      checked for copy forwarding -> forwarded, not listed
+  2-ref   #101  local, piece of #34      checked for copy forwarding -> forwarded, not listed
+  2-ref   #104  const 1                  checked for copy forwarding -> forwarded, not listed
+  2-ref   #107  area_init, piece of #7   checked for copy forwarding -> forwarded, not listed
+  2-ref   #108  const 1, piece of #4     checked for copy forwarding -> forwarded, not listed
+  2-ref   #110  const 1                  checked for copy forwarding -> forwarded, not listed
+  drop    #117  local, piece of #87      refs 1 spill 0
+  re-sort: #27(6), #31(6), #101(6), #114(1), #110(0), #104(0), #55(0), #20(0), #15(0), #14(0), #119(-3), #107(-9), #3(-38), #108(-41), #113(-51)
+  choose  #95   n, piece of #42          prio   125  allowed .....b.
+  -> ebx   #95   n, piece of #42           costs: {'eax': -1, 'ebx': 2700}
+  split pass over ids [3, 102, 107, 108, 113]
+  piece   #117  of #102
+  piece   #85   of #102
+  piece   #87   of #113
+  piece   #47   of #107
+  2-ref   #42   const 1                  checked for copy forwarding -> forwarded, not listed
+  drop    #47   area_init, piece of #7   refs 1 spill 0
+  drop    #87   const 0, piece of #1     refs 1 spill -1
+  re-sort: #86(60), #67(60), #94(50), #59(48), #116(40), #96(34), #16(24), #97(20), #117(20), #17(15), #92(12), #66(12), #111(9), #18(9), #21(8), #27(6), #31(6), #101(6), #114(1), #42(0), #110(0), #104(0), #55(0), #20(0), #15(0), #14(0), #119(-3)
+  choose  #85   pworld_box, piece of #9  prio    64  allowed ...si..
+  -> esi   #85   pworld_box, piece of #9   (all costs 0: first allowed register in table order)
+  choose  #86   section_name, piece of # prio    60  allowed ....i..
+  -> edi   #86   section_name, piece of #  costs: {'edi': 400}
+  split pass over ids [67]
+  piece   #87   of #67
+  drop    #87   search_tools, piece of # refs 1 spill 0
+  re-sort: #94(50), #59(48), #116(40), #96(34), #16(24), #97(20), #117(20), #17(15), #92(12), #66(12), #111(9), #18(9), #21(8), #27(6), #31(6), #101(6), #114(1), #42(0), #110(0), #104(0), #55(0), #20(0), #15(0), #14(0), #119(-3)
+  choose  #94   n, piece of #47          prio    50  allowed ....ibp
+  -> edi   #94   n, piece of #47           (all costs 0: first allowed register in table order)
+  choose  #59   n, piece of #47          prio    48  allowed ...si..
+  -> esi   #59   n, piece of #47           costs: {'eax': -1}
+  choose  #116  pworld_box               prio    40  allowed acdsib.
+  -> eax   #116  pworld_box                (all costs 0: first allowed register in table order)
+  choose  #96   n, piece of #42          prio    34  allowed ....ibp
+  -> edi   #96   n, piece of #42           (all costs 0: first allowed register in table order)
+  choose  #16   n                        prio    24  allowed ...si..
+  -> esi   #16   n                         (all costs 0: first allowed register in table order)
+  choose  #97   local, piece of #34      prio    20  allowed acdsib.
+  -> ebx   #97   local, piece of #34       costs: {'ebx': -1}
+  choose  #117  pworld_box, piece of #9  prio    20  allowed .cds...
+  -> ecx   #117  pworld_box, piece of #9   (all costs 0: first allowed register in table order)
+  choose  #17   const 0                  prio    15  allowed acdsib.
+  -> eax   #17   const 0                   (all costs 0: first allowed register in table order)
+  choose  #92   n, piece of #47          prio    12  allowed ....ib.
+  -> edi   #92   n, piece of #47           (all costs 0: first allowed register in table order)
+  choose  #66   pworld_box               prio    12  allowed ....ib.
+  -> edi   #66   pworld_box                (all costs 0: first allowed register in table order)
+  choose  #111  const 0                  prio     9  allowed acdsib.
+  -> eax   #111  const 0                   (all costs 0: first allowed register in table order)
+  choose  #18   const 0                  prio     9  allowed acdsib.
+  -> eax   #18   const 0                   (all costs 0: first allowed register in table order)
+  choose  #21   n                        prio     8  allowed acd.ib.
+  -> eax   #21   n                         (all costs 0: first allowed register in table order)
+  choose  #27   local                    prio     6  allowed acdsibp
+  -> eax   #27   local                     (all costs 0: first allowed register in table order)
+  choose  #31   local                    prio     6  allowed acdsibp
+  -> eax   #31   local                     (all costs 0: first allowed register in table order)
+  choose  #101  local, piece of #34      prio     6  allowed acdsibp
+  -> eax   #101  local, piece of #34       (all costs 0: first allowed register in table order)
+  skip    #114  const 0, piece of #1     spill -2 <= 0: not worth a register
+  skip    #42   const 1                  spill -2 <= 0: not worth a register
+  skip    #110  const 1                  spill -2 <= 0: not worth a register
+  skip    #104  const 1                  spill -2 <= 0: not worth a register
+  skip    #55   const 1                  spill -2 <= 0: not worth a register
+  skip    #20   const 1                  spill -2 <= 0: not worth a register
+  skip    #15   const 1                  spill -2 <= 0: not worth a register
+  skip    #14   const 1                  spill -2 <= 0: not worth a register
+  skip    #119  const 0, piece of #1     spill -1 <= 0: not worth a register
+  skip    #114  const 0, piece of #1     spill -2 <= 0: not worth a register
+  split pass over ids [114]
+  piece   #87   of #114
+  drop    #87   const 0, piece of #1     refs 1 spill -2
+  re-sort: #42(-3), #110(-3), #104(-3), #55(-3), #20(-3), #15(-3), #14(-3), #119(-3)
+  choose  #67   const 0                  prio     9  allowed acdsib.
+  -> eax   #67   const 0                   (all costs 0: first allowed register in table order)
+  skip    #42   const 1                  spill -2 <= 0: not worth a register
+  skip    #110  const 1                  spill -2 <= 0: not worth a register
+  skip    #104  const 1                  spill -2 <= 0: not worth a register
+  skip    #55   const 1                  spill -2 <= 0: not worth a register
+  skip    #20   const 1                  spill -2 <= 0: not worth a register
+  skip    #15   const 1                  spill -2 <= 0: not worth a register
+  skip    #14   const 1                  spill -2 <= 0: not worth a register
+  skip    #119  const 0, piece of #1     spill -1 <= 0: not worth a register
+  end of allocation
+
+where each priority comes from (priority pass 0x10782473, first run): per block, w = 1 << loop depth,
+K = candidates referenced in the block; a referenced candidate gains w*K*cost, one live through without a
+reference loses w*K.  cost: 2 per variable reference in the block, 0/1 for a constant.
+  block 1 (depth 0, lines 1,3): w 1 K 4
+      #10   map_no                 referenced, cost   0: +0
+      #1    const 0                referenced, cost   0: +0
+      #9    pworld_box             referenced, cost   2: +8
+      #6    this                   referenced, cost   2: +8
+  block 2 (depth 0, lines 3): w 1 K 4
+      #40   local                  referenced, cost   4: +16
+      #9    pworld_box             referenced, cost   2: +8
+      #10   map_no                 referenced, cost   4: +16
+      #6    this                   referenced, cost   2: +8
+      #1    const 0                live through, no reference: -4
+  block 3 (depth 0, lines 4-9): w 1 K 10
+      #10   map_no                 referenced, cost   2: +20
+      #4    const 1                referenced, cost   0: +0
+      #12   i_blist                referenced, cost   4: +40
+      #11   search_tools           referenced, cost   6: +60
+      #42   n                      referenced, cost  16: +160
+      #2    const 0xc              referenced, cost   0: +0
+      #8    section_name           referenced, cost   6: +60
+      #7    area_init              referenced, cost   2: +20
+      #9    pworld_box             referenced, cost   6: +60
+      #6    this                   referenced, cost   4: +40
+      #1    const 0                live through, no reference: -10
+  block 4 (depth 0, lines 9): w 1 K 1
+      #3    const 0x10             referenced, cost   0: +0
+      #4    const 1                live through, no reference: -1
+      #12   i_blist                live through, no reference: -1
+      #11   search_tools           live through, no reference: -1
+      #42   n                      live through, no reference: -1
+      #2    const 0xc              live through, no reference: -1
+      #8    section_name           live through, no reference: -1
+      #7    area_init              live through, no reference: -1
+      #9    pworld_box             live through, no reference: -1
+      #6    this                   live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 5 (depth 1, lines 9-11): w 2 K 2
+      #13   p_thing                referenced, cost   6: +24
+      #3    const 0x10             live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #12   i_blist                referenced, cost   2: +8
+      #11   search_tools           live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 6 (depth 1, lines 11): w 2 K 3
+      #13   p_thing                referenced, cost   2: +12
+      #93   temp                   referenced, cost   4: +24
+      #3    const 0x10             live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #12   i_blist                live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #1    const 0                referenced, cost   0: +0
+  block 7 (depth 1, lines 13-16): w 2 K 2
+      #93   temp                   referenced, cost   2: +8
+      #3    const 0x10             live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #12   i_blist                live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #9    pworld_box             referenced, cost   2: +8
+      #6    this                   live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 8 (depth 1, lines 16): w 2 K 0
+  block 9 (depth 1, lines 16): w 2 K 0
+  block 10 (depth 1, lines 17): w 2 K 1
+      #42   n                      live through, no reference: -2
+      #12   i_blist                live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             referenced, cost   2: +4
+      #8    section_name           live through, no reference: -2
+      #7    area_init              live through, no reference: -2
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    const 0x10             live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 11 (depth 1, lines 17): w 2 K 0
+  block 12 (depth 1, lines 17): w 2 K 0
+  block 13 (depth 1, lines 18-19): w 2 K 1
+      #42   n                      live through, no reference: -2
+      #12   i_blist                live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             referenced, cost   2: +4
+      #8    section_name           live through, no reference: -2
+      #7    area_init              live through, no reference: -2
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    const 0x10             live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 14 (depth 1, lines 19): w 2 K 0
+  block 15 (depth 1, lines 19): w 2 K 0
+  block 16 (depth 1, lines 20): w 2 K 1
+      #42   n                      live through, no reference: -2
+      #12   i_blist                live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             referenced, cost   2: +4
+      #8    section_name           live through, no reference: -2
+      #7    area_init              live through, no reference: -2
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    const 0x10             live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 17 (depth 1, lines 20): w 2 K 0
+  block 18 (depth 1, lines 21): w 2 K 3
+      #99   temp                   referenced, cost   4: +24
+      #41   local                  referenced, cost   6: +36
+      #42   n                      live through, no reference: -6
+      #12   i_blist                live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              referenced, cost   2: +12
+      #6    this                   live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #3    const 0x10             live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 19 (depth 1, lines 21): w 2 K 2
+      #99   temp                   referenced, cost   2: +8
+      #41   local                  live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #12   i_blist                live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    const 0x10             live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 20 (depth 1, lines 21): w 2 K 1
+      #99   temp                   referenced, cost   8: +16
+      #41   local                  live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #12   i_blist                live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              live through, no reference: -2
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #3    const 0x10             live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 21 (depth 1, lines 21): w 2 K 0
+  block 22 (depth 1, lines 21): w 2 K 2
+      #41   local                  referenced, cost   4: +16
+      #42   n                      live through, no reference: -4
+      #12   i_blist                live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    const 0x10             referenced, cost   1: +4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 23 (depth 1, lines 21): w 2 K 3
+      #41   local                  referenced, cost   2: +12
+      #99   temp                   referenced, cost   2: +12
+      #42   n                      live through, no reference: -6
+      #12   i_blist                live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #3    const 0x10             live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 24 (depth 1, lines 9): w 2 K 2
+      #12   i_blist                referenced, cost   6: +24
+      #42   n                      referenced, cost   2: +8
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #3    const 0x10             live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 25 (depth 0, lines -): w 1 K 0
+  block 26 (depth 0, lines 24,26-28): w 1 K 7
+      #22   i_list                 referenced, cost   4: +28
+      #47   n                      referenced, cost  16: +112
+      #42   n                      live through, no reference: -7
+      #11   search_tools           referenced, cost   2: +14
+      #9    pworld_box             referenced, cost   4: +28
+      #8    section_name           referenced, cost   2: +14
+      #7    area_init              referenced, cost   2: +14
+      #6    this                   live through, no reference: -7
+      #4    const 1                live through, no reference: -7
+      #2    const 0xc              referenced, cost   0: +0
+      #1    const 0                live through, no reference: -7
+  block 27 (depth 0, lines -): w 1 K 2
+      #46   local                  referenced, cost   2: +4
+      #22   i_list                 live through, no reference: -2
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              referenced, cost   2: +4
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 28 (depth 0, lines -): w 1 K 0
+  block 29 (depth 1, lines 28-30): w 2 K 8
+      #23   p_thing                referenced, cost   6: +96
+      #44   local                  referenced, cost   6: +96
+      #103  temp                   referenced, cost   4: +64
+      #78   local                  referenced, cost   2: +32
+      #46   local                  referenced, cost   4: +64
+      #22   i_list                 referenced, cost   2: +32
+      #47   n                      live through, no reference: -16
+      #42   n                      live through, no reference: -16
+      #11   search_tools           live through, no reference: -16
+      #9    pworld_box             live through, no reference: -16
+      #8    section_name           live through, no reference: -16
+      #7    area_init              live through, no reference: -16
+      #6    this                   referenced, cost   2: +32
+      #4    const 1                live through, no reference: -16
+      #2    const 0xc              live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 30 (depth 1, lines 30): w 2 K 2
+      #103  temp                   referenced, cost   2: +8
+      #78   local                  live through, no reference: -4
+      #46   local                  live through, no reference: -4
+      #22   i_list                 live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 31 (depth 1, lines 30): w 2 K 2
+      #103  temp                   referenced, cost   6: +24
+      #78   local                  referenced, cost   2: +8
+      #46   local                  live through, no reference: -4
+      #22   i_list                 live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 32 (depth 1, lines 30): w 2 K 2
+      #46   local                  referenced, cost   4: +16
+      #22   i_list                 live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              referenced, cost   1: +4
+      #1    const 0                live through, no reference: -4
+  block 33 (depth 1, lines 30): w 2 K 3
+      #103  temp                   referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #46   local                  referenced, cost   2: +12
+      #42   n                      live through, no reference: -6
+      #22   i_list                 live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 34 (depth 1, lines 28): w 2 K 2
+      #22   i_list                 referenced, cost   6: +24
+      #47   n                      referenced, cost   2: +8
+      #46   local                  live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 35 (depth 0, lines -): w 1 K 0
+  block 36 (depth 0, lines 32): w 1 K 2
+      #49   cur                    referenced, cost   4: +8
+      #47   n                      referenced, cost   4: +8
+      #42   n                      live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              live through, no reference: -2
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 37 (depth 0, lines -): w 1 K 0
+  block 38 (depth 1, lines 32): w 2 K 3
+      #52   tmp                    referenced, cost   4: +24
+      #49   cur                    referenced, cost   8: +48
+      #47   n                      referenced, cost   2: +12
+      #42   n                      live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 39 (depth 0, lines -): w 1 K 0
+  block 40 (depth 0, lines 32-34): w 1 K 5
+      #24   i_list                 referenced, cost   4: +20
+      #47   n                      referenced, cost  12: +60
+      #42   n                      live through, no reference: -5
+      #11   search_tools           referenced, cost   2: +10
+      #9    pworld_box             referenced, cost   2: +10
+      #8    section_name           referenced, cost   2: +10
+      #7    area_init              live through, no reference: -5
+      #6    this                   live through, no reference: -5
+      #4    const 1                live through, no reference: -5
+      #2    const 0xc              live through, no reference: -5
+      #1    const 0                live through, no reference: -5
+  block 41 (depth 0, lines -): w 1 K 2
+      #53   local                  referenced, cost   2: +4
+      #24   i_list                 live through, no reference: -2
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              referenced, cost   2: +4
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 42 (depth 0, lines -): w 1 K 0
+  block 43 (depth 1, lines 34-36): w 2 K 8
+      #25   p_thing                referenced, cost   6: +96
+      #51   local                  referenced, cost   6: +96
+      #106  temp                   referenced, cost   4: +64
+      #80   local                  referenced, cost   2: +32
+      #53   local                  referenced, cost   4: +64
+      #24   i_list                 referenced, cost   2: +32
+      #47   n                      live through, no reference: -16
+      #42   n                      live through, no reference: -16
+      #11   search_tools           live through, no reference: -16
+      #9    pworld_box             live through, no reference: -16
+      #8    section_name           live through, no reference: -16
+      #7    area_init              live through, no reference: -16
+      #6    this                   referenced, cost   2: +32
+      #4    const 1                live through, no reference: -16
+      #2    const 0xc              live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 44 (depth 1, lines 36): w 2 K 2
+      #106  temp                   referenced, cost   2: +8
+      #80   local                  live through, no reference: -4
+      #53   local                  live through, no reference: -4
+      #24   i_list                 live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 45 (depth 1, lines 36): w 2 K 2
+      #106  temp                   referenced, cost   6: +24
+      #80   local                  referenced, cost   2: +8
+      #53   local                  live through, no reference: -4
+      #24   i_list                 live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 46 (depth 1, lines 36): w 2 K 2
+      #53   local                  referenced, cost   4: +16
+      #24   i_list                 live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              referenced, cost   1: +4
+      #1    const 0                live through, no reference: -4
+  block 47 (depth 1, lines 36): w 2 K 3
+      #106  temp                   referenced, cost   2: +12
+      #53   local                  referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #24   i_list                 live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 48 (depth 1, lines 34): w 2 K 2
+      #24   i_list                 referenced, cost   6: +24
+      #53   local                  live through, no reference: -4
+      #47   n                      referenced, cost   2: +8
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 49 (depth 0, lines -): w 1 K 0
+  block 50 (depth 0, lines 39-41): w 1 K 7
+      #26   local                  referenced, cost   4: +28
+      #5    const 4                referenced, cost   0: +0
+      #28   creat_gen_it           referenced, cost   2: +14
+      #47   n                      live through, no reference: -7
+      #42   n                      live through, no reference: -7
+      #11   search_tools           referenced, cost   2: +14
+      #9    pworld_box             referenced, cost   2: +14
+      #8    section_name           referenced, cost   2: +14
+      #7    area_init              live through, no reference: -7
+      #6    this                   live through, no reference: -7
+      #4    const 1                live through, no reference: -7
+      #2    const 0xc              live through, no reference: -7
+      #1    const 0                referenced, cost   3: +21
+  block 51 (depth 0, lines -): w 1 K 2
+      #54   local                  referenced, cost   2: +4
+      #5    const 4                live through, no reference: -2
+      #28   creat_gen_it           live through, no reference: -2
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              referenced, cost   2: +4
+      #6    this                   live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 52 (depth 0, lines -): w 1 K 0
+  block 53 (depth 1, lines 43-44): w 2 K 8
+      #29   thing                  referenced, cost   6: +96
+      #57   local                  referenced, cost   6: +96
+      #109  temp                   referenced, cost   4: +64
+      #82   local                  referenced, cost   2: +32
+      #54   local                  referenced, cost   4: +64
+      #5    const 4                live through, no reference: -16
+      #28   creat_gen_it           referenced, cost   2: +32
+      #47   n                      live through, no reference: -16
+      #42   n                      live through, no reference: -16
+      #11   search_tools           live through, no reference: -16
+      #9    pworld_box             live through, no reference: -16
+      #8    section_name           live through, no reference: -16
+      #7    area_init              live through, no reference: -16
+      #6    this                   referenced, cost   2: +32
+      #4    const 1                live through, no reference: -16
+      #2    const 0xc              live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 54 (depth 1, lines 44): w 2 K 2
+      #109  temp                   referenced, cost   2: +8
+      #82   local                  live through, no reference: -4
+      #54   local                  live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #28   creat_gen_it           live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 55 (depth 1, lines 44): w 2 K 2
+      #109  temp                   referenced, cost   6: +24
+      #82   local                  referenced, cost   2: +8
+      #54   local                  live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #28   creat_gen_it           live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 56 (depth 1, lines 44): w 2 K 2
+      #54   local                  referenced, cost   4: +16
+      #5    const 4                live through, no reference: -4
+      #28   creat_gen_it           live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              referenced, cost   1: +4
+      #1    const 0                live through, no reference: -4
+  block 57 (depth 1, lines 44): w 2 K 3
+      #109  temp                   referenced, cost   2: +12
+      #54   local                  referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #28   creat_gen_it           live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 58 (depth 1, lines 41): w 2 K 2
+      #54   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #28   creat_gen_it           referenced, cost   4: +16
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                referenced, cost   0: +0
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 59 (depth 0, lines -): w 1 K 0
+  block 60 (depth 0, lines 47-49): w 1 K 6
+      #30   local                  referenced, cost   4: +24
+      #32   nav_seed_it            referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #11   search_tools           referenced, cost   2: +12
+      #9    pworld_box             referenced, cost   2: +12
+      #8    section_name           referenced, cost   2: +12
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                referenced, cost   3: +18
+  block 61 (depth 0, lines -): w 1 K 2
+      #58   local                  referenced, cost   2: +4
+      #32   nav_seed_it            live through, no reference: -2
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              referenced, cost   2: +4
+      #6    this                   live through, no reference: -2
+      #5    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 62 (depth 0, lines -): w 1 K 0
+  block 63 (depth 1, lines 50-51): w 2 K 8
+      #33   p_thing                referenced, cost   6: +96
+      #61   local                  referenced, cost   6: +96
+      #112  temp                   referenced, cost   4: +64
+      #84   local                  referenced, cost   2: +32
+      #58   local                  referenced, cost   4: +64
+      #32   nav_seed_it            referenced, cost   2: +32
+      #47   n                      live through, no reference: -16
+      #42   n                      live through, no reference: -16
+      #11   search_tools           live through, no reference: -16
+      #9    pworld_box             live through, no reference: -16
+      #8    section_name           live through, no reference: -16
+      #7    area_init              live through, no reference: -16
+      #6    this                   referenced, cost   2: +32
+      #5    const 4                live through, no reference: -16
+      #4    const 1                live through, no reference: -16
+      #2    const 0xc              live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 64 (depth 1, lines 51): w 2 K 2
+      #112  temp                   referenced, cost   2: +8
+      #84   local                  live through, no reference: -4
+      #58   local                  live through, no reference: -4
+      #32   nav_seed_it            live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 65 (depth 1, lines 51): w 2 K 2
+      #112  temp                   referenced, cost   6: +24
+      #84   local                  referenced, cost   2: +8
+      #58   local                  live through, no reference: -4
+      #32   nav_seed_it            live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 66 (depth 1, lines 51): w 2 K 2
+      #58   local                  referenced, cost   4: +16
+      #32   nav_seed_it            live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              referenced, cost   1: +4
+      #1    const 0                live through, no reference: -4
+  block 67 (depth 1, lines 51): w 2 K 3
+      #112  temp                   referenced, cost   2: +12
+      #58   local                  referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #32   nav_seed_it            live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 68 (depth 1, lines 49): w 2 K 2
+      #58   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #32   nav_seed_it            referenced, cost   4: +16
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                referenced, cost   0: +0
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 69 (depth 0, lines -): w 1 K 0
+  block 70 (depth 0, lines 54-57): w 1 K 7
+      #87   local                  referenced, cost   2: +14
+      #35   entrance_it            referenced, cost   2: +14
+      #34   local                  referenced, cost   4: +28
+      #47   n                      live through, no reference: -7
+      #42   n                      live through, no reference: -7
+      #11   search_tools           referenced, cost   2: +14
+      #9    pworld_box             referenced, cost   8: +56
+      #8    section_name           referenced, cost   2: +14
+      #7    area_init              live through, no reference: -7
+      #6    this                   live through, no reference: -7
+      #5    const 4                live through, no reference: -7
+      #4    const 1                live through, no reference: -7
+      #2    const 0xc              live through, no reference: -7
+      #1    const 0                referenced, cost   3: +21
+  block 71 (depth 0, lines -): w 1 K 2
+      #63   local                  referenced, cost   2: +4
+      #87   local                  live through, no reference: -2
+      #35   entrance_it            live through, no reference: -2
+      #34   local                  live through, no reference: -2
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #11   search_tools           live through, no reference: -2
+      #9    pworld_box             live through, no reference: -2
+      #8    section_name           live through, no reference: -2
+      #7    area_init              referenced, cost   2: +4
+      #6    this                   live through, no reference: -2
+      #5    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 72 (depth 0, lines -): w 1 K 0
+  block 73 (depth 1, lines 58-59): w 2 K 8
+      #36   p_thing                referenced, cost   6: +96
+      #65   local                  referenced, cost   6: +96
+      #115  temp                   referenced, cost   4: +64
+      #89   local                  referenced, cost   2: +32
+      #63   local                  referenced, cost   4: +64
+      #87   local                  live through, no reference: -16
+      #35   entrance_it            referenced, cost   2: +32
+      #34   local                  live through, no reference: -16
+      #47   n                      live through, no reference: -16
+      #42   n                      live through, no reference: -16
+      #11   search_tools           live through, no reference: -16
+      #9    pworld_box             live through, no reference: -16
+      #8    section_name           live through, no reference: -16
+      #7    area_init              live through, no reference: -16
+      #6    this                   referenced, cost   2: +32
+      #5    const 4                live through, no reference: -16
+      #4    const 1                live through, no reference: -16
+      #2    const 0xc              live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 74 (depth 1, lines 59): w 2 K 2
+      #115  temp                   referenced, cost   2: +8
+      #89   local                  live through, no reference: -4
+      #63   local                  live through, no reference: -4
+      #87   local                  live through, no reference: -4
+      #35   entrance_it            live through, no reference: -4
+      #34   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 75 (depth 1, lines 59): w 2 K 2
+      #115  temp                   referenced, cost   6: +24
+      #89   local                  referenced, cost   2: +8
+      #63   local                  live through, no reference: -4
+      #87   local                  live through, no reference: -4
+      #35   entrance_it            live through, no reference: -4
+      #34   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 76 (depth 1, lines 59): w 2 K 2
+      #63   local                  referenced, cost   4: +16
+      #87   local                  live through, no reference: -4
+      #35   entrance_it            live through, no reference: -4
+      #34   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #11   search_tools           live through, no reference: -4
+      #9    pworld_box             live through, no reference: -4
+      #8    section_name           live through, no reference: -4
+      #7    area_init              live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              referenced, cost   1: +4
+      #1    const 0                live through, no reference: -4
+  block 77 (depth 1, lines 59): w 2 K 3
+      #115  temp                   referenced, cost   2: +12
+      #87   local                  live through, no reference: -6
+      #63   local                  referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #35   entrance_it            live through, no reference: -6
+      #34   local                  live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 78 (depth 1, lines 57): w 2 K 3
+      #87   local                  referenced, cost   2: +12
+      #63   local                  live through, no reference: -6
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #35   entrance_it            referenced, cost   4: +24
+      #34   local                  live through, no reference: -6
+      #11   search_tools           live through, no reference: -6
+      #9    pworld_box             live through, no reference: -6
+      #8    section_name           live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                referenced, cost   0: +0
+      #4    const 1                live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 79 (depth 0, lines -): w 1 K 0
+  block 80 (depth 0, lines 62-64): w 1 K 6
+      #11   search_tools           referenced, cost   2: +12
+      #9    pworld_box             referenced, cost   2: +12
+      #8    section_name           referenced, cost   2: +12
+      #38   exit_it                referenced, cost   2: +12
+      #37   local                  referenced, cost   4: +24
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #34   local                  live through, no reference: -6
+      #7    area_init              live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                live through, no reference: -6
+      #4    const 1                live through, no reference: -6
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                referenced, cost   3: +18
+  block 81 (depth 0, lines -): w 1 K 2
+      #7    area_init              referenced, cost   2: +4
+      #68   local                  referenced, cost   2: +4
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #38   exit_it                live through, no reference: -2
+      #34   local                  live through, no reference: -2
+      #6    this                   live through, no reference: -2
+      #5    const 4                live through, no reference: -2
+      #4    const 1                live through, no reference: -2
+      #2    const 0xc              live through, no reference: -2
+      #1    const 0                live through, no reference: -2
+  block 82 (depth 0, lines -): w 1 K 0
+  block 83 (depth 1, lines 65-66): w 2 K 8
+      #39   p_thing                referenced, cost   6: +96
+      #71   local                  referenced, cost   6: +96
+      #118  temp                   referenced, cost   4: +64
+      #91   local                  referenced, cost   2: +32
+      #68   local                  referenced, cost   4: +64
+      #47   n                      live through, no reference: -16
+      #42   n                      live through, no reference: -16
+      #38   exit_it                referenced, cost   2: +32
+      #34   local                  live through, no reference: -16
+      #6    this                   referenced, cost   2: +32
+      #5    const 4                live through, no reference: -16
+      #4    const 1                live through, no reference: -16
+      #2    const 0xc              live through, no reference: -16
+      #1    const 0                referenced, cost   0: +0
+  block 84 (depth 1, lines 66): w 2 K 2
+      #118  temp                   referenced, cost   2: +8
+      #91   local                  live through, no reference: -4
+      #68   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #38   exit_it                live through, no reference: -4
+      #34   local                  live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                referenced, cost   0: +0
+  block 85 (depth 1, lines 66): w 2 K 2
+      #118  temp                   referenced, cost   6: +24
+      #91   local                  referenced, cost   2: +8
+      #68   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #38   exit_it                live through, no reference: -4
+      #34   local                  live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 86 (depth 1, lines 66): w 2 K 2
+      #68   local                  referenced, cost   4: +16
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #38   exit_it                live through, no reference: -4
+      #34   local                  live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                live through, no reference: -4
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              referenced, cost   1: +4
+      #1    const 0                live through, no reference: -4
+  block 87 (depth 1, lines 66): w 2 K 3
+      #118  temp                   referenced, cost   2: +12
+      #68   local                  referenced, cost   2: +12
+      #47   n                      live through, no reference: -6
+      #42   n                      live through, no reference: -6
+      #38   exit_it                live through, no reference: -6
+      #34   local                  live through, no reference: -6
+      #6    this                   live through, no reference: -6
+      #5    const 4                live through, no reference: -6
+      #4    const 1                referenced, cost   0: +0
+      #2    const 0xc              live through, no reference: -6
+      #1    const 0                live through, no reference: -6
+  block 88 (depth 1, lines 64): w 2 K 2
+      #68   local                  live through, no reference: -4
+      #47   n                      live through, no reference: -4
+      #42   n                      live through, no reference: -4
+      #38   exit_it                referenced, cost   4: +16
+      #34   local                  live through, no reference: -4
+      #6    this                   live through, no reference: -4
+      #5    const 4                referenced, cost   0: +0
+      #4    const 1                live through, no reference: -4
+      #2    const 0xc              live through, no reference: -4
+      #1    const 0                live through, no reference: -4
+  block 89 (depth 0, lines 64): w 1 K 1
+      #37   local                  referenced, cost   0: +0
+      #47   n                      live through, no reference: -1
+      #42   n                      live through, no reference: -1
+      #34   local                  live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 90 (depth 0, lines 68): w 1 K 2
+      #37   local                  referenced, cost   2: +4
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #34   local                  live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 91 (depth 0, lines 68): w 1 K 1
+      #37   local                  referenced, cost   2: +2
+      #47   n                      live through, no reference: -1
+      #42   n                      live through, no reference: -1
+      #34   local                  live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 92 (depth 0, lines 68-69): w 1 K 2
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #34   local                  referenced, cost   2: +4
+      #1    const 0                referenced, cost   0: +0
+  block 93 (depth 0, lines 69): w 1 K 1
+      #34   local                  referenced, cost   2: +2
+      #47   n                      live through, no reference: -1
+      #42   n                      live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 94 (depth 0, lines 69-70): w 1 K 2
+      #31   local                  referenced, cost   2: +4
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+      #1    const 0                referenced, cost   0: +0
+  block 95 (depth 0, lines 70): w 1 K 1
+      #31   local                  referenced, cost   2: +2
+      #47   n                      live through, no reference: -1
+      #42   n                      live through, no reference: -1
+      #1    const 0                live through, no reference: -1
+  block 96 (depth 0, lines 70-71): w 1 K 2
+      #1    const 0                referenced, cost   0: +0
+      #27   local                  referenced, cost   2: +4
+      #47   n                      live through, no reference: -2
+      #42   n                      live through, no reference: -2
+  block 97 (depth 0, lines 71): w 1 K 1
+      #27   local                  referenced, cost   2: +2
+      #47   n                      live through, no reference: -1
+      #42   n                      live through, no reference: -1
+  block 98 (depth 0, lines 71-72): w 1 K 2
+      #73   cur                    referenced, cost   4: +8
+      #47   n                      referenced, cost   4: +8
+      #42   n                      live through, no reference: -2
+  block 99 (depth 0, lines -): w 1 K 0
+  block 100 (depth 1, lines 72): w 2 K 3
+      #74   tmp                    referenced, cost   4: +24
+      #73   cur                    referenced, cost   8: +48
+      #47   n                      referenced, cost   2: +12
+      #42   n                      live through, no reference: -6
+  block 101 (depth 0, lines -): w 1 K 0
+  block 102 (depth 0, lines 72-73): w 1 K 3
+      #47   n                      referenced, cost  10: +30
+      #75   cur                    referenced, cost   4: +12
+      #42   n                      referenced, cost   4: +12
+  block 103 (depth 0, lines -): w 1 K 0
+  block 104 (depth 1, lines 73): w 2 K 3
+      #76   tmp                    referenced, cost   4: +24
+      #75   cur                    referenced, cost   8: +48
+      #42   n                      referenced, cost   2: +12
+  block 105 (depth 0, lines -): w 1 K 0
+  block 106 (depth 0, lines 73): w 1 K 1
+      #42   n                      referenced, cost  10: +10
+  totals:
+      #118  temp                      108
+      #115  temp                      108
+      #112  temp                      108
+      #109  temp                      108
+      #106  temp                      108
+      #103  temp                      108
+      #39   p_thing                    96
+      #71   local                      96
+      #36   p_thing                    96
+      #65   local                      96
+      #33   p_thing                    96
+      #61   local                      96
+      #29   thing                      96
+      #57   local                      96
+      #25   p_thing                    96
+      #51   local                      96
+      #23   p_thing                    96
+      #44   local                      96
+      #68   local                      84
+      #58   local                      84
+      #54   local                      84
+      #53   local                      84
+      #46   local                      84
+      #63   local                      82
+      #22   i_list                     64
+      #75   cur                        60
+      #99   temp                       60
+      #41   local                      58
+      #73   cur                        56
+      #24   i_list                     56
+      #49   cur                        56
+      #35   entrance_it                50
+      #28   creat_gen_it               42
+      #38   exit_it                    40
+      #32   nav_seed_it                40
+      #91   local                      36
+      #89   local                      36
+      #84   local                      36
+      #82   local                      36
+      #80   local                      36
+      #78   local                      36
+      #13   p_thing                    36
+      #10   map_no                     36
+      #12   i_blist                    33
+      #93   temp                       32
+      #37   local                      30
+      #26   local                      28
+      #76   tmp                        24
+      #74   tmp                        24
+      #30   local                      24
+      #52   tmp                        24
+      #40   local                      16
+      #6    this                        9
+      #27   local                       6
+      #31   local                       6
+      #87   local                     -10
+      #47   n                         -15
+      #9    pworld_box                -19
+      #3    const 0x10                -38
+      #34   local                     -58
+      #1    const 0                  -119
+      #8    section_name             -121
+      #11   search_tools             -121
+      #42   n                        -150
+      #5    const 4                  -163
+      #7    area_init                -202
+      #2    const 0xc                -280
+      #4    const 1                  -293

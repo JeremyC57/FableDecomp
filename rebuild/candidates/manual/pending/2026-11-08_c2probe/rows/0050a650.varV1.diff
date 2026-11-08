@@ -1,0 +1,41 @@
+  == 564 same (retail 0050a650.., ours 0050a650..)
+  - 0050ad8c xor eax, eax
+  - 0050ad8e mov dword ptr [esp + 0x38], eax
+  - 0050ad92 mov dword ptr [esp + 0x3c], eax
+  - 0050ad96 mov dword ptr [esp + 0x40], eax
+  == 1 same (retail 0050ad9a.., ours 0050ad8c..)
+  + 0050ad93 xor ebx, ebx
+  == 2 same (retail 0050ada1.., ours 0050ad95..)
+  + 0050ad9a mov dword ptr [esp + 0x3c], ebx
+  + 0050ad9e mov dword ptr [esp + 0x40], ebx
+  + 0050ada2 mov dword ptr [esp + 0x44], ebx
+  == 11 same (retail 0050ada6.., ours 0050ada6..)
+  - 0050adcf mov ebx, dword ptr [esp + 0x38]
+  - 0050add3 cmp ebx, dword ptr [esp + 0x3c]
+  - 0050add7 je 0x50ae5f
+  + 0050adcf mov ecx, dword ptr [esp + 0x3c]
+  + 0050add3 mov eax, dword ptr [esp + 0x38]
+  + 0050add7 sub ecx, eax
+  + 0050add9 sar ecx, 2
+  + 0050addc test ecx, ecx
+  + 0050adde jbe 0x50ae70
+  == 2 same (retail 0050addd.., ours 0050ade4..)
+  - 0050ade7 mov esi, dword ptr [ebx]
+  + 0050adee mov edi, edi
+  + 0050adf0 mov esi, dword ptr [eax + ebx*4]
+  == 37 same (retail 0050ade9.., ours 0050adf3..)
+  - 0050ae54 mov eax, dword ptr [esp + 0x3c]
+  - 0050ae58 add ebx, 4
+  - 0050ae5b cmp ebx, eax
+  - 0050ae5d jne 0x50ade7
+  + 0050ae5e mov ecx, dword ptr [esp + 0x3c]
+  == 1 same (retail 0050ae5f.., ours 0050ae62..)
+  + 0050ae66 sub ecx, eax
+  + 0050ae68 inc ebx
+  + 0050ae69 sar ecx, 2
+  + 0050ae6c cmp ebx, ecx
+  + 0050ae6e jb 0x50adf0
+  == 27 same (retail 0050ae63.., ours 0050ae70..)
+  - 0050aead lea ecx, [ecx]
+  + 0050aeba lea ebx, [ebx]
+  == 35 same (retail 0050aeb0.., ours 0050aec0..)
