@@ -11,6 +11,12 @@ class CMatrix3x4 {
 public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY
+    // Retail opt-in (chunk 895, row 0x00BEBAA0 CEngineInternalPrimitiveMeshBase::CalcObjectMatrix): Ego_r.pdb / FableWin.pdb
+    // ?SetTranslateOnly@CMatrix3x4@@QAEXABVC3DVector@@@Z, inline in retail (no out-of-line copy: the row stores the translation
+    // row as three dword copies, 0x00BEBB89..0x00BEBB97). Body only: no layout change, default path unchanged.
+    void SetTranslateOnly(const C3DVector& translation) { E41=translation.X; E42=translation.Y; E43=translation.Z; }
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_PREMULTIPLY
     // Chunk 764 (row 0x00B451D0 CEngineLightingManager::CalculateFogTransformMatrix): Ego_r.pdb ??0CMatrix3x4@@QAE@MMMMMMMMMMMM@Z and
     // FableWin.pdb ?PreMultiply@CMatrix3x4@@QAEXABV1@@Z, both inline in retail (no out-of-line copy in Ego_r.pdb or Fable.exe; the

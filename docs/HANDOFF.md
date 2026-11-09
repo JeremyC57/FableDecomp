@@ -123,6 +123,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     funclets waiting on parents) + 0x00C720C0. Parked in `pending/2026-11-09_linux_hand894/`: 0x009AA440 (unreferenced second COMDAT
     copy of the landed ~pair 0x009A8FE0: owner question), 0x00A17620, 0x00D259A0, 0x00492ED1, 0x00C11520, 0x008C7280, 0x009350C0,
     the GFStringToInt pair. Coverage 47,149 genuine (95.12%). Queue tag land0911g.
+    Chunk 895 (user, 2026-11-09: "search through the parked rows and find easier rows", same expert brief): the coordinator
+    re-graded 358 small parked drafts as they sat (210 still 20+ masked lines off) and gave the agent the best 31; 6 landed
+    (`2026-11-09_landing_h/`: two GetAllThingsInRoughArea instances parked only on a name, two `__push_heap` on the shared
+    BestForTargeting `_BODIES`, GFSerialiseVectorBinaryIn<CUIRegionInfo>, CalcObjectMatrix + new `CMatrix3x4::SetTranslateOnly`
+    opt-in). 25 parked in `pending/2026-11-09_linux_hand895/`. Ranking of all 2,052 parked rows: `$S/parked_rank_0911.tsv`;
+    re-grade results `$S/regrade/res*.tsv`. Coverage 47,155 genuine (95.13%).
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
     calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).

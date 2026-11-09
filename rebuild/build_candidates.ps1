@@ -386784,6 +386784,48 @@ $catalog = @(
         TestSource = '00/f3/stdvectorCArrayunsignedshort_resize_00f3fb60_test.cpp'
         PassPattern = '00f3fb60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00619560'
+        Module = '_global'
+        Source = '00/61/global_GFSerialiseVectorBinaryIn_00619560.cpp'
+        TestSource = '00/61/global_GFSerialiseVectorBinaryIn_00619560_test.cpp'
+        PassPattern = '00619560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f3570'
+        Module = 'CThingSearchTools'
+        Source = '00/6f/CThingSearchTools_GetAllThingsInRoughArea_006f3570.cpp'
+        TestSource = '00/6f/CThingSearchTools_GetAllThingsInRoughArea_006f3570_test.cpp'
+        PassPattern = '006f3570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f37b0'
+        Module = 'CThingSearchTools'
+        Source = '00/6f/CThingSearchTools_GetAllThingsInRoughArea_006f37b0.cpp'
+        TestSource = '00/6f/CThingSearchTools_GetAllThingsInRoughArea_006f37b0_test.cpp'
+        PassPattern = '006f37b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa160'
+        Module = 'std'
+        Source = '00/7f/std_pushheap_007fa160.cpp'
+        TestSource = '00/7f/std_pushheap_007fa160_test.cpp'
+        PassPattern = '007fa160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00807620'
+        Module = 'std'
+        Source = '00/80/std_pushheap_00807620.cpp'
+        TestSource = '00/80/std_pushheap_00807620_test.cpp'
+        PassPattern = '00807620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bebaa0'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/be/CEngineInternalPrimitiveMeshBase_CalcObjectMatrix_00bebaa0.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMeshBase_CalcObjectMatrix_00bebaa0_test.cpp'
+        PassPattern = '00bebaa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

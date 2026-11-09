@@ -1,0 +1,32 @@
+address	name	grade	grades_used	note
+006f3570	CThingSearchTools::GetAllThingsInRoughArea<CThingObject,std::vector<const CThing*>,CThingFilter_None>	RELOCATION_MATCH	2	identity proven (mask 0x807, caller shares vector with 0x006F37B0, FableWin name set); rebased onto the landed 0x00436D60 shape
+006f37b0	CThingSearchTools::GetAllThingsInRoughArea<CThingBuilding,std::vector<const CThing*>,CThingFilter_None>	RELOCATION_MATCH	2	identity proven (mask 0x47; Ego_r + FableWin name sets); landed 0x00436D60 shape
+00807620	std::__push_heap<pair<C3DVector,long>*,int,pair<C3DVector,long>,CCompareTargetedPositionsForFirstPersonTargeting>	RELOCATION_MATCH	2	shared CVectorCompare_BestForTargeting header + _BODIES (no-capture), as the landed __median 0x00807170
+007fa160	std::__push_heap<CThing**,int,CThing*,CThingCompare_BestForTargeting2>	RELOCATION_MATCH	2	shared CVectorCompare_BestForTargeting header + _BODIES (no-capture); parentheses not needed
+00619560	GFSerialiseVectorBinaryIn<CTCInventoryMap::CUIRegionInfo>	RELOCATION_MATCH	4	resize(count, traits.DefaultVal): the traits object IS the zeroed default; shared STLport vector (RESIZE_OUTOFLINE), CDataInputStream::ReadSLONG, CPersistTraits, CTCInventoryMap REGIONINFO_CTOR
+00bebaa0	CEngineInternalPrimitiveMeshBase::CalcObjectMatrix	MATCH	9	shared C3DVector operator^ / CRightHandedSet::GetRight fixed the commutative order; 3 parenthesised negations keep pop esi in the epilogue; hdr overlay SetTranslateOnly
+00b801f0	std::vector<CTVertexSeaBackground>::_M_fill_insert	DIFFER(523v523)	11	1 line: hoisted x_copy loads Z first (retail X,Y,Z)
+006d6cb0	CTCHeroExperience::IsToAutoBlock	DIFFER(495v495)	14	2 lines: clamp store v fmul [0.3] scheduler slot
+006d68d0	CTCHeroExperience::IsBlockRecoilAnimToConserveAnimationHandedness	DIFFER(495v495)	1	same residue as 0x006D6CB0 (twin)
+0074e140	CTCContainerRewardHero::GeneratePopoutVectorFromVars	DIFFER(245v245)	6	2 lines: return copy, Y load after fstp [result]
+00a56670	GFGetHermiteSplinePosition	DIFFER(295v295)	9	4 lines: final copy loads one slot early; extra PAREN tuples make it worse (retail has one tuple fewer)
+006d8830	CTCHeroExperience::AddSuccessfulMultistrikeHit	DIFFER(321v321)	5	4 lines: push 1 v fst [strength] order
+007bc6fa	NThingShot::CTCShotDefinitionProjectilePredictive::InitMovement	DIFFER(514v514)	1	2 lines: spill reload v fstp st(0) pops; header debt
+008eebe0	Mass::BackplaneFriction	DIFFER(129v131)	0	not worked (75 recorded probes)
+0099bb80	CWideString::SprintfDynamic	DIFFER(199v197)	4	3 lines: lea v mov+add; header debt (CWideString / vector stand-ins)
+00a358f0	C3DMeshObject::GetPositionMatrixFromRHSet	DIFFER(185v185)	4	4 lines: cross z term operand order; shared headers same
+00a22ca0	CRightHandedSet::GetAngleXZ	DIFFER(368v368)	3	4 lines: cross z term operand order; needs full shared-header rebase
+00868e50	GetArmourWeightsFromThing	DIFFER(456v456)	1	4 lines: total_weight += weighting commutation; invented same-TU stand-ins
+00c3d030	CCodaContext::GetResourceCounts (descriptive)	DIFFER(98v94)	5	5 lines: out-pointer load hoist
+00ba48f0	CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocksNoMorph	DIFFER(327v324)	1	not worked (graded only; 22 recorded probes)
+00e5e350	CV_BodyGuardScript::HenchmanCommentary	DIFFER(584v585)	1	not worked beyond analysis (dead zero store is to the FIRST timer slot; both timers escape)
+00a65720	CMemoryAllocatorVariableSize::NewChunk	DIFFER(269v269)	1	not worked (graded only)
+00d9eb30	NScript::CQ_MinionCampScript::CMC_MinionGuard::Main	DIFFER(288v288)	1	not worked (graded only: mov ecx,esi v push order)
+00826c90	CReplaceSerialise<COldFileFormatHeightMapCell5,COldFileFormatHeightMapCell4>::ConvertPreviousUnknownVersionUp	DIFFER(288v288)	1	not worked (graded only)
+00c6b9d0	CStateVariableFilter::FilterWithGain (descriptive)	DIFFER(269v269)	1	not worked: the draft uses __asm (retail_asm row); needs the ASM_RULES shared-header route
+00660ae2	CTCVillage::RemoveThingFromTask<CVillageTaskTorch>	DIFFER(123v123)	1	family not worked (one re-probe of the nested erase(find_if) form: 17 lines, already recorded)
+00660b5d	CTCVillage::RemoveThingFromTask<CVillageTaskHorn>	DIFFER(123v123)	0	family not worked
+00660bd8	CTCVillage::RemoveThingFromTask<CVillageTaskPatrol>	DIFFER(123v123)	0	family not worked
+00660c53	CTCVillage::RemoveThingFromTask<CVillageTaskPickCrops>	DIFFER(123v123)	0	family not worked
+00660cce	CTCVillage::RemoveThingFromTask<CVillageTaskSecuritySweep>	DIFFER(123v123)	0	family not worked
+00660d49	CTCVillage::RemoveThingFromTask<CVillageTaskCarryCrate>	DIFFER(123v123)	0	family not worked

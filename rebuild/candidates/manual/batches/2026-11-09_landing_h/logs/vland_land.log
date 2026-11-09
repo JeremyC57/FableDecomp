@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00619560   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryIn
+006f3570   WARN SHARED_HEADER_AVAILABLE CVectorMap
+006f3570   WARN SHARED_HEADER_AVAILABLE CBaseClass
+006f3570   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+006f3570   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+006f3570   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+006f3570   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+006f3570   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+006f37b0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+006f37b0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+006f37b0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+006f37b0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+006f37b0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+006f37b0   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+006f37b0   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+007fa160   RELOCATION_MATCH PASS   __push_heap
+00807620   RELOCATION_MATCH PASS   __push_heap
+00bebaa0   MATCH            PASS   CalcObjectMatrix
+
+WINS: 6
+  00619560 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCUIRegionInfo@CTCInventoryMap@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@@Z
+  006f3570 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingObject@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  006f37b0 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingBuilding@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  007fa160 RELOCATION_MATCH std::??$__push_heap@PAPAVCThing@@HPAV1@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_BestForTargeting2@@@Z
+  00807620 RELOCATION_MATCH std::??$__push_heap@PAU?$pair@VC3DVector@@J@std@@HU12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x
+  00bebaa0 MATCH CEngineInternalPrimitiveMeshBase::?CalcObjectMatrix@CEngineInternalPrimitiveMeshBase@@SIXAAVCMatrix3x4@@ABVC3DVector@@ABVCRightHandedSet@@M@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  global_GFSerialiseVectorBinaryIn_00619560
+  CThingSearchTools_GetAllThingsInRoughArea_006f3570
+  CThingSearchTools_GetAllThingsInRoughArea_006f37b0
+  std_pushheap_007fa160
+  std_pushheap_00807620
+  CEngineInternalPrimitiveMeshBase_CalcObjectMatrix_00bebaa0

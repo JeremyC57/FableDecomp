@@ -28107,3 +28107,34 @@ chunk	address	module	name	length
 894	009350c0	CAIStateGroup_ScriptingBase<CAIStateGroupBase>	Fired	159
 894	00c11520	_global	Inventory_ProcessNavigationItem	163
 894	008c7280	CCreatureAction_TrollGroundPound	?Initialise@CCreatureAction_TrollGroundPound@@UAEXXZ	268
+895	006f3570	CThingSearchTools	GetAllThingsInRoughArea<CThingObject,std::vector<const CThing*>,CThingFilter_None>	576
+895	006f37b0	CThingSearchTools	GetAllThingsInRoughArea<CThingBuilding,std::vector<const CThing*>,CThingFilter_None>	570
+895	00ba48f0	CEnginePrimitiveManagerStaticMeshesBase	SetupStaticBlocksNoMorph	324
+895	00e5e350	CV_BodyGuardScript	HenchmanCommentary	585
+895	00807620	std	__push_heap<std::pair<C3DVector,long>*,int,std::pair<C3DVector,long>,CCompareTargetedPositionsForFirstPersonTargeting>	164
+895	007fa160	std	__push_heap<CThing**,int,CThing*,CThingCompare_BestForTargeting2>	197
+895	00619560	_global	GFSerialiseVectorBinaryIn<CTCInventoryMap::CUIRegionInfo>	180
+895	0074e140	_global	Projectile_CalculateTrajectory	245
+895	00a56670	_global	GFGetHermiteSplinePosition	295
+895	006d6cb0	_global	IsToAutoBlock	495
+895	006d68d0	_global	IsBlockRecoilAnimToConserveAnimationHandedness	495
+895	007bc6fa	CTCShotDefinitionProjectilePredictive	InitMovement	514
+895	00b801f0	std::vector<CTVertexSeaBackground>	_M_fill_insert	523
+895	008eebe0	Mass	BackplaneFriction	131
+895	0099bb80	CWideString	SprintfDynamic	197
+895	00a358f0	_global	GetPositionMatrixFromRHSet	185
+895	00bebaa0	CEngineInternalPrimitiveMeshBase	CalcObjectMatrix	257
+895	00a22ca0	_global	VectorAngle_ComputeRotation	368
+895	00868e50	_global	GetArmourWeightsFromThing	456
+895	00c6b9d0	CStateVariableFilter	FilterWithGain	269
+895	00a65720	CMemoryAllocatorVariableSize	NewChunk	269
+895	00d9eb30	NScript::CQ_MinionCampScript::CMC_MinionGuard	Main	288
+895	006d8830	_global	Experience_ProcessMultiHitCombo	321
+895	00826c90	_global	CAFile_ConstructNavConnectorVertex	288
+895	00c3d030	_gapscan	sub_00c3d030	94
+895	00660ae2	CTCVillage	RemoveThingFromTask<CVillageTaskTorch>	123
+895	00660b5d	CTCVillage	RemoveThingFromTask<CVillageTaskHorn>	123
+895	00660bd8	CTCVillage	RemoveThingFromTask<CVillageTaskPatrol>	123
+895	00660c53	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123
+895	00660cce	CTCVillage	RemoveThingFromTask<CVillageTaskSecuritySweep>	123
+895	00660d49	CTCVillage	RemoveThingFromTask<CVillageTaskCarryCrate>	123

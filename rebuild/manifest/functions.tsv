@@ -13069,7 +13069,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00619420	Resize	CPersistContext_TransferableVector<CTCInventoryMap::CUIRegionInfo>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
 00619470	vfunc_1	CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\61\vectorEWeaponClass_UmoveEWeaponClass_00619470.cpp
 006194a0	GFSerialiseVectorBinaryIn	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CTCInventoryMap::CUIMiniMapMarker,std::allocator<CTCInventoryMap::CUIMiniMapMarker>_> *	1	yes	accepted									
-00619560	GFSerialiseVectorBinaryIn<CBrainUpdateZone>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CBrainUpdateZone,std::allocator<CBrainUpdateZone>_> *	1	yes	accepted									
+00619560	GFSerialiseVectorBinaryIn<CTCInventoryMap::CUIRegionInfo>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CBrainUpdateZone,std::allocator<CBrainUpdateZone>_> *	1	yes	accepted									
 00619620	GFSerialiseVectorBinaryIn<long>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CRGBColour,std::allocator<CRGBColour>_> *	1	yes	accepted									
 006196d0	_M_erase	std::_Rb_tree<long, std::pair<long const, CRegion>, std::_Select1st<std::pair<long const, CRegion>>, std::less<long>, std::allocator<std::pair<long const, CRegion>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 00619710	Transfer<CUIMiniMapMarker>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
@@ -17788,8 +17788,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006f3450	ResetRings	CCombatWheel	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 006f34b0	for_each	std	unknown	undefined	0		0	yes	accepted									
 006f3530	for_each	std	__fastcall	CRotateThing	3	_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,CRotateThing	1	yes	accepted									
-006f3570	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
-006f37b0	GetPBestThingInRoughArea<CThingFilter_IsPotentialCustomer,CThingCompare_Nearest,CThingCreatureBase>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
+006f3570	GetAllThingsInRoughArea<CThingObject,std::vector<const CThing*>,CThingFilter_None>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
+006f37b0	GetAllThingsInRoughArea<CThingBuilding,std::vector<const CThing*>,CThingFilter_None>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 006f3a30	sort	std::list	unknown	undefined	0		0	yes	accepted									
 006f3c20	operator=	std::vector<CDefendingCombatantInfo::CProng>	unknown	undefined	0		0	yes	accepted									
 006f3f00	_M_insert_overflow_006f3f00	std::vector<PackedRecordWithIntelligentPointer28>	unknown	undefined	0		0	yes	accepted									
@@ -23577,7 +23577,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f9f60	__median<CThing *, CThingCompare_BestForTargeting2>	std	__fastcall	bool	5	CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest>,CThing * *,CThing * *,wchar_t *,uint	1	yes	accepted									
 007f9ff0	__unguarded_partition<CThing **, CThing *, CThingCompare_BestForTargeting2>	std	unknown	undefined	0		0	yes	accepted									
 007fa0e0	__unguarded_linear_insert<CThing **, CThing *, CThingCompare_BestForTargeting2>	std	unknown	undefined	0		0	yes	accepted									
-007fa160	_Push_heap<CThing**,int,CThing*,CThingCompare_BestForTargeting2>	_global	__fastcall	void	5	CThing * *,int,int,CThing * *,CThingCompare_BestForTargeting2	1	yes	accepted									
+007fa160	__push_heap<CThing**,int,CThing*,CThingCompare_BestForTargeting2>	std	__fastcall	void	5	CThing * *,int,int,CThing * *,CThingCompare_BestForTargeting2	1	yes	accepted									
 007fa26c	OnCreate	CTCActionUseBuyHouse	__thiscall	void	1	CTCActionUseBuyHouse *	1	yes	accepted									
 007fa290	__unguarded_insertion_sort_aux	std	__fastcall	void	4	CSpeechFrame *,CSpeechFrame *,allocator<CSpeechFrame> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 007fa320	__adjust_heap<CThing **, int, CThing *, CThingCompare_BestForTargeting2>	std	__fastcall	void	5	CThing * *,int,int,CThing * *,CThingCompare_BestForTargeting2	1	yes	accepted									
@@ -23781,7 +23781,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008073d0	swap	std	__fastcall	void	2	CTargetPoint *,CTargetPoint *	1	yes	accepted									
 008074a0	UnguardedLinearInsert_PairVectorLong_008074a0	_global	__fastcall	CVertexDef *	4	CVertexDef *,CVertexDef *,CVertexDef *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00807520	_Adjust_heap	_global	__fastcall	void	5	CIntelligentPointer<CThing> *,int,int,CIntelligentPointer<class_CThing> *,CDoNotUseBinaryPredicate	1	yes	accepted									
-00807620	_Push_heap<std::pair<C3DVector,long>*,int,std::pair<class_C3DVector,long>,_anon_58ED6966::CCompareTargetedPositionsForFirstPersonTargeting>	_Push_heap<std::pair<C3DVector,long>*,int,std::pair<class_C3DVector,long>,_anon_58ED6966	__fastcall	void	5	pair<C3DVector,long> *,int,int,pair<class_C3DVector,long> *,CCompareTargetedPositionsForFirstPersonTargeting	1	yes	accepted									
+00807620	__push_heap<std::pair<C3DVector,long>*,int,std::pair<C3DVector,long>,CCompareTargetedPositionsForFirstPersonTargeting>	std	__fastcall	void	5	pair<C3DVector,long> *,int,int,pair<class_C3DVector,long> *,CCompareTargetedPositionsForFirstPersonTargeting	1	yes	accepted									
 008076d0	__copy_backward	std	__fastcall	CTargetPoint *	4	CTargetPoint *,CTargetPoint *,CTargetPoint *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 008077b0	operator	CThingFilter_ViableProjectileAimingTarget	__thiscall	bool	2	CThingFilter_ViableProjectileAimingTarget *,CThing *	1	yes	accepted									
 00807830	vector	std::vector	unknown	undefined	0		0			discovered	gapscan							
