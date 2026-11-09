@@ -46,3 +46,28 @@ p12 + header cleanup = differ/006096e0.cpp, `/d2inlT71` (final2): DIFFER(12832v1
 ## Probes after p12 (no gain)
 p13 counters before clear; p14 separate `it` decl; p15 chained zero init; p16 unnamed sprite cast; p17 orientation in a block
 scope; p18 counters before the viewport phase (worse). final/final2 = p12 with experimental opt-ins removed: unchanged.
+
+## Session 2026-11-09 (playbook all-means push)
+Regime 0 (5571 IL tuples, c2 gate 0x1077BE49). Method steps 1-5 done; step 6 (natural spelling) not found.
+
+Leaderboard (LEADERBOARD.tsv; fr = frame, ex = exact share, rf = regs+frame-masked share, segs = differing call segments):
+
+| variant | grade | frame | exact | segs | note |
+|---|---|---|---|---|---|
+| base = differ (p12/final2, /d2inlT71) | DIFFER(12832v12832) | 0x124 | 87.09% | 16 | current best |
+| a1 / e7 (subtitle frame call after the cast / cast decl first) | DIFFER(12832v12832) | 0x124 | 87.09% | 15 | code change, not retail |
+| what-if #448 (subtitleText.Info) = 60 (diagnostic) | DIFFER(12832v12832) | 0x11C | 99.03% | 8 | lever proven |
+| what-if manager piece u794 = 30 (diagnostic) | DIFFER(12832v12832) | 0x11C | 99.03% | 8 | same lever |
+| v01-v05 counter decl moves | DIFFER(12816..12832) | 0x124 | 81-87% | 16-21 | worse |
+| w1 guarded do-while count loop, no flag | DIFFER(12896v12832) | 0x124 | 86.15% | 18 | ++it expanded, rotation lost |
+
+Proven lever: prio(subtitleText.Info #448, 34) must exceed prio(then-arm manager piece u794, 54); measured threshold 55 (53 fails).
+The piece comes from the split of the books-loop manager piece when mesh.Data (#209, ebx-only, 324) takes ebx (TRACE.md Step 2).
+Fixing it alone gives retail's frame 0x11C and the icon branch (0x0060B58D..0x0060B718) and leaves 8 segments, all const-0 pieces:
+count prologue (0x0060AFA1, retail `xor ebx,ebx` before the clear call), books-loop exit (zero ebx to `push ebx` 0x0060B936,
+`cmp [eax],ecx` 0x0060B8DD), COMBAT release `cmp [eax],ecx` 0x0060C0B7, pads.
+
+Next lever: the IL of the then-arm (B1 275-278, B3 278-283 relative to line 108) needs 21 priority points for Info: compare the
+candidate list of retail's then-arm against ours (c2prio `--blocks` K per block) -- a 4-candidate difference in B2/B3 or a
+different piece shape (a second ebx-only candidate between the two creates) is what retail must have had. Then the const-0
+pieces (u797/u1000 count prologue; parent-None pieces from c2.dll 0x107A9B5E, which c2prio's PIECE_SITES lacks).

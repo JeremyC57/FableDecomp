@@ -1,8 +1,8 @@
 // CTCInventoryQuests::ConstructQuestListPC(NUISystem::CComponent* parent, const std::vector<CThing*>& quests, NUISystem::CList* list, QuestScreenType type, NUISystem::CList* frame_list) -- build the PC quest list: one menu entry per quest card (core, optional, vignette order) with its minimap, description text, rewards, boasts and take / delete actions, then the world-map zoom state and region markers
 // Grade: DIFFER(12357v12356) -- call set now equal to retail's except two trivial inlines the ConvertVector #2 inline_depth(0) region outlines (CDefPointer operator->, C2DVector copy ctor); left: register choice (const 0 kept in ebx through the per-quest body and `type` cached in edi where retail reloads [ebp+14h] and keeps quest_card / state_index in ebx), frame 0x42C v 0x41C (locals' slots shuffled), inlined CCharString== Compare with this/other in ecx/eax (retail eax/ecx); sdiff 467 structural lines, 55 source probes + 40 flag/diagnostic grades
-// Next: find the inline-budget consumer retail has before the take block (diagnostic: 4 extra inline CCountedPointer<CAction>(new CAction) statements before the per-quest loop reproduce retail's late out-of-line sites, so the six `#pragma inline_depth(0)` regions below are a stand-in for budget, not retail's spelling); then `CTCInventoryMap* inventory_map = 0;` in the loop (retail `xor ecx,ecx`, 0x0061F0A9) once the const-0 split keeps retail's loop-top `xor edi,edi ; xor ebx,ebx`
+// Next: the budget consumer (2026-11-09, TRACE.md): with the `while` boast loop (code-identical, frequency after it 5x lower) and the two STLport 4.6 opt-ins, retail's late call set needs the caller size g raised by 724..1385 before pop_action (diagnostic: 3 dummy CCountedPointer<CAction>(new CAction) statements reproduce all six late out-of-line sites with no device); find that consumer in retail-real header bodies or source, then drop the six regions (the ConvertVector region's two extra calls cost ~1% register share); then `CTCInventoryMap* inventory_map = 0;` in the loop (retail `xor ecx,ecx`, 0x0061F0A9)
 // Leaf: ?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z
-// Inline-budget: #pragma inline_depth(0) round delete_action's CCountedPointer ctor, take_boast_entry, teleport_action, both zoom entries and the state-origin ConvertVector -- retail calls 0x0042AA29 / 0x00429C15 / 0x0042BE50 / 0x0052E580 there once its function-wide inline budget is spent (probe x4).
+// Inline-budget: #pragma inline_depth(0) round delete_action's CCountedPointer ctor, take_boast_entry, teleport_action, both zoom entries and the state-origin ConvertVector -- retail calls 0x0042AA29 / 0x00429C15 / 0x0042BE50 / 0x0052E580 there once its function-wide inline budget is spent (regime 0: pen ~ sz*(a+g)/18256 above a+g 9000; probe b1x3 reproduces all six with no device)
 #define FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CPARENTDEFCLASSBASE
@@ -56,6 +56,8 @@
 #define FABLE_RETAIL_CZOOMINGCOMPONENT_ZOOM
 #define FABLE_RETAIL_CBANKFILE_FINDINDEX
 #define FABLE_RETAIL_CGRAPHICDATABANK_BANKFILE
+#define FABLE_RETAIL_STLP_LIST_CREATE_CONSTRUCT
+#define FABLE_RETAIL_STLP_ALLOC_PROXY_REBIND
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "fable_string.h"
@@ -289,7 +291,8 @@ void CTCInventoryQuests::ConstructQuestListPC(CComponent* parent, const std::vec
                 CCharString script_name = quest_card->GetScriptQuestName();
                 CWideString boast_text;
                 bool any_boast = false;
-                for (std::list<CQuestManager::CBoast>::iterator boast = boasts.begin(); boast != boasts.end(); ++boast) {
+                std::list<CQuestManager::CBoast>::iterator boast = boasts.begin();
+                while (boast != boasts.end()) {
                     if (boast->ScriptName == script_name) {
                         boast_text += CWideString(L" - ");
                         boast_text += boast->Text;
@@ -309,6 +312,7 @@ void CTCInventoryQuests::ConstructQuestListPC(CComponent* parent, const std::vec
                         }
                         boast_text += CWideString(L"\n");
                     }
+                    ++boast;
                 }
                 if (any_boast) {
                     text = text_bank.GetTextBySymbol("TEXT_GUI_MENU_BOASTS");

@@ -28,3 +28,21 @@ Review at landing:
 - Landed CloseInventoryPC 0x00621720 calls CTCInventoryBase+0x20 "quest cards"; it is the base's Categories.
 - New shared headers engine/CTCInventoryQuests.h and engine/CQuestCardDef.h (hdr/README.md); enumerator names of QuestScreenType and
   EQuestCardPrerequisite are descriptive placeholders (naming queue).
+- (2026-11-09, 0x0061E6D0) Regime 0 (5027 tuples). The regime-0 caller-size penalty is pen ~ sz*(a+g)/18256 and only once a+g > 9000
+  (g = the caller's running inline size, 2473 at the first site, ~11000 at the end here); the inline trace (tools/inl) prints a, g,
+  pen, f and the score per site, which turns "retail spends more budget" into a number per site.
+- (2026-11-09, 0x0061E6D0) The two STLport 4.6 layers of chunk 883 (FABLE_RETAIL_STLP_LIST_CREATE_CONSTRUCT, ..._ALLOC_PROXY_REBIND)
+  add ~360 g by the take block of this row too and make the state-origin ConvertVector (0x00620F0A -> 0x0052E580) a call with no
+  device (sc 74 at g 9175); they are the natural first budget consumer for any row with CAction list push_backs.
+- (2026-11-09, 0x0061E6D0) `new T` puts T's constructor site at half the block frequency (the null test): CAction() at f 11.7 where
+  the CCountedPointer<CAction> of the same statement is at f 23.4.
+- (2026-11-09, 0x0061E6D0) A budget-only explanation must fit every site at once: retail calls the teleport CAction() (f 11.7 needs
+  a+g >= ~12900) but expands pop_action's CCountedPointer ~1000 g earlier (needs a+g < ~9300) -- infeasible, which pointed at the
+  site frequency: the take block follows the boast `for` loop and inherits its 5x (375 instead of 75).
+- (2026-11-09, 0x0061E6D0) `for (it = c.begin(); it != c.end(); ++it) {...}` -> `it = c.begin(); while (it != c.end()) { ...; ++it; }`
+  over a std::list is code-identical in VC7.1 (same rotation) and drops the code after the loop back to the outer frequency: the
+  take block 46.9 -> 9.4, which made the zoom entries and ConvertVector #2 calls and left a single consistent budget window
+  (Delta g 724..1385 before pop_action's CCountedPointer); 3 dummy inline statements in that window reproduce all six late out-of-line
+  sites with no inline_depth device (b1x3).
+- (2026-11-09, 0x0061E6D0) An inline_depth(0) region whose statement has inline argument code (`ConvertVector(misc_def->X)`) adds
+  calls that also move register allocation: removing it took regs+frame share from 97.03% to 98.05% (b2).

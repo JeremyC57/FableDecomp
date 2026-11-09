@@ -44,3 +44,32 @@
 - Rejected: switch for the type chain (783), `inventory_map = 0` in the loop (650: the loop-top zero registers go), boast compare
   spellings (no effect on the ecx/eax this/other swap), boast loop `++` in body, j-loop guard / do-while (identical).
 ## Current best: differ/0061e6d0.cpp DIFFER(12357v12356), sdiff 467. Next idea: see differ line 3.
+
+## Session 2026-11-09 (playbook all-means push)
+Regime 0 (5027 IL tuples). Inline-decision trace (tools/inl) maps the six device sites and gives each one's g / pen / f / score
+(TRACE.md Step 2).
+
+Leaderboard (LEADERBOARD.tsv):
+
+| variant | grade | calls (segments) | regs+frame share | note |
+|---|---|---|---|---|
+| base = differ (6 inline_depth(0) devices) | DIFFER(12357v12356) | 509 v 507 | 97.03% | current best |
+| nod (no devices) | DIFFER(12676v12356) | 507 v 507 (6 sites expanded) | 96.52% | reference |
+| s1 (nod + STLP_LIST_CREATE_CONSTRUCT + STLP_ALLOC_PROXY_REBIND) | DIFFER(12612v12356) | 508 | 96.91% | ConvertVector #2 called with no device |
+| s2 (base + both opt-ins - ConvertVector device) | DIFFER(12404v12356) | 508 | 97.00% | ConvertVector expanded again |
+| x2 / x3 (s1 + 2 / 3 dummy CAction pointers, diagnostic) | DIFFER(12704 / 12831) | - | - | 4 of the 6 late sites called |
+
+Update (same session): the teleport-site contradiction is the frequency rule. The take block follows the boast `for` loop, whose
+5x leaks after it; the boast loop as `while (boast != boasts.end()) { ...; ++boast; }` is code-identical and drops the take block
+from f 46.9 to 9.4 (TRACE.md Step 3).
+
+| variant | grade | calls | regs+frame share | note |
+|---|---|---|---|---|
+| b1 (s1 + while boast, no devices) | DIFFER(12516v12356) | 3 take-block sites expanded | 97.03% | zooms + ConvertVector called |
+| b1x3 (b1 + 3 dummy consumers, diagnostic) | DIFFER(12735v12356) | = retail + the dummies' own | 97.39% | all six late sites called, no device |
+| b2 (b1 + 3 take-block devices) | DIFFER(12519v12356) | zooms + ConvertVector expanded | 98.05% | the ConvertVector region's 2 extra calls cost ~1% |
+| b4 (base + while boast + opt-ins) = new differ | DIFFER(12357v12356) | 509 v 507 | 97.03% | byte-identical to base |
+
+Next lever: the budget consumer, Delta g in (723, 1385] before pop_action's CCountedPointer (b1 #458 at g 7596; delete's #519 at
+g 8258 must reach a+g > 9000), in retail-real header bodies or source (tools/inl/inl.sh + tools/late.py as the fitness, ~80 s);
+then drop all six inline_depth(0) regions, then the register residue.

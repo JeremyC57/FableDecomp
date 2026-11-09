@@ -12,3 +12,13 @@ Review at landing:
 - The differ source declares an explicit specialization of the CategoriesList tree's `clear()` to keep it out of line; consider a fable_map.h opt-in instead.
 - Already-landed sources with wrong names: 0x006166E0 (`CTCCarryable_OnKill`), 0x00615820 (`CUnproven*` types) -- NAME_FIXES.tsv.
 - hdr/ overlay: new CEngineGraphic.h, CAnimFilterBase.h, CAnimationSet.h, CAppearanceDef.h; opt-ins in 8 existing headers plus whole-file overlays of stlport/fable_containers.h and fable_map.h (hdr/README.md).
+- (2026-11-09) A callee-saved piece that loses to a higher-priority ebx-only value is cut by the split pass into one piece per
+  free region; a region with two references (the then-arm's two CreateComponent calls, w 2, K 7 and 8) scores 2*2*(7+8) - 6 = 54
+  and beats a counted pointer's Info (34) that is live across the second call -- one lone reference per region would be dropped.
+- (2026-11-09) Forcing by c2 id is ambiguous when ids are recycled (the piece u794 reuses id 195); force by creation ordinal
+  (tools/c2pf C2_FORCEUID) and check both sides of the pair inequality: raising the winner's rival or lowering the piece gave the
+  same 99.03% / 8 segments, which proves a pairwise lever, not a global one.
+- (2026-11-09) `if (it != end()) do { ...; ++it; } while (it != end());` is not a code-identical twin of `for` in VC7.1: the for
+  keeps the `jmp cond` + aligned body rotation, and the do-while expanded the tree ++it (0x0047B3E0) at the default threshold.
+- (2026-11-09) Moving a counted pointer's default declaration above a call moves its `Data = Info = 0` stores above the call
+  (c2 does not sink them): declaration position is code, not just scope.

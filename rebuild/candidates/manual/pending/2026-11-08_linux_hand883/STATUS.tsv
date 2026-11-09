@@ -1,2 +1,2 @@
 address	status	bytes	test	note
-006096e0	DIFFER	12832v12832	PASS	CTCInventoryMap::ConstructLogbookListPC; ~60 grades; /d2inlT71 (590 calls in retail order); 17 of 591 call segments differ in allocator choices (const-0 / callee-saved pieces), frame 0x124 vs 0x11C
+006096e0	DIFFER	12832v12832	PASS	CTCInventoryMap::ConstructLogbookListPC; regime 0 (5571 tuples); /d2inlT71 kept (frequency rule re-checked: guarded do-while expands ++it and loses the for rotation); 16 of 591 call segments differ; lever proven by c2 what-if: prio(subtitleText.Info) >= 55 over the then-arm manager piece (54) gives frame 0x11C and 8 segments (const-0 pieces); natural spelling not found

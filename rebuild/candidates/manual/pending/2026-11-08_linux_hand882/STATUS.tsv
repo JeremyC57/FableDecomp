@@ -1,2 +1,2 @@
 address	status	bytes	test	note
-0x0061E6D0	DIFFER	12357v12356	-	differ/0061e6d0.cpp (probe v42): calls equal to retail with 6 inline_depth(0) budget stand-ins; register choice (const 0 / type / state_index), frame 0x42C v 0x41C; sdiff 467
+0x0061E6D0	DIFFER	12357v12356	-	differ/0061e6d0.cpp = probe b4 (base + `while` boast loop + STLport 4.6 opt-ins LIST_CREATE_CONSTRUCT / ALLOC_PROXY_REBIND; byte-identical to the previous best; 6 inline_depth(0) budget stand-ins; register choice; frame 0x424 v 0x41C). 2026-11-09: regime 0 (5027 tuples); diagnostic b1x3 reproduces retail's whole late call set with no device: the remaining lever is a caller-size consumer of 724..1385 g before pop_action (TRACE.md)

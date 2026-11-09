@@ -92,6 +92,15 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
   - Try loop and guard shapes before devices.
   - Branch frequencies: `if (a || b)` sends 0.75 down the then-path (even when `b` folds away), `a && b` 0.25, `else if` gives
     the fall-through 0.75, and a `while` containing another loop behaves like a `for`.
+  - Regime-0 caller-size penalty (0x0061E6D0 inline trace): pen ≈ sz·(a+g)/18256, applied only once a+g > 9000. g starts at
+    the caller's own size and grows with each expansion. Past 9000, a CCountedPointer site (c1 70) is called at frequency
+    ≈ 9.4; below it, only at f ≤ 0.714. A budget-only explanation must fit every site at once; if it can't, look for a
+    frequency difference instead.
+  - `new T` puts T's constructor at half the statement's frequency (the null test).
+  - `for` → `while` over a std::list is code-identical in VC7.1 and cools all code after the loop by 5x.
+  - Declaration position is code: moving a counted pointer's default declaration above a call moves its zero stores above it.
+  - When forcing a candidate in a what-if, address it by creation ordinal, not by c2 id (ids are recycled). Check both
+    sides of a pair inequality.
   - Callee cost is computed from the optimised callee, so header spellings cannot move it. Solve a call/expand split as a
     constraint system over the sites: hand890 s6/fmodel.py solved 0x0056AD40's 34 sites with no device.
 - **Regime 1:** cost = sz - sav0 - sav1 + pen - 10 (leaf) - 7 (inline-declared) + 4 (site flag 2); expanded iff cost < S.
