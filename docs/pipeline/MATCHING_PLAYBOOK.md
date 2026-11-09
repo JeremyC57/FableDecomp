@@ -47,6 +47,12 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
    - Compile serially and keep a leaderboard. Full-grade only improvements, then combine the winners.
    - Before keeping an odd spelling, look for the natural C++ with the same IL, and comment the retail address it fixes.
 
+7. **Keep authoring.** Most of what closed Action, DrawRetailDisplay and CTCBoastUI::Activate came from writing natural
+   alternatives of a region and compiling them, many per hour: a retail-plausible rewrite (a helper, a different loop or
+   counter, another statement order, the engine's own accessors), not only one-token edits. Use the c2 probes to explain a
+   variant that moved something, or to rank candidates. Modelling with no source variant compiled for an hour is the signal to
+   switch back (owner, 2026-11-09: "needs to try some real authoring").
+
 ## 2. Rules measured in c2 (all VC7.1 13.10.3077)
 
 ### Register priority and choice
