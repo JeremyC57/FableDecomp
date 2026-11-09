@@ -54,3 +54,12 @@ site of 0x0041E6D3 (CComponent 0x00429C15 x25, CAction 0x0042AA29 x17, CTexture 
 declaration-only spelling gives the same calls but exposes each object's address above c2's 10000-tuple limit, so LOAD_PHOTO's
 texture got its own slot (-3C8h) instead of retail's shared -268h and the frame was 0x808; the visible, non-expanded body keeps the
 object tracked: frame 0x800 = retail, ebx = 8 in LOAD_PHOTO as retail (ATTEMPTS v24).
+
+## Session 8 (2026-11-09)
+- fable_string.h, FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER: the helper branch of `CWideString::operator==(const wchar_t*)` now has
+  the default branch's shape, `if(!PStringData) { if(GFStringsAreEqual(text, L"")) return true; return false; } return *PStringData==text;`
+  (was `return GFStringsAreEqual(text, L"");` on the null block). With it the non-null arm sits after the next jump and jumps back
+  to the caller's test, as retail does at 0x00424F4A -> 0x00424EC7 and 0x004262A0 -> 0x00426260 (variants q1..q7, TRACE.md).
+  Default path unchanged.
+- engine/CMainGameComponent.h: a scratch opt-in (FABLE_RETAIL_CMAINGAMECOMPONENT_SCOPED_PLAYERMANAGER) was tried and removed; the
+  header is as in session 7.

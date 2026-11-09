@@ -26,6 +26,9 @@ namespace NGameText { class CDataBank; }
 class CFontBank;
 #endif
 class CMainGameComponentInit;
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
+class CGameEvent;
+#endif
 class CMainGameComponent : public CGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;
@@ -83,17 +86,34 @@ public:
     // ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ, out of line in retail (the jmp thunk 0x00415FBC
     // every caller calls, the only spelling bound there). A declaration only: no layout or vtable change.
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
+    // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): Ego_r.pdb / FableWin.pdb
+    // ?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z (out of line, 0x0041649C).
+    void AddGameEvent(const CGameEvent& event);                     // 0x0041649C
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
     // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
     // (0x018846C0; inline in Ego_r and retail: the caller reads the scoped_ptr word +0x1C in place, 0x00775B4B). PPlayerManager
     // stays opaque here (boost::scoped_ptr<CPlayerManager>, one pointer word), read as that word.
     const CPlayerManager& PeekPlayerManager() const { return **reinterpret_cast<CPlayerManager* const*>(PPlayerManager); }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER
+    // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb
+    // ?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ (0x0187F010), inline in retail: the caller reads the
+    // scoped_ptr word +0x1C in place and calls the non-const CPlayerManager::GetMainPlayer 0x00449970 (`mov ecx,[esi+1Ch]`).
+    CPlayerManager& GetPlayerManager() { return **reinterpret_cast<CPlayerManager* const*>(PPlayerManager); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD
     // Nested opt-in (chunk 755, row 0x0090C540 CAIStateGroup_MinionGuardFollowPlayer::Update): FableWin.pdb
     // ?PeekWorld@CMainGameComponent@@QBEABVCWorld@@XZ (0x0187EFF0; inline in Ego_r and retail: the caller reads the scoped_ptr word
     // +0x24 in place, 0x0090C55D). PWorld stays opaque here (boost::scoped_ptr<CWorld>, one pointer word), read as that word.
     const CWorld& PeekWorld() const { return **reinterpret_cast<CWorld* const*>(PWorld); }
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GETWORLD
+    // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb ?GetWorld@CMainGameComponent@@QAEAAVCWorld@@XZ
+    // (0x018A3A80), inline in retail: the caller reads the scoped_ptr word +0x24 in place and calls the non-const
+    // CWorld::ResetToFrontEnd 0x0049DCC0 (`mov ecx,[esi+24h]`, 0x0041F8A9).
+    CWorld& GetWorld() { return **reinterpret_cast<CWorld* const*>(PWorld); }
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
     // Retail opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Ego_r.pdb
@@ -102,12 +122,6 @@ public:
     // landed CTCChest::DisplayLockedMessage 0x00750110 model). The members stay opaque (CCountedPointer: object word first).
     const NGameText::CDataBank& GetTextBank() const { return **reinterpret_cast<NGameText::CDataBank* const*>(PTextBank); }
     const CFontBank& PeekCutSceneMainFont() const { return **reinterpret_cast<CFontBank* const*>(PCutSceneMainFont); }
-#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK_INITIALISED
-    // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay, which expands CProgressDisplay::GetPTextBank):
-    // FableWin.pdb ?IsTextBankInitialised@CMainGameComponent@@QBE_NXZ (0x018B4730), inline in retail (0x00499364 tests the PTextBank
-    // object word +0x14 in place). PTextBank stays opaque (CCountedPointer: object word first).
-    bool IsTextBankInitialised() const { return *reinterpret_cast<NGameText::CDataBank* const*>(PTextBank) != 0; }
-#endif
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE
     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb

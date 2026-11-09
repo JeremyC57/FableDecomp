@@ -101,6 +101,9 @@ private:
     void _M_empty_initialize(){this->_M_header._M_data->_M_color=false;this->_M_header._M_data->_M_parent=0;this->_M_header._M_data->_M_left=this->_M_header._M_data;this->_M_header._M_data->_M_right=this->_M_header._M_data;}
 public:
     ~_Rb_tree(){clear();}
+#ifdef FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN
+    FABLE_FORCEINLINE   // with map::begin below
+#endif
     iterator begin(){return iterator(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_left));}
     const_iterator begin()const{return const_iterator(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_left));}
     iterator end(){return iterator(this->_M_header._M_data);}
@@ -151,15 +154,7 @@ private:
         return y;
     }
 public:
-#ifdef FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE
-    // Retail opt-in (chunk 890, row 0x00551EA0 NUISystem::CTable::ConstructSpritesToDraw): owner decision D1 (2026-11-03) for the
-    // non-const twin -- STLport 4.6.1 _tree.h 457-467 `template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }`
-    // under _STLP_MEMBER_TEMPLATES. Retail calls the map<ETableSprites,CCountedPointer<CComponent> > instance out of line (0x00553520,
-    // `push &key ; push &result ; call`, hidden iterator result) at three sites and expands it at the others. Same body.
-    template<class KT> iterator find(const KT& key){return iterator(_M_find(key));}
-#else
     iterator find(const K& key){return iterator(_M_find(key));}
-#endif
     pair<iterator,bool> insert_unique(const V&);
     iterator insert_unique(iterator,const V&);
     Compare key_comp()const{return _M_key_compare;}
@@ -276,6 +271,11 @@ public:
     explicit map(const Compare& c,const A& a=A()):_M_t(c,a){}
 #else
     explicit map(const Compare& c=Compare(),const A& a=A()):_M_t(c,a){}
+#endif
+#ifdef FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN
+    // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): PLAY_SOUND expands map::begin and the tree
+    // begin under it at 0x00426AF8 (`mov eax,[edi] ; mov ecx,[eax+8]`) past VC7.1's caller-size inline budget.
+    FABLE_FORCEINLINE
 #endif
     iterator begin(){return _M_t.begin();}
     const_iterator begin()const{return _M_t.begin();}

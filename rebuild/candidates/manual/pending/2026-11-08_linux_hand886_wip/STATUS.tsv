@@ -1,2 +1,2 @@
 address	status	bytes	test	note
-0041e6d3	DIFFER	35702v35651	-	NUISystem::CManager::Action; session 7 merged Codex fixes a..e into v23 (code = Codex checkpoint): frame 0x800 = retail; m3 exact 79.3%, regs-masked 83.6%, regs+frame-masked 98.6%; cmp difflib 93.0%; residue = entry register roles, regime-1 slot order, cross-jump tail direction; see WORKLOG.md Session 7
+0041e6d3	RELOCATION_MATCH	35651v35651	PASS	NUISystem::CManager::Action; session 8: enregistered-global Get() sites, call-order/argument spellings, CWideString == overlay shape, exit-edge order (CLOSE_TELEPORT_MENU falls into default:, CHEAT_MORALITY returns); q.py + gall.sh RELOCATION_MATCH; test PASS under g++ and VC7.1

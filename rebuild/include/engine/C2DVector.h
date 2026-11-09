@@ -18,6 +18,12 @@ class C2DVector {
 public:
     float X,Y;
     C2DVector() { }
+#ifdef FABLE_RETAIL_C2DVECTOR_FORCEINLINE_CTOR
+    // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): that TU expands this constructor at all four sites
+    // (0x00422EFE, 0x00422F18, 0x00426C27, 0x00426C5A: `fldz ; mov [Y],imm ; fstp [X]`) past VC7.1's caller-size inline budget,
+    // which calls a plain-inline copy there.
+    FABLE_FORCEINLINE
+#endif
     C2DVector(float x,float y) : X(x),Y(y) { }
     C2DVector(const C2DVector& p) : X(p.X),Y(p.Y) { }
 #ifdef FABLE_RETAIL_C2DVECTOR_INITIALISE
@@ -87,6 +93,12 @@ class C2DVector {
 public:
     float X,Y;
     C2DVector() { }
+#ifdef FABLE_RETAIL_C2DVECTOR_FORCEINLINE_CTOR
+    // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): that TU expands this constructor at all four sites
+    // (0x00422EFE, 0x00422F18, 0x00426C27, 0x00426C5A: `fldz ; mov [Y],imm ; fstp [X]`) past VC7.1's caller-size inline budget,
+    // which calls a plain-inline copy there.
+    FABLE_FORCEINLINE
+#endif
     C2DVector(float x,float y) : X(x),Y(y) { }
     C2DVector(const C2DVector& p) : X(p.X),Y(p.Y) { }
     C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }

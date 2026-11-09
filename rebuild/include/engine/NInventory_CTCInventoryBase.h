@@ -28,6 +28,24 @@ public:
 };
 }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA
+// chunk 886 (row 0x0041E6D3 NUISystem::CManager::Action): NInventory::CPerItemData (Ego_r.pdb, 40 bytes there; native offsets
+// below with the 12-byte STLport vector), returned by ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z
+// (0x005BE8D3; LOAD_WEAPON_MENU_ENTRY_NAME reads ->Augmentations at +0).
+#include "stlport/fable_containers.h"
+namespace NInventory {
+class CPerItemData {
+public:
+    std::vector<long> Augmentations;                    // +0x00
+    long NumberOfKills;                                 // +0x0C
+    long TimeWielded;                                   // +0x10
+    long BestTrophyWitnessesAheadToDate;                // +0x14
+    bool QuestPersistent;                               // +0x18
+    long QuestPersistentRefCount;                       // +0x1C
+    float BestFishWeight;                               // +0x20
+};
+}
+#endif
 // Layout: original donor328, native304 after the six vector reductions.
 // Every original data member is retained; unused composite fields keep their
 // original names and complete native storage. Native map secondary base is130.
@@ -44,6 +62,15 @@ class CCategory;
 class CTCInventoryBase : public CTCBase {
 public:
  long GetBoughtPrice(long) const; // original const member, native005bead5
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ISOPEN
+ // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): Ego_r.pdb / FableWin.pdb
+ // ?IsInventoryOpen@CTCInventoryBase@NInventory@@QBE_NXZ, inline in retail (the caller tests InventoryOpen +0x58 in place:
+ // `cmp byte ptr [ecx+58h],0`, 0x0041F5DF / 0x0041F641, before BuyItemPC / SellItemPC). No layout change.
+ bool IsInventoryOpen() const { return InventoryOpen; }
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA
+ const CPerItemData* GetPerItemDataForItem(long itemDefIndex) const;   // 0x005BE8D3
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_BUILDINGTHING
  // Retail opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC): Ego_r.pdb + FableWin.pdb
  // ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ, out of line in retail at 0x005BC4C4 (`mov eax,[ecx+0B8h]`:

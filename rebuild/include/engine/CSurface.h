@@ -1,6 +1,7 @@
 #ifdef FABLE_RETAIL_CSURFACE
 #ifndef FABLE_ENGINE_CSURFACE_H
 #define FABLE_ENGINE_CSURFACE_H
+#include "fable_compiler.h"
 struct IDirect3DSurface9;
 // Layout: original size16; real virtual destructor, fields4/8/12. Last pointer is not initialized by default ctor.
 class CSurface {
@@ -11,6 +12,11 @@ public:
  // GetSurfaceLevel temporary is destroyed in place: vtable 0x0122F84C stored, then ?Uninitialise@CSurface@@QAEXXZ 0x009F2E20
  // called; no out-of-line ??1CSurface is bound) and Ego_r.pdb ?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0ABVCPixelFormat@@JK@Z
  // (0x009F4390, six arguments: destination box, source pixels, source box, source format, source pitch, colour key).
+#ifdef FABLE_RETAIL_CSURFACE_FORCEINLINE_DTOR
+ // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the GetSurfaceLevel temporary of LOAD_PHOTO is destroyed in
+ // place at 0x00426747 (vtable stored, Uninitialise 0x009F2E20 called) past VC7.1's caller-size inline budget, which calls ??1CSurface there.
+ FABLE_FORCEINLINE
+#endif
  virtual ~CSurface() { Uninitialise(); }
  void CopyFromMemory(const class C2DBoxI* destRect, const void* source, const class C2DBoxI* sourceRect,
                      const class CPixelFormat& sourceFormat, long sourcePitch, unsigned long colourKey);   // 0x009F4390

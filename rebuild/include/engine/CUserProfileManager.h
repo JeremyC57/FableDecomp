@@ -18,6 +18,50 @@ class CUserProfileManager {
 public:
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
     void ProcessPendingTutorials();                                      // 0x0040BB30
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
+    // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in
+    // retail, FableWin.pdb / Ego_r.pdb spellings (?SetGamma@CUserProfileManager@@QAEXM_N@Z ...; the second bool is "use the new
+    // profile's copy", false from every UI action). Declarations only.
+    void SetSubtitlingEnabled(bool, bool);                               // 0x0040AF90
+    void SetVibrationEnabled(bool, bool);                                // 0x0040AFD0
+    void SetCameraXYInverted(bool, bool);                                // 0x0040B010
+    void SetCameraYZInverted(bool, bool);                                // 0x0040B050
+    void SetTutorialSystemEnabled(bool, bool);                           // 0x0040B210
+    void SetGuildMasterEnabled(bool, bool);                              // 0x0040B250
+    void SetHUDTooltipEnabled(bool, bool);                               // 0x0040B290
+    void SetGamma(float, bool);                                          // 0x0040B2D0
+    void SetHUDAlpha(float, bool);                                       // 0x0040B310
+    void SetMusicVolume(float, bool);                                    // 0x0040B350
+    void SetSoundVolume(float, bool);                                    // 0x0040B390
+    void SetDialogueVolume(float, bool);                                 // 0x0040B3D0
+    void SetUsingHeadPhones(bool, bool);                                 // 0x0040B410
+    void SetShowingBuddyNames(bool, bool);                               // 0x0040B450
+    void SetShowTargetingStatus(bool, bool);                             // 0x0040B490
+    void SetAntialiasing(unsigned long, bool);                           // 0x0040B4D0
+    void SetCameraResetting(bool, bool);                                 // 0x0040B510
+    void SetCameraSensitivity(float, bool);                              // 0x0040B550
+    void SetShadowDetail(float, bool);                                   // 0x0040B590
+    void SetTextureDetail(float, bool);                                  // 0x0040B5D0
+    void SetMeshDetail(float, bool);                                     // 0x0040B610
+    void SetEffectsDetail(float, bool);                                  // 0x0040B650
+    void SetResolution(unsigned long, bool);                             // 0x0040B690
+    void SetRefreshRate(unsigned long, bool);                            // 0x0040B6D0
+    void SetScreenAspectRatio(unsigned long, bool);                      // 0x0040B710
+    void SetVerticalSyncEnabled(bool, bool);                             // 0x0040B750
+    void SetCameraBowYZInverted(bool, bool);                             // 0x0040D2F0
+    void Save();                                                         // 0x0040A740
+    void Apply();                                                        // 0x0040BC80
+    void SetDefaultValuesGameplay();                                     // 0x00408360 (RESTORE_DEFAULTS_GAMEPLAY 0x004210DF)
+    void SetDefaultValuesAudio();                                        // 0x004083B0 (RESTORE_DEFAULTS_AUDIO 0x0042116A)
+    // FableWin.pdb ?SetNewProfileToUseWASD@CUserProfileManager@@QAEX_N@Z and ?WereVideoChangesAccepted@CUserProfileManager@@QBE_NXZ,
+    // inline in retail (Action writes the byte +0x78 in place, 0x004212B3, and tests the byte +0x13C, 0x0042151E). The members
+    // (Ego_r.pdb NewProfileToUseWASD +0x80 / VideoChangesAccepted +0x140, retail -8 / -4 after the 12-byte STLport vectors) stay
+    // opaque in this opt-in, so the accessors read their bytes.
+    void SetNewProfileToUseWASD(bool use) { reinterpret_cast<bool*>(this)[0x78] = use; }
+    bool WereVideoChangesAccepted() const { return reinterpret_cast<const bool*>(this)[0x13c]; }
+    void SetDefaultValuesVideo();                                        // 0x004093E0
+    void CaptureBackBufferForUIBackground();                             // 0x00406CC0
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
     // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
     // ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ, out of

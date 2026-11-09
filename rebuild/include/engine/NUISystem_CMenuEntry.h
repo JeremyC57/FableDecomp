@@ -17,14 +17,14 @@ public:
     CMenuEntry(const CMenuEntry&);
     virtual ~CMenuEntry();
     void GetDataFromDef();                                          // 0x0053DA30
-#ifdef FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS
-    // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): the first two virtuals CMenuEntry introduces after CClickable's
-    // last slot (149 OnRightUnclicked), in vtable order (rtti-vtables CMenuEntry 0x0124662C: slot 150 0x0053DCD0, 151 0x0053DD50;
-    // labels: AddThingActionParam / AddUIActionParam): Ego_r.pdb / FableWin.pdb ?AddThingActionParam@CMenuEntry@NUISystem@@UAEXJ@Z and
-    // ?AddUIActionParam@CMenuEntry@NUISystem@@UAEXPAVCActionParam@2@@Z. Activate calls slot 151 as `call [edx+25Ch]` with the entry's
-    // own CActionParam base (+0x18, null-checked). Declarations only: no layout change.
-    virtual void AddThingActionParam(long param);                   // 150 0x0053DCD0
-    virtual void AddUIActionParam(CActionParam* param);             // 151 0x0053DD50
+#ifdef FABLE_RETAIL_CMENUENTRY_ACTION
+    // Retail opt-in (chunk 886, row 0x0041E6D3 CManager::Action): FableWin.pdb ?IsMenuEntryAvailable@CMenuEntry@NUISystem@@QBE_NXZ,
+    // inline in retail (LOAD_WEAPON_MENU_ENTRY_NAME 0x004242A8 tests +0x198 in place), and ?GSetForceProcessing@CMenuEntry@NUISystem@@SIX_N@Z,
+    // inline in retail (WIELD 0x0041E7A6 / SCROLL_PHOTO_UP 0x00426571 store the byte 0x013B8AA8 in place). The static's own name is
+    // not in the name sets (GForceProcessing is descriptive). No layout change.
+    bool IsMenuEntryAvailable() const { return IsAvailable; }
+    static void FABLE_FASTCALL GSetForceProcessing(bool force) { GForceProcessing = force; }
+    static bool GForceProcessing;                                   // 0x013B8AA8
 #endif
 protected:
     float LastInputTime;                                            // +0x194

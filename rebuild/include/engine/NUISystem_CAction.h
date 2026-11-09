@@ -23,6 +23,12 @@ public:
     CAction();                                                              // 0x0042BE50
     void AddParam(CActionParam* param);                                     // 0x0053FDB0
     void AddParam(CActionParam* param, CCountedPointer<CAction>& self);     // 0x0053FDE0
+#ifdef FABLE_RETAIL_CACTION_ISVALID
+    // chunk 886 (row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb ?IsValid@CAction@NUISystem@@QAE_NXZ (non-const), inline
+    // in retail: the dispatcher's entry test reads it through a byte register (0x0041E6EE `mov al,[eax+0Ch]; test al,al`), the
+    // inline bool-getter shape, where a direct `!action->Valid` test compiles to `cmp byte ptr [eax+0Ch],0`.
+    bool IsValid() { return Valid; }
+#endif
     EActionType ActionType;                                                 // +0x00
     std::list<CActionParam*> UIActionParams;                                // +0x04
     std::list<long> ThingActionParams;                                      // +0x08

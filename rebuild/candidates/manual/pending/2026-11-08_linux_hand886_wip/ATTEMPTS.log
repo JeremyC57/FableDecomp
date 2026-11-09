@@ -34,3 +34,73 @@ v25  DIFFER    35698v35651 /GS  (Codex fix b: CTCInventoryTrade* inventory = PIn
 v26  DIFFER    35696v35651 /GS  (Codex fix c: CActionParamSLONG* count for BUY_BULK / SELL_BULK -> retail push dword [eax+8] (0x0041F5D8) instead of mov eax,[eax+8]; push eax (t7/odiff.py v25 v26: exactly those 2 sites); cmp difflib 93.0%; m3 72.8/77.0/98.5; frame 0x800; KEPT)
 v27  DIFFER    35696v35651 /GS  (Codex fix d: AUGMENT `NumberAugmentations <= 0` (unsigned) -> retail ja instead of jne (odiff: that 1 site); difflib 93.0% (9301); m3 72.8/77.0/98.6; KEPT)
 v28  DIFFER    35702v35651 /GS  (Codex fix e: PHOTO_CAPTION `CWideString text = caption->GetText(); OnCaptionEntered(text)` -> retail's re-lea of the text before the call (0x00426809); slot reshuffle: m3 exact 79.3 / regs 83.6 / r+f 98.6; difflib 93.0% (9302); code IDENTICAL to Codex checkpoint (t7/odiff.py v. cmp2/codex_action.obj: no hunk); KEPT -> src/)
+v29  (ev)      ASSIGN_SPELL_TO_ITEM_SLOT_PC: GetAbilityPDef()->ABXYPriority in the call (no named `ability`); m3 77.9/82.1/98.6 alone
+f1   (ev)      v28 + FABLE_RETAIL_STLP_TREE_CONSTFIND: MINIMAP `found` no longer address-exposed; m3 70.4/88.5; fmap 112; fit 409/587
+f2   (ev)      v29 + f1: m3 93.2/97.6/98.6; fmap 236/284; fit 535/587
+f3   (ev)      f2 + CHOOSE_CLAN const iterator& = begin(): bound temp weight 2; m3 85.4/89.8; rejected
+f4   DIFFER    35694v35651 /GS  (session 8: f2 + CHOOSE_CLAN `iterator first; first = params.begin();`: m3 93.6/98.1/98.6; fmap 277/284; fit 574/587; difflib 93.1%)
+f5   DIFFER    35694v35651 /GS  (f4 + ADD_CHILD_AUGMENTATION GetType/SetGraphicIndex per Reset arm (retail default edge skips it; cross-jumped): FRAME LAYOUT = RETAIL (fmap 284/284 slots, 1702/1716 refs); m3 94.0/98.5/98.6; difflib 93.1%)
+f6   (ev)      f5 + LOAD_PHOTO `photo->PTexture` written twice (no `CCountedPointer<CTexture>& photoTexture` reference): the CSE'd
+               address is not pointer-flagged (node+7 & 0x20) so /GS lets it share the dead [ebp+7Ch] param slot = retail 0x004266B2;
+               35688v35651; m3 94.0/98.5/98.6; fmap 284/284 (1704/1716 refs); fit 587/587; KEPT
+x1   (qc)      f6 + CLOSE_TELEPORT_MENU `return;` (not break): cross-jump survivor of the AddCloseInventoryEvent tail = retail
+               (CLOSE_MENU -> 0x41F79F, TELEPORT -> 0x41F7DA); 46 -> 44 differing cross-jumps (t8/xj.py)
+x2   DIFFER    35688v35651 /GS  (f6 + `return;` ending CLOSE_TELEPORT_MENU, LOAD, PLAY_MOVIE, SCROLL_ACTIVE_LIST_DOWN, CLOSE_FRAME,
+               UI_ACTION_LOAD_FILE_DESC: c2 lists the exit block's predecessors break-edges first, then return-edges, and
+               cross-jumping keeps the LAST matching predecessor (mini t8/mini/gen.py b3..); xj 46 -> 22; m3 94.2/98.6/98.7)
+x3a/x3b (qc)   CHANGE_ALPHA / SEND_BACK_EVENT `return;`: code identical to x2 (no effect)
+x4   DIFFER    35688v35651 /GS  (x2 + `case UI_ACTION_TYPE_GO_BACK:` sharing SEND_BACK_EVENT's SetEvent(UI_EVENT_BACK):
+               retail table 0x426fae entry 50 (value 273) -> 0x42306d; behaviour fix, xj 22 -> 14; difflib 93.2%;
+               m3 94.2/98.7/98.8; first diff ins 6 = the esi/edi swap (param ref vs game))
+d5 (diag)      x4 + 120 `g_diagSink[i] = game;` in the BACK case: 36352v35651, m3 99.2/99.3/99.3, xj 6, entry = retail.
+               Proves the only big residue is colouring order (game must be coloured before the CSE temp).
+e2 (qc)        x4 + `CPlayer& mainPlayer = game->GetPlayerManager().GetMainPlayer(); CThing* hero = mainPlayer.GetPControlledCreature();`
+               at the 36 hero chains: code identical to x4; shook: game prio 574 -> 682 (+3 per block: a named call result is one
+               more candidate in K); T 961. Lever direction confirmed, magnitude too small. e3 (+ `CPlayerManager& players`): no change.
+y1 (shook)     x4 + PPlayerManager as boost::scoped_ptr<CPlayerManager> (overlay opt-in) and `return *PPlayerManager;`: no prio change
+               (a trivial nested inline adds no candidate).
+g1 (qc)        x4 with every `game->` inside the switch spelled `CMainGameComponent::Get()->`: 35715v35651, m3 99.1/99.3/99.3, xj 6.
+               c2 enregisters the GLOBAL ?PMainGameComponent itself (kind 7 candidate, prio 1141 > the action.Ptr temp 958): esi.
+               `game` (now 3 refs) homed in [ebp-23Ch] (2 stores retail lacks).
+g2/g3 (qc)     g1 + PREVIOUS_SCREEN / DEACTIVATE_EDITBOX `CMainGameComponent::Get()` (g2: head unchanged, game dead after it;
+               g3: no `game` at all, `if (!CMainGameComponent::Get()) CFrontEndManager::GetInstance()->Action(action);`): identical
+               objects, 35692v35651, entry = retail (c2 itself reloads the global after the FrontEnd call, 0x0041E712).
+               gr.sh g3: DIFFER(35692v35651) difflib 98.6% (x4 93.2%). 28 global loads v retail 16: the 12 extra are the
+               GetMainPlayerNumber sites after the CGameEvent ctor call (a call kills the enregistered global; retail keeps esi).
+g4             x4 head (`game` local) + `game->` only at the 12 GetMainPlayerNumber sites (after `CGameEvent event(..)`), every other
+               `game->` spelled `CMainGameComponent::Get()->`: gr.sh DIFFER(35632v35651) difflib 98.7%; m3 99.2/99.3/99.3; xj 6.
+               `game` and the global share esi (copy `game = [global]`: no interference, the relation picks the global's register).
+g5 (qc)        g4 + CONSTRUCT_(PC_)STYLE_CARDS_LIST: `CActionParamSLONG* category/first/last` pointers, `->Value` read in the call
+               (retail 0x00421D94 `push dword [edx+8]`): hunks gone; 35630v35651
+g6/g7 (qc)     + MOVE_COMPONENT `CActionParamFloat* time` (Value read at the call, 0x004227FA `fld [edx+8]`) + CHANGE_ALPHA tests
+               and casts `*it` directly, no `CActionParam* param` local (retail reloads [ebx+8] and null-checks the CComponent cast,
+               0x00420C5D): 35641v35651, difflib 98.9%
+pa/pb/pc (qc)  POP_MAP_STATE `if (!moved) --state;` / `state - (moved ? 0 : 1)` / `moved ? state : --state`: no / worse / no
+pd (qc)        POP_MAP_STATE `if (moved) map->ChangeState(state); else map->ChangeState(state - 1);` = retail (c2 hoists the
+               common `mov eax,[edi]; mov ecx,edi` above the branch and cross-jumps `push esi; call`, 0x00420EE4)
+m1 (qc)        + PLAY_MOVIE `CActionParamString* movie = ...back();` (0x0041F90C loads the param before the pushes)
+s1 (qc)        + CTCInventory::GetThingSlotToSwap / GetComponentSlotToSwap (FableWin.pdb ?GetThingSlotToSwap@CTCInventory@@QAEJXZ,
+               ?GetComponentSlotToSwap@CTCInventory@@QAEPAVCComponent@NUISystem@@XZ) as the swapping call's arguments: an inline
+               call argument is evaluated before the GetAbilityPDef call (0x00422251): 35654v35651, difflib 99.0%
+s2 (qc)        + SCROLL_ACTIVE_LIST_UP/DOWN `C2DVector delta(0.0f, -/+25.0f);` named before the call (0x00422EFE builds the delta
+               first): 35644v35651, ins 9948v9948, m3 99.5/99.5/99.5, xj 4, difflib 99.0%. NEW BEST (t8/v/best_s2.cpp)
+q1..q5 (qc)    CWideString::operator==(const wchar_t*) spellings in a scratch overlay (t8/hx): `if(P) return *P==t; return GFS`,
+               `?:` both ways, a bool local, one level shallower (std::operator== direct): the non-null arm stays in line
+               (A `jmp join`, B falls in); w1/w2 (either FORCEINLINE off): called out of line. No change.
+q6/q7 (qc)     `if(!PStringData) { if(GFStringsAreEqual(text, L"")) return true; return false; } return *PStringData==text;`
+               (the landed default branch's shape with the helper in place of the wcscmp test): both == sites = retail
+               (B after the next jump, `jmp` back to the join test: 0x00424F4A, 0x004262A0); 35651v35651 bytes, ins 9948v9948,
+               m3 99.6/99.6/99.6, difflib 99.1%. Moved into hdr/fable_string.h (FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER branch).
+q6s (qc)       s2 source + updated overlay: 35651v35651, m3 99.6%, xj 4. NEW BEST (t8/v/best_q6s.cpp = s2 source).
+               Left: CHEAT_MORALITY / CHEAT_RENOWN long-tail survivor (retail keeps RENOWN's copy, ours MORALITY's).
+r1/r2 (qc)     RENOWN `return;` / MORALITY `return;`: the survivor also takes the short AddClose tail from CLOSE_TELEPORT_MENU
+               (xj 6 / 8). Mini t8/mini/gen5.py: with the short-tail survivor last, the long tail always stays in the EARLIER case.
+u1 (qc)        q6s + RENOWN `goto done;` with `done:;` after the switch: 35662v35651, m3 98.4, xj 175 -- the label alone reorders
+               cross-jumps across the function (u4: `default: goto done;` only, same 35662 / xj 175). RENOWN/MORALITY were retail.
+u2 (qc)        q6s + RENOWN `goto done;` with `done:` on `default:`: 35651v35651, m3 99.6, xj 6 -- MORALITY -> RENOWN now retail, but
+               RENOWN (edge after every return) takes the short AddClose tail from TELEPORT / CLOSE_MENU; CLOSE_TELEPORT -> CLOSE_MENU.
+u3 (qc)        q6s + CLOSE_TELEPORT_MENU `break;`: = u2 (RENOWN last of the breaks absorbs everything).
+w2 (qc)        q6s + CLOSE_TELEPORT_MENU falls into `default:` moved after it (edge after every return): = q6s (xj 4).
+w1 (qc)        w2 + CHEAT_MORALITY `return;`: RELOCATION_MATCH 35651v35651, m3 99.8 (rest = byte-identical float immediates
+               and the jump tables), xj 0. MATCH.
+final (gr.sh)  w1 + comments = src/0041e6d3.cpp: RELOCATION_MATCH 35651v35651 (gr.sh, gall.sh with the overlay).

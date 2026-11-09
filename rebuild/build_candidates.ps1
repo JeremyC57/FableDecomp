@@ -386453,6 +386453,14 @@ $catalog = @(
         TestSource = '00/49/CProgressDisplay_DrawRetailDisplay_00498490_test.cpp'
         PassPattern = '00498490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041e6d3'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_Action_0041e6d3.cpp'
+        TestSource = '00/41/NUISystemCManager_Action_0041e6d3_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0041e6d3_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

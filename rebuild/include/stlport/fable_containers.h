@@ -471,6 +471,13 @@ struct _List_iterator_base {
     void _M_decr() { _M_node=_M_node->_M_prev; }
 #endif
     bool operator==(const _List_iterator_base& y) const { return _M_node==y._M_node; }
+#if defined(FABLE_RETAIL_STLP_LIST_NOINLINE_NE) && defined(_MSC_VER)
+    // Per-TU inline opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): that TU calls the list iterator comparison
+    // out of line at all three of its sites (0x0041EAA3 / 0x0041EBD6 AUGMENT, 0x00420CED CHANGE_ALPHA -> COMDAT 0x0041C7C0) where
+    // VC7.1's caller-size inline budget would expand it; the end() in the same loop condition stays expanded, so an
+    // inline_depth region (per full-expression) cannot separate them.
+    __declspec(noinline)
+#endif
     bool operator!=(const _List_iterator_base& y) const { return _M_node!=y._M_node; }
 };
 template<class _Tp,class _Traits> struct _List_iterator : public _List_iterator_base {
@@ -487,7 +494,37 @@ template<class _Tp,class _Traits> struct _List_iterator : public _List_iterator_
 #ifdef FABLE_RETAIL_STLP_LIST
     _List_iterator& operator--() { this->_M_decr(); return *this; }
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_REVERSE
+    // Per-TU opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): STLport 4.6 _list.h postfix decrement (retail calls
+    // it out of line at 0x0042899B from the ADD_CHILD case).
+    _List_iterator operator--(int) { _List_iterator tmp=*this; this->_M_decr(); return tmp; }
+#endif
 };
+#ifdef FABLE_RETAIL_STLP_LIST_REVERSE
+// Per-TU opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): STLport 4.6 _iterator.h reverse_iterator, the part
+// list::rbegin() users need. operator* decrements a copy of `current` (`mov eax,[hdr+4] ; mov eax,[eax+8]`), operator++
+// decrements `current` itself; the action's last parameters are read as `*it`, `*++it` (0x0041F9B3 / 0x0041F9ED).
+template<class _Iterator> class reverse_iterator {
+protected:
+    _Iterator current;
+public:
+    typedef _Iterator iterator_type;
+    typedef typename _Iterator::reference reference;
+    typedef typename _Iterator::pointer pointer;
+    reverse_iterator() { }
+    explicit reverse_iterator(iterator_type x) : current(x) { }
+    reverse_iterator(const reverse_iterator& x) : current(x.current) { }
+    iterator_type base() const { return current; }
+    reference operator*() const { _Iterator tmp=current; return *--tmp; }
+    pointer operator->() const { return &(operator*()); }
+    reverse_iterator& operator++() { --current; return *this; }
+    reverse_iterator operator++(int) { reverse_iterator tmp=*this; --current; return tmp; }
+    reverse_iterator& operator--() { ++current; return *this; }
+    reverse_iterator operator--(int) { reverse_iterator tmp=*this; ++current; return tmp; }
+    bool operator==(const reverse_iterator& y) const { return current==y.current; }
+    bool operator!=(const reverse_iterator& y) const { return current!=y.current; }
+};
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
 // Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise): STLport 4.6 _iterator_base.h distance() / __distance() (const
 // reference arguments, the input-iterator loop on a copy of first), for list::size() below.
@@ -538,6 +575,14 @@ public:
     const_iterator begin() const { return const_iterator(this->_M_node._M_data->_M_next); }
     iterator end() { return iterator(this->_M_node._M_data); }
     const_iterator end() const { return const_iterator(this->_M_node._M_data); }
+#ifdef FABLE_RETAIL_STLP_LIST_REVERSE
+    typedef std::reverse_iterator<iterator> reverse_iterator;
+    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+    reverse_iterator rbegin() { return reverse_iterator(end()); }
+    const_reverse_iterator rbegin() const { return const_reverse_iterator(end()); }
+    reverse_iterator rend() { return reverse_iterator(begin()); }
+    const_reverse_iterator rend() const { return const_reverse_iterator(begin()); }
+#endif
     bool empty() const { return this->_M_node._M_data->_M_next==this->_M_node._M_data; }
     template<class Input> void insert(iterator position,Input first,Input last) { _M_insert_dispatch(position,first,last,__false_type()); }
     template<class Input> void _M_insert_dispatch(iterator position,Input first,Input last,const __false_type&) { for(;first!=last;++first) insert(position,*first); }

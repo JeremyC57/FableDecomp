@@ -1,9 +1,4 @@
 // NUISystem::CManager::Action(CCountedPointer<NUISystem::CAction>&) -- runs one UI action (the big action dispatcher)
-// Grade: DIFFER(35702v35651) -- session 7 = v23 + Codex fixes a..e (code identical to Codex's checkpoint): FRAME 0x800 = retail;
-// t7/m3.py exact 79.3% / regs-masked 83.6% / regs+frame-masked 98.6% of retail code instructions; cmp difflib 93.0%. Left: entry
-// register roles (retail edi = CAction* temp, esi = game; c2 colours CSE temp of action.Ptr before game and picks esi by table
-// order), the regime-1 frame-slot ORDER (density sort; 47 of 284 slots at retail's offset), cross-jump tail direction
-// (CLOSE_TELEPORT_MENU / CLOSE_MENU / OPEN_ABILITIES / CLOSE_ABILITIES; SCROLL_*; EXIT_LIVE_GUI_IF_LEAF). WORKLOG Session 7.
 // Leaf: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 // Flags: /GS
 // Inline-budget: scoped `#pragma inline_depth(0)` regions (one per statement retail calls out of line: list::begin 0x00429A85 x16 in
@@ -20,6 +15,7 @@
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_REVERSE
 #define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND   // MINIMAP's const find: retail calls 0x0042BEF2; a declaration-only twin exposes `found`
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -327,6 +323,10 @@ public:
     void SetThingToAssign(long thing) { ThingToAssign = thing; }                  // 0x0041CA31 when out of line
     void SetThingSlotToSwap(long slot) { ThingSlotToSwap = slot; }                // 0x0041CA3E
     void SetComponentSlotToSwap(NUISystem::CComponent* component) { PComponentSlotToSwap = component; }   // 0x0041CA52
+    // FableWin.pdb ?GetThingSlotToSwap@CTCInventory@@QAEJXZ / ?GetComponentSlotToSwap@CTCInventory@@QAEPAVCComponent@NUISystem@@XZ
+    // (inline in retail): read as call arguments they are evaluated before the GetAbilityPDef call (0x00422251).
+    long GetThingSlotToSwap() { return ThingSlotToSwap; }
+    NUISystem::CComponent* GetComponentSlotToSwap() { return PComponentSlotToSwap; }
     unsigned char _pad_0x130[0x134 - 0x130];
     long ThingToAssign;                                              // +0x134
     long ThingSlotToSwap;                                            // +0x138
@@ -372,6 +372,9 @@ public:
     void SetSpellToAssign(EHeroAbility spell) { SpellToAssign = spell; }          // 0x0041C965
     void SetSpellSlotToSwap(long slot) { SpellSlotToSwap = slot; }                // 0x0041C972
     void SetComponentSlotToSwap(NUISystem::CComponent* component) { PComponentSlotToSwap = component; }   // 0x0041C994
+    // FableWin.pdb ?GetSpellSlotToSwap@CTCInventoryAbilities@@QAEJXZ / ?GetComponentSlotToSwap@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@XZ
+    long GetSpellSlotToSwap() { return SpellSlotToSwap; }
+    NUISystem::CComponent* GetComponentSlotToSwap() { return PComponentSlotToSwap; }
     void AssignAbilitySwappingPC(EHeroAbility, unsigned long, long, NUISystem::CComponent*, NUISystem::CComponent*);   // 0x005F4519
     CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility) const;        // 0x005EDFD9
     unsigned char _pad_0x130[0x134 - 0x130];
@@ -581,6 +584,16 @@ void CManager::Action(CCountedPointer<CAction>& action)
         game = CMainGameComponent::Get();
     }
 
+    // `game` serves the front-end test above, PREVIOUS_SCREEN / DEACTIVATE_EDITBOX and the `event.Player` lines after a CGameEvent
+    // constructor call; every other site re-reads CMainGameComponent::Get(). c2 keeps the global itself in esi through the
+    // switch (retail re-reads it into esi at 0x0041E712 and uses esi in the cases), which a named local does not get: its
+    // priority sorts below the action pointer's. A call kills the register copy of the global, so the reads right after a
+    // CGameEvent constructor stay on `game` (one register through the copy).
+    //
+    // Exits: c2 cross-jumps identical case tails into one survivor chosen from the order of the exit edges -- `break` edges in
+    // source order, then `return` edges, then the edges into the `default:` label -- so the cases whose retail tail survives a
+    // later jumper end with `return;` (LOAD, PLAY_MOVIE, SCROLL_ACTIVE_LIST_DOWN, CLOSE_FRAME, LOAD_FILE_DESC, CHEAT_MORALITY)
+    // and CLOSE_TELEPORT_MENU falls into `default:`.
     switch (action->ActionType) {
     case UI_ACTION_TYPE_WIELD:
         if (ThingActionParams.size() > 0 && UIActionParams.size() > 0) {
@@ -666,22 +679,30 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CActionParamULONG* graphic = static_cast<CActionParamULONG*>(action->UIActionParams.front());
             CComponent* augmentationEntry = static_cast<CComponent*>(action->UIActionParams.back());
             CCountedPointer<CComponent> augmentation;
+            // The sprite check is in each arm: retail's no-free-slot edge (0x0041ECB5) skips it, and c2 cross-jumps the four
+            // copies into one tail after allocation.
             switch (PWeaponsInventory->GetFreeAugmentationSlotForWeapon(ThingActionParams.back())) {
             case 3:
                 augmentation.Reset(CreateComponent("PC_AUGMENTATION_ON_WEAPON_FOURTH_SLOT_TEMPLATE", false));
+                if (augmentation->GetType() == UI_TYPE_SPRITE)
+                    static_cast<CSprite*>(augmentation.Get())->SetGraphicIndex(graphic->Value);
                 break;
             case 2:
                 augmentation.Reset(CreateComponent("PC_AUGMENTATION_ON_WEAPON_THIRD_SLOT_TEMPLATE", false));
+                if (augmentation->GetType() == UI_TYPE_SPRITE)
+                    static_cast<CSprite*>(augmentation.Get())->SetGraphicIndex(graphic->Value);
                 break;
             case 1:
                 augmentation.Reset(CreateComponent("PC_AUGMENTATION_ON_WEAPON_SECOND_SLOT_TEMPLATE", false));
+                if (augmentation->GetType() == UI_TYPE_SPRITE)
+                    static_cast<CSprite*>(augmentation.Get())->SetGraphicIndex(graphic->Value);
                 break;
             case 0:
                 augmentation.Reset(CreateComponent("PC_AUGMENTATION_ON_WEAPON_FIRST_SLOT_TEMPLATE", false));
+                if (augmentation->GetType() == UI_TYPE_SPRITE)
+                    static_cast<CSprite*>(augmentation.Get())->SetGraphicIndex(graphic->Value);
                 break;
             }
-            if (augmentation->GetType() == UI_TYPE_SPRITE)
-                static_cast<CSprite*>(augmentation.Get())->SetGraphicIndex(graphic->Value);
             if (augmentation.Get()) {
                 weaponEntry->AddChildDynamically(augmentation);
                 if (augmentationEntry)
@@ -708,7 +729,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_TYPE_TAKE_BOAST:
         if (action->UIActionParams.size() > 0) {
-            CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             CActionParamULONG* questCard = static_cast<CActionParamULONG*>(action->UIActionParams.front());
             CActionParamString* boastName = static_cast<CActionParamString*>(action->UIActionParams.back());
             const CQuestManager::CBoast* boast = CQuestManager::Get().GetBoast(questCard->Value, boastName->Value.ToCharString());
@@ -999,6 +1020,9 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_CLOSE_TELEPORT_MENU:
         if (PPlayer)
             CLOSE_INVENTORY_EVENT(TCI_INVENTORY_MAP);
+        // Falls into `default:` (its edge is ordered after every `return;`): retail keeps this case's AddCloseInventoryEvent
+        // tail (0x0041F7DA) and TELEPORT, CLOSE_MENU (0x0041F79F) and CHEAT_RENOWN jump into it.
+    default:
         break;
     case UI_ACTION_TYPE_LOAD: {
         CActionParamULONG* file = static_cast<CActionParamULONG*>(UIActionParams.back());
@@ -1007,7 +1031,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         menu->PCSetToLoad(file->Value);
         if (CPlayerGui::Get().IsLiveGUIMode())
             CPlayerGui::Get().ToggleLiveGui();
-        break;
+        return;
     }
     case UI_ACTION_TYPE_SAVE: {
         CActionParamULONG* file = static_cast<CActionParamULONG*>(UIActionParams.back());
@@ -1017,7 +1041,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_QUIT_TO_FRONT_END:
-        game->GetWorld().ResetToFrontEnd();
+        CMainGameComponent::Get()->GetWorld().ResetToFrontEnd();
         break;
     case UI_ACTION_TYPE_CLOSE_PAUSE_MENU: {
         CTCInGameMenu* menu;
@@ -1025,11 +1049,14 @@ void CManager::Action(CCountedPointer<CAction>& action)
         menu->CloseInGameMenuViaGameEvent();
         break;
     }
-    case UI_ACTION_TYPE_PLAY_MOVIE:
-        GFPlayFullScreenXBoxMovie(static_cast<CActionParamString*>(action->UIActionParams.back())->Value.ToCharString(), 0x20);
-        break;
+    case UI_ACTION_TYPE_PLAY_MOVIE: {
+        // The parameter is loaded before the default-argument pushes (0x0041F90C); PLAY_SOUND jumps into this tail (0x0041F93E).
+        CActionParamString* movie = static_cast<CActionParamString*>(action->UIActionParams.back());
+        GFPlayFullScreenXBoxMovie(movie->Value.ToCharString(), 0x20);
+        return;
+    }
     case UI_ACTION_TYPE_CONSTRUCT_WEAPONS_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryWeapons* weapons;
         if (hero->GetTC(TCI_INVENTORY_WEAPONS, &weapons) && weapons) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1051,7 +1078,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_CLOTHING_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryClothing* clothing;
         if (hero->GetTC(TCI_INVENTORY_CLOTHING, &clothing) && clothing) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1115,7 +1142,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_ITEMS_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1241,7 +1268,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CLOSE_QUICK_ACCESS_MENU: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPPlayerCharacter();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPPlayerCharacter();
         CTCQuickAccessMenu* menu;
         hero->GetTC(TCI_QUICK_ACCESS_MENU, &menu);
         if (menu->IsActive() && !menu->IsQuitting())
@@ -1271,7 +1298,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         ++it; ++it;
         CActionParamULONG* ability = static_cast<CActionParamULONG*>(*it);
         CActionParamULONG* slot = static_cast<CActionParamULONG*>(action->UIActionParams.back());
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
             abilities->AssignAbility(ability->Value, slot->Value);
@@ -1279,14 +1306,14 @@ void CManager::Action(CCountedPointer<CAction>& action)
     }
     case UI_ACTION_TYPE_UNASSIGN_SPELL: {
         CActionParamULONG* slot = static_cast<CActionParamULONG*>(action->UIActionParams.back());
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
             abilities->UnAssignAbility(slot->Value);
         break;
     }
     case UI_ACTION_TYPE_RESET_ASSIGNED_SPELLS: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
             abilities->ResetAssignedAbilities();
@@ -1317,11 +1344,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_CHANGE_ALPHA: {
         long alpha = 0xff;
         for (std::list<CActionParam*>::iterator it = action->UIActionParams.begin(); it != action->UIActionParams.end(); ++it) {
-            CActionParam* param = *it;
-            if (param->ActionParamType == UI_ACTION_PARAM_TYPE_SLONG)
-                alpha = static_cast<CActionParamSLONG*>(param)->Value;
-            if (param->ActionParamType == UI_ACTION_PARAM_TYPE_COMPONENT) {
-                CComponent* component = static_cast<CComponent*>(param);
+            // `*it` in each test, no named parameter: retail reloads the element and null-checks the CComponent cast (0x00420C5D).
+            if ((*it)->ActionParamType == UI_ACTION_PARAM_TYPE_SLONG)
+                alpha = static_cast<CActionParamSLONG*>(*it)->Value;
+            if ((*it)->ActionParamType == UI_ACTION_PARAM_TYPE_COMPONENT) {
+                CComponent* component = static_cast<CComponent*>(*it);
                 CRGBColour colour = component->GetColour();
                 colour.A = (unsigned char)alpha;
                 component->ChangeColour(colour, 0.2f, false);
@@ -1333,7 +1360,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_POP_MAP_STATE: {
         CComponent* map = static_cast<CComponent*>(action->UIActionParams.front());
         CTCInventoryQuests* quests;
-        game->PeekPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY_QUESTS, &quests);
+        CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY_QUESTS, &quests);
         unsigned long state = quests->GetQuestPositionAndRemoveIt(action->ThingActionParams.front()) + 8;
         std::map<unsigned long, CUIState>::iterator it;
         it = map->GetStates().find(state);
@@ -1351,7 +1378,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
             }
             map->GetStates().clear();
             map->GetStates() = states;
-            map->ChangeState(moved ? state : state - 1);
+            // Two whole calls, not a ternary argument: c2 hoists their identical heads above the test (0x00420EE4) as retail.
+            if (moved)
+                map->ChangeState(state);
+            else
+                map->ChangeState(state - 1);
         }
         break;
     }
@@ -1404,7 +1435,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CLOSE_PC_BUY_TRADING_GOODS_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryTrade* trade;
         if (hero->GetTC(TCI_INVENTORY_TRADE, &trade) && trade)
             trade->CloseInventoryPC();
@@ -1534,7 +1565,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             SetChange((EChange)1);
         break;
     case UI_ACTION_TYPE_CLOSE_TRADE_MENU_IF_LEAF: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryTrade* trade;
         if (hero->GetTC(TCI_INVENTORY_TRADE, &trade) && !trade->PCurrentOpenTradeMenu) {
             CGameEvent event(0x1b);
@@ -1544,7 +1575,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_EXIT_LIVE_GUI_IF_LEAF: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory->IsInventoryOpen() && !inventory->CurrentOpenMenu)
             CPlayerGui::Get().ToggleLiveGui();
@@ -1602,7 +1633,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_PC_EXPERIENCE_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryStats* stats;
         if (hero->GetTC(TCI_INVENTORY_STATS, &stats) && stats) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1624,7 +1655,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_PC_PERSONALITY_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryStats* stats;
         if (hero->GetTC(TCI_INVENTORY_STATS, &stats) && stats) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1646,33 +1677,34 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_STYLE_CARDS_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
             std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
             CComponent* screen = static_cast<CComponent*>(*it);
             if (!screen->FindChild("STYLE_CARDS_LIST")) {
                 GetCorrectComponentInterface(static_cast<CComponent*>(*++it));
-                long category = static_cast<CActionParamSLONG*>(*++it)->Value;
-                long first = static_cast<CActionParamSLONG*>(*++it)->Value;
-                long last = static_cast<CActionParamSLONG*>(*++it)->Value;
-                inventory->ConstructStyleCardsScreen(category, first, last, screen);
+                // Parameter pointers, their Values read at the call: retail pushes `[reg+8]` there (0x00421D94).
+                CActionParamSLONG* category = static_cast<CActionParamSLONG*>(*++it);
+                CActionParamSLONG* first = static_cast<CActionParamSLONG*>(*++it);
+                CActionParamSLONG* last = static_cast<CActionParamSLONG*>(*++it);
+                inventory->ConstructStyleCardsScreen(category->Value, first->Value, last->Value, screen);
             }
         }
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_PC_STYLE_CARDS_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
             std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
             CComponent* screen = static_cast<CComponent*>(*it);
             if (!screen->FindChild("STYLE_CARDS_LIST")) {
                 GetCorrectComponentInterface(static_cast<CComponent*>(*++it));
-                long category = static_cast<CActionParamSLONG*>(*++it)->Value;
-                long first = static_cast<CActionParamSLONG*>(*++it)->Value;
-                long last = static_cast<CActionParamSLONG*>(*++it)->Value;
-                inventory->ConstructStyleCardsScreenPC(category, first, last, screen);
+                CActionParamSLONG* category = static_cast<CActionParamSLONG*>(*++it);
+                CActionParamSLONG* first = static_cast<CActionParamSLONG*>(*++it);
+                CActionParamSLONG* last = static_cast<CActionParamSLONG*>(*++it);
+                inventory->ConstructStyleCardsScreenPC(category->Value, first->Value, last->Value, screen);
             }
         }
         break;
@@ -1702,7 +1734,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
         CActionParamULONG* slot = static_cast<CActionParamULONG*>(*it);
         CComponent* entry = static_cast<CComponent*>(*++it);
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities && abilities->SpellToAssign) {
             if (!AssignmentSpellsSwapping)
@@ -1720,17 +1752,15 @@ void CManager::Action(CCountedPointer<CAction>& action)
         CComponent* entry = static_cast<CComponent*>(*++it);
         CTCInventory* inventory = 0;
         CTCInventoryAbilities* abilities = 0;
-        game->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY, &inventory);
+        CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY, &inventory);
         CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_HERO_ABILITIES, &abilities);
         if (inventory && abilities) {
             if (abilities->SpellToAssign) {
-                if (!AssignmentItemsExpressionsSwapping) {
-                    CDefPointer<const CHeroAbilityDef> ability = abilities->GetAbilityPDef(abilities->SpellToAssign);
-                    inventory->AssignThingPC(ability->ABXYPriority, slot->Value, entry);
-                } else {
-                    CDefPointer<const CHeroAbilityDef> ability = abilities->GetAbilityPDef(abilities->SpellToAssign);
-                    inventory->AssignThingSwappingPC(ability->ABXYPriority, slot->Value, inventory->ThingSlotToSwap, entry, inventory->PComponentSlotToSwap);
-                }
+                if (!AssignmentItemsExpressionsSwapping)
+                    inventory->AssignThingPC(abilities->GetAbilityPDef(abilities->SpellToAssign)->ABXYPriority, slot->Value, entry);
+                else
+                    inventory->AssignThingSwappingPC(abilities->GetAbilityPDef(abilities->SpellToAssign)->ABXYPriority, slot->Value,
+                                                     inventory->GetThingSlotToSwap(), entry, inventory->GetComponentSlotToSwap());
                 abilities->SpellToAssign = (EHeroAbility)0;
             } else if (inventory->ThingToAssign) {
                 if (!AssignmentItemsExpressionsSwapping)
@@ -1748,7 +1778,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
         CActionParamULONG* slot = static_cast<CActionParamULONG*>(*it);
         CComponent* entry = static_cast<CComponent*>(*++it);
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
             if (!AssignmentItemsExpressionsSwapping)
@@ -1767,7 +1797,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CActionParamSLONG* thing = static_cast<CActionParamSLONG*>(*it);
             CActionParamSLONG* slot = static_cast<CActionParamSLONG*>(*++it);
             CComponent* entry = static_cast<CComponent*>(*++it);
-            CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCInventory* inventory;
             if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
                 AssignmentItemsExpressionsSwapping = true;
@@ -1782,7 +1812,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_SET_EXPRESSION_ITEM_TO_ASSIGN_PC:
         if (action->UIActionParams.size() > 0) {
             CActionParamSLONG* thing = static_cast<CActionParamSLONG*>(*action->UIActionParams.rbegin());
-            CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCInventory* inventory;
             if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
                 AssignmentItemsExpressionsSwapping = false;
@@ -1796,7 +1826,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
         CActionParamULONG* slot = static_cast<CActionParamULONG*>(*it);
         CComponent* entry = static_cast<CComponent*>(*++it);
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
             abilities->UnAssignAbilityPC(slot->Value, entry);
@@ -1806,14 +1836,14 @@ void CManager::Action(CCountedPointer<CAction>& action)
         std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
         CActionParamULONG* slot = static_cast<CActionParamULONG*>(*it);
         CComponent* entry = static_cast<CComponent*>(*++it);
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory)
             inventory->UnAssignThingPC(slot->Value, entry);
         break;
     }
     case UI_ACTION_TYPE_RESET_ASSIGNED_SPELLS_PC: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
             abilities->ResetAssignedAbilitiesPC();
@@ -1844,9 +1874,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_MOVE_COMPONENT:
         if (action->UIActionParams.size() > 2) {
             std::list<CActionParam*>::iterator it = action->UIActionParams.end();
-            float time = static_cast<CActionParamFloat*>(*--it)->Value;
+            // Parameter pointers, Values read at the call (0x004227FA `fld [edx+8]`).
+            CActionParamFloat* time = static_cast<CActionParamFloat*>(*--it);
             CActionParam2DVector* delta = static_cast<CActionParam2DVector*>(*--it);
-            static_cast<CComponent*>(*--it)->ChangePositionDelta(delta->Value, time, false);
+            static_cast<CComponent*>(*--it)->ChangePositionDelta(delta->Value, time->Value, false);
         }
         break;
     case UI_ACTION_TYPE_SEND_EVENT:
@@ -1875,7 +1906,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CActionParamSLONG* spell = static_cast<CActionParamSLONG*>(*it);
             CActionParamSLONG* slot = static_cast<CActionParamSLONG*>(*++it);
             CComponent* entry = static_cast<CComponent*>(*++it);
-            CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCInventoryAbilities* abilities;
             if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities) {
                 AssignmentSpellsSwapping = true;
@@ -1894,7 +1925,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CActionParamSLONG* slot = static_cast<CActionParamSLONG*>(*++it);
             CComponent* entry = static_cast<CComponent*>(*++it);
             CTCInventoryAbilities* abilities = 0;
-            game->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_HERO_ABILITIES, &abilities);
+            CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_HERO_ABILITIES, &abilities);
             CTCInventory* inventory = 0;
             CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY, &inventory);
             if (abilities && inventory) {
@@ -1910,7 +1941,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_SET_SPELL_TO_ASSIGN_PC:
         if (action->UIActionParams.size() > 0) {
             CActionParamSLONG* spell = static_cast<CActionParamSLONG*>(*action->UIActionParams.rbegin());
-            CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCInventoryAbilities* abilities;
             if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities) {
                 AssignmentSpellsSwapping = false;
@@ -1921,7 +1952,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         }
         break;
     case UI_ACTION_TYPE_CONSTRUCT_EXPRESSIONS_LIST: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1943,7 +1974,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONSTRUCT_MAGIC_LIST_PC: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities) {
             std::list<CActionParam*>::reverse_iterator it = action->UIActionParams.rbegin();
@@ -1983,12 +2014,15 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_SCROLL_ACTIVE_LIST_UP: {
-        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(C2DVector(0.0f, -25.0f), 0.0f, false);
+        // The delta is built before GPreviousSelected.front() is read (0x00422EFE).
+        C2DVector delta(0.0f, -25.0f);
+        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(delta, 0.0f, false);
         break;
     }
     case UI_ACTION_TYPE_SCROLL_ACTIVE_LIST_DOWN: {
-        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(C2DVector(0.0f, 25.0f), 0.0f, false);
-        break;
+        C2DVector delta(0.0f, 25.0f);
+        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(delta, 0.0f, false);
+        return;
     }
     case UI_ACTION_TYPE_SCROLL_ACTIVE_LIST_UP_MAX:
         CList::GPreviousSelected.front()->ScrollToFirstChild();
@@ -2007,7 +2041,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         SetDescriptionScrollingToMax(false);
         break;
     case UI_ACTION_TYPE_TAVERN_GAME_BET_DOWN: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCGamePlayer* player = 0;
         hero->GetTC(TCI_GAME_PLAYER, &player);
         if (player->GetGame())
@@ -2015,7 +2049,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_TAVERN_GAME_BET_UP: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCGamePlayer* player = 0;
         hero->GetTC(TCI_GAME_PLAYER, &player);
         if (player->GetGame())
@@ -2023,6 +2057,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_SEND_BACK_EVENT:
+    case UI_ACTION_TYPE_GO_BACK:
         SetEvent(UI_EVENT_BACK);
         break;
     case UI_ACTION_TYPE_RESET_KEYS:
@@ -2038,7 +2073,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CLOSE_FRAME: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory && inventory->CurrentOpenMenu) {
             CGameEvent event(0x51);
@@ -2057,7 +2092,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 CMainGameComponent::Get()->AddGameEvent(event);
             }
         }
-        break;
+        return;
     }
     case UI_ACTION_TYPE_CLOSE_ACTIVE_TRADE_MENU: {
         CGameEvent event(0x53);
@@ -2066,7 +2101,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CONTINUE: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCQuestCompletionUI* completion;
         if (hero->GetTC(TCI_QUEST_COMPLETION_UI, &completion) && completion->IsActive() && !completion->IsQuitting())
             completion->Deactivate();
@@ -2898,7 +2933,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 text->SetValue(description, true, true);
             }
         }
-        break;
+        return;
     case UI_ACTION_LOAD_FILE_SAVEGAME_MINIMAP:
         if (action->UIActionParams.size() > 2) {
             std::list<CActionParam*>& params = action->UIActionParams;
@@ -2934,14 +2969,16 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_TYPE_CHEAT_MORALITY: {
         CActionParamFloat* fraction = static_cast<CActionParamFloat*>(action->UIActionParams.back());
-        CThing* hero = game->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroStats* stats;
         hero->GetTC(TCI_HERO_STATS, &stats);
         stats->SetMorality((long)(stats->GetMoralityMax() * fraction->Value));
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory))
             inventory->AddCloseInventoryEvent();
-        break;
+        // `return;` while CHEAT_RENOWN breaks: this case's jump into CLOSE_TELEPORT_MENU's tail is made before RENOWN's, so RENOWN
+        // keeps the shared GetTC + AddCloseInventoryEvent tail and this case jumps into it (0x0042650C jmp 0x00426A11), as retail.
+        return;
     }
     case UI_ACTION_TYPE_SCROLL_PHOTO_UP: {
         // Scroll the photo list by replaying the pad events with the list updated in between.
@@ -2991,22 +3028,21 @@ void CManager::Action(CCountedPointer<CAction>& action)
         std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
         CSprite* photo = static_cast<CSprite*>(static_cast<CComponent*>(*it));
         CSprite* preview = static_cast<CSprite*>(static_cast<CComponent*>(*++it));
-        CCountedPointer<CTexture>& photoTexture = photo->PTexture;
-        if (!photoTexture.Get()) {
+        if (!photo->PTexture.Get()) {
             CActionParamString* file = static_cast<CActionParamString*>(*++it);
             CCountedPointer<CTexture> texture(new CTexture);
             C2DExtentsI size(0x200, 0x200);
             texture->Initialise(size, 1, CPixelFormat(8, 8, 8, 8), 0, (ESurfacePool)1, false, false);
             bool loaded = texture->GetSurfaceLevel(0).LoadFromBitmapFileToPreallocatedSurface(file->Value, 3);
             if (loaded) {
-                photoTexture = texture;
+                photo->PTexture = texture;
                 preview->PTexture = texture;
             }
         }
         break;
     }
     case UI_ACTION_TYPE_PHOTO_CAPTION: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCPhotojournalCapture* capture;
         if (hero->GetTC(TCI_PHOTOJOURNAL_CAPTURE, &capture)) {
             CEditBox* caption = static_cast<CEditBox*>(static_cast<CComponent*>(action->UIActionParams.back()));
@@ -3016,7 +3052,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_DISCARD_PHOTO: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCPhotojournalCapture* capture;
         if (hero->GetTC(TCI_PHOTOJOURNAL_CAPTURE, &capture)) {
             capture->SetDiscardScreenshot(true);
@@ -3028,7 +3064,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         static_cast<CEditBox*>(static_cast<CComponent*>(action->UIActionParams.back()))->SetActive(true);
         break;
     case UI_ACTION_TYPE_SET_EDITBOX_VALUES: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory))
             inventory->SetEditBoxValues();
@@ -3042,7 +3078,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         bool keepValues = false;
         if (action->UIActionParams.size() != 0)
             keepValues = static_cast<CActionParamEBOOL*>(action->UIActionParams.back())->Value;
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (hero->GetTC(TCI_INVENTORY, &inventory))
             inventory->DeactivateAllEditBoxes(keepValues);
@@ -3056,7 +3092,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
     }
     case UI_ACTION_TYPE_CHEAT_RENOWN: {
         CActionParamFloat* fraction = static_cast<CActionParamFloat*>(action->UIActionParams.back());
-        CThing* hero = game->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroStats* stats;
         hero->GetTC(TCI_HERO_STATS, &stats);
         stats->ForceRenownLevelTo((long)(stats->RenownMaxLevel * fraction->Value));
@@ -3068,7 +3104,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_PLAY_SOUND:
         // Tutorial voice-over: stop whatever tutorial sound is still playing, then play this one once.
         if (!Restoring && action->UIActionParams.size() > 0) {
-            CThing* hero = game->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCInventoryExperience* experience;
             hero->GetTC(TCI_INVENTORY_EXPERIENCE, &experience);
             CCharString sound = static_cast<CActionParamString*>(action->UIActionParams.front())->Value.ToCharString();
@@ -3086,7 +3122,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             PQuestInventory->TakeQuest(action->ThingActionParams.back());
         break;
     case UI_ACTION_TYPE_CLOSE_BOAST_MENU: {
-        CThing* hero = game->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCBoastUI* boastUI;
         if (hero && hero->GetTC(TCI_BOAST_UI, &boastUI))
             boastUI->Deactivate();
@@ -3103,12 +3139,13 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_CHOOSE_CLAN: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         if (hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard)) {
             std::list<CActionParam*>& params = action->UIActionParams;
+            std::list<CActionParam*>::iterator first;   // assigned, not initialised: begin() returns into its own temporary
 #pragma inline_depth(0) // inline budget: retail 0x00426CD4 calls list::begin out of line
-            std::list<CActionParam*>::iterator first = params.begin();
+            first = params.begin();
 #pragma inline_depth()
             CActionParamString* clan = static_cast<CActionParamString*>(*first);
             CComponent* entry = static_cast<CComponent*>(action->UIActionParams.back());
@@ -3118,7 +3155,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_SCOREBOARD_OK: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         if (hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard))
             scoreboard->OnOkClicked();
@@ -3131,14 +3168,12 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_EXIT_PHOTOJOURNAL_CAPTURE: {
-        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCPhotojournalCapture* capture;
         if (hero->GetTC(TCI_PHOTOJOURNAL_CAPTURE, &capture) && capture)
             capture->ClosePhotojournalCapture();
         break;
     }
-    default:
-        break;
     }
 }
 

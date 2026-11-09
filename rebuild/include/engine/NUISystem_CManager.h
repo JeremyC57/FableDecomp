@@ -43,6 +43,16 @@ public: CCountedPointer<CGraphicDataBank> GetGraphicsBank() { return PGraphicsBa
 // out of line at 0x0041D1B4 (hidden result).
 public: CCountedPointer<CMeshDataBank> GetMeshBank();
 public: NUISystem::CComponent * CreateTickSlider(const CWideString &,const C2DCoordI &,long,long,const CRGBFloatColour &,float,float,bool,bool,const CRGBFloatColour &,float);
+#ifdef FABLE_RETAIL_CMANAGER_ACTION
+// Nested opt-in (chunk 886, row 0x0041E6D3 CManager::Action): Ego_r.pdb / FableWin.pdb
+// ?GetCorrectComponentInterface@CManager@NUISystem@@QAEPAVCComponent@2@PAV32@@Z, out of line at 0x0041CD93 (28 calls from Action).
+// Declaration only: no layout or vtable change.
+public: NUISystem::CComponent * GetCorrectComponentInterface(NUISystem::CComponent *);
+    // FableWin.pdb ?SetDescriptionScrollingOffset@CManager@NUISystem@@QAEXM@Z / ?SetDescriptionScrollingToMax@CManager@NUISystem@@QAEX_N@Z,
+    // out of line (0x0041CF33 float +0xC4, 0x0041CF1F byte +0xC8; the SCROLL_DESCRIPTION_* cases call them).
+    public: void SetDescriptionScrollingOffset(float);
+    public: void SetDescriptionScrollingToMax(bool);
+#endif
 #endif
 public: virtual bool GetMouseDisabled();
 public: NUISystem::CComponent * CreateComponent(const CCharString &,bool);

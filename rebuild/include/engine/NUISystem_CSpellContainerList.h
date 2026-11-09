@@ -12,6 +12,18 @@ namespace NUISystem {
 class CSpellContainerList : public CChangingStateComponent {
 public:
     CSpellContainerList(long);                                                       // 0x00544B70
+#ifdef FABLE_RETAIL_CSPELLCONTAINERLIST_VIRTUALS
+    // Retail opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the five virtuals CSpellContainerList adds after
+    // CChangingStateComponent's 142 slots (vtable 0x012475C4; FableWin.pdb ?AddSpellSelectionChild / ?AddSpellIndicationChild /
+    // ?SetSpellToAssign@CSpellContainerList@NUISystem@@UAEXJ@Z / ?ShowSpellSelectionChild / ?HideSpellSelectionChild, declaration
+    // order = slot order, 0x00544310 / 0x00544330 / 0x00544100 / 0x00544110 / 0x00544190). Action calls slots 144 and 145
+    // (`call [eax+240h]` 0x0041FC1F, `call [eax+244h]` 0x00420BDD). The Add*Child parameter is the AAV reference FableWin shows.
+    virtual void AddSpellSelectionChild(CCountedPointer<CComponent>& child);        // slot 142 0x00544310
+    virtual void AddSpellIndicationChild(CCountedPointer<CComponent>& child);       // slot 143 0x00544330
+    virtual void SetSpellToAssign(long spell);                                      // slot 144 0x00544100
+    virtual void ShowSpellSelectionChild();                                         // slot 145 0x00544110
+    virtual void HideSpellSelectionChild();                                         // slot 146 0x00544190
+#endif
 protected:
     float LastInputTime;                                            // +0x15c (Ego_r +0x18c)
     unsigned long SpellIndex;                                       // +0x160

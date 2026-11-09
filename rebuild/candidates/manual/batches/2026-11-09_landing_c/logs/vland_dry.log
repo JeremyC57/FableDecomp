@@ -1,0 +1,78 @@
+addr       parity           behav  name
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimationEntry
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCBoastUI
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CWorld
+0041e6d3   WARN RELOC_NAME: ?size@?$list@JV?$allocator@J@std@@@std@@QBEIXZ -> 0042b677 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ?size@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QBEIXZ -> 0042b636 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0041e6d3   WARN RELOC_NAME: ??$find@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@PAVCComponent@NUISystem@@@std@@YI?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U10@0ABQAVCComponent@NUISystem@@@Z -> 0042a291 labelled '_unattributed::CVector_0042a291'
+0041e6d3   WARN RELOC_NAME: ?erase@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@@Z -> 00429b52 labelled 'LinkedList_RemoveNode'
+0041e6d3   WARN RELOC_CONFLICT: ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z -> 0040b050 here, 0040d2f0 in landed 0059697a
+0041e6d3   WARN RELOC_NAME: ?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z -> 0047d008 labelled '_global::SetMember_dword0x64_0047d008'
+0041e6d3   WARN RELOC_NAME: ?IsActive@CTCQuickAccessMenu@@QBE_NXZ -> 00625930 labelled '_global::GetMember_byte0xc_00625930'
+0041e6d3   WARN RELOC_NAME: ?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ -> 00625940 labelled '_global::GetMember_byte0x1c_00625940'
+0041e6d3   WARN RELOC_NAME: ?DropQuest@CTCInventoryMap@@QAEXJ@Z -> 005fa900 labelled '_global::SetMember_dword0x1a4_005fa900'
+0041e6d3   WARN RELOC_NAME: ?find@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@ABK@Z -> 0042b6dc labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+0041e6d3   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEAAU01@XZ -> 00429cfb labelled '_global::RbTreeIterator_PreIncrement_00429cfb'
+0041e6d3   WARN RELOC_NAME: ?clear@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEXXZ -> 0042abe1 labelled 'CTCCarryable::OnKill'
+0041e6d3   WARN RELOC_NAME: ??1?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE@XZ -> 0042b755 labelled 'std::list<T_0042b755>::~list'
+0041e6d3   WARN RELOC_NAME: ?FlashQuickAccessDPadIcon@CPlayerGui@@QAEXJ_N@Z -> 00437a30 labelled '_global::Forward_ToggleFlash_via0x1d8_00437a30'
+0041e6d3   WARN RELOC_NAME: ?SetDefaultValuesGameplay@CUserProfileManager@@QAEXXZ -> 00408360 labelled 'CPlayerGui::ForceClose'
+0041e6d3   WARN RELOC_NAME: ?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ -> 004083b0 labelled 'CUserProfileManager::SetDefaultValuesGameplay'
+0041e6d3   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041e6d3   WARN RELOC_NAME: ?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z -> 006096e0 labelled 'ConstructLogbookScreen'
+0041e6d3   WARN RELOC_NAME: ?ConstructStyleCardsScreen@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z -> 0058a724 labelled 'CTCInventory::GetStyleCardsListUIComponent'
+0041e6d3   WARN RELOC_NAME: ?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z -> 00601310 labelled 'ConstructQuestsScreen_MainMenu'
+0041e6d3   WARN RELOC_NAME: ?SetThingSlotToSwap@CTCInventory@@QAEXJ@Z -> 0041ca3e labelled '_global::SetMember_dword0x138_0041ca3e'
+0041e6d3   WARN RELOC_NAME: ?SetThingToAssign@CTCInventory@@QAEXJ@Z -> 0041ca31 labelled '_global::SetMember_dword0x134_0041ca31'
+0041e6d3   WARN RELOC_NAME: ?SetDescriptionScrollingOffset@CManager@NUISystem@@QAEXM@Z -> 0041cf33 labelled '_global::SetMember_dword0xc4_0041cf33'
+0041e6d3   WARN RELOC_NAME: ?SetSpellToAssign@CTCInventoryAbilities@@QAEXW4EHeroAbility@@@Z -> 0041c965 labelled '_global::SetMember_dword0x134_0041c965'
+0041e6d3   WARN RELOC_NAME: ?SetSpellSlotToSwap@CTCInventoryAbilities@@QAEXJ@Z -> 0041c972 labelled '_global::SetMember_dword0x138_0041c972'
+0041e6d3   WARN RELOC_NAME: ?SetComponentSlotToSwap@CTCInventoryAbilities@@QAEXPAVCComponent@NUISystem@@@Z -> 0041c994 labelled '_global::SetMember_dword0x13c_0041c994'
+0041e6d3   WARN RELOC_NAME: ?SetComponentSlotToSwap@CTCInventory@@QAEXPAVCComponent@NUISystem@@@Z -> 0041ca52 labelled '_global::SetMember_dword0x13c_0041ca52'
+0041e6d3   WARN RELOC_NAME: ?size@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QBEIXZ -> 0042b707 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ?SetDescriptionScrollingToMax@CManager@NUISystem@@QAEX_N@Z -> 0041cf1f labelled '_global::SetMember_byte0xc8_0041cf1f'
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2b9 labelled '_global::CCountedPointer_Assign_0042a2b9'
+0041e6d3   WARN RELOC_NAME: ??1?$CCountedPointer@VCMesh@NUISystem@@@@QAE@XZ -> 00429230 labelled '_global::CCountedPointer_Release_00429230'
+0041e6d3   WARN RELOC_NAME: ?GetWeaponDescriptionString@CTCInventoryWeapons@@SIABVCCharString@@XZ -> 005c2de1 labelled '_global::GetStaticAddr_013b8bac_005c2de1'
+0041e6d3   WARN RELOC_CONFLICT: ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z -> 0042b144 here, 0042af3c in landed 007cbdc0
+0041e6d3   WARN RELOC_NAME: ?SetWeaponMappingToMenuEntry@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@J@Z -> 0042d405 labelled 'CTCInventoryClothing::SetClothingMappingToMenuEntry'
+0041e6d3   WARN RELOC_NAME: ?GetClothingDescriptionString@CTCInventoryClothing@@SIABVCCharString@@XZ -> 005b34c1 labelled '_global::GetStaticAddr_013b8b9c_005b34c1'
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2ca labelled '_global::CCountedPointer_Assign_0042a2ca'
+0041e6d3   WARN RELOC_NAME: ?GetClothingIconString@CTCInventoryClothing@@SIABVCCharString@@XZ -> 005b34bb labelled '_global::GetStaticAddr_013b8ba0_005b34bb'
+0041e6d3   WARN RELOC_NAME: ?GetItemDescriptionString@CTCInventory@@SIABVCCharString@@XZ -> 005819a1 labelled '_global::GetStaticAddr_013b8b50_005819a1'
+0041e6d3   WARN RELOC_NAME: ?GetItemNameTableString@CTCInventory@@SIABVCCharString@@XZ -> 00581995 labelled '_global::GetStaticAddr_013b8b54_00581995'
+0041e6d3   WARN RELOC_NAME: ?GetItemIconString@CTCInventory@@SIABVCCharString@@XZ -> 0058199b labelled '_global::GetStaticAddr_013b8b58_0058199b'
+0041e6d3   WARN RELOC_NAME: ?GetWeaponTitleString@CTCInventoryWeapons@@SIABVCCharString@@XZ -> 005c2de7 labelled '_global::GetStaticAddr_013b8bb4_005c2de7'
+0041e6d3   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+0041e6d3   WARN RELOC_CONFLICT: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db here, 0042a2ca in landed 00558770
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db labelled '_global::CCountedPointer_Assign_0042a2db'
+0041e6d3   WARN RELOC_NAME: ?AddComponentToAvailableWeaponsEntries@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@@Z -> 0042bead labelled '_global::Forward_Std_List_PushFront_member0x198_0042bead'
+0041e6d3   WARN RELOC_NAME: ?GetClothingTitleString@CTCInventoryClothing@@SIABVCCharString@@XZ -> 005b34c7 labelled '_global::GetStaticAddr_013b8b98_005b34c7'
+0041e6d3   WARN RELOC_NAME: ?GFStringsAreEqual@@YI_NPBG0@Z -> 00401490 labelled 'CEngineMap::PeekWaterHasType'
+0041e6d3   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0041e6d3   WARN RELOC_NAME: ?GetSellItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6c2 labelled '_global::GetStaticAddr_013b8b7c_0059b6c2'
+0041e6d3   WARN RELOC_NAME: ?GetNumberOfSellItems@CTCInventoryTrade@@QBEJPAVCComponent@NUISystem@@@Z -> 0042cd3e labelled 'FID_conflict:max_size'
+0041e6d3   WARN RELOC_NAME: ?GetSellItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6bc labelled '_global::GetStaticAddr_013b8b88_0059b6bc'
+0041e6d3   WARN RELOC_NAME: ?RemoveFromItemSellList@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z -> 0042d437 labelled '_global::Forward_CompareAndCountAllocations_member0x20c_0042d437'
+0041e6d3   WARN RELOC_NAME: ?GetBuyItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6ce labelled '_global::GetStaticAddr_013b8b80_0059b6ce'
+0041e6d3   WARN RELOC_NAME: ?GetNumberOfBuyItems@CTCInventoryTrade@@QBEJPAVCComponent@NUISystem@@@Z -> 0042cd61 labelled 'FID_conflict:max_size'
+0041e6d3   WARN RELOC_NAME: ?GetBuyItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6c8 labelled '_global::GetStaticAddr_013b8b8c_0059b6c8'
+0041e6d3   WARN RELOC_NAME: ?RemoveFromItemBuyList@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z -> 0042d44a labelled '_global::Forward_CompareAndCountAllocations_member0x200_0042d44a'
+0041e6d3   WARN RELOC_NAME: ?GetWantedItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6da labelled '_global::GetStaticAddr_013b8b84_0059b6da'
+0041e6d3   WARN RELOC_NAME: ?GetWantedItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ -> 0059b6d4 labelled '_global::GetStaticAddr_013b8b90_0059b6d4'
+0041e6d3   WARN RELOC_NAME: ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z -> 0042bef2 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+0041e6d3   WARN RELOC_NAME: ??4?$CCountedPointer@VCTexture@@@@QAEAAV0@ABV0@@Z -> 00429a62 labelled '_global::CCountedPointer_Assign_00429a62'
+0041e6d3   WARN RELOC_NAME: ??1?$CCountedPointer@VCTexture@@@@QAE@XZ -> 0041bb30 labelled '_global::CCountedPointer_Release_0041bb30'
+0041e6d3   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QAEAAU01@XZ -> 00429cea labelled '_global::RbTreeIterator_PreIncrement_00429cea'
+0041e6d3   RELOCATION_MATCH PASS   Action
+
+WINS: 1
+  0041e6d3 RELOCATION_MATCH NUISystem::CManager::?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z

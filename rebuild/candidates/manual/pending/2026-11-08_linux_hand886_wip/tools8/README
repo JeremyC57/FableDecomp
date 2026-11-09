@@ -1,0 +1,14 @@
+t8/ tools (agent886, row 0x0041E6D3); each script has its usage on its first lines.
+qc.sh <src> <tag>          quick retail-flag grade (q.py) -> o/<tag>.obj + m3 + cross-jump diff count; HDR=<dir> picks the overlay
+hh.sh <tag> [lo hi]        cmp.py hunks of o/<tag>.obj v retail minus reloc-only artefacts, optional retail VA window
+xj.py <obj>                cross-case jumps retail v ours (XJALL=1 lists all)
+cname.py <hexva>...        retail case start -> EActionType label(s); cases.py builds the value -> target map
+cmap.py, jm.py, brk.py, pcase.py, rpair.py, hk.py, xd.py, odis.py   case maps, jump/branch/pair helpers, disassembly
+pb.py <trace> <id>...      per-block priority terms from c2prio --blocks traces; kgain.py <trace> <A> <B> [n]: gap if a candidate leaves K
+c2p.sh <src> <tag>         c2prio --trace --blocks run -> c2p/<tag>.trace (deleted after use; regenerate)
+fr/                        frame packer replay (pack.py, phook.py, shook.py/sp.py, fit.py, ...)
+mc.py <mini.cpp> [flags]   compile a mini TU under the verifier's flags and print its disassembly
+mini/ gen.py, gen3..5.py, an3/an4.py, batch5.sh   first cross-jump minis (shared vtable heads: superseded by mini3)
+mini2/                     CWideString text == layout minis
+mini3/ gen7.py, gen8.py, an6.py, batch6.sh, batch8.sh   cross-jump survivor probes (distinct head calls; gen8 = the row's real case values)
+v/                         final.cpp (= src/), w1.cpp (first match), best_q6s.cpp, x4.cpp, src_v28_backup.cpp, differ_s7.cpp

@@ -13,7 +13,7 @@
   early cases and called in late ones (0x0042247E inline vs 0x00422547 call of the same setter): the caller inline budget, not
   the callee; out-of-TU header-inline accessors (CTCQuestCompletionUI::IsActive) stay inline throughout.
 Review at landing:
-- Row needed > 4 grades and is not matched (parked; WORKLOG.md has the resume plan).
+- Row needed > 4 grades (8 sessions; matched in session 8, RELOCATION_MATCH -- WORKLOG.md Session 8).
 - Local models next to existing engine headers: CTCInventory, CTCInventoryStats, CTCInventoryMap, CTCInventoryTrade,
   CTCInventoryClothing, CTCInventoryExperience, CTCInventoryAbilities, CTCQuickAccessMenu, CTCInGameMenu, CPlayerGui, CWorld,
   CQuestManager, CTCBoastUI (see WORKLOG.md open problem 4).
@@ -102,3 +102,64 @@ Session 3 (2026-11-08) -- corrects the session-2 packing lesson above:
   fixes with a frame-masked share and track the slot pairing separately (t7/m3.py, t7/fmap.py).
 - `count->Value` read at the call (`CActionParamSLONG* count`) gives `push dword [eax+8]`; a `long count = ...->Value` local
   gives `mov eax,[eax+8]; push eax` (0x0041F5D8). An unsigned member tested `<= 0` gives `ja` where `== 0` gives `jne`.
+
+## Session 8 (GOTCHAS-ready, one line each)
+- VC7.1 c2 frame packer (regime 1, /GS): nodes listed by size asc / IL weight desc (0x10788642, +1 per IL reference); slots made
+  in list order by 0x10791426 (join the latest slot with node.size <= 2*slot.size and no conflict, else new); qsort 0x107ae0c4
+  by /GS-buffer flag then density w*1000/size desc (ties unstable); allocated top-down from [ebp+74h-4]. Address-exposed
+  nodes conflict with everything. t8/fr/pack.py replays it exactly from a phook.py trace (0x0041E6D3: 284/284 slots).
+- The packer's weights are IL references counted BEFORE cross-jumping: code duplicated in the source and merged by c2 still
+  weighs once per copy. 0x0041E6D3 ADD_CHILD_AUGMENTATION: GetType/SetGraphicIndex per switch arm (retail's default edge
+  0x0041ECB5 skips it) = `_augmentation` w 12 -> 18, slot -656 -> retail -636. Look for a default/fall edge that skips a "shared" tail.
+- A declaration-only `const_iterator find(const K&) const` exposes the result object (global packer node); the landed
+  FABLE_RETAIL_STLP_TREE_CONSTFIND body is still called out of line in regime 1 (0x0042BEF2) and unexposes it.
+- `iterator it = c.begin();` under `#pragma inline_depth(0)` returns into `it` (RVO); `iterator it; it = c.begin();` returns
+  into a weight-1 temporary as retail 0x00426CCA; `const iterator& it = c.begin();` gives the bound temporary weight 2.
+- Named `CDefPointer<..> x = GetAbilityPDef(..)` per arm adds frame nodes retail lacks; `GetAbilityPDef(..)->Field` read in
+  the call matches retail ASSIGN_SPELL_TO_ITEM_SLOT_PC (case 0x00422101).
+- /GS keeps pointer-typed nodes (node+7 & 0x20: pointers AND references) out of the dead-parameter front slot; a CSE'd address
+  is not flagged. 0x004266B2 LOAD_PHOTO homes `&photo->PTexture` in [ebp+7Ch]: write `photo->PTexture` twice, no
+  `CCountedPointer<T>& photoTexture` reference local.
+- Cross-jumping (regime 1, #pragma optimize("s", on)): the exit block's predecessors are break-edges in source order, then
+  return-edges in source order; of the blocks sharing a tail the LAST in that list survives and the others jump into it.
+  A retail survivor that sits before a jumper is a case ending in `return;` (0x0041E6D3: CLOSE_TELEPORT_MENU 0x0041F792,
+  LOAD, PLAY_MOVIE, SCROLL_ACTIVE_LIST_DOWN, CLOSE_FRAME, LOAD_FILE_DESC). Mini repro: t8/mini/gen.py (2000 filler cases).
+Session 8 (2026-11-09) -- the row MATCHES (RELOCATION_MATCH 35651v35651):
+- Regime 1 (> 10000 IL tuples): a global pointer is itself a register candidate. `CMainGameComponent::Get()->` re-read at every
+  site (the global ?PMainGameComponent@CMainGameComponent@@1PAV1@A) gets esi as retail (0x0041E712 re-reads it into esi; priority
+  1141 v the action-pointer CSE temp 958); a named `CMainGameComponent* game` local had priority 574 and lost the order. A call
+  kills the register copy of the global, so reads right after a call (the 12 `event.Player = ...GetMainPlayerNumber()` lines
+  after a `CGameEvent event(..)` constructor) must use the named local, which shares esi through its copy.
+- A named call-result intermediate (`CPlayer& p = ...GetMainPlayer();`) adds +1 K per referencing block (+3 priority) at identical
+  code; a trivial nested inline (scoped_ptr operator*) adds no candidate.
+- Call arguments: an inline accessor argument (`inventory->GetThingSlotToSwap()`, FableWin name) is evaluated before another
+  argument's call (GetAbilityPDef, 0x00422251); a direct member read is pushed after it. Parameter POINTERS stepped first with
+  `->Value` read in the call give retail's `push [reg+8]` at the call (0x00421D94 style cards, 0x004227FA MOVE_COMPONENT);
+  `C2DVector delta(0.0f, -25.0f);` named before the call builds the delta before the receiver is read (0x00422EFE); a named
+  `CActionParamString* movie` loads the parameter before the default-argument pushes (0x0041F90C).
+- `if (moved) f(state); else f(state - 1);` (two whole calls) lets c2 hoist the identical argument code above the test and
+  cross-jump the calls (0x00420EE4); `f(moved ? state : state - 1)` does not.
+- CHANGE_ALPHA: `(*it)->ActionParamType` in each test and `static_cast<CComponent*>(*it)`, no `CActionParam* param` local --
+  retail reloads the element and keeps the null check of the cast (0x00420C5D).
+- CWideString::operator==(const wchar_t*) on a null block: the nested constant-return shape
+  `if(!P) { if(GFStringsAreEqual(text, L"")) return true; return false; } return *P==text;` places the non-null arm after the
+  next jump with a jump back to the caller's test (0x00424F4A -> 0x00424EC7, 0x004262A0 -> 0x00426260); `return GFStringsAreEqual(..)`
+  keeps it in line (hdr/fable_string.h FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER).
+- Cross-jump survivors (VC7.1 c2, optimize("s"); a model that fits the row and every t8/mini3 probe): the exit block's edges are
+  ordered breaks (source order), then returns (source order), then edges into the `default:` label. The LAST edge whose block
+  shares a tail is processed first and absorbs every other block with a matching tail (each gets a jump into it; the jumps are
+  made walking the list backwards). The blocks that now jump to the same place are then merged the same way: the jump made last
+  (= the EARLIER case) survives -- ITEM_ASSIGN_LEFT keeps the tail of ITEM_ASSIGN_RIGHT/DOWN/UP (0x0041F059), TELEPORT that of
+  GUILD_SEAL_RECALL (0x0041EE8F). To make a LATER case keep a second-level tail, move the earlier case's edge after it:
+  CHEAT_MORALITY ends `return;` so CHEAT_RENOWN keeps the GetTC/AddCloseInventoryEvent tail (0x0042650C jmp 0x00426A11), and
+  CLOSE_TELEPORT_MENU stays the first-level survivor (0x0041F7DA) by falling into a `default:` written right after it (the
+  default-label edges come after every return). Mini: t8/mini3/gen8.py (the row's real case values, distinct head calls).
+- Do not use a user label as a lever in a big switch: any label in 0x0041E6D3 (even `default: goto done; } done:;`) reorders
+  cross-jumps across the whole function (175 changed, 35662v35651); the minis did not show it (the row has object locals with
+  destructors and early returns). `goto` to a label on `default:` puts that edge after the returns.
+- Mini probes of cross-jumping need DISTINCT non-virtual head calls per case: a shared `g->a()` vtable head merges too and hides
+  the tail order (t8/mini gen5 v t8/mini3 gen7).
+Review at landing (session 8):
+- The source places `default:` in the middle of the switch (after CLOSE_TELEPORT_MENU, which falls into it) and ends six cases
+  with `return;` -- both are the retail edge order (comment at the switch head); keep them when retyping.
+- The hdr/ overlay opt-ins must be merged into rebuild/include before landing (hdr/README.md lists each; default paths unchanged).

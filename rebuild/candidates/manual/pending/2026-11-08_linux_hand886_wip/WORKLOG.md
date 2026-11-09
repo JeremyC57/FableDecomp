@@ -1,5 +1,42 @@
 # WORKLOG 0x0041E6D3 -- NUISystem::CManager::Action  (agent886, 2026-11-08)
 
+## Session 8 (2026-11-09) -- MATCHED: src/0041e6d3.cpp RELOCATION_MATCH 35651v35651 (q.py via gr.sh and gall.sh, overlay hdr/)
+test/0041e6d3.cpp PASS under g++ (tall.sh) and VC7.1 (tall.py); finish.py run last. v28 kept in t8/v/src_v28_backup.cpp, the
+session-7 differ/ copy in t8/v/differ_s7.cpp.
+
+Leaderboard (t8/qc.sh: bytes, t7/m3.py exact/regs/regs+frame, t8/xj.py differing cross-jumps; difflib from gr.sh):
+| version | bytes | m3 | difflib | xj | lever |
+|---|---|---|---|---|---|
+| v28 (start) | 35702v35651 | 79.3/83.6/98.6 | 93.0% | -- | session 7 state |
+| x4 | 35688 | 94.2/98.7/98.8 | 93.2% | 14 | `return;` in the six cases whose retail tail survives a later jumper |
+| g4 | 35632 | 99.2/99.3/99.3 | 98.7% | | CMainGameComponent::Get() re-read at every site except the 12 event.Player lines (enregistered global = esi) |
+| g7 | 35641 | | 98.9% | | parameter pointers with `->Value` at the call (style cards, MOVE_COMPONENT), CHANGE_ALPHA `*it` |
+| pd / m1 / s1 / s2 | 35644 | 99.5 | 99.0% | 4 | POP_MAP_STATE if/else of whole calls; PLAY_MOVIE `movie`; inline swap accessors; SCROLL delta |
+| q6s | 35651 | 99.6/99.6/99.6 | 99.1% | 4 | CWideString text == nested constant-return shape (overlay) |
+| **w1** | **35651v35651** | **99.8 (rest = artefacts)** | RELOCATION_MATCH | **0** | CLOSE_TELEPORT_MENU falls into `default:`; CHEAT_MORALITY `return;` |
+
+The last decision (CHEAT_MORALITY / CHEAT_RENOWN long-tail survivor):
+- Retail: CLOSE_TELEPORT_MENU keeps the short AddCloseInventoryEvent tail (0x0041F7DA; TELEPORT, CLOSE_MENU 0x0041F79F, RENOWN jump
+  in) and RENOWN keeps the long GetTC + AddClose tail (MORALITY 0x0042650C jmp 0x00426A11). Ours (q6s): MORALITY kept the long tail.
+- Model (fits the row and every t8/mini3 probe): exit edges = breaks (source order), returns (source order), edges into the
+  `default:` label. The last edge with a matching tail absorbs every other match (jumps made walking backwards); the blocks then
+  jumping to the same place merge again and the jump made last (the earlier case) survives. So RENOWN can keep the long tail only
+  if MORALITY's edge comes after RENOWN's while CLOSE_TELEPORT_MENU's stays last: MORALITY `return;` + CLOSE_TELEPORT_MENU falling
+  into a `default:` placed after it. w2 (default only) = q6s; w1 (both) = retail.
+- Measured out: a label after the switch (u1/u4: any label reorders 175 cross-jumps, 35662v35651); goto to a `default:` label
+  for RENOWN (u2: RENOWN absorbs everything); CLOSE_TELEPORT_MENU `break;` (u3 = u2); MORALITY or RENOWN `return;` alone (r1/r2);
+  n-form `if (!GetTC) break;` (n1/n2: no change).
+
+Tools added this session (t8/, each with a usage line at its top):
+- t8/pb.py (per-block priority terms from c2prio --blocks traces), t8/kgain.py (gap change if a candidate leaves K),
+  t8/cname.py (retail case start -> case label), t8/hh.sh (cmp.py hunks minus reloc artefacts, VA window),
+  t8/qc.sh HDR=<overlay> option.
+- t8/mini (gen3/gen4/gen5, an3/an4, batch5.sh: first two-level probes), t8/mini2 (CWideString == layout minis),
+  t8/mini3: gen7.py (exit-shape variants with distinct head calls), gen8.py (the row's real case values, HR/DEFG options),
+  an6.py (who jumps into whom, by marker), batch6.sh / batch8.sh (MCF=/GS, AN=S).
+Earlier tools still in t8/: shook.py/sp.py, ent.sh, brk.py, xj.py, jm.py, cmap.py, cases.py, hk.py, rpair.py, pcase.py, mc.py,
+mini/gen.py, fr/pack.py, fit.py, phook.py, ev.sh, xd.py, c2/fdis.py.
+
 ## Session 7 (2026-11-08) -- READ THIS FIRST: Codex's fixes merged one at a time (src/ = v28; v23 kept in t7/v23_src_backup.cpp)
 State: **v28 DIFFER(35702v35651), frame 0x800 = retail**; code byte-identical to Codex's checkpoint (t7/odiff.py v28 v.
 cmp2/codex_action.obj: no hunk). Metrics (t7/m3.py, code to `ret 4`): exact 79.3% / regs-masked 83.6% / regs+frame-masked 98.6%

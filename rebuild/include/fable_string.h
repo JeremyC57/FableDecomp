@@ -27,6 +27,12 @@ public:
     // Retail opt-in (chunk 784, row 0x00491AD2 CSubtitleRenderer::ProcessEmbeddedHighlightTags): the text comparison under the
     // inline CWideString::operator==(const wchar_t*) below; retail calls the STLport operator== 0x00404280 out of line
     // (??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z).
+#ifdef FABLE_RETAIL_CWIDESTRING_FORCEINLINE_DATA_TEXT_EQ
+    // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): with FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ that
+    // TU also expands this body inside the expanded CWideString::operator==(const wchar_t*) (0x00424F4A / 0x004262A0:
+    // `push literal ; push &Data ; call 0x00404280 ; pop ecx ; pop ecx`) where the inline budget would call it.
+    FABLE_FORCEINLINE
+#endif
     bool operator==(const unsigned short* text) const { return Data==text; }
 #endif
 };
@@ -104,6 +110,14 @@ class CCharStringData
 
 class CCharString;
 
+#ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER
+// Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb ?GFStringsAreEqual@@YI_NPB_W0@Z, the
+// __fastcall wide-text equality the inline CWideString::operator==(const wchar_t*) uses for a null string. Retail calls its
+// out-of-line COMDAT 0x00401490 from Action (0x00424EC2: ecx = the literal, edx = L"") where the 784 TU expands it in place
+// (`push edx ; push ecx ; call wcscmp ; add esp,8 ; neg eax ; sbb eax,eax ; inc eax`).
+inline bool FABLE_FASTCALL GFStringsAreEqual(const wchar_t* a, const wchar_t* b) { return wcscmp(a, b) == 0; }   // 0x00401490
+#endif
+
 class CWideString
 {
 public:
@@ -153,7 +167,14 @@ public:
 #ifdef FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER
+    // The default branch's shape with the helper in place of the wcscmp test (`if(...) return true; return false;`). With this
+    // shape the non-null arm is placed after the next jump and jumps back to the caller's test, as retail (0x00424F4A ->
+    // 0x00424EC7, 0x004262A0 -> 0x00426260); `return GFStringsAreEqual(text, L"");` keeps it in line.
+    bool operator==(const wchar_t* text) const { if(!PStringData) { if(GFStringsAreEqual(text, L"")) return true; return false; } return *PStringData==text; }
+#else
     bool operator==(const wchar_t* text) const { if(!PStringData) { if(wcscmp(text,L"")==0) return true; return false; } return *PStringData==text; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CWIDESTRING_SUBSTRING
     // Retail opt-in (chunk 784, row 0x00491AD2): Ego_r.pdb / FableWin.pdb ?GetSubString@CWideString@@QBE?AV1@KK@Z, out of line;
@@ -271,20 +292,6 @@ public:
     // __forceinline: the size-optimised CSubtitleRenderer TU expands it in place where a plain inline body is called out of line.
     FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
 #endif
-#ifdef FABLE_RETAIL_CCHARSTRING_ENDSWITH
-    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): FableWin.pdb ?EndsWith@CCharString@@QBE_NABV1@@Z
-    // (0x0187F050; no out-of-line retail copy is bound), inline in retail: 0x004993E2..0x0049945D takes the two lengths (a negative
-    // difference is false), the suffix's text and this string's text from one null test each, and compares the tail with the strcmp
-    // intrinsic (`sbb ; sbb ; sete`). __forceinline: Ego_r.pdb (the release build) has no out-of-line copy, and a plain inline body
-    // (c2 inline cost 405 with the strcmp intrinsic) is called out of line where retail expands both 0x00498490 sites.
-    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
-    {
-        long offset = GetLength() - suffix.GetLength();
-        if (offset >= 0)
-            return strcmp(GetAsCharArray() + offset, suffix.GetAsCharArray()) == 0;
-        return false;
-    }
-#endif
     // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
@@ -294,12 +301,6 @@ public:
     // ...`). Where CleanOutLine is expanded inside 0x009BC120 (0x009BC610..0x009BC632) retail indexes the text as [ecx+eax]; the
     // ternary below gives [eax+ecx]. Same code otherwise (`mov ecx,offset NullChar ; je ; mov ecx,[eax]`).
     const char* GetAsCharArray() const { const char* text = &NullChar; if (PStringData) text = PStringData->Data.PeekData(); return text; }
-#elif defined(FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN)
-    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): the early-return spelling of the same inline
-    // accessor. Where EndsWith expands it (0x00499411 / 0x004994E4: `mov ecx,offset NullChar ; je ; mov ecx,[esi]`) retail forms the
-    // tail as `lea esi,[ecx+eax]` (text as the base, the length difference as the index); the ternary below gives [eax+ecx], and the
-    // select spelling above gives [ecx+eax] at the first site only (the second site's text then outranks the offset for eax).
-    const char* GetAsCharArray() const { if (PStringData==0) return &NullChar; return PStringData->Data.PeekData(); }
 #else
     const char* GetAsCharArray() const { return PStringData==0 ? &NullChar : PStringData->Data.PeekData(); }
 #endif

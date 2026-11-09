@@ -59,12 +59,21 @@ public:
     CCPPointerInfo* Info;                                                // +0x4
 
     CCountedPointer() : Data(0), Info(0) { }
-#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR) && !defined(FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR)
     // Chunk 764 (row 0x0096DBC0 CCreatureAction_ScreamerIntoAggressive::Initialise): there retail calls the (T*) constructor's COMDAT
     // (0x00718A00, ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z) where VC7.1
     // expands the in-class body; the landed same-module rows (0x008C1A10, 0x008C1900) declare it without a body. Declaration only.
     CCountedPointer(T* data);
 #else
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR) && defined(_MSC_VER)
+    // Inline-budget (row 0x0041E6D3 NUISystem::CManager::Action): retail CALLS this ctor's same-TU COMDATs at every site
+    // (CComponent 0x00429C15 x25, CAction 0x0042AA29 x17, CTexture 0x0041C030 in LOAD_PHOTO; body = the default one below:
+    // 0x0041C030 `test eax,eax; mov [esi],eax; je` then `new CCPPointerInfo(1, DeleteData, Data)` reading the stored member).
+    // A declaration-only ctor (FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR alone) exposes each object's address above c2's
+    // 10000-tuple limit, so it never shares a frame slot (LOAD_PHOTO's texture: ours -3C8h alone, retail -268h shared).
+    // A visible body that is not expanded keeps the object tracked. Default path unchanged.
+    __declspec(noinline)
+#endif
     CCountedPointer(T* data) : Data(data)
     {
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER
