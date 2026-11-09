@@ -190,3 +190,81 @@ our slot, retail slot via work/s2/v7.slotmap)
   CWideString temps follow it into 0x38 in retail, and T12022 (tile 4 BR.Y) still joins A in retail. Unexplained: what makes A
   interfere with T11920 but not T12022 in retail. Next probe: hook 0x1077B3C9's result per (item, slot) to read the interference
   bits for T11920 v A in ours, then look for a source shape that adds a tile-1-only reference to total or tag's slot.
+
+## Session 3 -- row 0x00498490 (frame slot residue)
+### C1 packer interference probe (no grade): work/s3/{iset.py,iset_host.py,is.sh,an.py} -> work/s3/is_v7.json (8 s per run)
+- Hooks: c2.dll 0x10791426 (placement entry: item node at [esp+4]; idx = node+0x3c, size +0x20, weight +0x38, $T number = sym
+  word 10; interference set = bitset [0x108a7894 + 4*idx], chunks {base, next, bits}), 0x10791ab7 (join, edi = slot index),
+  0x1079145e (new slot, index = [0x108a788c]). Placement read from the listing: slots scanned from the most recent down; join iff
+  item size <= 2 x slot size, item not in the slot's interference union (slot+4) and slot members (slot+0) disjoint from the item's
+  set (0x1077B3C9 = bitset-intersect test). An item's set = the items live at its definition (asymmetric; both directions checked).
+- Evidence (v7 = differ/00498490.cpp): iset(T11920) = {display, scaleY, scaleX, fraction, box}; iset(total) = {display};
+  iset(tag) = text-block temps only. So T11920 cannot interfere with A = {total, tag} by liveness in any spelling that keeps their
+  scopes -- the retail difference must be a NEW member of A processed before T11920. Retail tile 1 (0x00498686): BRX is read from
+  [F+10h] (A) and BRY from [F+38h]; ours has BRX inside the 8-byte C2DVector temporary T11793 (processed in the 8-byte group, after
+  every 4-byte item). If BRX is a 4-byte float argument temporary (C2DBoxF(float, float, float, float), ??0C2DBoxF@@QAE@MMMM@Z), it
+  is processed before T11920 (same weight, created first), fails F..B as T11920 does, joins A; then T11920 interferes with it and
+  opens the new slot G (0x38) -- retail's layout.
+- Change (fx only, no grade): tile 1 `box = C2DBoxF(GFAXToVX(0.0f), GFAYToVY(0.0f), GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY);`
+- Result c1 (work/s3/is_c1.json, fx): tile-1 BRX (T11917) joins A, BRY (T11916) opens slot 9 = retail's G; sealX / extents / the tile
+  and string temps follow into G, barPosition / sealPosition move to F -- 16 of 17 named locals at retail's slots except
+  formattedWindow, which still joins A (A = 16 bytes shifts B..G by 8).
+### C2 formattedWindow (fx + probe, no grade)
+- Evidence (is_c1): an address-taken local is live over its whole enclosing block: formatted / vbox / formattedWindow are in the
+  sets of the three text-window GetRenderTargetDimensions temps (defined before their declarations) and formattedWindow in extents'
+  set (after its last use). Retail puts formattedWindow in G with those temps and extents -> its block must exclude both, and it must
+  still fail slot I (box temps, scanned first) -- something in I must be live in its block.
+- c2 = c1 + `{ C2DBoxF formattedWindow; FormatTextForVWindow(...); }`: formattedWindow joins slot I (frame 84; MISMATCH 3).
+- c3 = c2 + the text window as a named local `C2DBoxF window(C2DVector(...), C2DVector(...)); C2DBoxF vbox; GFABoxToVBox(window, vbox);`:
+  window (16, w5) joins I and is live over the text block, so formattedWindow fails I and H and joins G. fx: frame 0x5C, MISMATCH 0
+  (every named local at retail's slot). dd (work/fx/c3.obj): strict 98.9% / loose 99.9%; residue hunks: tile 4 BRY/BRX slots
+  swapped (0x004987f0 / 0x00498807 / 0x00498818), four box BRY x87 load orders (0x00498A7B, 0x00498B73, 0x00498C88, 0x00498DA8),
+  `mov ecx,edi` (0x00499094), EndsWith `lea esi,[ecx+eax]` x2 (0x0049941A / 0x004994ED; present in v7 too, masked by loose).
+- Next change: tile 4 as the four-float ctor as well (c4), and all six tiles (c5).
+- c4 (tile 4 four-float) / c5 (all six tiles four-float): tile-4 slot swap gone; c4 = c5 bytes (c5 kept: one spelling for all
+  tiles). dd: strict 99.2% / loose 99.9%; residue = 4 x87 pairs + `mov ecx,edi` + 2 lea operand orders.
+### C3 x87 pairs at 0x00498A7B / 0x00498B73 / 0x00498C88 / 0x00498DA8 (compile + dd, no grade; work/s3/x.sh)
+- Retail loads barPosition.Y first (`fld [bar.Y] ; fadd [ext.Y]`), ours the extents / vector temp first. Every pair whose left
+  operand is barPosition.Y (directly, through the copy-propagated position.Y, or via C2DVector::operator+) differs; the tip box
+  (position.Y), the seal boxes (sealPosition.Y) load the corner first in both builds.
+- Tried (all identical bytes, i.e. the pair is canonicalised, not textual): ctor BRY `extents.Y + top_left.Y` (hdrA), body
+  assignments `BRY = TLY + extents.Y` (hdrB), body stores (hdrC); barPosition built from two named floats (xb); barPosition's
+  address exposed to an external call (xt, test only). None moves the pair. Open.
+### C4 `mov ecx,edi` at 0x00499094 and EndsWith `lea esi,[ecx+eax]` (no grade)
+- seal X: `sealY` named (s2), `sealX -= 4.0f` (s4) -> identical. EndsWith `&p[offset]`, `offset + p`, a named tail pointer, an
+  inline length difference -> identical or worse (hdrE..H). Open.
+
+## Session 3 -- row 0x0056AD40 CTCBoastUI::Activate (first draft against the shared headers)
+- D0 (measurement before the first edit): 0 grades; differ/0056ad40.cpp is a decoded draft with stand-in calls (Slot151 / Slot152 ...),
+  never compiled. Header opt-ins written first (hdr/README.md "Session 3"): FABLE_RETAIL_CTCBOASTUI, _CQUESTMANAGER_BOASTUI,
+  _CSCRIPTINFO_GETNAME, _CTCQUICKACCESSMENU_DEACTIVATE, _CTCQUESTCARD_QUESTNAME, _CTCCOMBAT_BLOCKING, _CTCFIREBALLSPELL (new header),
+  _CPLAYERGUI_CLOSE, _CSUBTITLERENDERER_INCUTSCENE, _CMENUENTRY_ACTIONPARAMS, _CACTIONPARAMSTRING_CTOR. Retail facts re-read from
+  work/r2.ann: SetStaticCast<CComponent> on CCountedPointer<CList> out of line 0x0042A2DB (Ego_r has the COMDAT 0x00438F92), the
+  slot-151 call is CMenuEntry::AddUIActionParam(entry) (labels + Ego_r), slot 144 on the detail list is CList::AddScrollingChild,
+  the new-group pair is default-built then `first = group` (no vector temporary), ActionTypes are UI_ACTION_TYPE_CLOSE_BOAST_MENU
+  (0xBBA) / _TAKE_BOAST (4) / _DELETE_PREVIOUS (0x26), the ": " / "\n" / " " / ", " operands are explicit CWideString temporaries
+  (`call 0x0099B6B0 ; push eax`, the fable_string.h note), CActionParamString takes a non-const CWideString& (both PDBs AAV).
+- D1 r2_v1 (compiled, not graded; dd.py v retail): 5060 v 4284 bytes, strict 56.9% / loose 88.6%, frame 0x210 v 0x208.
+  calls.py: retail 238 calls, ours 257, 208 aligned. Ours expands what retail calls out of line: list::size 0x004B87D0 (second loop),
+  both local map ctors 0x0056E4A0 / 0x0056D770 (and their dtors), SetStaticCast 0x0042A2DB, make_pair 0x0056CB40 + pair converters
+  0x0056CB60 / 0x0056DAB0, map find 0x0056D130, insert_unique 0x0056D9F0, vector push_back 0x0056DCE0 (one site), every
+  ~CCountedPointer (retail calls the COMDATs 0x00429B72 / 0x00429C53 / 0x00429D8E at all 13 sites). Ours calls the bitset test
+  0x00410DE0 at both GetTC sites where retail tests in place (FABLE_RETAIL_STLP_BITSET_TEST_DECL: wrong for this TU, dropped in v2).
+  PrepareForLoad: our symbol binds to 0x00438460 in reloc_bindings, retail calls 0x004382C0 -> landed spelling conflict to check.
+- D2 r2_v2 = v1 without FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail tests the UsingComponents word in place at both GetTC sites)
+  and the 0x004382C0 callee respelled ForceClearGui (NAME_FIXES: 0x00438460 is the real PrepareForLoad). GRADED: DIFFER(5031v4284).
+  The 747-byte excess is the inline residue listed in D1 (ours expands what retail calls). Next: c2 inline-decision trace
+  (work/inl/run.sh r2_v2) to read the per-site cost / frequency / score of the sites retail declines.
+- D3 (diagnostics on r2_v2, no grade): c2 inline-decision trace work/inl/r2_v2.json (312 decisions in Activate, threshold field T=74
+  at every site; score = cost after savings scaled by the block-frequency guess). Ours expands every site retail calls with scores
+  under 74: ~CCountedPointer 47 (f 0.98, all 13 sites), map ctors 63 (f 0.195), first list::size 41 (f 0.195), SetStaticCast 59,
+  make_pair 24 / pair converters 25 / ~pair 31. But retail EXPANDS sites whose scores here are higher than those: BoastGroups.clear 68,
+  bitset::test 58 (hero GetTC at the end, g 3800), the second list::size 26, AddParam 39, vector push_back 36. So no single threshold
+  reproduces retail with our per-site scores: retail's scores at the called sites must differ (cost or frequency), not the cut-off.
+  Per-row flags tried (compile only): /d2inlT45 -> 4514 B, the ~CCountedPointer sites go out of line (calls 0x00429160 / 0x004291DE;
+  retail calls the ILT thunks 0x00429B72 / 0x00429C53 that jump there) but the bitset test goes out of line too and the map ctors stay
+  in line (so /d2inlT is not this T); /d2inlS5 -> 5031 B, no change. Independent residue seen in every variant: the TAKE_BOAST text is
+  fetched (and its CCharString temporary destroyed) BEFORE the CreateMenuEntryComponent arguments -> a named CWideString local (v3).
+- D4 r2_v3 = v2 with the take-boast label as a named CWideString local. GRADED: DIFFER(5039v4284), strict 58.6% / loose 90.3%
+  (v2: 57.2% / 89.4%), calls aligned 213 / 238 (v2 210). The GetTextBySymbol / ~CCharString order hunk is gone. Parked as
+  differ/0056ad40.cpp (best). Stopped here: context budget; the rest is the inline-decision residue of D3.

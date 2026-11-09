@@ -67,4 +67,57 @@ FableWin ?EndsWith@CCharString@@QBE_NABV1@@Z (0x0187F050); no copy in Ego_r.pdb 
 StartsWith precedent), because the plain inline body costs 405 in c2's inline model (strcmp intrinsic) and stays a call where retail
 expands both sites (work/inl/r3_v1.json). Body `long offset = GetLength() - suffix.GetLength(); if (offset >= 0) return strcmp(...)
 == 0; return false;` -- the only spelling of three that gives retail's block layout (`js` to the false store last, `sete` in each
-strcmp exit; TRACE B5). Note: a root header; the row includes it first so the overlay copy wins (GOTCHAS chunk 863).
+strcmp exit; TRACE B5). Next to the landed StartsWith opt-in (chunk 784) in the same class. Session 3: the row no longer includes
+fable_string.h itself; it reaches the opt-in through the normal include chain (hdr/fable_user_profile.h and the engine headers
+include "fable_string.h", which resolves to this overlay copy; after the merge into rebuild/include there is one copy), so no
+include-order device remains in the row.
+
+# Session 3 -- row 0x0056AD40 CTCBoastUI::Activate (all additive; default paths unchanged)
+
+## engine/CTCBoastUI.h -- `FABLE_RETAIL_CTCBOASTUI` (the generated pack(1) struct is the #else path)
+`class CTCBoastUI : public CTCBase` (RTTI; forces FABLE_RETAIL_CTCBASE), vtable 0x0124DCFC overrides (slots 0/4/11/21/22/26 per
+rtti-vtables), Ego_r.pdb members at retail sizes: BoastGroups +0x0C map<NUISystem::CMenuEntry*, CQuestManager::CBoast>, Active +0x18,
+Components +0x1C vector<NUISystem::CComponent*>, Quitting / AllowedToOpen / ActivationRequested / ActivateLater +0x28..+0x2B; sizeof
+0x2C (static assert). Member functions in the Ego_r.pdb spelling (TU 0x005E1290..0x005E3700). Needs FABLE_RETAIL_CQUESTMANAGER.
+
+## engine/CQuestManager.h -- `FABLE_RETAIL_CQUESTMANAGER_BOASTUI` (nested)
+CActiveQuest head (ID +0, PScriptInfo +4, PScript +8; Ego_r.pdb) with FableWin's inline HasScript / GetScriptInfo; the layout branch
+types RegisteredQuestNames +0x2C and ActiveQuests +0x38 (list<CCountedPointer<CActiveQuest> >) in place of the default branch's opaque
+bytes (same offsets); FableWin inline GetActiveQuests; out-of-line GetBoastsForScript 0x004B19F0 and GetActiveQuestCardFromScriptName
+0x004B0C80 (Ego_r + FableWin spellings). #error if combined with the REGIONLOCK / LOADGAMESTATE layouts (both model those bytes).
+
+## engine/CScriptInfo.h -- `FABLE_RETAIL_CSCRIPTINFO_GETNAME`
+FableWin ?GetName@CScriptInfo@@QBEABVCCharString@@XZ (0x0239E200), inline (Name +8 read in place by Activate).
+
+## engine/CTCQuickAccessMenu.h -- `FABLE_RETAIL_CTCQUICKACCESSMENU_DEACTIVATE`
+FableWin inline StatGetInterfaceType (TCI_QUICK_ACCESS_MENU 246) and ?Deactivate@CTCQuickAccessMenu@@QAEXXZ 0x00625920 (Ego_r
+0x0066A140, FableWin 0x02119DD0; the landed binding ?RequestClose... is a NAME_FIX). Includes engine/ETCInterfaceType.h under the opt-in.
+
+## engine/CTCQuestCard.h -- `FABLE_RETAIL_CTCQUESTCARD_QUESTNAME` (nested in FABLE_RETAIL_CTCQUESTCARD)
+FableWin inline StatGetInterfaceType (TCI_QUEST_CARD 108) and ?GetQuestName@CTCQuestCard@@QBE?AVCWideString@@XZ 0x00702310.
+
+## engine/CTCCombat.h -- `FABLE_RETAIL_CTCCOMBAT_BLOCKING` (nested in FABLE_RETAIL_CTCCOMBAT)
+?IsBlocking@CTCCombat@@QBE_NXZ 0x007331E0 and ?UnsetBlocking@CTCCombat@@QAEXXZ 0x007338A0 (Ego_r + FableWin); declarations only.
+
+## engine/CTCFireballSpell.h -- NEW (`FABLE_RETAIL_CTCFIREBALLSPELL`; without it the header only forward-declares the class)
+RTTI CTCFireballSpell : CTCBase; FableWin inline StatGetInterfaceType (TCI_FIREBALL_SPELL 157) and ?CancelMove@CTCFireballSpell@@QAEXXZ
+0x007C8FD0 (Ego_r 0x007C7D90, FableWin 0x02721140). Data members not modelled (pointer use only).
+
+## engine/CPlayerGui.h -- `FABLE_RETAIL_CPLAYERGUI_CLOSE`
+?Close@CPlayerGui@@QAEX_N@Z 0x00438400 and ?ForceClearGui@CPlayerGui@@QAEXXZ 0x004382C0 (Ego_r 0x0044B0F0, FableWin 0x01A7CAC0).
+0x004382C0 is landed as PrepareForLoad, which is 0x00438460: NAME_FIXES.tsv.
+
+## engine/CSubtitleRenderer.h -- `FABLE_RETAIL_CSUBTITLERENDERER_INCUTSCENE`
+FableWin ?IsInCutscene@CSubtitleRenderer@@QBE_NXZ (0x0187F200), inline (byte +0xF6 of the CPlayerGui singleton).
+
+## engine/NUISystem_CMenuEntry.h -- `FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS`
+The first two virtuals CMenuEntry adds after CClickable's last slot 149: AddThingActionParam(long) slot 150 0x0053DCD0 and
+AddUIActionParam(CActionParam*) slot 151 0x0053DD50 (Ego_r + FableWin spellings; Activate's `call [edx+25Ch]`).
+
+## engine/NUISystem_CClickable.h -- `FABLE_RETAIL_CACTIONPARAMSTRING_CTOR`
+??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z declared out of line (retail 0x0054DAE0, landed); the in-class body is #else.
+
+## fable_definition_table.h -- overlay mirror only (unchanged copy)
+rebuild/include/fable_definition_table.h includes "fable_string.h" from its own directory, so in the overlay build it pulled the repo
+copy next to hdr/fable_string.h (C2011 redefinitions via CTCCombat -> CCombatAbilityData -> CDefString). The unchanged copy makes the
+include resolve to the overlay; drop it at the merge (there is one fable_string.h in rebuild/include).

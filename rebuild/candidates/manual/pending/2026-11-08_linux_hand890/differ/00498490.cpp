@@ -1,6 +1,6 @@
 // CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float progress, bool use_progress) -- draw the retail loading / auto-save screen: advance the stage count (or follow the installer's progress), pick the next loading picture half way, draw the loading picture or the six auto-save backdrop tiles, the progress bar, the black screen, the guild seal animation and the tip / save text
-// Grade: DIFFER(5101v5101) (probe r3_v7, 7 grades) -- size equal, strict 84.1% / loose 99.9%. Residue: (1) frame slot packing (same frame 0x5C; formattedWindow joins slot A 0x10 so display / scaleX / text / fraction / the 0x30-0x38 groups sit 8 bytes higher than retail; c2 packer: items by size asc + weight desc, each joins the most recent slot it fits (size <= 2x slot, no interference), work/s2/e10.order); (2) `mov ecx,edi` one slot early at 0x00499094.
-// Next: find why retail's tile-1 temporary T11920 (`GFAYToVY(256.0f) * scaleY`) cannot join slot A (total, tag) and opens slot 0x38 (work/s2/e10.order lists every item with retail's slot); then the seal block's `this` load order.
+// Grade: DIFFER(5101v5101) (probe r3_v8 = this file's bytes, 8 grades) -- size equal, strict 99.2% / loose 99.9%; frame slots all at retail's (fx MISMATCH 0). Residue (11 instructions): x87 load order of the four sums whose left operand is barPosition.Y (0x00498A7B / 0x00498B73 / 0x00498C88 / 0x00498DA8: retail `fld [bar.Y] ; fadd [temp]`, ours the temp first -- canonicalised: textual swaps, ctor body forms, named extents / offset locals, a named barPosition from floats change nothing); `mov ecx,edi` one slot early at 0x00499094 (seal X: `sealX -= 4`, named sealY change nothing); EndsWith `lea esi,[ecx+eax]` v ours `[eax+ecx]` at 0x0049941A / 0x004994ED (pointer + offset spellings change nothing).
+// Next: the barPosition pairs are the only x87 pairs that differ (tip / seal boxes match): find the IL property of barPosition (c2 x87 operand choice) with a c2 hook on the fadd emission, then the scheduling of the GetRenderTargetDimensions `this` load; TRACE.md C1-C4.
 // Leaf: ?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_SUBSTRING
@@ -32,7 +32,6 @@
 #define FABLE_RETAIL_CUSERPROFILEMANAGER_AUTOSAVENAME
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING
-#include "fable_string.h"
 #include "fable_user_profile.h"
 #include "engine/C2DVector.h"
 #include "engine/C2DExtentsF.h"
@@ -130,18 +129,21 @@ void CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float prog
                 const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
                 float scaleX = GPDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
                 float scaleY = GPDisplayManager->GetRenderTargetDimensions().Y * (1.0f / 480.0f);
+                // Six backdrop tiles (2 x 256 + 128 wide, two rows) from the four-float box ctor: retail keeps each tile's BRX and
+                // BRY in separate 4-byte frame slots (0x00498686: BRX [F+10h], BRY [F+38h]), which a C2DVector corner temporary
+                // (8 bytes) would not give.
                 C2DBoxF box;
-                box = C2DBoxF(C2DVector(GFAXToVX(0.0f), GFAYToVY(0.0f)), C2DVector(GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY));
+                box = C2DBoxF(GFAXToVX(0.0f), GFAYToVY(0.0f), GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY);
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[0], 0, 0);
-                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY));
+                box = C2DBoxF(box.BRX, box.TLY, box.BRX + GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY);
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[1], 0, 0);
-                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(128.0f) * scaleX, GFAYToVY(256.0f) * scaleY));
+                box = C2DBoxF(box.BRX, box.TLY, box.BRX + GFAXToVX(128.0f) * scaleX, GFAYToVY(256.0f) * scaleY);
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[2], 0, 0);
-                box = C2DBoxF(C2DVector(GFAXToVX(0.0f), box.BRY), C2DVector(GFAXToVX(256.0f) * scaleX, box.BRY + GFAYToVY(256.0f) * scaleY));
+                box = C2DBoxF(GFAXToVX(0.0f), box.BRY, GFAXToVX(256.0f) * scaleX, box.BRY + GFAYToVY(256.0f) * scaleY);
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[3], 0, 0);
-                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(256.0f) * scaleX, box.TLY + GFAYToVY(256.0f) * scaleY));
+                box = C2DBoxF(box.BRX, box.TLY, box.BRX + GFAXToVX(256.0f) * scaleX, box.TLY + GFAYToVY(256.0f) * scaleY);
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[4], 0, 0);
-                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(128.0f) * scaleX, box.TLY + GFAYToVY(256.0f) * scaleY));
+                box = C2DBoxF(box.BRX, box.TLY, box.BRX + GFAXToVX(128.0f) * scaleX, box.TLY + GFAYToVY(256.0f) * scaleY);
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[5], 0, 0);
             }
         } else {
@@ -279,11 +281,17 @@ void CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float prog
             WordWrap_SetCallback(GetCharWidthW, 0);
             float left = display.GetRenderTargetDimensions().X * 0.125f;
             float scale = display.GetRenderTargetDimensions().Y * (1.0f / 480.0f);
+            // The text window (an eighth of the screen in from each side, from y 100 to 300 at 640x480) as a named box: it lives
+            // over the whole block, so the formatted window below cannot share its frame slot (retail: window [F+58h],
+            // formattedWindow [F+38h] with the GetRenderTargetDimensions temporaries and extents).
+            C2DBoxF window(C2DVector(left, scale * 100.0f), C2DVector(display.GetRenderTargetDimensions().X - left, scale * 300.0f));
             C2DBoxF vbox;
-            GFABoxToVBox(C2DBoxF(C2DVector(left, scale * 100.0f), C2DVector(display.GetRenderTargetDimensions().X - left, scale * 300.0f)), vbox);
+            GFABoxToVBox(window, vbox);
             CWideString formatted;
-            C2DBoxF formattedWindow;
-            FormatTextForVWindow(vbox, *PFont, text, formatted, formattedWindow);
+            {   // the window the text was fitted into is not used afterwards
+                C2DBoxF formattedWindow;
+                FormatTextForVWindow(vbox, *PFont, text, formatted, formattedWindow);
+            }
             vbox.TLY -= GFAYToVY(10.0f);
             vbox.BRY -= GFAYToVY(10.0f);
             DisplayCenteredText(*PFont, formatted, vbox);

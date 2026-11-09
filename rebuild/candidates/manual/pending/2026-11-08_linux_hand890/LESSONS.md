@@ -28,3 +28,15 @@ Review at landing:
   the MOST RECENTLY created slot whose size >= half the item and whose members do not interfere, else opens a new slot; slots are
   laid out in creation order. agent887's pk.sh / ord.sh (copied to work/pk/) give the order; the symbol number is word 10 of the
   sym record (work/s2/e10.order maps every item to retail's slot through work/s2/slotmap.py).
+- (chunk 890 s3) c2's frame packer treats an address-taken local as live over its whole enclosing block: an inner block around a
+  short-lived out-parameter (formattedWindow) is the lever that moves it to another slot; a named local live across a block keeps
+  a later item out of that slot.
+- (chunk 890 s3) A C2DVector temporary in a box ctor is ONE 8-byte packer item; the four-float C2DBoxF ctor makes four 4-byte items
+  that pack like retail's (the slot rule is size <= 2 x slot size, no interference, most recent slot first).
+- (chunk 890 s3) In the overlay build a repo header that includes "fable_string.h" from rebuild/include itself (fable_definition_table.h
+  via CDefString) pulls the repo copy next to hdr/fable_string.h (C2011): mirror that header unchanged into hdr/.
+- (chunk 890 s3) VC7.1 inline decisions are per site: score = cost after savings scaled by c2's block-frequency guess, cut-off T=74
+  (work/inl/inl.py logs sz / c1 / f / sc / r). When retail calls sites whose scores are below sites it expands, the difference is
+  in retail's scores (control-flow frequency or callee cost), not the cut-off; /d2inlT<N> is not that T.
+- (chunk 890 s3) Retail Fable.exe calls some COMDATs through ILT jump thunks (0x00429C53 `jmp 0x004291DE` = ~CCountedPointer<CComponent>),
+  so a call target that differs from the bound body address can still be the same function.
