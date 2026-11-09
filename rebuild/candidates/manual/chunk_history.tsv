@@ -28084,3 +28084,26 @@ chunk	address	module	name	length
 892	00b6fa40	CEngineWaterRenderer	RenderSeaMidground	2019
 892	00b5e0f0	CEngineScreenEffectRadialBlurRenderer	ApplyRadialBlur	1547
 892	00bf01e0	CEnginePrimitiveRenderUtil	SetupOutlineSmoothAlphaStencilMaskStates	1374
+894	00436d60	CThingSearchTools	GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_OverlappingCircle>	583
+894	004ad810	_gapscan	sub_004ad810	125
+894	00702d10	CThingObject	CThingObject::vfunc_25	240
+894	00739030	CTCCombat	ResetBlockPercentageChance<CCombatAbilityBlockHeavyWeaponAttackDef>	262
+894	00772490	CTCShop	IsBarberShop	127
+894	007921a0	_gapscan	sub_007921a0	14
+894	00863e70	CWorld	GetAllThingsInRoughArea<CThingFilter_HasPhysicsMesh>	583
+894	008adcc0	CThingSearchTools	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	583
+894	00978250	CThingSearchTools	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	583
+894	009aa440	std::pair<const CCharString,CBankFileManager::CBankInfo>	~pair	47
+894	00b84190	CEngineClothSimulationMeshBase	CEngineClothSimulationMeshBase::~CEngineClothSimulationMeshBase_Alt	75
+894	00c6eef0	_gapscan	sub_00c6eef0	507
+894	00f28990	_global	vector_insert_impl_CThingBuildingDef	522
+894	00f3fb60	vector<EWeaponClass	_Umove<EWeaponClass*>	36
+894	009e1960	_global	GFStringToInt	74
+894	009e1a80	_global	GFStringToInt	75
+894	00a17620	CPhysicsMesh	HasBoundingSphereIntersectedFromTo	99
+894	00c720c0	CAudioSource	StartFade	111
+894	00d259a0	NScript::CQ_DragonBossFightScript::CDragon	OnPredicateFail	64
+894	00492ed1	CSubtitleRenderer	SetText	152
+894	009350c0	CAIStateGroup_ScriptingBase<CAIStateGroupBase>	Fired	159
+894	00c11520	_global	Inventory_ProcessNavigationItem	163
+894	008c7280	CCreatureAction_TrollGroundPound	?Initialise@CCreatureAction_TrollGroundPound@@UAEXXZ	268
