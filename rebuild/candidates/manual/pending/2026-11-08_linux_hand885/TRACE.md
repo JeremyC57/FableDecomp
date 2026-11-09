@@ -14,3 +14,31 @@ gv.sh = grade + cmp strict (frame masked) / loose (regs+frame masked) + tools/ca
 | s5_altslide | Codex's unreviewed alternate: SlideTeleport `float fraction = (float)i; C3DVector position(start); position += step * fraction;` (both sites) | gv.sh: DIFFER(74882v74778) strict 19718 / loose 20178 / calls 4034 (= base); m3 exact 89.8 / regs 92.0 / r+f 98.5 (base 89.0/91.2/98.5); fmap 651 of 1051 slots identical (base 591); frame 0x18DC kept. x87 review v retail 0x00CC593E: X product now `fld step.X; fmul st(1)` and `fld start.X; fadd st(2)` as retail (base dup'd fi with `fld st(0)` first); still differs: retail spills the Y product (`fstp [-1424h]`, then `fld tmpY; fadd start.Y`) and multiplies `fld step.Y; fmul st(2)`, alternate dups fi (`fld st(1); fmul step.Y`) and spills Z | KEPT -> src/ |
 | diag | (no grade) CrowdTeleportRipple `count` (src line 2432) | c2prio: count #1319 prio -22 split; piece #2201 (prio 6, the main-loop region) gets edi, the rest memory; retail keeps count in memory there (`mov ebx,[ebp+8]`, `cmp esi,[ebp+8]`), which is what removes the loop-entry IsAlive copy. Retail's refs to count are the same; the piece's value differs through block weights -- no plain spelling identified | -- |
 | final | src/ = s5_altslide + header comments (line 1 restored for finish.py, Inline-budget line names IS_THING_ALIVE 0x0040DCE0) | gr.sh: DIFFER(74882v74778); non-comment lines identical to t5/alt_slide.cpp | DIFFER(74882v74778) |
+
+# TRACE -- session 6 (2026-11-09, all-means push)
+Fitness (no full grade): tools/pk/fit.sh <src> <tag> (~60 s: compile through the frame-packer probe, m3 exact/regs/regs+frame,
+frame items at retail offset, first differing instruction) -> s6/LEADERBOARD.tsv; tools/pk/wi.py <src> <tag> 'name=prio' 'watch'
+(~70 s: c2 what-if + chosen registers) then tools/pk/first.py <obj> --noframe --n N (first REGISTER-level differences).
+
+| ver | change | tool / measurement | result |
+|---|---|---|---|
+| frame | c2 frame packer read from c2.dll (0x107ae0c4 K&R quicksort, comparator 0x107ae9c2) | tools/pk/pkg.py hook + sim.py model | model reproduces 905/905 items; weights = memory refs counted BEFORE cross-jumping; ties = order an item reaches its final weight (unstable quicksort, middle pivot); greedy weight search (tools/pk/ws.c) best 779/893 slots, $T25247 (substitution find temp) w1->2 alone +186 -- frame follows the spill set, so registers first |
+| wi n20/n25/n30 | what-if: prio(name) forced 20 / 25 / 30 at insertion (0x10782b26) | wi.py | 20, 25 -> retail prologue (name ebx, -1 esi); 30 -> ours: retail needs prio(name) <= ~25-29 (ours 38 = 2*K, K = 19 in the entry block) |
+| chain | why: the -1 prologue piece (#925, prio 44) only exists after 15 splits of the const -1 web (tools/pk/chain.py t5/prio_base.trace 6185 925); name (38) is coloured at 5459, long before | chain.py | the decision is split timing, not the -1 piece's own priority |
+| a1 | TintScreenOut: `float fadeOutTime = GFCharStringToFloat(params[0]);` before the pDSTGame load (0x00CD11E0) | fit + gr.sh | DIFFER(74877v74778) strict 19722 (base 19718); kept |
+| ck_goto | CrowdKill final wait as a goto loop | fit | identical to a1 (4th loop family): dead end |
+| a2 | IsEnd twin respelled FABLE_FORCEINLINE (rule), #ifdef pair collapsed | gr.sh | byte-identical to a1 |
+| K list | candidates referenced in the entry block (t5/prio_base.json 'ref' events): name, actors, def, restoreFollowers, crowdLooking, keepActors, extrasRemoved, doScriptFrames, conversation, relightHandLamp, fadeInAtEnd, flagWasSet, 3 unnamed pointer temps (line 2) + constants 0/-1/1 = 19 | json | 7 of them (restoreFollowers crowdLooking keepActors extrasRemoved relightHandLamp fadeInAtEnd flagWasSet) never get a register in any piece, ours or retail (no lea of their slots in retail either) |
+| nc1 | `(void)&flag;` x7 | fit | identical (c1 drops it) |
+| nc2 | FABLE_FORCEINLINE `Touch(bool&)` x7 | fit | identical (by-ref parameter of an inlined call keeps the candidate) |
+| nc3 | flags as `bool x[1]` | wi | name still 38: arrays of 1 stay candidates |
+| nc4 | escape: `FableProbeEscape(&flag x7)` at the end (probe only) | wi + first --noframe | name prio 24 -> ebx (retail); first register diff 8 -> 459 |
+| nc5 | `static inline SetFlag(bool&, bool)` at the 9 set sites | wi | name 38: no effect |
+| nc6 | `bool& rN = flag;` x7 (unused local references, no code) | wi + gr.sh | name 24 -> ebx; first register diff 459; DIFFER(74865v74778) strict 19733 (+11); frame 0x18D0 (retail 0x18DC) |
+| nc7 | nc6 + `bool& r8 = b234;` | wi | identical to nc6 |
+| a3 | nc6 with named references + evidence comment | gr.sh | DIFFER(74865v74778) strict 19733; src/ = differ/ = a3 |
+| wi nc6d10/20 | what-if prio(dot) 10 / 20 | wi | dot leaves edi; next diff 465: `space` takes edi where retail stores it ([ebp-0x10]): retail has the const-0 piece in edi over the parse region (cmp [ebp+0x7c], edi at 0x00CC028D) |
+| nc8 | a3 + `long& dotRef = dot; long& spaceRef = space;` | wi | worse (name back to esi via -1 split timing; m3 exact 14578): dot/space must stay candidates |
+| c2prio a3 | s6/prio_a3.trace (285 s) | trace | dot #758 prio 25 allowed only edi (esi = line*4, ebx = c #760 prio 31) -> edi; retail: c (379-381) coalesced with the const-0 piece in edi (`cmp [ebp+0x7c], edi`, `inc edi`, `push edi` = GetSubString(0, ...)), dot/space memory: the const-0 region piece must be born and coloured before c (31) -- split timing, as for -1 |
+| nc9 | a3 + references for the if-body memory-only locals skipping resetThemeAtEnd answered answer screenFilter | wi | first-reg 459 -> 79 (setup param load 0x00CBFCD8): rejected |
+| nc10 | a3 + references for skipping resetThemeAtEnd answered only | wi | first-reg 252 (0x00CBFF39 esi/ebx): rejected -- only the 7 top-level flags are out of the candidate list in retail's entry block |

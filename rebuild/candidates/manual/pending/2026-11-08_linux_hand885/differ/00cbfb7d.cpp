@@ -1,8 +1,8 @@
 // RunCutsceneMacro(const CCharString& name, map<CCharString, CScriptGameResourceObjectScriptedThingBase>& actors, map<CCharString, bool>* flags, map<CCharString, CCharString>* substitutions, bool setup, bool keepPlayerControl) -- run a cutscene def's macro: one ASCII `[Actor].Verb arg,arg,...` line per frame step, dispatched by a strncmp verb chain
-// Grade: DIFFER(74882v74778) -- session 5 = Codex checkpoint + Codex's SlideTeleport alternate; frame 0x18DC = retail; t5/m3.py exact 89.8% / regs-masked 92.0% / regs+frame-masked 98.5%; calls 99.2% (only cross-jump tails + register-downstream hunks).
-// Next: register roles (prologue name -> ebx / -1 -> esi in retail; c2 colours `name` before the const -1 split pieces and takes esi by table order), frame-slot tie order, prefix 0x00CC0418, SlideTeleport Y spill, CrowdKill loop (spellings exhausted). WORKLOG Session 5.
+// Grade: DIFFER(74865v74778) -- session 6: strict difflib 19733/20435 (96.6%); first register-level difference moved from instruction 8 (prologue name/-1 roles) to 459 (main-loop parse: retail `dot`/`space` in memory, the const-0 piece in edi). Frame 0x18D0 (retail 0x18DC).
+// Next: const-0 piece over the parse region (0x00CC023C) must be coloured before dot (prio 25) and space (16); frame size follows the spill temps. WORKLOG Session 6.
 // Flags: /d2inlS8
-// Inline-budget: /d2inlS8 + per-site devices -- VC7.1 caps inlining by the caller's whole IL size, greedy in source order; S8 reproduces retail's 524 GetLength / 41 vector<CScriptThing>::operator[] out-of-line calls; `#pragma inline_depth(0)` regions outline the sites retail calls (iterator == 0x00CC8407, vector ctors 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, vector<CCharString>::operator[] x7 0x00CD147E..0x00CD17B0); `__forceinline` twins expand the sites retail expands (GetLengthExpanded 0x00CC0040, StartsWithExpanded 0x00CC03EA, IsEnd 0x00CC61B8 / 0x00CC6DA9); tools/calls.py --counts: no inline-site difference left. Plus IS_THING_ALIVE<CThing*> (retail 0x0040DCE0, called): its real read-only body kept in the TU as `__declspec(noinline)` under #ifdef _MSC_VER, so pThing is not address-exposed and shares its frame slot (frame 0x18E4 -> 0x18DC, Codex checkpoint).
+// Inline-budget: /d2inlS8 + per-site devices -- VC7.1 caps inlining by the caller's whole IL size, greedy in source order; S8 reproduces retail's 524 GetLength / 41 vector<CScriptThing>::operator[] out-of-line calls; `#pragma inline_depth(0)` regions outline the sites retail calls (iterator == 0x00CC8407, vector ctors 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, vector<CCharString>::operator[] x7 0x00CD147E..0x00CD17B0); FABLE_FORCEINLINE twins expand the sites retail expands (GetLengthExpanded 0x00CC0040, StartsWithExpanded 0x00CC03EA, IsEnd 0x00CC61B8 / 0x00CC6DA9); tools/calls.py --counts: no inline-site difference left. Plus IS_THING_ALIVE<CThing*> (retail 0x0040DCE0, called): its real read-only body kept in the TU as `__declspec(noinline)` under #ifdef _MSC_VER, so pThing is not address-exposed and shares its frame slot (frame 0x18E4 -> 0x18DC, Codex checkpoint).
 #pragma optimize("s", on)
 // Leaf: ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBFB7D, 74,778 bytes, `__fastcall` global (name in ecx, the actor map in edx,
@@ -220,13 +220,9 @@ bool __fastcall IS_THING_ALIVE(const T& thing)
 }
 
 // Inline-budget twin (line 5): `it == c.end()` with the body of STLport's _Rb_tree_base_iterator::operator== forced in place,
-// the find call evaluated before end() as retail does (0x00CC61B8 `mov eax,[eax] ; cmp eax,[map header]`). A __forceinline
+// the find call evaluated before end() as retail does (0x00CC61B8 `mov eax,[eax] ; cmp eax,[map header]`). A FABLE_FORCEINLINE
 // wrapper that only calls the plain operator== is capped like the operator itself, so the twin carries the body.
-#ifdef _MSC_VER
-template <class Iterator, class Container> static __forceinline bool IsEnd(const Iterator& it, const Container& c) { return it._M_node == c.end()._M_node; }
-#else
-template <class Iterator, class Container> static inline bool IsEnd(const Iterator& it, const Container& c) { return it._M_node == c.end()._M_node; }
-#endif
+template <class Iterator, class Container> static FABLE_FORCEINLINE bool IsEnd(const Iterator& it, const Container& c) { return it._M_node == c.end()._M_node; }
 
 // One cutscene frame: run a script frame when enabled, play this frame's sound cue and move the cue counter on.
 #define CUTSCENE_FRAME()                                        \
@@ -267,6 +263,17 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
     std::vector<CScriptThing> engageThings;
     std::vector<CScriptThing> damageThings;
     bool flagWasSet = false;
+    // Retail never enregisters these seven end-of-cutscene flags (memory-only at every reference) and its prologue needs them out
+    // of c2's register candidates: name takes ebx and the -1 constant esi (0x00CBFB91 / 0x00CBFC01) only when the entry
+    // block counts 12 candidates, not 19 (priority 2*K: 24, not 38). Holding them through references does that and emits
+    // no code (a natural spelling with the same IL is still wanted; WORKLOG Session 6).
+    bool& restoreFollowersRef = restoreFollowers;
+    bool& crowdLookingRef = crowdLooking;
+    bool& keepActorsRef = keepActors;
+    bool& extrasRemovedRef = extrasRemoved;
+    bool& relightHandLampRef = relightHandLamp;
+    bool& fadeInAtEndRef = fadeInAtEnd;
+    bool& flagWasSetRef = flagWasSet;
     if (GFGetPDefinitionManager()->GetDef(name, &def)) {
         pDSTGame->SetCutsceneMode(true, keepPlayerControl);
         pDSTGame->SetAllowScreenFadingIfAlreadyFaded(true);
@@ -3049,7 +3056,8 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                     }
                 } else if (command.StartsWith("TintScreenOut")) {
                     if (params[0].GetLength()) {
-                        pDSTGame->ScreenFilterFadeOut(GFCharStringToFloat(params[0]), screenFilter);
+                        float fadeOutTime = GFCharStringToFloat(params[0]);   // evaluated before the pDSTGame load (0x00CD11E0)
+                        pDSTGame->ScreenFilterFadeOut(fadeOutTime, screenFilter);
                         screenFilter = 0;
                     }
                 } else if (command.StartsWith("CameraEffect")) {

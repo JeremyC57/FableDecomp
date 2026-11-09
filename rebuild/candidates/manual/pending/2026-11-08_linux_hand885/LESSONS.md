@@ -56,3 +56,21 @@ Session 5 (2026-11-08):
   does not (WalkUpToThing 0x00CC2443): retail's `inc edi` is an allocation result, not a `++` spelling.
 - A frame of equal-density 4-byte slots (regime-1 layout) shows a block of slots shifted by 4 with a permuted boundary when one
   tie symbol differs; measure with a slot pairing (t5/fmap.py) and grade shapes with a frame-masked share, not the raw one.
+
+## Session 6 (GOTCHAS-ready)
+- c2 13.10.3077 priority K(b) counts every candidate referenced in the block, enregisterable or not: a 74 KB function's entry
+  block that initialises 7 flags which never get a register still makes the first `__fastcall` parameter's priority 2*19 = 38;
+  binding the flags to local references (`bool& r = flag;`, no code) removes them from the candidates (K 12, prio 24) and
+  flips name/-1 to retail's ebx/esi (RunCutsceneMacro 0x00CBFB91 / 0x00CBFC01).
+- Candidate removal without code: a local REFERENCE (or pointer) bound to the variable works; `(void)&x`, a by-reference
+  parameter of an inlined (FABLE_FORCEINLINE or inline) call, and `T x[1]` do not (all stay candidates).
+- A split constant's region piece can only take a register once it exists: the const -1 prologue piece (prio 44) appears after
+  15 splits, so a 38-priority parameter coloured earlier takes esi first. "Its priority is higher" is not enough -- check when
+  the piece is born (tools/pk/chain.py walks the split chain through reused ids).
+- c2 frame packer (frames > 0x80): items sorted by size, weights = memory references counted before cross-jumping, then a K&R
+  quicksort (0x107ae0c4, middle pivot, unstable) by density w*1000/size descending (comparator 0x107ae9c2, flag +0x18 first),
+  offsets top-down from 0x68: equal-density ties land in quicksort order, i.e. by when each item reached its final weight.
+- TintScreenOut (0x00CD11E0): retail evaluates GFCharStringToFloat(params[0]) before loading pDSTGame -> a named local before
+  the call, not an argument expression.
+- The 4th loop family for CrowdKill's wait (goto loop) compiles byte-identically to while/for: 0x00CCF7BE's top-tested shape is
+  not a spelling.

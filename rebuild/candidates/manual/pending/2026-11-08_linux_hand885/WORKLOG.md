@@ -4,7 +4,39 @@ Row: 0x00CBFB7D, 74,778 bytes, catalog `_global::RunCutsceneMacro`. PDB name `Ru
 two sources: reloc_bindings `?RunCutsceneMacro@@YIX...` stand-in with CCutsceneCastMap + catalog name; the cutscene
 helpers CSFindThing 0xCBF9DE / CSExtractParameterList 0xCBFACA landed alongside with the same PDB naming family).
 
-## Session 5 (2026-11-08) -- READ THIS FIRST (resumed from Codex's checkpoint; src/ = differ/ minus 2 grade lines)
+## Session 6 (2026-11-09, all-means push) -- READ THIS FIRST (src/ = a3; differ/ = src + 2 grade lines)
+Leaderboard (strict = gr.sh difflib retail ins matched /20435; m3 = tools/pk/m3x.py exact / regs-masked / regs+frame-masked;
+first-reg = tools/pk/first.py --noframe):
+| ver | bytes | strict | m3 exact/regs/r+f | first-reg | note |
+|---|---|---|---|---|---|
+| s5 src | 74882 | 19718 | 18344/18794/20134 | 8 | Session 5 end |
+| a1 | 74877 | 19722 | 18348/18796/20136 | 8 | TintScreenOut hoist (0x00CD11E0) |
+| a2 | 74877 | 19722 | = a1 | 8 | FABLE_FORCEINLINE respell (rule) |
+| **a3** | **74865** | **19733** | 18106/18540/20130 | **459** | 7 flags bound to references: K 19->12, name/-1 = retail |
+Measured:
+- First wrong decision (instruction 8): retail name ebx / -1 esi. What-if: prio(name) <= ~25-29 reproduces retail (20, 25 do;
+  30 does not). Ours 38 = 2*K(entry block), K = 19. The -1 prologue piece (prio 44) is born only after 15 splits of the const -1
+  web, after name is coloured (tools/pk/chain.py). Lever: remove candidates from the entry block. The 7 flags never enregistered
+  anywhere (restoreFollowers crowdLooking keepActors extrasRemoved relightHandLamp fadeInAtEnd flagWasSet) bound to local
+  references -> K 12, prio 24 -> ebx: first register difference 8 -> 459, strict +11, bytes 74877 -> 74865.
+  Devices that do NOT remove a candidate: (void)&x, by-ref param of an inlined call, x[1], inline setter (TRACE nc1..nc5).
+  The reference block is plain C++ with an evidence comment, but odd: a natural spelling with the same IL (the original probably
+  held these flags through references/pointers somewhere) is still wanted.
+- Next decision (instruction 459, 0x00CC023C main-loop parse): retail keeps `dot` and `space` in memory and holds the const-0
+  piece in edi (`cmp [ebp+0x7c], edi` 0x00CC028D); ours dot (prio 25) -> edi, c -> ebx. What-if dot <= 20 -> space (16) takes edi
+  next. Requires: the const-0 region piece coloured before dot and space (split timing again, as for -1). dot/space references
+  (nc8) are much worse: they must stay candidates. References for the if-body memory-only locals (skipping, resetThemeAtEnd,
+  answered, answer, screenFilter: nc9 first-reg 79; bools only: nc10 252) are worse too: only the 7 top-level flags go.
+  c is coalesced with the const-0 piece in retail (edi: `inc edi`, `push edi`); s6/prio_a3.trace is a3's full c2prio trace.
+- Frame: packer fully modelled (LESSONS Session 6); a3 frame 0x18D0 v retail 0x18DC follows the spill set -- fix registers first.
+- Local residues unchanged: StartsWith("$") 0x00CC0418, SlideTeleport x87 0x00CC5954.., CrowdKill loop 0x00CCF7BE (4 families
+  dead), WalkUpToThing moveType 0x00CC2443 (allocation: needs a register holding 0).
+Next lever: chain.py on a3's trace for the const-0 piece covering 0x00CC023C (when is it born, what exhausts its parent) and look
+for entry/loop-block candidates that never enregister in retail (same K device), then frame weights (slot 533 $T25247 w2).
+Resume: `bash gr.sh $PWD/src/00cbfb7d.cpp` (absolute path!) grades; `tools/pk/fit.sh <src> <tag>` and `tools/pk/wi.py` are the
+cheap fitnesses (tools/README.md).
+
+## Session 5 (2026-11-08) (resumed from Codex's checkpoint; src/ = differ/ minus 2 grade lines)
 State: **DIFFER(74882v74778), frame 0x18DC = retail**, /d2inlS8. src/ = Codex checkpoint (t5/codex_ckpt.cpp, DIFFER(74906v74778))
 + Codex's SlideTeleport alternate (codex/alt_slide_factor_compound, graded here and kept). Metrics (t5/m3.py, code to `ret 10h`):
 exact 89.8% / regs-masked 92.0% / regs+frame-masked 98.5% (checkpoint 89.0/91.2/98.5; our v41 49.5/52.4/98.5); gv.sh strict 96.5%,

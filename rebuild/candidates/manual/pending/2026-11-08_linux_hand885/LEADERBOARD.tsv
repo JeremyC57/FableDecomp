@@ -1,0 +1,7 @@
+01:19 base	74882v74778	exact 89.8% | regs 92.0% | regs+frame 98.5%	frameitems 809	first 8 ours mov esi, ecx | retail mov ebx, ecx @0x00cbfb91
+01:21 a1	74877v74778	exact 89.8% | regs 92.0% | regs+frame 98.5%	frameitems 809	first 8 ours mov esi, ecx | retail mov ebx, ecx @0x00cbfb91
+01:26 ck_goto	74877v74778	exact 18348 | regs 18796 | regs+frame 20136	frameitems 809	first 8 ours mov esi, ecx | retail mov ebx, ecx @0x00cbfb91
+01:37 nc1	74877v74778	exact 18348 | regs 18796 | regs+frame 20136	frameitems 809	first 8 ours mov esi, ecx | retail mov ebx, ecx @0x00cbfb91
+01:39 nc2	74877v74778	exact 18348 | regs 18796 | regs+frame 20136	frameitems 809	first 8 ours mov esi, ecx | retail mov ebx, ecx @0x00cbfb91
+01:42 nc3	74877v74778	exact 18348 | regs 18796 | regs+frame 20136	frameitems 809	first 8 ours mov esi, ecx | retail mov ebx, ecx @0x00cbfb91
+02:05 nc6	74865v74778	exact 18106 | regs 18540 | regs+frame 20130	frameitems 677	first 1 ours mov eax, 0x18d0 | retail mov eax, 0x18dc @0x00cbfb7e
