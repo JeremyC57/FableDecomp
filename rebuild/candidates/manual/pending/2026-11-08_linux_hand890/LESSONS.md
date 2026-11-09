@@ -55,3 +55,23 @@ Review at landing:
   separates them; `#pragma inline_depth(0)` ... `()` around each called statement and before each scope's closing brace does
   (0x0056AD40: -740 bytes, calls 213 -> 226 / 238). With FABLE_RETAIL_STLP_MAP a depth-0 map declaration calls the no-argument
   map ctor as retail does; without it the allocator temporaries are built at the call site.
+- (chunk 890 s5) Redundant parentheses around a floating sub-expression are NOT free in VC7.1: c1 emits a PAREN node that c2 keeps
+  as a no-code x87 tuple (0x269) through the list scheduler 0x1078734C, where it takes an x87 slot and shifts the instruction order.
+  `float sealX = (GFAXToVX(w) * 0.5f) - GFAXToVX(32.0f) - 4.0f;` gives retail's `fsub 4.0 ; mov ecx,edi` at 0x0049908E (without
+  the parentheses `mov ecx,edi` issues one slot early); parentheses around the whole expression, a call argument or a constant do
+  nothing. When two spellings give the same instructions in a different order, try parenthesising each floating sub-expression.
+- (chunk 890 s5) To find what retail's source must add for an order-only residue, dump the scheduler DAG (t22.py: nodes, edge kinds,
+  def/use lists) and re-run the scheduler in Python (work/s5/sim.py reproduces c2's picks exactly); search single DAG changes
+  (extra edge, latency, region cut, no-code node) against retail's order, then look for a source construct with that IL shape
+  (t21.py lists every region's tuples, including no-code ones like 0x269 / 0x2c3 labels).
+- (chunk 890 s5) VC7.1 does not value-initialise `T()` for a class with constructed members (PODs stay garbage): behaviour tests
+  must reset every field by hand (a g++-only PASS hid it; tall.py's VC7.1 run crashed).
+- (chunk 890 s5, row 0x0056AD40) Before reaching for inline_depth regions, fit the loop shapes to retail's call/expand split. c2's
+  rule (0x1078D1AA): score = c1 * (1/f + 6) / 7, accepted iff < 74 (c1 below S+5 always accepted); f is the call site's static
+  frequency. A `for` body runs at 5x and the code after the loop stays at the body's frequency; a `while` body runs at 9x and the
+  code after it drops back. One `for` -> `while` on the first of two quest loops moved every later site to retail's side (20 wrong
+  sites -> 3, no device) and removed the register drift the depth-0 regions had caused. Tools: work/s5/want.py (retail's expected
+  call / expand per site vs an inline trace), work/s5/fq/*.cpp (micro probes of loop shapes).
+- (chunk 890 s5) When the solved frequency constraints contradict each other (here f > 0.047 on a `continue` path that shares its
+  frequency with code that must stay <= 0.0327), the difference is a callee cost, not a shape: check the header model's bodies
+  (implicit vs declared dtor, out-of-line clear) with an extra overlay (work/s5/run2.sh, HX=dir) before adding devices.

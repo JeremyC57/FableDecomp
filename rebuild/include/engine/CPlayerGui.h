@@ -164,6 +164,17 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // (public static __fastcall), out of line in retail at 0x00438570 (no this set up at its callers). Declaration only.
     static const class CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_GRAPHICBANK
+    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x0044A200 / FableWin.pdb 0x01A7CC80
+    // ?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ, out of line in retail at 0x00437570 (`mov ecx,[ecx+14h] ; jmp 0x009FD0C0`,
+    // CGraphicDataBank::ChangeScene on Graphics; the landed StopProgress 0x00499D90 binds it under a non-PDB spelling), and FableWin.pdb
+    // ?PeekGraphicBank@CPlayerGui@@QBEABVCGraphicDataBank@@XZ (0x018B1330; inline in retail: DrawRetailDisplay pushes the Graphics
+    // word +0x14 read in place, 0x004986CC). PeekGraphicBank needs FABLE_RETAIL_CPLAYERGUI_CTOR (the typed Graphics member).
+    void ChangeGraphicsBankScene();                                      // 0x00437570
+#ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
+    const CGraphicDataBank& PeekGraphicBank() const { return *Graphics; }
+#endif
+#endif
     // Chunk 735 (row 0x00577AC0 CTCInventoryExperience::OpenInventoryInternalPC): Ego_r.pdb / FableWin.pdb
     // ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ, out of line at 0x00437CD0 (it reads
     // PHeroInfoScreensManager's scoped_ptr word at +0x32C).
@@ -172,6 +183,17 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Retail opt-in (chunk 795, row 0x005E78F0): Ego_r.pdb ?Open@CPlayerGui@@QAEXXZ, out of line at 0x004374B0 (landed callers, e.g.
     // the CTCQuestCompletionUI dtor 0x005E41E0). Declaration only.
     void Open();                                                         // 0x004374B0
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_CLOSE
+    // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): Ego_r.pdb 0x0044B4D0 / FableWin.pdb 0x01A7B5F0
+    // ?Close@CPlayerGui@@QAEX_N@Z (retail 0x00438400, `ret 4`) and Ego_r.pdb 0x0044B0F0 / FableWin.pdb 0x01A7CAC0
+    // ?ForceClearGui@CPlayerGui@@QAEXXZ (retail 0x004382C0, 30 bytes: the illustrators' for_each only), both out of line and called
+    // on a fresh read of the singleton word (Activate 0x0056AEA2 / 0x0056AEAD). 0x004382C0 is ForceClearGui, not PrepareForLoad: it
+    // sits right after the landed ClearGui 0x00438230 as Ego_r orders ClearGui 0x0044B060 (0x90) / ForceClearGui 0x0044B0F0 (0x30) /
+    // PrepareForLoad 0x0044B120, and PrepareForLoad is the 136-byte 0x00438460 (the sub-objects' PrepareForLoad fan-out, bound so by
+    // CWorld 0x004A0220) -- NAME_FIXES. Declarations only.
+    void Close(bool);                                                    // 0x00438400
+    void ForceClearGui();                                                // 0x004382C0
 #endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CRIME
     // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb 0x0044A410 / FableWin.pdb 0x01A7EF10

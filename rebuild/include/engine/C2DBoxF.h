@@ -41,6 +41,12 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  float GetBRY() const { return BRY; }
  float GetWidth() const { return BRX-TLX; }
  float GetHeight() const { return BRY-TLY; }
+#ifdef FABLE_RETAIL_C2DBOXF_EXTENTS
+ // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): FableWin.pdb ??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z
+ // (0x018B13C0, the top-left corner and the extents; inline in retail: the loading-screen bar pieces store TLX / TLY and the two
+ // sums, 0x00498A68 .. 0x00498A8B). Needs C2DVector / C2DExtentsF (the body follows the class).
+ C2DBoxF(const class C2DVector& top_left,const class C2DExtentsF& extents);
+#endif
 #ifdef FABLE_RETAIL_C2DBOXF_CENTRE
  // Nested opt-in (chunk 768, row 0x00969E70 CAIStateGroup_SleepOnFloor::IsRunnable): FableWin.pdb ??0C2DBoxF@@QAE@ABVC2DVector@@M@Z
  // (the square of half-size `radius` round `centre`; inline in retail: four x87 stores, no call) and Ego_r.pdb
@@ -53,6 +59,11 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CENTRE)
 #include "engine/C2DVector.h"
 inline C2DBoxF::C2DBoxF(const C2DVector& centre,float radius):TLX(centre.X-radius),TLY(centre.Y-radius),BRX(centre.X+radius),BRY(centre.Y+radius){}
+#endif
+#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_EXTENTS)
+#include "engine/C2DVector.h"
+#include "engine/C2DExtentsF.h"
+inline C2DBoxF::C2DBoxF(const C2DVector& top_left,const C2DExtentsF& extents):TLX(top_left.X),TLY(top_left.Y),BRX(top_left.X+extents.X),BRY(top_left.Y+extents.Y){}
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_CORNERS)
 #include "engine/C2DVector.h"

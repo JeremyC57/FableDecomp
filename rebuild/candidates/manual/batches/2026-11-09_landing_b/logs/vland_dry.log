@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00498490   WARN RELOC_NAME: ?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ -> 00437570 labelled '_global::Forward_ChangeScene_via0x14_00437570'
+00498490   RELOCATION_MATCH PASS   DrawRetailDisplay
+
+WINS: 1
+  00498490 RELOCATION_MATCH CProgressDisplay::?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z

@@ -11,6 +11,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
 #include "engine/C2DVector.h"
 #include "engine/CRGBColour.h"
@@ -649,12 +652,24 @@ public:
     long             RegionChangeGuildSealBorderGraphic;     // +0xa18
     float            RegionChangeGuildSealBorderOffset_X;    // +0xa1c C2DVector::X
     float            RegionChangeGuildSealBorderOffset_Y;    // +0xa20 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): the two STLport vector<long> members the
+    // loading screen reads typed (same 12 bytes each): RegionChangeGuildSealGraphics +0xA24 (size (+0xA28 - +0xA24) >> 2,
+    // element [GuildSealFrameIndex], 0x0049917B / 0x004992A4) and LoadProgressBackdropGraphics +0xA40 (elements 0..5 read
+    // through the start word, 0x004986C4 .. 0x0049895A).
+    std::vector<long> RegionChangeGuildSealGraphics;         // +0xa24
+#else
     unsigned char    RegionChangeGuildSealGraphics[0xc];     // +0xa24 vector<long,std::allocator<long>_>
+#endif
     long             LoadProgressBarLeftGraphic;             // +0xa30
     long             LoadProgressBarMidGraphic;              // +0xa34
     long             LoadProgressBarRightGraphic;            // +0xa38
     long             LoadProgressBarInnerGraphic;            // +0xa3c
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+    std::vector<long> LoadProgressBackdropGraphics;          // +0xa40
+#else
     unsigned char    LoadProgressBackdropGraphics[0xc];      // +0xa40 vector<long,std::allocator<long>_>
+#endif
     float            TavernGameBlockTLOffset_X;              // +0xa4c C2DVector::X
     float            TavernGameBlockTLOffset_Y;              // +0xa50 C2DVector::Y
     float            TavernGameBlockTMOffset_X;              // +0xa54 C2DVector::X

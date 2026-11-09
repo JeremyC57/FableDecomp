@@ -49,6 +49,11 @@ public:
     CWideString GetAutoSaveCheckPointFileName() const;                   // 0x004066F0 ?GetAutoSaveCheckPointFileName@..
     CWideString GetAutoSaveCheckPointPathName() const;                   // 0x00408040 ?GetAutoSaveCheckPointPathName@..
     CWideString GetPathNameFromFileName(const CWideString& fileName, bool b) const;   // 0x00408120 ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_AUTOSAVENAME
+    // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x00405860
+    // ?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ (hidden CWideString result), out of line in retail at 0x00406C20.
+    CWideString GetAutoSaveDisplayName() const;                          // 0x00406C20
+#endif
 protected:
     virtual void OnPreDeviceReset();                                     // ?OnPreDeviceReset@CUserProfileManager@@MAEXXZ
     virtual bool OnPostDeviceReset();                                    // ?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ

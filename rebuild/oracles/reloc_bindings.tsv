@@ -38720,3 +38720,14 @@ _DSPROPSETID_EAX30_ListenerProperties	012b9418	00c51a20
 ?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ	00774100	005a5b31
 ?RefreshEntriesAmountsAndAvailabilitiesPC@CTCInventoryTrade@@AAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@PAVCList@2@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@5@@3@@Z	0059fafe	005a5b31
 ?clear@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@QAEXXZ	005b21a1	005a5b31
+?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ	00437570	00498490
+?ConstructString@NGameText@@YI_NAAVCWideString@@ABV2@@Z	009c7980	00498490
+?DisplayCenteredText@CProgressDisplay@@ABEXABVCFontBank@@ABVCWideString@@ABVC2DBoxF@@@Z	00497fd0	00498490
+?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z	009de3f0	00498490
+?Draw2DGraphic@CRenderManager2D@@QAE_NABVC2DVector@@ABVCGraphicDataBank@@KKKK@Z	009dca80	00498490
+?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z	009dd210	00498490
+?FormatTextForVWindow@CProgressDisplay@@ABE_NABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@AAV2@@Z	00497f80	00498490
+?GResetProgressTipText@@3VCWideString@@A	013b89d8	00498490
+?GResetProgressTipTitleText@@3VCWideString@@A	013b89dc	00498490
+?GetCharWidthW@CProgressDisplay@@CIIG@Z	00498410	00498490
+?PFont@CProgressDisplay@@0V?$CCountedPointer@VCFontBank@@@@A	013b8998	00498490

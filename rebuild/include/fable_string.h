@@ -271,6 +271,20 @@ public:
     // __forceinline: the size-optimised CSubtitleRenderer TU expands it in place where a plain inline body is called out of line.
     FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
 #endif
+#ifdef FABLE_RETAIL_CCHARSTRING_ENDSWITH
+    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): FableWin.pdb ?EndsWith@CCharString@@QBE_NABV1@@Z
+    // (0x0187F050; no out-of-line retail copy is bound), inline in retail: 0x004993E2..0x0049945D takes the two lengths (a negative
+    // difference is false), the suffix's text and this string's text from one null test each, and compares the tail with the strcmp
+    // intrinsic (`sbb ; sbb ; sete`). __forceinline: Ego_r.pdb (the release build) has no out-of-line copy, and a plain inline body
+    // (c2 inline cost 405 with the strcmp intrinsic) is called out of line where retail expands both 0x00498490 sites.
+    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
+    {
+        long offset = GetLength() - suffix.GetLength();
+        if (offset >= 0)
+            return strcmp(GetAsCharArray() + offset, suffix.GetAsCharArray()) == 0;
+        return false;
+    }
+#endif
     // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
@@ -280,6 +294,12 @@ public:
     // ...`). Where CleanOutLine is expanded inside 0x009BC120 (0x009BC610..0x009BC632) retail indexes the text as [ecx+eax]; the
     // ternary below gives [eax+ecx]. Same code otherwise (`mov ecx,offset NullChar ; je ; mov ecx,[eax]`).
     const char* GetAsCharArray() const { const char* text = &NullChar; if (PStringData) text = PStringData->Data.PeekData(); return text; }
+#elif defined(FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN)
+    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): the early-return spelling of the same inline
+    // accessor. Where EndsWith expands it (0x00499411 / 0x004994E4: `mov ecx,offset NullChar ; je ; mov ecx,[esi]`) retail forms the
+    // tail as `lea esi,[ecx+eax]` (text as the base, the length difference as the index); the ternary below gives [eax+ecx], and the
+    // select spelling above gives [ecx+eax] at the first site only (the second site's text then outranks the offset for eax).
+    const char* GetAsCharArray() const { if (PStringData==0) return &NullChar; return PStringData->Data.PeekData(); }
 #else
     const char* GetAsCharArray() const { return PStringData==0 ? &NullChar : PStringData->Data.PeekData(); }
 #endif

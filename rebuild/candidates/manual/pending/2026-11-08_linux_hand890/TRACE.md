@@ -337,3 +337,75 @@ generators: one lever per variant, header variants as full hdr/ copies under wor
 - Left (calls.py): push_back 0x0056DCE0 at 0x0056BB0E / 0x0056BB75 (ours expands one, depth 0 there breaks the register web), map dtor
   0x0056D7B0 at 0x0056BC36 and list::clear 0x004B8C00 at the boasts exit (ours expands at the quest-loop exit), SetStaticCast binding
   (ours 0x0042A2CA through reloc_bindings, retail 0x0042A2DB: NAME_FIXES.tsv), then frame / register drift.
+
+## Session 5 (2026-11-09) -- row 0x00498490 `mov ecx,edi` at 0x00499094 (F3 continued)
+Tools (work/s5/): sim.py (re-implementation of c2's list scheduler 0x1078734C: heights 0x107b550a, prio = ((h + outdeg) << 10)
++ (loads-mem << 15) + store bit, ready list prio desc / idx asc 0x107b5309, 2 slots per cycle, one per unit 0x107b4f78, rescan from
+the head after each pick; reproduces t13_v5.json's picks exactly), search_dag.py / search_node.py / search_cvt*.py / search_split*.py /
+search_perm.py (single-change DAG searches against retail's order), cls.py (A/B classifier of the seal window in a /FAs listing),
+probe/t21.py (every scheduling region of a function with tuple kinds), probe/t22.py (DAG + edge kinds + operand def/use lists).
+### G1 what retail's DAG must have (no grade; sim.py on t13_v5.json)
+- Single-edge search (search_dag.py): 18 changes give retail's order, all of them delay `call GFAXToVX(32)` one cycle after the
+  `fstp tv` cycle (fstp->call latency >= 1, fmul->push 32 latency 3, ...) or tie `mov ecx,edi` behind the fsub. No IL order of the
+  same DAG does (search_perm.py: 360 topological orders, 0 hits). Region cuts (search_split2.py): a scheduling-region boundary right
+  after the fmul or right before the call reproduces retail.
+- Edge latencies (t22 over the whole row, probe/t22_row.json): RAW edges carry the producer's latency (call 0, fld/fxch 1, fstp 2,
+  fadd/fmul/fsub/fild 3, fcomp 4, idiv 46), WAR/WAW 0. The call's operand lists hold only esp / the FP control word / arg memory, so a
+  memory or register RAW from the tv store to the call cannot exist with these bytes: the difference must be a no-code tuple.
+### G2 the no-code tuple: 0x269 = a PAREN marker (no grade; probe/t21.py on probe/k269.cpp)
+- The row's region list (probe/t21_row.json) has exactly one no-code x87 tuple, 0x269, in `StageCount = (long)(300.0 -
+  (g_AutoSaveProgressEndTime - GFGetTime()) * 100.0)` between the fsubr and the fmul. Micro k269.cpp: 0x269 appears for every
+  parenthesised floating sub-expression ((a - b) * c, (float)(a * b)) and never without the parentheses (a - b * c, a * b). It emits
+  nothing but takes an x87 slot in the list scheduler.
+- Micro work/s5/m/g3.cpp (cls.py): `(GFAXToVX(w) * 0.5f) - GFAXToVX(32.0f) - 4.0f` (p1), `- (GFAXToVX(32.0f)) -` (p3), p4, p5 give
+  retail's `fsub 4.0 ; mov ecx,edi`; the listing differs from the base only by that swap. Parentheses around the whole expression,
+  the argument or the 0.5f (p6-p9), and `(a * 0.5f - b) - 4.0f` (p2), keep ours.
+- Change: probe/r3_s5a.cpp = differ + `float sealX = (GFAXToVX((float)dims.X) * 0.5f) - GFAXToVX(32.0f) - 4.0f;` -> fit strict
+  1418/1418 (100%).
+- Graded: probe/r3_s5a.cpp RELOCATION_MATCH; src/00498490.cpp (header block + this body) RELOCATION_MATCH (gall.sh); behaviour test
+  test/00498490.cpp PASS under g++ -std=c++03 -pedantic and VC7.1 (tall.py); finish.py regenerated payload.json / oracle.tsv.
+
+## Session 5 -- row 0x0056AD40 CTCBoastUI::Activate (frequency instead of devices)
+
+Tools (work/s5/): gen_r2.py / gen_loop.py (variants of r2_base.cpp = the session-4 differ), r2fit.sh (fit.sh + calls.py summary),
+want.py (reads an inline trace, lists every site whose call/expand choice retail shows, marks the ones that disagree), fq/q1.cpp +
+fq/q2.cpp + fq/fq.py (frequency micro probes), c2dis.py (c2.dll disassembler), slotmap.py (ours -> retail esp-slot pairs), run2.sh
+(inl/run.sh with an extra header overlay $HX). Inline traces: work/inl/s5_*.json (~50 s each).
+
+### H1 the scoring rule, read from c2.dll (no grade; c2dis.py 0x1078D1AA..0x1078D380)
+- c1 = callee IL size - savings (+ penalty); c1 < S+5 is accepted outright; otherwise score = (c1 * 1e8 / f + (k-1) * c1) / k with
+  k = 7 ([0x10881994]) and f = the call site's static frequency x 1e8, accepted iff score < T = 74. So score = c1 * (1/f + 6) / 7.
+  Checked against every logged site of work/inl/r2_v2.json (e.g. ~list c1 19: f 0.195 -> 30, f 0.312 -> 24; push_back c1 39 at
+  f 0.122 -> 79). list::size carries +8 (scores as 26).
+- Nested decisions (callees of an expanded callee) use the inlinee's own frequencies (f = 1.0 at its entry), not the caller's.
+
+### H2 what retail's frequencies must be (no grade; want.py on work/inl/s5_n0.json = r2_base without its 8 regions)
+- n0 (no devices): 20 of 34 checked sites disagree, all "retail calls, ours expands". Solving score >= 74 / < 74 for each with our
+  costs: first list::size (c1 26) needs f <= 0.0718 (ours 0.195); the boast-loop body (AddParam 39 expanded, SetStaticCast 59 and the
+  seven ~CCountedPointer 47 called) needs f in (0.137, 0.199] (ours 0.977); make_pair 17 at the group block needs <= 0.0408.
+- Micro probes (fq/q1.cpp, fq/q2.cpp): a `for` body runs at 5x the frequency before it and the code after a `for` stays at the body's
+  frequency; a `while` / `for(;;)`+break body runs at 9x and the code after it returns to the frequency before it; a do-while 10x;
+  a `for` inside an `if` 2.5x; `&&` in a for condition 2.5x; every `if` halves (a `continue` path included).
+- So our first quest loop (`for`) leaves the rest of the function at 5x: the second quest loop runs at 1.562, its body at 0.195,
+  the boast loop at 0.977.
+
+### H3 the first quest loop as a while loop (compile only, then grade)
+- work/s5/r2/l1.cpp (= n0 with loop 1 written `while (quest != activeQuests.end()) { ...; ++quest; }`): the second loop's body falls to
+  0.039 and the boast loop to 0.195. want.py: 3 of 34 sites left (the empty-boasts `continue` ~list called at 0.039, score 85;
+  make_pair 64 and the CBoast pair converter 68 expanded at 0.049). Without any device the fit is 4285 B, strict 70.3% / loose 94.7%:
+  push_back x2, the converter 0x0056DAB0 + insert_unique, the map ctors and dtors, SetStaticCast, every ~CCountedPointer and the
+  quest-exit ~list (clear 0x004B8C00 called, sentinel freed in line) now follow retail by plain C++. The prologue, `this` in edi and
+  the zero in ebp match retail too (the session-4 register drift was the depth-0 regions).
+- The for loop 2 and the boast loop must stay `for` (l3 / l13: a while boast loop puts its body at 9x, 17 / 14 sites wrong).
+- r2_s5a = l1 + one inline_depth(0) region around `BoastGroups.insert(std::make_pair(menuEntry, *boast));`: graded
+  DIFFER(4275v4284), strict 773/1110 = 69.6% / loose 1061/1110 = 95.6% (was 4299v4284, 65.7% / 93.3%, 8 regions).
+  r2_s5b = the same without the session-4 inner block: identical code, graded DIFFER(4275v4284) -> differ/0056ad40.cpp.
+- Left: (1) the empty-boasts `continue` (0x0056AFF6): retail expands ~list there. Score < 74 needs f > 0.047 there, but that path
+  and the code after it share one frequency, and the boast loop's x5 then puts the group block above 0.0408, where make_pair would
+  expand. No frequency assignment satisfies both with our costs, so one of the two costs (~list<CBoast> 19, make_pair 17 /
+  converter 18) differs in retail's IL. Implicit ~list (run2.sh + work/s5/hx) and FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE leave
+  c1 = 19. (2) The frame: 0x200 v retail 0x208; slotmap.py shows a reordered slot layout, not a uniform shift.
+  (3) Register / order drift inside the quest body, from 0x0056B133 (dd on work/objs/r2_s5b.obj: 113 displacement-only hunks,
+  19 jump targets, 230 other instructions): retail keeps boastSubList in esi with a spill at [esp+0x11C] where ours uses ebx; the
+  boast loop takes `&*boast` as `mov edi,[esp+1Ch] ; add edi,8`; and the CCharString arguments of the detail-list / backdrop
+  CreateComponent calls are built in a different place (difflib moves 9- and 26-instruction blocks around 0x0056B22E / 0x0056B242).

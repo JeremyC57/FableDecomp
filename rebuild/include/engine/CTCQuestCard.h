@@ -23,6 +23,9 @@
 #include "fable_string.h"                                                // CCharString
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTCQUESTCARD_QUESTNAME
+#include "engine/ETCInterfaceType.h"
+#endif
 class CQuestCardDef;
 class CWideString;
 
@@ -33,6 +36,14 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;                   // 21 0x007029F0
     virtual CCharString GetClassTypeName() const;                        // 22 0x00702A00
     virtual bool IsComponentSerialisable() const;                        // 23 0x00702A20
+#ifdef FABLE_RETAIL_CTCQUESTCARD_QUESTNAME
+    // Nested opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): FableWin.pdb ?StatGetInterfaceType@CTCQuestCard@@SI?AW4ETCInterfaceType@@XZ
+    // (0x01C6DC70; inline in retail: Activate looks up TC 108 = TCI_QUEST_CARD, `mov dword ptr [esp+20h],6Ch` at 0x0056AF84) and Ego_r.pdb
+    // 0x00723F90 / FableWin.pdb 0x025536C0 ?GetQuestName@CTCQuestCard@@QBE?AVCWideString@@XZ (out of line in retail at 0x00702310, the
+    // hidden result pushed at 0x0056AFB4). Needs engine/ETCInterfaceType.h (included below). No layout change.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_QUEST_CARD; }
+    CWideString GetQuestName() const;                                    // 0x00702310
+#endif
 #ifdef FABLE_RETAIL_CTCQUESTCARD_TELEPORTER
     // Nested opt-in (chunk 765, row 0x007021E0): Ego_r.pdb / FableWin.pdb ?SetTeleporterRegionName@CTCQuestCard@@QAEXABVCCharString@@@Z
     // (Ego_r 0x00723D20, first in the class's donor run; TeleporterRegionName +0x24).

@@ -29,5 +29,11 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long textId, bool a) const;   // 0x009C9070
     const CWideString GetTextBySymbol(const CCharString& symbol) const;            // 0x009C95E0
 };
+#ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING
+// Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x00B156F0
+// ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV2@@Z (__fastcall: ecx = the text, edx = the argument; substitutes the argument
+// into the text's parameter tag), out of line in retail at 0x009C7980. Declaration only.
+bool __fastcall ConstructString(CWideString& text, const CWideString& argument);   // 0x009C7980
+#endif
 }
 #endif // FABLE_ENGINE_NGAMETEXT_CDATABANK_H

@@ -19,6 +19,13 @@ class CTCCombat:public CTCBase {
 public:
  static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
  bool IsAbleToBeKnockedDown() const;
+#ifdef FABLE_RETAIL_CTCCOMBAT_BLOCKING
+ // Nested opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): Ego_r.pdb 0x0074B380 / FableWin.pdb 0x024FD6A0 ?IsBlocking@CTCCombat@@QBE_NXZ
+ // and Ego_r.pdb 0x0074BFF0 / FableWin.pdb 0x024FD420 ?UnsetBlocking@CTCCombat@@QAEXXZ, out of line in retail at 0x007331E0 (reads
+ // Blocking +0x63) / 0x007338A0 (Activate 0x0056BD92 / 0x0056BD9D). Declarations only.
+ bool IsBlocking() const;                                                // 0x007331E0
+ void UnsetBlocking();                                                   // 0x007338A0
+#endif
  void SetCombatType(const CDefPointer<const CCombatTypeDef>&);
 private:
  long ComboChainPos;long ComboChainID;long ComboChainGracePeriodCountdown;long HandednessGracePeriodCountdown;long UnarmedCombatIdleCountdown;

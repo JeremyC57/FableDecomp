@@ -8,14 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAPROGRESSDISPLAY
+// Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): the polymorphic retail interface. Vtable
+// 0x012387A0 (rtti-vtables.tsv): slot 0 the deleting dtor 0x00497870, slot 4 InitialiseTextures 0x00497850, slot 5
+// SetToDisplayText 0x00497860 (both empty), slots 1 / 2 / 3 / 6 pure (filled by CProgressDisplay 0x012388B4: StartProgress
+// 0x00499AA0, StopProgress 0x00499D90, DisplayProgress 0x00499C50, IsActive 0x0049B460). Spellings: FableWin.pdb
+// ??1CAProgressDisplay@@UAE@XZ, ?InitialiseTextures@CAProgressDisplay@@UAEX_N0@Z, ?SetToDisplayText@CAProgressDisplay@@UAEX_N@Z and
+// the CProgressDisplay overrides (?StartProgress@CProgressDisplay@@UAEX_N00000@Z, ?StopProgress@..@@UAEX_N0@Z,
+// ?DisplayProgress@..@@UAEXABVCCharString@@M_N1@Z, ?IsActive@..@@UBE_NXZ). Parameter names descriptive. Same size (vptr only).
+class CCharString;
+class CAProgressDisplay {
+public:
+    virtual ~CAProgressDisplay() { }                                     // slot 0
+    virtual void StartProgress(bool, bool, bool, bool, bool, bool) = 0;  // slot 1
+    virtual void StopProgress(bool, bool) = 0;                           // slot 2
+    virtual void DisplayProgress(const CCharString& text_tag, float progress, bool, bool) = 0;   // slot 3
+    virtual void InitialiseTextures(bool, bool) { }                      // slot 4 0x00497850
+    virtual void SetToDisplayText(bool) { }                              // slot 5 0x00497860
+    virtual bool IsActive() const = 0;                                   // slot 6
+};
+#else
 #pragma pack(push, 1)
 class CAProgressDisplay {
 public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
+#endif
 
 FABLE_STATIC_ASSERT(sizeof(CAProgressDisplay) == 0x4);
+#ifndef FABLE_RETAIL_CAPROGRESSDISPLAY
 FABLE_STATIC_ASSERT(offsetof(CAProgressDisplay, __vftable) == 0x0);
+#endif
 
 #endif // FABLE_ENGINE_CAPROGRESSDISPLAY_H

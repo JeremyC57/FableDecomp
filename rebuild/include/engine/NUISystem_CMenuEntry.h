@@ -17,6 +17,15 @@ public:
     CMenuEntry(const CMenuEntry&);
     virtual ~CMenuEntry();
     void GetDataFromDef();                                          // 0x0053DA30
+#ifdef FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS
+    // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): the first two virtuals CMenuEntry introduces after CClickable's
+    // last slot (149 OnRightUnclicked), in vtable order (rtti-vtables CMenuEntry 0x0124662C: slot 150 0x0053DCD0, 151 0x0053DD50;
+    // labels: AddThingActionParam / AddUIActionParam): Ego_r.pdb / FableWin.pdb ?AddThingActionParam@CMenuEntry@NUISystem@@UAEXJ@Z and
+    // ?AddUIActionParam@CMenuEntry@NUISystem@@UAEXPAVCActionParam@2@@Z. Activate calls slot 151 as `call [edx+25Ch]` with the entry's
+    // own CActionParam base (+0x18, null-checked). Declarations only: no layout change.
+    virtual void AddThingActionParam(long param);                   // 150 0x0053DCD0
+    virtual void AddUIActionParam(CActionParam* param);             // 151 0x0053DD50
+#endif
 protected:
     float LastInputTime;                                            // +0x194
     bool IsAvailable;                                               // +0x198

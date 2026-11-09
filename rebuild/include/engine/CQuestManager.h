@@ -31,6 +31,9 @@ inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val) 
 }
 #endif
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTUI
+#include "engine/CScriptInfo.h"
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
 // Nested opt-in (chunk 795): the members LoadGameState(CStringParser&) touches. NQuestManager::CRuntimeQuestPersistence has no
 // header: Ego_r.pdb / FableWin.pdb ?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z (retail
@@ -96,6 +99,34 @@ public:
     bool IsBetweenQuestStartAndFinishScreens() const;        // 0x004AF290
     // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): Ego_r.pdb / FableWin.pdb ?RegisterQuest@CQuestManager@@QAEXABVCCharString@@@Z.
     void RegisterQuest(const CCharString& name);             // 0x004B2850
+#ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTUI
+#if defined(FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK) || defined(FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE)
+#error FABLE_RETAIL_CQUESTMANAGER_BOASTUI is not combined with the REGIONLOCK / LOADGAMESTATE layouts yet
+#endif
+    // Nested opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): the nested active-quest record's head (Ego_r.pdb CActiveQuest:
+    // ID +0, PScriptInfo +4 (CScriptInfo*), PScript +8 (CCountedPointer<CScriptBase>), Regions +0x10 ...; the rest is not needed here)
+    // with the FableWin.pdb inline accessors ?HasScript@CActiveQuest@CQuestManager@@QBE_NXZ and
+    // ?GetScriptInfo@CActiveQuest@CQuestManager@@QBEABVCScriptInfo@@XZ (no Ego_r.pdb copies; Activate tests [quest+8] and reads
+    // [quest+4] in place, 0x0056AE10 / 0x0056AE18), the typed ActiveQuests list (+0x38, after RegisteredQuestNames +0x2C) with
+    // FableWin.pdb ?GetActiveQuests@CQuestManager@@QBEABV?$list@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@...@std@@XZ (inline:
+    // `mov eax,[edi+38h]` / `add edi,38h`, 0x0056ADFE), and the two out-of-line members Activate calls:
+    // ?GetBoastsForScript@CQuestManager@@QBEXABVCCharString@@AAV?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@@Z
+    // (Ego_r 0x004B74C0, FableWin 0x01C58B10; retail 0x004B19F0) and
+    // ?GetActiveQuestCardFromScriptName@CQuestManager@@QBEPAVCThing@@ABVCCharString@@@Z (Ego_r 0x004B5440, FableWin 0x01C512B0; retail
+    // 0x004B0C80). The layout below replaces only the default branch's opaque +0x04 .. +0x5C bytes (same offsets).
+    class CActiveQuest {
+    public:
+        bool HasScript() const { return PScript.Data != 0; }
+        const CScriptInfo& GetScriptInfo() const { return *PScriptInfo; }
+    private:
+        long                         ID;                     // +0x00
+        CScriptInfo*                 PScriptInfo;            // +0x04
+        CCountedPointer<CScriptBase> PScript;                // +0x08
+    };
+    const std::list<CCountedPointer<CActiveQuest> >& GetActiveQuests() const { return ActiveQuests; }
+    void GetBoastsForScript(const CCharString& script_name, std::list<CBoast>& boasts) const;   // 0x004B19F0
+    CThing* GetActiveQuestCardFromScriptName(const CCharString& script_name) const;            // 0x004B0C80
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_COMPLETIONUI
     // Nested opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): Ego_r.pdb / FableWin.pdb spellings of the three
     // landed members it calls (?AreAllBoastsProcessed@CQuestManager@@QBE_NAAVCCharString@@@Z 0x004AF9C0,
@@ -171,6 +202,12 @@ private:
     std::vector<CCharString> CreatureGenerationDisabledQuests;   // +0x40
     std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)
     std::list<CQuestCard> AvailableQuestCardTypes;           // +0x58
+#elif defined(FABLE_RETAIL_CQUESTMANAGER_BOASTUI)
+private:
+    unsigned char _pad_0x04[0x2c - 0x04];                    // +0x04 PGameScriptThingManager, RuntimeQuestPersistence
+    std::vector<CCharString> RegisteredQuestNames;           // +0x2c (Ego_r vector<CCharString>)
+    std::list<CCountedPointer<CActiveQuest> > ActiveQuests;  // +0x38 (Ego_r list<CCountedPointer<CQuestManager::CActiveQuest> >)
+    unsigned char _pad_0x3c[0x5c - 0x3c];                    // +0x3c PendingQuestsToDeactivate .. AvailableQuestCardTypes
 #elif defined(FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK)
 private:
     unsigned char _pad_0x04[0x4c - 0x04];                    // +0x04 PGameScriptThingManager .. ActiveQuestsStack

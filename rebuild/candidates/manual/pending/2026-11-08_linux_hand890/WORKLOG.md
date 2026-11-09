@@ -121,3 +121,41 @@ Leaderboard (best per row; strict / loose = fit on the graded bytes):
 - Next lever: depth-0 regions narrowed to the two push_back calls alone (a named reference to the vector, then the push_back
   statement), and the boasts list's scope exit; re-check calls.py after each, then grade.
 - NAME_FIX candidate 0x0042A2DB (CList SetStaticCast) conflicts with landed 0x00558770's binding: check before respelling.
+
+## Session 5 (2026-11-09, all-means push continues)
+
+Leaderboard (best per row; strict / loose = fit on the graded bytes):
+
+| row | session-4 best | session-5 best | grades | what flipped |
+|---|---|---|---|---|
+| 0x00498490 DrawRetailDisplay | r3_s4a DIFFER(5101v5101) strict 1417/1418 | **RELOCATION_MATCH** (r3_s5a; src/00498490.cpp) | 2 (probe + final src) | the early `mov ecx,edi` (0x00499094): parenthesised half-width |
+| 0x0056AD40 CTCBoastUI::Activate | r2_s4h DIFFER(4299v4284) 65.7% / 93.3%, 8 regions | r2_s5b DIFFER(4275v4284) 69.6% / 95.6%, 1 region | 2 | first quest loop as `while`: retail's call/expand split by frequency |
+
+### 0x00498490 CProgressDisplay::DrawRetailDisplay -- MATCHED
+- The residue was order-only: c2's list scheduler (0x1078734C) issued `call GFAXToVX(32)` one cycle early. A Python re-run of the
+  scheduler on the dumped DAG (work/s5/sim.py) and single-change searches (search_*.py) showed retail's graph needs one more no-code
+  x87 node in that region; a row-wide tuple dump found it: VC7.1 keeps a PAREN tuple (0x269) for a parenthesised floating
+  sub-expression. Source: `float sealX = (GFAXToVX((float)display.GetRenderTargetDimensions().X) * 0.5f) - GFAXToVX(32.0f) - 4.0f;`
+  (TRACE G1 / G2).
+- src/00498490.cpp RELOCATION_MATCH (gall.sh); test/00498490.cpp PASS under g++ C++03 and VC7.1 (tall.py); finish.py regenerated
+  payload.json / oracle.tsv. reloc_identity: HARD none, 1 WARN (ChangeGraphicsBankScene vs the 0x00437570 catalog label; already in
+  NAME_FIXES.tsv). Inline device: FABLE_FORCEINLINE CCharString::EndsWith (opt-in FABLE_RETAIL_CCHARSTRING_ENDSWITH, line 2 of src).
+
+### 0x0056AD40 CTCBoastUI::Activate -- frequency instead of devices
+- c2's inline rule read from c2.dll: score = c1 * (1/f + 6) / 7 < 74 (TRACE H1). Solving it for every site whose choice retail
+  shows (work/s5/want.py) gave the frequencies retail's source must produce; micro probes gave the loop-shape rules (`for` body 5x,
+  code after it stays at 5x; `while` body 9x, code after it drops back) (TRACE H2).
+- The first quest loop (count the quests with boasts) as `while (quest != activeQuests.end()) { ...; ++quest; }` leaves 3 of 34
+  sites wrong with no device (TRACE H3); push_back x2, map ctors/dtors, SetStaticCast, every ~CCountedPointer and the quest-exit
+  ~list now follow retail, and the prologue / `this` in edi / zero in ebp match. One inline_depth(0) region stays around
+  `BoastGroups.insert(std::make_pair(menuEntry, *boast))` (make_pair 0x0056CB40 + converter 0x0056CB60 called).
+  Graded r2_s5a / r2_s5b DIFFER(4275v4284) strict 69.6% / loose 95.6% -> differ/0056ad40.cpp.
+- Left: the ~list<CBoast> on the empty-boasts `continue` (retail expands at 0x0056AFFA; ours calls ??1list: the frequency it needs
+  conflicts with make_pair's, so one callee cost differs in retail's IL); frame 0x200 v 0x208 (reordered slots); register / order
+  drift in the quest body from 0x0056B133 (boastSubList in esi + spill [esp+11Ch]; the detail-list / backdrop CreateComponent
+  CCharString arguments built elsewhere).
+- Next lever: (1) the CreateComponent argument order inside the boast loop (the 9 / 26-instruction moves at 0x0056B22E / 0x0056B242:
+  try the backdrop / detail-list statements as retail orders them, then named CCharString locals); (2) c2prio on the boastSubList
+  colouring; (3) the frame order with fas.py's `_name$` table against slotmap.py; (4) the ~list / make_pair cost question with header
+  overlays (run2.sh + HX) on ~_List_base / make_pair / the CBoast copy before any device.
+- Header changes this session: none (hdr/ untouched; the hx/ overlay under work/s5 is an experiment only).

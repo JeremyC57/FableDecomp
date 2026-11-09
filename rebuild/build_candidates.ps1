@@ -386446,6 +386446,13 @@ $catalog = @(
         TestSource = '00/5a/CTCInventoryTrade_ConstructActualWantedInventoryPC_005a5b31_test.cpp'
         PassPattern = '005a5b31_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00498490'
+        Module = 'CProgressDisplay'
+        Source = '00/49/CProgressDisplay_DrawRetailDisplay_00498490.cpp'
+        TestSource = '00/49/CProgressDisplay_DrawRetailDisplay_00498490_test.cpp'
+        PassPattern = '00498490_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -11,6 +11,9 @@
 #endif
 #include "engine/CRenderManagerCore.h"
 class C2DBoxF; class CUVBox; class CRGBColour; class CTexture;
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_LOADINGSCREEN
+class C2DVector; class CGraphicDataBank;
+#endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D
 // Retail branch members (2026-11-03 landing b, Codex pass 13 row 0x009DA9F0 Render2DDrawList; Codex's FABLE_RETAIL_RENDER2D_TYPES
 // model folded in): Ego_r.pdb names in Ego_r order with STLport sizes (vector 0xC, CShaderDataBank 0x128 in retail): VertexShaderBank
@@ -66,6 +69,16 @@ public:
     //   ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@AAVCTexture@@K@Z (the box overload, just before the UV one
     //   0x00B30450 = retail 0x009DC870); Output calls retail 0x009DC6E0 with (box, colour, texture, 0). Declaration only.
     bool Draw2DTexture(const C2DBoxF&,const CRGBColour&,CTexture&,unsigned long);   // 0x009DC6E0
+#endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_LOADINGSCREEN
+    // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x00B30E60
+    //   ?Draw2DScaledGraphic@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCGraphicDataBank@@KKK@Z (retail 0x009DD210, landed; `ret 14h`),
+    //   0x00B32110 ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z (retail 0x009DE3F0, `ret 0Ch`) and 0x00B30660
+    //   ?Draw2DGraphic@CRenderManager2D@@QAE_NABVC2DVector@@ABVCGraphicDataBank@@KKKK@Z (retail 0x009DCA80, `ret 18h`); the box
+    //   Draw2DTexture overload as FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DTEXTUREBOX. Declarations only.
+    bool Draw2DScaledGraphic(const C2DBoxF&,const CGraphicDataBank&,unsigned long,unsigned long,unsigned long);   // 0x009DD210
+    bool Draw2DBox(const C2DBoxF&,const CRGBColour&,unsigned long);                                     // 0x009DE3F0
+    bool Draw2DGraphic(const C2DVector&,const CGraphicDataBank&,unsigned long,unsigned long,unsigned long,unsigned long);   // 0x009DCA80
 #endif
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
     // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter

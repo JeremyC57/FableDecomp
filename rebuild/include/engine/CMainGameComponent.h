@@ -102,6 +102,12 @@ public:
     // landed CTCChest::DisplayLockedMessage 0x00750110 model). The members stay opaque (CCountedPointer: object word first).
     const NGameText::CDataBank& GetTextBank() const { return **reinterpret_cast<NGameText::CDataBank* const*>(PTextBank); }
     const CFontBank& PeekCutSceneMainFont() const { return **reinterpret_cast<CFontBank* const*>(PCutSceneMainFont); }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK_INITIALISED
+    // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay, which expands CProgressDisplay::GetPTextBank):
+    // FableWin.pdb ?IsTextBankInitialised@CMainGameComponent@@QBE_NXZ (0x018B4730), inline in retail (0x00499364 tests the PTextBank
+    // object word +0x14 in place). PTextBank stays opaque (CCountedPointer: object word first).
+    bool IsTextBankInitialised() const { return *reinterpret_cast<NGameText::CDataBank* const*>(PTextBank) != 0; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE
     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb

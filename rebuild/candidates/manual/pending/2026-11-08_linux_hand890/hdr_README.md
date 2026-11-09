@@ -131,3 +131,8 @@ PStringData->Data.PeekData();`), the same inline accessor and behaviour as the d
 (text base, length difference index); the default ternary gives `[eax+ecx]`, and the chunk-848 SELECT spelling fixes only the
 first site. Exclusive with FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT (SELECT wins if both are defined). Verified: with the
 opt-in undefined the row's object is byte-identical to the one built against the unmodified header.
+
+## Session 5 (2026-11-09)
+
+No header changes. Row 0x00498490 matched with the opt-ins of sessions 3-4 (FABLE_RETAIL_CCHARSTRING_ENDSWITH, FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN);
+row 0x0056AD40 dropped seven of its eight inline_depth regions through a loop shape; its opt-ins are unchanged.

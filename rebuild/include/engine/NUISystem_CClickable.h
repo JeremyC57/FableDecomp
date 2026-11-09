@@ -89,8 +89,15 @@ protected:
 // Layout: PDB Value+8; native new size12 and sole virtual dtor slot.
 class CActionParamString : public CActionParam {
 public:
+#ifdef FABLE_RETAIL_CACTIONPARAMSTRING_CTOR
+    // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): Ego_r.pdb 0x0055EC1C / FableWin.pdb 0x01E26D6B
+    // ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z is out of line in retail at 0x0054DAE0 (landed row; Activate calls it at
+    // 0x0056B946 after `new(0xC)` and the null test). Declaration only: the in-class body is the #else path.
+    CActionParamString(CWideString& value);                              // 0x0054DAE0
+#else
     CActionParamString(CWideString& value)
         : CActionParam(UI_ACTION_PARAM_TYPE_STRING),Value(value) { }
+#endif
     virtual ~CActionParamString();
     CWideString Value;
 };

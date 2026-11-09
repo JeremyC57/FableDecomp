@@ -24,3 +24,7 @@
 00:48:22 0056ad40 r2_v3 DIFFER(5039v4284) flags=[ ]
 01:16:51 00498490 r3_s4a DIFFER(5101v5101) flags=[ ]
 01:54:55 0056ad40 r2_s4h DIFFER(4299v4284) flags=[ ]
+02:19:55 00498490 r3_s5a RELOCATION_MATCH flags=[ ]
+02:25:03 00498490 src/00498490.cpp RELOCATION_MATCH (gall.sh, final src = r3_s5a + header block)
+02:52:48 0056ad40 r2_s5a DIFFER(4275v4284) flags=[ ]
+02:54:40 0056ad40 r2_s5b DIFFER(4275v4284) flags=[ ]
