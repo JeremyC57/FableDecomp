@@ -1,0 +1,34 @@
+time	tag	lever	score
+ref	a3	-	74865 first 459 fx 19621
+03:19	r1_acquired	acquired	74874 first 13 fx 19565
+03:20	r1_answer	answer	74865 first 459 fx 19621
+03:20	r1_answered	answered	74865 first 459 fx 19621
+03:21	r1_b13	b13	74914 first 459 fx 19621
+03:22	r1_b234	b234	74865 first 459 fx 19621
+03:23	r1_b7f	b7f	74914 first 459 fx 19621
+03:23	r1_b_c	b_c	74874 first 459 fx 19621
+03:24	r1_forever	forever	74910 first 459 fx 19622
+03:25	r1_frame	frame	74953 first 13 fx 19511
+03:25	r1_lightName	lightName	74865 first 459 fx 19621
+03:26	r1_limbo	limbo	74920 first 13 fx 19427
+03:27	r1_line	line	74873 first 453 fx 19620
+03:28	r1_lookAt	lookAt	74865 first 459 fx 19621
+03:28	r1_looping	looping	74865 first 459 fx 19621
+03:29	r1_nothing	nothing	74910 first 459 fx 19622
+03:30	r1_param	param	74880 first 459 fx 19621
+03:31	r1_quoted	quoted	74865 first 459 fx 19621
+03:31	r1_resetThemeAtEnd	resetThemeAtEnd	74865 first 459 fx 19621
+03:32	r1_returnExtras	returnExtras	74911 first 13 fx 19531
+03:33	r1_scene	scene	74886 first 459 fx 19621
+03:33	r1_screenFilter	screenFilter	74884 first 79 fx 19599
+03:34	r1_sequential	sequential	74914 first 459 fx 19621
+03:35	r1_skipping	skipping	74876 first 252 fx 19610
+03:36	r1_stayOnLastFrame	stayOnLastFrame	74865 first 459 fx 19621
+03:36	r1_steps	steps	74901 first 13 fx 19566
+03:37	r1_wait	wait	74906 first 459 fx 19621
+03:38	r1_doScriptFrames	doScriptFrames	74862 first 459 fx 19620
+03:39	r1_conversation	conversation	74869 first 459 fx 19592
+03:39	r1_dot	dot	74889 first 465 fx 19637
+03:40	r1_space	space	74873 first 459 fx 19648
+03:41	r1_c	c	75030 first 465 fx 19632
+search-done

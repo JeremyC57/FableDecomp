@@ -74,3 +74,19 @@ Session 5 (2026-11-08):
   the call, not an argument expression.
 - The 4th loop family for CrowdKill's wait (goto loop) compiles byte-identically to while/for: 0x00CCF7BE's top-tested shape is
   not a spelling.
+
+## Session 7 (GOTCHAS-ready)
+- VC7.1 c2 has a function-size mode switch: in a function of more than ~1600 simple statements (between 1500 and 1750
+  `if (f(k)) g(k);` lines, ~10k tuples) a local reference or pointer bound to a local (`bool& r = x;`, used or not, or bound
+  inside an inline helper, or held by a local helper object) takes x out of the register candidates with no code; below it the
+  same binding is resolved and x stays a candidate (micro s7/micro/runshape.sh; RunCutsceneMacro 0x00CBFB7D is far above).
+- What does NOT remove a local from c2's candidates in that mode: a local POD struct / class with ctor / enum-indexed array of
+  the flags (VC7.1 scalar-replaces aggregates: each member is its own candidate and frame item), inline helpers taking the
+  flag by reference / pointer / const reference / returning it by reference, nested inline forwarding (parameters are
+  substituted); `(void)&x`, `*(char*)&x`, `&x != 0` (folded). An escape to an out-of-line callee emits a `lea` (retail has none).
+- A `GetLength() != 0 && StartsWith("$")` condition whose temporary needs a conditional destructor materialises the whole &&
+  (`test; jne; mov bl,1; jmp; xor bl,bl`); the ternary `A ? B : false` materialises only B (`mov ebx,eax; neg ebx; sbb bl,bl;
+  inc bl`) but still emits a false arm; nested ifs drop the conditional-destructor flag (s7/pfx, 0x00CC0418).
+- Regime-1 x87: a named loop `float fraction` is duplicated (`fld st(k); fmul mem`) and consumed at its last use; writing
+  `(float)i` at each use adds `fld st(0)` dups. Retail's SlideTeleport keeps fi untouched until `fstp st(0)` before the call
+  (open; s7/x87).

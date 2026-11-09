@@ -1,6 +1,6 @@
 // RunCutsceneMacro(const CCharString& name, map<CCharString, CScriptGameResourceObjectScriptedThingBase>& actors, map<CCharString, bool>* flags, map<CCharString, CCharString>* substitutions, bool setup, bool keepPlayerControl) -- run a cutscene def's macro: one ASCII `[Actor].Verb arg,arg,...` line per frame step, dispatched by a strncmp verb chain
-// Grade: DIFFER(74865v74778) -- session 6: strict difflib 19733/20435 (96.6%); first register-level difference moved from instruction 8 (prologue name/-1 roles) to 459 (main-loop parse: retail `dot`/`space` in memory, the const-0 piece in edi). Frame 0x18D0 (retail 0x18DC).
-// Next: const-0 piece over the parse region (0x00CC023C) must be coloured before dot (prio 25) and space (16); frame size follows the spill temps. WORKLOG Session 6.
+// Grade: DIFFER(74865v74778) -- session 7 (= session 6 a3 bytes): strict difflib 19733/20435 (96.6%); first register-level difference instruction 459 (main-loop parse: retail `dot`/`space` in memory, ours dot in edi); first colouring-order divergence K91 `gold` (edi in retail). Frame 0x18D0 (retail 0x18DC).
+// Next: the const 0 / 1 / -1 rest pieces are edi-only from c2 decision K48 to K521 (100*spill penalties on every edi choice); retail's are not. WORKLOG Session 7.
 // Flags: /d2inlS8
 // Inline-budget: /d2inlS8 + per-site devices -- VC7.1 caps inlining by the caller's whole IL size, greedy in source order; S8 reproduces retail's 524 GetLength / 41 vector<CScriptThing>::operator[] out-of-line calls; `#pragma inline_depth(0)` regions outline the sites retail calls (iterator == 0x00CC8407, vector ctors 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, vector<CCharString>::operator[] x7 0x00CD147E..0x00CD17B0); FABLE_FORCEINLINE twins expand the sites retail expands (GetLengthExpanded 0x00CC0040, StartsWithExpanded 0x00CC03EA, IsEnd 0x00CC61B8 / 0x00CC6DA9); tools/calls.py --counts: no inline-site difference left. Plus IS_THING_ALIVE<CThing*> (retail 0x0040DCE0, called): its real read-only body kept in the TU as `__declspec(noinline)` under #ifdef _MSC_VER, so pThing is not address-exposed and shares its frame slot (frame 0x18E4 -> 0x18DC, Codex checkpoint).
 #pragma optimize("s", on)
@@ -264,9 +264,9 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
     std::vector<CScriptThing> damageThings;
     bool flagWasSet = false;
     // Retail never enregisters these seven end-of-cutscene flags (memory-only at every reference) and its prologue needs them out
-    // of c2's register candidates: name takes ebx and the -1 constant esi (0x00CBFB91 / 0x00CBFC01) only when the entry
-    // block counts 12 candidates, not 19 (priority 2*K: 24, not 38). Holding them through references does that and emits
-    // no code (a natural spelling with the same IL is still wanted; WORKLOG Session 6).
+    // of c2's register candidates: name takes ebx and the -1 constant esi (0x00CBFB91 / 0x00CBFC01) only when the entry block
+    // counts 12 candidates, not 19 (priority 2*K: 24, not 38). Above ~10000 IL tuples VC7.1 compiles without its global optimizer
+    // and a reference bound to a local takes it out of the candidates, emitting no code (a struct of the flags is scalar-replaced).
     bool& restoreFollowersRef = restoreFollowers;
     bool& crowdLookingRef = crowdLooking;
     bool& keepActorsRef = keepActors;

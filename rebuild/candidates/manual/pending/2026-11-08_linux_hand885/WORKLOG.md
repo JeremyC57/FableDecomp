@@ -4,7 +4,42 @@ Row: 0x00CBFB7D, 74,778 bytes, catalog `_global::RunCutsceneMacro`. PDB name `Ru
 two sources: reloc_bindings `?RunCutsceneMacro@@YIX...` stand-in with CCutsceneCastMap + catalog name; the cutscene
 helpers CSFindThing 0xCBF9DE / CSExtractParameterList 0xCBFACA landed alongside with the same PDB naming family).
 
-## Session 6 (2026-11-09, all-means push) -- READ THIS FIRST (src/ = a3; differ/ = src + 2 grade lines)
+## Session 7 (2026-11-09, all-means push, flags -> decision 459 -> frame -> residues) -- READ THIS FIRST (src/ = a3 bytes)
+src/ = a3 with the flag-reference comment reworded (qc: SAME as s7/ref_a3.obj); differ/ = src + 2 grade lines.
+Leaderboard (score7 = bytes / first register-level difference index / fx = frame-masked registers-exact matched count):
+| ver | bytes | first-reg | fx | m3 exact/regs/r+f | frame | note |
+|---|---|---|---|---|---|---|
+| **a3 (src)** | **74865** | **459** | **19621** | 18106/18540/20130 | 0x18D0 | best; strict 19733/20435 |
+| r1 dot-ref | 74889 | 465 | 19637 | -- | -- | `long& dotRef7 = dot;` (device, not kept) |
+| r1 space-ref | 74873 | 459 | 19648 | -- | -- | device, not kept |
+| p3 ternary prefix | 74867 | 459 | 19625 | -- | 0x18D0 | retail's neg/sbb/inc, plus a false arm |
+| st1 struct flags | 74918 | 8 | -- | 13432/13715/20125 | 0x18D4 | rejected |
+Step 1 (flags): no natural non-reference spelling exists in this function. Regime 1 (>10000 IL tuples, global optimizer off,
+threshold measured at 1500..1750 `if (f(k)) g(k);` statements): a local reference or pointer bound to a local (used or not, also
+inside an inline helper) takes it out of c2's candidates with no code; a struct / class / enum-indexed array of the flags is
+scalar-replaced (members stay candidates; st1 confirms in the real function), inline by-ref helpers substitute their parameters,
+an out-of-line escape emits a `lea` retail lacks. So retail's source held these flags through references/pointers; the a3
+references stay, with the comment now citing regime 1 (LESSONS Session 7).
+Step 2 (decision 459): first colouring-order divergence is K91 `gold` (prio 56): ours ebx, retail edi. Cause (wi7 PEN=1):
+edi costs 61700 = 100*spill of the const -1 / 0 / 1 rest pieces, which are edi-only from K48 (K47: actor piece #767, ebx-only,
+takes ebx; the rest pieces split and lose ebx) to K521; K1..K46 the same pieces are ebx-only (every ebx choice costs 142000..
+288800). Forcing gold to edi (c2prio7 --forcereg) fixes only gold: K367/K368 `i`, K375/K383/K413 temps, K521 dot, K526 const 1
+(InteractiveSpeak, retail `push 1` immediates because retail's -1 piece holds edi there) are independent decisions with the same
+cause. The register at 459 itself is dot (K521, edi; retail memory). A search over 31 reference bindings (s7/SEARCH.tsv) moves
+none of K91; only dot moves the first index (465).
+Step 3 (frame): 0x18D0 in every variant; it follows the spill set (s6) -- no independent lever.
+Step 4 (residues): prefix 0x00CC0418 -- only the ternary spelling gives retail's `mov ebx,eax; neg ebx; sbb bl,bl; inc bl`, but
+keeps `jmp; xor bl,bl` (retail's GetLength()==0 edge goes straight to 0x00CC04A0 past the conditional-destructor flag test);
+nested ifs drop the flag retail has. SlideTeleport x87 (0x00CC593E / 0x00CC5BF9): 9 loop-body spellings, none beats a3 (24/34
+local): retail loads each step component first, keeps fi to `fstp st(0)` before the call; ours duplicates fi and consumes it at
+the angle. Playbook (CManager::Action) points applied: regime 1 w=1, global-pointer candidates, user labels avoided.
+Next lever: make the const -1 / 0 / 1 rest pieces keep a second register (or end before GiveGold) at K48..K91 -- find which
+K1..K47 neighbour removes esi from them in ours but not in retail (jev.py --upto 92 on a fresh c2prio7 trace + chain.py on the
+rest-piece ids), then dot/space (K521). x87: try spellings where `(float)i` is a CSE inside ONE tree that also writes position
+(retail never consumes fi). Tools: tools/README.md (qc.sh, score7.py, srch7.sh, cdiff2.py, c2prio7.py, fw.sh, jev.py, wi7.py,
+xv.py, frame7.py).
+
+## Session 6 (2026-11-09, all-means push) (src/ = a3; differ/ = src + 2 grade lines)
 Leaderboard (strict = gr.sh difflib retail ins matched /20435; m3 = tools/pk/m3x.py exact / regs-masked / regs+frame-masked;
 first-reg = tools/pk/first.py --noframe):
 | ver | bytes | strict | m3 exact/regs/r+f | first-reg | note |

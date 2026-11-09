@@ -50,3 +50,8 @@ v34 SetAlpha: thing local after alpha (args with calls hoisted) -> DIFFER(74879v
 2026-11-09 s6 nc8: a3 + dot/space references -> wi: name back to esi, m3 exact 14578: rejected
 2026-11-09 s6 nc9: a3 + references for skipping/resetThemeAtEnd/answered/answer/screenFilter -> wi: first register diff 79: rejected
 2026-11-09 s6 nc10: a3 + references for skipping/resetThemeAtEnd/answered -> wi: first register diff 252: rejected
+2026-11-09 s7 st1: the 7 flags as a local POD struct SEndState (aggregate init at restoreFollowers' slot) -> qc 74918v74778, first reg diff ins 8 (name esi): members scalar-replaced, still candidates; rejected
+2026-11-09 s7 r1: 31 single reference bindings on a3 (s7/SEARCH.tsv): none moves K91; dot -> first reg diff 465 (74889v74778), space -> fx +27 (74873): devices, not kept
+2026-11-09 s7 x87 v1..v9: SlideTeleport loop-body spellings (s7/x87/v*.txt): best is a3's own (24/34 local); none kept
+2026-11-09 s7 p3: prefix as `GetLength() != 0 ? StartsWithExpanded("$") : false` -> retail's neg/sbb/inc but a false arm; 74867v74778 first 459 fx 19625: not kept
+2026-11-09 s7 s7src: comment-only reword of the reference block -> SAME as a3 (74865v74778); src/ kept
