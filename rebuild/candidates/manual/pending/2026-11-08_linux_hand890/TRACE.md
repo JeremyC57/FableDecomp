@@ -113,3 +113,80 @@ frequency of the call site, sc = score, accepted iff sc < T).
 ### B2 partial decode (no grade)
 - 0x00498490..0x00498972 decoded (differ/00498490.cpp: stage total, clamp by reference, installer progress, loading-picture
   advance, the auto-save frame / background split); the rest summarised from work/r3.ann. 0 grades.
+
+## Session 2 -- row 0x00498490
+### B3 (v1 -> v2) first draft against the shared headers + hdr/ opt-ins
+- v1 grade: DIFFER(4826v5101), strict 41.1% / loose 87.4% (work/grades/r3_v1.txt).
+- First diverging instruction: 0x00498496 `sub esp,5Ch` v ours `sub esp,64h`; then 0x0049849C `mov ebx,ecx` v ours `mov esi,ecx`
+  (retail this=ebx, display=edi spilled [esp+18h], renderer=esi; ours this=esi, display in eax spilled [esp+2Ch], renderer=edi).
+- calls.py-equivalent (objdump -dr relocs v r3.ann): the call multisets are identical (GFAXToVX 25/25, GFAYToVY 22/22, ~CWideString
+  11/11, ~CCharString 9/9, Draw2DScaledGraphic 10/10, ...) except ours has 2 extra calls to ?EndsWith@CCharString@@QBE_NABV1@@Z
+  (retail expands both: the strcmp loop at 0x0049941A and the `_PC` site).
+- Inline trace (work/inl/r3_v1.json, sites.py): EndsWith r=0 sz=140 c1=129 sc=405 (both sites, f=0.062); GetVStringExtents r=0 sz=76
+  sc=126 (retail calls 0x00437210: correct); every other helper r=1. A /d2inlT threshold that accepts 405 would also accept 126, so a
+  per-row flag cannot give retail's split -> ladder step 3 is the only device; the header precedent is StartsWith (FABLE_FORCEINLINE,
+  chunk 784) and Ego_r.pdb has no out-of-line EndsWith (EXTRA_RULES: Lionhead header helper with no release copy = __forceinline).
+- /FAs frame table (work/fas/r3_v1.asm): ours 0x64 with three 16-byte box slots (-48 $T11791/$T11788, -32 box/vbox, -16 ctor temps) and
+  _display$ = -68; retail 0x5C: boxes at F+0x48 / F+0x58, 4-byte slots F+0x10..F+0x3C, the EndsWith bool at F+0x0F.
+- `total`: ours `neg al ; sbb ; and ; add` from the if/else; retail `mov [F+10h],82h ; jne ; mov [F+10h],1D1h` = initialise then override.
+- Change (v2): hdr/fable_string.h EndsWith FABLE_FORCEINLINE (opt-in only); `long total = 130; if (!g_bUseCompiledWorldFiles) total = 465;`.
+- v2 grade: DIFFER(5051v5101), strict 45.6% / loose 93.3%. EndsWith now expanded at both sites (call multiset = retail's); this=ebx,
+  renderer=esi as retail; first diverging instruction still 0x00498496 (frame 0x64 v 0x5C), then 0x004984A3 (retail keeps display in
+  edi and spills it to [F+18h]; ours goes through eax and spills to [F+30h]).
+### B4 (v2 -> v3) three call-site shapes (work/micro/m2: m2.cpp / m3.cpp, /FAs)
+- Bar pieces (0x00498AE1 etc.): retail `call PeekGuiDef ; mov eax,[eax+0A30h] ; mov ecx,[PClass] ; mov edx,[ecx+14h] ; push 1 ; push 0`;
+  ours loads PClass->Graphics into edi before the PeekGuiDef call (args `Get().PeekGraphicBank(), PeekGuiDef().X`). Micro m2: f1 (both
+  in the argument list) = ours, f2 (`const CPlayerGuiDef& def = PeekGuiDef();` first) = retail byte order.
+- First backdrop tile (0x00498686..0x004986C0): retail builds a C2DBoxF temporary at F+58h and copies it dword-wise into box F+48h;
+  ours constructs box in place. Micro m3: `C2DBoxF box(...)` and `C2DBoxF box = C2DBoxF(...)` construct in place; only
+  `C2DBoxF box; box = C2DBoxF(...);` makes the temporary + copy.
+- Text window (0x00499761..0x00499793): retail evaluates BRX (dims.X - left), then 300*scale, then 100*scale (fxch); ours BRX, 100*scale,
+  300*scale. The two-vector ctor C2DBoxF(C2DVector(left, 100s), C2DVector(right, 300s)) evaluates br.Y before tl.Y (right to left, the
+  tiles show C2DVector(x, y) builds y first), which is retail's order.
+- Change (v3): the three spellings above.
+- v3 grade: DIFFER(5085v5101), strict 75.4% / loose 97.2%; frame now 0x5C (the tile temporary moved the slots); first diverging
+  instruction 0x004984A3 (display: retail edi + spill [F+18h], reload 0x00498FDF / 0x0049930B; ours eax + spill [F+30h], loads into
+  edi / esi at each use).
+### B5 (v4) EndsWith block layout
+- Retail 0x00499400: `sub eax,ecx ; js <false at the end>`, then the strcmp loop with `test eax,eax ; sete [F+0Fh]` in both exits and
+  `mov byte [F+0Fh],0` last. Ours (if (offset < 0) return false;): `jns ; mov byte [..],0 ; jmp` first, one merged sete.
+- Change (v4, header only): `return offset >= 0 && strcmp(...) == 0;`.
+- v4 grade: DIFFER(5092v5101), strict 82.3% / loose 98.1%. display now edi (spill slot [F+20h] v retail [F+18h]); EndsWith: `js` to
+  the false block at the end as retail, but `&&` makes a branchy bool (`mov [F+0Fh],1 ; je`) where retail keeps `sete` in each strcmp exit.
+- Change (v5, header only): `if (offset >= 0) return strcmp(...) == 0; return false;`.
+- v5 grade: DIFFER(5101v5101) -- size equal; strict 84.1% / loose 99.8%. Loose residue: (1) the BlackScreen box (retail stores
+  TLX/TLY zeros before the colour bytes at 0x0049900C, ours after), (2) `mov ecx,edi` one slot later at 0x00499094. Strict residue:
+  frame slot assignment only (same frame 0x5C).
+### B6 frame packer (no grade): work/s2/slotmap.py, work/s2/fx.sh, work/pk/{pk,ord}.sh (agent887's c2 packer probe, paths changed)
+- slotmap (ours /FAs symbol -> retail slot at aligned instructions): retail groups A 0x10 (8: total, tag, position), B 0x18 (display
+  spill, left), C 0x1C (scaleX, title, ...), D 0x20 (8: scaleY, text, fillPosition), E 0x28 (8: fraction, formatted, textBank),
+  F 0x30 (8: scale, barPosition, sealPosition, the CCharString temps), G 0x38 (16: sealX, extents, formattedWindow, the CWideString
+  temps), H 0x48 box/vbox, I 0x58 box temps. Ours: formattedWindow (16) joins A (A = 16 bytes, everything above shifts +8) and
+  F/G are partitioned differently (ours F' = scale + sealX + all string temps, G' = 8-byte positions + extents).
+- ord.sh: c2 processes the frame items by size ascending, weight (reference count) descending; formattedWindow is the very last item
+  (16 bytes, weight 1) and takes the first non-interfering group, A. Groups are laid out in creation order.
+- fx.sh experiments (compile only): declaring formattedWindow before formatted / before vbox / before WordWrap_SetCallback -> no change
+  (e1, e2, e7, e8, e9); a function-level-in-the-text-block formattedWindow (e3) -> A = 8 bytes and 10 of 16 locals at retail's slots,
+  but formattedWindow gets its own group at 0x60 (frame 0x64); extents as a temporary (e5) / one shared FullScreen box (e6) -> no change.
+- Open: what in retail makes formattedWindow interfere with group A but not with G; not resolved.
+### B7 (v6) BlackScreen colour
+- Hypothesis: the 3-argument CRGBColour(r, g, b) (FableWin ??0CRGBColour@@QAE@EEE@Z, body Initialise(r, g, b, 255)) changes the IL order
+  so the box zeros are stored first. Change: FABLE_RETAIL_CRGBCOLOUR + `CRGBColour(0, 0, 0)` at the BlackScreen site only.
+- v6 grade: DIFFER(5101v5101), unchanged (rejected; the colour ctor does not move the zero stores).
+### B8 (v7) BlackScreen box as a named local
+- Hypothesis: retail's zeros-before-colour means the box is built before the colour in IL order (a named local constructed in the
+  statement before the call); the loading-screen site (colour first, then zeros) is the argument temporary. Change: `C2DBoxF screen(...)`.
+- v7 grade: DIFFER(5101v5101), strict 84.1% / loose 99.9%: the BlackScreen stores now match (named `C2DBoxF screen`), frame unchanged.
+  Remaining loose residue: `mov ecx,edi` one slot early at 0x00499094 (seal block, before the second GetRenderTargetDimensions).
+  Remaining strict residue: the frame packer's slot groups (B6). c2 packer reading (c2.dll 0x10790CD6..0x10790D85): items walk the
+  slot list in creation order; a slot is skipped when the item is larger than [slot+4] or the item's bit is in the slot's set, else
+  0x1077B3C9 tests the interference set; no fit -> 0x10791426 (new slot / last-slot path). Not resolved this session.
+### B9 packer walk (no grade): work/pk/pk.sh on probe/fx/e10.cpp -> work/s2/e10.order (item, $T number = sym word 10, weight,
+our slot, retail slot via work/s2/v7.slotmap)
+- c2.dll 0x10791426 / 0x10791A6A: the placement scans slots from the most recently created one down, joins the first whose size is
+  >= half the item's and whose member set does not interfere (0x1077B3C9), else opens a new slot at the end.
+- Ours and retail agree on every item up to T11925 (tile 1 TL.Y -> slot 0x30). T11920 (tile 1 BR.Y, `GFAYToVY(256.0f) * scaleY`)
+  then joins slot A (total, tag) in ours but opens retail's 0x38 slot; the later tile / bar / seal temporaries, sealX and the
+  CWideString temps follow it into 0x38 in retail, and T12022 (tile 4 BR.Y) still joins A in retail. Unexplained: what makes A
+  interfere with T11920 but not T12022 in retail. Next probe: hook 0x1077B3C9's result per (item, slot) to read the interference
+  bits for T11920 v A in ours, then look for a source shape that adds a tile-1-only reference to total or tag's slot.

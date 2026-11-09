@@ -13,3 +13,18 @@ Review at landing:
 - Landed siblings 0x005518E0 ConstructHorizontalLine / 0x00551BC0 ConstructVerticalLine use local base models; they can move onto the CTable opt-in.
 - Landed 0x00553520 (placeholder CUnprovenKey find) and the landed caller 0x00499880's DrawProgress spelling: NAME_FIXES.tsv.
 - Landed CTCBoastUI rows (0x0056A880..0x0056BE00) use local stand-ins (CComponent with 0x40 dummy virtuals, local CBoast) next to engine/CTCBoastUI.h / CQuestManager.h.
+- (chunk 890 s2) Before any grade of a big row, compare the call MULTISET (objdump -dr relocs v the annotated retail listing): in
+  0x00498490 it was identical except two out-of-line EndsWith calls, which pointed straight at the one inline decision to fix.
+- (chunk 890 s2) A header helper whose c2 inline cost is far above a sibling the row must keep out of line (EndsWith 405 v
+  GetVStringExtents 126) cannot be reached with /d2inlT: FABLE_FORCEINLINE on the helper (no copy in Ego_r.pdb) is the device.
+- (chunk 890 s2) An inline bool helper's block layout follows its return shape: `if (x < 0) return false; return f() == 0;` puts the
+  false store first (jns), `x >= 0 && f() == 0` makes a branchy bool, `if (x >= 0) return f() == 0; return false;` gives retail's
+  `js` to a false store at the end with `sete` duplicated into each strcmp exit.
+- (chunk 890 s2) Retail evaluates a nested `PeekGuiDef()` argument call before loading the singleton for the bank argument only when
+  it is a separate statement (`const CPlayerGuiDef& def = PeekGuiDef();`); in the argument list VC7.1 loads the bank first.
+- (chunk 890 s2) `C2DBoxF box(...)` and `C2DBoxF box = C2DBoxF(...)` build in place; only `C2DBoxF box; box = C2DBoxF(...)` gives the
+  temporary + dword copy. A box argument built before the colour (zeros stored first) is a named local, not an argument temporary.
+- (chunk 890 s2) c2 frame packer (c2.dll 13.10.3077): items sorted by size ascending then weight (refcount) descending; each joins
+  the MOST RECENTLY created slot whose size >= half the item and whose members do not interfere, else opens a new slot; slots are
+  laid out in creation order. agent887's pk.sh / ord.sh (copied to work/pk/) give the order; the symbol number is word 10 of the
+  sym record (work/s2/e10.order maps every item to retail's slot through work/s2/slotmap.py).

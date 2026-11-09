@@ -1,69 +1,298 @@
-// CProgressDisplay::DrawRetailDisplay(const CCharString& textTag, float progress, bool useProgress) -- draw the retail loading / auto-save screen: advance the stage count (or follow the installer's progress), pick the next loading picture at half way, draw the background picture or the GUI frame, the progress bar, the guild seal animation and the tip / save text
-// Grade: NOT GRADED -- partial decode only, 0 grades (session budget spent on row 0x00551EA0); not compiled. Residue unknown.
-// Next: write engine/CProgressDisplay.h (retail layout below) in hdr/, finish the decode from 0x00498972 on (work/r3.ann has the
-//   annotated listing), then grade; expect x87 order and box-copy residues (C2DBoxF temporaries copied dword by dword through eax/ecx/edx).
+// CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float progress, bool use_progress) -- draw the retail loading / auto-save screen: advance the stage count (or follow the installer's progress), pick the next loading picture half way, draw the loading picture or the six auto-save backdrop tiles, the progress bar, the black screen, the guild seal animation and the tip / save text
+// Grade: DIFFER(5101v5101) (probe r3_v7, 7 grades) -- size equal, strict 84.1% / loose 99.9%. Residue: (1) frame slot packing (same frame 0x5C; formattedWindow joins slot A 0x10 so display / scaleX / text / fraction / the 0x30-0x38 groups sit 8 bytes higher than retail; c2 packer: items by size asc + weight desc, each joins the most recent slot it fits (size <= 2x slot, no interference), work/s2/e10.order); (2) `mov ecx,edi` one slot early at 0x00499094.
+// Next: find why retail's tile-1 temporary T11920 (`GFAYToVY(256.0f) * scaleY`) cannot join slot A (total, tag) and opens slot 0x38 (work/s2/e10.order lists every item with retail's slot); then the seal block's `this` load order.
 // Leaf: ?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00498490, 5,101 bytes (`ret 0Ch` at 0x0049987A, int3 to 0x0049987F, next 0x00499880 =
-//   CProgressDisplay::RenderProgress, the caller). Frame `push ebp ; mov ebp,esp ; and esp,-8 ; sub esp,5Ch` (parameters via ebp).
-// Name: FableWin.pdb 0x018AEEB0 / Ego_r.pdb 0x004A2EC0 ?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z (private;
-//   12 bytes of arguments = `ret 0Ch`). The landed caller 0x00499880 binds 0x00498490 as ?DrawProgress@CProgressDisplay@@QAEXABVCCharString@@M_N@Z
-//   (NAME_FIXES.tsv).
-// Retail layout (Ego_r.pdb member order; STLport vector 0xC; the doubles 8-aligned, sizeof 0x88). Every offset the row touches fits:
-//   vptr +0x00; vector<CTexture> ProgressTextures +0x04 (empty test +4 == +8); GuildSealTextures +0x10 (+0x10 / +0x14);
-//   LoadingScreenTextures +0x1C (size = (+0x20 - +0x1C) >> 3, sizeof CTexture 8); long LoadingScreenIndex +0x28; TextTags +0x2C;
-//   TextTagsPC +0x38; TextTagIndex +0x44; CWideString Text +0x48; CCharString TextTag +0x4C; CCharString LastTextDisplayed +0x50
-//   (compared with "" by operator!= 0x0099E960); long GuildSealFrameIndex +0x54; long StageCount +0x58; double LastUpdateTime +0x60,
-//   LastScreenUpdate +0x68, LastProgressUpdate +0x70 (`fstp qword [ebx+70h]` of GFGetTime); bool DebugDisplay +0x78, Initialised +0x79,
-//   FullScreen +0x7A, BlackScreen +0x7B, DisplayText +0x7C, DisplayResetProgressTipText +0x7D, ForRelaunch +0x7E, ForFrontEnd +0x7F,
-//   ForFileInstaller +0x80, FileInstallerFinished +0x81, IgnoreNextBeginRenderCall +0x82, IgnoreNextEndRenderCall +0x83.
-// Globals: g_bUseCompiledWorldFiles 0x013B8618, g_bUseCompiledGlobalThings 0x013B8609, g_WADBuildEnabled 0x01375459,
-//   g_bAutoSaveProgressShown 0x013B89C1, g_bSaveLoadFailed 0x013B89C0, g_AutoSaveProgressEndTime 0x013B89C8 (double),
-//   g_screenWidth / g_screenHeight 0x013961E8 / 0x013961F0 (double), CPlayerGui global 0x013B8790, GPDisplayManager 0x013B8390,
-//   the progress font CCountedPointer 0x013B8998 (CProgressDisplay::PFont), g_bProgressDisplaySuppressed 0x013B89D3 (labels: check PDB).
-// Callees (manifest labels, verify): GFGetSystemManager 0x009A4EC0, CDisplayManager::GetRenderTargetDimensions 0x009BEDC0 (x12),
-//   GFAXToVX 0x009E1DA0 / GFAYToVY 0x009E1DD0, GFRoundVXToNearestPixel 0x009E1D00 / VY 0x009E1D50, the render manager's
-//   Draw2DScaledGraphic 0x009DD210 (x10), Draw2DTexture 0x009DC6E0 (x7), Draw2DBox 0x009DE3F0, Draw2DGraphic 0x009DCA80,
-//   CPlayerGui 0x00437570 / PeekGuiDef 0x00438570 (graphics table at +0xA40 of the GUI def), GFGetTime 0x009E1BC0, __ftol2,
-//   NGameText::CDataBank::GetTextBySymbol 0x009C95E0, CCharString::GetSubString 0x0099EC70, GFABoxToVBox 0x009E2020,
-//   FormatTextForVWindow 0x00497F80, DisplayCenteredText 0x00497FD0, GetVStringExtents 0x00437210, WordWrap_SetCallback 0x00A0FD90,
-//   GetAutoSaveDisplayName 0x00406C20, ConstructString 0x009C7980.
-// Strings: "_PC", "_TITLE", "TEXT_GUI_SAVE_SAVING_EXTENDED_10", "TEXT_GUI_INVENTORY_BUTTON_TEXT_EXIT", L"A - ", "TEXT_GUI_MENU_INVALID_SAVE".
-// Decoded so far (0x00498490 .. 0x00498972):
-//   CDisplayManager* display = GFGetSystemManager()->[+0x60]; renderer = display->[+8];
-//   if (FullScreen) {
-//       long total = g_bUseCompiledWorldFiles ? 130 : 465;
-//       if (!g_bUseCompiledGlobalThings) total += 347;
-//       if (g_WADBuildEnabled) total += 1788;
-//       if (g_bAutoSaveProgressShown) total = 300;
-//       ++StageCount;
-//       if (g_bAutoSaveProgressShown) StageCount = (long)(K0 - (g_AutoSaveProgressEndTime - GFGetTime()) * K1);   // doubles 0x0122ED68 / 0x01238880
-//       long zero = 0;
-//       float fraction = (float)(StageCount < 0 ? zero : StageCount > total ? total : StageCount) / total;   // retail selects a
-//           // POINTER (&zero / &total / &StageCount) then `fild [ptr] ; fidiv total`: a std::min / std::max by reference
-//       bool restarted = false;
-//       if (useProgress) {
-//           fraction = progress;
-//           if (!(progress < 1.0f)) {
-//               fraction = 1.0f;
-//               if (!FileInstallerFinished) { FileInstallerFinished = true; ForFileInstaller = false; StageCount = 0; fraction = 0.0f; restarted = true; }
-//           }
-//       }
-//       if (!g_bAutoSaveProgressShown && (StageCount == total / 2 || restarted)) {     // `total / 2` = cdq ; sub ; sar (signed)
-//           if (++LoadingScreenIndex == LoadingScreenTextures.size())
-//               LoadingScreenIndex = 0;
-//       }
-//       if (g_bAutoSaveProgressShown) {       // VC7.1 threads the not-taken path of the first test straight to the else arm
-//           if (CPlayerGui global) { 0x00437570; six Draw2DScaledGraphic tiles of the GUI def's graphics [+0xA40][0..5]: 256 x 256 /
-//               128 cells scaled by the render-target size (x / 640, y / 480) -- C2DBoxF temporaries built and copied per call }
-//       } else {
-//           Draw2DTexture(C2DBoxF(0, 0, g_screenWidth, g_screenHeight), CRGBColour(255,255,255,255), LoadingScreenTextures[LoadingScreenIndex], 0);
-//       }
-//       if (ProgressTextures.empty() && !g_bAutoSaveProgressShown) goto done_bar;   // 0x00498FDF
-//       if (g_bSaveLoadFailed) goto after_bar;                                          // 0x00498FE3
-//       ... progress bar: GetRenderTargetDimensions, GFAXToVX(width*0.5) - GFAXToVX(96), y = height + 380 - 480, rounded to pixels,
-//           left cap / filled middle / right cap pieces (each either the GUI-def graphic when auto-saving or a ProgressTextures entry)
-//   }
-//   after_bar (0x00498FE3): BlackScreen -> Draw2DBox over the whole screen; ForFrontEnd -> guild seal frames (GuildSealFrameIndex
-//   wraps at GuildSealTextures.size()); then the text: TextTag / LastTextDisplayed tests, GFGetTime into LastProgressUpdate,
-//   DisplayText / DisplayResetProgressTipText choose the tip ("<tag>_PC", "<tag>_TITLE") or the save texts, word-wrapped into a
-//   virtual window and drawn centred with the progress font.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_SUBSTRING
+#define FABLE_RETAIL_CCHARSTRING_ENDSWITH
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_C2DBOXF_CORNERS
+#define FABLE_RETAIL_C2DBOXF_EXTENTS
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CRENDERMANAGERCORE
+#define FABLE_RETAIL_CRENDERMANAGER2D_DRAW2DTEXTUREBOX
+#define FABLE_RETAIL_CRENDERMANAGER2D_LOADINGSCREEN
+#define FABLE_RETAIL_CFONTBANK
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_CTOR
+#define FABLE_RETAIL_CPLAYERGUI_PEEKGUIDEF
+#define FABLE_RETAIL_CPLAYERGUI_GRAPHICBANK
+#define FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
+#define FABLE_RETAIL_SINGLETON_ISSETUP
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK_INITIALISED
+#define FABLE_RETAIL_CUSERPROFILEMANAGER
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_AUTOSAVENAME
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING
+#include "fable_string.h"
+#include "fable_user_profile.h"
+#include "engine/C2DVector.h"
+#include "engine/C2DExtentsF.h"
+#include "engine/C2DBoxF.h"
+#include "engine/CRGBColour.h"
+#include "engine/CPixelFormat.h"
+#include "engine/CTexture.h"
+#include "engine/CSystemManager.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CRenderManager.h"
+#include "engine/CFontBank.h"
+#include "engine/CPlayerGui.h"
+#include "engine/CPlayerGuiDef.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CNewFrontendGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
+#include "engine/CProgressDisplay.h"
+
+double __fastcall GFGetTime();                                           // 0x009E1BC0 ?GFGetTime@@YINXZ
+float __fastcall GFRoundVXToNearestPixel(double x);                      // 0x009E1D00 ?GFRoundVXToNearestPixel@@YIMN@Z
+float __fastcall GFRoundVYToNearestPixel(double y);                      // 0x009E1D50 ?GFRoundVYToNearestPixel@@YIMN@Z
+void __fastcall GFABoxToVBox(const C2DBoxF& abox, C2DBoxF& vbox);        // 0x009E2020 ?GFABoxToVBox@@YIXABVC2DBoxF@@AAV1@@Z
+void __fastcall WordWrap_SetCallback(unsigned int (__fastcall* char_width)(wchar_t), unsigned int (__fastcall* line_height)());   // 0x00A0FD90
+extern double VIRTUAL_SCREEN_WIDTH;                                      // 0x013961E8
+extern double VIRTUAL_SCREEN_HEIGHT;                                     // 0x013961F0
+extern CDisplayManager* GPDisplayManager;                                // 0x013B8390
+extern bool g_bUseCompiledWorldFiles;                                    // 0x013B8618
+extern bool g_bUseCompiledGlobalThings;                                  // 0x013B8609
+extern bool g_WADBuildEnabled;                                           // 0x01375459
+extern bool g_bAutoSaveProgressShown;                                    // 0x013B89C1
+extern bool g_bSaveLoadFailed;                                           // 0x013B89C0
+extern bool g_bProgressDisplaySuppressed;                                // 0x013B89D3
+extern double g_AutoSaveProgressEndTime;                                 // 0x013B89C8
+extern CWideString GResetProgressTipText;                                // 0x013B89D8
+extern CWideString GResetProgressTipTitleText;                           // 0x013B89DC
+
+template <class T> inline const T& __fastcall GFLimitReturn(const T& value, const T& low, const T& high)
+{
+    if (value < low)
+        return low;
+    if (value > high)
+        return high;
+    return value;
+}
+
+const NGameText::CDataBank* CProgressDisplay::GetPTextBank() const
+{
+    if (CMainGameComponent::Get() && CMainGameComponent::Get()->IsTextBankInitialised())
+        return &CMainGameComponent::Get()->GetTextBank();
+    if (CNewFrontendGameComponent::Get() && CNewFrontendGameComponent::Get()->IsTextBankInitialised())
+        return &CNewFrontendGameComponent::Get()->GetTextBank();
+    return 0;
+}
+
+void CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float progress, bool use_progress)
+{
+    CDisplayManager& display = *GFGetSystemManager()->GetDisplayManager();
+    CRenderManager& renderer = display.GetRenderManager();
+    if (FullScreen) {
+        long total = 130;
+        if (!g_bUseCompiledWorldFiles)
+            total = 465;
+        if (!g_bUseCompiledGlobalThings)
+            total += 347;
+        if (g_WADBuildEnabled)
+            total += 1788;
+        if (g_bAutoSaveProgressShown)
+            total = 300;
+        ++StageCount;
+        if (g_bAutoSaveProgressShown)
+            StageCount = (long)(300.0 - (g_AutoSaveProgressEndTime - GFGetTime()) * 100.0);
+        bool restarted = false;
+        float fraction = (float)GFLimitReturn(StageCount, 0L, total) / total;
+        if (use_progress) {
+            fraction = progress;
+            if (progress >= 1.0f) {
+                fraction = 1.0f;
+                if (!FileInstallerFinished) {
+                    FileInstallerFinished = true;
+                    ForFileInstaller = false;
+                    StageCount = 0;
+                    fraction = 0.0f;
+                    restarted = true;
+                }
+            }
+        }
+        if (!g_bAutoSaveProgressShown && (StageCount == total / 2 || restarted)) {
+            ++LoadingScreenIndex;
+            if (LoadingScreenIndex == (long)LoadingScreenTextures.size())
+                LoadingScreenIndex = 0;
+        }
+        if (g_bAutoSaveProgressShown) {
+            if (CPlayerGui::IsSingletonSetup()) {
+                CPlayerGui::Get().ChangeGraphicsBankScene();
+                const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
+                float scaleX = GPDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
+                float scaleY = GPDisplayManager->GetRenderTargetDimensions().Y * (1.0f / 480.0f);
+                C2DBoxF box;
+                box = C2DBoxF(C2DVector(GFAXToVX(0.0f), GFAYToVY(0.0f)), C2DVector(GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY));
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[0], 0, 0);
+                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(256.0f) * scaleX, GFAYToVY(256.0f) * scaleY));
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[1], 0, 0);
+                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(128.0f) * scaleX, GFAYToVY(256.0f) * scaleY));
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[2], 0, 0);
+                box = C2DBoxF(C2DVector(GFAXToVX(0.0f), box.BRY), C2DVector(GFAXToVX(256.0f) * scaleX, box.BRY + GFAYToVY(256.0f) * scaleY));
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[3], 0, 0);
+                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(256.0f) * scaleX, box.TLY + GFAYToVY(256.0f) * scaleY));
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[4], 0, 0);
+                box = C2DBoxF(C2DVector(box.BRX, box.TLY), C2DVector(box.BRX + GFAXToVX(128.0f) * scaleX, box.TLY + GFAYToVY(256.0f) * scaleY));
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBackdropGraphics[5], 0, 0);
+            }
+        } else {
+            renderer.Draw2DTexture(C2DBoxF(0.0f, 0.0f, (float)VIRTUAL_SCREEN_WIDTH, (float)VIRTUAL_SCREEN_HEIGHT),
+                                   CRGBColour(255, 255, 255, 255), LoadingScreenTextures[LoadingScreenIndex], 0);
+        }
+        if ((!ProgressTextures.empty() || g_bAutoSaveProgressShown) && !g_bSaveLoadFailed) {
+            float renderHeight = (float)display.GetRenderTargetDimensions().Y;
+            C2DVector barPosition;
+            barPosition.X = GFAXToVX((float)display.GetRenderTargetDimensions().X) * 0.5f - GFAXToVX(96.0f);
+            barPosition.Y = GFAYToVY(renderHeight + 380.0f - 480.0f);
+            C2DBoxF box(barPosition, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(32.0f)));
+            box.TLX = GFRoundVXToNearestPixel(box.TLX);
+            box.TLY = GFRoundVYToNearestPixel(box.TLY);
+            box.BRX = GFRoundVXToNearestPixel(box.BRX);
+            box.BRY = GFRoundVYToNearestPixel(box.BRY);
+            if (g_bAutoSaveProgressShown) {
+                const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBarLeftGraphic, 0, 1);
+            } else
+                renderer.Draw2DTexture(box, CRGBColour(255, 255, 255, 255), ProgressTextures[1], 1);
+            C2DVector position(barPosition.X + GFAXToVX(64.0f), barPosition.Y);
+            box = C2DBoxF(position, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(32.0f)));
+            box.TLX = GFRoundVXToNearestPixel(box.TLX);
+            box.TLY = GFRoundVYToNearestPixel(box.TLY);
+            box.BRX = GFRoundVXToNearestPixel(box.BRX);
+            box.BRY = GFRoundVYToNearestPixel(box.BRY);
+            if (g_bAutoSaveProgressShown) {
+                const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBarMidGraphic, 0, 1);
+            } else
+                renderer.Draw2DTexture(box, CRGBColour(255, 255, 255, 255), ProgressTextures[2], 1);
+            position.X += GFAXToVX(64.0f);
+            box = C2DBoxF(position, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(32.0f)));
+            box.TLX = GFRoundVXToNearestPixel(box.TLX);
+            box.TLY = GFRoundVYToNearestPixel(box.TLY);
+            box.BRX = GFRoundVXToNearestPixel(box.BRX);
+            box.BRY = GFRoundVYToNearestPixel(box.BRY);
+            if (g_bAutoSaveProgressShown) {
+                const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
+                renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBarRightGraphic, 0, 1);
+            } else
+                renderer.Draw2DTexture(box, CRGBColour(255, 255, 255, 255), ProgressTextures[3], 1);
+            float fillWidth = GFAXToVX(146.0f) * fraction;
+            if (fillWidth > 0.0f) {
+                C2DVector fillPosition = barPosition + C2DVector(GFAXToVX(23.0f), GFAYToVY(5.0f));
+                box = C2DBoxF(fillPosition, C2DExtentsF(fillWidth, GFAYToVY(16.0f)));
+                box.TLX = GFRoundVXToNearestPixel(box.TLX);
+                box.TLY = GFRoundVYToNearestPixel(box.TLY);
+                box.BRX = GFRoundVXToNearestPixel(box.BRX);
+                box.BRY = GFRoundVYToNearestPixel(box.BRY);
+                if (g_bAutoSaveProgressShown) {
+                    const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
+                    renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBarInnerGraphic, 0, 0);
+                } else
+                    renderer.Draw2DTexture(box, CRGBColour(255, 255, 255, 255), ProgressTextures[4], 1);
+            }
+            if (!g_bAutoSaveProgressShown) {
+                position = C2DVector(GFAXToVX(display.GetRenderTargetDimensions().X * 0.5f - 129.0f), GFAYToVY(renderHeight + 315.0f - 480.0f));
+                box = C2DBoxF(position, C2DExtentsF(GFAXToVX(256.0f), GFAYToVY(128.0f)));
+                box.TLX = GFRoundVXToNearestPixel(box.TLX);
+                box.TLY = GFRoundVYToNearestPixel(box.TLY);
+                box.BRX = GFRoundVXToNearestPixel(box.BRX);
+                box.BRY = GFRoundVYToNearestPixel(box.BRY);
+                renderer.Draw2DTexture(box, CRGBColour(255, 255, 255, 255), ProgressTextures[5], 1);
+            }
+        }
+    }
+    if (BlackScreen) {
+        C2DBoxF screen(0.0f, 0.0f, (float)VIRTUAL_SCREEN_WIDTH, (float)VIRTUAL_SCREEN_HEIGHT);
+        renderer.Draw2DBox(screen, CRGBColour(0, 0, 0, 255), 0);
+    }
+    if (!g_bAutoSaveProgressShown && !g_bSaveLoadFailed && !ForFrontEnd) {
+        float sealX = GFAXToVX((float)display.GetRenderTargetDimensions().X) * 0.5f - GFAXToVX(32.0f) - 4.0f;
+        C2DVector sealPosition(sealX, GFAYToVY(display.GetRenderTargetDimensions().Y + 310.0f - 480.0f));
+        if (FullScreen) {
+            if ((unsigned long)GuildSealFrameIndex < GuildSealTextures.size())
+                renderer.Draw2DTexture(C2DBoxF(sealPosition, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(64.0f))), CRGBColour(255, 255, 255, 255),
+                                       GuildSealTextures[GuildSealFrameIndex], 1);
+            if (!GuildSealTextures.empty()) {
+                ++GuildSealFrameIndex;
+                GuildSealFrameIndex %= (long)GuildSealTextures.size();
+            }
+        } else if (CPlayerGui::IsSingletonSetup()) {
+            const CPlayerGuiDef& def = CPlayerGui::PeekGuiDef();
+            if ((unsigned long)GuildSealFrameIndex < def.RegionChangeGuildSealGraphics.size()) {
+                float right = display.GetRenderTargetDimensions().X - 112.0f;
+                float bottom = display.GetRenderTargetDimensions().Y + 380.0f - 480.0f;
+                sealPosition = C2DVector(GFAXToVX(right), GFAYToVY(bottom));
+                renderer.Draw2DBox(C2DBoxF(sealPosition, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(64.0f))), CRGBColour(0, 0, 0, 255), 0);
+                sealPosition = C2DVector(GFAXToVX(right), GFAYToVY(bottom));
+                renderer.Draw2DGraphic(sealPosition, CPlayerGui::Get().PeekGraphicBank(), def.RegionChangeGuildSealGraphics[GuildSealFrameIndex], 0, 1, 0xFFFFFFFF);
+            }
+            if (!def.RegionChangeGuildSealGraphics.empty()) {
+                ++GuildSealFrameIndex;
+                GuildSealFrameIndex %= (long)def.RegionChangeGuildSealGraphics.size();
+            }
+        }
+        if (LastTextDisplayed != "")
+            GFGetTime();
+        LastProgressUpdate = GFGetTime();
+    }
+    if (FullScreen) {
+        CWideString text(GResetProgressTipText);
+        CWideString title(GResetProgressTipTitleText);
+        if (g_bAutoSaveProgressShown) {
+            text = L"";
+            title = L"";
+        }
+        const NGameText::CDataBank* textBank = GetPTextBank();
+        if (textBank) {
+            if (DisplayText) {
+                if (!DisplayResetProgressTipText) {
+                    text = textBank->GetTextBySymbol(TextTag);
+                    CCharString tag(TextTag);
+                    if (tag.EndsWith("0"))
+                        tag = tag.GetSubString(0, tag.GetLength() - 3);
+                    if (tag.EndsWith("_PC"))
+                        tag = tag.GetSubString(0, tag.GetLength() - 3);
+                    title = textBank->GetTextBySymbol(tag + "_TITLE");
+                }
+                if (g_bAutoSaveProgressShown) {
+                    text = textBank->GetTextBySymbol("TEXT_GUI_SAVE_SAVING_EXTENDED_10");
+                    NGameText::ConstructString(text, CUserProfileManager::Get().GetAutoSaveDisplayName());
+                    title = L"";
+                }
+            }
+            if (g_bProgressDisplaySuppressed) {
+                text = L"A - " + textBank->GetTextBySymbol("TEXT_GUI_INVENTORY_BUTTON_TEXT_EXIT");
+                title = textBank->GetTextBySymbol("TEXT_GUI_MENU_INVALID_SAVE");
+                NGameText::ConstructString(title, CUserProfileManager::Get().GetAutoSaveDisplayName());
+            }
+        }
+        if (text != L"") {
+            WordWrap_SetCallback(GetCharWidthW, 0);
+            float left = display.GetRenderTargetDimensions().X * 0.125f;
+            float scale = display.GetRenderTargetDimensions().Y * (1.0f / 480.0f);
+            C2DBoxF vbox;
+            GFABoxToVBox(C2DBoxF(C2DVector(left, scale * 100.0f), C2DVector(display.GetRenderTargetDimensions().X - left, scale * 300.0f)), vbox);
+            CWideString formatted;
+            C2DBoxF formattedWindow;
+            FormatTextForVWindow(vbox, *PFont, text, formatted, formattedWindow);
+            vbox.TLY -= GFAYToVY(10.0f);
+            vbox.BRY -= GFAYToVY(10.0f);
+            DisplayCenteredText(*PFont, formatted, vbox);
+            if (title != L"") {
+                C2DExtentsF extents = PFont->GetVStringExtents(formatted);
+                vbox.TLY -= extents.Y;
+                vbox.BRY -= extents.Y;
+                DisplayCenteredText(*PFont, title, vbox);
+            }
+        }
+    }
+}
