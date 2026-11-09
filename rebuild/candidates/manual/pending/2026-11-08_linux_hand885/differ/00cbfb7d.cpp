@@ -1,8 +1,8 @@
 // RunCutsceneMacro(const CCharString& name, map<CCharString, CScriptGameResourceObjectScriptedThingBase>& actors, map<CCharString, bool>* flags, map<CCharString, CCharString>* substitutions, bool setup, bool keepPlayerControl) -- run a cutscene def's macro: one ASCII `[Actor].Verb arg,arg,...` line per frame step, dispatched by a strncmp verb chain
-// Grade: DIFFER(74865v74778) -- session 7 (= session 6 a3 bytes): strict difflib 19733/20435 (96.6%); first register-level difference instruction 459 (main-loop parse: retail `dot`/`space` in memory, ours dot in edi); first colouring-order divergence K91 `gold` (edi in retail). Frame 0x18D0 (retail 0x18DC).
-// Next: the const 0 / 1 / -1 rest pieces are edi-only from c2 decision K48 to K521 (100*spill penalties on every edi choice); retail's are not. WORKLOG Session 7.
+// Grade: DIFFER(74846v74778) -- session 9 hand version h03: strict difflib 19754/20435 (96.7%), loose 20190, calls 4040/4068; first register-level difference instruction 459 (parse region: retail `dot` in memory, const 0 in edi); frame 0x18D0 (h02 holds retail's 0x18DC at strict 19746).
+// Next: the const 0 / 1 / -1 rest pieces (edi-only from K48) still drive ~70 of the 87 surplus bytes (FRAME cross-jump tails, CrowdKill, immediates). WORKLOG Session 9.
 // Flags: /d2inlS8
-// Inline-budget: /d2inlS8 + per-site devices -- VC7.1 caps inlining by the caller's whole IL size, greedy in source order; S8 reproduces retail's 524 GetLength / 41 vector<CScriptThing>::operator[] out-of-line calls; `#pragma inline_depth(0)` regions outline the sites retail calls (iterator == 0x00CC8407, vector ctors 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, vector<CCharString>::operator[] x7 0x00CD147E..0x00CD17B0); FABLE_FORCEINLINE twins expand the sites retail expands (GetLengthExpanded 0x00CC0040, StartsWithExpanded 0x00CC03EA, IsEnd 0x00CC61B8 / 0x00CC6DA9); tools/calls.py --counts: no inline-site difference left. Plus IS_THING_ALIVE<CThing*> (retail 0x0040DCE0, called): its real read-only body kept in the TU as `__declspec(noinline)` under #ifdef _MSC_VER, so pThing is not address-exposed and shares its frame slot (frame 0x18E4 -> 0x18DC, Codex checkpoint).
+// Inline-budget: /d2inlS8 + per-site devices -- VC7.1 caps inlining by the caller's whole IL size, greedy in source order; S8 reproduces retail's 524 GetLength / 41 vector<CScriptThing>::operator[] out-of-line calls; `#pragma inline_depth(0)` regions outline the sites retail calls (iterator == 0x00CC8407, vector ctors 0x00CD0DA4 / 0x00CD0E20 / 0x00CD0F3B, vector<CCharString>::operator[] x7 0x00CD147E..0x00CD17B0); FABLE_FORCEINLINE twins expand the sites retail expands (GetLengthExpanded 0x00CC0040, StartsWithExpanded 0x00CC03EA, IsEnd 0x00CC61B8 / 0x00CC6DA9; CSSlideTeleportStep, the SlideTeleport step expanded in place at 0x00CC593E / 0x00CC5BF9 -- a plain inline helper is called out of line under the cap); tools/calls.py --counts: no inline-site difference left. Plus IS_THING_ALIVE<CThing*> (retail 0x0040DCE0, called): its real read-only body kept in the TU as `__declspec(noinline)` under #ifdef _MSC_VER, so pThing is not address-exposed and shares its frame slot (frame 0x18E4 -> 0x18DC, Codex checkpoint).
 #pragma optimize("s", on)
 // Leaf: ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBFB7D, 74,778 bytes, `__fastcall` global (name in ecx, the actor map in edx,
@@ -232,6 +232,16 @@ template <class Iterator, class Container> static FABLE_FORCEINLINE bool IsEnd(c
     if (g_CutsceneSoundFrame != -1)                             \
         ++g_CutsceneSoundFrame
 
+// One SlideTeleport step: start + step * i, heading angle + angleStep * i (both SlideTeleport verbs; in place in retail
+// 0x00CC593E / 0x00CC5BF9).
+static FABLE_FORCEINLINE void CSSlideTeleportStep(const CScriptThing& thing, C3DVector position, const C3DVector& step,
+                                                  float angle, float angleStep, long i)
+{
+    float fraction = (float)i;
+    position += step * fraction;
+    pDSTGame->EntityTeleportToPosition(thing, position, angle + angleStep * fraction, false, false);
+}
+
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& actors, std::map<CCharString, bool>* flags,
                                  std::map<CCharString, CCharString>* substitutions, bool setup, bool keepPlayerControl)
 {
@@ -392,9 +402,10 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                 for (int k = 0; k < 10; ++k)
                     params[k] = "";
                 if (space != -1) {
+                    long c = space + 1;
                     long param = 0;
                     bool quoted = false;
-                    for (long c = space + 1; c < commands[line].GetLength(); ++c) {
+                    for (; c < commands[line].GetLength(); ++c) {
                         if (commands[line][c] == '\'') {
                             quoted = !quoted;
                         } else if (commands[line][c] == ',' && !quoted) {
@@ -602,8 +613,8 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                     }
                 } else if (command.StartsWith(".SetDrunk")) {
                     if (actor) {
-                        CScriptThing thing = actor->GetScriptThing();
                         bool drunk = true;
+                        CScriptThing thing = actor->GetScriptThing();
                         if (IsFalse(params[0]))
                             drunk = false;
                         pDSTGame->EntitySetAsDrunk(thing, drunk);
@@ -809,9 +820,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                 } else if (command.StartsWith(".WalkUpToThing")) {
                     if (actor && params[0].GetLength() && params[1].GetLength()) {
                         CScriptThing target = (CCharString("HERO") == params[0]) ? pDSTGame->GetHero() : pDSTGame->GetThingWithScriptName(params[0]);
-                        long moveType = 0;
-                        if (params[3].EqualsCaseInsensitive("run"))
-                            moveType = 1;
+                        long moveType = params[3].EqualsCaseInsensitive("run") ? 1 : 0;
                         CThing* pThing = target.GetPThing();
                         CTCPhysicsBase* physics;
                         if (pThing->GetTC(TCI_PHYSICS, &physics)) {
@@ -1287,10 +1296,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                         for (; i <= steps; ++i) {
                             if (IsCutsceneSkipped())
                                 break;
-                            float fraction = (float)i;
-                            C3DVector position(start);
-                            position += step * fraction;
-                            pDSTGame->EntityTeleportToPosition(thing, position, angle + angleStep * fraction, false, false);
+                            CSSlideTeleportStep(thing, start, step, angle, angleStep, i);
                             if (IsTrue(params[3])) {
                                 CUTSCENE_FRAME();
                             }
@@ -1320,10 +1326,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                         for (; i <= steps; ++i) {
                             if (IsCutsceneSkipped())
                                 break;
-                            float fraction = (float)i;
-                            C3DVector position(start);
-                            position += step * fraction;
-                            pDSTGame->EntityTeleportToPosition(thing, position, angle + angleStep * fraction, false, false);
+                            CSSlideTeleportStep(thing, start, step, angle, angleStep, i);
                             CUTSCENE_FRAME();
                             if (g_pActiveSuspendableProcess && g_pActiveSuspendableProcess->StopRunning)
                                 break;
@@ -2345,7 +2348,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                     if (params[0].GetLength()) {
                         CCharString crowdName;
                         CCharString searchName(params[0]);
-                        crowdName = params[1].GetLength() ? params[1] : searchName;
+                        crowdName = params[1].GetLength() == 0 ? searchName : params[1];
                         std::map<CCharString, long>::iterator crowd;
                         crowd = crowdSizes.find(crowdName);
                         if (crowd == crowdSizes.end()) {
@@ -2390,8 +2393,8 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneActorMap& act
                     }
                 } else if (command.StartsWith("FallbackAcquire")) {
                     if (params[0].GetLength()) {
-                        CScriptThing thing;
                         bool found = false;
+                        CScriptThing thing;
                         std::vector<CScriptThing> things;
                         for (long k = 1; !found && params[k].GetLength(); ++k) {
                             pDSTGame->GetAllThingsWithDefName(params[k], things);

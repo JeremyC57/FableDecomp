@@ -58,3 +58,104 @@ v34 SetAlpha: thing local after alpha (args with calls hoisted) -> DIFFER(74879v
 2026-11-09 s8 fx family (coordinator: variants at the 8 fixed-register sites, qc.sh, all keep the 6 cmpsb + 3 movsd): sh_neg SAME, sh_scope SAME, sh_elseif 74910 first 459, mv_tern 74844/459/fx19600, mv_init0 74707/459/fx19509, mv_ifs 74863/459/fx19596, end_elseif 74908/459, lk_noname 74854/459/fx19607 (a3 74865/459/19621) -> none moves K91; family failed, none kept
 2026-11-09 s8 cdiff2 base fix: c2prio lines = file-2; base 235 -> first colouring divergence is K62 temp #1903 (ebx v edi), then K91 gold, K387 c#760 (first parse loop c: ebx v retail edi). what-if wc120 (c#760 prio 120): K62/K91/K521 agree, K54 c#763 / i / prologue name break (m3 exact 15508): probe only
 2026-11-09 s8 wc76 (c#760 prio 76): same as wc120. c_shared (one long c for both parse loops): 74865/459/19621, 1 frame slot moved; not kept
+2026-11-09 s9 what-ifs (probe only): w1789 (#1789 prio 120) X90/=1252 first K269 (K62/K91/K521/c#760/c#763 agree, entry const 0 ebx); wk (k-loop vars early) worse (exact 15586); a3 X62/=1283
+2026-11-09 s9 w_loop1	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	81s
+2026-11-09 s9 w_loop2	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	81s
+2026-11-09 s9 c_top	74865 first 459 fx 19621	exact 18107 | regs 18541 | regs+frame 20130	fr 0x18d0	DIFF@16922 fld dword ptr [F]|fld dword ptr [ebp - 4] match 2	85s
+2026-11-09 s9 c_init	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	80s
+2026-11-09 s9 dot_lt	74865 first 459 fx 19620	exact 18105 | regs 18539 | regs+frame 20129	fr 0x18d0	DIFF@467 cmp edi, eax|cmp eax, edi match 20456/20458	86s
+2026-11-09 s9 dot_ge0	74864 first 459 fx 19620	exact 18105 | regs 18539 | regs+frame 20129	fr 0x18d0	DIFF@464 test edi, edi|cmp edi, -1 match 20456/20458	86s
+2026-11-09 s9 c_post	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	80s
+2026-11-09 s9 ch_named	74858 first 459 fx 19610	exact 18471 | regs 18761 | regs+frame 20125	fr 0x18d4	DIFF@1 mov eax, 0x18d4|mov eax, 0x18d0 match 20435/20458	88s
+2026-11-09 s9 h_actor	74670 first 13 fx 18283	exact 10494 | regs 11419 | regs+frame 19605	fr 0x18d8	DIFF@1 mov eax, 0x18d8|mov eax, 0x18d0 match 18748/20458	95s
+2026-11-09 s9 h_actor2	74862 first 459 fx 19607	exact 18093 | regs 18538 | regs+frame 20130	fr 0x18d0	DIFF@484 mov eax, dword ptr [F]|xor ebx, ebx match 20414/204	90s
+2026-11-09 s9 p_walk	74853 first 459 fx 19607	exact 18091 | regs 18535 | regs+frame 20126	fr 0x18d0	DIFF@484 mov eax, dword ptr [F]|xor ebx, ebx match 20412/204	91s
+2026-11-09 s9 c_cont	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	85s
+2026-11-09 s9 dw_loop1	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	85s
+2026-11-09 s9 w_loop2b	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	82s
+2026-11-09 s9 pq_top	74864 first 455 fx 19616	exact 18102 | regs 18539 | regs+frame 20130	fr 0x18d0	DIFF@455 and dword ptr [F], 0|shl esi, 2 match 20434/20458	89s
+2026-11-09 s9 line_after	74865 first 402 fx 19620	exact 18106 | regs 18540 | regs+frame 20129	fr 0x18d0	DIFF@402 call T|mov dword ptr [F], edi match 20457/20458	87s
+2026-11-09 s9 c_int	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	85s
+2026-11-09 s9 loop_first	74751 first 8 fx 19361	exact 17915 | regs 18535 | regs+frame 20033	fr 0x18d0	DIFF@8 mov esi, ecx|mov ebx, ecx match 19918/20458	102s
+2026-11-09 s9 dq_swap	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	79s
+2026-11-09 s9 dq_cfirst	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	DIFF@465 mov dword ptr [F], eax|mov dword ptr [ebp - 4], eax	87s
+2026-11-09 s9 dq_assign	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	81s
+2026-11-09 s9 dq_int	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	80s
+2026-11-09 s9 n_len_then	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	80s
+2026-11-09 s9 n_count	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	81s
+2026-11-09 s9 n_first	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	78s
+2026-11-09 s9 n_text_ref	74866 first 13 fx 19550	exact 18033 | regs 18459 | regs+frame 20125	fr 0x18d0	DIFF@13 mov dword ptr [ebp + 8], edi|mov dword ptr [ebp + 4]	90s
+2026-11-09 s9 sz_ne0	74868 first 447 fx 19620	exact 18105 | regs 18539 | regs+frame 20129	fr 0x18d0	DIFF@447 test ecx, 0xfffffffc|sar ecx, 2 match 20457/20458	85s
+2026-11-09 s9 sz_empty	74860 first 445 fx 19618	exact 18103 | regs 18537 | regs+frame 20127	fr 0x18d0	DIFF@445 cmp dword ptr [F], eax|mov ecx, eax match 20455/204	85s
+2026-11-09 s9 else_len	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	81s
+2026-11-09 s9 pf_cont	74815 first 13 fx 19211	exact 18128 | regs 18285 | regs+frame 19328	fr 0x18d0	DIFF@13 mov dword ptr [F], edi|mov dword ptr [ebp + 4], edi 	89s
+2026-11-09 s9 pf_tern2	74867 first 459 fx 19624	exact 18109 | regs 18543 | regs+frame 20133	fr 0x18d0	DIFF@584 jne T|je T match 20452/20458	84s
+2026-11-09 s9 pf_ref	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	81s
+2026-11-09 s9 pf_isempty	74865 first 459 fx 19619	exact 18104 | regs 18538 | regs+frame 20128	fr 0x18d0	DIFF@583 test al, al|test eax, eax match 20456/20458	86s
+2026-11-09 s9 pf_or	74865 first 459 fx 19621	exact 18106 | regs 18540 | regs+frame 20130	fr 0x18d0	SAME	83s
+2026-11-09 s9 x87 s1: s9s1: DIFF match 20/34 (ours 34) | 74877 first 459 fx 19618
+2026-11-09 s9 x87 s2: s9s2: DIFF match 23/34 (ours 32) | 74865 first 459 fx 19621
+2026-11-09 s9 x87 s3: s9s3: DIFF match 23/34 (ours 32) | 74865 first 459 fx 19621
+2026-11-09 s9 x87 s4: s9s4: DIFF match 23/34 (ours 32) | 74865 first 459 fx 19621
+2026-11-09 s9 x87 s5: s9s5: DIFF match 23/34 (ours 32) | 74865 first 459 fx 19621
+2026-11-09 s9 x87 s6: s9s6: DIFF match 20/34 (ours 34) | 74877 first 459 fx 19618
+2026-11-09 s9 x87 s7: s9s7: DIFF match 18/34 (ours 26) | 74845 first 459 fx 19616
+2026-11-09 s9 x87 s8: s9s8: DIFF match 23/34 (ours 32) | 74865 first 459 fx 19621
+2026-11-09 s9 x87 s9: s9s9: DIFF match 23/34 (ours 32) | 74865 first 459 fx 19621
+2026-11-09 s9 dq_cfirst	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	DIFF@465 mov dword ptr [F], eax|mov dword ptr [ebp - 4], eax	89s
+2026-11-09 s9 b5_pf_eqtrue	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	79s
+2026-11-09 s9 b5_pf_nocmp	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	83s
+2026-11-09 s9 b5_pf_named	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	83s
+2026-11-09 s9 b5_pf_tern	74867 first 459 fx 19654	exact 18205 | regs 18639 | regs+frame 20135	fr 0x18d0	DIFF@603 mov ebx, eax|test eax, eax match 20455/20458	89s
+2026-11-09 s9 b5_drunk_first	74865 first 459 fx 19651	exact 18202 | regs 18636 | regs+frame 20132	fr 0x18d0	DIFF@1670 mov byte ptr [F], 1|call T match 20457/20458	85s
+2026-11-09 s9 b5_repeat_late	74865 first 459 fx 19650	exact 18201 | regs 18636 | regs+frame 20132	fr 0x18d0	DIFF@1863 mov byte ptr [F], 0|inc edi match 20457/20458	87s
+2026-11-09 s9 b5_pf_gt0	74865 first 459 fx 19649	exact 18200 | regs 18634 | regs+frame 20130	fr 0x18d0	DIFF@584 jle T|je T match 20457/20458	85s
+2026-11-09 s9 b5_pf_ctor	74857 first 459 fx 19644	exact 15806 | regs 17028 | regs+frame 20128	fr 0x18d0	DIFF@585 or dword ptr [F], 1|push -1 match 20452/20458	90s
+2026-11-09 s9 b5_pf_neqf	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	86s
+2026-11-09 s9 b6_sneak_tern	74844 first 459 fx 19629	exact 18179 | regs 18616 | regs+frame 20112	fr 0x18d0	DIFF@16136 xor eax, eax|mov edi, 0 match 20440/20458	86s
+2026-11-09 s9 b6_idx_swap	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	DIFF@15772 inc esi|inc ebx match 20456/20458	88s
+2026-11-09 s9 b6_found_first	74865 first 459 fx 19651	exact 18202 | regs 18636 | regs+frame 20132	fr 0x18d0	DIFF@15141 mov byte ptr [F], 0|call T match 20457/20458	89s
+2026-11-09 s9 b6_wut_tern	74842 first 459 fx 19650	exact 18202 | regs 18631 | regs+frame 20127	fr 0x18d0	DIFF@788 mov dword ptr [F], eax|mov esi, eax match 20431/204	88s
+2026-11-09 s9 b6_wut_else	74699 first 13 fx 18459	exact 15633 | regs 16480 | regs+frame 19647	fr 0x18d4	DIFF@1 mov eax, 0x18d4|mov eax, 0x18d0 match 18828/20458	92s
+2026-11-09 s9 b6_sneak_init0	74707 first 459 fx 19538	exact 18091 | regs 18512 | regs+frame 20040	fr 0x18d0	DIFF@8243 or edi, 0xffffffff|or esi, 0xffffffff match 20133/	98s
+2026-11-09 s9 b6_found_last	74864 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	DIFF@15143 mov dword ptr [F], eax|mov byte ptr [F], 0 match 	89s
+2026-11-09 s9 b6_wut_enum	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	85s
+2026-11-09 s9 b7_crowd_eq0	74865 first 459 fx 19651	exact 18202 | regs 18636 | regs+frame 20132	fr 0x18d0	DIFF@14844 je T|jne T match 20457/20458	86s
+2026-11-09 s9 b7_crowd_ne0	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	81s
+2026-11-09 s9 b7_crowd_not	74865 first 459 fx 19651	exact 18202 | regs 18636 | regs+frame 20132	fr 0x18d0	DIFF@14844 je T|jne T match 20457/20458	87s
+2026-11-09 s9 b7_crowd_ref	74865 first 459 fx 19650	exact 18201 | regs 18635 | regs+frame 20131	fr 0x18d0	SAME	81s
+2026-11-09 s9 WHERE THE 87 BYTES ARE (s9/bytes87.py on dq_cfirst, shape-aligned ours v retail, bytes per hunk): 24 B = same-shape instructions with a register in retail and an immediate in ours (push 0 v push edi, or [x],-1 v mov [x],edi, cmp [x],-1 v cmp [x],edi: the const 0/1/-1 pieces retail holds in edi/esi); 63 B = shape hunks: (1) FRAME cross-jump tails net +37 (FollowNavRoute 0x00CC44A4 +37 and CameraRotateThing 0x00CCA738 +50 keep a CUTSCENE_FRAME copy retail jumps into, RemoveHeroWeapons 0x00CC907D -50: our copies end `cmp [g_CutsceneSoundFrame],edi` (edi=-1) so the merge stops one instruction early); (2) CrowdKill 0x00CCF580..0x00CCF815 +21 (ours keeps const 1 in edi: `xor edi,edi / inc edi` rematerialised after each frame and the vtable spilled to tv23145; retail i in edi, `push 1`); (3) CrowdTeleportRipple 0x00CCDACD +15 (`xor esi,esi; call; test; je` placement) ; (4) WalkUpToThing / SetDrunk / DoScriptFrame / SummonerAttack +6..+7 each (moveType memory, const 2 in edi). Retail is LONGER at SlideTeleport x87 (-16) and RemoveHeroWeapons. => ~70 of 87 bytes follow the const-piece register allocation, not a missing statement.
+2026-11-09 s9 single-token batch 5-7 summary on dq_cfirst (fx 19650): SAME pf_eqtrue/pf_nocmp/pf_named/pf_neqf/wut_enum; +1 drunk_first (`bool drunk` before GetScriptThing, 0x00CC1373), found_first (+1), crowd_eq0 (+1, 0x00CCCF34 operand order now retail's); +4 pf_tern (`len != 0 ? StartsWith : false`: retail's neg/sbb/inc for B, +2 B false arm); size movers: wut_tern 74842 (-23, fx 0), sneak_tern 74844 (-21, fx -21), sneak_init0 74707 (-158 overshoot, fx -112), wut_else 74699 (first 13). Stopped hv_* / b8_* per coordinator.
+2026-11-09 s9 hz_cts_loop	74886 first 459 fx 19633	exact 8908 | regs 9226 | regs+frame 20134	fr 0x18d0	DIFF@568 lea ecx, [ebp + ecx*4 + 0x24]|lea ecx, [ebp + ecx*4	93s
+2026-11-09 s9 hz_count_loop	74865 first 13 fx 19598	exact 18034 | regs 18460 | regs+frame 20135	fr 0x18d0	DIFF@13 mov dword ptr [ebp + 8], edi|mov dword ptr [ebp + 4]	88s
+2026-11-09 s9 hz_time_loop	74856 first 459 fx 19577	exact 13213 | regs 13765 | regs+frame 20135	fr 0x18cc	DIFF@1 mov eax, 0x18cc|mov eax, 0x18d0 match 20376/20458	99s
+2026-11-09 s9 hz_speed_loop	74895 first 459 fx 19654	exact 11007 | regs 11470 | regs+frame 20135	fr 0x18d4	DIFF@1 mov eax, 0x18d4|mov eax, 0x18d0 match 20453/20458	80s
+2026-11-09 s9 hz_cts_fn	74886 first 459 fx 19633	exact 8908 | regs 9226 | regs+frame 20134	fr 0x18d0	DIFF@568 lea ecx, [ebp + ecx*4 + 0x24]|lea ecx, [ebp + ecx*4	91s
+2026-11-09 s9 hz_many_loop	74842 first 13 fx 19480	exact 9229 | regs 9557 | regs+frame 20134	fr 0x18b8	DIFF@1 mov eax, 0x18b8|mov eax, 0x18d0 match 20266/20458	96s
+2026-11-09 s9 hz_off_loop	74922 first 13 fx 19499	exact 11866 | regs 11805 | regs+frame 20134	fr 0x18e0	DIFF@1 mov eax, 0x18e0|mov eax, 0x18d0 match 20290/20458	91s
+2026-11-09 s9 hz_off_speed_loop	74887 first 13 fx 19526	exact 7878 | regs 8275 | regs+frame 20134	fr 0x18c8	DIFF@1 mov eax, 0x18c8|mov eax, 0x18d0 match 20313/20458	89s
+2026-11-09 s9 hz_off_fn	74922 first 13 fx 19499	exact 11866 | regs 11805 | regs+frame 20134	fr 0x18e0	DIFF@1 mov eax, 0x18e0|mov eax, 0x18d0 match 20290/20458	91s
+2026-11-09 s9 rg_parse_fn	74857 first 459 fx 19650	exact 18243 | regs 18677 | regs+frame 20131	fr 0x18c4	DIFF@1 mov eax, 0x18c4|mov eax, 0x18d0 match 20453/20458	84s
+2026-11-09 s9 rg_parse_text	74689 first 8 fx 19348	exact 17698 | regs 18315 | regs+frame 20017	fr 0x18d0	DIFF@8 mov esi, ecx|mov ebx, ecx match 19919/20458	97s
+2026-11-09 s9 rg_slide_fn	74881 first 459 fx 19659	exact 18468 | regs 18903 | regs+frame 20140	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20451/20458	83s
+2026-11-09 s9 rg_slide_ff	74873 first 459 fx 19654	exact 18207 | regs 18641 | regs+frame 20135	fr 0x18d0	DIFF@6651 fld dword ptr [F]|fmul dword ptr [F] match 20456/2	85s
+2026-11-09 s9 s9c1	74842 first 459 fx 19653	exact 18205 | regs 18634 | regs+frame 20130	fr 0x18d0	DIFF@788 mov dword ptr [F], eax|mov esi, eax match 20428/204	89s
+2026-11-09 s9 s9c0	74865 first 459 fx 19653	exact 18204 | regs 18638 | regs+frame 20134	fr 0x18d0	DIFF@1670 mov byte ptr [F], 1|call T match 20455/20458	86s
+2026-11-09 s9 rg_slide_fn	74881 first 459 fx 19659	exact 18468 | regs 18903 | regs+frame 20140	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20451/20458	87s
+2026-11-09 s9 MOVER rg_slide_fn: SlideTeleport step as one FABLE_FORCEINLINE helper (both verbs) -> frame 0x18DC = retail, fx 19659, exact 18468 (+267), bytes 74881 (+16); new base. hz offsets frame 0x18E0, hz speed 0x18D4, rg_parse_fn 0x18C4: frame follows candidate merging, not slot count
+2026-11-09 s9 s9c3	74881 first 459 fx 19662	exact 18471 | regs 18906 | regs+frame 20143	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20448/20458	90s
+2026-11-09 s9 s9c2	74858 first 459 fx 19662	exact 18470 | regs 18900 | regs+frame 20139	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20421/20458	88s
+2026-11-09 s9 rs_inl	74687 first 459 fx 19609	exact 17808 | regs 18231 | regs+frame 20093	fr 0x18ac	DIFF@1 mov eax, 0x18ac|mov eax, 0x18dc match 20397/20462	86s
+2026-11-09 s9 rs_v1	74881 first 459 fx 19659	exact 18468 | regs 18903 | regs+frame 20140	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20451/20458	88s
+2026-11-09 s9 rs_v3	74881 first 459 fx 19659	exact 18468 | regs 18903 | regs+frame 20140	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20451/20458	86s
+2026-11-09 s9 rs_v2	74897 first 459 fx 19650	exact 18310 | regs 18745 | regs+frame 20131	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20439/20458	84s
+2026-11-09 s9 rs_v4	74881 first 459 fx 19659	exact 18468 | regs 18903 | regs+frame 20140	fr 0x18dc	DIFF@1 mov eax, 0x18dc|mov eax, 0x18d0 match 20451/20458	89s
+2026-11-09 s9 s9c4	74697 first 8 fx 19352	exact 17702 | regs 18319 | regs+frame 20021	fr 0x18d0	DIFF@8 mov esi, ecx|mov ebx, ecx match 19917/20458	104s
+2026-11-09 s9 s9c5	74865 first 459 fx 19656	exact 18247 | regs 18681 | regs+frame 20137	fr 0x18c4	DIFF@1 mov eax, 0x18c4|mov eax, 0x18d0 match 20452/20458	85s
+2026-11-09 s9 s9c6	74860 first 459 fx 19580	exact 13215 | regs 13767 | regs+frame 20138	fr 0x18cc	DIFF@1 mov eax, 0x18cc|mov eax, 0x18d0 match 20375/20458	103s
+2026-11-09 s9 s9c7	74891 first 459 fx 19657	exact 11010 | regs 11473 | regs+frame 20138	fr 0x18c8	DIFF@1 mov eax, 0x18c8|mov eax, 0x18d0 match 20448/20458	83s
+2026-11-09 s4 h00: 00cbfb7d _global::RunCutsceneMacro DIFFER(74881v74778) flags= ['/d2inlS8'] | difflib matched 19746/20435 retail ins = 96.6% (ours 20462) | loose difflib matched 20187/20435 retail ins = 98.8% (ours 20462) | calls retail 4068 ours 4071 matched 4035 (99.2%) | sites: 0 bad
+2026-11-09 s4 h01: 00cbfb7d _global::RunCutsceneMacro DIFFER(74881v74778) flags= ['/d2inlS8'] | difflib matched 19746/20435 retail ins = 96.6% (ours 20462) | loose difflib matched 20187/20435 retail ins = 98.8% (ours 20462) | calls retail 4068 ours 4071 matched 4035 (99.2%) | sites: 0 bad
+2026-11-09 s4 h02: 00cbfb7d _global::RunCutsceneMacro DIFFER(74858v74778) flags= ['/d2inlS8'] | difflib matched 19746/20435 retail ins = 96.6% (ours 20456) | loose difflib matched 20182/20435 retail ins = 98.8% (ours 20456) | calls retail 4068 ours 4071 matched 4035 (99.2%) | sites: 0 bad
+2026-11-09 s4 h03: 00cbfb7d _global::RunCutsceneMacro DIFFER(74846v74778) flags= ['/d2inlS8'] | difflib matched 19754/20435 retail ins = 96.7% (ours 20454) | loose difflib matched 20190/20435 retail ins = 98.8% (ours 20454) | calls retail 4068 ours 4071 matched 4040 (99.3%) | sites: 0 bad
+2026-11-09 s9 hand: h00 (=s9c3) DIFFER(74881v74778) strict 19746 loose 20187 frame 0x18DC | h01 frame macro as FABLE_FORCEINLINE CutsceneFrame(): byte-identical to h00 | h02 WalkUpToThing moveType ternary: DIFFER(74858) strict 19746 loose 20182 frame 0x18DC (kept) | h03 slide helper takes C3DVector position by value: DIFFER(74846) strict 19754 loose 20190 calls 4040 frame 0x18D0 fx 19670 exact 18223 (kept, new best strict)

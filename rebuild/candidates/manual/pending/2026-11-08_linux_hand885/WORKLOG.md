@@ -4,6 +4,38 @@ Row: 0x00CBFB7D, 74,778 bytes, catalog `_global::RunCutsceneMacro`. PDB name `Ru
 two sources: reloc_bindings `?RunCutsceneMacro@@YIX...` stand-in with CCutsceneCastMap + catalog name; the cutscene
 helpers CSFindThing 0xCBF9DE / CSExtractParameterList 0xCBFACA landed alongside with the same PDB naming family).
 
+## Session 9 (2026-11-09, authored variants -> region helpers -> hand versions) -- READ THIS FIRST (src/ = h03)
+src/ = s9/hand/h03.cpp (backup of a3: s9/a3_src.cpp, s9/a3_differ.cpp); differ/ = src + grade lines. Official grades (tools/gv.sh):
+| ver | gv.sh | strict | loose | calls | frame | fx (score7) | note |
+|---|---|---|---|---|---|---|---|
+| a3 (s8 src) | DIFFER(74865v74778) | 19733 | -- | 4035 | 0x18D0 | 19621 | old base |
+| h00 = s9c3 | DIFFER(74881v74778) | 19746 | 20187 | 4035 | **0x18DC** | 19662 | rg_slide_fn + dq_cfirst + drunk/found/crowd |
+| h02 | DIFFER(74858v74778) | 19746 | 20182 | 4035 | **0x18DC** | 19662 | + WalkUpToThing moveType ternary (best with retail frame) |
+| **h03 (src)** | **DIFFER(74846v74778)** | **19754** | **20190** | **4040** | 0x18D0 | **19670** | + slide helper takes the start position by value |
+Movers (score7 bytes / first / fx, m3 exact; base before = a3 74865 / 459 / 19621, exact 18106):
+1. dq_cfirst: second parse loop `long c = space + 1;` before `param = 0; quoted = false;` -> fx +29, exact +95 (retail 0x00CC0320 load order).
+2. **rg_slide_fn: SlideTeleport step (fraction, position, teleport) as one `static FABLE_FORCEINLINE CSSlideTeleportStep()` used by
+   both verbs -> frame 0x18DC (= retail), exact +267, fx +9**, bytes +16; x87 heading now retail's (`fld angleStep ; fmul st(1)`,
+   fi popped by `fstp st(0)` before the call). A plain `inline` helper is called out of line (rs_inl 74687, frame 0x18AC).
+3. h03: the same helper with `C3DVector position` by value: strict +8, bytes -12, calls +5, but frame back to 0x18D0.
+4. Small: drunk_first / found_first / crowd_eq0 (+1 fx each, statement order / ternary arms at 0x00CC1373, 0x00CCD3AD,
+   0x00CCCF34); wut_tern -23 B (fx 0).
+Where the 87 bytes are (s9/bytes87.py): 24 B immediates where retail uses a const register (push 0 v push edi ...); FRAME
+cross-jump tails net +37 (ours PlaySound 0x00CC907D jumps to CameraRotateThing's copy, retail the reverse; FollowNavRoute's copy
+ends `cmp [g_CutsceneSoundFrame],edi` with edi = -1 so its merge stops early); CrowdKill +21 (const 1 in edi rematerialised
+`xor edi,edi / inc edi`, retail `push 1` and i in edi); CrowdTeleportRipple +15 (count in edi reloaded, breaks the guard
+cross-jump); SlideTeleport x87 retail longer. ~70 B follow the const-piece allocation (Session 7/8 mechanism), not a statement.
+Dead (SAME or worse, s9/RESULTS.tsv + ATTEMPTS.log): loop spellings (while/for/do, ++c/c++, int/long), declaration placement,
+named length/count/first, size()!=0 / empty(), prefix spellings (== true, != false, named bool, IsEmpty, ||, ctor),
+StartsWithExpanded body twins (not run), SNEAK/RUN ternary (-21 B, fx -21), C-style hoists of repeated verb locals (frame
+moves chaotically: offsets 0x18E0, speed 0x18D4, time 0x18CC, 7 names 0x18B8; they merge per-verb candidates), whole-parse
+inline helper (rg_parse_fn frame 0x18C4; rg_parse_text first 8), CUTSCENE_FRAME as a FABLE_FORCEINLINE function (h01, identical).
+Next lever: the x87 products in CSSlideTeleportStep (retail spills the Y product, keeps X/Z; ours dups fi and spills Z) and the
+frame: h02 (0x18DC) v h03 (strict) differ only in the helper's position parameter -- find the helper spelling that keeps both;
+then the const-piece allocation (K62 temp #1903, K91 gold, K387 c, K521 dot), which owns the FRAME tails and CrowdKill bytes.
+Tools: s9/bytes87.py (byte surplus per hunk/verb), s9/sbs.py / s9/rdis.py (side-by-side / retail by address), s9/gh.sh
+(gv.sh + frame + score7, object kept in s9/hand/), s9/run9.sh + s9/q.sh (serial queue), gen9*.py / combo.py (stopped by owner).
+
 ## Session 8 (2026-11-09, K47 split -> fixed-site variants -> what-ifs) -- READ THIS FIRST (src/ = a3 bytes, unchanged)
 src/ = a3 (no source change kept); differ/ unchanged. Leaderboard (score7 = bytes / first register-level difference / fx):
 | ver | bytes | first-reg | fx | frame | note |

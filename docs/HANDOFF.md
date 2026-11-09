@@ -110,7 +110,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     are listed by residue family in `rebuild/candidates/manual/pending/PLAYBOOK_CANDIDATES.tsv`. Order: the two 12 KB PC menu rows
     (0x006096E0, 0x0061E6D0; running), then scheduler + test/or ties, shared tails, register permutations, frame, x87, inline, loops.
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
-    (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D running (first register difference moved from instruction 8 to 459).
+    (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
+    calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).
     Chunk 874 (libpk): 3 of 7 landed (`2026-11-08_landing_y/`, ivec resamplers). Chunk 875: 0 of 3 (decodes kept).
     Chunk 872 (libpk): 12 of 14 landed (`2026-11-08_landing_x/`, land0811x). Chunk 873 (game) running (Opus high); pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.
     Chunk 867 (PC UI): 4 of 10 landed (`2026-11-08_landing_v/`; 31 headers gain opt-ins, 12 new); tag land0811v.
