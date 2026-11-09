@@ -105,7 +105,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     RunCutsceneMacro 0x00CBFB7D DIFFER(74882v74778), frame = retail, 89.8% exact / 98.5% regs+frame masked (hand885). Both: entry
     register roles + slot tie order left. Chunk 891: ConstructActualWantedInventoryPC 0x005A5B31 landed (`2026-11-09_landing_a/`); Sell / Buy PC builders parked at one /
     two loop-shape differences (hand891). Chunk 890 session 5: DrawRetailDisplay 0x00498490 landed (`2026-11-09_landing_b/`);
-    CTCBoastUI::Activate 0x0056AD40 at DIFFER(4275v4284). All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
+    CTCBoastUI::Activate 0x0056AD40 at DIFFER(4275v4284). Read docs/pipeline/MATCHING_PLAYBOOK.md before parking anything (the method + c2 rules that closed Action).
+    All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D running (first register difference moved from instruction 8 to 459).
     Chunk 874 (libpk): 3 of 7 landed (`2026-11-08_landing_y/`, ivec resamplers). Chunk 875: 0 of 3 (decodes kept).
     Chunk 872 (libpk): 12 of 14 landed (`2026-11-08_landing_x/`, land0811x). Chunk 873 (game) running (Opus high); pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.

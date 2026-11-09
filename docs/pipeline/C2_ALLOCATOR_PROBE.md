@@ -241,3 +241,9 @@ candidates' priorities between spellings (the hand860 note's "a by-value CCounte
   if a run ever hangs, `kill_matching(<exe name>)` is what the tool itself does on exit.
 - Alternatives tried / not needed: no relay between gdb and winedbg was required on Wine 9.0 (byte-tactics needed one for
   the first packet); hardware watchpoints were not needed (the +0x44 writer was found statically).
+
+## 8. Later findings (2026-11-09)
+
+Regime 1 (> 10000 IL tuples: block weight 1, globals as candidates), the frame packer (reversed: node order, slot join,
+density qsort), the regime-0/1 inline formulas, the cross-jump edge order and the scheduler's parenthesis tuple are in
+[MATCHING_PLAYBOOK.md](MATCHING_PLAYBOOK.md) section 2, with the tools that trace them.

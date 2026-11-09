@@ -103,7 +103,8 @@ Newest fleet lessons (wave 25, not yet in GOTCHAS -- try these BEFORE parking a 
 - If line 1's name differs from the catalog name, check the leaf against `objdump -t $S/wine/q/<addr>/<addr>.obj`: a leaf
   that matches no symbol silently grades the LARGEST function in the TU.
 Before authoring a class, look for landed relatives: `grep -rl "<Class>" rebuild/src/compiled | head` and reuse their
-models (same members, same accessor shapes). Read `docs/pipeline/GOTCHAS.md` (whole file) before starting -- the
+models (same members, same accessor shapes). Read `docs/pipeline/MATCHING_PLAYBOOK.md` (how residues that look like register / slot / scheduling noise were closed,
+with c2's measured rules) and `docs/pipeline/GOTCHAS.md` (whole file) before starting -- the
 "Wave 24n/24o/24p" lines are the newest lessons.
 
 ## Your chunk (chunk{N}.tsv: address, module, name, length, bytes)

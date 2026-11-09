@@ -282,3 +282,9 @@ headers, never as asm in the row.
    - The 14 `naked_asm` / `emit_bake` oracle bakes go through steps 1-3. Those that match land; the rest stay parked answer keys.
    - The 160 tests that contain asm are rewritten as plain C++ calls.
 - **Agent briefs** (owner, 2026-11-05): every delegated agent is briefed as an expert in reverse engineering and decompiling retail x86 game code into clean, portable C++ (chunk_pool/BRIEF.md opening).
+- **Never park on "register colouring", "slot order" or "scheduling"** (owner, 2026-11-09: "find any means possible to get them to
+  match bytes, behavior, without compromising portability"). VC7.1 is deterministic: measure the first wrong decision in c2 and
+  turn it into an inequality. Prove the lever with a throwaway diagnostic build, then search source shapes for the natural spelling
+  with a cheap fitness. Read docs/pipeline/MATCHING_PLAYBOOK.md before parking any row. It lists the measured c2 rules (regime-1
+  priorities, enregistered globals, the frame packer, inline frequency, cross-jump edge order, x87 / scheduler order) and the
+  measured dead ends. A park needs the measured reason for each residue, not a guess.
