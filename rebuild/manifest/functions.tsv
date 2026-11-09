@@ -23774,7 +23774,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00806e10	Copy_CTargetPoint_00806e10	_global	__fastcall	CTargetPoint *	4	CTargetPoint *,CTargetPoint *,CTargetPoint *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00806ea0	Copy_CTargetPoint_00806ea0	_global	__fastcall	CTargetPoint *	4	CTargetPoint *,CTargetPoint *,CTargetPoint *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00806f30	_M_range_insert<CUnprovenPointee_00806f30 *const *>	std::vector<CUnprovenPointee_00806f30 *, std::allocator<CUnprovenPointee_00806f30 *>>	unknown	undefined	0		0			discovered	gapscan							
-00807170	std_introsort_Med3_TargetPoint	_global	unknown	undefined	0		0	yes	accepted									
+00807170	__median	std	unknown	undefined	0		0	yes	accepted									
 00807250	std_introsort_Partition_TargetPoint	_global	unknown	undefined	0		0	yes	accepted									
 00807320	__unguarded_insertion_sort_aux	std	__fastcall	void	4	CSpeechFrame *,CSpeechFrame *,allocator<CSpeechFrame> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00807370	swap	std	__fastcall	void	2	CIntelligentPointer<CThing> *,CIntelligentPointer<CThing> *	1	yes	accepted									
@@ -25634,7 +25634,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0085fa00	IsToEvadeAllHits	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
 0085faa0	IsLightningable	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
 0085fb30	IsAbleToBeAttacked	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
-0085fbc0	IsAbleToBeEngagedInCombat	_global	__fastcall	bool	1	CThing *	1	yes	accepted									
+0085fbc0	IsAbleToBeEngagedInCombat	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
 0085fc50	IsAbleToBlock	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
 0085fcd0	IsAbleToUseTurningAnimations	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
 0085fd70	IsPhysicsPushableByHero	NCreatureMode	__fastcall	bool	1	CThing *	1	yes	accepted									
@@ -42519,7 +42519,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bba290	Update	CEngineInternalPrimitiveDecal	__thiscall	void	3	CEngineInternalPrimitiveDecal *,CEnginePrimitive const &,ulong	1	yes	accepted									
 00bba330	GetRenderLayerMask	CEngineInternalPrimitiveDecal	__thiscall	ulong	1	CEngineInternalPrimitiveDecal *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bb\CEngineInternalPrimitiveDecal_GetRenderLayerMask_00bba330.cpp
 00bba340	RenderPrimitive	CEnginePrimitiveManagerDecal	__thiscall	ERendered	4	CEnginePrimitiveManagerWeatherMask *,CEngineInternalPrimitiveBase *,EEngineRenderLayer,CEngineSubPrimitiveChain *	1	yes	accepted									
-00bba3e0	?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveDecal@@UAE_NAAVC3DBoundingSphere@@@Z	CEngineInternalPrimitiveDecal	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted									
+00bba3e0	GetBoundingSphereWorldSpace	CEngineInternalPrimitiveDecal	__thiscall	C3DVector	1	CTCPhysicsRigidBody *	1	yes	accepted									
 00bba440	CreateInternalPrimitive	CEnginePrimitiveManagerDecal	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerDecal *,EEnginePrimitiveType	1	yes	accepted									
 00bba480	CEnginePrimitiveManagerDecal	CEnginePrimitiveManagerDecal	__thiscall	undefined	2	CEnginePrimitiveManagerDecal *,CArray<CEngineScene*> *	0	yes	accepted									
 00bbac20	GetSupportedTypes	CEnginePrimitiveManagerDecal	__thiscall	void	2	CEnginePrimitiveManagerDecal *,CEnginePrimitiveTypeList &	1	yes	accepted									
@@ -47346,8 +47346,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6d630	Process	CVtable_012b8a64	unknown	undefined	0		0	yes	accepted									
 00c6d9d0	CVtable_012bed90	CVtable_012bed90	__thiscall	undefined	1	CResourceBank *	0	yes	accepted									
 00c6da30	~CVtable_012bed90	CVtable_012bed90	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
-00c6da40	FixedPoint_AccumulateShort	_global	unknown	undefined	0		0	yes	accepted									
-00c6dad0	FixedPoint_AccumulateUshortDelta	_global	unknown	undefined	0		0	yes	accepted									
+00c6da40	MixGainRampUp	_global	unknown	undefined	0		0	yes	accepted									
+00c6dad0	MixGainRampDown	_global	unknown	undefined	0		0	yes	accepted									
 00c6dba0	Process	CVtable_012bed90	unknown	undefined	0		0			discovered	gapscan							
 00c6de60	ComputeGainRamp	CVtable_012bed90	unknown	undefined	0		0	yes	accepted									
 00c6dea0	RebuildGain	CVtable_012bed90	unknown	undefined	0		0	yes	accepted									
@@ -47468,7 +47468,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c737d0	Create	CRegistryKey	unknown	undefined	0		0	yes	accepted									
 00c73800	Close	CRegistryKey	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_ClearTextures_00c73800.cpp
 00c73820	SetMember_dword0x4_00c73820	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\AddExclusiveObserver_AddExclusiveObserver_00c73820.cpp
-00c73830	Registry_QueryDWord	_global	unknown	undefined	0		0	yes	accepted									
+00c73830	QueryDWord	CRegistryKey	unknown	undefined	0		0	yes	accepted									
 00c739a0	~CRegistryKey	CRegistryKey	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_ClearTextures_00c739a0.cpp
 00c739c0	`scalar deleting destructor'	CRegistryKey	__thiscall	void *	2	CWaterPatchMesh *,uint	1	yes	accepted									
 00c73a00	ClassifyAudioExtension	CString_00c73a00	unknown	undefined	0		0	yes	accepted									

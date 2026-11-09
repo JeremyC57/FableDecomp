@@ -386636,6 +386636,55 @@ $catalog = @(
         TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHThunder_Main_00ee2490_test.cpp'
         PassPattern = '00ee2490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c73830'
+        Module = 'CRegistryKey'
+        Source = '00/c7/CRegistryKey_QueryDWord_00c73830.cpp'
+        TestSource = '00/c7/CRegistryKey_QueryDWord_00c73830_test.cpp'
+        PassPattern = '00c73830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fbc0'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAbleToBeEngagedInCombat_0085fbc0.cpp'
+        TestSource = '00/85/NCreatureMode_IsAbleToBeEngagedInCombat_0085fbc0_test.cpp'
+        PassPattern = '0085fbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d06f0'
+        Module = 'CBankFile'
+        Source = '00/9d/CBankFile_OpenReadOnly_009d06f0.cpp'
+        TestSource = '00/9d/CBankFile_OpenReadOnly_009d06f0_test.cpp'
+        PassPattern = '009d06f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6da40'
+        Module = '_global'
+        Source = '00/c6/global_MixGainRampUp_00c6da40.cpp'
+        TestSource = '00/c6/global_MixGainRampUp_00c6da40_test.cpp'
+        PassPattern = '00c6da40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6dad0'
+        Module = '_global'
+        Source = '00/c6/global_MixGainRampDown_00c6dad0.cpp'
+        TestSource = '00/c6/global_MixGainRampDown_00c6dad0_test.cpp'
+        PassPattern = '00c6dad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bba3e0'
+        Module = 'CEngineInternalPrimitiveDecal'
+        Source = '00/bb/CEngineInternalPrimitiveDecal_GetBoundingSphereWorldSpace_00bba3e0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveDecal_GetBoundingSphereWorldSpace_00bba3e0_test.cpp'
+        PassPattern = '00bba3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00807170'
+        Module = 'std'
+        Source = '00/80/std_median_00807170.cpp'
+        TestSource = '00/80/std_median_00807170_test.cpp'
+        PassPattern = '00807170_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00c73830   WARN STANDIN_LEAF ?QueryDWord@CRegistryKey@@QAEHPBDPAK@Z (catalog _global::Registry_QueryDWord; names another function)
+00c73830   RELOCATION_MATCH PASS   QueryDWord
+0085fbc0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0085fbc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0085fbc0   WARN SHARED_HEADER_AVAILABLE CThing
+0085fbc0   WARN SHARED_HEADER_AVAILABLE CDefString
+0085fbc0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0085fbc0   RELOCATION_MATCH PASS   IsAbleToBeEngagedInCombat
+009d06f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+009d06f0   WARN SHARED_HEADER_AVAILABLE CAFile
+009d06f0   WARN RELOC_NAME: ??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ -> 009a9d60 labelled '_global::CCountedPointer_Release_009a9d60'
+009d06f0   RELOCATION_MATCH PASS   OpenReadOnly
+00c6da40   WARN STANDIN_LEAF ?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z (catalog _global::FixedPoint_AccumulateShort; names another function)
+00c6da40   MATCH            PASS   MixGainRampUp
+00c6dad0   WARN STANDIN_LEAF ?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z (catalog _global::FixedPoint_AccumulateUshortDelta; names another function)
+00c6dad0   MATCH            PASS   MixGainRampDown
+00bba3e0   WARN STANDIN_LEAF ?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveDecal@@UAE_NAAVC3DBoundingSphere@@@Z (catalog CEngineInternalPrimitiveDecal::?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveDecal@@UAE_NAAVC3DBoundingSphere@@@Z; names another function)
+00bba3e0   MATCH            PASS   GetBoundingSphereWorldSpace
+00807170   WARN STANDIN_LEAF ??$__median@U?$pair@VC3DVector@@J@std@@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x8a3179c7@@@std@@YIABU?$pair@VC3DVector@@J@0@ABU10@00VCCompareTargetedPositionsForFirstPersonTargeting@?A0x8a3179c7@@@Z (catalog _global::std_introsort_Med3_TargetPoint; names another function)
+00807170   RELOCATION_MATCH PASS   __median
+
+WINS: 7
+  00c73830 RELOCATION_MATCH CRegistryKey::?QueryDWord@CRegistryKey
+  0085fbc0 RELOCATION_MATCH NCreatureMode::?IsAbleToBeEngagedInCombat@NCreatureMode@@
+  009d06f0 RELOCATION_MATCH CBankFile::?OpenReadOnly@CBankFile@@UAE_NABVCCharString@@K@Z
+  00c6da40 MATCH _global::?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
+  00c6dad0 MATCH _global::?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z
+  00bba3e0 MATCH CEngineInternalPrimitiveDecal::?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveDecal@@UAE_NAAVC3DBoundingSphere@@@Z
+  00807170 RELOCATION_MATCH std::??$__median@
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CRegistryKey_QueryDWord_00c73830
+  NCreatureMode_IsAbleToBeEngagedInCombat_0085fbc0
+  CBankFile_OpenReadOnly_009d06f0
+  global_MixGainRampUp_00c6da40
+  global_MixGainRampDown_00c6dad0
+  CEngineInternalPrimitiveDecal_GetBoundingSphereWorldSpace_00bba3e0
+  std_median_00807170
