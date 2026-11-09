@@ -105,7 +105,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     RunCutsceneMacro 0x00CBFB7D DIFFER(74882v74778), frame = retail, 89.8% exact / 98.5% regs+frame masked (hand885). Both: entry
     register roles + slot tie order left. Chunk 891: ConstructActualWantedInventoryPC 0x005A5B31 landed (`2026-11-09_landing_a/`); Sell / Buy PC builders parked at one /
     two loop-shape differences (hand891). Chunk 890 session 5: DrawRetailDisplay 0x00498490 landed (`2026-11-09_landing_b/`);
-    CTCBoastUI::Activate 0x0056AD40 at DIFFER(4275v4284). Read docs/pipeline/MATCHING_PLAYBOOK.md before parking anything (the method + c2 rules that closed Action).
+    CTCBoastUI::Activate 0x0056AD40 landed (`2026-11-09_landing_d/`, no device); chunk 890 is 3 of 3. Read docs/pipeline/MATCHING_PLAYBOOK.md before parking anything (the method + c2 rules that closed Action).
     Playbook family pushes (owner, 2026-11-09: one agent, one family at a time): 425 parked rows within 8 bytes of retail
     are listed by residue family in `rebuild/candidates/manual/pending/PLAYBOOK_CANDIDATES.tsv`. Order: the two 12 KB PC menu rows
     (0x006096E0, 0x0061E6D0; running), then scheduler + test/or ties, shared tails, register permutations, frame, x87, inline, loops.

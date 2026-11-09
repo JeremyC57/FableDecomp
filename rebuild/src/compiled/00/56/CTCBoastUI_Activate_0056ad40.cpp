@@ -1,10 +1,7 @@
 // CTCBoastUI::Activate() -- open the boast menu: close the quick-access menu, rebuild one branch per active quest that offers boasts (title, description with the quest, boast, wager and reward, and a "take boast" entry), push the mouse pointer and the list as UI components, drop the hero's block / fireball charge and put the player into boast mode
-// Inline-budget: #pragma inline_depth(0) ... #pragma inline_depth() around BoastGroups.insert only -- retail calls make_pair 0x0056CB40 and the pair converter 0x0056CB60 there (0x0056BA3A / 0x0056BA4A); c2 scores them 64 / 68 (< 74) at that block's static frequency 0.049 (work/s5/want.py on work/inl/s5_l1.json). Every other call / expand split of retail is plain C++: the first quest loop is a while loop, which puts the second loop's body at retail's frequencies (TRACE Session 5, H1-H3).
-// Grade: DIFFER(4275v4284) (probe r2_s5b = this file's bytes; session 6 fit unchanged) -- strict 773/1110 = 69.6% / loose 1061/1110 = 95.6%; prologue, entry colouring (this edi, zero ebp) and every call / expand split but the ~list at 0x0056AFFA match (238 v 238 calls); frame 0x200 v 0x208. Session 6 probe quantity: the empty-boasts ~list<CBoast> (0x0056AFFA, c1 19) expands only if that `continue` path is hotter than its fall-through (needs f > 0.047 there and <= 0.0439 on the main path) -- c2 gives that only to `if (a || b) continue;` with one 0.75 fall-through upstream (work/s6/fmodel.py, 114/114 solutions).
-// Next: residue 3 -- with the `||` split (work/s6/d1.cpp: all 34 inline sites retail's, no device) the entry colouring flips, because the expanded continue dtor adds 3 loop-2 blocks where the activeQuests piece loses 6 and the zero piece 2 (c2prio pass 6: -7 v -4; retail needs activeQuests > zero, b0 -1 v -2). Find the source shape that gives the zero piece >= 4 more live-through cost (or activeQuests 4 more refs) there; then drop the inline_depth region. NAME_FIX 0x0042A2DB.
 // Leaf: ?Activate@CTCBoastUI@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056AD40, 4,284 bytes (early `ret` 0x0056AE99 when no active quest has boasts; final `ret`
-//   0x0056BDFB). Frame `push ebp ; mov ebp,esp ; and esp,-8 ; sub esp,208h` (ours 0x210).
+//   0x0056BDFB). Frame `push ebp ; mov ebp,esp ; and esp,-8 ; sub esp,208h`.
 // Name: FableWin.pdb 0x0239BB40 / Ego_r.pdb 0x005E17E0 ?Activate@CTCBoastUI@@QAEXXZ; the landed caller GlobalUpdate 0x0056BE00 binds it
 //   so (the catalog's "CQuestManager::UpdateUI_QuestMenu" is a forge-autoname label).
 // Callees (Ego_r / FableWin spellings, hdr/README.md "Session 3"): CTCQuickAccessMenu::Deactivate 0x00625920 (NAME_FIX of the landed
@@ -21,6 +18,14 @@
 //   the take-boast label is a named local (fetched before the CreateMenuEntryComponent arguments); the new group pair is
 //   default-built then `first = group` (no vector temporary); the action types are UI_ACTION_TYPE_CLOSE_BOAST_MENU / _TAKE_BOAST /
 //   _DELETE_PREVIOUS; both GetTC sites test the UsingComponents word in place (no FABLE_RETAIL_STLP_BITSET_TEST_DECL).
+// Inline split by plain C++ (no inline device, no flag): c2 expands an inline callee at a site iff c1 * (1/f + 6) / 7 < 74, f the
+//   site's static frequency (c2.dll 0x1078D1AA). The first quest loop is a `while` (its body 9x, the code after it back at 1x); the
+//   second quest loop and the boast loop are `for` (body 5x, the code after it stays at the body's frequency). Two condition spellings
+//   set the remaining branch splits; both fold away and change no instruction (see the comments at the two tests).
+// Registers and frame: the boast loop reads the record through a `const CBoast&` (edi = node + 8 at 0x0056B190, the iterator lives
+//   in memory) and through the FableWin.pdb inline accessors GetTitle / GetText / GetCost / GetReward / GetID / GetScriptName /
+//   GetGroupIndex: an inline accessor's value is evaluated where the call is, so Cost / Reward are loaded into ebx before the
+//   CWideString(L", ") / CWideString(L"\n") arguments (0x0056B4C0 / 0x0056B637), which sets retail's colouring and its 0x208 frame.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CTCBASE
@@ -101,6 +106,8 @@ void CTCBoastUI::Activate()
     const std::list<CCountedPointer<CQuestManager::CActiveQuest> >& activeQuests = CQuestManager::Get().GetActiveQuests();
     unsigned long questsWithBoasts = 0;
     std::list<CCountedPointer<CQuestManager::CActiveQuest> >::const_iterator quest = activeQuests.begin();
+    // A `while` loop: c2's static frequency after it drops back to the loop entry's (after a `for` it would stay at the body's
+    // 5x and every later site would expand; retail calls them, e.g. the ~CCountedPointer COMDATs 0x00429B72 / 0x00429C53).
     while (quest != activeQuests.end()) {
         if ((*quest)->HasScript()) {
             CCharString scriptName = (*quest)->GetScriptInfo().GetName();
@@ -129,14 +136,23 @@ void CTCBoastUI::Activate()
             continue;
         CCharString scriptName = (*quest)->GetScriptInfo().GetName();
         CThing* questCardThing = CQuestManager::Get().GetActiveQuestCardFromScriptName(scriptName);
-        if (questCardThing == 0)
+        // `&& true` folds away (same `test eax,eax ; jne` + own ~CCharString copy as retail, 0x0056AF60..0x0056AF6D) but keeps
+        // the static split of an `&&`: c2 sends 0.25 down this continue and 0.75 past it, the extra fall-through weight that,
+        // with the test below, puts the later sites at retail's call / expand split (work/s6/fmodel.py: one 0.75 fall-through
+        // upstream is needed; `if (Active && true)`, the HasScript or the questsWithBoasts test give identical bytes).
+        if (questCardThing == 0 && true)
             continue;
         CTCQuestCard* questCard;
         questCardThing->GetTC(&questCard);
         CWideString questName = questCard->GetQuestName();
         std::list<CQuestManager::CBoast> boasts;
         CQuestManager::Get().GetBoastsForScript(scriptName, boasts);
-        if (boasts.empty())
+        // The leading `false ||` folds away (retail 0x0056AFF2 `cmp [eax],eax ; jne`, the continue path laid out in line) but
+        // keeps the static split of an `||`: 0.75 down this continue, so its ~list<CBoast> expands (clear 0x004B8C00 + the
+        // sentinel free, 0x0056AFF6..0x0056B00D) while list::size and the two map constructors after the test stay calls
+        // (0x0056B157 / 0x0056B16C / 0x0056B178). A plain test splits 0.5 / 0.5 (252 calls v 238); a trailing `|| false` gives
+        // the same split but c2 then moves this continue block next to ++quest and the card-check continue jumps into it.
+        if (false || boasts.empty())
             continue;
 
         CCountedPointer<NUISystem::CComponent> branch(manager->CreateMenuEntryComponent(questName, 0.0f, 1.0f,
@@ -151,9 +167,10 @@ void CTCBoastUI::Activate()
         boastSubList->InitialiseOffsets(boasts.size());
         std::map<long, std::vector<NUISystem::CMenuEntry*> > groupEntries;
         std::map<NUISystem::CMenuEntry*, NUISystem::CComponent*> takeEntries;
-        for (std::list<CQuestManager::CBoast>::iterator boast = boasts.begin(); boast != boasts.end(); ++boast) {
-            CWideString title = (*boast).Title;
-            CWideString description = (*boast).Text;
+        for (std::list<CQuestManager::CBoast>::const_iterator it = boasts.begin(); it != boasts.end(); ++it) {
+            const CQuestManager::CBoast& boast = *it;   // edi = &*it (0x0056B190 `mov edi,[esp+1Ch] ; add edi,8`)
+            CWideString title = boast.GetTitle();
+            CWideString description = boast.GetText();
             CCountedPointer<NUISystem::CComponent> entry(manager->CreateMenuEntryComponent(title, 0.0f, 1.0f,
                 "PC_MENU_ENTRY_BRANCH_TEMPLATE", 0.0f, "", 15.0f, "PC_BUTTON_BASTARD"));
             boastSubList->AddScrollingChildAndSetOffsets(entry);
@@ -168,9 +185,9 @@ void CTCBoastUI::Activate()
             CWideString value;
             value = text.GetTextBySymbol("TEXT_GUI_MENU_QUEST") + CWideString(L": ") + questName + CWideString(L"\n");
             value += text.GetTextBySymbol("TEXT_GUI_MENU_BOAST") + CWideString(L": ") + description + CWideString(L"\n");
-            value += text.GetTextBySymbol("TEXT_GUI_MENU_WAGER") + CWideString(L": ") + GFIntToWideString((*boast).Cost)
+            value += text.GetTextBySymbol("TEXT_GUI_MENU_WAGER") + CWideString(L": ") + GFIntToWideString(boast.GetCost())
                 + CWideString(L" ") + text.GetTextBySymbol("TEXT_GUI_MENU_GOLD") + CWideString(L", ");
-            value += text.GetTextBySymbol("TEXT_GUI_MENU_REWARD") + CWideString(L": ") + GFIntToWideString((*boast).Reward)
+            value += text.GetTextBySymbol("TEXT_GUI_MENU_REWARD") + CWideString(L": ") + GFIntToWideString(boast.GetReward())
                 + CWideString(L" ") + text.GetTextBySymbol("TEXT_GUI_MENU_GOLD") + CWideString(L"\n");
             CCountedPointer<NUISystem::CComponent> descriptionText(manager->CreateComponent("PC_BOAST_DESCRIPTION_TEXT", false));
             static_cast<NUISystem::CText*>(descriptionText.Data)->SetValue(value, true, true);
@@ -182,8 +199,8 @@ void CTCBoastUI::Activate()
             NUISystem::CComponent* takeComponent = take.Data;
             CCountedPointer<NUISystem::CAction> takeAction(new NUISystem::CAction);
             takeAction->ActionType = NUISystem::UI_ACTION_TYPE_TAKE_BOAST;
-            takeAction->AddParam(new NUISystem::CActionParamSLONG((*boast).ID));
-            CWideString boastScriptName = (*boast).ScriptName.ToWideString();
+            takeAction->AddParam(new NUISystem::CActionParamSLONG(boast.GetID()));
+            CWideString boastScriptName = boast.GetScriptName().ToWideString();
             takeAction->AddParam(new NUISystem::CActionParamString(boastScriptName));
             take->AddAction(takeAction);
             if (boasts.size() > 1) {
@@ -192,11 +209,9 @@ void CTCBoastUI::Activate()
                 take->AddAction(deleteAction);
                 NUISystem::CMenuEntry* menuEntry = static_cast<NUISystem::CMenuEntry*>(entry.Data);
                 menuEntry->AddUIActionParam(menuEntry);
-                long group = (*boast).GroupIndex;
+                long group = boast.GetGroupIndex();
                 if (group != 0) {
-#pragma inline_depth(0)   // retail calls make_pair 0x0056CB40 and the pair converter 0x0056CB60 (0x0056BA3A / 0x0056BA4A)
-                BoastGroups.insert(std::make_pair(menuEntry, *boast));
-#pragma inline_depth()
+                    BoastGroups.insert(std::make_pair(menuEntry, boast));
                     takeEntries.insert(std::make_pair(menuEntry, takeComponent));
                     std::map<long, std::vector<NUISystem::CMenuEntry*> >::iterator found = groupEntries.find(group);
                     if (found == groupEntries.end()) {

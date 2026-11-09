@@ -83,3 +83,19 @@ Review at landing:
 - (chunk 890 s6) A right inline split can still flip the colouring: newly expanded blocks change the live-through costs of
   long-lived split pieces. Read the per-block shares of the two pieces at the deciding re-sort (c2prio --json + blkshare.py)
   before searching spellings.
+- (chunk 890 s7) The OPERAND ORDER of a folded `||` decides the layout, not only the frequency: `if (false || x) continue;` keeps
+  the 0.75 static split of an `||` and retail's in-line continue (`jne body ; dtors ; jmp`), `if (x || false) continue;` gives the
+  same split but c2 moves the continue block next to its jump target, where another continue cross-jumps into its dtor tail
+  (0x0056AD40: 0x0056AFF4 / 0x0056AF62, 237 -> 238 calls). Same for `x && true` v `true && x` only when the then-path is far.
+- (chunk 890 s7) A loop over a list of records that retail reads through `edi = node + 8` with the iterator in a stack slot
+  (`mov edi,[esp+1Ch] ; add edi,8` at the body top) is `for (it ...) { const T& r = *it; ... }`, not `(*it).field`; the extra
+  pointer candidate re-splits the long-lived webs and flipped a whole-function colouring decision (0x0056AD40 0x0056B190).
+- (chunk 890 s7) Use the PDB's inline accessors (`boast.GetCost()`) where retail loads a field early into a callee-saved register
+  and moves it to the argument register later (`mov ebx,[edi+4]` ... `mov edx,ebx`, 0x0056B4C0): c1 evaluates an inline call
+  where the call sits in the argument order, a member read at its use. In 0x0056AD40 this one change fixed every remaining
+  register, the frame size (0x200 -> 0x208) and the slot order: try the accessor spelling before frame-packer work.
+- (chunk 890 s7) Order of attack that closed 0x0056AD40: what-if the first wrong colouring decision (hand885 wi.py with a
+  priority force on ONE re-sort: `forceif name:old=new`) to see the residue it hides, fix block layout, then the body shapes
+  (named reference, accessors) before searching control-flow levers: the deciding re-sort's split pieces depend on body webs.
+- (chunk 890 s7) c2 allocator leaf names for locals carry a leading underscore (`_activeQuests`, `_this`; constants `const 0`):
+  a wi.py force keyed on the plain name silently matches nothing.

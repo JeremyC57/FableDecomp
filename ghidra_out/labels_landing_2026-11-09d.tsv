@@ -1,0 +1,2 @@
+address	name	evidence
+0x0056AD40	?Activate@CTCBoastUI@@QAEXXZ	chunk 890: FableWin.pdb 0x0239BB40 + Ego_r.pdb 0x005E17E0; landed caller 0x0056BE00 CTCBoastUI::GlobalUpdate binds it; row 0x0056AD40 matched

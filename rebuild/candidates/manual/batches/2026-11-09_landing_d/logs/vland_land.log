@@ -1,0 +1,28 @@
+addr       parity           behav  name
+0056ad40   WARN RELOC_NAME: ?ForceClearGui@CPlayerGui@@QAEXXZ -> 004382c0 labelled 'CPlayerGui::PrepareForLoad'
+0056ad40   WARN RELOC_NAME: ?size@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QBEIXZ -> 004b87d0 labelled 'CGuiControlTreePane::SortTreeRecursively'
+0056ad40   WARN RELOC_NAME: ??0?$map@JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@@2@@std@@QAE@XZ -> 0056e4a0 labelled 'CUnprovenContainer_0056de50::CUnprovenContainer_0056de50'
+0056ad40   WARN RELOC_NAME: ??0?$map@PAVCMenuEntry@NUISystem@@PAVCComponent@2@U?$less@PAVCMenuEntry@NUISystem@@@std@@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@5@@std@@QAE@XZ -> 0056d770 labelled 'CUnprovenContainer_0056cb00::CUnprovenContainer_0056cb00'
+0056ad40   WARN RELOC_CONFLICT: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db here, 0042a2ca in landed 00558770
+0056ad40   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db labelled '_global::CCountedPointer_Assign_0042a2db'
+0056ad40   WARN RELOC_NAME: ??$?0PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@?$pair@QAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE@ABU?$pair@PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@1@@Z -> 0056cb60 labelled '_unattributed::SPairLongCSecond_004b73a0'
+0056ad40   WARN RELOC_NAME: ??1?$pair@QAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE@XZ -> 0056c840 labelled 'std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>'
+0056ad40   WARN RELOC_NAME: ??1?$pair@PAVCMenuEntry@NUISystem@@VCBoast@CQuestManager@@@std@@QAE@XZ -> 0056c820 labelled 'std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>'
+0056ad40   WARN RELOC_NAME: ??$?0JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@QAE@ABU?$pair@JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@1@@Z -> 0056dab0 labelled '_unattributed::SPairLongCSecond_0056d490'
+0056ad40   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 here, 00429160 in landed 0056f615
+0056ad40   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72'
+0056ad40   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00596a68
+0056ad40   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429c53'
+0056ad40   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429d8e here, 00429288 in landed 005729d8
+0056ad40   WARN RELOC_NAME: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429d8e labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429d8e'
+0056ad40   WARN RELOC_NAME: ??1?$map@PAVCMenuEntry@NUISystem@@PAVCComponent@2@U?$less@PAVCMenuEntry@NUISystem@@@std@@V?$allocator@U?$pair@QAVCMenuEntry@NUISystem@@PAVCComponent@2@@std@@@5@@std@@QAE@XZ -> 0056d7b0 labelled 'CUnprovenContainer_0056cb00::~CUnprovenContainer_0056cb00'
+0056ad40   WARN RELOC_NAME: ??1?$map@JV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@@std@@@2@@std@@QAE@XZ -> 0056e4e0 labelled 'CRetailTree_erase0056de50::~CRetailTree_erase0056de50'
+0056ad40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+0056ad40   WARN RELOC_NAME: ?IsBlocking@CTCCombat@@QBE_NXZ -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+0056ad40   RELOCATION_MATCH PASS   Activate
+
+WINS: 1
+  0056ad40 RELOCATION_MATCH CTCBoastUI::?Activate@CTCBoastUI@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCBoastUI_Activate_0056ad40

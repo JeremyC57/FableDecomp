@@ -439,3 +439,53 @@ fq/q2.cpp + fq/fq.py (frequency micro probes), c2dis.py (c2.dll disassembler), s
   `int` count, declaration order, `continue`-style first loop, post-increment, list-before-name: none moves the colouring (best =
   d1's 38.6%). h1.cpp = b0 + `|| false` only: 4209 B, 58.5% / 91.4%. h2.cpp = b0 + both levers (device kept): 4289 B,
   62.7% / 93.4%, 238 v 238 calls, colouring still flipped. No full grade (none improved on b0).
+
+## Session 7 (2026-11-09) -- row 0x0056AD40 CTCBoastUI::Activate (d1: colouring, layout, frame)
+Tools (work/s7/tools/): wi7.py + wig7.py (hand885 wi.py / wig.py for Activate: `forceif` = force one candidate's priority only
+when it equals a given value, LOGINS / LOGALL insert logs; c2 leaf names carry a leading `_`), wi7.sh (what-if + score), dd7.py
+(dd.py + a `noframe` share = registers kept, [esp+N] masked; --nf hunks), fx.sh (compile-only fit from work/s7, ~2 s: bytes,
+strict / loose / noframe, calls, frame, entry registers, the jcc after each `cmp [eax],eax` empty test), ncalls.py, odis.py.
+- S7.1 what-if (work/s7/wi/d1_aq3.*): d1 with the activeQuests split piece forced from -7 to -3 at the 6th re-sort (one
+  `forced` event, #97) -> the colouring follows retail's (activeQuests piece edi, zero piece ebp, this edi/ebp pieces):
+  4267 B, strict 44.3%, loose 94.7%, noframe 91.2% (d1 unforced 38.6 / 93.2 / 86.1; b0 69.6 / 95.6 / 91.3). So that one
+  comparison is the whole entry-colouring flip. What it leaves (noframe hunks), all also in b0 except the first:
+  (a) NEW in d1: the empty-boasts continue is laid out far (`je` to a block placed just before the ++quest block, which it
+  falls into), and the card-check continue cross-jumps into its ~CCharString tail (`je` +0xf49); retail keeps both continues
+  inline (`jne body ; clear ; free ; ~CWideString ; ~CCharString ; jmp ++quest` at 0x0056AFF4, own `~CCharString ; jmp` at
+  0x0056AF62) and the loop end falls into ++quest after its reloads (0x0056BC97). (b) b0's quest-body drift from 0x0056B133
+  (boastSubList spill, `CBoast&` in edi = node+8 at 0x0056B190, make_pair / insert region 0x0056BA02..0x0056BB5E) and (c) the
+  frame (0x200 v 0x208, slot order).
+- S7.2 continue layout (compile-only, work/s7/e/gen.py, 14 spellings of the empty check on d1): a TRAILING folded operand
+  (`boasts.empty() || false`, `|| questCardThing == 0`, `|| boasts.empty()`, `!(!x && true)`, `x == true || false`, a named bool,
+  `questCardThing == 0 || boasts.empty()`) all keep d1's far layout (`je` to a continue block placed before ++quest, card
+  continue cross-jumped into it, 237 calls). A LEADING constant (`false || boasts.empty()`, e02) or a dead `else if (false)
+  continue;` after a plain check (e06) keep the 0.75 continue frequency (the ~list at 0x0056AFFA expands, list::size / map
+  ctors after it are called) AND retail's layout (`cmp [eax],eax ; jne body`, own dtor copies, 238 calls; calls.py matches
+  retail's 238 calls except the known ILT aliases / SetStaticCast binding). Reading: c1 emits `if (a || b) S` as
+  `if (a) goto S; if (!b) goto F; S:`; a leading constant test disappears and leaves `if (!a) goto F; S` (plain layout), a
+  trailing one leaves `if (a) goto S; goto F` and c2 moves S next to its jump target. Plain `if` (e10 / e11) = 0.5 split, 252 calls.
+  e02 still has the flipped entry colouring (wi7 LOGINS: activeQuests piece -7 v zero piece -4, as d1); forced (e02_aq3):
+  loose 96.2%, noframe 92.7% (better than b0's 95.6 / 91.3), only the quest-body drift and the frame left.
+- S7.3 quest-body drift = the colouring flip (compile-only, work/s7/b/): the boast loop as
+  `for (iterator it = ...; ...; ++it) { CQuestManager::CBoast& boast = *it; ...` (b1; const& b2 / pointer b3 identical): retail's
+  `mov edi,[esp+1Ch] ; add edi,8` at 0x0056B190 (iterator in memory, the CBoast in edi), 1110 instructions, and the entry
+  colouring flips to retail's with NO force (this edi, zero ebp): loose 97.7%, noframe 95.1%. The 6th re-sort's pieces depend
+  on what the body's candidates split earlier, so fixing the body moved that comparison. Left: Cost / Reward loaded into ebx
+  early at 0x0056B4C0 / 0x0056B637 (ours loads them at the GFIntToWideString call), the new CAction / menuEntry values in ebx,
+  boastSubList esi + spill, the make_pair / insert order, frame 0x200 v 0x208.
+- S7.4 the FableWin.pdb CBoast accessors (compile-only, work/s7/b/c1..c4): `boast.GetCost()` / `GetReward()` instead of the
+  member reads (c2: those two only; c1: every accessor GetTitle / GetText / GetCost / GetReward / GetID / GetScriptName /
+  GetGroupIndex; c3: the four long accessors) -> 4284 B, 1110 / 1110 instructions, strict 100%, frame 0x208. The inline
+  accessor's value is computed where c1 evaluates the call (before the CWideString(L", ") argument, 0x0056B4C0), so it becomes
+  a register candidate across three calls (ebx), which changes every later colouring decision AND the frame packer's symbol set
+  (0x200 -> 0x208). c4 (only the reference accessors GetTitle / GetText / GetScriptName) = b1 bytes. Graded c1 as r2_s7c1.
+- S7.5 lever placement and spelling (compile-only, work/s7/n/n01..n11 on c1): card check plain (n01) -> 85.0% (the upstream
+  0.75 fall-through is still required); empty check plain (n02) -> 252 calls. The `&& true` lever gives identical bytes at the
+  card check (`== 0 && true`, `true && == 0`, `!p && true`), at `if (Active && true)`, at the loop-2 HasScript test or at
+  `questsWithBoasts == 0 && true` (n03..n08); the empty-check lever as `false ||`, `0 ||` or a dead `else if (false) continue;`
+  (n07, n09). `const CBoast&` + `const_iterator` (n10 / n11) = c1 bytes. Kept: card `&& true` (d1's analysed placement),
+  `false || boasts.empty()`, `const_iterator` + `const CQuestManager::CBoast& boast = *it;`, every FableWin.pdb accessor.
+- S7.6 final src/0056ad40.cpp (= n11 + comments): fit 4284 B strict 1110/1110; GRADED RELOCATION_MATCH (also r2_s7c1 = c1);
+  no inline device, no flag, no header change; check_portable_spellings clean (src / hdr / differ); test/0056ad40.cpp PASS
+  under g++ -std=c++03 -Wall -Wextra -pedantic, tall.sh and VC7.1 (tall.py); finish.py -> payload 3 rows (0x0056AD40 new).
+  The frame (step 3 of the brief) needed no packer work: the symbol set the accessors give packs to retail's 0x208 directly.

@@ -14,7 +14,7 @@
     `position.X = bottomLeftPosition.X + horizontalSize` picks the load source; D1 member-template find gives the 0x00553520 symbol.
 
 ## Parked for Fable 5.1 (2)
-- 0x0056AD40 CTCBoastUI::Activate DIFFER(-v4284): not graded -- decoded only (differ/0056ad40.cpp) | tried: identification + full decode, 0 source attempts (session budget) | next: build the overlay opt-ins the differ header lists (CTCBoastUI retail branch, CQuestManager ActiveQuests / GetBoastsForScript / GetActiveQuestCardFromScriptName, the UI list classes with slots 144/151/152/156), compile, then calls.py --counts and the inline / allocator probes
+- 0x0056AD40 CTCBoastUI::Activate RELOCATION_MATCH (session 7): src/0056ad40.cpp + test/0056ad40.cpp PASS; no device, no flag; two folded condition operands (card `&& true`, `false || boasts.empty()`) set c2 static branch splits; `const CBoast& boast = *it` + FableWin.pdb CBoast accessors give retail colouring and frame (WORKLOG "Session 7", TRACE S7.1-S7.6). Extent: 0x0056AD40..0x0056BDFB `ret` (4,284).
 - 0x00498490 CProgressDisplay::DrawRetailDisplay DIFFER(-v5101): not graded -- retail layout derived, first third decoded (differ/00498490.cpp) | tried: identification + layout + partial decode, 0 source attempts (session budget) | next: engine/CProgressDisplay.h overlay (layout in the differ header), finish the decode from 0x00498972, grade; expect x87-order and C2DBoxF copy residues
 
 ## Skipped

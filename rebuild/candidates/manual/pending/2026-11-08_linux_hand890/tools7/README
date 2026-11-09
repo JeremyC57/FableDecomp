@@ -1,0 +1,10 @@
+agent890 tools (chunk 890). Paths are absolute to this work dir; every script runs with work/s7 as cwd (never the repo).
+- blkshare.py <c2prio --json> ids: per-pass block shares (w*K ref / live-through) of chosen candidates (session 6).
+- wi7.py / wig7.py / wi7.sh (session 7, from hand885 pk/wi.py + wig.py): c2 allocator what-if on CTCBoastUI::Activate. `force`
+  overwrites a leaf's priority at every insert, `forceif` name:old=new only when the priority equals old (one re-sort only);
+  LOGINS=1 / LOGALL=1 log inserts. c2 leaf names of locals carry a leading `_` (`_activeQuests`, `_this`; constants `const 0`).
+- dd7.py: dd.py + a `noframe` share (registers kept, [esp+N] masked) and --nf hunks; default leaf ?Activate@CTCBoastUI@@.
+- fx.sh <src> [tag]: compile-only fit (~2 s): bytes, strict / loose / noframe, calls, frame size, entry registers and the jcc after
+  each `cmp [eax],eax` empty test (ncalls.py). Appends to work/s7/LEADER.txt.
+- p7.sh <addr> <src>: one q.py grade from the work dir (fixed: resolves the source path before the cd), logs ATTEMPTS.log.
+- odis.py <obj> <lo> <hi>: disassemble our function between offsets.

@@ -386461,6 +386461,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0041e6d3_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0056ad40'
+        Module = 'CTCBoastUI'
+        Source = '00/56/CTCBoastUI_Activate_0056ad40.cpp'
+        TestSource = '00/56/CTCBoastUI_Activate_0056ad40_test.cpp'
+        PassPattern = '0056ad40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

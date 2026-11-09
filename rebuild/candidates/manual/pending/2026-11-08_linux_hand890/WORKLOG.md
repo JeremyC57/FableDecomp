@@ -182,3 +182,32 @@ Leaderboard (best per row; strict / loose = fit on the graded bytes):
   that costs no code, or the hand885 pk/wi.py what-if (force the const-0 piece's priority to -8) to prove the colouring is the
   only thing left before searching spellings. Then pack.py on the frame.
 - Header changes this session: none.
+
+## Session 7 (2026-11-09) -- row 0x0056AD40 CTCBoastUI::Activate: RELOCATION_MATCH, no device
+- Result: src/0056ad40.cpp graded RELOCATION_MATCH (4284 v 4284, strict 1110/1110), test/0056ad40.cpp PASS (g++ C++03, tall.sh,
+  VC7.1 tall.py), finish.py run (payload now 3 rows). No inline device, no /d2inl flag, no header change. 3 grades this session (all RELOCATION_MATCH: c1, the final file, the final file after a comment fix).
+- How (TRACE S7.1-S7.6):
+  1. What-if (wi7, forceif `_activeQuests:-7=-3` at the 6th re-sort): the d1 entry colouring follows retail -> that one comparison
+     was the whole entry flip; the forced object also showed a second residue d1 had hidden: the empty-boasts continue laid out far
+     and the card continue cross-jumped into it (237 v 238 calls).
+  2. Layout: a LEADING folded constant (`false || boasts.empty()`) keeps the `||` frequency split but retail's in-line continue;
+     a trailing one (`|| false`, d1) makes c2 move the continue block next to ++quest.
+  3. Colouring without force: the boast loop through `const CBoast& boast = *it` (retail 0x0056B190 `mov edi,[esp+1Ch] ; add edi,8`)
+     flips the 6th re-sort to retail's (the pieces there depend on the body's earlier splits).
+  4. Frame + all remaining drift: the FableWin.pdb inline accessors (GetCost / GetReward ...) load Cost / Reward early into ebx
+     (0x0056B4C0 / 0x0056B637) -> every register, the 0x208 frame and the slot order match. pack.py was not needed.
+- Leaderboard (compile-only fits, work/s7/LEADER.txt):
+  | source | bytes | strict | loose | noframe | calls | entry |
+  |---|---|---|---|---|---|---|
+  | s6 d1 | 4263 | 38.6% | 93.2% | 86.1% | 237 | this ebx, zero edi |
+  | s6 b0 (s5 differ) | 4275 | 69.6% | 95.6% | 91.3% | 238 | retail |
+  | wi d1_aq3 (forced) | 4267 | 44.3% | 94.7% | 91.2% | 237 | retail |
+  | e02 (`false ||`) | 4268 | 40.9% | 94.5% | 87.5% | 238 | this ebx, zero edi |
+  | wi e02_aq3 (forced) | 4279 | 44.7% | 96.2% | 92.7% | 238 | retail |
+  | b1 (+ `CBoast&`) | 4275 | 42.0% | 97.7% | 95.1% | 238 | retail |
+  | c1 / n11 / final (+ accessors) | 4284 | 100% | 100% | 100% | 238 | retail |
+- Odd spellings kept (commented at the site with the retail addresses): `questCardThing == 0 && true` and `false || boasts.empty()`.
+  Both fold away; they only set c2's static branch split (TRACE S6.3, S7.2, S7.5: identical bytes at any of four upstream tests;
+  no natural spelling without a folded operand gives the split, fmodel.py 114/114 solutions need both).
+- Next: nothing for this row. For landing: NAME_FIXES.tsv (SetStaticCast 0x0042A2DB binding, ForceClearGui / PrepareForLoad,
+  CTCQuickAccessMenu::Deactivate), the hdr/ opt-ins of session 3 (hdr/README.md "Session 3"; no new ones in sessions 4-7).

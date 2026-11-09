@@ -30,3 +30,7 @@
 02:54:40 0056ad40 r2_s5b DIFFER(4275v4284) flags=[ ]
 # s6 (no full grade: nothing improved on r2_s5b); fits only, work/s5/r2fit.sh:
 #   s6_d1 4263 B strict 38.6% loose 93.2% calls 237 | s6_h1 4209 B 58.5% / 91.4% | s6_h2 4289 B 62.7% / 93.4% | s6 r3 x24 <= 38.6% | s6 v x30 = d1
+04:19:23 0056ad40 r2_s7c1 RELOCATION_MATCH flags=[]
+04:22:25 0056ad40 0056ad40 RELOCATION_MATCH flags=[]
+04:25:44 0056ad40 0056ad40 RELOCATION_MATCH flags=[]
+# s7 fits (compile-only, work/s7/LEADER.txt): e01-e14 empty-check spellings (e02/e06/e07-type leading constant = retail layout), b1-b3 CBoast& (noframe 95.1%), c1-c3 + n03-n11 accessors = 1110/1110; what-ifs wi/d1_aq3 + e02_aq3 (forced activeQuests -7 -> -3)
