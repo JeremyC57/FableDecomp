@@ -1,6 +1,7 @@
 // CTCBoastUI::Activate() -- open the boast menu: close the quick-access menu, rebuild one branch per active quest that offers boasts (title, description with the quest, boast, wager and reward, and a "take boast" entry), push the mouse pointer and the list as UI components, drop the hero's block / fireball charge and put the player into boast mode
-// Grade: DIFFER(5039v4284) (probe r2_v3 = this file's bytes; 2 grades this session: r2_v2 5031v4284, r2_v3) -- strict 58.6% / loose 90.3%, 213 of 238 retail calls aligned. Residue = VC7.1 inline decisions only: ours expands what retail calls out of line (every ~CCountedPointer, the two local map ctors / dtors 0x0056E4A0 / 0x0056D770, the first list::size 0x004B87D0, SetStaticCast 0x0042A2DB, make_pair 0x0056CB40 + pair converters, map find / insert_unique, one vector push_back), then frame / register drift from that.
-// Next: (1) find why retail's scores differ at those sites (c2 trace work/inl/r2_v2.json: our scores 24..63 sit under T=74, yet retail expands BoastGroups.clear at 68 and the hero bitset tests at 58) -- check block frequency first (loop / guard shape of the second quest loop and the boast loop) before any inline device; (2) if it is a pure inline-budget split, the 2026-11-08 ladder: a per-row /d2inl flag (/d2inlT45 moves the dtors out but also the bitset test, the map ctors stay), then scoped `#pragma inline_depth` / `auto_inline` with a line-2 Inline-budget note.
+// Inline-budget: #pragma inline_depth(0) ... #pragma inline_depth() at 8 sites (first list::size, the two map ctors, SetStaticCast, the two make_pair inserts, the new-group insert, the three scope exits of the CCountedPointer locals; each site names its retail call) -- retail calls these COMDATs where VC7.1 at the default budget expands them; the per-row flags /d2inlT45 (bitset test leaves too, map ctors stay) and /d2inlS5 (no change) do not reproduce the split, and per-site scores (c2 trace work/inl/r2_v2.json) admit no single threshold.
+// Grade: DIFFER(4299v4284) (probe r2_s4h = this file's bytes) -- strict 729/1110 = 65.7% / loose 93.3% (fit); calls aligned 226 / 238 (was 213). Left: the find / push_back / ~CBoast-list / map-dtor sites of the group branch and the outer exit, frame and register drift.
+// Next: the remaining call-site splits (retail 0x0056BB0E / 0x0056BB75 push_back 0x0056DCE0 called while ours expands it under depth 0 only with the find; 0x0056BC36 map dtor 0x0056D7B0; 0x0056BC6F list::clear 0x004B8C00 at the boasts exit), then the register web; NAME_FIX 0x0042A2DB (reloc_bindings binds the CList SetStaticCast spelling to 0x0042A2CA).
 // Leaf: ?Activate@CTCBoastUI@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056AD40, 4,284 bytes (early `ret` 0x0056AE99 when no active quest has boasts; final `ret`
 //   0x0056BDFB). Frame `push ebp ; mov ebp,esp ; and esp,-8 ; sub esp,208h` (ours 0x210).
@@ -34,6 +35,7 @@
 #define FABLE_RETAIL_CTHINGGAMEOBJECT
 #define FABLE_RETAIL_CTHINGCREATUREBASE
 #define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #define FABLE_RETAIL_CACTIONPARAMSLONG
 #define FABLE_RETAIL_CACTIONPARAMSTRING_CTOR
@@ -145,9 +147,13 @@ void CTCBoastUI::Activate()
         CCountedPointer<NUISystem::CComponent> subList(manager->CreateComponent("PC_BOAST_SUB_LIST", false));
         NUISystem::CList* boastSubList = static_cast<NUISystem::CList*>(subList.Data);
         branch->AddChild(subList);
+#pragma inline_depth(0)   // first boasts.size(): retail calls list::size 0x004B87D0 (0x0056B157)
         boastSubList->InitialiseOffsets(boasts.size());
+#pragma inline_depth()
+#pragma inline_depth(0)   // the two local maps: retail calls their no-argument ctors 0x0056E4A0 / 0x0056D770 (0x0056B16C / 0x0056B178)
         std::map<long, std::vector<NUISystem::CMenuEntry*> > groupEntries;
         std::map<NUISystem::CMenuEntry*, NUISystem::CComponent*> takeEntries;
+#pragma inline_depth()
         for (std::list<CQuestManager::CBoast>::iterator boast = boasts.begin(); boast != boasts.end(); ++boast) {
             CWideString title = (*boast).Title;
             CWideString description = (*boast).Text;
@@ -156,7 +162,9 @@ void CTCBoastUI::Activate()
             boastSubList->AddScrollingChildAndSetOffsets(entry);
             CCountedPointer<NUISystem::CComponent> detailList(manager->CreateComponent("PC_BOAST_SUB_LIST", false));
             CCountedPointer<NUISystem::CList> detailListAsList;
+#pragma inline_depth(0)   // retail calls CCountedPointer<CList>::SetStaticCast<CComponent> 0x0042A2DB (0x0056B281)
             detailListAsList.SetStaticCast(detailList);
+#pragma inline_depth()
             entry->AddChild(detailList);
             CCountedPointer<NUISystem::CComponent> backdrop(manager->CreateComponent("PC_BOAST_BACKDROP", false));
             entry->AddChild(backdrop);
@@ -191,22 +199,32 @@ void CTCBoastUI::Activate()
                 menuEntry->AddUIActionParam(menuEntry);
                 long group = (*boast).GroupIndex;
                 if (group != 0) {
+#pragma inline_depth(0)   // retail calls make_pair 0x0056CB40, the pair converter 0x0056CB60 and insert_unique (0x0056BA3A..0x0056BAAF)
                     BoastGroups.insert(std::make_pair(menuEntry, *boast));
                     takeEntries.insert(std::make_pair(menuEntry, takeComponent));
+#pragma inline_depth()
                     std::map<long, std::vector<NUISystem::CMenuEntry*> >::iterator found = groupEntries.find(group);
                     if (found == groupEntries.end()) {
                         std::pair<long, std::vector<NUISystem::CMenuEntry*> > newGroup;
                         newGroup.first = group;
                         newGroup.second.push_back(menuEntry);
+#pragma inline_depth(0)   // retail calls the pair<const long, vector> converter 0x0056DAB0 and insert_unique 0x0056E020 (0x0056BB22 / 0x0056BB3E)
                         groupEntries.insert(newGroup);
+#pragma inline_depth()
                     } else {
                         (*found).second.push_back(menuEntry);
                     }
                 }
+#pragma inline_depth(0)   // deleteAction's scope exit: retail calls ~CCountedPointer<CAction> through ILT 0x00429B72 (0x0056BB81)
             }
+#pragma inline_depth()
             detailListAsList->AddScrollingChild(take);
+#pragma inline_depth(0)   // boast loop body exit: retail calls every ~CCountedPointer (ILT 0x00429B72 / 0x00429C53 / 0x00429D8E, 0x0056BBAD..0x0056BC04)
         }
+#pragma inline_depth()
+#pragma inline_depth(0)   // quest loop body exit: retail calls the map dtors (0x0056D7B0 at 0x0056BC36) and ~CCountedPointer (0x0056BC4E..0x0056BC66)
     }
+#pragma inline_depth()
 
     boastList->Initialise();
     boastList->ChangeState(5);

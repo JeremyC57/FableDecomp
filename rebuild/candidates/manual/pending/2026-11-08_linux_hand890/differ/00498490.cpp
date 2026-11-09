@@ -1,10 +1,11 @@
 // CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float progress, bool use_progress) -- draw the retail loading / auto-save screen: advance the stage count (or follow the installer's progress), pick the next loading picture half way, draw the loading picture or the six auto-save backdrop tiles, the progress bar, the black screen, the guild seal animation and the tip / save text
-// Grade: DIFFER(5101v5101) (probe r3_v8 = this file's bytes, 8 grades) -- size equal, strict 99.2% / loose 99.9%; frame slots all at retail's (fx MISMATCH 0). Residue (11 instructions): x87 load order of the four sums whose left operand is barPosition.Y (0x00498A7B / 0x00498B73 / 0x00498C88 / 0x00498DA8: retail `fld [bar.Y] ; fadd [temp]`, ours the temp first -- canonicalised: textual swaps, ctor body forms, named extents / offset locals, a named barPosition from floats change nothing); `mov ecx,edi` one slot early at 0x00499094 (seal X: `sealX -= 4`, named sealY change nothing); EndsWith `lea esi,[ecx+eax]` v ours `[eax+ecx]` at 0x0049941A / 0x004994ED (pointer + offset spellings change nothing).
-// Next: the barPosition pairs are the only x87 pairs that differ (tip / seal boxes match): find the IL property of barPosition (c2 x87 operand choice) with a c2 hook on the fadd emission, then the scheduling of the GetRenderTargetDimensions `this` load; TRACE.md C1-C4.
+// Grade: DIFFER(5101v5101) (probe r3_s4a = this file's bytes) -- size equal, strict 1417/1418 instructions (fit), frame slots all at retail's. Residue (1 instruction): `mov ecx,edi` one slot early at 0x00499094 (retail `fsubr ; lea ; push ; fsub 4.0 ; mov ecx,edi ; fstp ; call`, ours `mov ecx,edi` before the fsub). Solved this session: the four bar-sum x87 orders (barPosition built by the ctor, position copied then `+=`) and the two EndsWith `lea esi,[ecx+eax]` (FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN).
+// Next: c2's list scheduler (0x1078734C) puts `call GFAXToVX(32)` in slot 1 of the `fstp tv` cycle; retail needs it one cycle later (slot 0, fsubr co-issued) -- find the IL edge or no-op int tuple retail had there (TRACE.md F3, work/s4/re/probe/t13.py).
 // Leaf: ?DrawRetailDisplay@CProgressDisplay@@AAEXABVCCharString@@M_N@Z
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_SUBSTRING
 #define FABLE_RETAIL_CCHARSTRING_ENDSWITH
+#define FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CTEXTURE
 #define FABLE_RETAIL_CPIXELFORMAT
@@ -152,9 +153,8 @@ void CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float prog
         }
         if ((!ProgressTextures.empty() || g_bAutoSaveProgressShown) && !g_bSaveLoadFailed) {
             float renderHeight = (float)display.GetRenderTargetDimensions().Y;
-            C2DVector barPosition;
-            barPosition.X = GFAXToVX((float)display.GetRenderTargetDimensions().X) * 0.5f - GFAXToVX(96.0f);
-            barPosition.Y = GFAYToVY(renderHeight + 380.0f - 480.0f);
+            float barX = GFAXToVX((float)display.GetRenderTargetDimensions().X) * 0.5f - GFAXToVX(96.0f);
+            C2DVector barPosition(barX, GFAYToVY(renderHeight + 380.0f - 480.0f));
             C2DBoxF box(barPosition, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(32.0f)));
             box.TLX = GFRoundVXToNearestPixel(box.TLX);
             box.TLY = GFRoundVYToNearestPixel(box.TLY);
@@ -165,7 +165,8 @@ void CProgressDisplay::DrawRetailDisplay(const CCharString& text_tag, float prog
                 renderer.Draw2DScaledGraphic(box, CPlayerGui::Get().PeekGraphicBank(), def.LoadProgressBarLeftGraphic, 0, 1);
             } else
                 renderer.Draw2DTexture(box, CRGBColour(255, 255, 255, 255), ProgressTextures[1], 1);
-            C2DVector position(barPosition.X + GFAXToVX(64.0f), barPosition.Y);
+            C2DVector position(barPosition);
+            position.X += GFAXToVX(64.0f);
             box = C2DBoxF(position, C2DExtentsF(GFAXToVX(64.0f), GFAYToVY(32.0f)));
             box.TLX = GFRoundVXToNearestPixel(box.TLX);
             box.TLY = GFRoundVYToNearestPixel(box.TLY);

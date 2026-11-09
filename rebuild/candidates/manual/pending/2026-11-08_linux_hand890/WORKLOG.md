@@ -85,3 +85,39 @@ with their decodes, layouts and name evidence.
   then scoped `#pragma inline_depth` / `auto_inline`, line-2 Inline-budget note); (4) on match: behaviour test, finish.py,
   tall.sh / tall.py.
 - Dead ends: /d2inlT45 (dtors out but bitset test out too, map ctors still in), /d2inlS5 (no change).
+
+## Session 4 (2026-11-09, all-means push)
+
+Leaderboard (best per row; strict / loose = fit on the graded bytes):
+
+| row | session-3 best | session-4 best | grade | what flipped |
+|---|---|---|---|---|
+| 0x00498490 DrawRetailDisplay | r3_v8 DIFFER(5101v5101) 99.2% / 99.9% (11 insns) | r3_s4a DIFFER(5101v5101) strict 1417/1418 | 1 grade | 4 x87 pairs + 2 EndsWith lea solved |
+| 0x0056AD40 CTCBoastUI::Activate | r2_v3 DIFFER(5039v4284) 58.6% / 90.3%, calls 213/238 | r2_s4h DIFFER(4299v4284) 65.7% / 93.3%, calls 226/238 | 1 grade | -740 bytes: 8 inline_depth(0) regions |
+
+### 0x00498490 CProgressDisplay::DrawRetailDisplay -- one instruction left
+- x87 load order of the four bar sums (TRACE F1): build barPosition with the ctor from a named float and copy it for the second box
+  (`C2DVector position(barPosition); position.X += GFAXToVX(64.0f);`). Rule found with micro TUs: for two direct frame operands
+  VC7.1 loads the more recently stored one first; an inline-ctor parameter temporary outranks a field-assigned member; a corner
+  built by the ctor and only copied keeps corner-first.
+- EndsWith `lea esi,[ecx+eax]` at both sites (TRACE F2): new hdr opt-in FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN
+  (GetAsCharArray in early-return form; default path byte-identical; hdr/README.md "Session 4").
+- Left: `mov ecx,edi` one slot early at 0x00499094 (TRACE F3). c2's list scheduler (0x1078734C: 2 slots/cycle, one per unit,
+  priority ((height + out-degree) << 10) + FP bit) issues `call GFAXToVX(32)` in slot 1 of the `fstp tv` cycle; retail's order needs
+  that call one cycle later (slot 0, with fsubr co-issued). Same bytes, so retail's IL had a different DAG there (an extra latency-1
+  edge or a no-op int tuple deleted after scheduling). ~40 source spellings and inline helpers change nothing.
+- Next lever: find a source construct that adds a latency-1 predecessor to that call or an int tuple taking slot 1 in the
+  `fstp tv` cycle (probe: work/s4/re/probe/t13.py prints regions, DAG edges and every cycle's ready list / picks).
+
+### 0x0056AD40 CTCBoastUI::Activate -- owner ladder step 2
+- Step 1 ruled out (session 3 data: no /d2inlT separates bitset::test 58 from ~CCountedPointer 47). The neighbouring size TU
+  CTCInventoryExperience.cpp suggested `optimize("s")`: 3564 B, wrong (retail has the /O2 aligned frame).
+- Step 2: `#pragma inline_depth(0)` regions at the first list::size, the two map declarations (with FABLE_RETAIL_STLP_MAP so retail's
+  no-argument map ctors are called), SetStaticCast, the make_pair inserts, the new-group insert and the three scope exits of the
+  CCountedPointer locals; each region comments the retail call it reproduces, line 2 carries the Inline-budget note.
+  Graded r2_s4h DIFFER(4299v4284), strict 65.7% / loose 93.3%, calls 226 / 238.
+- Left: push_back 0x0056DCE0 (0x0056BB0E / 0x0056BB75; depth 0 at those statements breaks the register web, pj), the map dtor
+  0x0056D7B0 (0x0056BC36) and list::clear 0x004B8C00 (0x0056BC6F) at the quest-loop exit, then frame / register drift.
+- Next lever: depth-0 regions narrowed to the two push_back calls alone (a named reference to the vector, then the push_back
+  statement), and the boasts list's scope exit; re-check calls.py after each, then grade.
+- NAME_FIX candidate 0x0042A2DB (CList SetStaticCast) conflicts with landed 0x00558770's binding: check before respelling.

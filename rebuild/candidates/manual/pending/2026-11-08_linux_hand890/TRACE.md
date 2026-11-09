@@ -268,3 +268,72 @@ our slot, retail slot via work/s2/v7.slotmap)
 - D4 r2_v3 = v2 with the take-boast label as a named CWideString local. GRADED: DIFFER(5039v4284), strict 58.6% / loose 90.3%
   (v2: 57.2% / 89.4%), calls aligned 213 / 238 (v2 210). The GetTextBySymbol / ~CCharString order hunk is gone. Parked as
   differ/0056ad40.cpp (best). Stopped here: context budget; the rest is the inline-decision residue of D3.
+
+## Session 4 (2026-11-09, all-means push) -- row 0x00498490
+Tools (work/s4/): mc.sh (micro-TU compile, /FAs listing, 0.2 s), fit.sh <src> [addr] [hdr] (compile-only fitness: strict /
+loose share + hunk list, ~1 s), dd2.py (dd.py + `--at N` side-by-side at instruction N), genh*.py / gen_seal.py (variant
+generators: one lever per variant, header variants as full hdr/ copies under work/s4/h/ -- deleted at session end, regenerate with genh*.py), scan/scan.py (retail pattern scan).
+### F1 x87 operand order of the bar sums (0x00498A7B / 0x00498B73 / 0x00498C88 / 0x00498DA8) -- SOLVED
+- Hypothesis: the order of `fld a ; fadd b` for two direct (frame) operands is decided by how each value was DEFINED, not by the
+  text. Micro probes (work/s4/m/m4..m9.cpp, mc.sh):
+  - m5 h1..h6: two field-assigned locals: the operand stored MORE RECENTLY is loaded first; declaration order and textual order
+    are irrelevant (h6: interleaved definitions flip X and Y independently).
+  - m6 t1..t6 / m7 a1..a10: kinds rank -- an inline-ctor parameter temporary ($T, e.g. the C2DExtentsF(x, y) argument) beats a
+    field-assigned member (`p.X = ...; p.Y = ...;`), so C2DBoxF(corner, extents) loads the extents temp first (ours). A corner
+    built by the C2DVector(x, y) ctor from named / earlier floats (a2, a3, a8, a10) is loaded FIRST (retail order).
+  - m8 b1..b6: the ctor-built corner loses again when its Y is later read as a scalar (`F(p.Y)`, `V q(p.X + F(7), p.Y)`).
+  - m9 c1..c8: a copy made with the copy ctor and then modified (`V q(p); q.X += F(7);` / `V q = p; q.X += ...`) keeps the
+    corner-first order at BOTH boxes; the member-wise `V q(p.X + F(7), p.Y)` (ours) flips both.
+- Change (fit only): v1/v2 = barPosition from the ctor (`float barX = ...; C2DVector barPosition(barX, GFAYToVY(...));`) +
+  `C2DVector position(barPosition); position.X += GFAXToVX(64.0f);`. Each alone: no change (v3 = copy only). Together: all four
+  pairs match (fit: strict 99.2% -> 99.8%; work/s3/fx/v1.asm, v2.asm). v1 (two named floats) = v2 bytes; v2 kept (one fewer local).
+### F2 EndsWith `lea esi,[ecx+eax]` (0x0049941A / 0x004994ED) -- SOLVED
+- Evidence: FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT (the chunk-848 select spelling) fixes site 1 but breaks site 2
+  (v4: +2 bytes, `mov edx,eax`). c2prio --trace (work/s4/c2/v2.out, v2_H1.out): with a select `text` (H1) the site-2 text is a
+  named candidate of priority 22 (the ternary temp: 18) coloured before the offset with no eax penalty -> eax, so the offset is
+  left with ecx; at site 1 the text carries an `eax: 1` penalty -> ecx. The rotation sequences are identical (not a rotation issue).
+- Header search (work/s4/genh.py, genh2.py; 9 variants, fit only): EndsWith-local select / named locals (H1-H4) and GetAsCharArray
+  spellings G1 (`if (p) return data; return null;`), G2 (inverted ternary), G4 (if/else), G5 (named ternary) all fail;
+  G3 `if (PStringData==0) return &NullChar; return PStringData->Data.PeekData();` fixes BOTH sites with no other change.
+- Change: hdr/fable_string.h opt-in FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN (G3; default path unchanged: v2 bytes
+  identical with the overlay edit). v5 = v2 + the opt-in: fit strict 1417/1418; GRADED r3_s4a DIFFER(5101v5101) (only residue:
+  `mov ecx,edi` one slot early at 0x00499094).
+### F3 `mov ecx,edi` one slot early at 0x00499094 (seal X) -- MECHANISM FOUND, no source lever yet
+- Retail whole-.text scan (work/s4/scan/scan2.py): pattern A `fop ; lea ; push ; FOP ; mov ecx ; fstp ; call` at 0x00499085 (seal),
+  0x0049972E ("left", same row), 0x008C9F78, 0x009E23C1; pattern B (ours: `mov ecx` before FOP) at 0x00499746 ("scale", same row),
+  0x0070D67F, 0x00749BA7. Ours reproduces retail at left (A) and scale (B) -> deterministic input-dependent choice, not a flag.
+- ~40 seal spellings (sv/s1..s12, m/s1..s10: named halves / offsets / dims / sealY, `-=` chains, struct-member X, inline helpers
+  Half()/SealOffset(), static const 32, long size, ctor forms) all give B.
+- c2 RE (work/s4/re/probe/t2..t13.py, gdb on the spinning c2 copy): the reorder is NOT the FP peephole pass (fppeeps.c driver
+  0x10785107; chain unchanged through it and through 0x10774F92). It is the list scheduler 0x1078734C, run from 0x107B2969
+  (called at 0x107AFF26 in the per-function pipeline 0x1070C542), before emission (0x107B0BF4 -> listing 0x1082C3xx):
+  - regions: 0x107B4E2F (<= 80 tuples; ends at tuple kinds 0x12 jcc / 0x14 / 0x1B incl., 0x19 / 0x2C9 excl.);
+  - DAG 0x107B3E88 (node +0x0C succ edges: +0x0C target, +0x14 latency: int reg dep 1, FP result 3, memory/barrier 0);
+  - priority 0x107B550A: node+0x28 = ((height + out-degree) << 10) + (FP op << 15) + small flag bits (format table [0x108A7D74]);
+  - cycle loop 0x107B5338 -> picker 0x107B4F08: ready list sorted by priority; 2 slots/cycle; slot fn [0x108A7D70] = 0x107B4F78:
+    one node per unit per cycle (unit 0 int, unit 2 x87); a node is eligible when early (+0x30) <= cycle (+unit busy).
+    A node made ready by a pick joins the list in the SAME cycle (so `call ; fild` co-issue).
+- Seal trace (t13_v5.json, full row; = micro m/s6.cpp k1): c10 `fstp tv` (slot0) + `call GFAXToVX(32)` (slot1) | c11 `fsubr` + `lea`
+  | c12 `push` (fsub early 14) | c13 `mov ecx` | c14 `fsub` -> B. Left (micro m/s8.cpp k3): c6 `call` (slot0) + `fild` (slot1) | c7
+  lea | c8 push | c9 fmul + mov -> A. So A needs the GFAXToVX(32) call in slot 0 of its cycle with fsubr co-issued: the call's
+  earliest cycle must be one later than the `fstp tv` cycle (a latency-1 predecessor there, e.g. `push 42000000h` issued with the
+  fstp, or a deleted-later int tuple taking slot 1). Retail bytes are identical, so retail's IL had a different DAG here
+  (extra edge or a no-op int tuple removed after scheduling); no source spelling tried changes the DAG.
+- Deciding quantity for a future search: in t13-style traces, the cycle of `call GFAXToVX(32)` relative to `fstp tv` (must be +1).
+
+## Session 4 -- row 0x0056AD40 CTCBoastUI::Activate (owner ladder, step 2)
+- E0 (start): differ = r2_v3 DIFFER(5039v4284), fit strict 58.6% / loose 90.3%, calls 213 / 238. Ladder step 1 (per-row flag) is
+  ruled out by the s3 measurements: bitset::test (c2 score 58) must stay expanded while ~CCountedPointer (47) must leave, so no
+  /d2inlT works; /d2inlS5 changes nothing.
+- E1 family check: the adjacent TU CTCInventoryExperience.cpp (landed 0x005729D8 / 0x00573792, same ~CCountedPointer COMDATs) is a
+  size TU (`#pragma optimize("s", on)`). Tried here (work/s4/r2/os1.cpp): 3564 B, strict 32.8% -- retail's `and esp,-8` aligned frame
+  and its expanded bitset tests say /O2; not a size TU.
+- E2 ladder step 2, `#pragma inline_depth(0)` ... `#pragma inline_depth()` regions (compile-only fit, work/s4/r2/):
+  pa (the three scope exits of the CCountedPointer locals) 4454 B, loose 92.0%; pb (+ first list::size, map declarations,
+  SetStaticCast) 4373 B, 93.2%; pc (+ FABLE_RETAIL_STLP_MAP so the maps get the no-argument ctor retail calls) 4341 B, 59.9% / 93.6%;
+  pd/pg (+ make_pair inserts and find) calls 224 but loose 92.1%; ph (pg + the new-group insert) 4299 B, strict 65.7% / loose 93.3%,
+  calls 226 / 238; pj (+ both push_back) strict 44.7% (no); pk (+ find) = ph bytes.
+- E3 GRADED r2_s4h (= ph + site comments) DIFFER(4299v4284). Parked as differ/0056ad40.cpp.
+- Left (calls.py): push_back 0x0056DCE0 at 0x0056BB0E / 0x0056BB75 (ours expands one, depth 0 there breaks the register web), map dtor
+  0x0056D7B0 at 0x0056BC36 and list::clear 0x004B8C00 at the boasts exit (ours expands at the quest-loop exit), SetStaticCast binding
+  (ours 0x0042A2CA through reloc_bindings, retail 0x0042A2DB: NAME_FIXES.tsv), then frame / register drift.

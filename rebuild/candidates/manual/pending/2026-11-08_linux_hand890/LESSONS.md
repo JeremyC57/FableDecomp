@@ -40,3 +40,18 @@ Review at landing:
   in retail's scores (control-flow frequency or callee cost), not the cut-off; /d2inlT<N> is not that T.
 - (chunk 890 s3) Retail Fable.exe calls some COMDATs through ILT jump thunks (0x00429C53 `jmp 0x004291DE` = ~CCountedPointer<CComponent>),
   so a call target that differs from the bound body address can still be the same function.
+- (chunk 890 s4) x87 operand order of `a + b` with two direct frame operands follows how each value was defined: the operand stored
+  more recently loads first; an inline-ctor parameter temporary outranks a field-assigned member; a C2DVector built by its ctor from
+  named floats loads first, and stays first when copied with the copy ctor and then modified (`V q(p); q.X += d;`), but a member-wise
+  `V q(p.X + d, p.Y)` flips it (0x00498490 0x00498A7B / 0x00498B73 / 0x00498C88 / 0x00498DA8).
+- (chunk 890 s4) CCharString::GetAsCharArray in early-return form (`if (PStringData==0) return &NullChar; return ...;`, opt-in
+  FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN) gives retail's `lea esi,[ecx+eax]` (text base, offset index) in an inlined
+  EndsWith at every site; the select spelling fixes only the first site (0x00498490 0x0049941A / 0x004994ED).
+- (chunk 890 s4) VC7.1's instruction order is set by the list scheduler 0x1078734C (after the FP peepholes, before emission): 2 slots
+  per cycle, one per unit (int / x87), x87 latency 3, int 1; a node made ready by a pick joins the SAME cycle, so `call ; fild` co-issue
+  but `fstp ; call` puts the call in slot 1 and pushes the next x87 op to the next cycle. `fop ; lea ; push ; FOP ; mov ecx ; fstp ;
+  call` (retail 0x00499085) v `... mov ecx ; FOP ...` depends on whether the preceding call sat in slot 0 or 1 (probe t13.py).
+- (chunk 890 s4) Big UI rows where retail calls every ~CCountedPointer / STL COMDAT but expands the bitset tests: no /d2inl flag
+  separates them; `#pragma inline_depth(0)` ... `()` around each called statement and before each scope's closing brace does
+  (0x0056AD40: -740 bytes, calls 213 -> 226 / 238). With FABLE_RETAIL_STLP_MAP a depth-0 map declaration calls the no-argument
+  map ctor as retail does; without it the allocator temporaries are built at the call site.

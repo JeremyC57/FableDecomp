@@ -121,3 +121,13 @@ AddUIActionParam(CActionParam*) slot 151 0x0053DD50 (Ego_r + FableWin spellings;
 rebuild/include/fable_definition_table.h includes "fable_string.h" from its own directory, so in the overlay build it pulled the repo
 copy next to hdr/fable_string.h (C2011 redefinitions via CTCCombat -> CCombatAbilityData -> CDefString). The unchanged copy makes the
 include resolve to the overlay; drop it at the merge (there is one fable_string.h in rebuild/include).
+
+# Session 4 -- row 0x00498490 (additive, default path unchanged)
+
+## fable_string.h -- `FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_NULLRETURN`
+CCharString::GetAsCharArray() const in its early-return spelling (`if (PStringData==0) return &NullChar; return
+PStringData->Data.PeekData();`), the same inline accessor and behaviour as the default ternary. Where the row's EndsWith expands it
+(0x00499411 / 0x004994E4: `mov ecx,offset NullChar ; je ; mov ecx,[esi]`) retail forms the tail pointer as `lea esi,[ecx+eax]`
+(text base, length difference index); the default ternary gives `[eax+ecx]`, and the chunk-848 SELECT spelling fixes only the
+first site. Exclusive with FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT (SELECT wins if both are defined). Verified: with the
+opt-in undefined the row's object is byte-identical to the one built against the unmodified header.
