@@ -4659,7 +4659,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ad690	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<C3DSkeletalMorphTarget>>>>	unknown	undefined	0		0	yes	accepted									
 004ad700	GetAllLeafThings	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CThingFilter_HasTC *,vector<CThingBuilding_const*,std::allocator<CThingBuilding_const*>_> *	1	yes	accepted									
 004ad780	GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>	_global	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
-004ad810	sub_004ad810	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+004ad810	GetAllThings<const CThing,std::vector<const CThing*>,CThingFilter_None>	CThingSearchTools	unknown	undefined	0		0			discovered	gapscan							
 004ad890	for_each	std	__fastcall	CAddDefNamesToComboBox	3	pair<long,CCharString> *,pair<long,CCharString> *,CAddDefNamesToComboBox	1	yes	accepted									
 004ad8d0	`scalar deleting destructor'	CEntryListOwner_004ad8d0	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 004ad930	ScalarDeletingDestructor_CBufferOwner_004ad930	_unattributed	__thiscall	void	1	CSystemRegistry *	1	yes	accepted									
@@ -18152,7 +18152,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00702cd0	vfunc_56	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00702ce0	ResetDieOffTimer	CThingObject	__thiscall	void	1	CThingObject *	1	yes	accepted									
 00702d00	vfunc_40	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00702d10	CThingObject::vfunc_25	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00702d10	DrawGetEditDrawInfo	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00702e00	CViewBase_GetRotationDegrees	_global	unknown	undefined	0		0	yes	accepted									
 00702ff0	GetProperties	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00703000	vfunc_54	CThingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -19324,7 +19324,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00738eb0	_M_erase	std::_Rb_tree<ECombatAbilityDataType, std::pair<ECombatAbilityDataType const, std::pair<CCountedPointer<CCombatAbilityData>, CCombatAbility>>, std::_Select1st<std::pair<ECombatAbilityDataType const, std::pair<CCountedPointer<CCombatAbilityData>, CCombatAbility>>>, std::less<ECombatAbilityDataType>, std::allocator<std::pair<ECombatAbilityDataType const, std::pair<CCountedPointer<CCombatAbilityData>, CCombatAbility>>>>	unknown	undefined	0		0	yes	accepted									
 00738f30	for_each	std	__fastcall	CGetMaxComboStage	3	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,CAnimationEntry> *,CGetMaxComboStage	1	yes	accepted									
 00738f90	IsAppropriateEntryExisting<CIsCombatAnimAppropriateFollowingCombo>	CAnimationSet	__thiscall	bool	2	CAnimationSet *,CIsCombatAnimAppropriateFollowingCombo *	1	yes	accepted									
-00739030	ResetBlockPercentageChance<CCombatAbilityBlockHeavyWeaponAttackDef>	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
+00739030	ResetBlockPercentageChance<CCombatAbilityBlockUnarmedAttackDef>	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
 00739140	ResetBlockPercentageChance<CCombatAbilityBlockLightWeaponAttackDef>	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
 00739250	ResetBlockPercentageChance<CCombatAbilityBlockHeavyWeaponAttackDef>	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
 00739360	ResetBlockPercentageChance<CCombatAbilityBlockProjectileWeaponAttackDef>	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
@@ -21541,7 +21541,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0078fd40	vfunc_14	CTCDivineWrath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0078fd50	FinalCleanup	CTCDivineWrath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0078fd60	FrameUpdate	CTCDivineWrath	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
-007921a0	sub_007921a0	_gapscan	unknown	undefined	0		0			discovered	boundary							
+007921a0	begin	CUnprovenRbTree_007921A0	unknown	undefined	0		0			discovered	boundary							
 007921b0	sub_007921b0	_gapscan	unknown	undefined	0		0			discovered	boundary							
 007921c0	Vector_Erase_TwoIntelligentPtr_v2	_global	unknown	undefined	0		0	yes	accepted									
 00792220	ListHead_InitCircular_0xc_00792220	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\global_ListHeadInitCircular0xc00792220_00792220.cpp
@@ -25726,7 +25726,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008637d0	CheckForNewBodyReorientationAngle	CThingBodyReorienter	__thiscall	void	1	CThingBodyReorienter *	1	yes	accepted									
 00863ca0	FillBodyReorientationPossibleIntersecting	CThingBodyReorienter	__thiscall	void	1	CThingBodyReorienter *	1	yes	accepted									
 00863e10	UpdateBodyReorienation	CThingBodyReorienter	__thiscall	void	1	CThingBodyReorienter *	1	yes	accepted									
-00863e70	GetAllThingsInRoughArea<CThingFilter_HasPhysicsMesh>	CWorld	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
+00863e70	GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasPhysicsMesh>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
 008640c0	PeekWitnessWillNotAttack	CTCOpinionSource	__thiscall	bool	2	CTCOpinionSource *,CThingAICreature *	1	yes	accepted									
 008640f0	PeekWitnessWillOverrideFactionEnemy	CTCOpinionSource	__thiscall	bool	2	CTCOpinionSource *,CThingAICreature *	1	yes	accepted									
 00864160	vfunc_1	NEntityEvents::CEventHeroHasBeenSpokenToByVillagers	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -27524,7 +27524,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ad950	GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasScriptName>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 008adba0	GetAllThings<CThing, std::vector<CThing*>, CThingFilter_HasDefGlobalIndex>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_> *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 008adc30	GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>	_global	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_> *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
-008adcc0	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
+008adcc0	GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasTC>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
 008adf10	operator[]	std::map	__thiscall	C2DVector *	2	map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> *,CCharString *	1	yes	accepted									
 008adf90	push_back	std::vector	unknown	undefined	0		0	yes	accepted									
 008adfe0	CCreatureAction_ForcePushInto	CCreatureAction_ForcePushInto	__thiscall	undefined	2	CCreatureAction_SheatheWeapons *,CThingCreatureBase *	0	yes	accepted									
@@ -32785,7 +32785,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00978100	CIVCountedPointer_Release_00978100	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\97\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978100.cpp
 00978130	CIVCountedPointer_Release_00978130	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\97\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978130.cpp
 00978190	GetSubDef<CGuildMasterDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
-00978250	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
+00978250	GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasScriptName>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
 009784a0	CCombatAction_Guildmaster_HealFollowersInto	CCombatAction_Guildmaster_HealFollowersInto	__thiscall	undefined	2	CCombatAction_Guildmaster_HealFollowersInto *,CThingCreatureBase *	0	yes	accepted									
 00978510	CCombatAction_Guildmaster_ShieldFollowersInto	CCombatAction_Guildmaster_ShieldFollowersInto	__thiscall	undefined	2	CCombatAction_Guildmaster_HealFollowersInto *,CThingCreatureBase *	0	yes	accepted									
 00978580	CCombatAction_Guildmaster_SpeedUpFollowersInto	CCombatAction_Guildmaster_SpeedUpFollowersInto	__thiscall	undefined	2	CCombatAction_Guildmaster_HealFollowersInto *,CThingCreatureBase *	0	yes	accepted									
@@ -41943,7 +41943,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b840c0	resize	std::vector<CCountedPointer<CEngineSimulationBase>, std::allocator<CCountedPointer<CEngineSimulationBase>>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 00b84120	`scalar deleting destructor'	CEngineClothSimulationMeshBase	unknown	undefined	0		0	yes	accepted									
 00b84170	`scalar_deleting_destructor'	CEngineClothSimulationStaticMesh	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CLandscapeBackgroundPatch_vectordeletingdestructor_00b84170.cpp
-00b84190	CEngineClothSimulationMeshBase::~CEngineClothSimulationMeshBase_Alt	CEngineClothSimulationMeshBase	unknown	undefined	0		0	yes	accepted									
+00b84190	`scalar deleting destructor'	CEngineClothSimulationAnimatedMesh	unknown	undefined	0		0	yes	accepted									
 00b841e0	`scalar_deleting_destructor'	CEngineClothSimulation2DAnimatedMesh	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CLandscapeBackgroundPatch_vectordeletingdestructor_00b841e0.cpp
 00b84200	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\vectorEWeaponClass_UmoveEWeaponClass_00b84200.cpp
 00b84290	SetMaxSortDistance	CEngineSubPrimitiveRenderer	__thiscall	void	2	CEngineSubPrimitiveRenderer *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CEngineSubPrimitiveRenderer_SetMaxSortDistance_00b84290.cpp
@@ -47374,7 +47374,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6ecb0	vfunc_0	CVtable_012bedb8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6ecb0.cpp
 00c6ecd0	ScaleAccumulate16	Row00c6ecd0	unknown	undefined	0		0	yes	accepted									
 00c6ed70	ScaleAccumulate16Ramp	_global	unknown	undefined	0		0	yes	accepted									
-00c6eef0	sub_00c6eef0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6eef0	Process	CVtable_012b8a8c	unknown	undefined	0		0			discovered	gapscan							
 00c6f0f0	ScaleAccumulate16MMX	_global	unknown	undefined	0		0	yes	accepted									
 00c6f1a0	CUnprovenMixKernel_00c6f1a0	_global	unknown	undefined	0		0	yes	accepted									
 00c6f300	ClearHistory	CVtable_012b8aa0	unknown	undefined	0		0			discovered	gapscan							
@@ -47432,7 +47432,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c71e90	sub_00c71e90	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c71f10	SetPitchProperties	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c71f80	ComputePitchScale	CAudioSource	unknown	undefined	0		0	yes	accepted									
-00c720c0	StartFade	CAudioSource	unknown	undefined	0		0	yes	accepted									
+00c720c0	StartExponentialFade	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c72130	StartLinearFade	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c72200	CAudioSource::UpdateGainState	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c72510	Sourcef	CAudioContext	unknown	undefined	0		0	yes	accepted									
@@ -55126,7 +55126,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f28870	resize	CRetailVector_elem56	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
 00f288e0	erase	std::vector<CHeroSoulsWaveDef, std::allocator<CHeroSoulsWaveDef>>	unknown	undefined	0		0	yes	accepted									
 00f28930	__copy_ptrs<CHeroSoulsWaveDef *, CHeroSoulsWaveDef *>	std	unknown	undefined	0		0	yes	accepted									
-00f28990	vector_insert_impl_CThingBuildingDef	_global	unknown	undefined	0		0	yes	accepted									
+00f28990	_M_fill_insert	std::vector<CHeroSoulsWaveDef>	unknown	undefined	0		0	yes	accepted									
 00f28ba0	CHeroSoulsWaveDef	CHeroSoulsWaveDef	__thiscall	undefined	2	CAbilityTrackDef *,CAbilityTrackDef *	0	yes	accepted									
 00f28bd0	_M_insert_overflow	std::vector<CHeroSoulsWaveDef, std::allocator<CHeroSoulsWaveDef>>	unknown	undefined	0		0	yes	accepted									
 00f28d30	__copy_backward_ptrs<CHeroSoulsWaveDef *, CHeroSoulsWaveDef *>	std	unknown	undefined	0		0	yes	accepted									
@@ -55357,7 +55357,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f3f960	_M_fill_insert	std::vector<CArray<unsigned short>, std::allocator<CArray<unsigned short>>>	unknown	undefined	0		0	yes	accepted									
 00f3faa0	PushBack_CElement12_00a87090_00f3faa0	_global	unknown	undefined	0		0	yes	accepted									
 00f3faf0	resize	std::vector<CArray<unsigned short>, std::allocator<CArray<unsigned short>>>	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
-00f3fb60	_Umove<EWeaponClass*>	vector<EWeaponClass	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
+00f3fb60	resize	std::vector<CArray<unsigned short> >	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
 00f3fb84	_wcsicmp	MSVCR71.DLL	__cdecl	int	2	wchar_t *,wchar_t *	1	yes	accepted									
 00f3fb8a	_wcsupr	MSVCR71.DLL	__cdecl	wchar_t *	1	wchar_t *	1	yes	accepted									
 00f3fb90	_strnicmp	MSVCR71.DLL	__cdecl	int	3	char *,char *,size_t	1	yes	accepted									

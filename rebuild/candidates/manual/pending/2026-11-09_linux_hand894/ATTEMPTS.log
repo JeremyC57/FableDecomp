@@ -1,0 +1,38 @@
+00436d60 grade1
+00863e70 grade1
+00436d60	1	RELOCATION_MATCH	twin 0x0096BCB0 source with TFilter = CThingFilter_OverlappingCircle
+00863e70	1	RELOCATION_MATCH	twin 0x0096BCB0 source with TFilter = CThingFilter_HasPhysicsMesh
+008adcc0	1	RELOCATION_MATCH	twin 0x0096BCB0 source with TFilter = CThingFilter_HasTC
+00978250	1	RELOCATION_MATCH	twin 0x0096BCB0 source with TFilter = CThingFilter_HasScriptName
+004ad810	1	RELOCATION_MATCH	GetAllThings<const CThing, vector<const CThing*>, CThingFilter_None>: twin 0x008093D0 body on real STLport list/vector models
+00702d10	1	RELOCATION_MATCH	twin 0x0083D710 with class CThingObject
+00739030	1	RELOCATION_MATCH	twin 0x00739140 with CCombatAbilityBlockUnarmedAttackDef
+00772490	1	RELOCATION_MATCH	twin 0x00772510 with the IsBarberShop flag (+0x99)
+007921a0	1	MATCH	descriptive CUnprovenRbTree_007921A0::begin()
+00b84190	1	DIFFER(76v75)	derived dtor out of class, no ctor: ??_G not emitted (leaf missing; graded largest symbol)
+00b84190	2	DIFFER(36v75)	derived dtor empty in-class + ctor defined: call ??1CEngineClothSimulationMeshBase
+00b84190	3	RELOCATION_MATCH	derived dtor out of class + ctor defined in TU
+00b84190	4	DIFFER(30v75)	probe d1: base dtor in-class, derived implicit: call ??1 (StaticMesh shape)
+00b84190	5	DIFFER(36v75)	probe d2: base dtor in-class, derived empty in-class
+00c6eef0	1	RELOCATION_MATCH	twin 0x00C6FE10 with the SSE2 kernels 0x00C6ED70 / 0x00C6ECD0
+00f28990	1	RELOCATION_MATCH	twin 0x00F34D70 with CHeroSoulsWaveDef / CHeroSoulsCreatureDef
+00f3fb60	1	RELOCATION_MATCH	twin 0x00A4B1D0 with CArray<unsigned short>
+00c720c0	1-14	RELOCATION_MATCH(o)	float length + float-cast log quotient (14 probe variants a..p)
+00a17620	1-30	DIFFER(99v99)	shared C3DVector/C3DBoundingSphere + bound GetSquaredDistanceToInfiniteLine; float spellings a..p (17) keep param-first fadd; double-cast spellings v1..w7 (12) flip to member-first but move the x87 ops one scheduler slot (best v1/v5/v9/w1: 7 lines; w7 all-double: 4 lines but qword 15.0)
+00d259a0	1-6	DIFFER(64v64)	draft, direct store, reference local, const& setter, named bool: parent stays a codegen temp (eax); c2prio: no candidate for the parent pointer
+00492ed1	1-5	DIFFER(152v152)	draft; no optimize(s); no pragmas; const& bound temp; caption array: the ToWideString temporary keeps the dead pauseGame slot [ebp+1Ch]
+00c11520	1-11	DIFFER(163v163)	rebased on the vendor-V1 names (PKCProtectionInstance.h, SEventRecord 0x00C20390, CLookupOwner_00c21e20::FindInChildThenSelf); 5 copy orders, flag-after-copy, same-TU noinline SEventRecord ctor (2 forms), reference / pointer parameters, named record pointer: retail's  stays after 
+008c7280	1	DIFFER(268v268)	prior draft as-is: range float frame word +0xc v retail +0x10 (draft uses local CDefPointer / C3DVector / bare __forceinline stand-ins: rebase first)
+00d259a0	7	DIFFER(64v64)	shared engine/CQ_DragonBossFightScript.h rebase (FABLE_RETAIL_CCHARSTRING + NSCRIPT), store (EDragonState)4: same eax residue
+00d259a0	8	DIFFER(64v64)	pointer ParentClass (as landed sibling 0x00DE1F10): eax
+00d259a0	9	DIFFER(64v64)	early-return form: jne + eax (worse)
+00a17620	31	DIFFER(99v99)	x1: two statements `radius = member + radius; radius = radius + 15.0f;`: param-first fld
+00a17620	32	DIFFER(99v99)	x2: const float& bound to the member: param-first fld
+00a17620	-	sched	hand892 sched.sh dump of v1 (wk/sched/v1.json): the double cast adds a no-code 0x269 tuple between the two fadds (fadd->0x269 lat 3), which delays fadd 15 to cycle 6 against retail's cycle 3-4; retail's order fits the plain float DAG with member-first operand order, so the residue is the commutative operand choice, not the scheduler
+009350c0	1-4	DIFFER(159v159)	probe fi/a-d: statement reorders of the scale / variation computation, named and inline: fstp before the variation copy, variation reload after push ecx
+009e1960	1-11	DIFFER(74v74)	probe gf/a-k: return form, do-while guard, ternary, for, braces, declaration order, inline template helper, `*= -1`, separate parse helper: guard je still threads to mov eax,edi (or worse)
+009e1960	12	DIFFER(67v74)	#pragma optimize("s", on): whole shape changes (push 0 / pop esi, no strlen alignment)
+009e1960	13	DIFFER(64v74)	/O1: strlen becomes a call, whole shape changes
+009e1a80	1	DIFFER(75v75)	hand623 draft with the full leaf ?GFStringToInt@@YIJPBG@Z: the same threaded jbe (0x9e1ac5 v 0x9e1abe)
+008c7280	2	DIFFER(268v268)	FABLE_FORCEINLINE respelling of the draft's bare __forceinline helpers: unchanged
+009aa440	-	research	no grade this round: refs.py finds no reference to 0x009AA440; prior hand761 graded the twin source RELOCATION_MATCH (bytes identical to 0x009A8FE0)

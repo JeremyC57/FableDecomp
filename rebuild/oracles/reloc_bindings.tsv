@@ -38957,3 +38957,9 @@ _DSPROPSETID_EAX30_ListenerProperties	012b9418	00c51a20
 ??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ	009a9d60	009d06f0
 ?FindContainedBank@CBankFileManager@@QAE_NABVCCharString@@AAVCContainedBank@NBankFileManager@@AAV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z	009a7f80	009d06f0
 ?ReadEntryList@CBankFile@@AAE_NAAVCFileDataInputStream@@KK@Z	009cfbc0	009d06f0
+?ScaleAccumulate16@Row00c6ecd0@@YAXPBFKPAJF@Z	00c6ecd0	00c6eef0
+?ScaleAccumulate16Ramp@Row00c6ed70@@YAXPBFKPAJFF@Z	00c6ed70	00c6eef0
+??$__copy_backward_ptrs@PAVCHeroSoulsWaveDef@@PAV1@@std@@YIPAVCHeroSoulsWaveDef@@PAV1@00ABU__false_type@0@@Z	00f28d30	00f28990
+??0CHeroSoulsWaveDef@@QAE@ABV0@@Z	00f28ba0	00f28990
+?_M_insert_overflow@?$vector@VCHeroSoulsWaveDef@@V?$allocator@VCHeroSoulsWaveDef@@@std@@@std@@IAEXPAVCHeroSoulsWaveDef@@ABV3@ABU__false_type@2@I_N@Z	00f28bd0	00f28990
+?resize@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEXIABV?$CArray@G@@@Z	00f3faf0	00f3fb60

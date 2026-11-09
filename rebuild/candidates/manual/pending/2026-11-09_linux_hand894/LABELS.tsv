@@ -1,0 +1,16 @@
+address	name	evidence
+00436d60	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_OverlappingCircle@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	twin of 0x0096BCB0, filter call 0x0063EF50 bound ??RCThingFilter_OverlappingCircle@@QBE_NABVCThing@@@Z; Ego_r + FableWin name sets
+00863e70	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	filter call 0x006A6F50 bound HasPhysicsMesh; both PDB name sets
+008adcc0	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	filter call 0x006A80A0 bound HasTC; both PDB name sets
+00978250	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasScriptName@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasScriptName@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	filter call 0x006A7E30 bound HasScriptName; both PDB name sets
+004ad810	??$GetAllThings@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVCThingFilter_None@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	FableWin name set (CWorld TU); caller 0x004A0520; overflow callee 0x0049C370 is vector<const CThing*>
+00702d10	?DrawGetEditDrawInfo@CThingObject@@UBE_NMPAVCEditEngineDrawInfo@@@Z	rtti-vtables CThingObject 0x01264DCC slot 25; both PDB name sets
+00739030	??$ResetBlockPercentageChance@VCCombatAbilityBlockUnarmedAttackDef@@@CTCCombat@@QAEXXZ	GetSubDef 0x007380D0 pushes the literal "CCombatAbilityBlockUnarmedAttackDef"; reloc binding of 0x007380D0
+007380d0	??$GetSubDef@VCCombatAbilityBlockUnarmedAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityBlockUnarmedAttackDef@@@@@Z	class-name literal pushed in the body; reloc_bindings (binder 0x007355F0)
+00772490	?IsBarberShop@CTCShop@@QBE_NXZ	twin IsTattooShop 0x00772510; reads CShopDef +0x99 (Ego_r IsBarberShop one byte before IsTattooShop)
+00b84190	??_GCEngineClothSimulationAnimatedMesh@@UAEPAXI@Z	vtable 0x012A39C0 slot 0, RTTI .?AVCEngineClothSimulationAnimatedMesh@@
+00c6eef0	?Process@CVtable_012b8a8c@@UAEXPBFPBQAJ@Z	descriptive libpk: vtable 0x012B8A8C slot 2, twin of 0x00C6FE10 (vtable 0x012B8AC8)
+00f28990	?_M_fill_insert@?$vector@VCHeroSoulsWaveDef@@V?$allocator@VCHeroSoulsWaveDef@@@std@@@std@@QAEXPAVCHeroSoulsWaveDef@@IABV3@@Z	twin 0x00F34D70; differing relocations all name CHeroSoulsWaveDef / CHeroSoulsCreatureDef helpers
+00f3fb60	?resize@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEXI@Z	both PDB name sets; callee 0x00F3FAF0 is resize(n, x)
+00c720c0	?StartExponentialFade@CAudioSource@@QAEX_JM@Z	descriptive libpk; the landed TUs 0x00C71F10 and 0x00C72130 declare StartExponentialFade beside StartLinearFade 0x00C72130; body is the -ln(32768)/ticks decay
+00a442e0	?GetSquaredDistanceToInfiniteLine@@YIMABVC3DVector@@00AAM@Z	bound callee of 0x00A17620 (reloc_bindings)

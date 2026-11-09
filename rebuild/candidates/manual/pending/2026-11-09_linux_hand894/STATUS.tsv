@@ -1,0 +1,24 @@
+address	name	grade	grades_used	note
+00436d60	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_OverlappingCircle>	RELOCATION_MATCH	1	twin 0x0096BCB0, filter 0x0063EF50
+004ad810	CThingSearchTools::GetAllThings<const CThing,std::vector<const CThing*>,CThingFilter_None>	RELOCATION_MATCH	1	twin 0x008093D0 on real STLport list/vector models; PeekClassList 0x0049C770
+00702d10	CThingObject::DrawGetEditDrawInfo	RELOCATION_MATCH	1	vtable 0x01264DCC slot 25; twin 0x0083D710
+00739030	CTCCombat::ResetBlockPercentageChance<CCombatAbilityBlockUnarmedAttackDef>	RELOCATION_MATCH	1	twin 0x00739140; GetSubDef 0x007380D0 pushes "CCombatAbilityBlockUnarmedAttackDef" (catalog HeavyWeapon wrong)
+00772490	CTCShop::IsBarberShop	RELOCATION_MATCH	1	twin 0x00772510 IsTattooShop; flag +0x99
+007921a0	CUnprovenRbTree_007921A0::begin	MATCH	1	descriptive: unreferenced 14-byte _Rb_tree::begin() shape (twin 0x00CD2790)
+00863e70	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasPhysicsMesh>	RELOCATION_MATCH	1	twin 0x0096BCB0, filter 0x006A6F50
+008adcc0	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasTC>	RELOCATION_MATCH	1	twin 0x0096BCB0, filter 0x006A80A0
+00978250	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasScriptName>	RELOCATION_MATCH	1	twin 0x0096BCB0, filter 0x006A7E30
+00b84190	CEngineClothSimulationAnimatedMesh::`scalar deleting destructor'	RELOCATION_MATCH	5	vtable 0x012A39C0 slot 0; lever: out-of-class derived dtor + ctor defined in the TU
+00c6eef0	CVtable_012b8a8c::Process	RELOCATION_MATCH	1	libpk SSE2 gain-ramp mixer; twin 0x00C6FE10; same-TU ScaleAccumulate16Ramp body; /GS
+00f28990	std::vector<CHeroSoulsWaveDef>::_M_fill_insert	RELOCATION_MATCH	1	twin 0x00F34D70
+00f3fb60	std::vector<CArray<unsigned short> >::resize(size_type)	RELOCATION_MATCH	1	twin 0x00A4B1D0; callee resize(n,x) 0x00F3FAF0
+00c720c0	CAudioSource::StartExponentialFade	RELOCATION_MATCH	14	stretch; lever: float local tick count + float-cast log quotient
+009aa440	std::pair<const CCharString,CBankFileManager::CBankInfo>::~pair (second copy)	DIFFER	0	bytes identical to landed 0x009A8FE0 (RELOCATION_MATCH as graded); identity unresolved: unreferenced second COMDAT
+00a17620	CPhysicsMesh::HasBoundingSphereIntersectedFromTo	DIFFER(99v99)	32	commutative fadd order: retail member first, ours param first
+00d259a0	NScript::CQ_DragonBossFightScript::CDragon::OnPredicateFail	DIFFER(64v64)	9	parent in eax, retail esi
+00492ed1	CSubtitleRenderer::SetText	DIFFER(152v152)	5	ToWideString temp homed in dead pauseGame slot
+00c11520	CSoundEventManager::SendRecordToEntry (descriptive)	DIFFER(163v163)	11	one store order before push eax
+008c7280	CCreatureAction_TrollGroundPound::Initialise	DIFFER(268v268)	2	range float frame word +0xc v +0x10; needs header rebase
+009350c0	CAIStateGroup_ScriptingBase<CAIStateGroupBase>::Fired	DIFFER(159v159)	4	x87 scheduling of the variation copy / fstp
+009e1960	GFStringToInt(const char*)	DIFFER(74v74)	13	zero-length guard jump-threaded past the sign test
+009e1a80	GFStringToInt(const unsigned short*)	DIFFER(75v75)	1	same as 0x009E1960

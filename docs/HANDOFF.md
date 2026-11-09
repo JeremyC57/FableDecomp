@@ -117,10 +117,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     matches with tests, MixGainRampUp/Down 0x00C6DA40/DAD0 on their twins' lever, decal sphere 0x00BBA3E0 by PAREN tuples, __median
     0x00807170 on the shared comparator bodies); coverage 47,139 genuine. Tried and left: GFStringToInt pair, 0x00A17620,
     0x00C720C0, 0x00D259A0 (one-line residues; tries listed in that README).
-    Running (user, 2026-11-09: "find more that will match quickly and have an [expert] agent do them"): chunk 894,
-    `$S/w22/agent894`, brief + rows in `pending/2026-11-09_linux_hand894/`: 14 unlanded rows whose bytes equal a landed row's
-    modulo relocations (found by a catalog-wide twin scan, `tools/decomp_pipeline/linux_lane/lane_tools/coordinator/landed_twins.py`; 10 more twins are EH funclets that wait on their
-    parents) + 9 one-line near misses. Land it like landing_f (next letter `_g`).
+    Chunk 894 (user, 2026-11-09: "find more that will match quickly and have an [expert] agent do them"): 14 of 23 landed
+    (`2026-11-09_landing_g/`): 13 of the 14 landed-twin rows (bytes equal a landed row's modulo relocations; scan
+    `tools/decomp_pipeline/linux_lane/lane_tools/coordinator/landed_twins.py`, rerun it after each landing round; 10 more twins are EH
+    funclets waiting on parents) + 0x00C720C0. Parked in `pending/2026-11-09_linux_hand894/`: 0x009AA440 (unreferenced second COMDAT
+    copy of the landed ~pair 0x009A8FE0: owner question), 0x00A17620, 0x00D259A0, 0x00492ED1, 0x00C11520, 0x008C7280, 0x009350C0,
+    the GFStringToInt pair. Coverage 47,149 genuine (95.12%). Queue tag land0911g.
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
     calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).

@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00436d60   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00436d60   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00436d60   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00436d60   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00436d60   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00436d60   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+00436d60   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+004ad810   WARN SHARED_HEADER_AVAILABLE CClass
+004ad810   WARN SHARED_HEADER_AVAILABLE CThingFilter_None
+004ad810   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+004ad810   RELOCATION_MATCH PASS   GetAllThings
+00702d10   WARN SHARED_HEADER_AVAILABLE CDefString
+00702d10   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00702d10   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler
+00702d10   WARN SHARED_HEADER_AVAILABLE CDefStringTable
+00702d10   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00702d10   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00702d10   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+00739030   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00739030   WARN SHARED_HEADER_AVAILABLE CDefString
+00739030   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00739030   RELOCATION_MATCH PASS   ResetBlockPercentageChance
+00772490   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00772490   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00772490   WARN SHARED_HEADER_AVAILABLE CDefString
+00772490   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler
+00772490   RELOCATION_MATCH PASS   IsBarberShop
+007921a0   MATCH            PASS   begin
+00863e70   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00863e70   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00863e70   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00863e70   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00863e70   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00863e70   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+00863e70   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+008adcc0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+008adcc0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+008adcc0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+008adcc0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+008adcc0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+008adcc0   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+008adcc0   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+00978250   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00978250   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00978250   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00978250   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00978250   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00978250   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+00978250   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+00b84190   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c6eef0   RELOCATION_MATCH PASS   Process
+00c720c0   RELOCATION_MATCH PASS   StartExponentialFade
+00f28990   WARN SHARED_HEADER_AVAILABLE CDefString
+00f28990   RELOCATION_MATCH PASS   _M_fill_insert
+00f3fb60   RELOCATION_MATCH PASS   resize
+
+WINS: 14
+  00436d60 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_OverlappingCircle@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  004ad810 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVCThingFilter_None@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  00702d10 RELOCATION_MATCH CThingObject::?DrawGetEditDrawInfo@CThingObject@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  00739030 RELOCATION_MATCH CTCCombat::??$ResetBlockPercentageChance@VCCombatAbilityBlockUnarmedAttackDef@@@CTCCombat@@QAEXXZ
+  00772490 RELOCATION_MATCH CTCShop::?IsBarberShop@CTCShop@@QBE_NXZ
+  007921a0 MATCH CUnprovenRbTree_007921A0::?begin@CUnprovenRbTree_007921A0@@QAE?AUiterator@1@XZ
+  00863e70 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  008adcc0 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00978250 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasScriptName@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasScriptName@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00b84190 RELOCATION_MATCH CEngineClothSimulationAnimatedMesh::??_GCEngineClothSimulationAnimatedMesh@@UAEPAXI@Z
+  00c6eef0 RELOCATION_MATCH CVtable_012b8a8c::?Process@CVtable_012b8a8c@@UAEXPBFPBQAJ@Z
+  00c720c0 RELOCATION_MATCH CAudioSource::?StartExponentialFade@CAudioSource@@QAEX_JM@Z
+  00f28990 RELOCATION_MATCH std::vector<CHeroSoulsWaveDef>::?_M_fill_insert@?$vector@VCHeroSoulsWaveDef@@V?$allocator@VCHeroSoulsWaveDef@@@std@@@std@@QAEXPAVCHeroSoulsWaveDef@@IABV3@@Z
+  00f3fb60 RELOCATION_MATCH std::vector<CArray<unsigned short> >::?resize@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEXI@Z

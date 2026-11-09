@@ -386685,6 +386685,105 @@ $catalog = @(
         TestSource = '00/80/std_median_00807170_test.cpp'
         PassPattern = '00807170_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00436d60'
+        Module = 'CThingSearchTools'
+        Source = '00/43/CThingSearchTools_GetAllThingsInRoughArea_00436d60.cpp'
+        TestSource = '00/43/CThingSearchTools_GetAllThingsInRoughArea_00436d60_test.cpp'
+        PassPattern = '00436d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ad810'
+        Module = 'CThingSearchTools'
+        Source = '00/4a/CThingSearchTools_GetAllThings_004ad810.cpp'
+        TestSource = '00/4a/CThingSearchTools_GetAllThings_004ad810_test.cpp'
+        PassPattern = '004ad810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00702d10'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_DrawGetEditDrawInfo_00702d10.cpp'
+        TestSource = '00/70/CThingObject_DrawGetEditDrawInfo_00702d10_test.cpp'
+        PassPattern = '00702d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00739030'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_ResetBlockPercentageChance_00739030.cpp'
+        TestSource = '00/73/CTCCombat_ResetBlockPercentageChance_00739030_test.cpp'
+        PassPattern = '00739030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00772490'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_IsBarberShop_00772490.cpp'
+        TestSource = '00/77/CTCShop_IsBarberShop_00772490_test.cpp'
+        PassPattern = '00772490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007921a0'
+        Module = 'CUnprovenRbTree_007921A0'
+        Source = '00/79/CUnprovenRbTree007921A0_begin_007921a0.cpp'
+        TestSource = '00/79/CUnprovenRbTree007921A0_begin_007921a0_test.cpp'
+        PassPattern = '007921a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00863e70'
+        Module = 'CThingSearchTools'
+        Source = '00/86/CThingSearchTools_GetAllThingsInRoughArea_00863e70.cpp'
+        TestSource = '00/86/CThingSearchTools_GetAllThingsInRoughArea_00863e70_test.cpp'
+        PassPattern = '00863e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008adcc0'
+        Module = 'CThingSearchTools'
+        Source = '00/8a/CThingSearchTools_GetAllThingsInRoughArea_008adcc0.cpp'
+        TestSource = '00/8a/CThingSearchTools_GetAllThingsInRoughArea_008adcc0_test.cpp'
+        PassPattern = '008adcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00978250'
+        Module = 'CThingSearchTools'
+        Source = '00/97/CThingSearchTools_GetAllThingsInRoughArea_00978250.cpp'
+        TestSource = '00/97/CThingSearchTools_GetAllThingsInRoughArea_00978250_test.cpp'
+        PassPattern = '00978250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84190'
+        Module = 'CEngineClothSimulationAnimatedMesh'
+        Source = '00/b8/CEngineClothSimulationAnimatedMesh_scalardeletingdestructor_00b84190.cpp'
+        TestSource = '00/b8/CEngineClothSimulationAnimatedMesh_scalardeletingdestructor_00b84190_test.cpp'
+        PassPattern = '00b84190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6eef0'
+        Module = 'CVtable_012b8a8c'
+        Source = '00/c6/CVtable012b8a8c_Process_00c6eef0.cpp'
+        TestSource = '00/c6/CVtable012b8a8c_Process_00c6eef0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6eef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c720c0'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_StartExponentialFade_00c720c0.cpp'
+        TestSource = '00/c7/CAudioSource_StartExponentialFade_00c720c0_test.cpp'
+        PassPattern = '00c720c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f28990'
+        Module = 'std::vector<CHeroSoulsWaveDef>'
+        Source = '00/f2/stdvectorCHeroSoulsWaveDef_Mfillinsert_00f28990.cpp'
+        TestSource = '00/f2/stdvectorCHeroSoulsWaveDef_Mfillinsert_00f28990_test.cpp'
+        PassPattern = '00f28990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3fb60'
+        Module = 'std::vector<CArray<unsigned short> >'
+        Source = '00/f3/stdvectorCArrayunsignedshort_resize_00f3fb60.cpp'
+        TestSource = '00/f3/stdvectorCArrayunsignedshort_resize_00f3fb60_test.cpp'
+        PassPattern = '00f3fb60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
