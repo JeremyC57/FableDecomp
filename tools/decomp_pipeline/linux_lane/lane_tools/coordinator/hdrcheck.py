@@ -12,4 +12,6 @@ for h in sorted(glob.glob(ov+'/**/*.h',recursive=True)):
         a=subprocess.run(args+[repo],capture_output=True,text=True).stdout; b=subprocess.run(args+[h],capture_output=True,text=True).stdout
         norm=lambda s:[re.sub(r'fable_static_assert_\d+','SA',l) for l in s.splitlines() if l.strip()]
         res.append(('default' if not m else m)+('=same' if norm(a)==norm(b) else '=DIFF'))
+    lost=sorted(set(re.findall(r'FABLE_RETAIL_\w+',open(repo,errors='replace').read()))-set(re.findall(r'FABLE_RETAIL_\w+',open(h,errors='replace').read())))
+    if lost: res.append('LOSES_OPTINS='+','.join(lost))
     print('CHANGED',rel,' '.join(res))

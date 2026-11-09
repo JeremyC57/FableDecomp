@@ -3,6 +3,7 @@
 Compiles under the verifier's base flags (+extra), compares against the oracle bytes
 found in the batch TSVs, prints side-by-side capstone disassembly when they differ."""
 import sys, os, csv, glob
+csv.field_size_limit(10**8)
 from pathlib import Path
 sys.path.insert(0, "/home/user/FableDecomp/tools/decomp_pipeline")
 import verify_and_land as V

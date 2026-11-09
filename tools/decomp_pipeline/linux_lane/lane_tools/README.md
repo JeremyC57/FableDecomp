@@ -33,3 +33,11 @@ Resume recipe: `docs/HANDOFF.md`.
 - `vland.py <payload> <oracle> [--land] [--recheck-landed]`: `verify_and_land.py` with a 180 s per-tool timeout (a Wine cl.exe can hang forever).
 - `recheck.py <outdir> <addr|src>...`: build a `--recheck-landed` payload from the catalog. Run it before and after any shared-header change.
 - `frommatches.py <MATCHES.tsv> <outdir>`: agent MATCHES.tsv to payload + oracle (needs `FABLE_EXE`).
+
+## Added 2026-11-09 (from the owner's matching-tools bundle of the 2026-11-08/09 lane)
+- `coordinator/rg1.sh <landed src>`: regrade one landed row from the repo (prints the q.py verdict line); needs `S` exported.
+- `coordinator/fi_scan.py <roots>` / `coordinator/fi_convert.py [--apply] <roots>`: find / respell bare `__forceinline` code tokens as
+  the portable `FABLE_FORCEINLINE` (adds `#include "fable_compiler.h"`); the gate is `tools/decomp_pipeline/check_portable_spellings.py`.
+- `coordinator/hdrcheck.py` now also reports `LOSES_OPTINS=` (FABLE_RETAIL_* opt-ins in the repo copy that an overlay would drop).
+- `q.py` raises Python's csv field limit (oracle rows over 64 KB, e.g. 0x00CBFB7D).
+- Chunk 892's scheduler / operand-order tools: `rebuild/candidates/manual/pending/2026-11-09_linux_hand892/tools/` (README there).
