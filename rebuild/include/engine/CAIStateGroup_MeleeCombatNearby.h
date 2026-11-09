@@ -8,6 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBY
+// Retail opt-in (chunk 892, row 0x0096E830): the retail class on the FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYBASE base (RTTI
+// .?AVCAIStateGroup_MeleeCombatNearby@@ : CAIStateGroup_MeleeCombatNearbyBase): Ego_r.pdb bool Archer +0x1C, sizeof 0x20. The private
+// const members are the Ego_r.pdb name set ?IsEnemyCreatureInCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ (0x009932B0,
+// retail 0x0096E700 landed) and ?IsEnemyCreatureNearCombatPosition@..@@ABE_NXZ (0x00993440, retail 0x0096E830, in the same order).
+// Needs engine/CAIStateGroup_MeleeCombatNearbyBase.h with its opt-in first. The flattened layout below stays the default.
+class CAIStateGroup_MeleeCombatNearby : public CAIStateGroup_MeleeCombatNearbyBase {
+    bool IsEnemyCreatureInCombatPosition() const;                      // 0x0096E700
+    bool IsEnemyCreatureNearCombatPosition() const;                    // 0x0096E830
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBY_COMBATMANAGER
+    // Nested opt-in (same row): Ego_r.pdb ?GetCombatManager@CAIStateGroup_MeleeCombatNearby@@ABEAAVCCombatManager@@XZ (0x009932A0, private
+    // const, right before IsEnemyCreatureInCombatPosition), inline in retail: GetWorld 0x008FCFC0 then the world's combat manager
+    // (FABLE_RETAIL_CWORLD_COMBATMANAGER). Needs the retail CWorld complete first.
+    CCombatManager& GetCombatManager() const { return GetWorld().GetCombatManager(); }
+#endif
+protected:
+    bool Archer;                                                       // +0x1C
+};
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_MeleeCombatNearby {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -22,8 +41,9 @@ struct CAIStateGroup_MeleeCombatNearby {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MeleeCombatNearby) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MeleeCombatNearby, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MeleeCombatNearby, Archer) == 0x1c);
+#endif
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MeleeCombatNearby) == 0x20);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MELEECOMBATNEARBY_H

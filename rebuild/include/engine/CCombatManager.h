@@ -22,6 +22,12 @@ public:
  ECombatZone GetDefenderZone(const CThingCreatureBase&,const CThingCreatureBase&,long) const;                          // 0x006E99B0
  // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CCombatManager@@QAEXXZ, retail 0x006ED200.
  void Update();                                                                                                       // 0x006ED200
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_PREFERREDPOS
+ // Nested opt-in (chunk 892, row 0x0096E830 CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureNearCombatPosition): Ego_r.pdb
+ // ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (0x00713700), out of line in retail at 0x006EA770
+ // (hidden C3DVector result, then the creature reference; `ret 8`). Declaration only: no layout change.
+ C3DVector GetPreferredPos(const CThingCreatureBase&) const;                                                         // 0x006EA770
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY
  // Nested opt-in (chunk 760, row 0x0093D270): FableWin.pdb ?GetProximityForNavigation@CCombatManager@@QBEMXZ (public const,
  // inline in retail: the row reads +0x28 straight off the manager).

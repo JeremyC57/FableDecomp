@@ -11,8 +11,23 @@ class CDeletion { public:
 // constructors are out of line in retail (0x0042BED4 ??0CDeletion@NUISystem@@QAE@XZ and 0x0042CD84
 // ??0CDeletion@NUISystem@@QAE@ABV01@@Z, landed bindings; FableWin.pdb names both); the destructor stays implicit (retail
 // expands it as the AssociatedParents list destructor 0x0042ABCA).
+#ifdef FABLE_RETAIL_CDELETION_BODIES
+// Nested opt-in (chunk 892, row 0x005A887D CTCInventoryTrade::RefreshBuyPossibilityPC): the same two out-of-line constructors, with
+// their bodies visible in the TU and kept out of line (retail calls 0x0042BED4 at 0x005A89F5 and 0x0042CD84 at 0x005A8A23). VC7.1
+// then knows neither keeps the local's address (with the list<CComponent*> bodies, FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE /
+// _DTOR_OUTOFLINE), drops the alias edge between `deletion.Method = ..` and the in-place iterator argument store, and schedules
+// the Method store last before the insert call (0x005A8A0D); declaration-only constructors pin it ahead of that store.
+#ifdef _MSC_VER
+#define FABLE_CDELETION_NOINLINE __declspec(noinline)
+#else
+#define FABLE_CDELETION_NOINLINE
+#endif
+FABLE_CDELETION_NOINLINE CDeletion() { }
+FABLE_CDELETION_NOINLINE CDeletion(const CDeletion& other) : Method(other.Method), AssociatedParents(other.AssociatedParents) { }
+#else
 CDeletion();
 CDeletion(const CDeletion&);
+#endif
 #endif
 enum EDeletionMethod { UI_DO_NOT_DELETE=0,UI_DELETE_THIS_INSTANCE=1,UI_DELETE_ALL_INSTANCES=2,UI_DELETE_THIS_INSTANCE_PER_PARENT=3 };
 public: NUISystem::CDeletion::EDeletionMethod Method;

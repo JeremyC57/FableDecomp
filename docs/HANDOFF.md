@@ -109,6 +109,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Playbook family pushes (owner, 2026-11-09: one agent, one family at a time): 425 parked rows within 8 bytes of retail
     are listed by residue family in `rebuild/candidates/manual/pending/PLAYBOOK_CANDIDATES.tsv`. Order: the two 12 KB PC menu rows
     (0x006096E0, 0x0061E6D0; running), then scheduler + test/or ties, shared tails, register permutations, frame, x87, inline, loops.
+    Scheduler + test/or family (chunk 892): 24 of 27 landed (`2026-11-09_landing_e/`; PAREN region cap, same-TU no-capture,
+    commutative operand ids); 0x00B6FA40 / 0x00F05A10 / 0x005FD5E0 parked (hand892). Next family: shared tails.
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
     calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).

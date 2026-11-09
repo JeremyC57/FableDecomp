@@ -11,13 +11,29 @@
 #include "rebuild_abi.h"
 #include "engine/CEnginePrimitiveRendererSharedData.h"
 #include "engine/CEngineComponent.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST
+#include "engine/CArray.h"
+class CEngineScene;
+#endif
 class CEngineInit;
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
 public:
     CEnginePrimitiveRenderer();                // 0x00B33B50 ??0CEnginePrimitiveRenderer@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST
+    // Nested opt-in (chunk 892, row 0x00B482A0 CEngineLightingManager ctor): Ego_r.pdb SceneList (CArray<CEngineScene*>) at the
+    // retail +0x338 (the generated Ego_r model below, retail STLport sizes); every primitive manager's constructor is handed it
+    // (0x00B482AC `add eax,338h ; push eax` before CEnginePrimitiveManager::CEnginePrimitiveManager 0x00BACDB0).
+private:
+    unsigned char _pad_0x274[0x338 - 0x274];    // +0x274 members not modelled yet
+public:
+    CArray<CEngineScene*> SceneList;            // +0x338
+private:
+    unsigned char _pad_0x344[0x350 - 0x344];    // +0x344 members not modelled yet
+#else
 private:
     unsigned char _pad_0x274[0xdc];             // +0x274 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderer) == 0x350);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

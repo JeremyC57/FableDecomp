@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_VERSUSENEMYBASE
+// Retail opt-in (chunk 892, row 0x00963880 CAIStateGroup_VersusScorpionKing::IsScorpionChargingAtMe): the polymorphic retail class
+// on the retail CAIStateGroupBase (vtable 0x0128CBA4; ctor 0x009013FA landed). Ego_r.pdb (struct_layouts_egor.tsv): the 0x14-byte
+// base, then CIntelligentPointer<CThingCreatureBase> PTargetThing +0x14; sizeof 0x1C. Needs engine/CAIStateGroupBase.h
+// (FABLE_RETAIL_CAISTATEGROUPBASE) and engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER) first. The flattened
+// layout below stays the default.
+class CThingCreatureBase;
+class CAIStateGroup_VersusEnemyBase : public CAIStateGroupBase {
+protected:
+    CIntelligentPointer<CThingCreatureBase> PTargetThing;              // +0x14
+};
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_VersusEnemyBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -19,8 +31,9 @@ struct CAIStateGroup_VersusEnemyBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VersusEnemyBase) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusEnemyBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusEnemyBase, PTargetThing) == 0x14);
+#endif
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VersusEnemyBase) == 0x1c);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_VERSUSENEMYBASE_H

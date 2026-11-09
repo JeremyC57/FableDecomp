@@ -10,6 +10,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CBaseClassNonCopyable.h"
+#ifdef FABLE_RETAIL_CENGINEWATERSETTINGS_COLOUR
+#ifndef FABLE_RETAIL_CRGBFLOATCOLOUR
+#define FABLE_RETAIL_CRGBFLOATCOLOUR
+#endif
+#include "engine/CRGBFloatColour.h"
+#endif
 class CEngineComponentRenderParams;
 class CGenericVar;
 namespace std {
@@ -53,7 +59,13 @@ public:
     float SwellFactor;                                        // +0x01c
     float ShoreSwellFactor;                                   // +0x020
     float SwellOscilationSpeed;                               // +0x024
+#ifdef FABLE_RETAIL_CENGINEWATERSETTINGS_COLOUR
+    // Opt-in (chunk 892, row 0x00B6FA40): the colour typed (engine/CRGBFloatColour.h; the landed water rows read Colour.R/G/B
+    // at Settings +0x28/+0x2c/+0x30, e.g. 0x00B7C510).
+    CRGBFloatColour Colour;                                   // +0x028
+#else
     unsigned char Colour[0x10];                               // +0x028 CRGBFloatColour
+#endif
     float BumpmapSpan;                                        // +0x038
     float SeaBumpmapSpan;                                     // +0x03c
     float BumpMapSpeed0;                                      // +0x040

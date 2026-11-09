@@ -208,7 +208,15 @@ public:
 #else
     void SetColourWriteEnable(bool,bool,bool,bool);
 #endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
+    // Retail opt-in (chunk 892, row 0x00BF01E0 CEnginePrimitiveRenderUtil::SetupOutlineSmoothAlphaStencilMaskStates):
+    // ?SetColourWriteEnable@CRenderStateManager@@QAEX_N@Z has no out-of-line copy in retail; 0x00BF02A9.. expands it into
+    // SetRenderState on ColourWriteEnable (+0x28; value 0 for false). The true value 0xF (all four channels) is the landed
+    // 0x00B8D420's spelling `value ? 15 : 0`.
+    FABLE_FORCEINLINE void SetColourWriteEnable(bool enable) { SetRenderState(enable ? 15 : 0, DeviceState.ColourWriteEnable); }
+#else
     void SetColourWriteEnable(bool);
+#endif
     void SetVertexBlending(VERTEX_BLEND_MODE);
     void SetFogDensity(float);
     void SetFogMode(FOG_MODE);
@@ -242,17 +250,37 @@ public:
     FABLE_FORCEINLINE void SetStencilMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilMask); }
     void SetStencilOpFail(STENCIL_OP_MODE);
     void SetStencilOpZFail(STENCIL_OP_MODE);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
+    // Opt-in (chunk 892, row 0x00BF01E0): ?SetStencilOpPass@CRenderStateManager@@QAEXW4STENCIL_OP_MODE@@@Z has no out-of-line copy
+    // in retail; 0x00BF01E0 expands it into SetRenderState on StencilOpPass (+0x3AC) through D3DStencilOperationModeTable 0x01396F38
+    // ({1..8} = D3DSTENCILOP_KEEP .. DECR; [STENCIL_OP_MODE_REPLACE] = 0x01396F40).
+    FABLE_FORCEINLINE void SetStencilOpPass(STENCIL_OP_MODE mode) { SetRenderState(D3DStencilOperationModeTable[mode], DeviceState.StencilOpPass); }
+#else
     void SetStencilOpPass(STENCIL_OP_MODE);
+#endif
 #else
     void SetStencilEnable(bool);
     void SetStencilOpFail(STENCIL_OP_MODE);
     void SetStencilOpZFail(STENCIL_OP_MODE);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
+    // Opt-in (chunk 892, row 0x00BF01E0): ?SetStencilOpPass@CRenderStateManager@@QAEXW4STENCIL_OP_MODE@@@Z has no out-of-line copy
+    // in retail; 0x00BF01E0 expands it into SetRenderState on StencilOpPass (+0x3AC) through D3DStencilOperationModeTable 0x01396F38
+    // ({1..8} = D3DSTENCILOP_KEEP .. DECR; [STENCIL_OP_MODE_REPLACE] = 0x01396F40).
+    FABLE_FORCEINLINE void SetStencilOpPass(STENCIL_OP_MODE mode) { SetRenderState(D3DStencilOperationModeTable[mode], DeviceState.StencilOpPass); }
+#else
     void SetStencilOpPass(STENCIL_OP_MODE);
+#endif
     void SetStencilFunc(STENCIL_FUNC);
     void SetStencilRef(unsigned long);
     void SetStencilMask(unsigned long);
 #endif
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_OUTLINE_INLINE
+    // Opt-in (chunk 892, row 0x00BF01E0): ?SetStencilWriteMask@CRenderStateManager@@QAEXK@Z has no out-of-line copy in retail; the
+    // row expands it into SetRenderState on StencilWriteMask (+0x3FC) with the value as given.
+    FABLE_FORCEINLINE void SetStencilWriteMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilWriteMask); }
+#else
     void SetStencilWriteMask(unsigned long);
+#endif
     void SetDepthOffset(float);
     void SetSlopeScaledDepthOffset(float);
     void SetSoftwareVertexProcessing(bool);
@@ -273,7 +301,7 @@ private:
     static unsigned long D3DTextureMipMapModeTable[3];                   // 0x01396E64
     static unsigned long D3DTextureOperationModeTable[24];                // 0x01396E70 {1..24} = D3DTOP_DISABLE .. DOTPRODUCT3
     static unsigned long D3DTextureArgumentModeTable[20];                 // 0x01396EE8 {1, 0, 2, 3, 4, 0x11..} = D3DTA_CURRENT, DIFFUSE, TEXTURE ..
-    static unsigned long D3DStencilOperationModeTable[8];
+    static unsigned long D3DStencilOperationModeTable[8];                // 0x01396F38 {1..8} = D3DSTENCILOP_KEEP .. DECR (chunk 892)
     static unsigned long D3DPolyShadeModeTable[2];                       // 0x01396F9C
     static unsigned long D3DPolyFillModeTable[3];                        // 0x01396FA4
     static unsigned long D3DPolyCullModeTable[3];                        // 0x01396FB0 {3, 2, 1} = D3DCULL_CCW, CW, NONE

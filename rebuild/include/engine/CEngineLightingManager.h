@@ -27,7 +27,55 @@
 #include "engine/CEngineComponent.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 class C3DBoundingBox;
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+// Nested opt-in (chunk 892, row 0x00B482A0 the constructor): every member named, with the Ego_r.pdb names and types and the
+// retail offsets (the landed destructor 0x00B47B50 model). The member classes the constructor builds in place:
+// CShaderLightAttenuation (Ego_r.pdb V, 0x10; four zeroed floats at +0x90..+0x9C in member order), CEngineLocalLightElement
+// (Ego_r.pdb V, 0x34, no constructor) and CEngineLocalLightArray (Ego_r.pdb V, 0x1A4; its inline constructor zeroes LightCount:
+// 0x00B4832B `mov [esi+44ECh],ebx` in member-init order, no out-of-line copy in either PDB),
+// CEngineLightingManagerSpotlightParams (Ego_r.pdb U, 0x38, byte-packed: Pos at +1).
+class CShaderLightAttenuation {
+public:
+    CShaderLightAttenuation() : Attenuation0(0.0f), Attenuation1(0.0f), Attenuation2(0.0f), AttenuationBase(0.0f) { }
+    float Attenuation0;                                                  // +0x00
+    float Attenuation1;                                                  // +0x04
+    float Attenuation2;                                                  // +0x08
+    float AttenuationBase;                                               // +0x0c
+};
+class CEngineLocalLightElement {
+public:
+    C3DVector       WorldPos;                                            // +0x00
+    float           Radius;                                              // +0x0c
+    float           RadiusSquared;                                       // +0x10
+    float           SpotRadius;                                          // +0x14
+    CRGBFloatColour Colour;                                              // +0x18
+    float           AttenuationDistSquared;                              // +0x28
+    float           AttenuationConstant;                                 // +0x2c
+    unsigned long   ChannelMask;                                         // +0x30
+};
+class CEngineLocalLightArray {
+public:
+    CEngineLocalLightArray() : LightCount(0) { }
+    unsigned long            LightCount;                                 // +0x00
+    CEngineLocalLightElement Lights[8];                                  // +0x04
+};
+#pragma pack(push, 1)
+struct CEngineLightingManagerSpotlightParams {
+    bool            Active;                                              // +0x00
+    C3DVector       Pos;                                                 // +0x01
+    C3DVector       Vector;                                              // +0x0d
+    unsigned char   _pad_0x19[0x3];                                      // +0x19
+    float           Radius;                                              // +0x1c
+    float           SpotRadius;                                          // +0x20
+    float           ConeWidth;                                           // +0x24
+    CRGBFloatColour Colour;                                              // +0x28
+};
+#pragma pack(pop)
+struct CLightingSIMDVarBlock;
+enum ELightingManagerShadowMode { };                                     // Ego_r.pdb enum (enumerator names not recovered)
+#else
 class CEngineLocalLightArray;
+#endif
 class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineComponent {
 public:
     // Chunk 731: the constructor (CEngine::Initialise 0x00B26360 news 0x46D0 bytes) and the overrides of the pure CEnginePrimitiveManager
@@ -70,9 +118,29 @@ public:
     CRGBFloatColour        PrimitiveAmbientColour;                       // +0x58
     CRGBFloatColour        PrimitiveBacklightColour;                     // +0x68
     CRGBFloatColour        PrimitiveFogColour;                           // +0x78
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+    struct CManagerLocalLight;                                           // Ego_r.pdb U (nested)
+    struct CManagerShadowedSpotLight;                                    // Ego_r.pdb U (nested)
+    class CLocalLightElementLink;
+    float                  PrimitiveFogStartZ;                           // +0x88
+    float                  PrimitiveFogEndZ;                             // +0x8c
+    CShaderLightAttenuation LightAttenuation;                            // +0x90
+    long                   ShaderPointLightsEnabledCount;                // +0xa0
+    bool                   DrawLightRadius;                              // +0xa4
+    bool                   DrawSpotLightCone;                            // +0xa5
+    bool                   EnableLightCache;                             // +0xa6
+    CEngineLocalLightArray* CurrentShaderLocalLights;                    // +0xa8
+    CArray<CManagerLocalLight*> LocalLightList;                          // +0xac
+    CArray<CManagerShadowedSpotLight*> ShadowedSpotLightList;            // +0xb8
+    float                  LookupGridWorldX;                             // +0xc4
+    float                  LookupGridWorldY;                             // +0xc8
+    bool                   LocalLightsEnabled;                           // +0xcc
+    bool                   ShadowedSpotLightsEnabled;                    // +0xcd
+#else
 private:
     unsigned char          _pad_0x88[0xce - 0x88];                       // +0x88 PrimitiveFogStartZ .. ShadowedSpotLightsEnabled (opaque)
 public:
+#endif
     // Chunk 742 (RenderSingleSpriteTrail 0x00BBE090; the members and setters chunk 723c drafted for RenderSingleSprite 0x00BC04F0):
     // Ego_r.pdb names, retail offsets = Ego_r minus 0xC (the two CArray light lists are 0xC in retail, 0x10 in Ego_r):
     // FadedShadowDiffuseFactorEnabled Ego_r 0xDA, MistEffectColour 0xDC, CurrentThemeChannel 0xEC, StateUpdateFlags 0xF0,
@@ -118,8 +186,17 @@ public:
         SetCurrentEnvironmentThemeChannel(CEnginePrimitiveThemeChannelDesc());
         SetSelfIlluminationAmbient(0);
     }
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+    CLocalLightElementLink* LightLookupGrid[16][16];                     // +0xec
+    CEngineLocalLightArray* SmallObjectLookupGrid[64][64];               // +0x4ec
+    CEngineLocalLightArray EmptyLightArray;                              // +0x44ec
+    CLightingSIMDVarBlock* SIMDVarBlock;                                 // +0x4690
+    ELightingManagerShadowMode ShadowMode;                               // +0x4694
+    CEngineLightingManagerSpotlightParams CurrentShadowedSpotLightParams;   // +0x4698
+#else
 private:
     unsigned char          _pad_0xec[0x46d0 - 0xec];                     // +0xec LightLookupGrid .. (opaque)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager::CThemeChannel) == 0x70);
 FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == 0x46d0);
@@ -127,6 +204,17 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SelfIlluminationAmbientPercentage) == 0xe8);
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(CEngineLocalLightArray) == 0x1a4);
+FABLE_STATIC_ASSERT(sizeof(CEngineLightingManagerSpotlightParams) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightAttenuation) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightList) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LocalLightsEnabled) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, LightLookupGrid) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
+#endif
 #else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineLightingManager = 0x46dc.

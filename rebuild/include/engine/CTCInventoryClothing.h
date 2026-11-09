@@ -21,9 +21,40 @@ enum EClothingSuitPart;                                                  // MS f
 namespace NUISystem { class CComponent; }
 #endif
 
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
+// Chunk 892 (row 0x005B6767 GetItemDescriptionArmourRating): Ego_r.pdb
+// ?GetItemDescriptionArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z (public const, CWideString&) and
+// ?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z (private const, 0x005B4EBA) with the nested ArgPasser struct
+// (Ego_r.pdb, 48 bytes; constructor 0x005B336A, ??0ArgPasser@CTCInventoryClothing@@QAE@XZ).
+class CWideString;
+#endif
+
 #pragma pack(push, 1)
 class CTCInventoryClothing {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
+#pragma pack(push, 8)                                                    // natural alignment (bool, then longs from +0x04)
+    struct ArgPasser {                                                   // 48 bytes (Ego_r.pdb)
+        ArgPasser();                                                     // 0x005B336A
+        bool  is_suit;                                                   // +0x00
+        long  num_suit_parts;                                            // +0x04
+        long  max_suit_parts;                                            // +0x08
+        long  total_item_armor_value_final;                              // +0x0c
+        long  total_cur_armor_value_final;                               // +0x10
+        float total_item_attractiveness_value_final;                     // +0x14
+        float total_cur_attractiveness_value_final;                      // +0x18
+        float total_item_scariness_value_final;                          // +0x1c
+        float total_cur_scariness_value_final;                           // +0x20
+        float total_item_goodstrength_value_final;                       // +0x24
+        float total_cur_goodstrength_value_final;                        // +0x28
+        long  total_price;                                               // +0x2c
+    };
+#pragma pack(pop)
+    void GetItemDescriptionArmourRating(CWideString& text, long itemDefIndex) const;   // 0x005B6767
+private:
+    void CalculateArmorValues(ArgPasser& values, long itemDefIndex) const;              // 0x005B4EBA
+public:
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

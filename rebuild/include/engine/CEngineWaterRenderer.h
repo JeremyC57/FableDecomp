@@ -71,6 +71,12 @@ private:
     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
     void RenderForeground(float time);                                   // ?RenderForeground@CEngineWaterRenderer@@AAEXM@Z
     void RenderSeaReflectiveForeground(float time);                      // ?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z
+#ifdef FABLE_RETAIL_CENGINEWATERRENDERER_SEAMIDGROUND
+    // Opt-in (chunk 892, row 0x00B6FA40): Ego_r.pdb / FableWin.pdb ?RenderSeaMidground@CEngineWaterRenderer@@AAEXM@Z and
+    // ?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z (landed 0x00B6E260).
+    void RenderSeaMidground(float time);                                 // 0x00B6FA40
+    void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);   // 0x00B6E260
+#endif
 public:
     CIndexBuffer         ForegroundIndexBuffers;                         // +0x00c
     CIndexBuffer         ForegroundTextureIndexBuffers;                  // +0x020

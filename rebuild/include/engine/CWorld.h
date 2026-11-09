@@ -140,6 +140,12 @@ public:
     // Chunk 734 (row 0x004A5A40): FableWin.pdb ?GetBulletTimeManager@CWorld@@QAEAAVCBulletTimeManager@@XZ, inline in retail
     // (UpdateFrame holds the scoped_ptr's pointer in edi across IsBulletTimeActive / IsTimeForFullUpdate, 0x004A5D3F).
     CBulletTimeManager& GetBulletTimeManager() { return *PBulletTimeManager_ptr; }
+#ifdef FABLE_RETAIL_CWORLD_COMBATMANAGER
+    // Retail opt-in (chunk 892, row 0x0096E830 CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureNearCombatPosition): FableWin.pdb
+    // ?GetCombatManager@CWorld@@QAEAAVCCombatManager@@XZ (0x01D8B290; inline in retail: `call GetWorld ; mov ecx,[eax+4Ch]` before the
+    // GetPreferredPos argument pushes, 0x0096E854). No layout change.
+    CCombatManager& GetCombatManager() { return *PThingCombatManager_ptr; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_ENVIRONMENT
     // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): FableWin.pdb ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ,
     // inline in retail (`call GetWorld ; ... mov ecx,[eax+18h]` before the argument pushes, 0x0085976F). No layout change.

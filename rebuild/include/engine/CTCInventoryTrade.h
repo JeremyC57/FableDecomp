@@ -89,6 +89,14 @@ private:
     void ConstructActualWantedInventoryPC();                                       // 0x005A5B31
     void ConstructActualBuyInventoryPC();                                          // 0x005AC10E
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITYPC
+    // Retail opt-in (chunk 892, row 0x005A887D): Ego_r.pdb / FableWin.pdb ?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ (the row;
+    // the manifest's "PC_PopulateBuyList" is descriptive) and ?RefreshBuyPossibilityNumbersPC@CTCInventoryTrade@@AAEXXZ (0x005A8175,
+    // out of line). Private, declarations only.
+private:
+    void RefreshBuyPossibilityNumbersPC();                                         // 0x005A8175
+    void RefreshBuyPossibilityPC();                                                // 0x005A887D
+#endif
 public:
     std::vector<CEnginePrimitiveHandle> TradeAnimPrimitiveHandles;                 // +0x134
     std::list<long> NotInStock;                                                    // +0x140

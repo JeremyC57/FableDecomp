@@ -1,0 +1,42 @@
+address	name	evidence
+0x004BC800	?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVCMatrix3x4@@M@Z	chunk 892: Ego_r.pdb 0x004BFEC0 + FableWin.pdb 0x01D0EE40
+0x0052EAF0	?ChangeTargetPositionDelta@CComponent@NUISystem@@UAEXABVC2DVector@@M_N@Z	chunk 892: Ego_r.pdb 0x005A86D0 + FableWin.pdb 0x0229A320
+0x005A887D	?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ	chunk 892: Ego_r.pdb 0x00619DBE + FableWin.pdb 0x0234A6D5
+0x005B6767	?GetItemDescriptionArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z	chunk 892: Ego_r.pdb 0x005622E8 + FableWin.pdb 0x01E22A86
+0x0076E4D0	?GetLastWeaponTrailPoints@CTCWeaponTrail@@ABE_NAAV?$vector@U?$pair@VC3DVector@@V1@@std@@V?$allocator@U?$pair@VC3DVector@@V1@@std@@@2@@std@@ABV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@3@@Z	chunk 892: Ego_r.pdb 0x0077C2C0 + FableWin.pdb 0x0260B8B0
+0x00783850	?Startup@CTCBoastingCrowdControl@@QAEXXZ	chunk 892: Ego_r.pdb 0x0078ADA0 + FableWin.pdb 0x02652C40
+0x00807250	??$__unguarded_partition@PAU?$pair@VC3DVector@@J@std@@U12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x	chunk 892: STLport 4.6 _algo.c name (stlport/fable_containers.h) + Ego_r.pdb anonymous-namespace CCompareTargetedPositionsForFirstPersonTargeting (Dinkumware counterpart _Unguarded_partition donor 0x008041C0); anonymous-namespace leaf: hash changes per build, matched by the ?A0x prefix
+0x00808AA0	??$__linear_insert@PAU?$pair@VC3DVector@@J@std@@U12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x	chunk 892: STLport 4.6 _algo.c name (stlport/fable_containers.h) + Ego_r.pdb anonymous-namespace CCompareTargetedPositionsForFirstPersonTargeting (Dinkumware counterpart _Insertion_sort1 donor 0x00801B70); anonymous-namespace leaf: hash changes per build, matched by the ?A0x prefix
+0x008A8010	?SmashAllWindowsWithinRadiusOfPoint@CGameScriptInterface@@UAEXABVC3DVector@@M@Z	chunk 892: Ego_r.pdb 0x008DFC50 + FableWin.pdb 0x02AB3C00
+0x008E8FF0	?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z	chunk 892: Ego_r.pdb 0x0090F4A0 + FableWin.pdb 0x02AD6AC0
+0x008F99A0	?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z	chunk 892: Ego_r.pdb 0x009235D0 + FableWin.pdb 0x02B38C40
+0x008FC430	??$UpdateScan@$$CBVCWorldMap@@@CPhysicsForceModelBase@NCameraModes@@IAEXAAVCPhysicsCollisionPointsObject@1@ABVCWorldMap@@ABVC3DVector@@JM@Z	chunk 892: Ego_r.pdb 0x00921160 + FableWin.pdb 0x02B236C0
+0x0090BC60	?GetFreeBench@CAIStateGroup_MinionWorkInInn@@AAEPAVCThing@@XZ	chunk 892: Ego_r.pdb 0x00930EC0 + FableWin.pdb 0x02B54B50
+0x00963880	?IsScorpionChargingAtMe@CAIStateGroup_VersusScorpionKing@@AAE_NXZ	chunk 892: Ego_r.pdb 0x00988150 + FableWin.pdb 0x02C35330
+0x0096E830	?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ	chunk 892: Ego_r.pdb 0x00993440 + FableWin.pdb 0x02B90690
+0x00B21A50	?DatabaseSerialise@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z	chunk 892: Ego_r.pdb 0x00AE2010 + FableWin.pdb 0x02F5DD20
+0x00B482A0	??0CEngineLightingManager@@QAE@XZ	chunk 892: Ego_r.pdb 0x009BD880 + FableWin.pdb 0x02CEC4D0
+0x00B5E0F0	?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	chunk 892: Ego_r.pdb 0x00A0FE90 + FableWin.pdb 0x02D20410
+0x00BE1C10	?Update@CEngineInternalPrimitive2DViewport@@UAEXABVCEnginePrimitive@@K@Z	chunk 892: Ego_r.pdb 0x00A9A290 + FableWin.pdb 0x02E8EE50
+0x00BEEDA0	??$__pop_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@U12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@H@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@00U10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@PAH@Z	chunk 892: STLport 4.6 _heap.c __pop_heap (stlport/fable_containers.h FABLE_RETAIL_STLP_HEAP) + Ego_r.pdb CKeyPairCompareLess<pair<long,long>,CEngineTextureDecal> / CEngineTextureDecal class names; catalog label "_Cons_val<...>" is wrong
+0x00BF01E0	?SetupOutlineSmoothAlphaStencilMaskStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@@Z	chunk 892: Ego_r.pdb 0x00AA7CC0 + FableWin.pdb 0x02EEEA00
+0x00C6E790	?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z	chunk 892: no PDB (libpk mixer, no RTTI): descriptive name + byte-identical twin of 0x00C6DA40 in the 0x012BED90 effect's TU; catalog label "DSP_Accumulate..." is descriptive
+0x00C6E820	?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z	chunk 892: no PDB (libpk mixer, no RTTI): descriptive name + byte-identical twin of 0x00C6DAD0 in the 0x012BED90 effect's TU; catalog label "DSP_Accumulate..." is descriptive
+0x00EE2490	?Main@CTH_Thunder@CV_TravellingHeroesScript@NScript@@EAEXXZ	chunk 892: Ego_r.pdb 0x00F5A430 + FableWin.pdb 0x03AC3840
+0x005FD5E0	?ConstructRegionDescriptionQuests@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z	chunk 892: Ego_r.pdb 0x00651B60 + FableWin.pdb 0x0209DD30; parked
+0x00B6FA40	?RenderSeaMidground@CEngineWaterRenderer@@AAEXM@Z	chunk 892: Ego_r.pdb 0x00A1BEB0 + FableWin.pdb 0x02D50420; parked
+0x00F05A10	?RefreshSpyAllegiences@CQ_AmbushTradersScript@NScript@@QAEXXZ	chunk 892: Ego_r.pdb 0x00F8AC00 + FableWin.pdb 0x03624550; parked
+0x007F4E10	?Smash@CTCSmashableWindow@@UAEXXZ	chunk 892: Ego_r.pdb 0x007EE410 + FableWin.pdb 0x02617510; callee of 0x008A8010 (vtable slot 28 of CTCSmashableWindow)
+0x007EED20	?Smash@CTCSmashableBase@@MAEXXZ	chunk 892: Ego_r.pdb 0x007E88D0 + FableWin.pdb 0x02616890; protected virtual, slot 28
+0x0041E5F2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	chunk 892: Ego_r.pdb 0x00438C20 + FableWin.pdb 0x01AE5507; callee of 0x005FD5E0
+0x007F9480	?GetCompareValue@CVectorCompare_BestForTargeting@@ABEMMM@Z	chunk 892: landed GetCompareValueForPoint 0x007F9660 calls it as a const member with two float arguments (inline in Ego_r.pdb) + FableWin.pdb 0x024DE960; private; callee of 0x007F9660
+0x007F9660	?GetCompareValueForPoint@CVectorCompare_BestForTargeting@@QBEMABVC3DVector@@@Z	chunk 892: Ego_r.pdb 0x007F4830 + FableWin.pdb 0x024DE8B0; callee of 0x00807250 / 0x00808AA0
+0x00963810	?FindChargeEvent@CAIStateGroup_VersusScorpionKing@@AAE_NXZ	chunk 892: Ego_r.pdb 0x009880C0 + FableWin.pdb 0x02C352C0; landed name swapped with 0x008E8A10
+0x008E8A10	??RCIsImposterHit@?A0x4c72bf35@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z	chunk 892: Ego_r.pdb 0x00831B00 + FableWin.pdb 0x0280DC60; landed name swapped with 0x00963810
+0x008E8E50	?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	chunk 892: Ego_r.pdb 0x0090F2E0 + FableWin.pdb 0x02AD68C0; same-TU overload of row 0x008E8FF0
+0x00662410	?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ	chunk 892: Ego_r.pdb 0x0053D2A0 + FableWin.pdb 0x01DA3340; callee of 0x0096E830
+0x00702280	?IsCore@CTCQuestCard@@QBE_NXZ	chunk 892: Ego_r.pdb 0x00723DA0 + FableWin.pdb 0x025546A0; callee of 0x005FD5E0
+0x007022C0	?IsOptional@CTCQuestCard@@QBE_NXZ	chunk 892: Ego_r.pdb 0x00723DE0 + FableWin.pdb 0x02554960; callee of 0x005FD5E0
+0x00702310	?GetQuestName@CTCQuestCard@@QBE?AVCWideString@@XZ	chunk 892: Ego_r.pdb 0x00723F90 + FableWin.pdb 0x025536C0; callee of 0x005FD5E0
+0x007025A0	?GetRegionName@CTCQuestCard@@QBE?AVCCharString@@XZ	chunk 892: Ego_r.pdb 0x00723E70 + FableWin.pdb 0x02553ED0; callee of 0x005FD5E0
+0x006A80A0	??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z	chunk 892: Ego_r.pdb 0x005A3E00 + FableWin.pdb 0x01F95560; out-of-line filter call operator used by 0x008A8010 (FABLE_RETAIL_CTHINGFILTER_HASTC_OUTOFLINE)

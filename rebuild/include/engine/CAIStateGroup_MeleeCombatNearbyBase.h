@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYBASE
+// Retail opt-in (chunk 892, row 0x0096E830 CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureNearCombatPosition): the polymorphic retail
+// class on the retail CAIStateGroupBase (RTTI .?AVCAIStateGroup_MeleeCombatNearbyBase@@ : CAIStateGroupBase, ghidra_out/rtti_bases.tsv).
+// Ego_r.pdb (struct_layouts_egor.tsv): the 0x14-byte base, then CIntelligentPointer<CThingCreatureBase> PEnemy +0x14; sizeof 0x1C.
+// Needs engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE) and engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER)
+// first. The flattened layout below stays the default.
+class CThingCreatureBase;
+class CAIStateGroup_MeleeCombatNearbyBase : public CAIStateGroupBase {
+protected:
+    CIntelligentPointer<CThingCreatureBase> PEnemy;                    // +0x14
+};
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_MeleeCombatNearbyBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -19,8 +31,9 @@ struct CAIStateGroup_MeleeCombatNearbyBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MeleeCombatNearbyBase) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MeleeCombatNearbyBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MeleeCombatNearbyBase, PEnemy) == 0x14);
+#endif
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MeleeCombatNearbyBase) == 0x1c);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MELEECOMBATNEARBYBASE_H

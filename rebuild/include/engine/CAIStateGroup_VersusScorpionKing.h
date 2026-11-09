@@ -8,6 +8,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_VERSUSSCORPIONKING
+// Retail opt-in (chunk 892, row 0x00963880 IsScorpionChargingAtMe): the retail class on the FABLE_RETAIL_CAISTATEGROUP_VERSUSENEMYBASE
+// base (vtable 0x0128CBE4, ctor 0x0090143E landed): Ego_r.pdb bool GoClockwise +0x1C and CIntelligentPointer<CThing>
+// PArenaCentreThing +0x1D (the pointer classes are byte-packed, FABLE_RETAIL_CINTELLIGENTPOINTER); sizeof 0x28. The private
+// non-virtual members are the Ego_r.pdb name set (?FindChargeEvent@CAIStateGroup_VersusScorpionKing@@AAE_NXZ 0x009880C0 placed right
+// before ?IsScorpionChargingAtMe@..@@AAE_NXZ 0x00988150, as retail places 0x00963810 / 0x00963880). Needs
+// engine/CAIStateGroup_VersusEnemyBase.h with its opt-in first. The flattened layout below stays the default.
+class CThing;
+class CAIStateGroup_VersusScorpionKing : public CAIStateGroup_VersusEnemyBase {
+    bool                        GoClockwise;                           // +0x1C
+    CIntelligentPointer<CThing> PArenaCentreThing;                     // +0x1D
+    bool FindChargeEvent();                                            // 0x00963810
+    bool IsScorpionChargingAtMe();                                     // 0x00963880
+};
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_VersusScorpionKing {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -22,9 +37,10 @@ struct CAIStateGroup_VersusScorpionKing {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VersusScorpionKing) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusScorpionKing, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusScorpionKing, GoClockwise) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_VersusScorpionKing, PArenaCentreThing) == 0x1d);
+#endif
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_VersusScorpionKing) == 0x28);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_VERSUSSCORPIONKING_H

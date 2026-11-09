@@ -10,6 +10,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#if defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP)
+#ifdef _MSC_VER
+#define FABLE_STLP_NOINLINE __declspec(noinline)
+#define FABLE_STLP_FASTCALL __fastcall
+#else
+#define FABLE_STLP_NOINLINE
+#define FABLE_STLP_FASTCALL
+#endif
+#endif
 namespace std {
 // Owner decision 2026-11-03 (D2, "faithfully recreate what retail did"): the dispatch tags carry an empty user constructor, so a
 // tag temporary (push_back's _IsPODType() argument, the __destroy / __uninitialized_* dispatch) is never zero-filled -- retail passes
@@ -116,6 +125,15 @@ template<class I,class O> __declspec(noinline) O __fastcall __uninitialized_copy
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
 }
 #pragma auto_inline(on)
+#elif defined(FABLE_RETAIL_STLP_UNINIT_OUTOFLINE)
+// Per-TU opt-in (chunk 892, row 0x0076E4D0 CTCWeaponTrail::GetLastWeaponTrailPoints): the non-POD __uninitialized_copy and
+// __uninitialized_fill_n instantiations out of line with the default convention (that TU is not /Gr; 0x0076F780 / 0x0076F7D0,
+// reached from vector::_M_insert_overflow 0x007700D0). With both bodies visible c2 knows push_back's temporary is never captured.
+#pragma auto_inline(off)
+template<class I,class O> O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+    O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
+}
+#pragma auto_inline(on)
 #else
 template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
@@ -131,6 +149,12 @@ template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T*
 // chunk 422 / GOTCHAS 0xB3EA70: inlined, the fill makes vector(n) too large and VC7.1 calls the whole ctor instead).
 #pragma auto_inline(off)
 template<class I,class N,class T> __declspec(noinline) I __fastcall __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+    I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
+}
+#pragma auto_inline(on)
+#elif defined(FABLE_RETAIL_STLP_UNINIT_OUTOFLINE)
+#pragma auto_inline(off)
+template<class I,class N,class T> I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {   // see FABLE_RETAIL_STLP_UNINIT_OUTOFLINE above
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
 #pragma auto_inline(on)
@@ -164,7 +188,8 @@ public:
     _STLP_alloc_proxy(const _MaybeReboundAlloc& a, _Value p)
         : _MaybeReboundAlloc(a), _M_data(p) { }
 };
-#ifdef FABLE_RETAIL_STLP_VECTOR_SWAP
+#if defined(FABLE_RETAIL_STLP_VECTOR_SWAP) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS)
+// (also FABLE_RETAIL_STLP_SORT_INTERNALS, chunk 892: iter_swap below swaps through it)
 // Retail opt-in (chunk 849, row 0x00AE2E20 CParticleProgram::OptimiseSpringOrder): STLport 4.6 _algobase.h swap(_Tp&, _Tp&), used by
 // the inline vector::swap below (retail expands `particle_list.swap(next_particle_list)` in place: the words exchanged through
 // registers at 0x00AE30C7..0x00AE30DC, then the old storage freed at 0x00AE30E3; no call).
@@ -525,6 +550,16 @@ public:
     bool operator!=(const reverse_iterator& y) const { return current!=y.current; }
 };
 #endif
+#ifdef FABLE_RETAIL_STLP_ADVANCE
+// Per-TU opt-in (chunk 892, row 0x0076E4D0 CTCWeaponTrail::GetLastWeaponTrailPoints): STLport 4.6 _iterator_base.h advance() for a
+// list iterator -- the bidirectional __advance (`if (n > 0) while (n--) ++i; else while (n++) --i;`), dispatched on the iterator's
+// category; the trail's `advance(it, -n)` from end() walks the prev links (0x0076E520..).
+template<class _Tp,class _Traits> inline bidirectional_iterator_tag __ITERATOR_CATEGORY(const _List_iterator<_Tp,_Traits>&) { return bidirectional_iterator_tag(); }
+template<class _BidirectionalIterator,class _Distance> inline void __advance(_BidirectionalIterator& i,_Distance n,const bidirectional_iterator_tag&) {
+    if(n>0) while(n--) ++i; else while(n++) --i;
+}
+template<class _InputIterator,class _Distance> inline void advance(_InputIterator& i,_Distance n) { __advance(i,n,__ITERATOR_CATEGORY(i)); }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
 // Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise): STLport 4.6 _iterator_base.h distance() / __distance() (const
 // reference arguments, the input-iterator loop on a copy of first), for list::size() below.
@@ -569,7 +604,14 @@ public:
     typedef _List_iterator<_Tp,_Const_traits<_Tp> > const_iterator;
     explicit list(const _Alloc& a=_Alloc()) : _List_base<_Tp,_Alloc>(a) { }
     list(const list& x):_List_base<_Tp,_Alloc>(x.get_allocator()) { insert(begin(),x.begin(),x.end()); }
+#ifdef FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+    // Per-TU opt-in (chunk 892, row 0x005A887D CTCInventoryTrade::RefreshBuyPossibilityPC): STLport's inline destructor, kept out of
+    // line with its body visible, as the retail TU calls it (~list<CComponent*> 0x0042ABCA at 0x005A8A33). __declspec(noinline) is
+    // MSVC's spelling (FABLE_STLP_NOINLINE is empty elsewhere).
+    FABLE_STLP_NOINLINE ~list() { }
+#else
     ~list() { }
+#endif
     _Alloc get_allocator() const { return _Alloc(); }
     iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
     const_iterator begin() const { return const_iterator(this->_M_node._M_data->_M_next); }
@@ -593,7 +635,14 @@ protected:
         return p;
     }
 public:
+#ifdef FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE
+    // Per-TU opt-in (chunk 892, row 0x005A887D): STLport's insert(iterator, const T&), body visible but kept out of line, as the
+    // retail TU calls it (list<CComponent*>::insert 0x0042AB8A at 0x005A8A14, from push_back): VC7.1 then knows it keeps neither
+    // the list's nor the value's address.
+    FABLE_STLP_NOINLINE iterator insert(iterator position,const _Tp& x) {
+#else
     iterator insert(iterator position,const _Tp& x) {
+#endif
         _List_node<_Tp>* tmp=_M_create_node(x);
         _List_node_base* n=position._M_node;
         _List_node_base* p=n->_M_prev;
@@ -758,6 +807,58 @@ public:
 };
 template<class _Container> inline back_insert_iterator<_Container> back_inserter(_Container& x) { return back_insert_iterator<_Container>(x); }
 template<class _InputIter,class _OutputIter> _OutputIter __fastcall copy(_InputIter first,_InputIter last,_OutputIter result);
+#endif
+#ifdef FABLE_RETAIL_STLP_SORT_INTERNALS
+// Per-TU opt-in (chunk 892, rows 0x00807250 __unguarded_partition and 0x00808AA0 __linear_insert, the first-person targeting
+// sort of pair<C3DVector,long>): STLport 4.6 _algo.h sort internals and _algobase.h copy_backward / iter_swap. The retail TU is
+// compiled /Gr, so the out-of-line instantiations are __fastcall (first in ecx, last in edx; Ego_r.pdb's Dinkumware counterparts
+// are _Unguarded_partition / _Insertion_sort1). __copy_backward is out of line in retail (0x00806310 for pair<C3DVector,long>*,
+// the tag and the (int*)0 distance pushed) with its body visible: VC7.1 then homes the empty tag temporary in the live `val`
+// argument slot as retail does (0x00808AD2). __unguarded_linear_insert (0x008074A0, landed) is declared only.
+template<class _ForwardIter1,class _ForwardIter2> inline void iter_swap(_ForwardIter1 a,_ForwardIter2 b) { swap(*a,*b); }
+template<class _RandomAccessIter,class _BidirectionalIter,class _Distance>
+FABLE_STLP_NOINLINE _BidirectionalIter FABLE_STLP_FASTCALL __copy_backward(_RandomAccessIter first,_RandomAccessIter last,
+                                                                           _BidirectionalIter result,const random_access_iterator_tag&,_Distance*) {
+    for(_Distance n=last-first;n>0;--n) *--result=*--last;
+    return result;
+}
+template<class _BI1,class _BI2> inline _BI2 copy_backward(_BI1 first,_BI1 last,_BI2 result) {
+    return __copy_backward(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
+}
+template<class _RandomAccessIter,class _Tp,class _Compare>
+_RandomAccessIter FABLE_STLP_FASTCALL __unguarded_partition(_RandomAccessIter first,_RandomAccessIter last,_Tp pivot,_Compare comp) {
+    for(;;) {
+        while(comp(*first,pivot)) ++first;
+        --last;
+        while(comp(pivot,*last)) --last;
+        if(!(first<last)) return first;
+        iter_swap(first,last);
+        ++first;
+    }
+}
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void FABLE_STLP_FASTCALL __unguarded_linear_insert(_RandomAccessIter last,_Tp val,_Compare comp);
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void FABLE_STLP_FASTCALL __linear_insert(_RandomAccessIter first,_RandomAccessIter last,_Tp val,_Compare comp) {
+    if(comp(val,*first)) {
+        copy_backward(first,last,last+1);
+        *first=val;
+    } else
+        __unguarded_linear_insert(last,val,comp);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_HEAP
+// Per-TU opt-in (chunk 892, row 0x00BEEDA0, the decal map's vector<pair<pair<long,long>,CEngineTextureDecal> > heap sort): STLport
+// 4.6 _heap.c __pop_heap, out of line in retail and __fastcall (the /Gr algorithm TU: first/last in ecx/edx, `ret 28h`), and
+// __adjust_heap declared only (out of line at 0x00BEEA00).
+template<class _RandomAccessIterator,class _Distance,class _Tp,class _Compare>
+void FABLE_STLP_FASTCALL __adjust_heap(_RandomAccessIterator first,_Distance holeIndex,_Distance len,_Tp val,_Compare comp);
+template<class _RandomAccessIterator,class _Tp,class _Compare,class _Distance>
+void FABLE_STLP_FASTCALL __pop_heap(_RandomAccessIterator first,_RandomAccessIterator last,_RandomAccessIterator result,
+                                    _Tp val,_Compare comp,_Distance*) {
+    *result=*first;
+    __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
+}
 #endif
 }
 #endif

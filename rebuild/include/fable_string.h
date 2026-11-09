@@ -7,6 +7,9 @@
 #ifdef FABLE_RETAIL_CCHARSTRING
 #include <string.h>
 #endif
+#ifdef FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#include "engine/CCRC.h"
+#endif
 
 #ifdef FABLE_RETAIL_CWIDESTRING
 // Retail CWideStringData (Ego_r TPI: protected Data, public NoRefs at +0x0C, const operator==); the STLport
@@ -234,7 +237,14 @@ public:
     void __cdecl Sprintf(const char* format, ...);             // 0x0099F1F0
 #endif
     // Retail opt-in (Codex pass 11 consolidation): further Ego_r CCharString members used inline by retail callers.
+#ifdef FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+    // Retail opt-in (chunk 892, row 0x00B21A50): Ego_r.pdb ?GetCRC@CCharString@@QBEKXZ; retail's out-of-line copy 0x00404310 is
+    // `CCRC::Calc(0, GetAsCharArray(), GetLength())` (length test first, then the NullChar select, then the fastcall), and the
+    // link-time-code-generated callers expand that body (0x00B21AB0..0x00B21AD0, 0x00B21BCF..0x00B21BE5).
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetAsCharArray(), GetLength()); }
+#else
     unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
+#endif
     // Codex pass 13: ?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z (Ego_r + FableWin), ?EqualsCaseInsensitive@CCharString@@QBE_NABV1@@Z and
     // ??MCCharString@@QBE_NABV0@@Z (FableWin; ??M bound by a landed row); all out of line in retail.
     void SaveToFile(class CAFile&) const;

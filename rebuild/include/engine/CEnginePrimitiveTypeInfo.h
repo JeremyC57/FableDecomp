@@ -12,10 +12,16 @@
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+class CEnginePrimitiveManager;
 class CEnginePrimitiveTypeInfo : public CEngineComponent, public CBaseClassNonCopyable {
 public:
     CEnginePrimitiveTypeInfo();                // 0x00B8FAA0 ??0CEnginePrimitiveTypeInfo@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO_REGISTER
+    // Nested opt-in (chunk 892, row 0x00B482A0): Ego_r.pdb ?RegisterPrimitiveManager@CEnginePrimitiveTypeInfo@@QAEXPAVCEnginePrimitiveManager@@@Z
+    // (FableWin.pdb likewise), out of line in retail at 0x00B8FAD0. Declaration only.
+    void RegisterPrimitiveManager(CEnginePrimitiveManager* manager);
+#endif
 private:
     unsigned char _pad_0x10[0xbc];              // +0x10 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 };

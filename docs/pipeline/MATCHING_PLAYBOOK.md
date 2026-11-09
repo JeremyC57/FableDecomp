@@ -153,6 +153,13 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
 - **Bools in regime 1:** a named `bool b = x > 0; f(b);` lives in memory (`mov [ebp+7Ch],al; push [ebp+7Ch]`); `f(x > 0)` does
   not.
 
+### Scheduling regions and capture (chunk 892, 24 rows)
+- c2 schedules in regions capped at 81 IL tuples; a parenthesised float sub-expression leaves a no-code PAREN tuple that counts.
+  Moving retail's region cut = adding or removing natural grouping parentheses before it (six rows).
+- A call that may capture a local's address pins the surrounding loads and stores. Make the real callee body visible in the TU
+  (out of line, or an INLINE COMDAT definition for no-capture without the callee's register usage) from the shared headers (ten rows).
+- Commutative operand order follows candidate ids: the higher id goes first, and single-use named locals are forwarded late.
+
 ## 3. Measured dead ends (do not retry)
 - Loop spellings to stop rotation of a wait loop: `while`, `for(;;)` + break and `goto` all compile identically in a regime-1
   function (0x00CBFB7D CrowdKill, four families).

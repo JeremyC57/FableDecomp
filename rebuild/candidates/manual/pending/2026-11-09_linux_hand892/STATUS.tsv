@@ -1,0 +1,28 @@
+address	status	bytes	test	note
+00ee2490	RELOCATION_MATCH	1334v1334	PASS	parent reference local (`CV_..Script& parent = ParentClass;`) keeps the ParentClass load apart from the handle lea
+00f05a10	DIFFER	1312v1312	-	PARKED md 10: nested Game->GetHero() inner vtable eax v edx (one expression-temporary rotation step)
+005fd5e0	DIFFER	975v982	-	PARKED md 230: block placement only (same 323 instructions): retail lays the non-core subtree after ret 0Ch and keeps the merged tail after the core UI leaf; 50 grades over two chunks + ~60 reduced-model probes give only the source-order or then-arm-first layouts
+008fc430	RELOCATION_MATCH	876v876	PASS	81-tuple scheduling-region cap: parenthesised float factors place the cut where retail's is
+00b21a50	RELOCATION_MATCH	565v565	PASS	visible _M_fill_insert + resize out of line, CCRC::Calc body, early-return GetAsCharArray (shared headers)
+0096e830	RELOCATION_MATCH	544v544	PASS	GFFastOneOverSqrt NEWTON_PAREN (+1 PAREN) and the Ego_r private GetCombatManager() accessor
+00b482a0	RELOCATION_MATCH	528v528	PASS	real STLport vector constructor shape (allocator temporary) on the shared headers
+005a887d	RELOCATION_MATCH	480v480	PASS	transitive same-TU CDeletion ctor / list bodies kept out of line (no-capture lever)
+00963880	RELOCATION_MATCH	463v463	PASS	region-cap PAREN count +4: NEWTON_PAREN and toMe's components parenthesised
+00783850	RELOCATION_MATCH	443v443	PASS	same-TU CThingCompare_Nearest::operator() body; STLport pair/bitset from stlport/fable_containers.h
+00be1c10	RELOCATION_MATCH	353v353	PASS	region-cap PAREN count: parenthesised C4DVector constructor arguments; shared-header rewrite
+005b6767	RELOCATION_MATCH	282v282	PASS	game pointer read first, bank from game, never-taken `if (game == 0) return;` after the dereference (review)
+0076e4d0	RELOCATION_MATCH	253v253	PASS	same-TU STLport __uninitialized_copy / _fill_n out of line (default convention), shared list/advance opt-ins
+00808aa0	RELOCATION_MATCH	229v229	PASS	comparator scoring bodies as INLINE (COMDAT) definitions: no-capture knowledge without callee register usage
+008a8010	RELOCATION_MATCH	218v218	PASS	x/y locals forwarded into the C2DCoordI temporary (adds in place) + out-of-line HasTC operator() (filter store order)
+004bc800	RELOCATION_MATCH	217v217	PASS	PAREN tuple `(a * b) * c` empties retail's int slot inside the x87 chain
+0090bc60	RELOCATION_MATCH	211v211	PASS	out-pointer GetTC (GETTC_EXPANDED) + same-TU CVectorMap LowerBound
+008f99a0	RELOCATION_MATCH	207v207	PASS	same-TU LSocket.cpp bodies down to the read-only leaves + STLport string
+00807250	RELOCATION_MATCH	199v199	PASS	parenthesised initialiser keeps a PAREN tuple on the first compare value (pivot lea before the fstp)
+0052eaf0	RELOCATION_MATCH	181v181	PASS	MoveTo(d + TargetPosition): the copied delta is not address-exposed
+00beeda0	RELOCATION_MATCH	147v147	PASS	shared STLport heap templates (FABLE_RETAIL_STLP_HEAP) instead of a local container model
+00c6e790	MATCH	139v139	PASS	accumulator indexed through a copy of the loop counter (pointer-step order)
+00c6e820	MATCH	139v139	PASS	accumulator indexed through a copy of the loop counter (pointer-step order)
+008e8ff0	RELOCATION_MATCH	135v135	PASS	same-TU body of the 0x008E8E50 overload defined first (local address not captured)
+00b6fa40	DIFFER	2019v2019	-	PARKED md 14: bookmark test/or operand order flips at UV setter 2 (retail 6); c2 key moves with the IL tuple count
+00b5e0f0	RELOCATION_MATCH	1547v1547	PASS	shared-header rewrite (scoped capture block, PDB-named inline state setters, typed member opt-in)
+00bf01e0	RELOCATION_MATCH	1374v1374	PASS	shared-header rewrite + inline SetColourWriteEnable / SetStencilOpPass / SetStencilWriteMask opt-ins

@@ -1,0 +1,110 @@
+addr       parity           behav  name
+004bc800   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+004bc800   WARN SHARED_HEADER_AVAILABLE CTCBase
+004bc800   RELOCATION_MATCH PASS   GetPositionMatrix
+0052eaf0   RELOCATION_MATCH PASS   ChangeTargetPositionDelta
+005a887d   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a887d   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a887d   WARN RELOC_NAME: ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a887d   RELOCATION_MATCH PASS   RefreshBuyPossibilityPC
+005b6767   RELOCATION_MATCH PASS   GetItemDescriptionArmourRating
+0076e4d0   RELOCATION_MATCH PASS   GetLastWeaponTrailPoints
+00783850   WARN SHARED_HEADER_AVAILABLE CThing
+00783850   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00783850   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00783850   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+00783850   WARN SHARED_HEADER_AVAILABLE CThingFilter_None
+00783850   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00783850   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00783850   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00783850   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+00783850   RELOCATION_MATCH PASS   Startup
+00807250   RELOCATION_MATCH PASS   __unguarded_partition
+00808aa0   WARN RELOC_NAME: ??$__copy_backward@PAU?$pair@VC3DVector@@J@std@@PAU12@H@std@@YIPAU?$pair@VC3DVector@@J@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00806310 labelled 'std::__copy_backward<std::pair<C3DVector, long> *, std::pair<C3DVector, long> *, int>'
+00808aa0   RELOCATION_MATCH PASS   __linear_insert
+008a8010   RELOCATION_MATCH PASS   SmashAllWindowsWithinRadiusOfPoint
+008e8ff0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e8ff0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008e8ff0   WARN RELOC_NAME: ?GetPlayer@CThing@@QBEPAVCPlayer@@XZ -> 004c7a10 labelled 'CThing::PeekPlayer'
+008e8ff0   WARN RELOC_NAME: ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z -> 008e8e50 labelled 'GetStrafeAnimationName'
+008e8ff0   RELOCATION_MATCH PASS   GetStrafingAnimationName
+008f99a0   RELOCATION_MATCH PASS   Receive
+008fc430   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008fc430   WARN RELOC_CONFLICT: ?g_ZAxis@@3VC3DVector@@B -> 013893d0 here, 0137ce08 in landed 005bd699
+008fc430   WARN RELOC_CONFLICT: ?g_XAxis@@3VC3DVector@@B -> 013893b8 here, 0137cdfc in landed 005bd699
+008fc430   WARN RELOC_CONFLICT: ?g_YAxis@@3VC3DVector@@B -> 013893c4 here, 0137cdf0 in landed 005bd699
+008fc430   RELOCATION_MATCH PASS   UpdateScan<const CWorldMap>
+0090bc60   WARN RELOC_NAME: ??$for_each@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCAddFreeBenchToList@@@std@@YI?AVCAddFreeBenchToList@@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@0@0V1@@Z -> 0090c100 labelled 'std::for_each<std::_List_iterator<CIntelligentPointer<CThing>, std::_Const_traits<CIntelligentPointer<CThing>>>, CAddFreeBenchToList>'
+0090bc60   RELOCATION_MATCH PASS   GetFreeBench
+00963880   WARN RELOC_NAME: ?FindChargeEvent@CAIStateGroup_VersusScorpionKing@@AAE_NXZ -> 00963810 labelled 'CIsImposterHit::operator'
+00963880   RELOCATION_MATCH PASS   IsScorpionChargingAtMe
+0096e830   RELOCATION_MATCH PASS   IsEnemyCreatureNearCombatPosition
+00b21a50   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00b21a50   RELOCATION_MATCH PASS   DatabaseSerialise
+00b482a0   RELOCATION_MATCH PASS   CEngineLightingManager
+00b5e0f0   RELOCATION_MATCH PASS   ApplyRadialBlur
+00be1c10   RELOCATION_MATCH PASS   Update
+00beeda0   RELOCATION_MATCH PASS   __pop_heap
+00bf01e0   RELOCATION_MATCH PASS   SetupOutlineSmoothAlphaStencilMaskStates
+00c6e790   MATCH            PASS   MixGainRampUp
+00c6e820   MATCH            PASS   MixGainRampDown
+00ee2490   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00ee2490   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ee2490   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00ee2490   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00ee2490   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee2490   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00ee2490   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ee2490   RELOCATION_MATCH PASS   Main
+
+WINS: 24
+  004bc800 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVCMatrix3x4@@M@Z
+  0052eaf0 RELOCATION_MATCH NUISystem::CComponent::?ChangeTargetPositionDelta@CComponent@NUISystem@@UAEXABVC2DVector@@M_N@Z
+  005a887d RELOCATION_MATCH CTCInventoryTrade::?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ
+  005b6767 RELOCATION_MATCH CTCInventoryClothing::?GetItemDescriptionArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
+  0076e4d0 RELOCATION_MATCH CTCWeaponTrail::?GetLastWeaponTrailPoints@CTCWeaponTrail@@ABE_NAAV?$vector@U?$pair@VC3DVector@@V1@@std@@V?$allocator@U?$pair@VC3DVector@@V1@@std@@@2@@std@@ABV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@3@@Z
+  00783850 RELOCATION_MATCH CTCBoastingCrowdControl::?Startup@CTCBoastingCrowdControl@@QAEXXZ
+  00807250 RELOCATION_MATCH std::??$__unguarded_partition@PAU?$pair@VC3DVector@@J@std@@U12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x
+  00808aa0 RELOCATION_MATCH std::??$__linear_insert@PAU?$pair@VC3DVector@@J@std@@U12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x
+  008a8010 RELOCATION_MATCH CGameScriptInterface::?SmashAllWindowsWithinRadiusOfPoint@CGameScriptInterface@@UAEXABVC3DVector@@M@Z
+  008e8ff0 RELOCATION_MATCH NCreatureMode::?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z
+  008f99a0 RELOCATION_MATCH LHNetworkLib::LSocket::?Receive@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z
+  008fc430 RELOCATION_MATCH NCameraModes::CPhysicsForceModelBase::??$UpdateScan@$$CBVCWorldMap@@@CPhysicsForceModelBase@NCameraModes@@IAEXAAVCPhysicsCollisionPointsObject@1@ABVCWorldMap@@ABVC3DVector@@JM@Z
+  0090bc60 RELOCATION_MATCH CAIStateGroup_MinionWorkInInn::?GetFreeBench@CAIStateGroup_MinionWorkInInn@@AAEPAVCThing@@XZ
+  00963880 RELOCATION_MATCH CAIStateGroup_VersusScorpionKing::?IsScorpionChargingAtMe@CAIStateGroup_VersusScorpionKing@@AAE_NXZ
+  0096e830 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@ABE_NXZ
+  00b21a50 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::?DatabaseSerialise@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@3@@Z
+  00b482a0 RELOCATION_MATCH CEngineLightingManager::??0CEngineLightingManager@@QAE@XZ
+  00b5e0f0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
+  00be1c10 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::?Update@CEngineInternalPrimitive2DViewport@@UAEXABVCEnginePrimitive@@K@Z
+  00beeda0 RELOCATION_MATCH std::??$__pop_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@U12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@H@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@00U10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@PAH@Z
+  00bf01e0 RELOCATION_MATCH CEnginePrimitiveRenderUtil::?SetupOutlineSmoothAlphaStencilMaskStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@@Z
+  00c6e790 MATCH _global::?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
+  00c6e820 MATCH _global::?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z
+  00ee2490 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Thunder::?Main@CTH_Thunder@CV_TravellingHeroesScript@NScript@@EAEXXZ
+
+LANDED 24 wins into src/compiled + tests + catalog + oracle
+  NGraphicAppearanceCTCGraphicAppearance_GetPositionMatrix_004bc800
+  NUISystemCComponent_ChangeTargetPositionDelta_0052eaf0
+  CTCInventoryTrade_RefreshBuyPossibilityPC_005a887d
+  CTCInventoryClothing_GetItemDescriptionArmourRating_005b6767
+  CTCWeaponTrail_GetLastWeaponTrailPoints_0076e4d0
+  CTCBoastingCrowdControl_Startup_00783850
+  std_unguardedpartition_00807250
+  std_linearinsert_00808aa0
+  CGameScriptInterface_SmashAllWindowsWithinRadiusOfPoint_008a8010
+  NCreatureMode_GetStrafingAnimationName_008e8ff0
+  LHNetworkLibLSocket_Receive_008f99a0
+  NCameraModesCPhysicsForceModelBase_UpdateScanconstCWorldMap_008fc430
+  CAIStateGroupMinionWorkInInn_GetFreeBench_0090bc60
+  CAIStateGroupVersusScorpionKing_IsScorpionChargingAtMe_00963880
+  CAIStateGroupMeleeCombatNearby_IsEnemyCreatureNearCombatPosition_0096e830
+  NParticleEngineCPSCSplineBaseCSplinePosParamData_DatabaseSerialise_00b21a50
+  CEngineLightingManager_CEngineLightingManager_00b482a0
+  CEngineScreenEffectRadialBlurRenderer_ApplyRadialBlur_00b5e0f0
+  CEngineInternalPrimitive2DViewport_Update_00be1c10
+  std_popheap_00beeda0
+  CEnginePrimitiveRenderUtil_SetupOutlineSmoothAlphaStencilMaskStates_00bf01e0
+  global_MixGainRampUp_00c6e790
+  global_MixGainRampDown_00c6e820
+  NScriptCVTravellingHeroesScriptCTHThunder_Main_00ee2490

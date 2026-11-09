@@ -15,6 +15,9 @@ enum EEnginePrimitiveBlendMode;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR
 class CRGBFloatColour;
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
+class CEngineMeshEffectOutline;
+#endif
 class CEnginePrimitiveRenderUtil : public CBaseClassNonCopyable {
 public:
     CEnginePrimitiveRenderUtil() { }                                     // ??0CEnginePrimitiveRenderUtil@@QAE@XZ
@@ -36,6 +39,12 @@ public:
     // ?SetTextureFactor@CEnginePrimitiveRenderUtil@@SIXABVCRGBFloatColour@@@Z, no out-of-line copy in retail (0x00BA1BDC / 0x00BA1F56
     // expand it: pixel-shader constant 2 when pixel shaders are on, else the TEXTUREFACTOR render state). The row defines the body.
     static void __fastcall SetTextureFactor(const CRGBFloatColour& colour);
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
+    // Opt-in (chunk 892, row 0x00BF01E0): Ego_r.pdb / FableWin.pdb
+    // ?SetupOutlineSmoothAlphaStencilMaskStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@@Z (a non-static member
+    // that never reads `this`; retail `ret 4`).
+    void SetupOutlineSmoothAlphaStencilMaskStates(const CEngineMeshEffectOutline& effect);   // 0x00BF01E0
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderUtil) == 0x4);
