@@ -46,3 +46,11 @@ Review at landing:
   sites with no inline_depth device (b1x3).
 - (2026-11-09, 0x0061E6D0) An inline_depth(0) region whose statement has inline argument code (`ConvertVector(misc_def->X)`) adds
   calls that also move register allocation: removing it took regs+frame share from 97.03% to 98.05% (b2).
+- (2026-11-09 s2, 0x0061E6D0) Regime-0 inline penalty, read from c2.dll 0x1078D1D4..0x1078D1F3 and checked on 7 sites:
+  pen = floor(sz*(a+g)/18000) only when sz > 9 (global 0x108819A8) and a+g > 9000 (`cmp ecx,2328h`, a constant). g (0x10882B58)
+  is the caller's current IL size: it resets per function, starts at the caller's own size and grows by the IL each expansion
+  inserts (not by sz). A header inline layer adds ~9 g per expansion, so a budget gap of ~700+ g is not a header-layer question.
+- (2026-11-09 s2) A cheap call-diff fitness (compile + objdump call list v retail, ~30 s) screens opt-ins in bulk; an inline trace
+  (~85 s) gives the exact g per site and turns "did it flip" into "how far did it move".
+- (2026-11-09 s2) Tools that import verify_and_land.py create `D:\Documents\FableTLC/rebuild/build/landverify` under the cwd
+  unless wine/env.sh (FABLE_ROOT, LANDVERIFY_WORK) is sourced first.

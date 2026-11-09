@@ -71,3 +71,34 @@ Next lever: the IL of the then-arm (B1 275-278, B3 278-283 relative to line 108)
 candidate list of retail's then-arm against ours (c2prio `--blocks` K per block) -- a 4-candidate difference in B2/B3 or a
 different piece shape (a second ebx-only candidate between the two creates) is what retail must have had. Then the const-0
 pieces (u797/u1000 count prologue; parent-None pieces from c2.dll 0x107A9B5E, which c2prio's PIECE_SITES lacks).
+
+## Session 2 (2026-11-09, family push session 2)
+Goal: find the natural spelling of the proven icon-branch lever (prio(subtitleText.Info) >= 55 over the then-arm manager piece,
+54). Not found; the parked differ is unchanged (re-graded s2final: DIFFER(12832v12832), fr 0x124, exact 87.09%, rf 99.36%, 16
+segments).
+
+What was measured (TRACE.md "Session 2"):
+- The piece's 54 = 4*(K341' + K343') - 2*K342' with K' = 7 / 8 / 3; its K' members besides fixed values are the const -1 piece
+  (2 refs: the SUBTITLE / ICON CCharString temporaries), the const 1 piece (2 refs: SetValue's two `push 1`) and the const 0 piece
+  (39 refs). Only 1-ref pieces are dropped before the re-sort, so with retail's pushes the -20 is not reachable by spelling.
+- 18 then-arm surface spellings (step 1) and 125 code-identical edits over the whole body (step 3: pointer tests, bool args,
+  copy-init, Get/Data, x.Get()->, post-increment, const index, swapped compare): byte-identical objects, every one.
+- The coordinator's family (declaration first, scope ends earlier, statement order): each changes code; best K3/K6 15 segments
+  by reordering calls retail does not reorder, K5 retail's frame 0x11C but releases subtitleText early (24 segments).
+- c2's region pass (0x1078B51C) decoded: backward liveness then forward reach, region = live AND reached from a reference.
+
+Leaderboard (session 2; compile-only fitness = tools/srch/cf.sh):
+
+| variant | fitness | note |
+|---|---|---|
+| differ (p12/final2, /d2inlT71) | DIFFER(12832v12832), fr 0x124, ex 87.09%, rf 99.36%, 16 segs | parked, unchanged |
+| C1-C6 counter declaration / clear order | 87.09-87.12%, 16 segs | c2 sinks the zero stores past the call either way |
+| 125 code-identical whole-body edits | byte-identical | no allocator change |
+| K3 / K6 (then-arm call order) | 15 segs | code change, not retail |
+| K5 (subtitleText scope) | fr 0x11C, ex 91.86%, 24 segs | code change (early release) |
+| what-if Info = 60 (session 1 diagnostic) | fr 0x11C, ex 99.03%, 8 segs | lever |
+
+Next lever: model which blocks seed each piece bit in the region pass (c2.dll 0x1078B372 builds the pieces; 0x1078B51C is the
+dataflow) and replay it on the books loop: the then-arm piece ends at B343 although the manager stays live through the icon
+code, so the seed / kill sets decide its shape. The shape retail needs (then-arm manager in memory) then names the source change.
+The const-0 residue (count prologue 0x0060AFA1, books-loop exit 0x0060B8F5 / 0x0060B936, COMBAT 0x0060C0B7) is the same pass.

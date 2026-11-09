@@ -73,3 +73,31 @@ from f 46.9 to 9.4 (TRACE.md Step 3).
 Next lever: the budget consumer, Delta g in (723, 1385] before pop_action's CCountedPointer (b1 #458 at g 7596; delete's #519 at
 g 8258 must reach a+g > 9000), in retail-real header bodies or source (tools/inl/inl.sh + tools/late.py as the fitness, ~80 s);
 then drop all six inline_depth(0) regions, then the register residue.
+
+## Session 2 (2026-11-09, family push session 2)
+Goal: find the natural source of the proven budget lever (Delta g 724..1385 before the delete_action site). Not found; the
+parked differ is unchanged (re-graded s2final: DIFFER(12357v12356), fr 0x424, exact 68.93%, rf 97.03%, 133 segments).
+
+What was measured (TRACE.md "Session 2"):
+- The rule, from c2 itself: pen = floor(sz*(a+g)/18000) only when sz > 9 and a+g > 9000 (hard constant 0x2328 at c2.dll
+  0x1078D1ED, no flag moves it); g = the caller's current IL size (resets per function, starts at 2472 here, grows by the IL an
+  expansion inserts, ~33 per CCountedPointer ctor, ~420 per action group). Frequency cannot split pop/delete (same block).
+- All 128 unused FABLE_RETAIL_* opt-ins of the included headers (compile-only call-diff fitness): none moves the late call set.
+- Retail-real inline layers: CRGBColour(r,g,b,a) through FableWin's Initialise +90; with STLport 4.6 __stl_alloc_create and an
+  empty Validate() in operator-> +170 at the delete site. ~9 g per layer expansion: no header layer family reaches 724.
+
+Leaderboard (session 2; compile-only fitness = cf.sh, calls = bcalls diff v retail):
+
+| variant | grade / fitness | g at pop / delete | calls | note |
+|---|---|---|---|---|
+| differ (b4, 6 inline_depth(0) devices) | DIFFER(12357v12356), rf 97.03%, 133 segs | - | +2 (ConvertVector region) | parked, unchanged |
+| b1 (no devices) | cf: ex 66.17%, rf 97.03%, 180 segs | 7596 / 8258 | -6/+7 | reference |
+| b1 + 128 opt-ins one by one | best: no change | - | -6/+7 or worse | none helps |
+| v_rgb (b1 + CRGBCOLOUR_CTOR4_INITIALISE) | identical code | 7686 / 8348 | -6/+7 | +90 |
+| v_all (+ STLP_ALLOC_CREATE + empty Validate) | identical code | 7748 / 8428 | -6/+7 | +170; need > 723 |
+
+Next lever: the missing ~1000 IL tuples are source c2 removes (dead / constant-folded code or extra temporaries), the size of two or
+three action groups, somewhere before pop_action; the call set cannot localise it (no earlier site is near a+g 9000). Measure c1's
+IL per statement (c2probe tuple count per source line) and compare with the non-PC sibling CTCInventoryQuests::ConstructQuestList
+0x0061B610 (same body shape), then drop the six regions and attack the register residue (const 0 in ebx through the per-quest body,
+`type` cached in edi, quest_card / state_index in ebx).

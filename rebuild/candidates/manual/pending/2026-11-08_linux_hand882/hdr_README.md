@@ -52,3 +52,10 @@ an extra STLport allocator level -- none moved the inline budget the right way.
   (row 0x006096E0, where they put the scroll-action group 4 at retail's inline budget). Same code; one more inline layer each, which
   adds ~360 to this row's caller size g by the take block. differ/0061e6d0.cpp defines both. Default path unchanged
   (`diff rebuild/include/stlport/fable_containers.h hdr/stlport/fable_containers.h` shows only the three #ifdef blocks).
+
+## Session 2 (2026-11-09): tried and removed
+Measured as budget consumers on probe b1 and removed again (differ/0061e6d0.cpp uses none of them; hdr/ is back to the session-1
+state): FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE (engine/CRGBColour.h, FableWin ??0CRGBColour@@QAE@EEEE@Z through
+?Initialise@CRGBColour@@QAEXEEEE@Z: identical code, +90 g), FABLE_RETAIL_STLP_ALLOC_CREATE (stlport/fable_containers.h, STLport 4.6
+__stl_alloc_create in the _List_base ctor: identical code) and an empty release CCountedPointer::Validate() called by operator-> /
+operator* (probe only, unproven body): all three together +170 g of the 724 needed.

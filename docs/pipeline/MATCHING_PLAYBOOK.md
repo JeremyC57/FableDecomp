@@ -61,6 +61,11 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
 - **A call kills the global's register copy.** Reads right after a call must use the local, which shares esi through its copy.
 - **A named call-result intermediate costs priority.** It adds +1 K per referencing block (+3 priority) for identical code.
 - **Ties go to the larger key**, i.e. the value defined earlier in its block.
+- **Split pieces:** a piece leaves K only when it is dropped (1 reference, spill <= 0); a 2-reference piece is only checked for
+  copy forwarding and stays in K. Piece regions come from c2.dll 0x1078B51C: backward liveness (OUT = OR of successors' IN,
+  IN = GEN | (OUT & ~KILL)), then forward reach from the piece's references within the live set (0x006096E0 session 2).
+- **A row can be fully insensitive to code-identical spellings** (125 such edits gave byte-identical objects in 0x006096E0): then the
+  lever is in a pass's structure (block shape, live ranges), not in the IL surface.
 - **Choice:** the cheapest allowed register wins, ties in table order eax, ecx, edx, esi, edi, ebx, ebp. Copy relations give -1
   to -3, and a neighbour left with one register costs 100·weight.
 
@@ -92,7 +97,8 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
   - Try loop and guard shapes before devices.
   - Branch frequencies: `if (a || b)` sends 0.75 down the then-path (even when `b` folds away), `a && b` 0.25, `else if` gives
     the fall-through 0.75, and a `while` containing another loop behaves like a `for`.
-  - Regime-0 caller-size penalty (0x0061E6D0 inline trace): pen ≈ sz·(a+g)/18256, applied only once a+g > 9000. g starts at
+  - Regime-0 caller-size penalty (read from c2: `cmp ecx,2328h` at 0x1078D1ED, so no flag moves it): pen = floor(sz·(a+g)/18000),
+    only when the callee's size > 9 and a+g > 9000 (checked on 7 sites of 0x0061E6D0). g starts at
     the caller's own size and grows with each expansion. Past 9000, a CCountedPointer site (c1 70) is called at frequency
     ≈ 9.4; below it, only at f ≤ 0.714. A budget-only explanation must fit every site at once; if it can't, look for a
     frequency difference instead.

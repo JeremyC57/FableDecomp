@@ -50,7 +50,7 @@ except ImportError:
 # --- c2.dll 13.10.3077 (sha256 bcd28f39...) addresses, image base 0x10700000 (loads there; c2dbg checks) --------------
 PIPE = 0x1077C08E        # per-function register-allocation pipeline entry; eax = function record (name at [[fn]+4])
 NEWCAND = 0x1077C1DE     # ret of the candidate constructor 0x1077c10f: eax = new candidate (0x48 bytes), [esp] = call site
-PIECE_SITES = {0x1078B499: "esi", 0x1078BF4B: "ebp"}   # constructor call sites that make split pieces; parent register
+PIECE_SITES = {0x1078B499: "esi", 0x1078BF4B: "ebp", 0x107A9B63: "ebp"}   # 0x107A9B63: return of the parent-None piece call 0x107A9B5E (parent in ebp; session 2)   # constructor call sites that make split pieces; parent register
 DEF = 0x1077FAE3         # 0x10780000 (tuple walk): a tuple writes candidate esi; eax = tuple number; [esp+0x14] = block
 USE = 0x1077FBF7         # 0x10780000: a tuple reads candidate ecx; [esp+0x1c] = tuple number; [esp+0x14] = block
 CUR_LINE = 0x108A9114    # the current tuple's line (tuple +0x14, relative to the function's first line) while walking

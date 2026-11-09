@@ -88,3 +88,7 @@ x09_T72	base: STLport _Construct + alloc_proxy rebind opt-ins + /d2inlT72: call 
 04:31	w1	006096e0 _global::ConstructLogbookScreen DIFFER(12896v12832) flags= []	
 04:31	w1t	006096e0 _global::ConstructLogbookScreen DIFFER(12900v12832) flags= ['/d2inlT71']	--flags /d2inlT71
 04:31	fchk	006096e0 _global::ConstructLogbookScreen DIFFER(12832v12832) flags= ['/d2inlT71']	--flags /d2inlT71
+05:00	s2base	006096e0 _global::ConstructLogbookScreen DIFFER(12832v12832) flags= ['/d2inlT71']	--flags /d2inlT71
+05:00	s2b2	006096e0 _global::ConstructLogbookScreen DIFFER(12832v12832) flags= ['/d2inlT71']	--flags /d2inlT71
+05:56	s2final	006096e0 _global::ConstructLogbookScreen DIFFER(12832v12832) flags= ['/d2inlT71']	--flags /d2inlT71
+# 05:58 session 2 compile-only screens (tools/srch/SEARCH.tsv, not grades): e_then 18, e_count C1-C6, e_wide 125 code-identical (all byte-identical) + K1-K6 (code changes); differ re-graded as s2final above

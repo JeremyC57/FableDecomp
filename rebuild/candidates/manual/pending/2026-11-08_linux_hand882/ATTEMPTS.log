@@ -87,3 +87,5 @@
 04:52	b4	0061e6d0 CTCInventoryQuests::ConstructQuestListPC DIFFER(12357v12356) flags= []	
 04:52	b5	0061e6d0 CTCInventoryQuests::ConstructQuestListPC DIFFER(12357v12356) flags= []	
 04:53	fchk	0061e6d0 CTCInventoryQuests::ConstructQuestListPC DIFFER(12357v12356) flags= []	
+05:57	s2final	0061e6d0 CTCInventoryQuests::ConstructQuestListPC DIFFER(12357v12356) flags= []	
+# 05:58 session 2 compile-only screens (tools/srch/SEARCH.tsv, not grades): 128 unused opt-ins on b1 (none helps); v_rgb / v_all header layers (code-identical, g +90 / +170); differ re-graded as s2final above

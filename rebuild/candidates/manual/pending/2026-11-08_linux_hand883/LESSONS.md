@@ -22,3 +22,11 @@ Review at landing:
   keeps the `jmp cond` + aligned body rotation, and the do-while expanded the tree ++it (0x0047B3E0) at the default threshold.
 - (2026-11-09) Moving a counted pointer's default declaration above a call moves its `Data = Info = 0` stores above the call
   (c2 does not sink them): declaration position is code, not just scope.
+- (2026-11-09 s2) A split piece leaves the K count of a re-sort only when it is dropped (1 reference, spill <= 0); a 2-reference
+  piece is checked for copy forwarding but stays listed (prio -6 / 0) and still counts. The "forward" event is the check, not
+  removal.
+- (2026-11-09 s2) c2's split-region dataflow (0x1078B51C): pass 1 backward liveness (OUT +0x3C = OR succ IN +0x38;
+  IN = GEN +0x30 | OUT & ~KILL +0x34), IN/OUT saved to +0x24/+0x28, pass 2 forward reach (IN = OR pred OUT & live-in;
+  OUT = (IN & ~KILL | GEN2 +0x2C) & live-out); one bit per piece, 32 per round.
+- (2026-11-09 s2) A large function can be insensitive to every local code-identical spelling (125 edits, all byte-identical
+  objects): there the remaining lever is in an allocator pass's structure, not in the IL surface.
