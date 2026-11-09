@@ -75,3 +75,11 @@ Review at landing:
 - (chunk 890 s5) When the solved frequency constraints contradict each other (here f > 0.047 on a `continue` path that shares its
   frequency with code that must stay <= 0.0327), the difference is a callee cost, not a shape: check the header model's bodies
   (implicit vs declared dtor, out-of-line clear) with an extra overlay (work/s5/run2.sh, HX=dir) before adding devices.
+- (chunk 890 s6) An inline split that no cost explains is a frequency split: `if (a || b) continue;` makes the continue path
+  0.75 even when b folds away, `a && b` 0.25, `else if` 0.75 fall-through; a `while` holding a loop acts like a `for`. Model
+  the whole function (work/s6/fmodel.py) and enumerate shapes before devices; the s5 "a callee cost differs" was wrong.
+- (chunk 890 s6) c2 folds a re-test of a value it already tested (`p == 0 || ...` after `if (p == 0) continue;`, a count known
+  non-zero), so a redundant operand is free in bytes but still sets the frequency.
+- (chunk 890 s6) A right inline split can still flip the colouring: newly expanded blocks change the live-through costs of
+  long-lived split pieces. Read the per-block shares of the two pieces at the deciding re-sort (c2prio --json + blkshare.py)
+  before searching spellings.

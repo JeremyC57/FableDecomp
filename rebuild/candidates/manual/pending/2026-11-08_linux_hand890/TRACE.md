@@ -409,3 +409,33 @@ fq/q2.cpp + fq/fq.py (frequency micro probes), c2dis.py (c2.dll disassembler), s
   19 jump targets, 230 other instructions): retail keeps boastSubList in esi with a spill at [esp+0x11C] where ours uses ebx; the
   boast loop takes `&*boast` as `mov edi,[esp+1Ch] ; add edi,8`; and the CCharString arguments of the detail-list / backdrop
   CreateComponent calls are built in a different place (difflib moves 9- and 26-instruction blocks around 0x0056B22E / 0x0056B242).
+
+## Session 6 (2026-11-09) -- row 0x0056AD40 CTCBoastUI::Activate
+- S6.1 (frequency rules, micro probes work/s6/fq/m1-m7.cpp + h1.cpp, fq.sh / fq2.py / fqc.py): a plain `if` splits 0.5 / 0.5;
+  `a || b` gives its then-path 0.75; `a && b` 0.25; `else if` continue path 0.25, fall-through 0.75; a `for` body 5x and the code
+  after it stays at the body's frequency; the innermost `while` body 9x and the code after it drops back; a `while` that contains a
+  loop acts like a `for`; for-condition `||` body 7.5x / after 2.5x, `&&` body 2.5x / after 7.5x. A constant-folded operand keeps
+  its split (c2 folds `|| false`, a repeated null test and a count known non-zero only later). Internal `||` inside an inline body
+  does not reach the caller.
+- S6.2 (costs are fixed): c1 comes from the optimised callee code, so header spellings cannot move it (~list<CBoast> always sz 25 /
+  c1 19). Session 5's "one callee cost differs" was wrong: the difference is a shape.
+- S6.3 (work/s6/fmodel.py, 18 constraints from want.py's 34 sites): every solution (114/114) puts `||` on the empty-boasts
+  check; the minimal ones are while / for / for plus one 0.75 fall-through upstream (`&&` or `else if` at the card check, the
+  HasScript check, `questsWithBoasts == 0` or `Active`). fmodel2.py: if the top subtitle test were one condition (0.5), the second
+  lever moves down to the `boasts.size() > 1` or `group != 0` test instead; `||` at the empty check stays required.
+- S6.4 work/s6/d1.cpp = d0 (no inline_depth region) + `questCardThing == 0 && true` + `boasts.empty() || false`: want.py 0 of 34
+  wrong (work/inl/s6_d1.json) -- the ~list at 0x0056AFFA expands and make_pair / the converter are called with NO device.
+  Fit 4263 B, strict 429/1110 = 38.6%, loose 1034/1110 = 93.2%, calls 237 v 238. n1.cpp (nested `if (!boasts.empty())`) gives 234
+  calls: the separate dtor copy of retail needs a `continue`.
+- S6.5 work/s6/gen_v.py: 30 spellings (6 upstream x 5 empty-check levers, incl. `questCardThing == 0 || boasts.empty()` and
+  `boasts.empty() || questsWithBoasts == 0`, both folded) -> byte-identical objects. The choice is cosmetic.
+- S6.6 why d1 regresses (c2prio --trace, work/c2/s6_b0_blk.json / s6_d1_blk.json, work/tools/blkshare.py): the entry colouring
+  flips (this ebx, zero edi, activeQuests ebp v retail this edi, activeQuests edi, zero ebp). The decision is one comparison at
+  the 6th re-sort: retail's order needs prio(activeQuests piece) > prio(const-0 piece). b0 -1 v -2; d1 -7 v -4. The per-block
+  shares differ only on the source line of the empty check: the expanded dtor adds 3 loop-2 blocks (w 2: K 2 after the clear
+  call, K 1 the delete, K 0); activeQuests is live through both (-4, -2), the zero is referenced in the first (the `if (p)` of
+  the allocator's deallocate, cost 0) and live through the second (-2).
+- S6.7 lever searches on the colouring (fits, ~2.6 s each): work/s6/r3/gen.py, 24 combinations of iterator reuse in loop 2,
+  `int` count, declaration order, `continue`-style first loop, post-increment, list-before-name: none moves the colouring (best =
+  d1's 38.6%). h1.cpp = b0 + `|| false` only: 4209 B, 58.5% / 91.4%. h2.cpp = b0 + both levers (device kept): 4289 B,
+  62.7% / 93.4%, 238 v 238 calls, colouring still flipped. No full grade (none improved on b0).

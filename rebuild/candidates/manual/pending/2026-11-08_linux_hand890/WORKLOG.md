@@ -159,3 +159,26 @@ Leaderboard (best per row; strict / loose = fit on the graded bytes):
   colouring; (3) the frame order with fas.py's `_name$` table against slotmap.py; (4) the ~list / make_pair cost question with header
   overlays (run2.sh + HX) on ~_List_base / make_pair / the CBoast copy before any device.
 - Header changes this session: none (hdr/ untouched; the hx/ overlay under work/s5 is an experiment only).
+
+## Session 6 (2026-11-09) -- row 0x0056AD40 CTCBoastUI::Activate (inline split solved, colouring open)
+- Residue 1 (the ~list<CBoast> at 0x0056AFFA) and residue 4 (the last inline_depth device) are solved in principle: c2's
+  inline costs are fixed by the callee code, so retail's split must come from frequencies, and the only shape that satisfies all
+  18 constraints is `if (boasts.empty() || <folded>) continue;` plus one 0.75 fall-through upstream (TRACE S6.1-S6.3).
+  work/s6/d1.cpp gets all 34 inline sites right with no device (TRACE S6.4); 30 spellings give identical bytes (S6.5).
+- New blocker (residue 3): that expansion adds three loop-2 blocks that cost the activeQuests split piece 6 and the zero piece 2,
+  so at the 6th re-sort the zero piece outranks activeQuests (-4 v -7) and takes edi; this goes to ebx and the whole function
+  shifts registers (strict 69.6% -> 38.6%). TRACE S6.6 has the per-block bookkeeping; 24 natural levers did not move it (S6.7).
+- Frame (residue 2) not attempted this session: the hand886 tools8/pack.py replay needs the colouring settled first (the
+  playbook: grading is unreliable while the slot set moves).
+- Leaderboard (fits; grades in ATTEMPTS.log):
+  | source | bytes | strict | loose | calls | device |
+  |---|---|---|---|---|---|
+  | differ/0056ad40.cpp = work/s6/b0.cpp (r2_s5b) | 4275 | 69.6% | 95.6% | 238 (224 aligned) | inline_depth around insert |
+  | work/s6/h2.cpp (b0 + both levers) | 4289 | 62.7% | 93.4% | 238 (217) | inline_depth + levers |
+  | work/s6/h1.cpp (b0 + `||` only) | 4209 | 58.5% | 91.4% | 238 (215) | inline_depth + 1 lever |
+  | work/s6/d1.cpp (no device) | 4263 | 38.6% | 93.2% | 237 (221) | levers only |
+- Next lever: make the zero piece lose >= 4 more (or activeQuests gain 4) in those three blocks. Candidates: the zero's
+  references in the loop-2 blocks (the list ctor's `0`, the deallocate `if (p)`), an activeQuests reference inside the quest loop
+  that costs no code, or the hand885 pk/wi.py what-if (force the const-0 piece's priority to -8) to prove the colouring is the
+  only thing left before searching spellings. Then pack.py on the frame.
+- Header changes this session: none.

@@ -28,3 +28,5 @@
 02:25:03 00498490 src/00498490.cpp RELOCATION_MATCH (gall.sh, final src = r3_s5a + header block)
 02:52:48 0056ad40 r2_s5a DIFFER(4275v4284) flags=[ ]
 02:54:40 0056ad40 r2_s5b DIFFER(4275v4284) flags=[ ]
+# s6 (no full grade: nothing improved on r2_s5b); fits only, work/s5/r2fit.sh:
+#   s6_d1 4263 B strict 38.6% loose 93.2% calls 237 | s6_h1 4209 B 58.5% / 91.4% | s6_h2 4289 B 62.7% / 93.4% | s6 r3 x24 <= 38.6% | s6 v x30 = d1
