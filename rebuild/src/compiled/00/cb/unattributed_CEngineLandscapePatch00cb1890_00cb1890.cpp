@@ -5,13 +5,16 @@
 // The body runs under EH state 0 (the list member is alive); the member's inline destructor then
 // walks and frees the nodes (state -1). The class stores no vtable. The manifest label names the
 // inlined helper; the class is named by address.
+// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x012173E0 is `mov ecx,[ebp-10h] ; add ecx,0Ch ; jmp 0x00CB1210` (CBaseList::CNodeCache::~CNodeCache): the node cache is the member at +0xC {m_iCacheSize, m_iUsed, m_pHead +8}, not a one-word list at +0x14. Body bytes unchanged.
 struct SPatchNode_00cb1890 {
     void* m_pData;
     SPatchNode_00cb1890* m_pNext;          // +4
 };
 
-struct CPatchNodeList_00cb1890 {           // +0x14
-    SPatchNode_00cb1890* m_pHead;
+struct CPatchNodeList_00cb1890 {           // +0x0c: strmbase CBaseList::CNodeCache (out-of-line dtor 0x00CB1210)
+    int m_iCacheSize;                      // +0x00
+    int m_iUsed;                           // +0x04
+    SPatchNode_00cb1890* m_pHead;          // +0x08 (list +0x14)
     ~CPatchNodeList_00cb1890()
     {
         for (SPatchNode_00cb1890* node = m_pHead; node; ) {
@@ -23,8 +26,8 @@ struct CPatchNodeList_00cb1890 {           // +0x14
 };
 
 struct CEngineLandscapePatch_00cb1890 {
-    unsigned char _pad[0x14];
-    CPatchNodeList_00cb1890 m_nodes;       // +0x14
+    unsigned char _pad[0xc];
+    CPatchNodeList_00cb1890 m_nodes;       // +0x0c
     void Release();                        // 0x00CB1340
     ~CEngineLandscapePatch_00cb1890();
 };

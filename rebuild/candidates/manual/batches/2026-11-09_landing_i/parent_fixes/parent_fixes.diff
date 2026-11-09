@@ -1,0 +1,231 @@
+--- a/rebuild/src/compiled/00/c2/unattributed_CArtResourceSet00c2d3b0_00c2d3b0.cpp
++++ b/rebuild/src/compiled/00/c2/unattributed_CArtResourceSet00c2d3b0_00c2d3b0.cpp
+@@ -5,6 +5,7 @@
+ // Members are destroyed last to first: the member at +0x324 under state 0 (the array alive), then
+ // the array (state -1: nothing else remains). The class stores no vtable. The manifest label is
+ // propagated garbage; the class is named by address.
++// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x01213B0A is `mov ecx,[ebp-10h] ; add ecx,320h ; jmp 0x00C162A0`, and 0x00C162A0 is `add ecx,4 ; jmp 0x00C167C0`: the state-1 object is a holder at +0x320 whose implicit destructor destroys the member at +0x324. The member alone at +0x324 gave `add ecx,324h` (the parent body is unchanged).
+ struct CActivationReceptor_00c38b20 {                 // 0x180 bytes
+     unsigned char _body[0x180];
+     ~CActivationReceptor_00c38b20();                  // 0x00C38B20
+@@ -15,11 +16,16 @@
+     ~CMember_00c2d3b0();                   // 0x00C167C0
+ };
+ 
++struct CMemberHolder_00c162a0 {            // +0x320: its implicit destructor destroys the member at +4; the unwind funclet
++    unsigned char _pad[4];                 // calls the out-of-line copy (retail 0x00C162A0: add ecx,4 ; jmp 0x00C167C0)
++    CMember_00c2d3b0 m_member;             // +0x324
++};
++
+ struct CArtResourceSet_00c2d3b0 {
+     unsigned char _pad[0x18];
+     CActivationReceptor_00c38b20 m_items[2];          // +0x18
+-    unsigned char _pad2[0xc];
+-    CMember_00c2d3b0 m_member;             // +0x324
++    unsigned char _pad2[0x8];
++    CMemberHolder_00c162a0 m_holder;       // +0x320 (the member at +0x324 is its +4)
+     void Reset(long mode);                 // 0x00C2D210
+     ~CArtResourceSet_00c2d3b0();
+ };
+--- a/rebuild/tests/00/c2/unattributed_CArtResourceSet00c2d3b0_00c2d3b0_test.cpp
++++ b/rebuild/tests/00/c2/unattributed_CArtResourceSet00c2d3b0_00c2d3b0_test.cpp
+@@ -1,5 +1,5 @@
+ #include <cstdio>
+-static int g_e = 0, g_m = 0; static long g_r = -1; struct E { unsigned char b[0x180]; ~E() { ++g_e; } }; struct M { unsigned char b[4]; ~M() { ++g_m; } }; struct X { unsigned char p[0x18]; E e[2]; unsigned char q[0xc]; M m; void R(long k) { g_r = k; } ~X() { R(0); } };
++static int g_e = 0, g_m = 0; static long g_r = -1; struct E { unsigned char b[0x180]; ~E() { ++g_e; } }; struct M { unsigned char b[4]; ~M() { ++g_m; } }; struct X { unsigned char p[0x18]; E e[2]; unsigned char q[0x8]; struct H { unsigned char p[4]; M m; } h; void R(long k) { g_r = k; } ~X() { R(0); } };
+ static bool Check() { { X x; } return g_e == 2 && g_m == 1 && g_r == 0; }
+ 
+ int main()
+--- a/rebuild/src/compiled/00/c2/unattributed_CStackOwner00c287e0dtor_00c287e0.cpp
++++ b/rebuild/src/compiled/00/c2/unattributed_CStackOwner00c287e0dtor_00c287e0.cpp
+@@ -5,6 +5,7 @@
+ // stored at entry too). The vector member's inline release calls a non-throwing operator
+ // delete, so no further EH state is stored. The manifest
+ // label (`~Stack<unsigned long,64>`) is propagated; the classes are named by address.
++// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x012134AB is `add ecx,43Ch ; jmp 0x00C29CA0`, whose body reads begin at [esi+4]: the vector starts at +0x43C with an empty allocator word (Dinkumware layout), begin at +0x440. The body bytes are unchanged.
+ void __cdecl operator delete(void* block) throw();   // non-throwing: the vector release registers no EH state
+ 
+ struct CListener_00c287e0 {                // +0x34, vtable 0x012B37FC: a polymorphic member with an inline empty destructor
+@@ -12,7 +13,8 @@
+     ~CListener_00c287e0() { }
+ };
+ 
+-struct CVector_00c287e0 {                  // +0x440: {begin, end, capacity}
++struct CVector_00c287e0 {                  // +0x43c: {allocator, begin +4, end +8, capacity +0xc} (out-of-line dtor 0x00C29CA0)
++    unsigned char m_allocator;             // +0x00 (empty allocator, padded)
+     void* m_pBegin;
+     void* m_pEnd;
+     void* m_pCapacity;
+@@ -35,8 +37,8 @@
+     virtual void v00();
+     unsigned char _pad[0x30];
+     CListener_00c287e0 m_listener;         // +0x34
+-    unsigned char _pad2[0x408];
+-    CVector_00c287e0 m_vector;             // +0x440
++    unsigned char _pad2[0x404];
++    CVector_00c287e0 m_vector;             // +0x43c (begin at +0x440)
+     long m_44c;
+     CString m_member;             // +0x450
+     void Cleanup();                        // 0x00C27E60
+--- a/rebuild/tests/00/c2/unattributed_CStackOwner00c287e0dtor_00c287e0_test.cpp
++++ b/rebuild/tests/00/c2/unattributed_CStackOwner00c287e0dtor_00c287e0_test.cpp
+@@ -1,7 +1,7 @@
+ #include <cstdio>
+ #include <new>
+-static int g_c = 0, g_m = 0, g_f = 0; struct Li { virtual void v0() {} ~Li() {} }; struct Vc { void* b; void* e; void* c; ~Vc() { if (b) { ++g_f; } b = 0; e = 0; c = 0; } }; struct Mb { unsigned char b[4]; ~Mb() { ++g_m; } };
+-struct X { virtual void v0() {} unsigned char p[0x30]; Li li; unsigned char q[0x408]; Vc v; long m44c; Mb m; void Cl() { ++g_c; } ~X() { Cl(); } };
++static int g_c = 0, g_m = 0, g_f = 0; struct Li { virtual void v0() {} ~Li() {} }; struct Vc { unsigned char al; void* b; void* e; void* c; ~Vc() { if (b) { ++g_f; } b = 0; e = 0; c = 0; } }; struct Mb { unsigned char b[4]; ~Mb() { ++g_m; } };
++struct X { virtual void v0() {} unsigned char p[0x30]; Li li; unsigned char q[0x404]; Vc v; long m44c; Mb m; void Cl() { ++g_c; } ~X() { Cl(); } };
+ static bool Check() { X* x = new X; int a; x->v.b = &a; x->v.e = &a; x->v.c = &a; delete x; return g_c == 1 && g_m == 1 && g_f == 1; }
+ 
+ int main()
+--- a/rebuild/src/compiled/00/c2/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00c28ae0.cpp
++++ b/rebuild/src/compiled/00/c2/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00c28ae0.cpp
+@@ -16,6 +16,7 @@
+ // The identity of the folded call is not recoverable from the bytes; reserve(0) on the empty +0x440 vector is a stand-in.
+ // Leaf: ??0CHandleBasedMemoryPool
+ // Flags: /EHsc
++// Funclet fix (2026-11-09, chunk 896): retail FuncInfo 0x0136CED0 has ONE unwind action (+0x34 handler, funclet 0x012134E3); the reserve(0) stand-in in the body ran with the vector and name alive and gave three. As the vector's own constructor work (Dinkumware `vector() { _Buy(0); }`) it runs before the vector is alive, leaving state 0 only. Body bytes unchanged.
+ void __cdecl operator delete(void* block) throw();       // 0x00BFE9BC
+ 
+ class CFailedAllocationHandler { public:          // embedded at +0x34, vtable 0x012B37FC
+@@ -27,7 +28,7 @@
+     void* m_pBegin;
+     void* m_pEnd;
+     void* m_pCapacity;
+-    CHandleVector() : m_pBegin(0), m_pEnd(0), m_pCapacity(0) {}
++    CHandleVector() : m_pBegin(0), m_pEnd(0), m_pCapacity(0) { reserve(0); }   // the vector's own _Buy(0): runs before the vector is alive
+     void Reallocate(unsigned long bytes);
+     void reserve(unsigned long bytes) { if ((unsigned long)((char*)m_pCapacity - (char*)m_pBegin) < bytes) Reallocate(bytes); }
+     ~CHandleVector()
+@@ -77,7 +78,6 @@
+       FirstUnusedHandle(-1)
+ {
+     ClearFreeLists();
+-    Handles.reserve(0);
+     FailureHandler = &DefaultFailureHandler;
+     m_20 = 0x80000;
+     m_24 = 0x100000;
+--- a/rebuild/src/compiled/00/ca/unattributed_CVolume00caa790_00caa790.cpp
++++ b/rebuild/src/compiled/00/ca/unattributed_CVolume00caa790_00caa790.cpp
+@@ -6,20 +6,32 @@
+ // No vtable store, so the class is not polymorphic (or `novtable`); EH state 0 covers the body
+ // (the member at +4 is alive). The manifest label (`ReleaseVolume`) is propagated garbage for a
+ // destructor; the class is named by address.
++// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x01216DE0 is `mov ecx,[ebp-10h] ; jmp 0x00CA7780` (CUnknown::~CUnknown on `this`): strmbase's CUnknown is a BASE at +0 (AM_NOVTABLE, virtual ~CUnknown() {}), not a CMyBaseObject member at +4 (which gave `add ecx,4`). The destructor is virtual (strmbase ??1CBaseMediaFilter@@UAE@XZ); novtable keeps it free of vtable stores. Body bytes unchanged.
+ struct IUnknown_00caa790 {                 // COM-style: `this` is pushed as the first stack argument
+     virtual long __stdcall QueryInterface();
+     virtual unsigned long __stdcall AddRef();
+     virtual unsigned long __stdcall Release();   // slot 2
+ };
+ 
+-struct CMyBaseObject {                  // +4: the CMyBaseObject base subobject (after the INonDelegatingUnknown vptr); _body stands for the members that follow it
+-    unsigned char _body[0x10];
+-    ~CMyBaseObject();                   // 0x00CACAF0
++struct __declspec(novtable) INonDelegatingUnknown {
++    virtual long __stdcall NonDelegatingQueryInterface(const void* iid, void** object) = 0;
++    virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
++    virtual unsigned long __stdcall NonDelegatingRelease() = 0;
++};
++class CMyBaseObject {                      // strmbase object counter (no data in the release build)
++public:
++    ~CMyBaseObject();                      // 0x00CACAF0
++};
++class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
++    void* const m_pUnknown;                // +0x04
++protected:
++    long m_cRef;                           // +0x08
++public:
++    virtual ~CUnknown() {}                 // out-of-line copy 0x00CA7780 (the unwind funclet calls it on `this`)
+ };
+ 
+-struct CVolume_00caa790 {
+-    unsigned char _pad[4];
+-    CMyBaseObject m_member;             // +4
++struct __declspec(novtable) CVolume_00caa790 : public CUnknown {   // strmbase CBaseMediaFilter: CUnknown base at +0 (AM_NOVTABLE)
++    unsigned char _pad[0x8];               // +0x0c: the IMediaFilter vptr, m_State
+     IUnknown_00caa790* m_pTexture;         // +0x14
+     ~CVolume_00caa790();
+ };
+--- a/rebuild/src/compiled/00/ca/CJoystickDX_CJoystickDX_00caaac0.cpp
++++ b/rebuild/src/compiled/00/ca/CJoystickDX_CJoystickDX_00caaac0.cpp
+@@ -6,20 +6,32 @@
+ // The body (EH state 0, the member at +4 alive) frees a raw block and releases a COM-style
+ // interface (`__stdcall` slot 2 with `this` pushed). The class stores no vtable. The class comes
+ // from the manifest label; the rest is descriptive.
++// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x01216E60 is `mov ecx,[ebp-10h] ; jmp 0x00CA7780` (CUnknown::~CUnknown on `this`): strmbase's CUnknown is a BASE at +0 (AM_NOVTABLE, virtual ~CUnknown() {}), not a CMyBaseObject member at +4 (which gave `add ecx,4`). The destructor is virtual (strmbase ??1CBaseFilter@@UAE@XZ); novtable keeps it free of vtable stores. Body bytes unchanged.
+ struct IUnknown_00caaac0 {                 // COM-style: `this` is pushed as the first stack argument
+     virtual long __stdcall QueryInterface();
+     virtual unsigned long __stdcall AddRef();
+     virtual unsigned long __stdcall Release();   // slot 2
+ };
+ 
+-struct CMyBaseObject {                  // +4: the CMyBaseObject base subobject (after the INonDelegatingUnknown vptr); _body stands for the members that follow it
+-    unsigned char _body[0x14];
+-    ~CMyBaseObject();                   // 0x00CACAF0
++struct __declspec(novtable) INonDelegatingUnknown {
++    virtual long __stdcall NonDelegatingQueryInterface(const void* iid, void** object) = 0;
++    virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
++    virtual unsigned long __stdcall NonDelegatingRelease() = 0;
++};
++class CMyBaseObject {                      // strmbase object counter (no data in the release build)
++public:
++    ~CMyBaseObject();                      // 0x00CACAF0
++};
++class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
++    void* const m_pUnknown;                // +0x04
++protected:
++    long m_cRef;                           // +0x08
++public:
++    virtual ~CUnknown() {}                 // out-of-line copy 0x00CA7780 (the unwind funclet calls it on `this`)
+ };
+ 
+-struct CJoystickDX {
+-    unsigned char _pad[4];
+-    CMyBaseObject m_member;             // +4
++struct __declspec(novtable) CJoystickDX : public CUnknown {   // strmbase CBaseFilter: CUnknown base at +0 (AM_NOVTABLE)
++    unsigned char _pad[0xc];               // +0x0c: the IBaseFilter and IAMovieSetup vptrs, m_State
+     IUnknown_00caaac0* m_pDevice;          // +0x18
+     unsigned char _pad2[0x20];
+     void* m_pBlock;                        // +0x3c
+--- a/rebuild/src/compiled/00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890.cpp
++++ b/rebuild/src/compiled/00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890.cpp
+@@ -5,13 +5,16 @@
+ // The body runs under EH state 0 (the list member is alive); the member's inline destructor then
+ // walks and frees the nodes (state -1). The class stores no vtable. The manifest label names the
+ // inlined helper; the class is named by address.
++// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x012173E0 is `mov ecx,[ebp-10h] ; add ecx,0Ch ; jmp 0x00CB1210` (CBaseList::CNodeCache::~CNodeCache): the node cache is the member at +0xC {m_iCacheSize, m_iUsed, m_pHead +8}, not a one-word list at +0x14. Body bytes unchanged.
+ struct SPatchNode_00cb1890 {
+     void* m_pData;
+     SPatchNode_00cb1890* m_pNext;          // +4
+ };
+ 
+-struct CPatchNodeList_00cb1890 {           // +0x14
+-    SPatchNode_00cb1890* m_pHead;
++struct CPatchNodeList_00cb1890 {           // +0x0c: strmbase CBaseList::CNodeCache (out-of-line dtor 0x00CB1210)
++    int m_iCacheSize;                      // +0x00
++    int m_iUsed;                           // +0x04
++    SPatchNode_00cb1890* m_pHead;          // +0x08 (list +0x14)
+     ~CPatchNodeList_00cb1890()
+     {
+         for (SPatchNode_00cb1890* node = m_pHead; node; ) {
+@@ -23,8 +26,8 @@
+ };
+ 
+ struct CEngineLandscapePatch_00cb1890 {
+-    unsigned char _pad[0x14];
+-    CPatchNodeList_00cb1890 m_nodes;       // +0x14
++    unsigned char _pad[0xc];
++    CPatchNodeList_00cb1890 m_nodes;       // +0x0c
+     void Release();                        // 0x00CB1340
+     ~CEngineLandscapePatch_00cb1890();
+ };
+--- a/rebuild/tests/00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890_test.cpp
++++ b/rebuild/tests/00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890_test.cpp
+@@ -1,5 +1,5 @@
+ #include <cstdio>
+-static int g_r = 0; struct N { void* d; N* n; }; struct Li { N* h; ~Li() { for (N* n = h; n; ) { N* c = n; n = n->n; ::operator delete(c); } } }; struct X { unsigned char p[0x14]; Li l; void R() { ++g_r; } ~X() { R(); } };
++static int g_r = 0; struct N { void* d; N* n; }; struct Li { int cs; int used; N* h; ~Li() { for (N* n = h; n; ) { N* c = n; n = n->n; ::operator delete(c); } } }; struct X { unsigned char p[0xc]; Li l; void R() { ++g_r; } ~X() { R(); } };
+ static bool Check() { { X x; N* a = (N*)::operator new(sizeof(N)); N* b = (N*)::operator new(sizeof(N)); a->n = b; b->n = 0; x.l.h = a; } return g_r == 1; }
+ 
+ int main()

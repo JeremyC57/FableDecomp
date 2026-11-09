@@ -1,0 +1,38 @@
+addr       parity           behav  name
+00c2d3b0   WARN RELOC_NAME: ?Reset@CArtResourceSet_00c2d3b0@@QAEXJ@Z -> 00c2d210 labelled 'CInstanceManager::FadeOutAll'
+00c2d3b0   WARN RELOC_NAME: ??1CMember_00c2d3b0@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c2d3b0   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c2d3b0   WARN STANDIN_LEAF ??1CArtResourceSet_00c2d3b0@@QAE@XZ (catalog _unattributed::~CArtResourceSet_00c2d3b0; address-only name)
+00c2d3b0   RELOCATION_MATCH PASS   ~CArtResourceSet_00c2d3b0
+00c287e0   WARN SHARED_HEADER_AVAILABLE CString
+00c287e0   WARN RELOC_NAME: ?Cleanup@CStackOwner_00c287e0@@QAEXXZ -> 00c27e60 labelled 'CHandleBasedMemoryPool_012b4098::ReleaseBuffer'
+00c287e0   RELOCATION_MATCH PASS   ~CStackOwner_00c287e0
+00c28ae0   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler
+00c28ae0   WARN STANDIN_LEAF ??0CHandleBasedMemoryPool_012b4098@@QAE@XZ (catalog CVtable_012b37fc::CVtable_012b37fc; address-only name)
+00c28ae0   RELOCATION_MATCH PASS   CVtable_012b37fc
+00caa790   WARN STANDIN_LEAF ??1CVolume_00caa790@@UAE@XZ (catalog _unattributed::~CVolume_00caa790; address-only name)
+00caa790   WARN VENDOR_PROOF_MISMATCH tree dxsdk/dxsdk-sum2004 of strmbase-dxsdk-sum2004 not under FABLE_THIRDPARTY ([]); run fetch_vendor_libs.py
+00caa790   RELOCATION_MATCH PASS   ~CVolume_00caa790
+  WARN leaf '??1CBaseFilter@' matches no symbol in 00caaac0.obj; graded the largest function
+  WARN leaf '??1CBaseFilter@' matches no symbol in 00caaac0.obj; graded the largest function
+00caaac0   WARN STANDIN_LEAF ??1CJoystickDX@@UAE@XZ (catalog CBaseFilter::~CBaseFilter; names another function)
+00caaac0   WARN VENDOR_PROOF_MISMATCH tree dxsdk/dxsdk-sum2004 of strmbase-dxsdk-sum2004 not under FABLE_THIRDPARTY ([]); run fetch_vendor_libs.py
+00caaac0   RELOCATION_MATCH PASS   ~CBaseFilter
+00cb1890   WARN RELOC_NAME: ?Release@CEngineLandscapePatch_00cb1890@@QAEXXZ -> 00cb1340 labelled 'CBaseList::RemoveAll'
+00cb1890   WARN STANDIN_LEAF ??1CEngineLandscapePatch_00cb1890@@QAE@XZ (catalog _unattributed::~CEngineLandscapePatch_00cb1890; address-only name)
+00cb1890   WARN VENDOR_PROOF_MISMATCH tree dxsdk/dxsdk-sum2004 of strmbase-dxsdk-sum2004 not under FABLE_THIRDPARTY ([]); run fetch_vendor_libs.py
+00cb1890   RELOCATION_MATCH PASS   ~CEngineLandscapePatch_00cb1890
+01213af1   RELOCATION_MATCH PASS   Unwind@01213af1
+012134a0   RELOCATION_MATCH PASS   Unwind@012134a0
+012134b9   RELOCATION_MATCH PASS   Unwind@012134b9
+
+WINS: 9
+  00c2d3b0 RELOCATION_MATCH _unattributed::??1CArtResourceSet_00c2d3b0@
+  00c287e0 RELOCATION_MATCH _unattributed::??1CStackOwner_00c287e0@
+  00c28ae0 RELOCATION_MATCH CVtable_012b37fc::??0CHandleBasedMemoryPool
+  00caa790 RELOCATION_MATCH _unattributed::??1CVolume_00caa790@
+  00caaac0 RELOCATION_MATCH CJoystickDX::??1CBaseFilter@
+  00cb1890 RELOCATION_MATCH _unattributed::??1CEngineLandscapePatch_00cb1890@
+  01213af1 RELOCATION_MATCH _global::Unwind@01213af1
+  012134a0 RELOCATION_MATCH _global::Unwind@012134a0
+  012134b9 RELOCATION_MATCH _global::Unwind@012134b9

@@ -5,6 +5,7 @@
 // Members are destroyed last to first: the member at +0x324 under state 0 (the array alive), then
 // the array (state -1: nothing else remains). The class stores no vtable. The manifest label is
 // propagated garbage; the class is named by address.
+// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x01213B0A is `mov ecx,[ebp-10h] ; add ecx,320h ; jmp 0x00C162A0`, and 0x00C162A0 is `add ecx,4 ; jmp 0x00C167C0`: the state-1 object is a holder at +0x320 whose implicit destructor destroys the member at +0x324. The member alone at +0x324 gave `add ecx,324h` (the parent body is unchanged).
 struct CActivationReceptor_00c38b20 {                 // 0x180 bytes
     unsigned char _body[0x180];
     ~CActivationReceptor_00c38b20();                  // 0x00C38B20
@@ -15,11 +16,16 @@ struct CMember_00c2d3b0 {                  // +0x324
     ~CMember_00c2d3b0();                   // 0x00C167C0
 };
 
+struct CUnprovenHolder_00c162a0 {            // +0x320: its implicit destructor destroys the member at +4; the unwind funclet
+    unsigned char _pad[4];                 // calls the out-of-line copy (retail 0x00C162A0: add ecx,4 ; jmp 0x00C167C0)
+    CMember_00c2d3b0 m_member;             // +0x324
+};
+
 struct CArtResourceSet_00c2d3b0 {
     unsigned char _pad[0x18];
     CActivationReceptor_00c38b20 m_items[2];          // +0x18
-    unsigned char _pad2[0xc];
-    CMember_00c2d3b0 m_member;             // +0x324
+    unsigned char _pad2[0x8];
+    CUnprovenHolder_00c162a0 m_holder;       // +0x320 (the member at +0x324 is its +4)
     void Reset(long mode);                 // 0x00C2D210
     ~CArtResourceSet_00c2d3b0();
 };

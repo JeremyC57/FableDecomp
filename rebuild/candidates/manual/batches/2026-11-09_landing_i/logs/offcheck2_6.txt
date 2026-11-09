@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/funclets/offcheck2.py", line 9, in <module>
+    S=os.environ["S"]
+      ~~~~~~~~~~^^^^^
+  File "<frozen os>", line 717, in __getitem__
+KeyError: 'S'

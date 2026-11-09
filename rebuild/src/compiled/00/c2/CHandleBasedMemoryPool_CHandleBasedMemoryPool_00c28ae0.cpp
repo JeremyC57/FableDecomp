@@ -16,6 +16,7 @@
 // The identity of the folded call is not recoverable from the bytes; reserve(0) on the empty +0x440 vector is a stand-in.
 // Leaf: ??0CHandleBasedMemoryPool
 // Flags: /EHsc
+// Funclet fix (2026-11-09, chunk 896): retail FuncInfo 0x0136CED0 has ONE unwind action (+0x34 handler, funclet 0x012134E3); the reserve(0) stand-in in the body ran with the vector and name alive and gave three. As the vector's own constructor work (Dinkumware `vector() { _Buy(0); }`) it runs before the vector is alive, leaving state 0 only. Body bytes unchanged.
 void __cdecl operator delete(void* block) throw();       // 0x00BFE9BC
 
 class CFailedAllocationHandler { public:          // embedded at +0x34, vtable 0x012B37FC
@@ -27,7 +28,7 @@ struct CHandleVector {                  // +0x440: {begin, end, capacity}
     void* m_pBegin;
     void* m_pEnd;
     void* m_pCapacity;
-    CHandleVector() : m_pBegin(0), m_pEnd(0), m_pCapacity(0) {}
+    CHandleVector() : m_pBegin(0), m_pEnd(0), m_pCapacity(0) { reserve(0); }   // the vector's own _Buy(0): runs before the vector is alive
     void Reallocate(unsigned long bytes);
     void reserve(unsigned long bytes) { if ((unsigned long)((char*)m_pCapacity - (char*)m_pBegin) < bytes) Reallocate(bytes); }
     ~CHandleVector()
@@ -77,7 +78,6 @@ CHandleBasedMemoryPool_012b4098::CHandleBasedMemoryPool_012b4098()
       FirstUnusedHandle(-1)
 {
     ClearFreeLists();
-    Handles.reserve(0);
     FailureHandler = &DefaultFailureHandler;
     m_20 = 0x80000;
     m_24 = 0x100000;

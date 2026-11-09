@@ -6,20 +6,32 @@
 // The body (EH state 0, the member at +4 alive) frees a raw block and releases a COM-style
 // interface (`__stdcall` slot 2 with `this` pushed). The class stores no vtable. The class comes
 // from the manifest label; the rest is descriptive.
+// Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x01216E60 is `mov ecx,[ebp-10h] ; jmp 0x00CA7780` (CUnknown::~CUnknown on `this`): strmbase's CUnknown is a BASE at +0 (AM_NOVTABLE, virtual ~CUnknown() {}), not a CMyBaseObject member at +4 (which gave `add ecx,4`). The destructor is virtual (strmbase ??1CBaseFilter@@UAE@XZ); novtable keeps it free of vtable stores. Body bytes unchanged.
 struct IUnknown_00caaac0 {                 // COM-style: `this` is pushed as the first stack argument
     virtual long __stdcall QueryInterface();
     virtual unsigned long __stdcall AddRef();
     virtual unsigned long __stdcall Release();   // slot 2
 };
 
-struct CMyBaseObject {                  // +4: the CMyBaseObject base subobject (after the INonDelegatingUnknown vptr); _body stands for the members that follow it
-    unsigned char _body[0x14];
-    ~CMyBaseObject();                   // 0x00CACAF0
+struct __declspec(novtable) INonDelegatingUnknown {
+    virtual long __stdcall NonDelegatingQueryInterface(const void* iid, void** object) = 0;
+    virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
+    virtual unsigned long __stdcall NonDelegatingRelease() = 0;
+};
+class CMyBaseObject {                      // strmbase object counter (no data in the release build)
+public:
+    ~CMyBaseObject();                      // 0x00CACAF0
+};
+class __declspec(novtable) CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
+    void* const m_pUnknown;                // +0x04
+protected:
+    long m_cRef;                           // +0x08
+public:
+    virtual ~CUnknown() {}                 // out-of-line copy 0x00CA7780 (the unwind funclet calls it on `this`)
 };
 
-struct CJoystickDX {
-    unsigned char _pad[4];
-    CMyBaseObject m_member;             // +4
+struct __declspec(novtable) CJoystickDX : public CUnknown {   // strmbase CBaseFilter: CUnknown base at +0 (AM_NOVTABLE)
+    unsigned char _pad[0xc];               // +0x0c: the IBaseFilter and IAMovieSetup vptrs, m_State
     IUnknown_00caaac0* m_pDevice;          // +0x18
     unsigned char _pad2[0x20];
     void* m_pBlock;                        // +0x3c

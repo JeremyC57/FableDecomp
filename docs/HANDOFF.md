@@ -129,6 +129,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     BestForTargeting `_BODIES`, GFSerialiseVectorBinaryIn<CUIRegionInfo>, CalcObjectMatrix + new `CMatrix3x4::SetTranslateOnly`
     opt-in). 25 parked in `pending/2026-11-09_linux_hand895/`. Ranking of all 2,052 parked rows: `$S/parked_rank_0911.tsv`;
     re-grade results `$S/regrade/res*.tsv`. Coverage 47,155 genuine (95.13%).
+    Chunk 896 (user, 2026-11-09: "do eh funclets with landed parents", on an agent): all 146 funclets whose real parent landed
+    after the Nov-3 pass landed (`2026-11-09_landing_i/`), 140 directly and 6 after six parent model fixes their funclets exposed
+    (parents re-graded RELOCATION_MATCH + PASS). Re-run `$S/funclets` mkpayload + offcheck2 after landing rounds. 61 funclets left
+    (44 parent unlanded, 6 parent unmapped, 11 not funclets, 6 unrecorded). Queue tag land0911i. Coverage 47,301 genuine (95.43%).
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
     calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).
