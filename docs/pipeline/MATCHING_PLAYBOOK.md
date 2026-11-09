@@ -90,6 +90,10 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
   - A `while (...) { ...; ++i; }` body runs at 9x and the code after it drops back.
   - One loop rewritten as `while` fixed 17 of 20 sites in 0x0056AD40, and gave 0x00551EA0 its exact split.
   - Try loop and guard shapes before devices.
+  - Branch frequencies: `if (a || b)` sends 0.75 down the then-path (even when `b` folds away), `a && b` 0.25, `else if` gives
+    the fall-through 0.75, and a `while` containing another loop behaves like a `for`.
+  - Callee cost is computed from the optimised callee, so header spellings cannot move it. Solve a call/expand split as a
+    constraint system over the sites: hand890 s6/fmodel.py solved 0x0056AD40's 34 sites with no device.
 - **Regime 1:** cost = sz - sav0 - sav1 + pen - 10 (leaf) - 7 (inline-declared) + 4 (site flag 2); expanded iff cost < S.
   - pen grows with the caller's tuple count, so late sites are called (path 0x107537A4).
   - /d2inlS is not monotonic.
