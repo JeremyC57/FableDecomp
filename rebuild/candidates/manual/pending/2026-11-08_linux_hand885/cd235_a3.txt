@@ -1,0 +1,40 @@
+   62 #1903  temp                       p61     ebx 2371..2379   retail {'edi': 3} X
+   91 #1107  gold                       p56     ebx 1723..1736   retail {'edi': 6} X
+  375 #1804  temp                       p35     esi 844..845     retail {'edi': 3} X
+  383 #1808  temp                       p31     esi 958..959     retail {'edi': 3} X
+  387 #760   c                          p31     ebx 381..383     retail {'?': 4, 'edi': 2} X
+  521 #758   dot                        p25     edi 377..381     retail {'M': 4, '?': 2} X
+  524 #2067  const 0x162156c<24         p40     edi 428..1232    retail {'esi': 63, '?': 23, 'I': 11, 'edi': 11} X
+  526 #847   const 1<2                  p36     edi 905..921     retail {'I': 9, '?': 3} X
+  591 #964   pThing                     p23     edi 1134..1136   retail {'?': 2, 'esi': 1} X
+  606 #875   it                         p21     esi 776..777     retail {'edi': 4} X
+  607 #868   it                         p21     esi 755..756     retail {'edi': 4} X
+  608 #859   it                         p21     edi 719..720     retail {'esi': 4} X
+  611 #741   local                      p21     edi 386..388     retail {'?': 2, 'ebx': 1} X
+  834 #858   target                     p20     esi 717..726     retail {'edi': 5, '?': 1} X
+  855 #1797  temp                       p19     edi 736..737     retail {'esi': 3} X
+  864 #1028  result                     p17     edi 1365..1370   retail {'esi': 5} X
+  866 #842   const 2<25                 p17     edi 815..815     retail {'I': 2, '?': 1} X
+  869 #1415  i                          p16     ebx 2790..2791   retail {'edi': 3} X
+  880 #912   lines                      p16     edi 891..895     retail {'esi': 3} X
+  896 #924   it                         p15     esi 957..958     retail {'edi': 4} X
+  897 #895   it                         p15     esi 843..844     retail {'edi': 4} X
+  898 #864   it                         p15     edi 735..736     retail {'esi': 4} X
+  907 #1367  i                          p12     esi 2608..2609   retail {'edi': 3, 'esi': 1} X
+  932 #190   lights<1505                p36     ebx 3081..3094   retail {'?': 4, 'edi': 3} X
+  997 #1357  i                          p10     ebx 2561..2562   retail {'?': 2, 'edi': 1} X
+ 1087 #948   local                      p10     esi 1070..1070   retail {'edi': 2} X
+ 1106 #1800  temp                       p10     esi 777..778     retail {'edi': 4} X
+ 1108 #1798  temp                       p10     esi 756..757     retail {'edi': 4} X
+ 1111 #1796  temp                       p10     edi 720..721     retail {'esi': 4} X
+ 1215 #905   method                     p8      edi 870..879     retail {'esi': 3} X
+ 1278 #911   groupConversation          p7      esi 892..899     retail {'edi': 2} X
+ 1291 #1400  i                          p6      ebx 2737..2738   retail {'?': 2, 'edi': 1} X
+ 1299 #1335  temp                       p5      edi 1422..1422   retail {'ebx': 1} X
+ 1301 #1318  temp                       p5      edi 662..662     retail {'esi': 2} X
+ 1318 #853   repeat                     p3      edi 641..662     retail {'esi': 5} X
+ 1330 #816   phase                      p1      esi 434..441     retail {'edi': 2} X
+ 1331 #1303  const -1<3                 p13     esi 432..1492    retail {'edi': 180, 'esi': 98, '?': 53, 'I': 1} X
+ 1332 #1297  const 0                    p18     edi 1454..1456   retail {'ebx': 5} X
+ 1333 #1747  const 1<2                  p8      edi 1234..1244   retail {'esi': 7} X
+ 1334 #2224  const 0<1                  p3      edi 693..707     retail {'esi': 6} X

@@ -4,7 +4,46 @@ Row: 0x00CBFB7D, 74,778 bytes, catalog `_global::RunCutsceneMacro`. PDB name `Ru
 two sources: reloc_bindings `?RunCutsceneMacro@@YIX...` stand-in with CCutsceneCastMap + catalog name; the cutscene
 helpers CSFindThing 0xCBF9DE / CSExtractParameterList 0xCBFACA landed alongside with the same PDB naming family).
 
-## Session 7 (2026-11-09, all-means push, flags -> decision 459 -> frame -> residues) -- READ THIS FIRST (src/ = a3 bytes)
+## Session 8 (2026-11-09, K47 split -> fixed-site variants -> what-ifs) -- READ THIS FIRST (src/ = a3 bytes, unchanged)
+src/ = a3 (no source change kept); differ/ unchanged. Leaderboard (score7 = bytes / first register-level difference / fx):
+| ver | bytes | first-reg | fx | frame | note |
+|---|---|---|---|---|---|
+| **a3 (src)** | **74865** | **459** | **19621** | 0x18D0 | best, unchanged |
+| sh_neg, sh_scope | 74865 | 459 | 19621 | 0x18D0 | SAME as a3 |
+| c_shared (one `long c`) | 74865 | 459 | 19621 | 0x18D0 | 1 frame slot moved |
+| mv_ifs / lk_noname / mv_tern | 74863 / 74854 / 74844 | 459 | 19596 / 19607 / 19600 | 0x18D0 / 0x18C4 / 0x18D0 | worse |
+| sh_elseif / end_elseif / mv_init0 | 74910 / 74908 / 74707 | 459 | -- / 19610 / 19509 | 0x18D4 / 0x18D4 / 0x18D0 | worse |
+Findings:
+1. **cdiff2 line base is 235, not 233** (c2prio's json lines = file line - 2; gold's refs 1721.. v source 1723..). Corrected
+   list (s8/cd235_a3.txt): the FIRST ours/retail colouring divergence is **K62 temp #1903 (2371..2379, prio 61): ours ebx,
+   retail edi**; then K91 gold, K375/K383 temps, **K387 c #760 (first parse loop's c, 381..383): ours ebx, retail edi**, K521
+   dot. The s7 `i` (K367/K368) divergences were the 2-line shift. One cause for all: the const -1/0/1 rest pieces are
+   edi-ONLY from K48 (edi costs 61700..73000), so every later edi choice goes to ebx/esi.
+2. Mechanism (c2prio8 snapshots/dumps): the const roots are ebx-only at K1 (6 inline-strcmp `repe cmpsb` blocks + the movsd
+   copy pin esi/edi); K31..K46 ebx splits keep the fixed blocks; K47 (actor piece #767, 418..1273, born at the K46 split)
+   re-grows the rest from the entry block, absorbs the K4/K30 esi blocks and actor's ebx region before the first fixed block,
+   so the new rest is edi-only over 2603 of 3238 blocks (incl. gold's, the actor bodies' temps, the parse region).
+3. Fixed-site variant family (coordinator lever, 8 variants, all keep retail's cmpsb/movsd): none moves K62/K91. The fixed
+   sites are already retail's shape (lpair); only SNEAK/RUN differs: retail CSEs "" (0x0122D70E) into eax across both
+   compares (a 2-block const piece) -- a symptom of the same split history, not a spelling.
+4. regmap (s8/rm_*.txt): lines 400..1500 are a systematic esi<->edi swap (retail -1 verb-chain piece + body temps in edi,
+   "HERO" in esi; ours the reverse), 1400..3000 retail edi where ours ebx.
+5. **What-if wc120 / wc76**: colouring c #760 (retail: edi) BEFORE the actor split (prio forced 120 or 76) makes it edi and
+   puts an edi user in the parse region; the K47 regrowth then walls the parse region off and K62 temp, K91 gold and K521 dot
+   all agree with retail. New divergences: K54 c #763 (second parse loop, retail ebx) -> edi, the `i` loops / K364 temp ->
+   edi (retail ebx), prologue `name` esi (retail ebx). So retail had an edi user in the parse region before the actor split
+   (retail keeps const 0 in edi from 0x00CBFF65 through 0x00CC02DA with c #760 coalesced into it: `cmp [ebp+0x7c],edi`, no
+   `xor` for `c = 0`), while ours colours c #760 at K387 (prio 31) and the parse-region const-0 piece only at K522 (born
+   by dot's K521 split, prio 303).
+Next lever: make the parse-region const-0 piece (or c #760) exist and be coloured edi before the K46/K47 actor split
+-- i.e. find what splits the const-0 root around 0x00CBFF65..0x00CC02DA early in retail (a K<=46 edi/esi/ebx user whose
+split leaves a high-priority const-0 piece there; candidates: the prologue/name decisions, the GetLengthExpanded site
+0x00CC0040, the `line = 0` stores). Method: c2prio8 `--dumpk 30,46,47` + splitview.py on the const-0 pieces in 330..388,
+then what-ifs that force one candidate there early (`--forceprio name@id=N`), scored with cdiff2 base 235 against the
+retail divergences above (K54 c #763 must stay ebx). dot/space (K521) and the frame (0x18D0 v 0x18DC) follow from it.
+Tools: s8/tools/ (README lines in tools/README.md).
+
+## Session 7 (2026-11-09, all-means push, flags -> decision 459 -> frame -> residues) (src/ = a3 bytes)
 src/ = a3 with the flag-reference comment reworded (qc: SAME as s7/ref_a3.obj); differ/ = src + 2 grade lines.
 Leaderboard (score7 = bytes / first register-level difference index / fx = frame-masked registers-exact matched count):
 | ver | bytes | first-reg | fx | m3 exact/regs/r+f | frame | note |

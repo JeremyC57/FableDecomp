@@ -15,3 +15,12 @@
 - pk/c2prio7.py (c2prio + first/last block lines per choice + `--forcereg 'K91=8'` what-if), pk/fw.sh <src> <tag> [forcereg] (~6 min), pk/jev.py <json> 233 [--upto K] [--all] -- decision list.
 - pk/wi7.py / wig7.py -- PEN=1 logs each choice's penalty sources (one-register neighbour 100*spill, 0x107AC667 adds, copy preferences).
 - pk/xv.py <base> <l1> <l2> <variant.txt> <tag> <retail lo> <retail hi> [-v] (XLO/XHI widen the compared source lines) -- local spelling probe; pk/frame7.py <obj...> -- __chkstk frame size.
+- s8/tools/c2prio8.py -- c2prio7 + `--snapk N` (allowed set / prio / spill of every const -1/0/1 piece before each choice, `--snapnames`),
+  `--dumpk K,..` / `--dumpr K,..` (every block's lines, live ids +0x50, used registers +0x54 before choice K / at the re-sort after its split),
+  `--forceprio name=P` or `name@id=P` (first insertion of that root only). s8/tools/fw8.sh <src> <tag> <snapk> [args] wraps it (~7 min,
+  cdiff2 with base 235). NOTE: c2prio json lines = file line - 2.
+- s8/tools/snap.py, bd.py, bds.py, splitview.py, endreg.py -- allowed-set changes per K, blocks of a piece and who holds each register there,
+  pieces made at a split, const pieces live in a line range.
+- s8/tools/cpos.py, cuse.py, regmap.py <obj> <asm> REG L1 L2, shape.py, rdis.py <lo> <hi>, strins.py <obj> -- const materialisations,
+  immediate v register constants, where retail uses REG and ours does not, masked shape hunks, retail disassembly, string instructions.
+- s8/tools/genfx.py + runfx.sh -- one-lever variant generator around the fixed-register sites, serial qc.sh scoring.

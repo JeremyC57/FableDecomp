@@ -55,3 +55,6 @@ v34 SetAlpha: thing local after alpha (args with calls hoisted) -> DIFFER(74879v
 2026-11-09 s7 x87 v1..v9: SlideTeleport loop-body spellings (s7/x87/v*.txt): best is a3's own (24/34 local); none kept
 2026-11-09 s7 p3: prefix as `GetLength() != 0 ? StartsWithExpanded("$") : false` -> retail's neg/sbb/inc but a false arm; 74867v74778 first 459 fx 19625: not kept
 2026-11-09 s7 s7src: comment-only reword of the reference block -> SAME as a3 (74865v74778); src/ kept
+2026-11-09 s8 fx family (coordinator: variants at the 8 fixed-register sites, qc.sh, all keep the 6 cmpsb + 3 movsd): sh_neg SAME, sh_scope SAME, sh_elseif 74910 first 459, mv_tern 74844/459/fx19600, mv_init0 74707/459/fx19509, mv_ifs 74863/459/fx19596, end_elseif 74908/459, lk_noname 74854/459/fx19607 (a3 74865/459/19621) -> none moves K91; family failed, none kept
+2026-11-09 s8 cdiff2 base fix: c2prio lines = file-2; base 235 -> first colouring divergence is K62 temp #1903 (ebx v edi), then K91 gold, K387 c#760 (first parse loop c: ebx v retail edi). what-if wc120 (c#760 prio 120): K62/K91/K521 agree, K54 c#763 / i / prologue name break (m3 exact 15508): probe only
+2026-11-09 s8 wc76 (c#760 prio 76): same as wc120. c_shared (one long c for both parse loops): 74865/459/19621, 1 frame slot moved; not kept

@@ -90,3 +90,16 @@ Session 5 (2026-11-08):
 - Regime-1 x87: a named loop `float fraction` is duplicated (`fld st(k); fmul mem`) and consumed at its last use; writing
   `(float)i` at each use adds `fld st(0)` dups. Retail's SlideTeleport keeps fi untouched until `fstp st(0)` before the call
   (open; s7/x87).
+
+## Session 8 (GOTCHAS-ready)
+- c2prio's json `line` fields are the source file line minus 2 for this row's compile: pass base 235 (function start + 2) to
+  cdiff2.py, or every verdict votes on a window two lines early (it invented `i` divergences and hid c #760's).
+- VC7.1 c2 const candidates (-1/0/1, string addresses): one root per value, live through the whole loop; inline `strcmp`
+  (`repe cmpsb`) and a 12-byte struct copy (`movsd` x3) pin esi+edi in their blocks, so a const root live there starts
+  ebx-only. A split re-grows the pieces from the entry block, absorbing blocks while the union of used registers is not full:
+  whichever coloured region the growth meets first decides whether the rest keeps the fixed blocks (ebx-only) or drops them
+  (edi-only). One early edi user in the right region flips the outcome for the whole function (s8 wc120).
+- In a regime-1 function, colouring-order divergences that only show late (K62, K91, K521 here) can all come from ONE
+  earlier split whose outcome final registers cannot show: compare piece extents (c2prio8 --dumpk/--dumpr), not registers.
+- Spelling variants at the fixed-register sites (|| v else-if, ternary, scope blocks, named v unnamed temporaries) do not
+  move the const splits when the sites already match retail; one shared `long c` for two loops stays two candidates.
