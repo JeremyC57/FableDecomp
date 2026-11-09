@@ -1,0 +1,21 @@
+address_va	length	kind	module	name	best_known_identity	residue_or_note
+0x005B4EBA	3372	unworked	CTCInventoryClothing	CalculateArmorValues	CTCInventoryClothing::CalculateArmorValues	never attempted
+0x00417A58	2097	unworked	_global	CMainGameComponent_InitSoundBanks	_global::CMainGameComponent_InitSoundBanks	never attempted
+0x005F519F	2088	unworked	CTCInventoryAbilities	CTCInventoryAbilities::vfunc_77	CTCInventoryAbilities::vfunc_77	never attempted
+0x0064FDB4	2593	unworked	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	never attempted
+0x00651273	1681	unworked	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0	never attempted
+0x00B801F0	523	parked	std::vector<CTVertexSeaBackground>	_M_fill_insert	std::vector<CTVertexSeaBackground>::_M_fill_insert	DIFFER(523v523) -- 1 line: hoisted x_copy loads Z first (retail X,Y,Z)
+0x006D6CB0	495	parked	_global	IsToAutoBlock	CTCHeroExperience::IsToAutoBlock	DIFFER(495v495) -- 2 lines: clamp store v fmul [0.3] scheduler slot
+0x006D68D0	495	parked	_global	IsBlockRecoilAnimToConserveAnimationHandedness	CTCHeroExperience::IsBlockRecoilAnimToConserveAnimationHandedness	DIFFER(495v495) -- same residue as 0x006D6CB0 (twin)
+0x0074E140	245	parked	_global	Projectile_CalculateTrajectory	CTCContainerRewardHero::GeneratePopoutVectorFromVars	DIFFER(245v245) -- 2 lines: return copy, Y load after fstp [result]
+0x00A56670	295	parked	_global	GFGetHermiteSplinePosition	GFGetHermiteSplinePosition	DIFFER(295v295) -- 4 lines: final copy loads one slot early; extra PAREN tuples make it worse (retail has one tuple fewer)
+0x006D8830	321	parked	_global	Experience_ProcessMultiHitCombo	CTCHeroExperience::AddSuccessfulMultistrikeHit	DIFFER(321v321) -- 4 lines: push 1 v fst [strength] order
+0x0099BB80	197	parked	CWideString	SprintfDynamic	CWideString::SprintfDynamic	DIFFER(199v197) -- 3 lines: lea v mov+add; header debt (CWideString / vector stand-ins)
+0x00A358F0	185	parked	_global	GetPositionMatrixFromRHSet	C3DMeshObject::GetPositionMatrixFromRHSet	DIFFER(185v185) -- 4 lines: cross z term operand order; shared headers same
+0x00A22CA0	368	parked	_global	VectorAngle_ComputeRotation	CRightHandedSet::GetAngleXZ	DIFFER(368v368) -- 4 lines: cross z term operand order; needs full shared-header rebase
+0x00C3D030	94	parked	_gapscan	sub_00c3d030	CCodaContext::GetResourceCounts (descriptive)	DIFFER(98v94) -- 5 lines: out-pointer load hoist
+0x007BC6FA	514	parked	CTCShotDefinitionProjectilePredictive	InitMovement	NThingShot::CTCShotDefinitionProjectilePredictive::InitMovement	DIFFER(514v514) -- 2 lines: spill reload v fstp st(0) pops; header debt
+0x00868E50	456	parked	_global	GetArmourWeightsFromThing	GetArmourWeightsFromThing	DIFFER(456v456) -- 4 lines: total_weight += weighting commutation; invented same-TU stand-ins
+0x00E5E350	585	parked	CV_BodyGuardScript	HenchmanCommentary	CV_BodyGuardScript::HenchmanCommentary	DIFFER(584v585) -- not worked beyond analysis (dead zero store is to the FIRST timer slot; both timers escape)
+0x008EEBE0	131	parked	Mass	BackplaneFriction	Mass::BackplaneFriction	DIFFER(129v131) -- not worked (75 recorded probes)
+0x00BA48F0	324	parked	CEnginePrimitiveManagerStaticMeshesBase	SetupStaticBlocksNoMorph	CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocksNoMorph	DIFFER(327v324) -- not worked (graded only; 22 recorded probes)
