@@ -51,7 +51,10 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
    alternatives of a region and compiling them, many per hour: a retail-plausible rewrite (a helper, a different loop or
    counter, another statement order, the engine's own accessors), not only one-token edits. Use the c2 probes to explain a
    variant that moved something, or to rank candidates. Modelling with no source variant compiled for an hour is the signal to
-   switch back (owner, 2026-11-09: "needs to try some real authoring").
+   switch back (owner, 2026-11-09: "needs to try some real authoring"). Batches of one-token substitutions from a generator
+   script are a probe, not authoring: hand-write region rewrites (tens of lines, aimed at the regions a byte breakdown names)
+   on a copy of the best base, and grade each with the official grader (DIFFER/RELOCATION_MATCH plus strict/loose), reporting
+   every grade as it lands (owner, 2026-11-09: "real hand authoring based on its findings. i want to see actually grading").
 
 ## 2. Rules measured in c2 (all VC7.1 13.10.3077)
 
