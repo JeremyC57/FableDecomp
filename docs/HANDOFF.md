@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-08 late (chunks 782-853 recorded; AUTHORING STOPPED by the user; chunk 854's four saved matches landed)
+# Resume here (one page) — updated 2026-11-09 (lane path) / 2026-11-08 late (chunks 782-853 recorded; AUTHORING STOPPED by the user; chunk 854's four saved matches landed)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -251,8 +251,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 
 ## Lane (already set up in the scratch directory)
 ```
-export S=/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad; source $S/wine/env.sh; export S
-# (2026-11-08 late: a013f3ec-... and 40effb6c-... are gone; this older one holds the lane. Check `ls $S/wine/env.sh` first.)
+export S=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad; source $S/wine/env.sh; export S
+# (2026-11-09: 5221bbec-... is gone; 40effb6c-... holds the lane again: env.sh, vc71rtm + vc71 cl.exe, game SHA-1 39fd416b... checked,
+#  $S/w22/prep_landing.sh / finish_landing.sh present; $S/w22/oracle_from_exe.py and $S/tools/jtext.py are not. Check `ls $S/wine/env.sh` first.)
 cd /home/user/FableDecomp   # every tool runs from the repo root
 ```
 `$S` holds Wine + cl 13.10.3077 RTM (`$S/wine/vc71rtm`), QFE 4035 (`$S/wine/vc71`), VS 2003 libs, LZO, and the game
