@@ -1,0 +1,11 @@
+address	name	evidence
+0x0059D270	?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z	chunk 891: Ego_r.pdb 0x0060A108 + FableWin.pdb 0x0233F753 (both PDBs hold the PC 4-arg variant beside the 3-arg AddWantedItemToList) ; retail 0x005A5B31 calls it with frame/def/list/viewport (4 pushes, callee ends `ret 10h`)
+0x0059BB1B	?AttachToFrame@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	chunk 891: Ego_r.pdb + FableWin.pdb ; manifest AttachToFrame; called with the menu entry from all three builders
+0x0059F51E	?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCViewport@3@_N@Z	chunk 891: Ego_r.pdb + FableWin.pdb ; landed CTCInventoryTrade_AddSellItemToListPC_0059f51e.cpp
+0x0059D820	?InitialiseSellableItems@CTCInventoryTrade@@QAEXXZ	chunk 891: Ego_r.pdb + FableWin.pdb ; landed CTCInventoryTrade_InitialiseSellableItems_0059d820.cpp
+0x0059E4D7	?ConstructSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@0@Z	chunk 891: Ego_r.pdb + FableWin.pdb ; landed CTCInventoryTrade_ConstructSubtitlesPC_0059e4d7.cpp
+0x00774100	?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ	chunk 891: Ego_r.pdb + FableWin.pdb ; landed row 0x00774100; retail 0x005A5B31 passes its local vector as the hidden result
+0x005A4CDD	?ConstructActualSellInventoryPC@CTCInventoryTrade@@AAEXXZ	chunk 891: Ego_r.pdb + FableWin.pdb ; manifest; Sell strings PC_MENU_ENTRY_TRADE_SELL / TEXT_GUI_MENU_SELL
+0x005A5B31	?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ	chunk 891: Ego_r.pdb + FableWin.pdb ; manifest; Wanted strings PC_MENU_ENTRY_TRADE_WANTED / TEXT_GUI_MENU_WANTED
+0x005AC10E	?ConstructActualBuyInventoryPC@CTCInventoryTrade@@AAEXXZ	chunk 891: Ego_r.pdb + FableWin.pdb ; manifest; Buy strings PC_MENU_ENTRY_TRADE_BUY / TEXT_GUI_MENU_BUY
+0x005BC4C4	?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ	chunk 891: matched row 0x005A5B31 binds this symbol (vland RELOC_NAME v catalog '_global::GetMember_dword0xb8_005bc4c4'); Ego_r.pdb + FableWin.pdb name

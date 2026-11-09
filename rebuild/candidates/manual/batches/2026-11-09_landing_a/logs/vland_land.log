@@ -1,0 +1,10 @@
+addr       parity           behav  name
+005a5b31   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a5b31   WARN RELOC_NAME: ??1?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005a5b31   RELOCATION_MATCH PASS   ConstructActualWantedInventoryPC
+
+WINS: 1
+  005a5b31 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryTrade_ConstructActualWantedInventoryPC_005a5b31

@@ -66,6 +66,29 @@ private:
     void RefreshBuyPossibility();                                                  // 0x005A9A87
     std::pair<unsigned long,unsigned long> RefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* menu,
                                             std::map<NUISystem::CComponent*,NUISystem::CList*>& lists);   // 0x0059FAFE
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_PCINVENTORY
+    // Retail opt-in (chunk 891, rows 0x005A4CDD ConstructActualSellInventoryPC / 0x005A5B31 ConstructActualWantedInventoryPC /
+    // 0x005AC10E ConstructActualBuyInventoryPC): the three PC inventory builders (Ego_r.pdb + FableWin.pdb private AAEXXZ) and the
+    // helpers they call, in Ego_r.pdb spelling, all out of line in retail (declarations only, no layout change):
+    // ?AttachToFrame@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z 0x0059BB1B,
+    // ?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z 0x0059D270 (`ret 10h`),
+    // ?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCViewport@3@_N@Z 0x0059F51E,
+    // ?InitialiseSellableItems@CTCInventoryTrade@@QAEXXZ 0x0059D820,
+    // ?ConstructSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@...@std@@0@Z 0x0059E4D7.
+public:
+    void AttachToFrame(NUISystem::CComponent* component);                        // 0x0059BB1B
+    void AddWantedItemToListPC(NUISystem::CComponent* frame, long itemDefIndex, NUISystem::CList* list,
+                               NUISystem::CViewport* viewport);                    // 0x0059D270
+    bool AddSellItemToListPC(NUISystem::CComponent* frame, long itemDefIndex, long count, NUISystem::CList* list,
+                             NUISystem::CViewport* viewport, bool addToTop);       // 0x0059F51E
+    void InitialiseSellableItems();                                                // 0x0059D820
+private:
+    void ConstructSubtitlesPC(NUISystem::CComponent* menu, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles,
+                              NUISystem::CComponent* frame);                       // 0x0059E4D7
+    void ConstructActualSellInventoryPC();                                         // 0x005A4CDD
+    void ConstructActualWantedInventoryPC();                                       // 0x005A5B31
+    void ConstructActualBuyInventoryPC();                                          // 0x005AC10E
+#endif
 public:
     std::vector<CEnginePrimitiveHandle> TradeAnimPrimitiveHandles;                 // +0x134
     std::list<long> NotInStock;                                                    // +0x140

@@ -103,7 +103,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     and 0x00498490 DrawRetailDisplay parked undrafted (`pending/2026-11-08_linux_hand890/`). Chunk 889 parked both rows (`pending/2026-11-08_linux_hand889/`).
     Codex merge (2026-11-08): Action 0x0041E6D3 now DIFFER(35702v35651), frame 0x800 = retail, all six Codex fixes kept (hand886_wip);
     RunCutsceneMacro 0x00CBFB7D DIFFER(74882v74778), frame = retail, 89.8% exact / 98.5% regs+frame masked (hand885). Both: entry
-    register roles + slot tie order left. Running: chunk 890 session 2 (expert), chunk 891 (CTCInventoryTrade PC lists).
+    register roles + slot tie order left. Chunk 891: ConstructActualWantedInventoryPC 0x005A5B31 landed (`2026-11-09_landing_a/`); Sell / Buy PC builders parked at one /
+    two loop-shape differences (hand891). Chunk 890 session 2: DrawRetailDisplay 0x00498490 at 5101v5101 (frame-slot residue);
+    session 3 running (expert).
     Chunk 874 (libpk): 3 of 7 landed (`2026-11-08_landing_y/`, ivec resamplers). Chunk 875: 0 of 3 (decodes kept).
     Chunk 872 (libpk): 12 of 14 landed (`2026-11-08_landing_x/`, land0811x). Chunk 873 (game) running (Opus high); pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.
     Chunk 867 (PC UI): 4 of 10 landed (`2026-11-08_landing_v/`; 31 headers gain opt-ins, 12 new); tag land0811v.

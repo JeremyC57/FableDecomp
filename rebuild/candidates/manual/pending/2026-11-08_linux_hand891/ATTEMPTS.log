@@ -1,0 +1,42 @@
+23:21 005a5b31 w1.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC DIFFER(3066v3128) flags= [] --- built (3066 bytes)
+23:22 005a5b31 w2.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC DIFFER(3196v3128) flags= [] --- built (3196 bytes)
+23:22 005a5b31 w3.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC DIFFER(3137v3128) flags= [] --- built (3137 bytes)
+23:23 005a5b31 w4.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC RELOCATION_MATCH flags= [] 
+23:25 005ac10e b1.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+23:25 005ac10e b2.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3543v3532) flags= [] --- built (3543 bytes)
+23:26 005ac10e b3.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+23:27 005ac10e b4.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+23:28 005ac10e b4.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+23:28 005ac10e b5.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+23:28 005ac10e b6.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+23:36 005a4cdd s1.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3661v3668) flags= [] --- built (3661 bytes)
+23:37 005a4cdd s2.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:37 005a4cdd s3.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3661v3668) flags= [] --- built (3661 bytes)
+23:37 005a4cdd s4.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:37 005a4cdd s5.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:37 005a4cdd s6.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:38 005a4cdd s7.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:38 005a4cdd s8.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:38 005a4cdd s9.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:38 005a4cdd s10.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:38 005a4cdd s11.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:38 005a4cdd s12.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:39 005a4cdd s13.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:39 005a4cdd s14.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+23:42 005a4cdd s15.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:42 005a4cdd s16.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:42 005a4cdd s17.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+23:42 005a4cdd s18.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3670v3668) flags= [] --- built (3670 bytes)
+00:01 005a5b31 005a5b31.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC RELOCATION_MATCH flags= [] 
+# --- compile-only probes (same cl 13.10.3077 + overlay via cc.py/ccf.sh, disassembly inspected; NOT q.py grades) ---
+# 005ac10e Buy, erase-loop head (`mov eax,[28];cmp;mov esi,eax;je` vs retail `mov esi,[28];jmp test`): c1..c16, e1..e5, f1..f4,
+#   g1..g4, h1..h4, k1,k2 (condition spellings, shared/outer iterator, while/do/for(;;), guard if, bool split, it++/it+=1/it=it+1,
+#   `const pair& item=*it`, copy of it, .Object/.InternalGetObject, join before loop, Initialise inside if/do-while(0)), bt1..bt5 x6
+#   (truncation: trailing call vs store flips it), 11 flag sets (/Oa /GS /Ow /Op /Gy /Ob1 /Ob2 /G5 /G6 /G7), QFE 4035 cl: 58 probes.
+# 005a4cdd Sell, loop-2 head: v0..v14 (wrap if/empty/size/else, do-while, iterator outside, shared iterator, index placement,
+#   end cached, clears swapped), h1/h2 (inline / FABLE_FORCEINLINE erase helper), f8/f8a/f8b + 9 bisect truncations, k3: 30 probes.
+00:02 005a5b31 005a5b31.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC RELOCATION_MATCH flags= [] 
+00:05 005ac10e b2.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+00:06 005a4cdd 005a4cdd.cpp :: 005a4cdd CTCInventoryTrade::ConstructActualSellInventoryPC DIFFER(3664v3668) flags= [] --- built (3664 bytes)
+00:06 005ac10e 005ac10e.cpp :: 005ac10e CTCInventoryTrade::ConstructActualBuyInventoryPC DIFFER(3538v3532) flags= [] --- built (3538 bytes)
+00:09 005a5b31 005a5b31.cpp :: 005a5b31 CTCInventoryTrade::ConstructActualWantedInventoryPC RELOCATION_MATCH flags= [] 

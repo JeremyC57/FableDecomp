@@ -1,0 +1,12 @@
+# Chunk 891 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- CTCInventoryTrade PC builders (0x005A5B31): the biased frame `push ebp ; lea ebp,[esp-78h]` comes from optimize("s",on) alone; adding optimize("y",off) (as the landed sibling 0x005A8C66 needs) turns it into `mov ebp,esp`. Same TU, different per-function frames: check the prologue before copying the sibling's pragmas.
+- `CCharString == "literal"` in a TU whose retail bytes show `repe cmpsb` + an out-of-line 0x004115A0 needs FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ plus same-TU bodies of CBasicString<T>::Compare / operator==(const T*) under `#pragma auto_inline(off)`: without the bodies VC7.1 assumes the call may write the string and reloads PStringData after every test (0x005A5B31).
+- A map key that retail keeps in a frame slot across calls (`mov [ebp+6Ch],ecx` before AddChildDynamically, then `lea eax,[ebp+6Ch]` for operator[]) is a named local copy of the iterator's key (`CComponent* pBranch = b->first;`), 0x005A4CDD.
+- `map.insert(std::make_pair(k, v))` vs `insert(value_type(k, v))`: make_pair builds the value pair first and stores the key last (`mov edx,edi ; inc edi ; ... mov [ebp-8],edx`); value_type stores the key first (0x005A4CDD).
+- Erase-filter loops `for (it = v.begin(); it != v.end(); ) if (A().x || B().x) it = v.erase(it); else ++it;` (two conditional CDefPointer temporaries): our VC7.1 rotates the loop (`mov eax,[b] ; cmp eax,[e] ; mov esi,eax ; je`) whenever the statement after the loop is a call, keeps the jmp form when a store / `if` / another loop follows; c2prio shows the begin() temporary (2 refs) out-prioritising `it`. Retail 0x005AC10E keeps the jmp form before a call: unexplained, parked.
+Review at landing:
+- Sell 0x005A4CDD / Buy 0x005AC10E parked after 18 / 8 grades plus 30 / 58 compile-only probes (cc.py, ATTEMPTS.log).
+- One accidental probe grade on the landed sibling 0x005A8C66 (WORKLOG): the q work dir of that address was used once.
+- Local `class CThingPlayerCreature : public CThing { };` next to the existing engine/CThingPlayerCreature.h, as in the landed sibling: the real header needs the retail creature tree (FABLE_RETAIL_CTHINGCREATUREBASE fails on CHitParameters).
+- Landed CTCInventoryTrade_ConstructSubtitlesPC_0059e4d7.cpp models the subtitle map as `struct CSubtitleMap`; the shared headers can now declare it with the real map type (this chunk's overlay does).
+- Landed global_global_00411570.cpp names CBasicString<char>::Compare `strcmp_signed`.

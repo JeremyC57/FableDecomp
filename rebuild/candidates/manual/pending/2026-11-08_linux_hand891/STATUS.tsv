@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+0x005A4CDD	DIFFER	3664v3668	-	parked: loop-2 head test duplication/threading (retail) vs cross-jump (ours); 18 grades + 30 compile-only probes
+0x005A5B31	RELOCATION_MATCH	3128v3128	PASS	matched at grade 4; FORCEINLINE_TEXT_EQ + same-TU CBasicString Compare/operator== under auto_inline(off)
+0x005AC10E	DIFFER	3538v3532	-	parked: card-filter loop rotated (ours) + `!empty()` cmp operand order; 8 grades + 58 compile-only probes

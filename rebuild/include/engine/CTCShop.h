@@ -72,6 +72,12 @@ public:
     // out of line in retail (0x00772610; the row tests it `> 0` unsigned and passes it to the text bank). Declaration only.
     unsigned long GetName() const;                                       // 0x00772610
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_WANTED
+    // Retail opt-in (chunk 891, row 0x005A5B31 CTCInventoryTrade::ConstructActualWantedInventoryPC): Ego_r.pdb
+    // ?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ, out of line in retail (0x00774100, landed; the caller
+    // passes its local vector as the hidden result). Declaration only.
+    std::vector<long> GetWantedItemsList() const;                        // 0x00774100
+#endif
 private:
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;
     std::vector<CIntelligentPointer<CThingCreatureBase> > Shoppers;
