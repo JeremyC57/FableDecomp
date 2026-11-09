@@ -1,0 +1,32 @@
+extern int a(); extern int b(); extern int c(); extern int d(); extern int e(); extern int f(); extern int h(); extern int g;
+struct K { K(); ~K(); };
+== F1
+int F1() { if (a()) { b(); } else { return 0; } c(); return 1; }
+== F2
+int F2() { if (!a()) { return 0; } b(); c(); return 1; }
+== F3
+int F3() { if (a()) { if (b()) return 0; c(); } return 1; }
+== F4
+int F4() { if (a()) { if (b()) c(); else return 0; } return 1; }
+== F5
+int F5() { if (a()) { if (!b()) return 0; c(); } return 1; }
+== F6
+int F6() { K k; if (a()) { if (b()) c(); else return 0; } return 1; }
+== F7
+int F7() { K k; if (a()) { if (!b()) return 0; c(); } return 1; }
+== F8
+int F8() { if (a()) { if (b()) c(); else return 0; } d(); return 1; }
+== F9
+int F9() { if (a()) { if (b()) { c(); } else { return 0; } } else { d(); } return 1; }
+== F10
+int F10() { if (a()) { d(); } else { if (b()) { c(); } else { return 0; } } return 1; }
+== F11
+int F11() { if (a()) { d(); } else if (b()) { c(); } else { return 0; } return 1; }
+== F12
+int F12() { if (a()) { d(); } else if (!b()) { return 0; } else { c(); } return 1; }
+== F13
+int F13() { if (a()) { d(); } else { if (!b()) return 0; c(); } return 1; }
+== F14
+int F14() { if (a()) { d(); } else { if (!b() || !e()) return 0; c(); } return 1; }
+== F15
+int F15() { if (a()) { d(); } else { if (b() && e()) c(); else return 0; } return 1; }

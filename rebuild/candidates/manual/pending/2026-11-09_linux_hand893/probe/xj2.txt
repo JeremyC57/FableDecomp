@@ -1,0 +1,23 @@
+extern int a(); extern int b(); extern int c(); extern int d(); extern int e(); extern int f(); extern int h(); extern int g;
+== E20
+int E20() { if (a()) return 0; if (b()) return 0; return c() + 1; }
+== E21
+int E21() { if (a()) return 0; if (b()) return 0; c(); return 1; }
+== E22
+int E22() { if (a()) return 0; if (b()) return 0; else c(); return 1; }
+== E23
+int E23() { if (a()) return 0; if (b()) { return 0; } else { c(); return 1; } }
+== E24
+void E24() { if (a()) { g = 0; return; } if (b()) { g = 0; return; } c(); }
+== E25
+void E25() { if (a()) { g = 0; return; } if (b()) { g = 0; return; } else c(); }
+== E26
+int E26() { if (a()) return 0; if (b()) { if (c()) return 0; } return d(); }
+== E27
+int E27() { if (a()) return 0; if (b()) { if (c()) return 0; } else return d(); return e(); }
+== E28
+int E28() { if (a() && b()) return 0; if (c()) return 0; if (h()) { int m = d(); if (m == 1 || m == 2) return 0; } return e() ? 0 : 1; }
+== E29
+int E29() { if (a() && b()) return 0; else if (c()) return 0; else { if (h()) { int m = d(); if (m == 1 || m == 2) return 0; } return e() ? 0 : 1; } }
+== E30
+int E30() { int r = 0; if (a()) return r; if (b()) return r; return c(); }

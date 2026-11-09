@@ -1,0 +1,44 @@
+struct K { K(); ~K(); void Bind(int); void Rel(); };
+struct Ev { int pad[5]; unsigned long Pri; int pad2[4]; int Pend; bool Aud(); void Stop(); void Reset(); };
+extern Ev* find(K*);
+== D1
+int D1(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) e->Stop(); else { if (e->Pend == 0 && force == 0) return 0; if (pri < e->Pri) return 0; e->Reset(); } }
+  return 1; }
+== D2
+int D2(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (e->Aud()) { if ((e->Pend != 0 || force != 0) && pri >= e->Pri) e->Reset(); else return 0; } else e->Stop(); }
+  return 1; }
+== D3
+int D3(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) e->Stop(); else { if (e->Pend != 0 || force != 0) { if (pri >= e->Pri) e->Reset(); else return 0; } else return 0; } }
+  return 1; }
+== D4
+int D4(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) { e->Stop(); } else { if (e->Pend == 0 && force == 0) return 0; if (pri >= e->Pri) e->Reset(); else return 0; } }
+  return 1; }
+== D5
+int D5(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) { e->Stop(); } else { if (e->Pend == 0 && force == 0) return 0; else if (pri >= e->Pri) e->Reset(); else return 0; } }
+  return 1; }
+== D6
+int D6(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  int r = 1;
+  if (e) { if (!e->Aud()) e->Stop(); else if ((e->Pend != 0 || force != 0) && pri >= e->Pri) e->Reset(); else r = 0; }
+  return r; }
+== D7
+int D7(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) e->Stop(); else { if (e->Pend == 0 && force == 0 || pri < e->Pri) return 0; e->Reset(); } }
+  return 1; }
+== D8
+int D8(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e != 0) { if (e->Aud() == false) { e->Stop(); return 1; } if (e->Pend == 0 && force == 0) return 0; if (pri < e->Pri) return 0; e->Reset(); }
+  return 1; }
+== D9
+int D9(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) e->Stop(); else if (e->Pend != 0 || force != 0) { if (pri < e->Pri) return 0; e->Reset(); } else return 0; }
+  return 1; }
+== D10
+int D10(int s, int force, unsigned long pri) { K k; k.Bind(s); Ev* e = find(&k); k.Rel();
+  if (e) { if (!e->Aud()) e->Stop(); else if (e->Pend != 0 || force != 0) { if (pri >= e->Pri) e->Reset(); else return 0; } else return 0; }
+  return 1; }

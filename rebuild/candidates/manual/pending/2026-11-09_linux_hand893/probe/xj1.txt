@@ -1,0 +1,39 @@
+extern int a(); extern int b(); extern int c(); extern int d(); extern int e(); extern int f(); extern int h();
+== E1
+int E1() { if (a()) return 0; if (b()) return 0; return c(); }
+== E2
+int E2() { if (a()) return 0; else if (b()) return 0; return c(); }
+== E3
+int E3() { if (a()) return 0; else if (b()) return 0; else return c(); }
+== E4
+int E4() { if (a()) return 0; else if (b()) return 0; else if (c()) return 0; return d(); }
+== E5
+int E5() { if (a()) return 0; if (b()) return 0; if (c()) return 0; return d(); }
+== E6
+int E6() { if (a()) return 0; else if (b()) return 0; if (c()) return 0; return d(); }
+== E7
+int E7() { if (a()) return 0; if (b()) return 0; else if (c()) return 0; return d(); }
+== E8
+int E8() { if (a() && b()) return 0; else if (c()) return 0; else if (h()) { int m = d(); if (m == 1 || m == 2) return 0; } return e(); }
+== E9
+int E9() { if (a() && b()) return 0; if (c()) return 0; if (h()) { int m = d(); if (m == 1 || m == 2) return 0; } return e(); }
+== E10
+int E10() { if ((a() && b()) || c()) return 0; if (h()) { int m = d(); if (m == 1 || m == 2) return 0; } return e(); }
+== E11
+int E11() { if (a()) return 0; else { if (b()) return 0; } return c(); }
+== E12
+int E12() { if (!a()) { if (!b()) return c(); } return 0; }
+== E13
+int E13() { if (a()) return 0; else if (b()) return 0; else { int r = c(); return r + 1; } }
+== E14
+int E14() { if (a()) return 0; if (b()) return 0; else return c(); }
+== E15
+int E15() { if (a()) return 0; else { if (b()) return 0; else return c(); } }
+== E16
+int E16() { if (a()) return 0; else if (b()) return 0; else if (c()) return 0; else return d(); }
+== E17
+int E17() { if (!a()) { if (!b()) return c(); else return 0; } else return 0; }
+== E18
+int E18() { if (a()) return 0; if (b()) return 0; if (c()) return 0; else return d(); }
+== E19
+int E19() { int r; if (a()) r = 0; else if (b()) r = 0; else r = c(); return r; }

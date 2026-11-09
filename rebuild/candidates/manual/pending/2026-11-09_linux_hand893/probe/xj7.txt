@@ -1,0 +1,33 @@
+extern int a(); extern int b(); extern int c(); extern int d(); extern int e(); extern int f(); extern int h(); extern int g;
+struct E { int Pri; int Pend; };
+extern E* ev();
+== H0
+int H0() { return 7; }
+== H1
+int H1(int force, unsigned pri) { E* x = ev(); if (!b() || pri < (unsigned)x->Pri) return 0; c(); return 1; }
+== H2
+int H2(int force, unsigned pri) { E* x = ev(); if (pri < (unsigned)x->Pri || !b()) return 0; c(); return 1; }
+== H3
+int H3(int force, unsigned pri) { E* x = ev(); if (x->Pend == 0 || pri < (unsigned)x->Pri) return 0; c(); return 1; }
+== H4
+int H4(int force, unsigned pri) { E* x = ev(); if (x->Pend == 0 || force == 0) return 0; c(); return 1; }
+== H5
+int H5(int force, unsigned pri) { E* x = ev(); if (pri < (unsigned)x->Pri || x->Pend == 0) return 0; c(); return 1; }
+== H6
+int H6(int force, unsigned pri) { E* x = ev(); if (!b() || !e()) return 0; c(); return 1; }
+== H7
+int H7(int force, unsigned pri) { E* x = ev(); if (b() < 3 || e() < 3) return 0; c(); return 1; }
+== H8
+int H8(int force, unsigned pri) { E* x = ev(); if (x->Pend != 0 || force != 0) return 0; c(); return 1; }
+== H9
+int H9(int force, unsigned pri) { E* x = ev(); if (x->Pend == 0 || x->Pri == 0) return 0; c(); return 1; }
+== H10
+int H10(int force, unsigned pri) { E* x = ev(); if (x->Pend == 0) return 0; if (x->Pri == 0) return 0; c(); return 1; }
+== H11
+int H11(int force, unsigned pri) { E* x = ev(); if (!b()) return 0; if (!e()) return 0; c(); return 1; }
+== H12
+int H12(int force, unsigned pri) { E* x = ev(); if (x->Pend == 0 && force == 0 || pri < (unsigned)x->Pri) return 0; c(); return 1; }
+== H13
+int H13(int force, unsigned pri) { E* x = ev(); if (!x->Pend && !force || pri < (unsigned)x->Pri) return 0; c(); return 1; }
+== H14
+int H14(int force, unsigned pri) { E* x = ev(); if (!(x->Pend || force) || pri < (unsigned)x->Pri) return 0; c(); return 1; }

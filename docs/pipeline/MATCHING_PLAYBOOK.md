@@ -136,6 +136,10 @@ Action sat at "only colouring left" for seven sessions, then matched in one once
   in Action).
 - **Mini probes need distinct non-virtual head calls per case**, or the heads merge too.
 
+- Duplicate return blocks (chunk 893): a plain top-level final `return` lets the LAST duplicate keep the tail; a final if/else whose
+  arms all return (else-if chain, `else { ...; return x; }`) lets the FIRST keep it. `if (A || B) return 0;` defers the return block
+  to the function end; a single condition, `(A && B) || C` or two separate ifs keep it inline. Three rows matched in minutes.
+
 ### x87 order, argument order, scheduling
 - **x87 operand order:** of two frame operands, c2 loads the one stored most recently.
   - A temporary built by an inline constructor's parameters outranks a member assigned field by field.

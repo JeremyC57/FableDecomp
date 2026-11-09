@@ -1,0 +1,431 @@
+00000000 <?Q01@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    33 <?Q01@CRegistryKey@@QAEHPBDPAK@Z+0x33>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	je     39 <?Q01@CRegistryKey@@QAEHPBDPAK@Z+0x39>
+  33:	xor    eax,eax
+  35:	pop    ecx
+  36:	ret    0x8
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q02@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    42 <?Q02@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	jne    42 <?Q02@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  33:	mov    ecx,DWORD PTR [esp]
+  36:	xor    eax,eax
+  38:	cmp    ecx,0x4
+  3b:	sete   al
+  3e:	pop    ecx
+  3f:	ret    0x8
+  42:	xor    eax,eax
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q03@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    42 <?Q03@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	jne    42 <?Q03@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  33:	mov    ecx,DWORD PTR [esp]
+  36:	xor    eax,eax
+  38:	cmp    ecx,0x4
+  3b:	sete   al
+  3e:	pop    ecx
+  3f:	ret    0x8
+  42:	xor    eax,eax
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q04@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    33 <?Q04@CRegistryKey@@QAEHPBDPAK@Z+0x33>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	je     39 <?Q04@CRegistryKey@@QAEHPBDPAK@Z+0x39>
+  33:	xor    eax,eax
+  35:	pop    ecx
+  36:	ret    0x8
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q05@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	je     32 <?Q05@CRegistryKey@@QAEHPBDPAK@Z+0x32>
+  2c:	xor    eax,eax
+  2e:	pop    ecx
+  2f:	ret    0x8
+  32:	cmp    DWORD PTR [esp+0xc],0x4
+  37:	jne    2c <?Q05@CRegistryKey@@QAEHPBDPAK@Z+0x2c>
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q06@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    42 <?Q06@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	jne    42 <?Q06@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  33:	mov    ecx,DWORD PTR [esp]
+  36:	xor    eax,eax
+  38:	cmp    ecx,0x4
+  3b:	sete   al
+  3e:	pop    ecx
+  3f:	ret    0x8
+  42:	xor    eax,eax
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q07@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    42 <?Q07@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	jne    42 <?Q07@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  33:	mov    ecx,DWORD PTR [esp]
+  36:	xor    eax,eax
+  38:	cmp    ecx,0x4
+  3b:	sete   al
+  3e:	pop    ecx
+  3f:	ret    0x8
+  42:	xor    eax,eax
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q08@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    33 <?Q08@CRegistryKey@@QAEHPBDPAK@Z+0x33>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	je     39 <?Q08@CRegistryKey@@QAEHPBDPAK@Z+0x39>
+  33:	xor    eax,eax
+  35:	pop    ecx
+  36:	ret    0x8
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q09@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	je     32 <?Q09@CRegistryKey@@QAEHPBDPAK@Z+0x32>
+  2c:	xor    eax,eax
+  2e:	pop    ecx
+  2f:	ret    0x8
+  32:	cmp    DWORD PTR [esp+0xc],0x4
+  37:	jne    2c <?Q09@CRegistryKey@@QAEHPBDPAK@Z+0x2c>
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q10@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	je     32 <?Q10@CRegistryKey@@QAEHPBDPAK@Z+0x32>
+  2c:	xor    eax,eax
+  2e:	pop    ecx
+  2f:	ret    0x8
+  32:	cmp    DWORD PTR [esp+0xc],0x4
+  37:	jne    2c <?Q10@CRegistryKey@@QAEHPBDPAK@Z+0x2c>
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q11@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    33 <?Q11@CRegistryKey@@QAEHPBDPAK@Z+0x33>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	je     39 <?Q11@CRegistryKey@@QAEHPBDPAK@Z+0x39>
+  33:	xor    eax,eax
+  35:	pop    ecx
+  36:	ret    0x8
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q12@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    42 <?Q12@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	jne    42 <?Q12@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  33:	mov    ecx,DWORD PTR [esp]
+  36:	xor    eax,eax
+  38:	cmp    ecx,0x4
+  3b:	sete   al
+  3e:	pop    ecx
+  3f:	ret    0x8
+  42:	xor    eax,eax
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q13@CRegistryKey@@QAE_NPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    33 <?Q13@CRegistryKey@@QAE_NPBDPAK@Z+0x33>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	je     39 <?Q13@CRegistryKey@@QAE_NPBDPAK@Z+0x39>
+  33:	xor    al,al
+  35:	pop    ecx
+  36:	ret    0x8
+  39:	mov    ecx,DWORD PTR [esp]
+  3c:	xor    eax,eax
+  3e:	cmp    ecx,0x4
+  41:	sete   al
+  44:	pop    ecx
+  45:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Q14@CRegistryKey@@QAEHPBDPAK@Z>:
+   0:	push   ecx
+   1:	mov    edx,DWORD PTR [esp+0xc]
+   5:	lea    eax,[esp]
+   8:	push   eax
+   9:	push   edx
+   a:	mov    edx,DWORD PTR [esp+0x10]
+   e:	lea    eax,[esp+0x14]
+  12:	push   eax
+  13:	mov    eax,DWORD PTR [ecx+0x4]
+  16:	push   0x0
+  18:	push   edx
+  19:	push   eax
+  1a:	mov    DWORD PTR [esp+0x18],0x4
+  22:	call   DWORD PTR ds:0x0
+  28:	test   eax,eax
+  2a:	jne    42 <?Q14@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  2c:	cmp    DWORD PTR [esp+0xc],0x4
+  31:	jne    42 <?Q14@CRegistryKey@@QAEHPBDPAK@Z+0x42>
+  33:	mov    ecx,DWORD PTR [esp]
+  36:	xor    eax,eax
+  38:	cmp    ecx,0x4
+  3b:	sete   al
+  3e:	pop    ecx
+  3f:	ret    0x8
+  42:	xor    eax,eax
+  44:	pop    ecx
+  45:	ret    0x8
