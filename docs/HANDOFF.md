@@ -35,6 +35,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **2026-11-10 landing ak:** Codex pass 17 return: 38 of 40 rows landed (2 MATCH, 36 RELOCATION_MATCH), 121-file header overlay merged onto HEAD (default=same); 0x00871FD0 parked, 0x009D5D30 held (volatile members, owner exception to confirm) (`pending/2026-11-10_codex_pass17/return_2026-11-10/`).
 - **2026-11-10 landing al:** owner allowed `volatile` where retail used it (PDB records + retail accesses; ASM_RULES updated); Codex pass 17's CBankFileAsyncData ctor 0x009D5D30 landed RELOCATION_MATCH with the qualifier in its shared header.
 - **2026-11-10 Codex pass 18 handed out:** 40 parked near misses reserved in `pending/2026-11-10_codex_pass18/RESERVED.tsv` (package carries current headers and naming data).
+- **2026-11-10 landing am:** chunk 1012b landed CWorld::AutoLoadRegionLeaving / AutoLoadRespawn (one if/else-if/else LoadGameState chain); 3 parked, 7 not started; EAOpenHeroInformationScreen extent 1872 -> 891 (`pending/2026-11-10_linux_hand1012b/`).
 - **Resumed 2026-11-05 late** (the user: "continue where the last claude chat left off"). Done since the pause:
   - lane: the older a013f3ec-... scratch survived with the whole lane (game SHA-1 checked, prime recheck 5/5); the 40effb6c-...
     scratch is gone, and with it the phase 1-5 plan tools (hdrmig5 ...). Only the copies in `naming/2026-11-04_vendor_v2/scripts/`

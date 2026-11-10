@@ -391228,6 +391228,22 @@ $catalog = @(
         TestSource = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d5d30_test.cpp'
         PassPattern = '009d5d30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004a34f0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_AutoLoadRegionLeaving_004a34f0.cpp'
+        TestSource = '00/4a/CWorld_AutoLoadRegionLeaving_004a34f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004a34f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a5e90'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_AutoLoadRespawn_004a5e90.cpp'
+        TestSource = '00/4a/CWorld_AutoLoadRespawn_004a5e90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004a5e90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

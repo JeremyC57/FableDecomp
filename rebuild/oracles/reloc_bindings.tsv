@@ -39185,3 +39185,5 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??_7CBankFileAsyncData@@6BCMovableResource@@@	0129b8a0	009d5d30
 ??_7CBankFileAsyncData@@6BCThreadedFileCallback@@@	0129b8b4	009d5d30
 ?insert_unique@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@_N@2@ABQAVCBankFileAsyncData@@@Z	009d7cf0	009d5d30
+?AutoSaveRegionLeaving@CWorld@@QAE_NXZ	004a0180	004a34f0
+?GetDebugSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a1a0	004a34f0

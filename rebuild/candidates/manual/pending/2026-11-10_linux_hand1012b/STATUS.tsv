@@ -1,0 +1,13 @@
+address	name	grade	grades_used	note
+004a34f0	CWorld::AutoLoadRegionLeaving	RELOCATION_MATCH	5	QLEN=564 (SPLITS.tsv). LoadGameState written as one if / else if / else chain, which drops path to IL weight 10 so the fullPath+heroState slot leads. Same body as 0x004A5E90; it also matches the landed 0x004A3200
+004a5e90	CWorld::AutoLoadRespawn	RELOCATION_MATCH	3	the same chain LoadGameState. The any-directory not-found exit shares the path-dtor block, so there is no lea hoist at 0x004A6117. Catalog/oracle name "AutoLoadRegionLeaving" is wrong (NAME_FIXES)
+0062bef0	CWorld::EAUseProjectileWeapon	DIFFER(483v483)	1	parked, 9 grades left: frame slot only. Retail puts camera with ranged; needs this or camera at IL weight 3. Measured with the packer trace; no code-identical spelling found (probes only)
+0062bd80	CWorld::EAControlledCreatureStrafe	DIFFER(337v354)	2	parked, 8 grades left: the typed readers fixed the frame (nd 66->40). Residue: the has-weapon bool materialisation (mov al,1 / xor al,al / test) and the weapon zeroed in ebp
+008a8260	CGameScriptInterface::GetHeroSummonedCreaturesList	DIFFER(456v466)	1	parked, 9 grades left: retail gives the dead-hero exit a private epilogue returning bl. Every early-return form folds it to xor al,al (c2prio: found goes to memory). Probes only
+0089c910	CGameScriptInterface::CanThingBe_Sensed_ByOtherThing	not attempted	0	the prior is a local padded model; needs a full rebase (CScriptThing / CThing / CTCPerceiveThing members 0x744440..0x7445D0 unnamed)
+0089ce70	CGameScriptInterface::IsThingAwareOfOtherThingInAnyWay	not attempted	0	the prior is a local padded model; needs CTCPerceiveThing range getters named (0x00744440 / 0x00744450 / 0x00744950 / 0x007445D0, 0x00643B3B) and the physics facing slot 70
+008a7a70	CGameScriptInterface::TeleportAllFollowersToHeroPosition	not attempted	0	the prior is a local model that needs /Oa (suspect). CTCFollowed (TC 0xBC, GetFollowers 0x006D5850) has no shared header yet
+0088edc0	CGameScriptInterface::CameraDoConversation	not attempted	0	no prior
+004a1840	CWorld::Load	not attempted	0	the prior is a local model with EH (one catch); its DIFFER(1129v1129) residue is three lea/push register picks
+004a1cb0	CWorld::PreparePrimitivesForEngine	not attempted	0	the prior is a local model; x87 operand-order residue. Catalog name doubles the class (CWorld::CWorld::)
+0062b070	CWorld::EAOpenHeroInformationScreen	not attempted	0	the catalog extent of 1872 bytes holds 5 functions; the real length is 891 (BOUNDS_FIX.tsv). The prior is a local model at DIFFER(898v891)

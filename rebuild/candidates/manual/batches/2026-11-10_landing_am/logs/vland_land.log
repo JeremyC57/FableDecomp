@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004a34f0   RELOCATION_MATCH PASS   AutoLoadRegionLeaving
+004a5e90   RELOCATION_MATCH PASS   AutoLoadRespawn
+
+WINS: 2
+  004a34f0 RELOCATION_MATCH CWorld::?AutoLoadRegionLeaving@CWorld@@QAE_NXZ
+  004a5e90 RELOCATION_MATCH CWorld::?AutoLoadRespawn@CWorld@@QAE_NXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CWorld_AutoLoadRegionLeaving_004a34f0
+  CWorld_AutoLoadRespawn_004a5e90

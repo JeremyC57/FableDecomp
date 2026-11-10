@@ -1,0 +1,5 @@
+address	name	evidence
+004a34f0	?AutoLoadRegionLeaving@CWorld@@QAE_NXZ	FableWin.pdb / Ego_r.pdb name sets; Ego_r size 539/148 v retail 564/154 next to AutoLoadRespawn 1643 v 1722; body calls AutoSaveRegionLeaving 0x004A0180 and GetAutoSaveRegionLeavingFileName 0x00406730
+004a5e90	?AutoLoadRespawn@CWorld@@QAE_NXZ	Ego_r.pdb 1643 bytes / 464 instructions (retail 1722 / 484); body tests IsBetweenQuestStartAndFinishScreens 0x004AF290 and the checkpoint/manual/quest-start/autosave chain (four LoadGameState copies); the catalog's AutoLoadRegionLeaving label belongs to 0x004A34F0
+004a3730	?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z	Ego_r.pdb donor order (follows AutoLoadRegionLeaving); body `jmp LoadGameState 0x004A3200`
+004a3200	?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z	landed; the chain spelling here also grades RELOCATION_MATCH against it
