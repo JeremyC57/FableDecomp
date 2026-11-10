@@ -1,0 +1,5 @@
+address	name	evidence
+0063AB90	CWorldMap::GetThemeFaceNormalAt	Ego_r.pdb / FableWin.pdb ?GetThemeFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z; RELOCATION_MATCH
+0063A7E0	CWorldMap::GetThemeSizeZAtBlock	Ego_r.pdb / FableWin.pdb ?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z; called four times by 0x0063AB90 (byte-matched)
+006B3600	CEnvironment::SetThemeWeight	Ego_r.pdb / FableWin.pdb ?SetThemeWeight@CEnvironment@@QAEXJJJM@Z; called by byte-matched 0x00890090 with four pushes, the last the float weight
+00890090	CGameScriptInterface::SetEnvironmentThemeWeightExternals	Ego_r.pdb / FableWin.pdb ?SetEnvironmentThemeWeightExternals@CGameScriptInterface@@UBEXABVCCharString@@M@Z; vtable slot 664; RELOCATION_MATCH

@@ -1,0 +1,3 @@
+address	name	evidence
+0x0063A7E0	?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z	Ego_r/FableWin name set + reloc_bindings (landed 0x0063B7F0 caller); called four times by 0x0063AB90
+0x006B3600	?SetThemeWeight@CEnvironment@@QAEXJJJM@Z	see NAME_FIXES.tsv (PDB name set, 4-argument calls in 0x00500540 with 1.0f weight, landed 0x00890090 caller)

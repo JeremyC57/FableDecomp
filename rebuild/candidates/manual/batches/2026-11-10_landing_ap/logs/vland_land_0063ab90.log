@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0063ab90   RELOCATION_MATCH PASS   GetThemeFaceNormalAt
+
+WINS: 1
+  0063ab90 RELOCATION_MATCH CWorldMap::?GetThemeFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_GetThemeFaceNormalAt_0063ab90

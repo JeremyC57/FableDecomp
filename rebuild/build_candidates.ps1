@@ -6236,7 +6236,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetEnvironmentThemeWeightExternals_00890090.cpp'
         TestSource = '00/89/CGameScriptInterface_SetEnvironmentThemeWeightExternals_00890090_test.cpp'
-        PassPattern = 'CGameScriptInterface_00890090_TEST PASS'
+        PassPattern = '00890090_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0088ffb0'
@@ -391264,6 +391264,13 @@ $catalog = @(
         Source = '00/50/CWorldMap_LoadWorldFromBinaryFile_00507650.cpp'
         TestSource = '00/50/CWorldMap_LoadWorldFromBinaryFile_00507650_test.cpp'
         PassPattern = '00507650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063ab90'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetThemeFaceNormalAt_0063ab90.cpp'
+        TestSource = '00/63/CWorldMap_GetThemeFaceNormalAt_0063ab90_test.cpp'
+        PassPattern = '0063ab90_TEST PASS'
     }
 )
 

@@ -1,0 +1,13 @@
+address	name	grade	grades_used	note
+0063ab90	CWorldMap::GetThemeFaceNormalAt	RELOCATION_MATCH	1	src/; scoped C2DCoordI for the first lookup filled member by member (X stored before the second _ftol); test PASS (g++ and VC7.1 /Od)
+00b41770	CEngineMap::PeekInterpolatedWaterHeight	DIFFER(773v777)	1	differ/; /d2inlT301 expands PeekLandscapeHeight (T<=300 calls it); left: retail's MapWidth CSE slot [esp+2Ch] (frame 0x24 v 0x20); ~20 free probes
+00b43720	CEngineMap::PeekThemeId	DIFFER(320v324)	1	differ/; compensation-block placement only; ~30 free probes (GetMap and caller shapes) all inert
+00b43870	CEngineMap::PeekThemeBlend	DIFFER(320v324)	1	differ/; same lever as 0x00B43720
+00b439c0	CEngineMap::PeekLandscapeHeight	DIFFER(352v356)	1	differ/; same lever as 0x00B43720
+00b3fc40	CEngineMap::PeekInterpolatedMapNormal	DIFFER(528v528)	1	differ/; frame slots only (packer creation order); q.py oracle row is 816 bytes (cut wrong) so the grade line reads 528v813; 24 sum orders + declaration/name probes inert
+0063d0a0	CWorldMap::FindGroundCollisionPointWithinCell	DIFFER(1017v1017)	1	differ/; scheduling only; Dot/Normalise opt-ins and normal spellings inert or worse
+0063d4a0	CWorldMap::FindThemeCollisionPointWithinCell	DIFFER(1017v1017)	1	differ/; twin of 0x0063D0A0
+004feb70	CWorldMap::HeightAreaChanged	DIFFER(260v261)	1	differ/; c2prio: const 0 prio -12, needs > 54 to take ebx before it2; reference-adding spellings inert
+0063b3f0	CWorldMap::CreateLineSegment	DIFFER(836v856)	1	differ/; prior regraded, not reworked (44 hunks)
+00500540	CWorldMap::LoadRegion	SRC_FAIL	0	differ/; prior no longer compiles (CEnvironment opt-in gone); retail calls one function 0x006B3600 for both environment calls; header debt listed
+00507070	CWorldMap::BuildStaticMapGenerationVisibilityInfo	SRC_FAIL	0	differ/; prior no longer compiles (no CWorldMap declaration); header debt listed

@@ -5352,7 +5352,6 @@ _GetTheme@4	0044c6b0	0088ffb0
 ?Inner_Do@@YIXPAUInner@@HHHH@Z	006b3880	0088fff0
 ?GetTheme@@YGPAUThemeObj@@H@Z	0044c6b0	00890010
 ?ThemeCount@@YIHPAUThemeObj@@@Z	009ad410	00890010
-?Do@Inner@@QAEXHHHH@Z	006b3600	00890090
 ?method@Tgt@@QAEXHH@Z	006b82e0	00890150
 ?Callee@@YIXPAUCTarget@@@Z	006b8300	00890180
 ?Effect_ColourFadeOut@@YIPAXPAX0HHH@Z	006b8390	008901e0
@@ -39195,3 +39194,4 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?PClass@?$CTBaseSingleton@VCEngineManager@@@@0V?$CCountedPointer@VCEngineManager@@@@A	013ba854	00507650
 ?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z	004fc9c0	00507650
 ?resize@?$vector@VCMapInfo@@V?$allocator@VCMapInfo@@@std@@@std@@QAEXI@Z	0051be20	00507650
+?SetThemeWeight@CEnvironment@@QAEXJJJM@Z	006b3600	00890090

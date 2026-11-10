@@ -31,6 +31,12 @@ public:
     void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
 #endif
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_SETTHEMEWEIGHT
+    // Opt-in (row 0x00890090 CGameScriptInterface::SetEnvironmentThemeWeightExternals; chunk 1013c's 0x00500540 CWorld::LoadRegion draft):
+    // Ego_r.pdb / FableWin.pdb ?SetThemeWeight@CEnvironment@@QAEXJJJM@Z, out of line in retail at 0x006B3600 (`ret 10h`; both callers
+    // push four arguments, the last a float weight). Declaration only.
+    void SetThemeWeight(long channel, long priority, long theme, float weight);   // 0x006B3600
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_RAINSTRENGTH
     // Opt-in (chunk 1012, row 0x006B2260 CAtmosProcess::Update): Ego_r.pdb ?GetRainStrength@CEnvironment@@QBEMXZ, called out of line in
     // retail at 0x006B2BD0 (`fld dword ptr [ecx+1C4h] ; ret`, next to its GetSnowStrength twin 0x006B2BE0 `fld [ecx+1C0h]`, Ego_r donor

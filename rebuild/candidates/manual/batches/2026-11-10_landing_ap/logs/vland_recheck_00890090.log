@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00890090   RELOCATION_MATCH PASS   00890090
+
+WINS: 1
+  00890090 RELOCATION_MATCH m::?SetEnvironmentThemeWeightExternals@CGameScriptInterface@@UBEXABVCCharString@@M@Z
