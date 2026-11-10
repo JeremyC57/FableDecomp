@@ -19,8 +19,15 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
 #endif
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?SetForward@CRightHandedSet@@QAEXABVC3DVector@@@Z / ?SetUp@...@QAEXABVC3DVector@@@Z
     // (inline) and ?MakePerpendicular@CRightHandedSet@@QAEXXZ (out of line at 0x00A22E10, landed users 0x00B9DFC0 / 0x00BD2BC0).
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_SET
+    CRightHandedSet(){}
+    void Set(const C3DVector& up,const C3DVector& forward){Up=up;Forward=forward;}
+#endif
     void SetForward(const C3DVector& forward) { Forward = forward; }
     void SetUp(const C3DVector& up) { Up = up; }
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ROTATE
+    void Rotate(const C3DVector& rotate_axis,float angle);
+#endif
     void MakePerpendicular();                                            // 0x00A22E10
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR_INLINE
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z with its

@@ -26,6 +26,10 @@ protected:
 public:
     const C3DVector& PeekPos() const;
     float GetHealth() const { return Health; }
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_HEALTH_PERCENTAGE
+    // Original PDB method and native006a4e40, called from008c7280.
+    float GetHealthPercentage() const;
+#endif
     bool IsToRespondToHits() const { return RespondToHits; }
     bool IsKillable() const { return Killable; }
     bool IsDamageable() const { return Damageable; }

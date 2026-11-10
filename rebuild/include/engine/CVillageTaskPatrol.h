@@ -11,6 +11,36 @@
 #ifdef FABLE_RETAIL_CVILLAGETASKPATROL
 class CThingTrackNode;
 #endif
+#ifdef FABLE_RETAIL_CVILLAGETASKPATROL
+// Original hierarchy, data and signatures from both raw donor TPI records.
+#include "engine/CVillageTaskBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingTrackNode; class CThingObject;
+class CVillageTaskPatrol : public CVillageTaskBase {
+    CIntelligentPointer<const CThingTrackNode> PatrolStart;
+    CIntelligentPointer<const CThing> CreatureAssignedToTask;
+    bool TaskLocked;
+public:
+    CVillageTaskPatrol(const CVillageTaskPatrol &);
+    CVillageTaskPatrol(const CThingTrackNode &);
+    virtual bool IsCreatureAssignedToTask(const CThing &) const;
+    virtual void AssignCreatureToTask(const CThing &);
+    virtual EVillageTaskType GetTaskType() const;
+    virtual bool IsValid() const;
+    virtual bool IsTaskAvailable() const;
+    virtual bool IsThingInvolvedWithTask(const CThing &) const;
+    virtual void RemoveThingFromTask(const CThing &,bool &);
+    bool IsBetterThan(const CVillageTaskPatrol *,const CThing &) const;
+    bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+    const CThingTrackNode * GetPatrolStart() const;
+    const CThingTrackNode * GetNearestNode(const C3DVector &) const;
+    void SetTaskAsLocked();
+    virtual ~CVillageTaskPatrol();
+    CVillageTaskPatrol & operator=(const CVillageTaskPatrol &);
+};
+FABLE_STATIC_ASSERT(sizeof(CVillageTaskPatrol)==0x1c);
+#else
 #pragma pack(push, 1)
 class CVillageTaskPatrol {
 public:
@@ -34,4 +64,5 @@ FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, PatrolStart) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, CreatureAssignedToTask) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskPatrol, TaskLocked) == 0x18);
 
+#endif // FABLE_RETAIL_CVILLAGETASKPATROL
 #endif // FABLE_ENGINE_CVILLAGETASKPATROL_H

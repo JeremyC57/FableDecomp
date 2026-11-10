@@ -8,6 +8,41 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CVILLAGETASKSECURITYSWEEP
+// Original hierarchy, data and signatures from both raw donor TPI records.
+#include "engine/CVillageTaskBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingTrackNode; class CThingObject;
+class CVillageTaskSecuritySweep : public CVillageTaskBase {
+    CIntelligentPointer<const CThing> CreatureAssignedToTask;
+    C3DVector PositionToGoTo;
+    float RadiusAroundThePositionToStay;
+    C3DVector PositionToLookTowards;
+    float AngleToLookTowards;
+    bool HasBecomeInvalid;
+public:
+    CVillageTaskSecuritySweep(const CVillageTaskSecuritySweep &);
+    CVillageTaskSecuritySweep(const C3DVector &,float,const C3DVector &,float);
+    virtual bool IsCreatureAssignedToTask(const CThing &) const;
+    virtual void AssignCreatureToTask(const CThing &);
+    virtual EVillageTaskType GetTaskType() const;
+    virtual bool IsValid() const;
+    virtual bool IsTaskAvailable() const;
+    virtual bool IsThingInvolvedWithTask(const CThing &) const;
+    virtual void RemoveThingFromTask(const CThing &,bool &);
+    C3DVector GetPositionToGoTo();
+    float GetRadiusAroundThePositionToStay();
+    C3DVector GetPositionToLookTowards();
+    float GetAngleToLookTowards();
+    void SetInvalid();
+    bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+    bool IsBetterThan(const CVillageTaskSecuritySweep *,const CThing &) const;
+    virtual ~CVillageTaskSecuritySweep();
+    CVillageTaskSecuritySweep & operator=(const CVillageTaskSecuritySweep &);
+};
+FABLE_STATIC_ASSERT(sizeof(CVillageTaskSecuritySweep)==0x34);
+#else
 #pragma pack(push, 1)
 class CVillageTaskSecuritySweep {
 public:
@@ -40,4 +75,5 @@ FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToLookTowards_Z)
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, AngleToLookTowards) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, HasBecomeInvalid) == 0x30);
 
+#endif // FABLE_RETAIL_CVILLAGETASKSECURITYSWEEP
 #endif // FABLE_ENGINE_CVILLAGETASKSECURITYSWEEP_H

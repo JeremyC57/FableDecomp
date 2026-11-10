@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#if defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP)
+#if defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -36,7 +36,18 @@ struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
 struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
+#ifdef FABLE_RETAIL_STLP_FIND_IF_INPUT
+// Original STLport _iterator_base.h metadata, required by the search dispatch.
+template<class I> struct iterator_traits {
+    typedef typename I::iterator_category iterator_category;
+    typedef typename I::value_type value_type;
+    typedef typename I::difference_type difference_type;
+    typedef typename I::pointer pointer;
+    typedef typename I::reference reference;
+};
+#else
 template<class I> struct iterator_traits;
+#endif
 template<class T> struct iterator_traits<T*> {
     typedef random_access_iterator_tag iterator_category;
     typedef T value_type;
@@ -126,7 +137,12 @@ template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T*
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
+#if defined(FABLE_RETAIL_STLP_DESTROY_AUX_NOINLINE) && defined(_MSC_VER)
+// Inline-budget: retain the actual nontrivial range destructor COMDAT call.
+template<class I> __declspec(noinline) void __destroy_aux(I first,I last,const __false_type&) {
+#else
 template<class I> inline void __destroy_aux(I first,I last,const __false_type&) {
+#endif
     for(;first!=last;++first) _Destroy(&*first);
 }
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
@@ -509,6 +525,11 @@ template<class _T1,class _T2,int _Sz> inline pair<_T1,_T2 const*> __cdecl make_p
 template<class _T1,class _T2,int _Sz> inline pair<_T1 const*,_T2> __cdecl make_pair(_T1 const (&a)[_Sz],_T2 const& b) { return pair<_T1 const*,_T2>(static_cast<_T1 const*>(a),b); }
 template<class _T1,class _T2,int _Sz1,int _Sz2> inline pair<_T1 const*,_T2 const*> __cdecl make_pair(_T1 const (&a)[_Sz1],_T2 const (&b)[_Sz2]) { return pair<_T1 const*,_T2 const*>(static_cast<_T1 const*>(a),static_cast<_T2 const*>(b)); }
 #endif
+#ifdef FABLE_RETAIL_STLP_DECAL_HEAP
+// Retail opt-in (Codex 2026-11-10): original STLport4.6 _pair.h comparison.
+template<class A,class B> inline bool operator<(const pair<A,B>& x,const pair<A,B>& y)
+{return x.first<y.first || (!(y.first<x.first) && x.second<y.second);}
+#endif
 // _list.h
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -537,6 +558,11 @@ struct _List_iterator_base {
     bool operator!=(const _List_iterator_base& y) const { return _M_node!=y._M_node; }
 };
 template<class _Tp,class _Traits> struct _List_iterator : public _List_iterator_base {
+#ifdef FABLE_RETAIL_STLP_FIND_IF_INPUT
+    typedef _Tp value_type;
+    typedef bidirectional_iterator_tag iterator_category;
+    typedef ptrdiff_t difference_type;
+#endif
     typedef typename _Traits::reference reference;
     typedef typename _Traits::pointer pointer;
     typedef _List_iterator<_Tp,_Nonconst_traits<_Tp> > iterator;
@@ -689,6 +715,9 @@ public:
         tmp->_M_next=n;tmp->_M_prev=p;p->_M_next=tmp;n->_M_prev=tmp;
         return iterator(tmp);
     }
+#ifdef FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE
+    FABLE_STLP_NOINLINE
+#endif
     void push_back(const _Tp& x) { insert(end(),x); }
 #ifdef FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT
     // Per-TU opt-in (chunk 801, row 0x00833C00): STLport 4.6 _list.h `iterator insert(iterator __pos)` (the no-default-parameter
@@ -906,5 +935,65 @@ void FABLE_STLP_FASTCALL __pop_heap(_RandomAccessIterator first,_RandomAccessIte
     __adjust_heap(first,_Distance(0),_Distance(last-first),val,comp);
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_REMOVE_COPY_IF
+// Original STLport4.6 function adaptors and stable removal-copy loop.
+template<class _Predicate> class unary_negate : public unary_function<typename _Predicate::argument_type,bool> {
+protected:
+ _Predicate _M_pred;
+public:
+ explicit unary_negate(const _Predicate& pred):_M_pred(pred){}
+ bool operator()(const typename _Predicate::argument_type& x)const{return !_M_pred(x);}
+};
+template<class _InputIter,class _OutputIter,class _Predicate>
+_OutputIter FABLE_FASTCALL remove_copy_if(_InputIter first,_InputIter last,_OutputIter result,_Predicate pred) {
+ for(;first!=last;++first)if(!pred(*first)){*result=*first;++result;}
+ return result;
+}
+#endif
+
+#ifdef FABLE_RETAIL_STLP_DECAL_HEAP
+// Original STLport4.6 _heap.c comparator overloads, ordinary source bodies.
+template <class _RandomAccessIterator, class _Distance, class _Tp, 
+          class _Compare>
+inline
+void
+__push_heap(_RandomAccessIterator __first, _Distance __holeIndex,
+            _Distance __topIndex, _Tp __val, _Compare __comp)
+{
+  _Distance __parent = (__holeIndex - 1) / 2;
+  while (__holeIndex > __topIndex && __comp(*(__first + __parent), __val)) {
+    *(__first + __holeIndex) = *(__first + __parent);
+    __holeIndex = __parent;
+    __parent = (__holeIndex - 1) / 2;
+  }
+  *(__first + __holeIndex) = __val;
+}
+
+template <class _RandomAccessIterator, class _Distance,
+          class _Tp, class _Compare>
+void
+__adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
+              _Distance __len, _Tp __val, _Compare __comp)
+{
+  _Distance __topIndex = __holeIndex;
+  _Distance __secondChild = 2 * __holeIndex + 2;
+  while (__secondChild < __len) {
+    if (__comp(*(__first + __secondChild), *(__first + (__secondChild - 1))))
+      __secondChild--;
+    *(__first + __holeIndex) = *(__first + __secondChild);
+    __holeIndex = __secondChild;
+    __secondChild = 2 * (__secondChild + 1);
+  }
+  if (__secondChild == __len) {
+    *(__first + __holeIndex) = *(__first + (__secondChild - 1));
+    __holeIndex = __secondChild - 1;
+  }
+  __push_heap(__first, __holeIndex, __topIndex, __val, __comp);
+}
+
+
+
+#endif
+
 }
 #endif

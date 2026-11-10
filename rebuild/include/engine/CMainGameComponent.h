@@ -25,6 +25,10 @@ class CDisplayEngine;
 namespace NGameText { class CDataBank; }
 class CFontBank;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
+#include "engine/CCountedPointer.h"
+class CFontBank;
+#endif
 class CMainGameComponentInit;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
 class CGameEvent;
@@ -63,7 +67,12 @@ protected:
     unsigned long WorldSeed;                        // +0x1613C
     unsigned long LocalSeed;                        // +0x16140
     unsigned char PDebugFont[8];                    // +0x16144 CCountedPointer<CFontBank>
-    unsigned char PCutSceneMainFont[8];             // +0x1614C CCountedPointer<CFontBank>
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
+    // Retail opt-in (Codex2026-11-10): both PDB field names/types, FableWin01ae1860.
+    CCountedPointer<CFontBank> PCutSceneMainFont;
+#else
+    unsigned char PCutSceneMainFont[8];
+#endif             // +0x1614C CCountedPointer<CFontBank>
     unsigned char EventPackageFile[0x1C];           // +0x16154 CDiskFileWin32
     bool LoadingEventPackages;                      // +0x16170
     bool SavingEventPackages;                       // +0x16171
@@ -84,6 +93,9 @@ protected:
     bool Rendered;                                  // +0x161E2
     long DebugNoFramesUnableToRender;               // +0x161E4
 public:
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
+    const CFontBank& PeekMainFont()const{return *PCutSceneMainFont;}
+#endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
     static long __fastcall GetConstantFPS() { return ConstantFPS; }
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT

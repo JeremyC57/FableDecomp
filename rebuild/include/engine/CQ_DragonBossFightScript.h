@@ -28,7 +28,23 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_DragonBossFightScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
-    enum EDragonState { };                                               // Ego_r.pdb enum (DoMission waits for the value 4)
+    #ifdef FABLE_RETAIL_DRAGON_ORIGINAL_TYPES
+    enum EDragonState { DS_HEALTH_HIGH, DS_HEALTH_MEDIUM, DS_HEALTH_LOW, DS_HEALTH_VERY_LOW, DS_DEAD };
+#else
+    enum EDragonState { };
+#endif                                               // Ego_r.pdb enum (DoMission waits for the value 4)
+#ifdef FABLE_RETAIL_DRAGON_ORIGINAL_TYPES
+    typedef CQ_DragonBossFightScript TMyClass;
+    typedef CQ_SunnyvaleMasterData TMyMasterScriptData;
+    CQ_DragonBossFightScript(const CQ_DragonBossFightScript&);
+    CQ_DragonBossFightScript(CScriptDataBase*,CGameScriptInterfaceBase&);
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*,CGameScriptInterfaceBase&);
+    static CCharString FABLE_FASTCALL StatGetClassName();
+    static CScriptDataBase* (FABLE_FASTCALL * FABLE_FASTCALL StatGetMasterScriptDataAlloc())();
+    void SpawnEnemies();
+    virtual ~CQ_DragonBossFightScript();
+    CQ_DragonBossFightScript& operator=(const CQ_DragonBossFightScript&);
+#endif
     virtual void RegisterMain();                                         // 0x00D25520 (slot 1)
     virtual void Main();                                                 // 0x00D255E0 (slot 2)
     virtual void Init();                                                 // 0x00D254B0 (slot 3)
@@ -38,6 +54,10 @@ public:
     void SpawnMinions();                                                 // 0x00D26CC0
     void SpawnSummoners();                                               // 0x00D26E60
     void PlayCutscene(CCharString);                                      // 0x00D27050
+#ifdef FABLE_RETAIL_DRAGON_STATE_BODY
+    // Complete SetDragonState 00d258c0; original state names from both raw donors.
+    void SetDragonState(EDragonState dragonState);
+#endif
     EDragonState DragonState;                                            // +0x48
     std::vector<CScriptThing> MinionSpawnPoints;                         // +0x4c
     std::vector<CScriptThing> SummonerSpawnPoints;                       // +0x58
@@ -59,6 +79,30 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_DragonBossFightScript) == 0x98);
+#ifdef FABLE_RETAIL_DRAGON_ORIGINAL_TYPES
+namespace NScript {
+class CQ_DragonBossFightScript::CDragon : public CEntityScriptBase {
+    typedef CQ_DragonBossFightScript TParentClass;
+protected:
+    CQ_DragonBossFightScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+public:
+    CDragon(CQ_DragonBossFightScript&,CScriptDataBase*,const CScriptThing&);
+    CDragon(const CDragon&);
+    virtual ~CDragon();
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_DragonBossFightScript&,CScriptDataBase*,const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const { return &ParentClass; }
+    CQ_SunnyvaleMasterData* GetMasterData();
+private:
+    float MediumHealth,LowHealth,VeryLowHealth;
+    virtual void Init();
+    virtual void OnPredicateFail();
+    virtual void Main();
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_DragonBossFightScript::CDragon)==0x28);
+#endif
+
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_DRAGONBOSSFIGHTSCRIPT_H

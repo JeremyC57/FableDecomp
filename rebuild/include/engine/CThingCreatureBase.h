@@ -16,6 +16,11 @@ class CEnginePrimitivePrepareInfo;
 class CCombatManager;
 enum ESex;
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS
+public:
+ static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 15;}
+#endif
+
 
 #ifdef FABLE_ONHIT_TEST_ACCESS
     friend class COnHitFixture;
@@ -86,6 +91,9 @@ public:
     }
     virtual void OnHit(CHitParameters&);
     bool SetCurrentAction(const CCreatureActionBase&);
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+    void AddQueuedAction(const CCreatureActionBase&);
+#endif
     // Chunk 751 (row 0x0072C930 CTCSpecialAbilities::SetupFireballSpell): Ego_r.pdb ?IsFreeToPerformAction@CThingCreatureBase@@QBE_NABVCCreatureActionBase@@@Z,
     // out of line in retail at 0x00662210. Declaration only: no layout change.
     bool IsFreeToPerformAction(const CCreatureActionBase&) const;       // 0x00662210

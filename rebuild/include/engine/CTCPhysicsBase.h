@@ -22,6 +22,9 @@ class CTCPhysicsBase : public CTCBase {
     friend class CAutoPlaceFixture;
 #endif
 public:
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_STATTYPE
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_PHYSICS;}
+#endif
     virtual ETCInterfaceType GetInterfaceType() const;
 protected:
     virtual C2DVector GetOffsetVector() const;
@@ -194,6 +197,10 @@ protected:
     unsigned char PhysicsDef[4];
     bool Moving:1,OldMoving:1;
 public:
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING
+    // Both raw donors: public non-virtual SetAsMoving(bool), native006b0130.
+    void SetAsMoving(bool);
+#endif
     void GetBoundingInfo(C3DVector&,float&) const;
     const C3DVector& GetPosition() const { return Position; }
     float GetRadius() const { return Radius; }

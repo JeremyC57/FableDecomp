@@ -11,6 +11,10 @@
 class CEngineSceneGrid;
 class CEngineSceneGridCell;
 
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONGROUP
+#include "engine/CEngineInternalPrimitiveOcclusionBase.h"
+class CEngineInternalPrimitiveOcclusionGroup:public CEngineInternalPrimitiveOcclusionBase {public:virtual ~CEngineInternalPrimitiveOcclusionGroup();CEngineInternalPrimitiveOcclusionGroup(CEngineSceneGridCell*,CEngineSceneGrid*,unsigned long,unsigned long);private:CEngineSceneGridCell* GridCell;CEngineSceneGrid* Grid;unsigned long GridX,GridY,FramesRendered;};
+#else
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveOcclusionGroup {
 public:
@@ -41,8 +45,10 @@ public:
     unsigned long         FramesRendered;                    // +0x60
 };
 #pragma pack(pop)
+#endif
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveOcclusionGroup) == 0x64);
+#ifndef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONGROUP
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, GridCell) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, Grid) == 0x54);
@@ -50,4 +56,5 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, GridX) == 0
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, GridY) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionGroup, FramesRendered) == 0x60);
 
+#endif
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEOCCLUSIONGROUP_H

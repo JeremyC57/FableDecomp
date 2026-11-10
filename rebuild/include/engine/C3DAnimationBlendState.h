@@ -6,6 +6,9 @@
 // 0x004C2DF0), ?SetBaseAnimation@C3DAnimationBlendState@@QAEXABVC3DAnimationState@@@Z (0x00A3C260) and the
 // CIVCountedPointer<C3DAnimationStateBase> overload.
 #include "engine/CBaseClass.h"
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_TYPED_DATA
+#include "engine/CIVCountedPointer.h"
+#endif
 class C3DAnimationState;
 class C3DAnimationStateBase;
 template <class T> class CIVCountedPointer;
@@ -24,7 +27,13 @@ private:
                                                                                  const C3DAnimationStateBase& b, float t);
 public:
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_TYPED_DATA
+private:
+    class CSharedData;
+    CIVCountedPointer<CSharedData> Data;
+#else
     void* Data;                                                          // +0x04 CIVCountedPointer<C3DAnimationBlendState::CSharedData>
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DAnimationBlendState) == 8);
 #endif

@@ -8,8 +8,47 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
+#include "engine/CSubDefClassBase.h"
+enum ETavernGameControlType { ETGCT_RELATIVE=0,ETGCT_ABSOLUTE=1 };
+#endif
 
+#ifndef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
 #pragma pack(push, 1)
+#endif
+#ifdef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
+class CTavernGameCardBaseDef : public CSubDefClassBase {
+public:
+public: virtual void Copy(const CDefClassBase*);
+public: virtual unsigned long GetSizeofClass();
+public: static CDefClassBase* FABLE_FASTCALL Alloc();
+public: static CCharString FABLE_FASTCALL StatGetTypeName();
+public: virtual void Transfer(CPersistContext&);
+public: CTavernGameCardBaseDef(const CTavernGameCardBaseDef&);
+public: CTavernGameCardBaseDef();
+public: virtual ~CTavernGameCardBaseDef();
+public: CTavernGameCardBaseDef& operator=(const CTavernGameCardBaseDef&);
+    ETavernGameControlType ControlType;                          // +0x28 ETavernGameControlType
+    float         CardWidth;                                 // +0x2c
+    float         CardHeight;                                // +0x30
+    float         ImpulseScaleXbox;                          // +0x34
+    float         ImpulseScalePC;                            // +0x38
+    long          PointerModel;                              // +0x3c
+    float         MoveSpeed;                                 // +0x40
+    float         TurnSpeed;                                 // +0x44
+    float         PointerHeightOffset;                       // +0x48
+    long          PointerParticleEffect;                     // +0x4c
+    float         HighlightWidth;                            // +0x50
+    unsigned char HighlightColourGood[0x4];                  // +0x54 CRGBColour
+    unsigned char HighlightColourBad[0x4];                   // +0x58 CRGBColour
+    float         CardSeparation;                            // +0x5c
+    float         TableSeparation;                           // +0x60
+    float         PackOffset_X;                              // +0x64 C2DVector::X
+    float         PackOffset_Y;                              // +0x68 C2DVector::Y
+    unsigned char CardOrders[0xc];                           // +0x6c vector<CCardPositionsDef,std::allocator<CCardPositionsDef>_>
+    unsigned char CardPack[0xc];                             // +0x78 vector<CCardDef,std::allocator<CCardDef>_>
+};
+#else
 class CTavernGameCardBaseDef {
 public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -43,10 +82,16 @@ public:
     unsigned char CardOrders[0xc];                           // +0x6c vector<CCardPositionsDef,std::allocator<CCardPositionsDef>_>
     unsigned char CardPack[0xc];                             // +0x78 vector<CCardDef,std::allocator<CCardDef>_>
 };
+#endif
+
+#ifndef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
 #pragma pack(pop)
+#endif
 
 FABLE_STATIC_ASSERT(sizeof(CTavernGameCardBaseDef) == 0x84);
+#ifndef FABLE_RETAIL_CTAVERNGAMECARDBASEDEF
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, ControlType) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardWidth) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardHeight) == 0x30);

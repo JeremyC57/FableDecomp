@@ -13,6 +13,9 @@
 #error engine/CFileFormatBrush.h holds the packed retail file records only: define FABLE_RETAIL_CFILEFORMATBRUSH
 #endif
 #include <stddef.h>
+#ifdef FABLE_RETAIL_CFILEFORMAT_HEIGHTMAP_V5
+#include "engine/CCountedPointer.h"
+#endif
 #include "engine/CAFile.h"
 #include "engine/C2DBoxI.h"
 #include "engine/C3DVector.h"
@@ -21,6 +24,9 @@
 template<class T,unsigned short Version>class CBaseSerialise {public:
  unsigned long ByteLength;unsigned char SerialiseVersionNumber;
  CBaseSerialise():SerialiseVersionNumber(Version){}
+#ifdef FABLE_RETAIL_CFILEFORMAT_HEIGHTMAP_V5
+ static unsigned short FABLE_FASTCALL GetClassVersionNumber(){return Version;}
+#endif
  bool ReadFromFile(CAFile&file,CASuspendableProcess*psuspendable_process){
   unsigned long length;file.ReadVar(length,psuspendable_process);
   long old_pos=file.GetPosition();unsigned char version;
@@ -32,6 +38,10 @@ template<class T,unsigned short Version>class CBaseSerialise {public:
 template<class T,class Old>class CReplaceSerialise {public:
  unsigned long ByteLength;unsigned char SerialiseVersionNumber;
  void ReadFromFile(CAFile&,CASuspendableProcess*);
+#ifdef FABLE_RETAIL_CFILEFORMAT_HEIGHTMAP_V5
+ static unsigned short FABLE_FASTCALL GetClassVersionNumber(){return (unsigned short)(Old::GetClassVersionNumber()+1);}
+ static CCountedPointer<T> FABLE_FASTCALL ConvertPreviousUnknownVersionUp(void* old_void);
+#endif
 };
 class COldFileFormatLevel3;class COldFileFormatBrush;
 class CFileFormatLevel:public CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>{public:
@@ -52,6 +62,39 @@ class CFileFormatBrushCell:public CBaseSerialise<CFileFormatBrushCell,1>{public:
 class CFileFormatBrushThingToMove:public CBaseSerialise<CFileFormatBrushThingToMove,1>{public:unsigned __int64 UniqueID;C3DVector Position;C3DAngles FacingAngles;};
 class CFileFormatBrushThingToDelete:public CBaseSerialise<CFileFormatBrushThingToDelete,1>{public:unsigned __int64 UniqueID;};
 class CFileFormatBrushThingToAdd:public CBaseSerialise<CFileFormatBrushThingToAdd,1>{public:unsigned __int64 UniqueID;};
+#ifdef FABLE_RETAIL_CFILEFORMAT_HEIGHTMAP_V5
+// Retail opt-in (Codex 2026-11-10): both PDBs prove sizes9/10/15/17/25,
+// Height+5, SoundLayer+17 and MinimapZone+21. These original file records
+// reuse this header's existing byte-aligned serialization scope.
+class COldFileFormatHeightMapCell1:public CBaseSerialise<COldFileFormatHeightMapCell1,1>{public:
+ float Height;
+};
+class COldFileFormatHeightMapCell2:public CReplaceSerialise<COldFileFormatHeightMapCell2,COldFileFormatHeightMapCell1>{public:
+ float Height;unsigned char TextureBlendAlpha;
+};
+class COldFileFormatHeightMapCell3:public CReplaceSerialise<COldFileFormatHeightMapCell3,COldFileFormatHeightMapCell2>{public:
+ float Height;unsigned char TextureBlendAlpha,EngineTheme[3],EngineBlend[2];
+};
+class COldFileFormatHeightMapCell4:public CReplaceSerialise<COldFileFormatHeightMapCell4,COldFileFormatHeightMapCell3>{public:
+ float Height;unsigned char TextureBlendAlpha,EngineTheme[3],EngineBlend[2],Passable,CameraPassable;
+};
+class COldFileFormatHeightMapCell5:public CReplaceSerialise<COldFileFormatHeightMapCell5,COldFileFormatHeightMapCell4>{public:
+ float Height;unsigned char TextureBlendAlpha,EngineTheme[3],EngineBlend[2],Passable,CameraPassable;
+ long SoundLayer,MinimapZone;
+ void ConvertFromOld(const COldFileFormatHeightMapCell4* old_thing){
+  long count=0;
+  Height=old_thing->Height;TextureBlendAlpha=old_thing->TextureBlendAlpha;
+  count=3;
+  for(long c1=0;c1<count;++c1)EngineTheme[c1]=old_thing->EngineTheme[c1];
+  count=2;
+  for(long c1=0;c1<count;++c1)EngineBlend[c1]=old_thing->EngineBlend[c1];
+  Passable=old_thing->Passable;CameraPassable=old_thing->CameraPassable;
+  SoundLayer=MinimapZone=0;
+ }
+};
+FABLE_STATIC_ASSERT(sizeof(COldFileFormatHeightMapCell5)==25);
+FABLE_STATIC_ASSERT(offsetof(COldFileFormatHeightMapCell5,SoundLayer)==17);
+#endif
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CFileFormatLevel)==25);
 FABLE_STATIC_ASSERT(sizeof(CFileLargeThemePaletteEntry)==132);

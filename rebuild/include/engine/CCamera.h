@@ -10,6 +10,9 @@
 #include "engine/CRightHandedSet.h"
 class CCamera {
 public:
+#ifdef FABLE_RETAIL_CCAMERA_TARGET_CTOR
+    CCamera(const C3DVector& world_position,const C3DVector& target_position,float fov,bool is_2d);
+#endif
     float GetHorizontalFOV() const;                                      // 0x00A0BE90
 #ifdef FABLE_RETAIL_CCAMERA_ANGLES
     // Opt-in (chunk 765, rows 0x0069E1B0 / 0x0069E1C0): Ego_r.pdb / FableWin.pdb ?GetAngleXY@CCamera@@QBEMXZ / ?GetAngleYZ@CCamera@@QBEMXZ,

@@ -1,3 +1,4 @@
+// Retail opt-in (Codex 2026-11-10): complete original types from both PDBs and native field/virtual offsets; see 00b396e0 NAMING_EVIDENCE.md.
 #ifndef FABLE_ENGINE_CENGINEPRIMITIVEMANAGER_H
 #define FABLE_ENGINE_CENGINEPRIMITIVEMANAGER_H
 // Hand-written (chunk 723): CEnginePrimitiveManager : CEnginePrimitiveRenderUtil (Fable.exe RTTI), 0xC bytes: vptr, SceneList +0x04,
@@ -36,6 +37,9 @@ public:
     virtual void RenderNonsortedPrimitives();                                                                 // slot 11
     virtual void AddStaticShadowData(CEngineInternalPrimitiveBase& prim, NEngineShadowRenderer::CShadowSceneContext& context);   // slot 12
     void AddEnableConsoleVariable(const CCharString& name);              // 0x00BACD80 ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+    void AddPrimitive(CEngineInternalPrimitiveBase&,unsigned long);
+#endif
     bool GetEnable() const;                                              // ?GetEnable@CEnginePrimitiveManager@@QBE_NXZ
     void SetEnable(bool enable);                                         // ?SetEnable@CEnginePrimitiveManager@@QAEX_N@Z
     CArray<CEngineScene*>* SceneList;                                    // +0x04

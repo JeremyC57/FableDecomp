@@ -21,6 +21,10 @@ namespace NThingMap { class CThingMapManager; }
 namespace std { template<class T> struct less; template<class K,class C,class A> class set; }
 class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
 public:
+#ifdef FABLE_RETAIL_CWORLDMAP_HEIGHT_BELOW
+ class CThingFilterBase: public std::unary_function<CThing,bool> {public: virtual bool operator()(const CThing&)const{return true;}};
+ float GetHeightZBelowAt(const C3DVector&,float,bool,const CThingFilterBase&)const;
+#endif
     virtual ~CWorldMap();
     virtual void DeleteAllLevels();
     virtual void DeleteAllRegions();

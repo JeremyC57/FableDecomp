@@ -10,14 +10,28 @@
 #endif
 #include "rebuild_abi.h"
 #include "engine/CEngineComponent.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
+#include "engine/C3DVector.h"
+#endif
 class CEngineInit;
 class CEnginePrimitiveOcclusionManager : public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
+    void SetAsOccluded(class CEnginePrimitiveOcclusionInfo&)const;
+#endif
     CEnginePrimitiveOcclusionManager();        // 0x00B2F760 ??0CEnginePrimitiveOcclusionManager@@QAE@XZ
 private:
     virtual unsigned long PeekSceneFilterFlags() const;
 private:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONMANAGER_SET
+    unsigned long PrimitiveOccludeDelay;
+    long ShowVisibilityInfo;
+    C3DVector LastCameraDirection,LastCameraPosition;
+    float MaxCameraAngleStep,MaxCameraPositionStep;
+    bool InvalidateOcclusion,NewSceneFlag;
+#else
     unsigned char _pad_0xc[0x2c];               // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveOcclusionManager) == 0x38);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

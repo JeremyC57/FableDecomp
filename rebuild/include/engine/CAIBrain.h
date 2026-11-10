@@ -14,6 +14,9 @@ class CAIStateGroupBase;
 class CCharString;   // chunk 801 opt-in only (the default path declares nothing new)
 #endif
 class CBrainUpdateZone;
+#if defined(FABLE_RETAIL_CAIBRAIN_SETBRAINOUTPUT) || defined(FABLE_RETAIL_CAIBRAIN_SETOUTPUT)
+class CBrainOutput;
+#endif
 class CDefPointeeBase;
 class CMainGameComponent;
 class CPlayerManager;
@@ -43,6 +46,12 @@ public:
 #ifdef FABLE_RETAIL_CAIBRAIN_GETCREATURE
     // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ (inline in retail).
     CThingAICreature& GetCreature() const { return *Creature; }
+#endif
+#ifdef FABLE_RETAIL_CAIBRAIN_SETOUTPUT
+    // Both PDBs name SetOutput; native caller00939989 reaches0088b8f0.
+    void SetOutput(const CBrainOutput&);
+#elif defined(FABLE_RETAIL_CAIBRAIN_SETBRAINOUTPUT)
+    void SetBrainOutput(const CBrainOutput&);
 #endif
     CThingManager*      ThingManager;                        // +0x1c
     CPlayerManager*     PlayerManager;                       // +0x20

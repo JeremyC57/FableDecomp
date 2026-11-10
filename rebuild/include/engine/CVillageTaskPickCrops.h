@@ -11,6 +11,32 @@
 #ifdef FABLE_RETAIL_CVILLAGETASKPICKCROPS
 class CThingObject;
 #endif
+#ifdef FABLE_RETAIL_CVILLAGETASKPICKCROPS
+// Original hierarchy, data and signatures from both raw donor TPI records.
+#include "engine/CVillageTaskBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingTrackNode; class CThingObject;
+class CVillageTaskPickCrops : public CVillageTaskBase {
+    CIntelligentPointer<CThingObject> Crop;
+    CIntelligentPointer<const CThing> CreatureAssignedToTask;
+public:
+    CVillageTaskPickCrops(const CVillageTaskPickCrops &);
+    CVillageTaskPickCrops(CThingObject &);
+    virtual bool IsCreatureAssignedToTask(const CThing &) const;
+    virtual void AssignCreatureToTask(const CThing &);
+    virtual EVillageTaskType GetTaskType() const;
+    virtual bool IsValid() const;
+    virtual bool IsTaskAvailable() const;
+    virtual bool IsThingInvolvedWithTask(const CThing &) const;
+    virtual void RemoveThingFromTask(const CThing &,bool &);
+    bool IsBetterThan(const CVillageTaskPickCrops *,const CThing &) const;
+    CThingObject * GetCrop();
+    virtual ~CVillageTaskPickCrops();
+    CVillageTaskPickCrops & operator=(const CVillageTaskPickCrops &);
+};
+FABLE_STATIC_ASSERT(sizeof(CVillageTaskPickCrops)==0x18);
+#else
 #pragma pack(push, 1)
 class CVillageTaskPickCrops {
 public:
@@ -31,4 +57,5 @@ FABLE_STATIC_ASSERT(offsetof(CVillageTaskPickCrops, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskPickCrops, Crop) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskPickCrops, CreatureAssignedToTask) == 0x10);
 
+#endif // FABLE_RETAIL_CVILLAGETASKPICKCROPS
 #endif // FABLE_ENGINE_CVILLAGETASKPICKCROPS_H

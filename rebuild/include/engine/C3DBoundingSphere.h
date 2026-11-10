@@ -15,6 +15,11 @@ public:
     C3DBoundingSphere(const C3DVector& center, float radius) : Center(center), Radius(radius) { }
 #endif
     void AccurateBuildFromPoints(const std::vector<C3DVector>&,float);
+#ifdef FABLE_RETAIL_C3DBOUNDINGSPHERE_CENTER_VALUE
+    // Retail opt-in (Codex 2026-11-10): FableWin GetCenter at02ca7de0 returns
+    // a const C3DVector value. HasBoundingSphereIntersectedFromTo binds it by reference.
+    const C3DVector GetCenter() const { return Center; }
+#endif
     float GetRadius() const { return Radius; }
     C3DVector Center;
     float Radius;

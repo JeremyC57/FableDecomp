@@ -1,6 +1,77 @@
+// Retail opt-in (Codex 2026-11-10): complete original types from both PDBs and native field/virtual offsets; see 00b396e0 NAMING_EVIDENCE.md.
 #ifndef FABLE_ENGINE_CENGINEINTERNALPRIMITIVEBASE_H
 #define FABLE_ENGINE_CENGINEINTERNALPRIMITIVEBASE_H
-#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CLASS
+#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED)
+#include "engine/CEnginePersistentPrimitiveBase.h"
+#include "engine/CEnginePrimitiveEnums.h"
+#include "engine/CEngineFadeDistance.h"
+#include "engine/CEngineSceneGridPos.h"
+class CEngineSceneGridCell;
+class CEnginePrimitive;
+class CEngineCamera;
+class CEnginePrimitiveAnimation;
+class CEnginePrimitivePosition;
+class CEngineMeshEffect;
+class CEngineInternalPrimitiveOcclusionBase;
+class C3DVector;
+class CMatrix3x4;
+class C3DBoundingBox;
+class C3DBoundingSphere;
+template<class T>class CIVCountedPointer;
+class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
+public:
+ CEngineInternalPrimitiveBase(long,unsigned long);
+ virtual ~CEngineInternalPrimitiveBase();
+ virtual void Update(const CEnginePrimitive&,unsigned long);
+ virtual unsigned long AddChildPrimitive(const CEnginePrimitive&,unsigned long);
+ virtual void SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
+ virtual void SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long);
+ virtual void GetChildPrimitiveHandle(unsigned long,CEnginePrimitiveHandle&);
+ virtual void ClearChildPrimitive(unsigned long);
+ virtual void ClearAllChildPrimitives();
+ virtual CEnginePersistentPrimitiveBase* GetChildPrimitive(unsigned long);
+ virtual CEngineFadeDistance GetFadeDistance()const;
+ virtual void PostRender();
+ virtual bool GetWorldPosition(C3DVector&);
+ virtual bool GetBoundingBoxTransform(CMatrix3x4&);
+ virtual bool GetBoundingBoxWorldSpace(C3DBoundingBox&);
+ virtual bool GetBoundingSphereWorldSpace(C3DBoundingSphere&);
+ virtual bool GetBoundingSphereRadiusWorldSpace(float&);
+ virtual bool IsInsideFrustum(const CEngineCamera&,bool);
+ virtual bool GetObjectTransform(CMatrix3x4&)const;
+ virtual bool SetObjectTransform(const CMatrix3x4&);
+ virtual void SetAnimation(const CEnginePrimitiveAnimation&);
+ virtual void SetPosition(const CEnginePrimitivePosition&);
+ virtual void SetMeshEffect(const CIVCountedPointer<CEngineMeshEffect>&);
+ virtual bool GetMeshEffect(CIVCountedPointer<CEngineMeshEffect>&)const;
+ virtual CEngineInternalPrimitiveOcclusionBase* GetAsOcclusionPrimitive();
+ virtual void CollectStats(std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,EEnginePrimitiveStatIndex,unsigned long)const;
+ void SetEnable(bool enable){Enable=enable;}
+ unsigned long EnginePrimitiveFlags;
+ float AlphaMipBias;
+ CEngineFadeDistance FadeDistance;
+ unsigned long OcclusionLayerBitMask;
+ CEngineSceneGridCell* GridCell;
+ CEngineSceneGridPos GridPos;
+ unsigned char Alpha,AlphaRef,PreloadStat;
+ EEngineInterpolationSet InterpolationSet;
+protected:
+ virtual void NotifyReleased(const CEnginePrimitiveHandle&);
+ virtual bool WasRendered()const;
+ unsigned long RenderLayerMask;
+private:
+ unsigned char Enable:1;
+ unsigned char NonPersistent:1;
+ unsigned char OverrideFadeDistance:1;
+ unsigned char PostRenderEnable:1;
+ unsigned short LastFrameRendered;
+ CEngineInternalPrimitiveBase* NextPrimitive;
+ CEngineInternalPrimitiveBase** RefPrimitive;
+ CEngineInternalPrimitiveBase* NextLayerMask;
+ CEngineInternalPrimitiveBase** RefLayerMask;
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveBase)==72);
+#elif defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CLASS)
 // Retail opt-in (chunk 892, row 0x00BE1C10 CEngineInternalPrimitive2DViewport::Update): the polymorphic class, so a derived internal
 // primitive can declare its own virtuals over it. RTTI .?AVCEngineInternalPrimitiveBase@@ : CEnginePersistentPrimitiveBase :
 // CIVCountedPointeeBase (ghidra_out/rtti_bases.tsv); the own members in Ego_r.pdb order, names and offsets (the flattened model
@@ -14,13 +85,24 @@
 #include "rebuild_abi.h"
 #include "engine/CEnginePersistentPrimitiveBase.h"
 class CEngineSceneGridCell;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
+#include "engine/EEngineInterpolationSet.h"
+#include "engine/CEngineFadeDistance.h"
+#include "engine/CEngineSceneGridPos.h"
+#else
 enum EEngineInterpolationSet;
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATIONINFO
 class CEngineInterpolationInfo;
 #endif
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
     virtual ~CEngineInternalPrimitiveBase();
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
+    virtual void CollectStats(std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,EEnginePrimitiveStatIndex,unsigned long)const;
+    void SetGridCell(CEngineSceneGridCell* cell){GridCell=cell;}
+    void AddToList(CEngineInternalPrimitiveBase** list);
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATIONINFO
     // Nested opt-in (chunk 899, row 0x01224900): the static data member Ego_r.pdb / FableWin.pdb name through
     // `dynamic initializer for 'CEngineInternalPrimitiveBase::CurrentInterpolationInfo'' (the 112-byte CEngineInterpolationInfo
@@ -29,18 +111,33 @@ public:
 #endif
     unsigned long                  EnginePrimitiveFlags;           // +0x0c
     float                          AlphaMipBias;                   // +0x10
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
+    CEngineFadeDistance FadeDistance;
+#else
     float                          FadeDistance_FadeBeginDistance; // +0x14 CEngineFadeDistance::FadeBeginDistance
     float                          FadeDistance_MaxDrawDistance;   // +0x18 CEngineFadeDistance::MaxDrawDistance
+#endif
     unsigned long                  OcclusionLayerBitMask;          // +0x1c
     CEngineSceneGridCell*          GridCell;                       // +0x20
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
+    CEngineSceneGridPos GridPos;
+#else
     signed char                    GridPos_Level;                  // +0x24 CEngineSceneGridPos::Level
     unsigned char                  GridPos_X;                      // +0x25 CEngineSceneGridPos::X
     unsigned char                  GridPos_Y;                      // +0x26 CEngineSceneGridPos::Y
+#endif
     unsigned char                  Alpha;                          // +0x27
     unsigned char                  AlphaRef;                       // +0x28
     unsigned char                  PreloadStat;                    // +0x29
     EEngineInterpolationSet        InterpolationSet;               // +0x2c
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
+protected:
+#endif
     unsigned long                  RenderLayerMask;                // +0x30
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_OCCLUSION
+private:
+    unsigned char Enable:1,NonPersistent:1,OverrideFadeDistance:1;
+#endif
     unsigned char                  PostRenderEnable : 1;           // +0x34
     unsigned short                 LastFrameRendered;              // +0x36
     CEngineInternalPrimitiveBase*  NextPrimitive;                  // +0x38

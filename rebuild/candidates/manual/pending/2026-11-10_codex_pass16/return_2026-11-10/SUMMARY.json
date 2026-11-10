@@ -1,0 +1,19 @@
+{
+  "assigned_functions": 40,
+  "matched_functions": 37,
+  "matched_function_percentage": 92.5,
+  "parked_near_misses": 2,
+  "parked_conversion_blockers": 1,
+  "untouched": 0,
+  "skipped": 0,
+  "extent_wrong": 0,
+  "matched_bytes": 11258,
+  "assigned_bytes": 12261,
+  "matched_byte_percentage": 91.81959057173151,
+  "all_selected_behavior_tests_passed": true,
+  "all_workers_stopped": true,
+  "commits": 0,
+  "pushes": 0,
+  "build_records": 662,
+  "archived_source_snapshots": 647
+}

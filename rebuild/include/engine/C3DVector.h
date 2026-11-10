@@ -26,8 +26,19 @@ extern unsigned long GFastOneOverSqrtTable[128];                        // 0x013
 // subtraction (0x0096E951 `mov ecx,17Ch` and the pops ahead of `fld st(0)`). Body only: default path unchanged.
 FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-(r*r*value))*r*0.5f;}
 #else
+#ifdef FABLE_RETAIL_GFFASTONEOVERSQRT_ORIGINAL_UNION
+union TFloatIntUnion {float Float;unsigned long Int;};
+FABLE_FORCEINLINE float FABLE_FASTCALL GFFastOneOverSqrt(float n){TFloatIntUnion seed;seed.Int=(((0x17c-((((TFloatIntUnion*)&n)->Int>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(((TFloatIntUnion*)&n)->Int>>17)&0x7f]<<15);float r=seed.Float;r=(3.0f-r*r*n)*r*0.5f;return r;}
+#else
 FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long bits=*reinterpret_cast<unsigned long*>(&value);unsigned long estimate=(((0x17c-((bits>>23)&0xff))>>1)<<23)|(GFastOneOverSqrtTable[(bits>>17)&0x7f]<<15);float r=*reinterpret_cast<float*>(&estimate);return (3.0f-r*r*value)*r*0.5f;}
 #endif
+#endif
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF
+inline float FABLE_FASTCALL GFRoot(float n){return sqrt(n);}
 #endif
 class C3DVector {
 public:
@@ -42,7 +53,11 @@ public:
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
+#ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP
+    FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector((X-other.X),(Y-other.Y),Z-other.Z);}
+#else
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
+#endif
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,Z+other.Z);}
 #ifdef FABLE_RETAIL_C3DVECTOR_SCALE_X_PAREN
     // Retail opt-in (Codex 2026-11-10,007bc6fa): grouping the X product adds one no-code
@@ -80,13 +95,32 @@ public:
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return X*X+Z*Z+Y*Y;}
     FABLE_VECTOR_INLINE float GetSquaredMagnitude2D()const{return X*X+Y*Y;}
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_DOT_GROUPED
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=(Y*other.Y);dot+=Z*other.Z;dot+=X*other.X;return dot;}
+#else
+#ifdef FABLE_RETAIL_C3DVECTOR_DOT_ORDERED_XYZ
+    FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{float dot=X*other.X;dot+=Y*other.Y;dot+=Z*other.Z;return dot;}
+#else
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{return X*other.X+Y*other.Y+Z*other.Z;}
+#endif
+#endif
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
+#ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_ASSIGN
+    FABLE_VECTOR_INLINE const C3DVector& operator-=(const C3DVector& vector){X-=vector.X;Y-=vector.Y;Z-=vector.Z;return *this;}
+#endif
     FABLE_VECTOR_INLINE const C3DVector& operator+=(const C3DVector& v){X+=v.X;Y+=v.Y;Z+=v.Z;return *this;}
     FABLE_VECTOR_INLINE const C3DVector& operator*=(float v){X*=v;Y*=v;Z*=v;return *this;}
     FABLE_VECTOR_INLINE const C3DVector operator/(float v)const{float reciprocal=1.0f/v;return C3DVector(X*reciprocal,Y*reciprocal,Z*reciprocal);}
     FABLE_VECTOR_INLINE const C3DVector& operator/=(float v){float reciprocal=1.0f/v;X*=reciprocal;Y*=reciprocal;Z*=reciprocal;return *this;}
+#ifdef FABLE_RETAIL_C3DVECTOR_ACCURATE_MAGNITUDE
+    // Original FableWin01d99fb0 and both PDB signatures; named squared sum.
+    FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF
+    FABLE_VECTOR_INLINE float GetMagnitude()const{return GFRoot(X*X+Y*Y+Z*Z);}
+#else
     FABLE_VECTOR_INLINE float GetMagnitude()const{return (float)sqrt(GetSquaredMagnitude());}
+#endif
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Retail branch (pass 12 header wave, 0x00AC2BE0 PartitionSpace): inline in retail; FableWin.pdb keeps out-of-line debug
@@ -125,7 +159,13 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
-#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN
+#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_GROUPED_SUM
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt((GFSqr(X)+GFSqr(Y)+GFSqr(Z)));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#else
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float one_on_magnitude=GFFastOneOverSqrt(GFSqr(X)+GFSqr(Y)+GFSqr(Z));X*=one_on_magnitude;Y*=one_on_magnitude;Z*=one_on_magnitude;return *this;}
+#endif
+#elif defined(FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN)
     // Retail opt-in (chunk 857, row 0x00AC8C80 COptimisedPrimitive::ComputeVertexCost): Normalise's sum written out unparenthesised
     // and IsNonZero as X*X plus the Z/Y pair. There `if (normal.IsNonZero()) normal.Normalise();` shares the three products but
     // sums them twice in the same (Y, Z) + X order (0x00AC8DCA `fld st(0); fadd st(2); fadd st(3)`, then 0x00AC8DE9 `fadd st(1)`,
@@ -142,7 +182,14 @@ public:
     // (same opt-in, see Normalise above)
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z+Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #else
+#ifdef FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX
+    // Original IsNonZero call FableWin02b9fe76; native009420cf..dd squares Z,Y,X.
+    FABLE_VECTOR_INLINE bool IsNonZero()const{return Z*Z+Y*Y+X*X>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_NONZERO_SQUARED_XYZ)
+    FABLE_VECTOR_INLINE bool IsNonZero()const{return X*X+Y*Y+Z*Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#else
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z;squared+=Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#endif
 #endif
 #endif
     C3DVector& AccurateNormalise();

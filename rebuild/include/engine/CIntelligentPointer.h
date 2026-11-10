@@ -101,4 +101,8 @@ public:
 };
 FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_EQUAL_RAW
+// FableWin01cfe990, exact free comparison: pointer first, raw base item second.
+template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& pointer,const CBaseObject* item) { return pointer.GetPItem()==item; }
+#endif
 #endif

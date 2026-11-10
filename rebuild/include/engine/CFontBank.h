@@ -48,6 +48,10 @@ public:
     C2DExtentsF GetStringExtents(const CWideString& text, bool) const;   // 0x0048DAA2
     float GetStringWidth(const CWideString& text) const;                 // 0x0048DA62
 #endif
+#ifdef FABLE_RETAIL_CFONTBANK_HEIGHT
+    // Retail opt-in (Codex2026-11-10): FableWin018aee90 and raw return type signed long.
+    long GetFontHeight()const{return (long)FontHeight;}
+#endif
     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
     C2DExtentsF GetVStringExtents(const CWideString& text) const
     {

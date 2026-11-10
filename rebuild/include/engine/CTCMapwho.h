@@ -12,6 +12,9 @@
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"
 class C3DVector;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+class CTCMapwho;
+#endif
 namespace NThingMap {
 class CThingMapCell;
 class CMapwhoNode {

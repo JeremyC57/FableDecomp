@@ -1,3 +1,4 @@
+// Retail opt-in (Codex 2026-11-10): complete original types from both PDBs and native field/virtual offsets; see 00b396e0 NAMING_EVIDENCE.md.
 #ifndef FABLE_ENGINE_CENGINEPRIMITIVE_H
 #define FABLE_ENGINE_CENGINEPRIMITIVE_H
 // New shared header (chunk 728, row 0x0074BC20): Ego_r.pdb CEnginePrimitive, sizeof 0xC: Type +0 (EEnginePrimitiveType),
@@ -15,6 +16,9 @@ protected:
     CEnginePrimitive(EEnginePrimitiveType type, EEngineInterpolationSet interpolation_set)
         : Type(type), InterpolationSet(interpolation_set) { }
 public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+    EEnginePrimitiveType GetType()const{return Type;}
+#endif
     EEnginePrimitiveType             Type;                 // +0x00
     EEngineInterpolationSet          InterpolationSet;     // +0x04
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;     // +0x08

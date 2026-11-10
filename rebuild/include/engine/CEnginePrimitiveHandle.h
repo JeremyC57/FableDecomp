@@ -1,3 +1,4 @@
+// Retail opt-in (Codex 2026-11-10): complete original types from both PDBs and native field/virtual offsets; see 00b396e0 NAMING_EVIDENCE.md.
 #ifndef FABLE_ENGINE_CENGINEPRIMITIVEHANDLE_H
 #define FABLE_ENGINE_CENGINEPRIMITIVEHANDLE_H
 #include "fable_compiler.h"
@@ -19,10 +20,27 @@ public:
         if (!Data.IsNull() && Data->GetRefCount() == 1) Data->NotifyReleased(*this);
     }
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+    void SetData(CEnginePersistentPrimitiveBase* data){Clear();Data.Reset(data);}
+    bool IsNull()const{return Data.IsNull();}
+    long GetType()const{return Data->GetType();}
+    CEnginePersistentPrimitiveBase& GetData()const{return *Data.operator->();}
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_DATA)
+    bool IsNull()const{return Data.IsNull();}
+    CEnginePersistentPrimitiveBase& GetData()const{return *Data;}
+    const CEnginePersistentPrimitiveBase& PeekData()const{return *Data;}
+    void SetData(CEnginePersistentPrimitiveBase* data){Clear();Data.Reset(data);}
+#else
     void SetData(CEnginePersistentPrimitiveBase* data);
+#endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN
     // Chunk 740 (0x00B03CA0): FableWin.pdb ??4CEnginePrimitiveHandle@@QAEABV0@ABV0@@Z (inline in retail): the counted Data assignment.
-    const CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other) { Data = other.Data; return *this; }
+    const CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& other) {
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+        Clear();
+#endif
+        Data=other.Data;return *this;
+    }
 #endif
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
     // Retail opt-in (chunk 737, CPSCLight::PreparePrimitives 0x00B19C60; the landed CPSCLight::Kill 0x00B19C20 model): FableWin.pdb

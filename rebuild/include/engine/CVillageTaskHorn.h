@@ -8,6 +8,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CVILLAGETASKHORN
+// Original hierarchy, data and signatures from both raw donor TPI records.
+#include "engine/CVillageTaskBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingTrackNode; class CThingObject;
+class CVillageTaskHorn : public CVillageTaskBase {
+    CIntelligentPointer<CThing> PHorn;
+    CIntelligentPointer<const CThing> CreatureAssignedToTask;
+public:
+    CVillageTaskHorn(const CVillageTaskHorn &);
+    CVillageTaskHorn(CThing &);
+    virtual void AssignCreatureToTask(const CThing &);
+    virtual bool IsCreatureAssignedToTask(const CThing &) const;
+    virtual EVillageTaskType GetTaskType() const;
+    virtual bool IsValid() const;
+    virtual bool IsTaskAvailable() const;
+    virtual bool IsThingInvolvedWithTask(const CThing &) const;
+    virtual void RemoveThingFromTask(const CThing &,bool &);
+    bool IsBetterThan(const CVillageTaskHorn *,const CThing &) const;
+    bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+    CThing * GetHorn() const;
+    virtual ~CVillageTaskHorn();
+    CVillageTaskHorn & operator=(const CVillageTaskHorn &);
+};
+FABLE_STATIC_ASSERT(sizeof(CVillageTaskHorn)==0x18);
+#else
 #pragma pack(push, 1)
 class CVillageTaskHorn {
 public:
@@ -23,4 +50,5 @@ FABLE_STATIC_ASSERT(offsetof(CVillageTaskHorn, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskHorn, PHorn) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskHorn, CreatureAssignedToTask) == 0x10);
 
+#endif // FABLE_RETAIL_CVILLAGETASKHORN
 #endif // FABLE_ENGINE_CVILLAGETASKHORN_H

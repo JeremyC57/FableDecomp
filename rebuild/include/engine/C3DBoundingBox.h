@@ -15,7 +15,11 @@ class C3DBoundingBox {
     // (0x0122F59C): (MaxCoord + MinCoord) * 0.5f (chunk 721 round 4); 0x00AC2BE0 is byte-identical with that form.
 public:
     void BuildFromPoints(const std::vector<C3DVector>&);
+#ifdef FABLE_RETAIL_C3DBOUNDINGBOX_CENTER_MIN_FIRST
+    const C3DVector GetCenter()const{return (MinCoord+MaxCoord)*0.5f;}
+#else
     const C3DVector GetCenter() const { return (MaxCoord + MinCoord) * 0.5f; }
+#endif
     // CalcShortestDistanceToPointSquared: Ego_r `?CalcShortestDistanceToPointSquared@C3DBoundingBox@@QBEMABVC3DVector@@@Z`;
     //   declared only -- its body carries the engine's hand-SSE kernel, so each retail_asm row that expands it defines it
     //   (landed 0x00BF7DF0, chunk 721 0x00B46280).

@@ -1,3 +1,4 @@
+// Retail opt-in (Codex 2026-11-10): complete original types from both PDBs and native field/virtual offsets; see 00b396e0 NAMING_EVIDENCE.md.
 #ifndef FABLE_ENGINE_CENGINEPRIMITIVETYPEINFO_H
 #define FABLE_ENGINE_CENGINEPRIMITIVETYPEINFO_H
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
@@ -22,8 +23,14 @@ public:
     // (FableWin.pdb likewise), out of line in retail at 0x00B8FAD0. Declaration only.
     void RegisterPrimitiveManager(CEnginePrimitiveManager* manager);
 #endif
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+    CEnginePrimitiveManager* GetPrimitiveManager(long type)const{return PrimitiveManagers[type];}
 private:
-    unsigned char _pad_0x10[0xbc];              // +0x10 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+    CEnginePrimitiveManager* PrimitiveManagers[47];
+#else
+private:
+    unsigned char _pad_0x10[0xbc];
+#endif              // +0x10 members not modelled yet (Ego_r.pdb names; retail STLport sizes)
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveTypeInfo) == 0xcc);
 #else // generated flattened Ego_r layout (the landed default, unchanged)

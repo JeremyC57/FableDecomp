@@ -7,7 +7,12 @@
 #endif
 class C2DBoxI { public: long TLX,TLY,BRX,BRY; C2DBoxI() {}
 // Original Ego_r TPI0xb186; centre/radius arithmetic is native0074a685 onward.
+#ifdef FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS
+// Retail opt-in (Codex2026-11-10): FableWin01addbb0 has direct four field initialization.
+C2DBoxI(const C2DCoordI& p,long radius):TLX(p.X-radius),TLY(p.Y-radius),BRX(p.X+radius),BRY(p.Y+radius){}
+#else
 C2DBoxI(const C2DCoordI& p,long radius){long x=p.X;long y=p.Y;Initialise(x-radius,y-radius,x+radius,y+radius);}
+#endif
 void Initialise(long tlx,long tly,long brx,long bry){TLX=tlx;TLY=tly;BRX=brx;BRY=bry;}
 #ifdef FABLE_RETAIL_C2DBOXI_CTORS
 // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb ??0C2DBoxI@@QAE@JJJJ@Z and

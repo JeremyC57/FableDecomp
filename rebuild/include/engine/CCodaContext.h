@@ -1,5 +1,8 @@
 #ifndef FABLE_CCODACONTEXT_H
 #define FABLE_CCODACONTEXT_H
+#ifdef FABLE_RETAIL_CCODACONTEXT_SETERROR
+#include "engine/CODA_PlatformTypes.h"
+#endif
 #include "engine/CCodaObjectBase.h"
 // Layout: SDK 2.10 CodeView member names; native offsets are 12 bytes below the SDK debug donor.
 // The SDK release also retains eight more base bytes than this native fork; see VENDOR_COMPILER_EVIDENCE.txt.
@@ -25,8 +28,18 @@ private:
     int m_nFree;                                         // +0x0c
     unsigned int m_nObjects;                             // +0x10
 };
-class CCodaObject : public CCodaObjectBase { };          // release layout: vptr only (debug adds m_DebugTest/links)
+#ifndef FABLE_RETAIL_CCODACONTEXT_SETERROR
+class CCodaObject : public CCodaObjectBase { };
+#endif // Original context base has no object-list links in native
+//          // release layout: vptr only (debug adds m_DebugTest/links)
+#ifdef FABLE_RETAIL_CCODACONTEXT_SETERROR
+class CCodaContext : public CCodaObjectBase { public:
+#else
 class CCodaContext : public CCodaObject { public:
+#endif
+#ifdef FABLE_RETAIL_CCODACONTEXT_SETERROR
+    void SetError(int);
+#endif
     CRESOURCEDESC* GetResourceCounts(CRESOURCEDESC* pResourceDesc) const;   // descriptive name: absent from SDK 2.10
 private:
     CSalPlatform* m_pSal;                                // +0x04
@@ -43,6 +56,21 @@ private:
     int m_nMax3DSources;                                 // +0x70
     int m_nMaxListeners;                                 // +0x74
     int m_nMaxEnvironments;                              // +0x78
-    unsigned char UnmodelledTail[0x2c]; // SDK release size 0xa8; no tail member used here.
+#ifdef FABLE_RETAIL_CCODACONTEXT_SETERROR
+    void (FABLE_STDCALL *m_pfnErrorCallback)(int );
+    void (FABLE_STDCALL *m_pfnPlayCallback)(void * ,unsigned int ,unsigned int );
+    unsigned int m_PlayCallbackData;
+    unsigned int m_uiHFReference;
+    float m_fZAxis;
+    float m_fDistanceUnits;
+    float m_fDopplerFactor;
+    float m_fDopplerSpeed;
+    float m_fMacroFxFactor;
+    float m_fRolloffFactor;
+    unsigned int m_ffUpdate;
+#else
+    unsigned char UnmodelledTail[0x2c];
+#endif
+// // SDK release size 0xa8; no tail member used here.
 };
 #endif

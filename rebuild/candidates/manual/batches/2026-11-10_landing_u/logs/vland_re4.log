@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0065b142   WARN RELOC_NAME: ?SetRespawnable@CTCDummyVillager@@QAEX_N@Z -> 0072f0e0 labelled '_global::SetMember_byte0x48_0072f0e0'
+0065b142   RELOCATION_MATCH PASS   EnableVillagerDefTypes
+  WARN leaf '??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@Z' matches no symbol in 00807a90.obj; graded the largest function
+  WARN leaf '??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@Z' matches no symbol in 00807a90.obj; graded the largest function
+00807a90   RELOCATION_MATCH PASS   remove_copy_if
+008f5970   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008f5970   RELOCATION_MATCH PASS   GetClosestPointOnFiniteLineToPoint
+00ac7200   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ac7200   RELOCATION_MATCH PASS   MakeOrthogonal
+
+WINS: 4
+  0065b142 RELOCATION_MATCH CTCVillage::?EnableVillagerDefTypes@CTCVillage@@QAEX_NABVCCharString@@@Z
+  00807a90 RELOCATION_MATCH std::??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@Z
+  008f5970 RELOCATION_MATCH NPhysicsHelpers::?GetClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z
+  00ac7200 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?MakeOrthogonal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABV3@0@Z

@@ -12,6 +12,10 @@
 class CTCAnimationBase;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CENGINEGRAPHIC
+class CEngineGraphic {public: unsigned long BankIndex; float AnimStep,RenderSizeX; bool AdditiveAlpha; unsigned char Type;};
+FABLE_STATIC_ASSERT(sizeof(CEngineGraphic)==14);
+#endif
 struct CTCGraphicAppearance {
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     void*             f4;                                    // +0x04 retail-only Sub* (CTCGraphicAppearance_SetAlpha_004bfac0.cpp)

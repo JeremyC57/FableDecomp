@@ -12,6 +12,11 @@ protected:
  static void __fastcall LeaveSynchronisation();
  void* InternalAllocate(long,unsigned long,bool);
 public:
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+ // Original FableWin Get018a4e40; OnFailedAllocation030bf3a0.
+ static CMemoryAllocator* FABLE_FASTCALL Get(){return PMemoryAllocator;}
+ void OnFailedAllocation();
+#endif
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_ALIGNED
  // Opt-in (chunk 892, row 0x00B482A0): Ego_r.pdb ?AllocateAligned@CMemoryAllocator@@SIPAXKJ@Z (0x009F2BE0, landed) and
  // ?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z (0x009F2B20, landed), public static __fastcall. Declarations only.

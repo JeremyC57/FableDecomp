@@ -19,5 +19,42 @@ template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)()
     return mem_fun_ref_t<R, T>(pfn);
 }
 template <class It, class F> F FABLE_FASTCALL for_each(It first, It last, F f);   // 0x0043F360 (SGI, /Gr)
+#ifdef FABLE_RETAIL_STLP_FIND_IF_INPUT
+// STLport 4.6.2 _algobase.c:183-197, input-iterator search and category dispatch.
+/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Copyright (c) 1996,1997
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Copyright (c) 1997
+ * Moscow Center for SPARC Technology
+ *
+ * Copyright (c) 1999 
+ * Boris Fomitchev
+ *
+ * This material is provided "as is", with absolutely no warranty expressed
+ * or implied. Any use is at your own risk.
+ *
+ * Permission to use or copy this software for any purpose is hereby granted 
+ * without fee, provided the above notices are retained on all copies.
+ * Permission to modify the code and to distribute modified code is granted,
+ * provided the above notices are retained, and a notice that the code was
+ * modified is included with the above copyright notice.
+ *
+ */
+// Modified only for this project's names and calling-convention spelling.
+template<class Input,class Predicate>
+inline Input FABLE_FASTCALL __find_if(Input first,Input last,Predicate pred,const input_iterator_tag&) {
+    while(first!=last && !pred(*first)) ++first;
+    return first;
+}
+template<class Input,class Predicate>
+Input FABLE_FASTCALL find_if(Input first,Input last,Predicate pred) {
+    return __find_if(first,last,pred,typename iterator_traits<Input>::iterator_category());
+}
+#endif
 }
 #endif

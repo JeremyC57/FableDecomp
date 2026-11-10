@@ -5,9 +5,27 @@
 // the members after the base (Ego_r.pdb +0xC..+0x60) stay opaque here.
 #include "rebuild_abi.h"
 #include "engine/CMeshDataBankEntry.h"
+#ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
+#include "engine/C3DBoundingBox.h"
+#include "engine/C3DBoundingSphere.h"
+#include "engine/CIVCountedPointer.h"
+#endif
 class C3DMeshInfo : public CMeshDataBankEntry {
 public:
+#ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
+    C3DBoundingBox GetBoundingBox()const{return BoundingBox;}
+private:
+    class CMeshData;
+    CIVCountedPointer<CMeshData> MeshData;
+    C3DBoundingBox BoundingBox;
+    C3DBoundingSphere BoundingSphere;
+    float SafeBoundingRadius;
+    long PhysicsMeshIndex;
+    float LODErrors[4];
+    unsigned long LODDataSizes[4];
+#else
     unsigned char _body_0x0c[0x60 - 0xc];                               // +0x0c MeshData, BoundingBox, BoundingSphere, ...
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
 #else

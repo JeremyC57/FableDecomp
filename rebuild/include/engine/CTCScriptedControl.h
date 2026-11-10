@@ -11,6 +11,9 @@
 // (?Update / ?OnActivate / ?OnAdd / ?GetActionName@...@NTCScriptedControl@@, ?OnActivate / ?OnAdd / ?OnCleanup@CActionBase@CTCScriptedControl@@UAEXXZ).
 // OnActivate is an inline virtual (out of line for the vtable, expanded in the overriders' qualified calls: 0x007128F3).
 // Members (Ego_r.pdb, sizeof 0xc): PTCScript +0x04, Activated +0x08, Terminated +0x09. Default path unchanged.
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_CREATURE
+class CThingCreatureBase;
+#endif
 class CTCScriptedControl : public CTCBase {
 private:
     unsigned char PScriptHandleImp[8]; // CIntelligentPointer<CScriptGameResourceObjectScriptedThing>.
@@ -21,6 +24,9 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SCRIPTED_CONTROL; } bool IsActive() const;
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE
     class CActionBase;
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_CREATURE
+    CThingCreatureBase& GetParentCreature();
+#endif
 #endif
 };
 

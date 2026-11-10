@@ -1,0 +1,161 @@
+addr       parity           behav  name
+006509f8   RELOCATION_MATCH PASS   DrawAt
+0065b142   WARN RELOC_NAME: ?SetRespawnable@CTCDummyVillager@@QAEX_N@Z -> 0072f0e0 labelled '_global::SetMember_byte0x48_0072f0e0'
+0065b142   RELOCATION_MATCH["s"] PASS   EnableVillagerDefTypes
+00660ae2   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskTorch@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskTorch@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@0@U10@0VCIsTask@@@Z -> 0065f9e0 labelled '_unattributed::Construct_CRangeString_0065f9e0'
+00660ae2   RELOCATION_MATCH PASS   RemoveThingFromTask<CVillageTaskTorch>
+00660b5d   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@0@U10@0VCIsTask@@@Z -> 0065fa0a labelled '_unattributed::Construct_CRangeString_0065fa0a'
+00660b5d   RELOCATION_MATCH PASS   RemoveThingFromTask<CVillageTaskHorn>
+00660bd8   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskPatrol@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPatrol@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskPatrol@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPatrol@@@@@std@@@0@U10@0VCIsTask@@@Z -> 0065fa34 labelled '_unattributed::Construct_CRangeString_0065fa34'
+00660bd8   RELOCATION_MATCH PASS   RemoveThingFromTask<CVillageTaskPatrol>
+00660c53   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@0@U10@0VCIsTask@@@Z -> 0065fa5e labelled '_unattributed::Construct_CRangeString_0065fa5e'
+00660c53   RELOCATION_MATCH PASS   RemoveThingFromTask<CVillageTaskPickCrops>
+00660cce   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@0@U10@0VCIsTask@@@Z -> 0065fa88 labelled '_unattributed::Construct_CRangeString_0065fa88'
+00660cce   RELOCATION_MATCH PASS   RemoveThingFromTask<CVillageTaskSecuritySweep>
+00660d49   WARN RELOC_NAME: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@std@@VCIsTask@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@0@U10@0VCIsTask@@@Z -> 0065fab2 labelled '_unattributed::Construct_CRangeString_0065fab2'
+00660d49   RELOCATION_MATCH PASS   RemoveThingFromTask<CVillageTaskCarryCrate>
+  WARN leaf '?GetBestAttackerForPlacementVector@?A0xd8b789b9@@YIPBVCThingCreatureBase@@ABV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@ABVC3DVector@@1@Z' matches no symbol in 006e8ce0.obj; graded the largest function
+  WARN leaf '?GetBestAttackerForPlacementVector@?A0xd8b789b9@@YIPBVCThingCreatureBase@@ABV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@ABVC3DVector@@1@Z' matches no symbol in 006e8ce0.obj; graded the largest function
+006e8ce0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006e8ce0   WARN STANDIN_LEAF ?GetBestAttackerForPlacementVector@?A0x627e1dd2@@YIPBVCThingCreatureBase@@ABV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@ABVC3DVector@@1@Z (catalog (anonymous namespace)::GetBestAttackerForPlacementVector; names another function)
+006e8ce0   RELOCATION_MATCH PASS   GetBestAttackerForPlacementVector
+0070d580   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0070d580   RELOCATION_MATCH PASS   SetMainAnim
+00712900   RELOCATION_MATCH PASS   Update
+0077c960   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+0077c960   WARN RELOC_NAME: ?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z -> 00a22f80 labelled 'CRightHandedSet::Method_00a22f80'
+0077c960   RELOCATION_MATCH PASS   DoMovement
+007d5070   RELOCATION_MATCH PASS   CardsMainGame
+  WARN leaf '??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@Z' matches no symbol in 00807a90.obj; graded the largest function
+  WARN leaf '??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@Z' matches no symbol in 00807a90.obj; graded the largest function
+00807a90   RELOCATION_MATCH PASS   remove_copy_if
+0080db70   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0080db70   RELOCATION_MATCH PASS   operator()
+00826c90   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOldFileFormatHeightMapCell5@@@@SIXPAX@Z -> 00822d10 labelled '_global::OperatorDelete_thunk_00822d10'
+00826c90   RELOCATION_MATCH PASS   ConvertPreviousUnknownVersionUp
+008884d0   DIFFER(517v514)  PASS   GetLevelTheme
+008c7280   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008c7280   WARN RELOC_NAME: ?insert_unique@?$_Rb_tree@PAXU?$pair@QAXM@std@@U?$_Select1st@U?$pair@QAXM@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXM@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@QAXM@std@@U?$_Nonconst_traits@U?$pair@QAXM@std@@@2@@std@@_N@2@ABU?$pair@QAXM@2@@Z -> 00580d21 labelled 'CTCHaste::PausedSetInsert'
+008c7280   RELOCATION_MATCH PASS   Initialise
+008f5970   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008f5970   RELOCATION_MATCH PASS   GetClosestPointOnFiniteLineToPoint
+009350c0   RELOCATION_MATCH PASS   Fired
+00941fc0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00941fc0   WARN RELOC_NAME: ??0CIsVeryCloseMotionlessCreature@@QAE@AAVCThingAICreature@@@Z -> 00942230 labelled 'CTCCameraPointDefinitionBase::GetActiveCameraPosition'
+00941fc0   RELOCATION_MATCH PASS   IsRunnable
+009e1960   MATCH            PASS   GFStringToInt
+009e1a80   WARN RELOC_ALIAS: _wcslen -> 00bfed94 is the import thunk 'MSVCR71.DLL::wcslen'
+009e1a80   RELOCATION_MATCH PASS   GFStringToInt
+00a0bf20   RELOCATION_MATCH PASS   CCamera
+00a17620   WARN RELOC_NAME: ?GFGetShortestDistanceSquaredBetweenPointAndLine@@YIMABVC3DVector@@00AAM@Z -> 00a442e0 labelled '_global::GFGetDistanceSquaredFromPointToLine'
+00a17620   RELOCATION_MATCH PASS   HasBoundingSphereIntersectedFromTo
+00a22e10   RELOCATION_MATCH PASS   MakePerpendicular
+00a22f80   DIFFER(253v523)  PASS   Rotate
+00a65720   WARN RELOC_NAME: ?OnFailedAllocation@CMemoryAllocator@@QAEXXZ -> 009f1f00 labelled '_global::Nop_ret0_009f1f00'
+00a65720   RELOCATION_MATCH PASS   NewChunk
+00ac7200   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ac7200   RELOCATION_MATCH PASS   MakeOrthogonal
+00b396e0   DIFFER(336v497)  PASS   Update
+00b92300   DIFFER(183v335)  PASS   CreateOcclusionGroup
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+  WARN leaf '??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z' matches no symbol in 00beea00.obj; graded the largest function
+00beea00   DIFFER(264v266)  PASS   __adjust_heap
+00c35dd0   WARN RELOC_NAME: ?Play@CCodaSource@@QAEH_N@Z -> 00c43fd0 labelled 'CDrawAutoPickups::OnVisibilityChange'
+00c35dd0   RELOCATION_MATCH PASS   CODA_SourcePlay
+00c5a9d0   WARN RELOC_NAME: ?TimeToFrames@CSalBaseVoice@@KAHM@Z -> 00c59b00 labelled 'SecondsToMixBlocks'
+00c5a9d0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c5a9d0   RELOCATION_MATCH PASS   UpdateMultiFuncLFO
+00d259a0   RELOCATION_MATCH PASS   OnPredicateFail
+00f36860   RELOCATION_MATCH PASS   GetFractalHeight
+00f36a30   RELOCATION_MATCH PASS   GetFractalHeight
+
+WINS: 32
+  006509f8 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounter::?DrawAt@CQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z
+  0065b142 RELOCATION_MATCH["s"] CTCVillage::?EnableVillagerDefTypes@CTCVillage@@QAEX_NABVCCharString@@@Z
+  00660ae2 RELOCATION_MATCH CTCVillage::??$RemoveThingFromTask@VCVillageTaskTorch@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskTorch@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@std@@@Z
+  00660b5d RELOCATION_MATCH CTCVillage::??$RemoveThingFromTask@VCVillageTaskHorn@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskHorn@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@@Z
+  00660bd8 RELOCATION_MATCH CTCVillage::??$RemoveThingFromTask@VCVillageTaskPatrol@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskPatrol@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskPatrol@@@@@std@@@std@@@Z
+  00660c53 RELOCATION_MATCH CTCVillage::??$RemoveThingFromTask@VCVillageTaskPickCrops@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskPickCrops@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@std@@@Z
+  00660cce RELOCATION_MATCH CTCVillage::??$RemoveThingFromTask@VCVillageTaskSecuritySweep@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@std@@@Z
+  00660d49 RELOCATION_MATCH CTCVillage::??$RemoveThingFromTask@VCVillageTaskCarryCrate@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@std@@@Z
+  006e8ce0 RELOCATION_MATCH (anonymous namespace)::?GetBestAttackerForPlacementVector@?A0xd8b789b9@@YIPBVCThingCreatureBase@@ABV?$list@PBVCThingCreatureBase@@V?$allocator@PBVCThingCreatureBase@@@std@@@std@@ABVC3DVector@@1@Z
+  0070d580 RELOCATION_MATCH CAnimateThing::?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ@Z
+  00712900 RELOCATION_MATCH NTCScriptedControl::CActionPlayAnimation::?Update@CActionPlayAnimation@NTCScriptedControl@@UAEXXZ
+  0077c960 RELOCATION_MATCH CTCHighlightItem::?DoMovement@CTCHighlightItem@@IAEXXZ
+  007d5070 RELOCATION_MATCH CTCTavernGameCardSorting::?CardsMainGame@CTCTavernGameCardSorting@@UAEXXZ
+  00807a90 RELOCATION_MATCH std::??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xdfc5f859@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xdfc5f859@@@std@@@@@Z
+  0080db70 RELOCATION_MATCH CApplyAdditionalExplosiveImpulseIfInsideRing::??RCApplyAdditionalExplosiveImpulseIfInsideRing@@QBEXPAVCThing@@@Z
+  00826c90 RELOCATION_MATCH CReplaceSerialise<COldFileFormatHeightMapCell5, COldFileFormatHeightMapCell4>::?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell5@@VCOldFileFormatHeightMapCell4@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell5@@@@PAX@Z
+  008c7280 RELOCATION_MATCH CCreatureAction_TrollGroundPound::?Initialise@CCreatureAction_TrollGroundPound@@UAEXXZ
+  008f5970 RELOCATION_MATCH NPhysicsHelpers::?GetClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z
+  009350c0 RELOCATION_MATCH CAIStateGroup_ScriptingBase<CAIStateGroupBase>::?Fired@?$CAIStateGroup_ScriptingBase@VCAIStateGroupBase@@@@IAEXXZ
+  00941fc0 RELOCATION_MATCH CAIStateGroup_KidReactToBlockage::?IsRunnable@CAIStateGroup_KidReactToBlockage@@UAE_NXZ
+  009e1960 MATCH _global::?GFStringToInt@@YIJPBD@Z
+  009e1a80 RELOCATION_MATCH _global::?GFStringToInt@@YIJPBG@Z
+  00a0bf20 RELOCATION_MATCH CCamera::??0CCamera@@QAE@ABVC3DVector@@0M_N@Z
+  00a17620 RELOCATION_MATCH CPhysicsMesh::?HasBoundingSphereIntersectedFromTo@CPhysicsMesh@@QBE_NMABVC3DVector@@0@Z
+  00a22e10 RELOCATION_MATCH CRightHandedSet::?MakePerpendicular@CRightHandedSet@@QAEXXZ
+  00a65720 RELOCATION_MATCH CMemoryAllocatorVariableSize::?NewChunk@CMemoryAllocatorVariableSize@@IAEPAVCMemoryAreaChunk@1@J@Z
+  00ac7200 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?MakeOrthogonal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABV3@0@Z
+  00c35dd0 RELOCATION_MATCH _global::_CODA_SourcePlay@8
+  00c5a9d0 RELOCATION_MATCH CSalSwBaseVoice::?UpdateMultiFuncLFO@CSalSwBaseVoice@@AAEXPBU_CMULTIFUNCLFO@@@Z
+  00d259a0 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDragon::?OnPredicateFail@CDragon@CQ_DragonBossFightScript@NScript@@EAEXXZ
+  00f36860 RELOCATION_MATCH NFractal::CHybridMultifractal::?GetFractalHeight@CHybridMultifractal@NFractal@@UBENABVC2DVector@@@Z
+  00f36a30 RELOCATION_MATCH NFractal::CHeteroTerrainFractal::?GetFractalHeight@CHeteroTerrainFractal@NFractal@@UBENABVC2DVector@@@Z
+
+LANDED 32 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawQuestInfoCQuestInfoElementCounter_DrawAt_006509f8
+  CTCVillage_EnableVillagerDefTypes_0065b142
+  CTCVillage_RemoveThingFromTaskCVillageTaskTorch_00660ae2
+  CTCVillage_RemoveThingFromTaskCVillageTaskHorn_00660b5d
+  CTCVillage_RemoveThingFromTaskCVillageTaskPatrol_00660bd8
+  CTCVillage_RemoveThingFromTaskCVillageTaskPickCrops_00660c53
+  CTCVillage_RemoveThingFromTaskCVillageTaskSecuritySweep_00660cce
+  CTCVillage_RemoveThingFromTaskCVillageTaskCarryCrate_00660d49
+  anonymousnamespace_GetBestAttackerForPlacementVector_006e8ce0
+  CAnimateThing_SetMainAnim_0070d580
+  NTCScriptedControlCActionPlayAnimation_Update_00712900
+  CTCHighlightItem_DoMovement_0077c960
+  CTCTavernGameCardSorting_CardsMainGame_007d5070
+  std_removecopyif_00807a90
+  CApplyAdditionalExplosiveImpulseIfInsideRing_operator_0080db70
+  CReplaceSerialiseCOldFileFormatHeightMapCell5COldFileFormatHeightMapCell4_ConvertPreviousUnknownVersionUp_00826c90
+  CCreatureActionTrollGroundPound_Initialise_008c7280
+  NPhysicsHelpers_GetClosestPointOnFiniteLineToPoint_008f5970
+  CAIStateGroupScriptingBaseCAIStateGroupBase_Fired_009350c0
+  CAIStateGroupKidReactToBlockage_IsRunnable_00941fc0
+  global_GFStringToInt_009e1960
+  global_GFStringToInt_009e1a80
+  CCamera_CCamera_00a0bf20
+  CPhysicsMesh_HasBoundingSphereIntersectedFromTo_00a17620
+  CRightHandedSet_MakePerpendicular_00a22e10
+  CMemoryAllocatorVariableSize_NewChunk_00a65720
+  QuadricOptimiserInternalsCOptimisedPrimitive_MakeOrthogonal_00ac7200
+  global_CODASourcePlay_00c35dd0
+  CSalSwBaseVoice_UpdateMultiFuncLFO_00c5a9d0
+  NScriptCQDragonBossFightScriptCDragon_OnPredicateFail_00d259a0
+  NFractalCHybridMultifractal_GetFractalHeight_00f36860
+  NFractalCHeteroTerrainFractal_GetFractalHeight_00f36a30

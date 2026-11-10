@@ -26,7 +26,12 @@ public:
     void SetOnHitPause(long frames) { PauseFrames=frames; }
     void SetActionSpeedMultiplier(void* key, float multiplier)
     {
+#ifdef FABLE_RETAIL_CTCHASTE_MAKE_PAIR
+        // Original debug SetActionSpeedMultiplier calls std::make_pair before insert.
+        Multipliers.insert(std::make_pair(key, multiplier));
+#else
         Multipliers.insert(std::map<void*,float>::value_type(key, multiplier));
+#endif
         UpdateActionSpeedMultiplier();
     }
 };

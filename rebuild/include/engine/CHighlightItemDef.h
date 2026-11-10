@@ -8,6 +8,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CHIGHLIGHTITEMDEF
+#include "engine/CSubDefClassBase.h"
+#include "fable_string.h"
+class CHighlightItemDef:public CSubDefClassBase {public:
+ static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CHighlightItemDef");}
+ long ParticleEmitter,PickupParticleEmitter;float RotationSpeed,DistanceFromGround,BobDistance,BobTime;bool StartAsRunning;float StartAsRunningDelay;
+};
+#else
 #pragma pack(push, 1)
 class CHighlightItemDef {
 public:
@@ -32,9 +40,12 @@ public:
     float         StartAsRunningDelay;                       // +0x44
 };
 #pragma pack(pop)
+#endif
 
 FABLE_STATIC_ASSERT(sizeof(CHighlightItemDef) == 0x48);
+#ifndef FABLE_RETAIL_CHIGHLIGHTITEMDEF
 FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, ParticleEmitter) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, PickupParticleEmitter) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CHighlightItemDef, RotationSpeed) == 0x30);

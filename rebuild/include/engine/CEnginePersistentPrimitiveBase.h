@@ -1,3 +1,4 @@
+// Retail opt-in (Codex 2026-11-10): complete original types from both PDBs and native field/virtual offsets; see 00b396e0 NAMING_EVIDENCE.md.
 #ifdef FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
 #ifndef FABLE_ENGINE_CENGINEPERSISTENTPRIMITIVEBASE_H
 #define FABLE_ENGINE_CENGINEPERSISTENTPRIMITIVEBASE_H
@@ -21,6 +22,9 @@ class CEnginePersistentPrimitiveBase : public CIVCountedPointeeBase {
     friend class CEnginePrimitiveHandle;
 public:
     CEnginePersistentPrimitiveBase(long type);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+    long GetType()const{return Type;}
+#endif
     virtual ~CEnginePersistentPrimitiveBase();
     virtual void CollectStats(std::map<unsigned long,unsigned long,
         std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,

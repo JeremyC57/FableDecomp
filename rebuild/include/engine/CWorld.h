@@ -111,6 +111,9 @@ public:
     virtual const CIDrawWorldMap* DrawGetWorldMap() const;                     // CIDrawWorld slot 1 0x0049E1A0
     virtual const CIDrawEnvironment* DrawGetEnvironment() const;               // CIDrawWorld slot 2 0x0049E350
 
+#ifdef FABLE_RETAIL_CWORLD_MESH_BANK
+    CMeshDataBank* GetMeshBank(){return PMainMeshBank_Data;}
+#endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
     bool EventIsWorldEvent(const CGameEvent* event) const;   // 0x0049D8C0 ?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z

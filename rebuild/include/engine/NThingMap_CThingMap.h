@@ -8,6 +8,9 @@
 // landed spellings (NThingMap::g_NoMapwhoLevels 0x013BA848; LayerInfo_0137dad8, element NThingMap::CLayerInfo in Ego_r.pdb, kept
 // as the landed global struct). Needs FABLE_RETAIL_CTCMAPWHO (NThingMap::CMapwhoNode) for the cell's node list.
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+#include "engine/CRGBColour.h"
+#endif
 #include "stlport/fable_containers.h"
 #include "engine/C2DBoxI.h"
 #include "engine/C2DExtentsI.h"
@@ -35,6 +38,12 @@ public:
     long                                       NoThings;          // +0x30
 };
 FABLE_STATIC_ASSERT(sizeof(CThingMap) == 0x34);
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+extern long MaxLayers;
+class CLayerInfo {public:long Size,ScaleShift;CRGBColour UsedColour,UnusedColour;};
+extern const CLayerInfo LayerInfo[];
+}
+#else
 extern long g_NoMapwhoLevels;                                // 0x013BA848
 }
 struct CLayerInfo { long Size; long ScaleShift; unsigned long UsedColour, UnusedColour; };   // NThingMap::CLayerInfo (0x10)
@@ -42,4 +51,5 @@ extern CLayerInfo LayerInfo_0137dad8[];                      // 0x0137DAD8 (land
 extern long SearchCount_013b89a8;                            // 0x013B89A8 the rough-area search count (landed spelling)
 extern long SearchWork_013b89ac;                             // 0x013B89AC (landed spelling)
 extern unsigned long SearchID_013b89b0;                      // 0x013B89B0 the search stamp (landed spelling)
+#endif
 #endif

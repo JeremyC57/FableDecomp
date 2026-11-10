@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
+#include "engine/CEngineInternalPrimitiveBase.h"
+#include "engine/CEnginePrimitiveOcclusionInfo.h"
+#include "engine/EEngineOcclusionLayer.h"
+#include "engine/CIVCountedPointer.h"
+class CEngineInternalPrimitiveOcclusionBase:public CEngineInternalPrimitiveBase {public:
+ virtual ~CEngineInternalPrimitiveOcclusionBase();
+ void SetupOcclusionInfo(EEngineOcclusionLayer layer){if(layer!=OCCLUSION_LAYER_NONE&&!(EnginePrimitiveFlags&0x4000)&&OcclusionInfo[layer].IsNull())OcclusionInfo[layer].Reset(new CEnginePrimitiveOcclusionInfo);}
+ CEnginePrimitiveOcclusionInfo& GetOcclusionInfo(EEngineOcclusionLayer layer)const{return *OcclusionInfo[layer];}
+ CIVCountedPointer<CEnginePrimitiveOcclusionInfo> OcclusionInfo[2];
+};
+#else
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveOcclusionBase {
 public:
@@ -32,9 +44,12 @@ public:
     unsigned char OcclusionInfo[0x8];                        // +0x48 CIVCountedPointer<CEnginePrimitiveOcclusionInfo>[2]
 };
 #pragma pack(pop)
+#endif
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveOcclusionBase) == 0x50);
+#ifndef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionBase, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveOcclusionBase, OcclusionInfo) == 0x48);
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEOCCLUSIONBASE_H

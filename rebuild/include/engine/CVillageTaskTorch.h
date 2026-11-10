@@ -8,6 +8,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CVILLAGETASKTORCH
+// Both donor TPI records preserve the base, all data and these original member declarations.
+#include "engine/CVillageTaskBase.h"
+#include "engine/CIntelligentPointer.h"
+class CVillageTaskTorch : public CVillageTaskBase {
+    CIntelligentPointer<CThing> Torch;
+    CIntelligentPointer<const CThing> CreatureAssignedToTask;
+public:
+    CVillageTaskTorch(CThing&);
+    CVillageTaskTorch(const CVillageTaskTorch&);
+    virtual ~CVillageTaskTorch();
+    virtual void AssignCreatureToTask(const CThing&);
+    virtual bool IsCreatureAssignedToTask(const CThing&) const;
+    bool IsAnyCreatureAssignedToTask() const;
+    virtual EVillageTaskType GetTaskType() const;
+    virtual bool IsValid() const;
+    virtual bool IsTaskAvailable() const;
+    virtual bool IsThingInvolvedWithTask(const CThing&) const;
+    virtual void RemoveThingFromTask(const CThing&,bool&);
+    bool IsBetterThan(const CVillageTaskTorch*,const CThing&) const;
+    bool IsCreatureMoreAppropriateForTask(const CThing&) const;
+    CThing* GetTorch() const;
+    CVillageTaskTorch& operator=(const CVillageTaskTorch&);
+};
+FABLE_STATIC_ASSERT(sizeof(CVillageTaskTorch)==0x18);
+#else
 #pragma pack(push, 1)
 class CVillageTaskTorch {
 public:
@@ -23,4 +49,5 @@ FABLE_STATIC_ASSERT(offsetof(CVillageTaskTorch, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskTorch, Torch) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskTorch, CreatureAssignedToTask) == 0x10);
 
+#endif // FABLE_RETAIL_CVILLAGETASKTORCH
 #endif // FABLE_ENGINE_CVILLAGETASKTORCH_H

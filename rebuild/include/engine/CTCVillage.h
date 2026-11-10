@@ -20,11 +20,17 @@ class CThing;
 #include "engine/CDefPointer.h"
 #include "engine/C3DVector.h"
 class CThingBuilding; class CThingAICreature; class CThingObject; class CThingTrackNode; class CThingMarker; class CVillageDef;
+#ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
+class CVillageTaskBase;
+#endif
 class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class CVillageTaskPickCrops;
 class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
 class CTCVillage : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCVILLAGE_ENABLE_DEF_TYPES
+    void EnableVillagerDefTypes(bool,const CCharString&);
+#endif
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
     bool IsHeroCriminal();                                   // 0x0065BFCE ?IsHeroCriminal@CTCVillage@@QAE_NXZ (Ego_r; chunk 755 row 0x0091EA70)
 #ifdef FABLE_RETAIL_CTCVILLAGE_GUARDFOLLOW
@@ -52,6 +58,10 @@ public:
     CVillageTaskCarryCrate* GetBestCrateTaskForThing(const CThing& thing);   // 0x00658EA0
 #endif
 private:
+#ifdef FABLE_RETAIL_CTCVILLAGE_REMOVE_TASK
+    // Ego_r/FableWin original private const member template; six retail instances 00660ae2..00660d49.
+    template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing, std::list<CCountedPointer<T> >& task_list) const;
+#endif
     void CalculateSecuritySweepTasks();                      // 0x00659800 ?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
 public:
     long             TorchTasksUpdateFrame;                  // +0x0c

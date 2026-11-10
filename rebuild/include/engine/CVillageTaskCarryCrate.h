@@ -8,6 +8,39 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CVILLAGETASKCARRYCRATE
+// Original hierarchy, data and signatures from both raw donor TPI records.
+#include "engine/CVillageTaskBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingTrackNode; class CThingObject;
+class CVillageTaskCarryCrate : public CVillageTaskBase {
+    CIntelligentPointer<const CThing> CreatureAssignedToTask;
+    CIntelligentPointer<CThing> PCrateStack;
+    bool Pickup;
+    long Priority;
+public:
+    CVillageTaskCarryCrate(const CVillageTaskCarryCrate &);
+    CVillageTaskCarryCrate(CThing &,bool,long);
+    virtual bool IsCreatureAssignedToTask(const CThing &) const;
+    virtual void AssignCreatureToTask(const CThing &);
+    virtual EVillageTaskType GetTaskType() const;
+    virtual bool IsValid() const;
+    virtual bool IsTaskAvailable() const;
+    virtual bool IsThingInvolvedWithTask(const CThing &) const;
+    virtual void RemoveThingFromTask(const CThing &,bool &);
+    bool IsBetterThan(const CVillageTaskCarryCrate *,const CThing &) const;
+    bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+    CThing * GetCrateStack() const;
+    bool IsPickup() const;
+private:
+    bool IsCreatureValidForTask(const CThing &) const;
+public:
+    virtual ~CVillageTaskCarryCrate();
+    CVillageTaskCarryCrate & operator=(const CVillageTaskCarryCrate &);
+};
+FABLE_STATIC_ASSERT(sizeof(CVillageTaskCarryCrate)==0x20);
+#else
 #pragma pack(push, 1)
 class CVillageTaskCarryCrate {
 public:
@@ -28,4 +61,5 @@ FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, PCrateStack) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, Pickup) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskCarryCrate, Priority) == 0x1c);
 
+#endif // FABLE_RETAIL_CVILLAGETASKCARRYCRATE
 #endif // FABLE_ENGINE_CVILLAGETASKCARRYCRATE_H

@@ -246,6 +246,32 @@ void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
         x=y;
     }
 }
+#ifdef FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+// STLport 4.6.2 stl/_tree.c 345-383, including complete node construction.
+template<class K,class V,class KeyOfValue,class Compare,class A>
+_Rb_tree_iterator<V,_Nonconst_traits<V> > _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_insert(_Rb_tree_node_base* raw_x,_Rb_tree_node_base* raw_y,const V& value,_Rb_tree_node_base* raw_w) {
+    _Link_type w=(_Link_type)raw_w;
+    _Link_type x=(_Link_type)raw_x;
+    _Link_type y=(_Link_type)raw_y;
+    _Link_type z;
+    if(y==this->_M_header._M_data || (w==0 && (x!=0 || _M_key_compare(KeyOfValue()(value),_S_key(y))))) {
+        z=_M_create_node(value);
+        _S_left(y)=z;
+        if(y==this->_M_header._M_data) {_M_root()=z;_M_rightmost()=z;}
+        else if(y==_M_leftmost()) _M_leftmost()=z;
+    } else {
+        z=_M_create_node(value);
+        _S_right(y)=z;
+        if(y==_M_rightmost()) _M_rightmost()=z;
+    }
+    _S_parent(z)=y;
+    _S_left(z)=0;
+    _S_right(z)=0;
+    _Rb_global_inst::_Rebalance(z,this->_M_header._M_data->_M_parent);
+    ++_M_node_count;
+    return iterator(z);
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_MAP
 // Retail branch (Codex pass 13, row 0x00501450): the STLport 4.6 _tree.c insert_unique(const V&) body, visible as in every
 // retail TU that includes <map> (STLport compiles _tree.c into the header unless _STLP_LINK_TIME_INSTANTIATION).

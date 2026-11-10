@@ -1,0 +1,22 @@
+addr       parity           behav  name
+008884d0   RELOCATION_MATCH PASS   GetLevelTheme
+00a22f80   RELOCATION_MATCH PASS   Rotate
+00b396e0   WARN RELOC_NAME: ?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z -> 00bacdd0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00b396e0   WARN RELOC_NAME: ?UndoMatrixConversion@CEngineInternalAttachedPrimitive@@QBEXAAVCMatrix3x4@@@Z -> 00b38db0 labelled 'CEngineInternalAttachedPrimitive::RedoMatrixConversion'
+00b396e0   RELOCATION_MATCH PASS   Update
+00b92300   RELOCATION_MATCH PASS   CreateOcclusionGroup
+00beea00   RELOCATION_MATCH PASS   __adjust_heap
+
+WINS: 5
+  008884d0 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::?GetLevelTheme@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXAAVCBlendedEnvironmentTheme@2@MABVCEnvironmentThemeResourcePallette@2@@Z
+  00a22f80 RELOCATION_MATCH CRightHandedSet::?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z
+  00b396e0 RELOCATION_MATCH CEngineInternalAttachedPrimitive::?Update@CEngineInternalAttachedPrimitive@@QAE_NABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABVCEnginePrimitiveHandle@@JK@Z
+  00b92300 RELOCATION_MATCH CEngineSceneGridCell::?CreateOcclusionGroup@CEngineSceneGridCell@@AAEXW4EEngineOcclusionLayer@@PAVCEngineSceneGrid@@KK@Z
+  00beea00 RELOCATION_MATCH std::??$__adjust_heap@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NEnvironmentInternalCEnvironmentThemePriorityStackEntry_GetLevelTheme_008884d0
+  CRightHandedSet_Rotate_00a22f80
+  CEngineInternalAttachedPrimitive_Update_00b396e0
+  CEngineSceneGridCell_CreateOcclusionGroup_00b92300
+  std_adjustheap_00beea00

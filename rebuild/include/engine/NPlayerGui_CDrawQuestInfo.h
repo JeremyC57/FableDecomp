@@ -7,6 +7,9 @@
 #include "engine/CCountedPointer.h"
 #include "engine/CIntelligentPointer.h"
 class CThingPhysical;
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_COUNTER
+class CCounter;
+#endif
 class C2DVector; class CEnginePrimitivePrepareInfo;
 enum EMiniGameType {MINIGAME_NONE=0, MINIGAME_FISHING=1, MINIGAME_DIGGING=2, MINIGAME_PICKPOCKET=3, MINIGAME_PICKLOCK=4, MINIGAME_STEAL=5, MINIGAME_TROPHY=6, MINIGAME_ORACLE=7};
 namespace NPlayerGui {
@@ -25,6 +28,16 @@ public:
         float Scale;
         std::vector<CEnginePrimitiveHandle> PrimitiveHandles;
     };
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_COUNTER
+    // Retail opt-in (Codex2026-11-10): both PDB nested class types, native fields1c..28.
+    class CQuestInfoElementCounter : public CQuestInfoElement {
+    public:
+        virtual float DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&);
+        virtual EElementType GetType()const;
+        const class ::CCounter* PCounter;
+        long Graphic,Value,MaxValue;
+    };
+#endif
     // Ego_r donor Value32..PThing61, native0064fdb4 Value1c..PThing39.
     class CQuestInfoElementBar : public CQuestInfoElement {
     public:

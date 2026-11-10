@@ -23,7 +23,19 @@ class CCharString; class CRGBColour;
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECT
 class CCharString; class CRightHandedSet;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+#define FABLE_RETAIL_CENGINEGRAPHIC
+#include "engine/_quarantine/CTCGraphicAppearance.h"
+#include "engine/CRGBColour.h"
+#include "engine/CEnginePrimitiveThemeChannelDesc.h"
+#include "stlport/fable_map.h"
+#include "stlport/fable_containers.h"
+class CTCAnimationBase;
+#endif
 namespace NGraphicAppearance {
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+class CPrimitive; class CAGraphicAppearanceComponent;
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
 class CAGraphicAppearanceComponent;
 #endif
@@ -31,6 +43,28 @@ class CAGraphicAppearanceComponent;
 enum EAppearanceMeshEffectPriority;                          // MS forward enum (chunk 867: the row passes the value 3)
 #endif
 class CTCGraphicAppearance : public CTCBase {
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+protected:
+ class CMeshEffectPriorityEntry;
+ std::map<void*,CMeshEffectPriorityEntry> MeshEffects;
+ std::map<void*,CRGBColour> TintColours;
+ CTCAnimationBase* PTCAnimation;
+ C3DVector CachedStaticFocalPosOffset;
+ float Scale;
+ std::list<CPrimitive> Primitives;
+ std::list<CAGraphicAppearanceComponent*> Components;
+ CEnginePrimitiveThemeChannelDesc LightingChannel;
+ CEngineGraphic MainGraphic;
+ unsigned short ActivePersistenceFlags;
+ long FrameUpdatedWasRenderedFlag;
+ unsigned char UpdatePrimitiveReasons;
+ unsigned char SelfIlluminating:1,ForceResendEveryRenderFrame:1,ResendPrimsEveryRenderFrame:1,DisableOcclusionTesting:1,DrawAfterWater:1,CachedStaticFocalPos:1,RenderedLastFrame:1,PrimitivesDrawn:1;
+ unsigned char Alpha;
+ signed char ByPassColorFilter;
+public:
+ const CEngineGraphic& GetMainGraphic()const{return MainGraphic;}
+ float GetScale()const{return Scale;}
+#endif
 public:
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
@@ -93,4 +127,7 @@ public:
 #endif
 };
 }
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
+FABLE_STATIC_ASSERT(sizeof(NGraphicAppearance::CTCGraphicAppearance)==0x5c);
+#endif
 #endif

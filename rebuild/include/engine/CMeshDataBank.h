@@ -44,7 +44,10 @@ class C3DMeshInfo;
 class CMeshDataBank : public CBankFile {
 public:
     unsigned char                 _CBankFileAsync_0x110[0x164 - 0x110]; // +0x110 CBankFileAsync (base, opaque)
-    const C3DMeshInfo* PeekMesh(unsigned long index) const;                          // 0x00A24270
+    const C3DMeshInfo* PeekMesh(unsigned long index) const;
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKINFO
+    const C3DMeshInfo* PeekMeshInfo(unsigned long index) const;
+#endif                          // 0x00A24270
 #else
 class CMeshDataBank {
 public:

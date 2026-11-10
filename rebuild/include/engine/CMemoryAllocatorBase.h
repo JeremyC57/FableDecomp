@@ -8,6 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+// Retail opt-in (Codex 2026-11-10): original PDB virtual interface,
+// protected alignment fields and static alignment state. Native size0xc1c.
+inline unsigned long FABLE_FASTCALL GFAlignShift(unsigned long value,unsigned long alignment,unsigned long shift)
+{return ((value+alignment-1)>>shift)<<shift;}
+class CMemoryAllocatorBase {
+protected:
+ unsigned char PerformanceStats[0xc10];
+ unsigned long Alignment,AlignmentShift;
+ static unsigned long CurrentAlignment,CurrentAlignmentShift;
+public:
+ virtual void* Allocate(unsigned long)=0;
+ virtual void Deallocate(void*)=0;
+ virtual unsigned long GetAllAllocatedAreas(void**,unsigned long)=0;
+ virtual unsigned long GetAllocationSize(void*)=0;
+ virtual unsigned long GetAllocationSizeIncludingHeader(void*)=0;
+ virtual unsigned long GetLargestFreeAreaSize()=0;
+ virtual unsigned long GetTotalMemoryControlledByAllocator()=0;
+ virtual unsigned long GetTotalMemoryAllocated()=0;
+ virtual unsigned long GetNoFreeAreas()=0;
+ virtual unsigned long GetNoAllocatedAreas()=0;
+ virtual float GetFragmentation()=0;
+ virtual void* GetAllocatedArea(long)=0;
+ virtual unsigned long GetHeaderOverhead()=0;
+ virtual void ConsolidateFreeAreas();
+ virtual void Validate()=0;
+ static unsigned long FABLE_FASTCALL StaticAlign(unsigned long value){return GFAlignShift(value,CurrentAlignment,CurrentAlignmentShift);}
+ unsigned long Align(unsigned long value)const{return GFAlignShift(value,Alignment,AlignmentShift);}
+};
+FABLE_STATIC_ASSERT(sizeof(CMemoryAllocatorBase)==0xc1c);
+#else
 #pragma pack(push, 1)
 struct CMemoryAllocatorBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -23,4 +54,5 @@ FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorBase, PerformanceStats) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorBase, Alignment) == 0xc14);
 FABLE_STATIC_ASSERT(offsetof(CMemoryAllocatorBase, AlignmentShift) == 0xc18);
 
+#endif
 #endif // FABLE_ENGINE_CMEMORYALLOCATORBASE_H

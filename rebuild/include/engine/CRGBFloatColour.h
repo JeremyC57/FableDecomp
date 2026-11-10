@@ -90,6 +90,17 @@ public:
         if (A > 1.0f) A = 1.0f; else if (A < 0.0f) A = 0.0f;
     }
 #endif
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_WEIGHTED
+    // Original operator+= (both donor names); expanded by weighted environment blending.
+    CRGBFloatColour& operator+=(const CRGBFloatColour& colour) {
+        R+=colour.R; G+=colour.G; B+=colour.B; A+=colour.A; return *this;
+    }
+#ifndef FABLE_RETAIL_CRGBFLOATCOLOUR
+    CRGBFloatColour operator*(float value) const {
+        return CRGBFloatColour(R*value,G*value,B*value,A*value);
+    }
+#endif
+#endif
     float R;                                                             // +0x00
     float G;                                                             // +0x04
     float B;                                                             // +0x08
