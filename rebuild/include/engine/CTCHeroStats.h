@@ -24,6 +24,11 @@ class CTCHeroStats : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_ADDRENOWN
+    // Nested opt-in (chunk 1011, row 0x005EB590 CTCTavernGame::GivePrize): Ego_r.pdb ?AddRenown@CTCHeroStats@@QAEXJ@Z (Ego_r 0x0056FD53),
+    // out of line in retail at 0x0057D8BE (`push [def+184h] ; mov ecx,stats ; call 0x0057D8BE`, 0x005EB6BA). Declaration only.
+    void AddRenown(long amount);                                         // 0x0057D8BE
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MORALITYMAX
     // Opt-in (chunk 1008, row 0x005EE77C CTCInventoryAbilities::GetExperienceCostToUpgradeAbility): Ego_r.pdb
     // ?GetMoralityMax@CTCHeroStats@@QBEJXZ (public const), out of line at 0x0057A67E (landed). Declaration only: no layout change.

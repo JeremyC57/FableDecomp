@@ -1,0 +1,9 @@
+address	wrong_spelling	right_spelling	evidence
+0x009E2C80	CFontBankManager::GetFont / CFontBankSource (landed callers)	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb name sets; called on PFontManager 0x013B838C (0x005EA650)
+0x005EADD6	CTCTavernGame::SetStateAfterYesNoAlt (catalog row)	(no function: +0x16 inside ?SetStateAfterYesNoAlt@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@010@Z 0x005EADC0)	entry `push esi ; mov esi,ecx` mid-body; landed 0x005EADC0 is 354 bytes and covers it
+0x005EAF46	CTCInventoryMap::SetStateAfterYesNo_mid	(no function: +0x16 inside CTCTavernGame::SetStateAfterYesNo 0x005EAF30)	landed 0x005EAF30 is 326 bytes and covers it
+0x005EB08D	CTCInventoryMap::SetStateAfterOK_mid	(no function: +0x0D inside CTCTavernGame::SetStateAfterOK 0x005EB080)	landed 0x005EB080 is 256 bytes and covers it
+0x005FCBE0	ConstructQuestsScreen_PastQuests (catalog)	?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r 0x0064F5D0 / FableWin 0x02088600; "UI_TITLE_QUEST_PAST", CompletedQuestCards +0x60
+0x005FDDD0	ConstructQuestsScreen_PastQuestsPC (catalog)	?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z	Ego_r 0x00651F00 / FableWin 0x020AE570; `ret 8`, "PC_TITLE_QUEST_PAST", ConstructQuestListPC 0x0061E6D0
+0x006061B0	CTCInventoryMap::CTCInventoryMap::vfunc_9 (catalog)	?FrameUpdate@CTCInventoryMap@@UAEXXZ	vtable 0x01257A9C slot 9; Ego_r name set
+0x005FC2D0	NScreen005fc2d0::* (landed callee spellings, invented namespace)	CTCInventoryQuests::ConstructQuestList 0x0061B610, NUISystem::CManager::CreateComponent 0x0041DB1D, GetGlobalIndexFromClassIndex 0x009AD390, GetDef<NUISystem::CUIMiscThingsDef> 0x0042B312	the landed sibling's callees are spelled inside an invented namespace; the PDB names are the ones used by 0x005FCBE0 (row debt: re-author 0x005FC2D0 / 0x005FC8A0 on the shared headers the same way)

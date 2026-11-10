@@ -1,0 +1,18 @@
+address	name	evidence
+0x005FCBE0	?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH
+0x005FDDD0	?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH
+0x006061B0	?FrameUpdate@CTCInventoryMap@@UAEXXZ	vtable 0x01257A9C slot 9 + Ego_r.pdb; RELOCATION_MATCH
+0x005FBEA0	?GetRegionTeleporter@CTCInventoryMap@@ABEPAVCThing@@ABVCRegion@@@Z	Ego_r.pdb donor order; RELOCATION_MATCH
+0x005FBFA0	?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ	Ego_r.pdb donor order; RELOCATION_MATCH
+0x005FB4B0	?TeleportHeroToBoastingArea@CTCInventoryMap@@QBEXXZ	Ego_r.pdb; called by landed CTCInventoryQuests::TeleportToBoastingPodium 0x0061A360; RELOCATION_MATCH
+0x0061B610	?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@NUISystem@@W4QuestScreenType@@1@Z	callee of 0x005FCBE0; manifest + Ego_r/FableWin
+0x0061E6D0	?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z	callee of 0x005FDDD0; manifest + Ego_r/FableWin
+0x004B8050	std::_List_base<CIntelligentPointer<CThing> >::clear (STLport 4.6 spelling; not in the Ego_r/FableWin name extracts, which are Dinkumware)	called on the copied list at 0x005FCCE3 / 0x005FCE43 then free(head)
+0x00618100	list<CIntelligentPointer<CThing> >::_M_insert_dispatch<const_iterator>	the list copy's range insert (landed 0x00618100)
+0x009E2C80	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	Ego_r + FableWin
+0x013B838C	PFontManager (CFontManager*)	descriptive: no PDB data symbol; GetFont's receiver in 0x005EA650
+0x009F1760	?AddData@CGameEvent@@QAEXJPBX@Z	Ego_r + FableWin; called by 0x005FB4B0
+0x009C8890	?GetPGroupEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCGroupEntry@NGameText@@@@K_N@Z	Ego_r + FableWin
+0x0057D8BE	?AddRenown@CTCHeroStats@@QAEXJ@Z	Ego_r.pdb; callee of 0x005EB590
+0x007CAB30	?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z	Ego_r.pdb + landed row name; callee of 0x005EB590
+0x0137D76C	GTeleportOpenedFromMap	landed binders; written by 0x005FBFA0

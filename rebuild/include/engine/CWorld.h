@@ -116,6 +116,11 @@ public:
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+#ifdef FABLE_RETAIL_CWORLD_MOVEHEROTOREGION
+    // Nested opt-in (chunk 1011, row 0x005FB4B0 CTCInventoryMap::TeleportHeroToBoastingArea): Ego_r.pdb 0x004A8150
+    // ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z, out of line in retail at 0x0049EAF0 (landed). Declaration only.
+    void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0
+#endif
     bool EventIsWorldEvent(const CGameEvent* event) const;   // 0x0049D8C0 ?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z
     void Unload();                                           // 0x0049E270 ?Unload@CWorld@@QAEXXZ
     // Retail opt-in addition (Codex pass 11 consolidation 2): inline accessors (FableWin.pdb only, expanded by Ego_r and retail):

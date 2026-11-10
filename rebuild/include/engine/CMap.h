@@ -78,6 +78,14 @@ public:
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); // 0x008F70F0
 #endif
 public:
+#ifdef FABLE_RETAIL_CMAP_WORLDACCESSORS
+    // Nested opt-in (chunk 1011, row 0x005FBAA0 CTCInventoryMap::GetRelativePosOnMiniMap): FableWin.pdb ?GetWorldSizeX@CMap@@QBEJXZ
+    // (0x01C961E0), ?GetWorldSizeY@CMap@@QBEJXZ (0x01C96200) and ?GetWorldPosition@CMap@@QBEABVC2DCoordI@@XZ (0x0203A0F0), inline in
+    // retail (0x005FBB04 / 0x005FBB28 / 0x005FBAD3 read WorldSizeX +0x1D0C, WorldSizeY +0x1D10, WorldPos +0x1D24 in place). No layout change.
+    long GetWorldSizeX() const { return WorldSizeX; }
+    long GetWorldSizeY() const { return WorldSizeY; }
+    const C2DCoordI& GetWorldPosition() const { return WorldPos; }
+#endif
     void LoadBrushesFromFile(CAFile&);
     CScriptedMapBrush& CreateScriptedMapBrush(const CScriptedMapBrushInit&);
     bool IsPassableAt(const C2DCoordI&)const;

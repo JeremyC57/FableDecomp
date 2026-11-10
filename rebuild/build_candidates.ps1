@@ -390793,6 +390793,63 @@ $catalog = @(
         TestSource = '00/89/CGameScriptInterface_AddCrimeCommitted_0089feb0_test.cpp'
         PassPattern = '0089feb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005ea650'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_OnInitialActivate_005ea650.cpp'
+        TestSource = '00/5e/CTCTavernGame_OnInitialActivate_005ea650_test.cpp'
+        PassPattern = '005ea650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005eb180'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_SetStateAfterInstructions_005eb180.cpp'
+        TestSource = '00/5e/CTCTavernGame_SetStateAfterInstructions_005eb180_test.cpp'
+        PassPattern = '005eb180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fb4b0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_TeleportHeroToBoastingArea_005fb4b0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_TeleportHeroToBoastingArea_005fb4b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '005fb4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fbea0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_GetRegionTeleporter_005fbea0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_GetRegionTeleporter_005fbea0_test.cpp'
+        PassPattern = '005fbea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fbfa0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_TeleportToActiveRegion_005fbfa0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_TeleportToActiveRegion_005fbfa0_test.cpp'
+        PassPattern = '005fbfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fcbe0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0_test.cpp'
+        PassPattern = '005fcbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fddd0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_ConstructPastQuestsListPC_005fddd0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_ConstructPastQuestsListPC_005fddd0_test.cpp'
+        PassPattern = '005fddd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006061b0'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_FrameUpdate_006061b0.cpp'
+        TestSource = '00/60/CTCInventoryMap_FrameUpdate_006061b0_test.cpp'
+        PassPattern = '006061b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

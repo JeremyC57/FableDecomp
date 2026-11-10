@@ -1,0 +1,17 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+005ea650	656	CTCTavernGame::OnInitialActivate	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand305/differ/005ea650.cpp		005ea310 005ea3c0 005ea400 005ea8e0 005ea950 005ea9b0
+005eabc0	512	CTCTavernGame::PositionMesh	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand475/differ/005eabc0.cpp		005ea8e0 005ea950 005ea9b0 005eadc0 005eaf30
+005eadd6	346	CTCTavernGame::SetStateAfterYesNoAlt	unworked			00492973	005ea9b0 005eadc0 005eaf30 005eb080
+005eaf46	314	CTCInventoryMap::SetStateAfterYesNo_mid	unworked				005eadc0 005eaf30 005eb080
+005eb08d	243	CTCInventoryMap::SetStateAfterOK_mid	unworked				005eaf30 005eb080 005eb3a0 005eb4b0
+005eb180	544	CTCTavernGame::SetStateAfterInstructions	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand305/differ/005eb180.cpp		005eb080 005eb3a0 005eb4b0 005eb510
+005eb590	640	CTCTavernGame::GivePrize	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/005eb590.cpp	00686d90 006c6990 00703210	005eb3a0 005eb4b0 005eb510 005eb810 005eb9e0 005ebfa0
+005ec270	848	CTCTavernGame::ProcessInput	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/005ec270.cpp		005eb9e0 005ebfa0 005ec0f0 005ec5c0 005ec650 005ec7c0
+005eca50	1280	CTCTavernGame::DrawPreparePrimitivesForRendering	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand326/differ/005eca50.cpp		005ec7c0 005ec8a0 005ec990 005ecf50 005ecf70 005ecf90
+005fb4b0	384	CTCInventoryMap::TeleportHeroToBoastingArea	parked	wrong-flags/pragma	rebuild/candidates/manual/pending/2026-10-27_linux_hand642/differ/005fb4b0.cpp		005faf10 005faf50 005fb140 005fb630 005fb7e0 005fb8f0
+005fbaa0	640	CTCInventoryMap::GetRelativePosOnMiniMap	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/005fbaa0.cpp		005fb630 005fb7e0 005fb8f0 005fbd20 005fbd90
+005fbea0	256	CTCInventoryMap::GetRegionTeleporter	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-11-04_linux_hand758/differ/005fbea0.cpp		005fbd20 005fbd90 005fc0c0 005fc2d0
+005fbfa0	288	CTCInventoryMap::TeleportToActiveRegion	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/005fbfa0.cpp		005fbd20 005fbd90 005fc0c0 005fc2d0 005fc510
+005fcbe0	640	ConstructQuestsScreen_PastQuests	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand532/differ/005fcbe0.cpp	0061b610	005fc840 005fc8a0 005fcb10 005fce60 005fd0b0 005fd0f0
+005fddd0	704	ConstructQuestsScreen_PastQuestsPC	unworked			0061e6d0	005fd9c0 005fdad0 005fe830
+006061b0	336	CTCInventoryMap::CTCInventoryMap::vfunc_9	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand757/differ/006061b0.cpp	004b2280 00605ce0	00606300 00606d20 00606f80

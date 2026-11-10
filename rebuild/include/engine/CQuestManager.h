@@ -99,6 +99,14 @@ public:
     bool IsBetweenQuestStartAndFinishScreens() const;        // 0x004AF290
     // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): Ego_r.pdb / FableWin.pdb ?RegisterQuest@CQuestManager@@QAEXABVCCharString@@@Z.
     void RegisterQuest(const CCharString& name);             // 0x004B2850
+#ifdef FABLE_RETAIL_CQUESTMANAGER_FAILQUEST
+    // Nested opt-in (chunk 1011, row 0x006061B0 CTCInventoryMap::FrameUpdate): Ego_r.pdb
+    // ?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z (out of line, 0x004B2280) and the public
+    // ?DeactivateQuest@CQuestManager@@QAEXABVCCharString@@K@Z (0x004B43D0; the private CCountedPointer<CActiveQuest> overload is
+    // another function). Parameter names descriptive. Declarations only.
+    bool SetQuestAsFailed(const CCharString& quest_name, bool a, const CWideString& text, bool b);   // 0x004B2280
+    void DeactivateQuest(const CCharString& quest_name, unsigned long frames);                       // 0x004B43D0
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTUI
 #if defined(FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK) || defined(FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE)
 #error FABLE_RETAIL_CQUESTMANAGER_BOASTUI is not combined with the REGIONLOCK / LOADGAMESTATE layouts yet

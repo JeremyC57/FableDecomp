@@ -17,6 +17,21 @@ public:
     CGameEvent(long type);                                   // 0x004159B0
     void AddUBYTE(unsigned char value);                      // 0x004159E0
 #endif
+#ifdef FABLE_RETAIL_CGAMEEVENT_INLINE
+#ifdef FABLE_RETAIL_CGAMEEVENT_CTOR
+#error FABLE_RETAIL_CGAMEEVENT_INLINE and FABLE_RETAIL_CGAMEEVENT_CTOR are alternatives (inline v out-of-line ctor / AddUBYTE)
+#endif
+    // Retail opt-in (chunk 1011, row 0x005FB4B0 CTCInventoryMap::TeleportHeroToBoastingArea): the TUs that expand the event builders.
+    // FableWin.pdb / Ego_r.pdb ??0CGameEvent@@QAE@J@Z (Ego_r body 0x00414ED0; expanded there: Type, Player -1, EndPos 0, Valid true,
+    // Replacement false stored in member order, 0x005FB52A..0x005FB540), ?AddFloat@CGameEvent@@QAEXM@Z, ?AddUBYTE@CGameEvent@@QAEXE@Z
+    // and ?SetPlayer@CGameEvent@@QAEXJ@Z (FableWin; the value copied to a frame word and passed with its size), all forwarding to the
+    // out-of-line ?AddData@CGameEvent@@QAEXJPBX@Z (0x009F1760, the only PDB spelling bound there). No layout change.
+    CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
+    void AddData(long size, const void* data);               // 0x009F1760
+    void AddFloat(float value) { AddData(sizeof(value), &value); }
+    void AddUBYTE(unsigned char value) { AddData(sizeof(value), &value); }
+    void SetPlayer(long player) { Player = (signed char)player; }
+#endif
     long          Type;                                      // +0x00
     signed char   Player;                                    // +0x04
     unsigned char Data[32];                                  // +0x05

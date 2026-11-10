@@ -1,0 +1,9 @@
+address	name	evidence
+005ea650	?OnInitialActivate@CTCTavernGame@@UAEXXZ	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+005eb180	?SetStateAfterInstructions@CTCTavernGame@@IAEXKVCWideString@@W4ETavernGameStates@1@@Z	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+005fb4b0	?TeleportHeroToBoastingArea@CTCInventoryMap@@QBEXXZ	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+005fbea0	?GetRegionTeleporter@CTCInventoryMap@@ABEPAVCThing@@ABVCRegion@@@Z	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+005fbfa0	?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+005fcbe0	?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+005fddd0	?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling
+006061b0	?FrameUpdate@CTCInventoryMap@@UAEXXZ	RELOCATION_MATCH chunk 1011; Ego_r.pdb / FableWin.pdb spelling

@@ -1,0 +1,32 @@
+addr       parity           behav  name
+005ea650   RELOCATION_MATCH PASS   OnInitialActivate
+005eb180   WARN RELOC_CONFLICT: _$E2 -> 01229150 here, 01228930 in landed 01219f00
+005eb180   WARN RELOC_NAME: _$E2 -> 01229150 labelled 'CTCTavernGame::SetStateAfterInstructions'::`5'::`dynamic atexit destructor for 'no_text_entry'''
+005eb180   RELOCATION_MATCH PASS   SetStateAfterInstructions
+005fb4b0   RELOCATION_MATCH PASS   TeleportHeroToBoastingArea
+005fbea0   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+005fbea0   RELOCATION_MATCH PASS   GetRegionTeleporter
+005fbfa0   RELOCATION_MATCH PASS   TeleportToActiveRegion
+005fcbe0   RELOCATION_MATCH PASS   ConstructPastQuestsList
+005fddd0   RELOCATION_MATCH PASS   ConstructPastQuestsListPC
+006061b0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 8
+  005ea650 RELOCATION_MATCH CTCTavernGame::?OnInitialActivate@CTCTavernGame@@UAEXXZ
+  005eb180 RELOCATION_MATCH CTCTavernGame::?SetStateAfterInstructions@CTCTavernGame@@IAEXKVCWideString@@W4ETavernGameStates@1@@Z
+  005fb4b0 RELOCATION_MATCH CTCInventoryMap::?TeleportHeroToBoastingArea@CTCInventoryMap@@QBEXXZ
+  005fbea0 RELOCATION_MATCH CTCInventoryMap::?GetRegionTeleporter@CTCInventoryMap@@ABEPAVCThing@@ABVCRegion@@@Z
+  005fbfa0 RELOCATION_MATCH CTCInventoryMap::?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ
+  005fcbe0 RELOCATION_MATCH CTCInventoryMap::?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z
+  005fddd0 RELOCATION_MATCH CTCInventoryMap::?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z
+  006061b0 RELOCATION_MATCH CTCInventoryMap::?FrameUpdate@CTCInventoryMap@@UAEXXZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CTCTavernGame_OnInitialActivate_005ea650
+  CTCTavernGame_SetStateAfterInstructions_005eb180
+  CTCInventoryMap_TeleportHeroToBoastingArea_005fb4b0
+  CTCInventoryMap_GetRegionTeleporter_005fbea0
+  CTCInventoryMap_TeleportToActiveRegion_005fbfa0
+  CTCInventoryMap_ConstructPastQuestsList_005fcbe0
+  CTCInventoryMap_ConstructPastQuestsListPC_005fddd0
+  CTCInventoryMap_FrameUpdate_006061b0

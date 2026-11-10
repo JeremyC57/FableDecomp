@@ -23,8 +23,26 @@ class CTextEntry : public CIVCountedPointeeBase {
 public:
     CWideString GetText() const;                                                   // 0x009C7A40
 };
+#ifdef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
+// Nested opt-in (chunk 1011, row 0x005EB180 CTCTavernGame::SetStateAfterInstructions): the text group a bank entry id names.
+// Ego_r.pdb ?GetPGroupEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCGroupEntry@NGameText@@@@K_N@Z (out of line,
+// 0x009C8890; rebuild/oracles/reloc_bindings.tsv), RTTI CGroupEntry : CIVCountedPointeeBase. The group's text ids are the
+// CArray<long> at +0x1C (landed 0x0048F6BD / 0x00639BA0 read it there; the member name is the landed rows' spelling, the PDB
+// layout lists no members for this class). Declaration only for the bank; no layout change to CDataBank.
+}
+#include "engine/CArray.h"
+namespace NGameText {
+class CGroupEntry : public CIVCountedPointeeBase {
+public:
+    unsigned char _pad_0x08[0x1c - 0x08];
+    CArray<long> Entries;                                                          // +0x1C
+};
+#endif
 class CDataBank : public CBankFile {
 public:
+#ifdef FABLE_RETAIL_NGAMETEXT_GROUPENTRY
+    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long groupId, bool a) const;   // 0x009C8890
+#endif
     const CDataBankTextEntry* GetTextInfo(unsigned long textId) const;             // 0x009C7D00
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long textId, bool a) const;   // 0x009C9070
     const CWideString GetTextBySymbol(const CCharString& symbol) const;            // 0x009C95E0

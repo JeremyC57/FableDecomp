@@ -56,6 +56,9 @@ public:
 // Every original data member is retained; unused composite fields keep their
 // original names and complete native storage. Native map secondary base is130.
 class CGraphicDataBank;
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_MINIMAPGRAPHIC
+class CRegion;
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
 #include "fable_string.h"
 class CThing;
@@ -141,6 +144,12 @@ public:
  // CUserProfileManager::CaptureBackBufferForUIBackground 0x00406CC0 on CTBaseSingleton<CUserProfileManager>::Get() 0x0040D2A0).
  // The landed rows call it by the descriptive "PrepareScreen" (NAME_FIXES). Declaration only.
  void CaptureBackBufferToTexture();                                                          // 0x005BC6ED
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_MINIMAPGRAPHIC
+ // Nested opt-in (chunk 1011, row 0x005FBAA0 CTCInventoryMap::GetRelativePosOnMiniMap): Ego_r.pdb 0x00620EC7
+ // ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z, out of line in retail at 0x005BEB57 (`push region ; mov ecx,this ;
+ // call`, ret 4). Declaration only.
+ unsigned long GetMiniMapGraphic(CRegion& region) const;                                     // 0x005BEB57
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONINITIALACTIVATE
  // Retail opt-in (chunk 1002, row 0x005CB974 CTCInventoryWeapons::OnInitialActivate, which calls it qualified last): Ego_r.pdb

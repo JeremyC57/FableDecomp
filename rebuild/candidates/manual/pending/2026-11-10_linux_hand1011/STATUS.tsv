@@ -1,0 +1,17 @@
+address	name	grade	grades_used	note
+005ea650	CTCTavernGame::OnInitialActivate	RELOCATION_MATCH	2	same-TU GetSubDef<CTavernGameDef> body; PFontManager->GetFont per font (CFontManager.h new)
+005eabc0	CTCTavernGame::PositionMesh	NOT_ATTEMPTED	0	not reached this pass: needs PositionMesh declared in CTCTavernGame.h plus CTCPhysicsBase slot names 30/31/32/75, CThing slots 27/28 and CRightHandedSet::RotateAboutAxis 0x00A22F80 in shared headers; prior residue x87 temp allocation (60 lines)
+005eadd6	CTCTavernGame::SetStateAfterYesNoAlt (fragment)	FRAGMENT	0	mid-function cut of landed 0x005EADC0 SetStateAfterYesNoAlt (+0x16); no source authored
+005eaf46	CTCTavernGame::SetStateAfterYesNo (fragment)	FRAGMENT	0	mid-function cut of landed 0x005EAF30 SetStateAfterYesNo (+0x16); catalog CTCInventoryMap::*_mid label wrong; no source authored
+005eb08d	CTCTavernGame::SetStateAfterOK (fragment)	FRAGMENT	0	mid-function cut of landed 0x005EB080 SetStateAfterOK (+0x0D); catalog CTCInventoryMap::*_mid label wrong; no source authored
+005eb180	CTCTavernGame::SetStateAfterInstructions	RELOCATION_MATCH	2	same-TU SetState body; static no_text_entry; FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_INNER
+005eb590	CTCTavernGame::GivePrize	DIFFER(631v631)	5	22 diff lines: def reload piece (c2prio prio 46) takes esi before player/prize (32); retail def edi / prize esi. differ/005eb590.cpp
+005ec270	CTCTavernGame::ProcessInput	NOT_ATTEMPTED	0	not reached this pass (848 bytes; prior stack-slot residue)
+005eca50	CTCTavernGame::DrawPreparePrimitivesForRendering	NOT_ATTEMPTED	0	not reached this pass (1280 bytes; prior register-tie residue)
+005fb4b0	CTCInventoryMap::TeleportHeroToBoastingArea	RELOCATION_MATCH	1	/GS; same-TU GetPFirstLeafThing body + PeekPlayerManager + inline CGameEvent
+005fbaa0	CTCInventoryMap::GetRelativePosOnMiniMap	DIFFER(634v634)	9	12 diff lines: scale_y homed in the loop-index slot [esp+10h] (retail [esp+24h]); final X*scale loads scale first. differ/005fbaa0.cpp
+005fbea0	CTCInventoryMap::GetRegionTeleporter	RELOCATION_MATCH	1	same-TU GetPFirstThing body (FIRSTTHINGBODY)
+005fbfa0	CTCInventoryMap::TeleportToActiveRegion	RELOCATION_MATCH	1	GFFilter_Bind2(HasTC, InMap) temporaries + same-TU GetPFirstThing; untested teleporter TC
+005fcbe0	CTCInventoryMap::ConstructPastQuestsList	RELOCATION_MATCH	4	same-TU _List_base::clear kept out of line (new FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) + same-TU GetDef body
+005fddd0	CTCInventoryMap::ConstructPastQuestsListPC	RELOCATION_MATCH	1	PC twin of 0x005FCBE0 (same levers); FindChild / AddPositionChild
+006061b0	CTCInventoryMap::FrameUpdate	RELOCATION_MATCH	2	unsigned frame compare + named const CIntelligentPointer<CThing>& quest_card

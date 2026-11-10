@@ -7,7 +7,13 @@
 #include "engine/CCountedPointer.h"
 #include "stlport/fable_containers.h"
 class CRegion;
+#if defined(FABLE_RETAIL_CTCINVENTORYMAP_TELEPORT) || defined(FABLE_RETAIL_CTCINVENTORYMAP_FRAMEUPDATE) || defined(FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS)
+class CThing;
+#endif
 #include "engine/NHeroInformationScreens_CBase.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS
+namespace NUISystem { class CComponent; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
 class C3DVector;
 namespace NUISystem { class CComponent; }
@@ -66,6 +72,39 @@ private:
  long LastEventFrame;
  unsigned long RegionEventLife;
  void RemapUIDsForLoading(std::vector<unsigned __int64>&)const;
+ #ifdef FABLE_RETAIL_CTCINVENTORYMAP_TELEPORT
+ // Nested opt-in (chunk 1011, rows 0x005FBEA0 / 0x005FBFA0 / 0x005FB4B0): Ego_r.pdb spellings
+ // ?GetRegionTeleporter@CTCInventoryMap@@ABEPAVCThing@@ABVCRegion@@@Z (private const, 0x005FBEA0),
+ // ?TeleportToActiveRegion@CTCInventoryMap@@AAEXXZ (private, 0x005FBFA0) and ?TeleportHeroToBoastingArea@CTCInventoryMap@@QBEXXZ
+ // (public const, 0x005FB4B0; the landed CTCInventoryQuests::TeleportToBoastingPodium 0x0061A360 calls it). Declarations only.
+private:
+ CThing* GetRegionTeleporter(const CRegion& region) const;           // 0x005FBEA0
+ void TeleportToActiveRegion();                                       // 0x005FBFA0
+public:
+ void TeleportHeroToBoastingArea() const;                             // 0x005FB4B0
+private:
+ #endif
+ #ifdef FABLE_RETAIL_CTCINVENTORYMAP_FRAMEUPDATE
+ // Nested opt-in (chunk 1011, row 0x006061B0): the CTCBase slot-9 override (vtable 0x01257A9C slot 9 = 0x006061B0) and the two
+ // region updaters it calls, Ego_r.pdb spellings: ?FrameUpdate@CTCInventoryMap@@UAEXXZ, ?UpdateVisitedRegions@CTCInventoryMap@@IAEXJJ@Z
+ // (protected, 0x00605CE0) and ?UpdateRegionsCorrespondances@CTCInventoryMap@@AAEXJJ@Z (private, landed 0x005FC0C0). Declarations
+ // only, no layout change (FrameUpdate overrides an existing slot).
+public:
+ virtual void FrameUpdate();                                          // 0x006061B0
+protected:
+ void UpdateVisitedRegions(long from_frame, long to_frame);           // 0x00605CE0
+private:
+ void UpdateRegionsCorrespondances(long from_frame, long to_frame);   // 0x005FC0C0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS
+ // Nested opt-in (chunk 1011, rows 0x005FCBE0 / 0x005FDDD0): Ego_r.pdb + FableWin.pdb
+ // ?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z (private, `ret 4`; Ego_r 0x0064F5D0) and
+ // ?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z (private, `ret 8`; Ego_r 0x00651F00).
+ // Declarations only, no layout change.
+private:
+ NUISystem::CComponent* ConstructPastQuestsList(NUISystem::CComponent* parent);                                  // 0x005FCBE0
+ NUISystem::CComponent* ConstructPastQuestsListPC(NUISystem::CComponent* container, NUISystem::CComponent* parent); // 0x005FDDD0
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
  // Retail opt-in (chunk 851, rows 0x006001E0 / 0x005FE840): Ego_r.pdb + FableWin.pdb
  // ?ConstructRegionDescriptionShops@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z (protected),

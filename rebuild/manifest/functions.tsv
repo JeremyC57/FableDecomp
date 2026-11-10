@@ -12917,7 +12917,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005fc840	TeleportHeroToRegionTeleporter	CTCInventoryMap	__thiscall	void	2	CTCInventoryMap *,long	1	yes	accepted									
 005fc8a0	ConstructQuestsScreen_CurrentQuestsPC	_global	unknown	undefined	0		0	yes	accepted									
 005fcb10	OnInitialActivate	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005fcbe0	ConstructQuestsScreen_PastQuests	_global	unknown	undefined	0		0	yes	accepted									
+005fcbe0	ConstructPastQuestsList	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fce60	vfunc_31	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fd0b0	ProcessButtonBReleased	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
 005fd0f0	FindQuestsForActiveRegion	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
@@ -12926,7 +12926,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005fd5e0	ConstructRegionDescriptionQuests	CTCInventoryMap	__thiscall	void	4	CTCInventoryMap *,CComponent *,CRegion *,bool	1	yes	accepted									
 005fd9c0	AddLogBookSaveInfo	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fdad0	Copy	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005fddd0	ConstructQuestsScreen_PastQuestsPC	_global	unknown	undefined	0		0	yes	accepted									
+005fddd0	ConstructPastQuestsListPC	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fe090	ConstructQuestsScreen	CTCInventoryMap	__thiscall	CComponent *	2	CTCInventoryMap *,CComponent *	1	yes	accepted									
 005fe830	Dtor_FindTeleportsForActiveRegionBase_005fe830	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5f\global_Destval_005fe830.cpp
 005fe840	ConstructRegionExitMarkers	CTCInventoryMap	__thiscall	void	3	CTCInventoryMap *,CComponent *,CRegion *	1	yes	accepted									
@@ -12939,7 +12939,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00603000	CreateMiniMapMarkers	CTCInventoryMap	__thiscall	void	3	CTCInventoryMap *,CComponent *,CRegion *	1	yes	accepted									
 00605570	ConstructRegionDescription	CTCInventoryMap	__thiscall	void	4	CTCInventoryMap *,CComponent *,CRegion *,bool	1	yes	accepted									
 00605ce0	UpdateVisitedRegions	CTCInventoryMap	__thiscall	void	3	CTCInventoryMap *,long,long	1	yes	accepted									
-006061b0	CTCInventoryMap::vfunc_9	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+006061b0	FrameUpdate	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00606300	OnSerialise	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 00606d20	CTCInventoryMap	CTCInventoryMap	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 00606f80	~CTCInventoryMap	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									

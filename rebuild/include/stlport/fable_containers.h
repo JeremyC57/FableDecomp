@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#if defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP)
+#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -650,6 +650,14 @@ public:
     // address as ?clear@?$_List_base@VCEnginePrimitiveHandle@@..@std@@QAEXXZ).
     void clear();
 #else
+#ifdef FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE
+    // Per-TU opt-in (chunk 1011, row 0x005FCBE0 CTCInventoryMap::ConstructPastQuestsList): the same STLport 4.6 _list.c body, visible
+    // but kept out of line, as retail calls it (_List_base<CIntelligentPointer<CThing> >::clear 0x004B8050). Unlike the
+    // declaration-only FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE, c2 then knows the call leaves the list's head word alone: retail keeps
+    // the head node in esi across the clear and frees it with no reload and no null test (`call 0x004B8050 ; push esi ; call free`,
+    // 0x005FCCE3; the landed 0x005FD410 GetRegionsToDisplay has the same shape with a visible body).
+    FABLE_STLP_NOINLINE
+#endif
     void clear() {
         _List_node<_Tp>* cur=(_List_node<_Tp>*)_M_node._M_data->_M_next;
         while(cur!=_M_node._M_data) {

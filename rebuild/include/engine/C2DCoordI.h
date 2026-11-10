@@ -13,6 +13,11 @@ class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(
 };
 #include "engine/C2DVector.h"
 inline C2DVector C2DCoordI::ToC2DCoordF() const { return C2DVector((float)X,(float)Y); }
+#elif defined(FABLE_RETAIL_C2DCOORDI_COPY)
+// Retail opt-in (chunk 1011, row 0x005FBAA0 CTCInventoryMap::GetRelativePosOnMiniMap): FableWin.pdb ??0C2DCoordI@@QAE@ABV0@@Z
+// (0x01C85850) is a user copy constructor, inline in retail: copying a returned `const C2DCoordI&` leaves the source address
+// formed (`add eax,1D24h`, 0x005FBADF) beside the two field loads. Same layout and values as the implicit copy.
+class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(y){}C2DCoordI(const C2DCoordI& other):X(other.X),Y(other.Y){} };
 #else
 class C2DCoordI { public: long X,Y;C2DCoordI(){}C2DCoordI(long x,long y):X(x),Y(y){} };
 #endif

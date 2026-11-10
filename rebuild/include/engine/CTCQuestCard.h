@@ -44,6 +44,12 @@ public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_QUEST_CARD; }
     CWideString GetQuestName() const;                                    // 0x00702310
 #endif
+#ifdef FABLE_RETAIL_CTCQUESTCARD_SCRIPTQUESTNAME
+    // Nested opt-in (chunk 1011, row 0x006061B0 CTCInventoryMap::FrameUpdate): FableWin.pdb 0x01C4B570
+    // ?GetScriptQuestName@CTCQuestCard@@QBEABVCCharString@@XZ, inline in retail (the caller passes `card + 0x28` in place,
+    // 0x006062C2 `add esi,28h`). No layout change.
+    const CCharString& GetScriptQuestName() const { return ScriptQuestName; }
+#endif
 #ifdef FABLE_RETAIL_CTCQUESTCARD_TELEPORTER
     // Nested opt-in (chunk 765, row 0x007021E0): Ego_r.pdb / FableWin.pdb ?SetTeleporterRegionName@CTCQuestCard@@QAEXABVCCharString@@@Z
     // (Ego_r 0x00723D20, first in the class's donor run; TeleporterRegionName +0x24).

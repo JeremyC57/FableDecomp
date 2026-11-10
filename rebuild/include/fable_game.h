@@ -63,6 +63,9 @@ typedef CFrontendGameComponentInit CNewFrontendGameComponentInit;
 #include "boost/scoped_ptr.h"
 #include "engine/CCountedPointer.h"
 class CASoundBank; class CDisplayEngine; class CGamePlayerInterface; class CLUA; class CPlayerManager; class CWorld; class CFontBank;
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS
+class CGraphicDataBank;
+#endif
 namespace NGameText { class CDataBank; }
 class CMainGameComponent : public CGameComponent {
 protected:
@@ -94,7 +97,19 @@ protected:
     // CCountedPointer<CFontBank> (same offsets as engine/CMainGameComponent.h; layout and size unchanged).
     CCountedPointer<CFontBank> PDebugFont;                               // +0x16144
     CCountedPointer<CFontBank> PCutSceneMainFont;                        // +0x1614C
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ENGINEGRAPHICS
+    // Nested opt-in (chunk 1011, row 0x005FBAA0): PMainGraphicBank, the CCountedPointer<CGraphicDataBank> at +0x161C8 (engine/CMainGameComponent.h
+    // and the landed ctor 0x00418B7A assert that offset), read through FableWin.pdb ?PeekEngineGraphics@CMainGameComponent@@QBEABVCGraphicDataBank@@XZ
+    // (0x01ACCBD0; inline in retail: `mov eax,[ecx+161C8h]` at 0x005FBC51). Same size: the opaque run is split around it.
+    unsigned char _pad_0x16154[0x74]; // Original members EventPackageFile through the member before PMainGraphicBank.
+    CCountedPointer<CGraphicDataBank> PMainGraphicBank;                  // +0x161C8
+    unsigned char _pad_0x161d0[0x18]; // Original members after PMainGraphicBank through DebugNoFramesUnableToRender.
+public:
+    const CGraphicDataBank& PeekEngineGraphics() const { return *PMainGraphicBank; }
+protected:
+#else
     unsigned char _pad_0x16154[0x94]; // Original members EventPackageFile through DebugNoFramesUnableToRender.
+#endif
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // FableWin.pdb ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
@@ -127,6 +142,12 @@ public:
     // Chunk 732 (row 0x006AA2E0): FableWin.pdb ?PeekDebugFont@CMainGameComponent@@QBEABVCFontBank@@XZ (0x018A3AC0), inline in retail
     // (`mov eax,[eax+16144h]` straight after PeekComponent).
     const CFontBank& PeekDebugFont() const { return *PDebugFont; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_CUTSCENEFONT
+    // Nested opt-in (chunk 1011, row 0x005EB180 CTCTavernGame::SetStateAfterInstructions): FableWin.pdb
+    // ?PeekCutSceneMainFont@CMainGameComponent@@QBEABVCFontBank@@XZ, inline in retail (`mov ecx,[013B86A0h] ; mov esi,[ecx+1614Ch]`
+    // at 0x005EB276; engine/CMainGameComponent.h carries the same accessor for its own layout). Declaration-level only.
+    const CFontBank& PeekCutSceneMainFont() const { return *PCutSceneMainFont; }
+#endif
 };
 #else
 class CMainGameComponent : public CGameComponent
