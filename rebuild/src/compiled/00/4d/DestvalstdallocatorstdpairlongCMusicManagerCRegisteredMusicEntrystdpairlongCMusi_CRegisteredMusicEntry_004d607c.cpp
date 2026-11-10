@@ -1,32 +1,32 @@
-// Leaf: DestroyMembers
-// Retail: Fable.exe (TLC, VC7.1) @ 0x004D607C, 19 bytes. Catalog name: std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>.
-// Body: destroy the member at +0x10 (CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10), then tail-call
-// the base CTCBase::~CTCBase @ 0x00686830. __thiscall, this = ecx.
-// The +0x0 callee is a polymorphic class destructor, so this is a derived class's destructor body;
-// the class itself is not attributed and is named by address.
-// Engine headers for the callee classes (PDB data layouts, renamed out of the way): the local declarations
-// below carry the retail identities the relocations bind.
-#define CTCBase CTCBasePdb
+// CTCDiceGame::~CTCDiceGame() -- the compiler-generated destructor: ~CBaseIntelligentPointer on CurrentPlayer (+0x10), then the out-of-line ~CTCBase 0x00686830 as the tail jump; no vtable store
+// Leaf: ??1CTCDiceGame@@UAE@XZ
+// Retail: Fable.exe @ 0x004D607C, 19 bytes. Identity: called by the scalar deleting destructors of CTCDiceGame (0x004DB417, slot 0 of
+//   vtable 0x0124093C) and of CTCPlot (0x004DB461, vtable 0x012409B4; RTTI CTCPlot : CTCDiceGame, which adds no members, so its
+//   destructor is this one); the manifest names it CTCDiceGame::~CTCDiceGame. Ego_r.pdb CTCDiceGame : CTCBase: NumberOfPlayers +0x0C,
+//   CurrentPlayer +0x10 (CIntelligentPointer<CThing>); 24 bytes (no STL members: retail keeps the offsets).
+// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (Ego_r.pdb / FableWin.pdb ??1CBaseIntelligentPointer@@UAE@XZ),
+//   CTCBase::~CTCBase 0x00686830 (??1CTCBase@@UAE@XZ, tail jump).
+// Model: no engine header models CTCDiceGame, so it is declared here over the shared engine/CTCBase.h and engine/CIntelligentPointer.h
+//   (retail branches); spellings from Ego_r.pdb. The class declares no destructor.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/CTCBase.h"
-#undef CTCBase
-class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
-    virtual ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
+class CTCDiceGame : public CTCBase {                                    // vtable 0x0124093C
+public:
+    static CTCBase* FABLE_FASTCALL Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+    void SetCurrentPlayer(CThing* player);
+    long NumberOfPlayers;                                               // +0x0C
+    CIntelligentPointer<CThing> CurrentPlayer;                          // +0x10
 };
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
-};
-#pragma pack(push, 1)
-struct CObject_004d607c : CTCBase {
-    unsigned char _pad[0xc];
-    CBaseIntelligentPointer Second;             // +0x10
-    void DestroyMembers();
-};
-#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CTCDiceGame) == 0x18);
 
-void CObject_004d607c::DestroyMembers()
+// Emission harness (not a retail function): a qualified call makes VC7.1 emit the implicit destructor's COMDAT, as the deleting
+// destructors' calls do in retail.
+void DestroyDiceGame(CTCDiceGame* game)
 {
-    Second.~CBaseIntelligentPointer();
-    this->CTCBase::~CTCBase();
+    game->CTCDiceGame::~CTCDiceGame();
 }

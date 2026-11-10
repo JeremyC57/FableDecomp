@@ -1,39 +1,42 @@
-// CTCCrateStack::`scalar deleting destructor' @ 0x007B6C90 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
-// stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
-// +0x14 CBaseIntelligentPointer (~ @ 0x00A01C10), +0xc CBaseIntelligentPointer (~ @ 0x00A01C10), then the base CTCBase (~ @ 0x00686830), and frees the block with operator delete
-// (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
-// retail labels); the class itself is not attributed, so it is named by address.
-// Engine headers for the callee classes (PDB data layouts, renamed out of the way): the local declarations
-// below carry the retail identities the relocations bind.
-#define CTCBase CTCBasePdb
+// CTCCrateStack::`scalar deleting destructor'(unsigned int) -- the compiler-generated deleting destructor: the implicit ~CTCCrateStack expanded (~CBaseIntelligentPointer on SecondCrate +0x14 and FirstCrate +0x0C, then the out-of-line ~CTCBase 0x00686830), then operator delete when bit 0 of the flags is set
+// Leaf: ??_GCTCCrateStack@@UAEPAXI@Z
+// Retail: Fable.exe @ 0x007B6C90. Identity: slot 0 of vtable 0x0126DA14, RTTI .?AVCTCCrateStack@@ : CTCBase (the catalog name agrees);
+//   it follows the class's GetInterfaceType 0x007B6C60 and GetClassTypeName 0x007B6C70 in its TU.
+// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (Ego_r.pdb / FableWin.pdb ??1CBaseIntelligentPointer@@UAE@XZ),
+//   CTCBase::~CTCBase 0x00686830, operator delete 0x00BFE9BC.
+// Layout: Ego_r.pdb CTCCrateStack : CTCBase (retail 0x0C bytes): FirstCrate +0x0C, SecondCrate +0x14 (CIntelligentPointer<CThing>),
+//   CrateDefIndex +0x1C. No engine header models CTCCrateStack, so it is declared here over the shared engine/CTCBase.h and
+//   engine/CIntelligentPointer.h (retail branches); spellings from Ego_r.pdb (?Alloc@, ?GetInterfaceType@, ?GetClassTypeName@,
+//   ?OnInitialActivate@, ...). The class declares no destructor (retail's deleting destructor expands it).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/CTCBase.h"
-#undef CTCBase
-#pragma optimize("t", on)
-class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
-    virtual ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
+class C3DVector;
+class CTCVillage;
+class CTCCrateStack : public CTCBase {
+public:
+    CTCCrateStack(CThing& thing) : CTCBase(thing) { }
+    static CTCBase* FABLE_FASTCALL Alloc(CThing& thing);
+    static void FABLE_FASTCALL FillStacks(const CTCVillage& village, long count);
+    virtual ETCInterfaceType GetInterfaceType() const;                  // 0x007B6C60
+    virtual CCharString GetClassTypeName() const;                       // 0x007B6C70
+    virtual void OnInitialActivate();
+    void AddCrate(CThing* crate);
+    void FillStack(long count, const C3DVector& start, const C3DVector& end);
+    CThing* GetNextCrate() const;
+    long GetNumCrates() const;
+    long GetSpaceLeft() const;
+    CThing* RemoveNextCrate();
+    CIntelligentPointer<CThing> FirstCrate;                             // +0x0C
+    CIntelligentPointer<CThing> SecondCrate;                            // +0x14
+    long CrateDefIndex;                                                 // +0x1C
 };
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
-};
-void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
+FABLE_STATIC_ASSERT(sizeof(CTCCrateStack) == 0x20);
 
-#pragma pack(push, 1)
-struct CObject_007b6c90 : CTCBase {
-    unsigned char _padc[0x8];
-    CBaseIntelligentPointer Memberc;            // +0xc
-    CBaseIntelligentPointer Member14;           // +0x14
-};
-#pragma pack(pop)
-
-void* __fastcall CTCCrateStack_CompositeScalarDeletingDestructor(void* stack, int, unsigned int flags)
+// Emission harness (not a retail function): constructing one emits the vftable and its deleting destructor.
+CTCBase* EmitCrateStackDeletingDestructor(CThing& thing)
 {
-    CObject_007b6c90* object = static_cast<CObject_007b6c90*>(stack);
-    object->Member14.~CBaseIntelligentPointer();
-    object->Memberc.~CBaseIntelligentPointer();
-    object->CTCBase::~CTCBase();
-    if (flags & 1)
-        operator delete(object);
-    return stack;
+    return new CTCCrateStack(thing);
 }

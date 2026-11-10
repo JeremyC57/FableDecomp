@@ -1,0 +1,34 @@
+address	module	name
+0044aa60	CIntelligentPointer<CThingPlayerCreature>	`scalar deleting destructor'
+00455c64	CEnvironmentThemeDaySetDef	`scalar deleting destructor'
+00456010	CCreatureGenerationFamilyDef	~CCreatureGenerationFamilyDef
+00458017	CSpecialAbilitiesThunderLightningStormDef	`scalar deleting destructor'
+00459abe	CBrainDef	~CBrainDef
+00459b73	CPlayerInventoryDef	~CPlayerInventoryDef
+0048a4d0	CIntelligentPointer<const CThingPlayerCreature>	`scalar deleting destructor'
+0048a4f0	CIntelligentPointer<const CThing>	`scalar deleting destructor'
+004aa030	std	_Construct
+004d6931	CIntelligentPointer<CThingAICreature>	`scalar deleting destructor'
+0050f3a0	CIntelligentPointer<CThingBuilding>	`scalar deleting destructor'
+00511f50	std	_Construct
+00526050	CIntelligentPointer<CThingPhysical>	`scalar deleting destructor'
+0065e3a3	CIntelligentPointer<CVillageTaskBase>	`scalar deleting destructor'
+0066c0e0	CIntelligentPointer<CThingSoundEmitter>	`scalar deleting destructor'
+006872b0	CMessageEvent	`scalar deleting destructor'
+0069baf0	CIntelligentPointer<const CThingGameObject>	`scalar deleting destructor'
+006df7c0	CCreatureAction_ShowTrophy	`scalar deleting destructor'
+00701ad0	CIntelligentPointer<const CThingAICreature>	`scalar deleting destructor'
+00718020	CIntelligentPointer<CScriptGameResourceObjectScriptedThing>	`scalar deleting destructor'
+0074cc90	std	_Construct
+007b6c90	CTCCrateStack	`scalar deleting destructor'
+007eb2b0	CCreatureAction_PickupGameObject	~CCreatureAction_PickupGameObject
+007eb470	CCreatureAction_AddRealObjectToInventory	~CCreatureAction_AddRealObjectToInventory
+0084b500	CCreatureAction_ActivateQuest	`scalar deleting destructor'
+00854500	NCameraModes::CScriptModuleOpenChest	`scalar deleting destructor'
+00854540	NCameraModes::CScriptModuleUseLamp	`scalar deleting destructor'
+008bd570	CIntelligentPointer<CThingGameObject>	`scalar deleting destructor'
+008e8c20	CCreatureAction_BriarRoseConcentrateInto	~CCreatureAction_BriarRoseConcentrateInto
+008e8cb0	CCreatureAction_BriarRoseInvulnerableTeleport	~CCreatureAction_BriarRoseInvulnerableTeleport
+00957300	CCreatureAction_BriarRoseForcePush	~CCreatureAction_BriarRoseForcePush
+00a51d90	CIntelligentPointer<C3DAnimation2>	`scalar deleting destructor'
+00a53520	std	_Construct

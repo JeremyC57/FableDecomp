@@ -1,36 +1,14 @@
-// CSpecialAbilitiesFireballSpellDef::CSpecialAbilitiesFireballSpellDef() -- base CBase_00430370(), this vtable, then 3 members zeroed
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00457B35, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBase_00430370::CBase_00430370 ; xor eax,eax ; mov dword ptr [esi],offset CSpecialAbilitiesFireballSpellDef::`vftable' ; mov [esi+0x44],eax ; mov [esi+0x48],eax ; mov [esi+0x4c],eax ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_00430370() @ 0x00430370, this class's vtable (0x012345A4, named
-// through rtti-vtables.tsv), then the 3 consecutive dword members at +0x44..+0x4c
-// are zeroed from one cleared register. The vtable store comes BEFORE the stores only when the zeroed
-// members belong to an embedded member object whose inline constructor is inlined here (a plain
-// init list or body assignment sinks the vtable store below them). Member types are not recoverable from the
-// body (any 4-byte scalar or pointer); `long` models them. One of 27 bodies.
-struct CBase_00430370 {
-    virtual void v00();
-    CBase_00430370();                           // 0x00430370
-};
-
-struct SZeroed {                        // the zeroed block is one embedded member object
-    long m_00;                          // +0x44
-    long m_01;                          // +0x48
-    long m_02;                          // +0x4c
-    SZeroed() : m_00(0), m_01(0), m_02(0) { }           // inlined into every constructor that embeds it
-};
-
-class CSpecialAbilitiesFireballSpellDef : public CBase_00430370 { public:
-    unsigned char _pad[0x40];
-    SZeroed m_data;                        // +0x44
-    virtual void v00();
-    CSpecialAbilitiesFireballSpellDef();
-};
+// CSpecialAbilitiesFireballSpellDef::CSpecialAbilitiesFireballSpellDef() -- the def constructor: the out-of-line CParentDefClassBase() 0x00430370, the CSpecialAbilitiesFireballSpellDef vtable, then the empty StaminaCost vector
+// Leaf: ??0CSpecialAbilitiesFireballSpellDef@@QAE@XZ
+// Retail: Fable.exe @ 0x00457B35. Identity: the vtable it stores, 0x012345A4, is RTTI .?AVCSpecialAbilitiesFireballSpellDef@@ :
+//   CParentDefClassBase (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??0CSpecialAbilitiesFireballSpellDef@@QAE@XZ.
+// Callees: CParentDefClassBase::CParentDefClassBase 0x00430370 (Ego_r.pdb / FableWin.pdb ??0CParentDefClassBase@@QAE@XZ).
+// Model: the shared engine/CSpecialAbilitiesFireballSpellDef.h (hdr overlay opt-in FABLE_RETAIL_CSPECIALABILITIESFIREBALLSPELLDEF_MEMBERS
+//   declares the constructor and the overrides) over engine/CParentDefClassBase.h.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CSPECIALABILITIESFIREBALLSPELLDEF_MEMBERS
+#include "engine/CSpecialAbilitiesFireballSpellDef.h"
 
 CSpecialAbilitiesFireballSpellDef::CSpecialAbilitiesFireballSpellDef()
-    : CBase_00430370()
-    , m_data()
 {
 }

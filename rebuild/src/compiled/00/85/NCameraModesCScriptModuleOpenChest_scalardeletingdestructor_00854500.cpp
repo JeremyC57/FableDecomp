@@ -1,42 +1,69 @@
-// NCameraModes::CScriptModuleOpenChest::`scalar deleting destructor' @ 0x00854500 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
-// stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
-// +0x5c CBaseIntelligentPointer (~ @ 0x00A01C10), +0x54 CBaseIntelligentPointer (~ @ 0x00A01C10), then the base NCameraModes::CScriptModuleBase (~ @ 0x00854310), and frees the block with operator delete
-// (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
-// retail labels); the class itself is not attributed, so it is named by address.
-// Leaf: ?CScriptModuleOpenChest_CompositeScalarDeletingDestructor@@
-// Naming wave 26 (family c694): the base destructor 0x00854310 is ??1CScriptModuleSelfTerminateBase@NCameraModes@@UAE@XZ (Ego_r.pdb; Fable.exe RTTI base arrays);
-//   was ??1CScriptModuleBase@NCameraModes@@QAE@XZ (the base one level too high).
-#pragma optimize("t", on)
+// NCameraModes::CScriptModuleOpenChest::`scalar deleting destructor'(unsigned int) -- the compiler-generated deleting destructor: the implicit ~CScriptModuleOpenChest expanded (~CBaseIntelligentPointer on PChest +0x5C and PCreature +0x54, then the out-of-line ~CScriptModuleSelfTerminateBase 0x00854310), then operator delete when bit 0 of the flags is set
+// Leaf: ??_GCScriptModuleOpenChest@NCameraModes@@UAEPAXI@Z
+// Retail: Fable.exe @ 0x00854500. Identity: slot 0 of vtable 0x01275ABC, RTTI .?AVCScriptModuleOpenChest@NCameraModes@@ : CScriptModuleSelfTerminateBase :
+//   CScriptModuleBase (ghidra_out/rtti_bases.tsv; the catalog name agrees).
+// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (Ego_r.pdb / FableWin.pdb ??1CBaseIntelligentPointer@@UAE@XZ),
+//   NCameraModes::CScriptModuleSelfTerminateBase::~CScriptModuleSelfTerminateBase 0x00854310 (bound by the landed rows), operator delete 0x00BFE9BC.
+// Layout: Ego_r.pdb NCameraModes::CScriptModuleBase (76 bytes: PCamPoint +4, PThingOrigin +0xC, CoordOrigin +0x14, CoordAxis +0x20,
+//   POwner +0x38, PCameraManager +0x3C, SelfTerminate +0x40, ShortenOnCollision +0x41, CutOutOverride +0x44, FOVOverride +0x48),
+//   CScriptModuleSelfTerminateBase (WFDuration +0x4C, EndFrame +0x50) and CScriptModuleOpenChest (PCreature +0x54, PChest +0x5C, ...; 160 bytes); no
+//   STL members, so retail keeps the Ego_r offsets (the deleting destructor's +0x54 / +0x5C agree). No engine header models these
+//   classes, so they are declared here over the shared engine/CIntelligentPointer.h, engine/C3DVector.h and engine/CRightHandedSet.h.
+//   CScriptModuleBase::POwner's pointee class (Ego_r `CBase *`) is kept as void*. The derived class declares no destructor.
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CRightHandedSet.h"
+class CThing;
+class CGameCameraManager;
 namespace NCameraModes {
-class CScriptModuleBase { public:                 // vtable 0x01255F74 (.?AVCScriptModuleBase@NCameraModes@@)
-    virtual ~CScriptModuleBase();                   // 0x005ED120
+class CScriptModuleBase {
+public:
+    CScriptModuleBase();                                                // Ego_r.pdb ??0CScriptModuleBase@NCameraModes@@QAE@XZ
+    virtual ~CScriptModuleBase();
+    CIntelligentPointer<CThing> PCamPoint;                              // +0x04
+    CIntelligentPointer<const CThing> PThingOrigin;                     // +0x0C
+    C3DVector CoordOrigin;                                              // +0x14
+    CRightHandedSet CoordAxis;                                          // +0x20
+    void* POwner;                                                       // +0x38
+    CGameCameraManager* PCameraManager;                                 // +0x3C
+    bool SelfTerminate;                                                 // +0x40
+    bool ShortenOnCollision;                                            // +0x41
+    long CutOutOverride;                                                // +0x44
+    float FOVOverride;                                                  // +0x48
 };
-class CScriptModuleSelfTerminateBase : public CScriptModuleBase { public:   // RTTI: the direct base of OpenChest / UseLamp / OpenGate
-    virtual ~CScriptModuleSelfTerminateBase();      // 0x00854310
+class CScriptModuleSelfTerminateBase : public CScriptModuleBase {
+public:
+    CScriptModuleSelfTerminateBase(long duration);                      // Ego_r.pdb ??0CScriptModuleSelfTerminateBase@NCameraModes@@QAE@J@Z
+    virtual ~CScriptModuleSelfTerminateBase();                          // 0x00854310
+    virtual bool IsFinished() const;
+    long WFDuration;                                                    // +0x4C
+    long EndFrame;                                                      // +0x50
+};
+class CScriptModuleOpenChest : public CScriptModuleSelfTerminateBase {                   // vtable 0x01275ABC
+public:
+    CScriptModuleOpenChest(const CThing& creature, const CThing& chest, long duration); // Ego_r.pdb ??0CScriptModuleOpenChest@NCameraModes@@QAE@ABVCThing@@0J@Z
+    virtual void Update();
+protected:
+    virtual void OnInitLeaf();
+public:
+    CIntelligentPointer<const CThing> PCreature;                        // +0x54
+    CIntelligentPointer<const CThing> PChest;                            // +0x5C
+    C3DVector Origin;                                                   // +0x64
+    float Theta;                                                        // +0x70
+    float Rad;                                                          // +0x74
+    float Height;                                                       // +0x78
+    float DeltaTheta;                                                   // +0x7C
+    float DeltaRad;                                                     // +0x80
+    float DeltaHeight;                                                  // +0x84
+    C3DVector AxisX;                                                    // +0x88
+    C3DVector AxisY;                                                    // +0x94
 };
 }
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
-};
-void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
+FABLE_STATIC_ASSERT(sizeof(NCameraModes::CScriptModuleOpenChest) == 0xA0);
 
-#pragma pack(push, 1)
-struct CObject_00854500 : NCameraModes::CScriptModuleSelfTerminateBase {
-    unsigned char _pad54[0x50];
-    CBaseIntelligentPointer Member54;           // +0x54
-    CBaseIntelligentPointer Member5c;           // +0x5c
-};
-#pragma pack(pop)
-
-void* __fastcall CScriptModuleOpenChest_CompositeScalarDeletingDestructor(void* chest, int, unsigned int flags)
+// Emission harness (not a retail function): an inline copy construction emits the vftable and its deleting destructor.
+NCameraModes::CScriptModuleBase* EmitCScriptModuleOpenChestDeletingDestructor(const NCameraModes::CScriptModuleOpenChest& module)
 {
-    CObject_00854500* object = static_cast<CObject_00854500*>(chest);
-    object->Member5c.~CBaseIntelligentPointer();
-    object->Member54.~CBaseIntelligentPointer();
-    object->NCameraModes::CScriptModuleSelfTerminateBase::~CScriptModuleSelfTerminateBase();
-    if (flags & 1)
-        operator delete(object);
-    return chest;
+    return new NCameraModes::CScriptModuleOpenChest(module);
 }

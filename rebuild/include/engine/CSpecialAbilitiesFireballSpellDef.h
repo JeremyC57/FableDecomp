@@ -10,8 +10,22 @@
 #endif
 #include "engine/CParentDefClassBase.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CSPECIALABILITIESFIREBALLSPELLDEF_MEMBERS
+class CPersistContext;
+#endif
 class CSpecialAbilitiesFireballSpellDef : public CParentDefClassBase {
 public:
+#ifdef FABLE_RETAIL_CSPECIALABILITIESFIREBALLSPELLDEF_MEMBERS
+    // Retail opt-in (agentNF4, 2026-11-10, row 0x00457B35): the out-of-line constructor 0x00457B35 (Ego_r.pdb / FableWin.pdb
+    // ??0CSpecialAbilitiesFireballSpellDef@@QAE@XZ: CParentDefClassBase() 0x00430370, vtable 0x012345A4, the empty StaminaCost vector),
+    // and the def's own overrides (both PDBs ?Transfer@, ?Copy@,
+    // ?GetSizeofClass@ and the static ?Alloc@..@@SIPAVCDefClassBase@@XZ). Declarations only. Needs FABLE_RETAIL_DEF_CLASS_BASE.
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CSpecialAbilitiesFireballSpellDef();                                         // 0x00457B35
+    virtual void Transfer(CPersistContext&);                                     // slot 18
+    virtual void Copy(const CDefClassBase*);                                     // slot 19
+    virtual unsigned long GetSizeofClass();                                      // slot 20
+#endif
     float ReleaseDelay;                                                          // +0x3C
     float Inclination;                                                           // +0x40
     std::vector<float,std::allocator<float> > StaminaCost;                       // +0x44

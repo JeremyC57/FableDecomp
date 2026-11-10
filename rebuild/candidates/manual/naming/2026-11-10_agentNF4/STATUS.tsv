@@ -1,0 +1,162 @@
+row	old_binding	new_binding	grade	rename	note
+00440730	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+0044aa60	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CThingPlayerCreature>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCThingPlayerCreature@@@@UAEPAXI@Z
+00454b4c	?dtor@Pair@@QAEXXZ	-	NOT_DONE		left: identity proven as ~CThingBaseDef (CThingComponentSet member +0x39, dtor 0x00450BA0) but needs a CThingBaseDef.h retail opt-in; not done in time
+004554c6	??1CParentDefClassBase@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH		self ??1CInventoryDef@@UAE@XZ
+00455876	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSkyDef@@QAE@XZ
+004558bf	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CEnvironmentDef@@QAE@XZ
+00455c43	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CEnvironmentThemeDaySetDef@@QAE@XZ
+00455c64	?realdtor@CEnvironmentThemeDaySetDef@@QAEXXZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH	CEnvironmentThemeDaySetDef::`scalar deleting destructor'	self ??_GCEnvironmentThemeDaySetDef@@UAEPAXI@Z
+00455c8a	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CEngineLocalDetailGeneratorDef@@QAE@XZ
+00455dff	?FinishMove@CTCMoveBase@@QAEXXZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH		self ??1CCombatTypeDef@@UAE@XZ
+00455e72	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSimVoicesDef@@QAE@XZ
+00455eac	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSoundThemeDef@@QAE@XZ
+00455fca	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CCreatureGenerationFamilyDef@@QAE@XZ
+00456010	??1PatchEdgeBase456010@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH	CCreatureGenerationFamilyDef::~CCreatureGenerationFamilyDef	self ??1CCreatureGenerationFamilyDef@@UAE@XZ
+0045619e	??1CDefinitionBaseModel@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH		self ??1CHeroStatsDef@@UAE@XZ
+004564eb	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CFactionDef@@QAE@XZ
+00456795	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CCameraManagerDef@@QAE@XZ
+00456ce1	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0COpinionReactionMaskDef@@QAE@XZ
+00456d25	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0COpinionDeedMaskDef@@QAE@XZ
+0045725b	??0CParentDefClassBase_Calls@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSpecialAbilitiesMultiArrowDef@@QAE@XZ
+00457936	?dtor@CBase@@QAEXXZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH		self ??1CSpecialAbilitiesDrainLifeDef@@UAE@XZ
+00457b35	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSpecialAbilitiesFireballSpellDef@@QAE@XZ
+00457e3a	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSpecialAbilitiesBurntEffectDef@@QAE@XZ
+00457e90	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSpecialAbilitiesElectrocutedEffectDef@@QAE@XZ
+00458017	?real_dtor@CSpecialAbilitiesThunderLightningStormDef@@QAEXXZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH	CSpecialAbilitiesThunderLightningStormDef::`scalar deleting destructor'	self ??_GCSpecialAbilitiesThunderLightningStormDef@@UAEPAXI@Z
+00458111	??1CDefinitionBaseModel@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH		self ??1CSpecialAbilitiesDivineWrathDef@@UAE@XZ
+004582d6	??1CDefinitionBaseModel@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH		self ??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ
+004583bd	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CSpecialAbilitiesCreatureTintDef@@QAE@XZ
+004584c7	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CAttackPatternDef@@QAE@XZ
+0045851d	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CObjectFamilyDef@@QAE@XZ
+004588a5	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CCombatSequenceDef@@QAE@XZ
+00459abe	??1CPatchStripBase@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH	CBrainDef::~CBrainDef	self ??1CBrainDef@@UAE@XZ
+00459b73	??1CPatchStripBase@@QAE@XZ	??1CParentDefClassBase@@UAE@XZ	RELOCATION_MATCH	CPlayerInventoryDef::~CPlayerInventoryDef	self ??1CPlayerInventoryDef@@UAE@XZ
+004629d2	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ?Alloc@CEngineThemeGroupDef@@SIPAVCDefClassBase@@XZ
+004799a0	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CEngineLocalDetailLayerDef@@QAE@XZ
+0047a3ea	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CAbilityTrackDef@@QAE@XZ
+0048a4d0	?scalar_destructor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<const CThingPlayerCreature>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@$$CBVCThingPlayerCreature@@@@UAEPAXI@Z
+0048a4f0	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<const CThing>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+004aa030	??0CBaseIntelligentPointer@FableCons_004aa030@@QAE@XZ	??0CBaseIntelligentPointer@@QAE@XZ	RELOCATION_MATCH	std::_Construct	self ??$_Construct@V?$CIntelligentPointer@VCThing@@@@V1@@std@@YIXPAV?$CIntelligentPointer@VCThing@@@@ABV1@@Z
+004d607c	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH		self ??1CTCDiceGame@@UAE@XZ
+004d6931	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CThingAICreature>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCThingAICreature@@@@UAEPAXI@Z
+004dbe58	?DestroyElement_00a01c10@pair_ulong_anim@@QAEXXZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+004dcd2b	??1CIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+004dd641	??1CValue_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+004e1437	??1CIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+004e3f21	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CIdleSchedulerDef@@QAE@XZ
+004e4624	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ?Alloc@CThunderBattleDef@@SIPAVCDefClassBase@@XZ
+004e4833	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ?Alloc@CTrollBattleDef@@SIPAVCDefClassBase@@XZ
+004f9d15	??0CBase_00430370@@QAE@XZ	??0CParentDefClassBase@@QAE@XZ	RELOCATION_MATCH		self ??0CCardPositionsDef@@QAE@XZ
+0050f3a0	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CThingBuilding>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCThingBuilding@@@@UAEPAXI@Z
+00511f50	??0CBaseIntelligentPointer@FableCons_00511f50@@QAE@XZ	??0CBaseIntelligentPointer@@QAE@XZ	RELOCATION_MATCH	std::_Construct	self ??$_Construct@V?$CIntelligentPointer@VCThingAICreature@@@@V1@@std@@YIXPAV?$CIntelligentPointer@VCThingAICreature@@@@ABV1@@Z
+00526050	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CThingPhysical>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCThingPhysical@@@@UAEPAXI@Z
+00629060	??1CMember_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+00646709	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+006592e2	??1CIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+0065e3a3	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CVillageTaskBase>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCVillageTaskBase@@@@UAEPAXI@Z
+0065f0fa	?dtor_a01c10@CIntelligentPointer@@QAEXXZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+0066c0e0	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CThingSoundEmitter>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCThingSoundEmitter@@@@UAEPAXI@Z
+006872b0	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CMessageEvent::`scalar deleting destructor'	self ??_GCMessageEvent@@UAEPAXI@Z
+0069baf0	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<const CThingGameObject>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@$$CBVCThingGameObject@@@@UAEPAXI@Z
+006a23e0	??0CBaseIntelligentPointer@NRemap006a23e0@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+006a23e0	??1CBaseIntelligentPointer@NRemap006a23e0@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+006a2e20	??1CBaseIntelligentPointer@N006a2e20@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a3130	??0CBaseIntelligentPointer@FableCopy_006a3130@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a3180	??0CBaseIntelligentPointer@FableFill_006a3180@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a31d0	??0CBaseIntelligentPointer@FableCopy_006a31d0@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a3220	??0CBaseIntelligentPointer@FableFill_006a3220@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a3300	??0CBaseIntelligentPointer@FableHeap_006a3300@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a3300	??1CBaseIntelligentPointer@FableHeap_006a3300@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006a3cd0	??0CBaseIntelligentPointer@FablePush_006a3cd0@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+006c1be0	??1CIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+006c8780	??0CBaseIntelligentPointer@X_006c8780@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+006c8780	??1CBaseIntelligentPointer@X_006c8780@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+006dd6c0	??1CMember_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+006df7c0	??1CMember_00a01c10@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_ShowTrophy::`scalar deleting destructor'	self ??_GCCreatureAction_ShowTrophy@@UAEPAXI@Z
+006e1e60	??1CIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+006e4bd0	??0CBaseIntelligentPointer@N006e4bd0@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+007004b0	??0CBaseIntelligentPointerReal@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+00701ad0	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<const CThingAICreature>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@$$CBVCThingAICreature@@@@UAEPAXI@Z
+00713510	??1IntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+00718020	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CScriptGameResourceObjectScriptedThing>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCScriptGameResourceObjectScriptedThing@@@@UAEPAXI@Z
+0074cc90	??0CBaseIntelligentPointer@FableCons_0074cc90@@QAE@XZ	??0CBaseIntelligentPointer@@QAE@XZ	RELOCATION_MATCH	std::_Construct	self ??$_Construct@V?$CIntelligentPointer@VCThingCreatureBase@@@@V1@@std@@YIXPAV?$CIntelligentPointer@VCThingCreatureBase@@@@ABV1@@Z
+007699c0	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+0076bdd0	??1CBaseIntelligentPointer@FableDestroy_0076bdd0@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+00782f60	??1CValue_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+00782fe0	??1CMember_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+00787e12	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: identity not proven from two sources in this pass
+007a0630	??0BaseIntelligentPointer@LightningNative@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+007a0630	??1BaseIntelligentPointer@LightningNative@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+007b6c90	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CTCCrateStack::`scalar deleting destructor'	self ??_GCTCCrateStack@@UAEPAXI@Z
+007eaf00	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+007eb2b0	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_PickupGameObject::~CCreatureAction_PickupGameObject	self ??1CCreatureAction_PickupGameObject@@UAE@XZ
+007eb470	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_AddRealObjectToInventory::~CCreatureAction_AddRealObjectToInventory	self ??1CCreatureAction_AddRealObjectToInventory@@UAE@XZ
+007eb990	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+007ed420	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+007edff0	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+007ee7a0	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+0080df90	??1CBaseIntelligentPointer@N0080df90@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+008131b0	??1CValue_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+0082c5e0	??0CBaseIntelligentPointer@N0082c5e0@@QAE@XZ	-	NOT_DONE		left: STLport algorithm/container instantiation over CIntelligentPointer<T>; needs real STLport row + element header; owner identity of instantiation not pinned
+0084b500	??1CMember_00a01c10@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_ActivateQuest::`scalar deleting destructor'	self ??_GCCreatureAction_ActivateQuest@@UAEPAXI@Z
+00854500	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	NCameraModes::CScriptModuleOpenChest::`scalar deleting destructor'	self ??_GCScriptModuleOpenChest@NCameraModes@@UAEPAXI@Z
+00854540	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	NCameraModes::CScriptModuleUseLamp::`scalar deleting destructor'	self ??_GCScriptModuleUseLamp@NCameraModes@@UAEPAXI@Z
+0085edf0	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+00883230	??1CValue_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+008834f0	??1CMember_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+008a99f0	??0BaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008a99f0	??1BaseIntelligentPointer@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008bd570	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<CThingGameObject>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VCThingGameObject@@@@UAEPAXI@Z
+008d74b0	??0CBaseIntelligentPointer@NCreatureMode@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008d74b0	??1CBaseIntelligentPointer@NCreatureMode@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008da690	??0BaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008da690	??1BaseIntelligentPointer@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008da890	??0BaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008da890	??1BaseIntelligentPointer@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+008e8c20	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_BriarRoseConcentrateInto::~CCreatureAction_BriarRoseConcentrateInto	self ??1CCreatureAction_BriarRoseConcentrateInto@@UAE@XZ
+008e8cb0	?teardown@Sub114@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_BriarRoseInvulnerableTeleport::~CCreatureAction_BriarRoseInvulnerableTeleport	self ??1CCreatureAction_BriarRoseInvulnerableTeleport@@UAE@XZ
+008fd2ca	??1MemberB@@QAE@XZ	-	NOT_DONE		left: std_Destval stand-in; real owner (container element dtor) not proven
+008fd544	?inner@FableDestVal_008fd544_t@@QAIXXZ	-	NOT_DONE		left: std_Destval stand-in; real owner (container element dtor) not proven
+008fd769	?inner@FableDestVal_008fd769_t@@QAIXXZ	-	NOT_DONE		left: std_Destval stand-in; real owner (container element dtor) not proven
+0090190f	??1CMember_00a01c10@@QAE@XZ	-	NOT_DONE		left: row built on invented CRetailTree/CAggregate stand-ins; real class not identified
+0090fb60	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+0090fb60	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00910b20	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH		self ??1CCreatureAction_DeclarePlayerACriminal@@UAE@XZ
+009207a0	??0CBaseIntelligentPointerCtor@@QAE@XZ	??0CBaseIntelligentPointer@@QAE@XZ	RELOCATION_MATCH		self ?IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground@@MAE_NXZ
+009207a0	??1CBaseIntelligentPointerCtor@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH		self ?IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground@@MAE_NXZ
+00922eb0	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+00933c10	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00933c10	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00935970	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+00937d20	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00937d20	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00937f70	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00937f70	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+009400f0	?Dtor@Sub@@QAEXXZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+0094e6b0	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+0094e6b0	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+009547d0	??0MazeCreaturePointerBase@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+009547d0	??1MazeCreaturePointerBase@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+00954b50	??0MazePointerBase@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+00954b50	??1MazePointerBase@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+00954e30	??0MazePointerBase@@QAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+00954e30	??1MazePointerBase@@UAE@XZ	-	NOT_DONE		left: camera-mode / AI temporary row; needs NCameraModes/AI headers with retail members
+00956b00	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00956b00	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00957300	??1CBaseIntelligentPointer@@QAE@XZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CCreatureAction_BriarRoseForcePush::~CCreatureAction_BriarRoseForcePush	self ??1CCreatureAction_BriarRoseForcePush@@UAE@XZ
+009575c0	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: tried, no match: local CThing has no CBaseObject base; needs retail CThing header branch
+009575c0	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: tried, no match: local CThing has no CBaseObject base; needs retail CThing header branch
+00957f20	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+0095e350	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+0095e350	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00966890	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+00967180	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+00968150	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+00968170	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+0096e540	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: state-group row needs retail CThingCreatureBase/CThingObject chains in shared headers (opt-in not written yet)
+0096f180	??0CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: tried, no match: register order differs with by-value T* ctor (budget/residue not found)
+0096f180	??1CBaseIntelligentPointerCtor@@QAE@XZ	-	NOT_DONE		left: tried, no match: register order differs with by-value T* ctor (budget/residue not found)
+0097d280	??1CBaseIntelligentPointer@@QAE@XZ	-	NOT_DONE		left: action dtor, owner class ambiguous (several CCreatureAction_* share the layout; no ctor/Clone/??_G pins it to one class)
+00a51d90	?Dtor@CIntelligentPointer@@QAEXXZ	??1CBaseIntelligentPointer@@UAE@XZ	RELOCATION_MATCH	CIntelligentPointer<C3DAnimation2>::`scalar deleting destructor'	self ??_G?$CIntelligentPointer@VC3DAnimation2@@@@UAEPAXI@Z
+00a53520	??0CBaseIntelligentPointer@FableCons_00a53520@@QAE@XZ	??0CBaseIntelligentPointer@@QAE@XZ	RELOCATION_MATCH	std::_Construct	self ??$_Construct@V?$CIntelligentPointer@VC3DAnimation2@@@@V1@@std@@YIXPAV?$CIntelligentPointer@VC3DAnimation2@@@@ABV1@@Z

@@ -6,6 +6,29 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_ACTIVATEQUEST
+// Retail opt-in (agentNF4, 2026-11-10, row 0x0084B500 the scalar deleting destructor): RTTI .?AVCCreatureAction_ActivateQuest@@ :
+// CCreatureActionBase, vtable 0x012752C4, over the retail CCreatureActionBase chain (engine/CCreatureActionBase.h,
+// FABLE_RETAIL_CCREATUREACTIONBASE; 0xA8 bytes). Members: Ego_r.pdb in order and spelling at the offsets of the generated model
+// below (ScriptName +0xA8, LoadResources +0xAC, PObjectToUse +0xAD byte-packed); sizeof 0xB8. The destructor is the implicit one
+// (0x0084B500 expands it: ~CBaseIntelligentPointer, ~CCharString, then ~CCreatureActionBase, no vtable store). Spellings: Ego_r.pdb
+// constructor (the copy constructor is the implicit one), ?PerformAction@, ?FrameUpdate@, ?Initialise@, ?IsActionReadyForInterruption@, ?Clone@ (declarations only).
+// Needs engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER), engine/CCreatureActionBase.h and fable_string.h first.
+class CThing;
+class CThingCreatureBase;
+class CCreatureAction_ActivateQuest : public CCreatureActionBase {
+public:
+    CCreatureAction_ActivateQuest(CThingCreatureBase& creature, CThing* object, const CCharString& scriptName, bool loadResources);
+    virtual void PerformAction();
+    virtual void FrameUpdate();
+    virtual void Initialise();
+    virtual bool IsActionReadyForInterruption() const;
+    virtual CCreatureActionBase* Clone() const;
+    CCharString ScriptName;                                             // +0xA8
+    bool LoadResources;                                                 // +0xAC
+    CIntelligentPointer<CThing> PObjectToUse;                           // +0xAD
+};
+#else // generated flattened layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -62,4 +85,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ActivateQuest, ScriptName_PStringDa
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ActivateQuest, LoadResources) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ActivateQuest, PObjectToUse) == 0xad);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_ACTIVATEQUEST
 #endif // FABLE_ENGINE_CCREATUREACTION_ACTIVATEQUEST_H

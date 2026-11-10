@@ -1,39 +1,22 @@
-// CPhysicsMeshInfo_Derived_0084b500::`scalar deleting destructor'(unsigned int) -- non-virtual: 2 members destroyed out of line, CPhysicsMeshInfo::~CPhysicsMeshInfo, flag-tested delete
-// Naming (naming wave 22, ccs): the string type is the PDB CCharString (was CMember_0099eae0); name-only.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B500, oracle length 54 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+0xad] ; call CMember_00a01c10::~CMember_00a01c10 ; lea ecx,[esi+0xa8] ; call CCharString::~CCharString ; mov ecx,esi ; call CPhysicsMeshInfo::~CPhysicsMeshInfo ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ; add esp,4 ; K: mov eax,esi ; pop esi ; ret 4
-// `??_G` of a NON-polymorphic class (no vtable store anywhere): VC7.1 emits a scalar deleting
-// destructor for any class with a non-trivial destructor that a translation unit deletes. The
-// implicit destructor is inlined: members at +0xad, +0xa8 are destroyed in reverse
-// declaration order, then the base class destructor @ 0x00693EF0 runs, and bit 0 of the flag
-// argument selects the flag-tested operator delete @ 0x00BFE9BC. The manifest label (`vector
-// deleting destructor`) is propagated; names come from the destructor labels when unique.
-// One of 15 bodies of this shape.
-class CCharString { public:
-    unsigned char _body[0x5];
-    ~CCharString();                            // 0x0099EAE0
-};
+// CCreatureAction_ActivateQuest::`scalar deleting destructor'(unsigned int) -- the compiler-generated deleting destructor: the implicit ~CCreatureAction_ActivateQuest expanded (~CBaseIntelligentPointer on PObjectToUse +0xAD, ~CCharString on ScriptName +0xA8, then the out-of-line ~CCreatureActionBase 0x00693EF0), then operator delete when bit 0 of the flags is set
+// Leaf: ??_GCCreatureAction_ActivateQuest@@UAEPAXI@Z
+// Retail: Fable.exe @ 0x0084B500. Identity: slot 0 of vtable 0x012752C4, RTTI .?AVCCreatureAction_ActivateQuest@@ (the catalog name agrees).
+// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (Ego_r.pdb / FableWin.pdb ??1CBaseIntelligentPointer@@UAE@XZ),
+//   CCharString::~CCharString 0x0099EAE0, CCreatureActionBase::~CCreatureActionBase 0x00693EF0, operator delete 0x00BFE9BC.
+// Model: the shared engine/CCreatureAction_ActivateQuest.h (hdr overlay opt-in FABLE_RETAIL_CCREATUREACTION_ACTIVATEQUEST, the retail
+//   class) over engine/CCreatureActionBase.h and engine/CIntelligentPointer.h (retail branches).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_ACTIVATEQUEST
+#include "fable_string.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCreatureAction_ActivateQuest.h"
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x5];
-    ~CMember_00a01c10();                            // 0x00A01C10
-};
-
-class CPhysicsMeshInfo { public:
-    unsigned char _body[0xa8];
-    ~CPhysicsMeshInfo();                             // 0x00693EF0
-};
-
-struct CPhysicsMeshInfo_Derived_0084b500 : CPhysicsMeshInfo {
-    CCharString m_a8;            // +0xa8
-    CMember_00a01c10 m_ad;            // +0xad
-};
-
-// The delete-expression that makes the compiler emit CPhysicsMeshInfo_Derived_0084b500::`scalar deleting destructor'.
-void Destroy_CPhysicsMeshInfo_Derived_0084b500(CPhysicsMeshInfo_Derived_0084b500* object)
+// Emission harness (not a retail function): an inline copy construction emits the vftable and its deleting destructor.
+CCreatureActionBase* EmitActivateQuestDeletingDestructor(const CCreatureAction_ActivateQuest& action)
 {
-    delete object;
+    return new CCreatureAction_ActivateQuest(action);
 }

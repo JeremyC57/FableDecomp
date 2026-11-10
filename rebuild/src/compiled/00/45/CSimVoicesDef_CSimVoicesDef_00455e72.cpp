@@ -1,31 +1,35 @@
-// CSimVoicesDef::CSimVoicesDef() -- base CBase_00430370(), this vtable, then the embedded CMember_00455e39 member at +0x3c
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00455E72, oracle length 26 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBase_00430370::CBase_00430370 ; lea ecx,[esi+0x3c] ; mov dword ptr [esi],offset CSimVoicesDef::`vftable' ; call CMember_00455e39::CMember_00455e39 ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_00430370() @ 0x00430370, this class's vtable (0x012337BC, named
-// through rtti-vtables.tsv), then the member object at +0x3c is constructed out of line
-// @ 0x00455E39. Base and member class names come from unique manifest labels, else from the
-// callee address. One of 16 bodies of this shape.
-struct CBase_00430370 {
-    virtual void v00();
-    CBase_00430370();                           // 0x00430370
+// CSimVoicesDef::CSimVoicesDef() -- the def constructor: the out-of-line CParentDefClassBase() 0x00430370, the CSimVoicesDef vtable, then the members' constructors
+// Leaf: ??0CSimVoicesDef@@QAE@XZ
+// Retail: Fable.exe @ 0x00455E72. Identity: the vtable it stores, 0x012337BC, is RTTI .?AVCSimVoicesDef@@ : CParentDefClassBase
+//   (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??0CSimVoicesDef@@QAE@XZ.
+// Callees: CParentDefClassBase::CParentDefClassBase 0x00430370 (Ego_r.pdb / FableWin.pdb ??0CParentDefClassBase@@QAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model; CSimVoice::CSimVoice 0x00455E39 (??0CSimVoice@@QAE@XZ) on Entry.
+// Layout: Ego_r.pdb CSimVoicesDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CSimVoicesDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
+class CPersistContext;
+#include "engine/CInitBaseClass.h"
+#include "engine/CVectorMap.h"
+enum EReactionSpeechType { };                                   // enumerators not needed here (no engine header)
+class CSimVoice : public CInitBaseClass {                       // RTTI .?AVCSimVoice@@ : CInitBaseClass; vtable 0x012337AC; no engine header
+public:
+    CSimVoice();                                                // 0x00455E39 (??0CSimVoice@@QAE@XZ, bound by landed callers)
+    virtual ~CSimVoice();                                       // 0x00455E59
+    CVectorMap<EReactionSpeechType, long, CKeyPairCompareLess<EReactionSpeechType, long> > Voices;   // +0x08 (Ego_r.pdb CSimVoice::Voices)
 };
+FABLE_STATIC_ASSERT(sizeof(CSimVoice) == 0x18);
 
-struct CMember_00455e39 {
-    CMember_00455e39();                              // 0x00455E39
-};
-
-class CSimVoicesDef : public CBase_00430370 { public:
-    unsigned char _pad[0x38];
-    CMember_00455e39 m_member;                       // +0x3c
-    virtual void v00();
-    CSimVoicesDef();
+class CSimVoicesDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CSimVoicesDef();                                   // 0x00455E72
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    CSimVoice Entry;
 };
 
 CSimVoicesDef::CSimVoicesDef()
-    : CBase_00430370()
-    , m_member()
 {
 }

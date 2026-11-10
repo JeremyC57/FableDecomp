@@ -6,6 +6,17 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_PICKUPGAMEOBJECT
+// Retail opt-in (agentNF4, 2026-11-10, row 0x007EB2B0 ~CCreatureAction_PickupGameObject): RTTI .?AVCCreatureAction_PickupGameObject@@ : CCreatureActionBase (ghidra_out/rtti_bases.tsv),
+// vtable 0x01270C3C; the retail CCreatureActionBase chain (engine/CCreatureActionBase.h, FABLE_RETAIL_CCREATUREACTIONBASE) and the Ego_r.pdb members at their
+// retail offsets. The destructor is the implicit one (0x007EB2B0: member, then ~CCreatureActionBase, no vtable store). Needs
+// engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER) and engine/CCreatureActionBase.h first.
+class CCreatureAction_PickupGameObject : public CCreatureActionBase {                      // vtable 0x01270C3C
+public:
+    CCreatureAction_PickupGameObject(CThingCreatureBase& creature, CThing& object);   // 0x007EB030 (Ego_r.pdb / FableWin.pdb ??0CCreatureAction_PickupGameObject@@QAE@...)
+    CIntelligentPointer<CThing> PObject;                        // +0xA8
+};
+#else // generated flattened layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -54,4 +65,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PickupGameObject) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PickupGameObject, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PickupGameObject, PObject) == 0xa8);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_PICKUPGAMEOBJECT
 #endif // FABLE_ENGINE_CCREATUREACTION_PICKUPGAMEOBJECT_H

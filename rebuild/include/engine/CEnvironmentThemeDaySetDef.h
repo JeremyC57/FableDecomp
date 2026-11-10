@@ -6,6 +6,42 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation 1 conflict(s) in 1 file(s) vs 0 agreeing; PINNED by 1 retyped file(s) despite conflicts.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CENVIRONMENTTHEMEDAYSETDEF
+// Retail opt-in (agentNF4, 2026-11-10, row 0x00455C43 the constructor): the def class over the retail CParentDefClassBase chain.
+// RTTI .?AVCEnvironmentThemeDaySetDef@@ : CParentDefClassBase (ghidra_out/rtti_bases.tsv), vtable 0x0123360C. Members: Ego_r.pdb
+// CEnvironmentThemeDaySetDef in order and spelling, at the retail offsets of the generated model below (TimeTheme +0x3C, the first
+// member after the packed 0x39-byte base; CArray is a 12-byte STLport vector); sizeof 0x6C. The constructor 0x00455C43 runs
+// CParentDefClassBase() 0x00430370, stores the vtable and empties TimeTheme. Spellings: Ego_r.pdb / FableWin.pdb
+// ??0CEnvironmentThemeDaySetDef@@QAE@XZ, ?Alloc@..@@SIPAVCDefClassBase@@XZ, ?Transfer@, ?Copy@, ?GetSizeofClass@ (declarations only).
+// The destructor is the implicit one: retail's deleting destructors expand it (0x00455C64 for CEnvironmentThemeDaySetDef:
+// the member destructor, then ~CParentDefClassBase 0x00430300, no vtable store).
+// Needs FABLE_RETAIL_DEF_CLASS_BASE.
+#include "rebuild_abi.h"
+#include "engine/CParentDefClassBase.h"
+#include "engine/CArray.h"
+#include "engine/CEnvironmentThemeDef.h"
+#include "engine/CRGBColour.h"
+class CPersistContext;
+class CEnvironmentThemeDaySetDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CEnvironmentThemeDaySetDef();                                       // 0x00455C43
+    virtual void Transfer(CPersistContext&);                            // slot 18
+    virtual void Copy(const CDefClassBase*);                            // slot 19
+    virtual unsigned long GetSizeofClass();                             // slot 20
+    CArray<CEnvironmentThemeDef> TimeTheme;                             // +0x3C
+    float SunTilt;                                                      // +0x48
+    float SunRotate;                                                    // +0x4C
+    float SunHeight;                                                    // +0x50
+    float MoonTilt;                                                     // +0x54
+    float MoonRotate;                                                   // +0x58
+    float MoonHeight;                                                   // +0x5C
+    long ColourLookupColumn;                                            // +0x60
+    CRGBColour EditorColour;                                            // +0x64
+    float FishWeightMult;                                               // +0x68
+};
+FABLE_STATIC_ASSERT(sizeof(CEnvironmentThemeDaySetDef) == 0x6c);
+#else // generated flattened layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -49,5 +85,6 @@ FABLE_STATIC_ASSERT(offsetof(CEnvironmentThemeDaySetDef, MoonHeight) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentThemeDaySetDef, ColourLookupColumn) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentThemeDaySetDef, EditorColour) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentThemeDaySetDef, FishWeightMult) == 0x68);
+#endif // FABLE_RETAIL_CENVIRONMENTTHEMEDAYSETDEF
 
 #endif // FABLE_ENGINE_CENVIRONMENTTHEMEDAYSETDEF_H

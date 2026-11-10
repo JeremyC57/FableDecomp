@@ -4822,7 +4822,7 @@ $catalog = @(
         Module = 'CEnvironmentThemeDaySetDef'
         Source = '00/45/CEnvironmentThemeDaySetDef_scalardeletingdestructor_00455c64.cpp'
         TestSource = '00/45/CEnvironmentThemeDaySetDef_scalardeletingdestructor_00455c64_test.cpp'
-        PassPattern = 'CEngineSubPrimitiveText_00455c64_TEST PASS'
+        PassPattern = '00455c64_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00455cab'
@@ -5326,7 +5326,7 @@ $catalog = @(
         Module = 'CSpecialAbilitiesThunderLightningStormDef'
         Source = '00/45/CSpecialAbilitiesThunderLightningStormDef_scalardeletingdestructor_00458017.cpp'
         TestSource = '00/45/CSpecialAbilitiesThunderLightningStormDef_scalardeletingdestructor_00458017_test.cpp'
-        PassPattern = 'CLandscapeBackgroundPatch_00458017_TEST PASS'
+        PassPattern = '00458017_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004580f5'
@@ -29240,7 +29240,7 @@ $catalog = @(
         Module = 'CMessageEvent'
         Source = '00/68/CMessageEvent_scalardeletingdestructor_006872b0.cpp'
         TestSource = '00/68/CMessageEvent_scalardeletingdestructor_006872b0_test.cpp'
-        PassPattern = 'AUTO_TINY_006872b0_TEST PASS'
+        PassPattern = '006872b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00695450'
@@ -42398,10 +42398,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e8cb0'
-        Module = '_global'
-        Source = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8cb0.cpp'
-        TestSource = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8cb0_test.cpp'
-        PassPattern = 'OK_008e8cb0'
+        Module = 'CCreatureAction_BriarRoseInvulnerableTeleport'
+        Source = '00/8e/CCreatureActionBriarRoseInvulnerableTeleport_CCreatureActionBriarRoseInvulnerableTeleport_008e8cb0.cpp'
+        TestSource = '00/8e/CCreatureActionBriarRoseInvulnerableTeleport_CCreatureActionBriarRoseInvulnerableTeleport_008e8cb0_test.cpp'
+        PassPattern = '008e8cb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009157f0'
@@ -49415,10 +49415,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0048a4d0'
-        Module = 'CIntelligentPointer<CThingPlayerCreature const>'
-        Source = '00/48/CIntelligentPointerCThingPlayerCreatureconst_scalardeletingdestructor_0048a4d0.cpp'
-        TestSource = '00/48/CIntelligentPointerCThingPlayerCreatureconst_scalardeletingdestructor_0048a4d0_test.cpp'
-        PassPattern = 'VDD_PARITY_OK'
+        Module = 'CIntelligentPointer<const CThingPlayerCreature>'
+        Source = '00/48/CIntelligentPointerconstCThingPlayerCreature_scalardeletingdestructor_0048a4d0.cpp'
+        TestSource = '00/48/CIntelligentPointerconstCThingPlayerCreature_scalardeletingdestructor_0048a4d0_test.cpp'
+        PassPattern = '0048a4d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0048b3b0'
@@ -76699,17 +76699,17 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007eb2b0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb2b0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb2b0_test.cpp'
-        PassPattern = 'PASS_007eb2b0'
+        Module = 'CCreatureAction_PickupGameObject'
+        Source = '00/7e/CCreatureActionPickupGameObject_CCreatureActionPickupGameObject_007eb2b0.cpp'
+        TestSource = '00/7e/CCreatureActionPickupGameObject_CCreatureActionPickupGameObject_007eb2b0_test.cpp'
+        PassPattern = '007eb2b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007eb470'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb470.cpp'
-        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb470_test.cpp'
-        PassPattern = 'PASS_007eb470'
+        Module = 'CCreatureAction_AddRealObjectToInventory'
+        Source = '00/7e/CCreatureActionAddRealObjectToInventory_CCreatureActionAddRealObjectToInventory_007eb470.cpp'
+        TestSource = '00/7e/CCreatureActionAddRealObjectToInventory_CCreatureActionAddRealObjectToInventory_007eb470_test.cpp'
+        PassPattern = '007eb470_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007edff0'
@@ -76720,10 +76720,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00957300'
-        Module = '_global'
-        Source = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00957300.cpp'
-        TestSource = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00957300_test.cpp'
-        PassPattern = 'PASS_00957300'
+        Module = 'CCreatureAction_BriarRoseForcePush'
+        Source = '00/95/CCreatureActionBriarRoseForcePush_CCreatureActionBriarRoseForcePush_00957300.cpp'
+        TestSource = '00/95/CCreatureActionBriarRoseForcePush_CCreatureActionBriarRoseForcePush_00957300_test.cpp'
+        PassPattern = '00957300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00968150'
@@ -77371,10 +77371,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e8c20'
-        Module = '_global'
-        Source = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8c20.cpp'
-        TestSource = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8c20_test.cpp'
-        PassPattern = 'PASS_008e8c20'
+        Module = 'CCreatureAction_BriarRoseConcentrateInto'
+        Source = '00/8e/CCreatureActionBriarRoseConcentrateInto_CCreatureActionBriarRoseConcentrateInto_008e8c20.cpp'
+        TestSource = '00/8e/CCreatureActionBriarRoseConcentrateInto_CCreatureActionBriarRoseConcentrateInto_008e8c20_test.cpp'
+        PassPattern = '008e8c20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fd3dc'
@@ -79103,14 +79103,14 @@ $catalog = @(
         Module = 'CIntelligentPointer<CThingPlayerCreature>'
         Source = '00/44/CIntelligentPointerCThingPlayerCreature_scalardeletingdestructor_0044aa60.cpp'
         TestSource = '00/44/CIntelligentPointerCThingPlayerCreature_scalardeletingdestructor_0044aa60_test.cpp'
-        PassPattern = 'PASS_0044aa60'
+        PassPattern = '0044aa60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0048a4f0'
-        Module = 'CIntelligentPointer<CThing const>'
-        Source = '00/48/CIntelligentPointerCThingconst_scalardeletingdestructor_0048a4f0.cpp'
-        TestSource = '00/48/CIntelligentPointerCThingconst_scalardeletingdestructor_0048a4f0_test.cpp'
-        PassPattern = 'PASS_0048a4f0'
+        Module = 'CIntelligentPointer<const CThing>'
+        Source = '00/48/CIntelligentPointerconstCThing_scalardeletingdestructor_0048a4f0.cpp'
+        TestSource = '00/48/CIntelligentPointerconstCThing_scalardeletingdestructor_0048a4f0_test.cpp'
+        PassPattern = '0048a4f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0048b3d0'
@@ -79194,7 +79194,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CThingBuilding>'
         Source = '00/50/CIntelligentPointerCThingBuilding_scalardeletingdestructor_0050f3a0.cpp'
         TestSource = '00/50/CIntelligentPointerCThingBuilding_scalardeletingdestructor_0050f3a0_test.cpp'
-        PassPattern = 'PASS_0050f3a0'
+        PassPattern = '0050f3a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00511d40'
@@ -79222,7 +79222,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CThingPhysical>'
         Source = '00/52/CIntelligentPointerCThingPhysical_scalardeletingdestructor_00526050.cpp'
         TestSource = '00/52/CIntelligentPointerCThingPhysical_scalardeletingdestructor_00526050_test.cpp'
-        PassPattern = 'PASS_00526050'
+        PassPattern = '00526050_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0052ae40'
@@ -79411,7 +79411,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CThingSoundEmitter>'
         Source = '00/66/CIntelligentPointerCThingSoundEmitter_scalardeletingdestructor_0066c0e0.cpp'
         TestSource = '00/66/CIntelligentPointerCThingSoundEmitter_scalardeletingdestructor_0066c0e0_test.cpp'
-        PassPattern = 'PASS_0066c0e0'
+        PassPattern = '0066c0e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00670c50'
@@ -79457,10 +79457,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069baf0'
-        Module = 'CIntelligentPointer<CThingGameObject const>'
-        Source = '00/69/CIntelligentPointerCThingGameObjectconst_scalardeletingdestructor_0069baf0.cpp'
-        TestSource = '00/69/CIntelligentPointerCThingGameObjectconst_scalardeletingdestructor_0069baf0_test.cpp'
-        PassPattern = 'PASS_0069baf0'
+        Module = 'CIntelligentPointer<const CThingGameObject>'
+        Source = '00/69/CIntelligentPointerconstCThingGameObject_scalardeletingdestructor_0069baf0.cpp'
+        TestSource = '00/69/CIntelligentPointerconstCThingGameObject_scalardeletingdestructor_0069baf0_test.cpp'
+        PassPattern = '0069baf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0069e790'
@@ -79611,10 +79611,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00701ad0'
-        Module = 'CIntelligentPointer<CThingAICreature const>'
-        Source = '00/70/CIntelligentPointerCThingAICreatureconst_scalardeletingdestructor_00701ad0.cpp'
-        TestSource = '00/70/CIntelligentPointerCThingAICreatureconst_scalardeletingdestructor_00701ad0_test.cpp'
-        PassPattern = 'PASS_00701ad0'
+        Module = 'CIntelligentPointer<const CThingAICreature>'
+        Source = '00/70/CIntelligentPointerconstCThingAICreature_scalardeletingdestructor_00701ad0.cpp'
+        TestSource = '00/70/CIntelligentPointerconstCThingAICreature_scalardeletingdestructor_00701ad0_test.cpp'
+        PassPattern = '00701ad0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00702bf0'
@@ -79642,7 +79642,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CScriptGameResourceObjectScriptedThing>'
         Source = '00/71/CIntelligentPointerCScriptGameResourceObjectScriptedThing_scalardeletingdestructor_00718020.cpp'
         TestSource = '00/71/CIntelligentPointerCScriptGameResourceObjectScriptedThing_scalardeletingdestructor_00718020_test.cpp'
-        PassPattern = 'PASS_00718020'
+        PassPattern = '00718020_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0071ea90'
@@ -80531,7 +80531,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CThingGameObject>'
         Source = '00/8b/CIntelligentPointerCThingGameObject_scalardeletingdestructor_008bd570.cpp'
         TestSource = '00/8b/CIntelligentPointerCThingGameObject_scalardeletingdestructor_008bd570_test.cpp'
-        PassPattern = 'PASS_008bd570'
+        PassPattern = '008bd570_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008d6140'
@@ -80867,7 +80867,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<C3DAnimation2>'
         Source = '00/a5/CIntelligentPointerC3DAnimation2_scalardeletingdestructor_00a51d90.cpp'
         TestSource = '00/a5/CIntelligentPointerC3DAnimation2_scalardeletingdestructor_00a51d90_test.cpp'
-        PassPattern = 'PASS_00a51d90'
+        PassPattern = '00a51d90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a52170'
@@ -86818,7 +86818,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CThingAICreature>'
         Source = '00/4d/CIntelligentPointerCThingAICreature_scalardeletingdestructor_004d6931.cpp'
         TestSource = '00/4d/CIntelligentPointerCThingAICreature_scalardeletingdestructor_004d6931_test.cpp'
-        PassPattern = 'PASS_004d6931'
+        PassPattern = '004d6931_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004d796e'
@@ -86881,7 +86881,7 @@ $catalog = @(
         Module = 'CIntelligentPointer<CVillageTaskBase>'
         Source = '00/65/CIntelligentPointerCVillageTaskBase_scalardeletingdestructor_0065e3a3.cpp'
         TestSource = '00/65/CIntelligentPointerCVillageTaskBase_scalardeletingdestructor_0065e3a3_test.cpp'
-        PassPattern = 'PASS_0065e3a3'
+        PassPattern = '0065e3a3_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007be696'
@@ -91886,7 +91886,7 @@ $catalog = @(
         Module = 'CTCCrateStack'
         Source = '00/7b/CTCCrateStack_scalardeletingdestructor_007b6c90.cpp'
         TestSource = '00/7b/CTCCrateStack_scalardeletingdestructor_007b6c90_test.cpp'
-        PassPattern = 'PASS_007b6c90'
+        PassPattern = '007b6c90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007dd1c0'
@@ -115373,14 +115373,14 @@ $catalog = @(
         Module = 'NCameraModes::CScriptModuleOpenChest'
         Source = '00/85/NCameraModesCScriptModuleOpenChest_scalardeletingdestructor_00854500.cpp'
         TestSource = '00/85/NCameraModesCScriptModuleOpenChest_scalardeletingdestructor_00854500_test.cpp'
-        PassPattern = 'AUTO_TINY_00854500_TEST PASS'
+        PassPattern = '00854500_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00854540'
         Module = 'NCameraModes::CScriptModuleUseLamp'
         Source = '00/85/NCameraModesCScriptModuleUseLamp_scalardeletingdestructor_00854540.cpp'
         TestSource = '00/85/NCameraModesCScriptModuleUseLamp_scalardeletingdestructor_00854540_test.cpp'
-        PassPattern = 'AUTO_TINY_00854540_TEST PASS'
+        PassPattern = '00854540_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00405730'
@@ -123861,10 +123861,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00456010'
-        Module = 'CPatchTesselationEdgeStrip'
-        Source = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00456010.cpp'
-        TestSource = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00456010_test.cpp'
-        PassPattern = 'PATCH_EDGE_DTOR_PASS'
+        Module = 'CCreatureGenerationFamilyDef'
+        Source = '00/45/CCreatureGenerationFamilyDef_CCreatureGenerationFamilyDef_00456010.cpp'
+        TestSource = '00/45/CCreatureGenerationFamilyDef_CCreatureGenerationFamilyDef_00456010_test.cpp'
+        PassPattern = '00456010_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00450b1b'
@@ -206849,16 +206849,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00459abe'
-        Module = 'CPatchTesselationEdgeStrip'
-        Source = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00459abe.cpp'
-        TestSource = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00459abe_test.cpp'
+        Module = 'CBrainDef'
+        Source = '00/45/CBrainDef_CBrainDef_00459abe.cpp'
+        TestSource = '00/45/CBrainDef_CBrainDef_00459abe_test.cpp'
         PassPattern = '00459abe_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00459b73'
-        Module = 'CPatchTesselationEdgeStrip'
-        Source = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00459b73.cpp'
-        TestSource = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00459b73_test.cpp'
+        Module = 'CPlayerInventoryDef'
+        Source = '00/45/CPlayerInventoryDef_CPlayerInventoryDef_00459b73.cpp'
+        TestSource = '00/45/CPlayerInventoryDef_CPlayerInventoryDef_00459b73_test.cpp'
         PassPattern = '00459b73_TEST PASS'
     }
     [pscustomobject]@{
@@ -245780,6 +245780,7 @@ $catalog = @(
         Module = 'CAIStateGroup_CreatureSeekEnemyUnderground'
         Source = '00/92/CAIStateGroupCreatureSeekEnemyUnderground_IsRunnable_009207a0.cpp'
         TestSource = '00/92/CAIStateGroupCreatureSeekEnemyUnderground_IsRunnable_009207a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
         PassPattern = '009207a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -281833,9 +281834,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004aa030'
-        Module = 'CIntelligentPointer<CThing>'
-        Source = '00/4a/global_Consval_004aa030.cpp'
-        TestSource = '00/4a/global_Consval_004aa030_test.cpp'
+        Module = 'std'
+        Source = '00/4a/std_Construct_004aa030.cpp'
+        TestSource = '00/4a/std_Construct_004aa030_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '004aa030_TEST PASS'
     }
@@ -281857,9 +281858,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00511f50'
-        Module = 'CIntelligentPointer<CThingAICreature>'
-        Source = '00/51/global_Consval_00511f50.cpp'
-        TestSource = '00/51/global_Consval_00511f50_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_Construct_00511f50.cpp'
+        TestSource = '00/51/std_Construct_00511f50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00511f50_TEST PASS'
     }
@@ -281926,9 +281927,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074cc90'
-        Module = 'CIntelligentPointer<CThingCreatureBase>'
-        Source = '00/74/global_Consval_0074cc90.cpp'
-        TestSource = '00/74/global_Consval_0074cc90_test.cpp'
+        Module = 'std'
+        Source = '00/74/std_Construct_0074cc90.cpp'
+        TestSource = '00/74/std_Construct_0074cc90_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0074cc90_TEST PASS'
     }
@@ -282082,9 +282083,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a53520'
-        Module = 'CIntelligentPointer<C3DAnimation2>'
-        Source = '00/a5/global_Consval_00a53520.cpp'
-        TestSource = '00/a5/global_Consval_00a53520_test.cpp'
+        Module = 'std'
+        Source = '00/a5/std_Construct_00a53520.cpp'
+        TestSource = '00/a5/std_Construct_00a53520_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a53520_TEST PASS'
     }

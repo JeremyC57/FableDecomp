@@ -1,26 +1,34 @@
+// CThunderBattleDef::Alloc() -- the def factory: new CThunderBattleDef (operator new 0x00BFEA1A), the inline default constructor (the out-of-line CParentDefClassBase() 0x00430370, then the CThunderBattleDef vtable) when the block is not null
+// Leaf: ?Alloc@CThunderBattleDef@@SIPAVCDefClassBase@@XZ
 #pragma optimize("s",on)
-// CThunderBattleDef::Alloc() -- factory: new CThunderBattleDef with the default constructor inlined over CBase_00430370()
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E4624, oracle length 36 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0x4c ; call operator new ; mov esi,eax ; test esi,esi ; pop ecx ; je N ; mov ecx,esi ; call CBase_00430370::CBase_00430370 ; mov dword ptr [esi],offset CThunderBattleDef::`vftable' ; mov eax,esi ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A no-argument factory: allocates sizeof(CThunderBattleDef) = 0x4c bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the inlined default constructor (base
-// CBase_00430370() @ 0x00430370, then this class's vtable 0x01242D04 from rtti-vtables.tsv).
-// One of 10 bodies of this shape.
-struct CBase_00430370 {
-    virtual void v00();
-    unsigned char _body[0x4c - 4];    // sizeof(CBase_00430370) = sizeof(CThunderBattleDef) = 0x4c
-    CBase_00430370();                           // 0x00430370
+// Retail: Fable.exe @ 0x004E4624. Identity: the vtable it stores, 0x01242D04, is RTTI .?AVCThunderBattleDef@@ : CParentDefClassBase
+//   (ghidra_out/rtti_bases.tsv); Ego_r.pdb ?Alloc@CThunderBattleDef@@SIPAVCDefClassBase@@XZ.
+// Callees: CParentDefClassBase::CParentDefClassBase 0x00430370 (Ego_r.pdb / FableWin.pdb ??0CParentDefClassBase@@QAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model.
+// Layout: Ego_r.pdb CThunderBattleDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CThunderBattleDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
+class CPersistContext;
+
+class CThunderBattleDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();                  // 0x004E4624
+    CThunderBattleDef();
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    long NumGetHitsBeforeStormAttack;
+    long NumMissesBeforeStormAttack;
+    float LightningDamage;
+    long BattleChargeLevel;
 };
 
-class CThunderBattleDef : public CBase_00430370 { public:
-    virtual void v00();
-    CThunderBattleDef() : CBase_00430370() { }
-};
+inline CThunderBattleDef::CThunderBattleDef()
+{
+}
 
-CThunderBattleDef* CThunderBattleDef_Alloc()
+CDefClassBase* FABLE_FASTCALL CThunderBattleDef::Alloc()
 {
     return new CThunderBattleDef;
 }

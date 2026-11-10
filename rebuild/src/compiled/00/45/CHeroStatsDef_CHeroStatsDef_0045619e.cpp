@@ -1,52 +1,74 @@
-// CHeroStatsDef::~CHeroStatsDef() -- release eight owned blocks around two embedded cleanup records, then tail-call the definition base destructor; retail @ 0x0045619E, 166 bytes.
-// Retail member-call receivers at +0x70/@0x004533E3 and +0xFC/@0x00453406, eight pointer loads, and the base tail-call at 0x00430300 establish this cleanup sequence. The quarantined PDB layout is not used because its members do not agree with these retail offsets.
-#pragma optimize("s", on)
-extern "C" void __cdecl free(void* memory); // 0x00BFEA14
-struct CDefinitionBaseModel {
-    unsigned char data[0x70];
-    ~CDefinitionBaseModel(); // 0x00430300
+// CHeroStatsDef::~CHeroStatsDef() -- the compiler-generated destructor: the members' destructors in reverse order (STLport vectors free their storage), then the out-of-line ~CParentDefClassBase 0x00430300 as the tail jump; no vtable store
+// Leaf: ??1CHeroStatsDef@@UAE@XZ
+#pragma optimize("s",on)
+// Retail: Fable.exe @ 0x0045619E. Identity: its only caller is the scalar deleting destructor in slot 0 of vtable 0x012339DC,
+//   RTTI .?AVCHeroStatsDef@@ : CParentDefClassBase (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??1CHeroStatsDef@@UAE@XZ.
+// Callees: free 0x00BFEA14 (the STLport malloc allocator), CParentDefClassBase::~CParentDefClassBase 0x00430300 (Ego_r.pdb / FableWin.pdb ??1CParentDefClassBase@@UAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model.
+// Layout: Ego_r.pdb CHeroStatsDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CHeroStatsDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
+#include "stlport/fable_containers.h"
+#include "engine/CAbilityTrackDef.h"
+#include "engine/CAppearanceModifierScalingDef.h"
+class CPersistContext;
+
+class CHeroStatsDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CHeroStatsDef();                                   // 0x0045619E
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    long MaximumStamina;
+    float NumberOfSecondsAfterUseStaminaStartsRefilling;
+    float NumberOfSecondsAfterChangeHealthStartsRefilling;
+    float NumberOfSecondsBetweenHealthRefills;
+    long StaminaToRegainPerSecond;
+    long HealthToRegainPerRefill;
+    long RenownLossOnDeath;
+    long MoneyLossOnDeath;
+    long MaximumMoney;
+    long MaximumExpToSpend;
+    long ExpToSpendAtWhichToDisplayTutorial;
+    float MinAge;
+    float MaxAge;
+    std::vector<CAppearanceModifierScalingDef> AppearanceModifierScaling;
+    float AmountFatnessIncreasesPerPointOfOverEating;
+    float NumberOfMinutesBetweenFatnessReductions;
+    float AmountFatnessDecreasesPerReduction;
+    float DrinkAffectMultiplierMultiplier;
+    long MinVomitTime;
+    long MaxVomitTime;
+    long MinTimeBeforeVomiting;
+    long MaxTimeBeforeVomiting;
+    float PintsOfSobrietyPerSecondOfPuke;
+    float PintsToDrunk;
+    float PintsToVomit;
+    float AlcoholAbsorbtionPerSecond;
+    std::vector<long> RenownLevelCosts;
+    std::vector<long> RenownLevelMaxFollowers;
+    std::vector<long> RenownLevelMaxBoastingCrowd;
+    long MaxMorality;
+    long MaxMoralityAsChild;
+    float MaxExtraMaxHitPoints;
+    long MaxExtraMaxStaminaPoints;
+    long MoralityChangeOnTheftFromHome;
+    long MoralityChangeOnTheftFromShop;
+    long MoralityChangeOnPicklock;
+    long MoralityChangeOnVandalism;
+    std::vector<float> TradeSkillForGuileLevel;
+    std::vector<CAbilityTrackDef> StatLevels;
+    std::vector<float> MaxHitPointsPerHealthLevel;
+    std::vector<long> MaxStaminaPointsPerMagicPowerLevel;
+    std::vector<float> SoundDistanceMultiplierPerStealthLevel;
+    std::vector<float> VisibilityMultiplierPerStealthLevel;
 };
-struct DefinitionCleanup70 {
-    void* first;
-    void* second;
-    unsigned char pad08[0x34];
-    void* pAC;
-    unsigned char pad40[8];
-    void* pB8;
-    unsigned char pad4c[8];
-    void* pC4;
-    unsigned char pad58[0x28];
-    void* pF0;
-    unsigned char pad84[8];
-    void Cleanup(); // 0x004533E3
-};
-struct DefinitionCleanupFC {
-    void* first;
-    void* second;
-    unsigned char pad08[4];
-    void Cleanup(); // 0x00453406
-};
-class CHeroStatsDef : public CDefinitionBaseModel { public:
-    DefinitionCleanup70 cleanup70; // +0x70
-    DefinitionCleanupFC cleanupFC; // +0xfc
-    void* p108;
-    unsigned char pad10c[8];
-    void* p114;
-    unsigned char pad118[8];
-    void* p120;
-    unsigned char pad124[8];
-    void* p12c;
-    ~CHeroStatsDef();
-};
-CHeroStatsDef::~CHeroStatsDef() {
-    if (p12c) free(p12c);
-    if (p120) free(p120);
-    if (p114) free(p114);
-    if (p108) free(p108);
-    cleanupFC.Cleanup();
-    if (cleanup70.pF0) free(cleanup70.pF0);
-    if (cleanup70.pC4) free(cleanup70.pC4);
-    if (cleanup70.pB8) free(cleanup70.pB8);
-    if (cleanup70.pAC) free(cleanup70.pAC);
-    cleanup70.Cleanup();
+
+// Emission harness (not a retail function): the class declares no destructor (retail's stores no vtable); a qualified
+// call makes VC7.1 emit the implicit destructor's COMDAT, as the deleting destructor's call does in retail.
+void DestroyCHeroStatsDef(CHeroStatsDef* def)
+{
+    def->CHeroStatsDef::~CHeroStatsDef();
 }

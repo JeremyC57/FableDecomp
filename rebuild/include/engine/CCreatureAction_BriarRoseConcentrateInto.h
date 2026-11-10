@@ -6,6 +6,18 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO
+// Retail opt-in (agentNF4, 2026-11-10, row 0x008E8C20 ~CCreatureAction_BriarRoseConcentrateInto): RTTI .?AVCCreatureAction_BriarRoseConcentrateInto@@ : CCombatActionBase (ghidra_out/rtti_bases.tsv),
+// vtable 0x01287904; the retail CCombatActionBase chain (engine/CCombatActionBase.h, FABLE_RETAIL_CCREATUREACTIONBASE) and the Ego_r.pdb members at their
+// retail offsets. The destructor is the implicit one (0x008E8C20: member, then ~CCombatActionBase, no vtable store). Needs
+// engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER) and engine/CCombatActionBase.h first.
+class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase {                      // vtable 0x01287904
+public:
+    CCreatureAction_BriarRoseConcentrateInto(CThingCreatureBase& creature, CThingCreatureBase& enemy, bool imposter);   // 0x008E8BB0 (Ego_r.pdb / FableWin.pdb ??0CCreatureAction_BriarRoseConcentrateInto@@QAE@...)
+    bool Imposter;                                              // +0x114
+    CIntelligentPointer<CThingCreatureBase> PEnemy;             // +0x115
+};
+#else // generated flattened layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -83,4 +95,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, __vftable
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, Imposter) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, PEnemy) == 0x115);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO
 #endif // FABLE_ENGINE_CCREATUREACTION_BRIARROSECONCENTRATEINTO_H

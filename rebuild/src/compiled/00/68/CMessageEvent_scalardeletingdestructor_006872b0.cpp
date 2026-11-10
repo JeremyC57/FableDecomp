@@ -1,41 +1,19 @@
-// CMessageEvent::`scalar deleting destructor' @ 0x006872B0 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
-// stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
-// +0x50 CBaseIntelligentPointer (~ @ 0x00A01C10), +0x48 CBaseIntelligentPointer (~ @ 0x00A01C10), then the base CBaseObject (~ @ 0x0099A430), and frees the block with operator delete
-// (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
-// retail labels); the class itself is not attributed, so it is named by address.
-// Engine headers for the callee classes (PDB data layouts, renamed out of the way): the local declarations
-// below carry the retail identities the relocations bind.
-#define CBaseObject CBaseObjectPdb
-#include "engine/CBaseObject.h"
-#undef CBaseObject
-#pragma optimize("t", on)
-class CBaseObject { public:                        // vtable 0x0129A7D8 (.?AVCBaseObject@@)
-    void* _vptr;
-    void* IntelligentPointer;
-    ~CBaseObject();                         // 0x0099A430
-};
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
-};
-void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
+// CMessageEvent::`scalar deleting destructor'(unsigned int) -- the compiler-generated deleting destructor: the implicit ~CMessageEvent expanded (~CBaseIntelligentPointer on PTarget +0x50 and POriginator +0x48, then the out-of-line ~CBaseObject 0x0099A430), then operator delete when bit 0 of the flags is set
+// Leaf: ??_GCMessageEvent@@UAEPAXI@Z
+// Retail: Fable.exe @ 0x006872B0. Identity: slot 0 of vtable 0x0125BE8C, RTTI .?AVCMessageEvent@@ : CBaseObject (the catalog name agrees);
+//   it follows the constructor 0x00687270 in its TU.
+// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (Ego_r.pdb / FableWin.pdb ??1CBaseIntelligentPointer@@UAE@XZ),
+//   CBaseObject::~CBaseObject 0x0099A430, operator delete 0x00BFE9BC.
+// Model: the shared engine/CMessageEvent.h (FABLE_RETAIL_CMESSAGEEVENT; Ego_r.pdb members) over engine/CBaseObject.h and
+//   engine/CIntelligentPointer.h (retail branches). The class declares no destructor (retail's deleting destructor expands it).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CMESSAGEEVENT
+#include "engine/CMessageEvent.h"
 
-#pragma pack(push, 1)
-struct CObject_006872b0 : CBaseObject {
-    unsigned char _pad48[0x40];
-    CBaseIntelligentPointer Member48;           // +0x48
-    CBaseIntelligentPointer Member50;           // +0x50
-};
-#pragma pack(pop)
-
-void* __fastcall CMessageEvent_CompositeScalarDeletingDestructor(void* message, int, unsigned int flags)
+// Emission harness (not a retail function): constructing one emits the vftable and its deleting destructor.
+CMessageEvent* EmitMessageEventDeletingDestructor()
 {
-    CObject_006872b0* object = static_cast<CObject_006872b0*>(message);
-    object->Member50.~CBaseIntelligentPointer();
-    object->Member48.~CBaseIntelligentPointer();
-    object->CBaseObject::~CBaseObject();
-    if (flags & 1)
-        operator delete(object);
-    return message;
+    return new CMessageEvent;
 }

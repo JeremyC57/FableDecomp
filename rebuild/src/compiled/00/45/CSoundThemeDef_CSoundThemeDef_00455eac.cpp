@@ -1,31 +1,41 @@
-// CSoundThemeDef::CSoundThemeDef() -- base CBase_00430370(), this vtable, then the embedded CMember_0045433f member at +0x54
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00455EAC, oracle length 26 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBase_00430370::CBase_00430370 ; lea ecx,[esi+0x54] ; mov dword ptr [esi],offset CSoundThemeDef::`vftable' ; call CMember_0045433f::CMember_0045433f ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_00430370() @ 0x00430370, this class's vtable (0x01233824, named
-// through rtti-vtables.tsv), then the member object at +0x54 is constructed out of line
-// @ 0x0045433F. Base and member class names come from unique manifest labels, else from the
-// callee address. One of 16 bodies of this shape.
-struct CBase_00430370 {
-    virtual void v00();
-    CBase_00430370();                           // 0x00430370
-};
+// CSoundThemeDef::CSoundThemeDef() -- the def constructor: the out-of-line CParentDefClassBase() 0x00430370, the CSoundThemeDef vtable, then the members' constructors
+// Leaf: ??0CSoundThemeDef@@QAE@XZ
+#pragma optimize("s",on)
+// Retail: Fable.exe @ 0x00455EAC. Identity: the vtable it stores, 0x01233824, is RTTI .?AVCSoundThemeDef@@ : CParentDefClassBase
+//   (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??0CSoundThemeDef@@QAE@XZ.
+// Callees: CParentDefClassBase::CParentDefClassBase 0x00430370 (Ego_r.pdb / FableWin.pdb ??0CParentDefClassBase@@QAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model.
+// Layout: Ego_r.pdb CSoundThemeDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CSoundThemeDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CParentDefClassBase.h"
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+#include "fable_string.h"
+#include "engine/CRGBColour.h"
+class CPersistContext;
 
-struct CMember_0045433f {
-    CMember_0045433f();                              // 0x0045433F
-};
-
-class CSoundThemeDef : public CBase_00430370 { public:
-    unsigned char _pad[0x50];
-    CMember_0045433f m_member;                       // +0x54
-    virtual void v00();
-    CSoundThemeDef();
+class CSoundThemeDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CSoundThemeDef();                                   // 0x00455EAC
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    CRGBColour EditColour;
+    long AtmosIndex;
+    long MusicSet;
+    float Gain;
+    float Range;
+    float Granularity;
+    std::multimap<CCharString, long> AtmosGroupMap;
+    bool PlayOnlyWhenInside;
+    bool PlayQuietlyWhenInside;
+    bool PlayOnlyWhenOutside;
+    bool PlayQuietlyWhenOutside;
 };
 
 CSoundThemeDef::CSoundThemeDef()
-    : CBase_00430370()
-    , m_member()
 {
 }

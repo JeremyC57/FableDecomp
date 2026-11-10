@@ -1,42 +1,429 @@
-// Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
-// CInventoryDef::~CInventoryDef() -- free the ten STLport vector buffers in reverse declaration order, then tail-call ~CParentDefClassBase
-// Retail: Fable.exe (TLC, VC7.1) @ 0x004554C6, 172 bytes.
-// Leaf: ??1CInventoryDef
-// Identity: called by the scalar deleting destructor at 0x004554AA, slot 0 of vtable 0x01233404 = CInventoryDef
-//   (rebuild/manifest/rtti-vtables.tsv; slot 20 = 0x004554A4 returns sizeof 0xA34). The manifest label
-//   "~CPatchTesselationEdgeStrip" is propagated (that PDB class is 0x2c bytes and owns no such buffers).
-// Callees: CRT free import thunk 0x00BFEA14 (GOTCHAS: wave 25), ~CParentDefClassBase 0x00430300 (frees the packed
-//   SubDefInfoMap buffer at +0x29, restores vtable 0x01230BA0, jumps to ~CDefClassBase 0x009FC550).
-// Layout: PDB (Ego_r) member names; retail vectors are 12-byte STLport vectors (PDB: 16), so each retail offset is
-//   the PDB offset minus 4 (base) minus 4 per preceding vector: e.g. ExpSpendItemLabelAbility PDB +0x808 -> +0x7E0.
-//   Opaque runs between vectors are named by their first PDB member. Local model: engine/CParentDefClassBase.h is a
-//   flat generated layout without the destructor this function must call.
-#pragma optimize("s", on)
-extern "C" void __cdecl free(void*);                    // 0x00BFEA14
-template<class T> struct CRetailVector {                // STLport vector: begin/end/capacity
-    T* m_first; T* m_last; T* m_end;
-    ~CRetailVector() { if (m_first) free(m_first); }
+// CInventoryDef::~CInventoryDef() -- the compiler-generated destructor: the members' destructors in reverse order (STLport vectors free their storage), then the out-of-line ~CParentDefClassBase 0x00430300 as the tail jump; no vtable store
+// Leaf: ??1CInventoryDef@@UAE@XZ
+#pragma optimize("s",on)
+// Retail: Fable.exe @ 0x004554C6. Identity: its only caller is the scalar deleting destructor in slot 0 of vtable 0x01233404,
+//   RTTI .?AVCInventoryDef@@ : CParentDefClassBase (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??1CInventoryDef@@UAE@XZ.
+// Callees: free 0x00BFEA14 (the STLport malloc allocator), CParentDefClassBase::~CParentDefClassBase 0x00430300 (Ego_r.pdb / FableWin.pdb ??1CParentDefClassBase@@UAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model.
+// Layout: Ego_r.pdb CInventoryDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CInventoryDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CParentDefClassBase.h"
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CDefString.h"
+#include "engine/C2DVector.h"
+#include "engine/C3DVector.h"
+#include "engine/CEngineGraphic.h"
+#include "engine/CRGBColour.h"
+class CPersistContext;
+enum EInventoryIdentifier { };                                   // enumerators not needed here (no engine header)
+
+class CInventoryDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CInventoryDef();                                   // 0x004554C6
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    float InitialCategoryMovementRepeatDelay;
+    float ContinuedCategoryMovementRepeatDelay;
+    float InitialItemMovementRepeatDelay;
+    float ContinuedItemMovementRepeatDelay;
+    long MovementSound;
+    long NoMovementSound;
+    long InventoryOpenSound;
+    bool TrackSelectedItems;
+    std::vector<long> InitialInventoryClothingItems;
+    std::vector<long> InitialInventoryWeaponsItems;
+    std::vector<long> InitialInventoryStatsItems;
+    std::vector<long> InitialInventoryStandardItems;
+    C2DVector ClothingShadedCircleTLPos;
+    C2DVector ClothingShadedCircleExtents;
+    C2DVector CategoriesTLPos;
+    C2DVector MeshAreaTLPos;
+    C2DVector MeshAreaBRPos;
+    C2DVector NextCategoryOffset;
+    C2DVector FirstItemOffsetFromCategory;
+    C2DVector NextItemOffset;
+    CDefString GenericFont;
+    CRGBColour BackGroundColour;
+    long ClothingDoll;
+    C3DVector DollCentreOffset;
+    float DollBoundingSphereRadius;
+    C2DVector TotalExperienceTextPos;
+    unsigned long TotalExperienceText;
+    C2DVector SpendingExperienceTextPos;
+    unsigned long SpendingExperienceText;
+    C2DVector StrengthLevelTextPos;
+    CRGBColour StrengthLevelColour;
+    C2DVector SkillLevelTextPos;
+    CRGBColour SkillLevelColour;
+    C2DVector WillLevelTextPos;
+    CRGBColour WillLevelColour;
+    C2DVector RenownLevelTextPos;
+    C2DVector HeroLevelTextPos;
+    C2DVector StatLevelsFirstLineTextPos;
+    C2DVector StatLevelsNextLineTextOffset;
+    C2DVector ButtonAssignmentTextPos;
+    C2DVector ButtonAssignmentTextOffset;
+    std::vector<unsigned long> StatLevelsTexts;
+    std::vector<CRGBColour> StatLevelsColours;
+    long WeaponsTextSeparator;
+    long WeaponsTextNumberOfSlots;
+    long WeaponsTextSlot;
+    long WeaponsTextSuccessfulAugmentation;
+    long WeaponsTextNoFreeSlots;
+    long WeaponsTextReadyToAugment;
+    long WeaponsTextNotReadyToAugment;
+    C2DVector WeaponsDescriptionBoxTLPos;
+    C2DVector WeaponsDescriptionBoxExtents;
+    C2DVector WeaponsActiveMeleeIconPos;
+    C2DVector WeaponsActiveRangeIconPos;
+    C2DVector WeaponAugmentationTextStartPos;
+    C2DVector WeaponAugmentationTextNewLineOffset;
+    C2DVector AugmentationStatusTextAreaTLPos;
+    C2DVector AugmentationStatusTextAreaBRPos;
+    float TimeToDisplayWarningMessageInSeconds;
+    C2DVector WeaponsShadedCircleTLPos;
+    C2DVector WeaponsShadedCircleExtents;
+    float NumberOfSecondsForObjectRotation;
+    long MaxNumberOfItemsToDisplayPerCategory;
+    long MaxNumberOfCategoriesToDisplay;
+    long MaxNumberOfScreenNamesToDisplay;
+    unsigned long InventoryName;
+    EInventoryIdentifier InventoryIdentifier;
+    C2DVector MapScreenMapDisplayBoxTLPos;
+    C2DVector MapScreenMapDisplayBoxBRPos;
+    C2DVector MapScreenRegionNamePos;
+    long MapScreenWorldMapGraphic;
+    C2DVector MapScreenWorldMapPos;
+    long MapScreenRegionUnknownGraphic;
+    long MapScreenRegionUnknownHighlightGraphic;
+    long MapScreenRegionHeroGraphic;
+    long MapScreenRegionQuestGraphic;
+    long MapScreenRegionTeleportGraphic;
+    long MapScreenRegionHouseGraphic;
+    C2DVector StatsTitleTLPos;
+    C2DVector StatsShadedCircleTLPos;
+    C2DVector StatsShadedCircleExtents;
+    CEngineGraphic StatsProgBarL;
+    CEngineGraphic StatsProgBarC;
+    CEngineGraphic StatsProgBarR;
+    CEngineGraphic StatsProgBarValue;
+    C2DVector StatsProgBarValueOffset;
+    C2DVector StatsPersonalityHeadingTLPos;
+    C2DVector StatsPersonalityHeadingBRPos;
+    unsigned long StatsPersonalityRenownLowerLabel;
+    unsigned long StatsPersonalityRenownUpperLabel;
+    unsigned long StatsPersonalityGoodnessLowerLabel;
+    unsigned long StatsPersonalityGoodnessUpperLabel;
+    unsigned long StatsPersonalityAttractivenessLowerLabel;
+    unsigned long StatsPersonalityAttractivenessUpperLabel;
+    unsigned long StatsPersonalityScarinessLowerLabel;
+    unsigned long StatsPersonalityScarinessUpperLabel;
+    unsigned long StatsPersonalityNicenessLowerLabel;
+    unsigned long StatsPersonalityNicenessUpperLabel;
+    C2DVector StatsPersonalityLabelTextOffset;
+    C2DVector StatsPersonalityLowerLabelTLPos;
+    float StatsPersonalityLowerLabelWidth;
+    float StatsPersonalityLowerLabelHeight;
+    float StatsPersonalitySliderWidth;
+    float StatsPersonalityUpperLabelWidth;
+    long StatsPersonalityDoll;
+    C3DVector StatsPersonalityDollCentreOffset;
+    float StatsPersonalityDollBoundingSphereRadius;
+    C2DVector StatsStatisticsLabelTLPos;
+    float StatsStatisticsLabelWidth;
+    float StatsStatisticsLabelHeight;
+    C2DVector StatsStatisticsLabelTextOffset;
+    C2DVector StatsStatisticsDataTextOffset;
+    C2DVector StatsStatisticsHeadingTLPos;
+    C2DVector StatsStatisticsHeadingBRPos;
+    unsigned long StatsStatisticsPeopleKilledLabel;
+    unsigned long StatsStatisticsMonstersKilledLabel;
+    unsigned long StatsStatisticsMaxMultiplierLabel;
+    unsigned long StatsStatisticsPreferredFoodLabel;
+    unsigned long StatsStatisticsDietaryTypeLabel;
+    unsigned long StatsStatisticsGameTimeElapsedLabel;
+    unsigned long StatsStatisticsNumberOfWivesLabel;
+    unsigned long StatsStatisticsQuestsActiveLabel;
+    unsigned long StatsStatisticsQuestsFinishedLabel;
+    unsigned long StatsStatisticsBoastsAchievedLabel;
+    C2DVector StatsExperienceStrengthTextOffset;
+    C2DVector StatsExperienceWillTextOffset;
+    C2DVector StatsExperienceSkillTextOffset;
+    unsigned long StatsExperienceStrengthText;
+    unsigned long StatsExperienceWillText;
+    unsigned long StatsExperienceSkillText;
+    C2DVector StatsExperiencePoolGeneralTLPos;
+    C2DVector StatsExperiencePoolGeneralTextOffset;
+    C2DVector StatsExperiencePoolStrengthGroupTLPos;
+    C2DVector StatsExperiencePoolSkillGroupTLPos;
+    C2DVector StatsExperiencePoolWillGroupTLPos;
+    C2DVector StatsExperiencePoolLabelTLPos;
+    C2DVector StatsExperiencePoolLabelTextOffset;
+    float StatsExperiencePoolLabelWidth;
+    float StatsExperiencePoolLabelHeight;
+    float StatsExperiencePoolSliderWidth;
+    unsigned long StatsExperiencePoolStrengthLabel;
+    unsigned long StatsExperiencePoolSkillLabel;
+    unsigned long StatsExperiencePoolWillLabel;
+    unsigned long StatsExperiencePoolPhysiqueLabel;
+    unsigned long StatsExperiencePoolHealthLabel;
+    unsigned long StatsExperiencePoolToughnessLabel;
+    unsigned long StatsExperiencePoolSpeedLabel;
+    unsigned long StatsExperiencePoolAccuracyLabel;
+    unsigned long StatsExperiencePoolStealthLabel;
+    unsigned long StatsExperiencePoolWeaponMagicLabel;
+    unsigned long StatsExperiencePoolAbilityMagicLabel;
+    unsigned long StatsExperiencePoolPureMagicLabel;
+    float StatsExperienceStrengthBarValue;
+    float StatsExperienceSkillBarValue;
+    float StatsExperienceWillBarValue;
+    C2DVector ExperienceGeneralPoolLabelTLPos;
+    C2DVector ExperienceGeneralPoolLabelTextOffset;
+    float ExperienceGeneralPoolWidth;
+    float ExperienceGeneralPoolSliderWidth;
+    unsigned long ExperienceGeneralPoolBarValue;
+    unsigned long ExperienceGeneralPoolLabel;
+    C2DVector ExperienceGeneralPoolSpendTextOffset;
+    C2DVector ExperienceStrengthPoolTLPos;
+    C2DVector ExperienceSkillPoolTLPos;
+    C2DVector ExperienceWillPoolTLPos;
+    float ExperiencePoolWidth;
+    float ExperiencePoolHeight;
+    unsigned long ExperienceTypeStrengthLabel;
+    unsigned long ExperienceTypeSkillLabel;
+    unsigned long ExperienceTypeWillLabel;
+    unsigned long ExperienceTypePureMagicLabel;
+    unsigned long ExperienceTypeAbilityMagicLabel;
+    unsigned long ExperienceTypeWeaponMagicLabel;
+    C2DVector ExperienceTypeTLPos;
+    C2DVector ExperienceTypeTLPosOffset;
+    C2DVector ExperienceTypeTextOffset;
+    C2DVector ExperienceTypeSpendTextOffset;
+    float ExperienceTypeLabelWidth;
+    float ExperienceTypeLabelHeight;
+    float ExperienceTypeSliderWidth;
+    unsigned long ExperienceStrengthPhysiqueLabel;
+    unsigned long ExperienceStrengthHealthLabel;
+    unsigned long ExperienceStrengthToughnessLabel;
+    unsigned long ExperienceSkillSpeedLabel;
+    unsigned long ExperienceSkillAccuracyLabel;
+    unsigned long ExperienceSkillStealthLabel;
+    unsigned long ExperienceWeaponMagicBerserkLabel;
+    unsigned long ExperienceWeaponMagicFlamingBladeLabel;
+    unsigned long ExperienceWeaponMagicDoubleStrikeLabel;
+    unsigned long ExperienceWeaponMagicLightningBladeLabel;
+    unsigned long ExperienceAbilityMagicBattleChargeLabel;
+    unsigned long ExperienceAbilityMagicAssassinRushLabel;
+    unsigned long ExperienceAbilityMagicTimeSpellLabel;
+    unsigned long ExperiencePureMagicBurningHandsLabel;
+    unsigned long ExperiencePureMagicPhysicalShieldLabel;
+    unsigned long ExperiencePureMagicForcePushLabel;
+    unsigned long ExperiencePureMagicEnflameSpellLabel;
+    unsigned long ExperiencePureMagicDrainLifeLabel;
+    unsigned long ExperiencePureMagicHealLifeLabel;
+    unsigned long ExperiencePureMagicGhostSwordLabel;
+    float ExperienceStrengthBarValue;
+    float ExperienceSkillBarValue;
+    float ExperienceWillBarValue;
+    float ExperienceStrengthPhysiqueBarValue;
+    float ExperienceStrengthHealthBarValue;
+    float ExperienceStrengthToughnessBarValue;
+    float ExperienceSkillSpeedBarValue;
+    float ExperienceSkillAccuracyBarValue;
+    float ExperienceSkillHealthBarValue;
+    float ExperienceWeaponMagicBerserkBarValue;
+    float ExperienceWeaponMagicFlamingBladeBarValue;
+    float ExperienceWeaponMagicDoubleStrikeBarValue;
+    float ExperienceAbilityMagicBattleChargeBarValue;
+    float ExperienceAbilityMagicAssassinRushBarValue;
+    float ExperienceAbilityMagicTimeSpellBarValue;
+    float ExperiencePureMagicBurningHandsBarValue;
+    float ExperiencePureMagicPhysicalShieldBarValue;
+    float ExperiencePureMagicForcePushBarValue;
+    CEngineGraphic ExperienceProgBarL;
+    CEngineGraphic ExperienceProgBarC;
+    CEngineGraphic ExperienceProgBarR;
+    CEngineGraphic ExperienceProgBarValue;
+    C2DVector ExperienceProgBarValueOffset;
+    long ExperienceSpendTimeOffset;
+    long ExperienceSpendRate;
+    std::vector<long> ExperienceItemLabelStat;
+    std::vector<long> ExperienceItemLabelAbility;
+    CEngineGraphic ExperienceSpendGreen;
+    CEngineGraphic ExperienceSpendGreenOutline;
+    CEngineGraphic ExperienceSpendGreenEnd;
+    CEngineGraphic ExperienceSpendRed;
+    CEngineGraphic ExperienceSpendRedOutline;
+    CEngineGraphic ExperienceSpendRedEnd;
+    C2DVector ExperienceDescriptionTextTLPos;
+    C2DVector ExperienceDescriptionTextOffset;
+    unsigned long QuestCardInfoQuestNameLabel;
+    unsigned long QuestCardInfoMoralityLabel;
+    unsigned long QuestCardInfoCoreLabel;
+    unsigned long QuestCardInfoDetailsLabel;
+    unsigned long QuestCardInfoRegionLabel;
+    unsigned long QuestCardInfoOriginatorLabel;
+    unsigned long QuestCardInfoDescriptionLabel;
+    unsigned long QuestCardInfoSuccessLabel;
+    unsigned long QuestCardInfoFailureLabel;
+    unsigned long QuestCardInfoRewardsLabel;
+    unsigned long QuestCardInfoRenownLabel;
+    unsigned long QuestCardInfoTrophyLabel;
+    unsigned long QuestCardInfoBoastsLabel;
+    unsigned long QuestCardInfoStatusLabel;
+    unsigned long QuestCardInfoQuestNameText;
+    unsigned long QuestCardInfoMoralityText;
+    unsigned long QuestCardInfoCoreText;
+    unsigned long QuestCardInfoDetailsText;
+    unsigned long QuestCardInfoRegionText;
+    unsigned long QuestCardInfoOriginatorText;
+    unsigned long QuestCardInfoDescriptionText;
+    unsigned long QuestCardInfoSuccessText;
+    unsigned long QuestCardInfoFailureText;
+    unsigned long QuestCardInfoRewardsText;
+    unsigned long QuestCardInfoRenownText;
+    unsigned long QuestCardInfoTrophyText;
+    unsigned long QuestCardInfoBoastsText;
+    unsigned long QuestCardInfoStatusText;
+    C2DVector TradeEdgedButtonCostTLPos;
+    C2DVector TradeEdgedButtonOwnedTLPos;
+    C2DVector TradeEdgedButtonProfitTLPos;
+    C2DVector TradeEdgedButtonTitleTLPos;
+    C2DVector TradeEdgedButtonCashTLPos;
+    C2DVector TradeEdgedButtonExtents;
+    C2DVector TradeAnimImageBoxTLPos;
+    C2DVector TradeAnimImageBoxExtents;
+    float TradeAnimImageXRotationTime;
+    float TradeAnimImageYRotationTime;
+    float TradeAnimImageZRotationTime;
+    C2DVector TradeEquippedItemTLPos;
+    C2DVector TradeEquippedItemExtents;
+    CEngineGraphic TradeEquippedItemGraphic;
+    C2DVector TradeDescriptionBoxTLPos;
+    C2DVector TradeDescriptionBoxExtents;
+    unsigned long TradeTextOwned;
+    unsigned long TradeTextDivider;
+    unsigned long TradeTextCost;
+    unsigned long TradeTextGold;
+    unsigned long TradeTextProfit;
+    C2DVector TradeShadedCircleTLPos;
+    C2DVector TradeShadedCircleExtents;
+    C2DVector AugmentationMeshAreaTLPos;
+    C2DVector AugmentationMeshAreaBRPos;
+    C2DVector AugmentDescriptionBoxTLPos;
+    C2DVector AugmentDescriptionBoxExtents;
+    C2DVector AugmentAugmentationInfoTLPos;
+    C2DVector AugmentAugmentationLabelTLPos;
+    C2DVector AugmentAugmentationInfoTextOffset;
+    C2DVector AugmentAugmentationSlotTLPos;
+    C2DVector AugmentAugmentationSlotTextOffset;
+    C2DVector AugmentAugmentationWeaponTLPos;
+    C2DVector AugmentAugmentationWeaponTextOffset;
+    C2DVector AugmentTitleTLPos;
+    C2DVector AugmentTitleTextOffset;
+    unsigned long AugmentTextMaxSlots;
+    unsigned long AugmentTextNumSlots;
+    unsigned long AugmentTextUpgradeCost;
+    unsigned long AugmentTextGold;
+    unsigned long AugmentTextDamageMultiplier;
+    unsigned long AugmentTextFireStrength;
+    unsigned long AugmentTextSlot;
+    unsigned long AugmentTextAugmentations;
+    unsigned long AugmentTextWeapons;
+    unsigned long AugmentTextDivider;
+    C2DVector AugmentShadedCircleTLPos;
+    C2DVector AugmentShadedCircleExtents;
+    float InventoryAnimImageXRotationTime;
+    float InventoryAnimImageYRotationTime;
+    float InventoryAnimImageZRotationTime;
+    CRGBColour QuestCardFeatColour;
+    CRGBColour QuestCardCoreColour;
+    CRGBColour QuestCardExclusiveColour;
+    C2DVector QuestCardInfoTLPos;
+    C2DVector QuestCardInfo2TLPos;
+    C2DVector QuestCardNoQuestsTLPos;
+    unsigned long QuestCardNoQuestsText;
+    C2DVector QuestCardInfoTextOffset;
+    C2DVector QuestCardEdgedButtonTitleTLPos;
+    C2DVector QuestCardEdgedButtonExtents;
+    std::vector<long> ExpSpendItemLabelStat;
+    std::vector<long> ExpSpendItemLabelAbility;
+    long ExpSpendMaxItemsToDisplay;
+    C2DVector ExpSpendButtonTLPos;
+    C2DVector ExpSpendButtonTLPosOffset;
+    C2DVector ExpSpendButtonTextOffset;
+    CEngineGraphic ExpSpendButtonSelL;
+    CEngineGraphic ExpSpendButtonSelC;
+    CEngineGraphic ExpSpendButtonSelR;
+    CEngineGraphic ExpSpendButtonL;
+    CEngineGraphic ExpSpendButtonC;
+    CEngineGraphic ExpSpendButtonR;
+    C2DVector ExpSpendDescriptionBoxTLPos;
+    C2DVector ExpSpendDescriptionBoxExtents;
+    C2DVector ExpSpendArrowUpTLPos;
+    C2DVector ExpSpendArrowDnTLPos;
+    C2DVector ExpSpendGeneralPoolLabelTLPos;
+    C2DVector ExpSpendGeneralPoolLabelTextOffset;
+    C2DVector ExpSpendGeneralPoolSpendTextOffset;
+    float ExpSpendGeneralPoolWidth;
+    float ExpSpendGeneralPoolSliderWidth;
+    C2DVector ExpSpendStrengthPoolTLPos;
+    C2DVector ExpSpendSkillPoolTLPos;
+    C2DVector ExpSpendWillPoolTLPos;
+    float ExpSpendPoolWidth;
+    float ExpSpendPoolHeight;
+    CEngineGraphic ExpSpendProgBarL;
+    CEngineGraphic ExpSpendProgBarC;
+    CEngineGraphic ExpSpendProgBarR;
+    CEngineGraphic ExpSpendProgBarValue;
+    C2DVector ExpSpendProgBarValueOffset;
+    C2DVector ExpSpendTypeTextOffset;
+    long ExpSpendGeneralPoolBarValue;
+    long ExpSpendGeneralPoolLabel;
+    long ExpSpendTypeStrengthLabel;
+    long ExpSpendTypeSkillLabel;
+    long ExpSpendTypeWillLabel;
+    float ExpSpendStrengthBarValue;
+    float ExpSpendSkillBarValue;
+    float ExpSpendWillBarValue;
+    long ExpSpendRate;
+    long ExpSpendTimeOffset;
+    CEngineGraphic ExpSpendGreen;
+    CEngineGraphic ExpSpendGreenOutline;
+    CEngineGraphic ExpSpendGreenEnd;
+    CEngineGraphic ExpSpendRed;
+    CEngineGraphic ExpSpendRedOutline;
+    CEngineGraphic ExpSpendRedEnd;
+    C2DVector ExpSpendDescriptionTextTLPos;
+    C2DVector ExpSpendDescriptionTextOffset;
+    C2DVector MainEdgedButtonTitleTLPos;
+    C2DVector MainEdgedButtonOwnedTLPos;
+    C2DVector MainEdgedButtonPriceTLPos;
+    C2DVector MainEdgedButtonCostTLPos;
+    C2DVector MainEdgedButtonExtents;
+    CEngineGraphic MainDescriptionBoxC;
+    CEngineGraphic MainDescriptionBoxTL;
+    CEngineGraphic MainDescriptionBoxTR;
+    CEngineGraphic MainDescriptionBoxBL;
+    CEngineGraphic MainDescriptionBoxBR;
+    C2DVector MainDescriptionBoxTLPos;
+    C2DVector MainDescriptionBoxExtents;
+    C2DVector MainShadedCircleTLPos;
+    C2DVector MainShadedCircleExtents;
+    C2DVector MainAnimBoxTLPos;
+    C2DVector MainAnimBoxExtents;
+    float MainQuickAccessItemFlashTime;
 };
-class CRGBColour { public: unsigned long Colour; };
-class CParentDefClassBase { public:                            // retail 0x3c bytes incl. alignment of the packed tail
-    unsigned char _base[0x3c];
-    ~CParentDefClassBase();                             // 0x00430300
-};
-class CInventoryDef : public CParentDefClassBase { public:
-    unsigned char InitialCategoryMovementRepeatDelay_to_TrackSelectedItems[0x20]; // +0x3c..+0x5b
-    CRetailVector<long> InitialInventoryClothingItems;  // +0x5c
-    CRetailVector<long> InitialInventoryWeaponsItems;   // +0x68
-    CRetailVector<long> InitialInventoryStatsItems;     // +0x74
-    CRetailVector<long> InitialInventoryStandardItems;  // +0x80
-    unsigned char ClothingShadedCircleTLPos_to_ButtonAssignmentTextOffset[0xc8]; // +0x8c..+0x153
-    CRetailVector<unsigned long> StatLevelsTexts;       // +0x154
-    CRetailVector<CRGBColour> StatLevelsColours;        // +0x160
-    unsigned char WeaponsTextSeparator_to_ExperienceItemLabelStat[0x3f0];        // +0x16c..+0x55b
-    CRetailVector<long> ExperienceItemLabelStat;        // +0x55c
-    CRetailVector<long> ExperienceItemLabelAbility;     // +0x568
-    unsigned char ExperienceItemLabelAbility_to_ExpSpendItemLabelStat[0x260];    // +0x574..+0x7d3
-    CRetailVector<long> ExpSpendItemLabelStat;          // +0x7d4
-    CRetailVector<long> ExpSpendItemLabelAbility;       // +0x7e0
-    ~CInventoryDef();
-};
-CInventoryDef::~CInventoryDef() {}
+
+// Emission harness (not a retail function): the class declares no destructor (retail's stores no vtable); a qualified
+// call makes VC7.1 emit the implicit destructor's COMDAT, as the deleting destructor's call does in retail.
+void DestroyCInventoryDef(CInventoryDef* def)
+{
+    def->CInventoryDef::~CInventoryDef();
+}

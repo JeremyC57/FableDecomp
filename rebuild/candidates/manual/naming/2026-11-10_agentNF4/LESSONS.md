@@ -1,0 +1,13 @@
+- Def classes have implicit dtors. A model that declares `virtual ~X()` stops ??_G from inlining the dtor, so leave the dtor undeclared.
+- An implicit dtor COMDAT is emitted by `p->X::~X()` in the harness. A ??_G needs the vftable in the TU, so add `new X` (implicit ctor) or define the real ctor.
+- A declared-but-undefined ctor suppresses the vftable and the ??_G. Drop the declaration so the implicit ctor is used (gdel mode).
+- STLport map ctors stay out of line only under `#pragma optimize("s",on)`. If the retail callee is a separate map ctor COMDAT, the row is /Os.
+- A `pop ecx` 2-byte DIFFER on a CIntelligentPointer ??_G means the row needs pragma "s".
+- Both PDBs are Dinkumware (`_Construct<T,const T&>`). Retail is STLport 4.6 (`_Construct<T,T>`), so do not copy the PDB template spelling for STL internals.
+- The CIntelligentPointer(T*) ctor inlines in 009207a0 only at /d2inlS20; S15-S19 leave the call.
+- Retail CCreatureActionBase needs FABLE_RETAIL_BASE_OBJECT as well, or the static asserts fail.
+- Behaviour tests must be self-contained portable models, because rebuild_abi.h asserts 32-bit pointers under 64-bit g++.
+- A vector over an incomplete element type gives `unknown size` in ~_Vector_base. Include engine/<T>.h, or define a scalar-only element locally.
+- To find a def's abstract virtuals, union the Ego_r and FableWin PDB name sets: Transfer, Copy and GetSizeofClass come from FableWin.
+- Strip QUEUE lines before comparing symbols. A trailing newline makes every BIND check fail.
+- An action dtor's owner is the class whose ctor or Clone+copy-ctor sits next to it and whose ??_G expands the same sequence. If two classes share the layout, leave the row.

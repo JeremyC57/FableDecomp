@@ -1,31 +1,29 @@
-// CIdleSchedulerDef::CIdleSchedulerDef() -- base CBase_00430370(), this vtable, then the embedded CMember_004dfa89 member at +0x3c
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3F21, oracle length 26 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBase_00430370::CBase_00430370 ; lea ecx,[esi+0x3c] ; mov dword ptr [esi],offset CIdleSchedulerDef::`vftable' ; call CMember_004dfa89::CMember_004dfa89 ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_00430370() @ 0x00430370, this class's vtable (0x01243124, named
-// through rtti-vtables.tsv), then the member object at +0x3c is constructed out of line
-// @ 0x004DFA89. Base and member class names come from unique manifest labels, else from the
-// callee address. One of 16 bodies of this shape.
-struct CBase_00430370 {
-    virtual void v00();
-    CBase_00430370();                           // 0x00430370
-};
+// CIdleSchedulerDef::CIdleSchedulerDef() -- the def constructor: the out-of-line CParentDefClassBase() 0x00430370, the CIdleSchedulerDef vtable, then the members' constructors
+// Leaf: ??0CIdleSchedulerDef@@QAE@XZ
+#pragma optimize("s",on)
+// Retail: Fable.exe @ 0x004E3F21. Identity: the vtable it stores, 0x01243124, is RTTI .?AVCIdleSchedulerDef@@ : CParentDefClassBase
+//   (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??0CIdleSchedulerDef@@QAE@XZ.
+// Callees: CParentDefClassBase::CParentDefClassBase 0x00430370 (Ego_r.pdb / FableWin.pdb ??0CParentDefClassBase@@QAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model.
+// Layout: Ego_r.pdb CIdleSchedulerDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CIdleSchedulerDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
+#define FABLE_RETAIL_STLP_MAP
+#include "stlport/fable_map.h"
+class CPersistContext;
+enum EIdleStateGroup { };                                   // enumerators not needed here (no engine header)
 
-struct CMember_004dfa89 {
-    CMember_004dfa89();                              // 0x004DFA89
-};
-
-class CIdleSchedulerDef : public CBase_00430370 { public:
-    unsigned char _pad[0x38];
-    CMember_004dfa89 m_member;                       // +0x3c
-    virtual void v00();
-    CIdleSchedulerDef();
+class CIdleSchedulerDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CIdleSchedulerDef();                                   // 0x004E3F21
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    std::map<EIdleStateGroup, long> Period;
 };
 
 CIdleSchedulerDef::CIdleSchedulerDef()
-    : CBase_00430370()
-    , m_member()
 {
 }

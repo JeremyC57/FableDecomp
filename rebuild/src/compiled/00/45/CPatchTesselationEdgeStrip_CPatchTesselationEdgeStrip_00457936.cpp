@@ -1,27 +1,36 @@
+// CSpecialAbilitiesDrainLifeDef::~CSpecialAbilitiesDrainLifeDef() -- the compiler-generated destructor: the members' destructors in reverse order (STLport vectors free their storage), then the out-of-line ~CParentDefClassBase 0x00430300 as the tail jump; no vtable store
+// Leaf: ??1CSpecialAbilitiesDrainLifeDef@@UAE@XZ
 #pragma optimize("s",on)
-// Leaf: ?CPatchTesselationEdgeStrip_dtor@@YIXPAVCPatchTesselationEdgeStrip@@@Z
+// Retail: Fable.exe @ 0x00457936. Identity: its only caller is the scalar deleting destructor in slot 0 of vtable 0x01234404,
+//   RTTI .?AVCSpecialAbilitiesDrainLifeDef@@ : CParentDefClassBase (ghidra_out/rtti_bases.tsv); Ego_r.pdb / FableWin.pdb ??1CSpecialAbilitiesDrainLifeDef@@UAE@XZ.
+// Callees: free 0x00BFEA14 (the STLport malloc allocator), CParentDefClassBase::~CParentDefClassBase 0x00430300 (Ego_r.pdb / FableWin.pdb ??1CParentDefClassBase@@UAE@XZ), the shared
+//   engine/CParentDefClassBase.h retail model.
+// Layout: Ego_r.pdb CSpecialAbilitiesDrainLifeDef members, at the retail offsets (the retail CParentDefClassBase is 0x39 bytes and STLport containers
+//   are smaller than the Ego_r Dinkumware ones). No engine header models CSpecialAbilitiesDrainLifeDef, so it is declared here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CParentDefClassBase.h"
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+class CPersistContext;
 
-struct CSub60 { void dtor(); };
-struct CBase { void dtor(); };
-
-class CPatchTesselationEdgeStrip { public:
-    unsigned char _pad_0x0[0x3c];
-    void* p3c;   // +0x3c
-    unsigned char _pad_0x40[0x8];
-    void* p48;   // +0x48
-    unsigned char _pad_0x4c[0x8];
-    void* p54;   // +0x54
-    unsigned char _pad_0x58[0x8];
-    CSub60 sub60; // +0x60
+class CSpecialAbilitiesDrainLifeDef : public CParentDefClassBase {
+public:
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+    CSpecialAbilitiesDrainLifeDef();                                   // 0x00457936
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    std::vector<float> AmountOfHealthSucked;
+    std::vector<long> NumEffects;
+    std::vector<float> SpellRange;
+    std::vector<CCharString> ShotName;
+    float SpellDelaySecs;
 };
 
-extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
-
-void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
+// Emission harness (not a retail function): the class declares no destructor (retail's stores no vtable); a qualified
+// call makes VC7.1 emit the implicit destructor's COMDAT, as the deleting destructor's call does in retail.
+void DestroyCSpecialAbilitiesDrainLifeDef(CSpecialAbilitiesDrainLifeDef* def)
 {
-    self->sub60.dtor();
-    if (self->p54) free(self->p54);
-    if (self->p48) free(self->p48);
-    if (self->p3c) free(self->p3c);
-    ((CBase*)self)->dtor();
+    def->CSpecialAbilitiesDrainLifeDef::~CSpecialAbilitiesDrainLifeDef();
 }

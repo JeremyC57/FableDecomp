@@ -2695,3 +2695,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `vland --recheck-landed` can pass a renamed callee while the row's old test still stubs the old spelling (LINK_FAIL): grep tests for the old name before respelling a stand-in row (0x008916A0).
 - Reading a def name through a `CDefString` copy instead of `x.Name.GetAsCharArray()` shifts VC7.1's rotating scratch register by one (0x008365F0: the strcmp zero lands in eax and is reused).
 - A visible callee body can move stores even when the call stays out of line: FABLE_RETAIL_STLP_MAP's map::operator[] body lets c2 sink the key store past the tree-root load (0x00AE3920).
+- Retail def classes have IMPLICIT destructors: a model that declares `virtual ~X()` stops `??_G` from inlining the dtor; a declared-but-undefined ctor suppresses the vftable and the `??_G` (agentNF4).
+- Both PDBs come from Dinkumware builds (`_Construct<T,const T&>`); retail is STLport 4.6 (`_Construct<T,T>`): never copy the PDB's template spelling for STL internals (agentNF4).

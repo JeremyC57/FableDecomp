@@ -1,36 +1,12 @@
-// CCardPositionsDef::CCardPositionsDef() -- base CBase_00430370(), this vtable, then 3 members zeroed
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004F9D15, oracle length 29 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBase_00430370::CBase_00430370 ; xor eax,eax ; mov dword ptr [esi],offset CCardPositionsDef::`vftable' ; mov [esi+0x3c],eax ; mov [esi+0x40],eax ; mov [esi+0x44],eax ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_00430370() @ 0x00430370, this class's vtable (0x012439DC, named
-// through rtti-vtables.tsv), then the 3 consecutive dword members at +0x3c..+0x44
-// are zeroed from one cleared register. The vtable store comes BEFORE the stores only when the zeroed
-// members belong to an embedded member object whose inline constructor is inlined here (a plain
-// init list or body assignment sinks the vtable store below them). Member types are not recoverable from the
-// body (any 4-byte scalar or pointer); `long` models them. One of 27 bodies.
-struct CBase_00430370 {
-    virtual void v00();
-    CBase_00430370();                           // 0x00430370
-};
-
-struct SZeroed {                        // the zeroed block is one embedded member object
-    long m_00;                          // +0x3c
-    long m_01;                          // +0x40
-    long m_02;                          // +0x44
-    SZeroed() : m_00(0), m_01(0), m_02(0) { }           // inlined into every constructor that embeds it
-};
-
-class CCardPositionsDef : public CBase_00430370 { public:
-    unsigned char _pad[0x38];
-    SZeroed m_data;                        // +0x3c
-    virtual void v00();
-    CCardPositionsDef();
-};
+// CCardPositionsDef::CCardPositionsDef() -- the def constructor: the out-of-line CParentDefClassBase() 0x00430370, the CCardPositionsDef vtable, then the empty Offset vector
+// Leaf: ??0CCardPositionsDef@@QAE@XZ
+// Retail: Fable.exe @ 0x004F9D15. Identity: the vtable it stores, 0x012439DC, is RTTI .?AVCCardPositionsDef@@ : CParentDefClassBase;
+//   Ego_r.pdb / FableWin.pdb ??0CCardPositionsDef@@QAE@XZ; engine/CCardPositionsDef.h places the out-of-line constructor here.
+// Callees: CParentDefClassBase::CParentDefClassBase 0x00430370 (Ego_r.pdb / FableWin.pdb ??0CParentDefClassBase@@QAE@XZ).
+// Model: the shared engine/CCardPositionsDef.h and engine/CParentDefClassBase.h (retail def chain).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CCardPositionsDef.h"
 
 CCardPositionsDef::CCardPositionsDef()
-    : CBase_00430370()
-    , m_data()
 {
 }
