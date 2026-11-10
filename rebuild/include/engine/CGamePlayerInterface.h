@@ -26,6 +26,14 @@ public:
     // retail 0x00446B10 (`ret 0Ch`; landed callers CTCStealth::FrameUpdate 0x00747DA0 and the CGameScriptInterface button rows).
     bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device) const;   // 0x00446B10
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_SPECIALMOVEBUTTONS
+    // Nested opt-in (chunk 1008b, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): Ego_r.pdb / FableWin.pdb
+    // ?GetNumberOfAssignableSpecialMoveButtons@CGamePlayerInterface@@QBEJXZ (the class's getter of the AssignableSpecialMoveButtons
+    // vector's size; GetNumberOfQuickAccessItemButtons / GetNumberOfContextSensitiveItemButtons are its two siblings for the next two
+    // vectors), out of line in retail at 0x00445940 (landed as CGamePlayerInterface::GetNumAssignableSpecialMoveButtons, a spelling
+    // neither PDB has). Declaration only, the layout below is unchanged.
+    long GetNumberOfAssignableSpecialMoveButtons() const;               // 0x00445940
+#endif
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08

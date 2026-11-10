@@ -1,0 +1,16 @@
+address	name	evidence
+0x005EE49A	?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z	Ego_r.pdb + FableWin.pdb; src/005ee49a.cpp RELOCATION_MATCH, all 23 call targets verified
+0x005F11A9	?UnAssignAbility@CTCInventoryAbilities@@QAEXK@Z	Ego_r.pdb + FableWin.pdb; PC twin UnAssignAbilityPC 0x005F1320 landed
+0x005F59C7	?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z	FableWin.pdb; console twin 0x005F4C8F landed
+0x005F64DD	?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z	Ego_r.pdb + FableWin.pdb (header comment, chunk 1008)
+0x005F6793	?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z	Ego_r.pdb + FableWin.pdb (header comment, chunk 1008)
+0x005F6BD6	?SetAbilityAsAvailable@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N1@Z	Ego_r.pdb + FableWin.pdb; built leaf of differ/005f6bd6.cpp
+0x005F6E40	?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z	Ego_r.pdb spelling; retail body ends `ret 8` (two args); not worked
+0x0079A610	?GetResetCreatureManaCost@CTCSummonSpell@@QBEJXZ	see NAME_FIXES.tsv
+0x00445940	?GetNumberOfAssignableSpecialMoveButtons@CGamePlayerInterface@@QBEJXZ	see NAME_FIXES.tsv
+0x005F8150	??$find@PAW4EHeroAbility@@W41@@std@@YIPAW4EHeroAbility@@PAW41@0ABW41@@Z	see NAME_FIXES.tsv
+0x005EDCF0	?GetNumAssignableSpecialMoveButtons@CTCInventoryAbilities@@QBEJXZ	see NAME_FIXES.tsv
+0x005F6423	?SetAbilityToButton@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J_N@Z	Ego_r.pdb + FableWin.pdb; landed; called by 0x005F6BD6
+0x005F8A57	??$GetDef@VCSpecialAbilitiesFireballSpellDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesFireballSpellDef@@@@@Z	landed CDefinitionManager::GetDef instance; IsAbleToUseAbility call 0x005EE543 relocates to it
+0x005F8AB9	??$GetDef@VCSpecialAbilitiesUnholyPowerDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesUnholyPowerDef@@@@@Z	landed GetDef instance; call 0x005EE5A5
+0x005F8B1B	??$GetDef@VCSpecialAbilitiesDivineWrathDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesDivineWrathDef@@@@@Z	landed GetDef instance; call 0x005EE5FC

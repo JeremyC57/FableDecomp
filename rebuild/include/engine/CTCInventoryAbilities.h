@@ -78,6 +78,14 @@ public:
     void SetAbilityAsAvailable(EHeroAbility ability, bool available, bool reassign);                             // 0x005F6BD6
     bool IsAbleToUseAbility(EHeroAbility ability, bool checkCost) const;                                         // 0x005EE49A
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_BUTTONS
+    // Nested opt-in (chunk 1008b, row 0x005F6BD6 SetAbilityAsAvailable): Ego_r.pdb / FableWin.pdb spellings, out of line in retail:
+    // ?SetAbilityToButton@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J_N@Z 0x005F6423 (landed) and
+    // ?GetNumAssignableSpecialMoveButtons@CTCInventoryAbilities@@QBEJXZ 0x005EDCF0 (its landed callers spell it GetNumAbilitiesPerRow,
+    // which neither PDB has).
+    void SetAbilityToButton(EHeroAbility ability, long button, bool flag);                                       // 0x005F6423
+    long GetNumAssignableSpecialMoveButtons() const;                                                             // 0x005EDCF0
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
     // Opt-in (chunk 1008): the expression item-list builders, FableWin.pdb spellings (out of line in retail):
     // ?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@PAVCList@NUISystem@@PAVCComponent@5@

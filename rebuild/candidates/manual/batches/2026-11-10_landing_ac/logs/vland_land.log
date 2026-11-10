@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005ee49a   WARN RELOC_NAME: ?GetResetCreatureManaCost@CTCSummonSpell@@QBEJXZ -> 0079a610 labelled '_global::GetMember_dword0xc_deref0x54_0079a610'
+005ee49a   RELOCATION_MATCH PASS   IsAbleToUseAbility
+
+WINS: 1
+  005ee49a RELOCATION_MATCH CTCInventoryAbilities::?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryAbilities_IsAbleToUseAbility_005ee49a

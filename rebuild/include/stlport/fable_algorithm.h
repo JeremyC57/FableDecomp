@@ -19,6 +19,13 @@ template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)()
     return mem_fun_ref_t<R, T>(pfn);
 }
 template <class It, class F> F FABLE_FASTCALL for_each(It first, It last, F f);   // 0x0043F360 (SGI, /Gr)
+#ifdef FABLE_RETAIL_STLP_FIND
+// Retail opt-in (chunk 1008b, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): STLport 4.6 _algobase.h
+// `find(_InputIter __first, _InputIter __last, const _Tp& __val)`, the forwarder to the category-dispatched __find (landed
+// 0x005F7ACC), a `__fastcall` COMDAT in retail (find<EHeroAbility*, EHeroAbility> 0x005F8150: first in ecx, last in edx, &val on
+// the stack, `ret 4`). Declaration only: callers only relocate to the instantiation.
+template <class _InputIter, class _Tp> _InputIter FABLE_FASTCALL find(_InputIter __first, _InputIter __last, const _Tp& __val);
+#endif
 #ifdef FABLE_RETAIL_STLP_FIND_IF_INPUT
 // STLport 4.6.2 _algobase.c:183-197, input-iterator search and category dispatch.
 /*

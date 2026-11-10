@@ -39118,3 +39118,5 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005ae9de	005b0aac
 ?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ	005a887d	005b0aac
 ?RefreshNameAndTitlePC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JJ@Z	0059ca95	005b0aac
+??$GetDef@VCSpecialAbilitiesDivineWrathDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesDivineWrathDef@@@@@Z	005f8b1b	005ee49a
+?GetResetCreatureManaCost@CTCSummonSpell@@QBEJXZ	0079a610	005ee49a

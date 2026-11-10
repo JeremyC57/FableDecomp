@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+005ee49a	CTCInventoryAbilities::IsAbleToUseAbility	RELOCATION_MATCH	1	shared headers (3 new: CTCSummonSpell, CSpecialAbilitiesFireballSpellDef, CSpecialAbilitiesDivineWrathDef) + inline CThing::PeekTC + same-TU CDefinitionManager::GetDef body under auto_inline(off); test PASS (g++ and VC7.1 /Od)
+005f11a9	CTCInventoryAbilities::UnAssignAbility	DIFFER(373v375)	7	parked (6 by chunk 1008 + 1 here): compare a re-read AssignedAbilities[slot] broke the address CSE (358 -> 373); left: removed homed after the arms and the scan loop register (retail edx copy)
+005f59c7	CTCInventoryAbilities::ConstructPCExpressionsList	DIFFER(2649v2652)	1	parked: real 0x005F45B5 body same-TU changed nothing; c2prio: textBank prio 56 takes edi, retail keeps it in memory ([ebp+5Ch]); frame 0xC8 v 0xD4
+005f64dd	CTCInventoryAbilities::CycleAssignedAbilities	HELD	0	held/005f64dd.md: needs PSoundManager slot 9 / player slot 3 (CASoundManager slot names not accepted)
+005f6793	CTCInventoryAbilities::CycleAssignedExpressions	HELD	0	held/005f6793.md: needs PSoundManager slot 9 / player slot 3 (CASoundManager slot names not accepted)
+005f6bd6	CTCInventoryAbilities::SetAbilityAsAvailable	DIFFER(617v618)	4	parked: FORCEINLINE_FIND + std::find fastcall decl + ability copy + cached end (difflines 90 -> 72); c2prio: const 0 allowed ebx only (byte use) so retail's edi zero and ebx ability never form
+005f6e40	CTCInventoryAbilities::OnSerialise	NOT_REACHED	0	not worked (2113 bytes, persist callees)

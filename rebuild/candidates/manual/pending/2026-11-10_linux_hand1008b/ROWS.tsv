@@ -1,0 +1,8 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+005ee49a	549	CTCInventoryAbilities::IsAbleToUseAbility	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/005ee49a.cpp		005ee365 005ee3b3 005ee418 005ee6bf 005ee77c 005ee887
+005f11a9	375	CTCInventoryAbilities::UnAssignAbility	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-11-10_linux_hand1008/differ/005f11a9.cpp		005f077f 005f0c5f 005f0dc5 005f1320 005f1526
+005f59c7	2652	CTCInventoryAbilities::ConstructPCExpressionsList	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1008/differ/005f59c7.cpp	005f45b5	005f4c45 005f4c8f 005f519f 005f6423 005f66d9
+005f64dd	508	CTCInventoryAbilities::CycleAssignedAbilities	parked	register-tie	rebuild/candidates/manual/pending/2026-10-21_linux_hand270/differ/005f64dd.cpp		005f519f 005f6423 005f66d9 005f694d
+005f6793	442	CTCInventoryAbilities::CycleAssignedExpressions	parked	register-tie	rebuild/candidates/manual/pending/2026-10-21_linux_hand270/differ/005f6793.cpp		005f6423 005f66d9 005f694d 005f6a6f 005f6b47
+005f6bd6	618	CTCInventoryAbilities::SetAbilityAsAvailable	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/005f6bd6.cpp	005f64dd	005f694d 005f6a6f 005f6b47 005f7681 005f7699
+005f6e40	2113	CTCInventoryAbilities::OnSerialise	unworked			005bfd5e 005f6bd6	005f6a6f 005f6b47 005f7681 005f7699 005f76b1

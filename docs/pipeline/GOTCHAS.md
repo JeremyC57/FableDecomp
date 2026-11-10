@@ -2654,3 +2654,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Code written out in both if/else arms can be merged by VC7.1 into one call with the result in a callee-saved register, as retail (0x005F0DC5).
 - CPlayerManager::GetMainPlayer: 0x00449960 is the const QBE, 0x00449970 the non-const QAE (PDB order). A row calling 0x00449970 must reach it through the non-const `GetPlayerManager()` (FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER), not `PeekPlayerManager()` -- vland reports RELOC_CONFLICT otherwise (0x005B0AAC).
 - A port of a landed twin inherits its local models: check the twin before copying (0x0059CB90 / 0x005A45F6 are local-model rows with an invented map operator[] stand-in; their ports went back for shared headers).
+- Comparing a fresh read of `arr[slot]` instead of the loaded local stops c2 computing `&arr[slot]` once and reusing it across both arms (0x005F11A9: 358 -> 373 of 375 bytes).
+- A constant 0 with a byte-sized use may only be coloured to a byte register (eax/ebx/ecx/edx), which can block retail's zero-in-edi colouring (0x005F6BD6, c2prio).

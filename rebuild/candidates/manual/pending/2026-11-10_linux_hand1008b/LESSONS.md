@@ -1,0 +1,8 @@
+# chunk 1008b lessons (GOTCHAS-ready)
+- 0x005EE49A IsAbleToUseAbility: plain shared-header C++ matched first grade; the per-def `GetDef<T>` COMDAT instances (0x5F8A57/AB9/B1B) come from the real same-TU CDefinitionManager::GetDef template body under `#pragma auto_inline(off)` (copied from landed 0x005F4C8F), never a declaration-only stand-in.
+- 0x005F6BD6 SetAbilityAsAvailable: the AbilityButtons `Find(button) == end()` loop needs FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND in this TU (inline Find, out-of-line LowerBound 0x5F7F4C); without it the call shape differs.
+- 0x005F6BD6: passing a by-value param to `std::find(first, last, const T&)` makes it address-taken and drops its register candidate for the whole function; a local copy (`EHeroAbility removed = ability;`) restores the register (DIFFER difflines 90 -> 72), but retail keeps both (ebx + `lea [ebp+8]`).
+- 0x005F6BD6: caching `end()` in a local before `std::find` gives retail's `cmp eax,ebx` (end in a callee-saved register across the call).
+- 0x005F11A9 UnAssignAbility: comparing a re-read `AssignedAbilities[slot]` (not the loaded local) stops c2 CSE-ing `&AssignedAbilities[slot]` into the restore/clear arms (358 -> 373 of 375); a store to an address-taken local kills c2's memory-load CSE.
+- c2prio: a constant with any byte-sized use (`cmp byte [mem],reg`) is allowed ebx only; retail's `xor edi,edi` zero means its zero candidate had no byte use (0x005F6BD6).
+- 0x005F59C7: carrying the real same-TU callee body (0x005F45B5) does not change colouring when the callee is out of line anyway; the residue is the bank pointer's candidate status.
