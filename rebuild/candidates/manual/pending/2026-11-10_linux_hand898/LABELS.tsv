@@ -1,0 +1,17 @@
+address	name	evidence
+0x00D9EB30	NScript::CQ_MinionCampScript::CMC_MinionGuard::Main	Ego_r.pdb ?Main@CMC_MinionGuard@CQ_MinionCampScript@NScript@@EAEXXZ; byte match (RELOCATION_MATCH) chunk 898
+0x007E4530	CTCWillResponse::IsThingLightningable	FableWin.pdb ?IsThingLightningable@CTCWillResponse@@SI_NPBVCThing@@@Z (catalog had the bare global IsThingLightningable); byte match chunk 898
+0x009E2020	GFABoxToVBox	Ego_r.pdb ?GFABoxToVBox@@YIXABVC2DBoxF@@AAV1@@Z (C2DBoxF overload; the C2DBoxI one is 0x009E20F0); byte match chunk 898
+0x0084CD10	NCameraModes::SetCameraRoll	Ego_r.pdb ?SetCameraRoll@NCameraModes@@YIXAAVCCamera@@M@Z; callers 0x0084DF75 / 0x0087BB77; byte match chunk 898
+0x00A0BE30	CCamera::SetView	Ego_r.pdb ?SetView@CCamera@@QAEXABVC3DVector@@0@Z; called by SetCameraRoll 0x0084CD10 with ecx = camera, forward then up pushed (relocation-matched call)
+0x00732D40	CTCWeatherVane::FrameUpdate	Ego_r.pdb ?FrameUpdate@CTCWeatherVane@@UAEXXZ; follows CTCWeatherVane::OnInitialActivate 0x00732D00 (landed); catalog "CViewBase_UpdateLookDirection" is wrong; byte match chunk 898
+0x0079CF30	CTCBulletTime::Pause	Ego_r.pdb ?Pause@CTCBulletTime@@QAEXXZ; same TU as the landed StopSound 0x0079CEE0; byte match chunk 898
+0x0079CEE0	CTCBulletTime::StopSound	Ego_r.pdb ?StopSound@CTCBulletTime@@AAEXK@Z; called from Pause 0x0079CF30 (relocation-matched call)
+0x006B83F0	CEnvironmentSpellEffectInterpolator::ScreenFilterFadeOut	Ego_r.pdb ?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z; PDB-named CGameScriptInterface::ScreenFilterFadeOut 0x00890200 does mov eax,[ecx+4]; mov ecx,[eax+18h]; mov ecx,[ecx+1964h]; jmp 0x006B83F0; Pause 0x0079CF30 calls it off GetSpellEffectInterpolator
+0x008F8540	LHNetworkLib::LSocket::CheckForActivity	Ego_r.pdb ?CheckForActivity@LSocket@LHNetworkLib@@SI_NAAV?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@W4LSOCKET_SELECT@2@K@Z; byte match chunk 898
+0x00654438	NPlayerGui::CDrawQuestInfo::Draw	Ego_r.pdb / FableWin.pdb ?Draw@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z; byte match chunk 898
+0x00A3BF10	C3DAnimationBlendState::CreateInterpolate	Ego_r.pdb ?CreateInterpolate@C3DAnimationBlendState@@CI?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@ABVC3DAnimationStateBase@@0M@Z; callers itself and SetInterpolate 0x00A3C3B0; byte match chunk 898
+0x0080DB70	CApplyAdditionalExplosiveImpulseIfInsideRing::operator()	draft identity (Ego_r ??RCApplyAdditionalExplosiveImpulseIfInsideRing@@QBEXPAVCThing@@@Z); catalog "CTCPhysicsBase_ApplyExplosiveImpulseFromPoint" is a propagated label; parked DIFFER 4 lines
+0x00807A90	std::remove_copy_if<NPlayerTargeting::CTargetPoint*,NPlayerTargeting::CTargetPoint*,CFilter_Bind3<...> >	draft identity (STLport remove_copy_if over CTargetPoint, CFilter_Bind3 predicate); catalog "std_copy_if_WithDistance" is wrong; parked DIFFER 6 lines
+0x00826C90	CReplaceSerialise<COldFileFormatHeightMapCell5,COldFileFormatHeightMapCell4>::ConvertPreviousUnknownVersionUp	draft identity (Ego_r spelling in the draft Leaf); catalog "CAFile_ConstructNavConnectorVertex" is wrong; parked DIFFER 4 lines
+0x00712900	NTCScriptedControl::CActionPlayAnimation::Update	Ego_r ?Update@CActionPlayAnimation@NTCScriptedControl@@UAEXXZ (catalog vfunc_1); parked DIFFER 4 lines

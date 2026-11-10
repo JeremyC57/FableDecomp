@@ -2,7 +2,7 @@
 #define FABLE_RETAIL_LSOCKET_HEADER
 #include "stlport/fable_string.h"
 #include "LHNetworkTypes.h"
-#ifdef FABLE_RETAIL_LSOCKET_RECEIVE
+#if defined(FABLE_RETAIL_LSOCKET_RECEIVE) || defined(FABLE_RETAIL_LSOCKET_CHECKFORACTIVITY)
 #include "rebuild_abi.h"
 #endif
 #include <stdio.h>
@@ -73,6 +73,12 @@ private:
     static bool FABLE_FASTCALL ConvertSockaddr2LAddress(const sockaddr_in& from, LAddress& address);       // 0x008F8BB0
     bool SetNonBlocking(bool nonBlocking);                                                    // 0x008F8870
 public:
+#endif
+#ifdef FABLE_RETAIL_LSOCKET_CHECKFORACTIVITY
+    // Opt-in (chunk 898, row 0x008F8540): Ego_r.pdb ?CheckForActivity@LSocket@LHNetworkLib@@SI_NAAV?$list@PAVLSocket@LHNetworkLib@@V?$allocator@
+    // PAVLSocket@LHNetworkLib@@@std@@@std@@W4LSOCKET_SELECT@2@K@Z (public static __fastcall; the includer brings std::list from
+    // stlport/fable_containers.h). Declaration only: no layout change.
+    static bool FABLE_FASTCALL CheckForActivity(std::list<LSocket*>& sockets, LSOCKET_SELECT mode, unsigned long timeoutMs);   // 0x008F8540
 #endif
 };
 }

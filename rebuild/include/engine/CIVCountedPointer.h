@@ -70,6 +70,15 @@ public:
     }
 #endif
     T* operator->() const { return static_cast<T*>(Object); }
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+    // Opt-in (chunk 898, row 0x00A3BF10 C3DAnimationBlendState::CreateInterpolate): Ego_r.pdb's converting constructor
+    // (??$?0VC3DAnimationTransitionState@@@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAE@ABV?$CIVCountedPointer@V...@@@@@Z shape:
+    // take the other pointer's object and AddRef it; `return trans;` from a CIVCountedPointer<derived>), InternalGetObject and
+    // operator* (both inline in retail).
+    template<class U> CIVCountedPointer(const CIVCountedPointer<U>& other) : Object(other.InternalGetObject()) { if (Object) Object->AddRef(); }
+    CIVCountedPointeeBase* InternalGetObject() const { return Object; }
+    T& operator*() const { return *static_cast<T*>(Object); }
+#endif
     bool IsNull() const { return Object == 0; }
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER

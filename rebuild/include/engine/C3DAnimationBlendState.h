@@ -16,6 +16,14 @@ public:
     virtual ~C3DAnimationBlendState();                                   // 0x004C2DF0
     void SetBaseAnimation(const C3DAnimationState& state);               // 0x00A3C260
     void SetBaseAnimation(const CIVCountedPointer<C3DAnimationStateBase>& state);
+#ifdef FABLE_RETAIL_C3DANIMATIONBLENDSTATE_CREATEINTERPOLATE
+    // Opt-in (chunk 898, row 0x00A3BF10): Ego_r.pdb ?CreateInterpolate@C3DAnimationBlendState@@CI?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@ABVC3DAnimationStateBase@@0M@Z
+    // (private static __fastcall; retail 0x00A3BF10, callers itself and SetInterpolate 0x00A3C3B0). Declaration only.
+private:
+    static CIVCountedPointer<C3DAnimationStateBase> __fastcall CreateInterpolate(const C3DAnimationStateBase& a,
+                                                                                 const C3DAnimationStateBase& b, float t);
+public:
+#endif
     void* Data;                                                          // +0x04 CIVCountedPointer<C3DAnimationBlendState::CSharedData>
 };
 FABLE_STATIC_ASSERT(sizeof(C3DAnimationBlendState) == 8);

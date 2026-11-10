@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00654438   WARN RELOC_NAME: ?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ -> 00437870 labelled '_global::GetMember_dword0x160_derefbyte0x18_00437870'
+00654438   RELOCATION_MATCH PASS   Draw
+00732d40   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00732d40   RELOCATION_MATCH PASS   FrameUpdate
+0079cf30   WARN RELOC_NAME: ?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z -> 006b83f0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+0079cf30   RELOCATION_MATCH PASS   Pause
+007e4530   RELOCATION_MATCH PASS   IsThingLightningable
+0084cd10   RELOCATION_MATCH PASS   SetCameraRoll
+008f8540   WARN RELOC_ALIAS: ___WSAFDIsSet@8 -> 00c003ec is the import thunk 'WSOCK32.DLL::#151'
+008f8540   RELOCATION_MATCH PASS   CheckForActivity
+009e2020   RELOCATION_MATCH PASS   GFABoxToVBox
+00a3bf10   RELOCATION_MATCH PASS   CreateInterpolate
+00d9eb30   RELOCATION_MATCH PASS   Main
+
+WINS: 9
+  00654438 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?Draw@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z
+  00732d40 RELOCATION_MATCH CTCWeatherVane::?FrameUpdate@CTCWeatherVane@@UAEXXZ
+  0079cf30 RELOCATION_MATCH CTCBulletTime::?Pause@CTCBulletTime@@QAEXXZ
+  007e4530 RELOCATION_MATCH CTCWillResponse::?IsThingLightningable@CTCWillResponse@@SI_NPBVCThing@@@Z
+  0084cd10 RELOCATION_MATCH NCameraModes::?SetCameraRoll@NCameraModes@@YIXAAVCCamera@@M@Z
+  008f8540 RELOCATION_MATCH LHNetworkLib::LSocket::?CheckForActivity@LSocket@LHNetworkLib@@SI_NAAV?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@W4LSOCKET_SELECT@2@K@Z
+  009e2020 RELOCATION_MATCH _global::?GFABoxToVBox@@YIXABVC2DBoxF@@AAV1@@Z
+  00a3bf10 RELOCATION_MATCH C3DAnimationBlendState::?CreateInterpolate@C3DAnimationBlendState@@CI?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@ABVC3DAnimationStateBase@@0M@Z
+  00d9eb30 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_MinionGuard::?Main@CMC_MinionGuard@CQ_MinionCampScript@NScript@@EAEXXZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawQuestInfo_Draw_00654438
+  CTCWeatherVane_FrameUpdate_00732d40
+  CTCBulletTime_Pause_0079cf30
+  CTCWillResponse_IsThingLightningable_007e4530
+  NCameraModes_SetCameraRoll_0084cd10
+  LHNetworkLibLSocket_CheckForActivity_008f8540
+  global_GFABoxToVBox_009e2020
+  C3DAnimationBlendState_CreateInterpolate_00a3bf10
+  NScriptCQMinionCampScriptCMCMinionGuard_Main_00d9eb30

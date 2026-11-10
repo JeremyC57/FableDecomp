@@ -1,0 +1,23 @@
+address	name	grade	grades_used	note
+0x00D9EB30	NScript::CQ_MinionCampScript::CMC_MinionGuard::Main	RELOCATION_MATCH	8	one whole if(attacker != X){terminating-return; SetTarget} per IsNull arm: cross-jumped tails give this-before-push
+0x007E4530	CTCWillResponse::IsThingLightningable	RELOCATION_MATCH	4	rebased onto engine/CThing.h GETTC_EXPANDED PeekTC + CTCTargeted.h
+0x009E2020	GFABoxToVBox	RELOCATION_MATCH	2	landed 0x009E21D0 GFAYToVY spelling + GetDisplayManager
+0x0084CD10	NCameraModes::SetCameraRoll	RELOCATION_MATCH	9	PAREN squares in len2; CCamera::SetView opt-in (hdr)
+0x00732D40	CTCWeatherVane::FrameUpdate	RELOCATION_MATCH	38	wind / wind.GetMagnitude() into a new vector + CWorld GetEnvironment accessor
+0x0079CF30	CTCBulletTime::Pause	RELOCATION_MATCH	12	inline accessor chain in one call; ScreenFilterFadeOut identity (hdr opt-ins)
+0x008F8540	LHNetworkLib::LSocket::CheckForActivity	RELOCATION_MATCH	13	chained zero assignment of the three set pointers; STLport list; LSocket opt-in (hdr)
+0x00654438	NPlayerGui::CDrawQuestInfo::Draw	RELOCATION_MATCH	10	C2DBoxF(pos, C2DExtentsF) extents ctor; GFFloatToLongCeil retail-asm helper (own Retail-asm line)
+0x00A3BF10	C3DAnimationBlendState::CreateInterpolate	RELOCATION_MATCH	6	parenthesised lerp RHS (PAREN region cut)
+0x0080DB70	CApplyAdditionalExplosiveImpulseIfInsideRing::operator()	DIFFER(275v275) 4	24	impulse Y x87 operand order
+0x006E8CE0	GetBestAttackerForPlacementVector	DIFFER(298v294) 4	17	first Normalise: inv reloaded + extra fstp st(0)
+0x00A22F80	CRightHandedSet::Rotate	DIFFER(523v523) 4	16	E11*tx commuted fmul operand order
+0x00712900	NTCScriptedControl::CActionPlayAnimation::Update	DIFFER(362v362) 4	15	forwarded-temp register rotation (eax vs ecx) in the played arm
+0x00A65720	CMemoryAllocatorVariableSize::NewChunk	DIFFER(269v269) 4	8	minSize temp in ebp vs retail edi
+0x00826C90	CReplaceSerialise<Cell5,Cell4>::ConvertPreviousUnknownVersionUp	DIFFER(288v288) 4	9	mov ebx,[esp+10h] scheduled two instructions early
+0x006509F8	NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounter::DrawAt	DIFFER(549v549) 4	6	lea ecx before fstp [ebp+8] at the join
+0x00B396E0	CEngineInternalAttachedPrimitive::Update	DIFFER(497v497) 6	2	&PrimitiveTransform in ebp vs retail ebx (c2prio colouring order)
+0x00AC7200	QuadricOptimiserInternals::COptimisedPrimitive::MakeOrthogonal	DIFFER(255v255) 6	6	dot-product term order
+0x008884D0	CEnvironmentThemePriorityStackEntry::GetLevelTheme	DIFFER(514v514) 4	7	esi/ecx copy direction in the vector teardown; stand-ins, needs stlport vector rebase
+0x00941FC0	CAIStateGroup_KidReactToBlockage::IsRunnable	DIFFER(578v578) 4	6	add eax,edi vs retail add edi,eax (y+r)
+0x00807A90	std::remove_copy_if<CTargetPoint*,...,CFilter_Bind3<...> >	DIFFER(222v222) 6	6	*F3 copy at predicate top vs retail before third call
+0x00BEEA00	std::__adjust_heap<pair<pair<long,long>,CEngineTextureDecal>*,...>	DIFFER(266v266) 6	3	val copy load scheduling before push comp

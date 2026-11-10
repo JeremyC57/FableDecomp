@@ -91,7 +91,26 @@ public:
         CTimer SpeechTimer;                                              // +0x48
         bool IsPlayingChantAnim;                                         // +0x4c
     };
+#ifdef FABLE_RETAIL_CQ_MINIONCAMPSCRIPT_MINIONGUARD
+    // Opt-in (chunk 898, row 0x00D9EB30 CMC_MinionGuard::Main): the nested guard script with its Ego_r.pdb spelling CMC_MinionGuard
+    // (?Main@CMC_MinionGuard@CQ_MinionCampScript@NScript@@EAEXXZ, ?SetTarget@..@@AAEXABVCScriptThing@@@Z; the default branch's
+    // `CMCMinionGuard` forward declaration drops the underscore) and its Ego_r layout (0x28: ParentClass +0x14, PMasterData +0x18,
+    // Target +0x1C). Vtable: slot 0 the deleting dtor 0x00D9FFA0, slot 1 Main, slot 3 GetParentScript 0x00D9EB20.
+    class CMC_MinionGuard : public CEntityScriptBase {
+    public:
+        CQ_MinionCampScript*    ParentClass;                             // +0x14
+        CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
+        CScriptThing            Target;                                  // +0x1c
+        virtual ~CMC_MinionGuard();
+    private:
+        virtual void Main();                                             // 0x00D9EB30
+        void SetTarget(const CScriptThing& target);                      // 0x00D9ECF0
+    public:
+        virtual CScriptBase* GetParentScript() const;                    // 0x00D9EB20
+    };
+#else
     class CMCMinionGuard;                                                // Alloc 0x00D9EA80
+#endif
     class CMCSpawnPoint;                                                 // Alloc 0x00D9ED50
     class CMCMinion;                                                     // Alloc 0x00D9F0B0
     class CFadeinSummoner;                                               // Alloc 0x00D9F5B0

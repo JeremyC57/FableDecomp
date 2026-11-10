@@ -25,6 +25,13 @@ public:
     // ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z (0x006A1F80).
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_BYPASSFILTERS
+    // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause clears it): the first Ego_r.pdb members after the CTCBase part. Ego_r has
+    // CarrySlots (CVectorMap<long,CIntelligentPointer<CThing>,...>) at +0x0c and BypassFilters after it; the retail STLport CVectorMap
+    // is 0x10 bytes (Ego_r's debug one 0x14), so BypassFilters is retail +0x1c (`mov byte ptr [eax+1Ch],0` at 0x0079D00B).
+    unsigned char CarrySlots[0x10];                          // +0x0c CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<..> >
+    bool BypassFilters;                                      // +0x1c
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYING_ALLCARRIED
     // Nested opt-in (chunk 768, row 0x0089DA70 CGameScriptInterface::EntitySetAlpha): Ego_r.pdb (0x006C6970)
     // ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z, retail 0x006A2220 (const, the

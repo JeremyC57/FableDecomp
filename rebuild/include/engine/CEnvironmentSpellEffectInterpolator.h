@@ -14,6 +14,13 @@ class CEnvironmentSpellEffectInterface;
 class CEnvironmentSpellEffectInterpolator {
 public:
     void ScreenFilterSetFlags(const NScreenEffect::CScreenEffectPriorityStack::ThingGraphicArgPassers& things, void* handle);  // 0x006B83E0
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FADEOUT
+    // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb / FableWin.pdb
+    // ?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z = retail 0x006B83F0 (the PDB-named forwarder
+    // CGameScriptInterface::ScreenFilterFadeOut 0x00890200 tail-jumps there with the environment's +0x1964 interpolator and its own
+    // (float, void*) arguments; the catalog's `_Cons_val<...>` label is a propagated one). Declaration only.
+    void ScreenFilterFadeOut(float time, void* handle);                  // 0x006B83F0
+#endif
 private:
     CEnvironment* Environment;                                           // +0x00
     CEnvironmentSpellEffectInterface* SpellInterface;                    // +0x04

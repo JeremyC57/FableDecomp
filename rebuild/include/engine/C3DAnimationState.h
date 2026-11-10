@@ -31,6 +31,11 @@ public:
 class C3DAnimationState : public C3DAnimationStateBase {
 public:
     C3DAnimationState(unsigned long index, float time) : AnimationIndex(index), AnimationTime(time) { }
+#ifdef FABLE_RETAIL_C3DANIMATIONSTATE_DEFAULT
+    // Opt-in (chunk 898, row 0x00A3BF10 C3DAnimationBlendState::CreateInterpolate): the inline default constructor retail expands after
+    // `new C3DAnimationState` (vtable 0x01249F50, IVRefCount 1, AnimationIndex -1, AnimationTime left).
+    C3DAnimationState() : AnimationIndex(-1) { }
+#endif
 #ifdef FABLE_RETAIL_C3DANIMATIONSTATEBASE_VIRTUALS
     virtual EType GetType() const;                                       //  2 0x00550880
     virtual const C3DAnimationState& FindFirstAnimation() const;         //  3 0x00550890

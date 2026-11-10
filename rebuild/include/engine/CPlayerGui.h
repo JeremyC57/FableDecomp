@@ -37,6 +37,11 @@ class CScriptScreenText; class CScreenMessage;
 }
 enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
 #endif
+#if defined(FABLE_RETAIL_CPLAYERGUI_GUIMODE) && !defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
+// Opt-in (chunk 898, row 0x00654438 NPlayerGui::CDrawQuestInfo::Draw reads its own EPlayerGuiMode GuiMode): the enum alone, for TUs
+// that do not take the full member list.
+enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
+#endif
 class CThing;class C3DVector;
 #ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
 class CWorld; class CPlayerManager; class CGamePlayerInterface; class CMainGameComponent; class CGraphicDataBank;   // chunk 863
@@ -163,6 +168,11 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Retail opt-in (chunk 855, row 0x00490BE0): Ego_r.pdb 0x0044B230 / FableWin.pdb 0x01A80EA0 ?PeekGuiDef@CPlayerGui@@SIABVCPlayerGuiDef@@XZ
     // (public static __fastcall), out of line in retail at 0x00438570 (no this set up at its callers). Declaration only.
     static const class CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
+#endif
+#ifdef FABLE_RETAIL_CPLAYERGUI_MINIMAPDRAWING
+    // Opt-in (chunk 898, row 0x00654438 NPlayerGui::CDrawQuestInfo::Draw): Ego_r.pdb 0x0044A510 / FableWin.pdb 0x01A7F700
+    // ?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ, out of line in retail at 0x00437870 (reads PDrawMiniMap +0x160 -> CDrawBase::Drawing +0x18).
+    bool IsMiniMapDrawing() const;                                       // 0x00437870
 #endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_GRAPHICBANK
     // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x0044A200 / FableWin.pdb 0x01A7CC80

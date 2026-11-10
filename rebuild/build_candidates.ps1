@@ -388150,6 +388150,69 @@ $catalog = @(
         TestSource = '00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_Init_00f00c60_test.cpp'
         PassPattern = '00f00c60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00654438'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/65/NPlayerGuiCDrawQuestInfo_Draw_00654438.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawQuestInfo_Draw_00654438_test.cpp'
+        PassPattern = '00654438_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00732d40'
+        Module = 'CTCWeatherVane'
+        Source = '00/73/CTCWeatherVane_FrameUpdate_00732d40.cpp'
+        TestSource = '00/73/CTCWeatherVane_FrameUpdate_00732d40_test.cpp'
+        PassPattern = '00732d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079cf30'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_Pause_0079cf30.cpp'
+        TestSource = '00/79/CTCBulletTime_Pause_0079cf30_test.cpp'
+        PassPattern = '0079cf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4530'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_IsThingLightningable_007e4530.cpp'
+        TestSource = '00/7e/CTCWillResponse_IsThingLightningable_007e4530_test.cpp'
+        PassPattern = '007e4530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084cd10'
+        Module = 'NCameraModes'
+        Source = '00/84/NCameraModes_SetCameraRoll_0084cd10.cpp'
+        TestSource = '00/84/NCameraModes_SetCameraRoll_0084cd10_test.cpp'
+        PassPattern = '0084cd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f8540'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '00/8f/LHNetworkLibLSocket_CheckForActivity_008f8540.cpp'
+        TestSource = '00/8f/LHNetworkLibLSocket_CheckForActivity_008f8540_test.cpp'
+        PassPattern = '008f8540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2020'
+        Module = '_global'
+        Source = '00/9e/global_GFABoxToVBox_009e2020.cpp'
+        TestSource = '00/9e/global_GFABoxToVBox_009e2020_test.cpp'
+        PassPattern = '009e2020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3bf10'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/a3/C3DAnimationBlendState_CreateInterpolate_00a3bf10.cpp'
+        TestSource = '00/a3/C3DAnimationBlendState_CreateInterpolate_00a3bf10_test.cpp'
+        PassPattern = '00a3bf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9eb30'
+        Module = 'NScript::CQ_MinionCampScript::CMC_MinionGuard'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCMinionGuard_Main_00d9eb30.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCMinionGuard_Main_00d9eb30_test.cpp'
+        PassPattern = '00d9eb30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -24,6 +24,13 @@
 class C3DAnimationTransitionState : public C3DAnimationStateBase {
 public:
     C3DAnimationTransitionState(const CIVCountedPointer<C3DAnimationStateBase>&, const CIVCountedPointer<C3DAnimationStateBase>&, float);
+#ifdef FABLE_RETAIL_C3DANIMATIONTRANSITIONSTATE_INTERPOLATE
+    // Opt-in (chunk 898, row 0x00A3BF10 C3DAnimationBlendState::CreateInterpolate): the inline default constructor retail expands after
+    // `new C3DAnimationTransitionState` (vtable 0x01265144, IVRefCount 1, both state pointers null, Progress left) and the blend state's
+    // access to the private members it fills in (StartState / EndState / Progress written in place).
+    C3DAnimationTransitionState() { }
+    friend class C3DAnimationBlendState;
+#endif
     virtual EType GetType() const;                                       //  2 0x00710520
     virtual const C3DAnimationState& FindFirstAnimation() const;         //  3 0x00710530
     virtual const C3DAnimationState& FindDominantAnimation() const;      //  4 0x00710540

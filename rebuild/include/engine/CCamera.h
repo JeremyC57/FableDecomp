@@ -17,6 +17,11 @@ public:
     float GetAngleXY() const;                                            // 0x00A0C380
     float GetAngleYZ() const;                                            // 0x00A0C3E0
 #endif
+#ifdef FABLE_RETAIL_CCAMERA_SETVIEW
+    // Opt-in (chunk 898, row 0x0084CD10 NCameraModes::SetCameraRoll): Ego_r.pdb ?SetView@CCamera@@QAEXABVC3DVector@@0@Z, out of line in
+    // retail at 0x00A0BE30 (the first member of the CCamera TU; called with ecx = the camera, forward then up pushed). Declaration only.
+    void SetView(const C3DVector& forward, const C3DVector& up);         // 0x00A0BE30
+#endif
     const C3DVector& PeekWorldPos() const { return WorldPosition; }
     const C3DVector& PeekViewDirection() const { return RHSet.GetForward(); }
 private:

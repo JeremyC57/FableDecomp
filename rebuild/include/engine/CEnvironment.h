@@ -31,6 +31,13 @@ public:
     void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
 #endif
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERPOLATOR
+    // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb / FableWin.pdb
+    // ?GetSpellEffectInterpolator@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterpolator@@XZ, inline in retail (`mov ecx,[eax+1964h]`
+    // straight off the environment before the call, 0x0079CFCB; the same read in the CGameScriptInterface::ScreenFilterFadeOut
+    // forwarder 0x00890206). Body only: no layout change.
+    CEnvironmentSpellEffectInterpolator& GetSpellEffectInterpolator() { return *SpellEffectInterpolator_ptr; }
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_TRANSITIONTOTHEME
     // Retail opt-in (chunk 782, row 0x007941D0 CTCUnholyPower ctor): Ego_r.pdb ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z, out of line
     // in retail at 0x006B3800 (`ret 10h`; the ctor pushes channel, 2, theme index, the def's EnvChangeSecs). Declaration only.
@@ -41,7 +48,23 @@ public:
     // (ret 4; the only registrant of the atexit stub 0x01229390 for its function-local static interpolated_theme).
     void RenderUpdate(float frame_fraction);                     // 0x006B42F0
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_VIRTUALS
+    // Opt-in (chunk 898, row 0x00732D40 CTCWeatherVane::FrameUpdate): the real vptr instead of the flattened __vftable word.
+    // Retail CEnvironment vtable 0x0125D538 (RTTI-ported labels): slot 0 the scalar deleting dtor 0x006B7360 (dtor 0x006B7380),
+    // slot 1 ?PeekInterpolatedParams@CEnvironment@@EBEABUCIDrawEnvironmentParams@@XZ 0x006B7350 (private), slot 2
+    // ?PeekWindDirection@CEnvironment@@UBEABVC3DVector@@XZ 0x006B7310, 3 PeekWindSpeed 0x006B7320, 4 PeekSunVector 0x006B7330,
+    // 5 PeekMoonVector 0x006B7340. Same size and offsets (vptr at +0x00); declarations only.
+    virtual ~CEnvironment();                                                         // slot 0  0x006B7380
+private:
+    virtual const struct CIDrawEnvironmentParams& PeekInterpolatedParams() const;   // slot 1  0x006B7350
+public:
+    virtual const class C3DVector& PeekWindDirection() const;                       // slot 2  0x006B7310
+    virtual float PeekWindSpeed() const;                                             // slot 3  0x006B7320
+    virtual const class C3DVector& PeekSunVector() const;                           // slot 4  0x006B7330
+    virtual const class C3DVector& PeekMoonVector() const;                          // slot 5  0x006B7340
+#else
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     CGameDefinitionManager*              DefinitionManager;  // +0x04
     float                                SunlightAttenuatorAngleFadeStart; // +0x08
     float                                SunlightAttenuatorAngleFadeEnd; // +0x0c
@@ -75,7 +98,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnvironment) == 0x1970);
+#ifndef FABLE_RETAIL_CENVIRONMENT_VIRTUALS
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, DefinitionManager) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, SunlightAttenuatorAngleFadeStart) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, SunlightAttenuatorAngleFadeEnd) == 0xc);

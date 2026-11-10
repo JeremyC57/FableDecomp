@@ -38967,3 +38967,12 @@ _DSPROPSETID_EAX30_ListenerProperties	012b9418	00c51a20
 ??_7CBase@NHeroStatModifierEvent@@6B@	0127232c	0083ad90
 __imp___mbsspn	0143ffd8	00c0e2c0
 __imp___mbscspn	0143fff4	00c0e310
+?DrawBox@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z	00643eb2	00654438
+?DrawOracleSymbols@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	0064f6dc	00654438
+?IsMiniMapDrawing@CPlayerGui@@QBE_NXZ	00437870	00654438
+?ScreenFilterFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z	006b83f0	0079cf30
+?StopSound@CTCBulletTime@@AAEXK@Z	0079cee0	0079cf30
+?SetView@CCamera@@QAEXABVC3DVector@@0@Z	00a0be30	0084cd10
+?g_LSocketActivityDetected@@3_NA	013baffd	008f8540
+?CreateInterpolate@C3DAnimationBlendState@@CI?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@ABVC3DAnimationStateBase@@0M@Z	00a3bf10	00a3bf10
+?SetTarget@CMC_MinionGuard@CQ_MinionCampScript@NScript@@AAEXABVCScriptThing@@@Z	00d9ecf0	00d9eb30

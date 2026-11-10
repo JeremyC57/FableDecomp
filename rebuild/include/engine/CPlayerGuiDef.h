@@ -14,6 +14,9 @@
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUESTINFO
+#include "engine/C2DVector.h"
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
 #include "engine/C2DVector.h"
 #include "engine/CRGBColour.h"
@@ -368,8 +371,14 @@ public:
     unsigned char    StatUpdateEffects[0xc];                 // +0x558 vector<long,std::allocator<long>_>
     float            AutoPickupPos_X;                        // +0x564 C2DVector::X
     float            AutoPickupPos_Y;                        // +0x568 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUESTINFO
+    // Opt-in (chunk 898, row 0x00654438 NPlayerGui::CDrawQuestInfo::Draw): QuestInfoPos as the C2DVector it is (same offset; the row
+    // passes it by reference to GFAnchorToTopRight 0x00643CA1).
+    C2DVector        QuestInfoPos;                           // +0x56c
+#else
     float            QuestInfoPos_X;                         // +0x56c C2DVector::X
     float            QuestInfoPos_Y;                         // +0x570 C2DVector::Y
+#endif
     float            QuestInfoBarOffsetX;                    // +0x574
     long             QuestInfoGraphicWidth;                  // +0x578
     long             QuestInfoGraphicHeight;                 // +0x57c
@@ -1005,8 +1014,12 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateGraphics) == 0x54c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, StatUpdateEffects) == 0x558);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AutoPickupPos_X) == 0x564);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, AutoPickupPos_Y) == 0x568);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_QUESTINFO
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos) == 0x56c);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos_X) == 0x56c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoPos_Y) == 0x570);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoBarOffsetX) == 0x574);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicWidth) == 0x578);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, QuestInfoGraphicHeight) == 0x57c);

@@ -14,6 +14,12 @@ float __fastcall GetFadeOutStartDistance();float __fastcall GetFadeInStartDistan
 // Layout: Ego_r complete original fields, native vector12/update36; size0x16c.
 class CParticleEmitter:public CBaseObject {
 public:CParticleEmitter();virtual ~CParticleEmitter();
+#ifdef FABLE_RETAIL_CPARTICLEEMITTER_KILL
+ // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb ?IsDead@CParticleEmitter@NParticleEngine@@QBE_NXZ (inline: the
+ // Dead bit, bit 5 of the +0x40 word: `mov cl,[eax+40h] ; shr cl,5 ; test cl,1` at 0x0079CF6F) and ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ (0x00AEE8C0).
+ bool IsDead() const { return Dead; }
+ void Kill();                                                          // 0x00AEE8C0
+#endif
  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
  // Chunk 742 (0x00AEFAA0): FableWin.pdb / Ego_r.pdb ?ReadBinary@CParticleEmitter@NParticleEngine@@QAEXAAVCDataInputStream@@@Z.
  void ReadBinary(CDataInputStream&);
