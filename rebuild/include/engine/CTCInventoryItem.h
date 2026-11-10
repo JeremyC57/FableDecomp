@@ -9,6 +9,9 @@
 #include "rebuild_abi.h"
 
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ENGINEGRAPHIC
+#include "engine/CEngineGraphic.h"
+#endif
 // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): the real base. CTCInventoryItem derives CTCBase (the
 // flattened default spells the base's vptr / ParentThing / flags as __vftable / slot / field8), so CThing::GetTC<CTCInventoryItem>
 // can cast to it. Members after the base are the default's, at the same offsets (sizeof 0x28).
@@ -55,6 +58,17 @@ public:
     static bool __fastcall IsWeapon(long defIndex);                                   // 0x005D97F0
     static bool __fastcall IsBuyable(long defIndex);                                  // 0x005D9B30
     static CWideString __fastcall GetDescription(long defIndex);                      // 0x005D95C0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_DETAILS
+    // Nested opt-in (chunk 1002, CTCInventoryWeapons description rows 0x005C6B26 / 0x005C71AA / 0x005C7452): Ego_r.pdb / FableWin.pdb
+    // ?GetDetails@CTCInventoryItem@@SI?AVCWideString@@J@Z, static `__fastcall`, out of line at 0x005D9630 (donor order CacheDef /
+    // GetDescription / GetDetails / GetEngineGraphic at the retail spacing 0x005D94B0 / 0x005D95C0 / 0x005D9630 / 0x005D96A0).
+    static CWideString __fastcall GetDetails(long defIndex);                          // 0x005D9630
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ENGINEGRAPHIC
+    // Nested opt-in (chunk 1002, row 0x005CB2B0 CTCInventoryWeapons::SetThingAsActiveWeapon): Ego_r.pdb
+    // ?GetEngineGraphic@CTCInventoryItem@@QBEABVCEngineGraphic@@XZ, out of line at 0x005D92D0 (the row reads its BankIndex +0).
+    const CEngineGraphic& GetEngineGraphic() const;                                   // 0x005D92D0
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISAUGMENTATION
     // Nested opt-in (chunk 900, rows 0x005C8459 / 0x005C9A95 CTCInventoryWeapons::ConstructScreen(PC)): Ego_r.pdb

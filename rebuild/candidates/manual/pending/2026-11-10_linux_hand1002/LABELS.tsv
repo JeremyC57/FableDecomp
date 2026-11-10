@@ -1,0 +1,24 @@
+address	symbol	evidence
+0x005C4671	?GetFreeAugmentationSlotForWeapon@CTCInventoryWeapons@@QAEJJ@Z	Ego_r/FableWin PDB name set + retail order; RELOCATION_MATCH
+0x005C66B2	?ConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z	PDB + RELOCATION_MATCH
+0x005C71AA	?ConstructWeaponDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z	PDB + retail order (DIFFER 680v680, body proven)
+0x005C7452	?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z	PDB + RELOCATION_MATCH
+0x005C8101	?PutWeaponsInSheathes@CTCInventoryWeapons@@QAEXXZ	PDB + RELOCATION_MATCH
+0x005C8176	?ConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z	PDB + RELOCATION_MATCH
+0x005CB128	?RemoveItemFromInventory@CTCInventoryWeapons@@UAEXJJ@Z	vtable 0x01253FF4 slot 79 + PDB; RELOCATION_MATCH
+0x005CB2B0	?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z	PDB + RELOCATION_MATCH
+0x005CB974	?OnInitialActivate@CTCInventoryWeapons@@UAEXXZ	vtable 0x01253FF4 slot 6 + PDB; RELOCATION_MATCH
+0x005C552C	?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ	PDB order (between ConstructAugmentationsLeftDescription and ConstructAugEntry) + body (removes sheathed weapons from carry slots); called first by PutWeaponsInSheathes
+0x005D8E50	?ReturnToInventory@CTCInventoryItem@@QAEXXZ	Ego_r 0x00559DB0 + call in GetFreeAugmentationSlotForWeapon
+0x005BD1EB	?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ	qualified tail call in 0x005CB974 + base vtable slot 6
+0x005BE8F3	?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z	Ego_r 0x0062118F + caller SetThingAsActiveWeapon
+0x006A1060	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	Ego_r 0x006C5AA0 + RemoveItemFromInventory
+0x006A10A0	?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	Ego_r 0x006C5AE0
+0x006A19B0	?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z	Ego_r 0x006C6880 + RemoveItemFromInventory / OnInitialActivate
+0x006A1F80	?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	PDB + OnInitialActivate (thing, slot, true)
+0x00705170	?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ	Ego_r 0x00725060 (const) + OnInitialActivate compare with &GetParentThing()
+0x00765D50	?GetFreeSlot@CTCObjectAugmentations@@QBEJXZ	Ego_r 0x00774EE0 + GetFreeAugmentationSlotForWeapon
+0x00765F90	?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z	Ego_r 0x00775100 + 0x005C71AA names loop
+0x007661C0	?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z	Ego_r 0x00775320 + 0x005C7452 (fastcall, ecx=vector)
+0x00768120	?AttachAugmentationToSlot@CTCObjectAugmentations@@QAEXJJ@Z	Ego_r 0x007772B0
+0x005362AD	?SetDefaultChild@CList@NUISystem@@UAEXPAVCComponent@2@@Z	Ego_r 0x005AF4AC + CList vtable slot 157 call in ConstructWeaponItemEntries

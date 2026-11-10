@@ -38978,3 +38978,15 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?push_back@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	00535ad0	005b8743
 ?push_back@?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAEXABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@2@@Z	005bc237	005b8743
 ?push_back@?$vector@W4EClothingSuitPart@@V?$allocator@W4EClothingSuitPart@@@std@@@std@@QAEXABW4EClothingSuitPart@@@Z	005bba94	005b8743
+?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z	005be8f3	005c4671
+?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z	005c323a	005c66b2
+?FinalConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z	005c3e91	005c66b2
+?PutSheatheObjectInCarrySlot@?A0xaad822dd@@YIXAAVCThing@@0AAM@Z	005c36c2	005c8101
+?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ	005c552c	005c8101
+?FinalConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z	005c47d5	005c8176
+?RemoveItemFromInventory@CTCInventoryBase@NInventory@@UAEXJJ@Z	005bf3c6	005cb128
+?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ	005ca68e	005cb128
+?GetEngineGraphic@CTCInventoryItem@@QBEABVCEngineGraphic@@XZ	005d92d0	005cb2b0
+?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	006a10a0	005cb2b0
+?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ	005bd1eb	005cb974
+?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z	007661c0	005c7452

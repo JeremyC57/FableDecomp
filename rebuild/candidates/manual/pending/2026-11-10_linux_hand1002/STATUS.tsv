@@ -1,0 +1,19 @@
+address	name	grade	grades_used	note
+005c8101	CTCInventoryWeapons::PutWeaponsInSheathes	RELOCATION_MATCH	1 (+1 probe)	unused GetTC<CTCCarrying> with expanded Find leaves only the presence test; owner named per block
+005c4671	CTCInventoryWeapons::GetFreeAugmentationSlotForWeapon	RELOCATION_MATCH	1 (+1 probe)	shared headers (PeekTC const / GetTC expanded, CTCObjectAugmentations header) cleared the old register tie
+005cb128	CTCInventoryWeapons::RemoveItemFromInventory	RELOCATION_MATCH	1 (+1 probe)	shared headers; RefreshSheathedWeapons inside the carried branch (prior draft had it outside); was register-tie
+005c7452	CTCInventoryWeapons::ConstructWeaponDescriptionDamage	RELOCATION_MATCH	1 (+1 probe)	first try on shared headers: same-TU def templates, inline CPerItemData, noinline resize, RELEASE_POINTEE shot, GFFloatToLongNear (shared-header asm helper)
+005c66b2	CTCInventoryWeapons::ConstructWeaponItemEntries	RELOCATION_MATCH	1 (+2 probes)	same-TU noinline Final stand-in (reads only) keeps edi=end across the call; block-scoped wield entry gives the 0x30 frame
+005c8176	CTCInventoryWeapons::ConstructWeaponItemEntriesPC	RELOCATION_MATCH	1	PC twin of 0x005C66B2 (empty block-scoped wield entry, PC builder stand-in); was register-tie
+005cb2b0	CTCInventoryWeapons::SetThingAsActiveWeapon	RELOCATION_MATCH	1 (+4 probes)	visible IS_THING_ALIVE<CThing*> body keeps the thing in esi (copy in dead slot); CDELETION_BODIES sinks the Method store; was register-tie
+005cb974	CTCInventoryWeapons::OnInitialActivate	RELOCATION_MATCH	1 (+3 probes)	inline GetParentThing() on the right of the carrier compare loads the owner before the call; was register-tie
+005c71aa	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight	DIFFER(680v680)	1 (+~10 probes)	8 lines: TEXT_GUI_MENU_NONE block push/lea order; nested-else fixes it but loses the copy-loop count spill (672v680); differ/005c71aa.cpp
+005c3e91	CTCInventoryWeapons::FinalConstructWeaponItemEntries	NOT_ATTEMPTED	0	1641 B; needs CUIMiscThingsDef icon members, CList/CSprite NUISystem slots, item entry builders
+005c47d5	CTCInventoryWeapons::FinalConstructWeaponItemEntriesPC	NOT_ATTEMPTED	0	1901 B; PC twin of 0x005C3E91
+005c4f42	CTCInventoryWeapons::ConstructAugmentationsLeftDescription	NOT_ATTEMPTED	0	1514 B; leaf for 0x005C574E / 0x005C5F11
+005c574e	CTCInventoryWeapons::ConstructAugEntry	NOT_ATTEMPTED	0	1987 B; after 0x005C4F42
+005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	NOT_ATTEMPTED	0	1953 B; PC twin of 0x005C574E
+005c6b26	CTCInventoryWeapons::ConstructWeaponDescription	NOT_ATTEMPTED	0	1668 B; inlines Damage/augmentations/kills/weight; needs CTCVolumeContainmentTracker (0x75), CTCShop IsValidStockItem 0x007723D0 / GetCurrentBuyPrice 0x007742C0, GetSubDef<CStockItemDef> 0x0059350C
+005c90fc	CTCInventoryWeapons::ConstructWeaponDescriptionContainer	NOT_ATTEMPTED	0	2150 B
+005ca68e	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	NOT_ATTEMPTED	0	1535 B; needs CCreatureAction_UnsheatheItemFromInventory ctor 0x006A0150 / dtor 0x005CC091, CTCMultiStrike::RemoveEffectOnWeapon 0x007CC9E0, CTCCarrying primary-slot getter 0x006A1440
+005cacb9	CTCInventoryWeapons::RefreshWeaponDescriptions	NOT_ATTEMPTED	0	1135 B; calls 0x005C90FC

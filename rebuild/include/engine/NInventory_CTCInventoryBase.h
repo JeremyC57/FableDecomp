@@ -36,6 +36,12 @@ public:
 namespace NInventory {
 class CPerItemData {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA_CTOR
+    // Nested opt-in (chunk 1002, CTCInventoryWeapons description rows 0x005C71AA / 0x005C6B26): Ego_r.pdb ??0CPerItemData@NInventory@@QAE@XZ,
+    // expanded inline in retail: the vector and the three counts zeroed, QuestPersistent true, QuestPersistentRefCount -1
+    // (`or [ebp-1Ch],-1 ; mov byte ptr [ebp-20h],1` for a local at [ebp-38h]); BestFishWeight is left unset.
+    CPerItemData() : NumberOfKills(0), TimeWielded(0), BestTrophyWitnessesAheadToDate(0), QuestPersistent(true), QuestPersistentRefCount(-1) {}
+#endif
     std::vector<long> Augmentations;                    // +0x00
     long NumberOfKills;                                 // +0x0C
     long TimeWielded;                                   // +0x10
@@ -92,6 +98,19 @@ public:
  long GetNumberOfItemsOfTypeInInventory(long itemDefIndex) const;
 protected:
  void SetNumberOfSelectedItemOwned(long itemDefIndex);
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONINITIALACTIVATE
+ // Retail opt-in (chunk 1002, row 0x005CB974 CTCInventoryWeapons::OnInitialActivate, which calls it qualified last): Ego_r.pdb
+ // ?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ (the CTCBase slot-6 override, out of line at 0x005BD1EB).
+public:
+ virtual void OnInitialActivate();
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CREATEOBJECT
+ // Retail opt-in (chunk 1002, rows 0x005C4671 / 0x005CB2B0 / 0x005CB974 of CTCInventoryWeapons): Ego_r.pdb
+ // ?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z (protected, out of line at 0x005BE8F3).
+protected:
+ CThing* CreateInventoryObject(long itemDefIndex);
 public:
 #endif
  enum EInventorySelectionState { INVENTORY_SELECTION_STATE_CATEGORIES=0,INVENTORY_SELECTION_STATE_ITEMS=1,INVENTORY_SELECTION_STATE_MAX_STATES=2 };

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005c7452   RELOCATION_MATCH PASS   ConstructWeaponDescriptionDamage
+
+WINS: 1
+  005c7452 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryWeapons_ConstructWeaponDescriptionDamage_005c7452

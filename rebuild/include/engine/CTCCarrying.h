@@ -25,6 +25,16 @@ public:
     // ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z (0x006A1F80).
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_REMOVETHING
+    // Opt-in (chunk 1002, rows 0x005CB128 / 0x005CA68E of CTCInventoryWeapons): Ego_r.pdb ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z
+    // (const, retail 0x006A1060) and ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (0x006A19B0).
+    bool IsCarryingThing(const CThing& thing) const;
+    void RemoveThing(CThing& thing);
+    // and (row 0x005CB2B0) ?IsCarryingThing@CTCCarrying@@QBE_NJ@Z (0x006A10A0) / ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z (0x006A1120),
+    // the carry-slot forms.
+    bool IsCarryingThing(long slot) const;
+    CThing* GetCarriedThing(long slot) const;
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYING_BYPASSFILTERS
     // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause clears it): the first Ego_r.pdb members after the CTCBase part. Ego_r has
     // CarrySlots (CVectorMap<long,CIntelligentPointer<CThing>,...>) at +0x0c and BypassFilters after it; the retail STLport CVectorMap

@@ -1,0 +1,13 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x005C552C	?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ	Ego_r/FableWin PDB order + body; the landed 0x005C9962 and 0x0069F9E0 bindings call it under other names	TakeWeaponsOutOfSheathes (binding from landed 0x005C9962); PrepareWeaponSheathing (binding from 0x0069F9E0)
+0x005D8E50	?ReturnToInventory@CTCInventoryItem@@QAEXXZ	Ego_r 0x00559DB0 + call site in 0x005C4671	(bound under a placeholder name in reloc_bindings)
+0x00410DE0	(CThing component bitset test, the inline GetTC/PeekTC presence test; std::bitset<..>::test as the shared header declares it)	call shape `push id; lea ecx,[thing+20h]; call` in every GetTC/PeekTC expansion	?Do@D@@QAEXH@Z
+0x004365B0	(const component-map LowerBound used by PeekTC, twin of 0x0040F020 LowerBound used by GetTC)	PeekTC<const T> expansions in 0x005C4671 / 0x005CB974	?Find@Sub@@QAEPAUSubNode@@PAH@Z
+0x006869D0	?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	Ego_r 0x006B1DC0 + shared CTCBase.h; call in 0x005C7452 / 0x005C71AA before GetPDefFromGlobalIndex	GetBigObj
+0x0044C6B0	CGameDefinitionManager::Get (shared header spelling)	call before GetGlobalIndexFromClassIndex in 0x005C7452	Resolve
+0x005BE8F3	?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z	Ego_r 0x0062118F + caller 0x005CB2B0	CTCInventoryBase_Retail
+0x004291DE	CCountedPointer<NUISystem::CComponent>::ReleaseData (the dtor's out-of-line call; shared CCountedPointer.h spelling)	CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY path in 0x005C66B2 / 0x005C8176	SplitBranch
+0x005947B6	(std::vector<std::pair<long,long>>::push_back)	call shape in 0x005C66B2 item sorting	PushBack@CItemPairVector
+0x00705170	?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ	Ego_r 0x00725060 + OnInitialActivate	GetCarrier
+0x005362AD	?SetDefaultChild@CList@NUISystem@@UAEXPAVCComponent@2@@Z	Ego_r 0x005AF4AC + CList vtable slot 157	(slot call, no name)
+(member)	CTCHero::WeaponsUsable (+0x0C)	Ego_r CTCHero layout (struct_layouts_egor.tsv) + OnInitialActivate `hero->WeaponsUsable`	m_weaponsSheathed (landed RefreshSheathedWeapons 0x005C9962 source)

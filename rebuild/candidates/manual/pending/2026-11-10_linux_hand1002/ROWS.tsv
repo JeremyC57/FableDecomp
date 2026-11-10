@@ -1,0 +1,19 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+005c3e91	1641	CTCInventoryWeapons::FinalConstructWeaponItemEntries	unworked			00428494	005c3947 005c39f0 005c3a95 005c44fa 005c4769
+005c4671	248	CTCInventoryWeapons::GetFreeAugmentationSlotForWeapon	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand755/differ/005c4671.cpp	005be8f3	005c3a95 005c44fa 005c4769
+005c47d5	1901	CTCInventoryWeapons::FinalConstructWeaponItemEntriesPC	unworked			00428494	005c44fa 005c4769 005c552c
+005c4f42	1514	CTCInventoryWeapons::ConstructAugmentationsLeftDescription	unworked				005c4769 005c552c
+005c574e	1987	CTCInventoryWeapons::ConstructAugEntry	unworked			00428494 005c4f42	005c552c 005c69aa
+005c5f11	1953	CTCInventoryWeapons::ConstructAugEntryPC	unworked			00428494 005c4f42	005c552c 005c69aa
+005c66b2	760	CTCInventoryWeapons::ConstructWeaponItemEntries	parked	ltcg/crt/asm-impossible	rebuild/candidates/manual/pending/2026-10-23_linux_hand303/differ/005c66b2.cpp	005c3e91	005c552c 005c69aa
+005c6b26	1668	CTCInventoryWeapons::ConstructWeaponDescription	unworked				005c69aa 005c770c
+005c71aa	680	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight	parked	register-tie	rebuild/candidates/manual/pending/2026-10-27_linux_hand618/differ/005c71aa.cpp		005c69aa 005c770c 005c7913
+005c7452	698	CTCInventoryWeapons::ConstructWeaponDescriptionDamage	parked	ltcg/crt/asm-impossible	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/005c7452.cpp		005c69aa 005c770c 005c7913 005c7b10
+005c8101	117	CTCInventoryWeapons::PutWeaponsInSheathes	parked	ltcg/crt/asm-impossible	rebuild/candidates/manual/pending/2026-10-27_linux_hand625/differ/005c8101.cpp		005c7b10 005c7d0d 005c7f07 005c8459
+005c8176	739	CTCInventoryWeapons::ConstructWeaponItemEntriesPC	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand303/differ/005c8176.cpp	005c47d5	005c7d0d 005c7f07 005c8459 005c9962
+005c90fc	2150	CTCInventoryWeapons::ConstructWeaponDescriptionContainer	unworked				005c8459 005c9962 005c99be 005c99fd
+005ca68e	1535	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	unworked			006a1f80 007ccf50	005c99be 005c99fd 005c9a95 005cac8d
+005cacb9	1135	CTCInventoryWeapons::RefreshWeaponDescriptions	unworked			005c90fc	005c9a95 005cac8d 005cb742
+005cb128	392	CTCInventoryWeapons::RemoveItemFromInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand757/differ/005cb128.cpp	005ca68e	005cac8d 005cb742 005cb780
+005cb2b0	1170	CTCInventoryWeapons::SetThingAsActiveWeapon	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand326/differ/005cb2b0.cpp	005be8f3 005ca68e	005cac8d 005cb742 005cb780
+005cb974	706	CTCInventoryWeapons::OnInitialActivate	parked	register-tie	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/005cb974.cpp	005cb2b0 006a1f80	005cb742 005cb780 005cbc36 005cbcea 005cbd12

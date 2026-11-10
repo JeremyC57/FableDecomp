@@ -43,6 +43,46 @@ private:
                                       NUISystem::CComponent*, NUISystem::CManager*, NUISystem::CViewport*,
                                       CDefPointer<const NUISystem::CUIMiscThingsDef>&, float,
                                       CCountedPointer<NUISystem::CComponent>&);                                                // 0x005C8176
+#ifdef FABLE_RETAIL_CTCINVENTORYWEAPONS_METHODS
+    // Retail opt-in (chunk 1002): the rest of the class's Ego_r.pdb members in their exact spellings (access, const-ness).
+public:
+    virtual void OnInitialActivate();                                                                    // CTCBase slot 6 0x005CB974
+    virtual void RemoveItemFromInventory(long itemDefIndex, long count);                                 // slot 79 0x005CB128
+    void RefreshActiveWeaponData() const;                                                                // 0x005C30D3
+    CCountedPointer<NUISystem::CComponent> ConstructWieldEntry(bool melee, NUISystem::CViewport* viewport);   // 0x005C323A
+    CCountedPointer<NUISystem::CComponent> ConstructWieldEntryPC(bool melee, NUISystem::CViewport* viewport,
+                                                                 NUISystem::CComponent* parent, long index);   // 0x005C3444
+    void AugmentWeapon(long weaponDefIndex, long augmentationDefIndex, bool& augmented);                 // 0x005C44FA
+    long GetFreeAugmentationSlotForWeapon(long weaponDefIndex);                                          // 0x005C4671
+    void ConstructAugmentationsLeftDescription(CWideString& text, std::vector<std::pair<long, long> >& augmentations, bool pc); // 0x005C4F42
+    void RemoveWeaponsFromSheathes();                                                                    // 0x005C552C
+    void RefreshAugmentationsLeftDescriptions();                                                         // 0x005C69AA
+    void ConstructWeaponDescription(CWideString& text, long itemDefIndex, float damage, bool pc) const;  // 0x005C6B26
+    void ConstructWeaponDescriptionNoDamageNorWeight(CWideString& text, long itemDefIndex, float damage, bool pc) const; // 0x005C71AA
+    void ConstructWeaponDescriptionDamage(CWideString& text, long itemDefIndex, float damage) const;     // 0x005C7452
+    void ConstructWeaponDescriptionWeight(CWideString& text, long itemDefIndex, float damage) const;     // 0x005C770C
+    void PutWeaponsInSheathes();                                                                         // 0x005C8101
+    void ConstructWeaponDescriptionContainer(NUISystem::CComponent* container, long itemDefIndex, float damage) const; // 0x005C90FC
+    void RefreshSheathedWeapons();                                                                       // 0x005C9962
+    long GetTimeWieldedWeapon(long itemDefIndex) const;                                                  // 0x005C99BE
+    void RefreshWeaponDescriptions();                                                                    // 0x005CACB9
+    void SetThingAsActiveWeapon(long itemDefIndex, NUISystem::CComponent* entry);                        // 0x005CB2B0
+    void CheckForSoldWieldedWeapons();                                                                   // 0x005CB780
+    void AddComponentToAvailableWeaponsEntries(NUISystem::CComponent* entry);
+    void SetWeaponMappingToMenuEntry(NUISystem::CComponent* entry, long itemDefIndex);
+private:
+    void FinalConstructWeaponItemEntries(std::vector<std::pair<long, long> >&, NUISystem::CList*, CCountedPointer<NUISystem::CComponent>&,
+                                         NUISystem::CComponent*, NUISystem::CManager*, NUISystem::CViewport*,
+                                         CDefPointer<const NUISystem::CUIMiscThingsDef>&, float,
+                                         CCountedPointer<NUISystem::CComponent>&, CCountedPointer<NUISystem::CComponent>&,
+                                         unsigned long);                                                   // 0x005C3E91
+    void FinalConstructWeaponItemEntriesPC(std::vector<std::pair<long, long> >&, NUISystem::CList*, CCountedPointer<NUISystem::CComponent>&,
+                                           NUISystem::CComponent*, NUISystem::CManager*, NUISystem::CViewport*,
+                                           CDefPointer<const NUISystem::CUIMiscThingsDef>&, float,
+                                           CCountedPointer<NUISystem::CComponent>&, CCountedPointer<NUISystem::CComponent>&,
+                                           unsigned long);                                                 // 0x005C47D5
+    void SetupActiveWeaponsOnCarrier();                                                                  // 0x005CA68E
+#endif
 public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;                      // +0x134
     CDefIndex ActiveMeleeWeaponDefIndex;                                 // +0x13C
