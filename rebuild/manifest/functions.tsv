@@ -12683,7 +12683,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005f3e7d	ForceAllAbilitiesToMaxLevel	CTCInventoryAbilities	__thiscall	void	1	CTCInventoryAbilities *	1	yes	accepted									
 005f3eca	ForceAllAbilitiesToLevel	CTCInventoryAbilities	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted									
 005f3f14	ForceAllAbilitiesToNextLevel	CTCInventoryAbilities	__thiscall	void	1	CTCInventoryAbilities *	1	yes	accepted									
-005f3f7b	ConstructPCExpressionCategoryList	CTCInventoryAbilities	__thiscall	void	7	CTCInventoryAbilities *,CWideString *,CList *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CComponent *,CCharString *,CCharString *	1	yes	accepted									
+005f3f7b	ConstructExpressionCategoryList	CTCInventoryAbilities	__thiscall	void	7	CTCInventoryAbilities *,CWideString *,CList *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CComponent *,CCharString *,CCharString *	1	yes	accepted									
 005f4519	AssignAbilitySwappingPC	CTCInventoryAbilities	__thiscall	void	6	CTCInventoryAbilities *,long,ulong,long,CComponent *,CComponent *	1	yes	accepted									
 005f45b5	ConstructPCExpressionCategoryList	CTCInventoryAbilities	__thiscall	void	7	CTCInventoryAbilities *,CWideString *,CList *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CComponent *,CCharString *,CCharString *	1	yes	accepted									
 005f4a86	OnCreate	CTCInventoryAbilities	__thiscall	void	1	CTCInventoryAbilities *	1	yes	accepted									

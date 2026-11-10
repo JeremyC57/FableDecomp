@@ -1,0 +1,44 @@
+addr       parity           behav  name
+005ee77c   RELOCATION_MATCH PASS   GetExperienceCostToUpgradeAbility
+005f077f   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXXZ -> 004850f9 labelled '_global::CCountedPointer_Release_004850f9'
+005f077f   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005f077f   RELOCATION_MATCH PASS   ContructItemLists
+005f0c5f   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f0c5f   WARN RELOC_NAME: ?erase@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@@2@@Z -> 0057926b labelled 'ListNode_RemoveByData'
+005f0c5f   RELOCATION_MATCH PASS   AssignAbility
+005f0dc5   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f0dc5   WARN RELOC_NAME: ?erase@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@@2@@Z -> 0057926b labelled 'ListNode_RemoveByData'
+005f0dc5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005f0dc5   RELOCATION_MATCH PASS   AssignAbilityPC
+005f1320   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f1320   WARN RELOC_NAME: ?erase@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@@2@@Z -> 0057926b labelled 'ListNode_RemoveByData'
+005f1320   RELOCATION_MATCH PASS   UnAssignAbilityPC
+005f1526   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005f1526   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005f1526   RELOCATION_MATCH PASS   ConstructPCItemLists
+005f3f7b   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005f3f7b   RELOCATION_MATCH PASS   ConstructExpressionCategoryList
+005f45b5   RELOCATION_MATCH PASS   ConstructPCExpressionCategoryList
+005f4c8f   RELOCATION_MATCH PASS   GetExpressionsListUIComponent
+
+WINS: 9
+  005ee77c RELOCATION_MATCH CTCInventoryAbilities::?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z
+  005f077f RELOCATION_MATCH CTCInventoryAbilities::?ContructItemLists@CTCInventoryAbilities@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  005f0c5f RELOCATION_MATCH CTCInventoryAbilities::?AssignAbility@CTCInventoryAbilities@@QAEXJK@Z
+  005f0dc5 RELOCATION_MATCH CTCInventoryAbilities::?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z
+  005f1320 RELOCATION_MATCH CTCInventoryAbilities::?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAVCComponent@NUISystem@@@Z
+  005f1526 RELOCATION_MATCH CTCInventoryAbilities::?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  005f3f7b RELOCATION_MATCH CTCInventoryAbilities::?ConstructExpressionCategoryList@CTCInventoryAbilities@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z
+  005f45b5 RELOCATION_MATCH CTCInventoryAbilities::?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z
+  005f4c8f RELOCATION_MATCH CTCInventoryAbilities::?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryAbilities_GetExperienceCostToUpgradeAbility_005ee77c
+  CTCInventoryAbilities_ContructItemLists_005f077f
+  CTCInventoryAbilities_AssignAbility_005f0c5f
+  CTCInventoryAbilities_AssignAbilityPC_005f0dc5
+  CTCInventoryAbilities_UnAssignAbilityPC_005f1320
+  CTCInventoryAbilities_ConstructPCItemLists_005f1526
+  CTCInventoryAbilities_ConstructExpressionCategoryList_005f3f7b
+  CTCInventoryAbilities_ConstructPCExpressionCategoryList_005f45b5
+  CTCInventoryAbilities_GetExpressionsListUIComponent_005f4c8f

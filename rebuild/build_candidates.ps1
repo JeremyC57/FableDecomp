@@ -390625,6 +390625,69 @@ $catalog = @(
         TestSource = '00/58/CTCInventory_OpenPCMapMenu_00589a30_test.cpp'
         PassPattern = '00589a30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005ee77c'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetExperienceCostToUpgradeAbility_005ee77c.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetExperienceCostToUpgradeAbility_005ee77c_test.cpp'
+        PassPattern = '005ee77c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f077f'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_ContructItemLists_005f077f.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_ContructItemLists_005f077f_test.cpp'
+        PassPattern = '005f077f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f0c5f'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_AssignAbility_005f0c5f.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_AssignAbility_005f0c5f_test.cpp'
+        PassPattern = '005f0c5f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f0dc5'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_AssignAbilityPC_005f0dc5.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_AssignAbilityPC_005f0dc5_test.cpp'
+        PassPattern = '005f0dc5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f1320'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_UnAssignAbilityPC_005f1320.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_UnAssignAbilityPC_005f1320_test.cpp'
+        PassPattern = '005f1320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f1526'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_ConstructPCItemLists_005f1526.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_ConstructPCItemLists_005f1526_test.cpp'
+        PassPattern = '005f1526_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f3f7b'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_ConstructExpressionCategoryList_005f3f7b.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_ConstructExpressionCategoryList_005f3f7b_test.cpp'
+        PassPattern = '005f3f7b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f45b5'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_ConstructPCExpressionCategoryList_005f45b5.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_ConstructPCExpressionCategoryList_005f45b5_test.cpp'
+        PassPattern = '005f45b5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f4c8f'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_GetExpressionsListUIComponent_005f4c8f.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_GetExpressionsListUIComponent_005f4c8f_test.cpp'
+        PassPattern = '005f4c8f_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

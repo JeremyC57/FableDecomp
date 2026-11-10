@@ -26,6 +26,13 @@
 #include "fable_string.h"
 namespace NUISystem { class CComponent; class CList; class CUIMiscThingsDef; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ASSIGN
+namespace NUISystem { class CComponent; }
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
+#include "engine/CCountedPointer.h"
+namespace NUISystem { class CComponent; class CList; }
+#endif
 class CHeroAbilityDef;
 class CTCInventoryAbilities : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
@@ -54,6 +61,33 @@ public:
     NUISystem::CComponent* GetExpressionsListUIComponent(long& count,NUISystem::CComponent* parent); //005f4c8f
 private:
     void ConstructExpressionCategoryList(CWideString& title,NUISystem::CList* list,std::vector<std::pair<long,long> >& items,NUISystem::CComponent* owner,const CCharString& ringPicture,const CCharString& guideSymbol);
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ASSIGN
+    // Opt-in (chunk 1008): the quick-slot members, Ego_r.pdb + FableWin.pdb spellings (all out of line in retail):
+    // ?AssignAbility@CTCInventoryAbilities@@QAEXJK@Z 0x005F0C5F, ?AssignAbilityPC@..@@QAEXJKPAVCComponent@NUISystem@@@Z 0x005F0DC5,
+    // ?UnAssignAbility@..@@QAEXK@Z 0x005F11A9, ?UnAssignAbilityPC@..@@QAEXKPAVCComponent@NUISystem@@@Z 0x005F1320,
+    // ?CycleAssignedAbilities@..@@QAEX_N@Z 0x005F64DD, ?CycleAssignedExpressions@..@@QAEX_N@Z 0x005F6793,
+    // ?SetAbilityAsAvailable@..@@QAEXW4EHeroAbility@@_N1@Z 0x005F6BD6, ?IsAbleToUseAbility@..@@QBE_NW4EHeroAbility@@_N@Z 0x005EE49A.
+    void AssignAbility(long ability, unsigned long slot);                                                       // 0x005F0C5F
+    void AssignAbilityPC(long ability, unsigned long slot, NUISystem::CComponent* container);                    // 0x005F0DC5
+    void UnAssignAbility(unsigned long slot);                                                                    // 0x005F11A9
+    void UnAssignAbilityPC(unsigned long slot, NUISystem::CComponent* container);                                // 0x005F1320
+    void CycleAssignedAbilities(bool forward);                                                                   // 0x005F64DD
+    void CycleAssignedExpressions(bool forward);                                                                 // 0x005F6793
+    void SetAbilityAsAvailable(EHeroAbility ability, bool available, bool reassign);                             // 0x005F6BD6
+    bool IsAbleToUseAbility(EHeroAbility ability, bool checkCost) const;                                         // 0x005EE49A
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_ITEMLISTS
+    // Opt-in (chunk 1008): the expression item-list builders, FableWin.pdb spellings (out of line in retail):
+    // ?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@PAVCList@NUISystem@@PAVCComponent@5@
+    // AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z 0x005F1526 (public) and the console ?ContructItemLists@..@@AAEX..@Z 0x005F077F
+    // (private; the PDB's own spelling "Contruct"). Items, the category's sub list, the screen component, the shared actions list.
+    void ConstructPCItemLists(std::vector<std::pair<long, long> >& items, NUISystem::CList* list, NUISystem::CComponent* owner,
+                              CCountedPointer<NUISystem::CComponent>& actions);                                  // 0x005F1526
+private:
+    void ContructItemLists(std::vector<std::pair<long, long> >& items, NUISystem::CList* list, NUISystem::CComponent* owner,
+                           CCountedPointer<NUISystem::CComponent>& actions);                                     // 0x005F077F
 public:
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAXLEVEL_FIRST

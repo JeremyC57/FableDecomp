@@ -2650,3 +2650,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A row's `??1?$CCountedPointer@VCComponent...` relocation to 0x004291DE is the wrong name: add FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA so the release binds ?ReleaseData (0x00570332 / 0x00571280, 2026-11-10).
 - Reload order after a clobber follows the order of the split live ranges, which follows candidate ids: one named local per child component (not one reused `scroll` / `clickable`) put `this` before `i` as retail (0x00589A30).
 - A row that calls engine/CASoundManager.h slots (SetGroupVolume ...) is not landable until the owner accepts its descriptive names: hold it (0x0056F30B, 0x0058F649).
+- When a callee's same-TU body changes the caller's escape analysis, include the callee's REAL (landed) body, never an invented stand-in definition (0x005F4C8F carries 0x005F3F7B's body; the agent's `StandInBody()` stub was replaced at landing).
+- Code written out in both if/else arms can be merged by VC7.1 into one call with the result in a callee-saved register, as retail (0x005F0DC5).

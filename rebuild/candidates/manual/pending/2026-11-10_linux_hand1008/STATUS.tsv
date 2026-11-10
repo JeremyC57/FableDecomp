@@ -1,0 +1,17 @@
+address	name	grade	grades_used	note
+005ee49a	CTCInventoryAbilities::IsAbleToUseAbility	unworked	0	not reached this session; prior draft DIFFER(555v549) in rebuild/candidates/manual/pending/2026-10-23_linux_hand302 needs CSpecialAbilities*Def / hero-stats will-energy / interface 0x91 header work first
+005ee77c	CTCInventoryAbilities::GetExperienceCostToUpgradeAbility	RELOCATION_MATCH	1	shared headers; morality through inline CTCHeroStats::GetMorality(); `long result = cost;` before the applyMorality test, `result -= GFFloatToLongNear(...)` (cost preloaded in eax, fistp into cost's dead slot); Retail-asm 0x005EE86C via engine/GFFloatToLongNear.h; new opt-in FABLE_RETAIL_CTCHEROSTATS_MORALITYMAX
+005f077f	CTCInventoryAbilities::ContructItemLists	RELOCATION_MATCH	1	shared headers, first try (PDB spelling "Contruct", private)
+005f0c5f	CTCInventoryAbilities::AssignAbility	RELOCATION_MATCH	2	first phase (current/loop/icon) in its own {} block so the CDeletion shares current's frame slot
+005f0dc5	CTCInventoryAbilities::AssignAbilityPC	RELOCATION_MATCH	6	old-contents FindChild+delete written in both if/else arms (cross-jumped to one call, result in ebx)
+005f11a9	CTCInventoryAbilities::UnAssignAbility	DIFFER(358v375)	6	parked: head only -- retail reloads AssignedAbilities' start in both restore/clear arms, ours CSEs &AssignedAbilities[slot]; 16 spellings probed free; best in differ/
+005f1320	CTCInventoryAbilities::UnAssignAbilityPC	RELOCATION_MATCH	2	exposed key copy `EHeroAbility removed = ability;` after the two zero stores (map keys use it, own slot [ebp-4])
+005f1526	CTCInventoryAbilities::ConstructPCItemLists	RELOCATION_MATCH	1	PC twin of 0x005F077F, first try
+005f3f7b	CTCInventoryAbilities::ConstructExpressionCategoryList	RELOCATION_MATCH	1	identity corrected (catalog said ConstructPCExpressionCategoryList; this is the private console twin called 4x by 0x005F4C8F); sub-list half in a {} block
+005f45b5	CTCInventoryAbilities::ConstructPCExpressionCategoryList	RELOCATION_MATCH	1	PC twin of 0x005F3F7B, first try
+005f4c8f	CTCInventoryAbilities::GetExpressionsListUIComponent	RELOCATION_MATCH	1	same-TU GetDef/GetSubDef bodies, MSVC-only stand-in for ConstructExpressionCategoryList, everything after the sub-list creation in a {} block
+005f59c7	CTCInventoryAbilities::ConstructPCExpressionsList	DIFFER(2649v2652)	0	parked on free probes only (frame 0xD4 v 0xC8, ebx/edi swap); best in differ/
+005f64dd	CTCInventoryAbilities::CycleAssignedAbilities	unworked	0	not reached; prior DIFFER(510v508) is a local model (needs CSoundInit / sound player / GetPrioritisedAbilityDefs header work)
+005f6793	CTCInventoryAbilities::CycleAssignedExpressions	unworked	0	not reached; prior local-model draft only
+005f6bd6	CTCInventoryAbilities::SetAbilityAsAvailable	unworked	0	not reached; prior DIFFER(588v618) local model
+005f6e40	CTCInventoryAbilities::OnSerialise	unworked	0	not reached; no draft

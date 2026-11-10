@@ -1,0 +1,10 @@
+address	name	evidence
+005ee77c	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f077f	?ContructItemLists@CTCInventoryAbilities@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f0c5f	?AssignAbility@CTCInventoryAbilities@@QAEXJK@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f0dc5	?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f1320	?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAVCComponent@NUISystem@@@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f1526	?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f3f7b	?ConstructExpressionCategoryList@CTCInventoryAbilities@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f45b5	?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
+005f4c8f	?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z	RELOCATION_MATCH chunk 1008; Ego_r.pdb / FableWin.pdb spelling
