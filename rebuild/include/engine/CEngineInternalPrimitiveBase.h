@@ -15,9 +15,18 @@
 #include "engine/CEnginePersistentPrimitiveBase.h"
 class CEngineSceneGridCell;
 enum EEngineInterpolationSet;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATIONINFO
+class CEngineInterpolationInfo;
+#endif
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
     virtual ~CEngineInternalPrimitiveBase();
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTINTERPOLATIONINFO
+    // Nested opt-in (chunk 899, row 0x01224900): the static data member Ego_r.pdb / FableWin.pdb name through
+    // `dynamic initializer for 'CEngineInternalPrimitiveBase::CurrentInterpolationInfo'' (the 112-byte CEngineInterpolationInfo
+    // @ 0x0143B8E0 that CEnginePrimitiveRenderer::FrameStart 0x00B32660 refreshes each frame). Access is not recorded (public).
+    static CEngineInterpolationInfo CurrentInterpolationInfo;   // 0x0143B8E0
+#endif
     unsigned long                  EnginePrimitiveFlags;           // +0x0c
     float                          AlphaMipBias;                   // +0x10
     float                          FadeDistance_FadeBeginDistance; // +0x14 CEngineFadeDistance::FadeBeginDistance

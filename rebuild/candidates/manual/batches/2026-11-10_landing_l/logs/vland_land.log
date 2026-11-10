@@ -1,0 +1,63 @@
+addr       parity           behav  name
+00c10720   MATCH            PASS   Visit
+00c1fd50   MATCH            PASS   Validate
+00c1fdf0   MATCH            PASS   Validate
+00c1fe90   MATCH            PASS   Validate
+00c202c0   MATCH            PASS   Validate
+00c37a00   RELOCATION_MATCH PASS   ReleaseA
+00c37a30   RELOCATION_MATCH PASS   ReleaseB
+00c49610   WARN RELOC_NAME: ?GetCount@CMailboxQueue@@QAEJXZ -> 00c49c30 labelled 'CV_StatueMasterScript::GetAngleBasedOnTimeOfDay'
+00c49610   RELOCATION_MATCH PASS   GetFreeFrameCount
+00c53410   MATCH            PASS   SetRoom
+00c53420   MATCH            PASS   SetRoomHF
+00c53430   MATCH            PASS   SetRoomLF
+00c5dfd0   RELOCATION_MATCH PASS   CKsObject
+00c5dfe0   MATCH            PASS   IsValid
+00c5dff0   MATCH            PASS   GetHandle
+00c5e000   RELOCATION_MATCH PASS   WriteStream
+00c77410   MATCH            PASS   StartBlend
+00c77430   MATCH            PASS   StopBlend
+01224900   RELOCATION_MATCH PASS   $E_CurrentInterpolationInfo
+01224970   RELOCATION_MATCH PASS   $E_TableBuilder
+
+WINS: 19
+  00c10720 MATCH CCollectAllItems::?Visit@CCollectAllItems@@UAEXPAUCListItem@@@Z
+  00c1fd50 MATCH CIntelligentPointer_00c1fcc0::?Validate@CIntelligentPointer_00c1fcc0@@UAEXXZ
+  00c1fdf0 MATCH CIntelligentPointer_00c1fd60::?Validate@CIntelligentPointer_00c1fd60@@UAEXXZ
+  00c1fe90 MATCH CIntelligentPointer_00c1fe00::?Validate@CIntelligentPointer_00c1fe00@@UAEXXZ
+  00c202c0 MATCH CNamedItem::?Validate@CNamedItem@@UAEXXZ
+  00c37a00 RELOCATION_MATCH CSoundEmitter_00c37ad0::?ReleaseA@CSoundEmitter_00c37ad0@@UAEXJ@Z
+  00c37a30 RELOCATION_MATCH CSoundEmitter_00c37ad0::?ReleaseB@CSoundEmitter_00c37ad0@@UAEXJ@Z
+  00c49610 RELOCATION_MATCH CCodaFrameStreamer_00c49650::?GetFreeFrameCount@CCodaFrameStreamer_00c49650@@UAEJXZ
+  00c53410 MATCH CUnprovenReverbParameters::?SetRoom@CUnprovenReverbParameters@@QAEXJ@Z
+  00c53420 MATCH CUnprovenReverbParameters::?SetRoomHF@CUnprovenReverbParameters@@QAEXJ@Z
+  00c53430 MATCH CUnprovenReverbParameters::?SetRoomLF@CUnprovenReverbParameters@@QAEXJ@Z
+  00c5dfd0 RELOCATION_MATCH CKsObject::??0CKsObject@@QAE@XZ
+  00c5dfe0 MATCH CKsObject::?IsValid@CKsObject@@QAEHXZ
+  00c5dff0 MATCH CKsObject::?GetHandle@CKsObject@@QAEPAXXZ
+  00c5e000 RELOCATION_MATCH CKsObject::?WriteStream@CKsObject@@QAEHPAUKSSTREAM_HEADER@@PAU_OVERLAPPED@@@Z
+  00c77410 MATCH CVtable_012bf0c8::?StartBlend@CVtable_012bf0c8@@QAEXXZ
+  00c77430 MATCH CVtable_012bf0c8::?StopBlend@CVtable_012bf0c8@@QAEXXZ
+  01224900 RELOCATION_MATCH CEngineInternalPrimitiveBase::_$E1
+  01224970 RELOCATION_MATCH _global::_$E1
+
+LANDED 19 wins into src/compiled + tests + catalog + oracle
+  CCollectAllItems_Visit_00c10720
+  CIntelligentPointer00c1fcc0_Validate_00c1fd50
+  CIntelligentPointer00c1fd60_Validate_00c1fdf0
+  CIntelligentPointer00c1fe00_Validate_00c1fe90
+  CNamedItem_Validate_00c202c0
+  CSoundEmitter00c37ad0_ReleaseA_00c37a00
+  CSoundEmitter00c37ad0_ReleaseB_00c37a30
+  CCodaFrameStreamer00c49650_GetFreeFrameCount_00c49610
+  CUnprovenReverbParameters_SetRoom_00c53410
+  CUnprovenReverbParameters_SetRoomHF_00c53420
+  CUnprovenReverbParameters_SetRoomLF_00c53430
+  CKsObject_CKsObject_00c5dfd0
+  CKsObject_IsValid_00c5dfe0
+  CKsObject_GetHandle_00c5dff0
+  CKsObject_WriteStream_00c5e000
+  CVtable012bf0c8_StartBlend_00c77410
+  CVtable012bf0c8_StopBlend_00c77430
+  CEngineInternalPrimitiveBase_ECurrentInterpolationInfo_01224900
+  global_ETableBuilder_01224970

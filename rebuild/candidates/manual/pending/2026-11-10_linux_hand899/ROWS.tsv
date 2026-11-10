@@ -1,0 +1,30 @@
+address	kind	length	catalog_module	catalog_name	regrade_2026-11-09	masked_difflines	best_draft	callers	neighbours
+00c10720	tiny	8	_gapscan	sub_00c10720				abs .rdata 012b2624 (1)	00c10320 00c10400 00c104f0 00c10730 00c10740 00c10760
+00c1fd50	tiny	12	_gapscan	sub_00c1fd50				abs .rdata 012b35a0 (1)	00c1fcc0 00c1fd30 00c1fd40 00c1fd60 00c1fdd0 00c1fde0
+00c1fdf0	tiny	12	_gapscan	sub_00c1fdf0				abs .rdata 012b35c4 (1)	00c1fd60 00c1fdd0 00c1fde0 00c1fe00 00c1fe70 00c1fe80
+00c1fe90	tiny	12	_gapscan	sub_00c1fe90				abs .rdata 012b35e8 (1)	00c1fe00 00c1fe70 00c1fe80 00c1fea0 00c1feb0 00c1fed0
+00c202c0	tiny	12	_gapscan	sub_00c202c0				abs .rdata 012b360c (1)	00c20230 00c202a0 00c202b0 00c202d0 00c202f0 00c20340
+00c37a00	tiny	12	_gapscan	sub_00c37a00				abs .rdata 012b5374 (1)	00c37980 00c37990 00c379f0 00c37a10 00c37a20 00c37a40
+00c37a30	tiny	12	_gapscan	sub_00c37a30				abs .rdata 012b5380 (1)	00c379f0 00c37a10 00c37a20 00c37a40 00c37a70 00c37a80
+00c49610	tiny	8	_gapscan	sub_00c49610				abs .rdata 012b813c (1)	00c493f0 00c49410 00c49420 00c49620 00c49640 00c49650
+00c53410	tiny	13	_gapscan	sub_00c53410				 (0)	00c53260 00c53310 00c53340 00c53440 00c534a0 00c53500
+00c53420	tiny	13	_gapscan	sub_00c53420				 (0)	00c53260 00c53310 00c53340 00c53440 00c534a0 00c53500
+00c53430	tiny	16	_gapscan	sub_00c53430				 (0)	00c53260 00c53310 00c53340 00c53440 00c534a0 00c53500
+00c5dfd0	tiny	16	_gapscan	sub_00c5dfd0				 (0)	00c5db40 00c5dc60 00c5dd70 00c5e050 00c5e130 00c5e180
+00c5dfe0	tiny	12	_gapscan	sub_00c5dfe0				 (0)	00c5db40 00c5dc60 00c5dd70 00c5e050 00c5e130 00c5e180
+00c5dff0	tiny	4	_gapscan	sub_00c5dff0				 (0)	00c5db40 00c5dc60 00c5dd70 00c5e050 00c5e130 00c5e180
+00c77430	tiny	14	_gapscan	sub_00c77430				 (0)	00c76c20 00c76e90 00c770b0 00c77440 00c77470 00c774a0
+00c77410	tiny	19	_gapscan	sub_00c77410				 (0)	00c76c20 00c76e90 00c770b0 00c77440 00c77470 00c774a0
+00c3ec10	tiny	27	_gapscan	sub_00c3ec10				abs .rdata 012b5bd0 (1)	00c3eb80 00c3eba0 00c3ebb0 00c3ec30 00c3ec80 00c3ee10
+00ca6170	tiny	10	_gapscan	sub_00ca6170				abs .rdata 012bf3ac (1)	00ca6050 00ca6080 00ca6110 00ca61a0 00ca61b0 00ca61c0
+00ca6180	tiny	10	_gapscan	sub_00ca6180				abs .rdata 012bf3b0 (1)	00ca6050 00ca6080 00ca6110 00ca61a0 00ca61b0 00ca61c0
+00ca6190	tiny	10	_gapscan	sub_00ca6190				abs .rdata 012bf3b4 (1)	00ca6050 00ca6080 00ca6110 00ca61a0 00ca61b0 00ca61c0
+00caa720	tiny	10	_gapscan	sub_00caa720				abs .rdata 012bf748 (1)	00caa410 00caa4a0 00caa6e0 00caa750 00caa760 00caa770
+00caa730	tiny	10	_gapscan	sub_00caa730				abs .rdata 012bf74c (1)	00caa410 00caa4a0 00caa6e0 00caa750 00caa760 00caa770
+00caa740	tiny	10	_gapscan	sub_00caa740				abs .rdata 012bf750 (1)	00caa410 00caa4a0 00caa6e0 00caa750 00caa760 00caa770
+01224900	tiny	10	_gapscan	sub_01224900				abs .data 013748e4 (1)	00f3fe10 00f3fe16 00f3fe1c
+01224970	tiny	10	_gapscan	sub_01224970				abs .data 01374900 (1)	00f3fe10 00f3fe16 00f3fe1c
+00c5e000	tiny	72	_gapscan	sub_00c5e000				 (0)	00c5db40 00c5dc60 00c5dd70 00c5e050 00c5e130 00c5e180
+005c9a95	large	3065	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_87				abs .rdata 01254150 (1)	005c9962 005c99be 005c99fd 005cac8d 005cb742 005cb780
+005c8459	large	3235	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_77				abs .rdata 01254128 (1)	005c7b10 005c7d0d 005c7f07 005c9962 005c99be 005c99fd
+005b8743	large	3838	CTCInventoryClothing	ConstructScreenPC				call 0041fbdd (1)	005b6a2d 005b7049 005b70b8 005b9d8c 005b9de7 005b9ef3

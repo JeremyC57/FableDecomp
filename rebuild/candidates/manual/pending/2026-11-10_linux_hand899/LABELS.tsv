@@ -1,0 +1,39 @@
+address	name	evidence
+00c10720	?Visit@CCollectAllItems@@UAEXPAUCListItem@@@Z	vtable 0x012B2624 slot 0; landed RunAllItems 0x00C10400 builds CCollectAllItems on its stack; descriptive (libpk)
+00c1fd50	?Validate@CIntelligentPointer_00c1fcc0@@UAEXXZ	slot 3 of 0x012B3594 (landed ctor 0x00C1FCC0); forwards to CItemTable::Validate 0x00C348F0 (slot 9); descriptive
+00c1fdf0	?Validate@CIntelligentPointer_00c1fd60@@UAEXXZ	slot 3 of 0x012B35B8 (landed ctor 0x00C1FD60); descriptive
+00c1fe90	?Validate@CIntelligentPointer_00c1fe00@@UAEXXZ	slot 3 of 0x012B35DC (landed ctor 0x00C1FE00); descriptive
+00c202c0	?Validate@CNamedItem@@UAEXXZ	slot 3 of 0x012B3600 (landed ctor 0x00C20230); descriptive
+00c37a00	?Release@CSoundEmitter_00c37ad0@@UAEXJ@Z	slot 1 of emitter vtable 0x012B5370; DestroyInstance(this) via owner +4; descriptive
+00c37a30	?Stop@CSoundEmitter_00c37ad0@@UAEXJ@Z	slot 4 of emitter vtable 0x012B5370; same body; descriptive
+00c49610	?GetFreeFrameCount@CCodaFrameStreamer_00c49650@@UAEJXZ	slot 1 of 0x012B8138 (CCodaFrameStreamer.cpp); done-mailbox count; descriptive
+00c49c30	?GetCount@CMailboxQueue@@QAEJXZ	locked m_pQueue->GetCount() (slot 2) on the streamer's +0x1c CMailboxQueue (ctor 0x00C49B30 / ProcessMessage 0x00C49B90 bindings); twin of PKCMailbox::GetCount 0x00C4BE10; descriptive
+00c53410	?SetRoom@CUnprovenReverbParameters@@QAEXJ@Z	+4, dirty bit 0x20 = 1<<EAX3 ROOM; landed class of 0x00C535C0..0x00C53A40; descriptive
+00c53420	?SetRoomHF@CUnprovenReverbParameters@@QAEXJ@Z	+8, bit 0x40 = 1<<EAX3 ROOMHF; descriptive
+00c53430	?SetRoomLF@CUnprovenReverbParameters@@QAEXJ@Z	+0xC, bit 0x80 = 1<<EAX3 ROOMLF; descriptive
+00c5dfd0	??0CKsObject@@QAE@XZ	stores vtable 0x012B90D4 + INVALID_HANDLE_VALUE; class of landed CKsObject::SetProperty 0x00C5E050; descriptive
+00c5dfe0	?IsValid@CKsObject@@QAEHXZ	handle != -1 as BOOL; descriptive
+00c5dff0	?GetHandle@CKsObject@@QAEPAXXZ	returns +4; descriptive
+00c5e000	?WriteStream@CKsObject@@QAEHPAUKSSTREAM_HEADER@@PAU_OVERLAPPED@@@Z	DeviceIoControl(IOCTL_KS_WRITE_STREAM 0x2F8013, out = header, header->Size); descriptive
+00c3ec10	?CreateHardwareVoiceA@CCodaSystem@@UAEPAVCCodaVoice@@XZ	CCodaSystem vtable 0x012B5BC0 slot 4 -> CAudioContext slot 4 (0x00C56CD0, new voice vtable 0x012B8D48); descriptive; 11 bytes (EXTENT_WRONG row)
+00c3ec20	?CreateHardwareVoiceB@CCodaSystem@@UAEPAVCCodaVoice@@XZ	slot 5 -> CAudioContext slot 5 (0x00C56860, 3D voice vtable 0x012B8CC8); descriptive; 11 bytes, new start
+00c77410	?StartBlend@CVtable_012bf0c8@@QAEXXZ	stores = the blend start CommitAndProcess 0x00C774F0 expands; descriptive
+00c77430	?StopBlend@CVtable_012bf0c8@@QAEXXZ	stores = the blend end CommitAndProcess 0x00C774F0 expands; descriptive
+00ca6170	?QueryInterface@CBaseInputPin@@W3AGJABU_GUID@@PAPAX@Z	CRendererInputPin IQualityControl table 0x012BF3AC slot 0; strmbase renbase.cpp (vendor)
+00ca6180	?AddRef@CBaseInputPin@@W3AGKXZ	same table slot 1
+00ca6190	?Release@CBaseInputPin@@W3AGKXZ	same table slot 2
+00ca53c0	?QueryInterface@CBaseInputPin@@UAGJABU_GUID@@PAPAX@Z	target of the adjustor{4} 0x00CA6170 and adjustor{140} 0x00CA61A0 thunks; CRendererInputPin IPin table 0x012BF3C0 slot 0; amfilter.h CBaseInputPin DECLARE_IUNKNOWN
+00ca53f0	?AddRef@CBaseInputPin@@UAGKXZ	target of 0x00CA6180 / 0x00CA61B0; IPin table slot 1
+00ca5510	?Release@CBaseInputPin@@UAGKXZ	target of 0x00CA6190 / 0x00CA61C0; IPin table slot 2
+00caa720	?QueryInterface@CDynamicOutputPin@@W3AGJABU_GUID@@PAPAX@Z	CDynamicOutputPin IQualityControl table 0x012BF748 slot 0; strmbase amfilter.cpp (vendor)
+00caa730	?AddRef@CDynamicOutputPin@@W3AGKXZ	same table slot 1
+00caa740	?Release@CDynamicOutputPin@@W3AGKXZ	same table slot 2
+01224900	_$E1 (dynamic initializer for 'CEngineInternalPrimitiveBase::CurrentInterpolationInfo')	Ego_r.pdb 0x0101A290 + FableWin.pdb 0x04009040 name; object 0x0143B8E0 is a CEngineInterpolationInfo built by 0x0042FA30
+0143b8e0	?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A	the initializer above; FrameStart 0x00B32660 copies the frame's interpolation info into it (access unproven: public)
+01224970	_$E1 (dynamic initializer for 'TableBuilder')	Ego_r.pdb 0x01019820 + FableWin.pdb 0x04006820; ctor ??0CEngineInlineTableBuilder@@QAE@XZ 0x00BE2A80
+0143ba90	?TableBuilder@@3VCEngineInlineTableBuilder@@A	the object the initializer above constructs (class key unproven)
+005c9a95	?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r 0x0062D54C + FableWin 0x02391FF1; vtable 0x01253FF4 slot 87 (cell 0x01254150); Ego_r order ConstructScreen / GetTimeWieldedWeapon / ConstructScreenPC = retail 0x005C8459 / 0x005C99BE / 0x005C9A95
+005c8459	?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r 0x0062C845 + FableWin 0x0237DD51; slot 77 (cell 0x01254128)
+005b8743	?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z	Ego_r 0x005641A2 + FableWin 0x01E2AFC8 (non-virtual QAE); sole caller 0x0041FBDD calls it when the PC flag (+0x2BE of 0x013B8790) is set, else the virtual ConstructScreen
+005c8176	?ConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z	Ego_r 0x0062C1D1 + FableWin 0x023943A6 name: the only 9-parameter CTCInventoryWeapons builder (FinalConstructWeaponItemEntriesPC takes 11, `M22K`); its two calls in 0x005C9A95 push (vector&, CList*, CCountedPointer&, CComponent*, CManager*, CViewport*, CDefPointer<CUIMiscThingsDef>&, float, CCountedPointer&)
+005c5f11	?ConstructAugEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@PAVCComponent@6@@Z	Ego_r 0x0062AC7B + FableWin 0x023972D8 name; called once from 0x005C9A95 with a hidden CCountedPointer result, then (true, the augmentation pair vector&, viewport, component) = (bool, vector<pair<long,long>>&, CViewport*, CComponent*)

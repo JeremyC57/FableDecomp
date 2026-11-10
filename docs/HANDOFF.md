@@ -139,8 +139,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     and 0x005B8743 not attempted). Queue tag land1011j (closed: the review fixes moved 7 map COMDATs onto stlport/fable_map.h and the
     pool accessors onto the new libpk/CHandleBasedMemoryPool_012b4098.h; 13 more libpk pool rows still carry the local model). Chunk 898
     landed 9 of 22 retries after a shared-header rebase (`2026-11-10_landing_k/`; 13 parked 4-6 lines in pending/..._hand898/differ);
-    queue land1011k (0x006B83F0 is ScreenFilterFadeOut). Coverage 55,074 of 57,652 known (95.53%). Chunk 899 (29 unworked: 26 tiny
-    gap-scan rows + the three PC inventory screens) running; the ~30 80-byte libpk gap rows hold several forwarders each (row split first).
+    queue land1011k (0x006B83F0 is ScreenFilterFadeOut). Coverage 55,093 of 57,652 known (95.56%). Chunk 899 (29 unworked) landed 19
+    (`2026-11-10_landing_l/`; 6 strmbase adjustor thunks matched but go the vendor route, 0x00C3EC10 split in BOUNDS_FIX, the three PC
+    inventory screens parked undrafted -- they need a CTCInventoryWeapons header first); queue land1011l; the ~30 80-byte libpk gap rows hold several forwarders each (row split first).
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
     calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).

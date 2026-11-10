@@ -38976,3 +38976,8 @@ __imp___mbscspn	0143fff4	00c0e310
 ?g_LSocketActivityDetected@@3_NA	013baffd	008f8540
 ?CreateInterpolate@C3DAnimationBlendState@@CI?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@ABVC3DAnimationStateBase@@0M@Z	00a3bf10	00a3bf10
 ?SetTarget@CMC_MinionGuard@CQ_MinionCampScript@NScript@@AAEXABVCScriptThing@@@Z	00d9ecf0	00d9eb30
+?GetCount@CMailboxQueue@@QAEJXZ	00c49c30	00c49610
+??_7CKsObject@@6B@	012b90d4	00c5dfd0
+?CurrentInterpolationInfo@CEngineInternalPrimitiveBase@@2VCEngineInterpolationInfo@@A	0143b8e0	01224900
+??0CEngineInlineTableBuilder@@QAE@XZ	00be2a80	01224970
+?TableBuilder@@3UCEngineInlineTableBuilder@@A	0143ba90	01224970

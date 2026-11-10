@@ -1,0 +1,30 @@
+address	name	grade	grades_used	note
+00c10720	CCollectAllItems::Visit(CListItem* item)	MATCH	1	collect-all visitor slot 0 -> CItemList::Add (slot 9); landed RunAllItems 0x00C10400 names the class
+00c1fd50	CIntelligentPointer_00c1fcc0::Validate()	MATCH	1	item slot 3: GetTable()->Validate(); vtable 0x012B3594
+00c1fdf0	CIntelligentPointer_00c1fd60::Validate()	MATCH	1	item slot 3: GetTable()->Validate(); vtable 0x012B35B8
+00c1fe90	CIntelligentPointer_00c1fe00::Validate()	MATCH	1	item slot 3: GetTable()->Validate(); vtable 0x012B35DC
+00c202c0	CNamedItem::Validate()	MATCH	1	item slot 3: GetTable()->Validate(); vtable 0x012B3600
+00c37a00	CSoundEmitter_00c37ad0::Release(long handle)	RELOCATION_MATCH	1	emitter slot 1: m_pOwner->DestroyInstance(this); unused handle slot reused
+00c37a30	CSoundEmitter_00c37ad0::Stop(long handle)	RELOCATION_MATCH	1	emitter slot 4: same body as slot 1
+00c49610	CCodaFrameStreamer_00c49650::GetFreeFrameCount()	RELOCATION_MATCH	1	streamer slot 1: m_doneQueue.GetCount() (callee 0x00C49C30 respelled CMailboxQueue::GetCount)
+00c53410	CUnprovenReverbParameters::SetRoom(long value)	MATCH	1	dirty-flag setter +4 bit 0x20 (EAX3 ROOM id 5)
+00c53420	CUnprovenReverbParameters::SetRoomHF(long value)	MATCH	1	dirty-flag setter +8 bit 0x40 (EAX3 ROOMHF id 6)
+00c53430	CUnprovenReverbParameters::SetRoomLF(long value)	MATCH	1	dirty-flag setter +0xC bit 0x80 (EAX3 ROOMLF id 7)
+00c5dfd0	CKsObject::CKsObject()	RELOCATION_MATCH	1	out-of-line inline ctor: vtable 0x012B90D4, handle -1
+00c5dfe0	CKsObject::IsValid()	MATCH	1	BOOL (int) result gives the xor/cmp/setne form
+00c5dff0	CKsObject::GetHandle()	MATCH	1	getter +4
+00c5e000	CKsObject::WriteStream(KSSTREAM_HEADER* header, OVERLAPPED* overlapped)	RELOCATION_MATCH	1	IOCTL_KS_WRITE_STREAM 0x2F8013; bytesReturned uninitialised (lives in the dead overlapped slot)
+00c77410	CVtable_012bf0c8::StartBlend()	MATCH	1	blend start (body CommitAndProcess 0x00C774F0 expands)
+00c77430	CVtable_012bf0c8::StopBlend()	MATCH	1	blend end (body CommitAndProcess 0x00C774F0 expands)
+00ca6170	CBaseInputPin::QueryInterface`adjustor{4}'()	RELOCATION_MATCH	1	strmbase renbase.cpp thunk; vendor code (Vendor-library provable)
+00ca6180	CBaseInputPin::AddRef`adjustor{4}'()	RELOCATION_MATCH	1	strmbase renbase.cpp thunk; vendor code
+00ca6190	CBaseInputPin::Release`adjustor{4}'()	RELOCATION_MATCH	1	strmbase renbase.cpp thunk; vendor code
+00caa720	CDynamicOutputPin::QueryInterface`adjustor{4}'()	RELOCATION_MATCH	1	strmbase amfilter.cpp thunk; vendor code
+00caa730	CDynamicOutputPin::AddRef`adjustor{4}'()	RELOCATION_MATCH	1	strmbase amfilter.cpp thunk; vendor code
+00caa740	CDynamicOutputPin::Release`adjustor{4}'()	RELOCATION_MATCH	1	strmbase amfilter.cpp thunk; vendor code
+01224900	CEngineInternalPrimitiveBase::$E_CurrentInterpolationInfo()	RELOCATION_MATCH	1	dynamic initializer; needs FABLE_HDR_OVERLAY (new opt-in in engine/CEngineInternalPrimitiveBase.h)
+01224970	$E_TableBuilder()	RELOCATION_MATCH	1	dynamic initializer of TableBuilder
+00c3ec10	CCodaSystem::CreateHardwareVoiceA() + CCodaSystem::CreateHardwareVoiceB()	EXTENT_WRONG	1	two 11-byte functions: 0x00C3EC10 len 11 (slot 4) and 0x00C3EC20 len 11 (slot 5), 5 int3 between; differ/00c3ec10.cpp grades the first 11 bytes exact (DIFFER(11v27) only for the extent)
+005c9a95	CTCInventoryWeapons::ConstructScreenPC(NUISystem::CComponent*)	PARKED	0	identity settled (Ego_r/FableWin ?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z, slot 87); not drafted -- no CTCInventoryWeapons header, ~30 callees (NOTES.md)
+005c8459	CTCInventoryWeapons::ConstructScreen(NUISystem::CComponent*)	PARKED	0	identity settled (Ego_r ?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z, slot 77); not drafted (NOTES.md)
+005b8743	CTCInventoryClothing::ConstructScreenPC(NUISystem::CComponent*)	PARKED	0	identity settled (Ego_r ?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z, non-virtual, sole caller 0x0041FBDD); not drafted (NOTES.md)

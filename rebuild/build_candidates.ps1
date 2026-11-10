@@ -388213,6 +388213,139 @@ $catalog = @(
         TestSource = '00/d9/NScriptCQMinionCampScriptCMCMinionGuard_Main_00d9eb30_test.cpp'
         PassPattern = '00d9eb30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c10720'
+        Module = 'CCollectAllItems'
+        Source = '00/c1/CCollectAllItems_Visit_00c10720.cpp'
+        TestSource = '00/c1/CCollectAllItems_Visit_00c10720_test.cpp'
+        PassPattern = '00c10720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fd50'
+        Module = 'CIntelligentPointer_00c1fcc0'
+        Source = '00/c1/CIntelligentPointer00c1fcc0_Validate_00c1fd50.cpp'
+        TestSource = '00/c1/CIntelligentPointer00c1fcc0_Validate_00c1fd50_test.cpp'
+        PassPattern = '00c1fd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fdf0'
+        Module = 'CIntelligentPointer_00c1fd60'
+        Source = '00/c1/CIntelligentPointer00c1fd60_Validate_00c1fdf0.cpp'
+        TestSource = '00/c1/CIntelligentPointer00c1fd60_Validate_00c1fdf0_test.cpp'
+        PassPattern = '00c1fdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fe90'
+        Module = 'CIntelligentPointer_00c1fe00'
+        Source = '00/c1/CIntelligentPointer00c1fe00_Validate_00c1fe90.cpp'
+        TestSource = '00/c1/CIntelligentPointer00c1fe00_Validate_00c1fe90_test.cpp'
+        PassPattern = '00c1fe90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c202c0'
+        Module = 'CNamedItem'
+        Source = '00/c2/CNamedItem_Validate_00c202c0.cpp'
+        TestSource = '00/c2/CNamedItem_Validate_00c202c0_test.cpp'
+        PassPattern = '00c202c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37a00'
+        Module = 'CSoundEmitter_00c37ad0'
+        Source = '00/c3/CSoundEmitter00c37ad0_ReleaseA_00c37a00.cpp'
+        TestSource = '00/c3/CSoundEmitter00c37ad0_ReleaseA_00c37a00_test.cpp'
+        PassPattern = '00c37a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37a30'
+        Module = 'CSoundEmitter_00c37ad0'
+        Source = '00/c3/CSoundEmitter00c37ad0_ReleaseB_00c37a30.cpp'
+        TestSource = '00/c3/CSoundEmitter00c37ad0_ReleaseB_00c37a30_test.cpp'
+        PassPattern = '00c37a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c49610'
+        Module = 'CCodaFrameStreamer_00c49650'
+        Source = '00/c4/CCodaFrameStreamer00c49650_GetFreeFrameCount_00c49610.cpp'
+        TestSource = '00/c4/CCodaFrameStreamer00c49650_GetFreeFrameCount_00c49610_test.cpp'
+        PassPattern = '00c49610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53410'
+        Module = 'CUnprovenReverbParameters'
+        Source = '00/c5/CUnprovenReverbParameters_SetRoom_00c53410.cpp'
+        TestSource = '00/c5/CUnprovenReverbParameters_SetRoom_00c53410_test.cpp'
+        PassPattern = '00c53410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53420'
+        Module = 'CUnprovenReverbParameters'
+        Source = '00/c5/CUnprovenReverbParameters_SetRoomHF_00c53420.cpp'
+        TestSource = '00/c5/CUnprovenReverbParameters_SetRoomHF_00c53420_test.cpp'
+        PassPattern = '00c53420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53430'
+        Module = 'CUnprovenReverbParameters'
+        Source = '00/c5/CUnprovenReverbParameters_SetRoomLF_00c53430.cpp'
+        TestSource = '00/c5/CUnprovenReverbParameters_SetRoomLF_00c53430_test.cpp'
+        PassPattern = '00c53430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5dfd0'
+        Module = 'CKsObject'
+        Source = '00/c5/CKsObject_CKsObject_00c5dfd0.cpp'
+        TestSource = '00/c5/CKsObject_CKsObject_00c5dfd0_test.cpp'
+        PassPattern = '00c5dfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5dfe0'
+        Module = 'CKsObject'
+        Source = '00/c5/CKsObject_IsValid_00c5dfe0.cpp'
+        TestSource = '00/c5/CKsObject_IsValid_00c5dfe0_test.cpp'
+        PassPattern = '00c5dfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5dff0'
+        Module = 'CKsObject'
+        Source = '00/c5/CKsObject_GetHandle_00c5dff0.cpp'
+        TestSource = '00/c5/CKsObject_GetHandle_00c5dff0_test.cpp'
+        PassPattern = '00c5dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5e000'
+        Module = 'CKsObject'
+        Source = '00/c5/CKsObject_WriteStream_00c5e000.cpp'
+        TestSource = '00/c5/CKsObject_WriteStream_00c5e000_test.cpp'
+        PassPattern = '00c5e000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77410'
+        Module = 'CVtable_012bf0c8'
+        Source = '00/c7/CVtable012bf0c8_StartBlend_00c77410.cpp'
+        TestSource = '00/c7/CVtable012bf0c8_StartBlend_00c77410_test.cpp'
+        PassPattern = '00c77410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77430'
+        Module = 'CVtable_012bf0c8'
+        Source = '00/c7/CVtable012bf0c8_StopBlend_00c77430.cpp'
+        TestSource = '00/c7/CVtable012bf0c8_StopBlend_00c77430_test.cpp'
+        PassPattern = '00c77430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01224900'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '01/22/CEngineInternalPrimitiveBase_ECurrentInterpolationInfo_01224900.cpp'
+        TestSource = '01/22/CEngineInternalPrimitiveBase_ECurrentInterpolationInfo_01224900_test.cpp'
+        PassPattern = '01224900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01224970'
+        Module = '_global'
+        Source = '01/22/global_ETableBuilder_01224970.cpp'
+        TestSource = '01/22/global_ETableBuilder_01224970_test.cpp'
+        PassPattern = '01224970_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
