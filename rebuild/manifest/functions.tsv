@@ -16154,7 +16154,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a3cd0	push_back	std::vector<pair<long,CIntelligentPointer<CThing> > >	unknown	undefined	0		0	yes	accepted									
 006a3d30	FinalInsertionSort_SElement12_006a3d30	_global	__fastcall	void	3	pair<unsigned_long,CSoundPair> *,pair<unsigned_long,CSoundPair> *,CKeyPairCompareLess<unsigned_long,CSoundPair>	1	yes	accepted									
 006a3da0	Add	CVectorMap_Things	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
-006a3e00	Heap_SiftDown	_global	unknown	undefined	0		0	yes	accepted									
+006a3e00	__introsort_loop<std::pair<long, CIntelligentPointer<CThing>> *, std::pair<long, CIntelligentPointer<CThing>>, int, CKeyPairCompareLess<long, CIntelligentPointer<CThing>>>	std	unknown	undefined	0		0	yes	accepted									
 006a3f20	Sort_SElement12_006a3f20	_global	unknown	undefined	0		0	yes	accepted									
 006a3f80	CVectorMap_Sort_006a3f80	_global	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CGuiVarTransferBool_TransferToGui_006a3f80.cpp
 006a3fa0	CVectorMap_SortIfDirty_006a3fa0	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CTCVillage_OnInitialActivate_006a3fa0.cpp
@@ -24773,7 +24773,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008364c0	CCountedPointer_Release_008364c0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008364c0.cpp
 00836540	CCountedPointer_Release_00836540	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00836540.cpp
 00836580	Reset	CCountedPointer_008364b0	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
-008365f0	CTCInventoryAbilities_PreloadDeadAnimation	_global	unknown	undefined	0		0	yes	accepted									
+008365f0	for_each<std::pair<unsigned long, CAnimationEntry> const *, CDeadCreatureAnimPreloader>	std	unknown	undefined	0		0	yes	accepted									
 00836670	vfunc_22	CThingDeadCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00836680	`scalar_deleting_destructor'	CThingDeadCreature	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00836680.cpp
 00836740	OnCreate	CThingSoundEmitter	unknown	undefined	0		0	yes	accepted									

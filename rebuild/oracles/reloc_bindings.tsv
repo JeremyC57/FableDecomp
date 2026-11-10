@@ -39243,3 +39243,7 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?resize@?$vector@VCArenaRoundDef@@@@QAEXJ@Z	00f34bf0	00f349f0
 ??_7?$CPersistContext_TransferableVectorOfSubComponents@VCHeroSoulsRoundDef@@@@6B@	01301c7c	00f351f0
 ?resize@?$vector@VCHeroSoulsRoundDef@@@@QAEXJ@Z	00f353f0	00f351f0
+??$__introsort_loop@PAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@U12@HV?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@std@@YIXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@0@00HV?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@Z	006a3e00	006a3e00
+??$__partial_sort@PAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@U12@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@std@@YIXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@0@000V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@Z	006a3bf0	006a3e00
+??$__unguarded_partition@PAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@U12@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@std@@YIPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@0@PAU10@0U10@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@Z	006a3440	006a3e00
+??4?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEAAV01@ABV01@@Z	00ae7fe0	00ae3920

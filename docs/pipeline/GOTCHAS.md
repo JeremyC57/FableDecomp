@@ -2693,3 +2693,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - In VC7.1 an overloaded virtual declared later takes the EARLIER vtable slot of the overload set (CTCInventory AddItemToInventory(CThing&, ...) sits at +0x140 although declared second): do not trust slot comments for overloads (agentNF3).
 - An emitted `??_G` needs the vftable in the TU: define the out-of-line virtual destructor in the same TU (as retail did) and the `??_G` calls `??1` out of line -- no invented helper classes (agentNF3, 0x00477460 / 0x00478706).
 - `vland --recheck-landed` can pass a renamed callee while the row's old test still stubs the old spelling (LINK_FAIL): grep tests for the old name before respelling a stand-in row (0x008916A0).
+- Reading a def name through a `CDefString` copy instead of `x.Name.GetAsCharArray()` shifts VC7.1's rotating scratch register by one (0x008365F0: the strcmp zero lands in eax and is reused).
+- A visible callee body can move stores even when the call stays out of line: FABLE_RETAIL_STLP_MAP's map::operator[] body lets c2 sink the key store past the tree-root load (0x00AE3920).

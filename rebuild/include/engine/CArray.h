@@ -44,6 +44,17 @@ public:
     // CSymbolMap::CSymbolInfo> instance 0x009E7C70). A declaration only.
     void DeallocateUnusedMemory();
 #endif
+#ifdef FABLE_RETAIL_CARRAY_PUSHBACK_NOINLINE
+    // Opt-in (chunk 1017, row 0x00AE3920 CParticleProgram::RemapBoneIndices): Ego_r.pdb ?push_back@?$CArray@VC3DGroup2@@@@QAEXABVC3DGroup2@@@Z,
+    // out of line in retail (0x00AE83D0, bound by the landed AddGroup 0x00AE37D0). The body (the FABLE_RETAIL_CARRAY_PUSHBACK one) is
+    // visible but kept out of line, as in the retail TU: VC7.1 then knows push_back never captures the array, so a local array's
+    // start stays in a callee-saved register across its inline destructor's free calls (0x00AE39EC `mov ebx,[esp+1Ch]` ...
+    // 0x00AE3A1D `push ebx`); declaration-only reloads it after every free.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void push_back(const T& x) { std::vector<T>::push_back(x); }
+#endif
 #ifdef FABLE_RETAIL_CARRAY_PUSHBACK
     // Retail opt-in (chunk 785, rows 0x00BE4660 / 0x00BE4FE0 water tesselators): Lionhead's own push_back pair (Ego_r.pdb
     // ?push_back@?$CArray@VCTVertexWaterBackground@@@@QAEXABVCTVertexWaterBackground@@@Z and ...QAEXXZ, the Sea twins likewise).

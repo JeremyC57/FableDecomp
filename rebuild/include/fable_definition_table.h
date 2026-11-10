@@ -26,6 +26,11 @@ class CDefStringTable
 public:
     void LoadTable(bool readOnly);                                       // ?LoadTable@CDefStringTable@@QAEX_N@Z
     CCharString GetString(long pos) const;                               // 0x009D49B0
+#ifdef FABLE_RETAIL_CDEFSTRINGTABLE_ASCHARARRAY
+    // Opt-in (chunk 1017, row 0x008365F0): Ego_r.pdb / FableWin.pdb ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z (const; retail
+    // 0x009D49F0, landed). Declaration only.
+    const char* GetStringAsCharArray(long pos) const;                    // 0x009D49F0
+#endif
 private:
     unsigned char StringMap[12];                                         // +0x00 std::map<CCharString,long>
     unsigned char StringStream[24];                                      // +0x0C CMemoryDataOutputStream

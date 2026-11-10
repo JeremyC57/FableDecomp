@@ -391751,6 +391751,29 @@ $catalog = @(
         TestSource = '00/f3/CPersistContext_TransferVectorOfSubComponentsCConversation_00f334e0_test.cpp'
         PassPattern = '00f334e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006a3e00'
+        Module = 'std'
+        Source = '00/6a/std_pairlongCIntelligentPointerCThingintCKeyPairComp_006a3e00.cpp'
+        TestSource = '00/6a/std_pairlongCIntelligentPointerCThingintCKeyPairComp_006a3e00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006a3e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008365f0'
+        Module = 'std'
+        Source = '00/83/std_pairunsignedlongCAnimationEntryconstCDeadCreatur_008365f0.cpp'
+        TestSource = '00/83/std_pairunsignedlongCAnimationEntryconstCDeadCreatur_008365f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '008365f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae3920'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_RemapBoneIndices_00ae3920.cpp'
+        TestSource = '00/ae/CParticleProgram_RemapBoneIndices_00ae3920_test.cpp'
+        PassPattern = '00ae3920_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

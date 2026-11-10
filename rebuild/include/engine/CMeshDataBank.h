@@ -32,6 +32,9 @@ class CGraphicDataBank;
 class CMovableResourceMemoryPool;
 class CPushBufferBuildInfo;
 class CXboxBufferMemoryPool;
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKANIMATION
+class C3DAnimationInfo;
+#endif
 
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CMESHDATABANK_BASES
@@ -163,6 +166,11 @@ public:
     long                          UnloadableMeshMemory;      // +0x424
     long                          UnloadMeshFrameDelay;      // +0x428
     unsigned char                 StateBlock[0x34];          // +0x42c CMeshBankStateBlock
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKANIMATION
+    // Opt-in (chunk 1017, row 0x008365F0): Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z (retail 0x00A242C0,
+    // reloc_bindings.tsv from landed 0x00861950). Declaration only.
+    const C3DAnimationInfo* PeekAnimation(unsigned long index) const;  // 0x00A242C0
+#endif
 #ifdef FABLE_RETAIL_CMESHDATABANK
     void FrameEnd();                                         // 0x00A23AD0 ?FrameEnd@CMeshDataBank@@QAEXXZ
 #endif

@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP)
+#if defined(FABLE_RETAIL_STLP_LIST_CLEAR_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE) || defined(FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE) || defined(FABLE_RETAIL_STLP_LIST_INSERT_OUTOFLINE) || defined(FABLE_RETAIL_STLP_SORT_INTERNALS) || defined(FABLE_RETAIL_STLP_HEAP) || defined(FABLE_RETAIL_STLP_INTROSORT_LOOP)
 #ifdef _MSC_VER
 #define FABLE_STLP_NOINLINE __declspec(noinline)
 #define FABLE_STLP_FASTCALL __fastcall
@@ -1009,6 +1009,53 @@ void FABLE_STLP_FASTCALL __linear_insert(_RandomAccessIter first,_RandomAccessIt
         *first=val;
     } else
         __unguarded_linear_insert(last,val,comp);
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_INTROSORT_LOOP
+// Per-TU opt-in (chunk 1017, row 0x006A3E00, the CVectorMap<long, CIntelligentPointer<CThing> > sort): STLport 4.6 _algo.h / _algo.c
+// __median, partial_sort's front end and __introsort_loop, the loop body compiled out of line as __fastcall in the /Gr TU (first in
+// ecx, last in edx, `ret 0Ch`). Retail keeps __unguarded_partition (0x006A3440) and __partial_sort (0x006A3BF0) out of line: both
+// are declarations here (FABLE_RETAIL_STLP_SORT_INTERNALS carries the __unguarded_partition body for TUs that emit it).
+#define __stl_threshold 16
+template<class _Tp,class _Compare>
+inline const _Tp& __median(const _Tp& __a,const _Tp& __b,const _Tp& __c,_Compare __comp) {
+    if(__comp(__a,__b))
+        if(__comp(__b,__c))
+            return __b;
+        else if(__comp(__a,__c))
+            return __c;
+        else
+            return __a;
+    else if(__comp(__a,__c))
+        return __a;
+    else if(__comp(__b,__c))
+        return __c;
+    else
+        return __b;
+}
+template<class _RandomAccessIter,class _Tp,class _Compare>
+_RandomAccessIter FABLE_STLP_FASTCALL __unguarded_partition(_RandomAccessIter first,_RandomAccessIter last,_Tp pivot,_Compare comp);
+template<class _RandomAccessIter,class _Tp,class _Compare>
+void FABLE_STLP_FASTCALL __partial_sort(_RandomAccessIter __first,_RandomAccessIter __middle,_RandomAccessIter __last,_Tp*,_Compare __comp);
+template<class _RandomAccessIter,class _Compare>
+inline void partial_sort(_RandomAccessIter __first,_RandomAccessIter __middle,_RandomAccessIter __last,_Compare __comp) {
+    __partial_sort(__first,__middle,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__comp);
+}
+template<class _RandomAccessIter,class _Tp,class _Size,class _Compare>
+void FABLE_STLP_FASTCALL __introsort_loop(_RandomAccessIter __first,_RandomAccessIter __last,_Tp*,_Size __depth_limit,_Compare __comp) {
+    while(__last-__first>__stl_threshold) {
+        if(__depth_limit==0) {
+            partial_sort(__first,__last,__last,__comp);
+            return;
+        }
+        --__depth_limit;
+        _RandomAccessIter __cut=
+            __unguarded_partition(__first,__last,
+                                  _Tp(__median(*__first,*(__first+(__last-__first)/2),*(__last-1),__comp)),
+                                  __comp);
+        __introsort_loop(__cut,__last,(_Tp*)0,__depth_limit,__comp);
+        __last=__cut;
+    }
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_HEAP

@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+008365f0	std::for_each<const pair<unsigned long,CAnimationEntry>*,CDeadCreatureAnimPreloader>	RELOCATION_MATCH	1	src/ + test/; lever: the def name read through a CDefString copy (the copy puts the strcmp zero in eax, BankIndex ecx, empty-range copy edx); overlay hdr/ (chunk 1017 opt-ins)
+00ae3920	CParticleProgram::RemapBoneIndices(map&,CArray<C3DGroup2>&)	RELOCATION_MATCH	1	src/ + test/; lever: committed FABLE_RETAIL_STLP_MAP (visible map::operator[] body, still called out of line at 0x00553E60) sinks the key store past the tree-root load; overlay hdr/ (chunk 1017 opt-ins)
+006a3e00	std::__introsort_loop<pair<long,CIntelligentPointer<CThing> >*,...>	RELOCATION_MATCH	1	src/ + test/; lever: committed FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN pivot copy evens first/last c2 priority (256/256), tie key colours last first (first ebx, last edi); overlay hdr/ (INTROSORT_LOOP)
+009f18f0	CGameEventDataPackage::GetData	DIFFER(166v166)	1	differ/; this/start/size permutation (c2prio start 61 < this 75); 20 probes inert
+00934e50	CMessageEventManager::FindMostRecentMessage<Bind3<IsOfType,ThingSearch<IsNot>,ThingSearch<In2DRange>>>	DIFFER(208v208)	1	differ/; fail-path join reload order (split-piece numbering: this gets recycled id #1); 12 probes inert
+00a55f90	CMatrix3x4::SetFromVectorAndAngle	DIFFER(259v259)	1	differ/; xy/xz X-first loads + zero-store schedule; 20 probes inert
+00681e60	CTCCreatureOpinionOfHero::SetPersonalityOverride(long,bool)	DIFFER(626v626)	1	differ/; one SIB byte; still local models (header migration needed first); 7 probes inert
+00a229e0	CRightHandedSet::CRightHandedSet(const C3DAngles&)	DIFFER(691v689)	1	differ/; frame + x87 spill order; local models; not reworked
+00b43720	CEngineMap::PeekThemeId	DIFFER(320v324)	1	differ/; compensation-block placement; split GetMap moves it right (324v324) but hoists the y reload above the map-null je
+00b43870	CEngineMap::PeekThemeBlend	DIFFER(320v324)	1	differ/; as 0x00B43720
+00b439c0	CEngineMap::PeekLandscapeHeight	DIFFER(352v356)	1	differ/; as 0x00B43720
+0063d0a0	CWorldMap::FindGroundCollisionPointWithinCell	DIFFER(1017v1017)	2	differ/; 13 -> 10 hunks with the first plane test parenthesised; left Normalise prologue + end/hit reload order
+0063d4a0	CWorldMap::FindThemeCollisionPointWithinCell	DIFFER(1017v1017)	2	differ/; twin, same lever and residue
+006e94d0	CCombatManager::IsCreatureInAttackRingSector	DIFFER(426v426)	1	differ/; frame packing of the second find key; local models with invented CRetail* types (header migration needed first)

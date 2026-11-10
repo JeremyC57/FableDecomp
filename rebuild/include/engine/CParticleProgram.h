@@ -28,6 +28,9 @@
 #include "engine/CArray.h"
 #include "engine/C3DTriangle2.h"
 #include "engine/C3DQuad2.h"
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
+#include "stlport/fable_map.h"
+#endif
 class CMatrix3x4;
 class CMatrix4x4;
 class C3DGroup2;
@@ -57,6 +60,12 @@ private:
     void ClingToMesh(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
                      const C3DVector* position, const C3DMesh2& mesh) const;   // 0x00AE1320
     void CalculateAveragePatchSize(const CParticleSimulation&);
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_REMAPBONEINDICES
+    // Opt-in (chunk 1017, row 0x00AE3920): Ego_r.pdb / FableWin.pdb ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KK...@AAV?$CArray@
+    // VC3DGroup2@@@@@Z, the private static __fastcall overload (remap in ecx, groups in edx) the public RemapBoneIndices 0x00AE3A30
+    // calls on SimGroups and NonSimGroups.
+    static void __fastcall RemapBoneIndices(std::map<unsigned long, unsigned long>& remap, CArray<C3DGroup2>& groups);   // 0x00AE3920
+#endif
     CParticleSimulation InitialSimulation;                   // +0x08
     unsigned char ExportParticles[16];                       // +0x88 CVectorMap<CCharString,unsigned long,CKeyPairCompareLess<CCharString,unsigned long> >
     CArray<C3DTriangle2> RenderTris;                         // +0x98

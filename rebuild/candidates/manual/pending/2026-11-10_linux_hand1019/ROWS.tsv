@@ -1,0 +1,15 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+008365f0	128	CTCInventoryAbilities_PreloadDeadAnimation	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/008365f0.cpp		008364c0 00836540 00836580 00836670 00836680 00836740
+00ae3920	272	CParticleProgram::RemapBoneIndices	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/00ae3920.cpp		00ae3550 00ae3670 00ae37d0 00ae3a30 00ae3a60
+006a3e00	288	Heap_SiftDown	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/006a3e00.cpp		006a3cd0 006a3d30 006a3da0 006a3f20 006a3f80 006a3fa0
+009f18f0	176	CircularBuffer_Read	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/009f18f0.cpp		009f17a0 009f1810 009f1870 009f19a0 009f1a80 009f1ac0
+00934e50	208	CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>_>_>	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/00934e50.cpp		009347b0 00934870 00934920 00934f20 00935040 009350c0
+00a55f90	272	CMatrix3x4::SetFromVectorAndAngle	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1016/differ/00a55f90.cpp		00a55c00 00a55d80 00a55df0 00a560a0 00a56180
+00681e60	640	CTCCreatureOpinionOfHero::SetPersonalityOverride	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand475/differ/00681e60.cpp		00681ba0 00681e30 006820e0 00682140 006821e0
+00a229e0	704	CRightHandedSet::CRightHandedSet	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a229e0.cpp		00a224d0 00a22530 00a22590 00a22ca0 00a22e10 00a22f80
+00b43720	336	CEngineMap::PeekThemeId	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1013c/differ/00b43720.cpp		00b433c0 00b434c0 00b43620 00b43b30
+00b43870	336	CEngineMap::PeekThemeBlend	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1013c/differ/00b43870.cpp		00b434c0 00b43620 00b43b30 00b43b90
+00b439c0	368	CEngineMap::PeekLandscapeHeight	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1013c/differ/00b439c0.cpp		00b43620 00b43b30 00b43b90 00b43bb0
+0063d0a0	1024	CWorldMap::FindGroundCollisionPointWithinCell	parked	x87-order	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013c/differ/0063d0a0.cpp	00a42170	0063bbc0 0063bf20 0063c230 0063d8a0 0063d960
+0063d4a0	1024	CWorldMap::FindThemeCollisionPointWithinCell	parked	x87-order	rebuild/candidates/manual/pending/2026-11-10_linux_hand1013c/differ/0063d4a0.cpp	00a42170	0063bf20 0063c230 0063d8a0 0063d960 0063db30
+006e94d0	432	CCombatManager::Combat_CheckRingRangeToTarget	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand644/differ/006e94d0.cpp		006e9390 006e93c0 006e9450 006e9680 006e9700 006e97a0

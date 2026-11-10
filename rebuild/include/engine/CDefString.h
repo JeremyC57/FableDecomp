@@ -56,6 +56,12 @@ public:
 #else
  CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_GETASCHARARRAY
+ // Opt-in (chunk 1017, row 0x008365F0 for_each<..., CDeadCreatureAnimPreloader>): Ego_r.pdb / FableWin.pdb
+ // ?GetAsCharArray@CDefString@@QBEPBDXZ, inline in that TU (0x00836610: `mov eax,[ebx+8] ; push eax ; mov ecx,offset GDefStringTable ;
+ // call 0x009D49F0`). Needs FABLE_RETAIL_CDEFSTRINGTABLE_ASCHARARRAY.
+ const char* GetAsCharArray()const{return GDefStringTable.GetStringAsCharArray(TablePos);}
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING
  // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?ToWideString@CDefString@@QBE?AVCWideString@@XZ, out of line in retail
  // (0x00415D90: GetString through GDefStringTable, then CCharString::ToWideString 0x0099E480). Declaration only.
