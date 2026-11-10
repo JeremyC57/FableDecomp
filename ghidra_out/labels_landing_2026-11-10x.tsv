@@ -1,0 +1,6 @@
+address	name	evidence
+00583e26	?OnItemSelected@CTCInventory@@UAEXJAA_N@Z	RELOCATION_MATCH chunk 1007; Ego_r.pdb / FableWin.pdb spelling
+00587bff	?OpenPCSkillsMenu@CTCInventory@@QAEXXZ	RELOCATION_MATCH chunk 1007; Ego_r.pdb / FableWin.pdb spelling
+0058a0c7	?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	RELOCATION_MATCH chunk 1007; Ego_r.pdb / FableWin.pdb spelling
+0058a763	?OpenPCStatusMenu@CTCInventory@@QAEXXZ	RELOCATION_MATCH chunk 1007; Ego_r.pdb / FableWin.pdb spelling
+0058e208	?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	RELOCATION_MATCH chunk 1007; Ego_r.pdb / FableWin.pdb spelling

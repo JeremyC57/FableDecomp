@@ -19,6 +19,9 @@
 #endif
 namespace NUISystem { class CComponent; class CList; }
 class CWideString; class CCharString;
+#ifdef FABLE_RETAIL_CTCINVENTORY_ITEMENTRY
+template <class T> class CCountedPointer;
+#endif
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
 #ifdef FABLE_RETAIL_CTCINVENTORY_PCMENUS
@@ -34,6 +37,18 @@ public:
                                      NUISystem::CComponent* owner, const CCharString& templateName,
                                      const CCharString& descriptionSymbol, bool checkUsable);        // 0x005907AB
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_CONSOLEMENUS
+    // Nested opt-in (chunk 1007, rows 0x00590235 / 0x0058F016; needs FABLE_RETAIL_CTCINVENTORY_QUICKACCESS for the vector include):
+    // the console twins of the PCMENUS pair, FableWin.pdb / Ego_r.pdb spellings
+    //   ?GetItemsListUIComponent@CTCInventory@@QAEPAVCComponent@NUISystem@@PAV23@@Z                                0x00590235
+    //   ?ConstructItemCategoryList@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@
+    //     V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z                               0x0058F016
+    // (ConstructScreen 0x005907A6 is the 5-byte `jmp` to the first).
+    NUISystem::CComponent* GetItemsListUIComponent(NUISystem::CComponent* parent);                   // 0x00590235
+    void ConstructItemCategoryList(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
+                                   NUISystem::CComponent* owner, const CCharString& templateName,
+                                   const CCharString& descriptionSymbol, bool checkUsable);          // 0x0058F016
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
     // Nested opt-in (chunk 867, row 0x005F59C7 CTCInventoryAbilities::ConstructPCExpressionsList): the quick-access slots and the
     // two PC menu maps as typed containers (Ego_r.pdb types; retail reads QuickAccessItems begin/end +0x148/+0x14c and clears the
@@ -42,6 +57,28 @@ public:
     // Ego_r.pdb; out of line in retail).
     static ETCInterfaceType StatGetInterfaceType() { return TCI_INVENTORY; }
     long GetQuickAccessItemGraphicIndex(long slot) const;            // 0x00581FA4
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_ITEMSELECTED
+    // Nested opt-in (chunk 1007, row 0x00583E26): the slot-33 override ?OnItemSelected@CTCInventory@@UAEXJAA_N@Z (Ego_r.pdb /
+    // FableWin.pdb; CTCInventory vtable 0x01250DE4 slot 33). Needs FABLE_RETAIL_CTCINVENTORYBASE_VTABLE.
+    virtual void OnItemSelected(long itemDefIndex, bool& handled);   // 0x00583E26
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_OPENPC
+    // Nested opt-in (chunk 1007, rows 0x0058F649 OpenPCInventory / 0x0058F9BC OpenPCPhotojournal): Ego_r.pdb / FableWin.pdb
+    // ?OpenPCInventory@CTCInventory@@QAEXXZ, ?OpenPCPhotojournal@CTCInventory@@QAEXXZ and ?HasScreenshots@CTCInventory@@QAE_NXZ
+    // (landed 0x00581B33, out of line).
+    void OpenPCInventory();                                          // 0x0058F649
+    void OpenPCPhotojournal();                                       // 0x0058F9BC
+    bool HasScreenshots();                                           // 0x00581B33
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_ITEMENTRY
+    // Nested opt-in (chunk 1007, rows 0x0058A0C7 / 0x0058E208): Ego_r.pdb / FableWin.pdb
+    // ?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z and
+    // ?ConstructItemEntryPC@CTCInventory@@ (same parameters), the console / PC item menu-entry builders. Needs QUICKACCESS (the maps).
+    void ConstructItemEntry(long defIndex, long count, NUISystem::CList* list, NUISystem::CComponent* owner,
+                            CCountedPointer<NUISystem::CComponent>& actionsList);           // 0x0058A0C7
+    void ConstructItemEntryPC(long defIndex, long count, NUISystem::CList* list, NUISystem::CComponent* owner,
+                              CCountedPointer<NUISystem::CComponent>& actionsList);         // 0x0058E208
 #endif
     void OpenInventoryShortcut(long screen);
     void DeleteMenuComponents();                                     // 0x00587A41

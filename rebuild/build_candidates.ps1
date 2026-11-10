@@ -390555,6 +390555,41 @@ $catalog = @(
         TestSource = '00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9_test.cpp'
         PassPattern = '005cacb9_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00583e26'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OnItemSelected_00583e26.cpp'
+        TestSource = '00/58/CTCInventory_OnItemSelected_00583e26_test.cpp'
+        PassPattern = '00583e26_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00587bff'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OpenPCSkillsMenu_00587bff.cpp'
+        TestSource = '00/58/CTCInventory_OpenPCSkillsMenu_00587bff_test.cpp'
+        PassPattern = '00587bff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058a0c7'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ConstructItemEntry_0058a0c7.cpp'
+        TestSource = '00/58/CTCInventory_ConstructItemEntry_0058a0c7_test.cpp'
+        PassPattern = '0058a0c7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058a763'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OpenPCStatusMenu_0058a763.cpp'
+        TestSource = '00/58/CTCInventory_OpenPCStatusMenu_0058a763_test.cpp'
+        PassPattern = '0058a763_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058e208'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ConstructItemEntryPC_0058e208.cpp'
+        TestSource = '00/58/CTCInventory_ConstructItemEntryPC_0058e208_test.cpp'
+        PassPattern = '0058e208_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -19,6 +19,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **2026-11-10 Codex pass 17 handed out:** 40 same-length parked near misses reserved in `pending/2026-11-10_codex_pass17/RESERVED.tsv`.
 - **2026-11-10 landing v:** chunk 1005 landed 6 of 11 CTCInventoryExperience rows; 0x0056F30B CloseInventory held (matches, but uses CASoundManager.h's descriptive slot names -- owner decision pending); 4 parked (`pending/2026-11-10_linux_hand1005/`); queue `land1011w`.
 - **2026-11-10 landing w:** chunk 1004 landed 49 (ConstructWeaponDescriptionContainer, RefreshWeaponDescriptions, 47 helpers split out of the 0x005B9641 row); 4 parked (`pending/2026-11-10_linux_hand1004/`); queue `land1011x`.
+- **2026-11-10 landing x:** chunk 1007 landed 5 of 16 CTCInventory rows (OnItemSelected, OpenPCSkillsMenu, OpenPCStatusMenu, ConstructItemEntry(PC)); 9 parked + 2 unattempted (`pending/2026-11-10_linux_hand1007/`) relaunched as chunk 1007b; queue `land1011y`.
 - **Resumed 2026-11-05 late** (the user: "continue where the last claude chat left off"). Done since the pause:
   - lane: the older a013f3ec-... scratch survived with the whole lane (game SHA-1 checked, prime recheck 5/5); the 40effb6c-...
     scratch is gone, and with it the phase 1-5 plan tools (hdrmig5 ...). Only the copies in `naming/2026-11-04_vendor_v2/scripts/`

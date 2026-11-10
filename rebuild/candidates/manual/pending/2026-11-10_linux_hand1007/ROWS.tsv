@@ -1,0 +1,17 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+00583e26	484	CTCInventory::OnItemSelected	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-21_linux_hand270/differ/00583e26.cpp	005be8f3	00583a92 00583bd5 00583cd4 0058400a 005840a6 00584157
+00584b86	854	CTCInventory::AssignThingPC	parked	register-tie	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00584b86.cpp		00584a73 00584af6 00584b42 00584edc 00584f15 00584fe3
+005850fd	1678	CTCInventory::GetStyleCardsListUIComponent	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/005850fd.cpp		0058502d 0058509f 005850df 00587749
+00587bff	1150	CTCInventory::OpenPCSkillsMenu	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-27_linux_hand649/differ/00587bff.cpp		00587847 00587a41 00587b93
+0058807d	4997	CTCInventory::OpenPCInventoryMenu	unworked				00587a41 00587b93 00589c55
+00589402	1582	CTCInventory::GetStyleCardsListUIComponent	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/00589402.cpp		00587b93 00589c55 00589d30
+00589a30	549	CTCInventory::OpenPCMapMenu	parked	register-tie	rebuild/candidates/manual/pending/2026-10-28_retry539/differ/00589a30.cpp	0060eeb0	00589c55 00589d30
+0058a0c7	1629	CTCInventory::ConstructItemEntry	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/0058a0c7.cpp	00428494	00589c55 00589d30 0058a724 0058a729
+0058a763	1965	CTCInventory::OpenPCStatusMenu	unworked				0058a724 0058a729 0058af10 0058e99f
+0058e208	1943	CTCInventory::ConstructItemEntryPC	unworked			00428494	0058a729 0058af10 0058e99f 0058ef79
+0058f016	1587	CTCInventory::ConstructItemCategoryList	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/0058f016.cpp	00428494	0058e99f 0058ef79 00590198
+0058f649	883	CTCInventory::OpenPCInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-10-27_linux_hand620/differ/0058f649.cpp		0058e99f 0058ef79 00590198
+0058f9bc	2012	CTCInventory::OpenPCPhotojournal	unworked			00428494	0058ef79 00590198 005907a6
+00590235	1393	CTCInventory::GetItemsListUIComponent	parked	register-tie	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00590235.cpp	0058f016	00590198 005907a6 005907ab 00590d32
+00590f0b	2907	CTCInventory::GetItemsListUIComponentPC	unworked		rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/00590f0b.cpp		005907a6 005907ab 00590d32 00591a66 00591e5e
+00591b7f	735	CTCInventory::UpdateContextSensitiveItems	parked	ltcg/crt/asm-impossible	rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/00591b7f.cpp	00850a80	00590d32 00591a66 00591e5e 00591e8c 00591f62

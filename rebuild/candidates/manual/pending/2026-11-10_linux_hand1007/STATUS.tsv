@@ -1,0 +1,17 @@
+address	name	grade	grades_used	note
+00583e26	CTCInventory::OnItemSelected	RELOCATION_MATCH	3	shared headers + visible IS_THING_ALIVE<CThing*> body + case-1 nested if with the return-to-inventory block written in both elses
+00584b86	CTCInventory::AssignThingPC	DIFFER(854v854)	2	parked: prior + ability/item parameter as a named local in an inner block (frame now 0x34 as retail, 60 difflines v 81); residue frame-slot colouring, the use parameter homed in the dead thingID slot, GetDef args pushed before PeekWorld; local-model draft (header debt)
+005850fd	CTCInventory::GetStyleCardsListUIComponent	DIFFER(1660v1678)	1	parked: prior block-layout residue (hair-card arm out of line in retail); arm-order flip is worse (1656 bytes)
+00587bff	CTCInventory::OpenPCSkillsMenu	RELOCATION_MATCH	1	shared-header rewrite in the OpenPCOptionsMenu 0x0058AF10 spelling (header CComponent/CAction/CViewport, FORCEINLINE_TEXT_EQ)
+0058807d	CTCInventory::OpenPCInventoryMenu	NOT_ATTEMPTED	0	unworked, 4997 bytes; no draft this pass (time spent on the item-entry builders)
+00589402	CTCInventory::GetStyleCardsListUIComponentPC	DIFFER(1581v1582)	0	parked: prior, not regraded (same block-layout residue as 0x005850FD); catalog name is the console spelling, the PDB name is GetStyleCardsListUIComponentPC
+00589a30	CTCInventory::OpenPCMapMenu	DIFFER(549v549)	2	parked: shared-header rewrite; one swapped reload pair after the inline repe cmpsb (this before i in retail)
+0058a0c7	CTCInventory::ConstructItemEntry	RELOCATION_MATCH	7	full shared-header rewrite in the landed FinalConstructWeaponItemEntries 0x005C3E91 spelling (CMenuEntry / CList / CActionParamSLONG, PDB reference param) + visible STLport map operator[] with map[k] = ptr.Get()
+0058a763	CTCInventory::OpenPCStatusMenu	RELOCATION_MATCH	1	first-try shared-header draft in the OpenPCSkillsMenu / OpenPCOptionsMenu spelling
+0058e208	CTCInventory::ConstructItemEntryPC	RELOCATION_MATCH	4	port of the matched console twin + cached CSprite* locals for the icon sprite and the faded icon (2 of the 4 grades were missing-opt-in SRC_FAILs)
+0058f016	CTCInventory::ConstructItemCategoryList	DIFFER(1588v1587)	1	parked: prior; merge-loop register choice (start pointer eax v retail edi); c2prio variants v1-v4 inert
+0058f649	CTCInventory::OpenPCInventory	DIFFER(883v883)	5	parked: shared-header rewrite; frame-slot colouring (manager v the temporaries / key) and one scheduling swap
+0058f9bc	CTCInventory::OpenPCPhotojournal	NOT_ATTEMPTED	0	unworked, 2012 bytes, /GS frame and a screenshot file scan through ~15 unidentified string / file-find callees; no draft
+00590235	CTCInventory::GetItemsListUIComponent	DIFFER(1393v1393)	1	parked: prior kept (127 difflines); the shared-header rewrite (probe/00590235_shared_lastgraded.cpp) is the same length at 308 difflines, a pure esi/edi/ebx permutation
+00590f0b	CTCInventory::GetItemsListUIComponentPC	DIFFER(2831v2907)	0	parked: prior (hand867, 9 grades), not regraded
+00591b7f	CTCInventory::UpdateContextSensitiveItems	DIFFER(729v735)	0	parked: prior, not regraded (escape-analysis residue)

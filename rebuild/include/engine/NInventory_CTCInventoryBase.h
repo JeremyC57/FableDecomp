@@ -115,6 +115,20 @@ protected:
  void SelectItemWithDefIndex(long itemDefIndex);                                              // 0x005BDFB1
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_HIGHLIGHTEDITEM
+ // Retail opt-in (chunk 1007, row 0x00583E26 CTCInventory::OnItemSelected): Ego_r.pdb / FableWin.pdb
+ // ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ (protected const), out of line at 0x005BCAE3. Declaration only.
+protected:
+ long GetHighlightedItem() const;                                                             // 0x005BCAE3
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CAPTUREBACKBUFFER
+ // Retail opt-in (chunk 1007, row 0x0058F649 CTCInventory::OpenPCInventory): Ego_r.pdb
+ // ?CaptureBackBufferToTexture@CTCInventoryBase@NInventory@@QAEXXZ, out of line at 0x005BC6ED (its body tail-calls
+ // CUserProfileManager::CaptureBackBufferForUIBackground 0x00406CC0 on CTBaseSingleton<CUserProfileManager>::Get() 0x0040D2A0).
+ // The landed rows call it by the descriptive "PrepareScreen" (NAME_FIXES). Declaration only.
+ void CaptureBackBufferToTexture();                                                          // 0x005BC6ED
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONINITIALACTIVATE
  // Retail opt-in (chunk 1002, row 0x005CB974 CTCInventoryWeapons::OnInitialActivate, which calls it qualified last): Ego_r.pdb
  // ?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ (the CTCBase slot-6 override, out of line at 0x005BD1EB).

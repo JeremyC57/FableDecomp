@@ -1,0 +1,29 @@
+addr       parity           behav  name
+00583e26   WARN RELOC_NAME: ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z -> 005d9710 labelled 'CTCInventoryItem::GetInventoryCategory'
+00583e26   RELOCATION_MATCH PASS   OnItemSelected
+00587bff   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+00587bff   RELOCATION_MATCH PASS   OpenPCSkillsMenu
+0058a0c7   WARN RELOC_NAME: ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z -> 005d9710 labelled 'CTCInventoryItem::GetInventoryCategory'
+0058a0c7   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0058a0c7   RELOCATION_MATCH PASS   ConstructItemEntry
+0058a763   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0058a763   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0058a763   RELOCATION_MATCH PASS   OpenPCStatusMenu
+0058e208   WARN RELOC_NAME: ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z -> 005d9710 labelled 'CTCInventoryItem::GetInventoryCategory'
+0058e208   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0058e208   RELOCATION_MATCH PASS   ConstructItemEntryPC
+
+WINS: 5
+  00583e26 RELOCATION_MATCH CTCInventory::?OnItemSelected@CTCInventory@@UAEXJAA_N@Z
+  00587bff RELOCATION_MATCH CTCInventory::?OpenPCSkillsMenu@CTCInventory@@QAEXXZ
+  0058a0c7 RELOCATION_MATCH CTCInventory::?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  0058a763 RELOCATION_MATCH CTCInventory::?OpenPCStatusMenu@CTCInventory@@QAEXXZ
+  0058e208 RELOCATION_MATCH CTCInventory::?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CTCInventory_OnItemSelected_00583e26
+  CTCInventory_OpenPCSkillsMenu_00587bff
+  CTCInventory_ConstructItemEntry_0058a0c7
+  CTCInventory_OpenPCStatusMenu_0058a763
+  CTCInventory_ConstructItemEntryPC_0058e208
+EXIT 0

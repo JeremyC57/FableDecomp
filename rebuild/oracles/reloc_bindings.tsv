@@ -39087,3 +39087,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?AUGMENTATIONS_MENU_ENTRY_NAME@?A0x000a35dc@@3VCCharString@@B	013b8bc0	005cacb9
 ?WEAPON_DESCRIPTION_STRING@?A0x000a35dc@@3VCCharString@@B	013b8bac	005cacb9
 ?erase@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAEIABQAVCComponent@NUISystem@@@Z	005cc31b	005cacb9
+?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	005bcae3	00583e26
+?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z	005d9710	00583e26
+??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z	005949c3	0058a0c7

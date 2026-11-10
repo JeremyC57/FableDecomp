@@ -1,0 +1,11 @@
+# Chunk 1007 lessons (GOTCHAS-ready)
+- A block retail duplicates in two else arms: write the nested `if (a) { if (b) {X} else {Y} } else {Y}` with Y written twice; `if (a && b) X else Y` shares Y and misses (0x00583E26).
+- A visible same-TU `IS_THING_ALIVE<CThing*>` specialisation under `#pragma auto_inline(off)` changes escape analysis enough to home its temporary in the dead argument slot as retail does (0x00583E26).
+- The PC menu builders (OpenPCSkillsMenu / OpenPCStatusMenu) match first try in the landed OpenPCOptionsMenu 0x0058AF10 shared-header spelling: `if (list) break;` first in the find loop, FORCEINLINE_TEXT_EQ, `&static_cast<CActionParam&>(*x)` for the unguarded param (0x00587BFF, 0x0058A763).
+- `map[k] = ptr.Get()` with the visible STLport operator[] (FABLE_RETAIL_STLP_MAP) reads the right-hand side before the operator[] call and passes `&k` directly, as retail does; a by-value Set helper copies the key (0x0058A0C7).
+- A local-model row stuck on register ties matched once rewritten on shared headers (CMenuEntry / CList / CActionParamSLONG, PDB reference parameter) in the spelling of a landed sibling (FinalConstructWeaponItemEntries 0x005C3E91) (0x0058A0C7).
+- Cache a cast pointer as a named local when retail loads it right after the construction: `CSprite* fadedSprite = static_cast<CSprite*>(faded.Get());` puts faded.Data in esi and removes the zero register (0x0058E208).
+- A console row's matched source ports to its PC twin by swapping strings / callees and adding the PC-only blocks in retail order (0x0058E208 from 0x0058A0C7).
+- FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC needs FABLE_RETAIL_CENGINEGRAPHIC_CTOR + FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE + FABLE_RETAIL_DEF_CLASS_BASE, or it fails with C2039 / C2118 (0x0058E208).
+- The shared CMenuEntry header needs FABLE_RETAIL_CCLICKABLE_SHARED_ACTION, or NUISystem::CAction is redefined (C2011) (0x0058A0C7).
+- A named local in an inner block (not function scope) brought AssignThingPC's frame from 0x38 to retail's 0x34 (0x00584B86, still DIFFER).

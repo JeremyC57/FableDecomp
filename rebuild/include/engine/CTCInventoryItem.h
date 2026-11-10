@@ -25,6 +25,9 @@ namespace NInventory { class CTCInventoryBase; }
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
 enum EUIInventoryCategory;                                   // MS forward enum: the PDBs keep no enumerator spellings
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_USEBUTTONACTION
+enum EInventoryActionType;                                  // MS forward enum (no enumerator spellings in the PDBs)
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
 class CHairCardDef; class CTattooDef;
 #endif
@@ -44,6 +47,14 @@ public:
     static long __fastcall GetInventoryCategory(long defIndex);                      // 0x005D97B0
     static ETCInterfaceType __fastcall GetInventoryType(long defIndex);              // 0x005D99D0
     static EUIInventoryCategory __fastcall GetUIInventoryCategory(long defIndex);    // 0x005D96F0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_USEBUTTONACTION
+    // Nested opt-in (chunk 1007, row 0x00583E26 CTCInventory::OnItemSelected): FableWin.pdb
+    // ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z, static `__fastcall`, out of line at 0x005D9710
+    // (donor order GetUIInventoryCategory 0x005D96F0 / GetUseButtonActionType / GetStartingRightHandedSet 0x005D9730, the by-value
+    // CRightHandedSet; its body is CacheDef 0x005D94B0 + the def's UseButtonAction +0x4C, Ego_r.pdb CInventoryItemDef). The PDBs keep
+    // no enumerator spellings: MS forward enum, as EUIInventoryCategory above.
+    static EInventoryActionType __fastcall GetUseButtonActionType(long defIndex);   // 0x005D9710
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_KINDS
     // Nested opt-in (chunk 867, row 0x00590F0B CTCInventory::GetItemsListUIComponentPC): the two static `__fastcall` item-kind

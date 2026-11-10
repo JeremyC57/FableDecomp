@@ -1,0 +1,17 @@
+address	name	evidence
+00583e26	?OnItemSelected@CTCInventory@@UAEXJAA_N@Z	Ego_r.pdb + FableWin.pdb; CTCInventory vtable 0x01250DE4 slot 33; row RELOCATION_MATCH (chunk 1007)
+00587bff	?OpenPCSkillsMenu@CTCInventory@@QAEXXZ	Ego_r.pdb + FableWin.pdb; OpenInventoryShortcut 0x0058E99F screens 5/8; "PC_SKILLS_LIST" 0x01250900; RELOCATION_MATCH
+0058a763	?OpenPCStatusMenu@CTCInventory@@QAEXXZ	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH
+0058a0c7	?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	Ego_r.pdb + FableWin.pdb exact; RELOCATION_MATCH with the PDB reference parameter
+0058e208	?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	Ego_r.pdb + FableWin.pdb exact; PC twin of 0x0058A0C7; RELOCATION_MATCH
+00589a30	?OpenPCMapMenu@CTCInventory@@QAEXXZ	Ego_r.pdb + FableWin.pdb; OpenInventoryShortcut jump table screen 4; "PC_MAP_LIST" 0x01250DC0
+0058f649	?OpenPCInventory@CTCInventory@@QAEXXZ	Ego_r.pdb + FableWin.pdb
+0058f9bc	?OpenPCPhotojournal@CTCInventory@@QAEXXZ	Ego_r.pdb + FableWin.pdb
+005850fd	?GetStyleCardsListUIComponent@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z	Ego_r.pdb (returns void); console UI_* strings; 0x0058A724 is the 5-byte jmp ConstructStyleCardsScreen
+00589402	?GetStyleCardsListUIComponentPC@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z	Ego_r.pdb (returns void); PC_* strings; called by ConstructStyleCardsScreenPC 0x0058A729
+005d9710	?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z	Ego_r.pdb + FableWin.pdb static fastcall overload; FableWin donor order; body CacheDef + def+0x4C UseButtonAction
+0060eeb0	?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z	Ego_r.pdb + FableWin.pdb; called by OpenPCMapMenu 0x00589A30 with (false, 0)
+005bc6ed	?CaptureBackBufferToTexture@CTCInventoryBase@NInventory@@QAEXXZ	Ego_r.pdb; body tail-calls CUserProfileManager::CaptureBackBufferForUIBackground 0x00406CC0
+005bcae3	?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	Ego_r.pdb (protected const); called by OnItemSelected 0x00583E26 case 2
+007c8fd0	?CancelMove@CTCFireballSpell@@QAEXXZ	Ego_r.pdb; called by OpenPCInventory 0x0058F649 on GetTC(TCI_FIREBALL_SPELL 157)
+00581b33	?HasScreenshots@CTCInventory@@QAE_NXZ	Ego_r.pdb + FableWin.pdb (landed); called by OpenPCInventory 0x0058F649

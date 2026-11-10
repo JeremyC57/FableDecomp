@@ -16,6 +16,13 @@ namespace NUISystem { class CComponent; }
 // serialiser independently addresses every used member at the offsets below.
 class CTCInventoryMap : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_PCMAPLIST
+ // Retail opt-in (chunk 1007, row 0x00589A30 CTCInventory::OpenPCMapMenu): Ego_r.pdb / FableWin.pdb
+ // ?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z, out of line at 0x0060EEB0 (`ret 8`; the Ego_r donor
+ // order ConstructMapList 0x0065F950 / ConstructPCMapList 0x006621A0 matches retail ConstructMapList 0x0060C900, `ret 0Ch`, three
+ // arguments). The bound spelling BuildMapMenu is not a PDB name (NAME_FIXES). Declaration only.
+ NUISystem::CComponent* ConstructPCMapList(bool a, bool* b);          // 0x0060EEB0
+#endif
  void AddLogBookSaveInfo(const CWideString&,const CWideString&,const CWideString&,CHeroLogBook::CHeroLogBookEntry::ECategory);
  class CUIMiniMapMarker {
  public: long Region;CCharString UIDefName;C2DVector Position;long DefNameLength,GraphicIndex;float Angle;

@@ -2641,3 +2641,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - vland reads a payload row's `flags` as a LIST; a string is iterated per character (CompilerFlags '/ G r') and the row grades against wrong flags. Build payloads with flags.split() (2026-11-10, Codex pass 16).
 - A `// Flags: none` line must not reach the payload: finish.py passed ['none'] and vland recorded CompilerFlags '/O2 /Oy /W3 none' (9 rows had it); keep only tokens starting with '/' (2026-11-10).
 - scratch split_oracle.py copies carry N='<chunk>' as a bare number: sed the number, not 'chunk1001' (chunk 1004's copy pointed at chunk 1001's oracle) (2026-11-10).
+- A block retail duplicates in two else arms needs a nested `if (a) { if (b) X else Y } else Y` with Y written twice; `if (a && b) X else Y` shares Y and misses (0x00583E26).
+- `map[k] = ptr.Get()` with the visible STLport operator[] (FABLE_RETAIL_STLP_MAP) reads the right side before the call and passes `&k`, as retail does; a by-value Set helper copies the key (0x0058A0C7).
+- Cache a cast pointer as a named local when retail loads it right after construction (`CSprite* s = static_cast<CSprite*>(p.Get());`) -- removes the zero register (0x0058E208).
