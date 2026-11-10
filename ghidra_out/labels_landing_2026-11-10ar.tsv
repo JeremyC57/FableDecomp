@@ -1,0 +1,49 @@
+address	name	evidence
+00AABA00	CSoundEmitterLH::Activate	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 1 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABA10	CSoundEmitterLH::Deactivate	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 2 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AAC1D0	CSoundEmitterLH::PlayAtmos	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 5 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABA20	CSoundEmitterLH::SetSpecificSamplePitch	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 6 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABA40	CSoundEmitterLH::SetSpecificSampleVolume	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 7 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AAC340	CSoundEmitterLH::StopSample	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 8 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AAC400	CSoundEmitterLH::StopSpecificSample	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 9 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AAC2E0	CSoundEmitterLH::StopAllSamples	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 10 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABA80	CSoundEmitterLH::StopAllLoops	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 11 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AAC460	CSoundEmitterLH::StopAllCriteriaContainingString	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 12 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABB60	CSoundEmitterLH::ReleaseLoop	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 13 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABD40	CSoundEmitterLH::Update	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 14 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABBB0	CSoundEmitterLH::SetPos	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 15 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AAB9C0	CSoundEmitterLH::MovePos	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 16 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABA60	CSoundEmitterLH::GetPos	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 17 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABB00	CSoundEmitterLH::IsSpecificSampleLoadedAndPlaying	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 21 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABAC0	CSoundEmitterLH::IsSpecificSamplePlaying	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 22 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+00AABC50	CSoundEmitterLH::IsSamplePlaying	CSoundEmitterLH vtable 0x0129E6EC (RTTI CSoundEmitterLH : CASoundEmitter) slot 23 = this address; slot name from engine/CASoundEmitter.h (Anniversary 360 PDB CSoundEmitterUN publics, same slot order, + the TLC CThingSoundEmitter forwarders' Ego_r names)
+009916F0	CASoundManager::GetPLipSyncBank	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+00991720	CASoundManager::GetAnyPLipSyncBank	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+00991690	CASoundManager::GetPSoundBank(const CLipSyncDataBank&) (descriptive)	no Anniversary counterpart; TLC body: record whose lip-sync bank is the argument -> its sound bank
+00991750	CASoundManager::UnloadAllBanks	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+009917E0	CASoundManager::GetPSoundBank(const CCharString&)	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+00991840	CASoundManager::GetPSoundBank(long)	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+009918F0	CASoundManager::CloseAllBanks	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+00991600	CASoundManager::EnableSound	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+00991620	CASoundManager::EnableAtmos	Anniversary 360 PDB publics lib_sound_manager_base.cpp (TU order) + the TLC body
+0088F610	CGameScriptInterface::IsSoundPlaying	Ego_r.pdb + FableWin.pdb ?IsSoundPlaying@CGameScriptInterface@@UBE_NK@Z; engine/CGameScriptInterface.h slot 693
+0088F620	CGameScriptInterface::EnableSounds	Ego_r.pdb + FableWin.pdb ?EnableSounds@CGameScriptInterface@@UBEX_N@Z; slot 694
+0088F660	CGameScriptInterface::StopSound	Ego_r.pdb + FableWin.pdb ?StopSound@CGameScriptInterface@@UBEXK@Z; slot 695
+00836740	CThingSoundEmitter::OnCreate	Ego_r.pdb ?OnCreate@CThingSoundEmitter@@MAE_NXZ; RTTI vtable slot (rows/00836740.cpp)
+00836810	CThingSoundEmitter::PlaySample	Ego_r.pdb / FableWin.pdb CThingSoundEmitter TU order (PlaySample, PlaySoundEvent, IsSamplePlaying, IsSampleLoadedAndPlaying, StopSpecificSample, ReleaseLoop) + bodies forwarding to the +0x98 CASoundEmitter slots
+00836840	CThingSoundEmitter::PlaySoundEvent	as 0x00836810
+00836870	CThingSoundEmitter::IsSamplePlaying	as 0x00836810
+008368A0	CThingSoundEmitter::IsSampleLoadedAndPlaying	as 0x00836810
+008368D0	CThingSoundEmitter::StopSpecificSample	as 0x00836810
+008368F0	CThingSoundEmitter::ReleaseLoop	as 0x00836810
+00836A50	CThingSoundEmitter::~CThingSoundEmitter	Ego_r.pdb ??1CThingSoundEmitter@@UAE@XZ; RTTI vtable slot 0 thunk
+004C9560	CThing::OnCreate	Ego_r.pdb ?OnCreate@CThing@@UAE_NXZ (virtual); called qualified by 0x00836740
+005A94BD	CTCInventoryTrade::OpenInventory	Ego_r.pdb / FableWin.pdb ?OpenInventory@CTCInventoryTrade@@UAEXXZ; vtable 0x01253034 slot 30
+005ACEDA	CTCInventoryTrade::ConstructActualInventoryPC	FableWin.pdb ?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ; only caller OpenInventoryPC 0x005AE86B
+005F64DD	CTCInventoryAbilities::CycleAssignedAbilities	Ego_r.pdb / FableWin.pdb ?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z (agentSND)
+005F6793	CTCInventoryAbilities::CycleAssignedExpressions	Ego_r.pdb / FableWin.pdb ?CycleAssignedExpressions@CTCInventoryAbilities@@QAEX_N@Z (agentSND)
+005EED8C	CTCInventoryAbilities::GetPrioritisedExpressionDefs	FableWin.pdb ?GetPrioritisedExpressionDefs@CTCInventoryAbilities@@QBEXAAV?$vector@J...@Z (engine/CTCInventoryAbilities.h PRIORITISED) + the landed body (appends ReceivedExpressionOrder)
+005EDCF0	CTCInventoryAbilities::GetNumAssignableSpecialMoveButtons	Ego_r.pdb / FableWin.pdb (engine/CTCInventoryAbilities.h BUTTONS); landed callers spell it GetNumAbilitiesPerRow
+005F6423	CTCInventoryAbilities::SetAbilityToButton	Ego_r.pdb / FableWin.pdb (agentSND NOTES)
+005F66D9	CTCInventoryAbilities::SetExpressionToButton	Ego_r.pdb / FableWin.pdb SetExpressionToButton(long, long) (agentSND NOTES)
+00A3ED30	CSoundManagerLH::FindByName	landed self-row spelling (descriptive; no PDB covers the LH module); one name for the address (was FindSample in 0x00AAC1D0)

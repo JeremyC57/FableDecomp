@@ -1,6 +1,7 @@
 // CBulletTimeManager::RecalculateSoundPitch() -- with a sound system present, hand it the lowest SoundPitch over every registered bullet-time entry (1.0 when none is lower)
 // Leaf: ?RecalculateSoundPitch@CBulletTimeManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5F10, length 144 bytes (138 + int3 padding), plain `ret` (thiscall, no arguments).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (SetPitch -> SetPitchFader slot 45).
 // Identity: FableWin.pdb / Ego_r.pdb `?RecalculateSoundPitch@CBulletTimeManager@@AAEXXZ` (private); the body walks the
 // BulletTimeInfoMap (map<void*, CBulletTimeInfo>, CBulletTimeInfo = {float Multiplier, float SoundPitch} -> SoundPitch at
 // node +0x18) and sits between the landed CBulletTimeManager members 0x004C5EA0 and 0x004C6010. The catalog
@@ -15,21 +16,7 @@
 // _Rb_global<bool>::_M_increment(_M_node)` (static, by value, inlined): the walk runs in eax and is copied back to esi
 // after the end test; an in-place member `_M_increment` (no copy) gives 127 bytes against retail 138.
 #include "fable_compiler.h"
-class CSoundSystem {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void SetPitch(long category, float pitch);  // slot 45 (+0xB4); name by effect
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                    // 0x013B8394
+#include "engine/CASoundManager.h"
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -115,11 +102,11 @@ private:
 
 void CBulletTimeManager::RecalculateSoundPitch()
 {
-    if (((CSoundSystem*)PSoundManager)) {
+    if (PSoundManager) {
         float pitch = 1.0f;
         for (std::map<void*, CBulletTimeInfo>::iterator it = BulletTimeInfoMap.begin(); it != BulletTimeInfoMap.end(); ++it)
             if (it->second.SoundPitch < pitch)
                 pitch = it->second.SoundPitch;
-        ((CSoundSystem*)PSoundManager)->SetPitch(0, pitch);
+        PSoundManager->SetPitchFader(0, pitch);
     }
 }

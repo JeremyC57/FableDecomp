@@ -6,6 +6,8 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, GetPSoundBank(const CCharString&) 0x009917E0
+//   (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary name); was a local CSymbolMap::FindFirstSymbolWithVal.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -88,11 +90,8 @@ public:
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);       // 0x00836810
 };
 bool __fastcall IS_THING_ALIVE(CThingSoundEmitter* const& thing);   // 0x0065D55F
-class CSymbolMap { public:
-    CASoundBank* FindFirstSymbolWithVal(const CCharString* value);   // 0x009917E0
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;             // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
 struct CGroupEntryRef {                         // CDefPointer-like counted pointer to the text group entry
     struct CRefCounted {
         long m_count;
@@ -281,7 +280,7 @@ void CTCVillage::FrameUpdate()
                 WasCurfewTime = IsCurfewTime_00658db3();
                 WasCookTime = IsCookTime_00658b20();
                 if (entry) {
-                    CASoundBank* soundBank = ((CSymbolMap*)PSoundManager)->FindFirstSymbolWithVal(&entry->BankName);
+                    CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->BankName);
                     if (soundBank) {
                         long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                         if (sample > 0) {

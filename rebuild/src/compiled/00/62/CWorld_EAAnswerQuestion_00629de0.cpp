@@ -10,6 +10,9 @@
 //   the donor build orders EAAnswerQuestion -> EAClickPastText -> EASkipCutScene and retail has 0x00629DE0 -> the
 //   17-byte subtitle forwarder 0x00629F30 -> the landed EASkipCutScene 0x00629F50. The static event table stores it at
 //   0x013B99C8 (initialiser 0x0121C57F). Catalog label "CPixelShader_OnTextureUpdateEvent" is propagated and wrong.
+// Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager, slot 9 Get2DEmitter (the 2-D CASoundEmitter,
+//   slot 4 PlaySoundEvent) and engine/CSoundInit.h under FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR (the expanded constructor); was a local
+//   CSoundSystem / CSoundPlayer / CSoundInit model.
 // Callees: CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0, CMessageEventManager::AddMessage 0x00687540
 //   (on CWorld +0x60), __fastcall PeekGuiDef() 0x00438570, the sound system 0x013B8394 slot 9 (+0x24, GetSoundPlayer)
 //   and the player's PlaySoundEvent (slot 4, +0x10), CWorld::GetSampleBank() const 0x0049D9B0,
@@ -30,31 +33,9 @@ class CCharString { public: void* PStringData; };
 #include "engine/C3DVector.h"
 class CThing;
 class CASoundBank;
-class CSoundInit {
-public:
-    float Volume, Pitch, Pan;
-    long NoPlays, PlaybackType;
-    unsigned long GainFaderBits, PitchFaderBits;
-    long OverrideID;
-    CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PitchFaderBits(0), OverrideID(-1)
-    {
-        PlaybackType = 1;
-        GainFaderBits = 0;
-    }
-};
-class CSoundPlayer {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
-    virtual unsigned long PlaySoundEvent(CASoundBank& bank, const CCharString& name, bool loop, CSoundInit& init, bool attached);   // slot 4 (+0x10)
-};
-class CSoundSystem {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
-    virtual CSoundPlayer* GetSoundPlayer();           // slot 9 (+0x24)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                   // 0x013B8394
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 class CPlayerGuiDef {
 public:
     unsigned char _pad[0x5e8];
@@ -121,9 +102,9 @@ void CWorld::EAAnswerQuestion(const CGameEvent* event)
         CSoundInit init;
         init.GainFaderBits = 0x8010;
         if (answer == 1)
-            ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonASoundCriteria, true, init, false);
+            PSoundManager->Get2DEmitter().PlaySoundEvent(GetSampleBank(), def->TextBoxButtonASoundCriteria, true, init, false);
         else
-            ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
+            PSoundManager->Get2DEmitter().PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
         subtitles.Clear(false);
     }
 }

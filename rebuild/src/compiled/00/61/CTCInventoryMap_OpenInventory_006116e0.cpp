@@ -1,4 +1,5 @@
 // CTCInventoryMap::OpenInventory() -- opens the world-map screen: remembers the previous hero-info screen, opens the base inventory, fades the sound channels, builds the map menu and the mouse pointer and keeps both components
+// Leaf: ?OpenInventory@CTCInventoryMap@@QAEXXZ
 // Leaf: OpenInventory@CTCInventoryMap
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 27 (family acc, DECISIONS_W26 D5): the callee FindTeleports 0x005FC620 is private in both PDBs (AAE).
@@ -7,6 +8,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006116E0, 535 bytes (+ int3 padding), speed TU (no frame pointer, `sub esp,10h`).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (FadeChannel -> SetGainFader slot 46).
 // Callees: NHeroInformationScreens::CBase slots 2 (+0x08) / 3 (+0x0C) through the +0x130 secondary base,
 //   CTCInventoryBase 0x005BC6ED (manifest "_Dest_val<...>" is propagated; named descriptively) and OpenInventory 0x005BD4EA,
 //   CManager::GetInstance 0x0041E5F2 + manager slots 16 (+0x40) / 26 (+0x68) + CreateComponent 0x0041DB1D,
@@ -105,16 +107,7 @@ public:
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-struct CSoundSystem {
-#define V(n) virtual void v##n();
-    V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
-    V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30) V(31) V(32) V(33) V(34) V(35) V(36) V(37) V(38) V(39)
-    V(40) V(41) V(42) V(43) V(44) V(45)
-#undef V
-    virtual void FadeChannel(long channel, long target, float time);   // slot 46 (+0xb8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                    // 0x013B8394
+#include "engine/CASoundManager.h"
 void __fastcall OnOpenMenus();                          // 0x0041D122
 struct CInputController {
 #define V(n) virtual void v##n();
@@ -183,10 +176,10 @@ void CTCInventoryMap::OpenInventory()
     NUISystem::CManager::GetInstance()->AddActiveTC(this);
     if (IsActive())
         return;
-    if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->FadeChannel(0x10, 0, 500.0f);
-        ((CSoundSystem*)PSoundManager)->FadeChannel(0x40, 0, 500.0f);
-        ((CSoundSystem*)PSoundManager)->FadeChannel(0x80, 0, 500.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, 0, 500.0f);
+        PSoundManager->SetGainFader(0x40, 0, 500.0f);
+        PSoundManager->SetGainFader(0x80, 0, 500.0f);
     }
     OnOpenMenus();
     CMainGameComponent::Get()->Display->Input->SetEnabled(false);

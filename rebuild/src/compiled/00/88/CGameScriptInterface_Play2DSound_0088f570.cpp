@@ -1,5 +1,9 @@
 // CGameScriptInterface::Play2DSound(const CCharString& symbol) const -- plays the engine sound bank's sample for the symbol once, unpositioned, through the game state's sound player; the invalid sound handle when the symbol has no sample
+// Leaf: ?Play2DSound@CGameScriptInterface@@UBEKABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088F570, length 145 bytes.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, slot 9 Get2DEmitter and its slot 3 PlaySample;
+//   engine/CSoundInit.h (FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR) and engine/CASoundBank.h (GetSoundIndexFromSymbol opt-in); was a local
+//   CGameState_Retail / CSoundPlayer_Retail / CSoundInit / CASoundBank model.
 // Callees: CASoundBank::GetSoundIndexFromSymbol @ 0x00A01920 on the engine's sound bank (g_pEngine @ 0x013B86A0, +0x10), the game state's (0x013B8394) virtual slot 9 (+0x24, the sound player),
 // the player's virtual slot 3 (+0x0c, PlaySample(bank, sample, loop, init, attached)); the invalid handle global @ 0x0129D25C.
 // Shape: the CSoundInit default constructor of the landed PlaySoundAtPos 0x00891170 (Volume/Pitch/Pan/NoPlays/
@@ -39,42 +43,17 @@ public:
     }
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
-class CSoundInit { public:                                 // Ego_r.pdb CSoundInit, 0x20 bytes
-    float         Volume;                           // +0x00
-    float         Pitch;                            // +0x04
-    float         Pan;                              // +0x08
-    long          NoPlays;                          // +0x0c
-    long          PlaybackType;                     // +0x10 (ESoundPlaybackType)
-    unsigned long GainFaderBits;                    // +0x14
-    unsigned long PitchFaderBits;                   // +0x18
-    long          OverrideID;                       // +0x1c
-    CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PitchFaderBits(0), OverrideID(-1)
-    {
-        PlaybackType = 1;
-        GainFaderBits = 0;
-    }
-};
-class CASoundBank { public:
-public:
-    long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
-};
-struct CSoundPlayer_Retail {
-    virtual void v000(); virtual void v001(); virtual void v002();
-    virtual long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);   // slot 3 (+0x0c)
-};
-struct CGameState_Retail {
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008();
-    virtual CSoundPlayer_Retail* GetSoundPlayer();  // slot 9 (+0x24)
-};
+#define FABLE_RETAIL_CASOUNDBANK_SOUNDINDEX
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR
+#include "engine/CASoundBank.h"
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 struct CEngine_Retail {
     unsigned char       _pad00[0x10];
     CASoundBank* m_pSoundBank;               // +0x10
     CASoundBank& GetSampleBank() const { return *m_pSoundBank; }
 };
 extern CEngine_Retail*    g_pEngine;                // 0x013B86A0
-class CASoundManager;
-extern CASoundManager* PSoundManager;             // 0x013B8394
 extern long               g_InvalidSoundHandle;     // 0x0129D25C
 class CWorld;
 struct CPlayerManager_Retail;
@@ -90,7 +69,7 @@ unsigned long CGameScriptInterface::Play2DSound(const CCharString& symbol) const
     if (sample) {
         CSoundInit init;
         init.GainFaderBits = 0x8010;
-        return ((CGameState_Retail*)PSoundManager)->GetSoundPlayer()->PlaySample(g_pEngine->GetSampleBank(), sample, false, init, true);
+        return PSoundManager->Get2DEmitter().PlaySample(g_pEngine->GetSampleBank(), sample, false, init, true);
     }
     return g_InvalidSoundHandle;
 }

@@ -1,7 +1,9 @@
 // CTCTalk::SetUpSpeechSample() -- reset the talker's speech bank and sample, resolve the lip-sync bank for the default speech bank, look the speaker's sound symbol up in the matching sound bank, start loading that lip-sync entry, then stamp the mime start time and the sample duration
+// Leaf: ?SetUpSpeechSample@CTCTalk@@QAEXXZ
 // Retry 10b (getsw sweep, FIXES B-15): the speaker info is read through an inline getter `GetSpeakerInfo()`; the plain member read gives the parked register/scheduling difference.
 // Leaf: SetUpSpeechSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2A50, 152 bytes (+8 int3), __fastcall, no arguments.
+// Sound manager (agentSND2, 2026-11-10): the "symbol map" at 0x013B8394 is PSoundManager (engine/CASoundManager.h); its bank lookups carry the Fable Anniversary 360 PDB names under FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP (GetPLipSyncBank 0x009916F0, GetAnyPLipSyncBank 0x00991720, GetPSoundBank(const CLipSyncDataBank&) 0x00991690 descriptive); was a local CSymbolMap.
 // The catalog label (CAnimateThing::SetUpAnimation) is propagated: the members touched are CTCTalk's
 // (Ego_r.pdb: SpeechSample +0x0C, SampleDurationFrames +0x14, MimeStartTime +0x1C, PSpeechBank +0x24, cf.
 // the landed CTCTalk rows 0x006E28D0 / 0x006E2910) and the row sits between CTCTalk::DoesSpeechExist
@@ -31,14 +33,8 @@ public:
     void BeginLoadingEntry(unsigned long index);                 // 0x00A42AC0
 };
 
-class CSymbolMap {
-public:
-    void* FindValueForSymbol(long symbol);                       // 0x009916F0
-    void* FindFirstValue();                                      // 0x00991720
-    void* FindSymbolForValue(long value);                        // 0x00991690
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                             // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
 
 struct CSpeakerInfo {
     unsigned char _pad_0x00[0xAC];
@@ -79,12 +75,12 @@ public:
 
     CLipSyncDataBank* GetLipSyncBank()
     {
-        if (!((CSymbolMap*)PSoundManager))
+        if (!PSoundManager)
             return 0;
         const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
-        CLipSyncDataBank* lipSync = (CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindValueForSymbol((long)bank);
+        CLipSyncDataBank* lipSync = const_cast<CLipSyncDataBank*>(PSoundManager->GetPLipSyncBank(*bank));
         if (!lipSync)
-            lipSync = (CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindFirstValue();
+            lipSync = const_cast<CLipSyncDataBank*>(PSoundManager->GetAnyPLipSyncBank());
         return lipSync;
     }
 
@@ -97,7 +93,7 @@ void CTCTalk::SetUpSpeechSample()
     SpeechSample = 0;
     CLipSyncDataBank* lipSync = GetLipSyncBank();
     if (lipSync) {
-        CASoundBank* soundBank = (CASoundBank*)((CSymbolMap*)PSoundManager)->FindSymbolForValue((long)lipSync);
+        CASoundBank* soundBank = PSoundManager->GetPSoundBank(*lipSync);
         if (soundBank)
             SpeechSample = soundBank->GetSoundIndexFromSymbol(GetDefinitionManager().GetSpeakerInfo()->SpeechSymbol);
         lipSync->BeginLoadingEntry(SpeechSample);

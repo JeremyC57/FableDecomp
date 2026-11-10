@@ -3,10 +3,11 @@
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2940, 93 bytes (+ int3 padding), thiscall `ret 4`.
+// Sound manager (agentSND2, 2026-11-10): the "symbol map" at 0x013B8394 is PSoundManager (engine/CASoundManager.h); its bank lookups carry the Fable Anniversary 360 PDB names under FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP (GetPLipSyncBank 0x009916F0, GetAnyPLipSyncBank 0x00991720, GetPSoundBank(const CLipSyncDataBank&) 0x00991690 descriptive); was a local CSymbolMap.
 // Identity: Ego_r.pdb name set `?GetSpeechDurationInFrames@CTCTalk@@ABEJJ@Z` (private const, long(long)); the landed
 //   CTCTalk::SetUpSpeechSample 0x006E2A50 calls it as "GetSampleDurationFrames" (call site 0x006E2ADE), the bank setter
 //   0x006E29A0 at 0x006E29FD. The catalog's "CAnimateThing_FindAndAddMeshSymbol" is descriptive.
-// Callees: the default speech bank getter @ 0x00686D70, CSymbolMap::FindValueForSymbol @ 0x009916F0 / FindFirstValue
+// Callees: the default speech bank getter @ 0x00686D70, CASoundManager::GetPLipSyncBank @ 0x009916F0 / GetAnyPLipSyncBank
 //   @ 0x00991720 (the inlined GetPLipSyncBank 0x006E2860), CLipSyncDataBank::GetPEntry(unsigned long) @ 0x00A42830 (landed),
 //   __ftol2 @ 0x00BFEA70 (the float-to-long conversion).
 // Globals: the speech-bank map @ 0x013B8394, CMainGameComponent::GetConstantFPS() @ 0x01375550, the default speech duration in frames
@@ -27,13 +28,8 @@ public:
     const CLipSyncEntry* GetPEntry(unsigned long index) const;   // 0x00A42830
 };
 
-class CSymbolMap {
-public:
-    void* FindValueForSymbol(long symbol);                  // 0x009916F0
-    void* FindFirstValue();                                 // 0x00991720
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                        // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -66,11 +62,11 @@ private:
     const CLipSyncDataBank* GetPLipSyncBank() const         // out of line @ 0x006E2860
     {
         const CLipSyncDataBank* lipSync = 0;
-        if (((CSymbolMap*)PSoundManager)) {
+        if (PSoundManager) {
             const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
-            lipSync = (const CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindValueForSymbol((long)bank);
+            lipSync = PSoundManager->GetPLipSyncBank(*bank);
             if (!lipSync)
-                lipSync = (const CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindFirstValue();
+                lipSync = PSoundManager->GetAnyPLipSyncBank();
         }
         return lipSync;
     }

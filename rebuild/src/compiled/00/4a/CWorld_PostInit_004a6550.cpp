@@ -3,13 +3,14 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A6550, 623 bytes (+ int3 padding), `ret 4` (virtual; FableWin.pdb / Ego_r.pdb
 //   ?PostInit@CWorld@@UAEXAAVCDisplayEngine@@@Z).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CASoundManager model is gone and its slots carry the header names (RefreshCategory -> SetGainFader slot 46).
 // Callees: CCharString 0x0099EBF0 / 0x0099EAE0, NProfileTimer::StartProfile 0x009D8240 and NProgressDisplay::DisplayProgress
 //   0x009E9F40 (both __fastcall), operator new 0x00BFEA1A; ctors CAtmosProcess 0x006B1960 (0x20 bytes), CGameScriptInterface
 //   0x006E7740 (0x50), CScriptInfoManager 0x00CB5C70 (0x20) + Init 0x00CB5D80, CQuestManager 0x004B4590 (0xb4), CMusicManager
 //   0x006BE300 (0x40); CCountedPointer<T>::Reset(T*) out of line per type: CAtmosProcess 0x004AB300, CScriptInfoManager
 //   0x004AB370, CQuestManager 0x004A9A10 (on the global counted pointer @ 0x013B89FC), CMusicManager 0x004AE650;
 //   CDisplayEngine::Get3DEngine (inline, Engine3D +0x2c) then virtual CIEngine::SetWorld (slot 7);
-//   g_pSoundManager 0x013B8394 slot 46 (no PDB symbol; descriptive RefreshCategory(long, float, float)).
+//   g_pSoundManager 0x013B8394 slot 46 (no PDB symbol; descriptive SetGainFader(long, float, float)).
 //   Literals "Init Atmos" 0x012390C0, "Init Atmos Processor" 0x012390A8, "Init Scripts" 0x01239098, "Engine Set World"
 //   0x01239084, "Init Music Manager" 0x01239070.
 // Layout: Ego_r.pdb CWorld (Component +8, PlayerManager +0xc, DefinitionManager +0x10, PAtmosProcessor +0x24,
@@ -35,11 +36,7 @@ class CIDrawWorld {
 public:
     virtual void DrawWorld() = 0;
 };
-class CBaseClassNonCopyable {
-protected:
-    CBaseClassNonCopyable();
-    virtual ~CBaseClassNonCopyable();
-};
+#include "engine/CBaseClassNonCopyable.h"               // shared header (was a local copy; CASoundManager.h includes it)
 
 class CAtmosProcess { unsigned char _body[0x20]; public: CAtmosProcess(); /* 0x006B1960 */ };
 class CScriptInfoManager { unsigned char _body[0x20]; public: CScriptInfoManager(); /* 0x00CB5C70 */ void Init(); /* 0x00CB5D80 */ };
@@ -83,17 +80,7 @@ public:
     CIEngine* Engine3D;                                // +0x2c
     CIEngine& Get3DEngine() { return *Engine3D; }
 };
-class CASoundManager {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
-    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
-    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xb8)
-};
-extern CASoundManager* PSoundManager;                // 0x013B8394
+#include "engine/CASoundManager.h"
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
 public:
@@ -141,8 +128,8 @@ void CWorld::PostInit(CDisplayEngine& displayEngine)
     NProgressDisplay::DisplayProgress("Init Music Manager", -1.0f, false, false);
     PMusicManager.Reset(new CMusicManager);
     if (PSoundManager) {
-        PSoundManager->RefreshCategory(0x10, 0, 0);
-        PSoundManager->RefreshCategory(0x40, 0, 0);
-        PSoundManager->RefreshCategory(0x80, 0, 0);
+        PSoundManager->SetGainFader(0x10, 0, 0);
+        PSoundManager->SetGainFader(0x40, 0, 0);
+        PSoundManager->SetGainFader(0x80, 0, 0);
     }
 }

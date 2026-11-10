@@ -22,7 +22,7 @@ class CTCInventoryTrade { public:
     void* ParentThing; CComponent* Components[4]; int Count;
     bool InventoryTradeOpen; CComponent* PMouse_Pointer; float AccumFadeTime;
     void PrepareScreen() { Log('P'); }
-    void ConstructTradeScreenPC() { Log('L'); }
+    void ConstructActualInventoryPC() { Log('L'); }
     void OpenInventory() { Log('O'); }
     void OpenInventoryPC()
     {
@@ -37,7 +37,7 @@ class CTCInventoryTrade { public:
         CFrontEndManager* frontEnd = &g_fe;
         frontEnd->OnInventoryScreenOpened(this);
         frontEnd->OnThingInventoryOpened(ParentThing);
-        ConstructTradeScreenPC();
+        ConstructActualInventoryPC();
         PMouse_Pointer = frontEnd->CreateComponent("UI_MOUSE_POINTER", false);
         PMouse_Pointer->Reset();
         Components[Count++] = PMouse_Pointer;

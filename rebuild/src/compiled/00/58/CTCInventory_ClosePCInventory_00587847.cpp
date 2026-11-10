@@ -1,4 +1,5 @@
 // CTCInventory::ClosePCInventory(bool closeInGameMenu) -- leave the PC inventory screens: cancel the pending UI action,
+// Leaf: ?ClosePCInventory@CTCInventory@@QAEX_N@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -6,6 +7,7 @@
 // state, release the UI manager's modal state, restore the three audio group volumes from the user profile, clear the
 // quest-persistent flags and restart game rendering
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00587847, 506 bytes, `ret 4` (frame pointer, `leave`).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (SetGainFader slot 46).
 // Shape: the two discarded `HasTC(t) ? FindTCInline(t) : 0` component fetches (0x13, 0x12) keep the parent thing loaded in
 // eax for `lea ecx,[eax+20h]` (a bare HasTC would fold to `mov ecx; add ecx,20h`); GetInterface one-ternary for 0xc6.
 #include "fable_compiler.h"
@@ -129,12 +131,7 @@ class CUserProfileManager { public:
     float GetSoundVolume() const { return UseAlternateVolumes ? AlternateSoundVolume : SoundVolume; }
     static CUserProfileManager& __fastcall Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
 };
-struct CSoundSystem {
-    virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07(); virtual void s08(); virtual void s09(); virtual void s10(); virtual void s11(); virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15(); virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19(); virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23(); virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27(); virtual void s28(); virtual void s29(); virtual void s30(); virtual void s31(); virtual void s32(); virtual void s33(); virtual void s34(); virtual void s35(); virtual void s36(); virtual void s37(); virtual void s38(); virtual void s39(); virtual void s40(); virtual void s41(); virtual void s42(); virtual void s43(); virtual void s44(); virtual void s45(); 
-    virtual void SetGainFader(long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                        // 0x013B8394
+#include "engine/CASoundManager.h"
 struct CRenderer {
     virtual void r00(); virtual void r01(); virtual void r02(); virtual void r03(); virtual void r04(); virtual void r05(); virtual void r06(); virtual void r07(); virtual void r08(); virtual void r09(); virtual void r10(); virtual void r11(); virtual void r12(); virtual void r13(); virtual void r14(); virtual void r15(); virtual void r16(); virtual void r17(); virtual void r18(); virtual void r19(); virtual void r20(); virtual void r21(); virtual void r22(); virtual void r23(); virtual void r24(); virtual void r25(); virtual void r26(); virtual void r27(); virtual void r28(); virtual void r29(); virtual void r30(); virtual void r31(); virtual void r32(); virtual void r33(); virtual void r34(); virtual void r35(); virtual void r36(); virtual void r37(); virtual void r38(); virtual void r39(); virtual void r40(); virtual void r41(); virtual void r42(); virtual void r43(); virtual void r44(); virtual void r45(); virtual void r46(); virtual void r47(); virtual void r48(); virtual void r49(); virtual void r50(); virtual void r51(); virtual void r52(); virtual void r53(); virtual void r54(); virtual void r55(); 
     virtual void SetPaused_slot56(bool a, bool b);          // slot 56 (+0xE0)
@@ -211,10 +208,10 @@ void CTCInventory::ClosePCInventory(bool closeInGameMenu)
     NUISystem::CManager::GetInstance()->ReleaseFocus_slot6();
     NUISystem::CManager::GetInstance()->ShowMousePointer_slot29();
     g_InventoryCamera.Reset();
-    if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->SetGainFader(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->SetGainFader(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->SetGainFader(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
     }
     ClearQuestPersistentFlags();
     StartGameRendering();

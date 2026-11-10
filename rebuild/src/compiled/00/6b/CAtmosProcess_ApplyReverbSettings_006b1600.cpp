@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the entry is indexed twice in the copy call (`ReverbEnvironmentEntries[ReverbType].Params` for first and last) instead of through a const reference local, which gives retail's unfolded `mov eax,[esi+6Ch] ; add eax,edx` entry address
 // Leaf: ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1600, length 165 bytes (+ int3 padding), thiscall, plain `ret`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (SetReverbParameters slot 29, SetReverbLevel slot 30).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CDefinitionManager::Get @ 0x0044C6B0,
 //   CDefinitionManager::GetDef<CSoundDef>(const CCharString&, CDefPointer<const CSoundDef>*) const @ 0x004196B2, memmove @ 0x00BFEAE6
 //   (MSVCR71 import), the sound system's virtual slots 29 (+0x74, the reverb parameters) and 30 (+0x78, the reverb
@@ -84,19 +85,7 @@ public:
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 
-class CSoundSystem {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
-    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
-    virtual void SetReverbParameters(const CReverbParameters& params);   // slot 29 (+0x74, descriptive)
-    virtual void SetReverbLevel(float level, float time);               // slot 30 (+0x78, descriptive)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                        // 0x013B8394
+#include "engine/CASoundManager.h"
 
 class CAtmosProcess {
 public:
@@ -109,7 +98,7 @@ private:
 
 void CAtmosProcess::ApplyReverbSettings()
 {
-    if (((CSoundSystem*)PSoundManager)) {
+    if (PSoundManager) {
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
@@ -119,8 +108,8 @@ void CAtmosProcess::ApplyReverbSettings()
         CReverbParameters params;
         std::copy(def->ReverbEnvironmentEntries[ReverbType].Params, def->ReverbEnvironmentEntries[ReverbType].Params + 21,
                   params.Parameters);
-        ((CSoundSystem*)PSoundManager)->SetReverbParameters(params);
-        ((CSoundSystem*)PSoundManager)->SetReverbLevel(ReverbLevel, 0.0f);
+        PSoundManager->SetReverbParameters(params);
+        PSoundManager->SetReverbLevel(ReverbLevel, 0.0f);
         if (--def->RefCount == 0)
             def->Destroy();
     }

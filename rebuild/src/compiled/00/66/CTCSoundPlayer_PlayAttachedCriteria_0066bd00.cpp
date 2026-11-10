@@ -3,6 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BD00, 229 bytes (+ int3 padding), thiscall `ret 14h`. Name: Ego_r.pdb
 //   `?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z`; the catalog label "CSoundInfo::PlaySound" is a
 //   propagated name (landed callers declare this address as `PlaySound(const CCharString&, bool, long, long, long)`).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Grade: RELOCATION_MATCH (sweep1, 2026-10-25) -- re-modelled on the twin PlayUnattachedCriteria 0x0066BDF0 (hand902):
 //   the real STLport vector<CCharString> (_Vector_base + vector, plain inline dtors, the walk guarded by
 //   `if (it != names.end())`), replacing the flat CCharStringVector whose dtor carried a dead `_M_start = 0` store to
@@ -55,8 +56,7 @@ public:
     CASoundBank& GetSampleBank() const;                // 0x004C7A80
 };
 extern bool          g_bSoundEnabled;                  // 0x0137E974
-class CASoundManager;
-extern CASoundManager* PSoundManager;                     // 0x013B8394
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern unsigned long g_InvalidSoundHandle;             // 0x0129D25C
 class CTCBase {
 public:
@@ -88,7 +88,7 @@ __declspec(noinline) void CTCSoundPlayer::GetPotentialCriteriaStrings(const CCha
 
 unsigned long CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, bool a, bool b, bool c, long d)
 {
-    if (g_bSoundEnabled && ((void*)PSoundManager)) {
+    if (g_bSoundEnabled && PSoundManager) {
         CASoundBank& bank = ParentThing->GetSampleBank();
         std::vector<CCharString> names;
         GetPotentialCriteriaStrings(criteria, names);

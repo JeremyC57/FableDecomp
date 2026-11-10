@@ -1,38 +1,17 @@
-// CThingSoundEmitter::ReleaseLoop(unsigned long sampleID) -- while the game state exists and the emitter is not dead, release the looping sample through the emitter's sound object
+// CThingSoundEmitter::ReleaseLoop(unsigned long sampleID) -- while the sound manager exists and the thing is not dead, release the looping sample on the thing's sound emitter
 // Leaf: ?ReleaseLoop@CThingSoundEmitter@@QAEXK@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008368F0, 32 bytes, `ret 4` (the virtual call is a tail `jmp [eax+34h]`).
-// Naming: Ego_r.pdb's CThingSoundEmitter TU defines ?StopSpecificSample@CThingSoundEmitter@@QAEXK@Z immediately followed by
-//   ?ReleaseLoop@CThingSoundEmitter@@QAEXK@Z (two 16-byte donor bodies in that order); retail has the landed
-//   StopSpecificSample 0x008368D0 (sound-object slot 9) immediately followed by this byte twin (slot 13), inside the
-//   CThingSoundEmitter TU (OnCreate 0x00836740 .. Create 0x008369F0); both are the only (unsigned long) void members
-//   of the class. FINDINGS chunk 401. Was landed as the generic "ConditionalVirtualDispatch_OnLevelUnload".
-// Layout: as the landed sibling 0x008368D0: CThing dead bit = bit 0 of +0x91, the sound object +0x98 (retail-only
-//   member); g_pGameState 0x013B8394.
-// Shape: one inline `g && !Dead` guard; the call is the last statement, so it becomes the tail jump.
-class CASoundManager;
-extern CASoundManager* PSoundManager;                               // 0x013B8394
-
-struct CSoundPlayer {                                    // the emitter's sound object at +0x98
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
-    virtual void StopSpecificSample(unsigned long sampleID);   // slot 9 (+0x24)
-    virtual void v010(); virtual void v011(); virtual void v012();
-    virtual void ReleaseLoop(unsigned long sampleID);          // slot 13 (+0x34)
-};
-
-class CThingSoundEmitter {
-public:
-    unsigned char  _pad00[0x91];
-    unsigned char  Dead : 1;                             // +0x91 bit 0 (CThing flags, PDB +0xa1)
-    unsigned char  _flags91_1 : 7;
-    unsigned char  _pad92[0x6];
-    CSoundPlayer*  m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
-    bool IsActive() const { return ((void*)PSoundManager) && !Dead; }
-    void ReleaseLoop(unsigned long sampleID);
-};
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008368F0, 32 bytes, thiscall `ret 4`. Emitter slot 13 (+0x34) ReleaseLoop.
+// Model (agentSND2, 2026-11-10): the shared engine/CThingSoundEmitter.h with the opt-in FABLE_RETAIL_CTHINGSOUNDEMITTER_SOUNDEMITTER
+//   (+0x98 PSoundEmitter, the CASoundEmitter OnCreate gets from CASoundManager::Create3DEmitter; the Ego_r.pdb forwarder
+//   declarations), engine/CThing.h's Dead bit (+0x91 bit 0, IsDead), engine/CASoundManager.h's PSoundManager and
+//   engine/CASoundEmitter.h's slot names; was a local padded CThingSoundEmitter / CSoundPlayer model.
+// Shape: the global test first, then the dead bit; the emitter call is a sibling-call `jmp` with the arguments in place.
+#define FABLE_RETAIL_CTHINGSOUNDEMITTER_SOUNDEMITTER
+#include "engine/CASoundManager.h"
+#include "engine/CThingSoundEmitter.h"
 
 void CThingSoundEmitter::ReleaseLoop(unsigned long sampleID)
 {
-    if (IsActive())
-        m_pSoundPlayer->ReleaseLoop(sampleID);
+    if (PSoundManager && !IsDead())
+        PSoundEmitter->ReleaseLoop(sampleID);
 }

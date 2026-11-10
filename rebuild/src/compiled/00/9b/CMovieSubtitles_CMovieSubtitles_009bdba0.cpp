@@ -1,6 +1,7 @@
 // CMovieSubtitles::CMovieSubtitles() -- an empty subtitle list (STLport sentinel node malloc'd and self-linked), no text bank, 30 fps, not subtitle time, an empty formatted-text wide string, frame counter 0
 // Leaf: ??0CMovieSubtitles
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BDBA0, length 63 bytes.
+// Sound manager (agentSND2, 2026-11-10): the PSoundManager member is engine/CASoundManager.h's class (was declared locally as a struct).
 // Callees: malloc @ 0x00BFEA0E (the 0x24-byte list node: links + a 0x1c-byte CSubTitle),
 // CWideString::CWideString() @ 0x0099AED0. No vtable: the chunk label
 // "CTCCreatureGeneratorCreator::CTCCreatureGeneratorCreator" is propagated; the neighbours are the
@@ -14,7 +15,7 @@
 // counter stored after the wide string's constructor.
 #include <stdlib.h>
 struct CDataBank;
-struct CASoundManager;
+#include "engine/CASoundManager.h"                  // the PSoundManager member's class (RTTI class key; was a local `struct` declaration)
 
 class CWideString {
 public:

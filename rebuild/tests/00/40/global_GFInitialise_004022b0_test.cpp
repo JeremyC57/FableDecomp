@@ -203,5 +203,6 @@ int main()
     }
 
     printf("FABLETLC_GFINITIALISE_BEHAVIOR PASS\n");
+    printf("004022b0_TEST PASS\n");
     return 0;
 }

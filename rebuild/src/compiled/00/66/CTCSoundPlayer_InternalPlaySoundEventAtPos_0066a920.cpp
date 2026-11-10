@@ -4,6 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066A920, 169 bytes (+ int3 padding to 176), thiscall `ret 14h` (`this` unused).
 //   Name: Ego_r.pdb `?InternalPlaySoundEventAtPos@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVC3DVector@@ABVCCharString@@_N3@Z`.
 //   Callers: 0x0066AA62 / 0x0066AB4B / 0x0066ABCD / 0x0066AC28 (CTCSoundPlayer neighbours) and 0x0066BE67.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Label correction: the catalog "GetAIStateGroupTypeConditional" is a propagated name.
 // Callees/globals: CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) @ 0x008369F0 (static __fastcall),
 //   CThingSoundEmitter::PlaySample @ 0x00836810 / PlaySoundEvent @ 0x00836840 (landed), CTCSoundPlayer::
@@ -60,8 +61,7 @@ public:
     C3DVector     Position;                     // +0x0c
 };
 
-class CASoundManager;
-extern CASoundManager* PSoundManager;              // 0x013B8394 (no sound while null)
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
@@ -94,7 +94,7 @@ public:
 
 unsigned long CTCSoundPlayer::InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached)
 {
-    if (((void*)PSoundManager)) {
+    if (PSoundManager) {
         CThingSoundEmitter* emitter = CThingSoundEmitter::Create(pos, 0, true);
         if (emitter && bank.IsSoundEventValid(name)) {
             CSoundInit init;

@@ -1,12 +1,11 @@
 // CWorld::ResetToFrontEnd() -- leave the game: build the front-end game component, start it and hand it to the main component as the next one to run, then quit the main component
 // Leaf: ?ResetToFrontEnd@CWorld@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049DCC0, length 142 bytes (+ int3 padding), plain `ret`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h; 0x00991620 is CASoundManager::EnableAtmos (agentSND,
+//   Anniversary name, FABLE_RETAIL_CASOUNDMANAGER_ENABLE_NAMES); was the CGameScriptInterface_SoundProvider / CFlaggedObject_Retail stand-ins.
 // PDB: ?ResetToFrontEnd@CWorld@@QAEXXZ (Ego_r.pdb + reloc_bindings.tsv).
-// Callees: 0x00991620 on the sound object at 0x013B8394 (a non-virtual bool setter: stores +0x26 and calls its slot 2
-//   when the value changes; CGameScriptInterface::EnableSounds 0x0088F620 calls it with true/false). No PDB name for
-//   either (CASoundManager is an empty interface in Ego_r.pdb; the +0x26 bool lives in an implementation class the PDB
-//   does not carry), so both bind the established landed spellings: ?func_00991620@CFlaggedObject_Retail@@QAEX_N@Z (the
-//   landed 0x00991620 body) and ?DAT_013B8394@@3PAUCGameScriptInterface_SoundProvider@@A (the landed 0x0088F610),
+// Callees: CASoundManager::EnableAtmos(false) 0x00991620 on PSoundManager 0x013B8394 (stores +0x26 and calls slot 2
+//   SetEnableAtmos when the value changes; CGameScriptInterface::EnableSounds 0x0088F620 calls it with true/false),
 //   operator new 0x00BFEA1A,
 //   ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z 0x00496070 (0x1E60 bytes) and
 //   ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z 0x0042EA8F (0x148 bytes) -- both PDBs
@@ -30,14 +29,8 @@ class CGame;
 extern CGame GGame;                          // 0x013B83D0
 extern bool  g_bUseLegacyFrontend;           // 0x013B8642
 
-struct CGameScriptInterface_SoundProvider {  // 0x013B8394's object, as the landed 0x0088F610 models it
-    void** vtable;
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;   // 0x013B8394
-struct CFlaggedObject_Retail {               // the landed 0x00991620's `this` model
-    void func_00991620(bool enabled);        // 0x00991620
-};
+#define FABLE_RETAIL_CASOUNDMANAGER_ENABLE_NAMES
+#include "engine/CASoundManager.h"
 
 class CGameComponent { public:
     virtual ~CGameComponent();               // slot 0
@@ -72,8 +65,8 @@ class CWorld : public CWorld_PDB { public:
 
 void CWorld::ResetToFrontEnd()
 {
-    if (((CGameScriptInterface_SoundProvider*)PSoundManager))
-        reinterpret_cast<CFlaggedObject_Retail*>(((CGameScriptInterface_SoundProvider*)PSoundManager))->func_00991620(false);
+    if (PSoundManager)
+        PSoundManager->EnableAtmos(false);
     CGameComponent* frontEnd;
     if (g_bUseLegacyFrontend) {
         CFrontendGameComponentInit init;

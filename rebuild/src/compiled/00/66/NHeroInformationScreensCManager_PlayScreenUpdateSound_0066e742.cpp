@@ -6,6 +6,8 @@
 //   `?PlayScreenUpdateSound@CManager@NHeroInformationScreens@@QBEXW4EScreenSoundTypes@2@@Z` (the only one-argument void
 //   const sound member of the class; it sits in the NHeroInformationScreens TU next to CBase::CBase 0x0066E734). No call or
 //   address reference reaches it in retail.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, slot 9 Get2DEmitter (its slot 3 PlaySample) and
+//   engine/CSoundInit.h; was a local CGameState / CSoundPlayer / CSoundInit model.
 // Callees: CPlayerGui::PeekGuiDef() @ 0x00438570 (static `__fastcall`, `const CPlayerGuiDef&`), the CSoundInit default
 //   ctor @ 0x0041C930 (out of line in this TU; landed as SSettings_0041c930), the game state's virtual slot 9
 //   GetSoundPlayer (+0x24) and the player's slot 3 PlaySample(bank, sample, loop, init, attached) (+0x0c; the landed
@@ -19,25 +21,8 @@
 #pragma optimize("s", on)
 class CCharString;
 class CASoundBank;
-class CSoundInit {
-public:
-    float         Volume, Pitch, Pan;
-    long          NoPlays, PlaybackType;
-    unsigned long GainFaderBits, PitchFaderBits;
-    long          OverrideID;
-    CSoundInit();                               // 0x0041C930
-};
-class CSoundPlayer {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);   // slot 3 (+0x0c)
-};
-class CGameState {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual CSoundPlayer* GetSoundPlayer();     // slot 9 (+0x24)
-};
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
@@ -49,8 +34,6 @@ public:
     CASoundBank*  PSampleBank;                  // +0x10
     CASoundBank& GetSampleBank() const { return *PSampleBank; }
 };
-class CASoundManager;
-extern CASoundManager* PSoundManager;            // 0x013B8394
 class CPlayerGuiDef {
 public:
     unsigned char _pad00[0x3c];
@@ -80,9 +63,9 @@ void CManager::PlayScreenUpdateSound(EScreenSoundTypes type) const
         sample = CPlayerGui::PeekGuiDef().InventoryNoMovementSound;
         break;
     }
-    if (((CGameState*)PSoundManager)) {
+    if (PSoundManager) {
         CASoundBank& bank = CMainGameComponent::Get()->GetSampleBank();
-        ((CGameState*)PSoundManager)->GetSoundPlayer()->PlaySample(bank, sample, true, CSoundInit(), false);
+        PSoundManager->Get2DEmitter().PlaySample(bank, sample, true, CSoundInit(), false);
     }
 }
 }

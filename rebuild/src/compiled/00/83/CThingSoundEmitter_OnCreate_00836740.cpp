@@ -1,49 +1,22 @@
-// CThingSoundEmitter::OnCreate() -- runs the CThing creation step, then asks the game state for a sound object at the emitter's position; true only when both succeed
-// Leaf: OnCreate
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00836740, 52 bytes, plain `ret`.
-// Identity: ?OnCreate@CThingSoundEmitter@@MAE_NXZ (FableWin.pdb, the TU's ConstructFromParams/Create/OnCreate block); the
-//   result lands in the retail-only sound-object member +0x98 that the constructor 0x008367B0 zeroes and every other
-//   CThingSoundEmitter method (PlaySample 0x00836810 ..) dispatches through. The manifest label
-//   "CThing_OnCreateWithInterface" is descriptive and wrong.
-// Callees: CThing::OnCreate() 0x004C9560 (qualified base call); slot 4 (+0x10) of the game state 0x013B8394, given the
-//   position member Pos (+0xa6) by reference.
-// Layout: retail CThingSoundEmitter (the landed constructor 0x008367B0 model, `#pragma pack(1)`): sound object +0x98,
-//   AttachedToThing +0x9c, PAttachedThing +0x9d, ContinuePlayingAfterAttachedThingDeath +0xa5, Pos +0xa6.
-// Shape: `if (base && global) { store; if (stored) return true; } return false;` -- one `xor al,al` exit at the end; the new sound object is
-//   stored before its null test (`test eax,eax ; mov [esi+98h],eax ; je`).
-#include "engine/C3DVector.h"
-struct CSoundPlayer;
-
-struct CGameState {                                      // 0x013B8394
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
-    virtual CSoundPlayer* CreateSoundPlayer(const C3DVector& pos);   // slot 4 (+0x10)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                         // 0x013B8394
-
-class CThing { public:
-    virtual void v000();
-    unsigned char _pad04[0x94];
-    bool OnCreate();                                     // 0x004C9560
-};
-
-#pragma pack(push, 1)
-class CThingSoundEmitter : public CThing { public:
-    CSoundPlayer*  m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
-    bool           AttachedToThing;                      // +0x9c
-    unsigned char  PAttachedThing[8];                    // +0x9d CIntelligentPointer<CThing>
-    bool           ContinuePlayingAfterAttachedThingDeath;   // +0xa5
-    C3DVector      Pos;                                  // +0xa6
-    bool OnCreate();
-};
-#pragma pack(pop)
+// CThingSoundEmitter::OnCreate() -- after the CThing creation succeeds and while the sound manager exists, create the thing's 3-D sound emitter at Pos; true when one was made
+// Leaf: ?OnCreate@CThingSoundEmitter@@MAE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00836740, thiscall, vtable 0x01272C24 slot 8.
+// Callees: CThing::OnCreate 0x004C9560, CASoundManager::Create3DEmitter (PSoundManager slot 4, +0x10).
+// Model (agentSND2, 2026-11-10): the shared engine/CThingSoundEmitter.h with the opt-ins FABLE_RETAIL_CTHINGSOUNDEMITTER_SOUNDEMITTER
+//   (+0x98 PSoundEmitter) and _MEMBERS (Pos C3DVector +0xA6, packed), engine/CASoundManager.h's PSoundManager and its slot 4
+//   Create3DEmitter; was a local padded CThing / CThingSoundEmitter model with a CGameState stand-in for PSoundManager.
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHING_LOADSINGLE                        // CThing slot 8 OnCreate (Ego_r.pdb ?OnCreate@CThing@@UAE_NXZ)
+#define FABLE_RETAIL_CTHINGSOUNDEMITTER_SOUNDEMITTER
+#define FABLE_RETAIL_CTHINGSOUNDEMITTER_MEMBERS
+#include "engine/CASoundManager.h"
+#include "engine/CThingSoundEmitter.h"
 
 bool CThingSoundEmitter::OnCreate()
 {
-    if (CThing::OnCreate() && ((CGameState*)PSoundManager)) {
-        m_pSoundPlayer = ((CGameState*)PSoundManager)->CreateSoundPlayer(Pos);
-        if (m_pSoundPlayer)
+    if (CThing::OnCreate() && PSoundManager) {
+        PSoundEmitter = PSoundManager->Create3DEmitter(Pos);
+        if (PSoundEmitter)
             return true;
     }
     return false;

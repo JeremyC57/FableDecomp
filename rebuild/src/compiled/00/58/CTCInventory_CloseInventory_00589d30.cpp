@@ -1,5 +1,6 @@
 // CTCInventory::CloseInventory() -- shut the inventory: clear the quest-persistent flags and edit boxes, release the primitive handles, delete the PC screens, release the UI manager's modal state, reset the inventory camera, deactivate the hero's active mode components, restore audio volumes and the front end's style, and restart game rendering
 // Leaf: ?CloseInventory@CTCInventory@@QAEXXZ
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (SetGainFader slot 46).
 // Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -110,19 +111,7 @@ class CUserProfileManager { public:
     float GetSoundVolume() const { return UseAlternateVolumes ? AlternateSoundVolume : SoundVolume; }
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
 };
-struct CSoundSystem {
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005();
-    virtual void s006(); virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011();
-    virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017();
-    virtual void s018(); virtual void s019(); virtual void s020(); virtual void s021(); virtual void s022(); virtual void s023();
-    virtual void s024(); virtual void s025(); virtual void s026(); virtual void s027(); virtual void s028(); virtual void s029();
-    virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035();
-    virtual void s036(); virtual void s037(); virtual void s038(); virtual void s039(); virtual void s040(); virtual void s041();
-    virtual void s042(); virtual void s043(); virtual void s044(); virtual void s045();
-    virtual void SetGainFader(long groupMask, float volume, float fadeTime); // slot 46 (+0xB8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                    // 0x013B8394
+#include "engine/CASoundManager.h"
 struct CRenderer {
     virtual void r000(); virtual void r001(); virtual void r002(); virtual void r003(); virtual void r004(); virtual void r005();
     virtual void r006(); virtual void r007(); virtual void r008(); virtual void r009(); virtual void r010(); virtual void r011();
@@ -245,10 +234,10 @@ void CTCInventory::CloseInventory()
     CMainGameComponent::Get()->PDisplayEngine->PRenderer->SetEnabled(true);
     CWorld* world = (&GetWorld());
     world->LastInventoryCloseFrame = CWorld::GetFrame();
-    if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->SetGainFader(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->SetGainFader(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->SetGainFader(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
     }
     NUISystem::CManager::GetInstance()->SetCurrentStyle(NUISystem::CManager::GetInstance()->GetStyleDef()->Style, true);
     CMainGameComponent::Get()->PDisplayEngine->PRenderer->SetPaused(false, false);

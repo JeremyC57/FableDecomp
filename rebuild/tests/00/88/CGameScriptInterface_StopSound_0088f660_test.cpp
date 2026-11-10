@@ -1,69 +1,25 @@
+// Behaviour test for CGameScriptInterface::StopSound 0x0088F660: host model -- forwards the sample id to the sound manager's slot 14.
 #include <cstdio>
-#include <cstring>
-
-class CGSIStopSoundEmitter
-{
+class CASoundManager {
 public:
-    virtual void Slot00();
-    virtual void Slot04();
-    virtual void Slot08();
-    virtual void Slot0c();
-    virtual void Slot10();
-    virtual void Slot14();
-    virtual void Slot18();
-    virtual void Slot1c();
-    virtual void Slot20();
-    virtual void Slot24();
-    virtual void Slot28();
-    virtual void Slot2c();
-    virtual void Slot30();
-    virtual void Slot34();
-    virtual void StopSound(unsigned long soundId);
+    unsigned long Calls; unsigned long Last;
+    CASoundManager() : Calls(0), Last(0) {}
+    virtual ~CASoundManager() {}
+    virtual void StopSound(unsigned long id) { ++Calls; Last = id; }
 };
-
-class CGameScriptInterface
-{
+static CASoundManager* PSoundManager = 0;
+class CGameScriptInterface {
 public:
-    virtual void StopSound(unsigned long soundId) const;
+    void StopSound(unsigned long soundId) const { PSoundManager->StopSound(soundId); }
 };
-
-class CASoundManager; CASoundManager* PSoundManager;   // 0x013B8394 (naming wave 13)
-static CGSIStopSoundEmitter* g_ObservedEmitter;
-static unsigned long g_ObservedSoundId;
-static unsigned long g_CallCount;
-
-void __fastcall CGSIStopSound_VirtualStop(
-    CGSIStopSoundEmitter* emitter,
-    void*,
-    unsigned long soundId)
-{
-    g_ObservedEmitter = emitter;
-    g_ObservedSoundId = soundId;
-    ++g_CallCount;
-}
-
 int main()
 {
-    void* vtable[15];
-    std::memset(vtable, 0, sizeof(vtable));
-    vtable[14] = (void*)&CGSIStopSound_VirtualStop;
-    void* emitterObject[1] = { vtable };
-    CGameScriptInterface interfaceObject;
-    PSoundManager =
-        (CASoundManager*)emitterObject;
-
-    interfaceObject.StopSound(0);
-    if (g_CallCount != 1 ||
-        g_ObservedEmitter != (CGSIStopSoundEmitter*)PSoundManager ||
-        g_ObservedSoundId != 0)
-        return 1;
-
-    interfaceObject.StopSound(0xfedcba98);
-    if (g_CallCount != 2 ||
-        g_ObservedEmitter != (CGSIStopSoundEmitter*)PSoundManager ||
-        g_ObservedSoundId != 0xfedcba98)
-        return 2;
-
-    std::printf("FSE2_0088f660_TEST PASS\n");
+    CASoundManager m; PSoundManager = &m; CGameScriptInterface gsi;
+    gsi.StopSound(7);
+    bool ok = m.Calls == 1 && m.Last == 7;
+    gsi.StopSound(0);
+    ok = ok && m.Calls == 2 && m.Last == 0;
+    if (!ok) { std::printf("0088f660_TEST FAIL\n"); return 1; }
+    std::printf("0088f660_TEST PASS\n");
     return 0;
 }

@@ -1,5 +1,7 @@
 // CSubtitledMessage::CSubtitledMessage() -- default constructor: no speech bank or index yet, 3D speech on, an empty wide text, the narrator "UNKNOWN", three empty tag vector maps (attitude, animation, camera); then the speech bank is fetched from the global sound-bank registry (bank 1)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004CDB70, length 94 bytes.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, GetPSoundBank(long) const 0x00991840
+//   (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary name; landed as CASoundManager::GetBank); was a local CASoundManager.
 // Leaf: ??0CSubtitledMessage
 // Callees: CWideString::CWideString() @ 0x0099AED0 (Text), CCharString::CCharString(const char*, long = -1)
 // @ 0x0099EBF0 (Narrator, "UNKNOWN" @ 0x01239E98), the registry lookup @ 0x00991840 (`__fastcall` on the
@@ -33,11 +35,8 @@ struct CVectorMapTags {                            // CVectorMap<float, T, CKeyP
 
 class CASoundBank;
 
-class CASoundManager { public:
-    CASoundBank* GetBank(long id);                 // 0x00991840
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;   // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
 
 class CSubtitledMessage {
 public:
@@ -55,5 +54,5 @@ public:
 CSubtitledMessage::CSubtitledMessage()
     : PSpeechBank(0), SpeechIndex(0), Speech3D(true), Narrator("UNKNOWN")
 {
-    PSpeechBank = ((CASoundManager*)PSoundManager)->GetBank(1);
+    PSpeechBank = PSoundManager->GetPSoundBank(1);
 }

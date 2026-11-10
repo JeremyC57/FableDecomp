@@ -4,6 +4,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1F30, length 811 bytes, plain `ret` (thiscall, no arguments).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CASoundManager model is gone and its slots carry the header names (SetGainFader slot 46).
 // Name: Ego_r.pdb ?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ (private); callee ApplyReverbSettings 0x006B1600 is the PDB's
 //   private ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ (its body indexes a 0x54-byte reverb preset table by ReverbType and
 //   hands ReverbLevel to the sound manager; its two callers are CAtmosProcess::Update 0x006B19FE and this row after the
@@ -230,18 +231,7 @@ template <> __declspec(noinline) bool CDefinitionManager::GetDef<CSoundThemeDef>
 }
 #pragma auto_inline(on)
 
-class CASoundManager { public:                            // RTTI base of CSoundManagerLH (vtable 0x0129D2C4)
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
-};
-extern CASoundManager* PSoundManager;                     // 0x013B8394 (labels DB: g_pSoundManager, CASoundManager*)
+#include "engine/CASoundManager.h"
 
 class CAtmosProcess { public:
     unsigned char          _pad00[0x14];

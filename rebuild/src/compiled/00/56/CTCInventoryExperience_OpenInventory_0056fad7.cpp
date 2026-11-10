@@ -5,12 +5,13 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0056FAD7, 278 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (RefreshCategory -> SetGainFader slot 46).
 // Callees: the global open-menus counter 0x0041D122 (__fastcall, no arguments; landed as an asm bake),
 // CManager::GetInstance 0x0041E5F2 and its slot 26 (+0x68) given the parent thing, the base screen hook
 // 0x005BC6ED on `this` (manifest "_Dest_val<...CRegisteredMusicEntry>" is a propagated label), the main game
 // component (0x013B86A0) chain +0x28 -> +0x2C and that object's slot 76 (+0x130, given false; names from
 // position), std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline CThing::GetInterface for
-// the hero experience component 0x68), the sound system (0x013B8394) slot 46 (+0xB8, RefreshCategory(long, float,
+// the hero experience component 0x68), the sound system (0x013B8394) slot 46 (+0xB8, SetGainFader(long, float,
 // float) as named in the landed CThingSoundEmitter rows) for categories 0x10 and 0x80 with (0.0f, 500.0f), the
 // tutorial sound handle map clear 0x005795C3 (+0x134; manifest "CTCCarryable::OnKill" is propagated),
 // CTCHeroExperience::GetStatExperience(long) 0x006D6510, this's slot 87 (+0x15C) given 1.
@@ -158,57 +159,7 @@ private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
-struct CSoundSystem {
-    virtual void v000();
-    virtual void v001();
-    virtual void v002();
-    virtual void v003();
-    virtual void v004();
-    virtual void v005();
-    virtual void v006();
-    virtual void v007();
-    virtual void v008();
-    virtual void v009();
-    virtual void v010();
-    virtual void v011();
-    virtual void v012();
-    virtual void v013();
-    virtual void v014();
-    virtual void v015();
-    virtual void v016();
-    virtual void v017();
-    virtual void v018();
-    virtual void v019();
-    virtual void v020();
-    virtual void v021();
-    virtual void v022();
-    virtual void v023();
-    virtual void v024();
-    virtual void v025();
-    virtual void v026();
-    virtual void v027();
-    virtual void v028();
-    virtual void v029();
-    virtual void v030();
-    virtual void v031();
-    virtual void v032();
-    virtual void v033();
-    virtual void v034();
-    virtual void v035();
-    virtual void v036();
-    virtual void v037();
-    virtual void v038();
-    virtual void v039();
-    virtual void v040();
-    virtual void v041();
-    virtual void v042();
-    virtual void v043();
-    virtual void v044();
-    virtual void v045();
-    virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xb8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                 // 0x013B8394
+#include "engine/CASoundManager.h"
 struct CTutorialSoundHandleMap {                     // map<CCharString, unsigned long>
     void* _M_header; long _M_node_count; long _M_compare;
     void clear();                                    // 0x005795C3
@@ -326,9 +277,9 @@ void CTCInventoryExperience::OpenInventory()
     CMainGameComponent::Get()->World->Hud->SetEnabled(false);
     CTCHeroExperience* experience;
     ParentThing->GetTC(TCI_HERO_EXPERIENCE, &experience);
-    if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, 500.0f);
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, 500.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x80, 0.0f, 500.0f);
         TutorialSoundHandles.clear();
     }
     OrigGeneral = experience->GeneralExperience;

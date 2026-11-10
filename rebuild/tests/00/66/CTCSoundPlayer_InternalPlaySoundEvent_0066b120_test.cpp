@@ -13,19 +13,19 @@ struct Emitter {
     unsigned int PlaySample(Bank& b, int s, bool l, const Init& i, bool a) { bank = &b; sample = s; loop = l; init = i; attached = a; return 100 + s; }
     unsigned int PlaySoundEvent(Bank& b, const Name& n, bool l, Init& i, bool a) { bank = &b; name = n.s; loop = l; init = i; attached = a; return 200; }
 };
-static Emitter g_emitter;
-static bool g_emitterOk = true;
+static Emitter g_soundEmitter;
+static bool g_soundEmitterOk = true;
 static Emitter* Create(const Vec3& pos, const Thing* parent, bool flag)
-{ if (!g_emitterOk) return 0; g_emitter.pos = pos; g_emitter.parent = parent; g_emitter.flag = flag; return &g_emitter; }
+{ if (!g_soundEmitterOk) return 0; g_soundEmitter.pos = pos; g_soundEmitter.parent = parent; g_soundEmitter.flag = flag; return &g_soundEmitter; }
 static Bank g_sampleBank = { true };
 struct Physics { Vec3 Position; };
 struct Thing { Physics* PhysicsTC; Bank& GetSampleBank() const { return g_sampleBank; } };
-static void* g_pGameState = &g_emitter;
+static void* g_pGameState = &g_soundEmitter;
 static const unsigned int g_Invalid = 0xFFFFFFFF;
 
 struct Player {
     bool lastFlag;
-    Emitter* CreatePAttachedEmitter(bool flag) { lastFlag = flag; return g_emitterOk ? &g_emitter : 0; }
+    Emitter* CreatePAttachedEmitter(bool flag) { lastFlag = flag; return g_soundEmitterOk ? &g_soundEmitter : 0; }
     unsigned int InternalPlaySoundEvent(Bank& bank, const Name& name, bool flag, bool loop, bool attached, int overrideID)
     {
         if (g_pGameState) {
@@ -38,7 +38,7 @@ struct Player {
 int main()
 {
     Player p = { false }; Bank bank = { true }; Name n = { "X" };
-    bool ok = p.InternalPlaySoundEvent(bank, n, true, false, true, 42) == 200 && p.lastFlag && g_emitter.init.OverrideID == 42 && g_emitter.init.GainFaderBits == 0x8010 && g_emitter.attached && g_emitter.name == n.s;
+    bool ok = p.InternalPlaySoundEvent(bank, n, true, false, true, 42) == 200 && p.lastFlag && g_soundEmitter.init.OverrideID == 42 && g_soundEmitter.init.GainFaderBits == 0x8010 && g_soundEmitter.attached && g_soundEmitter.name == n.s;
     bank.hasEvent = false; ok = ok && p.InternalPlaySoundEvent(bank, n, true, false, true, 42) == g_Invalid;
     std::printf(ok ? "0066b120_TEST PASS\n" : "0066b120_TEST FAIL\n");
     return ok ? 0 : 1;

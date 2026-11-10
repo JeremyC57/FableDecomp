@@ -1,10 +1,12 @@
 // CUserProfileManager::ApplyValues() -- push the profile's live values (the new-profile set when UseNewProfileValues) to the engine: vibration flag, gamma (renderer or display manager), the five sound-category volumes (zero when muted) plus the headphones flag, then a main-player refresh
+// Leaf: ?ApplyValues@CUserProfileManager@@QAEXXZ
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00407370, length 569 bytes, plain `ret` (the last call is a tail jump).
-// Callees: CDisplayManager::SetGamma 0x009BEAA0; the sound system's slot 46 RefreshCategory (+0xb8) and slot 7 (+0x1c,
-//   descriptive SetUsingHeadPhones); CPlayerManager::GetMainPlayerNumber 0x00449700 / IsPlayer 0x00449880 / GetMainPlayer
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (SetUsingHeadPhones -> SetOutputConfigurationToHeadphones slot 7, RefreshCategory -> SetGainFader slot 46).
+// Callees: CDisplayManager::SetGamma 0x009BEAA0; the sound system's slot 46 SetGainFader (+0xb8) and slot 7 (+0x1c,
+//   descriptive SetOutputConfigurationToHeadphones); CPlayerManager::GetMainPlayerNumber 0x00449700 / IsPlayer 0x00449880 / GetMainPlayer
 //   0x00449970; the main player's +0x0c object's 0x00447390 (descriptive Refresh). The renderer pointer's safe-bool member
 //   0x0040D870. Globals: vibration flag 0x013966F0, CMainGameComponent::Get() 0x013B86A0 (+0x1c player manager, +0x28 renderer),
 //   g_pDisplayManager 0x013B8390, g_pSoundSystem 0x013B8394.
@@ -53,18 +55,7 @@ class CDisplayManager { public:
     void SetGamma(float gamma, bool b);                     // 0x009BEAA0
 };
 extern CDisplayManager* GPDisplayManager;                  // 0x013B8390
-struct CSoundSystem {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void SetUsingHeadPhones(bool on);               // slot 7 (+0x1c)
-    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
-    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
-    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void RefreshCategory(long category, float volume, bool b);   // slot 46 (+0xb8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                        // 0x013B8394
+#include "engine/CASoundManager.h"
 extern bool g_bVibrationEnabled;                            // 0x013966F0
 class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
@@ -113,28 +104,28 @@ void CUserProfileManager::ApplyValues()
         else
             GPDisplayManager->SetGamma(Gamma, false);
     }
-    if (((CSoundSystem*)PSoundManager)) {
+    if (PSoundManager) {
         if (SoundsMuted) {
-            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, false);
-            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x20, 0.0f, false);
-            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, 0.0f, false);
-            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, false);
-            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x100, 0.0f, false);
+            PSoundManager->SetGainFader(0x10, 0.0f, false);
+            PSoundManager->SetGainFader(0x20, 0.0f, false);
+            PSoundManager->SetGainFader(0x40, 0.0f, false);
+            PSoundManager->SetGainFader(0x80, 0.0f, false);
+            PSoundManager->SetGainFader(0x100, 0.0f, false);
         } else {
             if (UseNewProfileValues) {
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, SoundVolumeNewProfile, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x20, SoundVolumeNewProfile, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, DialogueVolumeNewProfile, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, SoundVolumeNewProfile, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x100, MusicVolumeNewProfile, false);
-                ((CSoundSystem*)PSoundManager)->SetUsingHeadPhones(UsingHeadPhonesNewProfile);
+                PSoundManager->SetGainFader(0x10, SoundVolumeNewProfile, false);
+                PSoundManager->SetGainFader(0x20, SoundVolumeNewProfile, false);
+                PSoundManager->SetGainFader(0x40, DialogueVolumeNewProfile, false);
+                PSoundManager->SetGainFader(0x80, SoundVolumeNewProfile, false);
+                PSoundManager->SetGainFader(0x100, MusicVolumeNewProfile, false);
+                PSoundManager->SetOutputConfigurationToHeadphones(UsingHeadPhonesNewProfile);
             } else {
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, SoundVolume, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x20, SoundVolume, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, DialogueVolume, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, SoundVolume, false);
-                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x100, MusicVolume, false);
-                ((CSoundSystem*)PSoundManager)->SetUsingHeadPhones(UsingHeadPhones);
+                PSoundManager->SetGainFader(0x10, SoundVolume, false);
+                PSoundManager->SetGainFader(0x20, SoundVolume, false);
+                PSoundManager->SetGainFader(0x40, DialogueVolume, false);
+                PSoundManager->SetGainFader(0x80, SoundVolume, false);
+                PSoundManager->SetGainFader(0x100, MusicVolume, false);
+                PSoundManager->SetOutputConfigurationToHeadphones(UsingHeadPhones);
             }
         }
     }

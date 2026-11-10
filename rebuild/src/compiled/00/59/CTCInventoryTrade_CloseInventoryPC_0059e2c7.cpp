@@ -5,6 +5,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059E2C7, 528 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (RefreshCategory -> SetGainFader slot 46).
 // Callees: 0x0059D9AD (RemoveAllItemsFromCategory 0x0059CF49 for categories 12 and 11; name descriptive; manifest
 // "CMemoryAllocator::ClearPerformanceStats" is propagated), CTCInventoryBase::CloseInventory @ 0x005BD597 (manifest
 // "CCategory::SetQuestPersistentFlagForItems" is propagated), CTCInventoryTrade::DeleteComponents @ 0x0059C8AE, the
@@ -12,7 +13,7 @@
 // "CTCCarryable::OnKill" propagated), NUISystem::CManager::GetInstance @ 0x0041E5F2 and its slots 6/29/37/40/42 (names unknown),
 // the global front-end node list @ 0x013B8A98 clear @ 0x004855A3, the main game component (0x013B86A0) chain +0x28 -> +0x2C
 // slots 76 (+0x130, SetEnabled) and 56 (+0xE0), CTCBase::GetWorld @ 0x00686A70, GetWorldFrame @ 0x0049D870,
-// CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the sound system (0x013B8394) slot 46 RefreshCategory,
+// CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the sound system (0x013B8394) slot 46 SetGainFader,
 // std::bitset::test @ 0x00410DE0 + CVectorMap::LowerBound @ 0x0040F020 (inline GetInterface, type 0x13),
 // CTCInventoryWeapons::CheckForSoldWieldedWeapons @ 0x005CB780.
 // Shape: the component loop and clear() are the landed ~CTCInventoryTrade (0x0059EC48) form; the volume argument is an inline
@@ -112,19 +113,7 @@ private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
-struct CSoundSystem {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xB8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                 // 0x013B8394
+#include "engine/CASoundManager.h"
 class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
     bool  UseCustomVolumes;                          // +0x0c
@@ -204,10 +193,10 @@ void CTCInventoryTrade::CloseInventoryPC()
     CMainGameComponent::Get()->World->Hud->SetEnabled(true);
     CWorld* world = (&GetWorld());
     world->InventoryClosedFrame = CWorld::GetFrame();
-    if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
     }
     NUISystem::CManager* a = NUISystem::CManager::GetInstance();
     NUISystem::CManager* b = NUISystem::CManager::GetInstance();

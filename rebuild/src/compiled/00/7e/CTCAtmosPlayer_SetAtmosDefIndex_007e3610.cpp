@@ -5,6 +5,7 @@
 //   `?SetAtmosDefIndex@CTCAtmosPlayer@@QAEXJ@Z` (public thiscall); caller CTCAtmosPlayer vfunc_4 @ 0x007E3690
 //   (`SetAtmosDefIndex(AtmosDefIndex)` when non-zero) and 0x006B23AD. Catalog label `Def_GetDetailsForDisplay` was
 //   an autoname guess.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CASoundSystem model is gone and its slots carry the header names (CreateEmitter -> Create3DEmitter slot 4; the emitter's slot 5 Play -> CASoundEmitter.h PlayAtmos).
 // Layout: CTCAtmosPlayer (Ego_r.pdb, 0x14 bytes): CTCBase {vptr, ParentThing +4, flags +8}, PSoundEmitter +0x0c
 //   (CASoundEmitter*), AtmosDefIndex +0x10.
 // Callees: the sound system singleton 0x013B8394 slot 4 (+0x10, creates an emitter at a position), CThing::GetPos
@@ -39,19 +40,8 @@ public:
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                        // 0x013CA828
 
-class CASoundEmitter {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void Play(const CCharString& name);                 // slot 5 (+0x14)
-};
 
-class CASoundSystem {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual CASoundEmitter* CreateEmitter(const C3DVector& pos);   // slot 4 (+0x10)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                           // 0x013B8394
+#include "engine/CASoundManager.h"
 
 class CTCAtmosPlayer {
 public:
@@ -67,11 +57,11 @@ void CTCAtmosPlayer::SetAtmosDefIndex(long index)
 {
     AtmosDefIndex = index;
     if (index) {
-        if (((CASoundSystem*)PSoundManager))
-            PSoundEmitter = ((CASoundSystem*)PSoundManager)->CreateEmitter(ParentThing->GetPos());
+        if (PSoundManager)
+            PSoundEmitter = PSoundManager->Create3DEmitter(ParentThing->GetPos());
         if (PSoundEmitter) {
             CCharString name = GDefStringTable.GetString(CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex).m_index);
-            PSoundEmitter->Play(name);
+            PSoundEmitter->PlayAtmos(name);
         }
     }
 }

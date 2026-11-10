@@ -1,5 +1,11 @@
 // Behaviour test for 0066bd00: the source copied verbatim (function body and its same-TU stand-in), the remaining declared callees stubbed so calls and arguments are observable
 #include "fable_compiler.h"
+#if !defined(_MSC_VER)
+#define __declspec(x)   // g++: MSVC-only spellings of the test's same-TU bodies and stubs
+#define __fastcall
+#define __cdecl
+#define __stdcall
+#endif
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>

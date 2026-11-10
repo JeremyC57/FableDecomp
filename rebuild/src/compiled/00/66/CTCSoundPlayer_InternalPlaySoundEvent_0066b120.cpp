@@ -5,6 +5,7 @@
 //   Name: Ego_r.pdb `?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z` (the landed
 //   PlayAttachedCriteria 0x0066BD00 already uses this name). Callers: 0x0066B24A (PlayAttachedSoundEvent 0x0066B1D0),
 //   0x0066B866..0x0066B9C5, 0x0066BD78.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Label correction: the catalog "CTCSoundPlayer_GetSoundState" is descriptive.
 // Callees/globals: CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) @ 0x008369F0 (static __fastcall),
 //   CThingSoundEmitter::PlaySample @ 0x00836810 / PlaySoundEvent @ 0x00836840 (landed), CTCSoundPlayer::
@@ -60,8 +61,7 @@ public:
     C3DVector     Position;                     // +0x0c
 };
 
-class CASoundManager;
-extern CASoundManager* PSoundManager;              // 0x013B8394 (no sound while null)
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
@@ -94,7 +94,7 @@ public:
 
 unsigned long CTCSoundPlayer::InternalPlaySoundEvent(CASoundBank& bank, const CCharString& name, bool flag, bool loop, bool attached, long overrideID)
 {
-    if (((void*)PSoundManager)) {
+    if (PSoundManager) {
         CThingSoundEmitter* emitter = CreatePAttachedEmitter(flag);
         if (emitter && bank.IsSoundEventValid(name)) {
             CSoundInit init;

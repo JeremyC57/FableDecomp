@@ -4,6 +4,7 @@
 // GFInitialise() -- cache the engine's core manager pointers, pick the texture bit depth and display size, and start the loading screen
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004022B0, 311 bytes. Callees: engine root accessor 0x00404A80, CDisplayManager::IsTextureBitDepthSupported,
 //   CXMVPlayer::GlobalRegisterPlayer, GFGetBuildNumber2 0x00401F30, GFInitialise_SetupProgressDisplay.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 //
 // Runs from GFMain after the system manager has created the window and the D3D device. It is the point
 // where the game-side globals that everything else uses (primitive manager, display manager, display
@@ -72,8 +73,7 @@ extern FableEngineRoot* FABLE_FASTCALL AddChildPrimitive();
 extern void FABLE_CDECL GFGetBuildNumber2();
 
 // Game-side caches of the engine managers, filled in here.
-class CASoundManager;
-extern CASoundManager* PSoundManager;
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern CDisplayManager* GPDisplayManager;
 extern FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 extern void* g_FableRenderState_013B8380;

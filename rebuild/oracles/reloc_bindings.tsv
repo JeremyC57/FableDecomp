@@ -11366,7 +11366,6 @@ __wcsupr	00f3fb8a	00557a10
 ??_7CCombatAction_GenericStrikeResponseKnockdownRecover@@6B@	0127191c	008e08c0
 ?ReleaseScene_0042dd28@CNewFrontendGameComponent@@QAEXXZ	0042dd28	0042ebb6
 ?ReleaseXMVCode@CNewFrontendGameComponent@@QAEXXZ	0042dbd8	0042ebb6
-?Restore_00991750@CGameStateOwner_013b8394@@QAEXXZ	00991750	0042ebb6
 ?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z	004336b0	0042ebb6
 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z	00a62920	009d5a90
 ?_M_erase@CPointerSet@@QAEXPAUSRbTreeNode@@@Z	009d7430	009d5a90
@@ -12249,9 +12248,6 @@ _wcscmp	00bfe94c	004fdab0
 ?ClearLocked@CTCScriptedControl@@QAEXXZ	00712c80	00903ac0
 ??0CActionMoveTo@NTCScriptedControl@@QAE@PAUCThing_Retail@@JM_N11111@Z	009051f0	00903e20
 ?GetShaderData@CShaderDataBank@@QAEPAUCPixelShaderData@@K@Z	00a61fb0	00a5d620
-??0?$CCountedPointer@UCActiveSound@CSoundEmitterLH@@@@QAE@PAUCActiveSound@CSoundEmitterLH@@@Z	00aac820	00aac1d0
-??0CActiveSound@CSoundEmitterLH@@QAE@JPAUCSoundEmitterSource@@M@Z	00aab910	00aac1d0
-?FindSample@CSoundBankLH@@QAEPAUCSoundEmitterSource@@J@Z	00a3ed30	00aac1d0
 ??4CString@@QAEABV0@PBD@Z	00c0c200	00c0dab0
 ?_EmptyString@@3VCString@@A	0139c900	00c0dab0
 ?_NullString@@3PAUCStringData@@A	0139c8fc	00c0dab0
@@ -12352,7 +12348,6 @@ _wcsrchr	00bfedb2	009a5340
 ?HasEntries@CSlot_00c3cb30@@QAE_NXZ	00c3c980	00c3d160
 ?g_slot_0143bc00@@3UCSlot_00c3cb30@@A	0143bc00	00c3d160
 ?IsSpecialCase@CTCInventoryTrade@@QAE_NJ@Z	0059c983	0059ca95
-?ConstructTradeScreenPC@CTCInventoryTrade@@QAEXXZ	005aceda	005ae86b
 ?OpenInventory@CTCInventoryTrade@@QAEXXZ	005bd4ea	005ae86b
 ?PrepareScreen@CTCInventoryTrade@@QAEXXZ	005bc6ed	005ae86b
 ?GetSelectedCategoryIndex@CTCInventoryQuests@@QAEJXZ	005bc4b2	006223c0
@@ -12944,8 +12939,6 @@ __CIasin	00bfedc4	009de2a0
 ?Release@CCountedPointer41915a@@QAEXXZ	0041915a	004175e5
 ?Set@CGameDefinitionManager@@SIXPAV1@@Z	0044c71f	004175e5
 ?Uninitialise@CFrameRateSmoother@@QAEXXZ	0049ba20	004175e5
-?Shutdown@CSoundManager@@QAEXXZ	009918f0	004175e5
-?StopMusic@CSoundManager@@QAEXXZ	00991750	004175e5
 ?UninitEventPackageLoading@CMainGameComponent@@QAEXXZ	004160a6	004175e5
 ?UninitEventPackageSaving@CMainGameComponent@@QAEXXZ	00416122	004175e5
 ?UninitialiseParticles@@YAXXZ	00aebea0	004175e5
@@ -13047,9 +13040,6 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?CloseMeshBank@CMeshBankManager@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z	00a09dc0	0042dd28
 ?GetTrainableStatLevel@CTCHeroExperience@@QBEKJ@Z	006d6520	0057c239
 ?BeginLoadingEntry@CLipSyncDataBank@@QAEXK@Z	00a42ac0	006e2a50
-?FindFirstValue@CSymbolMap@@QAEPAXXZ	00991720	006e2a50
-?FindSymbolForValue@CSymbolMap@@QAEPAXJ@Z	00991690	006e2a50
-?FindValueForSymbol@CSymbolMap@@QAEPAXJ@Z	009916f0	006e2a50
 ?GetSampleDurationFrames@CTCTalk@@QAEJJ@Z	006e2940	006e2a50
 @GFGetTime@0	009e1bc0	006e2a50
 ?IsKickable@CThing@@QAE_NXZ	00838a30	008444a0
@@ -17573,7 +17563,6 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ?Replace@CWideString@@QAEXABV1@0@Z	0099c1e0	0042ded5
 ??0CSoundBankLH@@QAE@PAVCSoundManagerLH@@@Z	00a0bac0	0042e17c
 ?Reset@?$CCountedPointer@VCASoundBank@@@@QAEXPAVCASoundBank@@@Z	0042fd6f	0042e17c
-?SetEnabled@CSoundManagerLH@@QAEX_N@Z	00991600	0042e17c
 ?IsComplete@CFileInstaller@@QBE_NXZ	009c32b0	0042e3ce
 ?_Rebalance@?$_Rb_global@_N@std@@SAXPAU_Rb_tree_node_base@2@AAPAU32@@Z	0042971d	004316cf
 ??4?$vector@VCActionInputControl@@V?$allocator@VCActionInputControl@@@std@@@std@@QAEAAV01@ABV01@@Z	00411b90	00431e80
@@ -18307,7 +18296,6 @@ __Rebalance_for_erase	0042a34e	00756420
 ?remove@?$CRetailList@UCIntelligentPointerThing@@@@QAEXABUCIntelligentPointerThing@@@Z	0065de8a	007fdeb0
 ?IsTimeToSummon@CTCAISummon@@ABE_NXZ	007fde00	007fdf60
 ?g_MaxTotalSummonedCreatures@@3JA	013844ac	007fdf60
-?OnCreate@CThing@@QAE_NXZ	004c9560	00836740
 ??0CThingSoundEmitter@@QAE@XZ	008367b0	008369f0
 ??0CThingVillage@@QAE@XZ	005299c0	0083b7f0
 ??1CTCParamsPhysicsBase@@UAE@XZ	0099a300	0083b7f0
@@ -20682,7 +20670,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ?AddMessage@CMessageEventManager@@QAEPAXJKABVC3DVector@@PAVCThing@@1MMJ@Z	00687540	00629de0
 ?GetData@CGameEvent@@QBEJAAVCMemoryBuffer@@@Z	009f17a0	00629de0
 ?GetSampleBank@CWorld@@QBEAAVCASoundBank@@XZ	0049d9b0	00629de0
-?PeekGuiDef@@YIPAVCPlayerGuiDef@@XZ	00438570	00629de0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0062ce60
 ?GetPlayer@CWorld@@QAEPAVCPlayer@@J@Z	0049d850	0062ce60
 ?GetSaveGameNames@CTCHeroSaveGames@@QAEXPAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	0047e186	0062ce60
@@ -20691,7 +20678,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ?insert@?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@J@std@@_N@2@ABJ@Z	00514230	0065ce9b
 ?reserve@?$vector@JV?$allocator@J@std@@@std@@QAEXI@Z	00660684	0065ce9b
 ?GetLookAngleRelToBodyXY@CTCLook@@QBEMXZ	00751a80	00664e50
-?FindFirstSymbolWithVal@CSymbolMap@@QBEPAVCASoundBank@@PBVCCharString@@@Z	009917e0	0066ba80
 ?GetTextEntryFromGroup@CDataBank@NGameText@@QBEPBVCTextEntry@2@KABVCCharString@@AA_NPAJ_N@Z	009c9280	0066ba80
 ?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z	0066b080	0066ba80
 ??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@YIPAVC3DVector@@PAV1@00ABU__false_type@0@@Z	0066ddf0	0066e370
@@ -21949,7 +21935,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??$__make_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@V?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@U12@H@std@@YIXPAU?$pair@KVCDefClassInfo@CDefinitionManager@@@0@0V?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@0PAH@Z	009b8820	009b9030
 ??$__pop_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@U12@V?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@H@std@@YIXPAU?$pair@KVCDefClassInfo@CDefinitionManager@@@0@00U10@V?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@PAH@Z	009b8770	009b9030
 ??$sort_heap@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@V?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@@std@@YIXPAU?$pair@KVCDefClassInfo@CDefinitionManager@@@0@0V?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@@Z	009b8ca0	009b9030
-?FindSoundBank@CASoundManager@@QBEPAVCASoundBank@@PBVCCharString@@@Z	009917e0	009bd910
 ?g_pSubtitleFont@@3PAVCFontBank@@A	013ca7f8	009bd910
 ?g_szSoundPrefix_01239ed4@@3QBDB	01239ed4	009bd910
 ?pop_front@?$list@UCSubTitle@@@std@@QAEXXZ	009be100	009bd910
@@ -23893,7 +23878,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPItem@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ	00a01b50	0065c45a
 ?IS_THING_ALIVE@@YI_NABQAVCThingAICreature@@@Z	004a88f0	0065c45a
 ?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z	008369f0	0065c781
-?FindFirstSymbolWithVal@CSymbolMap@@QAEPAVCASoundBank@@PBVCCharString@@@Z	009917e0	0065c781
 ??0CIntelligentPointerTrackNode@@QAE@PAVCThingTrackNode@@@Z	0065e0f8	0065ee66
 ?PeekPSimDefinition@CThingBuilding@@QBE?AV?$CDefPointer@UCBuildingSimDefinition@@@@XZ	0082d2d0	0065f056
 ??R?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@QBE_NABVCThing@@@Z	004aa6c0	0065f6da
@@ -27123,7 +27107,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ	009950f0	00aaab10
 ?erase@CPlaneArray@@QAEPAVCPlane@@PAV2@0@Z	00aab500	00aaab10
 ?insert@CPlaneArray@@QAEXPAVCPlane@@KABV2@@Z	00aab570	00aaab10
-?push_back@CActiveSoundList@CSoundEmitterLH@@QAEXABV?$CCountedPointer@UCActiveSound@CSoundEmitterLH@@@@@Z	00aaccc0	00aac1d0
 ?WriteString@CDataOutputStream@@QAEXABVCCharString@@@Z	009959f0	00aad150
 ??4?$CArray@F@@QAEAAV0@ABV0@@Z	00aade80	00aad5d0
 ?ReadFromFile@CChunkedFileSuperChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	00aa8830	00aae2c0
@@ -33258,7 +33241,6 @@ _drftf1@20	00c98e80	00c9bc10
 ?StackTop@MicroThread@@3PAEA	013ca8a0	009d87f0
 _ActiveThread	013ca894	009d87f0
 ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z	00496070	0049dcc0
-?func_00991620@CFlaggedObject_Retail@@QAEX_N@Z	00991620	0049dcc0
 ??0CVsyncCallbackTimerInfo@@QAE@XZ	009f7020	009f7050
 ?g_VsyncCPUFrameCount@@3JA	013cb4f0	009f7050
 ?g_VsyncCPUPrevTimeStamp@@3NA	013cb4e8	009f7050
@@ -38483,7 +38465,6 @@ __vsnwprintf	00bfed9a	0099bb80
 ?RemoveFromInventory@CTCInventoryItem@@QAEXXZ	005d8e20	006ac690
 ?SetAbilityAsAvailable@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N1@Z	005f6bd6	006ac690
 ??_7?$CIntelligentPointer@VCThingMarker@@@@6B@	0125a860	006b1960
-??_7CMyAtmosMap@@6B@	0125d47c	006b1960
 ?LoadThemes_006b16b0@CAtmosProcess@@QAEXXZ	006b16b0	006b1960
 ?RegisterMusic@CMusicManager@@QAEXXZ	006be080	006be300
 ?CreateNewObject@CTCContainerRewardHero@@QAEPAVCThingObject@@JABVC3DVector@@0ABVCCharString@@@Z	0074e560	0074e6e0
@@ -39195,3 +39176,23 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?SetMapPlacement@CWorldMap@@IAEXABVC2DBoxI@@J@Z	004fc9c0	00507650
 ?resize@?$vector@VCMapInfo@@V?$allocator@VCMapInfo@@@std@@@std@@QAEXI@Z	0051be20	00507650
 ?SetThemeWeight@CEnvironment@@QAEXJJJM@Z	006b3600	00890090
+?CloseAllBanks@CASoundManager@@QAEXXZ	009918f0	004175e5
+?Uninitialise_004ae990@CInitBaseClass@@QAEXXZ	004ae990	004175e5
+?UnloadAllBanks@CASoundManager@@QAEXXZ	00991750	004175e5
+?GetPSoundBank@CASoundManager@@QBEPAVCASoundBank@@J@Z	00991840	0041ceb3
+?EnableSound@CASoundManager@@QAEX_N@Z	00991600	0042e17c
+?GetStatExperience@CTCHeroExperience@@QAEJJ@Z	006d6510	0056fad7
+?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ	005aceda	005ae86b
+?GetPSoundBank@CASoundManager@@QBEPAVCASoundBank@@ABVCCharString@@@Z	009917e0	0065c781
+?ReleaseLoop@CThingSoundEmitter@@QAEXK@Z	008368f0	0066ad90
+?StopSpecificSample@CThingSoundEmitter@@QAEXK@Z	008368d0	0066add0
+?IsSamplePlaying@CThingSoundEmitter@@QBE_NK@Z	00836870	0066ae10
+?IsSampleLoadedAndPlaying@CThingSoundEmitter@@QBE_NK@Z	008368a0	0066ae60
+??_7CMyAtmosMap@CAtmosProcess@@6B@	0125d47c	006b1960
+?GetAnyPLipSyncBank@CASoundManager@@QBEPBVCLipSyncDataBank@@XZ	00991720	006e2860
+?GetPLipSyncBank@CASoundManager@@QBEPBVCLipSyncDataBank@@ABVCASoundBank@@@Z	009916f0	006e2860
+?GetPSoundBank@CASoundManager@@QBEPAVCASoundBank@@ABVCLipSyncDataBank@@@Z	00991690	006e2a50
+?OnCreate@CThing@@UAE_NXZ	004c9560	00836740
+??0?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@QAE@PAVCActiveSound@CSoundEmitterLH@@@Z	00aac820	00aac1d0
+??0CActiveSound@CSoundEmitterLH@@QAE@JPAVCSoundBankLH@@M@Z	00aab910	00aac1d0
+?push_back@?$list@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@V?$allocator@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@Z	00aaccc0	00aac1d0

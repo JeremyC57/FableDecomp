@@ -1,7 +1,10 @@
 // CMainGameComponent::Shutdown() -- tear the game component down: stop the sound system, shut the network session, drop the global game/server hooks, uninitialise the event-package machinery and console, then release every owned subsystem pointer and clear the definition manager
+// Leaf: ?Shutdown@CMainGameComponent@@QAEXXZ
 // Leaf: Shutdown
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004175E5, length 354 bytes (unaligned TU), tail `jmp`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h -- slot 16 StopAllSounds, slot 18 StopMusic(0),
+//   UnloadAllBanks 0x00991750 / CloseAllBanks 0x009918F0 (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary names); was a local CSoundManager model.
 // Callees (several through ILT thunks): the sound manager @ 0x013B8394 (virtual slots 16 +0x40 and 18 +0x48, then 0x00991750 and
 //   0x009918F0), the network session's (+0x24, a scoped_ptr with the safe-bool idiom: `neg ; sbb ; test edx,offset get` against
 //   scoped_ptr::get 0x00418F47) virtual slot 10 (+0x28), the global counted pointer @ 0x013B8790 (release 0x0041915A), the server
@@ -58,19 +61,8 @@ public:
     virtual void Shutdown();                         // slot 10 (+0x28)
 };
 
-class CSoundManager {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void StopAll();                          // slot 16 (+0x40)
-    virtual void v17();
-    virtual void SetPaused(bool paused);             // slot 18 (+0x48)
-    void StopMusic();                                // 0x00991750
-    void Shutdown();                                 // 0x009918F0
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;               // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
 
 class CDeviceResetCallback;
 class CDisplayManager { public:
@@ -134,15 +126,15 @@ public:
 void CMainGameComponent::Shutdown()
 {
     Running = false;
-    if (((CSoundManager*)PSoundManager)) {
-        ((CSoundManager*)PSoundManager)->StopAll();
-        ((CSoundManager*)PSoundManager)->SetPaused(false);
-        ((CSoundManager*)PSoundManager)->StopMusic();
+    if (PSoundManager) {
+        PSoundManager->StopAllSounds();
+        PSoundManager->StopMusic(0);
+        PSoundManager->UnloadAllBanks();
     }
     if (NetworkSession)
         NetworkSession->Shutdown();
-    if (((CSoundManager*)PSoundManager))
-        ((CSoundManager*)PSoundManager)->Shutdown();
+    if (PSoundManager)
+        PSoundManager->CloseAllBanks();
     m_10 = 0;
     g_GlobalCountedPointer.Clear();
     g_pGame = 0;

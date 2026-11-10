@@ -11331,7 +11331,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005ac0ee	Dtor_ConstructActualSellInventoryPCBase_005ac0ee	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5a\global_Destval_005ac0ee.cpp
 005ac0fe	Dtor_ConstructActualWantedInventoryBase_005ac0fe	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5a\global_Destval_005ac0fe.cpp
 005ac10e	ConstructActualBuyInventoryPC	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
-005aceda	OpenInventory	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
+005aceda	ConstructActualInventoryPC	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
 005ad305	ApplyTattooCard	CTCInventoryTrade	__thiscall	void	2	CTCInventoryTrade *,long	1	yes	accepted									
 005ad571	ConstructTradeDescription	CTCInventoryTrade	__thiscall	CComponent *	5	CTCInventoryTrade *,long,ulong,bool,bool	1	yes	accepted									
 005ae6af	RefreshDescriptions	CTCInventoryTrade	unknown	undefined	0		0	yes	accepted									
@@ -38989,26 +38989,26 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aab910	CActiveSound	CSoundEmitterLH::CActiveSound	__thiscall	undefined	2	CTCCarrying *,CThing *	0	yes	accepted									
 00aab980	CASoundEmitter	CASoundEmitter	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00aab9a0	`scalar_deleting_destructor'	CASoundEmitter	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aab9a0.cpp
-00aab9c0	vfunc_16	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00aaba00	vfunc_1	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aaba10	vfunc_2	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aaba20	vfunc_6	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aaba40	vfunc_7	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aaba60	vfunc_17	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aaba80	vfunc_11	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aabac0	vfunc_22	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aabb00	vfunc_21	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aabb60	vfunc_13	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
-00aabbb0	vfunc_15	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
-00aabc50	vfunc_23	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aab9c0	MovePos	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aaba00	Activate	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba10	Deactivate	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba20	SetSpecificSamplePitch	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba40	SetSpecificSampleVolume	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba60	GetPos	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aaba80	StopAllLoops	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabac0	IsSpecificSamplePlaying	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabb00	IsSpecificSampleLoadedAndPlaying	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabb60	ReleaseLoop	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
+00aabbb0	SetPos	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
+00aabc50	IsSamplePlaying	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aabca0	RemoveInactiveSounds	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
 00aabd40	vfunc_14	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aabd50	VSlot4	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
 00aabf60	CSoundEmitterLH::vfunc_3	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00aac1d0	vfunc_5	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aac1d0	PlayAtmos	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aac2e0	Shutdown	CSoundEmitterLH	__thiscall	EMiniGameType	1	CDrawQuestInfo *	1	yes	accepted									
-00aac340	vfunc_8	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00aac400	vfunc_9	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aac340	StopSample	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aac400	StopSpecificSample	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aac460	StopSoundsContaining	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									
 00aac4f0	~CSoundEmitterLH	CSoundEmitterLH	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 00aac530	CSoundEmitterLH	CSoundEmitterLH	unknown	undefined	0		0	yes	accepted									

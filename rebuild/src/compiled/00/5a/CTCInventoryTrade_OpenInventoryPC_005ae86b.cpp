@@ -1,11 +1,13 @@
 // CTCInventoryTrade::OpenInventoryPC() -- open the PC trade screen: base screen preparation, HUD off, fade reset, the three sound categories refreshed, front-end notifications, the top-level list built, the mouse pointer component created and registered, then the base inventory opened and the screen marked open
+// Leaf: ?OpenInventoryPC@CTCInventoryTrade@@QAEXXZ
 // Leaf: OpenInventoryPC
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005AE86B, length 263 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off)
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (RefreshCategory -> SetGainFader slot 46).
 // + ("s",on). Vtable 0x0125318C slot (rtti abs reference); FableWin.pdb ?OpenInventoryPC@CTCInventoryTrade@@UAEXXZ.
 // Callees: CTCInventoryBase::PrepareScreen @ 0x005BC6ED, the main game component (0x013B86A0) chain +0x28 -> +0x2C slot 76
-// (+0x130, SetEnabled(false)), the sound system (0x013B8394) slot 46 (+0xB8, RefreshCategory(long, float, float)) for
+// (+0x130, SetEnabled(false)), the sound system (0x013B8394) slot 46 (+0xB8, SetGainFader(long, float, float)) for
 // categories 0x10 / 0x40 / 0x80 with (0.0f, 500.0f @ 0x01237584), NUISystem::CManager::GetInstance @ 0x0041E5F2 and
 // its slots 23 (+0x5C, given this; name descriptive) and 26 (+0x68, OnThingInventoryOpened(ParentThing)), CTCInventoryTrade
 // @ 0x005ACEDA (no arguments: builds the PC screen; name descriptive), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0
@@ -78,19 +80,7 @@ private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                          // +0x28
 };
-struct CSoundSystem {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xB8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;            // 0x013B8394
+#include "engine/CASoundManager.h"
 struct CComponentVector {                       // vector<NUISystem::CComponent*>
     NUISystem::CComponent** _M_start;
     NUISystem::CComponent** _M_finish;
@@ -111,7 +101,9 @@ class CTCInventoryTrade { public:
     NUISystem::CComponent* PCurrentOpenTradeMenu;   // +0x224
     float            AccumFadeTime;             // +0x228
     void PrepareScreen();                       // 0x005BC6ED (CTCInventoryBase)
-    void ConstructTradeScreenPC();              // 0x005ACEDA
+private:
+    void ConstructActualInventoryPC();          // 0x005ACEDA FableWin.pdb ?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ (private; was spelled ConstructTradeScreenPC)
+public:
     void OpenInventory();                       // 0x005BD4EA (CTCInventoryBase)
     void OpenInventoryPC();
 };
@@ -121,15 +113,15 @@ void CTCInventoryTrade::OpenInventoryPC()
     PrepareScreen();
     CMainGameComponent::Get()->World->Hud->SetEnabled(false);
     AccumFadeTime = 0.0f;
-    if (((CSoundSystem*)PSoundManager)) {
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, 500.0f);
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, 0.0f, 500.0f);
-        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, 500.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x40, 0.0f, 500.0f);
+        PSoundManager->SetGainFader(0x80, 0.0f, 500.0f);
     }
     NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     frontEnd->OnInventoryScreenOpened(this);
     frontEnd->OnThingInventoryOpened(ParentThing);
-    ConstructTradeScreenPC();
+    ConstructActualInventoryPC();
     {
         CCharString name("UI_MOUSE_POINTER");
         PMouse_Pointer = frontEnd->CreateComponent(name, false);

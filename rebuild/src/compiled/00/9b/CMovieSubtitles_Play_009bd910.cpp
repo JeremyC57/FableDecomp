@@ -3,6 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BD910, 496 bytes, thiscall `ret 8`. PDB ?Play@CMovieSubtitles@@QAEXM_N@Z;
 //   single caller 0x00628C56 (the movie player, subtitles at +0x30). Catalog label
 //   "CEngineInternalPrimitiveBase_UpdateSubtitleDisplay" is descriptive.
+// Sound manager (agentSND2, 2026-11-10): the member PSoundManager is a CASoundManager* of engine/CASoundManager.h -- GetPSoundBank(const
+//   CCharString&) 0x009917E0 (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP), slot 9 Get2DEmitter and the emitter's slot 3 PlaySample;
+//   engine/CASoundBank.h GetSoundIndexFromSymbol and engine/CSoundInit.h (inline ctor opt-in); was a local CASoundManager /
+//   CASoundPlayer / CSoundInit / CASoundBank model.
 // Callees: GFGetSystemManager 0x009A4EC0, CDisplayManager::GetRenderTargetDimensions 0x009BEDC0 (hidden C2DExtentsI),
 //   GFABoxToVBox 0x009E2020, NGameText::CTextEntry::GetText 0x009C7A40, FormatTextForVWindow 0x009BC9D0, ~CWideString
 //   0x0099B510, the sound-bank lookup 0x009917E0 on PSoundManager (ICF-shared with CSymbolMap::FindFirstSymbolWithVal),
@@ -112,42 +116,12 @@ public:
 };
 }
 
-class CASoundBank {
-public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
-};
-class CSoundInit {
-public:
-    float Volume, Pitch, Pan;
-    long NoPlays, PlaybackType;
-    unsigned long GainFaderBits, PitchFaderBits;
-    long OverrideID;
-    CSoundInit()
-    {
-        Volume = 1.0f;
-        Pitch = 1.0f;
-        Pan = 0.0f;
-        NoPlays = 1;
-        GainFaderBits = 0;
-        PitchFaderBits = 0;
-        OverrideID = -1;
-        PlaybackType = 1;
-    }
-};
-class CASoundPlayer {
-public:
-    virtual void v00();
-    virtual void v01();
-    virtual void v02();
-    virtual void PlaySample(CASoundBank* bank, long sample, long count, const CSoundInit& init, long flags);   // slot 3
-};
-class CASoundManager {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual CASoundPlayer* GetPlayer();                     // slot 9 (+0x24)
-    CASoundBank* FindSoundBank(const CCharString* bankName) const;   // 0x009917E0
-};
+#define FABLE_RETAIL_CASOUNDBANK_SOUNDINDEX
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR
+#include "engine/CASoundBank.h"
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 class CDataBank;
 
 class CMovieSubtitles {
@@ -181,7 +155,7 @@ void CMovieSubtitles::Play(float time, bool display)
                 const CFontBank& font = *g_pSubtitleFont;
                 C2DBoxF box;
                 FormatTextForVWindow(VSubtitleWindow, font, subtitle.TextEntry->GetText(), FormattedText, box);
-                CASoundBank* bank = PSoundManager->FindSoundBank(&subtitle.TextEntry->BankName);
+                CASoundBank* bank = PSoundManager->GetPSoundBank(subtitle.TextEntry->BankName);
                 long sample = 0;
                 if (bank) {
                     CCharString soundName = subtitle.TextEntry->SoundName;
@@ -191,7 +165,7 @@ void CMovieSubtitles::Play(float time, bool display)
                 }
                 CSoundInit init;
                 init.GainFaderBits = 8;
-                PSoundManager->GetPlayer()->PlaySample(bank, sample, 1, init, 0);
+                PSoundManager->Get2DEmitter().PlaySample(*bank, sample, true, init, false);   // retail passes the (possibly null) bank pointer
             }
         }
         else if (time >= subtitle.EndTime) {

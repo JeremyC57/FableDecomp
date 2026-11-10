@@ -1,4 +1,10 @@
 #include "fable_compiler.h"
+#if !defined(_MSC_VER)
+#define __declspec(x)   // g++: MSVC-only spellings of the test's same-TU bodies and stubs
+#define __fastcall
+#define __cdecl
+#define __stdcall
+#endif
 #include <stdio.h>
 #include <string.h>
 // CTCInventory::ClosePCInventory(bool closeInGameMenu) -- leave the PC inventory screens: cancel the pending UI action,

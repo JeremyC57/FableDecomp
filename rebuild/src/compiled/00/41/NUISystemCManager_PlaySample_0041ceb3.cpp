@@ -1,6 +1,9 @@
 // NUISystem::CManager::PlaySample(CCharString& symbol, long bankId) -- play a UI sound sample by symbol from the given sound bank; returns the sound handle, 0 when nothing played
 // Leaf: ?PlaySample@CManager@NUISystem@@UAEKAAVCCharString@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041CEB3, length 108 bytes, `ret 8` after `leave`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h -- GetPSoundBank(long) const 0x00991840
+//   (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary name; landed as CASoundManager::GetBank), slot 9 Get2DEmitter and the
+//   emitter's PlaySample (slot 3) / PlaySoundEvent (slot 4); engine/CSoundInit.h; was a local CASoundManager / CSoundPlayer / CSoundInit model.
 // Name: Ego_r.pdb / FableWin.pdb `?PlaySample@CManager@NUISystem@@UAEKAAVCCharString@@J@Z`; it is slot 41 (+0xa4) of the
 // NUISystem::CManager vtable 0x01230134 (rtti-vtables.tsv), right after PlaySound (slot 40, 0x0041D0A8). The catalog's
 // "CASound_PlayFromSymbol" is descriptive.
@@ -29,32 +32,9 @@ public:
 public:
     long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
 };
-class CSoundInit { public:                                      // 0x20 bytes
-    float         Volume;                                // +0x00
-    float         Pitch;                                 // +0x04
-    float         Pan;                                   // +0x08
-    long          NoPlays;                               // +0x0c
-    long          PlaybackType;                          // +0x10
-    unsigned long GainFaderBits;                         // +0x14
-    unsigned long PitchFaderBits;                        // +0x18
-    long          OverrideID;                            // +0x1c
-    CSoundInit();                                        // 0x0041C930
-};
-class CSoundPlayer {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual unsigned long PlaySoundEvent(CASoundBank& bank, const CCharString& name, bool loop, CSoundInit& init, bool attached);   // slot 4 (+0x10)
-    virtual unsigned long PlaySoundEvent(CASoundBank& bank, long index, bool loop, CSoundInit& init, bool attached);               // slot 3 (+0x0c)
-};
-class CASoundManager {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
-    CASoundBank* GetBank(long id);                       // 0x00991840 (CASoundManager::GetBank)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                     // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 class CDefinitionManager;
 namespace NUISystem {
 class CManager {
@@ -65,9 +45,9 @@ public:
 };
 unsigned long CManager::PlaySample(CCharString& symbol, long bankId)
 {
-    if (((CASoundManager*)PSoundManager) && !m_pDefinitionManager)
+    if (PSoundManager && !m_pDefinitionManager)
     {
-        CASoundBank* bank = ((CASoundManager*)PSoundManager)->GetBank(bankId);
+        CASoundBank* bank = PSoundManager->GetPSoundBank(bankId);
         if (bank)
         {
             long index = bank->GetSoundIndexFromSymbol(symbol);
@@ -75,7 +55,7 @@ unsigned long CManager::PlaySample(CCharString& symbol, long bankId)
             {
                 CSoundInit init;
                 init.GainFaderBits = 0x40;
-                return ((CASoundManager*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(*bank, index, true, init, false);
+                return PSoundManager->Get2DEmitter().PlaySample(*bank, index, true, init, false);
             }
         }
     }

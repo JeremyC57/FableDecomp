@@ -1,6 +1,8 @@
 // CTCSoundPlayer::SetSpecificSampleVolume(unsigned long sampleID, float volume) -- forward a sample volume change to the attached emitter (when the sound system is up and the emitter is alive)
+// Leaf: ?SetSpecificSampleVolume@CTCSoundPlayer@@QAEXKM@Z
 // Leaf: SetSpecificSampleVolume
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AFF0, length 68 bytes (`ret 8`; callers 0x006D29D8, 0x006E3423, 0x006E3555, 0x008EF50C).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times), CThingSoundEmitter::SetSpecificSampleVolume @ 0x008367A0
 // (manifest "CScriptThing::operator==", propagated; it forwards to the emitter's sound object at +0x98).
 // Layout: Ego_r.pdb CTCSoundPlayer: PAttachedEmitter (CIntelligentPointer<CThingSoundEmitter>) +0x0c; the emitter is a CThing
@@ -36,8 +38,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CASoundManager;
-extern CASoundManager* PSoundManager;                                // 0x013B8394
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 
 class CTCSoundPlayer { public:
     void*                   __vftable;                      // +0x00
@@ -54,7 +55,7 @@ class CTCSoundPlayer { public:
 
 void CTCSoundPlayer::SetSpecificSampleVolume(unsigned long sampleID, float volume)
 {
-    if (((void*)PSoundManager)) {
+    if (PSoundManager) {
         if (HasLiveAttachedEmitter())
             PAttachedEmitter.GetPItem()->SetSpecificSampleVolume(sampleID, volume);
     }

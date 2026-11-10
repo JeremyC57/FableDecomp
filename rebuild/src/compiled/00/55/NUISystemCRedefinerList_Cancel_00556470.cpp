@@ -2,6 +2,7 @@
 // Leaf: ?Cancel@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00556470, 126 bytes (128 with padding), plain `ret` (Ego_r.pdb
 //   `?Cancel@CRedefinerList@NUISystem@@SIXXZ`: static __fastcall, no arguments).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundManagerLH model is gone and its slots carry the header names (SetGainFader slot 46).
 // Callees: the active list's virtual OnDeactivate (slot 141, +0x234; CRedefinerList's own is the landed 0x00556580),
 //   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0 (three times), CUserProfileManager::Load 0x0040D350 (landed), the
 //   sound manager's SetGainFader (slot 46, +0xb8, 0x00A3E9D0) three times.
@@ -21,22 +22,7 @@ public:
     void Load();                                        // 0x0040D350
 };
 
-class CSoundManagerLH {                                 // the object at 0x013B8394 (vtable 0x0129D2C4)
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045();
-    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xb8) 0x00A3E9D0
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                 // 0x013B8394
+#include "engine/CASoundManager.h"
 
 namespace NUISystem {
 class CRedefinerList {
@@ -84,10 +70,10 @@ void __fastcall CRedefinerList::Cancel()
         CUserProfileManager::Get().ApplyVideoValuesOnLoad = false;
         CUserProfileManager::Get().Load();
         CUserProfileManager::Get().ApplyVideoValuesOnLoad = true;
-        if (((CSoundManagerLH*)PSoundManager) != 0) {
-            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x10, 0.0f, 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x80, 0.0f, 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x40, 0.0f, 0.0f);
+        if (PSoundManager != 0) {
+            PSoundManager->SetGainFader(0x10, 0.0f, 0.0f);
+            PSoundManager->SetGainFader(0x80, 0.0f, 0.0f);
+            PSoundManager->SetGainFader(0x40, 0.0f, 0.0f);
         }
     }
 }

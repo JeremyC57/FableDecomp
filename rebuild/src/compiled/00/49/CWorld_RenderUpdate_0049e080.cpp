@@ -3,6 +3,8 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E080, 284 bytes, thiscall `ret 4`. Catalog "CWorld_RenderUpdate" (name only).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h -- slot 11 GetReceiver (the CASoundReceiver, local
+//   model: no header yet) and slot 3 Update; was a local CSoundSystem / CSoundListener model.
 // Callees: SetCurrentThingManager @ 0x004C74F0 (__fastcall), CThingManager::RenderUpdateThings @ 0x0051EBD0,
 //   CEnvironment::RenderUpdate(float) @ 0x006B42F0, CWorld::GetCurrentSoundCamera @ 0x0049DAA0 (CCamera by hidden pointer),
 //   the sound system's slot 11 (+0x2C, the listener) and slot 3 (+0x0C, update), the listener's slots 1 (+0x04,
@@ -49,23 +51,14 @@ class CEnvironment {
 public:
     void RenderUpdate(float interpolate);            // 0x006B42F0
 };
-class CSoundListener {
-public:
-    virtual void v00();
-    virtual void SetPosition(const C3DVector& position);                          // slot 1
+#include "engine/CASoundManager.h"
+class CASoundReceiver {                               // RTTI CASoundReceiver : CBaseClass (vtable 0x0129E76C is CSoundReceiverLH); no header
+public:                                               // yet: slot names descriptive (the Anniversary CSoundReceiverUN publics name only MovePos)
+    virtual ~CASoundReceiver();
+    virtual void SetPosition(const C3DVector& position);                          // slot 1 (+0x04) LH 0x00AAD060
     virtual void v02();
-    virtual void SetOrientation(const C3DVector& forward, const C3DVector& up);   // slot 3
+    virtual void SetOrientation(const C3DVector& forward, const C3DVector& up);   // slot 3 (+0x0C) LH 0x00AAD090
 };
-class CSoundSystem {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual void Update();                           // slot 3
-    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void v08(); virtual void v09(); virtual void v10();
-    virtual CSoundListener* GetListener();           // slot 11
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                 // 0x013B8394
 extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (0.0001f)
 void __fastcall SetCurrentThingManager(CThingManager* manager);   // 0x004C74F0
 
@@ -84,16 +77,16 @@ void CWorld::RenderUpdate(const CInterpolationInfo* info)
     SetCurrentThingManager(PThingManager_ptr);
     PThingManager_ptr->RenderUpdateThings(info);
     PEnvironment_ptr->RenderUpdate(info->Current.WFInterpolate);
-    if (((CSoundSystem*)PSoundManager)) {
+    if (PSoundManager) {
         CCamera camera = GetCurrentSoundCamera(info);
         C3DVector forward = camera.RHSet.Forward;
         C3DVector up = camera.RHSet.Up;
         if (camera.RHSet.Forward.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO &&
             camera.RHSet.Up.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
-            CSoundListener* listener = ((CSoundSystem*)PSoundManager)->GetListener();
-            listener->SetPosition(camera.WorldPosition);
-            listener->SetOrientation(forward, up);
+            CASoundReceiver& receiver = PSoundManager->GetReceiver();
+            receiver.SetPosition(camera.WorldPosition);
+            receiver.SetOrientation(forward, up);
         }
-        ((CSoundSystem*)PSoundManager)->Update();
+        PSoundManager->Update();
     }
 }

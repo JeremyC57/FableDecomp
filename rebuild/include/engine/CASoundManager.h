@@ -51,15 +51,55 @@ class CCharString;
 class CWideString;
 class C3DVector;
 class CReverbParameters;
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+class CLipSyncDataBank;
+#endif
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_ATMOSMAP
+class C2DCoordI;
+#endif
 class CASoundManager : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_ATMOSMAP
+    // Retail opt-in (agentSND2, 2026-11-10): the nested abstract atmos map InitAtmos (slot 36) takes. RTTI .?AVCAtmosMap@CASoundManager@@
+    // is the base of CAtmosProcess::CMyAtmosMap (vtable 0x0125D47C: two virtuals, no destructor; the landed overrides
+    // 0x006B1580 GetBlockValue / 0x006B15C0 GetBlockHeight(const C2DCoordI&) -- descriptive, no PDB names).
+    class CAtmosMap {
+    public:
+        virtual long GetBlockValue(const C2DCoordI& block) = 0;          // slot 0
+        virtual float GetBlockHeight(const C2DCoordI& block) = 0;        // slot 1
+    };
+#else
     class CAtmosMap;                                                     // .?AVCAtmosMap@CASoundManager@@ (InitAtmos's map)
+#endif
 #ifdef FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION
     // Retail opt-in (Codex 2026-11-10): native009919c0/00991c10 and CASoundManager constructor/dtor RTTI.
     // Audio module has no PDB symbols: these member names describe the observed bank-registration behavior.
     void RegisterSoundBank(unsigned long,const CWideString&,const CWideString&,const CWideString&,const CCharString&);
     void RegisterAtmosSoundBank(unsigned long,const CWideString&,const CWideString&);
     class CASoundBank* GetBank(long);
+#endif
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+    // Retail opt-in (agentSND2, 2026-11-10): the non-virtual bank lookups of the CASoundManager TU (0x009915C0..0x00991A..), named
+    // from the Fable Anniversary 360 PDB publics of lib_sound_manager_base.cpp (same TU order: CanAllocateEmitter, EnableMusic /
+    // Sound / Atmos, Update, GetPSoundBank(const CCharString&), GetPLipSyncBank, GetAnyPLipSyncBank, UnloadAllBanks,
+    // GetPSoundBank(long), ~CASoundManager, CloseAllBanks, ctor, RegisterSoundBank, RegisterAtmosSoundBank) with the TLC bodies as
+    // the second source: each walks the registered-bank records (pair<long, CRegisteredBank>, 0x24 bytes: sound bank +0x04,
+    // lip-sync bank +0x0C, symbol name +0x14) of the CVectorMap at +0x30.
+    //   0x009916F0 returns the lip-sync bank of the record whose sound bank is the argument; 0x00991720 the first non-null lip-sync
+    //   bank; 0x00991750 clears the sound flag +0x24 (StopAllSounds, slot 16, when it was set) and calls slot 2 of every bank;
+    //   0x009917E0 compares the record name with the CCharString argument (strcmp 0x00BFEBA8) and returns its bank; 0x00991840
+    //   finds the record by key; 0x009918F0 erases every record.
+    // 0x00991690 (the record whose lip-sync bank is the argument -> its sound bank) has no Anniversary counterpart: descriptive,
+    // spelled as a third GetPSoundBank overload.
+    CASoundBank* GetPSoundBank(const CLipSyncDataBank& lipSyncBank) const;               // 0x00991690 (descriptive)
+    const CLipSyncDataBank* GetPLipSyncBank(const CASoundBank& soundBank) const;           // 0x009916F0
+    const CLipSyncDataBank* GetAnyPLipSyncBank() const;                                    // 0x00991720
+    void UnloadAllBanks();                                                                 // 0x00991750
+    CASoundBank* GetPSoundBank(const CCharString& symbolName) const;                       // 0x009917E0
+#ifndef FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION
+    CASoundBank* GetPSoundBank(long bankID) const;                                         // 0x00991840
+#endif
+    void CloseAllBanks();                                                                  // 0x009918F0
 #endif
     virtual ~CASoundManager();                                                            // slot  0 ??_G 0x009937B0
 protected:
@@ -134,10 +174,44 @@ public:
     void SetEnabled25_009915e0(bool);                                    // 0x009915E0 +0x25; slot 18 (0) on disable (descriptive)
     void SetEnabled26_00991620(bool);                                    // 0x00991620 +0x26; slot 2 (value) on change (descriptive)
 #endif
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_ENABLEFLAGS
+    // Retail opt-in (agentSND2, 2026-11-10): the three enable flags the base constructor 0x00991910 sets to true (`mov [esi+24h..26h],al`)
+    // and EnableSound 0x00991600 / EnableMusic 0x009915E0 / EnableAtmos 0x00991620 store; CMusicManager::UpdateCurrentMusicOffset
+    // 0x006BD8A0 reads +0x25 before GetMusicOffset. No PDB members: descriptive names after the setters. Layout unchanged.
+protected:
+    unsigned char _pad_0x04[0x24 - 0x04];
+public:
+    bool SoundEnabled;                                                   // +0x24
+    bool MusicEnabled;                                                   // +0x25
+    bool AtmosEnabled;                                                   // +0x26
 private:
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_SIZE40
+    unsigned char _pad_0x27[0x40 - 0x27];
+};
+FABLE_STATIC_ASSERT(sizeof(CASoundManager) == 0x40);
+#else
+    unsigned char _pad_0x27[0x4c - 0x27];
+};
+FABLE_STATIC_ASSERT(sizeof(CASoundManager) == 0x4c);
+#endif
+#else
+private:
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_SIZE40
+    // Retail opt-in (agentSND2, 2026-11-10): the base is 0x40 bytes. The base constructor 0x00991910 stores its last member at
+    // +0x3D (`mov byte ptr [esi+3Dh],bl`) and never touches +0x40..+0x4B; the CSoundManagerLH constructor 0x00A3EF00 assigns
+    // +0x40 (the libpk sound system, from 0x00C096E0), +0x44 (the 2-D CSoundEmitterLH, 0x00AAC530) and +0x48 (the
+    // CSoundReceiverLH, 0x00AAD020) in its body, and the CSoundManagerLH getter Get2DEmitter 0x00A3E3A0 (`lea eax,..`/+0x44)
+    // and every CSoundEmitterLH row read +0x40 through the manager pointer: they are CSoundManagerLH's own first members
+    // (landed CSoundManagerLH dtor 0x00A3EDE0 models the base at 0x40 the same way).
+    unsigned char _pad_0x04[0x40 - 0x04];                                // +0x04 members (opaque, see above)
+};
+FABLE_STATIC_ASSERT(sizeof(CASoundManager) == 0x40);
+#else
     unsigned char _pad_0x04[0x4c - 0x04];                                // +0x04 members (opaque, see above)
 };
 FABLE_STATIC_ASSERT(sizeof(CASoundManager) == 0x4c);
+#endif
+#endif
 
 extern CASoundManager* PSoundManager;                                    // 0x013B8394 ?PSoundManager@@3PAVCASoundManager@@A (ESTABLISHED_SPELLINGS)
 

@@ -13,14 +13,14 @@ struct Emitter {
     unsigned int PlaySample(Bank& b, int s, bool l, const Init& i, bool a) { bank = &b; sample = s; loop = l; init = i; attached = a; return 100 + s; }
     unsigned int PlaySoundEvent(Bank& b, const Name& n, bool l, Init& i, bool a) { bank = &b; name = n.s; loop = l; init = i; attached = a; return 200; }
 };
-static Emitter g_emitter;
-static bool g_emitterOk = true;
+static Emitter g_soundEmitter;
+static bool g_soundEmitterOk = true;
 static Emitter* Create(const Vec3& pos, const Thing* parent, bool flag)
-{ if (!g_emitterOk) return 0; g_emitter.pos = pos; g_emitter.parent = parent; g_emitter.flag = flag; return &g_emitter; }
+{ if (!g_soundEmitterOk) return 0; g_soundEmitter.pos = pos; g_soundEmitter.parent = parent; g_soundEmitter.flag = flag; return &g_soundEmitter; }
 static Bank g_sampleBank = { true };
 struct Physics { Vec3 Position; };
 struct Thing { Physics* PhysicsTC; Bank& GetSampleBank() const { return g_sampleBank; } };
-static void* g_pGameState = &g_emitter;
+static void* g_pGameState = &g_soundEmitter;
 static const unsigned int g_Invalid = 0xFFFFFFFF;
 
 unsigned int PlayAtPos(Bank& bank, const Vec3& pos, const Name& name, bool loop, bool attached)
@@ -34,11 +34,11 @@ unsigned int PlayAtPos(Bank& bank, const Vec3& pos, const Name& name, bool loop,
 int main()
 {
     Bank bank = { true }; Vec3 pos = { 1, 2, 3 }; Name n = { "EV" };
-    bool ok = PlayAtPos(bank, pos, n, true, false) == 200 && g_emitter.parent == 0 && g_emitter.flag && g_emitter.pos.Y == 2
-        && g_emitter.init.GainFaderBits == 0x8010 && g_emitter.init.OverrideID == -1 && g_emitter.init.PlaybackType == 1 && g_emitter.loop && !g_emitter.attached;
+    bool ok = PlayAtPos(bank, pos, n, true, false) == 200 && g_soundEmitter.parent == 0 && g_soundEmitter.flag && g_soundEmitter.pos.Y == 2
+        && g_soundEmitter.init.GainFaderBits == 0x8010 && g_soundEmitter.init.OverrideID == -1 && g_soundEmitter.init.PlaybackType == 1 && g_soundEmitter.loop && !g_soundEmitter.attached;
     bank.hasEvent = false; ok = ok && PlayAtPos(bank, pos, n, true, false) == g_Invalid;
     bank.hasEvent = true; g_pGameState = 0; ok = ok && PlayAtPos(bank, pos, n, true, false) == g_Invalid;
-    g_pGameState = &bank; g_emitterOk = false; ok = ok && PlayAtPos(bank, pos, n, true, false) == g_Invalid;
+    g_pGameState = &bank; g_soundEmitterOk = false; ok = ok && PlayAtPos(bank, pos, n, true, false) == g_Invalid;
     std::printf(ok ? "0066a920_TEST PASS\n" : "0066a920_TEST FAIL\n");
     return ok ? 0 : 1;
 }

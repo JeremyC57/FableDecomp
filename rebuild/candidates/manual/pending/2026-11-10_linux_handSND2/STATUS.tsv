@@ -1,0 +1,101 @@
+address	name	grade	grades_used	note
+0x004022B0	Naming wave 18: PDisplayManager is GPDisplayManager 	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00407370	CUserProfileManager::ApplyValues	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x004175E5	CMainGameComponent::Shutdown	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0041CEB3	NUISystem::CManager::PlaySample	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0041D0A8	NUISystem::CManager::PlaySoundW	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0042DED5	GPlayMusic	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0042E17C	CNewFrontendGameComponent::InitialiseSounds	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0042EBB6	CNewFrontendGameComponent::Shutdown	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0047D78B	CTCInGameMenu::CloseInGameMenu	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0049DCC0	CWorld::ResetToFrontEnd	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0049E080	CWorld::RenderUpdate	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x004A2F10	CWorld::UpdateSaveGameLoad	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x004A6550	CWorld::PostInit	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x004C5F10	CBulletTimeManager::RecalculateSoundPitch	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x004CDB70	CSubtitledMessage::CSubtitledMessage	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x004CDBD0	CSubtitledMessage::CSubtitledMessage	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00556470	NUISystem::CRedefinerList::Cancel	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x005565C0	NUISystem::CRedefinerList::ResetKeysToDefaults	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00557000	NUISystem::CRedefinerList::Refresh	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00557D20	NUISystem::CKeyRedefiner::Redefine	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0056FAD7	CTCInventoryExperience::OpenInventory	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00587847	CTCInventory::ClosePCInventory	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00589D30	CTCInventory::CloseInventory	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00596763	NUISystem::CFrontEndManager::GotoNextScreen	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0059E2C7	CTCInventoryTrade::CloseInventoryPC	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0059F304	CTCInventoryTrade::CloseInventory	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x005AE86B	CTCInventoryTrade::OpenInventoryPC	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x005BD33C	NInventory::CTCInventoryBase::PlayInventoryMovementSound	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x005BD3A0	NInventory::CTCInventoryBase::PlayInventoryNoMovementSound	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x005FCE60	CTCInventoryMap::vfunc_31	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006116E0	CTCInventoryMap::OpenInventory	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00621720	CTCInventoryQuests::CloseInventoryPC	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00621C80	CTCInventoryQuests::CloseInventory	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00629DE0	CWorld::EAAnswerQuestion	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00629F50	CWorld::EASkipCutScene	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0065C781	CTCVillage::FrameUpdate	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066A920	CTCSoundPlayer::InternalPlaySoundEventAtPos	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066ACE0	CTCSoundPlayer::PlayUnattachedSample	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066AD90	CTCSoundPlayer::ReleaseAttachedLoopingSound	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066ADD0	CTCSoundPlayer::StopAttachedSound	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066AE10	CTCSoundPlayer::IsAttachedSoundPlaying	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066AE60	CTCSoundPlayer::IsAttachedSoundLoadedAndPlaying	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066AEB0	CTCSoundPlayer::StopAllAttachedSounds	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066AFA0	CTCSoundPlayer::SetSpecificSamplePitch	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066AFF0	CTCSoundPlayer::SetSpecificSampleVolume	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066B080	CTCSoundPlayer::InternalPlayAttachedSample	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066B120	CTCSoundPlayer::InternalPlaySoundEvent	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066BA80	CTCSoundPlayer::PlayAttachedDialogue	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066BD00	CTCSoundPlayer::PlayAttachedCriteria	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066BDF0	CTCSoundPlayer::PlayUnattachedCriteria	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0066E742	NHeroInformationScreens::CManager::PlayScreenUpdateSound	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006B1550	CAtmosProcess::~CAtmosProcess	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006B1600	CAtmosProcess::ApplyReverbSettings	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006B1900	CAtmosProcess::MixAtmos	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006B1960	CAtmosProcess::CAtmosProcess	RELOCATION_MATCH	4	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006B1F30	CAtmosProcess::UpdateInsideBuildings	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006B2260	CAtmosProcess::Update	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006BD8A0	CMusicManager::UpdateCurrentMusicOffset	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006E2860	CTCTalk::GetPLipSyncBank	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006E2940	CTCTalk::GetSpeechDurationInFrames	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006E29A0	CTCTalk::PlayLipMovement	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x006E2A50	CTCTalk::SetUpSpeechSample	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x007E3610	CTCAtmosPlayer::SetAtmosDefIndex	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00836740	CThingSoundEmitter::OnCreate	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00836810	CThingSoundEmitter::PlaySample	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00836840	CThingSoundEmitter::PlaySoundEvent	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00836870	CThingSoundEmitter::IsSamplePlaying	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x008368A0	CThingSoundEmitter::IsSampleLoadedAndPlaying	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x008368D0	CThingSoundEmitter::StopSpecificSample	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x008368F0	CThingSoundEmitter::ReleaseLoop	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00836A50	CThingSoundEmitter::~CThingSoundEmitter	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0088F570	CGameScriptInterface::Play2DSound	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0088F610	CGameScriptInterface::IsSoundPlaying	RELOCATION_MATCH	3	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0088F620	CGameScriptInterface::EnableSounds	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x0088F660	CGameScriptInterface::StopSound	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00891220	?	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x008912A0	?	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x009BD910	CMovieSubtitles::Play	RELOCATION_MATCH	2	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x009BDBA0	CMovieSubtitles::CMovieSubtitles	RELOCATION_MATCH	1	job2 local sound-manager model moved onto engine/CASoundManager.h (rows/)
+0x00AAB9C0	CSoundEmitterLH::MovePos	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABA00	CSoundEmitterLH::Activate	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABA10	CSoundEmitterLH::Deactivate	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABA20	CSoundEmitterLH::SetSpecificSamplePitch	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABA40	CSoundEmitterLH::SetSpecificSampleVolume	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABA60	CSoundEmitterLH::GetPos	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABA80	CSoundEmitterLH::StopAllLoops	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABAC0	CSoundEmitterLH::IsSpecificSamplePlaying	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABB00	CSoundEmitterLH::IsSpecificSampleLoadedAndPlaying	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABB60	CSoundEmitterLH::ReleaseLoop	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABBB0	CSoundEmitterLH::SetPos	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AABC50	CSoundEmitterLH::IsSamplePlaying	MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AAC1D0	CSoundEmitterLH::PlayAtmos	RELOCATION_MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AAC340	CSoundEmitterLH::StopSample	RELOCATION_MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x00AAC400	CSoundEmitterLH::StopSpecificSample	RELOCATION_MATCH	1	job1 emitter self row: respelled to its CASoundEmitter.h slot name, on the shared headers
+0x005F64DD	CTCInventoryAbilities::CycleAssignedAbilities	DIFFER(508v508)	1	job3 parked: budget spent (10 of 10); differ/ 508v508 (same length)
+0x005F6793	CTCInventoryAbilities::CycleAssignedExpressions	DIFFER(447v442)	2	job3 parked: differ/ 447v442, 3 grades of 10 left
+0x005A94BD	CTCInventoryTrade::OpenInventory	DIFFER(1488v1482)	2	job3 parked: differ/ 1488v1482 (frame fixed), 5 grades left
+0x005ACEDA	CTCInventoryTrade::ConstructActualInventoryPC	DIFFER(1113v1067)	1	job3 parked: differ/ 1113v1067, 7 grades left
+0x009A6610	CSystemManager::Initialise	-	0	job2 not moved: the landed row's invented CP* counted-pointer wrappers need CCountedPointer<CASoundManager>::Reset + the CSoundManagerLH ctor spelled together (NOTES)
+0x00A0B9A0	CSoundBankLH::~CSoundBankLH	-	0	job2 not moved: no PSoundManager use; its local model is a CASoundBank (PSymbolMap +4), not a sound-manager model (NOTES)

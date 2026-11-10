@@ -1,6 +1,8 @@
 // CMusicManager::UpdateCurrentMusicOffset() -- while the sound system's music is up, store the current track's playback position into its registered-music entry
 // Leaf: ?UpdateCurrentMusicOffset@CMusicManager@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BD8A0, 91 bytes (+ int3 padding), plain `ret` (thiscall).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h -- slot 49 GetMusicOffset(float&) and the +0x25
+//   MusicEnabled flag (FABLE_RETAIL_CASOUNDMANAGER_ENABLEFLAGS, descriptive); was a local CSoundSystem (GetMusicPosition, m_musicEnabled).
 // Callees: CVectorMap<long, CRegisteredMusicEntry>::LowerBound(const long&) @ 0x006BE5E0, the sound system's virtual
 //   slot 49 (+0xC4) on the global sound system @ 0x013B8394 (fills a float, returns bool; name from use).
 // Identity: Ego_r.pdb ?UpdateCurrentMusicOffset@CMusicManager@@IAEXXZ (the only CMusicManager member that writes an
@@ -18,23 +20,8 @@ public:
     void* PStringData;                                  // +0x00
 };
 
-class CSoundSystem {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
-    virtual void v48();
-    virtual bool GetMusicPosition(float* seconds);      // slot 49 (+0xC4)
-    unsigned char _pad_0x04[0x21];
-    bool          m_musicEnabled;                       // +0x25
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                    // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_ENABLEFLAGS
+#include "engine/CASoundManager.h"
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -86,12 +73,12 @@ protected:
 
 void CMusicManager::UpdateCurrentMusicOffset()
 {
-    CSoundSystem* sound = ((CSoundSystem*)PSoundManager);
-    if (sound && sound->m_musicEnabled) {
+    CASoundManager* sound = PSoundManager;
+    if (sound && sound->MusicEnabled) {
         CRegisteredMusicMap::value_type* it = RegisteredMusic.Find(CurrentMusicID);
         if (it != RegisteredMusic.End()) {
             float offset;
-            if (sound->GetMusicPosition(&offset))
+            if (sound->GetMusicOffset(offset))
                 it->second.Offset = offset;
         }
     }

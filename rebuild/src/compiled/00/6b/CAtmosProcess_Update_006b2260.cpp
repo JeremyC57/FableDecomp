@@ -1,6 +1,7 @@
 // CAtmosProcess::Update() -- per-frame atmosphere update (when the sound system exists): while it rains, create the positional rain atmos marker on first need (its atmos player playing SOUND_THEME_RAIN), fade the RAIN atmos in once and keep the player 1 unit above the render camera; when the rain stops fade it out; then update the inside-building reverb and the day/night atmos sounds
 // Leaf: ?Update@CAtmosProcess@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B2260, 671 bytes, thiscall, plain `ret`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Identity (proven, two sources): Ego_r.pdb / FableWin.pdb ?Update@CAtmosProcess@@QAEXXZ (the class's only public no-argument
 //   update); the landed caller CWorld::UpdateFrame 0x004A5A40 calls 0x006B2260 under this spelling on PAtmosProcessor, and the
 //   body ends in the private UpdateInsideBuildings 0x006B1F30 / UpdateDayNightAtmosSounds 0x006B1A20. The catalog placeholder
@@ -60,8 +61,7 @@ public:
     void SetPos(const C3DVector& position);                     // 0x007E35F0
     void SetAtmosDefIndex(long index);                          // 0x007E3610
 };
-class CASoundManager;
-extern CASoundManager* PSoundManager;                           // 0x013B8394
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 
 class CMyAtmosMap {
 public:

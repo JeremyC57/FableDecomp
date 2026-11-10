@@ -6,6 +6,7 @@
 //   Name: Ego_r.pdb `?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z`; the position
 //   argument is never read in retail (each candidate plays at the owner's CThing::GetPos()). Callers: 0x004A595F,
 //   0x0057C497, 0x007A00B3, 0x007A23C3.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Callees: CThing::GetSampleBank() const @ 0x004C7A80, GetPotentialCriteriaStrings @ 0x0066BC10, CThing::GetPos()
 //   const @ 0x004C73D0 (out of line here), InternalPlaySoundEventAtPos @ 0x0066A920, ~CCharString @ 0x0099EAE0, free
 //   @ 0x00BFEA14, vector<CCharString>::~vector @ 0x00414EA0 (the found-handle exit). Globals: the sound-enabled byte
@@ -56,8 +57,7 @@ public:
     const C3DVector& GetPos() const;              // 0x004C73D0
 };
 extern bool          g_bSoundEnabled;                  // 0x0137E974
-class CASoundManager;
-extern CASoundManager* PSoundManager;                     // 0x013B8394
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern unsigned long g_InvalidSoundHandle;             // 0x0129D25C
 class CTCBase {
 public:
@@ -84,7 +84,7 @@ __declspec(noinline) void CTCSoundPlayer::GetPotentialCriteriaStrings(const CCha
 
 unsigned long CTCSoundPlayer::PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& pos, bool loop, bool attached)
 {
-    if (g_bSoundEnabled && ((void*)PSoundManager)) {
+    if (g_bSoundEnabled && PSoundManager) {
         CASoundBank& bank = ParentThing->GetSampleBank();
         std::vector<CCharString> names;
         GetPotentialCriteriaStrings(criteria, names);

@@ -5,6 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BA80, 368 bytes (350 without padding), thiscall `ret 14h`, unsigned long in eax.
 //   Ego_r.pdb `?PlayAttachedDialogue@CTCSoundPlayer@@QAEKK_N000@Z`; called from 0x0066BF23 and
 //   CCreatureAction_PerformExpression::Initialise 0x008469B3.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration and a CSymbolMap stand-in; GetPSoundBank(const CCharString&) 0x009917E0 under FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP).
 // Callees: CBankFile::GetEntryDataType(unsigned long) const 0x009CC210, NGameText::CDataBank::GetPGroupEntry(unsigned long, bool)
 //   const 0x009C9070 (CIVCountedPointer<const CGroupEntry> by hidden pointer into the dead textID slot) and
 //   GetTextEntryFromGroup(unsigned long, const CCharString&, bool&, long*, bool) const 0x009C9280 (on CMainGameComponent::Get()
@@ -150,12 +151,8 @@ class CASoundBank {
 public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
 };
-class CSymbolMap {
-public:
-    CASoundBank* FindFirstSymbolWithVal(const CCharString* value) const;   // 0x009917E0
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                    // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 
 class CSoundInit {
 public:
@@ -191,7 +188,7 @@ unsigned long CTCSoundPlayer::PlayAttachedDialogue(unsigned long textID, bool fl
             entry = bank->GetTextEntryFromGroup(textID, talk->GetDialogueVoice());
         }
         if (entry) {
-            CASoundBank* soundBank = ((CSymbolMap*)PSoundManager)->FindFirstSymbolWithVal(&entry->BankName);
+            CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->BankName);
             if (soundBank) {
                 long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                 if (sample > 0) {

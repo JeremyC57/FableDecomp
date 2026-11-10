@@ -2,6 +2,7 @@
 // Leaf: ??0CAtmosProcess
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1960, length 185 bytes, `ret`, returns `this`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundSystem model is gone and its slots carry the header names (SetAtmosMap_slot36 -> InitAtmos slot 36).
 // Label correction: the catalog/manifest name "CThingCreatureBase::GetCombatAnimationSet" is propagated; the body is a
 //   constructor (`mov eax,esi`) storing vtable 0x0125D47C = CAtmosProcess::CMyAtmosMap at +4 (rtti-vtables.tsv; its
 //   landed slots 0x006B1580/0x006B15C0) and CIntelligentPointer vtable 0x0125A860 at +0xa; the single caller is
@@ -48,24 +49,11 @@ class CDefinitionManager { public:
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 
 class C2DCoordI;
-struct CMyAtmosMap {                            // CAtmosProcess::CMyAtmosMap, vtable 0x0125D47C
-    virtual long GetBlockValue(const C2DCoordI& block);     // 0x006B1580
-    virtual float GetBlockHeight(const C2DCoordI& block);   // 0x006B15C0
-};
-
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-class CSoundSystem {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    FILL10(1) FILL10(2)
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void SetAtmosMap_slot36(CMyAtmosMap* map, float dampingMin, float dampingRange, unsigned long flags);   // slot 36 (+0x90)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;            // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_ATMOSMAP
+#include "engine/CASoundManager.h"
 
 class CBaseObject;
 #pragma pack(push, 1)
@@ -76,6 +64,11 @@ class CBaseObject;
 class CThingMarker;
 class CAtmosProcess {
 public:
+    class CMyAtmosMap : public CASoundManager::CAtmosMap {   // RTTI CAtmosProcess::CMyAtmosMap : CASoundManager::CAtmosMap, vtable 0x0125D47C
+    public:
+        virtual long GetBlockValue(const C2DCoordI& block);     // 0x006B1580
+        virtual float GetBlockHeight(const C2DCoordI& block);   // 0x006B15C0
+    };
     long DayNightState;                         // +0x00 EDayNightState
     CMyAtmosMap AtmosMap;                       // +0x04
     bool RainCurrentlyPlaying;                  // +0x08
@@ -94,14 +87,14 @@ public:
 CAtmosProcess::CAtmosProcess()
     : DayNightState(0), RainCurrentlyPlaying(false), AtmosSoundsMuted(false), InsideBuilding(-1), ReverbType(0), ReverbLevel(0)
 {
-    if (((CSoundSystem*)PSoundManager)) {
+    if (PSoundManager) {
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
             CGameDefinitionManager::Get().GetDef(name, &soundDef);
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
-        ((CSoundSystem*)PSoundManager)->SetAtmosMap_slot36(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);
+        PSoundManager->InitAtmos(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);
         LoadThemes_006b16b0();
         ApplyReverbSettings();
         if (--def->RefCount == 0)

@@ -4,6 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A2F10, 736 bytes + the 4-entry jump table 0x004A31F0 (catalog row 752); Ego_r.pdb
 //   `?UpdateSaveGameLoad@CWorld@@IAEXXZ` (protected). States (SaveGameLoadStatus, set to 1 by LoadGameState 0x004A3200):
 //   1 start the fade-out and pause, 2 wait for the fade, 3 load, 4 finish; anything else returns.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundManagerLH model is gone and its slots carry the header names (SetGainFader slot 46).
 // Callees: CDisplayEngine::StartScreenFadeOut(float, float, CRGBColour, float) 0x00434C00, IsScreenFullyFadedOut() const
 //   0x004A9210, EndScreenFadeOut() 0x00434C90; CWideString() 0x0099AED0 / ~CWideString 0x0099B510; CAFile::SplitPath
 //   0x00997620 (__fastcall static); operator+(const CWideString&, const CWideString&) 0x0099BE70 (__fastcall);
@@ -154,21 +155,7 @@ class CUserProfileManager { public:
     float GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; }
 };
 
-class CSoundManagerLH { public:                             // the object at 0x013B8394 (vtable 0x0129D2C4)
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
-    virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
-    virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
-    virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
-    virtual void v045();
-    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                     // 0x013B8394
+#include "engine/CASoundManager.h"
 
 extern bool g_ProgressDebugDisplay;                         // 0x013B85F0
 extern bool g_ProgressDebugDisplaySaved;                    // 0x013B89B8
@@ -242,10 +229,10 @@ void CWorld::UpdateSaveGameLoad()
         g_ProgressDebugDisplay = g_ProgressDebugDisplaySaved;
         Component->GetDisplayEngine().EndScreenFadeOut();
         DisplayMiniMapOnRegionLoad = true;
-        if (((CSoundManagerLH*)PSoundManager)) {
-            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-            ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        if (PSoundManager) {
+            PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+            PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+            PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
         }
         SetAsPaused(false);
         SaveGameLoadStatus = 0;

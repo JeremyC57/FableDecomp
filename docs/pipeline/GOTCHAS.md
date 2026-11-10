@@ -2677,3 +2677,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Renaming a row whose old test links the row object by its old symbol (or prints a fixed `BEHAVIOR_OK`) breaks its behaviour test; rerow.py also resets PassPattern to `<addr>_TEST PASS`: replace such tests with self-contained host models (2026-11-10, landing an).
 - A store retail issues between two `_ftol` calls (0x0063ABBD) comes from a named C2DCoordI in its own `{}` scope filled member by member; the ctor temporary stores after the second call.
 - Before parking an inline-expansion residue as forceinline-only, try large `/d2inlT` values: VC7.1 expands 0x00B41770's same-TU PeekLandscapeHeight at T301 and not at T300 or the default.
+- Retail's `push a ; jle ; push b ; jmp` into one cross-jumped call is `if (c) F(a, x); else F(0, x);`, not `F(c ? a : 0, x)` (0x005F6793, 0x005F64DD).
+- An `#include` that lands inside an open `namespace` still grades RELOCATION_MATCH (relocations are masked) but binds `?Sym@Ns@@...`: check the object's symbols, not only the grade (0x00557D20).

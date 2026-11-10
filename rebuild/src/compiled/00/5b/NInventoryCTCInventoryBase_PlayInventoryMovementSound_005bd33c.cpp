@@ -1,6 +1,9 @@
 // NInventory::CTCInventoryBase::PlayInventoryMovementSound() const -- when the game state exists, play the inventory def's movement sample non-positionally from the parent thing's sample bank (a CSoundInit with flag 0x20)
 // Leaf: ?PlayInventoryMovementSound@
 // Retail: Fable.exe @ 0x005BD33C, 100 bytes, `ret` (thiscall, no arguments). Ego_r.pdb
+// Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager, slot 9 Get2DEmitter (the manager's 2-D
+//   CASoundEmitter, slot 3 PlaySample) and engine/CSoundInit.h (GainFaderBits +0x14); was a local CGameState / CSoundPlayer /
+//   CSoundInit model.
 // `?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ` (private const). Callers: SelectNextCategory /
 // SelectPreviousCategory / HighlightNextItem 0x005BDBB0, 0x005BDC24, 0x005BDCC6, 0x005BDCEE. Twin: 0x005BD3A0 (NoMovementSound).
 // Callees: CThing::GetSampleBank() const @ 0x004C7A80 (catalog "CAnimateThing::GetMeshBank" is propagated; Ego_r
@@ -15,28 +18,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CASoundBank;
-class CSoundInit { public:                                     // 0x20 bytes (ctor 0x0041C930)
-    float Volume;                                       // +0x00
-    float Pitch;                                        // +0x04
-    long  Delay;                                        // +0x08
-    long  LoopCount;                                    // +0x0c
-    long  Priority;                                     // +0x10
-    long  Flags;                                        // +0x14
-    long  Pan;                                          // +0x18
-    long  Id;                                           // +0x1c
-    CSoundInit();                                       // 0x0041C930
-};
-struct CSoundPlayer {
-    virtual void v000(); virtual void v001(); virtual void v002();
-    virtual unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);   // slot 3 (+0x0c)
-};
-struct CGameState {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
-    virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                        // 0x013B8394
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_MOREACCESS
 #include "engine/CThing.h"
@@ -59,15 +42,15 @@ public:
 };
 void CTCInventoryBase::PlayInventoryMovementSound() const
 {
-    if (((CGameState*)PSoundManager)) {
+    if (PSoundManager) {
         CASoundBank& bank = ParentThing->GetSampleBank();
         CSoundInit init;
-        init.Flags = 0x20;
-        CSoundPlayer* player = ((CGameState*)PSoundManager)->GetSoundPlayer();
+        init.GainFaderBits = 0x20;
+        CASoundEmitter& emitter = PSoundManager->Get2DEmitter();
         CInventoryDef* def = PDef;
         if (def)
             ++def->RefCount;
-        player->PlaySample(bank, def->MovementSound, true, init, false);
+        emitter.PlaySample(bank, def->MovementSound, true, init, false);
         if (--def->RefCount == 0)
             def->Destroy();
     }

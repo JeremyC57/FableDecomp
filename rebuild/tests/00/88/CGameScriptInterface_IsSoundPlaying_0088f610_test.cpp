@@ -1,40 +1,22 @@
+// Behaviour test for CGameScriptInterface::IsSoundPlaying 0x0088F610: host model -- forwards the id to the sound manager's slot 15.
 #include <cstdio>
-
-struct SoundProvider
-{
-    void** vtable;
+class CASoundManager {
+public:
+    unsigned long Playing; unsigned long Last;
+    CASoundManager() : Playing(5), Last(0) {}
+    virtual ~CASoundManager() {}
+    virtual bool IsSoundPlaying(unsigned long id) const { const_cast<CASoundManager*>(this)->Last = id; return id == Playing; }
 };
-
-typedef bool (__fastcall *FnIsSoundPlaying)(SoundProvider*, unsigned long);
-
-static SoundProvider* g_provider;
-static SoundProvider* g_seenProvider;
-static unsigned long g_seenId;
-static unsigned long g_calls;
-
-static bool __fastcall MockIsSoundPlaying(SoundProvider* provider, unsigned long soundId)
-{
-    g_seenProvider = provider;
-    g_seenId = soundId;
-    ++g_calls;
-    return soundId == 0xC0FFEEUL;
-}
-
-static bool Dispatch(unsigned long soundId)
-{
-    return ((FnIsSoundPlaying)g_provider->vtable[15])(g_provider, soundId);
-}
-
+static CASoundManager* PSoundManager = 0;
+class CGameScriptInterface {
+public:
+    bool IsSoundPlaying(unsigned long soundId) const { return PSoundManager->IsSoundPlaying(soundId); }
+};
 int main()
 {
-    void* slots[16] = {0};
-    SoundProvider provider;
-    slots[15] = (void*)&MockIsSoundPlaying;
-    provider.vtable = slots;
-    g_provider = &provider;
-
-    if (!Dispatch(0xC0FFEEUL) || Dispatch(7UL)) return 1;
-    if (g_calls != 2 || g_seenProvider != &provider || g_seenId != 7UL) return 2;
-    std::printf("IS_SOUND_PLAYING_PASS\n");
+    CASoundManager m; PSoundManager = &m; CGameScriptInterface gsi;
+    bool ok = gsi.IsSoundPlaying(5) && m.Last == 5 && !gsi.IsSoundPlaying(6) && m.Last == 6;
+    if (!ok) { std::printf("0088f610_TEST FAIL\n"); return 1; }
+    std::printf("0088f610_TEST PASS\n");
     return 0;
 }

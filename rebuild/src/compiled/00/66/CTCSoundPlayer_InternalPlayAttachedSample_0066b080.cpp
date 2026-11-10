@@ -4,6 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066B080, 148 bytes (+ int3 padding to 160), thiscall `ret 18h`.
 //   Name: Ego_r.pdb `?InternalPlayAttachedSample@CTCSoundPlayer@@AAEKAAVCASoundBank@@JABVCSoundInit@@_N22@Z`.
 //   Callers: PlayAttachedSample 0x0066B280 / 0x0066B300 (landed, "PlayAttachedSampleIndex") and 0x0066BBC6.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Label correction: the catalog "Sound_PlayAttached" is descriptive.
 // Callees/globals: CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) @ 0x008369F0 (static __fastcall),
 //   CThingSoundEmitter::PlaySample @ 0x00836810 / PlaySoundEvent @ 0x00836840 (landed), CTCSoundPlayer::
@@ -60,8 +61,7 @@ public:
     C3DVector     Position;                     // +0x0c
 };
 
-class CASoundManager;
-extern CASoundManager* PSoundManager;              // 0x013B8394 (no sound while null)
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
@@ -94,7 +94,7 @@ public:
 
 unsigned long CTCSoundPlayer::InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached)
 {
-    if (sample && ((void*)PSoundManager)) {
+    if (sample && PSoundManager) {
         CThingSoundEmitter* emitter = CreatePAttachedEmitter(flag);
         if (emitter) {
             if (init.GainFaderBits == 0) {

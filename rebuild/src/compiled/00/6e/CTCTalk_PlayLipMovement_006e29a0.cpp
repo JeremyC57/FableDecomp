@@ -1,11 +1,12 @@
 // CTCTalk::PlayLipMovement(CASoundBank& bank, long sample) -- start a lip movement from a given speech bank and sample: record them, reset the mime start time, start loading the sample's lip-sync entry in the paired lip-sync bank, and set the sample duration in frames
 // Leaf: ?PlayLipMovement@CTCTalk@@QAEXAAVCASoundBank@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E29A0, 105 bytes, thiscall `ret 8`.
+// Sound manager (agentSND2, 2026-11-10): the "symbol map" at 0x013B8394 is PSoundManager (engine/CASoundManager.h); its bank lookups carry the Fable Anniversary 360 PDB names under FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP (GetPLipSyncBank 0x009916F0, GetAnyPLipSyncBank 0x00991720, GetPSoundBank(const CLipSyncDataBank&) 0x00991690 descriptive); was a local CSymbolMap.
 // Identity: Ego_r.pdb name set `?PlayLipMovement@CTCTalk@@QAEXAAVCASoundBank@@J@Z` (public, void(CASoundBank&, long)); the
 //   body is the bank/sample twin of the landed CTCTalk::SetUpSpeechSample 0x006E2A50 (same lip-sync lookup, same
 //   BeginLoadingEntry, same duration call). Only caller 0x006E372A. The catalog's "CAnimateThing_SetMeshBankAndSymbol"
 //   is descriptive.
-// Callees: the default speech bank getter @ 0x00686D70, CSymbolMap::FindValueForSymbol @ 0x009916F0 / FindFirstValue
+// Callees: the default speech bank getter @ 0x00686D70, CASoundManager::GetPLipSyncBank @ 0x009916F0 / GetAnyPLipSyncBank
 //   @ 0x00991720 (the inlined GetPLipSyncBank 0x006E2860), CLipSyncDataBank::BeginLoadingEntry(unsigned long) @ 0x00A42AC0,
 //   CTCTalk::GetSpeechDurationInFrames(long) const @ 0x006E2940.
 // Globals: the speech-bank map @ 0x013B8394.
@@ -20,13 +21,8 @@ public:
     void BeginLoadingEntry(unsigned long index);            // 0x00A42AC0
 };
 
-class CSymbolMap {
-public:
-    void* FindValueForSymbol(long symbol);                  // 0x009916F0
-    void* FindFirstValue();                                 // 0x00991720
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                        // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
 
 class CTCBase
 {
@@ -52,11 +48,11 @@ private:
     const CLipSyncDataBank* GetPLipSyncBank() const         // out of line @ 0x006E2860
     {
         const CLipSyncDataBank* lipSync = 0;
-        if (((CSymbolMap*)PSoundManager)) {
+        if (PSoundManager) {
             const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
-            lipSync = (const CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindValueForSymbol((long)bank);
+            lipSync = PSoundManager->GetPLipSyncBank(*bank);
             if (!lipSync)
-                lipSync = (const CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindFirstValue();
+                lipSync = PSoundManager->GetAnyPLipSyncBank();
         }
         return lipSync;
     }

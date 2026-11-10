@@ -1,10 +1,13 @@
 // NUISystem::CKeyRedefiner::Redefine(const CActionInputControl& control, bool notify) -- unless the new control is the same key/button for the same controller type, make it this redefiner's definition, optionally tell the parent redefiner list (type 0x28) about it, hand every action of this redefiner to the user profile as a passive redefinition (old control, sub-type index), play the three confirmation sounds and leave the definition on the first action
+// Leaf: ?Redefine@CKeyRedefiner@NUISystem@@QAEXABUCActionInputControl@2@_N@Z
 // Leaf: Redefine
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00557D20, length 390 bytes, `ret 8`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CGameState model is gone and its slots carry the header names (PlaySound -> SetGainFader slot 46).
 // Callees: the component's virtual slots 52 (parent) and 65 (type), CRedefinerList::NotifyOfRedefinition(const
 //   CActionInputControl&, const CKeyRedefiner*) @ 0x00556980 (landed name), CTBaseSingleton<CUserProfileManager>::Get
 //   @ 0x0040D2A0 (`__fastcall`), CUserProfileManager::RedefineControlPassive(CActionInputControl*, CActionInputControl*,
-//   long) @ 0x00407CD0, the game state global @ 0x013B8394 virtual slot 46 (sound, 0, 0).
+//   long) @ 0x00407CD0, PSoundManager @ 0x013B8394 CASoundManager::SetGainFader
+//   (slot 46: groups 0x10 / 0x80 / 0x40 to gain 0 over 0 ms).
 // Layout: Ego_r.pdb NUISystem::CKeyRedefiner with the retail 4-byte list sentinel: Actions (list<EGameAction> node) +0x19C,
 //   SubType +0x1A0, Definition (CActionInputControl, 28 bytes: GameAction, ControllerType, KeyboardKey, XboxButton,
 //   MouseButton, ControlDirection) +0x1A4. No engine header for the class; modelled locally.
@@ -13,8 +16,7 @@
 //   epilogues); C2DVector's user copy constructor makes the copy-out memberwise while the assignment stays a `rep movsd`;
 //   `long index = 0` sits between them so it lives in a frame word; the parent list is named before the notify call;
 //   in the action walk `previous.GameAction = current.GameAction = action` stores the member first.
-class CASoundManager;
-extern CASoundManager* PSoundManager;                    // 0x013B8394 (naming wave 13)
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394 (global, outside NUISystem)
 namespace NUISystem {
 struct C2DVector {
     float X, Y;
@@ -32,15 +34,6 @@ struct CUserProfileManager {
     void RedefineControlPassive(CActionInputControl* control, CActionInputControl* previous, long subType);   // 0x00407CD0
 };
 } class CUserProfileManager : public NUISystem::CUserProfileManager { public: static CUserProfileManager& __fastcall Get(); }; namespace NUISystem {   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
-struct CGameState {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
-    virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031();
-    virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045();
-    virtual void PlaySound(long sound, long a, long b);                  // slot 46 (+0xb8)
-};
 struct ActionNode {
     ActionNode* _M_next;
     ActionNode* _M_prev;
@@ -106,10 +99,10 @@ void CKeyRedefiner::Redefine(const CActionInputControl& control, bool notify)
         previous.GameAction = current.GameAction = node->_M_data;
         ::CUserProfileManager::Get().RedefineControlPassive(&current, &previous, index);
     }
-    if (((CGameState*)PSoundManager)) {
-        ((CGameState*)PSoundManager)->PlaySound(0x10, 0, 0);
-        ((CGameState*)PSoundManager)->PlaySound(0x80, 0, 0);
-        ((CGameState*)PSoundManager)->PlaySound(0x40, 0, 0);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, 0.0f, 0.0f);
+        PSoundManager->SetGainFader(0x80, 0.0f, 0.0f);
+        PSoundManager->SetGainFader(0x40, 0.0f, 0.0f);
     }
     current.GameAction = Actions->_M_next->_M_data;
 }

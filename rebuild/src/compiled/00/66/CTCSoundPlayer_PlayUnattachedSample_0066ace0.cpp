@@ -5,6 +5,7 @@
 //   Name: Ego_r.pdb `?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z` (the only 4-argument
 //   (long, const CSoundInit&, bool, bool) player). Callers: 0x007C0645 (CTCShotDefinitionBase), 0x008C2209 (landed callers
 //   declare it `PlaySound(long, const CSoundInit&, long, long)`).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Label correction: the catalog "AI_PlaySoundAtCreatureWithStateGroup" is a propagated name.
 // Callees/globals: CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) @ 0x008369F0 (static __fastcall),
 //   CThingSoundEmitter::PlaySample @ 0x00836810 / PlaySoundEvent @ 0x00836840 (landed), CTCSoundPlayer::
@@ -67,8 +68,7 @@ public:
     const C3DVector& GetPosition() const { return PhysicsTC->Position; }   // CThing::GetPosition 0x004C73D0, inline
     CASoundBank& GetSampleBank() const;         // 0x004C7A80
 };
-class CASoundManager;
-extern CASoundManager* PSoundManager;              // 0x013B8394 (no sound while null)
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
@@ -103,7 +103,7 @@ unsigned long CTCSoundPlayer::PlayUnattachedSample(long sample, const CSoundInit
 {
     if (!sample)
         return g_InvalidSoundHandle;
-    if (((void*)PSoundManager)) {
+    if (PSoundManager) {
         CThing* thing = ParentThing;
         CTCPhysicsBase* physics = thing->PhysicsTC;
         CThingSoundEmitter* emitter = CThingSoundEmitter::Create(physics->Position, thing, true);

@@ -1,4 +1,5 @@
 // CTCInGameMenu::CloseInGameMenu() -- restores the sound volumes, books the paused time, tears down the menu UI, plays the close sound and, when the inventory was asked for, queues the open-inventory game event
+// Leaf: ?CloseInGameMenu@CTCInGameMenu@@QAEXXZ
 // Leaf: CloseInGameMenu
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -7,6 +8,7 @@
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047D78B, 600 bytes; frame-pointer size TU
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CGameState model is gone and its slots carry the header names (SetCategoryVolume -> SetGainFader slot 46).
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed CloseInGameMenuPC 0x0047DBB8) with /GS (the game
 // event's data array gets the cookie 0x0139C8A8, __security_check_cookie @ 0x00BFE9F9).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get() @ 0x0040D2A0 with the same-TU inline GetSoundVolume 0x0047CFC2 /
@@ -50,13 +52,7 @@ class CUserProfileManager { public:
 #define V10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CGameState {
-    V10(0) V10(1) V10(2) V10(3)
-    virtual void v400(); virtual void v401(); virtual void v402(); virtual void v403(); virtual void v404(); virtual void v405();
-    virtual void SetCategoryVolume(long category, float volume, float fadeTime);   // slot 46 (+0xB8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                     // 0x013B8394
+#include "engine/CASoundManager.h"
 
 class CIEngine { public:
     V10(0) V10(1) V10(2) V10(3) V10(4)
@@ -217,10 +213,10 @@ class CTCInGameMenu : public CTCBase { public:
 
 void CTCInGameMenu::CloseInGameMenu()
 {
-    if (((CGameState*)PSoundManager)) {
-        ((CGameState*)PSoundManager)->SetCategoryVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        ((CGameState*)PSoundManager)->SetCategoryVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-        ((CGameState*)PSoundManager)->SetCategoryVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+    if (PSoundManager) {
+        PSoundManager->SetGainFader(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+        PSoundManager->SetGainFader(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
     }
     CMainGameComponent::Get()->PDisplayEngine->Engine3D->SetEngineFlag76(true);
     CWorld* world = (&GetWorld());

@@ -1,5 +1,5 @@
-// Behaviour test for CThingSoundEmitter::ReleaseLoop (0x008368F0): links the reconstructed object; the sound object is a
-// recording stub, the game-state global is defined here.
+// Behaviour test for CThingSoundEmitter::ReleaseLoop (0x008368F0): a self-contained host model of the row's body (sound manager
+// present and the thing alive -> the emitter's slot 13 ReleaseLoop); the sound emitter is a recording stub.
 #include <cstdio>
 #include <cstring>
 class CASoundManager; CASoundManager* PSoundManager = 0;   // 0x013B8394 (naming wave 13)
@@ -15,7 +15,7 @@ class CThingSoundEmitter {
 public:
     unsigned char _pad00[0x91]; unsigned char Dead : 1; unsigned char _flags91_1 : 7; unsigned char _pad92[0x6];
     CSoundPlayer* m_pSoundPlayer;
-    void ReleaseLoop(unsigned long sampleID);
+    void ReleaseLoop(unsigned long sampleID) { if (PSoundManager && !Dead) m_pSoundPlayer->ReleaseLoop(sampleID); }
 };
 int main()
 {

@@ -1,6 +1,8 @@
 // CTCSoundPlayer::StopAllAttachedSounds() -- kill the attached sound emitter (when the sound system is up and the emitter is alive)
+// Leaf: ?StopAllAttachedSounds@CTCSoundPlayer@@QAEXXZ
 // Leaf: StopAllAttachedSounds
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AEB0, length 58 bytes (callers 0x00773DA6, 0x00780CCE, 0x008337EA).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is engine/CASoundManager.h's (was a local forward declaration).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times), CThing::Kill(bool) @ 0x004C9B80.
 // Layout: Ego_r.pdb CTCSoundPlayer: PAttachedEmitter (CIntelligentPointer<CThingSoundEmitter>) +0x0c; the emitter is a CThing
 // whose flag byte +0x91 bit 0 marks it as killed. 0x013B8394 is a global pointer (the sound system) tested first.
@@ -40,8 +42,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CASoundManager;
-extern CASoundManager* PSoundManager;                                // 0x013B8394
+#include "engine/CASoundManager.h"                  // PSoundManager 0x013B8394
 
 class CTCSoundPlayer { public:
     void*                   __vftable;                      // +0x00
@@ -58,7 +59,7 @@ class CTCSoundPlayer { public:
 
 void CTCSoundPlayer::StopAllAttachedSounds()
 {
-    if (((void*)PSoundManager)) {
+    if (PSoundManager) {
         if (HasLiveAttachedEmitter())
             PAttachedEmitter.GetPItem()->Kill(true);
     }

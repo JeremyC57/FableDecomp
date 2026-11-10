@@ -2161,7 +2161,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/88/CGameScriptInterface_EnableSounds_0088f620.cpp'
         TestSource = '00/88/CGameScriptInterface_EnableSounds_0088f620_test.cpp'
-        PassPattern = 'CGameScriptInterface_0088f620_TEST PASS'
+        PassPattern = '0088f620_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00713140'
@@ -6530,7 +6530,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/88/CGameScriptInterface_StopSound_0088f660.cpp'
         TestSource = '00/88/CGameScriptInterface_StopSound_0088f660_test.cpp'
-        PassPattern = 'FSE2_0088f660_TEST PASS'
+        PassPattern = '0088f660_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008914e0'
@@ -123017,7 +123017,7 @@ $catalog = @(
         Module = 'CGameScriptInterface'
         Source = '00/88/CGameScriptInterface_IsSoundPlaying_0088f610.cpp'
         TestSource = '00/88/CGameScriptInterface_IsSoundPlaying_0088f610_test.cpp'
-        PassPattern = 'IS_SOUND_PLAYING_PASS'
+        PassPattern = '0088f610_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0088f710'
@@ -210060,15 +210060,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aabc50'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc23_00aabc50.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc23_00aabc50_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_IsSamplePlaying_00aabc50.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_IsSamplePlaying_00aabc50_test.cpp'
         PassPattern = '00aabc50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aac400'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc9_00aac400.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc9_00aac400_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_StopSpecificSample_00aac400.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_StopSpecificSample_00aac400_test.cpp'
         PassPattern = '00aac400_TEST PASS'
     }
     [pscustomobject]@{
@@ -242995,8 +242995,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aac340'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc8_00aac340.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc8_00aac340_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_StopSample_00aac340.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_StopSample_00aac340_test.cpp'
         PassPattern = '00aac340_TEST PASS'
     }
     [pscustomobject]@{
@@ -248984,8 +248984,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aac1d0'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc5_00aac1d0.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc5_00aac1d0_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_PlayAtmos_00aac1d0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_PlayAtmos_00aac1d0_test.cpp'
         PassPattern = '00aac1d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -265973,71 +265973,71 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aab9c0'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc16_00aab9c0.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc16_00aab9c0_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_MovePos_00aab9c0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_MovePos_00aab9c0_test.cpp'
         PassPattern = '00aab9c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aaba00'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc1_00aaba00.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc1_00aaba00_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_Activate_00aaba00.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_Activate_00aaba00_test.cpp'
         PassPattern = '00aaba00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aaba10'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc2_00aaba10.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc2_00aaba10_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_Deactivate_00aaba10.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_Deactivate_00aaba10_test.cpp'
         PassPattern = '00aaba10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aaba20'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc6_00aaba20.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc6_00aaba20_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_SetSpecificSamplePitch_00aaba20.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_SetSpecificSamplePitch_00aaba20_test.cpp'
         PassPattern = '00aaba20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aaba40'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc7_00aaba40.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc7_00aaba40_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_SetSpecificSampleVolume_00aaba40.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_SetSpecificSampleVolume_00aaba40_test.cpp'
         PassPattern = '00aaba40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aaba60'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc17_00aaba60.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc17_00aaba60_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_GetPos_00aaba60.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_GetPos_00aaba60_test.cpp'
         PassPattern = '00aaba60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aaba80'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc11_00aaba80.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc11_00aaba80_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_StopAllLoops_00aaba80.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_StopAllLoops_00aaba80_test.cpp'
         PassPattern = '00aaba80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aabac0'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc22_00aabac0.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc22_00aabac0_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_IsSpecificSamplePlaying_00aabac0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_IsSpecificSamplePlaying_00aabac0_test.cpp'
         PassPattern = '00aabac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aabb00'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc21_00aabb00.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc21_00aabb00_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_IsSpecificSampleLoadedAndPlaying_00aabb00.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_IsSpecificSampleLoadedAndPlaying_00aabb00_test.cpp'
         PassPattern = '00aabb00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aabb60'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc13_00aabb60.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc13_00aabb60_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_ReleaseLoop_00aabb60.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_ReleaseLoop_00aabb60_test.cpp'
         PassPattern = '00aabb60_TEST PASS'
     }
     [pscustomobject]@{
@@ -302227,8 +302227,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aabbb0'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_vfunc15_00aabbb0.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_vfunc15_00aabbb0_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_SetPos_00aabbb0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_SetPos_00aabbb0_test.cpp'
         PassPattern = '00aabbb0_TEST PASS'
     }
     [pscustomobject]@{

@@ -2,6 +2,9 @@
 // Leaf: ?InitialiseSounds@CNewFrontendGameComponent@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042E17C, length 136 bytes, plain `ret` (__fastcall, no arguments).
+// Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager (slot 46 SetGainFader; 0x00991600 under
+//   FABLE_RETAIL_CASOUNDMANAGER_ENABLE_NAMES = EnableSound, the Anniversary name agentSND proved; landed as CSoundManagerLH::SetEnabled);
+//   CSoundManagerLH is the empty derived class CSoundBankLH's ctor names; was a local padded CSoundManagerLH model.
 // Name: FableWin.pdb / Ego_r.pdb `?InitialiseSounds@CNewFrontendGameComponent@@AAEXXZ` (private); single caller 0x0042E9C6 in the
 // same TU (CNewFrontendGameComponent::Init); member +0x50 is the PDB's `CCountedPointer<CASoundBank> PSampleBank` (donor +0x50).
 // The catalog's "Init_FrontendSounds" is a label.
@@ -40,21 +43,9 @@ public:
 
 #include "engine/CCountedPointer.h"
 
-class CSoundManagerLH {                                  // the object at 0x013B8394
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
-    virtual void SetGainFader(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
-    void SetEnabled(bool enabled);                       // 0x00991600
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                 // 0x013B8394
+#define FABLE_RETAIL_CASOUNDMANAGER_ENABLE_NAMES
+#include "engine/CASoundManager.h"
+class CSoundManagerLH : public CASoundManager { };       // the object at 0x013B8394 (vtable 0x0129D2C4; CSoundBankLH's ctor argument)
 
 class CNewFrontendGameComponent {
 public:
@@ -67,10 +58,10 @@ private:
 
 void CNewFrontendGameComponent::InitialiseSounds()
 {
-    if (((CSoundManagerLH*)PSoundManager)) {
-        PSampleBank.Reset(new CSoundBankLH(((CSoundManagerLH*)PSoundManager)));
+    if (PSoundManager) {
+        PSampleBank.Reset(new CSoundBankLH(static_cast<CSoundManagerLH*>(PSoundManager)));
         PSampleBank->Load(L"data\\sound\\frontend.lug");
-        ((CSoundManagerLH*)PSoundManager)->SetGainFader(0x8000, 1.0f, 0.0f);
-        ((CSoundManagerLH*)PSoundManager)->SetEnabled(true);
+        PSoundManager->SetGainFader(0x8000, 1.0f, 0.0f);
+        PSoundManager->EnableSound(true);
     }
 }

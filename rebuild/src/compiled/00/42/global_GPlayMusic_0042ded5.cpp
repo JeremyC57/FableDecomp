@@ -1,6 +1,7 @@
 // GPlayMusic(float) -- start the front-end music stream: the misc-things def's FrontEndMusic file under the music directory, .wma renamed to .ogg
 // Leaf: ?GPlayMusic@@YIXM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042DED5, length 201 bytes, `ret 4` (__fastcall; the float travels on the stack).
+// Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager, slot 17 PlayMusic (was a local CSoundManagerLH::PlayStream).
 // Name: FableWin.pdb / Ego_r.pdb hold exactly one `void __fastcall X(float)` free function, `?GPlayMusic@@YIXM@Z`; this body sits
 // in the CNewFrontendGameComponent TU (InitialiseInput 0x0042DEC5 before it, Draw 0x0042DF9E after) and its three callers
 // (0x0042F00A, 0x0042F07A, 0x0042F1FD) pass `fldz` without setting ecx. The catalog's "CFrontEnd_PlayAutoSaveSound" is a label.
@@ -76,22 +77,14 @@ public:
 };
 }
 
-class CSoundManagerLH {                                  // the object at 0x013B8394
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();
-    virtual void PlayStream(const CWideString& fileName, long channel, long flags, float gain, float fade, long loops);   // slot 17 (+0x44) 0x00A3E4B0
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;                 // 0x013B8394
+#include "engine/CASoundManager.h"
 
 void __fastcall GPlayMusic(float fade)
 {
-    if (((CSoundManagerLH*)PSoundManager)) {
+    if (PSoundManager) {
         CWideString fileName = NResourceDirectoryNames::GetDVDMusicDir()
                              + NUISystem::CManager::GetInstance()->GetMiscThingsDef()->FrontEndMusic;
         fileName.Replace(L".wma", L".ogg");
-        ((CSoundManagerLH*)PSoundManager)->PlayStream(fileName, 0, 0, 1.0f, fade, -1);
+        PSoundManager->PlayMusic(fileName, 0, 0, 1.0f, fade, -1);
     }
 }

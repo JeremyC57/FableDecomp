@@ -1,6 +1,7 @@
 // NUISystem::CFrontEndManager::GotoNextScreen(CComponent*, bool) -- push a new screen: close the current one, optionally clear the stack, push the new one, play the screen-change sound
 // Leaf: ?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z
 // Retail: Fable.exe @ 0x00596763, 266 bytes, `ret 8`.
+// Sound manager (agentSND2, 2026-11-10): PSoundManager is the shared engine/CASoundManager.h one; the local CSoundObject_013B8394 model is gone and its slots carry the header names (SetChannelVolume -> SetGainFader slot 46).
 // Body: leaving = m_stackScreens.top() (deque::back 0x0059B039); DeactivateAllEditBoxes(0) (0x005952D8); if screen is
 // m_mapScreens[0x1a] (map::operator[] 0x0059B5D7) and the 0x013B8394 sound object exists: its slot 46 (+0xb8)
 // (0x100, 0.0f, 1000.0f) (float 0x01252370); leaving->OnScreenEvent(6) (CComponent slot 48, +0xc0);
@@ -72,18 +73,7 @@ public:
             Object->DecRef();
     }
 };
-class CSoundObject_013B8394 {                            // class not recovered
-public:
-    virtual void _s000(); virtual void _s001(); virtual void _s002(); virtual void _s003(); virtual void _s004(); virtual void _s005(); virtual void _s006(); virtual void _s007();
-    virtual void _s008(); virtual void _s009(); virtual void _s010(); virtual void _s011(); virtual void _s012(); virtual void _s013(); virtual void _s014(); virtual void _s015();
-    virtual void _s016(); virtual void _s017(); virtual void _s018(); virtual void _s019(); virtual void _s020(); virtual void _s021(); virtual void _s022(); virtual void _s023();
-    virtual void _s024(); virtual void _s025(); virtual void _s026(); virtual void _s027(); virtual void _s028(); virtual void _s029(); virtual void _s030(); virtual void _s031();
-    virtual void _s032(); virtual void _s033(); virtual void _s034(); virtual void _s035(); virtual void _s036(); virtual void _s037(); virtual void _s038(); virtual void _s039();
-    virtual void _s040(); virtual void _s041(); virtual void _s042(); virtual void _s043(); virtual void _s044(); virtual void _s045();
-    virtual void SetChannelVolume(unsigned long channels, float volume, float time);   // slot 46 (+0xb8)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;         // 0x013B8394
+#include "engine/CASoundManager.h"
 namespace NUISystem {
 class CObserver {
 public:
@@ -138,8 +128,8 @@ void CFrontEndManager::GotoNextScreen(CComponent* screen, bool clearStack)
 {
     CComponent* leaving = m_stackScreens.top();
     DeactivateAllEditBoxes(0);
-    if (screen == m_mapScreens[FRONTEND_SCREEN_0x1A] && ((CSoundObject_013B8394*)PSoundManager))
-        ((CSoundObject_013B8394*)PSoundManager)->SetChannelVolume(0x100, 0.0f, 1000.0f);
+    if (screen == m_mapScreens[FRONTEND_SCREEN_0x1A] && PSoundManager)
+        PSoundManager->SetGainFader(0x100, 0.0f, 1000.0f);
     leaving->OnScreenEvent(6);
     CManager::GetInstance()->RemoveObserver(&static_cast<CObserver&>(*leaving));
     if (clearStack)

@@ -7,6 +7,9 @@
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00629F50, 255 bytes, `ret 4`. PDB ?EASkipCutScene@CWorld@@QAEXPBVCGameEvent@@@Z.
+// Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager, slot 9 Get2DEmitter (the 2-D CASoundEmitter,
+//   slot 4 PlaySoundEvent) and engine/CSoundInit.h under FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR (the expanded constructor); was a local
+//   CSoundSystem / CSoundPlayer / CSoundInit model.
 // Callees: CSubtitleRenderer::IsCutsceneSkippable() const 0x0048DE44 (landed), __fastcall PeekGuiDef() 0x00438570,
 //   the sound system 0x013B8394 slot 9 (+0x24, its sound player) and the player's PlaySoundEvent (slot 4, +0x10; landed
 //   CThingSoundEmitter::PlaySample shows the slot table), CWorld::GetSampleBank() const 0x0049D9B0 (Component+0x10;
@@ -30,28 +33,9 @@ class CCharString { public: void* PStringData; };
 class CThing;
 class CGameEvent;
 class CASoundBank;
-class CSoundInit { public:
-    float Volume, Pitch, Pan;
-    long NoPlays, PlaybackType;
-    unsigned long GainFaderBits, PitchFaderBits;
-    long OverrideID;
-    CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PitchFaderBits(0), OverrideID(-1)
-    {
-        PlaybackType = 1;
-        GainFaderBits = 0;
-    }
-};
-struct CSoundPlayer {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
-    virtual unsigned long PlaySoundEvent(CASoundBank& bank, const CCharString& name, bool loop, CSoundInit& init, bool attached);   // slot 4 (+0x10)
-};
-struct CSoundSystem {
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
-    virtual CSoundPlayer* GetSoundPlayer();       // slot 9 (+0x24)
-};
-class CASoundManager;
-extern CASoundManager* PSoundManager;               // 0x013B8394
+#define FABLE_RETAIL_CSOUNDINIT_INLINE_CTOR
+#include "engine/CSoundInit.h"
+#include "engine/CASoundManager.h"
 class CPlayerGuiDef { public:
     unsigned char _pad[0x5ec];
     CCharString   TextBoxButtonBSoundCriteria;    // +0x5EC
@@ -94,7 +78,7 @@ void CWorld::EASkipCutScene(const CGameEvent* event)
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CSoundInit init;
         init.GainFaderBits = 0x8010;
-        ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
+        PSoundManager->Get2DEmitter().PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
         PMessageEventManager->AddMessage(0x32, CMainGameComponent::GetConstantFPS(), C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
         subtitles.Clear(false);
         subtitles.CutsceneSkipped = true;
