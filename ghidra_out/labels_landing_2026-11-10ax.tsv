@@ -1,0 +1,25 @@
+address	name	evidence
+00476E3E	CPersistContext::TransferVectorOfSubComponents<CEnvironmentThemeDef>	Ego_r name set; stride 0xC4 = Ego_r CEnvironmentThemeDef; element Transfer through CEnvironmentThemeDef vtable 0x01236244 slot 18; caller CEnvironmentThemeDaySetDef::Transfer 0x00476DC3 (call 0x00476DD1); RELOCATION_MATCH
+00477CD2	CPersistContext::TransferVectorOfSubComponents<CEngineLocalDetailObjectDef>	Ego_r name set; stride 0x88; vtable 0x0123634C; caller CEngineLocalDetailLayerDef::Transfer 0x00477CB1 (call 0x00477CC9); RELOCATION_MATCH
+00475DFA	GFSerialiseVectorBinaryIn<C2DVector>	Ego_r ??$GFSerialiseVectorBinaryIn@VC2DVector@@@@YIX...; per-element Read2DVector 0x00995030; RELOCATION_MATCH
+00632B90	GFSerialiseMapBinaryIn<CCharString,unsigned long,std::less<unsigned long> >	Ego_r ??$GFSerialiseMapBinaryIn@VCCharString@@KU?$less@K@std@@@@YIX...; callees CPersistTraits<unsigned long>::TransferBinaryIn 0x0040F8A0, tree clear 0x00630FE0, insert_unique 0x00632C90; RELOCATION_MATCH
+00F334E0	CPersistContext::TransferVectorOfSubComponents<CConversation>(const char*, std::vector<CConversation>&)	Ego_r name set (named overload); stride 0x5C; wrapper vtable 0x01301C2C; caller 0x00F2F77A passes "BookReactions"; RELOCATION_MATCH (oracle cut to 380)
+00F33660	CPersistContext_TransferableVectorOfSubComponents<CConversation>::Size	vtable 0x01301C2C slot 0; Ego_r ?Size@?$CPersistContext_TransferableVectorOfSubComponents@VCConversation@@@@EAEJXZ
+00F33B60	CPersistContext_TransferableVectorOfSubComponents<CConversation>::Resize	vtable 0x01301C2C slot 1; Ego_r ?Resize@...@@EAEXJ@Z
+00F33680	CPersistContext_TransferableVectorOfSubComponents<CConversation>::AreDefaultValsApplied	vtable 0x01301C2C slot 2; Ego_r ?AreDefaultValsApplied@...@@EAE_NJ@Z
+00F336A0	CPersistContext_TransferableVectorOfSubComponents<CConversation>::SetDefaultValsApplied	vtable 0x01301C2C slot 3; Ego_r ?SetDefaultValsApplied@...@@EAEXJ_N@Z
+00F336D0	CPersistContext_TransferableVectorOfSubComponents<CConversation>::Transfer	vtable 0x01301C2C slot 4; Ego_r ?Transfer@...@@EAEXAAVCPersistContext@@J@Z
+00F336F0	CConversation::CConversation	see NAME_FIXES.tsv
+00F33730	std::vector<CConversation>::resize	see NAME_FIXES.tsv
+0067E290	CDegradableDef::Transfer	CDegradableDef vtable slot 18 (rtti-vtables.tsv); Ego_r ?Transfer@CDegradableDef@@UAEXAAVCPersistContext@@@Z; real length 273
+00465C54	CCombatAbilityBlockDefBase::Transfer	vtable 0x01232E04 slot 18; Ego_r ?Transfer@CCombatAbilityBlockDefBase@@UAEXAAVCPersistContext@@@Z
+006C9350	CPersistTraits<std::pair<long,COpinionDeed*> >::TransferIn	Ego_r/FableWin ?TransferIn@?$CPersistTraits@U?$pair@JPAVCOpinionDeed@@@std@@@@QAEX...; calls CPersistTraitsSLONG::TransferIn 0x009E2590 into +0 and CPersistTraits<COpinionDeed*>::TransferIn 0x006C9490 on +4 (catalog CAtmosBankEntry is propagated)
+00405220	TransferIMEColour	landed name of the row (catalog); unchanged
+005D8978	CPersistContext::TransferMap<long,unsigned long>	Ego_r ??$TransferMap@JK@CPersistContext@@QAEXPBDAAV?$map@KJ...@@ABJ@Z (also FableWin); caller wrapper 0x005D8C6A (catalog <long,long> is wrong)
+0047042A	CSoundMap::TransferBinaryIn	Ego_r + FableWin ?TransferBinaryIn@CSoundMap@@QAEXAAVCMemoryDataInputStream@@@Z; mirror of landed TransferBinaryOut 0x0047034B
+005C0A98	CPersistTraits<NInventory::CItem>::TransferBinaryOut	Ego_r + FableWin ?TransferBinaryOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCDataOutputStream@@ABVCItem@NInventory@@@Z; real length 369
+006DC6A0	CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn	Ego_r + FableWin ?TransferBinaryIn@?$CPersistTraits@VCAttackHistoryCombo@@@@QAEX...; only caller the vector loop 0x006DD580 (call 0x006DD5F2, stride 0x10); catalog CHeroStatIncreaseData is propagated; real length 447
+009E81E0	CPersistTraits<C2DVector>::TransferIn	Ego_r ?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC2DVector@@@Z; strings "C2DCoordF" 0x0129C288, "Unknown command for C2DCoordF" 0x0129C268, member names "X" 0x0129C2B8 / "Y" 0x0129C2B4 (catalog CBrainBehaviour is propagated)
+006C9490	CPersistTraits<COpinionDeed*>::TransferIn	landed spelling (same) and the pair reader's second-member call
+00411570	CBasicString<char>::Compare	landed; inline operator==(const char*) expands to it
+004115A0	CBasicString<char>::operator==(const char*)	labels_naming_wave1 + bsim ??8?$CBasicString@D@@QBE_NPBD@Z; body = Compare inlined, thiscall ret 4

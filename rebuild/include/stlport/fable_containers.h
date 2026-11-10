@@ -311,6 +311,17 @@ public:
         this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
     }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_RANGE_CTOR
+    // Retail opt-in (chunk 1018, row 0x00465C54 CCombatAbilityBlockDefBase::Transfer): STLport 4.6 _vector.h's range constructor
+    // `vector(_InputIterator __first, _InputIterator __last)`, which for a non-integral iterator forwards to the category-dispatched
+    // _M_range_initialize(first, last, const forward_iterator_tag&); retail expands the constructor (three zero stores) and calls
+    // _M_range_initialize out of line (vector<EWeaponClass> 0x00465E44 with a set<EWeaponClass>::const_iterator pair, the tag homed
+    // in a dead argument byte). Declaration only for _M_range_initialize.
+    template <class _InputIter> vector(_InputIter first,_InputIter last,const _Alloc& a=_Alloc()) : _Vector_base<_Tp,_Alloc>(a) {
+        _M_range_initialize(first,last,forward_iterator_tag());
+    }
+    template <class _ForwardIter> void _M_range_initialize(_ForwardIter first,_ForwardIter last,const forward_iterator_tag&);
+#endif
     ~vector() { _Destroy(this->_M_start,this->_M_finish); }
 #ifdef FABLE_RETAIL_STLP_VECTOR_ASSIGN
     // Retail branch (chunk 735, row 0x00577AC0): STLport 4.6 _vector.c operator=(const vector&), defined out of class (not

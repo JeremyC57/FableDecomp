@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+00476e3e	CPersistContext::TransferVectorOfSubComponents<CEnvironmentThemeDef>	RELOCATION_MATCH	3	shared TransferVectorOfSubComponents body + new engine/CEnvironmentThemeDef.h; Flags /d2inlS55 (inline-budget: expand resize(n)); biased-frame size TU (optimize("s") only)
+00477cd2	CPersistContext::TransferVectorOfSubComponents<CEngineLocalDetailObjectDef>	RELOCATION_MATCH	3	same body + new engine/CEngineLocalDetailObjectDef.h; Flags /d2inlS98; y off + s on
+00475dfa	GFSerialiseVectorBinaryIn<C2DVector>	RELOCATION_MATCH	3	new opt-ins GFSERIALISEVECTORBINARYIN / C2DVECTOR_BINARYIN / READ2DVECTOR; Flags /d2inlS18
+00632b90	GFSerialiseMapBinaryIn<CCharString,unsigned long,std::less<unsigned long> >	RELOCATION_MATCH	2	speed TU, no flags; GFSERIALISEMAPBINARYIN + visible generic TransferBinaryIn body + STLP_TREE_CLEAR_OUTOFLINE
+00f334e0	CPersistContext::TransferVectorOfSubComponents<CConversation>(const char*,vector&)	RELOCATION_MATCH	2	split: real length 380 (code + jump table); named-overload opt-in + wrapper header; catalog name Transfer<signed_char> wrong
+0067e290	CDegradableDef::Transfer	DIFFER(273v273)	3	split 273; expression-temp eax/ecx/edx rotation only (c2prio --rotation)
+00465c54	CCombatAbilityBlockDefBase::Transfer	DIFFER(203v226)	4	inline split no /d2inlS value reproduces (set range insert/assign)
+00405220	TransferIMEColour	DIFFER(290v290)	1	return packing only (retail mov ecx,[esp+14h]; movzx edx,ch; movzx ecx,cl)
+006c9350	CPersistTraits<std::pair<long,COpinionDeed*> >::TransferIn	DIFFER(314v312)	2	inliner split: inner CBasicString::operator== out of line at the "," site only; no /d2inlS3-20 or /d2inlT20-100 reproduces
+005d8978	CPersistContext::TransferMap<long,unsigned long>	DIFFER(754v754)	1	prior hand619 draft re-graded unchanged; frame-slot residue; local-model header debt
+0047042a	CSoundMap::TransferBinaryIn	DIFFER(716v716)	1	prior hand298 draft re-graded unchanged; one SIB operand order; local-model header debt
+005c0a98	CPersistTraits<NInventory::CItem>::TransferBinaryOut	DIFFER(365v369)	1	split 369; prior hand469 draft re-graded unchanged; register allocation; local-model header debt
+006dc6a0	CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn	DIFFER(437v447)	1	split 447; catalog CHeroStatIncreaseData wrong; prior hand469 draft re-graded; local-model header debt
+009e81e0	CPersistTraits<C2DVector>::TransferIn	DIFFER(701v750)	1	catalog CBrainBehaviour wrong; prior hand469 draft re-graded; member-name test jump threading; local-model header debt

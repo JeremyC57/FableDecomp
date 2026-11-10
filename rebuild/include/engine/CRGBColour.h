@@ -20,6 +20,10 @@ public:
     // Codex pass 13 (rows 0x00EEDC20 / 0x00E8BEF0): FableWin ??0CRGBColour@@QAE@EEE@Z, inline in retail (R, G, B then A = 0xFF stored
     // in order through Initialise).
     CRGBColour(unsigned char r,unsigned char g,unsigned char b) { Initialise(r,g,b,255); }
+#elif defined(FABLE_RETAIL_CRGBCOLOUR_DWORD_COPY)
+    // Retail opt-in (chunk 1018, row 0x00405220 TransferIMEColour): the PDB copy constructor ??0CRGBColour@@QAE@ABV0@@Z copies the
+    // colour as one dword in that TU (`mov ecx,[esp+18h] ; mov [esp+10h],ecx` at 0x00405251 / 0x0040525A).
+    CRGBColour(const CRGBColour& colour) : IntValue(colour.IntValue) { }
 #else
     CRGBColour(const CRGBColour& colour) { R=colour.R; G=colour.G; B=colour.B; A=colour.A; }
 #endif

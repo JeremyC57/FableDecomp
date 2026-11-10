@@ -39262,3 +39262,11 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z	00705d40	006a16a0
 ?AddAttackOfTypeToAttackHistory@CTCHeroExperience@@AAEXW4EDamageAttribute@@@Z	006d7ec0	006d8790
 ?SubPrimitiveRendererScratchTable@@3PAKA	014378c8	00b84470
+?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ	00995030	00475dfa
+?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAEXIABVC2DVector@@@Z	00475e92	00475dfa
+?resize@?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@QAEXIABVCEnvironmentThemeDef@@@Z	00476f4f	00476e3e
+??_7CEngineLocalDetailObjectDef@@6B@	0123634c	00477cd2
+?resize@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAEXIABVCEngineLocalDetailObjectDef@@@Z	00477dea	00477cd2
+?clear@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEXXZ	00630fe0	00632b90
+?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBKVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBKVCCharString@@@2@@Z	00632c90	00632b90
+??_7?$CPersistContext_TransferableVectorOfSubComponents@VCConversation@@@@6B@	01301c2c	00f334e0

@@ -1,0 +1,12 @@
+address	length	name	evidence
+00f334e0	380	CPersistContext::TransferVectorOfSubComponents<CConversation>(const char*, std::vector<CConversation>&)	code ends at the jmp-table tail: 360 code bytes + the 5-entry mode jump table at 0x00F33648 (20 bytes); RELOCATION_MATCH graded against the oracle cut to 380 (catalog 528 runs into the wrapper virtuals)
+00f33660	28	CPersistContext_TransferableVectorOfSubComponents<CConversation>::Size	wrapper vtable 0x01301C2C slot 0; size()/0x5C via the 0xB21642C9 magic; ret at 0x00F3367B; Ego_r ?Size@?$CPersistContext_TransferableVectorOfSubComponents@VCConversation@@@@EAEJXZ
+00f33680	24	CPersistContext_TransferableVectorOfSubComponents<CConversation>::AreDefaultValsApplied	vtable 0x01301C2C slot 2; element +0x24 bit 2; ret 4 at 0x00F33695; Ego_r ?AreDefaultValsApplied@...@@EAE_NJ@Z
+00f336a0	38	CPersistContext_TransferableVectorOfSubComponents<CConversation>::SetDefaultValsApplied	vtable 0x01301C2C slot 3; bit-2 merge into element +0x24; ret 8 at 0x00F336C3; Ego_r ?SetDefaultValsApplied@...@@EAEXJ_N@Z
+00f336d0	28	CPersistContext_TransferableVectorOfSubComponents<CConversation>::Transfer	vtable 0x01301C2C slot 4; element virtual call [eax+48h] (CDefClassBase::Transfer slot 18); ret 8 at 0x00F336E9; Ego_r ?Transfer@...@@EAEXAAVCPersistContext@@J@Z
+0067e290	273	CDegradableDef::Transfer	ret 4 at 0x0067E39E then int3 padding; catalog 592 runs into following bodies
+005c0a98	369	CPersistTraits<NInventory::CItem>::TransferBinaryOut	leave ; ret 8 at 0x005C0C05; graded against the oracle cut to 369 (catalog 396)
+005c0c09	19	unnamed (inline-style zeroing ctor of a 5-dword object)	mov eax,ecx ; xor ecx,ecx ; five dword stores ; ret at 0x005C0C1B; owner not proven
+005c0c1c	8	unnamed (this-adjust thunk: add ecx,8 ; jmp 0x005C04BF)	3+5 bytes; owner not proven
+006dc6a0	447	CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn	add esp,0Ch ; ret 8 at 0x006DC85C; graded against the oracle cut to 447 (catalog 720)
+006dc860	56	unnamed (CPersistContext binary map-transfer wrapper)	push esi ; CheckCRC("") 0x00404500 ; mode 2 -> 0x006DBA50 (load stream +0x24), mode 3 -> GFSerialiseMapBinaryOut<CDefString,long> 0x006DAE40 (save stream +0x28) ; ret 8 at 0x006DC895; owner not proven

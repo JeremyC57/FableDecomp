@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00475dfa   WARN RELOC_NAME: ?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAEXIABVC2DVector@@@Z -> 00475e92 labelled 'CArray<std::pair<long,long>_>::push_back'
+00475dfa   WARN RELOC_NAME: ?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ -> 00995030 labelled 'CDataInputStream::ReadC2DVector'
+00475dfa   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryIn<C2DVector>
+00476e3e   WARN RELOC_NAME: ?resize@?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@QAEXIABVCEnvironmentThemeDef@@@Z -> 00476f4f labelled 'CArray<std::pair<unsigned_long,CSoundPair>_>::push_back'
+00476e3e   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00476e3e   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CEnvironmentThemeDef>
+00477cd2   WARN RELOC_NAME: ?resize@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAEXIABVCEngineLocalDetailObjectDef@@@Z -> 00477dea labelled 'CArray<std::pair<unsigned_long,CSoundPair>_>::push_back'
+00477cd2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00477cd2   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CEngineLocalDetailObjectDef>
+00632b90   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<CCharString,unsigned long,less<unsigned long> >
+00f334e0   WARN RELOC_NAME: ??0CConversation@@QAE@XZ -> 00f336f0 labelled 'CVtable_012e5ff0::CVtable_012e5ff0'
+00f334e0   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CConversation>
+
+WINS: 5
+  00475dfa RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VC2DVector@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@@Z
+  00476e3e RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCEnvironmentThemeDef@@@CPersistContext@@QAEXAAV?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@@Z
+  00477cd2 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCEngineLocalDetailObjectDef@@@CPersistContext@@QAEXAAV?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@@Z
+  00632b90 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@VCCharString@@KU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KVCCharString@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@3@@std@@@Z
+  00f334e0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@VCConversation@@@CPersistContext@@QAEXPBDAAV?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  global_GFSerialiseVectorBinaryInC2DVector_00475dfa
+  CPersistContext_TransferVectorOfSubComponentsCEnvironmentThemeDe_00476e3e
+  CPersistContext_TransferVectorOfSubComponentsCEngineLocalDetailO_00477cd2
+  global_GFSerialiseMapBinaryInCCharStringunsignedlongles_00632b90
+  CPersistContext_TransferVectorOfSubComponentsCConversation_00f334e0

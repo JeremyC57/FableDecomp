@@ -1,0 +1,15 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+00476e3e	273	CPersistContext::TransferVectorOfSubComponents<CEnvironmentThemeDef>	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/00476e3e.cpp		00476cbb 00476d9d 00476dc3 00476f4f 00476f9b 00476ff7
+00477cd2	280	CPersistContext::TransferVectorOfSubComponents<CEngineLocalDetailObjectDef>	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/00477cd2.cpp		00477c65 00477c6a 00477cb1 00477dea 00477e36 00477e8e
+00475dfa	152	GFSerialiseVectorBinaryIn<C2DVector>	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand627/differ/00475dfa.cpp		00475d50 00475d99 00475dc7 00475e92 00475ed0 00476001
+00632b90	256	GFSerialiseMapBinaryIn<CCharString,unsigned long,std::less<unsigned long> >	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/00632b90.cpp		00632a30 00632af0 00632b30 00632c90 00632d30 00632e00
+005d8978	754	CPersistContext::TransferMap<long,unsigned long>	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-27_linux_hand619/differ/005d8978.cpp		005d88fa 005d8916 005d8933 005d8c6a 005d8c90 005d8cb0
+00465c54	226	CCombatAbilityBlockDefBase::CCombatAbilityBlockDefBase::Transfer	parked	wrong-flags/pragma	rebuild/candidates/manual/pending/2026-10-15_linux_hand186/differ/00465c54.cpp		00465a57 00465a72 00465b41 00465d36 00465dbc 00465e44
+0047042a	716	CSoundMap::TransferBinaryIn	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/0047042a.cpp		00470301 0047034b 0047040e 004706f6 0047073f 00470778
+005c0a98	396	CPersistTraits<NInventory::CItem>::TransferBinaryOut	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/005c0a98.cpp		005c0965 005c09f6 005c0a25 005c0c24 005c0c86 005c0c99
+006c9350	320	CPersistTraits<CAtmosBankEntry>::TransferIn	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/006c9350.cpp		006c9220 006c9280 006c9310 006c9490 006c9900 006c9a10
+0067e290	592	CDegradableDef::CDegradableDef::Transfer	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/0067e290.cpp		0067d7d0 0067d830 0067df60 0067e4e0 0067e550 0067e590
+006dc6a0	720	CPersistTraits<CHeroStatIncreaseData>::TransferBinaryIn	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/006dc6a0.cpp		006dc450 006dc550 006dc670 006dc970 006dc9b0 006dc9f0
+009e81e0	752	CPersistTraits<CBrainBehaviour>::TransferIn	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/009e81e0.cpp	0099f600	009e7f00 009e7f90 009e8110 009e8c10 009e9080
+00f334e0	528	CPersistContext::Transfer<signed_char>	unworked				00f33480 00f334a0 00f334c0 00f336f0 00f33730 00f337a0
+00405220	304	TransferIMEColour	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand636/differ/00405220.cpp	0099f600	00404f60 00405020 004051c0 00405350 00405650 00405730

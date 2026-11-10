@@ -9,6 +9,9 @@ class CCharString;
 class CWideString;
 class CRGBColour;
 class C3DVector;
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READ2DVECTOR
+class C2DVector;
+#endif
 // Retail opt-in (Codex pass 11 consolidation): polymorphic CDataStream base (vptr +0), original CDataInputStream fields
 // +4,+8,+c,+10,+14, size 0x18; Read is the inline bounds-checked chunk copy (0x00B3EFA0, 0x00A4FE60).
 class CDataInputStream : public CDataStream {
@@ -51,6 +54,12 @@ public:
     // Chunk 739 (CPSCUpdateNormal::ReadBinary 0x00B0B860): FableWin.pdb ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ, out of
     // line in retail (0x009950F0, hidden result pointer; the landed CDataInputStream_Read3DVector_009950f0 row).
     C3DVector Read3DVector();
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READ2DVECTOR
+    // Nested opt-in (chunk 1018, row 0x00475DFA GFSerialiseVectorBinaryIn<C2DVector>): Ego_r.pdb / FableWin.pdb
+    // ?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ, out of line in retail (0x00995030, hidden result pointer:
+    // `lea eax,[ebp-10h] ; push eax ; mov ecx,ebx ; call 0x00995030` at 0x00475E70).
+    C2DVector Read2DVector();
+#endif
 #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READSTRING
     // Nested opt-in (chunk 779, row 0x00AAD650 CWaveLoader::LoadWaveFile): Ego_r.pdb ?ReadString@CDataInputStream@@QAE?AVCCharString@@K@Z
     // (retail 0x00996BE0, hidden result pointer; bound by the landed 0x005DBF50), out of line in retail.

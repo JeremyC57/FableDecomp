@@ -18,7 +18,18 @@ template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)()
 {
     return mem_fun_ref_t<R, T>(pfn);
 }
+#ifdef FABLE_RETAIL_STLP_FOR_EACH_BODY
+// Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): STLport 4.6 _algo.h for_each with its body visible, which that
+// TU expands in place (0x0067E37F..0x0067E398: the CSetEngineGraphicType functor's byte store in a `cmp eax,edi ; jne` loop).
+template <class It, class F> inline F FABLE_FASTCALL for_each(It first, It last, F f)
+{
+    for ( ; first != last; ++first)
+        f(*first);
+    return f;
+}
+#else
 template <class It, class F> F FABLE_FASTCALL for_each(It first, It last, F f);   // 0x0043F360 (SGI, /Gr)
+#endif
 #ifdef FABLE_RETAIL_STLP_FIND
 // Retail opt-in (chunk 1008b, row 0x005F6BD6 CTCInventoryAbilities::SetAbilityAsAvailable): STLport 4.6 _algobase.h
 // `find(_InputIter __first, _InputIter __last, const _Tp& __val)`, the forwarder to the category-dispatched __find (landed

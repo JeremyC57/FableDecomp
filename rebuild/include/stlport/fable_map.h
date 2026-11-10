@@ -170,6 +170,11 @@ public:
     iterator find(const K& key){return iterator(_M_find(key));}
 #endif
     pair<iterator,bool> insert_unique(const V&);
+#ifdef FABLE_RETAIL_STLP_SET_RANGE
+    // Retail opt-in (chunk 1018, row 0x00465C54): STLport 4.6 _tree.h insert_unique(_InputIterator, _InputIterator), inline (the
+    // loop over a vector<EWeaponClass> calling insert_unique(const V&) 0x00465D36 per element).
+    template<class II> void insert_unique(II first,II last) { for ( ; first!=last; ++first) insert_unique(*first); }
+#endif
     iterator insert_unique(iterator,const V&);
     Compare key_comp()const{return _M_key_compare;}
     iterator lower_bound(const K& key) {
@@ -375,6 +380,15 @@ private:
 public:
     typedef typename _Rep_type::const_iterator iterator;
     set():_M_t(Compare(),A()){}
+#ifdef FABLE_RETAIL_STLP_SET_RANGE
+    // Retail opt-in (chunk 1018, row 0x00465C54 CCombatAbilityBlockDefBase::Transfer): STLport 4.6 _set.h
+    // `set(_InputIterator __first, _InputIterator __last) : _M_t(_Compare(), allocator_type()) { _M_t.insert_unique(__first, __last); }`
+    // (the tree constructor stays the out-of-line 0x00451ADD there) and `operator=` (`_M_t = __x._M_t`, the tree's out-of-line
+    // assignment 0x00461BF0).
+    template<class II> set(II first,II last):_M_t(Compare(),A()){_M_t.insert_unique(first,last);}
+    set& operator=(const set& x){_M_t=x._M_t;return *this;}
+    template<class II> void insert(II first,II last){_M_t.insert_unique(first,last);}
+#endif
 #ifdef FABLE_RETAIL_STLP_SET_COPY
     // Retail branch (chunk 777, row 0x00AC92C0 COptimisedPrimitive::ComputeContraction): STLport 4.6 _set.h `set(const _Self& x)
     // : _M_t(x._M_t) {}` with the _Rb_tree copy expanded is too large for VC7.1 to inline: retail calls the out-of-line copy

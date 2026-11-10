@@ -55356,7 +55356,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f33480	TransferIn	CPersistContext_TransferableVector<CDefString>	unknown	undefined	0		0			discovered	boundary							
 00f334a0	TransferOut	CPersistContext_TransferableVector<CDefString>	unknown	undefined	0		0			discovered	boundary							
 00f334c0	_Umove<EWeaponClass*>	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f3\vectorEWeaponClass_UmoveEWeaponClass_00f334c0.cpp
-00f334e0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f334e0	TransferVectorOfSubComponents<CConversation>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00f336f0	CVtable_012e5ff0	CVtable_012e5ff0	__thiscall	undefined	1	CSpecialAbilitiesBattleChargeDef *	0	yes	accepted									
 00f33730	resize	CRetailVector_elem92	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
 00f337a0	erase	std::vector<CConversation, std::allocator<CConversation>>	unknown	undefined	0		0	yes	accepted									

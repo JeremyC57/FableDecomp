@@ -391713,6 +391713,44 @@ $catalog = @(
         TestSource = '00/b8/CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84470_test.cpp'
         PassPattern = '00b84470_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00475dfa'
+        Module = '_global'
+        Source = '00/47/global_GFSerialiseVectorBinaryInC2DVector_00475dfa.cpp'
+        TestSource = '00/47/global_GFSerialiseVectorBinaryInC2DVector_00475dfa_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS18'
+        PassPattern = '00475dfa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00476e3e'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCEnvironmentThemeDe_00476e3e.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCEnvironmentThemeDe_00476e3e_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS55'
+        PassPattern = '00476e3e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00477cd2'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferVectorOfSubComponentsCEngineLocalDetailO_00477cd2.cpp'
+        TestSource = '00/47/CPersistContext_TransferVectorOfSubComponentsCEngineLocalDetailO_00477cd2_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS98'
+        PassPattern = '00477cd2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632b90'
+        Module = '_global'
+        Source = '00/63/global_GFSerialiseMapBinaryInCCharStringunsignedlongles_00632b90.cpp'
+        TestSource = '00/63/global_GFSerialiseMapBinaryInCCharStringunsignedlongles_00632b90_test.cpp'
+        PassPattern = '00632b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f334e0'
+        Module = 'CPersistContext'
+        Source = '00/f3/CPersistContext_TransferVectorOfSubComponentsCConversation_00f334e0.cpp'
+        TestSource = '00/f3/CPersistContext_TransferVectorOfSubComponentsCConversation_00f334e0_test.cpp'
+        PassPattern = '00f334e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

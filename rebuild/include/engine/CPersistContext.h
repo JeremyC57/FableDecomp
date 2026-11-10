@@ -36,6 +36,11 @@ public:
     CStringParser* GetPParser(){return PParser;}
     void WriteString(const CCharString&);
     enum EMode { MODE_LOAD_TEXT=0,MODE_SAVE_TEXT=1,MODE_LOAD_BINARY=2,MODE_SAVE_BINARY=3,MODE_CLEAR=4 };
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_ISPARSINGTEXT
+    // Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): Ego_r.pdb / FableWin.pdb ?IsParsingText@CPersistContext@@QBE_NXZ,
+    // inline in retail (`mov eax,[esi+18h] ; test eax,eax ; jne` at 0x0067E369).
+    bool IsParsingText() const { return Mode==MODE_LOAD_TEXT; }
+#endif
     template<class T> void TransferVector(const char*,std::vector<T,std::allocator<T> >&);
     CPersistContext(CMemoryDataInputStream&,bool);
     CMemoryDataInputStream* GetPLoadStream() { return PLoadStream; }
@@ -82,6 +87,11 @@ public:
     template<class T> void TransferVector(std::vector<T,std::allocator<T> >&);
     template<class V,class K> void TransferMap(std::map<K,V,std::less<K>,std::allocator<std::pair<const K,V> > >&);
     template<class T> void TransferVectorOfSubComponents(std::vector<T,std::allocator<T> >&);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS_NAMED
+    // Retail opt-in (chunk 1018, row 0x00F334E0): the named overload, the PDB spelling ??$TransferVectorOfSubComponents@V<T>@@@CPersistContext@@
+    // QAEXPBDAAV?$vector@...@std@@@Z kept by the TLC-added (no-RTTI) modules (`ret 8`; body below the class).
+    template<class T> void TransferVectorOfSubComponents(const char*,std::vector<T,std::allocator<T> >&);
+#endif
 protected:
     void CheckCRC(const char*);
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT
@@ -154,6 +164,96 @@ template<class T> void CPersistContext::TransferVectorOfSubComponents(std::vecto
             value[i].Transfer(*this);
         break;
     }
+    }
+}
+#endif
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS_NAMED
+// Retail opt-in (chunk 1018): the shared body of the named member template ??$TransferVectorOfSubComponents@V<T>@@@CPersistContext@@QAEXPBDAAV?$vector@
+// V<T>@@V?$allocator@V<T>@@@std@@@std@@@Z (Ego_r.pdb / FableWin.pdb), `ret 8`. CheckCRC(name), then a closed switch on Mode with
+// no text-save arm (the jump table's MODE_SAVE_TEXT entry is 0: `default` is unreachable): MODE_CLEAR transfers each element
+// (CDefClassBase::Transfer, slot 18), MODE_SAVE_BINARY writes size() then each element, MODE_LOAD_BINARY reads the count with the
+// inline CDataInputStream::ReadSLONG, resizes (STLport's resize(n) = resize(n, _Tp())) and transfers each element, MODE_LOAD_TEXT
+// hands the CPersistContext_TransferableVectorOfSubComponents<T> wrapper to TransferVectorOfSubComponentsLoadText 0x009BC120.
+// Arms in that source order (retail lays them out 4, 3, 2, 0: 0x00F334FD, 0x00F3353C, 0x00F3358D, 0x00F33621).
+// Instances reproduced with it: 0x00F334E0 (CConversation). Needs the retail stream models; the includer instantiates it.
+#if !defined(FABLE_RETAIL_CMEMORYDATAINPUTSTREAM) || !defined(FABLE_RETAIL_CDATAINPUTSTREAM) || !defined(FABLE_RETAIL_CDATAOUTPUTSTREAM)
+#error FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS_NAMED needs the retail stream models
+#endif
+#include "engine/CMemoryDataInputStream.h"
+#include "engine/CDataOutputStream.h"
+#include "engine/CPersistContext_TransferableVectorOfSubComponents.h"
+#include "stlport/fable_containers.h"
+template<class T> void CPersistContext::TransferVectorOfSubComponents(const char* name,std::vector<T,std::allocator<T> >& value)
+{
+    CheckCRC(name);
+    switch (Mode) {
+    case MODE_CLEAR: {
+        long count = value.size();
+        for (long i = 0; i < count; ++i)
+            value[i].Transfer(*this);
+        break;
+    }
+    case MODE_SAVE_BINARY: {
+        long count = value.size();
+        PSaveStream->WriteSLONG(count);
+        for (long i = 0; i < count; ++i)
+            value[i].Transfer(*this);
+        break;
+    }
+    case MODE_LOAD_BINARY: {
+        long count = PLoadStream->ReadSLONG();
+        value.resize(count);
+        for (long i = 0; i < count; ++i)
+            value[i].Transfer(*this);
+        break;
+    }
+    case MODE_LOAD_TEXT: {
+        CPersistContext_TransferableVectorOfSubComponents<T> item(value);
+        TransferVectorOfSubComponentsLoadText(name,item);
+        break;
+    }
+    default:
+#ifdef _MSC_VER
+        __assume(0);
+#endif
+        break;
+    }
+}
+#endif
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFER_BINARY_BODY
+// Retail opt-in (chunk 1018, row 0x0067E290 CDegradableDef::Transfer): the shared bodies of the one-argument member templates
+// ??$Transfer@<T>@CPersistContext@@QAEXAA<T>@Z and ??$TransferVector@<T>@CPersistContext@@QAEXAAV?$vector@...@std@@@Z as TLC's release
+// persist macros call them (the name argument dropped: CheckCRC with the pooled empty key 0x0122D70E). Transfer<T>: a CPersistTraits<T>
+// local, MODE_LOAD_BINARY -> traits.TransferBinaryIn(*PLoadStream, value), MODE_SAVE_BINARY -> traits.TransferBinaryOut(*PSaveStream,
+// value) (retail `sub eax,2 ; je ; dec eax ; jne`, 0x0067E2A9; the out-of-line Transfer<float> 0x00431061 is the same body). TransferVector<T>:
+// MODE_LOAD_BINARY -> GFSerialiseVectorBinaryIn, any other mode -> GFSerialiseVectorBinaryOut (`sub eax,2 ; mov edx,ebx ; je`, 0x0067E34D).
+// Needs FABLE_RETAIL_CPERSISTCONTEXT; the traits come from engine/CPersistTraits.h.
+#include "engine/CPersistTraits.h"
+template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryIn(CMemoryDataInputStream&,std::vector<T,std::allocator<T> >&);
+template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryOut(CDataOutputStream&,std::vector<T,std::allocator<T> >&);
+template<class T> void CPersistContext::Transfer(T& value)
+{
+    CheckCRC("");
+    CPersistTraits<T> traits;
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        traits.TransferBinaryIn(*PLoadStream,value);
+        break;
+    case MODE_SAVE_BINARY:
+        traits.TransferBinaryOut(*PSaveStream,value);
+        break;
+    }
+}
+template<class T> void CPersistContext::TransferVector(std::vector<T,std::allocator<T> >& value)
+{
+    CheckCRC("");
+    switch (Mode) {
+    case MODE_LOAD_BINARY:
+        GFSerialiseVectorBinaryIn(*PLoadStream,value);
+        break;
+    default:
+        GFSerialiseVectorBinaryOut(*PSaveStream,value);
+        break;
     }
 }
 #endif
