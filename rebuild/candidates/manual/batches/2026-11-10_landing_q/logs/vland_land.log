@@ -1,0 +1,13 @@
+addr       parity           behav  name
+005b8743   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005b8743   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005b8743   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXXZ -> 004850f9 labelled '_global::CCountedPointer_Release_004850f9'
+005b8743   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ -> 005bb090 labelled '_global::StdList_Dtor_005bb090'
+005b8743   WARN RELOC_NAME: ??1?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAE@XZ -> 005bc080 labelled '_global::StdList_Dtor_005bc080'
+005b8743   RELOCATION_MATCH PASS   ConstructScreenPC
+
+WINS: 1
+  005b8743 RELOCATION_MATCH CTCInventoryClothing::?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryClothing_ConstructScreenPC_005b8743

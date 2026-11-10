@@ -38964,3 +38964,17 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?GetPWorld@CCreatureActionBase@@QBEPAUCRandomSource@@XZ	00692940	00846410
 ?GetPlayer@CCreatureActionBase@@QBEPAVCPlayer@@XZ	00692930	00846410
 ?SetVelocity@CThingObject@@QAEXABVC3DVector@@@Z	006a4dc0	00846410
+??0?$map@W4EClothingSuitPart@@_NU?$less@W4EClothingSuitPart@@@std@@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ	005bb3d1	005b8743
+??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ	005bb090	005b8743
+??1?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAE@XZ	00535900	005b8743
+??1?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAE@XZ	005bc080	005b8743
+??A?$map@W4EClothingSuitPart@@_NU?$less@W4EClothingSuitPart@@@std@@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAEAA_NABW4EClothingSuitPart@@@Z	005bbc4e	005b8743
+?ConstructClothingListPC@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@PAV23@W4EClothingSuitPart@@_N@Z	005b6a66	005b8743
+?CreateMenuDescPC@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	005b3613	005b8743
+?InitialiseMannequin@CTCInventoryClothing@@AAEXXZ	005b37f7	005b8743
+?ReleaseData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXXZ	004850f9	005b8743
+?SetUpSelectedClothes@CTCInventoryClothing@@AAEXXZ	005b4795	005b8743
+?ShareData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXPAVCMenuEntry@NUISystem@@PAVCCPPointerInfo@@@Z	0048524c	005b8743
+?push_back@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	00535ad0	005b8743
+?push_back@?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAEXABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@2@@Z	005bc237	005b8743
+?push_back@?$vector@W4EClothingSuitPart@@V?$allocator@W4EClothingSuitPart@@@std@@@std@@QAEXABW4EClothingSuitPart@@@Z	005bba94	005b8743

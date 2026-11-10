@@ -60,3 +60,5 @@ Suggested next step: write the CTCInventoryClothing screen opt-in from Ego_r CTC
 The landed row uses local struct hacks and the NInventory namespace. Its correct symbol is `?GetActiveProjectileWeaponDamage@CTCInventoryWeapons@@QBEMXZ` (see NAME_FIXES.tsv).
 
 With this overlay, the body as written in the screens (shared headers plus the POINTEE opt-in) reached RELOCATION_MATCH in a probe. The landed row could be re-authored that way; it is not handed back as a row here.
+
+- 2026-11-10 later: 0x005B8743 landed at RELOCATION_MATCH by agentCLO (batch `2026-11-10_landing_q`, notes `pending/2026-11-10_linux_handCLO/`); the skeleton was removed from differ/.

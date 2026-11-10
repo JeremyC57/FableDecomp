@@ -32,13 +32,47 @@ class CWideString;
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
 #include "engine/NInventory_CTCInventoryBase.h"
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
+// Per-TU opt-in (agentCLO 2026-11-10, row 0x005B8743 ConstructScreenPC): the retail class as CTCInventoryWeapons models it
+// (engine/CTCInventoryWeapons.h): RTTI .?AVCTCInventoryClothing@@ = NInventory::CTCInventoryBase @0 (0x130 bytes in retail) +
+// NHeroInformationScreens::CBase @0x130 (ghidra_out/rtti_bases.tsv; vtable 0x0124356C), so the 4-byte `_pad_0x130` is the
+// CBase vptr; the screen methods in Ego_r.pdb / FableWin.pdb spelling (non-virtual ConstructScreenPC: Ego_r donor 0x005641A2
+// `QAE`, sole caller 0x0041FBDD); ClothingItemMap (+0x160, cleared through the map<NUISystem::CComponent*,long> tree clear
+// 0x004DB806 that CTCInventoryWeapons::WeaponMenuItemMap also uses) and ClothingList (+0x16C, `mov [esi+16Ch],edi` at
+// 0x005B9579) typed as Ego_r.pdb has them. Requires FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE. Default path unchanged.
+#ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
+#error "FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN needs FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE"
+#endif
+#include "engine/NHeroInformationScreens_CBase.h"
+#include "engine/CCountedPointer.h"
+#include "engine/EClothingSuitPart.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+class CCharString;
+class CWideString;
+namespace NUISystem { class CComponent; class CViewport; }
+#endif
 #pragma pack(push, 1)
 class CTCInventoryClothing
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
     : public NInventory::CTCInventoryBase
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
+    , public NHeroInformationScreens::CBase
+#endif
 {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
+    NUISystem::CComponent* ConstructScreenPC(NUISystem::CComponent* parent);                // 0x005B8743 (Ego_r 0x005641A2, QAE)
+    void ConstructTitleString(CWideString& title);                                          // 0x005B6881 (Ego_r 0x00560917)
+private:
+    CCountedPointer<NUISystem::CComponent> CreateMenuDescPC(const CCharString& symbol);     // 0x005B3613 (Ego_r 0x0055EE9C)
+    void InitialiseMannequin();                                                             // 0x005B37F7 (Ego_r 0x0055F073)
+    void SetUpSelectedClothes();                                                            // 0x005B4795 (Ego_r 0x00560076)
+    NUISystem::CComponent* ConstructClothingListPC(std::vector<std::pair<long, long> >& items, NUISystem::CViewport* viewport,
+                                                   NUISystem::CComponent* frame, EClothingSuitPart part, bool worn);   // 0x005B6A66 (Ego_r 0x00562A81)
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
 #pragma pack(push, 8)                                                    // natural alignment (bool, then longs from +0x04)
     struct ArgPasser {                                                   // 48 bytes (Ego_r.pdb)
@@ -138,7 +172,9 @@ public:
     unsigned char _pad_0x128[0x4];                           // +0x128
     unsigned char _pad_0x12c[0x4];                           // +0x12c
 #endif
+#ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
     unsigned char _pad_0x130[0x4];                           // +0x130
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_MENUENTRIES
     std::vector<std::pair<EClothingSuitPart, NUISystem::CComponent*> > ClothingMenuEntries;   // +0x134
     void ClearClothingMenuEntries();                                     // 0x005B432C
@@ -151,8 +187,13 @@ public:
     bool          UseMannequin;                              // +0x15c
     bool          LoadedFromSaveGame;                        // +0x15d
     unsigned char _pad_0x15e[0x2];                           // +0x15e
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
+    std::map<NUISystem::CComponent*, long> ClothingItemMap;  // +0x160
+    NUISystem::CComponent* ClothingList;                     // +0x16c
+#else
     unsigned char ClothingItemMap[0xc];                      // +0x160 map<NUISystem::CComponent_*,long,std::less<NUISystem::CComponent_*>,std::allocator<std::pair<NUISystem::CComponent_*_const,long>_>_>
     CComponent*   ClothingList;                              // +0x16c
+#endif
 };
 #pragma pack(pop)
 

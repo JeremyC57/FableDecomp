@@ -1,0 +1,2 @@
+address	name	grade	notes
+005b8743	CTCInventoryClothing::ConstructScreenPC	RELOCATION_MATCH	src+test done (test prints 005b8743_TEST PASS under g++ -std=c++11); graded with FABLE_HDR_OVERLAY=hdr (CTCInventoryClothing.h _SCREEN, CHeroSuitDef.h / CAppearanceModifierDef.h _STATGETTYPENAME); reloc_identity: no hard errors, 5 RELOC_NAME warnings = landed labels listed in NAME_FIXES.tsv; no helper rows needed
