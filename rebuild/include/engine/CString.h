@@ -63,6 +63,14 @@ public:
     CString() { Init(); }
     CString Left(int nCount) const;
 #endif
+#ifdef FABLE_RETAIL_CSTRING_SPAN
+    // Chunk 897 (rows 0x00C0E2C0 / 0x00C0E310): MFC strcore.cpp `CString::SpanIncluding(LPCTSTR) const`
+    // (?SpanIncluding@CString@@QBE?AV1@PBD@Z) and `SpanExcluding` (?SpanExcluding@CString@@QBE?AV1@PBD@Z):
+    // ASSERT(IsValidString(lpszCharSet)) ("IsValidString(lpszCharSet)\n" @ 0x012B1F18), then `return Left(_tcs(c)spn(...))`
+    // (Left 0x00C0E1F0). Needs FABLE_RETAIL_CSTRING_LEFT (and so ALLOCCOPY + BUILDERS). Declarations only: no layout change.
+    CString SpanIncluding(const char* lpszCharSet) const;    // 0x00C0E2C0
+    CString SpanExcluding(const char* lpszCharSet) const;    // 0x00C0E310
+#endif
 };
 #ifdef FABLE_RETAIL_CSTRING_ALLOCCOPY
 extern char* _afxPchNil;                                     // 0x0139C900

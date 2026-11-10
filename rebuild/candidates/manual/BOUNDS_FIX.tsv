@@ -171,3 +171,4 @@ address	pool	module	name	length	class	action	new_length	evidence
 00c53340	never	CDirectSoundDevice	DetectSpeakerConfig	256	OVERLONG	len	180	chunk 872: ends at 0x00C533F3; 0x00C53400 / 0x00C53410 / 0x00C53420 / 0x00C53430 are separate functions (manifest boundary rows added); landed 2026-11-08x
 00c7e420	never	_global	ResampleMonoRampFIR	11984	OVERLONG	len	11980	chunk 878: ends at 0x00C812EB (its 8-entry case table at 0x00C812CC); the last 4 bytes are int3 padding; landed 2026-11-08z
 00c812f0	never	_global	ResampleStereoFIR	12544	OVERLONG	len	12532	chunk 881: code to 0x00C843C3 + its 8-entry case table at 0x00C843C4; 12 bytes int3 padding; landed 2026-11-08ab
+00f29ff0	chunk897	CCutsceneDef	Copy	219	OVERLONG	len	5	chunk 897: vtable 0x012FB6E0 slot 19 is a 5-byte `jmp 0x00F2A000`; after the padding 0x00F2A000 is the separate 204-byte CCutsceneDef::operator= (to add as its own manifest row); 2026-11-10

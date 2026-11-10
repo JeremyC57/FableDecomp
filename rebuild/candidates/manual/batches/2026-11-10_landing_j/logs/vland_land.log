@@ -1,0 +1,72 @@
+addr       parity           behav  name
+005d7081   WARN RELOC_NAME: ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z -> 006d6fa0 labelled 'Experience_GetLevelAndFraction'
+005d7081   RELOCATION_MATCH PASS   ConstructExperienceListPC
+007921b0   MATCH            PASS   end
+0083ad90   RELOCATION_MATCH PASS   ~CBase
+0083ada0   MATCH            PASS   operator*
+0083adb0   MATCH            PASS   end
+0083adc0   MATCH            PASS   _Rb_tree_iterator
+0083add0   MATCH            PASS   _Rb_tree_iterator
+0083ade0   MATCH            PASS   _Rb_tree_iterator
+0083adf0   MATCH            PASS   operator==
+0083ae10   MATCH            PASS   _S_value
+0083ae20   MATCH            PASS   operator()
+00976e20   RELOCATION_MATCH PASS   GetTC<CTCJackPillar>
+00976e70   RELOCATION_MATCH PASS   ~CUnprovenCombatAction_00976E70
+00be42d0   RELOCATION_MATCH PASS   AddPoly
+00c0e2c0   RELOCATION_MATCH PASS   SpanIncluding
+00c0e310   RELOCATION_MATCH PASS   SpanExcluding
+00c28540   MATCH            PASS   InternalSetResource
+00c28560   MATCH            PASS   InternalGetResource
+00dde6f0   MATCH            PASS   OnPredicateFail
+00e8bde0   MATCH            PASS   Init
+00ee94c0   MATCH            PASS   Init
+00f00c60   MATCH            PASS   Init
+
+WINS: 22
+  005d7081 RELOCATION_MATCH CTCInventoryStats::?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  007921b0 MATCH CUnprovenRbTree_007921A0::?end@CUnprovenRbTree_007921A0@@QAE?AUiterator@1@XZ
+  0083ad90 RELOCATION_MATCH NHeroStatModifierEvent::CBase::??1CBase@NHeroStatModifierEvent@@QAE@XZ
+  0083ada0 MATCH std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>::??D?$_Rb_tree_iterator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Nonconst_traits@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@2@@std@@QBEAAU?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@1@XZ
+  0083adb0 MATCH std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>::?end@?$_Rb_tree@UCUnprovenKey_0083ADA0@@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Select1st@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@3@U?$less@UCUnprovenKey_0083ADA0@@@3@V?$allocator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Nonconst_traits@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@2@@2@XZ
+  0083adc0 MATCH std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>::??0?$_Rb_tree_iterator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Nonconst_traits@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@2@@std@@QAE@XZ
+  0083add0 MATCH std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>::??0?$_Rb_tree_iterator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Nonconst_traits@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@1@@Z
+  0083ade0 MATCH std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Const_traits<CUnprovenValue_0083ADA0>>::??0?$_Rb_tree_iterator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Const_traits@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@1@@Z
+  0083adf0 MATCH std::??$?8UCUnprovenIterator_0083ADF0@@@std@@YA_NABV?$reverse_iterator@UCUnprovenIterator_0083ADF0@@@0@0@Z
+  0083ae10 MATCH std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>::?_S_value@?$_Rb_tree@UCUnprovenKey_0083ADA0@@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@U?$_Select1st@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@3@U?$less@UCUnprovenKey_0083ADA0@@@3@V?$allocator@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@3@@std@@KAAAU?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@2@PAU?$_Rb_tree_node@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@2@@Z
+  0083ae20 MATCH std::_Select1st<CUnprovenValue_0083ADA0>::??R?$_Select1st@U?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@std@@@std@@QBEABUCUnprovenKey_0083ADA0@@ABU?$pair@$$CBUCUnprovenKey_0083ADA0@@UCUnprovenData_0083ADA0@@@1@@Z
+  00976e20 RELOCATION_MATCH CThing::??$GetTC@VCTCJackPillar@@@CThing@@QAE_NPAPAVCTCJackPillar@@@Z
+  00976e70 RELOCATION_MATCH CUnprovenCombatAction_00976E70::??1CUnprovenCombatAction_00976E70@@UAE@XZ
+  00be42d0 RELOCATION_MATCH CLandscapeTesselatorBase::?AddPoly@CLandscapeTesselatorBase@@IAEXJJJ@Z
+  00c0e2c0 RELOCATION_MATCH CString::?SpanIncluding@CString@@QBE?AV1@PBD@Z
+  00c0e310 RELOCATION_MATCH CString::?SpanExcluding@CString@@QBE?AV1@PBD@Z
+  00c28540 MATCH CHandleBasedMemoryPool_012b4098::?InternalSetResource@CHandleBasedMemoryPool_012b4098@@IAEXJPAX@Z
+  00c28560 MATCH CHandleBasedMemoryPool_012b4098::?InternalGetResource@CHandleBasedMemoryPool_012b4098@@IAEPAXJ@Z
+  00dde6f0 MATCH NScript::CQ_PrisonWardenGameScript::CPrisonWarden::?OnPredicateFail@CPrisonWarden@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+  00e8bde0 MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::?Init@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+  00ee94c0 MATCH NScript::CExpression_FishScript::?Init@CExpression_FishScript@NScript@@UAEXXZ
+  00f00c60 MATCH NScript::COracleMinigameTestScript::COracleSpectator::?Init@COracleSpectator@COracleMinigameTestScript@NScript@@EAEXXZ
+
+LANDED 22 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryStats_ConstructExperienceListPC_005d7081
+  CUnprovenRbTree007921A0_end_007921b0
+  NHeroStatModifierEventCBase_CBase_0083ad90
+  stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_operator_0083ada0
+  stdRbtreeCUnprovenKey0083ADA0CUnprovenValue0083ADA0stdSelect1stCUnprovenValue008_end_0083adb0
+  stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083adc0
+  stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083add0
+  stdRbtreeiteratorCUnprovenValue0083ADA0stdConsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083ade0
+  std_operator_0083adf0
+  stdRbtreeCUnprovenKey0083ADA0CUnprovenValue0083ADA0stdSelect1stCUnprovenValue008_Svalue_0083ae10
+  stdSelect1stCUnprovenValue0083ADA0_operator_0083ae20
+  CThing_GetTCCTCJackPillar_00976e20
+  CUnprovenCombatAction00976E70_CUnprovenCombatAction00976E70_00976e70
+  CLandscapeTesselatorBase_AddPoly_00be42d0
+  CString_SpanIncluding_00c0e2c0
+  CString_SpanExcluding_00c0e310
+  CHandleBasedMemoryPool012b4098_InternalSetResource_00c28540
+  CHandleBasedMemoryPool012b4098_InternalGetResource_00c28560
+  NScriptCQPrisonWardenGameScriptCPrisonWarden_OnPredicateFail_00dde6f0
+  NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Init_00e8bde0
+  NScriptCExpressionFishScript_Init_00ee94c0
+  NScriptCOracleMinigameTestScriptCOracleSpectator_Init_00f00c60

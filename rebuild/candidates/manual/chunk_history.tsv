@@ -28284,3 +28284,29 @@ chunk	address	module	name	length
 896	01216de0	_global	Unwind@01216de0	8
 896	01216e60	_global	Unwind@01216e60	8
 896	012173e0	_global	Unwind@012173e0	11
+897	00c0e2c0	CString	SpanIncluding	80
+897	00c0e310	CString	SpanExcluding	80
+897	00c28540	CHandleBasedMemoryPool_012b4098	InternalSetResource	25
+897	00c28560	CHandleBasedMemoryPool_012b4098	InternalGetResource	21
+897	00dde6f0	NScript::CQ_PrisonWardenGameScript::CPrisonWarden	OnPredicateFail	11
+897	00e8bde0	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace	Init	8
+897	00ee94c0	NScript::CExpression_FishScript	Init	8
+897	00f00c60	NScript::COracleMinigameTestScript::COracleSpectator	Init	8
+897	007921b0	CUnprovenRbTree_007921A0	end	11
+897	00976e20	CThing	GetTC<CTCJackPillar>	67
+897	00976e70	CUnprovenCombatAction_00976E70	~CUnprovenCombatAction_00976E70	5
+897	00be42d0	CLandscapeTesselatorBase	AddPoly	163
+897	00f29ff0	_gapscan	sub_00f29ff0	219
+897	0083ad90	NHeroStatModifierEvent::CBase	~CBase	7
+897	0083ada0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>	operator*	6
+897	0083adb0	std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>	end	11
+897	0083adc0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>	_Rb_tree_iterator	9
+897	0083add0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>	_Rb_tree_iterator	11
+897	0083ade0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Const_traits<CUnprovenValue_0083ADA0>>	_Rb_tree_iterator	11
+897	0083adf0	std	operator==	22
+897	0083ae10	std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>	_S_value	8
+897	0083ae20	std::_Select1st<CUnprovenValue_0083ADA0>	operator()	7
+897	005c9a95	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_87	3065
+897	005c8459	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_77	3235
+897	005d7081	CTCInventoryStats	ConstructExperienceListPC	3882
+897	005b8743	CTCInventoryClothing	ConstructScreenPC	3838

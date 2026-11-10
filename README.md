@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **47,301 · 95.43%** |
-| Retail function bytes reproduced | **6,710,820 · 66.05%** |
+| Landed byte-matching C++ (genuine) | **47,302 · 95.43%** |
+| Retail function bytes reproduced | **6,715,281 · 66.09%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Landed byte-matching C++ covers **95.43%** of the 49,567-function catalog by count
-and **66.05%** of retail function bytes: the functions still to do are the large ones.
+and **66.09%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,18 +93,18 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **55,044** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **47,301** (95.43%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,652 known functions | 55,043 (95.47%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 6,710,820 (66.05%) |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **55,066** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **47,302** (95.43%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,652 known functions | 55,065 (95.51%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 6,715,281 (66.09%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 220 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 450 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
 | Reconstruction | — of the `toolchain_library` rows, third-party vendor code rebuilt from unmodified source (`// Vendor-library:`) | 9 |
 | Reconstruction | — landed hand-written rows the unmodified vendor build also proves (`// Vendor-proof:` line) | 596 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 1 |
-| Code origin | Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`) | 49,880 / 52,291 (95.39%) |
-| Code origin | Landed genuine, Lionhead in-house libraries (libpk/CODA audio, LHNetworkLib) | 3,920 / 4,104 (95.52%) |
+| Code origin | Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`) | 49,898 / 52,291 (95.42%) |
+| Code origin | Landed genuine, Lionhead in-house libraries (libpk/CODA audio, LHNetworkLib) | 3,924 / 4,104 (95.61%) |
 | Code origin | Landed genuine, third-party vendor code (zlib, LZO, Xiph, DirectShow, DXUT) | 803 / 814 (98.65%) |
 | Code origin | Landed genuine, VC7.1 toolchain (CRT objects, import thunks) | 440 / 443 (99.32%) |
 | Readability (2026-09 snapshot) | Landed sources typed onto shared PDB-named engine headers | 651 |
@@ -117,7 +117,7 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-11-09 canonical refresh: landing rows from
+Counts above are from the 2026-11-10 canonical refresh: landing rows from
 `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1` (`tools/landed_metrics.py`);
 analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json` and the
 naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).

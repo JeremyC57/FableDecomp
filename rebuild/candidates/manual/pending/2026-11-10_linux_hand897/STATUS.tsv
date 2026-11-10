@@ -1,0 +1,27 @@
+address	name	grade	grades_used	note
+00c0e2c0	CString::SpanIncluding	RELOCATION_MATCH	1	MFC strcore; _mbsspn IAT 0x0143FFD8 via _tcsspn; hdr opt-in FABLE_RETAIL_CSTRING_SPAN
+00c0e310	CString::SpanExcluding	RELOCATION_MATCH	1	twin; _mbscspn IAT 0x0143FFF4
+00c28540	CHandleBasedMemoryPool_012b4098::InternalSetResource	MATCH	1	Ego_r name set order Defragment/InternalSet/InternalGet/MoveArea; catalog label SetHandleAddress_00c28540 wrong
+00c28560	CHandleBasedMemoryPool_012b4098::InternalGetResource	MATCH	1	catalog label GetHandleAddress_00c28560 wrong
+00dde6f0	NScript::CQ_PrisonWardenGameScript::CPrisonWarden::OnPredicateFail	MATCH	1	vtable 0x012DCC50 slot 5; Game->RemoveAllQuestInfoElements() (slot 339 +0x54C) tail jump
+00e8bde0	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::Init	MATCH	1	vtable 0x012EBB14 slot 2; BrainState=1 (+0x1C)
+00ee94c0	NScript::CExpression_FishScript::Init	MATCH	1	vtable 0x012F54E4 slot 3; LastFishingLevel=1 (+0x44 = Ego_r +0x58 - 0x14)
+00f00c60	NScript::COracleMinigameTestScript::COracleSpectator::Init	MATCH	1	vtable 0x012F7274 slot 2; NextLine=10 (+0x1C)
+007921b0	CUnprovenRbTree_007921A0::end	MATCH	1	same placeholder tree as landed begin 0x007921A0
+00976e20	CThing::GetTC<CTCJackPillar>	RELOCATION_MATCH	1	FableWin.pdb ??$GetTC@VCTCJackPillar@@@CThing@@...; explicit instantiation of shared GetTC; TCI_JACK_PILLAR=37
+00976e70	CUnprovenCombatAction_00976E70::~CUnprovenCombatAction_00976E70	RELOCATION_MATCH	2	5-byte jmp dtor to ~CCombatActionBase 0x0062E900; implicit dtor + DestroyOne helper (user dtor gave 11v5); class unproven
+00be42d0	CLandscapeTesselatorBase::AddPoly	RELOCATION_MATCH	1	Ego_r ?AddPoly@CLandscapeTesselatorBase@@IAEXJJJ@Z; three BridgeIndexBuffer.push_back((unsigned short)x)
+00f29ff0	CCutsceneDef::Copy	EXTENT_WRONG	1	row = 5-byte jmp 0x00F2A000 + int3 pad + separate 204-byte CCutsceneDef::operator= 0x00F2A000; our 5 bytes equal retail's first 5 (differ/00f29ff0.cpp); split the row
+0083ad90	NHeroStatModifierEvent::CBase::~CBase	RELOCATION_MATCH	1	RTTI .?AVCBase@NHeroStatModifierEvent@@ vtable 0x0127232C; FableWin ??1CBase@NHeroStatModifierEvent@@QAE@XZ (non-virtual)
+0083ada0	std::_Rb_tree_iterator<...>::operator*	MATCH	1	STLport map<CUnprovenKey_0083ADA0,CUnprovenData_0083ADA0> COMDAT run (symbols listed first, then leaves filled)
+0083adb0	std::_Rb_tree<...>::end	MATCH	1	same tree model
+0083adc0	std::_Rb_tree_iterator<...>::_Rb_tree_iterator()	MATCH	1	same tree model
+0083add0	std::_Rb_tree_iterator<...,_Nonconst_traits>::_Rb_tree_iterator(_Link_type)	MATCH	1	same tree model
+0083ade0	std::_Rb_tree_iterator<...,_Const_traits>::_Rb_tree_iterator(_Link_type)	MATCH	1	same tree model
+0083adf0	std::operator==(reverse_iterator<CUnprovenIterator_0083ADF0>)	MATCH	2	(plus 7 probe compiles) only a POD one-pointer iterator with a member == compared by value gives xor/cmp/sete dl/mov al,dl (STLport _Rb_tree_iterator form 18v22)
+0083ae10	std::_Rb_tree<...>::_S_value	MATCH	1	same tree model
+0083ae20	std::_Select1st<...>::operator()	MATCH	1	same tree model
+005d7081	CTCInventoryStats::ConstructExperienceListPC	RELOCATION_MATCH	2	console twin 0x005D6748 with PC strings/actions, sliders 303x53; lever: both experience nulls before the first GetTC
+005c9a95	CTCInventoryWeapons::ConstructScreenPC	NOT_ATTEMPTED	0	vtable 0x01253FF4 slot 87; Ego_r name; 3065 bytes, no landed twin, ~30 distinct callees (several unnamed e.g. 0x005C8176); parked for budget
+005c8459	CTCInventoryWeapons::ConstructScreen	NOT_ATTEMPTED	0	vtable 0x01253FF4 slot 77 (console builder); 3235 bytes, no landed twin; parked for budget
+005b8743	CTCInventoryClothing::ConstructScreenPC	NOT_ATTEMPTED	0	called from 0x0041FBDD; 3838 bytes, no landed twin; parked for budget

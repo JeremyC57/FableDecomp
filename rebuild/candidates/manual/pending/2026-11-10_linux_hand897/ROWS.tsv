@@ -1,0 +1,27 @@
+address	kind	length	catalog_module	catalog_name	regrade_2026-11-09	masked_difflines	best_draft	callers	neighbours
+00c0e2c0	tiny	80	CString	SpanIncluding				 (0)	00c0df50 00c0e0f0 00c0e1f0 00c0e360 00c0e440 00c0e580
+00c0e310	tiny	80	CString	SpanExcluding				 (0)	00c0df50 00c0e0f0 00c0e1f0 00c0e360 00c0e440 00c0e580
+00c28540	tiny	25	CHandleBasedMemoryPool_012b4098	SetHandleAddress_00c28540				 (0)	00c283c0 00c283e0 00c28400 00c28580 00c28610 00c28640
+00c28560	tiny	21	CHandleBasedMemoryPool_012b4098	GetHandleAddress_00c28560				 (0)	00c283c0 00c283e0 00c28400 00c28580 00c28610 00c28640
+00dde6f0	tiny	11	NScript::CQ_PrisonWardenGameScript::CPrisonWarden	OnPredicateFail				abs .rdata 012dcc64 (1)	00dde630 00dde6d0 00dde6e0 00dde700 00dde720 00dde7c0
+00e8bde0	tiny	8	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace	Init				abs .rdata 012ebb1c (1)	00e8bd20 00e8bd30 00e8bdd0 00e8bdf0 00e8be10 00e8beb0
+00ee94c0	tiny	8	NScript::CExpression_FishScript	Init				abs .rdata 012f54f0 (1)	00ee91c0 00ee9480 00ee94a0 00ee94d0 00ee9560 00ee9570
+00f00c60	tiny	8	NScript::COracleMinigameTestScript::COracleSpectator	Init				abs .rdata 012f727c (1)	00f00ae0 00f00bb0 00f00c50 00f00c70 00f01150 00f01260
+007921b0	gapscan	11	_gapscan	sub_007921b0				 (0)	0078fd40 0078fd50 007921a0 007921c0 00792220 00792240
+00976e20	gapscan	67	_gapscan	sub_00976e20				 (0)	009725b0 00972670 00972830 00976e80 00976f00 00976f10
+00976e70	gapscan	5	_gapscan	sub_00976e70				 (0)	009725b0 00972670 00972830 00976e80 00976f00 00976f10
+00be42d0	gapscan	163	_gapscan	sub_00be42d0				 (0)	00be32d0 00be3660 00be3910 00be4380 00be4400 00be4f90
+00f29ff0	gapscan	219	_gapscan	sub_00f29ff0				abs .rdata 012fb72c (1)	00f29dc0 00f29f40 00f29fa0 00f2a0d0 00f2a0f0 00f2a1d0
+0083ad90	gapscan	7	_gapscan	sub_0083ad90				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083ada0	gapscan	6	_gapscan	sub_0083ada0				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083adb0	gapscan	11	_gapscan	sub_0083adb0				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083adc0	gapscan	9	_gapscan	sub_0083adc0				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083add0	gapscan	11	_gapscan	sub_0083add0				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083ade0	gapscan	11	_gapscan	sub_0083ade0				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083adf0	gapscan	22	_gapscan	sub_0083adf0				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083ae10	gapscan	8	_gapscan	sub_0083ae10				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+0083ae20	gapscan	7	_gapscan	sub_0083ae20				 (0)	00838bc0 00838ec0 00839080 0083ae30 0083aea0 0083af30
+005c9a95	large	3065	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_87				abs .rdata 01254150 (1)	005c9962 005c99be 005c99fd 005cac8d 005cb742 005cb780
+005c8459	large	3235	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_77				abs .rdata 01254128 (1)	005c7b10 005c7d0d 005c7f07 005c9962 005c99be 005c99fd
+005d7081	large	3882	CTCInventoryStats	ConstructExperienceListPC				abs .rdata 01254c3c (1)	005d64dd 005d66ba 005d6748 005d7fab 005d80f3 005d811a
+005b8743	large	3838	CTCInventoryClothing	ConstructScreenPC				call 0041fbdd (1)	005b6a2d 005b7049 005b70b8 005b9d8c 005b9de7 005b9ef3

@@ -1,0 +1,23 @@
+address	name	evidence
+0x00C0E2C0	CString::SpanIncluding	landing 2026-11-10j (chunk 897): MFC strcore body; _mbsspn IAT 0x0143FFD8; assert string IsValidString(lpszCharSet) 0x012B1F18; RELOCATION_MATCH
+0x00C0E310	CString::SpanExcluding	landing 2026-11-10j (chunk 897): MFC strcore body; _mbscspn IAT 0x0143FFF4; RELOCATION_MATCH
+0x00C28540	CHandleBasedMemoryPool_012b4098::InternalSetResource	landing 2026-11-10j (chunk 897): Ego_r ?InternalSetResource@CHandleBasedMemoryPool@@IAEXJPAX@Z; donor order Defragment 0x00C28400 / this / InternalGetResource / MoveArea 0x00C28580; ret 8
+0x00C28560	CHandleBasedMemoryPool_012b4098::InternalGetResource	landing 2026-11-10j (chunk 897): Ego_r ?InternalGetResource@CHandleBasedMemoryPool@@IAEPAXJ@Z; same order; ret 4
+0x00DDE6F0	NScript::CQ_PrisonWardenGameScript::CPrisonWarden::OnPredicateFail	landing 2026-11-10j (chunk 897): vtable 0x012DCC50 slot 5 (landed Alloc 0x00DDE630 stores it); Ego_r+FableWin ?OnPredicateFail@CPrisonWarden@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+0x00E8BDE0	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::Init	landing 2026-11-10j (chunk 897): vtable 0x012EBB14 slot 2; Ego_r ?Init@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ; BrainState +0x1C
+0x00EE94C0	NScript::CExpression_FishScript::Init	landing 2026-11-10j (chunk 897): vtable 0x012F54E4 slot 3; Ego_r ?Init@CExpression_FishScript@NScript@@UAEXXZ; LastFishingLevel Ego_r +0x58
+0x00F00C60	NScript::COracleMinigameTestScript::COracleSpectator::Init	landing 2026-11-10j (chunk 897): vtable 0x012F7274 slot 2; Ego_r ?Init@COracleSpectator@COracleMinigameTestScript@NScript@@EAEXXZ; NextLine +0x1C
+0x007921B0	CUnprovenRbTree_007921A0::end	landing 2026-11-10j (chunk 897): same placeholder tree as landed begin 0x007921A0
+0x00976E20	CThing::GetTC<CTCJackPillar>	landing 2026-11-10j (chunk 897): FableWin.pdb ??$GetTC@VCTCJackPillar@@@CThing@@QAE_NPAPAVCTCJackPillar@@@Z; compares TCI_JACK_PILLAR 37; RELOCATION_MATCH from shared CThing.h
+0x00976E70	CUnprovenCombatAction_00976E70::~CUnprovenCombatAction_00976E70	landing 2026-11-10j (chunk 897): 5-byte jmp dtor to ~CCombatActionBase 0x0062E900; implicit dtor + DestroyOne helper (user dtor gave 11v5); class unproven
+0x00BE42D0	CLandscapeTesselatorBase::AddPoly	landing 2026-11-10j (chunk 897): Ego_r ?AddPoly@CLandscapeTesselatorBase@@IAEXJJJ@Z; three push_back on BridgeIndexBuffer; RELOCATION_MATCH from shared header
+0x0083AD90	NHeroStatModifierEvent::CBase::~CBase	landing 2026-11-10j (chunk 897): RTTI .?AVCBase@NHeroStatModifierEvent@@ (COL 0x01346B34) on vtable 0x0127232C; FableWin ??1CBase@NHeroStatModifierEvent@@QAE@XZ
+0x0083ADA0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>::operator*	landing 2026-11-10j (chunk 897): STLport map<CUnprovenKey_0083ADA0,CUnprovenData_0083ADA0> COMDAT run (symbols listed first, then leaves filled)
+0x0083ADB0	std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>::end	landing 2026-11-10j (chunk 897): same tree model
+0x0083ADC0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>::_Rb_tree_iterator	landing 2026-11-10j (chunk 897): same tree model
+0x0083ADD0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>::_Rb_tree_iterator	landing 2026-11-10j (chunk 897): same tree model
+0x0083ADE0	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Const_traits<CUnprovenValue_0083ADA0>>::_Rb_tree_iterator	landing 2026-11-10j (chunk 897): same tree model
+0x0083ADF0	std::operator==	landing 2026-11-10j (chunk 897): (plus 7 probe compiles) only a POD one-pointer iterator with a member == compared by value gives xor/cmp/sete dl/mov al,dl (STLport _Rb_tree_iterator form 18v22)
+0x0083AE10	std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>::_S_value	landing 2026-11-10j (chunk 897): same tree model
+0x0083AE20	std::_Select1st<CUnprovenValue_0083ADA0>::operator()	landing 2026-11-10j (chunk 897): same tree model
+0x005D7081	CTCInventoryStats::ConstructExperienceListPC	landing 2026-11-10j (chunk 897): vtable slot (abs .rdata 0x01254C3C); Ego_r ?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z; RELOCATION_MATCH

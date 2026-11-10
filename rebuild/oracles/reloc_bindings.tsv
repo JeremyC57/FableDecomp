@@ -38964,3 +38964,6 @@ _DSPROPSETID_EAX30_ListenerProperties	012b9418	00c51a20
 ?_M_insert_overflow@?$vector@VCHeroSoulsWaveDef@@V?$allocator@VCHeroSoulsWaveDef@@@std@@@std@@IAEXPAVCHeroSoulsWaveDef@@ABV3@ABU__false_type@2@I_N@Z	00f28bd0	00f28990
 ?resize@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEXIABV?$CArray@G@@@Z	00f3faf0	00f3fb60
 ?TransferBinaryIn@?$CPersistTraits@VCUIRegionInfo@CTCInventoryMap@@@@QAEXAAVCMemoryDataInputStream@@AAVCUIRegionInfo@CTCInventoryMap@@@Z	00614da0	00619560
+??_7CBase@NHeroStatModifierEvent@@6B@	0127232c	0083ad90
+__imp___mbsspn	0143ffd8	00c0e2c0
+__imp___mbscspn	0143fff4	00c0e310

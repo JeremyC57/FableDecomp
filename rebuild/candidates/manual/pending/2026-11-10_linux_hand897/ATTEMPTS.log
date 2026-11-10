@@ -1,0 +1,26 @@
+00c0e2c0 RELOCATION_MATCH
+00c0e310 RELOCATION_MATCH
+00dde6f0 MATCH
+00e8bde0 MATCH
+00ee94c0 MATCH
+00f00c60 MATCH
+00c28540 MATCH
+00c28560 MATCH
+00976e20 RELOCATION_MATCH (first try, explicit instantiation of the shared GetTC)
+007921b0 MATCH
+0083ada0 MATCH
+0083adb0 MATCH
+0083adc0 MATCH
+0083add0 MATCH
+0083ade0 MATCH
+0083ae10 MATCH
+0083ae20 MATCH
+0083ad90 RELOCATION_MATCH
+0083adf0 DIFFER(18v22) reverse_iterator<_Rb_tree_iterator> member ==
+0083adf0 MATCH POD iterator with member == (probes a-g)
+00be42d0 RELOCATION_MATCH (first try)
+00976e70 DIFFER(11v5) user-written empty dtor keeps vtable store
+00976e70 RELOCATION_MATCH implicit dtor + DestroyOne helper
+00f29ff0 DIFFER(5v219) EXTENT_WRONG (5-byte jmp matches)
+005d7081 DIFFER(3882v3882) first draft from console twin: entry null-init order only
+005d7081 RELOCATION_MATCH both null inits before the first GetTC

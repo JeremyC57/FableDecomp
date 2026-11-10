@@ -133,6 +133,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     after the Nov-3 pass landed (`2026-11-09_landing_i/`), 140 directly and 6 after six parent model fixes their funclets exposed
     (parents re-graded RELOCATION_MATCH + PASS). Re-run `$S/funclets` mkpayload + offcheck2 after landing rounds. 61 funclets left
     (44 parent unlanded, 6 parent unmapped, 11 not funclets, 6 unrecorded). Queue tag land0911i. Coverage 47,301 genuine (95.43%).
+    Codex pass 15 (2026-11-09): 20 rows reserved (`pending/2026-11-09_codex_pass15/RESERVED.tsv`); in-house chunks skip them.
+    Chunks 897 / 898 (user, 2026-11-10: one Opus expert on unworked rows, one on retries, both avoiding the Codex rows): 897 landed 22
+    of 26 (`2026-11-10_landing_j/`; 0x00F29FF0 EXTENT_WRONG in BOUNDS_FIX.tsv, the CTCInventoryWeapons pair 0x005C9A95 / 0x005C8459
+    and 0x005B8743 not attempted). Queue tag land1011j. Coverage 55,065 of 57,652 known (95.51%). Chunk 898 (retries) running.
     All-means push (owner, 2026-11-09): NUISystem::CManager::Action 0x0041E6D3 (35,651 bytes) landed
     (`2026-11-09_landing_c/`); RunCutsceneMacro 0x00CBFB7D parked after session 9 (owner: no relaunch): hand-written h03 DIFFER(74846v74778), strict 96.7%,
     calls 4040/4068; h02 holds retail frame 0x18DC at 74858v74778; residue = constant-register pieces (hand885 WORKLOG Session 9).

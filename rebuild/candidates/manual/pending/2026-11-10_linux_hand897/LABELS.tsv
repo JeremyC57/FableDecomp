@@ -1,0 +1,19 @@
+address	name	evidence
+00c0e2c0	CString::SpanIncluding	MFC strcore body; _mbsspn IAT 0x0143FFD8; assert string IsValidString(lpszCharSet) 0x012B1F18; RELOCATION_MATCH
+00c0e310	CString::SpanExcluding	MFC strcore body; _mbscspn IAT 0x0143FFF4; RELOCATION_MATCH
+00c28540	CHandleBasedMemoryPool_012b4098::InternalSetResource	Ego_r ?InternalSetResource@CHandleBasedMemoryPool@@IAEXJPAX@Z; donor order Defragment 0x00C28400 / this / InternalGetResource / MoveArea 0x00C28580; ret 8
+00c28560	CHandleBasedMemoryPool_012b4098::InternalGetResource	Ego_r ?InternalGetResource@CHandleBasedMemoryPool@@IAEPAXJ@Z; same order; ret 4
+00dde6f0	NScript::CQ_PrisonWardenGameScript::CPrisonWarden::OnPredicateFail	vtable 0x012DCC50 slot 5 (landed Alloc 0x00DDE630 stores it); Ego_r+FableWin ?OnPredicateFail@CPrisonWarden@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+00e8bde0	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::Init	vtable 0x012EBB14 slot 2; Ego_r ?Init@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ; BrainState +0x1C
+00ee94c0	NScript::CExpression_FishScript::Init	vtable 0x012F54E4 slot 3; Ego_r ?Init@CExpression_FishScript@NScript@@UAEXXZ; LastFishingLevel Ego_r +0x58
+00f00c60	NScript::COracleMinigameTestScript::COracleSpectator::Init	vtable 0x012F7274 slot 2; Ego_r ?Init@COracleSpectator@COracleMinigameTestScript@NScript@@EAEXXZ; NextLine +0x1C
+00976e20	CThing::GetTC<CTCJackPillar>	FableWin.pdb ??$GetTC@VCTCJackPillar@@@CThing@@QAE_NPAPAVCTCJackPillar@@@Z; compares TCI_JACK_PILLAR 37; RELOCATION_MATCH from shared CThing.h
+00be42d0	CLandscapeTesselatorBase::AddPoly	Ego_r ?AddPoly@CLandscapeTesselatorBase@@IAEXJJJ@Z; three push_back on BridgeIndexBuffer; RELOCATION_MATCH from shared header
+00f29ff0	CCutsceneDef::Copy	CCutsceneDef vtable 0x012FB6E0 slot 19; Ego_r ?Copy@CCutsceneDef@@UAEXPBVCDefClassBase@@@Z
+00f2a000	CCutsceneDef::operator=	only target of Copy's jmp; Ego_r ??4CCutsceneDef@@QAEAAV0@ABV0@@Z; memberwise def copy (204 bytes)
+0083ad90	NHeroStatModifierEvent::CBase::~CBase	RTTI .?AVCBase@NHeroStatModifierEvent@@ (COL 0x01346B34) on vtable 0x0127232C; FableWin ??1CBase@NHeroStatModifierEvent@@QAE@XZ
+005c9a95	CTCInventoryWeapons::ConstructScreenPC	CTCInventoryWeapons vtable 0x01253FF4 slot 87; Ego_r ?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+005c8459	CTCInventoryWeapons::ConstructScreen	CTCInventoryWeapons vtable 0x01253FF4 slot 77; Ego_r ?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+005b8743	CTCInventoryClothing::ConstructScreenPC	direct call from 0x0041FBDD (non-virtual); Ego_r ?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+005d7081	CTCInventoryStats::ConstructExperienceListPC	vtable slot (abs .rdata 0x01254C3C); Ego_r ?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z; RELOCATION_MATCH
+00891c30	CGameScriptInterface::RemoveAllQuestInfoElements	CGameScriptInterface vtable 0x01260F0C + 0x54C (slot 339 of CGameScriptInterfaceBase, engine/CGameScriptInterfaceBase.h)

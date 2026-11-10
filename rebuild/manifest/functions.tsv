@@ -21542,7 +21542,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0078fd50	FinalCleanup	CTCDivineWrath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0078fd60	FrameUpdate	CTCDivineWrath	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
 007921a0	begin	CUnprovenRbTree_007921A0	unknown	undefined	0		0			discovered	boundary							
-007921b0	sub_007921b0	_gapscan	unknown	undefined	0		0			discovered	boundary							
+007921b0	end	CUnprovenRbTree_007921A0	unknown	undefined	0		0			discovered	boundary							
 007921c0	Vector_Erase_TwoIntelligentPtr_v2	_global	unknown	undefined	0		0	yes	accepted									
 00792220	ListHead_InitCircular_0xc_00792220	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\global_ListHeadInitCircular0xc00792220_00792220.cpp
 00792240	~list	std::list	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CGuiControlTreePane_SortTreeRecursively_00792240.cpp
@@ -24796,15 +24796,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00839100	GetWeaponTrailGraphicIndex	CThingGameObject	__thiscall	long	1	CThingGameObject *	1	yes	accepted									
 00839420	CreateEffectOnHit	NThingHelpers	__fastcall	void	4	CThing *,CHitParameters *,CWorldMap *,float	1	yes	accepted									
 00839940	OnHit	CThingGameObject	__thiscall	void	2	CThingGameObject *,CHitParameters *	1	yes	accepted									
-0083ad90	sub_0083ad90	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083ada0	sub_0083ada0	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083adb0	sub_0083adb0	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083adc0	sub_0083adc0	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083add0	sub_0083add0	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083ade0	sub_0083ade0	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083adf0	sub_0083adf0	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083ae10	sub_0083ae10	_gapscan	unknown	undefined	0		0			discovered	boundary							
-0083ae20	sub_0083ae20	_gapscan	unknown	undefined	0		0			discovered	boundary							
+0083ad90	~CBase	NHeroStatModifierEvent::CBase	unknown	undefined	0		0			discovered	boundary							
+0083ada0	operator*	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>	unknown	undefined	0		0			discovered	boundary							
+0083adb0	end	std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>	unknown	undefined	0		0			discovered	boundary							
+0083adc0	_Rb_tree_iterator	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>	unknown	undefined	0		0			discovered	boundary							
+0083add0	_Rb_tree_iterator	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>	unknown	undefined	0		0			discovered	boundary							
+0083ade0	_Rb_tree_iterator	std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Const_traits<CUnprovenValue_0083ADA0>>	unknown	undefined	0		0			discovered	boundary							
+0083adf0	operator==	std	unknown	undefined	0		0			discovered	boundary							
+0083ae10	_S_value	std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>	unknown	undefined	0		0			discovered	boundary							
+0083ae20	operator()	std::_Select1st<CUnprovenValue_0083ADA0>	unknown	undefined	0		0			discovered	boundary							
 0083ae30	CHitThing	NHeroStatModifierEvent::CHitThing	__thiscall	undefined	2	CHitThing *,CCreatureStatsDef *	0	yes	accepted									
 0083aea0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 0083af30	CEventHitBy	CEventHitBy	__thiscall	undefined	2	CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *	0	yes	accepted									
@@ -32733,8 +32733,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00974aa0	Update	CAIStateGroup_JackOfBladesStage2	__thiscall	void	1	CAIStateGroup_JackOfBladesStage2 *	1	yes	accepted									
 009756b0	CAIStateGroup_JackOfBladesStage3::Update	CAIStateGroup_JackOfBladesStage3	__thiscall	void	1	CAIStateGroup_JackOfBladesStage3 *	1	yes	accepted									
 00975bb0	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	CAIStateGroup_JackOfBladesStage1	__thiscall	void	1	CAIStateGroup_JackOfBladesStage1 *	1	yes	accepted									
-00976e20	sub_00976e20	_gapscan	unknown	undefined	0		0			discovered	boundary							
-00976e70	sub_00976e70	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00976e20	GetTC<CTCJackPillar>	CThing	unknown	undefined	0		0			discovered	boundary							
+00976e70	~CUnprovenCombatAction_00976E70	CUnprovenCombatAction_00976E70	unknown	undefined	0		0			discovered	boundary							
 00976e80	CCreatureAction_JackFlash	CCreatureAction_JackFlash	__thiscall	undefined	3	CCreatureAction_BriarRoseShotFarInto *,CThingCreatureBase *,CThingCreatureBase *	0	yes	accepted									
 00976f00	IsToEvadeAllHits	CCreatureAction_JackFlash	__thiscall	bool	1	CCreatureAction_JackFlash *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\97\CCreatureActionJackFlash_IsToEvadeAllHits_00976f00.cpp
 00976f10	IsToFaceTarget	CCreatureAction_JackFlash	__thiscall	bool	1	CCreatureAction_JackFlash *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\97\CCreatureActionJackFlash_IsToFaceTarget_00976f10.cpp
@@ -43068,7 +43068,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be37e0	TesselateEdgeGeneric	CLandscapeTesselatorBase	__thiscall	bool	4	CLandscapeTesselatorBase *,LANDSCAPE_EDGE_STRIP_SIDE,CPatchTesselationEdgeStrip *,CMovableResource *	1	yes	accepted									
 00be3910	TesselatePatch	CLandscapeTesselatorBase	__thiscall	bool	3	CLandscapeTesselatorBase *,CTesselationData *,CMovableResource *	1	yes	accepted									
 00be3970	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z	CLandscapePatchTesselator	__thiscall	void	8	CLandscapePatchTesselator *,CPatchTesselationEdgeStrip *,long,long,bool,bool,LANDSCAPE_EDGE_STRIP_SIDE,ushort *	1	yes	accepted									
-00be42d0	sub_00be42d0	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00be42d0	AddPoly	CLandscapeTesselatorBase	unknown	undefined	0		0			discovered	boundary							
 00be4380	push_back	std::vector<CTVertexLandscapeBackground,std::allocator<CTVertexLandscapeBackground> >	__thiscall	void	1	CScriptModuleFullTransition *	1	yes	accepted									
 00be4400	AddLearnedExpression	_global	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted									
 00be4660	TesselateEdge	CWaterPatchTesselatorBase<CTVertexWaterBackground>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -45022,8 +45022,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c283c0	Lock	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Lock_00c283c0.cpp
 00c283e0	Unlock	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Unlock_00c283e0.cpp
 00c28400	Defragment	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
-00c28540	SetHandleAddress_00c28540	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0			discovered	boundary							
-00c28560	GetHandleAddress_00c28560	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0			discovered	boundary							
+00c28540	InternalSetResource	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0			discovered	boundary							
+00c28560	InternalGetResource	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0			discovered	boundary							
 00c28580	MoveArea	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0	yes	accepted									
 00c28610	FreeHandle	CHandleBasedMemoryPool_012b4098	__thiscall	CCategory *	2	CTCInventoryBase *,long	1	yes	accepted									
 00c28640	ValidateResources	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									

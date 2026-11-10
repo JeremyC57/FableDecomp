@@ -387994,6 +387994,162 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '012134e3_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005d7081'
+        Module = 'CTCInventoryStats'
+        Source = '00/5d/CTCInventoryStats_ConstructExperienceListPC_005d7081.cpp'
+        TestSource = '00/5d/CTCInventoryStats_ConstructExperienceListPC_005d7081_test.cpp'
+        PassPattern = '005d7081_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007921b0'
+        Module = 'CUnprovenRbTree_007921A0'
+        Source = '00/79/CUnprovenRbTree007921A0_end_007921b0.cpp'
+        TestSource = '00/79/CUnprovenRbTree007921A0_end_007921b0_test.cpp'
+        PassPattern = '007921b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ad90'
+        Module = 'NHeroStatModifierEvent::CBase'
+        Source = '00/83/NHeroStatModifierEventCBase_CBase_0083ad90.cpp'
+        TestSource = '00/83/NHeroStatModifierEventCBase_CBase_0083ad90_test.cpp'
+        PassPattern = '0083ad90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ada0'
+        Module = 'std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>'
+        Source = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_operator_0083ada0.cpp'
+        TestSource = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_operator_0083ada0_test.cpp'
+        PassPattern = '0083ada0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083adb0'
+        Module = 'std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>'
+        Source = '00/83/stdRbtreeCUnprovenKey0083ADA0CUnprovenValue0083ADA0stdSelect1stCUnprovenValue008_end_0083adb0.cpp'
+        TestSource = '00/83/stdRbtreeCUnprovenKey0083ADA0CUnprovenValue0083ADA0stdSelect1stCUnprovenValue008_end_0083adb0_test.cpp'
+        PassPattern = '0083adb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083adc0'
+        Module = 'std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>'
+        Source = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083adc0.cpp'
+        TestSource = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083adc0_test.cpp'
+        PassPattern = '0083adc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083add0'
+        Module = 'std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Nonconst_traits<CUnprovenValue_0083ADA0>>'
+        Source = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083add0.cpp'
+        TestSource = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdNonconsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083add0_test.cpp'
+        PassPattern = '0083add0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ade0'
+        Module = 'std::_Rb_tree_iterator<CUnprovenValue_0083ADA0, std::_Const_traits<CUnprovenValue_0083ADA0>>'
+        Source = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdConsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083ade0.cpp'
+        TestSource = '00/83/stdRbtreeiteratorCUnprovenValue0083ADA0stdConsttraitsCUnprovenValue0083ADA0_Rbtreeiterator_0083ade0_test.cpp'
+        PassPattern = '0083ade0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083adf0'
+        Module = 'std'
+        Source = '00/83/std_operator_0083adf0.cpp'
+        TestSource = '00/83/std_operator_0083adf0_test.cpp'
+        PassPattern = '0083adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ae10'
+        Module = 'std::_Rb_tree<CUnprovenKey_0083ADA0, CUnprovenValue_0083ADA0, std::_Select1st<CUnprovenValue_0083ADA0>, std::less<CUnprovenKey_0083ADA0>, std::allocator<CUnprovenValue_0083ADA0>>'
+        Source = '00/83/stdRbtreeCUnprovenKey0083ADA0CUnprovenValue0083ADA0stdSelect1stCUnprovenValue008_Svalue_0083ae10.cpp'
+        TestSource = '00/83/stdRbtreeCUnprovenKey0083ADA0CUnprovenValue0083ADA0stdSelect1stCUnprovenValue008_Svalue_0083ae10_test.cpp'
+        PassPattern = '0083ae10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ae20'
+        Module = 'std::_Select1st<CUnprovenValue_0083ADA0>'
+        Source = '00/83/stdSelect1stCUnprovenValue0083ADA0_operator_0083ae20.cpp'
+        TestSource = '00/83/stdSelect1stCUnprovenValue0083ADA0_operator_0083ae20_test.cpp'
+        PassPattern = '0083ae20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00976e20'
+        Module = 'CThing'
+        Source = '00/97/CThing_GetTCCTCJackPillar_00976e20.cpp'
+        TestSource = '00/97/CThing_GetTCCTCJackPillar_00976e20_test.cpp'
+        PassPattern = '00976e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00976e70'
+        Module = 'CUnprovenCombatAction_00976E70'
+        Source = '00/97/CUnprovenCombatAction00976E70_CUnprovenCombatAction00976E70_00976e70.cpp'
+        TestSource = '00/97/CUnprovenCombatAction00976E70_CUnprovenCombatAction00976E70_00976e70_test.cpp'
+        PassPattern = '00976e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be42d0'
+        Module = 'CLandscapeTesselatorBase'
+        Source = '00/be/CLandscapeTesselatorBase_AddPoly_00be42d0.cpp'
+        TestSource = '00/be/CLandscapeTesselatorBase_AddPoly_00be42d0_test.cpp'
+        PassPattern = '00be42d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0e2c0'
+        Module = 'CString'
+        Source = '00/c0/CString_SpanIncluding_00c0e2c0.cpp'
+        TestSource = '00/c0/CString_SpanIncluding_00c0e2c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0e2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0e310'
+        Module = 'CString'
+        Source = '00/c0/CString_SpanExcluding_00c0e310.cpp'
+        TestSource = '00/c0/CString_SpanExcluding_00c0e310_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0e310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28540'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_InternalSetResource_00c28540.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_InternalSetResource_00c28540_test.cpp'
+        PassPattern = '00c28540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28560'
+        Module = 'CHandleBasedMemoryPool_012b4098'
+        Source = '00/c2/CHandleBasedMemoryPool012b4098_InternalGetResource_00c28560.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool012b4098_InternalGetResource_00c28560_test.cpp'
+        PassPattern = '00c28560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dde6f0'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CPrisonWarden'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_OnPredicateFail_00dde6f0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_OnPredicateFail_00dde6f0_test.cpp'
+        PassPattern = '00dde6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8bde0'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Init_00e8bde0.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Init_00e8bde0_test.cpp'
+        PassPattern = '00e8bde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee94c0'
+        Module = 'NScript::CExpression_FishScript'
+        Source = '00/ee/NScriptCExpressionFishScript_Init_00ee94c0.cpp'
+        TestSource = '00/ee/NScriptCExpressionFishScript_Init_00ee94c0_test.cpp'
+        PassPattern = '00ee94c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f00c60'
+        Module = 'NScript::COracleMinigameTestScript::COracleSpectator'
+        Source = '00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_Init_00f00c60.cpp'
+        TestSource = '00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_Init_00f00c60_test.cpp'
+        PassPattern = '00f00c60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

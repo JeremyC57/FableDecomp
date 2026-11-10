@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00976e80	??0CCreatureAction_JackFlash@@QAE@AAVCThingCreatureBase@@0@Z	FableWin.pdb ctor takes two CThingCreatureBase& (both by reference)	landed ctor modelled as (CThingCreatureBase*, CThing*)
+0083ae30	??0CHitThing@NHeroStatModifierEvent@@QAE@ABVCCreatureStatsDef@@@Z	Ego_r.pdb + FableWin.pdb: ctor takes const CCreatureStatsDef&	landed ctor modelled as taking CThing*
+00f2a1d0	?Transfer@CCutsceneDef@@UAEXAAVCPersistContext@@@Z	Ego_r.pdb; it is vtable 0x012FB6E0 slot 18 so it is virtual (UAE)	landed as QAE (non-virtual)
