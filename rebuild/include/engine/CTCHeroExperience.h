@@ -41,6 +41,11 @@ public:
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_HERO_EXPERIENCE;}
     const CHeroCombatDef& PeekHeroCombatDef()const{return *PHeroCombatDef;}
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_GETPHEROCOMBATDEF
+    // Retail opt-in (chunk 1004, row 0x005C90FC): FableWin.pdb ?GetPHeroCombatDef@CTCHeroExperience@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ,
+    // inline in retail (the by-value copy of PHeroCombatDef +0x58: `mov esi,[esi+58h] ; inc [esi+4]`, 0x005C974C).
+    CDefPointer<const CHeroCombatDef> GetPHeroCombatDef()const{return PHeroCombatDef;}
+#endif
     void AddTrainableStatExperience(EHeroExperienceStatCategory,long);
     // Chunk 735 (CTCInventoryExperience rows 0x005729D8 / 0x00573792): the trainable-stat queries, out of line (Ego_r.pdb /
     // FableWin.pdb spellings): GetTrainableStatLevel 0x006D6520 (QBE), GetTrainableStatMaxLevel 0x006D6770 (QBE),

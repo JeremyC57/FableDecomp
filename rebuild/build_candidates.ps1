@@ -390212,6 +390212,349 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00577216_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005b9bf0'
+        Module = 'CUnprovenIterator_005b9bf0'
+        Source = '00/5b/CUnprovenIterator005b9bf0_CUnprovenIterator005b9bf0_005b9bf0.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9bf0_CUnprovenIterator005b9bf0_005b9bf0_test.cpp'
+        PassPattern = '005b9bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9bfb'
+        Module = 'CUnprovenIterator_005b9bfb'
+        Source = '00/5b/CUnprovenIterator005b9bfb_operator_005b9bfb.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9bfb_operator_005b9bfb_test.cpp'
+        PassPattern = '005b9bfb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c0b'
+        Module = 'CUnprovenIterator_005b9c0b'
+        Source = '00/5b/CUnprovenIterator005b9c0b_CUnprovenIterator005b9c0b_005b9c0b.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9c0b_CUnprovenIterator005b9c0b_005b9c0b_test.cpp'
+        PassPattern = '005b9c0b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c16'
+        Module = 'CUnprovenIterator_005b9c16'
+        Source = '00/5b/CUnprovenIterator005b9c16_operator_005b9c16.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9c16_operator_005b9c16_test.cpp'
+        PassPattern = '005b9c16_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c26'
+        Module = 'CUnprovenEmpty_005b9c26'
+        Source = '00/5b/CUnprovenEmpty005b9c26_CUnprovenEmpty005b9c26_005b9c26.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c26_CUnprovenEmpty005b9c26_005b9c26_test.cpp'
+        PassPattern = '005b9c26_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c27'
+        Module = 'CUnprovenEmpty_005b9c27'
+        Source = '00/5b/CUnprovenEmpty005b9c27_CUnprovenEmpty005b9c27_005b9c27.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c27_CUnprovenEmpty005b9c27_005b9c27_test.cpp'
+        PassPattern = '005b9c27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c2a'
+        Module = 'CUnprovenEmpty_005b9c2a'
+        Source = '00/5b/CUnprovenEmpty005b9c2a_CUnprovenEmpty005b9c2a_005b9c2a.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c2a_CUnprovenEmpty005b9c2a_005b9c2a_test.cpp'
+        PassPattern = '005b9c2a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c2b'
+        Module = 'CUnprovenPair_005b9c2b'
+        Source = '00/5b/CUnprovenPair005b9c2b_GetFirst_005b9c2b.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9c2b_GetFirst_005b9c2b_test.cpp'
+        PassPattern = '005b9c2b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c2e'
+        Module = 'CUnprovenPair_005b9c2e'
+        Source = '00/5b/CUnprovenPair005b9c2e_GetSecond_005b9c2e.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9c2e_GetSecond_005b9c2e_test.cpp'
+        PassPattern = '005b9c2e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c32'
+        Module = 'CUnprovenPair_005b9c32'
+        Source = '00/5b/CUnprovenPair005b9c32_GetFirst_005b9c32.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9c32_GetFirst_005b9c32_test.cpp'
+        PassPattern = '005b9c32_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c35'
+        Module = 'CUnprovenIterator_005b9c35'
+        Source = '00/5b/CUnprovenIterator005b9c35_CUnprovenIterator005b9c35_005b9c35.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9c35_CUnprovenIterator005b9c35_005b9c35_test.cpp'
+        PassPattern = '005b9c35_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c42'
+        Module = 'CUnprovenIterator_005b9c42'
+        Source = '00/5b/CUnprovenIterator005b9c42_CUnprovenIterator005b9c42_005b9c42.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9c42_CUnprovenIterator005b9c42_005b9c42_test.cpp'
+        PassPattern = '005b9c42_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c4f'
+        Module = 'CUnprovenVector_005b9c4f'
+        Source = '00/5b/CUnprovenVector005b9c4f_operator_005b9c4f.cpp'
+        TestSource = '00/5b/CUnprovenVector005b9c4f_operator_005b9c4f_test.cpp'
+        PassPattern = '005b9c4f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c5e'
+        Module = 'CUnprovenPair_005b9c5e'
+        Source = '00/5b/CUnprovenPair005b9c5e_GetFirst_005b9c5e.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9c5e_GetFirst_005b9c5e_test.cpp'
+        PassPattern = '005b9c5e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c61'
+        Module = 'CUnprovenPair_005b9c61'
+        Source = '00/5b/CUnprovenPair005b9c61_GetSecond_005b9c61.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9c61_GetSecond_005b9c61_test.cpp'
+        PassPattern = '005b9c61_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c65'
+        Module = 'CUnprovenVector_005b9c65'
+        Source = '00/5b/CUnprovenVector005b9c65_size_005b9c65.cpp'
+        TestSource = '00/5b/CUnprovenVector005b9c65_size_005b9c65_test.cpp'
+        PassPattern = '005b9c65_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c71'
+        Module = 'CUnprovenVector_005b9c71'
+        Source = '00/5b/CUnprovenVector005b9c71_operator_005b9c71.cpp'
+        TestSource = '00/5b/CUnprovenVector005b9c71_operator_005b9c71_test.cpp'
+        PassPattern = '005b9c71_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c80'
+        Module = 'CUnprovenEmpty_005b9c80'
+        Source = '00/5b/CUnprovenEmpty005b9c80_CUnprovenEmpty005b9c80_005b9c80.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c80_CUnprovenEmpty005b9c80_005b9c80_test.cpp'
+        PassPattern = '005b9c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c83'
+        Module = 'CUnprovenEmpty_005b9c83'
+        Source = '00/5b/CUnprovenEmpty005b9c83_CUnprovenEmpty005b9c83_005b9c83.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c83_CUnprovenEmpty005b9c83_005b9c83_test.cpp'
+        PassPattern = '005b9c83_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c84'
+        Module = 'CUnprovenEmpty_005b9c84'
+        Source = '00/5b/CUnprovenEmpty005b9c84_CUnprovenEmpty005b9c84_005b9c84.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c84_CUnprovenEmpty005b9c84_005b9c84_test.cpp'
+        PassPattern = '005b9c84_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c87'
+        Module = 'CUnprovenEmpty_005b9c87'
+        Source = '00/5b/CUnprovenEmpty005b9c87_CUnprovenEmpty005b9c87_005b9c87.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9c87_CUnprovenEmpty005b9c87_005b9c87_test.cpp'
+        PassPattern = '005b9c87_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c88'
+        Module = 'CUnprovenIterator_005b9c88'
+        Source = '00/5b/CUnprovenIterator005b9c88_CUnprovenIterator005b9c88_005b9c88.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9c88_CUnprovenIterator005b9c88_005b9c88_test.cpp'
+        PassPattern = '005b9c88_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c8e'
+        Module = 'CUnprovenIterator_005b9c8e'
+        Source = '00/5b/CUnprovenIterator005b9c8e_operator_005b9c8e.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9c8e_operator_005b9c8e_test.cpp'
+        PassPattern = '005b9c8e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c94'
+        Module = 'CUnprovenPair_005b9c94'
+        Source = '00/5b/CUnprovenPair005b9c94_GetFirst_005b9c94.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9c94_GetFirst_005b9c94_test.cpp'
+        PassPattern = '005b9c94_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9c97'
+        Module = 'CUnprovenVector_005b9c97'
+        Source = '00/5b/CUnprovenVector005b9c97_size_005b9c97.cpp'
+        TestSource = '00/5b/CUnprovenVector005b9c97_size_005b9c97_test.cpp'
+        PassPattern = '005b9c97_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9ca3'
+        Module = 'CUnprovenEmpty_005b9ca3'
+        Source = '00/5b/CUnprovenEmpty005b9ca3_CUnprovenEmpty005b9ca3_005b9ca3.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9ca3_CUnprovenEmpty005b9ca3_005b9ca3_test.cpp'
+        PassPattern = '005b9ca3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9ca6'
+        Module = 'CUnprovenEmpty_005b9ca6'
+        Source = '00/5b/CUnprovenEmpty005b9ca6_CUnprovenEmpty005b9ca6_005b9ca6.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9ca6_CUnprovenEmpty005b9ca6_005b9ca6_test.cpp'
+        PassPattern = '005b9ca6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9ca7'
+        Module = 'CUnprovenPair_005b9ca7'
+        Source = '00/5b/CUnprovenPair005b9ca7_GetFirst_005b9ca7.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9ca7_GetFirst_005b9ca7_test.cpp'
+        PassPattern = '005b9ca7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9caa'
+        Module = 'CUnprovenPair_005b9caa'
+        Source = '00/5b/CUnprovenPair005b9caa_GetSecond_005b9caa.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9caa_GetSecond_005b9caa_test.cpp'
+        PassPattern = '005b9caa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cae'
+        Module = 'CUnprovenVector_005b9cae'
+        Source = '00/5b/CUnprovenVector005b9cae_operator_005b9cae.cpp'
+        TestSource = '00/5b/CUnprovenVector005b9cae_operator_005b9cae_test.cpp'
+        PassPattern = '005b9cae_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cba'
+        Module = 'CUnprovenPair_005b9cba'
+        Source = '00/5b/CUnprovenPair005b9cba_CUnprovenPair005b9cba_005b9cba.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9cba_CUnprovenPair005b9cba_005b9cba_test.cpp'
+        PassPattern = '005b9cba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cd0'
+        Module = 'CUnprovenEmpty_005b9cd0'
+        Source = '00/5b/CUnprovenEmpty005b9cd0_CUnprovenEmpty005b9cd0_005b9cd0.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9cd0_CUnprovenEmpty005b9cd0_005b9cd0_test.cpp'
+        PassPattern = '005b9cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cd3'
+        Module = 'CUnprovenEmpty_005b9cd3'
+        Source = '00/5b/CUnprovenEmpty005b9cd3_CUnprovenEmpty005b9cd3_005b9cd3.cpp'
+        TestSource = '00/5b/CUnprovenEmpty005b9cd3_CUnprovenEmpty005b9cd3_005b9cd3_test.cpp'
+        PassPattern = '005b9cd3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cd4'
+        Module = 'CUnprovenIterator_005b9cd4'
+        Source = '00/5b/CUnprovenIterator005b9cd4_operator_005b9cd4.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9cd4_operator_005b9cd4_test.cpp'
+        PassPattern = '005b9cd4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cda'
+        Module = 'CUnprovenIterator_005b9cda'
+        Source = '00/5b/CUnprovenIterator005b9cda_operator_005b9cda.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9cda_operator_005b9cda_test.cpp'
+        PassPattern = '005b9cda_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9ce3'
+        Module = 'CUnprovenPair_005b9ce3'
+        Source = '00/5b/CUnprovenPair005b9ce3_CUnprovenPair005b9ce3_005b9ce3.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9ce3_CUnprovenPair005b9ce3_005b9ce3_test.cpp'
+        PassPattern = '005b9ce3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9cf9'
+        Module = 'CUnprovenVector_005b9cf9'
+        Source = '00/5b/CUnprovenVector005b9cf9_size_005b9cf9.cpp'
+        TestSource = '00/5b/CUnprovenVector005b9cf9_size_005b9cf9_test.cpp'
+        PassPattern = '005b9cf9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d05'
+        Module = 'CUnprovenLess_005b9d05'
+        Source = '00/5b/CUnprovenLess005b9d05_operator_005b9d05.cpp'
+        TestSource = '00/5b/CUnprovenLess005b9d05_operator_005b9d05_test.cpp'
+        PassPattern = '005b9d05_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d1b'
+        Module = 'CUnprovenPair_005b9d1b'
+        Source = '00/5b/CUnprovenPair005b9d1b_GetFirst_005b9d1b.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9d1b_GetFirst_005b9d1b_test.cpp'
+        PassPattern = '005b9d1b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d1e'
+        Module = 'CUnprovenLess_005b9d1e'
+        Source = '00/5b/CUnprovenLess005b9d1e_operator_005b9d1e.cpp'
+        TestSource = '00/5b/CUnprovenLess005b9d1e_operator_005b9d1e_test.cpp'
+        PassPattern = '005b9d1e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d34'
+        Module = 'CUnprovenIterator_005b9d34'
+        Source = '00/5b/CUnprovenIterator005b9d34_operator_005b9d34.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9d34_operator_005b9d34_test.cpp'
+        PassPattern = '005b9d34_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d3a'
+        Module = 'CUnprovenIterator_005b9d3a'
+        Source = '00/5b/CUnprovenIterator005b9d3a_CUnprovenIterator005b9d3a_005b9d3a.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9d3a_CUnprovenIterator005b9d3a_005b9d3a_test.cpp'
+        PassPattern = '005b9d3a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d47'
+        Module = 'CUnprovenIterator_005b9d47'
+        Source = '00/5b/CUnprovenIterator005b9d47_operator_005b9d47.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9d47_operator_005b9d47_test.cpp'
+        PassPattern = '005b9d47_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d4d'
+        Module = 'CUnprovenPair_005b9d4d'
+        Source = '00/5b/CUnprovenPair005b9d4d_CUnprovenPair005b9d4d_005b9d4d.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9d4d_CUnprovenPair005b9d4d_005b9d4d_test.cpp'
+        PassPattern = '005b9d4d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d63'
+        Module = 'CUnprovenIterator_005b9d63'
+        Source = '00/5b/CUnprovenIterator005b9d63_CUnprovenIterator005b9d63_005b9d63.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9d63_CUnprovenIterator005b9d63_005b9d63_test.cpp'
+        PassPattern = '005b9d63_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d70'
+        Module = 'CUnprovenIterator_005b9d70'
+        Source = '00/5b/CUnprovenIterator005b9d70_operator_005b9d70.cpp'
+        TestSource = '00/5b/CUnprovenIterator005b9d70_operator_005b9d70_test.cpp'
+        PassPattern = '005b9d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b9d76'
+        Module = 'CUnprovenPair_005b9d76'
+        Source = '00/5b/CUnprovenPair005b9d76_CUnprovenPair005b9d76_005b9d76.cpp'
+        TestSource = '00/5b/CUnprovenPair005b9d76_CUnprovenPair005b9d76_005b9d76_test.cpp'
+        PassPattern = '005b9d76_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c90fc'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionContainer_005c90fc.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionContainer_005c90fc_test.cpp'
+        PassPattern = '005c90fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cacb9'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9_test.cpp'
+        PassPattern = '005cacb9_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

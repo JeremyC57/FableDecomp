@@ -8,6 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCARRYABLEDEF
+// Retail opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): the polymorphic retail class over
+// CSubDefClassBase (RTTI .?AVCCarryableDef@@ : CSubDefClassBase; needs FABLE_RETAIL_DEF_CLASS_BASE), with the Ego_r.pdb members at
+// the same offsets (no container before them): the row reads PassiveCarrySlot +0x30 (`mov eax,[eax+30h]`, 0x005CA930) after
+// GetSubDef<CCarryableDef> 0x005CC10E, whose class-name literal is StatGetTypeName (the landed 0x00849F70 local model, now shared).
+// Only the three carry slots are typed; the tail keeps opaque storage (sizeof 0x50 as Ego_r).
+#include "fable_string.h"
+#include "engine/CSubDefClassBase.h"
+class CCarryableDef : public CSubDefClassBase {
+public:
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CCarryableDef", -1); }
+    long          ActiveCarrySlot;                           // +0x28
+    long          SecondaryActiveCarrySlot;                  // +0x2c
+    long          PassiveCarrySlot;                          // +0x30
+    unsigned char _tail_0x34[0x1c];                          // +0x34 OnKillFX .. IncludeInThingScansWhenCarried (opaque)
+};
+FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
+#else
 #pragma pack(push, 1)
 class CCarryableDef {
 public:
@@ -47,5 +65,6 @@ FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Z
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetAmountForThingsOnTopOfMe) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlotScale) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, IncludeInThingScansWhenCarried) == 0x4c);
+#endif // FABLE_RETAIL_CCARRYABLEDEF
 
 #endif // FABLE_ENGINE_CCARRYABLEDEF_H

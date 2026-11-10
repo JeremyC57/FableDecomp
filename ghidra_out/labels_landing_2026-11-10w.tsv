@@ -1,0 +1,55 @@
+address	name	evidence
+005c90fc	?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@Z	RELOCATION_MATCH this chunk; Ego_r.pdb / FableWin.pdb spelling
+005cacb9	?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ	RELOCATION_MATCH this chunk; Ego_r.pdb / FableWin.pdb spelling
+005ca68e	?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ	DIFFER(1538v1535) this chunk; FableWin.pdb private spelling (called from SetThingAsActiveWeapon 0x005CB2B0)
+005b9641	?DrawPreparePrimitivesForRendering@CTCInventoryClothing@@UAEXABVCEnginePrimitivePrepareInfo@@@Z	vtable 0x0124356C slot 11; extent corrected to 0x5AF (SPLITS.tsv)
+005cbdbd	??$IS_THING_DEAD@PAVCThing@@@@YI_NABQAVCThing@@@Z	FableWin.pdb ??$IS_THING_DEAD@PAVCThing@@@@YI_NABQAVCThing@@@Z (Ego_r 0x0069F345); body `mov eax,[ecx] ; test ; je true ; test byte ptr [eax+91h],1 ; jne true ; xor al,al ; ret ; mov al,1 ; ret` (null or Dead); called by 0x005CA68E on the passive-slot thing
+005cbdd2	??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z	already declared in engine/CIntelligentPointer.h (FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE, chunk 867); 0x005CA68E compares each carried thing with the active melee / ranged pointers (`mov ecx,<thing> ; lea edx,[this+134h|141h] ; call`)
+007ccf50	?ApplyEffectOnWeapon@CTCMultiStrike@@QAEXPAVCThing@@@Z	Ego_r.pdb + FableWin.pdb spelling; 0x005CA68E calls it last with the active melee weapon when the multi-strike component exists (the CTCMultiArrow twin 0x007CC060 is already bound)
+005b9bf0	??0CUnprovenIterator_005b9bf0@@QAE@PAUCUnprovenNode_005b9bf0@@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9bfb	??8CUnprovenIterator_005b9bfb@@QBE_NABV0@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c0b	??0CUnprovenIterator_005b9c0b@@QAE@PAUCUnprovenNode_005b9c0b@@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c16	??8CUnprovenIterator_005b9c16@@QBE_NABV0@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c26	??1CUnprovenEmpty_005b9c26@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c27	??0CUnprovenEmpty_005b9c27@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c2a	??1CUnprovenEmpty_005b9c2a@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c2b	?GetFirst@CUnprovenPair_005b9c2b@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c2e	?GetSecond@CUnprovenPair_005b9c2e@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c32	?GetFirst@CUnprovenPair_005b9c32@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c35	??0CUnprovenIterator_005b9c35@@QAE@ABV0@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c42	??0CUnprovenIterator_005b9c42@@QAE@ABV0@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c4f	??ACUnprovenVector_005b9c4f@@QAEAAUCUnprovenElement12_005b9c4f@@I@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c5e	?GetFirst@CUnprovenPair_005b9c5e@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c61	?GetSecond@CUnprovenPair_005b9c61@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c65	?size@CUnprovenVector_005b9c65@@QBEIXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c71	??ACUnprovenVector_005b9c71@@QAEAAUCUnprovenElement24_005b9c71@@I@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c80	??0CUnprovenEmpty_005b9c80@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c83	??1CUnprovenEmpty_005b9c83@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c84	??0CUnprovenEmpty_005b9c84@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c87	??1CUnprovenEmpty_005b9c87@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c88	??0CUnprovenIterator_005b9c88@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c8e	??CCUnprovenIterator_005b9c8e@@QBEPAUCUnprovenValue_005b9c8e@@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c94	?GetFirst@CUnprovenPair_005b9c94@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9c97	?size@CUnprovenVector_005b9c97@@QBEIXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9ca3	??0CUnprovenEmpty_005b9ca3@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9ca6	??1CUnprovenEmpty_005b9ca6@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9ca7	?GetFirst@CUnprovenPair_005b9ca7@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9caa	?GetSecond@CUnprovenPair_005b9caa@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cae	??ACUnprovenVector_005b9cae@@QAEAAUCUnprovenElement4_005b9cae@@I@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cba	??0CUnprovenPair_005b9cba@@QAE@ABJ0@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cd0	??0CUnprovenEmpty_005b9cd0@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cd3	??1CUnprovenEmpty_005b9cd3@@QAE@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cd4	??CCUnprovenIterator_005b9cd4@@QBEPAUCUnprovenValue_005b9cd4@@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cda	??ECUnprovenIterator_005b9cda@@QAEAAV0@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9ce3	??0CUnprovenPair_005b9ce3@@QAE@ABJAB_N@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9cf9	?size@CUnprovenVector_005b9cf9@@QBEIXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d05	??RCUnprovenLess_005b9d05@@QBE_NABJ0@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d1b	?GetFirst@CUnprovenPair_005b9d1b@@QBEPAXXZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d1e	??RCUnprovenLess_005b9d1e@@QBE_NABJ0@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d34	??CCUnprovenIterator_005b9d34@@QBEPAUCUnprovenValue_005b9d34@@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d3a	??0CUnprovenIterator_005b9d3a@@QAE@ABV0@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d47	??CCUnprovenIterator_005b9d47@@QBEPAUCUnprovenValue_005b9d47@@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d4d	??0CUnprovenPair_005b9d4d@@QAE@ABJ0@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d63	??0CUnprovenIterator_005b9d63@@QAE@ABV0@@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d70	??CCUnprovenIterator_005b9d70@@QBEPAUCUnprovenValue_005b9d70@@XZ	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk
+005b9d76	??0CUnprovenPair_005b9d76@@QAE@ABJAB_N@Z	unproven owner (no reference in Fable.exe); descriptive CUnproven placeholder, MATCH this chunk

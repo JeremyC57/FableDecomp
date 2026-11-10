@@ -18,6 +18,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **2026-11-10 landing u:** Codex pass 16 returned 37/40 matched, all landed (headers merged 3-way, 56 new); 3 parked in `pending/2026-11-10_codex_pass16/return_2026-11-10/`; queue `land1011v` (101 fixes). Per-row grade budget raised 4 -> 10 (owner). Agents running: chunk 1004 (6 weapons/clothing leftovers), chunk 1005 (CTCInventoryExperience, 11 rows); relaunch new ones when they land.
 - **2026-11-10 Codex pass 17 handed out:** 40 same-length parked near misses reserved in `pending/2026-11-10_codex_pass17/RESERVED.tsv`.
 - **2026-11-10 landing v:** chunk 1005 landed 6 of 11 CTCInventoryExperience rows; 0x0056F30B CloseInventory held (matches, but uses CASoundManager.h's descriptive slot names -- owner decision pending); 4 parked (`pending/2026-11-10_linux_hand1005/`); queue `land1011w`.
+- **2026-11-10 landing w:** chunk 1004 landed 49 (ConstructWeaponDescriptionContainer, RefreshWeaponDescriptions, 47 helpers split out of the 0x005B9641 row); 4 parked (`pending/2026-11-10_linux_hand1004/`); queue `land1011x`.
 - **Resumed 2026-11-05 late** (the user: "continue where the last claude chat left off"). Done since the pause:
   - lane: the older a013f3ec-... scratch survived with the whole lane (game SHA-1 checked, prime recheck 5/5); the 40effb6c-...
     scratch is gone, and with it the phase 1-5 plan tools (hdrmig5 ...). Only the copies in `naming/2026-11-04_vendor_v2/scripts/`

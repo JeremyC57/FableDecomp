@@ -74,6 +74,13 @@ public:
  // `cmp byte ptr [ecx+58h],0`, 0x0041F5DF / 0x0041F641, before BuyItemPC / SellItemPC). No layout change.
  bool IsInventoryOpen() const { return InventoryOpen; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_ISDYING
+ // Retail opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): FableWin.pdb
+ // ?IsDying@CTCInventoryBase@NInventory@@IBE_NXZ (protected const), inline in retail (`cmp byte ptr [ebx+88h],0`, 0x005CA6DF: Dying).
+protected:
+ bool IsDying() const { return Dying; }
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA
  const CPerItemData* GetPerItemDataForItem(long itemDefIndex) const;   // 0x005BE8D3
 #endif

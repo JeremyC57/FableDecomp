@@ -35,6 +35,12 @@ public:
     bool IsCarryingThing(long slot) const;
     CThing* GetCarriedThing(long slot) const;
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_CARRYSLOT
+    // Retail opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): Ego_r.pdb
+    // ?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z (Ego_r 0x006C5E80), out of line in retail at 0x006A11F0 (also called by the
+    // landed 0x00845CE0 through a local model). Declaration only.
+    CThing* GetThingInCarrySlot(long slot) const;            // 0x006A11F0
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYING_BYPASSFILTERS
     // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause clears it): the first Ego_r.pdb members after the CTCBase part. Ego_r has
     // CarrySlots (CVectorMap<long,CIntelligentPointer<CThing>,...>) at +0x0c and BypassFilters after it; the retail STLport CVectorMap

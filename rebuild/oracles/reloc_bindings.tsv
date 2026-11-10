@@ -39083,3 +39083,7 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?clear@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@QAEXXZ	00579ea3	00577216
 ?push_back@?$list@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXABVCSliderAnimator@@@Z	0057955a	00577216
 ?push_front@?$list@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAEXABVCSliderAnimator@@@Z	0057953e	00577216
+?NEWLINE@?A0xec26ddcf@@3VCWideString@@B	013b8ba8	005c90fc
+?AUGMENTATIONS_MENU_ENTRY_NAME@?A0x000a35dc@@3VCCharString@@B	013b8bc0	005cacb9
+?WEAPON_DESCRIPTION_STRING@?A0x000a35dc@@3VCCharString@@B	013b8bac	005cacb9
+?erase@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAEIABQAVCComponent@NUISystem@@@Z	005cc31b	005cacb9

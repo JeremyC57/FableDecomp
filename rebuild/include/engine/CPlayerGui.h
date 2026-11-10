@@ -167,6 +167,16 @@ private:
     unsigned char _pad_0x1d0[0xd0];
     float Alpha;
     unsigned char _pad_0x2a4[0x94];
+#elif defined(FABLE_RETAIL_CPLAYERGUI_LIVEGUI)
+    // Retail opt-in (chunk 1004, rows 0x005C90FC / 0x005CACB9): Ego_r.pdb bool LiveGuiMode at +0x2BE (the members list above) and
+    // FableWin.pdb ?IsLiveGUIMode@CPlayerGui@@QBE_NXZ, inline in retail (`mov eax,[013B8790h] ; cmp byte ptr [eax+2BEh],0`,
+    // 0x005C9553). Same layout as the pad it replaces.
+    unsigned char _pad_0x138[0x186];
+    bool LiveGuiMode;                                                    // +0x2be
+    unsigned char _pad_0x2bf[0x79];
+public:
+    bool IsLiveGUIMode() const { return LiveGuiMode; }
+private:
 #else
     unsigned char _pad_0x138[0x200];                                     // +0x138 PFont .. DisplayBottomHalfGUI
 #endif

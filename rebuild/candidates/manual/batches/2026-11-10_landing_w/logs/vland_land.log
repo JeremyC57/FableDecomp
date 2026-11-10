@@ -1,0 +1,156 @@
+addr       parity           behav  name
+005b9bf0   MATCH            PASS   CUnprovenIterator_005b9bf0
+005b9bfb   MATCH            PASS   operator==
+005b9c0b   MATCH            PASS   CUnprovenIterator_005b9c0b
+005b9c16   MATCH            PASS   operator==
+005b9c26   MATCH            PASS   ~CUnprovenEmpty_005b9c26
+005b9c27   MATCH            PASS   CUnprovenEmpty_005b9c27
+005b9c2a   MATCH            PASS   ~CUnprovenEmpty_005b9c2a
+005b9c2b   MATCH            PASS   GetFirst
+005b9c2e   MATCH            PASS   GetSecond
+005b9c32   MATCH            PASS   GetFirst
+005b9c35   MATCH            PASS   CUnprovenIterator_005b9c35
+005b9c42   MATCH            PASS   CUnprovenIterator_005b9c42
+005b9c4f   MATCH            PASS   operator[]
+005b9c5e   MATCH            PASS   GetFirst
+005b9c61   MATCH            PASS   GetSecond
+005b9c65   MATCH            PASS   size
+005b9c71   MATCH            PASS   operator[]
+005b9c80   MATCH            PASS   CUnprovenEmpty_005b9c80
+005b9c83   MATCH            PASS   ~CUnprovenEmpty_005b9c83
+005b9c84   MATCH            PASS   CUnprovenEmpty_005b9c84
+005b9c87   MATCH            PASS   ~CUnprovenEmpty_005b9c87
+005b9c88   MATCH            PASS   CUnprovenIterator_005b9c88
+005b9c8e   MATCH            PASS   operator->
+005b9c94   MATCH            PASS   GetFirst
+005b9c97   MATCH            PASS   size
+005b9ca3   MATCH            PASS   CUnprovenEmpty_005b9ca3
+005b9ca6   MATCH            PASS   ~CUnprovenEmpty_005b9ca6
+005b9ca7   MATCH            PASS   GetFirst
+005b9caa   MATCH            PASS   GetSecond
+005b9cae   MATCH            PASS   operator[]
+005b9cba   MATCH            PASS   CUnprovenPair_005b9cba
+005b9cd0   MATCH            PASS   CUnprovenEmpty_005b9cd0
+005b9cd3   MATCH            PASS   ~CUnprovenEmpty_005b9cd3
+005b9cd4   MATCH            PASS   operator->
+005b9cda   MATCH            PASS   operator++
+005b9ce3   MATCH            PASS   CUnprovenPair_005b9ce3
+005b9cf9   MATCH            PASS   size
+005b9d05   MATCH            PASS   operator()
+005b9d1b   MATCH            PASS   GetFirst
+005b9d1e   MATCH            PASS   operator()
+005b9d34   MATCH            PASS   operator->
+005b9d3a   MATCH            PASS   CUnprovenIterator_005b9d3a
+005b9d47   MATCH            PASS   operator->
+005b9d4d   MATCH            PASS   CUnprovenPair_005b9d4d
+005b9d63   MATCH            PASS   CUnprovenIterator_005b9d63
+005b9d70   MATCH            PASS   operator->
+005b9d76   MATCH            PASS   CUnprovenPair_005b9d76
+005c90fc   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+005c90fc   RELOCATION_MATCH PASS   ConstructWeaponDescriptionContainer
+005cacb9   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+005cacb9   WARN RELOC_NAME: ?SetWeaponMappingToMenuEntry@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@J@Z -> 0042d405 labelled 'CTCInventoryClothing::SetClothingMappingToMenuEntry'
+005cacb9   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005cacb9   RELOCATION_MATCH PASS   RefreshWeaponDescriptions
+
+WINS: 49
+  005b9bf0 MATCH CUnprovenIterator_005b9bf0::??0CUnprovenIterator_005b9bf0@@QAE@PAUCUnprovenNode_005b9bf0@@@Z
+  005b9bfb MATCH CUnprovenIterator_005b9bfb::??8CUnprovenIterator_005b9bfb@@QBE_NABV0@@Z
+  005b9c0b MATCH CUnprovenIterator_005b9c0b::??0CUnprovenIterator_005b9c0b@@QAE@PAUCUnprovenNode_005b9c0b@@@Z
+  005b9c16 MATCH CUnprovenIterator_005b9c16::??8CUnprovenIterator_005b9c16@@QBE_NABV0@@Z
+  005b9c26 MATCH CUnprovenEmpty_005b9c26::??1CUnprovenEmpty_005b9c26@@QAE@XZ
+  005b9c27 MATCH CUnprovenEmpty_005b9c27::??0CUnprovenEmpty_005b9c27@@QAE@XZ
+  005b9c2a MATCH CUnprovenEmpty_005b9c2a::??1CUnprovenEmpty_005b9c2a@@QAE@XZ
+  005b9c2b MATCH CUnprovenPair_005b9c2b::?GetFirst@CUnprovenPair_005b9c2b@@QBEPAXXZ
+  005b9c2e MATCH CUnprovenPair_005b9c2e::?GetSecond@CUnprovenPair_005b9c2e@@QBEPAXXZ
+  005b9c32 MATCH CUnprovenPair_005b9c32::?GetFirst@CUnprovenPair_005b9c32@@QBEPAXXZ
+  005b9c35 MATCH CUnprovenIterator_005b9c35::??0CUnprovenIterator_005b9c35@@QAE@ABV0@@Z
+  005b9c42 MATCH CUnprovenIterator_005b9c42::??0CUnprovenIterator_005b9c42@@QAE@ABV0@@Z
+  005b9c4f MATCH CUnprovenVector_005b9c4f::??ACUnprovenVector_005b9c4f@@QAEAAUCUnprovenElement12_005b9c4f@@I@Z
+  005b9c5e MATCH CUnprovenPair_005b9c5e::?GetFirst@CUnprovenPair_005b9c5e@@QBEPAXXZ
+  005b9c61 MATCH CUnprovenPair_005b9c61::?GetSecond@CUnprovenPair_005b9c61@@QBEPAXXZ
+  005b9c65 MATCH CUnprovenVector_005b9c65::?size@CUnprovenVector_005b9c65@@QBEIXZ
+  005b9c71 MATCH CUnprovenVector_005b9c71::??ACUnprovenVector_005b9c71@@QAEAAUCUnprovenElement24_005b9c71@@I@Z
+  005b9c80 MATCH CUnprovenEmpty_005b9c80::??0CUnprovenEmpty_005b9c80@@QAE@XZ
+  005b9c83 MATCH CUnprovenEmpty_005b9c83::??1CUnprovenEmpty_005b9c83@@QAE@XZ
+  005b9c84 MATCH CUnprovenEmpty_005b9c84::??0CUnprovenEmpty_005b9c84@@QAE@XZ
+  005b9c87 MATCH CUnprovenEmpty_005b9c87::??1CUnprovenEmpty_005b9c87@@QAE@XZ
+  005b9c88 MATCH CUnprovenIterator_005b9c88::??0CUnprovenIterator_005b9c88@@QAE@XZ
+  005b9c8e MATCH CUnprovenIterator_005b9c8e::??CCUnprovenIterator_005b9c8e@@QBEPAUCUnprovenValue_005b9c8e@@XZ
+  005b9c94 MATCH CUnprovenPair_005b9c94::?GetFirst@CUnprovenPair_005b9c94@@QBEPAXXZ
+  005b9c97 MATCH CUnprovenVector_005b9c97::?size@CUnprovenVector_005b9c97@@QBEIXZ
+  005b9ca3 MATCH CUnprovenEmpty_005b9ca3::??0CUnprovenEmpty_005b9ca3@@QAE@XZ
+  005b9ca6 MATCH CUnprovenEmpty_005b9ca6::??1CUnprovenEmpty_005b9ca6@@QAE@XZ
+  005b9ca7 MATCH CUnprovenPair_005b9ca7::?GetFirst@CUnprovenPair_005b9ca7@@QBEPAXXZ
+  005b9caa MATCH CUnprovenPair_005b9caa::?GetSecond@CUnprovenPair_005b9caa@@QBEPAXXZ
+  005b9cae MATCH CUnprovenVector_005b9cae::??ACUnprovenVector_005b9cae@@QAEAAUCUnprovenElement4_005b9cae@@I@Z
+  005b9cba MATCH CUnprovenPair_005b9cba::??0CUnprovenPair_005b9cba@@QAE@ABJ0@Z
+  005b9cd0 MATCH CUnprovenEmpty_005b9cd0::??0CUnprovenEmpty_005b9cd0@@QAE@XZ
+  005b9cd3 MATCH CUnprovenEmpty_005b9cd3::??1CUnprovenEmpty_005b9cd3@@QAE@XZ
+  005b9cd4 MATCH CUnprovenIterator_005b9cd4::??CCUnprovenIterator_005b9cd4@@QBEPAUCUnprovenValue_005b9cd4@@XZ
+  005b9cda MATCH CUnprovenIterator_005b9cda::??ECUnprovenIterator_005b9cda@@QAEAAV0@XZ
+  005b9ce3 MATCH CUnprovenPair_005b9ce3::??0CUnprovenPair_005b9ce3@@QAE@ABJAB_N@Z
+  005b9cf9 MATCH CUnprovenVector_005b9cf9::?size@CUnprovenVector_005b9cf9@@QBEIXZ
+  005b9d05 MATCH CUnprovenLess_005b9d05::??RCUnprovenLess_005b9d05@@QBE_NABJ0@Z
+  005b9d1b MATCH CUnprovenPair_005b9d1b::?GetFirst@CUnprovenPair_005b9d1b@@QBEPAXXZ
+  005b9d1e MATCH CUnprovenLess_005b9d1e::??RCUnprovenLess_005b9d1e@@QBE_NABJ0@Z
+  005b9d34 MATCH CUnprovenIterator_005b9d34::??CCUnprovenIterator_005b9d34@@QBEPAUCUnprovenValue_005b9d34@@XZ
+  005b9d3a MATCH CUnprovenIterator_005b9d3a::??0CUnprovenIterator_005b9d3a@@QAE@ABV0@@Z
+  005b9d47 MATCH CUnprovenIterator_005b9d47::??CCUnprovenIterator_005b9d47@@QBEPAUCUnprovenValue_005b9d47@@XZ
+  005b9d4d MATCH CUnprovenPair_005b9d4d::??0CUnprovenPair_005b9d4d@@QAE@ABJ0@Z
+  005b9d63 MATCH CUnprovenIterator_005b9d63::??0CUnprovenIterator_005b9d63@@QAE@ABV0@@Z
+  005b9d70 MATCH CUnprovenIterator_005b9d70::??CCUnprovenIterator_005b9d70@@QBEPAUCUnprovenValue_005b9d70@@XZ
+  005b9d76 MATCH CUnprovenPair_005b9d76::??0CUnprovenPair_005b9d76@@QAE@ABJAB_N@Z
+  005c90fc RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@Z
+  005cacb9 RELOCATION_MATCH CTCInventoryWeapons::?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ
+
+LANDED 49 wins into src/compiled + tests + catalog + oracle
+  CUnprovenIterator005b9bf0_CUnprovenIterator005b9bf0_005b9bf0
+  CUnprovenIterator005b9bfb_operator_005b9bfb
+  CUnprovenIterator005b9c0b_CUnprovenIterator005b9c0b_005b9c0b
+  CUnprovenIterator005b9c16_operator_005b9c16
+  CUnprovenEmpty005b9c26_CUnprovenEmpty005b9c26_005b9c26
+  CUnprovenEmpty005b9c27_CUnprovenEmpty005b9c27_005b9c27
+  CUnprovenEmpty005b9c2a_CUnprovenEmpty005b9c2a_005b9c2a
+  CUnprovenPair005b9c2b_GetFirst_005b9c2b
+  CUnprovenPair005b9c2e_GetSecond_005b9c2e
+  CUnprovenPair005b9c32_GetFirst_005b9c32
+  CUnprovenIterator005b9c35_CUnprovenIterator005b9c35_005b9c35
+  CUnprovenIterator005b9c42_CUnprovenIterator005b9c42_005b9c42
+  CUnprovenVector005b9c4f_operator_005b9c4f
+  CUnprovenPair005b9c5e_GetFirst_005b9c5e
+  CUnprovenPair005b9c61_GetSecond_005b9c61
+  CUnprovenVector005b9c65_size_005b9c65
+  CUnprovenVector005b9c71_operator_005b9c71
+  CUnprovenEmpty005b9c80_CUnprovenEmpty005b9c80_005b9c80
+  CUnprovenEmpty005b9c83_CUnprovenEmpty005b9c83_005b9c83
+  CUnprovenEmpty005b9c84_CUnprovenEmpty005b9c84_005b9c84
+  CUnprovenEmpty005b9c87_CUnprovenEmpty005b9c87_005b9c87
+  CUnprovenIterator005b9c88_CUnprovenIterator005b9c88_005b9c88
+  CUnprovenIterator005b9c8e_operator_005b9c8e
+  CUnprovenPair005b9c94_GetFirst_005b9c94
+  CUnprovenVector005b9c97_size_005b9c97
+  CUnprovenEmpty005b9ca3_CUnprovenEmpty005b9ca3_005b9ca3
+  CUnprovenEmpty005b9ca6_CUnprovenEmpty005b9ca6_005b9ca6
+  CUnprovenPair005b9ca7_GetFirst_005b9ca7
+  CUnprovenPair005b9caa_GetSecond_005b9caa
+  CUnprovenVector005b9cae_operator_005b9cae
+  CUnprovenPair005b9cba_CUnprovenPair005b9cba_005b9cba
+  CUnprovenEmpty005b9cd0_CUnprovenEmpty005b9cd0_005b9cd0
+  CUnprovenEmpty005b9cd3_CUnprovenEmpty005b9cd3_005b9cd3
+  CUnprovenIterator005b9cd4_operator_005b9cd4
+  CUnprovenIterator005b9cda_operator_005b9cda
+  CUnprovenPair005b9ce3_CUnprovenPair005b9ce3_005b9ce3
+  CUnprovenVector005b9cf9_size_005b9cf9
+  CUnprovenLess005b9d05_operator_005b9d05
+  CUnprovenPair005b9d1b_GetFirst_005b9d1b
+  CUnprovenLess005b9d1e_operator_005b9d1e
+  CUnprovenIterator005b9d34_operator_005b9d34
+  CUnprovenIterator005b9d3a_CUnprovenIterator005b9d3a_005b9d3a
+  CUnprovenIterator005b9d47_operator_005b9d47
+  CUnprovenPair005b9d4d_CUnprovenPair005b9d4d_005b9d4d
+  CUnprovenIterator005b9d63_CUnprovenIterator005b9d63_005b9d63
+  CUnprovenIterator005b9d70_operator_005b9d70
+  CUnprovenPair005b9d76_CUnprovenPair005b9d76_005b9d76
+  CTCInventoryWeapons_ConstructWeaponDescriptionContainer_005c90fc
+  CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9

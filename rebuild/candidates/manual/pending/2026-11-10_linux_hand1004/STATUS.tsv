@@ -1,0 +1,54 @@
+address	name	grade	grades_used	note
+005c90fc	CTCInventoryWeapons::ConstructWeaponDescriptionContainer	RELOCATION_MATCH	6	src/005c90fc.cpp; levers: per-arm if/else on IsLiveGUIMode for the PC_/UI_ template names (cross-jumped push), CWideString::NullString reset, HeavyWeapons stat-threshold loop over the shared CHeroAbilityStatPackage map; overlay headers (hdr/README.md)
+005cacb9	CTCInventoryWeapons::RefreshWeaponDescriptions	RELOCATION_MATCH	12	src/005cacb9.cpp (12 includes the re-grades after the Codex pass 16 header re-copy); levers: nested if for the viewport (no ternary), named description local, visible STLport map/erase bodies, CDeletion bodies; WEAPON_DESCRIPTION_STRING anonymous-namespace const
+005ca68e	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	DIFFER(1538v1535)	3	differ/005ca68e.cpp; register allocation only: `this` (c2 priority -72) beats the TCI_WEAPON constant (-76) for ebx; retail keeps 0x48 in ebx across both in-hand arms. New headers CTCMultiStrike/CTCMultiArrow/CCreatureAction_UnsheatheItemFromInventory + 5 opt-ins; c2prio.py variants (shared weapon local, top declaration, inline GetActiveMeleeWeapon accessor) do not move the priorities
+005c71aa	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight	DIFFER(680v680)	18	differ/005c71aa.cpp; parked over budget (18 this session incl. 1 re-verify on the current overlay, 8 in chunk 1002b): 4-line NONE-block schedule; nested-else fixes it but loses the copy loop's count split (const-0 priority, c2prio.py)
+005b3e4e	CTCInventoryClothing::GlobalUpdate	DIFFER(538v543)	0	differ/005b3e4e.cpp (prior local model, unchanged); not re-attempted: needs shared CTCAnimationComplex / CAppearanceDef / CAnimationSet / CAnimFilterBase / CAnimateThingUpdate headers and accessors into the private CAnimateThing / CAnimSet members (see NOTES.md)
+005b9641	CTCInventoryClothing::DrawPreparePrimitivesForRendering	SPLIT (main not built)	0	extent corrected to 0x5AF (SPLITS.tsv, oracle re-cut); 47 helper starts 0x005B9BF0..0x005B9D8C authored and MATCH; the 1455-byte body stays an outline (differ/005b9641.cpp): header debt CUIMiscThingsDef / CRightHandedSet / C3DOrientationInterpolator / CEnginePrimitive2DMorphedAnimatingMesh
+005b9bf0	CUnprovenIterator_005b9bf0::CUnprovenIterator_005b9bf0	MATCH	1	new start from the 0x005B9641 split (11 bytes, shape ctorptr); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9bfb	CUnprovenIterator_005b9bfb::operator==	MATCH	2	new start from the 0x005B9641 split (16 bytes, shape eq); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c0b	CUnprovenIterator_005b9c0b::CUnprovenIterator_005b9c0b	MATCH	1	new start from the 0x005B9641 split (11 bytes, shape ctorptr); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c16	CUnprovenIterator_005b9c16::operator==	MATCH	1	new start from the 0x005B9641 split (16 bytes, shape eq); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c26	CUnprovenEmpty_005b9c26::~CUnprovenEmpty_005b9c26	MATCH	1	new start from the 0x005B9641 split (1 bytes, shape dtor); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c27	CUnprovenEmpty_005b9c27::CUnprovenEmpty_005b9c27	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape ctor0); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c2a	CUnprovenEmpty_005b9c2a::~CUnprovenEmpty_005b9c2a	MATCH	1	new start from the 0x005B9641 split (1 bytes, shape dtor); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c2b	CUnprovenPair_005b9c2b::GetFirst	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape first); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c2e	CUnprovenPair_005b9c2e::GetSecond	MATCH	1	new start from the 0x005B9641 split (4 bytes, shape second); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c32	CUnprovenPair_005b9c32::GetFirst	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape first); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c35	CUnprovenIterator_005b9c35::CUnprovenIterator_005b9c35	MATCH	1	new start from the 0x005B9641 split (13 bytes, shape copy); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c42	CUnprovenIterator_005b9c42::CUnprovenIterator_005b9c42	MATCH	1	new start from the 0x005B9641 split (13 bytes, shape copy); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c4f	CUnprovenVector_005b9c4f::operator[]	MATCH	1	new start from the 0x005B9641 split (15 bytes, shape idx12); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c5e	CUnprovenPair_005b9c5e::GetFirst	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape first); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c61	CUnprovenPair_005b9c61::GetSecond	MATCH	1	new start from the 0x005B9641 split (4 bytes, shape second); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c65	CUnprovenVector_005b9c65::size	MATCH	1	new start from the 0x005B9641 split (12 bytes, shape size24); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c71	CUnprovenVector_005b9c71::operator[]	MATCH	1	new start from the 0x005B9641 split (15 bytes, shape idx24); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c80	CUnprovenEmpty_005b9c80::CUnprovenEmpty_005b9c80	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape ctor0); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c83	CUnprovenEmpty_005b9c83::~CUnprovenEmpty_005b9c83	MATCH	1	new start from the 0x005B9641 split (1 bytes, shape dtor); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c84	CUnprovenEmpty_005b9c84::CUnprovenEmpty_005b9c84	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape ctor0); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c87	CUnprovenEmpty_005b9c87::~CUnprovenEmpty_005b9c87	MATCH	1	new start from the 0x005B9641 split (1 bytes, shape dtor); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c88	CUnprovenIterator_005b9c88::CUnprovenIterator_005b9c88	MATCH	1	new start from the 0x005B9641 split (6 bytes, shape ctornull); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c8e	CUnprovenIterator_005b9c8e::operator->	MATCH	1	new start from the 0x005B9641 split (6 bytes, shape val16); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c94	CUnprovenPair_005b9c94::GetFirst	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape first); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9c97	CUnprovenVector_005b9c97::size	MATCH	1	new start from the 0x005B9641 split (12 bytes, shape size12); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9ca3	CUnprovenEmpty_005b9ca3::CUnprovenEmpty_005b9ca3	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape ctor0); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9ca6	CUnprovenEmpty_005b9ca6::~CUnprovenEmpty_005b9ca6	MATCH	1	new start from the 0x005B9641 split (1 bytes, shape dtor); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9ca7	CUnprovenPair_005b9ca7::GetFirst	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape first); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9caa	CUnprovenPair_005b9caa::GetSecond	MATCH	1	new start from the 0x005B9641 split (4 bytes, shape second); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cae	CUnprovenVector_005b9cae::operator[]	MATCH	1	new start from the 0x005B9641 split (12 bytes, shape idx4); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cba	CUnprovenPair_005b9cba::CUnprovenPair_005b9cba	MATCH	1	new start from the 0x005B9641 split (22 bytes, shape pairll); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cd0	CUnprovenEmpty_005b9cd0::CUnprovenEmpty_005b9cd0	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape ctor0); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cd3	CUnprovenEmpty_005b9cd3::~CUnprovenEmpty_005b9cd3	MATCH	1	new start from the 0x005B9641 split (1 bytes, shape dtor); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cd4	CUnprovenIterator_005b9cd4::operator->	MATCH	1	new start from the 0x005B9641 split (6 bytes, shape val8); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cda	CUnprovenIterator_005b9cda::operator++	MATCH	1	new start from the 0x005B9641 split (9 bytes, shape incr); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9ce3	CUnprovenPair_005b9ce3::CUnprovenPair_005b9ce3	MATCH	1	new start from the 0x005B9641 split (22 bytes, shape pairlb); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9cf9	CUnprovenVector_005b9cf9::size	MATCH	1	new start from the 0x005B9641 split (12 bytes, shape size20); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d05	CUnprovenLess_005b9d05::operator	MATCH	1	new start from the 0x005B9641 split (22 bytes, shape less); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d1b	CUnprovenPair_005b9d1b::GetFirst	MATCH	1	new start from the 0x005B9641 split (3 bytes, shape first); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d1e	CUnprovenLess_005b9d1e::operator	MATCH	1	new start from the 0x005B9641 split (22 bytes, shape less); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d34	CUnprovenIterator_005b9d34::operator->	MATCH	1	new start from the 0x005B9641 split (6 bytes, shape val16); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d3a	CUnprovenIterator_005b9d3a::CUnprovenIterator_005b9d3a	MATCH	1	new start from the 0x005B9641 split (13 bytes, shape copy); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d47	CUnprovenIterator_005b9d47::operator->	MATCH	1	new start from the 0x005B9641 split (6 bytes, shape val16); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d4d	CUnprovenPair_005b9d4d::CUnprovenPair_005b9d4d	MATCH	1	new start from the 0x005B9641 split (22 bytes, shape pairll); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d63	CUnprovenIterator_005b9d63::CUnprovenIterator_005b9d63	MATCH	1	new start from the 0x005B9641 split (13 bytes, shape copy); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d70	CUnprovenIterator_005b9d70::operator->	MATCH	1	new start from the 0x005B9641 split (6 bytes, shape val16); unreferenced in Fable.exe, CUnproven placeholder owner
+005b9d76	CUnprovenPair_005b9d76::CUnprovenPair_005b9d76	MATCH	1	new start from the 0x005B9641 split (22 bytes, shape pairlb); unreferenced in Fable.exe, CUnproven placeholder owner

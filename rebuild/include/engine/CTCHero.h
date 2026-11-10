@@ -33,6 +33,11 @@ public:
     bool WeaponUseOverriddenByScripts;                                   // +0x0e
     bool WillUseOverriddenByScripts;                                     // +0x0f
     unsigned char _tail[0x28];                                           // +0x10 Title .. PTeleportParticle (opaque)
+#ifdef FABLE_RETAIL_CTCHERO_WEAPONUSE
+    // Nested opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): FableWin.pdb
+    // ?IsWeaponUseAllowed@CTCHero@@QBE_NXZ (a 5-byte body there), inline in retail (`cmp byte ptr [eax+0Ch],0`, 0x005CA6D5).
+    bool IsWeaponUseAllowed() const { return WeaponsUsable; }
+#endif
 #endif
 };
 #ifdef FABLE_RETAIL_CTCHERO_TITLE

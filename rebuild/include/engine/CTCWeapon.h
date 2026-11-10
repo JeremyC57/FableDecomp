@@ -20,6 +20,11 @@ public:
     bool IsMeleeWeapon() const;                              // 0x005DAA00
     bool IsProjectileWeapon() const;                         // 0x005DAA40
     bool IsUsableBy(const CThing&) const;                    // 0x005DAB10
+#ifdef FABLE_RETAIL_CTCWEAPON_ISPROJECTILE
+    // Retail opt-in (chunk 1004, row 0x005CA68E): Ego_r.pdb ?IsProjectile@CTCWeapon@@QBE_NXZ (Ego_r 0x0063A8A0), out of line in
+    // retail at 0x005DAA70 (after IsProjectileWeapon 0x005DAA40, the Ego_r order). Declaration only.
+    bool IsProjectile() const;                               // 0x005DAA70
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_BLOCK
     // Nested opt-in (chunk 775, row 0x005DACF0): Ego_r.pdb (0x0063AAB0) / FableWin.pdb
     // ?IsAbleToBeUsedToBlock@CTCWeapon@@QBE_NABVCThing@@PBV2@1@Z; one caller (CTCCombat, 0x00735039).

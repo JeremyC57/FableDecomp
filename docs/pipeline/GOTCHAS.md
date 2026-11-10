@@ -2640,3 +2640,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - q.py copies the row into its own work directory, so a relative `#include "x.h"` of a file beside the source is not found and cl under Wine hangs to the timeout instead of failing; include only through rebuild/include or the overlay (2026-11-10, chunk 1003).
 - vland reads a payload row's `flags` as a LIST; a string is iterated per character (CompilerFlags '/ G r') and the row grades against wrong flags. Build payloads with flags.split() (2026-11-10, Codex pass 16).
 - A `// Flags: none` line must not reach the payload: finish.py passed ['none'] and vland recorded CompilerFlags '/O2 /Oy /W3 none' (9 rows had it); keep only tokens starting with '/' (2026-11-10).
+- scratch split_oracle.py copies carry N='<chunk>' as a bare number: sed the number, not 'chunk1001' (chunk 1004's copy pointed at chunk 1001's oracle) (2026-11-10).

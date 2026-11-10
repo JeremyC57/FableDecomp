@@ -190,6 +190,12 @@ public:
 #endif
     void Replace(const CWideString& search, const CWideString& replacement);   // 0x0099C1E0 ?Replace@CWideString@@QAEXABV1@0@Z (Ego_r + FableWin)
 #endif
+#ifdef FABLE_RETAIL_CWIDESTRING_NULLSTRING
+    // Retail opt-in (chunk 1004, row 0x005C90FC ConstructWeaponDescriptionContainer): the empty wide string 0x013BCA24, Ego_r.pdb
+    // `dynamic initializer for 'CWideString::NullString'' (0x0101AB90) / `dynamic atexit destructor for 'CWideString::NullString''
+    // (0x0101E2E0); public static (?NullString@CWideString@@2V1@A, the spelling the landed 0x00562E10 binds). Declaration only.
+    static CWideString NullString;                             // 0x013BCA24
+#endif
 
 private:
     explicit CWideString(const CCharString& text);

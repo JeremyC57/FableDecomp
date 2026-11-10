@@ -14,6 +14,12 @@
 #include "engine/CFloatRange.h"
 #include "engine/CHeroAbilityStatWeight.h"
 #endif
+#ifdef FABLE_RETAIL_CHEROCOMBATDEF_HEAVYWEAPONS
+// Nested opt-in (chunk 1004, row 0x005C90FC CTCInventoryWeapons::ConstructWeaponDescriptionContainer): Ego_r.pdb
+// CHeroAbilityStatPackage HeavyWeapons, the last member (Ego_r +0x164; retail +0x13C: the row walks the stat-threshold map's header at
+// [def+13Ch], 0x005C9769). The padding before it keeps sizeof 0x148.
+#include "engine/CHeroAbilityStatPackage.h"
+#endif
 class CHeroCombatDef : public CParentDefClassBase {
 public:
 #ifdef FABLE_RETAIL_CHEROCOMBATDEF_RANGED
@@ -31,13 +37,26 @@ public:
     float AutoBlockSkillThreshold,AutoBlockStrengthThreshold;
     float MeleeRecoilMaintainHandednessSkillThreshold,MeleeRecoilMaintainHandednessStrengthThreshold;
     float MeleeRecoilMaintainComboChainSkillThreshold,MeleeRecoilMaintainComboChainStrengthThreshold;
+#ifdef FABLE_RETAIL_CHEROCOMBATDEF_HEAVYWEAPONS
+    unsigned char _pad_0x11c[0x20];
+    CHeroAbilityStatPackage HeavyWeapons;                       // +0x13C
+#else
     unsigned char _pad_0x11c[0x2c];
+#endif
+#else
+#ifdef FABLE_RETAIL_CHEROCOMBATDEF_HEAVYWEAPONS
+    unsigned char _pad_0xf0[0x4c];
+    CHeroAbilityStatPackage HeavyWeapons;                       // +0x13C
 #else
     unsigned char _pad_0xf0[0x58];
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CHeroCombatDef)==0x148);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,MeleeStrikeNumFramesPauseOnHeroStrike)==0xec);
+#ifdef FABLE_RETAIL_CHEROCOMBATDEF_HEAVYWEAPONS
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,HeavyWeapons)==0x13c);
+#endif
 #ifdef FABLE_RETAIL_CHEROCOMBATDEF_RANGED
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,RangedAccuracyShakeyCursor)==0x60);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,RangedAccuracyShakeFractionOfRadius)==0x74);
