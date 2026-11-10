@@ -1,0 +1,11 @@
+address	name	grade	grades used	note
+0089ce70	CGameScriptInterface::IsThingAwareOfOtherThingInAnyWay	DIFFER(616v616)	3	rebased on shared headers (CTCPerceiveThing SENSES opt-in); masked diff 28->22 lines; residue x87 only: Normalise f*X operand order + fcompp v retail fcomp st(1)/fstp st(0)
+0089c910	CGameScriptInterface::CanThingBe_Sensed_ByOtherThing	DIFFER(1016v1016)	2	rebased on shared headers (+ CGameScriptInterface SENSED opt-in); same x87 residue in the shared cone tail; rest is jump-table desync
+008a7a70	CGameScriptInterface::TeleportAllFollowersToHeroPosition	DIFFER(654v738)	1	rebased on shared headers (new CTCFollowed overlay); inline budget (GetSummonedCreature, loop push_back not expanded) + hero register (ebp/spill)
+0088edc0	CGameScriptInterface::CameraDoConversation	not attempted	0	1568 bytes, no prior draft; out of budget after the three CGameScriptInterface rows
+004a1840	CWorld::Load	not attempted	0	oracle cut at 1025 is wrong: true extent 1129 bytes (0x004A1840..0x004A1CA8, incl. catch funclet Catch@004a1c41 + post-catch epilogue); callees identified, prior draft still on local models
+004a1cb0	CWorld::PreparePrimitivesForEngine	not attempted	0	prior (nd=62, DIFFER 1331v1330) uses local padded CPhysicsMesh/CThingBuildingDef/CThingPhysicsMeshInfo models; needs a shared-header rebase first
+0062b070	CWorld::EAOpenHeroInformationScreen	not attempted	0	prior local-model draft DIFFER(898v891); not reached
+0062bef0	CWorld::EAUseProjectileWeapon	not regraded	0	1012b park stands: frame-slot residue (camera joins the this-slot); no new lever found in probes
+0062bd80	CWorld::EAControlledCreatureStrafe	not regraded	0	1012b park stands (stack-slot/frame); not reached
+008a8260	CGameScriptInterface::GetHeroSummonedCreaturesList	not regraded	0	1012b park stands (nd=7, DIFFER 456v466); probe of early `return false` for the null/dead hero made it worse (nd 74-76)

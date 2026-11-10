@@ -1,0 +1,2 @@
+address	length	name	evidence
+004a1840	1129	CWorld::Load	body runs 0x004A1840..0x004A1CA8: the try body, catch funclet Catch@004a1c41 (its own catalog row) and the post-catch epilogue at 0x004A1C86 that the funclet returns into; the catalog 1025-byte cut stops inside the funclet, so no source can match it as cut. Not graded this chunk.

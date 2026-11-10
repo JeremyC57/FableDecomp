@@ -1,0 +1,16 @@
+address	name	evidence
+0089ce70	?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	Ego_r.pdb + FableWin.pdb; vtable slot of CGameScriptInterface; body = sense types 3/4/2 tests of CanThingBe_Sensed_ByOtherThing
+0089c910	?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	Ego_r.pdb + FableWin.pdb; five-way switch on the long sense type (1..5) over the CTCPerceiveThing senses
+008a7a70	?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	Ego_r.pdb + FableWin.pdb; body: CTCFollowed::GetFollowers + summon/ghost-sword minions, GetNearbyWanderPosition, ResetPosition
+004a1840	?Load@CWorld@@QAEXABVCWideString@@@Z	Ego_r.pdb + FableWin.pdb; body calls ConvertWorldToStaticMapPath/LevelWADPath/QuestPath on the CWideString argument
+00744440	?GetSoundRadius@CTCPerceiveThing@@QBEMXZ	Ego_r.pdb/FableWin.pdb name; body `fld [ecx+3Ch]` = CTCPerceiveThing::SoundRadius (+0x3c, PDB layout); 0x0089C910 calls it for sense type 4 (heard, next to IsThingHeard +0x32)
+00744450	?GetSmellRadius@CTCPerceiveThing@@QBEMXZ	PDB name; body `fld [ecx+48h]` = SmellRadius (+0x48); SetSmellRadius 0x007444A0 stores +0x48; 0x0089C910 sense type 3 (smelt, IsThingSmelt +0x31)
+007448f0	?GetSightRadius@CTCPerceiveThing@@QBEMXZ	PDB name; body reads SightRadius +0x40 times the visibility multiplier; 0x0089C910 sense type 1 (line of sight +0x2d)
+00744950	?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ	PDB name; body reads ExtendedSightRadius +0x44; 0x0089C910 sense type 2 (extended line of sight +0x2e); already landed under this name
+007445d0	?GetFOV@CTCPerceiveThing@@QBEMXZ	PDB name; body PDef(+0x34)->+0x28 * 1/360 (CTCPerceiveThing::PDef at +0x34); used as the view-cone angle (x 2pi, fcos) in 0x0089CE70 / 0x0089C910
+007446a0	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ	PDB name; landed file CTCPerceiveThing_GetPerceivedThing_007446a0.cpp; both rows compare it with the perceived thing
+00643b3b	?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ	PDB name; landed CTCPerceiveThing_IsAwareOfThing_00643b3b.cpp; sense type 5 of 0x0089C910
+006d5850	?GetFollowers@CTCFollowed@@QAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb; called after GetTC(TCI_FOLLOWED 0xBC) with a stack vector<CThing*> in 0x008A7A70
+006cb6e0	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	Ego_r.pdb + FableWin.pdb; args (hero pos, 0.8f, out C3DVector, false) after PeekTC(TCI_NAVIGATION 7) in 0x008A7A70
+00449970	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	PDB name; shared CPlayerManager.h already binds 0x00449970 to the non-const overload; first call of 0x008A7A70 / 0x008A8260
+00487dc0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	PDB name; second call of 0x008A7A70 / 0x008A8260
