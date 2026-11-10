@@ -1,0 +1,2 @@
+address	length	name	evidence
+0063ab90	582	CWorldMap::GetThemeFaceNormalAt	retail ret 8 at 0x0063ADD3; 0x0063ADE0 `fld [0122DEDCh] ; ret 4` is the next function (catalog 608 runs into it)

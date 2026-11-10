@@ -165,6 +165,13 @@ public:
     CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools_ptr; }
     const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools_ptr; }
     bool IsSerialisingHeroState() const { return SerialisingHeroState; }
+#ifdef FABLE_RETAIL_CWORLD_NAVIGATORMANAGER
+    // Nested opt-in (chunk 1013, row 0x004FEB70 CWorldMap::HeightAreaChanged): FableWin.pdb ?GetNavigatorManager@CWorld@@QAEAAVCNavigatorManager@@XZ
+    // (0x01C78D00) / ?PeekNavigatorManager@CWorld@@QBEABVCNavigatorManager@@XZ (0x01C8E790), inline in retail (0x004FEC25 / 0x004FEC47
+    // `mov edx,[world+8] ; mov ecx,[edx+48h]`: the scoped_ptr word read in place). No layout change.
+    CNavigatorManager& GetNavigatorManager() { return *PNavigationManager_ptr; }
+    const CNavigatorManager& PeekNavigatorManager() const { return *PNavigationManager_ptr; }
+#endif
     // chunk 751 (row 0x006817F0): the inline opinion-reaction accessors, Ego_r.pdb / FableWin.pdb
     // ?GetOpinionReactionManager@CWorld@@QAEAAVCOpinionReactionManager@@XZ / ?PeekOpinionReactionManager@CWorld@@QBEABVCOpinionReactionManager@@XZ
     // (expanded in retail: 0x00681803 `mov eax,[eax+74h]`, the CCountedPointer's Data). No layout change.

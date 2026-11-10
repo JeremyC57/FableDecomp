@@ -116,6 +116,99 @@ public:
     // Declaration only.
     long GetMapNumberFromScriptName(const CCharString& script_name) const;   // 0x004FB880
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_UPDATEDESTROYEDTHEMEAREAS
+    // Nested opt-in (chunk 1013, row 0x004FEC80): Ego_r.pdb / FableWin.pdb ?UpdateDestroyedThemeAreas@CWorldMap@@IAEXXZ (protected).
+protected:
+    void UpdateDestroyedThemeAreas();                                                     // 0x004FEC80
+public:
+#endif
+#if defined(FABLE_RETAIL_CWORLDMAP_AREACOVERSONELEVEL_BODY) && defined(_MSC_VER)
+    // Nested opt-in (chunk 1013, row 0x004FF150 CWorldMap::GetAllMapsInArea): the body of the landed 0x004FB160 (same CWorldMap.cpp TU in
+    // retail), visible and out of line, so the caller knows the box it passes is only read: retail keeps the clamped box.TLX / TLY in
+    // ebx / edi across the call (0x004FF211 `sar edi,cl ; sar ebx,cl`). Needs C2DCoordI's (x, y) constructor.
+    __declspec(noinline) bool AreaCoversOneLevel(const C2DBoxI& area) const              // 0x004FB160
+    {
+        if (GetMapNumberAt(C2DCoordI(area.TLX, area.TLY)) == GetMapNumberAt(C2DCoordI(area.BRX, area.TLY))
+            && GetMapNumberAt(C2DCoordI(area.BRX, area.TLY)) == GetMapNumberAt(C2DCoordI(area.TLX, area.BRY))
+            && GetMapNumberAt(C2DCoordI(area.TLX, area.BRY)) == GetMapNumberAt(C2DCoordI(area.BRX, area.BRY))
+            && GetMapNumberAt(C2DCoordI(area.BRX, area.BRY)) != 0)
+            return true;
+        return false;
+    }
+#elif defined(FABLE_RETAIL_CWORLDMAP_AREACOVERSONELEVEL) || defined(FABLE_RETAIL_CWORLDMAP_AREACOVERSONELEVEL_BODY)
+    // Nested opt-in (chunk 1013, row 0x004FF150 CWorldMap::GetAllMapsInArea): Ego_r.pdb / FableWin.pdb
+    // ?AreaCoversOneLevel@CWorldMap@@QBE_NABVC2DBoxI@@@Z, out of line in retail at 0x004FB160. Declaration only.
+    bool AreaCoversOneLevel(const C2DBoxI& area) const;                                   // 0x004FB160
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LOADTHINGSWITHSECTIONNAMES
+    // Nested opt-in (chunk 1013, row 0x00500EB0): Ego_r.pdb / FableWin.pdb
+    // ?LoadThingsWithSectionNames@CWorldMap@@QAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@W4ELoadType@1@@Z
+    // and the public static ?GetThingFilenameFromLevelFilename@CWorldMap@@SI?AVCWideString@@ABV2@@Z (retail 0x004FAFF0, __fastcall: the
+    // hidden result in ecx, the level filename in edx). Declarations only.
+    void LoadThingsWithSectionNames(const std::set<CCharString, std::less<CCharString>, std::allocator<CCharString> >& sections, ELoadType loadType);
+    static CWideString __fastcall GetThingFilenameFromLevelFilename(const CWideString& levelFilename);   // 0x004FAFF0
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_UPDATENAVMAPS
+    // Nested opt-in (chunk 1013, row 0x00501990): Ego_r.pdb / FableWin.pdb
+    // ?UpdateNavMaps@CWorldMap@@QAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@W4ELoadType@1@@Z.
+    void UpdateNavMaps(const std::set<CCharString, std::less<CCharString>, std::allocator<CCharString> >& sections, ELoadType loadType);
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LOADLEVEL
+    // Nested opt-in (chunk 1013, row 0x00502620): Ego_r.pdb / FableWin.pdb ?LoadLevel@CWorldMap@@IAEXJW4ELoadType@1@@Z (protected) and the
+    // public static ?GetThingFilenameFromLevelFilename@CWorldMap@@SI?AVCWideString@@ABV2@@Z (retail 0x004FAFF0, __fastcall).
+protected:
+    void LoadLevel(long map, ELoadType loadType);                                         // 0x00502620
+public:
+#ifndef FABLE_RETAIL_CWORLDMAP_LOADTHINGSWITHSECTIONNAMES
+    static CWideString __fastcall GetThingFilenameFromLevelFilename(const CWideString& levelFilename);   // 0x004FAFF0
+#endif
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_THEMEFACENORMAL
+    // Nested opt-in (chunk 1013, row 0x0063AB90): Ego_r.pdb / FableWin.pdb ?GetThemeFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z and
+    // ?GetThemeSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z (retail 0x0063A7E0). Declarations only.
+    C3DVector GetThemeFaceNormalAt(const C3DVector& pos) const;                           // 0x0063AB90
+    float GetThemeSizeZAtBlock(const C2DCoordI& pos) const;                               // 0x0063A7E0
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_HEIGHTAREA
+    // Nested opt-in (chunk 1013, row 0x004FEB70 CWorldMap::HeightAreaChanged): Ego_r.pdb / FableWin.pdb
+    // ?ClipAndConvertWorldMapAreaToLocalArea@CWorldMap@@QBE?AVC2DBoxI@@JABV2@@Z (retail 0x004FC4D0, C2DBoxI by hidden pointer) and the
+    // protected ?UpdateAllEdges@CWorldMap@@IAEXXZ (retail 0x0063DFD0). Declarations only.
+    C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(long map, const C2DBoxI& area) const;   // 0x004FC4D0
+protected:
+    void UpdateAllEdges();                                                                // 0x0063DFD0
+public:
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LINEOFSIGHT
+    // Nested opt-in (chunk 1013, row 0x0063E6F0): Ego_r.pdb ?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QBE?AVC3DVector@@JABV2@@Z
+    // (Ego_r 0x004CFA40; retail 0x004FC2A0, C3DVector by hidden pointer), ?IsLineOfSight@CWorldMap@@QBE_NABVC3DVector@@0@Z (Ego_r
+    // 0x006E8890; retail 0x0063AEE0) and ?IsLineOfSight@CWorldMap@@QBE_NABVCThing@@0_N@Z (Ego_r 0x006EB120; retail 0x0063E6F0).
+    // Declarations only: no layout change.
+    C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const;   // 0x004FC2A0
+    bool IsLineOfSight(const C3DVector& from, const C3DVector& to) const;                 // 0x0063AEE0
+    bool IsLineOfSight(const CThing& from, const CThing& to, bool checkThings) const;     // 0x0063E6F0
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_LINESEGMENT
+    // Nested opt-in (chunk 1013, rows 0x0063B3F0 / 0x0063D0A0 / 0x0063D4A0): Ego_r.pdb protected const
+    // ?CreateLineSegment@CWorldMap@@IBE_NPBVC3DVector@@0PAV2@1@Z (Ego_r 0x006E7530; retail 0x0063B3F0),
+    // ?FindGroundCollisionPointWithinCell@CWorldMap@@IBE_NPBVC3DVector@@00PAV2@1@Z (Ego_r 0x006E9B50; retail 0x0063D0A0) and
+    // ?FindThemeCollisionPointWithinCell@CWorldMap@@IBE_NPBVC3DVector@@00PAV2@1@Z (Ego_r 0x006E9F10; retail 0x0063D4A0).
+    // Declarations only: no layout change.
+protected:
+    bool CreateLineSegment(const C3DVector* from, const C3DVector* to, C3DVector* segStart, C3DVector* segEnd) const;
+    bool FindGroundCollisionPointWithinCell(const C3DVector* start, const C3DVector* end, const C3DVector* cellPos, C3DVector* direction, C3DVector* hit) const;
+    bool FindThemeCollisionPointWithinCell(const C3DVector* start, const C3DVector* end, const C3DVector* cellPos, C3DVector* direction, C3DVector* hit) const;
+    // Their callees (Ego_r.pdb protected const, retail out of line): ?PointIsWithinLineSegment@CWorldMap@@IBE_NPBVC3DVector@@00@Z
+    // 0x0063BAB0 and ?PointIsWithinCellTR/BL/TL/BR@CWorldMap@@IBE_NPBVC3DVector@@0@Z 0x0063B890 / 0x0063B920 / 0x0063B9B0 / 0x0063BA30
+    // (Ego_r 0x006E7B10 .. 0x006E7D30 in the same order); public ?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z 0x0063A390.
+    bool PointIsWithinLineSegment(const C3DVector* point, const C3DVector* start, const C3DVector* end) const;   // 0x0063BAB0
+    bool PointIsWithinCellTR(const C3DVector* point, const C3DVector* cell) const;                             // 0x0063B890
+    bool PointIsWithinCellBL(const C3DVector* point, const C3DVector* cell) const;                             // 0x0063B920
+    bool PointIsWithinCellTL(const C3DVector* point, const C3DVector* cell) const;                             // 0x0063B9B0
+    bool PointIsWithinCellBR(const C3DVector* point, const C3DVector* cell) const;                             // 0x0063BA30
+public:
+    float GetThemeSizeZAt(const C3DVector& pos) const;                                                         // 0x0063A390
+public:
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHTZ
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
     // (retail 0x0063E480). Declaration only.

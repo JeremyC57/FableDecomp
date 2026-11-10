@@ -1,0 +1,25 @@
+addr       parity           behav  name
+004fec80   RELOCATION_MATCH PASS   UpdateDestroyedThemeAreas
+004ff150   RELOCATION_MATCH PASS   GetAllMapsInArea
+00500eb0   RELOCATION_MATCH PASS   LoadThingsWithSectionNames
+00501990   RELOCATION_MATCH PASS   UpdateNavMaps
+00502620   RELOCATION_MATCH PASS   LoadLevel
+0063e6f0   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingGameObject@@V?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@AAV?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@@Z -> 0063fae0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingGameObject, std::list<CThingGameObject const *, std::allocator<CThingGameObject const *>>, CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsNot>>'
+0063e6f0   WARN RELOC_NAME: ??1?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ -> 0063f360 labelled '_global::StdList_Clear_0063f360'
+0063e6f0   RELOCATION_MATCH PASS   IsLineOfSight
+
+WINS: 6
+  004fec80 RELOCATION_MATCH CWorldMap::?UpdateDestroyedThemeAreas@CWorldMap@@IAEXXZ
+  004ff150 RELOCATION_MATCH CWorldMap::?GetAllMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@std@@@std@@@Z
+  00500eb0 RELOCATION_MATCH CWorldMap::?LoadThingsWithSectionNames@CWorldMap@@QAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@W4ELoadType@1@@Z
+  00501990 RELOCATION_MATCH CWorldMap::?UpdateNavMaps@CWorldMap@@QAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@W4ELoadType@1@@Z
+  00502620 RELOCATION_MATCH CWorldMap::?LoadLevel@CWorldMap@@IAEXJW4ELoadType@1@@Z
+  0063e6f0 RELOCATION_MATCH CWorldMap::?IsLineOfSight@CWorldMap@@QBE_NABVCThing@@0_N@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_UpdateDestroyedThemeAreas_004fec80
+  CWorldMap_GetAllMapsInArea_004ff150
+  CWorldMap_LoadThingsWithSectionNames_00500eb0
+  CWorldMap_UpdateNavMaps_00501990
+  CWorldMap_LoadLevel_00502620
+  CWorldMap_IsLineOfSight_0063e6f0

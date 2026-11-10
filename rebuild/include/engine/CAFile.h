@@ -16,6 +16,11 @@ public:
     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);
     static bool __fastcall PathExists(const CWideString&);
     static bool __fastcall IsPathFile(const CWideString&);
+#ifdef FABLE_RETAIL_CAFILE_MODIFIEDTIME_WACKY
+    // Nested opt-in (chunk 1013, row 0x00502620 CWorldMap::LoadLevel): Ego_r.pdb / FableWin.pdb
+    // ?GetFileModifiedTimeAsSomeWackyWin32BigNumber@CAFile@@SI_KABVCWideString@@@Z (retail 0x00999320; the path in ecx, the stamp in edx:eax).
+    static unsigned __int64 __fastcall GetFileModifiedTimeAsSomeWackyWin32BigNumber(const CWideString& filename);   // 0x00999320
+#endif
 #ifdef FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
     // Nested opt-in (chunk 775, row 0x009A8170 OpenIniFile): Ego_r.pdb ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z, the
     // CWideString overload (0x00997620; path in ecx, drive in edx, directory / name / extension pushed).

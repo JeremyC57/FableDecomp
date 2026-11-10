@@ -216,3 +216,4 @@ address	pool	module	name	length	class	action	new_length	evidence
 005eadd6	chunk1011	CTCTavernGame	SetStateAfterYesNoAlt	346	MIDSTART	skip	346	not a function start: inside 005eadc0 (CTCTavernGame::SetStateAfterYesNoAlt, landed), chunk 1011
 005eaf46	chunk1011	CTCTavernGame	SetStateAfterYesNo_mid	314	MIDSTART	skip	314	not a function start: inside 005eaf30 (CTCTavernGame::SetStateAfterYesNo, landed), chunk 1011
 005eb08d	chunk1011	CTCTavernGame	SetStateAfterOK_mid	243	MIDSTART	skip	243	not a function start: inside 005eb080 (CTCTavernGame::SetStateAfterOK, landed), chunk 1011
+0063ab90	chunk1013	CWorldMap	GetThemeFaceNormalAt	608	OVERLONG	split	582	retail ret 8 at 0x0063ADD3; 0x0063ADE0 `fld [0122DEDCh] ; ret 4` is the next function (chunk 1013)

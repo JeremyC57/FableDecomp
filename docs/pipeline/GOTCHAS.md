@@ -2667,3 +2667,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Re-authoring a landed row leaves its old symbols in rebuild/oracles/reloc_bindings.tsv (recheck does not drop them): delete the stale lines by hand (0x005FC2D0 / 0x005FC8A0's `NScreen005fc*` namespace, 22 lines).
 - VC7.1's `std::basic_string` has no `clear()`: a behaviour test that calls it builds under g++ but is TCC_FAIL in vland's /Od test build; write `s = ""` (2026-11-10, 0x004A0780).
 - A row that turns on `stlport/fable_containers.h` opt-ins must include it before `fable_string.h` (which pulls the default copy first), or the row is SRC_FAIL (chunk 1012, 0x0049FFD0).
+- `C3DVector dir; dir = *p;` (implicit operator=) copies through integer registers as retail does; `C3DVector dir = *p;` goes through the shared header's user copy constructor and copies differently (chunk 1013, 0x0063D0A0 / 0x0063B3F0).
+- CWorldMap level loaders match on the first grade with the real PDB signatures (`const std::set<CCharString>&`, `ELoadType`) on shared headers; local `long`-typed stand-ins never did (chunk 1013, 0x00500EB0 / 0x00501990 / 0x00502620).

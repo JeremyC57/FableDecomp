@@ -1,0 +1,13 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+004feb70	272	CWorldMap::?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-11-04_linux_hand758/differ/004feb70.cpp		004fe630 004fe7f0 004fea30 004fede0 004feec0
+004fec80	352	CWorldMap::UpdateDestroyedThemeAreas	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand757/differ/004fec80.cpp		004fe7f0 004fea30 004fede0 004feec0 004ff080
+004ff150	448	CWorldMap::?GetAllMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@std@@@std@@@Z	parked	register-tie	rebuild/candidates/manual/pending/2026-10-21_linux_hand275/differ/004ff150.cpp		004fede0 004feec0 004ff080 004ff310 004ff390 004ff440
+00500eb0	672	CWorldMap::LoadThingsWithSectionNames	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/00500eb0.cpp		00500230 005003e0 00501150 00501450
+00501990	928	CWorldMap::UpdateNavMaps	parked	incomplete-model	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/00501990.cpp		00501150 00501450 00501d30 00502170 005022f0
+00502620	560	CWorldMap::LoadLevel	parked	register-tie	rebuild/candidates/manual/pending/2026-10-27_linux_hand538/differ/00502620.cpp		005022f0 00502460 00502500 00502850 005029a0 00502b00
+00507650	880	CWorldMap::CWorldMap::LoadFromFile	parked	incomplete-model	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/00507650.cpp		00506f30 00507610 005079c0
+0063ab90	608	CWorldMap::GetThemeFaceNormalAt	parked	x87-order	rebuild/candidates/manual/pending/2026-10-27_linux_hand541/differ/0063ab90.cpp		0063aa50 0063aab0 0063ab10 0063adf0 0063ae70 0063aee0
+0063b3f0	864	CWorldMap::CreateLineSegment	parked	x87-order	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0063b3f0.cpp		0063ae70 0063aee0 0063b0f0 0063b750 0063b7f0 0063b890
+0063d0a0	1024	CWorldMap::FindGroundCollisionPointWithinCell	parked	x87-order	rebuild/candidates/manual/pending/2026-10-27_linux_hand621/differ/0063d0a0.cpp	00a42170	0063bbc0 0063bf20 0063c230 0063d8a0 0063d960
+0063d4a0	1024	CWorldMap::FindThemeCollisionPointWithinCell	parked	x87-order	rebuild/candidates/manual/pending/2026-10-27_linux_hand621/differ/0063d4a0.cpp	00a42170	0063bf20 0063c230 0063d8a0 0063d960 0063db30
+0063e6f0	608	CWorldMap::IsLineOfSight	parked	register-tie	rebuild/candidates/manual/pending/2026-10-27_linux_hand617/differ/0063e6f0.cpp	004c1060	0063e3c0 0063e480 0063e590 0063e950 0063eb20 0063ec80

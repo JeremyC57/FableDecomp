@@ -8307,7 +8307,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004fede0	UnloadLevel	CWorldMap	__thiscall	void	2	CWorldMap *,long	1	yes	accepted									
 004feec0	UnloadRegion	CWorldMap	__thiscall	void	3	CWorldMap *,long,bool	1	yes	accepted									
 004ff080	LoadTopologyFromFile	CWorldMap	__thiscall	void	4	CWorldMap *,long,CCountedPointer<CAFile>,CASuspendableProcess *	1	yes	accepted									
-004ff150	?GetAllMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@std@@@std@@@Z	CWorldMap	__thiscall	void	3	CWorldMap *,C2DBoxI *,vector<unsigned_long,std::allocator<unsigned_long>_> *	1	yes	accepted									
+004ff150	GetAllMapsInArea	CWorldMap	__thiscall	void	3	CWorldMap *,C2DBoxI *,vector<unsigned_long,std::allocator<unsigned_long>_> *	1	yes	accepted									
 004ff310	GetAllLoadedMapsInArea	CWorldMap	__thiscall	void	3	CWorldMap *,C2DBoxI const &,std::vector<ulong,std::allocator<ulong> > &	1	yes	accepted									
 004ff390	UnloadAllMapsExceptPlayerPos	CWorldMap	__thiscall	void	1	CWorldMap *	1	yes	accepted									
 004ff440	PostLoadTopology	CWorldMap	__thiscall	void	2	CEditWorldMap *,long	1	yes	accepted									
@@ -11276,7 +11276,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059c8f2	OnCreate	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
 0059c983	IsSpecialCase	CTCInventoryTrade	__thiscall	bool	2	CTCInventoryTrade *,long	1	yes	accepted									
 0059ca95	RefreshNameAndTitlePC	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,CComponent *,long,long	1	yes	accepted									
-0059cb90	AddWantedItemToList	NInventory::CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,long,CList *,CViewport *	1	yes	accepted									
+0059cb90	AddWantedItemToList	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,long,CList *,CViewport *	1	yes	accepted									
 0059cf49	RemoveAllItemsFromCategory	CTCInventoryTrade	__thiscall	void	2	CTCInventoryTrade *,EInventoryCategoryIdentifier	1	yes	accepted									
 0059cfbd	RefreshNameAndTitle	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,CComponent *,long,long	1	yes	accepted									
 0059d0b8	FinalConstructSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									

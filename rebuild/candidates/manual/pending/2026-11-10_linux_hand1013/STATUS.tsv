@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+004feb70	CWorldMap::HeightAreaChanged	DIFFER(260v261)	1	shared headers; register choice only (const 0 in ebx vs second-loop iterator); 6 free probe variants inert
+004fec80	CWorldMap::UpdateDestroyedThemeAreas	RELOCATION_MATCH	1	shared header + C2DBOXI_EXTEND opt-in
+004ff150	CWorldMap::GetAllMapsInArea	RELOCATION_MATCH	1	noinline same-TU Overlapping / AreaCoversOneLevel bodies, C2DBOXI_COPY, long i
+00500eb0	CWorldMap::LoadThingsWithSectionNames	RELOCATION_MATCH	1	real PDB signature, CWADFile opt-in, out-of-line push_back
+00501990	CWorldMap::UpdateNavMaps	RELOCATION_MATCH	1	port of 0x00500EB0 + NProgressDisplay::DisplayProgress ticks
+00502620	CWorldMap::LoadLevel	RELOCATION_MATCH	1	LOADLEVEL / MODIFIEDTIME_WACKY / CWADFile opt-ins
+00507650	CWorldMap::LoadWorldFromBinaryFile	NOT_ATTEMPTED	0	identity proven (NAME_FIXES.tsv); needs CEngineManager / CTBaseSingleton headers and inline vector<CRegion>::resize (NOTES.md)
+0063ab90	CWorldMap::GetThemeFaceNormalAt	DIFFER(586v582)	1	x87 faddp/fcompp vs fadd st(1)+fstp; frame slots; 582-byte extent (SPLITS.tsv)
+0063b3f0	CWorldMap::CreateLineSegment	DIFFER(836v856)	1	second _ftol(from->Y) CSE'd in ours; frame slots
+0063d0a0	CWorldMap::FindGroundCollisionPointWithinCell	DIFFER(1017v1017)	1	scheduling only
+0063d4a0	CWorldMap::FindThemeCollisionPointWithinCell	DIFFER(1017v1017)	1	scheduling only (twin)
+0063e6f0	CWorldMap::IsLineOfSight	RELOCATION_MATCH	1	shared headers + HEADPOS / LINEOFSIGHT opt-ins; physics locals from-then-to
+0059cb90	CTCInventoryTrade::AddWantedItemToList (re-author)	RELOCATION_MATCH	1	rows/ hand-back, shared headers
+005a45f6	CTCInventoryTrade::ConstructSellActionsList (re-author)	RELOCATION_MATCH	1	rows/ hand-back, shared headers

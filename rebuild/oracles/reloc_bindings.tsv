@@ -38862,9 +38862,6 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?find@CLongMap@@QAEPAUCLongMapNode@@ABJ@Z	00592f92	005a30a1
 ?push_back@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z	0042b687	005a30a1
 ?push_back@?$vector@U?$pair@JJ@std@@@std@@QAEXABU?$pair@JJ@2@@Z	005947b6	005a30a1
-??ACComponentMap@@QAEAAPAUCComponentBase@NUISystem@@ABQAVCComponent@2@@Z	005b3167	005a45f6
-?GetControlledCreature@CPlayer@@QAEPAVCThing@@XZ	00487dd0	005a45f6
-?GetTextBySymbol@CDataBank@@QAE?AVCWideString@@ABVCCharString@@@Z	009c95e0	005a45f6
 ??$_M_find@PAVCComponent@NUISystem@@@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@J@std@@@1@ABQAVCComponent@NUISystem@@@Z	005b1ac5	005a5b31
 ??$_M_find@PAVCComponent@NUISystem@@@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@1@ABQAVCComponent@NUISystem@@@Z	005b1a43	005a5b31
 ??$_M_find@PAVCComponent@NUISystem@@@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@1@ABQAVCComponent@NUISystem@@@Z	005b1a8d	005a5b31
@@ -39133,3 +39130,11 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?SetPos@CTCAtmosPlayer@@QAEXABVC3DVector@@@Z	007e35f0	006b2260
 ?UpdateDayNightAtmosSounds@CAtmosProcess@@AAEXXZ	006b1a20	006b2260
 ?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ	006b1f30	006b2260
+?ExtendBordersBy@C2DBoxI@@QAEXJ@Z	00a39e10	004fec80
+?ExtendToContain@C2DBoxI@@QAEXABVC2DCoordI@@@Z	00a39e20	004fec80
+?AreaCoversOneLevel@CWorldMap@@QBE_NABVC2DBoxI@@@Z	004fb160	004ff150
+?GetFileModifiedTimeAsSomeWackyWin32BigNumber@CAFile@@SI_KABVCWideString@@@Z	00999320	00502620
+?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z	00501150	00502620
+??$GetAllThingsInRoughArea@VCThingGameObject@@V?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@AAV?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@@Z	0063fae0	0063e6f0
+??1?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ	0063f360	0063e6f0
+?IsLineOfSight@CWorldMap@@QBE_NABVC3DVector@@0@Z	0063aee0	0063e6f0

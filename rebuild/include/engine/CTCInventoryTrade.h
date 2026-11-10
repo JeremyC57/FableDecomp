@@ -89,6 +89,13 @@ private:
     void ConstructActualWantedInventoryPC();                                       // 0x005A5B31
     void ConstructActualBuyInventoryPC();                                          // 0x005AC10E
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_WANTEDLIST
+    // Retail opt-in (chunk 1013, re-author of row 0x0059CB90): Ego_r.pdb / FableWin.pdb
+    // ?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z (`ret 0Ch`), the console twin of
+    // AddWantedItemToListPC 0x0059D270. Public, declaration only.
+public:
+    void AddWantedItemToList(long itemDefIndex, NUISystem::CList* list, NUISystem::CViewport* viewport);   // 0x0059CB90
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITYPC
     // Retail opt-in (chunk 892, row 0x005A887D): Ego_r.pdb / FableWin.pdb ?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ (the row;
     // the manifest's "PC_PopulateBuyList" is descriptive) and ?RefreshBuyPossibilityNumbersPC@CTCInventoryTrade@@AAEXXZ (0x005A8175,

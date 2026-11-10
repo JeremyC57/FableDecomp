@@ -19,6 +19,11 @@ public:
     // Ego_r.pdb / FableWin.pdb ?FrameUpdate@CNavigatorManager@@QAEXXZ, retail 0x00A14E20 (`mov [ecx+20h],320h ; ret`: resets
     // NumberOfNodeExaminationsLeftThisFrame +0x20 to 800; the catalog's CGameEventPackage::Clear label is propagated).
     void FrameUpdate();                                          // 0x00A14E20
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_UPDATEAREA
+    // Nested opt-in (chunk 1013, row 0x004FEB70 CWorldMap::HeightAreaChanged): Ego_r.pdb ?UpdateNavigationMapArea@CNavigatorManager@@QAEXJABVC2DBoxF@@@Z
+    // (0x00B824A0), out of line in retail at 0x00A14E40 (`push <box> ; push <map> ; mov ecx,[world+48h] ; call`). Declaration only.
+    void UpdateNavigationMapArea(long map, const class C2DBoxF& area);   // 0x00A14E40
+#endif
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER_GETNODEAT
     // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb
     // ?GetNodeAt@CNavigatorManager@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@E@Z, retail 0x00A14F70 (landed; `push <layer byte> ; push

@@ -1,0 +1,36 @@
+address	name	evidence
+004FEB70	CWorldMap::HeightAreaChanged	Ego_r.pdb ?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z; vtable slot; DIFFER(260v261) register choice only
+004FEC80	CWorldMap::UpdateDestroyedThemeAreas	Ego_r.pdb ?UpdateDestroyedThemeAreas@CWorldMap@@IAEXXZ; RELOCATION_MATCH
+004FF150	CWorldMap::GetAllMapsInArea	Ego_r.pdb ?GetAllMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@std@@@std@@@Z; RELOCATION_MATCH
+00500EB0	CWorldMap::LoadThingsWithSectionNames	Ego_r.pdb ?LoadThingsWithSectionNames@CWorldMap@@QAEXABV?$set@VCCharString@@...@std@@W4ELoadType@1@@Z; RELOCATION_MATCH
+00501990	CWorldMap::UpdateNavMaps	Ego_r.pdb (same signature shape as LoadThingsWithSectionNames); RELOCATION_MATCH
+00502620	CWorldMap::LoadLevel	Ego_r.pdb ?LoadLevel@CWorldMap@@IAEXJW4ELoadType@1@@Z; RELOCATION_MATCH
+00507650	CWorldMap::LoadWorldFromBinaryFile	Ego_r.pdb donor order (see NAME_FIXES.tsv); not reconstructed this pass
+0063AB90	CWorldMap::GetThemeFaceNormalAt	Ego_r.pdb ?GetThemeFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z; 582 bytes (SPLITS.tsv)
+0063B3F0	CWorldMap::CreateLineSegment	Ego_r.pdb 0x006E7530 ?CreateLineSegment@CWorldMap@@IBE_NPBVC3DVector@@0PAV2@1@Z; 856 bytes
+0063D0A0	CWorldMap::FindGroundCollisionPointWithinCell	Ego_r.pdb 0x006E9B50 ?FindGroundCollisionPointWithinCell@CWorldMap@@IBE_NPBVC3DVector@@00PAV2@1@Z; 1017 bytes
+0063D4A0	CWorldMap::FindThemeCollisionPointWithinCell	Ego_r.pdb 0x006E9F10 ?FindThemeCollisionPointWithinCell@CWorldMap@@IBE_NPBVC3DVector@@00PAV2@1@Z; 1017 bytes (q.py's oracle still names it FindGroundCollisionPointWithinCell)
+0063E6F0	CWorldMap::IsLineOfSight	Ego_r.pdb 0x006EB120 ?IsLineOfSight@CWorldMap@@QBE_NABVCThing@@0_N@Z; RELOCATION_MATCH
+0059CB90	CTCInventoryTrade::AddWantedItemToList	Ego_r.pdb ?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z; RELOCATION_MATCH (re-authored)
+005A45F6	CTCInventoryTrade::ConstructSellActionsList	Ego_r.pdb ?ConstructSellActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z (count is long); RELOCATION_MATCH (re-authored)
+009E9F40	NProgressDisplay::DisplayProgress	Ego_r.pdb ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z; callee of 0x00501990 (four ticks)
+004FAFF0	CWorldMap::GetThingFilenameFromLevelFilename	Ego_r.pdb static __fastcall ?GetThingFilenameFromLevelFilename@CWorldMap@@SI?AVCWideString@@ABV2@@Z; callee of 0x00500EB0 / 0x00502620
+00999320	CAFile::GetFileModifiedTimeAsSomeWackyWin32BigNumber	Ego_r.pdb static __fastcall; callee of 0x00502620 (LevStamp / TngStamp)
+00A14E40	CNavigatorManager::UpdateNavigationMapArea	Ego_r.pdb ?UpdateNavigationMapArea@CNavigatorManager@@QAEXJABVC2DBoxF@@@Z; callee of 0x004FEB70
+0081E810	CMap::HeightAreaChanged	Ego_r.pdb ?HeightAreaChanged@CMap@@QAEXPBVC2DBoxI@@@Z; callee of 0x004FEB70
+004FC4D0	CWorldMap::ClipAndConvertWorldMapAreaToLocalArea	Ego_r.pdb / FableWin.pdb QBE?AVC2DBoxI@@JABV2@@Z; callee of 0x004FEB70
+0063DFD0	CWorldMap::UpdateAllEdges	Ego_r.pdb protected ?UpdateAllEdges@CWorldMap@@IAEXXZ; callee of 0x004FEB70
+00A39E20	C2DBoxI::ExtendToContain	Ego_r.pdb ?ExtendToContain@C2DBoxI@@QAEXABVC2DCoordI@@@Z; callee of 0x004FEC80
+00A39E10	C2DBoxI::ExtendBordersBy	Ego_r.pdb ?ExtendBordersBy@C2DBoxI@@QAEXJ@Z; callee of 0x004FEC80
+00661B40	CThingCreatureBase::GetHeadPos	Ego_r.pdb 0x0053C900 / FableWin 0x01D9A630 ?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z; callee of 0x0063E6F0
+004FC2A0	CWorldMap::ConvertWorldMapCoordsToLocalCoords	Ego_r.pdb 0x004CFA40 ?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QBE?AVC3DVector@@JABV2@@Z (C3DVector form); callee of 0x0063E6F0
+0063AEE0	CWorldMap::IsLineOfSight	Ego_r.pdb 0x006E8890 ?IsLineOfSight@CWorldMap@@QBE_NABVC3DVector@@0@Z (C3DVector overload); callee of 0x0063E6F0
+00A42170	CPlane::Initialise	Ego_r.pdb 0x00B9DB30 ?Initialise@CPlane@@QAE_NABVC3DVector@@00@Z; callee of 0x0063D0A0 / 0x0063D4A0
+00A422C0	CPlane::GetIntersectionWithLine	Ego_r.pdb 0x00B9DC90 ?GetIntersectionWithLine@CPlane@@QBE_NABVC3DVector@@0PAV2@@Z
+0063BAB0	CWorldMap::PointIsWithinLineSegment	Ego_r.pdb 0x006E7D30 ?PointIsWithinLineSegment@CWorldMap@@IBE_NPBVC3DVector@@00@Z
+0063B890	CWorldMap::PointIsWithinCellTR	Ego_r.pdb 0x006E7B10 (TR, BL, TL, BR in donor and retail order)
+0063B920	CWorldMap::PointIsWithinCellBL	Ego_r.pdb 0x006E7BA0
+0063B9B0	CWorldMap::PointIsWithinCellTL	Ego_r.pdb 0x006E7C30
+0063BA30	CWorldMap::PointIsWithinCellBR	Ego_r.pdb 0x006E7CB0
+0063A390	CWorldMap::GetThemeSizeZAt	Ego_r.pdb 0x006E7F50 ?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z (manifest label GetGroundSizeZAt is propagated)
+0063A300	CWorldMap::GetGroundSizeZAt	Ego_r.pdb 0x006E7EC0 ?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z

@@ -90,6 +90,11 @@ public:
     CScriptedMapBrush& CreateScriptedMapBrush(const CScriptedMapBrushInit&);
     bool IsPassableAt(const C2DCoordI&)const;
     bool IsPrefNavAt(const C2DCoordI&)const;
+#ifdef FABLE_RETAIL_CMAP_HEIGHTAREACHANGED
+    // Nested opt-in (chunk 1013, row 0x004FEB70 CWorldMap::HeightAreaChanged): Ego_r.pdb / FableWin.pdb ?HeightAreaChanged@CMap@@QAEXPBVC2DBoxI@@@Z
+    // (Ego_r 0x006795D0), out of line in retail at 0x0081E810. Declaration only.
+    void HeightAreaChanged(const C2DBoxI* area);                         // 0x0081E810
+#endif
 #ifdef FABLE_RETAIL_CMAP_NAVIGATIONLAYER
     // Chunk 847 (row 0x0063E590 CWorldMap::GetNavigationLayerAt): Ego_r.pdb ?GetNavigationLayerAt@CMap@@QBEJABVC3DVector@@@Z, out of
     // line in retail at 0x0081E920 (catalog CMap::GetNavigationLayerAt). Declaration only: no layout change.

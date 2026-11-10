@@ -20,6 +20,13 @@ class CThingCreatureBase : public CThingGameObject {
 public:
  static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 15;}
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEADPOS
+public:
+ // Chunk 1013 (row 0x0063E6F0 CWorldMap::IsLineOfSight(const CThing&,...)): Ego_r.pdb 0x0053C900 / FableWin.pdb 0x01D9A630
+ // ?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z, out of line in retail (0x00661B40, `push 1 ; push hidden ; call`).
+ // Declaration only: no layout change.
+ C3DVector GetHeadPos(bool) const;                                       // 0x00661B40
+#endif
 
 
 #ifdef FABLE_ONHIT_TEST_ACCESS

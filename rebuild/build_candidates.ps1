@@ -271128,9 +271128,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0059cb90'
-        Module = 'NInventory::CTCInventoryTrade'
-        Source = '00/59/NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90.cpp'
-        TestSource = '00/59/NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90_test.cpp'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_AddWantedItemToList_0059cb90.cpp'
+        TestSource = '00/59/CTCInventoryTrade_AddWantedItemToList_0059cb90_test.cpp'
         PassPattern = '0059cb90_TEST PASS'
     }
     [pscustomobject]@{
@@ -390905,6 +390905,48 @@ $catalog = @(
         Source = '00/4a/CWorld_SaveGameStateManual_004a0780.cpp'
         TestSource = '00/4a/CWorld_SaveGameStateManual_004a0780_test.cpp'
         PassPattern = '004a0780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fec80'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_UpdateDestroyedThemeAreas_004fec80.cpp'
+        TestSource = '00/4f/CWorldMap_UpdateDestroyedThemeAreas_004fec80_test.cpp'
+        PassPattern = '004fec80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ff150'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetAllMapsInArea_004ff150.cpp'
+        TestSource = '00/4f/CWorldMap_GetAllMapsInArea_004ff150_test.cpp'
+        PassPattern = '004ff150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00500eb0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_LoadThingsWithSectionNames_00500eb0.cpp'
+        TestSource = '00/50/CWorldMap_LoadThingsWithSectionNames_00500eb0_test.cpp'
+        PassPattern = '00500eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00501990'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_UpdateNavMaps_00501990.cpp'
+        TestSource = '00/50/CWorldMap_UpdateNavMaps_00501990_test.cpp'
+        PassPattern = '00501990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00502620'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_LoadLevel_00502620.cpp'
+        TestSource = '00/50/CWorldMap_LoadLevel_00502620_test.cpp'
+        PassPattern = '00502620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063e6f0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_IsLineOfSight_0063e6f0.cpp'
+        TestSource = '00/63/CWorldMap_IsLineOfSight_0063e6f0_test.cpp'
+        PassPattern = '0063e6f0_TEST PASS'
     }
 )
 
