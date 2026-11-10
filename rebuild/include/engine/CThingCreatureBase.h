@@ -12,10 +12,23 @@ class CAnimationEntry;                                                   // chun
 #endif
 class CCreatureInteraction; class CTCCreatureModeManager;
 class CHeroCombatDef;
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
+class CCombatTypeDef;
+#endif
 class CEnginePrimitivePrepareInfo;
 class CCombatManager;
 enum ESex;
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATRADIUS
+public:
+ // Retail opt-in (Codex pass18): both PDBs QBEMXZ; native00661f90, sphere caller00814ea0.
+ float GetCombatRadius() const;
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
+public:
+ CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const;
+ long GetCombatType()const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_STATTYPEFLAGS
 public:
  static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 15;}

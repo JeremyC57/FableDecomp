@@ -27,6 +27,12 @@ public:
  }
  void UndoMatrixConversion(CMatrix3x4&)const;
  void RedoMatrixConversion(CMatrix3x4&)const;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+ bool GetParentWorldSpaceBoundingSphereAnimatedMesh(C3DBoundingSphere&,float);
+ bool GetParentWorldSpaceBoundingSphere(C3DBoundingSphere& dest,float interp);
+ CEngineInternalPrimitiveBase& GetOutputPrimitive(){return static_cast<CEngineInternalPrimitiveBase&>(OutputPrimitive.GetData());}
+ void UpdateOutputPrimitive(float);
+#endif
  CMatrix3x4 PrimitiveTransform;
  EParentType ParentType;
  EChildType ChildType;

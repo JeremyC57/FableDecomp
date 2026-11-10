@@ -20,10 +20,20 @@
 #include "stlport/fable_containers.h"
 #include "engine/CIntelligentPointer.h"
 class CThing;
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
+#include "engine/CBaseClassNonCopyable.h"
+class CMiniMapDisplay:public CBaseClassNonCopyable {
+#else
 class CMiniMapDisplay {
+#endif
 public:
     class CMarkerInfo {
     public:
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
+        CMarkerInfo(const CThing& thing,long graphic_index,bool auto_marker):PThing(&thing),GraphicIndex(graphic_index),AutoMarker(auto_marker){}
+        const CThing* GetPThing()const{return PThing.Get();}
+        long GetGraphicIndex()const{return GraphicIndex;}
+#endif
         CIntelligentPointer<const CThing> PThing;            // +0x00
         long GraphicIndex;                                   // +0x08
         bool AutoMarker;                                     // +0x0c
@@ -36,6 +46,9 @@ public:
         CThing* PThing;                                      // +0x00
     };
     virtual ~CMiniMapDisplay();
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
+    void AddMarker(const CThing&,long);
+#endif
     void RemoveAllMarkers();                                 // 0x0082A300
     void RemoveMarker(const CThing& thing);                  // 0x0082A380
 private:

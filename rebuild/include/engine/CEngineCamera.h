@@ -10,6 +10,9 @@ class CCamera;
 class CEngineCamera:public CEngineComponent {
 public:
  CEngineCamera(bool);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+ bool ClipSphere(const C3DVector&,float)const;
+#endif
  virtual unsigned long PeekSceneFilterFlags()const;
  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
 private:
@@ -52,7 +55,10 @@ FABLE_STATIC_ASSERT(sizeof(CEngineCamera)==552);
 class CEngineInit;
 class CEngineCamera : public CEngineComponent {
 public:
-    CEngineCamera(bool);                       // 0x00B31700 ??0CEngineCamera@@QAE@_N@Z
+    CEngineCamera(bool);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+ bool ClipSphere(const C3DVector&,float)const;
+#endif                       // 0x00B31700 ??0CEngineCamera@@QAE@_N@Z
     virtual unsigned long PeekSceneFilterFlags() const;
 #ifdef FABLE_RETAIL_CENGINECAMERA_REFRESHD3DTRANSFORMS
     // Retail opt-in (chunk 792, row 0x00B5A3F0 CEngineScreenEffectColourFilter::ApplyColourFilter): Ego_r.pdb / FableWin.pdb

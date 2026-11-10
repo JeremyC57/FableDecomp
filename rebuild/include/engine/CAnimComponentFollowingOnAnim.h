@@ -24,6 +24,11 @@ public:
     virtual void SetDefaultValue();
     static CCharString __fastcall StatGetTokenName() { return CCharString("NextAnim"); }
     static EAnimComponent __fastcall StatGetType() { return ANIM_COMPONENT_FOLLOWING_ON_ANIM; }
+#ifdef FABLE_RETAIL_CANIMCOMPONENTFOLLOWINGONANIM_NAME
+    // Ego_r191af original value return; FableWin0281d430 copies TablePos+8.
+    CDefString GetNextAnimName()const{return NextAnimName;}
+private:
+#endif
     CDefString NextAnimName;                      // +0x08 (its constructor stores -1: 0x005DE412)
 };
 #pragma pack(pop)

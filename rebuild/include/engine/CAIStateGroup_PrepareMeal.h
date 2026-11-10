@@ -8,6 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL
+// Ego_r type536a1: private original members20/28/32/44; native accesses14/1c/20/2c.
+// FableWin02bb2d10 and native vtable0128bd7c slot12 establish protected virtual Update.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CRightHandedSet.h"
+class CAIStateGroup_PrepareMeal : public CAIStateGroupBase {
+protected:
+    virtual void Update();
+private:
+    CIntelligentPointer<CThing> PCookingPot;
+    long ActionPointIndex;
+    C3DVector ActionPointPos;
+    CRightHandedSet ActionOrientation;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_PrepareMeal)==0x44);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_PrepareMeal {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -33,4 +50,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointPos_Y) == 0x2
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointPos_Z) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionOrientation) == 0x2c);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_PREPAREMEAL_H

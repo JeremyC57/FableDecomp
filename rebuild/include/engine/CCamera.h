@@ -31,6 +31,10 @@ public:
     // retail at 0x00A0BE30 (the first member of the CCamera TU; called with ecx = the camera, forward then up pushed). Declaration only.
     void SetView(const C3DVector& forward, const C3DVector& up);         // 0x00A0BE30
 #endif
+#ifdef FABLE_RETAIL_CCAMERA_UP_DIRECTION
+    // Retail opt-in (Codex pass18): FableWin PeekUpDirection inline getter and full donor GetProjectileTrailElementFromPoint.
+    const C3DVector& PeekUpDirection() const { return RHSet.GetUp(); }
+#endif
     const C3DVector& PeekWorldPos() const { return WorldPosition; }
     const C3DVector& PeekViewDirection() const { return RHSet.GetForward(); }
 private:

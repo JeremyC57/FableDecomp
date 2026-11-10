@@ -9,6 +9,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHEHASTE
+// Ego_r22ff3 and donor022127b0: original public virtual FinishAction and private HasteKey.
+#include "engine/CCreatureAction_UnsheatheItemFromInventory.h"
+class CCreatureAction_UnsheatheItemFromInventoryWithHasteAction:public CCreatureAction_UnsheatheItemFromInventory {
+public:virtual void FinishAction();
+private:void* HasteKey;
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction)==0xbc);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_UnsheatheItemFromInventoryWithHasteAction {
 public:
@@ -58,4 +67,5 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAc
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheItemFromInventoryWithHasteAction, HasteKey) == 0xb8);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CCREATUREACTION_UNSHEATHEITEMFROMINVENTORYWITHHASTEACTION_H

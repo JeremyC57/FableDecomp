@@ -26,6 +26,9 @@ public:
  bool IsBlocking() const;                                                // 0x007331E0
  void UnsetBlocking();                                                   // 0x007338A0
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
+ CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const{return PCombatTypeDef;}
+#endif
  void SetCombatType(const CDefPointer<const CCombatTypeDef>&);
 private:
  long ComboChainPos;long ComboChainID;long ComboChainGracePeriodCountdown;long HandednessGracePeriodCountdown;long UnarmedCombatIdleCountdown;

@@ -29,6 +29,11 @@ public:
     CScriptGameResourceObjectScriptedThing(CGameScriptInterface& scriptInterface, CThing& thing, long scriptID,
                                            EScriptAIPriority priority);                                              // 0x009039D0
     virtual ~CScriptGameResourceObjectScriptedThing();
+#ifdef FABLE_RETAIL_SCRIPTEDTHING_FOLLOW_ROUTE
+    // Retail opt-in (Codex pass18): original PDB overrides, native slots6/11.
+    virtual void FollowPreCalculatedRoute(const CScriptThing&,EScriptEntityMoveType,bool,bool);
+    virtual void WaitWhilePerformingTasks();
+#endif
     static CScriptGameResourceObjectScriptedThingBase FABLE_FASTCALL CreateNullHandle(CGameScriptInterface& scriptInterface);   // 0x00903810
     CGameScriptInterface*        ScriptInterface;                        // +0x10
     CIntelligentPointer<CThing>  PThing;                                 // +0x14

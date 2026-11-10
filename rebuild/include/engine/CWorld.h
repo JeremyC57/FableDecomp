@@ -187,6 +187,10 @@ public:
     // Retail opt-in addition (chunk 718): the inline game-camera accessors, FableWin.pdb ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
     // (0x01ACC440) / ?PeekGameCamera@CWorld@@QBEPBVCAIGameCameraBase@@XZ (0x018A7070), expanded by Ego_r and retail: they read
     // PCurrentGameCamera (+0x34; 0x0088E0F0 `mov eax,[ecx+4] ; mov ecx,[eax+34h]`, landed 0x00892410 / 0x007A9B10). No layout change.
+#ifdef FABLE_RETAIL_CWORLD_FACTIONMANAGER
+    // Retail opt-in (Codex pass18): FableWin02605740 original const accessor and native+54 scoped pointer.
+    const CFactionManager& GetFactionManager() const { return *PFactionManager_ptr; }
+#endif
     CAIGameCameraBase* GetGameCamera() { return PCurrentGameCamera; }
     const CAIGameCameraBase* PeekGameCamera() const { return PCurrentGameCamera; }
     // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): FableWin.pdb ?PeekGameTimeManager@CWorld@@QBEABVCGameTimeManager@@XZ

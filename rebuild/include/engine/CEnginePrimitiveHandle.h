@@ -56,6 +56,9 @@ public:
         Data.Release();
     }
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+    unsigned long GetReferenceCount()const{return Data.GetRefCount();}
+#endif
 private:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
 };

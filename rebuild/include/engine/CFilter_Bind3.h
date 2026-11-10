@@ -10,4 +10,8 @@ public:
  CFilter_Bind3(const TF1& f1,const TF2& f2,const TF3& f3):F1(f1),F2(f2),F3(f3){}
  template<class T> bool operator()(const T& t)const{return F1(t)&&F2(t)&&F3(t);}
 };
+#ifdef FABLE_RETAIL_FILTER_BIND3_FUNCTION
+// Original FableWin02c4bd5e/02c4bdb7 call the named factory, with three const references.
+template<class A,class B,class C> inline CFilter_Bind3<A,B,C> FABLE_FASTCALL GFFilter_Bind3(const A& a,const B& b,const C& c){return CFilter_Bind3<A,B,C>(a,b,c);}
+#endif
 #endif

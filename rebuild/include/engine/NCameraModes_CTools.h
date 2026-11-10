@@ -23,8 +23,12 @@ class CTools {
 public:
 #ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE
     // Retail opt-in (Codex pass 17): original donor template and arithmetic at0x02889720.
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_OUTOFLINE
+    template<class T> T GetRollingAverage(const T& current_val,const T& new_val,float weight)const;
+#else
     template<class T> T GetRollingAverage(const T& current_val,const T& new_val,float weight) const
     {return (current_val*weight+new_val)/(weight+1.0f);}
+#endif
 #endif
     enum ELOSTest { };
     bool GetThingPointIntersectionFromTo(const std::vector<const CThing*>&, const C3DVector&, const C3DVector&, C3DVector&,

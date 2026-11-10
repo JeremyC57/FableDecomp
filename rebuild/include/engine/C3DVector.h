@@ -12,7 +12,7 @@
 #endif
 #include <math.h>
 #include "engine/C2DCoordI.h"
-#ifdef FABLE_RETAIL_C3DVECTOR_ADD2D
+#if defined(FABLE_RETAIL_C3DVECTOR_ADD2D) || defined(FABLE_RETAIL_C3DVECTOR_TO2D)
 #include "engine/C2DVector.h"
 #endif
 #ifdef FABLE_RETAIL_C3DVECTOR
@@ -55,7 +55,19 @@ public:
 #ifdef FABLE_RETAIL_C3DVECTOR_ADD2D
     // Retail opt-in (Codex pass17): original non-const value return, donor01cf3ca0.
     // Fidelity: X value capture gives native006b0b97 operand order.
+#ifdef FABLE_RETAIL_C3DVECTOR_ADD2D_DIRECT
+    // Retail opt-in (Codex pass18): original debug body01cf3ca0 has no named
+    // X snapshot (module385 locals); direct three constructor arguments.
+    C3DVector operator+(const C2DVector& v) const {return C3DVector(X+v.X,Y+v.Y,Z);}
+#else
     C3DVector operator+(const C2DVector& v) const {float x=v.X;return C3DVector(X+x,Y+v.Y,Z);}
+#endif
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_DECLARATION
+    float GetAccurateMagnitude()const;
+#endif
+#ifdef FABLE_RETAIL_C3DVECTOR_TO2D
+    C2DVector ToC2DVector()const{return C2DVector(X,Y);}
 #endif
     C3DVector() {}
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
@@ -79,7 +91,11 @@ public:
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
     // FableWin.pdb ??TC3DVector@@QBE?BV0@ABV0@@Z (cross product; debug copy 0x01B40A20 right after GetRight 0x01B409F0, expanded in 0x004A1CB0).
-#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_X_GROUP
+#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_XY_GROUP
+    // Retail opt-in (Codex pass18): grouping the first two cross expressions
+    // preserves the native00a42170 copy-load schedule without extra instructions.
+    FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),(Z*other.X-X*other.Z),X*other.Y-Y*other.X);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CROSS_X_GROUP)
     // Retail opt-in (Codex pass 17): preserve the first cross-product expression as a unit.
     FABLE_VECTOR_INLINE const C3DVector operator^(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
 #else

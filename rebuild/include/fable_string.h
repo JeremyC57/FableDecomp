@@ -209,9 +209,26 @@ protected:
         long length);
 
 #ifdef FABLE_RETAIL_CWIDESTRING
+#ifdef FABLE_RETAIL_CWIDESTRING_SPRINTF_ORIGINAL
+    // Retail opt-in (Codex pass18): original02f66a00 protected SetString, debug bookkeeping excluded in native.
+    void SetString(const wchar_t* string,long length=-1) {
+        if(PStringData)UnassignString();
+        if(!PStringData && string && *string)PStringData=AllocStringData(string,length);
+    }
+#endif
     static long NoStrings;
     // FableWin ?UnassignString@CWideString@@IAEXXZ (protected; inline in retail)
-#ifdef FABLE_RETAIL_CWIDESTRING_SPRINTFDYNAMIC
+#if defined(FABLE_RETAIL_CWIDESTRING_SPRINTF_ORIGINAL)
+    // Original02f66b70 snapshots the data pointer before changing its owner count.
+    void UnassignString() {
+        if(PStringData) {
+            CWideStringData* data=PStringData;
+            --data->NoRefs;
+            if(data->NoRefs<=0)delete PStringData;
+            PStringData=0;
+        }
+    }
+#elif defined(FABLE_RETAIL_CWIDESTRING_SPRINTFDYNAMIC)
     void UnassignString() {
         CWideStringData* data=PStringData;
         if(data) { if(--data->NoRefs<=0)delete PStringData; PStringData=0; }

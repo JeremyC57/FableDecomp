@@ -35,6 +35,9 @@ namespace NCameraModes { class CScriptModuleBase; }
 template <class T> class CCountedPointer;
 #endif
 
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMTOOLS_TYPED
+#include "engine/NCameraModes_CTools.h"
+#endif
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
@@ -47,6 +50,12 @@ private:
 public:
 #endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_GENERALCASE
+private:
+    void SwitchIntoGeneralCase();
+public:
+    void SetCameraMode(CCountedPointer<NCameraModes::CBase> mode);
+#endif
     void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
     // Retail opt-in (chunk 725): FableWin.pdb members at their retail addresses. CurrentMode is the real
     // CCountedPointer<NCameraModes::CBase> (engine/NCameraModes_CBase.h for the mode's vtable).
@@ -87,7 +96,12 @@ public:
 #else
     CWorld*            World;                                // +0x74
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMTOOLS_TYPED
+    NCameraModes::CTools CamTools;
+    const NCameraModes::CTools& GetCameraTools()const{return CamTools;}
+#else
     unsigned char      CamTools[0x20];                       // +0x78 CTools
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
     CCountedPointer<NCameraModes::CBase> CurrentMode;        // +0x98 (Data, Info)
 #else

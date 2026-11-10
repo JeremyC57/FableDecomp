@@ -9,7 +9,20 @@
 class CGraphicDataBank;
 class C2DAlphaMaskInfo {
 public:
-    CGraphicDataBank* AlphaMaskBank;                // +0x00
+#ifdef FABLE_RETAIL_C2DALPHAMASKINFO_RESET
+    // Ego_r575bc: pointer-to-const bank; donor02e8ecd0 calls Reset02e8ed10.
+    C2DAlphaMaskInfo(){Reset();}
+    void Reset(){
+        AlphaMaskBank=0;
+        AlphaMaskBankIndex=0;
+        AlphaMaskPositionFactors=C4DVector(0.0f,0.0f,0.0f,0.0f);
+        MaskObjectsOutsideAlphaMask=false;
+        FilterMask=false;
+    }
+    const CGraphicDataBank* AlphaMaskBank;
+#else
+    CGraphicDataBank* AlphaMaskBank;
+#endif                // +0x00
     unsigned long     AlphaMaskBankIndex;           // +0x04
     C4DVector         AlphaMaskPositionFactors;     // +0x08
     C2DBoxF           AlphaMaskClipBox;             // +0x18

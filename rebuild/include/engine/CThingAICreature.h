@@ -31,6 +31,10 @@ class CMessageEvent;                                                     // chun
 #endif
 class CThingAICreature : public CThingCreatureBase {
 public:
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_DRAINED
+    void SuspendAI(bool suspend,void* suspender);
+    void ForceAIReset();
+#endif
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_STATGETTYPE

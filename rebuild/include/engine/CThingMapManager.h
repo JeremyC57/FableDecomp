@@ -8,9 +8,18 @@
 // 0x0071A710 pushes pos then this; MoveInMapwho 0x0071A750 calls RemoveThing then PlaceThing). Layout is not modelled here.
 class CTCMapwho;
 class C3DVector;
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_DEBUGDRAW
+class C2DCoordI;
+#endif
 namespace NThingMap {
+class CThingMap;
 class CThingMapManager {
 public:
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_DEBUGDRAW
+ // Retail opt-in (Codex pass18): both PDBs and original donor022222a0 caller.
+ CThingMap* GetThingMapAt(const C2DCoordI&) const;
+ void DebugDraw(const C2DCoordI&,long) const;
+#endif
     bool IsToBePlacedInMapwho(const CTCMapwho&, const C3DVector&) const; // 0x00637F40
     void PlaceThing(CTCMapwho&, const C3DVector&);                       // 0x00637FC0
     void RemoveThing(CTCMapwho&);                                        // 0x00637A10

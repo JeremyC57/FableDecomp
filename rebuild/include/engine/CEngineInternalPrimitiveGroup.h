@@ -9,6 +9,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEGROUP
+// Ego_r original group: occlusion base+0, Primitives+50h; retail vector12 bytes gives flags+5c.
+#include "engine/CEngineInternalPrimitiveOcclusionBase.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/CArray.h"
+class CEngineInternalPrimitiveGroup : public CEngineInternalPrimitiveOcclusionBase {
+public:
+    virtual void ClearChildPrimitive(unsigned long);
+    bool HasChildPrimitive(unsigned long index)const {return index<Primitives.size() && !Primitives[index].IsNull();}
+private:
+    void UpdateRenderLayerMask();
+    CArray<CEnginePrimitiveHandle> Primitives;
+    unsigned long PrimitiveFlags;
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveGroup)==0x60);
+#else
 #pragma pack(push, 1)
 struct CEngineInternalPrimitiveGroup {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -40,5 +56,7 @@ FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveGroup) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveGroup, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveGroup, Primitives) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveGroup, PrimitiveFlags) == 0x5c);
+
+#endif
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEGROUP_H

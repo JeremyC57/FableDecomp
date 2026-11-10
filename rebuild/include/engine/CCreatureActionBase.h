@@ -8,6 +8,9 @@
 #include "fable_string.h"
 #include "engine/EActionRegisteredType.h"
 class CThing;class CThingCreatureBase;class CTCWeaponTrail;
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PRECEEDING
+class CAnimationEntry;
+#endif
 #include "stlport/fable_map.h"
 namespace NCreatureAction { class CActionEventBase; }
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
@@ -173,7 +176,15 @@ protected:
     const CGameDefinitionManager& PeekDefinitionManager() const;       // 0x00692910
     CWorld& GetWorld();                                                  // 0x00692940
 #endif
-#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PRECEEDING
+public:
+    // Ego_r221ae public non-const reference accessor; FableWin0281d460.
+    CCountedPointer<CAnimationEntry>& GetPPreceedingAnimationEntry(){return PPreceedingPAnimEntry;}
+protected:
+    unsigned char _pad_0x08[0x74];
+    CCountedPointer<CAnimationEntry> PPreceedingPAnimEntry;
+    unsigned char _pad_0x84[0x24];
+#elif defined(FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE)
     // chunk 751 (row 0x00854720 CCreatureAction_SpiritReturnToHero::PerformAction): Ego_r.pdb PCreature
     // (CIntelligentPointer<CThingCreatureBase>) at +0x08; the rest stays opaque. Needs engine/CIntelligentPointer.h first.
 protected: CIntelligentPointer<CThingCreatureBase> PCreature; unsigned char _pad_0x10[0x98];

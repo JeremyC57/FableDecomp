@@ -1,0 +1,29 @@
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cstddef>
+#ifndef _MSC_VER
+#define __int64 long long
+#endif
+static unsigned long gAlignment,gShift;static bool gMutate;static int gRemove,gInsert,gBad;static void* gOriginal;
+class CMemoryAllocatorVariableSize{public:class CMemoryAreaChunk;class CMemoryArea{public:CMemoryArea *PNextArea,*PRightChild,*PPreviousArea,*PParentArea,*PLeftChild;CMemoryAreaChunk* PParentChunk;long DataSize;unsigned char Colour,ID;static long GetHeaderSize(){return (long)(((sizeof(CMemoryArea)+gAlignment-1)>>gShift)<<gShift);}long GetDataSize()const{return DataSize;}long GetTotalSize()const{return DataSize+GetHeaderSize();}static CMemoryArea* Create(void* pstart,CMemoryAreaChunk* pparent_chunk,unsigned long data_size){CMemoryArea* parea=(CMemoryArea*)pstart;parea->PNextArea=0;parea->PRightChild=0;parea->PPreviousArea=0;parea->PParentArea=0;parea->PLeftChild=0;parea->Colour=0;parea->PParentChunk=pparent_chunk;parea->DataSize=data_size;return parea;}};class CMemoryAreaChunk{public:long TotalDataSize,NoFreeAreas,NoAllocatedAreas,FreeDataSize,LargestFreeAreaSize,SmallestFreeAreaSize;CMemoryAllocatorVariableSize* PParentAllocator;bool Permanent,DemandPaged;CMemoryAreaChunk *PNextChunk,*PPreviousChunk;CMemoryArea *PFirstFreeArea,*PLastFreeArea,*PFirstAllocatedArea;CMemoryArea* AllocAreaFromArea(CMemoryArea*,long);void RemoveAreaFromFreeList(CMemoryArea* parea){++gRemove;gBad|=parea!=gOriginal||parea!=PFirstFreeArea;--NoFreeAreas;FreeDataSize-=parea->DataSize;PFirstFreeArea=PLastFreeArea=0;if(gMutate){gAlignment*=2;++gShift;}}void InsertAreaIntoFreeList(CMemoryArea* parea){++gInsert;gBad|=parea!=gOriginal;PFirstFreeArea=PLastFreeArea=parea;parea->PNextArea=parea->PPreviousArea=0;++NoFreeAreas;FreeDataSize+=parea->DataSize;}void InsertAreaIntoAllocatedList(CMemoryArea* parea){parea->PNextArea=PFirstAllocatedArea;parea->PPreviousArea=0;if(PFirstAllocatedArea)PFirstAllocatedArea->PPreviousArea=parea;PFirstAllocatedArea=parea;++NoAllocatedAreas;}};};
+CMemoryAllocatorVariableSize::CMemoryArea* CMemoryAllocatorVariableSize::CMemoryAreaChunk::AllocAreaFromArea(CMemoryArea* parea,long data_size)
+{
+ __int64 overflow_check=CMemoryArea::GetHeaderSize()+data_size;
+ if(overflow_check<0||overflow_check>0x7fffffff)return 0;
+ long total_area=CMemoryArea::GetHeaderSize()+data_size;
+ if(parea->GetDataSize()>total_area){
+  RemoveAreaFromFreeList(parea);
+  long old_area_size=parea->GetTotalSize()-total_area-CMemoryArea::GetHeaderSize();
+  CMemoryArea* pold_area=CMemoryArea::Create(parea,this,old_area_size);
+  CMemoryArea* pnew_area=CMemoryArea::Create((char*)pold_area+parea->GetTotalSize(),this,data_size);
+  InsertAreaIntoFreeList(pold_area);
+  InsertAreaIntoAllocatedList(pnew_area);
+  return pnew_area;
+ }
+ RemoveAreaFromFreeList(parea);
+ InsertAreaIntoAllocatedList(parea);
+ return parea;
+}
+
+int main(){int ok=1,cases=0;typedef CMemoryAllocatorVariableSize::CMemoryArea Area;typedef CMemoryAllocatorVariableSize::CMemoryAreaChunk Chunk;for(int shift=3;shift<=7;++shift)for(int mutate=0;mutate<2;++mutate)for(int existing=0;existing<2;++existing)for(int scale=1;scale<=3;++scale)for(int ri=0;ri<8;++ri){gAlignment=1ul<<shift;gShift=shift;long header=Area::GetHeaderSize();long freeSize=scale*16*gAlignment+2*header;long requests[8]={0,(long)gAlignment,2*(long)gAlignment,freeSize-header-(long)gAlignment,freeSize-header,freeSize-header+(long)gAlignment,freeSize,-header-(long)gAlignment};long request=requests[ri];unsigned char* raw=(unsigned char*)std::malloc(8192+256);unsigned char* memory=raw+((256-((size_t)raw&255))&255);std::memset(memory,0xcc,8192);Area* area=(Area*)memory;Chunk chunk;std::memset(&chunk,0,sizeof chunk);Area old;std::memset(&old,0,sizeof old);area->PNextArea=area->PRightChild=area->PPreviousArea=area->PParentArea=area->PLeftChild=0;area->PParentChunk=&chunk;area->DataSize=freeSize;area->Colour=1;area->ID=0xa5;chunk.TotalDataSize=freeSize;chunk.NoFreeAreas=1;chunk.NoAllocatedAreas=existing;chunk.FreeDataSize=freeSize;chunk.PFirstFreeArea=chunk.PLastFreeArea=area;chunk.PFirstAllocatedArea=existing?&old:0;gOriginal=area;gMutate=mutate!=0;gRemove=gInsert=gBad=0;Area* result=chunk.AllocAreaFromArea(area,request);bool guard=header+request<0,split=!guard&&freeSize>header+request;long newHeader=(long)(((sizeof(Area)+gAlignment-1)>>gShift)<<gShift);long remainder=freeSize-header-request;Area* expected=guard?0:(split?(Area*)(memory+newHeader+remainder):area);ok &= result==expected&&!gBad&&gRemove==(guard?0:1)&&gInsert==(split?1:0)&&chunk.NoAllocatedAreas==existing+(guard?0:1)&&chunk.NoFreeAreas==(guard||split?1:0)&&chunk.FreeDataSize==(guard?freeSize:(split?remainder:0))&&chunk.TotalDataSize==freeSize;ok &= area->ID==0xa5;if(!guard){ok &= chunk.PFirstAllocatedArea==result&&result->PNextArea==(existing?&old:0)&&result->PPreviousArea==0&&result->PParentChunk==&chunk;if(existing)ok &= old.PPreviousArea==result;if(split){ok &= result->DataSize==request&&result->Colour==0&&result->ID==0xcc&&area->DataSize==remainder&&area->Colour==0&&result->PRightChild==0&&result->PParentArea==0&&result->PLeftChild==0&&chunk.PFirstFreeArea==area&&chunk.PLastFreeArea==area;}else ok &= result->DataSize==freeSize&&result->Colour==1;}else ok &= chunk.PFirstAllocatedArea==(existing?&old:0)&&area->DataSize==freeSize&&area->Colour==1&&gAlignment==(1ul<<shift);for(int i=0;i<8192;++i){bool headerByte=i<(int)sizeof(Area)||(split&&i>=(int)(newHeader+remainder)&&i<(int)(newHeader+remainder+sizeof(Area)));if(!headerByte)ok &= memory[i]==0xcc;}std::free(raw);++cases;}ok &= cases==480;std::printf(ok?"00a65480_TEST PASS\n":"00a65480_TEST FAIL\n");return ok?0:1;}

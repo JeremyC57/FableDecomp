@@ -26,6 +26,13 @@ public:
         // Retail opt-in (Codex pass 17): public original nested-class method.
         CMemoryArea* AllocAreaFromArea(CMemoryArea* area, long size);
 #endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOC_FROM_AREA
+    protected:
+        void RemoveAreaFromFreeList(CMemoryArea*);
+        void InsertAreaIntoFreeList(CMemoryArea*);
+        void InsertAreaIntoAllocatedList(CMemoryArea* parea);
+    public:
+#endif
         void Init(void* memory, long size, CMemoryAllocatorVariableSize* parent);   // 0x00A65410
     };
     class CMemoryArea {                         // Ego_r.pdb: 32 bytes
@@ -33,6 +40,11 @@ public:
         static long FABLE_FASTCALL GetHeaderSize(){return CMemoryAllocatorBase::StaticAlign(sizeof(CMemoryArea));}
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
         void* GetDataStart() const {return (char*)this + GetHeaderSize();}
+#endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOC_FROM_AREA
+        static CMemoryArea* FABLE_FASTCALL Create(void* pstart,CMemoryAreaChunk* pparent_chunk,unsigned long data_size);
+        long GetDataSize()const{return DataSize;}
+        long GetTotalSize()const{return DataSize+GetHeaderSize();}
 #endif
         CMemoryArea*      PNextArea;            // +0x00
         CMemoryArea*      PRightChild;          // +0x04
@@ -73,5 +85,23 @@ public:
 protected:
     CMemoryAreaChunk* NewChunk(long request_size);
 };
+
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOC_FROM_AREA
+inline CMemoryAllocatorVariableSize::CMemoryArea* FABLE_FASTCALL CMemoryAllocatorVariableSize::CMemoryArea::Create(void* pstart,CMemoryAreaChunk* pparent_chunk,unsigned long data_size)
+{
+ CMemoryArea* parea=(CMemoryArea*)pstart;
+ parea->PNextArea=0;parea->PRightChild=0;parea->PPreviousArea=0;parea->PParentArea=0;parea->PLeftChild=0;
+ parea->Colour=0;parea->PParentChunk=pparent_chunk;parea->DataSize=data_size;
+ return parea;
+}
+inline void CMemoryAllocatorVariableSize::CMemoryAreaChunk::InsertAreaIntoAllocatedList(CMemoryArea* parea)
+{
+ parea->PNextArea=PFirstAllocatedArea;
+ parea->PPreviousArea=0;
+ if(PFirstAllocatedArea)PFirstAllocatedArea->PPreviousArea=parea;
+ PFirstAllocatedArea=parea;
+ ++NoAllocatedAreas;
+}
+#endif
 
 #endif

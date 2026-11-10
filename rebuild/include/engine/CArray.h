@@ -7,6 +7,10 @@
 template<class T> class CArray : public std::vector<T> {
 public:
     CArray() : std::vector<T>() { }
+#ifdef FABLE_RETAIL_CARRAY_AT
+    // FableWin original At(T) called by02ebbf70; same index access as operator[].
+    T& At(unsigned int i){return *(this->begin()+i);}
+#endif
 #ifdef FABLE_RETAIL_CARRAY
     // retry11a (row 0x00520670 CArray<unsigned char>(size)): the one-argument ctor forwards to STLport's vector(n) -- the
     // vector(n, T()) form changes LoadHeroStateBinary's register allocation (1 instruction).

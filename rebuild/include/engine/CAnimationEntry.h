@@ -17,6 +17,10 @@
 class CAnimComponentMap;
 class CAnimationEntry {
 public:
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_GETCOMPONENT
+    // Both PDBs original const out-pointer template, retail00867fe0 for FollowingOnAnim.
+    template<class T> void GetComponent(const T** out)const;
+#endif
     // Ego_r.pdb / FableWin.pdb ?StatRegisterClass@CAnimationEntry@@SIXXZ (static __fastcall; retail 0x005DD670, one caller 0x0044E907).
     static void __fastcall StatRegisterClass();
     static std::map<CCharString, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByToken;          // 0x013B8C1C

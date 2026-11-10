@@ -13569,7 +13569,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00637a80	GetThingMapAt	NThingMap::CThingMapManager	__thiscall	CThingMap *	2	CThingMapManager *,C2DCoordI *	1	yes	accepted									
 00637ae0	GetMapsMemoryFootprint	CThingMapManager	__thiscall	long	1	CThingMapManager *	1	yes	accepted									
 00637b10	GetCellsForThingLayerCellPositions	CThingMapManager	__thiscall	void	2	CThingMapManager *,CMapCellPosInfoGroup *	1	yes	accepted									
-00637c80	DebugDraw	CThingMapManager	__thiscall	void	3	CThingMapManager *,C2DCoordI *,long	1	yes	accepted									
+00637c80	DebugDraw	NThingMap::CThingMapManager	__thiscall	void	3	CThingMapManager *,C2DCoordI *,long	1	yes	accepted									
 00637da0	InitPos	NThingMap::CThingMapManager	__thiscall	void	4	CThingMapManager *,C2DCoordI *,CMapCellPosInfo *,long	1	yes	accepted									
 00637e70	GetThingLayerCellPositions	CThingMapManager	__thiscall	void	5	CThingMapManager *,float,C2DVector *,long,CMapCellPosInfoGroup *	1	yes	accepted									
 00637f40	IsToBePlacedInMapwho	NThingMap::CThingMapManager	unknown	undefined	0		0	yes	accepted									
@@ -15998,7 +15998,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0069e1d0	GetCameraManager	CGameCameraManager	__thiscall	bool	2	CGameCameraManager *,CGameCameraManager const * *	1	yes	accepted									
 0069e1e0	GetCameraManager	CGameCameraManager	__thiscall	bool	2	CGameCameraManager *,CGameCameraManager * *	1	yes	accepted									
 0069e1f0	PeekCurrentPos	CGameCameraManager	__thiscall	C3DVector const	1	CGameCameraManager *	1	yes	accepted									
-0069e2e0	CGameCameraManager::SetupCameraMode	CGameCameraManager	unknown	undefined	0		0	yes	accepted									
+0069e2e0	SwitchIntoGeneralCase	CGameCameraManager	unknown	undefined	0		0	yes	accepted									
 0069e3d0	OnCreate	CCombatSequence_WillLightning	__thiscall	void	1	CCombatSequence_WillLightning *	1	yes	accepted									
 0069e460	SetTrackFirstCamPointMode	CGameCameraManager	__thiscall	void	1	CSACCombat *	1	yes	accepted									
 0069e5d0	SetSnapToFirstCamPointMode	CGameCameraManager	__thiscall	void	1	CSACCombat *	1	yes	accepted									
@@ -16052,7 +16052,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0069fe60	PerformAction	CCreatureAction_UseObject	__thiscall	void	1	CCreatureAction_UseObject *	1	yes	accepted									
 0069ffd0	CCreatureAction_SheatheItemToInventory	CCreatureAction_SheatheItemToInventory	__thiscall	undefined	4	CCreatureAction_SheatheItemToInventory *,CThingCreatureBase *,CCreatureActionBase *,long	0	yes	accepted									
 006a0150	CCreatureAction_UnsheatheItemFromInventory	CCreatureAction_UnsheatheItemFromInventory	__thiscall	undefined	5	CCreatureAction_UnsheatheItemFromInventory *,CThingCreatureBase *,CThing *,CCreatureActionBase *,long	0	yes	accepted									
-006a02b0	?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	__thiscall	void	1	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction *	1	yes	accepted									
+006a02b0	FinishAction	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	__thiscall	void	1	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction *	1	yes	accepted									
 006a03a0	CCreatureAction_UseObject::Initialise	CCreatureAction_UseObject	__thiscall	void	1	CCreatureAction_UseObject *	1	yes	accepted									
 006a06e0	CTCParamsPhysicsBase	CTCParamsPhysicsBase	__thiscall	undefined	3	CTCParamsPhysicsBase *,C3DVector *,CRightHandedSet *	0	yes	accepted									
 006a0730	`scalar_deleting_destructor'	CTCParamsPhysicsBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CLandscapeBackgroundPatch_vectordeletingdestructor_006a0730.cpp
@@ -20514,11 +20514,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00760c40	GetTrackPosAtLengthFraction	NShape::CTrack	__thiscall	C3DVector	2	CTrack *,float	1	yes	accepted									
 00760da0	GetTrackPosNearest	NShape::CTrack	__thiscall	void	4	CTrack *,C3DVector *,C3DVector *,float *	1	yes	accepted									
 00760e70	GetMinDistanceToTrack	CTrack	__thiscall	bool	3	CTrack *,C3DVector *,float *	1	yes	accepted									
-007610d0	IsPosInShape	CSubdivisionTriangle	__thiscall	bool	2	CSubdivisionTriangle *,C3DVector *	1	yes	accepted									
+007610d0	IsPosInShape	NShape::CSubdivisionTriangle	__thiscall	bool	2	CSubdivisionTriangle *,C3DVector *	1	yes	accepted									
 007611c0	IsPosInShape	NShape::CBasicShape	__thiscall	bool	2	CBasicShape *,C3DVector *	1	yes	accepted									
 00761200	UpdateDisplacePoints	NShape::CShape	__thiscall	bool	2	CShape *,C3DVector *	1	yes	accepted									
 00761280	DrawPrimitiveLineOverLandscape	NShape	__fastcall	void	6	CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,C3DVector *,C3DVector *,CRGBColour *	1	yes	accepted									
-00761560	EditorDrawPreparePrimitivesForRendering	CClosedShapeBase	__thiscall	void	5	CClosedShapeBase *,CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,CRGBColour *	1	yes	accepted									
+00761560	EditorDrawPreparePrimitivesForRendering	NShape::CClosedShapeBase	__thiscall	void	5	CClosedShapeBase *,CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,CRGBColour *	1	yes	accepted									
 00761620	vfunc_3	NShape::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00761740	IsPosInShape	NShape::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007617a0	EditorDrawHighlightPoints	CShape	__thiscall	void	5	CShape *,CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,CRGBColour *	1	yes	accepted									
@@ -24095,7 +24095,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00814d10	GetFirstIntersectionWithFiniteLine	CPhysicalPrimitiveSphere	__thiscall	bool	7	CPhysicalPrimitiveSphere *,CThing *,C3DVector *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted									
 00814d90	GetFirstIntersectionWithTriangle	NHitLocations::CPhysicalPrimitiveSphere	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00814e10	IsPosInside	CPhysicalPrimitiveSphere	__thiscall	bool	3	CPhysicalPrimitiveSphere *,CThing *,C3DVector *	1	yes	accepted									
-00814ea0	GetClosestPointToPos2D	CPhysicalPrimitiveSphere	__thiscall	C3DVector	4	CPhysicalPrimitiveSphere *,CThing *,C3DVector *,C3DVector *	1	yes	accepted									
+00814ea0	GetClosestPointToPos2D	NHitLocations::CPhysicalPrimitiveSphere	__thiscall	C3DVector	4	CPhysicalPrimitiveSphere *,CThing *,C3DVector *,C3DVector *	1	yes	accepted									
 00814f90	GetBoundingSphere	NHitLocations::CPhysicalPrimitiveSphere	__thiscall	void	4	CPhysicalPrimitiveSphere *,CThing *,C3DVector *,float *	1	yes	accepted									
 00815010	TransferBinaryOut	NHitLocations::CPhysicalPrimitiveCylinder	__thiscall	void	2	CPhysicalPrimitiveCylinder *,CDataOutputStream *	1	yes	accepted									
 00815070	vfunc_7	NHitLocations::CPhysicalPrimitiveMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -26343,7 +26343,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00881210	Clear	NScreenEffect::CScreenEffectPriorityStack	unknown	undefined	0		0	yes	accepted									
 00881370	CScreenEffectPriorityStack	NScreenEffect::CScreenEffectPriorityStack	unknown	undefined	0		0	yes	accepted									
 008814c0	~CScreenEffectPriorityStack	NScreenEffect::CScreenEffectPriorityStack	unknown	undefined	0		0	yes	accepted									
-00881690	InsertRadialBlurEntry	CScreenEffectPriorityStack	__thiscall	void *	5	CScreenEffectPriorityStack *,float,CRadialBlurParams *,CRadialBlurPositionParams *,ScreenEffectPriority	1	yes	accepted									
+00881690	InsertRadialBlurEntry	NScreenEffect::CScreenEffectPriorityStack	__thiscall	void *	5	CScreenEffectPriorityStack *,float,CRadialBlurParams *,CRadialBlurPositionParams *,ScreenEffectPriority	1	yes	accepted									
 00881780	InsertDisplacementEntry	NScreenEffect::CScreenEffectPriorityStack	__thiscall	void *	4	CScreenEffectPriorityStack *,float,CRGBFloatColour *,ScreenEffectPriority	1	yes	accepted									
 00881820	DeleteRadialBlurEntry	NScreenEffect::CScreenEffectPriorityStack	__thiscall	void	3	CScreenEffectPriorityStack *,void *,float	1	yes	accepted									
 00881860	DeleteDisplacementEntry	NScreenEffect::CScreenEffectPriorityStack	__thiscall	void	3	CScreenEffectPriorityStack *,void *,float	1	yes	accepted									
@@ -29278,7 +29278,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008da410	OnActivate	CModeScreamerAggressive	__thiscall	void	1	CModeScreamerAggressive *	1	yes	accepted									
 008da610	FrameUpdate	NCreatureMode::CModeScreamerAggressive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008da690	OnDeactivate	NCreatureMode::CModeScreamerAggressive	__thiscall	void	1	CModeScreamerAggressive *	1	yes	accepted									
-008da7a0	OnDeactivate	CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
+008da7a0	OnDeactivate	NCreatureMode::CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
 008da890	FrameUpdate	NCreatureMode::CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
 008da990	ResumeForCutscene	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CTCPhysicalShieldSpell *	1	yes	accepted									
 008daa80	CreateSkyBeam	CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
@@ -29525,7 +29525,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e7cf0	OnDeactivate	NCreatureMode::CModeBriarRoseTeleportIntangible	__thiscall	void	1	CModeBriarRoseTeleportIntangible *	1	yes	accepted									
 008e7e10	HasEnoughIcons	CIconText	__thiscall	void	1	CIconText *	1	yes	accepted									
 008e7e70	OnDeactivate	NCreatureMode::CModeBriarRoseConcentrate	__thiscall	void	1	CModeBriarRoseConcentrate *	1	yes	accepted									
-008e7f80	GetRandomImposter	CModeBriarRoseConcentrate	__thiscall	CThing *	1	CModeBriarRoseConcentrate *	1	yes	accepted									
+008e7f80	GetRandomImposter	NCreatureMode::CModeBriarRoseConcentrate	__thiscall	CThing *	1	CModeBriarRoseConcentrate *	1	yes	accepted									
 008e8060	OnActivate	CModeBriarRoseConcentrate	__thiscall	void	1	CModeBriarRoseConcentrate *	1	yes	accepted									
 008e8760	FrameUpdate	NCreatureMode::CModeBriarRoseConcentrate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e8830	vfunc_3	NCreatureMode::CModeBriarRoseTeleportInvulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29920,7 +29920,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fcbb0	vfunc_5	NCameraModes::CPhysicsForceModelGotoOutsideSimple	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008fcbd0	DoAttractToPoint	NCameraModes::CPhysicsForceModelGotoOutsideSimple	__thiscall	C3DVector	1	CPhysicsForceModelGotoOutsideSimple *	1	yes	accepted									
 008fcc10	DoVelocityDamping	NCameraModes::CPhysicsForceModelGotoOutsideSimple	__thiscall	C3DVector	1	CPhysicsForceModelGotoOutsideSimple *	1	yes	accepted									
-008fcc60	FrameUpdate	CPhysicsCoordRigid	__thiscall	void	1	CPhysicsCoordRigid *	1	yes	accepted									
+008fcc60	FrameUpdate	NCameraModes::CPhysicsCoordRigid	__thiscall	void	1	CPhysicsCoordRigid *	1	yes	accepted									
 008fcd70	vfunc_2	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008fcd90	vfunc_3	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008fcdb0	vfunc_4	NCameraModes::CPhysicsForceModelRigid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -32021,7 +32021,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009460b0	InitStateGroup	CAIStateGroup_PrepareMeal	__thiscall	void	3	CAIStateGroup_PrepareMeal *,CWorld const &,CThingAICreature &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CAIStateGroupPrepareMeal_InitStateGroup_009460b0.cpp
 009460c0	InitCreaturePosition	CAIStateGroup_PrepareMeal	__thiscall	bool	1	CAIStateGroup_TavernKeeper *	1	yes	accepted									
 00946100	Cleanup	CAIStateGroup_PrepareMeal	__thiscall	void	1	CAIStateGroup_PrepareMeal *	1	yes	accepted									
-00946190	?Update@CAIStateGroup_PrepareMeal@@MAEXXZ	CAIStateGroup_PrepareMeal	__thiscall	void	1	CAIStateGroup_PrepareMeal *	1	yes	accepted									
+00946190	Update	CAIStateGroup_PrepareMeal	__thiscall	void	1	CAIStateGroup_PrepareMeal *	1	yes	accepted									
 009462a0	IsTimeToPrepareMeal	CAIStateGroup_PrepareMeal	__thiscall	bool	1	CAIStateGroup_PrepareMeal *	1	yes	accepted									
 00946330	IsStillRunnable	CAIStateGroup_PrepareMeal	__thiscall	bool	1	CAIStateGroup_PrepareMeal *	1	yes	accepted									
 00946380	GetFreeCookingPot	CAIStateGroup_PrepareMeal	__thiscall	CThing *	1	CAIStateGroup_SitForMeal *	1	yes	accepted									
@@ -32842,7 +32842,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00978650	Clone	CCombatAction_Guildmaster_HealFollowersInto	__thiscall	CCreatureActionBase *	1	CCombatAction_Guildmaster_HealFollowersInto *	1	yes	accepted									
 00978680	Clone	CCombatAction_Guildmaster_ShieldFollowersInto	__thiscall	CCreatureActionBase *	1	CCombatAction_Guildmaster_ShieldFollowersInto *	1	yes	accepted									
 009786b0	Clone	CCombatAction_Guildmaster_SpeedUpFollowersInto	__thiscall	CCreatureActionBase *	1	CCombatAction_Guildmaster_SpeedUpFollowersInto *	1	yes	accepted									
-00978790	operator()	CThingCompare_InDirectionOfAndNearestToHeuristicBitch	__thiscall	bool	3	CThingCompare_InDirectionOfAndNearestToHeuristicBitch *,CThing *,CThing *	1	yes	accepted									
+00978790	operator()	(anonymous namespace)::CThingCompare_InDirectionOfAndNearestToHeuristicBitch	__thiscall	bool	3	CThingCompare_InDirectionOfAndNearestToHeuristicBitch *,CThing *,CThing *	1	yes	accepted									
 00978920	__median	std	unknown	undefined	0		0	yes	accepted									
 009789b0	std_sort_SiftUp_HeuristicBitch	_global	unknown	undefined	0		0	yes	accepted									
 00978a00	_Push_heap<float*,int,float,std::_Push_heap<float*,int,float,std::less<float>_>	_global	__fastcall	void	5	float *,int,int,float *,less<float>	1	yes	accepted									
@@ -32871,7 +32871,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0097a1b0	MoveFromCoverToFiringPosition	CAIStateGroup_CreatureTakeCover	__thiscall	bool	3	CAIStateGroup_CreatureTakeCover *,C3DVector *,CIntelligentPointer<CThing_const_> *	1	yes	accepted									
 0097a630	Update	CAIStateGroup_CreatureTakeCover	__thiscall	void	1	CAIStateGroup_CreatureTakeCover *	1	yes	accepted									
 0097aae0	ProcessCoverThingList	CAIStateGroup_CreatureTakeCover	__thiscall	void	2	CAIStateGroup_CreatureAdvanceInCover *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
-0097abf0	operator()	CThingCompare_InDirectionOfAndNearestToHeuristicBitch	__thiscall	bool	3	CThingCompare_InDirectionOfAndNearestToHeuristicBitch *,CThing *,CThing *	1	yes	accepted									
+0097abf0	operator()	(anonymous namespace)::CThingCompare_InDirectionOfAndNearestToHeuristicBitch	__thiscall	bool	3	CThingCompare_InDirectionOfAndNearestToHeuristicBitch *,CThing *,CThing *	1	yes	accepted									
 0097ad10	__median	std	unknown	undefined	0		0	yes	accepted									
 0097ada0	std_sort_SiftUp_HeuristicBitch_Variant	_global	unknown	undefined	0		0	yes	accepted									
 0097adf0	__push_heap<CThing**,int,CThing*,`anonymous namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch>	std	__fastcall	void	5	float *,int,int,float *,less<float>	1	yes	accepted									
@@ -35542,7 +35542,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fde80	BeginLoading	CGraphicInfoFrame::CFrameData	__thiscall	void	3	CFrameData *,ulong,ulong	1	yes	accepted									
 009fe380	CFrameData	CGraphicInfoFrame::CFrameData	__thiscall	undefined	2	CFrameData *,CGraphicInfoFrame *	0	yes	accepted									
 009fe440	ResetTexture	CGraphicInfoFrame::CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CFrameData_ResetTexture_009fe440.cpp
-009fe460	member_009fe460	CGraphicInfoFrame::CFrameData	__thiscall	bool	2	CFrameData *,bool	1	yes	accepted									
+009fe460	FreeTextureMemory	CGraphicInfoFrame::CFrameData	__thiscall	bool	2	CFrameData *,bool	1	yes	accepted									
 009fe550	CCountedPointer_Dtor_009fe550	_global	__thiscall	void	4	CGraphicInfoFrame *,CGraphicFrame *,CManagedTexture *,char	1	yes	accepted									
 009fe620	BeginLoading	CGraphicInfoFrame	__thiscall	void	3	CGraphicInfoFrame *,ulong,ulong	1	yes	accepted									
 009fe6c0	~CFrameData	CGraphicInfoFrame::CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
@@ -36072,7 +36072,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a18f70	Create	CNavigatorFlyer	__fastcall	CNavigatorFlyer *	2	CNavigatorManager *,CNavigatorExternalInterface *	1	yes	accepted									
 00a18fc0	?MoveToPosProximity@CNavigatorFlyer@@UAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N22222M@Z	CNavigatorFlyer	__thiscall	ENavigatorReturn	13	CNavigatorFlyer *,C3DVector *,C3DVector *,float,float,C3DVector *,bool,bool,bool,bool,bool,bool,float	1	yes	accepted									
 00a19430	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z	CNavigatorFlyer	__thiscall	C3DVector	4	CNavigatorFlyer *,C3DVector *,float,bool	1	yes	accepted									
-00a198c0	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z	CNavigatorFlyer	__thiscall	C3DVector	5	CNavigatorFlyer *,C3DVector *,float,C2DVector *,float	1	yes	accepted									
+00a198c0	GetRandomNavigablePos	CNavigatorFlyer	__thiscall	C3DVector	5	CNavigatorFlyer *,C3DVector *,float,C2DVector *,float	1	yes	accepted									
 00a199f0	CanNavigateToPos	CNavigatorFlyer	__thiscall	bool	5	CNavigatorFlyer *,C3DVector *,C3DVector *,float,bool	1	yes	accepted									
 00a19a30	IsNavLineOfSightClear	CNavigatorFlyer	__thiscall	bool	3	CNavigatorFlyer *,C3DVector *,C3DVector *	1	yes	accepted									
 00a19ab0	Save	CClass	__thiscall	void	2	CClass *,CCharString &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a1\CClass_Save_00a19ab0.cpp
@@ -37646,7 +37646,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a65330	Validate	CMemoryAllocatorVariableSize	__thiscall	void	1	CMemoryAllocatorVariableSize *	1	yes	accepted									
 00a65390	DeleteChunk	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
 00a65410	Init	CMemoryAllocatorVariableSize::CMemoryAreaChunk	__thiscall	void	4	CMemoryAreaChunk *,void *,long,CMemoryAllocatorVariableSize *	1	yes	accepted									
-00a65480	AllocAreaFromArea	CMemoryAreaChunk	__thiscall	CMemoryArea *	3	CMemoryAreaChunk *,CMemoryArea *,long	1	yes	accepted									
+00a65480	AllocAreaFromArea	CMemoryAllocatorVariableSize::CMemoryAreaChunk	__thiscall	CMemoryArea *	3	CMemoryAreaChunk *,CMemoryArea *,long	1	yes	accepted									
 00a65590	ConsolidateAdjacentFreeAreas	CMemoryAllocatorVariableSize::CMemoryAreaChunk	__thiscall	void	2	CMemoryAreaChunk *,CMemoryArea *	1	yes	accepted									
 00a65690	~CMemoryAllocatorVariableSize	CMemoryAllocatorVariableSize	__thiscall	void	1	CDrawGuildSeal *	1	yes	accepted									
 00a656e0	AllocateMemoryFromExistingChunks	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
@@ -42707,7 +42707,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bc61f0	CEnginePrimitiveGroupManager	CEnginePrimitiveGroupManager	__thiscall	undefined	2	CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *	0	yes	accepted									
 00bc6210	RenderPrimitiveToShadowBuffer	CEnginePrimitiveGroupManager	__thiscall	ERendered	2	CEnginePrimitiveGroupManager *,CEngineInternalPrimitiveBase &	1	yes	accepted									
 00bc6270	PreloadPrimitive	CEnginePrimitiveGroupManager	__thiscall	bool	4	CEnginePrimitiveGroupManager *,CEngineInternalPrimitiveBase &,C3DVector const &,ulong	1	yes	accepted									
-00bc62d0	CEngineInternalPrimitiveGroup::ClearChildPrimitive	CEngineInternalPrimitiveGroup	__thiscall	void	2	CEngineInternalPrimitiveGroup *,ulong	1	yes	accepted									
+00bc62d0	ClearChildPrimitive	CEngineInternalPrimitiveGroup	__thiscall	void	2	CEngineInternalPrimitiveGroup *,ulong	1	yes	accepted									
 00bc6340	RenderPrimitive	CEnginePrimitiveGroupManager	__thiscall	ERendered	4	CEnginePrimitiveGroupManager *,CEngineInternalPrimitiveBase *,EEngineRenderLayer,CEngineSubPrimitiveChain *	1	yes	accepted									
 00bc64d0	Update	CEngineInternalPrimitiveGroup	__thiscall	void	3	CEngineInternalPrimitiveGroup *,CEnginePrimitive const &,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bc\CEngineInternalPrimitiveGroup_Update_00bc64d0.cpp
 00bc64f0	CreateInternalPrimitive	CEnginePrimitiveGroupManager	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveGroupManager *,EEnginePrimitiveType	1	yes	accepted									
@@ -43085,7 +43085,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be1d80	UpdateRenderLayerMask	CEngineInternalPrimitive2DViewport	__thiscall	void	1	CEngineInternalPrimitive2DViewport *	1	yes	accepted									
 00be1db0	PostRender	CEngineInternalPrimitive2DViewport	__thiscall	void	1	CEngineInternalPrimitive2DViewport *	1	yes	accepted									
 00be1df0	GetChildPrimitive	CEngineInternalPrimitive2DViewport	__thiscall	CEnginePersistentPrimitiveBase *	2	CEngineInternalPrimitive2DViewport *,ulong	1	yes	accepted									
-00be1e20	CTCCreatureFlyOnSpline	CTCCreatureFlyOnSpline	__thiscall	undefined	2	CTCCreatureFlyOnSpline *,CThing *	0	yes	accepted									
+00be1e20	CEnginePrimitive2DViewportManager	CEnginePrimitive2DViewportManager	__thiscall	undefined	2	CTCCreatureFlyOnSpline *,CThing *	0	yes	accepted									
 00be1e70	Render	CEngineInternalPrimitive2DViewport	__thiscall	void	1	CEngineInternalPrimitive2DViewport *	1	yes	accepted									
 00be2120	CEngineInternalPrimitive2DViewport::ClearChildPrimitive	CEngineInternalPrimitive2DViewport	__thiscall	void	2	CEngineInternalPrimitive2DViewport *,ulong	1	yes	accepted									
 00be2190	RenderSubPrimitive	CEnginePrimitive2DViewportManager	__thiscall	void	3	CEnginePrimitive2DViewportManager *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									

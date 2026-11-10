@@ -222,7 +222,13 @@ public:
 #else
     template<class T> FABLE_FORCEINLINE bool GetTC(T** result) {
         if(HasTC(T::StatGetInterfaceType())) {
+#ifdef FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
+            // Retail opt-in (Codex pass18): original01d7d070 calls GetTC(id) before its checked cast.
+            CTCBase& tc_base=GetTC(T::StatGetInterfaceType());
+            *result=GFDebugPDynamicCast(&tc_base,(T*)0);
+#else
             *result=GFDebugPDynamicCast(Components.Find(T::StatGetInterfaceType())->second,(T*)0);
+#endif
             return true;
         }
         return false;

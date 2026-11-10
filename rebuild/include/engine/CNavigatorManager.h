@@ -24,6 +24,10 @@ public:
     // (0x00B824A0), out of line in retail at 0x00A14E40 (`push <box> ; push <map> ; mov ecx,[world+48h] ; call`). Declaration only.
     void UpdateNavigationMapArea(long map, const class C2DBoxF& area);   // 0x00A14E40
 #endif
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_SAMEMAP
+    // Retail opt-in (Codex pass18): both PDBs QBE_NABVC2DVector@@0@Z, native00a14fd0.
+    bool IsInSameMap(const class C2DVector&,const class C2DVector&) const;
+#endif
 #ifdef FABLE_RETAIL_CNAVIGATORMANAGER_GETNODEAT
     // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb
     // ?GetNodeAt@CNavigatorManager@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@E@Z, retail 0x00A14F70 (landed; `push <layer byte> ; push

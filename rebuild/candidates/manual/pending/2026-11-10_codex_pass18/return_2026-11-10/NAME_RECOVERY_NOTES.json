@@ -1,0 +1,74 @@
+[
+  {
+    "row": "007610d0",
+    "record": {
+      "binding": "NShape::CSubdivisionTriangle base",
+      "old_model": "CShape direct",
+      "original_model": "CClosedShapeBase:CShape",
+      "evidence": "Ego_r exact complete CSubdivisionTriangle + native UpDirection20"
+    }
+  },
+  {
+    "row": "007610d0",
+    "record": {
+      "binding": "inline dot operands",
+      "old_model": "side.Dot(flatPos-flatPoint)",
+      "original_model": "line.Dot(inward_normal)",
+      "evidence": "FableWin025dc393..39a + original locals"
+    }
+  },
+  {
+    "row": "00761560",
+    "record": {
+      "native_address": "CIEngine.slot11",
+      "old_binding": "Virtual11_00b23cf0",
+      "original_binding": "ConvertScreenPosToWorldPos(const C2DVector&,C3DVector&) const",
+      "evidence": "Ego_r complete CIEngine record virtualoffset44"
+    }
+  },
+  {
+    "row": "0082a890",
+    "record": {
+      "binding": "CMiniMapDisplay base",
+      "old_model": "local flattened virtual root",
+      "original_model": "CBaseClassNonCopyable:CBaseClass",
+      "evidence": "Ego_r complete record + native ctor0082a460"
+    }
+  },
+  {
+    "row": "0082a890",
+    "record": {
+      "binding": "CIntelligentPointer COPY",
+      "old_model": "direct GetPItem/SetPItem",
+      "original_model": "private GetPointer/SetPointer",
+      "evidence": "FableWin01da42f0,01da68b0,01da68d0"
+    }
+  },
+  {
+    "row": "008e7f80",
+    "record": {
+      "native_address": "inline",
+      "old_binding": "WorldRandomRange",
+      "original_binding": "GFRandom(unsigned long,unsigned long*)",
+      "evidence": "FableWin018cf370 + selected donor call"
+    }
+  },
+  {
+    "row": "008fcc60",
+    "record": {
+      "native_address": "coordfields",
+      "old_binding": "LinkedState/Owner/CameraManager pointers",
+      "original_binding": "CPhysicsState&,CBase&,const CGameCameraManager&",
+      "evidence": "Ego_r complete CPhysicsCoordModelBase"
+    }
+  },
+  {
+    "row": "00b39fb0",
+    "record": {
+      "native_address": "virtualslot19",
+      "old_binding": "GetBoundingRadius",
+      "original_binding": "GetBoundingSphereRadiusWorldSpace(float&)",
+      "evidence": "Ego_r complete primitive hierarchy + donor02d97e90 slot4c"
+    }
+  }
+]

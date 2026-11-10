@@ -13,7 +13,16 @@ public:
     bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture() const; // native009fd3f0
     void TouchFrame(unsigned long) const;
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    bool IsFlatSequence() const;
+#endif
 private:
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    friend class CFrameData;
+    CGraphicDataBank* GetBank() const;
+    void ReduceMipmapLevel(CGraphicFrame&,CManagedTexture&,unsigned long) const;
+    void ReleaseData() const;
+#endif
     bool InternalGetFrameForcedLoading(unsigned long) const; // native009ff6b0
     unsigned short FrameNum;
     signed char SmallMipmapLevel;
@@ -32,7 +41,21 @@ public:
 public:
     CFrameData(const CGraphicInfoFrame*); // native009fe380
     void BeginLoading(unsigned long,unsigned long); // native009fde80
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    bool FreeTextureMemory(bool allow_unload);
+    bool IsLoaded() {return Frame.IsInitialised();}
+    CGraphicDataBank* GetBank() const {return GraphicInfoFrame->GetBank();}
+    unsigned long Sizeof() const {
+        unsigned long size=sizeof(*this);
+        size+=Frame.Sizeof();
+        if(LoadingManagedTexture.IsValid())size+=LoadingManagedTexture.Sizeof();
+        return size;
+    }
+    void ResetTexture();
+    // Ego_r c5c8 fields are public; no layout change.
+#else
 private:
+#endif
     friend class CGraphicInfoFrame;
     CGraphicFrame Frame;
     CManagedTexture ManagedTexture,LoadingManagedTexture;

@@ -97,6 +97,12 @@ public:
         void SetAsFailed() { Failed = true; }                // ?SetAsFailed@CBoast@CQuestManager@@QAEXXZ
         void SetAsCompleted() { Completed = true; }          // ?SetAsCompleted@CBoast@CQuestManager@@QAEXXZ
     };
+#ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTMADE
+    // Retail opt-in (Codex pass18): both PDB exact public by-value signatures, native004af7a0/004afe20/004b1a80.
+    CBoast* GetBoast(long,CCharString);
+    void RemoveBoast(long,CCharString);
+    void SetBoastAsMade(long,CCharString);
+#endif
     const std::list<CIntelligentPointer<CThing> >& GetActiveQuestCards() const { return ActiveQuestCards; }
     const std::list<CIntelligentPointer<CThing> >& GetCompletedQuestCards() const { return CompletedQuestCards; }
     // Ego_r.pdb / FableWin.pdb ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z (retail 0x004B05C0).
@@ -248,7 +254,13 @@ private:
     long NumberOfQuestsBetweenStartAndFinishScreens;         // +0x98 (LoadGameState 0x004B5ECD)
     unsigned char _pad_0x9c[0xb4 - 0x9c];                    // +0x9c QuestsWithResourcesLoadedThatAreNotActivated .. PMostRecentValidUsedTargetName
 #else
+#ifdef FABLE_RETAIL_CQUESTMANAGER_BOASTMADE
+    unsigned char _pad_0x74[8];
+    class CWorld* World;
+    unsigned char _pad_0x80[0xb4-0x80];
+#else
     unsigned char _pad_0x74[0xb4 - 0x74];                    // +0x74 Objectives .. PMostRecentValidUsedTargetName
+#endif
 #endif
 public:
 #ifdef FABLE_RETAIL_CQUESTMANAGER_ONACTIVATEENTITY

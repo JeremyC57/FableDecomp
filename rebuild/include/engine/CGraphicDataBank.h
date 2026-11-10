@@ -5,7 +5,7 @@
 #include "engine/CResourceBank.h"
 #include "engine/CArray.h"
 #include "engine/CTexture.h"
-#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
 #include "engine/CPixelFormat.h"
 #endif
 class CGraphicInfo;class CGraphicInfoFrame;class CGraphicFrame;class CVolumeTexture;class CTextureManager;
@@ -31,6 +31,11 @@ protected:
     virtual void NotifyEntryRemoved(unsigned long);
     virtual void PrepareDataForInclusion(unsigned long,const CArray<CCharString>&,unsigned long,const CCountedPointer<CBankStateBlock>,CDataOutputStream&,CDataOutputStream&);
 public:
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    unsigned long GetReduceSizeFrameDelay() const {return ReduceSizeFrameDelay;}
+    unsigned long GetTexturePointersValidForFrames() const {return TexturePointersValidForFrames;}
+    friend class CGraphicInfoFrame;
+#endif
     const CGraphicInfo* PeekGraphic(unsigned long) const;
     const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture(ETextureType) const; // native009fd150
@@ -52,7 +57,7 @@ private:
     CTexture BlankTextures[11];
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank)==0x30c);
-#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
 // Layout: original PDB nested class,28 bytes; native009fd700 copies7 words.
 class CGraphicDataBank::CGraphicHeader {
 public:

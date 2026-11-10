@@ -15,6 +15,10 @@ class CResourceList;
 class CResource : public CIVCountedPointeeBase {
 public:
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    unsigned long GetUnusedFrames() const; // original03176f30, native009fbf70
+    void SetResourceSize(unsigned long); // original both PDBs, native009fbf20
+#endif
     void SetAsMRU(); // native009fc4a0
 #endif
     CResource();                                                         // 0x009FBEC0 (??0CResource@@QAE@XZ, bound)

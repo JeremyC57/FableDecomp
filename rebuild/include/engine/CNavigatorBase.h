@@ -21,7 +21,11 @@
 class C2DVector;
 class C3DVector;
 class CANavQuadTreeNode;
+#ifdef FABLE_RETAIL_CNAVIGATORBASE_HEIGHTTHEMES
+#include "engine/CNavigatorExternalInterface.h"
+#else
 class CNavigatorExternalInterface;
+#endif
 class CNavigatorManager;
 class CSteeringAgent;
 enum ENavigatorReturn;                                                   // MS forward enum
@@ -52,6 +56,11 @@ public:
     virtual void Interrupt();                                            // 18 0x00A19AD0
     virtual void CalculateNavigableWidthOfLine(const C3DVector&, const C3DVector&, float&, float&);          // 19 0x00A19AE0
 protected:
+#ifdef FABLE_RETAIL_CNAVIGATORBASE_HEIGHTTHEMES
+    // Retail opt-in (Codex pass18): both PDBs IBEMABVC3DVector@@_N@Z;
+    // original donor031a5b40 forwards to interface slot5.
+    float FindPosZAtIncludingThemes(const C3DVector& pos,bool useNavigation) const {return PInterface->FindPosZAtIncludingThemes(pos,useNavigation);}
+#endif
     unsigned long* GetSeed() const;                                      // ?GetSeed@CNavigatorBase@@IBEPAKXZ
     bool IsAnyPartOfNodeWithinDistOfPos(const CANavQuadTreeNode*, float, const C3DVector&, C2DVector&) const;   // Ego_r IBE
     const CANavQuadTreeNode* FindNearestNavigableNode(const CANavQuadTreeNode*, const CANavQuadTreeNode*, const C3DVector&, float, const CNavigatorManager*) const;   // Ego_r IBE

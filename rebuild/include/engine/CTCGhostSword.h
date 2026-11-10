@@ -26,12 +26,30 @@
 class CSpecialAbilitiesGhostSwordDef; class CThingAICreature;
 class CTCGhostSword : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
+    // Retail opt-in (Codex pass18): original Ego_r30739 public methods, native vtable126e494 slot9.
+    virtual void FrameUpdate();
+    void UpdateGhostSwordParticleEffects();
+#endif
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_GHOST_SWORD; }
     std::vector<CIntelligentPointer<CThingAICreature> > GetSummonedCreatures() const { return Minions; }
 private:
     CDefPointer<const CSpecialAbilitiesGhostSwordDef>   PDef;            // +0x0c
     std::vector<CIntelligentPointer<CThingAICreature> > Minions;         // +0x10
+#ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
+    // Original30739 fields, native dtor007c5660 and FrameUpdate offsets with12-byte STLport vectors.
+    std::vector<CIntelligentPointer<CThing> > MinionEffects; // +1c
+    long MinionAliveTimer; // +28
+    long FadeInTimer; // +2c
+    std::vector<long> CurFadeInTimer; // +30
+    long SpellLevel; // +3c
+    CIntelligentPointer<CThing> PItemRemoved; // +40
+    bool CutSceneCancelled; // +48
+#endif
 };
+#ifdef FABLE_RETAIL_CTCGHOSTSWORD_FRAME
+FABLE_STATIC_ASSERT(sizeof(CTCGhostSword)==0x4c);
+#endif
 #else
 class CTCGhostSword;
 #endif

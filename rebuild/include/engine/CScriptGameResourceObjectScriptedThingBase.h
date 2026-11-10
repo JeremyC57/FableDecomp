@@ -26,7 +26,9 @@
 #include "rebuild_abi.h"
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/fable_nscript_forward.h"
-#if defined(_MSC_VER)
+#if defined(FABLE_RETAIL_SCRIPT_MOVE_ENUM)
+#include "engine/EScriptEntityMoveType.h"
+#elif defined(_MSC_VER)
 enum EScriptEntityMoveType;
 #else
 enum EScriptEntityMoveType { };

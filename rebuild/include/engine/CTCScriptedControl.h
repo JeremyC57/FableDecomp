@@ -30,6 +30,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE
     class CActionBase;
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ADD_ACTION
+    // Retail opt-in (Codex pass18): both PDBs; native007137d0 takes this nested base.
+    void AddAction(CActionBase* action);
+#endif
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_CREATURE
     CThingCreatureBase& GetParentCreature();
 #endif

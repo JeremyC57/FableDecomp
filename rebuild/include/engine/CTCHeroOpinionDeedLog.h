@@ -36,7 +36,22 @@ public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;                                     // 0x006C58F0
 private:
     std::map<long, COpinionDeed*> OpinionDeedMap;                        // +0x0c
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_COMPLETE
+    // Retail opt-in (Codex pass18): Ego_r TPI19ce2 member order. Native004d3f51 allocates34a8;
+    // dtor006c5d70 proves list+18, intelligent pointer+20 and92 reaction records of90 bytes.
+    unsigned char OpinionDeedsSearchingForWitnesses[4]; // std::list<CWitnessesSearchingDeed>,+18
+    long NextHandle; // +1c
+    CIntelligentPointer<CThing> VillageForCrimes; // +20
+    long WeaponOutDeedHandle; // +28
+    bool WeaponOutCrimeEnabled; // +2c
+    bool GuardsIgnoreCrimes; // +2d
+    unsigned short DeedEffectsDefIndices[92]; // +2e
+    unsigned char DeedReactions[13248]; // COpinionDeedReaction[92],+e8; each has18 CCharString then18 ulong.
+#endif
 #endif
 };
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_COMPLETE
+FABLE_STATIC_ASSERT(sizeof(CTCHeroOpinionDeedLog)==0x34a8);
+#endif
 #endif
 #endif

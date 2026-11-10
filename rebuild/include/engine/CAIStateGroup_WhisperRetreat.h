@@ -8,6 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT
+// Ego_r53e81 and donor02c4bd00: original protected fields at1c/24/28/2c in native.
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"
+class CAIStateGroup_WhisperRetreat:public CAIStateGroup_EnemyCreatureBase {
+protected:
+ bool FindHitEvent();
+ CIntelligentPointer<CThing> PArenaCentre;
+ bool bIsRangeAttack;
+ long NumHits;
+ long FrameOfLastHit;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WhisperRetreat)==0x30);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_WhisperRetreat {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -32,4 +45,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, bIsRangeAttack) == 0x
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, NumHits) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, FrameOfLastHit) == 0x2c);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_WHISPERRETREAT_H

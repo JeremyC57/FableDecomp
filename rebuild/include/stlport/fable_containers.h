@@ -71,6 +71,10 @@ FABLE_STLP_SCALAR_TRAITS(signed char)
 FABLE_STLP_SCALAR_TRAITS(unsigned char)
 FABLE_STLP_SCALAR_TRAITS(short)
 FABLE_STLP_SCALAR_TRAITS(unsigned short)
+#ifdef FABLE_RETAIL_STLP_NATIVE_WCHAR_TRAITS
+// Original STLport scalar traits for native wchar_t (this TU uses /Zc:wchar_t).
+FABLE_STLP_SCALAR_TRAITS(wchar_t)
+#endif
 FABLE_STLP_SCALAR_TRAITS(int)
 FABLE_STLP_SCALAR_TRAITS(unsigned int)
 FABLE_STLP_SCALAR_TRAITS(long)
@@ -743,7 +747,11 @@ public:
 protected:
     _List_node<_Tp>* _M_create_node(const _Tp& x) {
         _List_node<_Tp>* p=this->_M_node.allocate(1);
+#ifdef FABLE_RETAIL_STLP_LIST_CONSTRUCT_HELPER
+        _Construct(&p->_M_data,x);
+#else
         new((void*)&p->_M_data) _Tp(x);
+#endif
         return p;
     }
 public:
@@ -1014,6 +1022,10 @@ public:
  explicit unary_negate(const _Predicate& pred):_M_pred(pred){}
  bool operator()(const typename _Predicate::argument_type& x)const{return !_M_pred(x);}
 };
+#ifdef FABLE_RETAIL_STLP_NOT1
+// Original STLport4.6 _function.h lines96-101, original FableWin template calls.
+template<class _Predicate> inline unary_negate<_Predicate> FABLE_FASTCALL not1(const _Predicate& pred){return unary_negate<_Predicate>(pred);}
+#endif
 template<class _InputIter,class _OutputIter,class _Predicate>
 _OutputIter FABLE_FASTCALL remove_copy_if(_InputIter first,_InputIter last,_OutputIter result,_Predicate pred) {
  for(;first!=last;++first)if(!pred(*first)){*result=*first;++result;}

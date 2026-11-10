@@ -190,7 +190,9 @@ public:
                 ++info->RefCount;
         }
     }
-#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CALLS_DTOR
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+    void Reset(T* data);
+#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CALLS_DTOR)
     // Per-TU opt-in (Codex name fix 2026-11-10, row 0x00429C6F Reset<NUISystem::CComponent>, size TU): retail's out-of-line Reset
     // calls 0x004291DE, the Data-first release body that Ego_r.pdb names ??1?$CCountedPointer@VCComponent@NUISystem@@@@ (the
     // only out-of-line release that PDB has for this T: no ReleaseData). The release is spelled as that destructor; the

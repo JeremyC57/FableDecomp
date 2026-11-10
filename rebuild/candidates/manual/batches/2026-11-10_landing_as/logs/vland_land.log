@@ -1,0 +1,134 @@
+addr       parity           behav  name
+004b1a80   RELOCATION_MATCH PASS   SetBoastAsMade
+00521a90   RELOCATION_MATCH PASS   SetNameForThing
+00637c80   RELOCATION_MATCH PASS   DebugDraw
+00664d40   RELOCATION_MATCH PASS   GetPCombatTypeDef
+00683b00   RELOCATION_MATCH PASS   ClearPendingDeeds
+0069e2e0   RELOCATION_MATCH PASS   SwitchIntoGeneralCase
+006a02b0   WARN RELOC_NAME: ?GetTimeMultiplier@CTCBulletTime@@QBEMXZ -> 0079c740 labelled '_unattributed::GetFloatThrough_0x20_0x12c_0079c740'
+006a02b0   WARN RELOC_NAME: ?insert_unique@?$_Rb_tree@PAXU?$pair@QAXM@std@@U?$_Select1st@U?$pair@QAXM@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXM@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@QAXM@std@@U?$_Nonconst_traits@U?$pair@QAXM@std@@@2@@std@@_N@2@ABU?$pair@QAXM@2@@Z -> 00580d21 labelled 'CTCHaste::PausedSetInsert'
+006a02b0   RELOCATION_MATCH PASS   FinishAction
+006afaf0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006afaf0   RELOCATION_MATCH PASS   ImpulseRespondToCollisonWithImpassableObject
+007610d0   RELOCATION_MATCH PASS   IsPosInShape
+00761560   RELOCATION_MATCH PASS   EditorDrawPreparePrimitivesForRendering
+0076c8a0   RELOCATION_MATCH PASS   CTCEnemy
+0076e290   RELOCATION_MATCH PASS   SetLastProjectileWeaponTrailPoint
+007c6460   RELOCATION_MATCH PASS   FrameUpdate
+007e5570   RELOCATION_MATCH PASS   GetPlayersMoney
+00814ea0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00814ea0   RELOCATION_MATCH PASS   GetClosestPointToPos2D
+0082a890   RELOCATION_MATCH PASS   AddMarker
+00836de0   MATCH            PASS   FlipTrackDirection
+00865eb0   RELOCATION_MATCH PASS   Initialise
+00881690   RELOCATION_MATCH PASS   InsertRadialBlurEntry
+008da7a0   WARN RELOC_NAME: ?ForceAIReset@CThingAICreature@@QAEXXZ -> 006d5ab0 labelled '_global::Forward_ForceResetWithOutput_via0x1a8_006d5ab0'
+008da7a0   RELOCATION_MATCH PASS   OnDeactivate
+008e7f80   WARN RELOC_NAME: ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008e7f80   RELOCATION_MATCH PASS   GetRandomImposter
+008fcc60   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+008fcc60   RELOCATION_MATCH PASS   FrameUpdate
+00934f20   RELOCATION_MATCH PASS   operator()<CThing>
+00946190   RELOCATION_MATCH PASS   Update
+0096a260   RELOCATION_MATCH PASS   FindHitEvent
+00978790   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00978790   RELOCATION_MATCH PASS   operator()
+0097abf0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+0097abf0   RELOCATION_MATCH PASS   operator()
+0099ba70   WARN RELOC_NAME: __chkstk -> 00bfea30 labelled '__chkstk'
+0099ba70   WARN RELOC_ALIAS: _wcslen -> 00bfed94 is the import thunk 'MSVCR71.DLL::wcslen'
+0099ba70   WARN RELOC_ALIAS: __vsnwprintf -> 00bfed9a is the import thunk 'MSVCR71.DLL::_vsnwprintf'
+0099ba70   RELOCATION_MATCH PASS   Sprintf
+009d5df0   RELOCATION_MATCH PASS   CBankFileAsyncData
+009fe460   WARN RELOC_NAME: ?ReleaseData@CGraphicInfoFrame@@ABEXXZ -> 00a00680 labelled 'CPrimitiveBlock_00a00680::DiscardDeviceIndependentResources'
+009fe460   RELOCATION_MATCH PASS   FreeTextureMemory
+00a0cdd0   WARN RELOC_ALIAS: _iswdigit -> 00bfede2 is the import thunk 'MSVCR71.DLL::iswdigit'
+00a0cdd0   RELOCATION_MATCH PASS   ReadNextNumber
+00a198c0   RELOCATION_MATCH PASS   GetRandomNavigablePos
+00a42170   RELOCATION_MATCH PASS   Initialise
+00a65480   RELOCATION_MATCH PASS   AllocAreaFromArea
+00b39fb0   RELOCATION_MATCH PASS   UpdatePrimitives
+00bc62d0   RELOCATION_MATCH PASS   ClearChildPrimitive
+00be1e20   RELOCATION_MATCH PASS   CEnginePrimitive2DViewportManager
+00cbe583   MATCH            PASS   GetSquaredDistanceBetweenThings
+
+WINS: 38
+  004b1a80 RELOCATION_MATCH CQuestManager::?SetBoastAsMade@CQuestManager@@QAEXJVCCharString@@@Z
+  00521a90 RELOCATION_MATCH CThingManager::?SetNameForThing@CThingManager@@QAEX_KABVCWideString@@@Z
+  00637c80 RELOCATION_MATCH NThingMap::CThingMapManager::?DebugDraw@CThingMapManager@NThingMap@@QBEXABVC2DCoordI@@J@Z
+  00664d40 RELOCATION_MATCH CThingCreatureBase::?GetPCombatTypeDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCCombatTypeDef@@@@XZ
+  00683b00 RELOCATION_MATCH CTCCreatureOpinionOfHero::?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ
+  0069e2e0 RELOCATION_MATCH CGameCameraManager::?SwitchIntoGeneralCase@CGameCameraManager@@AAEXXZ
+  006a02b0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+  006afaf0 RELOCATION_MATCH CTCPhysicsBase::?ImpulseRespondToCollisonWithImpassableObject@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@ABV1@AAVC3DVector@@@Z
+  007610d0 RELOCATION_MATCH NShape::CSubdivisionTriangle::?IsPosInShape@CSubdivisionTriangle@NShape@@UBE_NABVC3DVector@@@Z
+  00761560 RELOCATION_MATCH NShape::CClosedShapeBase::?EditorDrawPreparePrimitivesForRendering@CClosedShapeBase@NShape@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z
+  0076c8a0 RELOCATION_MATCH CTCEnemy::??0CTCEnemy@@QAE@AAVCThing@@@Z
+  0076e290 RELOCATION_MATCH CTCWeaponTrail::?SetLastProjectileWeaponTrailPoint@CTCWeaponTrail@@QAEXABVC3DVector@@@Z
+  007c6460 RELOCATION_MATCH CTCGhostSword::?FrameUpdate@CTCGhostSword@@UAEXXZ
+  007e5570 RELOCATION_MATCH CTCBetting::?GetPlayersMoney@CTCBetting@@QAE?AVCWideString@@XZ
+  00814ea0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveSphere::?GetClosestPointToPos2D@CPhysicalPrimitiveSphere@NHitLocations@@UBE?AVC3DVector@@ABVCThing@@ABV3@AAV3@@Z
+  0082a890 RELOCATION_MATCH CMiniMapDisplay::?AddMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z
+  00836de0 MATCH CThingTrackNode::?FlipTrackDirection@CThingTrackNode@@QAEXXZ
+  00865eb0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdownRecoverBase::?Initialise@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ
+  00881690 RELOCATION_MATCH NScreenEffect::CScreenEffectPriorityStack::?InsertRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEPAXMABUCRadialBlurParams@CEnvironmentSpellEffectInterface@@ABUCRadialBlurPositionParams@4@W4ScreenEffectPriority@2@@Z
+  008da7a0 RELOCATION_MATCH NCreatureMode::CModeDrained::?OnDeactivate@CModeDrained@NCreatureMode@@UAEXXZ
+  008e7f80 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::?GetRandomImposter@CModeBriarRoseConcentrate@NCreatureMode@@QBEPAVCThing@@XZ
+  008fcc60 RELOCATION_MATCH NCameraModes::CPhysicsCoordRigid::?FrameUpdate@CPhysicsCoordRigid@NCameraModes@@UAEXXZ
+  00934f20 RELOCATION_MATCH CThingCompare_NearestGroupByMember::??$?RVCThing@@@CThingCompare_NearestGroupByMember@@QBEPAVCThing@@PAV1@0@Z
+  00946190 RELOCATION_MATCH CAIStateGroup_PrepareMeal::?Update@CAIStateGroup_PrepareMeal@@MAEXXZ
+  0096a260 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?FindHitEvent@CAIStateGroup_WhisperRetreat@@IAE_NXZ
+  00978790 RELOCATION_MATCH (anonymous namespace)::CThingCompare_InDirectionOfAndNearestToHeuristicBitch::??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x
+  0097abf0 RELOCATION_MATCH (anonymous namespace)::CThingCompare_InDirectionOfAndNearestToHeuristicBitch::??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x
+  0099ba70 RELOCATION_MATCH CWideString::?Sprintf@CWideString@@QAAXPB_WZZ
+  009d5df0 RELOCATION_MATCH CBankFileAsyncData::??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z
+  009fe460 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::?FreeTextureMemory@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z
+  00a0cdd0 RELOCATION_MATCH CWStringParser::?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z
+  00a198c0 RELOCATION_MATCH CNavigatorFlyer::?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z
+  00a42170 RELOCATION_MATCH CPlane::?Initialise@CPlane@@QAE_NABVC3DVector@@00@Z
+  00a65480 RELOCATION_MATCH CMemoryAllocatorVariableSize::CMemoryAreaChunk::?AllocAreaFromArea@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEPAVCMemoryArea@2@PAV32@J@Z
+  00b39fb0 RELOCATION_MATCH CEnginePrimitiveAttachmentManager::?UpdatePrimitives@CEnginePrimitiveAttachmentManager@@QAEXABV?$CArray@PAVCEngineCamera@@@@M@Z
+  00bc62d0 RELOCATION_MATCH CEngineInternalPrimitiveGroup::?ClearChildPrimitive@CEngineInternalPrimitiveGroup@@UAEXK@Z
+  00be1e20 RELOCATION_MATCH CEnginePrimitive2DViewportManager::??0CEnginePrimitive2DViewportManager@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  00cbe583 MATCH _global::?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z
+
+LANDED 38 wins into src/compiled + tests + catalog + oracle
+  CQuestManager_SetBoastAsMade_004b1a80
+  CThingManager_SetNameForThing_00521a90
+  NThingMapCThingMapManager_DebugDraw_00637c80
+  CThingCreatureBase_GetPCombatTypeDef_00664d40
+  CTCCreatureOpinionOfHero_ClearPendingDeeds_00683b00
+  CGameCameraManager_SwitchIntoGeneralCase_0069e2e0
+  CCreatureActionUnsheatheItemFromInventoryWithHasteAction_FinishAction_006a02b0
+  CTCPhysicsBase_ImpulseRespondToCollisonWithImpassableObject_006afaf0
+  NShapeCSubdivisionTriangle_IsPosInShape_007610d0
+  NShapeCClosedShapeBase_EditorDrawPreparePrimitivesForRendering_00761560
+  CTCEnemy_CTCEnemy_0076c8a0
+  CTCWeaponTrail_SetLastProjectileWeaponTrailPoint_0076e290
+  CTCGhostSword_FrameUpdate_007c6460
+  CTCBetting_GetPlayersMoney_007e5570
+  NHitLocationsCPhysicalPrimitiveSphere_GetClosestPointToPos2D_00814ea0
+  CMiniMapDisplay_AddMarker_0082a890
+  CThingTrackNode_FlipTrackDirection_00836de0
+  CCombatActionGenericStrikeResponseKnockdownRecoverBase_Initialise_00865eb0
+  NScreenEffectCScreenEffectPriorityStack_InsertRadialBlurEntry_00881690
+  NCreatureModeCModeDrained_OnDeactivate_008da7a0
+  NCreatureModeCModeBriarRoseConcentrate_GetRandomImposter_008e7f80
+  NCameraModesCPhysicsCoordRigid_FrameUpdate_008fcc60
+  CThingCompareNearestGroupByMember_operatorCThing_00934f20
+  CAIStateGroupPrepareMeal_Update_00946190
+  CAIStateGroupWhisperRetreat_FindHitEvent_0096a260
+  anonymousnamespaceCThingCompareInDirectionOfAndNearestToHeuristicBitch_operator_00978790
+  anonymousnamespaceCThingCompareInDirectionOfAndNearestToHeuristicBitch_operator_0097abf0
+  CWideString_Sprintf_0099ba70
+  CBankFileAsyncData_CBankFileAsyncData_009d5df0
+  CGraphicInfoFrameCFrameData_FreeTextureMemory_009fe460
+  CWStringParser_ReadNextNumber_00a0cdd0
+  CNavigatorFlyer_GetRandomNavigablePos_00a198c0
+  CPlane_Initialise_00a42170
+  CMemoryAllocatorVariableSizeCMemoryAreaChunk_AllocAreaFromArea_00a65480
+  CEnginePrimitiveAttachmentManager_UpdatePrimitives_00b39fb0
+  CEngineInternalPrimitiveGroup_ClearChildPrimitive_00bc62d0
+  CEnginePrimitive2DViewportManager_CEnginePrimitive2DViewportManager_00be1e20
+  global_GetSquaredDistanceBetweenThings_00cbe583
+rc=0

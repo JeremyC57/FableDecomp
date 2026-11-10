@@ -45,6 +45,9 @@ class CTexture;
 class CGraphicFrameData {
 public:
     CTexture* GetTexture() const {return PTexture.Data;}
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    unsigned long Sizeof() const;
+#endif
 private:
     unsigned long ReferenceCount;
     void* Data;
@@ -62,6 +65,10 @@ FABLE_STATIC_ASSERT(sizeof(CGraphicFrameData)==0x1b);
 class CGraphicFrame {
 public:
     CGraphicFrameData* FrameData;                            // +0x00
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    bool IsInitialised() const {return FrameData!=0;}
+    unsigned long Sizeof() const;
+#endif
 };
 #pragma pack(pop)
 

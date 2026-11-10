@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTCENTITYEVENTS
+// Ego_r a119:CTCBase,protected Events+0c; native component type42 and same lookup offsets.
+#include "engine/CTCBase.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+namespace NEntityEvents{class CEventBase;}
+class CTCEntityEvents:public CTCBase {
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_ENTITY_EVENTS;}
+ template<class E,class F> bool GetEvent(E**,const F&)const;
+protected:std::list<CCountedPointer<NEntityEvents::CEventBase> > Events;
+};
+FABLE_STATIC_ASSERT(sizeof(CTCEntityEvents)==0x10);
+#else
 #pragma pack(push, 1)
 class CTCEntityEvents {
 public:
@@ -24,4 +38,5 @@ FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, sub) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, Events) == 0xc);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CTCENTITYEVENTS_H

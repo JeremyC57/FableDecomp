@@ -8,7 +8,7 @@
 template<class K,class V> class CKeyPairCompareLess {
 public:
     bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b) const { return a.first<b.first; }
-#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+#if defined(FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND) || defined(FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND)
     // chunk 849 (row 0x00501450): the key/key overload, the second of the two the Codex pass 13 TPI read gives CKeyPairCompareLess; the
     // inline LowerBound below compares through it.
     bool operator()(const K& a,const K& b) const { return a<b; }
@@ -41,7 +41,13 @@ public:
 #endif
     iterator Find(const K& key) {
         iterator i=LowerBound(key);
+#ifdef FABLE_RETAIL_CVECTORMAP_ORIGINAL_FIND
+        // Retail opt-in (Codex pass18): original01896640 uses the original comparison member and positive return arm.
+        if(i!=this->end()&&!Compare(key,i->first))return i;
+        return this->end();
+#else
         return i==this->end() || key<i->first ? this->end() : i;
+#endif
     }
 #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
     FABLE_FORCEINLINE

@@ -80,7 +80,11 @@ public:
     C2DVector& Normalise();                                                  // 0x00A14540
     // FableWin ??XC2DVector@@QAEABV0@M@Z (scale in place; CullWayPoints scales the perpendicular in its own slot, 0x00A1C1FC..0x00A1C208).
     const C2DVector& operator*=(float scalar) { X*=scalar; Y*=scalar; return *this; }
+#ifdef FABLE_RETAIL_C2DVECTOR_ISNONZERO_DIRECT
+    bool IsNonZero() const { return X*X+Y*Y>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
+#else
     bool IsNonZero() const { return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
+#endif
 #endif
 };
 #pragma pack(pop)

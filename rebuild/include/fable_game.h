@@ -134,6 +134,10 @@ protected:
 public:
     virtual bool IsEditorActive() const;                                  // slot 9 0x004197B0 ?IsEditorActive@CMainGameComponent@@UBE_NXZ (FableWin 0x018A1210)
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKPLAYER
+    // Original FableWin018846c0, both PDB exact public const method; native007e5570 loads PPlayerManager+1c.
+    const CPlayerManager& PeekPlayerManager() const { return *PPlayerManager; }
+#endif
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): FableWin.pdb ?GetDisplayEngine@CMainGameComponent@@QAEAAVCDisplayEngine@@XZ, inline in
     // retail (`mov eax,[esi+8] ; mov ecx,[eax+28h]` at 0x004A5C34).
     CDisplayEngine& GetDisplayEngine() { return *PDisplayEngine; }

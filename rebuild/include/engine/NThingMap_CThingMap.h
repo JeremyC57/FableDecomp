@@ -14,6 +14,9 @@
 #include "stlport/fable_containers.h"
 #include "engine/C2DBoxI.h"
 #include "engine/C2DExtentsI.h"
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_DEBUGDRAW
+class C2DVector;
+#endif
 namespace NThingMap {
 class CThingMapManager;
 class CMapwhoNode;
@@ -30,6 +33,10 @@ public:
 };
 class CThingMap {
 public:
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_DEBUGDRAW
+ // Retail opt-in (Codex pass18): FableWin029d90d0, native0085cbd0.
+ void DebugDraw(const class C2DVector&,long);
+#endif
 #ifdef FABLE_RETAIL_CTHINGMAP_GETAREA
     // Retail opt-in (Codex pass 17): FableWin GetArea and the original debug caller return Area by const reference.
     const C2DBoxI& GetArea() const { return Area; }

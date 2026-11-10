@@ -1,0 +1,107 @@
+MERGE rc=0 stlport/fable_containers.h
+NEW stlport/fable_count_if.h
+MERGE rc=0 fable_game.h
+MERGE rc=0 engine/CFilter_Bind3.h
+NEW engine/CThingCompare_NearestGroupByMember.h
+MERGE rc=0 engine/CGameCameraManager.h
+MERGE rc=0 engine/CCamera.h
+MERGE rc=0 engine/CTextureManager.h
+MERGE rc=0 engine/CNavigatorBase.h
+NEW engine/CFactionManager.h
+MERGE rc=0 engine/CArray.h
+MERGE rc=0 engine/CAIStateGroup_WhisperRetreat.h
+MERGE rc=0 engine/CMemoryAllocatorVariableSize.h
+MERGE rc=0 engine/CThingTrackNode.h
+MERGE rc=0 engine/CScriptGameResourceObjectScriptedThingBase.h
+MERGE rc=0 engine/CThingCreatureBase.h
+MERGE rc=0 engine/CTCEntityEvents.h
+MERGE rc=0 engine/CCreatureActionBase.h
+MERGE rc=0 engine/CTCAIScratchpad.h
+NEW engine/CTCCameraPointGeneralCase.h
+MERGE rc=0 engine/CThingMapManager.h
+MERGE rc=0 engine/CEnginePrimitiveHandle.h
+NEW engine/CTCWeaponTrail.h
+NEW engine/NCameraModes_CStringAndCage.h
+NEW engine/CEnginePrimitiveWeaponTrail.h
+MERGE rc=0 engine/CTCHeroOpinionDeedLog.h
+MERGE rc=0 engine/CCountedPointer.h
+MERGE rc=0 engine/CANavQuadTreeNode.h
+MERGE rc=0 engine/CEngineInternalAttachedPrimitive.h
+MERGE rc=0 engine/CTCScriptedControl.h
+MERGE rc=0 engine/CThingAICreature.h
+MERGE rc=0 engine/C2DAlphaMaskInfo.h
+MERGE rc=0 engine/CCreatureAction_UnsheatheItemFromInventoryWithHasteAction.h
+MERGE rc=0 engine/CEnginePrimitiveAttachmentManager.h
+NEW engine/NCameraModes_CPhysicsCoordRigid.h
+NEW engine/NHitLocations_CPhysicalPrimitiveSphere.h
+MERGE rc=0 engine/NCameraModes_CTools.h
+MERGE rc=0 engine/CEnemyDef.h
+MERGE rc=0 engine/CBettingDef.h
+NEW engine/CMessageEventManager.h
+NEW engine/COpinionDeed.h
+MERGE rc=0 engine/CIEngine.h
+MERGE rc=0 engine/CEngineCamera.h
+MERGE rc=0 engine/CNavigatorFlyer.h
+MERGE rc=0 engine/NThingMap_CThingMap.h
+MERGE rc=0 engine/CCreatureAction_UnsheatheItemFromInventory.h
+NOBASE engine/GFRandom.h
+MERGE rc=0 engine/CGraphicFrame.h
+MERGE rc=0 engine/CMiniMapDisplay.h
+NEW engine/NShape_CSubdivisionTriangle.h
+MERGE rc=0 engine/CScriptGameResourceObjectScriptedThing.h
+NEW engine/NEntityEvents_EventFilters.h
+MERGE rc=0 engine/CThingCreatureDef.h
+MERGE rc=0 engine/CGraphicInfo.h
+NEW engine/CThingCompare_InDirectionOfAndNearestToHeuristicBitch.h
+MERGE rc=0 engine/CCombatActionBase.h
+MERGE rc=0 engine/NScreenEffect_CScreenEffectPriorityStack.h
+MERGE rc=0 engine/CTCPhysicsBase.h
+MERGE rc=0 engine/CGraphicInfoFrame.h
+MERGE rc=0 engine/CTCCreatureModeManager.h
+NEW engine/NShape_CClosedShapeBase.h
+MERGE rc=0 engine/CManagedTexture.h
+MERGE rc=0 engine/CAIStateGroup_EnemyCreatureBase.h
+MERGE rc=0 engine/CQuestManager.h
+MERGE rc=0 engine/C3DMeshInfo.h
+MERGE rc=0 engine/CTCGhostSword.h
+NEW engine/CWParsedItem.h
+MERGE rc=0 engine/CModeStandBase.h
+NEW engine/CEnginePrimitiveLine.h
+MERGE rc=0 engine/NCameraModes_CStringAndCageBase.h
+NEW engine/GFSizeof.h
+NEW engine/NTCScriptedControl_CActionMoveTo.h
+MERGE rc=0 engine/CEngineInternalPrimitiveGroup.h
+MERGE rc=0 engine/CVectorMap.h
+NEW engine/CEngineInternalPrimitiveAnimatedMesh.h
+MERGE rc=0 engine/CNavigatorManager.h
+MERGE rc=0 engine/CAnimationEntry.h
+NEW engine/NCreatureMode_CModeBriarRoseConcentrate.h
+MERGE rc=0 engine/CAIStateGroupBase.h
+NEW engine/EMovementType.h
+NEW engine/CEngineInternalPrimitiveMeshBase.h
+NEW engine/CWStringParser.h
+MERGE rc=0 engine/CEnginePrimitive2DViewportManager.h
+MERGE rc=0 engine/C2DVector.h
+NEW engine/CAnimFilterOfGroup.h
+MERGE rc=0 engine/CThingManager.h
+MERGE rc=0 engine/CIntelligentPointer.h
+NEW engine/EScriptEntityMoveType.h
+MERGE rc=0 engine/C3DVector.h
+NEW engine/CNavigatorExternalInterface.h
+MERGE rc=0 engine/CGraphicDataBank.h
+MERGE rc=0 engine/CThing.h
+MERGE rc=0 engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h
+MERGE rc=0 engine/CAnimComponentFollowingOnAnim.h
+MERGE rc=0 engine/CResource.h
+MERGE rc=0 engine/CWorld.h
+NEW engine/CTCCreatureGroup.h
+NEW engine/CTCBetting.h
+NEW engine/NCreatureMode_CModeDrained.h
+MERGE rc=0 engine/CTCCombat.h
+MERGE rc=0 engine/CTCHeroStats.h
+NEW engine/CTCEnemy.h
+MERGE rc=0 engine/CAIStateGroup_PrepareMeal.h
+NEW engine/CEnvironmentSpellEffectInterface.h
+NEW engine/EMessageEventType.h
+NEW README.md
+MERGE rc=0 fable_string.h

@@ -23,6 +23,10 @@ class CThingManager : public CClassFactory {
 public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
     virtual ~CThingManager();
+#ifdef FABLE_RETAIL_CTHINGMANAGER_NPCNAMES
+    // Retail opt-in (Codex pass18): Ego_r0052d760/FableWin01d45200; public original member.
+    void SetNameForThing(unsigned __int64 uid,const CWideString& new_name);
+#endif
     void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
 #ifdef FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
     // Retail opt-in (chunk 846, row 0x0051FD80 LoadSingleThing): the same Ego_r.pdb member with its body. Retail keeps an out-of-line
@@ -133,7 +137,12 @@ private:
     bool LoadingEntitiesFromSaveGame;
     NThingManager::CEntityRuntimePersistence EntityRuntimePersistence; // +a0
     bool ErrorFlag;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_NPCNAMES
+    // Original Ego_r type196dd private map; native00521a91 accesses+cc. Same three-word size.
+    std::map<unsigned __int64,std::pair<CCharString,CWideString> > NPCNameMap;
+#else
     unsigned long NPCNameMap[3]; // std::map<unsigned __int64,std::pair<CCharString,CWideString> > +cc
+#endif
     long SerialiseVersionNumber;
     long LevelBeingLoaded;
     CCharString CurrentSectionName;

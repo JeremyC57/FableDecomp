@@ -1,0 +1,15 @@
+{
+  "assigned_functions": 40,
+  "verified_functions": 38,
+  "function_percentage": 95.0,
+  "raw_exact": 2,
+  "relocation_exact": 36,
+  "parked": 1,
+  "extent_wrong": 1,
+  "untouched": 0,
+  "matched_bytes": 8481,
+  "assigned_span_bytes": 8832,
+  "recorded_grade_invocations": 332,
+  "tested_functions": 39,
+  "header_files": 106
+}

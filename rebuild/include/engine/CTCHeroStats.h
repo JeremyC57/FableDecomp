@@ -78,7 +78,15 @@ public:
     // default branch's offset; the row's `inc dword ptr [ebp+0D0h]`, 0x005E7D35).
     void AddMoney(long amount, bool flag);                               // 0x0057B327
     void AddRewardMoney(long amount);                                    // 0x0057A59B
+#ifdef FABLE_RETAIL_CTCHEROSTATS_BOASTTAKEN
+    // Retail opt-in (Codex pass18): original01c58eb0/ed0, native004b1af6 increments+cc.
+    long GetNumBoastsTaken()const {return NumBoastsTaken;}
+    void SetNumBoastsTaken(long value) {NumBoastsTaken=value;}
+    unsigned char _pad_after_base[0xcc-sizeof(CTCBase)];
+    long NumBoastsTaken;
+#else
     unsigned char _pad_after_base[0xd0 - sizeof(CTCBase)];
+#endif
     long NumBoastsCompleted;                                             // +0xd0
     unsigned char _pad_0xd4[0x1dc - 0xd4];
 #elif defined(FABLE_RETAIL_CTCHEROSTATS_BRIBE)

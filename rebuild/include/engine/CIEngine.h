@@ -62,7 +62,11 @@ public:
 #endif
     virtual void WorldFrameUpdate(bool);                                  //  9 0x00B23310
     virtual void PausedWorldFrameUpdate();                                // 10 0x00B23320
+#ifdef FABLE_RETAIL_CIENGINE_SCREENPOS
+    virtual bool ConvertScreenPosToWorldPos(const C2DVector&,C3DVector&)const = 0;                                // 11 (CEngine 0x00B23CF0, ret 8)
+#else
     virtual void Virtual11_00b23cf0() = 0;                                // 11 (CEngine 0x00B23CF0, ret 8)
+#endif
 #ifdef FABLE_RETAIL_CIENGINE_CONVERTSCREENPOS
     // Nested opt-in (chunk 758, row 0x00B24400): slot 12 is FableWin.pdb ?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z
     // (labels_rtti_port.tsv; CEngine vtable 0x012A0F3C slot 12, `ret 0Ch`); pure here like the other unnamed slots.

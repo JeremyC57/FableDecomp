@@ -2681,3 +2681,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - An `#include` that lands inside an open `namespace` still grades RELOCATION_MATCH (relocations are masked) but binds `?Sym@Ns@@...`: check the object's symbols, not only the grade (0x00557D20).
 - Two helpers each expanded twice can exceed VC7.1's default inline budget: try `/d2inlT` before FABLE_FORCEINLINE (0x009FA620 GFGetTopBit / GFGetNextPowerOfTwo expand at T180, not T160).
 - A scaled value written back into a parameter moves temporaries; a named float local keeps retail's schedule (0x00B84720).
+- The PDBs spell CWideString's `const wchar_t*` as `PB_W` (native wchar_t), not `PBG`: rows that bind the string core need `/Zc:wchar_t` (0x0099BA70, 0x007E5570, 0x00A0CDD0); 0x0099BA70 also needs `/GS`. Landed `PBG` spellings are queued (land1011aq).

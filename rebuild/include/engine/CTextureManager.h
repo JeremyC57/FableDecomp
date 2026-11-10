@@ -10,8 +10,15 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+class CGraphicFrame;class CManagedTexture;
+#endif
 class CTextureManager {
 public:
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    // Ego_r00b7d7f0/FableWin031876c0 and native009fe4d4 argument addresses.
+    bool ReduceMipmapLevel(CGraphicFrame&,CManagedTexture&,unsigned long);
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     bool          Initialised;                               // +0x04
     unsigned char _pad_0x05[0x3];                            // +0x05

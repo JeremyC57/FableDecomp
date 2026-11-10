@@ -67,6 +67,11 @@ protected:
     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
     // (protected; retail 0x0097E200).
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+    // Both PDBs; FableWin02bb2d10 calls these original protected functions.
+    EAIActionReturn AIAction_MoveToPos(EAIActionRepeat,C3DVector,bool&,EMovementType,bool,bool,const CThing*,bool,float);
+    EAIActionReturn AIAction_LookAtPos(EAIActionRepeat,C3DVector,long,float);
+#endif
     EAIActionReturn AIAction_DoNothing();                                // 0x0097E200
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
     // Nested opt-in (chunk 758, row 0x0096AE50 CAIStateGroup_WhisperRetreat::UseWill): Ego_r.pdb / FableWin.pdb

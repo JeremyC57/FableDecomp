@@ -10,6 +10,24 @@
 
 class CGraphicDataBank;
 
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER
+// Ego_r577fa (size38h), constructor57163, AlphaMaskInfo+0c; native RTTI vtable012a7ed8.
+#include "engine/CEnginePrimitiveManager.h"
+#include "engine/C2DAlphaMaskInfo.h"
+class CEnginePrimitive2DViewportManager : public CEnginePrimitiveManager {
+public:
+    CEnginePrimitive2DViewportManager(CArray<CEngineScene*>&);
+    virtual ~CEnginePrimitive2DViewportManager();
+    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType);
+    virtual void GetSupportedTypes(CEnginePrimitiveTypeList&) const;
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
+    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase&,CEngineSubPrimitiveChain&,ESubPrimitiveType);
+    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);
+    const C2DAlphaMaskInfo* GetCurrentAlphaMask();
+    C2DAlphaMaskInfo AlphaMaskInfo;
+};
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DViewportManager)==0x38);
+#else
 #pragma pack(push, 1)
 class CEnginePrimitive2DViewportManager {
 public:
@@ -23,5 +41,7 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DViewportManager) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitive2DViewportManager, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitive2DViewportManager, AlphaMaskInfo) == 0xc);
+
+#endif
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVE2DVIEWPORTMANAGER_H

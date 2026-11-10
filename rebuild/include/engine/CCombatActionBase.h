@@ -68,6 +68,11 @@ protected: virtual CCreatureActionBase* Clone() const;
     // ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z (0x008574D0), the declaration the MELEE branch has under _INITIALISE.
 public: void SetCombatAnimation(const CCharString& name);              // 0x008574D0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_RECOVER
+public:
+    virtual void Initialise();
+    void SetCombatAnimation(const CCharString&);
+#endif
 protected: unsigned char _pad_0xa8[0x6c];
 };
 #endif

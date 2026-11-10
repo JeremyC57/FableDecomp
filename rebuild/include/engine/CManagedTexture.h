@@ -7,6 +7,11 @@
 class CManagedTexture : public CBaseClass {
 public:
     void TouchTexture();
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+    unsigned long GetUnusedFrames() {return Data->GetUnusedFrames();}
+    bool IsValid() const {return !Data.IsNull();}
+    unsigned long Sizeof() const;
+#endif
 private:
     CIVCountedPointer<CManagedTextureData> Data;
 };

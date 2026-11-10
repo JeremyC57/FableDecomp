@@ -11,9 +11,13 @@ public:
     bool IsBump() const {return Bank->GetEntryDataType(Index)==2;}
 private:
 #endif
+#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
+private:
+    friend class CGraphicInfoFrame;
+#endif
     CGraphicDataBank* GetBank() const {return Bank;}
 private:
-#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+#if defined(FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT) || defined(FABLE_RETAIL_CGRAPHICINFOFRAME_FREE)
     CGraphicDataBank::CGraphicHeader Header;
 #else
     unsigned char Header[28]; // complete CGraphicDataBank::CGraphicHeader storage

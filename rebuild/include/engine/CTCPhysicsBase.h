@@ -22,6 +22,10 @@ class CTCParamsBase;
 class CThingPhysicalDebugInfo;
 class CThingPhysicsMeshInfo;
 class CTCPhysicsBase : public CTCBase {
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_IMPASSABLE
+protected:
+ void ImpulseRespondToCollisonWithImpassableObject(const CPhysicsCollideResponse&,const CTCPhysicsBase&,C3DVector&)const;
+#endif
 #ifdef FABLE_AUTOPLACE_TEST_ACCESS
     friend class CAutoPlaceFixture;
 #endif

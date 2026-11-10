@@ -8,6 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+// Ego_r5336c public original base,protected PTargetThing+14; native RTTI128cdcc.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CAIStateGroup_EnemyCreatureBase:public CAIStateGroupBase {
+protected:CIntelligentPointer<CThingCreatureBase> PTargetThing;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_EnemyCreatureBase)==0x1c);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_EnemyCreatureBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -23,4 +32,5 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_EnemyCreatureBase) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EnemyCreatureBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EnemyCreatureBase, PTargetThing) == 0x14);
 
+#endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_ENEMYCREATUREBASE_H

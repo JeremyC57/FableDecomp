@@ -1,0 +1,41 @@
+address	status	attempts	assigned_name	retail_size	object_size	flags	lever	residue	test_status
+004b1a80	RELOCATION_MATCH	3	?SetBoastAsMade@CQuestManager@@QAEXJVCCharString@@@Z	277	277		original_helpers		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00521a90	RELOCATION_MATCH	3	?SetNameForThing@CThingManager@@QAEX_KABVCWideString@@@Z	78	78		original_donor_arms		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00637c80	RELOCATION_MATCH	5	?DebugDraw@CThingMapManager@NThingMap@@QBEXABVC2DCoordI@@J@Z	288	288		main_review		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00664d40	RELOCATION_MATCH	8	?GetPCombatTypeDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCCombatTypeDef@@@@XZ	268	268		a05_guarded_forward_declaration		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00683b00	RELOCATION_MATCH	3	?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	261	261		original_reverse_iterator		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0069e2e0	RELOCATION_MATCH	21	?SwitchIntoGeneralCase@CGameCameraManager@@AAEXXZ	237	237		resume_a07_final_identity_getters		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+006a02b0	RELOCATION_MATCH	7	?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ	240	240		final_documented		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+006afaf0	RELOCATION_MATCH	6	?ImpulseRespondToCollisonWithImpassableObject@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@ABV1@AAVC3DVector@@@Z	249	249		a03_grouped_first_two_dot_products		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+007610d0	RELOCATION_MATCH	5	?IsPosInShape@CSubdivisionTriangle@NShape@@UBE_NABVC3DVector@@@Z	237	237		a02_native_float_zero_comparison		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00761560	RELOCATION_MATCH	7	?EditorDrawPreparePrimitivesForRendering@CClosedShapeBase@NShape@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z	186	186		main_final_scoped_declaration		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0076c8a0	RELOCATION_MATCH	7	??0CTCEnemy@@QAE@AAVCThing@@@Z	254	254		a04_exact_getdef_donor_body		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0076e290	RELOCATION_MATCH	9	?SetLastProjectileWeaponTrailPoint@CTCWeaponTrail@@QAEXABVC3DVector@@@Z	84	84		a06_portable_calling_convention		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+007c6460	RELOCATION_MATCH	5	?FrameUpdate@CTCGhostSword@@UAEXXZ	240	240		original_helpers_complete		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+007e5570	RELOCATION_MATCH	4	?GetPlayersMoney@CTCBetting@@QAE?AVCWideString@@XZ	262	262	/Zc:wchar_t	exact_wchar_symbols		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00814ea0	RELOCATION_MATCH	19	?GetClosestPointToPos2D@CPhysicalPrimitiveSphere@NHitLocations@@UBE?AVC3DVector@@ABVCThing@@ABV3@AAV3@@Z	238	238		main_review		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0082a890	RELOCATION_MATCH	9	?AddMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z	206	206		a06_original_implicit_marker_copy		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00836de0	VERIFIED_MATCH	5	?FlipTrackDirection@CThingTrackNode@@QAEXXZ	247	247		a01_original_shared_locals		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00865eb0	RELOCATION_MATCH	4	?Initialise@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ	144	144		original_donor_chain_base		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00881690	RELOCATION_MATCH	8	?InsertRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEPAXMABUCRadialBlurParams@CEnvironmentSpellEffectInterface@@ABUCRadialBlurPositionParams@4@W4ScreenEffectPriority@2@@Z	229	229		main_review		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+008da7a0	RELOCATION_MATCH	3	?OnDeactivate@CModeDrained@NCreatureMode@@UAEXXZ	227	227		original_references		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+008e7f80	RELOCATION_MATCH	6	?GetRandomImposter@CModeBriarRoseConcentrate@NCreatureMode@@QBEPAVCThing@@XZ	223	223		a03_original_predicate_local_names		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+008fcc60	RELOCATION_MATCH	11	?FrameUpdate@CPhysicsCoordRigid@NCameraModes@@UAEXXZ	263	263		a08_original_locals_grouped_tanh		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00903f30	PARKED	45	?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z	254	254		genuine_gettc_find_compare_chain	254/254bytes,89/89instructions; ebx/ebp roles exchanged;10strictdiffhunks	VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00934f20	RELOCATION_MATCH	20	??$?RVCThing@@@CThingCompare_NearestGroupByMember@@QBEPAVCThing@@PAV1@0@Z	281	281		main_review		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00946190	RELOCATION_MATCH	3	?Update@CAIStateGroup_PrepareMeal@@MAEXXZ	259	259		original_donor_chain		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0096a260	RELOCATION_MATCH	6	?FindHitEvent@CAIStateGroup_WhisperRetreat@@IAE_NXZ	232	232		exact_inline_conventions		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00978790	RELOCATION_MATCH	21	??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7279f0df@@QBE_NPBVCThing@@0@Z	286	286		main_review		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0097abf0	RELOCATION_MATCH	7	??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x183b693f@@QBE_NPBVCThing@@0@Z	286	286		main_review		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+0099ba70	RELOCATION_MATCH	6	?Sprintf@CWideString@@QAAXPB_WZZ	265	265	/GS /Zc:wchar_t /d2inlT200	original_data_pointer		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+009d5df0	RELOCATION_MATCH	3	??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z	183	183		shared_original_types		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+009fe460	RELOCATION_MATCH	4	?FreeTextureMemory@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z	231	231		final_documented		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00a0cdd0	RELOCATION_MATCH	4	?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z	178	178	/Zc:wchar_t	original_for_condition		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00a198c0	RELOCATION_MATCH	5	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z	289	289		a02_original_direct_add2d		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00a42170	RELOCATION_MATCH	7	?Initialise@CPlane@@QAE_NABVC3DVector@@00@Z	269	269		a04_grouped_first_two_cross_components		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00a65480	RELOCATION_MATCH	5	?AllocAreaFromArea@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEPAVCMemoryArea@2@PAV32@J@Z	265	265		a02_original_create_parameter_names		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00b39fb0	RELOCATION_MATCH	25	?UpdatePrimitives@CEnginePrimitiveAttachmentManager@@QAEXABV?$CArray@PAVCEngineCamera@@@@M@Z	284	284		a22_final_original_helpers		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00bc62d0	RELOCATION_MATCH	3	?ClearChildPrimitive@CEngineInternalPrimitiveGroup@@UAEXK@Z	97	97		original_helpers		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00be1e20	RELOCATION_MATCH	3	??0CEnginePrimitive2DViewportManager@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z	77	77		original_reset_body		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS
+00be2120	EXTENT_WRONG	0		97			Report invalid extent; no fragment	Assigned97 bytes truncate a call; complete function106 bytes, end0x00be218a.	NOT_AUTHORED_EXTENT_WRONG
+00cbe583	VERIFIED_MATCH	7	?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	61	61		guarded_portable_final		VC71_RTM_GR0_PASS;GPP_CXX03_64_PASS

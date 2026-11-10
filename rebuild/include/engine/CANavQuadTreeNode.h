@@ -78,6 +78,10 @@ public:
     }
 #endif
     bool operator==(const CANavQuadTreeNode&) const;                                     // 0x00A763F0 ??8CANavQuadTreeNode@@QBE_NABV0@@Z
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_ISNAVIGABLE
+    // Retail opt-in (Codex pass18): original FableWin02973240 tests Blocked+0f.
+    bool IsNavigable() const {return !Blocked;}
+#endif
     const C2DVector& GetPosition() const { return Position; }                            // Ego_r ?GetPosition@CANavQuadTreeNode@@QBEABVC2DVector@@XZ
     C2DVector     Position;                                                              // +0x04
     unsigned char QuadTreeLevel;                                                         // +0x0c

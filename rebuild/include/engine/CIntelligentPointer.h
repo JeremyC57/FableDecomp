@@ -48,8 +48,14 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other);
 #endif
     void Set(T* pointer) { SetPointer(pointer); }
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+    // Retail opt-in (Codex pass18): original018f05d0/018f3510/01ca3ac0.
+    T* Get() const { return GetPointer(); }
+    T* operator->()const { return GetPointer(); }
+#else
     T* Get() const { return static_cast<T*>(GetPItem()); }             // FableWin ?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ
     T* operator->() const { return Get(); }                             // FableWin ??C?$CIntelligentPointer@..@@QBEPAV..@XZ
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
     // Chunk 754 (row 0x00945BD0 `PCookingPot = pot;`): FableWin.pdb ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z, inline in
     // retail: the item read into a local, then SetPItem (0x00A01B50 then 0x00A01B90; the destination is formed after the read,
@@ -62,7 +68,11 @@ public:
     // Chunk 754 (row 0x0082A890 CMiniMapDisplay::AddMarker): FableWin.pdb ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z, inline in
     // retail: the base ctor 0x00A01B10, the vptr, then GetPItem on the source 0x00A01B50 and SetPItem 0x00A01B90 (the list node's copy
     // in the inline push_back), not the implicit member-wise copy of PData.
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN
+    CIntelligentPointer(const CIntelligentPointer& item) {SetPointer(item.GetPointer());}
+#else
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_OUTOFLINE
     // Retail opt-in (chunk 801, row 0x00960120 CAIStateGroup_DeedReactionRoot::Update): FableWin.pdb
@@ -78,6 +88,9 @@ public:
     template<class U> CIntelligentPointer(const CIntelligentPointer<U>& other);
 #endif
 private:
+#if defined(FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN)
+    T* GetPointer()const{return static_cast<T*>(GetPItem());}
+#endif
     void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
 };
 #pragma pack(pop)

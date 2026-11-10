@@ -1,5 +1,44 @@
 #ifndef FABLE_ENGINE_NSCREENEFFECT_CSCREENEFFECTPRIORITYSTACK_H
 #define FABLE_ENGINE_NSCREENEFFECT_CSCREENEFFECTPRIORITYSTACK_H
+#ifdef FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_FULL
+// Retail opt-in (Codex pass18): original full stack fields, native offsets and
+// actual STLport list/set representations; existing declaration branch is untouched.
+#include "engine/CEnvironmentSpellEffectInterface.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+namespace NScreenEffect {
+enum ScreenEffectPriority {SCREEN_EFFECT_PRIORITY_OTHER=0,SCREEN_EFFECT_PRIORITY_SCRIPT=1,SCREEN_EFFECT_PRIORITY_SPELL=2,NUM_SCREEN_EFFECT_PRIORITIES=3};
+class CScreenEffectPriorityStack {
+public:
+ struct CStackEntry {CStackEntry(long frames):curdurationcount(0),durationcount(frames),fadingout(false){}virtual ~CStackEntry(){}long curdurationcount,durationcount;bool fadingout;};
+ struct CRadialBlurEntry:public CStackEntry {
+  CRadialBlurEntry(const CEnvironmentSpellEffectInterface::CRadialBlurParams& p,const CEnvironmentSpellEffectInterface::CRadialBlurPositionParams& pos,long frames):CStackEntry(frames),param(p),posparam(pos){}
+  CRadialBlurEntry(const CRadialBlurEntry&);
+  virtual ~CRadialBlurEntry(){}
+  CEnvironmentSpellEffectInterface::CRadialBlurParams param;
+  CEnvironmentSpellEffectInterface::CRadialBlurPositionParams posparam;
+ };
+ struct CDisplacementMonochromeEffectColourEntry:public CStackEntry {CRGBFloatColour paramcol;};
+ struct CScreenFilterEntry;
+ struct CThingGraphicArgPasser;
+ typedef std::vector<CThingGraphicArgPasser> ThingGraphicArgPassers;
+ virtual ~CScreenEffectPriorityStack();
+ void* InsertRadialBlurEntry(float,const CEnvironmentSpellEffectInterface::CRadialBlurParams&,const CEnvironmentSpellEffectInterface::CRadialBlurPositionParams&,ScreenEffectPriority);
+ void ScreenFilterSetFlags(const ThingGraphicArgPassers&,void*);
+private:
+ std::list<CRadialBlurEntry> RadialParamStack[NUM_SCREEN_EFFECT_PRIORITIES];
+ std::set<CStackEntry*> RadialBlurKeys;
+ CEnvironmentSpellEffectInterface::CRadialBlurParams CurrentRadialBlurParams;
+ CEnvironmentSpellEffectInterface::CRadialBlurPositionParams CurrentRadialBlurPosParams;
+ std::list<CDisplacementMonochromeEffectColourEntry> DisplacementParamStack[NUM_SCREEN_EFFECT_PRIORITIES];
+ std::set<CStackEntry*> DisplacementKeys;
+ CRGBFloatColour CurrentDisplacementParam;
+ std::list<CScreenFilterEntry> ScreenFilterParamStack[NUM_SCREEN_EFFECT_PRIORITIES];
+ std::set<CStackEntry*> ScreenFilterKeys;
+ CEnvironmentSpellEffectInterface::CScreenFilterParams CurrentScreenFilterParam;
+};
+}
+#else
 // NScreenEffect::CScreenEffectPriorityStack (new, chunk 765): only the ScreenFilterSetFlags entry row 0x006B83E0 forwards to is
 // modelled. Ego_r.pdb / FableWin.pdb ?ScreenFilterSetFlags@CScreenEffectPriorityStack@NScreenEffect@@QAEXABV?$vector@
 // UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@..@std@@@std@@PAX@Z = retail 0x00881A40.
@@ -36,4 +75,5 @@ public:
     void ScreenFilterSetFlags(const ThingGraphicArgPassers& things, void* handle);   // 0x00881A40
 };
 }
+#endif // full original stack opt-in
 #endif

@@ -32,7 +32,12 @@ public:
 private:
     virtual CCreatureActionBase* Clone() const;
     static CCharString __fastcall GetAnimationToUse(const CThing& creature, const CThing& item);
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHE_PRIVATE
+// Ego_r22fe0: original access of both contained pointers is private.
+private:
+#else
 public:
+#endif
     CIntelligentPointer<CThing> PUnsheatheItem;                               // +0xA8
     CCountedPointer<CCreatureActionBase> PFollowUpAction;                     // +0xB0
 };

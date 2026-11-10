@@ -31,6 +31,9 @@ public:
         virtual bool IsAllowingPlayerSpecialMovementMoves() const;                                // slot 9
         virtual bool IsHoldWeaponWithBothHands() const;                                           // slot 10
         virtual bool IsRemoveOnDeactivate() const;                                                // slot 11
+#ifdef FABLE_RETAIL_CMODEBASE_PARENTTHING
+        CThing& GetParentThing(){return ParentThing;}
+#endif
         CWorld& GetWorld() const;                                                                 // 0x0073A680
 #endif
     protected:

@@ -14,6 +14,10 @@ class C3DMeshInfo : public CMeshDataBankEntry {
 public:
 #ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
     C3DBoundingBox GetBoundingBox()const{return BoundingBox;}
+#ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGSPHERE
+    // Retail opt-in (Codex pass18): FableWin GetBoundingSphere returns original stored sphere by value.
+    C3DBoundingSphere GetBoundingSphere()const{return BoundingSphere;}
+#endif
 private:
     class CMeshData;
     CIVCountedPointer<CMeshData> MeshData;

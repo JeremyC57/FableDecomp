@@ -8,6 +8,12 @@
 class CAIScratchpadDef;
 class CTCAIScratchpad:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_BETTING
+ // Both PDB original static names and FableWin getters02ac3ed0/3f50/3f90; native013bae1d/20/24.
+ static bool BettingActive;
+ static long BettingAmount;
+ static bool CountBetMoneyDown;
+#endif
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_AI_SCRATCHPAD;}
  long GetActionFrequency()const{return ActionFrequency;}
  float GetActionFrequencyVariation()const{return (ActionFrequencyVariation);}

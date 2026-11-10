@@ -12,6 +12,9 @@
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CEngineComponent.h"
 class CEngineInit;
+class CEngineCamera;
+template<class T>class CArray;
+class C3DBoundingSphere;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_LIST
 // Nested opt-in (chunk 770, row 0x00B39F70 ~CEnginePrimitiveAttachmentManager): the AttachedPrimitives member typed as its Ego_r.pdb
 // list<CEngineInternalAttachedPrimitiveInfo> (STLport 4 bytes at +0x10; _List_base::clear out of line at 0x00B3A760, the sentinel
@@ -20,19 +23,41 @@ class CEngineInit;
 // opaque here), virtual ??1CEngineInternalAttachedPrimitiveInfo@@UAE@XZ.
 #include "engine/CBaseClass.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+#include "engine/CEngineInternalAttachedPrimitive.h"
+#include "engine/C3DBoundingSphere.h"
+class CEngineInternalAttachedPrimitiveInfo : public CBaseClass {
+public:
+ virtual ~CEngineInternalAttachedPrimitiveInfo();
+ bool IsAlive()const{return PrimitiveHandle.GetReferenceCount()>1;}
+ CEngineInternalAttachedPrimitive& GetPrimitive(){return static_cast<CEngineInternalAttachedPrimitive&>(PrimitiveHandle.GetData());}
+ bool GetOuterBoundingSphere(C3DBoundingSphere&,float);
+ CEnginePrimitiveHandle PrimitiveHandle;
+};
+#else
 class CEngineInternalAttachedPrimitiveInfo : public CBaseClass {
 public:
     virtual ~CEngineInternalAttachedPrimitiveInfo();
     unsigned char PrimitiveHandle[0x8];         // +0x04 CEnginePrimitiveHandle
 };
 #endif
+#endif
 class CEnginePrimitiveAttachmentManager : public CBaseClassNonCopyable, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+    void UpdatePrimitives(const CArray<CEngineCamera*>&,float);
+    void UpdateSceneForPreload();
+    virtual void FrameStart(const CEngineComponentParams&);
+    typedef std::list<CEngineInternalAttachedPrimitiveInfo> TAttachedPrimitiveList;
+#endif
     CEnginePrimitiveAttachmentManager();       // 0x00B39F30 ??0CEnginePrimitiveAttachmentManager@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_LIST
     virtual ~CEnginePrimitiveAttachmentManager();   // 0x00B39F70
 private:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER_UPDATE
+    bool IsVisible(const C3DBoundingSphere&,float,const CArray<CEngineCamera*>&)const;
+#endif
     std::list<CEngineInternalAttachedPrimitiveInfo> AttachedPrimitives;   // +0x10
 #else
 private:

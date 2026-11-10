@@ -9,6 +9,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_KNOCKDOWNRECOVER
+// Ego_r3bfeb, native base114h then private CanBeHit/Flip at114h/115h.
+#include "engine/CCombatActionBase.h"
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase:public CCombatActionBase {
+public:
+    virtual void Initialise();
+private:
+    bool CanBeHit;
+    bool Flip;
+};
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdownRecoverBase)==0x118);
+#else
 #pragma pack(push, 1)
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase {
 public:
@@ -83,5 +95,7 @@ FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdownRecoverBa
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdownRecoverBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdownRecoverBase, CanBeHit) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdownRecoverBase, Flip) == 0x115);
+
+#endif
 
 #endif // FABLE_ENGINE_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWNRECOVERBASE_H

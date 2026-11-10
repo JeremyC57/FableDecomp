@@ -25,6 +25,9 @@ namespace NAnimationEntryBodge { class CAnimEntryLite; }
 class CModeStandBase : public CTCCreatureModeManager::CModeBase {
 public:
     CModeStandBase(CThing& thing);                                       // ??0CModeStandBase@@QAE@AAVCThing@@@Z
+#ifdef FABLE_RETAIL_CMODESTANDBASE_DEACTIVATE
+    virtual void OnDeactivate();
+#endif
     virtual ~CModeStandBase();                                           // 0x0073D860 ??1CModeStandBase@@UAE@XZ
     long        IdleCounter;                                             // +0x1c
     long        FramesToKeepUpdatingMovement;                            // +0x20
