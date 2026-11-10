@@ -288,3 +288,4 @@ headers, never as asm in the row.
   with a cheap fitness. Read docs/pipeline/MATCHING_PLAYBOOK.md before parking any row. It lists the measured c2 rules (regime-1
   priorities, enregistered globals, the frame packer, inline frequency, cross-jump edge order, x87 / scheduler order) and the
   measured dead ends. A park needs the measured reason for each residue, not a guess.
+- **Made-up names (owner, 2026-11-10):** "you can use a made up name only if you cant find original name anywhere, are consistent in the names usage, and the name is as accurate as you can make it and makes sense". Search every name source first (Ego_r / FableWin / Ego_d name sets, Fable.exe strings, refs/fse_api_manifest.json, EgoCore, the sibling repos); then one descriptive name per address used everywhere, saying what the body does (not `VirtualNN_<addr>`, not `*_Unproven`), marked "descriptive" in NOTES.md.

@@ -51,6 +51,9 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   as close to retail as evidence allows (two sources), in the exact PDB spelling; one retail address, one name. Agents
   hand back `NAME_FIXES.tsv` for landed spellings they prove wrong; the coordinator respells those callers at landing.
   Full rule: `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`.
+  Made-up names (owner, 2026-11-10): allowed only when the original name is found nowhere (PDBs, strings, FSE, EgoCore,
+  sibling repos), used consistently (one name per address everywhere), and as accurate and sensible as evidence allows
+  (say what the function does; no `VirtualNN_<addr>` / `Unproven` placeholders in landed code). Mark them descriptive in NOTES.
 - **Trust the manifest carefully** — module labels are propagated across byte-identical bodies;
   use `label_trust.py` before attributing a function to a class.
 - **Reproducible DB** — names as `ghidra_out/labels_*.tsv`, applied with `LabelApply.java`.
