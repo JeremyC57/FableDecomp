@@ -1,0 +1,17 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+0089c910	1024	CGameScriptInterface::CanThingBe_Sensed_ByOtherThing	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-10-22_linux_hand287/differ/0089c910.cpp		0089c7b0 0089c850 0089c8a0 0089cd10 0089cd30 0089cd50
+0089ce70	624	CGameScriptInterface::?IsThingAwareOfOtherThingInAnyWay@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z	parked	x87-order	rebuild/candidates/manual/pending/2026-10-22_linux_hand288/differ/0089ce70.cpp		0089cd30 0089cd50 0089cd70 0089d0e0 0089d160 0089d1c0
+008a7a70	752	CGameScriptInterface::?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	parked	register-tie	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/008a7a70.cpp		008a78e0 008a7930 008a7980 008a7d60 008a7e00 008a7ec0
+008a8260	480	CGameScriptInterface::?GetHeroSummonedCreaturesList@CGameScriptInterface@@UBE_NAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z	parked	ltcg/crt/asm-impossible	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/008a8260.cpp		008a7f60 008a8010 008a80f0 008a8440 008a8570 008a86c0
+0088edc0	1568	CGameScriptInterface::CameraDoConversation	unworked			004c1060	0088ed20 0088eda0 0088edb0 0088f3e0 0088f400 0088f410
+006b1a20	784	CGameScriptInterface_SetSoundTheme	unworked				006b1900 006b1960 006b1f30
+006b2260	672	CGameScriptInterface_UpdateAtmosphere	unworked			006b1a20 0083d460	006b1f30 006b2500 006b2550 006b25e0
+0049ffd0	272	CWorld::SetKickPos	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand758/differ/0049ffd0.cpp		0049f2d0 0049f3f0 004a00e0 004a0180 004a0220
+004a0780	208	CWorld::SaveGameStateManual	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-11-04_linux_hand758/differ/004a0780.cpp		004a0220 004a0370 004a05c0 004a0850 004a08d0 004a0940
+004a1840	1025	CWorld::Load	parked	wrong-flags/pragma	rebuild/candidates/manual/pending/2026-10-22_linux_hand914/differ/004a1840.cpp	004a0d90	004a0bb0 004a0cd0
+004a1cb0	1344	CWorld::CWorld::PreparePrimitivesForEngine	unworked		rebuild/candidates/manual/pending/2026-11-03_linux_hand734/differ/004a1cb0.cpp		004a2d70 004a2e90
+004a34f0	592	CWorld::AutoLoadRegionLeaving	parked	register-tie	rebuild/candidates/manual/pending/2026-10-27_linux_hand616/differ/004a34f0.cpp		004a2e90 004a2f10 004a3200 004a5a40
+004a5e90	1728	CWorld::AutoLoadRespawn	unworked		rebuild/candidates/manual/pending/2026-11-03_linux_hand734/differ/004a5e90.cpp		004a5a40 004a6550 004a67d0 004a6ab0
+0062b070	1872	CWorld::EAOpenHeroInformationScreen	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/0062b070.cpp	009f18f0	00629f50 0062aba0 0062ad90 0062b7c0
+0062bd80	368	CWorld::EAControlledCreatureStrafe	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-21_linux_hand256/differ/0062bd80.cpp	006ad3c0 009f18f0	0062ad90 0062b7c0 0062c0e0 0062c1c0
+0062bef0	496	CWorld::EAUseProjectileWeapon	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand762/differ/0062bef0.cpp		0062b7c0 0062c0e0 0062c1c0 0062c300

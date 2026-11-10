@@ -39123,3 +39123,13 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??0CModeSitFloor@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@@Z	008ac3c0	008a8c60
 ??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVCThingFilter_OverlappingCircle@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	005ed7d0	005eb590
 ?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z	007cab30	005eb590
+??$GetPBestThing@V?$CFilter_Bind2@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	004ac2c0	0049ffd0
+?SetHeroKickPositionForCurrentRegion@CTCHeroStats@@QAEXABVC3DVector@@M_N@Z	0057d990	0049ffd0
+?IsDaySounds@CGameTimeManager@@QBE_NXZ	006bb1e0	006b1a20
+?IsNightSounds@CGameTimeManager@@QBE_NXZ	006bb790	006b1a20
+?MixAtmos@CAtmosProcess@@QAEXABVCCharString@@0MM@Z	006b1900	006b1a20
+?Create@CThingMarker@@SIPAV1@JABVC3DVector@@ABVCCharString@@@Z	0083d460	006b2260
+?GetRainStrength@CEnvironment@@QBEMXZ	006b2bd0	006b2260
+?SetPos@CTCAtmosPlayer@@QAEXABVC3DVector@@@Z	007e35f0	006b2260
+?UpdateDayNightAtmosSounds@CAtmosProcess@@AAEXXZ	006b1a20	006b2260
+?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ	006b1f30	006b2260

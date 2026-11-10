@@ -2665,3 +2665,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A temporary-reload register difference (`c2prio --rotation`) went away when the member read became the PDB's inline accessor (GetCurrentScriptID()) -- a different expression-temporary order (0x0089B5B0).
 - A named `const CPlayerManager& pm = PeekPlayerManager();` in a block adds one candidate there and turned a register tie retail's way (0x005EB590: def piece edi, prize esi).
 - Re-authoring a landed row leaves its old symbols in rebuild/oracles/reloc_bindings.tsv (recheck does not drop them): delete the stale lines by hand (0x005FC2D0 / 0x005FC8A0's `NScreen005fc*` namespace, 22 lines).
+- VC7.1's `std::basic_string` has no `clear()`: a behaviour test that calls it builds under g++ but is TCC_FAIL in vland's /Od test build; write `s = ""` (2026-11-10, 0x004A0780).
+- A row that turns on `stlport/fable_containers.h` opt-ins must include it before `fable_string.h` (which pulls the default copy first), or the row is SRC_FAIL (chunk 1012, 0x0049FFD0).

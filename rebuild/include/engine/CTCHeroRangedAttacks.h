@@ -16,6 +16,14 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_RANGED_ATTACKS; }
     float GetPullBackAmount() const;                            // 0x00789A70
     float GetShotAccuracyFraction() const;                      // 0x00789A80
+#ifdef FABLE_RETAIL_CTCHERORANGEDATTACKS_PROJECTILEMODE
+    // Nested opt-in (chunk 1012, row 0x0062BEF0 CWorld::EAUseProjectileWeapon): Ego_r.pdb ?IsToUseFirstPersonTargetingMode@CTCHeroRangedAttacks@@QBE_NXZ
+    // (Ego_r 0x00790AB0, after GetShotAccuracyFraction 0x00790A70 / IsAtMaxPullBack 0x00790A90 = retail 0x00789A80 / 0x00789A90) and
+    // ?IncrementProjectileWeaponMode@CTCHeroRangedAttacks@@QAEXXZ (Ego_r 0x00790C80, after the ctor 0x00790BB0 = retail 0x00789BB0),
+    // out of line in retail at 0x00789AB0 / 0x00789C90. Declarations only.
+    bool IsToUseFirstPersonTargetingMode() const;               // 0x00789AB0
+    void IncrementProjectileWeaponMode();                       // 0x00789C90
+#endif
 private:
     CThingCreatureBase*               PParentCreature;          // +0x0c
     CDefPointer<const CHeroCombatDef> PHeroCombatDef;           // +0x10

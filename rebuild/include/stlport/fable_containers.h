@@ -276,9 +276,19 @@ public:
         this->_M_finish=uninitialized_fill_n(this->_M_start,n,_Tp());
     }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+    // Per-TU opt-in (chunk 1012, row 0x008A8260 CGameScriptInterface::GetHeroSummonedCreaturesList; like
+    // FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's copy constructor is one inline body, which VC7.1 called as a COMDAT in
+    // that TU: vector<CIntelligentPointer<CThingAICreature> > copy 0x008AC540 (call at 0x008A8387, ecx = the local, the source pushed:
+    // the inline CTCGhostSword::GetSummonedCreatures() return). Declared here; the body (below) is visible but kept out of line, so
+    // VC7.1 knows the copy never captures the new vector and keeps its start/finish in CPU locations across the caller's loop
+    // (0x008A838C `mov ebp,[esp+18h] ; mov edi,[esp+14h]`, never reloaded).
+    vector(const vector& x);
+#else
     vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
         this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
     }
+#endif
     ~vector() { _Destroy(this->_M_start,this->_M_finish); }
 #ifdef FABLE_RETAIL_STLP_VECTOR_ASSIGN
     // Retail branch (chunk 735, row 0x00577AC0): STLport 4.6 _vector.c operator=(const vector&), defined out of class (not
@@ -434,6 +444,16 @@ template<class _Tp,class _Alloc> vector<_Tp,_Alloc>& vector<_Tp,_Alloc>::operato
         this->_M_finish=this->_M_start+xlen;
     }
     return *this;
+}
+#endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+// (chunk 1012) STLport 4.6 _vector.h vector(const _Self&): allocate x.size() elements, uninitialized-copy the range; out of line.
+template<class _Tp,class _Alloc>
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+vector<_Tp,_Alloc>::vector(const vector<_Tp,_Alloc>& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {
+    this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
 }
 #endif
 #ifndef FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
@@ -856,6 +876,30 @@ template<class _Arg1,class _Arg2,class _Result> struct binary_function {
 template<class _Tp> struct less : public binary_function<_Tp,_Tp,bool> {
     bool operator()(const _Tp& x,const _Tp& y) const { return x<y; }
 };
+#ifdef FABLE_RETAIL_STLP_BINARY_COMPOSE
+// Retail opt-in (chunk 1012, row 0x0049FFD0 CWorld::SetKickPos): STLport 4.6 _function_base.h logical_or and _function.h
+// binary_compose / compose2 (the SGI extensions STLport keeps in namespace std). Ego_r.pdb mangles the GetPBestThing instance 0x004AC2C0
+// as ...V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@...: logical_or a struct, binary_compose a class
+// holding _M_fn1 / _M_fn2 / _M_fn3 by value (SetKickPos builds it at +0x00 / +0x04 / +0x08 of its frame copy, 0x004A0083).
+template<class _Tp> struct logical_or : public binary_function<_Tp,_Tp,bool> {
+    bool operator()(const _Tp& x,const _Tp& y) const { return x||y; }
+};
+template<class _Operation1,class _Operation2,class _Operation3>
+class binary_compose : public unary_function<typename _Operation2::argument_type,typename _Operation1::result_type> {
+protected:
+    _Operation1 _M_fn1;
+    _Operation2 _M_fn2;
+    _Operation3 _M_fn3;
+public:
+    binary_compose(const _Operation1& __x,const _Operation2& __y,const _Operation3& __z):_M_fn1(__x),_M_fn2(__y),_M_fn3(__z){}
+    typename _Operation1::result_type operator()(const typename _Operation2::argument_type& __x) const { return _M_fn1(_M_fn2(__x),_M_fn3(__x)); }
+};
+template<class _Operation1,class _Operation2,class _Operation3>
+inline binary_compose<_Operation1,_Operation2,_Operation3>
+compose2(const _Operation1& __fn1,const _Operation2& __fn2,const _Operation3& __fn3) {
+    return binary_compose<_Operation1,_Operation2,_Operation3>(__fn1,__fn2,__fn3);
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_SORT_FASTCALL
 // Retail opt-in (chunk 796, row 0x008E18D0): the std::sort instantiations are __fastcall in retail (first in ecx, last in edx, the
 // comparator pushed: 0x0076C000 / 0x0076C1A0 are bound as ??$sort@...@std@@YIX...; the landed 0x00767DA0 local model spells the

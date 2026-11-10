@@ -49,6 +49,17 @@ public:
     CWideString GetAutoSaveCheckPointFileName() const;                   // 0x004066F0 ?GetAutoSaveCheckPointFileName@..
     CWideString GetAutoSaveCheckPointPathName() const;                   // 0x00408040 ?GetAutoSaveCheckPointPathName@..
     CWideString GetPathNameFromFileName(const CWideString& fileName, bool b) const;   // 0x00408120 ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_AUTOSAVEPATHS
+    // Nested opt-in (chunk 1012, rows 0x004A0780 CWorld::SaveGameStateManual / 0x004A34F0 AutoLoadRegionLeaving): Ego_r.pdb QBE path / name
+    // getters (hidden CWideString result), out of line in retail. Ego_r 0x00405F70 / 0x00406870 / 0x004068E0 / 0x00406950 =
+    // GetAutoSavePathName / GetAutoSaveQuestStartPathName / GetAutoSaveCheckPointPathName / GetAutoSaveRegionLeavingPathName, retail
+    // 0x00406F70 / 0x00407FD0 / 0x00408040 (declared above) / 0x004080B0 (same 0x70 spacing; the bodies build "AutoSave" + ""/".qs"/
+    // ".cp"/".rl"); GetAutoSaveRegionLeavingFileName 0x00406730 (the landed CWorld::AutoSaveRegionLeaving 0x004A0180 binds these).
+    CWideString GetAutoSavePathName() const;                             // 0x00406F70
+    CWideString GetAutoSaveQuestStartPathName() const;                   // 0x00407FD0
+    CWideString GetAutoSaveRegionLeavingPathName() const;                // 0x004080B0
+    CWideString GetAutoSaveRegionLeavingFileName() const;                // 0x00406730
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_AUTOSAVENAME
     // Nested opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x00405860
     // ?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ (hidden CWideString result), out of line in retail at 0x00406C20.

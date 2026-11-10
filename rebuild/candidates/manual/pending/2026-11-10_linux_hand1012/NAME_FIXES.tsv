@@ -1,0 +1,9 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006b2bd0	?GetRainStrength@CEnvironment@@QBEMXZ	Ego_r/FableWin name set; 0x006B2260 (RELOCATION_MATCH here) compares it with 1e-4 to start/stop rain	?M@C006b2bd0@@QAEMXZ (landed definer, junk class/method)
+009f17a0	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	Ego_r/FableWin name set; the 0x2C argument is CGameEventDataPackage (Data[32], Length +0x20, StartPos +0x24, EndPos +0x28, zeroed inline before the call)	CGameEvent::GetData(CMemoryBuffer&) (17+ landed EA* rows' local models); CEventPacket::CopyToBuffer (label)
+009f18f0	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	Ego_r/FableWin name set; (long size, void* data) reads in 0x0062BD80	CMemoryBuffer::Read(unsigned long, void*) (landed EA* rows' local models)
+00698b20	?PlayCameraSoundThroughObservedThing@CGameCameraManager@@QBEXABVCCharString@@@Z	FableWin name set (the CGameCameraManager member; its body forwards PObservedThing +0x100 and PDef +0x134 to the anonymous-namespace overload 0x00698A30); called by 0x0062BEF0	CGameCameraManager::PlayCameraSound (landed definer CGameCameraManager_PlayCameraSound_00698b20.cpp)
+00634190	?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z	Ego_r/FableWin name set; 0x0062BEF0 `push 19h` = PLAYER_MODE_USE_PROJECTILE_WEAPON	CPlayer::RemoveMode(long) (landed local models: long-typed stand-in)
+006b1a20	?UpdateDayNightAtmosSounds@CAtmosProcess@@AAEXXZ	see LABELS.tsv (RELOCATION_MATCH)	CGameScriptInterface_SetSoundTheme (catalog row name)
+006b2260	?Update@CAtmosProcess@@QAEXXZ	see LABELS.tsv (RELOCATION_MATCH); the landed UpdateFrame already calls it as CAtmosProcess::Update	CGameScriptInterface_UpdateAtmosphere (catalog row name)
+004a5e90	?AutoLoadRespawn@CWorld@@QAE_NXZ	FableWin name set; the four AutoLoadInternal/LoadGameState copies with status 3 (respawn)	CWorld::AutoLoadRegionLeaving (q.py catalog label for 0x004A5E90; that name is 0x004A34F0)

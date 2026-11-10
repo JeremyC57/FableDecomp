@@ -24,6 +24,12 @@ class CTCHeroStats : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_KICKPOSITION
+    // Nested opt-in (chunk 1012, row 0x0049FFD0 CWorld::SetKickPos): Ego_r.pdb
+    // ?SetHeroKickPositionForCurrentRegion@CTCHeroStats@@QAEXABVC3DVector@@M_N@Z (Ego_r 0x00570317), out of line in retail at 0x0057D990
+    // (`push pos ; push angle ; push flag ; mov ecx,stats ; call`, 0x004A00C6). Declaration only.
+    void SetHeroKickPositionForCurrentRegion(const C3DVector& position, float angleXY, bool flag);   // 0x0057D990
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_ADDRENOWN
     // Nested opt-in (chunk 1011, row 0x005EB590 CTCTavernGame::GivePrize): Ego_r.pdb ?AddRenown@CTCHeroStats@@QAEXJ@Z (Ego_r 0x0056FD53),
     // out of line in retail at 0x0057D8BE (`push [def+184h] ; mov ecx,stats ; call 0x0057D8BE`, 0x005EB6BA). Declaration only.

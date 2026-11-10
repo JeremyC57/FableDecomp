@@ -121,6 +121,36 @@ public:
     // ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z, out of line in retail at 0x0049EAF0 (landed). Declaration only.
     void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0
 #endif
+#ifdef FABLE_RETAIL_CWORLD_SETKICKPOS
+    // Nested opt-in (chunk 1012, row 0x0049FFD0): Ego_r.pdb ?SetKickPos@CWorld@@QAEXXZ (public). Declaration only.
+    void SetKickPos();                                                   // 0x0049FFD0
+#endif
+#ifdef FABLE_RETAIL_CWORLD_SAVEGAMESTATE
+    // Nested opt-in (chunk 1012, rows 0x004A0780 SaveGameStateManual / 0x004A34F0 AutoLoadRegionLeaving): Ego_r.pdb CWorld save members
+    // (QAE / protected IAE, IBE): SaveGameState 0x004A05C0 (?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z, landed),
+    // SaveGameStateManual 0x004A0780, CopyFileInternal 0x0049DD50 (?CopyFileInternal@CWorld@@IBEXABVCWideString@@0@Z, landed),
+    // SaveHeroStateInternal 0x004A00E0 (?SaveHeroStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z, landed), AutoSaveRegionLeaving
+    // 0x004A0180 (?AutoSaveRegionLeaving@CWorld@@QAE_NXZ, landed), AutoLoadRegionLeaving 0x004A34F0. Declarations only.
+    void SaveGameState(const CWideString& name, bool a, bool b);                 // 0x004A05C0
+    void SaveGameStateManual(const CWideString& name);                           // 0x004A0780
+    bool AutoSaveRegionLeaving();                                                // 0x004A0180
+    bool AutoLoadRegionLeaving();                                                // 0x004A34F0
+protected:
+    void CopyFileInternal(const CWideString& source, const CWideString& destination) const;   // 0x0049DD50
+    bool SaveHeroStateInternal(const CWideString& name, bool b);                 // 0x004A00E0
+public:
+#endif
+#ifdef FABLE_RETAIL_CWORLD_EVENTACTIONS
+    // Nested opt-in (chunk 1012, rows 0x0062B070 / 0x0062BD80 / 0x0062BEF0): the CWorld game-event action handlers (Ego_r.pdb
+    // ?EA<Name>@CWorld@@QAEXPBVCGameEvent@@@Z, public) and the protected ?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z (out of line in retail
+    // at 0x0049D850). Declarations only.
+    void EAOpenHeroInformationScreen(const CGameEvent* event);           // 0x0062B070
+    void EAControlledCreatureStrafe(const CGameEvent* event);            // 0x0062BD80
+    void EAUseProjectileWeapon(const CGameEvent* event);                 // 0x0062BEF0
+protected:
+    CPlayer* GetPlayer(unsigned long number);                            // 0x0049D850
+public:
+#endif
 #ifdef FABLE_RETAIL_CWORLD_AUTOSAVEQUESTSTART
     // Nested opt-in (chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): Ego_r.pdb / FableWin.pdb
     // ?AutoSaveQuestStart@CWorld@@QAE_NXZ, out of line in retail at 0x004A0CD0 (`mov ecx,[edi+4] ; call` 0x00896BDE). Declaration only.

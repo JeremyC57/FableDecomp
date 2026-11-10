@@ -31,6 +31,12 @@ public:
     void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
 #endif
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_RAINSTRENGTH
+    // Opt-in (chunk 1012, row 0x006B2260 CAtmosProcess::Update): Ego_r.pdb ?GetRainStrength@CEnvironment@@QBEMXZ, called out of line in
+    // retail at 0x006B2BD0 (`fld dword ptr [ecx+1C4h] ; ret`, next to its GetSnowStrength twin 0x006B2BE0 `fld [ecx+1C0h]`, Ego_r donor
+    // order GetRainStrength / GetSnowStrength); Update compares it with 0.0001f to start the RAIN atmos. Declaration only.
+    float GetRainStrength() const;                               // 0x006B2BD0
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERPOLATOR
     // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause): Ego_r.pdb / FableWin.pdb
     // ?GetSpellEffectInterpolator@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterpolator@@XZ, inline in retail (`mov ecx,[eax+1964h]`

@@ -98,6 +98,27 @@ public:
     template<class Filter,class T> bool GetPFirstThing(const Filter& filter,T** out) const;
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY
+    // Chunk 1012 (row 0x0049FFD0 CWorld::SetKickPos): GetPBestThing<Filter,Compare,T>, out of line in retail (Ego_r.pdb
+    // ??$GetPBestThing@V?$CFilter_Bind2@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingFilter_In2DRange@@@@
+    // VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_N...@Z = retail 0x004AC2C0, landed, in the CWorld TU). The landed
+    // body's shape (PeekClassList 0x0049C770, the scan test, the THING_TYPE mask test with T::StatGetTypeFlags, the filter on the thing,
+    // best = compare(best, thing), the result through the out pointer), a same-TU noinline body like GetPFirstThing above: the caller
+    // then knows the filter / comparator temporaries and the out pointer are only read or written, not captured. Needs
+    // FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY (PeekClassList) and T::StatGetTypeFlags at the point of instantiation.
+    template<class Filter,class Compare,class T> __declspec(noinline) bool GetPBestThing(const Filter& filter,const Compare& compare,T** out) const {
+        T* best=0;
+        const std::list<CClass*>& things=PeekClassList();
+        for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
+            T* thing=static_cast<T*>(*it);
+            unsigned long mask=T::StatGetTypeFlags();
+            if(thing->IsIncludedInThingScans() && (thing->GetTypeFlags()&mask)==mask && filter(*thing))
+                best=compare(best,thing);
+        }
+        *out=best;
+        return best!=0;
+    }
+#endif
 #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH
     // Retail opt-in (Codex2026-11-10): both original PDBs and native00942390.
     template<class Filter,class Compare,class T> bool GetPBestThingInRoughArea(const C2DBoxI&,const Filter&,const Compare&,T**)const;

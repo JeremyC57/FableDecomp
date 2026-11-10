@@ -16503,10 +16503,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006b16b0	SoundTheme_LoadDefinitions	_global	unknown	undefined	0		0	yes	accepted									
 006b1900	MixAtmos	CAtmosProcess	__thiscall	void	2	CGameScriptInterface *,char *	1	yes	accepted									
 006b1960	CAtmosProcess	CAtmosProcess	__thiscall	CAnimationSet *	1	CThingCreatureBase *	1	yes	accepted									
-006b1a20	CGameScriptInterface_SetSoundTheme	_global	unknown	undefined	0		0	yes	accepted									
+006b1a20	UpdateDayNightAtmosSounds	CAtmosProcess	__thiscall	void	0		0	yes	accepted									
 006b1d30	SetAtmosSoundsAsMuted	CAtmosProcess	unknown	undefined	0		0	yes	accepted									
 006b1f30	UpdateInsideBuildings	CAtmosProcess	__thiscall	void	1	CAtmosProcess *	1	yes	accepted									
-006b2260	CGameScriptInterface_UpdateAtmosphere	_global	unknown	undefined	0		0	yes	accepted									
+006b2260	Update	CAtmosProcess	__thiscall	void	0		0	yes	accepted									
 006b2500	CIntelligentPointer	CIntelligentPointer<CThingMarker>	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 006b2550	CIntelligentPointer_Assign_006b2550	_global	__thiscall	CIntelligentPointer<class_CThingCreatureBase> *	2	CIntelligentPointer<CThingCreatureBase> *,CIntelligentPointer<class_CThingCreatureBase> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CIntelligentPointerCThingCreatureBase_operator_006b2550.cpp
 006b25e0	GetDef<CSoundThemeDef>	CDefinitionManager	__thiscall	bool	4	CDefinitionManager *,CCharString *,long,CDefPointer<CSoundThemeDef_const_> *	1	yes	accepted									

@@ -1,0 +1,17 @@
+address	name	grade	grades_used	note
+006b1a20	CAtmosProcess::UpdateDayNightAtmosSounds	RELOCATION_MATCH	1	same-TU noinline GetDef<T>(type,index,out) body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY); identity fixed from the catalog's CGameScriptInterface_SetSoundTheme
+006b2260	CAtmosProcess::Update	RELOCATION_MATCH	1	rain theme index as a named local before SetAtmosDefIndex; identity fixed from CGameScriptInterface_UpdateAtmosphere
+0049ffd0	CWorld::SetKickPos	RELOCATION_MATCH	2	shared headers + same-TU GetPBestThing body + STLport compose2/logical_or (grade 1 SRC_FAIL: overlay stlport header must be included before fable_string.h)
+004a0780	CWorld::SaveGameStateManual	RELOCATION_MATCH	1	source path + PathExists + CopyFileInternal written in both arms of the save-type test (hoist/cross-jump)
+004a5e90	CWorld::AutoLoadRespawn	DIFFER(1722v1722)	1	parked: one lea hoisted above a je in the manual-save LoadGameState copy (8 probes)
+004a34f0	CWorld::AutoLoadRegionLeaving	DIFFER(564v564)	1	parked: path vs fullPath+heroState frame slot order, density tie (QLEN=564, SPLITS.tsv; 6 probes + packer trace)
+0062bef0	CWorld::EAUseProjectileWeapon	DIFFER(483v483)	1	parked: camera out-local packs with this-spill not ranged (FIFO weight tie; 19 probes + packer trace)
+0062bd80	CWorld::EAControlledCreatureStrafe	DIFFER(337v354)	1	parked: retail materialises the has-weapon bool, uid/action frame pairing (14 probes + packer trace)
+008a8260	CGameScriptInterface::GetHeroSummonedCreaturesList	DIFFER(456v466)	1	parked: retail duplicates the early-exit epilogue (11 probes + c2prio); new CTCGhostSword / CTCSummonSpell / vector-copy opt-ins
+0089c910	CGameScriptInterface::CanThingBe_Sensed_ByOtherThing	not attempted	0	prior is a local padded model (1136v1016); not rebased this pass
+0089ce70	CGameScriptInterface::IsThingAwareOfOtherThingInAnyWay	not attempted	0	prior local model (610v616, x87 scheduling); not rebased this pass
+008a7a70	CGameScriptInterface::TeleportAllFollowersToHeroPosition	not attempted	0	prior local model (738v738 /Oa); now unblocked by this chunk's CTCSummonSpell/CTCGhostSword/vector-copy opt-ins
+0088edc0	CGameScriptInterface::CameraDoConversation	not attempted	0	no prior; not started
+004a1840	CWorld::Load	not attempted	0	prior local model (1129v1129, three register picks); not rebased this pass
+004a1cb0	CWorld::PreparePrimitivesForEngine	not attempted	0	prior local model; not rebased this pass
+0062b070	CWorld::EAOpenHeroInformationScreen	not attempted	0	prior local model (898v891: interface keys belong in the dead event slot, cf. 0x0062BEF0's &* temporary lesson); not rebased this pass

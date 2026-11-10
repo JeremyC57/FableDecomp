@@ -55,6 +55,13 @@ public:
     CCamera& GetCamera() { return Camera; }
     const CCamera& GetCamera() const { return Camera; }
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMERASOUND
+    // Opt-in (chunk 1012, row 0x0062BEF0 CWorld::EAUseProjectileWeapon): Ego_r.pdb
+    // ?PlayCameraSoundThroughObservedThing@CGameCameraManager@@QBEXABVCCharString@@@Z (Ego_r 0x006BF890, after its anonymous-namespace
+    // fastcall helper 0x006BF770), out of line in retail at 0x00698B20 (it forwards the observed thing +0x100 and the def +0x134 to the
+    // helper 0x00698A30). Declaration only.
+    void PlayCameraSoundThroughObservedThing(const CCharString& name) const;   // 0x00698B20
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_ANGLES
     // Nested opt-in (chunk 765, rows 0x0069E1B0 / 0x0069E1C0): Ego_r.pdb / FableWin.pdb ?GetAngleXY@CGameCameraManager@@UBEMXZ /
     // ?GetAngleYZ@CGameCameraManager@@UBEMXZ (Ego_r 0x006C36E0 / 0x006C36F0), slots 25 / 26 of the retail vtable 0x0125C754, both

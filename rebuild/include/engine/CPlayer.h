@@ -146,6 +146,12 @@ public:
     // Chunk 867 (row 0x0064BFBA): Ego_r.pdb / FableWin.pdb ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z, out of line at 0x00634160 (`push 2 ; call`).
     bool HasMode(EPlayerMode mode) const;                        // 0x00634160
     void AddMode(EPlayerMode mode, bool);                        // 0x006345C0
+#ifdef FABLE_RETAIL_PLAYER_REMOVEMODE
+    // Nested opt-in (chunk 1012, row 0x0062BEF0 CWorld::EAUseProjectileWeapon): Ego_r.pdb / FableWin.pdb
+    // ?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z (Ego_r 0x00554850), out of line in retail at 0x00634190 (the landed bindings
+    // ...QAEXJ@Z are long-typed stand-ins, as AddMode above). Declaration only.
+    void RemoveMode(EPlayerMode mode);                           // 0x00634190
+#endif
     // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
     // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter
     // 0x00493400 / SetControlledCreature 0x00493570 between them in both): ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ

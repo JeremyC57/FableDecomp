@@ -32,6 +32,15 @@ public:
     void AddUBYTE(unsigned char value) { AddData(sizeof(value), &value); }
     void SetPlayer(long player) { Player = (signed char)player; }
 #endif
+#ifdef FABLE_RETAIL_CGAMEEVENT_DATAPACKAGE
+    // Opt-in (chunk 1012, the CWorld EA handlers 0x0062BD80 / 0x0062BEF0 / 0x0062B070): Ego_r.pdb / FableWin.pdb
+    // ?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z, out of line in retail at 0x009F17A0 (Ego_r donor order AddData
+    // 0x00B453C0 / GetDataPackage 0x00B453F0 = retail 0x009F1760 / 0x009F17A0; the landed EA rows bind it as the invented
+    // ?GetData@CGameEvent@@QBEJAAVCMemoryBuffer@@@Z, NAME_FIXES), and FableWin.pdb ?GetPlayerNumber@CGameEvent@@QBECXZ (inline:
+    // `movsx ecx,byte ptr [edi+4]`). No layout change.
+    void GetDataPackage(class CGameEventDataPackage* package) const;    // 0x009F17A0
+    signed char GetPlayerNumber() const { return Player; }
+#endif
     long          Type;                                      // +0x00
     signed char   Player;                                    // +0x04
     unsigned char Data[32];                                  // +0x05

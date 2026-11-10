@@ -1,0 +1,28 @@
+addr       parity           behav  name
+0049ffd0   RELOCATION_MATCH PASS   SetKickPos
+004a0780   RELOCATION_MATCH TCC_FAIL SaveGameStateManual
+006b1a20   WARN RELOC_NAME: ?IsNightSounds@CGameTimeManager@@QBE_NXZ -> 006bb790 labelled 'CGameTimeManager::IsNotDay_006bb790'
+006b1a20   RELOCATION_MATCH PASS   UpdateDayNightAtmosSounds
+006b2260   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b2260   WARN RELOC_NAME: ?GetRainStrength@CEnvironment@@QBEMXZ -> 006b2bd0 labelled '_global::GetMember_float0x1c4_006b2bd0'
+006b2260   WARN RELOC_NAME: ?SetPos@CTCAtmosPlayer@@QAEXABVC3DVector@@@Z -> 007e35f0 labelled 'CScriptGameResourceObjectScriptedThingBase::AskHeroQuestion'
+006b2260   WARN RELOC_NAME: ?UpdateDayNightAtmosSounds@CAtmosProcess@@AAEXXZ -> 006b1a20 labelled 'CGameScriptInterface_SetSoundTheme'
+006b2260   RELOCATION_MATCH PASS   Update
+
+WINS: 3
+  0049ffd0 RELOCATION_MATCH CWorld::?SetKickPos@CWorld@@QAEXXZ
+  006b1a20 RELOCATION_MATCH CAtmosProcess::?UpdateDayNightAtmosSounds@CAtmosProcess@@AAEXXZ
+  006b2260 RELOCATION_MATCH CAtmosProcess::?Update@CAtmosProcess@@QAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CWorld_SetKickPos_0049ffd0
+  CAtmosProcess_UpdateDayNightAtmosSounds_006b1a20
+  CAtmosProcess_Update_006b2260
+addr       parity           behav  name
+004a0780   RELOCATION_MATCH PASS   SaveGameStateManual
+
+WINS: 1
+  004a0780 RELOCATION_MATCH CWorld::?SaveGameStateManual@CWorld@@QAEXABVCWideString@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorld_SaveGameStateManual_004a0780

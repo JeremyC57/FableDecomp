@@ -1,0 +1,21 @@
+address	name	evidence
+006b1a20	?UpdateDayNightAtmosSounds@CAtmosProcess@@AAEXXZ	Ego_r/FableWin name set; called from 0x006B2260's tail; body mixes SOUND_THEME defs DAY/NIGHT through IsDaySounds/IsNightSounds; this row RELOCATION_MATCH
+006b2260	?Update@CAtmosProcess@@QAEXXZ	landed UpdateFrame calls 0x006B2260 as CAtmosProcess::Update; body = rain marker + MixAtmos + UpdateInsideBuildings/UpdateDayNightAtmosSounds; this row RELOCATION_MATCH
+009ad3b0	?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z	PDB name set; 0x006B1A20 loop bound for "SOUND_THEME" (RELOCATION_MATCH)
+006bb1e0	?IsDaySounds@CGameTimeManager@@QBE_NXZ	PDB name set; day branch of 0x006B1A20 (RELOCATION_MATCH)
+006bb790	?IsNightSounds@CGameTimeManager@@QBE_NXZ	PDB name set; night branch of 0x006B1A20 (RELOCATION_MATCH)
+006b2bd0	?GetRainStrength@CEnvironment@@QBEMXZ	PDB name set; 0x006B2260 rain test against 1e-4 (RELOCATION_MATCH); landed definer spells it ?M@C006b2bd0@@QAEMXZ
+0083d460	?Create@CThingMarker@@SIPAV1@JABVC3DVector@@ABVCCharString@@@Z	PDB name set (__fastcall static); 0x006B2260 creates the MARKER_POSITIONAL_ATMOS rain marker (RELOCATION_MATCH)
+007e35f0	?SetPos@CTCAtmosPlayer@@QAEXABVC3DVector@@@Z	PDB name set; 0x006B2260 moves the rain player to the camera (RELOCATION_MATCH)
+007e3610	?SetAtmosDefIndex@CTCAtmosPlayer@@QAEXJ@Z	PDB name set; 0x006B2260 sets SOUND_THEME_RAIN (RELOCATION_MATCH)
+0057d990	?SetHeroKickPositionForCurrentRegion@CTCHeroStats@@QAEXABVC3DVector@@M_N@Z	PDB name set; 0x0049FFD0 SetKickPos tail (RELOCATION_MATCH)
+009f17a0	?GetDataPackage@CGameEvent@@QBEXPAVCGameEventDataPackage@@@Z	PDB name set; every CWorld::EA* reader passes a zeroed 0x2C package (0x0062BD80, 0x0062B070)
+009f18f0	?GetData@CGameEventDataPackage@@QAEXJPAX@Z	PDB name set; (size, out) reads off the package in 0x0062BD80
+00698b20	?PlayCameraSoundThroughObservedThing@CGameCameraManager@@QBEXABVCCharString@@@Z	PDB name set (member overload; the anonymous-namespace free overload is a different body); 0x0062BEF0 "PROJECTILE_WEAPON_ZOOM_IN"
+00789ab0	?IsToUseFirstPersonTargetingMode@CTCHeroRangedAttacks@@QBE_NXZ	PDB name set; 0x0062BEF0 AddMode/RemoveMode(25) selector
+00789c90	?IncrementProjectileWeaponMode@CTCHeroRangedAttacks@@QAEXXZ	PDB name set; 0x0062BEF0 before the selector
+0049d850	?GetPlayer@CWorld@@IAEPAVCPlayer@@K@Z	PDB name set; EA* handlers call it with the event's player byte (movsx)
+00634190	?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z	PDB name set; 0x0062BEF0 else-arm (`push 19h ; call`)
+006ad3c0	?ApplyRelativeMovementAcceleration@CThingPlayerCreature@@QAEXABVC3DVector@@W4EGameAction@@@Z	PDB name set; 0x0062BD80 tail (C3DVector(x,y,0), action)
+008ac540	??0?$vector@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE@ABV01@@Z	PDB name set; 0x008A8387 copies CTCGhostSword::Minions (+0x10) through the inline GetSummonedCreatures()
+004a3730	?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z	5-byte `jmp 0x004A3200` (LoadGameState) after 0x004A34F0; see SPLITS.tsv

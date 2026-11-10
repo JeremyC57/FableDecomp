@@ -390878,6 +390878,34 @@ $catalog = @(
         TestSource = '00/5e/CTCTavernGame_GivePrize_005eb590_test.cpp'
         PassPattern = '005eb590_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049ffd0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_SetKickPos_0049ffd0.cpp'
+        TestSource = '00/49/CWorld_SetKickPos_0049ffd0_test.cpp'
+        PassPattern = '0049ffd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b1a20'
+        Module = 'CAtmosProcess'
+        Source = '00/6b/CAtmosProcess_UpdateDayNightAtmosSounds_006b1a20.cpp'
+        TestSource = '00/6b/CAtmosProcess_UpdateDayNightAtmosSounds_006b1a20_test.cpp'
+        PassPattern = '006b1a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b2260'
+        Module = 'CAtmosProcess'
+        Source = '00/6b/CAtmosProcess_Update_006b2260.cpp'
+        TestSource = '00/6b/CAtmosProcess_Update_006b2260_test.cpp'
+        PassPattern = '006b2260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a0780'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_SaveGameStateManual_004a0780.cpp'
+        TestSource = '00/4a/CWorld_SaveGameStateManual_004a0780_test.cpp'
+        PassPattern = '004a0780_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

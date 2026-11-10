@@ -1,0 +1,3 @@
+address	length	name	evidence
+004a34f0	564	CWorld::AutoLoadRegionLeaving	the row's 592 bytes end with int3 padding at 0x004A3724 and a second function 0x004A3730 (5 bytes, jmp 0x004A3200 = CWorld::AutoLoadInternal, Ego_r ?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z follows AutoLoadRegionLeaving in donor order)
+004a3730	5	CWorld::AutoLoadInternal	new function start exposed by the 0x004A34F0 split: `jmp CWorld::LoadGameState 0x004A3200` (body `return LoadGameState(name, loadNow);`); not authored here (not in this chunk's rows)

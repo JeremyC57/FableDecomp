@@ -13,6 +13,9 @@
 enum EControlledMovementType;
 enum EMovementBandType;
 enum ECombatZone;
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_RELATIVEMOVEMENT
+enum EGameAction;                                            // MS forward enum (engine/fable_nscript_forward.h)
+#endif
 class CHeroCombatDef;
 class CPlayerMovementDef;
 class CCreatureAbilityDef;
@@ -28,6 +31,12 @@ public:
     virtual bool SetActionForMelee(const CCreatureAbilityDef& ability);                     // 0x006AABE0 UAE
     void OnCollisionWithObject(CThing* thing);                                             // 0x006ACA30 QAE
     float GetCurrentRelativeMovementAngleXY() const;                                      // 0x006A9640 QBE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_RELATIVEMOVEMENT
+    // Nested opt-in (chunk 1012, row 0x0062BD80 CWorld::EAControlledCreatureStrafe): Ego_r.pdb / FableWin.pdb
+    // ?ApplyRelativeMovementAcceleration@CThingPlayerCreature@@QAEXABVC3DVector@@W4EGameAction@@@Z, out of line in retail at
+    // 0x006AD3C0. Declaration only (EGameAction is the MS forward enum of engine/fable_nscript_forward.h).
+    void ApplyRelativeMovementAcceleration(const C3DVector& acceleration, EGameAction action);   // 0x006AD3C0 QAE
+#endif
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MOVEMENTSPEEDS
     // Retail opt-in (chunk 802, row 0x008EACB0): Ego_r.pdb / FableWin.pdb ?InitialiseMovementSpeeds@CThingPlayerCreature@@QAEXXZ (the
     // landed row 0x006A9A00), called out of line. Declaration only: no layout change.

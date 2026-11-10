@@ -15,10 +15,34 @@
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_MINION
+#ifndef FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#endif
+#ifndef FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#endif
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+class CSpecialAbilitiesSummonSpellDef; class CThingAICreature;
+#endif
 class CTCSummonSpell : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SUMMON_SPELL; }
     long GetResetCreatureManaCost() const;                               // 0x0079A610
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_MINION
+    // Retail opt-in (chunk 1012, row 0x008A8260 CGameScriptInterface::GetHeroSummonedCreaturesList): Ego_r.pdb / FableWin.pdb
+    // ?GetSummonedCreature@CTCSummonSpell@@QBE?AV?$CIntelligentPointer@VCThingAICreature@@@@XZ, inline in retail: the caller's local is
+    // copy-constructed in place from the member (0x008A82CE base ctor 0x00A01B10, the vptr 0x0123E7E0, GetPItem on [comp+11h], SetPItem;
+    // needs FABLE_RETAIL_CINTELLIGENTPOINTER_COPY). Members from Ego_r.pdb CTCSummonSpell (PDef +0x0C, JustReleased +0x10, Minion +0x11:
+    // CBaseIntelligentPointer is pack(1)); retail agrees at +0x0C (GetResetCreatureManaCost `mov eax,[ecx+0Ch]`) and +0x11 (0x008A82D3
+    // `lea ecx,[edi+11h]`). The members after Minion are not modelled (pointer use only).
+    CIntelligentPointer<CThingAICreature> GetSummonedCreature() const { return Minion; }
+private:
+    CDefPointer<const CSpecialAbilitiesSummonSpellDef> PDef;             // +0x0c
+    bool                                               JustReleased;     // +0x10
+    CIntelligentPointer<CThingAICreature>              Minion;           // +0x11
+#endif
 };
 #else
 class CTCSummonSpell;
