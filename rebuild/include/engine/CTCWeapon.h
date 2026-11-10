@@ -17,6 +17,10 @@ class CThing;
 class CTCWeapon : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WEAPON; }
+#ifdef FABLE_RETAIL_CTCWEAPON_SETLOADED
+    // Both PDBs original nonconst void(bool,CThing*), native005dac50.
+    void SetProjectileWeaponLoaded(bool,CThing*);
+#endif
     bool IsMeleeWeapon() const;                              // 0x005DAA00
     bool IsProjectileWeapon() const;                         // 0x005DAA40
     bool IsUsableBy(const CThing&) const;                    // 0x005DAB10

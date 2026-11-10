@@ -32,6 +32,9 @@ private:
     float           CurrentSpeed;                            // +0x5c
 public:
     void InterruptNavigation();
+#ifdef FABLE_RETAIL_CTCCREATURENAVIGATION_ONEPOINTLOS
+    bool IsPosNavLineOfSightTo(const C3DVector&) const;
+#endif
     bool GetNearbyWanderPosition(const C3DVector&,float,C3DVector&,bool) const;
     bool GetNearestNavigablePosTo(const C3DVector&,float,C3DVector&) const;
 #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION

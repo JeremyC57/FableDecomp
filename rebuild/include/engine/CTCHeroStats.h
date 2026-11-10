@@ -24,6 +24,11 @@ class CTCHeroStats : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_STATS; }
     float GetMoralityPercentage() const;
+#ifdef FABLE_RETAIL_CTCHEROSTATS_FOLLOWER_LIMIT
+    // Original FableWin01e6e164/01e69a40 and native006d4f2a/0057ab14.
+    long GetRenownLevel()const{return RenownLevel;}
+    long GetMaxFollowersForRenownLevel(long level)const;
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_KICKPOSITION
     // Nested opt-in (chunk 1012, row 0x0049FFD0 CWorld::SetKickPos): Ego_r.pdb
     // ?SetHeroKickPositionForCurrentRegion@CTCHeroStats@@QAEXABVC3DVector@@M_N@Z (Ego_r 0x00570317), out of line in retail at 0x0057D990

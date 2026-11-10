@@ -116,10 +116,16 @@ public:
 
 #ifdef FABLE_RETAIL_CWORLD_MESH_BANK
     CMeshDataBank* GetMeshBank(){return PMainMeshBank_Data;}
+#ifdef FABLE_RETAIL_CWORLD_PEEKMESHBANK
+    const CMeshDataBank* PeekMeshBank()const{return PMainMeshBank_Data;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CWORLD_EVENTPACKAGES
     // Retail opt-in (Codex pass 17): both PDBs/native0049DFB0.
     void Update(const CGameEventPackage&,bool);
+#endif
+#ifdef FABLE_RETAIL_CTCBOASTINGCROWDCONTROL
+    const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
@@ -216,12 +222,18 @@ public:
     // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): FableWin.pdb ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ,
     // inline in retail (`call GetWorld ; ... mov ecx,[eax+18h]` before the argument pushes, 0x0085976F). No layout change.
     CEnvironment& GetEnvironment() { return *PEnvironment_ptr; }
+#ifdef FABLE_RETAIL_CWORLD_PEEKENVIRONMENT
+    const CEnvironment& PeekEnvironment()const { return *PEnvironment_ptr; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER
     // Chunk 764 (row 0x0096DBC0 CCreatureAction_ScreamerIntoAggressive::Initialise): FableWin.pdb
     // ?GetMessageEventManager@CWorld@@QAEAAVCMessageEventManager@@XZ, inline in retail (`call GetWorld ; mov ebx,[eax+60h]` before the
     // AddMessage argument pushes). No layout change.
     CMessageEventManager& GetMessageEventManager() { return *PMessageEventManager_Data; }
+#ifdef FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER_CONST
+    const CMessageEventManager& GetMessageEventManager()const{return *PMessageEventManager_Data;}
+#endif
 #endif
 #ifdef FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI
     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?GetMusicManager@CWorld@@QAEAAVCMusicManager@@XZ

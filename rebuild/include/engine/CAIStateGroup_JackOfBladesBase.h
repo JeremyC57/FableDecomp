@@ -9,6 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "stlport/fable_containers.h"
+class CThingCreatureBase;
+// Original Ego_r full base/fields; native STLport vector12 replaces donor16.
+class CAIStateGroup_JackOfBladesBase:public CAIStateGroupBase {
+protected:
+ CIntelligentPointer<CThing> PSwordEmitter,PArenaCentre;
+ CIntelligentPointer<CThingCreatureBase> PTargetThing;
+ long EnemyKnockDownFrame,SpeechCounter;
+ std::vector<CIntelligentPointer<CThing> > PillarMarkers,Pillars;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesBase)==0x4c);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_JackOfBladesBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -36,4 +51,5 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, SpeechCounter) == 0
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PillarMarkers) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, Pillars) == 0x40);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKOFBLADESBASE_H

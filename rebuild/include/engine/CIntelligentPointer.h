@@ -48,6 +48,9 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other);
 #endif
     void Set(T* pointer) { SetPointer(pointer); }
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+    T& operator*()const{return *GetPointer();}
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
     // Retail opt-in (Codex pass18): original018f05d0/018f3510/01ca3ac0.
     T* Get() const { return GetPointer(); }
@@ -88,7 +91,7 @@ public:
     template<class U> CIntelligentPointer(const CIntelligentPointer<U>& other);
 #endif
 private:
-#if defined(FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN)
+#if defined(FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_ORIGINAL_CHAIN) || defined(FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE)
     T* GetPointer()const{return static_cast<T*>(GetPItem());}
 #endif
     void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
@@ -98,6 +101,7 @@ FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
 // Retail opt-in (Codex pass 17): FableWin 01CD9DD0 original pointer/int
 // comparison used by IS_THING_ALIVE; the debug-only nonzero-int assertion is absent in retail.
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+template<class T> inline bool FABLE_FASTCALL operator==(const CIntelligentPointer<T>& pointer,int) { return pointer.Get()==0; }
 template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,int) {
     return pointer.Get()!=0;
 }

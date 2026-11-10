@@ -28,8 +28,16 @@ class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
 class CTCVillage : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCVILLAGE_TCI
+    // Original FableWin01901440; native00488684 type34.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_VILLAGE;}
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_ENABLE_DEF_TYPES
     void EnableVillagerDefTypes(bool,const CCharString&);
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_TORCHTASK
+    bool SetTorchTaskAsAcceptedByThing(CVillageTaskTorch&,const CThing&);
+    void SetTorchTaskAsCompleted(CIntelligentPointer<CVillageTaskTorch>);
 #endif
     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
     bool IsHeroCriminal();                                   // 0x0065BFCE ?IsHeroCriminal@CTCVillage@@QAE_NXZ (Ego_r; chunk 755 row 0x0091EA70)

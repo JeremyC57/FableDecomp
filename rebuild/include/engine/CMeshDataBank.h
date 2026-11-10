@@ -12,7 +12,15 @@
 // ?FrameEnd@CMeshDataBank@@QAEXXZ (Ego_r + FableWin; retail 0x00A23AD0, called on each MeshBanks[i] by
 // CEngineResourceManager::FrameEnd 0x00B3B870, runs CResourceBank::FrameEnd 0x009FC430 on +0x170 / +0x268 / +0x2e4).
 // Offsets and sizeof are unchanged; without the macro the text below is the generated default.
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
 #include <stddef.h>
+#include "engine/CCountedPointer.h"
+#include "engine/EAnimationType.h"
+#include "boost/scoped_ptr.h"
+#else
+#include <stddef.h>
+#endif
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_CMESHDATABANK
 #include "engine/CResourceBank.h"
@@ -21,6 +29,9 @@
 #include "engine/CBankFile.h"
 #endif
 
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKSTATICANIMATED
+class C3DMeshInfo;
+#endif
 class C3DAnimFileXLoader;
 class C3DAnimationManager;
 class C3DMeshFileXLoader;
@@ -116,7 +127,15 @@ public:
     unsigned char                 _pad_0x160[0x4];           // +0x160
 #endif
     C3DMeshFileXLoader*           MeshLoader_ptr;            // +0x164 scoped_ptr<C3DMeshFileXLoader>::ptr
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+private:
+    friend class C3DAnimationInfo;
+    boost::scoped_ptr<C3DAnimFileXLoader> AnimLoader; // +168
+public:
+#else
     C3DAnimFileXLoader*           AnimLoader_ptr;            // +0x168 scoped_ptr<C3DAnimFileXLoader>::ptr
+#endif
     CCharStringData*              Filename_PStringData;      // +0x16c CCharString::PStringData
 #ifdef FABLE_RETAIL_CMESHDATABANK
     CResourceBank                 MeshResourceBank;          // +0x170
@@ -129,8 +148,15 @@ public:
     unsigned char                 AnimationResourceBank[0x7c]; // +0x268 CResourceBank
     unsigned char                 PhysicsMeshResourceBank[0x7c]; // +0x2e4 CResourceBank
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+private:
+    CCountedPointer<CMovableResourceMemoryPool> AnimationMemoryPool; // +360
+public:
+#else
     CMovableResourceMemoryPool*   AnimationMemoryPool_Data;  // +0x360 CCountedPointer<CMovableResourceMemoryPool>::Data
     CCPPointerInfo*               AnimationMemoryPool_Info;  // +0x364 CCountedPointer<CMovableResourceMemoryPool>::Info
+#endif
     CMovableResourceMemoryPool*   ClothMemoryPool_Data;      // +0x368 CCountedPointer<CMovableResourceMemoryPool>::Data
     CCPPointerInfo*               ClothMemoryPool_Info;      // +0x36c CCountedPointer<CMovableResourceMemoryPool>::Info
     CMovableResourceMemoryPool*   MeshDataMemoryPool_Data;   // +0x370 CCountedPointer<CMovableResourceMemoryPool>::Data
@@ -172,6 +198,23 @@ public:
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;  // 0x00A242C0
 #endif
 #ifdef FABLE_RETAIL_CMESHDATABANK
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    CMovableResourceMemoryPool* GetAnimationMemoryPool(){return AnimationMemoryPool.get();}
+    CResourceBank& GetAnimationResourceBank(){return AnimationResourceBank;}
+    EAnimationType GetAnimationType(unsigned long datatype)const {
+        EAnimationType animtype=ANIMTYPE_BASE;
+        datatype&=15;
+        if(datatype==10)animtype=ANIMTYPE_BASE_RELATIVE;
+        else if(datatype==7||datatype==8)animtype=ANIMTYPE_COMBINATION_DELTA;
+        else if(datatype==9)animtype=ANIMTYPE_COMBINATION_PARTIAL;
+        return animtype;
+    }
+#endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_PEEKSTATICANIMATED
+    const C3DMeshInfo* PeekStaticMesh(unsigned long)const;
+    const C3DMeshInfo* PeekAnimatedMesh(unsigned long)const;
+#endif
     void FrameEnd();                                         // 0x00A23AD0 ?FrameEnd@CMeshDataBank@@QAEXXZ
 #endif
 };
@@ -182,14 +225,20 @@ FABLE_STATIC_ASSERT(sizeof(CMeshDataBank) == 0x460);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, __vftable) == 0x0);
 #endif
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshLoader_ptr) == 0x164);
+#ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimLoader_ptr) == 0x168);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, Filename_PStringData) == 0x16c);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshResourceBank) == 0x170);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshStatsResourceBank) == 0x1ec);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationResourceBank) == 0x268);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, PhysicsMeshResourceBank) == 0x2e4);
+#ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationMemoryPool_Data) == 0x360);
+#endif
+#ifndef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, AnimationMemoryPool_Info) == 0x364);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, ClothMemoryPool_Data) == 0x368);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, ClothMemoryPool_Info) == 0x36c);
 FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, MeshDataMemoryPool_Data) == 0x370);

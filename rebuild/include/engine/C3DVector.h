@@ -43,6 +43,13 @@ inline float FABLE_FASTCALL GFSqr(float value){return value*value;}
 #ifdef FABLE_RETAIL_C3DVECTOR_MAGNITUDE_SQRTF
 inline float FABLE_FASTCALL GFRoot(float n){return sqrt(n);}
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_PACKED
+// Explicit owner exception approved2026-11-10 for original C3DVector alignment1.
+// Both original filter TPI records put OurPos at+1 after RestrictAngle bool;
+// donor constructor and native00986efa use that exact member offset.
+// Original CTCBoss PhaseStartPos+22 independently confirms embedded alignment1.
+#pragma pack(push,1)
+#endif
 class C3DVector {
 public:
     float X,Y,Z;
@@ -133,7 +140,14 @@ public:
     FABLE_VECTOR_INLINE const float Dot(const C3DVector& other)const{return X*other.X+Y*other.Y+Z*other.Z;}
 #endif
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_CROSS_MEMBER_X_GROUP
+    // Cross expression grouping retains native00697d79..b2 scheduling.
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector((Y*other.Z-Z*other.Y),Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
+#elif defined(FABLE_RETAIL_C3DVECTOR_CYLINDER_CROSS_GROUPED)
+    FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,(Z*other.X-X*other.Z),X*other.Y-Y*other.X);}
+#else
     FABLE_VECTOR_INLINE const C3DVector Cross(const C3DVector& other)const{return C3DVector(Y*other.Z-Z*other.Y,Z*other.X-X*other.Z,X*other.Y-Y*other.X);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_SUBTRACT_ASSIGN
     FABLE_VECTOR_INLINE const C3DVector& operator-=(const C3DVector& vector){X-=vector.X;Y-=vector.Y;Z-=vector.Z;return *this;}
 #endif
@@ -224,5 +238,8 @@ public:
     C3DVector& AccurateNormalise();
     void Rotate(const C3DVector&,float);
 };
+#ifdef FABLE_RETAIL_C3DVECTOR_PACKED
+#pragma pack(pop)
+#endif
 #undef FABLE_VECTOR_INLINE
 #endif

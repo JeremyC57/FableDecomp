@@ -236,6 +236,9 @@ public:
 #endif
 #endif
     float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_DIAMETER
+    float GetDiameter() const { return (GetRadius()*2.0f); }
+#endif
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION
     // FableWin GetLastPosition01d8e980, inline read at007bc761: native OldPosition+18.
     const C3DVector& GetLastPosition() const { return OldPosition; }

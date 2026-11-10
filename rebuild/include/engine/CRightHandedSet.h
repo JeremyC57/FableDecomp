@@ -11,7 +11,11 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
 // PreparePrimitivesForEngine (0x004A1D95..0x004A1E01). FableWin.pdb: GetRight (0x01B409F0) is followed by ??TC3DVector (0x01B40A20).
 class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; }
     const C3DVector& GetUp() const { return Up; }
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS
+    C3DVector GetRight()const{return C3DVector((Forward.Y*Up.Z-Forward.Z*Up.Y),(Forward.Z*Up.X-Forward.X*Up.Z),Forward.X*Up.Y-Forward.Y*Up.X);}
+#else
     C3DVector GetRight() const { return Forward ^ Up; }
+#endif
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_GETANGLEXZ
     // Retail opt-in (Codex 2026-11-09): Ego_r 00b8b690 / FableWin 031e1ca0,
     // native member callers 00723753 and 007599b3.

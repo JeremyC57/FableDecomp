@@ -29,7 +29,11 @@ public:
     virtual void RemoveThingFromTask(const CThing&,bool&);
     bool IsBetterThan(const CVillageTaskTorch*,const CThing&) const;
     bool IsCreatureMoreAppropriateForTask(const CThing&) const;
+#ifdef FABLE_RETAIL_CVILLAGETASKTORCH_GETTORCH
+    CThing* GetTorch() const { return Torch.Get(); }
+#else
     CThing* GetTorch() const;
+#endif
     CVillageTaskTorch& operator=(const CVillageTaskTorch&);
 };
 FABLE_STATIC_ASSERT(sizeof(CVillageTaskTorch)==0x18);

@@ -9,6 +9,62 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND
+#include "engine/CAIGameCameraBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCamera.h"
+#include "engine/C2DVector.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/NCameraModes_CTools.h"
+namespace NCameraModes{class CBase;class CScriptModuleBase;}
+class CWorld;class CThing;class CThingGameObject;
+class CCameraManagerSetDef;class CCameraManagerDef;class CCameraModeDef;
+// Full original owner data; unused composites retain original storage and names.
+class CGameCameraManager:public CAIGameCameraBase {
+ CCamera Camera,OldCamera;
+ const CWorld& World;
+ NCameraModes::CTools CamTools;
+ CCountedPointer<NCameraModes::CBase> CurrentMode,PendingMode;
+ bool NewAutoMode,ObservedThingInMelee,ObservedThingInBuilding;
+ std::list<CIntelligentPointer<CThing> > AvailableCamPoints;
+ bool SingleCut,ChangeInControlDirection;
+ long InsideHeroCount;
+ float ControlAngleXY;
+ bool AngleChange,ControlNoControlMovement;
+ long ControlNoControlMovementStartFrame;
+ C2DVector RightStickLookAroundAngles,RightStickTargetLookAroundAngles;
+ CCountedPointer<NCameraModes::CScriptModuleBase> PCurrentScriptModule,PPendingScriptModule;
+ long ScriptedCameraRemoveTimer;
+ bool CameraPreload,CameraPreloadUseFastMode,ScriptHasPreloadedCamera;
+ class CQuake;
+ std::vector<CQuake> EarthQuakes;
+ float MinWorldHeight,MaxWorldHeight;
+ CIntelligentPointer<const CThingGameObject> PObservedThing;
+ std::vector<CDefPointer<const CCameraModeDef> > CameraList;
+ CDefPointer<const CCameraModeDef>* CameraListIndex;
+ CDefPointer<const CCameraModeDef>* InitialModeCameraListIndex;
+ std::vector<CDefPointer<const CCameraModeDef> > SpecialCameraList;
+ CDefPointer<const CCameraModeDef>* SpecialCameraListIndex;
+ bool UsingCameraManually,BlockModeChange;
+ CDefPointer<const CCameraManagerSetDef> PCameraManagerSet;
+ CDefPointer<const CCameraManagerDef> PDef;
+ unsigned char RegisteredModes[12];
+ bool ScriptedCameraModeFromGame,ScriptedCameraPreloadFlag;
+public:
+ float CamRSLookAroundDeltaTheta,CamZoomMinHeightFactor;
+ bool AutoFOVZoomInCombat,CamAutoGoBehind,LimitMinMaxWorldHeight;
+private:
+ long DrawDebugGraphics;
+ unsigned long DebugPersistFrame;
+ unsigned char DebugPoints[4];
+ void UpdateRightStickLookAround();
+public:
+ NCameraModes::CTools& GetCameraTools(){return CamTools;}
+ NCameraModes::CBase* GetCameraMode(){return CurrentMode.Get();}
+};
+FABLE_STATIC_ASSERT(sizeof(CGameCameraManager)==0x160);
+#else
 struct CBase;
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
 #include "engine/CCountedPointer.h"
@@ -89,7 +145,12 @@ public:
 #else
     unsigned char      Camera[0x38];                         // +0x04 CCamera
 #endif
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_SINGLECUT
+    CCamera OldCamera;
+    void SetSingleCut() { OldCamera=Camera; SingleCut=true; }
+#else
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
 private: const CWorld& World;
 public:
@@ -237,4 +298,5 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DrawDebugGraphics) == 0x154);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPersistFrame) == 0x158);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x15c);
 
+#endif // FABLE_RETAIL_CGAMECAMERAMANAGER_LOOKAROUND
 #endif // FABLE_ENGINE_CGAMECAMERAMANAGER_H

@@ -15,6 +15,11 @@ public:
     float DeltaTheta;
     long DebugGraphicsRed,DebugGraphicsGreen,DebugGraphicsBlue;
     CPhysicsCollisionPointsObject(long,float,float,long,long,long);
+#ifdef FABLE_RETAIL_CPHYSICSCOLLISIONPOINTSOBJECT_POINTS
+    // Retail opt-in (Codex pass19): both donor name/order and native008fa9f0.
+    void GetPointsList();
+    long GetNumberOfTests(float) const;
+#endif
 };
 }
 #ifdef _MSC_VER

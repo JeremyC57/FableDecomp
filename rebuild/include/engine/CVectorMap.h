@@ -164,10 +164,20 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
 }
 #endif
 template<class K,class V,class CompareType>
-__declspec(noinline) typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key) const
+#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND
+inline
+#else
+__declspec(noinline)
+#endif
+typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key) const
 {
+#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_CONST_LOWERBOUND
+    long count=this->size();
+    const_iterator first=this->begin();
+#else
     const_iterator first=this->begin();
     long count=this->end()-first;
+#endif
     while(count>0) {
         long half=count/2;
         const_iterator middle=first+half;

@@ -17,6 +17,54 @@
 #include "engine/C3DVector.h"
 class C3DAnimation2;
 class CBankFileAsyncData;
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+#include "stlport/fable_map.h"
+class C3DAnimationStats;class C3DMesh2;class C3DAnimFileXLoader;
+class C3DAnimationInfo : public CMeshDataBankEntry {
+public:
+ C3DAnimationInfo(const C3DAnimationInfo&);
+ C3DAnimationInfo(unsigned long,unsigned long,CMeshDataBank*);
+ virtual ~C3DAnimationInfo();
+ CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2&)const;
+ CCountedPointer<const C3DAnimationStats> GetAnimationStats()const;
+ bool IsDeltaAnimation()const;bool IsCombinationAnimation()const;
+ float GetDuration()const;float GetNonLoopingDuration()const;float GetMovementDistance()const;
+ C3DVector GetMovementVector()const;float GetRotation()const;
+ void TouchAnimation()const;
+ bool IsLoading()const{return !Data.IsNull()&&!Data->FileData.IsNull();}
+ bool IsLoaded()const{return !Data.IsNull()&&!Data->SharedAnimation.IsNull();}
+ void BeginLoading(bool)const;void Preload()const;
+ virtual unsigned long Sizeof()const;
+private:
+ virtual void Reset();
+ void SetDuration(float);void SetNonLoopingDuration(float);void SetMovementVector(const C3DVector&);
+ bool RecoverAnimationMemory(unsigned long)const;
+ C3DAnimFileXLoader& GetAnimLoader()const{return *GetBank()->AnimLoader;}
+ typedef std::map<unsigned long,CCountedPointer<C3DAnimation2> > TAnimationMap;
+public:
+ class CAnimationData:public CResource {
+ public:
+  CAnimationData(const CAnimationData&);CAnimationData(const C3DAnimationInfo*);
+  virtual ~CAnimationData();virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
+  void BuildSharedAnimation();bool CanUnload()const;virtual bool UnloadResource();void UpdateSize();unsigned long Sizeof()const;
+  TAnimationMap Animations;
+  CCountedPointer<C3DAnimation2> SharedAnimation;
+  CCountedPointer<CBankFileAsyncData> FileData;
+  const C3DAnimationInfo* AnimInfo;
+  CAnimationData& operator=(const CAnimationData&);
+ };
+private:
+ void BuildSharedAnimation()const {
+  if(!IsLoading())BeginLoading(true);
+  Data->RemoveFromResourceList();Data->BuildSharedAnimation();
+ }
+ CCountedPointer<C3DAnimation2> BuildAnimationInstance(const C3DMesh2&)const;
+ mutable CIVCountedPointer<CAnimationData> Data;
+ float Duration,NonLoopingDuration;C3DVector MovementVector;float Rotation;
+public:C3DAnimationInfo& operator=(const C3DAnimationInfo&);
+};
+#else
 class C3DAnimationInfo : public CMeshDataBankEntry {
 public:
     class CAnimationData : public CResource {
@@ -41,6 +89,7 @@ private:
     C3DVector                                 MovementVector;            // +0x18
     float                                     Rotation;                  // +0x24
 };
+#endif
 FABLE_STATIC_ASSERT(sizeof(C3DAnimationInfo) == 0x28);
 FABLE_STATIC_ASSERT(sizeof(C3DAnimationInfo::CAnimationData) == 0x3c);
 #else

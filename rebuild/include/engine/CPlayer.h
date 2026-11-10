@@ -85,6 +85,10 @@ class CPlayerManager;
 class CThingManager;
 class CWorld;
 class CWorldMap;
+#ifdef FABLE_RETAIL_PLAYER_NEARESTVILLAGE
+class CTCVillage;
+#include "engine/CWorld.h"
+#endif
 
 #ifdef FABLE_RETAIL_PLAYER
 #include "engine/CInitBaseClass.h"                              // chunk 734: RTTI CPlayer : CInitBaseClass (the vptr and Valid +0x04)
@@ -164,6 +168,15 @@ public:
     // absent from Ego_r.pdb and inline in retail (`lea ecx,[eax+34h] ; call GetPItem 0x00A01B50` after PeekMyPlayer 0x0049D9D0).
     // The body needs CThingPlayerCreature complete: engine/CThingPlayerCreature.h defines it (the CThing::PeekBaseDef pattern).
     inline CThingPlayerCreature* GetPPlayerCharacter() const;
+#ifdef FABLE_RETAIL_PLAYER_NEARESTVILLAGE
+    // Retail opt-in (Codex pass19): both PDB overloads; native00488620/004886f0.
+    CTCVillage* GetPNearestTCVillage();
+    const CTCVillage* GetPNearestTCVillage() const;
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;
+private:
+    CThingSearchTools& GetThingSearchTools() const {return World->GetThingSearchTools();}
+public:
+#endif
     // Retail opt-in (Codex pass 13, row 0x0121AF20 = the PlayerModeInfo dynamic initialiser `_$E1`): the private static mode table
     // and its 94 private ?Init/Uninit<Mode>@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z members (Ego_r + FableWin).
 private:

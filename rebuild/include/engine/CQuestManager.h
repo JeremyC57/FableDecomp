@@ -16,6 +16,10 @@
 #include "stlport/fable_containers.h"
 class CThing;
 class CPersistContext;
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
+#include "engine/C2DCoordI.h"
+class CScriptInfo;class CScriptBase;class CScriptDataBase;class CRegion;
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
 class CRegion;
 namespace std {
@@ -52,6 +56,22 @@ private:
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
 public:
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
+    // Original Ego_r complete nested type2c092 and FableWin donor020ed41c.
+    class CActiveQuest {
+    public:long GetID()const{return ID;}
+    private:
+        long ID;
+        const CScriptInfo* PScriptInfo;
+        CCountedPointer<CScriptBase> PScript;
+        std::vector<const CRegion*> Regions;
+        C2DCoordI MarkerPosition;
+        bool Persistent,LoadedResources;
+        CCountedPointer<CScriptDataBase> PScriptData;
+        CCharString QuestName;
+    };
+    CActiveQuest* GetPActiveQuest()const{return PQuestCurrentlyRunning;}
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_STARTSCREEN
     // Nested opt-in (chunk 1010b, row 0x00896B60 CGameScriptInterface::KickOffQuestStartScreen): Ego_r.pdb / FableWin.pdb
     // ?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z, out of line in retail at 0x004B2FE0 (`ret 4`, returns
@@ -259,7 +279,13 @@ private:
     class CWorld* World;
     unsigned char _pad_0x80[0xb4-0x80];
 #else
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST
+    unsigned char _pad_0x74[0x88-0x74];
+    CActiveQuest* PQuestCurrentlyRunning;
+    unsigned char _pad_0x8c[0xb4-0x8c];
+#else
     unsigned char _pad_0x74[0xb4 - 0x74];                    // +0x74 Objectives .. PMostRecentValidUsedTargetName
+#endif
 #endif
 #endif
 public:

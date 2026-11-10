@@ -12,6 +12,11 @@ class CThing;class CThingCreatureBase;class CTCWeaponTrail;
 class CAnimationEntry;
 #endif
 #include "stlport/fable_map.h"
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#include "engine/CIntelligentPointer.h"
+#include "engine/CSoundPair.h"
+class CAnimationEntry;
+#endif
 namespace NCreatureAction { class CActionEventBase; }
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
 class CGameDefinitionManager;class CWorld;
@@ -176,7 +181,38 @@ protected:
     const CGameDefinitionManager& PeekDefinitionManager() const;       // 0x00692910
     CWorld& GetWorld();                                                  // 0x00692940
 #endif
-#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PRECEEDING
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+protected:
+ CIntelligentPointer<CThingCreatureBase> PCreature;
+ long TotalTime;
+ long ActionTime;
+ long AnimDelayTime;
+ long FramesRunning;
+ long InterruptionGroupID;
+ long InterruptionPriority;
+ long ActionID;
+ CIntelligentPointer<CThing> PItemRemoved;
+ CSoundPair Sounds;
+ unsigned long PlayingSoundID;
+ float RunningTimeSeconds;
+ float LastRunningTimeSeconds;
+ long StartFrame;
+ long PauseFrame;
+ long PauseTimer;
+ C3DVector AnimMovementStep;
+ bool AddedActionAnim;
+ bool Finished;
+ bool PerformedAction;
+ bool Initialised;
+ long NextMovementPosWorldFrame;
+ C3DVector NextMovementPos;
+ CCountedPointer<CAnimationEntry> PAnimEntry;
+ CCountedPointer<CAnimationEntry> PPreceedingPAnimEntry;
+private:
+ std::vector<CCountedPointer<NCreatureAction::CActionEventBase>,std::allocator<CCountedPointer<NCreatureAction::CActionEventBase> > > ActionEvents;
+ std::map<long,CCharString,std::less<long>,std::allocator<std::pair<long const ,CCharString> > > CutSceneEvents;
+ std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing> > > DependentThings;
+#elif defined(FABLE_RETAIL_CCREATUREACTIONBASE_PRECEEDING)
 public:
     // Ego_r221ae public non-const reference accessor; FableWin0281d460.
     CCountedPointer<CAnimationEntry>& GetPPreceedingAnimationEntry(){return PPreceedingPAnimEntry;}

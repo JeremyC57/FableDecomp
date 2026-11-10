@@ -11,6 +11,10 @@ public:
     const C3DMeshMaterial* GetMaterial(unsigned long index) const { return &Materials[index]; }
     C3DMeshMaterial* GetMaterial(unsigned long index) { return &Materials[index]; }
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    unsigned long GetMeshID()const{return MeshID;}
+#endif
     unsigned char UnmodelledBase[0x7c];long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
     unsigned long MaterialCount;C3DMeshMaterial* Materials;unsigned long PrimitiveCount;C3DPrimitive2* Primitives;
     unsigned long BoneCount;C3DBone2* Bones;C3DKeyframe* BoneKeyframes;unsigned short* BoneNameIndices;char* BoneNameData;unsigned long BoneNameDataSize;

@@ -16,6 +16,9 @@ class CAnimFilterBase;
 #endif
 class CAnimationSet {
 public:
+#ifdef FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
+    bool AnimExists(const CCharString&,const CAnimFilterBase&)const;
+#endif
     const CAnimationEntry& GetAnim(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 #ifdef FABLE_RETAIL_CANIMATIONSET_ANIMS
     typedef CVectorMap<unsigned long, CAnimationEntry, CKeyPairCompareLess<unsigned long, CAnimationEntry> > TAnimMap;

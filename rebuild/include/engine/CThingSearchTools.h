@@ -20,6 +20,24 @@ protected:
     CThingManager& ThingManager;
     std::vector<NThingMap::CThingMap*> AreaMaps;
 public:
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTLEAF
+    // Both PDB instantiations, native0048cb50 (T village) /0048cbd0 (T const village).
+    template<class Filter,class Compare,class T>
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    bool GetPBestLeafThing(const Filter& filter,const Compare& compare,T** out) const {
+        T* best=0;
+        const std::list<CClass*>& things=PeekTypeList(T::StatGetType());
+        for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
+            T* thing=static_cast<T*>(*it);
+            if(thing->IsIncludedInThingScans() && filter(*thing))
+                best=compare(best,thing);
+        }
+        *out=best;
+        return best!=0;
+    }
+#endif
     // GetPFirstLeafThing<Filter,T>: out of line in retail (Ego_r 0x005457E0 ??$GetPFirstLeafThing@V?$CFilter_Bind2@VCThingFilter_OverlappingSphere@@
     // VCThingFilter_PosInContainmentVolume@@@@VCThingBuilding@@...; 0x00666EF0 calls it). A same-TU noinline body (EXTRA_RULES chunk 422):
     // AutoPlaceNearBuilding 0x00666EF0 matches only with the body visible (the filter temporaries are then known uncaptured).

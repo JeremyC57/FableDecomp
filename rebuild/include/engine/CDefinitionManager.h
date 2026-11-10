@@ -66,6 +66,43 @@ protected:
     unsigned char RecompiledDefs[12];
 };
 FABLE_STATIC_ASSERT(sizeof(CDefinitionManager)==0xd0);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+// Original FableWin01ccd240 and native00513160: genuine global-index lookup.
+#if defined(_MSC_VER)
+template<class T> __declspec(noinline)
+#else
+template<class T>
+#endif
+bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* out)const
+{
+ if(index>0){
+  CDefPointer<const CDefClassBase> def=GetPDefFromGlobalIndex(index);
+  if(def.Get()){
+   out->SetDynamicCast(def);
+   return true;
+  }
+ }
+ return false;
+}
+#endif
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+// Original FableWin01ccd0f0: genuine lookup, const conversion and output assignment.
+#ifdef _MSC_VER
+template<class T> __declspec(noinline)
+#else
+template<class T>
+#endif
+bool CDefClassBase::GetSubDef(CDefPointer<const T>* out)const
+{
+ const CSubDefInfo* info=GetPSubDefInfo(T::StatGetTypeName());
+ if(info){
+  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+  out->SetDynamicCast(def);
+  return true;
+ }
+ return false;
+}
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY
 // Nested opt-in (chunk 1012, row 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds): the same-TU body of the by-class-index
 // lookup ??$GetDef@V..@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBV..@@@@@Z (Ego_r.pdb / FableWin.pdb; the

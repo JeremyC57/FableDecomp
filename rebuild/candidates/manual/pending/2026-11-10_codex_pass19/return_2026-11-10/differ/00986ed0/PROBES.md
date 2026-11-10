@@ -1,0 +1,7 @@
+# 00986ed0 probes
+
+s01 full original owner/hierarchy/helpers353, wrong OurPos+4 exposed missing original vector alignment. Proposal sent without changing packing. Owner explicitly approved the scoped original C3DVector alignment correction2026-11-10 (reply sure, relayed by main).
+
+s02 approved shared vector opt-in353, OurPos+1 and remaining fields correct; copy schedule and four multiply pairs differ. s03 existing original cross XY expression groups353 fixes copy schedule, four multiply pairs. s04 genuine full GetRight owner formula unfolded through real Forward/Up fields353 improves to three multiply pairs. s05 named result363 worse. s06 genuine axis accessors353 four pairs. s07 bound real axis references353 three different pairs. s08 axis value snapshot309 (GetRight fails inline budget); s08b /d2inlT100 exposes helper354 but adds instructions. s09 restriction guard through member352 worse. s10 memberwise side negation329 worse. Ten source/layout strategies plus one budget confirmation; no commutative operand permutation sweep repeated.
+
+Selection s04 retains full original GetRight arithmetic in its genuine owner header, with its first two component expressions grouped to preserve original copy-load scheduling. No forced helper/assembly or invented local models. Three commutative multiply pairs remain. Both actual compilers pass216 behavior cases with original field-layout assertions and unchanged SideVec bytes when angular restriction is off.

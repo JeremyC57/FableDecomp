@@ -13,6 +13,10 @@ public:
     virtual CCharString GetClassTypeName() const;
     virtual void OnInitialActivate();
     virtual bool IsComponentSerialisable() const;
+#ifdef FABLE_RETAIL_CTCENEMY_FACTION
+    // Retail opt-in (Codex pass19): FableWin GetPFaction and original+24 field.
+    const CFaction* GetPFaction() const { return PFaction; }
+#endif
     void SetFaction(const CCharString& faction);
 protected:
     virtual void OnSerialise(CPersistContext&,bool);

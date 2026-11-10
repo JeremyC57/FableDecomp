@@ -54,6 +54,10 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_IS_ALLOWED_TO_FOLLOW
+    // Original FableWin02496dd0 and native006d4ebc: existing original flag.
+    bool IsAllowedToFollowHero()const{return AllowedToFollowHero;}
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_SCRIPTPRIORITY
     // Nested opt-in (chunk 1010b, row 0x0089B5B0 StartScriptingEntity): Ego_r.pdb
     // ?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ, out of line in retail at 0x006D5AD0

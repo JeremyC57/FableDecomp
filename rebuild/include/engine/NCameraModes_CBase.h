@@ -1,5 +1,118 @@
 #ifndef FABLE_ENGINE_NCAMERAMODES_CBASE_H
 #define FABLE_ENGINE_NCAMERAMODES_CBASE_H
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_CYLINDER
+#include "rebuild_abi.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+#include "engine/NCameraModes_CPhysicsState.h"
+#include "engine/C2DVector.h"
+class CCameraModeDef; class CGameCameraManager; class CThingGameObject; class CWorld; class CCamera; class CEnginePrimitivePrepareInfo;
+namespace NCameraModes {
+class CSubComponentBase; class CBaseInit; class CTools; enum EMode; enum ESubComponentType;
+class CBase {
+public:
+ CBase(const NCameraModes::CBase & p0);
+ CBase(CGameCameraManager & p0, const CDefPointer<CCameraModeDef const > & p1);
+ virtual ~CBase();
+ virtual void Update() = 0;
+ virtual NCameraModes::EMode GetModeType() const = 0;
+ virtual void OnCameraInsideObservedThing();
+ void Init();
+ void Die();
+ virtual bool IsUseRightStickLookAround() const;
+ virtual void PreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0) const;
+ virtual bool IsShortenOnOcclusion() const;
+ virtual bool IsRaiseUpOnHeroNearby() const;
+ virtual bool IsStretchAroundHero() const;
+ virtual bool IsAvoidLandscape() const;
+ virtual bool IsFOVChange() const;
+ virtual bool IsTrackMeleeOpponents() const;
+ virtual bool IsTrackMeleeOpponentsAutoFOVChange() const;
+ virtual bool IsFinished() const;
+ virtual bool IsStringAndCage() const;
+ virtual float GetObservedThingCurrentMeshHeight() const;
+ virtual void Recentre();
+ void SetRightStickLookAround(const C2DVector & p0);
+ void SetLeftStickLookAround(const C2DVector & p0);
+ void Reset();
+ void UpdateTrackMeleeOpponents(const C3DVector & p0, C3DVector & p1) const;
+ void FrameUpdate();
+ void TransferPersistantBaseData(const NCameraModes::CBase & p0);
+ bool HasSubComponent(NCameraModes::ESubComponentType p0);
+ CCountedPointer<NCameraModes::CSubComponentBase> GetSubComponent(NCameraModes::ESubComponentType p0);
+ void AddSubComponent(CCountedPointer<NCameraModes::CSubComponentBase> p0, bool p1);
+ void RemoveSubComponent(NCameraModes::ESubComponentType p0);
+ virtual void UpdateSubComponents();
+ void TransferSubComponentsFrom(const NCameraModes::CBase & p0);
+ const CThingGameObject * GetObservedThing() const;
+ const NCameraModes::CPhysicsState & GetGoToPhase() const;
+ NCameraModes::CPhysicsState & GetGoToPhase();
+ void SetGoToPhase(const NCameraModes::CPhysicsState & p0);
+ const NCameraModes::CPhysicsState & GetLookAtPhase() const;
+ NCameraModes::CPhysicsState & GetLookAtPhase();
+ void SetLookAtPhase(const NCameraModes::CPhysicsState & p0);
+ const C3DVector & GetPosition() const;
+ void SetPosition(const C3DVector & p0);
+ const C3DVector & GetObservedPos() const;
+ void SetObservedPos(const C3DVector & p0);
+ void SetFOV(float p0);
+ float GetFOV() const;
+ void SetRollAngle(float p0);
+ float GetRollAngle() const;
+ void SetObservedPositionZOffset(float p0);
+ float GetObservedPositionZOffset() const;
+ const CDefPointer<CCameraModeDef const > & GetCameraModeDef() const;
+ virtual float GetDefaultFOV() const;
+ virtual float GetDefaultRollAngle() const;
+ virtual float GetDefaultObservedPositionZOffset() const;
+ void SetDefaultFOV(float p0);
+ void SetDefaultRollAngle(float p0);
+ void SetDefaultObservedPositionZOffset(float p0);
+ unsigned long * GetPWorldSeed() const;
+ bool IsCameraViewPosOccluded() const;
+protected:
+ void AddAttractorGoTo(const C3DVector & p0, float p1);
+ void AddIncidentalAttractorGoTo(const C3DVector & p0, float p1);
+ void AddAttractorLookAt(const C3DVector & p0, float p1);
+ void AddIncidentalAttractorLookAt(const C3DVector & p0, float p1);
+ virtual void OnInit() = 0;
+ virtual void OnDie() = 0;
+ virtual void OnReset();
+ void UpdateCameraStretchAroundHero(C3DVector & p0, C3DVector & p1) const;
+ void UpdateCameraOcclusion(C3DVector & p0);
+ bool IsCameraOcclusionFromTo(const C3DVector & p0, const C3DVector & p1, C3DVector & p2) const;
+ void UpdateFixLookDirection(const C3DVector & p0, const C3DVector & p1, C3DVector & p2, float p3) const;
+ void UpdateRaiseUp(C3DVector & p0) const;
+ void SetGoToCullPhysics(bool p0);
+ CGameCameraManager & GetCameraManager() { return CameraManager; }
+ const CGameCameraManager & GetCameraManager() const { return CameraManager; }
+ const NCameraModes::CTools & GetCamTools() const;
+ const CWorld & GetWorld() const;
+ void SetCameraModeDef(const CDefPointer<CCameraModeDef const > & p0);
+ const C2DVector & GetRightStickVector() const;
+ const C2DVector & GetLeftStickVector() const;
+ CCamera & GetCamera();
+ const CCamera & GetCamera() const;
+ float DefaultFOV;
+ float DefaultRollAngle;
+ float DefaultObservedPositionZOffset;
+ NCameraModes::CPhysicsState LookAt;
+private:
+ CGameCameraManager & CameraManager;
+ CDefPointer<CCameraModeDef const > PCameraModeDef;
+ std::vector<CCountedPointer<NCameraModes::CSubComponentBase>,std::allocator<CCountedPointer<NCameraModes::CSubComponentBase> > > SubComponents;
+ NCameraModes::CPhysicsState GoTo;
+ float CameraFOV;
+ float RollAngle;
+ float ObservedPositionZOffset;
+ C2DVector RightStickVector;
+ C2DVector LeftStickVector;
+ bool ViewOccluded;
+};
+FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
+}
+
+#else
 // NCameraModes::CBase -- root of the game-camera modes (hand-written, chunk 725; new header).
 // RTTI .?AVCBase@NCameraModes@@, vtable 0x0124DD74: slot 0 the deleting destructor 0x0056E1F0, slots 1 and 2 _purecall,
 // slots 3.. base bodies (0x0056E150 ..), 21 OnInit, 22 OnDie (CProjectileWeapon 0x00878F50 / 0x00878B40). Only slots 0-2 are
@@ -34,9 +147,21 @@ class CTools;
 enum EMode;
 class CBase {
 public:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_POSITION
+    // Original FableWin021f6030 / Ego_r original const reference accessor.
+    const C3DVector& GetPosition() const;
+#endif
     virtual ~CBase();                                    // slot 0
     virtual void Update() = 0;                           // slot 1
-    virtual EMode GetModeType() const = 0;               // slot 2
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_LOOKAROUND
+    // Both original PDB complete vtables: original slots3 and4.
+    virtual EMode GetModeType() const = 0;
+    virtual void OnCameraInsideObservedThing();
+    virtual bool IsUseRightStickLookAround()const;
+#else
+    virtual EMode GetModeType() const = 0;
+#endif
+               // slot 2
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_MEMBERS
     // Per-TU opt-in (chunk 767, row 0x0084D2B0): the leading retail data members, from Ego_r.pdb struct_layouts_egor.tsv "CBase"
     // (the 200-byte camera-mode record: DefaultFOV / DefaultRollAngle / DefaultObservedPositionZOffset / LookAt / CameraManager ...)
@@ -86,4 +211,5 @@ private:
 FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
 #endif
 } // namespace NCameraModes
+#endif // FABLE_RETAIL_NCAMERAMODES_CBASE_CYLINDER
 #endif // FABLE_ENGINE_NCAMERAMODES_CBASE_H

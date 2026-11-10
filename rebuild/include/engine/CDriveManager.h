@@ -14,6 +14,17 @@ class CSystemManager;
 class CWideString;
 enum EDriveReturn;                                           // MS forward enum
 #endif
+#ifdef FABLE_RETAIL_CDRIVEMANAGER_PATH
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+// Original Ego_r complete type a411: singleton base4 and private SystemManager+4.
+class CDriveManager:public CTBaseSingletonNoDefaultAlloc<CDriveManager>{
+ CSystemManager* SystemManager;
+ bool GetItemFromPath(const wchar_t* pathname,unsigned long directory_number,wchar_t* directory_name);
+public:
+ virtual ~CDriveManager();
+};
+FABLE_STATIC_ASSERT(sizeof(CDriveManager)==8);
+#else
 #pragma pack(push, 1)
 class CDriveManager {
 public:
@@ -33,4 +44,5 @@ FABLE_STATIC_ASSERT(sizeof(CDriveManager) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CDriveManager, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CDriveManager, SystemManager) == 0x4);
 
+#endif // FABLE_RETAIL_CDRIVEMANAGER_PATH
 #endif // FABLE_ENGINE_CDRIVEMANAGER_H

@@ -11,6 +11,10 @@ class CHandleBasedMemoryPool:public CBaseClassNonCopyable{public:
 CHandleBasedMemoryPool(const CHandleBasedMemoryPool&);
 CHandleBasedMemoryPool();
 virtual ~CHandleBasedMemoryPool();
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+void Defragment();
+#endif
 void * GetPointerFromHandle(long);
 protected:
 virtual void MoveResource(void *,long,void *,void *,unsigned long);

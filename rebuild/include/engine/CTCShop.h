@@ -27,6 +27,9 @@ public:
 #ifdef FABLE_RETAIL_CTCSHOP_VALIDSTOCK
     bool IsValidStockItem(long)const;
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_CALC_STALL
+    bool CalcIsStallLike();
+#endif
     void SellItem(long);
     float GetCurrentBasicPrice(long,long) const;
     long GetCurrentBuyPrice(long,long) const;
@@ -47,6 +50,7 @@ public:
     void RemoveStockItemsFromShop();                                     // 0x00773E10
     void UpdateStock();                                                  // 0x00775350
     bool IsPermanentlyStocked() const;                                   // 0x007721A0
+    std::vector<long> GetSaleItemsToPlace() const;
     void StockDisplay();                                                 // 0x00774C60
     // Ego_r.pdb ?IsOpeningHours@CTCShop@@QBE_NXZ (Fable.exe 0x00773950; row 0x00918A40).
     bool IsOpeningHours() const;

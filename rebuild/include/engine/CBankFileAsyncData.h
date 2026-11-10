@@ -9,6 +9,13 @@ class CMovableResourceMemoryPool;
 // Both give CThreadedFileCallback@0, CMovableResource@4, and BankFile as a reference.
 class CBankFileAsyncData : public CThreadedFileCallback, public CMovableResource {
 public:
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    bool IsFinished()const;
+    bool WaitUntilFinished();
+    void* GetData();
+    unsigned long GetLength()const{return Length;}
+#endif
     virtual ~CBankFileAsyncData();
     virtual bool OnFileReadBegin(void**, EThreadedFilePriority);
     virtual void OnFileReadCompletion(bool);

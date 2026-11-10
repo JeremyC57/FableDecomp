@@ -8,6 +8,10 @@
 // Native vtable0129c808 and CDefinitionManager base destructor prove inheritance.
 class CResourceList : public CFailedAllocationHandler {
 public:
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    void ShrinkResources(unsigned long);
+#endif
     virtual ~CResourceList();
     virtual bool HandleFailedAllocation(unsigned long);
 #ifdef FABLE_RETAIL_CRESOURCELIST_REMOVERESOURCE

@@ -8,17 +8,39 @@
 // FABLE_RETAIL_CMESHDATABANK_BASES (CMeshDataBank : CBankFile) and FABLE_RETAIL_CBANKFILE_ENTRYQUERY.
 #include "rebuild_abi.h"
 #include "engine/CMeshDataBank.h"
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+class CCharString;
+#endif
 class CMeshDataBankEntry {
 public:
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    CMeshDataBankEntry& operator=(const CMeshDataBankEntry&);
+#endif
     CMeshDataBankEntry(unsigned long index, CMeshDataBank* bank);
     CMeshDataBankEntry(const CMeshDataBankEntry&);
     virtual ~CMeshDataBankEntry();
     virtual void FreeDeviceSpecificResources();
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    unsigned long GetDataType()const{return GetBank()->GetEntryDataType(Index);}
+    virtual unsigned long Sizeof()const=0;
+    CCharString GetName()const;
+#else
     unsigned long GetDataType() const { return PeekBank()->GetEntryDataType(Index); }
+#endif
     unsigned long GetIndex() const { return Index; }
 protected:
     const CMeshDataBank* PeekBank() const { return Bank; }
-    CMeshDataBank* Bank;                                                 // +0x04
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    CMeshDataBank* GetBank()const{return Bank;}
+private:
+    virtual void Reset()=0;
+    CMeshDataBank* Bank;
+#else
+    CMeshDataBank* Bank;
+#endif                                                 // +0x04
     unsigned long Index;                                                 // +0x08
 };
 FABLE_STATIC_ASSERT(sizeof(CMeshDataBankEntry) == 0xc);

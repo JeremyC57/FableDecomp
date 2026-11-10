@@ -11,7 +11,10 @@
 class CEnginePrimitiveHandle : public CBaseClass {
 public:
     CEnginePrimitiveHandle() { }
-#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_DTOR)
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_DTOR)
+    // Original FableWin01909120: Clear then implicit member and base destructors.
+    virtual ~CEnginePrimitiveHandle() { Clear(); }
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_DTOR)
     // Nested opt-in (chunk 763, row 0x00441EE0): retail's inline destructor is Clear() then the member's own release
     // (0x0041C500 ??_G: notify at count 1, Reset(0), then ~CIVCountedPointer releases again).
     FABLE_FORCEINLINE virtual ~CEnginePrimitiveHandle() { Clear(); }

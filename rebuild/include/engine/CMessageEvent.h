@@ -20,6 +20,19 @@ enum EMessageEventType;                                                  // MS f
 enum EReactionSpeechType;                                                // MS forward enum
 class CMessageEvent : public CBaseObject {
 public:
+#ifdef FABLE_RETAIL_CMESSAGEEVENT_TARGET_ORIGINAL
+    // Original FableWin02112190 and module821 original locals.
+    template<class T> T* GetPTarget() const {
+        T* ret=0;
+        if(PTarget!=0){
+            unsigned long things_flags=PTarget->GetTypeFlags();
+            unsigned long cast_to_flags=T::StatGetTypeFlags();
+            unsigned long xored=things_flags^cast_to_flags;
+            if(!(xored&cast_to_flags))ret=GFDebugPDynamicCast(PTarget.Get(),(T*)0);
+        }
+        return ret;
+    }
+#endif
     template<class T> T* GetPOriginator() const {
         if (POriginator.GetPItem() && (~static_cast<CThing*>(POriginator.GetPItem())->GetTypeFlags() & T::StatGetTypeFlags()) == 0)
             return static_cast<T*>(static_cast<CThing*>(POriginator.GetPItem()));

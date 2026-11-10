@@ -4,7 +4,11 @@
 // Original TPI0x14ae8; complete native14c, original flags begin148.
 class CThingCreatureDef : public CThingBaseDef {
 public:
-#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
+#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_LEADER
+    unsigned char _pad_0x70[0x13c-0x70];
+    long LeaderTypeDef;
+    unsigned char _pad_0x140[8];
+#elif defined(FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE)
     unsigned char _pad_0x70[0xb4];
     long CombatTypeDef;
     unsigned char _pad_0x128[0x20];

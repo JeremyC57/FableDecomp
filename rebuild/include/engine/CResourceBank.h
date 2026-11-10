@@ -16,6 +16,10 @@ class CResource;
 
 class CResourceBank : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+    CResourceList& GetResourceList(){return ResourceList;}
+#endif
     CResourceBank();                                                     // ??0CResourceBank@@QAE@XZ
     virtual ~CResourceBank();                                            // slot 0 (scalar deleting 0x009FC750)
     void AddResource(CResource& resource);                               // ?AddResource@CResourceBank@@QAEXAAVCResource@@@Z

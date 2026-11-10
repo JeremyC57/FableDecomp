@@ -8,6 +8,10 @@
 #include "engine/C3DAnimationStats.h"
 #include "engine/CMovableResource.h"
 #include "engine/C3DAnimationSequence.h"
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+class C3DMesh2;
+#endif
 class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;class CChunkedFileSuperChunk;class CSimpleMemoryPool;class C3DAnimFileSequenceChunk;class C3DAnimFileObjectChunk;class C3DAnimFileRootChunk;class C3DAnimFileHelpersChunk;class C3DAnimFileMovementVectorChunk;class C3DAnimFileBoneMaskChunk;class C3DAnimationSequenceData;class C3DAnimationSequence;class CMovableResourceMemoryPool;class CMovableResource;
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class C3DAnimation2:public C3DAnimationStats,public CMovableResource{
@@ -15,6 +19,11 @@ public:
 C3DAnimation2(const C3DAnimation2&);
 C3DAnimation2();
 virtual ~C3DAnimation2();
+#ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+// Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.
+void SetMemoryPool(CMovableResourceMemoryPool*);
+bool InitialiseAnimationInstance(C3DAnimation2&,const C3DMesh2&,bool,float*);
+#endif
 bool InitialiseSharedAnimation(const C3DAnimFile&,EAnimationType);
 virtual C3DVector GetMovementOffsetAtTime(float) const;
 virtual C3DVector GetMovementAtTime(float) const;

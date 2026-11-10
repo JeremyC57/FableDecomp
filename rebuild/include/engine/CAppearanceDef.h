@@ -9,13 +9,37 @@
 #include "fable_string.h"
 #include "engine/CSubDefClassBase.h"
 #include "engine/CAnimationSet.h"
+#ifdef FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+#include "engine/CEngineGraphic.h"
+enum ELightingChannel;
+#endif
 #pragma pack(push, 1)
 class CAppearanceDef : public CSubDefClassBase {
 public:
     // Ego_r.pdb / FableWin.pdb ?StatGetTypeName@CAppearanceDef@@SI?AVCCharString@@XZ (inline: the class-name key GetSubDef looks up).
     static CCharString __fastcall StatGetTypeName() { return CCharString("CAppearanceDef", -1); }
+#ifdef FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+    CEngineGraphic Graphic;
+    unsigned char _pad_0x33;
+#else
     unsigned char Graphic[0xf];                              // +0x25 CEngineGraphic
+#endif
     CAnimationSet Animation;                                 // +0x34
+#ifdef FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+    unsigned char OutlineEffectAlphaRef,OutlineEffectAlphaBias;
+    bool OverrideLightingChannel;
+    unsigned char _pad_0x57;
+    ELightingChannel LightingChannel;
+    CEngineGraphic FadeOutWhenCloseGraphic;
+    bool HasFadeOutWhenCloseGraphic;
+    unsigned char _pad_0x6b;
+    float FadeOutGraphicRenderFadeDistance;
+    float FadeOutGraphicNearRenderFadeDistance;
+    float FadeOutGraphicNearRenderClipDistance;
+#endif
 };
 #pragma pack(pop)
+#ifdef FABLE_RETAIL_CAPPEARANCEDEF_COMPLETE
+FABLE_STATIC_ASSERT(sizeof(CAppearanceDef)==120);
+#endif
 #endif // FABLE_ENGINE_CAPPEARANCEDEF_H

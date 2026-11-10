@@ -1,0 +1,41 @@
+address	name	evidence
+0x0047dd9d	CTCInGameMenu::PCSetToLoad	See rows/0047dd9d/NAMING_EVIDENCE.md
+0x0047ed76	CTCInGameMenu::SetToSave	See rows/0047ed76/NAMING_EVIDENCE.md
+0x00488620	CPlayer::GetPNearestTCVillage	Both original PDB overloads; FableWin01acfd90/01ad0040 bodies and original locals; six native relocation identities audited
+0x004886f0	CPlayer::GetPNearestTCVillage	Both original PDB overloads; FableWin01acfd90/01ad0040 bodies and original locals; six native relocation identities audited
+0x005e3f00	CTCQuestCompletionUI::DrawPreparePrimitivesForRendering	Both PDB leaves; native vtable0125589c slot11; donor022c4bd0 body; original members and locals; all six relocations audited
+0x0064a3ed	NPlayerGui::CDrawQuestInfo::AddElement	Both exact PDB leaves; FableWin020ed41c body; original module828 locals; four relocations audited
+0x0066c880	CRegionMinimap::GetTGAPositionFromWorldCoordinates	Both PDB leaves; donor02187810; original locals and helper calls; two compiler conversion relocations audited
+0x00680050	CThingObjectDef::Validate	See rows/00680050/NAMING_EVIDENCE.md
+0x00697cc0	CGameCameraManager::UpdateRightStickLookAround	Both original PDBs;donor02202240;full shared owner/slot4;all11relocationoperands.
+0x006af3f0	CMessageEventFilter_IsMyDeadLeader::operator()	Both original PDBs;original02111cb0 and complete owner layouts;all5relocation operands audited.
+0x006d4e60	CTCFollowed::IsCreatureValidFollower	Both original PDBs, original02496510 and local stream, full original class; corrected reference parameter and follower callees.
+0x00744b50	CTCPerceiveThing::UpdateSmell	See rows/00744b50/NAMING_EVIDENCE.md
+0x00746ec0	CTCStealth::GetPositionToMoveToForStabOn	See rows/00746ec0/NAMING_EVIDENCE.md
+0x00752e00	CTCLook::SetBodyMoving	See rows/00752e00/NAMING_EVIDENCE.md
+0x007729a0	CTCShop::CalcIsStallLike	Original Ego0077fb50/FW02619450; original local-symbol stream; full original CShopDef records and actual CTCThingOwner list; genuine visible definition helpers.
+0x00774c60	CTCShop::StockDisplay	See rows/00774c60/NAMING_EVIDENCE.md
+0x00783a30	CTCBoastingCrowdControl::GetCrowd	See rows/00783a30/NAMING_EVIDENCE.md
+0x0085c7d0	NCameraModes::CMoveOnCylinder::OnInit	See rows/0085c7d0/NAMING_EVIDENCE.md
+0x00860ad0	CVillageTaskPatrol::IsCreatureMoreAppropriateForTask	Both original PDB names; donor029bedc0; genuine shared owner and const nearest-node helper029bece0.
+0x0086be40	CRandomAppearanceMorph::GetRandomBodyParts	See rows/0086be40/NAMING_EVIDENCE.md
+0x008bd3f0	CCreatureAction_TeleportOut::FinishAction	See rows/008bd3f0/NAMING_EVIDENCE.md
+0x008d55a0	CCreatureAction_FireMissileWeapon::Initialise	See rows/008d55a0/NAMING_EVIDENCE.md
+0x008fac30	NCameraModes::CPhysicsForceModelBase::DoThemeEvasion	See rows/008fac30/NAMING_EVIDENCE.md
+0x009210a0	CAIStateGroup_BeetleToggleHover::IsRunnable	See rows/009210a0/NAMING_EVIDENCE.md
+0x00933db0	?Update@CAIStateGroup_MinionKidAnnoy@@UAEXXZ	See rows/00933db0/NAMING_EVIDENCE.md
+0x0093ea90	CAIStateGroup_VillageTaskTorch::Update	See rows/0093ea90/NAMING_EVIDENCE.md
+0x00961640	CAIStateGroup_BanditKingThrowWeapons::Update	Both original PDBs and original02c2d760;all20call/data operands independently decoded;correct ChangeWeapons reference constructor confirmed.
+0x009677a0	CAIStateGroup_TavernServer::WalkToPoint	Both original PDBs;original02c427e0;all13calloperands independentlychecked.
+0x00968460	CAIStateGroup_TavernKeeper::GetPaymentFinishedMessage	Both original PDB leaves; donor02c48040/02c48100; real callback/search/filter chain; eight operands audited
+0x00968510	CAIStateGroup_TavernKeeper::GetPaymentCancelledMessage	Both original PDB leaves; donor02c48040/02c48100; real callback/search/filter chain; eight operands audited
+0x0096ec10	CAIStateGroup_MeleeCombatNearby::MoveToEnemyCreatureCombatPosition	See rows/0096ec10/NAMING_EVIDENCE.md
+0x00971ed0	CAIStateGroup_JackOfBladesStage1::GetRushToPosForLunge	Both original PDBs;donor02bea230 complete helper chain;real STLport4.6;15nativecalloperands.
+0x00986ed0	??0CThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QAE@ABVCThingAICreature@@M_N@Z	See rows/00986ed0/NAMING_EVIDENCE.md
+0x009c5890	CFileInstaller::CFileInstaller	See rows/009c5890/NAMING_EVIDENCE.md
+0x009e4cb0	CDriveManager::GetItemFromPath	Both original PDBs;original03089060/source locals;native CreateDirectoryW callers;CRT andliteral operands verified.
+0x00a24d70	C3DAnimationInfo::CAnimationData::BuildSharedAnimation	NAMING_EVIDENCE.md; exact leaf and all native operands audited
+0x00a26ad0	C3DAnimationInfo::BuildAnimationInstance	NAMING_EVIDENCE.md; exact leaf and all native operands audited
+0x00ba0fc0	CEnginePrimitiveManagerStaticMeshesBase::AddStaticMesh	See rows/00ba0fc0/NAMING_EVIDENCE.md
+0x00c1d1c0	InvertMatrix3x4	DESCRIPTIVE; Two native callers;347-byte affine inverse body and adjacent libpk inverse; full shared matrix layout; epsilon established spelling; four absolute operands audited
+0x00c462e0	CFloatQuad::Interpolate	DESCRIPTIVE; Native bilinear arithmetic/no xrefs; actual physics vtable excludes manifest name; name searches found no original; shared inferred16-byte value record

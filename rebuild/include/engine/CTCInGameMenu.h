@@ -11,8 +11,8 @@
 #include "engine/CTCBase.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
-#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENPC
-namespace NUISystem { class CComponent; }
+#if defined(FABLE_RETAIL_CTCINGAMEMENU_OPENPC) || defined(FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD)
+namespace NUISystem { class CComponent; class CYesNo; }
 #endif
 class CTCInGameMenu : public CTCBase {
 public:
@@ -24,14 +24,42 @@ public:
     // (Ego_r.pdb / FableWin.pdb), out of line at 0x004804DE; the options screen passes the inventory's mouse pointer and its list.
     void OpenInGameMenuPC(NUISystem::CComponent* mousePointer, NUISystem::CComponent* list);   // 0x004804DE
 #endif
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+    // Retail opt-in (Codex pass19): both original PDB signatures and native offsets.
+    void SetToSave(long);
+    void PCSetToLoad(long);
+#endif
 private:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x0047F58B
     bool          InGameMenuOpen;                                    // +0x0c
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+    unsigned char _pad_0x0d[0x58 - 0x0d];
+    std::vector<NUISystem::CComponent*> Components;
+    long LoadGameIndex;
+    double CurStartPauseTime;
+    double AccumulativePausedTime;
+#else
     unsigned char _pad_0x0d[0x78 - 0x0d];                            // +0x0d PDef .. AccumulativePausedTime (generated header below)
+#endif
     std::vector<CCharString> FileRegionNames;                        // +0x78
     std::vector<CCharString> FileRegionMiniMapNames;                 // +0x84
     std::vector<long>        FilePlayTimes;                          // +0x90
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+    unsigned char _pad_0x9c[0xb8 - 0x9c];
+    long SaveGameToLoad;
+    unsigned char _pad_0xbc[0xc8 - 0xbc];
+    long SaveGameIndex;
+    long FramesToWaitToSave;
+    NUISystem::CComponent* PSaveInProgress;
+    unsigned char _pad_0xd4[4];
+    double SaveInProgressTime;
+    unsigned char Signatures[12];
+    NUISystem::CComponent* PMousePointer;
+    NUISystem::CYesNo* PYesNo;
+    unsigned char _pad_0xf4[4];
+#else
     unsigned char _pad_0x9c[0xf8 - 0x9c];                            // +0x9c .. PYesNo (generated header below)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInGameMenu) == 0xf8);
 #endif

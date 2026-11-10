@@ -24,14 +24,28 @@ class CThingAICreature;
 class CThingManager;
 class CWorld;
 
+#ifdef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+#include "engine/CSuspendableProcessMicrothread.h"
+#endif
 #pragma pack(push, 1)
-class CAIBrain {
+class CAIBrain
+#ifdef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+ : public CSuspendableProcessMicrothread
+#endif
+{
 public:
+#ifdef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+    virtual ~CAIBrain();
+private:
+    virtual void SuspendableProcess();
+public:
+#else
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
     unsigned char       _pad_0x0c[0x4];                      // +0x0c
     unsigned char       _pad_0x10[0x4];                      // +0x10
+#endif
     CMainGameComponent* Component;                           // +0x14
 #ifdef FABLE_RETAIL_CAIBRAIN_FORCERESET
     // Opt-in (agentNF5, 2026-11-10, row 0x006D5AB0 CThingAICreature::ForceAIReset): Ego_r.pdb / FableWin.pdb ?ForceReset@CAIBrain@@QAEXXZ,
@@ -90,7 +104,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAIBrain) == 0xa8);
+#ifndef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, Component) == 0x14);
 #ifndef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, Creature) == 0x18);

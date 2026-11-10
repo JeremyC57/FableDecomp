@@ -46,6 +46,9 @@ public:
  virtual bool GetMeshEffect(CIVCountedPointer<CEngineMeshEffect>&)const;
  virtual CEngineInternalPrimitiveOcclusionBase* GetAsOcclusionPrimitive();
  virtual void CollectStats(std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > >&,EEnginePrimitiveStatIndex,unsigned long)const;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+ void SetNonPersistent(bool non_persistent){NonPersistent=non_persistent;}
+#endif
  void SetEnable(bool enable){Enable=enable;}
  unsigned long EnginePrimitiveFlags;
  float AlphaMipBias;

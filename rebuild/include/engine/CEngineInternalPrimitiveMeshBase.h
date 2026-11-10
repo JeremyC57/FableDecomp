@@ -10,6 +10,9 @@ class CEngineInternalPrimitiveMorphInfo;
 class CEnginePrimitiveSimulationInfo;
 class CEngineInternalPrimitiveMeshBase : public CEngineInternalPrimitiveOcclusionBase {
 public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+ CEngineInternalPrimitiveMeshBase(long type,unsigned long mask):CEngineInternalPrimitiveOcclusionBase(type,mask),MeshInfo(0){}
+#endif
  virtual ~CEngineInternalPrimitiveMeshBase();
  virtual const CEngineRenderInfoMeshBase* PeekRenderInfoMeshBase()const=0;
  virtual bool GetTransformFrameStart(CMatrix3x4&)const;

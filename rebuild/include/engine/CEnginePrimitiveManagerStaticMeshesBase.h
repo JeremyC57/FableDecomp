@@ -19,6 +19,9 @@ private:
 public:
     virtual ~CEnginePrimitiveManagerStaticMeshesBase();
 public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+    CEnginePrimitiveHandle AddStaticMesh(const C3DMeshInfo*,const C3DMeshInfo*,const CMatrix3x4&,float,const CEngineFadeDistance&,long,const CRGBColour&,long,float,bool,unsigned long);
+#endif
     CEnginePrimitiveManagerStaticMeshesBase(const CEnginePrimitiveManagerStaticMeshesBase&);
     CEnginePrimitiveManagerStaticMeshesBase(CArray<CEngineScene *>&);
     static bool FABLE_FASTCALL SetupStaticBlocksNoMorph(C3DPrimitive2&,const C3DMesh2&,C3DTextureStages&,long,const CGraphicDataBank*,bool);

@@ -14,6 +14,10 @@
 // Needs FABLE_RETAIL_CTCBASE (engine/CTCBase.h).
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+#include "engine/NUISystem_CComponent.h"
+#include "stlport/fable_containers.h"
+#endif
 class CCharString;
 class CWideString;
 class CTCQuestCompletionUI : public CTCBase {
@@ -24,6 +28,10 @@ public:
     enum CompletionType { };
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_QUEST_COMPLETION_UI; }
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    // Retail opt-in (Codex pass19): both PDB leaves and vtable0125589c slot11.
+    virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
+#endif
     void Activate(CompletionType completion, const CCharString& scriptName, bool b1, const CWideString& summary, bool b2);   // 0x005E4740
     void SaveInitialValues(const CCharString& scriptName);                                                                    // 0x005E4860
     bool IsActive() const { return Active; }                             // FableWin ?IsActive@CTCQuestCompletionUI@@QBE_NXZ
@@ -33,7 +41,11 @@ private:
     bool          Active;                                                // +0x0c
     bool          ReallyActive;                                          // +0x0d
     unsigned char _pad_0x0e[0x2];                                        // +0x0e
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    std::vector<NUISystem::CComponent*> Components;
+#else
     unsigned char Components[0xc];                                       // +0x10 std::vector<NUISystem::CComponent*>
+#endif
     bool          Quitting;                                              // +0x1c
     bool          WaitingForRegionLoad;                                  // +0x1d
     bool          WaitingForPlayerControl;                               // +0x1e
@@ -69,8 +81,16 @@ private:
     void*         PGoldText;                                             // +0xac CText*
     void*         PExperienceText;                                       // +0xb0 CText*
     float         AccumFadeTime;                                         // +0xb4
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    NUISystem::CComponent* PFrame;
+#else
     void*         PFrame;                                                // +0xb8 NUISystem::CComponent*
+#endif
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DRAW
+    NUISystem::CComponent* PBlack;
+#else
     void*         PBlack;                                                // +0xbc NUISystem::CComponent*
+#endif
     bool          QuittingFadeOut;                                       // +0xc0
     long          QuestCardDef;                                          // +0xc4
     unsigned long ExperienceCountingSound;                               // +0xc8

@@ -14,6 +14,9 @@
 #include "engine/EEngineOcclusionLayer.h"
 #include "engine/CIVCountedPointer.h"
 class CEngineInternalPrimitiveOcclusionBase:public CEngineInternalPrimitiveBase {public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVESTATICMESH
+ CEngineInternalPrimitiveOcclusionBase(long type,unsigned long mask):CEngineInternalPrimitiveBase(type,mask){}
+#endif
  virtual ~CEngineInternalPrimitiveOcclusionBase();
  void SetupOcclusionInfo(EEngineOcclusionLayer layer){if(layer!=OCCLUSION_LAYER_NONE&&!(EnginePrimitiveFlags&0x4000)&&OcclusionInfo[layer].IsNull())OcclusionInfo[layer].Reset(new CEnginePrimitiveOcclusionInfo);}
  CEnginePrimitiveOcclusionInfo& GetOcclusionInfo(EEngineOcclusionLayer layer)const{return *OcclusionInfo[layer];}

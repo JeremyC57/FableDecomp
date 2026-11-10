@@ -18,7 +18,19 @@ class CCombatTypeDef;
 class CEnginePrimitivePrepareInfo;
 class CCombatManager;
 enum ESex;
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CREATURETYPE
+#include "engine/ECreatureType.h"
+#endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHEALTH
+public:
+ void SetHealth(float health){Health=health;}
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CREATURETYPE
+public:
+ // Retail opt-in (Codex pass19): both PDB names; native00662000.
+ ECreatureType GetCreatureType() const;
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATRADIUS
 public:
  // Retail opt-in (Codex pass18): both PDBs QBEMXZ; native00661f90, sphere caller00814ea0.

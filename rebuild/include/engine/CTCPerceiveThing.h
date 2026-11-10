@@ -1,5 +1,108 @@
 #ifndef FABLE_ENGINE_CTCPERCEIVETHING_H
 #define FABLE_ENGINE_CTCPERCEIVETHING_H
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_SMELL
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/CThing.h"
+#include "engine/C3DVector.h"
+class CPerceivedThingDef;
+class CTCPerceiveThing: public CTCBase {
+public:
+ static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType();
+ virtual ETCInterfaceType GetInterfaceType() const;
+ static CTCBase * FABLE_FASTCALL Alloc(CThing & p0);
+ static CCharString FABLE_FASTCALL StatGetClassTypeName();
+ virtual CCharString GetClassTypeName() const;
+ CTCPerceiveThing(const CTCPerceiveThing & p0);
+ CTCPerceiveThing(CThing & p0);
+ virtual void OnCreate();
+ virtual void FrameUpdate();
+ virtual void BulletTimeFrameUpdate();
+ virtual bool HasFrameUpdate() const;
+ virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0);
+ virtual void OnKill();
+ virtual void OnLevelUnload();
+ virtual void OnSetInLimbo(bool p0);
+ bool IsThingLineOfSight() const { return LineOfSight; }
+ bool IsThingExtendedLineOfSight() const;
+ bool IsThingIgnoreFOVLineOfSight() const;
+ bool IsThingSmelt() const;
+ bool IsThingHeard() const;
+ bool IsThingPerceived() const;
+ bool IsPerceiving() const;
+ bool IsPlayerLineOfSight() const;
+ bool IsPlayerExtendedLineOfSight() const;
+ bool IsPlayerIgnoreFOVLineOfSight() const;
+ bool IsAwareOfThing() const;
+ bool IsAwarenessOfThingDirect() const;
+ bool IsDrawingPerceptionIndicator() const;
+ long GetFramesSinceDirectlyPerceivedThing() const;
+ void SetThingLineOfSight(bool p0);
+ void SetThingExtendedLineOfSight(bool p0);
+ void SetThingIgnoreFOVLineOfSight(bool p0);
+ void UpdateHeroPerception(bool p0);
+ const CThing * GetPerceivedThing() const { return PerceivedThing.Get(); }
+ void SetPerceivedThing(const CThing * p0);
+ const C3DVector & GetAwarenessPosition() const;
+ const C3DVector & GetLastPerceivedPos() const;
+ void SetThingToPerceive(const CThing * p0);
+ void SetAsDirectlyAwareOfPerceivedThing() { if(GetPerceivedThing()) { DirectAwareness=true; FramesSinceDirectlyPerceivedThing=0; SetLastAwareInfo(); } }
+ void SetAsIndirectlyAwareOfPerceivedThing();
+ float GetSoundRadius() const;
+ float GetSmellRadius() const { return SmellRadius; }
+ float GetSightRadius() const;
+ float GetExtendedSightRadius() const;
+ float GetGiveUpChaseRadius() const;
+ void SetSoundRadius(float p0);
+ void SetSmellRadius(float p0);
+ void SetSightRadius(float p0);
+ void SetExtendedSightRadius(float p0);
+ void SetGiveUpChaseRadius(float p0);
+ float GetFOV() const;
+ void ResetPerceptionVariables();
+ void OnHitByMelee(const CThing & p0);
+ void OnHitByShot(const CThing & p0);
+ void OnHit(const CThing & p0);
+private:
+ bool IsUpdatingThisFrame() const;
+ bool IsSearchingForThingToPerceive() const;
+ void SetLastAwareInfo();
+ void UpdateDistanceFromPerceivedThing();
+ void UpdateLineOfSight();
+ void UpdateSmell();
+ void UpdateHearing();
+ void UpdatePerception();
+ void ReactToAlerts();
+ float GetTimeBasedVisibilityMultiplier() const;
+ CIntelligentPointer<const CThing> PerceivedThing;
+ float DistanceFromPerceivedThingSquared;
+ float AwarenessTimer;
+ long FramesSinceDirectlyPerceivedThing;
+ C3DVector LastPerceivedPos;
+ bool Perceiving;
+ bool LineOfSight;
+ bool ExtendedLineOfSight;
+ bool IgnoreFOVLineOfSight;
+ bool DirectAwareness;
+ bool Smelt;
+ bool Heard;
+ bool SearchingForThingToPerceive;
+ CDefPointer<const CPerceivedThingDef> PDef;
+ long UpdateOffset;
+ float SoundRadius;
+ float SightRadius;
+ float ExtendedSightRadius;
+ float SmellRadius;
+ float GiveUpChaseRadius;
+ bool PerceptionCombat;
+ long FrameHitByPerceivedThing;
+public:
+ virtual ~CTCPerceiveThing();
+ CTCPerceiveThing & operator=(const CTCPerceiveThing & p0);
+};
+FABLE_STATIC_ASSERT(sizeof(CTCPerceiveThing)==0x58);
+#else
 #ifdef FABLE_RETAIL_CTCPERCEIVETHING
 // Retail opt-in (chunk 765, row 0x007446A0 CTCPerceiveThing::GetPerceivedThing): the polymorphic class, RTTI .?AVCTCPerceiveThing@@,
 // single base CTCBase at +0 (ghidra_out/rtti_bases.tsv). Ego_r.pdb members (struct_layouts_egor.tsv) up to the one the row reads:
@@ -132,4 +235,5 @@ FABLE_STATIC_ASSERT(offsetof(CTCPerceiveThing, PerceptionCombat) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CTCPerceiveThing, FrameHitByPerceivedThing) == 0x54);
 
 #endif // FABLE_RETAIL_CTCPERCEIVETHING
+#endif
 #endif // FABLE_ENGINE_CTCPERCEIVETHING_H

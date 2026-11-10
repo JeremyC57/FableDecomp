@@ -37,6 +37,10 @@ public:
     const CCharString& PeekTrackName() const { return TrackName; }
     bool IsTrackStart() const { return IsStart; }
     bool IsTrackEnd() const { return IsEnd; }
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_PEEK_NEXT
+    // Original FableWin0202f650, both donor class records; native traversal00860aa0.
+    const CThingTrackNode* PeekNextNode()const{return NextNode;}
+#endif
 protected:
     bool ConstructFromParams(long defIndex,const C3DVector& position,CCharString trackName);   // 0x00836C50
 public:

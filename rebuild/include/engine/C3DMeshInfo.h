@@ -5,6 +5,10 @@
 // the members after the base (Ego_r.pdb +0xC..+0x60) stay opaque here.
 #include "rebuild_abi.h"
 #include "engine/CMeshDataBankEntry.h"
+#ifdef FABLE_RETAIL_C3DMESHINFO_GETMESHSTATS
+#include "engine/CCountedPointer.h"
+class C3DMeshStats;
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
 #include "engine/C3DBoundingBox.h"
 #include "engine/C3DBoundingSphere.h"
@@ -12,6 +16,9 @@
 #endif
 class C3DMeshInfo : public CMeshDataBankEntry {
 public:
+#ifdef FABLE_RETAIL_C3DMESHINFO_GETMESHSTATS
+    CCountedPointer<const C3DMeshStats> GetMeshStats()const;
+#endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
     C3DBoundingBox GetBoundingBox()const{return BoundingBox;}
 #ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGSPHERE

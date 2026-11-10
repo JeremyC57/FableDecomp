@@ -693,7 +693,15 @@ public:
     _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
         _List_node<_Tp>* n=_M_node.allocate(1);n->_M_next=n;n->_M_prev=n;_M_node._M_data=n;
     }
+#ifdef FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+    // Retail opt-in (Codex pass19): native008fada0 calls0048ca60 base destructor.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
+#else
+    ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
+#endif
 #endif
     _STLP_alloc_proxy<_List_node<_Tp>*,_List_node<_Tp>,allocator<_List_node<_Tp> > > _M_node;
 #ifdef FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE

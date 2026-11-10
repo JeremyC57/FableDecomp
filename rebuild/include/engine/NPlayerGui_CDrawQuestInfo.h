@@ -70,6 +70,9 @@ public:
         std::vector<long> ExtraElements;
     };
 private:
+#ifdef FABLE_RETAIL_CDRAWQUESTINFO_ADDELEMENT
+    void AddElement(CCountedPointer<CQuestInfoElement> pelement);
+#endif
     unsigned char GuiMode[4];
     float FadeInTimer,MiniModeTimer;
     bool MiniMode;

@@ -33,7 +33,12 @@ public:
     virtual void RemoveThingFromTask(const CThing &,bool &);
     bool IsBetterThan(const CVillageTaskPatrol *,const CThing &) const;
     bool IsCreatureMoreAppropriateForTask(const CThing &) const;
+#ifdef FABLE_RETAIL_CVILLAGETASKPATROL_GET_START
+    // Original FableWin029beda0; native GetNearestNode begins with this pointer lookup.
+    const CThingTrackNode* GetPatrolStart()const{return PatrolStart.Get();}
+#else
     const CThingTrackNode * GetPatrolStart() const;
+#endif
     const CThingTrackNode * GetNearestNode(const C3DVector &) const;
     void SetTaskAsLocked();
     virtual ~CVillageTaskPatrol();

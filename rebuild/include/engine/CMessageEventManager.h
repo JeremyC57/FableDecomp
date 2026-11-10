@@ -7,6 +7,9 @@ class CWorld;class CMessageEvent;class C3DVector;class CThing;
 // Native STLport list is4 bytes, so full manager is8 bytes.
 class CMessageEventManager {
 public:
+#ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_REMOVE
+ void RemoveMessage(const CMessageEvent*);
+#endif
  CMessageEvent* AddMessage(EMessageEventType,unsigned long,const C3DVector&,CThing*,CThing*,float,float,long);
 #ifdef FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT
  // Opt-in (w22 agent1016, row 0x00934E50): Ego_r.pdb / FableWin.pdb member template

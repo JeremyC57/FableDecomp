@@ -17,6 +17,10 @@
 class CUserProfileManager {
 public:
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_UIBACKGROUND
+    // Retail opt-in (Codex pass19): both PDBs and donor01885a90/native004075c0.
+    void RenderUIBackground(float);
+#endif
     void ProcessPendingTutorials();                                      // 0x0040BB30
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS
     // Nested opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): the option setters the UI actions call, out of line in

@@ -16,6 +16,9 @@ struct IDirect3DTexture9;
 // methods that read them: GetRegionMapExtents (C2DCoordI&, C2DExtentsI&) const 0x0066C6A0 / (C2DCoordI&, C2DCoordI&) const
 // 0x0066C6D0 (both inline here: same TU as their callers) and InitialiseRegionBox 0x0066C7B0.
 #include "engine/C2DBoxI.h"
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_TGA_COORDS
+#include "engine/C3DVector.h"
+#endif
 #ifdef FABLE_RETAIL_CREGIONMINIMAP_POPULATE
 class CWorldMap; class CGameDefinitionManager;
 #include "engine/C2DCoordI.h"
@@ -31,6 +34,13 @@ public:
         extents = RegionMapBox.GetExtents();
     }
     void InitialiseRegionBox();
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_TGA_COORDS
+    // Retail opt-in (Codex pass19): original donor02187810 and native0066c880.
+    void GetTGAPositionFromWorldCoordinates(const C3DVector&,C2DCoordI&) const;
+#ifndef FABLE_RETAIL_CREGIONMINIMAP_POPULATE
+    long GetRegionMinimapSize() const { return RegionMinimapSize; }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CREGIONMINIMAP_POPULATE
     // Nested opt-in (chunk 802, row 0x0066CF00 PopulateRegionMinimap): the Ego_r.pdb CRegionMinimap members that row uses.
     // RegionMinimapTheme is the PDB's nested enum (pdb_class_keys W4, ?SetRegionMinimapThemeValue@..W4RegionMinimapTheme@1@@Z);
@@ -58,6 +68,8 @@ public:
         world.Y = topLeft.Y + (float)tga.Y / (float)size * RegionMapSquare.GetExtents().Y;
         world.Z = 0.0f;
     }
+
+#ifndef FABLE_RETAIL_CREGIONMINIMAP_TGA_COORDS
     void GetTGAPositionFromWorldCoordinates(const C3DVector& world, C2DCoordI& tga) const
     {
         C2DCoordI topLeft = RegionMapBox.GetTLPos();
@@ -65,6 +77,7 @@ public:
         tga.X = (long)((world.X - topLeft.X) / RegionMapSquare.GetExtents().X * size);
         tga.Y = (long)((world.Y - topLeft.Y) / RegionMapSquare.GetExtents().Y * size);
     }
+#endif
     const CGameDefinitionManager& PeekDefinitionManager() const { return CMainGameComponent::Get()->PeekDefinitionManager(); }
     float IlluminateRegionMinimapTheme(const CWorldMap& worldMap, const C3DVector& position) const;   // 0x0066C900
     void PopulateRegionMinimap(const CWorldMap& worldMap);                                             // 0x0066CF00

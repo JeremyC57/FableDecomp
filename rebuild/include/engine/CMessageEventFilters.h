@@ -14,12 +14,54 @@
 #include "engine/CMessageEvent.h"
 #include "engine/C3DVector.h"
 class CThing; class CThingAICreature;
-class CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+ : public std::unary_function<CMessageEvent,bool>
+#endif
+{
 public:
-    bool operator()(const CMessageEvent& event) const;                   // 0x006AF1C0
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+    CMessageEventFilter_IsOfType(EMessageEventType type):Type(type){}
+#endif
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+    bool operator()(const CMessageEvent& event) const{return Type==event.Type;}
+#else
+    bool operator()(const CMessageEvent& event) const;
+#endif                   // 0x006AF1C0
 private:
     EMessageEventType Type;                                              // +0x00
 };
+#ifdef FABLE_RETAIL_CMESSAGEEVENTFILTERS_PAYMENT
+// Both original PDB complete types: unary_function base, private UID word pair.
+class CMessageEventFilter_IsTargettedAtThing:public std::unary_function<CMessageEvent,bool> {
+public:
+#ifdef _MSC_VER
+ __declspec(noinline)
+#endif
+ CMessageEventFilter_IsTargettedAtThing(const CThing& thing):UID(thing.GetUniqueID()){}
+ bool operator()(const CMessageEvent& event)const{return UID==event.TargetUID;}
+private:
+#ifdef _MSC_VER
+ unsigned __int64 UID;
+#else
+ unsigned long long UID;
+#endif
+};
+class CMessageEventFilter_IsOriginatedByThing:public std::unary_function<CMessageEvent,bool> {
+public:
+#ifdef _MSC_VER
+ __declspec(noinline)
+#endif
+ CMessageEventFilter_IsOriginatedByThing(const CThing& thing):UID(thing.GetUniqueID()){}
+ bool operator()(const CMessageEvent& event)const{return UID==event.OriginatorUID;}
+private:
+#ifdef _MSC_VER
+ unsigned __int64 UID;
+#else
+ unsigned long long UID;
+#endif
+};
+#endif
 template<class T> class CMessageEventFilter_ThingSearchFilter {
 public:
     CMessageEventFilter_ThingSearchFilter(const T& filter) : Filter(&filter) { }

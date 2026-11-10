@@ -1,0 +1,124 @@
+addr       parity           behav  name
+00488620   RELOCATION_MATCH PASS   GetPNearestTCVillage
+004886f0   RELOCATION_MATCH PASS   GetPNearestTCVillage
+005e3f00   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+0064a3ed   WARN RELOC_NAME: ?push_back@?$list@V?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@V?$allocator@V?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@@Z -> 00656197 labelled 'CLuaTable_AddElement_Thunk'
+0064a3ed   WARN RELOC_NAME: ??1?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ -> 0043e1c0 labelled '_global::CCountedPointer_Release_0043e1c0'
+0064a3ed   RELOCATION_MATCH PASS   AddElement
+0066c880   RELOCATION_MATCH PASS   GetTGAPositionFromWorldCoordinates
+00697cc0   RELOCATION_MATCH PASS   UpdateRightStickLookAround
+006af3f0   RELOCATION_MATCH PASS   operator()
+006d4e60   RELOCATION_MATCH PASS   IsCreatureValidFollower
+00744b50   RELOCATION_MATCH PASS   UpdateSmell
+00746ec0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00746ec0   RELOCATION_MATCH PASS   GetPositionToMoveToForStabOn
+00752e00   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00752e00   RELOCATION_MATCH PASS   SetBodyMoving
+007729a0   RELOCATION_MATCH PASS   CalcIsStallLike
+00783a30   WARN RELOC_NAME: ?SetHero@CTCCreatureGroupBoastingCrowd@@QAEXAAVCThing@@@Z -> 007841f0 labelled '_unattributed::AssignTarget_007841f0'
+00783a30   RELOCATION_MATCH PASS   GetCrowd
+0085c7d0   WARN RELOC_NAME: ?AddSubComponent@CBase@NCameraModes@@QAEXV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@_N@Z -> 0084e810 labelled 'CBase::SetPhysics'
+0085c7d0   RELOCATION_MATCH PASS   OnInit
+00860ad0   RELOCATION_MATCH PASS   IsCreatureMoreAppropriateForTask
+008bd3f0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+008bd3f0   RELOCATION_MATCH PASS   FinishAction
+008d55a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008d55a0   RELOCATION_MATCH PASS   Initialise
+008fac30   RELOCATION_MATCH PASS   DoThemeEvasion
+009210a0   WARN RELOC_NAME: ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+009210a0   RELOCATION_MATCH PASS   IsRunnable
+0093ea90   WARN RELOC_NAME: ??1CCreatureAction_UseObject@@UAE@XZ -> 006290e0 labelled '_global::Dtor_CCreatureActionBaseBase_006290e0'
+0093ea90   WARN RELOC_NAME: ??$?0VCVillageTaskTorch@@@?$CIntelligentPointer@VCVillageTaskTorch@@@@QAE@AAV0@@Z -> 0093e800 labelled 'CIntelligentPointer<CVillageTaskTorch>::CIntelligentPointer'
+0093ea90   RELOCATION_MATCH PASS   Update
+00961640   RELOCATION_MATCH PASS   Update
+009677a0   RELOCATION_MATCH PASS   WalkToPoint
+00968460   WARN RELOC_NAME: ??$AIAction_WaitForMessageCallback@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@PAPBVCMessageEvent@@@Z -> 0091a670 labelled 'CAIStateGroupBase::WaitForMessageEvent'
+00968460   RELOCATION_MATCH PASS   GetPaymentFinishedMessage
+00968510   WARN RELOC_NAME: ??$AIAction_WaitForMessageCallback@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@PAPBVCMessageEvent@@@Z -> 0091a670 labelled 'CAIStateGroupBase::WaitForMessageEvent'
+00968510   RELOCATION_MATCH PASS   GetPaymentCancelledMessage
+0096ec10   RELOCATION_MATCH PASS   MoveToEnemyCreatureCombatPosition
+00971ed0   RELOCATION_MATCH PASS   GetRushToPosForLunge
+009c5890   WARN RELOC_ALIAS: __beginthread -> 00bfed3a is the import thunk 'MSVCR71.DLL::_beginthread'
+009c5890   RELOCATION_MATCH PASS   CFileInstaller
+009e4cb0   WARN RELOC_ALIAS: _wcscat -> 00bfed5e is the import thunk 'MSVCR71.DLL::wcscat'
+009e4cb0   RELOCATION_MATCH PASS   GetItemFromPath
+00a24d70   WARN RELOC_NAME: ?SetMemoryPool@C3DAnimation2@@QAEXPAVCMovableResourceMemoryPool@@@Z -> 00a4be00 labelled '_global::SetMember_dword0x38_00a4be00'
+00a24d70   RELOCATION_MATCH PASS   BuildSharedAnimation
+00a26ad0   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a26ad0   WARN RELOC_NAME: ?SetMemoryPool@C3DAnimation2@@QAEXPAVCMovableResourceMemoryPool@@@Z -> 00a4be00 labelled '_global::SetMember_dword0x38_00a4be00'
+00a26ad0   RELOCATION_MATCH PASS   BuildAnimationInstance
+00ba0fc0   WARN RELOC_NAME: ?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z -> 00bacdd0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00ba0fc0   RELOCATION_MATCH PASS   AddStaticMesh
+00c1d1c0   RELOCATION_MATCH PASS   InvertMatrix3x4
+00c462e0   MATCH            PASS   Interpolate
+
+WINS: 33
+  00488620 RELOCATION_MATCH CPlayer::?GetPNearestTCVillage@CPlayer@@QAEPAVCTCVillage@@XZ
+  004886f0 RELOCATION_MATCH CPlayer::?GetPNearestTCVillage@CPlayer@@QBEPBVCTCVillage@@XZ
+  005e3f00 RELOCATION_MATCH CTCQuestCompletionUI::?DrawPreparePrimitivesForRendering@CTCQuestCompletionUI@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  0064a3ed RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?AddElement@CDrawQuestInfo@NPlayerGui@@AAEXV?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@@Z
+  0066c880 RELOCATION_MATCH CRegionMinimap::?GetTGAPositionFromWorldCoordinates@CRegionMinimap@@QBEXABVC3DVector@@AAVC2DCoordI@@@Z
+  00697cc0 RELOCATION_MATCH CGameCameraManager::?UpdateRightStickLookAround@CGameCameraManager@@AAEXXZ
+  006af3f0 RELOCATION_MATCH CMessageEventFilter_IsMyDeadLeader::??RCMessageEventFilter_IsMyDeadLeader@@QBE_NABVCMessageEvent@@@Z
+  006d4e60 RELOCATION_MATCH CTCFollowed::?IsCreatureValidFollower@CTCFollowed@@QBE_NABVCThingAICreature@@PA_N@Z
+  00744b50 RELOCATION_MATCH CTCPerceiveThing::?UpdateSmell@CTCPerceiveThing@@AAEXXZ
+  00746ec0 RELOCATION_MATCH CTCStealth::?GetPositionToMoveToForStabOn@CTCStealth@@QBE?AVC3DVector@@AAVCThing@@AAM@Z
+  00752e00 RELOCATION_MATCH CTCLook::?SetBodyMoving@CTCLook@@AAEXXZ
+  007729a0 RELOCATION_MATCH CTCShop::?CalcIsStallLike@CTCShop@@QAE_NXZ
+  00783a30 RELOCATION_MATCH CTCBoastingCrowdControl::?GetCrowd@CTCBoastingCrowdControl@@AAE_NAAVCThing@@PAPAV2@PAPAVCTCCreatureGroupBoastingCrowd@@_N@Z
+  0085c7d0 RELOCATION_MATCH NCameraModes::CMoveOnCylinder::?OnInit@CMoveOnCylinder@NCameraModes@@UAEXXZ
+  00860ad0 RELOCATION_MATCH CVillageTaskPatrol::?IsCreatureMoreAppropriateForTask@CVillageTaskPatrol@@QBE_NABVCThing@@@Z
+  008bd3f0 RELOCATION_MATCH CCreatureAction_TeleportOut::?FinishAction@CCreatureAction_TeleportOut@@UAEXXZ
+  008d55a0 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::?Initialise@CCreatureAction_FireMissileWeapon@@UAEXXZ
+  008fac30 RELOCATION_MATCH NCameraModes::CPhysicsForceModelBase::?DoThemeEvasion@CPhysicsForceModelBase@NCameraModes@@UAE?AVC3DVector@@XZ
+  009210a0 RELOCATION_MATCH CAIStateGroup_BeetleToggleHover::?IsRunnable@CAIStateGroup_BeetleToggleHover@@MAE_NXZ
+  0093ea90 RELOCATION_MATCH CAIStateGroup_VillageTaskTorch::?Update@CAIStateGroup_VillageTaskTorch@@UAEXXZ
+  00961640 RELOCATION_MATCH CAIStateGroup_BanditKingThrowWeapons::?Update@CAIStateGroup_BanditKingThrowWeapons@@MAEXXZ
+  009677a0 RELOCATION_MATCH CAIStateGroup_TavernServer::?WalkToPoint@CAIStateGroup_TavernServer@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z
+  00968460 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?GetPaymentFinishedMessage@CAIStateGroup_TavernKeeper@@QAE_NXZ
+  00968510 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?GetPaymentCancelledMessage@CAIStateGroup_TavernKeeper@@QAE_NXZ
+  0096ec10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?MoveToEnemyCreatureCombatPosition@CAIStateGroup_MeleeCombatNearby@@AAE_NXZ
+  00971ed0 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::?GetRushToPosForLunge@CAIStateGroup_JackOfBladesStage1@@IAE_NAAVC3DVector@@@Z
+  009c5890 RELOCATION_MATCH CFileInstaller::??0CFileInstaller@@QAE@XZ
+  009e4cb0 RELOCATION_MATCH CDriveManager::?GetItemFromPath@CDriveManager@@AAE_NPBGKPAG@Z
+  00a24d70 RELOCATION_MATCH C3DAnimationInfo::CAnimationData::?BuildSharedAnimation@CAnimationData@C3DAnimationInfo@@QAEXXZ
+  00a26ad0 RELOCATION_MATCH C3DAnimationInfo::?BuildAnimationInstance@C3DAnimationInfo@@ABE?AV?$CCountedPointer@VC3DAnimation2@@@@ABVC3DMesh2@@@Z
+  00ba0fc0 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?AddStaticMesh@CEnginePrimitiveManagerStaticMeshesBase@@QAE?AVCEnginePrimitiveHandle@@PBVC3DMeshInfo@@0ABVCMatrix3x4@@MABVCEngineFadeDistance@@JABVCRGBColour@@JM_NK@Z
+  00c1d1c0 RELOCATION_MATCH _global::?InvertMatrix3x4@@YIXPAVCMatrix3x4@@ABV1@@Z
+  00c462e0 MATCH CFloatQuad::?Interpolate@CFloatQuad@@QBEMMM@Z
+
+LANDED 33 wins into src/compiled + tests + catalog + oracle
+  CPlayer_GetPNearestTCVillage_00488620
+  CPlayer_GetPNearestTCVillage_004886f0
+  CTCQuestCompletionUI_DrawPreparePrimitivesForRendering_005e3f00
+  NPlayerGuiCDrawQuestInfo_AddElement_0064a3ed
+  CRegionMinimap_GetTGAPositionFromWorldCoordinates_0066c880
+  CGameCameraManager_UpdateRightStickLookAround_00697cc0
+  CMessageEventFilterIsMyDeadLeader_operator_006af3f0
+  CTCFollowed_IsCreatureValidFollower_006d4e60
+  CTCPerceiveThing_UpdateSmell_00744b50
+  CTCStealth_GetPositionToMoveToForStabOn_00746ec0
+  CTCLook_SetBodyMoving_00752e00
+  CTCShop_CalcIsStallLike_007729a0
+  CTCBoastingCrowdControl_GetCrowd_00783a30
+  NCameraModesCMoveOnCylinder_OnInit_0085c7d0
+  CVillageTaskPatrol_IsCreatureMoreAppropriateForTask_00860ad0
+  CCreatureActionTeleportOut_FinishAction_008bd3f0
+  CCreatureActionFireMissileWeapon_Initialise_008d55a0
+  NCameraModesCPhysicsForceModelBase_DoThemeEvasion_008fac30
+  CAIStateGroupBeetleToggleHover_IsRunnable_009210a0
+  CAIStateGroupVillageTaskTorch_Update_0093ea90
+  CAIStateGroupBanditKingThrowWeapons_Update_00961640
+  CAIStateGroupTavernServer_WalkToPoint_009677a0
+  CAIStateGroupTavernKeeper_GetPaymentFinishedMessage_00968460
+  CAIStateGroupTavernKeeper_GetPaymentCancelledMessage_00968510
+  CAIStateGroupMeleeCombatNearby_MoveToEnemyCreatureCombatPosition_0096ec10
+  CAIStateGroupJackOfBladesStage1_GetRushToPosForLunge_00971ed0
+  CFileInstaller_CFileInstaller_009c5890
+  CDriveManager_GetItemFromPath_009e4cb0
+  C3DAnimationInfoCAnimationData_BuildSharedAnimation_00a24d70
+  C3DAnimationInfo_BuildAnimationInstance_00a26ad0
+  CEnginePrimitiveManagerStaticMeshesBase_AddStaticMesh_00ba0fc0
+  global_InvertMatrix3x4_00c1d1c0
+  CFloatQuad_Interpolate_00c462e0
+rc=0

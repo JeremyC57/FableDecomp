@@ -34,6 +34,9 @@ public:
     void SetCombatAnimation(const CCharString& name);                    // 0x008574D0
 #endif
 protected:
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+    virtual void FinishAction();
+#endif
     void ResetMeleeCombatAbilityEffects();                               // 0x00859660
     CIntelligentPointer<CThing> PTarget;                                 // +0xa8
     CIntelligentPointer<const CThing> PCameraPoint;                      // +0xb0

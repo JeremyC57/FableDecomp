@@ -63,6 +63,9 @@ protected:
     virtual bool IsRunnable();                                           // slot 11 0x008FD282
     virtual void Update() = 0;                                           // slot 12 (_purecall)
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x008FD285
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_WAITMESSAGE
+    template<class Filter> EAIActionReturn AIAction_WaitForMessageCallback(EAIActionRepeat,const Filter&,const CMessageEvent**);
+#endif
     bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
     unsigned long* GetPWorldSeed() const;                                // 0x008FCFD0 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (chunk 751)
     // Chunk 754 (row 0x00945BD0 CAIStateGroup_SitForMeal::Update): Ego_r.pdb ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
@@ -76,6 +79,9 @@ protected:
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
     // Nested opt-in (chunk 758, row 0x0096AE50 CAIStateGroup_WhisperRetreat::UseWill): Ego_r.pdb / FableWin.pdb
     // ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (protected; retail 0x0097DB70).
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_TARGETFACE
+    EAIActionReturn AIAction_PerformActionTargetFaceAndWait(const class CCreatureActionBase&,CIntelligentPointer<const CThing>,bool);
+#endif
     EAIActionReturn AIAction_PerformActionAndWait(const class CCreatureActionBase& action, bool wait);   // 0x0097DB70
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_COMBATPERFORMACTION
