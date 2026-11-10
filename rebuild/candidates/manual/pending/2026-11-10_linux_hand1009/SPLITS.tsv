@@ -1,0 +1,2 @@
+address	length	name	evidence
+005b0aac	1518	CTCInventoryTrade::BuyItemPC	`ret 8` at 0x005B1097 ends the body (0x005B109A); 0x005B109A.. are 15 small COMDAT stubs (`mov eax,[ecx]; xor ecx,ecx; cmp [eax],eax; sete cl` ...), no int3 padding in this /Os TU

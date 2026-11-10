@@ -2652,3 +2652,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A row that calls engine/CASoundManager.h slots (SetGroupVolume ...) is not landable until the owner accepts its descriptive names: hold it (0x0056F30B, 0x0058F649).
 - When a callee's same-TU body changes the caller's escape analysis, include the callee's REAL (landed) body, never an invented stand-in definition (0x005F4C8F carries 0x005F3F7B's body; the agent's `StandInBody()` stub was replaced at landing).
 - Code written out in both if/else arms can be merged by VC7.1 into one call with the result in a callee-saved register, as retail (0x005F0DC5).
+- CPlayerManager::GetMainPlayer: 0x00449960 is the const QBE, 0x00449970 the non-const QAE (PDB order). A row calling 0x00449970 must reach it through the non-const `GetPlayerManager()` (FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER), not `PeekPlayerManager()` -- vland reports RELOC_CONFLICT otherwise (0x005B0AAC).
+- A port of a landed twin inherits its local models: check the twin before copying (0x0059CB90 / 0x005A45F6 are local-model rows with an invented map operator[] stand-in; their ports went back for shared headers).

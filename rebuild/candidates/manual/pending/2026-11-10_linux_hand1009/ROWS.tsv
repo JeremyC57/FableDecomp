@@ -1,0 +1,17 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+0059bb1b	1451	CTCInventoryTrade::AttachToFrame	unworked				0059b790 0059b795 0059b79a 0059c0c6 0059c447 0059c6b0
+0059d270	1002	CTCInventoryTrade::AddWantedItemToList	parked	register-tie	rebuild/candidates/manual/pending/2026-10-23_linux_hand303/differ/0059d270.cpp	00428494	0059cfbd 0059d0b8 0059d1b1 0059d65a 0059d761 0059d820
+0059fc17	716	CTCInventoryTrade::AlreadyHaveSpecial	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-27_linux_hand540/differ/0059fc17.cpp		0059f304 0059f51e 0059fafe
+0059fee3	1556	CTCInventoryTrade::AddBuyItemToList	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/0059fee3.cpp	00428494 0059fc17	0059f51e 0059fafe 005a30a1
+005a29f4	1709	CTCInventoryTrade::ConstructSpecialShopList	unworked			0059fee3	005a30a1 005a3436 005a3581
+005a3734	1811	CTCInventoryTrade::RefreshBuyPossibilityNumbers	unworked			0059fc17	005a30a1 005a3436 005a3581 005a45f6
+005a3e47	1967	CTCInventoryTrade::ConstructBuyActionsList	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/005a3e47.cpp	00428494	005a3436 005a3581 005a45f6 005a5b31
+005a6769	1336	CTCInventoryTrade::ConstructNormalShopListPC	parked	block/arm-layout	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/005a6769.cpp	0059fc17	005a45f6 005a5b31 005a731f
+005a6ca1	1662	CTCInventoryTrade::AddBuyItemToListPC	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/005a6ca1.cpp	00428494 0059fc17	005a5b31 005a731f
+005a79e6	1935	CTCInventoryTrade::ConstructBuyActionsList	parked	load/schedule-order	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/005a79e6.cpp	00428494	005a731f 005a887d 005a8a5d
+005a8175	1800	CTCInventoryTrade::RefreshBuyPossibilityNumbersPC	unworked			0059fc17	005a731f 005a887d 005a8a5d 005a8c66
+005a94bd	1482	CTCInventoryTrade::OpenInventory	unworked			005a04f7 005a29f4	005a887d 005a8a5d 005a8c66
+005a9a87	567	Inventory_PopulateBuyList	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/005a9a87.cpp	0059fc17 005a3734	005a8a5d 005a8c66 005ac0ee
+005aceda	1067	CTCInventoryTrade::OpenInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-10-22_linux_hand913/differ/005aceda.cpp	005a6769	005ac0ee 005ac0fe 005ae6af
+005ad305	620	CTCInventoryTrade::ApplyTattooCard	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/005ad305.cpp		005ac0fe 005ae6af 005ae86b
+005b0aac	1793	CTCInventoryTrade::CTCInventoryTrade::BuyItemPC	unworked			0059fc17 005ad305 00774730	005af64e 005b11ad 005b121d 005b1255

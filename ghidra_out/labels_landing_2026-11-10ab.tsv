@@ -1,0 +1,6 @@
+address	name	evidence
+0059bb1b	?AttachToFrame@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	RELOCATION_MATCH chunk 1009; Ego_r.pdb / FableWin.pdb spelling
+005a3734	?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ	RELOCATION_MATCH chunk 1009; Ego_r.pdb / FableWin.pdb spelling
+005a8175	?RefreshBuyPossibilityNumbersPC@CTCInventoryTrade@@AAEXXZ	RELOCATION_MATCH chunk 1009; Ego_r.pdb / FableWin.pdb spelling
+005a9a87	?RefreshBuyPossibility@CTCInventoryTrade@@AAEXXZ	RELOCATION_MATCH chunk 1009; Ego_r.pdb / FableWin.pdb spelling
+005b0aac	?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z	RELOCATION_MATCH chunk 1009; Ego_r.pdb / FableWin.pdb spelling

@@ -97,6 +97,21 @@ private:
     void RefreshBuyPossibilityNumbersPC();                                         // 0x005A8175
     void RefreshBuyPossibilityPC();                                                // 0x005A887D
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYITEMPC
+    // Retail opt-in (chunk 1009, row 0x005B0AAC BuyItemPC): FableWin.pdb ?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+    // (the row) and ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z (0x005AE9DE, landed, out of line).
+    // Public, declarations only.
+public:
+    void BuyItemPC(NUISystem::CComponent* entry, long count);                      // 0x005B0AAC
+    void RefreshBuyDescriptionsPC(NUISystem::CComponent* parent);                  // 0x005AE9DE
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITY
+    // Retail opt-in (chunk 1009, row 0x005A9A87 RefreshBuyPossibility): Ego_r.pdb / FableWin.pdb
+    // ?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ (0x005A3734, out of line; the console twin of
+    // RefreshBuyPossibilityNumbersPC 0x005A8175). Private, declaration only.
+private:
+    void RefreshBuyPossibilityNumbers();                                           // 0x005A3734
+#endif
 public:
     std::vector<CEnginePrimitiveHandle> TradeAnimPrimitiveHandles;                 // +0x134
     std::list<long> NotInStock;                                                    // +0x140

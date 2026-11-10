@@ -39112,3 +39112,9 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@VCExpressionDef@@@@@Z	005f81be	005f4c8f
 ?TITLE_NAME@?A0x7683b6be@@3VCCharString@@A	013b8c60	005f4c8f
 ?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAEXXZ	00593235	005f4c8f
+?RefreshSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@@Z	0059e94d	005a8175
+?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ	005a3734	005a9a87
+?GetTypeFromDefIndexPC@CTCInventoryTrade@@AAE?AW4EItem_Menu_Type@1@J@Z	0059c447	005b0aac
+?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005ae9de	005b0aac
+?RefreshBuyPossibilityPC@CTCInventoryTrade@@AAEXXZ	005a887d	005b0aac
+?RefreshNameAndTitlePC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JJ@Z	0059ca95	005b0aac

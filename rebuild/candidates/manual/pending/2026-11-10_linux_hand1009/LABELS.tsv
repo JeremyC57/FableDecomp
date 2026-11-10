@@ -1,0 +1,20 @@
+address	name	evidence
+0059bb1b	?AttachToFrame@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	Ego_r.pdb + FableWin.pdb name; PC_UI_INACTIVE_FRAME / PC_RING_PIC_ strings; matched (RELOCATION_MATCH)
+0059d270	?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z	PDB name (ret 10h = 4 args); PC twin of landed 0x0059CB90; PC_MENU_ENTRY_TEMPLATE / PC_MODEL strings; matched
+0059fc17	?AlreadyHaveSpecial@CTCInventoryTrade@@AAE_NJ@Z	PDB name; callers RefreshBuyPossibility 0x005A9A87 / AddBuyItemToList (catalog agrees)
+0059fee3	?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z	PDB name; ret 14h; console template strings UI_WEAPON_MENU_ENTRY_*_NEW
+005a3734	?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ	PDB name; the only callee-tail of RefreshBuyPossibility 0x005A9A87; console UI_TRADING_* strings; matched
+005a3e47	?ConstructBuyActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	PDB name; console UI_LIST_BUY_ACTIONS strings (the PC twin is 0x005A79E6); matched
+005a6769	?ConstructNormalShopListPC@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0@Z	PDB name; PC_TOP_LEVEL_TRADE_LIST string; called from ConstructActualInventoryPC 0x005ACEDA
+005a6ca1	?AddBuyItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCViewport@3@_N@Z	PDB name; PC twin of 0x0059FEE3 (PC_MENU_ENTRY_*TEMPLATE strings)
+005a79e6	?ConstructBuyActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	PDB name; PC_LIST_BUY_ACTIONS / PC_MENU_ENTRY_TEMPLATE strings (catalog gave the console name); matched
+005a8175	?RefreshBuyPossibilityNumbersPC@CTCInventoryTrade@@AAEXXZ	PDB name (header opt-in BUYPOSSIBILITYPC); called from landed RefreshBuyPossibilityPC 0x005A887D; PC_ strings; matched
+005a94bd	?OpenInventory@CTCInventoryTrade@@UAEXXZ	PDB name; vtable 0x01253034 slot 30 (slot 31 CloseInventory 0x0059F304, slot 86 OpenInventoryPC 0x005AE86B)
+005a9a87	?RefreshBuyPossibility@CTCInventoryTrade@@AAEXXZ	PDB name; console twin of landed RefreshBuyPossibilityPC 0x005A887D (UI_LIST_BUY_ACTIONS, UI_SELECTION_ARROW_RIGHT); landed BuyItem calls it by this name; matched
+005aceda	?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ	FableWin.pdb name; only caller OpenInventoryPC 0x005AE86B; builds the PC lists via ConstructSpecialShopListPC 0x005A8A5D / ConstructNormalShopListPC 0x005A6769
+005ad305	?ApplyTattooCard@CTCInventoryTrade@@QAEXJ@Z	PDB name; called from BuyItem 0x005AF64E (landed header spelling)
+005b0aac	?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z	FableWin.pdb name; ends at 0x005B109A (1518 bytes; the catalog's 1793 runs into the next function); matched
+005bf30d	?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z	PDB name; ConstructBuyActionsList 0x005A3E47 caps the buy count with it
+00772590	?IsTitleShop@CTCShop@@QBE_NXZ	PDB name; the third shop-kind test beside IsBarberShop 0x00772490 / IsTattooShop 0x00772510 (landed BuyItem spelling)
+00487dd0	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	PDB name; const twin of GetPControlledCreature 0x00487DC0
+005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	PDB name (static __fastcall); GetInventoryCategory is 0x005D97B0

@@ -1,0 +1,11 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+005aceda	?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ	FableWin.pdb private AAEXXZ; only caller OpenInventoryPC 0x005AE86B; the PC sibling of ConstructActualBuyInventoryPC 0x005AC10E	ConstructTradeScreenPC (landed OpenInventoryPC 0x005AE86B callee); catalog "CTCInventoryTrade::OpenInventory"
+0059cb90	?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z	PDB: CTCInventoryTrade is a global class (RTTI .?AVCTCInventoryTrade@@)	NInventory::CTCInventoryTrade::AddWantedItemToList (landed file NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90.cpp)
+0059da10	?IsItemAffordable@CTCInventoryTrade@@QAE_NJJ@Z	PDB; global class	?IsItemAffordable@CTCInventoryTrade@NInventory@@QAE_NJJ@Z (landed Leaf)
+00772590	?IsTitleShop@CTCShop@@QBE_NXZ	PDB; the landed BuyItem 0x005AF64E already uses IsTitleShop	IsAbilityShop (landed InitialiseBuyableItems 0x005A30A1)
+005bf30d	?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z	PDB (QBEJJ: const, long(long)); used as a count cap in ConstructBuyActionsList	CTCInventoryBase::GetItemDescription (landed callee name)
+005d99d0	?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z	PDB; returns the ETCInterfaceType the hero's inventory component is looked up with; GetInventoryCategory is 0x005D97B0	GetInventoryCategory (landed sell rows, manifest)
+00487dd0	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	PDB; GetPControlledCreature (non-const) is 0x00487DC0	GetControlledCreature (landed local models)
+005b0aac	?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z	FableWin.pdb	catalog "CTCInventoryTrade::CTCInventoryTrade::BuyItemPC" (doubled scope)
+005a9a87	?RefreshBuyPossibility@CTCInventoryTrade@@AAEXXZ	PDB; console twin of RefreshBuyPossibilityPC 0x005A887D	catalog "Inventory_PopulateBuyList"
+005a79e6	?ConstructBuyActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	PDB; PC strings	catalog "CTCInventoryTrade::ConstructBuyActionsList"

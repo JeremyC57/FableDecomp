@@ -1,0 +1,17 @@
+address	name	grade	grades_used	note
+0059bb1b	CTCInventoryTrade::AttachToFrame	RELOCATION_MATCH	4	optimize("s") only; the argument named before the virtual call; one reused child local per block
+0059d270	CTCInventoryTrade::AddWantedItemToListPC	RELOCATION_MATCH	1	port of landed console twin 0x0059CB90 with the PC template / model names
+0059fc17	CTCInventoryTrade::AlreadyHaveSpecial	DIFFER(725v716)	4	parked: tattoo-loop allocation (VC hoists &def->BankIndex into edi; retail keeps def in edi); logic fixed over the prior (+6 c2prio probes)
+0059fee3	CTCInventoryTrade::AddBuyItemToList	DIFFER(1552v1556)	1	parked: allocation tie, `this` (prio 17) beats the PeekTC inventory pointer (prio 13) for ebx; retail spills `this` (+4 c2prio probes, +1 blocked: CThing::Components is protected)
+005a29f4	CTCInventoryTrade::ConstructSpecialShopList	unworked	0	1709 bytes, no landed twin (ConstructSpecialShopListPC 0x005A8A5D is 521 bytes); calls AddBuyItemToList (parked)
+005a3734	CTCInventoryTrade::RefreshBuyPossibilityNumbers	RELOCATION_MATCH	7	new source from landed BuyItem's sell-side code; the stock test is a named bool read twice (2 of the 7 were SRC_FAIL opt-in gaps)
+005a3e47	CTCInventoryTrade::ConstructBuyActionsList	RELOCATION_MATCH	1	port of landed sell twin 0x005A45F6 plus the buy caps
+005a6769	CTCInventoryTrade::ConstructNormalShopListPC	DIFFER(1336v1336)	6	parked: wanted-total operand order only (retail W+I+C loads Weapons first; ours Items first under every spelling)
+005a6ca1	CTCInventoryTrade::AddBuyItemToListPC	unworked	0	PC twin of 0x0059FEE3 (same allocation residue in the prior, DIFFER 1681v1662); waits on the console fix
+005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	RELOCATION_MATCH	1	identity: the PC twin (catalog name was the console one); PC list / template names
+005a8175	CTCInventoryTrade::RefreshBuyPossibilityNumbersPC	RELOCATION_MATCH	4	PC port of 0x005A3734; the menu-entry local reused for the special-shop entry (frame slot order)
+005a94bd	CTCInventoryTrade::OpenInventory	unworked	0	identity settled (vtable 0x01253034 slot 30); 1482 bytes, not attempted
+005a9a87	CTCInventoryTrade::RefreshBuyPossibility	RELOCATION_MATCH	1	identity: console twin of landed RefreshBuyPossibilityPC 0x005A887D (catalog "Inventory_PopulateBuyList" is a placeholder)
+005aceda	CTCInventoryTrade::ConstructActualInventoryPC	unworked	0	identity settled (FableWin ?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ); prior DIFFER(1113v1067) not re-graded; calls ConstructNormalShopListPC (parked)
+005ad305	CTCInventoryTrade::ApplyTattooCard	DIFFER(620v620)	1	parked: three-way allocation cycle morph / const 0 / cursor in the appearance-morph block
+005b0aac	CTCInventoryTrade::BuyItemPC	RELOCATION_MATCH	3	split: real length 1518 (SPLITS.tsv; catalog 1793); port of landed BuyItem; cached list end()
