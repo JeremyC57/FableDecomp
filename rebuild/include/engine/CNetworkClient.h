@@ -18,6 +18,14 @@ struct CNetworkPlayer;
 class CNetworkClient : public CInitBaseClass {
 public:
     void Update(long,unsigned long,unsigned long);
+#ifdef FABLE_RETAIL_CNETWORKCLIENT_GAMEEVENTPACKAGESET
+    // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): Ego_r.pdb (0x004B45C0) / FableWin.pdb (0x01B33070)
+    // ?GetGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z, out of line in retail at 0x004AEBA0, and FableWin.pdb
+    // ?IsLocal@CNetworkClient@@QBE_NXZ (0x018A66E0), inline in retail (Update tests the client's LocalGame byte +0x2662 in place,
+    // 0x00418418 `cmp [esi+1611Ah],bl`). No layout change.
+    bool GetGameEventPackageSet(class CGameEventPackageSet* package_set);     // 0x004AEBA0
+    bool IsLocal() const { return LocalGame; }
+#endif
 private:
     unsigned char Server[8]; // CNetworkServer
     unsigned char ReceiveBuffer[8192];

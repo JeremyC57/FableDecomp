@@ -34,6 +34,13 @@ public:
     void AddFloat(float value) { AddData(sizeof(value), &value); }
     void AddUBYTE(unsigned char value) { AddData(sizeof(value), &value); }
     void SetPlayer(long player) { Player = (signed char)player; }
+#ifdef FABLE_RETAIL_CGAMEEVENT_INLINE_ADDMORE
+    // Nested opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput): FableWin.pdb ?AddUHUGE@CGameEvent@@QAEX_K@Z
+    // and ?AddSLONG@CGameEvent@@QAEXJ@Z, the AddFloat siblings, expanded in place in retail (0x00691E66..0x00691EC3: the value copied
+    // to a frame slot and AddData(size, &slot)). No layout change.
+    void AddUHUGE(unsigned __int64 value) { AddData(sizeof(value), &value); }
+    void AddSLONG(long value) { AddData(sizeof(value), &value); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CGAMEEVENT_DATAPACKAGE
     // Opt-in (chunk 1012, the CWorld EA handlers 0x0062BD80 / 0x0062BEF0 / 0x0062B070): Ego_r.pdb / FableWin.pdb

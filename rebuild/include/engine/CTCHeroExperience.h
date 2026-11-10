@@ -30,6 +30,13 @@ class CHitParameters;
 #endif
 class CTCHeroExperience:public CTCBase{
 public:
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_TOTALSTAT
+ // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb
+ // ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z (retail 0x006D6660) and
+ // ?GetTotalStatMaxLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z (retail 0x006D66E0), both landed. Declarations only.
+ long GetTotalStatLevel(EHeroExperienceStatCategory category) const;     // 0x006D6660
+ long GetTotalStatMaxLevel(EHeroExperienceStatCategory category) const;  // 0x006D66E0
+#endif
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_MULTISTRIKE
     void AddSuccessfulMultistrikeHit(const CHitParameters& hit);
 private:

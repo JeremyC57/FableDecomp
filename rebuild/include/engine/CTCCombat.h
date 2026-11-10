@@ -19,6 +19,11 @@ class CTCCombat:public CTCBase {
 public:
  static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
  bool IsAbleToBeKnockedDown() const;
+#ifdef FABLE_RETAIL_CTCCOMBAT_FLOURISH
+ // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb ?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z
+ // (retail 0x00736640, landed). Declaration only.
+ void AddMeleeFlourishAbility(long def_index);                           // 0x00736640
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_BLOCKING
  // Nested opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): Ego_r.pdb 0x0074B380 / FableWin.pdb 0x024FD6A0 ?IsBlocking@CTCCombat@@QBE_NXZ
  // and Ego_r.pdb 0x0074BFF0 / FableWin.pdb 0x024FD420 ?UnsetBlocking@CTCCombat@@QAEXXZ, out of line in retail at 0x007331E0 (reads

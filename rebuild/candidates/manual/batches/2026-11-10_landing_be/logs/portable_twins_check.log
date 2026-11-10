@@ -1,0 +1,226 @@
+engine/C3DBoundingBoxSSE.h         vc71-hdr-asm     OK
+engine/C3DBoundingBoxSSE.h         vc71-hdr-portable OK
+engine/C3DCoordIStrayMaxps.h       vc71-hdr-asm     OK
+engine/C3DCoordIStrayMaxps.h       vc71-hdr-portable OK
+engine/CEngineLightingSSE.h        vc71-hdr-asm     OK
+engine/CEngineLightingSSE.h        vc71-hdr-portable OK
+engine/CMatrix4x4AlignedSSE.h      vc71-hdr-asm     OK
+engine/CMatrix4x4AlignedSSE.h      vc71-hdr-portable OK
+engine/CMatrix4x4InterpolateSSE.h  vc71-hdr-asm     OK
+engine/CMatrix4x4InterpolateSSE.h  vc71-hdr-portable OK
+engine/CParticleProgramSSE.h       vc71-hdr-asm     OK
+engine/CParticleProgramSSE.h       vc71-hdr-portable OK
+engine/CParticleSimulationSSE.h    vc71-hdr-asm     OK
+engine/CParticleSimulationSSE.h    vc71-hdr-portable OK
+engine/GFFPUSetDoublePrecision.h   vc71-hdr-asm     OK
+engine/GFFPUSetDoublePrecision.h   vc71-hdr-portable OK
+engine/GFFPUSetRoundingNearest.h   vc71-hdr-asm     OK
+engine/GFFPUSetRoundingNearest.h   vc71-hdr-portable OK
+engine/GFFastFloatToLong.h         vc71-hdr-asm     OK
+engine/GFFastFloatToLong.h         vc71-hdr-portable OK
+engine/GFFloatToLongCeil.h         vc71-hdr-asm     OK
+engine/GFFloatToLongCeil.h         vc71-hdr-portable OK
+engine/GFFloatToLongFloor.h        vc71-hdr-asm     OK
+engine/GFFloatToLongFloor.h        vc71-hdr-portable OK
+engine/GFFloatToLongNear.h         vc71-hdr-asm     OK
+engine/GFFloatToLongNear.h         vc71-hdr-portable OK
+engine/GFGetCycleCount.h           vc71-hdr-asm     OK
+engine/GFGetCycleCount.h           vc71-hdr-portable OK
+engine/GFGetInterpolatedColourMMX.h vc71-hdr-asm     OK
+engine/GFGetInterpolatedColourMMX.h vc71-hdr-portable OK
+engine/GFInitVectorMathCPUID.h     vc71-hdr-asm     OK
+engine/GFInitVectorMathCPUID.h     vc71-hdr-portable OK
+engine/GFROR13.h                   vc71-hdr-asm     OK
+engine/GFROR13.h                   vc71-hdr-portable OK
+engine/NVectorMathSSE.h            vc71-hdr-asm     OK
+engine/NVectorMathSSE.h            vc71-hdr-portable OK
+libpk/CpuIdentify.h                vc71-hdr-asm     OK
+libpk/CpuIdentify.h                vc71-hdr-portable OK
+libpk/FtoL.h                       vc71-hdr-asm     OK
+libpk/FtoL.h                       vc71-hdr-portable OK
+libpk/IsCpuidSupported.h           vc71-hdr-asm     OK
+libpk/IsCpuidSupported.h           vc71-hdr-portable OK
+libpk/MixKernelsSIMD.h             vc71-hdr-asm     OK
+libpk/MixKernelsSIMD.h             vc71-hdr-portable OK
+libpk/Pow10.h                      vc71-hdr-asm     OK
+libpk/Pow10.h                      vc71-hdr-portable OK
+libpk/ReadTimeStampCounter.h       vc71-hdr-asm     OK
+libpk/ReadTimeStampCounter.h       vc71-hdr-portable OK
+libpk/SaveAllRegisters.h           vc71-hdr-asm     OK
+libpk/SaveAllRegisters.h           vc71-hdr-portable OK
+libvorbis/vorbis_ftoi.h            vc71-hdr-asm     OK
+libvorbis/vorbis_ftoi.h            vc71-hdr-portable OK
+strmbase/EnlargedUnsignedDivide.h  vc71-hdr-asm     OK
+strmbase/EnlargedUnsignedDivide.h  vc71-hdr-portable OK
+strmbase/memmoveInternal.h         vc71-hdr-asm     OK
+strmbase/memmoveInternal.h         vc71-hdr-portable OK
+test_C3DBoundingBoxSSE.cpp         vc71-asm         PASS   test_C3DBoundingBoxSSE asm: PASS (512 points)
+test_C3DBoundingBoxSSE.cpp         vc71-dual        PASS   test_C3DBoundingBoxSSE asm+portable: PASS (512 points)
+test_C3DBoundingBoxSSE.cpp         vc71-portable    PASS   test_C3DBoundingBoxSSE portable: PASS (512 points)
+test_C3DCoordIStrayMaxps.cpp       vc71-asm         PASS   test_C3DCoordIStrayMaxps asm: PASS
+test_C3DCoordIStrayMaxps.cpp       vc71-dual        PASS   test_C3DCoordIStrayMaxps asm+portable: PASS
+test_C3DCoordIStrayMaxps.cpp       vc71-portable    PASS   test_C3DCoordIStrayMaxps portable: PASS
+test_CEngineLightingSSE.cpp        vc71-asm         PASS   test_CEngineLightingSSE asm: PASS
+test_CEngineLightingSSE.cpp        vc71-dual        PASS   test_CEngineLightingSSE asm+portable: PASS
+test_CEngineLightingSSE.cpp        vc71-portable    PASS   test_CEngineLightingSSE portable: PASS
+test_CMatrix4x4AlignedSSE.cpp      vc71-asm         PASS   test_CMatrix4x4AlignedSSE asm: PASS
+test_CMatrix4x4AlignedSSE.cpp      vc71-dual        PASS   test_CMatrix4x4AlignedSSE asm+portable: PASS
+test_CMatrix4x4AlignedSSE.cpp      vc71-portable    PASS   test_CMatrix4x4AlignedSSE portable: PASS
+test_CMatrix4x4InterpolateSSE.cpp  vc71-asm         PASS   test_CMatrix4x4InterpolateSSE asm: PASS
+test_CMatrix4x4InterpolateSSE.cpp  vc71-dual        PASS   test_CMatrix4x4InterpolateSSE asm+portable: PASS
+test_CMatrix4x4InterpolateSSE.cpp  vc71-portable    PASS   test_CMatrix4x4InterpolateSSE portable: PASS
+test_CParticleProgramSSE.cpp       vc71-asm         PASS   test_CParticleProgramSSE asm: PASS
+test_CParticleProgramSSE.cpp       vc71-dual        PASS   test_CParticleProgramSSE asm+portable: PASS
+test_CParticleProgramSSE.cpp       vc71-portable    PASS   test_CParticleProgramSSE portable: PASS
+test_CParticleSimulationSSE.cpp    vc71-asm         PASS   test_CParticleSimulationSSE asm: PASS
+test_CParticleSimulationSSE.cpp    vc71-dual        PASS   test_CParticleSimulationSSE asm+portable: PASS
+test_CParticleSimulationSSE.cpp    vc71-portable    PASS   test_CParticleSimulationSSE portable: PASS
+test_CpuIdentify.cpp               vc71-asm         PASS   test_CpuIdentify asm: PASS (GenuineIntel, family 6 model 15, max leaf 32)
+test_CpuIdentify.cpp               vc71-dual        PASS   test_CpuIdentify asm+portable: PASS (GenuineIntel, family 6 model 15, max leaf 32)
+test_CpuIdentify.cpp               vc71-portable    PASS   test_CpuIdentify portable: PASS (GenuineIntel, family 6 model 15, max leaf 32)
+test_EnlargedUnsignedDivide.cpp    vc71-asm         PASS   test_EnlargedUnsignedDivide asm: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp    vc71-dual        PASS   test_EnlargedUnsignedDivide asm+portable: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp    vc71-portable    PASS   test_EnlargedUnsignedDivide portable: PASS (14 cases)
+test_FtoL.cpp                      vc71-asm         PASS   test_FtoL asm: PASS (63 inputs)
+test_FtoL.cpp                      vc71-dual        PASS   test_FtoL asm+portable: PASS (63 inputs)
+test_FtoL.cpp                      vc71-portable    PASS   test_FtoL portable: PASS (63 inputs)
+test_GFFPUSetDoublePrecision.cpp   vc71-asm         PASS   test_GFFPUSetDoublePrecision asm: PASS (3 starting precisions, 0 failures)
+test_GFFPUSetDoublePrecision.cpp   vc71-dual        PASS   test_GFFPUSetDoublePrecision asm+portable: PASS (3 starting precisions, 0 failures)
+test_GFFPUSetDoublePrecision.cpp   vc71-portable    PASS   test_GFFPUSetDoublePrecision portable: PASS (3 starting precisions, 0 failures)
+test_GFFPUSetRoundingNearest.cpp   vc71-asm         PASS   test_GFFPUSetRoundingNearest asm: PASS (4 starting modes, 0 failures)
+test_GFFPUSetRoundingNearest.cpp   vc71-dual        PASS   test_GFFPUSetRoundingNearest asm+portable: PASS (4 starting modes, 0 failures)
+test_GFFPUSetRoundingNearest.cpp   vc71-portable    PASS   test_GFFPUSetRoundingNearest portable: PASS (4 starting modes, 0 failures)
+test_GFFastFloatToLong.cpp         vc71-asm         PASS   test_GFFastFloatToLong asm: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         vc71-dual        PASS   test_GFFastFloatToLong asm+portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         vc71-portable    PASS   test_GFFastFloatToLong portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         vc71-asm         PASS   test_GFFloatToLongCeil asm: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         vc71-dual        PASS   test_GFFloatToLongCeil asm+portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         vc71-portable    PASS   test_GFFloatToLongCeil portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        vc71-asm         PASS   test_GFFloatToLongFloor asm: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        vc71-dual        PASS   test_GFFloatToLongFloor asm+portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        vc71-portable    PASS   test_GFFloatToLongFloor portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         vc71-asm         PASS   test_GFFloatToLongNear asm: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         vc71-dual        PASS   test_GFFloatToLongNear asm+portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         vc71-portable    PASS   test_GFFloatToLongNear portable: PASS (63 inputs)
+test_GFGetCycleCount.cpp           vc71-asm         PASS   test_GFGetCycleCount asm: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp           vc71-dual        PASS   test_GFGetCycleCount asm+portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp           vc71-portable    PASS   test_GFGetCycleCount portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetInterpolatedColourMMX.cpp vc71-asm         PASS   test_GFGetInterpolatedColourMMX asm: PASS (6475 blends)
+test_GFGetInterpolatedColourMMX.cpp vc71-dual        PASS   test_GFGetInterpolatedColourMMX asm+portable: PASS (6475 blends)
+test_GFGetInterpolatedColourMMX.cpp vc71-portable    PASS   test_GFGetInterpolatedColourMMX portable: PASS (6475 blends)
+test_GFInitVectorMathCPUID.cpp     vc71-asm         PASS   test_GFInitVectorMathCPUID asm: PASS (SSE yes)
+test_GFInitVectorMathCPUID.cpp     vc71-dual        PASS   test_GFInitVectorMathCPUID asm+portable: PASS (SSE yes)
+test_GFInitVectorMathCPUID.cpp     vc71-portable    PASS   test_GFInitVectorMathCPUID portable: PASS (SSE yes)
+test_GFROR13.cpp                   vc71-asm         PASS   test_GFROR13 asm: PASS
+test_GFROR13.cpp                   vc71-dual        PASS   test_GFROR13 asm+portable: PASS
+test_GFROR13.cpp                   vc71-portable    PASS   test_GFROR13 portable: PASS
+test_IsCpuidSupported.cpp          vc71-asm         PASS   test_IsCpuidSupported asm: PASS (1)
+test_IsCpuidSupported.cpp          vc71-dual        PASS   test_IsCpuidSupported asm+portable: PASS (1)
+test_IsCpuidSupported.cpp          vc71-portable    PASS   test_IsCpuidSupported portable: PASS (1)
+test_MixKernelsSIMD.cpp            vc71-asm         PASS   test_MixKernelsSIMD asm: PASS
+test_MixKernelsSIMD.cpp            vc71-dual        PASS   test_MixKernelsSIMD asm+portable: PASS
+test_MixKernelsSIMD.cpp            vc71-portable    PASS   test_MixKernelsSIMD portable: PASS
+test_NVectorMathSSE.cpp            vc71-asm         PASS   test_NVectorMathSSE asm: PASS
+test_NVectorMathSSE.cpp            vc71-dual        PASS   test_NVectorMathSSE asm+portable: PASS
+test_NVectorMathSSE.cpp            vc71-portable    PASS   test_NVectorMathSSE portable: PASS
+test_Pow10.cpp                     vc71-asm         PASS   test_Pow10 asm: PASS (2010 inputs)
+test_Pow10.cpp                     vc71-dual        PASS   test_Pow10 asm+portable: PASS (2010 inputs)
+test_Pow10.cpp                     vc71-portable    PASS   test_Pow10 portable: PASS (2010 inputs)
+test_ReadTimeStampCounter.cpp      vc71-asm         PASS   test_ReadTimeStampCounter asm: PASS (1000 interleaved reads, 0 out of order)
+test_ReadTimeStampCounter.cpp      vc71-dual        PASS   test_ReadTimeStampCounter asm+portable: PASS (1000 interleaved reads, 0 out of order)
+test_ReadTimeStampCounter.cpp      vc71-portable    PASS   test_ReadTimeStampCounter portable: PASS (1000 interleaved reads, 0 out of order)
+test_SaveAllRegisters.cpp          vc71-asm         PASS   test_SaveAllRegisters asm: PASS
+test_SaveAllRegisters.cpp          vc71-dual        PASS   test_SaveAllRegisters asm+portable: PASS
+test_SaveAllRegisters.cpp          vc71-portable    PASS   test_SaveAllRegisters portable: PASS
+test_memmoveInternal.cpp           vc71-asm         PASS   test_memmoveInternal asm: PASS
+test_memmoveInternal.cpp           vc71-dual        PASS   test_memmoveInternal asm+portable: PASS
+test_memmoveInternal.cpp           vc71-portable    PASS   test_memmoveInternal portable: PASS
+test_vorbis_ftoi.cpp               vc71-asm         PASS   test_vorbis_ftoi asm: PASS (63 inputs)
+test_vorbis_ftoi.cpp               vc71-dual        PASS   test_vorbis_ftoi asm+portable: PASS (63 inputs)
+test_vorbis_ftoi.cpp               vc71-portable    PASS   test_vorbis_ftoi portable: PASS (63 inputs)
+engine/C3DBoundingBoxSSE.h         gxx-hdr          OK
+engine/C3DCoordIStrayMaxps.h       gxx-hdr          OK
+engine/CEngineLightingSSE.h        gxx-hdr          OK
+engine/CMatrix4x4AlignedSSE.h      gxx-hdr          OK
+engine/CMatrix4x4InterpolateSSE.h  gxx-hdr          OK
+engine/CParticleProgramSSE.h       gxx-hdr          OK
+engine/CParticleSimulationSSE.h    gxx-hdr          OK
+engine/GFFPUSetDoublePrecision.h   gxx-hdr          OK
+engine/GFFPUSetRoundingNearest.h   gxx-hdr          OK
+engine/GFFastFloatToLong.h         gxx-hdr          OK
+engine/GFFloatToLongCeil.h         gxx-hdr          OK
+engine/GFFloatToLongFloor.h        gxx-hdr          OK
+engine/GFFloatToLongNear.h         gxx-hdr          OK
+engine/GFGetCycleCount.h           gxx-hdr          OK
+engine/GFGetInterpolatedColourMMX.h gxx-hdr          OK
+engine/GFInitVectorMathCPUID.h     gxx-hdr          OK
+engine/GFROR13.h                   gxx-hdr          OK
+engine/NVectorMathSSE.h            gxx-hdr          OK
+libpk/CpuIdentify.h                gxx-hdr          OK
+libpk/FtoL.h                       gxx-hdr          OK
+libpk/IsCpuidSupported.h           gxx-hdr          OK
+libpk/MixKernelsSIMD.h             gxx-hdr          OK
+libpk/Pow10.h                      gxx-hdr          OK
+libpk/ReadTimeStampCounter.h       gxx-hdr          OK
+libpk/SaveAllRegisters.h           gxx-hdr          OK
+libvorbis/vorbis_ftoi.h            gxx-hdr          OK
+strmbase/EnlargedUnsignedDivide.h  gxx-hdr          OK
+strmbase/memmoveInternal.h         gxx-hdr          OK
+test_C3DBoundingBoxSSE.cpp         gxx-portable     PASS   test_C3DBoundingBoxSSE portable: PASS (512 points)
+test_C3DBoundingBoxSSE.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_C3DCoordIStrayMaxps.cpp       gxx-portable     PASS   test_C3DCoordIStrayMaxps portable: PASS
+test_C3DCoordIStrayMaxps.cpp       gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CEngineLightingSSE.cpp        gxx-portable     PASS   test_CEngineLightingSSE portable: PASS
+test_CEngineLightingSSE.cpp        gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CMatrix4x4AlignedSSE.cpp      gxx-portable     PASS   test_CMatrix4x4AlignedSSE portable: PASS
+test_CMatrix4x4AlignedSSE.cpp      gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CMatrix4x4InterpolateSSE.cpp  gxx-portable     PASS   test_CMatrix4x4InterpolateSSE portable: PASS
+test_CMatrix4x4InterpolateSSE.cpp  gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CParticleProgramSSE.cpp       gxx-portable     PASS   test_CParticleProgramSSE portable: PASS
+test_CParticleProgramSSE.cpp       gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CParticleSimulationSSE.cpp    gxx-portable     PASS   test_CParticleSimulationSSE portable: PASS
+test_CParticleSimulationSSE.cpp    gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_CpuIdentify.cpp               gxx-portable     PASS   test_CpuIdentify portable: PASS (GenuineIntel, family 6 model 15, max leaf 32)
+test_CpuIdentify.cpp               gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_EnlargedUnsignedDivide.cpp    gxx-portable     PASS   test_EnlargedUnsignedDivide portable: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp    gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_FtoL.cpp                      gxx-portable     PASS   test_FtoL portable: PASS (63 inputs)
+test_FtoL.cpp                      gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFPUSetDoublePrecision.cpp   gxx-portable     PASS   test_GFFPUSetDoublePrecision portable: PASS (3 starting precisions, 0 failures)
+test_GFFPUSetDoublePrecision.cpp   gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFPUSetRoundingNearest.cpp   gxx-portable     PASS   test_GFFPUSetRoundingNearest portable: PASS (4 starting modes, 0 failures)
+test_GFFPUSetRoundingNearest.cpp   gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFastFloatToLong.cpp         gxx-portable     PASS   test_GFFastFloatToLong portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongCeil.cpp         gxx-portable     PASS   test_GFFloatToLongCeil portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongFloor.cpp        gxx-portable     PASS   test_GFFloatToLongFloor portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp        gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongNear.cpp         gxx-portable     PASS   test_GFFloatToLongNear portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp         gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFGetCycleCount.cpp           gxx-portable     PASS   test_GFGetCycleCount portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp           gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFGetInterpolatedColourMMX.cpp gxx-portable     PASS   test_GFGetInterpolatedColourMMX portable: PASS (6475 blends)
+test_GFGetInterpolatedColourMMX.cpp gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFInitVectorMathCPUID.cpp     gxx-portable     PASS   test_GFInitVectorMathCPUID portable: PASS (SSE yes)
+test_GFInitVectorMathCPUID.cpp     gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFROR13.cpp                   gxx-portable     PASS   test_GFROR13 portable: PASS
+test_GFROR13.cpp                   gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_IsCpuidSupported.cpp          gxx-portable     PASS   test_IsCpuidSupported portable: PASS (1)
+test_IsCpuidSupported.cpp          gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_MixKernelsSIMD.cpp            gxx-portable     PASS   test_MixKernelsSIMD portable: PASS
+test_MixKernelsSIMD.cpp            gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_NVectorMathSSE.cpp            gxx-portable     PASS   test_NVectorMathSSE portable: PASS
+test_NVectorMathSSE.cpp            gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_Pow10.cpp                     gxx-portable     PASS   test_Pow10 portable: PASS (2010 inputs)
+test_Pow10.cpp                     gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_ReadTimeStampCounter.cpp      gxx-portable     PASS   test_ReadTimeStampCounter portable: PASS (1000 interleaved reads, 0 out of order)
+test_ReadTimeStampCounter.cpp      gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_SaveAllRegisters.cpp          gxx-portable     PASS   test_SaveAllRegisters portable: PASS
+test_SaveAllRegisters.cpp          gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_memmoveInternal.cpp           gxx-portable     PASS   test_memmoveInternal portable: PASS
+test_memmoveInternal.cpp           gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_vorbis_ftoi.cpp               gxx-portable     PASS   test_vorbis_ftoi portable: PASS (63 inputs)
+test_vorbis_ftoi.cpp               gxx-m32-compile  SKIPPED   no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+224 steps, 0 failed
+rc=0

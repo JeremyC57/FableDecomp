@@ -1,0 +1,23 @@
+00a02df0	1	DIFFER(595v585)	first draft: overlay class, BeginCritical/EndCritical explicit, vector in else-branch; structure right, this=edi size=ebp (retail ebp/ebx), no zero register
+00a02df0	2	DIFFER(595v585)	CScopedCritical lock + vector at top (dtor order ~vector then EndCritical as retail)
+00a02df0	3	DIFFER(579v585)	same-TU bodies (FindLargestFreeArea, TestIfAreaIsGrowable, GrowFreeArea) visible before the row; ratio 0.52->0.81
+00a02df0	4	DIFFER(579v585)	GetListIndex with an early 'return 0xff': byte-identical to grade 3 (no effect on the 0xff entry threading)
+00a02df0	5	DIFFER(579v585)	'area == triedAreas[i]' operand order: fixes cmp esi,[edi+ecx*4] (0x00A02F37); ratio 0.816
+00a02df0	6	DIFFER(579v585)	outer for -> while with --index at the end: byte-identical to grade 5
+00a02df0	7	DIFFER(579v585)	blocksTried declared before the vector (store order now retail's), success/blocks tests as a break at the loop top; ratio 0.821; residue: retail threads GetListIndex's 0xff arm past the entry index>=0 test (separate 'mov [index],0FFh ; jmp' block at 0x00A02F43), ours keeps the select (jb ; mov eax,0FFh) -> index/list-pointer slots swap and eax/ecx/edx rotation differ
+00418289	1	DIFFER(564v564)	first draft (O1 Oy- GS, size TU pragmas, GFFPUSetDoublePrecision + RoundingNearest helpers); ratio 0.927
+00418289	2	RELOCATION_MATCH	no explicit (float) casts on the two GFGetTime stores: the scheduler then hoists the LoadingEventPackages test above fstp (0x004183C3)
+00418289	3	RELOCATION_MATCH	src/00418289.cpp as handed back (comments added), overlay exported
+00417747	1	DIFFER(592v596)	first draft (same TU infrastructure as Update, CInterpolationInfo / CRoughFrameCounter headers); ratio 0.818
+00417747	2	DIFFER(596v596)	double 1.0 reciprocals (1.0 / multiplier, 1.0 / (FPS * tick_speed)): fld mem ; fld1 ; fdivrp as retail; ratio 0.824
+00417747	3	DIFFER(600v596)	PAREN (tick_speed * desired) * frame_duration: product order and the slot map now retail's; ratio 0.941; frame_duration still stored before the product
+00417747	4	DIFFER(596v596)	desired * tick_speed * frame_duration (no PAREN): back to fd*desired*a, ratio 0.824
+00417747	5	DIFFER(600v596)	grade-3 source under base /O2 + pragmas (no Flags): byte-identical to grade 3 (fdivr qword [1.0] either way)
+00417747	6	DIFFER(600v596)	1.0L long-double reciprocals: byte-identical to grade 3
+00417747	7	DIFFER(600v596)	named desired_ticks intermediate instead of the PAREN: byte-identical to grade 3; parked (residue: retail 'fld [m] ; fld1 ; fdivrp st(1)' twice, unique in Fable.exe, and frame_duration stored after the tick product)
+00a02df0	8	DIFFER(547v585)	GetListIndex as std::min(0xFFUL, size >> 9): reference select, FindLargestFreeArea no longer expanded; ratio 0.568 (reverted)
+00a02df0	9	RELOCATION_MATCH	GetListIndex body as the ternary '(size >> 9) < 0xff ? (size >> 9) : 0xff': VC7.1 threads the 0xFF arm past the loop-entry test (0x00A02F43)
+00a02df0	10	RELOCATION_MATCH	src/00a02df0.cpp as handed back (BeginCritical's try-only path restored in the header)
+00691d70	1	RELOCATION_MATCH	first draft with QLEN=528 (SPLITS): inline PCreature null/dead checks, switch on GetType for the device-3 button set, CGameEvent(0x10) AddUHUGE/AddFloat/AddFloat/AddSLONG, GetTC(TCI_STEALTH) sneak toggle; /GS; overlay exported
+0078c210	1	DIFFER(604v602)	0.890: def and flourish names as temporaries (push 1 before the CCharString ctor, PMainGameComponent hoisted into ebx), Level-first strength share (fstp/fdivr instead of fidiv); QLEN=602 (SPLITS)
+0078c210	2	RELOCATION_MATCH	block-scoped named CCharString locals (the CTCBattleCharge / CTCWillEnflame sibling shape), max level read into a long local first (fild level ; fidiv max); no flags; overlay exported

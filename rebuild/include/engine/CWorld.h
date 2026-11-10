@@ -124,6 +124,13 @@ public:
     // Retail opt-in (Codex pass 17): both PDBs/native0049DFB0.
     void Update(const CGameEventPackage&,bool);
 #endif
+#ifdef FABLE_RETAIL_CWORLD_UPDATEINPUT
+    // Retail opt-in (chunk 1022): see the generated branch below (IsPaused inline +0xA4, UpdateInputRelatedInterpolation 0x0049D9E0),
+    // and Ego_r.pdb (0x004A7320) ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z, out of line in retail at 0x0049E080 (landed).
+    bool IsPaused() const { return Paused; }
+    void UpdateInputRelatedInterpolation();                  // 0x0049D9E0
+    void RenderUpdate(const CInterpolationInfo* info);       // 0x0049E080
+#endif
 #ifdef FABLE_RETAIL_CTCBOASTINGCROWDCONTROL
     const CGameDefinitionManager& PeekDefinitionManager()const{return *DefinitionManager;}
 #endif
@@ -517,6 +524,16 @@ public:
 #ifdef FABLE_RETAIL_CWORLD_EVENTPACKAGES
     // Retail opt-in (Codex pass 17): both PDBs/native0049DFB0.
     void Update(const CGameEventPackage&,bool);
+#endif
+#ifdef FABLE_RETAIL_CWORLD_UPDATEINPUT
+    // Retail opt-in (chunk 1022, rows 0x00418289 CMainGameComponent::Update / 0x00417747 UpdateForcedTickSpeed): FableWin.pdb
+    // ?IsPaused@CWorld@@QBE_NXZ (0x018A76B0), inline in retail (Update tests PWorld's byte +0xA4 in place, 0x00418301), and
+    // Ego_r.pdb (0x004A6D30) / FableWin.pdb (0x01B503D0) ?UpdateInputRelatedInterpolation@CWorld@@QAEXXZ, out of line and empty in
+    // retail at 0x0049D9E0 (`ret`; Ego_r order GetSampleBank 0x0049D9B0, PeekSampleBank, PeekMyPlayer 0x0049D9D0, this,
+    // UpdateThemeSounds 0x0049D9F0, GetCurrentRenderCamera 0x0049DA00). No layout change.
+    bool IsPaused() const { return Paused; }
+    void UpdateInputRelatedInterpolation();                  // 0x0049D9E0
+    void RenderUpdate(const class CInterpolationInfo* info); // 0x0049E080
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ

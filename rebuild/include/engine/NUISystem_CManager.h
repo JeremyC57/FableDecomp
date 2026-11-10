@@ -31,6 +31,15 @@ public: static void __fastcall OnCloseMenus();                                  
 #ifdef FABLE_RETAIL_CMANAGER_CLEAR
  static void __fastcall Clear();
 #endif
+#ifdef FABLE_RETAIL_CMANAGER_ERRORMESSAGE
+// Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): Ego_r.pdb (0x0042D784) / FableWin.pdb (0x01B0ED72)
+// ?ClearErrorMessage@CManager@NUISystem@@QAEXXZ, out of line in retail at 0x0041CE6A, and the HasErrorMessage accessor of the
+// FABLE_RETAIL_CMANAGER branch (inline: `cmp byte ptr [eax+9Ch],bl`) for TUs that do not take that branch. Declarations only.
+public: void ClearErrorMessage();                                               // 0x0041CE6A
+#ifndef FABLE_RETAIL_CMANAGER
+public: bool HasErrorMessage() { return m_bHasErrorMessage; }
+#endif
+#endif
 #ifdef FABLE_RETAIL_CMANAGER
 // Retail branch (chunk 726): Ego_r.pdb ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, out of line at 0x0041CF47
 // (CList::ComputeChildrenVisibility 0x005379F5 and CScrollingViewport::Update 0x0053F1C0 call it with a hidden result).
@@ -146,4 +155,12 @@ protected: bool AssignmentItemsExpressionsSwapping;
 protected: bool AssignmentSpellsSwapping;
 };
 }
+#ifdef FABLE_RETAIL_CMANAGER_ERRORMESSAGE
+// Ego_r.pdb ?ShowErrorMessage@@YIXW4ERRORMESSAGE_TYPE@@@Z (0x00438C49, right after ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
+// 0x00438C20; retail 0x0041E61B right after GetInstance 0x0041E5F2): a global __fastcall forward to
+// CManager::GetInstance()->ShowErrorMessage(type) (Ego_r ?ShowErrorMessage@CManager@NUISystem@@QAEXW4ERRORMESSAGE_TYPE@@@Z, 0x0041DB84).
+// ERRORMESSAGE_TYPE is a global enum (W4ERRORMESSAGE_TYPE@@); its enumerators are not in the extracts on disk.
+enum ERRORMESSAGE_TYPE { };
+void __fastcall ShowErrorMessage(ERRORMESSAGE_TYPE type);                    // 0x0041E61B
+#endif
 #endif

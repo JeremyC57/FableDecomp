@@ -392086,6 +392086,36 @@ $catalog = @(
         TestSource = '00/be/CEngineInternalPrimitiveMeshBase_CollectStats_00bec680_test.cpp'
         PassPattern = '00bec680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00418289'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_Update_00418289.cpp'
+        TestSource = '00/41/CMainGameComponent_Update_00418289_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O1 /Oy- /GS'
+        PassPattern = '00418289_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00691d70'
+        Module = 'CInputProcessCreatureMovement'
+        Source = '00/69/CInputProcessCreatureMovement_ProcessInput_00691d70.cpp'
+        TestSource = '00/69/CInputProcessCreatureMovement_ProcessInput_00691d70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00691d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078c210'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_CTCBerserk_0078c210.cpp'
+        TestSource = '00/78/CTCBerserk_CTCBerserk_0078c210_test.cpp'
+        PassPattern = '0078c210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a02df0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_PartialDefragment_00a02df0.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_PartialDefragment_00a02df0_test.cpp'
+        PassPattern = '00a02df0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -23,8 +23,21 @@ public:
     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
     void EventScanEnd(CInputEventScanInfo&) const;                       // 0x009F4AC0
 #endif
+#ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTFLAGS
+    // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): FableWin.pdb ?IsLoadingEvents@CInputManager@@QBE_NXZ
+    // (0x018A6700) / ?IsSavingEvents@CInputManager@@QBE_NXZ (0x018A6720), inline in retail (Update tests PInputManager's bytes +0x38
+    // and +0x39 in place, 0x0041842D / 0x00418432): the Ego_r.pdb members Loading +0x38 / Saving +0x39. Same layout as the pad.
+    bool IsLoadingEvents() const { return Loading; }
+    bool IsSavingEvents() const { return Saving; }
+private:
+    unsigned char _pad_0x04[0x38 - 0x04];                                // +0x04 ProcessedEvents .. PJoysticks, +0x30 (opaque)
+    bool          Loading;                                               // +0x38
+    bool          Saving;                                                // +0x39
+    unsigned char _pad_0x3a[0x80 - 0x3a];                                // +0x3a Checksum .. NoUpdates (opaque)
+#else
 private:
     unsigned char _pad_0x04[0x80 - 0x04];                                // +0x04 data members (opaque, see above)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CInputManager) == 0x80);
 #endif // FABLE_ENGINE_CINPUTMANAGER_H

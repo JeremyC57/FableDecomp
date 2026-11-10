@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00418289   WARN RELOC_NAME: ?ShowErrorMessage@@YIXW4ERRORMESSAGE_TYPE@@@Z -> 0041e61b labelled 'NUISystem::CSpellContainerList::AddChild'
+00418289   WARN RELOC_NAME: ?SignalFrameUpdate@CMainGameComponent@@QAEXXZ -> 00416047 labelled 'CEditInputProcessCopyPaste::AddToInterface'
+00418289   WARN RELOC_NAME: ?UpdateInputRelatedInterpolation@CWorld@@QAEXXZ -> 0049d9e0 labelled '_global::Nop_ret0_0049d9e0'
+00418289   RELOCATION_MATCH PASS   Update
+00691d70   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00691d70   RELOCATION_MATCH PASS   ProcessInput
+0078c210   RELOCATION_MATCH PASS   CTCBerserk
+00a02df0   RELOCATION_MATCH PASS   PartialDefragment
+
+WINS: 4
+  00418289 RELOCATION_MATCH CMainGameComponent::?Update@CMainGameComponent@@MAEXXZ
+  00691d70 RELOCATION_MATCH CInputProcessCreatureMovement::?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  0078c210 RELOCATION_MATCH CTCBerserk::??0CTCBerserk@@QAE@AAVCThing@@@Z
+  00a02df0 RELOCATION_MATCH CHandleBasedMemoryPool::?PartialDefragment@CHandleBasedMemoryPool@@QAE_NJ@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CMainGameComponent_Update_00418289
+  CInputProcessCreatureMovement_ProcessInput_00691d70
+  CTCBerserk_CTCBerserk_0078c210
+  CHandleBasedMemoryPool_PartialDefragment_00a02df0

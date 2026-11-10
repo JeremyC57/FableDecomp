@@ -27,6 +27,11 @@ public:
 #endif
     EInputEventType GetType() const;                                     // 0x00A03B40 ?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
     EInputKey GetKey() const;                                            // 0x00A03B70 ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ
+#ifdef FABLE_RETAIL_CINPUTEVENT_DEVICETYPE
+    // Retail opt-in (agent1022, row 0x00691D70): Ego_r.pdb ?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ, retail 0x00A03B50
+    // (`mov eax,[ecx+20h] ; ret`, DeviceType +0x20). Declaration only.
+    EInputDeviceType GetDeviceType() const;                              // 0x00A03B50
+#endif
 #ifdef FABLE_RETAIL_CINPUTEVENT_ACCESSORS
     // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): three more out-of-line accessors, declarations only
     // (no layout change). Ego_r.pdb / FableWin.pdb ?GetDeviceNumber@CInputEvent@@QBEJXZ (0x00A03B60), ?GetJoystickButton@CInputEvent@@QBEJXZ

@@ -8,6 +8,14 @@
 class CSpecialAbilitiesBerserkDef;
 class CTCBerserk:public CTCBase {
 public:void PlayHitEffectAtPos(const C3DVector& pos)const;
+#ifdef FABLE_RETAIL_CTCBERSERK_CTOR
+ // Nested opt-in (agent1022, row 0x0078C210): Ego_r.pdb / FableWin.pdb ??0CTCBerserk@@QAE@AAVCThing@@@Z (retail 0x0078C210, `ret 4`,
+ // vtable 0x0126BB94) and the private ?SetLevel@CTCBerserk@@AAEXXZ (retail 0x0078BF00, landed). Declarations only, no layout change.
+ CTCBerserk(CThing& thing);                                              // 0x0078C210
+private:
+ void SetLevel();                                                        // 0x0078BF00
+public:
+#endif
 private:
  long Timer,DarkenEnvTimer;float StrengthPercentage,MaxIncreaseInStrength,ReleasedAnimationTimer;
  long AnimTimer;float BerserkDamageToMe,BerserkDamageToEnemy,BerserkScale,RumbleLevel,RumbleSmoothness,RumbleAttack,RumbleDecay;

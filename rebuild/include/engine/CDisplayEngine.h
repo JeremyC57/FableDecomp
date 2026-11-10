@@ -29,6 +29,15 @@ public:
     void ConfirmFeedbackGameEventPackage(const CGameEventPackage*);
     void WorldUpdate();
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER
+    // Retail opt-in (chunk 1022, row 0x00417747 CMainGameComponent::UpdateForcedTickSpeed): Ego_r.pdb (0x004490E0)
+    // ?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z (protected; out of line in retail at 0x00435F70, called on
+    // PDisplayEngine with `push 1 ; push WorldUpdateTurn ; push &info`), so CMainGameComponent is a friend. No layout change.
+protected:
+    void DoRender(const class CInterpolationInfo* info, bool world_updated, bool render);   // 0x00435F70
+    friend class CMainGameComponent;
+public:
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE
     // Retail opt-in (chunk 725): FableWin.pdb members, retail addresses. Both are the Engine3D forwards of
     // CMainGameComponent::PreChangeResolution (inlined in SetExclusiveMode 0x004163B7 / SetDisplayMode / AppReinitFunc) and

@@ -34,11 +34,22 @@ public:
  bool IsSmellable() const;
  bool IsHearable() const;
  bool IsPerceptible() const;
+ #ifdef FABLE_RETAIL_CTCSTEALTH_SNEAKTOGGLE
+ // Retail opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput): Ego_r.pdb / FableWin.pdb
+ // ?IsSneaking@CTCStealth@@QBE_NXZ and ?SetSneakingToggleSet@CTCStealth@@QAEX_N@Z expanded in place in retail
+ // (0x00691F36 `mov cl,[eax+0Fh] ; test cl,cl ; sete cl ; mov [eax+10h],cl`). Bodies only, no layout change.
+ bool IsSneaking() const { return Sneaking; }
+ #else
  bool IsSneaking() const;
+ #endif
  bool IsSneakToggleSet() const;
  float GetSneakingSpeed() const;
  void SetSneaking(bool p0);
+ #ifdef FABLE_RETAIL_CTCSTEALTH_SNEAKTOGGLE
+ void SetSneakingToggleSet(bool p0) { SneakingToggleSet = p0; }
+ #else
  void SetSneakingToggleSet(bool p0);
+ #endif
  float GetVisibilityMultiplier() const;
  float GetAudibilityMultiplier() const;
  float GetDistanceCanBeHeardFrom() const;

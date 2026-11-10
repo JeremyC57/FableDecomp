@@ -221,3 +221,6 @@ address	pool	module	name	length	class	action	new_length	evidence
 0062b070	chunk1012b	CWorld	EAOpenHeroInformationScreen	1872	OVERLONG	split	891	`ret 4` at 0x0062B3E8 then int3 padding; the extent also covers four CWorld EA handlers 0x0062B3F0 (0xD6), 0x0062B4D0 (0x7A), 0x0062B550 (0x52), 0x0062B5B0 (0x20A), names unproven (chunk 1012b)
 004a1840	chunk1012c	CWorld	Load	1025	UNDERLONG	extend	1129	the body runs to 0x004A1CA8 incl. the catch funclet Catch@004a1c41 and the post-catch epilogue at 0x004A1C86 (chunk 1012c SPLITS.tsv); not yet applied to the catalog
 0083d460	chunk1021	CThingMarker	Create	336	OVERLONG	split	247	`ret 4` at 0x0083D554 then int3 pad; the extent also covers four small functions 0x0083D560 (12), 0x0083D570 (3), 0x0083D580 (3), 0x0083D590 (18) (chunk 1021 SPLITS.tsv)
+00691d70	chunk1022	CInputProcessCreatureMovement	ProcessInput	624	OVERLONG	split	528	code ends `ret 8` at 0x00691F59, then two switch tables (0x00691F5C, 0x00691F64); next function 0x00691F80 (chunk 1022 SPLITS.tsv)
+0078c210	chunk1022	CTCBerserk	CTCBerserk	688	OVERLONG	split	602	`ret 4` at 0x0078C467; next function 0x0078C470 (60 bytes, the TC 0x31 PeekTC getter) (chunk 1022 SPLITS.tsv)
+004ca019	chunk1022	CThing	ConstructFromParams	439	PHANTOM	skip	0	9 bytes inside the landed CThing::ConstructFromParams 0x004CA010 (437 bytes); not a function start (chunk 1022)

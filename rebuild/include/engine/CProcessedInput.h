@@ -14,6 +14,12 @@ public:
 #ifdef FABLE_RETAIL_CPROCESSEDINPUT_ADDEVENT
     void AddGameEvent(const CGameEvent& event);
 #endif
+#ifdef FABLE_RETAIL_CPROCESSEDINPUT_PERFORMED
+    // Retail opt-in (agent1022, row 0x00691D70): Ego_r.pdb ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ, retail 0x00A0D390 (Ego_r
+    // AddGameEvent 0x00B74C50 / SetAsPerformedEvent 0x00B74CA0 / SetPlayer 0x00B74CB0 = retail 0x00A0D340 / 0x00A0D390 / 0x00A0D3A0;
+    // landed as CWomanToAttract::Init / CProcessedInput::SetHandled). Declaration only.
+    void SetAsPerformedEvent();                              // 0x00A0D390
+#endif
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]

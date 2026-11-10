@@ -33,6 +33,13 @@ class CMainGameComponentInit;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
 class CGameEvent;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_UPDATE
+#include "engine/CGameEventPackageSet.h"
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_FORCEDTICK
+#include "engine/CInterpolationInfo.h"
+#include "engine/CRoughFrameCounter.h"
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
 #include "boost/scoped_ptr.h"
 #include "engine/CNetworkClient.h"
@@ -73,8 +80,16 @@ protected:
     double CurrentFrameStartGameTime;               // +0x58
     double GameStartTime;                           // +0x60
     double LastFrameRenderDuration;                 // +0x68
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_FORCEDTICK
+    CInterpolationInfo LastInterpolationInfo;       // +0x70
+#else
     unsigned char LastInterpolationInfo[0x34];      // +0x70 CInterpolationInfo
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_UPDATE
+    CGameEventPackageSet EventPackageSet;            // +0xA4 (0x13A14 bytes)
+#else
     unsigned char EventPackageSet[0x13A14];         // +0xA4 CGameEventPackageSet
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
     CNetworkClient Client;
 #else
@@ -101,7 +116,11 @@ protected:
     float LastUpdateTime;                           // +0x161B4
     bool WorldUpdateTurn;                           // +0x161B8
     unsigned char _pad_0x161B9[3];
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_FORCEDTICK
+    CRoughFrameCounter RoughFPSCounter;             // +0x161BC
+#else
     unsigned char RoughFPSCounter[8];               // +0x161BC CRoughFrameCounter
+#endif
     CGameComponent* NextComponentToRun;             // +0x161C4
     unsigned char PMainGraphicBank[8];              // +0x161C8 CCountedPointer<CGraphicDataBank>
     unsigned char InitStructure[0x10];              // +0x161D0 CMainGameComponentInit
@@ -122,6 +141,26 @@ public:
 public:
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
     const CFontBank& PeekMainFont()const{return *PCutSceneMainFont;}
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_UPDATE
+    // Retail opt-in (chunk 1022, row 0x00418289 Update): the members Update calls out of line, Ego_r.pdb / FableWin.pdb spellings
+    // (retail addresses from the landed rows; 0x00416047 follows Ego_r's order InitDefinitions, SignalFrameUpdate, InitEventPackageLoading
+    // and is 15 bytes as Ego_r's 0x00415265: FirstWorldFrameUpdate = false, then the memory allocator tail call). Declarations only.
+    bool IsControllerDisconnected() const;                                       // 0x00416296
+    void SignalFrameUpdate();                                                    // 0x00416047
+    bool IsTimeForServerUpdate(long frame) const;                                // 0x0041674A
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_FORCEDTICK
+    // Nested opt-in (chunk 1022, row 0x00417747 UpdateForcedTickSpeed): Ego_r.pdb / FableWin.pdb ?UpdateForcedTickSpeed@CMainGameComponent@@QAEXXZ
+    // and the protected ?GetPredictedTimeSinceLastRenderFrame@CMainGameComponent@@IBENXZ (out of line 0x00416258, landed).
+    void UpdateForcedTickSpeed();                                                // 0x00417747
+protected:
+    double GetPredictedTimeSinceLastRenderFrame() const;                         // 0x00416258
+public:
+#endif
+protected:
+    bool GetEventPackageSetFromSave(CGameEventPackageSet* event_package_set);    // 0x00416148
+    void AddEventPackageSetToSave(const CGameEventPackageSet* event_package_set);   // 0x004161A7
+public:
 #endif
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
     static long __fastcall GetConstantFPS() { return ConstantFPS; }

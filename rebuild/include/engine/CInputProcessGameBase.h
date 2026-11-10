@@ -13,6 +13,9 @@ class CGamePlayerInterface;
 class CMainGameComponent;
 class CPlayer;
 class CWorld;
+#ifdef FABLE_RETAIL_INPUTPROCESS_MOVEMENT
+class C2DVector;
+#endif
 class CInputProcessGameBase : public CAInputProcess {
 public:
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);        // 0x00687A30
@@ -22,6 +25,16 @@ protected:
     const CGamePlayerInterface& GetGamePlayerInterface() const { return *PGamePlayerInterface; }
     bool IsEventButtonPressed(const CInputEvent& event) const;
     bool IsEventButtonHeld(const CInputEvent& event) const;
+public:
+#endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_MOVEMENT
+    // Retail opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput), declarations only:
+    // Ego_r.pdb ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
+    // (retail 0x00687D00, landed under the made-up spelling GetEventGameActionVector) and
+    // ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (retail 0x00687B30).
+    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& movement) const;   // 0x00687D00
+protected:
+    bool IsEventButtonReleased(const CInputEvent& event) const;                                                       // 0x00687B30
 public:
 #endif
     CWorld*                 World;                                       // +0x14

@@ -1,0 +1,9 @@
+address	name	grade	grades_used	note
+00a02df0	CHandleBasedMemoryPool::PartialDefragment	RELOCATION_MATCH	10	same-TU bodies of FindLargestFreeArea/TestIfAreaIsGrowable/GrowFreeArea + GetListIndex as a ternary (overlay FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_DEFRAG)
+00418289	CMainGameComponent::Update	RELOCATION_MATCH	3	/O1 /Oy- /GS size TU; implicit double->float on the two GFGetTime stores; new retail-asm helper GFFPUSetDoublePrecision
+00417747	CMainGameComponent::UpdateForcedTickSpeed	DIFFER(600v596)	7	parked: retail `fld [m] ; fld1 ; fdivrp st(1)` reciprocals (twice, the only such pair in Fable.exe), ours `fdivr qword [1.0]`; 0.941
+0078c210	CTCBerserk::CTCBerserk	RELOCATION_MATCH	2	SPLITS 602 (catalog 688 swallows 0x0078C470); block-scoped def-name CCharString locals; shared GFFloatToLongCeil
+004ca019	CThing::ConstructFromParams	PHANTOM	0	not a function start: 0x004CA019 is 9 bytes into the landed CThing::ConstructFromParams 0x004CA010 (437 bytes); drop the row
+0061a6a0	CTCInventoryQuests::OnCreate	NOT_GRADED	0	parked unworked (session budget); decoded skeleton + header debt in differ/0061a6a0.cpp
+00b67270	CEngineLandscapeRenderer::BuildBlendingTables	NOT_GRADED	0	parked unworked (session budget); decoded skeleton + header debt in differ/00b67270.cpp
+00691d70	CInputProcessCreatureMovement::ProcessInput	RELOCATION_MATCH	1	SPLITS 528 (code + switch tables; catalog 624 runs into 0x00691F80); /GS; CTCStealth sneak-toggle accessors inline

@@ -96,6 +96,12 @@ public:
     // +0xE5 in place). Member functions only: the layout is unchanged on both paths.
     bool IsDisplayingText() const { return DisplayingText; }
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_INTERACTIVE
+    // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): Ego_r.pdb (0x0049A606) / FableWin.pdb (0x01A70145)
+    // ?IsInInteractiveState@CSubtitleRenderer@@QBE_NXZ, out of line in retail at 0x00490A22 (`mov ecx,edi ; call`, edi = the
+    // CPlayerGui singleton + 0x18). Declaration only: no layout change.
+    bool IsInInteractiveState() const;                                   // 0x00490A22
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_INCUTSCENE
     // Retail opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): FableWin.pdb ?IsInCutscene@CSubtitleRenderer@@QBE_NXZ
     // (0x0187F200; no Ego_r.pdb copy, inline in retail: Activate tests the CPlayerGui singleton's byte +0xF6 = SubtitleRenderer +0x18 +

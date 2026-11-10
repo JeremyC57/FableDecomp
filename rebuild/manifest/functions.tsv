@@ -527,7 +527,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041799b	ChangeTextureColourDepth	CMainGameComponent	__thiscall	void	2	CMainGameComponent *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b.cpp
 004179ee	ChangeMaxTextureSize	CMainGameComponent	__thiscall	void	2	CMainGameComponent *,long	1	yes	accepted									
 00417a58	CMainGameComponent_InitSoundBanks	_global	unknown	undefined	0		0	yes	accepted	FAIL	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x00417A58_global_CMainGameComponent_InitSoundBanks.cpp				
-00418289	?Update@CMainGameComponent@@MAEXXZ	CMainGameComponent	__thiscall	void	1	CMainGameComponent *	1	yes	accepted									
+00418289	Update	CMainGameComponent	__thiscall	void	1	CMainGameComponent *	1	yes	accepted									
 004184bd	?Init@CMainGameComponent@@UAEXXZ	CMainGameComponent	__thiscall	void	1	CMainGameComponent *	1	yes	accepted									
 004189c2	Run	CMainGameComponent	__thiscall	bool	2	CMainGameComponent *,CGameComponent * *	1	yes	accepted									
 00418b7a	~CMainGameComponent	CMainGameComponent	__thiscall	void	1	CMainGameComponent *	1	yes	accepted									
@@ -15606,7 +15606,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00691c20	Init	CInputProcessCreatureMovementWatchForControlAngleChange	__thiscall	void	1	CWADFile *	1	yes	accepted									
 00691c50	ProcessInput	CInputProcessCreatureMovementWatchForControlAngleChange	__thiscall	void	3	CInputProcessCreatureMovementWatchForControlAngleChange *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 00691d20	Init	CInputProcessCreatureMovement	__thiscall	void	1	CInputProcessControlSpirit *	1	yes	accepted									
-00691d70	?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	CInputProcessCreatureMovement	__thiscall	void	3	CInputProcessCreatureMovement *,CInputEvent *,CProcessedInput *	1	yes	accepted									
+00691d70	ProcessInput	CInputProcessCreatureMovement	__thiscall	void	3	CInputProcessCreatureMovement *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 00691fe0	Init	CInputProcessDebugControls	__thiscall	void	1	CInputProcessControlSpirit *	1	yes	accepted									
 006920f0	CActionEventBase	NCreatureAction::CActionEventBase	__thiscall	undefined	1	CAIStateGroup_MoveGoodsBase *	0	yes	accepted									
 00692120	CActionEventTriggerParticle	NCreatureAction::CActionEventTriggerParticle	__thiscall	undefined	1	CFireheartMinigameDef *	0	yes	accepted									

@@ -1,0 +1,21 @@
+address	name	evidence
+00A02DF0	?PartialDefragment@CHandleBasedMemoryPool@@QAE_NJ@Z	chunk 1022: Ego_r.pdb; row graded RELOCATION_MATCH
+00A01F50	?FindLargestFreeArea@CHandleBasedMemoryPool@@AAEPAVCHeader@1@XZ	chunk 1022: Ego_r donor order; same-TU body reproduced in 0x00A02DF0
+00A02020	?TestIfAreaIsGrowable@CHandleBasedMemoryPool@@AAE_NPAVCHeader@1@J@Z	chunk 1022: Ego_r donor order; same-TU body reproduced in 0x00A02DF0
+00A02C00	?GrowFreeArea@CHandleBasedMemoryPool@@AAE_NAAPAVCHeader@1@@Z	chunk 1022: Ego_r donor order; same-TU body reproduced in 0x00A02DF0
+00A01F80	?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ	chunk 1022: Ego_r donor order; called last in 0x00A02DF0
+00418289	?Update@CMainGameComponent@@MAEXXZ	chunk 1022: Ego_r.pdb; replaces the generated catalog label; row graded RELOCATION_MATCH
+00417747	?UpdateForcedTickSpeed@CMainGameComponent@@QAEXXZ	chunk 1022: Ego_r.pdb; row parked DIFFER(600v596)
+00490A22	?IsInInteractiveState@CSubtitleRenderer@@QBE_NXZ	chunk 1022: Ego_r.pdb; callee of 0x00418289
+0041CE6A	?ClearErrorMessage@CManager@NUISystem@@QAEXXZ	chunk 1022: Ego_r.pdb; callee of 0x00418289
+004AEBA0	?GetGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z	chunk 1022: Ego_r.pdb; callee of 0x00418289
+009A57B0	?IsApplicationActive@CSystemManager@@QAE_NXZ	chunk 1022: Ego_r.pdb; callee of 0x00417747
+0049E080	?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z	chunk 1022: Ego_r.pdb; callee of 0x00417747
+00435F70	?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z	chunk 1022: Ego_r.pdb; callee of 0x00417747
+004C74F0	?SetCurrentThingManager@CThing@@SIXAAVCThingManager@@@Z	chunk 1022: Ego_r.pdb; callee of 0x00417747
+0078C210	??0CTCBerserk@@QAE@AAVCThing@@@Z	chunk 1022: Ego_r.pdb + vtable 0x0126BB94 store; row graded RELOCATION_MATCH at 602 bytes
+00691D70	?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	chunk 1022: Ego_r.pdb; replaces the generated catalog label; row graded RELOCATION_MATCH at 528 bytes
+00A03B50	?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ	chunk 1022: Ego_r.pdb; body `mov eax,[ecx+20h]` = DeviceType +0x20 (CInputEvent.h layout)
+006D6660	?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z	chunk 1022: Ego_r.pdb; landed file name agrees; called by 0x0078C210 on TCI_HERO_EXPERIENCE
+006D66E0	?GetTotalStatMaxLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z	chunk 1022: Ego_r.pdb; landed file name agrees; called by 0x0078C210
+00736640	?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z	chunk 1022: Ego_r.pdb; landed; called by 0x0078C210 on TCI_COMBAT with the HERO_MELEE_COMBAT_ABILITY_BERSERK_CRAZY_MOVE index

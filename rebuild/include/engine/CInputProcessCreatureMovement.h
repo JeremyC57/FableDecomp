@@ -10,9 +10,18 @@
 #include "engine/CInputProcessGameBase.h"
 #include "engine/CIntelligentPointer.h"   // FABLE_RETAIL_CINTELLIGENTPOINTER
 class CThingPlayerCreature;
+#ifdef FABLE_RETAIL_INPUTPROCESS_CREATUREMOVEMENT_PROCESSINPUT
+class CInputEvent;
+class CProcessedInput;
+#endif
 class CInputProcessCreatureMovement : public CInputProcessGameBase {
 public:
     CInputProcessCreatureMovement(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_INPUTPROCESS_CREATUREMOVEMENT_PROCESSINPUT
+    // Retail opt-in (agent1022, row 0x00691D70): Ego_r.pdb ?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+    // (vtable 0x01237F4C). Declaration only; the other virtuals stay unmodelled (the vtable is not emitted by the row's TU).
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);   // 0x00691D70
+#endif
     CIntelligentPointer<const CThingPlayerCreature> PCreature;   // +0x28
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessCreatureMovement) == 0x30);

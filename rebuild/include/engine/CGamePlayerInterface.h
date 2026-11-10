@@ -23,6 +23,12 @@ public:
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_TOGGLE_ZTARGET
     bool IsToggleZTarget() const;
 #endif
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_TOGGLE_SNEAK
+    // Retail opt-in (agent1022, row 0x00691D70): Ego_r.pdb ?IsToggleSneak@CGamePlayerInterface@@QBE_NXZ, retail 0x00445BA0 (Ego_r
+    // IsToggleZTarget 0x004431B0 / IsToggleSneak 0x004431D0 = retail 0x00445B80 / 0x00445BA0; landed under the made-up
+    // ?GetToggleSneak@CGamePlayerInterface_Methods@@QBE_NXZ). Declaration only.
+    bool IsToggleSneak() const;                              // 0x00445BA0
+#endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
     // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
     // Ego_r.pdb / FableWin.pdb ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z,

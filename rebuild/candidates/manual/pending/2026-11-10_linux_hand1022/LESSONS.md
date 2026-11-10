@@ -1,0 +1,8 @@
+- 0x00A02E38 CHandleBasedMemoryPool::PartialDefragment: define the same-TU callees (FindLargestFreeArea, TestIfAreaIsGrowable, GrowFreeArea) before the row; VC7.1 then knows they keep ecx / do not capture the area and drops the `mov ecx,ebp` reload (declaration-only 0.49).
+- 0x00A02F43: GetListIndex written as the ternary `(size >> 9) < 0xff ? (size >> 9) : 0xff` lets VC7.1 thread the 0xFF arm into the loop start; if-assign, early return and std::min do not.
+- 0x00A02F37: `area == triedAreas[i]` (not `triedAreas[i] == area`) gives retail's `cmp esi,[edi+ecx*4]`.
+- 0x004183C3 CMainGameComponent::Update: store GFGetTime() doubles into the float members without explicit (float) casts; the explicit casts change x87 scheduling of the two stores.
+- 0x00417750 CMainGameComponent::UpdateForcedTickSpeed: retail's `fld [m] ; fld1 ; fdivrp st(1)` reciprocal is unique in Fable.exe; 1.0, 1.0f, 1.0L and /O2 all give `fdivr qword [1.0]` (parked).
+- 0x0078C285 CTCBerserk::CTCBerserk: a def-name CCharString built as a temporary in the GetGlobalIndexFromClassIndex call pushes the `1` before the string ctor; retail's order (string, then `push 1`) needs a block-scoped named CCharString, destroyed before GetDef.
+- 0x0078C397 CTCBerserk::CTCBerserk: `fild level ; fidiv max` needs the max-level call in a long local first; `(float)level / max_call()` calls level first and divides with fdivr.
+- 0x00691DF0 CInputProcessCreatureMovement::ProcessInput: the catalog length (624) and the code-plus-switch-tables extent (528) differ; grade with QLEN=528 (SPLITS.tsv) so the jump / byte tables are in the oracle and the next function is not.

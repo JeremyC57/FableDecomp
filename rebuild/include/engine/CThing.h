@@ -22,6 +22,9 @@ class CWorldMap;                                                 // chunk 771: G
 #ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
 class CThingManager; class CThingSearchTools;                   // chunk 765: the manager accessors' types
 #endif
+#ifdef FABLE_RETAIL_CTHING_SETCURRENTTHINGMANAGER
+class CThingManager;                                            // chunk 1022: SetCurrentThingManager's parameter type
+#endif
 #ifdef FABLE_RETAIL_CTHING
 class CMainGameComponent; class CPlayer;                        // chunk 732: PeekComponent / GetPlayer return types
 #endif
@@ -484,6 +487,13 @@ protected:
     const CWorld& PeekWorld() const;
     unsigned long* GetPWorldSeed() const;
     CPlayerManager& GetPlayerManager();
+#ifdef FABLE_RETAIL_CTHING_SETCURRENTTHINGMANAGER
+public:
+    // Retail opt-in (chunk 1022, row 0x00417747 CMainGameComponent::UpdateForcedTickSpeed): Ego_r.pdb (0x004C90F0)
+    // ?SetCurrentThingManager@CThing@@SIXAAVCThingManager@@@Z (public static __fastcall), out of line in retail at 0x004C74F0
+    // (`mov [013B8A1Ch],ecx ; ret`, landed). Declaration only: no layout change.
+    static void __fastcall SetCurrentThingManager(CThingManager& thing_manager);   // 0x004C74F0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThing)==0x98);
 
