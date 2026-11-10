@@ -390618,6 +390618,13 @@ $catalog = @(
         TestSource = '00/5b/CTCInventoryClothing_GlobalUpdate_005b3e4e_test.cpp'
         PassPattern = '005b3e4e_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00589a30'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OpenPCMapMenu_00589a30.cpp'
+        TestSource = '00/58/CTCInventory_OpenPCMapMenu_00589a30_test.cpp'
+        PassPattern = '00589a30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

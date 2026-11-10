@@ -39101,3 +39101,4 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GetTransitionTime@CAnimationEntry@@QBEJXZ	005dc1d0	005b3e4e
 ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z	005bdd39	005b3e4e
 ?Update@CAnimateThing@@QAEXABVCAnimateThingUpdate@@@Z	0070e8b0	005b3e4e
+?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z	0060eeb0	00589a30

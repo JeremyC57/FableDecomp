@@ -2648,3 +2648,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A named local read of a member at the top of a branch moves that load ahead of the stores and into edi (0x0056EF2D).
 - VC7.1 reassociates a 4-term integer member sum by a rotation that depends on earlier IL; ~110 spellings never gave retail's order at 0x00577AC0 -- park such rows early.
 - A row's `??1?$CCountedPointer@VCComponent...` relocation to 0x004291DE is the wrong name: add FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA so the release binds ?ReleaseData (0x00570332 / 0x00571280, 2026-11-10).
+- Reload order after a clobber follows the order of the split live ranges, which follows candidate ids: one named local per child component (not one reused `scroll` / `clickable`) put `this` before `i` as retail (0x00589A30).
+- A row that calls engine/CASoundManager.h slots (SetGroupVolume ...) is not landable until the owner accepts its descriptive names: hold it (0x0056F30B, 0x0058F649).

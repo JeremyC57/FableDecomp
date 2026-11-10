@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00589a30   WARN RELOC_NAME: ?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z -> 0060eeb0 labelled 'CTCInventoryMap_BuildMapMenu'
+00589a30   RELOCATION_MATCH PASS   OpenPCMapMenu
+
+WINS: 1
+  00589a30 RELOCATION_MATCH CTCInventory::?OpenPCMapMenu@CTCInventory@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventory_OpenPCMapMenu_00589a30
