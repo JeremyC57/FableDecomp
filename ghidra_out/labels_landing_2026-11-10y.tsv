@@ -1,0 +1,5 @@
+address	name	evidence
+0056ef2d	?UpdateMenuScrollButtonsItem@CTCInventoryExperience@@UAEXXZ	MATCH/RELOCATION_MATCH chunk 1006; Ego_r.pdb / FableWin.pdb spelling
+00570332	?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z	MATCH/RELOCATION_MATCH chunk 1006; Ego_r.pdb / FableWin.pdb spelling
+00571280	?AddAbilityToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroAbility@@PAVCList@3@_N@Z	MATCH/RELOCATION_MATCH chunk 1006; Ego_r.pdb / FableWin.pdb spelling
+005b3e4e	?GlobalUpdate@CTCInventoryClothing@@UAEX_N@Z	MATCH/RELOCATION_MATCH chunk 1006; Ego_r.pdb / FableWin.pdb spelling

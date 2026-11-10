@@ -39090,3 +39090,14 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	005bcae3	00583e26
 ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z	005d9710	00583e26
 ??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z	005949c3	0058a0c7
+??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	004291de	00570332
+??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ	00578a8d	00570332
+??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	00429288	00570332
+?GetAbilityGraphicIndex@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ede7f	00570332
+?GetExperienceAbilityDescription@CTCInventoryExperience@@QAE?AVCWideString@@JJ@Z	0056fe7c	00570332
+?GetExperienceAbilityMovieName@CTCInventoryExperience@@QAE?AVCWideString@@W4EHeroAbility@@@Z	0056e75f	00570332
+?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z	00578c2a	00570332
+?GetAppearanceModifierListWithCoversBodyAreaFlags@CTCHeroAttachableAppearanceModifiers@@QBE?AV?$list@JV?$allocator@J@std@@@std@@JW4EHeroAttachableAppearanceModifierType@@@Z	00706b50	005b3e4e
+?GetTransitionTime@CAnimationEntry@@QBEJXZ	005dc1d0	005b3e4e
+?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z	005bdd39	005b3e4e
+?Update@CAnimateThing@@QAEXABVCAnimateThingUpdate@@@Z	0070e8b0	005b3e4e

@@ -134,6 +134,11 @@ private:
     void CalculateArmorValues(ArgPasser& values, long itemDefIndex) const;              // 0x005B4EBA
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_GLOBALUPDATE
+    // Per-TU opt-in (chunk 1006, row 0x005B3E4E): Ego_r.pdb / FableWin.pdb ?GlobalUpdate@CTCInventoryClothing@@UAEX_N@Z, the slot-26
+    // override (vtable 0x0124356C). Requires FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE (the base). Declaration only.
+    virtual void GlobalUpdate(bool paused);                                                 // 26 0x005B3E4E
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_TOTALARMOUR
     // Per-TU opt-in (agentNF 2026-11-10, row 0x005B4A95): Ego_r.pdb ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ (public const).
     long GetCurrentTotalArmorValue() const;                                             // 0x005B4A95

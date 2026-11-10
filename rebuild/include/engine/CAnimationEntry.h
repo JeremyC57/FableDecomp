@@ -22,6 +22,13 @@ public:
     static std::map<CCharString, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByToken;          // 0x013B8C1C
     static CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentsByType;      // 0x013B8C28
     static CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > RegisteredComponentDefaults;     // 0x013B8C38
+#ifdef FABLE_RETAIL_CANIMATIONENTRY_ACCESSORS
+    // Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate): Ego_r.pdb / FableWin.pdb
+    // ?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ (retail 0x005DC390) and ?GetTransitionTime@CAnimationEntry@@QBEJXZ (0x005DC1D0),
+    // both out of line. Declarations only.
+    unsigned long GetAnimateThingFlags() const;                // 0x005DC390
+    long GetTransitionTime() const;                            // 0x005DC1D0
+#endif
     long                                   BankIndex;     // +0x00
     CDefString                             AnimName;      // +0x04
     CDefString                             GroupName;     // +0x08

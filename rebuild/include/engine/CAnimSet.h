@@ -15,6 +15,13 @@ class CAnimSet{friend class CAnimateThing;public:
  float GetChangeAlphaBy()const{return ChangeAlphaBy;}
  void SetChangeAlphaBy(float value){ChangeAlphaBy=value;}
  float GetAlpha()const{return CurrentAlpha;}
+#ifdef FABLE_RETAIL_CANIMSET_FRAME
+ // Retail opt-in (chunk 1006, row 0x005B3E4E): FableWin.pdb ?GetAnimIndex@CAnimSet@@QBEJXZ (the first anim index, `mov eax,[set+4] ;
+ // movsx eax,word ptr [eax]`, 0x005B3FD4) and ?GetFrame@CAnimSet@@QBE?AVCAnimFrameInfo@@XZ (the percentage-complete pair +0x1C/+0x20
+ // returned by value, 0x005B4004). Inline in retail. Needs FABLE_RETAIL_CANIMINIT_CTORS (the CAnimFrameInfo(float,float) ctor).
+ long GetAnimIndex()const{return Anims[0];}
+ CAnimFrameInfo GetFrame()const{return CAnimFrameInfo(CurrentPercentageComplete,LastPercentageComplete);}
+#endif
 private:
  void Init(CAnimateThing&,const CAnimInit&,float);
 EAnimUpdateMode UpdateMode;

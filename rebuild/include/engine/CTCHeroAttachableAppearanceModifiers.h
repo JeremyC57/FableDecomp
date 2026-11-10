@@ -11,6 +11,9 @@
 
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_COVERS
+#include "engine/ETCInterfaceType.h"
+#endif
 enum EHeroAttachableAppearanceModifierType {
     APPEARANCE_HAIR=0,
     APPEARANCE_HORN=1,
@@ -23,6 +26,16 @@ class CTCHeroAttachableAppearanceModifiers {
 public:
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
     void GetAppearanceModifierList(std::list<long>&,EHeroAttachableAppearanceModifierType)const;
+#endif
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_COVERS
+    // Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate; needs _LIST): the GetTC key TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS
+    // (94, `push 5Eh ; pop ebx`, 0x005B3F23), Ego_r.pdb / FableWin.pdb ?GetAppearanceModifierListWithCoversBodyAreaFlags@CTCHeroAttachableAppearanceModifiers@@QBE?AV?$list@JV?$allocator@J@std@@@std@@JW4EHeroAttachableAppearanceModifierType@@@Z
+    // (retail 0x00706B50, list returned through a hidden pointer) and EditFrameUpdate (retail 0x00707930). Both PDBs spell
+    // EditFrameUpdate as the CTCBase editor virtual (UAEXXZ), but retail calls it directly (`call 00707930h`, 0x005B3F81; the retail
+    // CTCBase vtable has no editor slot), so it is declared non-virtual as the landed caller 0x005B3D7A binds it (QAEXXZ).
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS; }
+    std::list<long> GetAppearanceModifierListWithCoversBodyAreaFlags(long flags, EHeroAttachableAppearanceModifierType type) const;   // 0x00706B50
+    void EditFrameUpdate();                                  // 0x00707930
 #endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04

@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+0056ef2d	CTCInventoryExperience::UpdateMenuScrollButtonsItem	MATCH	1	named statCount = statIndicatorMax local at the top of the item branch (23 free c2prio probes)
+00570332	CTCInventoryExperience::AddAbilityToList	RELOCATION_MATCH	1	blank CWideString in its own block (frame 0xD8; c2 packer trace showed the bottom-of-block CWideString live from the block's brace, conflicting with textBank)
+00571280	CTCInventoryExperience::AddAbilityToListPC	RELOCATION_MATCH	1	same lever as 0x00570332
+005b3e4e	CTCInventoryClothing::GlobalUpdate	RELOCATION_MATCH	1	same-TU GetSubDef template body (def local uncaptured, CSE across calls); default-then-override anim pointer; CAnimInit arg ctor; named CAnimateThingUpdate; overlay headers
+005ca68e	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	DIFFER(1538v1535)	1	parked: register tie, `this` (-72) coloured before the 0x48 TCI constant (-76); retail keeps 0x48 in ebx across both arms (+3 bytes `push 48h ; pop ebx`)
+00577ac0	CTCInventoryExperience::OpenInventoryInternalPC	DIFFER(2157v2157)	1	parked: integer-sum operand rotation (+0x264,+0x260,+0x268,+0x26C v retail +0x268,+0x26C,+0x264,+0x260), 5 instructions
+005b9641	CTCInventoryClothing::DrawPreparePrimitivesForRendering	DIFFER(none v1455)	0	not built: needs CUIMiscThingsDef, CRightHandedSet, C3DOrientationInterpolator, CEnginePrimitive2DMorphedAnimatingMesh, CEngineTextureMorphSet, CSectionSet headers; x87-heavy

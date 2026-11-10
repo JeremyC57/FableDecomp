@@ -8,6 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CANIMFILTER
+// Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate): the polymorphic retail class (RTTI
+// .?AVCAnimFilterNoGroup@@ : CAnimFilterBase, ghidra_out/rtti_bases.tsv). Vtable 0x0122FFDC (read from Fable.exe): slot 0 0x0041CD13
+// operator() (`cmp dword ptr [entry+8],-1 ; sete al ; ret 4`: the entry has no group), slot 1 0x00429A2F Clone (`new` 4 bytes, store
+// this vtable), slot 2 0x00429A45 scalar deleting destructor. FableWin.pdb ??0CAnimFilterNoGroup@@QAE@XZ / ??1CAnimFilterNoGroup@@UAE@XZ
+// are inline: a temporary filter is `mov [tmp],0122FFDCh` ... `mov [tmp],0122FFCCh` (0x005B3EC3 / 0x005B3ED3). Same 4 bytes.
+#include "engine/CAnimFilterBase.h"
+class CAnimFilterNoGroup : public CAnimFilterBase {
+public:
+    CAnimFilterNoGroup() { }
+    virtual bool operator()(const CAnimationEntry& entry) const;       // slot 0 0x0041CD13
+    virtual CAnimFilterBase* Clone() const;                            // slot 1 0x00429A2F
+    virtual ~CAnimFilterNoGroup() { }                                  // slot 2 0x00429A45
+};
+FABLE_STATIC_ASSERT(sizeof(CAnimFilterNoGroup) == 0x4);
+#else
+
 #pragma pack(push, 1)
 struct CAnimFilterNoGroup {
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
@@ -16,5 +33,7 @@ struct CAnimFilterNoGroup {
 
 FABLE_STATIC_ASSERT(sizeof(CAnimFilterNoGroup) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CAnimFilterNoGroup, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CANIMFILTER
 
 #endif // FABLE_ENGINE_CANIMFILTERNOGROUP_H

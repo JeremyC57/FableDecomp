@@ -2644,3 +2644,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A block retail duplicates in two else arms needs a nested `if (a) { if (b) X else Y } else Y` with Y written twice; `if (a && b) X else Y` shares Y and misses (0x00583E26).
 - `map[k] = ptr.Get()` with the visible STLport operator[] (FABLE_RETAIL_STLP_MAP) reads the right side before the call and passes `&k`, as retail does; a by-value Set helper copies the key (0x0058A0C7).
 - Cache a cast pointer as a named local when retail loads it right after construction (`CSprite* s = static_cast<CSprite*>(p.Get());`) -- removes the zero register (0x0058E208).
+- A named object with a destructor declared at a block's bottom is live, for the frame packer, from the block's opening brace; giving it its own `{}` frees the slot it blocked (0x00570332 / 0x00571280).
+- A named local read of a member at the top of a branch moves that load ahead of the stores and into edi (0x0056EF2D).
+- VC7.1 reassociates a 4-term integer member sum by a rotation that depends on earlier IL; ~110 spellings never gave retail's order at 0x00577AC0 -- park such rows early.
+- A row's `??1?$CCountedPointer@VCComponent...` relocation to 0x004291DE is the wrong name: add FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA so the release binds ?ReleaseData (0x00570332 / 0x00571280, 2026-11-10).

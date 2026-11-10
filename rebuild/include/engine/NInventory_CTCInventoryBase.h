@@ -74,6 +74,12 @@ public:
  // `cmp byte ptr [ecx+58h],0`, 0x0041F5DF / 0x0041F641, before BuyItemPC / SellItemPC). No layout change.
  bool IsInventoryOpen() const { return InventoryOpen; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_GLOBALUPDATE
+ // Retail opt-in (chunk 1006, row 0x005B3E4E CTCInventoryClothing::GlobalUpdate, which calls it qualified first): Ego_r.pdb / FableWin.pdb
+ // ?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z, the CTCBase slot-26 override (vtable 0x01253DBC slot 26 = 0x005BDD39). The
+ // landed 0x005BDD39 spells it with a float argument and QAE (NAME_FIXES).
+ virtual void GlobalUpdate(bool paused);                                                    // 26 0x005BDD39
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ISDYING
  // Retail opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): FableWin.pdb
  // ?IsDying@CTCInventoryBase@NInventory@@IBE_NXZ (protected const), inline in retail (`cmp byte ptr [ebx+88h],0`, 0x005CA6DF: Dying).

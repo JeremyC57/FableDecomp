@@ -1,0 +1,13 @@
+address	name	evidence
+0x005B3E4E	?GlobalUpdate@CTCInventoryClothing@@UAEX_N@Z	Ego_r.pdb / FableWin.pdb; CTCInventoryClothing vtable slot 26; graded RELOCATION_MATCH
+0x0056EF2D	?UpdateMenuScrollButtonsItem@CTCInventoryExperience@@UAEXXZ	Ego_r.pdb (virtual override; the catalog "vfunc_29" is the slot); graded MATCH
+0x005B9641	?DrawPreparePrimitivesForRendering@CTCInventoryClothing@@UAEXABVCEnginePrimitivePrepareInfo@@@Z	CTCInventoryClothing vtable 0x0124356C slot 11; Ego_r.pdb / FableWin.pdb; extent 0x5AF bytes (ends 0x005B9BF0)
+0x005BDD39	?GlobalUpdate@CTCInventoryBase@NInventory@@UAEX_N@Z	see NAME_FIXES.tsv
+0x0070E8B0	?Update@CAnimateThing@@QAEXABVCAnimateThingUpdate@@@Z	see NAME_FIXES.tsv
+0x0070C050	?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z	see NAME_FIXES.tsv
+0x005DC340	?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	see NAME_FIXES.tsv
+0x005DC1D0	?GetTransitionTime@CAnimationEntry@@QBEJXZ	see NAME_FIXES.tsv
+0x005DC390	?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ	Ego_r.pdb + FableWin.pdb
+0x0070B460	?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	see NAME_FIXES.tsv
+0x00706B50	?GetAppearanceModifierListWithCoversBodyAreaFlags@CTCHeroAttachableAppearanceModifiers@@QBE?AV?$list@JV?$allocator@J@std@@@std@@JW4EHeroAttachableAppearanceModifierType@@@Z	Ego_r.pdb + FableWin.pdb; GetTC key 94 at 0x005B3F23
+0x0042B0A2	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	see NAME_FIXES.tsv

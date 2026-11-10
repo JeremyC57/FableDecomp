@@ -390590,6 +390590,34 @@ $catalog = @(
         TestSource = '00/58/CTCInventory_ConstructItemEntryPC_0058e208_test.cpp'
         PassPattern = '0058e208_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0056ef2d'
+        Module = 'CTCInventoryExperience'
+        Source = '00/56/CTCInventoryExperience_UpdateMenuScrollButtonsItem_0056ef2d.cpp'
+        TestSource = '00/56/CTCInventoryExperience_UpdateMenuScrollButtonsItem_0056ef2d_test.cpp'
+        PassPattern = '0056ef2d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00570332'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_AddAbilityToList_00570332.cpp'
+        TestSource = '00/57/CTCInventoryExperience_AddAbilityToList_00570332_test.cpp'
+        PassPattern = '00570332_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00571280'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_AddAbilityToListPC_00571280.cpp'
+        TestSource = '00/57/CTCInventoryExperience_AddAbilityToListPC_00571280_test.cpp'
+        PassPattern = '00571280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b3e4e'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_GlobalUpdate_005b3e4e.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_GlobalUpdate_005b3e4e_test.cpp'
+        PassPattern = '005b3e4e_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

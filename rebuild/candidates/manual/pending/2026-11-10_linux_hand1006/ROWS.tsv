@@ -1,0 +1,8 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+0056ef2d	66	CTCInventoryExperience::CTCInventoryExperience::vfunc_29	parked	register-tie	rebuild/candidates/manual/pending/2026-11-10_linux_hand1005/differ/0056ef2d.cpp		0056edd2 0056eeca 0056eef6 0056ef6f 0056f03d 0056f090
+00570332	3918	CTCInventoryExperience::AddAbilityToList	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1005/differ/00570332.cpp	00428494 005ee77c	00570009 00570161 005701da 005721fa 0057229b
+00571280	3962	CTCInventoryExperience::AddAbilityToListPC	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1005/differ/00571280.cpp	00428494 005ee77c	00570161 005701da 005721fa 0057229b 0057238f
+00577ac0	2157	CTCInventoryExperience::OpenInventoryInternalPC	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1005/differ/00577ac0.cpp	005759bf	00577216 0057770a 005778ca 0057832d 0057846f 005785b3
+005ca68e	1535	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1004/differ/005ca68e.cpp	006a1f80 007ccf50	005c99be 005c99fd 005c9a95 005cac8d 005cacb9 005cb128
+005b9641	1455	CTCInventoryClothing::CTCInventoryClothing::vfunc_11	unworked		rebuild/candidates/manual/pending/2026-11-10_linux_hand1004/differ/005b9641.cpp		005b70b8 005b76d1 005b8743 005b9bf0 005b9bfb 005b9c0b
+005b3e4e	543	CTCInventoryClothing::GlobalUpdate	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-11-10_linux_hand1004/differ/005b3e4e.cpp	005dc340 0070e8b0	005b3aef 005b3c95 005b3d7a 005b406d 005b40e6 005b413d

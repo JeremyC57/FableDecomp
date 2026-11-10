@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00570332   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00570332   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00570332   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+00570332   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+00570332   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXXZ -> 00578a8d labelled 'CCountedPointer<NUISystem::CComponentContainer>::~CCountedPointer'
+00570332   RELOCATION_MATCH PASS   00570332
+00571280   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00571280   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00571280   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+00571280   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+00571280   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXXZ -> 00578a8d labelled 'CCountedPointer<NUISystem::CComponentContainer>::~CCountedPointer'
+00571280   RELOCATION_MATCH PASS   00571280
+
+WINS: 2
+  00570332 RELOCATION_MATCH m::?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z
+  00571280 RELOCATION_MATCH m::?AddAbilityToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroAbility@@PAVCList@3@_N@Z
