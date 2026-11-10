@@ -1,0 +1,30 @@
+addr       parity           behav  name
+005b3aef   RELOCATION_MATCH PASS   OnInitialActivate
+005b48a2   RELOCATION_MATCH PASS   OnItemSelected
+005b690b   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+005b690b   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005b690b   RELOCATION_MATCH PASS   RefreshDescriptions
+005b6a66   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005b6a66   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005b6a66   RELOCATION_MATCH PASS   ConstructClothingListPC
+005b76d1   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005b76d1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005b76d1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005b76d1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXXZ -> 004850f9 labelled '_global::CCountedPointer_Release_004850f9'
+005b76d1   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE@XZ -> 005bb090 labelled '_global::StdList_Dtor_005bb090'
+005b76d1   WARN RELOC_NAME: ??1?$vector@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@V?$allocator@V?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@2@@std@@QAE@XZ -> 005bc080 labelled '_global::StdList_Dtor_005bc080'
+005b76d1   RELOCATION_MATCH PASS   ConstructScreen
+
+WINS: 5
+  005b3aef RELOCATION_MATCH CTCInventoryClothing::?OnInitialActivate@CTCInventoryClothing@@UAEXXZ
+  005b48a2 RELOCATION_MATCH CTCInventoryClothing::?OnItemSelected@CTCInventoryClothing@@UAEXJAA_N@Z
+  005b690b RELOCATION_MATCH CTCInventoryClothing::?RefreshDescriptions@CTCInventoryClothing@@QAEXXZ
+  005b6a66 RELOCATION_MATCH CTCInventoryClothing::?ConstructClothingListPC@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@PAV23@W4EClothingSuitPart@@_N@Z
+  005b76d1 RELOCATION_MATCH CTCInventoryClothing::?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryClothing_OnInitialActivate_005b3aef
+  CTCInventoryClothing_OnItemSelected_005b48a2
+  CTCInventoryClothing_RefreshDescriptions_005b690b
+  CTCInventoryClothing_ConstructClothingListPC_005b6a66
+  CTCInventoryClothing_ConstructScreen_005b76d1

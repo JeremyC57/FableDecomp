@@ -1,0 +1,8 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+005b3aef	422	CTCInventoryClothing::OnInitialActivate	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-21_linux_hand270/differ/005b3aef.cpp	00703210	005b369a 005b36e9 005b37f7 005b3c95 005b3d7a
+005b3e4e	543	CTCInventoryClothing::GlobalUpdate	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand302/differ/005b3e4e.cpp	005dc340 0070e8b0	005b3c95 005b3d7a 005b406d 005b40e6 005b413d
+005b48a2	460	CTCInventoryClothing::OnItemSelected	parked	incomplete-model	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/005b48a2.cpp		005b4753 005b4771 005b4795 005b4a6e 005b4a95 005b4e7c
+005b690b	290	CTCInventoryClothing::RefreshDescriptions	parked	incomplete-model	rebuild/candidates/manual/pending/2026-10-27_linux_hand993_fable_test/differ/005b690b.cpp		005b62fe 005b6767 005b6881 005b6a2d 005b7049
+005b6a66	1507	CTCInventoryClothing::ConstructClothingListPC	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-24_linux_hand325/differ/005b6a66.cpp	00428494	005b6881 005b6a2d 005b7049 005b70b8
+005b76d1	4210	CTCInventoryClothing::CTCInventoryClothing::vfunc_77	unworked			00428494	005b7049 005b70b8 005b8743 005b9d8c
+005b9641	1867	CTCInventoryClothing::CTCInventoryClothing::vfunc_11	unworked				005b70b8 005b8743 005b9d8c 005b9de7 005b9ef3

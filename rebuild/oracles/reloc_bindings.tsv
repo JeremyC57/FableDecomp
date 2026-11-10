@@ -38990,3 +38990,9 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?IsCarryingThing@CTCCarrying@@QBE_NJ@Z	006a10a0	005cb2b0
 ?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ	005bd1eb	005cb974
 ?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@JV?$allocator@J@std@@@std@@@Z	007661c0	005c7452
+?DeselectAll@CTCInventoryBase@NInventory@@IAEXXZ	005bccf1	005b48a2
+?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z	005bdfb1	005b48a2
+?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z	005b406d	005b48a2
+?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ	005bd4ea	005b6a66
+?ConstructClothingList@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@W4EClothingSuitPart@@_N@Z	005b70b8	005b76d1
+?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	005b358c	005b76d1

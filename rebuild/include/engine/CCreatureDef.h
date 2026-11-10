@@ -16,7 +16,18 @@ public:
     // in Ego_r's STLport) at retail +0x6C (`mov eax,[edi+70h]; sub eax,[edi+6Ch]; sar eax,2` at 0x006E2C3B); the inline
     // ?StatGetTypeName@CCreatureDef@@SI?AVCCharString@@XZ (GetSubDef<CCreatureDef> 0x00485815 builds "CCreatureDef" in place).
     static CCharString __fastcall StatGetTypeName() { return CCharString("CCreatureDef", -1); }
+#ifdef FABLE_RETAIL_CCREATUREDEF_INITIALAPPEARANCEMODIFIERS
+    // Nested opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): Ego_r.pdb InitialActions / InitialAppearanceModifiers
+    // (vector<long>, Ego_r +72 / +88 with the 16-byte debug vectors) at retail +0x48 / +0x54 (the 12-byte STLport vector; OnInitialActivate
+    // walks `mov eax,[edi+58h] ; sub eax,[edi+54h] ; sar eax,2` at 0x005B3B43), then PhonemeAnim (map<CCharString,long>, 12 bytes) at +0x60,
+    // which puts DialogueVoices at the +0x6C above. No layout change.
+    unsigned char _pad_0x25[0x48 - 0x25];
+    std::vector<long> InitialActions;                                    // +0x48
+    std::vector<long> InitialAppearanceModifiers;                        // +0x54
+    unsigned char PhonemeAnim[0xc];                                      // +0x60 map<CCharString,long>
+#else
     unsigned char _pad_0x25[0x6c - 0x25];
+#endif
     std::vector<CDefString> DialogueVoices;                              // +0x6c
     unsigned char _pad_0x78[0xc8 - 0x78];
 #else

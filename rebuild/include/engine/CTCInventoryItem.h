@@ -70,6 +70,12 @@ public:
     // ?GetEngineGraphic@CTCInventoryItem@@QBEABVCEngineGraphic@@XZ, out of line at 0x005D92D0 (the row reads its BankIndex +0).
     const CEngineGraphic& GetEngineGraphic() const;                                   // 0x005D92D0
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ADDTOINVENTORY
+    // Nested opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): Ego_r.pdb / FableWin.pdb
+    // ?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z (the inventory by reference; out of line at
+    // 0x005D8D50). The parameter names are descriptive (the PDB name sets keep none). Declaration only: no layout change.
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_ISAUGMENTATION
     // Nested opt-in (chunk 900, rows 0x005C8459 / 0x005C9A95 CTCInventoryWeapons::ConstructScreen(PC)): Ego_r.pdb
     // ?IsAugmentation@CTCInventoryItem@@SI_NJ@Z, the static `__fastcall` def-index test, out of line in retail at 0x005D9870 (both

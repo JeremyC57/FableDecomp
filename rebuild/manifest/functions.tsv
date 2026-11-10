@@ -11506,9 +11506,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005b6a66	ConstructClothingListPC	CTCInventoryClothing	__thiscall	CComponent *	6	CTCInventoryClothing *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CViewport *,CComponent *,EClothingSuitPart,bool	1	yes	accepted									
 005b7049	~CTCInventoryClothing	CTCInventoryClothing	__thiscall	void	1	CTCInventoryClothing *	1	yes	accepted									
 005b70b8	ConstructClothingList	CTCInventoryClothing	__thiscall	CComponent *	5	CTCInventoryClothing *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CViewport *,EClothingSuitPart,bool	1	yes	accepted									
-005b76d1	CTCInventoryClothing::vfunc_77	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005b76d1	ConstructScreen	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005b8743	ConstructScreenPC	CTCInventoryClothing	__thiscall	CComponent *	2	CTCInventoryClothing *,CComponent *	1	yes	accepted									
-005b9641	CTCInventoryClothing::vfunc_11	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005b9641	DrawPreparePrimitivesForRendering	CTCInventoryClothing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005b9d8c	CIVCountedPointer_Release_005b9d8c	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b9d8c.cpp
 005b9de7	allocate	std::allocator<CEngineTextureMorph>	unknown	undefined	0		0	yes	accepted									
 005b9ef3	allocate	CRetailAllocator_12	unknown	undefined	0		0	yes	accepted									

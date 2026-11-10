@@ -3,6 +3,9 @@
 #include "engine/CThingGameObject.h"
 // Retail opt-in (Codex pass 12): original PDB sole base and full native allocation.
 // CDefPointer<const CThingObjectDef> PDef +d0, DieOffTimer +d4, DiesOff +d8; native allocation527320.
+#ifdef FABLE_RETAIL_CTHINGOBJECT_CREATE
+class CRightHandedSet;
+#endif
 class CThingObject:public CThingGameObject {
 protected:
     unsigned char PDef[4]; // +d0 CDefPointer<const CThingObjectDef>, ctor7031ec
@@ -16,6 +19,13 @@ public: static CClass* __fastcall Alloc();
 protected:
     virtual void OnHit(CHitParameters& params);                        // 0x007039A0
 public:
+#endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_CREATE
+    // Retail opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): Ego_r.pdb
+    // ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z (static __fastcall, out of line at 0x00703210:
+    // the caller passes the def index in ecx, the position in edx and pushes the name, flags, set and player). Declaration only.
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long playerNumber, const CRightHandedSet* rhSet,
+                                           unsigned long flags, const CCharString& scriptName);   // 0x00703210
 #endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_STATGETTYPE
     // Chunk 756 (row 0x009104D0): Ego_r.pdb / FableWin.pdb ?StatGetType@CThingObject@@SIJXZ; the thing-type list 5 that

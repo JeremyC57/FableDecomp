@@ -164,6 +164,12 @@ public:
     bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && !Dead && !InLimbo; }
 #endif
     bool IsAlive() const { return !Dead; }
+#ifdef FABLE_RETAIL_CTHING_CREATEDBYOWNER
+    // Retail opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): FableWin.pdb
+    // ?SetAsCreatedByOwnerThingCreation@CThing@@QAEX_N@Z (no out-of-line copy in Ego_r.pdb or Fable.exe: the row sets bit 1 of the
+    // +0x91 run in place, `or al,2 ; mov [ecx],al` at 0x005B3C33). Body unproven beyond that store. No layout change.
+    void SetAsCreatedByOwnerThingCreation(bool created) { CreatedByOwnerThingCreation = created; }
+#endif
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
     // GetTC<T> / PeekTC<T>: __forceinline (owner decision 2026-11-01, EXTRA_RULES): Ego_r.pdb (the release build) has no
     // ??$GetTC@ / ??$PeekTC@ instantiation (FableWin.pdb, debug: 267 / 159), Fable.exe has no out-of-line copy, and plain

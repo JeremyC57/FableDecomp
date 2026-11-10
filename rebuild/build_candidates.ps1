@@ -389819,6 +389819,41 @@ $catalog = @(
         TestSource = '00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionDamage_005c7452_test.cpp'
         PassPattern = '005c7452_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005b3aef'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_OnInitialActivate_005b3aef.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_OnInitialActivate_005b3aef_test.cpp'
+        PassPattern = '005b3aef_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b48a2'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_OnItemSelected_005b48a2.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_OnItemSelected_005b48a2_test.cpp'
+        PassPattern = '005b48a2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b690b'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_RefreshDescriptions_005b690b.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_RefreshDescriptions_005b690b_test.cpp'
+        PassPattern = '005b690b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b6a66'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_ConstructClothingListPC_005b6a66.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_ConstructClothingListPC_005b6a66_test.cpp'
+        PassPattern = '005b6a66_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b76d1'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_ConstructScreen_005b76d1.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_ConstructScreen_005b76d1_test.cpp'
+        PassPattern = '005b76d1_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

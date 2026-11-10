@@ -34,6 +34,20 @@ public:
     // own CActionParam base (+0x18, null-checked). Declarations only: no layout change.
     virtual void AddThingActionParam(long param);                   // 150 0x0053DCD0
     virtual void AddUIActionParam(CActionParam* param);             // 151 0x0053DD50
+#ifdef FABLE_RETAIL_CMENUENTRY_UNSELECTED_VISIBLE
+    // Retail opt-in (chunk 1003, row 0x005B6A66 CTCInventoryClothing::ConstructClothingListPC): the next two virtuals CMenuEntry
+    // introduces, in vtable order (CMenuEntry 0x0124662C: slot 152 0x0053E2A0, 153 0x0053E3C0; labels AddActionOnUnselected /
+    // AddActionOnVisible), Ego_r.pdb ?AddActionOnUnselected@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+    // (donor 0x005B7750) and ?AddActionOnVisible@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z (0x005B78D0),
+    // the two new members in the PDB order AddAction / AddActionOnSelected / AddActionOnUnselected / AddActionOnBack /
+    // AddActionOnVisible / AddPreAction (the base-class ones are overrides). The clothing lists call them as `call [eax+260h]` /
+    // `call [eax+264h]` (0x005B6E6F / 0x005B6F02). Declarations only: no layout change. Needs FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS.
+#ifndef FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS
+#error "FABLE_RETAIL_CMENUENTRY_UNSELECTED_VISIBLE needs FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS"
+#endif
+    virtual void AddActionOnUnselected(CCountedPointer<CAction>& action);   // 152 0x0053E2A0
+    virtual void AddActionOnVisible(CCountedPointer<CAction>& action);      // 153 0x0053E3C0
+#endif
 #endif
 protected:
     float LastInputTime;                                            // +0x194

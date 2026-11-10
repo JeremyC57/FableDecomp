@@ -73,6 +73,44 @@ private:
                                                    NUISystem::CComponent* frame, EClothingSuitPart part, bool worn);   // 0x005B6A66 (Ego_r 0x00562A81)
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_LISTS
+    // Per-TU opt-in (chunk 1003, rows 0x005B6A66 ConstructClothingListPC / 0x005B76D1 ConstructScreen): the list builders' callees
+    // in Ego_r.pdb / FableWin.pdb spelling. ?AddClothingMenuEntry@CTCInventoryClothing@@QAEXW4EClothingSuitPart@@PAVCComponent@NUISystem@@@Z
+    // (0x005B4771, Ego_r donor 0x0056243D), ?ConstructClothingList@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@...
+    // @PAVCViewport@3@W4EClothingSuitPart@@_N@Z (0x005B70B8, donor 0x00562461), ?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@
+    // VCComponent@NUISystem@@@@ABVCCharString@@@Z (0x005B358C: donor order, before CreateMenuDescPC 0x005B3613, both 0x87 bytes) and the console screen,
+    // vtable 0x0124356C slot 77 ?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z (0x005B76D1, donor 0x005630DB,
+    // between ConstructClothingList and ConstructScreenPC in both orders). Requires FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN.
+#ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN
+#error "FABLE_RETAIL_CTCINVENTORYCLOTHING_LISTS needs FABLE_RETAIL_CTCINVENTORYCLOTHING_SCREEN"
+#endif
+    void AddClothingMenuEntry(EClothingSuitPart part, NUISystem::CComponent* entry);        // 0x005B4771
+    virtual NUISystem::CComponent* ConstructScreen(NUISystem::CComponent* parent);          // slot 77 0x005B76D1
+private:
+    CCountedPointer<NUISystem::CComponent> CreateMenuDesc(const CCharString& symbol);       // 0x005B358C (Ego_r 0x0055EE29)
+    NUISystem::CComponent* ConstructClothingList(std::vector<std::pair<long, long> >& items, NUISystem::CViewport* viewport,
+                                                 EClothingSuitPart part, bool worn);        // 0x005B70B8 (Ego_r 0x00562461)
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_ACTIVATE
+    // Per-TU opt-in (chunk 1003, row 0x005B3AEF): the CTCBase slot-6 override, vtable 0x0124356C slot 6 = 0x005B3AEF, Ego_r.pdb /
+    // FableWin.pdb ?OnInitialActivate@CTCInventoryClothing@@UAEXXZ (Ego_r donor 0x0055F38A). Requires FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE.
+    virtual void OnInitialActivate();                                                       // slot 6 0x005B3AEF
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_REFRESH
+    // Per-TU opt-in (chunk 1003, row 0x005B690B): Ego_r.pdb / FableWin.pdb ?RefreshDescriptions@CTCInventoryClothing@@QAEXXZ
+    // (public, Ego_r donor 0x005609A0). Declaration only.
+    void RefreshDescriptions();                                                             // 0x005B690B
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_SELECT
+    // Per-TU opt-in (chunk 1003, row 0x005B48A2): the CTCInventoryBase slot-33 override, vtable 0x0124356C slot 33 = 0x005B48A2, Ego_r.pdb /
+    // FableWin.pdb ?OnItemSelected@CTCInventoryClothing@@UAEXJAA_N@Z (Ego_r donor 0x0056017E), and its callee
+    // ?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z (private, 0x005B406D). Requires _CALCULATE and _SCREEN.
+    virtual void OnItemSelected(long itemDefIndex, bool& handled);                          // slot 33 0x005B48A2
+private:
+    void SetThingAsWearingSelectedClothes(CThing& thing);                                   // 0x005B406D
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
 #pragma pack(push, 8)                                                    // natural alignment (bool, then longs from +0x04)
     struct ArgPasser {                                                   // 48 bytes (Ego_r.pdb)

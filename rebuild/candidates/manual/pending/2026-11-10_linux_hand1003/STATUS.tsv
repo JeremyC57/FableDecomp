@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+005b3aef	CTCInventoryClothing::OnInitialActivate	RELOCATION_MATCH	3 (+2 SRC_FAIL)	named CCharString in its own block around CThingObject::Create + IsDead(); same-TU GetSubDef/GetDef bodies
+005b3e4e	CTCInventoryClothing::GlobalUpdate	DIFFER(538v543)	1	parked: needs shared CAnimateThing / CAnimInit / CAnimSet / CTCAnimationComplex / CAppearanceDef / CAnimationSet headers; local model now has the sete-bl-before-dtor shape
+005b48a2	CTCInventoryClothing::OnItemSelected	RELOCATION_MATCH	1 (+1 timeout: relative #include)	slot 33; same-TU GetDef/GetSubDef + visible _List_base ctor; new overlay opt-ins _SELECT / CTCINVENTORYBASE_SELECTION
+005b690b	CTCInventoryClothing::RefreshDescriptions	RELOCATION_MATCH	4 (+3 c2prio probes)	named CComponent* key local + FABLE_RETAIL_STLP_MAP visible operator[]
+005b6a66	CTCInventoryClothing::ConstructClothingListPC	RELOCATION_MATCH	2 (+1 SRC_FAIL)	early return 0 on empty items; menu-entry Create in both worn arms
+005b76d1	CTCInventoryClothing::ConstructScreen	RELOCATION_MATCH	2	console twin of ConstructScreenPC; partLists[i] indexed (no reference local)
+005b9641	CTCInventoryClothing::DrawPreparePrimitivesForRendering	DIFFER(not built)	0	parked unattempted: true extent 0x5AF (SPLITS.tsv); needs CUIMiscThingsDef / CRightHandedSet / C3DOrientationInterpolator / morph-mesh headers

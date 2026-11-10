@@ -1,0 +1,20 @@
+address	name	evidence
+005b3aef	?OnInitialActivate@CTCInventoryClothing@@UAEXXZ	vtable 0x0124356C slot 6; Ego_r.pdb / FableWin.pdb name sets (18 hits); RELOCATION_MATCH this chunk
+005b3e4e	?GlobalUpdate@CTCInventoryClothing@@UAEX_N@Z	Ego_r.pdb / FableWin.pdb name sets (27 hits); catalog name agrees; calls CTCInventoryBase::GlobalUpdate 0x005BDD39 first
+005b48a2	?OnItemSelected@CTCInventoryClothing@@UAEXJAA_N@Z	vtable 0x0124356C slot 33 (CTCInventoryBase::OnItemSelected pure slot, ret 8); Ego_r / FableWin name sets; catalog manifest "CTCShop*/ret ulong" is wrong; RELOCATION_MATCH
+005b690b	?RefreshDescriptions@CTCInventoryClothing@@QAEXXZ	Ego_r.pdb / FableWin.pdb name sets; catalog name agrees; RELOCATION_MATCH
+005b6a66	?ConstructClothingListPC@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@PAV23@W4EClothingSuitPart@@_N@Z	Ego_r / FableWin name sets (25 hits; private AAE); caller ConstructScreenPC 0x005B8743; RELOCATION_MATCH
+005b76d1	?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z	vtable 0x0124356C slot 77 (CTCInventoryBase::ConstructScreen slot, xor eax,eax base 0x0057A233); Ego_r donor 0x005630DB; name sets (29 hits); RELOCATION_MATCH. Catalog "vfunc_77" is the slot.
+005b9641	?DrawPreparePrimitivesForRendering@CTCInventoryClothing@@UAEXABVCEnginePrimitivePrepareInfo@@@Z	vtable 0x0124356C slot 11; Ego_r donor 0x005650FF follows ConstructScreenPC in donor order; name sets (28 hits). Catalog "vfunc_11"; true extent 0x5AF bytes (SPLITS.tsv)
+005b358c	?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	console twin of CreateMenuDescPC (same 0x87-byte body shape), Ego_r donor order (0x0055EE29); called by ConstructScreen 0x005B76D1 (RELOCATION_MATCH resolves it)
+005b70b8	?ConstructClothingList@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@W4EClothingSuitPart@@_N@Z	Ego_r / FableWin name sets (private AAE, non-const vector&); called by ConstructScreen 0x005B76D1 in both worn arms
+005b4771	?AddClothingMenuEntry@CTCInventoryClothing@@QAEXW4EClothingSuitPart@@PAVCComponent@NUISystem@@@Z	name sets (14 hits); landed neighbour 0x005B4771; called by ConstructClothingListPC
+005bccf1	?DeselectAll@CTCInventoryBase@NInventory@@IAEXXZ	name sets (13 hits, protected IAE); landed body 0x005BCCF1 (CTCInventoryBase::DeselectAll); called by OnItemSelected 0x005B4A3E-region
+005bdfb1	?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z	name sets (28 hits, protected IAE); landed body 0x005BDFB1
+005b406d	?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z	name sets (private, CThing&); landed body 0x005B406D; called by OnItemSelected 0x005B4A42
+005b4795	?SetUpSelectedClothes@CTCInventoryClothing@@AAEXXZ	name sets (28 hits); called by OnItemSelected 0x005B4A1D
+005b5cf8	?GetItemDescription@CTCInventoryClothing@@UBEXAAVCWideString@@J_N@Z	vtable 0x0124356C slot 78 (CTCInventoryBase::GetItemDescription 0x005BC6B3 override); name sets (23 hits); RefreshDescriptions calls slot 78 at 0x005B69F9
+00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	name sets (27 hits, static __fastcall); OnInitialActivate RELOCATION_MATCH
+005d8d50	?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z	name sets (28 hits); OnInitialActivate RELOCATION_MATCH
+0053e2a0	?AddActionOnUnselected@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z	CMenuEntry vtable 0x0124662C slot 152; name sets (9 hits); called as [eax+260h] by ConstructClothingListPC
+0053e3c0	?AddActionOnVisible@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z	CMenuEntry vtable 0x0124662C slot 153; name sets (9 hits); called as [eax+264h] by ConstructClothingListPC

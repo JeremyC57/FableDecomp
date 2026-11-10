@@ -100,6 +100,14 @@ protected:
  void SetNumberOfSelectedItemOwned(long itemDefIndex);
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTION
+ // Retail opt-in (chunk 1003, row 0x005B48A2 CTCInventoryClothing::OnItemSelected): Ego_r.pdb ?DeselectAll@CTCInventoryBase@NInventory@@IAEXXZ
+ // (protected, out of line at 0x005BCCF1) and ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z (protected, 0x005BDFB1). Declarations only.
+protected:
+ void DeselectAll();                                                                          // 0x005BCCF1
+ void SelectItemWithDefIndex(long itemDefIndex);                                              // 0x005BDFB1
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_ONINITIALACTIVATE
  // Retail opt-in (chunk 1002, row 0x005CB974 CTCInventoryWeapons::OnInitialActivate, which calls it qualified last): Ego_r.pdb
  // ?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ (the CTCBase slot-6 override, out of line at 0x005BD1EB).

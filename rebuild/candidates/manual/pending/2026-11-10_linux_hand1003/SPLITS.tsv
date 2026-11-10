@@ -1,0 +1,2 @@
+address	length	name	evidence
+005b9641	0x5AF	CTCInventoryClothing::DrawPreparePrimitivesForRendering	`add ebp,74h ; leave ; ret 4` at 0x005B9BE9..0x005B9BEF closes the biased frame opened at 0x005B9641; 0x005B9BF0.. are separate leaf helpers (iterator ctor `mov eax,ecx ; mov ecx,[esp+4] ; mov [eax],ecx ; ret 4`, neg/sbb equality, etc.) with no fallthrough from the body
