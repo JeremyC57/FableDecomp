@@ -1,0 +1,12 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+0056ef2d	66	CTCInventoryExperience::CTCInventoryExperience::vfunc_29	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand751/differ/0056ef2d.cpp		0056edd2 0056eeca 0056eef6 0056ef6f 0056f03d 0056f090
+0056f30b	396	CTCInventoryExperience::CloseInventory	parked	register-tie	rebuild/candidates/manual/pending/2026-11-04_linux_hand762/differ/0056f30b.cpp		0056f177 0056f26f 0056f2bd 0056f497 0056f4a1 0056f4b0
+00570332	3918	CTCInventoryExperience::AddAbilityToList	unworked		rebuild/candidates/manual/pending/2026-11-03_linux_hand735/differ/00570332.cpp	00428494 005ee77c	00570009 00570161 005701da 005721fa 0057229b
+00571280	3962	CTCInventoryExperience::AddAbilityToListPC	unworked		rebuild/candidates/manual/pending/2026-11-03_linux_hand735/differ/00571280.cpp	00428494 005ee77c	00570161 005701da 005721fa 0057229b 0057238f
+005726a0	824	CTCInventoryExperience::RecheckAvailabilities	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-28_retry539/differ/005726a0.cpp	005ee77c	00572636 00572672 00572689 005729d8 00573792 00574576
+00574885	4357	CTCInventoryExperience::ConstructCategoryStrength	unworked			00428494 00570332	0057469f 005746f7 005747a3 0057598a 00576c0b
+005759bf	4684	CTCInventoryExperience::ConstructCategoryStrengthPC	unworked			00428494 00571280	005747a3 0057598a 00576c0b 00576c39
+00576c4f	642	CTCInventoryExperience::UndoBuyAbility	parked	x87-order	rebuild/candidates/manual/pending/2026-10-28_retry539/differ/00576c4f.cpp		00576c0b 00576c39 0057713f
+00576ed1	622	CTCInventoryExperience::UndoBuyStat	parked	x87-order	rebuild/candidates/manual/pending/2026-10-28_retry539/differ/00576ed1.cpp		00576c0b 00576c39 0057713f 0057770a
+00577216	1268	CTCInventoryExperience::CTCInventoryExperience::vfunc_86	unworked			00574885	0057713f 0057770a 005778ca
+00577ac0	2157	CTCInventoryExperience::OpenInventoryInternalPC	unworked		rebuild/candidates/manual/pending/2026-11-03_linux_hand735/differ/00577ac0.cpp	005759bf	0057770a 005778ca 0057832d 0057846f 005785b3

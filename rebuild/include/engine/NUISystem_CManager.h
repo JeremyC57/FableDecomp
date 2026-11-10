@@ -21,6 +21,13 @@ enum EChange { UI_CHANGE_ACCEPT=0,UI_CHANGE_REJECT=1 };
 enum EInputType { UI_INPUT_KEYBOARD=0,UI_INPUT_XBOX=1 };
 enum EUsedKeys { UI_KEY_LEFT=0,UI_KEY_RIGHT=1,UI_KEY_DOWN=2,UI_KEY_UP=3,UI_KEY_RIGHT_STICK_DOWN=4,UI_KEY_RIGHT_STICK_UP=5,UI_KEY_A=6,UI_KEY_B=7,UI_KEY_ZOOM_IN=8,UI_KEY_ZOOM_OUT=9,UI_KEY_SPELL_LEFT=10,UI_KEY_SPELL_RIGHT=11,UI_KEY_SPELL_ASSIGN=12,UI_KEY_SPELL_UNASSIGN=13,UI_KEY_SPELL_LIST_UP=14,UI_KEY_SPELL_LIST_DOWN=15 };
 public: static NUISystem::CManager * __fastcall GetInstance();
+#ifdef FABLE_RETAIL_CMANAGER_MENUCOUNT
+// Retail opt-in (chunk 1005, row 0x0056F30B CTCInventoryExperience::CloseInventory): FableWin.pdb / Ego_r.pdb
+// ?OnOpenMenus@CManager@NUISystem@@SIXXZ / ?OnCloseMenus@CManager@NUISystem@@SIXXZ (public static, fastcall), out of line at
+// 0x0041D122 / 0x0041D165 (Ego_r bodies 0x0042D956 67 bytes / 0x0042D999 51 bytes, retail 67 / 51). Declarations only.
+public: static void __fastcall OnOpenMenus();                                   // 0x0041D122
+public: static void __fastcall OnCloseMenus();                                  // 0x0041D165
+#endif
 #ifdef FABLE_RETAIL_CMANAGER
 // Retail branch (chunk 726): Ego_r.pdb ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, out of line at 0x0041CF47
 // (CList::ComputeChildrenVisibility 0x005379F5 and CScrollingViewport::Update 0x0053F1C0 call it with a hidden result).

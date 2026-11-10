@@ -66,6 +66,11 @@ public:
     long GetTrainableStatPossibleLevelUpAmount(EHeroTrainableStatType,float&);
     // Chunk 735 (AddAbilityToList(PC)): ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z 0x006D7B80.
     long GetAbilityPossibleLevelUpAmount(EHeroAbility,float&);
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_MODIFYLEVEL
+    // Opt-in (chunk 1005, row 0x00576ED1 CTCInventoryExperience::UndoBuyStat): Ego_r.pdb / FableWin.pdb
+    // ?ModifyTrainableStatLevel@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@J@Z, out of line at 0x006D6810.
+    void ModifyTrainableStatLevel(EHeroTrainableStatType, long);
+#endif
     // Chunk 735 (row 0x00577AC0): ?GetExperiencePointsAvailableToSpend@CTCHeroExperience@@QBEJXZ (Ego_r.pdb / FableWin.pdb),
     // inline in retail (OpenInventoryInternalPC reads +0x14 in place).
     long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }

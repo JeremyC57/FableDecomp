@@ -1,0 +1,31 @@
+addr       parity           behav  name
+005726a0   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005726a0   WARN RELOC_NAME: ?erase@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@2@@2@@Z -> 0057926b labelled 'ListNode_RemoveByData'
+005726a0   RELOCATION_MATCH PASS   RecheckAvailabilities
+00574885   WARN RELOC_NAME: ?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z -> 00570332 labelled 'CTCInventoryExperience::ConstructAbilityUI'
+00574885   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+00574885   RELOCATION_MATCH PASS   ConstructCategoryStrength
+005759bf   WARN RELOC_NAME: ?AddAbilityToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroAbility@@PAVCList@3@_N@Z -> 00571280 labelled 'CTCInventoryExperience::ConstructAbilityUIPC'
+005759bf   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005759bf   RELOCATION_MATCH PASS   ConstructCategoryStrengthPC
+00576c4f   WARN RELOC_NAME: ?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z -> 005ee01a labelled 'CEngineLandscapeRenderer::OnRegistedZSortingPatchRelocation'
+00576c4f   RELOCATION_MATCH PASS   UndoBuyAbility
+00576ed1   RELOCATION_MATCH PASS   UndoBuyStat
+00577216   WARN RELOC_NAME: ?SelectScreenOfType@CManager@NHeroInformationScreens@@QAEXW4EScreenType@2@@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00577216   RELOCATION_MATCH PASS   OpenInventoryInternal
+
+WINS: 6
+  005726a0 RELOCATION_MATCH CTCInventoryExperience::?RecheckAvailabilities@CTCInventoryExperience@@AAEXXZ
+  00574885 RELOCATION_MATCH CTCInventoryExperience::?ConstructCategoryStrength@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z
+  005759bf RELOCATION_MATCH CTCInventoryExperience::?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z
+  00576c4f RELOCATION_MATCH CTCInventoryExperience::?UndoBuyAbility@CTCInventoryExperience@@QAEXW4EHeroAbility@@_N@Z
+  00576ed1 RELOCATION_MATCH CTCInventoryExperience::?UndoBuyStat@CTCInventoryExperience@@QAEXW4EHeroTrainableStatType@@_N@Z
+  00577216 RELOCATION_MATCH CTCInventoryExperience::?OpenInventoryInternal@CTCInventoryExperience@@UAEX_N@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryExperience_RecheckAvailabilities_005726a0
+  CTCInventoryExperience_ConstructCategoryStrength_00574885
+  CTCInventoryExperience_ConstructCategoryStrengthPC_005759bf
+  CTCInventoryExperience_UndoBuyAbility_00576c4f
+  CTCInventoryExperience_UndoBuyStat_00576ed1
+  CTCInventoryExperience_OpenInventoryInternal_00577216

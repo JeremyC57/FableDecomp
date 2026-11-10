@@ -1,0 +1,12 @@
+address	name	grade	grades_used	note
+0056ef2d	CTCInventoryExperience::UpdateMenuScrollButtonsItem	DIFFER(66v66)	1+18 probes	parked: register tie (statIndicatorMax early in edi v ours late in edx); identity slot 29, PDB name; differ/0056ef2d.cpp
+0056f30b	CTCInventoryExperience::CloseInventory	RELOCATION_MATCH	4	shared headers; CloseInventoryInternal(true) = slot 89 after the VIRTUALS opt-in declares the 5 new virtuals in retail order; OnCloseMenus@CManager opt-in
+00570332	CTCInventoryExperience::AddAbilityToList	DIFFER(3918v3918)	10	parked: frame packing only (0xDC v 0xD8; textBank own slot); MAXLEVEL_FIRST fixed the level compare; differ/00570332.cpp
+00571280	CTCInventoryExperience::AddAbilityToListPC	DIFFER(3962v3962)	2	parked: same frame packing as 00570332; differ/00571280.cpp
+005726a0	CTCInventoryExperience::RecheckAvailabilities	RELOCATION_MATCH	4	CDELETION_BODIES + MAXLEVEL_FIRST + next-iterator erase; optimize y off + s on
+00574885	CTCInventoryExperience::ConstructCategoryStrength	RELOCATION_MATCH	4	CText* subtitle local reused by the 3 branches + one CText* per description (frame slots +68h/+6Ch)
+005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	RELOCATION_MATCH	1	console source + PC names/callees + FindChild("PC_UI_FRAME") / AddPositionChild
+00576c4f	CTCInventoryExperience::UndoBuyAbility	RELOCATION_MATCH	2	UNDO + CYESNO_CALLBACKS + CTCINVENTORYABILITIES_SETLEVEL opt-ins
+00576ed1	CTCInventoryExperience::UndoBuyStat	RELOCATION_MATCH	2	twin of 00576c4f (CTCHEROEXPERIENCE_MODIFYLEVEL)
+00577216	CTCInventoryExperience::OpenInventoryInternal	RELOCATION_MATCH	2	identity vtable slot 86 (catalog vfunc_86); same-TU GetOriginalExperience
+00577ac0	CTCInventoryExperience::OpenInventoryInternalPC	DIFFER(2157v2157)	23	parked: integer sum operand order (+268,+26C,+264,+260 v ours +264,+260,+268,+26C), invariant under ~16 spellings; differ/00577ac0.cpp

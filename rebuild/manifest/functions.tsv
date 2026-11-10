@@ -10447,7 +10447,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056edd2	GetExperienceAbilityColour	CTCInventoryExperience	__thiscall	CRGBFloatColour	2	CTCInventoryExperience *,EHeroAbility	1	yes	accepted									
 0056eeca	OnKill	CTCInventoryExperience	unknown	undefined	0		0	yes	accepted									
 0056eef6	GetScreenName	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0056ef2d	CTCInventoryExperience::vfunc_29	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0056ef2d	UpdateMenuScrollButtonsItem	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0056ef6f	UpdateExperienceSpendPool	CTCInventoryExperience	__thiscall	void	3	CTCInventoryExperience *,EHeroExperienceStatCategory,long	1	yes	accepted									
 0056f03d	ResetExperienceSpendValues	CTCInventoryExperience	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted									
 0056f090	DrawPreparePrimitivesForRendering	CTCInventoryExperience	__thiscall	void	2	CTCInventory *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
@@ -10501,7 +10501,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00576c4f	UndoBuyAbility	CTCInventoryExperience	__thiscall	void	3	CTCInventoryExperience *,EHeroAbility,bool	1	yes	accepted									
 00576ed1	UndoBuyStat	CTCInventoryExperience	__thiscall	void	3	CTCInventoryExperience *,EHeroTrainableStatType,bool	1	yes	accepted									
 0057713f	OnCreate	CTCInventoryExperience	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted									
-00577216	CTCInventoryExperience::vfunc_86	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00577216	OpenInventoryInternal	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0057770a	vfunc_89	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005778ca	vfunc_90	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00577ac0	OpenInventoryInternalPC	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

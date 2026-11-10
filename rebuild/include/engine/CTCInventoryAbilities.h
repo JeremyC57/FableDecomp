@@ -56,12 +56,25 @@ private:
     void ConstructExpressionCategoryList(CWideString& title,NUISystem::CList* list,std::vector<std::pair<long,long> >& items,NUISystem::CComponent* owner,const CCharString& ringPicture,const CCharString& guideSymbol);
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAXLEVEL_FIRST
+    // Opt-in (chunk 1005): GetAbilityMaximumLevel declared before GetAbilityLevel. VC7.1 evaluates the two out-of-line calls of
+    // `GetAbilityLevel(a) < GetAbilityMaximumLevel(a)` with the later-declared callee first; retail calls GetAbilityLevel
+    // 0x005EDE93 first (CTCInventoryExperience::AddAbilityToList 0x00570420 / RecheckAvailabilities 0x005727C8).
+    long GetAbilityMaximumLevel(EHeroAbility) const;
+    long GetAbilityLevel(EHeroAbility) const;
+#else
     long GetAbilityLevel(EHeroAbility) const;
     long GetAbilityMaximumLevel(EHeroAbility) const;
+#endif
     // Chunk 735 (CTCInventoryExperience::AddAbilityToList(PC) 0x00570332 / 0x00571280): Ego_r.pdb spellings, out of line in
     // retail: GetAbilityGraphicIndex 0x005EDE7F, GetAbilityMoralityCostFactor 0x005EDFF7, GetExperienceCostToUpgradeAbility
     // 0x005EE77C (ability, levels, bool).
     long GetAbilityGraphicIndex(EHeroAbility) const;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SETLEVEL
+    // Opt-in (chunk 1005, row 0x00576C4F UndoBuyAbility): Ego_r.pdb ?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z,
+    // out of line at 0x005EE01A.
+    void SetAbilityLevelTo(EHeroAbility, long);
+#endif
     float GetAbilityMoralityCostFactor(EHeroAbility);
     long GetExperienceCostToUpgradeAbility(EHeroAbility,long,bool) const;
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEVELUP

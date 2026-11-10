@@ -54,9 +54,32 @@ public:
     CWideString GetExperienceAbilityMovieName(EHeroAbility);                        // 0x0056E75F
     CWideString GetExperienceAbilityDescription(long,long);                         // 0x0056FE7C
     CRGBFloatColour GetExperienceAbilityColour(EHeroAbility);                       // 0x0056EDD2
+#ifndef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VIRTUALS
     virtual void OpenInventoryInternalPC(bool);                                     // 0x00577AC0
+#endif
     long GetOriginalExperience(long);                                               // 0x0056EA9A
     void SaveExperienceValuesForCountDown();                                        // 0x00570161
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_UNDO
+    // Opt-in (chunk 1005): Ego_r.pdb / FableWin.pdb ?UndoBuyAbility@CTCInventoryExperience@@QAEXW4EHeroAbility@@_N@Z (0x00576C4F) and
+    // ?UndoBuyStat@CTCInventoryExperience@@QAEXW4EHeroTrainableStatType@@_N@Z (0x00576ED1), public.
+    void UndoBuyAbility(EHeroAbility, bool);
+    void UndoBuyStat(EHeroTrainableStatType, bool);
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_VIRTUALS
+    // Opt-in (chunk 1005): the Ego_r.pdb virtual overrides of the rows of that chunk (vtable 0x0124F11C; slot 29 = 0x0056EF2D,
+    // 31 = 0x0056F30B, 86 = 0x00577216 OpenInventoryInternal, 87 = 0x00577AC0 OpenInventoryInternalPC above, 89 / 90 the
+    // CloseInventoryInternal(PC) pair 0x0057770A / 0x005778CA). The class's five new virtuals are declared here in retail slot
+    // order 86..90 (OpenInventoryInternal, OpenInventoryInternalPC, Ego_r / FableWin ?OpenInventoryOld@CTCInventoryExperience@@UAEXXZ
+    // 0x00574576, CloseInventoryInternal, CloseInventoryInternalPC; CloseInventory 0x0056F30B calls slot 89), so the default
+    // path's OpenInventoryInternalPC declaration above is skipped under this opt-in.
+    virtual void UpdateMenuScrollButtonsItem();                                     // 0x0056EF2D slot 29
+    virtual void CloseInventory();                                                  // 0x0056F30B slot 31
+    virtual void OpenInventoryInternal(bool);                                       // 0x00577216 slot 86
+    virtual void OpenInventoryInternalPC(bool);                                     // 0x00577AC0 slot 87
+    virtual void OpenInventoryOld();                                                // 0x00574576 slot 88
+    virtual void CloseInventoryInternal(bool);                                      // 0x0057770A slot 89
+    virtual void CloseInventoryInternalPC(bool);                                    // 0x005778CA slot 90
+#endif
 private:
     void AddSoundAction(NUISystem::CComponent*,CCharString);                        // 0x0056F615
     CTCHeroExperience* GetTCHeroExperience();                                       // 0x0056FF3D
@@ -67,6 +90,14 @@ private:
     void AddAbilityToList(EHeroAbility,NUISystem::CList*,bool);
     void AddAbilityToListPC(NUISystem::CComponent*,EHeroAbility,NUISystem::CList*,bool);
     void ConstructCategoryStrengthPC(NUISystem::CList*);                            // 0x005759BF
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_PRIVATE
+    // Opt-in (chunk 1005): further Ego_r.pdb private members (AAE), out of line in retail.
+    void RecheckAvailabilities();                                                   // 0x005726A0
+    void ConstructCategoryStrength(NUISystem::CList*);                              // 0x00574885
+    CWideString GetXString(long);                                                   // 0x0056EA4E
+    void AddMagicCategoryToList(NUISystem::CList*,CWideString,CCharString,NUISystem::CList*,CWideString,CCharString); // 0x0056F69F
+    void AddMagicCategoryToListPC(NUISystem::CComponent*,NUISystem::CList*,CWideString,CCharString,NUISystem::CList*,CWideString,CCharString); // 0x0056F8A4
+#endif
 public:
     std::map<CCharString,unsigned long> TutorialSoundHandles;        // +0x134
     std::map<EHeroTrainableStatType,SExpSpendUndo> UndoableStatBuys; // +0x140
@@ -95,7 +126,12 @@ public:
     unsigned char ExperienceSpendValuesStats[0xc];                   // +0x1ec
     unsigned char ExperienceSpendValuesAbility[0xc];                 // +0x1f8
     long ExperienceSpendMagnitude;                                   // +0x204
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE_MENULIST
+    // Opt-in (chunk 1005, row 0x0056EF2D UpdateMenuScrollButtonsItem): typed as its Ego_r.pdb vector<long> (STLport 12 bytes).
+    std::vector<long> MenuDisplayListExperienceItem;                 // +0x208
+#else
     unsigned char MenuDisplayListExperienceItem[0xc];                // +0x208 vector<long>
+#endif
     bool CreateBecauseOfUndo;                                        // +0x214
     long NumItems;                                                   // +0x218
     bool DestroyEverything;                                          // +0x21c

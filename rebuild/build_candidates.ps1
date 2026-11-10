@@ -385011,7 +385011,7 @@ $catalog = @(
         Module = 'NScript::CQ_WaspBossScript::CWaspHelper'
         Source = '00/e0/NScriptCQWaspBossScriptCWaspHelper_Main_00e0f8a0.cpp'
         TestSource = '00/e0/NScriptCQWaspBossScriptCWaspHelper_Main_00e0f8a0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 none'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00e0f8a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -385159,7 +385159,7 @@ $catalog = @(
         Module = 'CTCCreatureModeManager'
         Source = '00/73/CTCCreatureModeManager_AddMode_0073acc0.cpp'
         TestSource = '00/73/CTCCreatureModeManager_AddMode_0073acc0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 none'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '0073acc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -385167,7 +385167,7 @@ $catalog = @(
         Module = 'CTCLook'
         Source = '00/75/CTCLook_IsPosInViewRange_007534b0.cpp'
         TestSource = '00/75/CTCLook_IsPosInViewRange_007534b0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 none'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '007534b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -390163,6 +390163,54 @@ $catalog = @(
         TestSource = '00/be/std_adjustheap_00beea00_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00beea00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005726a0'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_RecheckAvailabilities_005726a0.cpp'
+        TestSource = '00/57/CTCInventoryExperience_RecheckAvailabilities_005726a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3'
+        PassPattern = '005726a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00574885'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_ConstructCategoryStrength_00574885.cpp'
+        TestSource = '00/57/CTCInventoryExperience_ConstructCategoryStrength_00574885_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3'
+        PassPattern = '00574885_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005759bf'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_ConstructCategoryStrengthPC_005759bf.cpp'
+        TestSource = '00/57/CTCInventoryExperience_ConstructCategoryStrengthPC_005759bf_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3'
+        PassPattern = '005759bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00576c4f'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_UndoBuyAbility_00576c4f.cpp'
+        TestSource = '00/57/CTCInventoryExperience_UndoBuyAbility_00576c4f_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3'
+        PassPattern = '00576c4f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00576ed1'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_UndoBuyStat_00576ed1.cpp'
+        TestSource = '00/57/CTCInventoryExperience_UndoBuyStat_00576ed1_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3'
+        PassPattern = '00576ed1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00577216'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_OpenInventoryInternal_00577216.cpp'
+        TestSource = '00/57/CTCInventoryExperience_OpenInventoryInternal_00577216_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3'
+        PassPattern = '00577216_TEST PASS'
     }
 )
 

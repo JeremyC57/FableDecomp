@@ -1,0 +1,20 @@
+address	name	evidence
+0056ef2d	?UpdateMenuScrollButtonsItem@CTCInventoryExperience@@UAEXXZ	vtable 0x0124F11C slot 29 (base 0x005BC58A empty ret); only UpdateMenuScrollButtons* override in the class PDB name set; body sets the item arrows (catalog vfunc_29)
+0056f30b	?CloseInventory@CTCInventoryExperience@@UAEXXZ	vtable slot 31; Ego_r.pdb; RELOCATION_MATCH
+00577216	?OpenInventoryInternal@CTCInventoryExperience@@UAEX_N@Z	vtable slot 86 (catalog vfunc_86); Ego_r.pdb / FableWin.pdb; RELOCATION_MATCH
+00577ac0	?OpenInventoryInternalPC@CTCInventoryExperience@@UAEX_N@Z	vtable slot 87; Ego_r.pdb
+00574576	?OpenInventoryOld@CTCInventoryExperience@@UAEXXZ	vtable slot 88; Ego_r.pdb 0x005E9A11 / FableWin.pdb 0x023AAB9B
+0057770a	?CloseInventoryInternal@CTCInventoryExperience@@UAEX_N@Z	vtable slot 89 (PDB declaration order of the five new virtuals)
+005778ca	?CloseInventoryInternalPC@CTCInventoryExperience@@UAEX_N@Z	vtable slot 90
+00574885	?ConstructCategoryStrength@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z	Ego_r.pdb / FableWin.pdb; RELOCATION_MATCH; called by 0x00577216
+005759bf	?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z	Ego_r.pdb / FableWin.pdb; RELOCATION_MATCH
+005726a0	?RecheckAvailabilities@CTCInventoryExperience@@AAEXXZ	Ego_r.pdb; RELOCATION_MATCH
+00576c4f	?UndoBuyAbility@CTCInventoryExperience@@QAEXW4EHeroAbility@@_N@Z	Ego_r.pdb / FableWin.pdb; RELOCATION_MATCH
+00576ed1	?UndoBuyStat@CTCInventoryExperience@@QAEXW4EHeroTrainableStatType@@_N@Z	Ego_r.pdb / FableWin.pdb; RELOCATION_MATCH
+0041d165	?OnCloseMenus@CManager@NUISystem@@SIXXZ	FableWin.pdb + Ego_r.pdb (51 bytes)
+0041d122	?OnOpenMenus@CManager@NUISystem@@SIXXZ	FableWin.pdb + Ego_r.pdb (67 bytes)
+006d6810	?ModifyTrainableStatLevel@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@J@Z	already bound; RELOCATION_MATCH 0x00576ED1
+00579300	_Rb_tree<EHeroTrainableStatType,pair<const EHeroTrainableStatType,CComponent*>,...>::erase(iterator)	STLport out-of-line erase instance; RELOCATION_MATCH 0x005726A0 (full mangled name in the row obj)
+0057926b	_Rb_tree<EHeroAbility,pair<const EHeroAbility,CComponent*>,...>::erase(iterator)	RELOCATION_MATCH 0x005726A0
+00579d55	_Rb_tree<EHeroAbility,pair<const EHeroAbility,SExpSpendUndo>,...>::erase(iterator)	RELOCATION_MATCH 0x00576C4F
+00579d18	_Rb_tree<EHeroTrainableStatType,pair<const EHeroTrainableStatType,SExpSpendUndo>,...>::erase(iterator)	RELOCATION_MATCH 0x00576ED1
