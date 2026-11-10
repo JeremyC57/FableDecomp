@@ -35,6 +35,10 @@ public:
     // Retail opt-in (Codex pass18): FableWin PeekUpDirection inline getter and full donor GetProjectileTrailElementFromPoint.
     const C3DVector& PeekUpDirection() const { return RHSet.GetUp(); }
 #endif
+#ifdef FABLE_RETAIL_CCAMERA_SETANGLEXY
+    // Retail opt-in (chunk 1021): Ego_r.pdb ?SetAngleXY@CCamera@@QAEXM@Z (0x00B4D1B0), out of line in retail at 0x00A0C570.
+    void SetAngleXY(float angle);                                        // 0x00A0C570
+#endif
     const C3DVector& PeekWorldPos() const { return WorldPosition; }
     const C3DVector& PeekViewDirection() const { return RHSet.GetForward(); }
 private:

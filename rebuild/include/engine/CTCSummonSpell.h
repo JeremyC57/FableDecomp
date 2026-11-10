@@ -15,6 +15,10 @@
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_TELEPORT
+#include "engine/C3DVector.h"
+class CWorldMap;
+#endif
 #ifdef FABLE_RETAIL_CTCSUMMONSPELL_MINION
 #ifndef FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -30,6 +34,15 @@ class CTCSummonSpell : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SUMMON_SPELL; }
     long GetResetCreatureManaCost() const;                               // 0x0079A610
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_TELEPORT
+    // Retail opt-in (chunk 1021, row 0x0079AA90): Ego_r.pdb ?IsValidTeleportPos@CTCSummonSpell@@AAE_NABVC3DVector@@ABVCWorldMap@@PBVCThing@@@Z
+    // (Ego_r 0x007A0360, retail 0x0079A890) and ?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z (Ego_r 0x007A05C0,
+    // retail 0x0079AA90; called by CreateMinion 0x0079ACC0), both private and out of line. Declarations only, no layout change.
+private:
+    bool IsValidTeleportPos(const C3DVector& pos, const CWorldMap& world_map, const CThing* thing);   // 0x0079A890
+    C3DVector GetValidTeleportPos(const CThing* thing);                                              // 0x0079AA90
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCSUMMONSPELL_MINION
     // Retail opt-in (chunk 1012, row 0x008A8260 CGameScriptInterface::GetHeroSummonedCreaturesList): Ego_r.pdb / FableWin.pdb
     // ?GetSummonedCreature@CTCSummonSpell@@QBE?AV?$CIntelligentPointer@VCThingAICreature@@@@XZ, inline in retail: the caller's local is

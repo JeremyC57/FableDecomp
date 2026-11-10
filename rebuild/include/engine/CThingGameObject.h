@@ -14,6 +14,12 @@ private:
     unsigned char AddToComboMultiplierOnHit:1,AddToComboMultiplierOnHitOverrideSet:1,
         GiveHeroStatChangesOnBeingHit:1,GiveHeroStatChangesOnBeingHitOverrideSet:1;
 public:
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_CTOR
+    // Retail opt-in (chunk 1021, row 0x0083D460 CThingMarker::Create): FableWin.pdb ??0CThingGameObject@@QAE@K@Z (0x01D3EBD0; no
+    // Ego_r.pdb or Fable.exe copy: inline, retail calls CThingPhysical(type) 0x005296B0, stores the CThingGameObject vtable 0x01244F7C
+    // and default-constructs PThingStandingOn, 0x0083D481..0x0083D499). Body only: no layout change.
+    CThingGameObject(unsigned long type) : CThingPhysical(type) { }
+#endif
     virtual void OnHit(CHitParameters&);
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_STATTYPEFLAGS
     // Chunk 1010 (row 0x008930F0, via the CThingSearchTools GetPFirstThing body): FableWin.pdb ?StatGetTypeFlags@CThingGameObject@@SIKXZ

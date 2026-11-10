@@ -79,6 +79,19 @@ FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank::CGraphicHeader)==28);
 // modelled yet (one opaque block); only the members rows call are declared. Ego_r.pdb / FableWin.pdb ?ChangeScene@CGraphicDataBank@@QAEXXZ,
 // retail 0x009FD0C0 (landed).
 #include "rebuild_abi.h"
+#if defined(FABLE_RETAIL_CGRAPHICDATABANK_BANKFILE) && !defined(FABLE_RETAIL_CGRAPHICDATABANK_GRAPHICSIZE)
+// Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): the RTTI base chain's CBankFile part
+// (CGraphicDataBank : CBankFileAsync : CBankFile at +0, as engine/CMeshDataBank.h's FABLE_RETAIL_CMESHDATABANK_BASES models the mesh
+// bank), so CBankFile's members apply to a texture bank at offset 0 (CollectStats calls ?GetEntryDataSize@CBankFile@@QBEKK@Z
+// 0x009CC240 with the bank pointer unchanged, 0x00BEC76C). CBankFileAsync (0x110..0x164) and the rest stay opaque. Same size.
+#include "engine/CBankFile.h"
+class CGraphicDataBank : public CBankFile {
+public:
+    void ChangeScene();                                      // 0x009FD0C0
+private:
+    unsigned char Unmodeled_0x110[0x30c - 0x110];            // CBankFileAsync +0x110.., CResourceBank +0x164, own members (not modelled)
+};
+#else
 class CGraphicDataBank {
 public:
     void ChangeScene();                                      // 0x009FD0C0
@@ -109,6 +122,7 @@ private:
     unsigned char Unmodeled_0x000[0x30c];                    // CBankFileAsync +0x0, CResourceBank +0x164, own members (not modelled)
 #endif
 };
+#endif
 FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank) == 0x30c);
 #endif
 #endif // FABLE_ENGINE_CGRAPHICDATABANK_H

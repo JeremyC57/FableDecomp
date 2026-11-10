@@ -5,6 +5,10 @@
 #include "engine/CRGBColour.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 class C3DMeshInfo;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMESHBASE_COLLECTSTATS
+#include "stlport/fable_map.h"
+#include "rebuild_abi.h"
+#endif
 class CEngineRenderInfoMeshBase;
 class CEngineInternalPrimitiveMorphInfo;
 class CEnginePrimitiveSimulationInfo;
@@ -27,6 +31,13 @@ public:
  CIVCountedPointer<CEnginePrimitiveSimulationInfo> SimulationInfo;
  CIVCountedPointer<CEngineMeshEffect> MeshEffect;
  CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMESHBASE_COLLECTSTATS
+ // Retail opt-in (chunk 1021, row 0x00BEC680): the static Ego_r.pdb overload
+ // ?CollectStats@CEngineInternalPrimitiveMeshBase@@SIXABVC3DMeshInfo@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z
+ // (0x00AA4A90 = retail 0x00BEC680; the virtual UBEX overload, Ego_r 0x00AA4CB0 = retail 0x00BEC8B0, forwards MeshInfo to it, and
+ // CEngineInternalPrimitiveRepeatedStaticMesh::CollectStats 0x00B98DE0 calls it too). A declaration only: no layout change.
+ static void FABLE_FASTCALL CollectStats(const C3DMeshInfo& mesh_info,std::map<unsigned long,unsigned long>& stats,EEnginePrimitiveStatIndex stat_index,unsigned long flags);
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveMeshBase)==112);
 #endif

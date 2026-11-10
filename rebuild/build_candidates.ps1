@@ -392030,6 +392030,62 @@ $catalog = @(
         TestSource = '00/c4/CFloatQuad_Interpolate_00c462e0_test.cpp'
         PassPattern = '00c462e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0066bc10'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_GetPotentialCriteriaStrings_0066bc10.cpp'
+        TestSource = '00/66/CTCSoundPlayer_GetPotentialCriteriaStrings_0066bc10_test.cpp'
+        PassPattern = '0066bc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b3e60'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_SetWeightedThemes_006b3e60.cpp'
+        TestSource = '00/6b/CEnvironment_SetWeightedThemes_006b3e60_test.cpp'
+        PassPattern = '006b3e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076d2f0'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_AreThingsEnemies_0076d2f0.cpp'
+        TestSource = '00/76/CTCEnemy_AreThingsEnemies_0076d2f0_test.cpp'
+        PassPattern = '0076d2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079aa90'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_GetValidTeleportPos_0079aa90.cpp'
+        TestSource = '00/79/CTCSummonSpell_GetValidTeleportPos_0079aa90_test.cpp'
+        PassPattern = '0079aa90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d460'
+        Module = 'CThingMarker'
+        Source = '00/83/CThingMarker_Create_0083d460.cpp'
+        TestSource = '00/83/CThingMarker_Create_0083d460_test.cpp'
+        PassPattern = '0083d460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0c570'
+        Module = 'CCamera'
+        Source = '00/a0/CCamera_SetAngleXY_00a0c570.cpp'
+        TestSource = '00/a0/CCamera_SetAngleXY_00a0c570_test.cpp'
+        PassPattern = '00a0c570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47d10'
+        Module = 'CNavigatorExternalInterface'
+        Source = '00/a4/CNavigatorExternalInterface_RemoveAgentFromLists_00a47d10.cpp'
+        TestSource = '00/a4/CNavigatorExternalInterface_RemoveAgentFromLists_00a47d10_test.cpp'
+        PassPattern = '00a47d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bec680'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/be/CEngineInternalPrimitiveMeshBase_CollectStats_00bec680.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMeshBase_CollectStats_00bec680_test.cpp'
+        PassPattern = '00bec680_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -14,10 +14,23 @@ class C3DMeshStats;
 #include "engine/C3DBoundingSphere.h"
 #include "engine/CIVCountedPointer.h"
 #endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_GETMESH
+#include "engine/CCountedPointer.h"
+class C3DMesh2;
+class CGraphicDataBank;
+#endif
 class C3DMeshInfo : public CMeshDataBankEntry {
 public:
 #ifdef FABLE_RETAIL_C3DMESHINFO_GETMESHSTATS
     CCountedPointer<const C3DMeshStats> GetMeshStats()const;
+#endif
+#ifdef FABLE_RETAIL_C3DMESHINFO_GETMESH
+    // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb
+    // ?GetMesh@C3DMeshInfo@@QBE_NAAV?$CCountedPointer@$$CBVC3DMesh2@@@@KK@Z (0x00B62470 = retail 0x00A25E70, out of line) and the
+    // FableWin.pdb inline ?PeekTextureBank@C3DMeshInfo@@QBEPBVCGraphicDataBank@@XZ (0x02E77A90; the caller reads Bank +0x04, then
+    // the bank's TextureBank, in place: 0x00BEC74A). Needs FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK. No layout change.
+    bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
+    const CGraphicDataBank* PeekTextureBank() const { return PeekBank()->GetTextureBank(); }
 #endif
 #ifdef FABLE_RETAIL_C3DMESHINFO_BOUNDINGBOX
     C3DBoundingBox GetBoundingBox()const{return BoundingBox;}

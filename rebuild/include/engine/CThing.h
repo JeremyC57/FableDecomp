@@ -173,6 +173,12 @@ public:
     CTCBase* AddTC(const CCharString&,bool,const CTCParamsBase*);
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
     const CThingBaseDef& PeekBaseDef() const;                    // inline in retail: body `return *PBaseDef;` defined after CThingBaseDef is complete
+#ifdef FABLE_RETAIL_CTHING_HASBASEDEF
+    // Retail opt-in (chunk 1021, row 0x0066BC10 CTCSoundPlayer::GetPotentialCriteriaStrings): FableWin.pdb ?HasBaseDef@CThing@@QBE_NXZ
+    // (0x01ADDD40; no Ego_r.pdb or Fable.exe copy: inline, the caller null-tests the PBaseDef word +0x70 in place, `mov ecx,[eax+70h] ;
+    // test ecx,ecx`, 0x0066BC14). No layout change.
+    bool HasBaseDef() const { return !PBaseDef.IsNull(); }
+#endif
     unsigned long GetDefGlobalIndex()const{return DefGlobalIndex;}
     unsigned __int64 GetUniqueID() const { return UniqueID; }
     long GetCurrentMapNumber() const { return CurrentMapNumber; }

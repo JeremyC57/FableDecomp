@@ -196,6 +196,19 @@ public:
 #else
     float GetAngleXY() const;
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_GETANGLEYZ
+    // Retail opt-in (chunk 1021, row 0x00A0C570 CCamera::SetAngleXY): FableWin.pdb ?GetAngleYZ@C3DVector@@QBEMXZ (debug copy
+    // 0x024712F0; no Ego_r.pdb copy, expanded in retail): the pitch atan2(Z, |XY|) in turns, wrapped into [0, 1) (0x00A0C576..0x00A0C5DD
+    // for Forward, 0x00A0C61A..0x00A0C680 for Up; the same sequence as the landed CCamera::GetAngleYZ 0x00A0C3E0). Body only.
+    FABLE_VECTOR_INLINE float GetAngleYZ() const {
+        float angle=(float)atan2(Z,sqrt(Y*Y+X*X))*0.15915494f;
+        if(angle<0.0f || angle>=1.0f) {
+            angle=(float)fmod((double)angle,1.0);
+            if(angle<0.0f) angle+=1.0f;
+        }
+        return angle;
+    }
+#endif
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z (0x00B81930),
     // out of line in retail at 0x00A14040 (395 bytes, the sin/cos rotation about Z). A declaration only.
     void RotateXY(float angle);                                          // 0x00A14040

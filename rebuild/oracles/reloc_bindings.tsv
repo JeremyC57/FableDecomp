@@ -39256,3 +39256,14 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?ShrinkResources@CResourceList@@QAEXK@Z	009fc210	00a24d70
 ??A?$map@KV?$CCountedPointer@VC3DAnimation2@@@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@3@@std@@QAEAAV?$CCountedPointer@VC3DAnimation2@@@@ABK@Z	00a2d810	00a26ad0
 ?InitialiseAnimationInstance@C3DAnimation2@@QAE_NAAV1@ABVC3DMesh2@@_NPAM@Z	00a50c20	00a26ad0
+?$S1@?9??SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z@4IA	013ba8f8	006b3e60
+??$lower_bound@PAU?$pair@JM@std@@U12@@std@@YIPAU?$pair@JM@0@PAU10@0ABU10@@Z	006b5a50	006b3e60
+?ThemeWeights@?9??SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z@4V?$vector@U?$pair@JM@std@@V?$allocator@U?$pair@JM@std@@@2@@std@@A	013ba8ec	006b3e60
+?clear@?$vector@U?$pair@JM@std@@V?$allocator@U?$pair@JM@std@@@2@@std@@QAEXXZ	006b5b50	006b3e60
+?insert@?$vector@U?$pair@JM@std@@V?$allocator@U?$pair@JM@std@@@2@@std@@QAEPAU?$pair@JM@2@PAU32@ABU32@@Z	006b5ed0	006b3e60
+?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z	0076cce0	0076d2f0
+?IsValidTeleportPos@CTCSummonSpell@@AAE_NABVC3DVector@@ABVCWorldMap@@PBVCThing@@@Z	0079a890	0079aa90
+??0CThingPhysical@@QAE@K@Z	005296b0	0083d460
+??_7CThingMarker@@6B@	01245524	0083d460
+??1?$CCountedPointer@$$CBVC3DMesh2@@@@QAE@XZ	00a36ec0	00bec680
+?GetVertexCount@C3DMesh2@@QBEKXZ	00a89320	00bec680

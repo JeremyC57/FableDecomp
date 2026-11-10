@@ -104,6 +104,11 @@ public:
     bool EntryExists(unsigned long index) const;                         // 0x009CC190
     unsigned long GetEntryDataType(unsigned long index) const;           // 0x009CC210
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_ENTRYDATASIZE
+    // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): Ego_r.pdb
+    // ?GetEntryDataSize@CBankFile@@QBEKK@Z (0x00B19F40 = retail 0x009CC240, next to GetEntryDataType 0x009CC210), out of line.
+    unsigned long GetEntryDataSize(unsigned long index) const;           // 0x009CC240
+#endif
 };
 #pragma pack(pop)
 

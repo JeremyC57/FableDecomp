@@ -1,0 +1,70 @@
+# agent1021 grades, one line per q.py run (FABLE_HDR_OVERLAY=$A/hdr every time); probe sources in probe/, `src` = src/<addr>.cpp.
+# SRC_FAIL lines are compile failures (no grade produced). The last line of each row is the confirming grade of src/<addr>.cpp.
+00a47d10 g1 src (prior shape on shared header + FABLE_RETAIL_CNAVIGATOREXTERNALINTERFACE_AGENTLISTS) DIFFER(110v97)
+00a47d10 g2 erase(i--) DIFFER(110v97) identical
+00a47d10 g3 /Os DIFFER(62v97)
+00a47d10 g4 /Oa DIFFER(133v97)
+00a47d10 w1.cpp DIFFER(110v97)
+00a47d10 w2.cpp (named position copy, --it, erase(position)) RELOCATION_MATCH
+00a47d10 w3.cpp DIFFER(110v97)
+00a47d10 w4.cpp DIFFER(110v97)
+00a47d10 src (= w2) RELOCATION_MATCH
+0076d2f0 e0.cpp DIFFER(369v356)
+0076d2f0 e1.cpp DIFFER(365v356)
+0076d2f0 e2.cpp DIFFER(353v356)
+0076d2f0 e3.cpp DIFFER(367v356)
+0076d2f0 e4.cpp DIFFER(354v356)
+0076d2f0 e5.cpp DIFFER(354v356)
+0076d2f0 e6.cpp DIFFER(369v356)
+0076d2f0 e7.cpp DIFFER(378v356)
+0076d2f0 e8.cpp DIFFER(378v356)
+0076d2f0 e9.cpp DIFFER(355v356)
+0076d2f0 e10.cpp DIFFER(356v356)
+0076d2f0 e11.cpp DIFFER(368v356)
+0076d2f0 e12.cpp DIFFER(357v356)
+0076d2f0 e13.cpp DIFFER(356v356)
+0076d2f0 e14.cpp DIFFER(355v356)
+0076d2f0 e15.cpp DIFFER(356v356)
+0076d2f0 e16.cpp DIFFER(356v356)
+0076d2f0 s1.cpp SRC_FAIL
+0076d2f0 s1.cpp SRC_FAIL
+0076d2f0 s1.cpp (block-scoped out-parameter locals copied out + PeekTC(&ptc) + noinline IS_THING_ALIVE) RELOCATION_MATCH
+0076d2f0 s2.cpp DIFFER(355v356)
+0076d2f0 src (= s1) RELOCATION_MATCH
+0066bc10 c1.cpp SRC_FAIL
+0066bc10 c1.cpp DIFFER(204v232)
+0066bc10 c2.cpp DIFFER(190v232)
+0066bc10 c3.cpp (named first string + visible noinline GetSubDef) RELOCATION_MATCH
+0066bc10 src (= c3) RELOCATION_MATCH
+00bec680 m1.cpp DIFFER(541v545)
+00bec680 m2.cpp DIFFER(541v545)
+00bec680 m3.cpp RELOCATION_MATCH
+00bec680 m4.cpp SRC_FAIL
+00bec680 m6.cpp (shared headers) DIFFER(525v545)
+00bec680 m7.cpp (shared headers, shared key, cached mesh pointer) RELOCATION_MATCH
+00bec680 src (= m7) RELOCATION_MATCH
+0083d460 k0.cpp DIFFER(237v324) (full 336-byte catalog row)
+0083d460 k1.cpp DIFFER(228v247)
+0083d460 k2.cpp DIFFER(228v247)
+0083d460 k3.cpp DIFFER(228v247)
+0083d460 k4.cpp DIFFER(228v247)
+0083d460 k5.cpp DIFFER(228v247)
+0083d460 k6.cpp RELOCATION_MATCH
+0083d460 k7.cpp RELOCATION_MATCH
+0083d460 src (= k7, QLEN 247) RELOCATION_MATCH
+00a0c570 a1.cpp (SetUp + SetForward) DIFFER(375v373)
+00a0c570 a2.cpp (RHSet.Set(up, forward)) RELOCATION_MATCH
+00a0c570 a3.cpp (RHSet = CRightHandedSet(up, forward)) DIFFER(419v373)
+00a0c570 src (= a2) RELOCATION_MATCH
+006b3e60 b1.cpp (insert/clear declared, end() reloaded) DIFFER(403v393)
+006b3e60 b2.cpp (+ cached end local) DIFFER(404v393)
+006b3e60 b3.cpp (visible noinline insert/clear: no change) DIFFER(403v393)
+006b3e60 b7.cpp (entry expression in the call) DIFFER(390v393)
+006b3e60 b8.cpp (cached end in the for-init + visible GetLocalEnvironmentThemeIndexFromGlobal) RELOCATION_MATCH
+006b3e60 src (= b8, body moved into the header opt-in) RELOCATION_MATCH
+0079aa90 c1.cpp (GetMagnitude + /=, SQUAREDMAGNITUDE_XYZ) DIFFER(557v557)
+0079aa90 c2.cpp (default squared magnitude) DIFFER(557v557)
+0079aa90 c3.cpp (GetAccurateMagnitude) DIFFER(557v557)
+0079aa90 c4.cpp (c1 with angle declared after the length) RELOCATION_MATCH
+0079aa90 c5.cpp (angle declared first) DIFFER(557v557)
+0079aa90 src (= c4) RELOCATION_MATCH

@@ -5,6 +5,9 @@
 #include "engine/C3DVector.h"
 #include "engine/C2DVector.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CNAVIGATOREXTERNALINTERFACE_AGENTLISTS
+#include "rebuild_abi.h"
+#endif
 class CSteeringAgent;
 class CNavigatorExternalInterface {
 public:
@@ -33,5 +36,14 @@ public:
  virtual float GetForwardNavigationWidthExtension() const=0;
  virtual ~CNavigatorExternalInterface();
  virtual CNavigatorExternalInterface* Clone() const=0;
+#ifdef FABLE_RETAIL_CNAVIGATOREXTERNALINTERFACE_AGENTLISTS
+ // Retail opt-in (chunk 1021, row 0x00A47D10): the static registry of every live navigator's agent vector and its two
+ // static __fastcall maintenance functions (Ego_r.pdb: `dynamic initializer for 'CNavigatorExternalInterface::AgentLists'`
+ // 0x013D2834; ?RemoveAgentFromLists@CNavigatorExternalInterface@@SIXPBVCSteeringAgent@@@Z,
+ // ?RemoveAgentListFromLists@CNavigatorExternalInterface@@SIXPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@@Z).
+ static std::list<std::vector<const CSteeringAgent*>*> AgentLists;
+ static void FABLE_FASTCALL RemoveAgentFromLists(const CSteeringAgent* agent);
+ static void FABLE_FASTCALL RemoveAgentListFromLists(std::vector<const CSteeringAgent*>* agentList);
+#endif
 };
 #endif

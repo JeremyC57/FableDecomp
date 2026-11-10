@@ -1,0 +1,6 @@
+address	length	name	evidence
+0083d460	247	CThingMarker::Create	retail body ends at 0x0083D554 (`ret 4`, then int3 pad to 0x0083D560); the catalog row's 336 bytes run on into four further functions
+0083d560	12	CDefPointer ENullDef-style constructor (unproven; `mov eax,ecx ; mov dword ptr [eax],0 ; ret 4`)	new function start exposed by the 0x0083D460 split (int3 pad before it)
+0083d570	3	one-word getter (unproven; `mov eax,[ecx] ; ret`)	new function start exposed by the 0x0083D460 split
+0083d580	3	one-word getter (unproven; `mov eax,[ecx] ; ret`)	new function start exposed by the 0x0083D460 split
+0083d590	18	counted-pointer copy constructor (unproven; copies the word, `inc [edx+4]` when non-null, `ret 4`)	new function start exposed by the 0x0083D460 split

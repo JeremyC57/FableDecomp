@@ -1,0 +1,31 @@
+address	name	evidence
+0x0076D2F0	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	Ego_r.pdb + FableWin.pdb; static __fastcall (ecx/edx = the two things); RELOCATION_MATCH (chunk 1021)
+0x0076C7D0	?IsEnemyOfFaction@CTCEnemy@@QBE_NPBVCFaction@@@Z	Ego_r.pdb CTCEnemy member; the faction query next to IsAlliedWithFaction
+0x0076C7F0	?IsAlliedWithFaction@CTCEnemy@@QBE_NPBVCFaction@@@Z	Ego_r.pdb; called twice by 0x0076D2F0 with the player's faction
+0x0076CCE0	?IsEnemyOf@CTCEnemy@@ABE_NABVCThing@@@Z	Ego_r.pdb (private); called twice by 0x0076D2F0
+0x0076CFE0	?CalculateEnemyTC@CTCEnemy@@CI_NABVCThing@@PAPBV1@AAPBV2@_N@Z	Ego_r.pdb (private static __fastcall); called twice by 0x0076D2F0 with out-pointers
+0x0043DBF0	??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z	Ego_r.pdb / FableWin.pdb spelling; the COMDAT 0x0076D2F0 calls for the main player's creature
+0x0066BC10	?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	Ego_r.pdb; RELOCATION_MATCH (chunk 1021)
+0x0065F604	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	FableWin.pdb GetSubDef<T> template spelling; the COMDAT 0x0066BC10 calls with its CDefPointer<const CEntitySoundDef> local
+0x00BEC680	?CollectStats@CEngineInternalPrimitiveMeshBase@@SIXABVC3DMeshInfo@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z	Ego_r 0x00AA4A90 / FableWin 0x02EE3BD0 (static __fastcall); RELOCATION_MATCH (chunk 1021)
+0x00BEC8B0	?CollectStats@CEngineInternalPrimitiveMeshBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z	Ego_r 0x00AA4CB0 / FableWin 0x02EE3BA0: the virtual forwarder right after the static one, as in Ego_r
+0x009CC240	?GetEntryDataSize@CBankFile@@QBEKK@Z	Ego_r.pdb; called in 0x00BEC680's texture case on the mesh bank's texture bank
+0x00A25E70	?GetMesh@C3DMeshInfo@@QBE_NAAV?$CCountedPointer@$$CBVC3DMesh2@@@@KK@Z	Ego_r.pdb; first call of 0x00BEC680 (mesh, 0, 4)
+0x00A89320	?GetVertexCount@C3DMesh2@@QBEKXZ	Ego_r.pdb; 0x00BEC680 vertex case
+0x00A89350	?GetTriangleCount@C3DMesh2@@QBEKXZ	Ego_r.pdb; 0x00BEC680 triangle case
+0x00553E60	??A$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEAAKABK@Z	STLport map<unsigned long, unsigned long>::operator[] COMDAT called by 0x00BEC680
+0x00A47D10	?RemoveAgentFromLists@CNavigatorExternalInterface@@SIXPBVCSteeringAgent@@@Z	Ego_r.pdb (static __fastcall); RELOCATION_MATCH (chunk 1021)
+0x013D2834	?AgentLists@CNavigatorExternalInterface@@0V?$list@PAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@V?$allocator@PAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@@2@@std@@A	the static list 0x00A47D10 walks (head word at 0x013D2834); Ego_r.pdb member name AgentLists (the data symbol is in neither PDB name set: mangling composed, unverified)
+0x0083D460	?Create@CThingMarker@@SIPAV1@JABVC3DVector@@ABVCCharString@@@Z	Ego_r.pdb (static __fastcall); body 247 bytes (ret 4 at 0x0083D554); RELOCATION_MATCH (chunk 1021)
+0x005296B0	??0CThingPhysical@@QAE@K@Z	Ego_r.pdb ctor with the type word; called by the inlined CThingMarker / CThingGameObject ctors in 0x0083D460
+0x0099A300	??1CBaseClassNonCopyable@@MAE@XZ	the unwind destructor 0x0083D460 relocates to (protected virtual dtor, Ego_r.pdb)
+0x004C9CA0	?DoActivationSequence@CThing@@QAE_NXZ	Ego_r.pdb; last call of 0x0083D460
+0x004C7380	??2CThing@@KIPAXI_N@Z	CThing::operator new(size_t, bool) (protected static __fastcall): the new (false) in 0x0083D460
+0x006A06E0	??0CTCParamsPhysicsBase@@QAE@ABVC3DVector@@ABVCRightHandedSet@@@Z	Ego_r.pdb ctor called by 0x0083D460
+0x00A0C570	?SetAngleXY@CCamera@@QAEXM@Z	Ego_r 0x00B4D1B0 / FableWin; CCamera TU order; RELOCATION_MATCH (chunk 1021)
+0x00A14440	?AccurateNormalise@C3DVector@@QAEAAV1@XZ	Ego_r 0x00B81E30 (out of line, sqrt-based); called twice by 0x00A0C570 (inline CRightHandedSet::Normalise) and by NCameraModes::SetCameraRoll 0x0084CD10
+0x006B3E60	?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z	Ego_r 0x006EFD20 / FableWin 0x02451D40, both with the 'ThemeWeights' static's atexit destructor; ret 14h; RELOCATION_MATCH (chunk 1021)
+0x006B2C50	?GetLocalEnvironmentThemeIndexFromGlobal@CEnvironment@@QAEJJ@Z	body mov ecx,[ecx+4] / jmp 0x009ACCA0 (GetDefClassIndexFromGlobalIndex: local from global), right after IsEnvironmentRequiringWeatherMasks 0x006B2C00 as Ego_r 0x006EE680 -> 0x006EE6C0; no callers (expanded in 0x006B3E60); the inverse GetGlobal...FromLocal would call the inverse lookup
+0x013BA8EC	?ThemeWeights@?1??SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z@4V?$vector@U?$pair@JM@std@@V?$allocator@U?$pair@JM@std@@@2@@std@@A	the function-static vector of 0x006B3E60 (guard 0x013BA8F8 bit 1, atexit destructor 0x01229370); both PDBs name 'ThemeWeights'; scope number in the mangling unverified
+0x0079AA90	?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z	Ego_r 0x007A05C0; RELOCATION_MATCH (chunk 1021)
+0x0079A890	?IsValidTeleportPos@CTCSummonSpell@@AAE_NABVC3DVector@@ABVCWorldMap@@PBVCThing@@@Z	Ego_r 0x007A0360 (just before GetValidTeleportPos, as in retail); called twice by 0x0079AA90

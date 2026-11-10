@@ -378,6 +378,12 @@ public:
         } else _M_insert_overflow(this->_M_finish,x,_IsPODType(),1,true);
     }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_INSERT_OUTOFLINE
+    // Per-TU opt-in (chunk 1021, row 0x006B3E60 CEnvironment::SetWeightedThemes; like FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE): STLport's
+    // insert(position, x) is one inline body, which VC7.1 expanded in some TUs and called as a COMDAT in others; that TU calls
+    // vector<pair<long, float> >::insert 0x006B5ED0 (landed; call at 0x006B3F4B). Declaration only here.
+    iterator insert(iterator position,const _Tp& x);
+#else
     iterator insert(iterator position,const _Tp& x) {
         size_type n=position-begin();
         if(this->_M_finish!=this->_M_end_of_storage._M_data) {
@@ -394,6 +400,7 @@ public:
         } else _M_insert_overflow(position,x,_IsPODType(),1UL,false);
         return begin()+n;
     }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE
     // Retail opt-in (chunk 782, row 0x00DFD600 CQ_TraderConflictGoodScript::AttackPeople; like
     // FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): STLport's erase(position) is one inline body, which VC7.1 expanded in some TUs
@@ -417,7 +424,13 @@ public:
         _Destroy(result,this->_M_finish);this->_M_finish=result;return first;
     }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_CLEAR_OUTOFLINE
+    // Per-TU opt-in (chunk 1021, row 0x006B3E60; like FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): that TU calls
+    // vector<pair<long, float> >::clear 0x006B5B50 (landed; call at 0x006B3FDA) instead of expanding erase(begin(), end()).
+    void clear();
+#else
     void clear() { erase(begin(),end()); }
+#endif
     // Retail takes the value by const reference (STLport 4.5.2 form; 0x004428F0 resize<long> forwards the pointer to
     // _M_fill_insert, which dereferences it); FableWin.pdb's later build passes it by value.
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE

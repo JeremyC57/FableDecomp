@@ -24,6 +24,11 @@ protected:
     unsigned char Damageable:1, Killable:1, RespondToHits:1, EvadeAllHits:1,
         NegateAllHits:1, AbleToBeEngagedInCombat:1;
 public:
+#if defined(FABLE_RETAIL_CTHINGPHYSICAL_CTOR) || defined(FABLE_RETAIL_CTHINGGAMEOBJECT_CTOR)
+    // Retail opt-in (chunk 1021, row 0x0083D460 CThingMarker::Create): Ego_r.pdb ??0CThingPhysical@@QAE@K@Z (0x005325E0 = retail
+    // 0x005296B0), out of line (`push 0Bh ; mov ecx,esi ; call 0x005296B0`, 0x0083D47D). Declaration only: no layout change.
+    CThingPhysical(unsigned long type);                                  // 0x005296B0
+#endif
     const C3DVector& PeekPos() const;
     float GetHealth() const { return Health; }
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_MAXHEALTH

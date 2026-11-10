@@ -33,6 +33,12 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     void Rotate(const C3DVector& rotate_axis,float angle);
 #endif
     void MakePerpendicular();                                            // 0x00A22E10
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_NORMALISE
+    // Retail opt-in (chunk 1021, row 0x00A0C570 CCamera::SetAngleXY): FableWin.pdb ?Normalise@CRightHandedSet@@QAEXXZ (debug copy
+    // 0x02E881D0; no Ego_r.pdb copy, expanded in retail): Up then Forward through C3DVector::AccurateNormalise 0x00A14440
+    // (0x00A0C6CC `mov ecx,esi ; call`, 0x00A0C6D6 `lea ecx,[esi+0Ch] ; call`).
+    void Normalise() { Up.AccurateNormalise(); Forward.AccurateNormalise(); }
+#endif
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR_INLINE
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z with its
     // body visible (the out-of-line COMDAT is 0x00487050; CreateMinion builds the set in place: `mov [esp+1Ch],0 ; mov [esp+20h],0 ;

@@ -16537,7 +16537,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006b3950	TransitionToDefaultThemeAllChannels	CEnvironment	__thiscall	void	3	CEnvironment *,long,float	1	yes	accepted									
 006b3b30	ConsoleRestoreDefaultTheme	CEnvironment	unknown	undefined	0		0	yes	accepted									
 006b3b80	CEnvironment_UpdateThunder	_global	unknown	undefined	0		0	yes	accepted									
-006b3e60	CEnvironmentThemePriorityStackEntry_SetWeight	_global	unknown	undefined	0		0	yes	accepted									
+006b3e60	SetWeightedThemes	CEnvironment	unknown	undefined	0		0	yes	accepted									
 006b3ff0	Update	CEnvironment	__thiscall	void	2	CEnvironment *,float	1	yes	accepted									
 006b42f0	RenderUpdate	CEnvironment	__thiscall	void	2	CEnvironment *,float	1	yes	accepted									
 006b4900	CEnvironment	CEnvironment	__thiscall	undefined	2	CEnvironment *,CGameDefinitionManager *	0	yes	accepted									

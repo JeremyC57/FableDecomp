@@ -8,6 +8,17 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENVIRONMENT_THEMESTACKS
+// Retail opt-in (chunk 1021, row 0x006B3E60 CEnvironment::SetWeightedThemes): the two opaque 12-byte members typed as the Ego_r.pdb
+// types they are (CArray<NEnvironmentInternal::CEnvironmentThemePriorityStack> PriorityStackChannels, the retail-12-byte
+// NEnvironmentInternal::CEnvironmentThemeResourcePallette ThemeSet). Same size and offsets (asserted below).
+#include "engine/CEnvironmentThemePriorityStack.h"
+#endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_THEMEINDEX
+// (opt-in below: the inline GetLocalEnvironmentThemeIndexFromGlobal calls through DefinitionManager; needs
+// FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX)
+#include "engine/CGameDefinitionManager.h"
+#endif
 
 class CEnvironmentSpellEffectInterface;
 class CEnvironmentSpellEffectInterpolator;
@@ -36,6 +47,19 @@ public:
     // Ego_r.pdb / FableWin.pdb ?SetThemeWeight@CEnvironment@@QAEXJJJM@Z, out of line in retail at 0x006B3600 (`ret 10h`; both callers
     // push four arguments, the last a float weight). Declaration only.
     void SetThemeWeight(long channel, long priority, long theme, float weight);   // 0x006B3600
+#endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_SETWEIGHTEDTHEMES
+    // Retail opt-in (chunk 1021): Ego_r.pdb / FableWin.pdb ?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z (Ego_r 0x006EFD20, FableWin
+    // 0x02451D40), out of line in retail at 0x006B3E60 (`ret 14h`; caller CWorld::UpdateEnvironmentCameraPos 0x0049E57F).
+    void SetWeightedThemes(long channel, long priority, long* themes, float* weights, long count);   // 0x006B3E60
+#endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_THEMEINDEX
+    // Retail opt-in (chunk 1021, row 0x006B3E60): Ego_r.pdb / FableWin.pdb ?GetLocalEnvironmentThemeIndexFromGlobal@CEnvironment@@QAEJJ@Z
+    // (Ego_r 0x006EE6C0, 16 bytes; FableWin 0x0244FBB0), defined in the CEnvironment TU: retail keeps the out-of-line copy at 0x006B2C50
+    // (`mov ecx,[ecx+4] ; jmp 0x009ACCA0`, the def-class index of a global index) and /Ob2 expands it in SetWeightedThemes
+    // (0x006B3F89..0x006B3F94). The body is visible here so the row expands it the same way; the extra return-value copy is what
+    // gives the caller's local theme index ecx (c2 colouring: it 100, local 88 > the theme-count difference 80).
+    long GetLocalEnvironmentThemeIndexFromGlobal(long global_index) { return DefinitionManager->GetDefClassIndexFromGlobalIndex(global_index); }
 #endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_RAINSTRENGTH
     // Opt-in (chunk 1012, row 0x006B2260 CAtmosProcess::Update): Ego_r.pdb ?GetRainStrength@CEnvironment@@QBEMXZ, called out of line in
@@ -98,11 +122,19 @@ public:
     bool                                 PassedFirstUpdate;  // +0x44
     bool                                 RainEnabled;        // +0x45
     unsigned char                        _pad_0x46[0x2];     // +0x46
+#ifdef FABLE_RETAIL_CENVIRONMENT_THEMESTACKS
+    CArray<NEnvironmentInternal::CEnvironmentThemePriorityStack> PriorityStackChannels;  // +0x48
+#else
     unsigned char                        PriorityStackChannels[0xc];  // +0x48 CArray<NEnvironmentInternal::CEnvironmentThemePriorityStack>
+#endif
     unsigned char                        GameTickState[0xc20]; // +0x54 CEnvironmentGameTickState
     unsigned char                        PrevGameTickState[0xc20]; // +0xc74 CEnvironmentGameTickState
     unsigned char                        InterpolatedEnvironmentParams[0xc0]; // +0x1894 CIDrawEnvironmentParams
+#ifdef FABLE_RETAIL_CENVIRONMENT_THEMESTACKS
+    NEnvironmentInternal::CEnvironmentThemeResourcePallette ThemeSet;  // +0x1954
+#else
     unsigned char                        ThemeSet[0xc];      // +0x1954 CEnvironmentThemeResourcePallette
+#endif
     CEnvironmentSpellEffectInterface*    SpellEffectInterface_ptr; // +0x1960 scoped_ptr<CEnvironmentSpellEffectInterface>::ptr
     CEnvironmentSpellEffectInterpolator* SpellEffectInterpolator_ptr; // +0x1964 scoped_ptr<CEnvironmentSpellEffectInterpolator>::ptr
     unsigned char                        PRainSplashParticle[0x8]; // +0x1968 CIntelligentPointer<CThing>

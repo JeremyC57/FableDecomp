@@ -20,6 +20,15 @@ public:
     // Opt-in (chunk 765, row 0x0066A9D0): Ego_r.pdb / FableWin.pdb ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z (VoiceName +0x14).
     void SetVoiceName(const CCharString&);                               // 0x0066A9D0
 #endif
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_CRITERIA
+    // Retail opt-in (chunk 1021, row 0x0066BC10): Ego_r.pdb
+    // ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+    // (private; Ego_r donor order puts it before PlayAttachedCriteria 0x0066BD00 / PlayUnattachedCriteria 0x0066BDF0, its two
+    // callers). A declaration only: no layout change. Needs stlport/fable_containers.h and fable_string.h.
+private:
+    void GetPotentialCriteriaStrings(const CCharString& criteria, std::vector<CCharString>& criteria_strings);   // 0x0066BC10
+public:
+#endif
 protected:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;
     CCharString VoiceName,ExtraTag;

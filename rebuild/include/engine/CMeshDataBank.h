@@ -197,6 +197,11 @@ public:
     // reloc_bindings.tsv from landed 0x00861950). Declaration only.
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;  // 0x00A242C0
 #endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_TEXTUREBANK
+    // Retail opt-in (chunk 1021, row 0x00BEC680): FableWin.pdb ?GetTextureBank@CMeshDataBank@@QBEPBVCGraphicDataBank@@XZ (0x02DDA5C0;
+    // no Ego_r.pdb or Fable.exe copy: inline, the caller reads TextureBank +0x3D4 in place, `mov ecx,[eax+3D4h]`, 0x00BEC74D).
+    const CGraphicDataBank* GetTextureBank() const { return TextureBank; }
+#endif
 #ifdef FABLE_RETAIL_CMESHDATABANK
 #ifdef FABLE_RETAIL_C3DANIMATIONINFO_BUILD
 // Retail opt-in (Codex pass19): original Ego_r/FableWin types and donor calls; native animation rows 00a24d70/00a26ad0. See NAMING_EVIDENCE.md.

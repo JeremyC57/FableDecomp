@@ -1,0 +1,31 @@
+addr       parity           behav  name
+0066bc10   RELOCATION_MATCH PASS   GetPotentialCriteriaStrings
+006b3e60   WARN RELOC_CONFLICT: _$E2 -> 01229370 here, 01228930 in landed 01219f00
+006b3e60   RELOCATION_MATCH PASS   SetWeightedThemes
+0076d2f0   RELOCATION_MATCH PASS   AreThingsEnemies
+0079aa90   RELOCATION_MATCH PASS   GetValidTeleportPos
+0083d460   RELOCATION_MATCH PASS   Create
+00a0c570   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a0c570   RELOCATION_MATCH PASS   SetAngleXY
+00a47d10   RELOCATION_MATCH PASS   RemoveAgentFromLists
+00bec680   RELOCATION_MATCH PASS   CollectStats
+
+WINS: 8
+  0066bc10 RELOCATION_MATCH CTCSoundPlayer::?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  006b3e60 RELOCATION_MATCH CEnvironment::?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z
+  0076d2f0 RELOCATION_MATCH CTCEnemy::?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z
+  0079aa90 RELOCATION_MATCH CTCSummonSpell::?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z
+  0083d460 RELOCATION_MATCH CThingMarker::?Create@CThingMarker@@SIPAV1@JABVC3DVector@@ABVCCharString@@@Z
+  00a0c570 RELOCATION_MATCH CCamera::?SetAngleXY@CCamera@@QAEXM@Z
+  00a47d10 RELOCATION_MATCH CNavigatorExternalInterface::?RemoveAgentFromLists@CNavigatorExternalInterface@@SIXPBVCSteeringAgent@@@Z
+  00bec680 RELOCATION_MATCH CEngineInternalPrimitiveMeshBase::?CollectStats@CEngineInternalPrimitiveMeshBase@@SIXABVC3DMeshInfo@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CTCSoundPlayer_GetPotentialCriteriaStrings_0066bc10
+  CEnvironment_SetWeightedThemes_006b3e60
+  CTCEnemy_AreThingsEnemies_0076d2f0
+  CTCSummonSpell_GetValidTeleportPos_0079aa90
+  CThingMarker_Create_0083d460
+  CCamera_SetAngleXY_00a0c570
+  CNavigatorExternalInterface_RemoveAgentFromLists_00a47d10
+  CEngineInternalPrimitiveMeshBase_CollectStats_00bec680

@@ -37,6 +37,12 @@ template <class It, class F> F FABLE_FASTCALL for_each(It first, It last, F f); 
 // the stack, `ret 4`). Declaration only: callers only relocate to the instantiation.
 template <class _InputIter, class _Tp> _InputIter FABLE_FASTCALL find(_InputIter __first, _InputIter __last, const _Tp& __val);
 #endif
+#ifdef FABLE_RETAIL_STLP_LOWER_BOUND
+// Retail opt-in (chunk 1021, row 0x006B3E60 CEnvironment::SetWeightedThemes): STLport 4.6 _algo.h `lower_bound(first, last, val)`,
+// a `__fastcall` COMDAT in retail (lower_bound<pair<long, float>*, pair<long, float> > 0x006B5A50, landed: first in ecx, last in
+// edx, &val on the stack, `ret 4`). Declaration only: callers only relocate to the instantiation.
+template <class _ForwardIter, class _Tp> _ForwardIter FABLE_FASTCALL lower_bound(_ForwardIter __first, _ForwardIter __last, const _Tp& __val);
+#endif
 #ifdef FABLE_RETAIL_STLP_FIND_IF_INPUT
 // STLport 4.6.2 _algobase.c:183-197, input-iterator search and category dispatch.
 /*

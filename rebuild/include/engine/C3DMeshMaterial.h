@@ -4,9 +4,16 @@
 // PDB complete48-byte object. The unnamed first word and IV-counted filenames handle retain their storage.
 class C3DMeshMaterial {
 public:
-#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#if defined(FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS) || defined(FABLE_RETAIL_C3DMESHMATERIAL_MAPBANKINDICES)
     unsigned long GetDiffuseMapBankIndex() const{return DiffuseMapBankIndex;}
     unsigned long GetBumpMapBankIndex() const{return BumpMapBankIndex;}
+#endif
+#ifdef FABLE_RETAIL_C3DMESHMATERIAL_MAPBANKINDICES
+    // Retail opt-in (chunk 1021, row 0x00BEC680 CEngineInternalPrimitiveMeshBase::CollectStats): the FableWin.pdb inline accessors
+    // ?GetReflectionMapBankIndex@C3DMeshMaterial@@QBEKXZ / ?GetIlluminationMapBankIndex@C3DMeshMaterial@@QBEKXZ (no out-of-line copy
+    // in Ego_r.pdb or Fable.exe; +0x18 / +0x1C read in place). The diffuse / bump pair above is shared with the static-block opt-in.
+    unsigned long GetReflectionMapBankIndex() const{return ReflectionMapBankIndex;}
+    unsigned long GetIlluminationMapBankIndex() const{return IlluminationMapBankIndex;}
 #endif
     unsigned char UnmodelledBase[4];long MaterialIndex;CCharString Name;long DecalID;
     unsigned long DiffuseMapBankIndex,BumpMapBankIndex,ReflectionMapBankIndex,IlluminationMapBankIndex,MapFlags,SelfIllumination;
