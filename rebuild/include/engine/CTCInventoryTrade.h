@@ -105,6 +105,34 @@ public:
     void BuyItemPC(NUISystem::CComponent* entry, long count);                      // 0x005B0AAC
     void RefreshBuyDescriptionsPC(NUISystem::CComponent* parent);                  // 0x005AE9DE
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_ACTIONSLISTS
+    // Retail opt-in (chunk 1009b, rows 0x005A3E47 ConstructBuyActionsList / 0x005A79E6 ConstructBuyActionsListPC): Ego_r.pdb +
+    // FableWin.pdb ?ConstructBuyActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z (the rows; the PC form
+    // ?ConstructBuyActionsListPC@..), the sell twins ?ConstructSellActionsList(PC)@.. (0x005A45F6 / 0x005A731F, same signature) and
+    // ?IsItemAffordable@CTCInventoryTrade@@QAE_NJJ@Z (0x0059DA10). Public, all out of line in retail; declarations only.
+public:
+    bool IsItemAffordable(long itemDefIndex, long count);                          // 0x0059DA10
+    bool ConstructBuyActionsList(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);     // 0x005A3E47
+    bool ConstructSellActionsList(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);    // 0x005A45F6
+    bool ConstructSellActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);  // 0x005A731F
+    bool ConstructBuyActionsListPC(NUISystem::CComponent* parent, long itemDefIndex, long count, bool dynamically);   // 0x005A79E6
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_SHOPLISTS
+    // Retail opt-in (chunk 1009b, rows 0x005A6769 ConstructNormalShopListPC / 0x005A29F4 ConstructSpecialShopList / 0x0059FEE3
+    // AddBuyItemToList): Ego_r.pdb + FableWin.pdb, public, all out of line in retail (declarations only):
+    // ?ConstructNormalShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0@Z
+    // and its PC form (0x005A6769), ?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@..@std@@AAVCCharString@@@Z
+    // (0x005A29F4) and its PC form (0x005A8A5D), ?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
+    // (0x0059FEE3; the PC form AddBuyItemToListPC 0x005A6CA1 is declared above).
+public:
+    NUISystem::CComponent* ConstructNormalShopList(const std::vector<std::pair<long,long> >& buyItems,
+                                                   const std::vector<std::pair<long,long> >& sellItems);
+    NUISystem::CComponent* ConstructNormalShopListPC(const std::vector<std::pair<long,long> >& buyItems,
+                                                     const std::vector<std::pair<long,long> >& sellItems);     // 0x005A6769
+    NUISystem::CComponent* ConstructSpecialShopList(const std::vector<std::pair<long,long> >& buyItems, CCharString& name);     // 0x005A29F4
+    NUISystem::CComponent* ConstructSpecialShopListPC(const std::vector<std::pair<long,long> >& buyItems, CCharString& name);   // 0x005A8A5D
+    bool AddBuyItemToList(long itemDefIndex, long count, NUISystem::CList* list, NUISystem::CViewport* viewport, bool addToTop);   // 0x0059FEE3
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_BUYPOSSIBILITY
     // Retail opt-in (chunk 1009, row 0x005A9A87 RefreshBuyPossibility): Ego_r.pdb / FableWin.pdb
     // ?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ (0x005A3734, out of line; the console twin of

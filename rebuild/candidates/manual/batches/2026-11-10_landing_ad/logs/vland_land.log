@@ -1,0 +1,30 @@
+addr       parity           behav  name
+0059d270   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+0059d270   RELOCATION_MATCH PASS   AddWantedItemToListPC
+005a29f4   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a29f4   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005a29f4   RELOCATION_MATCH PASS   ConstructSpecialShopList
+005a3e47   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a3e47   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a3e47   WARN RELOC_NAME: ?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z -> 005bf30d labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a3e47   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005a3e47   WARN RELOC_NAME: ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a3e47   RELOCATION_MATCH PASS   ConstructBuyActionsList
+005a79e6   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a79e6   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a79e6   WARN RELOC_NAME: ?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z -> 005bf30d labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a79e6   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005a79e6   WARN RELOC_NAME: ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a79e6   RELOCATION_MATCH PASS   ConstructBuyActionsListPC
+
+WINS: 4
+  0059d270 RELOCATION_MATCH CTCInventoryTrade::?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z
+  005a29f4 RELOCATION_MATCH CTCInventoryTrade::?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z
+  005a3e47 RELOCATION_MATCH CTCInventoryTrade::?ConstructBuyActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z
+  005a79e6 RELOCATION_MATCH CTCInventoryTrade::?ConstructBuyActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryTrade_AddWantedItemToListPC_0059d270
+  CTCInventoryTrade_ConstructSpecialShopList_005a29f4
+  CTCInventoryTrade_ConstructBuyActionsList_005a3e47
+  CTCInventoryTrade_ConstructBuyActionsListPC_005a79e6

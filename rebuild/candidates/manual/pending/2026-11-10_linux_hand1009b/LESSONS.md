@@ -1,0 +1,11 @@
+# Lessons -- chunk 1009b (CTCInventoryTrade, shared headers)
+
+- Port parked local-model rows to the shared headers with the spellings of landed siblings (ClothingListPC 0x005B6A66, AugEntryPC 0x005C5F11, ActualSpecialInventoryPC 0x005A8C66): 0x0059D270 / 0x005A3E47 / 0x005A79E6 matched on the first grade once the class models were the real ones.
+- CMenuEntry action slots (shared header opt-ins FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS + _UNSELECTED_VISIBLE): AddUIActionParam +0x25C (151), AddActionOnUnselected +0x260 (152), AddActionOnVisible +0x264 (153); CComponent AddActionOnSelected +0x10C (67), AddPreAction +0x114 (69), MakeUnavailable +0x170 (92) (0x0059D270, 0x0059FEE3).
+- std::list::size() as STLport's distance loop (`mov ecx,[ecx] ; inc`): FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE (0x005A2CDA, ConstructSpecialShopList).
+- A counted-pointer component used for two virtual calls in a row: cache it as a named `CText*` first (`CText* t = static_cast<CText*>(p.Get()); t->SetName(..); t->SetValue(..)`) to get it held in ebx (0x005A2DED).
+- A temporary CCharString passed to a virtual by reference as the last statement of a block: make it a block-scoped named local (`{ CCharString trade("Trade"); text->SetValue(trade, true, true); }`) for retail's slot / destructor order (0x005A3024).
+- Out-of-line callees reached by the trade TU need their header decls behind opt-ins: GetAmountOfItemsContainable 0x005BF30D, IsItemAffordable(long,long) 0x0059DA10 (the landed 0x005A8A5D spells the second parameter bool -- wrong).
+- VC7.1's operand order of a commutative three-member sum (0x005A6769: [1F0h]+[1F4h]+[1ECh]) depends on the whole function, not the source order: deleting unrelated code flips it; no spelling of the sum or of the reset stores does.
+- Named `const CTattooDef* card` read in a loop gets its field address hoisted (`lea edi,[ecx+34h]`, card spilled) where retail keeps the pointer (0x0059FD43); the CSE'd `tattooCardDef->` form avoids the hoist but changes the colouring order (c2prio).
+- An uninitialised component pointer filled by CThing::GetTC is read from a dead parameter slot on the failure path (`mov esi,[ebp+8]`, 0x0059FCCC / 0x0059FE1F): write `T* p; thing->GetTC(id, &p); if (p)` -- not `= 0`.

@@ -390730,6 +390730,34 @@ $catalog = @(
         TestSource = '00/5e/CTCInventoryAbilities_IsAbleToUseAbility_005ee49a_test.cpp'
         PassPattern = '005ee49a_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0059d270'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_AddWantedItemToListPC_0059d270.cpp'
+        TestSource = '00/59/CTCInventoryTrade_AddWantedItemToListPC_0059d270_test.cpp'
+        PassPattern = '0059d270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a29f4'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructSpecialShopList_005a29f4.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructSpecialShopList_005a29f4_test.cpp'
+        PassPattern = '005a29f4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a3e47'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructBuyActionsList_005a3e47.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructBuyActionsList_005a3e47_test.cpp'
+        PassPattern = '005a3e47_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a79e6'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructBuyActionsListPC_005a79e6.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructBuyActionsListPC_005a79e6_test.cpp'
+        PassPattern = '005a79e6_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

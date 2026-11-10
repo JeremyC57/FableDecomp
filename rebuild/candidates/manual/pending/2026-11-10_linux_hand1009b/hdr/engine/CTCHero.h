@@ -1,0 +1,55 @@
+#ifndef FABLE_ENGINE_CTCHERO_H
+#define FABLE_ENGINE_CTCHERO_H
+// CTCHero (new, chunk 765): RTTI .?AVCTCHero@@, base CTCBase at +0; retail vtable 0x0125EB54. Ego_r.pdb members
+// (struct_layouts_egor.tsv, sizeof 0x38): WeaponsUsable +0x0C .. WillUseOverriddenByScripts +0x0F, Title +0x10,
+// HeroTitleObjectDef +0x14, PHeroTitleSubDef +0x18, OnBoastingPodium +0x1C, LastWeaponEquipped +0x20,
+// LastWeaponEquippedID +0x28, PTeleportParticle +0x30. Only the methods rows use are modelled (no members yet).
+// Ego_r.pdb order: ?ProcessPendingTutorials@CTCHero@@QAEXXZ 0x00700980 then ?FrameUpdate@CTCHero@@UAEXXZ 0x00700990;
+// retail 0x006C9FC0 / 0x006C9FD0 (vtable slot 9) carry the same `call Get ; mov ecx,eax ; jmp` body.
+#ifndef FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE
+#endif
+#ifdef FABLE_RETAIL_CTCHERO_TITLE
+#include <stddef.h>
+#include "engine/ETCInterfaceType.h"
+#endif
+#include "engine/CTCBase.h"
+class CTCHero : public CTCBase {
+public:
+    void ProcessPendingTutorials();                                      // 0x006C9FC0
+    virtual void FrameUpdate();                                          // slot 9 0x006C9FD0
+#ifdef FABLE_RETAIL_CTCHERO_TITLE
+    // Retail opt-in (chunk 867, row 0x005AF64E CTCInventoryTrade::BuyItem): the hero component as the trade screen reaches it.
+    // Ego_r.pdb ?StatGetInterfaceType@CTCHero@@SI?AW4ETCInterfaceType@@XZ (inline: TCI_HERO = 41, the `push 29h` of the inline
+    // CThing::GetTC), ?SetTitle@CTCHero@@QAEXJ@Z 0x006CA400 (FableWin.pdb 0x024742B0; the bought title's def index), and the
+    // Ego_r.pdb members at their retail offsets (struct_layouts_egor.tsv, sizeof 0x38): the row reads WeaponsUsable +0x0C
+    // (`cmp byte ptr [eax+0Ch],0`) to raise the weapon-unusable warning after buying a weapon. Only the first word of members is
+    // typed; the rest keep opaque storage (Title +0x10 EHeroTitle, HeroTitleObjectDef +0x14, PHeroTitleSubDef +0x18,
+    // OnBoastingPodium +0x1C, LastWeaponEquipped +0x1D.., LastWeaponEquippedID +0x28, PTeleportParticle +0x30).
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO; }
+    void SetTitle(long titleDefIndex);                                   // 0x006CA400
+    bool WeaponsUsable;                                                  // +0x0c
+    bool WillUsable;                                                     // +0x0d
+    bool WeaponUseOverriddenByScripts;                                   // +0x0e
+    bool WillUseOverriddenByScripts;                                     // +0x0f
+#ifdef FABLE_RETAIL_CTCHERO_TITLEOBJECT
+    // Nested opt-in (chunk 1009b, row 0x0059FC17 CTCInventoryTrade::AlreadyHaveSpecial): Ego_r.pdb Title +0x10 (EHeroTitle) and
+    // HeroTitleObjectDef +0x14 (the worn title's def index; `cmp [eax+14h],ecx` 0x0059FE29) typed, the rest opaque.
+    long          Title;                                                 // +0x10 EHeroTitle
+    long          HeroTitleObjectDef;                                    // +0x14
+    unsigned char _tail[0x20];                                           // +0x18 PHeroTitleSubDef .. PTeleportParticle (opaque)
+#else
+    unsigned char _tail[0x28];                                           // +0x10 Title .. PTeleportParticle (opaque)
+#endif
+#ifdef FABLE_RETAIL_CTCHERO_WEAPONUSE
+    // Nested opt-in (chunk 1004, row 0x005CA68E CTCInventoryWeapons::SetupActiveWeaponsOnCarrier): FableWin.pdb
+    // ?IsWeaponUseAllowed@CTCHero@@QBE_NXZ (a 5-byte body there), inline in retail (`cmp byte ptr [eax+0Ch],0`, 0x005CA6D5).
+    bool IsWeaponUseAllowed() const { return WeaponsUsable; }
+#endif
+#endif
+};
+#ifdef FABLE_RETAIL_CTCHERO_TITLE
+FABLE_STATIC_ASSERT(sizeof(CTCHero) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTCHero, WeaponsUsable) == 0x0c);
+#endif
+#endif

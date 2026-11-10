@@ -39120,3 +39120,7 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?RefreshNameAndTitlePC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JJ@Z	0059ca95	005b0aac
 ??$GetDef@VCSpecialAbilitiesDivineWrathDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesDivineWrathDef@@@@@Z	005f8b1b	005ee49a
 ?GetResetCreatureManaCost@CTCSummonSpell@@QBEJXZ	0079a610	005ee49a
+?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z	0059fee3	005a29f4
+??A?$map@PAVCComponent@NUISystem@@PAV12@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABQAV23@@Z	005b3167	005a3e47
+?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z	005bf30d	005a3e47
+?IsItemAffordable@CTCInventoryTrade@@QAE_NJJ@Z	0059da10	005a3e47

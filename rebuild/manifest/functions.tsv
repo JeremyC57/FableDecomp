@@ -11281,7 +11281,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059cfbd	RefreshNameAndTitle	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,CComponent *,long,long	1	yes	accepted									
 0059d0b8	FinalConstructSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
 0059d1b1	FinalRefreshSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
-0059d270	AddWantedItemToList	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,long,CList *,CViewport *	1	yes	accepted									
+0059d270	AddWantedItemToListPC	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,long,CList *,CViewport *	1	yes	accepted									
 0059d65a	FinalConstructSubtitlesPC	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *,CComponent *	1	yes	accepted									
 0059d761	FinalRefreshSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
 0059d820	InitialiseSellableItems	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
@@ -11319,7 +11319,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005a6769	ConstructNormalShopListPC	CTCInventoryTrade	__thiscall	CComponent *	3	CTCInventoryTrade *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *	1	yes	accepted									
 005a6ca1	AddBuyItemToListPC	CTCInventoryTrade	__thiscall	bool	7	CTCInventoryTrade *,CComponent *,long,long,CList *,CViewport *,bool	1	yes	accepted									
 005a731f	ConstructSellActionsListPC	CTCInventoryTrade	__thiscall	bool	5	CTCInventoryTrade *,CComponent *,long,long,bool	1	yes	accepted									
-005a79e6	ConstructBuyActionsList	CTCInventoryTrade	__thiscall	bool	5	CTCInventoryTrade *,CComponent *,long,long,bool	1	yes	accepted									
+005a79e6	ConstructBuyActionsListPC	CTCInventoryTrade	__thiscall	bool	5	CTCInventoryTrade *,CComponent *,long,long,bool	1	yes	accepted									
 005a8175	RefreshBuyPossibilityNumbersPC	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
 005a887d	PC_PopulateBuyList	_global	unknown	undefined	0		0	yes	accepted									
 005a8a5d	ConstructSpecialShopListPC	CTCInventoryTrade	__thiscall	CComponent *	3	CTCInventoryTrade *,vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *,CCharString *	1	yes	accepted									

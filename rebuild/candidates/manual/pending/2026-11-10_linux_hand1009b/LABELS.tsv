@@ -1,0 +1,12 @@
+address	name	evidence
+0x0059D270	?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z	Ego_r.pdb name + RELOCATION_MATCH of src/0059d270.cpp (frame param first, PC templates)
+0x005A3E47	?ConstructBuyActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	Ego_r.pdb name + RELOCATION_MATCH (UI_LIST_BUY_ACTIONS)
+0x005A79E6	?ConstructBuyActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	Ego_r.pdb name + RELOCATION_MATCH (PC_LIST_BUY_ACTIONS)
+0x005A29F4	?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z	Ego_r.pdb name + RELOCATION_MATCH
+0x0059FC17	?AlreadyHaveSpecial@CTCInventoryTrade@@AAE_NJ@Z	Ego_r.pdb (0x00612205) / FableWin.pdb; body = hair / tattoo / title checks (differ/0059fc17.cpp, 716 bytes)
+0x005BF30D	?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z	Ego_r.pdb + FableWin.pdb; called from 0x005A3E47 / 0x005A79E6 with ecx = the hero's category inventory (reloc check 0 mismatches)
+0x0059DA10	?IsItemAffordable@CTCInventoryTrade@@QAE_NJJ@Z	Ego_r.pdb; (itemDefIndex, quantity) pushed by 0x005A3E47 loop and 0x0059FEE3 (`push 1 ; push edi`)
+0x00706000	?IsWearingAppearanceModifier@CTCHeroAttachableAppearanceModifiers@@QBE_NJW4EHeroAttachableAppearanceModifierType@@@Z	Ego_r.pdb + FableWin.pdb; 0x0059FC72 (`push 0 ; push [hair+28h]`)
+0x0071DD50	?GetTattoos@CTCHeroMorph@@QBEXAAV?$vector@V?$CDefPointer@$$CBVCTattooDef@@@@V?$allocator@V?$CDefPointer@$$CBVCTattooDef@@@@@std@@@std@@@Z	Ego_r.pdb + FableWin.pdb; landed; 0x0059FCE6
+0x0071C2D0	?HasAPermanentTattooCoveringArea@CTCHeroMorph@@QBEJXZ	Ego_r.pdb + FableWin.pdb; landed; 0x0059FD18
+0x0059B679	?IsConflicting@CTattooDef@@QBE_NABV1@@Z	Ego_r.pdb + FableWin.pdb; landed; 0x0059FD88

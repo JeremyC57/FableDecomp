@@ -1,0 +1,12 @@
+address	name	grade	grades_used	note
+0059d270	CTCInventoryTrade::AddWantedItemToListPC	RELOCATION_MATCH	1	shared headers (CMenuEntry action slots 151-153 via FABLE_RETAIL_CMENUENTRY_ACTIONPARAMS/_UNSELECTED_VISIBLE); catalog name lacked the PC suffix
+005a3e47	CTCInventoryTrade::ConstructBuyActionsList	RELOCATION_MATCH	1	shared headers; overlay opt-ins CTCINVENTORYBASE_CONTAINABLE + CTCINVENTORYTRADE_ACTIONSLISTS
+005a79e6	CTCInventoryTrade::ConstructBuyActionsListPC	RELOCATION_MATCH	1	PC twin of 0x005A3E47 (PC_LIST_BUY_ACTIONS / PC_MENU_ENTRY_TEMPLATE); catalog name lacked the PC suffix
+005a29f4	CTCInventoryTrade::ConstructSpecialShopList	RELOCATION_MATCH	3	levers: FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE, named CText* cache of the subtitle, "Trade" CCharString as a block-scoped named local
+0059fc17	CTCInventoryTrade::AlreadyHaveSpecial	DIFFER(725v716)	2	shared headers (new overlay opt-ins); residue only in the tattoo loop: LICM of &card->BankIndex (named card) or card/morph esi-edi swap (CSE'd card); see differ/
+0059fee3	CTCInventoryTrade::AddBuyItemToList	DIFFER(1552v1556)	1	shared headers; this vs inventory register choice (retail: inventory ebx, this split memory->esi; c2prio this 17 > inventory 13); ~20 free variants probed, none flips it
+005a6769	CTCInventoryTrade::ConstructNormalShopListPC	DIFFER(1336v1336)	1	shared headers; only the wanted-total sum operand order ([1F0h],[1F4h],[1ECh] v ours [1F4h],[1ECh],[1F0h]); ~40 free variants probed
+005a6ca1	CTCInventoryTrade::AddBuyItemToListPC	DIFFER(1669v1662)	1	shared headers (0x0059FEE3 source + PC frame params + UI_ACTION_TYPE_CLOSE_ACTIVE_TRADE_MENU on Back (slot 68) for an unavailable special); same this/inventory register residue as 0x0059FEE3
+005ad305	CTCInventoryTrade::ApplyTattooCard	parked	0	not reworked this chunk (needs CTCAppearanceMorphBase / CTCHeroMorph AddTattoo / std::set<long> shared headers); differ/ holds the prior chunk's local-model draft unchanged
+005aceda	CTCInventoryTrade::OpenInventory(PC)	held	0	opens with PSoundManager (0x013B8394) vtable +0xB8 calls (SetGroupVolume, slot 46): needs engine/CASoundManager.h slot names -> held per brief
+005a94bd	CTCInventoryTrade::OpenInventory(PC)	held	0	same PSoundManager +0xB8 opening as 0x005ACEDA -> held per brief

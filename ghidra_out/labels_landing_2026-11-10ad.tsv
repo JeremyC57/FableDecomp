@@ -1,0 +1,5 @@
+address	name	evidence
+0059d270	?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z	RELOCATION_MATCH chunk 1009b; Ego_r.pdb / FableWin.pdb spelling
+005a29f4	?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z	RELOCATION_MATCH chunk 1009b; Ego_r.pdb / FableWin.pdb spelling
+005a3e47	?ConstructBuyActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	RELOCATION_MATCH chunk 1009b; Ego_r.pdb / FableWin.pdb spelling
+005a79e6	?ConstructBuyActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	RELOCATION_MATCH chunk 1009b; Ego_r.pdb / FableWin.pdb spelling

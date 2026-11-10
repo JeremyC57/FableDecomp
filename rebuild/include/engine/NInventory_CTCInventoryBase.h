@@ -103,6 +103,13 @@ public:
  // propagated CItem name): whether the hero's inventory component can take one more of the item.
  bool IsSpaceInInventoryForItem(long itemDefIndex) const;              // 0x005BF2ED
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_CONTAINABLE
+ // Retail opt-in (chunk 1009b, rows 0x005A3E47 / 0x005A79E6 CTCInventoryTrade::ConstructBuyActionsList(PC)): Ego_r.pdb + FableWin.pdb
+ // ?GetAmountOfItemsContainable@CTCInventoryBase@NInventory@@QBEJJ@Z, out of line in retail at 0x005BF30D (0x20 after
+ // IsSpaceInInventoryForItem 0x005BF2ED, the Ego_r donor pair 0x0062209A / 0x006220C0): how many more of the item the hero's
+ // inventory component can take. Declaration only.
+ long GetAmountOfItemsContainable(long itemDefIndex) const;            // 0x005BF30D
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
  // chunk 764 (row 0x005BE284): Ego_r.pdb ?GetSelectedCategory@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@XZ (0x005BCACE),
  // ?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z (const, 0x005BDF08) and the protected
