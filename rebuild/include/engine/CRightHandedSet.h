@@ -42,6 +42,12 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     CRightHandedSet() {}
     CRightHandedSet(const C3DVector& a, const C3DVector& b);
 #endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_DEFAULT_IDENTITY
+    // Retail opt-in (chunk 1014, row 0x00703210 CThingObject::Create): FableWin.pdb ??0CRightHandedSet@@QAE@XZ (inline in retail:
+    // Create builds the default set in place, `mov [esp+18h],0 ; mov [esp+1Ch],0 ; mov [esp+20h],3F800000h` Up = (0,0,1), then
+    // Forward = (0,1,0)). Mutually exclusive with the other default-constructor opt-ins.
+    CRightHandedSet() { Up.X = 0.0f; Up.Y = 0.0f; Up.Z = 1.0f; Forward.X = 0.0f; Forward.Y = 1.0f; Forward.Z = 0.0f; }
+#endif
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES
     // Chunk 771 (row 0x006A5D90): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z (out of line at 0x00A229E0; the level script's
     // AngleXY / AngleYZ / AngleXZ triple). A declaration only.

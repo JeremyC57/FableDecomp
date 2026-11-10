@@ -1,0 +1,2 @@
+address	catalog_length	correct_length	evidence
+009e3f60	576	189	CPixelFormat::ConvertRGBToPFDData ends with `ret 8` at 0x009E401A (0x009E3F60 + 0xBA + 3 = 189 bytes) followed by int3 padding; the 576-byte row runs through ~15 further functions up to 0x009E41A0 (the next starts are visible as fresh prologues in dis_all.txt). Graded against 189 with QLEN=189 (pl.sh / tools/ql.py).

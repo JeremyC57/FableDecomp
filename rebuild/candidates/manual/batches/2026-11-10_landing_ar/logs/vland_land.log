@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00703210   RELOCATION_MATCH PASS   Create
+007ea2f0   RELOCATION_MATCH PASS   GetTargetingPositionOnThing
+009fa620   RELOCATION_MATCH PASS   GetNextValidDimensions
+00b84720   RELOCATION_MATCH PASS   AddSubPrimitive
+
+WINS: 4
+  00703210 RELOCATION_MATCH CThingObject::?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z
+  007ea2f0 RELOCATION_MATCH NTargeting::?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z
+  009fa620 RELOCATION_MATCH CTexture::?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z
+  00b84720 RELOCATION_MATCH CEngineSubPrimitiveRenderer::?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CThingObject_Create_00703210
+  NTargeting_GetTargetingPositionOnThing_007ea2f0
+  CTexture_GetNextValidDimensions_009fa620
+  CEngineSubPrimitiveRenderer_AddSubPrimitive_00b84720

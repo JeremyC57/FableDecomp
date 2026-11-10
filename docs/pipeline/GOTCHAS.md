@@ -2679,3 +2679,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Before parking an inline-expansion residue as forceinline-only, try large `/d2inlT` values: VC7.1 expands 0x00B41770's same-TU PeekLandscapeHeight at T301 and not at T300 or the default.
 - Retail's `push a ; jle ; push b ; jmp` into one cross-jumped call is `if (c) F(a, x); else F(0, x);`, not `F(c ? a : 0, x)` (0x005F6793, 0x005F64DD).
 - An `#include` that lands inside an open `namespace` still grades RELOCATION_MATCH (relocations are masked) but binds `?Sym@Ns@@...`: check the object's symbols, not only the grade (0x00557D20).
+- Two helpers each expanded twice can exceed VC7.1's default inline budget: try `/d2inlT` before FABLE_FORCEINLINE (0x009FA620 GFGetTopBit / GFGetNextPowerOfTwo expand at T180, not T160).
+- A scaled value written back into a parameter moves temporaries; a named float local keeps retail's schedule (0x00B84720).

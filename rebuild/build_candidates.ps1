@@ -391272,6 +391272,35 @@ $catalog = @(
         TestSource = '00/63/CWorldMap_GetThemeFaceNormalAt_0063ab90_test.cpp'
         PassPattern = '0063ab90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00703210'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_Create_00703210.cpp'
+        TestSource = '00/70/CThingObject_Create_00703210_test.cpp'
+        PassPattern = '00703210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ea2f0'
+        Module = 'NTargeting'
+        Source = '00/7e/NTargeting_GetTargetingPositionOnThing_007ea2f0.cpp'
+        TestSource = '00/7e/NTargeting_GetTargetingPositionOnThing_007ea2f0_test.cpp'
+        PassPattern = '007ea2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fa620'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_GetNextValidDimensions_009fa620.cpp'
+        TestSource = '00/9f/CTexture_GetNextValidDimensions_009fa620_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT180'
+        PassPattern = '009fa620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84720'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_AddSubPrimitive_00b84720.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_AddSubPrimitive_00b84720_test.cpp'
+        PassPattern = '00b84720_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

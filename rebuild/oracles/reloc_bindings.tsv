@@ -39196,3 +39196,5 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??0?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@QAE@PAVCActiveSound@CSoundEmitterLH@@@Z	00aac820	00aac1d0
 ??0CActiveSound@CSoundEmitterLH@@QAE@JPAVCSoundBankLH@@M@Z	00aab910	00aac1d0
 ?push_back@?$list@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@V?$allocator@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@Z	00aaccc0	00aac1d0
+?ConstructFromParams@CThingObject@@IAE_NJABVC3DVector@@JKABVCCharString@@@Z	00703050	00703210
+?ConvertInterpolateToBulletTimeInterpolate@CBulletTimeManager@@QBEMM@Z	004c6010	007ea2f0

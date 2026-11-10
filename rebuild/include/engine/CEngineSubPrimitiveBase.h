@@ -17,6 +17,11 @@ private:
  CEngineInternalPrimitiveBase* Parent;
  CEngineSubPrimitiveBase* NextSubPrimitive;
  CEnginePrimitiveManager* Manager;
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_RENDERER_FRIEND
+ // Opt-in (chunk 1014, row 0x00B84720 CEngineSubPrimitiveRenderer::AddSubPrimitive): the renderer stores the manager straight into
+ // +0x14 (`mov [esi+14h],ecx`); neither PDB has a Manager setter, so the renderer is a friend. No layout change.
+ friend class CEngineSubPrimitiveRenderer;
+#endif
  static CSimpleMemoryPool* MemoryPool;
 };
 FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveBase)==24);

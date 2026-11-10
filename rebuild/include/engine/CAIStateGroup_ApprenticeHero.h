@@ -37,6 +37,11 @@ protected:
     virtual void Update();                                               // slot 12 0x0092B110
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x00929E80
     virtual bool PracticeSkills();                                       // slot 14 0x0092A8A0
+#ifdef FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO_SCRIPTNAME
+    // Nested opt-in (chunk 1014, row 0x00929FC0): Ego_r.pdb ?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z
+    // (protected; called by GetDummy 0x0092A0C0 and LookAtMap 0x0092AFE0). Declaration only: no layout change.
+    CThingGameObject* GetObjectWithScriptName(const CCharString& script_name);   // 0x00929FC0
+#endif
 public:
     long              NextFramePractice;                                 // +0x14
     CThingGameObject* PDummy;                                            // +0x18

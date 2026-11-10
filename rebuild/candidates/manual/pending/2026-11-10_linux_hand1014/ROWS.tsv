@@ -1,0 +1,15 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+00703210	224	CThingObject::Create	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand389/differ/00703210.cpp		00703110 00703150 007031c0 007032f0 00703470 007034d0
+006a16a0	784	CTCCarrying::RemoveThingInCarrySlot	unworked				006a1540 006a15a0 006a1620 006a19b0 006a1d60
+00b84720	144	CEngineSubPrimitiveRenderer::AddSubPrimitive	unworked		rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b84720.cpp		00b84580 00b846e0 00b847b0 00b847d0 00b84990
+007ea2f0	416	NTargeting::GetTargetingPositionOnThing	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/007ea2f0.cpp	004c0560 004c9920	007ea290 007ea2b0 007ea2d0 007ea490 007ea510 007ea550
+009e3f60	576	CPixelFormat::ConvertRGBToPFDData	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand413/differ/009e3f60.cpp		009e3970 009e41a0 009e41b0 009e41c0
+006cbac0	880	CTCCreatureNavigation::GetNextNavPosOnRoute	unworked				006cba20 006cba50 006cba80 006cbe30 006cc170
+00a229e0	704	CRightHandedSet::CRightHandedSet	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a229e0.cpp		00a224d0 00a22530 00a22590 00a22ca0 00a22e10 00a22f80
+006d6fa0	224	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand387/differ/006d6fa0.cpp		006d6ea0 006d6ee0 006d6f60 006d7080 006d7120 006d7170
+00929fc0	256	CAIStateGroup_ApprenticeHero::GetObjectWithScriptName	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand526/differ/00929fc0.cpp		00929ea0 00929f10 00929f70 0092a0c0 0092a220
+005dcc00	272	CAnimationSet::GetRandomAnim	unworked		rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/005dcc00.cpp		005dc9b0 005dca60 005dcb00 005dcf70 005dd090
+00725f10	592	CThingSearchTools::GetAllThingsInRoughArea	unworked		rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00725f10.cpp	0049c700	00725e60 00725ec0 00725ef0 00726340 00726610
+00681e60	640	CTCCreatureOpinionOfHero::SetPersonalityOverride	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand475/differ/00681e60.cpp		00681ba0 00681e30 006820e0 00682140 006821e0
+009fa620	352	CTexture::GetNextValidDimensions	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/009fa620.cpp		009fa340 009fa450 009fa4e0
+006e94d0	432	CCombatManager::Combat_CheckRingRangeToTarget	unworked		rebuild/candidates/manual/pending/2026-10-27_linux_hand644/differ/006e94d0.cpp		006e9390 006e93c0 006e9450 006e9680 006e9700 006e97a0

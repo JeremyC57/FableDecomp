@@ -335,6 +335,11 @@ public:
     V& operator[](const K&);
 #endif
     size_t size() const { return _M_t.size(); }
+#ifdef FABLE_RETAIL_STLP_MAP_EMPTY
+    // Per-TU opt-in (chunk 1014, row 0x007EA2F0 via CBulletTimeManager::IsBulletTimeActive): STLport 4.6 _map.h
+    // `bool empty() const { return _M_t.empty(); }` (the node count +4 tested in place).
+    bool empty() const { return _M_t.empty(); }
+#endif
     void clear(){_M_t.clear();}
     iterator find(const K& key){return _M_t.find(key);}
     pair<iterator,bool> insert(const value_type& value){return _M_t.insert_unique(value);}

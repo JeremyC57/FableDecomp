@@ -223,7 +223,13 @@ public:
     const C3DVector& GetPosition() const { return Position; }
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_INTERPOLATED_POSITION
     // Retail opt-in (Codex pass17): original const value-return overload;0049d150.
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_INTERPOLATED_POSITION_BODY
+    // Nested opt-in (chunk 1014, row 0x007EA2F0): the body of the out-of-line 0x0049D150 (landed as GetInterpolatedPosition), expanded
+    // where the TU sees it: OldPosition + (Position - OldPosition) * interpolate.
+    C3DVector GetPosition(float interpolate) const { return (Position - OldPosition) * interpolate + OldPosition; }
+#else
     C3DVector GetPosition(float interpolate) const;
+#endif
 #endif
     float GetRadius() const { return Radius; }
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION

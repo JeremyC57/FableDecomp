@@ -81,7 +81,14 @@ public:
     long GetTrainableStatMaxLevel(EHeroTrainableStatType)const;
 #endif
     long GetCostToUpgradeTrainableStat(EHeroTrainableStatType)const;
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_CATEGORY_BODY
+    // Retail opt-in (chunk 1014, row 0x006D6FA0 GetTrainableStatPossibleLevelUpAmount): the same-TU body of the out-of-line
+    // GetCategoryTrainableStatIsIn (0x006D6850), which the row expands (`mov edx,[esi+3Ch]` off &StatLevels[stat]). Needs
+    // FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS (the vector layout) and FABLE_RETAIL_CHEROSTATSDEF_STATLEVELS.
+    EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat)const{return PHeroStatsDef->StatLevels[stat].ExperienceStat;}
+#else
     EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType)const;
+#endif
     long GetStatExperience(EHeroExperienceStatCategory)const;
     long GetTrainableStatPossibleLevelUpAmount(EHeroTrainableStatType,float&);
     // Chunk 735 (AddAbilityToList(PC)): ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z 0x006D7B80.

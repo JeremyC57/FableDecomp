@@ -12,7 +12,16 @@ public:
  CEngineSubPrimitiveRenderer();
  virtual unsigned long PeekSceneFilterFlags()const;
  void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long,CEnginePrimitiveManager*);
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADDTYPED
+ // Nested opt-in (chunk 1014, row 0x00B84720): FableWin.pdb ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@
+ // PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z (FableWin 0x02DB2510, right after ??0CSortElement@...@QAE@KPAVCEngineSubPrimitiveBase@@@Z
+ // 0x02DB2490); CSortElement is Ego_r.pdb's {SortValue, SubPrimitive} (8 bytes) with FableWin's (sort value, sub-primitive) constructor.
+ void AddSubPrimitive(ESubPrimitiveType type,CEngineSubPrimitiveBase* subPrimitive,float distance,CEnginePrimitiveManager* manager);   // 0x00B84720
+ class CSortElement {public:unsigned long Key;void* Primitive;
+  CSortElement(unsigned long sortValue,CEngineSubPrimitiveBase* subPrimitive):Key(sortValue),Primitive(subPrimitive){}};
+#else
  class CSortElement {public:unsigned long Key;void* Primitive;};
+#endif
  class CSubPrimitiveList {public:CArray<CSortElement> Elements;ERenderPassType RenderPass,PreRenderPass;bool BoundingVolumePass,RequiresStableSort,Sorted,Enable;};
 private:
  float MaxSortDistance,SortDistanceMultiplier;

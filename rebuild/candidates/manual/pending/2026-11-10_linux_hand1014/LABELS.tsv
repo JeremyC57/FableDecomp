@@ -1,0 +1,23 @@
+address	name	evidence
+0x00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	Ego_r.pdb + FableWin.pdb; RELOCATION_MATCH
+0x00703050	?ConstructFromParams@CThingObject@@IAE_NJABVC3DVector@@JKABVCCharString@@@Z	Ego_r.pdb protected; called from 0x00703210 with the Create arguments
+0x006A06E0	??0CTCParamsPhysicsBase@@QAE@ABVC3DVector@@ABVCRightHandedSet@@@Z	Ego_r.pdb; body CBaseClassNonCopyable() 0x0099A2F0 + vtable 0x0125C818 + copies; called twice by 0x00703210
+0x00B84720	?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z	FableWin.pdb typed overload; RELOCATION_MATCH
+0x00B85EC0	?_M_insert_overflow@?$vector@VCSortElement@@V?$allocator@VCSortElement@@@std@@@std@@IAEXPAVCSortElement@@ABV3@ABU__false_type@@I_N@Z	relocation of the matched 0x00B84720 object (STLport push_back grow)
+0x009FA620	?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z	Ego_r.pdb; RELOCATION_MATCH
+0x0099FDB0	?GFGetTopBit@@YIKK@Z	FableWin.pdb name set (GFGetTopBit / GFGetNextPowerOfTwo); body = the expanded copies inside matched 0x009FA620
+0x007EA2F0	?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z	Ego_r.pdb 0x007E4530; RELOCATION_MATCH
+0x004C6010	?ConvertInterpolateToBulletTimeInterpolate@CBulletTimeManager@@QBEMM@Z	Ego_r.pdb; called from matched 0x007EA2F0 on the const manager
+0x004C0560	?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z	Ego_r.pdb; relocation of matched 0x007EA2F0 (x4)
+0x004C9920	?IsAffectedByBulletTime@CThing@@QBE_NXZ	Ego_r.pdb; relocation of matched 0x007EA2F0
+0x00419680	?IsBulletTimeActive@CBulletTimeManager@@QBE_NXZ	Ego_r.pdb; body expanded inside matched 0x007EA2F0
+0x0049D150	?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z	Ego_r.pdb; body expanded inside matched 0x007EA2F0
+0x006D6FA0	?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z	Ego_r.pdb
+0x006D6850	?GetCategoryTrainableStatIsIn@CTCHeroExperience@@QBE?AW4EHeroExperienceStatCategory@@W4EHeroTrainableStatType@@@Z	Ego_r.pdb; body expanded in 0x006D6FA0
+0x009E3F60	?ConvertRGBToPFDData@CPixelFormat@@QBEXABVCRGBColour@@PAE@Z	FableWin.pdb; extent 189 (BOUNDS_FIX.tsv)
+0x00929FC0	?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z	Ego_r.pdb; callers GetDummy 0x0092A0C0, LookAtMap 0x0092AFE0
+0x005DCC00	?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z	Ego_r.pdb + FableWin.pdb
+0x005DC020	?FindFirstAnimWithName@CAnimationSet@@QBEPBU?$pair@KVCAnimationEntry@@@std@@ABVCCharString@@@Z	Ego_r.pdb; called from 0x005DCC00
+0x00725F10	??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_IsNot@@AAV?$vector@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z	Ego_r.pdb instance; relocations: vector overflow 0x006F2680, CThingFilter_IsNot::operator() 0x006A76A0, type mask 0xF
+0x006E94D0	?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	Ego_r.pdb (catalog Combat_CheckRingRangeToTarget is descriptive); callers 0x0093DBF6/0x0093DCFA/0x0093DE7A
+0x00A229E0	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	prior draft identity (Ego_r.pdb)

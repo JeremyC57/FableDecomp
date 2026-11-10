@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+00703210	CThingObject::Create	RELOCATION_MATCH	4	physics component read through GetPhysicsTC() per branch + the real CTCParamsPhysicsBase ctor body visible (noinline, new shared header)
+00b84720	CEngineSubPrimitiveRenderer::AddSubPrimitive	RELOCATION_MATCH	2	scaled distance in a named float local (not the parameter) through GFFloatToLongNear; Retail-asm fistp 0x00B84735
+009fa620	CTexture::GetNextValidDimensions	RELOCATION_MATCH	3	IsNeedingPower2Textures accessor + GFGetNextPowerOfTwo/GFGetTopBit (FableWin names) FABLE_FORCEINLINE in a new shared header
+007ea2f0	NTargeting::GetTargetingPositionOnThing	RELOCATION_MATCH	4	shared headers (const GetBulletTimeManager, inline IsBulletTimeActive, GetPosition(float) body) + fallback as GetPosition(t) + C3DVector(0,0,0.25); 2 of the 4 were SRC_FAIL header bring-up
+006d6fa0	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	DIFFER(228v220)	4	differ/: c2 hoists TrainableStatLevels[stat] and strength-reduces the level index; retail re-reads it per pass (diag probe 225v220)
+009e3f60	CPixelFormat::ConvertRGBToPFDData	DIFFER(179v189)	3	differ/: extent is 189 bytes (row 576 spans ~16 functions, BOUNDS_FIX.tsv); retail re-reads every GD3DFormats bit count (no load CSE)
+00929fc0	CAIStateGroup_ApprenticeHero::GetObjectWithScriptName	DIFFER(265v242)	5	differ/: found-path ~list inlined (retail calls 0x006FE660), GFRandom result in edx not ecx
+005dcc00	CAnimationSet::GetRandomAnim	DIFFER(278v264)	2	differ/: register allocation (retail this=ebp, iterator=edi homed [esp+28h], &anim=ebx)
+00725f10	CThingSearchTools::GetAllThingsInRoughArea	DIFFER(733v590)	1	differ/: header ROUGHAREABODY instantiation is far off (ours frame 0x58 v retail 0x50; retail walks the layer table by pointer); prior local-model draft closer; parked
+006e94d0	CCombatManager::IsCreatureInAttackRingSector	DIFFER(426v426)	2	prior draft regraded (ours frame 0x24 v retail 0x1c, instruction-identical otherwise; second find key not packed onto the first); named-uid-local variant no change; local model; parked
+00681e60	CTCCreatureOpinionOfHero::SetPersonalityOverride	DIFFER(626v626)	1	prior draft regraded as-is (one SIB byte); local model, needs COpinionPersonalityDef/COpinionOfHeroDef headers; parked
+00a229e0	CRightHandedSet::CRightHandedSet	DIFFER(691v689)	1	prior draft regraded as-is (frame 0x50 v 0x4c, x87 spill order); parked
+006a16a0	CTCCarrying::RemoveThingInCarrySlot	UNWORKED	0	parked: 784 bytes, many callees, no prior draft; not reached in this chunk
+006cbac0	CTCCreatureNavigation::GetNextNavPosOnRoute	UNWORKED	0	parked: 880 bytes, switch + virtual calls, no prior draft; not reached in this chunk

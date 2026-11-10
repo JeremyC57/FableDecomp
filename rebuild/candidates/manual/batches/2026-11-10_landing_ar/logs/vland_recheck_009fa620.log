@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009fa620   RELOCATION_MATCH PASS   009fa620
+
+WINS: 1
+  009fa620 RELOCATION_MATCH m::?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z

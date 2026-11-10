@@ -197,6 +197,11 @@ public:
     // Chunk 734 (row 0x004A5A40): FableWin.pdb ?GetBulletTimeManager@CWorld@@QAEAAVCBulletTimeManager@@XZ, inline in retail
     // (UpdateFrame holds the scoped_ptr's pointer in edi across IsBulletTimeActive / IsTimeForFullUpdate, 0x004A5D3F).
     CBulletTimeManager& GetBulletTimeManager() { return *PBulletTimeManager_ptr; }
+#ifdef FABLE_RETAIL_CWORLD_BULLETTIME_CONST
+    // Retail opt-in (chunk 1014, row 0x007EA2F0): FableWin.pdb ?GetBulletTimeManager@CWorld@@QBEABVCBulletTimeManager@@XZ (the const
+    // overload, inline: the row reads +0x68 off the const world). No layout change.
+    const CBulletTimeManager& GetBulletTimeManager() const { return *PBulletTimeManager_ptr; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_COMBATMANAGER
     // Retail opt-in (chunk 892, row 0x0096E830 CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureNearCombatPosition): FableWin.pdb
     // ?GetCombatManager@CWorld@@QAEAAVCCombatManager@@XZ (0x01D8B290; inline in retail: `call GetWorld ; mov ecx,[eax+4Ch]` before the

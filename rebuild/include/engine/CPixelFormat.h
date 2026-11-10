@@ -21,9 +21,30 @@ public:
  unsigned long GetNoRBits() const {return GD3DFormats[FormatIndex].RBits;}
  unsigned long GetNoGBits() const {return GD3DFormats[FormatIndex].GBits;}
  unsigned long GetNoBBits() const {return GD3DFormats[FormatIndex].BBits;}
+#ifdef FABLE_RETAIL_CPIXELFORMAT_CONVERT
+ // (chunk 1014) the FableWin.pdb chain: each position shift is the previous position plus that channel's bit count (blue at 0), every
+ // count re-read from GD3DFormats[FormatIndex] (retail 0x009E3F60 adds blue + green + red for alpha, `[eax+129BA58h]` first).
+ unsigned long GetRPosShift() const {return GetGPosShift()+GetNoGBits();}
+ unsigned long GetAPosShift() const {return GetRPosShift()+GetNoRBits();}
+#else
  unsigned long GetRPosShift() const {return GetNoBBits()+GetNoGBits();}
  unsigned long GetAPosShift() const {const CD3DFormatInfo& format=GD3DFormats[FormatIndex];return format.RBits+format.GBits+format.BBits;}
+#endif
  unsigned long GetAMask() const {return ((1UL<<GetNoABits())-1)<<GetAPosShift();}
+#ifdef FABLE_RETAIL_CPIXELFORMAT_CONVERT
+ // Retail opt-in (chunk 1014, row 0x009E3F60 ConvertRGBToPFDData): FableWin.pdb ?GetRScaleShift / GetGScaleShift / GetBScaleShift /
+ // GetAScaleShift / GetGPosShift / GetBPosShift / GetByteColourDepth @CPixelFormat@@QBEKXZ (debug bodies 0x0308EFF0..0x0308F120, inline in
+ // retail: 8 minus the channel's bit count, the position shifts as running sums from blue, the byte depth BitDepth / 8 signed) and
+ // ?ConvertRGBToPFDData@CPixelFormat@@QBEXABVCRGBColour@@PAE@Z (0x009E3F60).
+ unsigned long GetRScaleShift() const {return 8-GetNoRBits();}
+ unsigned long GetGScaleShift() const {return 8-GetNoGBits();}
+ unsigned long GetBScaleShift() const {return 8-GetNoBBits();}
+ unsigned long GetAScaleShift() const {return 8-GetNoABits();}
+ unsigned long GetGPosShift() const {return GetBPosShift()+GetNoBBits();}
+ unsigned long GetBPosShift() const {return 0;}
+ unsigned long GetByteColourDepth() const {return GD3DFormats[FormatIndex].BitDepth/8;}
+ void ConvertRGBToPFDData(const class CRGBColour& colour,unsigned char* data) const;   // 0x009E3F60
+#endif
 };
 #endif
 #else

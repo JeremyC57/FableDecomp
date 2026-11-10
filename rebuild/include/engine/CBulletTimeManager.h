@@ -8,6 +8,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_INTERPOLATE
+#include "stlport/fable_map.h"
+#endif
 
 class CPlayerManager;
 class CWorld;
@@ -20,7 +23,17 @@ public:
     // Ego_r.pdb / FableWin.pdb spellings: ?IsBulletTimeActive@CBulletTimeManager@@QBE_NXZ 0x00419680 (landed),
     // ?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ 0x004C6060 (landed; the bound QAE spelling drops the const) and
     // ?FrameUpdate@CBulletTimeManager@@QAEXXZ 0x004C5E90 (an empty body in retail, a lone `ret`).
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_INTERPOLATE
+    // Nested opt-in (chunk 1014, row 0x007EA2F0 NTargeting::GetTargetingPositionOnThing): the same-TU body of IsBulletTimeActive
+    // (the landed 0x00419680 body, expanded there: `mov cl,[eax+0Ch] ; test cl,cl ; jne` then the map's node count +4) and Ego_r.pdb
+    // ?ConvertInterpolateToBulletTimeInterpolate@CBulletTimeManager@@QBEMM@Z (out of line at 0x004C6010). Needs FABLE_RETAIL_STLP_MAP_EMPTY and
+    // FABLE_RETAIL_STLP_SET_EMPTY defined before the first STLport include.
+    class CBulletTimeInfo { public: float Multiplier; float SoundPitch; };   // Ego_r.pdb, 8 bytes
+    bool IsBulletTimeActive() const { return Override || !BulletTimeInfoMap.empty(); }   // 0x00419680
+    float ConvertInterpolateToBulletTimeInterpolate(float interpolate) const;            // 0x004C6010
+#else
     bool IsBulletTimeActive() const;                             // 0x00419680
+#endif
     bool IsTimeForFullUpdate() const;                            // 0x004C6060
     void FrameUpdate();                                          // 0x004C5E90
 #ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_REMOVESLOWDOWN
@@ -29,7 +42,11 @@ public:
     void RemoveBulletTimeSlowdownMultiplier(void* key);          // 0x004C6140
 #endif
 #endif
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_INTERPOLATE
+    std::map<void*,CBulletTimeInfo> BulletTimeInfoMap;       // +0x00 (retail STLport map, 12 bytes)
+#else
     unsigned char   BulletTimeInfoMap[0xc];                  // +0x00 map<void_*,CBulletTimeManager::CBulletTimeInfo,std::less<void_*>,std::allocator<std::pair<void_*_const,CBulletTimeManager::CBulletTimeInfo>_>_>
+#endif
     bool            Override;                                // +0x0c
     bool            UseDefaultMultiplier;                    // +0x0d
     unsigned char   _pad_0x0e[0x2];                          // +0x0e

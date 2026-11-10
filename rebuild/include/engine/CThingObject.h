@@ -27,6 +27,15 @@ public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long playerNumber, const CRightHandedSet* rhSet,
                                            unsigned long flags, const CCharString& scriptName);   // 0x00703210
 #endif
+#ifdef FABLE_RETAIL_CTHINGOBJECT_CONSTRUCTFROMPARAMS
+    // Retail opt-in (chunk 1014, row 0x00703210 CThingObject::Create): Ego_r.pdb
+    // ?ConstructFromParams@CThingObject@@IAE_NJABVC3DVector@@JKABVCCharString@@@Z (protected, out of line at 0x00703050; Create
+    // pushes the name, flags, player, position and def index). Declaration only: no layout change.
+protected:
+    bool ConstructFromParams(long defIndex, const C3DVector& position, long playerNumber, unsigned long flags,
+                             const CCharString& scriptName);                                     // 0x00703050
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_STATGETTYPE
     // Chunk 756 (row 0x009104D0): Ego_r.pdb / FableWin.pdb ?StatGetType@CThingObject@@SIJXZ; the thing-type list 5 that
     // GetAllLeafThings<CThingObject> 0x00910A90 scans (`push 5 ; call PeekTypeList`).
