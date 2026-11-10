@@ -6,6 +6,11 @@
 #include "rebuild_abi.h"
 #include "engine/CResource.h"
 class CManagedTextureOwner : public CResource {
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+public:
+    virtual void ReleaseTexture()=0;
+    virtual ~CManagedTextureOwner();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CManagedTextureOwner) == 0x1c);
 #endif // FABLE_ENGINE_CMANAGEDTEXTUREOWNER_H

@@ -6,14 +6,39 @@
 #include "engine/CDefPointer.h"
 #include "engine/CHeroCombatDef.h"
 #include "engine/EHeroExperienceStatCategory.h"
+#ifdef FABLE_RETAIL_EHEROTRAINABLESTATTYPE
+#include "engine/EHeroTrainableStatType.h"
+#else
 enum EHeroTrainableStatType;                                             // MS forward enum (chunk 735)
+#endif
 #include "engine/EHeroAbility.h"
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE
 #include "stlport/fable_containers.h"
 #endif
 class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHeroStatsDef;
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS
+#include "engine/CHeroStatsDef.h"
+#include "stlport/fable_containers.h"
+#endif
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_MULTISTRIKE
+#include "engine/CComboMultiplierData.h"
+#include "engine/CWorld.h"
+class CHitParameters;
+#endif
 class CTCHeroExperience:public CTCBase{
 public:
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_MULTISTRIKE
+    void AddSuccessfulMultistrikeHit(const CHitParameters& hit);
+private:
+    const CComboMultiplierData& GetActiveComboMultiplierData()const;
+    float GetAttackVariationMultiplier()const;
+    void UpdateComboMultiplier(bool increase);
+    void AddAttackOfTypeToAttackHistory(EDamageAttribute type) {
+        AttackHistory.pop_front();
+        AttackHistory.push_back(std::make_pair(type,GetWorld().GetFrame()));
+    }
+public:
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_HERO_EXPERIENCE;}
     const CHeroCombatDef& PeekHeroCombatDef()const{return *PHeroCombatDef;}
     void AddTrainableStatExperience(EHeroExperienceStatCategory,long);
@@ -21,8 +46,20 @@ public:
     // FableWin.pdb spellings): GetTrainableStatLevel 0x006D6520 (QBE), GetTrainableStatMaxLevel 0x006D6770 (QBE),
     // GetCostToUpgradeTrainableStat 0x006D67B0 (QBE), GetCategoryTrainableStatIsIn 0x006D6850 (QBE), GetStatExperience
     // 0x006D6510 (QBE), GetTrainableStatPossibleLevelUpAmount 0x006D6FA0 (QAE, the fraction by reference).
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS
+    bool IsToAutoBlock()const;
+    bool IsBlockRecoilAnimToConserveAnimationHandedness()const;
+    long GetTrainableStatLevel(EHeroTrainableStatType stat)const{return TrainableStatLevels[stat];}
+    long GetTrainableStatMaxLevel(EHeroTrainableStatType stat)const {
+        const std::vector<CAbilityTrackLevelDef>& abilities=PHeroStatsDef->StatLevels[stat].Abilities;
+        long maxLevel=(abilities.end()-abilities.begin())-1;
+        if(maxLevel<0)maxLevel=0;
+        return maxLevel;
+    }
+#else
     long GetTrainableStatLevel(EHeroTrainableStatType)const;
     long GetTrainableStatMaxLevel(EHeroTrainableStatType)const;
+#endif
     long GetCostToUpgradeTrainableStat(EHeroTrainableStatType)const;
     EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType)const;
     long GetStatExperience(EHeroExperienceStatCategory)const;
@@ -48,7 +85,11 @@ public: virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePre
 public: virtual void Copy(const CTCBase &);
 protected: virtual void OnSerialise(CPersistContext &,bool);
 public: virtual ~CTCHeroExperience();
-#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_MULTISTRIKE
+private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;unsigned char StatExperiencePoints[12],TrainableStatLevels[12];float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];std::list<std::pair<EDamageAttribute,long> > AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
+#elif defined(FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS)
+private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;std::vector<long> StatExperiencePoints,TrainableStatLevels;float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];unsigned long AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
+#elif defined(FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE)
 // Chunk 764 (row 0x006D7B80 GetAbilityPossibleLevelUpAmount): Ego_r.pdb StatExperiencePoints is std::vector<long> (+0x18, retail
 // STLport 12 bytes; the row indexes `[ecx+eax*4]` off _M_start). Needs stlport/fable_containers.h (included above).
 private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;std::vector<long> StatExperiencePoints;unsigned char TrainableStatLevels[12];float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];unsigned long AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;

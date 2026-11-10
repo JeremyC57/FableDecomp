@@ -1,0 +1,73 @@
+addr       parity           behav  name
+005b4eba   WARN RELOC_NAME: ??1?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAE@XZ -> 005bb04f labelled '_global::StdList_Dtor_005bb04f'
+005b4eba   WARN RELOC_NAME: ??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z -> 0042ab58 labelled '_global::StdList_Ctor_0042ab58'
+005b4eba   WARN RELOC_NAME: ??0?$_List_base@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@V?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@std@@@std@@QAE@ABV?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@1@@Z -> 005bab9d labelled 'DoublyLinkedList_InitializeEmpty_12Bytes'
+005b4eba   WARN RELOC_NAME: ?IsValidStockItem@CTCShop@@QBE_NJ@Z -> 007723d0 labelled 'CTCShop::HasDefaultStockItem'
+005b4eba   WARN RELOC_NAME: ??1?$_List_base@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@V?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@std@@@std@@QAE@XZ -> 005bb5ae labelled '_global::StdList_Dtor_005bb5ae'
+005b4eba   WARN RELOC_NAME: ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ -> 0042ab73 labelled 'std::list<long, std::allocator<long>>::~list'
+005b4eba   RELOCATION_MATCH PASS   CalculateArmorValues
+00417a58   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00417a58   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00417a58   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00417a58   WARN RELOC_NAME: ?RegisterAtmosSoundBank@CASoundManager@@QAEXKABVCWideString@@0@Z -> 00991c10 labelled 'CMainGameComponent_RegisterSoundBank'
+00417a58   RELOCATION_MATCH PASS   InitSound
+005f519f   WARN RELOC_NAME: ??0?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z -> 005f8944 labelled 'StdList_Construct_005f8944'
+005f519f   WARN RELOC_NAME: ?push_back@?$list@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXABVCWideString@@@Z -> 005f8f6f labelled 'Lua_PushCClosure_005f8f6f'
+005f519f   WARN RELOC_NAME: ??1?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ -> 005f900a labelled 'std::list<T_005f900a>::~list'
+005f519f   RELOCATION_MATCH PASS   ConstructScreen
+00b801f0   RELOCATION_MATCH PASS   _M_fill_insert
+006d6cb0   RELOCATION_MATCH PASS   IsToAutoBlock
+006d68d0   RELOCATION_MATCH PASS   IsBlockRecoilAnimToConserveAnimationHandedness
+0074e140   RELOCATION_MATCH PASS   GeneratePopoutVectorFromVars
+00a56670   RELOCATION_MATCH PASS   GFGetHermiteSplinePosition
+006d8830   RELOCATION_MATCH PASS   AddSuccessfulMultistrikeHit
+0099bb80   WARN RELOC_ALIAS: _wcslen -> 00bfed94 is the import thunk 'MSVCR71.DLL::wcslen'
+0099bb80   WARN RELOC_ALIAS: __vsnwprintf -> 00bfed9a is the import thunk 'MSVCR71.DLL::_vsnwprintf'
+0099bb80   RELOCATION_MATCH PASS   SprintfDynamic
+00a358f0   MATCH            PASS   GetPositionMatrixFromRHSet
+00a22ca0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a22ca0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00a22ca0   RELOCATION_MATCH PASS   GetAngleXZ
+00c3d030   MATCH            PASS   GetResourceCounts
+007bc6fa   RELOCATION_MATCH PASS   InitMovement
+00868e50   RELOCATION_MATCH PASS   GetArmourWeightsFromThing
+008eebe0   RELOCATION_MATCH PASS   BackplaneFriction
+00ba48f0   RELOCATION_MATCH PASS   SetupStaticBlocksNoMorph
+
+WINS: 17
+  005b4eba RELOCATION_MATCH CTCInventoryClothing::?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z
+  00417a58 RELOCATION_MATCH CMainGameComponent::?InitSound@CMainGameComponent@@IAEXXZ
+  005f519f RELOCATION_MATCH CTCInventoryAbilities::?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  00b801f0 RELOCATION_MATCH std::vector<CTVertexSeaBackground>::?_M_fill_insert@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@QAEXPAVCTVertexSeaBackground@@IABV3@@Z
+  006d6cb0 RELOCATION_MATCH CTCHeroExperience::?IsToAutoBlock@CTCHeroExperience@@QBE_NXZ
+  006d68d0 RELOCATION_MATCH CTCHeroExperience::?IsBlockRecoilAnimToConserveAnimationHandedness@CTCHeroExperience@@QBE_NXZ
+  0074e140 RELOCATION_MATCH CTCContainerRewardHero::?GeneratePopoutVectorFromVars@CTCContainerRewardHero@@ABE?AVC3DVector@@JJJM@Z
+  00a56670 RELOCATION_MATCH _global::?GFGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z
+  006d8830 RELOCATION_MATCH CTCHeroExperience::?AddSuccessfulMultistrikeHit@CTCHeroExperience@@QAEXABVCHitParameters@@@Z
+  0099bb80 RELOCATION_MATCH CWideString::?SprintfDynamic@CWideString@@QAAXPBGZZ
+  00a358f0 MATCH C3DMeshObject::?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z
+  00a22ca0 RELOCATION_MATCH CRightHandedSet::?GetAngleXZ@CRightHandedSet@@QBEMXZ
+  00c3d030 MATCH CCodaContext::?GetResourceCounts@CCodaContext@@QBEPAU_CRESOURCEDESC@@PAU2@@Z
+  007bc6fa RELOCATION_MATCH NThingShot::CTCShotDefinitionProjectilePredictive::?InitMovement@CTCShotDefinitionProjectilePredictive@NThingShot@@MAEXXZ
+  00868e50 RELOCATION_MATCH _global::?GetArmourWeightsFromThing@?A0x
+  008eebe0 RELOCATION_MATCH Mass::?BackplaneFriction@Mass@@QAEXMM@Z
+  00ba48f0 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?SetupStaticBlocksNoMorph@CEnginePrimitiveManagerStaticMeshesBase@@SI_NAAVC3DPrimitive2@@ABVC3DMesh2@@AAVC3DTextureStages@@JPBVCGraphicDataBank@@_N@Z
+
+LANDED 17 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryClothing_CalculateArmorValues_005b4eba
+  CMainGameComponent_InitSound_00417a58
+  CTCInventoryAbilities_ConstructScreen_005f519f
+  stdvectorCTVertexSeaBackground_Mfillinsert_00b801f0
+  CTCHeroExperience_IsToAutoBlock_006d6cb0
+  CTCHeroExperience_IsBlockRecoilAnimToConserveAnimationHandedness_006d68d0
+  CTCContainerRewardHero_GeneratePopoutVectorFromVars_0074e140
+  global_GFGetHermiteSplinePosition_00a56670
+  CTCHeroExperience_AddSuccessfulMultistrikeHit_006d8830
+  CWideString_SprintfDynamic_0099bb80
+  C3DMeshObject_GetPositionMatrixFromRHSet_00a358f0
+  CRightHandedSet_GetAngleXZ_00a22ca0
+  CCodaContext_GetResourceCounts_00c3d030
+  NThingShotCTCShotDefinitionProjectilePredictive_InitMovement_007bc6fa
+  global_GetArmourWeightsFromThing_00868e50
+  Mass_BackplaneFriction_008eebe0
+  CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocksNoMorph_00ba48f0

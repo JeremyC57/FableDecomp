@@ -26,7 +26,15 @@ public:
     unsigned char _pad_0x39[0xb3];
 #endif
     long MeleeStrikeNumFramesPauseOnHeroStrike;
+#ifdef FABLE_RETAIL_CHEROCOMBATDEF_BLOCK_THRESHOLDS
+    unsigned char _pad_0xf0[0x14];
+    float AutoBlockSkillThreshold,AutoBlockStrengthThreshold;
+    float MeleeRecoilMaintainHandednessSkillThreshold,MeleeRecoilMaintainHandednessStrengthThreshold;
+    float MeleeRecoilMaintainComboChainSkillThreshold,MeleeRecoilMaintainComboChainStrengthThreshold;
+    unsigned char _pad_0x11c[0x2c];
+#else
     unsigned char _pad_0xf0[0x58];
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CHeroCombatDef)==0x148);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef,MeleeStrikeNumFramesPauseOnHeroStrike)==0xec);

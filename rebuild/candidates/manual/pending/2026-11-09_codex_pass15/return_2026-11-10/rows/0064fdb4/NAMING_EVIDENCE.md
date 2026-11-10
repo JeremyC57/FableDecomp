@@ -1,0 +1,31 @@
+# 0064fdb4 identity and current evidence
+
+Exact method: NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::DrawAt(const C2DVector&,const CEnginePrimitivePrepareInfo&).
+Leaf: `?DrawAt@CQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z`.
+
+Both PDB name sets identify this full public virtual thiscall signature (Ego_r donor00692731; FableWin020ed840). Native RTTI table0125a444 slot0 identifies0064fdb4. The assigned2593-byte span ends at006507d5 and returns with ret8. Every current grade selects exactly this emitted COFF symbol and its whole section.
+
+ORIGINAL_DRAW_LOCALS.json contains raw release/debug donor procedure records, true local names/types and lexical scopes for both bar methods. The donor function sizes and frame maps differ from PC retail; they are corroborating source evidence, not asserted native frame offsets. Attempts089–094 explicitly test their named geometry and lifetime forms.
+
+The complete nested class is in the shared NPlayerGui_CDrawQuestInfo.h, not a local class model. Native fields are Value1c/MaxValue20/MinValue24/colours28,2c/graphics30,34/ThingValid38/PThing39. Native constructor00656b91/94/97 proves ThingUID48/4c and ThingMapNumber50; the complete object is58bytes. No new packing was introduced.
+
+ORIGINAL_RENDER_ENUMS.json gives matching full enum records from both raw donors. Native layer73/74, blend2 and interpolation0 now use ENGINE_2D_LAYER_5/6, ENGINE_PRIMITIVE_BLEND_ALPHA and ENGINE_INTERPOLATION_SET_DEFAULT. ORIGINAL_PRIMITIVE_TYPE.json proves ENGINE_PRIMITIVE_2D_SPRITE=34 for the separate faithful-constructor diagnostics. No donor PDB/game data are to be returned, only extracted textual evidence.
+
+The real IS_THING_ALIVE<const CThingPlayerCreature*> null/dead predicate at0043dbf0 is present; it does not retain the argument reference. The inlining controls preserve its native call at0064fe09 and native expansion of Clear at00650781..006507b4. Plain size mode calls Clear, and the larger budget expands the predicate; selected081/095/096 isolate only that call under the current owner inline ladder.
+
+Native's eleven floor conversions use the original supplied GFFloatToLongFloor helper. No new machine-code helper was authored. Thirty C++ conversion spellings, rerun with the correct fastcall convention, and ten intrinsic families failed to reproduce the native conversion shape. Several spellings canonicalize identically and invalid floor approximations were diagnostics only. See PROBES and FLOOR_DUAL_TEST.cpp. Both original compiler dual-path and portable native tests passed16385 eighth-step values plus15 boundary/exceptional inputs.
+
+Current selected096 body has2593bytes and898instructions, equal in counts but NOT a match: frame164 versus16c, wrong local slots, and final fill geometry/UV push interleaving. The final comment-only FINAL_003_handoff_metadata verification retains the same measured residue with the integrated include tree. Current behavior tests pass601 rendering cases,5 early exits and81 floor checks under VC7.1/GR- and optimized sanitized g++ C++03. The25 added cases cover8 zero,9 negative and8 adjacent positive middle widths, preserve an untouched skipped middle handle, and include a backwards fill rectangle. Existing native quirks, including the second icon using the first icon height, are retained. BOUNDARY_COVERAGE.md and BOUNDARY_EXTENSION_AUDIT.json give exact coverage and remaining limits.
+
+Historical test checkpoint: the preceding576-case fixture and its logs remain preserved in test_history/001_before_middle_boundaries. RESUME_TEST_* and RESUME_BATCH_151_159.json describe that earlier checkpoint; current TEST_RESULTS.json and TEST_* describe601 cases.
+
+Historical097–100 constructor investigation:097/098 faithful sprite constructor body was expanded at all six sites.099 restored out-of-line calls, but did not change selected caller bytes;100 combined the real body with donor-named rectangles and did not improve. These are rejected diagnostic candidates. Correct native constructor call sites are00650191,00650319,006503ff,006504fd,006505ea,0065075b; three addresses in the preserved099/100 inline-budget comment were mistyped. This correction supersedes that comment, without rewriting trial history.
+
+
+Independent follow-up confirms the shared C2DVector arithmetic signatures directly in FableWin public symbols (ORIGINAL_VECTOR_PLUS_SYMBOLS.json): member plus returns C2DVector by value, not const C2DVector; addition-assignment returns const C2DVector&. The Ego_r query contains no matching public symbol. These are symbol-level signature findings; they do not establish the exact original inline expression spelling or a retail stack layout.
+
+
+Historical raw type audit151–159 (before integration): ORIGINAL_GEOMETRY_COPY_TYPES.json preserves both complete geometry class records; ORIGINAL_PRIMITIVE_LIFETIME_TYPES.json preserves both complete sprite/base/theme class records. The two original enum member types corrected in159 are Layer:EEngine2DLayer+1c and BlendMode:EEnginePrimitiveBlendMode+30. All other sprite fields and size84 agree. At that checkpoint the isolated correction retained the existing default branch and selected096 bytes and had not yet been merged. Neither primitive class nor its theme member has an authored destructor. The same audit also recorded protected primitive-base Type,InterpolationSet,ThemeChannelDesc access in both raw records against the then-current public shared declarations. ORIGINAL_FLOOR_LOCALS.json gives the original floor local spellings from the available FableWin procedure record; no second donor record was found. No missing destructor, speculative return qualification or additional storage was introduced.
+
+
+Current integration: the159 sprite member-type correction is now included in hdr_integration/engine/CEnginePrimitive2DSprite.h under the existing FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS branch. Layer is EEngine2DLayer at1c and BlendMode is EEnginePrimitiveBlendMode at30, exactly as both raw donor records specify; legacy default declarations remain present. INTEGRATION_001_shared_header_revalidation and FINAL_003_handoff_metadata retain the selected body's2593-byte non-match, not a new successful match. The historical isolation notes above no longer describe integration status.

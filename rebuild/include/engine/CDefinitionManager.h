@@ -27,7 +27,11 @@ public:
     // CTCExpression::OnCreate 0x007EEFE0 calls it too). The out handle is CDefPointer<CExpressionDef> (non-const T), so the
     // template overloads above do not deduce for it. Declared const: the rows reach it through CTCBase::GetDefinitionManager()
     // const (a const CGameDefinitionManager&); FableWin.pdb's spelling is the non-const QAE (noted in chunk 867's NOTES).
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSION_NONCONST
+    bool GetDef(long,CDefPointer<class CExpressionDef>*); // FableWin exact QAE,005f81be
+#else
     bool GetDef(long,CDefPointer<class CExpressionDef>*) const;   // 0x005F81BE
+#endif
 #endif
     CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString&) const;   // 0x009ADA40 ?GetPDefFromInstantiationName@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z
     CDefPointer<const CDefClassBase> GetPDefFromClassIndex(const CCharString&,long) const;  // 0x009ADE10 ?GetPDefFromClassIndex@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z

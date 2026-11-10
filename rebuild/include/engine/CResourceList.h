@@ -15,6 +15,9 @@ public:
     // retail 0x009FC020 (bound), out of line. A declaration only.
     void RemoveResource(CResource& resource);                    // 0x009FC020
 #endif
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+    unsigned long GetCurrentFrame() const {return CurrentFrame;}
+#endif
 private:
     CResource Head;
     unsigned long ResourceCount;

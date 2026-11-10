@@ -14,6 +14,9 @@
 class CResourceList;
 class CResource : public CIVCountedPointeeBase {
 public:
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+    void SetAsMRU(); // native009fc4a0
+#endif
     CResource();                                                         // 0x009FBEC0 (??0CResource@@QAE@XZ, bound)
 #ifdef FABLE_RETAIL_CRESOURCE_ASSIGN
     // Retail opt-in (chunk 783, row 0x004321F0): the implicit-style member copy +0x04..+0x18 is the separate function

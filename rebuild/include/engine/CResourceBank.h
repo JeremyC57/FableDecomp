@@ -22,6 +22,9 @@ public:
     void RemoveResource(CResource& resource);                            // ?RemoveResource@CResourceBank@@QAEXAAVCResource@@@Z
     void AddToLoadingQueue(CResource& resource);                         // ?AddToLoadingQueue@CResourceBank@@QAEXAAVCResource@@@Z
     void ProcessLoadingQueue(bool flag, double time);                    // 0x009FC410 ?ProcessLoadingQueue@CResourceBank@@QAEX_NN@Z
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+    unsigned long GetCurrentFrame() const {return ResourceList.GetCurrentFrame();}
+#endif
     void FrameEnd();                                                     // 0x009FC430 ?FrameEnd@CResourceBank@@QAEXXZ
     CResourceList ResourceList;                                          // +0x04
     CResourceList LoadingQueue;                                          // +0x40

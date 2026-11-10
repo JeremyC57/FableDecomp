@@ -10,6 +10,9 @@
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
+#include "engine/C2DVector.h"
+#endif
 #include "rebuild_abi.h"
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_PROGRESS
 #include "stlport/fable_containers.h"
@@ -565,8 +568,13 @@ public:
     long             HeroSprintBarRightGraphic;              // +0x858
     long             HeroSprintBarRightGlowGraphic;          // +0x85c
     long             HeroSprintBarInnerGraphic;              // +0x860
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
+    // Ego_r donor member at2232 is C2DVector; native00651655 takes def+864 then reads X/Y.
+    C2DVector HeroSprintBarInnerGraphicOffset;
+#else
     float            HeroSprintBarInnerGraphicOffset_X;      // +0x864 C2DVector::X
     float            HeroSprintBarInnerGraphicOffset_Y;      // +0x868 C2DVector::Y
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the seven highlight tables as the
     // STLport vectors they are (12 bytes each, same offsets), indexed by the cursor type; the row reads _M_start[type] of each.
@@ -1202,8 +1210,12 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarMiddleGlowGraphic) == 0
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarRightGraphic) == 0x858);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarRightGlowGraphic) == 0x85c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphic) == 0x860);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_MINIGAME_OFFSET
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset) == 0x864);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset_X) == 0x864);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HeroSprintBarInnerGraphicOffset_Y) == 0x868);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartColour) == 0x86c);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightEndColour) == 0x878);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, HighlightStartWidthWorldSpace) == 0x884);

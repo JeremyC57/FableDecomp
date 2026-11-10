@@ -7,6 +7,13 @@
 // 4 below the PDB, as here). Container members are opaque bytes with their real type in the comment.
 #include "rebuild_abi.h"
 #include "engine/CParentDefClassBase.h"
+#ifdef FABLE_RETAIL_CHEROSTATSDEF_APPEARANCESCALING
+class CAppearanceModifierScalingDef;
+#include "stlport/fable_containers.h"
+#endif
+#ifdef FABLE_RETAIL_CHEROSTATSDEF_STATLEVELS
+#include "engine/CAbilityTrackDef.h"
+#endif
 class CHeroStatsDef : public CParentDefClassBase {
 public:
     long          MaximumStamina;                                // +0x3c
@@ -22,7 +29,11 @@ public:
     long          ExpToSpendAtWhichToDisplayTutorial;            // +0x64
     float         MinAge;                                        // +0x68
     float         MaxAge;                                        // +0x6c
+#ifdef FABLE_RETAIL_CHEROSTATSDEF_APPEARANCESCALING
+    std::vector<CAppearanceModifierScalingDef> AppearanceModifierScaling;
+#else
     unsigned char AppearanceModifierScaling[0xc];                // +0x70 vector<CAppearanceModifierScalingDef>
+#endif
     float         AmountFatnessIncreasesPerPointOfOverEating;    // +0x7c
     float         NumberOfMinutesBetweenFatnessReductions;       // +0x80
     float         AmountFatnessDecreasesPerReduction;            // +0x84
@@ -47,7 +58,11 @@ public:
     long          MoralityChangeOnPicklock;                      // +0xe8
     long          MoralityChangeOnVandalism;                     // +0xec
     unsigned char TradeSkillForGuileLevel[0xc];                  // +0xf0 vector<float>
+#ifdef FABLE_RETAIL_CHEROSTATSDEF_STATLEVELS
+    std::vector<CAbilityTrackDef> StatLevels;
+#else
     unsigned char StatLevels[0xc];                               // +0xfc vector<CAbilityTrackDef>
+#endif
     unsigned char MaxHitPointsPerHealthLevel[0xc];               // +0x108 vector<float>
     unsigned char MaxStaminaPointsPerMagicPowerLevel[0xc];       // +0x114 vector<long>
     unsigned char SoundDistanceMultiplierPerStealthLevel[0xc];   // +0x120 vector<float>

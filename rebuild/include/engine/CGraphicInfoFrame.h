@@ -1,5 +1,50 @@
 #ifndef FABLE_ENGINE_CGRAPHICINFOFRAME_H
 #define FABLE_ENGINE_CGRAPHICINFOFRAME_H
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#include "engine/CBaseClass.h"
+#include "engine/CManagedTextureOwner.h"
+#include "engine/CManagedTexture.h"
+#include "engine/CGraphicFrame.h"
+#include "engine/CCountedPointer.h"
+class CGraphicInfo;class CGraphicDataBank;class CBankFileAsyncData;
+class CGraphicInfoFrame : public CBaseClass {
+public:
+    class CFrameData;
+    bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
+    const CTexture* GetBlankTexture() const; // native009fd3f0
+    void TouchFrame(unsigned long) const;
+private:
+    bool InternalGetFrameForcedLoading(unsigned long) const; // native009ff6b0
+    unsigned short FrameNum;
+    signed char SmallMipmapLevel;
+    mutable CIVCountedPointer<CFrameData> Data;
+    CGraphicInfo* GraphicInfo;
+};
+class CGraphicInfoFrame::CFrameData : public CManagedTextureOwner {
+public:
+    virtual ~CFrameData();
+    virtual bool IsResourceLoaded() const;
+    virtual void OnResourceLoaded();
+    virtual void ReleaseTexture();
+    virtual unsigned long GetUnloadableMemory() const;
+    virtual unsigned long GetDebugMemoryInUse() const;
+    virtual void ResetDebugMemoryInUse();
+public:
+    CFrameData(const CGraphicInfoFrame*); // native009fe380
+    void BeginLoading(unsigned long,unsigned long); // native009fde80
+private:
+    friend class CGraphicInfoFrame;
+    CGraphicFrame Frame;
+    CManagedTexture ManagedTexture,LoadingManagedTexture;
+    CCountedPointer<CBankFileAsyncData> FileData;
+    signed char CurrentMipmapLevel,LoadingMipmapLevel,TouchedMipmapLevel;
+    unsigned long TouchedFrame;
+    const CGraphicInfoFrame* GraphicInfoFrame;
+};
+FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame)==0x10);
+FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData)==0x44);
+
+#else
 // New header (chunk 767, row 0x009FD4D0 CGraphicInfoFrame::CFrameData::ResetDebugMemoryInUse). Retail RTTI .?AVCGraphicInfoFrame@@ :
 // CBaseClass and .?AVCFrameData@CGraphicInfoFrame@@ : CManagedTextureOwner : CResource : CIVCountedPointeeBase (ghidra_out/rtti_bases.tsv;
 // CFrameData vtable 0x0129C89C). Members: Ego_r.pdb (struct_layouts_egor.tsv), CGraphicInfoFrame 0x10 {vptr, FrameNum +4,
@@ -36,4 +81,5 @@ private:
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame) == 0x10);
 FABLE_STATIC_ASSERT(sizeof(CGraphicInfoFrame::CFrameData) == 0x44);
+#endif
 #endif // FABLE_ENGINE_CGRAPHICINFOFRAME_H

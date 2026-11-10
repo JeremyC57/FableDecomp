@@ -30,6 +30,11 @@ class CMainGameComponentInit;
 class CGameEvent;
 #endif
 class CMainGameComponent : public CGameComponent {
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
+protected:
+    // Retail opt-in (Codex 2026-11-10): both PDB InitSound names and native00417a58/caller00418886.
+    void InitSound();
+#endif
 protected:
     static CMainGameComponent* PMainGameComponent;
     static long ConstantFPS;

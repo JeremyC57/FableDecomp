@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CPLAYERGUI_H
 #define FABLE_ENGINE_CPLAYERGUI_H
 #ifdef FABLE_RETAIL_CPLAYERGUI
+#ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW
+namespace NPlayerGui { class CDrawQuestInfo; }
+#endif
 // Retail opt-in (Codex pass 11 consolidation 2): the retail CPlayerGui model (row 0x00667D30 CThingCreatureBase::OnHit); see below.
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 #include "engine/CSubtitleRenderer.h"
@@ -156,11 +159,27 @@ public:
     ~CPlayerGui();                                                       // 0x0043A570 (virtual through the singleton base)
 private:
 #else
+#ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW
+    // Retail opt-in (Codex 2026-11-09): donor PDrawQuestInfo and Alpha,
+    // native00651298 and006513c8 read1c8 and2a0. Default storage unchanged.
+    unsigned char _pad_0x138[0x90];
+    CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;
+    unsigned char _pad_0x1d0[0xd0];
+    float Alpha;
+    unsigned char _pad_0x2a4[0x94];
+#else
     unsigned char _pad_0x138[0x200];                                     // +0x138 PFont .. DisplayBottomHalfGUI
+#endif
 #endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,
     // landed) and ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (0x004378C0, the forward to PDrawMiniMap +0x160), both on Get().
+#ifdef FABLE_RETAIL_CPLAYERGUI_QUEST_DRAW
+    // FableWin01a671e7/020d93ed/020e2c6a; the native draw inlines all three.
+    NPlayerGui::CDrawQuestInfo& GetQuestInfo() { return *PDrawQuestInfo; }
+    unsigned char ScaleAlpha(unsigned char alpha) const { return (unsigned char)(alpha*Alpha); }
+    unsigned char GetAlpha() const { return (unsigned char)(255.0f*Alpha); }
+#endif
     void Update(bool paused);                                            // 0x0043A080
     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }

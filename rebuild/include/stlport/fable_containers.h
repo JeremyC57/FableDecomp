@@ -25,7 +25,13 @@ namespace std {
 // the tag's address without storing to it (UpdateShadowedSpotLights 0x00B47F82..0x00B47F91, SwitchDoorsOnAndOff 0x00DEFB10;
 // 558 landed rows declared the tags this way locally before the default path did).
 struct __true_type { __true_type() { } };
+#ifdef FABLE_RETAIL_STLP_FALSE_TAG_POD
+// Retail opt-in (Codex 2026-11-09): original STLport4.6.2 type_traits.h line65.
+// 00b803e9 writes a zero byte for the value-initialised tag argument.
+struct __false_type { };
+#else
 struct __false_type { __false_type() { } };
+#endif
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
@@ -80,7 +86,11 @@ inline void fill(unsigned char* first,unsigned char* last,const unsigned char& v
 template<class Size> inline unsigned char* fill_n(unsigned char* first,Size n,const unsigned char& value) {
     fill(first,first+n,value);return first+n;
 }
+#ifdef FABLE_RETAIL_STLP_FILL_LOCAL_ITERATOR
+template<class I,class T> inline void fill(I begin,I last,const T& x) { I first=begin; for(;first!=last;++first) *first=x; }
+#else
 template<class I,class T> inline void fill(I first,I last,const T& x) { for(;first!=last;++first) *first=x; }
+#endif
 template<class I,class N,class T> inline I fill_n(I first,N n,const T& x) { for(;n>0;--n,++first) *first=x;return first; }
 template<class I,class O,class D> inline O __fastcall __copy(I first,I last,O result,const random_access_iterator_tag&,D*) {
     for(D n=last-first;n>0;--n) { *result=*first;++first;++result; } return result;
@@ -97,9 +107,21 @@ template<class Input,class Output> inline Output __copy_ptrs(Input first,Input l
 template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T* result,const __true_type&) {
     ptrdiff_t n=last-first;return (T*)memmove(result-n,first,n*sizeof(T));
 }
+#ifdef FABLE_RETAIL_STLP_RANDOM_ACCESS_COPY_BACKWARD
+// Retail opt-in (Codex 2026-11-09): STLport4.6.2 _algobase.h lines170-180,220-222.
+// Pointer iterators dispatch to the counted random-access loop, not the bidirectional loop.
+template<class R,class B,class D> inline B __copy_backward(R first,R last,B result,const random_access_iterator_tag&,D*) {
+    for(D n=last-first;n>0;--n) *--result=*--last;
+    return result;
+}
+template<class I,class O> inline O __copy_backward_ptrs(I first,I last,O result,const __false_type&) {
+    return __copy_backward(first,last,result,random_access_iterator_tag(),(typename iterator_traits<I>::difference_type*)0);
+}
+#else
 template<class T> inline T* __copy_backward_ptrs(const T* first,const T* last,T* result,const __false_type&) {
     while(first!=last) *--result=*--last;return result;
 }
+#endif
 // _construct.h
 template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
@@ -192,7 +214,7 @@ public:
 // (also FABLE_RETAIL_STLP_SORT_INTERNALS, chunk 892: iter_swap below swaps through it)
 // Retail opt-in (chunk 849, row 0x00AE2E20 CParticleProgram::OptimiseSpringOrder): STLport 4.6 _algobase.h swap(_Tp&, _Tp&), used by
 // the inline vector::swap below (retail expands `particle_list.swap(next_particle_list)` in place: the words exchanged through
-// registers at 0x00AE30C7..0x00AE30DC, then the old storage freed at 0x00AE30E3; no call).
+// CPU locations at 0x00AE30C7..0x00AE30DC, then the old storage freed at 0x00AE30E3; no call).
 template<class _Tp> inline void swap(_Tp& a,_Tp& b) { _Tp tmp=a; a=b; b=tmp; }
 #endif
 // _vector.h / _vector.c
@@ -250,7 +272,7 @@ public:
 #ifdef FABLE_RETAIL_STLP_VECTOR_C
     // Retail branch (chunk 741, row 0x00B149D0 CPSCEmitterGeneric::ReadBinary): STLport 4.6 _vector.h includes _vector.c, so the
     // TU sees operator='s body (below) and _M_allocate_and_copy; VC7.1 still calls operator= out of line (vector<C3DVector>
-    // 0x0075B8D0) but, seeing that it never captures its argument, keeps the caller's local start pointer in a register across
+    // 0x0075B8D0) but, seeing that it never captures its argument, keeps the caller's local start pointer in a CPU location across
     // the call (retail 0x00B15840 `mov ebx,[esp+14h]` ... 0x00B1587C `test ebx,ebx; push ebx; call free`; declaration-only: reloaded, 3784v3779).
     vector& operator=(const vector& x);
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data-this->_M_start); }
@@ -344,13 +366,19 @@ public:
     // FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE): VC7.1 expanded STLport's inline resize in some TUs and called it as a COMDAT
     // in others; that TU calls vector<char>::resize 0x004122D0 (landed, ?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXIABD@Z) with
     // the char() temporary in a dead argument slot. The body is visible (STLport's own) but kept out of line, as in the retail TU:
-    // VC7.1 then knows resize does not keep the vector's address, holds the start in a register across the later calls and reuses
+    // VC7.1 then knows resize does not keep the vector's address, holds the start in a CPU location across the later calls and reuses
     // the vector's frame slot (0x0055FA79 `mov edi,[esp+28h]` ... 0x0055FB34 `push edi; call free`); declaration-only re-reads it.
     __declspec(noinline) void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
 #else
     void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+    // Retail opt-in (Codex 2026-11-09): native00443f90 is the one-argument
+    // vector<CEnginePrimitiveHandle>::resize called by00651293.
+    void resize(size_type n);
+#else
     void resize(size_type n) { resize(n,_Tp()); }
+#endif
     void _M_fill_insert(iterator position,size_type n,const _Tp& x);
 #ifdef FABLE_RETAIL_STLP_VECTOR
     // Retail branch (chunk 728, row 0x006D2BD0 CTCWife::OnSerialise): STLport 4.6 vector::reserve (stl/_vector.c), out of line in
@@ -392,6 +420,8 @@ template<class _Tp,class _Alloc> vector<_Tp,_Alloc>& vector<_Tp,_Alloc>::operato
     return *this;
 }
 #endif
+#ifndef FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+// The separate overflow instantiation can be supplied by another translation unit.
 template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd) {
     const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
     _Tp* newStart=this->_M_end_of_storage.allocate(len);_Tp* newFinish=newStart;
@@ -409,10 +439,11 @@ template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(ite
     if(!atEnd) newFinish=(_Tp*)__copy_trivial(position,this->_M_finish,newFinish);
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_RESERVE
 // Retail opt-in (chunk 857, row 0x00AC8C80 COptimisedPrimitive::ComputeVertexCost): STLport 4.6 stl/_vector.c reserve, the body the
 // landed out-of-line copy 0x00920FF0 (vector<C3DVector>) reproduces, visible but kept out of line as in the retail TU (call at
-// 0x00AC8CCB). Seeing that reserve never captures the vector, VC7.1 keeps the local vector's _M_finish in a register across the
+// 0x00AC8CCB). Seeing that reserve never captures the vector, VC7.1 keeps the local vector's _M_finish in a CPU location across the
 // push_back loop (0x00AC8CE1 `mov ebx,[esp+7Ch]` ... 0x00AC8D45 `add ebx,0Ch`); declaration-only reloads it after every store.
 // Pair with FABLE_RETAIL_STLP_VECTOR (the in-class declaration).
 template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::reserve(size_type n) {
@@ -433,7 +464,7 @@ template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::r
 #ifdef FABLE_RETAIL_STLP_VECTOR
 // Retail branch (pass 12 header wave): STLport 4.6 _vector.h includes _vector.c, so every retail TU that calls resize() /
 // insert(pos, n, x) saw _M_fill_insert's body (stl/_vector.c lines 61-86, reproduced here) and VC7.1 still kept the call out of
-// line. The visible body changes the caller's register allocation: 0x00AC2BE0 PartitionSpace matches only with it (2775v2791
+// line. The visible body changes the caller's CPU location allocation: 0x00AC2BE0 PartitionSpace matches only with it (2775v2791
 // declaration-only; retail's _M_fill_insert<bool> is 0x004676EF).
 template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_fill_insert(iterator position,size_type n,const _Tp& x) {
     if(n!=0) {
@@ -667,7 +698,7 @@ public:
 #ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
     // chunk 849 (row 0x0057E2F1): STLport 4.6's own spelling, `size_type __result = distance(begin(), end()); return __result;`. The
     // copy-of-first loop keeps the head in eax and walks ecx (`mov eax,[ebx+1D8h] ; mov ecx,[eax] ; .. mov ecx,[ecx] ; inc edx ;
-    // cmp ecx,eax`, 0x0057EBA3, before the vector reserve); the for-loop form above swaps the two registers.
+    // cmp ecx,eax`, 0x0057EBA3, before the vector reserve); the for-loop form above swaps the two CPU locations.
     size_t size() const { size_t result=distance(begin(),end()); return result; }
 #else
     size_t size() const { ptrdiff_t n=0; for(const_iterator first=begin(),last=end();first!=last;++first) ++n; return n; }

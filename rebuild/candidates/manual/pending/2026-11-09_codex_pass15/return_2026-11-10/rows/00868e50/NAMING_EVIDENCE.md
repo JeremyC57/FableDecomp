@@ -1,0 +1,15 @@
+#00868e50 identity and layout evidence
+GetArmourWeightsFromThing is the anonymous-namespace fastcall helper: Ego_r0083ee30 and FableWin0280e6e0 provide the same full signature, and native0086906c in SetAsModifiedByArmour calls it with thing, armour multimap and total output. Compiler anonymous namespace hash depends on source path; grader compares the complete symbol while normalizing only that TU hash and records the emitted symbol.
+
+Native RTTI12330dc proves CAppearanceModifierDef:CSubDefClassBase:CDefClassBase:CDefPointeeBase:CResource:CIVCountedPointeeBase. Donor fields ArmourDefIndex+100/OveralProtectionWeighting+104 become native+0x5c/+0x60 because both preceding vectors, HideMaterials and MorphGraphics, shrink by four bytes each (eight bytes total). Native row reads these offsets. New shared header keeps all donor members/tail, size0x70.
+Native RTTI1234aec proves CArmourDef:CParentDefClassBase, full retained tail from quarantined header, size0x6c. No new packing scope.
+CThingObjectDef is the true first GetDef argument: FableWin01b20714 exact GetDef symbol, caller00706370 binding and worn object IDs. Earlier draft CThingDef was wrong.
+CThing::PeekDefinitionManager returns const CGameDefinitionManager&: established name queue and native004c7990 accessor donor chain. Earlier GetDefinitionManager pointer return was wrong.
+GetAppearanceModifierList is const and takes std::list<long>& plus EHeroAttachableAppearanceModifierType: Ego_r0055b860/FableWin01e097e0, native00706800 receives list address and value2. Earlier long parameter was wrong.
+CCompareDefPointer is class V, two type arguments: both row PDB signatures and native pointer ordering at00868f46; donor one-byte comparator record.
+GetSubDef<CAppearanceModifierDef>: Ego_r00526610, literal CAppearanceModifierDef at native0057ff9c, shared virtual GetPSubDefInfo slot14. Real body follows native0057ff92, including nonconst GetPDefFromGlobalIndex then const converting handle.
+GetDef<CArmourDef>: FableWin024eb3e0, native00817b40 follows same body as GetDef<CThingObjectDef> with O2 frame differences; caller supplies ArmourDefIndex.
+Tree _M_insert uses real STLport tree/iterator/traits and actual rebalance call, not older incomplete local body. Native00869ca0 reads only input pair and builds node then rebalances through0042971d.
+Every bound target listed in history/00868e50/002b_visible_real_callees/MAIN_RELOC_TARGETS.json. Exact CRT malloc/free preserved. Selected041 is independently verified after the complete helper lookup correction and behavior tests.
+
+Both raw donor procedure records in ORIGINAL_FUNCTION_LOCALS.json prove the original CGameDefinitionManager reference, component pointer, list/iterator and definition-pointer types. Original enum APPEARANCE_CLOTHING=2 is confirmed by both raw PDBs and the00706800 call argument. The component interface94 uses the existing proven shared TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS name. Final exact leaf differs only in compiler-generated anonymous namespace TU hash.

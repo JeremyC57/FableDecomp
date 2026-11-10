@@ -1,0 +1,10 @@
+# Names and audit
+
+The exact leaf and MakeHenchmanPerformIdleComment owner are present in Ego_r/FableWin PDB sets. CV_BodyGuardScript derives through CLevelScriptBase<CQ_SunnyvaleMasterData>; shared original member declarations and native offsets agree (Game40,MasterScriptData44,HeroWieldingWeapon4d,HeroStoodStillCounter50,CommentaryTimer5c,HenchmanList64). Complete original class is retained in the overlay.
+
+All25 relocations audited in RELOCATION_AUDIT.json: global pDSTGame0143e8f8; DELTA_NOTIONAL_ZERO0129ba3c (native bytes17b7d138, float1e-4); CScriptBase::IsActiveThreadTerminating00cb7940; CCounter::operator=(float)00d90550; CV_BodyGuardScript::MakeHenchmanPerformIdleComment00e5e5a0; CTimer destructor00cd4470. Native role corroborates the PDB/shared declaration for each. Both outlined destructor calls target the actual CTimer destructor. Virtual slot roles from shared interface/native: frame1c,GetHero118,IsPlayerWieldingWeapon30c,RegisterTimer15c,DeregisterTimer160,SetTimer164,GetTimer168; CScriptThing::GetPos18. No fabricated external helper is emitted.
+
+Initialization caveat and strictly limited defined-path behavioral coverage are recorded in PROBES.md and AUDIT.json. The missing entry zero is not vector initialization and must not be repaired by changing C3DVector default semantics.
+
+
+Resumed raw-donor review: ORIGINAL_TIMER_RETURN_TYPES.json preserves both complete CTimer and TRetVoid class records. The real local spellings are CheckExpensiveThingsTimer, IdleConversationTimer, HeroLastPosition and debug `_Fail_Val`; ORIGINAL_FUNCTION_LOCALS.json proves them. Historical028 restores these spellings and Return calls without changing the byte residue. Selected004 retains its older local spellings; no new selection is represented by029–035. Header visibility probes restore the original private TimerIndex through an isolated opt-in and retain all fields/methods/default branches. The empty Return body is the authentic no-op carrier operation, not an invented capture helper. No native enum, member, class or external identity was invented in this review.

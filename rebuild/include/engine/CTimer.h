@@ -28,6 +28,9 @@ public:
     long GetIndex() const;
     void Pause();
     void Unpause();
+#ifdef FABLE_RETAIL_CTIMER_ORIGINAL_ACCESS
+private:
+#endif
     long TimerIndex;                                                     // +0x00
 };
 FABLE_STATIC_ASSERT(sizeof(CTimer) == 0x4);

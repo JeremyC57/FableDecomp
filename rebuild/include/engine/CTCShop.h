@@ -24,6 +24,9 @@ public:
     virtual bool IsComponentSerialisable() const;
     virtual void OnSerialise(CPersistContext&,bool);
     const CShopItem* FindDefaultStockItem(long) const;
+#ifdef FABLE_RETAIL_CTCSHOP_VALIDSTOCK
+    bool IsValidStockItem(long)const;
+#endif
     void SellItem(long);
     float GetCurrentBasicPrice(long,long) const;
     long GetCurrentBuyPrice(long,long) const;

@@ -1,0 +1,18 @@
+{
+  "authorized_rows": 20,
+  "verified_matches": 17,
+  "raw_byte_matches": 2,
+  "relocation_matches": 15,
+  "parked": 3,
+  "untouched": 0,
+  "extent_wrong": 0,
+  "matched_function_percentage": 85.0,
+  "matched_retail_bytes": 12200,
+  "total_assigned_retail_bytes": 17059,
+  "history_records": 802,
+  "unique_historical_header_blobs": 206,
+  "historical_header_references": 120156,
+  "naming_fixes": 22,
+  "compiler": "MSVC7.1 RTM13.10.3077",
+  "repository_actions": "No commits, pushes or remote repository writes."
+}

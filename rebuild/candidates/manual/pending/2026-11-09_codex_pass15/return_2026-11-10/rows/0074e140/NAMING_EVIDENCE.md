@@ -1,0 +1,11 @@
+# 0074e140 identity and validation
+
+Selected035_group_zero_sine is a verified relocation match:245/245 bytes,69/69 instructions,100% strict/loose,zero hunks. AUDIT_FINAL.json verifies all12 operands and both standalone compiler runs.
+
+The propagated Projectile_CalculateTrajectory label is wrong. The exact Leaf is private const CTCContainerRewardHero::GeneratePopoutVectorFromVars(long,long,long,float), `?GeneratePopoutVectorFromVars@CTCContainerRewardHero@@ABE?AVC3DVector@@JJJM@Z`. Ego_r00760170 and FableWin0259cf50 prove the name and signature. The sole native caller0074e789 inside ReleaseItems confirms use. Adjacent AdjustTrajectoryVector0074e080 has original protected const signature `?AdjustTrajectoryVector@CTCContainerRewardHero@@IBEXJAAVC3DVector@@@Z` (Ego_r00760060/FableWin0259bfe0).
+
+Native RTTI confirms CTCContainerRewardHero -> CTCContainer -> CTCBase. The two row-local headers retain full known members and real shared base classes. CThing::GetPhysicsTC uses the shared member+0x60; CTCPhysicsBase::GetFacingAngleXY uses original virtual slot63 (+0xfc). World access uses protected const CTCBase::PeekWorld00686a80 and const CWorld::GetWorldSeed0049d810. GFFloatRandom004978a0 is original fastcall(float,unsigned long*). TWO_PI0124f2b8 uses the explicit canonical established spelling; zero pitch is literal0.0. Every floating literal's emitted object bytes match the native target, including both64-bit zeros.
+
+The single source adjustment from prior baseline001b is grouping the zero sine before its cast: `(float)(sin(0.0))`. The compiler retains one no-code PAREN tuple, which changes scheduling within the existing second DAG; Y load precedes X store exactly as native. Diagnostic proxy035 produced exactly the normal RTM Leaf bytes. No layout or flag changes, invented helper or capture-only body is involved. Earlier copy constructor trials and DIFFER observations in PROBES.md are historical.
+
+The standalone test embeds the exact selected method with external callees stubbed. It checks step clamping on both sides of1/24, the world seed pointer, facing, spread, quarter-turn directions and forwarding row to AdjustTrajectoryVector. Fresh VC7.1 /Od /W3 and64-bit g++ C++03 -O2 ASan/UBSan builds/runs pass; logs are TEST_* files. Production layout comes from the shared headers rather than fixture classes.

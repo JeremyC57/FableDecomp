@@ -18,6 +18,9 @@ class CEngineScene;
 class CEngineInit;
 class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent {
 public:
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+    bool GetBlockOnLoad() const {return BlockOnLoad;}
+#endif
     CEnginePrimitiveRenderer();                // 0x00B33B50 ??0CEnginePrimitiveRenderer@@QAE@XZ
     virtual unsigned long PeekSceneFilterFlags() const;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SCENELIST

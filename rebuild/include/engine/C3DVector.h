@@ -32,13 +32,26 @@ FABLE_FORCEINLINE float __fastcall GFFastOneOverSqrt(float value){unsigned long 
 class C3DVector {
 public:
     float X,Y,Z;
+#ifdef FABLE_RETAIL_C3DVECTOR_NOT_EQUAL
+    // Retail opt-in (Codex 2026-11-09): PDB inequality and native per-axis epsilon tests in 00e5e350.
+    bool operator!=(const C3DVector& v) const {
+        return fabs(X-v.X)>DELTA_NOTIONAL_ZERO || fabs(Y-v.Y)>DELTA_NOTIONAL_ZERO || fabs(Z-v.Z)>DELTA_NOTIONAL_ZERO;
+    }
+#endif
     C3DVector() {}
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
     C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}
     FABLE_VECTOR_INLINE void Initialise(float x,float y,float z){X=x;Y=y;Z=z;}
     FABLE_VECTOR_INLINE const C3DVector operator-(const C3DVector& other)const{return C3DVector(X-other.X,Y-other.Y,Z-other.Z);}
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,Z+other.Z);}
+#ifdef FABLE_RETAIL_C3DVECTOR_SCALE_X_PAREN
+    // Retail opt-in (Codex 2026-11-10,007bc6fa): grouping the X product adds one no-code
+    // scheduler tuple. The81-tuple region boundary then places the physics reload at007bc824
+    // before the three x87 stack pops, matching the original shot TU. Arithmetic is unchanged.
+    FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{return C3DVector((X*scale),Y*scale,Z*scale);}
+#else
     FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{return C3DVector(X*scale,Y*scale,Z*scale);}
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Chunk 734 (row 0x004A1CB0): FableWin.pdb ??GC3DVector@@QBE?BV0@XZ (unary minus; no out-of-line copy in retail).
     FABLE_VECTOR_INLINE const C3DVector operator-()const{return C3DVector(-X,-Y,-Z);}
@@ -83,7 +96,29 @@ public:
     FABLE_VECTOR_INLINE void LimitUpper(const C3DVector& v){if(X>v.X)X=v.X;if(Y>v.Y)Y=v.Y;if(Z>v.Z)Z=v.Z;}
     // Codex pass 13 (row 0x00EC5DE0): ?GetAngleXY@C3DVector@@QBEMXZ (FableWin 0x01ACF1E0 debug copy; no out-of-line copy in retail,
     // the row's TU expands it). Declaration only: the body is the row's (GFArcTan / GET_ROUNDED_ANGLE live in that TU).
+#ifdef FABLE_RETAIL_C3DVECTOR_ANGLE_BODIES
+    // Retail opt-in (Codex 2026-11-09): FableWin 01acf1e0 GetAngleXY,
+    // 01dcb530 InitialiseFromAngles, 01fa1780 CrossWithUp. The 00a22ca0
+    // body expands angle wrapping, heading construction and the horizontal cross product.
+    FABLE_VECTOR_INLINE float GetAngleXY() const {
+        float angle=(float)atan2(X,Y)*0.15915494f;
+        if(angle<0.0f || angle>=1.0f) {
+            angle=(float)fmod((double)angle,1.0);
+            if(angle<0.0f) angle+=1.0f;
+        }
+        return angle;
+    }
+    FABLE_VECTOR_INLINE C3DVector CrossWithUp() const {return C3DVector(Y,-X,0.0f);}
+    FABLE_VECTOR_INLINE const C3DVector& InitialiseFromAngles(float angleXY,float angleYZ,float length) {
+        float cosYZ=(float)cos(angleYZ*(double)6.2831855f);
+        X=(float)(sin(angleXY*(double)6.2831855f)*(cosYZ*length));
+        Y=(float)(cos(angleXY*(double)6.2831855f)*(cosYZ*length));
+        Z=(float)(sin(angleYZ*(double)6.2831855f)*length);
+        return *this;
+    }
+#else
     float GetAngleXY() const;
+#endif
     // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): Ego_r.pdb ?RotateXY@C3DVector@@QAEXM@Z (0x00B81930),
     // out of line in retail at 0x00A14040 (395 bytes, the sin/cos rotation about Z). A declaration only.
     void RotateXY(float angle);                                          // 0x00A14040

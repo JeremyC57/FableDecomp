@@ -9,9 +9,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
+#include "stlport/fable_containers.h"
+enum EHeroAttachableAppearanceModifierType {
+    APPEARANCE_HAIR=0,
+    APPEARANCE_HORN=1,
+    APPEARANCE_CLOTHING=2,
+    NO_OF_APPEARANCE_MODIFIER_TYPES=3
+};
+#endif
 #pragma pack(push, 1)
 class CTCHeroAttachableAppearanceModifiers {
 public:
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
+    void GetAppearanceModifierList(std::list<long>&,EHeroAttachableAppearanceModifierType)const;
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

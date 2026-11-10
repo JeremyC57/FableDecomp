@@ -197,6 +197,10 @@ public:
     void GetBoundingInfo(C3DVector&,float&) const;
     const C3DVector& GetPosition() const { return Position; }
     float GetRadius() const { return Radius; }
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION
+    // FableWin GetLastPosition01d8e980, inline read at007bc761: native OldPosition+18.
+    const C3DVector& GetLastPosition() const { return OldPosition; }
+#endif
     CPhysicsMeshObject GetPhysicsMeshObject() const;
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_SEARCHTOOLS
     // Nested opt-in (chunk 758, row 0x00725B70 CTCPhysicsControlled::UpdateAdditionalImpulse): Ego_r.pdb

@@ -31,6 +31,10 @@ public:
     CTimer HenchmanDeadRespawnTimer[4];
     long HenchmanGlobalStatus[4];
     long GetHenchmanTypeFromString(const CCharString&);
+#ifdef FABLE_RETAIL_CV_BODYGUARDSCRIPT_COMMENTARY
+    // Retail opt-in (Codex 2026-11-09): Ego_r/FableWin exact public member, native 00e5e350.
+    void HenchmanCommentary();
+#endif
     bool MakeHenchmanPerformIdleComment();
     bool MakeHenchmanComment(const CCharString&,long,EHENCHMAN_COMMENT,const CScriptThing& = CScriptThing());
 };

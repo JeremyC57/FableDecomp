@@ -139,6 +139,10 @@ public:
     const wchar_t* GetAsCharArray() const;                     // 0x0099AF10 ?GetAsCharArray@CWideString@@QBEPBGXZ
     long GetLength() const;
     long FindCharPos(wchar_t c) const;                         // 0x0099B070 ?FindCharPos@CWideString@@QBEJG@Z
+#ifdef FABLE_RETAIL_CWIDESTRING_SPRINTFDYNAMIC
+    // Both PDB name sets and the neighbouring formatting methods identify this variadic member.
+    void SprintfDynamic(const wchar_t* format, ...);
+#endif
     void __cdecl Sprintf(const wchar_t* format, ...);          // 0x0099BA70 ?Sprintf@CWideString@@QAAXPBGZZ
     void SetLength(long length);                               // 0x0099BC50 ?SetLength@CWideString@@QAEXJ@Z
     const CWideString& operator=(const CWideString& other);
@@ -201,7 +205,14 @@ protected:
 #ifdef FABLE_RETAIL_CWIDESTRING
     static long NoStrings;
     // FableWin ?UnassignString@CWideString@@IAEXXZ (protected; inline in retail)
+#ifdef FABLE_RETAIL_CWIDESTRING_SPRINTFDYNAMIC
+    void UnassignString() {
+        CWideStringData* data=PStringData;
+        if(data) { if(--data->NoRefs<=0)delete PStringData; PStringData=0; }
+    }
+#else
     void UnassignString() { if(PStringData) { if(--PStringData->NoRefs<=0)delete PStringData;PStringData=0; } }
+#endif
     CWideStringData* PStringData;                              // +0x00 (Ego_r TPI: protected PStringData)
 #else
 private:
@@ -292,7 +303,7 @@ public:
     const CCharString& operator+=(const CCharString&);
     // Inline in retail (no out-of-line copy is bound): ?GetLength@CCharString@@QBEJXZ (Ego_r + FableWin), ?IsEmpty@CCharString@@QBE_NXZ
     // (FableWin 0x01D34B90); 0x00522720 tests '!PStringData || !StringLength' in place.
-    // GetLength: the null test as `PStringData==0 ? 0 : ...` lets VC7.1 reuse the zero register (0x00E5EBD0 `test; je; mov eax,[eax+4];
+    // GetLength: the null test as `PStringData==0 ? 0 : ...` lets VC7.1 reuse the zero CPU location (0x00E5EBD0 `test; je; mov eax,[eax+4];
     // dec eax`; the `PStringData ? ... : 0` form adds `jmp; xor eax,eax`, 1068v1064); 0x00521620 / 0x00522720 are byte-identical either way.
     long GetLength() const { return PStringData==0 ? 0 : (long)PStringData->Data.GetLength(); }
     bool IsEmpty() const { return GetLength() == 0; }

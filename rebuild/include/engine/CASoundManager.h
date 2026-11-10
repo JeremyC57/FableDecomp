@@ -22,8 +22,19 @@
 // +0x20, Enabled24 / Enabled25 / Enabled26 +0x24..+0x26, ResourceBank +0x28, Banks +0x30, +0x3C, Busy +0x3D; descriptive
 // names, no PDB) are kept opaque.
 #include "engine/CBaseClassNonCopyable.h"
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION
+class CWideString;
+class CCharString;
+#endif
 class CASoundManager : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION
+    // Retail opt-in (Codex 2026-11-10): native009919c0/00991c10 and CASoundManager constructor/dtor RTTI.
+    // Audio module has no PDB symbols: these member names describe the observed bank-registration behavior.
+    void RegisterSoundBank(unsigned long,const CWideString&,const CWideString&,const CWideString&,const CCharString&);
+    void RegisterAtmosSoundBank(unsigned long,const CWideString&,const CWideString&);
+    class CASoundBank* GetBank(long);
+#endif
     virtual ~CASoundManager();                                           // slot  0 (+0x00) ??_G 0x009937B0
     virtual void Virtual01_00a3e430() = 0;                      // slot  1 (+0x04) pure here; CSoundManagerLH 0x00a3e430
     virtual void Virtual02_00a3e3e0(bool) = 0;                  // slot  2 (+0x08) pure here; CSoundManagerLH 0x00a3e3e0

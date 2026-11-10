@@ -7,6 +7,11 @@ class Mass {
 public:
     C2DVector Pos,Vel;
     float IMass,APos,AVel,AIMass;
+#ifdef FABLE_RETAIL_MASS_BACKPLANEFRICTION
+    // Retail opt-in (Codex 2026-11-09): Ego_r 00914350 and FableWin 02ae9c10,
+    // matching Vel+0x0c and AVel+0x1c accesses in the 131-byte retail body.
+    void BackplaneFriction(float strength, float radius);
+#endif
     Mass();
     virtual ~Mass();
     C2DVector GetVel(C2DVector pos) const;

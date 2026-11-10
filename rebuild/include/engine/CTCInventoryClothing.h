@@ -29,8 +29,15 @@ namespace NUISystem { class CComponent; }
 class CWideString;
 #endif
 
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
+#include "engine/NInventory_CTCInventoryBase.h"
+#endif
 #pragma pack(push, 1)
-class CTCInventoryClothing {
+class CTCInventoryClothing
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
+    : public NInventory::CTCInventoryBase
+#endif
+{
 public:
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
 #pragma pack(push, 8)                                                    // natural alignment (bool, then longs from +0x04)
@@ -55,6 +62,7 @@ private:
     void CalculateArmorValues(ArgPasser& values, long itemDefIndex) const;              // 0x005B4EBA
 public:
 #endif
+#ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -125,6 +133,7 @@ public:
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
     unsigned char _pad_0x12c[0x4];                           // +0x12c
+#endif
     unsigned char _pad_0x130[0x4];                           // +0x130
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_MENUENTRIES
     std::vector<std::pair<EClothingSuitPart, NUISystem::CComponent*> > ClothingMenuEntries;   // +0x134
@@ -144,7 +153,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCInventoryClothing) == 0x170);
+#ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, ClothingMenuEntries) == 0x134);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, CurrentClothingSelected) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryClothing, MorphPrimitiveHandles) == 0x14c);

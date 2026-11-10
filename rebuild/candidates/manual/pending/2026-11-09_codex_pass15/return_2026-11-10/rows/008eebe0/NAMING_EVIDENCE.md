@@ -1,0 +1,9 @@
+# Identity, layout and validation
+
+Both original PDB name sets prove the full public member Leaf: Ego_r00914350 and FableWin02ae9c10 spell `?BackplaneFriction@Mass@@QAEXMM@Z`. Package raw-DBI research identifies strength/radius and speed/aspeed parameters/locals; native damping logic confirms their roles. Mass's native constructor008ee9b0 and Ego_r TPI30d33 prove its complete36-byte retail model: virtual pointer0, Pos4, Vel0c, IMass14, APos18, AVel1c, AIMass20. Its existing shared Mass.h overlay is preserved without new changes. C2DVector is the existing shared header and GetMagnitude/scale operators reproduce native loads and stores.
+
+The exact Leaf was independently found in objdump's selected object symbol table. There are no direct callee/global relocations. All four relocations are compiler literals: zero at0122dedc and one at0122ded8, each decoded directly from native bytes and checked against its emitted __real symbol bits. See history/008eebe0/013_group_angular_result/RELOCATION_AUDIT.json. No name fix is needed.
+
+The self-contained test copies the exact selected function and the required C2DVector/Mass declarations and math bodies from the shared headers, with empty Mass construction/destruction stubs. It covers1344 finite cases, both signs and signed zero, equality/clamped and non-clamped linear/angular values, multiple radii, stable unrelated fields, and zero-result signs. The expected reference independently spells scalar damping. Native64 g++ -std=c++03 and VC7.1 /Od /W3 pass. Build/run logs are beside the row. No special optimized flags are used.
+
+The winning parentheses create one actual0x269 grouping tuple between a floating-stack exchange and discard. This preserves retail's fxch st(1);fstp st(0) instead of the baseline fstp st(1). Normal RTM object bytes131/131 match apart from the independently audited literal addresses. Source remains portable C++03 and all row/test purity checks pass.

@@ -1,0 +1,21 @@
+address	name	evidence
+0x005b4eba	?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z	rows/005b4eba/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00417a58	?InitSound@CMainGameComponent@@IAEXXZ	rows/00417a58/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x005f519f	?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z	rows/005f519f/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x0064fdb4	?DrawAt@CQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z	rows/0064fdb4/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00651273	?DrawAt@CQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z	rows/00651273/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00b801f0	?_M_fill_insert@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@QAEXPAVCTVertexSeaBackground@@IABV3@@Z	rows/00b801f0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x006d6cb0	?IsToAutoBlock@CTCHeroExperience@@QBE_NXZ	rows/006d6cb0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x006d68d0	?IsBlockRecoilAnimToConserveAnimationHandedness@CTCHeroExperience@@QBE_NXZ	rows/006d68d0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x0074e140	?GeneratePopoutVectorFromVars@CTCContainerRewardHero@@ABE?AVC3DVector@@JJJM@Z	rows/0074e140/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00a56670	?GFGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z	rows/00a56670/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x006d8830	?AddSuccessfulMultistrikeHit@CTCHeroExperience@@QAEXABVCHitParameters@@@Z	rows/006d8830/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x0099bb80	?SprintfDynamic@CWideString@@QAAXPBGZZ	rows/0099bb80/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00a358f0	?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z	rows/00a358f0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00a22ca0	?GetAngleXZ@CRightHandedSet@@QBEMXZ	rows/00a22ca0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00c3d030	?GetResourceCounts@CCodaContext@@QBEPAU_CRESOURCEDESC@@PAU2@@Z	rows/00c3d030/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt; vendor descriptive spelling/constness not proven
+0x007bc6fa	?InitMovement@CTCShotDefinitionProjectilePredictive@NThingShot@@MAEXXZ	rows/007bc6fa/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00868e50	?GetArmourWeightsFromThing@?A0x23f4dc30@@YIXABVCThing@@AAV?$multimap@V?$CDefPointer@$$CBVCArmourDef@@@@MV?$CCompareDefPointer@$$CBVCArmourDef@@M@@V?$allocator@U?$pair@$$CBV?$CDefPointer@$$CBVCArmourDef@@@@M@std@@@std@@@std@@AAM@Z	rows/00868e50/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00e5e350	?HenchmanCommentary@CV_BodyGuardScript@NScript@@QAEXXZ	rows/00e5e350/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x008eebe0	?BackplaneFriction@Mass@@QAEXMM@Z	rows/008eebe0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt
+0x00ba48f0	?SetupStaticBlocksNoMorph@CEnginePrimitiveManagerStaticMeshesBase@@SI_NAAVC3DPrimitive2@@ABVC3DMesh2@@AAVC3DTextureStages@@JPBVCGraphicDataBank@@_N@Z	rows/00ba48f0/NAMING_EVIDENCE.md; final emitted Leaf verified in verification/FINAL_SYMBOLS.txt

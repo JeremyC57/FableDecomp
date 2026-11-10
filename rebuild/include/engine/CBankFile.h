@@ -12,6 +12,13 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CArray.h"
+#include "fable_string.h"
+class CDateAndTime;class CBankStateBlock;class CDataOutputStream;class CBankFileDataTypeCount;
+#endif
 
 class CBankFileEntryDependencies;
 class CCPPointerInfo;
@@ -21,9 +28,39 @@ struct CProgressCallback;
 class CWideStringData;
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+class CBankFile : public CBaseClassNonCopyable {
+#else
 class CBankFile {
+#endif
 public:
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+public:
+    virtual ~CBankFile();
+    virtual bool OpenReadOnly(const CCharString&,unsigned long);
+    virtual void OpenReadWrite(const CCharString&,unsigned long,unsigned long);
+    virtual bool OpenFileReadOnly(const CWideString&,unsigned long);
+    virtual void OpenFileReadWrite(const CWideString&,unsigned long,unsigned long);
+    virtual void Close();
+    virtual void AddEntryMultipleFiles(const CCharString&,unsigned long,const CArray<CCharString>&,const CCountedPointer<CBankStateBlock>);
+    virtual void Update();
+protected:
+    virtual unsigned long GetDataFormatVersion()=0;
+    virtual unsigned long AdjustUpdateEntries();
+    virtual void NotifyBankSize(unsigned long,const CArray<CBankFileDataTypeCount>&);
+    virtual void NotifyBankOpened();
+    virtual void NotifyEntryAdded(unsigned long,unsigned long,const CArray<char>&);
+    virtual void NotifyEntryUpdated(unsigned long,unsigned long,const CArray<char>&);
+    virtual void NotifyEntryRemoved(unsigned long);
+    virtual void NotifyPostEntriesLoaded();
+    virtual void PrepareDataForInclusion(unsigned long,const CArray<CCharString>&,unsigned long,const CCountedPointer<CBankStateBlock>,CDataOutputStream&,CDataOutputStream&);
+    virtual bool IsDiskFile(unsigned long,unsigned long);
+    virtual CDateAndTime GetLastModifiedTime(const CCharString&);
+    virtual CCharString GetEnumerationType(unsigned long) const;
+public:
+#else
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0xc];                // +0x08 CArray<CCharString>
     unsigned char               Checksums[0xc];              // +0x14 CArray<unsigned_long>
@@ -71,7 +108,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CBankFile) == 0x110);
+#ifndef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 FABLE_STATIC_ASSERT(offsetof(CBankFile, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CBankFile, Size) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CBankFile, Symbols) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CBankFile, Checksums) == 0x14);

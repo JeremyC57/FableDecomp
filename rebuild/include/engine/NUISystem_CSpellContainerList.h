@@ -23,6 +23,11 @@ public:
     virtual void SetSpellToAssign(long spell);                                      // slot 144 0x00544100
     virtual void ShowSpellSelectionChild();                                         // slot 145 0x00544110
     virtual void HideSpellSelectionChild();                                         // slot 146 0x00544190
+#ifdef FABLE_RETAIL_CSPELLCONTAINERLIST_OFFSETS
+    // PDB AddChildAndSetOffsets / InitialiseOffsets; retail calls +0x24c / +0x250.
+    virtual void AddChildAndSetOffsets(CCountedPointer<CComponent>&);
+    virtual void InitialiseOffsets(unsigned long);
+#endif
 #endif
 protected:
     float LastInputTime;                                            // +0x15c (Ego_r +0x18c)

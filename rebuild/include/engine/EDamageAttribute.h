@@ -1,0 +1,18 @@
+#ifndef FABLE_ENGINE_EDAMAGEATTRIBUTE_H
+#define FABLE_ENGINE_EDAMAGEATTRIBUTE_H
+// Original enumerators from both raw donor PDBs and native map-key/damage argument uses.
+enum EDamageAttribute {
+    DAMAGE_NULL=-1,
+    DAMAGE_MELEE=0,
+    DAMAGE_MELEE_UNARMED=1,
+    DAMAGE_LIGHTNING=2,
+    DAMAGE_FIRE=3,
+    DAMAGE_PROJECTILE=4,
+    DAMAGE_EXPLOSION=5,
+    DAMAGE_DRAIN=6,
+    DAMAGE_DRAIN_HEAL=7,
+    DAMAGE_GENERIC_WILL=8,
+    DAMAGE_DIVINE_WRATH=9,
+    DAMAGE_UNHOLY_POWER=10
+};
+#endif

@@ -7,6 +7,10 @@ namespace NHitLocations { class CHitLocation; }
 class CMaterialDef;class CThing;
 // Original Ego_r TPI0x2af3a; native OnHit proves offsets0,1,2,e,1a..28,48,50,58.
 // STLport replaces both 16-byte donor containers with12-byte containers: native sizeof60.
+#ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+#include "engine/EDamageAttribute.h"
+#include "stlport/fable_map.h"
+#endif
 class CHitParameters {
 #ifdef FABLE_ONHIT_TEST_ACCESS
     friend class COnHitFixture;
@@ -21,12 +25,19 @@ private:
     bool CreateParticleEffectOnHit,CreateDustParticleEffectOnHit,GuaranteeHit;
     bool Blocked,HitNegated,CauseRecoil;
     float ShotBuildupTime;
+#ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+    std::map<EDamageAttribute,float> DamageMap;
+#else
     unsigned char DamageMap[12]; // Original std::map<EDamageAttribute,float>.
+#endif
     unsigned char Augmentations[12]; // Original std::vector<EObjectAugmentationType>.
     NHitLocations::CHitLocation* PHitLocation;
     CDefPointer<const CMaterialDef> PHitMaterialDef;
     CIntelligentPointer<CThing> PThingHitting,PWeapon;
 public:
+#ifdef FABLE_RETAIL_CHITPARAMETERS_DAMAGEMAP
+    const std::map<EDamageAttribute,float>& GetDamageMap()const{return DamageMap;}
+#endif
     const C3DVector& GetHitPosition() const { return *reinterpret_cast<const C3DVector*>(Position); }
     const C3DVector& GetHitDirection() const { return *reinterpret_cast<const C3DVector*>(Direction); }
     CThing* GetPThingHitting() const { return PThingHitting.Get(); }

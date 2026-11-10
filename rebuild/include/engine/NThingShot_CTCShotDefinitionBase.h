@@ -10,6 +10,15 @@
 //   0x007BEFF0): ?GetPWeapon@CTCShotDefinitionBase@NThingShot@@QBEPAVCThing@@XZ.
 // Includers define FABLE_RETAIL_CTCBASE, FABLE_RETAIL_CTHING and FABLE_RETAIL_CINTELLIGENTPOINTER first.
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
+#include "engine/CThingShotDef.h"
+#include "engine/C3DVector.h"
+#include "engine/ECollideType.h"
+#include "engine/CDefPointer.h"
+#include "engine/EHeroExperienceStatCategory.h"
+class CMeleeCombatAbilityDef;
+class CHitLocation;
+#endif
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 class CThing;
@@ -30,12 +39,45 @@ public:
     virtual void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing);   // slot 28
     virtual void OnHitByMelee(CThing& hitter, CThing* weapon, const C3DVector& position, const C3DVector& direction, bool knockDown, bool blockable);   // slot 29
 #endif
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
+public:
+    virtual bool GetStatToModifyOnHit(EHeroExperienceStatCategory& category); // slot30
+    virtual float GetShotDamage() const; // slot31
+protected:
+    virtual void UpdateFacingDirection(); // slot32
+    virtual void InitMovement(); // slot33
+    C3DVector GetShootAtPos() const; // 007bedd0, Ego_r protected const IBE
+#endif
 protected:
     CIntelligentPointer<CThing> PEffect;                                // +0x0c
     std::vector<CIntelligentPointer<const CThing> > HitThingsList;      // +0x14
     CIntelligentPointer<const CThing> PTargetThing;                     // +0x20
     CIntelligentPointer<CThing> PShooter;                               // +0x28
     CIntelligentPointer<CThing> PWeapon;                                // +0x30
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
+    // Retail opt-in (Codex 2026-11-10): full donor tail shifted four bytes after HitThingsList.
+    CDefPointer<const CThingShotDef> PShotDef; //38
+    CDefPointer<const CMeleeCombatAbilityDef> PShotAbilityDef; //3c
+    float AccuracyPercentage; //40
+    float DamageMultiplier; //44
+    float ShotBuildupTime; //48
+    long StartFrame; //4c
+    bool SubShotsTriggered; //50
+    unsigned char TargetPos[12]; //51, C3DVector; opaque to preserve its odd native offset
+    unsigned char _pad5d[3];
+    long DieOnFrame; //60
+    bool PassedTarget,MadeSound,KnockDown,Decapitate,CanBeDeflected; //64..68
+    float InitialVelocity; //6c
+    C3DVector BestCollisionPos; //70
+    C3DVector BestCollisionNormal; //7c
+    CIntelligentPointer<CThing> PBestCollisionThing; //88
+    ECollideType BestCollisionType; //90
+    CHitLocation* PBestCollisionHitLocation; //94
+    bool MultiArrowShotType; //98
+#endif
 };
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_MOVEMENT
+FABLE_STATIC_ASSERT(sizeof(CTCShotDefinitionBase)==0x9c);
+#endif
 }
 #endif

@@ -36,7 +36,29 @@ public:
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicFrame) == 0x4);
 #else
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#include "engine/CCountedPointer.h"
+class CTexture;
+#endif
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+class CGraphicFrameData {
+public:
+    CTexture* GetTexture() const {return PTexture.Data;}
+private:
+    unsigned long ReferenceCount;
+    void* Data;
+    CCountedPointer<CTexture> PTexture;
+    unsigned short TLX,TLY,Width,Height,Pitch;
+    unsigned char Alpha:1;
+    unsigned char BooleanAlpha:1;
+    unsigned char UsesSurface:1;
+    unsigned char SectionOfTPage:1;
+    unsigned char IsInitialised:1;
+    unsigned char ScreenGraphic:1;
+};
+FABLE_STATIC_ASSERT(sizeof(CGraphicFrameData)==0x1b);
+#endif
 class CGraphicFrame {
 public:
     CGraphicFrameData* FrameData;                            // +0x00

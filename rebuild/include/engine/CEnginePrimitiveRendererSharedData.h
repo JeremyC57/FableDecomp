@@ -29,7 +29,13 @@ public:
 #else
 class CEnginePrimitiveRendererSharedData : public CBaseClassNonCopyable {
 private:
+#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+protected:
+    bool BlockOnLoad;
+    unsigned char _pad_0x5[0x263];
+#else
     unsigned char _pad_0x4[0x264];                                       // +0x04 members not modelled yet
+#endif
 };
 #endif
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRendererSharedData) == 0x268);

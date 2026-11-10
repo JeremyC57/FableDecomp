@@ -17,6 +17,9 @@
 #include "engine/EHeroExperienceStatCategory.h"
 #endif
 #include "engine/CVectorMap.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+#include "stlport/fable_map.h"
+#endif
 #include "engine/CDefPointer.h"
 #include "stlport/fable_containers.h"
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
@@ -26,6 +29,13 @@ namespace NUISystem { class CComponent; class CList; class CUIMiscThingsDef; }
 class CHeroAbilityDef;
 class CTCInventoryAbilities : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+    // Original names/values: raw Ego_r type0x2af77 and FableWin type0x2d7f3.
+    enum EUISpellCategory { SPELL_CATEGORY_ATTACK=0, SPELL_CATEGORY_SURROUND=1, SPELL_CATEGORY_PHYSICAL=2 };
+    EUISpellCategory GetCategory(EHeroAbility);
+    NUISystem::CComponent* GetMenuEntryFromCategory(EUISpellCategory,NUISystem::CComponent*);
+    CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility) const;
+#endif
     static ETCInterfaceType StatGetInterfaceType() { return (ETCInterfaceType)111; }
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
     // Nested opt-in (chunk 867, row 0x005F59C7): the PC skills screen's expressions page. FableWin.pdb spellings, out of line in
@@ -36,6 +46,15 @@ public:
     NUISystem::CComponent* ConstructPCExpressionsList(NUISystem::CComponent* parent);                           // 0x005F59C7
     void ConstructPCExpressionCategoryList(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
                                            NUISystem::CComponent* parent, const CCharString& ringPicture, const CCharString& guideSymbol);   // 0x005F45B5
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_SCREEN
+    // Retail opt-in (Codex 2026-11-10): Ego_r/FableWin exact names; vtable1256ad4 slot77.
+    virtual NUISystem::CComponent* ConstructScreen(NUISystem::CComponent* parent); //005f519f
+    NUISystem::CComponent* GetMagicListUIComponent(long& count,NUISystem::CComponent* parent); //005eeff2
+    NUISystem::CComponent* GetExpressionsListUIComponent(long& count,NUISystem::CComponent* parent); //005f4c8f
+private:
+    void ConstructExpressionCategoryList(CWideString& title,NUISystem::CList* list,std::vector<std::pair<long,long> >& items,NUISystem::CComponent* owner,const CCharString& ringPicture,const CCharString& guideSymbol);
+public:
 #endif
     long GetAbilityLevel(EHeroAbility) const;
     long GetAbilityMaximumLevel(EHeroAbility) const;
@@ -69,9 +88,15 @@ private:
     std::vector<std::pair<long,CDefPointer<const CHeroAbilityDef> > > Abilities;
     CVectorMap<long,EHeroAbility> AbilityButtons;
     std::vector<EHeroAbility> AssignedAbilities,AssignedAbilitiesSave;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_MAGIC
+    std::map<EUISpellCategory,NUISystem::CComponent*> CategoriesLists;
+    std::map<EHeroAbility,NUISystem::CComponent*> UnassignedIcons;
+    std::map<EHeroAbility,NUISystem::CComponent*> AbilitiesMenuEntries;
+#else
     unsigned char CategoriesLists[12]; // +0x194 std::map<EUISpellCategory,NUISystem::CComponent*>
     unsigned char UnassignedIcons[12]; // +0x1a0 std::map<EHeroAbility,NUISystem::CComponent*>
     unsigned char AbilitiesMenuEntries[12]; // +0x1ac std::map<EHeroAbility,NUISystem::CComponent*>
+#endif
     long CurrentAssignedExpressionLevel;
     std::vector<long> ReceivedExpressionOrder;
     CVectorMap<long,long> ExpressionButtons;
