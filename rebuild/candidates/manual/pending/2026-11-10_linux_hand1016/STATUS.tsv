@@ -1,0 +1,15 @@
+address	name	grade	grades_used	note
+00b67e30	CEngineLandscapeRenderer::RegisterSubPatchForZSorting	RELOCATION_MATCH	1	shared header + ZSORT opt-in; field stores into a local CSubPatchSorterEntry, push_back binds the _M_insert_overflow false_type instance (= 0x00B6C4C0 binding)
+006d8790	CTCHeroExperience::AddSuccessfulStrikeOfType	RELOCATION_MATCH (split 124)	4	RELOCATION_MATCH at the corrected 124-byte extent (qs.py); q.py/gall.sh show DIFFER(124v145) because the catalog row also holds the new 17-byte function 0x006D8810 AddSuccessfulWillStrike (SPLITS.tsv / BOUNDS_FIX.tsv). Lever: member-template const find with its body visible
+00b84470	CEngineSubPrimitiveRenderer::CEngineSubPrimitiveRenderer	RELOCATION_MATCH	3	retail CEngineComponent base + FableWin private GetList(type) accessor (keeps retail's source store order)
+0085fa00	NCreatureMode::IsToEvadeAllHits	RELOCATION_MATCH	1	shared headers, early returns, CThingPhysical::IsToEvadeAllHits inline accessor
+00663990	CThingCreatureBase::CreateWeaponForThingFromDef	RELOCATION_MATCH	3	shared headers; same-TU GetSubDef<T> template body (def held in esi, bare release); inline bitset test; implicit CCharString conversion for the "" name (constructed before the other args are pushed)
+006a16a0	CTCCarrying::RemoveThingInCarrySlot	RELOCATION_MATCH	3	new CTCCarrying MEMBERS layout opt-in, CTCSolidToThing header, SetAsCarriedBy friend; implicit CCharString for the AddTC name
+005eabc0	CTCTavernGame::PositionMesh	DIFFER(495v511)	6	running += sum gives retail's operand order (141/168 same); residue x87 allocation of the running sum and the un-hoisted setter-branch head (see differ/)
+009f18f0	CGameEventDataPackage::GetData	DIFFER(166v166)	2	register permutation only (this/start/size); c2prio this prio 75 > start 61
+006668a0	CThingCreatureBase::GetPossibleCombatAnimations	DIFFER(673v673)	1	prior verbatim re-graded; 2 residues (vptr store order, DEFAULT fallback store slot vs ~CCharString); local models (header debt)
+00bcf4f0	CEngineInternalPrimitive2DAnimatedMesh::Initialise	DIFFER(363v374)	2	prior re-graded; Scale re-read from memory in retail; flattened class header (debt)
+0074a4e0	CTCCreatureGenerator::DoNavCheck	DIFFER(232v234)	7	creature reference reload + constant-0 split piece in ebx; 6 shape variants inert
+00a55f90	CMatrix3x4::SetFromVectorAndAngle	DIFFER(259v259)	2	pair-product load order and early translation-zero stores
+00934e50	CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNot>,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange> > >	DIFFER(208v208)	4	identity corrected (IsNot + In2DRange, not In2DRange + IsValidGossipee); only the fail-path reload order (c2prio diagnosis in NOTES)
+006cbac0	CTCCreatureNavigation::GetNextNavPosOnRoute	PARKED (unattempted)	0	header debt: needs CThing virtual slots 29..86 (movement-speed getters at slots 79/81/83..86 called through the parent thing), the CNavigationInput layout (0x18 bytes at +0x1C), CCreatureNavOutput (16-byte hidden return), identities of 0x006CCF70 / 0x0085F3E0; analysis in NOTES.md

@@ -33,6 +33,11 @@ public:
     bool IsToRespondToHits() const { return RespondToHits; }
     bool IsKillable() const { return Killable; }
     bool IsDamageable() const { return Damageable; }
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_EVADEALLHITS
+    // Nested opt-in (chunk 1016, row 0x0085FA00 NCreatureMode::IsToEvadeAllHits): FableWin.pdb ?IsToEvadeAllHits@CThingPhysical@@QBE_NXZ,
+    // inline in retail (`test byte ptr [thing+0BCh],8`, bit 3 of the +0xBC flag run). Body only: no layout change.
+    bool IsToEvadeAllHits() const { return EvadeAllHits; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_HITSETTERS
     // Nested opt-in (chunk 802, row 0x00974AA0): FableWin.pdb ?SetAsDamageable@CThingPhysical@@QAEX_N@Z and
     // ?SetAsRespondToHits@CThingPhysical@@QAEX_N@Z, inline in retail (`and byte ptr [thing+0BCh],0FEh` / `0FBh`). Bodies only.

@@ -39258,3 +39258,7 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??0CCardPositionsDef@@QAE@XZ	004f9d15	004f9c07
 ?resize@?$vector@VCCardPositionsDef@@V?$allocator@VCCardPositionsDef@@@std@@@std@@QAEXIABVCCardPositionsDef@@@Z	004f9d32	004f9c07
 ?resize@?$vector@VCCardDef@@V?$allocator@VCCardDef@@@std@@@std@@QAEXIABVCCardDef@@@Z	004fa1a8	004fa0a9
+?LowerBound@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QAEPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@ABJ@Z	006a29b0	006a16a0
+?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z	00705d40	006a16a0
+?AddAttackOfTypeToAttackHistory@CTCHeroExperience@@AAEXW4EDamageAttribute@@@Z	006d7ec0	006d8790
+?SubPrimitiveRendererScratchTable@@3PAKA	014378c8	00b84470

@@ -54,7 +54,17 @@ public:
     // landed 0x00845CE0 through a local model). Declaration only.
     CThing* GetThingInCarrySlot(long slot) const;            // 0x006A11F0
 #endif
-#ifdef FABLE_RETAIL_CTCCARRYING_BYPASSFILTERS
+#ifdef FABLE_RETAIL_CTCCARRYING_MEMBERS
+    // Opt-in (w22 agent1016, row 0x006A16A0 RemoveThingInCarrySlot): the Ego_r.pdb members after the CTCBase part, in order and
+    // spelling (struct_layouts_egor.tsv: CarrySlots +0x0c, BypassFilters, Key, ThingsInPrimarySlots), at the retail offsets: the STLport
+    // CVectorMap is 0x10 bytes, so BypassFilters +0x1c (as the BYPASSFILTERS opt-in), Key +0x20, ThingsInPrimarySlots +0x24 (the row
+    // passes `lea ebp,[ebx+24h]` to list::remove 0x0065DE8A, and reads CarrySlots' finish at +0x10). Needs engine/CVectorMap.h,
+    // engine/CIntelligentPointer.h and stlport/fable_containers.h before this header. Supersedes the BYPASSFILTERS byte block.
+    CVectorMap<long, CIntelligentPointer<CThing>, CKeyPairCompareLess<long, CIntelligentPointer<CThing> > > CarrySlots;   // +0x0c
+    bool BypassFilters;                                      // +0x1c
+    void* Key;                                               // +0x20
+    std::list<CIntelligentPointer<CThing> > ThingsInPrimarySlots;   // +0x24
+#elif defined(FABLE_RETAIL_CTCCARRYING_BYPASSFILTERS)
     // Opt-in (chunk 898, row 0x0079CF30 CTCBulletTime::Pause clears it): the first Ego_r.pdb members after the CTCBase part. Ego_r has
     // CarrySlots (CVectorMap<long,CIntelligentPointer<CThing>,...>) at +0x0c and BypassFilters after it; the retail STLport CVectorMap
     // is 0x10 bytes (Ego_r's debug one 0x14), so BypassFilters is retail +0x1c (`mov byte ptr [eax+1Ch],0` at 0x0079D00B).

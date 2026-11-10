@@ -181,7 +181,15 @@ public:
         }
         return iterator(y);
     }
-#ifdef FABLE_RETAIL_STLP_TREE_CONSTFIND
+#if defined(FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY)
+    // Retail opt-in (chunk 1016, row 0x006D8790 CTCHeroExperience::AddSuccessfulStrikeOfType): owner decision D1 (2026-11-03) with the
+    // body visible -- STLport 4.6.1 _tree.h `template <class _KT> const_iterator find(const _KT& __k) const { return
+    // const_iterator(_M_find(__k)); }`. Retail calls the map<EDamageAttribute,float> instance out of line (0x006DAB90, the landed
+    // ??$find@W4EDamageAttribute@@@ member template) but the TU sees its body, so the caller keeps the found node in ebx across the
+    // next call and reads `[ebx+14h]` (0x006D87D5..0x006D87F7); the declaration-only template re-reads the result slot and
+    // precomputes &second (125 v 124 bytes). Same body as FABLE_RETAIL_STLP_TREE_CONSTFIND, member-template spelling.
+    template<class KT> const_iterator find(const KT& key) const { return const_iterator(_M_find(key)); }
+#elif defined(FABLE_RETAIL_STLP_TREE_CONSTFIND)
     // Retail opt-in (chunk 846, row 0x0051FD80 via CEntityRuntimePersistence::IsEntityPersistedAsDead): STLport 4.6 _tree.h
     // `const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }` -- the const twin calls the out-of-line
     // _M_find (0x00527D20, landed) as the non-const one does. Body only: no layout change.

@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00663990   RELOCATION_MATCH PASS   CreateWeaponForThingFromDef
+006a16a0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+006a16a0   RELOCATION_MATCH PASS   RemoveThingInCarrySlot
+006d8790   RELOCATION_MATCH PASS   AddSuccessfulStrikeOfType
+0085fa00   RELOCATION_MATCH PASS   IsToEvadeAllHits
+00b67e30   RELOCATION_MATCH PASS   RegisterSubPatchForZSorting
+00b84470   RELOCATION_MATCH PASS   CEngineSubPrimitiveRenderer
+
+WINS: 6
+  00663990 RELOCATION_MATCH CThingCreatureBase::?CreateWeaponForThingFromDef@CThingCreatureBase@@SIXAAVCThing@@J@Z
+  006a16a0 RELOCATION_MATCH CTCCarrying::?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z
+  006d8790 RELOCATION_MATCH CTCHeroExperience::?AddSuccessfulStrikeOfType@CTCHeroExperience@@AAEXW4EDamageAttribute@@M_N@Z
+  0085fa00 RELOCATION_MATCH NCreatureMode::?IsToEvadeAllHits@NCreatureMode@@YI_NABVCThing@@@Z
+  00b67e30 RELOCATION_MATCH CEngineLandscapeRenderer::?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z
+  00b84470 RELOCATION_MATCH CEngineSubPrimitiveRenderer::??0CEngineSubPrimitiveRenderer@@QAE@XZ
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CThingCreatureBase_CreateWeaponForThingFromDef_00663990
+  CTCCarrying_RemoveThingInCarrySlot_006a16a0
+  CTCHeroExperience_AddSuccessfulStrikeOfType_006d8790
+  NCreatureMode_IsToEvadeAllHits_0085fa00
+  CEngineLandscapeRenderer_RegisterSubPatchForZSorting_00b67e30
+  CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84470

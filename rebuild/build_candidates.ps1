@@ -391671,6 +391671,48 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlS40'
         PassPattern = '004fa0a9_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00663990'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_CreateWeaponForThingFromDef_00663990.cpp'
+        TestSource = '00/66/CThingCreatureBase_CreateWeaponForThingFromDef_00663990_test.cpp'
+        PassPattern = '00663990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a16a0'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_RemoveThingInCarrySlot_006a16a0.cpp'
+        TestSource = '00/6a/CTCCarrying_RemoveThingInCarrySlot_006a16a0_test.cpp'
+        PassPattern = '006a16a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d8790'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_AddSuccessfulStrikeOfType_006d8790.cpp'
+        TestSource = '00/6d/CTCHeroExperience_AddSuccessfulStrikeOfType_006d8790_test.cpp'
+        PassPattern = '006d8790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fa00'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsToEvadeAllHits_0085fa00.cpp'
+        TestSource = '00/85/NCreatureMode_IsToEvadeAllHits_0085fa00_test.cpp'
+        PassPattern = '0085fa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b67e30'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_RegisterSubPatchForZSorting_00b67e30.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_RegisterSubPatchForZSorting_00b67e30_test.cpp'
+        PassPattern = '00b67e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84470'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84470.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84470_test.cpp'
+        PassPattern = '00b84470_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

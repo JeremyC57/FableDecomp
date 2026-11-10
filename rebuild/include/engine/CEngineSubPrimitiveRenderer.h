@@ -22,7 +22,22 @@ public:
 #else
  class CSortElement {public:unsigned long Key;void* Primitive;};
 #endif
+#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_CTOR
+ // Nested opt-in (chunk 1016, row 0x00B84470 ??0CEngineSubPrimitiveRenderer@@QAE@XZ): FableWin.pdb ??0CSubPrimitiveList@CEngineSubPrimitiveRenderer@@QAE@XZ
+ // (inline in retail: the renderer's vector-constructor loop stores 0 to the CArray words, RenderPass and PreRenderPass, false to the
+ // two pass flags and true to Sorted / Enable, 0x00B844A0..0x00B844B7) and Ego_r.pdb / FableWin.pdb ?SetMaxSortDistance@CEngineSubPrimitiveRenderer@@QAEXM@Z
+ // (out of line at 0x00B84290: MaxSortDistance = d, SortDistanceMultiplier = 2^30 / d; the constructor expands it with 10000, folding
+ // the quotient to 0x47D1B717). No layout change.
+ class CSubPrimitiveList {public:CArray<CSortElement> Elements;ERenderPassType RenderPass,PreRenderPass;bool BoundingVolumePass,RequiresStableSort,Sorted,Enable;
+  CSubPrimitiveList():RenderPass(RENDER_PASS_NULL),PreRenderPass(RENDER_PASS_NULL),BoundingVolumePass(false),RequiresStableSort(false),Sorted(true),Enable(true){}};
+ void SetMaxSortDistance(float distance){MaxSortDistance=distance;SortDistanceMultiplier=1073741824.0f/distance;}
+private:
+ // FableWin.pdb ?GetList@CEngineSubPrimitiveRenderer@@AAEAAVCSubPrimitiveList@1@W4ESubPrimitiveType@@@Z (private; inline in retail).
+ CSubPrimitiveList& GetList(ESubPrimitiveType type){return SubPrimitiveLists[type];}
+public:
+#else
  class CSubPrimitiveList {public:CArray<CSortElement> Elements;ERenderPassType RenderPass,PreRenderPass;bool BoundingVolumePass,RequiresStableSort,Sorted,Enable;};
+#endif
 private:
  float MaxSortDistance,SortDistanceMultiplier;
  CSubPrimitiveList SubPrimitiveLists[15];

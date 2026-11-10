@@ -37,6 +37,11 @@ public:
 #endif
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS
+    // Nested opt-in (chunk 1016, row 0x00934E50 via CMessageEvent::GetPOriginator<CThingAICreature>): FableWin.pdb
+    // ?StatGetTypeFlags@CThingAICreature@@SIKXZ (static fastcall, inline in retail: the type test `not eax ; test al,1Fh`, 0x00934E9D).
+    static unsigned long __fastcall StatGetTypeFlags() { return 0x1f; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_STATGETTYPE
     // Nested opt-in (chunk 853, row 0x0050A650): FableWin.pdb ?StatGetType@CThingAICreature@@SIJXZ (inline); retail
     // GetAllLeafThings<CThingAICreature> 0x00516830 scans type list 1 (`push 1 ; call PeekTypeList`). No layout change.

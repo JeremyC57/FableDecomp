@@ -2683,3 +2683,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A scaled value written back into a parameter moves temporaries; a named float local keeps retail's schedule (0x00B84720).
 - The PDBs spell CWideString's `const wchar_t*` as `PB_W` (native wchar_t), not `PBG`: rows that bind the string core need `/Zc:wchar_t` (0x0099BA70, 0x007E5570, 0x00A0CDD0); 0x0099BA70 also needs `/GS`. Landed `PBG` spellings are queued (land1011aq).
 - `/d2inlS<N>` is the size-mode inline budget (default 9): a call site inlines only when its cost is below N. STLport `vector<T>::resize(n)` costs 39 with an implicit element ctor and 29 with out-of-line ctor/dtor (the TransferVectorOfSubComponents rows: /d2inlS40 / /d2inlS30).
+- An implicit `const char*` -> CCharString argument builds the temporary before any other argument is pushed (retail order); an explicit `CCharString("...")` argument does not (0x00663990, 0x006A16A0).
+- For `R*x + F*y + U*z + P` with member operator+, VC7.1 evaluates the right operand first; running `+=` statements give retail's operand order (0x005EABC0).
+- The CThing type-flag test `(~flags & mask) == 0` gives retail's `not eax ; test al,mask`; `(flags & mask) == mask` gives `and/cmp` (0x00934E50).

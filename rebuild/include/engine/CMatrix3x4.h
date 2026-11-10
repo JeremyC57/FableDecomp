@@ -19,6 +19,11 @@ public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
 #endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_SETFROMVECTORANDANGLE
+    // Nested opt-in (chunk 1016, row 0x00A55F90): Ego_r.pdb / FableWin.pdb ?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z
+    // (thiscall, out of line at 0x00A55F90; the landed C3DVector::Rotate 0x00A13C60 calls it). A declaration only: no layout change.
+    void SetFromVectorAndAngle(const C3DVector& axis,float angle);         // 0x00A55F90
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY
     // Retail opt-in (chunk 895, row 0x00BEBAA0 CEngineInternalPrimitiveMeshBase::CalcObjectMatrix): Ego_r.pdb / FableWin.pdb
     // ?SetTranslateOnly@CMatrix3x4@@QAEXABVC3DVector@@@Z, inline in retail (no out-of-line copy: the row stores the translation

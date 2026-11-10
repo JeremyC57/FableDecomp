@@ -17,6 +17,15 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CARRYABLE; }
     const CThing* GetPCarriedByThing() const;                        // 0x00705170
     long GetCarrySlotActive() const;                                 // 0x00705CC0
+#ifdef FABLE_RETAIL_CTCCARRYABLE_SETASCARRIEDBY
+    // Opt-in (w22 agent1016, row 0x006A16A0 CTCCarrying::RemoveThingInCarrySlot calls it with 0): Ego_r.pdb / FableWin.pdb
+    // ?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z (private; out of line at 0x00705D40, landed). CTCCarrying calls the private
+    // member, so it is a friend (inferred from the access: the PDBs keep no friend records). Declaration only: no layout change.
+    friend class CTCCarrying;
+private:
+    void SetAsCarriedBy(CTCCarrying* carrier);                       // 0x00705D40
+public:
+#endif
     bool          ForceFragility;                                    // +0x0c
     CTCCarrying*  PCarryingTC;                                       // +0x10
     float         OffsetCoordRelativeToAttachToDummy[3];             // +0x14 C3DVector

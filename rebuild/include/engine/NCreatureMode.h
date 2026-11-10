@@ -99,4 +99,16 @@ namespace NCreatureMode { enum EMode {
     MODE_SCREAMER_SUPER_ATTACK=94,
     MODE_HIT_BY_EPIC_SPELL=95
 }; }
+#ifdef FABLE_RETAIL_NCREATUREMODE_QUERIES
+// Nested opt-in (chunk 1016, row 0x0085FA00): the NCreatureMode thing queries, static `__fastcall` free functions in Ego_r.pdb
+// (?IsKnockedDown@NCreatureMode@@YI_NABVCThing@@@Z 0x0085F010, ?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z 0x0085F120,
+// ?IsToEvadeAllHits@NCreatureMode@@YI_NABVCThing@@@Z 0x0085FA00; donor order IsKnockedDown, IsUnderground ... IsToEvadeAllHits).
+// Declarations only.
+class CThing;
+namespace NCreatureMode {
+bool __fastcall IsKnockedDown(const CThing& thing);                     // 0x0085F010
+bool __fastcall IsUnderground(const CThing& thing);                     // 0x0085F120
+bool __fastcall IsToEvadeAllHits(const CThing& thing);                  // 0x0085FA00
+}
+#endif
 #endif

@@ -1,0 +1,17 @@
+address	name	evidence
+00b67e30	CEngineLandscapeRenderer::RegisterSubPatchForZSorting	Ego_r/FableWin ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z; RELOCATION_MATCH
+006d8790	CTCHeroExperience::AddSuccessfulStrikeOfType	Ego_r 0x0058A540 / FableWin ?AddSuccessfulStrikeOfType@CTCHeroExperience@@AAEXW4EDamageAttribute@@M_N@Z (private); RELOCATION_MATCH at the split length 124
+006d8810	CTCHeroExperience::AddSuccessfulWillStrike	new split start (17 bytes, StrikeOfType(0, damage, false)); Ego_r 0x0058A5D0 / FableWin ?AddSuccessfulWillStrike@CTCHeroExperience@@QAEXM@Z follows StrikeOfType in donor order
+00b84470	CEngineSubPrimitiveRenderer::CEngineSubPrimitiveRenderer	??0CEngineSubPrimitiveRenderer@@QAE@XZ (Ego_r/FableWin); RELOCATION_MATCH
+0085fa00	NCreatureMode::IsToEvadeAllHits	Ego_r/FableWin ?IsToEvadeAllHits@NCreatureMode@@YI_NABVCThing@@@Z; RELOCATION_MATCH
+00663990	CThingCreatureBase::CreateWeaponForThingFromDef	Ego_r/FableWin ?CreateWeaponForThingFromDef@CThingCreatureBase@@SIXAAVCThing@@J@Z (static member, not a free function); landed caller 0x008C8960; RELOCATION_MATCH
+006a16a0	CTCCarrying::RemoveThingInCarrySlot	Ego_r/FableWin ?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z (returns the removed thing); callers 0x006A19B0 / 0x00663990; RELOCATION_MATCH
+005eabc0	CTCTavernGame::PositionMesh	Ego_r/FableWin ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z
+009f18f0	CGameEventDataPackage::GetData	Ego_r 0x00B454F0 / FableWin ?GetData@CGameEventDataPackage@@QAEXJPAX@Z (catalog CircularBuffer_Read is descriptive)
+00934e50	CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNot>,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange> > >	the body calls 0x006A76A0 (CThingFilter_IsNot::operator(), a pointer compare) and 0x006A76B0 (CThingFilter_In2DRange::operator()); the catalog's In2DRange/IsValidGossipee instance is a different address
+004c7790	CThing::DrawIsDrawable	CThing vtable 0x01239ABC slot 27; Ego_r 0x004C9350 ?DrawIsDrawable@CThing@@UBE_NXZ
+004c8e50	CThing::SetAsDrawable	CThing vtable 0x01239ABC slot 28; Ego_r 0x004CAD50 ?SetAsDrawable@CThing@@UAEX_N@Z
+00a22f80	CRightHandedSet::Rotate	Ego_r 0x00B8BA40 ?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z; bound by the 0x006A16A0 match
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	FableWin ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ; bound by the 0x006A16A0 match
+006cbac0	CTCCreatureNavigation::GetNextNavPosOnRoute	Ego_r ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z (hidden 16-byte CCreatureNavOutput return + 6 args = retail `ret 1Ch`); row parked unattempted
+014378c8	SubPrimitiveRendererScratchTable	descriptive (no PDB/string name found): 0x1000-dword table cleared by the CEngineSubPrimitiveRenderer ctor 0x00B84470 (memset 0x4000 bytes)

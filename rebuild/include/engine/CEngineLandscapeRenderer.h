@@ -100,6 +100,12 @@ public:
     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
     virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ (chunk 731)
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_ZSORT
+    // Nested opt-in (chunk 1016, row 0x00B67E30): Ego_r.pdb / FableWin.pdb
+    // ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z (out of line at 0x00B67E30; the
+    // only caller 0x00BE5D20 passes the patch's slot word and the patch). A declaration only: no layout change.
+    void RegisterSubPatchForZSorting(long& index, CLandscapeBackgroundPatch* patch);    // 0x00B67E30
+#endif
     CLandscapeGPUUpdateQueue       GPUUpdateQueue;                       // +0x00c
     CEngineLandscapeMeshBuilder    MeshBuilder;                          // +0x010
     float                          LODZBandsZ[8];                        // +0x498

@@ -1,0 +1,28 @@
+# Header overlay (w22 agent1016, chunk 1016)
+
+Every source of this chunk was graded with `FABLE_HDR_OVERLAY=$A/hdr` exported. Every file here is the current
+`rebuild/include/<path>` plus additions under their own `#ifdef FABLE_RETAIL_*` (forward declarations included), or a new header
+whose whole content sits under its opt-in. Without the opt-ins the default path is byte-identical to the repo header
+(checked with difflib against the repo copy on 2026-11-10: only insertions, plus the two `#ifdef` -> `#elif` chains noted below).
+
+| Header | Opt-in | What it adds | Row / evidence |
+|---|---|---|---|
+| engine/CEngineLandscapeRenderer.h | `FABLE_RETAIL_CENGINELANDSCAPERENDERER_ZSORT` | `RegisterSubPatchForZSorting(long&, CLandscapeBackgroundPatch*)` declaration | 0x00B67E30; Ego_r/FableWin `?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z` |
+| engine/CTCHeroExperience.h | `FABLE_RETAIL_CTCHEROEXPERIENCE_STRIKEOFTYPE` | `AddSuccessfulStrikeOfType(EDamageAttribute, float, bool)` (private, inside the MULTISTRIKE section) | 0x006D8790; `?AddSuccessfulStrikeOfType@CTCHeroExperience@@AAEXW4EDamageAttribute@@M_N@Z` |
+| stlport/fable_map.h | `FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY` | `_Rb_tree::find<KT>(const KT&) const` member template with its body visible (`#if defined(..TEMPLATE_BODY) / #elif defined(FABLE_RETAIL_STLP_TREE_CONSTFIND)`: the existing CONSTFIND branch unchanged) | 0x006D8790 binds `??$find@W4EDamageAttribute@@@?$_Rb_tree@..QBE..` = 0x006DAB90 (owner decision D1); declaration-only gives 125v124 |
+| engine/CMatrix3x4.h | `FABLE_RETAIL_CMATRIX3X4_SETFROMVECTORANDANGLE` | `SetFromVectorAndAngle(const C3DVector&, float)` declaration | 0x00A55F90 |
+| engine/CEngineSubPrimitiveRenderer.h | `FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_CTOR` (inside the `_ADD` branch) | CSubPrimitiveList default ctor (RENDER_PASS_NULL x2, false, false, true, true), inline `SetMaxSortDistance`, the private FableWin accessor `GetList(ESubPrimitiveType)` | 0x00B84470; FableWin `?GetList@CEngineSubPrimitiveRenderer@@AAEAAVCSubPrimitiveList@1@W4ESubPrimitiveType@@@Z` (inline in retail); the accessor keeps retail's source store order |
+| engine/NCreatureMode.h | `FABLE_RETAIL_NCREATUREMODE_QUERIES` | `IsKnockedDown` 0x0085F010, `IsUnderground` 0x0085F120, `IsToEvadeAllHits` 0x0085FA00 (fastcall `const CThing&`) | Ego_r/FableWin `?IsToEvadeAllHits@NCreatureMode@@YI_NABVCThing@@@Z` etc. |
+| engine/CThingPhysical.h | `FABLE_RETAIL_CTHINGPHYSICAL_EVADEALLHITS` | inline `IsToEvadeAllHits() const { return EvadeAllHits; }` | FableWin `?IsToEvadeAllHits@CThingPhysical@@QBE_NXZ`; 0x0085FA00 tests the bit in place |
+| engine/CThingAICreature.h | `FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS` | `static StatGetTypeFlags() { return 0x1f; }` | FableWin `?StatGetTypeFlags@CThingAICreature@@SIKXZ`; 0x00934E50 `not eax ; test al,1Fh` |
+| engine/CMessageEvent.h (new) | `FABLE_RETAIL_CMESSAGEEVENT` | `CMessageEvent : CBaseObject` with the Ego_r members at retail offsets (Type +8, Pos +0xC, MessageID +0x40, POriginator +0x48, PTarget +0x50; 0x58 bytes) and `GetPOriginator<T>()` (type-flag test `(~flags & T::StatGetTypeFlags()) == 0`) | 0x00934E50 |
+| engine/CMessageEventManager.h | `FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT` | member template `FindMostRecentMessage<TFilter>(const TFilter&) const` (the landed K034/K035 walk) | 0x00934E50; both PDBs `??$FindMostRecentMessage@..@CMessageEventManager@@QBEPBVCMessageEvent@@ABV..@@Z` |
+| engine/CMessageEventFilters.h (new) | `FABLE_RETAIL_CMESSAGEEVENTFILTERS` | `CMessageEventFilter_IsOfType` (op() 0x006AF1C0), `CMessageEventFilter_ThingSearchFilter<T>` (inline op(): originator as CThingAICreature then the thing filter), `CThingFilter_In2DRange` (op() 0x006A76B0) | 0x00934E50 |
+| engine/CThingCreatureBase.h | `FABLE_RETAIL_CTHINGCREATUREBASE_CREATEWEAPON` | `static void __fastcall CreateWeaponForThingFromDef(CThing&, long)` | 0x00663990; Ego_r/FableWin `?CreateWeaponForThingFromDef@CThingCreatureBase@@SIXAAVCThing@@J@Z` |
+| engine/CTCCarrying.h | `FABLE_RETAIL_CTCCARRYING_MEMBERS` | the Ego_r members at retail offsets: `CarrySlots` CVectorMap<long,CIntelligentPointer<CThing>> +0x0C, `BypassFilters` +0x1C, `Key` +0x20, `ThingsInPrimarySlots` std::list<CIntelligentPointer<CThing>> +0x24 (`#ifdef ..MEMBERS / #elif defined(..BYPASSFILTERS)`: the BYPASSFILTERS byte block unchanged when MEMBERS is off) | 0x006A16A0 (`lea ebp,[ebx+24h]` to list::remove; CarrySlots finish read at +0x10) |
+| engine/CTCCarryable.h | `FABLE_RETAIL_CTCCARRYABLE_SETASCARRIEDBY` | private `SetAsCarriedBy(CTCCarrying*)` 0x00705D40 + `friend class CTCCarrying` (friendship inferred from the access) | 0x006A16A0; `?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z` |
+| engine/CTCSolidToThing.h (new) | `FABLE_RETAIL_CTCSOLIDTOTHING` | `CTCSolidToThing : CTCBase`, `StatGetInterfaceType()` TCI_SOLID_TO_THING (77), `AddThingNotSolidTo(const CThing*)` 0x00770FA0 | 0x006A16A0; `?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z` |
+| engine/CThing.h | `FABLE_RETAIL_CTHING_DRAWABLE` (nested in LOADSINGLE, after ISPLACED) | CThing virtual slots 18..28 (ValidateThing .. SetAsDrawable) in retail slot order, PDB spellings; slot 26 DrawUpdate's position is inferred (empty one-argument body `ret 4`) | 0x005EABC0 calls slots 27 (+0x6C DrawIsDrawable) and 28 (+0x70 SetAsDrawable) |
+| engine/CTCTavernGame.h | `FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH` | the forward declarations of C3DVector / CRightHandedSet and `static PositionMesh(...)` | 0x005EABC0; `?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z` |
+
+Rows that use no new opt-in still need the overlay only for the headers above that they include.

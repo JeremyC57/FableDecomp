@@ -1,0 +1,3 @@
+address	length	name	evidence
+006d8790	124	CTCHeroExperience::AddSuccessfulStrikeOfType	the catalog row (145 bytes) runs on into a second function: the body ends with `ret 0Ch` at 0x006D8809 (end 0x006D880C), then 4 int3; the 124-byte source grades RELOCATION_MATCH against the 124-byte cut (qs.py), DIFFER(124v145) against the long row
+006d8810	17	CTCHeroExperience::AddSuccessfulWillStrike	new function start exposed by the split: `mov eax,[esp+4] ; push 0 ; push eax ; push 0 ; call 0x006D8790 ; ret 4` = AddSuccessfulStrikeOfType(0, damage, false); Ego_r.pdb / FableWin.pdb ?AddSuccessfulWillStrike@CTCHeroExperience@@QAEXM@Z, Ego_r donor order AddSuccessfulStrikeOfType 0x0058A540 then AddSuccessfulWillStrike 0x0058A5D0

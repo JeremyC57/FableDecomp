@@ -1,0 +1,9 @@
+- 0x00663990 / 0x006A16A0: an implicit `const char*` -> CCharString argument conversion constructs the temporary BEFORE any other argument is pushed (retail order); an explicit `CCharString("...")` argument is built in right-to-left argument order and lets VC7.1 hoist unrelated loads above its ctor call.
+- 0x00663990: the shared `CDefClassBase::GetSubDef<T>` template body in the same TU (`#pragma auto_inline(off)`) keeps a CDefPointer<const T> local in a register across later calls and gives retail's bare `dec [esi+4]` release (no reload, no null test); a declaration-only GetSubDef reloads the def from its frame home after every call (413v381).
+- 0x00663990: do not define FABLE_RETAIL_STLP_BITSET_TEST_DECL in a row whose retail HasTC tests the bit in place; it turns every HasTC into a call.
+- 0x006D8790: the const `map::find` called out of line with the found node kept in a register needs the member-template find with its BODY visible (FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY); declaration-only re-reads the result slot (125v124).
+- 0x006D8790: catalog row 145 bytes covers two functions; the real extent is 124 (ret 0Ch at 0x006D8809) and 0x006D8810 is AddSuccessfulWillStrike (17 bytes).
+- 0x00B84470: stores through the FableWin private accessor `GetList(type).Field = ...` keep retail's source store order; direct `SubPrimitiveLists[i].Field` stores are rescheduled.
+- 0x00934E50: the CThing type-flag test `(~flags & mask) == 0` gives retail's `not eax ; test al,mask`; `(flags & mask) == mask` gives `and/cmp`.
+- 0x006A16A0: CTCCarrying retail members: CarrySlots +0x0C (CVectorMap 0x10), BypassFilters +0x1C, Key +0x20, ThingsInPrimarySlots +0x24 (STLport list); `RemoveThingInCarrySlot` returns the removed CThing* (QAEPAVCThing@@J_N@Z) and ignores its bool.
+- 0x005EABC0: for `R*x + F*y + U*z + P` VC7.1 evaluates the right operand of each member operator+ first (Up*Z first); running `+=` statements give retail's operand order.

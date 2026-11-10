@@ -40,6 +40,12 @@ private:
         AttackHistory.pop_front();
         AttackHistory.push_back(std::make_pair(type,GetWorld().GetFrame()));
     }
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STRIKEOFTYPE
+    // Nested opt-in (chunk 1016, row 0x006D8790): Ego_r.pdb / FableWin.pdb
+    // ?AddSuccessfulStrikeOfType@CTCHeroExperience@@AAEXW4EDamageAttribute@@M_N@Z (private; out of line at 0x006D8790, called by the
+    // one-argument forwarder 0x006D8810 with (type, 0, false)). A declaration only: no layout change.
+    void AddSuccessfulStrikeOfType(EDamageAttribute type,float damage,bool increase);   // 0x006D8790
+#endif
 public:
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_HERO_EXPERIENCE;}

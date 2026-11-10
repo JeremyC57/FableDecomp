@@ -36,6 +36,10 @@
 #include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
 class CEnginePrimitivePrepareInfo;
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
+class C3DVector;                                                         // PositionMesh parameter types
+class CRightHandedSet;
+#endif
 class CFontBank;
 class CInputEvent;
 class CInputProcessTavernGame;
@@ -94,6 +98,12 @@ public:
     void ChangeBet(bool);                                                // 0x005EB810
     CThingObject* CreateGamePiece(long);                                 // 0x005EA9B0
     long GetBanter() const;                                              // 0x005EA3C0
+#ifdef FABLE_RETAIL_CTCTAVERNGAME_POSITIONMESH
+    // Opt-in (w22 agent1016, row 0x005EABC0): Ego_r.pdb / FableWin.pdb
+    // ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z (public static __fastcall). Declaration only.
+    static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& rhSet, const C3DVector& offset,
+                                        float forwardAngle, float upAngle);   // 0x005EABC0
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAME_CAMERAPOINT
     // Nested opt-in (chunk 768, row 0x005EBFA0): Ego_r.pdb / FableWin.pdb ?CameraUseCameraPoint@CTCTavernGame@@QAEXABVCCharString@@@Z
     // (public; the landed CTCTavernGameShoveHaPenny::EnterGame 0x007CF530 calls it). Declaration only.

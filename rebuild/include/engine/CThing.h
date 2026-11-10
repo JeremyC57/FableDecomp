@@ -145,6 +145,25 @@ public:
     // Retail opt-in (Codex pass17): original public const virtual slot17, native004c7b80.
     virtual bool IsToBePlacedInMap() const;
 #endif
+#ifdef FABLE_RETAIL_CTHING_DRAWABLE
+    // Nested opt-in (w22 agent1016, row 0x005EABC0 CTCTavernGame::PositionMesh calls slots 27 (+0x6C) and 28 (+0x70)); needs
+    // FABLE_RETAIL_CTHING_ISPLACED (slot 17). The CThing virtuals of vtable 0x01239ABC slots 18..28 in retail slot order, spelled as the
+    // Ego_r.pdb / FableWin.pdb name set: 18 ValidateThing, 19 WorldUpdate, 20 WorldUpdateBulletTime, 21 RenderUpdate (Ego_r 0x004C90A0),
+    // 22 IsEntitySerialisable, 23 GetChecksum, 24 GetInfo (Ego_r 0x004C9750), 25 DrawGetEditDrawInfo (Ego_r 0x004C90B0), 26 DrawUpdate (FableWin.pdb ?DrawUpdate@CThing@@UAEXPBVCInterpolationInfo@@@Z; vtable 0x01239ABC slot 26 = 0x004CD1D0
+    // `ret 4`, the one-argument void virtual with an empty body),
+    // 27 DrawIsDrawable (retail 0x004C7790, Ego_r 0x004C9350), 28 SetAsDrawable (retail 0x004C8E50, Ego_r 0x004CAD50). Declarations only.
+    virtual bool ValidateThing(CCharString&) const;                     // slot 18
+    virtual bool WorldUpdate();                                          // slot 19
+    virtual void WorldUpdateBulletTime();                                // slot 20
+    virtual bool RenderUpdate(const class CInterpolationInfo*);          // slot 21
+    virtual bool IsEntitySerialisable() const;                           // slot 22
+    virtual unsigned long GetChecksum() const;                           // slot 23
+    virtual void GetInfo(class CThingInfo*) const;                       // slot 24
+    virtual bool DrawGetEditDrawInfo(float, class CEditEngineDrawInfo*) const;   // slot 25
+    virtual void DrawUpdate(const class CInterpolationInfo*);            // slot 26
+    virtual bool DrawIsDrawable() const;                                 // slot 27 0x004C7790
+    virtual void SetAsDrawable(bool);                                    // slot 28 0x004C8E50
+#endif
     static void __fastcall SerialiseThingInfo(CPersistContext&,CSerialiseInfo&);           // 0x004C81F0
     static void __fastcall SerialiseThingInfo(bool,CCharString&,CSerialiseInfo&);         // 0x004C88E0
     bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }

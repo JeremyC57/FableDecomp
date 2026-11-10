@@ -33,6 +33,12 @@ public:
 public:
  static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 15;}
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_CREATEWEAPON
+public:
+ // Opt-in (w22 agent1016, row 0x00663990): Ego_r.pdb / FableWin.pdb ?CreateWeaponForThingFromDef@CThingCreatureBase@@SIXAAVCThing@@J@Z
+ // (static __fastcall; the landed 0x008C8960 BanditKingChangeWeapons::PerformAction calls it). Declaration only: no layout change.
+ static void FABLE_FASTCALL CreateWeaponForThingFromDef(CThing& thing, long defIndex);   // 0x00663990
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HEADPOS
 public:
  // Chunk 1013 (row 0x0063E6F0 CWorldMap::IsLineOfSight(const CThing&,...)): Ego_r.pdb 0x0053C900 / FableWin.pdb 0x01D9A630
