@@ -34,7 +34,8 @@ enum EHeroExperienceStatCategory { };                       // enumerators not n
 class CPersistContext {
 public:
     void Transfer(EHeroExperienceStatCategory& value);           // 0x00469B8A
-    void Transfer(std::vector<CAbilityTrackLevelDef >& value);   // 0x00478AE5
+    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
+    // TransferVectorOfSubComponents<CAbilityTrackLevelDef> 0x00478AE5
     template <class T> void Transfer(T& value);                                  // 0x00431102
 };
 class CAbilityTrackDef {
@@ -49,6 +50,6 @@ public:
 void CAbilityTrackDef::Transfer(CPersistContext& context)
 {
     context.Transfer(ExperienceStat);
-    context.Transfer(Abilities);
+    context.TransferVectorOfSubComponents(Abilities);
     context.Transfer(MaxedOutDescription);
 }

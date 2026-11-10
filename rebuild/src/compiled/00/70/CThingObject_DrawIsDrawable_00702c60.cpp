@@ -15,17 +15,17 @@ class CDisplayEngine { public:
 };
 class CThing { public:
     virtual void v00();
-    CDisplayEngine* GetDisplayEngine();              // 0x004C7A70
-    virtual bool DrawIsDrawable();                   // 0x004C7790 (called non-virtually)
+    CDisplayEngine* GetDisplayEngine() const;              // 0x004C7A70
+    virtual bool DrawIsDrawable() const;                   // 0x004C7790 (called non-virtually)
 };
 class CThingObject : public CThing { public:
     unsigned char _pad04[0xd0];
     long          DieOffTimer;                       // +0xd4
     bool          DiesOff;                           // +0xd8
-    virtual bool DrawIsDrawable();
+    virtual bool DrawIsDrawable() const;
 };
 
-bool CThingObject::DrawIsDrawable()
+bool CThingObject::DrawIsDrawable() const
 {
     if (CThing::DrawIsDrawable()) {
         if (DiesOff && GetDisplayEngine()->DivideByGameSpeed((float)DieOffTimer) < 5.0f)

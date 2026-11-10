@@ -6,13 +6,13 @@
 // Callees: NGraphicAppearance::CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector&,
 //          CRightHandedSet&, float) const @ 0x004C08C0 (twice; hand names g_RightHandAttachmentName @ 0x013BAC30 and
 //          g_LeftHandAttachmentName @ 0x013BAC34, as the sibling GetInterpolatedPickupOffsetAndOrientationAt 0x00705190),
-//          CTCPhysicsBase::GetInterpolatedPosition(float) @ 0x0049D150 (out-of-line copy on the left-hand path; the
+//          CTCPhysicsBase::GetPosition(float) const @ 0x0049D150 (out-of-line copy on the left-hand path; the
 //          right-hand path inlines it), the physics component's virtual slot 72 GetRHSet (+0x120).
 // Layout: CTCBase ParentThing +0x04; retail CThing PhysicsTC +0x60, PTCGraphicAppearance +0x64 (PDB +0x70/+0x74);
 //         CTCPhysicsBase Position +0x0c, OldPosition +0x18 (engine/CTCPhysicsBase.h is a flattened POD without virtuals,
-//         so the class is modelled locally with the same offsets, as the landed GetInterpolatedPosition 0x0049D150).
+//         so the class is modelled locally with the same offsets, as the landed GetPosition 0x0049D150).
 // Shape: flags (0 when exact, else 0x21) chosen into ebp before the right-hand lookup; the right-hand path inlines
-//        GetInterpolatedPosition (VC7.1 inline budget) and the left-hand path calls the out-of-line copy; each path
+//        GetPosition (VC7.1 inline budget) and the left-hand path calls the out-of-line copy; each path
 //        subtracts into a scalarised C3DVector temporary copied out through integer registers and keeps its own epilogue.
 //        The graphic and physics components are read through inline const accessors (GetGraphicAppearance/GetPhysics):
 //        with direct ParentThing->member chains VC7.1 colours ParentThing differently on the two paths and cross-jumps
@@ -52,7 +52,7 @@ public:
     C3DVector Position;                                 // +0x0c
     C3DVector OldPosition;                              // +0x18
     long      OldPositionLastFrameSet;                  // +0x24
-    C3DVector GetInterpolatedPosition(float t) { return (Position - OldPosition) * t + OldPosition; }
+    C3DVector GetPosition(float t) const { return (Position - OldPosition) * t + OldPosition; }
 };
 
 class CTCCarryable {
@@ -72,9 +72,9 @@ void CTCCarryable::GetInterpolatedPickupOffsetAndOrientation(C3DVector& offset, 
     if (!exact)
         flags = 0x21;
     if (GetGraphicAppearance()->GetDummyObject(g_RightHandAttachmentName, 0, flags, dummy, orientation, t))
-        offset = dummy - GetPhysics()->GetInterpolatedPosition(t);
+        offset = dummy - GetPhysics()->GetPosition(t);
     else if (GetGraphicAppearance()->GetDummyObject(g_LeftHandAttachmentName, 0, flags, dummy, orientation, t))
-        offset = dummy - GetPhysics()->GetInterpolatedPosition(t);
+        offset = dummy - GetPhysics()->GetPosition(t);
     else {
         offset = C3DVector(0.0f, 0.0f, 0.0f);
         orientation = GetPhysics()->GetRHSet();

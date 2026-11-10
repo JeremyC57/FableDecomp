@@ -14,6 +14,7 @@
 // Shape: RenderFlags/Alpha are assigned after `new` (stored through the possibly-null pointer); the layer depth is a named
 // float homed in the dead `primitive` argument slot; the chain argument is unused.
 enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
+enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();
@@ -61,7 +62,7 @@ extern CEngineSettings_01436e38* g_pEngineSettings_01436e38;   // 0x01436E38
 
 class CEngineSubPrimitiveRenderer {
 public:
-    void AddSubPrimitive(long list, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720
+    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720 (Ego_r/FableWin ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z)
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
@@ -71,11 +72,11 @@ class CEnginePrimitiveManager2DParticleGroup {
 public:
     void*         SceneList;                        // +0x04
     bool          Enable;                           // +0x08
-    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, long type);
+    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
 };
 
 void CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain,
-                                                               long type)
+                                                               ESubPrimitiveType type)
 {
     if (!Enable)
         return;
@@ -89,11 +90,11 @@ void CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive(CEngineInternalPr
     if (group.ScreenDisplacement) {
         if (!g_pEngineSettings_01436e38->DisplacementPassEnabled)
             return;
-        g_pEngineSubPrimitiveRenderer->AddSubPrimitive(5, subPrimitive, depth, (CEnginePrimitiveManager*)this);
+        g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)5, subPrimitive, depth, (CEnginePrimitiveManager*)this);
         CEngineSubPrimitiveParticleGroup* displacement = new CEngineSubPrimitiveParticleGroup(primitive);
         displacement->Alpha = 0xff;
         displacement->RenderFlags = 0x80;
-        g_pEngineSubPrimitiveRenderer->AddSubPrimitive(6, displacement, depth, (CEnginePrimitiveManager*)this);
+        g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)6, displacement, depth, (CEnginePrimitiveManager*)this);
         return;
     }
     g_pEngineSubPrimitiveRenderer->AddSubPrimitive(type, subPrimitive, depth, (CEnginePrimitiveManager*)this);

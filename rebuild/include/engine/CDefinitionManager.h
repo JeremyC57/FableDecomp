@@ -11,6 +11,13 @@ class CDefString;
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
+    // Retail opt-in (agentNF3, rows 0x006B3600 / 0x006B3680 / 0x006B37A0 / 0x006B3800 / 0x006B38D0, the CEnvironment theme setters):
+    // Ego_r.pdb / FableWin.pdb ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z (const), out of line in retail at
+    // 0x009ACCA0; the theme setters call it through CEnvironment::DefinitionManager (+0x04) with the global theme index.
+    // Declaration only, no layout change.
+    long GetDefClassIndexFromGlobalIndex(long globalIndex) const;      // 0x009ACCA0
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_ADDDEFCLASS
     // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z,
     // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.
@@ -105,6 +112,13 @@ struct _func___cdecl_void_CCharString_ptr;
 #pragma pack(push, 1)
 class CDefinitionManager {
 public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
+    // Retail opt-in (agentNF3, rows 0x006B3600 / 0x006B3680 / 0x006B37A0 / 0x006B3800 / 0x006B38D0, the CEnvironment theme setters):
+    // Ego_r.pdb / FableWin.pdb ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z (const), out of line in retail at
+    // 0x009ACCA0; the theme setters call it through CEnvironment::DefinitionManager (+0x04) with the global theme index.
+    // Declaration only, no layout change.
+    long GetDefClassIndexFromGlobalIndex(long globalIndex) const;      // 0x009ACCA0
+#endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_ADDDEFCLASS
     // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z,
     // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.

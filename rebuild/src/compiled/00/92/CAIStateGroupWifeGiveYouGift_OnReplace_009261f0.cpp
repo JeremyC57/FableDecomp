@@ -89,10 +89,10 @@ class CThingObject;
 class CThingObject { public:
     static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
-struct CTCInventoryBase;
+namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:
     long GetInventoryType();                            // 0x005D9030
-    bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
     CWideString GetDescription();                       // 0x005D9070
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
@@ -166,7 +166,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
     CThing* gift = ((CThing*)CThingObject::Create(GiftToGiveDef, *(&hero->GetPos()), hero->PlayerNumber, 0, 0, ""));
     CTCInventoryItem* item = (CTCInventoryItem*)gift->GetTCIfHas(0x1a);
     long type = item->GetInventoryType();
-    item->AddToInventory((CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
+    item->AddToInventory(*(NInventory::CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_WIFE_GIVEN_YOU_GIFT");
     ConstructString(&text, &item->GetDescription());
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(CMainGameComponent::Get()->PSubtitleFont, &text, 0x122, 0.0f, false, true);

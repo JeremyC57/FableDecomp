@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BAE70, 591 bytes (+ int3 padding), `ret 8`.
 // Callees: the load stream's virtual ReadNullTerminatedString (slot 6) and GetPosition (slot 2), the section stream's
 //   virtual slot 3, CCharString::operator!=(const CCharString&) 0x0099E900, CDataInputStream::ReadWithSrcChunkOverflow
-//   0x00993CA0, CMemoryDataInputStream::SetPositionAssumeWithinSourceChunk 0x00993C10 / OpenMemorySource 0x00994570,
+//   0x00993CA0, CDataInputStream::SetPositionAssumeWithinSourceChunk 0x00993C10 / CMemoryDataInputStream::OpenMemorySource 0x00994570,
 //   operator+(const char*, const CCharString&) 0x0099F690 (__fastcall, hidden result in ecx), CStringParser::FindKeyword
 //   0x009B9BA0 / SkipPastNewline 0x009B9D70 / ReadAsStringUntilString 0x009BA330 / Init 0x009B9530, CCharString()
 //   0x0099E4B0 / (const char*, long) 0x0099EBF0 / operator= 0x0099EFB0 / dtor 0x0099EAE0.
@@ -70,7 +70,7 @@ class CStringParser : public CBase { public:                         // retail 0
         Init(text.GetData(), 0, filename, 0);
     }
 };
-class CMemoryDataInputStream {
+class CDataInputStream {                               // the stream base: its inline Read reaches the private overflow reader
 public:
     virtual void v00();
     virtual void v01();
@@ -85,9 +85,6 @@ public:
     unsigned long        SourceChunkStreamPos;         // +0x10
     long                 SourceChunkBytesRemaining;    // +0x14
     const unsigned char* StreamSource;                 // +0x18
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
-    void OpenMemorySource(void* data, unsigned long size);            // 0x00994570
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
@@ -114,6 +111,14 @@ public:
         }
         return 0;
     }
+protected:
+    void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10 (Ego_r/FableWin ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z)
+private:
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (Ego_r/FableWin ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
+class CMemoryDataInputStream : public CDataInputStream {
+public:
+    void OpenMemorySource(const void* data, unsigned long size);      // 0x00994570 (Ego_r/FableWin ?OpenMemorySource@CMemoryDataInputStream@@QAEXPBXK@Z)
 };
 class CDefinitionManager;
 class CSymbolMap;
@@ -176,7 +181,7 @@ bool CPersistContext::ReadSection(CPersistContextReadSection& section, const CCh
         long size = PLoadStream->ReadLong();
         section.InputStream.Close();
         CMemoryDataInputStream* stream = PLoadStream;
-        section.InputStream.OpenMemorySource(size > 0 ? (void*)stream->GetDataAndSkip(size) : 0, size);
+        section.InputStream.OpenMemorySource(size > 0 ? (const void*)stream->GetDataAndSkip(size) : 0, size);
         section.Context.InitBinaryLoad(&section.InputStream);
     } else if (Mode == MODE_LOAD_TEXT) {
         if (PParser->FindKeyword("START_" + name)) {

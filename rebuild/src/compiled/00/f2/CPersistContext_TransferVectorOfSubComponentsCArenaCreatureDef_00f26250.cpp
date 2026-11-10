@@ -11,7 +11,7 @@
 //   "Transfer<signed_char>" is propagated (NAME_FIXES.tsv).
 // Callees: CPersistContext::CheckCRC 0x00404500, CPersistContext::TransferVectorOfSubComponentsLoadText 0x009BC120 (takes the
 //   {vtable 0x012FB41C, vector*} CPersistContext_TransferableVectorOfSubComponents<CArenaCreatureDef> wrapper), CDataOutputStream::
-//   WriteLong 0x00993EB0, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CArenaCreatureDef() 0x00F263D0, vector::resize(n, x)
+//   WriteSLONG 0x00993EB0, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CArenaCreatureDef() 0x00F263D0, vector::resize(n, x)
 //   0x00F26490 (STLport's inline resize(n) builds the default element and calls it), ~CArenaCreatureDef 0x00F25E40, the element's
 //   virtual Transfer(CPersistContext&) (CDefClassBase slot 18, +0x48).
 // Shape: the landed TransferVectorOfSubComponents<CArenaRoundDef> 0x00F349F0 template (closed-enum switch, `default: __assume(0)`,
@@ -57,7 +57,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 namespace std {
@@ -152,7 +152,7 @@ void CPersistContext::TransferVectorOfSubComponents(const char* name, std::vecto
     }
     case MODE_SAVE_BINARY: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

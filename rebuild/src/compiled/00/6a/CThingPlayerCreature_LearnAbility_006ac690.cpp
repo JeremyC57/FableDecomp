@@ -52,13 +52,13 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
-class CTCInventory { public:
-    virtual void v00();
+namespace NInventory { class CTCInventoryBase { public: virtual void v00(); }; }   // RTTI: CTCInventory's base @0
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     long GetQuickAccessNextFreeSlot(long item);                         // 0x00582027
     void SetThingAsQuickAccessItem(long item, long slot, bool a);       // 0x00584157
 };
 class CTCInventoryItem { public:
-    bool AddToInventory(CTCInventory* inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
     void RemoveFromInventory();                                         // 0x005D8E20
 };
 class CTCInventoryAbilities { public:
@@ -67,8 +67,6 @@ class CTCInventoryAbilities { public:
     void SetAbilityAsAvailable(EHeroAbility ability, bool available, bool a);   // 0x005F6BD6
 };
 class CRightHandedSet;
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
-                                     unsigned long flags, const CCharString& name);   // 0x00703210
 
 class CThing {
 public:
@@ -104,12 +102,16 @@ public:
         return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
 };
+class CThingObject : public CThing { public:
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 struct CTCInventoryFind : CTCInventory {
     // slot 47 (+0xbc): the first inventory thing of a def
 };
 FABLE_FORCEINLINE CThing* CreateThingObject(long defIndex, const CThing* creature, const CCharString& name)
 {
-    return CreateThingObject(defIndex, &creature->GetPos(), creature->PlayerNumber, 0, 0, name);
+    return CThingObject::Create(defIndex, creature->GetPos(), creature->PlayerNumber, 0, 0, name);
 }
 struct CTCInventoryVirtual {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -150,7 +152,7 @@ bool CThingPlayerCreature::LearnAbility(EHeroAbility ability, bool learn, long q
                         CTCInventoryItem* itemTC = 0;
                         if (item->HasTC(0x1a))
                             itemTC = (CTCInventoryItem*)item->GetTC(0x1a);
-                        itemTC->AddToInventory(inventory, false, true, 0, silent, false);
+                        itemTC->AddToInventory(*inventory, false, true, 0, silent, false);
                     }
                     abilities->SetAbilityAsAvailable(ability, true, true);
                     if (quickAccessSlot != -1 || (quickAccessSlot = inventory->GetQuickAccessNextFreeSlot(item->m_defGlobalIndex)) != -1)

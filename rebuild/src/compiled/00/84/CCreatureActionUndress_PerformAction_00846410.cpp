@@ -91,9 +91,8 @@ class CPlayer { public:
 };
 class CThingObject { public:
     void SetVelocity(const C3DVector& velocity);             // 0x006A4DC0
-    static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
-                                           CRightHandedSet* orientation, unsigned long flags,
-                                           const CCharString& name);   // 0x00703210
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
 
 enum EHeroAttachableAppearanceModifierType { };      // Ego_r enum (value 2 used here)
@@ -195,7 +194,7 @@ void CCreatureAction_Undress::PerformAction()
             offset.X = velocity.X;
             offset.Y = velocity.Y;
             C3DVector position = GetCreature()->GetHeadPos(true) + offset;
-            thing = CThingObject::Create(item, &position, player, 0, 0, name);
+            thing = CThingObject::Create(item, position, player, 0, 0, name);
         }
         if (thing)
             thing->SetVelocity(velocity);

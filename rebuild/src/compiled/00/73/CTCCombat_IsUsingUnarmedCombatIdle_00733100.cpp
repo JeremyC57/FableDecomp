@@ -19,7 +19,9 @@ class CPlayer { public:
 class CThing { public:
     CPlayer* GetPlayer();                        // 0x004C7A10
 };
-bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
+class CTCCarrying { public:
+    static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
+};
 
 class CTCCombat { public:
     void*   pad0;
@@ -34,7 +36,7 @@ bool __fastcall CTCCombat_IsUsingUnarmedCombatIdle(CTCCombat* combat)
         return false;
     if (combat->obj->GetPlayer()->HasMode(0x2f))
         return false;
-    if (IsThingCarryingWeapon(combat->obj))
+    if (CTCCarrying::IsThingCarryingWeapon(*combat->obj))
         return false;
     if (combat->obj->GetPlayer()->buf[0x217])
         return true;

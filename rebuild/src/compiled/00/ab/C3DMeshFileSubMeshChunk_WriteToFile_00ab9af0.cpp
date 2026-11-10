@@ -2,7 +2,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB9AF0, length 96 bytes.
-// Callees: 0x00995AE0 WriteNullTerminatedString, 0x00993EB0 WriteLong x4, 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile
+// Callees: 0x00995AE0 WriteNullTerminatedString, 0x00993EB0 WriteSLONG x4, 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile
 //
 // ---- shared retail model for the C3DMeshFile*Chunk family (TLC Fable.exe) -----------------------
 // The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
@@ -32,7 +32,7 @@ class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteLong(long value);                         // 0x00993EB0
+    void WriteSLONG(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
@@ -89,9 +89,9 @@ class C3DMeshFileSubMeshChunk : public C3DMeshFileChunk { public:
 void C3DMeshFileSubMeshChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     out.WriteNullTerminatedString(Name);
-    out.WriteLong(SubMeshIndex);
-    out.WriteLong(ParentIndex);
-    out.WriteLong(FirstChildIndex);
-    out.WriteLong(NextSiblingIndex);
+    out.WriteSLONG(SubMeshIndex);
+    out.WriteSLONG(ParentIndex);
+    out.WriteSLONG(FirstChildIndex);
+    out.WriteSLONG(NextSiblingIndex);
     C3DMeshFileChunk::WriteToFile(out, saver);
 }

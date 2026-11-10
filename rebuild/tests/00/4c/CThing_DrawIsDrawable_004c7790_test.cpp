@@ -6,7 +6,7 @@ class CThing { public:
     unsigned char IncludeInThingScans : 1;
     unsigned char Activated : 1;
     unsigned char Drawable : 1;
-    bool DrawIsDrawable() { return Drawable && Activated && !Dead; }
+    bool DrawIsDrawable() const { return Drawable && Activated && !Dead; }
 };
 int main()
 {

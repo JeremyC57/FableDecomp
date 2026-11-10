@@ -50,10 +50,12 @@ struct CGenerationPosVector {
     CGenerationPos* _M_start; CGenerationPos* _M_finish; CGenerationPos* _M_end_of_storage;
     void push_back(const CGenerationPos& pos);         // 0x00723270
 };
-struct CTCGraphicAppearance {
-    bool IsResourcesLoaded(bool flag);                  // 0x004BE3E0
-    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position, float time);   // 0x004C0560
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool IsResourcesLoaded(bool flag) const;            // 0x004BE3E0 (Ego_r/FableWin QBE)
+    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& position, float time) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -112,7 +114,7 @@ bool CDefClassBase::GetSubDef(CSmokeDefPtr* out)
 #pragma auto_inline(on)
 void CTCSmokeGenerator::CreatePositions()
 {
-    CTCGraphicAppearance* appearance;
+    NGraphicAppearance::CTCGraphicAppearance* appearance;
     if (!ParentThing->GetInterface(0x5b, &appearance))
         return;
     if (!appearance->IsResourcesLoaded(true))
@@ -127,7 +129,7 @@ void CTCSmokeGenerator::CreatePositions()
             number.Sprintf("%d", i);
         CCharString helperName = prefix + number;
         C3DVector position;
-        if (!appearance->GetHelperPoint(helperName, 0, 0, &position, 1.0f))
+        if (!appearance->GetHelperPoint(helperName, 0, 0, position, 1.0f))
             break;
         GenerationPositions.push_back(CGenerationPos(position, 0));
     }

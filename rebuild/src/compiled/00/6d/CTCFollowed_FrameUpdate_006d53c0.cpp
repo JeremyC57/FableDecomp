@@ -8,15 +8,15 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D53C0, 800 bytes, `ret` (aligned ebp frame from the __int64 UID math).
 // Callees: CTCBase::GetWorld @ 0x00686A70 (result unused: CWorld::GetFrame @ 0x0049D870 is static), __aullrem @ 0x00BFEBB0,
 //          CullNullFollowers @ 0x006D5260, LowerBound @ 0x0040F020 / 0x004365B0 (two CVectorMap instances),
-//          CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero @ 0x006818F0, follower-registry remove @ 0x0065DE8A,
+//          CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero @ 0x006818F0, std::list<CIntelligentPointer<CThing> >::remove @ 0x0065DE8A,
 //          CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10, notify @ 0x004378C0 on the global
 //          at 0x013B8790, TC 0x7A AddDependentThing-style call @ 0x006AEBA0, CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990,
 //          OnFollowerLeft @ 0x006D5050, CThing::GetPos @ 0x004C73D0, GetRandom @ 0x00686DA0, list size @ 0x0065F17B,
 //          GFRandom @ 0x004CDAE0 (__fastcall range, rng), free @ 0x00BFEA14. Frames-per-second global 0x01375550.
-// Layout: CTCFollowed registry +0x0C, Followers (STLport list, node pointer only) +0x10, FrameLastIdleReaction +0x14,
+// Layout: CTCFollowed Followers (STLport list) +0x0C, AIFollowers (STLport list, node pointer only) +0x10, FrameLastIdleReaction +0x14,
 //         FramesSincePlayerMoved +0x18, LastPlayerPosition +0x1C; CThing UID +0x18, TC present bits +0x20, TC map +0x44.
 // Shape: IsTimeToUpdate loads GetWorld() into a named local and the UID before the static GetFrame call; a reference local to
-//        Followers._M_node gives retail's cached &head (edi) in the culling loop, while the random-pick loop uses begin()/end()
+//        AIFollowers._M_node gives retail's cached &head (edi) in the culling loop, while the random-pick loop uses begin()/end()
 //        and reloads the head each pass; CThing is modelled with a plain _vfptr word (a virtual would pad the __int64 UID to +0x20);
 //        the deed TC and the TC 0x7A pointer are uninitialised when the TC is missing, as in retail; the idle-reaction follower
 //        and Thing are named locals so they are read before the PostDeed pushes.
@@ -111,10 +111,14 @@ struct CFollowerNode {
     CFollowerNode* _M_prev;
     CIntelligentPointer<CThing> _M_data;
 };
-class CFollowerRegistry {
+namespace std {                                         // STLport 4.6 list (one node pointer)
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {
 public:
-    void Remove(const CIntelligentPointer<CThing>& follower);   // 0x0065DE8A
+    void* _M_node;
+    void remove(const _Tp& value);                      // 0x0065DE8A for _Tp = CIntelligentPointer<CThing> (FableWin ?remove@?$list@..)
 };
+}
 struct CFollowerList {
     CFollowerNode* _M_node;
     bool empty() const { return _M_node->_M_next == _M_node; }
@@ -143,9 +147,8 @@ protected:
 };
 class CTCFollowed : public CTCBase {
 public:
-    CFollowerRegistry Registry;                         // +0x0C
-    unsigned char _pad0d[3];
-    CFollowerList Followers;                            // +0x10
+    std::list<CIntelligentPointer<CThing> > Followers;  // +0x0C (Ego_r.pdb CTCFollowed::Followers)
+    CFollowerList AIFollowers;                          // +0x10 (Ego_r.pdb CTCFollowed::AIFollowers; element modelled as CIntelligentPointer<CThing>)
     long FrameLastIdleReaction;                         // +0x14
     long FramesSincePlayerMoved;                        // +0x18
     C3DVector LastPlayerPosition;                       // +0x1C
@@ -165,8 +168,8 @@ void CTCFollowed::FrameUpdate()
     ++FramesSincePlayerMoved;
     if (IsTimeToUpdate()) {
         CullNullFollowers();
-        if (!Followers.empty()) {
-            CFollowerNode*& head = Followers._M_node;
+        if (!AIFollowers.empty()) {
+            CFollowerNode*& head = AIFollowers._M_node;
             CTCHeroOpinionDeedLog* deeds;
             if (Thing->HasTC(0x51))
                 deeds = (CTCHeroOpinionDeedLog*)Thing->TCs.Find(0x51);
@@ -176,8 +179,8 @@ void CTCFollowed::FrameUpdate()
                     node = node->_M_next;
                     continue;
                 }
-                node = Followers.erase(node);
-                Registry.Remove(CIntelligentPointer<CThing>(follower));
+                node = AIFollowers.erase(node);
+                Followers.remove(CIntelligentPointer<CThing>(follower));
                 CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                 CTCDependents* dependents;
                 if (Thing->HasTC(0x7a))
@@ -196,9 +199,9 @@ void CTCFollowed::FrameUpdate()
                 CWorld* world = &GetWorld();
                 long fps = CMainGameComponent::GetConstantFPS();
                 if (world->GetFrame() - FrameLastIdleReaction > fps * 10.0f) {
-                    long pick = GFRandom(Followers.size(), GetRandom());
+                    long pick = GFRandom(AIFollowers.size(), GetRandom());
                     long n = 0;
-                    for (CFollowerNode* node = Followers.begin(); node != Followers.end(); node = node->_M_next, ++n) {
+                    for (CFollowerNode* node = AIFollowers.begin(); node != AIFollowers.end(); node = node->_M_next, ++n) {
                         if (n == pick) {
                             CIntelligentPointer<CThing>& p = node->_M_data;
                             CThing* follower = p.Get();

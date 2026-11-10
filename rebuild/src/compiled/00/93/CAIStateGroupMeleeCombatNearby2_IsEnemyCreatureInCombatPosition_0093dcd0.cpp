@@ -19,8 +19,11 @@ inline float GroundDistanceSquared(const C3DVector& a,const C3DVector& b) {
 struct CCreatureCombatView : public CThing {
  bool IsRegisteredCombatant(); // 00662410 (propagated AddCombinationBlend label is incompatible with this call)
 };
+class CThingCreatureBase;
+class CCombatManager { public:
+ bool IsCreatureInAttackRingSector(const CThingCreatureBase& creature) const;   // 0x006E94D0 (Ego_r/FableWin ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z)
+};
 struct CCombatPositionMethods {
- bool CheckRingRangeToTarget(CThingAICreature*); // 006E94D0
  bool ValidateSequencePosition(CThingAICreature*); // 006E9700
  bool IsCreatureWithValidMeleeCombatSequence(CThingAICreature*); // 006E9450
  C3DVector GetPreferredPos(CThingAICreature*); // 006EA770
@@ -29,8 +32,8 @@ struct CCombatStateMethods : CAIStateGroupBase {
  inline bool InRange() {
   if(((CCreatureCombatView*)PBrain->Creature)->IsRegisteredCombatant()) {
   CThingAICreature* creature=PBrain->Creature;
-  CCombatPositionMethods* combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
-  if(combat->CheckRingRangeToTarget(creature)) return true;
+  CCombatManager* combat=(CCombatManager*)GetWorld().PThingCombatManager_ptr;
+  if(combat->IsCreatureInAttackRingSector(*(const CThingCreatureBase*)creature)) return true;
   }
   return false;
  }

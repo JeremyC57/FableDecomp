@@ -15,6 +15,7 @@
 // Shape: each remove gets an intelligent-pointer temporary (base ctor, vtable store, SetPItem, direct dtor); the two lookups are the
 // out-parameter GetInterface with the result unchecked; the deed lookup's thing is a named local reused for the position.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_LIST_REMOVE_DECL
 class CTCBase;
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -75,11 +76,8 @@ public:
 };
 static inline bool IsAlive(const CThing* thing) { return thing && !thing->Dead; }
 
-template <class T> struct _List_node;
-template <class T> struct CRetailList {                     // STLport list: the header node pointer
-    _List_node<T>* _M_node;
-    void remove(const T& value);                            // 0x0065DE48 / 0x0065DE8A
-};
+// The follower lists are the real STLport 4.6 std::list (stlport/fable_containers.h, via engine/CVectorMap.h); remove is declared only
+// (FABLE_RETAIL_STLP_LIST_REMOVE_DECL): retail calls the instances out of line.
 
 struct CTCFollowActionHandler {
     void HandleFollowerQuit(CThing* follower);              // 0x006AEBA0 (component 0x7a)
@@ -99,8 +97,8 @@ public:
 };
 class CTCFollowed : public CTCBase {
 public:
-    CRetailList<CIntelligentPointer<CThing> >           Followers;     // +0x0c
-    CRetailList<CIntelligentPointer<CThingAICreature> > AIFollowers;   // +0x10
+    std::list<CIntelligentPointer<CThing> >           Followers;     // +0x0c
+    std::list<CIntelligentPointer<CThingAICreature> > AIFollowers;   // +0x10
     bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0
     void RemoveEmoteIcon(CThingAICreature* creature);       // 0x006D5050
     void QuitAIFollower(CThingAICreature* creature);

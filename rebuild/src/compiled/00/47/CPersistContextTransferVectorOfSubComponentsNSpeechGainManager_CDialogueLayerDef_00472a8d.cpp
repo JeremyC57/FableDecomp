@@ -1,7 +1,7 @@
 // CPersistContext::TransferVectorOfSubComponents<NSpeechGainManager::CDialogueLayerDef>(std::vector<NSpeechGainManager::CDialogueLayerDef>& value) -- binary persist of a vector of dialogue-layer sub-defs: the element count, then each element's own virtual Transfer
 // Leaf: TransferVectorOfSubComponents
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00472A8D, 214 bytes, `ret 4` (a /Os module: unaligned entry, ebp frame, `leave`).
-// Callees: CPersistContext::CheckCRC 0x00404500 (with the pooled empty key 0x0122D70E), CDataOutputStream::WriteLong
+// Callees: CPersistContext::CheckCRC 0x00404500 (with the pooled empty key 0x0122D70E), CDataOutputStream::WriteSLONG
 //   0x00993EB0, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, vector<CDialogueLayerDef>::resize(n) 0x00472B63
 //   (the next function), and the element's virtual Transfer(CPersistContext&) (vtable slot 18, +0x48).
 // Shape: the model of the landed 0x007D2740 (CShoveHaPennyRegionDef) under the size pragmas: a switch with only
@@ -48,7 +48,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 namespace NSpeechGainManager {
@@ -95,7 +95,7 @@ void CPersistContext::TransferVectorOfSubComponents(vector<T>& value)
     }
     default: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

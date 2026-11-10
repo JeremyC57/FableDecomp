@@ -139,7 +139,7 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntellig
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThingObject& pointer);   // 0x0078B2A0
 class CTCCarrying { public:                            // interface 0x46
     CThing* RemoveThingFromPrimarySlot(long flags);                     // 0x006A1E00
-    void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 class CTCTavernTable { public:                         // interface 0xb8
     unsigned char _pad[0xc];
@@ -207,7 +207,7 @@ void CAIStateGroup_ServeFood::Update()
             GetCreature()->FindInterface(&carrying, 0x46);
             CDefPointer<CCarryableDef> carryDef;
             food->m_pDef->GetSubDef(&carryDef);
-            carrying->PutThingInCarrySlot(food, carryDef->CarrySlot, true);
+            carrying->PutThingInCarrySlot(*food, carryDef->CarrySlot, true);
             if (AIAction_PerformActionAndWait(CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
                 break;
             table->NotifyFoodServed(TaskIndex, food);

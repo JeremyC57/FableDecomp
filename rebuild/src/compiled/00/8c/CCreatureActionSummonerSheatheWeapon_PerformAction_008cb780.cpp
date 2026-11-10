@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB780, length 360 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface:
 // 0x46 CTCCarrying, bit 6 of +0x28, tested; 0x30 CTCCombat, bit 16 of +0x24, untested), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440,
-// RemoveThing(CThing*) @ 0x006A19B0 and PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80, CCharString ctor/dtor @ 0x0099EBF0 /
+// RemoveThing(CThing*) @ 0x006A19B0 and PutThingInCarrySlot(CThing&, long, bool) @ 0x006A1F80, CCharString ctor/dtor @ 0x0099EBF0 /
 // 0x0099EAE0, CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 // CCreatureAction_SheatheWeapons::PerformAction @ 0x008B7B10 (direct base call), CCreatureActionBase::GetDefinitionManager
 // @ 0x00692910, CDefinitionManager::GetDef<CAttackStyleDef>(long, CDefPointer*) @ 0x00669640, CTCCombat::SetAttackStyleDef
@@ -103,7 +103,7 @@ public:
 };
 class CTCCarrying { public:
     void RemoveThing(CThing* thing);            // 0x006A19B0
-    void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
@@ -132,7 +132,7 @@ void CCreatureAction_SummonerSheatheWeapon::PerformAction()
         if (weapon && !(weapon->m_flags91 & 1)) {
             carrying->RemoveThing(weapon);
             long slot = PCreature.GetPItem()->GetDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_PRIMARY_SHEATHE");
-            carrying->PutThingInCarrySlot(weapon, slot, true);
+            carrying->PutThingInCarrySlot(*weapon, slot, true);
         }
     }
     CCreatureAction_SheatheWeapons::PerformAction();

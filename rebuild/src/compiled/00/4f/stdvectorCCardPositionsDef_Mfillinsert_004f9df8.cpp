@@ -95,7 +95,7 @@ public:
         Offset = o.Offset;
         return *this;
     }
-    ~CCardPositionsDef();                            // 0x004F9CFC
+    virtual ~CCardPositionsDef();                    // 0x004F9CFC (FableWin.pdb ??1CCardPositionsDef@@UAE@XZ: virtual through the def base)
 };
 
 namespace std {

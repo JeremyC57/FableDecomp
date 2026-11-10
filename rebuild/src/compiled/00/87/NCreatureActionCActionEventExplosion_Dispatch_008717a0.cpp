@@ -41,16 +41,18 @@ struct CCreatureActionBaseVirtuals {
     virtual bool IsActionWithStrikeEventHelperName() const;
     virtual CCharString GetStrikeEventHelperName() const; // slot 23, verified CCreatureActionBase const method
 };
-struct CTCGraphicAppearance {
-    bool GetHelperPoint(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, float scale); // 0x004C0560
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetHelperPoint(const CCharString& name, long zero1, unsigned long zero2, C3DVector& position, float scale) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale); // 0x004C08C0
 };
+}
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
     unsigned char _pad54[0x10];
-    CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
+    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
     const C3DVector& GetPos() const;    // 0x004C73D0
 };
 class CTCDExplosion { public:
@@ -71,15 +73,15 @@ CThing* __fastcall CreateThing(long id, C3DVector* position); // 0x0080C460
 void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
 {
     C3DVector sourcePosition = SourceThing->GetPos();
-    CTCGraphicAppearance* appearance = SourceThing->PTCGraphicAppearance;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = SourceThing->PTCGraphicAppearance;
     if (UseActionHelper) {
         CCharString helperName = ((const CCreatureActionBaseVirtuals&)action).GetStrikeEventHelperName();
-        appearance->GetHelperPoint(helperName, 0, 0, &sourcePosition, 1.0f);
+        appearance->GetHelperPoint(helperName, 0, 0, sourcePosition, 1.0f);
     } else if (Dummy) {
         CRightHandedSet orientation;
         appearance->GetDummyObject(AttachmentObject, 0, 0, &sourcePosition, &orientation, 1.0f);
     } else {
-        appearance->GetHelperPoint(AttachmentObject, 0, 0, &sourcePosition, 1.0f);
+        appearance->GetHelperPoint(AttachmentObject, 0, 0, sourcePosition, 1.0f);
     }
     CThing* created = CreateThing(ExplosionDefIndex, &sourcePosition);
     if (created) {

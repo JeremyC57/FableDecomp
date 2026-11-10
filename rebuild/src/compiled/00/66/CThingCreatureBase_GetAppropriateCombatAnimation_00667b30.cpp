@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00667B30, length 204 bytes, `ret 4`, const CAnimationEntry* in eax.
 // Label correction: the catalog/engine_api name "GetCombatAnimationSet" (returning CAnimationSet*) does not fit the body,
 //   which returns the chosen vector element; the name used here is descriptive.
-// Callees: CThingBaseDef::GetSubDef<CAppearanceDef> @ 0x0042B0A2, the animation set's lower bound by name @ 0x005DC020
+// Callees: CThingBaseDef::GetSubDef<CAppearanceDef> @ 0x0042B0A2, CAnimationSet::FindFirstAnimWithName @ 0x005DC020
 //   (manifest "CVectorMap_LookupOrGetEnd"), the vector's insert-overflow @ 0x005E1420 (declared exactly as the landed
 //   CRetailVector_dword::push_back 0x005E1EB0 declares it: the element is a pointer-sized dword), CThingCreatureBase::
 //   GetAppropriateCombatAnimationFromList(const vector&) @ 0x00666B50, free @ 0x00BFEA14, the def's virtual Destroy.
@@ -26,11 +26,14 @@ struct SAnimationSetEntry {                     // 0x14 bytes
     unsigned char Entry[0x10];                  // +0x04 CAnimationEntry
     const CAnimationEntry* GetEntryAddress() const { return (const CAnimationEntry*)Entry; }
 };
+namespace std { template <class _T1, class _T2> struct pair; }   // STLport 4.6 <utility>
 class CAnimationSet { public:
     SAnimationSetEntry* first;                  // +0x00
     SAnimationSetEntry* last;                   // +0x04
-    SAnimationSetEntry* LowerBound_005dc020(const CCharString& name);   // 0x005DC020
+    const std::pair<unsigned long, CAnimationEntry>* FindFirstAnimWithName(const CCharString& name) const;   // 0x005DC020 (Ego_r/FableWin)
 };
+// ROW DEBT: SAnimationSetEntry is a local stand-in for std::pair<unsigned long, CAnimationEntry> (the 0x14-byte Anims record);
+//   engine/CAnimationEntry.h pulls the shared STLport model, which clashes with this row's local vector model.
 
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
@@ -120,8 +123,8 @@ const CAnimationEntry* CThingCreatureBase::GetAppropriateCombatAnimation(const C
             def->Destroy();
     }
     std::vector<const CAnimationEntry*> candidates;
-    SAnimationSetEntry* found = animations.LowerBound_005dc020(name);
-    for (SAnimationSetEntry* it = found; it != animations.last && it->Key == found->Key; ++it)
+    const SAnimationSetEntry* found = (const SAnimationSetEntry*)animations.FindFirstAnimWithName(name);
+    for (const SAnimationSetEntry* it = found; it != animations.last && it->Key == found->Key; ++it)
         candidates.push_back(it->GetEntryAddress());
     long index = GetAppropriateCombatAnimationFromList(candidates);
     return candidates[index];

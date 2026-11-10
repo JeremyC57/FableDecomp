@@ -53,7 +53,7 @@ class CSystemManager { public: bool IsApplicationActive(); };            // 0x00
 CSystemManager* __fastcall GFGetSystemManager();                    // 0x009A4EC0
 class CBulletTimeManager { public:
     bool IsBulletTimeActive() const;                                // 0x00419680
-    float ConvertInterpolateToBulletTimeInterpolate(float interpolate);   // 0x004C6010
+    float ConvertInterpolateToBulletTimeInterpolate(float interpolate) const;   // 0x004C6010
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();

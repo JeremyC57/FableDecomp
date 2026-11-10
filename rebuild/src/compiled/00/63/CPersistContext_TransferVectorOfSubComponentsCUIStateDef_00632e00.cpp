@@ -4,7 +4,7 @@
 // Label correction: catalogued as TransferVectorOfSubComponents<CEngineLocalDetailObjectDef> (propagated); the element is
 //   0x7C bytes (reciprocal multiply 0x84210843 / `sar 6` = divide by 124, stride 0x7C) and the resize temporary is built by
 //   0x00630350, which stores vtable 0x0125871C = NUISystem::CUIStateDef (RTTI): this is the CUIStateDef instantiation.
-// Callees: CPersistContext::CheckCRC 0x00404500 (pooled empty key 0x0122D70E), CDataOutputStream::WriteLong 0x00993EB0,
+// Callees: CPersistContext::CheckCRC 0x00404500 (pooled empty key 0x0122D70E), CDataOutputStream::WriteSLONG 0x00993EB0,
 //   CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, NUISystem::CUIStateDef::CUIStateDef() 0x00630350 (catalogued
 //   CUIStateDef), its destructor 0x00624DC0 (catalogued "~CCompressedMemoryDataInputStream"), vector<CUIStateDef>::resize(n,
 //   const T&) 0x00632F10, the element's virtual Transfer(CPersistContext&) (slot 18, +0x48).
@@ -49,7 +49,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CUIStateDef {                                       // NUISystem::CUIStateDef, 0x7C bytes, vtable 0x0125871C
@@ -96,7 +96,7 @@ void CPersistContext::TransferVectorOfSubComponents(vector<T>& value)
     }
     default: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

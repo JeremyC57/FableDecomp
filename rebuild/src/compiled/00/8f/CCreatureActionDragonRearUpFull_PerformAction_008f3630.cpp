@@ -194,11 +194,13 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                  // 0x00663B10
 };
-CThing* __fastcall Create(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
-                          unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject : public CThing { public:
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
-    return Create(defIndex, &position, creature->PlayerNumber, 0, 0, name);
+    return CThingObject::Create(defIndex, position, creature->PlayerNumber, 0, 0, name);
 }
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)

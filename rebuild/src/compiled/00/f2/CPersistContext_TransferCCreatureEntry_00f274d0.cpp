@@ -4,7 +4,7 @@
 // is 0: there is no text-save arm), `ret 8`. Called from 0x00F274C1 with the key "Creatures" (0x012FB3FC) and the
 // owner's vector at +0x2C.
 // Callees: CPersistContext::CheckCRC 0x00404500, the sub-component text-load helper 0x009BC120 (takes the
-// {vtable 0x012FB570, vector*} transferable-vector wrapper), CDataOutputStream::WriteLong 0x00993EB0,
+// {vtable 0x012FB570, vector*} transferable-vector wrapper), CDataOutputStream::WriteSLONG 0x00993EB0,
 // CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, the element's ctor 0x00F27650 / dtor 0x00F270D0 (vtable
 // 0x012FB500, two CCharString members at +0x28/+0x2C; the script module has no RTTI, so the element class name is
 // descriptive), vector<T>::resize(n, const T&) 0x00F27710, the element's virtual Transfer(CPersistContext&) (slot 18,
@@ -51,7 +51,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CCreatureEntry {                                    // 0x34 bytes, vtable 0x012FB500
@@ -109,7 +109,7 @@ void CPersistContext::Transfer(const char* name, vector<T>& value)
     }
     case 3: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

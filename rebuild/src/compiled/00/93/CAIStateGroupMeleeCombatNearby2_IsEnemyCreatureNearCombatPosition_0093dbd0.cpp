@@ -2,7 +2,7 @@
 // combat manager whether the creature is within ring range of its target.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DBD0, length 56 bytes (+ int3 padding).
 // Callees: the creature's IsRegisteredCombatant query @ 0x00662410 (no-argument bool), CAIStateGroupBase::
-// GetPWorld @ 0x008FCFC0, CCombatManager::Combat_CheckRingRangeToTarget(CThingCreatureBase*) @ 0x006E94D0 on
+// GetPWorld @ 0x008FCFC0, CCombatManager::IsCreatureInAttackRingSector(const CThingCreatureBase&) const @ 0x006E94D0 on
 // the world's combat manager at +0x4c.
 // Shape: `if (a()) { creature local; if (GetPWorld()->mgr->Check(creature)) return true; } return false;` --
 // the creature is a named local read before the world call (edi) and the combat manager is reached through an
@@ -16,7 +16,7 @@ public:
 };
 
 class CCombatManager { public:
-    bool Combat_CheckRingRangeToTarget(CThingCreatureBase* creature);   // 0x006E94D0
+    bool IsCreatureInAttackRingSector(const CThingCreatureBase& creature) const;   // 0x006E94D0 (Ego_r/FableWin ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z)
 };
 
 class CWorld { public:
@@ -47,7 +47,7 @@ bool CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition()
 {
     if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;
-        if (GetPWorld()->GetPCombatManager()->Combat_CheckRingRangeToTarget(creature))
+        if (GetPWorld()->GetPCombatManager()->IsCreatureInAttackRingSector(*creature))
             return true;
     }
     return false;

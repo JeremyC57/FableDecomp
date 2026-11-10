@@ -181,7 +181,7 @@ public:
 class CTCCarrying {
 public:
     void RemoveThing(CThing* thing);                                         // 0x006A19B0
-    void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);    // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z    // 0x006A1F80
 public:
     CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
 };
@@ -236,7 +236,7 @@ void __fastcall CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarryi
                         inventoryWeapons->PreviouslyWieldedRangedWeaponDefIndex = weapon.DefGlobalIndex;
                 }
             }
-            carrying.PutThingInCarrySlot(&weapon, passiveSlot, true);
+            carrying.PutThingInCarrySlot(*&weapon, passiveSlot, true);
         }
     }
     else {

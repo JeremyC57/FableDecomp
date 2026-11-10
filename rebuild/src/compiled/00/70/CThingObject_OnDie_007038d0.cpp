@@ -5,8 +5,8 @@
 //   CThingObject (rtti-vtables.tsv); CThingPhysical::OnDie is slot 11 of 0x01244E84 (0x006A4CF0).
 // Callees: the game random seed getter @ 0x004C7AE0 (`[[0x013B8A1C]+0x2C]`; manifest "CViewBase::GetDisplayEngine" is a
 //   byte twin), GFFloatRandom(float range, unsigned long* seed) @ 0x004978A0 (`__fastcall`: the float on the stack, the
-//   seed in ecx), CThing::GetPosition @ 0x006A4D00, CThingObject::Create @ 0x00703210 (`__fastcall`; declared as the
-//   landed callers spell it, CreateObject), the created object's spin setter @ 0x006A4DC0 (`const C3DVector*`; the
+//   seed in ecx), CThing::GetPosition @ 0x006A4D00, CThingObject::Create @ 0x00703210 (static `__fastcall`, Ego_r/FableWin
+//   spelling), the created object's spin setter @ 0x006A4DC0 (`const C3DVector*`; the
 //   manifest's _Cons_val label is propagated, name unproven), CThingPhysical::OnDie @ 0x006A4CF0,
 //   CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0.
 // Float pool: 0x0122EE58 = 0.1f, 0x012305A0 = 0.2f; the random ranges 0.2f / 0.3f are pushed as immediates; literal
@@ -22,10 +22,7 @@ class CCharString { public:
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-class CThingObject;
-CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long playerID,
-                                      float* orientation, unsigned long flags,
-                                      const CCharString& name);  // 0x00703210
+class CRightHandedSet;
 
 class CThingObjectDef { public:
     unsigned char _pad00[0x8c];
@@ -49,6 +46,8 @@ public:
     unsigned char _pad00[0xd0];
     const CThingObjectDef* PDef;                // +0xd0 CDefPointer<CThingObjectDef const>::Object
     void OnDie();
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
 
 void CThingObject::OnDie()
@@ -59,7 +58,7 @@ void CThingObject::OnDie()
         spin.X = 0.1f - GFFloatRandom(0.2f, GetRandomSeed_004c7ae0());
         spin.Y = 0.1f - GFFloatRandom(0.2f, GetRandomSeed_004c7ae0());
         spin.Z = GFFloatRandom(0.3f, GetRandomSeed_004c7ae0()) + 0.2f;
-        CThingObject* created = CreateObject(def->OnDeathObject, const_cast<C3DVector*>(&PeekPos()), -1, 0, 0, "");
+        CThingObject* created = Create(def->OnDeathObject, PeekPos(), -1, 0, 0, "");
         if (created)
             created->SetSpin_006a4dc0(&spin);
     }

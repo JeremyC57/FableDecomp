@@ -41,6 +41,10 @@
 // +0x3C, Busy +0x3D; descriptive names, no PDB) are kept opaque.
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CASoundEmitter.h"
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_REGISTEREDBANKS
+#include "engine/CVectorMap.h"
+#include "fable_string.h"
+#endif
 #if defined(FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION)
 class CWideString;
 class CCharString;
@@ -59,6 +63,24 @@ class C2DCoordI;
 #endif
 class CASoundManager : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_REGISTEREDBANKS
+    // Retail opt-in (agentNF3, 2026-11-10, rows 0x00991690 / 0x009916F0 / 0x00991720 / 0x00991750 / 0x009917E0): the registered-bank
+    // records of the CASoundManager TU. Fable Anniversary 360 PDB publics (lib_sound_manager_base.cpp): the nested class
+    // CASoundManager::CRegisteredBank and CVectorMap<long, CRegisteredBank, CKeyPairCompareLess<..> > (LowerBound / Sort / insert
+    // instances); TLC bodies: each record is a pair<long, CRegisteredBank> of 0x24 bytes in the CVectorMap at +0x30 (the base
+    // constructor 0x00991910), the sound bank at record +0x04, the lip-sync bank at +0x0C and the symbol name at +0x14 (the five
+    // linear scans read exactly those words). The Anniversary PDB has no member names: the member names are descriptive. Needs
+    // FABLE_RETAIL_CASOUNDMANAGER_ENABLEFLAGS and FABLE_RETAIL_CASOUNDMANAGER_SIZE40; layout and size (0x40) unchanged.
+    class CRegisteredBank {                                              // 0x20 bytes
+    public:
+        CASoundBank*            PSoundBank;                              // +0x00 (record +0x04)
+        unsigned char           _pad_0x04[0x4];
+        const CLipSyncDataBank* PLipSyncBank;                            // +0x08 (record +0x0C)
+        unsigned char           _pad_0x0c[0x4];
+        CCharString             SymbolName;                              // +0x10 (record +0x14)
+        unsigned char           _pad_0x14[0x20 - 0x14];
+    };
+#endif
 #ifdef FABLE_RETAIL_CASOUNDMANAGER_ATMOSMAP
     // Retail opt-in (agentSND2, 2026-11-10): the nested abstract atmos map InitAtmos (slot 36) takes. RTTI .?AVCAtmosMap@CASoundManager@@
     // is the base of CAtmosProcess::CMyAtmosMap (vtable 0x0125D47C: two virtuals, no destructor; the landed overrides
@@ -76,7 +98,9 @@ public:
     // Audio module has no PDB symbols: these member names describe the observed bank-registration behavior.
     void RegisterSoundBank(unsigned long,const CWideString&,const CWideString&,const CWideString&,const CCharString&);
     void RegisterAtmosSoundBank(unsigned long,const CWideString&,const CWideString&);
+#ifndef FABLE_RETAIL_CASOUNDMANAGER_GETPSOUNDBANK_LONG
     class CASoundBank* GetBank(long);
+#endif
 #endif
 #ifdef FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
     // Retail opt-in (agentSND2, 2026-11-10): the non-virtual bank lookups of the CASoundManager TU (0x009915C0..0x00991A..), named
@@ -96,7 +120,9 @@ public:
     const CLipSyncDataBank* GetAnyPLipSyncBank() const;                                    // 0x00991720
     void UnloadAllBanks();                                                                 // 0x00991750
     CASoundBank* GetPSoundBank(const CCharString& symbolName) const;                       // 0x009917E0
-#ifndef FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION
+#if !defined(FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION) || defined(FABLE_RETAIL_CASOUNDMANAGER_GETPSOUNDBANK_LONG)
+    // FABLE_RETAIL_CASOUNDMANAGER_GETPSOUNDBANK_LONG (agentNF3, 2026-11-10): with BANKREGISTRATION, declare 0x00991840 under its
+    // Anniversary 360 PDB name GetPSoundBank(long) const instead of the descriptive GetBank(long) (one address, one name).
     CASoundBank* GetPSoundBank(long bankID) const;                                         // 0x00991840
 #endif
     void CloseAllBanks();                                                                  // 0x009918F0
@@ -186,8 +212,15 @@ public:
     bool AtmosEnabled;                                                   // +0x26
 private:
 #ifdef FABLE_RETAIL_CASOUNDMANAGER_SIZE40
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_REGISTEREDBANKS
+    unsigned char _pad_0x27[0x30 - 0x27];
+public:
+    CVectorMap<long, CRegisteredBank> RegisteredBanks;                   // +0x30 (retail 16-byte CVectorMap)
+};
+#else
     unsigned char _pad_0x27[0x40 - 0x27];
 };
+#endif
 FABLE_STATIC_ASSERT(sizeof(CASoundManager) == 0x40);
 #else
     unsigned char _pad_0x27[0x4c - 0x27];

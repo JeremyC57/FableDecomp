@@ -1,19 +1,20 @@
-// CThingNoise::OnCreate() -- normalises OnCreate()'s byte result to a bool
+// CThingNoise::OnCreate() -- returns the base CThing::OnCreate() result as a normalised bool
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00838550, oracle length 11 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
 // Retail bytes:  call OnCreate ; test al,al ; setne al ; ret
-// Virtual predicate that forwards to the __fastcall helper @ 0x004C9560 on the same object
-// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name
-// kept from the manifest only when the label is unique. One of 6 bodies of this shape.
-class CThingNoise { public:
-    virtual void v00();
-    virtual bool vfunc_8();
-    unsigned char OnCreate();                // 0x004C9560
+// Leaf: ?OnCreate@CThingNoise@@UAE_NXZ
+// Identity: CThingNoise's OnCreate override (Ego_r/FableWin ?OnCreate@CThingNoise@@UAE_NXZ) calls the base CThing::OnCreate
+// 0x004C9560 non-virtually on the same object (ecx passes through untouched) and normalises its bool result.
+class CThing { public:
+    virtual bool OnCreate();                 // 0x004C9560 (Ego_r/FableWin ?OnCreate@CThing@@UAE_NXZ; called non-virtually)
+};
+class CThingNoise : public CThing { public:
+    virtual bool OnCreate();                 // Ego_r/FableWin ?OnCreate@CThingNoise@@UAE_NXZ
 };
 
-bool CThingNoise::vfunc_8()
+bool CThingNoise::OnCreate()
 {
-    return OnCreate() ? true : false;
+    return CThing::OnCreate() ? true : false;
 }

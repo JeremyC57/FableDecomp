@@ -1,7 +1,7 @@
 // CThingManager::PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info) -- prepare every thing on the render list (bullet-time things get a rescaled copy of the info) and drop the ones no longer rendered
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051EAB0, length 276 bytes (+ int3 padding), `ret 4`.
-// Callees: CCamera copy constructor @ 0x0049D380 (out of line), CBulletTime::ConvertInterpolateToBulletTimeInterpolate
+// Callees: CCamera copy constructor @ 0x0049D380 (out of line), CBulletTimeManager::ConvertInterpolateToBulletTimeInterpolate
 // @ 0x004C6010 (landed), CThing::IsRenderedThisFrame @ 0x004C78F0 (landed), CThing::IsAffectedByBulletTime @ 0x004C9920,
 // CThing virtual slot 36 (+0x90, PreparePrimitivesForEngine), CThingManager::RemoveFromRenderList @ 0x0051E000 (landed).
 // Globals: 0x013B8A14 the primitive force-resend latch (landed name g_LatchForceResendPrimitives, read by
@@ -50,19 +50,19 @@ class CEnginePrimitivePrepareInfo { public:
     CCamera            Camera;                                 // +0x3c
 };
 
-class CBulletTime {
+class CBulletTimeManager {
 public:
     unsigned char _pad00[4];
     void*         m_pController;                               // +0x04
     unsigned char _pad08[4];
     bool          m_active;                                    // +0x0c
-    float ConvertInterpolateToBulletTimeInterpolate(float interpolate);   // 0x004C6010
+    float ConvertInterpolateToBulletTimeInterpolate(float interpolate) const;   // 0x004C6010
     bool IsActive() const { return m_active || m_pController != 0; }
 };
 class CWorld {
 public:
     unsigned char _pad00[0x68];
-    CBulletTime*  m_pBulletTime;                               // +0x68
+    CBulletTimeManager*  m_pBulletTime;                               // +0x68
 };
 
 class CThing {
@@ -99,7 +99,7 @@ public:
     unsigned char _pad8c[0x99 - 0x8c];
     bool          UpdateAndRenderAllFlag;                      // +0x99
     void RemoveFromRenderList(CThing* thing);                  // 0x0051E000
-    CBulletTime* GetBulletTime() { return PWorld->m_pBulletTime; }
+    CBulletTimeManager* GetBulletTime() { return PWorld->m_pBulletTime; }
     void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);
 };
 #pragma pack(pop)

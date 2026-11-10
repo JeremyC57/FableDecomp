@@ -5,7 +5,7 @@
 // getter @ 0x005D9030 (manifest "CCategory::GetCategoryIdentifier", propagated; returns the interface type of the inventory
 // that holds it), CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
 // @ 0x00487DC0, puts @ 0x00BFEAF2 + abort @ 0x00BFEAEC (STLport's exception-free bitset range check, literal "bitset"
-// @ 0x0122E068), CTCInventoryItem::AddToInventory(CTCInventoryBase*, bool, bool, long, bool, bool) @ 0x005D8D50, CThing::Kill(bool)
+// @ 0x0122E068), CTCInventoryItem::AddToInventory(NInventory::CTCInventoryBase&, bool, bool, long, bool, bool) @ 0x005D8D50, CThing::Kill(bool)
 // @ 0x004C9B80.
 // Layout: CThing UsingComponents bitset<274> +0x20 (type 0x1a = bit 26 of word 0), Components map +0x44.
 // Shape: the item's component is HasTC + GetTC into ebx; the hero's inventory goes through the range-checked bitset::test
@@ -49,10 +49,10 @@ class CThing { public:
     void Kill(bool immediately);                        // 0x004C9B80
 };
 class CThingPlayerCreature : public CThing { };
-struct CTCInventoryBase;
+namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:
     long GetInventoryType();                            // 0x005D9030
-    bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
@@ -80,7 +80,7 @@ void CTCContainer::AddItemToInventory(CThing* item)
         CTCInventoryItem* inventoryItem = (CTCInventoryItem*)item->GetTC(0x1a);
         long type = inventoryItem->GetInventoryType();
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-        inventoryItem->AddToInventory((CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
+        inventoryItem->AddToInventory(*(NInventory::CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     } else
         item->Kill(false);
 }

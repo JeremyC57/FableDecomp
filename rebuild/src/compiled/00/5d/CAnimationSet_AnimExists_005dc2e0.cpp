@@ -31,13 +31,15 @@ class CAnimFilterBase { public:                                   // vtable 0x01
     virtual ~CAnimFilterBase() { }                         // slot 2
 };
 
-template <class K, class V> struct pair {
-    K first;
-    V second;
+namespace std {                                              // STLport 4.6 <utility>
+template <class _T1, class _T2> struct pair {
+    _T1 first;
+    _T2 second;
 };
+}
 
 template <class K, class V> class CVectorMap { public:            // retail: a 12-byte STLport vector + comparator/dirty bytes
-    typedef pair<K, V> value_type;
+    typedef std::pair<K, V> value_type;
     value_type* m_first;                                   // +0x00
     value_type* m_last;                                    // +0x04
     value_type* m_end;                                     // +0x08

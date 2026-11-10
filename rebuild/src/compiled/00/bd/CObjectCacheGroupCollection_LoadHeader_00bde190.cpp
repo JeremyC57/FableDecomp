@@ -20,7 +20,9 @@ typedef long S32; typedef unsigned long U32; typedef __int64 S64;
 typedef int S32; typedef unsigned int U32; typedef long long S64;
 #endif
 class CDataInputStream : public CDataInputStreamLayout { public:
-    void ReadWithSrcChunkOverflow(unsigned char*,long); // 0x00993ca0
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*,long); // 0x00993ca0 (Ego_r/FableWin ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+public:
     INLINE void Read(void* destination,long bytes) {
         S64 next=(U32)(StreamPos+bytes);
         if(next>=0 && next<=0x7fffffff) {

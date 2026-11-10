@@ -19824,7 +19824,7 @@ $catalog = @(
         Module = 'CEngineLocalDetailLayerDef'
         Source = '00/47/CEngineLocalDetailLayerDef_scalardeletingdestructor_00477460.cpp'
         TestSource = '00/47/CEngineLocalDetailLayerDef_scalardeletingdestructor_00477460_test.cpp'
-        PassPattern = 'AUTO_TINY_00477460_TEST PASS'
+        PassPattern = '00477460_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00477943'
@@ -19845,7 +19845,7 @@ $catalog = @(
         Module = 'CAbilityTrackDef'
         Source = '00/47/CAbilityTrackDef_scalardeletingdestructor_00478706.cpp'
         TestSource = '00/47/CAbilityTrackDef_scalardeletingdestructor_00478706_test.cpp'
-        PassPattern = 'AUTO_TINY_00478706_TEST PASS'
+        PassPattern = '00478706_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00478855'
@@ -40429,10 +40429,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005edcf0'
-        Module = '_global'
-        Source = '00/5e/global_Destval_005edcf0.cpp'
-        TestSource = '00/5e/global_Destval_005edcf0_test.cpp'
-        PassPattern = 'DVCHAIN_OK'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetNumAssignableSpecialMoveButtons_005edcf0.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetNumAssignableSpecialMoveButtons_005edcf0_test.cpp'
+        PassPattern = '005edcf0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a14e20'
@@ -44485,9 +44485,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004f9cfc'
-        Module = '_global'
-        Source = '00/4f/CTCInventoryItem_OnDie_004f9cfc.cpp'
-        TestSource = '00/4f/CTCInventoryItem_OnDie_004f9cfc_test.cpp'
+        Module = 'CCardPositionsDef'
+        Source = '00/4f/CCardPositionsDef_CCardPositionsDef_004f9cfc.cpp'
+        TestSource = '00/4f/CCardPositionsDef_CCardPositionsDef_004f9cfc_test.cpp'
         PassPattern = '004f9cfc_TEST PASS'
     }
     [pscustomobject]@{
@@ -64141,9 +64141,9 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00478722'
         Module = 'CAbilityTrackDef'
-        Source = '00/47/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00478722.cpp'
-        TestSource = '00/47/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00478722_test.cpp'
-        PassPattern = 'DESTVAL_OK'
+        Source = '00/47/CAbilityTrackDef_CAbilityTrackDef_00478722.cpp'
+        TestSource = '00/47/CAbilityTrackDef_CAbilityTrackDef_00478722_test.cpp'
+        PassPattern = '00478722_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0047b300'
@@ -105458,10 +105458,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aabd40'
-        Module = '_gapscan'
-        Source = '00/aa/gapscan_sub00aabd40_00aabd40.cpp'
-        TestSource = '00/aa/gapscan_sub00aabd40_00aabd40_test.cpp'
-        PassPattern = 'PASS_00aabd40'
+        Module = 'CSoundEmitterLH'
+        Source = '00/aa/CSoundEmitterLH_Update_00aabd40.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_Update_00aabd40_test.cpp'
+        PassPattern = '00aabd40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ab5df0'
@@ -150351,9 +150351,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aac820'
-        Module = 'CCountedPointer_00aac6c0'
-        Source = '00/aa/CCountedPointer00aac6c0_CCountedPointer00aac6c0_00aac820.cpp'
-        TestSource = '00/aa/CCountedPointer00aac6c0_CCountedPointer00aac6c0_00aac820_test.cpp'
+        Module = 'CCountedPointer<CSoundEmitterLH::CActiveSound>'
+        Source = '00/aa/CCountedPointerCSoundEmitterLHCActiveSound_CCountedPointer_00aac820.cpp'
+        TestSource = '00/aa/CCountedPointerCSoundEmitterLHCActiveSound_CCountedPointer_00aac820_test.cpp'
         PassPattern = '00aac820_TEST PASS'
     }
     [pscustomobject]@{
@@ -192497,9 +192497,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c6010'
-        Module = 'CBulletTime'
-        Source = '00/4c/CBulletTime_ConvertInterpolateToBulletTimeInterpolate_004c6010.cpp'
-        TestSource = '00/4c/CBulletTime_ConvertInterpolateToBulletTimeInterpolate_004c6010_test.cpp'
+        Module = 'CBulletTimeManager'
+        Source = '00/4c/CBulletTimeManager_ConvertInterpolateToBulletTimeInterpolate_004c6010.cpp'
+        TestSource = '00/4c/CBulletTimeManager_ConvertInterpolateToBulletTimeInterpolate_004c6010_test.cpp'
         PassPattern = '004c6010_TEST PASS'
     }
     [pscustomobject]@{
@@ -193156,9 +193156,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00868860'
-        Module = 'CStateMapOwner_00868860'
-        Source = '00/86/CStateMapOwner00868860_HasStateZeroOrOne_00868860.cpp'
-        TestSource = '00/86/CStateMapOwner00868860_HasStateZeroOrOne_00868860_test.cpp'
+        Module = 'CHitParameters'
+        Source = '00/86/CHitParameters_IsMeleeStrike_00868860.cpp'
+        TestSource = '00/86/CHitParameters_IsMeleeStrike_00868860_test.cpp'
         PassPattern = '00868860_TEST PASS'
     }
     [pscustomobject]@{
@@ -199756,8 +199756,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aac2e0'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CAnimQueueOwner00aac2e0_StopAllQueuedAnims_00aac2e0.cpp'
-        TestSource = '00/aa/CAnimQueueOwner00aac2e0_StopAllQueuedAnims_00aac2e0_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_StopAllSamples_00aac2e0.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_StopAllSamples_00aac2e0_test.cpp'
         PassPattern = '00aac2e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -207157,9 +207157,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ed04d'
-        Module = 'CShopItemDefVector'
-        Source = '00/4e/CShopItemDefVector_resize_004ed04d.cpp'
-        TestSource = '00/4e/CShopItemDefVector_resize_004ed04d_test.cpp'
+        Module = 'std::vector<CShopItemDef>'
+        Source = '00/4e/stdvectorCShopItemDef_resize_004ed04d.cpp'
+        TestSource = '00/4e/stdvectorCShopItemDef_resize_004ed04d_test.cpp'
         PassPattern = '004ed04d_TEST PASS'
     }
     [pscustomobject]@{
@@ -210409,30 +210409,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00991690'
-        Module = 'CSymbolMap'
-        Source = '00/99/CSymbolMap_FindFirstSymbolWithVal_00991690.cpp'
-        TestSource = '00/99/CSymbolMap_FindFirstSymbolWithVal_00991690_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_GetPSoundBank_00991690.cpp'
+        TestSource = '00/99/CASoundManager_GetPSoundBank_00991690_test.cpp'
         PassPattern = '00991690_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009916f0'
-        Module = 'CSymbolMap'
-        Source = '00/99/CSymbolMap_FindFirstSymbolWithVal_009916f0.cpp'
-        TestSource = '00/99/CSymbolMap_FindFirstSymbolWithVal_009916f0_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_GetPLipSyncBank_009916f0.cpp'
+        TestSource = '00/99/CASoundManager_GetPLipSyncBank_009916f0_test.cpp'
         PassPattern = '009916f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00991720'
-        Module = '_global'
-        Source = '00/99/CSymbolMap_FindFirstSymbolWithVal_00991720.cpp'
-        TestSource = '00/99/CSymbolMap_FindFirstSymbolWithVal_00991720_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_GetAnyPLipSyncBank_00991720.cpp'
+        TestSource = '00/99/CASoundManager_GetAnyPLipSyncBank_00991720_test.cpp'
         PassPattern = '00991720_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009917e0'
-        Module = 'CSymbolMap'
-        Source = '00/99/CSymbolMap_FindFirstSymbolWithVal_009917e0.cpp'
-        TestSource = '00/99/CSymbolMap_FindFirstSymbolWithVal_009917e0_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_GetPSoundBank_009917e0.cpp'
+        TestSource = '00/99/CASoundManager_GetPSoundBank_009917e0_test.cpp'
         PassPattern = '009917e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -215942,8 +215942,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0049d150'
         Module = 'CTCPhysicsBase'
-        Source = '00/49/CTCPhysicsBase_GetInterpolatedPosition_0049d150.cpp'
-        TestSource = '00/49/CTCPhysicsBase_GetInterpolatedPosition_0049d150_test.cpp'
+        Source = '00/49/CTCPhysicsBase_GetPosition_0049d150.cpp'
+        TestSource = '00/49/CTCPhysicsBase_GetPosition_0049d150_test.cpp'
         PassPattern = '0049d150_TEST PASS'
     }
     [pscustomobject]@{
@@ -217740,9 +217740,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00991750'
-        Module = 'CThing'
-        Source = '00/99/CThing_OnDie_00991750.cpp'
-        TestSource = '00/99/CThing_OnDie_00991750_test.cpp'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_UnloadAllBanks_00991750.cpp'
+        TestSource = '00/99/CASoundManager_UnloadAllBanks_00991750_test.cpp'
         PassPattern = '00991750_TEST PASS'
     }
     [pscustomobject]@{
@@ -224471,8 +224471,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0099fdb0'
         Module = '_global'
-        Source = '00/99/global_HighestSetBit_0099fdb0.cpp'
-        TestSource = '00/99/global_HighestSetBit_0099fdb0_test.cpp'
+        Source = '00/99/global_GFGetTopBit_0099fdb0.cpp'
+        TestSource = '00/99/global_GFGetTopBit_0099fdb0_test.cpp'
         PassPattern = '0099fdb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -228032,8 +228032,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aac460'
         Module = 'CSoundEmitterLH'
-        Source = '00/aa/CSoundEmitterLH_StopSoundsContaining_00aac460.cpp'
-        TestSource = '00/aa/CSoundEmitterLH_StopSoundsContaining_00aac460_test.cpp'
+        Source = '00/aa/CSoundEmitterLH_StopAllCriteriaContainingString_00aac460.cpp'
+        TestSource = '00/aa/CSoundEmitterLH_StopAllCriteriaContainingString_00aac460_test.cpp'
         PassPattern = '00aac460_TEST PASS'
     }
     [pscustomobject]@{
@@ -259492,9 +259492,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00430300'
-        Module = '_global'
-        Source = '00/43/CDefWithBuffer_CDefWithBuffer_00430300.cpp'
-        TestSource = '00/43/CDefWithBuffer_CDefWithBuffer_00430300_test.cpp'
+        Module = 'CParentDefClassBase'
+        Source = '00/43/CParentDefClassBase_CParentDefClassBase_00430300.cpp'
+        TestSource = '00/43/CParentDefClassBase_CParentDefClassBase_00430300_test.cpp'
         PassPattern = '00430300_TEST PASS'
     }
     [pscustomobject]@{
@@ -279640,8 +279640,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00991840'
         Module = 'CASoundManager'
-        Source = '00/99/CASoundManager_GetBank_00991840.cpp'
-        TestSource = '00/99/CASoundManager_GetBank_00991840_test.cpp'
+        Source = '00/99/CASoundManager_GetPSoundBank_00991840.cpp'
+        TestSource = '00/99/CASoundManager_GetPSoundBank_00991840_test.cpp'
         PassPattern = '00991840_TEST PASS'
     }
     [pscustomobject]@{
@@ -339721,9 +339721,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00992290'
-        Module = 'CVectorMap<long, CUnprovenValue_00992290, CKeyPairCompareLess<long, CUnprovenValue_00992290> >'
-        Source = '00/99/CVectorMaplongCUnprovenValue00992290CKeyPairCompareLesslongCUnprovenValue0099229_LowerBound_00992290.cpp'
-        TestSource = '00/99/CVectorMaplongCUnprovenValue00992290CKeyPairCompareLesslongCUnprovenValue0099229_LowerBound_00992290_test.cpp'
+        Module = 'CVectorMap<long,CASoundManager::CRegisteredBank,CKeyPairCompareLess<long,CASoundManager::CRegisteredBank> >'
+        Source = '00/99/CVectorMaplongCASoundManagerCRegisteredBankCKeyPairCompareLesslongCASoundManagerCRegisteredBank_LowerBound_00992290.cpp'
+        TestSource = '00/99/CVectorMaplongCASoundManagerCRegisteredBankCKeyPairCompareLesslongCASoundManagerCRegisteredBank_LowerBound_00992290_test.cpp'
         PassPattern = '00992290_TEST PASS'
     }
     [pscustomobject]@{
@@ -382578,8 +382578,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009918f0'
         Module = 'CASoundManager'
-        Source = '00/99/CASoundManager_ClearBanks_009918f0.cpp'
-        TestSource = '00/99/CASoundManager_ClearBanks_009918f0_test.cpp'
+        Source = '00/99/CASoundManager_CloseAllBanks_009918f0.cpp'
+        TestSource = '00/99/CASoundManager_CloseAllBanks_009918f0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009918f0_TEST PASS'
     }

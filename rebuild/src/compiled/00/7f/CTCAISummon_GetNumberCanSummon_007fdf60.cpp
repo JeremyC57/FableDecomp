@@ -23,9 +23,10 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                                // 0x00A01B90
 };
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
+public:
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
 template <class T> struct SListNode {
@@ -33,7 +34,9 @@ template <class T> struct SListNode {
     SListNode* _M_prev;
     T          _M_data;
 };
-template <class T> struct CRetailList {                         // STLport list (4 bytes: the head node)
+namespace std {
+template <class _Tp> class allocator;
+template <class T, class _Alloc = allocator<T> > class list { public:                         // STLport list (4 bytes: the head node)
     SListNode<T>* _M_node;
     unsigned int size() const
     {
@@ -44,6 +47,7 @@ template <class T> struct CRetailList {                         // STLport list 
     }
     void remove(const T& value);                                // 0x0065DE8A for T = CIntelligentPointer<CThing>
 };
+}
 
 namespace std {
 template <class T> inline const T& min(const T& a, const T& b) { return b < a ? b : a; }
@@ -73,12 +77,12 @@ public:
     CThing*                                ParentThing;         // +0x04 (CTCBase)
     unsigned char                          _pad08[4];
     CDefPointer<const CSummonDef>          PSummonDef;          // +0x0c
-    CRetailList<CIntelligentPointerThing>  MySummonedCreatures; // +0x10
+    std::list<CIntelligentPointer<CThing> >  MySummonedCreatures; // +0x10
     long                                   LastSummonTick;      // +0x14
-    static CRetailList<CIntelligentPointerThing> AllSummonedCreatures;   // 0x013BAF14
-    static CRetailList<CIntelligentPointerThing>& __fastcall GetAllSummonedCreatures()
+    static std::list<CIntelligentPointer<CThing> > AllSummonedCreatures;   // 0x013BAF14
+    static std::list<CIntelligentPointer<CThing> >& __fastcall GetAllSummonedCreatures()
     {
-        AllSummonedCreatures.remove(CIntelligentPointerThing(0));
+        AllSummonedCreatures.remove(CIntelligentPointer<CThing>(0));
         return AllSummonedCreatures;
     }
     long GetNumberMySummonLimit() const { return PSummonDef->MySummonLimit; }

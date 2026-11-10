@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006648D0, length 233 bytes, `ret 8`.
 // Callees: CInterfaceMap::LowerBound @ 0x0040F020 (TC 0x46 = CTCCarrying), CTCCarrying::IsCarryingThing(long) @ 0x006A10A0,
 //   CTCCarrying::GetCarriedThing(long) @ 0x006A1120, CTCCarrying::RemoveThing(CThing*) @ 0x006A19B0,
-//   CTCCarrying::PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80, CThing::GetPos @ 0x004C73D0,
+//   CTCCarrying::PutThingInCarrySlot(CThing&, long, bool) @ 0x006A1F80, CThing::GetPos @ 0x004C73D0,
 //   CThingObject::Create @ 0x00703210 (`__fastcall`; declared as the landed callers spell it, CreateObject),
 //   CDefClassBase::GetSubDef<CCarryableDef> @ 0x005CC10E, CCharString(const char*, long) @ 0x0099EBF0 /
 //   ~CCharString @ 0x0099EAE0, the def's virtual Destroy (slot 1).
@@ -65,7 +65,7 @@ class CTCCarrying { public:
     bool IsCarryingThing(long defIndex);                         // 0x006A10A0
     CThing* GetCarriedThing(long defIndex);                      // 0x006A1120
     void RemoveThing(CThing* thing);                             // 0x006A19B0
-    void PutThingInCarrySlot(CThing* thing, long slot, bool flag);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 
 class CThing {
@@ -125,7 +125,7 @@ void CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot
     CDefPointer<const CCarryableDef> out;
     weapon->PBaseDef->GetSubDef(&out);
     def = const_cast<CCarryableDef*>(out.Object);
-    carrying->PutThingInCarrySlot(weapon, useActiveSlot ? def->ActiveCarrySlot : def->SecondaryActiveCarrySlot, true);
+    carrying->PutThingInCarrySlot(*weapon, useActiveSlot ? def->ActiveCarrySlot : def->SecondaryActiveCarrySlot, true);
     if (--def->RefCount == 0)
         def->Destroy();
 }

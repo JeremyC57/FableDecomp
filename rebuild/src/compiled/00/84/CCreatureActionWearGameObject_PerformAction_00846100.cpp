@@ -108,9 +108,8 @@ class CTCPhysicsBase { public:
 class CThingObject { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PPhysics;                                // +0x60
-    static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
-                                           CRightHandedSet* orientation, unsigned long flags,
-                                           const CCharString& name);   // 0x00703210
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
 
 enum EHeroAttachableAppearanceModifierType { };      // Ego_r enum (value 2 used here)
@@ -218,7 +217,7 @@ void CCreatureAction_WearGameObject::PerformAction()
                     offset.X = velocity.X;
                     offset.Y = velocity.Y;
                     C3DVector position = GetCreature()->GetHeadPos(true) + offset;
-                    thing = CThingObject::Create(id, &position, player, 0, 0, name);
+                    thing = CThingObject::Create(id, position, player, 0, 0, name);
                 }
                 if (thing)
                     thing->PPhysics->ApplyAcceleration(&velocity);

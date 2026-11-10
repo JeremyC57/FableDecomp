@@ -39,7 +39,7 @@ class CRightHandedSet { public:
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCCarrying { public:                            // interface 70
-    void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 
 class CDefinitionManager { public:
@@ -91,7 +91,7 @@ FABLE_FORCEINLINE void CActionEventAddObject::CreateObjectInHand(CTCCarrying* ca
     if (objectDef > 0) {
         CThing* thing = ((CThing*)CThingObject::Create(objectDef, *(&position), player, (CRightHandedSet const*)(&orientation), 0, ""));
         if (thing != 0 && !thing->IsDead()) {
-            carrying->PutThingInCarrySlot(thing, slot, true);
+            carrying->PutThingInCarrySlot(*thing, slot, true);
             if (DestroyOnExit)
                 thing->AddTC("CTCDestroyThingOnActionFinish", false, 0);
         }

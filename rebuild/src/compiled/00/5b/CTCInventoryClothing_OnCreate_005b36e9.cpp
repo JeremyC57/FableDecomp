@@ -121,14 +121,15 @@ struct CLongVector {
     long operator[](unsigned long n) const { return *(_M_start + n); }
 };
 
-struct CTCInventoryBase_Clothing;
+namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:                       // interface type 0x1A
     unsigned char _pad00[0x20];
     bool StartingItem;                          // +0x20 (descriptive)
-    bool AddToInventory(CTCInventoryBase_Clothing* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 };
 
-struct CTCInventoryBase_Clothing {              // retail 0x130 bytes
+namespace NInventory {
+class CTCInventoryBase { public:              // retail 0x130 bytes
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -218,9 +219,11 @@ struct CTCInventoryBase_Clothing {              // retail 0x130 bytes
     virtual const CLongVector& GetStartingItems();   // slot 86 (+0x158)
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x130 - 0x08];
-    void SetPDef(long globalDefIndex);          // 0x005BDB4D
+protected:
+    void SetPDef(long globalDefIndex);          // 0x005BDB4D (Ego_r/FableWin ?SetPDef@CTCInventoryBase@NInventory@@IAEXJ@Z)
 };
-class CTCInventoryClothing : public CTCInventoryBase_Clothing, public NHeroInformationScreens::CBase {
+}
+class CTCInventoryClothing : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     virtual void OnCreate();
 };
@@ -237,7 +240,7 @@ void CTCInventoryClothing::OnCreate()
     if (thingDef && --thingDef->m_refCount == 0)
         thingDef->Destroy();
     SetPDef(def->InventoryDefIndex);
-    CTCInventoryBase_Clothing::OnCreate();
+    NInventory::CTCInventoryBase::OnCreate();
     const CLongVector& startingItems = GetStartingItems();
     for (unsigned long i = 0; i < startingItems.size(); ++i) {
         const C3DVector& pos = ParentThing->GetPos();
@@ -246,7 +249,7 @@ void CTCInventoryClothing::OnCreate()
             CTCInventoryItem* item;
             if (thing->GetInterface(&item, 0x1a)) {
                 item->StartingItem = true;
-                item->AddToInventory(this, false, true, 0, true, false);
+                item->AddToInventory(*this, false, true, 0, true, false);
             }
         }
     }

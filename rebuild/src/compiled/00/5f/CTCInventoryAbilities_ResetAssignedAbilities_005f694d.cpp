@@ -2,7 +2,7 @@
 // Retail 0x005F694D, 290 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: GetUIMiscThingsDef() 0x005EE3B3 (CDefPointer by value), vector<EHeroAbility>::erase(first, last) 0x005F8F89
 // (manifest "CRGBColour_CopyAssign"), vector<EHeroAbility>::push_back(const value_type&) 0x005F9BCD (manifest
-// "Vector_PushElement_OrReallocate"), GetNumAbilitiesPerRow() const 0x005EDCF0 (x2), CycleAssignedAbilities(bool)
+// "Vector_PushElement_OrReallocate"), GetNumAssignableSpecialMoveButtons() const 0x005EDCF0 (x2), CycleAssignedAbilities(bool)
 // 0x005F64DD, the def's slot 1 on release.
 // Shape: ReceivedAbilityOrder is cleared through an inline `clear() { erase(begin(), end()); }`; the copy loop runs while
 // both AssignedAbilities and AssignedAbilitiesSave have an element (`i < a.size() && i < b.size()`, rotated); the
@@ -61,7 +61,7 @@ class CTCInventoryAbilities { public:
     CAbilityVector AssignedAbilities;                  // +0x17c
     CAbilityVector AssignedAbilitiesSave;              // +0x188
     CDefPointer<CUIMiscThingsDef> GetUIMiscThingsDef();   // 0x005EE3B3
-    long GetNumAbilitiesPerRow() const;                // 0x005EDCF0
+    long GetNumAssignableSpecialMoveButtons() const;                // 0x005EDCF0
     void CycleAssignedAbilities(bool forward);         // 0x005F64DD
     void ResetAssignedAbilities();
 };
@@ -91,6 +91,6 @@ void CTCInventoryAbilities::ResetAssignedAbilities()
             ReceivedAbilityOrder[j + 1] = swapped;
         }
     }
-    CurrentAssignedAbilityLevel = std::max(CurrentAssignedAbilityLevel - GetNumAbilitiesPerRow(), -GetNumAbilitiesPerRow());
+    CurrentAssignedAbilityLevel = std::max(CurrentAssignedAbilityLevel - GetNumAssignableSpecialMoveButtons(), -GetNumAssignableSpecialMoveButtons());
     CycleAssignedAbilities(true);
 }

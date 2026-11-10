@@ -1,5 +1,8 @@
 // CThing::OnCreate() -- advance the initialisation stage; unless dead, resolve the def (marking globally loaded / persisted things), notify the thing manager and the driver, run each live component's create hook over a copy of the component map, register, and honour the cutscene pause mode
-// Leaf: ?OnCreate@CThing
+// Leaf: ?OnCreate@CThing@@UAE_NXZ
+// Name (agentNF3, 2026-11-10): Ego_r.pdb / FableWin.pdb ?OnCreate@CThing@@UAE_NXZ -- CThing slot 8 is virtual (vtable 0x01239ABC slot 8 =
+//   0x004C9560; engine/CThing.h FABLE_RETAIL_CTHING_LOADSINGLE); CThingSoundEmitter::OnCreate 0x00836740 calls it qualified. Was
+//   declared non-virtual here (QAE).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9560, 293 bytes (+11 int3), virtual, `ret`, bool in al.
@@ -117,7 +120,7 @@ private: public:
     unsigned char  InitialisationStage : 3;             // +0x94
     void RegisterWithManager(CThingManager* manager);   // 0x00A36F80 (name not recovered)
     CDefinitionManager* GetDefinitionManager() const { return CThing::GetPCurrentThingManager()->DefinitionManager; }   // inline copy of 0x004C7990
-    bool OnCreate();
+    virtual bool OnCreate();                     // slot 8 (+0x20) 0x004C9560
 };
 
 bool CThing::OnCreate()

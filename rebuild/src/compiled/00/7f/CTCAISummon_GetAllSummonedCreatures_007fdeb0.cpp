@@ -22,9 +22,10 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                                // 0x00A01B90
 };
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
+public:
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
 template <class T> struct SListNode {
@@ -32,19 +33,22 @@ template <class T> struct SListNode {
     SListNode* _M_prev;
     T          _M_data;
 };
-template <class T> struct CRetailList {                         // STLport list (4 bytes: the head node)
+namespace std {
+template <class _Tp> class allocator;
+template <class T, class _Alloc = allocator<T> > class list { public:                         // STLport list (4 bytes: the head node)
     SListNode<T>* _M_node;
     void remove(const T& value);                                // 0x0065DE8A for T = CIntelligentPointer<CThing>
 };
+}
 
 class CTCAISummon {
 public:
-    static CRetailList<CIntelligentPointerThing> AllSummonedCreatures;   // 0x013BAF14
-    static CRetailList<CIntelligentPointerThing>& __fastcall GetAllSummonedCreatures();
+    static std::list<CIntelligentPointer<CThing> > AllSummonedCreatures;   // 0x013BAF14
+    static std::list<CIntelligentPointer<CThing> >& __fastcall GetAllSummonedCreatures();
 };
 
-CRetailList<CIntelligentPointerThing>& __fastcall CTCAISummon::GetAllSummonedCreatures()
+std::list<CIntelligentPointer<CThing> >& __fastcall CTCAISummon::GetAllSummonedCreatures()
 {
-    AllSummonedCreatures.remove(CIntelligentPointerThing(0));
+    AllSummonedCreatures.remove(CIntelligentPointer<CThing>(0));
     return AllSummonedCreatures;
 }

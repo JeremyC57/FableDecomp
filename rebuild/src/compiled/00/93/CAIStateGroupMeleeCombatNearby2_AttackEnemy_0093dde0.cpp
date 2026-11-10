@@ -2,7 +2,7 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DDE0, length 479 bytes (+ int3 padding).
 // Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (three times), the brain world accessor @ 0x008FCFC0
-// (combat manager +0x4c), CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450, Combat_CheckRingRangeToTarget @
+// (combat manager +0x4c), CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450, CCombatManager::IsCreatureInAttackRingSector @
 // 0x006E94D0, CAIStateGroupBase::IsStopping @ 0x008FD010, own virtual slot 14 IsStillRunnable(bool), CBaseIntelligentPointer
 // ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, operator delete @ 0x00BFE9BC (the
 // action count block), CAIBrain::SetBrainOutput @ 0x0088B8F0, the brain's virtual slot 2 (Yield), Terminate @ 0x008FCF40,
@@ -110,7 +110,7 @@ class CThingCreatureBase { public:
 
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);   // 0x006EA450
-    bool Combat_CheckRingRangeToTarget(CThingCreatureBase* creature);           // 0x006E94D0
+    bool IsCreatureInAttackRingSector(const CThingCreatureBase& creature) const;   // 0x006E94D0 (Ego_r/FableWin ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z)
 };
 class CWorld { public:
     unsigned char _pad0[0x4c];
@@ -167,7 +167,7 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
             return;
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = GetPWorld();
-        if (!world->GetPCombatManager()->Combat_CheckRingRangeToTarget(creature))
+        if (!world->GetPCombatManager()->IsCreatureInAttackRingSector(*creature))
             return;
         CBrainOutput output;
         output.Types |= 0x20;

@@ -152,7 +152,7 @@ class CTCCarrying { public:
     void RemoveThing(CThing* thing);                  // 0x006A19B0
     bool IsCarryingThing(CThing* thing);              // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool unused);  // 0x006A1E00
-    void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 class CTCInventoryWeapons { public:
     void RefreshSheathedWeapons();                    // 0x005C9962
@@ -209,7 +209,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
             carrying->RemoveThing(((CThing*)item.GetPItem()));
         CDefPointer<CCarryableDef> carryDef;
         ((CThing*)item.GetPItem())->GetDef()->GetSubDef(&carryDef);
-        carrying->PutThingInCarrySlot(item, carryDef->CarrySlot, true);
+        carrying->PutThingInCarrySlot(*item, carryDef->CarrySlot, true);
         CTCInventoryWeapons* weapons;
         if (((CThing*)PCreature.GetPItem())->GetInterface(&weapons, 0x13))
             weapons->RefreshSheathedWeapons();

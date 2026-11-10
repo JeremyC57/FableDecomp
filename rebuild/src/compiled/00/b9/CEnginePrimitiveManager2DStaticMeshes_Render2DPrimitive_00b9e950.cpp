@@ -8,6 +8,7 @@
 #undef CEngineLightingManager
 #include <stddef.h>
 enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
+enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveChain;
 class C3DMesh2;
@@ -128,7 +129,7 @@ struct CBase {
     virtual void v00();
     CBase();
 };
-struct __declspec(novtable) CEngineSubPrimitiveBase : CBase {
+class __declspec(novtable) CEngineSubPrimitiveBase : public CBase { public:
     unsigned long                 RenderFlags;     // +0x04
     unsigned char                 Alpha;           // +0x08
     static void* __fastcall operator new(unsigned int size);   // 0x00BEB540
@@ -141,18 +142,18 @@ class CEnginePrimitiveManager;
 class CEngineSubPrimitiveRenderer { public:
     unsigned char _pad[0x10];
     float         DepthBias;                       // +0x10
-    void AddSubPrimitive(long list, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720
+    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720 (Ego_r/FableWin ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z)
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
 class CEnginePrimitiveManager2DStaticMeshes { public:
     void* SceneList;                               // +0x04
     bool  Enable;                                  // +0x08
-    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, long type);
+    virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
     void AddGeneratedObjects(CEngineInternalPrimitive2DStaticMesh* mesh);   // 0x00BF12A0
 };
 
-void CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, long type)
+void CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type)
 {
     if (!Enable)
         return;

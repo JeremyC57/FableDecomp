@@ -14,7 +14,7 @@
 //   destructor: the default element's implicit ~CFeatDef is expanded inline (the CDefPointeeBase vtable 0x01230BA0 store, then
 //   CResource::~CResource 0x009FC550). The catalog label "Transfer<signed_char>" is propagated (NAME_FIXES.tsv).
 // Callees: CPersistContext::CheckCRC 0x00404500, CPersistContext::TransferVectorOfSubComponentsLoadText 0x009BC120, CDataOutputStream::
-//   WriteLong 0x00993EB0, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CFeatDef() 0x00F344C0, vector<CFeatDef>::resize(n, x)
+//   WriteSLONG 0x00993EB0, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, CFeatDef() 0x00F344C0, vector<CFeatDef>::resize(n, x)
 //   0x00F34580, CResource::~CResource 0x009FC550, the element's virtual Transfer(CPersistContext&) (CDefClassBase slot 18, +0x48).
 // Shape: as the landed TransferVectorOfSubComponents<CArenaRoundDef> 0x00F349F0 template with STLport's two-step resize(n) ->
 //   resize(n, _Tp()) over a def with an implicit destructor (engine/CDefClassBase.h retail chain).
@@ -58,7 +58,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 namespace std {
@@ -153,7 +153,7 @@ void CPersistContext::TransferVectorOfSubComponents(const char* name, std::vecto
     }
     case MODE_SAVE_BINARY: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

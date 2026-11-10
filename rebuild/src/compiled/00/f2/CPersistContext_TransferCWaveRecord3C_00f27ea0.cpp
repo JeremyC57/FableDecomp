@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F27EA0, 364 bytes (the 5-entry switch table follows the code; entry 1 is 0:
 // there is no text-save arm), `ret 8`. Called from 0x00F27E91 with the key "Waves" (0x012FB584) and the owner's vector at +0x2C.
 // Callees: CPersistContext::CheckCRC 0x00404500, the sub-component text-load helper 0x009BC120 (takes the
-// {vtable 0x012FB598, vector*} transferable-vector wrapper), CDataOutputStream::WriteLong 0x00993EB0,
+// {vtable 0x012FB598, vector*} transferable-vector wrapper), CDataOutputStream::WriteSLONG 0x00993EB0,
 // CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, vector<T>::resize(n) 0x00F280A0 (out of line: it builds the
 // default element and calls resize(n, x) itself), the element's virtual Transfer(CPersistContext&) (slot 18, +0x48).
 // The script module has no RTTI, so the element class name is descriptive (from the key). The manifest's
@@ -49,7 +49,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CWaveRecord3C {                                    // 0x3C bytes (stride of the element loops)
@@ -105,7 +105,7 @@ void CPersistContext::Transfer(const char* name, vector<T>& value)
     }
     case 3: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

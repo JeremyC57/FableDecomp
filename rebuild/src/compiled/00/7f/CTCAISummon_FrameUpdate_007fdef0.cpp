@@ -32,11 +32,13 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-template<class T>
-struct CRetailList {                                        // retail std::list: one sentinel pointer
+namespace std {
+template <class _Tp> class allocator;
+template <class T, class _Alloc = allocator<T> > class list { public:                                        // STLport 4.6 std::list: one sentinel pointer
     void* m_head;
     void remove(const T& value);                            // 0x0065DE8A for T = CIntelligentPointer<CThing>
 };
+}
 
 #pragma pack(push, 1)
 struct CTCBase_Calls                                   // engine/CTCBase.h layout (the header holds the layout only)
@@ -52,7 +54,7 @@ struct CTCBase_Calls                                   // engine/CTCBase.h layou
 class CTCAISummon : public CTCBase_Calls
 { public:
     void*                                         PSummonDef;            // +0x0c CDefPointer<CSummonDef>
-    CRetailList<CIntelligentPointer<CThing> >     MySummonedCreatures;   // +0x10
+    std::list<CIntelligentPointer<CThing> >     MySummonedCreatures;   // +0x10
     long                                          LastSummonTick;        // +0x14
     void FrameUpdate();
 };

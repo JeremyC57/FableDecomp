@@ -33,10 +33,13 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-template<class T> struct CRetailList {              // retail std::list: one sentinel pointer
+namespace std {
+template <class _Tp> class allocator;
+template <class T, class _Alloc = allocator<T> > class list { public:              // STLport 4.6 std::list: one sentinel pointer
     void* m_head;
     void remove(const T& value);                    // 0x0065DE8A (CThing) / 0x0065DE48 (CThingAICreature)
 };
+}
 
 class CThing {
 public:
@@ -85,8 +88,8 @@ class CTCFollowed { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[4];
-    CRetailList< CIntelligentPointer<CThing> > Followers;              // +0x0C
-    CRetailList< CIntelligentPointer<CThingAICreature> > AIFollowers;  // +0x10
+    std::list< CIntelligentPointer<CThing> > Followers;              // +0x0C
+    std::list< CIntelligentPointer<CThingAICreature> > AIFollowers;  // +0x10
     bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0 (Ego_r.pdb)
     void RemoveEmoteIcon(CThing& thing);            // 0x006D5050
     void RemoveFollower(CThing& follower);

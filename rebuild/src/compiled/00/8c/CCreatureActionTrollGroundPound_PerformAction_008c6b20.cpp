@@ -93,11 +93,13 @@ public:
     }
 };
 class CRightHandedSet;
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
-                                     unsigned long flags, const CCharString& name);   // 0x00703210
+class CThingObject : public CThing { public:
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
-    return CreateThingObject(defIndex, &position, creature->PlayerNumber, 0, 0, name);
+    return CThingObject::Create(defIndex, position, creature->PlayerNumber, 0, 0, name);
 }
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position);             // 0x0080C460
 CThing* __fastcall CreateObstruction(const C3DVector* a, const C3DVector* b, float radius);   // 0x007FD4B0

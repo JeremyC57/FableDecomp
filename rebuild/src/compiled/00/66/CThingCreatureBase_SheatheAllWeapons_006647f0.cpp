@@ -1,7 +1,7 @@
 // CThingCreatureBase::SheatheAllWeapons() -- for an AI creature carrying a weapon: collect the carrying component's weapon things and kill each live one that is no longer held
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006647F0, length 215 bytes, `ret`.
-// Callees: CThingCreatureBase::IsPlayer (vtable slot 77, +0x134), IsThingCarryingWeapon(const CThing*) @ 0x006A1540
+// Callees: CThingCreatureBase::IsPlayer (vtable slot 77, +0x134), CTCCarrying::IsThingCarryingWeapon(const CThing&) @ 0x006A1540
 //   (`__fastcall`), CInterfaceMap::LowerBound @ 0x0040F020 (TC 0x46 = CTCCarrying), the carrying component's weapon
 //   collector @ 0x006A22D0 (vector<CThing*>*, bool; manifest "CTCCarrying_RemoveAllWeapons", name unproven),
 //   CTCCarrying::IsCarryingThing(CThing*) @ 0x006A1060, CThing::Kill(bool) @ 0x004C9B80, free @ 0x00BFEA14.
@@ -32,6 +32,7 @@ struct CThingVector {                           // STLport vector<CThing*> (12 b
 class CTCCarrying { public:
     void GetWeapons_006a22d0(CThingVector* things, bool flag);   // 0x006A22D0
     bool IsCarryingThing(CThing* thing);                        // 0x006A1060
+    static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
 };
 
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
@@ -69,7 +70,6 @@ public:
     }
 };
 
-bool __fastcall IsThingCarryingWeapon(const CThing* thing);    // 0x006A1540
 inline bool IS_THING_ALIVE(CThing* thing) { return thing && !thing->Dead; }
 
 class CThingCreatureBase : public CThing {
@@ -81,7 +81,7 @@ void CThingCreatureBase::SheatheAllWeapons()
 {
     if (IsPlayer())
         return;
-    if (!IsThingCarryingWeapon(this))
+    if (!CTCCarrying::IsThingCarryingWeapon(*this))
         return;
     if (!HasTC(0x46))
         return;

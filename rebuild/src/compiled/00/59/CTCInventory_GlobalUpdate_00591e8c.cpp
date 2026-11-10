@@ -56,7 +56,7 @@ struct CInventoryDefPointer {                        // CDefPointer<const CInven
 
 class CRightHandedSet { public:
     float m[6];
-    void RotateAboutAxis_00a22f80(const C3DVector& axis, float angle);   // 0x00A22F80
+    void Rotate(const C3DVector& axis, float angle);                     // 0x00A22F80 (Ego_r/FableWin ?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z)
 };
 
 namespace NInventory {
@@ -96,7 +96,7 @@ void CTCInventory::GlobalUpdate(bool paused)
         CInventoryDefPointer def = PDef;
         step = 1.0f / (def->NumberOfSecondsForObjectRotation * CMainGameComponent::GetConstantFPS());
     }
-    CurrentObjectRHSet.RotateAboutAxis_00a22f80(g_inventoryItemRotationAxis, -step);
+    CurrentObjectRHSet.Rotate(g_inventoryItemRotationAxis, -step);
     CurrentRotationAngle += step;
     if (--QuickAccessFlashTimer <= 0) {
         {

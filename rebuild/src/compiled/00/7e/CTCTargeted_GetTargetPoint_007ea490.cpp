@@ -11,12 +11,14 @@
 #include "engine/C3DVector.h"
 class CCharString { public: void* m_pData; };
 extern CCharString g_TargetHelperName;          // 0x013BAC50
-struct CTCGraphicAppearance {
-    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* out, float scale);   // 0x004C0560
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& out, float scale) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
 };
+}
 class CThing { public:
     unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance; // +0x64 (PDB +0x74)
+    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; // +0x64 (PDB +0x74)
 };
 class CWorld;
 namespace NTargeting {
@@ -42,9 +44,9 @@ class CTCTargeted : public CTCBase { public:
 C3DVector CTCTargeted::GetTargetPoint(long index, float radius) const
 {
     if (index >= 0) {
-        CTCGraphicAppearance* appearance = ParentThing->PTCGraphicAppearance;
+        NGraphicAppearance::CTCGraphicAppearance* appearance = ParentThing->PTCGraphicAppearance;
         C3DVector point;
-        if (appearance->GetHelperPoint(g_TargetHelperName, index, 0x20, &point, 1.0f))
+        if (appearance->GetHelperPoint(g_TargetHelperName, index, 0x20, point, 1.0f))
             return point;
     }
     const CThing& thing = *ParentThing;

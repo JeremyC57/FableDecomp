@@ -33,7 +33,8 @@ public:
 class CPersistContext {
 public:
     template <class T> void Transfer(T& value);                                  // 0x00431102
-    void Transfer(std::vector<CLensFlareElementDef >& value);    // 0x004769D0
+    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
+    // TransferVectorOfSubComponents<CLensFlareElementDef> 0x004769D0
 };
 class CSkyDef {
 public:
@@ -72,5 +73,5 @@ void CSkyDef::Transfer(CPersistContext& context)
     context.Transfer(TwinkleSpeed);
     context.Transfer(TwinkleMin);
     context.Transfer(TwinkleMax);
-    context.Transfer(FlareElements);
+    context.TransferVectorOfSubComponents(FlareElements);
 }

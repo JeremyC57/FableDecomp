@@ -5,7 +5,7 @@
 // Called once, from 0x00F332F4, with the key "HeroSoulsRounds" (0x012FB9E8) and the owner's vector at +0x1050. The manifest label
 // `CPersistContext::Transfer<signed_char>` is propagated.
 // Callees: CPersistContext::CheckCRC 0x00404500, CPersistContext::TransferVectorOfSubComponentsLoadText 0x009BC120 (takes the
-// {vtable 0x01301C7C, vector*} CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsRoundDef> wrapper), CDataOutputStream::WriteLong
+// {vtable 0x01301C7C, vector*} CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsRoundDef> wrapper), CDataOutputStream::WriteSLONG
 // 0x00993EB0, CMemoryDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, vector<CHeroSoulsRoundDef>::resize(n) 0x00F353F0 (one argument,
 // out of line -- no default-constructed temporary in this TU), the element's virtual Transfer(CPersistContext&) (slot 18, +0x48).
 // Element size 0x38 (0x92492493 / add / sar 5 in the count division); Ego_r.pdb gives 60: its vector<CHeroSoulsWaveDef> Waves is 12 bytes in retail.
@@ -49,7 +49,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CHeroSoulsRoundDef {                                    // 0x38 bytes, CDefClassBase-derived sub-component def
@@ -105,7 +105,7 @@ void CPersistContext::TransferVectorOfSubComponents(const char* name, vector<T>&
     }
     case 3: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

@@ -2,7 +2,7 @@
 // Leaf: GetNumAssignedAbilityRows
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE183, 132 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
-// Callee: GetNumAbilitiesPerRow() @ 0x005EDCF0 (the main player's quick-access row width; manifest "_Dest_val<...>"
+// Callee: GetNumAssignableSpecialMoveButtons() @ 0x005EDCF0 (the main player's quick-access row width; manifest "_Dest_val<...>"
 //         is propagated), called before each inner pass, for every cell and for the loop test.
 // Shape: the row counter is the `push ecx` frame word sharing the outer index's zero (ebx); for each row
 // `for (long column = 0; column < perRow; ++column)` looks at cell `perRow * row + column` (`imul eax,ebx`), an
@@ -28,7 +28,7 @@ class CTCInventoryAbilities { public:
     unsigned char _pad_0x08[0x14C];
     CRetailVector<long> ReceivedAbilityOrder;        // +0x154 vector<EHeroAbility>
 
-    long GetNumAbilitiesPerRow() const;              // 0x005EDCF0
+    long GetNumAssignableSpecialMoveButtons() const;              // 0x005EDCF0
     long GetNumAssignedAbilityRows() const;
 };
 
@@ -36,8 +36,8 @@ long CTCInventoryAbilities::GetNumAssignedAbilityRows() const
 {
     long rows = 0;
     for (unsigned long row = 0; row < ReceivedAbilityOrder.size(); ++row) {
-        for (long column = 0; column < GetNumAbilitiesPerRow(); ++column) {
-            unsigned long cell = GetNumAbilitiesPerRow() * row + column;
+        for (long column = 0; column < GetNumAssignableSpecialMoveButtons(); ++column) {
+            unsigned long cell = GetNumAssignableSpecialMoveButtons() * row + column;
             if (cell < ReceivedAbilityOrder.size() && ReceivedAbilityOrder[cell] != 0) {
                 ++rows;
                 break;

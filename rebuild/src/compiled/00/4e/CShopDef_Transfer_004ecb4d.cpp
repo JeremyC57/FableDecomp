@@ -12,12 +12,22 @@
 // Size-optimised TU: `#pragma optimize("s", on)` (every address goes through eax, as in retail).
 #pragma optimize("s", on)
 class CCharString { public: void* Data; };
-struct CShopItemDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
+namespace std {                                            // STLport 4.6 vector (12 bytes; the transfer takes it by reference)
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+};
+}
+class CShopItemDef;
 struct COpinionAttitudeFloatMap { void* _M_header; unsigned long _M_node_count; unsigned long _M_compare; };
 
 class CPersistContext { public:
     template <class T> void Transfer(T& value);            // 0x00431020
-    void Transfer(CShopItemDefVector& value);       // 0x004ECF6E
+    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
+    // TransferVectorOfSubComponents<CShopItemDef> 0x004ECF6E
     void Transfer(COpinionAttitudeFloatMap& value); // 0x004ECD36
 };
 
@@ -29,8 +39,8 @@ class CShopDef { public:
     unsigned long CustomerFollowPhrase;             // +0x34
     unsigned long ThankingPhrase;                   // +0x38
     CCharString ShopkeeperMeshType;                 // +0x3C
-    CShopItemDefVector DefaultStock;                // +0x40
-    CShopItemDefVector StockCategoryDefaults;       // +0x4C
+    std::vector<CShopItemDef> DefaultStock;                // +0x40
+    std::vector<CShopItemDef> StockCategoryDefaults;       // +0x4C
     float BuyPriceMultiplier;                       // +0x58
     float SellPriceMultiplier;                      // +0x5C
     float AttitudeBuyPriceMultiplierDefault;        // +0x60
@@ -71,8 +81,8 @@ void CShopDef::Transfer(CPersistContext& context)
     context.Transfer(CustomerFollowPhrase);
     context.Transfer(ThankingPhrase);
     context.Transfer(ShopkeeperMeshType);
-    context.Transfer(DefaultStock);
-    context.Transfer(StockCategoryDefaults);
+    context.TransferVectorOfSubComponents(DefaultStock);
+    context.TransferVectorOfSubComponents(StockCategoryDefaults);
     context.Transfer(BuyPriceMultiplier);
     context.Transfer(SellPriceMultiplier);
     context.Transfer(AttitudeBuyPriceMultiplierDefault);

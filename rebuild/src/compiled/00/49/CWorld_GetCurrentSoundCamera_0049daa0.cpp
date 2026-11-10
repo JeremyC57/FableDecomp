@@ -10,7 +10,7 @@
 //   CMainGameComponent::Get() 0x013B86A0 slot 9 IsEditorActive (0x004197B0), CPlayerManager::GetMainPlayer 0x00449970,
 //   CPlayer::GetFreeCamera(float) const 0x00487180, CPlayer::GetPControlledCreature 0x00487DC0 (x2), the current game camera
 //   (+0x34) slots 10 (+0x28, its camera manager by out reference) and 1 (+0x04, the camera at a fraction),
-//   CGameCameraManager::IsUsingScriptedCameraMode 0x00697AE0, CTCPhysicsBase::GetInterpolatedPosition(float) 0x0049D150
+//   CGameCameraManager::IsUsingScriptedCameraMode 0x00697AE0, CTCPhysicsBase::GetPosition(float) const 0x0049D150
 //   (landed), CCamera::CCamera(const CCamera&) 0x0049D380 (landed).
 // Data: 0x013B86E0, a global pointer tested for null (named g_pSoundManager descriptively).
 // Layout: CPlayer UsingFreeCamera +0x220 (chunk 178), CThing physics component +0x60, CInterpolationInfo fraction +4;
@@ -42,7 +42,7 @@ class CInterpolationInfo { public:
     float Fraction;                           // +0x04
 };
 class CTCPhysicsBase { public:
-    C3DVector GetInterpolatedPosition(float t) const;   // 0x0049D150
+    C3DVector GetPosition(float t) const;               // 0x0049D150 (Ego_r/FableWin ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z)
 };
 #include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
@@ -99,7 +99,7 @@ CCamera CWorld::GetCurrentSoundCamera(const CInterpolationInfo& info) const
     if (PCurrentGameCamera->GetCameraManager(manager) && !manager->IsUsingScriptedCameraMode() && player->GetPControlledCreature()) {
         CCamera camera = PCurrentGameCamera->GetCamera(t);
         const CTCPhysicsBase* physics = player->GetPControlledCreature()->GetPhysicsTC();
-        camera.WorldPosition = physics->GetInterpolatedPosition(t);
+        camera.WorldPosition = physics->GetPosition(t);
         return camera;
     }
     return PCurrentGameCamera->GetCamera(t);

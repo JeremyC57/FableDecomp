@@ -5,12 +5,12 @@
 // 0x0066E734, vector<long>(size_type, const long&, const allocator&) 0x00512630, vector<pair<long, CDefPointer<const
 // CHeroAbilityDef>>>(size_type, const value_type&, const allocator&) 0x005F9BFE, ~pair<long, CDefPointer> 0x005F8736,
 // map<EUISpellCategory, CComponent*>() 0x005F9452, map<EHeroAbility, CComponent*>() 0x00579842 (x2),
-// GetNumAbilitiesPerRow() const 0x005EDCF0 (x2; manifest "_Dest_val<...>" is propagated).
+// GetNumAssignableSpecialMoveButtons() const 0x005EDCF0 (x2; manifest "_Dest_val<...>" is propagated).
 // Vtables: 0x01256AD4 (+0) and 0x01256AC0 (+0x130) (rtti-vtables.tsv).
 // Shape: initialiser list in declaration order; the vector fill value and the default allocator temporaries live in
 // the dead `thing` argument slot (`mov [ebp+8],ebx`, `lea eax,[ebp+0Bh]`); the ability entry fill value {-1, null}
 // is a frame temporary destroyed by its out-of-line pair destructor; the CVectorMap ctors zero the vector and the
-// dirty byte (+0xD); both level cursors start at -GetNumAbilitiesPerRow() (ctor body).
+// dirty byte (+0xD); both level cursors start at -GetNumAssignableSpecialMoveButtons() (ctor body).
 // The fill-value slot needs the same-TU stand-in for the vector<long> fill ctor (the const-ref taker of the `0`):
 // extern, VC7.1 keeps the escaped temporary in its own frame word [ebp-4] (8 lines).
 // Layout: as the landed destructor 0x005F3CFE (Ego_r.pdb names at retail offsets).
@@ -102,7 +102,7 @@ public:
     CTCInventoryAbilities(CThing* thing);
     virtual ~CTCInventoryAbilities();
     virtual void v00();
-    long GetNumAbilitiesPerRow() const;                       // 0x005EDCF0
+    long GetNumAssignableSpecialMoveButtons() const;                       // 0x005EDCF0
 };
 
 // Same-TU stand-in for vector<long>(n, const long&, const allocator&) 0x00512630 (body is not the retail one): the fill
@@ -122,6 +122,6 @@ CTCInventoryAbilities::CTCInventoryAbilities(CThing* thing)
       ExperienceSpentOnAbilities(20, 0),
       Abilities(20, SAbilityEntry(-1, CDefPointer<CHeroAbilityDef>()))
 {
-    CurrentAssignedAbilityLevel = -GetNumAbilitiesPerRow();
-    CurrentAssignedExpressionLevel = -GetNumAbilitiesPerRow();
+    CurrentAssignedAbilityLevel = -GetNumAssignableSpecialMoveButtons();
+    CurrentAssignedExpressionLevel = -GetNumAssignableSpecialMoveButtons();
 }

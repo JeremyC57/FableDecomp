@@ -40,26 +40,29 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-template<class T> struct CRetailList {          // retail std::list: one sentinel pointer
+namespace std {
+template <class _Tp> class allocator;
+template <class T, class _Alloc = allocator<T> > class list { public:          // STLport 4.6 std::list: one sentinel pointer
     void* m_head;
     void remove(const T& value);                // 0x0065DDDB / 0x0065DE48 / 0x0065DF94 / 0x0065DE8A / 0x0065DF0F / 0x0065E09E
 };
+}
 
 class CTCVillage { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x20];
-    CRetailList< CIntelligentPointer<CThingBuilding> >   VillageBuildings;   // +0x28
-    CRetailList< CIntelligentPointer<CThingAICreature> > VillagePeople;      // +0x2c
-    CRetailList< CIntelligentPointer<CThing> >           VillageTorches;     // +0x30
-    CRetailList< CIntelligentPointer<CThing> >           VillageHorns;       // +0x34
-    CRetailList< CIntelligentPointer<CThing> >           VillageGates;       // +0x38
-    CRetailList< CIntelligentPointer<CThingObject> >     VillageCrops;       // +0x3c
-    CRetailList< CIntelligentPointer<CThing> >           VillageCages;       // +0x40
-    CRetailList< CIntelligentPointer<CThing> >           VillageCampfires;   // +0x44
-    CRetailList< CIntelligentPointer<CThingTrackNode> >  VillagePatrols;     // +0x48
+    std::list< CIntelligentPointer<CThingBuilding> >   VillageBuildings;   // +0x28
+    std::list< CIntelligentPointer<CThingAICreature> > VillagePeople;      // +0x2c
+    std::list< CIntelligentPointer<CThing> >           VillageTorches;     // +0x30
+    std::list< CIntelligentPointer<CThing> >           VillageHorns;       // +0x34
+    std::list< CIntelligentPointer<CThing> >           VillageGates;       // +0x38
+    std::list< CIntelligentPointer<CThingObject> >     VillageCrops;       // +0x3c
+    std::list< CIntelligentPointer<CThing> >           VillageCages;       // +0x40
+    std::list< CIntelligentPointer<CThing> >           VillageCampfires;   // +0x44
+    std::list< CIntelligentPointer<CThingTrackNode> >  VillagePatrols;     // +0x48
     unsigned char _pad_0x4c[0x24];
-    CRetailList< CIntelligentPointer<CThingMarker> >     VillageMarkers;     // +0x70
+    std::list< CIntelligentPointer<CThingMarker> >     VillageMarkers;     // +0x70
     void ClearOutNullMembers();
 };
 

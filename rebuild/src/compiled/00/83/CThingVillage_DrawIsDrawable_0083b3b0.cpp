@@ -15,14 +15,14 @@ class CDisplayEngine { public:
 CDisplayEngine* GetDisplayEngine();                 // 0x004C7A70
 
 class CThing { public:
-    bool DrawIsDrawable();                          // 0x004C7790
+    virtual bool DrawIsDrawable() const;                          // 0x004C7790
 };
 
 class CThingVillage : public CThing { public:
-    bool DrawIsDrawable();
+    virtual bool DrawIsDrawable() const;
 };
 
-bool CThingVillage::DrawIsDrawable()
+bool CThingVillage::DrawIsDrawable() const
 {
     return GetDisplayEngine()->IsDrawingEnabled() && CThing::DrawIsDrawable();
 }

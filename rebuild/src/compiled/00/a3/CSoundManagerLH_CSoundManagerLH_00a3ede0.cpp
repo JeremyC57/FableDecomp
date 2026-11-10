@@ -137,7 +137,7 @@ class CASoundManager : public CBaseClassNonCopyable { public:
     CCountedPointer<CResourceBank> ResourceBank;   // +0x28
     CVectorMap<long, CSoundBankRecord> Banks;   // +0x30
     virtual ~CASoundManager();                  // 0x00991880
-    void ClearBanks_009918f0();                 // 0x009918F0
+    void CloseAllBanks();                       // 0x009918F0 (Anniversary 360 PDB CASoundManager::CloseAllBanks)
 };
 #include "engine/C3DVector.h"
 class CSoundSystem {
@@ -163,7 +163,7 @@ class CSoundManagerLH : public CASoundManager { public:
 };
 CSoundManagerLH::~CSoundManagerLH()
 {
-    ClearBanks_009918f0();
+    CloseAllBanks();
     if (m_pSoundSystem) {
         m_pSoundSystem->Shutdown_00a3edf7();
         m_pSoundSystem = 0;

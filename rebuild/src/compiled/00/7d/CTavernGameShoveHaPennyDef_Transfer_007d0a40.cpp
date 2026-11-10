@@ -4,7 +4,7 @@
 // Callees: CTavernGameDef::Transfer 0x004ED472 (qualified base call),
 //   CPersistContext::TransferVectorOfSubComponents<CShoveHaPennyRegionDef> 0x007D2740 (Regions),
 //   CPersistContext::CheckCRC 0x00404500 (pooled empty key 0x0122D70E), CPersistTraits<long>::TransferBinaryIn
-//   0x0040FE60 / CDataOutputStream::WriteLong 0x00993EB0, CPersistTraits<float>::TransferBinaryIn 0x0040EFB0 /
+//   0x0040FE60 / CDataOutputStream::WriteSLONG 0x00993EB0, CPersistTraits<float>::TransferBinaryIn 0x0040EFB0 /
 //   CDataOutputStream::WriteFloat 0x00993EE0.
 // Shape: the landed CShoveHaPennyRegionDef::Transfer (0x007D0070) template -- each scalar member goes through the
 // inline CPersistContext::Transfer<T>(name, value): CheckCRC, then `switch (mode)` with case 2 (binary load through
@@ -17,7 +17,7 @@
 class CMemoryDataInputStream;
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
+    void WriteSLONG(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
 
@@ -25,7 +25,7 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream& stream, long& value);    // 0x0040FE60
-    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteLong(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteSLONG(value); }
 };
 template<> struct CPersistTraits<float> {
     CPersistTraits() {}

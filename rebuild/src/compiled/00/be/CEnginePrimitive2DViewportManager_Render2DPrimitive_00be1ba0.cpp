@@ -1,4 +1,4 @@
-// CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, ESubPrimitiveType type, CEngineSubPrimitiveChain& chain) -- wraps the 2D viewport primitive in a new sub-primitive and queues it on the renderer at the depth of the primitive's 2D layer
+// CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type) -- wraps the 2D viewport primitive in a new sub-primitive and queues it on the renderer at the depth of the primitive's 2D layer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE1BA0, length 98 bytes (112 with padding).
 // Callees: the sub-primitive class `operator new` @ 0x00BEB540 (`__fastcall`, size 0x18 in ecx), CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CEnginePrimitiveRenderer2D::Layer2DToSortDistance(EEngine2DLayer) @ 0x00B4A6A0 (float, on the 2D renderer @ 0x01436E7C),
@@ -8,8 +8,10 @@
 // +0xC, next link +0x10 = 0, then the vtable: the two stores before the derived vtable belong to an inlined
 // `__declspec(novtable)` intermediate base -- as init-list members or body assignments of the derived class they sink
 // below the vtable store); the queue call's arguments evaluate right to left: `this` (pushed before
-// the layer call), the float distance (`push ecx ; fstp [esp]`), the sub-primitive, the chain -- the THIRD argument (the
-// manifest lists the chain second; the read of [esp+20h] puts it last). `type` is unused (`ret 0Ch`).
+// the layer call), the float distance (`push ecx ; fstp [esp]`), the sub-primitive, then the THIRD argument ([esp+20h]): the
+// sort-list type, which is CEngineSubPrimitiveRenderer::AddSubPrimitive's first parameter (Ego_r/FableWin
+// ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z);
+// the chain (second) is unused, as in the sibling 2D managers' Render2DPrimitive(primitive, chain, type) (`ret 0Ch`).
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // 0x0099A300
@@ -27,7 +29,7 @@ class CEngineInternalPrimitiveBase { public:
 class CEngineSubPrimitiveChain;
 class CEnginePrimitive2DViewportManager;
 
-struct __declspec(novtable) CEngineSubPrimitiveBase : CBaseClassNonCopyable {   // intermediate base: owns the primitive link
+class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyable { public:   // intermediate base: owns the primitive link
     unsigned char                 _pad04[0x8];
     CEngineInternalPrimitiveBase* m_pPrimitive;    // +0x0C
     CEngineSubPrimitiveBase*      m_pNext;         // +0x10
@@ -45,20 +47,21 @@ class CEnginePrimitiveRenderer2D { public:
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D_01436e7c;   // 0x01436E7C
 
-class CEnginePrimitiveRenderer { public:
-    void AddSubPrimitive(CEngineSubPrimitiveChain& chain, CEngineSubPrimitive2DViewport* subPrimitive, float distance,
-                         CEnginePrimitive2DViewportManager* manager);   // 0x00B84720
+class CEnginePrimitiveManager;
+class CEngineSubPrimitiveRenderer { public:
+    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance,
+                         CEnginePrimitiveManager* manager);   // 0x00B84720
 };
-extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e74;       // 0x01436E74
+extern CEngineSubPrimitiveRenderer* g_pPrimitiveRenderer_01436e74;    // 0x01436E74
 
 class CEnginePrimitive2DViewportManager { public:
-    void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, ESubPrimitiveType type, CEngineSubPrimitiveChain& chain);
+    void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, ESubPrimitiveType type);
 };
 
-void CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, ESubPrimitiveType type,
-                                                          CEngineSubPrimitiveChain& chain)
+void CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain,
+                                                          ESubPrimitiveType type)
 {
     CEngineSubPrimitive2DViewport* subPrimitive = new CEngineSubPrimitive2DViewport(primitive);
     g_pPrimitiveRenderer_01436e74->AddSubPrimitive(
-        chain, subPrimitive, g_pPrimitiveRenderer2D_01436e7c->Layer2DToSortDistance(primitive.m_layer), this);
+        type, subPrimitive, g_pPrimitiveRenderer2D_01436e7c->Layer2DToSortDistance(primitive.m_layer), (CEnginePrimitiveManager*)this);
 }

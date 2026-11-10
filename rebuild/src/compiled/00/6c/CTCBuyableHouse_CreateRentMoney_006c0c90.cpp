@@ -20,9 +20,10 @@ class CTCParamsBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+class CRightHandedSet;
 class CThingObject : public CThing { public:
-    static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
-        void* orientation, unsigned long flags, const CCharString& name);   // 0x00703210
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r/FableWin ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
 class CTCOwnedEntity { public: void SetPOwner(CThing* owner); };   // 0x007E8590
 class CTCGold { public: unsigned char _pad[0xc]; long Gold; };     // interface 0xCC
@@ -106,7 +107,7 @@ void CTCBuyableHouse::CreateRentMoney()
         }
         if (index <= 0)
             continue;
-        CThingObject* bag = CThingObject::Create(index, &pos, 5, 0, 0, "");
+        CThingObject* bag = CThingObject::Create(index, pos, 5, 0, 0, "");
         bag->AddTC("CTCOwnedEntity", false, 0);
         CTCOwnedEntity* owned;
         bag->GetTC(TCI_OWNED_ENTITY, &owned);

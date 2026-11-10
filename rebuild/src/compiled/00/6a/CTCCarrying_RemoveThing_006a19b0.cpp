@@ -51,7 +51,7 @@ class CTCCarrying { public:
                 return it;
         return CarrySlots.end();
     }
-    void RemoveThingInCarrySlot(long slot, bool dropped);   // 0x006A16A0
+    class CThing* RemoveThingInCarrySlot(long slot, bool dropped);   // 0x006A16A0 (Ego_r/FableWin ?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z)
     void RemoveThing(CThing* thing);
 };
 

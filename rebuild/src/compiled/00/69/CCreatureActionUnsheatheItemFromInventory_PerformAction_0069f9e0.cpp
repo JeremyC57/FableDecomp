@@ -106,7 +106,7 @@ class CTCCarrying { public:
     void RemoveThing(CThing* thing);                         // 0x006A19B0
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00
-    void PutThingInCarrySlot(CThing* thing, long slot, bool flag);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool flag);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 public:
     bool IsPrimarySlotFree() const;   // 0x006A1270
 };
@@ -171,7 +171,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
         CDefPointer<CCarryableDef> carryDef;
         CThing* item = GetItem();
         item->m_pDef->GetSubDef(&carryDef);
-        carrying->PutThingInCarrySlot(GetItem(), carryDef->CarrySlot, true);
+        carrying->PutThingInCarrySlot(*GetItem(), carryDef->CarrySlot, true);
         if (weapons)
             weapons->RefreshSheathedWeapons();
     }

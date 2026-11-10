@@ -5,7 +5,7 @@
 // Called once, from 0x00F332E1, with the key "ArenaRounds" (0x012FB9F8) and the owner's vector at +0x1044. The manifest label
 // `CPersistContext::Transfer<signed_char>` is propagated.
 // Callees: CPersistContext::CheckCRC 0x00404500, CPersistContext::TransferVectorOfSubComponentsLoadText 0x009BC120 (takes the
-// {vtable 0x01301C68, vector*} CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef> wrapper), CDataOutputStream::WriteLong
+// {vtable 0x01301C68, vector*} CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef> wrapper), CDataOutputStream::WriteSLONG
 // 0x00993EB0, CMemoryDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, vector<CArenaRoundDef>::resize(n) 0x00F34BF0 (one argument,
 // out of line -- no default-constructed temporary in this TU), the element's virtual Transfer(CPersistContext&) (slot 18, +0x48).
 // Element size 0x38 (0x92492493 / add / sar 5 in the count division); Ego_r.pdb gives 60: its vector<CArenaWaveDef> Waves is 12 bytes in retail.
@@ -49,7 +49,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CArenaRoundDef {                                    // 0x38 bytes, CDefClassBase-derived sub-component def
@@ -105,7 +105,7 @@ void CPersistContext::TransferVectorOfSubComponents(const char* name, vector<T>&
     }
     case 3: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

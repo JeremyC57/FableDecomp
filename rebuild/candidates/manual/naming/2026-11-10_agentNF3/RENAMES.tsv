@@ -1,0 +1,27 @@
+address	module	name
+0x00AAC820	CCountedPointer<CSoundEmitterLH::CActiveSound>	CCountedPointer
+0x009916F0	CASoundManager	GetPLipSyncBank
+0x00991690	CASoundManager	GetPSoundBank
+0x00991720	CASoundManager	GetAnyPLipSyncBank
+0x009917E0	CASoundManager	GetPSoundBank
+0x00991750	CASoundManager	UnloadAllBanks
+0x00991840	CASoundManager	GetPSoundBank
+0x009918F0	CASoundManager	CloseAllBanks
+0x00992290	CVectorMap<long,CASoundManager::CRegisteredBank,CKeyPairCompareLess<long,CASoundManager::CRegisteredBank> >	LowerBound
+0x00AAC2E0	CSoundEmitterLH	StopAllSamples
+0x00AABD40	CSoundEmitterLH	Update
+0x00AAC460	CSoundEmitterLH	StopAllCriteriaContainingString
+0x0099FDB0	_global	GFGetTopBit
+0x004C6010	CBulletTimeManager	ConvertInterpolateToBulletTimeInterpolate
+0x0049D150	CTCPhysicsBase	GetPosition
+0x004F9CFC	CCardPositionsDef	~CCardPositionsDef
+0x00478722	CAbilityTrackDef	~CAbilityTrackDef
+0x00430300	CParentDefClassBase	~CParentDefClassBase
+0x004ED04D	std::vector<CShopItemDef>	resize
+0x004EDA32	std::vector<CPrizeScoreDef>	resize
+0x004EDF0A	std::vector<CMultiStaticMeshEntryDef>	resize
+0x005EDCF0	CTCInventoryAbilities	GetNumAssignableSpecialMoveButtons
+0x00477460	CEngineLocalDetailLayerDef	`scalar deleting destructor'
+0x00478706	CAbilityTrackDef	`scalar deleting destructor'
+0x00838550	CThingNoise	OnCreate
+0x00868860	CHitParameters	IsMeleeStrike

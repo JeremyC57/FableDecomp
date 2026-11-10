@@ -15,8 +15,8 @@
 //   view (destructor, SetPosition, GetPosition, Close, Write) over the same {vptr, NewLine} layout; no engine header
 //   exists for CDegradableInfo / CEngineGraphic.
 class CCharStringData;
-struct CDataOutputStreamWriter {
-    virtual ~CDataOutputStreamWriter();                     // slot 0
+class CDataOutputStream { public:
+    virtual ~CDataOutputStream();                     // slot 0
     virtual void SetPosition(unsigned long position);       // slot 1
     virtual unsigned long GetPosition() const;              // slot 2
     virtual void Close();                                   // slot 3
@@ -63,7 +63,7 @@ const long DEGRADABLE_INFO_RECORD_CHECK = 0x01AB6CE3;       // written after eve
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CDegradableInfo> {
     CDegradableInfo DefaultVal;
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const CDegradableInfo* value) const
+    void TransferBinaryOut(CDataOutputStream& stream, const CDegradableInfo* value) const
     {
         stream.WriteFloat(value->HealthPercentage);
         stream.Write(&value->EngineGraphic, sizeof(CEngineGraphic));
@@ -74,7 +74,7 @@ template <> struct CPersistTraits<CDegradableInfo> {
 };
 
 template <class T>
-void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std::vector<T>& value)
+void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream& stream, std::vector<T>& value)
 {
     CPersistTraits<T> traits;
     long count = value.size();
@@ -83,5 +83,5 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
         traits.TransferBinaryOut(stream, &value[i]);
 }
 
-template void __fastcall GFSerialiseVectorBinaryOut<CDegradableInfo>(CDataOutputStreamWriter& stream,
+template void __fastcall GFSerialiseVectorBinaryOut<CDegradableInfo>(CDataOutputStream& stream,
                                                                      std::vector<CDegradableInfo>& value);

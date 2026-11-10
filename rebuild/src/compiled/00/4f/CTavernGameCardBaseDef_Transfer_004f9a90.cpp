@@ -77,8 +77,9 @@ class CPersistContext {
 public:
     void Transfer(CRGBColour& value);                            // 0x004595A3
     void Transfer(C2DVector& value);                             // 0x004568BC
-    void Transfer(std::vector<CCardPositionsDef >& value);       // 0x004F9C07
-    void Transfer(std::vector<CCardDef >& value);                // 0x004FA0A9
+    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
+    // TransferVectorOfSubComponents<CCardPositionsDef> 0x004F9C07
+    // TransferVectorOfSubComponents<CCardDef> 0x004FA0A9
     template <class T> void Transfer(T& value);              // enum instances: ETavernGameControlType 0x004F9B63
 };
 class CTavernGameCardBaseDef : public CSubDefClassBase {    // vtable 0x0124258C
@@ -122,6 +123,6 @@ void CTavernGameCardBaseDef::Transfer(CPersistContext& context)
     context.Transfer(CardSeparation);
     context.Transfer(TableSeparation);
     context.Transfer(PackOffset);
-    context.Transfer(CardOrders);
-    context.Transfer(CardPack);
+    context.TransferVectorOfSubComponents(CardOrders);
+    context.TransferVectorOfSubComponents(CardPack);
 }

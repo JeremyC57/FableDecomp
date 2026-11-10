@@ -12,14 +12,14 @@ class CDisplayEngine { public:
 };
 class CThing { public:
     virtual void v00();
-    CDisplayEngine* GetDisplayEngine();              // 0x004C7A70
-    virtual bool DrawIsDrawable();                   // 0x004C7790 (called non-virtually)
+    CDisplayEngine* GetDisplayEngine() const;              // 0x004C7A70
+    virtual bool DrawIsDrawable() const;                   // 0x004C7790 (called non-virtually)
 };
 class CThingSwitch : public CThing { public:
-    virtual bool DrawIsDrawable();
+    virtual bool DrawIsDrawable() const;
 };
 
-bool CThingSwitch::DrawIsDrawable()
+bool CThingSwitch::DrawIsDrawable() const
 {
     return GetDisplayEngine()->IsDrawingEnabled() && CThing::DrawIsDrawable();
 }

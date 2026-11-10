@@ -24,11 +24,13 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CTCGraphicAppearance {                   // interface type 9 (also the thing's appearance pointer at +0x64)
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:                   // interface type 9 (also the thing's appearance pointer at +0x64)
     unsigned char _pad00[0x10];
     bool m_flag10;                              // +0x10
-    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position, float time);   // 0x004C0560
+    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& position, float time) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
 };
+}
 class CThing {
 public:
 #define VF(n) virtual void v##n();
@@ -39,7 +41,7 @@ public:
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
     unsigned char _pad54[0x10];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -69,15 +71,15 @@ public:
 void CTCBoastingPosition::OnInitialActivate()
 {
     ParentThing->SetAsDrawable(false);
-    CTCGraphicAppearance* graphic;
+    NGraphicAppearance::CTCGraphicAppearance* graphic;
     if (ParentThing->GetInterface(&graphic, 9))
         graphic->m_flag10 = false;
-    CTCGraphicAppearance* appearance = ParentThing->PGraphicAppearance;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = ParentThing->PGraphicAppearance;
     if (appearance) {
         bool missing;
         {
             CCharString name("PODIUM_ORB_CREATION_DUMMY");
-            missing = appearance->GetHelperPoint(name, 0, 0, &OrbPosition, 1.0f) ? false : true;
+            missing = appearance->GetHelperPoint(name, 0, 0, OrbPosition, 1.0f) ? false : true;
         }
         if (missing) {
             const C3DVector& position = ParentThing->GetPos();

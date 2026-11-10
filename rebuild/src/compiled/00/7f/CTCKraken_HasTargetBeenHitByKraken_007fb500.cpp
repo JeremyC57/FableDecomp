@@ -23,8 +23,9 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 struct CTCBase_Retail;
 class CTCBase;
@@ -75,9 +76,12 @@ class CTCEntityEvents { public:
 struct SThingListNode {                         // STLport _List_node<CIntelligentPointer<CThing> >
     SThingListNode* _M_next;
     SThingListNode* _M_prev;
-    CIntelligentPointer _M_data;                // +0x08
+    CIntelligentPointer<CThing> _M_data;                // +0x08
 };
-struct CThingPointerList {                      // STLport list<CIntelligentPointer<CThing> > (the node pointer only)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {   // STLport 4.6 list<CIntelligentPointer<CThing> > (the node pointer only)
+public:
     SThingListNode* _M_node;
     unsigned long size() const
     {
@@ -86,8 +90,9 @@ struct CThingPointerList {                      // STLport list<CIntelligentPoin
             ++n;
         return n;
     }
-    void remove(const CIntelligentPointer& value);   // 0x0065DE8A
+    void remove(const _Tp& value);              // 0x0065DE8A (FableWin ?remove@?$list@V?$CIntelligentPointer@VCThing@@@@..@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z)
 };
+}
 
 class CTCKraken { public:
     void*   __vftable;                          // +0x00
@@ -95,13 +100,13 @@ class CTCKraken { public:
     unsigned char _pad08[0x20 - 0x08];
     CBaseIntelligentPointer PTarget;            // +0x20
     unsigned char _pad28[0x30 - 0x28];
-    CThingPointerList Tentacles;                // +0x30
+    std::list<CIntelligentPointer<CThing> > Tentacles;   // +0x30
     bool HasTargetBeenHitByKraken();
 };
 
 bool CTCKraken::HasTargetBeenHitByKraken()
 {
-    Tentacles.remove(CIntelligentPointer(0));
+    Tentacles.remove(CIntelligentPointer<CThing>(0));
     if (Tentacles.size() > 0 && IS_THING_ALIVE(PTarget)) {
         CThing* target = ((CThing*)PTarget.GetPItem());
         if (target->HasTC(0x42)) {

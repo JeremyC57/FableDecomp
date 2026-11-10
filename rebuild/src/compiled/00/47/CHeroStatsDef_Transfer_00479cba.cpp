@@ -11,17 +11,27 @@
 // Pragma: #pragma optimize("s", on) -- a size TU: every member address goes through eax.
 // Shape: one transfer per member in declaration order, except that MoralityChangeOnVandalism (+0xec) is transferred
 //   before MoralityChangeOnPicklock (+0xe8).
-struct CAppearanceModifierScalingDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
-struct CAbilityTrackDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
+namespace std {                                            // STLport 4.6 vector (12 bytes; the transfer takes it by reference)
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+};
+}
+class CAppearanceModifierScalingDef;
+class CAbilityTrackDef;
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 struct CFloatVector { float* _M_start; float* _M_finish; float* _M_end_of_storage; };
 
 class CPersistContext { public:
     template <class T> void Transfer(T& value);                                    // 0x00431102
-    void Transfer(CAppearanceModifierScalingDefVector& value);     // 0x00479EF4
+    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // TLC release persist macro form (Ego_r/FableWin ??$TransferVectorOfSubComponents@V..@@@CPersistContext@@)
+    // TransferVectorOfSubComponents<CAppearanceModifierScalingDef> 0x00479EF4
     void Transfer(CLongVector& value);                             // 0x00466A47
     void Transfer(CFloatVector& value);                            // 0x00464CBF
-    void Transfer(CAbilityTrackDefVector& value);                  // 0x0047A2F5
+    // TransferVectorOfSubComponents<CAbilityTrackDef> 0x0047A2F5
 };
 
 class CDefClassBase { public:
@@ -43,7 +53,7 @@ class CHeroStatsDef : public CDefClassBase { public:
     long  ExpToSpendAtWhichToDisplayTutorial;              // +0x64
     float MinAge;                                          // +0x68
     float MaxAge;                                          // +0x6c
-    CAppearanceModifierScalingDefVector AppearanceModifierScaling; // +0x70
+    std::vector<CAppearanceModifierScalingDef> AppearanceModifierScaling; // +0x70
     float AmountFatnessIncreasesPerPointOfOverEating;      // +0x7c
     float NumberOfMinutesBetweenFatnessReductions;         // +0x80
     float AmountFatnessDecreasesPerReduction;              // +0x84
@@ -68,7 +78,7 @@ class CHeroStatsDef : public CDefClassBase { public:
     long  MoralityChangeOnPicklock;                        // +0xe8
     long  MoralityChangeOnVandalism;                       // +0xec
     CFloatVector TradeSkillForGuileLevel;                  // +0xf0
-    CAbilityTrackDefVector StatLevels;                     // +0xfc
+    std::vector<CAbilityTrackDef> StatLevels;                     // +0xfc
     CFloatVector MaxHitPointsPerHealthLevel;               // +0x108
     CLongVector MaxStaminaPointsPerMagicPowerLevel;        // +0x114
     CFloatVector SoundDistanceMultiplierPerStealthLevel;   // +0x120
@@ -91,7 +101,7 @@ void CHeroStatsDef::Transfer(CPersistContext& context)
     context.Transfer(ExpToSpendAtWhichToDisplayTutorial);
     context.Transfer(MinAge);
     context.Transfer(MaxAge);
-    context.Transfer(AppearanceModifierScaling);
+    context.TransferVectorOfSubComponents(AppearanceModifierScaling);
     context.Transfer(AmountFatnessIncreasesPerPointOfOverEating);
     context.Transfer(NumberOfMinutesBetweenFatnessReductions);
     context.Transfer(AmountFatnessDecreasesPerReduction);
@@ -116,7 +126,7 @@ void CHeroStatsDef::Transfer(CPersistContext& context)
     context.Transfer(MoralityChangeOnVandalism);
     context.Transfer(MoralityChangeOnPicklock);
     context.Transfer(TradeSkillForGuileLevel);
-    context.Transfer(StatLevels);
+    context.TransferVectorOfSubComponents(StatLevels);
     context.Transfer(MaxHitPointsPerHealthLevel);
     context.Transfer(MaxStaminaPointsPerMagicPowerLevel);
     context.Transfer(SoundDistanceMultiplierPerStealthLevel);

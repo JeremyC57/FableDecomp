@@ -1,7 +1,7 @@
 // CPersistContext::TransferVectorOfSubComponents<CShoveHaPennyRegionDef>(std::vector<CShoveHaPennyRegionDef>& value) -- binary persist of a vector of def sub-components: the element count, then each element's own virtual Transfer
 // Leaf: TransferVectorOfSubComponents
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D2740, 232 bytes, `ret 4`. Called from CTavernGameShoveHaPennyDef::Transfer (0x007D0A40) for Regions (retail +0x1A4, PDB +0x1A8).
-// Callees: CPersistContext::CheckCRC 0x00404500 (with the pooled empty key 0x0122D70E), CDataOutputStream::WriteLong
+// Callees: CPersistContext::CheckCRC 0x00404500 (with the pooled empty key 0x0122D70E), CDataOutputStream::WriteSLONG
 //   0x00993EB0 (catalogued "WriteCBYTE"), CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0,
 //   vector<CShoveHaPennyRegionDef>::resize(n) 0x007D2640, and the element's virtual Transfer(CPersistContext&) (vtable slot 18, +0x48).
 // Shape: the catalogued template argument "CEngineLocalDetailObjectDef" is a propagated label; the element size (0x30,
@@ -47,7 +47,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CShoveHaPennyRegionDef {                              // 0x30 bytes
@@ -92,7 +92,7 @@ void CPersistContext::TransferVectorOfSubComponents(vector<T>& value)
     }
     default: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

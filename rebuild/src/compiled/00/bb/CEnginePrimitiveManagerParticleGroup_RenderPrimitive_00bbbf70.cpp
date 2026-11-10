@@ -14,6 +14,7 @@
 // ternary; RenderFlags/Alpha are assigned after each `new`.
 #include "engine/C3DVector.h"
 #include <math.h>
+enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();
@@ -62,7 +63,7 @@ extern CEngineSettings_01436e38* g_pEngineSettings_01436e38;   // 0x01436E38
 
 class CEngineSubPrimitiveRenderer {
 public:
-    void AddSubPrimitive(long list, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720
+    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720 (Ego_r/FableWin ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z)
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
@@ -92,14 +93,14 @@ ERendered CEnginePrimitiveManagerParticleGroup::RenderPrimitive(CEngineInternalP
     float distance = (float)sqrt(delta.X * delta.X + delta.Y * delta.Y + delta.Z * delta.Z);
     if (group.ScreenDisplacement) {
         if (g_pEngineSettings_01436e38->DisplacementPassEnabled) {
-            g_pEngineSubPrimitiveRenderer->AddSubPrimitive(5, subPrimitive, distance, (CEnginePrimitiveManager*)this);
+            g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)5, subPrimitive, distance, (CEnginePrimitiveManager*)this);
             CEngineSubPrimitiveParticleGroup* displacement = new CEngineSubPrimitiveParticleGroup(primitive);
             displacement->RenderFlags = 0;
             displacement->Alpha = 0xff;
-            g_pEngineSubPrimitiveRenderer->AddSubPrimitive(6, displacement, distance, (CEnginePrimitiveManager*)this);
+            g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)6, displacement, distance, (CEnginePrimitiveManager*)this);
         }
     } else {
-        g_pEngineSubPrimitiveRenderer->AddSubPrimitive(group.WaterStage != 0 && !group.ZBufferWritable ? 1 : 0, subPrimitive, distance,
+        g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)(group.WaterStage != 0 && !group.ZBufferWritable ? 1 : 0), subPrimitive, distance,
                                                        (CEnginePrimitiveManager*)this);
     }
     return RENDERED_SUB_PRIMITIVES;

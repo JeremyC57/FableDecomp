@@ -1,7 +1,7 @@
 // C3DMeshFileMapChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- index, two strings, then the super-chunk base
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABFF70, length 64 bytes.
-// Callees: 0x00993EB0 WriteLong, 0x00995AE0 WriteNullTerminatedString x2, 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile
+// Callees: 0x00993EB0 WriteSLONG, 0x00995AE0 WriteNullTerminatedString x2, 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile
 //
 // ---- shared retail model for the C3DMeshFile*Chunk family (TLC Fable.exe) -----------------------
 // The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
@@ -25,7 +25,7 @@ class CMatrix3x4 { public: float m_row[3][4]; };               // 48 bytes, copi
 class CChunkedFileSaver;
 class CDataOutputStream { public:
     void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteLong(long value);                         // 0x00993EB0
+    void WriteSLONG(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
@@ -66,7 +66,7 @@ class C3DMeshFileMapChunk : public C3DMeshFileChunk { public:
 
 void C3DMeshFileMapChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteLong(MapIndex);
+    out.WriteSLONG(MapIndex);
     out.WriteNullTerminatedString(Name);
     out.WriteNullTerminatedString(Filename);
     C3DMeshFileChunk::WriteToFile(out, saver);

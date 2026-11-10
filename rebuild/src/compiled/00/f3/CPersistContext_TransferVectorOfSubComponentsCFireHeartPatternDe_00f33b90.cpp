@@ -5,7 +5,7 @@
 // Called once, from 0x00F32066, with the key "FHPatterns" (0x012FD394) and the owner's vector at +0xC2C. The manifest label
 // `CPersistContext::Transfer<signed_char>` is propagated.
 // Callees: CPersistContext::CheckCRC 0x00404500, CPersistContext::TransferVectorOfSubComponentsLoadText 0x009BC120 (takes the
-// {vtable 0x01301C40, vector*} CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef> wrapper), CDataOutputStream::WriteLong
+// {vtable 0x01301C40, vector*} CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef> wrapper), CDataOutputStream::WriteSLONG
 // 0x00993EB0, CMemoryDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0, vector<CFireHeartPatternDef>::resize(n) 0x00F33D90 (one argument,
 // out of line -- no default-constructed temporary in this TU), the element's virtual Transfer(CPersistContext&) (slot 18, +0x48).
 // Element size 0x34 (0x4EC4EC4F / sar 4 in the count division); Ego_r.pdb gives 60: retail STLport vectors are 12 bytes, not 16.
@@ -49,7 +49,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CFireHeartPatternDef {                                    // 0x34 bytes, CDefClassBase-derived sub-component def
@@ -105,7 +105,7 @@ void CPersistContext::TransferVectorOfSubComponents(const char* name, vector<T>&
     }
     case 3: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

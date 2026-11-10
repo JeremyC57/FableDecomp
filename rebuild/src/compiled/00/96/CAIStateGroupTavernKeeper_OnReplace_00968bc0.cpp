@@ -78,7 +78,7 @@ class CTCTavernGame { public:                          // interface 0x47 on the 
     long GetItemID();                           // 0x00705D00 (manifest "CTCTavernGame::GetBanter" is propagated)
 };
 class CTCCarrying { public:                            // interface 0x46 on the creature
-    CThing* FindThingByID(long id);             // 0x006A11F0
+    CThing* GetThingInCarrySlot(long slot) const;   // 0x006A11F0 (Ego_r/FableWin ?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z)
     CThing* RemoveThingInCarrySlot(long id, bool b);   // 0x006A16A0
 };
 class CTCPhysicsBase { public:
@@ -166,7 +166,7 @@ void CAIStateGroup_TavernKeeper::OnReplace()
         long id = game->GetItemID();
         CTCCarrying* carrying;
         GetCreature()->GetTC(TCI_CARRYING, &carrying);
-        CThing* jug = carrying->FindThingByID(id);
+        CThing* jug = carrying->GetThingInCarrySlot(id);
         if (jug && !jug->IsDead()) {
             carrying->RemoveThingInCarrySlot(id, false);
             CTCTavernJug* tavernJug;

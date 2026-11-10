@@ -2,7 +2,7 @@
 // Retail 0x005F4B30, 277 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: CThingCreatureBase::IsChild 0x00661F70 (on ParentThing), GetAbilityPDef(EHeroAbility) const 0x005EDFD9
 // (CDefPointer by value), vector<CDefPointer<const CHeroAbilityDef>>::push_back(const value_type&) 0x005FA3A5,
-// GetNumAbilitiesPerRow() const 0x005EDCF0 (manifest "_Dest_val<...>" is propagated), vector::operator= 0x005F9F5A,
+// GetNumAssignableSpecialMoveButtons() const 0x005EDCF0 (manifest "_Dest_val<...>" is propagated), vector::operator= 0x005F9F5A,
 // ~vector 0x005F9F14 (manifest "CActiveFile::OnReadFinished" is a byte twin).
 // Shape: one appended def per ReceivedAbilityOrder slot (the by-value def temporary is released inside its null
 // test through the ref-count base's DecRef()/GetRefCount() pair -- `dec [eax] ; cmp [eax],ebx` with the shared zero
@@ -83,7 +83,7 @@ class CTCInventoryAbilities { public:
     unsigned char _pad_0x008[0x154 - 0x008];
     CAbilityOrderVector ReceivedAbilityOrder;        // +0x154
     CAbilityDefPointer GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
-    long GetNumAbilitiesPerRow() const;                               // 0x005EDCF0
+    long GetNumAssignableSpecialMoveButtons() const;                               // 0x005EDCF0
     void GetPrioritisedAbilityDefs(CAbilityDefVector* defs);
 };
 
@@ -101,7 +101,7 @@ void CTCInventoryAbilities::GetPrioritisedAbilityDefs(CAbilityDefVector* defs)
     long j;
     for (j = 0; j <= lastReceived; ++j)
         prioritised.push_back((*defs)[j]);
-    for (unsigned long k = 0; k < prioritised.size() % GetNumAbilitiesPerRow(); ++k)
+    for (unsigned long k = 0; k < prioritised.size() % GetNumAssignableSpecialMoveButtons(); ++k)
         prioritised.push_back(CAbilityDefPointer());
     *defs = prioritised;
 }

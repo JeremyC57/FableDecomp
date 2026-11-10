@@ -20,6 +20,7 @@
 
 #include "engine/C3DVector.h"
 
+enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
 class CEnginePrimitiveOcclusionInfo {
 public:
     virtual void v000();
@@ -80,7 +81,7 @@ public:
 };
 class CEngineSubPrimitiveRenderer {
 public:
-    void AddSubPrimitive(long list, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720
+    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720 (Ego_r/FableWin ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z)
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
@@ -166,7 +167,7 @@ ERendered CEnginePrimitiveManagerRepeatedZSprites::RenderPrimitive(CEngineIntern
                         goto queue;
                 }
             }
-            g_pEngineSubPrimitiveRenderer->AddSubPrimitive(7, new CEngineSubPrimitiveOcclusionTest(primitive), distance,
+            g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)7, new CEngineSubPrimitiveOcclusionTest(primitive), distance,
                                                            (CEnginePrimitiveManager*)this);
             return RENDERED_OCCLUSION;
         }

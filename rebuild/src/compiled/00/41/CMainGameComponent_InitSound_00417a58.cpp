@@ -8,6 +8,8 @@
 #endif
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
 #define FABLE_RETAIL_CASOUNDMANAGER_BANKREGISTRATION
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#define FABLE_RETAIL_CASOUNDMANAGER_GETPSOUNDBANK_LONG
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
@@ -93,7 +95,7 @@ void CMainGameComponent::InitSound()
         NProgressDisplay::DisplayProgress("Registering Sound Bank",-1.0f,false,false);
         PSoundManager->RegisterSoundBank(entry.ID,filename,bankPath,symbolPath,entry.LipSyncBankHandle);
         if(dataExtension==L".met")
-            PSoundManager->GetBank(entry.ID)->SetSourceLugPath(NResourceDirectoryNames::GetHDSoundDir()+name+L".lug");
+            PSoundManager->GetPSoundBank(entry.ID)->SetSourceLugPath(NResourceDirectoryNames::GetHDSoundDir()+name+L".lug");
         NProfileTimer::EndProfile(100);
     }
     for(unsigned long index=0;index<main->AtmosBankEntries.size();++index) {
@@ -107,8 +109,8 @@ void CMainGameComponent::InitSound()
         PSoundManager->RegisterAtmosSoundBank(entry.ID,filename,CAFile::ConvertPathToFullPath(NResourceDirectoryNames::GetHDSoundDir()+filename));
         CWideString hdSource=NResourceDirectoryNames::GetHDSoundDir()+name+L".lug";
         CWideString dvdSource=NResourceDirectoryNames::GetDVDSoundDir()+name+L".lug";
-        PSoundManager->GetBank(entry.ID)->SetSourceLugPath(hdSource);
+        PSoundManager->GetPSoundBank(entry.ID)->SetSourceLugPath(hdSource);
         NProfileTimer::EndProfile(100);
     }
-    PSampleBank=PSoundManager->GetBank(1);
+    PSampleBank=PSoundManager->GetPSoundBank(1);
 }

@@ -125,7 +125,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CTCCarrying { public:
-    void RemoveThingInCarrySlot(long slot, bool immediately);   // 0x006A16A0
+    class CThing* RemoveThingInCarrySlot(long slot, bool immediately);   // 0x006A16A0 (Ego_r/FableWin ?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z)
 };
 class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);              // 0x0073ABA0

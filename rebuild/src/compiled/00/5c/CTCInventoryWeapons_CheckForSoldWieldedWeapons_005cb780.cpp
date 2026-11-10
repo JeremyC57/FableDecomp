@@ -4,7 +4,7 @@
 //   ("s",on). Ego_r.pdb: ?CheckForSoldWieldedWeapons@CTCInventoryWeapons@@QAEXXZ (name per the catalog).
 // Callees: IS_THING_ALIVE @ 0x005CC1B0 (`__fastcall`, const ref), CTCInventoryBase::GetAllItems(vector&) @ 0x005BF482,
 //   CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex @ 0x009AD9E0 (hidden result),
-//   CDefClassBase::GetSubDef @ 0x0042B1A6, IsMeleeWeaponClass @ 0x005DA510, SetThingAsActiveWeapon(long, CComponent*)
+//   CDefClassBase::GetSubDef @ 0x0042B1A6, IsMeleeWeaponClass @ 0x005DA510, SetThingAsActiveWeapon(long, NUISystem::CComponent*)
 //   @ 0x005CB2B0, CRT free @ 0x00BFEA14 (the STLport vector's storage).
 // Shape: a function-scope STLport vector<pair<long,long> > (12 bytes, zeroed start/finish/end) that GetAllItems fills (declared
 //   only: the vector escapes, so its words are re-read each iteration); two `for (i < size())` loops, each `break`ing after the
@@ -93,7 +93,7 @@ struct CItemVector {                            // STLport vector<pair<long,long
 #include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CThing;
-class CComponent;
+namespace NUISystem { class CComponent; }
 template <class T> bool __fastcall IS_THING_ALIVE_005cc1b0(const T& thing);   // 0x005CC1B0
 bool __fastcall IsMeleeWeaponClass(long weaponClass);       // 0x005DA510
 
@@ -111,7 +111,7 @@ class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     long          ActiveMeleeWeaponDefIndex;                // +0x13C
     bool          MeleeWeaponCarriedOnLoad;                 // +0x140
     CIntelligentPointer<CThing> PActiveRangedWeapon;        // +0x141 (packed in retail)
-    void SetThingAsActiveWeapon(long defIndex, CComponent* thing);   // 0x005CB2B0
+    void SetThingAsActiveWeapon(long defIndex, NUISystem::CComponent* component);   // 0x005CB2B0 (Ego_r/FableWin ?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z)
     void CheckForSoldWieldedWeapons();
 };
 

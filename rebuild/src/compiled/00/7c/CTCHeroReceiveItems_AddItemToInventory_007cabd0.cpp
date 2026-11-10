@@ -65,11 +65,11 @@ public:
     }
 };
 
-class CTCInventoryBase;
+namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem {                                // interface 0x1a
 public:
     long GetInventoryType() const;                      // 0x005D9030
-    bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
 };
 
 class CTCHeroReceiveItems {
@@ -84,9 +84,9 @@ void CTCHeroReceiveItems::AddItemToInventory(CThing& thing, bool flag)
     CTCInventoryItem* item;
     if (thing.GetInterface(&item, 0x1A)) {
         CThing* parent = ParentThing;
-        CTCInventoryBase* inventory;
+        NInventory::CTCInventoryBase* inventory;
         if (parent->GetCheckedInterface(&inventory, item->GetInventoryType()))
-            item->AddToInventory(inventory, false, true, 0, false, flag);
+            item->AddToInventory(*inventory, false, true, 0, false, flag);
         else
             thing.Kill(false);
     }

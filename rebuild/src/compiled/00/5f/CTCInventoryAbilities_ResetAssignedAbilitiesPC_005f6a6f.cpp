@@ -5,7 +5,7 @@
 // Callees: CTCInventoryAbilities::GetMiscThingsDef() const @ 0x005EE3B3 (CDefPointer by hidden pointer; manifest label
 //          "CCreatureAction_CastStrengthMultiStrikeProper" is propagated), vector<EHeroAbility>::erase(first, last)
 //          @ 0x005F8F89 and ::push_back(const EHeroAbility&) @ 0x005F9BCD (manifest labels generic), CTCInventoryAbilities::
-//          GetNumAbilitiesPerRow() const @ 0x005EDCF0 (landed name; twice), CycleAssignedAbilities(bool) @ 0x005F64DD
+//          GetNumAssignableSpecialMoveButtons() const @ 0x005EDCF0 (twice), CycleAssignedAbilities(bool) @ 0x005F64DD
 //          (Ego_r.pdb ?CycleAssignedAbilities@CTCInventoryAbilities@@QAEX_N@Z).
 // Shape: the misc-things def is a named local held to the end (released with a null test, `dec [ecx+4] ; jne`), returned
 // by GetMiscThingsDef, a same-TU noinline stand-in body (retail's LTCG saw it keep no reference to the hidden result
@@ -66,7 +66,7 @@ class CTCInventoryAbilities { public:
     CAbilityVector AssignedAbilitiesSave;            // +0x188 (PDB +0x1B4)
 
     CMiscThingsDefPointer GetMiscThingsDef() const;  // 0x005EE3B3
-    long GetNumAbilitiesPerRow() const;              // 0x005EDCF0
+    long GetNumAssignableSpecialMoveButtons() const;              // 0x005EDCF0
     void CycleAssignedAbilities(bool forward);       // 0x005F64DD
     void ResetAssignedAbilitiesPC();
 };
@@ -86,6 +86,6 @@ void CTCInventoryAbilities::ResetAssignedAbilitiesPC()
         AssignedAbilitiesSave[i] = AssignedAbilities[i];
         ReceivedAbilityOrder.push_back(AssignedAbilities[i]);
     }
-    CurrentAssignedAbilityLevel = Max(CurrentAssignedAbilityLevel - GetNumAbilitiesPerRow(), -GetNumAbilitiesPerRow());
+    CurrentAssignedAbilityLevel = Max(CurrentAssignedAbilityLevel - GetNumAssignableSpecialMoveButtons(), -GetNumAssignableSpecialMoveButtons());
     CycleAssignedAbilities(true);
 }

@@ -16,12 +16,14 @@ class CCharString { public:
     void* PStringData;
 };
 extern CCharString g_CameraStickHelperName;     // 0x013BAC4C
-struct CTCGraphicAppearance {
-    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position, float time);   // 0x004C0560
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& position, float time) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
 };
+}
 class CThing { public:
     unsigned char _pad00[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CGameCameraManager { public:
@@ -54,11 +56,11 @@ public:
 
 void CTCAssassinRush::SetupCameraOnStick()
 {
-    CTCGraphicAppearance* appearance = ParentThing->PGraphicAppearance;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = ParentThing->PGraphicAppearance;
     if (appearance == 0)
         return;
     C3DVector stick;
-    if (!appearance->GetHelperPoint(g_CameraStickHelperName, 0, 0, &stick, 1.0f))
+    if (!appearance->GetHelperPoint(g_CameraStickHelperName, 0, 0, stick, 1.0f))
         return;
     C3DVector heroPosition = ParentThing->GetPos();
     LocalRelativeVectorForCamera = stick - heroPosition;

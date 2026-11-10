@@ -29,7 +29,7 @@ class CTCPhysicsBase { public:
     virtual float GetAngleXY() const;           // slot 63 (+0xfc) 0x006B1230
     unsigned char _pad04[0x34 - 0x04];
     float         Radius;                       // +0x34
-    C3DVector GetPositionAtTime(float time) const;   // 0x0049D150
+    C3DVector GetPosition(float time) const;         // 0x0049D150 (Ego_r/FableWin ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z)
 };
 class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028();
@@ -46,7 +46,7 @@ class CThingPhysical : public CThing { public:
 bool CThingPhysical::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const
 {
     if (HasEditDrawInfo() && CThing::DrawGetEditDrawInfo(time, info)) {
-        info->Pos = GetPhysicsTC()->GetPositionAtTime(time);
+        info->Pos = GetPhysicsTC()->GetPosition(time);
         info->AngleXY = GetPhysicsTC()->GetAngleXY();
         info->Radius = GetPhysicsTC()->Radius;
         return true;

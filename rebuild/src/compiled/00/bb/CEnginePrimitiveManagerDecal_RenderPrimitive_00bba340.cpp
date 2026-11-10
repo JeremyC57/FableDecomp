@@ -14,6 +14,7 @@
 
 #include "engine/C3DVector.h"
 
+enum ESubPrimitiveType { };                       // the renderer's sort-list index (values unused here)
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();
@@ -50,7 +51,7 @@ public:
 };
 class CEngineSubPrimitiveRenderer {
 public:
-    void AddSubPrimitive(long list, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720
+    void AddSubPrimitive(ESubPrimitiveType type, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720 (Ego_r/FableWin ?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@PAVCEngineSubPrimitiveBase@@MPAVCEnginePrimitiveManager@@@Z)
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
@@ -76,7 +77,7 @@ ERendered CEnginePrimitiveManagerDecal::RenderPrimitive(CEngineInternalPrimitive
     float dx = g_pEngineCamera->WorldPosition.X - decal.WorldPos.X;
     float dy = g_pEngineCamera->WorldPosition.Y - decal.WorldPos.Y;
     float dz = g_pEngineCamera->WorldPosition.Z - decal.WorldPos.Z;
-    g_pEngineSubPrimitiveRenderer->AddSubPrimitive(0, subPrimitive, (float)sqrt(dx * dx + dy * dy + dz * dz),
+    g_pEngineSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)0, subPrimitive, (float)sqrt(dx * dx + dy * dy + dz * dz),
                                                    (CEnginePrimitiveManager*)this);
     return RENDERED_SUB_PRIMITIVES;
 }

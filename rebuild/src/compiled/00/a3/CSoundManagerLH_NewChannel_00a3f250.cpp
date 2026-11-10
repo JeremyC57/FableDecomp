@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3F250, 235 bytes (+ int3 padding), `ret 14h`. Vtable 0x0129D2C4 (CSoundManagerLH,
 //   rtti-vtables.tsv) slot 39. Descriptive name: the audio layer is absent from both PDBs (as the landed siblings
 //   AddBank 0x00A3F140 slot 37, FindByName 0x00A3ED30, FindByNamePair 0x00A3EE50); the catalog has no label.
-// Callees: CSoundManagerLH::FindByNamePair 0x00A3EE50, CSoundManagerLH::FindByName 0x00A3ED30, CASoundManager::GetBank
+// Callees: CSoundManagerLH::FindByNamePair 0x00A3EE50, CSoundManagerLH::FindByName 0x00A3ED30, CASoundManager::GetPSoundBank
 //   0x00991840 (on this), the bank's slot 1 (+4), pair<CCharString, CCharString>(const CCharString&, const CCharString&)
 //   0x0076DD40 (out of line), CCharString(const CCharString&) 0x0099EC30, vector<pair<pair<..>, ..> >::push_back 0x00A41840,
 //   ~CCharString 0x0099EAE0, CVectorMap<pair<CCharString, CCharString>, ..>::Sort 0x00A42100 (out of line).
@@ -62,7 +62,7 @@ public:
     void Sort();                                            // 0x00A42100 (out of line for the pair map)
 };
 
-class CASoundBank {                                         // what GetBank returns (landed 0x00991840 spelling)
+class CASoundBank {                                         // what GetPSoundBank returns (0x00991840)
 public:
     unsigned char _pad[0x10];
     long          Id;                                       // +0x10
@@ -75,7 +75,7 @@ public:
 class CASoundManager {                                  // landed 0x00991840 owner; called on this unadjusted
 public:
     virtual void v00();
-    CASoundBank* GetBank(long id);                          // 0x00991840
+    CASoundBank* GetPSoundBank(long bankID) const;          // 0x00991840 (Anniversary 360 PDB GetPSoundBank; engine/CASoundManager.h BANKLOOKUP)
 };
 
 class CSoundManagerLH : public CASoundManager {         // vtable 0x0129D2C4
@@ -94,7 +94,7 @@ bool CSoundManagerLH::NewChannel(const CCharString& bankName, const CCharString&
     CSoundBankLH* bank = FindByName(bankName);
     if (!bank)
         return false;
-    CASoundBank* info = GetBank(sample);
+    CASoundBank* info = GetPSoundBank(sample);
     if (!info)
         return false;
     long sampleId = info->Id;

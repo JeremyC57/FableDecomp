@@ -11,7 +11,7 @@
 //   bit 26 of +0x20) and the non-const copy @ 0x0040F020 (the creature's 0x04 CTCHeroStats, the item's inventory type, the new
 //   thing's 0x1a, the shopkeeper's 0x42 CTCEntityEvents), CTCInventoryItem::GetInventoryType @ 0x005D9030 / GetMaxNumberItems
 //   @ 0x005D9050 (def +0x50 / +0x40; the manifest "CCategory::GetCategoryIdentifier" labels are propagated), puts @ 0x00BFEAF2 +
-//   abort @ 0x00BFEAEC (STLport's exception-free bitset<274>::test range check, "bitset" @ 0x0122E068), CTCInventoryBase::CanAddItem
+//   abort @ 0x00BFEAEC (STLport's exception-free bitset<274>::test range check, "bitset" @ 0x0122E068), NInventory::CTCInventoryBase::IsSpaceInInventoryForItem
 //   @ 0x005BF2ED, CCharString() @ 0x0099E4B0 / (const char*, long) @ 0x0099EBF0 / operator=(const char*) @ 0x0099EFE0 / ~ @
 //   0x0099EAE0, CThing::GetMainGameComponent @ 0x004C7A70 (a static accessor called on the creature; font bank +0x1614c),
 //   CSubtitleRenderer::SetText @ 0x00492ED1 on the player GUI @ 0x013B8790 (+0x18), CTCHeroStats::AddMoney @ 0x0057B327,
@@ -150,13 +150,15 @@ class CPlayerGui { public:
 class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);       // 0x0057B327
 };
-struct CTCInventoryBase {
-    bool CanAddItem(long defIndex) const;               // 0x005BF2ED
+namespace NInventory {
+class CTCInventoryBase { public:
+    bool IsSpaceInInventoryForItem(long defIndex) const;   // 0x005BF2ED (Ego_r/FableWin; landed 0x00849700 binds it)
 };
+}
 class CTCInventoryItem { public:
     long GetInventoryType() const;                      // 0x005D9030
     long GetMaxNumberItems() const;                     // 0x005D9050
-    bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
 };
 class CTCShop { public:
     unsigned char           _pad00[0x10];
@@ -210,9 +212,9 @@ void CCreatureAction_BuyThingFromShop::PerformAction()
             CTCInventoryItem* inventoryItem;
             static_cast<const CThing*>(((CThing*)PTarget.GetPItem()))->GetInterface(&inventoryItem, 0x1a);
             CThing* creature = ((CThing*)PCreature.GetPItem());
-            CTCInventoryBase* inventory;
+            NInventory::CTCInventoryBase* inventory;
             if (creature->GetCheckedInterface(&inventory, inventoryItem->GetInventoryType())) {
-                if (!inventory->CanAddItem(((CThing*)PTarget.GetPItem())->DefIndex)) {
+                if (!inventory->IsSpaceInInventoryForItem(((CThing*)PTarget.GetPItem())->DefIndex)) {
                     CCharString message;
                     if (inventoryItem->GetMaxNumberItems() == 1)
                         message = "You already have this item!";
@@ -226,7 +228,7 @@ void CCreatureAction_BuyThingFromShop::PerformAction()
                 CThing* item = CreateThingAt(((CThing*)PTarget.GetPItem()), ((CThing*)PCreature.GetPItem()), ((CThing*)PCreature.GetPItem()), "");
                 CTCInventoryItem* newItem;
                 item->GetInterface(&newItem, 0x1a);
-                newItem->AddToInventory(inventory, false, true, stockItem->Price, false, false);
+                newItem->AddToInventory(*inventory, false, true, stockItem->Price, false, false);
                 CThing* shopKeeper = stockItem->GetShopTC()->GetShopKeeper();
                 CTCEntityEvents* events;
                 if (shopKeeper && shopKeeper->GetInterface(&events, 0x42))

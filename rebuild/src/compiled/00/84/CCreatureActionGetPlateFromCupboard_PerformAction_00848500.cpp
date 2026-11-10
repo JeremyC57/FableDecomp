@@ -8,7 +8,7 @@
 //   const CCharString&) 0x00703210 (__fastcall; landed CAIStateGroupBase::CreateItem form), ~CCharString 0x0099EAE0,
 //   CDefClassBase::GetSubDef<CCarryableDef> 0x005CC10E, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface: type
 //   0x46 = bit 6 of the word at +0x28, CTCCarrying; type 0x31 = bit 17 of the word at +0x24, CTCCreatureModeManager),
-//   CTCCarrying::PutThingInCarrySlot(CThingObject*, long, bool) 0x006A1F80, CTCCreatureModeManager::AddMode 0x0073AE10.
+//   CTCCarrying::PutThingInCarrySlot(CThing&, long, bool) 0x006A1F80, CTCCreatureModeManager::AddMode 0x0073AE10.
 // Layout: retail CCreatureActionBase is 0xa8 bytes; this class's cupboard thing pointer at +0xa8 and plate def index at
 //   +0xac; CThing +0x70 the def, +0x90 the player byte (signed); CCarryableDef +0x28 the carry slot.
 // Shape: the empty name is an implicit conversion built before any other argument; the player id is an inline
@@ -131,7 +131,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                 // 0x0073AE10
@@ -160,7 +160,7 @@ void CCreatureAction_GetPlateFromCupboard::PerformAction()
     CTCCarrying* carrying;
     PCreature.GetPItem()->GetInterface(&carrying, 0x46);
     long slot = carryDef->CarrySlot;
-    carrying->PutThingInCarrySlot(plate, slot, true);
+    carrying->PutThingInCarrySlot(*plate, slot, true);
     CTCCreatureModeManager* modes;
     PCreature.GetPItem()->GetInterface(&modes, 0x31);
     modes->AddMode(5);

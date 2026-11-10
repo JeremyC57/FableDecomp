@@ -6,32 +6,31 @@
 // first word of the first channel (`mov eax,[esi+48h] ; mov ecx,[eax]`): channels is a CArray of CEnvironmentThemePriorityStack whose only
 // member is the CArray Ents. Offsets: ForcedEnvironmentTheme +0x3e, DefinitionManager +4, PriorityStackChannels +0x48 as in
 // engine/CEnvironment.h; the theme set sits at +0x1954 in retail (the Ego PDB's +0x1a7c shifted by the 12-byte CArrays), modelled locally.
-struct CDefinitionManager_006b37a0 {
-    long GetDefClassIndexFromGlobalIndex(long globalIndex);   // 0x009ACCA0
-};
+// Names (agentNF3, 2026-11-10): the address-suffixed local helper classes are gone; the callees bind the PDB spellings
+//   ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z and NEnvironmentInternal::CEnvironmentThemePriorityStackEntry members
+//   (Ego_r.pdb / FableWin.pdb); the theme records are the retail 12-byte NEnvironmentInternal::CEnvironmentThemeSetDay.
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX   // ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z 0x009ACCA0 (hdr overlay)
+#include "engine/CDefinitionManager.h"
+#include "engine/CEnvironmentThemePriorityStackEntry.h"   // NEnvironmentInternal::CEnvironmentThemePriorityStackEntry (48 bytes) + CEnvironmentThemeSetDay
 
-struct CEnvironmentThemePriorityStackEntry_006b37a0 {
-    void StartThemeTransition(long theme, float duration);     // 0x008861D0
+namespace NEnvironmentInternal {
+class CEnvironmentThemePriorityStack { public:   // retail 12 bytes: its only member, the CArray<CEnvironmentThemePriorityStackEntry> of entries (begin, end, capacity)
+    CEnvironmentThemePriorityStackEntry* m_pBegin;
+    CEnvironmentThemePriorityStackEntry* m_pEnd;
+    CEnvironmentThemePriorityStackEntry* m_pCapacity;
 };
-
-struct CEnvironmentThemePriorityStack_006b37a0 {  // CArray<CEnvironmentThemePriorityStackEntry> Ents: begin, end, capacity
-    CEnvironmentThemePriorityStackEntry_006b37a0* m_pBegin;
-    CEnvironmentThemePriorityStackEntry_006b37a0* m_pEnd;
-    CEnvironmentThemePriorityStackEntry_006b37a0* m_pCapacity;
-};
-
-struct SThemeRecord_006b37a0 { long m_a, m_b, m_c; };   // 12 bytes
+}
 
 class CEnvironment { public:
     void*                         __vftable;
-    CDefinitionManager_006b37a0*  DefinitionManager;       // +0x04
+    CDefinitionManager*  DefinitionManager;       // +0x04
     unsigned char                 _pad0[0x3e - 0x8];
     bool                          ForcedEnvironmentTheme;  // +0x3e
     unsigned char                 _pad1[0x48 - 0x3f];
-    CEnvironmentThemePriorityStack_006b37a0* PriorityStackChannels;   // +0x48 CArray begin
+    NEnvironmentInternal::CEnvironmentThemePriorityStack* PriorityStackChannels;   // +0x48 CArray begin
     unsigned char                 _pad2[0x1954 - 0x4c];
-    SThemeRecord_006b37a0*        m_pThemesBegin;          // +0x1954
-    SThemeRecord_006b37a0*        m_pThemesEnd;            // +0x1958
+    const NEnvironmentInternal::CEnvironmentThemeSetDay*        m_pThemesBegin;          // +0x1954
+    const NEnvironmentInternal::CEnvironmentThemeSetDay*        m_pThemesEnd;            // +0x1958
     void TransitionToTheme(long globalThemeIndex, float duration);
 };
 

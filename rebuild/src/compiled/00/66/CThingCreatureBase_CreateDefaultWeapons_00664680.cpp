@@ -10,7 +10,7 @@
 //   @ 0x004C7880, the const CVectorMap LowerBound copy @ 0x004365B0 (the object's lookup) and the non-const @ 0x0040F020
 //   (the creature's), the carryable's slot query @ 0x00705D00 (manifest "CTCTavernGame::GetBanter" is propagated; a
 //   `long ... const` getter of CTCCarryable, GetCarrySlotPassive by the PDB name list -- unproven),
-//   CTCCarrying::PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80.
+//   CTCCarrying::PutThingInCarrySlot(CThing&, long, bool) @ 0x006A1F80.
 // Layout (retail): CThing bitset +0x20 (0x46 CTCCarrying = bit 6 of +0x28, 0x47 CTCCarryable = bit 7), map +0x44,
 //   PlayerNumber +0x90, Dead / CreatedByOwnerThingCreation bits 0/1 of +0x91, LevelPersistent bit 4 of +0x92 (PDB +0xa0..
 //   +0xa2, CThing is 0x10 lower); CThingCreatureBase::PDef +0xe0 (PDB +0xfc); CThingCreatureDef InitialWeaponDef +0xd4,
@@ -74,7 +74,7 @@ class CTCCarryable { public:
     long GetCarrySlotPassive() const;                   // 0x00705D00
 };
 class CTCCarrying { public:
-    void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 
 void __fastcall CreateWeaponForThingFromDef(CThing* thing, long def);   // 0x00663990
@@ -128,7 +128,7 @@ void CThingCreatureBase::CreateDefaultWeapons()
                 const CThing* constItem = item;
                 long slot = ((const CTCCarryable*)constItem->GetTC(0x47))->GetCarrySlotPassive();
                 if (slot > 0 && HasTC(0x46))
-                    ((CTCCarrying*)GetTC(0x46))->PutThingInCarrySlot(item, slot, false);
+                    ((CTCCarrying*)GetTC(0x46))->PutThingInCarrySlot(*item, slot, false);
             }
         }
     }

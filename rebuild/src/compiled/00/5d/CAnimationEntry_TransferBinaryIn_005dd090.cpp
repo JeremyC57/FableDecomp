@@ -8,15 +8,13 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class CDataInputStream { public: };
-class CMemoryDataInputStream : public CDataInputStream { public:
+class CDataInputStream { public:                // the stream base: its inline Read reaches the private overflow reader
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;
     const unsigned char* m_pData;
     long SourceChunkStreamPos;
     long m_remaining;
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
@@ -32,6 +30,10 @@ class CMemoryDataInputStream : public CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (Ego_r/FableWin ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
+class CMemoryDataInputStream : public CDataInputStream { public:
 };
 template <class T> FABLE_FORCEINLINE void PersistTransferBinaryIn(CMemoryDataInputStream* stream, T* out)
 {

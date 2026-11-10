@@ -96,7 +96,7 @@ template <class T> class CDefPointer { public:
 
 namespace NInventory { class CTCInventoryBase; }
 class CTCInventoryItem { public:                                   // interface type 0x1A
-    bool AddToInventory(NInventory::CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 };
 namespace NUISystem {
 class CObserver;
@@ -143,7 +143,7 @@ void CTCInventoryAbilities::OpenInventory()
                 CTCInventoryItem* inventoryItem;
                 if (item->HasTC(0x1a))
                     inventoryItem = item->FindTC<CTCInventoryItem>(0x1a);
-                inventoryItem->AddToInventory(this, false, true, 0, true, false);
+                inventoryItem->AddToInventory(*this, false, true, 0, true, false);
             }
         }
     }

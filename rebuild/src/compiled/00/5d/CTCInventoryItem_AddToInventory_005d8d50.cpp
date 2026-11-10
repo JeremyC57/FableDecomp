@@ -1,4 +1,9 @@
-// CTCInventoryItem::AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool levelPersistent) -- sends the owner an OnPickup message, asks the inventory to take the owner thing; on success remembers the inventory and sets the owner's level-persistence (persisted + death-persistent, or not persisted); the owner thing is then killed (it lives on inside the inventory); returns whether it was taken
+// CTCInventoryItem::AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool levelPersistent) -- sends the owner an OnPickup message, asks the inventory to take the owner thing; on success remembers the inventory and sets the owner's level-persistence (persisted + death-persistent, or not persisted); the owner thing is then killed (it lives on inside the inventory); returns whether it was taken
+// Leaf: ?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z
+// Identity (proven): Ego_r.pdb and FableWin.pdb spell ?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z (the
+//   inventory by reference); engine/CTCInventoryItem.h ADDTOINVENTORY declares it and landed 0x00663990 binds 0x005D8D50 under it.
+// ROW DEBT: the CThing / CTCInventoryItem / CTCInventoryBase models below are local (CThing.h declares no SendMessage, and slot 80 of
+//   engine/NInventory_CTCInventoryBase.h's CThing& overload is protected); move onto the shared headers when those opt-ins exist.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005D8D50, length 208 bytes (+ int3 padding); speed TU (no frame pointer, `mov dword ptr [..],imm` stores).
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 and ~CBaseClass @ 0x0099A2E0 around the NTCMessages::CMessageOnPickup temporary (vtable
 // 0x012554E0; its implicit destructor stores no vtable), CThing::SendMessage(CMessageBase*) @ 0x004C7820, CTCInventoryBase virtual slot 80
@@ -34,7 +39,8 @@ class CThing { public:
     void SetAsGameStatePersisted(bool persisted);      // 0x004C7880
     void Kill(bool flag);                              // 0x004C9B80
 };
-struct CTCInventoryBase {
+namespace NInventory {
+class CTCInventoryBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -53,15 +59,16 @@ struct CTCInventoryBase {
     virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); virtual void v79();
     virtual bool AddItemToInventory(CThing* thing, bool a, bool b, long c, bool d);   // slot 80 (+0x140)
 };
+}
 class CTCInventoryItem { public:                              // CTCBase-derived (engine/CTCInventoryItem.h offsets)
     void*             __vftable;                       // +0x00
     CThing*           ParentThing;                     // +0x04
     long              field8;                          // +0x08
     void*             PDef_Object;                     // +0x0c
-    CTCInventoryBase* PInventory;                      // +0x10
-    bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool levelPersistent);
+    NInventory::CTCInventoryBase* PInventory;                      // +0x10
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool levelPersistent);
 };
-bool CTCInventoryItem::AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool levelPersistent)
+bool CTCInventoryItem::AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool levelPersistent)
 {
     {
         NTCMessages::CMessageOnPickup message;
@@ -69,8 +76,8 @@ bool CTCInventoryItem::AddToInventory(CTCInventoryBase* inventory, bool a, bool 
     }
     bool added = false;
     CThing* thing = ParentThing;
-    if (inventory->AddItemToInventory(thing, a, b, c, d)) {
-        PInventory = inventory;
+    if (inventory.AddItemToInventory(thing, a, b, c, d)) {
+        PInventory = &inventory;
         added = true;
         if (levelPersistent) {
             ParentThing->LevelPersistent = 1;

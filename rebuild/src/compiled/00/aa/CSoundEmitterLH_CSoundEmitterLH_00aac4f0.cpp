@@ -1,4 +1,4 @@
-// CSoundEmitterLH::~CSoundEmitterLH() -- the user destructor: reset the class vtable, stop every active sound (Shutdown), destroy the active-sound list (out-of-line clear, then the sentinel node freed), then ~CBaseClass
+// CSoundEmitterLH::~CSoundEmitterLH() -- the user destructor: reset the class vtable, stop every active sound (StopAllSamples), destroy the active-sound list (out-of-line clear, then the sentinel node freed), then ~CBaseClass
 // Leaf: ??1CSoundEmitterLH@@UAE@XZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAC4F0, 49 bytes, thiscall, tail `jmp ~CBaseClass`.
@@ -7,11 +7,11 @@
 //   clears this+0x14. CSoundEmitterLH is a TLC class absent from both PDBs: the class name is RTTI's, the destructor
 //   spelling follows from the virtual ~CBaseClass. No callers (the ??_G has its own copy). The catalog label
 //   "CTCInventoryItem::OnDie" is propagated.
-// Callees: CSoundEmitterLH::Shutdown 0x00AAC2E0 (vtable slot 10, called directly as every virtual is inside a destructor;
+// Callees: CSoundEmitterLH::StopAllSamples 0x00AAC2E0 (vtable slot 10, called directly as every virtual is inside a destructor;
 //   descriptive name -- no PDB -- kept in the spelling the landed ??_G 0x00AACEA0 binds), std::_List_base<CCountedPointer<
 //   CSoundEmitterLH::CActiveSound> >::clear 0x00AACC60 (landed leaf), free 0x00BFEA14 (the node allocator's deallocate),
 //   CBaseClass::~CBaseClass 0x0099A2E0.
-// Shape: `virtual ~CSoundEmitterLH() { Shutdown(); }` out of line; ActiveSounds is the real STLport 4.6 list: `~list() {}`
+// Shape: `virtual ~CSoundEmitterLH() { StopAllSamples(); }` out of line; ActiveSounds is the real STLport 4.6 list: `~list() {}`
 //   inline, ~_List_base inline (clear() out of line, then the null-tested sentinel free through edi); CASoundEmitter
 //   declares no destructor (no 0x0129E684 store), so the tail is ~CBaseClass.
 // Layout: the landed ctors 0x00AAC530 / 0x00AAC580: manager +0x04, position +0x08, ActiveSounds +0x14 (4-byte STLport
@@ -66,7 +66,7 @@ public:
     class CActiveSound;                                    // vtable 0x0129E67C
     CSoundEmitterLH(CSoundManagerLH* manager);             // 0x00AAC530
     virtual ~CSoundEmitterLH();
-    void Shutdown();                                       // 0x00AAC2E0 (vtable slot 10; descriptive)
+    virtual void StopAllSamples();                         // 0x00AAC2E0 (vtable slot 10; Anniversary 360 PDB CSoundEmitterLH::StopAllSamples)
     CSoundManagerLH*                        m_pManager;    // +0x04
     C3DVector                               m_position;    // +0x08
     std::list<CCountedPointer<CActiveSound> > m_sounds;    // +0x14
@@ -78,5 +78,5 @@ public:
 
 CSoundEmitterLH::~CSoundEmitterLH()
 {
-    Shutdown();
+    StopAllSamples();
 }

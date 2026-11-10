@@ -1,9 +1,12 @@
-// CThing::DrawIsDrawable() -- a thing is drawable when its Drawable flag is set and it is activated and not dead
+// CThing::DrawIsDrawable() const -- a thing is drawable when its Drawable flag is set and it is activated and not dead
+// Leaf: ?DrawIsDrawable@CThing@@UBE_NXZ
+// Name (agentNF3, 2026-11-10): Ego_r.pdb (0x004C9350) / FableWin.pdb ?DrawIsDrawable@CThing@@UBE_NXZ -- a public const virtual (CThing
+//   slot 27; engine/CThing.h FABLE_RETAIL_CTHING_DRAWABLE). Was declared non-virtual and non-const here (QAE).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7790, 32 bytes. CThing vtable 0x01239ABC slot 27. No callees.
 // Shape: Drawable is bit 1 of +0x92, Activated bit 3 and Dead bit 0 of +0x91 (retail offsets, PDB +0x10 higher);
 // `return a && b && !c;` materialises the bool through the full register (`mov eax,1` / `xor eax,eax`).
 class CThing { public:
-    void*         __vftable;                         // +0x00
+    virtual bool DrawIsDrawable() const;             // slot 27 (+0x6C); the vptr at +0x00
     unsigned char _pad04[0x91 - 0x04];
     unsigned char Dead : 1;                          // +0x91 bit 0 (PDB +0xa1)
     unsigned char CreatedByOwnerThingCreation : 1;   // bit 1
@@ -15,10 +18,9 @@ class CThing { public:
     unsigned char CreatedBySerialisation : 1;        // bit 7
     unsigned char DeletedOnOwnerLevelOutOfScope : 1; // +0x92 bit 0
     unsigned char Drawable : 1;                      // bit 1
-    bool DrawIsDrawable();
 };
 
-bool CThing::DrawIsDrawable()
+bool CThing::DrawIsDrawable() const
 {
     return Drawable && Activated && !Dead;
 }

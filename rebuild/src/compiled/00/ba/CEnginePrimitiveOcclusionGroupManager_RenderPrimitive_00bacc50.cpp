@@ -37,14 +37,16 @@ struct CEnginePrimitiveRendererSharedData {unsigned char InterpolationAndLoadSta
 extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData; //01436e78
 struct CBaseClassNonCopyable {protected: virtual ~CBaseClassNonCopyable(); public:protected:CBaseClassNonCopyable();}; //0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
 struct CEngineSubPrimitiveBoundingBox;
-struct __declspec(novtable) CSubPrimitiveBase:CBaseClassNonCopyable {
- unsigned long RenderFlags;unsigned char Alpha;CEngineInternalPrimitiveBase* Parent;CSubPrimitiveBase* NextSubPrimitive;CEnginePrimitiveOcclusionGroupManager* Manager;
- CSubPrimitiveBase(CEngineInternalPrimitiveBase& p):Parent(&p),NextSubPrimitive(0){}
+class __declspec(novtable) CEngineSubPrimitiveBase:public CBaseClassNonCopyable { public:
+ unsigned long RenderFlags;unsigned char Alpha;CEngineInternalPrimitiveBase* Parent;CEngineSubPrimitiveBase* NextSubPrimitive;CEnginePrimitiveOcclusionGroupManager* Manager;
+ CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase& p):Parent(&p),NextSubPrimitive(0){}
  static void* __fastcall operator new(size_t); //00beb540
 };
-struct CEngineSubPrimitiveBoundingBox:CSubPrimitiveBase {CEngineSubPrimitiveBoundingBox(CEngineInternalPrimitiveBase& p):CSubPrimitiveBase(p){}virtual ~CEngineSubPrimitiveBoundingBox();};
-struct COcclusionSubRenderer {void AddSorted(unsigned long,CSubPrimitiveBase*,float,CEnginePrimitiveOcclusionGroupManager*);}; //00b84720
-extern COcclusionSubRenderer* g_pSubPrimitiveRenderer; //01436e74
+struct CEngineSubPrimitiveBoundingBox:CEngineSubPrimitiveBase {CEngineSubPrimitiveBoundingBox(CEngineInternalPrimitiveBase& p):CEngineSubPrimitiveBase(p){}virtual ~CEngineSubPrimitiveBoundingBox();};
+enum ESubPrimitiveType {};
+class CEnginePrimitiveManager;
+class CEngineSubPrimitiveRenderer { public: void AddSubPrimitive(ESubPrimitiveType,CEngineSubPrimitiveBase*,float,CEnginePrimitiveManager*); }; //00b84720 (Ego_r/FableWin spelling)
+extern CEngineSubPrimitiveRenderer* g_pSubPrimitiveRenderer; //01436e74
 class CEngineSubPrimitiveChain;
 enum ERendered {NOTHING=0,RENDERED=2};enum ELayer {DEFAULT_LAYER=0};
 struct CEnginePrimitiveOcclusionGroupManager_Methods:CEnginePrimitiveOcclusionGroupManager {ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,ELayer,CEngineSubPrimitiveChain&);};
@@ -60,6 +62,6 @@ ERendered CEnginePrimitiveOcclusionGroupManager_Methods::RenderPrimitive(CEngine
  }
  ++group.FramesRendered;
  CEngineSubPrimitiveBoundingBox* sub=new CEngineSubPrimitiveBoundingBox(primitive);
- g_pSubPrimitiveRenderer->AddSorted(7,sub,0,this);
+ g_pSubPrimitiveRenderer->AddSubPrimitive((ESubPrimitiveType)7,sub,0,(CEnginePrimitiveManager*)this);
  return RENDERED;
 }

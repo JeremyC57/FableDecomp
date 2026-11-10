@@ -2,7 +2,7 @@
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096B600, length 355 bytes (plain `ret`, virtual).
-// Callees: IsThingCarryingWeapon(const CThing*) @ 0x006A1540 (__fastcall), CThingCreatureBase::UnsheatheMeleeWeapon
+// Callees: CTCCarrying::IsThingCarryingWeapon(const CThing&) @ 0x006A1540 (static __fastcall), CThingCreatureBase::UnsheatheMeleeWeapon
 //          @ 0x006649C0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 173 = bit 13 of +0x34 = CTCBoss, 54 = bit 22
 //          of +0x24 = CTCStealth), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCStealth::SetAsInDanger(CThing*, long)
 //          @ 0x00747B80, CThing::GetPosition @ 0x004C73D0, CAIStateGroup_WhisperRetreat::JumpToSafety @ 0x0096AC20 and
@@ -47,7 +47,9 @@ class CThing { public:
         return false;
     }
 };
-bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
+class CTCCarrying { public:
+    static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
+};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -114,7 +116,7 @@ struct CAIStateGroup_WhisperRetreat : CAIStateGroupBase {
 
 void CAIStateGroup_WhisperRetreat::Update()
 {
-    if (!IsThingCarryingWeapon(PBrain->PCreature))
+    if (!CTCCarrying::IsThingCarryingWeapon(*PBrain->PCreature))
         PBrain->PCreature->UnsheatheMeleeWeapon();
     CTCBoss* boss;
     PBrain->PCreature->GetInterface(&boss, 173);

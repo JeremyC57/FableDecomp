@@ -4,7 +4,7 @@
 // Callees: CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetPThingWithUID(unsigned __int64) @ 0x0051ED80 (manifest "CStopWatch::GetTicks"
 // is propagated), the inlined std::bitset<274>::test with its range check (`puts("bitset")` @ 0x00BFEAF2 then `abort` @ 0x00BFEAEC, the
 // exception-less STLport throw) over the thing's presence words at +0x20, CVectorMap::LowerBound @ 0x0040F020 on the interface map at
-// +0x44, CTCInventoryItem::AddToInventory(CTCInventoryBase*, bool, bool, long, bool, bool) @ 0x005D8D50, CTCBase::OnInitialActivate
+// +0x44, CTCInventoryItem::AddToInventory(NInventory::CTCInventoryBase&, bool, bool, long, bool, bool) @ 0x005D8D50, CTCBase::OnInitialActivate
 // @ 0x00686870 (manifest "$E2" is propagated), the def's virtual slot 1 on release.
 // Layout: engine/CTCInventoryItem.h (PDef_Object +0x0C, PInventory +0x10, InventoryUIDToAttachTo +0x18); CInventoryItemDef::InventoryType
 // at +0x50 (PDB offsets); CThing Dead is +0x91 bit 0 (PDB +0xA1).
@@ -70,7 +70,7 @@ class CThing { public:
 class CThingManager { public:
     CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
-struct CTCInventoryBase;
+namespace NInventory { class CTCInventoryBase; }
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void OnInitialActivate();              // slot 6 @ 0x00686870
@@ -82,12 +82,12 @@ protected:
 #pragma pack(push, 4)
 class CTCInventoryItem : public CTCBase { public:
     CDefPointer<CInventoryItemDef> PDef;           // +0x0c
-    CTCInventoryBase* PInventory;                  // +0x10
+    NInventory::CTCInventoryBase* PInventory;                  // +0x10
     long              call;                        // +0x14
     unsigned __int64  InventoryUIDToAttachTo;      // +0x18
     bool              DefaultItem;                 // +0x20
     CDefPointer<CInventoryItemDef> GetPDef() const { return PDef; }
-    bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool levelPersistent);   // 0x005D8D50
+    bool AddToInventory(NInventory::CTCInventoryBase& inventory, bool a, bool b, long c, bool d, bool levelPersistent);   // 0x005D8D50
     virtual void OnInitialActivate();
 };
 #pragma pack(pop)
@@ -99,9 +99,9 @@ void CTCInventoryItem::OnInitialActivate()
         owner = GetThingManager().GetPThingWithUID(InventoryUIDToAttachTo);
         if (owner && !owner->Dead) {
             inventoryType = GetPDef()->InventoryType;
-            CTCInventoryBase* inventory;
+            NInventory::CTCInventoryBase* inventory;
             if (owner->GetInterface(&inventory, inventoryType))
-                AddToInventory(inventory, false, true, 0, true, false);
+                AddToInventory(*inventory, false, true, 0, true, false);
         }
     }
     CTCBase::OnInitialActivate();

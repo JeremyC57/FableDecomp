@@ -8,7 +8,7 @@
 // CTCCarriedObject = type 0x47, bit 7 of +0x28: `test cl,cl ; jns`), CTCCarrying::RemoveThingFromPrimarySlot(bool) @ 0x006A1E00,
 // CTCCarryable::GetPCarriedByThing @ 0x00705170 (manifest "CGuiControlListBox::GetCurrentSelectedEntryData" is propagated),
 // CTCCarrying::RemoveThing(CThing*) @ 0x006A19B0, CTCCarriedObject::GetCarrySlot() @ 0x00705CC0 (manifest "CTCTavernGame::GetBanter"
-// is propagated), CTCCarrying::PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80, CCreatureActionBase::FinishAction @ 0x00694430.
+// is propagated), CTCCarrying::PutThingInCarrySlot(CThing&, long, bool) @ 0x006A1F80, CCreatureActionBase::FinishAction @ 0x00694430.
 // Shape: IS_THING_ALIVE on the two intelligent pointers at +0xa8 and +0xb0 (null test, then bit 0 of +0x91); the first lookup is an
 // untested out-parameter GetInterface (absent arm reads the dead word), the second a `p = 0; if (HasTC) p = GetTC` preload through
 // the const map; `this` is spilled to the frame because ebp holds the carrier for the compare; the "other carrier" arm falls
@@ -23,7 +23,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCCarrying { public:
     CThing* RemoveThingFromPrimarySlot(bool drop);     // 0x006A1E00
     void RemoveThing(CThing* thing);                   // 0x006A19B0
-    void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
 class CTCCarryable { public:
     CThing const* GetPCarriedByThing() const;   // 0x00705170 (Ego_r.pdb ?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ)
@@ -80,7 +80,7 @@ void CCreatureAction_Drink::FinishAction()
                     goto done;
             }
             CThing* jug = PJug.GetPItem();
-            carrying->PutThingInCarrySlot(jug, carried->GetCarrySlot(), true);
+            carrying->PutThingInCarrySlot(*jug, carried->GetCarrySlot(), true);
         }
     }
 done:

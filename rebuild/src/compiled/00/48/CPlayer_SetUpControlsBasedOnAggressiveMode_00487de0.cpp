@@ -3,7 +3,7 @@
 // Identity: Ego_r.pdb `?SetUpControlsBasedOnAggressiveMode@CPlayer@@AAEXXZ` (callers SetAggressiveMode 0x00487EB0,
 // ToggleAggressiveMode 0x00487E90).
 // Callees: CGamePlayerInterface::SetControlScheme(long) 0x00446EF0, CBaseIntelligentPointer::GetPItem 0x00A01B50 (x4),
-// IsThingCarryingWeapon(const CThing*) 0x006A1540 (__fastcall), CCreatureAction_SheatheItemToInventory ctor
+// CTCCarrying::IsThingCarryingWeapon(const CThing&) 0x006A1540 (static __fastcall), CCreatureAction_SheatheItemToInventory ctor
 // 0x0069FFD0 / its out-of-line dtor 0x0048C950, CThingCreatureBase::SetCurrentAction 0x006644F0.
 // Layout: PlayerInterface +0x0C, DefinitionManager +0x18 (its CDefPointer<CGlobalDef> at +0xD0), ControlledCreature
 // +0x2C, AggressiveMode +0x217 (PDB +0x21F: the retail PlayerModes list at +0x210 is 4 bytes, so the engine header's
@@ -24,7 +24,9 @@ class CThingCreatureBase : public CThing { public:
 };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
 
-bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
+class CTCCarrying { public:
+    static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
+};
 
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -97,6 +99,6 @@ void CPlayer::SetUpControlsBasedOnAggressiveMode()
 {
     CDefPointer<CGlobalDef> globalDef = DefinitionManager->GlobalDef;
     PlayerInterface->SetControlScheme(AggressiveMode ? globalDef->ControlSchemePCAggressive : globalDef->ControlSchemePC);
-    if (!AggressiveMode && IsThingAlive(ControlledCreature.GetPItem()) && IsThingCarryingWeapon(ControlledCreature.GetPItem()))
+    if (!AggressiveMode && IsThingAlive(ControlledCreature.GetPItem()) && CTCCarrying::IsThingCarryingWeapon(*ControlledCreature.GetPItem()))
         ControlledCreature.GetPItem()->SetCurrentAction(CCreatureAction_SheatheItemToInventory(ControlledCreature.GetPItem(), 0, 100));
 }

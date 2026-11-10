@@ -27,16 +27,18 @@ extern CCharString g_CCharString_013bac54;              // "EYE_SET_L"
 extern CCharString g_CCharString_013bac48;              // "focus_eye_01"
 extern CCharString g_CCharString_013bac50;              // "TARGET_CURSOR_POINT"
 
-struct CTCGraphicAppearance {
-    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* pos, float scale);   // 0x004C0560
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& pos, float scale) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale);   // 0x004C08C0
 };
+}
 
 class CThing { public:
     unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
     const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCGraphicAppearance* GetGraphicAppearance() const { return PTCGraphicAppearance; }
+    NGraphicAppearance::CTCGraphicAppearance* GetGraphicAppearance() const { return PTCGraphicAppearance; }
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -58,8 +60,8 @@ C3DVector CThingCreatureBase::GetHeadPos(bool recalculate) const
     C3DVector pos;
     CRightHandedSet set;
     if (!GetGraphicAppearance()->GetDummyObject(g_CCharString_013bac54, 0, flags, &pos, &set, 1.0f)
-        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac48, 0, flags, &pos, 1.0f)
-        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac50, 0, flags, &pos, 1.0f)) {
+        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac48, 0, flags, pos, 1.0f)
+        && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac50, 0, flags, pos, 1.0f)) {
         pos = GetPos();
         pos.Z += 1.5f;
     }

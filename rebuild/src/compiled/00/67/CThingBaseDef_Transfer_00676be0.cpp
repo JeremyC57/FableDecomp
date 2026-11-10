@@ -5,7 +5,7 @@
 // Callees: CPersistContext::CheckCRC 0x00404500 (pooled empty key 0x0122D70E), CThingComponentSet::TransferBinaryIn 0x008707A0
 //   / TransferBinaryOut 0x008708F0, operator delete[] 0x00BFEB1C (the default-constructed CThingComponentSet temporary's
 //   destructor, folded to delete[] 0), Transfer<bool>(name, value, default) 0x004045C0, CPersistTraits<long>::TransferBinaryIn
-//   0x0040FE60 / CDataOutputStream::WriteLong 0x00993EB0, CPersistTraits<float>::TransferBinaryIn 0x0040EFB0 / WriteFloat
+//   0x0040FE60 / CDataOutputStream::WriteSLONG 0x00993EB0, CPersistTraits<float>::TransferBinaryIn 0x0040EFB0 / WriteFloat
 //   0x00993EE0, CDefString::TransferBinaryIn 0x0044FC00.
 // Layout: Ego_r.pdb CThingBaseDef (0x74) over the retail 0x39-byte CParentDefClassBase (all members 4 bytes below the PDB):
 //   Components +0x39 (unaligned, pack(1)), the flag bits in +0x41..+0x43, GroupDef +0x44 .. DefaultScriptData +0x6c (retail 0x70).
@@ -19,7 +19,7 @@ class CMemoryDataInputStream;
 void __cdecl operator delete[](void* block);           // 0x00BFEB1C (MSVCR71 import thunk)
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
+    void WriteSLONG(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
 
@@ -52,7 +52,7 @@ template<class T> struct CPersistTraits {              // a value with its own b
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream& stream, long& value);    // 0x0040FE60
-    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteLong(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteSLONG(value); }
 };
 template<> struct CPersistTraits<float> {
     CPersistTraits() {}
@@ -62,7 +62,7 @@ template<> struct CPersistTraits<float> {
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
-    static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteLong(value.m_index); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.m_index); }
 };
 
 class CPersistContext {

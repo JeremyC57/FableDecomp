@@ -33,9 +33,9 @@ struct CEmitterArray {                             // array whose destructor tea
 struct CSoundEmitterLH : CBaseClass {                   // vtable 0x0129E6EC
     unsigned char _pad_0x04[0x10];                 // +0x04
     CEmitterArray m_soundEmitters;                      // +0x14
-    void Shutdown();                               // 0x00AAC2E0
+    virtual void StopAllSamples();                 // 0x00AAC2E0 (Anniversary 360 PDB CSoundEmitterLH::StopAllSamples, vtable slot 10)
     CSoundEmitterLH() { }
-    FABLE_FORCEINLINE virtual ~CSoundEmitterLH() { Shutdown(); }
+    FABLE_FORCEINLINE virtual ~CSoundEmitterLH() { StopAllSamples(); }
 };
 
 CSoundEmitterLH* Create_CSoundEmitterLH()

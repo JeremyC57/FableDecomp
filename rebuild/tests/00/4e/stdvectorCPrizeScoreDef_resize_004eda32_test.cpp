@@ -1,46 +1,33 @@
-// behaviour test for 004eda32: vector<CPrizeScoreDef>::resize(n) builds ONE default CPrizeScoreDef temporary,
-// forwards to resize(n, value) and destroys the temporary afterwards (base destructor last).
-#include <cstdio>
-static int g_constructed = 0;
-static int g_destroyed = 0;
-static int g_resizeCalls = 0;
-static int g_liveDuringResize = 0;
-class CResource { public:
-    unsigned long m_refCount;
-    CResource() : m_refCount(0) { }
-    ~CResource() { ++g_destroyed; }
+// Behaviour test for 0x004EDA32 std::vector<CPrizeScoreDef>::resize(unsigned int): STLport's one-argument resize forwards to
+// resize(n, CPrizeScoreDef()) -- one default temporary is built, passed by reference, then destroyed; the vector grows with
+// default-valued copies and shrinks by erasing the tail.
+#include <stdio.h>
+#include <vector>
+static long g_ctor = 0, g_dtor = 0, g_twoArgCalls = 0;
+static bool g_valueOk = true;
+class CPrizeScoreDef {                                          // element model: the retail def is 0x30 bytes
+public:
+    long Value;
+    CPrizeScoreDef() : Value(0) { ++g_ctor; }
+    CPrizeScoreDef(const CPrizeScoreDef& other) : Value(other.Value) { }
+    virtual ~CPrizeScoreDef() { ++g_dtor; }
 };
-class CDefPointeeBase : public CResource { public: };
-class CSubDefClassBase : public CDefPointeeBase { public:
-    long m_defIndex;
-    CSubDefClassBase() : m_defIndex(0) { ++g_constructed; }
-};
-class CPrizeScoreDef : public CSubDefClassBase { public:
-    CPrizeScoreDef() { }
-};
-struct CVector {
-    unsigned int Size;
-    void resize(unsigned int n, const CPrizeScoreDef& value)
-    {
-        ++g_resizeCalls;
-        g_liveDuringResize = g_constructed - g_destroyed;
-        if (value.m_defIndex == 0) Size = n;
-    }
-    void resize(unsigned int n)
-    {
-        resize(n, CPrizeScoreDef());
-    }
+template <class _Tp> class StlportVectorModel {     // the STLport 4.6 resize pair (stl/_vector.h)
+public:
+    std::vector<_Tp> Items;
+    void resize(unsigned int n, const _Tp& x) { ++g_twoArgCalls; if (x.Value != 0) g_valueOk = false; Items.resize(n, x); }
+    void resize(unsigned int n) { resize(n, _Tp()); }
 };
 int main()
 {
-    CVector v;
-    v.Size = 0;
-    v.resize(5);
-    int ok = 1;
-    if (v.Size != 5 || g_resizeCalls != 1 || g_constructed != 1 || g_destroyed != 1 || g_liveDuringResize != 1) ok = 0;
-    v.resize(0);
-    if (v.Size != 0 || g_constructed != 2 || g_destroyed != 2) ok = 0;
-    if (!ok) { std::printf("004eda32_TEST FAIL\n"); return 1; }
-    std::printf("004eda32_TEST PASS\n");
+    StlportVectorModel<CPrizeScoreDef> v;
+    v.resize(4);
+    bool ok = v.Items.size() == 4 && g_twoArgCalls == 1 && g_valueOk;
+    long ctorAfterGrow = g_ctor;
+    v.Items[3].Value = 7;
+    v.resize(2);
+    ok = ok && v.Items.size() == 2 && g_twoArgCalls == 2 && g_ctor == ctorAfterGrow + 1 && g_valueOk;
+    if (!ok) { printf("004eda32_TEST FAIL\n"); return 1; }
+    printf("004eda32_TEST PASS\n");
     return 0;
 }

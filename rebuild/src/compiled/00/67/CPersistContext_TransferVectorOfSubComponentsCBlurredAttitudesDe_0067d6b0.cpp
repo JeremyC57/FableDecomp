@@ -1,7 +1,7 @@
 // CPersistContext::TransferVectorOfSubComponents<CBlurredAttitudesDef>(std::vector<CBlurredAttitudesDef>& value) -- binary persist of a vector of def sub-components: the element count, then each element's own virtual Transfer
 // Leaf: TransferVectorOfSubComponents
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0067D6B0, 232 bytes, `ret 4`. Called from COpinionReactionManagerDef::Transfer (0x00679740) for AttitudeBlur (retail +0x3C, PDB +0x40).
-// Callees: CPersistContext::CheckCRC 0x00404500 (with the pooled empty key 0x0122D70E), CDataOutputStream::WriteLong
+// Callees: CPersistContext::CheckCRC 0x00404500 (with the pooled empty key 0x0122D70E), CDataOutputStream::WriteSLONG
 //   0x00993EB0 (catalogued "WriteCBYTE"), CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0,
 //   vector<CBlurredAttitudesDef>::resize(n) 0x0067D610, and the element's virtual Transfer(CPersistContext&) (vtable slot 18, +0x48).
 // Shape: the catalogued template argument "CEngineLocalDetailObjectDef" is a propagated label; the element size (0x48,
@@ -47,7 +47,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
+    void WriteSLONG(long value);            // 0x00993EB0
 };
 
 class CBlurredAttitudesDef {                              // 0x48 bytes
@@ -92,7 +92,7 @@ void CPersistContext::TransferVectorOfSubComponents(vector<T>& value)
     }
     default: {
         long count = value.size();
-        PSaveStream->WriteLong(count);
+        PSaveStream->WriteSLONG(count);
         for (long i = 0; i < count; ++i)
             value[i].Transfer(*this);
         break;

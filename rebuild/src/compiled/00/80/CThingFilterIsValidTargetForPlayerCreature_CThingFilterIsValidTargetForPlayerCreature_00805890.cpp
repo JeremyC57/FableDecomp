@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00805890, length 110 bytes (`ret 8`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("EXPRESSION_STEAL" @ 0x0124F534),
 // CThingPlayerCreature::IsExpressionAvailable(const CCharString&) @ 0x006AC390, CCharString::~CCharString @ 0x0099EAE0,
-// CThingCreatureBase::IsChild @ 0x00661F70, IsThingCarryingWeapon(const CThing*) @ 0x006A1540 (__fastcall).
+// CThingCreatureBase::IsChild @ 0x00661F70, CTCCarrying::IsThingCarryingWeapon(const CThing&) @ 0x006A1540 (static __fastcall).
 // Layout: PDB CThingFilter_IsValidTargetForPlayerCreature (12 bytes): AcceptStealableStockItems +0, PlayerIsChild +1,
 // PlayerCarryingWeapon +2, PlayerCreature +4, PTargetOnlyThing +8.
 // Shape: init list in member order (three byte zeros, then the two pointers); the CCharString is a named local in its own
@@ -25,7 +25,9 @@ public:
 class CThingPlayerCreature : public CThingCreatureBase { public:
     bool IsExpressionAvailable(const CCharString& name);   // 0x006AC390
 };
-bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
+class CTCCarrying { public:
+    static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
+};
 struct CThingFilter_IsValidTargetForPlayerCreature {
     bool                  AcceptStealableStockItems;   // +0x00
     bool                  PlayerIsChild;               // +0x01
@@ -47,6 +49,6 @@ CThingFilter_IsValidTargetForPlayerCreature::CThingFilter_IsValidTargetForPlayer
     if (canSteal)
         AcceptStealableStockItems = true;
     PlayerIsChild = player->IsChild();
-    if (IsThingCarryingWeapon((CThing*)PlayerCreature))
+    if (CTCCarrying::IsThingCarryingWeapon(*(CThing*)PlayerCreature))
         PlayerCarryingWeapon = true;
 }

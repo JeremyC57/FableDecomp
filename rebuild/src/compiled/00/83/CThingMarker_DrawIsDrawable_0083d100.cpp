@@ -14,14 +14,14 @@ class CThing { public:
     virtual void v00();
     unsigned char         _pad04[0x60];
     CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
-    CDisplayEngine* GetDisplayEngine();              // 0x004C7A70
-    virtual bool DrawIsDrawable();                   // 0x004C7790 (called non-virtually)
+    CDisplayEngine* GetDisplayEngine() const;              // 0x004C7A70
+    virtual bool DrawIsDrawable() const;                   // 0x004C7790 (called non-virtually)
 };
 class CThingMarker : public CThing { public:
-    virtual bool DrawIsDrawable();
+    virtual bool DrawIsDrawable() const;
 };
 
-bool CThingMarker::DrawIsDrawable()
+bool CThingMarker::DrawIsDrawable() const
 {
     if (CThing::DrawIsDrawable())
         return GetDisplayEngine()->IsDrawingEnabled() || PTCGraphicAppearance != 0;

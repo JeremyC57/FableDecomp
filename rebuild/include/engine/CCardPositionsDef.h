@@ -16,7 +16,15 @@
 #include "stlport/fable_containers.h"
 #include "engine/C2DVector.h"
 class CPersistContext;
+#if defined(FABLE_RETAIL_CCARDPOSITIONSDEF_DTOR_NOVTABLE) && defined(_MSC_VER)
+// Per-TU opt-in (agentNF3, 2026-11-10, row 0x004F9CFC ~CCardPositionsDef): retail's out-of-line destructor stores no vtable of its own
+// (`push esi ; mov esi,ecx ; mov eax,[esi+3Ch]` ... `jmp ~CParentDefClassBase`), as the landed ~CEngineLocalDetailLayerDef 0x0047747C of
+// the same def TUs; VC7.1 omits that store under __declspec(novtable). Only the destructor's TU may use it (the constructor 0x004F9D15
+// stores vtable 0x012439DC). Layout unchanged.
+class __declspec(novtable) CCardPositionsDef : public CParentDefClassBase {
+#else
 class CCardPositionsDef : public CParentDefClassBase {
+#endif
 public:
     CCardPositionsDef();                             // 0x004F9D15 (??0CCardPositionsDef@@QAE@XZ)
     virtual ~CCardPositionsDef();                       // slot 0 0x004ebe96 (scalar deleting); ~ 0x004F9CFC (??1CCardPositionsDef@@UAE@XZ)

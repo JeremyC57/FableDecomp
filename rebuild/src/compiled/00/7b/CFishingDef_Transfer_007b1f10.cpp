@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B1F10, length 1016 bytes, virtual, `ret 4`.
 // Callees: CPersistContext::CheckCRC @ 0x00404500 (x19, the empty key "" @ 0x0122D70E), the vector<long> writer @ 0x00466A75 and
 // reader @ 0x00466AA7 (`__fastcall` (stream, vector*), labels propagated), CDataOutputStream::WriteFloat @ 0x00993EE0 (manifest
-// "WriteCBYTE" is propagated), CPersistTraits<float>::TransferBinaryIn @ 0x0040EFB0, CDataOutputStream::WriteLong @ 0x00993EB0,
+// "WriteCBYTE" is propagated), CPersistTraits<float>::TransferBinaryIn @ 0x0040EFB0, CDataOutputStream::WriteSLONG @ 0x00993EB0,
 // CPersistTraits<long>::TransferBinaryIn @ 0x0040FE60.
 // Shape: the landed CCreatureGeneratorDef::Transfer 0x0074C5F0 template -- nineteen inline CPersistContext transfers; the vector
 // transfer is the two-way form (mode 2 loads, anything else saves), the scalars the `sub eax,2 ; je ; dec eax ; jne` switch with the
@@ -13,7 +13,7 @@
 class CMemoryDataInputStream;
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
+    void WriteSLONG(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
 
@@ -29,7 +29,7 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream& stream, long& value);   // 0x0040FE60
-    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteLong(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteSLONG(value); }
 };
 template<> struct CPersistTraits<float> {
     CPersistTraits() {}

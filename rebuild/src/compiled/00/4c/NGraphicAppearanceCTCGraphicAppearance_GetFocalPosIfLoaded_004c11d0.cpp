@@ -104,13 +104,13 @@ class CTCGraphicAppearance { public:
     unsigned char  PrimitivesDrawn : 1;                 //        bit 7
     unsigned char  Alpha;                               // +0x5a
     signed char    ByPassColorFilter;                   // +0x5b
-    unsigned char GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position, float time);   // 0x004C0560
+    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& position, float time) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
     bool GetFocalPosIfLoaded(C3DVector* position, float time);
 };
 
 bool CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector* position, float time)
 {
-    return GetHelperPoint(g_FocalPointHelperName, 0, 2, position, time) ? true : false;
+    return GetHelperPoint(g_FocalPointHelperName, 0, 2, *position, time) ? true : false;
 }
 
 }

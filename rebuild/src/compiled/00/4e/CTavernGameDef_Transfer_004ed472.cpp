@@ -4,7 +4,7 @@
 // Callees: CPersistContext::Transfer(unsigned long&) 0x00431020 (57 text-entry/graphic ids),
 //   Transfer(CDefString&) 0x0045228F (CameraName and the three fonts), Transfer(long&) 0x00431102 (bets, prize),
 //   Transfer(float&) 0x00431061 (screen positions), Transfer(bool&) 0x0043314A (BestScoreHigh, DisplayErrata),
-//   TransferVectorOfSubComponents<CPrizeScoreDef>(vector//   Transfer(vector<CPrizeScoreDef>&) 0x004ED953 (the TransferVectorOfSubComponents instance emitted right) 0x004ED953 (the template instance emitted right
+//   TransferVectorOfSubComponents<CPrizeScoreDef>(std::vector<CPrizeScoreDef>&) 0x004ED953 (the template instance emitted right
 //   after this body; its loop strides 0x30-byte prize defs).  The catalog's "UpdateShadowScene" labels on
 //   0x431020/0x431061/0x431102/0x43314A/0x45228F are propagated; landed def Transfers bind them by type.
 // Shape: no base Transfer call; one `lea eax,[esi+N] ; push eax ; mov ecx,edi ; call` per member in layout
@@ -17,12 +17,15 @@
 
 class CDefString { public: long m_index; };
 class CPrizeScoreDef;
-template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };   // retail 12-byte STLport vector
+namespace std {                                            // retail 12-byte STLport 4.6 vector
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public: _Tp* _M_start; _Tp* _M_finish; _Tp* _M_end_of_storage; };
+}
 
 class CPersistContext {
 public:
     template <class T> void Transfer(T& value);          // 0x00431020
-    template <class T> void TransferVectorOfSubComponents(vector<T>& value);   // <CPrizeScoreDef> 0x004ED953
+    template <class T> void TransferVectorOfSubComponents(std::vector<T>& value);   // <CPrizeScoreDef> 0x004ED953
 };
 
 class CTavernGameDef {
@@ -113,7 +116,7 @@ public:
     float MainMoneyY;                             // +0x16c
     bool BestScoreHigh;                           // +0x170
     unsigned char _pad171[3];                     // +0x171
-    vector<CPrizeScoreDef> PrizeScores;             // +0x174
+    std::vector<CPrizeScoreDef> PrizeScores;             // +0x174
     long Prize;                                   // +0x180
     long PrizeRenown;                             // +0x184
     float MainGameScoreBoxX;                      // +0x188

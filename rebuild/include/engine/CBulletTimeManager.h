@@ -35,6 +35,12 @@ public:
     bool IsBulletTimeActive() const;                             // 0x00419680
 #endif
     bool IsTimeForFullUpdate() const;                            // 0x004C6060
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_SLOWDOWNMULTIPLIER
+    // Nested opt-in (agentNF3, 2026-11-10, row 0x004C6010 ConvertInterpolateToBulletTimeInterpolate): Ego_r.pdb / FableWin.pdb
+    // ?GetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QBEMXZ, out of line in retail at 0x004C5FA0 (the landed 0x006655A0 binds this
+    // spelling). Declaration only, no layout change.
+    float GetBulletTimeSlowdownMultiplier() const;               // 0x004C5FA0
+#endif
     void FrameUpdate();                                          // 0x004C5E90
 #ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_REMOVESLOWDOWN
     // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb
