@@ -15,6 +15,7 @@
 // pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
 // test and the def is kept in ecx for the virtual call. The manifest
 // label names one instantiation; the def type is opaque. One of 14 bodies of this shape.
+// Name fix (agentNF6 2026-11-10): CDefinitionManager::GetPDefFromInstantiationName 0x009ADA40 is ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z (Ego_r.pdb / FableWin.pdb; const, returns the class template CDefPointer<const CDefClassBase>). The row's own GetDef<T> identity (one of the 42 PDB GetDef-by-name instantiations) is still unresolved.
 #include "fable_string.h"
 
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
@@ -42,7 +43,8 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 
-struct CDefPointer {
+class CDefClassBase;
+template <class T> class CDefPointer { public:   // CDefPointer<T> (Ego_r.pdb / FableWin.pdb class template)
     CDefBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
@@ -66,13 +68,13 @@ struct CDefPointer {
 };
 
 class CDefinitionManager { public:
-    CDefPointer GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
-    bool GetDef_006d3e80(const CCharString& name, CDefPointer& out);
+    CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString& name) const;   // 0x009ADA40 (hidden result pointer)
+    bool GetDef_006d3e80(const CCharString& name, CDefPointer<const CDefClassBase>& out);
 };
 
-bool CDefinitionManager::GetDef_006d3e80(const CCharString& name, CDefPointer& out)
+bool CDefinitionManager::GetDef_006d3e80(const CCharString& name, CDefPointer<const CDefClassBase>& out)
 {
-    CDefPointer def = GetPDefFromInstantiationName(name);
+    CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
     if (def.m_p) {
         out = def;
         return true;

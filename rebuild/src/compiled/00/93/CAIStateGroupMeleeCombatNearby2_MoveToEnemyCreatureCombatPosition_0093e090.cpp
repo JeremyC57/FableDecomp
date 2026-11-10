@@ -9,6 +9,7 @@
 // Shape: the UID is read through a named creature local before the static frame call (edi:ebx), the last frame lives in
 // ebp; the inline navigation lookup has no consumer, so only its binary-search loop survives.
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h flattens the base; local model with its PEnemy (+0x14); CThing UID +0x18.
+// Name fix (agentNF6 2026-11-10): CCombatManager::GetPreferredPos 0x006EA770 is ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb): const, creature by reference.
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -89,7 +90,7 @@ class CTCCreatureNavigation { public:                  // interface 7
 };
 
 class CCombatManager { public:
-    C3DVector GetPreferredPos(CThingCreatureBase* creature);        // 0x006EA770
+    C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;        // 0x006EA770
     bool IsCreatureOnRotatingCombatRing(CThingCreatureBase* creature);  // 0x006E9700
     void OnCombatPositionUnreachable(CThingCreatureBase* creature);     // 0x006E9D10 (autoname label only; called when the move returns 3)
 };
@@ -139,7 +140,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
     bool arrived = false;
     CThingCreatureBase* creature = PBrain->PCreature;
     CWorld* world = GetPWorld();
-    C3DVector pos = world->GetPCombatManager()->GetPreferredPos(creature);
+    C3DVector pos = world->GetPCombatManager()->GetPreferredPos(*creature);
     long lastFrame = CWorld::GetFrame();
     if (IsStillRunnable(true)) {
         CTCCreatureNavigation* navigation;
@@ -153,7 +154,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
             if ((uid + CWorld::GetFrame()) % 5 == 0 || CWorld::GetFrame() - lastFrame > 6) {
                 CThingCreatureBase* self = PBrain->PCreature;
                 CWorld* w = GetPWorld();
-                pos = w->GetPCombatManager()->GetPreferredPos(self);
+                pos = w->GetPCombatManager()->GetPreferredPos(*self);
                 lastFrame = CWorld::GetFrame();
             }
             PBrain->PCreature->GetInterface(&navigation, 7);

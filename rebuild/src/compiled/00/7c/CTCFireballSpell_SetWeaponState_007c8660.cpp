@@ -8,12 +8,13 @@
 // Shape: a three-case `switch` lowered to `sub eax,0 ; je / dec eax ; je / dec eax ; jne`; every case ends in the
 // assignment, which becomes a tail jump reusing the `state` argument slot for the string's address
 // (`mov [esp+4],offset g ; add ecx,6Ch ; jmp operator=`); case 0 selects the address with a ternary.
+// Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
 class CCharString { public:
     void* m_pData;
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-extern CCharString g_RightHandAttachmentName;      // 0x013BAC30
+extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;      // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;       // 0x013BAC34
 
 class CTCFireballSpell { public:
@@ -29,13 +30,13 @@ void CTCFireballSpell::SetWeaponState(long state)
     WeaponState = state;
     switch (state) {
     case 0:
-        FireballAttachmentName = LeftHandAnim ? g_LeftHandAttachmentName : g_RightHandAttachmentName;
+        FireballAttachmentName = LeftHandAnim ? g_LeftHandAttachmentName : PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;
         break;
     case 1:
         FireballAttachmentName = g_LeftHandAttachmentName;
         break;
     case 2:
-        FireballAttachmentName = g_RightHandAttachmentName;
+        FireballAttachmentName = PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;
         break;
     }
 }

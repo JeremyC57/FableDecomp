@@ -4,8 +4,11 @@
 // Called from CTCLook::LookAtPos (0x00754003), so this is the genuine CTCLook method. Shape: two float out-locals in an
 // 8-byte frame; the YZ angle is the first local ([esp]) and its address is pushed first (second argument), the XY angle
 // sits at [esp+4]; `add esp,8` releases the frame after the callee popped its arguments, the bool result passes through al.
+// Name fix (agentNF6 2026-11-10): CTCLook::GetTurningAnglesAndCheckForTurningBody 0x007525C0 is private, floats by reference (?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z, Ego_r.pdb / FableWin.pdb).
 class CTCLook { public:
-    bool GetTurningAnglesAndCheckForTurningBody(float* angleXY, float* angleYZ);   // 0x007525C0
+private:
+    bool GetTurningAnglesAndCheckForTurningBody(float& angleXY, float& angleYZ);
+public:   // 0x007525C0
     bool IsTurningBody();
 };
 
@@ -13,5 +16,5 @@ bool CTCLook::IsTurningBody()
 {
     float angleXY;
     float angleYZ;
-    return GetTurningAnglesAndCheckForTurningBody(&angleXY, &angleYZ);
+    return GetTurningAnglesAndCheckForTurningBody(angleXY, angleYZ);
 }

@@ -11,6 +11,7 @@
 //   ReactNonstopFlag +0x77, VirtualDeed +0x80, VirtualDeedID +0x84.
 // Shape: nested ifs with the single false exit last; HasTC/GetTC inline; the stale-deed test is the deed id compare plus a 64-bit UID equality; each awareness test is
 //   an inline helper whose by-value flag parameter is homed in the dead argument slot before the creature is fetched.
+// Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -56,7 +57,8 @@ public:
 };
 
 bool __fastcall IsAwareOfThingImplementation(CThingAICreature* creature, CThing* thing, bool flag);   // 0x00864700
-bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);  // 0x008645E0
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }  // 0x008645E0
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -74,7 +76,7 @@ class CThingFilter_IsOpinionSourceWithFreshDeed { public:
     long LastVDeedID;                                   // +0x08
     unsigned __int64 LastSourceUID;                     // +0x10
     bool IsAware(CThing* source, bool flag) const { return IsAwareOfThingImplementation(PCreature.GetTypedItem(), source, flag); }
-    bool CanSee(CThing* source, bool flag) const { return CanCreatureSeeCreature((CThing*)PCreature.GetTypedItem(), source, flag); }
+    bool CanSee(CThing* source, bool flag) const { return NCreatureAI::IsAwareOfThing((const CThingAICreature*)((CThing*)PCreature.GetTypedItem()), source, flag); }
     bool operator()(CThing* source) const;
 };
 

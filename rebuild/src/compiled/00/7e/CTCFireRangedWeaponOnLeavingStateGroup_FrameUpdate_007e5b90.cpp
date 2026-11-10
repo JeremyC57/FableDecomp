@@ -17,6 +17,7 @@
 // template (miss path reads the never-written slot); the creature half is a SECOND `if (!QuitOut)` block after the
 // first (nested inside it, VC sinks the esi push below the entry); the creature's lookup goes through a const thing, so it reaches the
 // const LowerBound; the world is taken into a local before the last call so it is fetched ahead of the pushes. The lookup key and the `performed` flag share the single `push ecx` frame word.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
 #include "fable_compiler.h"
 class CTCBase;
 class CCombatActionBase;
@@ -63,7 +64,7 @@ public:
 
 class CThingCreatureBase : public CThing {
 public:
-    bool IsRegisteredCombatant();               // 0x00662410
+    bool IsInMeleeAsAttacker() const;               // 0x00662410
     bool IsPerformingAnyAction() const;               // 0x006622A0
     bool SetCurrentAction(CCombatActionBase* action);   // 0x006644F0
 };
@@ -122,9 +123,9 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
     }
     if (!QuitOut) {
         CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
-        if (creature->IsRegisteredCombatant()) {
+        if (creature->IsInMeleeAsAttacker()) {
             CCombatActionBase* action = GetWorld().GetPCombatManager()->GetNextActionForCreature(creature);
-            if (creature->IsRegisteredCombatant()) {
+            if (creature->IsInMeleeAsAttacker()) {
                 bool performed = false;
                 if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(action))
                     performed = true;

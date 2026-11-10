@@ -4,6 +4,7 @@
 // Shape: the map address in esi, the entry's value word at +4; the component-kind mask test folded onto the +0x34 word (bit 13).
 // Leaf: ?EntityGetBossPhase@CGameScriptInterface@@UBEJABVCScriptThing@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Name fix (agentNF6 2026-11-10): CTCBoss::GetBossPhase 0x007AED10 is ?GetBossPhase@CTCBoss@@QBEJXZ (Ego_r.pdb / FableWin.pdb), was GetCurrentPhase / non-const.
 #include "fable_compiler.h"
 struct CTCBase_Retail;
 struct CTCBase_Retail;
@@ -50,8 +51,8 @@ struct CThing_Retail {
 class CThingPlayerCreature : public CThing_Retail { };
 FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CTCBoss_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
-    long GetBossPhase();                           // 0x007AED10 (labelled "CWorld::DrawGetEnvironment", propagated)
+struct CTCBoss {                           // the component (no vtable modelled: the bytes before the first used member are padding)
+    long GetBossPhase() const;                           // 0x007AED10 (labelled "CWorld::DrawGetEnvironment", propagated)
     void SetNextBossPhase(long phase, long flag);  // 0x007AEDA0
     unsigned char _pad[0x21];
     bool m_allowPhaseChanges;                      // +0x21
@@ -86,7 +87,7 @@ long CGameScriptInterface::EntityGetBossPhase(const CScriptThing& thing) const
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->HasTC(0xad)) {
-            CTCBoss_Retail* tc = (CTCBoss_Retail*)GetTC(t, 0xad);
+            CTCBoss* tc = (CTCBoss*)GetTC(t, 0xad);
             return tc->GetBossPhase();
         }
     }

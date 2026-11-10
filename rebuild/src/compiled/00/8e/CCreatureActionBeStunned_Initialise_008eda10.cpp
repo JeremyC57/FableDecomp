@@ -10,6 +10,7 @@
 // Shape: `this` rides in edi (the PCreature address is formed in place, `lea ecx,[edi+8]`); the GetInterface result is IGNORED, so the
 // manager is read back from the frame slot on the not-present path and taken from the register on the found path (`jmp` joins them).
 // Retail CCreatureActionBase is 0xa8 bytes; no engine header for this class, so `this` is modelled locally.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -23,12 +24,13 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetModeType();             // slot 1
-};
-class CTCCreatureModeManager { public:             // the interface-49 component
-    CMode* GetCurrentMode();                // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)             // the interface-49 component
+    CModeBase& GetCurrentMode() const;                // 0x0073A6E0
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
@@ -50,7 +52,7 @@ void CCreatureAction_BeStunned::Initialise()
 {
     CTCCreatureModeManager* pModes;
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);   // result unchecked: the manager is assumed present
-    pModes->GetCurrentMode()->GetModeType();           // queried and dropped (a leftover of the dazed-mode test, see 0x008ED850)
+    pModes->GetCurrentMode().GetModeType();           // queried and dropped (a leftover of the dazed-mode test, see 0x008ED850)
     pModes->RemoveMode(31);
     pModes->RemoveMode(29);
     pModes->AddMode(29);

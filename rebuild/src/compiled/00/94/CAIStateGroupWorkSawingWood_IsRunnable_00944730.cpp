@@ -8,6 +8,7 @@
 //          @ 0x00A01B90, list<CIntelligentPointer<CThing>> copy @ 0x00618DA0 / destructor @ 0x004B96F0 (out of line here),
 //          CThing::GetProperties (slot 48), IsActionPointFree @ 0x007FEBF0, CThing::GetPos @ 0x004C73D0 (x2).
 // Layout / shape: the landed sibling CAIStateGroup_WorkHammerAnvil::IsRunnable 0x00944E80 (PSawHorse at +0x15 as PAnvil).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
@@ -152,12 +153,13 @@ void CThingList::clear()
     m_pHead->m_pPrev = m_pHead;
 }
 #pragma auto_inline(on)
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetModeType();                 // slot 1
-};
-class CTCCreatureModeManager { public:                 // interface 0x31
-    CMode* GetCurrentMode();                    // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                 // interface 0x31
+    CModeBase& GetCurrentMode() const;                    // 0x0073A6E0
 };
 class CTCThingOwner { public:                          // interface 0x21
     unsigned char _pad[0x0c];
@@ -209,7 +211,7 @@ bool CAIStateGroup_WorkSawingWood::IsRunnable()
     if (IsInWorkHours()) {
         CTCCreatureModeManager* modes;
         PBrain->PCreature->GetInterface(&modes, 0x31);
-        long mode = modes->GetCurrentMode()->GetModeType();
+        long mode = modes->GetCurrentMode().GetModeType();
         if (mode != 0x22 && mode != 6) {
             CThing* workplace = GetCreature()->PWorkplace.GetPItem();
             CTCThingOwner* owner;

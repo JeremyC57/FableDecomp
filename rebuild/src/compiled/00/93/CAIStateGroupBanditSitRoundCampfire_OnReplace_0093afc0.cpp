@@ -4,6 +4,7 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the inline Random() reads the range into a local after GFROR13 and before
 //   the seed store (the store may alias the range global, so source order fixes the schedule: load, compare, store, div).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -101,9 +102,10 @@ extern CCharString g_SitStandUpAnim;            // 0x013BB708
 extern unsigned long g_SitDelayBase;            // 0x013BB70C
 extern unsigned long g_SitDelayRange;           // 0x013BB710
 
-struct CCreatureMode { virtual void v00(); virtual long GetType() const; };
+
 class CTCCreatureModeManager { public:
-    CCreatureMode* GetCurrentMode();            // 0x0073A6E0
+    class CModeBase { public: virtual void v00(); virtual long GetType() const; };                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;            // 0x0073A6E0
     void RemoveMode(unsigned long type);        // 0x0073ABA0 (Ego_r.pdb: unsigned long)
 };
 struct CTCUserActionPointBase {
@@ -160,7 +162,7 @@ void CAIStateGroup_BanditSitRoundCampfire::OnReplace()
     CThingCreatureBase* creature = GetCreature();
     if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
         modes = (CTCCreatureModeManager*)((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
-    if (Sitting || modes->GetCurrentMode()->GetType() == 10) {
+    if (Sitting || modes->GetCurrentMode().GetType() == 10) {
         PeekWorld();
         unsigned long delay = Random(g_SitDelayRange);
         FrameToNextSitOnSeat = CWorld::GetFrame() + g_SitDelayBase + delay;

@@ -10,17 +10,21 @@
 //   The deleting destructor is emitted with the vtable, i.e. in a TU that constructs the class: MakeOne is that
 //   construction, nothing more.
 // Model: local -- engine/CInputProcessJumpingAndRolling.h exists but is data-only (vptr flattened into a word), which cannot carry the virtual destructor chain.
+// Name fix (agentNF6 2026-11-10): 0x0048CA60 is STLport's ??1?$_List_base@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ (STLport 4.6 list has no user dtor; its implicit dtor calls the _List_base dtor).
 class C2DVector { public: float X, Y; };
 #include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 template <class _Tp> struct less { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {    // STLport: one node-proxy word
+template <class _Tp, class _Alloc> class _List_base {    // STLport 4.6 _list.h: the node proxy and the out-of-line dtor
 public:
     void* _M_node;
+    ~_List_base();
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {    // STLport: no user dtor
+public:
     list();
-    ~list();
 };
 }
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

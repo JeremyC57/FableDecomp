@@ -1,7 +1,8 @@
 // UNGRADED two-source naming/model proposal; see naming_audit/4917B5_PREFLIGHT.md.
 // CSubtitleRenderer::FormatTextWithGameActionNames(const CWideString&, std::vector<CWideString>*) -- substitute bracketed game-action tags and optionally collect highlighted action names
 // Leaf: ?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
-// Flags: /Zc:wchar_t
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Retail: 0x004917B5, 797 bytes. PDB static __fastcall signature, GetActionNameFromEmbeddedTag neighbour 0x0049124E.
 #pragma optimize("y", off)
 #pragma optimize("s", on)

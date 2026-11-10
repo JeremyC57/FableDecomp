@@ -13,6 +13,7 @@
 // (inlined GetTC 0x4b); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CBaseIntelligentPointer() 0x00A01B10 /
 // SetPItem 0x00A01B90 / ~CBaseIntelligentPointer 0x00A01C10; vector<CIntelligentPointer<CThing>>::push_back 0x004AD520.
 // Layout: the landed CTCBurntEffect ctor 0x007CDFE0 (PDef +0x0c, CurTime +0x10, fade times +0x14..+0x1c, Effects +0x20).
+// Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
 #include "fable_compiler.h"
 #include "engine/CTCBase.h"
 
@@ -107,7 +108,7 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-extern const CCharString g_BurntHelperA;              // 0x013BAC30
+extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;              // 0x013BAC30
 extern const CCharString g_BurntHelperB;              // 0x013BAC34
 
 class CTCBurntEffect : public CTCBase { public:
@@ -155,7 +156,7 @@ void CTCBurntEffect::Reset()
         if (effectA) {
             CTCDParticleEmitter* emitter = effectA->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(*ParentThing, 10, g_BurntHelperA, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0.0f);
         }
         CThing* effectB = CTCDParticleEmitter::Create(type, *(&position), false);
         if (effectB) {

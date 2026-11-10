@@ -13,6 +13,7 @@
 // Layout: engine/C3DMeshInfo.h MeshData +0xc, LODDataSizes[4] +0x50; CMeshData LODMeshes[4] +8, MeshStats +0x18 (landed
 //   RemoveLOD 0x00A249A0); engine/C3DMeshLODInfo.h is a CResource (list +8, LastUsedFrame +0x18) with Mesh +0x1c
 //   (CCountedPointer<C3DMesh2>), FileData +0x24, UsedMeshStats +0x31 -- modelled locally for the polymorphic base.
+// Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
 #include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
@@ -37,7 +38,7 @@ class CResource { public:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
     void SetAsUnloadable();                // 0x009FBF50
-    void AddToResourceList();              // 0x009FC440
+    void RemoveFromResourceList();              // 0x009FC440
 };
 class CResourceList { public:
     long m_pad0;
@@ -129,7 +130,7 @@ CCountedPointer<const C3DMeshStats> C3DMeshInfo::GetMeshStats()
         info = MeshData->LODMeshes[FindLoadedLOD()];
     DisplayProgress("Asset Wait: Mesh Stats", false, -1.0f, false);
     info->FileData->WaitUntilFinished();
-    info->AddToResourceList();
+    info->RemoveFromResourceList();
     ++info->IVRefCount;
     info->Build();
     if (--info->IVRefCount == 0) {
@@ -137,7 +138,7 @@ CCountedPointer<const C3DMeshStats> C3DMeshInfo::GetMeshStats()
         BeginLoadingStats(true);
         info = MeshData->MeshStats;
         info->FileData->WaitUntilFinished();
-        info->AddToResourceList();
+        info->RemoveFromResourceList();
         info->Build();
     }
     info->SetAsUnloadable();

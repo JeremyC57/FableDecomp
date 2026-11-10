@@ -12,6 +12,7 @@
 // bitset +0x20, interface map +0x44.
 // Shape: optional components are `T* p = 0; if (HasTC(t)) p = GetTC<T>(t);` (the miss zero kept in a callee-saved
 // register and the call made either way); the mode-0x22 test reads the manager through the const GetTC.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 #define CPlayer CPlayerLayout
 #include "engine/CPlayer.h"
@@ -76,12 +77,13 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual unsigned long GetModeType();                // slot 1
-};
-class CTCCreatureModeManager { public:                         // interface 0x31
-    CMode* GetCurrentMode() const;                      // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                         // interface 0x31
+    CModeBase& GetCurrentMode() const;                      // 0x0073A6E0
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
@@ -129,7 +131,7 @@ void CPlayer::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
     ZTargeting = true;
     CThing* hero = GetPControlledCreature();
     if (hero->HasTC(0x31)) {
-        if (hero->GetConstTC<CTCCreatureModeManager>(0x31)->GetCurrentMode()->GetModeType() == 0x22) {
+        if (hero->GetConstTC<CTCCreatureModeManager>(0x31)->GetCurrentMode().GetModeType() == 0x22) {
             CTCCarrying* carrying = 0;
             if (hero->HasTC(0x46))
                 carrying = hero->GetTC<CTCCarrying>(0x46);
@@ -140,7 +142,7 @@ void CPlayer::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
     CTCCreatureModeManager* modes = 0;
     if (hero->HasTC(0x31))
         modes = hero->GetTC<CTCCreatureModeManager>(0x31);
-    unsigned long current = modes->GetCurrentMode()->GetModeType();
+    unsigned long current = modes->GetCurrentMode().GetModeType();
     if (current != 25)
         modes->AddMode(25);
     if (current == 12) {

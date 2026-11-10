@@ -6,6 +6,7 @@
 //   SetAsFrameUpdated 0x4C7C40; LowerBound non-const 0x40F020 (TC 4/9), const 0x4365B0 (TC 0xad).
 // Layout: retail CThing is 0x10 smaller and CThingPhysical a further 0x8 smaller than the PDB view: MaxHealth/Health/flag bits sit at
 //   +0xb0/+0xb4/+0xbc (fld [esi+0xb4], test byte [esi+0xbc]) where the PDB has +0xc8/+0xcc/+0xd4; the shared header's +0xb4 "Scale" does not fit retail.
+// Name fix (agentNF6 2026-11-10): CTCBoss::GetBossPhase 0x007AED10 is ?GetBossPhase@CTCBoss@@QBEJXZ (Ego_r.pdb / FableWin.pdb), was GetCurrentPhase / non-const.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -16,7 +17,7 @@ class CTCBoss { public:                                            // TC 0xad
     void* PPhases;                                          // +0x0c
     unsigned char _pad10[0x11];
     bool Active;                                            // +0x21
-    long GetCurrentPhase() const;                           // 0x007AED10
+    long GetBossPhase() const;                           // 0x007AED10
     float GetMinHealthForPhase(long phase) const;           // 0x007AEE40
 };
 struct CTCHeroHealthObserver {                              // TC 4
@@ -87,7 +88,7 @@ void CThingPhysical::InternalModifyHealth(float delta, bool allowDeath)
     if (HasTC(0xad)) {
         const CTCBoss* boss = (const CTCBoss*)static_cast<const CThingPhysical*>(this)->GetTC(0xad);
         if (boss->Active && boss->PPhases) {
-            float minimum = boss->GetMinHealthForPhase(boss->GetCurrentPhase());
+            float minimum = boss->GetMinHealthForPhase(boss->GetBossPhase());
             if (minimum > Health)
                 Health = minimum - 1.0f;
         }

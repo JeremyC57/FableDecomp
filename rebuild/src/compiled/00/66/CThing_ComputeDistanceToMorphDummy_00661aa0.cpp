@@ -10,6 +10,7 @@
 // Shape: the dummy name is a named local in its own `{}` block; the lookup result is kept negated in bl across its
 // destructor (`neg ; sbb ; inc` = `? false : true`); the appearance pointer is a named local read after the string ctor,
 // which loads it into ecx before the argument pushes.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include <math.h>
 #pragma intrinsic(sqrt)
 class CCharString { public:
@@ -22,9 +23,12 @@ class CRightHandedSet { public:                           // 24 bytes
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
 };
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& set, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing { public:
     unsigned char         _pad0[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;    // +0x64 (retail)
@@ -39,7 +43,7 @@ float CThing::ComputeDistanceToMorphDummy()
     {
         CCharString name("EYE_SET_L");
         CTCGraphicAppearance* appearance = PTCGraphicAppearance;
-        missing = appearance->GetDummyObject(name, 0, 0, &dummyPos, &dummySet, 1.0f) ? false : true;
+        missing = appearance->GetDummyObject(name, 0, 0, dummyPos, dummySet, 1.0f) ? false : true;
     }
     if (missing)
         return 1.0f;

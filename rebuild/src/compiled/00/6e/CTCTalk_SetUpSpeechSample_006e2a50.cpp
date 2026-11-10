@@ -17,6 +17,7 @@
 // the map re-read from the global for every call, the first-value fallback); with PSpeechBank just zeroed
 // VC folds the test and calls the default getter directly with `this` still in ecx. The sample index is
 // stored to the member and re-read for BeginLoadingEntry and the duration call (member, not local).
+// Name fix (agentNF6 2026-11-10): GFGetTime 0x009E1BC0 is ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb: global __fastcall, double, no arguments).
 class CCharStringData;
 class CCharString {
 public:
@@ -46,7 +47,7 @@ class CGameDefinitionManager { public:
     CSpeakerInfo* GetSpeakerInfo() const { return PSpeakerInfo; }
 };
 
-extern "C" double __fastcall GFGetTime();                        // 0x009E1BC0
+double __fastcall GFGetTime();                                   // 0x009E1BC0
 
 class CThing;
 

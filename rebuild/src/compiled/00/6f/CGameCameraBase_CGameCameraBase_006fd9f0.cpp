@@ -13,6 +13,7 @@
 //   block before the lists left opaque (only the lists are destroyed here).
 // Shape: a user-declared out-of-line virtual destructor: own vtable store, members in reverse declaration order, then the
 //   base's inline user destructor stores its vtable.
+// Name fix (agentNF6 2026-11-10): 0x0048CA60 is STLport's ??1?$_List_base@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ (STLport 4.6 list has no user dtor; its implicit dtor calls the _List_base dtor).
 #include "engine/C3DVector.h"
 
 namespace std {
@@ -20,11 +21,12 @@ template <class _Tp> class allocator {
 public:
     allocator() { }
 };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
+template <class _Tp, class _Alloc> class _List_base {    // STLport 4.6 _list.h
 public:
     void* _M_node;                                       // _STLP_alloc_proxy over the sentinel node pointer
-    ~list();                                             // 0x0048CA60
+    ~_List_base();                                       // 0x0048CA60 for list<C3DVector>
 };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> { };   // STLport: no user dtor
 }
 
 class CAIGameCameraBase {                                // vtable 0x0125C1F4

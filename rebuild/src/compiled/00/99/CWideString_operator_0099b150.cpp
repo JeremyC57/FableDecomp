@@ -1,6 +1,7 @@
 // 0099b150 CWideString::operator!=
-// Flags: /Zc:wchar_t
-// Leaf: ??9CWideString@@QBE_NPB_W@Z
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
+// Leaf: ??9CWideString@@QBE_NPBG@Z
 #include "fable_compiler.h"
 #include <stddef.h>
 #ifndef _MSC_VER

@@ -8,11 +8,12 @@
 // CCharString() 0x0099E4B0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0;
 // CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 / SetPItem 0x00A01B90;
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020; CTCCreatureModeManager::GetCurrentMode 0x0073A6E0
-// (manifest label "CPixelShader::CountReferences" is propagated); CModeBase::GetModeType is vtable slot 1.
+// (manifest label "CPixelShader::CountReferences" is propagated); CTCCreatureModeManager::CModeBase::GetModeType is vtable slot 1.
 // Layout (retail, as the landed one-argument overload 0x007413C0): Filter +0x68, PDrainer +0x74, DrainerMode +0x7c.
 // CThing: interface bitset +0x20 (type 0x31 = CTCCreatureModeManager, bit 17 of the second word), interface map +0x44.
 // Shape: the inline out-parameter GetInterface (the not-found arm leaves the out pointer untouched, so retail
 // reads the shared key/out frame slot); the mode type comes from a virtual call on GetCurrentMode().
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
@@ -80,7 +81,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
 
 #include "engine/C3DVector.h"
 
-struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
+struct CModeStandBase {                    // retail sizeof 0x68 (CTCCreatureModeManager::CModeBase 0x1c + the stand-mode members)
     virtual void v00();
     unsigned char _body[0x64];
     CModeStandBase(CThing* thing);         // 0x00861E00
@@ -116,13 +117,14 @@ class CThing { public:
     }
 };
 
-struct CModeBase {
+
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual unsigned long GetModeType();   // slot 1
-};
-
-class CTCCreatureModeManager { public:            // interface type 0x31
-    CModeBase* GetCurrentMode();           // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)            // interface type 0x31
+    CTCCreatureModeManager::CModeBase& GetCurrentMode() const;           // 0x0073A6E0
 };
 
 namespace NCreatureMode {
@@ -142,7 +144,7 @@ CModeDrained::CModeDrained(CThing* thing, CThing* drainer)
 {
     CTCCreatureModeManager* modes;
     drainer->GetInterface(&modes, 0x31);
-    DrainerMode = modes->GetCurrentMode()->GetModeType();
+    DrainerMode = modes->GetCurrentMode().GetModeType();
 }
 
 }

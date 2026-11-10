@@ -1,6 +1,5 @@
 // 00a0cdd0 CWStringParser::ReadNextNumber
 // Leaf: ?ReadNextNumber@CWStringParser@@AAE_NPAVCWParsedItem@@@Z
-// Flags: /Zc:wchar_t
 #define FABLE_RETAIL_CWIDESTRING
 #include "engine/CWStringParser.h"
 #include "engine/CWParsedItem.h"

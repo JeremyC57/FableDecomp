@@ -1,5 +1,6 @@
 // CPhysicsMeshData::BuildMesh() -- build the physics mesh from the loaded file data and register the resource
 // Shape: the pool for the loader call is a named local read before the size and loader locals (retail loads pool, FileData, size, then the Owner->Manager->MeshFileLoader chain in ebx); the CPhysicsMesh ctor re-reads it inside the new-expression (`pool = manager->MemoryPool`) so it lands in the dying manager register edi
+// Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
 void operator delete(void* p);                     // 0x00BFE9BC
 class CCPPointerInfo { public:                            // CCountedPointer's shared block
     long RefCount;
@@ -85,7 +86,7 @@ class CResource { public:                                 // 0x1c bytes
     void* __vftable;
     unsigned char _pad04[0x18];
     void SetResourceSize(unsigned long size);      // 0x009FBF20
-    void SetBuilt();                               // 0x009FC440 (labelled CTCActivationTrigger::OnKill)
+    void RemoveFromResourceList();                               // 0x009FC440 (labelled CTCActivationTrigger::OnKill)
 };
 struct CPhysicsMeshData : CResource {
     CCountedPointer<CBankFileAsyncData> FileData;  // +0x1c
@@ -106,7 +107,7 @@ void CPhysicsMeshData::BuildMesh()
     Mesh = new CPhysicsMesh(file.Data, pool = manager->MemoryPool);
     FileData.Reset();
     SetResourceSize(0x2c + Mesh.Sizeof() + FileData.Sizeof());
-    SetBuilt();
+    RemoveFromResourceList();
     resources.AddResource(this);
     resources.MakeFreeSpace(0);
 }

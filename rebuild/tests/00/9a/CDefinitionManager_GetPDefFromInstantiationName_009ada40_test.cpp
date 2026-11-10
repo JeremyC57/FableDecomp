@@ -16,7 +16,7 @@ int main()
     CDefinitionManager m; m.InstantiatedDefs = defs;
     CCharString good = { "x" }, bad = { "y" };
     CDefPointer p = m.GetPDefFromInstantiationName(good);
-    if (p.Object != &obj || obj.RefCount != 2 || g_loaded != 2 || (char*)&m.InstantiatedDefs - (char*)&m != 0xa4) { std::printf("009ada40_TEST FAIL\n"); return 1; }
+    if (p.Object != &obj || obj.RefCount != 2 || g_loaded != 2 || (char*)&m.InstantiatedDefs - (char*)&m != (sizeof(void*) == 4 ? 0xa4 : 0xa8)) { std::printf("009ada40_TEST FAIL\n"); return 1; }
     CDefPointer q = m.GetPDefFromInstantiationName(bad);
     if (q.Object != 0 || g_loaded != 2) { std::printf("009ada40_TEST FAIL\n"); return 1; }
     std::printf("009ada40_TEST PASS\n"); return 0;

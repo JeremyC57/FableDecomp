@@ -13,6 +13,7 @@
 //   Literals "Compiling global things" 0x01244620, "NEWMAP " 0x01244618, "\r\n" 0x012397F8, "\r\nENDMAP\r\n" 0x0124460C.
 // Layout: retail CWorldMap with 12-byte STLport containers: World +0x08, Maps (CArray<CMapInfo>, 0x48-byte entries;
 //   Used +0x24, LoadedOnPlayerProximity +0x28 per Ego_r.pdb) at +0x20; the thing manager's flag word at +0x80.
+// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
 #include "fable_compiler.h"
 #include <stdlib.h>
 class CWideString { public:
@@ -31,7 +32,7 @@ class CCharString { public:
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);  // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);  // 0x0099F600
-void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool flag, bool flag2); }   // 0x009E9F40
 
 namespace std {
 template <class _Tp> class allocator;
@@ -142,7 +143,7 @@ void CWorldMap::CompileLoadableGlobalThingsToSingleFile(const CWideString& filen
     long oldFlag = World->GetThingManager()->SavingFlag;
     World->GetThingManager()->SavingFlag = 1;
     for (long i = 1; i < Maps.size(); ++i) {
-        DisplayProgress("Compiling global things", false, (float)i / (float)(Maps.size() + 1), false);
+        NProgressDisplay::DisplayProgress("Compiling global things", (float)i / (float)(Maps.size() + 1), false, false);
         CMapInfo& map = Maps[i];
         if (map.Used && map.LoadedOnPlayerProximity) {
             CThingList things;

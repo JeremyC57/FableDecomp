@@ -20,6 +20,7 @@
 // a creature mode manager (interface 0x31 = bit 17 of the bitset word at +0x24), removes mode 7 if it is current.
 // Layout: engine/CScriptGameResourceObjectScriptedThing.h (PDB, sizeof 0x28) agrees on every offset but is a
 // flat record without bases or constructors, so the class chain is modelled locally (as in 0x00903710).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CCPPointerInfo;
 class CGameScriptInterface;
@@ -100,12 +101,13 @@ class CTCScriptedControl { public:                           // interface 0x1f c
     void SetLocked(CScriptGameResourceObjectScriptedThing& owner, EScriptAIPriority priority);   // 0x00712C20
 };
 
-struct CCreatureMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual unsigned long GetModeType();              // slot 1
-};
-class CTCCreatureModeManager { public:                       // interface 0x31 component
-    CCreatureMode* GetCurrentMode();                  // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                       // interface 0x31 component
+    CModeBase& GetCurrentMode() const;                  // 0x0073A6E0
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
 };
 
@@ -125,7 +127,7 @@ CScriptGameResourceObjectScriptedThing::CScriptGameResourceObjectScriptedThing(C
     PThing.GetPItem()->GetTC<CTCScriptedControl>(0x1f)->SetLocked(*this, priority);
     CTCCreatureModeManager* modes;
     if (PThing.GetPItem()->GetInterface(&modes, 0x31)) {
-        if (modes->GetCurrentMode()->GetModeType() == 7)
+        if (modes->GetCurrentMode().GetModeType() == 7)
             modes->RemoveMode(7);
     }
 }

@@ -11,6 +11,7 @@
 // a frame temporary and pushes its word. The 4 and "else" arms share OTHERS, which VC7.1 cross-jumps.
 // The console twin @ 0x0059B79A is byte-identical apart from the UI_TRADING_MENU_* literals; the catalog label (no PC
 // suffix) is propagated -- this copy reads the PC_TRADING_MENU_* names, so it is GetMenuBranchFromDefIndexPC.
+// Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
 class CCharString { public:
     void* PImp;
@@ -25,7 +26,7 @@ public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
-long __fastcall GetInventoryCategory(long defIndex);          // 0x005D97B0
+class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long defIndex); };          // 0x005D97B0
 long __fastcall GetInventoryTabState(long defIndex);          // 0x005D96F0
 
 // CTCInventoryTrade: no member is read; a method-only model (the engine header is not needed here).
@@ -57,7 +58,7 @@ CMenuBranch* CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, CMenu
     { CCharString name("INVENTORY_CATEGORY_POTIONS", -1); CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name); }
 
     CMenuBranch* branch;
-    long category = GetInventoryCategory(defIndex);
+    long category = CTCInventoryItem::GetInventoryCategory(defIndex);
     if (category == melee) {
         branch = menu->GetBranch(CCharString("PC_TRADING_MENU_MELEE_ENTRY", -1));
         *type = 1;

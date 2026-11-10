@@ -10,6 +10,7 @@
 //        return re-calls GetPosition (no CSE across a virtual call); the shared `fld 0.0f` exit.
 // Layout: retail CDraggableInto 0x15C (PDB minus 0x30): the height word at +0xD0 and the pointer at +0x148 are named
 //         descriptively (engine/CText.h pads them).
+// Name fix (agentNF6 2026-11-10): NUISystem::CManager::GetUIScale 0x0041CF47 is const (?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, Ego_r.pdb / FableWin.pdb; engine/NUISystem_CManager.h).
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -18,7 +19,7 @@ class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 extern const float g_zero;                                 // 0x0122DEDC
 namespace NUISystem {
 class CManager { public:
-    C2DVector GetUIScale();                                // 0x0041CF47
+    C2DVector GetUIScale() const;                                // 0x0041CF47
     static CManager* __fastcall GetInstance();                 // 0x0041E5F2
 };
 }

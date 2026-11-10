@@ -30,6 +30,7 @@
 //   TC goes through an inline accessor (keeps the object in edi across the inner call); the physics TC and the world are
 //   locals ahead of AddMessage; each entity-events component is fetched before its `new` event.
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 #define VF(n) virtual void v##n();
@@ -97,12 +98,13 @@ struct CTCLightingChannel {                             // interface 0x75: the c
     unsigned char Channel[4];                           // +0x14 CEnginePrimitiveThemeChannelDesc
 };
 class CAnimFilterBase;
-struct CCreatureModeBase {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     VF(00) VF(01) VF(02) VF(03)
     virtual CAnimFilterBase* GetDeathAnimFilter();      // slot 4 (+0x10, descriptive)
-};
-class CTCCreatureModeManager { public:
-    CCreatureModeBase* GetCurrentMode() const;          // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;          // 0x0073A6E0
 };
 struct CEventBase;
 class CTCEntityEvents { public:
@@ -252,7 +254,7 @@ void CThingCreatureBase::OnDie()
         const CTCCreatureModeManager* modes = 0;
         if (HasTC(0x31))
             modes = (const CTCCreatureModeManager*)GetConstTC(0x31);
-        CCreatureModeBase* mode = modes->GetCurrentMode();
+        CTCCreatureModeManager::CModeBase* mode = &modes->GetCurrentMode();
         long playerNumber = PlayerNumber;
         long definition = DefGlobalIndex;
         body = CThingDeadCreature::Create(definition, &PeekPos(), playerNumber,

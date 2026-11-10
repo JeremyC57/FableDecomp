@@ -12,6 +12,7 @@
 //   tag (an uninitialised, ctor-less `__false_type isPOD;`) no longer escapes, so both inlined push_backs share one
 //   byte slot (`lea eax,[esp+1Fh]`) and the strings / def pointer / vector take retail's slots 0x10..0x20 (frame 0x158,
 //   not 0x160); with CalcAndLookup visible the `effect = 0` store sinks next to the def-pointer zero as retail's.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -146,7 +147,7 @@ template <class A, class B> class CFilter_Bind2 { public:
 typedef CThingFilter_HasDefGlobalIndex CBodyguardFilter;
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    void SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CThingAICreature : public CThingCreatureBase {
 public:

@@ -19,6 +19,7 @@
 // Shape: the mode-manager pointer is set only under the presence bit (a miss reads the key's slot); the brain output is
 //   constructed before the action; the action uses the inline 2-argument constructor (0 / false, then
 //   SetCombatAnimation); the clone goes through an inline CBrainOutput helper taking `const CCreatureActionBase&`.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -72,15 +73,16 @@ public:
     virtual CCreatureActionBase* Clone() const;
 };
 
-class CModeBase {
+
+
+class CTCCreatureModeManager { public:
+    class CModeBase {
 public:
     virtual ~CModeBase();
     virtual unsigned long GetType() const;                  // slot 1
-};
-
-class CTCCreatureModeManager {                              // interface type 0x31
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                              // interface type 0x31
 public:
-    CModeBase* GetCurrentMode() const;                      // 0x0073A6E0
+    CTCCreatureModeManager::CModeBase& GetCurrentMode() const;                      // 0x0073A6E0
     void RemoveMode(unsigned long mode);                    // 0x0073ABA0
 };
 
@@ -130,7 +132,7 @@ void CAIStateGroup_MinionListenToStory::StandUp()
 {
     CTCCreatureModeManager* modes;
     GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-    if (modes->GetCurrentMode()->GetType() == 10) {
+    if (modes->GetCurrentMode().GetType() == 10) {
         CBrainOutput output;
         CCreatureAction_GetUpFromSitting action(*GetCreature(), g_CCharString_013bb670);
         if (GetCreature()->IsFreeToPerformAction(action)) {

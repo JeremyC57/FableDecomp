@@ -1,5 +1,6 @@
 // NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight() -- the heaviest best weight among the competition fish types the hero carries (-1 when none; the heaviest becomes CompetitionEntry), shown to two decimals in TEXT_QST_B15_FISHSIZE through the CS_FISHCOMP_CHECKFISH_OUTPUTSIZE cut-scene
-// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Leaf: ?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail-asm: 0x00E81C05 `fld dword ptr [esp+1Ch]` + 0x00E81C09 `fistp dword ptr [esp+20h]` -- the engine's inline-assembly float-to-long helper inside the two-decimal rounding (the scaled weight stored to the helper's by-value slot and reloaded for a bare dword fistp, then fild / fdiv by the power-of-ten); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`; same helper as the landed NParticleEngine::CPSCEmitterGeneric::GetRandomRadius 0x00B102C0.

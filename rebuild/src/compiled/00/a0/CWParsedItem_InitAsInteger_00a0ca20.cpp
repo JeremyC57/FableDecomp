@@ -1,6 +1,7 @@
 // 00a0ca20 CWParsedItem::InitAsInteger
-// Leaf: ?InitAsInteger@CWParsedItem@@QAEXPB_WK@Z
-// Flags: /Zc:wchar_t
+// Leaf: ?InitAsInteger@CWParsedItem@@QAEXPBGK@Z
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 #include <stddef.h>
 #include "fable_string.h"
 enum EParsedItemType{};

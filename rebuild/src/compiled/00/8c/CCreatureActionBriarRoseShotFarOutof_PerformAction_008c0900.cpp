@@ -22,6 +22,7 @@
 // Layout: engine/CCreatureAction_BriarRoseShotFarOutof.h puts PShot at the PDB's +0x12c; retail CCombatActionBase is 0x114
 //   bytes (landed ctor 0x008C39A0 stores PShot's vtable at +0x114), so `this` is modelled locally with PShot at +0x114.
 //   CWeaponDef +0xa0 = Shot index, CThingShotDef +0x60 = TC name string index and +0x7c = thing def index (retail offsets).
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
@@ -127,10 +128,12 @@ class CWorld { public:
 
 class CTCBase;
 class CTCParamsBase;
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing { public:
     unsigned char         _pad0[0x64];
     CTCGraphicAppearance* PGraphicAppearance;          // +0x64
@@ -144,7 +147,7 @@ class CThing { public:
 FABLE_FORCEINLINE bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
 {
     CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
-    return appearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
+    return appearance->GetDummyObject(name, 0, 0, *position, *orientation, 1.0f);
 }
 class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                  // 0x00663B10

@@ -1,0 +1,2 @@
+address	name	evidence
+00662000	CThingCreatureBase::GetCreatureType	agentNF6 rename (was GetMovementMode); RELOCATION_MATCH recheck (landing bd)

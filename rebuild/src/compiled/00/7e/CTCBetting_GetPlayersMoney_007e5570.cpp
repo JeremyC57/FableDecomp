@@ -1,6 +1,5 @@
 // 007e5570 CTCBetting::GetPlayersMoney
 // Leaf: ?GetPlayersMoney@CTCBetting@@QAE?AVCWideString@@XZ
-// Flags: /Zc:wchar_t
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CCLASS

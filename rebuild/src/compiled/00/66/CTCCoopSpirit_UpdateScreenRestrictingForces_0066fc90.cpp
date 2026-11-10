@@ -19,6 +19,7 @@
 // @ 0x01375550, the spirit's off-screen seconds (5.0f) @ 0x0137EA24.
 // Layout (local model): ParentThing +0x04 (player number byte +0x90), OffScreenFrames +0x14; the game component's display
 // +0x28, the display's camera +0x2c.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include <math.h>
 #pragma intrinsic(fabs)
 class C2DVector { public: float X, Y; };
@@ -78,7 +79,7 @@ class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:
     CCreatureAction_SpiritReturnToHero(CThingCreatureBase* owner);   // 0x00854660
 };
 class CThingCreatureBase : public CThing { public:
-    void SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };               // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetPlayer(long number); };  // 0x004498C0

@@ -12,10 +12,20 @@
 #endif
 #define PASS9_TEST
 // 00a0ca20 CWParsedItem::InitAsInteger
-// Leaf: ?InitAsInteger@CWParsedItem@@QAEXPB_WK@Z
-// Flags: /Zc:wchar_t
+// Leaf: ?InitAsInteger@CWParsedItem@@QAEXPBGK@Z
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 #include <stddef.h>
+#ifdef _MSC_VER
 #include "fable_string.h"
+#else
+// 64-bit host: fable_string.h asserts 32-bit pointers; the row only needs CWideString as an opaque member.
+class CWideString{public:void*PStringData;CWideString();~CWideString();};
+#endif
+#ifndef _MSC_VER
+// 64-bit host: retail `long` is 32 bits (LP64 makes it 64); keep the row's 4-byte value word.
+#define long int
+#endif
 enum EParsedItemType{};
 // Layout: the PDB leaves the numeric union at+4 unnamed. Use an unnamed storage word and a typed local projection of that original union.
 class CWParsedItem{public:EParsedItemType Type;unsigned int:32;CWideString String;
@@ -31,7 +41,7 @@ void CWParsedItem::InitAsInteger(const wchar_t*text,unsigned long length){
 CWideString::CWideString(){}CWideString::~CWideString(){}
 
 int main(){CWParsedItem item;unsigned long stringGuard=0x51a7c3d9UL;memcpy((unsigned char*)&item+8,&stringGuard,4);
- for(long n=0;n<=9999;n+=7)for(int sign=0;sign<3;++sign){char narrow[32];sprintf(narrow,"%ld",n);wchar_t text[32];unsigned long length=0;if(sign==1)text[length++]=L'-';for(unsigned long i=0;narrow[i];++i)text[length++]=(wchar_t)narrow[i];if(sign==2)text[length++]=L'-';text[length]=0;
+ for(long n=0;n<=9999;n+=7)for(int sign=0;sign<3;++sign){char narrow[32];sprintf(narrow,"%d",(int)n);wchar_t text[32];unsigned long length=0;if(sign==1)text[length++]=L'-';for(unsigned long i=0;narrow[i];++i)text[length++]=(wchar_t)narrow[i];if(sign==2)text[length++]=L'-';text[length]=0;
   item.Type=(EParsedItemType)7;item.InitAsInteger(text,length);long actual;unsigned long guard;memcpy(&actual,(unsigned char*)&item+4,4);memcpy(&guard,(unsigned char*)&item+8,4);
   if((int)item.Type!=3||actual!=(sign?-n:n)||guard!=stringGuard)return 1;
  }

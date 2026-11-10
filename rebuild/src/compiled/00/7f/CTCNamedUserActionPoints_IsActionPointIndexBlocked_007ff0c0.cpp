@@ -14,6 +14,7 @@
 // Shape: the box is built from two truncated longs (x, y, x, y); the three filters and the Bind3 are named locals (the IsNot
 //   filters and the result land in the dead parameter slots); the search tools are read into a named local before the pushes
 //   (the chained form loads them after); `? true : false` gives the `test al,al ; setne al` tail.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class C2DBoxI { public:
@@ -46,10 +47,12 @@ class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* PThingSearchTools;               // +0x20 scoped_ptr
 };
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing {
 public:
     unsigned char         _pad00[0x64];
@@ -101,7 +104,7 @@ class CTCNamedUserActionPoints : public CTCUserActionPointBase { public:
 
 bool CTCNamedUserActionPoints::IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const
 {
-    ParentThing->PTCGraphicAppearance->GetDummyObject(Names[index], 0, 0, &position, &orientation, 1.0f);
+    ParentThing->PTCGraphicAppearance->GetDummyObject(Names[index], 0, 0, position, orientation, 1.0f);
     long x = (long)position.X;
     long y = (long)position.Y;
     C2DBoxI box(x, y, x, y);

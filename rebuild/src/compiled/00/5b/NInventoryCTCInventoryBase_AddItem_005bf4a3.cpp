@@ -9,9 +9,10 @@
 // Layout: retail CTCInventoryBase Categories {first, last, end} at +0x20 (as landed AddCategory 0x005C024A); CItem ItemType +0.
 // Shape: size TU; the category end is read into a local AFTER the category lookup (edi, compared with the find result), the
 // `&&` of the two tests shares the `xor al,al` tail with `mov al,1` after the virtual call.
+// Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
 #include "engine/CItem.h"
-long __fastcall GetInventoryCategory(long itemType);          // 0x005D97B0
+class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long itemType); };          // 0x005D97B0
 namespace NInventory {
 class CCategory {                                            // retail 0x2C bytes
 public:
@@ -52,7 +53,7 @@ public:
 };
 bool CTCInventoryBase::AddItem(const CItem& item)
 {
-    long categoryDefIndex = GetInventoryCategory(item.ItemType);
+    long categoryDefIndex = CTCInventoryItem::GetInventoryCategory(item.ItemType);
     CCategory* last = CategoriesLast;
     CCategory* category = std::find_if(CategoriesFirst, last, CIsCategoryWithDefIndex(categoryDefIndex));
     if (category != last && category->AddItem(item)) {

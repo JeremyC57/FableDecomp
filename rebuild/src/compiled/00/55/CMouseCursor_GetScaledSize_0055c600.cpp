@@ -7,6 +7,7 @@
 // the sprite-derived cursor's method -- provisional.
 // Shape: 16 bytes of frame = the size local and the scale temporary; each axis is `scale * size` (`fld size ; fmul [scale]`),
 // the X product stored back to the local and the Y product left on the FPU stack and written straight into the result.
+// Name fix (agentNF6 2026-11-10): NUISystem::CManager::GetUIScale 0x0041CF47 is const (?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, Ego_r.pdb / FableWin.pdb; engine/NUISystem_CManager.h).
 class C2DVector { public:
     float X;
     float Y;
@@ -16,7 +17,7 @@ class C2DVector { public:
 
 namespace NUISystem { class CManager { public:
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
-    C2DVector GetUIScale();                         // 0x0041CF47
+    C2DVector GetUIScale() const;                         // 0x0041CF47
 }; }
 
 struct CSprite {

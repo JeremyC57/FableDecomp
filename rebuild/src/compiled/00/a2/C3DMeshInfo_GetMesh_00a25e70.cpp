@@ -13,6 +13,7 @@
 // Layout: engine/C3DMeshInfo.h MeshData +0xc, LODDataSizes[4] +0x50; C3DMeshLODInfo Mesh +0x1c, FileData +0x24 (as
 //   GetMeshStats, modelled locally for the polymorphic CResource base).
 // Leaf: GetMesh
+// Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
 #include "fable_compiler.h"
 class CCharStringData;
 class CCharString { public:
@@ -34,7 +35,7 @@ class CResource { public:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
     void SetAsUnloadable();                // 0x009FBF50
-    void AddToResourceList();              // 0x009FC440
+    void RemoveFromResourceList();              // 0x009FC440
 };
 class CResourceList { public:
     long m_pad0;
@@ -129,7 +130,7 @@ bool C3DMeshInfo::GetMesh(CMeshPointer& out, unsigned long lod, unsigned long fl
             if (flags & 3) {
                 DisplayProgress("Asset Wait: Mesh 1", false, -1.0f, false);
                 if (info->FileData->WaitUntilFinished()) {
-                    info->AddToResourceList();
+                    info->RemoveFromResourceList();
                     info->BuildMesh(true, false);
                 }
                 if (info->Mesh.Object) {
@@ -167,7 +168,7 @@ bool C3DMeshInfo::GetMesh(CMeshPointer& out, unsigned long lod, unsigned long fl
     if ((flags & 5) == 1) {
         DisplayProgress("Asset Wait: Mesh 2", false, -1.0f, false);
         info->FileData->WaitUntilFinished();
-        info->AddToResourceList();
+        info->RemoveFromResourceList();
         info->BuildMesh(true, ((flags >> 6) & 1) != 0);
         if (flags & 8)
             info->SetAsUnloadable();

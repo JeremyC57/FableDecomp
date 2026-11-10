@@ -8,6 +8,7 @@
 // up in HeroCrowdThings and returns the crowd thing and its group component through the out pointers.
 // Shape: this is kept in esi for the trailing CrowdSizesSuppressed store; the parent pointer is read into
 // a local first (before `push 0`).
+// Name fix (agentNF6 2026-11-10): CTCBoastingCrowdControl::GetCrowd 0x00783A30 is private, CThing by reference (?GetCrowd@CTCBoastingCrowdControl@@AAE_NAAVCThing@@PAPAV2@PAPAVCTCCreatureGroupBoastingCrowd@@_N@Z, Ego_r.pdb / FableWin.pdb).
 class CThing;
 
 class CTCCreatureGroupBoastingCrowd { public:
@@ -26,7 +27,9 @@ class CTCBoastingCrowdControl { public:
     unsigned char _pad0d[0x3];
     unsigned char HeroCrowdThings[0xc];                     // +0x10 map<unsigned __int64, CIntelligentPointer<CThing>> (12 bytes in retail)
     bool          CrowdSizesSuppressed;                     // +0x1c (PDB +0x20)
-    bool GetCrowd(CThing* thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);   // 0x00783A30
+private:
+    bool GetCrowd(CThing& thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);
+public:   // 0x00783A30
     void OnHeroAttackCrowdMember();
 };
 
@@ -35,7 +38,7 @@ void CTCBoastingCrowdControl::OnHeroAttackCrowdMember()
     CThing* parent = ParentThing;
     CThing* groupThing;
     CTCCreatureGroupBoastingCrowd* crowd;
-    if (GetCrowd(parent, &groupThing, &crowd, false))
+    if (GetCrowd(*parent, &groupThing, &crowd, false))
         crowd->OnHeroAttackCrowdMember();
     CrowdSizesSuppressed = true;
 }

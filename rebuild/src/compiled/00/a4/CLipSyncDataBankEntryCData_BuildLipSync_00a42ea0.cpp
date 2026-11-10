@@ -14,6 +14,7 @@
 //   pointer is cleared with the inline counted-pointer release (count block re-read, destroy + delete at zero) and both
 //   words zeroed; each Sizeof term is `p ? p->Sizeof() + 8 : 8` (VC folds the +8 into both arms) and the size is
 //   `a + b + 0x34` (`lea edi,[eax+edi+34h]`); the stream is a function-scope local destroyed at the end.
+// Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
 class CLipSyncSampleData;
 class CMemoryDataInputStream {
 public:
@@ -77,7 +78,7 @@ class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];                             // +0x04..+0x1c
     void SetResourceSize(unsigned long size);              // 0x009FBF20
-    void AddToResourceList();                              // 0x009FC440
+    void RemoveFromResourceList();                              // 0x009FC440
 };
 class CLipSyncDataBankEntry { public:
     class CData : public CResource { public:
@@ -102,7 +103,7 @@ void CLipSyncDataBankEntry::CData::BuildLipSync()
         unsigned long asyncSize = m_pAsyncData.object ? m_pAsyncData.object->Sizeof() + 8 : 8;
         unsigned long size = asyncSize + sampleSize + 0x34;
         SetResourceSize(size);
-        AddToResourceList();
+        RemoveFromResourceList();
         m_pBank->m_pResources->List.MakeFreeSpace(size);
         m_pBank->m_pResources->List.AddResource(this);
     }

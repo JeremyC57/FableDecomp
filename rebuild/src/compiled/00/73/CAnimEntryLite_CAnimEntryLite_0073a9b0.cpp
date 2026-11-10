@@ -7,6 +7,7 @@
 // Layout: PDB CAnimEntryLite (0x10): BankIndex +0x00, DelayTime +0x04, TransitionTime +0x08, AnimFlags +0x0c.
 // Shape: body assignments, not an initialiser list -- TransitionTime (+0x08) is computed before DelayTime (+0x04).
 // The out-pointer local is homed in the dead argument slot ([esp+0Ch] = the entry reference's slot).
+// Name fix (agentNF6 2026-11-10): CAnimationEntry::GetTransitionTime 0x005DC1D0 is ?GetTransitionTime@CAnimationEntry@@QBEJXZ (Ego_r.pdb / FableWin.pdb).
 class CAnimComponentFlags { public:
     unsigned char _pad[8];                      // vptr, ref count
     long Flags;                                 // +0x08
@@ -18,7 +19,7 @@ class CAnimationEntry { public:
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
-    long GetAnimationTransitionInTime_005dc1d0() const;  // 0x005DC1D0
+    long GetTransitionTime() const;  // 0x005DC1D0
     void GetFlagsComponent(CAnimComponentFlags** ppComponent) const;    // 0x005E0380 (out pointer)
     long GetAnimationFlags() const
     {
@@ -41,7 +42,7 @@ struct CAnimEntryLite {
 CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry)
 {
     BankIndex = entry.BankIndex;
-    TransitionTime = entry.GetAnimationTransitionInTime_005dc1d0();
+    TransitionTime = entry.GetTransitionTime();
     DelayTime = entry.GetDelayTime();
     AnimFlags = entry.GetAnimationFlags();
 }

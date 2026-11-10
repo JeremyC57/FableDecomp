@@ -4,6 +4,7 @@
 // creature SetCurrentAction6644F0; Combat destructor62E900 and FinishAction859A20.
 // Native combat action projection: base70 genuine slots; combat adds11 =81 slots.
 // BaseA8 and Combat114; PDB baseB4/Combat12C. See actual headers and raw vtable audit.
+// Name fix (agentNF6 2026-11-10): CCombatActionBase::FinishAction 0x00859A20 is protected virtual (?FinishAction@CCombatActionBase@@MAEXXZ, Ego_r.pdb / FableWin.pdb).
 #define CCreatureActionBase CCreatureActionBasePdb
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
@@ -161,7 +162,7 @@ struct __declspec(novtable) CCreatureActionBase {
 struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
     virtual ~CCombatActionBase();
     virtual void PerformAction();
-    virtual void FinishAction();
+    protected: virtual void FinishAction(); public:
     virtual long GetAnimDelayTime() const;
     virtual long GetAnimationIndex() const;
     virtual long GetAnimationTransitionInTime() const;

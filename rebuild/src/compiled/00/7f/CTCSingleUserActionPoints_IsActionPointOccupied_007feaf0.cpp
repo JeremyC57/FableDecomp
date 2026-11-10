@@ -14,6 +14,7 @@
 // IsNot filters and the found-creature out pointer live in the dead argument slots, the range filter copies the position
 // as dwords (the filter temporaries are built right to left); the search tools are fetched into a local inside an inline
 // helper so they come after the temporaries and before the pushes; the search result is normalised to a bool.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 class CThing;
 class CThingCreatureBase;
@@ -24,10 +25,12 @@ public:
     void* PStringData;
 };
 extern CCharString g_CCharString_013bac9c;              // 0x013BAC9C ("ACTION_POINT"; the landed initializer 0x0121E960 spelling)
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing {
 public:
     unsigned char _pad00[0x64];
@@ -82,7 +85,7 @@ class CTCSingleUserActionPoints : public CTCBase { public:
 
 bool CTCSingleUserActionPoints::IsActionPointOccupied(CThing* user, C3DVector* position, CRightHandedSet* orientation, long index)
 {
-    ParentThing->GraphicAppearance->GetDummyObject(g_CCharString_013bac9c, index, 0, position, orientation, 1.0f);
+    ParentThing->GraphicAppearance->GetDummyObject(g_CCharString_013bac9c, index, 0, *position, *orientation, 1.0f);
     C2DCoordI coord((long)position->X, (long)position->Y);
     C2DBoxI area(coord, coord);
     CThingCreatureBase* found;

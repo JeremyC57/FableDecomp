@@ -2,6 +2,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 class CCreatureActionBase;
 class CThingCreatureBase;
 
@@ -55,7 +56,7 @@ public:
     virtual void Slot0E0(); virtual void Slot0E4(); virtual void Slot0E8();
     virtual void ChangeHealth(float amount, bool applyHealthChange);
 
-    void SetCurrentAction(const CCreatureActionBase& action);
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 struct CreatureOverlay

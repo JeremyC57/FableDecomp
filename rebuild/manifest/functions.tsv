@@ -14590,7 +14590,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00661fc0	IsIndestructible	CThingCreatureBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00661fd0	vfunc_75	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00661ff0	GetSex	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00661ff0.cpp
-00662000	GetMovementMode	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00662000.cpp
+00662000	GetCreatureType	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00662000.cpp
 00662010	GetProperty	CThingCreatureBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CPixelShader_CountReferences_00662010.cpp
 00662020	Getter_FieldE0_FC	_global	__fastcall	ulong	1	Getter_FieldE0_FC_OuterOverlay const *	1	unmeasured	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\66\0x00662020_global_Getter_FieldE0_FC.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\Global_GetterFieldE0FC_00662020.cpp
 00662030	GetFloatThrough_0xe0_0x78_00662030	_unattributed	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted			matching	D:\Documents\FableTLC\lift\proofs\src\air_resistance.cpp					

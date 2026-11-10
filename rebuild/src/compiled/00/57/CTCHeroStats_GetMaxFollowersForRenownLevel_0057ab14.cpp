@@ -1,5 +1,5 @@
 // CTCHeroStats::GetMaxFollowersForRenownLevel(long) const -- the most followers allowed at the hero's renown level (the table's last entry past its end, 0 for an empty table)
-// Leaf: GetMaxFollowersForRenownLevel
+// Leaf: ?GetMaxFollowersForRenownLevel@CTCHeroStats@@QBEJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AB14, 86 bytes. Manifest label "GetMaxBoastingCrowdForRenownLevel" is
 // propagated from the byte-twin at 0x0057AB6A: this body reads the definition vector at +0xB8, which is
 // CHeroStatsDef::RenownLevelMaxFollowers (PDB +0xC4), not RenownLevelMaxBoastingCrowd (+0xC4 in retail). The stack argument is not read (`ret 4`); the level
@@ -13,6 +13,7 @@
 // `test ecx,0FFFFFFFCh ; jne` with the zero arm first.
 // Layout: RenownLevel +0x70 in retail (PDB +0x78); CHeroStatsDef::RenownLevelMaxFollowers +0xB8 (PDB +0xC4: the
 // definition head is 4 bytes smaller and two 12-byte vectors precede it).
+// Name fix (agentNF6 2026-11-10): self spelling ?GetMaxFollowersForRenownLevel@CTCHeroStats@@QBEJJ@Z (Ego_r.pdb / FableWin.pdb): the class is CTCHeroStats, not the CTCHeroStats_Retail stand-in.
 #pragma optimize("s", on)
 
 struct CLongVector {                           // retail std::vector<long>: first, last, end
@@ -39,7 +40,7 @@ protected:
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 
-struct CTCHeroStats_Retail : public CTCBase {
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                   // +0x00
     void*         ParentThing;                 // +0x04 CTCBase
     unsigned char _pad_0x08[0x68];
@@ -48,7 +49,7 @@ struct CTCHeroStats_Retail : public CTCBase {
     long GetMaxFollowersForRenownLevel(long unused) const;
 };
 
-long CTCHeroStats_Retail::GetMaxFollowersForRenownLevel(long unused) const
+long CTCHeroStats::GetMaxFollowersForRenownLevel(long unused) const
 {
     const CHeroStatsDef* def = GetDefinitionManager().PHeroStatsDef;
     if (def->RenownLevelMaxFollowers.size() > 0) {

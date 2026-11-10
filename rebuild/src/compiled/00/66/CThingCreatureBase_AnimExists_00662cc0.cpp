@@ -19,6 +19,7 @@
 //   into a small holder whose destructor releases it (null-tested, inline at every return); the fallback filter
 //   temporary lands in the dead flag slot and the result rides in bl across the release;
 //   the restricted `return false` is written last (its block is laid out last).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 class CCharString;
 class CAnimationEntry;
 class CAnimFilterBase {                         // vtable 0x0122FFCC
@@ -60,12 +61,13 @@ class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 
-struct CCreatureModeBase {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual const CAnimFilterBase& GetAnimFilter_slot4();       // slot 4 (+0x10)
-};
-class CTCCreatureModeManager { public:
-    CCreatureModeBase* GetCurrentMode();        // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;        // 0x0073A6E0
 };
 
 class CThingCreatureBase {
@@ -82,7 +84,7 @@ bool CThingCreatureBase::AnimExists(const CCharString& name, bool useModeFilterO
 {
     CDefPointer<CAppearanceDef> out;
     PBaseDef->GetSubDef(&out);
-    CCreatureModeBase* mode = PTCModeManager->GetCurrentMode();
+    CTCCreatureModeManager::CModeBase* mode = &PTCModeManager->GetCurrentMode();
     CHeldDef<CAppearanceDef> def(out.Object);
     CAnimationSet& animations = def->Animation;
     if (animations.AnimExists(name, mode->GetAnimFilter_slot4()))

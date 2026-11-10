@@ -8,6 +8,7 @@
 // The decision is one flat else-if chain with a separate `return` per value, which VC7.1 merges into retail's groups
 // (`F==0 || F==1` -> push 2/pop eax; `F==2`, `F==3`, `F==4`, else -> the 2 promoted to edi). The sibling
 // GetMenuBranchFromDefIndex @ 0x0059B79A has the same chain with a distinct label per case.
+// Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
 class CCharString { public:
     void* PImp;
@@ -21,7 +22,7 @@ public:
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
-long __fastcall GetInventoryCategory(long defIndex);          // 0x005D97B0
+class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long defIndex); };          // 0x005D97B0
 long __fastcall GetInventoryTabState(long defIndex);          // 0x005D96F0
 
 // CTCInventoryTrade: no member is read; a method-only model (the engine header is not needed here).
@@ -45,7 +46,7 @@ long CTCInventoryTrade::GetTypeFromDefIndexPC(long defIndex)
     { CCharString name("INVENTORY_CATEGORY_TROPHIES", -1); CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name); }
     { CCharString name("INVENTORY_CATEGORY_POTIONS", -1); CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name); }
 
-    long category = GetInventoryCategory(defIndex);
+    long category = CTCInventoryItem::GetInventoryCategory(defIndex);
     if (category == melee)
         return 1;
     else if (category == ranged)

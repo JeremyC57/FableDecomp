@@ -17,6 +17,7 @@
 // Shape: two const GetInterface lookups written as HasTC + the one-ternary entry pick (component straight into ecx); VC
 //   keeps the map address in esi across the combat tests and reuses it for the second lookup; both keys share the
 //   `push ecx` frame word.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CThing { };
 class CThingCreatureBase;
@@ -25,14 +26,15 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CModeBase {                               // CTCCreatureModeManager::CModeBase (local model)
+
+class CTCCreatureModeManager { public:
+    class CModeBase {                               // CTCCreatureModeManager::CModeBase (local model)
 public:
     virtual void v00();
     virtual long GetModeType() const;           // slot 1 (+4)
-};
-class CTCCreatureModeManager {                  // interface 0x31
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                  // interface 0x31
 public:
-    CModeBase& GetCurrentMode() const;          // 0x0073A6E0
+    CTCCreatureModeManager::CModeBase& GetCurrentMode() const;          // 0x0073A6E0
 };
 class CTCTargetingAI {                          // interface 8
 public:

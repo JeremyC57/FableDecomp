@@ -11,6 +11,7 @@
 // (`mov esi,[esp+4]`) and taken from the register on the found path (`jmp` joins them); the type compare keeps `this`=manager in
 // ecx for both tail calls. Retail CCreatureActionBase is 0xa8 bytes (engine/CCreatureAction_BeDazed.h is the PDB's 0xb4-byte
 // layout), so `this` is modelled locally.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -24,12 +25,13 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetModeType();             // slot 1
-};
-class CTCCreatureModeManager { public:             // the interface-49 component
-    CMode* GetCurrentMode();                // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)             // the interface-49 component
+    CModeBase& GetCurrentMode() const;                // 0x0073A6E0
     void RestartCurrentMode();              // 0x0073A840
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
@@ -52,7 +54,7 @@ void CCreatureAction_BeDazed::Initialise()
     CCreatureActionBase::Initialise();
     CTCCreatureModeManager* pModes;
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);   // result unchecked: the manager is assumed present
-    if (pModes->GetCurrentMode()->GetModeType() == 67)
+    if (pModes->GetCurrentMode().GetModeType() == 67)
         pModes->RestartCurrentMode();
     else
         pModes->AddMode(67);

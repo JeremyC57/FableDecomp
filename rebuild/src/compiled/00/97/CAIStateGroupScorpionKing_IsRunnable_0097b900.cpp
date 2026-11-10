@@ -20,6 +20,7 @@
 //          is a temporary copied from it); GetPFirstThing gets a same-TU noinline stand-in that does not let the out
 //          pointer's address escape -- with an external declaration VC loads the arena pointer into edi before the name
 //          destructor and the IP base ctor (and the frame grows by 4), retail reloads it after.
+// Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -86,7 +87,8 @@ struct CTCEnemySource {                         // interface 8
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
-bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);   // 0x008645E0
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* enemy, bool b);   // 0x006EDC50
 };
@@ -136,7 +138,7 @@ bool CAIStateGroup_ScorpionKing::IsRunnable()
     PBrain->PCreature->GetInterface(&source, 8);
     CThing* enemy = source->GetEnemy();
     if (enemy != 0) {
-        if (CanCreatureSeeCreature(PBrain->PCreature, enemy, false)) {
+        if (NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), enemy, false)) {
             PEnemy = CIntelligentPointerCreature(enemy);
             HealthAtLastTailStrike = PBrain->PCreature->Health;
             CThing* creature = PBrain->PCreature;

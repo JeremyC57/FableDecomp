@@ -16,6 +16,7 @@
 // Shape: the mode manager is zero-initialised and filled by the out-parameter GetInterface (`xor ebx,ebx` before the
 // bitset test, the component kept in ebx); the ranged-attack component is HasTC + the landed ternary GetTC (straight
 // into ecx); the camera manager out pointer is zero-initialised in its frame word and the getter's bool guards the push.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
 #undef CPlayer
@@ -42,12 +43,13 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !thing->IsDead();
 }
 
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual unsigned long GetModeType();                // slot 1
-};
-class CTCCreatureModeManager { public:                         // interface 0x31
-    CMode* GetCurrentMode();                            // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                         // interface 0x31
+    CModeBase& GetCurrentMode() const;                            // 0x0073A6E0
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
 
@@ -91,7 +93,7 @@ void CPlayer::InitModeUseProjectileWeapon(EPlayerMode mode, CProcessedInput* inp
     if (IsThingAlive(hero)) {
         CTCCreatureModeManager* modes = 0;
         hero->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-        if (modes->GetCurrentMode()->GetModeType() != 25)
+        if (modes->GetCurrentMode().GetModeType() != 25)
             modes->AddMode(25);
         if (hero->HasTC(TCI_HERO_RANGED_ATTACKS))
             ((CTCHeroRangedAttacks*)&hero->GetTC(TCI_HERO_RANGED_ATTACKS))->ResetProjectileTargetingZoomParameter();

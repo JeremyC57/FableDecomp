@@ -1,12 +1,11 @@
 // CWideString::Sprintf(string,...) -- format wide text using a fixed buffer or dynamic array.
 // Inline-budget: real SetString is called at base settings; /d2inlT200 expands original string cleanup as native.
-// Leaf: ?Sprintf@CWideString@@QAAXPB_WZZ
+// Leaf: ?Sprintf@CWideString@@QAAXPBGZZ
 // Retail:0099ba70,265 bytes,variadic cdecl member
-// Flags: /GS /Zc:wchar_t /d2inlT200
+// Flags: /GS /d2inlT200
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CWIDESTRING_SPRINTF_ORIGINAL
 #define FABLE_RETAIL_STLP_VECTOR
-#define FABLE_RETAIL_STLP_NATIVE_WCHAR_TRAITS
 #define FABLE_RETAIL_CARRAY
 #include <stdarg.h>
 #include <wchar.h>

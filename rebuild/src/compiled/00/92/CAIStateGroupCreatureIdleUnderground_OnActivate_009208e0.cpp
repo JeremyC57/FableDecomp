@@ -13,6 +13,7 @@
 // runs after the call. Frame 0x118 = the lookup key (+0) and the 0x114-byte retail action (+4; the PDB's
 // 300-byte layout is wider).
 // Model: local (no engine header for this class).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CTCBase;
 class CThingCreatureBase;
@@ -51,13 +52,14 @@ class CThingAICreature { public:
     }
 };
 
-struct CCreatureModeBase {
+
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetType();                     // slot 1 (+0x04)
-};
-
-class CTCCreatureModeManager { public:                 // interface 0x31
-    CCreatureModeBase* GetCurrentMode();        // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                 // interface 0x31
+    CModeBase& GetCurrentMode() const;        // 0x0073A6E0
 };
 
 class CAIBrain { public:
@@ -84,7 +86,7 @@ void CAIStateGroup_CreatureIdleUnderground::OnActivate()
 {
     CTCCreatureModeManager* modes;
     if (PBrain->Creature->GetInterface(&modes, 0x31)) {
-        if (modes->GetCurrentMode()->GetType() != 0x1e) {
+        if (modes->GetCurrentMode().GetType() != 0x1e) {
             CThingAICreature* creature = PBrain->Creature;
             creature->SetCurrentAction(&CCreatureAction_GoUnderground((CThingCreatureBase*)creature));
         }

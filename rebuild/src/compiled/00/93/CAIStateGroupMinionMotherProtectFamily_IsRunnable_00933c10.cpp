@@ -9,6 +9,7 @@
 // Shape: the GetInterface result is used straight as `this` in the virtual call (entry-returning lookup), then
 // `PFamilyMember = thing` through the 8-byte temporary that reuses the key slot. No engine header for this class.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -106,7 +107,8 @@ struct CTCFamily {                              // the interface-8 component
     virtual CThing* GetThreatenedFamilyMember();    // slot 29 (+0x74)
 };
 
-bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);   // 0x008645E0
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 
 struct CAIStateGroup_MinionMotherProtectFamily : CAIStateGroupBase {
     CIntelligentPointerThing PFamilyMember;     // +0x14
@@ -117,7 +119,7 @@ bool CAIStateGroup_MinionMotherProtectFamily::IsRunnable()
 {
     if (PBrain->PCreature->HasTC(8)) {
         CThing* member = ((CTCFamily*)PBrain->PCreature->FindEntry(8)->second)->GetThreatenedFamilyMember();
-        if (member != 0 && CanCreatureSeeCreature(PBrain->PCreature, member, false)) {
+        if (member != 0 && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), member, false)) {
             PFamilyMember = member;
             return true;
         }

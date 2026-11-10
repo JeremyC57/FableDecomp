@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705240, 424 bytes (`ret 10h`, 0x24-byte frame).
 //         Ego_r.pdb: `?GetInterpolatedPickupOffsetAndOrientation@CTCCarryable@@ABEXAAVC3DVector@@AAVCRightHandedSet@@_NM@Z`.
 // Callees: NGraphicAppearance::CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector&,
-//          CRightHandedSet&, float) const @ 0x004C08C0 (twice; hand names g_RightHandAttachmentName @ 0x013BAC30 and
+//          CRightHandedSet&, float) const @ 0x004C08C0 (twice; hand names PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME @ 0x013BAC30 and
 //          g_LeftHandAttachmentName @ 0x013BAC34, as the sibling GetInterpolatedPickupOffsetAndOrientationAt 0x00705190),
 //          CTCPhysicsBase::GetPosition(float) const @ 0x0049D150 (out-of-line copy on the left-hand path; the
 //          right-hand path inlines it), the physics component's virtual slot 72 GetRHSet (+0x120).
@@ -17,10 +17,11 @@
 //        The graphic and physics components are read through inline const accessors (GetGraphicAppearance/GetPhysics):
 //        with direct ParentThing->member chains VC7.1 colours ParentThing differently on the two paths and cross-jumps
 //        their identical `offset = temp` copies into one shared tail.
+// Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
-extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
+extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
@@ -71,7 +72,7 @@ void CTCCarryable::GetInterpolatedPickupOffsetAndOrientation(C3DVector& offset, 
     unsigned long flags = 0;
     if (!exact)
         flags = 0x21;
-    if (GetGraphicAppearance()->GetDummyObject(g_RightHandAttachmentName, 0, flags, dummy, orientation, t))
+    if (GetGraphicAppearance()->GetDummyObject(PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, flags, dummy, orientation, t))
         offset = dummy - GetPhysics()->GetPosition(t);
     else if (GetGraphicAppearance()->GetDummyObject(g_LeftHandAttachmentName, 0, flags, dummy, orientation, t))
         offset = dummy - GetPhysics()->GetPosition(t);

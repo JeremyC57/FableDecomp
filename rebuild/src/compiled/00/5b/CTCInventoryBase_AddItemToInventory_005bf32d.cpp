@@ -11,6 +11,7 @@
 // Shape: the inline GetInterface keeps the key in the dead slot of `itemType` (held in ebx); the not-found and
 // augmentation paths share the `xor al,al` exit.
 // Layout: retail CTCInventoryBase ParentThing +0x04, Categories {first,last,end} +0x20 (0x2C-byte CCategory).
+// Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -32,7 +33,7 @@ class CCategory { public:
 };
 }
 bool __fastcall IsAugmentation_005d98f0(long itemType);                  // 0x005D98F0
-long __fastcall GetInventoryCategory(long itemType);            // 0x005D97B0
+class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long itemType); };            // 0x005D97B0
 NInventory::CCategory* __fastcall FindCategory(NInventory::CCategory* first, NInventory::CCategory* last, long ident);   // 0x005C08D3
 
 struct CTCInventoryBase_Retail {
@@ -136,7 +137,7 @@ bool CTCInventoryBase_Retail::AddItemToInventory(long itemType, long count, bool
         if (ParentThing->GetTC(TCI_HERO, &augmentations))
             augmentations->SetTitle(itemType);
     } else {
-        NInventory::CCategory* category = FindCategory(CategoriesFirst, CategoriesLast, GetInventoryCategory(itemType));
+        NInventory::CCategory* category = FindCategory(CategoriesFirst, CategoriesLast, CTCInventoryItem::GetInventoryCategory(itemType));
         if (category->AddItem(itemType, silent, price, count)) {
             OnItemAdded(itemType, notify, flag);
             return true;

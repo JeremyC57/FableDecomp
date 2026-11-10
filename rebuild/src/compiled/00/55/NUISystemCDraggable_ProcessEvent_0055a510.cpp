@@ -12,6 +12,7 @@
 // statements share one slot) (X homed in the dead event slot, Y kept on the x87) BEFORE
 // the two divisions (dividing right after each fetch moves the X division between the calls); ChangePosition gets
 // (position, 0.0f, false).
+// Name fix (agentNF6 2026-11-10): NUISystem::CManager::GetUIScale 0x0041CF47 is const (?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, Ego_r.pdb / FableWin.pdb; engine/NUISystem_CManager.h).
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -22,7 +23,7 @@ namespace NUISystem { class CManager { public:
     unsigned char _pad[0xb0];
     C2DVector     MousePosition;                   // +0xb0
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
-    C2DVector GetUIScale();                        // 0x0041CF47 (CManager::GetUIScale)
+    C2DVector GetUIScale() const;                        // 0x0041CF47 (CManager::GetUIScale)
 }; }
 
 namespace NUISystem {

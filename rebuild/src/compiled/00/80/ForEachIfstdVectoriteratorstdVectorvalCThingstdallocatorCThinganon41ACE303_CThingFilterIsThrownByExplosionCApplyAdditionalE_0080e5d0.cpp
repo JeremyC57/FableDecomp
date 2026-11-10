@@ -13,16 +13,18 @@
 // Shape: the anonymous-namespace filter is a `__forceinline` operator() written as one `&&` guard on `return true`; HasTC is
 // `if (bits & mask) return true; return false;` (a `!= 0` return gives `shr ; test cl,1`); GetTC is the `__forceinline` inline
 // lower_bound walk (last, then first, the count, then `it = first`) with the `it == last || type < it->type` miss test.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CTCBase;
-class CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase {
 public:
     virtual void v00();
     virtual long GetModeType();             // slot 1
-};
-class CTCCreatureModeManager {              // interface type 0x31
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)              // interface type 0x31
 public:
-    CMode* GetCurrentMode();                // 0x0073A6E0
+    CModeBase& GetCurrentMode() const;                // 0x0073A6E0
 };
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
@@ -67,7 +69,7 @@ struct CThingFilter_IsThrownByExplosion {
     FABLE_FORCEINLINE bool operator()(CThing* thing) const
     {
         if (thing && !thing->Dead && thing->HasTC(0x31)
-            && thing->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode()->GetModeType() == 0x42)
+            && thing->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode().GetModeType() == 0x42)
             return true;
         return false;
     }

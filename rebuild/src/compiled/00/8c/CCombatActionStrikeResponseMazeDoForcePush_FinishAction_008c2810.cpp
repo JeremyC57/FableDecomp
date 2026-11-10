@@ -17,6 +17,7 @@
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08), the attacker pointer +0x114; CTCBoss
 //   GenericCounter +0x10 / currentBossPhase +0x18 (Ego_r.pdb); CMazeBattleDef TutorialNumGetHits retail +0x50 (PDB +0x54,
 //   compared as a long).
+// Name fix (agentNF6 2026-11-10): CTCBoss::GetBossPhase 0x007AED10 is ?GetBossPhase@CTCBoss@@QBEJXZ (Ego_r.pdb / FableWin.pdb), was GetCurrentPhase / non-const.
 #include "fable_compiler.h"
 #include <math.h>
 #pragma intrinsic(sqrt)
@@ -100,7 +101,7 @@ class CThingCreatureBase : public CThing { public:
 class CTCBoss { public:                                // interface type 0xAD
     unsigned char _pad00[0x10];
     long GenericCounter;                        // +0x10
-    long GetCurrentPhase();                     // 0x007AED10 (currentBossPhase +0x18)
+    long GetBossPhase() const;                     // 0x007AED10 (currentBossPhase +0x18)
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -142,8 +143,8 @@ void CCombatAction_StrikeResponseMazeDoForcePush::FinishAction()
         const C3DVector& attackerPosition = ((CThing*)PAttacker.GetPItem())->GetPos();
         const C3DVector& position = me->GetPos();
         C3DVector offset(position.X - attackerPosition.X, position.Y - attackerPosition.Y, position.Z - attackerPosition.Z);
-        if (boss->GetCurrentPhase() > 0 && offset.Get2DLength() < 4.0f) {
-            if (hits > battleDef->TutorialNumGetHits || boss->GetCurrentPhase() == 2)
+        if (boss->GetBossPhase() > 0 && offset.Get2DLength() < 4.0f) {
+            if (hits > battleDef->TutorialNumGetHits || boss->GetBossPhase() == 2)
                 creature->SetCurrentAction(CCombatAction_WillForcePushInto(creature));
             else
                 boss->GenericCounter = hits;

@@ -9,6 +9,7 @@
 // destructors run with no vtable stores: the follow-up action's counted pointer (+0xa8 object, +0xac block) is released inline (`dec [block]`,
 // block re-read, destroy + delete at zero, then object and block zeroed in that order) and ~CCreatureActionBase is called out of line.
 // &PCreature rides in esi (`add esi,8` once `this` is dead).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 class CThing;
 class CThingCreatureBase;
 class CCreatureActionBase;
@@ -29,7 +30,9 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 class CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
+};
+class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / FableWin.pdb: SetCurrentAction is a CThingCreatureBase member
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 struct SCountBlock {                        // the shared count block of a CCountedPointer
@@ -81,5 +84,5 @@ void CCreatureAction_ShowToSheatheTrophy::FinishAction()
 {
     CCreatureAction_ShowTrophy::FinishAction();
     CCreatureAction_SheatheTrophy sheathe((CThingCreatureBase*)PCreature.GetPItem());
-    PCreature.GetPItem()->SetCurrentAction(&sheathe);
+    ((CThingCreatureBase*)(PCreature.GetPItem()))->SetCurrentAction(sheathe);
 }

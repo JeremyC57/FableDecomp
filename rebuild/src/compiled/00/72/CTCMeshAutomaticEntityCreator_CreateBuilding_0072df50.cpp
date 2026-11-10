@@ -10,6 +10,7 @@
 // Shape: the sibling of CreateObject. A failed lookup / factory call / dead building falls through to the thing manager's
 // failure flag (+0xC8); success ends with `continue` (the `jmp` to the loop increment).
 // Layout (local model): as CreateObject, plus CThing PTCPhysics +0x60.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 class CTCBase;
 class CTCPhysicsBase;
@@ -24,15 +25,17 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 class CTCParamsBase;
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     unsigned char _pad00[0x34];
     float         m_scale;                            // +0x34
     float GetScale() const { return m_scale; }
     long GetNoDummyObjects(const CCharString& name, float scale);   // 0x004BE000
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
     void SetScale(float scale);                       // 0x004BFA50
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing {
 public:
     unsigned char  _pad00[0x20];
@@ -123,7 +126,7 @@ void CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName,
     for (long i = 0; i < appearance->GetNoDummyObjects(dummyName, 1.0f); ++i) {
         C3DVector position;
         CRightHandedSet orientation;
-        appearance->GetDummyObject(dummyName, i, 0, &position, &orientation, 1.0f);
+        appearance->GetDummyObject(dummyName, i, 0, position, orientation, 1.0f);
         if (PeekWorldMap().IsPosInMap(position)) {
             long defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(buildingName);
             if (defIndex) {

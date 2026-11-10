@@ -1,26 +1,18 @@
-
+// 00661f70 CThingCreatureBase::IsChild -- behaviour test (agentNF6: member spelling)
 #include <cstdio>
-struct CTCBData {
-    char pad[0xC4];
-    int lifeStage;
-};
+class CThingCreatureDef { public: char pad[0xC4]; int CreatureType; };
 class CThingCreatureBase { public:
     char pad[0xE0];
-    CTCBData* data;
+    CThingCreatureDef* PDef;
+    bool IsChild() const { return PDef->CreatureType == 1; }
 };
-bool __fastcall CThingCreatureBase_IsChild(const CThingCreatureBase* creature) {
-    return creature->data->lifeStage == 1;
-}
 int main() {
-    CTCBData d0; d0.lifeStage = 1;
-    CTCBData d1; d1.lifeStage = 2;
-    CThingCreatureBase a; a.data = &d0;
-    CThingCreatureBase b; b.data = &d1;
-    bool ok = true;
-    if (CThingCreatureBase_IsChild(&a) != true) ok = false;
-    if (CThingCreatureBase_IsChild(&b) != false) ok = false;
-    d0.lifeStage = 0;
-    if (CThingCreatureBase_IsChild(&a) != false) ok = false;
-    if (ok) { std::printf("CThingCreatureBase_00661f70_TEST PASS\n"); return 0; }
-    std::printf("FAIL\n"); return 1;
+    CThingCreatureDef d0; d0.CreatureType = 1;
+    CThingCreatureDef d1; d1.CreatureType = 2;
+    CThingCreatureBase a; a.PDef = &d0;
+    CThingCreatureBase b; b.PDef = &d1;
+    bool ok = a.IsChild() && !b.IsChild();
+    d0.CreatureType = 0; if (a.IsChild()) ok = false;
+    if (ok) { std::printf("00661f70_TEST PASS\n"); return 0; }
+    std::printf("00661f70_TEST FAIL\n"); return 1;
 }

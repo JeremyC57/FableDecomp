@@ -11,6 +11,7 @@
 // Shape: the follow-up action is the object word of a counted pointer at +0xa8 (the block word at +0xac, see 0x006DD980), read again from
 // the member for the virtual call (`mov ecx,[esi+0A8h]`); the mode-manager call sits inside the GetInterface if, so the miss path
 // returns directly. `this` rides in esi until the lookup re-uses it for the map.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include "fable_compiler.h"
 class CTCBase;
 class CCreatureActionBase;
@@ -21,7 +22,6 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -35,6 +35,9 @@ class CThing { public:
         }
         return false;
     }
+};
+class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / FableWin.pdb: SetCurrentAction is a CThingCreatureBase member
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -75,7 +78,7 @@ void CCreatureAction_SheatheItemToInventory::FinishAction()
         PerformAction();
     CCreatureActionBase::FinishAction();
     if (m_pNextAction) {
-        if (!((CThing*)PCreature.GetPItem())->SetCurrentAction(m_pNextAction))
+        if (!((CThingCreatureBase*)(((CThing*)PCreature.GetPItem())))->SetCurrentAction(*m_pNextAction))
             m_pNextAction->Cancel();
     }
     CTCCreatureModeManager* pModes;

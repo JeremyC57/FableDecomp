@@ -32,6 +32,7 @@
 //   CombatSequences +0x28, PLastAttacker +0x5c); CCombatManager Combatants +0x10, DialogueManager +0x38 (PDB +0x40: two
 //   12-byte maps); CThing UniqueID +0x18, interface bitset +0x20 / map +0x44, def +0x70, dead flag +0x91 bit 0;
 //   CCreatureDef flag byte +0x148.
+// Name fix (agentNF6 2026-11-10): CCombatManager::IsCreatureOnOuterRing 0x006E9700 is ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb), was IsCreatureOnRotatingCombatRing.
 #include "fable_compiler.h"
 class CTCBase;
 class CBaseObject { public:};
@@ -185,7 +186,7 @@ class CCombatManager { public:
     CombatDialogueManager DialogueManager;                // +0x38
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->value; }
     void PerformSequenceReset(CThingCreatureBase& creature);   // 0x006EA2C0
-    bool IsCreatureOnRotatingCombatRing(const CThingCreatureBase& creature) const;   // 0x006E9700
+    bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
     long GetBestSequenceIndexAttackerOnDefender(const CCombatantInfo& attacker, const CCombatantInfo& defender) const;   // 0x006EAE20
     void SetupNextSequenceForAttacker(CCombatantInfo& info);
 };
@@ -201,7 +202,7 @@ void CCombatManager::SetupNextSequenceForAttacker(CCombatantInfo& info)
     CThing* weapon = 0;
     if (attacker->HasTC(0x46))
         weapon = attacker->GetConstTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
-    if (IsCreatureOnRotatingCombatRing(*attacker)) {
+    if (IsCreatureOnOuterRing(*attacker)) {
         if (attacker->GetRangedWeaponDef() > 0) {
             if (weapon == 0 || (weapon->Flags91 & 1) || !weapon->HasTC(0x48))
                 return;

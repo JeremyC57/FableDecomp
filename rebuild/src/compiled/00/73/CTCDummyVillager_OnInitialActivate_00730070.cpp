@@ -12,6 +12,7 @@
 // Layout (Ego_r.pdb, matches retail): HomeBuilding +0x10 / UID +0x18, WorkBuilding +0x20 / UID +0x28, Creature +0x30 /
 //         UID +0x38, DayToBeRecreated +0x40, Respawnable +0x48; CThing type byte +0x10 (1 creature, 3 building);
 //         CThingAICreature HomeBuilding +0x168, WorkBuilding +0x170.
+// Name fix (agentNF6 2026-11-10): CTCVillageMember::GetPVillage 0x007EE540 is ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ (Ego_r.pdb / FableWin.pdb), was GetVillage.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -102,7 +103,7 @@ public:
 };
 class CTCVillageMember : public CTCBase {
 public:
-    CTCVillage* GetVillage();                       // 0x007EE540
+    CTCVillage* GetPVillage() const;                       // 0x007EE540
 };
 class CThingManager {
 public:
@@ -166,7 +167,7 @@ void CTCDummyVillager::OnInitialActivate()
             if (!IsAlive(c2->HomeBuilding.Get()) && IS_THING_ALIVE(HomeBuilding))
                 Creature->SetHomeBuilding(HomeBuilding.Get());
             if (Thing->HasTC(0x23)) {
-                CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetVillage();
+                CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetPVillage();
                 if (village)
                     village->AddThingToVillage(Creature.Get());
             }
@@ -174,7 +175,7 @@ void CTCDummyVillager::OnInitialActivate()
     }
     if ((!Creature.Get() || (Creature->Flags91 & 1)) && CanBeRecreated() && GetWorld().PClock->Day >= DayToBeRecreated &&
         Thing->HasTC(0x23)) {
-        CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetVillage();
+        CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetPVillage();
         if (village)
             CreateVillager(village, village->Thing->GetPos(), false);
     }

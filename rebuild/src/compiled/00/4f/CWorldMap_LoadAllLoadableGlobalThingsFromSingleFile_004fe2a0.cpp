@@ -17,6 +17,7 @@
 // Shape: the stream's OwnsData flag is a member with its own inline ctor (puts the Name lea after the word stores, as
 //   retail); the counted-pointer info comes from `p ? new CCPPointerInfo(deleter, p) : 0`; c_str()/length() are
 //   if-return accessors (retail tests the null data block once, non-null arm first).
+// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
 class CWideString { public:
     void* PStringData;
     CWideString();                                     // 0x0099AED0
@@ -35,7 +36,7 @@ class CCharString { public:
     const char* c_str() const { if (!PStringData) return g_EmptyText; return PStringData->Data; }
     long length() const { if (!PStringData) return 0; return PStringData->Length; }
 };
-void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool flag, bool flag2); }   // 0x009E9F40
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
@@ -149,7 +150,7 @@ void CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& fil
     while (parser.FindKeyword("NEWMAP")) {
         long map = parser.ReadAsInteger();
         CCharString block = parser.ReadAsStringUntilString("ENDMAP");
-        DisplayProgress("LoadAllLoadableGlobalThingsFromSingleFile", false, -1.0f, false);
+        NProgressDisplay::DisplayProgress("LoadAllLoadableGlobalThingsFromSingleFile", -1.0f, false, false);
         CMemoryDataInputStream* stream = new CMemoryDataInputStream;
         stream->Init(block.c_str(), block.length());
         CDataInputStreamPointer pointer(stream);

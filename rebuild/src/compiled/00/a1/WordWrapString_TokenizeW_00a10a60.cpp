@@ -1,6 +1,7 @@
 // WordWrap_String::TokenizeW(wchar_t** tokens) -- split the wide text into word-wrap tokens at breakable positions (tab, CR, space, ideographic space, around East Asian characters unless the next may not begin or the previous may not end a line): count them, or, given a token array, copy each token NUL-terminated into the reallocated token buffer and store its start
-// Leaf: ?TokenizeW@WordWrap_String@@QAEHPAPA_W@Z
-// Flags: /Zc:wchar_t
+// Leaf: ?TokenizeW@WordWrap_String@@QAEHPAPAG@Z
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A10A60, 281 bytes (+ int3 padding), `ret 4`. Ego_r.pdb
 //   ?TokenizeW@WordWrap_String@@QAEHPAPA_W@Z (native wchar_t). Callees: operator delete 0x00BFE9BC, wcslen 0x00BFED94,
 //   scalar operator new 0x00BFEA1A, wcsncpy 0x00BFEB04 and the word-wrap character classes IsEastAsianChar 0x00A10240,

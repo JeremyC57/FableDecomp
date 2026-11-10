@@ -13,19 +13,21 @@
 //   `xor ecx,ecx`, the component loaded straight into ecx), the mode fetched before the position;
 //   offset = target - position through an inline operator- building C3DVector(x, y, z) (Z computed first), the facing
 //   a by-value virtual result; the mode's result is returned directly.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CModeBase {                              // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:                              // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual float GetMovementSpeed(const C3DVector& offset, const C3DVector& facing, long movementType);    // slot 7 (+0x1c)
-};
-class CTCCreatureModeManager { public:
-    CModeBase* GetCurrentMode();                // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CTCCreatureModeManager::CModeBase& GetCurrentMode() const;                // 0x0073A6E0
 };
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -78,7 +80,7 @@ class CThingCreatureBase : public CThing { public:
 
 float CThingCreatureBase::GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType)
 {
-    CModeBase* mode = GetModeManager()->GetCurrentMode();
+    CTCCreatureModeManager::CModeBase* mode = &GetModeManager()->GetCurrentMode();
     C3DVector offset = target - GetPos();
     C3DVector facing = PhysicsTC->GetFacing();
     return mode->GetMovementSpeed(offset, facing, movementType);

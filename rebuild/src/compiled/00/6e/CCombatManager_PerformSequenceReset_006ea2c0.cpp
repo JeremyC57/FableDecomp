@@ -19,6 +19,7 @@
 // Attacked +4, CurrentSequence +0x24, CombatSequences +0x28); the ring-rotation sub-def's chance +0x2c and speed
 // +0x40 (descriptive names).
 // Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
+// Name fix (agentNF6 2026-11-10): CCombatManager::IsCreatureOnOuterRing 0x006E9700 is ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb), was IsCreatureOnRotatingCombatRing.
 #include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
@@ -156,7 +157,7 @@ class CCombatManager { public:
         return Combatants.find(creature.GetUID())->value;
     }
     void IncrementDefenderAttackPattern(CCombatantInfo& info);             // 0x006E8600
-    bool IsCreatureOnRotatingCombatRing(const CThingCreatureBase& creature);   // 0x006E9700
+    bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
     void SetAttackerRingAsRotating(const CThingCreatureBase& attacker, float degreesPerSecond);   // 0x006E9D90
     void PerformSequenceReset(CThingCreatureBase& creature);
 };
@@ -171,7 +172,7 @@ void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
             if (sequence->IsMeleeSequence()) {
                 IncrementDefenderAttackPattern(victim->value);
                 CDefPointer<CRingRotationDef> rotation;
-                if (!IsCreatureOnRotatingCombatRing(creature)) {
+                if (!IsCreatureOnOuterRing(creature)) {
                     if (creature.GetCombatTypeDef()->GetSubDef(rotation)) {
                         long roll = WorldRandom(*World->GetWorldSeed()) % 100;
                         if (roll <= rotation->RotationChance) {

@@ -1,0 +1,12 @@
+# NF6 lessons (one line each)
+- Any `/`-prefixed token on a `// Flags:` line is parsed as a flag: a comment like "(no /Zc:wchar_t ...)" turns into a real flag. Put notes on a separate line.
+- Dropping /Zc:wchar_t is byte-neutral for every row tried; wchar_t falls back to the stddef `unsigned short` typedef and the Leaf `_W` becomes `G`.
+- reloc_bindings.tsv lists each (symbol, target) only under its first caller. Find the other binders by compiling the rows (scan) or by a retail-byte scan, not from that file.
+- A test that `#include`s `../../../src/compiled/...` by relative path hangs cl.exe in a scratch work dir. Inline the row into a rows/ test or make the test self-contained.
+- Many landed tests fail before any change (64-bit g++, engine headers asserting ptr32, a non-standard PASS line). Compare against the landed source (PREFAIL) before blaming a respell.
+- Under __fastcall, float arguments take stack slots, so reordering float/bool parameters to match the PDB does not change the call bytes.
+- A GFGetTime caller that stores a float needs an explicit `(float)GFGetTime()`. GFGetTime returns double (YINXZ); the implicit conversion was DIFFER(98v98) in 0x0042DBFA.
+- STLport 4.6 `list` has no user destructor, so the implicit dtor calls `_List_base<T>::~_List_base` (0x0048CA60). Bind that, not a made-up SortTreeRecursively.
+- Retail `mov eax,1` / `xor eax,eax` in a PDB `bool` function (0x006622A0 IsPerformingAnyAction) does not come from a plain `return true` (VC7.1 emits `mov al,1`). The respell needs a real rewrite, not a type swap.
+- Including engine/CTCBoss.h in a row hung cl.exe for more than 400 s (0x007AED10). Find out why before relying on that header.
+- Use a scan subset (rows that bind the small queue targets) to work the queue; a full compile scan of 12.9k rows runs at about 60 rows/min.

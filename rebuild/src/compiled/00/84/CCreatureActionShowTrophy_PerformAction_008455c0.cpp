@@ -11,12 +11,14 @@
 //   CVectorMap::LowerBound 0x0040F020, CTCTrophy::OnShownByCreature 0x006DE8C0 (descriptive name), CThing::Kill(bool) 0x004C9B80,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30,
 //   CThing::GetPos 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, CreateEffectThing 0x006E0880,
-//   CTCDParticleEmitter::AttachToThing 0x006E0BE0, g_RightHandAttachmentName 0x013BAC30,
+//   CTCDParticleEmitter::AttachToThing 0x006E0BE0, PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME 0x013BAC30,
 //   CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout: Ego_r.pdb PTrophyBeingShown +0xb4, PEmitter +0xc1 (packed); retail CCreatureActionBase is 0xa8, so the members
 //   sit 12 bytes lower (PEmitter at the odd offset +0xb5; the landed FinishAction 0x00845850).
 // Shape: GetSubDef / GetEffectFromString get same-TU stand-in bodies; operator= names the item before SetPItem (this+0xb5 loads late); the && chain carries the by-value def copy and the
 //   name temporary (conditional destruction flags 1/2); the sub def pointer lives to the end of the function.
+// Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
@@ -25,7 +27,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-extern CCharString g_RightHandAttachmentName;          // 0x013BAC30
+extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;          // 0x013BAC30
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -87,10 +89,12 @@ public:
 private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -109,7 +113,7 @@ class CThing { public:
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
     bool GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
     {
-        return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
+        return GraphicAppearance->GetDummyObject(name, 0, 0, *position, *orientation, 1.0f);
     }
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -177,7 +181,7 @@ void CCreatureAction_ShowTrophy::PerformAction()
                 PEmitter = CIntelligentThingPointer(effect);
                 CTCDParticleEmitter* emitter;
                 if (((CThing*)PEmitter.GetPItem())->GetInterface(&emitter, 0x4b))
-                    emitter->AttachToThing(*GetCreature(), 10, g_RightHandAttachmentName, 0, 0.0f);
+                    emitter->AttachToThing(*GetCreature(), 10, PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME, 0, 0.0f);
             }
         }
         GetTrophy()->OnShownByCreature_006de8c0(GetCreature());

@@ -10,6 +10,7 @@
 // (`lea ecx,[esi+34h]`) and releases through that register (`dec [esi+4] ; jne`), the bool result riding in bl. A
 // CDefPointer destructor re-reads the address-taken slot after the call in the lane (and forms `&m_refCount`), so the
 // release is written by hand on a named pointer local (same behaviour as the original scope-exit release).
+// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
 class CCharString;
 class CAnimFilterBase;
 
@@ -30,7 +31,7 @@ template<class T> class CDefPointer { public:          // CDefPointer<const T>: 
 };
 
 class CAnimationSet { public:
-    bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC2E0
+    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC2E0
 };
 
 class CAppearanceDef : public CDefPointeeBase { public:
@@ -69,7 +70,7 @@ bool CThingCreatureBase::HasAnim(const CCharString& name, const CAnimFilterBase&
     CDefPointer<CAppearanceDef> def;
     PBaseDef->GetSubDef(def);
     CAppearanceDef* appearance = def.m_pObject;
-    bool found = appearance->AnimationSet.HasAnim(name, filter);
+    bool found = appearance->AnimationSet.AnimExists(name, filter);
     if (appearance)
         appearance->ReleaseDef();
     return found;

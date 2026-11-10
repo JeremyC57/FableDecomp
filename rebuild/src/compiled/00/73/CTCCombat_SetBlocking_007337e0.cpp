@@ -12,6 +12,7 @@
 // Shape: HasTC + GetTC with the ranged-attacks component in a named local (esi); the mode manager is the unchecked out-parameter
 // GetInterface (the absent arm reads the lookup key's frame word); RemoveMode's argument is pushed before GetPlayer runs.
 // Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -27,12 +28,13 @@ class CTCHeroRangedAttacks { public:
     void CancelAimingWeapon();                          // 0x00789FF0
     void ResetProjectileWeaponMode();                   // 0x00789B30
 };
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetModeType();                         // slot 1
-};
-class CTCCreatureModeManager { public:
-    CMode* GetCurrentMode();                            // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;                            // 0x0073A6E0
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
 class CTCCombat { public:
@@ -53,7 +55,7 @@ void CTCCombat::SetBlocking()
     }
     CTCCreatureModeManager* modes;
     ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-    if (modes->GetCurrentMode()->GetModeType() != 0xc)
+    if (modes->GetCurrentMode().GetModeType() != 0xc)
         modes->AddMode(0xc);
     Blocking = true;
 }

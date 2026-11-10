@@ -14,6 +14,7 @@
 // is the out-parameter GetInterface writing PTCBoss; the thing def is an inline by-value getter whose
 // null tests share the zero register with the later clears; the targeted lookup is the unchecked `T* tc; GetInterface(&tc, 9);`
 // (the absent path reads the never-written local, as the landed 0x00898410).
+// Name fix (agentNF6 2026-11-10): CTCBoss::GetBossPhase 0x007AED10 is ?GetBossPhase@CTCBoss@@QBEJXZ (Ego_r.pdb / FableWin.pdb), was GetCurrentPhase / non-const.
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -87,7 +88,7 @@ class CTCTargeted { public:
 };
 
 class CTCBoss { public:
-    long GetCurrentPhase();                              // 0x007AED10
+    long GetBossPhase() const;                              // 0x007AED10
 };
 
 struct SListNode { SListNode* next; SListNode* prev; };
@@ -136,7 +137,7 @@ void CTCKraken::OnInitialActivate()
     KillBeamCounter = 0;
     TentacleReadyToStrike = false;
     ReturnHeadToWater = false;
-    SetPhase(PTCBoss->GetCurrentPhase());
+    SetPhase(PTCBoss->GetBossPhase());
     ParentThing->GetTC<CTCTargeted>(9)->Targetable = false;
     ParentThing->LeaveExperienceOrbsOverride = false;
 }

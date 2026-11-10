@@ -9,6 +9,7 @@
 // virtual slots 15 IsRunnableLeaf (+0x3c), 19 GetCombatMinDistance (+0x4c), 22 AIAction_MoveToPosAndFacePos (+0x58).
 // Shape: an outer while over the attack conditions, an inner for(;;) hover loop whose in-range flag is reset per outer pass.
 // Layout: Ego_r.pdb CAIStateGroup_HoverMovementBase (0x1c bytes): target pointer +0x14; CWorld +0x4c combat manager.
+// Name fix (agentNF6 2026-11-10): CCombatManager::GetPreferredPos 0x006EA770 is ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb): const, creature by reference.
 #include "engine/C3DVector.h"
 
 class CCombatManager;
@@ -23,7 +24,7 @@ bool __fastcall IsToAttackTarget(CThingCreatureBase* creature, CThing* target); 
 class CCombatActionBase;
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);    // 0x006EA450
-    C3DVector GetPreferredPos(CThingCreatureBase* creature);                       // 0x006EA770
+    C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;                       // 0x006EA770
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);    // 0x006EB600
 };
 class CWorld { public:
@@ -88,7 +89,7 @@ void CAIStateGroup_HoverAttack::Update()
                 return;
             }
             bool arrived;
-            C3DVector preferred = combat->GetPreferredPos(GetCreature());
+            C3DVector preferred = combat->GetPreferredPos(*(GetCreature()));
             long result = AIAction_MoveToPosAndFacePos(2, preferred, PTarget.Get()->GetPos(), arrived, 8);
             if (IsAlive(PTarget)) {
                 const CThing* me = GetCreature();

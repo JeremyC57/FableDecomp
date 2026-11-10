@@ -19,6 +19,7 @@
 //   Animation +0x34; CAnimInit 0x2c bytes (the landed CTCBed model).
 // Shape: the filter is reached through the counted pointer's inline operator* (a raw pointer member rotates eax/edx);
 //   the zero frame time is three floats (immediate stores after the push); the entry's index is read before the reset.
+// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
 #include "fable_compiler.h"
 class CTCBase;
 class CCharString { public: void* PStringData; };
@@ -38,7 +39,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {           // vtable 0x0122FFDC
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
 class CAnimationSet { public:
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
+    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
     CAnimationEntry* GetRandomAnimation(const CCharString& name, unsigned long* seed, const CAnimFilterBase& filter,
                                         long exclude) const;                             // 0x005DCC00
 };
@@ -170,9 +171,9 @@ void CThingDeadCreature::SetupDeadAnimation()
     PBaseDef->GetSubDef(def);
     const CAnimationSet& animations = def.m_pObject->Animation;
     const CAnimationEntry* entry;
-    if (animations.HasAnimation(g_CCharString_013baf40, *PAnimFilter))
+    if (animations.AnimExists(g_CCharString_013baf40, *PAnimFilter))
         entry = animations.GetRandomAnimation(g_CCharString_013baf40, GetRandomSeed(), *PAnimFilter, -1);
-    else if (animations.HasAnimation(g_CCharString_013baf40, CAnimFilterNoGroup()))
+    else if (animations.AnimExists(g_CCharString_013baf40, CAnimFilterNoGroup()))
         entry = animations.GetRandomAnimation(g_CCharString_013baf40, GetRandomSeed(), CAnimFilterNoGroup(), -1);
     else
         entry = 0;

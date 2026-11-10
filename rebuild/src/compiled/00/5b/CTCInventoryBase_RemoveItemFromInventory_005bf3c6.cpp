@@ -7,8 +7,9 @@
 // Retail CTCInventoryBase: no engine header; Categories at +0x20.
 // Shape: RemoveItem's two pass-through pushes sit between the GetInventoryCategory call and the find call, so the
 // category def index is a named local computed first and the find result feeds the member call directly.
+// Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
-long __fastcall GetInventoryCategory(long itemType);            // 0x005D97B0
+class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long itemType); };            // 0x005D97B0
 struct CCategory_Retail {
     unsigned char _body[0x2C];
     void RemoveItem(long itemType, long numberOfItems);          // 0x005BF221
@@ -26,6 +27,6 @@ struct CTCInventoryBase_Retail {
 };
 void CTCInventoryBase_Retail::RemoveItemFromInventory(long itemType, long numberOfItems)
 {
-    long categoryDefIndex = GetInventoryCategory(itemType);
+    long categoryDefIndex = CTCInventoryItem::GetInventoryCategory(itemType);
     FindCategoryWithDefIndex_005c08d3(Categories.first, Categories.last, categoryDefIndex)->RemoveItem(itemType, numberOfItems);
 }

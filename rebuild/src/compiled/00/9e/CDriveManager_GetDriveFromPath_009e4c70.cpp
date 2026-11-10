@@ -1,6 +1,7 @@
 // CDriveManager::GetDriveFromPath(const wchar_t* path) -- split the path with _wsplitpath and return the first character of its drive component
 // Leaf: ?GetDriveFromPath@CDriveManager@@AAEGPBG@Z
-// Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
+// Flags: /GS
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E4C70, 53 bytes, thiscall `ret 4`, /GS cookie frame.
 // Identity: Ego_r.pdb ?GetDriveFromPath@CDriveManager@@AAE_WPB_W@Z (0xB36710, between IsPathDirectory and GetItemFromPath);
 //   the catalog label already names it. No direct callers (the private helper's users are inlined or ICF-folded).

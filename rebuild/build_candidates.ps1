@@ -32891,8 +32891,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00662000'
         Module = 'CThingCreatureBase'
-        Source = '00/66/CThingCreatureBase_GetMovementMode_00662000.cpp'
-        TestSource = '00/66/CThingCreatureBase_GetMovementMode_00662000_test.cpp'
+        Source = '00/66/CThingCreatureBase_GetCreatureType_00662000.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetCreatureType_00662000_test.cpp'
         PassPattern = '00662000_TEST PASS'
     }
     [pscustomobject]@{
@@ -362037,7 +362037,7 @@ $catalog = @(
         Module = 'CSubtitleRenderer'
         Source = '00/49/CSubtitleRenderer_FormatTextWithGameActionNames_004917b5.cpp'
         TestSource = '00/49/CSubtitleRenderer_FormatTextWithGameActionNames_004917b5_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '004917b5_TEST PASS'
     }
     [pscustomobject]@{
@@ -362516,7 +362516,7 @@ $catalog = @(
         Module = 'CWideString'
         Source = '00/99/CWideString_operator_0099b150.cpp'
         TestSource = '00/99/CWideString_operator_0099b150_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '0099b150_TEST PASS'
     }
     [pscustomobject]@{
@@ -362608,7 +362608,7 @@ $catalog = @(
         Module = 'CWParsedItem'
         Source = '00/a0/CWParsedItem_InitAsInteger_00a0ca20.cpp'
         TestSource = '00/a0/CWParsedItem_InitAsInteger_00a0ca20_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00a0ca20_TEST PASS'
     }
     [pscustomobject]@{
@@ -370123,7 +370123,7 @@ $catalog = @(
         Module = 'WordWrap_String'
         Source = '00/a1/WordWrapString_TokenizeW_00a10a60.cpp'
         TestSource = '00/a1/WordWrapString_TokenizeW_00a10a60_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00a10a60_TEST PASS'
     }
     [pscustomobject]@{
@@ -383478,7 +383478,7 @@ $catalog = @(
         Module = 'CSubtitleRenderer'
         Source = '00/49/CSubtitleRenderer_GetActionNameFromEmbeddedTag_0049124e.cpp'
         TestSource = '00/49/CSubtitleRenderer_GetActionNameFromEmbeddedTag_0049124e_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '0049124e_TEST PASS'
     }
     [pscustomobject]@{
@@ -391398,7 +391398,7 @@ $catalog = @(
         Module = 'CTCBetting'
         Source = '00/7e/CTCBetting_GetPlayersMoney_007e5570.cpp'
         TestSource = '00/7e/CTCBetting_GetPlayersMoney_007e5570_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '007e5570_TEST PASS'
     }
     [pscustomobject]@{
@@ -391497,7 +391497,7 @@ $catalog = @(
         Module = 'CWideString'
         Source = '00/99/CWideString_Sprintf_0099ba70.cpp'
         TestSource = '00/99/CWideString_Sprintf_0099ba70_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t /d2inlT200'
+        CompilerFlags = '/O2 /Oy /W3 /GS /d2inlT200'
         PassPattern = '0099ba70_TEST PASS'
     }
     [pscustomobject]@{
@@ -391519,7 +391519,7 @@ $catalog = @(
         Module = 'CWStringParser'
         Source = '00/a0/CWStringParser_ReadNextNumber_00a0cdd0.cpp'
         TestSource = '00/a0/CWStringParser_ReadNextNumber_00a0cdd0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00a0cdd0_TEST PASS'
     }
     [pscustomobject]@{

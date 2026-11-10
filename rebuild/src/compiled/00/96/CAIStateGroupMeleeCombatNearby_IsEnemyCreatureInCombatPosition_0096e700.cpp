@@ -16,6 +16,7 @@
 // Layout: engine/CAIStateGroupBase.h (PBrain +0x04), CAIBrain.h (Creature +0x18), CWorld.h (PThingCombatManager_ptr
 //   +0x4c); the group's enemy pointer at +0x14 (PDB: unnamed base bytes) and the physics radius at +0x34 are retail
 //   offsets. The *_Methods structs are the lane's method carriers for generated data-only headers.
+// Name fix (agentNF6 2026-11-10): CCombatManager::GetPreferredPos 0x006EA770 is ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb): const, creature by reference.
 #include "fable_compiler.h"
 #include "engine/CAIStateGroup_MeleeCombatNearby.h"
 #define CAIStateGroupBase CAIStateGroupBasePdb
@@ -45,7 +46,7 @@ public:
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CCombatManager { public:
-    C3DVector GetPreferredPos(CThingCreatureBase* creature);                // 0x006EA770
+    C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;                // 0x006EA770
     bool IsPositionOccupied(CThingCreatureBase* creature);                  // 0x006E9700
 };
 struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroupBase {   // the engine header's flat layout past the base: +0x14 enemy pointer, +0x1c Archer
@@ -61,7 +62,7 @@ struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroupBase {   // the en
 bool CAIStateGroup_MeleeCombatNearby_Methods::IsEnemyCreatureInCombatPosition() {
     if (Creature()->IsInMeleeAsAttacker()) {
         CThingCreatureBase* actor = Creature(); CWorld* world = GetPWorld();
-        C3DVector preferred = world->PThingCombatManager_ptr->GetPreferredPos(actor);
+        C3DVector preferred = world->PThingCombatManager_ptr->GetPreferredPos(*actor);
         const C3DVector& position = Creature()->GetPos();
         float dx = preferred.X - position.X, dy = preferred.Y - position.Y;
         float reach = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + DELTA_NOTIONAL_ZERO + PreferredPosMargin;   // written e-first: VC7.1 (no /Op) emits these two adds swapped (retail order: 0.3 then 1e-4)

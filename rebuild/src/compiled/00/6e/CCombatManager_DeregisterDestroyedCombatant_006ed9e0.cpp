@@ -14,6 +14,7 @@
 // BEFORE the attacker is deregistered (the node may go away); the 64-bit id is a local copied into the
 // frame high word first. The template is `__forceinline`: as a plain inline member VC7.1 emitted it
 // out of line in this TU (call + `push 0x36`).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
 class CTCBase;
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -22,7 +23,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingCreatureBase : public CThing { public:
-    bool IsAttackingCombatant();                // 0x00662410
+    bool IsInMeleeAsAttacker() const;                // 0x00662410
     bool IsCombatant();                         // 0x00662430
 };
 
@@ -58,7 +59,7 @@ class CCombatManager { public:
 
 void CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature)
 {
-    if (creature->IsAttackingCombatant()) {
+    if (creature->IsInMeleeAsAttacker()) {
         unsigned __int64 id = creature->GetUniqueID();
         CThingCreatureBase* attacked = Combatants.FindNode(id)->Value.Attacked;
         DeregisterAttackingCombatant(creature);

@@ -3,6 +3,7 @@
 // player auto-faces, and re-equip the item taken out (fast unsheathe to the combat pose) when it still lives
 // Leaf: ?FinishAction@CCreatureAction_FinishFireballSpell
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -20,7 +21,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad54[0x3d];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -36,6 +36,9 @@ class CThing { public:
     }
 public:
     const CPlayer& PeekPlayer() const;   // 0x004C7A10
+};
+class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / FableWin.pdb: SetCurrentAction is a CThingCreatureBase member
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 struct CTCA7 {                                        // interface 0xA7
     unsigned char _pad[0xc];
@@ -131,6 +134,6 @@ void CCreatureAction_FinishFireballSpell::FinishAction()
     }
     if (IS_THING_ALIVE(PItemRemoved)) {
         CCharString name("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE");
-        GetCreature()->SetCurrentAction(&CCreatureAction_UnsheatheItemFromInventory(GetCreature(), name, PItemRemoved.GetPItem(), 100, 250, 0));
+        ((CThingCreatureBase*)(GetCreature()))->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(GetCreature(), name, PItemRemoved.GetPItem(), 100, 250, 0));
     }
 }

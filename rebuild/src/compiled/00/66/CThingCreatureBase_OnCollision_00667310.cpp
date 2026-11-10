@@ -17,6 +17,7 @@
 // Shape: the mode test and the knockdown live inside HasTC(0x31) with the const GetTC; the slope test is an inline dot
 //   product with the constant up vector (the compiler keeps (Y + X) * 0 + Z); the knockdown action is a temporary passed
 //   straight to SetCurrentAction, destroyed by its implicit (inline) destructor.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
@@ -25,12 +26,13 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
-struct CCreatureMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetType() const;               // slot 1
-};
-class CTCCreatureModeManager { public:
-    CCreatureMode* GetCurrentMode() const;      // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;      // 0x0073A6E0
 };
 class CTCHitOnCollision { public:
     void OnCollision(C3DVector* position, C3DVector* normal, CThing* other);   // 0x007C81F0
@@ -104,7 +106,7 @@ void CThingCreatureBase::OnCollision(ECollideType type, C3DVector* position, C3D
     CThingGameObject::OnCollision(type, position, normal, other);
     if (HasTC(0x31)) {
         const CThingCreatureBase* self = this;
-        if (self->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode()->GetType() == 0x42
+        if (self->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode().GetType() == 0x42
             && normal->Dot(C3DVector(0.0f, 0.0f, 1.0f)) < 0.866f)
             SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdown(this, other, position, normal));
     }

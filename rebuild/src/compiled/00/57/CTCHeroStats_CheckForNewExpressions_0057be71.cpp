@@ -17,6 +17,7 @@
 // `found = (it != last && !(wanted < it->type)) ? it : last` pick (the if-form flips the whole function's
 // ebx/edi map: the hero takes ebx instead of edi + an [ebp-10h] home).
 // Layout: retail RenownLevel +0x70 (PDB +0x78).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsChild 0x00661F70 is const (?IsChild@CThingCreatureBase@@QBE_NXZ, Ego_r.pdb).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -31,7 +32,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingCreatureBase : public CThing { public:
-    bool IsChild();                                  // 0x00661F70
+    bool IsChild() const;                                  // 0x00661F70
 };
 class CThingPlayerCreature : public CThingCreatureBase { public:
     bool LearnExpression(const CCharString& name, long index, bool notify);   // 0x006AC430

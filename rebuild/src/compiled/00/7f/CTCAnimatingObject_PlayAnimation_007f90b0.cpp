@@ -2,7 +2,7 @@
 // Leaf: ?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F90B0, length 174 bytes, `ret 0Ch`.
 // Callees: CDefClassBase::GetSubDef<CAnimatingObjectDef> @ 0x007F9330 (on the thing's base def, +0x70),
-// CAnimationSet::HasAnimation(const CCharString&, const CAnimFilterBase&) @ 0x005DC2E0, CTCAnimatingObject::ClearQueuedAnims
+// CAnimationSet::AnimExists(const CCharString&, const CAnimFilterBase&) @ 0x005DC2E0, CTCAnimatingObject::ClearQueuedAnims
 // @ 0x007F8BE0, CAnimationSet::GetAnimation(const CCharString&, long, const CAnimFilterBase&) @ 0x005DC340, the index
 // overload CTCAnimatingObject::PlayAnimation(long, long, bool) @ 0x007F9010, the def's virtual Destroy (slot 1).
 // Label correction: both overloads take (priority, looping) -- Ego_r.pdb ?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z
@@ -16,6 +16,7 @@
 // not escape: the def stays in ebp from the call to the release and the out word is reused by the first filter; the base
 // def is a named local (GetSubDef setup order), the set pointer a named local (lea edi,[ebp+28h]) and the entry a named
 // local (the second filter dies before the index call, keeping its base-vtable dtor store).
+// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                         // 0x00BFEA14
 
@@ -37,7 +38,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
 class CAnimationSet { public:
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                                // 0x005DC2E0
+    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;                                // 0x005DC2E0
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 
@@ -148,7 +149,7 @@ void CTCAnimatingObject::PlayAnimation(const CCharString& name, long priority, b
     const CThingBaseDef* baseDef = ParentThing->PBaseDef;
     if (baseDef->GetSubDef_007f9330(&def)) {
         const CAnimationSet* set = &def->Animation;
-        if (set->HasAnimation(name, CAnimFilterNoGroup())) {
+        if (set->AnimExists(name, CAnimFilterNoGroup())) {
             ClearQueuedAnims();
             const CAnimationEntry* entry = set->GetAnimation(name, 0, CAnimFilterNoGroup());
             PlayAnimation(entry->AnimIndex, priority, looping);

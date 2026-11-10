@@ -9,6 +9,7 @@
 // Shape: size TU with a frame pointer (`optimize("s", on)` + `("y", off)`: `leave`, the -1.0f via `fld ; push ecx ;
 // fstp [esp]`); both strings are named locals sharing [ebp-4] in their
 // own blocks; the returned pointer is a temporary destroyed after the assignment.
+// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharString {
@@ -18,7 +19,7 @@ public:
 private:
     void* m_pData;
 };
-void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool flag, bool flag2); }   // 0x009E9F40
 struct CFont;
 #include "engine/CCountedPointer.h"
 class CFontBank { public:
@@ -36,7 +37,7 @@ void CMainGameComponent::InitialiseFonts()
 {
     {
         CCharString text("Init Fonts", -1);
-        DisplayProgress(text, false, -1.0f, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     {
         CCharString name("ENG_ARIAL_18", -1);

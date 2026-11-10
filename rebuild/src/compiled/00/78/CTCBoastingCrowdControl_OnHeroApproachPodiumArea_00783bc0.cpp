@@ -8,6 +8,7 @@
 // up in HeroCrowdThings and returns the crowd thing and its group component through the out pointers.
 // Shape: two out-pointer locals (crowd at [esp], the group thing at [esp+4]); the create flag is
 // pushed first; the crowd pointer is used without a null test.
+// Name fix (agentNF6 2026-11-10): CTCBoastingCrowdControl::GetCrowd 0x00783A30 is private, CThing by reference (?GetCrowd@CTCBoastingCrowdControl@@AAE_NAAVCThing@@PAPAV2@PAPAVCTCCreatureGroupBoastingCrowd@@_N@Z, Ego_r.pdb / FableWin.pdb).
 class CThing;
 
 class CTCCreatureGroupBoastingCrowd { public:
@@ -26,7 +27,9 @@ class CTCBoastingCrowdControl { public:
     unsigned char _pad0d[0x3];
     unsigned char HeroCrowdThings[0xc];                     // +0x10 map<unsigned __int64, CIntelligentPointer<CThing>> (12 bytes in retail)
     bool          CrowdSizesSuppressed;                     // +0x1c (PDB +0x20)
-    bool GetCrowd(CThing* thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);   // 0x00783A30
+private:
+    bool GetCrowd(CThing& thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);
+public:   // 0x00783A30
     void OnHeroApproachPodiumArea();
 };
 
@@ -34,6 +37,6 @@ void CTCBoastingCrowdControl::OnHeroApproachPodiumArea()
 {
     CThing* groupThing;
     CTCCreatureGroupBoastingCrowd* crowd;
-    GetCrowd(ParentThing, &groupThing, &crowd, true);
+    GetCrowd(*ParentThing, &groupThing, &crowd, true);
     crowd->OnHeroApproachBoastingArea();
 }

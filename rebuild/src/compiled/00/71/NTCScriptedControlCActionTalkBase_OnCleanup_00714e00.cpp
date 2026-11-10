@@ -18,6 +18,7 @@
 //   profile manager's "profile loaded" flag +0x0C, its default subtitles flag +0x0D and the profile's +0xCD.
 // Shape: the parent thing is read into a local before the second GetThing() compare (as the landed OnAdd); the mode
 //   linger value is converted before GetCurrentMode() is fetched again; the subtitles setting is an inline accessor.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -39,16 +40,17 @@ public:
     unsigned char         _pad00[0x18];
     EConversationAttitude ConversationAttitude;     // +0x18 (descriptive)
 };
-class CMode {
+
+class CTCCreatureModeManager {
+public:
+    class CModeBase {
 public:
     virtual void v00();
     virtual long GetType() const;                   // slot 1
     unsigned char _pad04[0x14 - 4];
     long          LingerFrames;                     // +0x14 (descriptive)
-};
-class CTCCreatureModeManager {
-public:
-    CMode* GetCurrentMode();                        // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;                        // 0x0073A6E0
     void   RemoveMode(unsigned long mode);          // 0x0073ABA0
 };
 
@@ -128,8 +130,8 @@ void CActionTalkBase::OnCleanup()
     }
     CTCCreatureModeManager* modes;
     if (PTCScript->ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
-        if (modes->GetCurrentMode()->GetType() == CREATURE_MODE_CONVERSATION)
-            modes->GetCurrentMode()->LingerFrames = (long)(CMainGameComponent::GetConstantFPS() * 3.0f);
+        if (modes->GetCurrentMode().GetType() == CREATURE_MODE_CONVERSATION)
+            modes->GetCurrentMode().LingerFrames = (long)(CMainGameComponent::GetConstantFPS() * 3.0f);
         else
             modes->RemoveMode(CREATURE_MODE_CONVERSATION);
     }

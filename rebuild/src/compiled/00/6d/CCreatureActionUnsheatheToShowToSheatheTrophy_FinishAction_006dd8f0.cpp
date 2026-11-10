@@ -10,6 +10,7 @@
 // out-of-line ShowTrophy constructor (action code 1001); its implicit destructor destroys PEmitter (+0xb5, packed after the
 // PostedDeed byte) and PTrophyBeingShown (+0xa8) through the out-of-line CBaseIntelligentPointer destructor, then the base.
 // Retail layouts are 0xc below Ego_r.pdb (CCreatureActionBase 0xa8): ShowAnimName +0xb8, Trophy +0xbc; modelled locally.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 class CBaseObject;
 class CThing;
 class CCreatureActionBase;
@@ -28,7 +29,9 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 };
 
 class CThing { public:
-    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0 (CThingCreatureBase)
+};
+class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / FableWin.pdb: SetCurrentAction is a CThingCreatureBase member
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -73,5 +76,5 @@ void CCreatureAction_UnsheatheToShowToSheatheTrophy::FinishAction()
 {
     CCreatureAction_UnsheatheItemFromInventory::FinishAction();
     CThing* creature = ((CThing*)PCreature.GetPItem());
-    ((CThing*)PCreature.GetPItem())->SetCurrentAction(CCreatureAction_ShowToSheatheTrophy(creature, ((CThing*)Trophy.GetPItem()), ShowAnimName));
+    ((CThingCreatureBase*)(((CThing*)PCreature.GetPItem())))->SetCurrentAction(CCreatureAction_ShowToSheatheTrophy(creature, ((CThing*)Trophy.GetPItem()), ShowAnimName));
 }

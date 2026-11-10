@@ -1,5 +1,6 @@
 //0053ddd0 NUISystem::CMenuEntry::GoBackwards (inferred method label).
 // Layout: secondary CObserver at+4; retailobserver20 versus donor24 (STLset shrink).
+// Name fix (agentNF6 2026-11-10): GFGetTime 0x009E1BC0 is ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb: global __fastcall, double, no arguments).
 #include "fable_compiler.h"
 #include "engine/CObserver.h"
 #include "fable_string.h"
@@ -11,6 +12,7 @@ struct MiscDef:RefVirtual,RefCount {unsigned char ToSound[0x19c-8];CCharString S
 struct MiscPointer {MiscDef* Object;FABLE_FORCEINLINE ~MiscPointer(){if(Object){Object->Release();Object=0;}}MiscDef* operator->()const{return Object;}};
 
 #include <stdlib.h>
+double __fastcall GFGetTime();   // 0x009E1BC0 ?GFGetTime@@YINXZ (global, not in NUISystem)
 namespace NUISystem {
 struct Component {virtual void Slot000()=0;
 virtual void Slot001()=0;
@@ -194,7 +196,7 @@ virtual MiscPointer GetMiscThingsDef()=0;
 static CManager* __fastcall GetInstance();};
 struct ActionList {struct Node {Node* Next;Node* Prev;unsigned long Value;};Node* Head;};
 class CMenuEntry:public Component,public Observer { public:unsigned char BeforeTime[0x30-0x18];unsigned long CurrentTime;unsigned char BeforeParent[0xc8-0x34];Component* Parent;unsigned char BeforeLast[0x194-0xcc];unsigned long LastTime;unsigned long Unknown198;ActionList* Actions28;ActionList* Actions25;unsigned char BeforeState[8];unsigned long TargetState;void GoBackwards();};
-class CRedefinerList { public:static void __fastcall Cancel();};double __fastcall GFGetTime();extern double LastMenuTime_013b8aa0;
+class CRedefinerList { public:static void __fastcall Cancel();};extern double LastMenuTime_013b8aa0;
 void CMenuEntry::GoBackwards(){if(Parent&&Parent->GetType()==8){CRedefinerList::Cancel();if(!Parent->GetDef()->PartOfListTree){SetTargetState(TargetState);LastTime=CurrentTime;return;}}
 if(MenuStack_013b8a98.size()>1){CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundBack,1);bool immediate=GetDef()->PCStyle;if(immediate)MenuStack_013b8a98.front()->ChangeState(0);else MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);if(Actions28)for(ActionList::Node*p=Actions28->Head->Next;p!=Actions28->Head;p=p->Next)CManager::GetInstance()->Action28(p->Value);if(Actions25)for(ActionList::Node*p=Actions25->Head->Next;p!=Actions25->Head;p=p->Next)CManager::GetInstance()->Action25(p->Value);CManager::GetInstance()->RemoveObserver(this);}
 SetTargetState(TargetState);LastTime=CurrentTime;LastMenuTime_013b8aa0=GFGetTime();}

@@ -12,6 +12,7 @@
 //   each of the three returns (the landed vfunc_73 model); the fallback filters are temporaries in the dead filter
 //   argument slot (the base-vtable store is their destructor); "DEFAULT" is passed as a plain literal so its implicit
 //   CCharString temporary is built before the other arguments are pushed.
+// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -28,7 +29,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
 class CAnimationSet { public:
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
+    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
     CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 class CDefPointeeBase { public:                        // a counted definition object
@@ -84,9 +85,9 @@ CAnimationEntry* CThingCreatureBase::GetAnimFromName(const CCharString& name, co
     PBaseDef->GetSubDef(out);
     CHeldDef<CAppearanceDef> def(out.m_pObject);
     const CAnimationSet& animations = def->Animation;
-    if (animations.HasAnimation(name, filter))
+    if (animations.AnimExists(name, filter))
         return animations.GetAnimation(name, index, filter);
-    if (animations.HasAnimation(name, CAnimFilterNoGroup()))
+    if (animations.AnimExists(name, CAnimFilterNoGroup()))
         return animations.GetAnimation(name, index, CAnimFilterNoGroup());
     return animations.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
 }

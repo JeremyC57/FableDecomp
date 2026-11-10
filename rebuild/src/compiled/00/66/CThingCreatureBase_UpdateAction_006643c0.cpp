@@ -12,6 +12,7 @@
 //   on a block-scoped CCountedPointer copy (add-ref, call, inline release through the block's {count, destroy pmf,
 //   object}); "performing any action" is the landed inline IsPerformingAnyAction (0x006622A0); erase takes the
 //   4-byte iterator by value (built in the argument area) and returns one through the frame word.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                // slot 4 (+0x10)
@@ -89,7 +90,7 @@ class CThingCreatureBase { public:
         }
         return false;
     }
-    bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
     void UpdateAction();
 };
 
@@ -108,7 +109,7 @@ void CThingCreatureBase::UpdateAction()
             if (IsPerformingAnyAction())
                 PCurrentAction->FinishAction();
             if (!PQueuedActions.empty()) {
-                SetCurrentAction(PQueuedActions.front().Data);
+                SetCurrentAction(*(PQueuedActions.front().Data));
                 PQueuedActions.erase(PQueuedActions.begin());
             }
         }

@@ -14,6 +14,8 @@
 // Shape: the mode's filter is fetched before the sub-def; the def is held by a releasing holder (one release at the shared
 //   exit); the NoGroup filters are temporaries in the dead index slot; VC7.1 hoists the common `push -1` (the random
 //   pick's last argument and the "DEFAULT" string's length) above the second test.
+// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,17 +32,18 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
 class CAnimationSet { public:
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
+    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
     CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
     CAnimationEntry* GetRandomAnimation(const CCharString& name, unsigned long* seed, const CAnimFilterBase& filter,
                                         long exclude) const;                                                     // 0x005DCC00
 };
-struct CCreatureModeBase {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual const CAnimFilterBase& GetAnimFilter();      // slot 4 (+0x10)
-};
-class CTCCreatureModeManager { public:
-    CCreatureModeBase* GetCurrentMode();        // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)
+    CModeBase& GetCurrentMode() const;        // 0x0073A6E0
 };
 class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
@@ -94,14 +97,14 @@ class CThingCreatureBase { public:
 
 CAnimationEntry* CThingCreatureBase::GetAnimFromName(const CCharString& name, long index)
 {
-    const CAnimFilterBase& filter = PTCModeManager->GetCurrentMode()->GetAnimFilter();
+    const CAnimFilterBase& filter = PTCModeManager->GetCurrentMode().GetAnimFilter();
     CDefPointer<CAppearanceDef> out;
     PBaseDef->GetSubDef(out);
     CHeldDef<CAppearanceDef> def(out.m_pObject);
     const CAnimationSet& animations = def->Animation;
-    if (animations.HasAnimation(name, filter))
+    if (animations.AnimExists(name, filter))
         return animations.GetAnimation(name, index, filter);
-    if (animations.HasAnimation(name, CAnimFilterNoGroup()))
+    if (animations.AnimExists(name, CAnimFilterNoGroup()))
         return animations.GetRandomAnimation(name, GetRandomSeed(), CAnimFilterNoGroup(), -1);
     return animations.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
 }

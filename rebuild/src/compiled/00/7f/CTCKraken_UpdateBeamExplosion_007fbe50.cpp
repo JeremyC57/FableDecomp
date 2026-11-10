@@ -17,6 +17,7 @@
 //   first, +4 bytes); the physics body and the graphic appearance go through inline CThing accessors (a direct member chain
 //   loads them into eax / after the pushes); the beam direction * length product is written twice (the Create end argument
 //   and the line-of-sight end) and VC keeps it in the frame; the driver is the uninitialised GetTCDriver out-pointer.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
@@ -71,10 +72,12 @@ struct CDefClassReference {
     ~CDefClassReference() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 struct CPhysicsBody {
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
@@ -207,7 +210,7 @@ void CTCKraken::UpdateBeamExplosion()
     C3DVector start = PBeamWeaponEffect.GetPItem()->GetPos();
     C3DVector dir;
     CRightHandedSet orientation;
-    if (!ParentThing->GetGraphicAppearance()->GetDummyObject("MOUTH_DUMMY", 0, 0, &start, &orientation, 1.0f)) {
+    if (!ParentThing->GetGraphicAppearance()->GetDummyObject("MOUTH_DUMMY", 0, 0, start, orientation, 1.0f)) {
         dir = PBeamWeaponEffect.GetPItem()->GetPhysics()->GetFacing();
         start = PBeamWeaponEffect.GetPItem()->GetPos();
     } else {

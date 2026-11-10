@@ -14,6 +14,7 @@
 // Shape: the mode manager is zero-initialised and filled by the out-parameter GetInterface (`xor edi,edi` before the
 // bitset test, the component left in edi); the camera manager out pointer is zero-initialised in its frame word and
 // the getter's bool guards the push.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
 #undef CPlayer
@@ -39,12 +40,13 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !thing->IsDead();
 }
 
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual unsigned long GetModeType();                // slot 1
-};
-class CTCCreatureModeManager { public:                         // interface 0x31
-    CMode* GetCurrentMode();                            // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                         // interface 0x31
+    CModeBase& GetCurrentMode() const;                            // 0x0073A6E0
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
 
@@ -77,7 +79,7 @@ void CPlayer::InitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* in
     if (IsThingAlive(hero)) {
         CTCCreatureModeManager* modes = 0;
         hero->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-        if (modes->GetCurrentMode()->GetModeType() != 25)
+        if (modes->GetCurrentMode().GetModeType() != 25)
             modes->AddMode(25);
         CGameCameraManager* camera = 0;
         if (World->CameraSource->GetCameraManager(&camera))

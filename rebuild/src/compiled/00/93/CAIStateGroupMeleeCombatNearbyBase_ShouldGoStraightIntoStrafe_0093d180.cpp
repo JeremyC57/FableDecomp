@@ -12,6 +12,7 @@
 // the dead slot: a C2DVector gives a 4-byte smaller frame) stored across the calls, the second on the
 // FPU), compared by squared length (`fcompp ; test ah,41h`).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF6 2026-11-10): CCombatManager::GetPreferredPos 0x006EA770 is ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb): const, creature by reference.
 class CTCBase;
 class CThing;
 class CWorld;
@@ -154,7 +155,7 @@ class CThingCreatureBase : public CThing { public:
 };
 
 class CCombatManager { public:
-    C3DVector GetPreferredPos(CThingCreatureBase* creature);   // 0x006EA770
+    C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;   // 0x006EA770
 };
 
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
@@ -168,7 +169,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::ShouldGoStraightIntoStrafe()
 {
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInCombatMode() && IS_THING_ALIVE(PEnemy) && !IsStopping()) {
         CThingCreatureBase* self = (CThingCreatureBase*)PBrain->PCreature;
-        C3DVector preferred = self->GetCombatManager().GetPreferredPos(self);
+        C3DVector preferred = self->GetCombatManager().GetPreferredPos(*self);
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         const C3DVector& enemyPos = GetPEnemy()->GetPos();
         const C3DVector& creaturePos = creature->GetPos();

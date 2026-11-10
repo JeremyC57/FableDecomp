@@ -16,6 +16,7 @@
 // Shape: the track-name filter is a named local built before the position (the box is an argument temporary); the
 //   marker and the target computation sit in a block of their own (so the 0x46 lookup key and the dummy name reuse the
 //   marker's frame word); the marker branch loads target.Z for the shared `fadd 1.4`.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
@@ -43,10 +44,12 @@ struct CPhysicsBody {
     VF(39) VF10(4) VF10(5) VF10(6) VF(70) VF(71) VF(72) VF(73) VF(74)
     virtual void SetOrientation(const CRightHandedSet* orientation);   // slot 75 (+0x12c)
 };
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -64,7 +67,7 @@ public:
     const C3DVector& GetPos() const;                    // 0x004C73D0
     bool GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
     {
-        return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
+        return GraphicAppearance->GetDummyObject(name, 0, 0, *position, *orientation, 1.0f);
     }
     template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {

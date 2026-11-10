@@ -7,6 +7,7 @@
 // Shape: the map::insert(const value_type&) instantiation has a same-TU stand-in that builds the pair<iterator, bool>
 //   result in place, so the dropped result shares the find-key frame slot (frame 0xF8 as retail); find has its real
 //   same-TU body and LowerBound a same-TU body.
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
@@ -26,7 +27,7 @@ class CThingCreatureBase { public:
     unsigned char IsAttackedCombatant : 1;  //        bit 3
     unsigned char CombatFlags4 : 4;
     unsigned __int64 GetUID() const { return UniqueID; }
-    bool IsInCombatAsAttacker();            // 0x00662410
+    bool IsInMeleeAsAttacker() const;            // 0x00662410
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -171,7 +172,7 @@ class CCombatManager { public:
 
 void CCombatManager::RegisterAttackingCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked, bool usingCombatWheel)
 {
-    if (attacker.IsInCombatAsAttacker()) {
+    if (attacker.IsInMeleeAsAttacker()) {
         DeregisterAttackingCombatant(&attacker);
         if (Combatants.find(attacked.GetUID()) == Combatants.end())
             RegisterAttackedCombatant(attacker, attacked);

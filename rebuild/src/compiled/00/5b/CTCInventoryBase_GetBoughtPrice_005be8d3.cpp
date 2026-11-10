@@ -8,8 +8,9 @@
 // Retail CTCInventoryBase: no engine header; Categories {first, last, end} at +0x20.
 // Shape: the found category goes through a named local so the final member call is a sibling `jmp` that reuses the
 // incoming argument slot (the chained `Find(...)->GetBoughtPrice(itemType)` pre-pushes itemType and calls).
+// Name fix (agentNF6 2026-11-10): CTCInventoryItem::GetInventoryCategory 0x005D97B0 is the static ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z (Ego_r.pdb / FableWin.pdb), was a free GetInventoryCategory.
 #pragma optimize("s", on)
-long __fastcall GetInventoryCategory(long itemType);            // 0x005D97B0
+class CTCInventoryItem { public: static long __fastcall GetInventoryCategory(long itemType); };            // 0x005D97B0
 struct CCategory_Retail {
     unsigned char _body[0x2C];
     long GetBoughtPrice(long itemType);                          // 0x005BE8B1
@@ -27,6 +28,6 @@ struct CTCInventoryBase_Retail {
 };
 long CTCInventoryBase_Retail::GetBoughtPrice(long itemType)
 {
-    CCategory_Retail* category = FindCategoryWithDefIndex(Categories.first, Categories.last, GetInventoryCategory(itemType));
+    CCategory_Retail* category = FindCategoryWithDefIndex(Categories.first, Categories.last, CTCInventoryItem::GetInventoryCategory(itemType));
     return category->GetBoughtPrice(itemType);
 }

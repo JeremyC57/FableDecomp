@@ -2,6 +2,7 @@
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +8.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail address 0x008717a0, 262 bytes. Captures SourceThing's appearance before the action helper-name callback; TC41 is CTCDExplosion and AddExcludedThing appends to ImmuneThings. PDB CThing uses UsingComponents/Components/PTCGraphicAppearance at +0x20/+0x48/+0x74; the local retail view adjusts Components to +0x44 and PTCGraphicAppearance to +0x64. CTCDExplosion::ImmuneThings is donor +0x68 and retail +0x60 after native vector widths differ.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_string.h"
 #include "engine/CCreatureActionBase.h"
 #define CThing CThing_DonorPDB
@@ -44,7 +45,7 @@ struct CCreatureActionBaseVirtuals {
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
     bool GetHelperPoint(const CCharString& name, long zero1, unsigned long zero2, C3DVector& position, float scale) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
-    bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale); // 0x004C08C0
+    bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector& position, CRightHandedSet& orientation, float scale) const; // 0x004C08C0
 };
 }
 class CThing { public:
@@ -79,7 +80,7 @@ void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
         appearance->GetHelperPoint(helperName, 0, 0, sourcePosition, 1.0f);
     } else if (Dummy) {
         CRightHandedSet orientation;
-        appearance->GetDummyObject(AttachmentObject, 0, 0, &sourcePosition, &orientation, 1.0f);
+        appearance->GetDummyObject(AttachmentObject, 0, 0, sourcePosition, orientation, 1.0f);
     } else {
         appearance->GetHelperPoint(AttachmentObject, 0, 0, sourcePosition, 1.0f);
     }

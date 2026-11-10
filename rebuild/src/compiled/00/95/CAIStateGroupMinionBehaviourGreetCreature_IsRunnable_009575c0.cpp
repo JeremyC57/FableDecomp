@@ -9,6 +9,7 @@
 // Shape: the selected map entry's component is used straight as `this` in the virtual call (entry-returning
 // FindEntry); the temporary reuses the key slot. No engine header for this class; the pointer member is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -107,7 +108,8 @@ struct CTCGreetSource {                         // the interface-8 component
     virtual CThing* GetCreatureToGreet(bool flag);  // slot 32 (+0x80)
 };
 
-bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);   // 0x008645E0
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 
 struct CAIStateGroup_MinionBehaviourGreetCreature : CAIStateGroupBase {
     CIntelligentPointerThing PCreatureToGreet;  // +0x14
@@ -118,7 +120,7 @@ bool CAIStateGroup_MinionBehaviourGreetCreature::IsRunnable()
 {
     if (PBrain->PCreature->HasTC(8)) {
         CThing* other = ((CTCGreetSource*)PBrain->PCreature->FindEntry(8)->second)->GetCreatureToGreet(true);
-        if (other != 0 && CanCreatureSeeCreature(PBrain->PCreature, other, false)) {
+        if (other != 0 && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), other, false)) {
             PCreatureToGreet = other;
             return true;
         }

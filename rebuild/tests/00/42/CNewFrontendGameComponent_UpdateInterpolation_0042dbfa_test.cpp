@@ -1,3 +1,4 @@
+// 0042dbfa CNewFrontendGameComponent::UpdateInterpolation -- behaviour test (agentNF6: GFGetTime spelling, portable, exact PASS line)
 #include <stdio.h>
 
 class C3DVector { public: float x, y, z; };
@@ -10,7 +11,10 @@ struct FrontendInterpOut {
 };
 
 // Stub externs so the test links standalone.
-float __cdecl Frontend_GetInterpTime_0042dbfa() { return 10.0f; }
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+double __fastcall GFGetTime() { return 10.0; }   // 0x009E1BC0 ?GFGetTime@@YINXZ
 float g_FrontendInterpScale_0042dbfa = 2.0f;
 
 class CNewFrontendGameComponent { public:
@@ -27,7 +31,7 @@ void CNewFrontendGameComponent::UpdateInterpolation(FrontendInterpOut* out)
     C3DVector v;
     v.x = 0.0f;
     v.y = 0.0f;
-    v.z = (Frontend_GetInterpTime_0042dbfa() - this->m_StartTime)
+    v.z = ((float)GFGetTime() - this->m_StartTime)
           * g_FrontendInterpScale_0042dbfa;
 
     out->a = v;
@@ -61,7 +65,7 @@ int main()
         obj.m_cc.x == 0.0f && obj.m_cc.y == 0.0f && obj.m_cc.z == ez;
 
     if (ok) {
-        printf("OK_0x0042dbfa\n");
+        printf("0042dbfa_TEST PASS\n");
         return 0;
     }
     printf("FAIL a=(%f,%f,%f) b=(%f,%f,%f) mcc=(%f,%f,%f)\n",

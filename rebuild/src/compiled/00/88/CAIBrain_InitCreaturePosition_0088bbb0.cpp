@@ -7,6 +7,8 @@
 // engine/CAIBrain.h (PDB): +0x28 CVectorMap<long, CAIStateGroupBase*> StateGroupList. After the
 // non-virtual preparation step at 0x0088BB60 each state group gets a chance to place the creature
 // through its virtual slot 3; the first group that reports success ends the walk.
+// Name fix (agentNF6 2026-11-10): callee 0x0088BB60 is ?ForceReset@CAIBrain@@QAEXXZ (Ego_r.pdb / FableWin.pdb; engine/CAIBrain.h opt-in FABLE_RETAIL_CAIBRAIN_FORCERESET).
+#define FABLE_RETAIL_CAIBRAIN_FORCERESET
 #include "engine/CAIBrain.h"
 
 struct CAIStateGroupVirtuals {
@@ -25,13 +27,12 @@ struct CStateGroupVectorMap {
 };
 
 struct CAIBrain_Methods : CAIBrain {
-    void PrepareCreaturePosition();  // 0x0088BB60
     void InitCreaturePosition();
 };
 
 void CAIBrain_Methods::InitCreaturePosition()
 {
-    PrepareCreaturePosition();
+    ForceReset();                    // 0x0088BB60
     CStateGroupVectorMap* groups = reinterpret_cast<CStateGroupVectorMap*>(&this->StateGroupList[0]);
     for (CStateGroupEntry* it = groups->Begin; it != groups->End; ++it) {
         if (it->Group->InitCreaturePosition())

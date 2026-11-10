@@ -1,6 +1,7 @@
 // CWorld::GetPathNameForFileName(const CWideString& fileName) const -- search every top-level directory of U:\ for a file whose name (without extension, and with an empty extension) equals fileName; return the found entry, else the empty string
 // Leaf: ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z
-// Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
+// Flags: /GS
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049EF50, 553 bytes, `ret 8`; /GS cookie frame (`and esp,-8`); FableWin.pdb and Ego_r.pdb
 //   ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z (the PDB's `_W` spellings land in the G form).
 // Callees: CWideString(const wchar_t*) 0x0099B6B0, CWideString() 0x0099AED0, CWideString(const CWideString&) 0x0099B720,

@@ -6,6 +6,8 @@
 // containers before it); CInstantiatedDefInfo: PDef (CDefPointer) at +0xc; CDefPointeeBase keeps its reference count at +4.
 // Shape: the copy constructor's increment goes through a register (`mov edx,[ecx+4] ; inc edx ; mov [ecx+4],edx`); the
 // `index <= 0` branch default-constructs the result. 0x009ADA90 is the same body for a second instantiation.
+// Leaf: ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z
+// Name fix (agentNF6 2026-11-10): self spelling ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z (Ego_r.pdb / FableWin.pdb; the const twin, bound RELOCATION_MATCH by caller 0x004196B2); LoadDef 0x009AD6E0 is protected const ?LoadDef@CDefinitionManager@@IBEXK@Z (both PDBs).
 class CCharString;
 
 class CDefPointeeBase { public:
@@ -13,10 +15,16 @@ class CDefPointeeBase { public:
     long RefCount;                                 // +4
 };
 
-struct CDefPointer {                               // CDefPointer<CDefClassBase>
+class CDefClassBase;
+template <class T> class CDefPointer { public:     // CDefPointer<T> (Ego_r.pdb / FableWin.pdb class template)
     CDefPointeeBase* Object;                       // +0
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)
+    {
+        if (Object)
+            Object->RefCount = Object->RefCount + 1;
+    }
+    template <class U> CDefPointer(const CDefPointer<U>& other) : Object(other.Object)
     {
         if (Object)
             Object->RefCount = Object->RefCount + 1;
@@ -27,24 +35,25 @@ struct CInstantiatedDefInfo {
     long        ClassName;                         // +0x00 CDefString
     long        InstantiationName;                 // +0x04 CDefString
     unsigned long ClassIndex;                      // +0x08
-    CDefPointer PDef;                              // +0x0c
+    CDefPointer<CDefClassBase> PDef;               // +0x0c
 };
 
 class CDefinitionManager { public:
     unsigned char          _pad[0xa4];             // +0x00 vptr, maps, symbol tables, compressed data
     CInstantiatedDefInfo** InstantiatedDefs;       // +0xa4 CArray<CInstantiatedDefInfo*>::m_begin
-    void LoadDef(unsigned long globalIndex);                   // 0x009AD6E0
-    CDefPointer GetPDefFromInstantiationName(const CCharString& name);
+protected:
+    void LoadDef(unsigned long globalIndex) const;             // 0x009AD6E0 ?LoadDef@CDefinitionManager@@IBEXK@Z
 public:
+    CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString& name) const;
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
-CDefPointer CDefinitionManager::GetPDefFromInstantiationName(const CCharString& name)
+CDefPointer<const CDefClassBase> CDefinitionManager::GetPDefFromInstantiationName(const CCharString& name) const
 {
     long index = GetDefGlobalIndexFromName(name);
     if (index > 0) {
         LoadDef(index);
         return InstantiatedDefs[index]->PDef;
     }
-    return CDefPointer();
+    return CDefPointer<const CDefClassBase>();
 }

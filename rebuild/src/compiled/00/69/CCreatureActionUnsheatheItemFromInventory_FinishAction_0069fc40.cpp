@@ -11,6 +11,7 @@
 // Layout (Ego_r.pdb, retail offsets 0xc lower than the PDB build): PUnsheatheItem CIntelligentPointer<CThing> at +0xa8,
 // PFollowUpAction CCountedPointer<CCreatureActionBase> at +0xb0 (object) / +0xb4 (count). The follow-up is re-read from
 // the member for the refusal call (`mov ecx,[esi+0b0h]`). Modelled locally (the generated headers flatten the bases).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include "fable_compiler.h"
 class CTCBase;
 class CCreatureActionBase;
@@ -21,7 +22,6 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -35,6 +35,9 @@ class CThing { public:
         }
         return false;
     }
+};
+class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / FableWin.pdb: SetCurrentAction is a CThingCreatureBase member
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CTCCreatureModeManager { public:
     void OnUnsheatheFinished();             // 0x0073A840
@@ -79,7 +82,7 @@ void CCreatureAction_UnsheatheItemFromInventory::FinishAction()
         PerformAction();
     CCreatureActionBase::FinishAction();
     if (PFollowUpAction.Object) {
-        if (!((CThing*)PCreature.GetPItem())->SetCurrentAction(PFollowUpAction.Object))
+        if (!((CThingCreatureBase*)(((CThing*)PCreature.GetPItem())))->SetCurrentAction(*PFollowUpAction.Object))
             PFollowUpAction.Object->OnRejectedByCreature();
     }
     CTCCreatureModeManager* modes;

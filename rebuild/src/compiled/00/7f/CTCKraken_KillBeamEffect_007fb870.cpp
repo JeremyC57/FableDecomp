@@ -14,6 +14,7 @@
 // Shape: the sibling of StartBeamEffect 0x007FB6A0: KillBeamCounter = 5 comes BEFORE the def pointer / effect type
 // declarations (their zero stores follow it; VC also hoists one effect-type zero above the counter test), the effect thing is
 // tested raw (`fade && !fade->IsDead()`) and not kept.
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
@@ -73,10 +74,12 @@ struct CDefClassReference {                           // a counted CDefClassBase
     ~CDefClassReference() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCGraphicAppearance {
-    bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position,
-                        CRightHandedSet* orientation, float scale);   // 0x004C08C0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
+    bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector& position, CRightHandedSet& orientation, float scale) const;   // 0x004C08C0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing;
 class CTCDParticleEmitter {
 public:
@@ -166,7 +169,7 @@ void CTCKraken::KillBeamEffect()
         long effectType = 0;
         C3DVector mouthPosition;
         CRightHandedSet orientation;
-        ParentThing->PGraphicAppearance->GetDummyObject("MOUTH_DUMMY", 0, 0, &mouthPosition, &orientation, 1.0f);
+        ParentThing->PGraphicAppearance->GetDummyObject("MOUTH_DUMMY", 0, 0, mouthPosition, orientation, 1.0f);
         if (CDefClassReference(ParentThing->m_pDef)->GetSubDef(effects) &&
             effects->GetEffectFromString("BEAM_ATTACK_FADE", effectType)) {
             CThing* fade = CTCDParticleEmitter::Create(effectType, *(&mouthPosition), false);

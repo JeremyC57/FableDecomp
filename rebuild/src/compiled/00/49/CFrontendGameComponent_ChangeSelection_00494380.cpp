@@ -1,8 +1,9 @@
 // CFrontendGameComponent::ChangeSelection @ 0x00494380.
+// Name fix (agentNF6 2026-11-10): GFGetTime 0x009E1BC0 is ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb: global __fastcall, double, no arguments).
 
 extern double g_FrontendInitialRepeatDelay_00494380;
 extern double g_FrontendHeldRepeatDelay_00494380;
-extern double __cdecl GetFrontendInputTime_00494380();
+double __fastcall GFGetTime();   // 0x009E1BC0 ?GFGetTime@@YINXZ
 
 class CFrontendGameComponent_00494380
 {
@@ -21,7 +22,7 @@ bool CFrontendGameComponent_00494380::ChangeSelection(long movement)
     if (m_LastMovement != movement)
     {
         m_IsRepeatingSelection = false;
-        m_LastSelectionTime = GetFrontendInputTime_00494380();
+        m_LastSelectionTime = GFGetTime();
         m_LastMovement = movement;
         return true;
     }
@@ -30,10 +31,10 @@ bool CFrontendGameComponent_00494380::ChangeSelection(long movement)
         ? g_FrontendHeldRepeatDelay_00494380
         : g_FrontendInitialRepeatDelay_00494380;
 
-    if (GetFrontendInputTime_00494380() - m_LastSelectionTime >= delay)
+    if (GFGetTime() - m_LastSelectionTime >= delay)
     {
         m_IsRepeatingSelection = true;
-        m_LastSelectionTime = GetFrontendInputTime_00494380();
+        m_LastSelectionTime = GFGetTime();
         return true;
     }
 

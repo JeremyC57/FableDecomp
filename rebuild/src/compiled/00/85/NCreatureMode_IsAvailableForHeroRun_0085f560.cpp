@@ -18,20 +18,22 @@
 //   non-const 0x0040F020. Interface 0x31 = CTCCreatureModeManager (GetCurrentMode 0x0073A6E0, IsModeActive 0x0073A8A0,
 //   RemoveMode 0x0073ABA0; the manifest labels "CPixelShader::CountReferences" / "CPlayer::HasMode" are propagated twins).
 //   A mode's vtable slot 1 (+4) returns its NCreatureMode::EMode number (read from each CMode*::vfunc_1 body).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> CTCInterfaceEntry;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCInterfaceMap;
-class CModeBase {                                       // CTCCreatureModeManager::CModeBase
+
+class CTCCreatureModeManager { public:
+    class CModeBase {                                       // CTCCreatureModeManager::CModeBase
 public:
     virtual void v00();
     virtual long GetType() const;                       // slot 1 (+4): NCreatureMode::EMode
-};
-class CTCCreatureModeManager {                          // interface 0x31
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                          // interface 0x31
 public:
-    CModeBase& GetCurrentMode() const;                  // 0x0073A6E0
+    CTCCreatureModeManager::CModeBase& GetCurrentMode() const;                  // 0x0073A6E0
     bool IsModeActive(unsigned long mode) const;        // 0x0073A8A0
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
 };

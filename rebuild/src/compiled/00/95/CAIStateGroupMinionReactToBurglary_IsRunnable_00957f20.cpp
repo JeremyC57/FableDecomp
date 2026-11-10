@@ -15,6 +15,7 @@
 // `PBurglar = CIntelligentPointer(player)` through a named out-of-line-constructed pointer + operator=; the clock is a named local (GetPWorld before the argument loads).
 // No engine header for this class; PBurglar is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -96,7 +97,8 @@ class CWorld { public:
     CPlayerManager* GetPlayerManager();         // 0x0049D9D0
 };
 
-bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);   // 0x008645E0
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 
 struct CIntelligentPointerOut : CBaseIntelligentPointerCtor {
     CIntelligentPointerOut(CThing* item);       // 0x0056C860
@@ -118,7 +120,7 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();
     if (sleepTime && home != 0) {
         CThing* player = GetWorld().GetPlayerManager()->GetPlayerCharacter();
-        if (player != 0 && !player->IsDead() && CanCreatureSeeCreature(PBrain->PCreature, player, false) &&
+        if (player != 0 && !player->IsDead() && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), player, false) &&
             home->IsPointInside(((CThingPos*)player)->GetPosition())) {
             CIntelligentPointerOut burglar(player);
             PBurglar = burglar;

@@ -11,7 +11,9 @@
 //   unselect test is one && chain stored in a named bool (homed in the dead `event` slot) whose GetDef temporary is conditionally
 //   destroyed (flag word zeroed at entry; the forceinline destructor nulls the pointer); the parent is re-read through an inline
 //   accessor after the GetType call (a plain `PParent` re-read loads eax and copies to ecx).
+// Name fix (agentNF6 2026-11-10): GFGetTime 0x009E1BC0 is ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb: global __fastcall, double, no arguments).
 #include "fable_compiler.h"
+double __fastcall GFGetTime();             // 0x009E1BC0 ?GFGetTime@@YINXZ (global, not in NUISystem)
 namespace NUISystem {
 
 enum EEvent { EVENT_2 = 2, EVENT_3 = 3, EVENT_4 = 4, EVENT_5 = 5, EVENT_25 = 25 };
@@ -248,7 +250,6 @@ struct SListNode { SListNode* _M_next; SListNode* _M_prev; };
 extern bool       g_IgnoreInputDelay;      // 0x013B8AA8
 extern double     g_LastInputTime;         // 0x013B8AA0
 extern SListNode* g_PendingList;           // 0x013B8A98
-double __fastcall GFGetTime();             // 0x009E1BC0
 
 void CMenuEntry::ProcessEvent(EEvent event)
 {

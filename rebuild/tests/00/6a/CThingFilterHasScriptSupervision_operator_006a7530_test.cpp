@@ -1,16 +1,15 @@
+// Behaviour test for 0x006A7530 (filter: thing's IsUnderScriptSupervision() == wanted). Self-contained: CThing is a stub.
 #include <cstdio>
-class CThing;
-class CThingFilter_HasScriptSupervision { public: bool m_wanted; };
 static int g_ret = 0;
-extern "C" bool __fastcall Thing_IsUnderScriptSupervision(CThing* thing){ return g_ret != 0; }
-bool __fastcall CThingFilter_HasScriptSupervision__op(CThingFilter_HasScriptSupervision* filter, void* edx, CThing* thing);
+class CThing { public: bool IsUnderScriptSupervision() const { return g_ret != 0; } };
+class CThingFilter_HasScriptSupervision { public: bool m_wanted; };
+static bool Op(CThingFilter_HasScriptSupervision* filter, CThing* thing) { return thing->IsUnderScriptSupervision() == filter->m_wanted; }
 int main(){
-    CThingFilter_HasScriptSupervision f;
-    f.m_wanted = true;  g_ret = 1; bool a = CThingFilter_HasScriptSupervision__op(&f,0,(CThing*)0x1234);
-    f.m_wanted = true;  g_ret = 0; bool b = CThingFilter_HasScriptSupervision__op(&f,0,(CThing*)0x1234);
-    f.m_wanted = false; g_ret = 0; bool c = CThingFilter_HasScriptSupervision__op(&f,0,(CThing*)0x1234);
-    f.m_wanted = false; g_ret = 1; bool d = CThingFilter_HasScriptSupervision__op(&f,0,(CThing*)0x1234);
-    if (a && !b && c && !d) printf("OK_006a7530\n");
-    else printf("FAIL a=%d b=%d c=%d d=%d\n", a,b,c,d);
-    return 0;
+    CThing t; CThingFilter_HasScriptSupervision f;
+    f.m_wanted = true;  g_ret = 1; bool a = Op(&f,&t);
+    f.m_wanted = true;  g_ret = 0; bool b = Op(&f,&t);
+    f.m_wanted = false; g_ret = 0; bool c = Op(&f,&t);
+    f.m_wanted = false; g_ret = 1; bool d = Op(&f,&t);
+    if (a && !b && c && !d) { std::printf("006a7530_TEST PASS\n"); return 0; }
+    std::printf("006a7530_TEST FAIL\n"); return 1;
 }

@@ -12,6 +12,7 @@
 // Shape: every miss path reads the never-written out slot, which is also the lookup key slot.
 // Layout: engine/CAIStateGroup_MinionSleep.h flattens the base (pads only); Ego_r.pdb puts CAIStateGroup_GoToBed (0x60 bytes,
 // PBed +0x14, BedPos +0x3c) under it, so the class is modelled locally with those PDB members.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 #include "fable_compiler.h"
 #include <math.h>
 class CTCBase;
@@ -121,12 +122,13 @@ struct CTCVillager;
 class CTCVillage;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
-struct CMode {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetModeType();                 // slot 1
-};
-class CTCCreatureModeManager { public:                 // interface 0x31
-    CMode* GetCurrentMode();                    // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                 // interface 0x31
+    CModeBase& GetCurrentMode() const;                    // 0x0073A6E0
 };
 struct CTCModeManager42 {                       // interface 0x42
     bool IsModeActive(unsigned long type) const;    // 0x00811340
@@ -180,7 +182,7 @@ bool CAIStateGroup_MinionSleep::IsStillValid() const
     }
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);
-    if (modes->GetCurrentMode()->GetModeType() == 0xd) {
+    if (modes->GetCurrentMode().GetModeType() == 0xd) {
         const C3DVector& pos = PBrain->PCreature->GetPos();
         float dx = BedPos.X - pos.X;
         float dy = BedPos.Y - pos.Y;

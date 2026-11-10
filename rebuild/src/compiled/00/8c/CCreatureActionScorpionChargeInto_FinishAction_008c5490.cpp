@@ -1,5 +1,6 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +4.
+// Name fix (agentNF6 2026-11-10): CCombatActionBase::FinishAction 0x00859A20 is protected virtual (?FinishAction@CCombatActionBase@@MAEXXZ, Ego_r.pdb / FableWin.pdb).
 #include "fable_compiler.h"
 #define CCreatureAction_ScorpionChargeInto CCreatureAction_ScorpionChargeIntoPdb
 #include "engine/CCreatureAction_ScorpionChargeInto.h"
@@ -191,7 +192,7 @@ struct __declspec(novtable) CCreatureActionBase {
 struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
     virtual ~CCombatActionBase();
     virtual void PerformAction();
-    virtual void FinishAction();
+    protected: virtual void FinishAction(); public:
     virtual long GetAnimDelayTime() const;
     virtual long GetAnimationIndex() const;
     virtual long GetAnimationTransitionInTime() const;

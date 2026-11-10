@@ -9,6 +9,7 @@
 // up in HeroCrowdThings and returns the crowd thing and its group component through the out pointers.
 // Shape: as 0x00783C20 (the parent read into a local first) with the argument re-read from its slot for
 // the call; the local also fixes the eax/ecx choice for the argument and the crowd pointer.
+// Name fix (agentNF6 2026-11-10): CTCBoastingCrowdControl::GetCrowd 0x00783A30 is private, CThing by reference (?GetCrowd@CTCBoastingCrowdControl@@AAE_NAAVCThing@@PAPAV2@PAPAVCTCCreatureGroupBoastingCrowd@@_N@Z, Ego_r.pdb / FableWin.pdb).
 class CThing;
 
 class CTCCreatureGroupBoastingCrowd { public:
@@ -27,7 +28,9 @@ class CTCBoastingCrowdControl { public:
     unsigned char _pad0d[0x3];
     unsigned char HeroCrowdThings[0xc];                     // +0x10 map<unsigned __int64, CIntelligentPointer<CThing>> (12 bytes in retail)
     bool          CrowdSizesSuppressed;                     // +0x1c (PDB +0x20)
-    bool GetCrowd(CThing* thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);   // 0x00783A30
+private:
+    bool GetCrowd(CThing& thing, CThing** groupThing, CTCCreatureGroupBoastingCrowd** crowd, bool create);
+public:   // 0x00783A30
     void OnHeroBoast(long boast);
 };
 
@@ -36,6 +39,6 @@ void CTCBoastingCrowdControl::OnHeroBoast(long boast)
     CThing* parent = ParentThing;
     CThing* groupThing;
     CTCCreatureGroupBoastingCrowd* crowd;
-    if (GetCrowd(parent, &groupThing, &crowd, false))
+    if (GetCrowd(*parent, &groupThing, &crowd, false))
         crowd->OnHeroBoast(boast);
 }

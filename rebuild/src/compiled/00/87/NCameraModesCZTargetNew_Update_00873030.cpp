@@ -16,6 +16,7 @@
 //   member chain moves the load to eax or below the pushes); HasTC is a forced-inline `unsigned long` mask test (`test ch,1`); the component is the one-ternary entry pick over a template constant key
 //   loaded straight into ecx; the blend is a named float read first, then `lookAt += (aim - lookAt) * blend` through inline C3DVector operators; the two
 //   positions are stored through the implicit operator= (`lea ecx,[esi+54h]` copy, then `add esi,10h`).
+// Name fix (agentNF6 2026-11-10): NCameraModes::CBase::GetObservedThing 0x0084F1B0 is ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ (Ego_r.pdb / FableWin.pdb): returns const CThingGameObject*.
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 
@@ -71,6 +72,7 @@ class CThing { public:
         return (it == last || TYPE < it->first ? last : it)->second;
     }
 };
+class CThingGameObject : public CThing { };          // Ego_r.pdb / FableWin.pdb: CThing -> CThingGameObject (NCameraModes::CBase::GetObservedThing returns it)
 
 template<class T> inline bool IS_THING_ALIVE(T* thing) { return thing != 0 && !thing->Dead; }
 
@@ -105,7 +107,7 @@ public:
     void* PCameraModeDefInfo_SubComponents[3];          // +0x48 SubComponents vector
     CPhysicsState GoTo;                                 // +0x54
     unsigned char _pad84[0x20];
-    const CThing* GetObservedThing() const;             // 0x0084F1B0
+    const CThingGameObject* GetObservedThing() const;             // 0x0084F1B0
     const CWorld& GetWorld() const;                     // 0x0084D050
 };
 class CZTargetNew : public CBase {

@@ -9,6 +9,7 @@
 // Shape: as the MotherProtectFamily sibling (0x00933C10) plus the dead-bit test (+0x91 bit 0) on the enemy.
 // No engine header for this class; the pointer member is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// Name fix (agentNF6 2026-11-10): NCreatureAI::IsAwareOfThing 0x008645E0 is ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb), was a free CanCreatureSeeCreature(const CThing*, const CThing*, bool).
 #include "fable_compiler.h"
 class CTCBase;
 class CThing;
@@ -106,7 +107,8 @@ struct CTCEnemySource {                         // the interface-8 component
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
 
-bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);   // 0x008645E0
+class CThingAICreature;
+namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 
 struct CAIStateGroup_MinionReactToEnemy : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;            // +0x14
@@ -117,7 +119,7 @@ bool CAIStateGroup_MinionReactToEnemy::IsRunnable()
 {
     if (PBrain->PCreature->HasTC(8)) {
         CThing* enemy = ((CTCEnemySource*)PBrain->PCreature->FindEntry(8)->second)->GetEnemy();
-        if (enemy != 0 && !(enemy->m_flags91 & 1) && CanCreatureSeeCreature(PBrain->PCreature, enemy, false)) {
+        if (enemy != 0 && !(enemy->m_flags91 & 1) && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), enemy, false)) {
             PEnemy = enemy;
             return true;
         }

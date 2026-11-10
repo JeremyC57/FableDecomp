@@ -11,6 +11,7 @@
 // Shape: the graphic is reached through an inline accessor (retail loads it into ecx before the pushes), the flag
 //   default is `0` then `if (!recalculate) flags = 0x21`, and C3DVector has a declared memberwise copy ctor (the
 //   returned `pos` is copied X through the FPU, Y/Z as dwords).
+// Name fix (agentNF6 2026-11-10): NGraphicAppearance::CTCGraphicAppearance::GetDummyObject 0x004C08C0 is ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z (Ego_r.pdb / FableWin.pdb): namespace NGraphicAppearance, const, position and orientation by reference.
 #include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
@@ -30,7 +31,7 @@ extern CCharString g_CCharString_013bac50;              // "TARGET_CURSOR_POINT"
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& pos, float scale) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
-    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale);   // 0x004C08C0
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& set, float scale) const;   // 0x004C08C0
 };
 }
 
@@ -59,7 +60,7 @@ C3DVector CThingCreatureBase::GetHeadPos(bool recalculate) const
         flags = 0x21;
     C3DVector pos;
     CRightHandedSet set;
-    if (!GetGraphicAppearance()->GetDummyObject(g_CCharString_013bac54, 0, flags, &pos, &set, 1.0f)
+    if (!GetGraphicAppearance()->GetDummyObject(g_CCharString_013bac54, 0, flags, pos, set, 1.0f)
         && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac48, 0, flags, pos, 1.0f)
         && !GetGraphicAppearance()->GetHelperPoint(g_CCharString_013bac50, 0, flags, pos, 1.0f)) {
         pos = GetPos();

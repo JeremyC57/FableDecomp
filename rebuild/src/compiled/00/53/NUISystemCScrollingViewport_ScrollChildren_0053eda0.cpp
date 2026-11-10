@@ -7,6 +7,7 @@
 // Layout: Children vector<CCountedPointer<CComponent>> +0xb0 (8-byte elements), the second child list
 // vector<CComponent*> +0x164 (descriptive), ScrollingSpeed +0x174, Window C2DBoxF +0x178, PScrollBar +0x188,
 // PScrollBarOutside +0x18c. Float pool: -1.0f 0x0122DEE0, 0.2f immediate.
+// Name fix (agentNF6 2026-11-10): NUISystem::CManager::GetUIScale 0x0041CF47 is const (?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, Ego_r.pdb / FableWin.pdb; engine/NUISystem_CManager.h).
 #include <math.h>
 class C2DVector { public:
     float X, Y;
@@ -17,7 +18,7 @@ class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 namespace NUISystem {
 class CManager { public:
     float GetDescriptionScrollingOffset();   // 0x0041CF40
-    C2DVector GetUIScale();                  // 0x0041CF47
+    C2DVector GetUIScale() const;                  // 0x0041CF47
     bool IsScrollUnclamped();                // 0x0041CF2C (descriptive: the +0xc8 flag)
     static CManager* __fastcall GetInstance();                 // 0x0041E5F2
 };

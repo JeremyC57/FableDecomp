@@ -1,6 +1,7 @@
 // CSubtitleRenderer::GetActionNameFromEmbeddedTag(const CWideString& tag, CWideString& actionName) -- resolve an embedded [GAME_ACTION_...] tag (a GameActionValues entry, or a GAME_ACTION_MOVEMENT_UP/RIGHT/DOWN/LEFT direction) to the name of its assigned input
 // Leaf: ?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z
-// Flags: /Zc:wchar_t
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Retail: 0x0049124E, 1056 bytes (FableWin ?GetActionNameFromEmbeddedTag@CSubtitleRenderer@@CI_NABVCWideString@@AAV2@@Z; bsim
 //   0.944 against the PDB function). Same size TU as FormatTextWithGameActionNames 0x004917B5 (its only caller).
 // Callees: CPlayerGui::PeekGuiDef 0x00438570, CWideString::ConvertToCharString 0x0099B2C0, the GameActionValues (+0x940)

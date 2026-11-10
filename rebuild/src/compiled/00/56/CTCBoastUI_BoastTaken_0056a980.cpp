@@ -14,6 +14,7 @@
 // GroupIndex +0x1c); map node value at +0x10; CThing TC bitset +0x20, interface vector +0x44/+0x48; quest
 // manager 0x013B89FC with its Boasts list at +0x68 (engine/CQuestManager.h, retail STLport 4.6: Boasts +0x68,
 // AcceptedBoasts +0x6c, as the landed CQuestManager::GetBoast 0x004AF7A0 / IsBoastTaken 0x004AF810).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
@@ -301,7 +302,9 @@ class CThing { public:
             it = m_interfacesLast;
         return it->component;
     }
-    void SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
+};
+class CThingCreatureBase : public CThing { public:          // Ego_r.pdb / FableWin.pdb: SetCurrentAction is a CThingCreatureBase member
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CTCBoastingCrowdControl { public:
     void OnHeroBoast(const CBoast* boast);              // 0x00783C50
@@ -402,6 +405,6 @@ void CTCBoastUI::BoastTaken(const CBoast* boast)
     }
     CThing* creature = ParentThing;
     CCharString animation("ST_BOAST");
-    creature->SetCurrentAction(CCreatureAction_PlayAnimation(creature, animation, 0.0f,
+    ((CThingCreatureBase*)(creature))->SetCurrentAction(CCreatureAction_PlayAnimation(creature, animation, 0.0f,
         CSoundPair(), false, true, false, 0, 0));
 }

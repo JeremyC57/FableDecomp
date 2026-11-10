@@ -17,6 +17,7 @@
 // Layout: retail CThingCreatureDef = Ego_r less 8 here: PrimaryMeleeWeaponDef +0xd8, Graphic (CEngineGraphic) +0x100, its
 //   Type byte +0x10d; CAppearanceDef Animation +0x34. init +8 is the retail-only resource holder whose +0x3c is the mesh
 //   bank (descriptive). Globals: CCharStrings 0x013BAC30, 0x013BAC34, 0x013BAC48 (bound placeholder spellings).
+// Name fix (agentNF6 2026-11-10): 0x013BAC30 is ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B (const CCharString "WEAPON_FOCUS_01"; Ego_r.pdb / FableWin.pdb public records and their dynamic initializer names).
 class CCharStringData { public:
     char*         PData;                                    // +0x00 (CBasicString<char> Data)
     unsigned long StringLength;                             // +0x04
@@ -45,7 +46,7 @@ protected:
     CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (protected non-const overload; hidden result pointer)
 };
 #include "engine/CCountedPointer.h"
-extern CCharString g_CCharString_013bac30;                  // 0x013BAC30
+extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;                  // 0x013BAC30
 extern CCharString g_CCharString_013bac34;                  // 0x013BAC34
 extern CCharString g_CCharString_013bac48;                  // 0x013BAC48
 class C3DMeshStats { public:
@@ -123,7 +124,7 @@ class CThingCreatureDef : public CDefClassBase { public:
 void CThingCreatureDef::Validate(const CValidateDefinitionInitBase& init, const CCharString&) const
 {
     CValidateResources* resources = init.Resources;
-    CCharString dummyName(g_CCharString_013bac30);
+    CCharString dummyName(PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME);
     CCharString helperName(g_CCharString_013bac34);
     const C3DMeshInfo* mesh = 0;
     if (Graphic.Type == 5) {

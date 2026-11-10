@@ -1,4 +1,5 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
+// Name fix (agentNF6 2026-11-10): GFGetTime 0x009E1BC0 is ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb: global __fastcall, double, no arguments); the (float) narrowing is free on x87 without /Op.
 #pragma optimize("s",on)
 // CNewFrontendGameComponent::UpdateInterpolation @ retail 0x0042dbfa (98 bytes)
 //
@@ -40,7 +41,7 @@ struct FrontendInterpOut {
 };
 
 // Masked externs: call rel32 / abs ds operand are relocation-masked in parity.
-extern float __cdecl Frontend_GetInterpTime_0042dbfa();   // call 0x5b3fc6
+double __fastcall GFGetTime();                             // 0x009E1BC0 ?GFGetTime@@YINXZ
 extern float g_FrontendInterpScale_0042dbfa;              // ds:0x1230c38
 
 class CNewFrontendGameComponent { public:
@@ -57,7 +58,7 @@ void CNewFrontendGameComponent::UpdateInterpolation(FrontendInterpOut* out)
     C3DVector v;
     v.X = 0.0f;
     v.Y = 0.0f;
-    v.Z = (Frontend_GetInterpTime_0042dbfa() - this->m_StartTime)
+    v.Z = ((float)GFGetTime() - this->m_StartTime)
           * g_FrontendInterpScale_0042dbfa;
 
     out->a = v;

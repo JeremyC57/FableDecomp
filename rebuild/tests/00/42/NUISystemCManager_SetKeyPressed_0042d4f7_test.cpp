@@ -4,8 +4,9 @@
 #include <string.h>
 #include <new>
 // NUISystem::CManager::SetKeyPressed() -- Store the requested input state.
-// Leaf: ?SetKeyPressed@CManager@NUISystem@@UAEX_W@Z
-// Flags: /Zc:wchar_t
+// Leaf: ?SetKeyPressed@CManager@NUISystem@@UAEXG@Z
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Identity: Own CManager vtable01230134 slot12 and original PDB SetKeyPressed(wchar_t), member KeyPressed+192. RTTI proves CObservable direct base, original lists4 and maps12 explain donor drift.
 // Layout: original class keys, actual bases and typed STLport containers/counting handles. CManager header renamed to restore actual inheritance/types; enum value spellings unspecified. Bank owner declaration is a prefix through UsingRetailBanks only. Unused virtual slots explicitly descriptive.
 #define CManager CManager_HeaderLayout

@@ -13,6 +13,7 @@
 //   0x009D6490, free 0x00BFEA14 (vector storage).
 // Layout: no CWorldMap members are touched (`this` only forwarded to GetLevelFilesFromWorldFile); the two switches
 //   are bytes 0x01375459 / 0x0137545A; the CWADBank local is 0x164 bytes.
+// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CCharString { public:
     void* PStringData;
@@ -24,7 +25,7 @@ class CWideString { public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b); }   // 0x009E9F40
 CWideString __fastcall GetThingFilenameFromLevelFilename(const CWideString& levelFile);    // 0x004FAFF0
 unsigned long GetDefaultBankBlockSize();                // 0x00997B30
 extern bool g_WADBuildEnabled;                          // 0x01375459
@@ -78,13 +79,13 @@ void CWorldMap::CreateWorldLevelWad(const CWideString& worldFile, const CWideStr
         return;
     vector<CWideString> levelFiles;
     GetLevelFilesFromWorldFile(worldFile, levelFiles);
-    DisplayProgress("Opening WAD bank", -1.0f, false, false);
+    NProgressDisplay::DisplayProgress("Opening WAD bank", -1.0f, false, false);
     CWADBank bank;
     bank.OpenFileReadWrite(wadFile, 0, GetDefaultBankBlockSize());
     bank.BeginUpdateEntries();
     unsigned long count = levelFiles.size();
     for (unsigned long i = 1; i < count; ++i) {
-        DisplayProgress("Updating WAD bank entries", -1.0f, false, false);
+        NProgressDisplay::DisplayProgress("Updating WAD bank entries", -1.0f, false, false);
         CWideString levelFile(levelFiles[i]);
         bank.AddFile(levelFile);
         CWideString thingFile = GetThingFilenameFromLevelFilename(levelFiles[i]);

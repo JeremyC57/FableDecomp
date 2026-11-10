@@ -10,6 +10,7 @@
 // Retail CThing: the PDB bit byte +0xA1 sits at +0x91 (Dead bit 0, InLimbo bit 5).
 // Shape: early `return true`s sharing `mov al,1` exits; the mode manager is a named local (esi) and the creature pointer is
 // fetched into edi before the mode call; one `xor al,al` exit.
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 struct CTCBaseInterface;
 class CTCBase;
 #define FABLE_RETAIL_CTHING
@@ -22,12 +23,13 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
-struct CCreatureModeBase {
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetType() const;               // slot 1 (+4)
-};
-class CTCCreatureModeManager { public:                 // interface 0x31
-    CCreatureModeBase* GetCurrentMode() const;  // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                 // interface 0x31
+    CModeBase& GetCurrentMode() const;  // 0x0073A6E0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -58,7 +60,7 @@ bool CTCDParticleEmitter::IsParticleCreationDisabled() const
     const CTCCreatureModeManager* modes;
     if (PAttachedToThing.Get()->PeekTC(TCI_ENTITY_MODE_MANAGER, &modes)) {
         const CThingCreatureBase* creature = (const CThingCreatureBase*)PAttachedToThing.Get();
-        if (modes->GetCurrentMode()->GetType() == 30 && !creature->IsPerformingAnyAction())
+        if (modes->GetCurrentMode().GetType() == 30 && !creature->IsPerformingAnyAction())
             return true;
     }
     return false;

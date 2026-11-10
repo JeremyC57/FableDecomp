@@ -22,6 +22,7 @@
 // `float&` accessor, which makes VC7.1 store and reload the timer (`fstp ; fld`) as retail does.
 // Layout: engine/CTCPerceiveThing.h names (AwarenessTimer +0x18, LineOfSight .. Heard +0x2d..+0x32); the header flattens
 // the CIntelligentPointer member to bytes, so the class is modelled locally as in the landed relatives.
+// Name fix (agentNF6 2026-11-10): CTCPerceiveThing::SetLastAwareInfo 0x00744730 (?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ) and UpdateSmell 0x00744B50 (?UpdateSmell@CTCPerceiveThing@@AAEXXZ) are private (Ego_r.pdb / FableWin.pdb); engine/CTCPerceiveThing.h.
 class CThing;
 class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
@@ -119,8 +120,10 @@ class CTCPerceiveThing { public:
                 UpdateDrawPerceivers();
         }
     }
-    void SetAsDirectlyAwareOfPerceivedThing_00744730();  // 0x00744730
+private:
+    void SetLastAwareInfo();                    // 0x00744730
     void UpdateSmell();                         // 0x00744B50
+public:
     void UpdateHearing();                       // 0x00744FB0
     void UpdateLineOfSight();                   // 0x00745120
     CGameSubsystem* GetGameSubsystem() const;   // 0x00686D60 (CTCBase)
@@ -149,7 +152,7 @@ void CTCPerceiveThing::UpdatePerception()
     UpdateHearing();
     bool perceived = LineOfSight || Smelt;
     if (perceived) {
-        SetAsDirectlyAwareOfPerceivedThing_00744730();
+        SetLastAwareInfo();
     } else if (AwarenessTimer > DELTA_NOTIONAL_ZERO) {
         float frameTime = GetGameSubsystem()->GetSecondsPerFrame();
         GetAwarenessTimer() -= frameTime * 4.0f;

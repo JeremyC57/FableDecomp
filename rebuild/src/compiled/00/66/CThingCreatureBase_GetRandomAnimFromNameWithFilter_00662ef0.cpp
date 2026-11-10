@@ -16,6 +16,7 @@
 //   (`dec [esi+4] ; jne`, def in esi, &Animation in edi, `name` re-read from its slot).
 // GetSubDef gets a same-TU `auto_inline(off)` stand-in body that writes only the out slot (VC7.1 then knows the
 //   holder does not escape); with the held copy as a real local the def outranks `name` for a register, as retail.
+// Name fix (agentNF6 2026-11-10): CAnimationSet::AnimExists 0x005DC2E0 is ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z (Ego_r.pdb / FableWin.pdb), was HasAnimation / Find.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
@@ -33,7 +34,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
 };
 
 class CAnimationSet { public:
-    bool HasAnimation_005dc2e0(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
+    bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
     const CAnimationEntry* GetRandomAnimation_005dcc00(const CCharString& name, unsigned long* randomSeed,
         const CAnimFilterBase& filter, long index) const;                                       // 0x005DCC00
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
@@ -89,7 +90,7 @@ const CAnimationEntry* CThingCreatureBase::GetRandomAnimFromNameWithFilter(const
     PBaseDef->GetSubDef(&out);
     CHeldDef<CAppearanceDef> def(out.Object);
     CAnimationSet& animations = def.Object->Animation;
-    if (animations.HasAnimation_005dc2e0(name, filter))
+    if (animations.AnimExists(name, filter))
         return animations.GetRandomAnimation_005dcc00(name, GetRandomSeed_004c7ae0(), filter, -1);
     return animations.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup());
 }

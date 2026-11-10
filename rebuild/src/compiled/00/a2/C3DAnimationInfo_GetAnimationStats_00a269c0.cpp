@@ -9,6 +9,7 @@
 // Shape: the two inline `Data && member` tests re-test Data (the second test's null check is kept); the
 // touch block is the inline resource-list move-to-tail; the result is the counted pointer's copy
 // constructor into the hidden return slot (add-ref `inc [block]`), Data re-read after the calls.
+// Name fix (agentNF6 2026-11-10): CResource::RemoveFromResourceList 0x009FC440 (?RemoveFromResourceList@CResource@@QAEXXZ, Ego_r.pdb / FableWin.pdb; body: if the resource is in a list (+8), the list unlinks it, call 0x009FC020).
 class CResourceList;
 
 class CResource { public:
@@ -21,7 +22,7 @@ class CResource { public:
     unsigned long LastUsedFrame;           // +0x18
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
-    void AddToResourceList();              // 0x009FC440
+    void RemoveFromResourceList();              // 0x009FC440
 };
 
 class CResourceList { public:
@@ -71,7 +72,7 @@ CCountedPointer<const C3DAnimationStats> C3DAnimationInfo::GetAnimationStats()
     if (!HasStats()) {
         if (!IsLoading())
             BeginLoading(true);
-        Data->AddToResourceList();
+        Data->RemoveFromResourceList();
         Data->BuildSharedAnimation();
     }
     Data->Touch();

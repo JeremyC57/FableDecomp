@@ -8,6 +8,7 @@
 // test is `head->next == head`. The two CCharString named locals (each in its own block, built before the pushes) and erase's discarded result share the one
 // `push ecx` frame word; the by-value iterator has user constructors so it is built in the argument area
 // (`push ecx ; mov eax,esp ; mov [eax],ecx`). The catalog name is kept; the body is the loader's update step.
+// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
 class CCharString {
 public:
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -15,7 +16,7 @@ public:
 private:
     void* m_pData;
 };
-void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool flag, bool flag2); }   // 0x009E9F40
 class CASuspendableProcess { public: virtual void v00(); };
 struct SCountBlock;
 struct CLevelLoaderObject {
@@ -51,12 +52,12 @@ void CLevelLoader::ProcessHoverAnimQueue()
     {
         {
             CCharString text("Level loader update", -1);
-            DisplayProgress(text, false, -1.0f, false);
+            NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
         }
         ObjectList.front()->Load(this);
         {
             CCharString text("Level loader update end", -1);
-            DisplayProgress(text, false, -1.0f, false);
+            NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
         }
         ObjectList.erase(ObjectList.begin());
     }

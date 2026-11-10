@@ -14,6 +14,7 @@
 // inline at the end) through copy_if with the house predicate (back_insert_iterator has a user ctor, so copy_if returns it
 // through a hidden pointer); the 0x23 component is a named local (an unnamed GetTC result moves its key to a second slot);
 // the walk caches the end pointer in a frame local.
+// Name fix (agentNF6 2026-11-10): CTCVillageMember::GetPVillage 0x007EE540 is ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ (Ego_r.pdb / FableWin.pdb), was GetVillage.
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
@@ -97,7 +98,7 @@ class CTCVillage { public:
     void DetachFromDummyVillager(CThing* villager);     // 0x0065B2C4
 };
 class CTCVillageMember { public:
-    CTCVillage* GetVillage();                           // 0x007EE540
+    CTCVillage* GetPVillage() const;                           // 0x007EE540
 };
 class CTCShopKeeper { public:
     void DetachFromShop();                              // 0x00799000
@@ -116,7 +117,7 @@ void CTCBuyableHouse::Evict()
     CThing* house = ParentThing;
     if (house->HasTC(0x23)) {
         CTCVillageMember* member = house->GetTC<CTCVillageMember>(0x23);
-        CTCVillage* village = member->GetVillage();
+        CTCVillage* village = member->GetPVillage();
         if (village) {
             CCreatureList residents;
             HasBuildingAsHomeOrWork pred;

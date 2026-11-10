@@ -15,6 +15,7 @@
 //   length squared compared against epsilon squared; the axes are stored through the implicit operator= and the inline
 //   (Y, -X, 0) perpendicular; `PTargetedThing = target` builds a CIntelligentPointer temporary (base ctor, vtable store,
 //   SetPItem) and assigns it through `SetPItem(other.GetPItem())`.
+// Name fix (agentNF6 2026-11-10): NCameraModes::CBase::GetObservedThing 0x0084F1B0 is ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ (Ego_r.pdb / FableWin.pdb): returns const CThingGameObject*.
 #include "fable_compiler.h"
 class C3DVector { public:
     float X, Y, Z;
@@ -68,6 +69,7 @@ class CThing { public:
         return (it == last || TYPE < it->first ? last : it)->second;
     }
 };
+class CThingGameObject : public CThing { };          // Ego_r.pdb / FableWin.pdb: CThing -> CThingGameObject (NCameraModes::CBase::GetObservedThing returns it)
 
 template<class T> inline bool IS_THING_ALIVE(T* thing) { return thing != 0 && !thing->Dead; }
 
@@ -106,7 +108,7 @@ public:
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void UpdateCoordSystem();                   // slot 24 (+0x60)
     unsigned char _pad04[0xa0];                         // +0x04..+0xa3
-    const CThing* GetObservedThing() const;             // 0x0084F1B0
+    const CThingGameObject* GetObservedThing() const;             // 0x0084F1B0
 };
 class CZTargetNew : public CBase {
 public:

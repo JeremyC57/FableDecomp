@@ -8,7 +8,8 @@
 //   3 GetParentScript, 4 OnPersist, 5 OnPredicateFail, 6 OnInterrupted.
 // Layout: Ego_r.pdb CChickenSign (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18, members from +0x1c;
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
-// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
+// Flags: none
+// Wide text: unsigned short (the <stddef.h> wchar_t typedef, no native-wchar_t switch; owner decision 2026-10-29).
 // Callees: std::vector<CWideString>::resize(size_type, const CWideString&) 0x00412B20 through STLport's inline
 //   resize(n) (the CWideString() 0x0099AED0 temporary, ~CWideString 0x0099B510), CWideString::operator=(const wchar_t*)
 //   0x0099B800 eight times (wide literals TEXT_QST_B17_SIGN_WON_*). The manifest label of 0x00412B20

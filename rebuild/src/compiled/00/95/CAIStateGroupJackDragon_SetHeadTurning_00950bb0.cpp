@@ -13,6 +13,7 @@
 // which hoists `mov ecx,esi` above the first `je` (the `||` form leaves it after); GetCurrentMode() is re-called for every use;
 // the byte stored at +0x7c of the current mode. The mode classes are not modelled by
 // an engine header: descriptive local model (the flag name is descriptive).
+// Name fix (agentNF6 2026-11-10): CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 is ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ (Ego_r.pdb / FableWin.pdb; engine/CTCCreatureModeManager.h): const, returns a reference to the nested CTCCreatureModeManager::CModeBase.
 class CTCBase;
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -20,15 +21,16 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CMode {
+
+
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
     virtual void v00();
     virtual long GetModeType();                 // slot 1
     unsigned char _pad[0x78];                   // +0x04..+0x7b
     bool m_headTurning;                         // +0x7c (dragon modes 0x47 / 0x4e)
-};
-
-class CTCCreatureModeManager { public:                 // interface type 0x31
-    CMode* GetCurrentMode();                    // 0x0073A6E0
+};                 // CTCCreatureModeManager::CModeBase (Ego_r.pdb / FableWin.pdb nested class)                 // interface type 0x31
+    CModeBase& GetCurrentMode() const;                    // 0x0073A6E0
 };
 
 class CAIBrain { public:
@@ -50,8 +52,8 @@ void CAIStateGroup_JackDragon::SetHeadTurning(bool enable)
 {
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-    if (modes->GetCurrentMode()->GetModeType() == 0x4e)
-        modes->GetCurrentMode()->m_headTurning = enable;
-    else if (modes->GetCurrentMode()->GetModeType() == 0x47)
-        modes->GetCurrentMode()->m_headTurning = enable;
+    if (modes->GetCurrentMode().GetModeType() == 0x4e)
+        modes->GetCurrentMode().m_headTurning = enable;
+    else if (modes->GetCurrentMode().GetModeType() == 0x47)
+        modes->GetCurrentMode().m_headTurning = enable;
 }

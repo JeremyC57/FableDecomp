@@ -12,6 +12,7 @@
 // ControlledCreature +0x2c, PlayerCharacter +0x34) through the CPlayer_Methods carrier.
 // Shape: the progress text is a temporary; the player number is a named local read before the GetMainPlayerID call
 // (ebx, pushed/popped around its short live range); the camera out pointer reuses the dead argument slot; GetMainPlayer is called twice.
+// Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
 #include "fable_compiler.h"
 #include "engine/CPlayer.h"
 
@@ -20,7 +21,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool flag, bool flag2); }   // 0x009E9F40
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -116,7 +117,7 @@ void CPlayer_Methods::InitCharacterAs(const CCharString& defName)
     PWorldMap = ((CWorld_Retail*)World)->GetWorldMap();
     if (PlayerCharacterPtr().GetPItem() == 0 || PlayerCharacterPtr().GetPItem()->Dead)
         CreateCharacter(defName);
-    DisplayProgress("CPlayer::InitCharacterAs", false, -1.0f, false);
+    NProgressDisplay::DisplayProgress("CPlayer::InitCharacterAs", -1.0f, false, false);
     SetControlledCreature(PlayerCharacterPtr().GetPItem());
     long number = Number;
     if (number == ((CPlayerManager*)PlayerManager)->GetMainPlayerNumber()) {

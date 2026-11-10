@@ -22,6 +22,7 @@
 // Interfaces: 0x29 CTCHero (one-ternary pick: component straight into ecx), 0x42 CTCEntityEvents, 0x10 CTCSoundPlayer
 // (`found = last; if (it != last && !(wanted < it->type)) found = it;`: retail keeps last in edi and overwrites it), 3 CTCHeroMorph.
 // Layout: retail Morality +0x28 (PDB +0x30), MoralityChangingEnabled +0x2C (PDB +0x34).
+// Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsChild 0x00661F70 is const (?IsChild@CThingCreatureBase@@QBE_NXZ, Ego_r.pdb).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -83,7 +84,7 @@ class CThing { public:
 };
 
 class CThingCreatureBase : public CThing { public:
-    bool IsChild();                                  // 0x00661F70
+    bool IsChild() const;                                  // 0x00661F70
 };
 
 class CCharString { public:
