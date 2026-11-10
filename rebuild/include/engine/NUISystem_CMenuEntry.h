@@ -34,6 +34,16 @@ public:
     // own CActionParam base (+0x18, null-checked). Declarations only: no layout change.
     virtual void AddThingActionParam(long param);                   // 150 0x0053DCD0
     virtual void AddUIActionParam(CActionParam* param);             // 151 0x0053DD50
+#ifdef FABLE_RETAIL_CMENUENTRY_ACTIONLISTS
+    // Nested opt-in (chunk 1002b, rows 0x005C3E91 / 0x005C47D5 CTCInventoryWeapons::FinalConstructWeaponItemEntries(PC)): the next two
+    // new virtuals (rtti-vtables CMenuEntry 0x0124662C: slot 152 0x0053E2A0 appends to PActionsOnUnselected +0x1B4, slot 153
+    // 0x0053E3C0 to PActionsOnVisible +0x1B8): Ego_r.pdb / FableWin.pdb
+    // ?AddActionOnUnselected@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z and
+    // ?AddActionOnVisible@CMenuEntry@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z; the rows call them as
+    // `call [eax+260h]` / `call [eax+264h]`. Declarations only: no layout change.
+    virtual void AddActionOnUnselected(CCountedPointer<CAction>& action);   // 152 0x0053E2A0
+    virtual void AddActionOnVisible(CCountedPointer<CAction>& action);      // 153 0x0053E3C0
+#endif
 #ifdef FABLE_RETAIL_CMENUENTRY_UNSELECTED_VISIBLE
     // Retail opt-in (chunk 1003, row 0x005B6A66 CTCInventoryClothing::ConstructClothingListPC): the next two virtuals CMenuEntry
     // introduces, in vtable order (CMenuEntry 0x0124662C: slot 152 0x0053E2A0, 153 0x0053E3C0; labels AddActionOnUnselected /

@@ -62,6 +62,12 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP; }
     CThingCreatureBase* GetShopKeeper() const { return PShopKeeper.Get(); }
 #endif
+#if defined(FABLE_RETAIL_CTCSHOP_INTERFACETYPE) && !defined(FABLE_RETAIL_CTCSHOP_SHOPKEEPER)
+    // Retail opt-in (chunk 1002b, row 0x005C6B26 CTCInventoryWeapons::ConstructWeaponDescription): the interface key alone (FableWin.pdb
+    // ?StatGetInterfaceType@CTCShop@@SI?AW4ETCInterfaceType@@XZ, inline: the row's expanded GetTC<CTCShop> tests 0x53), for rows that do
+    // not want the _SHOPKEEPER body (which needs the complete CThingCreatureBase).
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP; }
+#endif
 #ifdef FABLE_RETAIL_CTCSHOP_SHOPTYPE
     // Retail opt-in (chunk 851, row 0x006001E0): Ego_r.pdb + FableWin.pdb ?IsBarberShop@CTCShop@@QBE_NXZ (0x00772490),
     // ?IsTattooShop@CTCShop@@QBE_NXZ (0x00772510) and ?IsTitleShop@CTCShop@@QBE_NXZ (0x00772590), out of line in retail

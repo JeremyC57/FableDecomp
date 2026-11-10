@@ -36,3 +36,5 @@ Grade every src/ and differ/ file with `FABLE_HDR_OVERLAY=$A/hdr` exported (gall
 - 0x005C4F42 -> 0x005C574E / 0x005C5F11; 0x005C90FC -> 0x005CACB9; 0x005C3E91 / 0x005C47D5: not attempted (UI builders, NUISystem slots
   noted in the src comments of 0x005C66B2: CComponent slot 60 AddChildDynamically, 62 SetDeletion, CSprite 145 SetGraphicIndex,
   CList 157 SetDefaultChild).
+
+- 2026-11-10 later: chunk 1002b landed 6 more (batch `2026-11-10_landing_t`); 0x005C71AA re-parked in `pending/2026-11-10_linux_hand1002b/differ/` with the c2prio diagnosis.

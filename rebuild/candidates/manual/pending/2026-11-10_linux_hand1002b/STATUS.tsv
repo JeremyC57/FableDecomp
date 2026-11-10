@@ -1,0 +1,11 @@
+address	name	grade	grades_used	note
+005c4f42	CTCInventoryWeapons::ConstructAugmentationsLeftDescription	RELOCATION_MATCH	1	make_pair insert + named guide CCharString; probes 22
+005c574e	CTCInventoryWeapons::ConstructAugEntry	RELOCATION_MATCH	1	CCOUNTEDPOINTER_RELEASEDATA (visible release) keeps the CList pointer in edi; probes 6
+005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	RELOCATION_MATCH	1	first draft from the console twin; probes 1
+005c3e91	CTCInventoryWeapons::FinalConstructWeaponItemEntries	RELOCATION_MATCH	1	implicit name/template conversions (ref temps before pushes), def index compared on the left, non-POD CEngineGraphic; probes 4
+005c47d5	CTCInventoryWeapons::FinalConstructWeaponItemEntriesPC	RELOCATION_MATCH	1	console body + per-item wield entry (if/else of two calls) and the parent's PC_UI_FRAME params; probes 3
+005c6b26	CTCInventoryWeapons::ConstructWeaponDescription	RELOCATION_MATCH	1	nested-else none text (cross-jumped copies keep retail's schedule); CStockItemDef / CTCShop interface-key opt-ins; probes 4
+005c71aa	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight	DIFFER(680v680)	1	NONE-block schedule (5 lines); nested-else fixes it but loses the copy-loop count spill (c2prio const0 25->22); probes 8
+005c90fc	CTCInventoryWeapons::ConstructWeaponDescriptionContainer	unworked	0	analysed only (see NOTES)
+005cacb9	CTCInventoryWeapons::RefreshWeaponDescriptions	unworked	0	analysed only (see NOTES)
+005ca68e	CTCInventoryWeapons::SetupActiveWeaponsOnCarrier	unworked	0	not attempted (see NOTES)

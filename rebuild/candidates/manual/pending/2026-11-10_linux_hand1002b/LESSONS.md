@@ -1,0 +1,10 @@
+# Lessons of chunk 1002b (GOTCHAS-ready one-liners)
+- VC7.1 builds the temporaries of IMPLICIT conversions to const-ref parameters (`f(L"x", ..., "y", ...)`) before any by-value push, right to left; an explicit `CWideString(L"x")` / `CCharString("y")` is built inside the push sequence instead (0x005C3E91 0x005C3F1A..0x005C3F31, 0x005C47D5).
+- A by-value result of a static __fastcall goes through ecx (hidden pointer) only when the class is non-POD: give CEngineGraphic its PDB default constructor (FABLE_RETAIL_CENGINEGRAPHIC_CTOR) or VC7.1 pushes the result pointer and moves the def index to ecx (0x005C3E91 `mov edx,edi ; lea ecx,[ebp-6Eh] ; call 0x005D96A0`).
+- `cmp edi,eax` with the loop's value in edi = the local on the LEFT of `==` (`defIndex == p->GetDefGlobalIndex()`, 0x005C3FBA).
+- One TU, two frame shapes: optimize("s",on) alone gives `push ebp; mov ebp,esp` to 0x005C3E91 and the biased `lea ebp,[esp-4Ch]` to its PC twin 0x005C47D5; no optimize("y",off) needed.
+- A text appended in a single `if (none)` join block is scheduled in source order; written in both elses (nested `if (!empty) {... if (used) names else NONE} else NONE`) the cross-jumped copy keeps retail's in-branch schedule (`push -1; lea ecx,..; push str`, 0x005C6E8A) -- matched 0x005C6B26; in 0x005C71AA the extra copy lowers const-0's priority (c2prio 25 -> 22) and the copy loop loses its count spill (parked).
+- `std::make_pair` in `map.insert(std::make_pair(k, v))` hoists the count load retail has; a named `long count` spills the loop index instead (0x005C4F42).
+- A named CCharString for a by-reference template argument (`CCharString guide(melee ? a : b)`) is the frame lever when retail's frame is 4 bytes bigger (0x005C4F42, 0xD8).
+- FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (visible release body, still called out of line) keeps a SetStaticCast'ed counted pointer uncaptured, so its object pointer stays in edi (0x005C574E 0x005C598C).
+- `&static_cast<CActionParam&>(*entry)` passes a component's CActionParam base without the neg/sbb/and null guard (0x005C5DCB); `entry.Get()` converted implicitly keeps it (0x005C3E91 AddParam).

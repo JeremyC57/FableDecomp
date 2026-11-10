@@ -8,6 +8,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAUGMENTATIONDEF
+// Retail opt-in (chunk 1002b): RTTI .?AVCAugmentationDef@@ : CSubDefClassBase : CDefClassBase (ghidra_out/rtti_bases.tsv); the
+// Ego_r.pdb members (struct_layouts_egor.tsv, 0x4C) after the 0x25-byte packed base at the same offsets (no containers). Retail
+// evidence: CTCInventoryWeapons::ConstructAugmentationsLeftDescription 0x005C4F42 reads Type `[edi+2Ch]` after
+// GetSubDef<CAugmentationDef> 0x0042B248 (whose class-name literal is 'CAugmentationDef'). Requires FABLE_RETAIL_DEF_CLASS_BASE.
+#include "engine/CSubDefClassBase.h"
+#include "engine/EObjectAugmentationType.h"
+class CAugmentationDef : public CSubDefClassBase {
+public:
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CAugmentationDef", -1); }   // inline (Ego_r name set)
+    unsigned char _pad_0x25[0x3];                            // +0x25
+    unsigned long Name;                                      // +0x28
+    EObjectAugmentationType Type;                            // +0x2c
+    unsigned long InventoryGraphic;                          // +0x30
+    float         DamageMultiplier;                          // +0x34
+    float         ExperienceMultiplier;                      // +0x38
+    float         FrequencyToAddHealthInSeconds;             // +0x3c
+    long          HealthToAddPerIncrease;                    // +0x40
+    float         FrequencyToAddStaminaInSeconds;            // +0x44
+    long          StaminaToAddPerIncrease;                   // +0x48
+};
+FABLE_STATIC_ASSERT(sizeof(CAugmentationDef) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, Type) == 0x2c);
+#else
 #pragma pack(push, 1)
 class CAugmentationDef {
 public:
@@ -44,5 +68,7 @@ FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, FrequencyToAddHealthInSeconds) ==
 FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, HealthToAddPerIncrease) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, FrequencyToAddStaminaInSeconds) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAugmentationDef, StaminaToAddPerIncrease) == 0x48);
+
+#endif // FABLE_RETAIL_CAUGMENTATIONDEF
 
 #endif // FABLE_ENGINE_CAUGMENTATIONDEF_H

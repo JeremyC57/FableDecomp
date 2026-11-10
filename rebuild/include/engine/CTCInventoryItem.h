@@ -9,7 +9,7 @@
 #include "rebuild_abi.h"
 
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM
-#ifdef FABLE_RETAIL_CTCINVENTORYITEM_ENGINEGRAPHIC
+#if defined(FABLE_RETAIL_CTCINVENTORYITEM_ENGINEGRAPHIC) || defined(FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC)
 #include "engine/CEngineGraphic.h"
 #endif
 // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): the real base. CTCInventoryItem derives CTCBase (the
@@ -69,6 +69,15 @@ public:
     // Nested opt-in (chunk 1002, row 0x005CB2B0 CTCInventoryWeapons::SetThingAsActiveWeapon): Ego_r.pdb
     // ?GetEngineGraphic@CTCInventoryItem@@QBEABVCEngineGraphic@@XZ, out of line at 0x005D92D0 (the row reads its BankIndex +0).
     const CEngineGraphic& GetEngineGraphic() const;                                   // 0x005D92D0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC
+#ifndef FABLE_RETAIL_CENGINEGRAPHIC_CTOR
+#error "FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC needs FABLE_RETAIL_CENGINEGRAPHIC_CTOR (the by-value result is non-POD in retail)"
+#endif
+    // Nested opt-in (chunk 1002b, rows 0x005C3E91 / 0x005C47D5 CTCInventoryWeapons::FinalConstructWeaponItemEntries(PC)): Ego_r.pdb /
+    // FableWin.pdb ?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z, the static `__fastcall` def-index overload, out of
+    // line at 0x005D96A0 (landed row; returns the def's graphic by value: hidden result in ecx, the def index in edx).
+    static CEngineGraphic __fastcall GetEngineGraphic(long defIndex);                 // 0x005D96A0
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_ADDTOINVENTORY
     // Nested opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): Ego_r.pdb / FableWin.pdb

@@ -389854,6 +389854,48 @@ $catalog = @(
         TestSource = '00/5b/CTCInventoryClothing_ConstructScreen_005b76d1_test.cpp'
         PassPattern = '005b76d1_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005c3e91'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_FinalConstructWeaponItemEntries_005c3e91.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_FinalConstructWeaponItemEntries_005c3e91_test.cpp'
+        PassPattern = '005c3e91_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c47d5'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_FinalConstructWeaponItemEntriesPC_005c47d5.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_FinalConstructWeaponItemEntriesPC_005c47d5_test.cpp'
+        PassPattern = '005c47d5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c4f42'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructAugmentationsLeftDescription_005c4f42.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructAugmentationsLeftDescription_005c4f42_test.cpp'
+        PassPattern = '005c4f42_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c574e'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructAugEntry_005c574e.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructAugEntry_005c574e_test.cpp'
+        PassPattern = '005c574e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c5f11'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructAugEntryPC_005c5f11.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructAugEntryPC_005c5f11_test.cpp'
+        PassPattern = '005c5f11_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c6b26'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructWeaponDescription_005c6b26.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructWeaponDescription_005c6b26_test.cpp'
+        PassPattern = '005c6b26_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,6 +1,18 @@
 #ifndef FABLE_ENGINE_CSTOCKITEMDEF_H
 #define FABLE_ENGINE_CSTOCKITEMDEF_H
-#ifdef FABLE_RETAIL_CLOTHING_DEFS
+#if defined(FABLE_RETAIL_CSTOCKITEMDEF)
+// Retail opt-in (chunk 1002b, row 0x005C6B26 CTCInventoryWeapons::ConstructWeaponDescription): the FABLE_RETAIL_CLOTHING_DEFS layout
+// (CSubDefClassBase, DefaultPrice +0x28: the row reads it after GetSubDef<CStockItemDef> 0x0059350C) plus FableWin.pdb
+// ?StatGetTypeName@CStockItemDef@@SI?AVCCharString@@XZ, the inline class-name literal the def-lookup template needs.
+#include <stddef.h>
+#include "fable_string.h"
+#include "engine/CSubDefClassBase.h"
+class CStockItemDef:public CSubDefClassBase {public:
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CStockItemDef", -1); }
+    long DefaultPrice;bool DefaultIsStealable,CanOnlyBeSoldToPlayer;unsigned long SellersBanter,BuyersPhrase;float ChanceOfBecomingAvailable;bool CanBeDisplayedInShop;};
+FABLE_STATIC_ASSERT(sizeof(CStockItemDef)==0x40);
+FABLE_STATIC_ASSERT(offsetof(CStockItemDef, DefaultPrice)==0x28);
+#elif defined(FABLE_RETAIL_CLOTHING_DEFS)
 #include "engine/CSubDefClassBase.h"
 class CStockItemDef:public CSubDefClassBase {public:long DefaultPrice;bool DefaultIsStealable,CanOnlyBeSoldToPlayer;unsigned long SellersBanter,BuyersPhrase;float ChanceOfBecomingAvailable;bool CanBeDisplayedInShop;};
 FABLE_STATIC_ASSERT(sizeof(CStockItemDef)==0x40);

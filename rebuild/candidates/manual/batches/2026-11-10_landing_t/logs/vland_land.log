@@ -1,0 +1,35 @@
+addr       parity           behav  name
+005c3e91   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005c3e91   RELOCATION_MATCH PASS   FinalConstructWeaponItemEntries
+005c47d5   WARN RELOC_NAME: ??4?$CCountedPointer@VCComponent@NUISystem@@@@QAEAAV0@ABV0@@Z -> 00429c58 labelled '_global::CCountedPointer_Assign_00429c58'
+005c47d5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005c47d5   RELOCATION_MATCH PASS   FinalConstructWeaponItemEntriesPC
+005c4f42   WARN RELOC_NAME: ??0?$map@W4EObjectAugmentationType@@JU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@@std@@QAE@XZ -> 004df8e9 labelled 'CDisplayManager::CopyBackBufferToTexture'
+005c4f42   WARN RELOC_NAME: ??1?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@@std@@QAE@XZ -> 004dd3ad labelled '_global::StdList_Dtor_004dd3ad'
+005c4f42   RELOCATION_MATCH PASS   ConstructAugmentationsLeftDescription
+005c574e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005c574e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005c574e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+005c574e   RELOCATION_MATCH PASS   ConstructAugEntry
+005c5f11   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ -> 00429160 labelled 'CCountedPointer<NUISystem::CAction>::~CCountedPointer'
+005c5f11   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ -> 0042925c labelled 'CCountedPointer<NUISystem::CText>::~CCountedPointer'
+005c5f11   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ -> 00429288 labelled 'CCountedPointer<NUISystem::CList>::~CCountedPointer'
+005c5f11   RELOCATION_MATCH PASS   ConstructAugEntryPC
+005c6b26   WARN RELOC_NAME: ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z -> 005be8d3 labelled 'CTCInventoryBase::GetBoughtPrice'
+005c6b26   RELOCATION_MATCH PASS   ConstructWeaponDescription
+
+WINS: 6
+  005c3e91 RELOCATION_MATCH CTCInventoryWeapons::?FinalConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z
+  005c47d5 RELOCATION_MATCH CTCInventoryWeapons::?FinalConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z
+  005c4f42 RELOCATION_MATCH CTCInventoryWeapons::?ConstructAugmentationsLeftDescription@CTCInventoryWeapons@@QAEXAAVCWideString@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@_N@Z
+  005c574e RELOCATION_MATCH CTCInventoryWeapons::?ConstructAugEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@@Z
+  005c5f11 RELOCATION_MATCH CTCInventoryWeapons::?ConstructAugEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@PAVCComponent@6@@Z
+  005c6b26 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescription@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryWeapons_FinalConstructWeaponItemEntries_005c3e91
+  CTCInventoryWeapons_FinalConstructWeaponItemEntriesPC_005c47d5
+  CTCInventoryWeapons_ConstructAugmentationsLeftDescription_005c4f42
+  CTCInventoryWeapons_ConstructAugEntry_005c574e
+  CTCInventoryWeapons_ConstructAugEntryPC_005c5f11
+  CTCInventoryWeapons_ConstructWeaponDescription_005c6b26

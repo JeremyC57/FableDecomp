@@ -11,6 +11,12 @@ public:
     float         RenderSizeX;                                       // +0x08
     bool          AdditiveAlpha;                                     // +0x0c
     unsigned char Type;                                              // +0x0d
+#ifdef FABLE_RETAIL_CENGINEGRAPHIC_CTOR
+    // Retail opt-in (chunk 1002b, rows 0x005C3E91 / 0x005C47D5): Ego_r.pdb ??0CEngineGraphic@@QAE@XZ, the default constructor that
+    // zeroes the five members in order (inline in the landed 0x005D96A0). It makes the class non-POD, which is what puts the static
+    // GetEngineGraphic(long)'s hidden result pointer in ecx (`mov edx,edi ; lea ecx,[ebp-6Eh] ; call 0x005D96A0`) instead of on the stack.
+    CEngineGraphic() : BankIndex(0), AnimStep(0.0f), RenderSizeX(0.0f), AdditiveAlpha(false), Type(0) { }
+#endif
 };
 #pragma pack(pop)
 #endif // FABLE_ENGINE_CENGINEGRAPHIC_H
