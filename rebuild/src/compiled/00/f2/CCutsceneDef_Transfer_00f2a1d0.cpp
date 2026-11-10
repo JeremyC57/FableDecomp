@@ -1,5 +1,5 @@
 // CCutsceneDef::Transfer(CPersistContext& context) -- transfer the cutscene def's eight string lists (Macro, SkipCond, SetupCond, Lights, LightScene, Sound, Answer0, Answer1) through the binary vector transfer
-// Leaf: ?Transfer@CCutsceneDef@@QAEXAAVCPersistContext@@@Z
+// Leaf: ?Transfer@CCutsceneDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F2A1D0, 107 bytes (+ int3 padding), `ret 4`; slot 18 of the no-RTTI
 //   CCutsceneDef vtable 0x012FB6E0 (its Sizeof slot 0x00F29D90 returns 0x9c; stored by the ctor at 0x00F29D2B). Ego_r.pdb
 //   ?Transfer@CCutsceneDef@@UAEXAAVCPersistContext@@@Z. The catalog's "InitialiseDefaultCameraTags" is wrong.
@@ -8,7 +8,8 @@
 // Layout: Ego_r.pdb CCutsceneDef (192 bytes) -> retail 0x9c: the CParentDefClassBase part is 0x3c in retail (as the landed
 //   CFrontEndDef::Transfer 0x004331C0 models it, PDB 0x40) and each STLport vector is 12 bytes (PDB 16): Macro +0x3c,
 //   SkipCond +0x48, Lights +0x54, LightScene +0x60, SetupCond +0x6c, Sound +0x78, Answer0 +0x84, Answer1 +0x90.
-//   Modelled without virtuals as the landed CFrontEndDef::Transfer (the vtable slot is the only reference).
+//   Virtual (2026-11-10, chunk 897 queue land1011j): the vtable slot makes it `virtual` (Ego_r.pdb UAE); the vptr is the
+//   first word of the CParentDefClassBase part, so the opaque base bytes after it are 0x38.
 // Shape: one call per member in source order (SetupCond is transferred third, before Lights), `this` in esi, the context
 //   in edi; the last member address is formed by `add esi,90h`.
 class CCharString {
@@ -29,7 +30,8 @@ public:
 };
 class CCutsceneDef {
 public:
-    unsigned char              _base[0x3c];      // CParentDefClassBase (vptr, 0x39 bytes, padding)
+    virtual ~CCutsceneDef();                     // slot layout beyond Transfer not modelled
+    unsigned char              _base[0x38];      // CParentDefClassBase after its vptr (0x35 bytes, padding)
     std::vector<CCharString>  Macro;            // +0x3c
     std::vector<CCharString>  SkipCond;         // +0x48
     std::vector<CCharString>  Lights;           // +0x54
@@ -38,7 +40,7 @@ public:
     std::vector<CCharString>  Sound;            // +0x78
     std::vector<CCharString>  Answer0;          // +0x84
     std::vector<CCharString>  Answer1;          // +0x90
-    void Transfer(CPersistContext& context);
+    virtual void Transfer(CPersistContext& context);   // vtable 0x012FB6E0 slot 18
 };
 void CCutsceneDef::Transfer(CPersistContext& context)
 {

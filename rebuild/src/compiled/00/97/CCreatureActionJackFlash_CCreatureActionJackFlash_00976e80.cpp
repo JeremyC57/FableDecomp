@@ -1,4 +1,5 @@
-// CCreatureAction_JackFlash::CCreatureAction_JackFlash(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, thing, 250, GetSoundPair(owner, SWORD_SWING)), then the name ST_STRIKE_LIGHT_INTO through the setter @ 0x008574D0
+// CCreatureAction_JackFlash::CCreatureAction_JackFlash(CThingCreatureBase& owner, CThingCreatureBase& target) -- base CCombatActionBase(owner, thing, 250, GetSoundPair(owner, SWORD_SWING)), then the combat animation ST_STRIKE_LIGHT_INTO through SetCombatAnimation @ 0x008574D0
+// Leaf: ??0CCreatureAction_JackFlash@@QAE@AAVCThingCreatureBase@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00976E80, oracle length 124 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -11,8 +12,11 @@
 // @ 0x00857F30 with the action code 250 (0xfa); the string temporary dies after the base
 // constructor, then this class's vtable (0x01297744, rtti-vtables.tsv) is stored and a scoped CCharString passed to the setter @ 0x008574D0 (its manifest label is propagated).
 // One of 10 bodies of this shape.
-class CThingCreatureBase;
-class CThing;
+// Names (2026-11-10, chunk 897 queue land1011j): FableWin.pdb ??0CCreatureAction_JackFlash@@QAE@AAVCThingCreatureBase@@0@Z takes
+//   two CThingCreatureBase& (was modelled as (CThingCreatureBase*, CThing*)); the base ctor, GetSoundPair and SetCombatAnimation
+//   now carry their PDB spellings, as the landed sibling JackFall 0x00977320 binds them.
+class CThing { };
+class CThingCreatureBase : public CThing { };
 
 class CCharString { public:                     // one pointer; the default length makes the literal convert implicitly
     void* m_pData;
@@ -21,29 +25,29 @@ class CCharString { public:                     // one pointer; the default leng
 };
 
 class CSoundPair { public:                       // a user constructor makes the 8-byte result return through the hidden pointer (a POD would ride in edx:eax)
-    long m_first;
-    long m_second;
-    CSoundPair() : m_first(0), m_second(0) { }
+    long FirstSound;
+    long LastSound;
+    CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetName(const CCharString& name);   // 0x008574D0
+    CCombatActionBase(CThingCreatureBase& creature, CThing& thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
 };
 
 class CCreatureAction_JackFlash : public CCombatActionBase { public:
     virtual void v00();
-    CCreatureAction_JackFlash(CThingCreatureBase* owner, CThing* thing);
+    CCreatureAction_JackFlash(CThingCreatureBase& owner, CThingCreatureBase& target);
 };
 
-CCreatureAction_JackFlash::CCreatureAction_JackFlash(CThingCreatureBase* owner, CThing* thing)
-    : CCombatActionBase(owner, thing, 250, GetSoundPair(owner, "SWORD_SWING"))
+CCreatureAction_JackFlash::CCreatureAction_JackFlash(CThingCreatureBase& owner, CThingCreatureBase& target)
+    : CCombatActionBase(owner, target, 250, GetSoundPair(owner, "SWORD_SWING"))
 {
     {
         CCharString name("ST_STRIKE_LIGHT_INTO", -1);      // scoped named local (a bare temporary would reuse eax, GOTCHAS)
-        SetName(name);                     // 0x008574D0
+        SetCombatAnimation(name);          // 0x008574D0
     }
 }

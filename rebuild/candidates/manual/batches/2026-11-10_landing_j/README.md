@@ -26,8 +26,15 @@ Not landed:
 - 0x005C9A95 / 0x005C8459 CTCInventoryWeapons::ConstructScreenPC / ConstructScreen and 0x005B8743 CTCInventoryClothing::ConstructScreenPC:
   not attempted (time); a console/PC pair, best done together.
 
-Header debt: the STLport map COMDATs and the CHandleBasedMemoryPool accessors keep TU-local container text, as their landed siblings do.
+Header debt (closed 2026-11-10, review follow-up): the seven STLport map COMDATs now include the shared `stlport/fable_map.h`
+(0x0083AE10 through the new opt-in `FABLE_RETAIL_STLP_TREE_S_VALUE_CDECL`: STLport's plain cdecl `_S_value`, retail's unreferenced
+COMDAT; the default `__fastcall` spelling the landed callers bind is unchanged), and the two pool accessors include the new
+shared `libpk/CHandleBasedMemoryPool_012b4098.h` (the libpk pool layout with its VC7.1 Dinkumware `vector<CHeader*>`).
+The 13 other landed libpk pool rows that still carry the same TU-local model are a follow-up rebase onto that header.
 Names: catalog + manifest names for these 22 addresses (`ghidra_out/labels_landing_2026-11-10j.tsv`). Queued `land1011j` (PRIORITY):
 0x00976E80 JackFlash ctor signature, 0x0083AE30 CHitThing ctor signature, 0x00F2A1D0 CCutsceneDef::Transfer is virtual.
+All three fixed 2026-11-10: `CCreatureAction_JackFlash(CThingCreatureBase&, CThingCreatureBase&)`, `CHitThing(const CCreatureStatsDef&)`
+(Ego_r member layout, new C++03 test) and `virtual void Transfer(CPersistContext&)` (vtable 0x012FB6E0 slot 18); all RELOCATION_MATCH.
+The 12 changed rows re-grade from the repo with no overlay (`vland --recheck-landed`): 3 RELOCATION_MATCH, 9 MATCH, tests PASS.
 Warning at landing: RELOC_NAME on 0x005D7081 (0x006D6FA0 is bound under its PDB name; the unlanded row's manifest label is stale).
 `bindings_multi_check.py` prints 1 (CScriptThing::NullCoord), unchanged.

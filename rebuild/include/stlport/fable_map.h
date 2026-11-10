@@ -140,7 +140,13 @@ protected:
     _Link_type& _M_root()const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
     static _Link_type& __fastcall _S_left(_Link_type x){return (_Link_type&)x->_M_left;}
     static _Link_type& __fastcall _S_right(_Link_type x){return (_Link_type&)x->_M_right;}
+#ifdef FABLE_RETAIL_STLP_TREE_S_VALUE_CDECL
+    // chunk 897 (row 0x0083AE10, an unreferenced COMDAT): STLport 4.6 _tree.h's plain `static reference _S_value(_Link_type)`
+    // (?_S_value@...@KAAAU..., cdecl); the default __fastcall spelling below is the one the landed callers bind.
+    static V& _S_value(_Link_type x){return x->_M_value_field;}
+#else
     static V& __fastcall _S_value(_Link_type x){return x->_M_value_field;}
+#endif
     static const K& __fastcall _S_key(_Link_type x){return KeyOfValue()(_S_value(x));}
 private:
     template<class Key> _Rb_tree_node<V>* _M_find(const Key& key)const {

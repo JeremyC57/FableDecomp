@@ -1,23 +1,35 @@
-// NHeroStatModifierEvent::CHitThing::CHitThing(CThing* thing) -- the event base keeps the thing (+4, stored before the vtable), then this class's vtable (0x01272FA0), the flag at +8 cleared, the word at +0xc cleared, the flag at +0x10 set and the scale at +0x14 = 1.0f
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083AE30, length 37 bytes.
-// Shape: `mov eax,ecx` first (the constructor returns `this`), the +4 store before the vtable (a non-polymorphic base holds it), `ret 4`.
-class CThing;
-struct CThingEventBase_0083ae30 {                  // the non-polymorphic base at +4: the thing
-    CThing* m_pThing;
-    CThingEventBase_0083ae30(CThing* thing) : m_pThing(thing) { }
-};
+// NHeroStatModifierEvent::CHitThing::CHitThing(const CCreatureStatsDef& stats_def) -- a hero-stat event for hitting a creature: keep the hit creature's stats def, not unarmed, strength experience by default, increment on, amount 1.0
+// Leaf: ??0CHitThing@NHeroStatModifierEvent@@QAE@ABVCCreatureStatsDef@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083AE30, length 37 bytes, thiscall `ret 4`.
+// Names (2026-11-10, chunk 897 queue land1011j): Ego_r.pdb + FableWin.pdb ??0CHitThing@NHeroStatModifierEvent@@QAE@ABVCCreatureStatsDef@@@Z
+//   takes `const CCreatureStatsDef&` (was modelled as a CThing* in an invented non-polymorphic base). Layout from Ego_r.pdb CHitThing
+//   (0x18): the NHeroStatModifierEvent::CBase vptr (vtable 0x01272FA0 for CHitThing; CBase's ~CBase 0x0083AD90 is landed),
+//   StatsDefOfHitThing +4, Unarmed +8, StatToIncrement +0xC, DoStatIncrement +0x10, IncrementAmount +0x14.
+// Shape: `mov eax,ecx` first (the constructor returns `this`); VC7.1 schedules the stats-def store ahead of the vptr store.
+#include "engine/EHeroExperienceStatCategory.h"
+class CTCHeroStats;
+class CCreatureStatsDef;
 namespace NHeroStatModifierEvent {
-struct CHitThing : CThingEventBase_0083ae30 {      // vtable 0x01272FA0
-    virtual void v00();
-    bool  m_8;                                     // +0x08
-    long  m_c;                                     // +0x0c
-    bool  m_10;                                    // +0x10
-    float m_scale;                                 // +0x14
-    CHitThing(CThing* thing);
+class CBase {
+public:
+    ~CBase();
+    virtual void ModifyHeroStats(CTCHeroStats& heroStats) const = 0;
 };
 
-CHitThing::CHitThing(CThing* thing)
-    : CThingEventBase_0083ae30(thing), m_8(false), m_c(0), m_10(true), m_scale(1.0f)
+class CHitThing : public CBase {
+public:
+    CHitThing(const CCreatureStatsDef& stats_def);
+    virtual void ModifyHeroStats(CTCHeroStats& heroStats) const;   // 0x00815DF0-family slot 0
+    const CCreatureStatsDef*    StatsDefOfHitThing;    // +0x04
+    bool                        Unarmed;               // +0x08
+    EHeroExperienceStatCategory StatToIncrement;       // +0x0C
+    bool                        DoStatIncrement;       // +0x10
+    float                       IncrementAmount;       // +0x14
+};
+
+CHitThing::CHitThing(const CCreatureStatsDef& stats_def)
+    : StatsDefOfHitThing(&stats_def), Unarmed(false), StatToIncrement(HERO_STAT_STRENGTH), DoStatIncrement(true),
+      IncrementAmount(1.0f)
 {
 }
 }
