@@ -24,6 +24,10 @@ public:
 private:
     unsigned char _pad_0xd0[12];
 public:
+#ifdef FABLE_RETAIL_CGAMEDEFINITIONMANAGER_PEEKHEROSTATSDEF
+    // Retail opt-in (Codex pass 17): FableWin01d87170 returns the object at nativeDC.
+    const CHeroStatsDef& PeekHeroStatsDef()const{return *PHeroStatsDef;}
+#endif
     const CHeroStatsDef* PHeroStatsDef;                                  // +0xdc (descriptive name)
 #else
 private:

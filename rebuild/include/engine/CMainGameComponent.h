@@ -33,6 +33,11 @@ class CMainGameComponentInit;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
 class CGameEvent;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
+#include "boost/scoped_ptr.h"
+#include "engine/CNetworkClient.h"
+class CWorld; class CDisplayEngine; class CGameEventPackage; class CGameEventPackageSet;
+#endif
 class CMainGameComponent : public CGameComponent {
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
 protected:
@@ -46,8 +51,16 @@ protected:
     unsigned char PTextBank[8];                     // +0x14 CCountedPointer<NGameText::CDataBank>
     unsigned char PPlayerManager[4];                // +0x1C boost::scoped_ptr<CPlayerManager>
     unsigned char PPlayerInterface[4];              // +0x20 boost::scoped_ptr<CGamePlayerInterface>
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
+    boost::scoped_ptr<CWorld> PWorld;
+#else
     unsigned char PWorld[4];                        // +0x24 boost::scoped_ptr<CWorld>
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
+    boost::scoped_ptr<CDisplayEngine> PDisplayEngine;
+#else
     unsigned char PDisplayEngine[4];                // +0x28 boost::scoped_ptr<CDisplayEngine>
+#endif
     unsigned char PLUA[8];                          // +0x2C CCountedPointer<CLUA>
     bool ForceUpdateTick;                           // +0x34
     float ForceUpdateTickSpeedMultipler;            // +0x38
@@ -62,7 +75,11 @@ protected:
     double LastFrameRenderDuration;                 // +0x68
     unsigned char LastInterpolationInfo[0x34];      // +0x70 CInterpolationInfo
     unsigned char EventPackageSet[0x13A14];         // +0xA4 CGameEventPackageSet
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
+    CNetworkClient Client;
+#else
     unsigned char Client[0x2680];                   // +0x13AB8 CNetworkClient
+#endif
     unsigned long NoRenderFramesSinceLastGameUpdate; // +0x16138
     unsigned long WorldSeed;                        // +0x1613C
     unsigned long LocalSeed;                        // +0x16140
@@ -92,6 +109,16 @@ protected:
     bool AllowRender;                               // +0x161E1
     bool Rendered;                                  // +0x161E2
     long DebugNoFramesUnableToRender;               // +0x161E4
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_EVENTPACKAGES
+    // Retail opt-in (Codex pass 17): original accessors/callees proven by both
+    // PDBs and debug UpdateFromEventPackageSet 018A7E6D.
+    void UpdateFromEventPackageSet(const CGameEventPackageSet* event_package_set);
+    void ProcessEventPackage(const CGameEventPackage* event_package);
+public:
+    unsigned long PeekWorldChecksum() const;
+    unsigned long PeekWorldSeed() const { return WorldSeed; }
+    long GetCurrentServerFrame() const { return CurrentServerFrame; }
+#endif
 public:
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_MAINFONT
     const CFontBank& PeekMainFont()const{return *PCutSceneMainFont;}

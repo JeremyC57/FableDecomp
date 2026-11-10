@@ -4,6 +4,25 @@
 // (RTTI .?AVCTCAnimationComplex@@ : CTCAnimationBase : CTCBase; Ego_r.pdb sizeof 0x10, PAnimation +0x0C; members not modelled).
 // StatGetInterfaceType: TCI_ANIMATION (90; the `push 5Ah ; pop edi` of the caller's inline GetTC, 0x005B3F95). Out of line:
 // ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ (Ego_r.pdb / FableWin.pdb, retail 0x0070B460). Declarations only.
+#ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_FULL
+// Full-class opt-in (Codex pass 17, helper header of row 0x004C1060 GetFocalPos): the retail 16-byte class on its real base
+// CTCAnimationBase with its virtuals (native ctor 0x0070B3F0) and the inline PeekAnimation reading PAnimation +0x0C.
+#include "engine/CTCAnimationBase.h"
+#include "engine/CAnimateThing.h"
+// Original16-byte class; native ctor70B3F0 and original PeekAnimation read PAnimation+Ch.
+class CTCAnimationComplex : public CTCAnimationBase {
+public:
+ CTCAnimationComplex(CThing&);
+ virtual ~CTCAnimationComplex();
+ virtual CCharString GetClassTypeName()const;
+ virtual void GetInterpolatedMeshAnim(C3DAnimationBlendState&,float)const;
+ virtual void GetMeshAnims(C3DAnimationBlendState&,C3DAnimationBlendState&)const;
+ const CAnimateThing& PeekAnimation()const;
+protected:
+ CAnimateThing* PAnimation;
+};
+FABLE_STATIC_ASSERT(sizeof(CTCAnimationComplex)==16);
+#else
 #ifndef FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCBASE
 #endif
@@ -15,4 +34,5 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ANIMATION; }
     CAnimateThing& GetAnimation();                           // 0x0070B460
 };
+#endif // FABLE_RETAIL_CTCANIMATIONCOMPLEX_FULL
 #endif // FABLE_ENGINE_CTCANIMATIONCOMPLEX_H

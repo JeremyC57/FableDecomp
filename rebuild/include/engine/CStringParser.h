@@ -81,12 +81,23 @@ protected:
                 inQuotes=!inQuotes;
         return inQuotes;
     }
+#ifdef FABLE_RETAIL_CSTRINGPARSER_TOKEN_MOVE
+    // Retail opt-in (Codex pass 17): native009b9e00 retains the original positive-count guard; capture the start pointer before scanning quotes.
+    FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
+        if(n>0) {
+            const char* from=String+CursorPos.StringPos;
+            CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,from,String+CursorPos.StringPos+n);
+            CursorPos.StringPos+=n;
+        }
+    }
+#else
     FABLE_FORCEINLINE void MoveStringPos(unsigned long n) {
         if(n) {
             CursorPos.InQuotes=CalcInQuotes(CursorPos.InQuotes,String+CursorPos.StringPos,String+CursorPos.StringPos+n);
             CursorPos.StringPos+=n;
         }
     }
+#endif
 #endif
     const char* String;
     unsigned long BaseLineOffset;

@@ -83,6 +83,11 @@ protected:
     // in retail; its body (PBrain->GetCreature()) is in engine/CAIBrain.h under FABLE_RETAIL_CAIBRAIN_GETCREATURE.
     CThingAICreature& GetCreature() const;
 #endif
+// Retail opt-in (Codex pass 17): original protected const accessor, FableWin donor 0288D9F0;
+    // native IsRunnable 0092D6F0 calls its 008FCFC0 body before the static frame getter.
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD) && !(defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH))
+    CWorld& GetWorld() const;
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
     // Nested opt-in (chunk 755, row 0x0090C540): Ego_r.pdb protected AI action members (retail 0x0097E380 / 0x0097D6F0; Ego_r
     // 0x008491B0 / 0x008484A0 manglings), declarations only. The three enums are MS forward enums (the row defines the

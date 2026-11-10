@@ -29,6 +29,10 @@ public:
     virtual void CompressAsImage(const void*,unsigned long,void*,unsigned long,long,long,long,CCompressionInfo&);
     virtual void Decompress(const void*,unsigned long,void*,unsigned long,CCompressionInfo&);
     static unsigned long __fastcall GetRequiredWorkspaceSize();
+#ifdef FABLE_RETAIL_CCOMPRESSORZLIB_STREAM
+    // Retail opt-in (Codex pass17): both PDBs, native00a3a840 takes bool reference.
+    unsigned long DecompressStream(void*,unsigned long,bool&);
+#endif
     unsigned long InternalDecompress(const void*,unsigned long,void*,unsigned long);
 private:
     void Initialise();

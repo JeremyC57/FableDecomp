@@ -20,6 +20,9 @@ enum EInputButtonEventType;
 #pragma pack(push, 1)
 class CGamePlayerInterface {
 public:
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_TOGGLE_ZTARGET
+    bool IsToggleZTarget() const;
+#endif
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
     // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
     // Ego_r.pdb / FableWin.pdb ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z,

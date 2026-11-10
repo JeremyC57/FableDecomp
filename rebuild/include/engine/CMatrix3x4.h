@@ -9,7 +9,15 @@
 #include "engine/C3DVector.h"
 class CMatrix3x4 {
 public:
+#ifdef FABLE_RETAIL_CMATRIX3X4_DATA_UNION
+    // Retail opt-in (Codex pass 17): original anonymous union and Data[4][3], both PDB TPI layouts.
+    union {
+        struct { float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43; };
+        float Data[4][3];
+    };
+#else
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
+#endif
     CMatrix3x4() { }
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY
     // Retail opt-in (chunk 895, row 0x00BEBAA0 CEngineInternalPrimitiveMeshBase::CalcObjectMatrix): Ego_r.pdb / FableWin.pdb
@@ -47,12 +55,25 @@ public:
     // (the body of the landed 0x00B393D0 model: cofactors over the determinant, then the translation through the inverse).
     // __forceinline as the owner's 2026-11-01 rule for Lionhead math helpers with no out-of-line copy in Ego_r.pdb or Fable.exe:
     // plain inline leaves PreScale and SetInverse called out of line in PreparePrimitivesForEngine (934 v 1330 bytes).
+#ifdef FABLE_RETAIL_CMATRIX3X4_SET_ORIGINAL_NAMES
+    // Retail opt-in (Codex pass 17): original parameter names and direct field copies, donor0261c5d0.
+    FABLE_FORCEINLINE void Set(const C3DVector& right,const C3DVector& forward,const C3DVector& up,const C3DVector& translate) {
+        // Fidelity: address X through the original three-float Data row. The local
+        // pointer step preserves the native X-before-Z copy order at007767d9.
+        float* axis=Data[0]+1;
+        *--axis=right.X; E12=right.Y; E13=right.Z;
+        E21=forward.X; E22=forward.Y; E23=forward.Z;
+        E31=up.X; E32=up.Y; E33=up.Z;
+        E41=translate.X; E42=translate.Y; E43=translate.Z;
+    }
+#else
     FABLE_FORCEINLINE void Set(const C3DVector& x_axis,const C3DVector& y_axis,const C3DVector& z_axis,const C3DVector& translation) {
         E11=x_axis.X; E12=x_axis.Y; E13=x_axis.Z;
         E21=y_axis.X; E22=y_axis.Y; E23=y_axis.Z;
         E31=z_axis.X; E32=z_axis.Y; E33=z_axis.Z;
         E41=translation.X; E42=translation.Y; E43=translation.Z;
     }
+#endif
     // Chunk 751 (row 0x007767A0): Ego_r.pdb / FableWin.pdb ?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z, out of line in
     // retail at 0x007767A0 (the axes from the orientation -- GetRight, Forward, Up -- and the translation through the Set above).
     void Set(const class CRightHandedSet& orientation,const C3DVector& translation);

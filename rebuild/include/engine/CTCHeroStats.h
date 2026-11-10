@@ -40,6 +40,14 @@ public:
     // ?GetMoralityMax@CTCHeroStats@@QBEJXZ (public const), out of line at 0x0057A67E (landed). Declaration only: no layout change.
     long GetMoralityMax() const;                                          // 0x0057A67E
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_STAMINA
+    // Retail opt-in (Codex pass 17): exact public float method in both donors.
+    void ForceStaminaTo(float);
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_ADDEXPERIENCE
+    // Retail opt-in (Codex pass 17): both PDBs prove category parameter, native0057a8da.
+    void AddHeroStatExperience(EHeroExperienceStatCategory,long);
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
     // Retail opt-in (chunk 754, row 0x006D00A0 CTCWife::Murdered): Ego_r.pdb ?SetMarriageState@CTCHeroStats@@AAEXPBVCThingAICreature@@W4EMarriageState@@@Z
     // (private; retail 0x0057BC6E, called by CTCWife). Declaration only: no layout change.
@@ -220,6 +228,11 @@ public:
     float            RotCounter;                                         // +0x1d0
     bool             IsInCutSceneFirstTime;                              // +0x1d4
     std::list<CHeroMarriageInfo> Marriages;                              // +0x1d8
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_STAMINA)
+    // Retail opt-in (Codex pass 17): original fields at native58/5C/60; all remaining bytes retained.
+private:unsigned char _before_stamina[0x58-sizeof(CTCBase)];
+    long Stamina,MaxStamina,FramesUntilStaminaRefills;
+    unsigned char _after_stamina[0x1dc-0x64];
 #else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 #endif

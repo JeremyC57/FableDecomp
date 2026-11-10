@@ -9,6 +9,9 @@
 #include "engine/CInputProcessGameBase.h"
 class CInputProcessControlCreatureActivateZTarget : public CInputProcessGameBase {
 public:
+#ifdef FABLE_RETAIL_INPUTPROCESS_ZTARGET
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);
+#endif
     CInputProcessControlCreatureActivateZTarget(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
 };
 FABLE_STATIC_ASSERT(sizeof(CInputProcessControlCreatureActivateZTarget) == 0x28);

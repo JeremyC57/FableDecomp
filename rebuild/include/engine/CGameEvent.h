@@ -11,6 +11,9 @@
 #pragma pack(push, 1)
 class CGameEvent {
 public:
+#ifdef FABLE_RETAIL_CGAMEEVENT_INLINE_CTOR
+    CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
+#endif
 #ifdef FABLE_RETAIL_CGAMEEVENT_CTOR
     // Retail opt-in (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action): FableWin.pdb ??0CGameEvent@@QAE@J@Z (out of line,
     // 0x004159B0: `push <type> ; lea ecx,[ev] ; call`) and ?AddUBYTE@CGameEvent@@QAEXE@Z (0x004159E0). No layout change.

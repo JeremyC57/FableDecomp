@@ -13,6 +13,9 @@
 #include "boost/scoped_ptr.h"
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
+#ifdef FABLE_RETAIL_CWORLDMAP_GETMAPBOX
+#include "engine/CMapInfo.h"
+#endif
 class CMapInfo; class CThing; class CWideString;
 class CNavigationAreaInit; class CNavigationAreaUpdate;
 class CWorld; class CMainGameComponent; class CRegionConnectionGraph; class CWADBank; class CLevelLoader; class CAFile; class CRegion;
@@ -24,6 +27,9 @@ public:
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHT_BELOW
  class CThingFilterBase: public std::unary_function<CThing,bool> {public: virtual bool operator()(const CThing&)const{return true;}};
  float GetHeightZBelowAt(const C3DVector&,float,bool,const CThingFilterBase&)const;
+#endif
+#ifdef FABLE_RETAIL_CWORLDMAP_GETMAPBOX
+    const C2DBoxI& GetMapBox(long n) const { return Maps[n].Area; }
 #endif
     virtual ~CWorldMap();
     virtual void DeleteAllLevels();

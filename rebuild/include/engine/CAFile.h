@@ -12,6 +12,25 @@ enum FileAccessType { FILE_ACCESS_NULL=0, FILE_ACCESS_READ=1, FILE_ACCESS_READ_W
 // Original CAFile virtual order from Ego_r TPI and native CDiskFileWin32 vtable.
 class CAFile : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CAFILE_ERRORCALLBACK
+    // Retail opt-in (Codex pass17): original static callback chain, donor02dd7c60..a0.
+#ifdef _MSC_VER
+    typedef void (__fastcall *ErrorCallbackType)();
+    static void __fastcall DoErrorCallback() {if(GetErrorCallback())CallErrorCallback();}
+protected:
+    static ErrorCallbackType __fastcall GetErrorCallback() {return m_errorCallback;}
+    static void __fastcall CallErrorCallback() {m_errorCallback();}
+#else
+    typedef void (*ErrorCallbackType)();
+    static void DoErrorCallback() {if(GetErrorCallback())CallErrorCallback();}
+protected:
+    static ErrorCallbackType GetErrorCallback() {return m_errorCallback;}
+    static void CallErrorCallback() {m_errorCallback();}
+#endif
+private:
+    static ErrorCallbackType m_errorCallback;
+public:
+#endif
     static CCharString __fastcall GetRelativeFilePath(const CCharString&,const CCharString&);
     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);
     static bool __fastcall PathExists(const CWideString&);

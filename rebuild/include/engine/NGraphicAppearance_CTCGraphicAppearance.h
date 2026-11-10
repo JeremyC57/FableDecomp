@@ -32,6 +32,13 @@ class CCharString; class CRightHandedSet;
 #include "stlport/fable_containers.h"
 class CTCAnimationBase;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
+#include "engine/NGraphicAppearance_CMeshInfo.h"
+class C3DAnimationInterpolator;class C3DMeshObject;
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
+class CCharString;
+#endif
 namespace NGraphicAppearance {
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_MOVEMENT
 class CPrimitive; class CAGraphicAppearanceComponent;
@@ -66,6 +73,20 @@ public:
  float GetScale()const{return Scale;}
 #endif
 public:
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
+    // Retail opt-in (Codex pass17): both original PDBs; native004c0560 signature.
+    bool GetHelperPoint(const CCharString&,long,unsigned long,C3DVector&,float) const;
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
+    // Retail opt-in (Codex pass17): original methods/access/signatures, both PDBs and debug full helper.
+    void GetAllMeshes(std::vector<CMeshInfo>&)const;
+protected:
+    bool IsToReduceLODForDummiesAndHelpers()const;
+    bool IsResourcesLoadedForMesh(const CMeshInfo&,bool)const;
+    void GetMeshObject(const CMeshInfo&,float,C3DMeshObject&)const;
+    bool GetAnims(C3DAnimationInterpolator&)const;
+public:
+#endif
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb

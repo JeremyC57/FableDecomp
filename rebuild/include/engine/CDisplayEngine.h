@@ -8,6 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES
+class CGameEventPackage;
+#endif
 class CCPPointerInfo;
 class CDisplayViewManager;
 class CGameDefinitionManager;
@@ -21,6 +24,11 @@ class CWorld;
 #pragma pack(push, 1)
 class CDisplayEngine {
 public:
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_EVENTPACKAGES
+    // Retail opt-in (Codex pass 17): both PDBs/native00434A60/00434F60.
+    void ConfirmFeedbackGameEventPackage(const CGameEventPackage*);
+    void WorldUpdate();
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE
     // Retail opt-in (chunk 725): FableWin.pdb members, retail addresses. Both are the Engine3D forwards of
     // CMainGameComponent::PreChangeResolution (inlined in SetExclusiveMode 0x004163B7 / SetDisplayMode / AppReinitFunc) and

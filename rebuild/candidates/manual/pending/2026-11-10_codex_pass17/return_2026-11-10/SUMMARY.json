@@ -1,0 +1,18 @@
+{
+  "authorized_rows": 40,
+  "matched_rows": 39,
+  "function_percentage": 97.5,
+  "matched_retail_bytes": 6203,
+  "assigned_retail_bytes": 6327,
+  "parked_rows": [
+    "00871fd0"
+  ],
+  "blocked_uncompiled_rows": [],
+  "selected_sources_compiled": 40,
+  "selected_tests_passed_both_compilers": 40,
+  "merged_headers": 121,
+  "existing_default_header_checks_passed": 69,
+  "new_headers": 52,
+  "out_of_scope_row_implementations": 0,
+  "git_commits_or_pushes": 0
+}

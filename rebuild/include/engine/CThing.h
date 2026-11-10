@@ -141,6 +141,10 @@ protected:
     virtual void CreateFromDef(const CThingBaseDef&);            // slot 15 0x004CA930
 public:
     virtual void ConstructFromBinarySave(CMemoryDataInputStream&,const CSerialiseInfo&);   // slot 16 0x004CA390
+#ifdef FABLE_RETAIL_CTHING_ISPLACED
+    // Retail opt-in (Codex pass17): original public const virtual slot17, native004c7b80.
+    virtual bool IsToBePlacedInMap() const;
+#endif
     static void __fastcall SerialiseThingInfo(CPersistContext&,CSerialiseInfo&);           // 0x004C81F0
     static void __fastcall SerialiseThingInfo(bool,CCharString&,CSerialiseInfo&);         // 0x004C88E0
     bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }

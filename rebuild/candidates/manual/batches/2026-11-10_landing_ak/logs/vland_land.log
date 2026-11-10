@@ -1,0 +1,133 @@
+addr       parity           behav  name
+0041726d   WARN RELOC_NAME: ?GetNoPackages@CGameEventPackageSet@@QBEKXZ -> 009f1750 labelled '_global::GetMember_dword0x0_009f1750'
+0041726d   WARN RELOC_NAME: ?GetPackage@CGameEventPackageSet@@QBEPBVCGameEventPackage@@K@Z -> 009f1730 labelled 'CMouse::GetEventFromStore'
+0041726d   RELOCATION_MATCH PASS   UpdateFromEventPackageSet
+00492ed1   RELOCATION_MATCH PASS   SetText
+0049c700   RELOCATION_MATCH PASS   ClipAndConvertWorldMapAreaToLocalArea
+004c1060   RELOCATION_MATCH PASS   GetFocalPos
+0051d870   WARN RELOC_NAME: ??$__destroy_aux@PAVCSwitchableBlockage@CNavigationAreaUpdate@@@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@0@@Z -> 00519ef0 labelled 'std::__destroy_aux<CNavigationAreaUpdate::CSwitchableBlockage*>'
+0051d870   RELOCATION_MATCH PASS   resize
+0053d4b0   RELOCATION_MATCH PASS   Update
+0057b26f   RELOCATION_MATCH PASS   ForceStaminaTo
+005954ad   WARN RELOC_NAME: ??1?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@QAE@XZ -> 00485e45 labelled '_global::StdList_Dtor_00485e45'
+005954ad   WARN RELOC_NAME: ??1?$_Deque_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0059ac77 labelled '_unattributed::FreeBuffer'
+005954ad   WARN RELOC_NAME: ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+005954ad   WARN RELOC_NAME: ??1?$_Rb_tree@W4EEvent@NUISystem@@W412@U?$_Identity@W4EEvent@NUISystem@@@std@@U?$less@W4EEvent@NUISystem@@@4@V?$allocator@W4EEvent@NUISystem@@@4@@std@@QAE@XZ -> 0052e050 labelled 'CRetailTree_erase0052dca0::~CRetailTree_erase0052dca0'
+005954ad   RELOCATION_MATCH PASS   ~CFrontEndManager
+00632830   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<long,NUISystem::ETableSprites>
+00688260   WARN RELOC_NAME: ?IsToggleZTarget@CGamePlayerInterface@@QBE_NXZ -> 00445b80 labelled '_global::GetMember_dword0x7a0_derefbyte0x48_00445b80'
+00688260   RELOCATION_MATCH PASS   ProcessInput
+006a7fb0   RELOCATION_MATCH PASS   operator()
+006afe60   RELOCATION_MATCH PASS   RespondToCollision
+006b0b30   RELOCATION_MATCH PASS   InitialActivate
+006d8300   RELOCATION_MATCH PASS   AddTrainableStatExperience
+006fd5e0   RELOCATION_MATCH PASS   GetRenderCamera
+00712a80   RELOCATION_MATCH PASS   Update
+007767a0   MATCH            PASS   Set
+0078c150   RELOCATION_MATCH PASS   PlayHitEffectAtPos
+00809030   RELOCATION_MATCH PASS   CThingFilter_IsInTargetingRangeAndFOV
+008098b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008098b0   RELOCATION_MATCH PASS   operator()
+00878390   RELOCATION_MATCH PASS   GetThingsOfType<CThingBuilding>
+008b9dd0   RELOCATION_MATCH PASS   Initialise
+0090bbf0   RELOCATION_MATCH PASS   IsRunnable
+0092d6f0   RELOCATION_MATCH PASS   IsRunnable
+009578a0   WARN RELOC_NAME: ?IsAwarenessOfThingDirect@CTCPerceiveThing@@QBE_NXZ -> 00744430 labelled '_global::GetMember_byte0x30_00744430'
+009578a0   WARN RELOC_NAME: ?UpdateFocusAttentionOnThingPassive@CAIStateGroupBehaviourBase@@IAE_NXZ -> 00957750 labelled 'CAIStateGroupBehaviourBase::TurnToFace'
+009578a0   RELOCATION_MATCH PASS   UpdateFocusAttentionOnThingActive
+0095d4c0   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsPreferredFirePoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsPreferredFirePoint@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0095db90 labelled 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std::allocator<CThing*>_>,CFilter_Bind3<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea>_>'
+0095d4c0   RELOCATION_MATCH PASS   GetFirePointList
+00994a80   RELOCATION_MATCH PASS   SetPosition
+009b9e00   RELOCATION_MATCH PASS   SkipPastNextItemIfIs
+009bee40   RELOCATION_MATCH PASS   SetupDepthAndBackBufferTextures
+009f40a0   RELOCATION_MATCH PASS   Clear
+009fd700   RELOCATION_MATCH PASS   CGraphicInfo
+00a659c0   RELOCATION_MATCH PASS   Allocate
+00ac82a0   RELOCATION_MATCH PASS   ComputeSubContractionCost
+00bca6b0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bca6b0   RELOCATION_MATCH PASS   RenderPrimitive
+00bddf30   RELOCATION_MATCH PASS   CQuadTreeElement
+00c0a790   MATCH            PASS   CEventPlayOptions
+00e7f330   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e7f330   RELOCATION_MATCH PASS   Init
+00ec3270   RELOCATION_MATCH PASS   GetCurrentPopulationLevel
+
+WINS: 38
+  0041726d RELOCATION_MATCH CMainGameComponent::?UpdateFromEventPackageSet@CMainGameComponent@@IAEXPBVCGameEventPackageSet@@@Z
+  00492ed1 RELOCATION_MATCH CSubtitleRenderer::?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z
+  0049c700 RELOCATION_MATCH CThingSearchTools::?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
+  004c1060 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z
+  0051d870 RELOCATION_MATCH std::vector<CNavigationAreaUpdate::CNavigationLayerUpdate>::?resize@?$vector@VCNavigationLayerUpdate@CNavigationAreaUpdate@@V?$allocator@VCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@@std@@QAEXI@Z
+  0053d4b0 RELOCATION_MATCH NUISystem::CMenuEntry::?Update@CMenuEntry@NUISystem@@UAEXM@Z
+  0057b26f RELOCATION_MATCH CTCHeroStats::?ForceStaminaTo@CTCHeroStats@@QAEXM@Z
+  005954ad RELOCATION_MATCH NUISystem::CFrontEndManager::??1CFrontEndManager@NUISystem@@UAE@XZ
+  00632830 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@JW4ETableSprites@NUISystem@@U?$less@W4ETableSprites@NUISystem@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4ETableSprites@NUISystem@@JU?$less@W4ETableSprites@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@J@std@@@4@@std@@@Z
+  00688260 RELOCATION_MATCH CInputProcessControlCreatureActivateZTarget::?ProcessInput@CInputProcessControlCreatureActivateZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  006a7fb0 RELOCATION_MATCH CThingFilter_BoundingBoxOverlapsMap::??RCThingFilter_BoundingBoxOverlapsMap@@QBE_NABVCThing@@@Z
+  006afe60 RELOCATION_MATCH CTCPhysicsBase::?RespondToCollision@CTCPhysicsBase@@IBEXABVCPhysicsCollideResponse@@AAVC3DVector@@@Z
+  006b0b30 RELOCATION_MATCH CTCPhysicsBase::?InitialActivate@CTCPhysicsBase@@UAEXXZ
+  006d8300 RELOCATION_MATCH CTCHeroExperience::?AddTrainableStatExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z
+  006fd5e0 RELOCATION_MATCH CGameCameraBase::?GetRenderCamera@CGameCameraBase@@UBE?AVCCamera@@M@Z
+  00712a80 RELOCATION_MATCH NTCScriptedControl::CActionPlayCombatAnimation::?Update@CActionPlayCombatAnimation@NTCScriptedControl@@UAEXXZ
+  007767a0 MATCH CMatrix3x4::?Set@CMatrix3x4@@QAEXABVCRightHandedSet@@ABVC3DVector@@@Z
+  0078c150 RELOCATION_MATCH CTCBerserk::?PlayHitEffectAtPos@CTCBerserk@@QBEXABVC3DVector@@@Z
+  00809030 RELOCATION_MATCH (anonymous namespace)::CThingFilter_IsInTargetingRangeAndFOV::??0CThingFilter_IsInTargetingRangeAndFOV@?A0x
+  008098b0 RELOCATION_MATCH CThingCompare_BestForTargeting2::??RCThingCompare_BestForTargeting2@@QBE_NABVCTargetPoint@NPlayerTargeting@@0@Z
+  00878390 RELOCATION_MATCH NCameraModes::CTools::??$GetThingsOfType@VCThingBuilding@@@CTools@NCameraModes@@QBEXAAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@JABVC3DVector@@M@Z
+  008b9dd0 RELOCATION_MATCH CCreatureAction_CastPhysicalShieldSpell::?Initialise@CCreatureAction_CastPhysicalShieldSpell@@UAEXXZ
+  0090bbf0 RELOCATION_MATCH CAIStateGroup_MinionWorkInInn::?IsRunnable@CAIStateGroup_MinionWorkInInn@@UAE_NXZ
+  0092d6f0 RELOCATION_MATCH CAIStateGroup_GoToBed::?IsRunnable@CAIStateGroup_GoToBed@@UAE_NXZ
+  009578a0 RELOCATION_MATCH CAIStateGroupBehaviourBase::?UpdateFocusAttentionOnThingActive@CAIStateGroupBehaviourBase@@IAE_NXZ
+  0095d4c0 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::?GetFirePointList@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00994a80 RELOCATION_MATCH CCompressedMemoryDataInputStream::?SetPosition@CCompressedMemoryDataInputStream@@UAEXK@Z
+  009b9e00 RELOCATION_MATCH CStringParser::?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z
+  009bee40 RELOCATION_MATCH CDisplayManager::?SetupDepthAndBackBufferTextures@CDisplayManager@@AAE_NXZ
+  009f40a0 RELOCATION_MATCH CSurface::?Clear@CSurface@@QAEXXZ
+  009fd700 RELOCATION_MATCH CGraphicInfo::??0CGraphicInfo@@QAE@KPAVCGraphicDataBank@@ABVCGraphicHeader@1@@Z
+  00a659c0 RELOCATION_MATCH CMemoryAllocatorVariableSize::?Allocate@CMemoryAllocatorVariableSize@@UAEPAXK@Z
+  00ac82a0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?ComputeSubContractionCost@COptimisedPrimitive@QuadricOptimiserInternals@@AAEMABVCSubContraction@2@ABVC3DVector@@@Z
+  00bca6b0 RELOCATION_MATCH CEnginePrimitiveManagerSpriteTrails::?RenderPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+  00bddf30 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::??0CQuadTreeElement@CLocalDetailCacheMap@@QAE@PAV1@JJJJ@Z
+  00c0a790 MATCH LHA::CEventPlayOptions::??0CEventPlayOptions@LHA@@QAE@XZ
+  00e7f330 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::?Init@CV_FishingCompetitionScript@NScript@@UAEXXZ
+  00ec3270 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::?GetCurrentPopulationLevel@CV_RandomPopulationSimScript@NScript@@QAEJW4POPULATION_TYPES@12@@Z
+
+LANDED 38 wins into src/compiled + tests + catalog + oracle
+  CMainGameComponent_UpdateFromEventPackageSet_0041726d
+  CSubtitleRenderer_SetText_00492ed1
+  CThingSearchTools_ClipAndConvertWorldMapAreaToLocalArea_0049c700
+  NGraphicAppearanceCTCGraphicAppearance_GetFocalPos_004c1060
+  stdvectorCNavigationAreaUpdateCNavigationLayerUpdate_resize_0051d870
+  NUISystemCMenuEntry_Update_0053d4b0
+  CTCHeroStats_ForceStaminaTo_0057b26f
+  NUISystemCFrontEndManager_CFrontEndManager_005954ad
+  global_ETableSprites_00632830
+  CInputProcessControlCreatureActivateZTarget_ProcessInput_00688260
+  CThingFilterBoundingBoxOverlapsMap_operator_006a7fb0
+  CTCPhysicsBase_RespondToCollision_006afe60
+  CTCPhysicsBase_InitialActivate_006b0b30
+  CTCHeroExperience_AddTrainableStatExperience_006d8300
+  CGameCameraBase_GetRenderCamera_006fd5e0
+  NTCScriptedControlCActionPlayCombatAnimation_Update_00712a80
+  CMatrix3x4_Set_007767a0
+  CTCBerserk_PlayHitEffectAtPos_0078c150
+  anonymousnamespaceCThingFilterIsInTargetingRangeAndFOV_CThingFilterIsInTargetingRangeAndFOV_00809030
+  CThingCompareBestForTargeting2_operator_008098b0
+  NCameraModesCTools_GetThingsOfTypeCThingBuilding_00878390
+  CCreatureActionCastPhysicalShieldSpell_Initialise_008b9dd0
+  CAIStateGroupMinionWorkInInn_IsRunnable_0090bbf0
+  CAIStateGroupGoToBed_IsRunnable_0092d6f0
+  CAIStateGroupBehaviourBase_UpdateFocusAttentionOnThingActive_009578a0
+  CAIStateGroupRangedCombatUsePreferredFirePoint_GetFirePointList_0095d4c0
+  CCompressedMemoryDataInputStream_SetPosition_00994a80
+  CStringParser_SkipPastNextItemIfIs_009b9e00
+  CDisplayManager_SetupDepthAndBackBufferTextures_009bee40
+  CSurface_Clear_009f40a0
+  CGraphicInfo_CGraphicInfo_009fd700
+  CMemoryAllocatorVariableSize_Allocate_00a659c0
+  QuadricOptimiserInternalsCOptimisedPrimitive_ComputeSubContractionCost_00ac82a0
+  CEnginePrimitiveManagerSpriteTrails_RenderPrimitive_00bca6b0
+  CLocalDetailCacheMapCQuadTreeElement_CQuadTreeElement_00bddf30
+  LHACEventPlayOptions_CEventPlayOptions_00c0a790
+  NScriptCVFishingCompetitionScript_Init_00e7f330
+  NScriptCVRandomPopulationSimScript_GetCurrentPopulationLevel_00ec3270

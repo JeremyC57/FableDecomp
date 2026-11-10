@@ -31,6 +31,10 @@ public:
     // FableWin ??0?$CIntelligentPointer@VCThing@@@@QAE@XZ / QAE@PAVCThing@@@Z, ?Set@..QAEXPAVCThing@@@Z and the private
     // ?SetPointer@?$CIntelligentPointer@$$CBVCThing@@@@AAEXPBVCThing@@@Z.
     CIntelligentPointer() { }
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+    // Original debug02511d30 uses nonconst template source and Get/SetPointer.
+    template<class U> CIntelligentPointer(CIntelligentPointer<U>& other) { SetPointer(other.Get()); }
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the (T*) constructor called out of
     // line (0x004A96F0 for CThing, FableWin ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z) for the temporary of
@@ -78,6 +82,13 @@ private:
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
+// Retail opt-in (Codex pass 17): FableWin 01CD9DD0 original pointer/int
+// comparison used by IS_THING_ALIVE; the debug-only nonzero-int assertion is absent in retail.
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+template<class T> inline bool FABLE_FASTCALL operator!=(const CIntelligentPointer<T>& pointer,int) {
+    return pointer.Get()!=0;
+}
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE
 // Retail opt-in (chunk 867, row 0x0064BFBA): the free comparison of a raw item with an intelligent pointer, FableWin.pdb
 // ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z, out of line at 0x005CBDD2 (`mov ecx,<thing> ;

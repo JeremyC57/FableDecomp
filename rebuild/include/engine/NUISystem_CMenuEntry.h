@@ -16,6 +16,10 @@ public:
     CMenuEntry(long);
     CMenuEntry(const CMenuEntry&);
     virtual ~CMenuEntry();
+#ifdef FABLE_RETAIL_CMENUENTRY_UPDATE
+    // Original PDB and native primary vtable slot1,0053d4b0.
+    virtual void Update(float tick);
+#endif
     void GetDataFromDef();                                          // 0x0053DA30
 #ifdef FABLE_RETAIL_CMENUENTRY_ACTION
     // Retail opt-in (chunk 886, row 0x0041E6D3 CManager::Action): FableWin.pdb ?IsMenuEntryAvailable@CMenuEntry@NUISystem@@QBE_NXZ,

@@ -86,7 +86,16 @@ public:
 #else
     void Reset(T*);                                                      // unproven body (FableWin ?Reset@..QAEXPBV..@Z)
 #endif
-#ifdef FABLE_RETAIL_CDEFPOINTER_RELEASE_COUNTREF
+#ifdef FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
+    // Original debug 01cb41b0 calls the self-deleting CIVCountedPointeeBase release.
+    FABLE_DEFPTR_INLINE void Release()
+    {
+        if(Object) {
+            Object->Release();
+            Object=0;
+        }
+    }
+#elif defined(FABLE_RETAIL_CDEFPOINTER_RELEASE_COUNTREF)
     // Nested opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the release of a CDefPointer held in a STATIC (CPlayerGui::PGuiDef
     // 0x013B878C) reads the count through a reference on Object (`mov ebx,[eax+4]; mov ecx,eax; add eax,4; dec ebx; ...; mov [eax],ebx`,
     // 0x0043A587; the landed atexit destructor of the same static 0x01228B70 has the identical shape). The in-place form above gives

@@ -10,6 +10,10 @@
 #include "rebuild_abi.h"
 
 class CFontBank;
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR
+class CCharString;
+class CWideString;
+#endif
 class CGraphicDataBank;
 class CWideStringData;
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
@@ -103,6 +107,12 @@ public:
     // ?Clear@CSubtitleRenderer@@QAEX_N@Z, out of line in retail at 0x00492BAB (the call `mov ecx,[0x013B8790] ; push 0 ; add ecx,18h ;
     // call 0x00492BAB`). Declaration only: no layout change.
     void Clear(bool);                                                    // 0x00492BAB
+#endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT_CHAR
+    // Pass 17: the two overloads in both PDBs and the calls at 0x00492ED1 / 0x00492973.
+    void SetText(const CFontBank&, const CCharString&, unsigned long, float, bool, bool);
+    void SetText(const CFontBank&, const CWideString&, const CWideString&, const CWideString&,
+                 const CWideString&, const CWideString&, unsigned long, float, bool, bool);
 #endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
     // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z

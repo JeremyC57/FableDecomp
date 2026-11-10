@@ -1,3 +1,28 @@
+#if defined(FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER_ADD)
+#ifndef FABLE_ENGINE_CENGINESUBPRIMITIVERENDERER_H
+#define FABLE_ENGINE_CENGINESUBPRIMITIVERENDERER_H
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CEngineComponent.h"
+#include "engine/CArray.h"
+#include "engine/CEngineRenderEnums.h"
+class CEngineSubPrimitiveBase;
+class CEnginePrimitiveManager;
+class CEngineSubPrimitiveRenderer:public CBaseClassNonCopyable,public CEngineComponent {
+public:
+ CEngineSubPrimitiveRenderer();
+ virtual unsigned long PeekSceneFilterFlags()const;
+ void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long,CEnginePrimitiveManager*);
+ class CSortElement {public:unsigned long Key;void* Primitive;};
+ class CSubPrimitiveList {public:CArray<CSortElement> Elements;ERenderPassType RenderPass,PreRenderPass;bool BoundingVolumePass,RequiresStableSort,Sorted,Enable;};
+private:
+ float MaxSortDistance,SortDistanceMultiplier;
+ CSubPrimitiveList SubPrimitiveLists[15];
+ CArray<CSortElement> SortBuffer;
+ bool EnableSolidPass,EnableAlphaPass;
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveRenderer)==400);
+#endif
+#else
 #ifndef FABLE_ENGINE_CENGINESUBPRIMITIVERENDERER_H
 #define FABLE_ENGINE_CENGINESUBPRIMITIVERENDERER_H
 #ifdef FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER
@@ -79,3 +104,5 @@ FABLE_STATIC_ASSERT(offsetof(CEngineSubPrimitiveRenderer, EnableAlphaPass) == 0x
 
 #endif // FABLE_RETAIL_CENGINESUBPRIMITIVERENDERER
 #endif // FABLE_ENGINE_CENGINESUBPRIMITIVERENDERER_H
+
+#endif

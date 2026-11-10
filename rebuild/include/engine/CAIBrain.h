@@ -33,7 +33,14 @@ public:
     unsigned char       _pad_0x0c[0x4];                      // +0x0c
     unsigned char       _pad_0x10[0x4];                      // +0x10
     CMainGameComponent* Component;                           // +0x14
+#ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+private:
+    // Both original PDBs: reference, private, +18; native 0090bbf7.
+    CThingAICreature& Creature;
+public:
+#else
     CThingAICreature*   Creature;                            // +0x18
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPTEXT
     // Nested opt-in (chunk 801, row 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering): Ego_r.pdb / FableWin.pdb
     // ?PeekCurrentStateGroupName@CAIBrain@@QBEPBVCCharString@@XZ (retail 0x0088B7D0: `mov eax,[ecx+38h] ; test eax,eax ; je ;
@@ -45,7 +52,11 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CAIBRAIN_GETCREATURE
     // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ (inline in retail).
+#ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+    CThingAICreature& GetCreature() const { return Creature; }
+#else
     CThingAICreature& GetCreature() const { return *Creature; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CAIBRAIN_SETOUTPUT
     // Both PDBs name SetOutput; native caller00939989 reaches0088b8f0.
@@ -76,7 +87,9 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CAIBrain) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, Component) == 0x14);
+#ifndef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, Creature) == 0x18);
+#endif
 #if defined(FABLE_RETAIL_CAIBRAIN_GETCREATURE) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE) && defined(FABLE_ENGINE_CAISTATEGROUPBASE_H)
 // FableWin.pdb ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ (inline in retail), defined once both classes are complete.
 inline CThingAICreature& CAIStateGroupBase::GetCreature() const { return PBrain->GetCreature(); }

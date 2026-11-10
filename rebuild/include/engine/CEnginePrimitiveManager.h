@@ -40,9 +40,22 @@ public:
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
     void AddPrimitive(CEngineInternalPrimitiveBase&,unsigned long);
 #endif
-    bool GetEnable() const;                                              // ?GetEnable@CEnginePrimitiveManager@@QBE_NXZ
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_SUBPRIMITIVE
+protected:
+ void AddSubPrimitive(CEngineSubPrimitiveBase*,float,unsigned char,unsigned long);
+public:
+ bool GetEnable()const{return Enable;}
+#else
+    bool GetEnable() const;
+#endif                                              // ?GetEnable@CEnginePrimitiveManager@@QBE_NXZ
     void SetEnable(bool enable);                                         // ?SetEnable@CEnginePrimitiveManager@@QAEX_N@Z
-    CArray<CEngineScene*>* SceneList;                                    // +0x04
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGER_SUBPRIMITIVE
+protected:
+    CArray<CEngineScene*>& SceneList;
+private:
+#else
+    CArray<CEngineScene*>* SceneList;
+#endif                                    // +0x04
     bool                   Enable;                                       // +0x08
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManager) == 0xC);

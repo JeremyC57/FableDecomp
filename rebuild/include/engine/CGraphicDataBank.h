@@ -5,6 +5,9 @@
 #include "engine/CResourceBank.h"
 #include "engine/CArray.h"
 #include "engine/CTexture.h"
+#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+#include "engine/CPixelFormat.h"
+#endif
 class CGraphicInfo;class CGraphicInfoFrame;class CGraphicFrame;class CVolumeTexture;class CTextureManager;
 class CGraphicDataBank : public CBankFileAsync, public CResourceBank {
 public:
@@ -32,6 +35,10 @@ public:
     const CGraphicInfoFrame* PeekGraphicInfoFrame(unsigned long,unsigned long) const;
     const CTexture* GetBlankTexture(ETextureType) const; // native009fd150
 private:
+#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+    friend class CGraphicInfo;
+    ETextureType GetTextureType(const CGraphicHeader& header,bool is_bump) const;
+#endif
     CArray<CGraphicInfo> GraphicList;
     CArray<CGraphicInfoFrame> GraphicFrameBuffer;
     bool Initialised;
@@ -45,6 +52,20 @@ private:
     CTexture BlankTextures[11];
 };
 FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank)==0x30c);
+#ifdef FABLE_RETAIL_CGRAPHICINFO_CONSTRUCT
+// Layout: original PDB nested class,28 bytes; native009fd700 copies7 words.
+class CGraphicDataBank::CGraphicHeader {
+public:
+ unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;
+ CPixelFormat PixelFormat;
+ unsigned char TransparencyType,MipmapLevels,IsFlatAnimatedGraphic:1;
+ unsigned long FrameDataSize,CompressedMipmapSizes[1];
+ CGraphicHeader():Width(0),Height(0),Depth(0),FrameWidth(0),FrameHeight(0),FrameCount(1),PixelFormat(),TransparencyType(0),MipmapLevels(0),IsFlatAnimatedGraphic(false),FrameDataSize(0) {
+  for(unsigned long c_mipmap=0;c_mipmap<1;++c_mipmap) CompressedMipmapSizes[c_mipmap]=0;
+ }
+};
+FABLE_STATIC_ASSERT(sizeof(CGraphicDataBank::CGraphicHeader)==28);
+#endif
 
 #else
 // New header (chunk 767, row 0x00B2AD80 CEngineSurfaceCompositionManager::ChangeSceneForTextureBank). Retail RTTI

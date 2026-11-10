@@ -88,7 +88,13 @@ template<class T> struct __type_traits<T*> {
     typedef __true_type has_trivial_destructor;
     typedef __true_type is_POD_type;
 };
+#ifdef FABLE_RETAIL_STLP_MAX_FASTCALL
+// Retail opt-in (Codex pass 17): original std::max<long> fastcall,
+// FableWin 018ACFBC and its caller 018A801D; otherwise identical STLport body.
+template<class T> inline const T& (FABLE_FASTCALL max)(const T& a,const T& b) { return a<b?b:a; }
+#else
 template<class T> inline const T& (max)(const T& a,const T& b) { return a<b?b:a; }
+#endif
 template<class T> inline const T& (min)(const T& a,const T& b) { return b<a?b:a; }
 // _algobase.h
 inline void fill(unsigned char* first,unsigned char* last,const unsigned char& value) {

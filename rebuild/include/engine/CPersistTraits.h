@@ -21,11 +21,19 @@ public:
     // builds the CCharString default as a constructed temporary copied into the argument slot (0x004B067C..0x004B0693) and stores
     // a plain 0 for the scalar defaults.
     CPersistTraits() : DefaultVal() {}
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_EMPTY_DTOR
+    ~CPersistTraits() {}
+#endif
 #endif
     void TransferBinaryIn(CMemoryDataInputStream&,T&);
     void TransferBinaryOut(CDataOutputStream& stream,T value) { stream.WriteSLONG((long)value); }
     void TransferIn(CPersistContext& context,CStringParser& parser,T& value);
 };
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_LONG_BINARY_BODY
+template<> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& is,long& val) {
+ long tval=is.ReadSLONG();val=tval;
+}
+#endif
 template<> class CPersistTraits<unsigned __int64> {
 public:
     unsigned __int64 DefaultVal;

@@ -85,6 +85,13 @@ public:
 #endif
 private:
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_BUFFERTEXTURES
+public:
+ // Retail opt-in (Codex pass 17): original debug0301ce50/70 and original caller graph.
+ CSurface& GetRenderTargetSurface(){return RenderTargetSurface;}
+ bool IsNeedingPower2Textures(){return (D3DDeviceCaps.TextureCaps>>1)&1;}
+private:
+#endif
  bool SetupDepthAndBackBufferTextures();                                // 0x009BEE40 ?SetupDepthAndBackBufferTextures@CDisplayManager@@AAE_NXZ (chunk 751)
 #endif
  CSystemManager& SystemManager;

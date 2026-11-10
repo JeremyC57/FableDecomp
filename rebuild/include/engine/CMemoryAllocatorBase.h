@@ -34,6 +34,10 @@ public:
  virtual unsigned long GetHeaderOverhead()=0;
  virtual void ConsolidateFreeAreas();
  virtual void Validate()=0;
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
+ // Retail opt-in (Codex pass 17): original SetCurrentAlignment body, both PDBs.
+ void SetCurrentAlignment(){CurrentAlignmentShift=AlignmentShift;CurrentAlignment=Alignment;}
+#endif
  static unsigned long FABLE_FASTCALL StaticAlign(unsigned long value){return GFAlignShift(value,CurrentAlignment,CurrentAlignmentShift);}
  unsigned long Align(unsigned long value)const{return GFAlignShift(value,Alignment,AlignmentShift);}
 };

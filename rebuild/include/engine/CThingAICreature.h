@@ -95,6 +95,10 @@ public:
     // ?GetWorkBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ, inline in retail (`lea ecx,[esi+170h] ; call 0x00A01B50`).
     // Body in the includer once CThingBuilding is complete, like GetHomeBuilding.
     CThingBuilding* GetWorkBuilding() const;
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_PEEKWORKBUILDING
+    // Original debug 02032620 and native 0090bbfa: WorkBuilding.Get().
+    const CThingBuilding* PeekWorkBuilding() const;
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_LEVELSCRIPT
     // Nested opt-in (chunk 796, row 0x008315C0): Ego_r.pdb / FableWin.pdb ?ConstructFromLevelScript@CThingAICreature@@UAE_NPBD@Z (vtable

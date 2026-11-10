@@ -18,8 +18,14 @@ class CRGBFloatColour;
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
 class CEngineMeshEffectOutline;
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DISTANCE
+class C3DVector;
+#endif
 class CEnginePrimitiveRenderUtil : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_DISTANCE
+ static float __fastcall CalcDistanceFromCamera(const C3DVector&);
+#endif
     CEnginePrimitiveRenderUtil() { }                                     // ??0CEnginePrimitiveRenderUtil@@QAE@XZ
     virtual ~CEnginePrimitiveRenderUtil();                               // slot 0  ??1CEnginePrimitiveRenderUtil@@UAE@XZ
 #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL

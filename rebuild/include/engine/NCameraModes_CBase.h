@@ -15,7 +15,22 @@
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_MEMBERS
 class CGameCameraManager;
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_STRING_CAGE
+#include "engine/C2DVector.h"
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+#include "engine/NCameraModes_CPhysicsState.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+class CCameraModeDef;
+#endif
 namespace NCameraModes {
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+class CSubComponentBase;
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_STRING_CAGE
+class CTools;
+#endif
 enum EMode;
 class CBase {
 public:
@@ -28,12 +43,47 @@ public:
     // with retail STLport sizes: CPhysicsState is 0x30 bytes in retail (two 4-byte lists, donor 0x40), so CameraManager sits at +0x40
     // (GetPWorldSeed 0x0084D2B0 reads [ecx+40h]). Ego_r.pdb ?GetPWorldSeed@CBase@NCameraModes@@QBEPAKXZ.
     unsigned long* GetPWorldSeed() const;                // 0x0084D2B0
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_STRING_CAGE
+protected:
+#endif
     float               DefaultFOV;                      // +0x04
     float               DefaultRollAngle;                // +0x08
     float               DefaultObservedPositionZOffset;  // +0x0c
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+    CPhysicsState LookAt;
+#else
     unsigned char       LookAt[0x30];                    // +0x10 CPhysicsState (retail 0x30)
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_STRING_CAGE
+    // Retail opt-in (Codex pass 17): full original suffix, container sizes adjusted to native STLport.
+    const CTools& GetCamTools() const;
+private:
+    CGameCameraManager& CameraManager;                   // +0x40
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+    CDefPointer<const CCameraModeDef> PCameraModeDef;
+#else
+    unsigned char PCameraModeDef[4];                     // +0x44 CDefPointer<const CCameraModeDef>
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+    std::vector<CCountedPointer<CSubComponentBase> > SubComponents;
+#else
+    unsigned char SubComponents[12];                    // +0x48 vector<CCountedPointer<CSubComponentBase> >
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+    CPhysicsState GoTo;
+#else
+    unsigned char GoTo[48];                              // +0x54 CPhysicsState
+#endif
+    float CameraFOV,RollAngle,ObservedPositionZOffset;    // +0x84
+    C2DVector RightStickVector,LeftStickVector;           // +0x90
+    bool ViewOccluded;                                  // +0xa0
+#else
     CGameCameraManager* CameraManager;                   // +0x40
 #endif
+#endif
 };
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
+FABLE_STATIC_ASSERT(sizeof(CBase)==0xa4);
+#endif
 } // namespace NCameraModes
 #endif // FABLE_ENGINE_NCAMERAMODES_CBASE_H

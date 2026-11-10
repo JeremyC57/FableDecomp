@@ -1,3 +1,47 @@
+#ifdef FABLE_RETAIL_CFRONTENDMANAGER_DESTRUCTOR
+#ifndef FABLE_ENGINE_CFRONTENDMANAGER_H
+#define FABLE_ENGINE_CFRONTENDMANAGER_H
+#include "engine/NUISystem_CComponent.h"
+#include "engine/FRONTEND_SCREEN.h"
+#include "engine/CDateAndTime.h"
+#include "stlport/fable_deque.h"
+class CNewFrontendGameComponent;class CVirtualKeyboard;
+namespace NUISystem {
+class CFrontEndManager:public CObserver {
+public:
+ CFrontEndManager();
+ virtual ~CFrontEndManager();
+ virtual void Action(CCountedPointer<CAction>&);
+ static CFrontEndManager* __fastcall GetInstance();
+ virtual void ProcessEvent(EEvent);
+ void CloseVirtualKeyboard(bool);
+protected:
+ CWideString MediaPlayerErrorString;
+ std::list<CActionParam*> UIActionParams;
+ CNewFrontendGameComponent* PGameComponent;
+ static CFrontEndManager* m_pInstance;
+ std::stack<CComponent*> m_stackScreens;
+ std::vector<CComponent*> m_vComponents;
+ std::map<FRONTEND_SCREEN,CComponent*> m_mapScreens;
+ CVirtualKeyboard* m_pVirtualKeyboard;
+ bool m_bStartNewGame;
+ std::vector<CDateAndTime> m_vFileTimes;
+ std::vector<CCharString> FileRegionNames,FileRegionMiniMapNames;
+ std::vector<long> FilePlayTimes;
+ CComponent* PScreenToDeactivate;CComponent* PScreenToActivate;
+ bool GoToKeyboard;
+ CComponent* PScreenToDeactivateForStartGame;CComponent* PScreenToDeactivateForLoadGame;
+ CWideString GameToLoad,ProfileToDelete;
+ unsigned long BlocksOnUNeeded,BlocksOnTNeeded,NumberSaveGames;
+ bool m_bQuitFromGame;
+ std::map<CWideString,bool> Signatures;
+ double InstallationPauseStartTime;
+ bool InstallationPaused,FinalInstallationNeverPause;
+};
+FABLE_STATIC_ASSERT(sizeof(CFrontEndManager)==224);
+}
+#endif
+#else
 #ifdef FABLE_RETAIL_CFRONTENDMANAGER
 #ifndef FABLE_ENGINE_CFRONTENDMANAGER_H
 #define FABLE_ENGINE_CFRONTENDMANAGER_H
@@ -119,4 +163,6 @@ FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, InstallationPaused) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, FinalInstallationNeverPause) == 0xd9);
 
 #endif // FABLE_ENGINE_CFRONTENDMANAGER_H
+#endif
+
 #endif

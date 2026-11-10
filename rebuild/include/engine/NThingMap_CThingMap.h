@@ -8,7 +8,7 @@
 // landed spellings (NThingMap::g_NoMapwhoLevels 0x013BA848; LayerInfo_0137dad8, element NThingMap::CLayerInfo in Ego_r.pdb, kept
 // as the landed global struct). Needs FABLE_RETAIL_CTCMAPWHO (NThingMap::CMapwhoNode) for the cell's node list.
 #include "rebuild_abi.h"
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
 #include "engine/CRGBColour.h"
 #endif
 #include "stlport/fable_containers.h"
@@ -30,6 +30,10 @@ public:
 };
 class CThingMap {
 public:
+#ifdef FABLE_RETAIL_CTHINGMAP_GETAREA
+    // Retail opt-in (Codex pass 17): FableWin GetArea and the original debug caller return Area by const reference.
+    const C2DBoxI& GetArea() const { return Area; }
+#endif
     virtual ~CThingMap();                                    // slot 0 (scalar deleting dtor 0x0085ECF0)
     std::vector<CMapwhoLevelInfo>              MapwhoLevelInfo;   // +0x04
     CThingMapManager*                          Manager;           // +0x10
@@ -38,7 +42,7 @@ public:
     long                                       NoThings;          // +0x30
 };
 FABLE_STATIC_ASSERT(sizeof(CThingMap) == 0x34);
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
 extern long MaxLayers;
 class CLayerInfo {public:long Size,ScaleShift;CRGBColour UsedColour,UnusedColour;};
 extern const CLayerInfo LayerInfo[];

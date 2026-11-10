@@ -12,9 +12,20 @@
 class C3DVector;
 class CThing;
 class CGameCameraManager;
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD
+class CWorld;
+#endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD
+#include "engine/CGameCameraManager.h"
+#endif
 namespace NCameraModes {
 class CTools {
 public:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE
+    // Retail opt-in (Codex pass 17): original donor template and arithmetic at0x02889720.
+    template<class T> T GetRollingAverage(const T& current_val,const T& new_val,float weight) const
+    {return (current_val*weight+new_val)/(weight+1.0f);}
+#endif
     enum ELOSTest { };
     bool GetThingPointIntersectionFromTo(const std::vector<const CThing*>&, const C3DVector&, const C3DVector&, C3DVector&,
         C3DVector&, const CThing**, bool, ELOSTest) const;           // 0x008771A0
@@ -30,7 +41,16 @@ public:
     float GetMeshExtent(const CThing& thing) const;
 #endif
 private:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD
+    const CGameCameraManager& GetCameraManager()const { return CameraManager; }
+    const CWorld& GetWorld()const { return GetCameraManager().GetWorld(); }
+#endif
+#if defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_WORLD) || defined(FABLE_RETAIL_NCAMERAMODES_CTOOLS_ROLLING_AVERAGE)
+    // Retail opt-in (Codex pass 17): both original PDBs specify this const reference.
+    const CGameCameraManager& CameraManager;
+#else
     CGameCameraManager* CameraManager;                                // +0x00
+#endif
     unsigned char ScanThings[0xC];                                    // +0x04 vector<CIntelligentPointer<const CThing> >
     float CameraMeshOffsetDistance;                                   // +0x10
     float CameraCreatureOffsetDistance;                               // +0x14

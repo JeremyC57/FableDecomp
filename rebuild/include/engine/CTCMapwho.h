@@ -12,7 +12,7 @@
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"
 class C3DVector;
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTCMAPWHO_STATTYPE)
 class CTCMapwho;
 #endif
 namespace NThingMap {
@@ -27,6 +27,10 @@ public:
 }
 class CTCMapwho : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCMAPWHO_STATTYPE
+    // Retail opt-in (Codex pass17): FableWin01cff880 and native bit3A lookup.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_MAPWHO;}
+#endif
     CTCMapwho(CThing&);                                                  // 0x0071A670 ??0CTCMapwho@@QAE@AAVCThing@@@Z
     virtual ~CTCMapwho();                                                // 0x0071A790 ??1CTCMapwho@@UAE@XZ
     virtual void OnDie();                                                // 13 0x0071A7C0

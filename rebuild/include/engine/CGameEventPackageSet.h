@@ -9,8 +9,17 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CGAMEEVENTPACKAGESET_ACCESSORS
+class CGameEventPackage;
+#endif
 class CGameEventPackageSet {
 public:
+#ifdef FABLE_RETAIL_CGAMEEVENTPACKAGESET_ACCESSORS
+    // Retail opt-in (Codex pass 17): original public const accessors,
+    // both PDBs and native calls 009F1730/009F1750.
+    const CGameEventPackage* GetPackage(unsigned long) const;
+    unsigned long GetNoPackages() const;
+#endif
     unsigned long NoPackages;                                // +0x00
     unsigned char Packages[0x13a10];                         // +0x04 CGameEventPackage[50]
 #ifdef FABLE_RETAIL_CGAMEEVENTPACKAGESET_CLEAR

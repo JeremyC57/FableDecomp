@@ -5,6 +5,10 @@
 class CPhysicsMeshObject;
 // PDB original virtual declarations; retail Physics slots are PDB offsets minus8.
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
+#include "engine/CDefPointer.h"
+#include "engine/CPhysicsDef.h"
+#endif
 #include "engine/ETCInterfaceType.h"
 #include "fable_string.h"
 #include "engine/C3DVector.h"
@@ -194,15 +198,33 @@ protected:
     long OldPositionLastFrameSet;
     C3DVector Velocity;
     float Radius;
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
+    // Retail opt-in (Codex pass17): both PDBs and native006afe60 prove the real def handle.
+    CDefPointer<const CPhysicsDef> PhysicsDef;
+    void RespondToCollision(const CPhysicsCollideResponse& response_info,C3DVector& velocity) const;
+#else
     unsigned char PhysicsDef[4];
+#endif
     bool Moving:1,OldMoving:1;
 public:
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_SETASMOVING
     // Both raw donors: public non-virtual SetAsMoving(bool), native006b0130.
     void SetAsMoving(bool);
 #endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_COLLISION_RESPONSE
+    float GetFriction() const {return PhysicsDef->Friction;}
+    float GetElasticity() const {return PhysicsDef->Elasticity;}
+#endif
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_MAPWHOPOSITION
+    // Retail opt-in (Codex pass17): donor024707b0, original pos local and copy.
+    C3DVector GetMapwhoPosition() const {C3DVector pos=Position+GetOffsetVector();return pos;}
+#endif
     void GetBoundingInfo(C3DVector&,float&) const;
     const C3DVector& GetPosition() const { return Position; }
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE_INTERPOLATED_POSITION
+    // Retail opt-in (Codex pass17): original const value-return overload;0049d150.
+    C3DVector GetPosition(float interpolate) const;
+#endif
     float GetRadius() const { return Radius; }
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_LASTPOSITION
     // FableWin GetLastPosition01d8e980, inline read at007bc761: native OldPosition+18.

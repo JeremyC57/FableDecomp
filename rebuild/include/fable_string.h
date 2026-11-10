@@ -311,6 +311,10 @@ public:
     // (FableWin 0x01D34B90); 0x00522720 tests '!PStringData || !StringLength' in place.
     // GetLength: the null test as `PStringData==0 ? 0 : ...` lets VC7.1 reuse the zero CPU location (0x00E5EBD0 `test; je; mov eax,[eax+4];
     // dec eax`; the `PStringData ? ... : 0` form adds `jmp; xor eax,eax`, 1068v1064); 0x00521620 / 0x00522720 are byte-identical either way.
+#ifdef FABLE_RETAIL_CCHARSTRING_GETCHAR
+    // Retail opt-in (Codex pass 17): original public const GetChar(long), FableWin024b1fc0.
+    char GetChar(long index)const{return GetAsCharArray()[index];}
+#endif
     long GetLength() const { return PStringData==0 ? 0 : (long)PStringData->Data.GetLength(); }
     bool IsEmpty() const { return GetLength() == 0; }
 #ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITH

@@ -19,6 +19,10 @@ private:
  std::multimap<float,CCountedPointer<CVertexPairContraction> > VertexPairContractions;
  long SegmentCount;CArray<float> SegmentSizes;CArray<CCountedPointer<CChunkedFileChunk> > SubChunksToKeep;
  COptimisationParameters Parameters;
+#ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDPRIMITIVE_SUBCOST
+ // Retail opt-in (Codex pass 17): exact original private nonconst method.
+ float ComputeSubContractionCost(const CSubContraction&,const C3DVector&);
+#endif
  C3DVector MakeOrthogonal(const C3DVector& vect,const C3DVector& normal)const;
 };
 }

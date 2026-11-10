@@ -5,7 +5,20 @@
 // +0x0D, CurrentAbility +0x10, UndeadFollowers (STLport list, 4 bytes in retail) +0x14, Creature ...; only the first byte is read by
 // the rows that use this header, through FableWin.pdb's inline ?GetAbilityMutexLock@CTCSpecialAbilities@@QBE_NXZ (retail
 // `mov cl,[eax+0Ch] ; test cl,cl`, 0x0062C001). The rest of the class stays unmodelled. Needs FABLE_RETAIL_CTCBASE.
-#ifdef FABLE_RETAIL_CTCSPECIALABILITIES
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+// Full-layout opt-in (Codex pass 17, row 0x0078C150 CTCBerserk::PlayHitEffectAtPos): the retail 0x28-byte layout (STLport list 4 and
+// vector<bool> sized members) and the public static ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z.
+#include "engine/CTCBase.h"
+#include "engine/EHeroAbility.h"
+#include "stlport/fable_containers.h"
+class CThingCreatureBase;class C3DVector;
+class CTCSpecialAbilities:public CTCBase {
+public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
+private:class CUndeadFollower;bool AbilityMutexLock,UsingBed;EHeroAbility CurrentAbility;
+ std::list<CUndeadFollower> UndeadFollowers;CThingCreatureBase& Creature;std::vector<bool> AbilityAvailability;
+};
+FABLE_STATIC_ASSERT(sizeof(CTCSpecialAbilities)==0x28);
+#elif defined(FABLE_RETAIL_CTCSPECIALABILITIES)
 #ifndef FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCBASE
 #endif

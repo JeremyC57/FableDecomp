@@ -3,6 +3,9 @@
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE
 // Retail opt-in (Codex pass 11 consolidation 2): the retail CTCHeroExperience model (row 0x00667D30 CThingCreatureBase::OnHit); see below.
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_PICKUP_MULTIPLIER
+#include "engine/CAnimSet.h"
+#endif
 #include "engine/CDefPointer.h"
 #include "engine/CHeroCombatDef.h"
 #include "engine/EHeroExperienceStatCategory.h"
@@ -47,6 +50,18 @@ public:
     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef()const{return PHeroCombatDef;}
 #endif
     void AddTrainableStatExperience(EHeroExperienceStatCategory,long);
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_PICKUP_MULTIPLIER
+    // Retail opt-in (Codex pass 17): original public const getter; debug01eee710 and native006d8300 expansion.
+    long GetExperiencePickUpMultiplier()const {return GetExperiencePickupMultiplierForParam(ExperienceMultiplierParam);}
+private:
+    long GetExperiencePickupMultiplierForParam(float param)const {
+        float param_per_level=PDef->ExperienceMultiplierParamPerUnitComboMultiplier;
+        long multiplier=(long)(param/param_per_level+1.0);
+        GFLimitLower(multiplier,1);
+        return multiplier;
+    }
+public:
+#endif
     // Chunk 735 (CTCInventoryExperience rows 0x005729D8 / 0x00573792): the trainable-stat queries, out of line (Ego_r.pdb /
     // FableWin.pdb spellings): GetTrainableStatLevel 0x006D6520 (QBE), GetTrainableStatMaxLevel 0x006D6770 (QBE),
     // GetCostToUpgradeTrainableStat 0x006D67B0 (QBE), GetCategoryTrainableStatIsIn 0x006D6850 (QBE), GetStatExperience

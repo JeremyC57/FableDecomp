@@ -11,6 +11,9 @@
 #pragma pack(push, 1)
 class CProcessedInput {
 public:
+#ifdef FABLE_RETAIL_CPROCESSEDINPUT_ADDEVENT
+    void AddGameEvent(const CGameEvent& event);
+#endif
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]

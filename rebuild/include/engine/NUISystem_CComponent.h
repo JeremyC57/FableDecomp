@@ -7,6 +7,9 @@
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_COBSERVER_DESTRUCTOR
+#include "stlport/fable_map.h"
+#endif
 class CIEngine;
 class CEnginePrimitiveHandle;
 class CRGBColour;
@@ -30,7 +33,11 @@ public:
 class CObserver {
 public:
     CObserver();
+#ifdef FABLE_RETAIL_COBSERVER_DESTRUCTOR
+    virtual ~CObserver(){}
+#else
     virtual ~CObserver();
+#endif
     virtual void ProcessEvent(EEvent)=0;
     virtual bool IsObservingEvent(EEvent);
     virtual void ObserveEvent(EEvent);
@@ -39,7 +46,11 @@ public:
     virtual void ObserveAllEvents();
     virtual void SetPreventObserving(bool);
 protected:
-    unsigned char EventsToObserve[12]; // std::set<EEvent>, native+4.
+#ifdef FABLE_RETAIL_COBSERVER_DESTRUCTOR
+    std::set<EEvent> EventsToObserve;
+#else
+    unsigned char EventsToObserve[12];
+#endif // std::set<EEvent>, native+4.
     bool PreventObservation; // +10
 };
 // Layout: original second secondary base, size8 in donor and retail.

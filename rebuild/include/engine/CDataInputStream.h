@@ -72,7 +72,19 @@ public:
     virtual CCharString ReadNullTerminatedString();
     virtual CWideString ReadNullTerminatedWString();
 protected:
+#ifdef FABLE_RETAIL_CDATAINPUTSTREAM_CHUNKSEEK
+    // Retail opt-in (Codex pass17): PDB protected helpers; donor03080e90/03080b20.
+    bool CanSeekToPosWithinSourceChunk(long pos) {
+        return (unsigned long)pos>=SourceChunkStreamPos && (unsigned long)pos<=StreamPos+SourceChunkBytesRemaining;
+    }
+    void SetPositionAssumeWithinSourceChunk(unsigned long pos) {
+        CurrentSourcePtr+=(long)(pos-StreamPos);
+        SourceChunkBytesRemaining+=(long)(StreamPos-pos);
+        StreamPos=pos;
+    }
+#else
     void SetPositionAssumeWithinSourceChunk(unsigned long);
+#endif
 private:
     void ReadWithSrcChunkOverflow(unsigned char*,long);
     virtual void InternalReadNextSourceChunk(const unsigned char*&,long&);

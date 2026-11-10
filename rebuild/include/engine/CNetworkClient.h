@@ -11,6 +11,27 @@
 class CMainGameComponent;
 struct CNetworkPlayer;
 
+// Retail opt-in (Codex pass 17): original class key/base/private complete data,
+// Ego_r/FableWin 2680h, native Client subobject +13AB8h.
+#ifdef FABLE_RETAIL_CNETWORKCLIENT_UPDATE
+#include "engine/CInitBaseClass.h"
+class CNetworkClient : public CInitBaseClass {
+public:
+    void Update(long,unsigned long,unsigned long);
+private:
+    unsigned char Server[8]; // CNetworkServer
+    unsigned char ReceiveBuffer[8192];
+    unsigned char LocalEventPackage[0x648]; // CGameEventPackage
+    double LastUpdateTime;
+    bool FirstTime,Host,LocalGame;
+    const CNetworkPlayer* LocalPlayer;
+    const CNetworkPlayer* HostPlayer;
+    long LocalFrame;
+    unsigned long Checksum1,Checksum2;
+    CMainGameComponent* GameComponent;
+};
+FABLE_STATIC_ASSERT(sizeof(CNetworkClient)==0x2680);
+#else
 #pragma pack(push, 1)
 struct CNetworkClient {
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
@@ -48,5 +69,7 @@ FABLE_STATIC_ASSERT(offsetof(CNetworkClient, LocalFrame) == 0x266c);
 FABLE_STATIC_ASSERT(offsetof(CNetworkClient, Checksum1) == 0x2670);
 FABLE_STATIC_ASSERT(offsetof(CNetworkClient, Checksum2) == 0x2674);
 FABLE_STATIC_ASSERT(offsetof(CNetworkClient, GameComponent) == 0x2678);
+
+#endif
 
 #endif // FABLE_ENGINE_CNETWORKCLIENT_H

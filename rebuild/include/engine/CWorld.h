@@ -22,6 +22,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CWORLD_EVENTPACKAGES
+class CGameEventPackage;
+#endif
 class C3DAnimationManager;
 class CAIGameCameraBase;
 class CAtmosProcess;
@@ -113,6 +116,10 @@ public:
 
 #ifdef FABLE_RETAIL_CWORLD_MESH_BANK
     CMeshDataBank* GetMeshBank(){return PMainMeshBank_Data;}
+#endif
+#ifdef FABLE_RETAIL_CWORLD_EVENTPACKAGES
+    // Retail opt-in (Codex pass 17): both PDBs/native0049DFB0.
+    void Update(const CGameEventPackage&,bool);
 #endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
@@ -263,6 +270,10 @@ public:
     CGameScriptInterface*       PGameScriptInterface_ptr;    // +0x38 scoped_ptr<CGameScriptInterface>::ptr
     CMeshDataBank*              PMainMeshBank_Data;          // +0x3c CCountedPointer<CMeshDataBank>::Data
     CCPPointerInfo*             PMainMeshBank_Info;          // +0x40 CCountedPointer<CMeshDataBank>::Info
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
+    // Retail opt-in (Codex pass17): original public const getter, donor1D0CE90/native field44h.
+    C3DAnimationManager* GetAnimationManager()const{return PAnimationManager;}
+#endif
     C3DAnimationManager*        PAnimationManager;           // +0x44
     CNavigatorManager*          PNavigationManager_ptr;      // +0x48 scoped_ptr<CNavigatorManager>::ptr
     CCombatManager*             PThingCombatManager_ptr;     // +0x4c scoped_ptr<CCombatManager>::ptr
@@ -382,6 +393,10 @@ public:
     CGameScriptInterface*       PGameScriptInterface_ptr;    // +0x38 scoped_ptr<CGameScriptInterface>::ptr
     CMeshDataBank*              PMainMeshBank_Data;          // +0x3c CCountedPointer<CMeshDataBank>::Data
     CCPPointerInfo*             PMainMeshBank_Info;          // +0x40 CCountedPointer<CMeshDataBank>::Info
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
+    // Retail opt-in (Codex pass17): original public const getter, donor1D0CE90/native field44h.
+    C3DAnimationManager* GetAnimationManager()const{return PAnimationManager;}
+#endif
     C3DAnimationManager*        PAnimationManager;           // +0x44
     CNavigatorManager*          PNavigationManager_ptr;      // +0x48 scoped_ptr<CNavigatorManager>::ptr
     CCombatManager*             PThingCombatManager_ptr;     // +0x4c scoped_ptr<CCombatManager>::ptr
@@ -478,6 +493,10 @@ public:
     double                      TimePlayed;                  // +0x188
     bool                        HasInitialisedStartTime;     // +0x190
     unsigned char               _pad_0x191[0x7];             // +0x191
+#ifdef FABLE_RETAIL_CWORLD_EVENTPACKAGES
+    // Retail opt-in (Codex pass 17): both PDBs/native0049DFB0.
+    void Update(const CGameEventPackage&,bool);
+#endif
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
 };

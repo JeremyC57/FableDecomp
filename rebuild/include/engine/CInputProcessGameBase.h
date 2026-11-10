@@ -16,6 +16,14 @@ class CWorld;
 class CInputProcessGameBase : public CAInputProcess {
 public:
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);        // 0x00687A30
+#ifdef FABLE_RETAIL_INPUTPROCESS_ZTARGET
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;
+protected:
+    const CGamePlayerInterface& GetGamePlayerInterface() const { return *PGamePlayerInterface; }
+    bool IsEventButtonPressed(const CInputEvent& event) const;
+    bool IsEventButtonHeld(const CInputEvent& event) const;
+public:
+#endif
     CWorld*                 World;                                       // +0x14
     CPlayer*                MyPlayer;                                    // +0x18
     CGameDefinitionManager* DefinitionManager;                           // +0x1c

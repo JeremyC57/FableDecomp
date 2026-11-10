@@ -28,6 +28,9 @@ public: static NUISystem::CManager * __fastcall GetInstance();
 public: static void __fastcall OnOpenMenus();                                   // 0x0041D122
 public: static void __fastcall OnCloseMenus();                                  // 0x0041D165
 #endif
+#ifdef FABLE_RETAIL_CMANAGER_CLEAR
+ static void __fastcall Clear();
+#endif
 #ifdef FABLE_RETAIL_CMANAGER
 // Retail branch (chunk 726): Ego_r.pdb ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, out of line at 0x0041CF47
 // (CList::ComputeChildrenVisibility 0x005379F5 and CScrollingViewport::Update 0x0053F1C0 call it with a hidden result).

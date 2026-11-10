@@ -1,3 +1,39 @@
+#if defined(FABLE_RETAIL_CENGINECAMERA_POSITION)
+#ifndef FABLE_ENGINE_CENGINECAMERA_H
+#define FABLE_ENGINE_CENGINECAMERA_H
+#include "engine/CEngineComponent.h"
+#include "engine/CEngineCameraDesc.h"
+#include "engine/CMatrix4x4.h"
+#include "engine/CPlane.h"
+#include "engine/CArray.h"
+class CCamera;
+class CEngineCamera:public CEngineComponent {
+public:
+ CEngineCamera(bool);
+ virtual unsigned long PeekSceneFilterFlags()const;
+ const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
+private:
+ const CCamera* GameCamera;
+ const C2DBoxF* GameWindow;
+ CEngineCameraDesc CameraDesc;
+ CMatrix3x4 ViewTransform;
+ float WindowWidth,WindowHeight,HalfWindowWidth,HalfWindowHeight;
+ float OneOverHalfWindowWidth,OneOverHalfWindowHeight,WindowCenterX,WindowCenterY;
+ float AspectRatio,HomogenousViewScaleX,HomogenousViewScaleY,ZBufferFactor,ZBufferOffset;
+ CMatrix3x4 InverseViewTransform,NoScaleViewTransform,InverseNoScaleViewTransform;
+ CMatrix4x4 ProjectionTransform;
+ C3DVector LookVector;
+ CPlane FrustrumPlanes[4];
+ long ConsoleOverrideViewPortWidth,ConsoleOverrideViewPortHeight;
+ class CDebugScriptElement {public:C3DVector WorldPos,LookVector;float FOV,TimeToNextElement;};
+ CArray<CDebugScriptElement> DebugScript;
+ long CurrentDebugScriptElement;
+ bool DebugScriptRunning;
+ double DebugScriptElementStartTime;
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineCamera)==552);
+#endif
+#else
 #ifndef FABLE_ENGINE_CENGINECAMERA_H
 #define FABLE_ENGINE_CENGINECAMERA_H
 #ifdef FABLE_RETAIL_CENGINECAMERA
@@ -128,3 +164,5 @@ FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptElementStartTime) == 0x22
 
 #endif // FABLE_RETAIL_CENGINECAMERA
 #endif // FABLE_ENGINE_CENGINECAMERA_H
+
+#endif

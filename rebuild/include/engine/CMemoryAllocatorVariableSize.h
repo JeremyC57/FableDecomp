@@ -22,11 +22,18 @@ public:
         CMemoryArea*      PFirstFreeArea;       // +0x28
         CMemoryArea*      PLastFreeArea;        // +0x2c
         CMemoryArea*      PFirstAllocatedArea;  // +0x30
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
+        // Retail opt-in (Codex pass 17): public original nested-class method.
+        CMemoryArea* AllocAreaFromArea(CMemoryArea* area, long size);
+#endif
         void Init(void* memory, long size, CMemoryAllocatorVariableSize* parent);   // 0x00A65410
     };
     class CMemoryArea {                         // Ego_r.pdb: 32 bytes
     public:
         static long FABLE_FASTCALL GetHeaderSize(){return CMemoryAllocatorBase::StaticAlign(sizeof(CMemoryArea));}
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
+        void* GetDataStart() const {return (char*)this + GetHeaderSize();}
+#endif
         CMemoryArea*      PNextArea;            // +0x00
         CMemoryArea*      PRightChild;          // +0x04
         CMemoryArea*      PPreviousArea;        // +0x08
@@ -46,6 +53,22 @@ protected:
     unsigned long     ExtraMemUsedByOS;         // +0xc30
     CMemoryArea*      PTreeRoot;                // +0xc34
 public:
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE_ALLOCATE
+    virtual void* Allocate(unsigned long size);
+    CMemoryArea* AllocateMemoryFromExistingChunks(unsigned long size)
+    {
+        unsigned long data_size = Align(size);
+        CMemoryArea* pbest_area = GetTreeAreaWithSizeGreaterThanOrEqualTo(data_size);
+        if (pbest_area) {
+            CMemoryAreaChunk* pchunk = pbest_area->PParentChunk;
+            return pchunk->AllocAreaFromArea(pbest_area, data_size);
+        }
+        return 0;
+    }
+protected:
+    CMemoryArea* GetTreeAreaWithSizeGreaterThanOrEqualTo(long size) const;
+public:
+#endif
     long InternalAlloc(long no_bytes,void** pdata);
 protected:
     CMemoryAreaChunk* NewChunk(long request_size);

@@ -2,6 +2,10 @@
 #define FABLE_ENGINE_CTHINGBUILDING_H
 #include "engine/CThingGameObject.h"
 // Ego_r TPI inheritance, members and access; native IsPointInside 0082d000.
+#ifdef FABLE_RETAIL_CTHINGBUILDING_PEEKSIMDEF
+#include "engine/CDefPointer.h"
+class CSimBuildingDef;
+#endif
 class CThingBuilding : public CThingGameObject {
 protected:
     long ForceOpenCount;
@@ -16,9 +20,16 @@ protected:
 #endif
 public:
     static long __fastcall StatGetType() { return 3; }
+#ifdef FABLE_RETAIL_CTHINGBUILDING_TYPEFLAGS
+    static unsigned long FABLE_FASTCALL StatGetTypeFlags(){return 0x47;}
+#endif
 #ifdef FABLE_RETAIL_CTHINGBUILDING
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingBuilding@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+#endif
+#ifdef FABLE_RETAIL_CTHINGBUILDING_PEEKSIMDEF
+    // Both PDBs and native 0082d2d0, caller 0090bc1c.
+    CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
 #endif
     bool IsPointInside(const C3DVector&) const;
 #ifdef FABLE_RETAIL_CTHINGBUILDING

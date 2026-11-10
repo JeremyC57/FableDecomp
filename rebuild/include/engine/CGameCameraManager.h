@@ -38,6 +38,9 @@ template <class T> class CCountedPointer;
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
+    const CWorld& GetWorld()const { return World; }
+#endif
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_CAMPOINTS
 private:
     void ResetFlags();                                       // 0x00699130 ?ResetFlags@CGameCameraManager@@AAEXXZ
@@ -78,7 +81,12 @@ public:
     unsigned char      Camera[0x38];                         // +0x04 CCamera
 #endif
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
+private: const CWorld& World;
+public:
+#else
     CWorld*            World;                                // +0x74
+#endif
     unsigned char      CamTools[0x20];                       // +0x78 CTools
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
     CCountedPointer<NCameraModes::CBase> CurrentMode;        // +0x98 (Data, Info)
@@ -155,7 +163,9 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, __vftable) == 0x0);
 #endif
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, Camera) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, OldCamera) == 0x3c);
+#ifndef FABLE_RETAIL_CGAMECAMERAMANAGER_WORLD
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, World) == 0x74);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CamTools) == 0x78);
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode) == 0x98);

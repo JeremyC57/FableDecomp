@@ -123,7 +123,7 @@ public:
     // Retail opt-in (Codex2026-11-10): both original PDBs and native00942390.
     template<class Filter,class Compare,class T> bool GetPBestThingInRoughArea(const C2DBoxI&,const Filter&,const Compare&,T**)const;
 #endif
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_BODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA)
     // Original raw PDB static members; native00942390 uses13b89a8/ac/b0.
     static unsigned long NoLookups,NoThingsScanned,SearchID;
 protected:
@@ -132,7 +132,45 @@ public:
 #endif
     CThingSearchTools(CThingManager&,CWorldMap&);
     ~CThingSearchTools();
-#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA
+    template<class T,class Container,class Filter> void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
+        std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+        GetAllThingMapsInArea(area,maps);
+        ++NoLookups;
+        NoThingsScanned=0;
+        ++SearchID;
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
+            const NThingMap::CThingMap& map=**it;
+            C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+            for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
+                long shift=NThingMap::LayerInfo[layer].ScaleShift;
+                C2DBoxI cells;
+                cells.TLX=local.TLX>>shift;
+                cells.TLY=local.TLY>>shift;
+                cells.BRX=((local.BRX-1)>>shift)+1;
+                cells.BRY=((local.BRY-1)>>shift)+1;
+                if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
+                    continue;
+                for(long y=cells.TLY;y<cells.BRY;++y) {
+                    const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+                    for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
+                        for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+                            CTCMapwho* who=node->PMapwho;
+                            if(who->GetSearchID()<SearchID) {
+                                who->SetSearchID(SearchID);
+                                CThing& thing=who->GetParentThing();
+                                unsigned long mask=T::StatGetTypeFlags();
+                                if((thing.GetTypeFlags()&mask)==mask && filter(static_cast<const T&>(thing)))
+                                    result.push_back(static_cast<T*>(&thing));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        maps.clear();
+    }
+#elif defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY)
     // Chunk 768 (row 0x00969E70 CAIStateGroup_SleepOnFloor::IsRunnable): the GetAllThingsInRoughArea<T,Container,Filter> body (the
     // landed instances 0x0075BC40 / 0x00969FB0 shape: the maps under the area 0x0049C6F0, the search stamp bump, per map the local
     // area 0x0049C700, per mapwho layer the area scaled down by the layer's shift, then every cell's node list: a component not yet

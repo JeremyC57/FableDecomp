@@ -8,6 +8,10 @@
 #endif
 class CThing;
 class CAnimateThing {public:
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
+ // Retail opt-in (Codex pass17): both PDBs; donor1E964F0 called in actual helper.
+ bool AnimsCanBeIgnored()const;
+#endif
  class CCompleteAnimation{public:CAnimSet MainAnimSet;std::list<CAnimSet> TransitionAnimSets,CombinationAnims;bool MainAnimCanTransitionOut;};
  class CDelayedAnimation{public:std::list<CAnimSet> CombinationAnims;};
  void SetMainAnim(const CAnimInit&,long,long);

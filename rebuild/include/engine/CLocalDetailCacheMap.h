@@ -8,6 +8,10 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_QUADTREE
+#include "engine/CMovableResource.h"
+#include "engine/C3DBoundingSphere.h"
+#endif
 
 class CEngineMap;
 class CEngineStaticMapFileBlockManager;
@@ -15,6 +19,10 @@ class CEngineStaticMapFileBlockManager;
 #pragma pack(push, 1)
 class CLocalDetailCacheMap {
 public:
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_QUADTREE
+    class CQuadTreeElement;
+    class CObjectCacheGroupCollection;
+#endif
     bool                              LockedFromMemoryRelocation; // +0x00
     unsigned char                     _pad_0x01[0x3];        // +0x01
     CEngineStaticMapFileBlockManager* FileBlockManager;      // +0x04
@@ -33,4 +41,34 @@ FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, QuadTree) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, AreaUpdateList) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, CollectionTypePalette) == 0x64);
 
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_QUADTREE
+// Retail opt-in (Codex pass17): both PDB records prove the nested class, CMovableResource base, size76.
+// Retail ctor00bddf30 and donor02e38120 prove the member layout and initialization.
+class CLocalDetailCacheMap::CQuadTreeElement : public CMovableResource {
+public:
+    CQuadTreeElement(CLocalDetailCacheMap* map,long mapx,long mapy,long width,long height);
+    virtual ~CQuadTreeElement();
+    virtual void RelocateData(long,void*,void*,long);
+    virtual bool CanRelocateData(long) const;
+private:
+    CObjectCacheGroupCollection* ObjectCacheGroupCollections;
+    CQuadTreeElement* Children[4];
+    C3DBoundingSphere BoundingSphere;
+    CLocalDetailCacheMap* Map;
+    float MaxFadeDistance;
+    unsigned long PrimitiveTypeMask;
+    long FileBlockPos;
+    long FileBlockSize;
+    long OffsetIntoFileBlock;
+    unsigned short MapX;
+    unsigned short MapY;
+    unsigned short Width;
+    unsigned short Height;
+    bool HasDynamicAreasFlag:1;
+    bool RenderUpdateNeeded:1;
+    bool StaticContentsLoaded:1;
+    bool Loading:1;
+};
+FABLE_STATIC_ASSERT(sizeof(CLocalDetailCacheMap::CQuadTreeElement)==76);
+#endif
 #endif // FABLE_ENGINE_CLOCALDETAILCACHEMAP_H

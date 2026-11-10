@@ -1,0 +1,7 @@
+# Status and count definitions
+
+STATUS.tsv attempts counts preserved numbered compiler experiment records, excluding independent main review/reintegration grades. It includes diagnostics and closely related variants. It is NOT a claim that every compiler invocation is a genuinely distinct strategy. Each PROBES.md groups related variants, explains compile failures and identifies flag-only diagnostics. A matched row may finish before ten strategies; the camera near match was tried through substantially more than ten distinct source families. The constructor009d5d30 began after a narrowly scoped owner exception for three PDB-proven original field qualifiers; its first build is counted as one source strategy, and independent reviews are not extra strategies.
+
+VERIFIED_MATCH means the complete assigned bytes match without relocation masking. RELOCATION_MATCH means only actual COFF relocation operands differ and every target/name/literal was separately audited. A passing behavior test alone never upgrades a byte mismatch. One verified row0057b26f uses an existing original isolated math helper and retains its retail_asm provenance.
+
+The original owner-rule hold for009d5d30 was resolved by explicit owner approval. See that row's OWNER_EXCEPTION_GRANTED.md and the Retail-volatile evidence line. Only Finished, BufferLocked and AllowRestart retain the proven original qualifier; no general exception is implied.

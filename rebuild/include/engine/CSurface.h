@@ -40,6 +40,16 @@ public:
  // pointer). Needs CPixelFormat complete (engine/CPixelFormat.h) before the include.
  CPixelFormat GetPixelFormat() const;
 #endif
+#ifdef FABLE_RETAIL_CSURFACE_CLEAR
+ // Retail opt-in (Codex pass 17): original SDK interface and PDB methods, complete native fields unchanged.
+ CSurfaceLockedRect Lock(unsigned long);
+ void Clear();
+ void Unlock()const{PD3DSurface->UnlockRect();}
+ unsigned long GetByteLength()const {
+  _D3DSURFACE_DESC desc;PD3DSurface->GetDesc(&desc);
+  return GetPixelFormat().GetColourDepth()*desc.Width*desc.Height/8;
+ }
+#endif
 private:
  IDirect3DSurface9* PD3DSurface;
  unsigned long AllocationSource;

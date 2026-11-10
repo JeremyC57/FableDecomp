@@ -14,6 +14,9 @@ public:
  CPixelFormat(long r,long g,long b,long a) { Initialise(r,g,b,a,false); }
  void Initialise(long,long,long,long,bool);                     // 0x009E3790 ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z (Ego_r + FableWin)
  void Initialise(_D3DFORMAT);
+#ifdef FABLE_RETAIL_CPIXELFORMAT_COLOURDEPTH
+ unsigned long GetColourDepth()const;
+#endif
  unsigned long GetNoABits() const {return GD3DFormats[FormatIndex].AlphaBits;}
  unsigned long GetNoRBits() const {return GD3DFormats[FormatIndex].RBits;}
  unsigned long GetNoGBits() const {return GD3DFormats[FormatIndex].GBits;}
