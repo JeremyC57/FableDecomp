@@ -275023,16 +275023,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005fc2d0'
-        Module = '_global'
-        Source = '00/5f/global_ConstructQuestsScreenCurrentQuests_005fc2d0.cpp'
-        TestSource = '00/5f/global_ConstructQuestsScreenCurrentQuests_005fc2d0_test.cpp'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_ConstructQuestReviewList_005fc2d0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_ConstructQuestReviewList_005fc2d0_test.cpp'
         PassPattern = '005fc2d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005fc8a0'
-        Module = '_global'
-        Source = '00/5f/global_ConstructQuestsScreenCurrentQuestsPC_005fc8a0.cpp'
-        TestSource = '00/5f/global_ConstructQuestsScreenCurrentQuestsPC_005fc8a0_test.cpp'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_ConstructQuestReviewListPC_005fc8a0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_ConstructQuestReviewListPC_005fc8a0_test.cpp'
         PassPattern = '005fc8a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -390870,6 +390870,13 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_EntitySetAsSittingOnFloor_008a8c60.cpp'
         TestSource = '00/8a/CGameScriptInterface_EntitySetAsSittingOnFloor_008a8c60_test.cpp'
         PassPattern = '008a8c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005eb590'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_GivePrize_005eb590.cpp'
+        TestSource = '00/5e/CTCTavernGame_GivePrize_005eb590_test.cpp'
+        PassPattern = '005eb590_TEST PASS'
     }
 )
 

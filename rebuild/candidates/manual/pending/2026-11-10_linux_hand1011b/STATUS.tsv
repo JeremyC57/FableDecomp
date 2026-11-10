@@ -1,0 +1,8 @@
+address	name	grade	grades_used	note
+005eb590	CTCTavernGame::GivePrize	RELOCATION_MATCH	7	src/ + test/; lever: named `const CPlayerManager& player_manager = PeekPlayerManager();` (c2prio: K+1 in the prize block puts player/prize before hero, def piece -> edi); grades 1-5 in chunk 1011
+005fbaa0	CTCInventoryMap::GetRelativePosOnMiniMap	DIFFER(634v634)	10	differ/; 2 masked lines: x87 operand order of the final X * MiniMapScale (0x005FBCC7); frame residue fixed by C2DVector scale + operator*=
+005eabc0	CTCTavernGame::PositionMesh	NOT_REACHED	0	header debt: CThing virtual slots 17..28 (names for 18/21/22/25 unproven) to reach DrawIsDrawable 27 / SetAsDrawable 28; static __fastcall declaration in CTCTavernGame.h
+005ec270	CTCTavernGame::ProcessInput	NOT_REACHED	0	header debt: protected CInputProcessGameBase::IsEventButtonPressed called from CTCTavernGame (access path unproven); 0x00687D00 / 0x00A0D390 PDB names unproven (leads in NOTES.md)
+005eca50	CTCTavernGame::DrawPreparePrimitivesForRendering	NOT_REACHED	0	not attempted (1280 bytes, local-model prior DIFFER(1185v1176)); time went to GivePrize / GetRelativePosOnMiniMap
+005fc2d0	CTCInventoryMap::ConstructQuestReviewList	RELOCATION_MATCH	2	re-authored landed row (rows/005fc2d0.cpp + rows/005fc2d0_test.cpp); lever: TC pointer zero-initialised
+005fc8a0	CTCInventoryMap::ConstructQuestReviewListPC	RELOCATION_MATCH	1	re-authored landed row (rows/005fc8a0.cpp + rows/005fc8a0_test.cpp); twin of 0x005FC2D0

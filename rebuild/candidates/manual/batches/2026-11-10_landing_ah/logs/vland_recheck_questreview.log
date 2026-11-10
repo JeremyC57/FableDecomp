@@ -1,0 +1,7 @@
+addr       parity           behav  name
+005fc2d0   RELOCATION_MATCH PASS   005fc2d0
+005fc8a0   RELOCATION_MATCH PASS   005fc8a0
+
+WINS: 2
+  005fc2d0 RELOCATION_MATCH m::?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z
+  005fc8a0 RELOCATION_MATCH m::?ConstructQuestReviewListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z

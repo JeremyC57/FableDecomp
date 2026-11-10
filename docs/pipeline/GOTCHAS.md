@@ -2663,3 +2663,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Retail carries some template instantiations twice (byte-identical COMDAT copies, e.g. CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 / 0x004365B0); vland flags RELOC_CONFLICT when rows bind one name to both -- queued for an owner rule.
 - The natural nested positive form (`if (useHero) {...} else { tc->Open(); return true; }` + one final `return false`) fixed a block-order residue a flattened early-return spelling could not (0x00896390).
 - A temporary-reload register difference (`c2prio --rotation`) went away when the member read became the PDB's inline accessor (GetCurrentScriptID()) -- a different expression-temporary order (0x0089B5B0).
+- A named `const CPlayerManager& pm = PeekPlayerManager();` in a block adds one candidate there and turned a register tie retail's way (0x005EB590: def piece edi, prize esi).
+- Re-authoring a landed row leaves its old symbols in rebuild/oracles/reloc_bindings.tsv (recheck does not drop them): delete the stale lines by hand (0x005FC2D0 / 0x005FC8A0's `NScreen005fc*` namespace, 22 lines).

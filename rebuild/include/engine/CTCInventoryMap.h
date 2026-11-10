@@ -14,6 +14,9 @@ class CThing;
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS
 namespace NUISystem { class CComponent; }
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTREVIEW
+namespace NUISystem { class CComponent; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
 class C3DVector;
 namespace NUISystem { class CComponent; }
@@ -104,6 +107,16 @@ private:
 private:
  NUISystem::CComponent* ConstructPastQuestsList(NUISystem::CComponent* parent);                                  // 0x005FCBE0
  NUISystem::CComponent* ConstructPastQuestsListPC(NUISystem::CComponent* container, NUISystem::CComponent* parent); // 0x005FDDD0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_QUESTREVIEW
+ // Nested opt-in (chunk 1011b, rows 0x005FC2D0 / 0x005FC8A0): Ego_r.pdb + FableWin.pdb
+ // ?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z (private, `ret 4`; Ego_r 0x0064C6C0, FableWin
+ // 0x02088CA0) and ?ConstructQuestReviewListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z (private, `ret 8`; Ego_r
+ // 0x0064CE90, FableWin 0x020AEC70): the active-quest twins of the past-quests pair, called from ConstructQuestsScreen(PC).
+ // Declarations only, no layout change.
+private:
+ NUISystem::CComponent* ConstructQuestReviewList(NUISystem::CComponent* parent);                                  // 0x005FC2D0
+ NUISystem::CComponent* ConstructQuestReviewListPC(NUISystem::CComponent* container, NUISystem::CComponent* parent); // 0x005FC8A0
 #endif
 #ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
  // Retail opt-in (chunk 851, rows 0x006001E0 / 0x005FE840): Ego_r.pdb + FableWin.pdb

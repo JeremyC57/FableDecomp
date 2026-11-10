@@ -1,0 +1,6 @@
+address	length	catalog_name	state	residue	prior_draft	callees_remaining	neighbours_landed
+005eb590	640	CTCTavernGame::GivePrize	parked	register-tie	rebuild/candidates/manual/pending/2026-11-10_linux_hand1011/differ/005eb590.cpp	00686d90 006c6990 00703210	005eb3a0 005eb4b0 005eb510 005eb810 005eb9e0 005ebfa0
+005fbaa0	640	CTCInventoryMap::GetRelativePosOnMiniMap	parked	register-tie	rebuild/candidates/manual/pending/2026-11-10_linux_hand1011/differ/005fbaa0.cpp		005fb630 005fb7e0 005fb8f0 005fbd20 005fbd90 005fbea0
+005eabc0	512	CTCTavernGame::PositionMesh	unworked		rebuild/candidates/manual/pending/2026-10-24_linux_hand475/differ/005eabc0.cpp		005ea8e0 005ea950 005ea9b0 005eadc0 005eaf30
+005ec270	848	CTCTavernGame::ProcessInput	parked	stack-slot/frame	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/005ec270.cpp		005eb9e0 005ebfa0 005ec0f0 005ec5c0 005ec650 005ec7c0
+005eca50	1280	CTCTavernGame::DrawPreparePrimitivesForRendering	parked	register-tie	rebuild/candidates/manual/pending/2026-10-24_linux_hand326/differ/005eca50.cpp		005ec7c0 005ec8a0 005ec990 005ecf50 005ecf70 005ecf90

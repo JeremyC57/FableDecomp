@@ -1,0 +1,11 @@
+addr       parity           behav  name
+005eb590   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+005eb590   WARN RELOC_NAME: ??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVCThingFilter_OverlappingCircle@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 005ed7d0 labelled 'CThingSearchTools::GetAllThings<CThingAICreature, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_OverlappingCircle>'
+005eb590   WARN RELOC_NAME: ??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ -> 004ab4f0 labelled '_global::StdList_Clear_004ab4f0'
+005eb590   RELOCATION_MATCH PASS   GivePrize
+
+WINS: 1
+  005eb590 RELOCATION_MATCH CTCTavernGame::?GivePrize@CTCTavernGame@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCTavernGame_GivePrize_005eb590

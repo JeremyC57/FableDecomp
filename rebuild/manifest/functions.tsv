@@ -12910,12 +12910,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005fbea0	GetRegionTeleporter	CTCInventoryMap	__thiscall	CThing *	2	CTCInventoryMap *,CRegion *	1	yes	accepted									
 005fbfa0	TeleportToActiveRegion	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
 005fc0c0	UpdateRegionsCorrespondances	CTCInventoryMap	__thiscall	void	3	CTCInventoryMap *,long,long	1	yes	accepted									
-005fc2d0	ConstructQuestsScreen_CurrentQuests	_global	unknown	undefined	0		0	yes	accepted									
+005fc2d0	ConstructQuestReviewList	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fc510	ResetPrimitiveHandles	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fc610	vfunc_37	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fc620	FindTeleports	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
 005fc840	TeleportHeroToRegionTeleporter	CTCInventoryMap	__thiscall	void	2	CTCInventoryMap *,long	1	yes	accepted									
-005fc8a0	ConstructQuestsScreen_CurrentQuestsPC	_global	unknown	undefined	0		0	yes	accepted									
+005fc8a0	ConstructQuestReviewListPC	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fcb10	OnInitialActivate	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005fcbe0	ConstructPastQuestsList	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 005fce60	vfunc_31	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

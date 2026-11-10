@@ -1,0 +1,6 @@
+address	name	evidence
+005eb590	?GivePrize@CTCTavernGame@@QAEXXZ	RELOCATION_MATCH chunk 1011b; Ego_r.pdb / FableWin.pdb
+005fc2d0	?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z	re-authored chunk 1011b, RELOCATION_MATCH; Ego_r 0x0064C6C0 / FableWin 0x02088CA0
+005fc8a0	?ConstructQuestReviewListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z	re-authored chunk 1011b, RELOCATION_MATCH; Ego_r 0x0064CE90 / FableWin 0x020AEC70
+004c7790	?DrawIsDrawable@CThing@@UBE_NXZ	chunk 1011b (CThing vtable slot 27)
+004c8e50	?SetAsDrawable@CThing@@UAEX_N@Z	chunk 1011b (CThing vtable slot 28)
