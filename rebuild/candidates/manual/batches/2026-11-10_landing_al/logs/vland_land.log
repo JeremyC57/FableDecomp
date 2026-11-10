@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009d5d30   RELOCATION_MATCH PASS   CBankFileAsyncData
+
+WINS: 1
+  009d5d30 RELOCATION_MATCH CBankFileAsyncData::??0CBankFileAsyncData@@AAE@PAXKAAVCBankFileAsync@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CBankFileAsyncData_CBankFileAsyncData_009d5d30

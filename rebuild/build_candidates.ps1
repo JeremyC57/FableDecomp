@@ -391221,6 +391221,13 @@ $catalog = @(
         TestSource = '00/ec/NScriptCVRandomPopulationSimScript_GetCurrentPopulationLevel_00ec3270_test.cpp'
         PassPattern = '00ec3270_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009d5d30'
+        Module = 'CBankFileAsyncData'
+        Source = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d5d30.cpp'
+        TestSource = '00/9d/CBankFileAsyncData_CBankFileAsyncData_009d5d30_test.cpp'
+        PassPattern = '009d5d30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

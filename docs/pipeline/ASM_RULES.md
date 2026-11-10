@@ -48,6 +48,11 @@ EXTRA_RULES.md, the briefs, the handoffs, older journal entries. The earlier rou
 - **Or the published vendor source declares it:** DirectShow BaseClasses `volatile LONG m_cRef` (combase.h), and the SDK
   `Interlocked*(LONG volatile*)` prototypes. Every model of that class or prototype then keeps the same declaration.
 
+- **Or the PDB type records declare it** (owner, 2026-11-10: "if retail used it and volatile doesnt cause portability issues, then it
+  should be fine"): an `LF_MODIFIER` volatile record on the member in Ego_r.pdb / FableWin.pdb, plus retail accesses that use it.
+  Declare it once, in the shared class header, with the `// Retail-volatile:` line (example: CBankFileAsyncData Finished /
+  BufferLocked / AllowRestart, row 0x009D5D30). Behaviour tests stay plain C++ and need no `volatile`.
+
 It is never a trick to force a store or a load that retail does not need. The audit removed one: 0x0059A238 `void* volatile
 local_10`, which had no byte effect.
 

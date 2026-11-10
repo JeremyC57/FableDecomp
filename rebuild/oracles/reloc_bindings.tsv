@@ -39182,3 +39182,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A	01436ea0	00bca6b0
 ?GPSubPrimitiveRenderer@NEngineInternal@@3PAVCEngineSubPrimitiveRenderer@@A	01436e74	00bca6b0
 ??_7CQuadTreeElement@CLocalDetailCacheMap@@6B@	012a7df0	00bddf30
+??_7CBankFileAsyncData@@6BCMovableResource@@@	0129b8a0	009d5d30
+??_7CBankFileAsyncData@@6BCThreadedFileCallback@@@	0129b8b4	009d5d30
+?insert_unique@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@_N@2@ABQAVCBankFileAsyncData@@@Z	009d7cf0	009d5d30
