@@ -23,6 +23,9 @@
 //   frame word; the abilities lookup is const, hence the const LowerBound); the CCountedPointer local is zeroed at its
 //   declaration and filled by Reset; for the missing-ability dimming the slider component is read into a block local, which
 //   schedules the state key's zero store after the vtable load as retail does (through `slider->` it lands before the push).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)

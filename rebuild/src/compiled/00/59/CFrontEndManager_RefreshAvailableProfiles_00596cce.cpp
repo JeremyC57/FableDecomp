@@ -21,6 +21,9 @@
 // vector<CWideString> destructor, and map::operator[] (so the screen-key temporary's word is shared with the old-list
 // pointer and the loop counter: frame 0x64, not 0x68); `y` is declared before `count` for retail's store order.
 // Leaf: ?RefreshAvailableProfiles@CFrontEndManager@NUISystem
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes; likewise 0x00429160 = ReleaseData<CAction>, dtor jmp 0x00429B72). The local model's destructor is `{ ReleaseData(); }`
+//   (engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY shape).
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -87,7 +90,8 @@ public:
     {
         ShareData((T*)other.Data, other.Info);
     }
-    ~CCountedPointer();                                   // 0x004291DE (CComponent) / 0x00429160 (CAction) / 0x0059A994 (CList)
+    ~CCountedPointer() { ReleaseData(); }                                   // 0x004291DE (CComponent) / 0x00429160 (CAction) / 0x0059A994 (CList)
+    void ReleaseData();                                 // out of line (0x004291DE CComponent / 0x00429160 CAction / ...)
     void ShareData(T* data, CCPPointerInfo* info);        // 0x0059AA86 for CList
     T* operator->() const { return Data; }
 };

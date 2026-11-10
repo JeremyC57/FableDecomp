@@ -12,6 +12,9 @@
 // Layout: CCountedPointer {Data +0, Info +4}; CCharString data block = CBasicString<char> (as the matched 0x008A86C0).
 // Shape: the default-name temporaries and the state keys live in the dead reference-parameter slots.
 // Opt: size TU with a frame pointer.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes; likewise 0x00429160 = ReleaseData<CAction>, dtor jmp 0x00429B72). The local model's destructor is `{ ReleaseData(); }`
+//   (engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY shape).
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -59,7 +62,8 @@ public:
     {
         ShareData((T*)other.Data, other.Info);
     }
-    ~CCountedPointer();                                 // 0x004291DE (CComponent) / 0x0042925C (CText)
+    ~CCountedPointer() { ReleaseData(); }                                 // 0x004291DE (CComponent) / 0x0042925C (CText)
+    void ReleaseData();                                 // out of line (0x004291DE CComponent / 0x00429160 CAction / ...)
     void Reset(T* data);                                // 0x00429C6F for CComponent
     void ShareData(T* data, CCPPointerInfo* info);      // 0x00429460 for CText
     T* operator->() const { return Data; }

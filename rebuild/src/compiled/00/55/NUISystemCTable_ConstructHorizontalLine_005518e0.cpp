@@ -6,6 +6,12 @@
 #include <new>
 #include <stdlib.h>
 namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
+// Name fix (agentNF 2026-11-10): the count block's deleter 0x00428B10 is ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+//   (FableWin.pdb; was ?DestroyComponent@RetailUI@@YIXPAX@Z). ROW DEBT: the row itself and its other callees are still spelled in the
+//   invented namespace RetailUI (Pointer = CCountedPointer<NUISystem::CComponent> 0x00429C15, ChildrenVector::Grow = vector::_M_insert_overflow
+//   0x005359D0, Table = NUISystem::CTable): needs a full re-author on the shared headers.
+namespace NUISystem { class CComponent; }
+template <class T> class CCountedPointer { public: static void __fastcall DeleteData(void* data); };   // 0x00428B10 (T = NUISystem::CComponent)
 namespace RetailUI {
 struct Vec {float X,Y;Vec(){}Vec(float x,float y):X(x),Y(y){}Vec(const Vec& v):X(v.X),Y(v.Y){}};
 // CUIState PDB layout is 36 bytes. Retail 52e5d0 initializes the fields below;
@@ -26,8 +32,7 @@ State& StateMap::operator[](const unsigned long& key){StateIterator i(LowerBound
 #pragma auto_inline(on)
 
 struct Component;
-void __fastcall DestroyComponent(void*); //00428b10
-struct Info {long References;void (__fastcall* Destroy)(void*);void* Object;Info(void* p):References(1),Destroy(DestroyComponent),Object(p){}};
+struct Info {long References;void (__fastcall* Destroy)(void*);void* Object;Info(void* p):References(1),Destroy(&::CCountedPointer< ::NUISystem::CComponent>::DeleteData),Object(p){}};   // deleter 0x00428B10
 struct Pointer {Component* Object;Info* Count;Pointer():Object(0),Count(0){}FABLE_FORCEINLINE Pointer(Component* p):Object(p){Count=p?new Info(p):0;}Pointer(const Pointer& p):Object(p.Object),Count(p.Count){if(Count)++Count->References;}FABLE_FORCEINLINE ~Pointer(){if(Count&&--Count->References==0){Count->Destroy(Count->Object);::operator delete(Count);}Object=0;Count=0;}void Adopt(Component* p){Object=p;Count=p?new Info(p):0;}Component* operator->()const{return Object;}};
 struct Tag {Tag(){}};
 struct ChildrenVector {Pointer* First;Pointer* Last;Pointer* Limit;void Grow(Pointer*,const Pointer&,const Tag&,unsigned long,bool);FABLE_FORCEINLINE void push_back(const Pointer& p){if(Last!=Limit){new(Last)Pointer(p);++Last;}else Grow(Last,p,Tag(),1,true);}};

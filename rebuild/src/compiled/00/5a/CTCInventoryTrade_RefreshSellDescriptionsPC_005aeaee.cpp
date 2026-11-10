@@ -23,6 +23,9 @@
 //   marked for deletion through a by-value CDeletion copy, and replaced by a counted pointer to the new description,
 //   which is position-added to `parent`, renamed, added as the entry's child and handed to the viewport. The scope's
 //   counted pointer and deletion object die at the end of the `if` (the deletion's dtor is only its list member).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 

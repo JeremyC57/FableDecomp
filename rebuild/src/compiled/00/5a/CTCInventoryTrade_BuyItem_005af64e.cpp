@@ -44,6 +44,9 @@
 //   result stays in eax for the test and the push and moves to edi only before the call; a separate local is copied at its
 //   definition instead); the dead parameter slots are reused by the compiler (the price, the GetTC keys, the title-shop hero
 //   lookup, the subtitle and gold-text temporaries).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

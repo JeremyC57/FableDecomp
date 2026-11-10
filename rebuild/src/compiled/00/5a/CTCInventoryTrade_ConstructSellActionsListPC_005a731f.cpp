@@ -22,6 +22,10 @@
 //   the list object is read into a local before the map operator[] call; the two returns share the destructor tail through bl.
 // Layout: retail CTCInventoryTrade ItemSellLists +0x20C (map<CComponent*, CComponent*>, PDB +0x258); CActionParamULONG
 //   (vtable 0x0122F844, type 5) 12 bytes.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h). The counted
+//   pointers are CCountedPointer<NUISystem::CComponent> (were <CComponentBase>, the local primary-base model: 0x00429C15 / 0x004291DE).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
@@ -115,6 +119,7 @@ class CAction { public:
     bool             Valid;
     CAction();                                          // 0x0042BE50
 };
+class CComponent;
 struct CComponentBase {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -128,8 +133,8 @@ struct CComponentBase {
     virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
     virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
     virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058();
-    virtual void AddChildAtEnd(const CCountedPointer<CComponentBase>& child);   // slot 59 (+0xEC)
-    virtual void AddChild(const CCountedPointer<CComponentBase>& child);        // slot 60 (+0xF0)
+    virtual void AddChildAtEnd(const CCountedPointer<CComponent>& child);   // slot 59 (+0xEC)
+    virtual void AddChild(const CCountedPointer<CComponent>& child);        // slot 60 (+0xF0)
     virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
     virtual void AddPressedAction(const CCountedPointer<CAction>& action);     // slot 66 (+0x108)
     virtual void v067(); virtual void v068(); virtual void v069();
@@ -150,7 +155,7 @@ struct CComponentBase {
     virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143(); virtual void v144();
     virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
     virtual void v150(); virtual void v151();
-    virtual void AddEntry(const CCountedPointer<CComponentBase>& entry);        // slot 152 (+0x260)
+    virtual void AddEntry(const CCountedPointer<CComponent>& entry);        // slot 152 (+0x260)
     virtual void v153(); virtual void v154(); virtual void v155();
     virtual void SetItemCount(long count);                                      // slot 156 (+0x270)
     virtual void v157();
@@ -187,7 +192,7 @@ class CTCInventoryTrade { public:
 bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defIndex, unsigned long count, bool addAsChild)
 {
     CManager* fe = CManager::GetInstance();
-    CCountedPointer<CComponentBase> actionsList(CManager::GetInstance()->CreateComponent("PC_LIST_SELL_ACTIONS", false));
+    CCountedPointer<CComponent> actionsList(CManager::GetInstance()->CreateComponent("PC_LIST_SELL_ACTIONS", false));
     CComponentBase* list = actionsList.Data;
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetControlledCreature();
     CDataBank* bank = CMainGameComponent::Get()->TextBank;
@@ -195,7 +200,7 @@ bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defI
     GetTradingThing()->GetInterface(&shop, 0x53);
     hero->m_present.test(CTCInventoryItem::GetInventoryCategory(defIndex));
     CWideString sellText = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL");
-    CCountedPointer<CComponentBase> sellEntry(fe->CreateMenuEntryComponent(sellText, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+    CCountedPointer<CComponent> sellEntry(fe->CreateMenuEntryComponent(sellText, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CCountedPointer<CAction> sellAction(new CAction);
     sellAction->ActionType = 0x25;
@@ -212,7 +217,7 @@ bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defI
     list->AddEntry(sellEntry);
     if (count > 10) {
         CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + IntToWideString(10);
-        CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x52;
@@ -222,7 +227,7 @@ bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defI
     }
     if (count > 50) {
         CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + IntToWideString(50);
-        CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x52;
@@ -232,7 +237,7 @@ bool CTCInventoryTrade::ConstructSellActionsListPC(CComponent* parent, long defI
     }
     if (count > 1) {
         CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL_ALL") + CWideString(L" (") + IntToWideString(count) + CWideString(L")");
-        CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
+        CCountedPointer<CComponent> entry(fe->CreateMenuEntryComponent(label, 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x52;

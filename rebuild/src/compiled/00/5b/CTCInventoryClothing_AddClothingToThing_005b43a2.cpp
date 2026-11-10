@@ -1,10 +1,16 @@
 // CTCInventoryClothing::AddClothingToThing(long, CThing*) -- dress a thing in a clothing item or a whole hero suit, replacing the worn pieces it displaces
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Name fix (agentNF 2026-11-10): `worn` is the shared STLport 4.6 list<long> (was a local CLongList): _List_base ctor 0x0042AB58 /
+//   dtor 0x0042AB73, list<long>::erase 0x00429B02 and GetAppearanceModifierList 0x00706800 bound under their real spellings; the ctor keeps
+//   its same-TU out-of-line body (R&D I-3 below), now the STLport _List_base body as an explicit specialisation.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-extern "C" void __cdecl free(void* p);                         // 0x00BFEA14
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "stlport/fable_containers.h"   // free 0x00BFEA14
 
 class CCharString { public:
     void* PStringData;
@@ -12,19 +18,9 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                            // 0x0099EAE0
 };
-struct SAllocator { SAllocator() { } };
-struct SLongListNode { SLongListNode* _M_next; SLongListNode* _M_prev; long _M_data; };
-struct CLongListIterator {
-    SLongListNode* _M_node;
-    CLongListIterator(SLongListNode* n) : _M_node(n) { }
-    CLongListIterator(const CLongListIterator& o) : _M_node(o._M_node) { }
-};
-struct CLongList {                                             // STLport list<long>: the sentinel pointer
-    SLongListNode* _M_node;
-    explicit CLongList(const SAllocator& allocator = SAllocator());   // 0x0042AB58
-    ~CLongList();                                              // 0x0042AB73
-    CLongListIterator erase(CLongListIterator position);       // 0x00429B02
-};
+// STLport 4.6 list<long> (stlport/fable_containers.h): _List_base constructor 0x0042AB58 / destructor 0x0042AB73 out of line
+// (FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE), erase(iterator) out of line at 0x00429B02 (explicit specialisation, declared only).
+template<> std::list<long>::iterator std::list<long>::erase(std::list<long>::iterator position);   // 0x00429B02
 struct CLongVector {                                           // STLport vector<long> (12 bytes)
     long* _M_start;
     long* _M_finish;
@@ -143,13 +139,13 @@ struct CClothingEntryVector {
     SClothingEntry* erase(SClothingEntry* position);           // 0x005BAAE3
 };
 
+enum EHeroAttachableAppearanceModifierType { };      // Ego_r enum (value 2 used here)
 class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
-    void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
+    void GetAppearanceModifierList(std::list<long>& out, EHeroAttachableAppearanceModifierType type) const;   // 0x00706800
     void RemoveAppearanceModifier(long def);                   // 0x00706370
     void RemoveAllAppearanceModifiers(long type);              // 0x00706640
     void AddAppearanceModifierWithReplace(long def);           // 0x00706950
 };
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -195,11 +191,13 @@ class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
 // R&D I-3: the list ctor's same-TU out-of-line body (it builds only the sentinel) lets the default allocator
 // temporary be homed in the dead byte of the `thing` argument slot, as in retail.
 #pragma auto_inline(off)
-CLongList::CLongList(const SAllocator&)
+template<> std::_List_base<long, std::allocator<long> >::_List_base(const std::allocator<long>&)
+    : _M_node(std::allocator<std::_List_node<long> >(), 0)
 {
-    _M_node = (SLongListNode*)operator new(sizeof(SLongListNode));
-    _M_node->_M_next = _M_node;
-    _M_node->_M_prev = _M_node;
+    std::_List_node<long>* n = _M_node.allocate(1);
+    n->_M_next = n;
+    n->_M_prev = n;
+    _M_node._M_data = n;
 }
 #pragma auto_inline(on)
 void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
@@ -209,18 +207,18 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
         CDefPointer<const CThingDef> itemDef;
         GetDefinitionManager().GetDef(item, &itemDef);
         CDefPointer<const CHeroSuitDef> suitDef;
-        CLongList worn;
-        modifiers->GetAppearanceModifierList(worn, 2);
+        std::list<long> worn;
+        modifiers->GetAppearanceModifierList(worn, (EHeroAttachableAppearanceModifierType)2);
         if (itemDef->GetSubDef(&suitDef)) {
-            SLongListNode* node = worn._M_node->_M_next;
+            std::list<long>::iterator node = worn.begin();
             CLongVector keptParts;
-            for (; node != worn._M_node; node = node->_M_next) {
+            for (; node != worn.end(); ++node) {
                 CDefPointer<const CThingDef> wornDef;
                 CDefPointer<const CAppearanceModifierDef> wornModifier;
-                if (GetDefinitionManager().GetDef(node->_M_data, &wornDef)) {
+                if (GetDefinitionManager().GetDef(*node, &wornDef)) {
                     if (wornDef->GetSubDef(&wornModifier)) {
                         if (wornModifier->IsRemoveable)
-                            modifiers->RemoveAppearanceModifier(node->_M_data);
+                            modifiers->RemoveAppearanceModifier(*node);
                         else
                             keptParts.push_back_005bba94(wornModifier->SuitPart);
                     }
@@ -237,18 +235,18 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
             long suitPart = 0;
             if (itemDef->GetSubDef(&clothing))
                 suitPart = clothing->SuitPart;
-            CLongListIterator it(worn._M_node->_M_next);
-            while (it._M_node != worn._M_node) {
+            std::list<long>::iterator it = worn.begin();
+            while (it != worn.end()) {
                 CDefPointer<const CThingDef> wornDef;
                 CDefPointer<const CAppearanceModifierDef> wornModifier;
-                if (GetDefinitionManager().GetDef(it._M_node->_M_data, &wornDef)) {
+                if (GetDefinitionManager().GetDef(*it, &wornDef)) {
                     if (wornDef->GetSubDef(&wornModifier)) {
                         if (wornModifier->SuitPart == suitPart) {
                             if (!wornModifier->IsRemoveable)
                                 return;
                             it = worn.erase(it);
                         } else
-                            it._M_node = it._M_node->_M_next;
+                            ++it;
                     }
                 }
             }
@@ -271,8 +269,8 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
                         ++entry;
                 }
             }
-            for (SLongListNode* node = worn._M_node->_M_next; node != worn._M_node; node = node->_M_next)
-                modifiers->AddAppearanceModifierWithReplace(node->_M_data);
+            for (std::list<long>::iterator node = worn.begin(); node != worn.end(); ++node)
+                modifiers->AddAppearanceModifierWithReplace(*node);
         }
     }
 }

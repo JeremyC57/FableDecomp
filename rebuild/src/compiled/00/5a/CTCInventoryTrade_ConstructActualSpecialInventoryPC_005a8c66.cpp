@@ -18,6 +18,9 @@
 //   test is one `&&` chain whose last term is a CIVCountedPointer temporary (VC homes its "constructed" flag in [ebp-0Ch]); the wide
 //   price string is built and never used (dead in the PC variant, as retail); the six clickables are looked up by name and observed
 //   for mouse movement through the UI manager (CObserver subobject at +4).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

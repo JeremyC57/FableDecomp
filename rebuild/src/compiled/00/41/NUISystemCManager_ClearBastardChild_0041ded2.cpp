@@ -2,6 +2,9 @@
 // Retail 0x0041DED2, 62 bytes (vtable 0x01230134 slot 37). Callees: CCountedPointer<CComponent>::~CCountedPointer 0x004291DE (on
 // each node value at +0x14 and on BastardChild +0x80), STLport _Rb_tree increment 0x004292C0 (cdecl), map clear 0x0042C02F
 // (tail jump). The end node is re-read every iteration (member). Name: Ego_r.pdb ?ClearBastardChild@CManager@NUISystem@@UAEXXZ.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 // CManager TU is size-optimised (odd addresses, `pop ecx` after cdecl calls). Local model: the engine CManager.h is the
 // donor Ego_r layout (RightStickForce +0xc0, BastardChild +0xa8); retail has BastardChild +0x80, BastardChildren +0x88,
@@ -44,8 +47,8 @@ class CManager { public:
 void CManager::ClearBastardChild()
 {
  for (CBastardIterator it = BastardChildren.begin(); it != BastardChildren.end(); ++it) {
-  it->Value.~CCountedPointer();
-  BastardChild.~CCountedPointer();
+  it->Value.ReleaseData();
+  BastardChild.ReleaseData();
  }
  BastardChildren.clear();
 }

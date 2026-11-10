@@ -746,6 +746,12 @@ public:
     void pop_back() { iterator tmp=end(); erase(--tmp); }
 #endif
 #endif
+#ifdef FABLE_RETAIL_STLP_LIST_REMOVE_DECL
+    // Per-TU opt-in (agentNF 2026-11-10, rows 0x00846100 / 0x00BBCE10): STLport 4.6 _list.h `void remove(const _Tp& __val);`, declared
+    // only (its body is in _list.c). Retail calls the list<long> instance out of line (?remove@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z
+    // 0x0084ACE0, FableWin.pdb name set); a row that needs the same-TU body defines it as an explicit specialisation.
+    void remove(const _Tp& __val);
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_REMOVE_IF_OUTOFLINE
     // chunk 767 (row 0x0082A380 CMiniMapDisplay::RemoveMarker): STLport 4.6 _list.h member template remove_if(_Predicate), declared
     // only: retail tail-jumps to the out-of-line instantiation (0x0082C770, ??$remove_if@VCIsMarkerBoundToThing@CMiniMapDisplay@@@..).

@@ -17,6 +17,8 @@
 // above the caller in the same TU; CMainGameComponent::Get() is read first through an inline accessor (ebx before the
 // argument chain); the vector's start is loaded into a local each pass so the size test and the element read share it.
 // Layout: retail CHeroAbilityDef quick-access item +0x98; CTCInventory quick-access slots vector<long> +0x148.
+// Name fix (agentNF 2026-11-10): GetAbilityPDef returns CDefPointer<const CHeroAbilityDef> (Ego_r 0x0057CDE0 / FableWin name sets,
+//   ?GetAbilityPDef@CTCInventoryAbilities@@QBE?AV?$CDefPointer@$$CBVCHeroAbilityDef@@@@W4EHeroAbility@@@Z); was bound with a non-const T.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -69,11 +71,11 @@ class CTCInventory { public:                                // interface type 0x
 };
 class CHeroAbilityDef { public:
     virtual void v00();
-    virtual void Destroy();                          // slot 1
-    long RefCount;                                   // +0x04
+    virtual void Destroy() const;                    // slot 1
+    mutable long RefCount;                           // +0x04
     unsigned char _pad_0x08[0x98 - 0x08];
     long QuickAccessItem;                            // +0x98
-    void Release() { if (--RefCount == 0) Destroy(); }
+    void Release() const { if (--RefCount == 0) Destroy(); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -103,7 +105,7 @@ enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
 struct SAbilityEntry {                               // std::pair<long, CDefPointer<const CHeroAbilityDef> >
     long                         Level;
-    CDefPointer<CHeroAbilityDef> PDef;
+    CDefPointer<const CHeroAbilityDef> PDef;
 };
 struct CAbilityVector {                              // STLport vector<SAbilityEntry>
     SAbilityEntry* _M_start;
@@ -128,14 +130,14 @@ class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     CThing* ParentThing;                             // +0x04
     unsigned char _pad_0x08[0x160 - 0x08];
     CAbilityVector Abilities;                        // +0x160 (PDB +0x180)
-    CDefPointer<CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
+    CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
     bool IsAbilityQuickAccessEventInQueue(EHeroAbility ability);
 };
 
 // Same-TU body of GetAbilityPDef @ 0x005EDFD9 (retail's TU, above the caller): it leaves edx alone, so VC7.1 keeps
 // `this` there across the call, as retail does.
 #pragma optimize("y", on)
-__declspec(noinline) CDefPointer<CHeroAbilityDef> CTCInventoryAbilities::GetAbilityPDef(EHeroAbility ability) const
+__declspec(noinline) CDefPointer<const CHeroAbilityDef> CTCInventoryAbilities::GetAbilityPDef(EHeroAbility ability) const
 {
     return Abilities[ability].PDef;
 }
@@ -143,7 +145,7 @@ __declspec(noinline) CDefPointer<CHeroAbilityDef> CTCInventoryAbilities::GetAbil
 
 bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility ability)
 {
-    CDefPointer<CHeroAbilityDef> def = GetAbilityPDef(ability);
+    CDefPointer<const CHeroAbilityDef> def = GetAbilityPDef(ability);
     if (def.Object) {
         long item = def->QuickAccessItem;
         if (item > 0) {

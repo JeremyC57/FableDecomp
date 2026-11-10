@@ -1,175 +1,108 @@
 // CTCInventoryClothing::GetCurrentTotalArmorValue() -- sum the armour of every worn clothing modifier plus the "no clothing" defaults of the uncovered suit parts
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x23] removed.
-// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-#include "fable_compiler.h"
+// Leaf: ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005B4A95, frame-pointer size TU (optimize("y", off) + ("s", on)), thiscall `ret`.
+// Name: Ego_r.pdb ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ (public const; header opt-in FABLE_RETAIL_CTCINVENTORYCLOTHING_TOTALARMOUR).
+// Name fix (agentNF 2026-11-10, Codex fixes [5]-[10]): moved off the local CSuitPartSet / CDamageFactorMap / CLongList / CThingDefPointer
+//   models onto the shared headers of the landed neighbour 0x005B4EBA CTCInventoryClothing::CalculateArmorValues (same TU). The
+//   STLport instantiations now bind their real spellings: set<EClothingSuitPart>() 0x005BB3B3, set::insert 0x005BAF94,
+//   _Rb_tree<EClothingSuitPart>::erase(key) 0x005BBB34 and ~_Rb_tree 0x005BB04F, map<EDamageAttribute,float> _M_find<EDamageAttribute>
+//   0x005BA9BE, list<long> _List_base ctor/dtor 0x0042AB58 / 0x0042AB73, _Rb_global<bool>::_M_increment 0x004292C0,
+//   GetAppearanceModifierList(list<long>&, EHeroAttachableAppearanceModifierType) const 0x00706800, GetSubDef<CAppearanceModifierDef>
+//   0x0057FF92 (same-TU body, as 0x005B4EBA).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-};
-struct SAllocator { SAllocator() { } };
-struct SLongListNode { SLongListNode* _M_next; SLongListNode* _M_prev; long _M_data; };
-struct CLongList {
-    SLongListNode* _M_node;
-    explicit CLongList(const SAllocator& allocator = SAllocator());   // 0x0042AB58
-    ~CLongList();                                              // 0x0042AB73
-};
-struct SNode { long _M_color; SNode* _M_parent; SNode* _M_left; SNode* _M_right; long first; float second; };
-SNode* __cdecl Successor(SNode* node);                         // 0x004292C0
-struct SSetInsertResult { SNode* first; bool second; };
-struct CSuitPartSet {                                          // set<EClothingSuitPart> (12 bytes)
-    SNode* _M_header; unsigned long _M_node_count; long _M_key_compare;
-    CSuitPartSet();                                            // 0x005BB3B3
-    ~CSuitPartSet();                                           // 0x005BB04F
-    SSetInsertResult insert(const long& value);                // 0x005BAF94
-    unsigned long erase(const long& value);                    // 0x005BBB34
-};
-struct CDamageFactorMap {                                      // map<long, float> (12 bytes)
-    SNode* _M_header; unsigned long _M_node_count; long _M_key_compare;
-    SNode* find(const long& key) const;                        // 0x005BA9BE
-};
-
-struct CDefBase {
-    virtual void v00();
-    virtual void Destroy() const;                              // slot 1
-    mutable long RefCount;                                     // +0x04
-    void ReleaseTemporary() const { --RefCount; if (RefCount == 0) Destroy(); }
-};
-struct CThingDefPointer;
-template<class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-    FABLE_FORCEINLINE CDefPointer(const CThingDefPointer& o);
-    FABLE_FORCEINLINE ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
-    T* operator->() const { return Object; }
-};
-// Layout: retail CAppearanceModifierDef / armour def (Ego_r.pdb - 8, the 16-byte containers are 12 in retail).
-class CAppearanceModifierDef : public CDefBase { public:
-    unsigned char _pad08[0x4c - 0x08];
-    long  SuitPart;                                            // +0x4c
-    unsigned char _pad50[0x5c - 0x50];
-    long  ArmourDefIndex;                                      // +0x5c
-    float OveralProtectionWeighting;                           // +0x60
-};
-class CArmourDef : public CDefBase { public:
-    unsigned char _pad08[0x48 - 0x08];
-    CDamageFactorMap DamageFactors;                            // +0x48
-};
-struct CThingDef : CDefBase {
-    bool GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const;  // 0x0057FF92
-};
-void* FindDef_4a95_0();
-#pragma auto_inline(off)
-__declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const
+#define FABLE_RETAIL_CTCINVENTORYCLOTHING_TOTALARMOUR
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER_HEROSTATSDEF
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+#define FABLE_RETAIL_CTCINVENTORYCLOTHING_ARMOUR
+#define FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
+#define FABLE_RETAIL_CLOTHING_DEFS
+#define FABLE_RETAIL_CHEROSTATSDEF_APPEARANCESCALING
+#define FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_LIST
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCSHOP_VALIDSTOCK
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_SET
+#define FABLE_RETAIL_STLP_TREE_ERASE
+#define FABLE_RETAIL_STLP_TREE_ERASE_KEY
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCInventoryClothing.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CGameDefinitionManager.h"
+#include "engine/CDefPointer.h"
+#include "engine/CHeroSuitDef.h"
+#include "engine/CAppearanceModifierDef.h"
+#include "engine/CArmourDef.h"
+#include "engine/CInventoryItemDef.h"
+#include "engine/CStockItemDef.h"
+#include "engine/CHeroStatsDef.h"
+#include "engine/CTCHeroAttachableAppearanceModifiers.h"
+#include "engine/CTCVolumeContainmentTracker.h"
+#include "engine/CTCShop.h"
+template<> bool CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const CAppearanceModifierDef>* output)const
 {
-    void* def = FindDef_4a95_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
+    const CSubDefInfo* info=GetPSubDefInfo("CAppearanceModifierDef");
+    if(!info)return false;
+    CDefPointer<const CAppearanceModifierDef> definition=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+    *output=definition;
     return true;
 }
-#pragma auto_inline(on)
-struct CThingDefPointer {                                      // CDefPointer<const CThingDef> as returned untyped
-    const CThingDef* Object;
-    FABLE_FORCEINLINE ~CThingDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
-    const CThingDef* operator->() const { return Object; }
-};
-template<class T> FABLE_FORCEINLINE CDefPointer<T>::CDefPointer(const CThingDefPointer& o) : Object((T*)o.Object) { if (Object) ++Object->RefCount; }
-class CDefinitionManager { public:
-    CThingDefPointer GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
-    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
-};
-class CGameDefinitionManager : public CDefinitionManager
-{
-};
-
-class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
-    void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
-};
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    std::bitset<274>  m_present;                                  // +0x20
-    CInterfaceMap  m_interfaces;                               // +0x44
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long wanted) const
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            *out = (T*)((void*)((it == map->end() || wanted < it->first) ? map->end() : it)->second);
-            return true;
-        }
-        return false;
-    }
-};
-
-class CTCBase
-{
-protected:
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
-};
-namespace NInventory {
-class CTCInventoryBase : public CTCBase
-{
-public:
-};
-}
-
-class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
-    void*   __vftable;
-    CThing* ParentThing;                                       // +0x04
-    long GetCurrentTotalArmorValue() const;
-};
 long CTCInventoryClothing::GetCurrentTotalArmorValue() const
 {
-    CSuitPartSet uncovered;
-    uncovered.insert(1);
-    uncovered.insert(2);
-    uncovered.insert(3);
-    uncovered.insert(4);
-    uncovered.insert(5);
+    std::set<EClothingSuitPart> uncovered;
+    uncovered.insert(CLOTHING_SUIT_HEAD);
+    uncovered.insert(CLOTHING_SUIT_BODY);
+    uncovered.insert(CLOTHING_SUIT_HANDS);
+    uncovered.insert(CLOTHING_SUIT_LEGS);
+    uncovered.insert(CLOTHING_SUIT_FEET);
     long total = 0;
-    CTCHeroAttachableAppearanceModifiers* modifiers;
-    if (ParentThing->GetInterface(&modifiers, 0x5e)) {
-        CLongList worn;
-        modifiers->GetAppearanceModifierList(worn, 2);
-        for (SLongListNode* node = worn._M_node->_M_next, *end = worn._M_node; node != end; node = node->_M_next) {
-            CThingDefPointer def = GetDefinitionManager().GetPDefFromGlobalIndex(node->_M_data);
+    const CTCHeroAttachableAppearanceModifiers* appearance;
+    if (ParentThing->PeekTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &appearance)) {
+        std::list<long> worn;
+        appearance->GetAppearanceModifierList(worn, APPEARANCE_CLOTHING);
+        for (std::list<long>::const_iterator it = worn.begin(), end = worn.end(); it != end; ++it) {
+            CDefPointer<const CDefClassBase> definition = GetDefinitionManager().GetPDefFromGlobalIndex(*it);
             CDefPointer<const CAppearanceModifierDef> modifier;
-            if (def->GetSubDef(&modifier)) {
+            if (definition->GetSubDef(&modifier)) {
                 uncovered.erase(modifier->SuitPart);
                 float factor = 1.0f;
                 CDefPointer<const CArmourDef> armour = GetDefinitionManager().GetPDefFromGlobalIndex(modifier->ArmourDefIndex);
-                SNode* found = armour->DamageFactors.find(0);
-                if (found != armour->DamageFactors._M_header)
+                std::map<EDamageAttribute, float>::const_iterator found = armour->DamageTypeResponse.find(DAMAGE_MELEE);
+                if (found != armour->DamageTypeResponse.end())
                     factor = found->second;
                 total += (long)(modifier->OveralProtectionWeighting / factor * 500.0f);
             }
         }
     }
-    for (SNode* part = uncovered._M_header->_M_left, *end = uncovered._M_header; part != end; part = Successor(part)) {
+    for (std::set<EClothingSuitPart>::iterator it = uncovered.begin(), end = uncovered.end(); it != end; ++it) {
         long index = 0;
-        switch (part->first) {
+        switch (*it) {
         case 1: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_HAT"); break;
         case 2: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_SHIRT"); break;
         case 3: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_GLOVES"); break;
         case 4: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_TROUSERS"); break;
         case 5: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_BOOTS"); break;
         }
-        CThingDefPointer def = GetDefinitionManager().GetPDefFromGlobalIndex(index);
+        CDefPointer<const CDefClassBase> definition = GetDefinitionManager().GetPDefFromGlobalIndex(index);
         CDefPointer<const CAppearanceModifierDef> modifier;
-        if (def->GetSubDef(&modifier)) {
+        if (definition->GetSubDef(&modifier)) {
             float factor = 1.0f;
             CDefPointer<const CArmourDef> armour = GetDefinitionManager().GetPDefFromGlobalIndex(modifier->ArmourDefIndex);
-            SNode* found = armour->DamageFactors.find(0);
-            if (found != armour->DamageFactors._M_header)
+            std::map<EDamageAttribute, float>::const_iterator found = armour->DamageTypeResponse.find(DAMAGE_MELEE);
+            if (found != armour->DamageTypeResponse.end())
                 factor = found->second;
             total += (long)(modifier->OveralProtectionWeighting / factor * 500.0f);
         }

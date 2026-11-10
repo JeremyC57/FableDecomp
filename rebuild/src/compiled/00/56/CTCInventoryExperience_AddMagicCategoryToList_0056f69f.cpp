@@ -9,6 +9,9 @@
 // 0x0099EAE0, CCharString::ToWideString 0x0099E480, ~CWideString 0x0099B510; component slots 59 (+0xEC, AddChild),
 // 144 (+0x240, SetText(const CWideString&, bool, bool)), list slot 152 (+0x260, AddItem), viewport slot 142 (+0x238).
 // Layout: retail CTCInventoryExperience pTextViewport +0x1DC (landed ctor 0x0057832D).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 

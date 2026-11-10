@@ -5,6 +5,11 @@
 #include <stdlib.h>
 #include <new>
 namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
+// Name fix (agentNF 2026-11-10): the count block's deleter 0x00428B10 is ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+//   (FableWin.pdb; was ?DestroyWidget@NScreen005fc8a0@@YIXPAX@Z). Every other callee of this row is still spelled inside the invented
+//   namespace NScreen005fc8a0 (row debt: needs a full re-author on the shared headers).
+namespace NUISystem { class CComponent; }
+template <class T> class CCountedPointer { public: static void __fastcall DeleteData(void* data); };   // 0x00428B10 (T = NUISystem::CComponent)
 namespace NScreen005fc8a0 {
 #pragma pack(push,1)
 struct CCharStringData{char* text;int length,capacity;unsigned char owned;int refs;};
@@ -16,7 +21,7 @@ struct CBaseIntelligentPointer {void* table;void* p;void* Get();};
 struct Node {Node* next;Node* prev;CBaseIntelligentPointer value;};struct List {Node* head;FABLE_FORCEINLINE unsigned Size()const{unsigned n=0;for(Node* p=head->next;p!=head;p=p->next)++n;return n;}};
 struct CopiedList:List {CopiedList(const List&);~CopiedList();};
 struct CQuestManager {char pad[92];List current,past;};extern CQuestManager* g_pQuestManager;
-struct CComponent;void __fastcall DestroyWidget(void*);struct Block {int refs;void(__fastcall*destroy)(void*);void* object;Block(void* p):refs(1),destroy(DestroyWidget),object(p){}};
+struct CComponent;struct Block {int refs;void(__fastcall*destroy)(void*);void* object;Block(void* p):refs(1),destroy(&::CCountedPointer< ::NUISystem::CComponent>::DeleteData),object(p){}};
 struct Ptr {CComponent* p;Block* b;FABLE_FORCEINLINE Block* GetControl()const{return b;}FABLE_FORCEINLINE Ptr(CComponent* w):p(w),b(p?new Block(p):0){}FABLE_FORCEINLINE ~Ptr(){if(b&&!--b->refs){b->destroy(b->object);delete GetControl();}p=0;b=0;}};
 struct CComponent {
 virtual void v0()=0;

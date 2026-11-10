@@ -12,6 +12,9 @@
 // Shape: the landed RefreshEntriesAmountsAndAvailabilitiesPC (0x0059FAFE) model; the find key is the outer component (retail passes
 // the component argument slot), the list children are re-fetched through the virtual on every access, the CreateComponent name is
 // an implicit `const char*` conversion (its temporary lands in the dead `lists` slot), FindChild's argument is built in its slot.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR

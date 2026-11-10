@@ -16,6 +16,8 @@
 //   a second statement so each by-value def temporary is released before the next test; the stocked mark is written in each
 //   arm with a `goto` past the BuyableItems update (VC7.1 keeps both operator[] calls and merges the `= 1` tail, as retail);
 //   `key` is declared before the def pointer (store order before the GetDef call).
+// Name fix (agentNF 2026-11-10): NotInStock is STLport list<long>; clear 0x0042A168 / push_back 0x0042B687 bound under their
+//   STLport spellings (were ?clear@CLongList@@ / ?push_back@CLongList@@).
 // Layout: local view -- NotInStock +0x140, item total +0x168, mode +0x170, BuyableItems map +0x1A4; STLport map is 12 bytes.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
@@ -186,7 +188,17 @@ struct CTCShopkeeper {
 class CTCInventoryItem { public:
     void GetAllItems(std::vector<std::pair<long, long> >& out) const;   // 0x005BF482
 };
-struct CLongList { void clear(); void push_back(const long& v); };   // 0x0042A168 / 0x0042B687 (labelled LinkedList_PushFront)
+namespace std {                                         // STLport 4.6 list<long> (4 bytes: the sentinel pointer); out-of-line members only
+template <class T> class allocator;
+template <class T, class A> class _List_base { public:
+    void* _M_node;
+    void clear();                                       // 0x0042A168 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ (_list.c)
+};
+template <class T, class A = allocator<T> > class list : public _List_base<T, A> { public:
+    void push_back(const T& v);                         // 0x0042B687 ?push_back@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z (FableWin)
+};
+}
+typedef std::list<long> CLongList;                      // the shop's sold-out list (NotInStock)
 typedef std::vector<std::pair<long, long> > CItemVector;
 class CTCInventoryTrade { public:
     unsigned char _pad00[0x140];

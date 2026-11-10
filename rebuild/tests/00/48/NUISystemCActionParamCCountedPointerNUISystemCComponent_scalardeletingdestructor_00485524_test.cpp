@@ -1,83 +1,43 @@
-#include <cstdio>
-
-static int g_order = 0;
-static int g_base_seq = 0;
-static int g_delete_seq = 0;
-static void* g_base_arg = 0;
-static void* g_delete_arg = 0;
-static unsigned long g_vptr_at_base_dtor = 0;
-
-static const unsigned long kDerived = 0x01236794u;
-static const unsigned long kBase    = 0x0122f83cu;
-
-static unsigned long g_obj[4];
-
-void __fastcall SplitBranch_BaseSubObject_dtor(void* thisptr)
-{
-    g_base_arg = thisptr;
-    g_vptr_at_base_dtor = *(unsigned long*)((char*)thisptr - 8);
-    g_base_seq = ++g_order;
-}
-
-void __cdecl fable_operator_delete(void* p)
-{
-    g_delete_arg = p;
-    g_delete_seq = ++g_order;
-}
-
-void* __fastcall CActionParamCCountedPointer_scalar_deleting_dtor(
-        void* thisptr, int /*edx*/, unsigned int flags)
-{
-    unsigned long* vfptr = (unsigned long*)thisptr;
-
-    *vfptr = kDerived;
-    SplitBranch_BaseSubObject_dtor((char*)thisptr + 8);
-    *vfptr = kBase;
-
-    if (flags & 1)
-        fable_operator_delete(thisptr);
-
-    return thisptr;
-}
-
-static int run(unsigned int flags, int expect_delete)
-{
-    g_obj[0] = g_obj[1] = g_obj[2] = g_obj[3] = 0;
-    g_order = 0; g_base_seq = 0; g_delete_seq = 0;
-    g_base_arg = 0; g_delete_arg = 0; g_vptr_at_base_dtor = 0;
-
-    void* ret = CActionParamCCountedPointer_scalar_deleting_dtor(
-        g_obj, 0, flags);
-
-    int ok = 1;
-    ok &= (ret == (void*)g_obj);
-    ok &= (g_base_seq == 1);
-    ok &= (g_base_arg == (void*)((char*)g_obj + 8));
-    ok &= (g_vptr_at_base_dtor == kDerived);
-    ok &= (g_obj[0] == kBase);
-    if (expect_delete)
-    {
-        ok &= (g_delete_seq == 2);
-        ok &= (g_delete_arg == (void*)g_obj);
-    }
-    else
-    {
-        ok &= (g_delete_seq == 0);
-    }
-    return ok;
-}
-
+// Behaviour test for 0x00485524 NUISystem::CActionParamCCountedPointer<CComponent> scalar deleting destructor: the held counted
+// pointer is released (the component deleted with the last reference), then the object is freed only when flags & 1.
+#include <stdio.h>
+#include <new>
+static int g_live = 0;
+struct CComponent { CComponent() { ++g_live; } virtual ~CComponent() { --g_live; } };
+struct CCPPointerInfo { unsigned long RefCount; void (*DeleteFunc)(void*); void* Data; };
+template <class T> struct CCountedPointer {
+    T* Data; CCPPointerInfo* Info;
+    static void DeleteData(void* d) { delete static_cast<T*>(d); }
+    explicit CCountedPointer(T* d) : Data(d) { Info = new CCPPointerInfo; Info->RefCount = 1; Info->DeleteFunc = DeleteData; Info->Data = d; }
+    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
+    void ReleaseData() { if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } Data = 0; Info = 0; }
+    ~CCountedPointer() { ReleaseData(); }
+};
+struct CActionParam { long Type; CActionParam(long t) : Type(t) { } virtual ~CActionParam() { } };
+struct CActionParamCCountedPointer : CActionParam {
+    CCountedPointer<CComponent> Value;
+    CActionParamCCountedPointer(CCountedPointer<CComponent>& v) : CActionParam(1), Value(v) { }
+};
 int main()
 {
-    int ok = 1;
-    ok &= run(1u, 1);
-    ok &= run(0u, 0);
-    ok &= run(2u, 0);
-    ok &= run(3u, 1);
-
-    if (ok)
-        std::printf("SPLITBRANCH_SCALAR_DELETING_DTOR_00485524_TEST PASS\n");
-    else
-        std::printf("SPLITBRANCH_SCALAR_DELETING_DTOR_00485524_TEST FAIL\n");
-    return 0;
+    bool ok = true;
+    {
+        CCountedPointer<CComponent> p(new CComponent);
+        CActionParamCCountedPointer* param = new CActionParamCCountedPointer(p);   // two references
+        ok = ok && p.Info->RefCount == 2;
+        delete param;                                                          // flags & 1: release one, free
+        ok = ok && p.Info->RefCount == 1 && g_live == 1;
+    }
+    ok = ok && g_live == 0;                                                    // last reference deletes the component
+    {
+        CComponent* c = new CComponent;
+        CCountedPointer<CComponent> p(c);
+        static double storage[(sizeof(CActionParamCCountedPointer) + 7) / 8];
+        CActionParamCCountedPointer* param = new (storage) CActionParamCCountedPointer(p);
+        p.ReleaseData();                                                       // the parameter holds the only reference
+        param->~CActionParamCCountedPointer();                                 // flags == 0: destroy without freeing
+        ok = ok && g_live == 0;
+    }
+    printf(ok ? "00485524_TEST PASS\n" : "00485524_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

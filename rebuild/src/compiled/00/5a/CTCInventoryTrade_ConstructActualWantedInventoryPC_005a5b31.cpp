@@ -14,6 +14,9 @@
 //   CBasicString<char>::Compare (0x00411570) and operator==(const char*) under auto_inline(off) tell the mod/ref summary they only
 //   read, so retail's single PStringData load per test survives (without them every test reloads it). The first FindChild of the
 //   WANTED menu entry is retail's own discarded call (0x005A5BD2).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ

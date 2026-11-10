@@ -21011,10 +21011,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005babb8'
-        Module = '_global'
-        Source = '00/5b/CTCCarryable_OnKill_005babb8.cpp'
-        TestSource = '00/5b/CTCCarryable_OnKill_005babb8_test.cpp'
-        PassPattern = 'AUTO_TINY_005babb8_TEST PASS'
+        Module = 'std::_Rb_tree<EClothingSuitPart, EClothingSuitPart, std::_Identity<EClothingSuitPart>, std::less<EClothingSuitPart>, std::allocator<EClothingSuitPart>>'
+        Source = '00/5b/stdRbtreeEClothingSuitPartEClothingSuitPartstdIdentityEClothingSuitPartstdlessEClothingSuitPartstdallocatorEClothingSuitPart_clear_005babb8.cpp'
+        TestSource = '00/5b/stdRbtreeEClothingSuitPartEClothingSuitPartstdIdentityEClothingSuitPartstdlessEClothingSuitPartstdallocatorEClothingSuitPart_clear_005babb8_test.cpp'
+        PassPattern = '005babb8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bac05'
@@ -21053,10 +21053,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ba78b'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/5b/LTextTreeWalkThrough_BuildTreeArray_005ba78b.cpp'
-        TestSource = '00/5b/LTextTreeWalkThrough_BuildTreeArray_005ba78b_test.cpp'
-        PassPattern = 'AUTO_TINY_005ba78b_TEST PASS'
+        Module = 'std::_Rb_tree<EClothingSuitPart, EClothingSuitPart, std::_Identity<EClothingSuitPart>, std::less<EClothingSuitPart>, std::allocator<EClothingSuitPart>>'
+        Source = '00/5b/stdRbtreeEClothingSuitPartEClothingSuitPartstdIdentityEClothingSuitPartstdlessEClothingSuitPartstdallocatorEClothingSuitPart_Merase_005ba78b.cpp'
+        TestSource = '00/5b/stdRbtreeEClothingSuitPartEClothingSuitPartstdIdentityEClothingSuitPartstdlessEClothingSuitPartstdallocatorEClothingSuitPart_Merase_005ba78b_test.cpp'
+        PassPattern = '005ba78b_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005ba7cc'
@@ -31654,7 +31654,7 @@ $catalog = @(
         Module = 'NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>'
         Source = '00/48/NUISystemCActionParamCCountedPointerNUISystemCComponent_scalardeletingdestructor_00485524.cpp'
         TestSource = '00/48/NUISystemCActionParamCCountedPointerNUISystemCComponent_scalardeletingdestructor_00485524_test.cpp'
-        PassPattern = 'SPLITBRANCH_SCALAR_DELETING_DTOR_00485524_TEST PASS'
+        PassPattern = '00485524_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0088de10'
@@ -42888,10 +42888,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bb04f'
-        Module = '_global'
-        Source = '00/5b/CActiveFile_OnReadFinished_005bb04f.cpp'
-        TestSource = '00/5b/CActiveFile_OnReadFinished_005bb04f_test.cpp'
-        PassPattern = 'OK_005bb04f'
+        Module = 'std::_Rb_tree<EClothingSuitPart, EClothingSuitPart, std::_Identity<EClothingSuitPart>, std::less<EClothingSuitPart>, std::allocator<EClothingSuitPart>>'
+        Source = '00/5b/stdRbtreeEClothingSuitPartEClothingSuitPartstdIdentityEClothingSuitPartstdlessEClothingSuitPartstdallocatorEClothingSuitPart_Rbtree_005bb04f.cpp'
+        TestSource = '00/5b/stdRbtreeEClothingSuitPartEClothingSuitPartstdIdentityEClothingSuitPartstdlessEClothingSuitPartstdallocatorEClothingSuitPart_Rbtree_005bb04f_test.cpp'
+        PassPattern = '005bb04f_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005bb090'
@@ -69531,10 +69531,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042920a'
-        Module = 'CCountedPointer<NUISystem::CAction>'
-        Source = '00/42/CCountedPointerNUISystemCAction_ShareData_0042920a.cpp'
-        TestSource = '00/42/CCountedPointerNUISystemCAction_ShareData_0042920a_test.cpp'
-        PassPattern = 'PASS_0042920a'
+        Module = 'CCountedPointer<NUISystem::CComponent>'
+        Source = '00/42/CCountedPointerNUISystemCComponent_ShareData_0042920a.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCComponent_ShareData_0042920a_test.cpp'
+        PassPattern = '0042920a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042943a'
@@ -73640,10 +73640,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004291de'
-        Module = '_global'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004291de.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004291de_test.cpp'
-        PassPattern = 'PASS_004291de'
+        Module = 'CCountedPointer<NUISystem::CComponent>'
+        Source = '00/42/CCountedPointerNUISystemCComponent_ReleaseData_004291de.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCComponent_ReleaseData_004291de_test.cpp'
+        PassPattern = '004291de_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00429230'
@@ -74683,10 +74683,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429c53'
-        Module = '_global'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429c53.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429c53_test.cpp'
-        PassPattern = 'PASS_00429c53'
+        Module = 'CCountedPointer<NUISystem::CComponent>'
+        Source = '00/42/CCountedPointerNUISystemCComponent_CCountedPointer_00429c53.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCComponent_CCountedPointer_00429c53_test.cpp'
+        PassPattern = '00429c53_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00429d8e'
@@ -76615,10 +76615,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429e16'
-        Module = '_global'
-        Source = '00/42/CPair_CPair_00429e16.cpp'
-        TestSource = '00/42/CPair_CPair_00429e16_test.cpp'
-        PassPattern = 'PASS_00429e16'
+        Module = 'std::pair<const CCharString, CCountedPointer<NUISystem::CComponent>>'
+        Source = '00/42/stdpairconstCCharStringCCountedPointerNUISystemCComponent_pair_00429e16.cpp'
+        TestSource = '00/42/stdpairconstCCharStringCCountedPointerNUISystemCComponent_pair_00429e16_test.cpp'
+        PassPattern = '00429e16_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042bead'
@@ -76742,9 +76742,9 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0041d207'
         Module = 'NUISystem::CManager'
-        Source = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0041d207.cpp'
-        TestSource = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0041d207_test.cpp'
-        PassPattern = 'PASS_0041d207'
+        Source = '00/41/NUISystemCManager_ClearActionParams_0041d207.cpp'
+        TestSource = '00/41/NUISystemCManager_ClearActionParams_0041d207_test.cpp'
+        PassPattern = '0041d207_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0042bec0'
@@ -125150,10 +125150,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bb0a7'
-        Module = '_global'
-        Source = '00/5b/global_ListNodeInsertBefore005bb0a7_005bb0a7.cpp'
-        TestSource = '00/5b/global_ListNodeInsertBefore005bb0a7_005bb0a7_test.cpp'
-        PassPattern = 'LISTINSERT_005bb0a7_PASS'
+        Module = 'std::list<CDefPointer<const CAppearanceModifierDef> >'
+        Source = '00/5b/stdlistCDefPointerconstCAppearanceModifierDef_insert_005bb0a7.cpp'
+        TestSource = '00/5b/stdlistCDefPointerconstCAppearanceModifierDef_insert_005bb0a7_test.cpp'
+        PassPattern = '005bb0a7_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005d8626'
@@ -125416,10 +125416,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bb3ef'
-        Module = '_global'
-        Source = '00/5b/global_ListPushFrontWrapper005bb3ef_005bb3ef.cpp'
-        TestSource = '00/5b/global_ListPushFrontWrapper005bb3ef_005bb3ef_test.cpp'
-        PassPattern = 'LISTPUSH_005bb3ef_PASS'
+        Module = 'std::list<CDefPointer<const CAppearanceModifierDef> >'
+        Source = '00/5b/stdlistCDefPointerconstCAppearanceModifierDef_pushback_005bb3ef.cpp'
+        TestSource = '00/5b/stdlistCDefPointerconstCAppearanceModifierDef_pushback_005bb3ef_test.cpp'
+        PassPattern = '005bb3ef_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005d86b2'
@@ -150386,9 +150386,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00429c15'
-        Module = 'CCountedPointer_00428b10'
-        Source = '00/42/CCountedPointer00428b10_CCountedPointer00428b10_00429c15.cpp'
-        TestSource = '00/42/CCountedPointer00428b10_CCountedPointer00428b10_00429c15_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CComponent>'
+        Source = '00/42/CCountedPointerNUISystemCComponent_CCountedPointer_00429c15.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCComponent_CCountedPointer_00429c15_test.cpp'
         PassPattern = '00429c15_TEST PASS'
     }
     [pscustomobject]@{
@@ -281880,9 +281880,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005bac52'
-        Module = 'std::list<CDefPointer<const CCreatureGenerationFamilyDef> >'
-        Source = '00/5b/stdlistCDefPointerconstCCreatureGenerationFamilyDef_Mcreatenode_005bac52.cpp'
-        TestSource = '00/5b/stdlistCDefPointerconstCCreatureGenerationFamilyDef_Mcreatenode_005bac52_test.cpp'
+        Module = 'std::list<CDefPointer<const CAppearanceModifierDef> >'
+        Source = '00/5b/stdlistCDefPointerconstCAppearanceModifierDef_Mcreatenode_005bac52.cpp'
+        TestSource = '00/5b/stdlistCDefPointerconstCAppearanceModifierDef_Mcreatenode_005bac52_test.cpp'
         PassPattern = '005bac52_TEST PASS'
     }
     [pscustomobject]@{

@@ -8,6 +8,9 @@
 //   CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646 (same-TU noinline stand-in),
 //   CAction::AddParam 0x0053FDE0, CActionParamString 0x0054DAE0 (landed AddWantedItemToList 0x0059CB90 model). Slot names are descriptive.
 // Layout: CAction 0x10; CActionParamLong 0x0C (vtable 0x012366F4, type 3); a component's CActionParam subobject at +0x18.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:

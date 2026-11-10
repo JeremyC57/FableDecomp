@@ -16,6 +16,9 @@
 // implicit "PC_EXPRESSION_ITEM_INSIDE_CONTAINER" conversion temporary (re-addressed with `lea`, in the same dead
 // word), which dies once the counted pointer holds the new component.
 // Layout: retail CTCInventory QuickAccessItems vector<long> at +0x148 (PDB +0x168).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 

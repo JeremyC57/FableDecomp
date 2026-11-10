@@ -32,6 +32,9 @@
 //   the multiply), and fabs(morality) is written twice (a named local moves the key store of the first alpha past the fsub).
 // Names: the parameter names are this row's (the PDB keeps only the mangled signature); the two flags are read as "morality bar"
 //   (the UI_MORALITY_* sprites and the LO tick sprites are only built with it) and "show the cap sprite".
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

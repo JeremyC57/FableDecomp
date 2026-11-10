@@ -39,6 +39,9 @@
 // Layout: engine/CTCInventoryExperience.h retail branch (UndoableStatBuys +0x140, pViewport +0x1D8, pTextViewport +0x1DC,
 //   NumItems +0x218, UpgradableStats +0x224, ExpSliders +0x23C); CTCBase::ParentThing +0x04; CThing UsingComponents +0x20 /
 //   Components +0x44.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes; likewise 0x00429160 = ReleaseData<CAction>, dtor jmp 0x00429B72). Header opt-in FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

@@ -62,6 +62,10 @@ private:
     void CalculateArmorValues(ArgPasser& values, long itemDefIndex) const;              // 0x005B4EBA
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_TOTALARMOUR
+    // Per-TU opt-in (agentNF 2026-11-10, row 0x005B4A95): Ego_r.pdb ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ (public const).
+    long GetCurrentTotalArmorValue() const;                                             // 0x005B4A95
+#endif
 #ifndef FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04

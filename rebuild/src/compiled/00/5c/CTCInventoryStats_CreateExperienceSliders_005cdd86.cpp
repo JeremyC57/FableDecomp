@@ -3,6 +3,9 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (sec1b 2026-10-30) -- one `long value` and one `long level` reused by all four sliders (value = the stat, level = current ? value : the original experience), as retail homes them in the dead parent slot / [ebp-4]; per-slider named values gave fresh slots. Earlier residue: frame-slot assignment only.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)

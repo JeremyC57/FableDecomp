@@ -1,5 +1,8 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<EDamageAttribute, float >) STLport exact-key lookup over a signed 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@
+// Leaf: ??$_M_find@W4EDamageAttribute@@@?$_Rb_tree@
+// Name fix (agentNF 2026-11-10, Codex fix [5], owner decision D1): _M_find is the STLport 4.6 private member template
+//   ??$_M_find@W4EDamageAttribute@@@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@...@std@@ABEPAU?$_Rb_tree_node@...@1@ABW4EDamageAttribute@@@Z
+//   (bound so by the landed 0x005B4EBA and 0x005B4A95), explicitly instantiated; was the non-template ?_M_find@?$_Rb_tree@...
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BA9BE, 56 bytes (unaligned entry, size-optimised TU), thiscall, `ret 4`;
 //   returns the node pointer (header node pointer = end()).
 // Identity: map<EDamageAttribute, float > -- proven; evidence: the landed CTCInventoryClothing::GetCurrentTotalArmorValue 0x005B4A95 (and CalculateArmorValues 0x005B5480) look damage attributes up in the armour def's +0x48 map = Ego_r CArmourDef::DamageTypeResponse (map<EDamageAttribute, float>, PDB +0x50 less the 4-byte shorter def base and one shorter map) through it.
@@ -62,12 +65,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // STLport 4.6 _tree.h member template (_STLP_MEMBER_TEMPLATES)
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -83,6 +87,6 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
 
 typedef EDamageAttribute _TreeKey;
 typedef pair<const _TreeKey, float > _TreeValue;
-template class _Rb_tree<_TreeKey, _TreeValue, _Select1st<_TreeValue>, less<_TreeKey>, allocator<_TreeValue> >;
+template _Rb_tree_node<_TreeValue>* _Rb_tree<_TreeKey, _TreeValue, _Select1st<_TreeValue>, less<_TreeKey>, allocator<_TreeValue> >::_M_find<_TreeKey>(const _TreeKey& __k) const;
 
 } // namespace std

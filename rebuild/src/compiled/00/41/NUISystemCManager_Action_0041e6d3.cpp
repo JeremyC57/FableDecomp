@@ -9,6 +9,9 @@
 // caller-size penalty ((sz/2)*N/9000, N = tuples so far) gives no single N that splits retail's set (probe/inl traces, WORKLOG S4);
 // and FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR: the CCountedPointer(T*) body visible but __declspec(noinline) (retail calls
 // 0x00429C15 / 0x0042AA29 / 0x0041C030 at every site; a declaration-only ctor exposes the object, frame 0x808 v 0x800).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

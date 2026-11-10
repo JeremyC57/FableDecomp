@@ -10,6 +10,9 @@
 // result in ecx), and the list's slot 124 (+0x1F0).
 // Shape: see 0x005C323A (implicit const char* conversions, the guide bank / description component read early, a named entry
 // component pointer); tried a reference local, a split declaration and a same-TU counted-pointer ctor body for the esi load.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)

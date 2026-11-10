@@ -22,6 +22,9 @@
 //   are pushed as immediates rather than hoisted. Per entry: find the old description by name, mark it for deletion
 //   through a by-value CDeletion copy, build the new one into a counted pointer, rename it, add it as the entry's
 //   child and hand it to the viewport.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 

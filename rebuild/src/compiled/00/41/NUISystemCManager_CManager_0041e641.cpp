@@ -11,6 +11,9 @@
 //   (engine/CManager.h is the debug layout, 0x10 higher for the banks -- modelled locally, as the landed 0x0042A9B7).
 // Shape: the empty counted-pointer arguments are default-constructed in their argument slots (a declared copy constructor), zeroed from
 //   the size-TU zero register ebx (`push ecx ; push ecx ; mov eax,esp ; mov [eax],ebx`); GetInstance is evaluated after the argument.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 class CGraphicDataBank;
 class CMeshDataBank;

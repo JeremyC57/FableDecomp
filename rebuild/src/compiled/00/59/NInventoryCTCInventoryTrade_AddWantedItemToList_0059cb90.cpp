@@ -12,6 +12,9 @@
 //   entry slots 67 (+0x10C) / 152 (+0x260) / 153 (+0x264), list slot 152 (+0x260). Slot names are descriptive.
 // Layout: CAction 0x10 bytes (landed AddSoundAction 0x0056F615 model); CActionParamSLONG 0x0C (vtable 0x012366F4, type 3);
 //   CActionParamString 0x0C; a component's CActionParam subobject sits at +0x18.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:

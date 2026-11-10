@@ -1,64 +1,25 @@
+// NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::`scalar deleting destructor'(unsigned int flags) -- the component action parameter's deleting destructor: release the held counted pointer, restore the CActionParam vtable, free when asked
+// Leaf: ??_G?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00485524, 43 bytes, thiscall `ret 4`; size-optimised TU (odd address). Bytes: vptr 0x01236794
+//   (RTTI .?AV?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@), `lea ecx,[esi+8] ; call 0x004291DE` (the inline
+//   ~CCountedPointer<CComponent> of the +8 value: its ReleaseData), CActionParam vptr 0x0122F83C (inline empty base destructor),
+//   operator delete 0x00BFE9BC on flags & 1.
+// Names: Ego_r.pdb / FableWin.pdb ??0?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@QAE@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z,
+//   ??1..UAE@XZ (virtual), ??_E.. (the debug build's vector deleting form); retail emits the scalar form here. Value +8 (the
+//   ctor's CCountedPointer& argument; the ctor's type value UI_ACTION_PARAM_TYPE_COMPONENT is assumed, not graded). Was landed as an extern "C" stand-in calling
+//   @SplitBranch_BaseSubObject_dtor@4 (catalog module CLandscapeBackgroundSubNodeSplitBranch, propagated).
+// Release: 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA; the destructor
+//   is the 5-byte jmp COMDAT 0x00429C53, Ego_r ??1 5 bytes).
 #pragma optimize("s",on)
-#include "rebuild_abi.h"
-
-// NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::`scalar deleting destructor' @ 0x00485524
-// module: CLandscapeBackgroundSubNodeSplitBranch  (thiscall, void*, 2 params)
-// VC7.1, x86, /O2 /Oy.
-//
-// OVER-CAPTURE: the 71-byte retail slice packs FOUR contiguous routines with no
-// inter-function padding.  Only the LEADING 43-byte (0x00..0x2a, ret 4) scalar
-// deleting destructor is a member of this class; it is reconstructed here.  The
-// three trailing orphans (a getter, a member-deleting helper, a copy-out helper)
-// are separate functions and are intentionally NOT reproduced.  real_len = 43.
-//
-// Retail idiom (inlined non-deleting destructor + conditional operator delete):
-//   push esi; mov esi,ecx                ; self = this (ecx)
-//   lea ecx,[esi+8]                      ; arg = base subobject at this+8
-//   mov dword ptr [esi],DERIVED_VT       ; stamp this class's vptr
-//   call <base-subobject dtor>           ; destruct base/member at this+8
-//   test byte ptr [esp+8],1              ; flags & 1 ?  (scheduled early)
-//   mov dword ptr [esi],BASE_VT          ; restore base class vptr
-//   je skip; push esi; call operator delete; pop ecx
-// skip:
-//   mov eax,esi; pop esi; ret 4          ; return this
-//
-// Both vtable stores are absolute-immediate writes (`mov [esi],imm32`) and the
-// call rel32 targets are relocation-masked in parity, so the concrete symbol /
-// vtable addresses do not affect the byte match.  The sub-object destructor at
-// +8 is __fastcall (ecx = this+8); modeled as a free __fastcall(objptr).  The
-// deleting-destructor itself takes ecx = this and pops its one flags argument
-// (ret 4) -- modeled __fastcall with a trailing stack `flags` parameter.
-
-class CLandscapeBackgroundSubNodeSplitBranch;
-struct SplitBranchBaseSubObject;
-
-// base-subobject destructor at this+8 (thiscall / ecx = subobject)
-extern "C" void FABLE_FASTCALL SplitBranch_BaseSubObject_dtor(
-        SplitBranchBaseSubObject* thisptr);
-
-
-// Relocation-masked absolute vtable addresses stamped by the inlined destructor.
-static const fable_u32 kSplitBranchDerivedVtable = 0x01236794u;
-static const fable_u32 kSplitBranchBaseVtable    = 0x0122f83cu;
-
-extern "C" void* FABLE_FASTCALL CActionParamCCountedPointer_scalar_deleting_dtor(
-        CLandscapeBackgroundSubNodeSplitBranch* thisptr,
-        int /*edx*/,
-        unsigned int flags)
-{
-    fable_u32* vfptr = reinterpret_cast<fable_u32*>(thisptr);
-
-    // stamp this class's vtable, then destruct the base subobject at this+8
-    *vfptr = kSplitBranchDerivedVtable;
-    SplitBranch_BaseSubObject_dtor(
-        reinterpret_cast<SplitBranchBaseSubObject*>(
-            reinterpret_cast<fable_u8*>(thisptr) + 8));
-
-    // restore the base class vtable
-    *vfptr = kSplitBranchBaseVtable;
-
-    if (flags & 1)
-        operator delete(thisptr);
-
-    return thisptr;
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#include "engine/NUISystem_CComponent.h"
+namespace NUISystem {
+template <class T> class CActionParamCCountedPointer : public CActionParam {
+public:
+    CActionParamCCountedPointer(CCountedPointer<T>& value) : CActionParam(UI_ACTION_PARAM_TYPE_COMPONENT), Value(value) { }
+    virtual ~CActionParamCCountedPointer() { }
+    CCountedPointer<T> Value;                                           // +0x08
+};
 }
+// The constructor instantiation emits the vtable and with it the scalar deleting destructor (the destructor expanded inside it).
+template NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::CActionParamCCountedPointer(CCountedPointer<NUISystem::CComponent>& value);

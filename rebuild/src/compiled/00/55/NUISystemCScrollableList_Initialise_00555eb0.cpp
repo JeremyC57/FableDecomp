@@ -7,13 +7,17 @@
 //   is NUISystem::CScrollableList::Initialise (the landed CRedefinerList::Initialise 0x005566A0 calls it as its base).
 // Callees: CChangingStateComponent::Initialise 0x0052C730, CManager::GetInstance 0x0041E5F2 (static __fastcall),
 //   CManager::CreateComponent 0x0041D21B, CCountedPointer<CComponent>(CComponent*) 0x00429C15, CAction::CAction 0x0042BE50,
-//   CCountedPointer<CAction>(CAction*) 0x0042AA29, CAction 0x0053FDE0 (descriptive SetTarget; manifest "list::push_back"),
+//   CCountedPointer<CAction>(CAction*) 0x0042AA29, CAction::AddParam(CActionParam*, CCountedPointer<CAction>&) 0x0053FDE0,
 //   SetScroll 0x00555A90 (descriptive), operator new 0x00BFEA1A, malloc 0x00BFEA0E (list node), operator delete 0x00BFE9BC,
 //   _ftol 0x00BFEA70; component slots 43 Initialise, 51/52 SetParent/GetParent, 59 AddChild, 80 (+0x140) AddAction,
 //   108 GetDef; CActionParamSLONG vtable 0x012366F4 (type 3).
 // Layout: the landed CRedefinerList::Initialise 0x005566A0 model (component slots, counted-pointer count block, CDefPointer
 //   over a ref-count base at +4, CAction 0x10 bytes as the landed AddSoundAction 0x0056F615); the def is 2-packed (item gap
 //   +0x142, item height +0x146); list members +0x15c..+0x174 and the action-target subobject at +0x18 are descriptive.
+// Name fix (agentNF 2026-11-10): the local counted-pointer model moved out of namespace NUISystem (the engine template is global):
+//   0x00429C15 / 0x0042AA29 now bind ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z / the CAction twin
+//   (was ??0CActionPointer@NUISystem@@); 0x0053FDE0 is CAction::AddParam(param, self) (Ego_r + FableWin; was a descriptive SetTarget
+//   taking an invented CActionTarget: the +0x18 argument is the component's CActionParam base subobject).
 // Shape: CAction::AddUIActionParam is the inline STLport list insert at end with the old tail named before the links are
 //   stored (else head->_M_prev is re-read); the action counted pointer's inline dtor clears both words, the component's does not.
 extern "C" void* __cdecl malloc(unsigned int);
@@ -26,12 +30,13 @@ struct C2DVector {
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
+}   // namespace NUISystem: CCountedPointer is the engine's global template
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:   // global template (FableWin ??0?$CCountedPointer@VCComponent@NUISystem@@@@...)
     T*           m_pObject;                // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer(T* object);            // 0x00429C15 (T = NUISystem::CComponent)
@@ -47,6 +52,8 @@ template<class T> struct CCountedPointer {
     }
     T* operator->() const { return m_pObject; }
 };
+
+namespace NUISystem {
 
 class CActionParam { public:
     long Type;                                          // +0x04
@@ -64,8 +71,30 @@ struct SParamNode {
     SParamNode*   _M_prev;
     CActionParam* _M_data;
 };
-struct CActionTarget { void* _vf; };
-struct CActionPointer;
+class CAction;
+}   // namespace NUISystem
+// CCountedPointer<NUISystem::CAction>: (T*) ctor 0x0042AA29 called; its inline release clears both words here (the component's
+// does not), so it keeps its own body as an explicit specialisation of the local model.
+template<> class CCountedPointer<NUISystem::CAction> { public:
+    NUISystem::CAction* m_pObject;
+    SCountBlock* m_pCount;
+    CCountedPointer(NUISystem::CAction* object);        // 0x0042AA29
+    ~CCountedPointer()
+    {
+        if (m_pCount) {
+            --m_pCount->m_references;
+            if (m_pCount->m_references == 0) {
+                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
+                operator delete(m_pCount);
+            }
+        }
+        m_pObject = 0;
+        m_pCount = 0;
+    }
+    NUISystem::CAction* operator->() const { return m_pObject; }
+};
+namespace NUISystem {
+typedef CCountedPointer<CAction> CActionPointer;
 class CAction { public:                                        // retail 0x10 bytes
     long        ActionType;                             // +0x00
     SParamNode* UIActionParams;                         // +0x04 (STLport list head node)
@@ -84,25 +113,7 @@ class CAction { public:                                        // retail 0x10 by
         prev->_M_next = node;
         head->_M_prev = node;
     }
-    void SetTarget(CActionTarget* target, const CActionPointer& self);   // 0x0053FDE0
-};
-struct CActionPointer {
-    CAction*     m_pObject;
-    SCountBlock* m_pCount;
-    CActionPointer(CAction* object);                    // 0x0042AA29
-    ~CActionPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                operator delete(m_pCount);
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-    CAction* operator->() const { return m_pObject; }
+    void AddParam(CActionParam* param, CCountedPointer<CAction>& self);   // 0x0053FDE0 Ego_r/FableWin ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 };
 struct CRefCounted {
     long m_count;
@@ -142,7 +153,6 @@ struct CDefPointer {
 };
 
 class CAction;
-struct CActionPointer;
 class CComponent { public:
     virtual void v00();
     virtual void v01();
@@ -262,8 +272,8 @@ class CManager { public:
 
 class CChangingStateComponent : public CComponent { public:
     unsigned char _pad004[0x14];
-    CActionTarget ActionTarget;                         // +0x18
-    unsigned char _pad01c[0x15c - 0x1c];
+    CActionParam  ActionParamBase;                      // +0x18 the CActionParam base subobject of CComponent (engine header: CComponent : CUIInterface, CObserver, CActionParam)
+    unsigned char _pad020[0x15c - 0x20];
     void Initialise();                                  // 0x0052C730
 };
 class CScrollableList : public CChangingStateComponent { public:
@@ -295,7 +305,7 @@ void CScrollableList::Initialise()
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
         action->AddUIActionParam(new CActionParamSLONG(0x10));
-        action->SetTarget(&ActionTarget, action);
+        action->AddParam(&ActionParamBase, action);
         arrow->AddAction(action);
     }
     if (def->DownArrowDef) {
@@ -307,7 +317,7 @@ void CScrollableList::Initialise()
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
         action->AddUIActionParam(new CActionParamSLONG(0x11));
-        action->SetTarget(&ActionTarget, action);
+        action->AddParam(&ActionParamBase, action);
         arrow->AddAction(action);
     }
     SetScroll(0, 0);

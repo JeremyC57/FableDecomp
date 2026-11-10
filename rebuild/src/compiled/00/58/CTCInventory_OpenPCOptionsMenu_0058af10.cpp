@@ -33,6 +33,9 @@
 //   declared first and increments it first; the colour, the redefiner list and each quit picture are named locals (their
 //   construction / load precedes the call's vtable fetch); the gameplay / audio / video pages build an OBSERVE action for the
 //   accept button that is never attached (as retail).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ

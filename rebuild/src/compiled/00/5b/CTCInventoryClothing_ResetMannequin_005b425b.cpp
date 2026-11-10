@@ -17,22 +17,21 @@
 // a temporary key packs the same way); `push 5Eh ; pop edi` serves both lookups' test and key; the hero's component is
 // spilled to [ebp-10h], the mannequin's lives in edi; the list's allocator temporary is the frame byte [ebp-1] (the
 // list constructor's same-TU body).
+// Name fix (agentNF 2026-11-10): `worn` is the shared STLport 4.6 list<long> (was a local CLongList); _List_base ctor 0x0042AB58 / dtor
+//   0x0042AB73 and GetAppearanceModifierList 0x00706800 bound under their real spellings; the ctor keeps its same-TU body (STLport
+//   _List_base body as an explicit specialisation).
 // Label: the catalog's Appearance_UpdateModifiers is this method.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct SAllocator { SAllocator() { } };
-struct SLongListNode { SLongListNode* _M_next; SLongListNode* _M_prev; long _M_data; };
-struct CLongList {                                      // STLport list<long>: the sentinel pointer
-    SLongListNode* _M_node;
-    explicit CLongList(const SAllocator& allocator = SAllocator());   // 0x0042AB58
-    ~CLongList();                                       // 0x0042AB73
-};
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "stlport/fable_containers.h"   // list<long>: _List_base ctor 0x0042AB58 / dtor 0x0042AB73 out of line
+enum EHeroAttachableAppearanceModifierType { };      // Ego_r enum (value 2 used here)
 class CTCHeroAttachableAppearanceModifiers { public:           // interface 0x5E
-    void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
+    void GetAppearanceModifierList(std::list<long>& out, EHeroAttachableAppearanceModifierType type) const;   // 0x00706800
     void RemoveAllAppearanceModifiers(long type);       // 0x00706640
     void AddAppearanceModifierWithReplace(long def);    // 0x00706950
 };
-#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -48,11 +47,13 @@ class CTCInventoryClothing { public:
 };
 // The list constructor's same-TU out-of-line body (it builds only the sentinel), as in the landed AddClothingToThing.
 #pragma auto_inline(off)
-CLongList::CLongList(const SAllocator&)
+template<> std::_List_base<long, std::allocator<long> >::_List_base(const std::allocator<long>&)
+    : _M_node(std::allocator<std::_List_node<long> >(), 0)
 {
-    _M_node = (SLongListNode*)operator new(sizeof(SLongListNode));
-    _M_node->_M_next = _M_node;
-    _M_node->_M_prev = _M_node;
+    std::_List_node<long>* n = _M_node.allocate(1);
+    n->_M_next = n;
+    n->_M_prev = n;
+    _M_node._M_data = n;
 }
 #pragma auto_inline(on)
 void CTCInventoryClothing::ResetMannequin()
@@ -65,9 +66,9 @@ void CTCInventoryClothing::ResetMannequin()
     CTCHeroAttachableAppearanceModifiers* mannequinModifiers;
     if (!PMannequin->GetTC(TCI_HERO_ATTACHABLE_APPEARANCE_MODIFIERS, &mannequinModifiers))
         return;
-    CLongList worn;
-    heroModifiers->GetAppearanceModifierList(worn, 2);
+    std::list<long> worn;
+    heroModifiers->GetAppearanceModifierList(worn, (EHeroAttachableAppearanceModifierType)2);
     mannequinModifiers->RemoveAllAppearanceModifiers(2);
-    for (SLongListNode* node = worn._M_node->_M_next; node != worn._M_node; node = node->_M_next)
-        mannequinModifiers->AddAppearanceModifierWithReplace(node->_M_data);
+    for (std::list<long>::iterator node = worn.begin(); node != worn.end(); ++node)
+        mannequinModifiers->AddAppearanceModifierWithReplace(*node);
 }

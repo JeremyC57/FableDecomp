@@ -98,7 +98,17 @@ public:
         if (Info)
             ++Info->RefCount;
     }
-#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
+    // Per-TU opt-in (agentNF 2026-11-10, the NUISystem TUs): the destructor is `{ ReleaseData(); }` and ReleaseData is the release with
+    // Data zeroed before Info. Evidence: Ego_r.pdb ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ is a 5-byte function (0x00438DDC,
+    // next symbol 0x00438DE1) and retail has the same 5-byte `jmp` COMDAT at 0x00429C53 (-> 0x004291DE), called at the scope ends of
+    // locals (0x0054522E, 0x0056BBB9); the 44-byte release 0x004291DE is called on live pointers (ClearBastardChild 0x0041DEED loop,
+    // Reset 0x00429C72, ShareData 0x00429217) = ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ (FableWin.pdb: 420
+    // ReleaseData instantiations for 419 destructors; Ego_r.pdb keeps ReleaseData<CEventBase> out of line, 44 bytes). Same pair for
+    // CAction (0x00429160 / jmp 0x00429B72) and CMeshDataBank (0x0042918C / jmp 0x00429BF9). With _DECL_ONLY ReleaseData is declared
+    // only (the TU calls it out of line); the destructor stays inline and expands to that call.
+    ~CCountedPointer() { ReleaseData(); }
+#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY)
     // Per-TU opt-in (Codex name fix 2026-11-10, ~CCountedPointer<NUISystem::CComponent> 0x004291DE): where retail calls the
     // destructor COMDAT from a speed-optimised TU (0x00429E16, the map pair destructor) the body above would be expanded.
     // Declaration only; the retail body is the #else one (0x004291DE: Data zeroed before Info).
@@ -134,6 +144,22 @@ public:
     bool IsNull() const { return Data == 0; }
     unsigned long GetReferenceCount() const { return Info ? Info->RefCount : 0; }   // unproven body (FableWin name only)
     void Validate() const;                                               // FableWin.pdb only (debug build check)
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY)
+    void ReleaseData();                                                  // out of line (0x004291DE for CComponent): the _RELEASEDATA body
+#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA)
+    void ReleaseData()                                                   // 0x004291DE (CComponent): Data zeroed before Info
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
+#else
     void ReleaseData()
     {
         if (Info) {
@@ -146,6 +172,7 @@ public:
         Info = 0;
         Data = 0;
     }
+#endif
     void ShareData(T* data, CCPPointerInfo* info)
     {
         if (Info != info) {

@@ -20,6 +20,9 @@
 //   from its first use to its last, after which esi takes the constant 3. The bool result is the byte [ebp-1] set before GetInstance.
 // Layout: retail CTCInventoryTrade ItemsToSell +0x150 (map<CComponent*, pair<long, long> >, PDB +0x178); engine/CTCInventoryTrade.h
 //   is the flattened PDB layout (16-byte containers), so the class is modelled locally (landed ctor 0x0059EC48 offsets).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL

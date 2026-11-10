@@ -8,6 +8,9 @@
 // component pointer pushed from the counted pointer's object word) after it; both slot names are descriptive.
 // Shape: the console twin's (see 0x0059D0B8): manager first, the stand-in `find` (same-TU noinline body as in the landed
 // FinalRefreshSubtitles 0x0059D761), the name conversion homed in the dead `component` slot, the counted-pointer local.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:

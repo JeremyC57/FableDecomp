@@ -35,6 +35,9 @@
 //   below are placeholders (naming queue) spelled after the NGlobalConsole::ConsoleSetHero<Group><Stat>Level symbols
 //   (StrengthPhysique / StrengthHealth / StrengthToughness / SkillAccuracy / SkillSpeed / SkillStealth / WillMagicPower) in the
 //   order the stats screen shows them; the values are retail's immediates.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING

@@ -14,15 +14,17 @@
 //   the last child is read as `Children[Children.size() - 1]` (start in edx, the element straight into ecx); the dummy's
 //   name is an implicit const char* -> CCharString conversion, so the temporary is built before `false` is pushed (an explicit
 //   CCharString(...) temporary pushes `false` first; a named local in a block drops the clears and the ebx zero register).
+// Name fix (agentNF 2026-11-10): the counted pointer is the global engine template (0x00429C15 binds
+//   ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z, was the NUISystem-scoped spelling) and the children
+//   vector is STLport std::vector (0x005359D0 binds the protected _M_insert_overflow as landed 0x00533B50 does).
 #include "fable_compiler.h"
 #include <stddef.h>
-namespace NUISystem {
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:   // the engine's global template
     T*           m_pObject;                // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer(T* object);            // 0x00429C15 (T = NUISystem::CComponent)
@@ -45,13 +47,18 @@ template<class T> struct CCountedPointer {
     }
     T* operator->() const { return m_pObject; }
 };
+namespace std {                            // STLport 4.6 (retail has no _STL namespace)
 struct __true_type { };
 struct __false_type { __false_type() { } };
-template<class T> struct CRetailVector {   // STLport vector: 12 bytes
+template<class T> class allocator;
+template<class T, class A = allocator<T> > class vector {   // STLport vector: 12 bytes
+public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
-    void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);   // 0x005359D0
+protected:
+    void _M_insert_overflow(T* position, const T& x, const __false_type&, size_t fillLength, bool atEnd);   // 0x005359D0
+public:
     FABLE_FORCEINLINE void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -61,8 +68,8 @@ template<class T> struct CRetailVector {   // STLport vector: 12 bytes
         } else
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
-    unsigned int size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned int i) { return _M_start[i]; }
+    size_t size() const { return _M_finish - _M_start; }
+    T& operator[](size_t i) { return _M_start[i]; }
     T& back() { return (*this)[size() - 1]; }
 };
 }
@@ -130,7 +137,7 @@ class CComponent { public:
     virtual void v149(); virtual void v150(); virtual void v151();
     virtual void SetScrollBar(CComponent* scrollBar);           // slot 152 (+0x260) descriptive
     unsigned char _pad004[0xb0 - 0x04];
-    CRetailVector<CCountedPointer<CComponent> > Children;   // +0xb0
+    std::vector<CCountedPointer<CComponent> > Children;   // +0xb0
 };
 class CManager { public:
     CComponent* CreateComponent(long definition);                     // 0x0041D21B

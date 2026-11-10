@@ -3,21 +3,25 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00846410, length 580 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, malloc (CRT
-//          import thunk) @ 0x00BFEA0E, CTCHeroAttachableAppearanceModifiers::GetModifiers(list<long>&, long) @ 0x00706800 /
-//          AddAppearanceModifier(long) @ 0x00706370 (that is: remove it), CCreatureActionBase::GetPDefinitionManager
+//          import thunk) @ 0x00BFEA0E, CTCHeroAttachableAppearanceModifiers::GetAppearanceModifierList(list<long>&,
+//          EHeroAttachableAppearanceModifierType) const @ 0x00706800 / RemoveAppearanceModifier(long) @ 0x00706370, CCreatureActionBase::GetPDefinitionManager
 //          @ 0x00692910 / GetPWorld @ 0x00692940 / GetPlayer @ 0x00692930, CDefinitionManager::GetDef(long,
 //          CDefPointer*) @ 0x0042B040, CDefClassBase::GetSubDef(CDefPointer*) @ 0x0057FF92, CWorld random seed
 //          @ 0x0049D810, GFFloatRandom @ 0x004978A0 (__fastcall), free @ 0x00BFEA14, CCharString @ 0x0099EBF0 / ~
 //          @ 0x0099EAE0, CThingCreatureBase::GetHeadPos(bool) @ 0x00661B40, CThingObject::Create @ 0x00703210
 //          (__fastcall), thing velocity setter @ 0x006A4DC0, ~list<long> @ 0x0042AB73.
+// Name fix (agentNF 2026-11-10): the worn list is the shared STLport 4.6 list<long>; ~_List_base 0x0042AB73, GetAppearanceModifierList
+//   0x00706800 and RemoveAppearanceModifier 0x00706370 bound under their PDB spellings (were ??1CLongList@@, GetModifiers(CLongList&),
+//   AddAppearanceModifier_00706370; names: Ego_r/FableWin name sets, landed 0x005B4EBA / 0x007066A0 bindings).
 // Shape: GetDef/GetSubDef get same-TU noinline stand-ins (they write only their out pointer), so the def pointers stay
 //   in ebp/ebx across loop 1 (ebx is pushed around that loop only). The STLport list<long> ctor zero-inits its node
 //   member, then links a fresh 12-byte sentinel through a local before storing it. The item offset is a 12-byte
 //   C3DVector with only X/Y assigned (keeps retail's frame); the name, player, offset and position live in a block of
 //   their own so the "" CCharString dies right after Create.
 #include "fable_compiler.h"
-extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (MSVCR71 import thunk)
-extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_POPBACK
+#include "stlport/fable_containers.h"   // malloc 0x00BFEA0E / free 0x00BFEA14 (MSVCR71 import thunks) through allocator<_List_node<long> >
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
@@ -33,42 +37,9 @@ class CRightHandedSet;
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(b.X + a.X, b.Y + a.Y, a.Z); }
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct SLongListNode {
-    SLongListNode* _M_next;
-    SLongListNode* _M_prev;
-    long           _M_data;
-};
-struct CLongList {                                           // STLport list<long> (retail 4 bytes: the sentinel)
-    SLongListNode* _M_node;
-    CLongList() : _M_node(0)
-    {
-        SLongListNode* node = (SLongListNode*)malloc(sizeof(SLongListNode));
-        node->_M_next = node;
-        node->_M_prev = node;
-        _M_node = node;
-    }
-    ~CLongList();                                            // 0x0042AB73
-    bool empty() const { return _M_node->_M_next == _M_node; }
-    SLongListNode* erase(SLongListNode* pos)
-    {
-        SLongListNode* next = pos->_M_next;
-        SLongListNode* prev = pos->_M_prev;
-        prev->_M_next = next;
-        next->_M_prev = prev;
-        free(pos);
-        return next;
-    }
-    long& back() { return _M_node->_M_prev->_M_data; }
-    void pop_back()
-    {
-        SLongListNode* last = _M_node->_M_prev;
-        SLongListNode* next = last->_M_next;
-        SLongListNode* prev = last->_M_prev;
-        prev->_M_next = next;
-        next->_M_prev = prev;
-        free(last);
-    }
-};
+// STLport 4.6 list<long> (stlport/fable_containers.h): the constructor is expanded here, the _List_base destructor is called out of
+// line (??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ 0x0042AB73): declared as an explicit specialisation, no body.
+template<> std::_List_base<long, std::allocator<long> >::~_List_base();
 
 struct CDefBase {
     virtual void v00();
@@ -125,9 +96,10 @@ class CThingObject { public:
                                            const CCharString& name);   // 0x00703210
 };
 
+enum EHeroAttachableAppearanceModifierType { };      // Ego_r enum (value 2 used here)
 class CTCHeroAttachableAppearanceModifiers { public:
-    void GetModifiers(CLongList& out, long type);            // 0x00706800
-    void AddAppearanceModifier_00706370(long def);                    // 0x00706370
+    void GetAppearanceModifierList(std::list<long>& out, EHeroAttachableAppearanceModifierType type) const;   // 0x00706800
+    void RemoveAppearanceModifier(long def);                 // 0x00706370
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -198,19 +170,19 @@ void CCreatureAction_Undress::PerformAction()
     CTCHeroAttachableAppearanceModifiers* modifiers;
     if (!GetCreature()->GetInterface(&modifiers, 0x5e))
         return;
-    CLongList worn;
-    modifiers->GetModifiers(worn, 2);
-    for (SLongListNode* it = worn._M_node->_M_next; it != worn._M_node; ) {
+    std::list<long> worn;
+    modifiers->GetAppearanceModifierList(worn, (EHeroAttachableAppearanceModifierType)2);
+    for (std::list<long>::iterator it = worn.begin(); it != worn.end(); ) {
         CDefPointer<CThingObjectDef> def;
         CDefPointer<CAppearanceModifierDef> modifier;
-        if (GetPDefinitionManager()->GetDef(it->_M_data, &def) && def->GetSubDef(&modifier) && !modifier->IsRemoveable)
+        if (GetPDefinitionManager()->GetDef(*it, &def) && def->GetSubDef(&modifier) && !modifier->IsRemoveable)
             it = worn.erase(it);
         else
-            it = it->_M_next;
+            ++it;
     }
     while (!worn.empty()) {
         long item = worn.back();
-        modifiers->AddAppearanceModifier_00706370(item);
+        modifiers->RemoveAppearanceModifier(item);
         C3DVector velocity;
         velocity.X = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
         velocity.Y = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());

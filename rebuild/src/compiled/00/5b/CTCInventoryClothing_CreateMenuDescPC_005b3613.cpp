@@ -15,6 +15,9 @@
 // Shape (family L013): `#pragma optimize("y", off)` + `("s", on)`; the definition string goes through the implicit
 //   const char* -> const CCharString& conversion (the temporary's address is reloaded for the push); the text bank is
 //   read into a local before the call; the CWideString temporary is homed on the symbol's argument slot.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)

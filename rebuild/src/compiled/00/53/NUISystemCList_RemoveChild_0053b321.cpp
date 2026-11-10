@@ -22,6 +22,9 @@
 //   compares a fresh end() (else VC keeps &finish, not &vector, in ebx); the arrows are cached in locals; the down count
 //   reads a named def pointer (in the dead `index` slot) so the release follows the call; `if (restore) ...(0); else
 //   ...(6);` keeps the push 0 / push 6 branches (a ?: becomes sbb/and/add).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes; likewise 0x00429160 = ReleaseData<CAction>, dtor jmp 0x00429B72). The local model's destructor is `{ ReleaseData(); }`
+//   (engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY shape).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -61,7 +64,8 @@ template <class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pInfo;
     CCountedPointer(const CCountedPointer& other);   // 0x00428928
-    ~CCountedPointer();                              // 0x004291DE
+    ~CCountedPointer() { ReleaseData(); }                              // 0x004291DE
+    void ReleaseData();                                 // out of line (0x004291DE CComponent / 0x00429160 CAction / ...)
     T* GetPtr() const { return m_pObject; }
 };
 template <class T> struct vector {                   // STLport vector, 12 bytes

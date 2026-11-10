@@ -1,4 +1,5 @@
 // CTCInventoryExperience::AddMagicCategoryToListPC(CComponent* screen, CList* list, CWideString title, CCharString definition, CList* subList, CWideString description, CCharString icon) -- adds a magic-category branch entry (title, sub-list, category description and subtitle) to the PC experience-spending list and registers its parts with the PC screen
+// Leaf: ?AddMagicCategoryToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@PAVCList@3@VCWideString@@VCCharString@@123@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F8A4, 563 bytes, `ret 1Ch`; frame-pointer size TU
 // (`optimize("y", off)` + `("s", on)`, as the landed AddSoundAction 0x0056F615 of the same TU).
 // Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CManager::CreateMenuEntryComponent 0x00428494
@@ -7,6 +8,8 @@
 // and its dtor 0x004291DE, AddSoundAction 0x0056F615, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 // 0x0099EAE0, CCharString::ToWideString 0x0099E480, ~CWideString 0x0099B510; component slots 59 (+0xEC, AddChild),
 // 144 (+0x240, SetText(const CWideString&, bool, bool)), list slot 152 (+0x260, AddItem), viewport slot 142 (+0x238), the screen's slot 124 (+0x1F0, registers a component for mouse input).
+// Name fix (agentNF 2026-11-10): the local CComponentPointer struct is the shared CCountedPointer<NUISystem::CComponent> (as the
+//   coordinator did for the console twin 0x0056F69F); its release 0x004291DE is ReleaseData (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA).
 // Layout: retail CTCInventoryExperience pTextViewport +0x1DC (landed ctor 0x0057832D).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -28,14 +31,10 @@ public:
 namespace NUISystem {
 class CComponent;
 }
-struct SCountBlock;
-struct CComponentPointer {                            // CCountedPointer<NUISystem::CComponent>
-    NUISystem::CComponent* m_pObject;
-    SCountBlock*           m_pCount;
-    CComponentPointer(NUISystem::CComponent* object); // 0x00429C15
-    ~CComponentPointer();                             // 0x004291DE
-    NUISystem::CComponent* operator->() const { return m_pObject; }
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#include "engine/CCountedPointer.h"
+typedef CCountedPointer<NUISystem::CComponent> CComponentPointer;   // (T*) ctor 0x00429C15 (called), release 0x004291DE (ReleaseData)
 
 #define V10(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3(); virtual void n##4(); \
     virtual void n##5(); virtual void n##6(); virtual void n##7(); virtual void n##8(); virtual void n##9();
@@ -75,7 +74,10 @@ class CTCInventoryExperience { public:
     void*                 __vftable;                  // +0x00
     unsigned char         _pad_0x04[0x1D8];
     NUISystem::CViewport* pTextViewport;              // +0x1DC
+private:
+    // Ego_r.pdb / FableWin.pdb ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z (private).
     void AddSoundAction(NUISystem::CComponent* element, CCharString soundName);   // 0x0056F615
+    // Ego_r.pdb / FableWin.pdb ?AddMagicCategoryToListPC@CTCInventoryExperience@@AAE... (private).
     void AddMagicCategoryToListPC(NUISystem::CComponent* screen, NUISystem::CList* list, CWideString title, CCharString definition,
                                   NUISystem::CList* subList, CWideString description, CCharString icon);
 };
@@ -92,16 +94,16 @@ void CTCInventoryExperience::AddMagicCategoryToListPC(NUISystem::CComponent* scr
     CComponentPointer definitionPointer(NUISystem::CManager::GetInstance()->CreateComponent(definition, false));
     entry->AddChild(subPointer);
     entry->AddChild(definitionPointer);
-    screen->RegisterInputComponent(definitionPointer.m_pObject);
+    screen->RegisterInputComponent(definitionPointer.Data);
     CComponentPointer descriptionPointer(frontEnd->CreateComponent("PC_EXPSPEND_CAT_DESC", false));
     descriptionPointer->SetText(icon.ToWideString(), true, true);
     entry->AddChild(descriptionPointer);
     if (pTextViewport)
-        pTextViewport->AddViewportChild(descriptionPointer.m_pObject);
-    screen->RegisterInputComponent(descriptionPointer.m_pObject);
+        pTextViewport->AddViewportChild(descriptionPointer.Data);
+    screen->RegisterInputComponent(descriptionPointer.Data);
     CComponentPointer subtitlePointer(frontEnd->CreateComponent("PC_SUBTITLE", false));
     subtitlePointer->SetText(description, true, true);
     entry->AddChild(subtitlePointer);
-    screen->RegisterInputComponent(subtitlePointer.m_pObject);
+    screen->RegisterInputComponent(subtitlePointer.Data);
     list->AddItem(entry);
 }

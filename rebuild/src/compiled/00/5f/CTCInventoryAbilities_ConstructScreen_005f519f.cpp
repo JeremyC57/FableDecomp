@@ -3,6 +3,9 @@
 // Leaf: ?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z
 // Flags:
 // Retail: 005f519f,2088 bytes,thiscall.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes; likewise 0x00429160 = ReleaseData<CAction>, dtor jmp 0x00429B72). Header opt-in FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #ifdef _MSC_VER
 #pragma optimize("s", on)
 #endif

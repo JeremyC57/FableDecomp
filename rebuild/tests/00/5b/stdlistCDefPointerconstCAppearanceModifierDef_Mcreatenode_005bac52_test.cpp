@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-class CCreatureGenerationFamilyDef { public:
+class CAppearanceModifierDef { public:
     long m_tag;
     long m_refCount;
 };
@@ -19,7 +19,7 @@ template<class T> class CDefPointer { public:
     }
 };
 
-typedef CDefPointer<CCreatureGenerationFamilyDef> CFamilyDefPointer;
+typedef CDefPointer<CAppearanceModifierDef> CModifierDefPointer;
 
 struct _List_node_base {
     _List_node_base* _M_next;
@@ -27,24 +27,24 @@ struct _List_node_base {
 };
 
 struct _List_node : _List_node_base {
-    CFamilyDefPointer _M_data;
+    CModifierDefPointer _M_data;
 };
 
 struct list {
     _List_node_base* _M_node;
-    _List_node* _M_create_node(const CFamilyDefPointer& x)
+    _List_node* _M_create_node(const CModifierDefPointer& x)
     {
         _List_node* p = (_List_node*)std::malloc(sizeof(_List_node));
-        new (&p->_M_data) CFamilyDefPointer(x);
+        new (&p->_M_data) CModifierDefPointer(x);
         return p;
     }
 };
 
 int main()
 {
-    CCreatureGenerationFamilyDef def;
-    CFamilyDefPointer ptr;
-    CFamilyDefPointer none;
+    CAppearanceModifierDef def;
+    CModifierDefPointer ptr;
+    CModifierDefPointer none;
     list l;
     _List_node* node = 0;
     _List_node* empty = 0;

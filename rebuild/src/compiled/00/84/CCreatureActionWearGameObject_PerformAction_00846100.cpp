@@ -12,9 +12,16 @@
 //   @ 0x0084ACE0, ~list @ 0x0042AB73, CThing::Kill(bool) @ 0x004C9B80, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210,
 //   CWorld random seed @ 0x0049D810, GFFloatRandom @ 0x004978A0, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //   GetHeadPos @ 0x00661B40, CThingObject::Create @ 0x00703210 (__fastcall).
+// Name fix (agentNF 2026-11-10): `worn` is the shared STLport 4.6 list<long>; ~_List_base 0x0042AB73, list<long>::remove 0x0084ACE0
+//   (header opt-in FABLE_RETAIL_STLP_LIST_REMOVE_DECL, real _list.c body as a same-TU explicit specialisation) and
+//   GetAppearanceModifierListWithCoversBodyAreaFlags 0x00706B50 (Ego_r name set, catalog) bound under their real spellings (were
+//   ??1CLongList@@, ?remove@CLongList@@, ?GetConflictingModifiers@..).
 // Layout: same local models as the landed CCreatureAction_Undress::PerformAction (0x00846410); thing +0x60 physics TC,
 //   +0x8c def index (word).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_REMOVE_DECL
+#include "stlport/fable_containers.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
@@ -30,18 +37,9 @@ class CRightHandedSet;
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(b.X + a.X, b.Y + a.Y, a.Z); }
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct SLongListNode {
-    SLongListNode* _M_next;
-    SLongListNode* _M_prev;
-    long           _M_data;
-};
-struct CLongList {                                           // STLport list<long> (retail 4 bytes: the sentinel)
-    SLongListNode* _M_node;
-    ~CLongList();                                            // 0x0042AB73
-    bool empty() const { return _M_node->_M_next == _M_node; }
-    long& back() { return _M_node->_M_prev->_M_data; }
-    void remove(const long& value);                          // 0x0084ACE0
-};
+// STLport 4.6 list<long> (stlport/fable_containers.h): returned by value into `worn`; the _List_base destructor is called out of
+// line (??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ 0x0042AB73), declared here as an explicit specialisation, no body.
+template<> std::_List_base<long, std::allocator<long> >::~_List_base();
 
 struct CDefBase {
     virtual void v00();
@@ -81,11 +79,18 @@ __declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModi
     return def != 0;
 }
 #pragma auto_inline(on)
-void RemoveListValue(CLongList* list, long value);           // stand-in body helper (not graded here)
 #pragma auto_inline(off)
-__declspec(noinline) void CLongList::remove(const long& value)
+// STLport 4.6 _list.c list::remove, the same-TU instance retail calls out of line (0x0084ACE0, ?remove@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z).
+template<> void std::list<long>::remove(const long& __val)
 {
-    RemoveListValue(this, value);
+    iterator __first = begin();
+    iterator __last = end();
+    while (__first != __last) {
+        iterator __next = __first;
+        ++__next;
+        if (__val == *__first) erase(__first);
+        __first = __next;
+    }
 }
 class CWorld { public:
     unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
@@ -108,8 +113,9 @@ class CThingObject { public:
                                            const CCharString& name);   // 0x00703210
 };
 
+enum EHeroAttachableAppearanceModifierType { };      // Ego_r enum (value 2 used here)
 class CTCHeroAttachableAppearanceModifiers { public:
-    CLongList GetConflictingModifiers(long slot, long type);  // 0x00706B50
+    std::list<long> GetAppearanceModifierListWithCoversBodyAreaFlags(long coversBodyAreaFlags, EHeroAttachableAppearanceModifierType type) const;   // 0x00706B50
     void RemoveAppearanceModifier(long def);                 // 0x00706370
     void AddAppearanceModifier(long def);                    // 0x00706880
 };
@@ -195,7 +201,7 @@ void CCreatureAction_WearGameObject::PerformAction()
     if (GetCreature()->GetInterface(&modifiers, 0x5e)) {
         CDefPointer<CAppearanceModifierDef> modifier;
         if (def->GetSubDef(&modifier)) {
-            CLongList worn = modifiers->GetConflictingModifiers(modifier->Slot, 2);
+            std::list<long> worn = modifiers->GetAppearanceModifierListWithCoversBodyAreaFlags(modifier->Slot, (EHeroAttachableAppearanceModifierType)2);
             while (!worn.empty()) {
                 long id = worn.back();
                 modifiers->RemoveAppearanceModifier(id);

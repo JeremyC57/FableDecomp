@@ -4,10 +4,16 @@
 // FableWin.pdb ?RecurseRefreshEntriesAmountsAndAvailabilitiesPC@CTCInventoryTrade@@AAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAV?$map@...@Z;
 // called by the landed RefreshEntriesAmountsAndAvailabilitiesPC 0x0059FAFE.
 // Callees: as 0x0059DB82 (same component slots, map find 0x005B1A43, CCharString, CreateComponent, counted pointer, CAction).
+// Name fix (agentNF 2026-11-10): the local CComponentPointer struct is the shared CCountedPointer<NUISystem::CComponent> (as the
+//   coordinator did for the console twin 0x0059DB82): ctor 0x00429C15, release 0x004291DE = ReleaseData (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA;
+//   the destructor is the 5-byte jmp COMDAT 0x00429C53).
 // Shape: the console twin's model; the found-flag is declared before the children reference, which moves its zero store above the
 // GetChildren call as in retail.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class A, class B> struct pair {
     A first;
@@ -33,12 +39,7 @@ namespace N_0042bed4 { struct CAction {                                // retail
     CAction();                                  // 0x0042BED4
     CAction(const CAction& other);              // 0x0042CD84
 }; } using N_0042bed4::CAction;
-struct CComponentPointer {                      // CCountedPointer<NUISystem::CComponent>
-    CComponent* m_pObject;
-    void*       m_pCount;
-    CComponentPointer(CComponent* object);      // 0x00429C15
-    ~CComponentPointer();                       // 0x004291DE
-};
+typedef CCountedPointer<CComponent> CComponentPointer;   // (T*) ctor 0x00429C15 (called), ~ -> ReleaseData 0x004291DE
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ

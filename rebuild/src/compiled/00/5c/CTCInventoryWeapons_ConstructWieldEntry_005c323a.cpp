@@ -14,6 +14,9 @@
 // pushes and passed by `lea`); the by-value CCharString parameters are built in their argument slots. The guide's bank and the
 // description component are read into locals before the guide string is built; the entry component is a named pointer local
 // (it moves the entry to the far frame slot, -0x30, as in retail).
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)

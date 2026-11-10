@@ -13,6 +13,9 @@
 // Shape: the listen (UI_ACTION_TYPE_OBSERVE_EVENT 245) / ignore (UI_ACTION_TYPE_IGNORE_EVENT 249) pairs are the body of
 //   NUISystem::CManager::AddActionsListenIgnoreOnList 0x0041DC9D written out (another TU); slider widths 303 / 53 where the
 //   console page has 270 / 20.
+// Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
+//   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
