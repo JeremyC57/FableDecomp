@@ -34,6 +34,11 @@ public:
     bool IsSaving()const{return Mode==MODE_SAVE_TEXT||Mode==MODE_SAVE_BINARY;}
 #endif
     CStringParser* GetPParser(){return PParser;}
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_PEEKPSYMBOLMAP
+    // Retail opt-in (chunk 1020, row 0x009E81E0 via CPersistTraits<float>::TransferIn 0x0040F7E0): Ego_r.pdb / FableWin.pdb
+    // ?PeekPSymbolMap@CPersistContext@@QBEPBVCSymbolMap@@XZ, inline in retail (`mov ecx,[ebx+4]` before FindSymbol 0x009E5170).
+    const CSymbolMap* PeekPSymbolMap() const { return PSymbolMap; }
+#endif
     void WriteString(const CCharString&);
     enum EMode { MODE_LOAD_TEXT=0,MODE_SAVE_TEXT=1,MODE_LOAD_BINARY=2,MODE_SAVE_BINARY=3,MODE_CLEAR=4 };
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT_ISPARSINGTEXT
@@ -68,6 +73,12 @@ public:
     // ?CheckUnknownSymbols@CPersistContext@@QAEXXZ (out of line: 0x009BAA90 / 0x009BBBF0); SetAsSingleTransfer has no copy in
     // either PDB name set (inline: 0x009BC120 stores SingleTransfer=true on its nested context).
     void PersistError(const CStringParser&,const CCharString&) const;
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_SETASFOUNDITEM
+    // Nested opt-in (chunk 1020, row 0x005D8978 TransferMap<long,unsigned long>): Ego_r.pdb / FableWin.pdb ?SetAsFoundItem@CPersistContext@@QAEXXZ,
+    // out of line at 0x009BAB40 (Ego_r donor order InitClearMode -> PersistError -> SetAsFoundItem -> WriteString = retail 0x009BAA70 /
+    // 0x009BAA90 / 0x009BAB40 / 0x009BAB50). Declaration only.
+    void SetAsFoundItem();
+#endif
     void CheckUnknownSymbols();
     void SetAsSingleTransfer() { SingleTransfer=true; }
 #endif
@@ -122,6 +133,17 @@ protected:
     CDataOutputStream* PSaveStream;
 };
 FABLE_STATIC_ASSERT(sizeof(CPersistContext)==44);
+#ifdef FABLE_RETAIL_GFSERIALISEMAPBINARY_DECL
+// Retail opt-in (chunk 1020, row 0x005D8978 TransferMap<long,unsigned long>): the two global map serialisers the binary modes call
+// out of line (__fastcall: stream in ecx, map in edx), Ego_r.pdb / FableWin.pdb
+// ??$GFSerialiseMapBinaryIn@<V><K><C>@@YIXAAVCMemoryDataInputStream@@AAV?$map@<K><V><C>...@std@@@Z and
+// ??$GFSerialiseMapBinaryOut@<V><K><C>@@YIXAAVCDataOutputStream@@ABV?$map@...@std@@@Z (0x0045C95A / 0x0045C91D for <long,unsigned long>).
+// Declarations only (FABLE_RETAIL_GFSERIALISEMAPBINARYIN in engine/CPersistTraits.h holds the In body).
+#ifndef FABLE_RETAIL_GFSERIALISEMAPBINARYIN
+template<class V,class K,class C> void FABLE_FASTCALL GFSerialiseMapBinaryIn(CMemoryDataInputStream&,std::map<K,V,C,std::allocator<std::pair<const K,V> > >&);
+#endif
+template<class V,class K,class C> void FABLE_FASTCALL GFSerialiseMapBinaryOut(CDataOutputStream&,const std::map<K,V,C,std::allocator<std::pair<const K,V> > >&);
+#endif
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT_TRANSFERVECTOROFSUBCOMPONENTS
 // Retail opt-in (chunk 1015): the shared body of the member template
 // ??$TransferVectorOfSubComponents@V<T>@@@CPersistContext@@QAEXAAV?$vector@V<T>@@V?$allocator@V<T>@@@std@@@std@@@Z (Ego_r.pdb /

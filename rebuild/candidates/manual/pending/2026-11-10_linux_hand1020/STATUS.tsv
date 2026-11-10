@@ -1,0 +1,12 @@
+address	name	grade	grades_used	note
+009e81e0	CPersistTraits<C2DVector>::TransferIn	RELOCATION_MATCH	4	src/; shared CStringParser/CPersistContext/CSymbolMap/CPersistTraits; levers: row-local CBasicString Compare / operator==(const T*) bodies, `if (parser.ReadAsSymbol() == ")") return;`, visible CPersistTraits<float>::TransferIn body (noinline); catalog CBrainBehaviour wrong
+006dc6a0	CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn	RELOCATION_MATCH	2	src/; split 447 (SPLITS.tsv; gall.sh/q.py grades the uncut 709-byte catalog row and says DIFFER(447v709)); new CAttackHistoryCombo.h; lever: inline ReadType<T> reads + push_back(std::make_pair(type, attribute)); catalog CHeroStatIncreaseData wrong
+005d8978	CPersistContext::TransferMap<long,unsigned long>	RELOCATION_MATCH	3	src/; size TU; levers: CCHARSTRING_FORCEINLINE_TEXT_EQ, visible generic CPersistTraits<T>::TransferOut body (both save-loop traits share one slot)
+0047042a	CSoundMap::TransferBinaryIn	DIFFER(716v716)	2	differ/; new CSoundMap.h; one SIB operand order (lea ecx,[eax+ecx+4] v [ecx+eax+4])
+005c0a98	CPersistTraits<NInventory::CItem>::TransferBinaryOut	DIFFER(368v369)	1	differ/; split 369; conversion-temporary address pushed before Get()/GetDefNameFromGlobalIndex in retail
+0067e290	CDegradableDef::Transfer	DIFFER(273v273)	2	differ/; split 273; expression-temporary register rotation only (c2prio --rotation)
+006e94d0	CCombatManager::IsCreatureInAttackRingSector	DIFFER(423v426)	5	differ/; key-temporary frame slot share + attacked-info `add eax,18h` not folded; catalog Combat_CheckRingRangeToTarget descriptive
+00bcf4f0	CEngineInternalPrimitive2DAnimatedMesh::Initialise	DIFFER(374v374)	1	differ/; x87 reassociation in the Scale block only; retail base object 0x128 (header debt)
+00a229e0	CRightHandedSet::CRightHandedSet(const C3DAngles&)	DIFFER(691v689)	1	differ/; frame 0x50 v 0x4c + x87 order of the axis-angle block (unchanged by the port)
+006668a0	CThingCreatureBase::GetPossibleCombatAnimations	DIFFER(673v673)	0	differ/ = prior draft, NOT PORTED this chunk (still local models)
+00681e60	CTCCreatureOpinionOfHero::SetPersonalityOverride	DIFFER(626v626)	0	differ/ = prior draft, NOT PORTED this chunk (still local models)

@@ -1,0 +1,16 @@
+addr       parity           behav  name
+005d8978   WARN RELOC_NAME: ??$GFSerialiseMapBinaryOut@JKU?$less@K@std@@@@YIXAAVCDataOutputStream@@ABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@@Z -> 0045c91d labelled '_global::WriteState_0045c91d'
+005d8978   WARN RELOC_NAME: ??$GFSerialiseMapBinaryIn@JKU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@@Z -> 0045c95a labelled 'GFSerialiseMapBinaryIn<long, unsigned long, std::less<unsigned long>>'
+005d8978   RELOCATION_MATCH PASS   TransferMap<long,unsigned long>
+006dc6a0   RELOCATION_MATCH PASS   TransferBinaryIn
+009e81e0   RELOCATION_MATCH PASS   TransferIn
+
+WINS: 3
+  005d8978 RELOCATION_MATCH CPersistContext::??$TransferMap@JK@CPersistContext@@QAEXPBDAAV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABJ@Z
+  006dc6a0 RELOCATION_MATCH CPersistTraits<CAttackHistoryCombo>::?TransferBinaryIn@?$CPersistTraits@VCAttackHistoryCombo@@@@QAEXAAVCMemoryDataInputStream@@AAVCAttackHistoryCombo@@@Z
+  009e81e0 RELOCATION_MATCH CPersistTraits<C2DVector>::?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC2DVector@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CPersistContext_TransferMaplongunsignedlong_005d8978
+  CPersistTraitsCAttackHistoryCombo_TransferBinaryIn_006dc6a0
+  CPersistTraitsC2DVector_TransferIn_009e81e0

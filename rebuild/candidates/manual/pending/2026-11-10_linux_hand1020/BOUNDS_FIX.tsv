@@ -1,0 +1,4 @@
+address	name	evidence
+0x006DC6A0	CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn	real length 447 (ret 8 at 0x006DC85C); Ego_r + FableWin ?TransferBinaryIn@?$CPersistTraits@VCAttackHistoryCombo@@@@; catalog CHeroStatIncreaseData is propagated
+0x005C0A98	CPersistTraits<NInventory::CItem>::TransferBinaryOut	real length 369 (leave ; ret 8 at 0x005C0C05)
+0x0067E290	CDegradableDef::Transfer	real length 273 (ret 4 at 0x0067E39E)

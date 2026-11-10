@@ -1,0 +1,12 @@
+# chunk 1020 lessons (GOTCHAS-ready)
+- 0x009E81E0: a `C2DCoordF(x,y)` text loader only threads the `name` null test through esi when the TU sees CBasicString<T>::Compare and operator==(const T*) bodies (row-local template bodies, as landed 0x009E8C10).
+- 0x009E81E0: the closing `if (parser.ReadAsSymbol() == ")") return;` must be a real if; a bare expression or an unused named bool lets VC7.1 drop the compare.
+- 0x009E81E0: one named `CPersistTraits<float> floatTraits;` at the top of the body + the float TransferIn body visible (noinline) gives retail's single traits slot.
+- 0x006DC6A0: CMemoryDataInputStream reads as `stream.ReadType<T>()` / ReadULONG / ReadFloat inline; the generic traits BINARYIN body calls them out of line (239 bytes). `push_back(std::make_pair(type, attribute))` (FableWin ??$make_pair@AAW4EAttackHistoryType@@AAW4EDamageAttribute@@) closes it.
+- 0x005D8978: TransferMap's two save-loop traits share [ebp+0Ch] only when the generic CPersistTraits<T>::TransferOut body is visible; declaration order / block scoping is inert.
+- 0x006E94D0: VC7.1 hoists a load above an out-of-line call whose body it can see (pure); retail's reload after STLport `_M_find` 0x006F0250 needs the call opaque (declaration-only _M_find).
+- 0x006E94D0: a same-TU leaf callee lets VC7.1 skip the `mov ecx,ebx` reload before the second GetRingRadius; the leaf needs GetRing expanded inside it (explicit `inline` on GetRing, GetRingRadius under auto_inline(off)).
+- 0x006E94D0: `const_iterator find(const K&) const` inline (STLP_TREE_CONSTFIND) calls `_M_find` with one push and the node in eax; the declaration-only find adds a hidden iterator result push.
+- 0x00BCF4F0: retail's Scale block re-reads Scale from memory after each store because it goes through CEngineCamera::TransformDistScreenToViewHorizontal(float, float&) by reference.
+- 0x00BCF4F0: retail CEngineInternalPrimitiveAnimatedMesh is 0x128 bytes (2D mesh Initialised +0x128, Update 0x00BD2BC0), 4 less than Ego_r's 0x12C.
+- 0x0047042A: CSoundPair needs its user empty ctor (FableWin ??0CSoundPair@@QAE@XZ) or the vector resize's pair ctor is called out of line.

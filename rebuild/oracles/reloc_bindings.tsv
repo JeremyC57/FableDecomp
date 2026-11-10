@@ -39216,3 +39216,9 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??0?$map@W4EOpinionDeedType@@_NU?$less@W4EOpinionDeedType@@@std@@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@QAE@XZ	00453465	00456d25
 ??0?$map@W4EIdleStateGroup@@JU?$less@W4EIdleStateGroup@@@std@@V?$allocator@U?$pair@$$CBW4EIdleStateGroup@@J@std@@@3@@std@@QAE@XZ	004dfa89	004e3f21
 ??_7?$CIntelligentPointer@VC3DAnimation2@@@@6B@	0129d50c	00a53520
+??$GFSerialiseMapBinaryIn@JKU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@@Z	0045c95a	005d8978
+??$GFSerialiseMapBinaryOut@JKU?$less@K@std@@@@YIXAAVCDataOutputStream@@ABV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@@Z	0045c91d	005d8978
+?TransferOut@?$CPersistTraits@J@@QAEXAAVCPersistContext@@AAVCCharString@@ABJ@Z	005cc6c0	005d8978
+?TransferOut@?$CPersistTraits@K@@QAEXAAVCPersistContext@@AAVCCharString@@ABK@Z	005d8185	005d8978
+?erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEIABK@Z	005d8730	005d8978
+?_M_insert_overflow@?$vector@U?$pair@W4EAttackHistoryType@@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@W4EAttackHistoryType@@W4EDamageAttribute@@@std@@@2@@std@@IAEXPAU?$pair@W4EAttackHistoryType@@W4EDamageAttribute@@@2@ABU32@ABU__false_type@2@I_N@Z	006db8c0	006dc6a0

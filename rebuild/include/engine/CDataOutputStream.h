@@ -25,6 +25,11 @@ public:
     void WriteColour(const CRGBColour& colour);              // 0x00993F30 ?WriteColour@CDataOutputStream@@QAEXABVCRGBColour@@@Z
     void Write2DVector(const C2DVector& vector);             // 0x00993F90 ?Write2DVector@CDataOutputStream@@QAEXABVC2DVector@@@Z
     void Write3DVector(const C3DVector& vector);             // 0x00993FD0 ?Write3DVector@CDataOutputStream@@QAEXABVC3DVector@@@Z
+#ifdef FABLE_RETAIL_CDATAOUTPUTSTREAM_WRITESTRING
+    // Nested opt-in (chunk 1020, row 0x005C0A98): Ego_r.pdb ?WriteString@CDataOutputStream@@QAEXABVCCharString@@@Z, out of line at
+    // 0x009959F0 (landed; the characters only, no length or terminator). Declaration only.
+    void WriteString(const CCharString& text);               // 0x009959F0
+#endif
     void WriteStringNewLine(const CCharString& text);        // 0x00995A20 ?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z
     void WritePresizedString(const CCharString& text);       // 0x00995A80 ?WritePresizedString@CDataOutputStream@@QAEXABVCCharString@@@Z
     void WriteNullTerminatedString(const CCharString& text); // 0x00995AE0 ?WriteNullTerminatedString@CDataOutputStream@@QAEXABVCCharString@@@Z

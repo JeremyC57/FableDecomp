@@ -33,6 +33,12 @@ public:
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;
     bool SymbolExists(const CCharString& name) const;
     long GetSymbolSLONG(const CCharString& name) const;
+#ifdef FABLE_RETAIL_CSYMBOLMAP_FINDSYMBOL
+    // Nested opt-in (chunk 1020, row 0x009E81E0 via CPersistTraits<float>::TransferIn 0x0040F7E0): Ego_r.pdb / FableWin.pdb
+    // ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z = 0x009E5170 (Ego_r donor order GetSymbolSLONG 0x00B36AD0, FindSymbol 0x00B36B20,
+    // SymbolExists 0x00B36B80 = retail 0x009E5120, 0x009E5170, 0x009E51C0). Landed local models spell it `Lookup(name, long*)`.
+    bool FindSymbol(const CCharString& name, long& value) const;
+#endif
 #endif
 #if defined(FABLE_RETAIL_CSYMBOLMAP) && defined(FABLE_RETAIL_CSYMBOLMAP_SLONGMAP)
     // Chunk 767 (row 0x009E5350): Ego_r.pdb ?DeallocateUnusedMemory@CSymbolMap@@QAEXXZ (donor 0x00B376D0, after Clear 0x00B376B0) and the

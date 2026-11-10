@@ -1,0 +1,8 @@
+address	landed_spelling	correct_spelling	evidence
+0x009E5170	CSymbolMap::Lookup	CSymbolMap::FindSymbol	Ego_r donor order ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z; no PDB has Lookup
+0x006E8810	CCombatRing::GetAttackerProngPosition	CDefendingCombatantInfo::CCombatRing::GetAttackerProngVector	Ego_r ?GetAttackerProngVector@CCombatRing@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (param is const CThingCreatureBase&, not CThing*)
+0x006E87D0	CCombatRing::GetAttackerProng(CThing*)	CDefendingCombatantInfo::CCombatRing::GetAttackerProng(const CThingCreatureBase&) const	Ego_r ?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QBEPBVCProng@2@ABVCThingCreatureBase@@@Z
+0x006E7FD0	CProng::GetRotatedPosition	CDefendingCombatantInfo::CProng::GetProngVector	Ego_r ?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z
+0x00470CD8	CGuiVarTransferBool::TransferToGui	CVectorMap<unsigned long,CSoundPair>::Sort	PDB ?Sort@?$CVectorMap@KVCSoundPair@@@@; manifest label propagated from a byte twin
+0x004706F6	CRetailVectorelem12_resize	std::vector<std::pair<unsigned long,CSoundPair> >::resize	STLport vector::resize(size_type, const T&) instance (invented stand-in name in the prior draft)
+0x006F0250	CRetailRbMap_UID_CombatantInfo::find / SCombatantMap::FindNode	_Rb_tree<...CCombatantInfo...>::_M_find<unsigned __int64>	STLport _tree.h _M_find returns the node in eax (one push); landed 0x006E9390 / 0x006E93C0 / 0x006E9450 / 0x006E9680 / 0x006E9700 / 0x006E97A0 model it as stand-ins

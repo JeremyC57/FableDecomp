@@ -17354,7 +17354,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006dc450	WriteToStream	CHeroExperienceDef	unknown	undefined	0		0	yes	accepted									
 006dc550	GFSerialiseVectorBinaryOut<CAttackHistoryCombo>	_global	__fastcall	void	2	CDataOutputStream *,vector<CMusicEntry,std::allocator<CMusicEntry>_> *	1	yes	accepted									
 006dc670	UninitFillN_SPairCSecond_004f9408Long_006dc670	_global	__thiscall	__uint64 *	4	vector<unsigned___int64,std::allocator<unsigned___int64>_> *,__uint64 *,uint,__uint64 *	1	yes	accepted									
-006dc6a0	TransferBinaryIn	CPersistTraits<CHeroStatIncreaseData>	__thiscall	void	3	CPersistTraits<CHeroStatIncreaseData> *,CMemoryDataInputStream *,CHeroStatIncreaseData *	1	yes	accepted									
+006dc6a0	TransferBinaryIn	CPersistTraits<CAttackHistoryCombo>	__thiscall	void	3	CPersistTraits<CHeroStatIncreaseData> *,CMemoryDataInputStream *,CHeroStatIncreaseData *	1	yes	accepted									
 006dc970	RbTree_Clear_006dc970	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\CTCCarryable_OnKill_006dc970.cpp
 006dc9b0	RbTree_Clear_006dc9b0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\CTCCarryable_OnKill_006dc9b0.cpp
 006dc9f0	erase	std::vector	unknown	undefined	0		0	yes	accepted									
@@ -34993,7 +34993,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e7f00	TransferOut	CPersistTraits<C2DVector>	__thiscall	void	4	CPersistTraits<C2DVector> *,CPersistContext *,CCharString *,C2DVector *	1	yes	accepted									
 009e7f90	TransferOut	CPersistTraits<C3DVector>	__thiscall	void	4	CPersistTraits<C3DVector> *,CPersistContext *,CCharString *,C3DVector *	1	yes	accepted									
 009e8110	TransferOut	CPersistTraits<CRGBColour>	__thiscall	void	4	CPersistTraits<CRGBColour> *,CPersistContext *,CCharString *,CRGBColour *	1	yes	accepted									
-009e81e0	TransferIn	CPersistTraits<CBrainBehaviour>	__thiscall	void	4	CPersistTraits<CBrainBehaviour> *,CPersistContext *,CStringParser *,CBrainBehaviour *	1	yes	accepted									
+009e81e0	TransferIn	CPersistTraits<C2DVector>	__thiscall	void	4	CPersistTraits<CBrainBehaviour> *,CPersistContext *,CStringParser *,CBrainBehaviour *	1	yes	accepted									
 009e84d0	TransferIn	CPersistTraits<C3DVector>	__thiscall	void	4	CPersistTraits<C3DVector> *,CPersistContext *,CStringParser *,C3DVector *	1	yes	accepted									
 009e8c10	TransferIn	CPersistTraits<CRGBColour>	__thiscall	void	4	CPersistTraits<NInventory::CItem> *,CPersistContext *,CStringParser *,CItem *	1	yes	accepted									
 009e9080	TransferIn	CPersistTraits<unsigned_char>	__thiscall	void	4	CPersistTraits<unsigned_char> *,CPersistContext *,CStringParser *,uchar *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CPersistTraitsunsignedchar_TransferIn_009e9080.cpp

@@ -1,0 +1,4 @@
+address	length	name	evidence
+006dc6a0	447	CPersistTraits<CAttackHistoryCombo>::TransferBinaryIn	add esp,0Ch ; ret 8 at 0x006DC85C; RELOCATION_MATCH graded against the oracle cut to 447 (catalog 720 runs into following bodies)
+005c0a98	369	CPersistTraits<NInventory::CItem>::TransferBinaryOut	leave ; ret 8 at 0x005C0C05; graded against the oracle cut to 369 (catalog 396; 0x005C0C09 / 0x005C0C1C are new starts)
+0067e290	273	CDegradableDef::Transfer	ret 4 at 0x0067E39E then int3 padding; graded against the oracle cut to 273 (catalog 592 runs into following bodies)

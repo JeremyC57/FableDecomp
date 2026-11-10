@@ -1,0 +1,12 @@
+address	name	evidence
+009E81E0	?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC2DVector@@@Z	Ego_r donor name; RELOCATION_MATCH; catalog CPersistTraits<CBrainBehaviour> label wrong
+006DC6A0	?TransferBinaryIn@?$CPersistTraits@VCAttackHistoryCombo@@@@QAEXAAVCMemoryDataInputStream@@AAVCAttackHistoryCombo@@@Z	Ego_r + FableWin; RELOCATION_MATCH (447); catalog CHeroStatIncreaseData wrong
+005D8978	??$TransferMap@JK@CPersistContext@@QAEXPBDAAV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABJ@Z	RELOCATION_MATCH (map<unsigned long,long>)
+006E94D0	?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	Ego_r donor order; catalog Combat_CheckRingRangeToTarget descriptive
+00470CD8	?Sort@?$CVectorMap@KVCSoundPair@@V?$CKeyPairCompareLess@KVCSoundPair@@@@@@QAEXXZ	PDB CVectorMap<unsigned long,CSoundPair>::Sort; called by CSoundMap::TransferBinaryIn via Update
+0047119A	?Sort@?$CVectorMap@KVCDefString@@V?$CKeyPairCompareLess@KVCDefString@@@@@@QAEXXZ	PDB CVectorMap<unsigned long,CDefString>::Sort; same caller
+009E5170	?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z	Ego_r donor order; called from CPersistTraits<float>::TransferIn bodies
+006E8810	?GetAttackerProngVector@CCombatRing@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z	Ego_r donor order (after GetAttackerProng 0x006E87D0)
+006E7FD0	?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z	Ego_r ?GetProngVector@CProng@CDefendingCombatantInfo@@
+006F0250	_Rb_tree<unsigned __int64,pair<const unsigned __int64,CCombatantInfo>,...>::_M_find<unsigned __int64>	STLport 4.6 _tree.h; one push, node in eax (thiscall on Combatants)
+0044C6B0	?Get@CGameDefinitionManager@@SIAAV1@XZ	static fastcall accessor `mov eax,[0x013B879C] ; ret`

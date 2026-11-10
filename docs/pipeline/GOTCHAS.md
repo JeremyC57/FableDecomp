@@ -2697,3 +2697,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A visible callee body can move stores even when the call stays out of line: FABLE_RETAIL_STLP_MAP's map::operator[] body lets c2 sink the key store past the tree-root load (0x00AE3920).
 - Retail def classes have IMPLICIT destructors: a model that declares `virtual ~X()` stops `??_G` from inlining the dtor; a declared-but-undefined ctor suppresses the vftable and the `??_G` (agentNF4).
 - Both PDBs come from Dinkumware builds (`_Construct<T,const T&>`); retail is STLport 4.6 (`_Construct<T,T>`): never copy the PDB's template spelling for STL internals (agentNF4).
+- Retail CEngineInternalPrimitiveAnimatedMesh is 0x128 bytes, not Ego_r's 0x12C (Initialised at +0x128 in 0x00BD2BC0): opt-in SIZE128 puts the 4-byte shortfall in the opaque RenderInfo tail until the member is proven (chunk 1020).
+- A visible generic `CPersistTraits<T>::TransferOut` body lets both save-loop traits objects share one stack slot (0x005D8978); a named `CPersistTraits<float>` declared once at the top with a visible noinline body closes the C2DVector text reader (0x009E81E0).

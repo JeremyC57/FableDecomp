@@ -10,6 +10,11 @@ public:
     static long __fastcall TransferIn(CPersistContext& context,CStringParser& parser) {
         long value; TransferIn(context,parser,value); return value;
     }
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_TRANSFEROUT
+    // Nested opt-in (chunk 1020, row 0x005D8978): Ego_r.pdb / FableWin.pdb ?TransferOut@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCCharString@@ABJ@Z
+    // (out of line at 0x009E2560: __fastcall context ecx, out edx, the value pushed by reference). Declaration only.
+    static void __fastcall TransferOut(CPersistContext&,CCharString&,const long&);
+#endif
 };
 template<class T> class CPersistTraits {
 public:
@@ -28,7 +33,21 @@ public:
     void TransferBinaryIn(CMemoryDataInputStream&,T&);
     void TransferBinaryOut(CDataOutputStream& stream,T value) { stream.WriteSLONG((long)value); }
     void TransferIn(CPersistContext& context,CStringParser& parser,T& value);
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_TRANSFEROUT
+    // Nested opt-in (chunk 1020, row 0x005D8978): the generic text writer, Ego_r.pdb / FableWin.pdb
+    // ?TransferOut@?$CPersistTraits@<T>@@QAEXAAVCPersistContext@@AAVCCharString@@AB<T>@Z (called out of line: 0x005D8185 for unsigned
+    // long, 0x005CC6C0 for long); body below the class.
+    void TransferOut(CPersistContext& context,CCharString& out,const T& value);
+#endif
 };
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_TRANSFEROUT
+// The generic body (retail 0x005D8185 for unsigned long, a size-TU frame; 0x005CC6C0 for long): the value converted to a long and written
+// through CPersistTraitsSLONG::TransferOut 0x009E2560. Visible to the includer, which then knows the call never reads the empty traits
+// object (TransferMap<long,unsigned long> 0x005D8978 homes both traits objects of its save loop in the dead map argument slot [ebp+0Ch]).
+template<class T> inline void CPersistTraits<T>::TransferOut(CPersistContext& context,CCharString& out,const T& value) {
+    long longValue=(long)value; CPersistTraitsSLONG::TransferOut(context,out,longValue);
+}
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_LONG_BINARY_BODY
 template<> void CPersistTraits<long>::TransferBinaryIn(CMemoryDataInputStream& is,long& val) {
  long tval=is.ReadSLONG();val=tval;
@@ -47,7 +66,22 @@ public:
 template<class T> inline void CPersistTraits<T>::TransferIn(CPersistContext& context,CStringParser& parser,T& value) {
     long result; CPersistTraitsSLONG::TransferIn(context,parser,result); value=(T)result;
 }
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_CLASS
+// Retail opt-in (chunk 1020, row 0x0067E290 CDegradableDef::Transfer): CPersistTraits<bool> is an explicit class specialisation in
+// retail -- Ego_r.pdb / FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@_N@@QAEXAAVCDataOutputStream@@AB_N@Z takes `const bool&` where
+// the generic member takes T by value (the scalar instances @C@ @E@ @H@ @J@ @K@ and every enum take the value). The inline save
+// reads the bool after the stream (`mov ecx,[esi+28h] ; xor eax,eax ; mov al,[ebx] ; push eax ; call WriteEBOOL`, 0x0067E32B).
+// Supersedes FABLE_RETAIL_CPERSISTTRAITS_BOOL_BINARYOUT (do not define both).
+template<> class CPersistTraits<bool> {
+public:
+    bool DefaultVal;
+    void TransferBinaryIn(CMemoryDataInputStream&,bool&);     // 0x00403EB0
+    void TransferBinaryOut(CDataOutputStream& stream,const bool& value) { stream.WriteEBOOL(value); }
+    void TransferIn(CPersistContext&,CStringParser&,bool&);
+};
+#else
 template<> void CPersistTraits<bool>::TransferIn(CPersistContext&,CStringParser&,bool&);
+#endif
 #ifdef FABLE_RETAIL_CPERSISTTRAITS_BOOL_BINARYOUT
 // Retail opt-in (chunk 1018, row 0x0067E290): FableWin.pdb ?TransferBinaryOut@?$CPersistTraits@_N@@QAEXAAVCDataOutputStream@@AB_N@Z (the PDB
 // takes `const bool&`; this header's generic member takes T by value, which the specialisation must follow -- header debt), inline
@@ -85,6 +119,34 @@ template<> inline void CPersistTraits<CCharString>::TransferBinaryIn(CMemoryData
 #include "engine/CMemoryDataInputStream.h"
 template<> inline void CPersistTraits<C2DVector>::TransferBinaryIn(CMemoryDataInputStream& is,C2DVector& val) {
     val=is.Read2DVector();
+}
+#endif
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_FLOAT_TRANSFERIN_BODY
+// Retail opt-in (chunk 1020, row 0x009E81E0 CPersistTraits<C2DVector>::TransferIn): the body of Ego_r.pdb / FableWin.pdb
+// ?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@AAM@Z (retail 0x0040F7E0, landed): an unquoted word (item
+// type PARSED_ITEM_STRING) is a symbol name looked up through CSymbolMap::FindSymbol 0x009E5170 ("Unable to find symbol " 0x0122DFE8 +
+// name reported through PersistError 0x009BAA90), anything else is ReadAsFloat 0x009BA650. Retail calls it out of line; with the body
+// visible (noinline under MSC) VC7.1 knows the call leaves the empty traits object alone and shares its frame word with the read value
+// (0x009E8250..0x009E8257: `lea ecx,[esp+18h] ; push ecx ; ... ; lea ecx,[esp+24h]`). Needs FABLE_RETAIL_CCHARSTRING,
+// FABLE_RETAIL_CSTRINGPARSER, FABLE_RETAIL_CPERSISTCONTEXT_PEEKPSYMBOLMAP and FABLE_RETAIL_CSYMBOLMAP_FINDSYMBOL.
+#include "fable_string.h"
+#include "engine/CParsedItem.h"
+#include "engine/CStringParser.h"
+#include "engine/CSymbolMap.h"
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+void CPersistTraits<float>::TransferIn(CPersistContext& context,CStringParser& parser,float& value) {
+    if (parser.PeekNextItemType()==PARSED_ITEM_STRING) {
+        CCharString name=parser.ReadAsString();
+        long symbolValue;
+        if (!context.PeekPSymbolMap()->FindSymbol(name,symbolValue))
+            context.PersistError(parser,"Unable to find symbol "+name);
+        value=(float)symbolValue;
+    }
+    else
+        value=parser.ReadAsFloat();
 }
 #endif
 class CThing;

@@ -15,6 +15,20 @@ public:
 #endif
  virtual unsigned long PeekSceneFilterFlags()const;
  const C3DVector& PeekCameraPos()const{return CameraDesc.WorldPosition;}
+#ifdef FABLE_RETAIL_CENGINECAMERA_SCREENTOWORLD
+ // Opt-in (chunk 1020, row 0x00BCF4F0 CEngineInternalPrimitive2DAnimatedMesh::Initialise): FableWin.pdb
+ // ?TransformScreenXYLinearZToView@CEngineCamera@@QBEXAAVC3DVector@@@Z, ?TransformViewToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z and
+ // ?TransformScreenXYLinearZToWorld@CEngineCamera@@QBEXAAVC3DVector@@@Z (debug-only COMDATs: expanded in release, 0x00BCF5A5..0x00BCF65A).
+ FABLE_FORCEINLINE void TransformScreenXYLinearZToView(C3DVector& point)const{
+  point.X=(point.X-WindowCenterX)*OneOverHalfWindowWidth*point.Z;
+  point.Y=(WindowCenterY-point.Y)*OneOverHalfWindowHeight*point.Z;}
+ FABLE_FORCEINLINE void TransformViewToWorld(C3DVector& point)const{InverseViewTransform.TransformPoint(point);}
+ FABLE_FORCEINLINE void TransformScreenXYLinearZToWorld(C3DVector& point)const{TransformScreenXYLinearZToView(point);TransformViewToWorld(point);}
+ // ?TransformDistScreenToViewHorizontal@CEngineCamera@@QBEXMAAM@Z (Ego_r / FableWin; expanded in release): a horizontal screen distance
+ // to view space at depth z, in place through the reference (0x00BCF54D..0x00BCF566: `fld [cam+0C0h] ; fmul [dist] ; fmul z ;
+ // fdiv [cam+0D4h] ; fstp [dist]`).
+ void TransformDistScreenToViewHorizontal(float z,float& distance)const{distance=OneOverHalfWindowWidth*distance*z/HomogenousViewScaleX;}
+#endif
 private:
  const CCamera* GameCamera;
  const C2DBoxF* GameWindow;

@@ -13,7 +13,15 @@ class CCombatManager:public CBaseClassNonCopyable {
 public:
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
  void DeregisterCombatant(CThingCreatureBase&);
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATANTINFO_INLINE
+ // Per-TU opt-in (chunk 1020, row 0x006E94D0): the public const ?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z
+ // (out of line at 0x006E9360) with its body visible: the UniqueID copied into a key temporary and looked up in Combatants (the tree's
+ // _M_find 0x006F0250, node + 0x18). IsCreatureInAttackRingSector 0x006E94D0 expands it twice. Same body as the out-of-line copy.
+ const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature)const{return Combatants.find(creature.GetUniqueID())->second;}
+ bool IsCreatureInAttackRingSector(const CThingCreatureBase& attacker)const;   // 0x006E94D0 ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+#else
  const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase&)const;
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER
  // Chunk 732 (CThingPlayerCreature melee rows): Ego_r.pdb spellings, out of line in retail. (FableWin's inline
  // GetProximityForNavigation is left out: only the parked 0x006AA720 uses it, pending the owner's access-level decision.)

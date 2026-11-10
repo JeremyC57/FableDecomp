@@ -149,6 +149,13 @@ protected:
 #endif
     static const K& __fastcall _S_key(_Link_type x){return KeyOfValue()(_S_value(x));}
 private:
+#ifdef FABLE_RETAIL_STLP_TREE_MFIND_DECL
+    // Per-TU opt-in (chunk 1020, row 0x006E94D0 CCombatManager::IsCreatureInAttackRingSector): STLport 4.6.1 _tree.h _M_find, called
+    // out of line in that TU (map<unsigned __int64,CCombatantInfo> 0x006F0250: `push &key ; mov ecx,&Combatants ; call`, node in eax)
+    // as an opaque call -- retail reloads the attacker's ring index from the first node after the second lookup (0x006E9528), which the
+    // visible body lets VC7.1 hoist above it. Declaration only; same function.
+    template<class Key> _Rb_tree_node<V>* _M_find(const Key& key)const;
+#else
     template<class Key> _Rb_tree_node<V>* _M_find(const Key& key)const {
         _Link_type y=this->_M_header._M_data;
         _Link_type x=_M_root();
@@ -159,6 +166,7 @@ private:
         if(y==this->_M_header._M_data || _M_key_compare(key,_S_key(y)))y=this->_M_header._M_data;
         return y;
     }
+#endif
 public:
 #ifdef FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE
     // Retail opt-in (chunk 890, row 0x00551EA0 NUISystem::CTable::ConstructSpritesToDraw): owner decision D1 (2026-11-03) for the
