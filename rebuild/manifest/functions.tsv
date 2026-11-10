@@ -43671,6 +43671,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c09c00	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09c00.cpp
 00c09c20	vfunc_9	CVtable_012b1b78	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09c20.cpp
 00c09c40	sub_00c09c40	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c09c50	GetLast	PKCTRList<CListItem>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c09c60	GetItemByIndex	PKCTRList<CListItem>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c09c70	Reserve	PKCTRList<CListItem>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c09c80	GetCount	PKCTRList<CListItem>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c09c90	TransferAllFrom_CItemCollectionOwner_00c09c90	_unattributed	unknown	undefined	0		0	yes	accepted									
 00c09d00	vfunc_17	CVtable_012b1b78	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09d00.cpp
 00c09d20	Equal	CUnprovenCompare_00c09d20	unknown	undefined	0		0			discovered	gapscan							
@@ -43686,6 +43690,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c09e80	vfunc_8	CVtable_012b1c00	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09e80.cpp
 00c09ea0	vfunc_9	CVtable_012b1c00	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09ea0.cpp
 00c09ec0	sub_00c09ec0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c09ed0	GetLast	PKCTRList<CUnprovenListItem_012b1c00>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c09ee0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b1c00>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c09ef0	Reserve	PKCTRList<CUnprovenListItem_012b1c00>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c09f00	GetCount	PKCTRList<CUnprovenListItem_012b1c00>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c09f10	`scalar deleting destructor'	CVtable_012b1c00	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c09f10.cpp
 00c09f30	~CVtable_012b1c40	CVtable_012b1c40	__thiscall	void	1	CActionParamCCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00c09f80	TransferAllFrom_CItemCollectionOwner_00c09f80	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -43860,6 +43868,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0f0d0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f0d0.cpp
 00c0f0f0	vfunc_9	CVtable_012b2248	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f0f0.cpp
 00c0f110	sub_00c0f110	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c0f120	GetLast	PKCTRList<CUnprovenListItem_012b2248>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f130	GetItemByIndex	PKCTRList<CUnprovenListItem_012b2248>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f140	Reserve	PKCTRList<CUnprovenListItem_012b2248>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f150	GetCount	PKCTRList<CUnprovenListItem_012b2248>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c0f160	`scalar deleting destructor'	CVtable_012b2248	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f160.cpp
 00c0f1a0	sub_00c0f1a0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c0f1b0	sub_00c0f1b0	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -43867,6 +43879,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0f1e0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f1e0.cpp
 00c0f200	vfunc_9	CVtable_012b2288	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f200.cpp
 00c0f220	sub_00c0f220	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c0f230	GetLast	PKCTRList<CUnprovenListItem_012b2288>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f240	GetItemByIndex	PKCTRList<CUnprovenListItem_012b2288>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f250	Reserve	PKCTRList<CUnprovenListItem_012b2288>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f260	GetCount	PKCTRList<CUnprovenListItem_012b2288>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c0f270	`scalar deleting destructor'	CVtable_012b2288	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f270.cpp
 00c0f2b0	sub_00c0f2b0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c0f2c0	sub_00c0f2c0	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -43874,6 +43890,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0f2f0	vfunc_8	CVtable_012b22c8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f2f0.cpp
 00c0f310	vfunc_9	CVtable_012b22c8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f310.cpp
 00c0f330	sub_00c0f330	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c0f340	GetLast	PKCTRList<CUnprovenListItem_012b22c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f350	GetItemByIndex	PKCTRList<CUnprovenListItem_012b22c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f360	Reserve	PKCTRList<CUnprovenListItem_012b22c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c0f370	GetCount	PKCTRList<CUnprovenListItem_012b22c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c0f380	`scalar deleting destructor'	CVtable_012b22c8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f380.cpp
 00c0f3c0	sub_00c0f3c0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c0f3d0	sub_00c0f3d0	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44116,6 +44136,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c151e0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c151e0.cpp
 00c15200	vfunc_9	CVtable_012b2848	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c15200.cpp
 00c15220	sub_00c15220	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c15230	GetLast	PKCTRList<CUnprovenListItem_012b2848>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c15240	GetItemByIndex	PKCTRList<CUnprovenListItem_012b2848>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c15250	Reserve	PKCTRList<CUnprovenListItem_012b2848>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c15260	GetCount	PKCTRList<CUnprovenListItem_012b2848>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c15270	`scalar deleting destructor'	CVtable_012b2848	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CLandscapeBackgroundPatch_vectordeletingdestructor_00c15270.cpp
 00c152b0	sub_00c152b0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c152c0	sub_00c152c0	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44123,6 +44147,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c152f0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c152f0.cpp
 00c15310	vfunc_9	CVtable_012b2888	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c15310.cpp
 00c15330	sub_00c15330	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c15340	GetLast	PKCTRList<CUnprovenListItem_012b2888>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c15350	GetItemByIndex	PKCTRList<CUnprovenListItem_012b2888>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c15360	Reserve	PKCTRList<CUnprovenListItem_012b2888>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c15370	GetCount	PKCTRList<CUnprovenListItem_012b2888>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c15380	`scalar deleting destructor'	CVtable_012b2888	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CLandscapeBackgroundPatch_vectordeletingdestructor_00c15380.cpp
 00c153a0	Call_00c153a0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
 00c153f0	SetMemberConst_00c153f0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CBase_CBase_00c153f0.cpp
@@ -44519,48 +44547,64 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c1f6b0	sub_00c1f6b0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f6c0	sub_00c1f6c0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f6d0	sub_00c1f6d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1f6e0	Attach	CHashedItem	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1f700	Detach	CHashedItem	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1f720	CVtable_012b3498	CVtable_012b3498	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1f770	sub_00c1f770	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f780	sub_00c1f780	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f790	sub_00c1f790	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f7a0	sub_00c1f7a0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f7b0	sub_00c1f7b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1f7c0	Attach	CKeyedItem	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1f7d0	Detach	CKeyedItem	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1f7e0	CVtable_012b34bc	CVtable_012b34bc	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1f830	sub_00c1f830	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f840	sub_00c1f840	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f850	sub_00c1f850	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f860	sub_00c1f860	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f870	sub_00c1f870	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1f880	Attach	CVtable_012b34bc	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1f890	Detach	CVtable_012b34bc	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1f8a0	CVtable_012b34e0	CVtable_012b34e0	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1f8f0	sub_00c1f8f0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f900	sub_00c1f900	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f910	sub_00c1f910	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f920	sub_00c1f920	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f930	sub_00c1f930	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1f940	Attach	CVtable_012b34e0	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1f950	Detach	CVtable_012b34e0	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1f960	CVtable_012b3504	CVtable_012b3504	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1f9b0	sub_00c1f9b0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f9c0	sub_00c1f9c0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f9d0	sub_00c1f9d0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f9e0	sub_00c1f9e0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1f9f0	sub_00c1f9f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1fa00	Attach	CVtable_012b3504	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1fa10	Detach	CVtable_012b3504	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1fa20	CVtable_012b3528	CVtable_012b3528	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1fa70	sub_00c1fa70	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fa80	sub_00c1fa80	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fa90	sub_00c1fa90	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1faa0	sub_00c1faa0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fab0	sub_00c1fab0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1fac0	Attach	CPointerBase_00c1fcc0	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1fae0	Detach	CPointerBase_00c1fcc0	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1fb00	CVtable_012b354c	CVtable_012b354c	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1fb50	sub_00c1fb50	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fb60	sub_00c1fb60	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fb70	sub_00c1fb70	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fb80	sub_00c1fb80	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fb90	sub_00c1fb90	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1fba0	Attach	CPointerBase_00c1fd60	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1fbc0	Detach	CPointerBase_00c1fd60	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1fbe0	CVtable_012b3570	CVtable_012b3570	__thiscall	undefined	3	CCreatureAction_UnsheatheWeapons *,CThingCreatureBase *,EUnsheatheWeaponType	0	yes	accepted									
 00c1fc30	sub_00c1fc30	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fc40	sub_00c1fc40	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fc50	sub_00c1fc50	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fc60	sub_00c1fc60	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fc70	sub_00c1fc70	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c1fc80	Attach	CPointerBase_00c1fe00	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c1fca0	Detach	CPointerBase_00c1fe00	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c1fcc0	CIntelligentPointer_00c1fcc0	_unattributed	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CThing *	0	yes	accepted									
 00c1fd30	sub_00c1fd30	_global	unknown	undefined	0		0			discovered	gapscan							
 00c1fd40	sub_00c1fd40	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44726,6 +44770,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c22f80	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c22f80.cpp
 00c22fa0	vfunc_9	CVtable_012b3860	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c22fa0.cpp
 00c22fc0	sub_00c22fc0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c22fd0	GetLast	PKCTRList<CUnprovenListItem_012b3a38>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c22fe0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b3a38>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c22ff0	Reserve	PKCTRList<CUnprovenListItem_012b3a38>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23000	GetCount	PKCTRList<CUnprovenListItem_012b3a38>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c23010	TransferAllFrom_CItemCollectionOwner_00c23010	_unattributed	unknown	undefined	0		0	yes	accepted									
 00c23080	vfunc_17	CVtable_012b3860	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23080.cpp
 00c230a0	sub_00c230a0	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44754,6 +44802,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c23590	vfunc_8	CVtable_012b3938	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23590.cpp
 00c235b0	vfunc_9	CVtable_012b3938	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c235b0.cpp
 00c235d0	sub_00c235d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c235e0	GetLast	PKCTRList<CUnprovenListItem_012b3938>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c235f0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b3938>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23600	Reserve	PKCTRList<CUnprovenListItem_012b3938>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23610	GetCount	PKCTRList<CUnprovenListItem_012b3938>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c23620	`scalar deleting destructor'	CVtable_012b3938	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c23620.cpp
 00c23660	sub_00c23660	_global	unknown	undefined	0		0			discovered	gapscan							
 00c23670	sub_00c23670	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44761,6 +44813,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c236a0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c236a0.cpp
 00c236c0	vfunc_9	CVtable_012b3978	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c236c0.cpp
 00c236e0	sub_00c236e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c236f0	GetLast	PKCTRList<CUnprovenListItem_012b3978>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23700	GetItemByIndex	PKCTRList<CUnprovenListItem_012b3978>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23710	Reserve	PKCTRList<CUnprovenListItem_012b3978>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23720	GetCount	PKCTRList<CUnprovenListItem_012b3978>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c23730	`scalar deleting destructor'	CVtable_012b3978	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c23730.cpp
 00c23770	sub_00c23770	_global	unknown	undefined	0		0			discovered	gapscan							
 00c23780	sub_00c23780	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44768,6 +44824,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c237b0	vfunc_8	CVtable_012b39b8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c237b0.cpp
 00c237d0	vfunc_9	CVtable_012b39b8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c237d0.cpp
 00c237f0	sub_00c237f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c23800	GetLast	PKCTRList<CUnprovenListItem_012b39b8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23810	GetItemByIndex	PKCTRList<CUnprovenListItem_012b39b8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23820	Reserve	PKCTRList<CUnprovenListItem_012b39b8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23830	GetCount	PKCTRList<CUnprovenListItem_012b39b8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c23840	`scalar deleting destructor'	CVtable_012b39b8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c23840.cpp
 00c23880	sub_00c23880	_global	unknown	undefined	0		0			discovered	gapscan							
 00c23890	sub_00c23890	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -44775,6 +44835,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c238c0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c238c0.cpp
 00c238e0	vfunc_9	CVtable_012b39f8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c238e0.cpp
 00c23900	sub_00c23900	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c23910	GetLast	PKCTRList<CUnprovenListItem_012b39f8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23920	GetItemByIndex	PKCTRList<CUnprovenListItem_012b39f8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23930	Reserve	PKCTRList<CUnprovenListItem_012b39f8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c23940	GetCount	PKCTRList<CUnprovenListItem_012b39f8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c23950	`scalar deleting destructor'	CVtable_012b39f8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c23950.cpp
 00c23990	`scalar deleting destructor'	CVtable_012b3a38	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c23990.cpp
 00c239b0	NScript_CEvent_InitializeSubscriptions	_global	unknown	undefined	0		0	yes	accepted									
@@ -45136,6 +45200,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2ad60	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ad60.cpp
 00c2ad80	vfunc_9	CVtable_012b4190	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ad80.cpp
 00c2ada0	sub_00c2ada0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2adb0	GetLast	PKCTRList<CUnprovenListItem_012b4190>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2adc0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b4190>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2add0	Reserve	PKCTRList<CUnprovenListItem_012b4190>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2ade0	GetCount	PKCTRList<CUnprovenListItem_012b4190>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2adf0	`scalar deleting destructor'	CVtable_012b4190	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2adf0.cpp
 00c2ae30	sub_00c2ae30	_global	unknown	undefined	0		0			discovered	gapscan							
 00c2ae40	sub_00c2ae40	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -45143,6 +45211,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2ae70	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ae70.cpp
 00c2ae90	vfunc_9	CVtable_012b41d0	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ae90.cpp
 00c2aeb0	sub_00c2aeb0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2aec0	GetLast	PKCTRList<CUnprovenListItem_012b41d0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2aed0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b41d0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2aee0	Reserve	PKCTRList<CUnprovenListItem_012b41d0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2aef0	GetCount	PKCTRList<CUnprovenListItem_012b41d0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2af00	`scalar deleting destructor'	CVtable_012b41d0	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2af00.cpp
 00c2af40	sub_00c2af40	_global	unknown	undefined	0		0			discovered	gapscan							
 00c2af50	sub_00c2af50	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -45150,6 +45222,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2af80	vfunc_8	CVtable_012b4210	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2af80.cpp
 00c2afa0	vfunc_9	CVtable_012b4210	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2afa0.cpp
 00c2afc0	sub_00c2afc0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2afd0	GetLast	PKCTRList<CUnprovenListItem_012b4210>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2afe0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b4210>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2aff0	Reserve	PKCTRList<CUnprovenListItem_012b4210>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2b000	GetCount	PKCTRList<CUnprovenListItem_012b4210>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2b010	`scalar deleting destructor'	CVtable_012b4210	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b010.cpp
 00c2b030	Call_00c2b030	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
 00c2b080	SetMemberConst_00c2b080	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c2b080.cpp
@@ -45233,6 +45309,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2c010	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2c010.cpp
 00c2c030	vfunc_9	CVtable_012b44c8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2c030.cpp
 00c2c050	sub_00c2c050	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2c060	GetLast	PKCTRList<CUnprovenListItem_012b44c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2c070	GetItemByIndex	PKCTRList<CUnprovenListItem_012b44c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2c080	Reserve	PKCTRList<CUnprovenListItem_012b44c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2c090	GetCount	PKCTRList<CUnprovenListItem_012b44c8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2c0a0	`scalar deleting destructor'	CVtable_012b44c8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2c0a0.cpp
 00c2c0c0	SetMemberConst_00c2c0c0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c2c0c0.cpp
 00c2c0d0	Call_00c2c0d0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -45336,6 +45416,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2dd30	vfunc_8	CVtable_012b4740	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2dd30.cpp
 00c2dd50	vfunc_9	CVtable_012b4740	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2dd50.cpp
 00c2dd70	sub_00c2dd70	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2dd80	GetLast	PKCTRList<CUnprovenListItem_012b4740>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2dd90	GetItemByIndex	PKCTRList<CUnprovenListItem_012b4740>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2dda0	Reserve	PKCTRList<CUnprovenListItem_012b4740>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2ddb0	GetCount	PKCTRList<CUnprovenListItem_012b4740>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2ddc0	`scalar deleting destructor'	CVtable_012b4740	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ddc0.cpp
 00c2dde0	SetMemberConst_00c2dde0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c2dde0.cpp
 00c2ddf0	Call_00c2ddf0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -45410,6 +45494,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2f500	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2f500.cpp
 00c2f520	vfunc_9	CVtable_012b4998	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2f520.cpp
 00c2f540	sub_00c2f540	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2f550	GetLast	PKCTRList<CUnprovenListItem_012b4998>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f560	GetItemByIndex	PKCTRList<CUnprovenListItem_012b4998>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f570	Reserve	PKCTRList<CUnprovenListItem_012b4998>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f580	GetCount	PKCTRList<CUnprovenListItem_012b4998>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2f590	`scalar deleting destructor'	CVtable_012b4998	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f590.cpp
 00c2f5d0	sub_00c2f5d0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c2f5e0	vfunc_6	CVtable_012b49d8	__thiscall	void	2	CManager *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CManager_CManagerUpdateErrorMessageb_00c2f5e0.cpp
@@ -45417,6 +45505,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2f610	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2f610.cpp
 00c2f630	vfunc_9	CVtable_012b49d8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2f630.cpp
 00c2f650	sub_00c2f650	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2f660	GetLast	PKCTRList<CUnprovenListItem_012b49d8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f670	GetItemByIndex	PKCTRList<CUnprovenListItem_012b49d8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f680	Reserve	PKCTRList<CUnprovenListItem_012b49d8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f690	GetCount	PKCTRList<CUnprovenListItem_012b49d8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2f6a0	`scalar deleting destructor'	CVtable_012b49d8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f6a0.cpp
 00c2f6e0	sub_00c2f6e0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c2f6f0	vfunc_6	CVtable_012b4a18	__thiscall	void	2	CManager *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CManager_CManagerUpdateErrorMessagec_00c2f6f0.cpp
@@ -45424,6 +45516,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2f720	vfunc_8	CVtable_012b4a18	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2f720.cpp
 00c2f740	vfunc_9	CVtable_012b4a18	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2f740.cpp
 00c2f760	sub_00c2f760	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c2f770	GetLast	PKCTRList<CUnprovenListItem_012b4a18>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f780	GetItemByIndex	PKCTRList<CUnprovenListItem_012b4a18>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f790	Reserve	PKCTRList<CUnprovenListItem_012b4a18>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c2f7a0	GetCount	PKCTRList<CUnprovenListItem_012b4a18>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c2f7b0	`scalar deleting destructor'	CVtable_012b4a18	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f7b0.cpp
 00c2f7d0	Transfer	CUnprovenRecordList_00c2f7d0	unknown	undefined	0		0	yes	accepted									
 00c2f970	SetMemberConst_00c2f970	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CBase_CBase_00c2f970.cpp
@@ -45498,6 +45594,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c30b20	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c30b20.cpp
 00c30b40	vfunc_9	CVtable_012b4c30	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c30b40.cpp
 00c30b60	sub_00c30b60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c30b70	GetLast	PKCTRList<CUnprovenListItem_012b4c30>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c30b80	GetItemByIndex	PKCTRList<CUnprovenListItem_012b4c30>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c30b90	Reserve	PKCTRList<CUnprovenListItem_012b4c30>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c30ba0	GetCount	PKCTRList<CUnprovenListItem_012b4c30>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c30bb0	`scalar deleting destructor'	CVtable_012b4c30	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c30bb0.cpp
 00c30bd0	SetMemberConst_00c30bd0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c30bd0.cpp
 00c30be0	Call_00c30be0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -45574,6 +45674,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c33040	SetMemberConst_00c33040	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c33040.cpp
 00c33050	Validate	CEmitterOwner_00c33050	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted									
 00c33070	sub_00c33070	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c33080	Read	CVtable_012b4f60	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c33090	GetUnitSize	CVtable_012b4f60	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c330a0	CVtable_012b4f60	CVtable_012b4f60	__thiscall	undefined	3	CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *	0	yes	accepted									
 00c330c0	`scalar deleting destructor'	CVtable_012b4f60	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c330c0.cpp
 00c330e0	SetMemberConst_00c330e0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c330e0.cpp
@@ -45747,6 +45849,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c36800	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c36800.cpp
 00c36820	vfunc_9	CVtable_012b50f0	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c36820.cpp
 00c36840	sub_00c36840	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c36850	GetLast	PKCTRList<CUnprovenListItem_012b50f0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c36860	GetItemByIndex	PKCTRList<CUnprovenListItem_012b50f0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c36870	Reserve	PKCTRList<CUnprovenListItem_012b50f0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c36880	GetCount	PKCTRList<CUnprovenListItem_012b50f0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c36890	`scalar deleting destructor'	CVtable_012b50f0	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c36890.cpp
 00c368b0	SetMemberConst_00c368b0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c368b0.cpp
 00c368c0	Call_00c368c0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -45846,6 +45952,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c37fb0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c37fb0.cpp
 00c37fd0	vfunc_9	CVtable_012b5298	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c37fd0.cpp
 00c37ff0	sub_00c37ff0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c38000	GetLast	PKCTRList<CUnprovenListItem_012b5298>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c38010	GetItemByIndex	PKCTRList<CUnprovenListItem_012b5298>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c38020	Reserve	PKCTRList<CUnprovenListItem_012b5298>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c38030	GetCount	PKCTRList<CUnprovenListItem_012b5298>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c38040	`scalar deleting destructor'	CVtable_012b5298	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c38040.cpp
 00c38060	SetMemberConst_00c38060	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c38060.cpp
 00c38070	Call_00c38070	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -45975,6 +46085,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3ad30	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3ad30.cpp
 00c3ad50	vfunc_9	CVtable_012b54e8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3ad50.cpp
 00c3ad70	sub_00c3ad70	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c3ad80	GetLast	PKCTRList<CUnprovenListItem_012b54e8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c3ad90	GetItemByIndex	PKCTRList<CUnprovenListItem_012b54e8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c3ada0	Reserve	PKCTRList<CUnprovenListItem_012b54e8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c3adb0	GetCount	PKCTRList<CUnprovenListItem_012b54e8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c3adc0	`scalar deleting destructor'	CVtable_012b54e8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c3adc0.cpp
 00c3ade0	SetMemberConst_00c3ade0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c3ade0.cpp
 00c3adf0	Call_00c3adf0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -46004,6 +46118,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3b2c0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3b2c0.cpp
 00c3b2e0	vfunc_9	CVtable_012b55c0	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3b2e0.cpp
 00c3b300	sub_00c3b300	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c3b310	GetLast	PKCTRList<CUnprovenListItem_012b55c0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c3b320	GetItemByIndex	PKCTRList<CUnprovenListItem_012b55c0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c3b330	Reserve	PKCTRList<CUnprovenListItem_012b55c0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c3b340	GetCount	PKCTRList<CUnprovenListItem_012b55c0>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c3b350	`scalar deleting destructor'	CVtable_012b55c0	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c3b350.cpp
 00c3b370	SetMemberConst_00c3b370	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c3b370.cpp
 00c3b380	Call_00c3b380	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -46156,6 +46274,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3eba0	HasPhysicsMesh	C3DMeshInfo	__thiscall	bool	1	C3DMeshInfo *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\C3DMeshInfo_HasPhysicsMesh_00c3eba0.cpp
 00c3ebb0	Create_CObject_00c3ebb0_00c3ebb0	_global	unknown	undefined	0		0	yes	accepted									
 00c3ec10	sub_00c3ec10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c3ec20	CreateHardwareVoiceB	CCodaSystem	unknown	undefined	0		0			discovered	gapscan		chunk 900 split: vtable 0x012B5BC0 slot 5 (cell 0x012B5BD4)					
 00c3ec30	InitializeWithDefaults	CAnimationEnvironment	unknown	undefined	0		0	yes	accepted									
 00c3ec80	CTCHeroStats_InitializeAnimationGroup	_global	unknown	undefined	0		0	yes	accepted									
 00c3ee10	CreateNavigationLayerAction	CTCHeroStats::CTCHeroStats	unknown	undefined	0		0	yes	accepted									
@@ -46388,6 +46507,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c45160	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c45160.cpp
 00c45180	vfunc_9	CVtable_012b7bc8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c45180.cpp
 00c451a0	sub_00c451a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c451b0	GetLast	PKCTRList<CUnprovenListItem_012b7bc8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c451c0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b7bc8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c451d0	Reserve	PKCTRList<CUnprovenListItem_012b7bc8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c451e0	GetCount	PKCTRList<CUnprovenListItem_012b7bc8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c451f0	`scalar deleting destructor'	CVtable_012b7bc8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CLandscapeBackgroundPatch_vectordeletingdestructor_00c451f0.cpp
 00c45210	SetMemberConst_00c45210	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CBase_CBase_00c45210.cpp
 00c45220	Call_00c45220	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -46452,6 +46575,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c46a30	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c46a30.cpp
 00c46a50	vfunc_9	CVtable_012b7d68	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c46a50.cpp
 00c46a70	sub_00c46a70	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c46a80	GetLast	PKCTRList<CUnprovenListItem_012b7d68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c46a90	GetItemByIndex	PKCTRList<CUnprovenListItem_012b7d68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c46aa0	Reserve	PKCTRList<CUnprovenListItem_012b7d68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c46ab0	GetCount	PKCTRList<CUnprovenListItem_012b7d68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c46ac0	`scalar deleting destructor'	CVtable_012b7d68	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CLandscapeBackgroundPatch_vectordeletingdestructor_00c46ac0.cpp
 00c46ae0	SetMemberConst_00c46ae0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CBase_CBase_00c46ae0.cpp
 00c46af0	Call_00c46af0	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -46512,6 +46639,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c47660	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47660.cpp
 00c47680	vfunc_9	CVtable_012b7e68	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47680.cpp
 00c476a0	sub_00c476a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c476b0	GetLast	PKCTRList<CUnprovenListItem_012b7e68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c476c0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b7e68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c476d0	Reserve	PKCTRList<CUnprovenListItem_012b7e68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c476e0	GetCount	PKCTRList<CUnprovenListItem_012b7e68>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c476f0	`scalar deleting destructor'	CVtable_012b7e68	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CLandscapeBackgroundPatch_vectordeletingdestructor_00c476f0.cpp
 00c47730	sub_00c47730	_global	unknown	undefined	0		0			discovered	gapscan							
 00c47740	sub_00c47740	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -46519,6 +46650,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c47770	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47770.cpp
 00c47790	vfunc_9	CVtable_012b7ea8	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47790.cpp
 00c477b0	sub_00c477b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c477c0	GetLast	PKCTRList<CUnprovenListItem_012b7ea8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c477d0	GetItemByIndex	PKCTRList<CUnprovenListItem_012b7ea8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c477e0	Reserve	PKCTRList<CUnprovenListItem_012b7ea8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
+00c477f0	GetCount	PKCTRList<CUnprovenListItem_012b7ea8>	unknown	undefined	0		0			discovered	gapscan		chunk 1001 split (vtable-cell evidence: SPLITS.tsv)					
 00c47800	`scalar deleting destructor'	CVtable_012b7ea8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CLandscapeBackgroundPatch_vectordeletingdestructor_00c47800.cpp
 00c47820	SetMemberConst_00c47820	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CBase_CBase_00c47820.cpp
 00c47830	Call_00c47830	_unattributed	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted									
@@ -55149,6 +55284,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f29f60	Copy	CRegionScriptDef	unknown	undefined	0		0			discovered	gapscan							
 00f29fa0	Alloc	CRegionScriptDef	unknown	undefined	0		0			discovered	gapscan							
 00f29ff0	sub_00f29ff0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00f2a000	operator=	CCutsceneDef	unknown	undefined	0		0			discovered	gapscan		chunk 900 split: tail-jump target of CCutsceneDef::Copy 0x00F29FF0 (vtable 0x012FB6E0 slot 19)					
 00f2a0d0	Alloc	CCutsceneDef	unknown	undefined	0		0			discovered	gapscan							
 00f2a0f0	RegisterDefs	CScriptInfoManager	__thiscall	void	1	CScriptInfoManager *	1	yes	accepted									
 00f2a1d0	Transfer	CCutsceneDef	__fastcall	void	0		1	yes	accepted									

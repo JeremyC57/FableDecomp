@@ -1,0 +1,14 @@
+address	name	grade	grades_used	note
+00ca6170	CBaseInputPin::QueryInterface`adjustor{4}'	RELOCATION_MATCH	1	W3 thunk in CRendererInputPin IQualityControl vtable 0x012BF3AC; lib_verify MATCH strmbase-dxsdk-sum2004 renbase.cpp sec 286
+00ca6180	CBaseInputPin::AddRef`adjustor{4}'	RELOCATION_MATCH	1	same vtable slot 1; lib_verify MATCH renbase.cpp sec 287
+00ca6190	CBaseInputPin::Release`adjustor{4}'	RELOCATION_MATCH	1	same vtable slot 2; lib_verify MATCH renbase.cpp sec 288
+00caa720	CDynamicOutputPin::QueryInterface`adjustor{4}'	RELOCATION_MATCH	1	W3 thunk in CDynamicOutputPin IQualityControl vtable 0x012BF748; lib_verify MATCH amfilter.cpp sec 517
+00caa730	CDynamicOutputPin::AddRef`adjustor{4}'	RELOCATION_MATCH	1	lib_verify MATCH amfilter.cpp sec 518
+00caa740	CDynamicOutputPin::Release`adjustor{4}'	RELOCATION_MATCH	1	lib_verify MATCH amfilter.cpp sec 519
+00c3ec10	CCodaSystem::CreateHardwareVoiceA	MATCH	2	split: row 27 bytes -> 11-byte function + 5 int3 + new start 0x00C3EC20; vtable 0x012B5BC0 slot 4
+00c3ec20	CCodaSystem::CreateHardwareVoiceB	MATCH	2	NEW START (split of 0x00C3EC10); vtable 0x012B5BC0 slot 5
+00f29ff0	CCutsceneDef::Copy	RELOCATION_MATCH	2	split: row 219 bytes -> 5-byte tail jmp + 11 int3 + new start 0x00F2A000; vtable 0x012FB6E0 slot 19
+00f2a000	CCutsceneDef::operator=	RELOCATION_MATCH	4	NEW START, 203 bytes; implicit op=; lever: new opt-in FABLE_RETAIL_CVECTORMAP_ASSIGN_OUTOFLINE (CVectorMap op= is the out-of-line COMDAT 0x006313A0)
+005c8459	CTCInventoryWeapons::ConstructScreen	DIFFER(3299v3235)	3	parked in differ/; masked-frame instruction share 0.865; CDefPointer release shape, frame 0xE4 v 0xE0, title SetValue vtable order, augmentations.size() test
+005c9a95	CTCInventoryWeapons::ConstructScreenPC	NOT_DRAFTED	0	budget spent on the console twin; header ready (hdr/engine/CTCInventoryWeapons.h), annotated listing ann_005c9a95.txt
+005b8743	CTCInventoryClothing::ConstructScreenPC	NOT_DRAFTED	0	not started; annotated listing ann_005b8743.txt; repo CTCInventoryClothing.h got Codex opt-ins (fba8d6164) to build on

@@ -62,6 +62,16 @@ public:
         return *this;
     }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_ASSIGN_OUTOFLINE
+    // Retail opt-in (chunk 900, row 0x00F2A000 CCutsceneDef::operator=): in the cutscene-def TU the implicit CVectorMap assignment
+    // is called out of line, not expanded (`lea eax,[edi+29h] ; push eax ; lea ecx,[esi+29h] ; call 0x006313A0`), while the rest of
+    // the parent-def chain (FABLE_RETAIL_PDCB_FORCEINLINE_ASSIGN) is expanded around it. 0x006313A0 is that COMDAT (27 bytes: the
+    // vector operator= 0x00431F90, then the Dirty byte +0x0D; FableWin.pdb
+    // ??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z), so
+    // Fable.exe does hold an out-of-line ??4CVectorMap (the ASSIGN note below says otherwise). A declaration only, as
+    // FABLE_RETAIL_STLP_VECTOR_SWAP_OUTOFLINE: the row calls it.
+    CVectorMap& operator=(const CVectorMap& other);
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_INSERT
     // Retail opt-in (chunk 796, row 0x008E18D0 CModeThunderLightningStorm::UpdateLightningBeams; the landed 0x00767DA0
     // UpdateParticleAttachment local model): Ego_r.pdb CVectorMap::Insert (push_back, then mark Dirty) and Update (sort with the

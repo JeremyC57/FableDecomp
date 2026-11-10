@@ -1,0 +1,5 @@
+address	length	name	evidence
+00c3ec10	11	CCodaSystem::CreateHardwareVoiceA	vtable 0x012B5BC0 slot 4 (cell 0x012B5BD0) = 0x00C3EC10; `jmp [eax+10h]` ends at 0x00C3EC1B, then 5 int3 to 0x00C3EC20
+00c3ec20	11	CCodaSystem::CreateHardwareVoiceB	NEW START: vtable 0x012B5BC0 slot 5 (cell 0x012B5BD4) = 0x00C3EC20; `jmp [eax+14h]` ends at 0x00C3EC2B, int3 to 0x00C3EC30 (landed neighbour)
+00f29ff0	5	CCutsceneDef::Copy	vtable 0x012FB6E0 slot 19 (cell 0x012FB72C) = 0x00F29FF0; 5-byte `jmp 0x00F2A000` then 11 int3 to 0x00F2A000
+00f2a000	203	CCutsceneDef::operator=	NEW START: target of the 0x00F29FF0 tail jump; `ret 4` at 0x00F2A0C8 ends at 0x00F2A0CB (203 bytes, not the 204 chunk 897 noted), int3 to 0x00F2A0D0 (landed CCutsceneDef::Alloc); Ego_r.pdb ??4CCutsceneDef@@QAEAAV0@ABV0@@Z

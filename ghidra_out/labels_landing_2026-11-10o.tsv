@@ -1,0 +1,29 @@
+address	name	evidence
+00ca6170	?QueryInterface@CBaseInputPin@@W3AGJABU_GUID@@PAPAX@Z	lib_verify MATCH vs DX9.0c Summer 2004 strmbase renbase.cpp; vendor ??_7CRendererInputPin@@6BIQualityControl@@@ slot 0 = retail 0x012BF3AC
+00ca6180	?AddRef@CBaseInputPin@@W3AGKXZ	lib_verify MATCH renbase.cpp; vtable 0x012BF3B0
+00ca6190	?Release@CBaseInputPin@@W3AGKXZ	lib_verify MATCH renbase.cpp; vtable 0x012BF3B4
+00caa720	?QueryInterface@CDynamicOutputPin@@W3AGJABU_GUID@@PAPAX@Z	lib_verify MATCH amfilter.cpp; vendor ??_7CDynamicOutputPin@@6BIQualityControl@@@ slot 0 = retail 0x012BF748
+00caa730	?AddRef@CDynamicOutputPin@@W3AGKXZ	lib_verify MATCH amfilter.cpp; vtable 0x012BF74C
+00caa740	?Release@CDynamicOutputPin@@W3AGKXZ	lib_verify MATCH amfilter.cpp; vtable 0x012BF750
+00ca53c0	CBaseInputPin::QueryInterface	lib_verify relocation proof of 0x00CA6170 (+6 REL32 [ok:lib])
+00ca53f0	CBaseInputPin::AddRef	lib_verify relocation proof of 0x00CA6180
+00ca5510	CBaseInputPin::Release	lib_verify relocation proof of 0x00CA6190
+00ca96f0	CDynamicOutputPin::QueryInterface	lib_verify relocation proof of 0x00CAA720
+00ca9700	CDynamicOutputPin::AddRef	lib_verify relocation proof of 0x00CAA730
+00ca9710	CDynamicOutputPin::Release	lib_verify relocation proof of 0x00CAA740
+00c3ec10	CCodaSystem::CreateHardwareVoiceA	vtable 0x012B5BC0 slot 4; Ego_r.pdb + FableWin.pdb ?CreateHardwareVoiceA@CCodaSystem@@UAEPAVCCodaVoice@@XZ; MATCH
+00c3ec20	CCodaSystem::CreateHardwareVoiceB	vtable 0x012B5BC0 slot 5 (new start); Ego_r.pdb + FableWin.pdb ?CreateHardwareVoiceB@CCodaSystem@@UAEPAVCCodaVoice@@XZ; MATCH
+00f29ff0	CCutsceneDef::Copy	vtable 0x012FB6E0 slot 19 (cell 0x012FB72C); Ego_r.pdb + FableWin.pdb ?Copy@CCutsceneDef@@UAEXPBVCDefClassBase@@@Z; RELOCATION_MATCH
+00f2a000	CCutsceneDef::operator=	tail-jump target of Copy; Ego_r.pdb ??4CCutsceneDef@@QAEAAV0@ABV0@@Z; RELOCATION_MATCH (new start)
+006313a0	CVectorMap<unsigned long,CDefClassBase::CSubDefInfo,CKeyPairCompareLess<unsigned long,CDefClassBase::CSubDefInfo> >::operator=	relocation of 0x00F2A000 binds ??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z; 27-byte body = vector op= 0x00431F90 + Dirty byte
+00432ee9	std::vector<CCharString,std::allocator<CCharString> >::operator=	relocation of 0x00F2A000 (x8) binds ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z; labels_chunk220_221 correction
+00431f60	CResource::operator=	relocation of 0x00F2A000 binds ??4CResource@@QAEAAV0@ABV0@@Z
+005c8459	CTCInventoryWeapons::ConstructScreen	vtable 0x01253FF4 slot 77 (cell 0x01254128); Ego_r.pdb ?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+005c9a95	CTCInventoryWeapons::ConstructScreenPC	vtable 0x01253FF4 slot 87 (cell 0x01254150); Ego_r.pdb ?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+005c574e	CTCInventoryWeapons::ConstructAugEntry	called from 0x005C8459 with (true, augmentations, viewport); Ego_r.pdb member spelling
+005c5f11	CTCInventoryWeapons::ConstructAugEntryPC	called from 0x005C9A95; Ego_r.pdb member spelling
+005c66b2	CTCInventoryWeapons::ConstructWeaponItemEntries	last call of 0x005C8459 (9 args); Ego_r.pdb member spelling
+005c8176	CTCInventoryWeapons::ConstructWeaponItemEntriesPC	last call of 0x005C9A95; Ego_r.pdb member spelling
+005daaa0	CTCWeapon::GetDamage	Ego_r.pdb ?GetDamage@CTCWeapon@@QBEMXZ; called on the active melee weapon TC in 0x005C8459 (result in st0 -> float arg)
+005da510	CTCWeapon::IsMeleeWeaponClass	Ego_r.pdb ?IsMeleeWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z (static __fastcall, ecx = class); item loop of 0x005C8459
+005d9870	CTCInventoryItem::IsAugmentation	Ego_r.pdb ?IsAugmentation@CTCInventoryItem@@SI_NJ@Z (static __fastcall, ecx = def index); item loop of 0x005C8459

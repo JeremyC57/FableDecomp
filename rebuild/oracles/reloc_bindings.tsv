@@ -38973,3 +38973,10 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?AddRepeatedZSprite@CLocalDetailRenderer@@QAE?AVCEnginePrimitiveHandle@@ABUCAddPrimitiveDesc@@@Z	00b32ff0	00bfacc0
 ??1CObject@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ	00bfbbf0	00bfb590
 ??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@	012a82d8	00bfb590
+?QueryInterface@CBaseInputPin@@UAGJABU_GUID@@PAPAX@Z	00ca53c0	00ca6170
+?AddRef@CBaseInputPin@@UAGKXZ	00ca53f0	00ca6180
+?Release@CBaseInputPin@@UAGKXZ	00ca5510	00ca6190
+?QueryInterface@CDynamicOutputPin@@UAGJABU_GUID@@PAPAX@Z	00ca96f0	00caa720
+?AddRef@CDynamicOutputPin@@UAGKXZ	00ca9700	00caa730
+??4CCutsceneDef@@QAEAAV0@ABV0@@Z	00f2a000	00f29ff0
+??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z	006313a0	00f2a000

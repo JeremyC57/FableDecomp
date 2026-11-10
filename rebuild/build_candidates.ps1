@@ -388468,6 +388468,1280 @@ $catalog = @(
         TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocksNoMorph_00ba48f0_test.cpp'
         PassPattern = '00ba48f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c09c40'
+        Module = 'PKCTRList<CListItem>'
+        Source = '00/c0/PKCTRListCListItem_GetFirst_00c09c40.cpp'
+        TestSource = '00/c0/PKCTRListCListItem_GetFirst_00c09c40_test.cpp'
+        PassPattern = '00c09c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09c50'
+        Module = 'PKCTRList<CListItem>'
+        Source = '00/c0/PKCTRListCListItem_GetLast_00c09c50.cpp'
+        TestSource = '00/c0/PKCTRListCListItem_GetLast_00c09c50_test.cpp'
+        PassPattern = '00c09c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09c60'
+        Module = 'PKCTRList<CListItem>'
+        Source = '00/c0/PKCTRListCListItem_GetItemByIndex_00c09c60.cpp'
+        TestSource = '00/c0/PKCTRListCListItem_GetItemByIndex_00c09c60_test.cpp'
+        PassPattern = '00c09c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09c70'
+        Module = 'PKCTRList<CListItem>'
+        Source = '00/c0/PKCTRListCListItem_Reserve_00c09c70.cpp'
+        TestSource = '00/c0/PKCTRListCListItem_Reserve_00c09c70_test.cpp'
+        PassPattern = '00c09c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09c80'
+        Module = 'PKCTRList<CListItem>'
+        Source = '00/c0/PKCTRListCListItem_GetCount_00c09c80.cpp'
+        TestSource = '00/c0/PKCTRListCListItem_GetCount_00c09c80_test.cpp'
+        PassPattern = '00c09c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09ec0'
+        Module = 'PKCTRList<CUnprovenListItem_012b1c00>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetFirst_00c09ec0.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetFirst_00c09ec0_test.cpp'
+        PassPattern = '00c09ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09ed0'
+        Module = 'PKCTRList<CUnprovenListItem_012b1c00>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetLast_00c09ed0.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetLast_00c09ed0_test.cpp'
+        PassPattern = '00c09ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09ee0'
+        Module = 'PKCTRList<CUnprovenListItem_012b1c00>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetItemByIndex_00c09ee0.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetItemByIndex_00c09ee0_test.cpp'
+        PassPattern = '00c09ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09ef0'
+        Module = 'PKCTRList<CUnprovenListItem_012b1c00>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b1c00_Reserve_00c09ef0.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b1c00_Reserve_00c09ef0_test.cpp'
+        PassPattern = '00c09ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c09f00'
+        Module = 'PKCTRList<CUnprovenListItem_012b1c00>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetCount_00c09f00.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b1c00_GetCount_00c09f00_test.cpp'
+        PassPattern = '00c09f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f110'
+        Module = 'PKCTRList<CUnprovenListItem_012b2248>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2248_GetFirst_00c0f110.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2248_GetFirst_00c0f110_test.cpp'
+        PassPattern = '00c0f110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f120'
+        Module = 'PKCTRList<CUnprovenListItem_012b2248>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2248_GetLast_00c0f120.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2248_GetLast_00c0f120_test.cpp'
+        PassPattern = '00c0f120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f130'
+        Module = 'PKCTRList<CUnprovenListItem_012b2248>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2248_GetItemByIndex_00c0f130.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2248_GetItemByIndex_00c0f130_test.cpp'
+        PassPattern = '00c0f130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f140'
+        Module = 'PKCTRList<CUnprovenListItem_012b2248>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2248_Reserve_00c0f140.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2248_Reserve_00c0f140_test.cpp'
+        PassPattern = '00c0f140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f150'
+        Module = 'PKCTRList<CUnprovenListItem_012b2248>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2248_GetCount_00c0f150.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2248_GetCount_00c0f150_test.cpp'
+        PassPattern = '00c0f150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f220'
+        Module = 'PKCTRList<CUnprovenListItem_012b2288>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2288_GetFirst_00c0f220.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2288_GetFirst_00c0f220_test.cpp'
+        PassPattern = '00c0f220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f230'
+        Module = 'PKCTRList<CUnprovenListItem_012b2288>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2288_GetLast_00c0f230.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2288_GetLast_00c0f230_test.cpp'
+        PassPattern = '00c0f230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f240'
+        Module = 'PKCTRList<CUnprovenListItem_012b2288>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2288_GetItemByIndex_00c0f240.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2288_GetItemByIndex_00c0f240_test.cpp'
+        PassPattern = '00c0f240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f250'
+        Module = 'PKCTRList<CUnprovenListItem_012b2288>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2288_Reserve_00c0f250.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2288_Reserve_00c0f250_test.cpp'
+        PassPattern = '00c0f250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f260'
+        Module = 'PKCTRList<CUnprovenListItem_012b2288>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b2288_GetCount_00c0f260.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b2288_GetCount_00c0f260_test.cpp'
+        PassPattern = '00c0f260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f330'
+        Module = 'PKCTRList<CUnprovenListItem_012b22c8>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetFirst_00c0f330.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetFirst_00c0f330_test.cpp'
+        PassPattern = '00c0f330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f340'
+        Module = 'PKCTRList<CUnprovenListItem_012b22c8>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetLast_00c0f340.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetLast_00c0f340_test.cpp'
+        PassPattern = '00c0f340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f350'
+        Module = 'PKCTRList<CUnprovenListItem_012b22c8>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetItemByIndex_00c0f350.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetItemByIndex_00c0f350_test.cpp'
+        PassPattern = '00c0f350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f360'
+        Module = 'PKCTRList<CUnprovenListItem_012b22c8>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b22c8_Reserve_00c0f360.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b22c8_Reserve_00c0f360_test.cpp'
+        PassPattern = '00c0f360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f370'
+        Module = 'PKCTRList<CUnprovenListItem_012b22c8>'
+        Source = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetCount_00c0f370.cpp'
+        TestSource = '00/c0/PKCTRListCUnprovenListItem012b22c8_GetCount_00c0f370_test.cpp'
+        PassPattern = '00c0f370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15220'
+        Module = 'PKCTRList<CUnprovenListItem_012b2848>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2848_GetFirst_00c15220.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2848_GetFirst_00c15220_test.cpp'
+        PassPattern = '00c15220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15230'
+        Module = 'PKCTRList<CUnprovenListItem_012b2848>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2848_GetLast_00c15230.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2848_GetLast_00c15230_test.cpp'
+        PassPattern = '00c15230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15240'
+        Module = 'PKCTRList<CUnprovenListItem_012b2848>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2848_GetItemByIndex_00c15240.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2848_GetItemByIndex_00c15240_test.cpp'
+        PassPattern = '00c15240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15250'
+        Module = 'PKCTRList<CUnprovenListItem_012b2848>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2848_Reserve_00c15250.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2848_Reserve_00c15250_test.cpp'
+        PassPattern = '00c15250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15260'
+        Module = 'PKCTRList<CUnprovenListItem_012b2848>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2848_GetCount_00c15260.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2848_GetCount_00c15260_test.cpp'
+        PassPattern = '00c15260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15330'
+        Module = 'PKCTRList<CUnprovenListItem_012b2888>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2888_GetFirst_00c15330.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2888_GetFirst_00c15330_test.cpp'
+        PassPattern = '00c15330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15340'
+        Module = 'PKCTRList<CUnprovenListItem_012b2888>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2888_GetLast_00c15340.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2888_GetLast_00c15340_test.cpp'
+        PassPattern = '00c15340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15350'
+        Module = 'PKCTRList<CUnprovenListItem_012b2888>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2888_GetItemByIndex_00c15350.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2888_GetItemByIndex_00c15350_test.cpp'
+        PassPattern = '00c15350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15360'
+        Module = 'PKCTRList<CUnprovenListItem_012b2888>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2888_Reserve_00c15360.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2888_Reserve_00c15360_test.cpp'
+        PassPattern = '00c15360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c15370'
+        Module = 'PKCTRList<CUnprovenListItem_012b2888>'
+        Source = '00/c1/PKCTRListCUnprovenListItem012b2888_GetCount_00c15370.cpp'
+        TestSource = '00/c1/PKCTRListCUnprovenListItem012b2888_GetCount_00c15370_test.cpp'
+        PassPattern = '00c15370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f6d0'
+        Module = 'CHashedItem'
+        Source = '00/c1/CHashedItem_Validate_00c1f6d0.cpp'
+        TestSource = '00/c1/CHashedItem_Validate_00c1f6d0_test.cpp'
+        PassPattern = '00c1f6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f6e0'
+        Module = 'CHashedItem'
+        Source = '00/c1/CHashedItem_Attach_00c1f6e0.cpp'
+        TestSource = '00/c1/CHashedItem_Attach_00c1f6e0_test.cpp'
+        PassPattern = '00c1f6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f700'
+        Module = 'CHashedItem'
+        Source = '00/c1/CHashedItem_Detach_00c1f700.cpp'
+        TestSource = '00/c1/CHashedItem_Detach_00c1f700_test.cpp'
+        PassPattern = '00c1f700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f7b0'
+        Module = 'CKeyedItem'
+        Source = '00/c1/CKeyedItem_Validate_00c1f7b0.cpp'
+        TestSource = '00/c1/CKeyedItem_Validate_00c1f7b0_test.cpp'
+        PassPattern = '00c1f7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f7c0'
+        Module = 'CKeyedItem'
+        Source = '00/c1/CKeyedItem_Attach_00c1f7c0.cpp'
+        TestSource = '00/c1/CKeyedItem_Attach_00c1f7c0_test.cpp'
+        PassPattern = '00c1f7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f7d0'
+        Module = 'CKeyedItem'
+        Source = '00/c1/CKeyedItem_Detach_00c1f7d0.cpp'
+        TestSource = '00/c1/CKeyedItem_Detach_00c1f7d0_test.cpp'
+        PassPattern = '00c1f7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f870'
+        Module = 'CVtable_012b34bc'
+        Source = '00/c1/CVtable012b34bc_Validate_00c1f870.cpp'
+        TestSource = '00/c1/CVtable012b34bc_Validate_00c1f870_test.cpp'
+        PassPattern = '00c1f870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f880'
+        Module = 'CVtable_012b34bc'
+        Source = '00/c1/CVtable012b34bc_Attach_00c1f880.cpp'
+        TestSource = '00/c1/CVtable012b34bc_Attach_00c1f880_test.cpp'
+        PassPattern = '00c1f880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f890'
+        Module = 'CVtable_012b34bc'
+        Source = '00/c1/CVtable012b34bc_Detach_00c1f890.cpp'
+        TestSource = '00/c1/CVtable012b34bc_Detach_00c1f890_test.cpp'
+        PassPattern = '00c1f890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f930'
+        Module = 'CVtable_012b34e0'
+        Source = '00/c1/CVtable012b34e0_Validate_00c1f930.cpp'
+        TestSource = '00/c1/CVtable012b34e0_Validate_00c1f930_test.cpp'
+        PassPattern = '00c1f930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f940'
+        Module = 'CVtable_012b34e0'
+        Source = '00/c1/CVtable012b34e0_Attach_00c1f940.cpp'
+        TestSource = '00/c1/CVtable012b34e0_Attach_00c1f940_test.cpp'
+        PassPattern = '00c1f940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f950'
+        Module = 'CVtable_012b34e0'
+        Source = '00/c1/CVtable012b34e0_Detach_00c1f950.cpp'
+        TestSource = '00/c1/CVtable012b34e0_Detach_00c1f950_test.cpp'
+        PassPattern = '00c1f950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f9f0'
+        Module = 'CVtable_012b3504'
+        Source = '00/c1/CVtable012b3504_Validate_00c1f9f0.cpp'
+        TestSource = '00/c1/CVtable012b3504_Validate_00c1f9f0_test.cpp'
+        PassPattern = '00c1f9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fa00'
+        Module = 'CVtable_012b3504'
+        Source = '00/c1/CVtable012b3504_Attach_00c1fa00.cpp'
+        TestSource = '00/c1/CVtable012b3504_Attach_00c1fa00_test.cpp'
+        PassPattern = '00c1fa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fa10'
+        Module = 'CVtable_012b3504'
+        Source = '00/c1/CVtable012b3504_Detach_00c1fa10.cpp'
+        TestSource = '00/c1/CVtable012b3504_Detach_00c1fa10_test.cpp'
+        PassPattern = '00c1fa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fab0'
+        Module = 'CPointerBase_00c1fcc0'
+        Source = '00/c1/CPointerBase00c1fcc0_Validate_00c1fab0.cpp'
+        TestSource = '00/c1/CPointerBase00c1fcc0_Validate_00c1fab0_test.cpp'
+        PassPattern = '00c1fab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fac0'
+        Module = 'CPointerBase_00c1fcc0'
+        Source = '00/c1/CPointerBase00c1fcc0_Attach_00c1fac0.cpp'
+        TestSource = '00/c1/CPointerBase00c1fcc0_Attach_00c1fac0_test.cpp'
+        PassPattern = '00c1fac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fae0'
+        Module = 'CPointerBase_00c1fcc0'
+        Source = '00/c1/CPointerBase00c1fcc0_Detach_00c1fae0.cpp'
+        TestSource = '00/c1/CPointerBase00c1fcc0_Detach_00c1fae0_test.cpp'
+        PassPattern = '00c1fae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fb90'
+        Module = 'CPointerBase_00c1fd60'
+        Source = '00/c1/CPointerBase00c1fd60_Validate_00c1fb90.cpp'
+        TestSource = '00/c1/CPointerBase00c1fd60_Validate_00c1fb90_test.cpp'
+        PassPattern = '00c1fb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fba0'
+        Module = 'CPointerBase_00c1fd60'
+        Source = '00/c1/CPointerBase00c1fd60_Attach_00c1fba0.cpp'
+        TestSource = '00/c1/CPointerBase00c1fd60_Attach_00c1fba0_test.cpp'
+        PassPattern = '00c1fba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fbc0'
+        Module = 'CPointerBase_00c1fd60'
+        Source = '00/c1/CPointerBase00c1fd60_Detach_00c1fbc0.cpp'
+        TestSource = '00/c1/CPointerBase00c1fd60_Detach_00c1fbc0_test.cpp'
+        PassPattern = '00c1fbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fc70'
+        Module = 'CPointerBase_00c1fe00'
+        Source = '00/c1/CPointerBase00c1fe00_Validate_00c1fc70.cpp'
+        TestSource = '00/c1/CPointerBase00c1fe00_Validate_00c1fc70_test.cpp'
+        PassPattern = '00c1fc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fc80'
+        Module = 'CPointerBase_00c1fe00'
+        Source = '00/c1/CPointerBase00c1fe00_Attach_00c1fc80.cpp'
+        TestSource = '00/c1/CPointerBase00c1fe00_Attach_00c1fc80_test.cpp'
+        PassPattern = '00c1fc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fca0'
+        Module = 'CPointerBase_00c1fe00'
+        Source = '00/c1/CPointerBase00c1fe00_Detach_00c1fca0.cpp'
+        TestSource = '00/c1/CPointerBase00c1fe00_Detach_00c1fca0_test.cpp'
+        PassPattern = '00c1fca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c22fc0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3a38>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetFirst_00c22fc0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetFirst_00c22fc0_test.cpp'
+        PassPattern = '00c22fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c22fd0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3a38>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetLast_00c22fd0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetLast_00c22fd0_test.cpp'
+        PassPattern = '00c22fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c22fe0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3a38>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetItemByIndex_00c22fe0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetItemByIndex_00c22fe0_test.cpp'
+        PassPattern = '00c22fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c22ff0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3a38>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3a38_Reserve_00c22ff0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3a38_Reserve_00c22ff0_test.cpp'
+        PassPattern = '00c22ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23000'
+        Module = 'PKCTRList<CUnprovenListItem_012b3a38>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetCount_00c23000.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3a38_GetCount_00c23000_test.cpp'
+        PassPattern = '00c23000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c235d0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3938>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3938_GetFirst_00c235d0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3938_GetFirst_00c235d0_test.cpp'
+        PassPattern = '00c235d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c235e0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3938>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3938_GetLast_00c235e0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3938_GetLast_00c235e0_test.cpp'
+        PassPattern = '00c235e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c235f0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3938>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3938_GetItemByIndex_00c235f0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3938_GetItemByIndex_00c235f0_test.cpp'
+        PassPattern = '00c235f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23600'
+        Module = 'PKCTRList<CUnprovenListItem_012b3938>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3938_Reserve_00c23600.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3938_Reserve_00c23600_test.cpp'
+        PassPattern = '00c23600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23610'
+        Module = 'PKCTRList<CUnprovenListItem_012b3938>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3938_GetCount_00c23610.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3938_GetCount_00c23610_test.cpp'
+        PassPattern = '00c23610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c236e0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3978>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3978_GetFirst_00c236e0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3978_GetFirst_00c236e0_test.cpp'
+        PassPattern = '00c236e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c236f0'
+        Module = 'PKCTRList<CUnprovenListItem_012b3978>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3978_GetLast_00c236f0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3978_GetLast_00c236f0_test.cpp'
+        PassPattern = '00c236f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23700'
+        Module = 'PKCTRList<CUnprovenListItem_012b3978>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3978_GetItemByIndex_00c23700.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3978_GetItemByIndex_00c23700_test.cpp'
+        PassPattern = '00c23700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23710'
+        Module = 'PKCTRList<CUnprovenListItem_012b3978>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3978_Reserve_00c23710.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3978_Reserve_00c23710_test.cpp'
+        PassPattern = '00c23710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23720'
+        Module = 'PKCTRList<CUnprovenListItem_012b3978>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b3978_GetCount_00c23720.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b3978_GetCount_00c23720_test.cpp'
+        PassPattern = '00c23720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c237f0'
+        Module = 'PKCTRList<CUnprovenListItem_012b39b8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetFirst_00c237f0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetFirst_00c237f0_test.cpp'
+        PassPattern = '00c237f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23800'
+        Module = 'PKCTRList<CUnprovenListItem_012b39b8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetLast_00c23800.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetLast_00c23800_test.cpp'
+        PassPattern = '00c23800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23810'
+        Module = 'PKCTRList<CUnprovenListItem_012b39b8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetItemByIndex_00c23810.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetItemByIndex_00c23810_test.cpp'
+        PassPattern = '00c23810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23820'
+        Module = 'PKCTRList<CUnprovenListItem_012b39b8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39b8_Reserve_00c23820.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39b8_Reserve_00c23820_test.cpp'
+        PassPattern = '00c23820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23830'
+        Module = 'PKCTRList<CUnprovenListItem_012b39b8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetCount_00c23830.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39b8_GetCount_00c23830_test.cpp'
+        PassPattern = '00c23830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23900'
+        Module = 'PKCTRList<CUnprovenListItem_012b39f8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetFirst_00c23900.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetFirst_00c23900_test.cpp'
+        PassPattern = '00c23900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23910'
+        Module = 'PKCTRList<CUnprovenListItem_012b39f8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetLast_00c23910.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetLast_00c23910_test.cpp'
+        PassPattern = '00c23910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23920'
+        Module = 'PKCTRList<CUnprovenListItem_012b39f8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetItemByIndex_00c23920.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetItemByIndex_00c23920_test.cpp'
+        PassPattern = '00c23920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23930'
+        Module = 'PKCTRList<CUnprovenListItem_012b39f8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39f8_Reserve_00c23930.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39f8_Reserve_00c23930_test.cpp'
+        PassPattern = '00c23930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c23940'
+        Module = 'PKCTRList<CUnprovenListItem_012b39f8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetCount_00c23940.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b39f8_GetCount_00c23940_test.cpp'
+        PassPattern = '00c23940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2ada0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4190>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4190_GetFirst_00c2ada0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4190_GetFirst_00c2ada0_test.cpp'
+        PassPattern = '00c2ada0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2adb0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4190>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4190_GetLast_00c2adb0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4190_GetLast_00c2adb0_test.cpp'
+        PassPattern = '00c2adb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2adc0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4190>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4190_GetItemByIndex_00c2adc0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4190_GetItemByIndex_00c2adc0_test.cpp'
+        PassPattern = '00c2adc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2add0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4190>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4190_Reserve_00c2add0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4190_Reserve_00c2add0_test.cpp'
+        PassPattern = '00c2add0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2ade0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4190>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4190_GetCount_00c2ade0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4190_GetCount_00c2ade0_test.cpp'
+        PassPattern = '00c2ade0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2aeb0'
+        Module = 'PKCTRList<CUnprovenListItem_012b41d0>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetFirst_00c2aeb0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetFirst_00c2aeb0_test.cpp'
+        PassPattern = '00c2aeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2aec0'
+        Module = 'PKCTRList<CUnprovenListItem_012b41d0>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetLast_00c2aec0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetLast_00c2aec0_test.cpp'
+        PassPattern = '00c2aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2aed0'
+        Module = 'PKCTRList<CUnprovenListItem_012b41d0>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetItemByIndex_00c2aed0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetItemByIndex_00c2aed0_test.cpp'
+        PassPattern = '00c2aed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2aee0'
+        Module = 'PKCTRList<CUnprovenListItem_012b41d0>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b41d0_Reserve_00c2aee0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b41d0_Reserve_00c2aee0_test.cpp'
+        PassPattern = '00c2aee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2aef0'
+        Module = 'PKCTRList<CUnprovenListItem_012b41d0>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetCount_00c2aef0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b41d0_GetCount_00c2aef0_test.cpp'
+        PassPattern = '00c2aef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2afc0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4210>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4210_GetFirst_00c2afc0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4210_GetFirst_00c2afc0_test.cpp'
+        PassPattern = '00c2afc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2afd0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4210>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4210_GetLast_00c2afd0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4210_GetLast_00c2afd0_test.cpp'
+        PassPattern = '00c2afd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2afe0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4210>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4210_GetItemByIndex_00c2afe0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4210_GetItemByIndex_00c2afe0_test.cpp'
+        PassPattern = '00c2afe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2aff0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4210>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4210_Reserve_00c2aff0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4210_Reserve_00c2aff0_test.cpp'
+        PassPattern = '00c2aff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2b000'
+        Module = 'PKCTRList<CUnprovenListItem_012b4210>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4210_GetCount_00c2b000.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4210_GetCount_00c2b000_test.cpp'
+        PassPattern = '00c2b000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2c050'
+        Module = 'PKCTRList<CUnprovenListItem_012b44c8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetFirst_00c2c050.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetFirst_00c2c050_test.cpp'
+        PassPattern = '00c2c050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2c060'
+        Module = 'PKCTRList<CUnprovenListItem_012b44c8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetLast_00c2c060.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetLast_00c2c060_test.cpp'
+        PassPattern = '00c2c060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2c070'
+        Module = 'PKCTRList<CUnprovenListItem_012b44c8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetItemByIndex_00c2c070.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetItemByIndex_00c2c070_test.cpp'
+        PassPattern = '00c2c070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2c080'
+        Module = 'PKCTRList<CUnprovenListItem_012b44c8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b44c8_Reserve_00c2c080.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b44c8_Reserve_00c2c080_test.cpp'
+        PassPattern = '00c2c080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2c090'
+        Module = 'PKCTRList<CUnprovenListItem_012b44c8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetCount_00c2c090.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b44c8_GetCount_00c2c090_test.cpp'
+        PassPattern = '00c2c090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2dd70'
+        Module = 'PKCTRList<CUnprovenListItem_012b4740>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4740_GetFirst_00c2dd70.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4740_GetFirst_00c2dd70_test.cpp'
+        PassPattern = '00c2dd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2dd80'
+        Module = 'PKCTRList<CUnprovenListItem_012b4740>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4740_GetLast_00c2dd80.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4740_GetLast_00c2dd80_test.cpp'
+        PassPattern = '00c2dd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2dd90'
+        Module = 'PKCTRList<CUnprovenListItem_012b4740>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4740_GetItemByIndex_00c2dd90.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4740_GetItemByIndex_00c2dd90_test.cpp'
+        PassPattern = '00c2dd90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2dda0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4740>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4740_Reserve_00c2dda0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4740_Reserve_00c2dda0_test.cpp'
+        PassPattern = '00c2dda0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2ddb0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4740>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4740_GetCount_00c2ddb0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4740_GetCount_00c2ddb0_test.cpp'
+        PassPattern = '00c2ddb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f540'
+        Module = 'PKCTRList<CUnprovenListItem_012b4998>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4998_GetFirst_00c2f540.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4998_GetFirst_00c2f540_test.cpp'
+        PassPattern = '00c2f540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f550'
+        Module = 'PKCTRList<CUnprovenListItem_012b4998>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4998_GetLast_00c2f550.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4998_GetLast_00c2f550_test.cpp'
+        PassPattern = '00c2f550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f560'
+        Module = 'PKCTRList<CUnprovenListItem_012b4998>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4998_GetItemByIndex_00c2f560.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4998_GetItemByIndex_00c2f560_test.cpp'
+        PassPattern = '00c2f560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f570'
+        Module = 'PKCTRList<CUnprovenListItem_012b4998>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4998_Reserve_00c2f570.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4998_Reserve_00c2f570_test.cpp'
+        PassPattern = '00c2f570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f580'
+        Module = 'PKCTRList<CUnprovenListItem_012b4998>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4998_GetCount_00c2f580.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4998_GetCount_00c2f580_test.cpp'
+        PassPattern = '00c2f580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f650'
+        Module = 'PKCTRList<CUnprovenListItem_012b49d8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetFirst_00c2f650.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetFirst_00c2f650_test.cpp'
+        PassPattern = '00c2f650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f660'
+        Module = 'PKCTRList<CUnprovenListItem_012b49d8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetLast_00c2f660.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetLast_00c2f660_test.cpp'
+        PassPattern = '00c2f660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f670'
+        Module = 'PKCTRList<CUnprovenListItem_012b49d8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetItemByIndex_00c2f670.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetItemByIndex_00c2f670_test.cpp'
+        PassPattern = '00c2f670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f680'
+        Module = 'PKCTRList<CUnprovenListItem_012b49d8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b49d8_Reserve_00c2f680.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b49d8_Reserve_00c2f680_test.cpp'
+        PassPattern = '00c2f680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f690'
+        Module = 'PKCTRList<CUnprovenListItem_012b49d8>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetCount_00c2f690.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b49d8_GetCount_00c2f690_test.cpp'
+        PassPattern = '00c2f690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f760'
+        Module = 'PKCTRList<CUnprovenListItem_012b4a18>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetFirst_00c2f760.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetFirst_00c2f760_test.cpp'
+        PassPattern = '00c2f760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f770'
+        Module = 'PKCTRList<CUnprovenListItem_012b4a18>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetLast_00c2f770.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetLast_00c2f770_test.cpp'
+        PassPattern = '00c2f770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f780'
+        Module = 'PKCTRList<CUnprovenListItem_012b4a18>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetItemByIndex_00c2f780.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetItemByIndex_00c2f780_test.cpp'
+        PassPattern = '00c2f780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f790'
+        Module = 'PKCTRList<CUnprovenListItem_012b4a18>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4a18_Reserve_00c2f790.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4a18_Reserve_00c2f790_test.cpp'
+        PassPattern = '00c2f790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2f7a0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4a18>'
+        Source = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetCount_00c2f7a0.cpp'
+        TestSource = '00/c2/PKCTRListCUnprovenListItem012b4a18_GetCount_00c2f7a0_test.cpp'
+        PassPattern = '00c2f7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c30b60'
+        Module = 'PKCTRList<CUnprovenListItem_012b4c30>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetFirst_00c30b60.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetFirst_00c30b60_test.cpp'
+        PassPattern = '00c30b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c30b70'
+        Module = 'PKCTRList<CUnprovenListItem_012b4c30>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetLast_00c30b70.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetLast_00c30b70_test.cpp'
+        PassPattern = '00c30b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c30b80'
+        Module = 'PKCTRList<CUnprovenListItem_012b4c30>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetItemByIndex_00c30b80.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetItemByIndex_00c30b80_test.cpp'
+        PassPattern = '00c30b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c30b90'
+        Module = 'PKCTRList<CUnprovenListItem_012b4c30>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b4c30_Reserve_00c30b90.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b4c30_Reserve_00c30b90_test.cpp'
+        PassPattern = '00c30b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c30ba0'
+        Module = 'PKCTRList<CUnprovenListItem_012b4c30>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetCount_00c30ba0.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b4c30_GetCount_00c30ba0_test.cpp'
+        PassPattern = '00c30ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c33070'
+        Module = 'CVtable_012b4f60'
+        Source = '00/c3/CVtable012b4f60_GetSize_00c33070.cpp'
+        TestSource = '00/c3/CVtable012b4f60_GetSize_00c33070_test.cpp'
+        PassPattern = '00c33070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c33080'
+        Module = 'CVtable_012b4f60'
+        Source = '00/c3/CVtable012b4f60_Read_00c33080.cpp'
+        TestSource = '00/c3/CVtable012b4f60_Read_00c33080_test.cpp'
+        PassPattern = '00c33080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c33090'
+        Module = 'CVtable_012b4f60'
+        Source = '00/c3/CVtable012b4f60_GetUnitSize_00c33090.cpp'
+        TestSource = '00/c3/CVtable012b4f60_GetUnitSize_00c33090_test.cpp'
+        PassPattern = '00c33090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36840'
+        Module = 'PKCTRList<CUnprovenListItem_012b50f0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetFirst_00c36840.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetFirst_00c36840_test.cpp'
+        PassPattern = '00c36840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36850'
+        Module = 'PKCTRList<CUnprovenListItem_012b50f0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetLast_00c36850.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetLast_00c36850_test.cpp'
+        PassPattern = '00c36850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36860'
+        Module = 'PKCTRList<CUnprovenListItem_012b50f0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetItemByIndex_00c36860.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetItemByIndex_00c36860_test.cpp'
+        PassPattern = '00c36860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36870'
+        Module = 'PKCTRList<CUnprovenListItem_012b50f0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b50f0_Reserve_00c36870.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b50f0_Reserve_00c36870_test.cpp'
+        PassPattern = '00c36870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36880'
+        Module = 'PKCTRList<CUnprovenListItem_012b50f0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetCount_00c36880.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b50f0_GetCount_00c36880_test.cpp'
+        PassPattern = '00c36880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c37ff0'
+        Module = 'PKCTRList<CUnprovenListItem_012b5298>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b5298_GetFirst_00c37ff0.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b5298_GetFirst_00c37ff0_test.cpp'
+        PassPattern = '00c37ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38000'
+        Module = 'PKCTRList<CUnprovenListItem_012b5298>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b5298_GetLast_00c38000.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b5298_GetLast_00c38000_test.cpp'
+        PassPattern = '00c38000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38010'
+        Module = 'PKCTRList<CUnprovenListItem_012b5298>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b5298_GetItemByIndex_00c38010.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b5298_GetItemByIndex_00c38010_test.cpp'
+        PassPattern = '00c38010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38020'
+        Module = 'PKCTRList<CUnprovenListItem_012b5298>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b5298_Reserve_00c38020.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b5298_Reserve_00c38020_test.cpp'
+        PassPattern = '00c38020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38030'
+        Module = 'PKCTRList<CUnprovenListItem_012b5298>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b5298_GetCount_00c38030.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b5298_GetCount_00c38030_test.cpp'
+        PassPattern = '00c38030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ad70'
+        Module = 'PKCTRList<CUnprovenListItem_012b54e8>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetFirst_00c3ad70.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetFirst_00c3ad70_test.cpp'
+        PassPattern = '00c3ad70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ad80'
+        Module = 'PKCTRList<CUnprovenListItem_012b54e8>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetLast_00c3ad80.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetLast_00c3ad80_test.cpp'
+        PassPattern = '00c3ad80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ad90'
+        Module = 'PKCTRList<CUnprovenListItem_012b54e8>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetItemByIndex_00c3ad90.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetItemByIndex_00c3ad90_test.cpp'
+        PassPattern = '00c3ad90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ada0'
+        Module = 'PKCTRList<CUnprovenListItem_012b54e8>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b54e8_Reserve_00c3ada0.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b54e8_Reserve_00c3ada0_test.cpp'
+        PassPattern = '00c3ada0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3adb0'
+        Module = 'PKCTRList<CUnprovenListItem_012b54e8>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetCount_00c3adb0.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b54e8_GetCount_00c3adb0_test.cpp'
+        PassPattern = '00c3adb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b300'
+        Module = 'PKCTRList<CUnprovenListItem_012b55c0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetFirst_00c3b300.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetFirst_00c3b300_test.cpp'
+        PassPattern = '00c3b300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b310'
+        Module = 'PKCTRList<CUnprovenListItem_012b55c0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetLast_00c3b310.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetLast_00c3b310_test.cpp'
+        PassPattern = '00c3b310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b320'
+        Module = 'PKCTRList<CUnprovenListItem_012b55c0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetItemByIndex_00c3b320.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetItemByIndex_00c3b320_test.cpp'
+        PassPattern = '00c3b320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b330'
+        Module = 'PKCTRList<CUnprovenListItem_012b55c0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b55c0_Reserve_00c3b330.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b55c0_Reserve_00c3b330_test.cpp'
+        PassPattern = '00c3b330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3b340'
+        Module = 'PKCTRList<CUnprovenListItem_012b55c0>'
+        Source = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetCount_00c3b340.cpp'
+        TestSource = '00/c3/PKCTRListCUnprovenListItem012b55c0_GetCount_00c3b340_test.cpp'
+        PassPattern = '00c3b340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c451a0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7bc8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetFirst_00c451a0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetFirst_00c451a0_test.cpp'
+        PassPattern = '00c451a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c451b0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7bc8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetLast_00c451b0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetLast_00c451b0_test.cpp'
+        PassPattern = '00c451b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c451c0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7bc8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetItemByIndex_00c451c0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetItemByIndex_00c451c0_test.cpp'
+        PassPattern = '00c451c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c451d0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7bc8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7bc8_Reserve_00c451d0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7bc8_Reserve_00c451d0_test.cpp'
+        PassPattern = '00c451d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c451e0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7bc8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetCount_00c451e0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7bc8_GetCount_00c451e0_test.cpp'
+        PassPattern = '00c451e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c46a70'
+        Module = 'PKCTRList<CUnprovenListItem_012b7d68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetFirst_00c46a70.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetFirst_00c46a70_test.cpp'
+        PassPattern = '00c46a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c46a80'
+        Module = 'PKCTRList<CUnprovenListItem_012b7d68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetLast_00c46a80.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetLast_00c46a80_test.cpp'
+        PassPattern = '00c46a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c46a90'
+        Module = 'PKCTRList<CUnprovenListItem_012b7d68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetItemByIndex_00c46a90.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetItemByIndex_00c46a90_test.cpp'
+        PassPattern = '00c46a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c46aa0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7d68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7d68_Reserve_00c46aa0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7d68_Reserve_00c46aa0_test.cpp'
+        PassPattern = '00c46aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c46ab0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7d68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetCount_00c46ab0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7d68_GetCount_00c46ab0_test.cpp'
+        PassPattern = '00c46ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c476a0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7e68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetFirst_00c476a0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetFirst_00c476a0_test.cpp'
+        PassPattern = '00c476a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c476b0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7e68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetLast_00c476b0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetLast_00c476b0_test.cpp'
+        PassPattern = '00c476b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c476c0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7e68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetItemByIndex_00c476c0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetItemByIndex_00c476c0_test.cpp'
+        PassPattern = '00c476c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c476d0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7e68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7e68_Reserve_00c476d0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7e68_Reserve_00c476d0_test.cpp'
+        PassPattern = '00c476d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c476e0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7e68>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetCount_00c476e0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7e68_GetCount_00c476e0_test.cpp'
+        PassPattern = '00c476e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c477b0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7ea8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetFirst_00c477b0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetFirst_00c477b0_test.cpp'
+        PassPattern = '00c477b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c477c0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7ea8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetLast_00c477c0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetLast_00c477c0_test.cpp'
+        PassPattern = '00c477c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c477d0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7ea8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetItemByIndex_00c477d0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetItemByIndex_00c477d0_test.cpp'
+        PassPattern = '00c477d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c477e0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7ea8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7ea8_Reserve_00c477e0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7ea8_Reserve_00c477e0_test.cpp'
+        PassPattern = '00c477e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c477f0'
+        Module = 'PKCTRList<CUnprovenListItem_012b7ea8>'
+        Source = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetCount_00c477f0.cpp'
+        TestSource = '00/c4/PKCTRListCUnprovenListItem012b7ea8_GetCount_00c477f0_test.cpp'
+        PassPattern = '00c477f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ec10'
+        Module = 'CCodaSystem'
+        Source = '00/c3/CCodaSystem_CreateHardwareVoiceA_00c3ec10.cpp'
+        TestSource = '00/c3/CCodaSystem_CreateHardwareVoiceA_00c3ec10_test.cpp'
+        PassPattern = '00c3ec10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ec20'
+        Module = 'CCodaSystem'
+        Source = '00/c3/CCodaSystem_CreateHardwareVoiceB_00c3ec20.cpp'
+        TestSource = '00/c3/CCodaSystem_CreateHardwareVoiceB_00c3ec20_test.cpp'
+        PassPattern = '00c3ec20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6170'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_QueryInterfaceadjustor4_00ca6170.cpp'
+        TestSource = '00/ca/CBaseInputPin_QueryInterfaceadjustor4_00ca6170_test.cpp'
+        PassPattern = '00ca6170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6180'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_AddRefadjustor4_00ca6180.cpp'
+        TestSource = '00/ca/CBaseInputPin_AddRefadjustor4_00ca6180_test.cpp'
+        PassPattern = '00ca6180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6190'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_Releaseadjustor4_00ca6190.cpp'
+        TestSource = '00/ca/CBaseInputPin_Releaseadjustor4_00ca6190_test.cpp'
+        PassPattern = '00ca6190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa720'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_QueryInterfaceadjustor4_00caa720.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_QueryInterfaceadjustor4_00caa720_test.cpp'
+        PassPattern = '00caa720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa730'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_AddRefadjustor4_00caa730.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_AddRefadjustor4_00caa730_test.cpp'
+        PassPattern = '00caa730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa740'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_Releaseadjustor4_00caa740.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_Releaseadjustor4_00caa740_test.cpp'
+        PassPattern = '00caa740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f29ff0'
+        Module = 'CCutsceneDef'
+        Source = '00/f2/CCutsceneDef_Copy_00f29ff0.cpp'
+        TestSource = '00/f2/CCutsceneDef_Copy_00f29ff0_test.cpp'
+        PassPattern = '00f29ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f2a000'
+        Module = 'CCutsceneDef'
+        Source = '00/f2/CCutsceneDef_operator_00f2a000.cpp'
+        TestSource = '00/f2/CCutsceneDef_operator_00f2a000_test.cpp'
+        PassPattern = '00f2a000_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

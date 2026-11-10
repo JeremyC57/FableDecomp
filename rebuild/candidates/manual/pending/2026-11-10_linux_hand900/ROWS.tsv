@@ -1,0 +1,12 @@
+address	kind	length	catalog_module	catalog_name	regrade_2026-11-09	masked_difflines	best_draft	callers	neighbours
+00ca6170	vendor	10	_gapscan	sub_00ca6170				abs .rdata 012bf3ac (1)	00ca6050 00ca6080 00ca6110 00ca61a0 00ca61b0 00ca61c0
+00ca6180	vendor	10	_gapscan	sub_00ca6180				abs .rdata 012bf3b0 (1)	00ca6050 00ca6080 00ca6110 00ca61a0 00ca61b0 00ca61c0
+00ca6190	vendor	10	_gapscan	sub_00ca6190				abs .rdata 012bf3b4 (1)	00ca6050 00ca6080 00ca6110 00ca61a0 00ca61b0 00ca61c0
+00caa720	vendor	10	_gapscan	sub_00caa720				abs .rdata 012bf748 (1)	00caa410 00caa4a0 00caa6e0 00caa750 00caa760 00caa770
+00caa730	vendor	10	_gapscan	sub_00caa730				abs .rdata 012bf74c (1)	00caa410 00caa4a0 00caa6e0 00caa750 00caa760 00caa770
+00caa740	vendor	10	_gapscan	sub_00caa740				abs .rdata 012bf750 (1)	00caa410 00caa4a0 00caa6e0 00caa750 00caa760 00caa770
+00c3ec10	split	27	_gapscan	sub_00c3ec10				abs .rdata 012b5bd0 (1)	00c3eb80 00c3eba0 00c3ebb0 00c3ec30 00c3ec80 00c3ee10
+00f29ff0	split	219	_gapscan	sub_00f29ff0				abs .rdata 012fb72c (1)	00f29dc0 00f29f40 00f29fa0 00f2a0d0 00f2a0f0 00f2a1d0
+005c8459	large	3235	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_77				abs .rdata 01254128 (1)	005c7b10 005c7d0d 005c7f07 005c9962 005c99be 005c99fd
+005c9a95	large	3065	CTCInventoryWeapons	CTCInventoryWeapons::vfunc_87				abs .rdata 01254150 (1)	005c9962 005c99be 005c99fd 005cac8d 005cb742 005cb780
+005b8743	large	3838	CTCInventoryClothing	ConstructScreenPC				call 0041fbdd (1)	005b6a2d 005b7049 005b70b8 005b9d8c 005b9de7 005b9ef3

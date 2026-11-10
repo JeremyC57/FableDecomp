@@ -1,0 +1,521 @@
+addr       parity           behav  name
+00c09c40   MATCH            PASS   GetFirst
+00c09c50   MATCH            PASS   GetLast
+00c09c60   MATCH            PASS   GetItemByIndex
+00c09c70   MATCH            PASS   Reserve
+00c09c80   MATCH            PASS   GetCount
+00c09ec0   MATCH            PASS   GetFirst
+00c09ed0   MATCH            PASS   GetLast
+00c09ee0   MATCH            PASS   GetItemByIndex
+00c09ef0   MATCH            PASS   Reserve
+00c09f00   MATCH            PASS   GetCount
+00c0f110   MATCH            PASS   GetFirst
+00c0f120   MATCH            PASS   GetLast
+00c0f130   MATCH            PASS   GetItemByIndex
+00c0f140   MATCH            PASS   Reserve
+00c0f150   MATCH            PASS   GetCount
+00c0f220   MATCH            PASS   GetFirst
+00c0f230   MATCH            PASS   GetLast
+00c0f240   MATCH            PASS   GetItemByIndex
+00c0f250   MATCH            PASS   Reserve
+00c0f260   MATCH            PASS   GetCount
+00c0f330   MATCH            PASS   GetFirst
+00c0f340   MATCH            PASS   GetLast
+00c0f350   MATCH            PASS   GetItemByIndex
+00c0f360   MATCH            PASS   Reserve
+00c0f370   MATCH            PASS   GetCount
+00c15220   MATCH            PASS   GetFirst
+00c15230   MATCH            PASS   GetLast
+00c15240   MATCH            PASS   GetItemByIndex
+00c15250   MATCH            PASS   Reserve
+00c15260   MATCH            PASS   GetCount
+00c15330   MATCH            PASS   GetFirst
+00c15340   MATCH            PASS   GetLast
+00c15350   MATCH            PASS   GetItemByIndex
+00c15360   MATCH            PASS   Reserve
+00c15370   MATCH            PASS   GetCount
+00c1f6d0   MATCH            PASS   Validate
+00c1f6e0   MATCH            PASS   Attach
+00c1f700   MATCH            PASS   Detach
+00c1f7b0   MATCH            PASS   Validate
+00c1f7c0   MATCH            PASS   Attach
+00c1f7d0   MATCH            PASS   Detach
+00c1f870   MATCH            PASS   Validate
+00c1f880   MATCH            PASS   Attach
+00c1f890   MATCH            PASS   Detach
+00c1f930   MATCH            PASS   Validate
+00c1f940   MATCH            PASS   Attach
+00c1f950   MATCH            PASS   Detach
+00c1f9f0   MATCH            PASS   Validate
+00c1fa00   MATCH            PASS   Attach
+00c1fa10   MATCH            PASS   Detach
+00c1fab0   MATCH            PASS   Validate
+00c1fac0   MATCH            PASS   Attach
+00c1fae0   MATCH            PASS   Detach
+00c1fb90   MATCH            PASS   Validate
+00c1fba0   MATCH            PASS   Attach
+00c1fbc0   MATCH            PASS   Detach
+00c1fc70   MATCH            PASS   Validate
+00c1fc80   MATCH            PASS   Attach
+00c1fca0   MATCH            PASS   Detach
+00c22fc0   MATCH            PASS   GetFirst
+00c22fd0   MATCH            PASS   GetLast
+00c22fe0   MATCH            PASS   GetItemByIndex
+00c22ff0   MATCH            PASS   Reserve
+00c23000   MATCH            PASS   GetCount
+00c235d0   MATCH            PASS   GetFirst
+00c235e0   MATCH            PASS   GetLast
+00c235f0   MATCH            PASS   GetItemByIndex
+00c23600   MATCH            PASS   Reserve
+00c23610   MATCH            PASS   GetCount
+00c236e0   MATCH            PASS   GetFirst
+00c236f0   MATCH            PASS   GetLast
+00c23700   MATCH            PASS   GetItemByIndex
+00c23710   MATCH            PASS   Reserve
+00c23720   MATCH            PASS   GetCount
+00c237f0   MATCH            PASS   GetFirst
+00c23800   MATCH            PASS   GetLast
+00c23810   MATCH            PASS   GetItemByIndex
+00c23820   MATCH            PASS   Reserve
+00c23830   MATCH            PASS   GetCount
+00c23900   MATCH            PASS   GetFirst
+00c23910   MATCH            PASS   GetLast
+00c23920   MATCH            PASS   GetItemByIndex
+00c23930   MATCH            PASS   Reserve
+00c23940   MATCH            PASS   GetCount
+00c2ada0   MATCH            PASS   GetFirst
+00c2adb0   MATCH            PASS   GetLast
+00c2adc0   MATCH            PASS   GetItemByIndex
+00c2add0   MATCH            PASS   Reserve
+00c2ade0   MATCH            PASS   GetCount
+00c2aeb0   MATCH            PASS   GetFirst
+00c2aec0   MATCH            PASS   GetLast
+00c2aed0   MATCH            PASS   GetItemByIndex
+00c2aee0   MATCH            PASS   Reserve
+00c2aef0   MATCH            PASS   GetCount
+00c2afc0   MATCH            PASS   GetFirst
+00c2afd0   MATCH            PASS   GetLast
+00c2afe0   MATCH            PASS   GetItemByIndex
+00c2aff0   MATCH            PASS   Reserve
+00c2b000   MATCH            PASS   GetCount
+00c2c050   MATCH            PASS   GetFirst
+00c2c060   MATCH            PASS   GetLast
+00c2c070   MATCH            PASS   GetItemByIndex
+00c2c080   MATCH            PASS   Reserve
+00c2c090   MATCH            PASS   GetCount
+00c2dd70   MATCH            PASS   GetFirst
+00c2dd80   MATCH            PASS   GetLast
+00c2dd90   MATCH            PASS   GetItemByIndex
+00c2dda0   MATCH            PASS   Reserve
+00c2ddb0   MATCH            PASS   GetCount
+00c2f540   MATCH            PASS   GetFirst
+00c2f550   MATCH            PASS   GetLast
+00c2f560   MATCH            PASS   GetItemByIndex
+00c2f570   MATCH            PASS   Reserve
+00c2f580   MATCH            PASS   GetCount
+00c2f650   MATCH            PASS   GetFirst
+00c2f660   MATCH            PASS   GetLast
+00c2f670   MATCH            PASS   GetItemByIndex
+00c2f680   MATCH            PASS   Reserve
+00c2f690   MATCH            PASS   GetCount
+00c2f760   MATCH            PASS   GetFirst
+00c2f770   MATCH            PASS   GetLast
+00c2f780   MATCH            PASS   GetItemByIndex
+00c2f790   MATCH            PASS   Reserve
+00c2f7a0   MATCH            PASS   GetCount
+00c30b60   MATCH            PASS   GetFirst
+00c30b70   MATCH            PASS   GetLast
+00c30b80   MATCH            PASS   GetItemByIndex
+00c30b90   MATCH            PASS   Reserve
+00c30ba0   MATCH            PASS   GetCount
+00c33070   MATCH            PASS   GetSize
+00c33080   MATCH            PASS   Read
+00c33090   MATCH            PASS   GetUnitSize
+00c36840   MATCH            PASS   GetFirst
+00c36850   MATCH            PASS   GetLast
+00c36860   MATCH            PASS   GetItemByIndex
+00c36870   MATCH            PASS   Reserve
+00c36880   MATCH            PASS   GetCount
+00c37ff0   MATCH            PASS   GetFirst
+00c38000   MATCH            PASS   GetLast
+00c38010   MATCH            PASS   GetItemByIndex
+00c38020   MATCH            PASS   Reserve
+00c38030   MATCH            PASS   GetCount
+00c3ad70   MATCH            PASS   GetFirst
+00c3ad80   MATCH            PASS   GetLast
+00c3ad90   MATCH            PASS   GetItemByIndex
+00c3ada0   MATCH            PASS   Reserve
+00c3adb0   MATCH            PASS   GetCount
+00c3b300   MATCH            PASS   GetFirst
+00c3b310   MATCH            PASS   GetLast
+00c3b320   MATCH            PASS   GetItemByIndex
+00c3b330   MATCH            PASS   Reserve
+00c3b340   MATCH            PASS   GetCount
+00c451a0   MATCH            PASS   GetFirst
+00c451b0   MATCH            PASS   GetLast
+00c451c0   MATCH            PASS   GetItemByIndex
+00c451d0   MATCH            PASS   Reserve
+00c451e0   MATCH            PASS   GetCount
+00c46a70   MATCH            PASS   GetFirst
+00c46a80   MATCH            PASS   GetLast
+00c46a90   MATCH            PASS   GetItemByIndex
+00c46aa0   MATCH            PASS   Reserve
+00c46ab0   MATCH            PASS   GetCount
+00c476a0   MATCH            PASS   GetFirst
+00c476b0   MATCH            PASS   GetLast
+00c476c0   MATCH            PASS   GetItemByIndex
+00c476d0   MATCH            PASS   Reserve
+00c476e0   MATCH            PASS   GetCount
+00c477b0   MATCH            PASS   GetFirst
+00c477c0   MATCH            PASS   GetLast
+00c477d0   MATCH            PASS   GetItemByIndex
+00c477e0   MATCH            PASS   Reserve
+00c477f0   MATCH            PASS   GetCount
+
+WINS: 172
+  00c09c40 MATCH PKCTRList<CListItem>::?GetFirst@?$PKCTRList@UCListItem@@@@UAEPAUCListItem@@XZ
+  00c09c50 MATCH PKCTRList<CListItem>::?GetLast@?$PKCTRList@UCListItem@@@@UAEPAUCListItem@@XZ
+  00c09c60 MATCH PKCTRList<CListItem>::?GetItemByIndex@?$PKCTRList@UCListItem@@@@UAEPAUCListItem@@J@Z
+  00c09c70 MATCH PKCTRList<CListItem>::?Reserve@?$PKCTRList@UCListItem@@@@UAEXJ@Z
+  00c09c80 MATCH PKCTRList<CListItem>::?GetCount@?$PKCTRList@UCListItem@@@@UAEJXZ
+  00c09ec0 MATCH PKCTRList<CUnprovenListItem_012b1c00>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b1c00@@@@UAEPAVCUnprovenListItem_012b1c00@@XZ
+  00c09ed0 MATCH PKCTRList<CUnprovenListItem_012b1c00>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b1c00@@@@UAEPAVCUnprovenListItem_012b1c00@@XZ
+  00c09ee0 MATCH PKCTRList<CUnprovenListItem_012b1c00>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b1c00@@@@UAEPAVCUnprovenListItem_012b1c00@@J@Z
+  00c09ef0 MATCH PKCTRList<CUnprovenListItem_012b1c00>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b1c00@@@@UAEXJ@Z
+  00c09f00 MATCH PKCTRList<CUnprovenListItem_012b1c00>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b1c00@@@@UAEJXZ
+  00c0f110 MATCH PKCTRList<CUnprovenListItem_012b2248>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b2248@@@@UAEPAVCUnprovenListItem_012b2248@@XZ
+  00c0f120 MATCH PKCTRList<CUnprovenListItem_012b2248>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b2248@@@@UAEPAVCUnprovenListItem_012b2248@@XZ
+  00c0f130 MATCH PKCTRList<CUnprovenListItem_012b2248>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b2248@@@@UAEPAVCUnprovenListItem_012b2248@@J@Z
+  00c0f140 MATCH PKCTRList<CUnprovenListItem_012b2248>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b2248@@@@UAEXJ@Z
+  00c0f150 MATCH PKCTRList<CUnprovenListItem_012b2248>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b2248@@@@UAEJXZ
+  00c0f220 MATCH PKCTRList<CUnprovenListItem_012b2288>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b2288@@@@UAEPAVCUnprovenListItem_012b2288@@XZ
+  00c0f230 MATCH PKCTRList<CUnprovenListItem_012b2288>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b2288@@@@UAEPAVCUnprovenListItem_012b2288@@XZ
+  00c0f240 MATCH PKCTRList<CUnprovenListItem_012b2288>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b2288@@@@UAEPAVCUnprovenListItem_012b2288@@J@Z
+  00c0f250 MATCH PKCTRList<CUnprovenListItem_012b2288>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b2288@@@@UAEXJ@Z
+  00c0f260 MATCH PKCTRList<CUnprovenListItem_012b2288>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b2288@@@@UAEJXZ
+  00c0f330 MATCH PKCTRList<CUnprovenListItem_012b22c8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b22c8@@@@UAEPAVCUnprovenListItem_012b22c8@@XZ
+  00c0f340 MATCH PKCTRList<CUnprovenListItem_012b22c8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b22c8@@@@UAEPAVCUnprovenListItem_012b22c8@@XZ
+  00c0f350 MATCH PKCTRList<CUnprovenListItem_012b22c8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b22c8@@@@UAEPAVCUnprovenListItem_012b22c8@@J@Z
+  00c0f360 MATCH PKCTRList<CUnprovenListItem_012b22c8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b22c8@@@@UAEXJ@Z
+  00c0f370 MATCH PKCTRList<CUnprovenListItem_012b22c8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b22c8@@@@UAEJXZ
+  00c15220 MATCH PKCTRList<CUnprovenListItem_012b2848>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b2848@@@@UAEPAVCUnprovenListItem_012b2848@@XZ
+  00c15230 MATCH PKCTRList<CUnprovenListItem_012b2848>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b2848@@@@UAEPAVCUnprovenListItem_012b2848@@XZ
+  00c15240 MATCH PKCTRList<CUnprovenListItem_012b2848>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b2848@@@@UAEPAVCUnprovenListItem_012b2848@@J@Z
+  00c15250 MATCH PKCTRList<CUnprovenListItem_012b2848>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b2848@@@@UAEXJ@Z
+  00c15260 MATCH PKCTRList<CUnprovenListItem_012b2848>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b2848@@@@UAEJXZ
+  00c15330 MATCH PKCTRList<CUnprovenListItem_012b2888>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b2888@@@@UAEPAVCUnprovenListItem_012b2888@@XZ
+  00c15340 MATCH PKCTRList<CUnprovenListItem_012b2888>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b2888@@@@UAEPAVCUnprovenListItem_012b2888@@XZ
+  00c15350 MATCH PKCTRList<CUnprovenListItem_012b2888>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b2888@@@@UAEPAVCUnprovenListItem_012b2888@@J@Z
+  00c15360 MATCH PKCTRList<CUnprovenListItem_012b2888>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b2888@@@@UAEXJ@Z
+  00c15370 MATCH PKCTRList<CUnprovenListItem_012b2888>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b2888@@@@UAEJXZ
+  00c1f6d0 MATCH CHashedItem::?Validate@CHashedItem@@UAEXXZ
+  00c1f6e0 MATCH CHashedItem::?Attach@CHashedItem@@UAEXPAUCItemDispatcher@@@Z
+  00c1f700 MATCH CHashedItem::?Detach@CHashedItem@@UAEXPAUCItemDispatcher@@@Z
+  00c1f7b0 MATCH CKeyedItem::?Validate@CKeyedItem@@UAEXXZ
+  00c1f7c0 MATCH CKeyedItem::?Attach@CKeyedItem@@UAEXPAUCItemDispatcher@@@Z
+  00c1f7d0 MATCH CKeyedItem::?Detach@CKeyedItem@@UAEXPAUCItemDispatcher@@@Z
+  00c1f870 MATCH CVtable_012b34bc::?Validate@CVtable_012b34bc@@UAEXXZ
+  00c1f880 MATCH CVtable_012b34bc::?Attach@CVtable_012b34bc@@UAEXPAUCItemDispatcher@@@Z
+  00c1f890 MATCH CVtable_012b34bc::?Detach@CVtable_012b34bc@@UAEXPAUCItemDispatcher@@@Z
+  00c1f930 MATCH CVtable_012b34e0::?Validate@CVtable_012b34e0@@UAEXXZ
+  00c1f940 MATCH CVtable_012b34e0::?Attach@CVtable_012b34e0@@UAEXPAUCItemDispatcher@@@Z
+  00c1f950 MATCH CVtable_012b34e0::?Detach@CVtable_012b34e0@@UAEXPAUCItemDispatcher@@@Z
+  00c1f9f0 MATCH CVtable_012b3504::?Validate@CVtable_012b3504@@UAEXXZ
+  00c1fa00 MATCH CVtable_012b3504::?Attach@CVtable_012b3504@@UAEXPAUCItemDispatcher@@@Z
+  00c1fa10 MATCH CVtable_012b3504::?Detach@CVtable_012b3504@@UAEXPAUCItemDispatcher@@@Z
+  00c1fab0 MATCH CPointerBase_00c1fcc0::?Validate@CPointerBase_00c1fcc0@@UAEXXZ
+  00c1fac0 MATCH CPointerBase_00c1fcc0::?Attach@CPointerBase_00c1fcc0@@UAEXPAUCItemDispatcher@@@Z
+  00c1fae0 MATCH CPointerBase_00c1fcc0::?Detach@CPointerBase_00c1fcc0@@UAEXPAUCItemDispatcher@@@Z
+  00c1fb90 MATCH CPointerBase_00c1fd60::?Validate@CPointerBase_00c1fd60@@UAEXXZ
+  00c1fba0 MATCH CPointerBase_00c1fd60::?Attach@CPointerBase_00c1fd60@@UAEXPAUCItemDispatcher@@@Z
+  00c1fbc0 MATCH CPointerBase_00c1fd60::?Detach@CPointerBase_00c1fd60@@UAEXPAUCItemDispatcher@@@Z
+  00c1fc70 MATCH CPointerBase_00c1fe00::?Validate@CPointerBase_00c1fe00@@UAEXXZ
+  00c1fc80 MATCH CPointerBase_00c1fe00::?Attach@CPointerBase_00c1fe00@@UAEXPAUCItemDispatcher@@@Z
+  00c1fca0 MATCH CPointerBase_00c1fe00::?Detach@CPointerBase_00c1fe00@@UAEXPAUCItemDispatcher@@@Z
+  00c22fc0 MATCH PKCTRList<CUnprovenListItem_012b3a38>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b3a38@@@@UAEPAVCUnprovenListItem_012b3a38@@XZ
+  00c22fd0 MATCH PKCTRList<CUnprovenListItem_012b3a38>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b3a38@@@@UAEPAVCUnprovenListItem_012b3a38@@XZ
+  00c22fe0 MATCH PKCTRList<CUnprovenListItem_012b3a38>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b3a38@@@@UAEPAVCUnprovenListItem_012b3a38@@J@Z
+  00c22ff0 MATCH PKCTRList<CUnprovenListItem_012b3a38>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b3a38@@@@UAEXJ@Z
+  00c23000 MATCH PKCTRList<CUnprovenListItem_012b3a38>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b3a38@@@@UAEJXZ
+  00c235d0 MATCH PKCTRList<CUnprovenListItem_012b3938>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b3938@@@@UAEPAVCUnprovenListItem_012b3938@@XZ
+  00c235e0 MATCH PKCTRList<CUnprovenListItem_012b3938>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b3938@@@@UAEPAVCUnprovenListItem_012b3938@@XZ
+  00c235f0 MATCH PKCTRList<CUnprovenListItem_012b3938>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b3938@@@@UAEPAVCUnprovenListItem_012b3938@@J@Z
+  00c23600 MATCH PKCTRList<CUnprovenListItem_012b3938>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b3938@@@@UAEXJ@Z
+  00c23610 MATCH PKCTRList<CUnprovenListItem_012b3938>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b3938@@@@UAEJXZ
+  00c236e0 MATCH PKCTRList<CUnprovenListItem_012b3978>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b3978@@@@UAEPAVCUnprovenListItem_012b3978@@XZ
+  00c236f0 MATCH PKCTRList<CUnprovenListItem_012b3978>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b3978@@@@UAEPAVCUnprovenListItem_012b3978@@XZ
+  00c23700 MATCH PKCTRList<CUnprovenListItem_012b3978>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b3978@@@@UAEPAVCUnprovenListItem_012b3978@@J@Z
+  00c23710 MATCH PKCTRList<CUnprovenListItem_012b3978>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b3978@@@@UAEXJ@Z
+  00c23720 MATCH PKCTRList<CUnprovenListItem_012b3978>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b3978@@@@UAEJXZ
+  00c237f0 MATCH PKCTRList<CUnprovenListItem_012b39b8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b39b8@@@@UAEPAVCUnprovenListItem_012b39b8@@XZ
+  00c23800 MATCH PKCTRList<CUnprovenListItem_012b39b8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b39b8@@@@UAEPAVCUnprovenListItem_012b39b8@@XZ
+  00c23810 MATCH PKCTRList<CUnprovenListItem_012b39b8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b39b8@@@@UAEPAVCUnprovenListItem_012b39b8@@J@Z
+  00c23820 MATCH PKCTRList<CUnprovenListItem_012b39b8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b39b8@@@@UAEXJ@Z
+  00c23830 MATCH PKCTRList<CUnprovenListItem_012b39b8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b39b8@@@@UAEJXZ
+  00c23900 MATCH PKCTRList<CUnprovenListItem_012b39f8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b39f8@@@@UAEPAVCUnprovenListItem_012b39f8@@XZ
+  00c23910 MATCH PKCTRList<CUnprovenListItem_012b39f8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b39f8@@@@UAEPAVCUnprovenListItem_012b39f8@@XZ
+  00c23920 MATCH PKCTRList<CUnprovenListItem_012b39f8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b39f8@@@@UAEPAVCUnprovenListItem_012b39f8@@J@Z
+  00c23930 MATCH PKCTRList<CUnprovenListItem_012b39f8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b39f8@@@@UAEXJ@Z
+  00c23940 MATCH PKCTRList<CUnprovenListItem_012b39f8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b39f8@@@@UAEJXZ
+  00c2ada0 MATCH PKCTRList<CUnprovenListItem_012b4190>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b4190@@@@UAEPAVCUnprovenListItem_012b4190@@XZ
+  00c2adb0 MATCH PKCTRList<CUnprovenListItem_012b4190>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b4190@@@@UAEPAVCUnprovenListItem_012b4190@@XZ
+  00c2adc0 MATCH PKCTRList<CUnprovenListItem_012b4190>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b4190@@@@UAEPAVCUnprovenListItem_012b4190@@J@Z
+  00c2add0 MATCH PKCTRList<CUnprovenListItem_012b4190>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b4190@@@@UAEXJ@Z
+  00c2ade0 MATCH PKCTRList<CUnprovenListItem_012b4190>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b4190@@@@UAEJXZ
+  00c2aeb0 MATCH PKCTRList<CUnprovenListItem_012b41d0>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b41d0@@@@UAEPAVCUnprovenListItem_012b41d0@@XZ
+  00c2aec0 MATCH PKCTRList<CUnprovenListItem_012b41d0>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b41d0@@@@UAEPAVCUnprovenListItem_012b41d0@@XZ
+  00c2aed0 MATCH PKCTRList<CUnprovenListItem_012b41d0>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b41d0@@@@UAEPAVCUnprovenListItem_012b41d0@@J@Z
+  00c2aee0 MATCH PKCTRList<CUnprovenListItem_012b41d0>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b41d0@@@@UAEXJ@Z
+  00c2aef0 MATCH PKCTRList<CUnprovenListItem_012b41d0>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b41d0@@@@UAEJXZ
+  00c2afc0 MATCH PKCTRList<CUnprovenListItem_012b4210>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b4210@@@@UAEPAVCUnprovenListItem_012b4210@@XZ
+  00c2afd0 MATCH PKCTRList<CUnprovenListItem_012b4210>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b4210@@@@UAEPAVCUnprovenListItem_012b4210@@XZ
+  00c2afe0 MATCH PKCTRList<CUnprovenListItem_012b4210>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b4210@@@@UAEPAVCUnprovenListItem_012b4210@@J@Z
+  00c2aff0 MATCH PKCTRList<CUnprovenListItem_012b4210>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b4210@@@@UAEXJ@Z
+  00c2b000 MATCH PKCTRList<CUnprovenListItem_012b4210>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b4210@@@@UAEJXZ
+  00c2c050 MATCH PKCTRList<CUnprovenListItem_012b44c8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b44c8@@@@UAEPAVCUnprovenListItem_012b44c8@@XZ
+  00c2c060 MATCH PKCTRList<CUnprovenListItem_012b44c8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b44c8@@@@UAEPAVCUnprovenListItem_012b44c8@@XZ
+  00c2c070 MATCH PKCTRList<CUnprovenListItem_012b44c8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b44c8@@@@UAEPAVCUnprovenListItem_012b44c8@@J@Z
+  00c2c080 MATCH PKCTRList<CUnprovenListItem_012b44c8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b44c8@@@@UAEXJ@Z
+  00c2c090 MATCH PKCTRList<CUnprovenListItem_012b44c8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b44c8@@@@UAEJXZ
+  00c2dd70 MATCH PKCTRList<CUnprovenListItem_012b4740>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b4740@@@@UAEPAVCUnprovenListItem_012b4740@@XZ
+  00c2dd80 MATCH PKCTRList<CUnprovenListItem_012b4740>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b4740@@@@UAEPAVCUnprovenListItem_012b4740@@XZ
+  00c2dd90 MATCH PKCTRList<CUnprovenListItem_012b4740>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b4740@@@@UAEPAVCUnprovenListItem_012b4740@@J@Z
+  00c2dda0 MATCH PKCTRList<CUnprovenListItem_012b4740>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b4740@@@@UAEXJ@Z
+  00c2ddb0 MATCH PKCTRList<CUnprovenListItem_012b4740>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b4740@@@@UAEJXZ
+  00c2f540 MATCH PKCTRList<CUnprovenListItem_012b4998>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b4998@@@@UAEPAVCUnprovenListItem_012b4998@@XZ
+  00c2f550 MATCH PKCTRList<CUnprovenListItem_012b4998>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b4998@@@@UAEPAVCUnprovenListItem_012b4998@@XZ
+  00c2f560 MATCH PKCTRList<CUnprovenListItem_012b4998>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b4998@@@@UAEPAVCUnprovenListItem_012b4998@@J@Z
+  00c2f570 MATCH PKCTRList<CUnprovenListItem_012b4998>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b4998@@@@UAEXJ@Z
+  00c2f580 MATCH PKCTRList<CUnprovenListItem_012b4998>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b4998@@@@UAEJXZ
+  00c2f650 MATCH PKCTRList<CUnprovenListItem_012b49d8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b49d8@@@@UAEPAVCUnprovenListItem_012b49d8@@XZ
+  00c2f660 MATCH PKCTRList<CUnprovenListItem_012b49d8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b49d8@@@@UAEPAVCUnprovenListItem_012b49d8@@XZ
+  00c2f670 MATCH PKCTRList<CUnprovenListItem_012b49d8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b49d8@@@@UAEPAVCUnprovenListItem_012b49d8@@J@Z
+  00c2f680 MATCH PKCTRList<CUnprovenListItem_012b49d8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b49d8@@@@UAEXJ@Z
+  00c2f690 MATCH PKCTRList<CUnprovenListItem_012b49d8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b49d8@@@@UAEJXZ
+  00c2f760 MATCH PKCTRList<CUnprovenListItem_012b4a18>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b4a18@@@@UAEPAVCUnprovenListItem_012b4a18@@XZ
+  00c2f770 MATCH PKCTRList<CUnprovenListItem_012b4a18>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b4a18@@@@UAEPAVCUnprovenListItem_012b4a18@@XZ
+  00c2f780 MATCH PKCTRList<CUnprovenListItem_012b4a18>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b4a18@@@@UAEPAVCUnprovenListItem_012b4a18@@J@Z
+  00c2f790 MATCH PKCTRList<CUnprovenListItem_012b4a18>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b4a18@@@@UAEXJ@Z
+  00c2f7a0 MATCH PKCTRList<CUnprovenListItem_012b4a18>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b4a18@@@@UAEJXZ
+  00c30b60 MATCH PKCTRList<CUnprovenListItem_012b4c30>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b4c30@@@@UAEPAVCUnprovenListItem_012b4c30@@XZ
+  00c30b70 MATCH PKCTRList<CUnprovenListItem_012b4c30>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b4c30@@@@UAEPAVCUnprovenListItem_012b4c30@@XZ
+  00c30b80 MATCH PKCTRList<CUnprovenListItem_012b4c30>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b4c30@@@@UAEPAVCUnprovenListItem_012b4c30@@J@Z
+  00c30b90 MATCH PKCTRList<CUnprovenListItem_012b4c30>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b4c30@@@@UAEXJ@Z
+  00c30ba0 MATCH PKCTRList<CUnprovenListItem_012b4c30>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b4c30@@@@UAEJXZ
+  00c33070 MATCH CVtable_012b4f60::?GetSize@CVtable_012b4f60@@UAE_NPAK@Z
+  00c33080 MATCH CVtable_012b4f60::?Read@CVtable_012b4f60@@UAE_NKJPAX000@Z
+  00c33090 MATCH CVtable_012b4f60::?GetUnitSize@CVtable_012b4f60@@UAEKXZ
+  00c36840 MATCH PKCTRList<CUnprovenListItem_012b50f0>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b50f0@@@@UAEPAVCUnprovenListItem_012b50f0@@XZ
+  00c36850 MATCH PKCTRList<CUnprovenListItem_012b50f0>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b50f0@@@@UAEPAVCUnprovenListItem_012b50f0@@XZ
+  00c36860 MATCH PKCTRList<CUnprovenListItem_012b50f0>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b50f0@@@@UAEPAVCUnprovenListItem_012b50f0@@J@Z
+  00c36870 MATCH PKCTRList<CUnprovenListItem_012b50f0>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b50f0@@@@UAEXJ@Z
+  00c36880 MATCH PKCTRList<CUnprovenListItem_012b50f0>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b50f0@@@@UAEJXZ
+  00c37ff0 MATCH PKCTRList<CUnprovenListItem_012b5298>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b5298@@@@UAEPAVCUnprovenListItem_012b5298@@XZ
+  00c38000 MATCH PKCTRList<CUnprovenListItem_012b5298>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b5298@@@@UAEPAVCUnprovenListItem_012b5298@@XZ
+  00c38010 MATCH PKCTRList<CUnprovenListItem_012b5298>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b5298@@@@UAEPAVCUnprovenListItem_012b5298@@J@Z
+  00c38020 MATCH PKCTRList<CUnprovenListItem_012b5298>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b5298@@@@UAEXJ@Z
+  00c38030 MATCH PKCTRList<CUnprovenListItem_012b5298>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b5298@@@@UAEJXZ
+  00c3ad70 MATCH PKCTRList<CUnprovenListItem_012b54e8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b54e8@@@@UAEPAVCUnprovenListItem_012b54e8@@XZ
+  00c3ad80 MATCH PKCTRList<CUnprovenListItem_012b54e8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b54e8@@@@UAEPAVCUnprovenListItem_012b54e8@@XZ
+  00c3ad90 MATCH PKCTRList<CUnprovenListItem_012b54e8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b54e8@@@@UAEPAVCUnprovenListItem_012b54e8@@J@Z
+  00c3ada0 MATCH PKCTRList<CUnprovenListItem_012b54e8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b54e8@@@@UAEXJ@Z
+  00c3adb0 MATCH PKCTRList<CUnprovenListItem_012b54e8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b54e8@@@@UAEJXZ
+  00c3b300 MATCH PKCTRList<CUnprovenListItem_012b55c0>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b55c0@@@@UAEPAVCUnprovenListItem_012b55c0@@XZ
+  00c3b310 MATCH PKCTRList<CUnprovenListItem_012b55c0>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b55c0@@@@UAEPAVCUnprovenListItem_012b55c0@@XZ
+  00c3b320 MATCH PKCTRList<CUnprovenListItem_012b55c0>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b55c0@@@@UAEPAVCUnprovenListItem_012b55c0@@J@Z
+  00c3b330 MATCH PKCTRList<CUnprovenListItem_012b55c0>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b55c0@@@@UAEXJ@Z
+  00c3b340 MATCH PKCTRList<CUnprovenListItem_012b55c0>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b55c0@@@@UAEJXZ
+  00c451a0 MATCH PKCTRList<CUnprovenListItem_012b7bc8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b7bc8@@@@UAEPAVCUnprovenListItem_012b7bc8@@XZ
+  00c451b0 MATCH PKCTRList<CUnprovenListItem_012b7bc8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b7bc8@@@@UAEPAVCUnprovenListItem_012b7bc8@@XZ
+  00c451c0 MATCH PKCTRList<CUnprovenListItem_012b7bc8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b7bc8@@@@UAEPAVCUnprovenListItem_012b7bc8@@J@Z
+  00c451d0 MATCH PKCTRList<CUnprovenListItem_012b7bc8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b7bc8@@@@UAEXJ@Z
+  00c451e0 MATCH PKCTRList<CUnprovenListItem_012b7bc8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b7bc8@@@@UAEJXZ
+  00c46a70 MATCH PKCTRList<CUnprovenListItem_012b7d68>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b7d68@@@@UAEPAVCUnprovenListItem_012b7d68@@XZ
+  00c46a80 MATCH PKCTRList<CUnprovenListItem_012b7d68>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b7d68@@@@UAEPAVCUnprovenListItem_012b7d68@@XZ
+  00c46a90 MATCH PKCTRList<CUnprovenListItem_012b7d68>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b7d68@@@@UAEPAVCUnprovenListItem_012b7d68@@J@Z
+  00c46aa0 MATCH PKCTRList<CUnprovenListItem_012b7d68>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b7d68@@@@UAEXJ@Z
+  00c46ab0 MATCH PKCTRList<CUnprovenListItem_012b7d68>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b7d68@@@@UAEJXZ
+  00c476a0 MATCH PKCTRList<CUnprovenListItem_012b7e68>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b7e68@@@@UAEPAVCUnprovenListItem_012b7e68@@XZ
+  00c476b0 MATCH PKCTRList<CUnprovenListItem_012b7e68>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b7e68@@@@UAEPAVCUnprovenListItem_012b7e68@@XZ
+  00c476c0 MATCH PKCTRList<CUnprovenListItem_012b7e68>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b7e68@@@@UAEPAVCUnprovenListItem_012b7e68@@J@Z
+  00c476d0 MATCH PKCTRList<CUnprovenListItem_012b7e68>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b7e68@@@@UAEXJ@Z
+  00c476e0 MATCH PKCTRList<CUnprovenListItem_012b7e68>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b7e68@@@@UAEJXZ
+  00c477b0 MATCH PKCTRList<CUnprovenListItem_012b7ea8>::?GetFirst@?$PKCTRList@VCUnprovenListItem_012b7ea8@@@@UAEPAVCUnprovenListItem_012b7ea8@@XZ
+  00c477c0 MATCH PKCTRList<CUnprovenListItem_012b7ea8>::?GetLast@?$PKCTRList@VCUnprovenListItem_012b7ea8@@@@UAEPAVCUnprovenListItem_012b7ea8@@XZ
+  00c477d0 MATCH PKCTRList<CUnprovenListItem_012b7ea8>::?GetItemByIndex@?$PKCTRList@VCUnprovenListItem_012b7ea8@@@@UAEPAVCUnprovenListItem_012b7ea8@@J@Z
+  00c477e0 MATCH PKCTRList<CUnprovenListItem_012b7ea8>::?Reserve@?$PKCTRList@VCUnprovenListItem_012b7ea8@@@@UAEXJ@Z
+  00c477f0 MATCH PKCTRList<CUnprovenListItem_012b7ea8>::?GetCount@?$PKCTRList@VCUnprovenListItem_012b7ea8@@@@UAEJXZ
+
+LANDED 172 wins into src/compiled + tests + catalog + oracle
+  PKCTRListCListItem_GetFirst_00c09c40
+  PKCTRListCListItem_GetLast_00c09c50
+  PKCTRListCListItem_GetItemByIndex_00c09c60
+  PKCTRListCListItem_Reserve_00c09c70
+  PKCTRListCListItem_GetCount_00c09c80
+  PKCTRListCUnprovenListItem012b1c00_GetFirst_00c09ec0
+  PKCTRListCUnprovenListItem012b1c00_GetLast_00c09ed0
+  PKCTRListCUnprovenListItem012b1c00_GetItemByIndex_00c09ee0
+  PKCTRListCUnprovenListItem012b1c00_Reserve_00c09ef0
+  PKCTRListCUnprovenListItem012b1c00_GetCount_00c09f00
+  PKCTRListCUnprovenListItem012b2248_GetFirst_00c0f110
+  PKCTRListCUnprovenListItem012b2248_GetLast_00c0f120
+  PKCTRListCUnprovenListItem012b2248_GetItemByIndex_00c0f130
+  PKCTRListCUnprovenListItem012b2248_Reserve_00c0f140
+  PKCTRListCUnprovenListItem012b2248_GetCount_00c0f150
+  PKCTRListCUnprovenListItem012b2288_GetFirst_00c0f220
+  PKCTRListCUnprovenListItem012b2288_GetLast_00c0f230
+  PKCTRListCUnprovenListItem012b2288_GetItemByIndex_00c0f240
+  PKCTRListCUnprovenListItem012b2288_Reserve_00c0f250
+  PKCTRListCUnprovenListItem012b2288_GetCount_00c0f260
+  PKCTRListCUnprovenListItem012b22c8_GetFirst_00c0f330
+  PKCTRListCUnprovenListItem012b22c8_GetLast_00c0f340
+  PKCTRListCUnprovenListItem012b22c8_GetItemByIndex_00c0f350
+  PKCTRListCUnprovenListItem012b22c8_Reserve_00c0f360
+  PKCTRListCUnprovenListItem012b22c8_GetCount_00c0f370
+  PKCTRListCUnprovenListItem012b2848_GetFirst_00c15220
+  PKCTRListCUnprovenListItem012b2848_GetLast_00c15230
+  PKCTRListCUnprovenListItem012b2848_GetItemByIndex_00c15240
+  PKCTRListCUnprovenListItem012b2848_Reserve_00c15250
+  PKCTRListCUnprovenListItem012b2848_GetCount_00c15260
+  PKCTRListCUnprovenListItem012b2888_GetFirst_00c15330
+  PKCTRListCUnprovenListItem012b2888_GetLast_00c15340
+  PKCTRListCUnprovenListItem012b2888_GetItemByIndex_00c15350
+  PKCTRListCUnprovenListItem012b2888_Reserve_00c15360
+  PKCTRListCUnprovenListItem012b2888_GetCount_00c15370
+  CHashedItem_Validate_00c1f6d0
+  CHashedItem_Attach_00c1f6e0
+  CHashedItem_Detach_00c1f700
+  CKeyedItem_Validate_00c1f7b0
+  CKeyedItem_Attach_00c1f7c0
+  CKeyedItem_Detach_00c1f7d0
+  CVtable012b34bc_Validate_00c1f870
+  CVtable012b34bc_Attach_00c1f880
+  CVtable012b34bc_Detach_00c1f890
+  CVtable012b34e0_Validate_00c1f930
+  CVtable012b34e0_Attach_00c1f940
+  CVtable012b34e0_Detach_00c1f950
+  CVtable012b3504_Validate_00c1f9f0
+  CVtable012b3504_Attach_00c1fa00
+  CVtable012b3504_Detach_00c1fa10
+  CPointerBase00c1fcc0_Validate_00c1fab0
+  CPointerBase00c1fcc0_Attach_00c1fac0
+  CPointerBase00c1fcc0_Detach_00c1fae0
+  CPointerBase00c1fd60_Validate_00c1fb90
+  CPointerBase00c1fd60_Attach_00c1fba0
+  CPointerBase00c1fd60_Detach_00c1fbc0
+  CPointerBase00c1fe00_Validate_00c1fc70
+  CPointerBase00c1fe00_Attach_00c1fc80
+  CPointerBase00c1fe00_Detach_00c1fca0
+  PKCTRListCUnprovenListItem012b3a38_GetFirst_00c22fc0
+  PKCTRListCUnprovenListItem012b3a38_GetLast_00c22fd0
+  PKCTRListCUnprovenListItem012b3a38_GetItemByIndex_00c22fe0
+  PKCTRListCUnprovenListItem012b3a38_Reserve_00c22ff0
+  PKCTRListCUnprovenListItem012b3a38_GetCount_00c23000
+  PKCTRListCUnprovenListItem012b3938_GetFirst_00c235d0
+  PKCTRListCUnprovenListItem012b3938_GetLast_00c235e0
+  PKCTRListCUnprovenListItem012b3938_GetItemByIndex_00c235f0
+  PKCTRListCUnprovenListItem012b3938_Reserve_00c23600
+  PKCTRListCUnprovenListItem012b3938_GetCount_00c23610
+  PKCTRListCUnprovenListItem012b3978_GetFirst_00c236e0
+  PKCTRListCUnprovenListItem012b3978_GetLast_00c236f0
+  PKCTRListCUnprovenListItem012b3978_GetItemByIndex_00c23700
+  PKCTRListCUnprovenListItem012b3978_Reserve_00c23710
+  PKCTRListCUnprovenListItem012b3978_GetCount_00c23720
+  PKCTRListCUnprovenListItem012b39b8_GetFirst_00c237f0
+  PKCTRListCUnprovenListItem012b39b8_GetLast_00c23800
+  PKCTRListCUnprovenListItem012b39b8_GetItemByIndex_00c23810
+  PKCTRListCUnprovenListItem012b39b8_Reserve_00c23820
+  PKCTRListCUnprovenListItem012b39b8_GetCount_00c23830
+  PKCTRListCUnprovenListItem012b39f8_GetFirst_00c23900
+  PKCTRListCUnprovenListItem012b39f8_GetLast_00c23910
+  PKCTRListCUnprovenListItem012b39f8_GetItemByIndex_00c23920
+  PKCTRListCUnprovenListItem012b39f8_Reserve_00c23930
+  PKCTRListCUnprovenListItem012b39f8_GetCount_00c23940
+  PKCTRListCUnprovenListItem012b4190_GetFirst_00c2ada0
+  PKCTRListCUnprovenListItem012b4190_GetLast_00c2adb0
+  PKCTRListCUnprovenListItem012b4190_GetItemByIndex_00c2adc0
+  PKCTRListCUnprovenListItem012b4190_Reserve_00c2add0
+  PKCTRListCUnprovenListItem012b4190_GetCount_00c2ade0
+  PKCTRListCUnprovenListItem012b41d0_GetFirst_00c2aeb0
+  PKCTRListCUnprovenListItem012b41d0_GetLast_00c2aec0
+  PKCTRListCUnprovenListItem012b41d0_GetItemByIndex_00c2aed0
+  PKCTRListCUnprovenListItem012b41d0_Reserve_00c2aee0
+  PKCTRListCUnprovenListItem012b41d0_GetCount_00c2aef0
+  PKCTRListCUnprovenListItem012b4210_GetFirst_00c2afc0
+  PKCTRListCUnprovenListItem012b4210_GetLast_00c2afd0
+  PKCTRListCUnprovenListItem012b4210_GetItemByIndex_00c2afe0
+  PKCTRListCUnprovenListItem012b4210_Reserve_00c2aff0
+  PKCTRListCUnprovenListItem012b4210_GetCount_00c2b000
+  PKCTRListCUnprovenListItem012b44c8_GetFirst_00c2c050
+  PKCTRListCUnprovenListItem012b44c8_GetLast_00c2c060
+  PKCTRListCUnprovenListItem012b44c8_GetItemByIndex_00c2c070
+  PKCTRListCUnprovenListItem012b44c8_Reserve_00c2c080
+  PKCTRListCUnprovenListItem012b44c8_GetCount_00c2c090
+  PKCTRListCUnprovenListItem012b4740_GetFirst_00c2dd70
+  PKCTRListCUnprovenListItem012b4740_GetLast_00c2dd80
+  PKCTRListCUnprovenListItem012b4740_GetItemByIndex_00c2dd90
+  PKCTRListCUnprovenListItem012b4740_Reserve_00c2dda0
+  PKCTRListCUnprovenListItem012b4740_GetCount_00c2ddb0
+  PKCTRListCUnprovenListItem012b4998_GetFirst_00c2f540
+  PKCTRListCUnprovenListItem012b4998_GetLast_00c2f550
+  PKCTRListCUnprovenListItem012b4998_GetItemByIndex_00c2f560
+  PKCTRListCUnprovenListItem012b4998_Reserve_00c2f570
+  PKCTRListCUnprovenListItem012b4998_GetCount_00c2f580
+  PKCTRListCUnprovenListItem012b49d8_GetFirst_00c2f650
+  PKCTRListCUnprovenListItem012b49d8_GetLast_00c2f660
+  PKCTRListCUnprovenListItem012b49d8_GetItemByIndex_00c2f670
+  PKCTRListCUnprovenListItem012b49d8_Reserve_00c2f680
+  PKCTRListCUnprovenListItem012b49d8_GetCount_00c2f690
+  PKCTRListCUnprovenListItem012b4a18_GetFirst_00c2f760
+  PKCTRListCUnprovenListItem012b4a18_GetLast_00c2f770
+  PKCTRListCUnprovenListItem012b4a18_GetItemByIndex_00c2f780
+  PKCTRListCUnprovenListItem012b4a18_Reserve_00c2f790
+  PKCTRListCUnprovenListItem012b4a18_GetCount_00c2f7a0
+  PKCTRListCUnprovenListItem012b4c30_GetFirst_00c30b60
+  PKCTRListCUnprovenListItem012b4c30_GetLast_00c30b70
+  PKCTRListCUnprovenListItem012b4c30_GetItemByIndex_00c30b80
+  PKCTRListCUnprovenListItem012b4c30_Reserve_00c30b90
+  PKCTRListCUnprovenListItem012b4c30_GetCount_00c30ba0
+  CVtable012b4f60_GetSize_00c33070
+  CVtable012b4f60_Read_00c33080
+  CVtable012b4f60_GetUnitSize_00c33090
+  PKCTRListCUnprovenListItem012b50f0_GetFirst_00c36840
+  PKCTRListCUnprovenListItem012b50f0_GetLast_00c36850
+  PKCTRListCUnprovenListItem012b50f0_GetItemByIndex_00c36860
+  PKCTRListCUnprovenListItem012b50f0_Reserve_00c36870
+  PKCTRListCUnprovenListItem012b50f0_GetCount_00c36880
+  PKCTRListCUnprovenListItem012b5298_GetFirst_00c37ff0
+  PKCTRListCUnprovenListItem012b5298_GetLast_00c38000
+  PKCTRListCUnprovenListItem012b5298_GetItemByIndex_00c38010
+  PKCTRListCUnprovenListItem012b5298_Reserve_00c38020
+  PKCTRListCUnprovenListItem012b5298_GetCount_00c38030
+  PKCTRListCUnprovenListItem012b54e8_GetFirst_00c3ad70
+  PKCTRListCUnprovenListItem012b54e8_GetLast_00c3ad80
+  PKCTRListCUnprovenListItem012b54e8_GetItemByIndex_00c3ad90
+  PKCTRListCUnprovenListItem012b54e8_Reserve_00c3ada0
+  PKCTRListCUnprovenListItem012b54e8_GetCount_00c3adb0
+  PKCTRListCUnprovenListItem012b55c0_GetFirst_00c3b300
+  PKCTRListCUnprovenListItem012b55c0_GetLast_00c3b310
+  PKCTRListCUnprovenListItem012b55c0_GetItemByIndex_00c3b320
+  PKCTRListCUnprovenListItem012b55c0_Reserve_00c3b330
+  PKCTRListCUnprovenListItem012b55c0_GetCount_00c3b340
+  PKCTRListCUnprovenListItem012b7bc8_GetFirst_00c451a0
+  PKCTRListCUnprovenListItem012b7bc8_GetLast_00c451b0
+  PKCTRListCUnprovenListItem012b7bc8_GetItemByIndex_00c451c0
+  PKCTRListCUnprovenListItem012b7bc8_Reserve_00c451d0
+  PKCTRListCUnprovenListItem012b7bc8_GetCount_00c451e0
+  PKCTRListCUnprovenListItem012b7d68_GetFirst_00c46a70
+  PKCTRListCUnprovenListItem012b7d68_GetLast_00c46a80
+  PKCTRListCUnprovenListItem012b7d68_GetItemByIndex_00c46a90
+  PKCTRListCUnprovenListItem012b7d68_Reserve_00c46aa0
+  PKCTRListCUnprovenListItem012b7d68_GetCount_00c46ab0
+  PKCTRListCUnprovenListItem012b7e68_GetFirst_00c476a0
+  PKCTRListCUnprovenListItem012b7e68_GetLast_00c476b0
+  PKCTRListCUnprovenListItem012b7e68_GetItemByIndex_00c476c0
+  PKCTRListCUnprovenListItem012b7e68_Reserve_00c476d0
+  PKCTRListCUnprovenListItem012b7e68_GetCount_00c476e0
+  PKCTRListCUnprovenListItem012b7ea8_GetFirst_00c477b0
+  PKCTRListCUnprovenListItem012b7ea8_GetLast_00c477c0
+  PKCTRListCUnprovenListItem012b7ea8_GetItemByIndex_00c477d0
+  PKCTRListCUnprovenListItem012b7ea8_Reserve_00c477e0
+  PKCTRListCUnprovenListItem012b7ea8_GetCount_00c477f0

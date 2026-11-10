@@ -1,0 +1,39 @@
+address	kind	length	catalog_module	catalog_name	regrade_2026-11-09	masked_difflines	best_draft	callers	neighbours
+00c09c40	cluster	72	_gapscan	sub_00c09c40				abs .rdata 012b1ba4 | abs .rdata 012b1bec | abs .rdata 012b1c6c | abs .rdata 012b1d7c | abs .rdata 012b1dc4 (5)	00c09be0 00c09c00 00c09c20 00c09c90 00c09d00 00c09d20
+00c09ec0	cluster	72	_gapscan	sub_00c09ec0				abs .rdata 012b1c2c | abs .rdata 012b1cc4 | abs .rdata 012b1e0c (3)	00c09e60 00c09e80 00c09ea0 00c09f10 00c09f30 00c09f80
+00c0f110	cluster	72	_gapscan	sub_00c0f110				abs .rdata 012b2274 | abs .rdata 012b246c | abs .rdata 012b258c (3)	00c0f0b0 00c0f0d0 00c0f0f0 00c0f160 00c0f1a0 00c0f1b0
+00c0f220	cluster	72	_gapscan	sub_00c0f220				abs .rdata 012b22b4 | abs .rdata 012b237c | abs .rdata 012b24b4 (3)	00c0f1c0 00c0f1e0 00c0f200 00c0f270 00c0f2b0 00c0f2c0
+00c0f330	cluster	72	_gapscan	sub_00c0f330				abs .rdata 012b22f4 | abs .rdata 012b23cc | abs .rdata 012b24fc (3)	00c0f2d0 00c0f2f0 00c0f310 00c0f380 00c0f3c0 00c0f3d0
+00c15220	cluster	72	_gapscan	sub_00c15220				abs .rdata 012b2874 | abs .rdata 012b2904 | abs .rdata 012b2994 | abs .rdata 012b469c | abs .rdata 012b46e4 (5)	00c151c0 00c151e0 00c15200 00c15270 00c152b0 00c152c0
+00c15330	cluster	72	_gapscan	sub_00c15330				abs .rdata 012b28b4 | abs .rdata 012b294c | abs .rdata 012b29dc (3)	00c152d0 00c152f0 00c15310 00c15380 00c153a0 00c153f0
+00c1f6d0	cluster	67	_gapscan	sub_00c1f6d0				abs .rdata 012b3480 (1)	00c1f6a0 00c1f6b0 00c1f6c0 00c1f720 00c1f770 00c1f780
+00c1fab0	cluster	67	_gapscan	sub_00c1fab0				abs .rdata 012b3534 (1)	00c1fa80 00c1fa90 00c1faa0 00c1fb00 00c1fb50 00c1fb60
+00c1fb90	cluster	67	_gapscan	sub_00c1fb90				abs .rdata 012b3558 (1)	00c1fb60 00c1fb70 00c1fb80 00c1fbe0 00c1fc30 00c1fc40
+00c1fc70	cluster	67	_gapscan	sub_00c1fc70				abs .rdata 012b357c (1)	00c1fc40 00c1fc50 00c1fc60 00c1fcc0 00c1fd30 00c1fd40
+00c22fc0	cluster	72	_gapscan	sub_00c22fc0				abs .rdata 012b388c | abs .rdata 012b38d4 | abs .rdata 012b391c | abs .rdata 012b3a64 | abs .rdata 012b3bd4 | abs .rdata 012b3dd4 | abs .rdata 012b3e1c | abs .rdata 012b3e64 | abs .rdata 012b3eac (9)	00c22f60 00c22f80 00c22fa0 00c23010 00c23080 00c230a0
+00c235d0	cluster	72	_gapscan	sub_00c235d0				abs .rdata 012b3964 | abs .rdata 012b3c24 | abs .rdata 012b3ef4 (3)	00c23570 00c23590 00c235b0 00c23620 00c23660 00c23670
+00c236e0	cluster	72	_gapscan	sub_00c236e0				abs .rdata 012b39a4 | abs .rdata 012b3c6c | abs .rdata 012b3f3c (3)	00c23680 00c236a0 00c236c0 00c23730 00c23770 00c23780
+00c237f0	cluster	72	_gapscan	sub_00c237f0				abs .rdata 012b39e4 | abs .rdata 012b3af4 | abs .rdata 012b3b3c | abs .rdata 012b3cb4 | abs .rdata 012b3cfc | abs .rdata 012b3d44 | abs .rdata 012b3f84 (7)	00c23790 00c237b0 00c237d0 00c23840 00c23880 00c23890
+00c23900	cluster	72	_gapscan	sub_00c23900				abs .rdata 012b3a24 | abs .rdata 012b3b84 | abs .rdata 012b3d8c (3)	00c238a0 00c238c0 00c238e0 00c23950 00c23990 00c239b0
+00c2ada0	cluster	72	_gapscan	sub_00c2ada0				abs .rdata 012b41bc | abs .rdata 012b4294 | abs .rdata 012b43b4 | abs .rdata 012b7c84 | abs .rdata 012b7d14 (5)	00c2ad40 00c2ad60 00c2ad80 00c2adf0 00c2ae30 00c2ae40
+00c2aeb0	cluster	72	_gapscan	sub_00c2aeb0				abs .rdata 012b41fc | abs .rdata 012b42dc | abs .rdata 012b4324 | abs .rdata 012b43fc | abs .rdata 012b4444 | abs .rdata 012b521c | abs .rdata 012b5264 (7)	00c2ae50 00c2ae70 00c2ae90 00c2af00 00c2af40 00c2af50
+00c2afc0	cluster	72	_gapscan	sub_00c2afc0				abs .rdata 012b423c | abs .rdata 012b436c | abs .rdata 012b448c (3)	00c2af60 00c2af80 00c2afa0 00c2b010 00c2b030 00c2b080
+00c2c050	cluster	72	_gapscan	sub_00c2c050				abs .rdata 012b44f4 | abs .rdata 012b453c | abs .rdata 012b4584 | abs .rdata 012b45cc | abs .rdata 012b4614 (5)	00c2bff0 00c2c010 00c2c030 00c2c0a0 00c2c0c0 00c2c0d0
+00c2dd70	cluster	72	_gapscan	sub_00c2dd70				abs .rdata 012b476c | abs .rdata 012b47b4 | abs .rdata 012b47fc (3)	00c2dd10 00c2dd30 00c2dd50 00c2ddc0 00c2dde0 00c2ddf0
+00c2f540	cluster	72	_gapscan	sub_00c2f540				abs .rdata 012b49c4 | abs .rdata 012b4a9c | abs .rdata 012b4b74 (3)	00c2f4e0 00c2f500 00c2f520 00c2f590 00c2f5d0 00c2f5e0
+00c2f650	cluster	72	_gapscan	sub_00c2f650				abs .rdata 012b4a04 | abs .rdata 012b4ae4 | abs .rdata 012b4bbc (3)	00c2f5f0 00c2f610 00c2f630 00c2f6a0 00c2f6e0 00c2f6f0
+00c2f760	cluster	72	_gapscan	sub_00c2f760				abs .rdata 012b4a44 | abs .rdata 012b4b2c | abs .rdata 012b4c04 (3)	00c2f700 00c2f720 00c2f740 00c2f7b0 00c2f7d0 00c2f970
+00c30b60	cluster	72	_gapscan	sub_00c30b60				abs .rdata 012b4c5c | abs .rdata 012b4ca4 | abs .rdata 012b4cec (3)	00c30b00 00c30b20 00c30b40 00c30bb0 00c30bd0 00c30be0
+00c36840	cluster	72	_gapscan	sub_00c36840				abs .rdata 012b511c | abs .rdata 012b5164 | abs .rdata 012b51ac (3)	00c367e0 00c36800 00c36820 00c36890 00c368b0 00c368c0
+00c37ff0	cluster	72	_gapscan	sub_00c37ff0				abs .rdata 012b52c4 | abs .rdata 012b530c | abs .rdata 012b5354 (3)	00c37f90 00c37fb0 00c37fd0 00c38040 00c38060 00c38070
+00c3ad70	cluster	72	_gapscan	sub_00c3ad70				abs .rdata 012b5514 | abs .rdata 012b555c | abs .rdata 012b55a4 (3)	00c3ad10 00c3ad30 00c3ad50 00c3adc0 00c3ade0 00c3adf0
+00c3b300	cluster	72	_gapscan	sub_00c3b300				abs .rdata 012b55ec | abs .rdata 012b5634 | abs .rdata 012b567c (3)	00c3b2a0 00c3b2c0 00c3b2e0 00c3b350 00c3b370 00c3b380
+00c451a0	cluster	72	_gapscan	sub_00c451a0				abs .rdata 012b7bf4 | abs .rdata 012b7c3c | abs .rdata 012b7ccc (3)	00c45140 00c45160 00c45180 00c451f0 00c45210 00c45220
+00c46a70	cluster	72	_gapscan	sub_00c46a70				abs .rdata 012b7d94 | abs .rdata 012b7ddc | abs .rdata 012b7e24 (3)	00c46a10 00c46a30 00c46a50 00c46ac0 00c46ae0 00c46af0
+00c476a0	cluster	72	_gapscan	sub_00c476a0				abs .rdata 012b7e94 | abs .rdata 012b7f24 | abs .rdata 012b7fb4 (3)	00c47640 00c47660 00c47680 00c476f0 00c47730 00c47740
+00c477b0	cluster	72	_gapscan	sub_00c477b0				abs .rdata 012b7ed4 | abs .rdata 012b7f6c | abs .rdata 012b7ffc (3)	00c47750 00c47770 00c47790 00c47800 00c47820 00c47830
+00c1f7b0	cluster	47	_gapscan	sub_00c1f7b0				abs .rdata 012b34a4 (1)	00c1f780 00c1f790 00c1f7a0 00c1f7e0 00c1f830 00c1f840
+00c1f870	cluster	47	_gapscan	sub_00c1f870				abs .rdata 012b34c8 (1)	00c1f840 00c1f850 00c1f860 00c1f8a0 00c1f8f0 00c1f900
+00c1f930	cluster	47	_gapscan	sub_00c1f930				abs .rdata 012b34ec (1)	00c1f900 00c1f910 00c1f920 00c1f960 00c1f9b0 00c1f9c0
+00c1f9f0	cluster	47	_gapscan	sub_00c1f9f0				abs .rdata 012b3510 (1)	00c1f9c0 00c1f9d0 00c1f9e0 00c1fa20 00c1fa70 00c1fa80
+00c33070	cluster	40	_gapscan	sub_00c33070				abs .rdata 012b4f60 (1)	00c33020 00c33040 00c33050 00c330a0 00c330c0 00c330e0

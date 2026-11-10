@@ -1,0 +1,18 @@
+00ca6170 g1 RELOCATION_MATCH -- 899's hand model + Vendor-proof line
+00ca6180 g1 RELOCATION_MATCH
+00ca6190 g1 RELOCATION_MATCH
+00caa720 g1 RELOCATION_MATCH
+00caa730 g1 RELOCATION_MATCH
+00caa740 g1 RELOCATION_MATCH
+00ca6170..00caa740 lib_verify --source: 6/6 MATCH (libverify.log)
+00c3ec10 g1 MATCH (split length 11) ; g2 MATCH (final gall)
+00c3ec20 g1 MATCH ; g2 MATCH (final gall)
+00f2a000 g1 DIFFER(215v203) -- inline CVectorMap assignment expanded through ebx/ebp
+00f2a000 g2 DIFFER(129v203) -- FABLE_RETAIL_PDCB_IMPLICIT_ASSIGN: whole parent def called as 0x00431ED0
+00f2a000 g3 RELOCATION_MATCH -- new FABLE_RETAIL_CVECTORMAP_ASSIGN_OUTOFLINE (call 0x006313A0)
+00f2a000 g4 RELOCATION_MATCH (final gall)
+00f29ff0 g1 RELOCATION_MATCH ; g2 RELOCATION_MATCH (final gall)
+005c8459 g0 SRC_FAIL x3 -- CEnginePrimitiveHandle.h, CResourceList size asserts, CThingBaseDef incomplete (fixed)
+005c8459 g1 DIFFER(3022v3235) -- frame-masked share 0.663
+005c8459 g2 DIFFER(3021v3235) -- frame-masked 0.815 (AddScrollingChild slot 0x240, guideBank const ref)
+005c8459 g3 DIFFER(3299v3235) -- frame-masked 0.865 (inline damage blocks, named title pointers)

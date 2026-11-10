@@ -1,0 +1,54 @@
+addr       parity           behav  name
+00c3ec10   MATCH            PASS   CreateHardwareVoiceA
+00c3ec20   MATCH            PASS   CreateHardwareVoiceB
+00ca6170   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca6170   WARN STANDIN_LEAF ?QueryInterface@CBaseInputPin@@W3AGJABU_GUID@@PAPAX@Z (catalog CBaseInputPin::QueryInterface`adjustor{4}'; names another function)
+00ca6170   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00ca6170   RELOCATION_MATCH PASS   QueryInterface`adjustor{4}'
+00ca6180   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca6180   WARN STANDIN_LEAF ?AddRef@CBaseInputPin@@W3AGKXZ (catalog CBaseInputPin::AddRef`adjustor{4}'; names another function)
+00ca6180   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00ca6180   RELOCATION_MATCH PASS   AddRef`adjustor{4}'
+00ca6190   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca6190   WARN RELOC_NAME: ?Release@CBaseInputPin@@UAGKXZ -> 00ca5510 labelled '_global::func_00ca5510'
+00ca6190   WARN STANDIN_LEAF ?Release@CBaseInputPin@@W3AGKXZ (catalog CBaseInputPin::Release`adjustor{4}'; names another function)
+00ca6190   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00ca6190   RELOCATION_MATCH PASS   Release`adjustor{4}'
+00caa720   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caa720   WARN STANDIN_LEAF ?QueryInterface@CDynamicOutputPin@@W3AGJABU_GUID@@PAPAX@Z (catalog CDynamicOutputPin::QueryInterface`adjustor{4}'; names another function)
+00caa720   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00caa720   RELOCATION_MATCH PASS   QueryInterface`adjustor{4}'
+00caa730   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caa730   WARN STANDIN_LEAF ?AddRef@CDynamicOutputPin@@W3AGKXZ (catalog CDynamicOutputPin::AddRef`adjustor{4}'; names another function)
+00caa730   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00caa730   RELOCATION_MATCH PASS   AddRef`adjustor{4}'
+00caa740   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caa740   WARN STANDIN_LEAF ?Release@CDynamicOutputPin@@W3AGKXZ (catalog CDynamicOutputPin::Release`adjustor{4}'; names another function)
+00caa740   WARN VENDOR_PROOF_MISMATCH include $FABLE_WINDDK_INC: set FABLE_WINDDK_INC (now /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/winddk/3790.1830/inc/wnet)
+00caa740   RELOCATION_MATCH PASS   Release`adjustor{4}'
+00f29ff0   RELOCATION_MATCH PASS   Copy
+00f2a000   RELOCATION_MATCH PASS   operator=
+
+WINS: 10
+  00c3ec10 MATCH CCodaSystem::?CreateHardwareVoiceA@CCodaSystem@@UAEPAVCCodaVoice@@XZ
+  00c3ec20 MATCH CCodaSystem::?CreateHardwareVoiceB@CCodaSystem@@UAEPAVCCodaVoice@@XZ
+  00ca6170 RELOCATION_MATCH CBaseInputPin::?QueryInterface@CBaseInputPin@@W3AGJABU_GUID@@PAPAX@Z
+  00ca6180 RELOCATION_MATCH CBaseInputPin::?AddRef@CBaseInputPin@@W3AGKXZ
+  00ca6190 RELOCATION_MATCH CBaseInputPin::?Release@CBaseInputPin@@W3AGKXZ
+  00caa720 RELOCATION_MATCH CDynamicOutputPin::?QueryInterface@CDynamicOutputPin@@W3AGJABU_GUID@@PAPAX@Z
+  00caa730 RELOCATION_MATCH CDynamicOutputPin::?AddRef@CDynamicOutputPin@@W3AGKXZ
+  00caa740 RELOCATION_MATCH CDynamicOutputPin::?Release@CDynamicOutputPin@@W3AGKXZ
+  00f29ff0 RELOCATION_MATCH CCutsceneDef::?Copy@CCutsceneDef@@UAEXPBVCDefClassBase@@@Z
+  00f2a000 RELOCATION_MATCH CCutsceneDef::??4CCutsceneDef@@QAEAAV0@ABV0@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CCodaSystem_CreateHardwareVoiceA_00c3ec10
+  CCodaSystem_CreateHardwareVoiceB_00c3ec20
+  CBaseInputPin_QueryInterfaceadjustor4_00ca6170
+  CBaseInputPin_AddRefadjustor4_00ca6180
+  CBaseInputPin_Releaseadjustor4_00ca6190
+  CDynamicOutputPin_QueryInterfaceadjustor4_00caa720
+  CDynamicOutputPin_AddRefadjustor4_00caa730
+  CDynamicOutputPin_Releaseadjustor4_00caa740
+  CCutsceneDef_Copy_00f29ff0
+  CCutsceneDef_operator_00f2a000
